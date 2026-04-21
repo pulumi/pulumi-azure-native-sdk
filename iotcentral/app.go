@@ -8,39 +8,53 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The IoT Central application.
 //
-// Uses Azure REST API version 2021-06-01. In version 1.x of the Azure Native provider, it used API version 2021-06-01.
+// Uses Azure REST API version 2021-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-06-01.
 //
-// Other available API versions: 2021-11-01-preview.
+// Other available API versions: 2021-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotcentral [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type App struct {
 	pulumi.CustomResourceState
 
 	// The ID of the application.
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The display name of the application.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// The managed identities for the IoT Central application.
-	Identity SystemAssignedServiceIdentityResponsePtrOutput `pulumi:"identity"`
-	// The resource location.
+	Identity commontypesv3.SystemAssignedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The ARM resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Network Rule Set Properties of this IoT Central application.
+	NetworkRuleSets NetworkRuleSetsResponsePtrOutput `pulumi:"networkRuleSets"`
+	// Private endpoint connections created on this IoT Central application.
+	PrivateEndpointConnections commontypesv4.PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
+	// The provisioning state of the application.
+	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Whether requests from the public network are allowed.
+	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
 	// A valid instance SKU.
 	Sku AppSkuInfoResponseOutput `pulumi:"sku"`
 	// The current state of the application.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The subdomain of the application.
 	Subdomain pulumi.StringPtrOutput `pulumi:"subdomain"`
-	// The resource tags.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The ID of the application template, which is a blueprint that defines the characteristics and behaviors of an application. Optional; if not specified, defaults to a blank blueprint and allows the application to be defined from scratch.
 	Template pulumi.StringPtrOutput `pulumi:"template"`
-	// The resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -56,6 +70,9 @@ func NewApp(ctx *pulumi.Context,
 	}
 	if args.Sku == nil {
 		return nil, errors.New("invalid value for required argument 'Sku'")
+	}
+	if args.NetworkRuleSets != nil {
+		args.NetworkRuleSets = args.NetworkRuleSets.ToNetworkRuleSetsPtrOutput().ApplyT(func(v *NetworkRuleSets) *NetworkRuleSets { return v.Defaults() }).(NetworkRuleSetsPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -105,9 +122,13 @@ type appArgs struct {
 	// The display name of the application.
 	DisplayName *string `pulumi:"displayName"`
 	// The managed identities for the IoT Central application.
-	Identity *SystemAssignedServiceIdentity `pulumi:"identity"`
-	// The resource location.
+	Identity *commontypesv3.SystemAssignedServiceIdentity `pulumi:"identity"`
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
+	// Network Rule Set Properties of this IoT Central application.
+	NetworkRuleSets *NetworkRuleSets `pulumi:"networkRuleSets"`
+	// Whether requests from the public network are allowed.
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// The name of the resource group that contains the IoT Central application.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The ARM resource name of the IoT Central application.
@@ -116,7 +137,7 @@ type appArgs struct {
 	Sku AppSkuInfo `pulumi:"sku"`
 	// The subdomain of the application.
 	Subdomain *string `pulumi:"subdomain"`
-	// The resource tags.
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The ID of the application template, which is a blueprint that defines the characteristics and behaviors of an application. Optional; if not specified, defaults to a blank blueprint and allows the application to be defined from scratch.
 	Template *string `pulumi:"template"`
@@ -127,9 +148,13 @@ type AppArgs struct {
 	// The display name of the application.
 	DisplayName pulumi.StringPtrInput
 	// The managed identities for the IoT Central application.
-	Identity SystemAssignedServiceIdentityPtrInput
-	// The resource location.
+	Identity commontypesv3.SystemAssignedServiceIdentityPtrInput
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
+	// Network Rule Set Properties of this IoT Central application.
+	NetworkRuleSets NetworkRuleSetsPtrInput
+	// Whether requests from the public network are allowed.
+	PublicNetworkAccess pulumi.StringPtrInput
 	// The name of the resource group that contains the IoT Central application.
 	ResourceGroupName pulumi.StringInput
 	// The ARM resource name of the IoT Central application.
@@ -138,7 +163,7 @@ type AppArgs struct {
 	Sku AppSkuInfoInput
 	// The subdomain of the application.
 	Subdomain pulumi.StringPtrInput
-	// The resource tags.
+	// Resource tags.
 	Tags pulumi.StringMapInput
 	// The ID of the application template, which is a blueprint that defines the characteristics and behaviors of an application. Optional; if not specified, defaults to a blank blueprint and allows the application to be defined from scratch.
 	Template pulumi.StringPtrInput
@@ -186,24 +211,51 @@ func (o AppOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.ApplicationId }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o AppOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The display name of the application.
 func (o AppOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // The managed identities for the IoT Central application.
-func (o AppOutput) Identity() SystemAssignedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *App) SystemAssignedServiceIdentityResponsePtrOutput { return v.Identity }).(SystemAssignedServiceIdentityResponsePtrOutput)
+func (o AppOutput) Identity() commontypesv3.SystemAssignedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *App) commontypesv3.SystemAssignedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv3.SystemAssignedServiceIdentityResponsePtrOutput)
 }
 
-// The resource location.
+// The geo-location where the resource lives
 func (o AppOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The ARM resource name.
+// The name of the resource
 func (o AppOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Network Rule Set Properties of this IoT Central application.
+func (o AppOutput) NetworkRuleSets() NetworkRuleSetsResponsePtrOutput {
+	return o.ApplyT(func(v *App) NetworkRuleSetsResponsePtrOutput { return v.NetworkRuleSets }).(NetworkRuleSetsResponsePtrOutput)
+}
+
+// Private endpoint connections created on this IoT Central application.
+func (o AppOutput) PrivateEndpointConnections() commontypesv4.PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v *App) commontypesv4.PrivateEndpointConnectionResponseArrayOutput {
+		return v.PrivateEndpointConnections
+	}).(commontypesv4.PrivateEndpointConnectionResponseArrayOutput)
+}
+
+// The provisioning state of the application.
+func (o AppOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Whether requests from the public network are allowed.
+func (o AppOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
 // A valid instance SKU.
@@ -221,7 +273,12 @@ func (o AppOutput) Subdomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.Subdomain }).(pulumi.StringPtrOutput)
 }
 
-// The resource tags.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o AppOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *App) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o AppOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *App) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -231,7 +288,7 @@ func (o AppOutput) Template() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.Template }).(pulumi.StringPtrOutput)
 }
 
-// The resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o AppOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

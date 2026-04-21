@@ -7,20 +7,23 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // PaloAltoNetworks GlobalRulestack
 //
-// Uses Azure REST API version 2023-09-01.
+// Uses Azure REST API version 2025-05-23. In version 2.x of the Azure Native provider, it used API version 2023-09-01.
 //
-// Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview.
+// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type GlobalRulestack struct {
 	pulumi.CustomResourceState
 
 	// subscription scope of global rulestack
 	AssociatedSubscriptions pulumi.StringArrayOutput `pulumi:"associatedSubscriptions"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Mode for default rules creation
 	DefaultMode pulumi.StringPtrOutput `pulumi:"defaultMode"`
 	// rulestack description
@@ -44,7 +47,7 @@ type GlobalRulestack struct {
 	// Security Profile
 	SecurityServices SecurityServicesResponsePtrOutput `pulumi:"securityServices"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -80,6 +83,18 @@ func NewGlobalRulestack(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cloudngfw/v20250206preview:GlobalRulestack"),
+		},
+		{
+			Type: pulumi.String("azure-native:cloudngfw/v20250523:GlobalRulestack"),
+		},
+		{
+			Type: pulumi.String("azure-native:cloudngfw/v20250707preview:GlobalRulestack"),
+		},
+		{
+			Type: pulumi.String("azure-native:cloudngfw/v20251008:GlobalRulestack"),
+		},
+		{
+			Type: pulumi.String("azure-native:cloudngfw/v20260126preview:GlobalRulestack"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -208,6 +223,11 @@ func (o GlobalRulestackOutput) AssociatedSubscriptions() pulumi.StringArrayOutpu
 	return o.ApplyT(func(v *GlobalRulestack) pulumi.StringArrayOutput { return v.AssociatedSubscriptions }).(pulumi.StringArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o GlobalRulestackOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *GlobalRulestack) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Mode for default rules creation
 func (o GlobalRulestackOutput) DefaultMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalRulestack) pulumi.StringPtrOutput { return v.DefaultMode }).(pulumi.StringPtrOutput)
@@ -266,8 +286,8 @@ func (o GlobalRulestackOutput) SecurityServices() SecurityServicesResponsePtrOut
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o GlobalRulestackOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *GlobalRulestack) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o GlobalRulestackOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *GlobalRulestack) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

@@ -8,18 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A BgpPeer resource for an Arc connected cluster (Microsoft.Kubernetes/connectedClusters)
 //
-// Uses Azure REST API version 2024-03-01.
-//
-// Other available API versions: 2023-10-01-preview.
+// Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2024-03-01.
 type BgpPeer struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// My ASN
 	MyAsn pulumi.IntOutput `pulumi:"myAsn"`
 	// The name of the resource
@@ -31,7 +32,7 @@ type BgpPeer struct {
 	// Resource provision state
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -160,6 +161,11 @@ func (o BgpPeerOutput) ToBgpPeerOutputWithContext(ctx context.Context) BgpPeerOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o BgpPeerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BgpPeer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // My ASN
 func (o BgpPeerOutput) MyAsn() pulumi.IntOutput {
 	return o.ApplyT(func(v *BgpPeer) pulumi.IntOutput { return v.MyAsn }).(pulumi.IntOutput)
@@ -186,8 +192,8 @@ func (o BgpPeerOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o BgpPeerOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *BgpPeer) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o BgpPeerOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *BgpPeer) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

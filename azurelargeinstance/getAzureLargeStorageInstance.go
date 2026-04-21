@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,12 +36,14 @@ type LookupAzureLargeStorageInstanceArgs struct {
 // AzureLargeStorageInstance info on Azure (ARM properties and
 // AzureLargeStorageInstance properties)
 type LookupAzureLargeStorageInstanceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Specifies the AzureLargeStorageInstance unique ID.
 	AzureLargeStorageInstanceUniqueIdentifier *string `pulumi:"azureLargeStorageInstanceUniqueIdentifier"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The managed service identities assigned to this resource.
-	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *commontypesv5.ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
@@ -48,7 +51,7 @@ type LookupAzureLargeStorageInstanceResult struct {
 	// Specifies the storage properties for the AzureLargeStorage instance.
 	StorageProperties *StoragePropertiesResponse `pulumi:"storageProperties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -91,6 +94,11 @@ func (o LookupAzureLargeStorageInstanceResultOutput) ToLookupAzureLargeStorageIn
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupAzureLargeStorageInstanceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAzureLargeStorageInstanceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Specifies the AzureLargeStorageInstance unique ID.
 func (o LookupAzureLargeStorageInstanceResultOutput) AzureLargeStorageInstanceUniqueIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAzureLargeStorageInstanceResult) *string {
@@ -104,8 +112,10 @@ func (o LookupAzureLargeStorageInstanceResultOutput) Id() pulumi.StringOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o LookupAzureLargeStorageInstanceResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupAzureLargeStorageInstanceResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o LookupAzureLargeStorageInstanceResultOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupAzureLargeStorageInstanceResult) *commontypesv5.ManagedServiceIdentityResponse {
+		return v.Identity
+	}).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -124,8 +134,8 @@ func (o LookupAzureLargeStorageInstanceResultOutput) StorageProperties() Storage
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupAzureLargeStorageInstanceResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAzureLargeStorageInstanceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupAzureLargeStorageInstanceResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAzureLargeStorageInstanceResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Document processor details
 //
-// Uses Azure REST API version 2022-09-15-preview. In version 1.x of the Azure Native provider, it used API version 2022-09-15-preview.
+// Uses Azure REST API version 2022-09-15-preview. In version 2.x of the Azure Native provider, it used API version 2022-09-15-preview.
 type DocumentProcessor struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -25,7 +28,7 @@ type DocumentProcessor struct {
 	// Document processor properties.
 	Properties DocumentProcessorPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -144,6 +147,11 @@ func (o DocumentProcessorOutput) ToDocumentProcessorOutputWithContext(ctx contex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o DocumentProcessorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DocumentProcessor) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The geo-location where the resource lives
 func (o DocumentProcessorOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *DocumentProcessor) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -160,8 +168,8 @@ func (o DocumentProcessorOutput) Properties() DocumentProcessorPropertiesRespons
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o DocumentProcessorOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *DocumentProcessor) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o DocumentProcessorOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *DocumentProcessor) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

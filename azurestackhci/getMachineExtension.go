@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,6 +38,8 @@ type LookupMachineExtensionArgs struct {
 type LookupMachineExtensionResult struct {
 	// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
 	AutoUpgradeMinorVersion *bool `pulumi:"autoUpgradeMinorVersion"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// How the extension handler should be forced to update even if the extension configuration has not changed.
 	ForceUpdateTag *string `pulumi:"forceUpdateTag"`
 	// The Id.
@@ -56,7 +59,7 @@ type LookupMachineExtensionResult struct {
 	// Json formatted public settings for the extension.
 	Settings interface{} `pulumi:"settings"`
 	// The system data.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// The Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource.
@@ -107,6 +110,11 @@ func (o LookupMachineExtensionResultOutput) AutoUpgradeMinorVersion() pulumi.Boo
 	return o.ApplyT(func(v LookupMachineExtensionResult) *bool { return v.AutoUpgradeMinorVersion }).(pulumi.BoolPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupMachineExtensionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMachineExtensionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // How the extension handler should be forced to update even if the extension configuration has not changed.
 func (o LookupMachineExtensionResultOutput) ForceUpdateTag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMachineExtensionResult) *string { return v.ForceUpdateTag }).(pulumi.StringPtrOutput)
@@ -155,8 +163,8 @@ func (o LookupMachineExtensionResultOutput) Settings() pulumi.AnyOutput {
 }
 
 // The system data.
-func (o LookupMachineExtensionResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupMachineExtensionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupMachineExtensionResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupMachineExtensionResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The Resource tags.

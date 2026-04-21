@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // MQ mqttBridgeConnector resource
 //
-// Uses Azure REST API version 2023-10-04-preview.
+// Uses Azure REST API version 2023-10-04-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-04-preview.
 type MqttBridgeConnector struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The number of instances to deploy for a bridge rollout.
 	BridgeInstances pulumi.IntPtrOutput `pulumi:"bridgeInstances"`
 	// The client id prefix of the dynamically generated client ids.
@@ -43,7 +46,7 @@ type MqttBridgeConnector struct {
 	// The details for connecting with Remote Broker.
 	RemoteBrokerConnection MqttBridgeRemoteBrokerConnectionSpecResponseOutput `pulumi:"remoteBrokerConnection"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -219,6 +222,11 @@ func (o MqttBridgeConnectorOutput) ToMqttBridgeConnectorOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o MqttBridgeConnectorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MqttBridgeConnector) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The number of instances to deploy for a bridge rollout.
 func (o MqttBridgeConnectorOutput) BridgeInstances() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MqttBridgeConnector) pulumi.IntPtrOutput { return v.BridgeInstances }).(pulumi.IntPtrOutput)
@@ -284,8 +292,8 @@ func (o MqttBridgeConnectorOutput) RemoteBrokerConnection() MqttBridgeRemoteBrok
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o MqttBridgeConnectorOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *MqttBridgeConnector) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o MqttBridgeConnectorOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *MqttBridgeConnector) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

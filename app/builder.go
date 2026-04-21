@@ -8,24 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Information about the SourceToCloud builder resource.
 //
-// Uses Azure REST API version 2023-08-01-preview.
+// Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2023-08-01-preview.
 //
-// Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview.
+// Other available API versions: 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Builder struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// List of mappings of container registries and the managed identity used to connect to it.
 	ContainerRegistries ContainerRegistryResponseArrayOutput `pulumi:"containerRegistries"`
 	// Resource ID of the container apps environment that the builder is associated with.
 	EnvironmentId pulumi.StringOutput `pulumi:"environmentId"`
 	// The managed service identities assigned to this resource.
-	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity commontypesv5.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -33,7 +36,7 @@ type Builder struct {
 	// Provisioning state of a builder resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -68,6 +71,12 @@ func NewBuilder(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20241002preview:Builder"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20250202preview:Builder"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20251002preview:Builder"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -111,7 +120,7 @@ type builderArgs struct {
 	// Resource ID of the container apps environment that the builder is associated with.
 	EnvironmentId string `pulumi:"environmentId"`
 	// The managed service identities assigned to this resource.
-	Identity *ManagedServiceIdentity `pulumi:"identity"`
+	Identity *commontypesv5.ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the resource group. The name is case insensitive.
@@ -129,7 +138,7 @@ type BuilderArgs struct {
 	// Resource ID of the container apps environment that the builder is associated with.
 	EnvironmentId pulumi.StringInput
 	// The managed service identities assigned to this resource.
-	Identity ManagedServiceIdentityPtrInput
+	Identity commontypesv5.ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -175,6 +184,11 @@ func (o BuilderOutput) ToBuilderOutputWithContext(ctx context.Context) BuilderOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o BuilderOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Builder) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // List of mappings of container registries and the managed identity used to connect to it.
 func (o BuilderOutput) ContainerRegistries() ContainerRegistryResponseArrayOutput {
 	return o.ApplyT(func(v *Builder) ContainerRegistryResponseArrayOutput { return v.ContainerRegistries }).(ContainerRegistryResponseArrayOutput)
@@ -186,8 +200,8 @@ func (o BuilderOutput) EnvironmentId() pulumi.StringOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o BuilderOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *Builder) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o BuilderOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Builder) commontypesv5.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -206,8 +220,8 @@ func (o BuilderOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o BuilderOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Builder) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o BuilderOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Builder) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

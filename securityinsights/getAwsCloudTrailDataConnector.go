@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a data connector.
 //
-// Uses Azure REST API version 2023-02-01.
+// Uses Azure REST API version 2024-09-01.
 func LookupAwsCloudTrailDataConnector(ctx *pulumi.Context, args *LookupAwsCloudTrailDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupAwsCloudTrailDataConnectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAwsCloudTrailDataConnectorResult
@@ -37,8 +38,10 @@ type LookupAwsCloudTrailDataConnectorArgs struct {
 type LookupAwsCloudTrailDataConnectorResult struct {
 	// The Aws Role Arn (with CloudTrailReadOnly policy) that is used to access the Aws account.
 	AwsRoleArn *string `pulumi:"awsRoleArn"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The available data types for the connector.
-	DataTypes *AwsCloudTrailDataConnectorDataTypesResponse `pulumi:"dataTypes"`
+	DataTypes AwsCloudTrailDataConnectorDataTypesResponse `pulumi:"dataTypes"`
 	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -49,7 +52,7 @@ type LookupAwsCloudTrailDataConnectorResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -96,11 +99,16 @@ func (o LookupAwsCloudTrailDataConnectorResultOutput) AwsRoleArn() pulumi.String
 	return o.ApplyT(func(v LookupAwsCloudTrailDataConnectorResult) *string { return v.AwsRoleArn }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupAwsCloudTrailDataConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAwsCloudTrailDataConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The available data types for the connector.
-func (o LookupAwsCloudTrailDataConnectorResultOutput) DataTypes() AwsCloudTrailDataConnectorDataTypesResponsePtrOutput {
-	return o.ApplyT(func(v LookupAwsCloudTrailDataConnectorResult) *AwsCloudTrailDataConnectorDataTypesResponse {
+func (o LookupAwsCloudTrailDataConnectorResultOutput) DataTypes() AwsCloudTrailDataConnectorDataTypesResponseOutput {
+	return o.ApplyT(func(v LookupAwsCloudTrailDataConnectorResult) AwsCloudTrailDataConnectorDataTypesResponse {
 		return v.DataTypes
-	}).(AwsCloudTrailDataConnectorDataTypesResponsePtrOutput)
+	}).(AwsCloudTrailDataConnectorDataTypesResponseOutput)
 }
 
 // Etag of the azure resource
@@ -125,8 +133,8 @@ func (o LookupAwsCloudTrailDataConnectorResultOutput) Name() pulumi.StringOutput
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupAwsCloudTrailDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAwsCloudTrailDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupAwsCloudTrailDataConnectorResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAwsCloudTrailDataConnectorResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

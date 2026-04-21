@@ -8,13 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The NetworkTapRule resource definition.
 //
-// Uses Azure REST API version 2023-06-15.
+// Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-06-15.
+//
+// Other available API versions: 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type NetworkTapRule struct {
 	pulumi.CustomResourceState
 
@@ -22,6 +25,8 @@ type NetworkTapRule struct {
 	AdministrativeState pulumi.StringOutput `pulumi:"administrativeState"`
 	// Switch configuration description.
 	Annotation pulumi.StringPtrOutput `pulumi:"annotation"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Configuration state of the resource.
 	ConfigurationState pulumi.StringOutput `pulumi:"configurationState"`
 	// Input method to configure Network Tap Rule.
@@ -43,7 +48,7 @@ type NetworkTapRule struct {
 	// Provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Network Tap Rules file URL.
@@ -71,6 +76,12 @@ func NewNetworkTapRule(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:managednetworkfabric/v20230615:NetworkTapRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:managednetworkfabric/v20240215preview:NetworkTapRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:managednetworkfabric/v20240615preview:NetworkTapRule"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -200,6 +211,11 @@ func (o NetworkTapRuleOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkTapRule) pulumi.StringPtrOutput { return v.Annotation }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o NetworkTapRuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkTapRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Configuration state of the resource.
 func (o NetworkTapRuleOutput) ConfigurationState() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkTapRule) pulumi.StringOutput { return v.ConfigurationState }).(pulumi.StringOutput)
@@ -255,8 +271,8 @@ func (o NetworkTapRuleOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o NetworkTapRuleOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *NetworkTapRule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o NetworkTapRuleOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *NetworkTapRule) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

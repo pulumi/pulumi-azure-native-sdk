@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2022-08-01-preview.
 //
-// Other available API versions: 2024-12-01-preview.
+// Other available API versions: 2024-12-01-preview, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupVariableAtManagementGroup(ctx *pulumi.Context, args *LookupVariableAtManagementGroupArgs, opts ...pulumi.InvokeOption) (*LookupVariableAtManagementGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVariableAtManagementGroupResult
@@ -35,6 +36,8 @@ type LookupVariableAtManagementGroupArgs struct {
 
 // The variable.
 type LookupVariableAtManagementGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Variable column definitions.
 	Columns []PolicyVariableColumnResponse `pulumi:"columns"`
 	// The ID of the variable.
@@ -42,7 +45,7 @@ type LookupVariableAtManagementGroupResult struct {
 	// The name of the variable.
 	Name string `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource (Microsoft.Authorization/variables).
 	Type string `pulumi:"type"`
 }
@@ -82,6 +85,11 @@ func (o LookupVariableAtManagementGroupResultOutput) ToLookupVariableAtManagemen
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupVariableAtManagementGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVariableAtManagementGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Variable column definitions.
 func (o LookupVariableAtManagementGroupResultOutput) Columns() PolicyVariableColumnResponseArrayOutput {
 	return o.ApplyT(func(v LookupVariableAtManagementGroupResult) []PolicyVariableColumnResponse { return v.Columns }).(PolicyVariableColumnResponseArrayOutput)
@@ -98,8 +106,8 @@ func (o LookupVariableAtManagementGroupResultOutput) Name() pulumi.StringOutput 
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupVariableAtManagementGroupResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupVariableAtManagementGroupResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupVariableAtManagementGroupResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupVariableAtManagementGroupResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The type of the resource (Microsoft.Authorization/variables).

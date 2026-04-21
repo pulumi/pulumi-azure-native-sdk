@@ -7,15 +7,17 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets flow resource.
 //
-// Uses Azure REST API version 2023-10-11-preview.
+// Uses Azure REST API version 2024-09-27.
 //
-// Other available API versions: 2024-01-25, 2024-05-07, 2024-09-11, 2024-09-27, 2025-03-01-preview.
+// Other available API versions: 2023-10-11-preview, 2024-01-25, 2024-05-07, 2024-09-11, 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview, 2025-10-10-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupFlow(ctx *pulumi.Context, args *LookupFlowArgs, opts ...pulumi.InvokeOption) (*LookupFlowResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFlowResult
@@ -37,20 +39,22 @@ type LookupFlowArgs struct {
 
 // The flow resource definition.
 type LookupFlowResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The managed identity of the flow resource, if configured.
-	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *commontypesv3.ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Plan for the resource.
-	Plan *PlanResponse `pulumi:"plan"`
+	Plan *commontypesv5.PlanResponse `pulumi:"plan"`
 	// Properties of flow
 	Properties FlowPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -94,14 +98,19 @@ func (o LookupFlowResultOutput) ToLookupFlowResultOutputWithContext(ctx context.
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupFlowResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFlowResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupFlowResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFlowResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The managed identity of the flow resource, if configured.
-func (o LookupFlowResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupFlowResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o LookupFlowResultOutput) Identity() commontypesv3.ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupFlowResult) *commontypesv3.ManagedServiceIdentityResponse { return v.Identity }).(commontypesv3.ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -115,8 +124,8 @@ func (o LookupFlowResultOutput) Name() pulumi.StringOutput {
 }
 
 // Plan for the resource.
-func (o LookupFlowResultOutput) Plan() PlanResponsePtrOutput {
-	return o.ApplyT(func(v LookupFlowResult) *PlanResponse { return v.Plan }).(PlanResponsePtrOutput)
+func (o LookupFlowResultOutput) Plan() commontypesv5.PlanResponsePtrOutput {
+	return o.ApplyT(func(v LookupFlowResult) *commontypesv5.PlanResponse { return v.Plan }).(commontypesv5.PlanResponsePtrOutput)
 }
 
 // Properties of flow
@@ -125,8 +134,8 @@ func (o LookupFlowResultOutput) Properties() FlowPropertiesResponseOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupFlowResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupFlowResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupFlowResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupFlowResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

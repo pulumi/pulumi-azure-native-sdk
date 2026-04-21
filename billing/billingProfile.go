@@ -8,22 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A billing profile.
 //
-// Uses Azure REST API version 2024-04-01.
+// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2024-04-01.
 type BillingProfile struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A billing profile.
 	Properties BillingProfilePropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? /
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -138,6 +141,11 @@ func (o BillingProfileOutput) ToBillingProfileOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o BillingProfileOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BillingProfile) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o BillingProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BillingProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -149,8 +157,8 @@ func (o BillingProfileOutput) Properties() BillingProfilePropertiesResponseOutpu
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o BillingProfileOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *BillingProfile) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o BillingProfileOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *BillingProfile) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \ ? /

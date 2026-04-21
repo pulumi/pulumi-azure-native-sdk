@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a given StorageSyncService.
 //
-// Uses Azure REST API version 2022-06-01.
+// Uses Azure REST API version 2022-09-01.
 //
-// Other available API versions: 2022-09-01.
+// Other available API versions: 2022-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagesync [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupStorageSyncService(ctx *pulumi.Context, args *LookupStorageSyncServiceArgs, opts ...pulumi.InvokeOption) (*LookupStorageSyncServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageSyncServiceResult
@@ -35,8 +36,12 @@ type LookupStorageSyncServiceArgs struct {
 
 // Storage Sync Service object.
 type LookupStorageSyncServiceResult struct {
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
+	// The managed service identities assigned to this resource.
+	Identity *commontypesv5.ManagedServiceIdentityResponse `pulumi:"identity"`
 	// Incoming Traffic Policy
 	IncomingTrafficPolicy *string `pulumi:"incomingTrafficPolicy"`
 	// Resource Last Operation Name
@@ -48,7 +53,7 @@ type LookupStorageSyncServiceResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// List of private endpoint connection associated with the specified storage sync service
-	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections []commontypesv5.PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// StorageSyncService Provisioning State
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Storage Sync service status.
@@ -56,11 +61,13 @@ type LookupStorageSyncServiceResult struct {
 	// Storage Sync service Uid
 	StorageSyncServiceUid string `pulumi:"storageSyncServiceUid"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
+	// Use Identity authorization when customer have finished setup RBAC permissions.
+	UseIdentity bool `pulumi:"useIdentity"`
 }
 
 func LookupStorageSyncServiceOutput(ctx *pulumi.Context, args LookupStorageSyncServiceOutputArgs, opts ...pulumi.InvokeOption) LookupStorageSyncServiceResultOutput {
@@ -98,9 +105,21 @@ func (o LookupStorageSyncServiceResultOutput) ToLookupStorageSyncServiceResultOu
 	return o
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// The Azure API version of the resource.
+func (o LookupStorageSyncServiceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageSyncServiceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupStorageSyncServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageSyncServiceResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The managed service identities assigned to this resource.
+func (o LookupStorageSyncServiceResultOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupStorageSyncServiceResult) *commontypesv5.ManagedServiceIdentityResponse {
+		return v.Identity
+	}).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Incoming Traffic Policy
@@ -129,10 +148,10 @@ func (o LookupStorageSyncServiceResultOutput) Name() pulumi.StringOutput {
 }
 
 // List of private endpoint connection associated with the specified storage sync service
-func (o LookupStorageSyncServiceResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v LookupStorageSyncServiceResult) []PrivateEndpointConnectionResponse {
+func (o LookupStorageSyncServiceResultOutput) PrivateEndpointConnections() commontypesv5.PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v LookupStorageSyncServiceResult) []commontypesv5.PrivateEndpointConnectionResponse {
 		return v.PrivateEndpointConnections
-	}).(PrivateEndpointConnectionResponseArrayOutput)
+	}).(commontypesv5.PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // StorageSyncService Provisioning State
@@ -151,8 +170,8 @@ func (o LookupStorageSyncServiceResultOutput) StorageSyncServiceUid() pulumi.Str
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupStorageSyncServiceResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupStorageSyncServiceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupStorageSyncServiceResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupStorageSyncServiceResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.
@@ -163,6 +182,11 @@ func (o LookupStorageSyncServiceResultOutput) Tags() pulumi.StringMapOutput {
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupStorageSyncServiceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageSyncServiceResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Use Identity authorization when customer have finished setup RBAC permissions.
+func (o LookupStorageSyncServiceResultOutput) UseIdentity() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupStorageSyncServiceResult) bool { return v.UseIdentity }).(pulumi.BoolOutput)
 }
 
 func init() {

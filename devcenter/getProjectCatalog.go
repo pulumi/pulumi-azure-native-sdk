@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2024-02-01.
 //
-// Other available API versions: 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01.
+// Other available API versions: 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupProjectCatalog(ctx *pulumi.Context, args *LookupProjectCatalogArgs, opts ...pulumi.InvokeOption) (*LookupProjectCatalogResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectCatalogResult
@@ -39,6 +40,8 @@ type LookupProjectCatalogArgs struct {
 type LookupProjectCatalogResult struct {
 	// Properties for an Azure DevOps catalog type.
 	AdoGit *GitCatalogResponse `pulumi:"adoGit"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The connection state of the catalog.
 	ConnectionState string `pulumi:"connectionState"`
 	// Properties for a GitHub catalog type.
@@ -60,7 +63,7 @@ type LookupProjectCatalogResult struct {
 	// Indicates the type of sync that is configured for the catalog.
 	SyncType *string `pulumi:"syncType"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -107,6 +110,11 @@ func (o LookupProjectCatalogResultOutput) ToLookupProjectCatalogResultOutputWith
 // Properties for an Azure DevOps catalog type.
 func (o LookupProjectCatalogResultOutput) AdoGit() GitCatalogResponsePtrOutput {
 	return o.ApplyT(func(v LookupProjectCatalogResult) *GitCatalogResponse { return v.AdoGit }).(GitCatalogResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupProjectCatalogResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectCatalogResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The connection state of the catalog.
@@ -160,8 +168,8 @@ func (o LookupProjectCatalogResultOutput) SyncType() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupProjectCatalogResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupProjectCatalogResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupProjectCatalogResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupProjectCatalogResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

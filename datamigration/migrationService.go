@@ -8,16 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A Migration Service.
 //
-// Uses Azure REST API version 2023-07-15-preview.
+// Uses Azure REST API version 2023-07-15-preview. In version 2.x of the Azure Native provider, it used API version 2023-07-15-preview.
+//
+// Other available API versions: 2025-03-15-preview, 2025-06-30, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type MigrationService struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Current state of the Integration runtime.
 	IntegrationRuntimeState pulumi.StringOutput `pulumi:"integrationRuntimeState"`
 	// The geo-location where the resource lives
@@ -27,7 +32,7 @@ type MigrationService struct {
 	// Provisioning state to track the async operation status.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -47,6 +52,15 @@ func NewMigrationService(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:datamigration/v20230715preview:MigrationService"),
+		},
+		{
+			Type: pulumi.String("azure-native:datamigration/v20250315preview:MigrationService"),
+		},
+		{
+			Type: pulumi.String("azure-native:datamigration/v20250630:MigrationService"),
+		},
+		{
+			Type: pulumi.String("azure-native:datamigration/v20250901preview:MigrationService"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -142,6 +156,11 @@ func (o MigrationServiceOutput) ToMigrationServiceOutputWithContext(ctx context.
 	return o
 }
 
+// The Azure API version of the resource.
+func (o MigrationServiceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationService) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Current state of the Integration runtime.
 func (o MigrationServiceOutput) IntegrationRuntimeState() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationService) pulumi.StringOutput { return v.IntegrationRuntimeState }).(pulumi.StringOutput)
@@ -163,8 +182,8 @@ func (o MigrationServiceOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o MigrationServiceOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *MigrationService) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o MigrationServiceOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *MigrationService) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

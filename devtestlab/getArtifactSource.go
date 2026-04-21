@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,7 +32,7 @@ type LookupArtifactSourceArgs struct {
 	LabName string `pulumi:"labName"`
 	// The name of the artifact source.
 	Name string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -39,6 +40,8 @@ type LookupArtifactSourceArgs struct {
 type LookupArtifactSourceResult struct {
 	// The folder containing Azure Resource Manager templates.
 	ArmTemplateFolderPath *string `pulumi:"armTemplateFolderPath"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The artifact source's branch reference.
 	BranchRef *string `pulumi:"branchRef"`
 	// The artifact source's creation date.
@@ -47,11 +50,11 @@ type LookupArtifactSourceResult struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The folder containing artifacts.
 	FolderPath *string `pulumi:"folderPath"`
-	// The identifier of the resource.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// The location of the resource.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// The name of the resource.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The provisioning status of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
@@ -61,9 +64,11 @@ type LookupArtifactSourceResult struct {
 	SourceType *string `pulumi:"sourceType"`
 	// Indicates if the artifact source is enabled (values: Enabled, Disabled).
 	Status *string `pulumi:"status"`
-	// The tags of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The unique immutable identifier of a resource (Guid).
 	UniqueIdentifier string `pulumi:"uniqueIdentifier"`
@@ -87,7 +92,7 @@ type LookupArtifactSourceOutputArgs struct {
 	LabName pulumi.StringInput `pulumi:"labName"`
 	// The name of the artifact source.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -115,6 +120,11 @@ func (o LookupArtifactSourceResultOutput) ArmTemplateFolderPath() pulumi.StringP
 	return o.ApplyT(func(v LookupArtifactSourceResult) *string { return v.ArmTemplateFolderPath }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupArtifactSourceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupArtifactSourceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The artifact source's branch reference.
 func (o LookupArtifactSourceResultOutput) BranchRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupArtifactSourceResult) *string { return v.BranchRef }).(pulumi.StringPtrOutput)
@@ -135,17 +145,17 @@ func (o LookupArtifactSourceResultOutput) FolderPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupArtifactSourceResult) *string { return v.FolderPath }).(pulumi.StringPtrOutput)
 }
 
-// The identifier of the resource.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupArtifactSourceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupArtifactSourceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The location of the resource.
+// The geo-location where the resource lives
 func (o LookupArtifactSourceResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupArtifactSourceResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o LookupArtifactSourceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupArtifactSourceResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -170,12 +180,17 @@ func (o LookupArtifactSourceResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupArtifactSourceResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// The tags of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupArtifactSourceResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupArtifactSourceResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o LookupArtifactSourceResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupArtifactSourceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupArtifactSourceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupArtifactSourceResult) string { return v.Type }).(pulumi.StringOutput)
 }

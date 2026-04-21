@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +34,8 @@ type LookupPrivateLinkServicesForMIPPolicySyncArgs struct {
 
 // The description of the service.
 type LookupPrivateLinkServicesForMIPPolicySyncResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// An etag associated with the resource, used for optimistic concurrency when editing it.
 	Etag *string `pulumi:"etag"`
 	// The resource identifier.
@@ -48,7 +51,7 @@ type LookupPrivateLinkServicesForMIPPolicySyncResult struct {
 	// The common properties of a service.
 	Properties ServicesPropertiesResponse `pulumi:"properties"`
 	// Required property for system data
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// The resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The resource type.
@@ -88,6 +91,11 @@ func (o LookupPrivateLinkServicesForMIPPolicySyncResultOutput) ToLookupPrivateLi
 
 func (o LookupPrivateLinkServicesForMIPPolicySyncResultOutput) ToLookupPrivateLinkServicesForMIPPolicySyncResultOutputWithContext(ctx context.Context) LookupPrivateLinkServicesForMIPPolicySyncResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPrivateLinkServicesForMIPPolicySyncResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateLinkServicesForMIPPolicySyncResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An etag associated with the resource, used for optimistic concurrency when editing it.
@@ -130,8 +138,10 @@ func (o LookupPrivateLinkServicesForMIPPolicySyncResultOutput) Properties() Serv
 }
 
 // Required property for system data
-func (o LookupPrivateLinkServicesForMIPPolicySyncResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupPrivateLinkServicesForMIPPolicySyncResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupPrivateLinkServicesForMIPPolicySyncResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPrivateLinkServicesForMIPPolicySyncResult) commontypesv2.SystemDataResponse {
+		return v.SystemData
+	}).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The resource tags.

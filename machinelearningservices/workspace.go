@@ -8,42 +8,52 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An object that represents a machine learning workspace.
 //
-// Uses Azure REST API version 2023-04-01. In version 1.x of the Azure Native provider, it used API version 2021-01-01.
+// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 //
-// Other available API versions: 2020-08-01, 2020-09-01-preview, 2022-01-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
+// Other available API versions: 2020-05-01-preview, 2020-05-15-preview, 2020-06-01, 2020-08-01, 2020-09-01-preview, 2021-01-01, 2021-03-01-preview, 2021-04-01, 2021-07-01, 2022-01-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Workspace struct {
 	pulumi.CustomResourceState
 
 	// The flag to indicate whether to allow public access when behind VNet.
 	AllowPublicAccessWhenBehindVnet pulumi.BoolPtrOutput `pulumi:"allowPublicAccessWhenBehindVnet"`
 	// ARM id of the application insights associated with this workspace.
-	ApplicationInsights pulumi.StringPtrOutput `pulumi:"applicationInsights"`
+	ApplicationInsights  pulumi.StringPtrOutput   `pulumi:"applicationInsights"`
+	AssociatedWorkspaces pulumi.StringArrayOutput `pulumi:"associatedWorkspaces"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// ARM id of the container registry associated with this workspace.
 	ContainerRegistry pulumi.StringPtrOutput `pulumi:"containerRegistry"`
 	// The description of this workspace.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Url for the discovery service to identify regional endpoints for machine learning experimentation services
-	DiscoveryUrl pulumi.StringPtrOutput `pulumi:"discoveryUrl"`
-	// The encryption settings of Azure ML workspace.
-	Encryption EncryptionPropertyResponsePtrOutput `pulumi:"encryption"`
+	DiscoveryUrl                   pulumi.StringPtrOutput              `pulumi:"discoveryUrl"`
+	EnableDataIsolation            pulumi.BoolPtrOutput                `pulumi:"enableDataIsolation"`
+	EnableServiceSideCMKEncryption pulumi.BoolPtrOutput                `pulumi:"enableServiceSideCMKEncryption"`
+	Encryption                     EncryptionPropertyResponsePtrOutput `pulumi:"encryption"`
+	// Settings for feature store type workspace.
+	FeatureStoreSettings FeatureStoreSettingsResponsePtrOutput `pulumi:"featureStoreSettings"`
 	// The friendly name for this workspace. This name in mutable
 	FriendlyName pulumi.StringPtrOutput `pulumi:"friendlyName"`
 	// The flag to signal HBI data in the workspace and reduce diagnostic data collected by the service
-	HbiWorkspace pulumi.BoolPtrOutput `pulumi:"hbiWorkspace"`
-	// The identity of the resource.
-	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	HbiWorkspace  pulumi.BoolPtrOutput   `pulumi:"hbiWorkspace"`
+	HubResourceId pulumi.StringPtrOutput `pulumi:"hubResourceId"`
+	// The managed service identities assigned to this resource.
+	Identity commontypesv3.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The compute name for image build
 	ImageBuildCompute pulumi.StringPtrOutput `pulumi:"imageBuildCompute"`
 	// ARM id of the key vault associated with this workspace. This cannot be changed once the workspace has been created
 	KeyVault pulumi.StringPtrOutput `pulumi:"keyVault"`
-	// Specifies the location of the resource.
+	Kind     pulumi.StringPtrOutput `pulumi:"kind"`
 	Location pulumi.StringPtrOutput `pulumi:"location"`
+	// Managed Network settings for a machine learning workspace.
+	ManagedNetwork ManagedNetworkSettingsResponsePtrOutput `pulumi:"managedNetwork"`
 	// The URI associated with this workspace that machine learning flow must point at to set up tracking.
 	MlFlowTrackingUri pulumi.StringOutput `pulumi:"mlFlowTrackingUri"`
 	// The name of the resource
@@ -56,32 +66,39 @@ type Workspace struct {
 	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// Count of private connections in the workspace
 	PrivateLinkCount pulumi.IntOutput `pulumi:"privateLinkCount"`
+	// Set to trigger the provisioning of the managed VNet with the default Options when creating a Workspace with the managed VNet enabled, or else it does nothing.
+	ProvisionNetworkNow pulumi.BoolPtrOutput `pulumi:"provisionNetworkNow"`
 	// The current deployment state of workspace resource. The provisioningState is to indicate states for resource provisioning.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Whether requests from Public Network are allowed.
 	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
+	// Settings for serverless compute in a workspace
+	ServerlessComputeSettings ServerlessComputeSettingsResponsePtrOutput `pulumi:"serverlessComputeSettings"`
 	// The service managed resource settings.
 	ServiceManagedResourcesSettings ServiceManagedResourcesSettingsResponsePtrOutput `pulumi:"serviceManagedResourcesSettings"`
 	// The name of the managed resource group created by workspace RP in customer subscription if the workspace is CMK workspace
 	ServiceProvisionedResourceGroup pulumi.StringOutput `pulumi:"serviceProvisionedResourceGroup"`
 	// The list of shared private link resources in this workspace.
 	SharedPrivateLinkResources SharedPrivateLinkResourceResponseArrayOutput `pulumi:"sharedPrivateLinkResources"`
-	// The sku of the workspace.
-	Sku SkuResponsePtrOutput `pulumi:"sku"`
+	// Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
+	Sku commontypesv3.SkuResponsePtrOutput `pulumi:"sku"`
 	// ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
 	StorageAccount pulumi.StringPtrOutput `pulumi:"storageAccount"`
 	// If the storage associated with the workspace has hierarchical namespace(HNS) enabled.
 	StorageHnsEnabled pulumi.BoolOutput `pulumi:"storageHnsEnabled"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Contains resource tags defined as key/value pairs.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
+	// The auth mode used for accessing the system datastores of the workspace.
+	SystemDatastoresAuthMode pulumi.StringPtrOutput `pulumi:"systemDatastoresAuthMode"`
+	Tags                     pulumi.StringMapOutput `pulumi:"tags"`
 	// The tenant id associated with this workspace.
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Enabling v1_legacy_mode may prevent you from using features provided by the v2 API.
 	V1LegacyMode pulumi.BoolPtrOutput `pulumi:"v1LegacyMode"`
+	// WorkspaceHub's configuration object.
+	WorkspaceHubConfig WorkspaceHubConfigResponsePtrOutput `pulumi:"workspaceHubConfig"`
 	// The immutable id associated with this workspace.
 	WorkspaceId pulumi.StringOutput `pulumi:"workspaceId"`
 }
@@ -96,14 +113,8 @@ func NewWorkspace(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	if args.AllowPublicAccessWhenBehindVnet == nil {
-		args.AllowPublicAccessWhenBehindVnet = pulumi.BoolPtr(false)
-	}
-	if args.HbiWorkspace == nil {
-		args.HbiWorkspace = pulumi.BoolPtr(false)
-	}
-	if args.V1LegacyMode == nil {
-		args.V1LegacyMode = pulumi.BoolPtr(false)
+	if args.ManagedNetwork != nil {
+		args.ManagedNetwork = args.ManagedNetwork.ToManagedNetworkSettingsPtrOutput().ApplyT(func(v *ManagedNetworkSettings) *ManagedNetworkSettings { return v.Defaults() }).(ManagedNetworkSettingsPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -220,6 +231,27 @@ func NewWorkspace(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:Workspace"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250401:Workspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250401preview:Workspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250601:Workspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250701preview:Workspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250901:Workspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20251001preview:Workspace"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20251201:Workspace"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -258,46 +290,60 @@ type workspaceArgs struct {
 	// The flag to indicate whether to allow public access when behind VNet.
 	AllowPublicAccessWhenBehindVnet *bool `pulumi:"allowPublicAccessWhenBehindVnet"`
 	// ARM id of the application insights associated with this workspace.
-	ApplicationInsights *string `pulumi:"applicationInsights"`
+	ApplicationInsights  *string  `pulumi:"applicationInsights"`
+	AssociatedWorkspaces []string `pulumi:"associatedWorkspaces"`
 	// ARM id of the container registry associated with this workspace.
 	ContainerRegistry *string `pulumi:"containerRegistry"`
 	// The description of this workspace.
 	Description *string `pulumi:"description"`
 	// Url for the discovery service to identify regional endpoints for machine learning experimentation services
-	DiscoveryUrl *string `pulumi:"discoveryUrl"`
-	// The encryption settings of Azure ML workspace.
-	Encryption *EncryptionProperty `pulumi:"encryption"`
+	DiscoveryUrl                   *string             `pulumi:"discoveryUrl"`
+	EnableDataIsolation            *bool               `pulumi:"enableDataIsolation"`
+	EnableServiceSideCMKEncryption *bool               `pulumi:"enableServiceSideCMKEncryption"`
+	Encryption                     *EncryptionProperty `pulumi:"encryption"`
+	// Settings for feature store type workspace.
+	FeatureStoreSettings *FeatureStoreSettings `pulumi:"featureStoreSettings"`
 	// The friendly name for this workspace. This name in mutable
 	FriendlyName *string `pulumi:"friendlyName"`
 	// The flag to signal HBI data in the workspace and reduce diagnostic data collected by the service
-	HbiWorkspace *bool `pulumi:"hbiWorkspace"`
-	// The identity of the resource.
-	Identity *ManagedServiceIdentity `pulumi:"identity"`
+	HbiWorkspace  *bool   `pulumi:"hbiWorkspace"`
+	HubResourceId *string `pulumi:"hubResourceId"`
+	// The managed service identities assigned to this resource.
+	Identity *commontypesv3.ManagedServiceIdentity `pulumi:"identity"`
 	// The compute name for image build
 	ImageBuildCompute *string `pulumi:"imageBuildCompute"`
 	// ARM id of the key vault associated with this workspace. This cannot be changed once the workspace has been created
 	KeyVault *string `pulumi:"keyVault"`
-	// Specifies the location of the resource.
+	Kind     *string `pulumi:"kind"`
 	Location *string `pulumi:"location"`
+	// Managed Network settings for a machine learning workspace.
+	ManagedNetwork *ManagedNetworkSettings `pulumi:"managedNetwork"`
 	// The user assigned identity resource id that represents the workspace identity.
 	PrimaryUserAssignedIdentity *string `pulumi:"primaryUserAssignedIdentity"`
+	// Set to trigger the provisioning of the managed VNet with the default Options when creating a Workspace with the managed VNet enabled, or else it does nothing.
+	ProvisionNetworkNow *bool `pulumi:"provisionNetworkNow"`
 	// Whether requests from Public Network are allowed.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Settings for serverless compute in a workspace
+	ServerlessComputeSettings *ServerlessComputeSettings `pulumi:"serverlessComputeSettings"`
 	// The service managed resource settings.
 	ServiceManagedResourcesSettings *ServiceManagedResourcesSettings `pulumi:"serviceManagedResourcesSettings"`
 	// The list of shared private link resources in this workspace.
 	SharedPrivateLinkResources []SharedPrivateLinkResource `pulumi:"sharedPrivateLinkResources"`
-	// The sku of the workspace.
-	Sku *Sku `pulumi:"sku"`
+	// Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
+	Sku *commontypesv3.Sku `pulumi:"sku"`
 	// ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
 	StorageAccount *string `pulumi:"storageAccount"`
-	// Contains resource tags defined as key/value pairs.
-	Tags map[string]string `pulumi:"tags"`
+	// The auth mode used for accessing the system datastores of the workspace.
+	SystemDatastoresAuthMode *string           `pulumi:"systemDatastoresAuthMode"`
+	Tags                     map[string]string `pulumi:"tags"`
 	// Enabling v1_legacy_mode may prevent you from using features provided by the v2 API.
 	V1LegacyMode *bool `pulumi:"v1LegacyMode"`
-	// Name of Azure Machine Learning workspace.
+	// WorkspaceHub's configuration object.
+	WorkspaceHubConfig *WorkspaceHubConfig `pulumi:"workspaceHubConfig"`
+	// Azure Machine Learning Workspace Name
 	WorkspaceName *string `pulumi:"workspaceName"`
 }
 
@@ -306,46 +352,60 @@ type WorkspaceArgs struct {
 	// The flag to indicate whether to allow public access when behind VNet.
 	AllowPublicAccessWhenBehindVnet pulumi.BoolPtrInput
 	// ARM id of the application insights associated with this workspace.
-	ApplicationInsights pulumi.StringPtrInput
+	ApplicationInsights  pulumi.StringPtrInput
+	AssociatedWorkspaces pulumi.StringArrayInput
 	// ARM id of the container registry associated with this workspace.
 	ContainerRegistry pulumi.StringPtrInput
 	// The description of this workspace.
 	Description pulumi.StringPtrInput
 	// Url for the discovery service to identify regional endpoints for machine learning experimentation services
-	DiscoveryUrl pulumi.StringPtrInput
-	// The encryption settings of Azure ML workspace.
-	Encryption EncryptionPropertyPtrInput
+	DiscoveryUrl                   pulumi.StringPtrInput
+	EnableDataIsolation            pulumi.BoolPtrInput
+	EnableServiceSideCMKEncryption pulumi.BoolPtrInput
+	Encryption                     EncryptionPropertyPtrInput
+	// Settings for feature store type workspace.
+	FeatureStoreSettings FeatureStoreSettingsPtrInput
 	// The friendly name for this workspace. This name in mutable
 	FriendlyName pulumi.StringPtrInput
 	// The flag to signal HBI data in the workspace and reduce diagnostic data collected by the service
-	HbiWorkspace pulumi.BoolPtrInput
-	// The identity of the resource.
-	Identity ManagedServiceIdentityPtrInput
+	HbiWorkspace  pulumi.BoolPtrInput
+	HubResourceId pulumi.StringPtrInput
+	// The managed service identities assigned to this resource.
+	Identity commontypesv3.ManagedServiceIdentityPtrInput
 	// The compute name for image build
 	ImageBuildCompute pulumi.StringPtrInput
 	// ARM id of the key vault associated with this workspace. This cannot be changed once the workspace has been created
 	KeyVault pulumi.StringPtrInput
-	// Specifies the location of the resource.
+	Kind     pulumi.StringPtrInput
 	Location pulumi.StringPtrInput
+	// Managed Network settings for a machine learning workspace.
+	ManagedNetwork ManagedNetworkSettingsPtrInput
 	// The user assigned identity resource id that represents the workspace identity.
 	PrimaryUserAssignedIdentity pulumi.StringPtrInput
+	// Set to trigger the provisioning of the managed VNet with the default Options when creating a Workspace with the managed VNet enabled, or else it does nothing.
+	ProvisionNetworkNow pulumi.BoolPtrInput
 	// Whether requests from Public Network are allowed.
 	PublicNetworkAccess pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// Settings for serverless compute in a workspace
+	ServerlessComputeSettings ServerlessComputeSettingsPtrInput
 	// The service managed resource settings.
 	ServiceManagedResourcesSettings ServiceManagedResourcesSettingsPtrInput
 	// The list of shared private link resources in this workspace.
 	SharedPrivateLinkResources SharedPrivateLinkResourceArrayInput
-	// The sku of the workspace.
-	Sku SkuPtrInput
+	// Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
+	Sku commontypesv3.SkuPtrInput
 	// ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
 	StorageAccount pulumi.StringPtrInput
-	// Contains resource tags defined as key/value pairs.
-	Tags pulumi.StringMapInput
+	// The auth mode used for accessing the system datastores of the workspace.
+	SystemDatastoresAuthMode pulumi.StringPtrInput
+	Tags                     pulumi.StringMapInput
 	// Enabling v1_legacy_mode may prevent you from using features provided by the v2 API.
 	V1LegacyMode pulumi.BoolPtrInput
-	// Name of Azure Machine Learning workspace.
+	// WorkspaceHub's configuration object.
+	WorkspaceHubConfig WorkspaceHubConfigPtrInput
+	// Azure Machine Learning Workspace Name
 	WorkspaceName pulumi.StringPtrInput
 }
 
@@ -396,6 +456,15 @@ func (o WorkspaceOutput) ApplicationInsights() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.ApplicationInsights }).(pulumi.StringPtrOutput)
 }
 
+func (o WorkspaceOutput) AssociatedWorkspaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.StringArrayOutput { return v.AssociatedWorkspaces }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o WorkspaceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // ARM id of the container registry associated with this workspace.
 func (o WorkspaceOutput) ContainerRegistry() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.ContainerRegistry }).(pulumi.StringPtrOutput)
@@ -411,9 +480,21 @@ func (o WorkspaceOutput) DiscoveryUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.DiscoveryUrl }).(pulumi.StringPtrOutput)
 }
 
-// The encryption settings of Azure ML workspace.
+func (o WorkspaceOutput) EnableDataIsolation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.BoolPtrOutput { return v.EnableDataIsolation }).(pulumi.BoolPtrOutput)
+}
+
+func (o WorkspaceOutput) EnableServiceSideCMKEncryption() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.BoolPtrOutput { return v.EnableServiceSideCMKEncryption }).(pulumi.BoolPtrOutput)
+}
+
 func (o WorkspaceOutput) Encryption() EncryptionPropertyResponsePtrOutput {
 	return o.ApplyT(func(v *Workspace) EncryptionPropertyResponsePtrOutput { return v.Encryption }).(EncryptionPropertyResponsePtrOutput)
+}
+
+// Settings for feature store type workspace.
+func (o WorkspaceOutput) FeatureStoreSettings() FeatureStoreSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *Workspace) FeatureStoreSettingsResponsePtrOutput { return v.FeatureStoreSettings }).(FeatureStoreSettingsResponsePtrOutput)
 }
 
 // The friendly name for this workspace. This name in mutable
@@ -426,9 +507,13 @@ func (o WorkspaceOutput) HbiWorkspace() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.BoolPtrOutput { return v.HbiWorkspace }).(pulumi.BoolPtrOutput)
 }
 
-// The identity of the resource.
-func (o WorkspaceOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *Workspace) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o WorkspaceOutput) HubResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.HubResourceId }).(pulumi.StringPtrOutput)
+}
+
+// The managed service identities assigned to this resource.
+func (o WorkspaceOutput) Identity() commontypesv3.ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Workspace) commontypesv3.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv3.ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The compute name for image build
@@ -441,9 +526,17 @@ func (o WorkspaceOutput) KeyVault() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.KeyVault }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the location of the resource.
+func (o WorkspaceOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
 func (o WorkspaceOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Managed Network settings for a machine learning workspace.
+func (o WorkspaceOutput) ManagedNetwork() ManagedNetworkSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *Workspace) ManagedNetworkSettingsResponsePtrOutput { return v.ManagedNetwork }).(ManagedNetworkSettingsResponsePtrOutput)
 }
 
 // The URI associated with this workspace that machine learning flow must point at to set up tracking.
@@ -476,6 +569,11 @@ func (o WorkspaceOutput) PrivateLinkCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.IntOutput { return v.PrivateLinkCount }).(pulumi.IntOutput)
 }
 
+// Set to trigger the provisioning of the managed VNet with the default Options when creating a Workspace with the managed VNet enabled, or else it does nothing.
+func (o WorkspaceOutput) ProvisionNetworkNow() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.BoolPtrOutput { return v.ProvisionNetworkNow }).(pulumi.BoolPtrOutput)
+}
+
 // The current deployment state of workspace resource. The provisioningState is to indicate states for resource provisioning.
 func (o WorkspaceOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
@@ -484,6 +582,11 @@ func (o WorkspaceOutput) ProvisioningState() pulumi.StringOutput {
 // Whether requests from Public Network are allowed.
 func (o WorkspaceOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
+}
+
+// Settings for serverless compute in a workspace
+func (o WorkspaceOutput) ServerlessComputeSettings() ServerlessComputeSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *Workspace) ServerlessComputeSettingsResponsePtrOutput { return v.ServerlessComputeSettings }).(ServerlessComputeSettingsResponsePtrOutput)
 }
 
 // The service managed resource settings.
@@ -503,9 +606,9 @@ func (o WorkspaceOutput) SharedPrivateLinkResources() SharedPrivateLinkResourceR
 	return o.ApplyT(func(v *Workspace) SharedPrivateLinkResourceResponseArrayOutput { return v.SharedPrivateLinkResources }).(SharedPrivateLinkResourceResponseArrayOutput)
 }
 
-// The sku of the workspace.
-func (o WorkspaceOutput) Sku() SkuResponsePtrOutput {
-	return o.ApplyT(func(v *Workspace) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
+// Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
+func (o WorkspaceOutput) Sku() commontypesv3.SkuResponsePtrOutput {
+	return o.ApplyT(func(v *Workspace) commontypesv3.SkuResponsePtrOutput { return v.Sku }).(commontypesv3.SkuResponsePtrOutput)
 }
 
 // ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
@@ -519,11 +622,15 @@ func (o WorkspaceOutput) StorageHnsEnabled() pulumi.BoolOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o WorkspaceOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Workspace) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o WorkspaceOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Workspace) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
-// Contains resource tags defined as key/value pairs.
+// The auth mode used for accessing the system datastores of the workspace.
+func (o WorkspaceOutput) SystemDatastoresAuthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.SystemDatastoresAuthMode }).(pulumi.StringPtrOutput)
+}
+
 func (o WorkspaceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -541,6 +648,11 @@ func (o WorkspaceOutput) Type() pulumi.StringOutput {
 // Enabling v1_legacy_mode may prevent you from using features provided by the v2 API.
 func (o WorkspaceOutput) V1LegacyMode() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.BoolPtrOutput { return v.V1LegacyMode }).(pulumi.BoolPtrOutput)
+}
+
+// WorkspaceHub's configuration object.
+func (o WorkspaceOutput) WorkspaceHubConfig() WorkspaceHubConfigResponsePtrOutput {
+	return o.ApplyT(func(v *Workspace) WorkspaceHubConfigResponsePtrOutput { return v.WorkspaceHubConfig }).(WorkspaceHubConfigResponsePtrOutput)
 }
 
 // The immutable id associated with this workspace.

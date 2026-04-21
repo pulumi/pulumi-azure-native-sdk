@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A customer's reference to a global communications site site.
 //
-// Uses Azure REST API version 2024-03-01-preview.
+// Uses Azure REST API version 2024-03-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-03-01-preview.
 //
-// Other available API versions: 2024-03-01.
+// Other available API versions: 2024-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native orbital [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type EdgeSite struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A reference to global communications site.
 	GlobalCommunicationsSite EdgeSitesPropertiesResponseGlobalCommunicationsSiteOutput `pulumi:"globalCommunicationsSite"`
 	// The geo-location where the resource lives
@@ -27,7 +30,7 @@ type EdgeSite struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -152,6 +155,11 @@ func (o EdgeSiteOutput) ToEdgeSiteOutputWithContext(ctx context.Context) EdgeSit
 	return o
 }
 
+// The Azure API version of the resource.
+func (o EdgeSiteOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EdgeSite) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // A reference to global communications site.
 func (o EdgeSiteOutput) GlobalCommunicationsSite() EdgeSitesPropertiesResponseGlobalCommunicationsSiteOutput {
 	return o.ApplyT(func(v *EdgeSite) EdgeSitesPropertiesResponseGlobalCommunicationsSiteOutput {
@@ -170,8 +178,8 @@ func (o EdgeSiteOutput) Name() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o EdgeSiteOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *EdgeSite) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o EdgeSiteOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *EdgeSite) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

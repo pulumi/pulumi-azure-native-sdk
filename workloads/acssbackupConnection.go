@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Define the backup connection resource of virtual instance for SAP..
 //
-// Uses Azure REST API version 2023-10-01-preview.
+// Uses Azure REST API version 2023-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
 type ACSSBackupConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Information about the recovery services vault and backup policy used for backup.
 	BackupData pulumi.AnyOutput `pulumi:"backupData"`
 	// Defines the errors related to backup connection resource of virtual instance for SAP.
@@ -29,7 +32,7 @@ type ACSSBackupConnection struct {
 	// Defines the provisioning states.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -155,6 +158,11 @@ func (o ACSSBackupConnectionOutput) ToACSSBackupConnectionOutputWithContext(ctx 
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ACSSBackupConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ACSSBackupConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Information about the recovery services vault and backup policy used for backup.
 func (o ACSSBackupConnectionOutput) BackupData() pulumi.AnyOutput {
 	return o.ApplyT(func(v *ACSSBackupConnection) pulumi.AnyOutput { return v.BackupData }).(pulumi.AnyOutput)
@@ -181,8 +189,8 @@ func (o ACSSBackupConnectionOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ACSSBackupConnectionOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *ACSSBackupConnection) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o ACSSBackupConnectionOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *ACSSBackupConnection) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

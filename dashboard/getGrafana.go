@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The grafana resource type.
 //
-// Uses Azure REST API version 2022-08-01.
+// Uses Azure REST API version 2024-10-01.
 //
-// Other available API versions: 2021-09-01-preview, 2022-10-01-preview, 2023-09-01, 2023-10-01-preview, 2024-10-01.
+// Other available API versions: 2022-08-01, 2022-10-01-preview, 2023-09-01, 2023-10-01-preview, 2024-11-01-preview, 2025-08-01, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dashboard [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupGrafana(ctx *pulumi.Context, args *LookupGrafanaArgs, opts ...pulumi.InvokeOption) (*LookupGrafanaResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGrafanaResult
@@ -23,7 +24,7 @@ func LookupGrafana(ctx *pulumi.Context, args *LookupGrafanaArgs, opts ...pulumi.
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupGrafanaArgs struct {
@@ -35,10 +36,12 @@ type LookupGrafanaArgs struct {
 
 // The grafana resource type.
 type LookupGrafanaResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// ARM id of the grafana resource
 	Id string `pulumi:"id"`
 	// The managed identity of the grafana resource.
-	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *commontypesv3.ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the grafana resource lives
 	Location *string `pulumi:"location"`
 	// Name of the grafana resource.
@@ -48,13 +51,23 @@ type LookupGrafanaResult struct {
 	// The Sku of the grafana resource.
 	Sku *ResourceSkuResponse `pulumi:"sku"`
 	// The system meta data relating to this grafana resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// The tags for grafana resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the grafana resource.
 	Type string `pulumi:"type"`
 }
 
+// Defaults sets the appropriate defaults for LookupGrafanaResult
+func (val *LookupGrafanaResult) Defaults() *LookupGrafanaResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Properties = *tmp.Properties.Defaults()
+
+	return &tmp
+}
 func LookupGrafanaOutput(ctx *pulumi.Context, args LookupGrafanaOutputArgs, opts ...pulumi.InvokeOption) LookupGrafanaResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupGrafanaResultOutput, error) {
@@ -90,14 +103,19 @@ func (o LookupGrafanaResultOutput) ToLookupGrafanaResultOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupGrafanaResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGrafanaResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // ARM id of the grafana resource
 func (o LookupGrafanaResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGrafanaResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The managed identity of the grafana resource.
-func (o LookupGrafanaResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupGrafanaResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o LookupGrafanaResultOutput) Identity() commontypesv3.ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupGrafanaResult) *commontypesv3.ManagedServiceIdentityResponse { return v.Identity }).(commontypesv3.ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the grafana resource lives
@@ -121,8 +139,8 @@ func (o LookupGrafanaResultOutput) Sku() ResourceSkuResponsePtrOutput {
 }
 
 // The system meta data relating to this grafana resource.
-func (o LookupGrafanaResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupGrafanaResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupGrafanaResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupGrafanaResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The tags for grafana resource.

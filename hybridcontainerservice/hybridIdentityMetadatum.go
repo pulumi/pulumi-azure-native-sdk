@@ -8,18 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Defines the hybridIdentityMetadata.
 //
-// Uses Azure REST API version 2022-09-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-05-01-preview.
-//
-// Other available API versions: 2022-05-01-preview, 2023-11-15-preview, 2024-01-01.
+// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
 type HybridIdentityMetadatum struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The identity of the provisioned cluster.
 	Identity ProvisionedClusterIdentityResponsePtrOutput `pulumi:"identity"`
 	// The name of the resource
@@ -31,7 +32,7 @@ type HybridIdentityMetadatum struct {
 	// Unique id of the parent provisioned cluster resource.
 	ResourceUid pulumi.StringPtrOutput `pulumi:"resourceUid"`
 	// The system data.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -55,6 +56,12 @@ func NewHybridIdentityMetadatum(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:HybridIdentityMetadatum"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20231115preview:HybridIdentityMetadatum"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20240101:HybridIdentityMetadatum"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -158,6 +165,11 @@ func (o HybridIdentityMetadatumOutput) ToHybridIdentityMetadatumOutputWithContex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o HybridIdentityMetadatumOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *HybridIdentityMetadatum) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The identity of the provisioned cluster.
 func (o HybridIdentityMetadatumOutput) Identity() ProvisionedClusterIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *HybridIdentityMetadatum) ProvisionedClusterIdentityResponsePtrOutput { return v.Identity }).(ProvisionedClusterIdentityResponsePtrOutput)
@@ -184,8 +196,8 @@ func (o HybridIdentityMetadatumOutput) ResourceUid() pulumi.StringPtrOutput {
 }
 
 // The system data.
-func (o HybridIdentityMetadatumOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *HybridIdentityMetadatum) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o HybridIdentityMetadatumOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *HybridIdentityMetadatum) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

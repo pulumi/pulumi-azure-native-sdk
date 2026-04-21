@@ -8,18 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Defines the Neighbor Group.
 //
-// Uses Azure REST API version 2023-06-15.
+// Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-06-15.
+//
+// Other available API versions: 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type NeighborGroup struct {
 	pulumi.CustomResourceState
 
 	// Switch configuration description.
 	Annotation pulumi.StringPtrOutput `pulumi:"annotation"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// An array of destination IPv4 Addresses or IPv6 Addresses.
 	Destination NeighborGroupDestinationResponseOutput `pulumi:"destination"`
 	// The geo-location where the resource lives
@@ -33,7 +38,7 @@ type NeighborGroup struct {
 	// The provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -56,6 +61,12 @@ func NewNeighborGroup(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:managednetworkfabric/v20230615:NeighborGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:managednetworkfabric/v20240215preview:NeighborGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:managednetworkfabric/v20240615preview:NeighborGroup"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -164,6 +175,11 @@ func (o NeighborGroupOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NeighborGroup) pulumi.StringPtrOutput { return v.Annotation }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o NeighborGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NeighborGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // An array of destination IPv4 Addresses or IPv6 Addresses.
 func (o NeighborGroupOutput) Destination() NeighborGroupDestinationResponseOutput {
 	return o.ApplyT(func(v *NeighborGroup) NeighborGroupDestinationResponseOutput { return v.Destination }).(NeighborGroupDestinationResponseOutput)
@@ -195,8 +211,8 @@ func (o NeighborGroupOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o NeighborGroupOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *NeighborGroup) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o NeighborGroupOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *NeighborGroup) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

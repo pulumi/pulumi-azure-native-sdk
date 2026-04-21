@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // LoadTest mapping resource details
 //
-// Uses Azure REST API version 2023-12-01-preview.
+// Uses Azure REST API version 2023-12-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-12-01-preview.
 //
-// Other available API versions: 2024-12-01-preview.
+// Other available API versions: 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native loadtestservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type LoadTestMapping struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Mapped Azure Load Test resource Id.
 	AzureLoadTestingResourceId pulumi.StringPtrOutput `pulumi:"azureLoadTestingResourceId"`
 	// The name of the resource
@@ -27,7 +30,7 @@ type LoadTestMapping struct {
 	// Mapped source resource Id.
 	SourceResourceId pulumi.StringPtrOutput `pulumi:"sourceResourceId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Mapped Azure Load Test resource test-id.
 	TestId pulumi.StringPtrOutput `pulumi:"testId"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -149,6 +152,11 @@ func (o LoadTestMappingOutput) ToLoadTestMappingOutputWithContext(ctx context.Co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LoadTestMappingOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadTestMapping) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Mapped Azure Load Test resource Id.
 func (o LoadTestMappingOutput) AzureLoadTestingResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadTestMapping) pulumi.StringPtrOutput { return v.AzureLoadTestingResourceId }).(pulumi.StringPtrOutput)
@@ -165,8 +173,8 @@ func (o LoadTestMappingOutput) SourceResourceId() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LoadTestMappingOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *LoadTestMapping) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o LoadTestMappingOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *LoadTestMapping) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Mapped Azure Load Test resource test-id.

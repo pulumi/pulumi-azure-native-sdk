@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Channel info.
 //
-// Uses Azure REST API version 2022-06-15. In version 1.x of the Azure Native provider, it used API version 2021-10-15-preview.
+// Uses Azure REST API version 2025-02-15. In version 2.x of the Azure Native provider, it used API version 2022-06-15.
 //
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Channel struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The type of the event channel which represents the direction flow of events.
 	ChannelType pulumi.StringPtrOutput `pulumi:"channelType"`
 	// Expiration time of the channel. If this timer expires while the corresponding partner topic is never activated,
@@ -35,8 +38,8 @@ type Channel struct {
 	ProvisioningState pulumi.StringPtrOutput `pulumi:"provisioningState"`
 	// The readiness state of the corresponding partner topic.
 	ReadinessState pulumi.StringPtrOutput `pulumi:"readinessState"`
-	// The system metadata relating to Channel resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The system metadata relating to the Event Grid resource.
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -75,6 +78,12 @@ func NewChannel(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventgrid/v20250215:Channel"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20250401preview:Channel"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventgrid/v20250715preview:Channel"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -192,6 +201,11 @@ func (o ChannelOutput) ToChannelOutputWithContext(ctx context.Context) ChannelOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ChannelOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The type of the event channel which represents the direction flow of events.
 func (o ChannelOutput) ChannelType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringPtrOutput { return v.ChannelType }).(pulumi.StringPtrOutput)
@@ -228,9 +242,9 @@ func (o ChannelOutput) ReadinessState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Channel) pulumi.StringPtrOutput { return v.ReadinessState }).(pulumi.StringPtrOutput)
 }
 
-// The system metadata relating to Channel resource.
-func (o ChannelOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Channel) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+// The system metadata relating to the Event Grid resource.
+func (o ChannelOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Channel) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Type of the resource.

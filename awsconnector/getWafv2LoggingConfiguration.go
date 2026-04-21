@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +34,8 @@ type LookupWafv2LoggingConfigurationArgs struct {
 
 // A Microsoft.AwsConnector resource
 type LookupWafv2LoggingConfigurationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -42,7 +45,7 @@ type LookupWafv2LoggingConfigurationResult struct {
 	// The resource-specific properties for this resource.
 	Properties Wafv2LoggingConfigurationPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -84,6 +87,11 @@ func (o LookupWafv2LoggingConfigurationResultOutput) ToLookupWafv2LoggingConfigu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupWafv2LoggingConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWafv2LoggingConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupWafv2LoggingConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWafv2LoggingConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
@@ -107,8 +115,8 @@ func (o LookupWafv2LoggingConfigurationResultOutput) Properties() Wafv2LoggingCo
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupWafv2LoggingConfigurationResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupWafv2LoggingConfigurationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupWafv2LoggingConfigurationResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupWafv2LoggingConfigurationResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

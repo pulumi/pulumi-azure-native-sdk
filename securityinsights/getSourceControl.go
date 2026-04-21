@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2023-05-01-preview.
 //
-// Other available API versions: 2021-03-01-preview.
+// Other available API versions: 2023-03-01-preview, 2023-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSourceControl(ctx *pulumi.Context, args *LookupSourceControlArgs, opts ...pulumi.InvokeOption) (*LookupSourceControlResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSourceControlResult
@@ -37,6 +38,8 @@ type LookupSourceControlArgs struct {
 
 // Represents a SourceControl in Azure Security Insights.
 type LookupSourceControlResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Array of source control content types.
 	ContentTypes []string `pulumi:"contentTypes"`
 	// A description of the source control
@@ -58,7 +61,7 @@ type LookupSourceControlResult struct {
 	// Information regarding the resources created in user's repository.
 	RepositoryResourceInfo *RepositoryResourceInfoResponse `pulumi:"repositoryResourceInfo"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The version number associated with the source control
@@ -100,6 +103,11 @@ func (o LookupSourceControlResultOutput) ToLookupSourceControlResultOutput() Loo
 
 func (o LookupSourceControlResultOutput) ToLookupSourceControlResultOutputWithContext(ctx context.Context) LookupSourceControlResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSourceControlResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSourceControlResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Array of source control content types.
@@ -153,8 +161,8 @@ func (o LookupSourceControlResultOutput) RepositoryResourceInfo() RepositoryReso
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupSourceControlResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSourceControlResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupSourceControlResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSourceControlResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

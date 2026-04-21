@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the properties of the specified replica.
 //
-// Uses Azure REST API version 2023-03-01.
+// Uses Azure REST API version 2024-05-01.
 //
-// Other available API versions: 2023-08-01-preview, 2023-09-01-preview, 2024-05-01.
+// Other available API versions: 2023-03-01, 2023-08-01-preview, 2023-09-01-preview, 2024-06-01, 2024-06-15-preview, 2025-02-01-preview, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native appconfiguration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupReplica(ctx *pulumi.Context, args *LookupReplicaArgs, opts ...pulumi.InvokeOption) (*LookupReplicaResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupReplicaResult
@@ -37,6 +38,8 @@ type LookupReplicaArgs struct {
 
 // The replica resource.
 type LookupReplicaResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The URI of the replica where the replica API will be available.
 	Endpoint string `pulumi:"endpoint"`
 	// The resource ID.
@@ -48,7 +51,7 @@ type LookupReplicaResult struct {
 	// The provisioning state of the replica.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Resource system metadata.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource.
 	Type string `pulumi:"type"`
 }
@@ -90,6 +93,11 @@ func (o LookupReplicaResultOutput) ToLookupReplicaResultOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupReplicaResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReplicaResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The URI of the replica where the replica API will be available.
 func (o LookupReplicaResultOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReplicaResult) string { return v.Endpoint }).(pulumi.StringOutput)
@@ -116,8 +124,8 @@ func (o LookupReplicaResultOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Resource system metadata.
-func (o LookupReplicaResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupReplicaResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupReplicaResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupReplicaResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The type of the resource.

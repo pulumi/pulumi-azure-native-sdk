@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A CommunityProviderHub resource
 //
-// Uses Azure REST API version 2023-11-01.
+// Uses Azure REST API version 2023-11-01. In version 2.x of the Azure Native provider, it used API version 2023-11-01.
 type CommunityTraining struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// To indicate whether the Community Training instance has Disaster Recovery enabled
 	DisasterRecoveryEnabled pulumi.BoolOutput `pulumi:"disasterRecoveryEnabled"`
 	// The identity configuration of the Community Training resource
@@ -37,9 +40,9 @@ type CommunityTraining struct {
 	// The status of the last operation.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The SKU (Stock Keeping Unit) assigned to this resource.
-	Sku SkuResponsePtrOutput `pulumi:"sku"`
+	Sku commontypesv3.SkuResponsePtrOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -138,7 +141,7 @@ type communityTrainingArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The SKU (Stock Keeping Unit) assigned to this resource.
-	Sku *Sku `pulumi:"sku"`
+	Sku *commontypesv3.Sku `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// To indicate whether the Community Training instance has Zone Redundancy enabled
@@ -166,7 +169,7 @@ type CommunityTrainingArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The SKU (Stock Keeping Unit) assigned to this resource.
-	Sku SkuPtrInput
+	Sku commontypesv3.SkuPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 	// To indicate whether the Community Training instance has Zone Redundancy enabled
@@ -208,6 +211,11 @@ func (o CommunityTrainingOutput) ToCommunityTrainingOutput() CommunityTrainingOu
 
 func (o CommunityTrainingOutput) ToCommunityTrainingOutputWithContext(ctx context.Context) CommunityTrainingOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o CommunityTrainingOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CommunityTraining) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // To indicate whether the Community Training instance has Disaster Recovery enabled
@@ -258,13 +266,13 @@ func (o CommunityTrainingOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // The SKU (Stock Keeping Unit) assigned to this resource.
-func (o CommunityTrainingOutput) Sku() SkuResponsePtrOutput {
-	return o.ApplyT(func(v *CommunityTraining) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
+func (o CommunityTrainingOutput) Sku() commontypesv3.SkuResponsePtrOutput {
+	return o.ApplyT(func(v *CommunityTraining) commontypesv3.SkuResponsePtrOutput { return v.Sku }).(commontypesv3.SkuResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o CommunityTrainingOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *CommunityTraining) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o CommunityTrainingOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *CommunityTraining) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -8,15 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // IoT Security solution configuration and resource information.
 //
-// Uses Azure REST API version 2019-08-01. In version 1.x of the Azure Native provider, it used API version 2019-08-01.
+// Uses Azure REST API version 2019-08-01. In version 2.x of the Azure Native provider, it used API version 2019-08-01.
 //
-// Other available API versions: 2017-08-01-preview.
+// Other available API versions: 2017-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type IotSecuritySolution struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +25,8 @@ type IotSecuritySolution struct {
 	AdditionalWorkspaces AdditionalWorkspacesPropertiesResponseArrayOutput `pulumi:"additionalWorkspaces"`
 	// List of resources that were automatically discovered as relevant to the security solution.
 	AutoDiscoveredResources pulumi.StringArrayOutput `pulumi:"autoDiscoveredResources"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Disabled data sources. Disabling these data sources compromises the system.
 	DisabledDataSources pulumi.StringArrayOutput `pulumi:"disabledDataSources"`
 	// Resource display name.
@@ -41,7 +44,7 @@ type IotSecuritySolution struct {
 	// Status of the IoT Security solution.
 	Status pulumi.StringPtrOutput `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type
@@ -229,6 +232,11 @@ func (o IotSecuritySolutionOutput) AutoDiscoveredResources() pulumi.StringArrayO
 	return o.ApplyT(func(v *IotSecuritySolution) pulumi.StringArrayOutput { return v.AutoDiscoveredResources }).(pulumi.StringArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o IotSecuritySolutionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *IotSecuritySolution) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Disabled data sources. Disabling these data sources compromises the system.
 func (o IotSecuritySolutionOutput) DisabledDataSources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *IotSecuritySolution) pulumi.StringArrayOutput { return v.DisabledDataSources }).(pulumi.StringArrayOutput)
@@ -272,8 +280,8 @@ func (o IotSecuritySolutionOutput) Status() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o IotSecuritySolutionOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *IotSecuritySolution) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o IotSecuritySolutionOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *IotSecuritySolution) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Resource tags

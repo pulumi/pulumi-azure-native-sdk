@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2023-01-31.
 //
-// Other available API versions: 2023-07-31-preview, 2024-11-30, 2025-01-31-preview.
+// Other available API versions: 2022-01-31-preview, 2023-07-31-preview, 2024-11-30, 2025-01-31-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managedidentity [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupFederatedIdentityCredential(ctx *pulumi.Context, args *LookupFederatedIdentityCredentialArgs, opts ...pulumi.InvokeOption) (*LookupFederatedIdentityCredentialResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFederatedIdentityCredentialResult
@@ -39,6 +40,8 @@ type LookupFederatedIdentityCredentialArgs struct {
 type LookupFederatedIdentityCredentialResult struct {
 	// The list of audiences that can appear in the issued token.
 	Audiences []string `pulumi:"audiences"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The URL of the issuer to be trusted.
@@ -48,7 +51,7 @@ type LookupFederatedIdentityCredentialResult struct {
 	// The identifier of the external identity.
 	Subject string `pulumi:"subject"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv4.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -95,6 +98,11 @@ func (o LookupFederatedIdentityCredentialResultOutput) Audiences() pulumi.String
 	return o.ApplyT(func(v LookupFederatedIdentityCredentialResult) []string { return v.Audiences }).(pulumi.StringArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupFederatedIdentityCredentialResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFederatedIdentityCredentialResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupFederatedIdentityCredentialResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFederatedIdentityCredentialResult) string { return v.Id }).(pulumi.StringOutput)
@@ -116,8 +124,8 @@ func (o LookupFederatedIdentityCredentialResultOutput) Subject() pulumi.StringOu
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupFederatedIdentityCredentialResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupFederatedIdentityCredentialResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupFederatedIdentityCredentialResultOutput) SystemData() commontypesv4.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupFederatedIdentityCredentialResult) commontypesv4.SystemDataResponse { return v.SystemData }).(commontypesv4.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

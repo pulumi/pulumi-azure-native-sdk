@@ -7,16 +7,20 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Subscription Response for Changed Target Directory.
 //
-// Uses Azure REST API version 2024-08-01-preview.
+// Uses Azure REST API version 2024-08-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-08-01-preview.
+//
+// Other available API versions: 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native subscription [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SubscriptionTarDirectory struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Subscription Name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Subscription Changed Target Directory response properties.
@@ -35,6 +39,9 @@ func NewSubscriptionTarDirectory(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:subscription/v20240801preview:SubscriptionTarDirectory"),
+		},
+		{
+			Type: pulumi.String("azure-native:subscription/v20251101preview:SubscriptionTarDirectory"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -120,6 +127,11 @@ func (o SubscriptionTarDirectoryOutput) ToSubscriptionTarDirectoryOutput() Subsc
 
 func (o SubscriptionTarDirectoryOutput) ToSubscriptionTarDirectoryOutputWithContext(ctx context.Context) SubscriptionTarDirectoryOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SubscriptionTarDirectoryOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SubscriptionTarDirectory) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Subscription Name.

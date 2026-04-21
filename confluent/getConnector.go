@@ -7,13 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Details of connector record
+// Get confluent connector by Name
 //
 // Uses Azure REST API version 2024-07-01.
+//
+// Other available API versions: 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupConnector(ctx *pulumi.Context, args *LookupConnectorArgs, opts ...pulumi.InvokeOption) (*LookupConnectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectorResult
@@ -39,6 +42,8 @@ type LookupConnectorArgs struct {
 
 // Details of connector record
 type LookupConnectorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Connector Info Base
 	ConnectorBasicInfo *ConnectorInfoBaseResponse `pulumi:"connectorBasicInfo"`
 	// Connector Service type info base properties.
@@ -50,7 +55,7 @@ type LookupConnectorResult struct {
 	// The connection information consumed by applications.
 	PartnerConnectorInfo interface{} `pulumi:"partnerConnectorInfo"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -96,6 +101,11 @@ func (o LookupConnectorResultOutput) ToLookupConnectorResultOutputWithContext(ct
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Connector Info Base
 func (o LookupConnectorResultOutput) ConnectorBasicInfo() ConnectorInfoBaseResponsePtrOutput {
 	return o.ApplyT(func(v LookupConnectorResult) *ConnectorInfoBaseResponse { return v.ConnectorBasicInfo }).(ConnectorInfoBaseResponsePtrOutput)
@@ -122,8 +132,8 @@ func (o LookupConnectorResultOutput) PartnerConnectorInfo() pulumi.AnyOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupConnectorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupConnectorResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupConnectorResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

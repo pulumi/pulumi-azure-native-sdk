@@ -8,22 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Device Update account details.
 //
-// Uses Azure REST API version 2023-07-01. In version 1.x of the Azure Native provider, it used API version 2020-03-01-preview.
+// Uses Azure REST API version 2023-07-01. In version 2.x of the Azure Native provider, it used API version 2023-07-01.
 type Account struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// CMK encryption at rest properties
 	Encryption EncryptionResponsePtrOutput `pulumi:"encryption"`
 	// API host name.
 	HostName pulumi.StringOutput `pulumi:"hostName"`
 	// The type of identity used for the resource.
-	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity commontypesv3.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Device Update account primary and failover location details
@@ -39,7 +42,7 @@ type Account struct {
 	// Device Update Sku
 	Sku pulumi.StringPtrOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -118,7 +121,7 @@ type accountArgs struct {
 	// CMK encryption at rest properties
 	Encryption *Encryption `pulumi:"encryption"`
 	// The type of identity used for the resource.
-	Identity *ManagedServiceIdentity `pulumi:"identity"`
+	Identity *commontypesv3.ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// List of private endpoint connections associated with the account.
@@ -141,7 +144,7 @@ type AccountArgs struct {
 	// CMK encryption at rest properties
 	Encryption EncryptionPtrInput
 	// The type of identity used for the resource.
-	Identity ManagedServiceIdentityPtrInput
+	Identity commontypesv3.ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// List of private endpoint connections associated with the account.
@@ -194,6 +197,11 @@ func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o AccountOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // CMK encryption at rest properties
 func (o AccountOutput) Encryption() EncryptionResponsePtrOutput {
 	return o.ApplyT(func(v *Account) EncryptionResponsePtrOutput { return v.Encryption }).(EncryptionResponsePtrOutput)
@@ -205,8 +213,8 @@ func (o AccountOutput) HostName() pulumi.StringOutput {
 }
 
 // The type of identity used for the resource.
-func (o AccountOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *Account) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o AccountOutput) Identity() commontypesv3.ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Account) commontypesv3.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv3.ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -245,8 +253,8 @@ func (o AccountOutput) Sku() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o AccountOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Account) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o AccountOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Account) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // .NET Component.
 //
-// Uses Azure REST API version 2023-11-02-preview.
+// Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2023-11-02-preview.
 //
-// Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview.
+// Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type DotNetComponent struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Type of the .NET Component.
 	ComponentType pulumi.StringPtrOutput `pulumi:"componentType"`
 	// List of .NET Components configuration properties
@@ -31,7 +34,7 @@ type DotNetComponent struct {
 	// List of .NET Components that are bound to the .NET component
 	ServiceBinds DotNetComponentServiceBindResponseArrayOutput `pulumi:"serviceBinds"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -61,6 +64,12 @@ func NewDotNetComponent(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20241002preview:DotNetComponent"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20250202preview:DotNetComponent"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20251002preview:DotNetComponent"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -164,6 +173,11 @@ func (o DotNetComponentOutput) ToDotNetComponentOutputWithContext(ctx context.Co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o DotNetComponentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DotNetComponent) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Type of the .NET Component.
 func (o DotNetComponentOutput) ComponentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DotNetComponent) pulumi.StringPtrOutput { return v.ComponentType }).(pulumi.StringPtrOutput)
@@ -192,8 +206,8 @@ func (o DotNetComponentOutput) ServiceBinds() DotNetComponentServiceBindResponse
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o DotNetComponentOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *DotNetComponent) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o DotNetComponentOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *DotNetComponent) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

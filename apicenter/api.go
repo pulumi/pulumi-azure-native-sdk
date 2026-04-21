@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // API entity.
 //
-// Uses Azure REST API version 2024-03-01.
+// Uses Azure REST API version 2024-03-15-preview. In version 2.x of the Azure Native provider, it used API version 2024-03-01.
 //
-// Other available API versions: 2024-03-15-preview, 2024-06-01-preview.
+// Other available API versions: 2024-03-01, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apicenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Api struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The set of contacts
 	Contacts ContactResponseArrayOutput `pulumi:"contacts"`
 	// The custom metadata defined for API catalog entities.
@@ -39,7 +42,7 @@ type Api struct {
 	// Short description of the API.
 	Summary pulumi.StringPtrOutput `pulumi:"summary"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Terms of service for the API.
 	TermsOfService TermsOfServiceResponsePtrOutput `pulumi:"termsOfService"`
 	// API title.
@@ -210,6 +213,11 @@ func (o ApiOutput) ToApiOutputWithContext(ctx context.Context) ApiOutput {
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ApiOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The set of contacts
 func (o ApiOutput) Contacts() ContactResponseArrayOutput {
 	return o.ApplyT(func(v *Api) ContactResponseArrayOutput { return v.Contacts }).(ContactResponseArrayOutput)
@@ -256,8 +264,8 @@ func (o ApiOutput) Summary() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ApiOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Api) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o ApiOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Api) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Terms of service for the API.

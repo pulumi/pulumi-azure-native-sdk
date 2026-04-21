@@ -8,20 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Customer creates a Contact Profile Resource, which will contain all of the configurations required for scheduling a contact.
 //
-// Uses Azure REST API version 2022-11-01.
-//
-// Other available API versions: 2022-03-01.
+// Uses Azure REST API version 2022-11-01. In version 2.x of the Azure Native provider, it used API version 2022-11-01.
 type ContactProfile struct {
 	pulumi.CustomResourceState
 
 	// Auto-tracking configuration.
 	AutoTrackingConfiguration pulumi.StringPtrOutput `pulumi:"autoTrackingConfiguration"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// ARM resource identifier of the Event Hub used for telemetry. Requires granting Orbital Resource Provider the rights to send telemetry into the hub.
 	EventHubUri pulumi.StringPtrOutput `pulumi:"eventHubUri"`
 	// Links of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
@@ -37,7 +38,7 @@ type ContactProfile struct {
 	// Network configuration of customer virtual network.
 	NetworkConfiguration ContactProfilesPropertiesResponseNetworkConfigurationOutput `pulumi:"networkConfiguration"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Third-party mission configuration of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
@@ -196,6 +197,11 @@ func (o ContactProfileOutput) AutoTrackingConfiguration() pulumi.StringPtrOutput
 	return o.ApplyT(func(v *ContactProfile) pulumi.StringPtrOutput { return v.AutoTrackingConfiguration }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o ContactProfileOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContactProfile) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // ARM resource identifier of the Event Hub used for telemetry. Requires granting Orbital Resource Provider the rights to send telemetry into the hub.
 func (o ContactProfileOutput) EventHubUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContactProfile) pulumi.StringPtrOutput { return v.EventHubUri }).(pulumi.StringPtrOutput)
@@ -234,8 +240,8 @@ func (o ContactProfileOutput) NetworkConfiguration() ContactProfilesPropertiesRe
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ContactProfileOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *ContactProfile) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o ContactProfileOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *ContactProfile) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

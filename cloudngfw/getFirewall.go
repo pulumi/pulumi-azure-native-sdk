@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a FirewallResource
 //
-// Uses Azure REST API version 2023-09-01.
+// Uses Azure REST API version 2025-05-23.
 //
-// Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview.
+// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupFirewall(ctx *pulumi.Context, args *LookupFirewallArgs, opts ...pulumi.InvokeOption) (*LookupFirewallResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFirewallResult
@@ -37,6 +38,8 @@ type LookupFirewallArgs struct {
 type LookupFirewallResult struct {
 	// Associated Rulestack
 	AssociatedRulestack *RulestackDetailsResponse `pulumi:"associatedRulestack"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// DNS settings for Firewall
 	DnsSettings DNSSettingsResponse `pulumi:"dnsSettings"`
 	// Frontend settings for Firewall
@@ -47,6 +50,8 @@ type LookupFirewallResult struct {
 	Identity *AzureResourceManagerManagedIdentityPropertiesResponse `pulumi:"identity"`
 	// Panorama Managed: Default is False. Default will be CloudSec managed
 	IsPanoramaManaged *string `pulumi:"isPanoramaManaged"`
+	// Strata Cloud Managed: Default is False. Default will be CloudSec managed
+	IsStrataCloudManaged *string `pulumi:"isStrataCloudManaged"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// Marketplace details
@@ -63,8 +68,10 @@ type LookupFirewallResult struct {
 	PlanData PlanDataResponse `pulumi:"planData"`
 	// Provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Strata Cloud Manager Configuration, only applicable if Strata Cloud Manager is selected.
+	StrataCloudManagerConfig *StrataCloudManagerConfigResponse `pulumi:"strataCloudManagerConfig"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -111,6 +118,11 @@ func (o LookupFirewallResultOutput) AssociatedRulestack() RulestackDetailsRespon
 	return o.ApplyT(func(v LookupFirewallResult) *RulestackDetailsResponse { return v.AssociatedRulestack }).(RulestackDetailsResponsePtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupFirewallResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirewallResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // DNS settings for Firewall
 func (o LookupFirewallResultOutput) DnsSettings() DNSSettingsResponseOutput {
 	return o.ApplyT(func(v LookupFirewallResult) DNSSettingsResponse { return v.DnsSettings }).(DNSSettingsResponseOutput)
@@ -134,6 +146,11 @@ func (o LookupFirewallResultOutput) Identity() AzureResourceManagerManagedIdenti
 // Panorama Managed: Default is False. Default will be CloudSec managed
 func (o LookupFirewallResultOutput) IsPanoramaManaged() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFirewallResult) *string { return v.IsPanoramaManaged }).(pulumi.StringPtrOutput)
+}
+
+// Strata Cloud Managed: Default is False. Default will be CloudSec managed
+func (o LookupFirewallResultOutput) IsStrataCloudManaged() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupFirewallResult) *string { return v.IsStrataCloudManaged }).(pulumi.StringPtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -176,9 +193,14 @@ func (o LookupFirewallResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Strata Cloud Manager Configuration, only applicable if Strata Cloud Manager is selected.
+func (o LookupFirewallResultOutput) StrataCloudManagerConfig() StrataCloudManagerConfigResponsePtrOutput {
+	return o.ApplyT(func(v LookupFirewallResult) *StrataCloudManagerConfigResponse { return v.StrataCloudManagerConfig }).(StrataCloudManagerConfigResponsePtrOutput)
+}
+
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupFirewallResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupFirewallResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupFirewallResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupFirewallResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

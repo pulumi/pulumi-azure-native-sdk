@@ -8,22 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A Task Hub resource belonging to the scheduler
 //
-// Uses Azure REST API version 2024-10-01-preview.
+// Uses Azure REST API version 2024-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-10-01-preview.
+//
+// Other available API versions: 2025-04-01-preview, 2025-11-01, 2026-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type TaskHub struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource-specific properties for this resource.
 	Properties TaskHubPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -44,6 +49,15 @@ func NewTaskHub(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:durabletask/v20241001preview:TaskHub"),
+		},
+		{
+			Type: pulumi.String("azure-native:durabletask/v20250401preview:TaskHub"),
+		},
+		{
+			Type: pulumi.String("azure-native:durabletask/v20251101:TaskHub"),
+		},
+		{
+			Type: pulumi.String("azure-native:durabletask/v20260201:TaskHub"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -135,6 +149,11 @@ func (o TaskHubOutput) ToTaskHubOutputWithContext(ctx context.Context) TaskHubOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o TaskHubOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *TaskHub) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o TaskHubOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TaskHub) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -146,8 +165,8 @@ func (o TaskHubOutput) Properties() TaskHubPropertiesResponseOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o TaskHubOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *TaskHub) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o TaskHubOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *TaskHub) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

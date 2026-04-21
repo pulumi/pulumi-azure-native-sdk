@@ -8,18 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Migrate Project.
 //
-// Uses Azure REST API version 2019-10-01. In version 1.x of the Azure Native provider, it used API version 2019-10-01.
-//
-// Other available API versions: 2018-02-02.
+// Uses Azure REST API version 2019-10-01. In version 2.x of the Azure Native provider, it used API version 2019-10-01.
 type Project struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// For optimistic concurrency control.
 	ETag pulumi.StringPtrOutput `pulumi:"eTag"`
 	// Azure location in which project is created.
@@ -46,22 +46,49 @@ func NewProject(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:migrate/v20180202:Project"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20191001:Project"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230315:AssessmentProjectsOperation"),
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20230315:Project"),
 		},
 		{
+			Type: pulumi.String("azure-native:migrate/v20230401preview:AssessmentProjectsOperation"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20230401preview:Project"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230501preview:AssessmentProjectsOperation"),
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20230501preview:Project"),
 		},
 		{
+			Type: pulumi.String("azure-native:migrate/v20230909preview:AssessmentProjectsOperation"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20230909preview:Project"),
 		},
 		{
+			Type: pulumi.String("azure-native:migrate/v20240101preview:AssessmentProjectsOperation"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20240101preview:Project"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240115:Project"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240303preview:Project"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate:AssessmentProjectsOperation"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -163,6 +190,11 @@ func (o ProjectOutput) ToProjectOutput() ProjectOutput {
 
 func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ProjectOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // For optimistic concurrency control.

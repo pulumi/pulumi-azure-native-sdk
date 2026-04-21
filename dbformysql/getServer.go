@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about a server.
 //
-// Uses Azure REST API version 2022-01-01.
+// Uses Azure REST API version 2024-02-01-preview.
 //
-// Other available API versions: 2017-12-01, 2018-06-01-privatepreview, 2020-07-01-preview, 2020-07-01-privatepreview, 2022-09-30-preview, 2023-06-01-preview, 2023-06-30, 2023-10-01-preview, 2023-12-01-preview, 2023-12-30, 2024-02-01-preview, 2024-06-01-preview, 2024-10-01-preview.
+// Other available API versions: 2022-01-01, 2022-09-30-preview, 2023-06-01-preview, 2023-06-30, 2023-10-01-preview, 2023-12-01-preview, 2023-12-30, 2024-06-01-preview, 2024-10-01-preview, 2024-12-01-preview, 2024-12-30, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupServer(ctx *pulumi.Context, args *LookupServerArgs, opts ...pulumi.InvokeOption) (*LookupServerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerResult
@@ -39,6 +40,8 @@ type LookupServerResult struct {
 	AdministratorLogin *string `pulumi:"administratorLogin"`
 	// availability Zone information of the server.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Backup related properties of a server.
 	Backup *BackupResponse `pulumi:"backup"`
 	// The Data Encryption for CMK.
@@ -47,10 +50,12 @@ type LookupServerResult struct {
 	FullyQualifiedDomainName string `pulumi:"fullyQualifiedDomainName"`
 	// High availability related properties of a server.
 	HighAvailability *HighAvailabilityResponse `pulumi:"highAvailability"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The cmk identity for the server.
-	Identity *IdentityResponse `pulumi:"identity"`
+	Identity *MySQLServerIdentityResponse `pulumi:"identity"`
+	// Source properties for import from storage.
+	ImportSourceProperties *ImportSourcePropertiesResponse `pulumi:"importSourceProperties"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// Maintenance window of a server.
@@ -59,20 +64,22 @@ type LookupServerResult struct {
 	Name string `pulumi:"name"`
 	// Network related properties of a server.
 	Network *NetworkResponse `pulumi:"network"`
+	// PrivateEndpointConnections related properties of a server.
+	PrivateEndpointConnections []commontypesv5.PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// The maximum number of replicas that a primary server can have.
 	ReplicaCapacity int `pulumi:"replicaCapacity"`
 	// The replication role.
 	ReplicationRole *string `pulumi:"replicationRole"`
 	// The SKU (pricing tier) of the server.
-	Sku *SkuResponse `pulumi:"sku"`
+	Sku *MySQLServerSkuResponse `pulumi:"sku"`
 	// The source MySQL server id.
 	SourceServerResourceId *string `pulumi:"sourceServerResourceId"`
 	// The state of a server.
 	State string `pulumi:"state"`
 	// Storage related properties of a server.
 	Storage *StorageResponse `pulumi:"storage"`
-	// The system metadata relating to this resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -138,6 +145,11 @@ func (o LookupServerResultOutput) AvailabilityZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupServerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Backup related properties of a server.
 func (o LookupServerResultOutput) Backup() BackupResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *BackupResponse { return v.Backup }).(BackupResponsePtrOutput)
@@ -158,14 +170,19 @@ func (o LookupServerResultOutput) HighAvailability() HighAvailabilityResponsePtr
 	return o.ApplyT(func(v LookupServerResult) *HighAvailabilityResponse { return v.HighAvailability }).(HighAvailabilityResponsePtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupServerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The cmk identity for the server.
-func (o LookupServerResultOutput) Identity() IdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupServerResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
+func (o LookupServerResultOutput) Identity() MySQLServerIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupServerResult) *MySQLServerIdentityResponse { return v.Identity }).(MySQLServerIdentityResponsePtrOutput)
+}
+
+// Source properties for import from storage.
+func (o LookupServerResultOutput) ImportSourceProperties() ImportSourcePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v LookupServerResult) *ImportSourcePropertiesResponse { return v.ImportSourceProperties }).(ImportSourcePropertiesResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -188,6 +205,13 @@ func (o LookupServerResultOutput) Network() NetworkResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *NetworkResponse { return v.Network }).(NetworkResponsePtrOutput)
 }
 
+// PrivateEndpointConnections related properties of a server.
+func (o LookupServerResultOutput) PrivateEndpointConnections() commontypesv5.PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v LookupServerResult) []commontypesv5.PrivateEndpointConnectionResponse {
+		return v.PrivateEndpointConnections
+	}).(commontypesv5.PrivateEndpointConnectionResponseArrayOutput)
+}
+
 // The maximum number of replicas that a primary server can have.
 func (o LookupServerResultOutput) ReplicaCapacity() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupServerResult) int { return v.ReplicaCapacity }).(pulumi.IntOutput)
@@ -199,8 +223,8 @@ func (o LookupServerResultOutput) ReplicationRole() pulumi.StringPtrOutput {
 }
 
 // The SKU (pricing tier) of the server.
-func (o LookupServerResultOutput) Sku() SkuResponsePtrOutput {
-	return o.ApplyT(func(v LookupServerResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
+func (o LookupServerResultOutput) Sku() MySQLServerSkuResponsePtrOutput {
+	return o.ApplyT(func(v LookupServerResult) *MySQLServerSkuResponse { return v.Sku }).(MySQLServerSkuResponsePtrOutput)
 }
 
 // The source MySQL server id.
@@ -218,9 +242,9 @@ func (o LookupServerResultOutput) Storage() StorageResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *StorageResponse { return v.Storage }).(StorageResponsePtrOutput)
 }
 
-// The system metadata relating to this resource.
-func (o LookupServerResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupServerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupServerResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupServerResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

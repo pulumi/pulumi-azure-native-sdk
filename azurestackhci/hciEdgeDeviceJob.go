@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Edge device job for Azure Stack HCI solution.
 //
-// Uses Azure REST API version 2024-09-01-preview.
+// Uses Azure REST API version 2024-12-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-09-01-preview.
 type HciEdgeDeviceJob struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Edge device kind.
 	// Expected value is 'HCI'.
 	Kind pulumi.StringOutput `pulumi:"kind"`
@@ -26,7 +29,7 @@ type HciEdgeDeviceJob struct {
 	// HCI Edge device job properties
 	Properties pulumi.AnyOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -57,6 +60,30 @@ func NewHciEdgeDeviceJob(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20241201preview:HciEdgeDeviceJob"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250201preview:HciEdgeDeviceJob"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250915preview:HciEdgeDeviceJob"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20251001:HciEdgeDeviceJob"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20251101preview:HciEdgeDeviceJob"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20251201preview:HciEdgeDeviceJob"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20260201:HciEdgeDeviceJob"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20260215preview:HciEdgeDeviceJob"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20260301preview:HciEdgeDeviceJob"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -158,6 +185,11 @@ func (o HciEdgeDeviceJobOutput) ToHciEdgeDeviceJobOutputWithContext(ctx context.
 	return o
 }
 
+// The Azure API version of the resource.
+func (o HciEdgeDeviceJobOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *HciEdgeDeviceJob) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Edge device kind.
 // Expected value is 'HCI'.
 func (o HciEdgeDeviceJobOutput) Kind() pulumi.StringOutput {
@@ -175,8 +207,8 @@ func (o HciEdgeDeviceJobOutput) Properties() pulumi.AnyOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o HciEdgeDeviceJobOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *HciEdgeDeviceJob) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o HciEdgeDeviceJobOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *HciEdgeDeviceJob) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

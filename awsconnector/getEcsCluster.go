@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +34,8 @@ type LookupEcsClusterArgs struct {
 
 // A Microsoft.AwsConnector resource
 type LookupEcsClusterResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -42,7 +45,7 @@ type LookupEcsClusterResult struct {
 	// The resource-specific properties for this resource.
 	Properties EcsClusterPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -84,6 +87,11 @@ func (o LookupEcsClusterResultOutput) ToLookupEcsClusterResultOutputWithContext(
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupEcsClusterResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEcsClusterResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupEcsClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEcsClusterResult) string { return v.Id }).(pulumi.StringOutput)
@@ -105,8 +113,8 @@ func (o LookupEcsClusterResultOutput) Properties() EcsClusterPropertiesResponseO
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupEcsClusterResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupEcsClusterResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupEcsClusterResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupEcsClusterResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Configuration to setup App Resiliency
 //
-// Uses Azure REST API version 2023-08-01-preview.
+// Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2023-08-01-preview.
 //
-// Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview.
+// Other available API versions: 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AppResiliency struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Policy that defines circuit breaker conditions
 	CircuitBreakerPolicy CircuitBreakerPolicyResponsePtrOutput `pulumi:"circuitBreakerPolicy"`
 	// Defines parameters for http connection pooling
@@ -29,7 +32,7 @@ type AppResiliency struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Defines parameters for tcp connection pooling
 	TcpConnectionPool TcpConnectionPoolResponsePtrOutput `pulumi:"tcpConnectionPool"`
 	// Policy that defines tcp request retry conditions
@@ -68,6 +71,12 @@ func NewAppResiliency(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20241002preview:AppResiliency"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20250202preview:AppResiliency"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20251002preview:AppResiliency"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -183,6 +192,11 @@ func (o AppResiliencyOutput) ToAppResiliencyOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o AppResiliencyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AppResiliency) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Policy that defines circuit breaker conditions
 func (o AppResiliencyOutput) CircuitBreakerPolicy() CircuitBreakerPolicyResponsePtrOutput {
 	return o.ApplyT(func(v *AppResiliency) CircuitBreakerPolicyResponsePtrOutput { return v.CircuitBreakerPolicy }).(CircuitBreakerPolicyResponsePtrOutput)
@@ -204,8 +218,8 @@ func (o AppResiliencyOutput) Name() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o AppResiliencyOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *AppResiliency) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o AppResiliencyOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *AppResiliency) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Defines parameters for tcp connection pooling

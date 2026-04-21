@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Data Manager For Agriculture ARM Resource.
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2023-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
 type DataManagerForAgricultureResource struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Identity for the resource.
-	Identity IdentityResponsePtrOutput `pulumi:"identity"`
+	Identity commontypesv4.IdentityResponsePtrOutput `pulumi:"identity"`
 	// Uri of the Data Manager For Agriculture instance.
 	InstanceUri pulumi.StringOutput `pulumi:"instanceUri"`
 	// The geo-location where the resource lives
@@ -27,7 +30,7 @@ type DataManagerForAgricultureResource struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Private endpoints.
-	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections commontypesv4.PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// Data Manager For Agriculture instance provisioning state.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Property to allow or block public traffic for an Azure Data Manager For Agriculture resource.
@@ -35,7 +38,7 @@ type DataManagerForAgricultureResource struct {
 	// Sensor integration request model.
 	SensorIntegration SensorIntegrationResponsePtrOutput `pulumi:"sensorIntegration"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv4.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -57,7 +60,13 @@ func NewDataManagerForAgricultureResource(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:agfoodplatform/v20200512preview:DataManagerForAgricultureResource"),
 		},
 		{
+			Type: pulumi.String("azure-native:agfoodplatform/v20200512preview:FarmBeatsModel"),
+		},
+		{
 			Type: pulumi.String("azure-native:agfoodplatform/v20210901preview:DataManagerForAgricultureResource"),
+		},
+		{
+			Type: pulumi.String("azure-native:agfoodplatform/v20210901preview:FarmBeatsModel"),
 		},
 		{
 			Type: pulumi.String("azure-native:agfoodplatform/v20230601preview:DataManagerForAgricultureResource"),
@@ -100,7 +109,7 @@ type dataManagerForAgricultureResourceArgs struct {
 	// DataManagerForAgriculture resource name.
 	DataManagerForAgricultureResourceName *string `pulumi:"dataManagerForAgricultureResourceName"`
 	// Identity for the resource.
-	Identity *Identity `pulumi:"identity"`
+	Identity *commontypesv4.Identity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Property to allow or block public traffic for an Azure Data Manager For Agriculture resource.
@@ -118,7 +127,7 @@ type DataManagerForAgricultureResourceArgs struct {
 	// DataManagerForAgriculture resource name.
 	DataManagerForAgricultureResourceName pulumi.StringPtrInput
 	// Identity for the resource.
-	Identity IdentityPtrInput
+	Identity commontypesv4.IdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Property to allow or block public traffic for an Azure Data Manager For Agriculture resource.
@@ -168,9 +177,14 @@ func (o DataManagerForAgricultureResourceOutput) ToDataManagerForAgricultureReso
 	return o
 }
 
+// The Azure API version of the resource.
+func (o DataManagerForAgricultureResourceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataManagerForAgricultureResource) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Identity for the resource.
-func (o DataManagerForAgricultureResourceOutput) Identity() IdentityResponsePtrOutput {
-	return o.ApplyT(func(v *DataManagerForAgricultureResource) IdentityResponsePtrOutput { return v.Identity }).(IdentityResponsePtrOutput)
+func (o DataManagerForAgricultureResourceOutput) Identity() commontypesv4.IdentityResponsePtrOutput {
+	return o.ApplyT(func(v *DataManagerForAgricultureResource) commontypesv4.IdentityResponsePtrOutput { return v.Identity }).(commontypesv4.IdentityResponsePtrOutput)
 }
 
 // Uri of the Data Manager For Agriculture instance.
@@ -189,10 +203,10 @@ func (o DataManagerForAgricultureResourceOutput) Name() pulumi.StringOutput {
 }
 
 // Private endpoints.
-func (o DataManagerForAgricultureResourceOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v *DataManagerForAgricultureResource) PrivateEndpointConnectionResponseArrayOutput {
+func (o DataManagerForAgricultureResourceOutput) PrivateEndpointConnections() commontypesv4.PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v *DataManagerForAgricultureResource) commontypesv4.PrivateEndpointConnectionResponseArrayOutput {
 		return v.PrivateEndpointConnections
-	}).(PrivateEndpointConnectionResponseArrayOutput)
+	}).(commontypesv4.PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // Data Manager For Agriculture instance provisioning state.
@@ -213,8 +227,8 @@ func (o DataManagerForAgricultureResourceOutput) SensorIntegration() SensorInteg
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o DataManagerForAgricultureResourceOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *DataManagerForAgricultureResource) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o DataManagerForAgricultureResourceOutput) SystemData() commontypesv4.SystemDataResponseOutput {
+	return o.ApplyT(func(v *DataManagerForAgricultureResource) commontypesv4.SystemDataResponseOutput { return v.SystemData }).(commontypesv4.SystemDataResponseOutput)
 }
 
 // Resource tags.

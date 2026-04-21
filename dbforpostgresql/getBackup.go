@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get specific backup for a given server.
+// Gets information of an on demand backup, given its name.
 //
-// Uses Azure REST API version 2024-03-01-preview.
+// Uses Azure REST API version 2025-01-01-preview.
 //
-// Other available API versions: 2024-08-01, 2024-11-01-preview.
+// Other available API versions: 2024-03-01-preview, 2024-08-01, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupBackup(ctx *pulumi.Context, args *LookupBackupArgs, opts ...pulumi.InvokeOption) (*LookupBackupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBackupResult
@@ -27,7 +28,7 @@ func LookupBackup(ctx *pulumi.Context, args *LookupBackupArgs, opts ...pulumi.In
 }
 
 type LookupBackupArgs struct {
-	// The name of the backup.
+	// Name of the backup.
 	BackupName string `pulumi:"backupName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -35,20 +36,22 @@ type LookupBackupArgs struct {
 	ServerName string `pulumi:"serverName"`
 }
 
-// Server backup properties
+// Properties of a backup.
 type LookupBackupResult struct {
-	// Backup type.
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Type of backup.
 	BackupType *string `pulumi:"backupType"`
-	// Backup completed time (ISO8601 format).
+	// Time(ISO8601 format) at which the backup was completed.
 	CompletedTime *string `pulumi:"completedTime"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Backup source
+	// Source of the backup.
 	Source *string `pulumi:"source"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv6.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -63,7 +66,7 @@ func LookupBackupOutput(ctx *pulumi.Context, args LookupBackupOutputArgs, opts .
 }
 
 type LookupBackupOutputArgs struct {
-	// The name of the backup.
+	// Name of the backup.
 	BackupName pulumi.StringInput `pulumi:"backupName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -75,7 +78,7 @@ func (LookupBackupOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupBackupArgs)(nil)).Elem()
 }
 
-// Server backup properties
+// Properties of a backup.
 type LookupBackupResultOutput struct{ *pulumi.OutputState }
 
 func (LookupBackupResultOutput) ElementType() reflect.Type {
@@ -90,12 +93,17 @@ func (o LookupBackupResultOutput) ToLookupBackupResultOutputWithContext(ctx cont
 	return o
 }
 
-// Backup type.
+// The Azure API version of the resource.
+func (o LookupBackupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Type of backup.
 func (o LookupBackupResultOutput) BackupType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBackupResult) *string { return v.BackupType }).(pulumi.StringPtrOutput)
 }
 
-// Backup completed time (ISO8601 format).
+// Time(ISO8601 format) at which the backup was completed.
 func (o LookupBackupResultOutput) CompletedTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBackupResult) *string { return v.CompletedTime }).(pulumi.StringPtrOutput)
 }
@@ -110,14 +118,14 @@ func (o LookupBackupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Backup source
+// Source of the backup.
 func (o LookupBackupResultOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBackupResult) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupBackupResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupBackupResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupBackupResultOutput) SystemData() commontypesv6.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupBackupResult) commontypesv6.SystemDataResponse { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

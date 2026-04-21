@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The ID of the policy definition version.
 //
-// Uses Azure REST API version 2023-04-01.
+// Uses Azure REST API version 2025-01-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 //
-// Other available API versions: 2024-05-01, 2025-01-01, 2025-03-01.
+// Other available API versions: 2023-04-01, 2024-05-01, 2025-03-01, 2025-11-01, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type PolicyDefinitionVersion struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The policy definition description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name of the policy definition.
@@ -37,7 +40,7 @@ type PolicyDefinitionVersion struct {
 	// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
 	PolicyType pulumi.StringPtrOutput `pulumi:"policyType"`
 	// The system metadata relating to this resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource (Microsoft.Authorization/policyDefinitions/versions).
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The policy definition version in #.#.# format.
@@ -69,6 +72,12 @@ func NewPolicyDefinitionVersion(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:authorization/v20250301:PolicyDefinitionVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:authorization/v20251101:PolicyDefinitionVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:authorization/v20251201preview:PolicyDefinitionVersion"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -188,6 +197,11 @@ func (o PolicyDefinitionVersionOutput) ToPolicyDefinitionVersionOutputWithContex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o PolicyDefinitionVersionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PolicyDefinitionVersion) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The policy definition description.
 func (o PolicyDefinitionVersionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyDefinitionVersion) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -229,8 +243,8 @@ func (o PolicyDefinitionVersionOutput) PolicyType() pulumi.StringPtrOutput {
 }
 
 // The system metadata relating to this resource.
-func (o PolicyDefinitionVersionOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *PolicyDefinitionVersion) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o PolicyDefinitionVersionOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *PolicyDefinitionVersion) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource (Microsoft.Authorization/policyDefinitions/versions).

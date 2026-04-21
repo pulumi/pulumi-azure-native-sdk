@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified Content Filters associated with the Azure OpenAI account.
 //
-// Uses Azure REST API version 2023-10-01-preview.
+// Uses Azure REST API version 2025-06-01.
 //
-// Other available API versions: 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview.
+// Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupRaiPolicy(ctx *pulumi.Context, args *LookupRaiPolicyArgs, opts ...pulumi.InvokeOption) (*LookupRaiPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRaiPolicyResult
@@ -37,6 +38,8 @@ type LookupRaiPolicyArgs struct {
 
 // Cognitive Services RaiPolicy.
 type LookupRaiPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Etag.
 	Etag string `pulumi:"etag"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -46,7 +49,7 @@ type LookupRaiPolicyResult struct {
 	// Properties of Cognitive Services RaiPolicy.
 	Properties RaiPolicyPropertiesResponse `pulumi:"properties"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -90,6 +93,11 @@ func (o LookupRaiPolicyResultOutput) ToLookupRaiPolicyResultOutputWithContext(ct
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupRaiPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRaiPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Resource Etag.
 func (o LookupRaiPolicyResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRaiPolicyResult) string { return v.Etag }).(pulumi.StringOutput)
@@ -111,8 +119,8 @@ func (o LookupRaiPolicyResultOutput) Properties() RaiPolicyPropertiesResponseOut
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupRaiPolicyResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupRaiPolicyResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupRaiPolicyResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupRaiPolicyResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Resource tags.

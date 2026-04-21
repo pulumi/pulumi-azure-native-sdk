@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +30,7 @@ type ListServiceFabricApplicableSchedulesArgs struct {
 	LabName string `pulumi:"labName"`
 	// The name of the service fabric.
 	Name string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the user profile.
 	UserName string `pulumi:"userName"`
@@ -37,7 +38,7 @@ type ListServiceFabricApplicableSchedulesArgs struct {
 
 // Schedules applicable to a virtual machine. The schedules may have been defined on a VM or on lab level.
 type ListServiceFabricApplicableSchedulesResult struct {
-	// The identifier of the resource.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The auto-shutdown schedule, if one has been set at the lab or lab resource level.
 	LabVmsShutdown *ScheduleResponse `pulumi:"labVmsShutdown"`
@@ -45,11 +46,13 @@ type ListServiceFabricApplicableSchedulesResult struct {
 	LabVmsStartup *ScheduleResponse `pulumi:"labVmsStartup"`
 	// The location of the resource.
 	Location *string `pulumi:"location"`
-	// The name of the resource.
+	// The name of the resource
 	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// The tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -79,7 +82,7 @@ type ListServiceFabricApplicableSchedulesOutputArgs struct {
 	LabName pulumi.StringInput `pulumi:"labName"`
 	// The name of the service fabric.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the user profile.
 	UserName pulumi.StringInput `pulumi:"userName"`
@@ -104,7 +107,7 @@ func (o ListServiceFabricApplicableSchedulesResultOutput) ToListServiceFabricApp
 	return o
 }
 
-// The identifier of the resource.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o ListServiceFabricApplicableSchedulesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ListServiceFabricApplicableSchedulesResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -124,9 +127,16 @@ func (o ListServiceFabricApplicableSchedulesResultOutput) Location() pulumi.Stri
 	return o.ApplyT(func(v ListServiceFabricApplicableSchedulesResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o ListServiceFabricApplicableSchedulesResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListServiceFabricApplicableSchedulesResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o ListServiceFabricApplicableSchedulesResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v ListServiceFabricApplicableSchedulesResult) commontypesv3.SystemDataResponse {
+		return v.SystemData
+	}).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The tags of the resource.
@@ -134,7 +144,7 @@ func (o ListServiceFabricApplicableSchedulesResultOutput) Tags() pulumi.StringMa
 	return o.ApplyT(func(v ListServiceFabricApplicableSchedulesResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ListServiceFabricApplicableSchedulesResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListServiceFabricApplicableSchedulesResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -7,15 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a StorageClassResource
 //
 // Uses Azure REST API version 2024-03-01.
-//
-// Other available API versions: 2023-10-01-preview.
 func LookupStorageClass(ctx *pulumi.Context, args *LookupStorageClassArgs, opts ...pulumi.InvokeOption) (*LookupStorageClassResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageClassResult
@@ -39,6 +38,8 @@ type LookupStorageClassResult struct {
 	AccessModes []string `pulumi:"accessModes"`
 	// Volume can be expanded or not
 	AllowVolumeExpansion *string `pulumi:"allowVolumeExpansion"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Allow single data node failure
 	DataResilience *string `pulumi:"dataResilience"`
 	// Failover speed: NA, Slow, Fast
@@ -60,7 +61,7 @@ type LookupStorageClassResult struct {
 	// Resource provision state
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Properties of the StorageClass
@@ -114,6 +115,11 @@ func (o LookupStorageClassResultOutput) AllowVolumeExpansion() pulumi.StringPtrO
 	return o.ApplyT(func(v LookupStorageClassResult) *string { return v.AllowVolumeExpansion }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupStorageClassResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageClassResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Allow single data node failure
 func (o LookupStorageClassResultOutput) DataResilience() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStorageClassResult) *string { return v.DataResilience }).(pulumi.StringPtrOutput)
@@ -165,8 +171,8 @@ func (o LookupStorageClassResultOutput) ProvisioningState() pulumi.StringOutput 
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupStorageClassResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupStorageClassResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupStorageClassResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupStorageClassResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

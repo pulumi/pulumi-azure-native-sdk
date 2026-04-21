@@ -8,24 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The workspace manager member
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2025-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview.
+// Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type WorkspaceManagerMember struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource Etag.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Fully qualified resource ID of the target Sentinel workspace joining the given Sentinel workspace manager
 	TargetWorkspaceResourceId pulumi.StringOutput `pulumi:"targetWorkspaceResourceId"`
 	// Tenant id of the target Sentinel workspace joining the given Sentinel workspace manager
@@ -89,6 +92,12 @@ func NewWorkspaceManagerMember(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250101preview:WorkspaceManagerMember"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250401preview:WorkspaceManagerMember"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250701preview:WorkspaceManagerMember"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -188,6 +197,11 @@ func (o WorkspaceManagerMemberOutput) ToWorkspaceManagerMemberOutputWithContext(
 	return o
 }
 
+// The Azure API version of the resource.
+func (o WorkspaceManagerMemberOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkspaceManagerMember) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Resource Etag.
 func (o WorkspaceManagerMemberOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkspaceManagerMember) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
@@ -199,8 +213,8 @@ func (o WorkspaceManagerMemberOutput) Name() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o WorkspaceManagerMemberOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *WorkspaceManagerMember) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o WorkspaceManagerMemberOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *WorkspaceManagerMember) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Fully qualified resource ID of the target Sentinel workspace joining the given Sentinel workspace manager

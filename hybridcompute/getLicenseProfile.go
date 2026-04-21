@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves information about the view of a license profile.
 //
-// Uses Azure REST API version 2023-06-20-preview.
+// Uses Azure REST API version 2024-07-10.
 //
-// Other available API versions: 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-07-10, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview, 2025-01-13.
+// Other available API versions: 2023-06-20-preview, 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview, 2025-01-13, 2025-02-19-preview, 2025-06-01, 2025-08-21-preview, 2025-09-16-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridcompute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupLicenseProfile(ctx *pulumi.Context, args *LookupLicenseProfileArgs, opts ...pulumi.InvokeOption) (*LookupLicenseProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLicenseProfileResult
@@ -41,6 +42,18 @@ type LookupLicenseProfileResult struct {
 	AssignedLicense *string `pulumi:"assignedLicense"`
 	// The guid id of the license.
 	AssignedLicenseImmutableId string `pulumi:"assignedLicenseImmutableId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// The timestamp in UTC when the billing ends.
+	BillingEndDate string `pulumi:"billingEndDate"`
+	// The timestamp in UTC when the billing starts.
+	BillingStartDate string `pulumi:"billingStartDate"`
+	// The timestamp in UTC when the user disenrolled the feature.
+	DisenrollmentDate string `pulumi:"disenrollmentDate"`
+	// The timestamp in UTC when the user enrolls the feature.
+	EnrollmentDate string `pulumi:"enrollmentDate"`
+	// The errors that were encountered during the feature enrollment or disenrollment.
+	Error commontypesv3.ErrorDetailResponse `pulumi:"error"`
 	// Indicates the eligibility state of Esu.
 	EsuEligibility string `pulumi:"esuEligibility"`
 	// Indicates whether there is an ESU Key currently active for the machine.
@@ -53,12 +66,20 @@ type LookupLicenseProfileResult struct {
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
+	// The list of product features.
+	ProductFeatures []ProductFeatureResponse `pulumi:"productFeatures"`
+	// Indicates the product type of the license.
+	ProductType *string `pulumi:"productType"`
 	// The provisioning state, which only appears in the response.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The type of the Esu servers.
 	ServerType string `pulumi:"serverType"`
+	// Specifies if this machine is licensed as part of a Software Assurance agreement.
+	SoftwareAssuranceCustomer *bool `pulumi:"softwareAssuranceCustomer"`
+	// Indicates the subscription status of the product.
+	SubscriptionStatus *string `pulumi:"subscriptionStatus"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -112,6 +133,36 @@ func (o LookupLicenseProfileResultOutput) AssignedLicenseImmutableId() pulumi.St
 	return o.ApplyT(func(v LookupLicenseProfileResult) string { return v.AssignedLicenseImmutableId }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupLicenseProfileResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLicenseProfileResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The timestamp in UTC when the billing ends.
+func (o LookupLicenseProfileResultOutput) BillingEndDate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLicenseProfileResult) string { return v.BillingEndDate }).(pulumi.StringOutput)
+}
+
+// The timestamp in UTC when the billing starts.
+func (o LookupLicenseProfileResultOutput) BillingStartDate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLicenseProfileResult) string { return v.BillingStartDate }).(pulumi.StringOutput)
+}
+
+// The timestamp in UTC when the user disenrolled the feature.
+func (o LookupLicenseProfileResultOutput) DisenrollmentDate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLicenseProfileResult) string { return v.DisenrollmentDate }).(pulumi.StringOutput)
+}
+
+// The timestamp in UTC when the user enrolls the feature.
+func (o LookupLicenseProfileResultOutput) EnrollmentDate() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLicenseProfileResult) string { return v.EnrollmentDate }).(pulumi.StringOutput)
+}
+
+// The errors that were encountered during the feature enrollment or disenrollment.
+func (o LookupLicenseProfileResultOutput) Error() commontypesv3.ErrorDetailResponseOutput {
+	return o.ApplyT(func(v LookupLicenseProfileResult) commontypesv3.ErrorDetailResponse { return v.Error }).(commontypesv3.ErrorDetailResponseOutput)
+}
+
 // Indicates the eligibility state of Esu.
 func (o LookupLicenseProfileResultOutput) EsuEligibility() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLicenseProfileResult) string { return v.EsuEligibility }).(pulumi.StringOutput)
@@ -142,6 +193,16 @@ func (o LookupLicenseProfileResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLicenseProfileResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The list of product features.
+func (o LookupLicenseProfileResultOutput) ProductFeatures() ProductFeatureResponseArrayOutput {
+	return o.ApplyT(func(v LookupLicenseProfileResult) []ProductFeatureResponse { return v.ProductFeatures }).(ProductFeatureResponseArrayOutput)
+}
+
+// Indicates the product type of the license.
+func (o LookupLicenseProfileResultOutput) ProductType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupLicenseProfileResult) *string { return v.ProductType }).(pulumi.StringPtrOutput)
+}
+
 // The provisioning state, which only appears in the response.
 func (o LookupLicenseProfileResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLicenseProfileResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
@@ -152,9 +213,19 @@ func (o LookupLicenseProfileResultOutput) ServerType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLicenseProfileResult) string { return v.ServerType }).(pulumi.StringOutput)
 }
 
+// Specifies if this machine is licensed as part of a Software Assurance agreement.
+func (o LookupLicenseProfileResultOutput) SoftwareAssuranceCustomer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupLicenseProfileResult) *bool { return v.SoftwareAssuranceCustomer }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates the subscription status of the product.
+func (o LookupLicenseProfileResultOutput) SubscriptionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupLicenseProfileResult) *string { return v.SubscriptionStatus }).(pulumi.StringPtrOutput)
+}
+
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupLicenseProfileResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupLicenseProfileResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupLicenseProfileResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupLicenseProfileResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

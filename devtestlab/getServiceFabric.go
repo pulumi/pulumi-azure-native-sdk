@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,7 +32,7 @@ type LookupServiceFabricArgs struct {
 	LabName string `pulumi:"labName"`
 	// The name of the service fabric.
 	Name string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the user profile.
 	UserName string `pulumi:"userName"`
@@ -41,21 +42,25 @@ type LookupServiceFabricArgs struct {
 type LookupServiceFabricResult struct {
 	// The applicable schedule for the virtual machine.
 	ApplicableSchedule ApplicableScheduleResponse `pulumi:"applicableSchedule"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource id of the environment under which the service fabric resource is present
 	EnvironmentId *string `pulumi:"environmentId"`
 	// The backing service fabric resource's id
 	ExternalServiceFabricId *string `pulumi:"externalServiceFabricId"`
-	// The identifier of the resource.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// The location of the resource.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// The name of the resource.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The provisioning status of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// The tags of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The unique immutable identifier of a resource (Guid).
 	UniqueIdentifier string `pulumi:"uniqueIdentifier"`
@@ -87,7 +92,7 @@ type LookupServiceFabricOutputArgs struct {
 	LabName pulumi.StringInput `pulumi:"labName"`
 	// The name of the service fabric.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the user profile.
 	UserName pulumi.StringInput `pulumi:"userName"`
@@ -117,6 +122,11 @@ func (o LookupServiceFabricResultOutput) ApplicableSchedule() ApplicableSchedule
 	return o.ApplyT(func(v LookupServiceFabricResult) ApplicableScheduleResponse { return v.ApplicableSchedule }).(ApplicableScheduleResponseOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupServiceFabricResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceFabricResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The resource id of the environment under which the service fabric resource is present
 func (o LookupServiceFabricResultOutput) EnvironmentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceFabricResult) *string { return v.EnvironmentId }).(pulumi.StringPtrOutput)
@@ -127,17 +137,17 @@ func (o LookupServiceFabricResultOutput) ExternalServiceFabricId() pulumi.String
 	return o.ApplyT(func(v LookupServiceFabricResult) *string { return v.ExternalServiceFabricId }).(pulumi.StringPtrOutput)
 }
 
-// The identifier of the resource.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupServiceFabricResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceFabricResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The location of the resource.
+// The geo-location where the resource lives
 func (o LookupServiceFabricResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceFabricResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o LookupServiceFabricResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceFabricResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -147,12 +157,17 @@ func (o LookupServiceFabricResultOutput) ProvisioningState() pulumi.StringOutput
 	return o.ApplyT(func(v LookupServiceFabricResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The tags of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupServiceFabricResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupServiceFabricResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o LookupServiceFabricResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupServiceFabricResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupServiceFabricResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceFabricResult) string { return v.Type }).(pulumi.StringOutput)
 }

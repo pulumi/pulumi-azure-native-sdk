@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Frontend
 //
-// Uses Azure REST API version 2023-05-01-preview.
+// Uses Azure REST API version 2025-01-01.
 //
-// Other available API versions: 2022-10-01-preview, 2023-11-01, 2024-05-01-preview, 2025-01-01, 2025-03-01-preview.
+// Other available API versions: 2023-05-01-preview, 2023-11-01, 2024-05-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicenetworking [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupFrontendsInterface(ctx *pulumi.Context, args *LookupFrontendsInterfaceArgs, opts ...pulumi.InvokeOption) (*LookupFrontendsInterfaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFrontendsInterfaceResult
@@ -35,8 +36,10 @@ type LookupFrontendsInterfaceArgs struct {
 	TrafficControllerName string `pulumi:"trafficControllerName"`
 }
 
-// Frontend Subresource of Traffic Controller.
+// Frontend Sub Resource of Traffic Controller.
 type LookupFrontendsInterfaceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The Fully Qualified Domain Name of the DNS record associated to a Traffic Controller frontend.
 	Fqdn string `pulumi:"fqdn"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -48,7 +51,7 @@ type LookupFrontendsInterfaceResult struct {
 	// Provisioning State of Traffic Controller Frontend Resource
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -77,7 +80,7 @@ func (LookupFrontendsInterfaceOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupFrontendsInterfaceArgs)(nil)).Elem()
 }
 
-// Frontend Subresource of Traffic Controller.
+// Frontend Sub Resource of Traffic Controller.
 type LookupFrontendsInterfaceResultOutput struct{ *pulumi.OutputState }
 
 func (LookupFrontendsInterfaceResultOutput) ElementType() reflect.Type {
@@ -90,6 +93,11 @@ func (o LookupFrontendsInterfaceResultOutput) ToLookupFrontendsInterfaceResultOu
 
 func (o LookupFrontendsInterfaceResultOutput) ToLookupFrontendsInterfaceResultOutputWithContext(ctx context.Context) LookupFrontendsInterfaceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupFrontendsInterfaceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFrontendsInterfaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The Fully Qualified Domain Name of the DNS record associated to a Traffic Controller frontend.
@@ -118,8 +126,8 @@ func (o LookupFrontendsInterfaceResultOutput) ProvisioningState() pulumi.StringO
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupFrontendsInterfaceResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupFrontendsInterfaceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupFrontendsInterfaceResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupFrontendsInterfaceResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

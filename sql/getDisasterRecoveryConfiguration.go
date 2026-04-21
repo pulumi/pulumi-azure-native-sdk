@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,6 +37,8 @@ type LookupDisasterRecoveryConfigurationArgs struct {
 type LookupDisasterRecoveryConfigurationResult struct {
 	// Whether or not failover can be done automatically.
 	AutoFailover string `pulumi:"autoFailover"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// How aggressive the automatic failover should be.
 	FailoverPolicy string `pulumi:"failoverPolicy"`
 	// Resource ID.
@@ -99,6 +101,11 @@ func (o LookupDisasterRecoveryConfigurationResultOutput) ToLookupDisasterRecover
 // Whether or not failover can be done automatically.
 func (o LookupDisasterRecoveryConfigurationResultOutput) AutoFailover() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDisasterRecoveryConfigurationResult) string { return v.AutoFailover }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupDisasterRecoveryConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDisasterRecoveryConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // How aggressive the automatic failover should be.

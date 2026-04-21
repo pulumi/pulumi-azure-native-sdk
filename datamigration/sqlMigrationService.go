@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A SQL Migration Service.
 //
-// Uses Azure REST API version 2022-03-30-preview. In version 1.x of the Azure Native provider, it used API version 2021-10-30-preview.
+// Uses Azure REST API version 2023-07-15-preview. In version 2.x of the Azure Native provider, it used API version 2022-03-30-preview.
 //
-// Other available API versions: 2023-07-15-preview.
+// Other available API versions: 2021-10-30-preview, 2022-01-30-preview, 2022-03-30-preview, 2025-03-15-preview, 2025-06-30, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SqlMigrationService struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Current state of the Integration runtime.
 	IntegrationRuntimeState pulumi.StringOutput    `pulumi:"integrationRuntimeState"`
 	Location                pulumi.StringPtrOutput `pulumi:"location"`
@@ -53,6 +55,15 @@ func NewSqlMigrationService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:datamigration/v20230715preview:SqlMigrationService"),
+		},
+		{
+			Type: pulumi.String("azure-native:datamigration/v20250315preview:SqlMigrationService"),
+		},
+		{
+			Type: pulumi.String("azure-native:datamigration/v20250630:SqlMigrationService"),
+		},
+		{
+			Type: pulumi.String("azure-native:datamigration/v20250901preview:SqlMigrationService"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -142,6 +153,11 @@ func (o SqlMigrationServiceOutput) ToSqlMigrationServiceOutput() SqlMigrationSer
 
 func (o SqlMigrationServiceOutput) ToSqlMigrationServiceOutputWithContext(ctx context.Context) SqlMigrationServiceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SqlMigrationServiceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SqlMigrationService) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Current state of the Integration runtime.

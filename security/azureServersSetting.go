@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A vulnerability assessments setting on Azure servers in the defined scope.
 //
-// Uses Azure REST API version 2023-05-01.
+// Uses Azure REST API version 2023-05-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
 type AzureServersSetting struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The kind of the server vulnerability assessments setting
 	// Expected value is 'AzureServersSetting'.
 	Kind pulumi.StringOutput `pulumi:"kind"`
@@ -26,7 +29,7 @@ type AzureServersSetting struct {
 	// The selected vulnerability assessments provider on Azure servers in the defined scope.
 	SelectedProvider pulumi.StringOutput `pulumi:"selectedProvider"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -141,6 +144,11 @@ func (o AzureServersSettingOutput) ToAzureServersSettingOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o AzureServersSettingOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzureServersSetting) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The kind of the server vulnerability assessments setting
 // Expected value is 'AzureServersSetting'.
 func (o AzureServersSettingOutput) Kind() pulumi.StringOutput {
@@ -158,8 +166,8 @@ func (o AzureServersSettingOutput) SelectedProvider() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o AzureServersSettingOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *AzureServersSetting) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o AzureServersSettingOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *AzureServersSetting) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

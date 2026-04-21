@@ -8,25 +8,28 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The integration fabric resource type.
 //
-// Uses Azure REST API version 2023-10-01-preview.
+// Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
 //
-// Other available API versions: 2024-10-01.
+// Other available API versions: 2023-10-01-preview, 2024-11-01-preview, 2025-08-01, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dashboard [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type IntegrationFabric struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name       pulumi.StringOutput                       `pulumi:"name"`
 	Properties IntegrationFabricPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -52,6 +55,15 @@ func NewIntegrationFabric(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dashboard/v20241001:IntegrationFabric"),
+		},
+		{
+			Type: pulumi.String("azure-native:dashboard/v20241101preview:IntegrationFabric"),
+		},
+		{
+			Type: pulumi.String("azure-native:dashboard/v20250801:IntegrationFabric"),
+		},
+		{
+			Type: pulumi.String("azure-native:dashboard/v20250901preview:IntegrationFabric"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -153,6 +165,11 @@ func (o IntegrationFabricOutput) ToIntegrationFabricOutputWithContext(ctx contex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o IntegrationFabricOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *IntegrationFabric) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The geo-location where the resource lives
 func (o IntegrationFabricOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *IntegrationFabric) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -168,8 +185,8 @@ func (o IntegrationFabricOutput) Properties() IntegrationFabricPropertiesRespons
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o IntegrationFabricOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *IntegrationFabric) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o IntegrationFabricOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *IntegrationFabric) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

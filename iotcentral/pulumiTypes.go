@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -94,484 +94,540 @@ func (o AppSkuInfoResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AppSkuInfoResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The private endpoint resource.
-type PrivateEndpointResponse struct {
-	// The ARM identifier for private endpoint.
-	Id string `pulumi:"id"`
+// An object for an IP range that will be allowed access.
+type NetworkRuleSetIpRule struct {
+	// The readable name of the IP rule.
+	FilterName *string `pulumi:"filterName"`
+	// The CIDR block defining the IP range.
+	IpMask *string `pulumi:"ipMask"`
 }
 
-// The private endpoint resource.
-type PrivateEndpointResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutput() PrivateEndpointResponseOutput {
-	return o
-}
-
-func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContext(ctx context.Context) PrivateEndpointResponseOutput {
-	return o
-}
-
-// The ARM identifier for private endpoint.
-func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type PrivateEndpointResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateEndpointResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() PrivateEndpointResponsePtrOutput {
-	return o
-}
-
-func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
-	return o
-}
-
-func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
-	return o.ApplyT(func(v *PrivateEndpointResponse) PrivateEndpointResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PrivateEndpointResponse
-		return ret
-	}).(PrivateEndpointResponseOutput)
-}
-
-// The ARM identifier for private endpoint.
-func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionState struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionsRequired *string `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
-	Description *string `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status *string `pulumi:"status"`
-}
-
-// PrivateLinkServiceConnectionStateInput is an input type that accepts PrivateLinkServiceConnectionStateArgs and PrivateLinkServiceConnectionStateOutput values.
-// You can construct a concrete instance of `PrivateLinkServiceConnectionStateInput` via:
+// NetworkRuleSetIpRuleInput is an input type that accepts NetworkRuleSetIpRuleArgs and NetworkRuleSetIpRuleOutput values.
+// You can construct a concrete instance of `NetworkRuleSetIpRuleInput` via:
 //
-//	PrivateLinkServiceConnectionStateArgs{...}
-type PrivateLinkServiceConnectionStateInput interface {
+//	NetworkRuleSetIpRuleArgs{...}
+type NetworkRuleSetIpRuleInput interface {
 	pulumi.Input
 
-	ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput
-	ToPrivateLinkServiceConnectionStateOutputWithContext(context.Context) PrivateLinkServiceConnectionStateOutput
+	ToNetworkRuleSetIpRuleOutput() NetworkRuleSetIpRuleOutput
+	ToNetworkRuleSetIpRuleOutputWithContext(context.Context) NetworkRuleSetIpRuleOutput
 }
 
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateArgs struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionsRequired pulumi.StringPtrInput `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status pulumi.StringPtrInput `pulumi:"status"`
+// An object for an IP range that will be allowed access.
+type NetworkRuleSetIpRuleArgs struct {
+	// The readable name of the IP rule.
+	FilterName pulumi.StringPtrInput `pulumi:"filterName"`
+	// The CIDR block defining the IP range.
+	IpMask pulumi.StringPtrInput `pulumi:"ipMask"`
 }
 
-func (PrivateLinkServiceConnectionStateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
+func (NetworkRuleSetIpRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkRuleSetIpRule)(nil)).Elem()
 }
 
-func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
-	return i.ToPrivateLinkServiceConnectionStateOutputWithContext(context.Background())
+func (i NetworkRuleSetIpRuleArgs) ToNetworkRuleSetIpRuleOutput() NetworkRuleSetIpRuleOutput {
+	return i.ToNetworkRuleSetIpRuleOutputWithContext(context.Background())
 }
 
-func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
+func (i NetworkRuleSetIpRuleArgs) ToNetworkRuleSetIpRuleOutputWithContext(ctx context.Context) NetworkRuleSetIpRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkRuleSetIpRuleOutput)
 }
 
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceConnectionStateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
-	return o
-}
-
-// A message indicating if changes on the service provider require any updates on the consumer.
-func (o PrivateLinkServiceConnectionStateOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
-}
-
-// The reason for approval/rejection of the connection.
-func (o PrivateLinkServiceConnectionStateOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-func (o PrivateLinkServiceConnectionStateOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateResponse struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionsRequired *string `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
-	Description *string `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status *string `pulumi:"status"`
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceConnectionStateResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionStateResponse)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutput() PrivateLinkServiceConnectionStateResponseOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponseOutput {
-	return o
-}
-
-// A message indicating if changes on the service provider require any updates on the consumer.
-func (o PrivateLinkServiceConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
-}
-
-// The reason for approval/rejection of the connection.
-func (o PrivateLinkServiceConnectionStateResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-func (o PrivateLinkServiceConnectionStateResponseOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-// Managed service identity (either system assigned, or none)
-type SystemAssignedServiceIdentity struct {
-	// Type of managed service identity (either system assigned, or none).
-	Type string `pulumi:"type"`
-}
-
-// SystemAssignedServiceIdentityInput is an input type that accepts SystemAssignedServiceIdentityArgs and SystemAssignedServiceIdentityOutput values.
-// You can construct a concrete instance of `SystemAssignedServiceIdentityInput` via:
+// NetworkRuleSetIpRuleArrayInput is an input type that accepts NetworkRuleSetIpRuleArray and NetworkRuleSetIpRuleArrayOutput values.
+// You can construct a concrete instance of `NetworkRuleSetIpRuleArrayInput` via:
 //
-//	SystemAssignedServiceIdentityArgs{...}
-type SystemAssignedServiceIdentityInput interface {
+//	NetworkRuleSetIpRuleArray{ NetworkRuleSetIpRuleArgs{...} }
+type NetworkRuleSetIpRuleArrayInput interface {
 	pulumi.Input
 
-	ToSystemAssignedServiceIdentityOutput() SystemAssignedServiceIdentityOutput
-	ToSystemAssignedServiceIdentityOutputWithContext(context.Context) SystemAssignedServiceIdentityOutput
+	ToNetworkRuleSetIpRuleArrayOutput() NetworkRuleSetIpRuleArrayOutput
+	ToNetworkRuleSetIpRuleArrayOutputWithContext(context.Context) NetworkRuleSetIpRuleArrayOutput
 }
 
-// Managed service identity (either system assigned, or none)
-type SystemAssignedServiceIdentityArgs struct {
-	// Type of managed service identity (either system assigned, or none).
-	Type pulumi.StringInput `pulumi:"type"`
+type NetworkRuleSetIpRuleArray []NetworkRuleSetIpRuleInput
+
+func (NetworkRuleSetIpRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkRuleSetIpRule)(nil)).Elem()
 }
 
-func (SystemAssignedServiceIdentityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemAssignedServiceIdentity)(nil)).Elem()
+func (i NetworkRuleSetIpRuleArray) ToNetworkRuleSetIpRuleArrayOutput() NetworkRuleSetIpRuleArrayOutput {
+	return i.ToNetworkRuleSetIpRuleArrayOutputWithContext(context.Background())
 }
 
-func (i SystemAssignedServiceIdentityArgs) ToSystemAssignedServiceIdentityOutput() SystemAssignedServiceIdentityOutput {
-	return i.ToSystemAssignedServiceIdentityOutputWithContext(context.Background())
+func (i NetworkRuleSetIpRuleArray) ToNetworkRuleSetIpRuleArrayOutputWithContext(ctx context.Context) NetworkRuleSetIpRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkRuleSetIpRuleArrayOutput)
 }
 
-func (i SystemAssignedServiceIdentityArgs) ToSystemAssignedServiceIdentityOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SystemAssignedServiceIdentityOutput)
+// An object for an IP range that will be allowed access.
+type NetworkRuleSetIpRuleOutput struct{ *pulumi.OutputState }
+
+func (NetworkRuleSetIpRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkRuleSetIpRule)(nil)).Elem()
 }
 
-func (i SystemAssignedServiceIdentityArgs) ToSystemAssignedServiceIdentityPtrOutput() SystemAssignedServiceIdentityPtrOutput {
-	return i.ToSystemAssignedServiceIdentityPtrOutputWithContext(context.Background())
+func (o NetworkRuleSetIpRuleOutput) ToNetworkRuleSetIpRuleOutput() NetworkRuleSetIpRuleOutput {
+	return o
 }
 
-func (i SystemAssignedServiceIdentityArgs) ToSystemAssignedServiceIdentityPtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SystemAssignedServiceIdentityOutput).ToSystemAssignedServiceIdentityPtrOutputWithContext(ctx)
+func (o NetworkRuleSetIpRuleOutput) ToNetworkRuleSetIpRuleOutputWithContext(ctx context.Context) NetworkRuleSetIpRuleOutput {
+	return o
 }
 
-// SystemAssignedServiceIdentityPtrInput is an input type that accepts SystemAssignedServiceIdentityArgs, SystemAssignedServiceIdentityPtr and SystemAssignedServiceIdentityPtrOutput values.
-// You can construct a concrete instance of `SystemAssignedServiceIdentityPtrInput` via:
+// The readable name of the IP rule.
+func (o NetworkRuleSetIpRuleOutput) FilterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkRuleSetIpRule) *string { return v.FilterName }).(pulumi.StringPtrOutput)
+}
+
+// The CIDR block defining the IP range.
+func (o NetworkRuleSetIpRuleOutput) IpMask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkRuleSetIpRule) *string { return v.IpMask }).(pulumi.StringPtrOutput)
+}
+
+type NetworkRuleSetIpRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkRuleSetIpRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkRuleSetIpRule)(nil)).Elem()
+}
+
+func (o NetworkRuleSetIpRuleArrayOutput) ToNetworkRuleSetIpRuleArrayOutput() NetworkRuleSetIpRuleArrayOutput {
+	return o
+}
+
+func (o NetworkRuleSetIpRuleArrayOutput) ToNetworkRuleSetIpRuleArrayOutputWithContext(ctx context.Context) NetworkRuleSetIpRuleArrayOutput {
+	return o
+}
+
+func (o NetworkRuleSetIpRuleArrayOutput) Index(i pulumi.IntInput) NetworkRuleSetIpRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkRuleSetIpRule {
+		return vs[0].([]NetworkRuleSetIpRule)[vs[1].(int)]
+	}).(NetworkRuleSetIpRuleOutput)
+}
+
+// An object for an IP range that will be allowed access.
+type NetworkRuleSetIpRuleResponse struct {
+	// The network action for the IP mask.
+	Action string `pulumi:"action"`
+	// The readable name of the IP rule.
+	FilterName *string `pulumi:"filterName"`
+	// The CIDR block defining the IP range.
+	IpMask *string `pulumi:"ipMask"`
+}
+
+// An object for an IP range that will be allowed access.
+type NetworkRuleSetIpRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkRuleSetIpRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkRuleSetIpRuleResponse)(nil)).Elem()
+}
+
+func (o NetworkRuleSetIpRuleResponseOutput) ToNetworkRuleSetIpRuleResponseOutput() NetworkRuleSetIpRuleResponseOutput {
+	return o
+}
+
+func (o NetworkRuleSetIpRuleResponseOutput) ToNetworkRuleSetIpRuleResponseOutputWithContext(ctx context.Context) NetworkRuleSetIpRuleResponseOutput {
+	return o
+}
+
+// The network action for the IP mask.
+func (o NetworkRuleSetIpRuleResponseOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkRuleSetIpRuleResponse) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// The readable name of the IP rule.
+func (o NetworkRuleSetIpRuleResponseOutput) FilterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkRuleSetIpRuleResponse) *string { return v.FilterName }).(pulumi.StringPtrOutput)
+}
+
+// The CIDR block defining the IP range.
+func (o NetworkRuleSetIpRuleResponseOutput) IpMask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkRuleSetIpRuleResponse) *string { return v.IpMask }).(pulumi.StringPtrOutput)
+}
+
+type NetworkRuleSetIpRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkRuleSetIpRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkRuleSetIpRuleResponse)(nil)).Elem()
+}
+
+func (o NetworkRuleSetIpRuleResponseArrayOutput) ToNetworkRuleSetIpRuleResponseArrayOutput() NetworkRuleSetIpRuleResponseArrayOutput {
+	return o
+}
+
+func (o NetworkRuleSetIpRuleResponseArrayOutput) ToNetworkRuleSetIpRuleResponseArrayOutputWithContext(ctx context.Context) NetworkRuleSetIpRuleResponseArrayOutput {
+	return o
+}
+
+func (o NetworkRuleSetIpRuleResponseArrayOutput) Index(i pulumi.IntInput) NetworkRuleSetIpRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkRuleSetIpRuleResponse {
+		return vs[0].([]NetworkRuleSetIpRuleResponse)[vs[1].(int)]
+	}).(NetworkRuleSetIpRuleResponseOutput)
+}
+
+// Network Rule Set Properties of this IoT Central application.
+type NetworkRuleSets struct {
+	// Whether these rules apply for device connectivity to IoT Hub and Device Provisioning service associated with this application.
+	ApplyToDevices *bool `pulumi:"applyToDevices"`
+	// Whether these rules apply for connectivity via IoT Central web portal and APIs.
+	ApplyToIoTCentral *bool `pulumi:"applyToIoTCentral"`
+	// The default network action to apply.
+	DefaultAction *string `pulumi:"defaultAction"`
+	// List of IP rules.
+	IpRules []NetworkRuleSetIpRule `pulumi:"ipRules"`
+}
+
+// Defaults sets the appropriate defaults for NetworkRuleSets
+func (val *NetworkRuleSets) Defaults() *NetworkRuleSets {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ApplyToDevices == nil {
+		applyToDevices_ := false
+		tmp.ApplyToDevices = &applyToDevices_
+	}
+	if tmp.ApplyToIoTCentral == nil {
+		applyToIoTCentral_ := false
+		tmp.ApplyToIoTCentral = &applyToIoTCentral_
+	}
+	return &tmp
+}
+
+// NetworkRuleSetsInput is an input type that accepts NetworkRuleSetsArgs and NetworkRuleSetsOutput values.
+// You can construct a concrete instance of `NetworkRuleSetsInput` via:
 //
-//	        SystemAssignedServiceIdentityArgs{...}
+//	NetworkRuleSetsArgs{...}
+type NetworkRuleSetsInput interface {
+	pulumi.Input
+
+	ToNetworkRuleSetsOutput() NetworkRuleSetsOutput
+	ToNetworkRuleSetsOutputWithContext(context.Context) NetworkRuleSetsOutput
+}
+
+// Network Rule Set Properties of this IoT Central application.
+type NetworkRuleSetsArgs struct {
+	// Whether these rules apply for device connectivity to IoT Hub and Device Provisioning service associated with this application.
+	ApplyToDevices pulumi.BoolPtrInput `pulumi:"applyToDevices"`
+	// Whether these rules apply for connectivity via IoT Central web portal and APIs.
+	ApplyToIoTCentral pulumi.BoolPtrInput `pulumi:"applyToIoTCentral"`
+	// The default network action to apply.
+	DefaultAction pulumi.StringPtrInput `pulumi:"defaultAction"`
+	// List of IP rules.
+	IpRules NetworkRuleSetIpRuleArrayInput `pulumi:"ipRules"`
+}
+
+// Defaults sets the appropriate defaults for NetworkRuleSetsArgs
+func (val *NetworkRuleSetsArgs) Defaults() *NetworkRuleSetsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ApplyToDevices == nil {
+		tmp.ApplyToDevices = pulumi.BoolPtr(false)
+	}
+	if tmp.ApplyToIoTCentral == nil {
+		tmp.ApplyToIoTCentral = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
+func (NetworkRuleSetsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkRuleSets)(nil)).Elem()
+}
+
+func (i NetworkRuleSetsArgs) ToNetworkRuleSetsOutput() NetworkRuleSetsOutput {
+	return i.ToNetworkRuleSetsOutputWithContext(context.Background())
+}
+
+func (i NetworkRuleSetsArgs) ToNetworkRuleSetsOutputWithContext(ctx context.Context) NetworkRuleSetsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkRuleSetsOutput)
+}
+
+func (i NetworkRuleSetsArgs) ToNetworkRuleSetsPtrOutput() NetworkRuleSetsPtrOutput {
+	return i.ToNetworkRuleSetsPtrOutputWithContext(context.Background())
+}
+
+func (i NetworkRuleSetsArgs) ToNetworkRuleSetsPtrOutputWithContext(ctx context.Context) NetworkRuleSetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkRuleSetsOutput).ToNetworkRuleSetsPtrOutputWithContext(ctx)
+}
+
+// NetworkRuleSetsPtrInput is an input type that accepts NetworkRuleSetsArgs, NetworkRuleSetsPtr and NetworkRuleSetsPtrOutput values.
+// You can construct a concrete instance of `NetworkRuleSetsPtrInput` via:
+//
+//	        NetworkRuleSetsArgs{...}
 //
 //	or:
 //
 //	        nil
-type SystemAssignedServiceIdentityPtrInput interface {
+type NetworkRuleSetsPtrInput interface {
 	pulumi.Input
 
-	ToSystemAssignedServiceIdentityPtrOutput() SystemAssignedServiceIdentityPtrOutput
-	ToSystemAssignedServiceIdentityPtrOutputWithContext(context.Context) SystemAssignedServiceIdentityPtrOutput
+	ToNetworkRuleSetsPtrOutput() NetworkRuleSetsPtrOutput
+	ToNetworkRuleSetsPtrOutputWithContext(context.Context) NetworkRuleSetsPtrOutput
 }
 
-type systemAssignedServiceIdentityPtrType SystemAssignedServiceIdentityArgs
+type networkRuleSetsPtrType NetworkRuleSetsArgs
 
-func SystemAssignedServiceIdentityPtr(v *SystemAssignedServiceIdentityArgs) SystemAssignedServiceIdentityPtrInput {
-	return (*systemAssignedServiceIdentityPtrType)(v)
+func NetworkRuleSetsPtr(v *NetworkRuleSetsArgs) NetworkRuleSetsPtrInput {
+	return (*networkRuleSetsPtrType)(v)
 }
 
-func (*systemAssignedServiceIdentityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SystemAssignedServiceIdentity)(nil)).Elem()
+func (*networkRuleSetsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkRuleSets)(nil)).Elem()
 }
 
-func (i *systemAssignedServiceIdentityPtrType) ToSystemAssignedServiceIdentityPtrOutput() SystemAssignedServiceIdentityPtrOutput {
-	return i.ToSystemAssignedServiceIdentityPtrOutputWithContext(context.Background())
+func (i *networkRuleSetsPtrType) ToNetworkRuleSetsPtrOutput() NetworkRuleSetsPtrOutput {
+	return i.ToNetworkRuleSetsPtrOutputWithContext(context.Background())
 }
 
-func (i *systemAssignedServiceIdentityPtrType) ToSystemAssignedServiceIdentityPtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SystemAssignedServiceIdentityPtrOutput)
+func (i *networkRuleSetsPtrType) ToNetworkRuleSetsPtrOutputWithContext(ctx context.Context) NetworkRuleSetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkRuleSetsPtrOutput)
 }
 
-// Managed service identity (either system assigned, or none)
-type SystemAssignedServiceIdentityOutput struct{ *pulumi.OutputState }
+// Network Rule Set Properties of this IoT Central application.
+type NetworkRuleSetsOutput struct{ *pulumi.OutputState }
 
-func (SystemAssignedServiceIdentityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemAssignedServiceIdentity)(nil)).Elem()
+func (NetworkRuleSetsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkRuleSets)(nil)).Elem()
 }
 
-func (o SystemAssignedServiceIdentityOutput) ToSystemAssignedServiceIdentityOutput() SystemAssignedServiceIdentityOutput {
+func (o NetworkRuleSetsOutput) ToNetworkRuleSetsOutput() NetworkRuleSetsOutput {
 	return o
 }
 
-func (o SystemAssignedServiceIdentityOutput) ToSystemAssignedServiceIdentityOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityOutput {
+func (o NetworkRuleSetsOutput) ToNetworkRuleSetsOutputWithContext(ctx context.Context) NetworkRuleSetsOutput {
 	return o
 }
 
-func (o SystemAssignedServiceIdentityOutput) ToSystemAssignedServiceIdentityPtrOutput() SystemAssignedServiceIdentityPtrOutput {
-	return o.ToSystemAssignedServiceIdentityPtrOutputWithContext(context.Background())
+func (o NetworkRuleSetsOutput) ToNetworkRuleSetsPtrOutput() NetworkRuleSetsPtrOutput {
+	return o.ToNetworkRuleSetsPtrOutputWithContext(context.Background())
 }
 
-func (o SystemAssignedServiceIdentityOutput) ToSystemAssignedServiceIdentityPtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SystemAssignedServiceIdentity) *SystemAssignedServiceIdentity {
+func (o NetworkRuleSetsOutput) ToNetworkRuleSetsPtrOutputWithContext(ctx context.Context) NetworkRuleSetsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkRuleSets) *NetworkRuleSets {
 		return &v
-	}).(SystemAssignedServiceIdentityPtrOutput)
+	}).(NetworkRuleSetsPtrOutput)
 }
 
-// Type of managed service identity (either system assigned, or none).
-func (o SystemAssignedServiceIdentityOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v SystemAssignedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
+// Whether these rules apply for device connectivity to IoT Hub and Device Provisioning service associated with this application.
+func (o NetworkRuleSetsOutput) ApplyToDevices() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworkRuleSets) *bool { return v.ApplyToDevices }).(pulumi.BoolPtrOutput)
 }
 
-type SystemAssignedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
-
-func (SystemAssignedServiceIdentityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SystemAssignedServiceIdentity)(nil)).Elem()
+// Whether these rules apply for connectivity via IoT Central web portal and APIs.
+func (o NetworkRuleSetsOutput) ApplyToIoTCentral() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworkRuleSets) *bool { return v.ApplyToIoTCentral }).(pulumi.BoolPtrOutput)
 }
 
-func (o SystemAssignedServiceIdentityPtrOutput) ToSystemAssignedServiceIdentityPtrOutput() SystemAssignedServiceIdentityPtrOutput {
+// The default network action to apply.
+func (o NetworkRuleSetsOutput) DefaultAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkRuleSets) *string { return v.DefaultAction }).(pulumi.StringPtrOutput)
+}
+
+// List of IP rules.
+func (o NetworkRuleSetsOutput) IpRules() NetworkRuleSetIpRuleArrayOutput {
+	return o.ApplyT(func(v NetworkRuleSets) []NetworkRuleSetIpRule { return v.IpRules }).(NetworkRuleSetIpRuleArrayOutput)
+}
+
+type NetworkRuleSetsPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkRuleSetsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkRuleSets)(nil)).Elem()
+}
+
+func (o NetworkRuleSetsPtrOutput) ToNetworkRuleSetsPtrOutput() NetworkRuleSetsPtrOutput {
 	return o
 }
 
-func (o SystemAssignedServiceIdentityPtrOutput) ToSystemAssignedServiceIdentityPtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityPtrOutput {
+func (o NetworkRuleSetsPtrOutput) ToNetworkRuleSetsPtrOutputWithContext(ctx context.Context) NetworkRuleSetsPtrOutput {
 	return o
 }
 
-func (o SystemAssignedServiceIdentityPtrOutput) Elem() SystemAssignedServiceIdentityOutput {
-	return o.ApplyT(func(v *SystemAssignedServiceIdentity) SystemAssignedServiceIdentity {
+func (o NetworkRuleSetsPtrOutput) Elem() NetworkRuleSetsOutput {
+	return o.ApplyT(func(v *NetworkRuleSets) NetworkRuleSets {
 		if v != nil {
 			return *v
 		}
-		var ret SystemAssignedServiceIdentity
+		var ret NetworkRuleSets
 		return ret
-	}).(SystemAssignedServiceIdentityOutput)
+	}).(NetworkRuleSetsOutput)
 }
 
-// Type of managed service identity (either system assigned, or none).
-func (o SystemAssignedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemAssignedServiceIdentity) *string {
+// Whether these rules apply for device connectivity to IoT Hub and Device Provisioning service associated with this application.
+func (o NetworkRuleSetsPtrOutput) ApplyToDevices() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkRuleSets) *bool {
 		if v == nil {
 			return nil
 		}
-		return &v.Type
+		return v.ApplyToDevices
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether these rules apply for connectivity via IoT Central web portal and APIs.
+func (o NetworkRuleSetsPtrOutput) ApplyToIoTCentral() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkRuleSets) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ApplyToIoTCentral
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The default network action to apply.
+func (o NetworkRuleSetsPtrOutput) DefaultAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkRuleSets) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultAction
 	}).(pulumi.StringPtrOutput)
 }
 
-// Managed service identity (either system assigned, or none)
-type SystemAssignedServiceIdentityResponse struct {
-	// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-	PrincipalId string `pulumi:"principalId"`
-	// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-	TenantId string `pulumi:"tenantId"`
-	// Type of managed service identity (either system assigned, or none).
-	Type string `pulumi:"type"`
+// List of IP rules.
+func (o NetworkRuleSetsPtrOutput) IpRules() NetworkRuleSetIpRuleArrayOutput {
+	return o.ApplyT(func(v *NetworkRuleSets) []NetworkRuleSetIpRule {
+		if v == nil {
+			return nil
+		}
+		return v.IpRules
+	}).(NetworkRuleSetIpRuleArrayOutput)
 }
 
-// Managed service identity (either system assigned, or none)
-type SystemAssignedServiceIdentityResponseOutput struct{ *pulumi.OutputState }
-
-func (SystemAssignedServiceIdentityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemAssignedServiceIdentityResponse)(nil)).Elem()
+// Network Rule Set Properties of this IoT Central application.
+type NetworkRuleSetsResponse struct {
+	// Whether these rules apply for device connectivity to IoT Hub and Device Provisioning service associated with this application.
+	ApplyToDevices *bool `pulumi:"applyToDevices"`
+	// Whether these rules apply for connectivity via IoT Central web portal and APIs.
+	ApplyToIoTCentral *bool `pulumi:"applyToIoTCentral"`
+	// The default network action to apply.
+	DefaultAction *string `pulumi:"defaultAction"`
+	// List of IP rules.
+	IpRules []NetworkRuleSetIpRuleResponse `pulumi:"ipRules"`
 }
 
-func (o SystemAssignedServiceIdentityResponseOutput) ToSystemAssignedServiceIdentityResponseOutput() SystemAssignedServiceIdentityResponseOutput {
+// Defaults sets the appropriate defaults for NetworkRuleSetsResponse
+func (val *NetworkRuleSetsResponse) Defaults() *NetworkRuleSetsResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ApplyToDevices == nil {
+		applyToDevices_ := false
+		tmp.ApplyToDevices = &applyToDevices_
+	}
+	if tmp.ApplyToIoTCentral == nil {
+		applyToIoTCentral_ := false
+		tmp.ApplyToIoTCentral = &applyToIoTCentral_
+	}
+	return &tmp
+}
+
+// Network Rule Set Properties of this IoT Central application.
+type NetworkRuleSetsResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkRuleSetsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkRuleSetsResponse)(nil)).Elem()
+}
+
+func (o NetworkRuleSetsResponseOutput) ToNetworkRuleSetsResponseOutput() NetworkRuleSetsResponseOutput {
 	return o
 }
 
-func (o SystemAssignedServiceIdentityResponseOutput) ToSystemAssignedServiceIdentityResponseOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityResponseOutput {
+func (o NetworkRuleSetsResponseOutput) ToNetworkRuleSetsResponseOutputWithContext(ctx context.Context) NetworkRuleSetsResponseOutput {
 	return o
 }
 
-// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o SystemAssignedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v SystemAssignedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+// Whether these rules apply for device connectivity to IoT Hub and Device Provisioning service associated with this application.
+func (o NetworkRuleSetsResponseOutput) ApplyToDevices() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworkRuleSetsResponse) *bool { return v.ApplyToDevices }).(pulumi.BoolPtrOutput)
 }
 
-// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o SystemAssignedServiceIdentityResponseOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v SystemAssignedServiceIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
+// Whether these rules apply for connectivity via IoT Central web portal and APIs.
+func (o NetworkRuleSetsResponseOutput) ApplyToIoTCentral() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworkRuleSetsResponse) *bool { return v.ApplyToIoTCentral }).(pulumi.BoolPtrOutput)
 }
 
-// Type of managed service identity (either system assigned, or none).
-func (o SystemAssignedServiceIdentityResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v SystemAssignedServiceIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
+// The default network action to apply.
+func (o NetworkRuleSetsResponseOutput) DefaultAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkRuleSetsResponse) *string { return v.DefaultAction }).(pulumi.StringPtrOutput)
 }
 
-type SystemAssignedServiceIdentityResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SystemAssignedServiceIdentityResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SystemAssignedServiceIdentityResponse)(nil)).Elem()
+// List of IP rules.
+func (o NetworkRuleSetsResponseOutput) IpRules() NetworkRuleSetIpRuleResponseArrayOutput {
+	return o.ApplyT(func(v NetworkRuleSetsResponse) []NetworkRuleSetIpRuleResponse { return v.IpRules }).(NetworkRuleSetIpRuleResponseArrayOutput)
 }
 
-func (o SystemAssignedServiceIdentityResponsePtrOutput) ToSystemAssignedServiceIdentityResponsePtrOutput() SystemAssignedServiceIdentityResponsePtrOutput {
+type NetworkRuleSetsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkRuleSetsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkRuleSetsResponse)(nil)).Elem()
+}
+
+func (o NetworkRuleSetsResponsePtrOutput) ToNetworkRuleSetsResponsePtrOutput() NetworkRuleSetsResponsePtrOutput {
 	return o
 }
 
-func (o SystemAssignedServiceIdentityResponsePtrOutput) ToSystemAssignedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityResponsePtrOutput {
+func (o NetworkRuleSetsResponsePtrOutput) ToNetworkRuleSetsResponsePtrOutputWithContext(ctx context.Context) NetworkRuleSetsResponsePtrOutput {
 	return o
 }
 
-func (o SystemAssignedServiceIdentityResponsePtrOutput) Elem() SystemAssignedServiceIdentityResponseOutput {
-	return o.ApplyT(func(v *SystemAssignedServiceIdentityResponse) SystemAssignedServiceIdentityResponse {
+func (o NetworkRuleSetsResponsePtrOutput) Elem() NetworkRuleSetsResponseOutput {
+	return o.ApplyT(func(v *NetworkRuleSetsResponse) NetworkRuleSetsResponse {
 		if v != nil {
 			return *v
 		}
-		var ret SystemAssignedServiceIdentityResponse
+		var ret NetworkRuleSetsResponse
 		return ret
-	}).(SystemAssignedServiceIdentityResponseOutput)
+	}).(NetworkRuleSetsResponseOutput)
 }
 
-// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o SystemAssignedServiceIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemAssignedServiceIdentityResponse) *string {
+// Whether these rules apply for device connectivity to IoT Hub and Device Provisioning service associated with this application.
+func (o NetworkRuleSetsResponsePtrOutput) ApplyToDevices() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkRuleSetsResponse) *bool {
 		if v == nil {
 			return nil
 		}
-		return &v.PrincipalId
-	}).(pulumi.StringPtrOutput)
+		return v.ApplyToDevices
+	}).(pulumi.BoolPtrOutput)
 }
 
-// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o SystemAssignedServiceIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemAssignedServiceIdentityResponse) *string {
+// Whether these rules apply for connectivity via IoT Central web portal and APIs.
+func (o NetworkRuleSetsResponsePtrOutput) ApplyToIoTCentral() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkRuleSetsResponse) *bool {
 		if v == nil {
 			return nil
 		}
-		return &v.TenantId
-	}).(pulumi.StringPtrOutput)
+		return v.ApplyToIoTCentral
+	}).(pulumi.BoolPtrOutput)
 }
 
-// Type of managed service identity (either system assigned, or none).
-func (o SystemAssignedServiceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemAssignedServiceIdentityResponse) *string {
+// The default network action to apply.
+func (o NetworkRuleSetsResponsePtrOutput) DefaultAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkRuleSetsResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Type
+		return v.DefaultAction
 	}).(pulumi.StringPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
-}
-
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponseOutput struct{ *pulumi.OutputState }
-
-func (SystemDataResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
-	return o
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
-	return o
-}
-
-// The timestamp of resource creation (UTC).
-func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+// List of IP rules.
+func (o NetworkRuleSetsResponsePtrOutput) IpRules() NetworkRuleSetIpRuleResponseArrayOutput {
+	return o.ApplyT(func(v *NetworkRuleSetsResponse) []NetworkRuleSetIpRuleResponse {
+		if v == nil {
+			return nil
+		}
+		return v.IpRules
+	}).(NetworkRuleSetIpRuleResponseArrayOutput)
 }
 
 func init() {
 	pulumi.RegisterOutputType(AppSkuInfoOutput{})
 	pulumi.RegisterOutputType(AppSkuInfoResponseOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
-	pulumi.RegisterOutputType(SystemAssignedServiceIdentityOutput{})
-	pulumi.RegisterOutputType(SystemAssignedServiceIdentityPtrOutput{})
-	pulumi.RegisterOutputType(SystemAssignedServiceIdentityResponseOutput{})
-	pulumi.RegisterOutputType(SystemAssignedServiceIdentityResponsePtrOutput{})
-	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(NetworkRuleSetIpRuleOutput{})
+	pulumi.RegisterOutputType(NetworkRuleSetIpRuleArrayOutput{})
+	pulumi.RegisterOutputType(NetworkRuleSetIpRuleResponseOutput{})
+	pulumi.RegisterOutputType(NetworkRuleSetIpRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(NetworkRuleSetsOutput{})
+	pulumi.RegisterOutputType(NetworkRuleSetsPtrOutput{})
+	pulumi.RegisterOutputType(NetworkRuleSetsResponseOutput{})
+	pulumi.RegisterOutputType(NetworkRuleSetsResponsePtrOutput{})
 }

@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +34,8 @@ type LookupEnterprisePolicyArgs struct {
 
 // Definition of the EnterprisePolicy.
 type LookupEnterprisePolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The encryption settings for a configuration store.
 	Encryption *PropertiesResponseEncryption `pulumi:"encryption"`
 	// The health status of the resource.
@@ -52,7 +55,7 @@ type LookupEnterprisePolicyResult struct {
 	// Settings concerning network injection.
 	NetworkInjection *PropertiesResponseNetworkInjection `pulumi:"networkInjection"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// The internally assigned unique identifier of the resource.
 	SystemId string `pulumi:"systemId"`
 	// Resource tags.
@@ -94,6 +97,11 @@ func (o LookupEnterprisePolicyResultOutput) ToLookupEnterprisePolicyResultOutput
 
 func (o LookupEnterprisePolicyResultOutput) ToLookupEnterprisePolicyResultOutputWithContext(ctx context.Context) LookupEnterprisePolicyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEnterprisePolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnterprisePolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The encryption settings for a configuration store.
@@ -142,8 +150,8 @@ func (o LookupEnterprisePolicyResultOutput) NetworkInjection() PropertiesRespons
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupEnterprisePolicyResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupEnterprisePolicyResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupEnterprisePolicyResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupEnterprisePolicyResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The internally assigned unique identifier of the resource.

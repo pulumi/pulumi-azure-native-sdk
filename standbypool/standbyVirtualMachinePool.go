@@ -8,20 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A StandbyVirtualMachinePoolResource.
 //
-// Uses Azure REST API version 2023-12-01-preview.
+// Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2023-12-01-preview.
 //
-// Other available API versions: 2024-03-01, 2024-03-01-preview, 2025-03-01.
+// Other available API versions: 2023-12-01-preview, 2024-03-01-preview, 2025-03-01, 2025-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native standbypool [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type StandbyVirtualMachinePool struct {
 	pulumi.CustomResourceState
 
 	// Specifies the fully qualified resource ID of a virtual machine scale set the pool is attached to.
 	AttachedVirtualMachineScaleSetId pulumi.StringPtrOutput `pulumi:"attachedVirtualMachineScaleSetId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Specifies the elasticity profile of the standby virtual machine pools.
 	ElasticityProfile StandbyVirtualMachinePoolElasticityProfileResponsePtrOutput `pulumi:"elasticityProfile"`
 	// The geo-location where the resource lives
@@ -31,7 +34,7 @@ type StandbyVirtualMachinePool struct {
 	// The status of the last operation.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -65,6 +68,9 @@ func NewStandbyVirtualMachinePool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:standbypool/v20250301:StandbyVirtualMachinePool"),
+		},
+		{
+			Type: pulumi.String("azure-native:standbypool/v20251001:StandbyVirtualMachinePool"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -177,6 +183,11 @@ func (o StandbyVirtualMachinePoolOutput) AttachedVirtualMachineScaleSetId() pulu
 	return o.ApplyT(func(v *StandbyVirtualMachinePool) pulumi.StringPtrOutput { return v.AttachedVirtualMachineScaleSetId }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o StandbyVirtualMachinePoolOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *StandbyVirtualMachinePool) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Specifies the elasticity profile of the standby virtual machine pools.
 func (o StandbyVirtualMachinePoolOutput) ElasticityProfile() StandbyVirtualMachinePoolElasticityProfileResponsePtrOutput {
 	return o.ApplyT(func(v *StandbyVirtualMachinePool) StandbyVirtualMachinePoolElasticityProfileResponsePtrOutput {
@@ -200,8 +211,8 @@ func (o StandbyVirtualMachinePoolOutput) ProvisioningState() pulumi.StringOutput
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o StandbyVirtualMachinePoolOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *StandbyVirtualMachinePool) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o StandbyVirtualMachinePoolOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *StandbyVirtualMachinePool) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

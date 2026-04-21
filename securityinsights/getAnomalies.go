@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a setting.
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2025-01-01-preview.
 func LookupAnomalies(ctx *pulumi.Context, args *LookupAnomaliesArgs, opts ...pulumi.InvokeOption) (*LookupAnomaliesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAnomaliesResult
@@ -35,6 +36,8 @@ type LookupAnomaliesArgs struct {
 
 // Settings with single toggle.
 type LookupAnomaliesResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -47,7 +50,7 @@ type LookupAnomaliesResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -89,6 +92,11 @@ func (o LookupAnomaliesResultOutput) ToLookupAnomaliesResultOutputWithContext(ct
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupAnomaliesResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAnomaliesResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Etag of the azure resource
 func (o LookupAnomaliesResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAnomaliesResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
@@ -116,8 +124,8 @@ func (o LookupAnomaliesResultOutput) Name() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupAnomaliesResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAnomaliesResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupAnomaliesResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAnomaliesResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

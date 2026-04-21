@@ -8,20 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Definition of the module type.
 //
-// Uses Azure REST API version 2022-08-08. In version 1.x of the Azure Native provider, it used API version 2019-06-01.
+// Uses Azure REST API version 2024-10-23. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
 //
-// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
+// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Module struct {
 	pulumi.CustomResourceState
 
 	// Gets or sets the activity count of the module.
 	ActivityCount pulumi.IntPtrOutput `pulumi:"activityCount"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the contentLink of the module.
 	ContentLink ContentLinkResponsePtrOutput `pulumi:"contentLink"`
 	// Gets or sets the creation time.
@@ -38,17 +41,19 @@ type Module struct {
 	IsGlobal pulumi.BoolPtrOutput `pulumi:"isGlobal"`
 	// Gets or sets the last modified time.
 	LastModifiedTime pulumi.StringPtrOutput `pulumi:"lastModifiedTime"`
-	// The Azure Region where the resource lives
-	Location pulumi.StringPtrOutput `pulumi:"location"`
+	// The geo-location where the resource lives
+	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Gets or sets the provisioning state of the module.
 	ProvisioningState pulumi.StringPtrOutput `pulumi:"provisioningState"`
 	// Gets or sets the size in bytes of the module.
 	SizeInBytes pulumi.Float64PtrOutput `pulumi:"sizeInBytes"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Gets or sets the version of the module.
 	Version pulumi.StringPtrOutput `pulumi:"version"`
@@ -203,6 +208,11 @@ func (o ModuleOutput) ActivityCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Module) pulumi.IntPtrOutput { return v.ActivityCount }).(pulumi.IntPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o ModuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Module) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Gets or sets the contentLink of the module.
 func (o ModuleOutput) ContentLink() ContentLinkResponsePtrOutput {
 	return o.ApplyT(func(v *Module) ContentLinkResponsePtrOutput { return v.ContentLink }).(ContentLinkResponsePtrOutput)
@@ -243,9 +253,9 @@ func (o ModuleOutput) LastModifiedTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Module) pulumi.StringPtrOutput { return v.LastModifiedTime }).(pulumi.StringPtrOutput)
 }
 
-// The Azure Region where the resource lives
-func (o ModuleOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Module) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
+// The geo-location where the resource lives
+func (o ModuleOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Module) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // The name of the resource
@@ -263,12 +273,17 @@ func (o ModuleOutput) SizeInBytes() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *Module) pulumi.Float64PtrOutput { return v.SizeInBytes }).(pulumi.Float64PtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o ModuleOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Module) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+}
+
 // Resource tags.
 func (o ModuleOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Module) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ModuleOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Module) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

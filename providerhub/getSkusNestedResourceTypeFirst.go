@@ -7,13 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the sku details for the given resource type and sku name.
 //
-// Uses Azure REST API version 2021-09-01-preview.
+// Uses Azure REST API version 2024-09-01.
+//
+// Other available API versions: 2021-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native providerhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSkusNestedResourceTypeFirst(ctx *pulumi.Context, args *LookupSkusNestedResourceTypeFirstArgs, opts ...pulumi.InvokeOption) (*LookupSkusNestedResourceTypeFirstResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSkusNestedResourceTypeFirstResult
@@ -35,14 +38,17 @@ type LookupSkusNestedResourceTypeFirstArgs struct {
 	Sku string `pulumi:"sku"`
 }
 
+// Concrete proxy resource types can be created by aliasing this type using a specific property type.
 type LookupSkusNestedResourceTypeFirstResult struct {
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name       string                        `pulumi:"name"`
-	Properties SkuResourceResponseProperties `pulumi:"properties"`
-	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	Properties SkuResourcePropertiesResponse `pulumi:"properties"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv6.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -71,6 +77,7 @@ func (LookupSkusNestedResourceTypeFirstOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupSkusNestedResourceTypeFirstArgs)(nil)).Elem()
 }
 
+// Concrete proxy resource types can be created by aliasing this type using a specific property type.
 type LookupSkusNestedResourceTypeFirstResultOutput struct{ *pulumi.OutputState }
 
 func (LookupSkusNestedResourceTypeFirstResultOutput) ElementType() reflect.Type {
@@ -85,7 +92,12 @@ func (o LookupSkusNestedResourceTypeFirstResultOutput) ToLookupSkusNestedResourc
 	return o
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// The Azure API version of the resource.
+func (o LookupSkusNestedResourceTypeFirstResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSkusNestedResourceTypeFirstResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupSkusNestedResourceTypeFirstResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSkusNestedResourceTypeFirstResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -95,13 +107,13 @@ func (o LookupSkusNestedResourceTypeFirstResultOutput) Name() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupSkusNestedResourceTypeFirstResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o LookupSkusNestedResourceTypeFirstResultOutput) Properties() SkuResourceResponsePropertiesOutput {
-	return o.ApplyT(func(v LookupSkusNestedResourceTypeFirstResult) SkuResourceResponseProperties { return v.Properties }).(SkuResourceResponsePropertiesOutput)
+func (o LookupSkusNestedResourceTypeFirstResultOutput) Properties() SkuResourcePropertiesResponseOutput {
+	return o.ApplyT(func(v LookupSkusNestedResourceTypeFirstResult) SkuResourcePropertiesResponse { return v.Properties }).(SkuResourcePropertiesResponseOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-func (o LookupSkusNestedResourceTypeFirstResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSkusNestedResourceTypeFirstResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupSkusNestedResourceTypeFirstResultOutput) SystemData() commontypesv6.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSkusNestedResourceTypeFirstResult) commontypesv6.SystemDataResponse { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

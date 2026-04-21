@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +34,8 @@ type LookupRegistrationDefinitionArgs struct {
 
 // The registration definition.
 type LookupRegistrationDefinitionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The fully qualified path of the registration definition.
 	Id string `pulumi:"id"`
 	// The name of the registration definition.
@@ -42,7 +45,7 @@ type LookupRegistrationDefinitionResult struct {
 	// The properties of a registration definition.
 	Properties RegistrationDefinitionPropertiesResponse `pulumi:"properties"`
 	// The metadata for the registration assignment resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// The type of the Azure resource (Microsoft.ManagedServices/registrationDefinitions).
 	Type string `pulumi:"type"`
 }
@@ -82,6 +85,11 @@ func (o LookupRegistrationDefinitionResultOutput) ToLookupRegistrationDefinition
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupRegistrationDefinitionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistrationDefinitionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The fully qualified path of the registration definition.
 func (o LookupRegistrationDefinitionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistrationDefinitionResult) string { return v.Id }).(pulumi.StringOutput)
@@ -105,8 +113,8 @@ func (o LookupRegistrationDefinitionResultOutput) Properties() RegistrationDefin
 }
 
 // The metadata for the registration assignment resource.
-func (o LookupRegistrationDefinitionResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupRegistrationDefinitionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupRegistrationDefinitionResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupRegistrationDefinitionResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the Azure resource (Microsoft.ManagedServices/registrationDefinitions).

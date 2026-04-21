@@ -8,16 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The virtualNetworks resource definition.
 //
-// Uses Azure REST API version 2022-09-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-05-01-preview.
+// Uses Azure REST API version 2022-09-01-preview.
+//
+// Other available API versions: 2023-11-15-preview, 2024-01-01, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridcontainerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type VirtualNetworkRetrieve struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion  pulumi.StringOutput                              `pulumi:"azureApiVersion"`
 	ExtendedLocation VirtualNetworksResponseExtendedLocationPtrOutput `pulumi:"extendedLocation"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -26,7 +31,7 @@ type VirtualNetworkRetrieve struct {
 	// HybridAKSNetworkSpec defines the desired state of HybridAKSNetwork
 	Properties VirtualNetworksPropertiesResponseOutput `pulumi:"properties"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -48,28 +53,16 @@ func NewVirtualNetworkRetrieve(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:hybridcontainerservice/v20220501preview:VirtualNetworkRetrieve"),
 		},
 		{
-			Type: pulumi.String("azure-native:hybridcontainerservice/v20220501preview:virtualNetworkRetrieve"),
-		},
-		{
 			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:VirtualNetworkRetrieve"),
-		},
-		{
-			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:virtualNetworkRetrieve"),
 		},
 		{
 			Type: pulumi.String("azure-native:hybridcontainerservice/v20231115preview:VirtualNetworkRetrieve"),
 		},
 		{
-			Type: pulumi.String("azure-native:hybridcontainerservice/v20231115preview:virtualNetworkRetrieve"),
-		},
-		{
 			Type: pulumi.String("azure-native:hybridcontainerservice/v20240101:VirtualNetworkRetrieve"),
 		},
 		{
-			Type: pulumi.String("azure-native:hybridcontainerservice/v20240101:virtualNetworkRetrieve"),
-		},
-		{
-			Type: pulumi.String("azure-native:hybridcontainerservice:virtualNetworkRetrieve"),
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20250201preview:VirtualNetworkRetrieve"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -171,6 +164,11 @@ func (o VirtualNetworkRetrieveOutput) ToVirtualNetworkRetrieveOutputWithContext(
 	return o
 }
 
+// The Azure API version of the resource.
+func (o VirtualNetworkRetrieveOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualNetworkRetrieve) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 func (o VirtualNetworkRetrieveOutput) ExtendedLocation() VirtualNetworksResponseExtendedLocationPtrOutput {
 	return o.ApplyT(func(v *VirtualNetworkRetrieve) VirtualNetworksResponseExtendedLocationPtrOutput {
 		return v.ExtendedLocation
@@ -193,8 +191,8 @@ func (o VirtualNetworkRetrieveOutput) Properties() VirtualNetworksPropertiesResp
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o VirtualNetworkRetrieveOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *VirtualNetworkRetrieve) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o VirtualNetworkRetrieveOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *VirtualNetworkRetrieve) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Resource tags.

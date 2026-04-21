@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Definition of the EnterprisePolicy.
 //
-// Uses Azure REST API version 2020-10-30-preview. In version 1.x of the Azure Native provider, it used API version 2020-10-30-preview.
+// Uses Azure REST API version 2020-10-30-preview. In version 2.x of the Azure Native provider, it used API version 2020-10-30-preview.
 type EnterprisePolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The encryption settings for a configuration store.
 	Encryption PropertiesResponseEncryptionPtrOutput `pulumi:"encryption"`
 	// The health status of the resource.
@@ -35,7 +38,7 @@ type EnterprisePolicy struct {
 	// Settings concerning network injection.
 	NetworkInjection PropertiesResponseNetworkInjectionPtrOutput `pulumi:"networkInjection"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// The internally assigned unique identifier of the resource.
 	SystemId pulumi.StringOutput `pulumi:"systemId"`
 	// Resource tags.
@@ -179,6 +182,11 @@ func (o EnterprisePolicyOutput) ToEnterprisePolicyOutputWithContext(ctx context.
 	return o
 }
 
+// The Azure API version of the resource.
+func (o EnterprisePolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnterprisePolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The encryption settings for a configuration store.
 func (o EnterprisePolicyOutput) Encryption() PropertiesResponseEncryptionPtrOutput {
 	return o.ApplyT(func(v *EnterprisePolicy) PropertiesResponseEncryptionPtrOutput { return v.Encryption }).(PropertiesResponseEncryptionPtrOutput)
@@ -220,8 +228,8 @@ func (o EnterprisePolicyOutput) NetworkInjection() PropertiesResponseNetworkInje
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o EnterprisePolicyOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *EnterprisePolicy) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o EnterprisePolicyOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *EnterprisePolicy) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The internally assigned unique identifier of the resource.

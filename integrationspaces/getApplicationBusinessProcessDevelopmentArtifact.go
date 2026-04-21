@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,7 +43,7 @@ type GetApplicationBusinessProcessDevelopmentArtifactResult struct {
 	// The properties of the business process development artifact.
 	Properties BusinessProcessDevelopmentArtifactPropertiesResponse `pulumi:"properties"`
 	// The system data of the business process development artifact.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 }
 
 func GetApplicationBusinessProcessDevelopmentArtifactOutput(ctx *pulumi.Context, args GetApplicationBusinessProcessDevelopmentArtifactOutputArgs, opts ...pulumi.InvokeOption) GetApplicationBusinessProcessDevelopmentArtifactResultOutput {
@@ -97,8 +98,10 @@ func (o GetApplicationBusinessProcessDevelopmentArtifactResultOutput) Properties
 }
 
 // The system data of the business process development artifact.
-func (o GetApplicationBusinessProcessDevelopmentArtifactResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v GetApplicationBusinessProcessDevelopmentArtifactResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetApplicationBusinessProcessDevelopmentArtifactResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v GetApplicationBusinessProcessDevelopmentArtifactResult) commontypesv3.SystemDataResponse {
+		return v.SystemData
+	}).(commontypesv3.SystemDataResponseOutput)
 }
 
 func init() {

@@ -8,16 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The springbootsites envelope resource definition.
 //
-// Uses Azure REST API version 2023-01-01-preview.
+// Uses Azure REST API version 2024-04-01-preview.
+//
+// Other available API versions: 2023-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazurespringboot [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Springbootsite struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The extended location definition.
 	ExtendedLocation SpringbootsitesModelResponseExtendedLocationPtrOutput `pulumi:"extendedLocation"`
 	// The geo-location where the resource lives
@@ -27,7 +32,7 @@ type Springbootsite struct {
 	// The springbootsites resource definition.
 	Properties SpringbootsitesPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -49,16 +54,7 @@ func NewSpringbootsite(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:offazurespringboot/v20230101preview:Springbootsite"),
 		},
 		{
-			Type: pulumi.String("azure-native:offazurespringboot/v20230101preview:springbootsite"),
-		},
-		{
 			Type: pulumi.String("azure-native:offazurespringboot/v20240401preview:Springbootsite"),
-		},
-		{
-			Type: pulumi.String("azure-native:offazurespringboot/v20240401preview:springbootsite"),
-		},
-		{
-			Type: pulumi.String("azure-native:offazurespringboot:springbootsite"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -162,6 +158,11 @@ func (o SpringbootsiteOutput) ToSpringbootsiteOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o SpringbootsiteOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Springbootsite) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The extended location definition.
 func (o SpringbootsiteOutput) ExtendedLocation() SpringbootsitesModelResponseExtendedLocationPtrOutput {
 	return o.ApplyT(func(v *Springbootsite) SpringbootsitesModelResponseExtendedLocationPtrOutput {
@@ -185,8 +186,8 @@ func (o SpringbootsiteOutput) Properties() SpringbootsitesPropertiesResponseOutp
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o SpringbootsiteOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Springbootsite) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o SpringbootsiteOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Springbootsite) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

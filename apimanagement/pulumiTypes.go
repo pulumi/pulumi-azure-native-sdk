@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -7036,6 +7037,320 @@ func (o CircuitBreakerRuleResponseArrayOutput) Index(i pulumi.IntInput) CircuitB
 	}).(CircuitBreakerRuleResponseOutput)
 }
 
+// Microsoft EntraID client application secrets
+type ClientApplicationSecretsContractResponseEntra struct {
+	// EntraID client application secret
+	ClientSecret *string `pulumi:"clientSecret"`
+	// EntraID client application secret expiration date.
+	ExpiresAt string `pulumi:"expiresAt"`
+}
+
+// Microsoft EntraID client application secrets
+type ClientApplicationSecretsContractResponseEntraOutput struct{ *pulumi.OutputState }
+
+func (ClientApplicationSecretsContractResponseEntraOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientApplicationSecretsContractResponseEntra)(nil)).Elem()
+}
+
+func (o ClientApplicationSecretsContractResponseEntraOutput) ToClientApplicationSecretsContractResponseEntraOutput() ClientApplicationSecretsContractResponseEntraOutput {
+	return o
+}
+
+func (o ClientApplicationSecretsContractResponseEntraOutput) ToClientApplicationSecretsContractResponseEntraOutputWithContext(ctx context.Context) ClientApplicationSecretsContractResponseEntraOutput {
+	return o
+}
+
+// EntraID client application secret
+func (o ClientApplicationSecretsContractResponseEntraOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientApplicationSecretsContractResponseEntra) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// EntraID client application secret expiration date.
+func (o ClientApplicationSecretsContractResponseEntraOutput) ExpiresAt() pulumi.StringOutput {
+	return o.ApplyT(func(v ClientApplicationSecretsContractResponseEntra) string { return v.ExpiresAt }).(pulumi.StringOutput)
+}
+
+type ClientApplicationSecretsContractResponseEntraPtrOutput struct{ *pulumi.OutputState }
+
+func (ClientApplicationSecretsContractResponseEntraPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientApplicationSecretsContractResponseEntra)(nil)).Elem()
+}
+
+func (o ClientApplicationSecretsContractResponseEntraPtrOutput) ToClientApplicationSecretsContractResponseEntraPtrOutput() ClientApplicationSecretsContractResponseEntraPtrOutput {
+	return o
+}
+
+func (o ClientApplicationSecretsContractResponseEntraPtrOutput) ToClientApplicationSecretsContractResponseEntraPtrOutputWithContext(ctx context.Context) ClientApplicationSecretsContractResponseEntraPtrOutput {
+	return o
+}
+
+func (o ClientApplicationSecretsContractResponseEntraPtrOutput) Elem() ClientApplicationSecretsContractResponseEntraOutput {
+	return o.ApplyT(func(v *ClientApplicationSecretsContractResponseEntra) ClientApplicationSecretsContractResponseEntra {
+		if v != nil {
+			return *v
+		}
+		var ret ClientApplicationSecretsContractResponseEntra
+		return ret
+	}).(ClientApplicationSecretsContractResponseEntraOutput)
+}
+
+// EntraID client application secret
+func (o ClientApplicationSecretsContractResponseEntraPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientApplicationSecretsContractResponseEntra) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// EntraID client application secret expiration date.
+func (o ClientApplicationSecretsContractResponseEntraPtrOutput) ExpiresAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClientApplicationSecretsContractResponseEntra) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ExpiresAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// Information regarding the Configuration API of the API Management service.
+type ConfigurationApi struct {
+	// Indication whether or not the legacy Configuration API (v1) should be exposed on the API Management service. Value is optional but must be 'Enabled' or 'Disabled'. If 'Disabled', legacy Configuration API (v1) will not be available for self-hosted gateways. Default value is 'Enabled'
+	LegacyApi *string `pulumi:"legacyApi"`
+}
+
+// Defaults sets the appropriate defaults for ConfigurationApi
+func (val *ConfigurationApi) Defaults() *ConfigurationApi {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.LegacyApi == nil {
+		legacyApi_ := "Enabled"
+		tmp.LegacyApi = &legacyApi_
+	}
+	return &tmp
+}
+
+// ConfigurationApiInput is an input type that accepts ConfigurationApiArgs and ConfigurationApiOutput values.
+// You can construct a concrete instance of `ConfigurationApiInput` via:
+//
+//	ConfigurationApiArgs{...}
+type ConfigurationApiInput interface {
+	pulumi.Input
+
+	ToConfigurationApiOutput() ConfigurationApiOutput
+	ToConfigurationApiOutputWithContext(context.Context) ConfigurationApiOutput
+}
+
+// Information regarding the Configuration API of the API Management service.
+type ConfigurationApiArgs struct {
+	// Indication whether or not the legacy Configuration API (v1) should be exposed on the API Management service. Value is optional but must be 'Enabled' or 'Disabled'. If 'Disabled', legacy Configuration API (v1) will not be available for self-hosted gateways. Default value is 'Enabled'
+	LegacyApi pulumi.StringPtrInput `pulumi:"legacyApi"`
+}
+
+// Defaults sets the appropriate defaults for ConfigurationApiArgs
+func (val *ConfigurationApiArgs) Defaults() *ConfigurationApiArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.LegacyApi == nil {
+		tmp.LegacyApi = pulumi.StringPtr("Enabled")
+	}
+	return &tmp
+}
+func (ConfigurationApiArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationApi)(nil)).Elem()
+}
+
+func (i ConfigurationApiArgs) ToConfigurationApiOutput() ConfigurationApiOutput {
+	return i.ToConfigurationApiOutputWithContext(context.Background())
+}
+
+func (i ConfigurationApiArgs) ToConfigurationApiOutputWithContext(ctx context.Context) ConfigurationApiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationApiOutput)
+}
+
+func (i ConfigurationApiArgs) ToConfigurationApiPtrOutput() ConfigurationApiPtrOutput {
+	return i.ToConfigurationApiPtrOutputWithContext(context.Background())
+}
+
+func (i ConfigurationApiArgs) ToConfigurationApiPtrOutputWithContext(ctx context.Context) ConfigurationApiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationApiOutput).ToConfigurationApiPtrOutputWithContext(ctx)
+}
+
+// ConfigurationApiPtrInput is an input type that accepts ConfigurationApiArgs, ConfigurationApiPtr and ConfigurationApiPtrOutput values.
+// You can construct a concrete instance of `ConfigurationApiPtrInput` via:
+//
+//	        ConfigurationApiArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfigurationApiPtrInput interface {
+	pulumi.Input
+
+	ToConfigurationApiPtrOutput() ConfigurationApiPtrOutput
+	ToConfigurationApiPtrOutputWithContext(context.Context) ConfigurationApiPtrOutput
+}
+
+type configurationApiPtrType ConfigurationApiArgs
+
+func ConfigurationApiPtr(v *ConfigurationApiArgs) ConfigurationApiPtrInput {
+	return (*configurationApiPtrType)(v)
+}
+
+func (*configurationApiPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigurationApi)(nil)).Elem()
+}
+
+func (i *configurationApiPtrType) ToConfigurationApiPtrOutput() ConfigurationApiPtrOutput {
+	return i.ToConfigurationApiPtrOutputWithContext(context.Background())
+}
+
+func (i *configurationApiPtrType) ToConfigurationApiPtrOutputWithContext(ctx context.Context) ConfigurationApiPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigurationApiPtrOutput)
+}
+
+// Information regarding the Configuration API of the API Management service.
+type ConfigurationApiOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationApiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationApi)(nil)).Elem()
+}
+
+func (o ConfigurationApiOutput) ToConfigurationApiOutput() ConfigurationApiOutput {
+	return o
+}
+
+func (o ConfigurationApiOutput) ToConfigurationApiOutputWithContext(ctx context.Context) ConfigurationApiOutput {
+	return o
+}
+
+func (o ConfigurationApiOutput) ToConfigurationApiPtrOutput() ConfigurationApiPtrOutput {
+	return o.ToConfigurationApiPtrOutputWithContext(context.Background())
+}
+
+func (o ConfigurationApiOutput) ToConfigurationApiPtrOutputWithContext(ctx context.Context) ConfigurationApiPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfigurationApi) *ConfigurationApi {
+		return &v
+	}).(ConfigurationApiPtrOutput)
+}
+
+// Indication whether or not the legacy Configuration API (v1) should be exposed on the API Management service. Value is optional but must be 'Enabled' or 'Disabled'. If 'Disabled', legacy Configuration API (v1) will not be available for self-hosted gateways. Default value is 'Enabled'
+func (o ConfigurationApiOutput) LegacyApi() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigurationApi) *string { return v.LegacyApi }).(pulumi.StringPtrOutput)
+}
+
+type ConfigurationApiPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationApiPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigurationApi)(nil)).Elem()
+}
+
+func (o ConfigurationApiPtrOutput) ToConfigurationApiPtrOutput() ConfigurationApiPtrOutput {
+	return o
+}
+
+func (o ConfigurationApiPtrOutput) ToConfigurationApiPtrOutputWithContext(ctx context.Context) ConfigurationApiPtrOutput {
+	return o
+}
+
+func (o ConfigurationApiPtrOutput) Elem() ConfigurationApiOutput {
+	return o.ApplyT(func(v *ConfigurationApi) ConfigurationApi {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigurationApi
+		return ret
+	}).(ConfigurationApiOutput)
+}
+
+// Indication whether or not the legacy Configuration API (v1) should be exposed on the API Management service. Value is optional but must be 'Enabled' or 'Disabled'. If 'Disabled', legacy Configuration API (v1) will not be available for self-hosted gateways. Default value is 'Enabled'
+func (o ConfigurationApiPtrOutput) LegacyApi() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigurationApi) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LegacyApi
+	}).(pulumi.StringPtrOutput)
+}
+
+// Information regarding the Configuration API of the API Management service.
+type ConfigurationApiResponse struct {
+	// Indication whether or not the legacy Configuration API (v1) should be exposed on the API Management service. Value is optional but must be 'Enabled' or 'Disabled'. If 'Disabled', legacy Configuration API (v1) will not be available for self-hosted gateways. Default value is 'Enabled'
+	LegacyApi *string `pulumi:"legacyApi"`
+}
+
+// Defaults sets the appropriate defaults for ConfigurationApiResponse
+func (val *ConfigurationApiResponse) Defaults() *ConfigurationApiResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.LegacyApi == nil {
+		legacyApi_ := "Enabled"
+		tmp.LegacyApi = &legacyApi_
+	}
+	return &tmp
+}
+
+// Information regarding the Configuration API of the API Management service.
+type ConfigurationApiResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationApiResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigurationApiResponse)(nil)).Elem()
+}
+
+func (o ConfigurationApiResponseOutput) ToConfigurationApiResponseOutput() ConfigurationApiResponseOutput {
+	return o
+}
+
+func (o ConfigurationApiResponseOutput) ToConfigurationApiResponseOutputWithContext(ctx context.Context) ConfigurationApiResponseOutput {
+	return o
+}
+
+// Indication whether or not the legacy Configuration API (v1) should be exposed on the API Management service. Value is optional but must be 'Enabled' or 'Disabled'. If 'Disabled', legacy Configuration API (v1) will not be available for self-hosted gateways. Default value is 'Enabled'
+func (o ConfigurationApiResponseOutput) LegacyApi() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfigurationApiResponse) *string { return v.LegacyApi }).(pulumi.StringPtrOutput)
+}
+
+type ConfigurationApiResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ConfigurationApiResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfigurationApiResponse)(nil)).Elem()
+}
+
+func (o ConfigurationApiResponsePtrOutput) ToConfigurationApiResponsePtrOutput() ConfigurationApiResponsePtrOutput {
+	return o
+}
+
+func (o ConfigurationApiResponsePtrOutput) ToConfigurationApiResponsePtrOutputWithContext(ctx context.Context) ConfigurationApiResponsePtrOutput {
+	return o
+}
+
+func (o ConfigurationApiResponsePtrOutput) Elem() ConfigurationApiResponseOutput {
+	return o.ApplyT(func(v *ConfigurationApiResponse) ConfigurationApiResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConfigurationApiResponse
+		return ret
+	}).(ConfigurationApiResponseOutput)
+}
+
+// Indication whether or not the legacy Configuration API (v1) should be exposed on the API Management service. Value is optional but must be 'Enabled' or 'Disabled'. If 'Disabled', legacy Configuration API (v1) will not be available for self-hosted gateways. Default value is 'Enabled'
+func (o ConfigurationApiResponsePtrOutput) LegacyApi() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfigurationApiResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LegacyApi
+	}).(pulumi.StringPtrOutput)
+}
+
 type DataMasking struct {
 	// Masking settings for headers
 	Headers []DataMaskingEntity `pulumi:"headers"`
@@ -7882,6 +8197,237 @@ func (o GatewayConfigurationApiResponsePtrOutput) Hostname() pulumi.StringPtrOut
 		}
 		return &v.Hostname
 	}).(pulumi.StringPtrOutput)
+}
+
+type GatewayHostnameBindingCertificateResponse struct {
+	// The expiration date of the certificate.
+	Expiry string `pulumi:"expiry"`
+	// The subject of the certificate.
+	Subject string `pulumi:"subject"`
+	// The thumbprint of the certificate.
+	Thumbprint string `pulumi:"thumbprint"`
+}
+
+type GatewayHostnameBindingCertificateResponseOutput struct{ *pulumi.OutputState }
+
+func (GatewayHostnameBindingCertificateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayHostnameBindingCertificateResponse)(nil)).Elem()
+}
+
+func (o GatewayHostnameBindingCertificateResponseOutput) ToGatewayHostnameBindingCertificateResponseOutput() GatewayHostnameBindingCertificateResponseOutput {
+	return o
+}
+
+func (o GatewayHostnameBindingCertificateResponseOutput) ToGatewayHostnameBindingCertificateResponseOutputWithContext(ctx context.Context) GatewayHostnameBindingCertificateResponseOutput {
+	return o
+}
+
+// The expiration date of the certificate.
+func (o GatewayHostnameBindingCertificateResponseOutput) Expiry() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayHostnameBindingCertificateResponse) string { return v.Expiry }).(pulumi.StringOutput)
+}
+
+// The subject of the certificate.
+func (o GatewayHostnameBindingCertificateResponseOutput) Subject() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayHostnameBindingCertificateResponse) string { return v.Subject }).(pulumi.StringOutput)
+}
+
+// The thumbprint of the certificate.
+func (o GatewayHostnameBindingCertificateResponseOutput) Thumbprint() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayHostnameBindingCertificateResponse) string { return v.Thumbprint }).(pulumi.StringOutput)
+}
+
+type GatewayHostnameBindingKeyVault struct {
+	// The default hostname of the data-plane gateway.
+	IdentityClientId *string `pulumi:"identityClientId"`
+	// The current provisioning state of the API Management gateway hostname binding.
+	SecretId string `pulumi:"secretId"`
+}
+
+// GatewayHostnameBindingKeyVaultInput is an input type that accepts GatewayHostnameBindingKeyVaultArgs and GatewayHostnameBindingKeyVaultOutput values.
+// You can construct a concrete instance of `GatewayHostnameBindingKeyVaultInput` via:
+//
+//	GatewayHostnameBindingKeyVaultArgs{...}
+type GatewayHostnameBindingKeyVaultInput interface {
+	pulumi.Input
+
+	ToGatewayHostnameBindingKeyVaultOutput() GatewayHostnameBindingKeyVaultOutput
+	ToGatewayHostnameBindingKeyVaultOutputWithContext(context.Context) GatewayHostnameBindingKeyVaultOutput
+}
+
+type GatewayHostnameBindingKeyVaultArgs struct {
+	// The default hostname of the data-plane gateway.
+	IdentityClientId pulumi.StringPtrInput `pulumi:"identityClientId"`
+	// The current provisioning state of the API Management gateway hostname binding.
+	SecretId pulumi.StringInput `pulumi:"secretId"`
+}
+
+func (GatewayHostnameBindingKeyVaultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayHostnameBindingKeyVault)(nil)).Elem()
+}
+
+func (i GatewayHostnameBindingKeyVaultArgs) ToGatewayHostnameBindingKeyVaultOutput() GatewayHostnameBindingKeyVaultOutput {
+	return i.ToGatewayHostnameBindingKeyVaultOutputWithContext(context.Background())
+}
+
+func (i GatewayHostnameBindingKeyVaultArgs) ToGatewayHostnameBindingKeyVaultOutputWithContext(ctx context.Context) GatewayHostnameBindingKeyVaultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayHostnameBindingKeyVaultOutput)
+}
+
+type GatewayHostnameBindingKeyVaultOutput struct{ *pulumi.OutputState }
+
+func (GatewayHostnameBindingKeyVaultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayHostnameBindingKeyVault)(nil)).Elem()
+}
+
+func (o GatewayHostnameBindingKeyVaultOutput) ToGatewayHostnameBindingKeyVaultOutput() GatewayHostnameBindingKeyVaultOutput {
+	return o
+}
+
+func (o GatewayHostnameBindingKeyVaultOutput) ToGatewayHostnameBindingKeyVaultOutputWithContext(ctx context.Context) GatewayHostnameBindingKeyVaultOutput {
+	return o
+}
+
+// The default hostname of the data-plane gateway.
+func (o GatewayHostnameBindingKeyVaultOutput) IdentityClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayHostnameBindingKeyVault) *string { return v.IdentityClientId }).(pulumi.StringPtrOutput)
+}
+
+// The current provisioning state of the API Management gateway hostname binding.
+func (o GatewayHostnameBindingKeyVaultOutput) SecretId() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayHostnameBindingKeyVault) string { return v.SecretId }).(pulumi.StringOutput)
+}
+
+type GatewayHostnameBindingKeyVaultLastStatusResponse struct {
+	// The last status of the Key Vault certificate fetch process.
+	Code string `pulumi:"code"`
+	// The last time the Key Vault certificate fetch process was successful. Only when the fetch process has succeeded at least once and current state is failed.  The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
+	LastSuccessTimeStampUtc string `pulumi:"lastSuccessTimeStampUtc"`
+	// The last time the Key Vault certificate fetch process was attempted. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
+	TimeStampUtc string `pulumi:"timeStampUtc"`
+}
+
+type GatewayHostnameBindingKeyVaultLastStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (GatewayHostnameBindingKeyVaultLastStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayHostnameBindingKeyVaultLastStatusResponse)(nil)).Elem()
+}
+
+func (o GatewayHostnameBindingKeyVaultLastStatusResponseOutput) ToGatewayHostnameBindingKeyVaultLastStatusResponseOutput() GatewayHostnameBindingKeyVaultLastStatusResponseOutput {
+	return o
+}
+
+func (o GatewayHostnameBindingKeyVaultLastStatusResponseOutput) ToGatewayHostnameBindingKeyVaultLastStatusResponseOutputWithContext(ctx context.Context) GatewayHostnameBindingKeyVaultLastStatusResponseOutput {
+	return o
+}
+
+// The last status of the Key Vault certificate fetch process.
+func (o GatewayHostnameBindingKeyVaultLastStatusResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayHostnameBindingKeyVaultLastStatusResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// The last time the Key Vault certificate fetch process was successful. Only when the fetch process has succeeded at least once and current state is failed.  The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
+func (o GatewayHostnameBindingKeyVaultLastStatusResponseOutput) LastSuccessTimeStampUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayHostnameBindingKeyVaultLastStatusResponse) string { return v.LastSuccessTimeStampUtc }).(pulumi.StringOutput)
+}
+
+// The last time the Key Vault certificate fetch process was attempted. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
+func (o GatewayHostnameBindingKeyVaultLastStatusResponseOutput) TimeStampUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayHostnameBindingKeyVaultLastStatusResponse) string { return v.TimeStampUtc }).(pulumi.StringOutput)
+}
+
+type GatewayHostnameBindingKeyVaultLastStatusResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayHostnameBindingKeyVaultLastStatusResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayHostnameBindingKeyVaultLastStatusResponse)(nil)).Elem()
+}
+
+func (o GatewayHostnameBindingKeyVaultLastStatusResponsePtrOutput) ToGatewayHostnameBindingKeyVaultLastStatusResponsePtrOutput() GatewayHostnameBindingKeyVaultLastStatusResponsePtrOutput {
+	return o
+}
+
+func (o GatewayHostnameBindingKeyVaultLastStatusResponsePtrOutput) ToGatewayHostnameBindingKeyVaultLastStatusResponsePtrOutputWithContext(ctx context.Context) GatewayHostnameBindingKeyVaultLastStatusResponsePtrOutput {
+	return o
+}
+
+func (o GatewayHostnameBindingKeyVaultLastStatusResponsePtrOutput) Elem() GatewayHostnameBindingKeyVaultLastStatusResponseOutput {
+	return o.ApplyT(func(v *GatewayHostnameBindingKeyVaultLastStatusResponse) GatewayHostnameBindingKeyVaultLastStatusResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayHostnameBindingKeyVaultLastStatusResponse
+		return ret
+	}).(GatewayHostnameBindingKeyVaultLastStatusResponseOutput)
+}
+
+// The last status of the Key Vault certificate fetch process.
+func (o GatewayHostnameBindingKeyVaultLastStatusResponsePtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayHostnameBindingKeyVaultLastStatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// The last time the Key Vault certificate fetch process was successful. Only when the fetch process has succeeded at least once and current state is failed.  The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
+func (o GatewayHostnameBindingKeyVaultLastStatusResponsePtrOutput) LastSuccessTimeStampUtc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayHostnameBindingKeyVaultLastStatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LastSuccessTimeStampUtc
+	}).(pulumi.StringPtrOutput)
+}
+
+// The last time the Key Vault certificate fetch process was attempted. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
+func (o GatewayHostnameBindingKeyVaultLastStatusResponsePtrOutput) TimeStampUtc() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayHostnameBindingKeyVaultLastStatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TimeStampUtc
+	}).(pulumi.StringPtrOutput)
+}
+
+type GatewayHostnameBindingKeyVaultResponse struct {
+	// The default hostname of the data-plane gateway.
+	IdentityClientId *string `pulumi:"identityClientId"`
+	// The last status of the Key Vault certificate fetch process.
+	LastStatus *GatewayHostnameBindingKeyVaultLastStatusResponse `pulumi:"lastStatus"`
+	// The current provisioning state of the API Management gateway hostname binding.
+	SecretId string `pulumi:"secretId"`
+}
+
+type GatewayHostnameBindingKeyVaultResponseOutput struct{ *pulumi.OutputState }
+
+func (GatewayHostnameBindingKeyVaultResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayHostnameBindingKeyVaultResponse)(nil)).Elem()
+}
+
+func (o GatewayHostnameBindingKeyVaultResponseOutput) ToGatewayHostnameBindingKeyVaultResponseOutput() GatewayHostnameBindingKeyVaultResponseOutput {
+	return o
+}
+
+func (o GatewayHostnameBindingKeyVaultResponseOutput) ToGatewayHostnameBindingKeyVaultResponseOutputWithContext(ctx context.Context) GatewayHostnameBindingKeyVaultResponseOutput {
+	return o
+}
+
+// The default hostname of the data-plane gateway.
+func (o GatewayHostnameBindingKeyVaultResponseOutput) IdentityClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayHostnameBindingKeyVaultResponse) *string { return v.IdentityClientId }).(pulumi.StringPtrOutput)
+}
+
+// The last status of the Key Vault certificate fetch process.
+func (o GatewayHostnameBindingKeyVaultResponseOutput) LastStatus() GatewayHostnameBindingKeyVaultLastStatusResponsePtrOutput {
+	return o.ApplyT(func(v GatewayHostnameBindingKeyVaultResponse) *GatewayHostnameBindingKeyVaultLastStatusResponse {
+		return v.LastStatus
+	}).(GatewayHostnameBindingKeyVaultLastStatusResponsePtrOutput)
+}
+
+// The current provisioning state of the API Management gateway hostname binding.
+func (o GatewayHostnameBindingKeyVaultResponseOutput) SecretId() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayHostnameBindingKeyVaultResponse) string { return v.SecretId }).(pulumi.StringOutput)
 }
 
 // Group contract Properties.
@@ -10242,7 +10788,7 @@ func (o PipelineDiagnosticSettingsResponsePtrOutput) Response() HttpMessageDiagn
 // The connection state of the private endpoint connection.
 type PrivateEndpointConnectionRequestProperties struct {
 	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
+	PrivateLinkServiceConnectionState *commontypesv2.PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
 }
 
 // PrivateEndpointConnectionRequestPropertiesInput is an input type that accepts PrivateEndpointConnectionRequestPropertiesArgs and PrivateEndpointConnectionRequestPropertiesOutput values.
@@ -10259,7 +10805,7 @@ type PrivateEndpointConnectionRequestPropertiesInput interface {
 // The connection state of the private endpoint connection.
 type PrivateEndpointConnectionRequestPropertiesArgs struct {
 	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStatePtrInput `pulumi:"privateLinkServiceConnectionState"`
+	PrivateLinkServiceConnectionState commontypesv2.PrivateLinkServiceConnectionStatePtrInput `pulumi:"privateLinkServiceConnectionState"`
 }
 
 func (PrivateEndpointConnectionRequestPropertiesArgs) ElementType() reflect.Type {
@@ -10341,10 +10887,10 @@ func (o PrivateEndpointConnectionRequestPropertiesOutput) ToPrivateEndpointConne
 }
 
 // A collection of information about the state of the connection between service consumer and provider.
-func (o PrivateEndpointConnectionRequestPropertiesOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStatePtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionRequestProperties) *PrivateLinkServiceConnectionState {
+func (o PrivateEndpointConnectionRequestPropertiesOutput) PrivateLinkServiceConnectionState() commontypesv2.PrivateLinkServiceConnectionStatePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionRequestProperties) *commontypesv2.PrivateLinkServiceConnectionState {
 		return v.PrivateLinkServiceConnectionState
-	}).(PrivateLinkServiceConnectionStatePtrOutput)
+	}).(commontypesv2.PrivateLinkServiceConnectionStatePtrOutput)
 }
 
 type PrivateEndpointConnectionRequestPropertiesPtrOutput struct{ *pulumi.OutputState }
@@ -10372,291 +10918,13 @@ func (o PrivateEndpointConnectionRequestPropertiesPtrOutput) Elem() PrivateEndpo
 }
 
 // A collection of information about the state of the connection between service consumer and provider.
-func (o PrivateEndpointConnectionRequestPropertiesPtrOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStatePtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointConnectionRequestProperties) *PrivateLinkServiceConnectionState {
+func (o PrivateEndpointConnectionRequestPropertiesPtrOutput) PrivateLinkServiceConnectionState() commontypesv2.PrivateLinkServiceConnectionStatePtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionRequestProperties) *commontypesv2.PrivateLinkServiceConnectionState {
 		if v == nil {
 			return nil
 		}
 		return v.PrivateLinkServiceConnectionState
-	}).(PrivateLinkServiceConnectionStatePtrOutput)
-}
-
-// The Private Endpoint resource.
-type PrivateEndpointResponse struct {
-	// The ARM identifier for Private Endpoint
-	Id string `pulumi:"id"`
-}
-
-// The Private Endpoint resource.
-type PrivateEndpointResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutput() PrivateEndpointResponseOutput {
-	return o
-}
-
-func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContext(ctx context.Context) PrivateEndpointResponseOutput {
-	return o
-}
-
-// The ARM identifier for Private Endpoint
-func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type PrivateEndpointResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateEndpointResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() PrivateEndpointResponsePtrOutput {
-	return o
-}
-
-func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
-	return o
-}
-
-func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
-	return o.ApplyT(func(v *PrivateEndpointResponse) PrivateEndpointResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PrivateEndpointResponse
-		return ret
-	}).(PrivateEndpointResponseOutput)
-}
-
-// The ARM identifier for Private Endpoint
-func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionState struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionsRequired *string `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
-	Description *string `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status *string `pulumi:"status"`
-}
-
-// PrivateLinkServiceConnectionStateInput is an input type that accepts PrivateLinkServiceConnectionStateArgs and PrivateLinkServiceConnectionStateOutput values.
-// You can construct a concrete instance of `PrivateLinkServiceConnectionStateInput` via:
-//
-//	PrivateLinkServiceConnectionStateArgs{...}
-type PrivateLinkServiceConnectionStateInput interface {
-	pulumi.Input
-
-	ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput
-	ToPrivateLinkServiceConnectionStateOutputWithContext(context.Context) PrivateLinkServiceConnectionStateOutput
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateArgs struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionsRequired pulumi.StringPtrInput `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-}
-
-func (PrivateLinkServiceConnectionStateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
-}
-
-func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
-	return i.ToPrivateLinkServiceConnectionStateOutputWithContext(context.Background())
-}
-
-func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
-}
-
-func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput {
-	return i.ToPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Background())
-}
-
-func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput).ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx)
-}
-
-// PrivateLinkServiceConnectionStatePtrInput is an input type that accepts PrivateLinkServiceConnectionStateArgs, PrivateLinkServiceConnectionStatePtr and PrivateLinkServiceConnectionStatePtrOutput values.
-// You can construct a concrete instance of `PrivateLinkServiceConnectionStatePtrInput` via:
-//
-//	        PrivateLinkServiceConnectionStateArgs{...}
-//
-//	or:
-//
-//	        nil
-type PrivateLinkServiceConnectionStatePtrInput interface {
-	pulumi.Input
-
-	ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput
-	ToPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Context) PrivateLinkServiceConnectionStatePtrOutput
-}
-
-type privateLinkServiceConnectionStatePtrType PrivateLinkServiceConnectionStateArgs
-
-func PrivateLinkServiceConnectionStatePtr(v *PrivateLinkServiceConnectionStateArgs) PrivateLinkServiceConnectionStatePtrInput {
-	return (*privateLinkServiceConnectionStatePtrType)(v)
-}
-
-func (*privateLinkServiceConnectionStatePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateLinkServiceConnectionState)(nil)).Elem()
-}
-
-func (i *privateLinkServiceConnectionStatePtrType) ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput {
-	return i.ToPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Background())
-}
-
-func (i *privateLinkServiceConnectionStatePtrType) ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStatePtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceConnectionStateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput {
-	return o.ToPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Background())
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateLinkServiceConnectionState) *PrivateLinkServiceConnectionState {
-		return &v
-	}).(PrivateLinkServiceConnectionStatePtrOutput)
-}
-
-// A message indicating if changes on the service provider require any updates on the consumer.
-func (o PrivateLinkServiceConnectionStateOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
-}
-
-// The reason for approval/rejection of the connection.
-func (o PrivateLinkServiceConnectionStateOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-func (o PrivateLinkServiceConnectionStateOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-type PrivateLinkServiceConnectionStatePtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceConnectionStatePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateLinkServiceConnectionState)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceConnectionStatePtrOutput) ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStatePtrOutput) ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePtrOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStatePtrOutput) Elem() PrivateLinkServiceConnectionStateOutput {
-	return o.ApplyT(func(v *PrivateLinkServiceConnectionState) PrivateLinkServiceConnectionState {
-		if v != nil {
-			return *v
-		}
-		var ret PrivateLinkServiceConnectionState
-		return ret
-	}).(PrivateLinkServiceConnectionStateOutput)
-}
-
-// A message indicating if changes on the service provider require any updates on the consumer.
-func (o PrivateLinkServiceConnectionStatePtrOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateLinkServiceConnectionState) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ActionsRequired
-	}).(pulumi.StringPtrOutput)
-}
-
-// The reason for approval/rejection of the connection.
-func (o PrivateLinkServiceConnectionStatePtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateLinkServiceConnectionState) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-func (o PrivateLinkServiceConnectionStatePtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateLinkServiceConnectionState) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Status
-	}).(pulumi.StringPtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateResponse struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionsRequired *string `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
-	Description *string `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status *string `pulumi:"status"`
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceConnectionStateResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionStateResponse)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutput() PrivateLinkServiceConnectionStateResponseOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponseOutput {
-	return o
-}
-
-// A message indicating if changes on the service provider require any updates on the consumer.
-func (o PrivateLinkServiceConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
-}
-
-// The reason for approval/rejection of the connection.
-func (o PrivateLinkServiceConnectionStateResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-func (o PrivateLinkServiceConnectionStateResponseOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+	}).(commontypesv2.PrivateLinkServiceConnectionStatePtrOutput)
 }
 
 // Remote Private Endpoint Connection resource.
@@ -10666,7 +10934,7 @@ type RemotePrivateEndpointConnectionWrapper struct {
 	// Private Endpoint Connection Name
 	Name *string `pulumi:"name"`
 	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
+	PrivateLinkServiceConnectionState commontypesv2.PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
 	// Private Endpoint Connection Resource Type
 	Type *string `pulumi:"type"`
 }
@@ -10689,7 +10957,7 @@ type RemotePrivateEndpointConnectionWrapperArgs struct {
 	// Private Endpoint Connection Name
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateInput `pulumi:"privateLinkServiceConnectionState"`
+	PrivateLinkServiceConnectionState commontypesv2.PrivateLinkServiceConnectionStateInput `pulumi:"privateLinkServiceConnectionState"`
 	// Private Endpoint Connection Resource Type
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -10757,10 +11025,10 @@ func (o RemotePrivateEndpointConnectionWrapperOutput) Name() pulumi.StringPtrOut
 }
 
 // A collection of information about the state of the connection between service consumer and provider.
-func (o RemotePrivateEndpointConnectionWrapperOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateOutput {
-	return o.ApplyT(func(v RemotePrivateEndpointConnectionWrapper) PrivateLinkServiceConnectionState {
+func (o RemotePrivateEndpointConnectionWrapperOutput) PrivateLinkServiceConnectionState() commontypesv2.PrivateLinkServiceConnectionStateOutput {
+	return o.ApplyT(func(v RemotePrivateEndpointConnectionWrapper) commontypesv2.PrivateLinkServiceConnectionState {
 		return v.PrivateLinkServiceConnectionState
-	}).(PrivateLinkServiceConnectionStateOutput)
+	}).(commontypesv2.PrivateLinkServiceConnectionStateOutput)
 }
 
 // Private Endpoint Connection Resource Type
@@ -10799,7 +11067,7 @@ type RemotePrivateEndpointConnectionWrapperResponse struct {
 	// The resource of private end point.
 	PrivateEndpoint *ArmIdWrapperResponse `pulumi:"privateEndpoint"`
 	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
+	PrivateLinkServiceConnectionState commontypesv2.PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state of the private endpoint connection resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Private Endpoint Connection Resource Type
@@ -10842,10 +11110,10 @@ func (o RemotePrivateEndpointConnectionWrapperResponseOutput) PrivateEndpoint() 
 }
 
 // A collection of information about the state of the connection between service consumer and provider.
-func (o RemotePrivateEndpointConnectionWrapperResponseOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponseOutput {
-	return o.ApplyT(func(v RemotePrivateEndpointConnectionWrapperResponse) PrivateLinkServiceConnectionStateResponse {
+func (o RemotePrivateEndpointConnectionWrapperResponseOutput) PrivateLinkServiceConnectionState() commontypesv2.PrivateLinkServiceConnectionStateResponseOutput {
+	return o.ApplyT(func(v RemotePrivateEndpointConnectionWrapperResponse) commontypesv2.PrivateLinkServiceConnectionStateResponse {
 		return v.PrivateLinkServiceConnectionState
-	}).(PrivateLinkServiceConnectionStateResponseOutput)
+	}).(commontypesv2.PrivateLinkServiceConnectionStateResponseOutput)
 }
 
 // The provisioning state of the private endpoint connection resource.
@@ -12428,67 +12696,6 @@ func (o SubscriptionKeyParameterNamesContractResponsePtrOutput) Query() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
-}
-
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponseOutput struct{ *pulumi.OutputState }
-
-func (SystemDataResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
-	return o
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
-	return o
-}
-
-// The timestamp of resource creation (UTC).
-func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
-}
-
 // OAuth acquire token request body parameter (www-url-form-encoded).
 type TokenBodyParameterContract struct {
 	// body parameter name.
@@ -13624,6 +13831,12 @@ func init() {
 	pulumi.RegisterOutputType(CircuitBreakerRuleArrayOutput{})
 	pulumi.RegisterOutputType(CircuitBreakerRuleResponseOutput{})
 	pulumi.RegisterOutputType(CircuitBreakerRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(ClientApplicationSecretsContractResponseEntraOutput{})
+	pulumi.RegisterOutputType(ClientApplicationSecretsContractResponseEntraPtrOutput{})
+	pulumi.RegisterOutputType(ConfigurationApiOutput{})
+	pulumi.RegisterOutputType(ConfigurationApiPtrOutput{})
+	pulumi.RegisterOutputType(ConfigurationApiResponseOutput{})
+	pulumi.RegisterOutputType(ConfigurationApiResponsePtrOutput{})
 	pulumi.RegisterOutputType(DataMaskingOutput{})
 	pulumi.RegisterOutputType(DataMaskingPtrOutput{})
 	pulumi.RegisterOutputType(DataMaskingEntityOutput{})
@@ -13644,6 +13857,11 @@ func init() {
 	pulumi.RegisterOutputType(FrontendConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(GatewayConfigurationApiResponseOutput{})
 	pulumi.RegisterOutputType(GatewayConfigurationApiResponsePtrOutput{})
+	pulumi.RegisterOutputType(GatewayHostnameBindingCertificateResponseOutput{})
+	pulumi.RegisterOutputType(GatewayHostnameBindingKeyVaultOutput{})
+	pulumi.RegisterOutputType(GatewayHostnameBindingKeyVaultLastStatusResponseOutput{})
+	pulumi.RegisterOutputType(GatewayHostnameBindingKeyVaultLastStatusResponsePtrOutput{})
+	pulumi.RegisterOutputType(GatewayHostnameBindingKeyVaultResponseOutput{})
 	pulumi.RegisterOutputType(GroupContractPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(GroupContractPropertiesResponseArrayOutput{})
 	pulumi.RegisterOutputType(HostnameConfigurationOutput{})
@@ -13686,11 +13904,6 @@ func init() {
 	pulumi.RegisterOutputType(PipelineDiagnosticSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionRequestPropertiesOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionRequestPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatePtrOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
 	pulumi.RegisterOutputType(RemotePrivateEndpointConnectionWrapperOutput{})
 	pulumi.RegisterOutputType(RemotePrivateEndpointConnectionWrapperArrayOutput{})
 	pulumi.RegisterOutputType(RemotePrivateEndpointConnectionWrapperResponseOutput{})
@@ -13721,7 +13934,6 @@ func init() {
 	pulumi.RegisterOutputType(SubscriptionKeyParameterNamesContractPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionKeyParameterNamesContractResponseOutput{})
 	pulumi.RegisterOutputType(SubscriptionKeyParameterNamesContractResponsePtrOutput{})
-	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(TokenBodyParameterContractOutput{})
 	pulumi.RegisterOutputType(TokenBodyParameterContractArrayOutput{})
 	pulumi.RegisterOutputType(TokenBodyParameterContractResponseOutput{})

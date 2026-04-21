@@ -7,15 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a DeidService
 //
-// Uses Azure REST API version 2024-02-28-preview.
-//
-// Other available API versions: 2024-09-20.
+// Uses Azure REST API version 2024-09-20.
 func LookupDeidService(ctx *pulumi.Context, args *LookupDeidServiceArgs, opts ...pulumi.InvokeOption) (*LookupDeidServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDeidServiceResult
@@ -35,10 +34,12 @@ type LookupDeidServiceArgs struct {
 
 // A HealthDataAIServicesProviderHub resource
 type LookupDeidServiceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The managed service identities assigned to this resource.
-	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *commontypesv5.ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
@@ -46,7 +47,7 @@ type LookupDeidServiceResult struct {
 	// The resource-specific properties for this resource.
 	Properties DeidServicePropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -88,14 +89,19 @@ func (o LookupDeidServiceResultOutput) ToLookupDeidServiceResultOutputWithContex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupDeidServiceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeidServiceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupDeidServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeidServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The managed service identities assigned to this resource.
-func (o LookupDeidServiceResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupDeidServiceResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o LookupDeidServiceResultOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupDeidServiceResult) *commontypesv5.ManagedServiceIdentityResponse { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -114,8 +120,8 @@ func (o LookupDeidServiceResultOutput) Properties() DeidServicePropertiesRespons
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupDeidServiceResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupDeidServiceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupDeidServiceResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupDeidServiceResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

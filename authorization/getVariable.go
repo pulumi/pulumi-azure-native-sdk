@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2022-08-01-preview.
 //
-// Other available API versions: 2024-12-01-preview.
+// Other available API versions: 2024-12-01-preview, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupVariable(ctx *pulumi.Context, args *LookupVariableArgs, opts ...pulumi.InvokeOption) (*LookupVariableResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVariableResult
@@ -33,6 +34,8 @@ type LookupVariableArgs struct {
 
 // The variable.
 type LookupVariableResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Variable column definitions.
 	Columns []PolicyVariableColumnResponse `pulumi:"columns"`
 	// The ID of the variable.
@@ -40,7 +43,7 @@ type LookupVariableResult struct {
 	// The name of the variable.
 	Name string `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource (Microsoft.Authorization/variables).
 	Type string `pulumi:"type"`
 }
@@ -78,6 +81,11 @@ func (o LookupVariableResultOutput) ToLookupVariableResultOutputWithContext(ctx 
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupVariableResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVariableResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Variable column definitions.
 func (o LookupVariableResultOutput) Columns() PolicyVariableColumnResponseArrayOutput {
 	return o.ApplyT(func(v LookupVariableResult) []PolicyVariableColumnResponse { return v.Columns }).(PolicyVariableColumnResponseArrayOutput)
@@ -94,8 +102,8 @@ func (o LookupVariableResultOutput) Name() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupVariableResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupVariableResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupVariableResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupVariableResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The type of the resource (Microsoft.Authorization/variables).

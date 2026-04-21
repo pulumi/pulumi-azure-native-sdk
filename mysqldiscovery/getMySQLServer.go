@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +36,8 @@ type LookupMySQLServerArgs struct {
 
 // The MySQLServer resource definition.
 type LookupMySQLServerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// mysql server edition.
 	Edition *string `pulumi:"edition"`
 	// The list of errors.
@@ -64,7 +67,7 @@ type LookupMySQLServerResult struct {
 	// mysql version support status.
 	SupportStatus *string `pulumi:"supportStatus"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv4.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -106,6 +109,11 @@ func (o LookupMySQLServerResultOutput) ToLookupMySQLServerResultOutput() LookupM
 
 func (o LookupMySQLServerResultOutput) ToLookupMySQLServerResultOutputWithContext(ctx context.Context) LookupMySQLServerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupMySQLServerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMySQLServerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // mysql server edition.
@@ -179,8 +187,8 @@ func (o LookupMySQLServerResultOutput) SupportStatus() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupMySQLServerResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupMySQLServerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupMySQLServerResultOutput) SystemData() commontypesv4.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupMySQLServerResult) commontypesv4.SystemDataResponse { return v.SystemData }).(commontypesv4.SystemDataResponseOutput)
 }
 
 // Resource tags

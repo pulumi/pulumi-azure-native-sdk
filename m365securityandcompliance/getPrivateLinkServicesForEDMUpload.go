@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +34,8 @@ type LookupPrivateLinkServicesForEDMUploadArgs struct {
 
 // The description of the service.
 type LookupPrivateLinkServicesForEDMUploadResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// An etag associated with the resource, used for optimistic concurrency when editing it.
 	Etag *string `pulumi:"etag"`
 	// The resource identifier.
@@ -48,7 +51,7 @@ type LookupPrivateLinkServicesForEDMUploadResult struct {
 	// The common properties of a service.
 	Properties ServicesPropertiesResponse `pulumi:"properties"`
 	// Required property for system data
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// The resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The resource type.
@@ -90,6 +93,11 @@ func (o LookupPrivateLinkServicesForEDMUploadResultOutput) ToLookupPrivateLinkSe
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupPrivateLinkServicesForEDMUploadResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateLinkServicesForEDMUploadResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // An etag associated with the resource, used for optimistic concurrency when editing it.
 func (o LookupPrivateLinkServicesForEDMUploadResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPrivateLinkServicesForEDMUploadResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
@@ -128,8 +136,10 @@ func (o LookupPrivateLinkServicesForEDMUploadResultOutput) Properties() Services
 }
 
 // Required property for system data
-func (o LookupPrivateLinkServicesForEDMUploadResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupPrivateLinkServicesForEDMUploadResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupPrivateLinkServicesForEDMUploadResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPrivateLinkServicesForEDMUploadResult) commontypesv2.SystemDataResponse {
+		return v.SystemData
+	}).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The resource tags.

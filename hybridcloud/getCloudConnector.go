@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +36,8 @@ type LookupCloudConnectorArgs struct {
 type LookupCloudConnectorResult struct {
 	// Account identifier of the remote cloud.
 	AccountId *string `pulumi:"accountId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The cloud connector type.
 	CloudType *string `pulumi:"cloudType"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -48,7 +51,7 @@ type LookupCloudConnectorResult struct {
 	// The provisioning state of the cloud connector resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -95,6 +98,11 @@ func (o LookupCloudConnectorResultOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCloudConnectorResult) *string { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupCloudConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The cloud connector type.
 func (o LookupCloudConnectorResultOutput) CloudType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCloudConnectorResult) *string { return v.CloudType }).(pulumi.StringPtrOutput)
@@ -126,8 +134,8 @@ func (o LookupCloudConnectorResultOutput) ProvisioningState() pulumi.StringOutpu
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupCloudConnectorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupCloudConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupCloudConnectorResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupCloudConnectorResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

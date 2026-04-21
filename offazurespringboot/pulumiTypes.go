@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1635,6 +1635,8 @@ type SpringbootserversProperties struct {
 	Errors []Error `pulumi:"errors"`
 	// The alternative FQDN or IP addresses to discover for this server
 	FqdnAndIpAddressList []string `pulumi:"fqdnAndIpAddressList"`
+	// Resource labels
+	Labels map[string]string `pulumi:"labels"`
 	// The machine Id from ARM
 	MachineArmId *string `pulumi:"machineArmId"`
 	// Target server port for remote login
@@ -1666,6 +1668,8 @@ type SpringbootserversPropertiesArgs struct {
 	Errors ErrorArrayInput `pulumi:"errors"`
 	// The alternative FQDN or IP addresses to discover for this server
 	FqdnAndIpAddressList pulumi.StringArrayInput `pulumi:"fqdnAndIpAddressList"`
+	// Resource labels
+	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The machine Id from ARM
 	MachineArmId pulumi.StringPtrInput `pulumi:"machineArmId"`
 	// Target server port for remote login
@@ -1768,6 +1772,11 @@ func (o SpringbootserversPropertiesOutput) FqdnAndIpAddressList() pulumi.StringA
 	return o.ApplyT(func(v SpringbootserversProperties) []string { return v.FqdnAndIpAddressList }).(pulumi.StringArrayOutput)
 }
 
+// Resource labels
+func (o SpringbootserversPropertiesOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SpringbootserversProperties) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
 // The machine Id from ARM
 func (o SpringbootserversPropertiesOutput) MachineArmId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SpringbootserversProperties) *string { return v.MachineArmId }).(pulumi.StringPtrOutput)
@@ -1842,6 +1851,16 @@ func (o SpringbootserversPropertiesPtrOutput) FqdnAndIpAddressList() pulumi.Stri
 	}).(pulumi.StringArrayOutput)
 }
 
+// Resource labels
+func (o SpringbootserversPropertiesPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SpringbootserversProperties) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
 // The machine Id from ARM
 func (o SpringbootserversPropertiesPtrOutput) MachineArmId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SpringbootserversProperties) *string {
@@ -1908,6 +1927,8 @@ type SpringbootserversPropertiesResponse struct {
 	Errors []ErrorResponse `pulumi:"errors"`
 	// The alternative FQDN or IP addresses to discover for this server
 	FqdnAndIpAddressList []string `pulumi:"fqdnAndIpAddressList"`
+	// Resource labels
+	Labels map[string]string `pulumi:"labels"`
 	// The machine Id from ARM
 	MachineArmId *string `pulumi:"machineArmId"`
 	// Target server port for remote login
@@ -1945,6 +1966,11 @@ func (o SpringbootserversPropertiesResponseOutput) Errors() ErrorResponseArrayOu
 // The alternative FQDN or IP addresses to discover for this server
 func (o SpringbootserversPropertiesResponseOutput) FqdnAndIpAddressList() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SpringbootserversPropertiesResponse) []string { return v.FqdnAndIpAddressList }).(pulumi.StringArrayOutput)
+}
+
+// Resource labels
+func (o SpringbootserversPropertiesResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SpringbootserversPropertiesResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The machine Id from ARM
@@ -2431,67 +2457,6 @@ func (o SpringbootsitesPropertiesResponseOutput) ProvisioningState() pulumi.Stri
 	return o.ApplyT(func(v SpringbootsitesPropertiesResponse) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
-}
-
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponseOutput struct{ *pulumi.OutputState }
-
-func (SystemDataResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
-	return o
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
-	return o
-}
-
-// The timestamp of resource creation (UTC).
-func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterOutputType(ErrorOutput{})
 	pulumi.RegisterOutputType(ErrorArrayOutput{})
@@ -2522,5 +2487,4 @@ func init() {
 	pulumi.RegisterOutputType(SpringbootsitesPropertiesOutput{})
 	pulumi.RegisterOutputType(SpringbootsitesPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(SpringbootsitesPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 }

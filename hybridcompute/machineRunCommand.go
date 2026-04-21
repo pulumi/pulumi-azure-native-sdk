@@ -8,20 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a Run Command
 //
-// Uses Azure REST API version 2023-10-03-preview.
+// Uses Azure REST API version 2024-07-31-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-03-preview.
 //
-// Other available API versions: 2024-03-31-preview, 2024-05-20-preview, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview, 2025-01-13.
+// Other available API versions: 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-09-10-preview, 2024-11-10-preview, 2025-01-13, 2025-02-19-preview, 2025-06-01, 2025-08-21-preview, 2025-09-16-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridcompute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type MachineRunCommand struct {
 	pulumi.CustomResourceState
 
 	// Optional. If set to true, provisioning will complete as soon as script starts and will not wait for script to complete.
 	AsyncExecution pulumi.BoolPtrOutput `pulumi:"asyncExecution"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// User-assigned managed identity that has access to errorBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged
 	ErrorBlobManagedIdentity RunCommandManagedIdentityResponsePtrOutput `pulumi:"errorBlobManagedIdentity"`
 	// Specifies the Azure storage blob where script error stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer errorBlobManagedIdentity parameter.
@@ -49,7 +52,7 @@ type MachineRunCommand struct {
 	// The source of the run command script.
 	Source MachineRunCommandScriptSourceResponsePtrOutput `pulumi:"source"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The timeout in seconds to execute the run command.
@@ -95,6 +98,18 @@ func NewMachineRunCommand(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20250113:MachineRunCommand"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20250219preview:MachineRunCommand"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20250601:MachineRunCommand"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20250821preview:MachineRunCommand"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20250916preview:MachineRunCommand"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -243,6 +258,11 @@ func (o MachineRunCommandOutput) AsyncExecution() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MachineRunCommand) pulumi.BoolPtrOutput { return v.AsyncExecution }).(pulumi.BoolPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o MachineRunCommandOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MachineRunCommand) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // User-assigned managed identity that has access to errorBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged
 func (o MachineRunCommandOutput) ErrorBlobManagedIdentity() RunCommandManagedIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *MachineRunCommand) RunCommandManagedIdentityResponsePtrOutput {
@@ -313,8 +333,8 @@ func (o MachineRunCommandOutput) Source() MachineRunCommandScriptSourceResponseP
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o MachineRunCommandOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *MachineRunCommand) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o MachineRunCommandOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *MachineRunCommand) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

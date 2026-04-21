@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An instance failover group.
 //
-// Uses Azure REST API version 2021-11-01. In version 1.x of the Azure Native provider, it used API version 2020-11-01-preview.
+// Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
 //
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
+// Other available API versions: 2017-10-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type InstanceFailoverGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// List of managed instance pairs in the failover group.
 	ManagedInstancePairs ManagedInstancePairInfoResponseArrayOutput `pulumi:"managedInstancePairs"`
 	// Resource name.
@@ -34,6 +36,8 @@ type InstanceFailoverGroup struct {
 	ReplicationRole pulumi.StringOutput `pulumi:"replicationRole"`
 	// Replication state of the failover group instance.
 	ReplicationState pulumi.StringOutput `pulumi:"replicationState"`
+	// Type of the geo-secondary instance. Set 'Standby' if the instance is used as a DR option only.
+	SecondaryType pulumi.StringPtrOutput `pulumi:"secondaryType"`
 	// Resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -115,6 +119,9 @@ func NewInstanceFailoverGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:InstanceFailoverGroup"),
 		},
+		{
+			Type: pulumi.String("azure-native:sql/v20241101preview:InstanceFailoverGroup"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -164,6 +171,8 @@ type instanceFailoverGroupArgs struct {
 	ReadWriteEndpoint InstanceFailoverGroupReadWriteEndpoint `pulumi:"readWriteEndpoint"`
 	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Type of the geo-secondary instance. Set 'Standby' if the instance is used as a DR option only.
+	SecondaryType *string `pulumi:"secondaryType"`
 }
 
 // The set of arguments for constructing a InstanceFailoverGroup resource.
@@ -182,6 +191,8 @@ type InstanceFailoverGroupArgs struct {
 	ReadWriteEndpoint InstanceFailoverGroupReadWriteEndpointInput
 	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
 	ResourceGroupName pulumi.StringInput
+	// Type of the geo-secondary instance. Set 'Standby' if the instance is used as a DR option only.
+	SecondaryType pulumi.StringPtrInput
 }
 
 func (InstanceFailoverGroupArgs) ElementType() reflect.Type {
@@ -219,6 +230,11 @@ func (o InstanceFailoverGroupOutput) ToInstanceFailoverGroupOutput() InstanceFai
 
 func (o InstanceFailoverGroupOutput) ToInstanceFailoverGroupOutputWithContext(ctx context.Context) InstanceFailoverGroupOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o InstanceFailoverGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceFailoverGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of managed instance pairs in the failover group.
@@ -260,6 +276,11 @@ func (o InstanceFailoverGroupOutput) ReplicationRole() pulumi.StringOutput {
 // Replication state of the failover group instance.
 func (o InstanceFailoverGroupOutput) ReplicationState() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFailoverGroup) pulumi.StringOutput { return v.ReplicationState }).(pulumi.StringOutput)
+}
+
+// Type of the geo-secondary instance. Set 'Standby' if the instance is used as a DR option only.
+func (o InstanceFailoverGroupOutput) SecondaryType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceFailoverGroup) pulumi.StringPtrOutput { return v.SecondaryType }).(pulumi.StringPtrOutput)
 }
 
 // Resource type.

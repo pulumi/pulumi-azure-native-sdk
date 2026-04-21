@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves details about given subscription which is associated with the management group.
 //
-// Uses Azure REST API version 2021-04-01.
+// Uses Azure REST API version 2023-04-01.
 //
-// Other available API versions: 2023-04-01.
+// Other available API versions: 2021-04-01, 2024-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native management [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupManagementGroupSubscription(ctx *pulumi.Context, args *LookupManagementGroupSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupManagementGroupSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagementGroupSubscriptionResult
@@ -29,25 +30,27 @@ func LookupManagementGroupSubscription(ctx *pulumi.Context, args *LookupManageme
 type LookupManagementGroupSubscriptionArgs struct {
 	// Management Group ID.
 	GroupId string `pulumi:"groupId"`
-	// Subscription ID.
-	SubscriptionId *string `pulumi:"subscriptionId"`
 }
 
 // The details of subscription under management group.
 type LookupManagementGroupSubscriptionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The friendly name of the subscription.
 	DisplayName *string `pulumi:"displayName"`
-	// The fully qualified ID for the subscription.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000/subscriptions/0000000-0000-0000-0000-000000000001
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// The stringified id of the subscription. For example, 00000000-0000-0000-0000-000000000000
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The ID of the parent management group.
 	Parent *DescendantParentGroupInfoResponse `pulumi:"parent"`
 	// The state of the subscription.
 	State *string `pulumi:"state"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// The AAD Tenant ID associated with the subscription. For example, 00000000-0000-0000-0000-000000000000
 	Tenant *string `pulumi:"tenant"`
-	// The type of the resource.  For example, Microsoft.Management/managementGroups/subscriptions
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -63,8 +66,6 @@ func LookupManagementGroupSubscriptionOutput(ctx *pulumi.Context, args LookupMan
 type LookupManagementGroupSubscriptionOutputArgs struct {
 	// Management Group ID.
 	GroupId pulumi.StringInput `pulumi:"groupId"`
-	// Subscription ID.
-	SubscriptionId pulumi.StringPtrInput `pulumi:"subscriptionId"`
 }
 
 func (LookupManagementGroupSubscriptionOutputArgs) ElementType() reflect.Type {
@@ -86,17 +87,22 @@ func (o LookupManagementGroupSubscriptionResultOutput) ToLookupManagementGroupSu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupManagementGroupSubscriptionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagementGroupSubscriptionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The friendly name of the subscription.
 func (o LookupManagementGroupSubscriptionResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagementGroupSubscriptionResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// The fully qualified ID for the subscription.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000/subscriptions/0000000-0000-0000-0000-000000000001
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupManagementGroupSubscriptionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementGroupSubscriptionResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The stringified id of the subscription. For example, 00000000-0000-0000-0000-000000000000
+// The name of the resource
 func (o LookupManagementGroupSubscriptionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementGroupSubscriptionResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -111,12 +117,17 @@ func (o LookupManagementGroupSubscriptionResultOutput) State() pulumi.StringPtrO
 	return o.ApplyT(func(v LookupManagementGroupSubscriptionResult) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupManagementGroupSubscriptionResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupManagementGroupSubscriptionResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+}
+
 // The AAD Tenant ID associated with the subscription. For example, 00000000-0000-0000-0000-000000000000
 func (o LookupManagementGroupSubscriptionResultOutput) Tenant() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagementGroupSubscriptionResult) *string { return v.Tenant }).(pulumi.StringPtrOutput)
 }
 
-// The type of the resource.  For example, Microsoft.Management/managementGroups/subscriptions
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupManagementGroupSubscriptionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementGroupSubscriptionResult) string { return v.Type }).(pulumi.StringOutput)
 }

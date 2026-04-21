@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +33,8 @@ type LookupDedicatedCloudServiceArgs struct {
 
 // Dedicated cloud service model
 type LookupDedicatedCloudServiceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// gateway Subnet for the account. It will collect the subnet address and always treat it as /28
 	GatewaySubnet string `pulumi:"gatewaySubnet"`
 	// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/dedicatedCloudServices/{dedicatedCloudServiceName}
@@ -86,6 +88,11 @@ func (o LookupDedicatedCloudServiceResultOutput) ToLookupDedicatedCloudServiceRe
 
 func (o LookupDedicatedCloudServiceResultOutput) ToLookupDedicatedCloudServiceResultOutputWithContext(ctx context.Context) LookupDedicatedCloudServiceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDedicatedCloudServiceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDedicatedCloudServiceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // gateway Subnet for the account. It will collect the subnet address and always treat it as /28

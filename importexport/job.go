@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Contains the job information.
 //
-// Uses Azure REST API version 2021-01-01. In version 1.x of the Azure Native provider, it used API version 2020-08-01.
+// Uses Azure REST API version 2021-01-01. In version 2.x of the Azure Native provider, it used API version 2021-01-01.
 type Job struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Specifies the job identity details
 	Identity IdentityDetailsResponsePtrOutput `pulumi:"identity"`
 	// Specifies the Azure location where the job is created.
@@ -27,7 +30,7 @@ type Job struct {
 	// Specifies the job properties
 	Properties JobDetailsResponseOutput `pulumi:"properties"`
 	// SystemData of ImportExport Jobs.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// Specifies the tags that are assigned to the job.
 	Tags pulumi.AnyOutput `pulumi:"tags"`
 	// Specifies the type of the job resource.
@@ -155,6 +158,11 @@ func (o JobOutput) ToJobOutputWithContext(ctx context.Context) JobOutput {
 	return o
 }
 
+// The Azure API version of the resource.
+func (o JobOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Specifies the job identity details
 func (o JobOutput) Identity() IdentityDetailsResponsePtrOutput {
 	return o.ApplyT(func(v *Job) IdentityDetailsResponsePtrOutput { return v.Identity }).(IdentityDetailsResponsePtrOutput)
@@ -176,8 +184,8 @@ func (o JobOutput) Properties() JobDetailsResponseOutput {
 }
 
 // SystemData of ImportExport Jobs.
-func (o JobOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Job) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o JobOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Job) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Specifies the tags that are assigned to the job.

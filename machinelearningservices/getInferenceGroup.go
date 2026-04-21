@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2023-08-01-preview.
+// Uses Azure REST API version 2025-01-01-preview.
 //
-// Other available API versions: 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview.
+// Other available API versions: 2023-08-01-preview, 2024-01-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupInferenceGroup(ctx *pulumi.Context, args *LookupInferenceGroupArgs, opts ...pulumi.InvokeOption) (*LookupInferenceGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupInferenceGroupResult
@@ -36,10 +37,12 @@ type LookupInferenceGroupArgs struct {
 }
 
 type LookupInferenceGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *commontypesv3.ManagedServiceIdentityResponse `pulumi:"identity"`
 	// [Required] Additional attributes of the entity.
 	InferenceGroupProperties InferenceGroupResponse `pulumi:"inferenceGroupProperties"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
@@ -49,9 +52,9 @@ type LookupInferenceGroupResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Sku details required for ARM contract for Autoscaling.
-	Sku *SkuResponse `pulumi:"sku"`
+	Sku *commontypesv3.SkuResponse `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -106,14 +109,19 @@ func (o LookupInferenceGroupResultOutput) ToLookupInferenceGroupResultOutputWith
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupInferenceGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInferenceGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupInferenceGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInferenceGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
-func (o LookupInferenceGroupResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupInferenceGroupResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o LookupInferenceGroupResultOutput) Identity() commontypesv3.ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupInferenceGroupResult) *commontypesv3.ManagedServiceIdentityResponse { return v.Identity }).(commontypesv3.ManagedServiceIdentityResponsePtrOutput)
 }
 
 // [Required] Additional attributes of the entity.
@@ -137,13 +145,13 @@ func (o LookupInferenceGroupResultOutput) Name() pulumi.StringOutput {
 }
 
 // Sku details required for ARM contract for Autoscaling.
-func (o LookupInferenceGroupResultOutput) Sku() SkuResponsePtrOutput {
-	return o.ApplyT(func(v LookupInferenceGroupResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
+func (o LookupInferenceGroupResultOutput) Sku() commontypesv3.SkuResponsePtrOutput {
+	return o.ApplyT(func(v LookupInferenceGroupResult) *commontypesv3.SkuResponse { return v.Sku }).(commontypesv3.SkuResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupInferenceGroupResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupInferenceGroupResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupInferenceGroupResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupInferenceGroupResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

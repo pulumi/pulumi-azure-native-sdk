@@ -8,20 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The AvailabilitySets resource definition.
 //
-// Uses Azure REST API version 2022-05-21-preview. In version 1.x of the Azure Native provider, it used API version 2020-06-05-preview.
+// Uses Azure REST API version 2023-04-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-05-21-preview.
 //
-// Other available API versions: 2023-04-01-preview, 2023-10-07, 2024-06-01.
+// Other available API versions: 2022-05-21-preview, 2023-10-07, 2024-06-01, 2025-03-13. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native scvmm [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AvailabilitySet struct {
 	pulumi.CustomResourceState
 
 	// Name of the availability set.
 	AvailabilitySetName pulumi.StringPtrOutput `pulumi:"availabilitySetName"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The extended location.
 	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// Gets or sets the location.
@@ -31,7 +34,7 @@ type AvailabilitySet struct {
 	// Gets or sets the provisioning state.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The system data.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource Type
@@ -65,6 +68,9 @@ func NewAvailabilitySet(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:scvmm/v20240601:AvailabilitySet"),
+		},
+		{
+			Type: pulumi.String("azure-native:scvmm/v20250313:AvailabilitySet"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -173,6 +179,11 @@ func (o AvailabilitySetOutput) AvailabilitySetName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AvailabilitySet) pulumi.StringPtrOutput { return v.AvailabilitySetName }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o AvailabilitySetOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AvailabilitySet) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The extended location.
 func (o AvailabilitySetOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
 	return o.ApplyT(func(v *AvailabilitySet) ExtendedLocationResponsePtrOutput { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
@@ -194,8 +205,8 @@ func (o AvailabilitySetOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // The system data.
-func (o AvailabilitySetOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *AvailabilitySet) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o AvailabilitySetOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *AvailabilitySet) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags

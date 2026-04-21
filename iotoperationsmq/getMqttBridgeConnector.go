@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +36,8 @@ type LookupMqttBridgeConnectorArgs struct {
 
 // MQ mqttBridgeConnector resource
 type LookupMqttBridgeConnectorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The number of instances to deploy for a bridge rollout.
 	BridgeInstances *int `pulumi:"bridgeInstances"`
 	// The client id prefix of the dynamically generated client ids.
@@ -62,7 +65,7 @@ type LookupMqttBridgeConnectorResult struct {
 	// The details for connecting with Remote Broker.
 	RemoteBrokerConnection MqttBridgeRemoteBrokerConnectionSpecResponse `pulumi:"remoteBrokerConnection"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -116,6 +119,11 @@ func (o LookupMqttBridgeConnectorResultOutput) ToLookupMqttBridgeConnectorResult
 
 func (o LookupMqttBridgeConnectorResultOutput) ToLookupMqttBridgeConnectorResultOutputWithContext(ctx context.Context) LookupMqttBridgeConnectorResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupMqttBridgeConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMqttBridgeConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The number of instances to deploy for a bridge rollout.
@@ -188,8 +196,8 @@ func (o LookupMqttBridgeConnectorResultOutput) RemoteBrokerConnection() MqttBrid
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupMqttBridgeConnectorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupMqttBridgeConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupMqttBridgeConnectorResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupMqttBridgeConnectorResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // DevOps Configuration resource.
 //
-// Uses Azure REST API version 2023-09-01-preview.
+// Uses Azure REST API version 2024-04-01.
 //
-// Other available API versions: 2024-04-01, 2024-05-15-preview, 2025-03-01.
+// Other available API versions: 2023-09-01-preview, 2024-05-15-preview, 2025-03-01, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupDevOpsConfiguration(ctx *pulumi.Context, args *LookupDevOpsConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupDevOpsConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDevOpsConfigurationResult
@@ -35,6 +36,8 @@ type LookupDevOpsConfigurationArgs struct {
 
 // DevOps Configuration resource.
 type LookupDevOpsConfigurationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -42,7 +45,7 @@ type LookupDevOpsConfigurationResult struct {
 	// DevOps Configuration properties.
 	Properties DevOpsConfigurationPropertiesResponse `pulumi:"properties"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -82,6 +85,11 @@ func (o LookupDevOpsConfigurationResultOutput) ToLookupDevOpsConfigurationResult
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupDevOpsConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDevOpsConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupDevOpsConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDevOpsConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
@@ -98,8 +106,8 @@ func (o LookupDevOpsConfigurationResultOutput) Properties() DevOpsConfigurationP
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupDevOpsConfigurationResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupDevOpsConfigurationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupDevOpsConfigurationResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupDevOpsConfigurationResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

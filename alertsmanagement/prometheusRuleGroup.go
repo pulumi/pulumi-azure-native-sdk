@@ -8,16 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Prometheus rule group resource.
 //
-// Uses Azure REST API version 2023-03-01.
+// Uses Azure REST API version 2023-03-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
+//
+// Other available API versions: 2021-07-22-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native alertsmanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type PrometheusRuleGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Apply rule to data from a specific cluster.
 	ClusterName pulumi.StringPtrOutput `pulumi:"clusterName"`
 	// Rule group description.
@@ -35,7 +40,7 @@ type PrometheusRuleGroup struct {
 	// Target Azure Monitor workspaces resource ids. This api-version is currently limited to creating with one scope. This may change in future.
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -183,6 +188,11 @@ func (o PrometheusRuleGroupOutput) ToPrometheusRuleGroupOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o PrometheusRuleGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrometheusRuleGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Apply rule to data from a specific cluster.
 func (o PrometheusRuleGroupOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrometheusRuleGroup) pulumi.StringPtrOutput { return v.ClusterName }).(pulumi.StringPtrOutput)
@@ -224,8 +234,8 @@ func (o PrometheusRuleGroupOutput) Scopes() pulumi.StringArrayOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o PrometheusRuleGroupOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *PrometheusRuleGroup) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o PrometheusRuleGroupOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *PrometheusRuleGroup) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a host pool.
 //
-// Uses Azure REST API version 2022-09-09.
+// Uses Azure REST API version 2024-04-03.
 //
-// Other available API versions: 2022-04-01-preview, 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-03, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview.
+// Other available API versions: 2022-09-09, 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01-preview, 2025-08-01-preview, 2025-09-01-preview, 2025-11-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupHostPool(ctx *pulumi.Context, args *LookupHostPoolArgs, opts ...pulumi.InvokeOption) (*LookupHostPoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHostPoolResult
@@ -37,8 +38,12 @@ type LookupHostPoolArgs struct {
 type LookupHostPoolResult struct {
 	// The session host configuration for updating agent, monitoring agent, and stack component.
 	AgentUpdate *AgentUpdatePropertiesResponse `pulumi:"agentUpdate"`
+	// List of App Attach Package links.
+	AppAttachPackageReferences []string `pulumi:"appAttachPackageReferences"`
 	// List of applicationGroup links.
 	ApplicationGroupReferences []string `pulumi:"applicationGroupReferences"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Is cloud pc resource.
 	CloudPcResource bool `pulumi:"cloudPcResource"`
 	// Custom rdp property of HostPool.
@@ -51,15 +56,15 @@ type LookupHostPoolResult struct {
 	FriendlyName *string `pulumi:"friendlyName"`
 	// HostPool type for desktop.
 	HostPoolType string `pulumi:"hostPoolType"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-	Id       string                                               `pulumi:"id"`
-	Identity *ResourceModelWithAllowedPropertySetResponseIdentity `pulumi:"identity"`
-	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	Id       string                                                             `pulumi:"id"`
+	Identity *commontypesv5.ResourceModelWithAllowedPropertySetResponseIdentity `pulumi:"identity"`
+	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind *string `pulumi:"kind"`
 	// The type of the load balancer.
 	LoadBalancerType string `pulumi:"loadBalancerType"`
 	// The geo-location where the resource lives
-	Location *string `pulumi:"location"`
+	Location string `pulumi:"location"`
 	// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
 	ManagedBy *string `pulumi:"managedBy"`
 	// The max session limit of HostPool.
@@ -69,15 +74,19 @@ type LookupHostPoolResult struct {
 	// ObjectId of HostPool. (internal use)
 	ObjectId string `pulumi:"objectId"`
 	// PersonalDesktopAssignment type for HostPool.
-	PersonalDesktopAssignmentType *string                                          `pulumi:"personalDesktopAssignmentType"`
-	Plan                          *ResourceModelWithAllowedPropertySetResponsePlan `pulumi:"plan"`
+	PersonalDesktopAssignmentType *string                                                        `pulumi:"personalDesktopAssignmentType"`
+	Plan                          *commontypesv5.ResourceModelWithAllowedPropertySetResponsePlan `pulumi:"plan"`
 	// The type of preferred application group type, default to Desktop Application Group
 	PreferredAppGroupType string `pulumi:"preferredAppGroupType"`
+	// List of private endpoint connection associated with the specified resource
+	PrivateEndpointConnections []commontypesv5.PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
+	// Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// The registration info of HostPool.
 	RegistrationInfo *RegistrationInfoResponse `pulumi:"registrationInfo"`
 	// The ring number of HostPool.
-	Ring *int                                            `pulumi:"ring"`
-	Sku  *ResourceModelWithAllowedPropertySetResponseSku `pulumi:"sku"`
+	Ring *int                                                          `pulumi:"ring"`
+	Sku  *commontypesv5.ResourceModelWithAllowedPropertySetResponseSku `pulumi:"sku"`
 	// ClientId for the registered Relying Party used to issue WVD SSO certificates.
 	SsoClientId *string `pulumi:"ssoClientId"`
 	// Path to Azure KeyVault storing the secret used for communication to ADFS.
@@ -88,8 +97,8 @@ type LookupHostPoolResult struct {
 	SsoadfsAuthority *string `pulumi:"ssoadfsAuthority"`
 	// The flag to turn on/off StartVMOnConnect feature.
 	StartVMOnConnect *bool `pulumi:"startVMOnConnect"`
-	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -140,9 +149,19 @@ func (o LookupHostPoolResultOutput) AgentUpdate() AgentUpdatePropertiesResponseP
 	return o.ApplyT(func(v LookupHostPoolResult) *AgentUpdatePropertiesResponse { return v.AgentUpdate }).(AgentUpdatePropertiesResponsePtrOutput)
 }
 
+// List of App Attach Package links.
+func (o LookupHostPoolResultOutput) AppAttachPackageReferences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupHostPoolResult) []string { return v.AppAttachPackageReferences }).(pulumi.StringArrayOutput)
+}
+
 // List of applicationGroup links.
 func (o LookupHostPoolResultOutput) ApplicationGroupReferences() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupHostPoolResult) []string { return v.ApplicationGroupReferences }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupHostPoolResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHostPoolResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Is cloud pc resource.
@@ -175,16 +194,18 @@ func (o LookupHostPoolResultOutput) HostPoolType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostPoolResult) string { return v.HostPoolType }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupHostPoolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostPoolResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o LookupHostPoolResultOutput) Identity() ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput {
-	return o.ApplyT(func(v LookupHostPoolResult) *ResourceModelWithAllowedPropertySetResponseIdentity { return v.Identity }).(ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput)
+func (o LookupHostPoolResultOutput) Identity() commontypesv5.ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput {
+	return o.ApplyT(func(v LookupHostPoolResult) *commontypesv5.ResourceModelWithAllowedPropertySetResponseIdentity {
+		return v.Identity
+	}).(commontypesv5.ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput)
 }
 
-// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 func (o LookupHostPoolResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupHostPoolResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -195,8 +216,8 @@ func (o LookupHostPoolResultOutput) LoadBalancerType() pulumi.StringOutput {
 }
 
 // The geo-location where the resource lives
-func (o LookupHostPoolResultOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupHostPoolResult) *string { return v.Location }).(pulumi.StringPtrOutput)
+func (o LookupHostPoolResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHostPoolResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
 // The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
@@ -224,13 +245,27 @@ func (o LookupHostPoolResultOutput) PersonalDesktopAssignmentType() pulumi.Strin
 	return o.ApplyT(func(v LookupHostPoolResult) *string { return v.PersonalDesktopAssignmentType }).(pulumi.StringPtrOutput)
 }
 
-func (o LookupHostPoolResultOutput) Plan() ResourceModelWithAllowedPropertySetResponsePlanPtrOutput {
-	return o.ApplyT(func(v LookupHostPoolResult) *ResourceModelWithAllowedPropertySetResponsePlan { return v.Plan }).(ResourceModelWithAllowedPropertySetResponsePlanPtrOutput)
+func (o LookupHostPoolResultOutput) Plan() commontypesv5.ResourceModelWithAllowedPropertySetResponsePlanPtrOutput {
+	return o.ApplyT(func(v LookupHostPoolResult) *commontypesv5.ResourceModelWithAllowedPropertySetResponsePlan {
+		return v.Plan
+	}).(commontypesv5.ResourceModelWithAllowedPropertySetResponsePlanPtrOutput)
 }
 
 // The type of preferred application group type, default to Desktop Application Group
 func (o LookupHostPoolResultOutput) PreferredAppGroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostPoolResult) string { return v.PreferredAppGroupType }).(pulumi.StringOutput)
+}
+
+// List of private endpoint connection associated with the specified resource
+func (o LookupHostPoolResultOutput) PrivateEndpointConnections() commontypesv5.PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v LookupHostPoolResult) []commontypesv5.PrivateEndpointConnectionResponse {
+		return v.PrivateEndpointConnections
+	}).(commontypesv5.PrivateEndpointConnectionResponseArrayOutput)
+}
+
+// Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints
+func (o LookupHostPoolResultOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupHostPoolResult) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
 // The registration info of HostPool.
@@ -243,8 +278,10 @@ func (o LookupHostPoolResultOutput) Ring() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupHostPoolResult) *int { return v.Ring }).(pulumi.IntPtrOutput)
 }
 
-func (o LookupHostPoolResultOutput) Sku() ResourceModelWithAllowedPropertySetResponseSkuPtrOutput {
-	return o.ApplyT(func(v LookupHostPoolResult) *ResourceModelWithAllowedPropertySetResponseSku { return v.Sku }).(ResourceModelWithAllowedPropertySetResponseSkuPtrOutput)
+func (o LookupHostPoolResultOutput) Sku() commontypesv5.ResourceModelWithAllowedPropertySetResponseSkuPtrOutput {
+	return o.ApplyT(func(v LookupHostPoolResult) *commontypesv5.ResourceModelWithAllowedPropertySetResponseSku {
+		return v.Sku
+	}).(commontypesv5.ResourceModelWithAllowedPropertySetResponseSkuPtrOutput)
 }
 
 // ClientId for the registered Relying Party used to issue WVD SSO certificates.
@@ -272,9 +309,9 @@ func (o LookupHostPoolResultOutput) StartVMOnConnect() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupHostPoolResult) *bool { return v.StartVMOnConnect }).(pulumi.BoolPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-func (o LookupHostPoolResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupHostPoolResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupHostPoolResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupHostPoolResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource which represents the managed network connection between Azure Gateways and remote cloud gateways.
 //
-// Uses Azure REST API version 2023-01-01-preview. In version 1.x of the Azure Native provider, it used API version 2023-01-01-preview.
+// Uses Azure REST API version 2023-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-01-01-preview.
 type CloudConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The cloud connector which discovered the remote resource.
 	CloudConnector ResourceReferenceResponsePtrOutput `pulumi:"cloudConnector"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -33,7 +36,7 @@ type CloudConnection struct {
 	// Shared key of the cloud connection.
 	SharedKey pulumi.StringPtrOutput `pulumi:"sharedKey"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -166,6 +169,11 @@ func (o CloudConnectionOutput) ToCloudConnectionOutputWithContext(ctx context.Co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o CloudConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The cloud connector which discovered the remote resource.
 func (o CloudConnectionOutput) CloudConnector() ResourceReferenceResponsePtrOutput {
 	return o.ApplyT(func(v *CloudConnection) ResourceReferenceResponsePtrOutput { return v.CloudConnector }).(ResourceReferenceResponsePtrOutput)
@@ -202,8 +210,8 @@ func (o CloudConnectionOutput) SharedKey() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o CloudConnectionOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *CloudConnection) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o CloudConnectionOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *CloudConnection) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

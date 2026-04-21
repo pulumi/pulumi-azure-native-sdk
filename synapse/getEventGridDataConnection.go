@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv1"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,8 @@ type LookupEventGridDataConnectionArgs struct {
 
 // Class representing an Event Grid data connection.
 type LookupEventGridDataConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The name of blob storage event type to process.
 	BlobStorageEventType *string `pulumi:"blobStorageEventType"`
 	// The event hub consumer group.
@@ -65,7 +68,7 @@ type LookupEventGridDataConnectionResult struct {
 	// The resource ID of the storage account where the data resides.
 	StorageAccountResourceId string `pulumi:"storageAccountResourceId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv1.SystemDataResponse `pulumi:"systemData"`
 	// The table where the data should be ingested. Optionally the table information can be added to each message.
 	TableName *string `pulumi:"tableName"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -111,6 +114,11 @@ func (o LookupEventGridDataConnectionResultOutput) ToLookupEventGridDataConnecti
 
 func (o LookupEventGridDataConnectionResultOutput) ToLookupEventGridDataConnectionResultOutputWithContext(ctx context.Context) LookupEventGridDataConnectionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEventGridDataConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEventGridDataConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of blob storage event type to process.
@@ -175,8 +183,8 @@ func (o LookupEventGridDataConnectionResultOutput) StorageAccountResourceId() pu
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupEventGridDataConnectionResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupEventGridDataConnectionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupEventGridDataConnectionResultOutput) SystemData() commontypesv1.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupEventGridDataConnectionResult) commontypesv1.SystemDataResponse { return v.SystemData }).(commontypesv1.SystemDataResponseOutput)
 }
 
 // The table where the data should be ingested. Optionally the table information can be added to each message.

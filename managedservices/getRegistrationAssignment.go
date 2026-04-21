@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +36,8 @@ type LookupRegistrationAssignmentArgs struct {
 
 // The registration assignment.
 type LookupRegistrationAssignmentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The fully qualified path of the registration assignment.
 	Id string `pulumi:"id"`
 	// The name of the registration assignment.
@@ -42,7 +45,7 @@ type LookupRegistrationAssignmentResult struct {
 	// The properties of a registration assignment.
 	Properties RegistrationAssignmentPropertiesResponse `pulumi:"properties"`
 	// The metadata for the registration assignment resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// The type of the Azure resource (Microsoft.ManagedServices/registrationAssignments).
 	Type string `pulumi:"type"`
 }
@@ -84,6 +87,11 @@ func (o LookupRegistrationAssignmentResultOutput) ToLookupRegistrationAssignment
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupRegistrationAssignmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistrationAssignmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The fully qualified path of the registration assignment.
 func (o LookupRegistrationAssignmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistrationAssignmentResult) string { return v.Id }).(pulumi.StringOutput)
@@ -102,8 +110,8 @@ func (o LookupRegistrationAssignmentResultOutput) Properties() RegistrationAssig
 }
 
 // The metadata for the registration assignment resource.
-func (o LookupRegistrationAssignmentResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupRegistrationAssignmentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupRegistrationAssignmentResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupRegistrationAssignmentResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the Azure resource (Microsoft.ManagedServices/registrationAssignments).

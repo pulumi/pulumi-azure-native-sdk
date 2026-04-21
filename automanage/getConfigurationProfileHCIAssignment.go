@@ -7,13 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get information about a configuration profile assignment
 //
 // Uses Azure REST API version 2022-05-04.
+//
+// Other available API versions: 2021-04-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automanage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupConfigurationProfileHCIAssignment(ctx *pulumi.Context, args *LookupConfigurationProfileHCIAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationProfileHCIAssignmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigurationProfileHCIAssignmentResult
@@ -35,6 +38,8 @@ type LookupConfigurationProfileHCIAssignmentArgs struct {
 
 // Configuration profile assignment is an association between a VM and automanage profile configuration.
 type LookupConfigurationProfileHCIAssignmentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Azure resource id. Indicates if this resource is managed by another Azure resource.
@@ -44,7 +49,7 @@ type LookupConfigurationProfileHCIAssignmentResult struct {
 	// Properties of the configuration profile assignment.
 	Properties ConfigurationProfileAssignmentPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -86,6 +91,11 @@ func (o LookupConfigurationProfileHCIAssignmentResultOutput) ToLookupConfigurati
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupConfigurationProfileHCIAssignmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConfigurationProfileHCIAssignmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupConfigurationProfileHCIAssignmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationProfileHCIAssignmentResult) string { return v.Id }).(pulumi.StringOutput)
@@ -109,8 +119,10 @@ func (o LookupConfigurationProfileHCIAssignmentResultOutput) Properties() Config
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupConfigurationProfileHCIAssignmentResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupConfigurationProfileHCIAssignmentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupConfigurationProfileHCIAssignmentResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupConfigurationProfileHCIAssignmentResult) commontypesv2.SystemDataResponse {
+		return v.SystemData
+	}).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

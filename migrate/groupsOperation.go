@@ -8,15 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Group resource.
 //
-// Uses Azure REST API version 2023-03-15.
+// Uses Azure REST API version 2024-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-03-15.
 //
-// Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview, 2024-01-01-preview.
+// Other available API versions: 2023-03-15, 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview, 2024-01-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type GroupsOperation struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +25,8 @@ type GroupsOperation struct {
 	AreAssessmentsRunning pulumi.BoolOutput `pulumi:"areAssessmentsRunning"`
 	// List of References to Assessments created on this group.
 	Assessments pulumi.StringArrayOutput `pulumi:"assessments"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Time when this group was created. Date-Time represented in ISO-8601 format.
 	CreatedTimestamp pulumi.StringOutput `pulumi:"createdTimestamp"`
 	// Whether the group has been created and is valid.
@@ -39,7 +42,7 @@ type GroupsOperation struct {
 	// List of assessment types supported on this group.
 	SupportedAssessmentTypes pulumi.StringArrayOutput `pulumi:"supportedAssessmentTypes"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Time when this group was last updated. Date-Time represented in ISO-8601 format.
@@ -61,6 +64,9 @@ func NewGroupsOperation(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:migrate/v20191001:Group"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20191001:GroupsOperation"),
 		},
 		{
@@ -77,6 +83,12 @@ func NewGroupsOperation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20240101preview:GroupsOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240115:GroupsOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate:Group"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -190,6 +202,11 @@ func (o GroupsOperationOutput) Assessments() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GroupsOperation) pulumi.StringArrayOutput { return v.Assessments }).(pulumi.StringArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o GroupsOperationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupsOperation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Time when this group was created. Date-Time represented in ISO-8601 format.
 func (o GroupsOperationOutput) CreatedTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupsOperation) pulumi.StringOutput { return v.CreatedTimestamp }).(pulumi.StringOutput)
@@ -226,8 +243,8 @@ func (o GroupsOperationOutput) SupportedAssessmentTypes() pulumi.StringArrayOutp
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o GroupsOperationOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *GroupsOperation) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o GroupsOperationOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *GroupsOperation) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

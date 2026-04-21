@@ -8,22 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A monitored resource.
 //
-// Uses Azure REST API version 2023-07-07-preview.
+// Uses Azure REST API version 2023-07-07-preview. In version 2.x of the Azure Native provider, it used API version 2023-07-07-preview.
 type MonitoredResource struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The properties of a monitored resource.
 	Properties MonitoredResourcePropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -135,6 +138,11 @@ func (o MonitoredResourceOutput) ToMonitoredResourceOutputWithContext(ctx contex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o MonitoredResourceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MonitoredResource) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o MonitoredResourceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MonitoredResource) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -146,8 +154,8 @@ func (o MonitoredResourceOutput) Properties() MonitoredResourcePropertiesRespons
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o MonitoredResourceOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *MonitoredResource) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o MonitoredResourceOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *MonitoredResource) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

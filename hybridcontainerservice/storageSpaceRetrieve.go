@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The storageSpaces resource definition.
 //
-// Uses Azure REST API version 2022-09-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-05-01-preview.
+// Uses Azure REST API version 2022-09-01-preview.
 type StorageSpaceRetrieve struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion  pulumi.StringOutput                            `pulumi:"azureApiVersion"`
 	ExtendedLocation StorageSpacesResponseExtendedLocationPtrOutput `pulumi:"extendedLocation"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -26,7 +29,7 @@ type StorageSpaceRetrieve struct {
 	// HybridAKSStorageSpec defines the desired state of HybridAKSStorage
 	Properties StorageSpacesPropertiesResponseOutput `pulumi:"properties"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -48,16 +51,7 @@ func NewStorageSpaceRetrieve(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:hybridcontainerservice/v20220501preview:StorageSpaceRetrieve"),
 		},
 		{
-			Type: pulumi.String("azure-native:hybridcontainerservice/v20220501preview:storageSpaceRetrieve"),
-		},
-		{
 			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:StorageSpaceRetrieve"),
-		},
-		{
-			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:storageSpaceRetrieve"),
-		},
-		{
-			Type: pulumi.String("azure-native:hybridcontainerservice:storageSpaceRetrieve"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -159,6 +153,11 @@ func (o StorageSpaceRetrieveOutput) ToStorageSpaceRetrieveOutputWithContext(ctx 
 	return o
 }
 
+// The Azure API version of the resource.
+func (o StorageSpaceRetrieveOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageSpaceRetrieve) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 func (o StorageSpaceRetrieveOutput) ExtendedLocation() StorageSpacesResponseExtendedLocationPtrOutput {
 	return o.ApplyT(func(v *StorageSpaceRetrieve) StorageSpacesResponseExtendedLocationPtrOutput {
 		return v.ExtendedLocation
@@ -181,8 +180,8 @@ func (o StorageSpaceRetrieveOutput) Properties() StorageSpacesPropertiesResponse
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o StorageSpaceRetrieveOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *StorageSpaceRetrieve) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o StorageSpaceRetrieveOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *StorageSpaceRetrieve) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Resource tags.

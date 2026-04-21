@@ -7,13 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns an AML file system.
 //
-// Uses Azure REST API version 2023-05-01.
+// Uses Azure REST API version 2024-03-01.
+//
+// Other available API versions: 2023-05-01, 2023-11-01-preview, 2024-07-01, 2025-07-01, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAmlFilesystem(ctx *pulumi.Context, args *LookupAmlFilesystemArgs, opts ...pulumi.InvokeOption) (*LookupAmlFilesystemResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAmlFilesystemResult
@@ -33,6 +36,8 @@ type LookupAmlFilesystemArgs struct {
 
 // An AML file system instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md
 type LookupAmlFilesystemResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Client information for the AML file system.
 	ClientInfo AmlFilesystemClientInfoResponse `pulumi:"clientInfo"`
 	// Specifies encryption settings of the AML file system.
@@ -55,12 +60,14 @@ type LookupAmlFilesystemResult struct {
 	Name string `pulumi:"name"`
 	// ARM provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Specifies root squash settings of the AML file system.
+	RootSquashSettings *AmlFilesystemRootSquashSettingsResponse `pulumi:"rootSquashSettings"`
 	// SKU for the resource.
 	Sku *SkuNameResponse `pulumi:"sku"`
 	// The size of the AML file system, in TiB. This might be rounded up.
 	StorageCapacityTiB float64 `pulumi:"storageCapacityTiB"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Throughput provisioned in MB per sec, calculated as storageCapacityTiB * per-unit storage throughput
@@ -114,6 +121,11 @@ func (o LookupAmlFilesystemResultOutput) ToLookupAmlFilesystemResultOutput() Loo
 
 func (o LookupAmlFilesystemResultOutput) ToLookupAmlFilesystemResultOutputWithContext(ctx context.Context) LookupAmlFilesystemResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAmlFilesystemResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAmlFilesystemResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Client information for the AML file system.
@@ -173,6 +185,13 @@ func (o LookupAmlFilesystemResultOutput) ProvisioningState() pulumi.StringOutput
 	return o.ApplyT(func(v LookupAmlFilesystemResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Specifies root squash settings of the AML file system.
+func (o LookupAmlFilesystemResultOutput) RootSquashSettings() AmlFilesystemRootSquashSettingsResponsePtrOutput {
+	return o.ApplyT(func(v LookupAmlFilesystemResult) *AmlFilesystemRootSquashSettingsResponse {
+		return v.RootSquashSettings
+	}).(AmlFilesystemRootSquashSettingsResponsePtrOutput)
+}
+
 // SKU for the resource.
 func (o LookupAmlFilesystemResultOutput) Sku() SkuNameResponsePtrOutput {
 	return o.ApplyT(func(v LookupAmlFilesystemResult) *SkuNameResponse { return v.Sku }).(SkuNameResponsePtrOutput)
@@ -184,8 +203,8 @@ func (o LookupAmlFilesystemResultOutput) StorageCapacityTiB() pulumi.Float64Outp
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupAmlFilesystemResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAmlFilesystemResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupAmlFilesystemResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAmlFilesystemResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

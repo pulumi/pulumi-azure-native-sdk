@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2023-01-01. In version 1.x of the Azure Native provider, it used API version 2021-10-01-preview.
+// Uses Azure REST API version 2025-01-01. In version 2.x of the Azure Native provider, it used API version 2023-01-01.
 //
-// Other available API versions: 2022-11-01-preview, 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01, 2023-12-01, 2024-02-01-preview, 2024-03-01, 2024-04-01, 2025-01-01, 2025-02-01.
+// Other available API versions: 2023-01-01, 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01, 2023-12-01, 2024-02-01-preview, 2024-03-01, 2024-04-01, 2025-02-01, 2025-07-01, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dataprotection [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ResourceGuard struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Optional ETag.
 	ETag pulumi.StringPtrOutput `pulumi:"eTag"`
 	// Resource location.
@@ -27,7 +30,7 @@ type ResourceGuard struct {
 	// ResourceGuardResource properties
 	Properties ResourceGuardResponseOutput `pulumi:"properties"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv4.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
@@ -119,6 +122,12 @@ func NewResourceGuard(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dataprotection/v20250201:ResourceGuard"),
+		},
+		{
+			Type: pulumi.String("azure-native:dataprotection/v20250701:ResourceGuard"),
+		},
+		{
+			Type: pulumi.String("azure-native:dataprotection/v20250901:ResourceGuard"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -222,6 +231,11 @@ func (o ResourceGuardOutput) ToResourceGuardOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ResourceGuardOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceGuard) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Optional ETag.
 func (o ResourceGuardOutput) ETag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceGuard) pulumi.StringPtrOutput { return v.ETag }).(pulumi.StringPtrOutput)
@@ -243,8 +257,8 @@ func (o ResourceGuardOutput) Properties() ResourceGuardResponseOutput {
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o ResourceGuardOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *ResourceGuard) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o ResourceGuardOutput) SystemData() commontypesv4.SystemDataResponseOutput {
+	return o.ApplyT(func(v *ResourceGuard) commontypesv4.SystemDataResponseOutput { return v.SystemData }).(commontypesv4.SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -429,390 +429,1477 @@ func (o DatastoreResponsePtrOutput) KustoOfferingType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Managed service identity (system assigned and/or user assigned identities)
-type ManagedServiceIdentity struct {
-	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-	Type string `pulumi:"type"`
-	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
+// The properties specific to an elastic pool in Azure SQL Database.
+type SqlDbElasticPoolTargetProperties struct {
+	// The Azure resource ID of the anchor database used to connect to an elastic pool.
+	AnchorDatabaseResourceId string `pulumi:"anchorDatabaseResourceId"`
+	// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
+	ConnectionServerName string `pulumi:"connectionServerName"`
+	// Set to true to monitor a high availability replica of specified target, if any.
+	ReadIntent *bool `pulumi:"readIntent"`
+	// The Azure resource ID of an Azure SQL DB elastic pool target.
+	SqlEpResourceId string `pulumi:"sqlEpResourceId"`
+	// The type of authentication to use when connecting to a target.
+	TargetAuthenticationType string `pulumi:"targetAuthenticationType"`
+	// Discriminator property for TargetProperties.
+	// Expected value is 'SqlEp'.
+	TargetType string `pulumi:"targetType"`
+	// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
+	TargetVault *VaultSecret `pulumi:"targetVault"`
 }
 
-// ManagedServiceIdentityInput is an input type that accepts ManagedServiceIdentityArgs and ManagedServiceIdentityOutput values.
-// You can construct a concrete instance of `ManagedServiceIdentityInput` via:
+// Defaults sets the appropriate defaults for SqlDbElasticPoolTargetProperties
+func (val *SqlDbElasticPoolTargetProperties) Defaults() *SqlDbElasticPoolTargetProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ReadIntent == nil {
+		readIntent_ := false
+		tmp.ReadIntent = &readIntent_
+	}
+	return &tmp
+}
+
+// SqlDbElasticPoolTargetPropertiesInput is an input type that accepts SqlDbElasticPoolTargetPropertiesArgs and SqlDbElasticPoolTargetPropertiesOutput values.
+// You can construct a concrete instance of `SqlDbElasticPoolTargetPropertiesInput` via:
 //
-//	ManagedServiceIdentityArgs{...}
-type ManagedServiceIdentityInput interface {
+//	SqlDbElasticPoolTargetPropertiesArgs{...}
+type SqlDbElasticPoolTargetPropertiesInput interface {
 	pulumi.Input
 
-	ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput
-	ToManagedServiceIdentityOutputWithContext(context.Context) ManagedServiceIdentityOutput
+	ToSqlDbElasticPoolTargetPropertiesOutput() SqlDbElasticPoolTargetPropertiesOutput
+	ToSqlDbElasticPoolTargetPropertiesOutputWithContext(context.Context) SqlDbElasticPoolTargetPropertiesOutput
 }
 
-// Managed service identity (system assigned and/or user assigned identities)
-type ManagedServiceIdentityArgs struct {
-	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-	Type pulumi.StringInput `pulumi:"type"`
-	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
+// The properties specific to an elastic pool in Azure SQL Database.
+type SqlDbElasticPoolTargetPropertiesArgs struct {
+	// The Azure resource ID of the anchor database used to connect to an elastic pool.
+	AnchorDatabaseResourceId pulumi.StringInput `pulumi:"anchorDatabaseResourceId"`
+	// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
+	ConnectionServerName pulumi.StringInput `pulumi:"connectionServerName"`
+	// Set to true to monitor a high availability replica of specified target, if any.
+	ReadIntent pulumi.BoolPtrInput `pulumi:"readIntent"`
+	// The Azure resource ID of an Azure SQL DB elastic pool target.
+	SqlEpResourceId pulumi.StringInput `pulumi:"sqlEpResourceId"`
+	// The type of authentication to use when connecting to a target.
+	TargetAuthenticationType pulumi.StringInput `pulumi:"targetAuthenticationType"`
+	// Discriminator property for TargetProperties.
+	// Expected value is 'SqlEp'.
+	TargetType pulumi.StringInput `pulumi:"targetType"`
+	// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
+	TargetVault VaultSecretPtrInput `pulumi:"targetVault"`
 }
 
-func (ManagedServiceIdentityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
+// Defaults sets the appropriate defaults for SqlDbElasticPoolTargetPropertiesArgs
+func (val *SqlDbElasticPoolTargetPropertiesArgs) Defaults() *SqlDbElasticPoolTargetPropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ReadIntent == nil {
+		tmp.ReadIntent = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
+func (SqlDbElasticPoolTargetPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlDbElasticPoolTargetProperties)(nil)).Elem()
 }
 
-func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
-	return i.ToManagedServiceIdentityOutputWithContext(context.Background())
+func (i SqlDbElasticPoolTargetPropertiesArgs) ToSqlDbElasticPoolTargetPropertiesOutput() SqlDbElasticPoolTargetPropertiesOutput {
+	return i.ToSqlDbElasticPoolTargetPropertiesOutputWithContext(context.Background())
 }
 
-func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
+func (i SqlDbElasticPoolTargetPropertiesArgs) ToSqlDbElasticPoolTargetPropertiesOutputWithContext(ctx context.Context) SqlDbElasticPoolTargetPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlDbElasticPoolTargetPropertiesOutput)
 }
 
-func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
-	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+func (i SqlDbElasticPoolTargetPropertiesArgs) ToSqlDbElasticPoolTargetPropertiesPtrOutput() SqlDbElasticPoolTargetPropertiesPtrOutput {
+	return i.ToSqlDbElasticPoolTargetPropertiesPtrOutputWithContext(context.Background())
 }
 
-func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput).ToManagedServiceIdentityPtrOutputWithContext(ctx)
+func (i SqlDbElasticPoolTargetPropertiesArgs) ToSqlDbElasticPoolTargetPropertiesPtrOutputWithContext(ctx context.Context) SqlDbElasticPoolTargetPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlDbElasticPoolTargetPropertiesOutput).ToSqlDbElasticPoolTargetPropertiesPtrOutputWithContext(ctx)
 }
 
-// ManagedServiceIdentityPtrInput is an input type that accepts ManagedServiceIdentityArgs, ManagedServiceIdentityPtr and ManagedServiceIdentityPtrOutput values.
-// You can construct a concrete instance of `ManagedServiceIdentityPtrInput` via:
+// SqlDbElasticPoolTargetPropertiesPtrInput is an input type that accepts SqlDbElasticPoolTargetPropertiesArgs, SqlDbElasticPoolTargetPropertiesPtr and SqlDbElasticPoolTargetPropertiesPtrOutput values.
+// You can construct a concrete instance of `SqlDbElasticPoolTargetPropertiesPtrInput` via:
 //
-//	        ManagedServiceIdentityArgs{...}
+//	        SqlDbElasticPoolTargetPropertiesArgs{...}
 //
 //	or:
 //
 //	        nil
-type ManagedServiceIdentityPtrInput interface {
+type SqlDbElasticPoolTargetPropertiesPtrInput interface {
 	pulumi.Input
 
-	ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput
-	ToManagedServiceIdentityPtrOutputWithContext(context.Context) ManagedServiceIdentityPtrOutput
+	ToSqlDbElasticPoolTargetPropertiesPtrOutput() SqlDbElasticPoolTargetPropertiesPtrOutput
+	ToSqlDbElasticPoolTargetPropertiesPtrOutputWithContext(context.Context) SqlDbElasticPoolTargetPropertiesPtrOutput
 }
 
-type managedServiceIdentityPtrType ManagedServiceIdentityArgs
+type sqlDbElasticPoolTargetPropertiesPtrType SqlDbElasticPoolTargetPropertiesArgs
 
-func ManagedServiceIdentityPtr(v *ManagedServiceIdentityArgs) ManagedServiceIdentityPtrInput {
-	return (*managedServiceIdentityPtrType)(v)
+func SqlDbElasticPoolTargetPropertiesPtr(v *SqlDbElasticPoolTargetPropertiesArgs) SqlDbElasticPoolTargetPropertiesPtrInput {
+	return (*sqlDbElasticPoolTargetPropertiesPtrType)(v)
 }
 
-func (*managedServiceIdentityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
+func (*sqlDbElasticPoolTargetPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlDbElasticPoolTargetProperties)(nil)).Elem()
 }
 
-func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
-	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+func (i *sqlDbElasticPoolTargetPropertiesPtrType) ToSqlDbElasticPoolTargetPropertiesPtrOutput() SqlDbElasticPoolTargetPropertiesPtrOutput {
+	return i.ToSqlDbElasticPoolTargetPropertiesPtrOutputWithContext(context.Background())
 }
 
-func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
+func (i *sqlDbElasticPoolTargetPropertiesPtrType) ToSqlDbElasticPoolTargetPropertiesPtrOutputWithContext(ctx context.Context) SqlDbElasticPoolTargetPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlDbElasticPoolTargetPropertiesPtrOutput)
 }
 
-// Managed service identity (system assigned and/or user assigned identities)
-type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
+// The properties specific to an elastic pool in Azure SQL Database.
+type SqlDbElasticPoolTargetPropertiesOutput struct{ *pulumi.OutputState }
 
-func (ManagedServiceIdentityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
+func (SqlDbElasticPoolTargetPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlDbElasticPoolTargetProperties)(nil)).Elem()
 }
 
-func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
+func (o SqlDbElasticPoolTargetPropertiesOutput) ToSqlDbElasticPoolTargetPropertiesOutput() SqlDbElasticPoolTargetPropertiesOutput {
 	return o
 }
 
-func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
+func (o SqlDbElasticPoolTargetPropertiesOutput) ToSqlDbElasticPoolTargetPropertiesOutputWithContext(ctx context.Context) SqlDbElasticPoolTargetPropertiesOutput {
 	return o
 }
 
-func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
-	return o.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+func (o SqlDbElasticPoolTargetPropertiesOutput) ToSqlDbElasticPoolTargetPropertiesPtrOutput() SqlDbElasticPoolTargetPropertiesPtrOutput {
+	return o.ToSqlDbElasticPoolTargetPropertiesPtrOutputWithContext(context.Background())
 }
 
-func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedServiceIdentity) *ManagedServiceIdentity {
+func (o SqlDbElasticPoolTargetPropertiesOutput) ToSqlDbElasticPoolTargetPropertiesPtrOutputWithContext(ctx context.Context) SqlDbElasticPoolTargetPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlDbElasticPoolTargetProperties) *SqlDbElasticPoolTargetProperties {
 		return &v
-	}).(ManagedServiceIdentityPtrOutput)
+	}).(SqlDbElasticPoolTargetPropertiesPtrOutput)
 }
 
-// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
+// The Azure resource ID of the anchor database used to connect to an elastic pool.
+func (o SqlDbElasticPoolTargetPropertiesOutput) AnchorDatabaseResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlDbElasticPoolTargetProperties) string { return v.AnchorDatabaseResourceId }).(pulumi.StringOutput)
 }
 
-// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ManagedServiceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
+// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
+func (o SqlDbElasticPoolTargetPropertiesOutput) ConnectionServerName() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlDbElasticPoolTargetProperties) string { return v.ConnectionServerName }).(pulumi.StringOutput)
 }
 
-type ManagedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedServiceIdentityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
+// Set to true to monitor a high availability replica of specified target, if any.
+func (o SqlDbElasticPoolTargetPropertiesOutput) ReadIntent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlDbElasticPoolTargetProperties) *bool { return v.ReadIntent }).(pulumi.BoolPtrOutput)
 }
 
-func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+// The Azure resource ID of an Azure SQL DB elastic pool target.
+func (o SqlDbElasticPoolTargetPropertiesOutput) SqlEpResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlDbElasticPoolTargetProperties) string { return v.SqlEpResourceId }).(pulumi.StringOutput)
+}
+
+// The type of authentication to use when connecting to a target.
+func (o SqlDbElasticPoolTargetPropertiesOutput) TargetAuthenticationType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlDbElasticPoolTargetProperties) string { return v.TargetAuthenticationType }).(pulumi.StringOutput)
+}
+
+// Discriminator property for TargetProperties.
+// Expected value is 'SqlEp'.
+func (o SqlDbElasticPoolTargetPropertiesOutput) TargetType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlDbElasticPoolTargetProperties) string { return v.TargetType }).(pulumi.StringOutput)
+}
+
+// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
+func (o SqlDbElasticPoolTargetPropertiesOutput) TargetVault() VaultSecretPtrOutput {
+	return o.ApplyT(func(v SqlDbElasticPoolTargetProperties) *VaultSecret { return v.TargetVault }).(VaultSecretPtrOutput)
+}
+
+type SqlDbElasticPoolTargetPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlDbElasticPoolTargetPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlDbElasticPoolTargetProperties)(nil)).Elem()
+}
+
+func (o SqlDbElasticPoolTargetPropertiesPtrOutput) ToSqlDbElasticPoolTargetPropertiesPtrOutput() SqlDbElasticPoolTargetPropertiesPtrOutput {
 	return o
 }
 
-func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+func (o SqlDbElasticPoolTargetPropertiesPtrOutput) ToSqlDbElasticPoolTargetPropertiesPtrOutputWithContext(ctx context.Context) SqlDbElasticPoolTargetPropertiesPtrOutput {
 	return o
 }
 
-func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentity) ManagedServiceIdentity {
+func (o SqlDbElasticPoolTargetPropertiesPtrOutput) Elem() SqlDbElasticPoolTargetPropertiesOutput {
+	return o.ApplyT(func(v *SqlDbElasticPoolTargetProperties) SqlDbElasticPoolTargetProperties {
 		if v != nil {
 			return *v
 		}
-		var ret ManagedServiceIdentity
+		var ret SqlDbElasticPoolTargetProperties
 		return ret
-	}).(ManagedServiceIdentityOutput)
+	}).(SqlDbElasticPoolTargetPropertiesOutput)
 }
 
-// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-func (o ManagedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentity) *string {
+// The Azure resource ID of the anchor database used to connect to an elastic pool.
+func (o SqlDbElasticPoolTargetPropertiesPtrOutput) AnchorDatabaseResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDbElasticPoolTargetProperties) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Type
+		return &v.AnchorDatabaseResourceId
 	}).(pulumi.StringPtrOutput)
 }
 
-// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentity) []string {
+// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
+func (o SqlDbElasticPoolTargetPropertiesPtrOutput) ConnectionServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDbElasticPoolTargetProperties) *string {
 		if v == nil {
 			return nil
 		}
-		return v.UserAssignedIdentities
-	}).(pulumi.StringArrayOutput)
+		return &v.ConnectionServerName
+	}).(pulumi.StringPtrOutput)
 }
 
-// Managed service identity (system assigned and/or user assigned identities)
-type ManagedServiceIdentityResponse struct {
-	// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-	PrincipalId string `pulumi:"principalId"`
-	// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-	TenantId string `pulumi:"tenantId"`
-	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-	Type string `pulumi:"type"`
-	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
+// Set to true to monitor a high availability replica of specified target, if any.
+func (o SqlDbElasticPoolTargetPropertiesPtrOutput) ReadIntent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlDbElasticPoolTargetProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReadIntent
+	}).(pulumi.BoolPtrOutput)
 }
 
-// Managed service identity (system assigned and/or user assigned identities)
-type ManagedServiceIdentityResponseOutput struct{ *pulumi.OutputState }
-
-func (ManagedServiceIdentityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedServiceIdentityResponse)(nil)).Elem()
+// The Azure resource ID of an Azure SQL DB elastic pool target.
+func (o SqlDbElasticPoolTargetPropertiesPtrOutput) SqlEpResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDbElasticPoolTargetProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SqlEpResourceId
+	}).(pulumi.StringPtrOutput)
 }
 
-func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutput() ManagedServiceIdentityResponseOutput {
+// The type of authentication to use when connecting to a target.
+func (o SqlDbElasticPoolTargetPropertiesPtrOutput) TargetAuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDbElasticPoolTargetProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetAuthenticationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Discriminator property for TargetProperties.
+// Expected value is 'SqlEp'.
+func (o SqlDbElasticPoolTargetPropertiesPtrOutput) TargetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDbElasticPoolTargetProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetType
+	}).(pulumi.StringPtrOutput)
+}
+
+// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
+func (o SqlDbElasticPoolTargetPropertiesPtrOutput) TargetVault() VaultSecretPtrOutput {
+	return o.ApplyT(func(v *SqlDbElasticPoolTargetProperties) *VaultSecret {
+		if v == nil {
+			return nil
+		}
+		return v.TargetVault
+	}).(VaultSecretPtrOutput)
+}
+
+// The properties specific to an elastic pool in Azure SQL Database.
+type SqlDbElasticPoolTargetPropertiesResponse struct {
+	// The Azure resource ID of the anchor database used to connect to an elastic pool.
+	AnchorDatabaseResourceId string `pulumi:"anchorDatabaseResourceId"`
+	// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
+	ConnectionServerName string `pulumi:"connectionServerName"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Set to true to monitor a high availability replica of specified target, if any.
+	ReadIntent *bool `pulumi:"readIntent"`
+	// The Azure resource ID of an Azure SQL DB elastic pool target.
+	SqlEpResourceId string `pulumi:"sqlEpResourceId"`
+	// The type of authentication to use when connecting to a target.
+	TargetAuthenticationType string `pulumi:"targetAuthenticationType"`
+	// Discriminator property for TargetProperties.
+	// Expected value is 'SqlEp'.
+	TargetType string `pulumi:"targetType"`
+	// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
+	TargetVault *VaultSecretResponse `pulumi:"targetVault"`
+}
+
+// Defaults sets the appropriate defaults for SqlDbElasticPoolTargetPropertiesResponse
+func (val *SqlDbElasticPoolTargetPropertiesResponse) Defaults() *SqlDbElasticPoolTargetPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ReadIntent == nil {
+		readIntent_ := false
+		tmp.ReadIntent = &readIntent_
+	}
+	return &tmp
+}
+
+// The properties specific to an elastic pool in Azure SQL Database.
+type SqlDbElasticPoolTargetPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlDbElasticPoolTargetPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlDbElasticPoolTargetPropertiesResponse)(nil)).Elem()
+}
+
+func (o SqlDbElasticPoolTargetPropertiesResponseOutput) ToSqlDbElasticPoolTargetPropertiesResponseOutput() SqlDbElasticPoolTargetPropertiesResponseOutput {
 	return o
 }
 
-func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutputWithContext(ctx context.Context) ManagedServiceIdentityResponseOutput {
+func (o SqlDbElasticPoolTargetPropertiesResponseOutput) ToSqlDbElasticPoolTargetPropertiesResponseOutputWithContext(ctx context.Context) SqlDbElasticPoolTargetPropertiesResponseOutput {
 	return o
 }
 
-// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o ManagedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+// The Azure resource ID of the anchor database used to connect to an elastic pool.
+func (o SqlDbElasticPoolTargetPropertiesResponseOutput) AnchorDatabaseResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlDbElasticPoolTargetPropertiesResponse) string { return v.AnchorDatabaseResourceId }).(pulumi.StringOutput)
 }
 
-// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o ManagedServiceIdentityResponseOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
+// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
+func (o SqlDbElasticPoolTargetPropertiesResponseOutput) ConnectionServerName() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlDbElasticPoolTargetPropertiesResponse) string { return v.ConnectionServerName }).(pulumi.StringOutput)
 }
 
-// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-func (o ManagedServiceIdentityResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
+// The provisioning state of the resource.
+func (o SqlDbElasticPoolTargetPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlDbElasticPoolTargetPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
-	return o.ApplyT(func(v ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
-		return v.UserAssignedIdentities
-	}).(UserAssignedIdentityResponseMapOutput)
+// Set to true to monitor a high availability replica of specified target, if any.
+func (o SqlDbElasticPoolTargetPropertiesResponseOutput) ReadIntent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlDbElasticPoolTargetPropertiesResponse) *bool { return v.ReadIntent }).(pulumi.BoolPtrOutput)
 }
 
-type ManagedServiceIdentityResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedServiceIdentityResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedServiceIdentityResponse)(nil)).Elem()
+// The Azure resource ID of an Azure SQL DB elastic pool target.
+func (o SqlDbElasticPoolTargetPropertiesResponseOutput) SqlEpResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlDbElasticPoolTargetPropertiesResponse) string { return v.SqlEpResourceId }).(pulumi.StringOutput)
 }
 
-func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutput() ManagedServiceIdentityResponsePtrOutput {
+// The type of authentication to use when connecting to a target.
+func (o SqlDbElasticPoolTargetPropertiesResponseOutput) TargetAuthenticationType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlDbElasticPoolTargetPropertiesResponse) string { return v.TargetAuthenticationType }).(pulumi.StringOutput)
+}
+
+// Discriminator property for TargetProperties.
+// Expected value is 'SqlEp'.
+func (o SqlDbElasticPoolTargetPropertiesResponseOutput) TargetType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlDbElasticPoolTargetPropertiesResponse) string { return v.TargetType }).(pulumi.StringOutput)
+}
+
+// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
+func (o SqlDbElasticPoolTargetPropertiesResponseOutput) TargetVault() VaultSecretResponsePtrOutput {
+	return o.ApplyT(func(v SqlDbElasticPoolTargetPropertiesResponse) *VaultSecretResponse { return v.TargetVault }).(VaultSecretResponsePtrOutput)
+}
+
+// The properties specific to a database in Azure SQL Database.
+type SqlDbSingleDatabaseTargetProperties struct {
+	// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
+	ConnectionServerName string `pulumi:"connectionServerName"`
+	// Set to true to monitor a high availability replica of specified target, if any.
+	ReadIntent *bool `pulumi:"readIntent"`
+	// The Azure resource ID of an Azure SQL DB database target.
+	SqlDbResourceId string `pulumi:"sqlDbResourceId"`
+	// The type of authentication to use when connecting to a target.
+	TargetAuthenticationType string `pulumi:"targetAuthenticationType"`
+	// Discriminator property for TargetProperties.
+	// Expected value is 'SqlDb'.
+	TargetType string `pulumi:"targetType"`
+	// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
+	TargetVault *VaultSecret `pulumi:"targetVault"`
+}
+
+// Defaults sets the appropriate defaults for SqlDbSingleDatabaseTargetProperties
+func (val *SqlDbSingleDatabaseTargetProperties) Defaults() *SqlDbSingleDatabaseTargetProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ReadIntent == nil {
+		readIntent_ := false
+		tmp.ReadIntent = &readIntent_
+	}
+	return &tmp
+}
+
+// SqlDbSingleDatabaseTargetPropertiesInput is an input type that accepts SqlDbSingleDatabaseTargetPropertiesArgs and SqlDbSingleDatabaseTargetPropertiesOutput values.
+// You can construct a concrete instance of `SqlDbSingleDatabaseTargetPropertiesInput` via:
+//
+//	SqlDbSingleDatabaseTargetPropertiesArgs{...}
+type SqlDbSingleDatabaseTargetPropertiesInput interface {
+	pulumi.Input
+
+	ToSqlDbSingleDatabaseTargetPropertiesOutput() SqlDbSingleDatabaseTargetPropertiesOutput
+	ToSqlDbSingleDatabaseTargetPropertiesOutputWithContext(context.Context) SqlDbSingleDatabaseTargetPropertiesOutput
+}
+
+// The properties specific to a database in Azure SQL Database.
+type SqlDbSingleDatabaseTargetPropertiesArgs struct {
+	// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
+	ConnectionServerName pulumi.StringInput `pulumi:"connectionServerName"`
+	// Set to true to monitor a high availability replica of specified target, if any.
+	ReadIntent pulumi.BoolPtrInput `pulumi:"readIntent"`
+	// The Azure resource ID of an Azure SQL DB database target.
+	SqlDbResourceId pulumi.StringInput `pulumi:"sqlDbResourceId"`
+	// The type of authentication to use when connecting to a target.
+	TargetAuthenticationType pulumi.StringInput `pulumi:"targetAuthenticationType"`
+	// Discriminator property for TargetProperties.
+	// Expected value is 'SqlDb'.
+	TargetType pulumi.StringInput `pulumi:"targetType"`
+	// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
+	TargetVault VaultSecretPtrInput `pulumi:"targetVault"`
+}
+
+// Defaults sets the appropriate defaults for SqlDbSingleDatabaseTargetPropertiesArgs
+func (val *SqlDbSingleDatabaseTargetPropertiesArgs) Defaults() *SqlDbSingleDatabaseTargetPropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ReadIntent == nil {
+		tmp.ReadIntent = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
+func (SqlDbSingleDatabaseTargetPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlDbSingleDatabaseTargetProperties)(nil)).Elem()
+}
+
+func (i SqlDbSingleDatabaseTargetPropertiesArgs) ToSqlDbSingleDatabaseTargetPropertiesOutput() SqlDbSingleDatabaseTargetPropertiesOutput {
+	return i.ToSqlDbSingleDatabaseTargetPropertiesOutputWithContext(context.Background())
+}
+
+func (i SqlDbSingleDatabaseTargetPropertiesArgs) ToSqlDbSingleDatabaseTargetPropertiesOutputWithContext(ctx context.Context) SqlDbSingleDatabaseTargetPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlDbSingleDatabaseTargetPropertiesOutput)
+}
+
+func (i SqlDbSingleDatabaseTargetPropertiesArgs) ToSqlDbSingleDatabaseTargetPropertiesPtrOutput() SqlDbSingleDatabaseTargetPropertiesPtrOutput {
+	return i.ToSqlDbSingleDatabaseTargetPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i SqlDbSingleDatabaseTargetPropertiesArgs) ToSqlDbSingleDatabaseTargetPropertiesPtrOutputWithContext(ctx context.Context) SqlDbSingleDatabaseTargetPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlDbSingleDatabaseTargetPropertiesOutput).ToSqlDbSingleDatabaseTargetPropertiesPtrOutputWithContext(ctx)
+}
+
+// SqlDbSingleDatabaseTargetPropertiesPtrInput is an input type that accepts SqlDbSingleDatabaseTargetPropertiesArgs, SqlDbSingleDatabaseTargetPropertiesPtr and SqlDbSingleDatabaseTargetPropertiesPtrOutput values.
+// You can construct a concrete instance of `SqlDbSingleDatabaseTargetPropertiesPtrInput` via:
+//
+//	        SqlDbSingleDatabaseTargetPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlDbSingleDatabaseTargetPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToSqlDbSingleDatabaseTargetPropertiesPtrOutput() SqlDbSingleDatabaseTargetPropertiesPtrOutput
+	ToSqlDbSingleDatabaseTargetPropertiesPtrOutputWithContext(context.Context) SqlDbSingleDatabaseTargetPropertiesPtrOutput
+}
+
+type sqlDbSingleDatabaseTargetPropertiesPtrType SqlDbSingleDatabaseTargetPropertiesArgs
+
+func SqlDbSingleDatabaseTargetPropertiesPtr(v *SqlDbSingleDatabaseTargetPropertiesArgs) SqlDbSingleDatabaseTargetPropertiesPtrInput {
+	return (*sqlDbSingleDatabaseTargetPropertiesPtrType)(v)
+}
+
+func (*sqlDbSingleDatabaseTargetPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlDbSingleDatabaseTargetProperties)(nil)).Elem()
+}
+
+func (i *sqlDbSingleDatabaseTargetPropertiesPtrType) ToSqlDbSingleDatabaseTargetPropertiesPtrOutput() SqlDbSingleDatabaseTargetPropertiesPtrOutput {
+	return i.ToSqlDbSingleDatabaseTargetPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlDbSingleDatabaseTargetPropertiesPtrType) ToSqlDbSingleDatabaseTargetPropertiesPtrOutputWithContext(ctx context.Context) SqlDbSingleDatabaseTargetPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlDbSingleDatabaseTargetPropertiesPtrOutput)
+}
+
+// The properties specific to a database in Azure SQL Database.
+type SqlDbSingleDatabaseTargetPropertiesOutput struct{ *pulumi.OutputState }
+
+func (SqlDbSingleDatabaseTargetPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlDbSingleDatabaseTargetProperties)(nil)).Elem()
+}
+
+func (o SqlDbSingleDatabaseTargetPropertiesOutput) ToSqlDbSingleDatabaseTargetPropertiesOutput() SqlDbSingleDatabaseTargetPropertiesOutput {
 	return o
 }
 
-func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
+func (o SqlDbSingleDatabaseTargetPropertiesOutput) ToSqlDbSingleDatabaseTargetPropertiesOutputWithContext(ctx context.Context) SqlDbSingleDatabaseTargetPropertiesOutput {
 	return o
 }
 
-func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) ManagedServiceIdentityResponse {
+func (o SqlDbSingleDatabaseTargetPropertiesOutput) ToSqlDbSingleDatabaseTargetPropertiesPtrOutput() SqlDbSingleDatabaseTargetPropertiesPtrOutput {
+	return o.ToSqlDbSingleDatabaseTargetPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o SqlDbSingleDatabaseTargetPropertiesOutput) ToSqlDbSingleDatabaseTargetPropertiesPtrOutputWithContext(ctx context.Context) SqlDbSingleDatabaseTargetPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlDbSingleDatabaseTargetProperties) *SqlDbSingleDatabaseTargetProperties {
+		return &v
+	}).(SqlDbSingleDatabaseTargetPropertiesPtrOutput)
+}
+
+// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
+func (o SqlDbSingleDatabaseTargetPropertiesOutput) ConnectionServerName() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlDbSingleDatabaseTargetProperties) string { return v.ConnectionServerName }).(pulumi.StringOutput)
+}
+
+// Set to true to monitor a high availability replica of specified target, if any.
+func (o SqlDbSingleDatabaseTargetPropertiesOutput) ReadIntent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlDbSingleDatabaseTargetProperties) *bool { return v.ReadIntent }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure resource ID of an Azure SQL DB database target.
+func (o SqlDbSingleDatabaseTargetPropertiesOutput) SqlDbResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlDbSingleDatabaseTargetProperties) string { return v.SqlDbResourceId }).(pulumi.StringOutput)
+}
+
+// The type of authentication to use when connecting to a target.
+func (o SqlDbSingleDatabaseTargetPropertiesOutput) TargetAuthenticationType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlDbSingleDatabaseTargetProperties) string { return v.TargetAuthenticationType }).(pulumi.StringOutput)
+}
+
+// Discriminator property for TargetProperties.
+// Expected value is 'SqlDb'.
+func (o SqlDbSingleDatabaseTargetPropertiesOutput) TargetType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlDbSingleDatabaseTargetProperties) string { return v.TargetType }).(pulumi.StringOutput)
+}
+
+// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
+func (o SqlDbSingleDatabaseTargetPropertiesOutput) TargetVault() VaultSecretPtrOutput {
+	return o.ApplyT(func(v SqlDbSingleDatabaseTargetProperties) *VaultSecret { return v.TargetVault }).(VaultSecretPtrOutput)
+}
+
+type SqlDbSingleDatabaseTargetPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlDbSingleDatabaseTargetPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlDbSingleDatabaseTargetProperties)(nil)).Elem()
+}
+
+func (o SqlDbSingleDatabaseTargetPropertiesPtrOutput) ToSqlDbSingleDatabaseTargetPropertiesPtrOutput() SqlDbSingleDatabaseTargetPropertiesPtrOutput {
+	return o
+}
+
+func (o SqlDbSingleDatabaseTargetPropertiesPtrOutput) ToSqlDbSingleDatabaseTargetPropertiesPtrOutputWithContext(ctx context.Context) SqlDbSingleDatabaseTargetPropertiesPtrOutput {
+	return o
+}
+
+func (o SqlDbSingleDatabaseTargetPropertiesPtrOutput) Elem() SqlDbSingleDatabaseTargetPropertiesOutput {
+	return o.ApplyT(func(v *SqlDbSingleDatabaseTargetProperties) SqlDbSingleDatabaseTargetProperties {
 		if v != nil {
 			return *v
 		}
-		var ret ManagedServiceIdentityResponse
+		var ret SqlDbSingleDatabaseTargetProperties
 		return ret
-	}).(ManagedServiceIdentityResponseOutput)
+	}).(SqlDbSingleDatabaseTargetPropertiesOutput)
 }
 
-// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o ManagedServiceIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
+func (o SqlDbSingleDatabaseTargetPropertiesPtrOutput) ConnectionServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDbSingleDatabaseTargetProperties) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.PrincipalId
+		return &v.ConnectionServerName
 	}).(pulumi.StringPtrOutput)
 }
 
-// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o ManagedServiceIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+// Set to true to monitor a high availability replica of specified target, if any.
+func (o SqlDbSingleDatabaseTargetPropertiesPtrOutput) ReadIntent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlDbSingleDatabaseTargetProperties) *bool {
 		if v == nil {
 			return nil
 		}
-		return &v.TenantId
+		return v.ReadIntent
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The Azure resource ID of an Azure SQL DB database target.
+func (o SqlDbSingleDatabaseTargetPropertiesPtrOutput) SqlDbResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDbSingleDatabaseTargetProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SqlDbResourceId
 	}).(pulumi.StringPtrOutput)
 }
 
-// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-func (o ManagedServiceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+// The type of authentication to use when connecting to a target.
+func (o SqlDbSingleDatabaseTargetPropertiesPtrOutput) TargetAuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDbSingleDatabaseTargetProperties) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Type
+		return &v.TargetAuthenticationType
 	}).(pulumi.StringPtrOutput)
 }
 
-// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
+// Discriminator property for TargetProperties.
+// Expected value is 'SqlDb'.
+func (o SqlDbSingleDatabaseTargetPropertiesPtrOutput) TargetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlDbSingleDatabaseTargetProperties) *string {
 		if v == nil {
 			return nil
 		}
-		return v.UserAssignedIdentities
-	}).(UserAssignedIdentityResponseMapOutput)
+		return &v.TargetType
+	}).(pulumi.StringPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
+func (o SqlDbSingleDatabaseTargetPropertiesPtrOutput) TargetVault() VaultSecretPtrOutput {
+	return o.ApplyT(func(v *SqlDbSingleDatabaseTargetProperties) *VaultSecret {
+		if v == nil {
+			return nil
+		}
+		return v.TargetVault
+	}).(VaultSecretPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponseOutput struct{ *pulumi.OutputState }
-
-func (SystemDataResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+// The properties specific to a database in Azure SQL Database.
+type SqlDbSingleDatabaseTargetPropertiesResponse struct {
+	// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
+	ConnectionServerName string `pulumi:"connectionServerName"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Set to true to monitor a high availability replica of specified target, if any.
+	ReadIntent *bool `pulumi:"readIntent"`
+	// The Azure resource ID of an Azure SQL DB database target.
+	SqlDbResourceId string `pulumi:"sqlDbResourceId"`
+	// The type of authentication to use when connecting to a target.
+	TargetAuthenticationType string `pulumi:"targetAuthenticationType"`
+	// Discriminator property for TargetProperties.
+	// Expected value is 'SqlDb'.
+	TargetType string `pulumi:"targetType"`
+	// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
+	TargetVault *VaultSecretResponse `pulumi:"targetVault"`
 }
 
-func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+// Defaults sets the appropriate defaults for SqlDbSingleDatabaseTargetPropertiesResponse
+func (val *SqlDbSingleDatabaseTargetPropertiesResponse) Defaults() *SqlDbSingleDatabaseTargetPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ReadIntent == nil {
+		readIntent_ := false
+		tmp.ReadIntent = &readIntent_
+	}
+	return &tmp
+}
+
+// The properties specific to a database in Azure SQL Database.
+type SqlDbSingleDatabaseTargetPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlDbSingleDatabaseTargetPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlDbSingleDatabaseTargetPropertiesResponse)(nil)).Elem()
+}
+
+func (o SqlDbSingleDatabaseTargetPropertiesResponseOutput) ToSqlDbSingleDatabaseTargetPropertiesResponseOutput() SqlDbSingleDatabaseTargetPropertiesResponseOutput {
 	return o
 }
 
-func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+func (o SqlDbSingleDatabaseTargetPropertiesResponseOutput) ToSqlDbSingleDatabaseTargetPropertiesResponseOutputWithContext(ctx context.Context) SqlDbSingleDatabaseTargetPropertiesResponseOutput {
 	return o
 }
 
-// The timestamp of resource creation (UTC).
-func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
+func (o SqlDbSingleDatabaseTargetPropertiesResponseOutput) ConnectionServerName() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlDbSingleDatabaseTargetPropertiesResponse) string { return v.ConnectionServerName }).(pulumi.StringOutput)
 }
 
-// The identity that created the resource.
-func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+// The provisioning state of the resource.
+func (o SqlDbSingleDatabaseTargetPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlDbSingleDatabaseTargetPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The type of identity that created the resource.
-func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+// Set to true to monitor a high availability replica of specified target, if any.
+func (o SqlDbSingleDatabaseTargetPropertiesResponseOutput) ReadIntent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlDbSingleDatabaseTargetPropertiesResponse) *bool { return v.ReadIntent }).(pulumi.BoolPtrOutput)
 }
 
-// The timestamp of resource last modification (UTC)
-func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+// The Azure resource ID of an Azure SQL DB database target.
+func (o SqlDbSingleDatabaseTargetPropertiesResponseOutput) SqlDbResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlDbSingleDatabaseTargetPropertiesResponse) string { return v.SqlDbResourceId }).(pulumi.StringOutput)
 }
 
-// The identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+// The type of authentication to use when connecting to a target.
+func (o SqlDbSingleDatabaseTargetPropertiesResponseOutput) TargetAuthenticationType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlDbSingleDatabaseTargetPropertiesResponse) string { return v.TargetAuthenticationType }).(pulumi.StringOutput)
 }
 
-// The type of identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+// Discriminator property for TargetProperties.
+// Expected value is 'SqlDb'.
+func (o SqlDbSingleDatabaseTargetPropertiesResponseOutput) TargetType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlDbSingleDatabaseTargetPropertiesResponse) string { return v.TargetType }).(pulumi.StringOutput)
 }
 
-// User assigned identity properties
-type UserAssignedIdentityResponse struct {
-	// The client ID of the assigned identity.
-	ClientId string `pulumi:"clientId"`
-	// The principal ID of the assigned identity.
-	PrincipalId string `pulumi:"principalId"`
+// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
+func (o SqlDbSingleDatabaseTargetPropertiesResponseOutput) TargetVault() VaultSecretResponsePtrOutput {
+	return o.ApplyT(func(v SqlDbSingleDatabaseTargetPropertiesResponse) *VaultSecretResponse { return v.TargetVault }).(VaultSecretResponsePtrOutput)
 }
 
-// User assigned identity properties
-type UserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
-
-func (UserAssignedIdentityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserAssignedIdentityResponse)(nil)).Elem()
+// The properties specific to Azure SQL Managed Instance targets.
+type SqlMiTargetProperties struct {
+	// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
+	ConnectionServerName string `pulumi:"connectionServerName"`
+	// The TCP port number to optionally use in the connection string when connecting to an Azure SQL Managed Instance target.
+	ConnectionTcpPort *int `pulumi:"connectionTcpPort"`
+	// Set to true to monitor a high availability replica of specified target, if any.
+	ReadIntent *bool `pulumi:"readIntent"`
+	// The Azure resource ID of an Azure SQL Managed Instance target.
+	SqlMiResourceId string `pulumi:"sqlMiResourceId"`
+	// The type of authentication to use when connecting to a target.
+	TargetAuthenticationType string `pulumi:"targetAuthenticationType"`
+	// Discriminator property for TargetProperties.
+	// Expected value is 'SqlMi'.
+	TargetType string `pulumi:"targetType"`
+	// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
+	TargetVault *VaultSecret `pulumi:"targetVault"`
 }
 
-func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput() UserAssignedIdentityResponseOutput {
+// Defaults sets the appropriate defaults for SqlMiTargetProperties
+func (val *SqlMiTargetProperties) Defaults() *SqlMiTargetProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ConnectionTcpPort == nil {
+		connectionTcpPort_ := 1433
+		tmp.ConnectionTcpPort = &connectionTcpPort_
+	}
+	if tmp.ReadIntent == nil {
+		readIntent_ := false
+		tmp.ReadIntent = &readIntent_
+	}
+	return &tmp
+}
+
+// SqlMiTargetPropertiesInput is an input type that accepts SqlMiTargetPropertiesArgs and SqlMiTargetPropertiesOutput values.
+// You can construct a concrete instance of `SqlMiTargetPropertiesInput` via:
+//
+//	SqlMiTargetPropertiesArgs{...}
+type SqlMiTargetPropertiesInput interface {
+	pulumi.Input
+
+	ToSqlMiTargetPropertiesOutput() SqlMiTargetPropertiesOutput
+	ToSqlMiTargetPropertiesOutputWithContext(context.Context) SqlMiTargetPropertiesOutput
+}
+
+// The properties specific to Azure SQL Managed Instance targets.
+type SqlMiTargetPropertiesArgs struct {
+	// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
+	ConnectionServerName pulumi.StringInput `pulumi:"connectionServerName"`
+	// The TCP port number to optionally use in the connection string when connecting to an Azure SQL Managed Instance target.
+	ConnectionTcpPort pulumi.IntPtrInput `pulumi:"connectionTcpPort"`
+	// Set to true to monitor a high availability replica of specified target, if any.
+	ReadIntent pulumi.BoolPtrInput `pulumi:"readIntent"`
+	// The Azure resource ID of an Azure SQL Managed Instance target.
+	SqlMiResourceId pulumi.StringInput `pulumi:"sqlMiResourceId"`
+	// The type of authentication to use when connecting to a target.
+	TargetAuthenticationType pulumi.StringInput `pulumi:"targetAuthenticationType"`
+	// Discriminator property for TargetProperties.
+	// Expected value is 'SqlMi'.
+	TargetType pulumi.StringInput `pulumi:"targetType"`
+	// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
+	TargetVault VaultSecretPtrInput `pulumi:"targetVault"`
+}
+
+// Defaults sets the appropriate defaults for SqlMiTargetPropertiesArgs
+func (val *SqlMiTargetPropertiesArgs) Defaults() *SqlMiTargetPropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ConnectionTcpPort == nil {
+		tmp.ConnectionTcpPort = pulumi.IntPtr(1433)
+	}
+	if tmp.ReadIntent == nil {
+		tmp.ReadIntent = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
+func (SqlMiTargetPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlMiTargetProperties)(nil)).Elem()
+}
+
+func (i SqlMiTargetPropertiesArgs) ToSqlMiTargetPropertiesOutput() SqlMiTargetPropertiesOutput {
+	return i.ToSqlMiTargetPropertiesOutputWithContext(context.Background())
+}
+
+func (i SqlMiTargetPropertiesArgs) ToSqlMiTargetPropertiesOutputWithContext(ctx context.Context) SqlMiTargetPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlMiTargetPropertiesOutput)
+}
+
+func (i SqlMiTargetPropertiesArgs) ToSqlMiTargetPropertiesPtrOutput() SqlMiTargetPropertiesPtrOutput {
+	return i.ToSqlMiTargetPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i SqlMiTargetPropertiesArgs) ToSqlMiTargetPropertiesPtrOutputWithContext(ctx context.Context) SqlMiTargetPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlMiTargetPropertiesOutput).ToSqlMiTargetPropertiesPtrOutputWithContext(ctx)
+}
+
+// SqlMiTargetPropertiesPtrInput is an input type that accepts SqlMiTargetPropertiesArgs, SqlMiTargetPropertiesPtr and SqlMiTargetPropertiesPtrOutput values.
+// You can construct a concrete instance of `SqlMiTargetPropertiesPtrInput` via:
+//
+//	        SqlMiTargetPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlMiTargetPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToSqlMiTargetPropertiesPtrOutput() SqlMiTargetPropertiesPtrOutput
+	ToSqlMiTargetPropertiesPtrOutputWithContext(context.Context) SqlMiTargetPropertiesPtrOutput
+}
+
+type sqlMiTargetPropertiesPtrType SqlMiTargetPropertiesArgs
+
+func SqlMiTargetPropertiesPtr(v *SqlMiTargetPropertiesArgs) SqlMiTargetPropertiesPtrInput {
+	return (*sqlMiTargetPropertiesPtrType)(v)
+}
+
+func (*sqlMiTargetPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlMiTargetProperties)(nil)).Elem()
+}
+
+func (i *sqlMiTargetPropertiesPtrType) ToSqlMiTargetPropertiesPtrOutput() SqlMiTargetPropertiesPtrOutput {
+	return i.ToSqlMiTargetPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlMiTargetPropertiesPtrType) ToSqlMiTargetPropertiesPtrOutputWithContext(ctx context.Context) SqlMiTargetPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlMiTargetPropertiesPtrOutput)
+}
+
+// The properties specific to Azure SQL Managed Instance targets.
+type SqlMiTargetPropertiesOutput struct{ *pulumi.OutputState }
+
+func (SqlMiTargetPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlMiTargetProperties)(nil)).Elem()
+}
+
+func (o SqlMiTargetPropertiesOutput) ToSqlMiTargetPropertiesOutput() SqlMiTargetPropertiesOutput {
 	return o
 }
 
-func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutputWithContext(ctx context.Context) UserAssignedIdentityResponseOutput {
+func (o SqlMiTargetPropertiesOutput) ToSqlMiTargetPropertiesOutputWithContext(ctx context.Context) SqlMiTargetPropertiesOutput {
 	return o
 }
 
-// The client ID of the assigned identity.
-func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
+func (o SqlMiTargetPropertiesOutput) ToSqlMiTargetPropertiesPtrOutput() SqlMiTargetPropertiesPtrOutput {
+	return o.ToSqlMiTargetPropertiesPtrOutputWithContext(context.Background())
 }
 
-// The principal ID of the assigned identity.
-func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+func (o SqlMiTargetPropertiesOutput) ToSqlMiTargetPropertiesPtrOutputWithContext(ctx context.Context) SqlMiTargetPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlMiTargetProperties) *SqlMiTargetProperties {
+		return &v
+	}).(SqlMiTargetPropertiesPtrOutput)
 }
 
-type UserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
-
-func (UserAssignedIdentityResponseMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]UserAssignedIdentityResponse)(nil)).Elem()
+// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
+func (o SqlMiTargetPropertiesOutput) ConnectionServerName() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlMiTargetProperties) string { return v.ConnectionServerName }).(pulumi.StringOutput)
 }
 
-func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutput() UserAssignedIdentityResponseMapOutput {
+// The TCP port number to optionally use in the connection string when connecting to an Azure SQL Managed Instance target.
+func (o SqlMiTargetPropertiesOutput) ConnectionTcpPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SqlMiTargetProperties) *int { return v.ConnectionTcpPort }).(pulumi.IntPtrOutput)
+}
+
+// Set to true to monitor a high availability replica of specified target, if any.
+func (o SqlMiTargetPropertiesOutput) ReadIntent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlMiTargetProperties) *bool { return v.ReadIntent }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure resource ID of an Azure SQL Managed Instance target.
+func (o SqlMiTargetPropertiesOutput) SqlMiResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlMiTargetProperties) string { return v.SqlMiResourceId }).(pulumi.StringOutput)
+}
+
+// The type of authentication to use when connecting to a target.
+func (o SqlMiTargetPropertiesOutput) TargetAuthenticationType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlMiTargetProperties) string { return v.TargetAuthenticationType }).(pulumi.StringOutput)
+}
+
+// Discriminator property for TargetProperties.
+// Expected value is 'SqlMi'.
+func (o SqlMiTargetPropertiesOutput) TargetType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlMiTargetProperties) string { return v.TargetType }).(pulumi.StringOutput)
+}
+
+// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
+func (o SqlMiTargetPropertiesOutput) TargetVault() VaultSecretPtrOutput {
+	return o.ApplyT(func(v SqlMiTargetProperties) *VaultSecret { return v.TargetVault }).(VaultSecretPtrOutput)
+}
+
+type SqlMiTargetPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlMiTargetPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlMiTargetProperties)(nil)).Elem()
+}
+
+func (o SqlMiTargetPropertiesPtrOutput) ToSqlMiTargetPropertiesPtrOutput() SqlMiTargetPropertiesPtrOutput {
 	return o
 }
 
-func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
+func (o SqlMiTargetPropertiesPtrOutput) ToSqlMiTargetPropertiesPtrOutputWithContext(ctx context.Context) SqlMiTargetPropertiesPtrOutput {
 	return o
 }
 
-func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
-		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
-	}).(UserAssignedIdentityResponseOutput)
+func (o SqlMiTargetPropertiesPtrOutput) Elem() SqlMiTargetPropertiesOutput {
+	return o.ApplyT(func(v *SqlMiTargetProperties) SqlMiTargetProperties {
+		if v != nil {
+			return *v
+		}
+		var ret SqlMiTargetProperties
+		return ret
+	}).(SqlMiTargetPropertiesOutput)
+}
+
+// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
+func (o SqlMiTargetPropertiesPtrOutput) ConnectionServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlMiTargetProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectionServerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The TCP port number to optionally use in the connection string when connecting to an Azure SQL Managed Instance target.
+func (o SqlMiTargetPropertiesPtrOutput) ConnectionTcpPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SqlMiTargetProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionTcpPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// Set to true to monitor a high availability replica of specified target, if any.
+func (o SqlMiTargetPropertiesPtrOutput) ReadIntent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SqlMiTargetProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReadIntent
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The Azure resource ID of an Azure SQL Managed Instance target.
+func (o SqlMiTargetPropertiesPtrOutput) SqlMiResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlMiTargetProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SqlMiResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of authentication to use when connecting to a target.
+func (o SqlMiTargetPropertiesPtrOutput) TargetAuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlMiTargetProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetAuthenticationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Discriminator property for TargetProperties.
+// Expected value is 'SqlMi'.
+func (o SqlMiTargetPropertiesPtrOutput) TargetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlMiTargetProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetType
+	}).(pulumi.StringPtrOutput)
+}
+
+// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
+func (o SqlMiTargetPropertiesPtrOutput) TargetVault() VaultSecretPtrOutput {
+	return o.ApplyT(func(v *SqlMiTargetProperties) *VaultSecret {
+		if v == nil {
+			return nil
+		}
+		return v.TargetVault
+	}).(VaultSecretPtrOutput)
+}
+
+// The properties specific to Azure SQL Managed Instance targets.
+type SqlMiTargetPropertiesResponse struct {
+	// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
+	ConnectionServerName string `pulumi:"connectionServerName"`
+	// The TCP port number to optionally use in the connection string when connecting to an Azure SQL Managed Instance target.
+	ConnectionTcpPort *int `pulumi:"connectionTcpPort"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Set to true to monitor a high availability replica of specified target, if any.
+	ReadIntent *bool `pulumi:"readIntent"`
+	// The Azure resource ID of an Azure SQL Managed Instance target.
+	SqlMiResourceId string `pulumi:"sqlMiResourceId"`
+	// The type of authentication to use when connecting to a target.
+	TargetAuthenticationType string `pulumi:"targetAuthenticationType"`
+	// Discriminator property for TargetProperties.
+	// Expected value is 'SqlMi'.
+	TargetType string `pulumi:"targetType"`
+	// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
+	TargetVault *VaultSecretResponse `pulumi:"targetVault"`
+}
+
+// Defaults sets the appropriate defaults for SqlMiTargetPropertiesResponse
+func (val *SqlMiTargetPropertiesResponse) Defaults() *SqlMiTargetPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ConnectionTcpPort == nil {
+		connectionTcpPort_ := 1433
+		tmp.ConnectionTcpPort = &connectionTcpPort_
+	}
+	if tmp.ReadIntent == nil {
+		readIntent_ := false
+		tmp.ReadIntent = &readIntent_
+	}
+	return &tmp
+}
+
+// The properties specific to Azure SQL Managed Instance targets.
+type SqlMiTargetPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlMiTargetPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlMiTargetPropertiesResponse)(nil)).Elem()
+}
+
+func (o SqlMiTargetPropertiesResponseOutput) ToSqlMiTargetPropertiesResponseOutput() SqlMiTargetPropertiesResponseOutput {
+	return o
+}
+
+func (o SqlMiTargetPropertiesResponseOutput) ToSqlMiTargetPropertiesResponseOutputWithContext(ctx context.Context) SqlMiTargetPropertiesResponseOutput {
+	return o
+}
+
+// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
+func (o SqlMiTargetPropertiesResponseOutput) ConnectionServerName() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlMiTargetPropertiesResponse) string { return v.ConnectionServerName }).(pulumi.StringOutput)
+}
+
+// The TCP port number to optionally use in the connection string when connecting to an Azure SQL Managed Instance target.
+func (o SqlMiTargetPropertiesResponseOutput) ConnectionTcpPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SqlMiTargetPropertiesResponse) *int { return v.ConnectionTcpPort }).(pulumi.IntPtrOutput)
+}
+
+// The provisioning state of the resource.
+func (o SqlMiTargetPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlMiTargetPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Set to true to monitor a high availability replica of specified target, if any.
+func (o SqlMiTargetPropertiesResponseOutput) ReadIntent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SqlMiTargetPropertiesResponse) *bool { return v.ReadIntent }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure resource ID of an Azure SQL Managed Instance target.
+func (o SqlMiTargetPropertiesResponseOutput) SqlMiResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlMiTargetPropertiesResponse) string { return v.SqlMiResourceId }).(pulumi.StringOutput)
+}
+
+// The type of authentication to use when connecting to a target.
+func (o SqlMiTargetPropertiesResponseOutput) TargetAuthenticationType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlMiTargetPropertiesResponse) string { return v.TargetAuthenticationType }).(pulumi.StringOutput)
+}
+
+// Discriminator property for TargetProperties.
+// Expected value is 'SqlMi'.
+func (o SqlMiTargetPropertiesResponseOutput) TargetType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlMiTargetPropertiesResponse) string { return v.TargetType }).(pulumi.StringOutput)
+}
+
+// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
+func (o SqlMiTargetPropertiesResponseOutput) TargetVault() VaultSecretResponsePtrOutput {
+	return o.ApplyT(func(v SqlMiTargetPropertiesResponse) *VaultSecretResponse { return v.TargetVault }).(VaultSecretResponsePtrOutput)
+}
+
+// The properties specific to Azure SQL VM targets.
+type SqlVmTargetProperties struct {
+	// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
+	ConnectionServerName string `pulumi:"connectionServerName"`
+	// The TCP port number to optionally use in the connection string when connecting to an Azure SQL VM target.
+	ConnectionTcpPort *int `pulumi:"connectionTcpPort"`
+	// The SQL instance name to optionally use in the connection string when connecting to an Azure SQL VM target.
+	SqlNamedInstanceName *string `pulumi:"sqlNamedInstanceName"`
+	// The Azure resource ID of an Azure SQL VM target.
+	SqlVmResourceId string `pulumi:"sqlVmResourceId"`
+	// The type of authentication to use when connecting to a target.
+	TargetAuthenticationType string `pulumi:"targetAuthenticationType"`
+	// Discriminator property for TargetProperties.
+	// Expected value is 'SqlVm'.
+	TargetType string `pulumi:"targetType"`
+	// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
+	TargetVault *VaultSecret `pulumi:"targetVault"`
+}
+
+// Defaults sets the appropriate defaults for SqlVmTargetProperties
+func (val *SqlVmTargetProperties) Defaults() *SqlVmTargetProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ConnectionTcpPort == nil {
+		connectionTcpPort_ := 1433
+		tmp.ConnectionTcpPort = &connectionTcpPort_
+	}
+	return &tmp
+}
+
+// SqlVmTargetPropertiesInput is an input type that accepts SqlVmTargetPropertiesArgs and SqlVmTargetPropertiesOutput values.
+// You can construct a concrete instance of `SqlVmTargetPropertiesInput` via:
+//
+//	SqlVmTargetPropertiesArgs{...}
+type SqlVmTargetPropertiesInput interface {
+	pulumi.Input
+
+	ToSqlVmTargetPropertiesOutput() SqlVmTargetPropertiesOutput
+	ToSqlVmTargetPropertiesOutputWithContext(context.Context) SqlVmTargetPropertiesOutput
+}
+
+// The properties specific to Azure SQL VM targets.
+type SqlVmTargetPropertiesArgs struct {
+	// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
+	ConnectionServerName pulumi.StringInput `pulumi:"connectionServerName"`
+	// The TCP port number to optionally use in the connection string when connecting to an Azure SQL VM target.
+	ConnectionTcpPort pulumi.IntPtrInput `pulumi:"connectionTcpPort"`
+	// The SQL instance name to optionally use in the connection string when connecting to an Azure SQL VM target.
+	SqlNamedInstanceName pulumi.StringPtrInput `pulumi:"sqlNamedInstanceName"`
+	// The Azure resource ID of an Azure SQL VM target.
+	SqlVmResourceId pulumi.StringInput `pulumi:"sqlVmResourceId"`
+	// The type of authentication to use when connecting to a target.
+	TargetAuthenticationType pulumi.StringInput `pulumi:"targetAuthenticationType"`
+	// Discriminator property for TargetProperties.
+	// Expected value is 'SqlVm'.
+	TargetType pulumi.StringInput `pulumi:"targetType"`
+	// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
+	TargetVault VaultSecretPtrInput `pulumi:"targetVault"`
+}
+
+// Defaults sets the appropriate defaults for SqlVmTargetPropertiesArgs
+func (val *SqlVmTargetPropertiesArgs) Defaults() *SqlVmTargetPropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ConnectionTcpPort == nil {
+		tmp.ConnectionTcpPort = pulumi.IntPtr(1433)
+	}
+	return &tmp
+}
+func (SqlVmTargetPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlVmTargetProperties)(nil)).Elem()
+}
+
+func (i SqlVmTargetPropertiesArgs) ToSqlVmTargetPropertiesOutput() SqlVmTargetPropertiesOutput {
+	return i.ToSqlVmTargetPropertiesOutputWithContext(context.Background())
+}
+
+func (i SqlVmTargetPropertiesArgs) ToSqlVmTargetPropertiesOutputWithContext(ctx context.Context) SqlVmTargetPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlVmTargetPropertiesOutput)
+}
+
+func (i SqlVmTargetPropertiesArgs) ToSqlVmTargetPropertiesPtrOutput() SqlVmTargetPropertiesPtrOutput {
+	return i.ToSqlVmTargetPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i SqlVmTargetPropertiesArgs) ToSqlVmTargetPropertiesPtrOutputWithContext(ctx context.Context) SqlVmTargetPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlVmTargetPropertiesOutput).ToSqlVmTargetPropertiesPtrOutputWithContext(ctx)
+}
+
+// SqlVmTargetPropertiesPtrInput is an input type that accepts SqlVmTargetPropertiesArgs, SqlVmTargetPropertiesPtr and SqlVmTargetPropertiesPtrOutput values.
+// You can construct a concrete instance of `SqlVmTargetPropertiesPtrInput` via:
+//
+//	        SqlVmTargetPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlVmTargetPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToSqlVmTargetPropertiesPtrOutput() SqlVmTargetPropertiesPtrOutput
+	ToSqlVmTargetPropertiesPtrOutputWithContext(context.Context) SqlVmTargetPropertiesPtrOutput
+}
+
+type sqlVmTargetPropertiesPtrType SqlVmTargetPropertiesArgs
+
+func SqlVmTargetPropertiesPtr(v *SqlVmTargetPropertiesArgs) SqlVmTargetPropertiesPtrInput {
+	return (*sqlVmTargetPropertiesPtrType)(v)
+}
+
+func (*sqlVmTargetPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlVmTargetProperties)(nil)).Elem()
+}
+
+func (i *sqlVmTargetPropertiesPtrType) ToSqlVmTargetPropertiesPtrOutput() SqlVmTargetPropertiesPtrOutput {
+	return i.ToSqlVmTargetPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlVmTargetPropertiesPtrType) ToSqlVmTargetPropertiesPtrOutputWithContext(ctx context.Context) SqlVmTargetPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlVmTargetPropertiesPtrOutput)
+}
+
+// The properties specific to Azure SQL VM targets.
+type SqlVmTargetPropertiesOutput struct{ *pulumi.OutputState }
+
+func (SqlVmTargetPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlVmTargetProperties)(nil)).Elem()
+}
+
+func (o SqlVmTargetPropertiesOutput) ToSqlVmTargetPropertiesOutput() SqlVmTargetPropertiesOutput {
+	return o
+}
+
+func (o SqlVmTargetPropertiesOutput) ToSqlVmTargetPropertiesOutputWithContext(ctx context.Context) SqlVmTargetPropertiesOutput {
+	return o
+}
+
+func (o SqlVmTargetPropertiesOutput) ToSqlVmTargetPropertiesPtrOutput() SqlVmTargetPropertiesPtrOutput {
+	return o.ToSqlVmTargetPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o SqlVmTargetPropertiesOutput) ToSqlVmTargetPropertiesPtrOutputWithContext(ctx context.Context) SqlVmTargetPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlVmTargetProperties) *SqlVmTargetProperties {
+		return &v
+	}).(SqlVmTargetPropertiesPtrOutput)
+}
+
+// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
+func (o SqlVmTargetPropertiesOutput) ConnectionServerName() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlVmTargetProperties) string { return v.ConnectionServerName }).(pulumi.StringOutput)
+}
+
+// The TCP port number to optionally use in the connection string when connecting to an Azure SQL VM target.
+func (o SqlVmTargetPropertiesOutput) ConnectionTcpPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SqlVmTargetProperties) *int { return v.ConnectionTcpPort }).(pulumi.IntPtrOutput)
+}
+
+// The SQL instance name to optionally use in the connection string when connecting to an Azure SQL VM target.
+func (o SqlVmTargetPropertiesOutput) SqlNamedInstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlVmTargetProperties) *string { return v.SqlNamedInstanceName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure resource ID of an Azure SQL VM target.
+func (o SqlVmTargetPropertiesOutput) SqlVmResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlVmTargetProperties) string { return v.SqlVmResourceId }).(pulumi.StringOutput)
+}
+
+// The type of authentication to use when connecting to a target.
+func (o SqlVmTargetPropertiesOutput) TargetAuthenticationType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlVmTargetProperties) string { return v.TargetAuthenticationType }).(pulumi.StringOutput)
+}
+
+// Discriminator property for TargetProperties.
+// Expected value is 'SqlVm'.
+func (o SqlVmTargetPropertiesOutput) TargetType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlVmTargetProperties) string { return v.TargetType }).(pulumi.StringOutput)
+}
+
+// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
+func (o SqlVmTargetPropertiesOutput) TargetVault() VaultSecretPtrOutput {
+	return o.ApplyT(func(v SqlVmTargetProperties) *VaultSecret { return v.TargetVault }).(VaultSecretPtrOutput)
+}
+
+type SqlVmTargetPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlVmTargetPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlVmTargetProperties)(nil)).Elem()
+}
+
+func (o SqlVmTargetPropertiesPtrOutput) ToSqlVmTargetPropertiesPtrOutput() SqlVmTargetPropertiesPtrOutput {
+	return o
+}
+
+func (o SqlVmTargetPropertiesPtrOutput) ToSqlVmTargetPropertiesPtrOutputWithContext(ctx context.Context) SqlVmTargetPropertiesPtrOutput {
+	return o
+}
+
+func (o SqlVmTargetPropertiesPtrOutput) Elem() SqlVmTargetPropertiesOutput {
+	return o.ApplyT(func(v *SqlVmTargetProperties) SqlVmTargetProperties {
+		if v != nil {
+			return *v
+		}
+		var ret SqlVmTargetProperties
+		return ret
+	}).(SqlVmTargetPropertiesOutput)
+}
+
+// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
+func (o SqlVmTargetPropertiesPtrOutput) ConnectionServerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlVmTargetProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConnectionServerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The TCP port number to optionally use in the connection string when connecting to an Azure SQL VM target.
+func (o SqlVmTargetPropertiesPtrOutput) ConnectionTcpPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SqlVmTargetProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionTcpPort
+	}).(pulumi.IntPtrOutput)
+}
+
+// The SQL instance name to optionally use in the connection string when connecting to an Azure SQL VM target.
+func (o SqlVmTargetPropertiesPtrOutput) SqlNamedInstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlVmTargetProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SqlNamedInstanceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure resource ID of an Azure SQL VM target.
+func (o SqlVmTargetPropertiesPtrOutput) SqlVmResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlVmTargetProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SqlVmResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of authentication to use when connecting to a target.
+func (o SqlVmTargetPropertiesPtrOutput) TargetAuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlVmTargetProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetAuthenticationType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Discriminator property for TargetProperties.
+// Expected value is 'SqlVm'.
+func (o SqlVmTargetPropertiesPtrOutput) TargetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlVmTargetProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetType
+	}).(pulumi.StringPtrOutput)
+}
+
+// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
+func (o SqlVmTargetPropertiesPtrOutput) TargetVault() VaultSecretPtrOutput {
+	return o.ApplyT(func(v *SqlVmTargetProperties) *VaultSecret {
+		if v == nil {
+			return nil
+		}
+		return v.TargetVault
+	}).(VaultSecretPtrOutput)
+}
+
+// The properties specific to Azure SQL VM targets.
+type SqlVmTargetPropertiesResponse struct {
+	// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
+	ConnectionServerName string `pulumi:"connectionServerName"`
+	// The TCP port number to optionally use in the connection string when connecting to an Azure SQL VM target.
+	ConnectionTcpPort *int `pulumi:"connectionTcpPort"`
+	// The provisioning state of the resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The SQL instance name to optionally use in the connection string when connecting to an Azure SQL VM target.
+	SqlNamedInstanceName *string `pulumi:"sqlNamedInstanceName"`
+	// The Azure resource ID of an Azure SQL VM target.
+	SqlVmResourceId string `pulumi:"sqlVmResourceId"`
+	// The type of authentication to use when connecting to a target.
+	TargetAuthenticationType string `pulumi:"targetAuthenticationType"`
+	// Discriminator property for TargetProperties.
+	// Expected value is 'SqlVm'.
+	TargetType string `pulumi:"targetType"`
+	// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
+	TargetVault *VaultSecretResponse `pulumi:"targetVault"`
+}
+
+// Defaults sets the appropriate defaults for SqlVmTargetPropertiesResponse
+func (val *SqlVmTargetPropertiesResponse) Defaults() *SqlVmTargetPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ConnectionTcpPort == nil {
+		connectionTcpPort_ := 1433
+		tmp.ConnectionTcpPort = &connectionTcpPort_
+	}
+	return &tmp
+}
+
+// The properties specific to Azure SQL VM targets.
+type SqlVmTargetPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SqlVmTargetPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlVmTargetPropertiesResponse)(nil)).Elem()
+}
+
+func (o SqlVmTargetPropertiesResponseOutput) ToSqlVmTargetPropertiesResponseOutput() SqlVmTargetPropertiesResponseOutput {
+	return o
+}
+
+func (o SqlVmTargetPropertiesResponseOutput) ToSqlVmTargetPropertiesResponseOutputWithContext(ctx context.Context) SqlVmTargetPropertiesResponseOutput {
+	return o
+}
+
+// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
+func (o SqlVmTargetPropertiesResponseOutput) ConnectionServerName() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlVmTargetPropertiesResponse) string { return v.ConnectionServerName }).(pulumi.StringOutput)
+}
+
+// The TCP port number to optionally use in the connection string when connecting to an Azure SQL VM target.
+func (o SqlVmTargetPropertiesResponseOutput) ConnectionTcpPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SqlVmTargetPropertiesResponse) *int { return v.ConnectionTcpPort }).(pulumi.IntPtrOutput)
+}
+
+// The provisioning state of the resource.
+func (o SqlVmTargetPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlVmTargetPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The SQL instance name to optionally use in the connection string when connecting to an Azure SQL VM target.
+func (o SqlVmTargetPropertiesResponseOutput) SqlNamedInstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlVmTargetPropertiesResponse) *string { return v.SqlNamedInstanceName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure resource ID of an Azure SQL VM target.
+func (o SqlVmTargetPropertiesResponseOutput) SqlVmResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlVmTargetPropertiesResponse) string { return v.SqlVmResourceId }).(pulumi.StringOutput)
+}
+
+// The type of authentication to use when connecting to a target.
+func (o SqlVmTargetPropertiesResponseOutput) TargetAuthenticationType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlVmTargetPropertiesResponse) string { return v.TargetAuthenticationType }).(pulumi.StringOutput)
+}
+
+// Discriminator property for TargetProperties.
+// Expected value is 'SqlVm'.
+func (o SqlVmTargetPropertiesResponseOutput) TargetType() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlVmTargetPropertiesResponse) string { return v.TargetType }).(pulumi.StringOutput)
+}
+
+// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
+func (o SqlVmTargetPropertiesResponseOutput) TargetVault() VaultSecretResponsePtrOutput {
+	return o.ApplyT(func(v SqlVmTargetPropertiesResponse) *VaultSecretResponse { return v.TargetVault }).(VaultSecretResponsePtrOutput)
 }
 
 // The vault specific details required if using SQL authentication to connect to a target.
@@ -1092,13 +2179,18 @@ func init() {
 	pulumi.RegisterOutputType(DatastorePtrOutput{})
 	pulumi.RegisterOutputType(DatastoreResponseOutput{})
 	pulumi.RegisterOutputType(DatastoreResponsePtrOutput{})
-	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
-	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
-	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
-	pulumi.RegisterOutputType(ManagedServiceIdentityResponsePtrOutput{})
-	pulumi.RegisterOutputType(SystemDataResponseOutput{})
-	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
-	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
+	pulumi.RegisterOutputType(SqlDbElasticPoolTargetPropertiesOutput{})
+	pulumi.RegisterOutputType(SqlDbElasticPoolTargetPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(SqlDbElasticPoolTargetPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SqlDbSingleDatabaseTargetPropertiesOutput{})
+	pulumi.RegisterOutputType(SqlDbSingleDatabaseTargetPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(SqlDbSingleDatabaseTargetPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SqlMiTargetPropertiesOutput{})
+	pulumi.RegisterOutputType(SqlMiTargetPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(SqlMiTargetPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SqlVmTargetPropertiesOutput{})
+	pulumi.RegisterOutputType(SqlVmTargetPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(SqlVmTargetPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(VaultSecretOutput{})
 	pulumi.RegisterOutputType(VaultSecretPtrOutput{})
 	pulumi.RegisterOutputType(VaultSecretResponseOutput{})

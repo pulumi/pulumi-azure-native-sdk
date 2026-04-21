@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Container App session pool.
 //
-// Uses Azure REST API version 2024-02-02-preview.
+// Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2024-02-02-preview.
 //
-// Other available API versions: 2024-08-02-preview, 2024-10-02-preview, 2025-01-01.
+// Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-01-01, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ContainerAppsSessionPool struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The container type of the sessions.
 	ContainerType pulumi.StringPtrOutput `pulumi:"containerType"`
 	// The custom container configuration if the containerType is CustomContainer.
@@ -28,8 +31,12 @@ type ContainerAppsSessionPool struct {
 	DynamicPoolConfiguration DynamicPoolConfigurationResponsePtrOutput `pulumi:"dynamicPoolConfiguration"`
 	// Resource ID of the session pool's environment.
 	EnvironmentId pulumi.StringPtrOutput `pulumi:"environmentId"`
+	// Managed identities needed by a session pool to interact with other Azure services to not maintain any secrets or credentials in code.
+	Identity commontypesv5.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
+	// Optional settings for a Managed Identity that is assigned to the Session pool.
+	ManagedIdentitySettings ManagedIdentitySettingResponseArrayOutput `pulumi:"managedIdentitySettings"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The number of nodes the session pool is using.
@@ -47,7 +54,7 @@ type ContainerAppsSessionPool struct {
 	// The network configuration of the sessions in the session pool.
 	SessionNetworkConfiguration SessionNetworkConfigurationResponsePtrOutput `pulumi:"sessionNetworkConfiguration"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -76,6 +83,15 @@ func NewContainerAppsSessionPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20250101:ContainerAppsSessionPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20250202preview:ContainerAppsSessionPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20250701:ContainerAppsSessionPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20251002preview:ContainerAppsSessionPool"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -120,8 +136,12 @@ type containerAppsSessionPoolArgs struct {
 	DynamicPoolConfiguration *DynamicPoolConfiguration `pulumi:"dynamicPoolConfiguration"`
 	// Resource ID of the session pool's environment.
 	EnvironmentId *string `pulumi:"environmentId"`
+	// Managed identities needed by a session pool to interact with other Azure services to not maintain any secrets or credentials in code.
+	Identity *commontypesv5.ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
+	// Optional settings for a Managed Identity that is assigned to the Session pool.
+	ManagedIdentitySettings []ManagedIdentitySetting `pulumi:"managedIdentitySettings"`
 	// The pool management type of the session pool.
 	PoolManagementType *string `pulumi:"poolManagementType"`
 	// The name of the resource group. The name is case insensitive.
@@ -148,8 +168,12 @@ type ContainerAppsSessionPoolArgs struct {
 	DynamicPoolConfiguration DynamicPoolConfigurationPtrInput
 	// Resource ID of the session pool's environment.
 	EnvironmentId pulumi.StringPtrInput
+	// Managed identities needed by a session pool to interact with other Azure services to not maintain any secrets or credentials in code.
+	Identity commontypesv5.ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
+	// Optional settings for a Managed Identity that is assigned to the Session pool.
+	ManagedIdentitySettings ManagedIdentitySettingArrayInput
 	// The pool management type of the session pool.
 	PoolManagementType pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -203,6 +227,11 @@ func (o ContainerAppsSessionPoolOutput) ToContainerAppsSessionPoolOutputWithCont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ContainerAppsSessionPoolOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerAppsSessionPool) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The container type of the sessions.
 func (o ContainerAppsSessionPoolOutput) ContainerType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerAppsSessionPool) pulumi.StringPtrOutput { return v.ContainerType }).(pulumi.StringPtrOutput)
@@ -227,9 +256,23 @@ func (o ContainerAppsSessionPoolOutput) EnvironmentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerAppsSessionPool) pulumi.StringPtrOutput { return v.EnvironmentId }).(pulumi.StringPtrOutput)
 }
 
+// Managed identities needed by a session pool to interact with other Azure services to not maintain any secrets or credentials in code.
+func (o ContainerAppsSessionPoolOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *ContainerAppsSessionPool) commontypesv5.ManagedServiceIdentityResponsePtrOutput {
+		return v.Identity
+	}).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+}
+
 // The geo-location where the resource lives
 func (o ContainerAppsSessionPoolOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContainerAppsSessionPool) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Optional settings for a Managed Identity that is assigned to the Session pool.
+func (o ContainerAppsSessionPoolOutput) ManagedIdentitySettings() ManagedIdentitySettingResponseArrayOutput {
+	return o.ApplyT(func(v *ContainerAppsSessionPool) ManagedIdentitySettingResponseArrayOutput {
+		return v.ManagedIdentitySettings
+	}).(ManagedIdentitySettingResponseArrayOutput)
 }
 
 // The name of the resource
@@ -275,8 +318,8 @@ func (o ContainerAppsSessionPoolOutput) SessionNetworkConfiguration() SessionNet
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ContainerAppsSessionPoolOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *ContainerAppsSessionPool) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o ContainerAppsSessionPoolOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *ContainerAppsSessionPool) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

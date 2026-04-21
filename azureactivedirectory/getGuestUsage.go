@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Guest Usages resource for the Microsoft.AzureActiveDirectory resource provider
 //
-// Uses Azure REST API version 2021-04-01.
+// Uses Azure REST API version 2023-05-17-preview.
 //
-// Other available API versions: 2023-01-18-preview, 2023-05-17-preview.
+// Other available API versions: 2021-04-01, 2023-01-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azureactivedirectory [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupGuestUsage(ctx *pulumi.Context, args *LookupGuestUsageArgs, opts ...pulumi.InvokeOption) (*LookupGuestUsageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGuestUsageResult
@@ -35,6 +36,8 @@ type LookupGuestUsageArgs struct {
 
 // Guest Usages Resource
 type LookupGuestUsageResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// An identifier that represents the Guest Usages resource.
 	Id string `pulumi:"id"`
 	// Location of the Guest Usages resource.
@@ -42,7 +45,7 @@ type LookupGuestUsageResult struct {
 	// The name of the Guest Usages resource.
 	Name string `pulumi:"name"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// Key-value pairs of additional resource provisioning properties.
 	Tags map[string]string `pulumi:"tags"`
 	// An identifier for the tenant for which the resource is being created
@@ -86,6 +89,11 @@ func (o LookupGuestUsageResultOutput) ToLookupGuestUsageResultOutputWithContext(
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupGuestUsageResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGuestUsageResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // An identifier that represents the Guest Usages resource.
 func (o LookupGuestUsageResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGuestUsageResult) string { return v.Id }).(pulumi.StringOutput)
@@ -102,8 +110,8 @@ func (o LookupGuestUsageResultOutput) Name() pulumi.StringOutput {
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupGuestUsageResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupGuestUsageResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupGuestUsageResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupGuestUsageResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Key-value pairs of additional resource provisioning properties.

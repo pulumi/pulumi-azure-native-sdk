@@ -8,17 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Large Instance info on Azure (ARM properties and AzureLargeInstance
 // properties)
 //
-// Uses Azure REST API version 2024-08-01-preview.
+// Uses Azure REST API version 2024-08-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-08-01-preview.
 type AzureLargeInstance struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Specifies the Azure Large Instance unique ID.
 	AzureLargeInstanceId pulumi.StringPtrOutput `pulumi:"azureLargeInstanceId"`
 	// Specifies the hardware settings for the Azure Large Instance.
@@ -42,7 +45,7 @@ type AzureLargeInstance struct {
 	// Specifies the storage settings for the Azure Large Instance disks.
 	StorageProfile StorageProfileResponsePtrOutput `pulumi:"storageProfile"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -189,6 +192,11 @@ func (o AzureLargeInstanceOutput) ToAzureLargeInstanceOutputWithContext(ctx cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o AzureLargeInstanceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzureLargeInstance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Specifies the Azure Large Instance unique ID.
 func (o AzureLargeInstanceOutput) AzureLargeInstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureLargeInstance) pulumi.StringPtrOutput { return v.AzureLargeInstanceId }).(pulumi.StringPtrOutput)
@@ -245,8 +253,8 @@ func (o AzureLargeInstanceOutput) StorageProfile() StorageProfileResponsePtrOutp
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o AzureLargeInstanceOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *AzureLargeInstance) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o AzureLargeInstanceOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *AzureLargeInstance) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

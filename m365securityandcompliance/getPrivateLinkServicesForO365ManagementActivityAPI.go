@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +34,8 @@ type LookupPrivateLinkServicesForO365ManagementActivityAPIArgs struct {
 
 // The description of the service.
 type LookupPrivateLinkServicesForO365ManagementActivityAPIResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// An etag associated with the resource, used for optimistic concurrency when editing it.
 	Etag *string `pulumi:"etag"`
 	// The resource identifier.
@@ -48,7 +51,7 @@ type LookupPrivateLinkServicesForO365ManagementActivityAPIResult struct {
 	// The common properties of a service.
 	Properties ServicesPropertiesResponse `pulumi:"properties"`
 	// Required property for system data
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// The resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The resource type.
@@ -88,6 +91,11 @@ func (o LookupPrivateLinkServicesForO365ManagementActivityAPIResultOutput) ToLoo
 
 func (o LookupPrivateLinkServicesForO365ManagementActivityAPIResultOutput) ToLookupPrivateLinkServicesForO365ManagementActivityAPIResultOutputWithContext(ctx context.Context) LookupPrivateLinkServicesForO365ManagementActivityAPIResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPrivateLinkServicesForO365ManagementActivityAPIResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateLinkServicesForO365ManagementActivityAPIResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An etag associated with the resource, used for optimistic concurrency when editing it.
@@ -130,10 +138,10 @@ func (o LookupPrivateLinkServicesForO365ManagementActivityAPIResultOutput) Prope
 }
 
 // Required property for system data
-func (o LookupPrivateLinkServicesForO365ManagementActivityAPIResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupPrivateLinkServicesForO365ManagementActivityAPIResult) SystemDataResponse {
+func (o LookupPrivateLinkServicesForO365ManagementActivityAPIResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPrivateLinkServicesForO365ManagementActivityAPIResult) commontypesv2.SystemDataResponse {
 		return v.SystemData
-	}).(SystemDataResponseOutput)
+	}).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The resource tags.

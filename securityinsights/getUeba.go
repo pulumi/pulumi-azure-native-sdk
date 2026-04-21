@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a setting.
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2025-01-01-preview.
 func LookupUeba(ctx *pulumi.Context, args *LookupUebaArgs, opts ...pulumi.InvokeOption) (*LookupUebaResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupUebaResult
@@ -35,6 +36,8 @@ type LookupUebaArgs struct {
 
 // Settings with single toggle.
 type LookupUebaResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The relevant data sources that enriched by ueba
 	DataSources []string `pulumi:"dataSources"`
 	// Etag of the azure resource
@@ -47,7 +50,7 @@ type LookupUebaResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -89,6 +92,11 @@ func (o LookupUebaResultOutput) ToLookupUebaResultOutputWithContext(ctx context.
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupUebaResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUebaResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The relevant data sources that enriched by ueba
 func (o LookupUebaResultOutput) DataSources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupUebaResult) []string { return v.DataSources }).(pulumi.StringArrayOutput)
@@ -116,8 +124,8 @@ func (o LookupUebaResultOutput) Name() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupUebaResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupUebaResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupUebaResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupUebaResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

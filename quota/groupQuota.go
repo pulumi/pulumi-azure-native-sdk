@@ -8,24 +8,26 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified.
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2025-03-01. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
 //
-// Other available API versions: 2024-10-15-preview, 2024-12-18-preview, 2025-03-01, 2025-03-15-preview.
+// Other available API versions: 2023-06-01-preview, 2024-10-15-preview, 2024-12-18-preview, 2025-03-15-preview, 2025-07-15, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native quota [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type GroupQuota struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
-	Name pulumi.StringOutput `pulumi:"name"`
-	// Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified.
-	Properties GroupQuotasEntityBaseResponseOutput `pulumi:"properties"`
+	Name       pulumi.StringOutput                       `pulumi:"name"`
+	Properties GroupQuotasEntityResponsePropertiesOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -55,6 +57,12 @@ func NewGroupQuota(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:quota/v20250315preview:GroupQuota"),
+		},
+		{
+			Type: pulumi.String("azure-native:quota/v20250715:GroupQuota"),
+		},
+		{
+			Type: pulumi.String("azure-native:quota/v20250901:GroupQuota"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -94,9 +102,8 @@ type groupQuotaArgs struct {
 	// The GroupQuota name. The name should be unique for the provided context tenantId/MgId.
 	GroupQuotaName *string `pulumi:"groupQuotaName"`
 	// Management Group Id.
-	ManagementGroupId string `pulumi:"managementGroupId"`
-	// Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified.
-	Properties *GroupQuotasEntityBase `pulumi:"properties"`
+	ManagementGroupId string                       `pulumi:"managementGroupId"`
+	Properties        *GroupQuotasEntityProperties `pulumi:"properties"`
 }
 
 // The set of arguments for constructing a GroupQuota resource.
@@ -105,8 +112,7 @@ type GroupQuotaArgs struct {
 	GroupQuotaName pulumi.StringPtrInput
 	// Management Group Id.
 	ManagementGroupId pulumi.StringInput
-	// Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified.
-	Properties GroupQuotasEntityBasePtrInput
+	Properties        GroupQuotasEntityPropertiesPtrInput
 }
 
 func (GroupQuotaArgs) ElementType() reflect.Type {
@@ -146,19 +152,23 @@ func (o GroupQuotaOutput) ToGroupQuotaOutputWithContext(ctx context.Context) Gro
 	return o
 }
 
+// The Azure API version of the resource.
+func (o GroupQuotaOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupQuota) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o GroupQuotaOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupQuota) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified.
-func (o GroupQuotaOutput) Properties() GroupQuotasEntityBaseResponseOutput {
-	return o.ApplyT(func(v *GroupQuota) GroupQuotasEntityBaseResponseOutput { return v.Properties }).(GroupQuotasEntityBaseResponseOutput)
+func (o GroupQuotaOutput) Properties() GroupQuotasEntityResponsePropertiesOutput {
+	return o.ApplyT(func(v *GroupQuota) GroupQuotasEntityResponsePropertiesOutput { return v.Properties }).(GroupQuotasEntityResponsePropertiesOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o GroupQuotaOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *GroupQuota) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o GroupQuotaOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *GroupQuota) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

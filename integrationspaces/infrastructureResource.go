@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An infrastructure resource under Space.
 //
-// Uses Azure REST API version 2023-11-14-preview.
+// Uses Azure REST API version 2023-11-14-preview. In version 2.x of the Azure Native provider, it used API version 2023-11-14-preview.
 type InfrastructureResource struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The status of the last operation.
@@ -27,7 +30,7 @@ type InfrastructureResource struct {
 	// The type of the infrastructure resource.
 	ResourceType pulumi.StringOutput `pulumi:"resourceType"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -153,6 +156,11 @@ func (o InfrastructureResourceOutput) ToInfrastructureResourceOutputWithContext(
 	return o
 }
 
+// The Azure API version of the resource.
+func (o InfrastructureResourceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *InfrastructureResource) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o InfrastructureResourceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *InfrastructureResource) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -174,8 +182,8 @@ func (o InfrastructureResourceOutput) ResourceType() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o InfrastructureResourceOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *InfrastructureResource) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o InfrastructureResourceOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *InfrastructureResource) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

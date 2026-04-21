@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a BuilderResource
 //
-// Uses Azure REST API version 2023-08-01-preview.
+// Uses Azure REST API version 2025-02-02-preview.
 //
-// Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview.
+// Other available API versions: 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupBuilder(ctx *pulumi.Context, args *LookupBuilderArgs, opts ...pulumi.InvokeOption) (*LookupBuilderResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBuilderResult
@@ -35,14 +36,16 @@ type LookupBuilderArgs struct {
 
 // Information about the SourceToCloud builder resource.
 type LookupBuilderResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// List of mappings of container registries and the managed identity used to connect to it.
 	ContainerRegistries []ContainerRegistryResponse `pulumi:"containerRegistries"`
 	// Resource ID of the container apps environment that the builder is associated with.
 	EnvironmentId string `pulumi:"environmentId"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The managed service identities assigned to this resource.
-	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *commontypesv5.ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
@@ -50,7 +53,7 @@ type LookupBuilderResult struct {
 	// Provisioning state of a builder resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -92,6 +95,11 @@ func (o LookupBuilderResultOutput) ToLookupBuilderResultOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupBuilderResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBuilderResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // List of mappings of container registries and the managed identity used to connect to it.
 func (o LookupBuilderResultOutput) ContainerRegistries() ContainerRegistryResponseArrayOutput {
 	return o.ApplyT(func(v LookupBuilderResult) []ContainerRegistryResponse { return v.ContainerRegistries }).(ContainerRegistryResponseArrayOutput)
@@ -102,14 +110,14 @@ func (o LookupBuilderResultOutput) EnvironmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBuilderResult) string { return v.EnvironmentId }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupBuilderResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBuilderResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The managed service identities assigned to this resource.
-func (o LookupBuilderResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupBuilderResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o LookupBuilderResultOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupBuilderResult) *commontypesv5.ManagedServiceIdentityResponse { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -128,8 +136,8 @@ func (o LookupBuilderResultOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupBuilderResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupBuilderResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupBuilderResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupBuilderResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

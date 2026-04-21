@@ -8,22 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A SQL Database Fleet tier.
 //
-// Uses Azure REST API version 2025-02-01-preview.
+// Uses Azure REST API version 2025-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2025-02-01-preview.
 type FleetTier struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A Fleet tier properties.
 	Properties FleetTierPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -139,6 +142,11 @@ func (o FleetTierOutput) ToFleetTierOutputWithContext(ctx context.Context) Fleet
 	return o
 }
 
+// The Azure API version of the resource.
+func (o FleetTierOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *FleetTier) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o FleetTierOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FleetTier) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -150,8 +158,8 @@ func (o FleetTierOutput) Properties() FleetTierPropertiesResponseOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o FleetTierOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *FleetTier) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o FleetTierOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *FleetTier) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

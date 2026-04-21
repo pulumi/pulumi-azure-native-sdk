@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +36,8 @@ type LookupKafkaConnectorArgs struct {
 
 // MQ kafkaConnector resource
 type LookupKafkaConnectorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The client id prefix of the dynamically generated client ids.
 	ClientIdPrefix *string `pulumi:"clientIdPrefix"`
 	// Extended Location
@@ -60,7 +63,7 @@ type LookupKafkaConnectorResult struct {
 	// The status of the last operation.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -116,6 +119,11 @@ func (o LookupKafkaConnectorResultOutput) ToLookupKafkaConnectorResultOutput() L
 
 func (o LookupKafkaConnectorResultOutput) ToLookupKafkaConnectorResultOutputWithContext(ctx context.Context) LookupKafkaConnectorResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupKafkaConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKafkaConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The client id prefix of the dynamically generated client ids.
@@ -179,8 +187,8 @@ func (o LookupKafkaConnectorResultOutput) ProvisioningState() pulumi.StringOutpu
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupKafkaConnectorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupKafkaConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupKafkaConnectorResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupKafkaConnectorResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

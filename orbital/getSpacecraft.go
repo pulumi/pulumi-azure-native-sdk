@@ -7,15 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified spacecraft in a specified resource group.
 //
 // Uses Azure REST API version 2022-11-01.
-//
-// Other available API versions: 2022-03-01.
 func LookupSpacecraft(ctx *pulumi.Context, args *LookupSpacecraftArgs, opts ...pulumi.InvokeOption) (*LookupSpacecraftResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSpacecraftResult
@@ -35,6 +34,8 @@ type LookupSpacecraftArgs struct {
 
 // Customer creates a spacecraft resource to schedule a contact.
 type LookupSpacecraftResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Immutable list of Spacecraft links.
@@ -46,7 +47,7 @@ type LookupSpacecraftResult struct {
 	// NORAD ID of the spacecraft.
 	NoradId *string `pulumi:"noradId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Title line of the two-line element set (TLE).
@@ -94,6 +95,11 @@ func (o LookupSpacecraftResultOutput) ToLookupSpacecraftResultOutputWithContext(
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupSpacecraftResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSpacecraftResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSpacecraftResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSpacecraftResult) string { return v.Id }).(pulumi.StringOutput)
@@ -120,8 +126,8 @@ func (o LookupSpacecraftResultOutput) NoradId() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupSpacecraftResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSpacecraftResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupSpacecraftResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSpacecraftResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

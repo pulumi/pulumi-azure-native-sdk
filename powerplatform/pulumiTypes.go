@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -719,179 +719,6 @@ func (o KeyVaultPropertiesResponsePtrOutput) Key() KeyPropertiesResponsePtrOutpu
 	}).(KeyPropertiesResponsePtrOutput)
 }
 
-// The Private Endpoint resource.
-type PrivateEndpointResponse struct {
-	// The ARM identifier for Private Endpoint
-	Id string `pulumi:"id"`
-}
-
-// The Private Endpoint resource.
-type PrivateEndpointResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutput() PrivateEndpointResponseOutput {
-	return o
-}
-
-func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContext(ctx context.Context) PrivateEndpointResponseOutput {
-	return o
-}
-
-// The ARM identifier for Private Endpoint
-func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type PrivateEndpointResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateEndpointResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() PrivateEndpointResponsePtrOutput {
-	return o
-}
-
-func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
-	return o
-}
-
-func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
-	return o.ApplyT(func(v *PrivateEndpointResponse) PrivateEndpointResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PrivateEndpointResponse
-		return ret
-	}).(PrivateEndpointResponseOutput)
-}
-
-// The ARM identifier for Private Endpoint
-func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionState struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionsRequired *string `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
-	Description *string `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status *string `pulumi:"status"`
-}
-
-// PrivateLinkServiceConnectionStateInput is an input type that accepts PrivateLinkServiceConnectionStateArgs and PrivateLinkServiceConnectionStateOutput values.
-// You can construct a concrete instance of `PrivateLinkServiceConnectionStateInput` via:
-//
-//	PrivateLinkServiceConnectionStateArgs{...}
-type PrivateLinkServiceConnectionStateInput interface {
-	pulumi.Input
-
-	ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput
-	ToPrivateLinkServiceConnectionStateOutputWithContext(context.Context) PrivateLinkServiceConnectionStateOutput
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateArgs struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionsRequired pulumi.StringPtrInput `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-}
-
-func (PrivateLinkServiceConnectionStateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
-}
-
-func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
-	return i.ToPrivateLinkServiceConnectionStateOutputWithContext(context.Background())
-}
-
-func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceConnectionStateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
-	return o
-}
-
-// A message indicating if changes on the service provider require any updates on the consumer.
-func (o PrivateLinkServiceConnectionStateOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
-}
-
-// The reason for approval/rejection of the connection.
-func (o PrivateLinkServiceConnectionStateOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-func (o PrivateLinkServiceConnectionStateOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateResponse struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionsRequired *string `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
-	Description *string `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status *string `pulumi:"status"`
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceConnectionStateResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionStateResponse)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutput() PrivateLinkServiceConnectionStateResponseOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponseOutput {
-	return o
-}
-
-// A message indicating if changes on the service provider require any updates on the consumer.
-func (o PrivateLinkServiceConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
-}
-
-// The reason for approval/rejection of the connection.
-func (o PrivateLinkServiceConnectionStateResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-func (o PrivateLinkServiceConnectionStateResponseOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
 // The encryption settings for a configuration store.
 type PropertiesEncryption struct {
 	// Key vault properties.
@@ -1194,7 +1021,7 @@ func (o PropertiesLockboxPtrOutput) State() pulumi.StringPtrOutput {
 // Settings concerning network injection.
 type PropertiesNetworkInjection struct {
 	// Network injection configuration
-	VirtualNetworks *VirtualNetworkPropertiesList `pulumi:"virtualNetworks"`
+	VirtualNetworks []VirtualNetworkProperties `pulumi:"virtualNetworks"`
 }
 
 // PropertiesNetworkInjectionInput is an input type that accepts PropertiesNetworkInjectionArgs and PropertiesNetworkInjectionOutput values.
@@ -1211,7 +1038,7 @@ type PropertiesNetworkInjectionInput interface {
 // Settings concerning network injection.
 type PropertiesNetworkInjectionArgs struct {
 	// Network injection configuration
-	VirtualNetworks VirtualNetworkPropertiesListPtrInput `pulumi:"virtualNetworks"`
+	VirtualNetworks VirtualNetworkPropertiesArrayInput `pulumi:"virtualNetworks"`
 }
 
 func (PropertiesNetworkInjectionArgs) ElementType() reflect.Type {
@@ -1293,8 +1120,8 @@ func (o PropertiesNetworkInjectionOutput) ToPropertiesNetworkInjectionPtrOutputW
 }
 
 // Network injection configuration
-func (o PropertiesNetworkInjectionOutput) VirtualNetworks() VirtualNetworkPropertiesListPtrOutput {
-	return o.ApplyT(func(v PropertiesNetworkInjection) *VirtualNetworkPropertiesList { return v.VirtualNetworks }).(VirtualNetworkPropertiesListPtrOutput)
+func (o PropertiesNetworkInjectionOutput) VirtualNetworks() VirtualNetworkPropertiesArrayOutput {
+	return o.ApplyT(func(v PropertiesNetworkInjection) []VirtualNetworkProperties { return v.VirtualNetworks }).(VirtualNetworkPropertiesArrayOutput)
 }
 
 type PropertiesNetworkInjectionPtrOutput struct{ *pulumi.OutputState }
@@ -1322,13 +1149,13 @@ func (o PropertiesNetworkInjectionPtrOutput) Elem() PropertiesNetworkInjectionOu
 }
 
 // Network injection configuration
-func (o PropertiesNetworkInjectionPtrOutput) VirtualNetworks() VirtualNetworkPropertiesListPtrOutput {
-	return o.ApplyT(func(v *PropertiesNetworkInjection) *VirtualNetworkPropertiesList {
+func (o PropertiesNetworkInjectionPtrOutput) VirtualNetworks() VirtualNetworkPropertiesArrayOutput {
+	return o.ApplyT(func(v *PropertiesNetworkInjection) []VirtualNetworkProperties {
 		if v == nil {
 			return nil
 		}
 		return v.VirtualNetworks
-	}).(VirtualNetworkPropertiesListPtrOutput)
+	}).(VirtualNetworkPropertiesArrayOutput)
 }
 
 // The encryption settings for a configuration store.
@@ -1471,7 +1298,7 @@ func (o PropertiesResponseLockboxPtrOutput) State() pulumi.StringPtrOutput {
 // Settings concerning network injection.
 type PropertiesResponseNetworkInjection struct {
 	// Network injection configuration
-	VirtualNetworks *VirtualNetworkPropertiesListResponse `pulumi:"virtualNetworks"`
+	VirtualNetworks []VirtualNetworkPropertiesResponse `pulumi:"virtualNetworks"`
 }
 
 // Settings concerning network injection.
@@ -1490,10 +1317,10 @@ func (o PropertiesResponseNetworkInjectionOutput) ToPropertiesResponseNetworkInj
 }
 
 // Network injection configuration
-func (o PropertiesResponseNetworkInjectionOutput) VirtualNetworks() VirtualNetworkPropertiesListResponsePtrOutput {
-	return o.ApplyT(func(v PropertiesResponseNetworkInjection) *VirtualNetworkPropertiesListResponse {
+func (o PropertiesResponseNetworkInjectionOutput) VirtualNetworks() VirtualNetworkPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v PropertiesResponseNetworkInjection) []VirtualNetworkPropertiesResponse {
 		return v.VirtualNetworks
-	}).(VirtualNetworkPropertiesListResponsePtrOutput)
+	}).(VirtualNetworkPropertiesResponseArrayOutput)
 }
 
 type PropertiesResponseNetworkInjectionPtrOutput struct{ *pulumi.OutputState }
@@ -1521,13 +1348,13 @@ func (o PropertiesResponseNetworkInjectionPtrOutput) Elem() PropertiesResponseNe
 }
 
 // Network injection configuration
-func (o PropertiesResponseNetworkInjectionPtrOutput) VirtualNetworks() VirtualNetworkPropertiesListResponsePtrOutput {
-	return o.ApplyT(func(v *PropertiesResponseNetworkInjection) *VirtualNetworkPropertiesListResponse {
+func (o PropertiesResponseNetworkInjectionPtrOutput) VirtualNetworks() VirtualNetworkPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v *PropertiesResponseNetworkInjection) []VirtualNetworkPropertiesResponse {
 		if v == nil {
 			return nil
 		}
 		return v.VirtualNetworks
-	}).(VirtualNetworkPropertiesListResponsePtrOutput)
+	}).(VirtualNetworkPropertiesResponseArrayOutput)
 }
 
 // Properties of a subnet.
@@ -1730,67 +1557,6 @@ func (o SubnetPropertiesResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
-}
-
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponseOutput struct{ *pulumi.OutputState }
-
-func (SystemDataResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
-	return o
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
-	return o
-}
-
-// The timestamp of resource creation (UTC).
-func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
-}
-
 // Settings concerning the virtual network.
 type VirtualNetworkProperties struct {
 	// Uri of the virtual network.
@@ -1900,242 +1666,6 @@ func (o VirtualNetworkPropertiesArrayOutput) Index(i pulumi.IntInput) VirtualNet
 	}).(VirtualNetworkPropertiesOutput)
 }
 
-// A list of private link resources
-type VirtualNetworkPropertiesList struct {
-	// Next page link if any.
-	NextLink *string `pulumi:"nextLink"`
-	// Array of virtual networks.
-	Value []VirtualNetworkProperties `pulumi:"value"`
-}
-
-// VirtualNetworkPropertiesListInput is an input type that accepts VirtualNetworkPropertiesListArgs and VirtualNetworkPropertiesListOutput values.
-// You can construct a concrete instance of `VirtualNetworkPropertiesListInput` via:
-//
-//	VirtualNetworkPropertiesListArgs{...}
-type VirtualNetworkPropertiesListInput interface {
-	pulumi.Input
-
-	ToVirtualNetworkPropertiesListOutput() VirtualNetworkPropertiesListOutput
-	ToVirtualNetworkPropertiesListOutputWithContext(context.Context) VirtualNetworkPropertiesListOutput
-}
-
-// A list of private link resources
-type VirtualNetworkPropertiesListArgs struct {
-	// Next page link if any.
-	NextLink pulumi.StringPtrInput `pulumi:"nextLink"`
-	// Array of virtual networks.
-	Value VirtualNetworkPropertiesArrayInput `pulumi:"value"`
-}
-
-func (VirtualNetworkPropertiesListArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualNetworkPropertiesList)(nil)).Elem()
-}
-
-func (i VirtualNetworkPropertiesListArgs) ToVirtualNetworkPropertiesListOutput() VirtualNetworkPropertiesListOutput {
-	return i.ToVirtualNetworkPropertiesListOutputWithContext(context.Background())
-}
-
-func (i VirtualNetworkPropertiesListArgs) ToVirtualNetworkPropertiesListOutputWithContext(ctx context.Context) VirtualNetworkPropertiesListOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkPropertiesListOutput)
-}
-
-func (i VirtualNetworkPropertiesListArgs) ToVirtualNetworkPropertiesListPtrOutput() VirtualNetworkPropertiesListPtrOutput {
-	return i.ToVirtualNetworkPropertiesListPtrOutputWithContext(context.Background())
-}
-
-func (i VirtualNetworkPropertiesListArgs) ToVirtualNetworkPropertiesListPtrOutputWithContext(ctx context.Context) VirtualNetworkPropertiesListPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkPropertiesListOutput).ToVirtualNetworkPropertiesListPtrOutputWithContext(ctx)
-}
-
-// VirtualNetworkPropertiesListPtrInput is an input type that accepts VirtualNetworkPropertiesListArgs, VirtualNetworkPropertiesListPtr and VirtualNetworkPropertiesListPtrOutput values.
-// You can construct a concrete instance of `VirtualNetworkPropertiesListPtrInput` via:
-//
-//	        VirtualNetworkPropertiesListArgs{...}
-//
-//	or:
-//
-//	        nil
-type VirtualNetworkPropertiesListPtrInput interface {
-	pulumi.Input
-
-	ToVirtualNetworkPropertiesListPtrOutput() VirtualNetworkPropertiesListPtrOutput
-	ToVirtualNetworkPropertiesListPtrOutputWithContext(context.Context) VirtualNetworkPropertiesListPtrOutput
-}
-
-type virtualNetworkPropertiesListPtrType VirtualNetworkPropertiesListArgs
-
-func VirtualNetworkPropertiesListPtr(v *VirtualNetworkPropertiesListArgs) VirtualNetworkPropertiesListPtrInput {
-	return (*virtualNetworkPropertiesListPtrType)(v)
-}
-
-func (*virtualNetworkPropertiesListPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VirtualNetworkPropertiesList)(nil)).Elem()
-}
-
-func (i *virtualNetworkPropertiesListPtrType) ToVirtualNetworkPropertiesListPtrOutput() VirtualNetworkPropertiesListPtrOutput {
-	return i.ToVirtualNetworkPropertiesListPtrOutputWithContext(context.Background())
-}
-
-func (i *virtualNetworkPropertiesListPtrType) ToVirtualNetworkPropertiesListPtrOutputWithContext(ctx context.Context) VirtualNetworkPropertiesListPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkPropertiesListPtrOutput)
-}
-
-// A list of private link resources
-type VirtualNetworkPropertiesListOutput struct{ *pulumi.OutputState }
-
-func (VirtualNetworkPropertiesListOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualNetworkPropertiesList)(nil)).Elem()
-}
-
-func (o VirtualNetworkPropertiesListOutput) ToVirtualNetworkPropertiesListOutput() VirtualNetworkPropertiesListOutput {
-	return o
-}
-
-func (o VirtualNetworkPropertiesListOutput) ToVirtualNetworkPropertiesListOutputWithContext(ctx context.Context) VirtualNetworkPropertiesListOutput {
-	return o
-}
-
-func (o VirtualNetworkPropertiesListOutput) ToVirtualNetworkPropertiesListPtrOutput() VirtualNetworkPropertiesListPtrOutput {
-	return o.ToVirtualNetworkPropertiesListPtrOutputWithContext(context.Background())
-}
-
-func (o VirtualNetworkPropertiesListOutput) ToVirtualNetworkPropertiesListPtrOutputWithContext(ctx context.Context) VirtualNetworkPropertiesListPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualNetworkPropertiesList) *VirtualNetworkPropertiesList {
-		return &v
-	}).(VirtualNetworkPropertiesListPtrOutput)
-}
-
-// Next page link if any.
-func (o VirtualNetworkPropertiesListOutput) NextLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualNetworkPropertiesList) *string { return v.NextLink }).(pulumi.StringPtrOutput)
-}
-
-// Array of virtual networks.
-func (o VirtualNetworkPropertiesListOutput) Value() VirtualNetworkPropertiesArrayOutput {
-	return o.ApplyT(func(v VirtualNetworkPropertiesList) []VirtualNetworkProperties { return v.Value }).(VirtualNetworkPropertiesArrayOutput)
-}
-
-type VirtualNetworkPropertiesListPtrOutput struct{ *pulumi.OutputState }
-
-func (VirtualNetworkPropertiesListPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VirtualNetworkPropertiesList)(nil)).Elem()
-}
-
-func (o VirtualNetworkPropertiesListPtrOutput) ToVirtualNetworkPropertiesListPtrOutput() VirtualNetworkPropertiesListPtrOutput {
-	return o
-}
-
-func (o VirtualNetworkPropertiesListPtrOutput) ToVirtualNetworkPropertiesListPtrOutputWithContext(ctx context.Context) VirtualNetworkPropertiesListPtrOutput {
-	return o
-}
-
-func (o VirtualNetworkPropertiesListPtrOutput) Elem() VirtualNetworkPropertiesListOutput {
-	return o.ApplyT(func(v *VirtualNetworkPropertiesList) VirtualNetworkPropertiesList {
-		if v != nil {
-			return *v
-		}
-		var ret VirtualNetworkPropertiesList
-		return ret
-	}).(VirtualNetworkPropertiesListOutput)
-}
-
-// Next page link if any.
-func (o VirtualNetworkPropertiesListPtrOutput) NextLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualNetworkPropertiesList) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NextLink
-	}).(pulumi.StringPtrOutput)
-}
-
-// Array of virtual networks.
-func (o VirtualNetworkPropertiesListPtrOutput) Value() VirtualNetworkPropertiesArrayOutput {
-	return o.ApplyT(func(v *VirtualNetworkPropertiesList) []VirtualNetworkProperties {
-		if v == nil {
-			return nil
-		}
-		return v.Value
-	}).(VirtualNetworkPropertiesArrayOutput)
-}
-
-// A list of private link resources
-type VirtualNetworkPropertiesListResponse struct {
-	// Next page link if any.
-	NextLink *string `pulumi:"nextLink"`
-	// Array of virtual networks.
-	Value []VirtualNetworkPropertiesResponse `pulumi:"value"`
-}
-
-// A list of private link resources
-type VirtualNetworkPropertiesListResponseOutput struct{ *pulumi.OutputState }
-
-func (VirtualNetworkPropertiesListResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualNetworkPropertiesListResponse)(nil)).Elem()
-}
-
-func (o VirtualNetworkPropertiesListResponseOutput) ToVirtualNetworkPropertiesListResponseOutput() VirtualNetworkPropertiesListResponseOutput {
-	return o
-}
-
-func (o VirtualNetworkPropertiesListResponseOutput) ToVirtualNetworkPropertiesListResponseOutputWithContext(ctx context.Context) VirtualNetworkPropertiesListResponseOutput {
-	return o
-}
-
-// Next page link if any.
-func (o VirtualNetworkPropertiesListResponseOutput) NextLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualNetworkPropertiesListResponse) *string { return v.NextLink }).(pulumi.StringPtrOutput)
-}
-
-// Array of virtual networks.
-func (o VirtualNetworkPropertiesListResponseOutput) Value() VirtualNetworkPropertiesResponseArrayOutput {
-	return o.ApplyT(func(v VirtualNetworkPropertiesListResponse) []VirtualNetworkPropertiesResponse { return v.Value }).(VirtualNetworkPropertiesResponseArrayOutput)
-}
-
-type VirtualNetworkPropertiesListResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (VirtualNetworkPropertiesListResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VirtualNetworkPropertiesListResponse)(nil)).Elem()
-}
-
-func (o VirtualNetworkPropertiesListResponsePtrOutput) ToVirtualNetworkPropertiesListResponsePtrOutput() VirtualNetworkPropertiesListResponsePtrOutput {
-	return o
-}
-
-func (o VirtualNetworkPropertiesListResponsePtrOutput) ToVirtualNetworkPropertiesListResponsePtrOutputWithContext(ctx context.Context) VirtualNetworkPropertiesListResponsePtrOutput {
-	return o
-}
-
-func (o VirtualNetworkPropertiesListResponsePtrOutput) Elem() VirtualNetworkPropertiesListResponseOutput {
-	return o.ApplyT(func(v *VirtualNetworkPropertiesListResponse) VirtualNetworkPropertiesListResponse {
-		if v != nil {
-			return *v
-		}
-		var ret VirtualNetworkPropertiesListResponse
-		return ret
-	}).(VirtualNetworkPropertiesListResponseOutput)
-}
-
-// Next page link if any.
-func (o VirtualNetworkPropertiesListResponsePtrOutput) NextLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualNetworkPropertiesListResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NextLink
-	}).(pulumi.StringPtrOutput)
-}
-
-// Array of virtual networks.
-func (o VirtualNetworkPropertiesListResponsePtrOutput) Value() VirtualNetworkPropertiesResponseArrayOutput {
-	return o.ApplyT(func(v *VirtualNetworkPropertiesListResponse) []VirtualNetworkPropertiesResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Value
-	}).(VirtualNetworkPropertiesResponseArrayOutput)
-}
-
 // Settings concerning the virtual network.
 type VirtualNetworkPropertiesResponse struct {
 	// Uri of the virtual network.
@@ -2202,10 +1732,6 @@ func init() {
 	pulumi.RegisterOutputType(KeyVaultPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(KeyVaultPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(KeyVaultPropertiesResponsePtrOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
 	pulumi.RegisterOutputType(PropertiesEncryptionOutput{})
 	pulumi.RegisterOutputType(PropertiesEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(PropertiesLockboxOutput{})
@@ -2222,13 +1748,8 @@ func init() {
 	pulumi.RegisterOutputType(SubnetPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(SubnetPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SubnetPropertiesResponsePtrOutput{})
-	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkPropertiesOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkPropertiesArrayOutput{})
-	pulumi.RegisterOutputType(VirtualNetworkPropertiesListOutput{})
-	pulumi.RegisterOutputType(VirtualNetworkPropertiesListPtrOutput{})
-	pulumi.RegisterOutputType(VirtualNetworkPropertiesListResponseOutput{})
-	pulumi.RegisterOutputType(VirtualNetworkPropertiesListResponsePtrOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkPropertiesResponseArrayOutput{})
 }

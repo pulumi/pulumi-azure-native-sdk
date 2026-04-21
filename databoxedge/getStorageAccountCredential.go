@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the properties of the specified storage account credential.
 //
-// Uses Azure REST API version 2022-03-01.
+// Uses Azure REST API version 2023-07-01.
 //
-// Other available API versions: 2023-01-01-preview, 2023-07-01, 2023-12-01.
+// Other available API versions: 2022-03-01, 2022-04-01-preview, 2022-12-01-preview, 2023-01-01-preview, 2023-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databoxedge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupStorageAccountCredential(ctx *pulumi.Context, args *LookupStorageAccountCredentialArgs, opts ...pulumi.InvokeOption) (*LookupStorageAccountCredentialResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageAccountCredentialResult
@@ -43,6 +44,8 @@ type LookupStorageAccountCredentialResult struct {
 	AccountType string `pulumi:"accountType"`
 	// Alias for the storage account.
 	Alias string `pulumi:"alias"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Blob end point for private clouds.
 	BlobDomainName *string `pulumi:"blobDomainName"`
 	// Connection string for the storage account. Use this string if username and account key are not specified.
@@ -56,7 +59,7 @@ type LookupStorageAccountCredentialResult struct {
 	// Id of the storage account.
 	StorageAccountId *string `pulumi:"storageAccountId"`
 	// Metadata pertaining to creation and last modification of StorageAccountCredential
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type string `pulumi:"type"`
 	// Username for the storage account.
@@ -115,6 +118,11 @@ func (o LookupStorageAccountCredentialResultOutput) Alias() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupStorageAccountCredentialResult) string { return v.Alias }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupStorageAccountCredentialResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageAccountCredentialResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Blob end point for private clouds.
 func (o LookupStorageAccountCredentialResultOutput) BlobDomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStorageAccountCredentialResult) *string { return v.BlobDomainName }).(pulumi.StringPtrOutput)
@@ -146,8 +154,8 @@ func (o LookupStorageAccountCredentialResultOutput) StorageAccountId() pulumi.St
 }
 
 // Metadata pertaining to creation and last modification of StorageAccountCredential
-func (o LookupStorageAccountCredentialResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupStorageAccountCredentialResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupStorageAccountCredentialResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupStorageAccountCredentialResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.

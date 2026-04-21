@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get Default Security contact configurations for the subscription
 //
-// Uses Azure REST API version 2020-01-01-preview.
+// Uses Azure REST API version 2023-12-01-preview.
 //
-// Other available API versions: 2017-08-01-preview, 2023-12-01-preview.
+// Other available API versions: 2017-08-01-preview, 2020-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSecurityContact(ctx *pulumi.Context, args *LookupSecurityContactArgs, opts ...pulumi.InvokeOption) (*LookupSecurityContactResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecurityContactResult
@@ -33,16 +33,20 @@ type LookupSecurityContactArgs struct {
 
 // Contact details and configurations for notifications coming from Microsoft Defender for Cloud.
 type LookupSecurityContactResult struct {
-	// Defines whether to send email notifications about new security alerts
-	AlertNotifications *SecurityContactPropertiesResponseAlertNotifications `pulumi:"alertNotifications"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// List of email addresses which will get notifications from Microsoft Defender for Cloud by the configurations defined in this security contact.
 	Emails *string `pulumi:"emails"`
 	// Resource Id
 	Id string `pulumi:"id"`
+	// Indicates whether the security contact is enabled.
+	IsEnabled *bool `pulumi:"isEnabled"`
 	// Resource name
 	Name string `pulumi:"name"`
 	// Defines whether to send email notifications from Microsoft Defender for Cloud to persons with specific RBAC roles on the subscription.
 	NotificationsByRole *SecurityContactPropertiesResponseNotificationsByRole `pulumi:"notificationsByRole"`
+	// A collection of sources types which evaluate the email notification.
+	NotificationsSources []interface{} `pulumi:"notificationsSources"`
 	// The security contact's phone number
 	Phone *string `pulumi:"phone"`
 	// Resource type
@@ -82,11 +86,9 @@ func (o LookupSecurityContactResultOutput) ToLookupSecurityContactResultOutputWi
 	return o
 }
 
-// Defines whether to send email notifications about new security alerts
-func (o LookupSecurityContactResultOutput) AlertNotifications() SecurityContactPropertiesResponseAlertNotificationsPtrOutput {
-	return o.ApplyT(func(v LookupSecurityContactResult) *SecurityContactPropertiesResponseAlertNotifications {
-		return v.AlertNotifications
-	}).(SecurityContactPropertiesResponseAlertNotificationsPtrOutput)
+// The Azure API version of the resource.
+func (o LookupSecurityContactResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecurityContactResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of email addresses which will get notifications from Microsoft Defender for Cloud by the configurations defined in this security contact.
@@ -99,6 +101,11 @@ func (o LookupSecurityContactResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityContactResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Indicates whether the security contact is enabled.
+func (o LookupSecurityContactResultOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupSecurityContactResult) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+}
+
 // Resource name
 func (o LookupSecurityContactResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityContactResult) string { return v.Name }).(pulumi.StringOutput)
@@ -109,6 +116,11 @@ func (o LookupSecurityContactResultOutput) NotificationsByRole() SecurityContact
 	return o.ApplyT(func(v LookupSecurityContactResult) *SecurityContactPropertiesResponseNotificationsByRole {
 		return v.NotificationsByRole
 	}).(SecurityContactPropertiesResponseNotificationsByRolePtrOutput)
+}
+
+// A collection of sources types which evaluate the email notification.
+func (o LookupSecurityContactResultOutput) NotificationsSources() pulumi.ArrayOutput {
+	return o.ApplyT(func(v LookupSecurityContactResult) []interface{} { return v.NotificationsSources }).(pulumi.ArrayOutput)
 }
 
 // The security contact's phone number

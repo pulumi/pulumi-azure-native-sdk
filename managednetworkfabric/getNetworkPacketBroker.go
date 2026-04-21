@@ -7,13 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves details of this Network Packet Broker.
 //
 // Uses Azure REST API version 2023-06-15.
+//
+// Other available API versions: 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupNetworkPacketBroker(ctx *pulumi.Context, args *LookupNetworkPacketBrokerArgs, opts ...pulumi.InvokeOption) (*LookupNetworkPacketBrokerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkPacketBrokerResult
@@ -33,6 +36,8 @@ type LookupNetworkPacketBrokerArgs struct {
 
 // The NetworkPacketBroker resource definition.
 type LookupNetworkPacketBrokerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -52,7 +57,7 @@ type LookupNetworkPacketBrokerResult struct {
 	// List of network interfaces across NPB devices that are used to mirror source traffic.
 	SourceInterfaceIds []string `pulumi:"sourceInterfaceIds"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -92,6 +97,11 @@ func (o LookupNetworkPacketBrokerResultOutput) ToLookupNetworkPacketBrokerResult
 
 func (o LookupNetworkPacketBrokerResultOutput) ToLookupNetworkPacketBrokerResultOutputWithContext(ctx context.Context) LookupNetworkPacketBrokerResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupNetworkPacketBrokerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkPacketBrokerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -140,8 +150,8 @@ func (o LookupNetworkPacketBrokerResultOutput) SourceInterfaceIds() pulumi.Strin
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupNetworkPacketBrokerResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupNetworkPacketBrokerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupNetworkPacketBrokerResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupNetworkPacketBrokerResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -8,24 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Resource Manager resource envelope.
 //
-// Uses Azure REST API version 2023-04-01-preview.
+// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
 //
-// Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
+// Other available API versions: 2023-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type FeaturesetVersion struct {
 	pulumi.CustomResourceState
 
-	// [Required] Additional attributes of the entity.
-	FeaturesetVersionProperties FeaturesetVersionResponseOutput `pulumi:"featuresetVersionProperties"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// [Required] Additional attributes of the entity.
+	Properties FeaturesetVersionPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -37,11 +40,11 @@ func NewFeaturesetVersion(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.FeaturesetVersionProperties == nil {
-		return nil, errors.New("invalid value for required argument 'FeaturesetVersionProperties'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
+	}
+	if args.Properties == nil {
+		return nil, errors.New("invalid value for required argument 'Properties'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
@@ -49,7 +52,7 @@ func NewFeaturesetVersion(ctx *pulumi.Context,
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
-	args.FeaturesetVersionProperties = args.FeaturesetVersionProperties.ToFeaturesetVersionTypeOutput().ApplyT(func(v FeaturesetVersionType) FeaturesetVersionType { return *v.Defaults() }).(FeaturesetVersionTypeOutput)
+	args.Properties = args.Properties.ToFeaturesetVersionPropertiesOutput().ApplyT(func(v FeaturesetVersionProperties) FeaturesetVersionProperties { return *v.Defaults() }).(FeaturesetVersionPropertiesOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:FeaturesetVersion"),
@@ -87,6 +90,27 @@ func NewFeaturesetVersion(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:FeaturesetVersion"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250401:FeaturesetVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250401preview:FeaturesetVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250601:FeaturesetVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250701preview:FeaturesetVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250901:FeaturesetVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20251001preview:FeaturesetVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20251201:FeaturesetVersion"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -122,29 +146,29 @@ func (FeaturesetVersionState) ElementType() reflect.Type {
 }
 
 type featuresetVersionArgs struct {
-	// [Required] Additional attributes of the entity.
-	FeaturesetVersionProperties FeaturesetVersionType `pulumi:"featuresetVersionProperties"`
 	// Container name. This is case-sensitive.
 	Name string `pulumi:"name"`
+	// [Required] Additional attributes of the entity.
+	Properties FeaturesetVersionProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Version identifier. This is case-sensitive.
 	Version *string `pulumi:"version"`
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // The set of arguments for constructing a FeaturesetVersion resource.
 type FeaturesetVersionArgs struct {
-	// [Required] Additional attributes of the entity.
-	FeaturesetVersionProperties FeaturesetVersionTypeInput
 	// Container name. This is case-sensitive.
 	Name pulumi.StringInput
+	// [Required] Additional attributes of the entity.
+	Properties FeaturesetVersionPropertiesInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Version identifier. This is case-sensitive.
 	Version pulumi.StringPtrInput
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName pulumi.StringInput
 }
 
@@ -185,9 +209,9 @@ func (o FeaturesetVersionOutput) ToFeaturesetVersionOutputWithContext(ctx contex
 	return o
 }
 
-// [Required] Additional attributes of the entity.
-func (o FeaturesetVersionOutput) FeaturesetVersionProperties() FeaturesetVersionResponseOutput {
-	return o.ApplyT(func(v *FeaturesetVersion) FeaturesetVersionResponseOutput { return v.FeaturesetVersionProperties }).(FeaturesetVersionResponseOutput)
+// The Azure API version of the resource.
+func (o FeaturesetVersionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *FeaturesetVersion) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource
@@ -195,9 +219,14 @@ func (o FeaturesetVersionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeaturesetVersion) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// [Required] Additional attributes of the entity.
+func (o FeaturesetVersionOutput) Properties() FeaturesetVersionPropertiesResponseOutput {
+	return o.ApplyT(func(v *FeaturesetVersion) FeaturesetVersionPropertiesResponseOutput { return v.Properties }).(FeaturesetVersionPropertiesResponseOutput)
+}
+
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o FeaturesetVersionOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *FeaturesetVersion) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o FeaturesetVersionOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *FeaturesetVersion) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -16,11 +16,28 @@ var _ = utilities.GetEnvOrDefault
 // Client supplied parameters used to create a new attestation provider.
 type AttestationServiceCreationSpecificParams struct {
 	// JSON Web Key Set defining a set of X.509 Certificates that will represent the parent certificate for the signing certificate used for policy operations
-	PolicySigningCertificates *JSONWebKeySet `pulumi:"policySigningCertificates"`
+	PolicySigningCertificates *JsonWebKeySet `pulumi:"policySigningCertificates"`
 	// Controls whether traffic from the public network is allowed to access the Attestation Provider APIs.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs.
 	TpmAttestationAuthentication *string `pulumi:"tpmAttestationAuthentication"`
+}
+
+// Defaults sets the appropriate defaults for AttestationServiceCreationSpecificParams
+func (val *AttestationServiceCreationSpecificParams) Defaults() *AttestationServiceCreationSpecificParams {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.PublicNetworkAccess == nil {
+		publicNetworkAccess_ := "Enabled"
+		tmp.PublicNetworkAccess = &publicNetworkAccess_
+	}
+	if tmp.TpmAttestationAuthentication == nil {
+		tpmAttestationAuthentication_ := "Enabled"
+		tmp.TpmAttestationAuthentication = &tpmAttestationAuthentication_
+	}
+	return &tmp
 }
 
 // AttestationServiceCreationSpecificParamsInput is an input type that accepts AttestationServiceCreationSpecificParamsArgs and AttestationServiceCreationSpecificParamsOutput values.
@@ -37,13 +54,27 @@ type AttestationServiceCreationSpecificParamsInput interface {
 // Client supplied parameters used to create a new attestation provider.
 type AttestationServiceCreationSpecificParamsArgs struct {
 	// JSON Web Key Set defining a set of X.509 Certificates that will represent the parent certificate for the signing certificate used for policy operations
-	PolicySigningCertificates JSONWebKeySetPtrInput `pulumi:"policySigningCertificates"`
+	PolicySigningCertificates JsonWebKeySetPtrInput `pulumi:"policySigningCertificates"`
 	// Controls whether traffic from the public network is allowed to access the Attestation Provider APIs.
 	PublicNetworkAccess pulumi.StringPtrInput `pulumi:"publicNetworkAccess"`
 	// The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs.
 	TpmAttestationAuthentication pulumi.StringPtrInput `pulumi:"tpmAttestationAuthentication"`
 }
 
+// Defaults sets the appropriate defaults for AttestationServiceCreationSpecificParamsArgs
+func (val *AttestationServiceCreationSpecificParamsArgs) Defaults() *AttestationServiceCreationSpecificParamsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.PublicNetworkAccess == nil {
+		tmp.PublicNetworkAccess = pulumi.StringPtr("Enabled")
+	}
+	if tmp.TpmAttestationAuthentication == nil {
+		tmp.TpmAttestationAuthentication = pulumi.StringPtr("Enabled")
+	}
+	return &tmp
+}
 func (AttestationServiceCreationSpecificParamsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*AttestationServiceCreationSpecificParams)(nil)).Elem()
 }
@@ -72,8 +103,8 @@ func (o AttestationServiceCreationSpecificParamsOutput) ToAttestationServiceCrea
 }
 
 // JSON Web Key Set defining a set of X.509 Certificates that will represent the parent certificate for the signing certificate used for policy operations
-func (o AttestationServiceCreationSpecificParamsOutput) PolicySigningCertificates() JSONWebKeySetPtrOutput {
-	return o.ApplyT(func(v AttestationServiceCreationSpecificParams) *JSONWebKeySet { return v.PolicySigningCertificates }).(JSONWebKeySetPtrOutput)
+func (o AttestationServiceCreationSpecificParamsOutput) PolicySigningCertificates() JsonWebKeySetPtrOutput {
+	return o.ApplyT(func(v AttestationServiceCreationSpecificParams) *JsonWebKeySet { return v.PolicySigningCertificates }).(JsonWebKeySetPtrOutput)
 }
 
 // Controls whether traffic from the public network is allowed to access the Attestation Provider APIs.
@@ -86,7 +117,7 @@ func (o AttestationServiceCreationSpecificParamsOutput) TpmAttestationAuthentica
 	return o.ApplyT(func(v AttestationServiceCreationSpecificParams) *string { return v.TpmAttestationAuthentication }).(pulumi.StringPtrOutput)
 }
 
-type JSONWebKey struct {
+type JsonWebKey struct {
 	// The "alg" (algorithm) parameter identifies the algorithm intended for
 	// use with the key.  The values used should either be registered in the
 	// IANA "JSON Web Signature and Encryption Algorithms" registry
@@ -143,23 +174,23 @@ type JSONWebKey struct {
 	// not base64url-encoded) DER [ITU.X690.1994] PKIX certificate value.
 	// The PKIX certificate containing the key value MUST be the first
 	// certificate.
-	X5c []string `pulumi:"x5c"`
+	X5C []string `pulumi:"x5C"`
 	// Y coordinate for the Elliptic Curve point
 	Y *string `pulumi:"y"`
 }
 
-// JSONWebKeyInput is an input type that accepts JSONWebKeyArgs and JSONWebKeyOutput values.
-// You can construct a concrete instance of `JSONWebKeyInput` via:
+// JsonWebKeyInput is an input type that accepts JsonWebKeyArgs and JsonWebKeyOutput values.
+// You can construct a concrete instance of `JsonWebKeyInput` via:
 //
-//	JSONWebKeyArgs{...}
-type JSONWebKeyInput interface {
+//	JsonWebKeyArgs{...}
+type JsonWebKeyInput interface {
 	pulumi.Input
 
-	ToJSONWebKeyOutput() JSONWebKeyOutput
-	ToJSONWebKeyOutputWithContext(context.Context) JSONWebKeyOutput
+	ToJsonWebKeyOutput() JsonWebKeyOutput
+	ToJsonWebKeyOutputWithContext(context.Context) JsonWebKeyOutput
 }
 
-type JSONWebKeyArgs struct {
+type JsonWebKeyArgs struct {
 	// The "alg" (algorithm) parameter identifies the algorithm intended for
 	// use with the key.  The values used should either be registered in the
 	// IANA "JSON Web Signature and Encryption Algorithms" registry
@@ -216,59 +247,59 @@ type JSONWebKeyArgs struct {
 	// not base64url-encoded) DER [ITU.X690.1994] PKIX certificate value.
 	// The PKIX certificate containing the key value MUST be the first
 	// certificate.
-	X5c pulumi.StringArrayInput `pulumi:"x5c"`
+	X5C pulumi.StringArrayInput `pulumi:"x5C"`
 	// Y coordinate for the Elliptic Curve point
 	Y pulumi.StringPtrInput `pulumi:"y"`
 }
 
-func (JSONWebKeyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JSONWebKey)(nil)).Elem()
+func (JsonWebKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JsonWebKey)(nil)).Elem()
 }
 
-func (i JSONWebKeyArgs) ToJSONWebKeyOutput() JSONWebKeyOutput {
-	return i.ToJSONWebKeyOutputWithContext(context.Background())
+func (i JsonWebKeyArgs) ToJsonWebKeyOutput() JsonWebKeyOutput {
+	return i.ToJsonWebKeyOutputWithContext(context.Background())
 }
 
-func (i JSONWebKeyArgs) ToJSONWebKeyOutputWithContext(ctx context.Context) JSONWebKeyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JSONWebKeyOutput)
+func (i JsonWebKeyArgs) ToJsonWebKeyOutputWithContext(ctx context.Context) JsonWebKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JsonWebKeyOutput)
 }
 
-// JSONWebKeyArrayInput is an input type that accepts JSONWebKeyArray and JSONWebKeyArrayOutput values.
-// You can construct a concrete instance of `JSONWebKeyArrayInput` via:
+// JsonWebKeyArrayInput is an input type that accepts JsonWebKeyArray and JsonWebKeyArrayOutput values.
+// You can construct a concrete instance of `JsonWebKeyArrayInput` via:
 //
-//	JSONWebKeyArray{ JSONWebKeyArgs{...} }
-type JSONWebKeyArrayInput interface {
+//	JsonWebKeyArray{ JsonWebKeyArgs{...} }
+type JsonWebKeyArrayInput interface {
 	pulumi.Input
 
-	ToJSONWebKeyArrayOutput() JSONWebKeyArrayOutput
-	ToJSONWebKeyArrayOutputWithContext(context.Context) JSONWebKeyArrayOutput
+	ToJsonWebKeyArrayOutput() JsonWebKeyArrayOutput
+	ToJsonWebKeyArrayOutputWithContext(context.Context) JsonWebKeyArrayOutput
 }
 
-type JSONWebKeyArray []JSONWebKeyInput
+type JsonWebKeyArray []JsonWebKeyInput
 
-func (JSONWebKeyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]JSONWebKey)(nil)).Elem()
+func (JsonWebKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JsonWebKey)(nil)).Elem()
 }
 
-func (i JSONWebKeyArray) ToJSONWebKeyArrayOutput() JSONWebKeyArrayOutput {
-	return i.ToJSONWebKeyArrayOutputWithContext(context.Background())
+func (i JsonWebKeyArray) ToJsonWebKeyArrayOutput() JsonWebKeyArrayOutput {
+	return i.ToJsonWebKeyArrayOutputWithContext(context.Background())
 }
 
-func (i JSONWebKeyArray) ToJSONWebKeyArrayOutputWithContext(ctx context.Context) JSONWebKeyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JSONWebKeyArrayOutput)
+func (i JsonWebKeyArray) ToJsonWebKeyArrayOutputWithContext(ctx context.Context) JsonWebKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JsonWebKeyArrayOutput)
 }
 
-type JSONWebKeyOutput struct{ *pulumi.OutputState }
+type JsonWebKeyOutput struct{ *pulumi.OutputState }
 
-func (JSONWebKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JSONWebKey)(nil)).Elem()
+func (JsonWebKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JsonWebKey)(nil)).Elem()
 }
 
-func (o JSONWebKeyOutput) ToJSONWebKeyOutput() JSONWebKeyOutput {
+func (o JsonWebKeyOutput) ToJsonWebKeyOutput() JsonWebKeyOutput {
 	return o
 }
 
-func (o JSONWebKeyOutput) ToJSONWebKeyOutputWithContext(ctx context.Context) JSONWebKeyOutput {
+func (o JsonWebKeyOutput) ToJsonWebKeyOutputWithContext(ctx context.Context) JsonWebKeyOutput {
 	return o
 }
 
@@ -277,38 +308,38 @@ func (o JSONWebKeyOutput) ToJSONWebKeyOutputWithContext(ctx context.Context) JSO
 // IANA "JSON Web Signature and Encryption Algorithms" registry
 // established by [JWA] or be a value that contains a Collision-
 // Resistant Name.
-func (o JSONWebKeyOutput) Alg() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JSONWebKey) *string { return v.Alg }).(pulumi.StringPtrOutput)
+func (o JsonWebKeyOutput) Alg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JsonWebKey) *string { return v.Alg }).(pulumi.StringPtrOutput)
 }
 
 // The "crv" (curve) parameter identifies the curve type
-func (o JSONWebKeyOutput) Crv() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JSONWebKey) *string { return v.Crv }).(pulumi.StringPtrOutput)
+func (o JsonWebKeyOutput) Crv() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JsonWebKey) *string { return v.Crv }).(pulumi.StringPtrOutput)
 }
 
 // RSA private exponent or ECC private key
-func (o JSONWebKeyOutput) D() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JSONWebKey) *string { return v.D }).(pulumi.StringPtrOutput)
+func (o JsonWebKeyOutput) D() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JsonWebKey) *string { return v.D }).(pulumi.StringPtrOutput)
 }
 
 // RSA Private Key Parameter
-func (o JSONWebKeyOutput) Dp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JSONWebKey) *string { return v.Dp }).(pulumi.StringPtrOutput)
+func (o JsonWebKeyOutput) Dp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JsonWebKey) *string { return v.Dp }).(pulumi.StringPtrOutput)
 }
 
 // RSA Private Key Parameter
-func (o JSONWebKeyOutput) Dq() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JSONWebKey) *string { return v.Dq }).(pulumi.StringPtrOutput)
+func (o JsonWebKeyOutput) Dq() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JsonWebKey) *string { return v.Dq }).(pulumi.StringPtrOutput)
 }
 
 // RSA public exponent, in Base64
-func (o JSONWebKeyOutput) E() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JSONWebKey) *string { return v.E }).(pulumi.StringPtrOutput)
+func (o JsonWebKeyOutput) E() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JsonWebKey) *string { return v.E }).(pulumi.StringPtrOutput)
 }
 
 // Symmetric key
-func (o JSONWebKeyOutput) K() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JSONWebKey) *string { return v.K }).(pulumi.StringPtrOutput)
+func (o JsonWebKeyOutput) K() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JsonWebKey) *string { return v.K }).(pulumi.StringPtrOutput)
 }
 
 // The "kid" (key ID) parameter is used to match a specific key.  This
@@ -320,8 +351,8 @@ func (o JSONWebKeyOutput) K() pulumi.StringPtrOutput {
 // they have different "kty" (key type) values but are considered to be
 // equivalent alternatives by the application using them.)  The "kid"
 // value is a case-sensitive string.
-func (o JSONWebKeyOutput) Kid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JSONWebKey) *string { return v.Kid }).(pulumi.StringPtrOutput)
+func (o JsonWebKeyOutput) Kid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JsonWebKey) *string { return v.Kid }).(pulumi.StringPtrOutput)
 }
 
 // The "kty" (key type) parameter identifies the cryptographic algorithm
@@ -329,41 +360,41 @@ func (o JSONWebKeyOutput) Kid() pulumi.StringPtrOutput {
 // either be registered in the IANA "JSON Web Key Types" registry
 // established by [JWA] or be a value that contains a Collision-
 // Resistant Name.  The "kty" value is a case-sensitive string.
-func (o JSONWebKeyOutput) Kty() pulumi.StringOutput {
-	return o.ApplyT(func(v JSONWebKey) string { return v.Kty }).(pulumi.StringOutput)
+func (o JsonWebKeyOutput) Kty() pulumi.StringOutput {
+	return o.ApplyT(func(v JsonWebKey) string { return v.Kty }).(pulumi.StringOutput)
 }
 
 // RSA modulus, in Base64
-func (o JSONWebKeyOutput) N() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JSONWebKey) *string { return v.N }).(pulumi.StringPtrOutput)
+func (o JsonWebKeyOutput) N() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JsonWebKey) *string { return v.N }).(pulumi.StringPtrOutput)
 }
 
 // RSA secret prime
-func (o JSONWebKeyOutput) P() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JSONWebKey) *string { return v.P }).(pulumi.StringPtrOutput)
+func (o JsonWebKeyOutput) P() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JsonWebKey) *string { return v.P }).(pulumi.StringPtrOutput)
 }
 
 // RSA secret prime, with p < q
-func (o JSONWebKeyOutput) Q() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JSONWebKey) *string { return v.Q }).(pulumi.StringPtrOutput)
+func (o JsonWebKeyOutput) Q() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JsonWebKey) *string { return v.Q }).(pulumi.StringPtrOutput)
 }
 
 // RSA Private Key Parameter
-func (o JSONWebKeyOutput) Qi() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JSONWebKey) *string { return v.Qi }).(pulumi.StringPtrOutput)
+func (o JsonWebKeyOutput) Qi() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JsonWebKey) *string { return v.Qi }).(pulumi.StringPtrOutput)
 }
 
 // Use ("public key use") identifies the intended use of
 // the public key. The "use" parameter is employed to indicate whether
 // a public key is used for encrypting data or verifying the signature
 // on data. Values are commonly "sig" (signature) or "enc" (encryption).
-func (o JSONWebKeyOutput) Use() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JSONWebKey) *string { return v.Use }).(pulumi.StringPtrOutput)
+func (o JsonWebKeyOutput) Use() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JsonWebKey) *string { return v.Use }).(pulumi.StringPtrOutput)
 }
 
 // X coordinate for the Elliptic Curve point
-func (o JSONWebKeyOutput) X() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JSONWebKey) *string { return v.X }).(pulumi.StringPtrOutput)
+func (o JsonWebKeyOutput) X() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JsonWebKey) *string { return v.X }).(pulumi.StringPtrOutput)
 }
 
 // The "x5c" (X.509 certificate chain) parameter contains a chain of one
@@ -373,139 +404,139 @@ func (o JSONWebKeyOutput) X() pulumi.StringPtrOutput {
 // not base64url-encoded) DER [ITU.X690.1994] PKIX certificate value.
 // The PKIX certificate containing the key value MUST be the first
 // certificate.
-func (o JSONWebKeyOutput) X5c() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v JSONWebKey) []string { return v.X5c }).(pulumi.StringArrayOutput)
+func (o JsonWebKeyOutput) X5C() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JsonWebKey) []string { return v.X5C }).(pulumi.StringArrayOutput)
 }
 
 // Y coordinate for the Elliptic Curve point
-func (o JSONWebKeyOutput) Y() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JSONWebKey) *string { return v.Y }).(pulumi.StringPtrOutput)
+func (o JsonWebKeyOutput) Y() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JsonWebKey) *string { return v.Y }).(pulumi.StringPtrOutput)
 }
 
-type JSONWebKeyArrayOutput struct{ *pulumi.OutputState }
+type JsonWebKeyArrayOutput struct{ *pulumi.OutputState }
 
-func (JSONWebKeyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]JSONWebKey)(nil)).Elem()
+func (JsonWebKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JsonWebKey)(nil)).Elem()
 }
 
-func (o JSONWebKeyArrayOutput) ToJSONWebKeyArrayOutput() JSONWebKeyArrayOutput {
+func (o JsonWebKeyArrayOutput) ToJsonWebKeyArrayOutput() JsonWebKeyArrayOutput {
 	return o
 }
 
-func (o JSONWebKeyArrayOutput) ToJSONWebKeyArrayOutputWithContext(ctx context.Context) JSONWebKeyArrayOutput {
+func (o JsonWebKeyArrayOutput) ToJsonWebKeyArrayOutputWithContext(ctx context.Context) JsonWebKeyArrayOutput {
 	return o
 }
 
-func (o JSONWebKeyArrayOutput) Index(i pulumi.IntInput) JSONWebKeyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JSONWebKey {
-		return vs[0].([]JSONWebKey)[vs[1].(int)]
-	}).(JSONWebKeyOutput)
+func (o JsonWebKeyArrayOutput) Index(i pulumi.IntInput) JsonWebKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JsonWebKey {
+		return vs[0].([]JsonWebKey)[vs[1].(int)]
+	}).(JsonWebKeyOutput)
 }
 
-type JSONWebKeySet struct {
+type JsonWebKeySet struct {
 	// The value of the "keys" parameter is an array of JWK values.  By
 	// default, the order of the JWK values within the array does not imply
 	// an order of preference among them, although applications of JWK Sets
 	// can choose to assign a meaning to the order for their purposes, if
 	// desired.
-	Keys []JSONWebKey `pulumi:"keys"`
+	Keys []JsonWebKey `pulumi:"keys"`
 }
 
-// JSONWebKeySetInput is an input type that accepts JSONWebKeySetArgs and JSONWebKeySetOutput values.
-// You can construct a concrete instance of `JSONWebKeySetInput` via:
+// JsonWebKeySetInput is an input type that accepts JsonWebKeySetArgs and JsonWebKeySetOutput values.
+// You can construct a concrete instance of `JsonWebKeySetInput` via:
 //
-//	JSONWebKeySetArgs{...}
-type JSONWebKeySetInput interface {
+//	JsonWebKeySetArgs{...}
+type JsonWebKeySetInput interface {
 	pulumi.Input
 
-	ToJSONWebKeySetOutput() JSONWebKeySetOutput
-	ToJSONWebKeySetOutputWithContext(context.Context) JSONWebKeySetOutput
+	ToJsonWebKeySetOutput() JsonWebKeySetOutput
+	ToJsonWebKeySetOutputWithContext(context.Context) JsonWebKeySetOutput
 }
 
-type JSONWebKeySetArgs struct {
+type JsonWebKeySetArgs struct {
 	// The value of the "keys" parameter is an array of JWK values.  By
 	// default, the order of the JWK values within the array does not imply
 	// an order of preference among them, although applications of JWK Sets
 	// can choose to assign a meaning to the order for their purposes, if
 	// desired.
-	Keys JSONWebKeyArrayInput `pulumi:"keys"`
+	Keys JsonWebKeyArrayInput `pulumi:"keys"`
 }
 
-func (JSONWebKeySetArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*JSONWebKeySet)(nil)).Elem()
+func (JsonWebKeySetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JsonWebKeySet)(nil)).Elem()
 }
 
-func (i JSONWebKeySetArgs) ToJSONWebKeySetOutput() JSONWebKeySetOutput {
-	return i.ToJSONWebKeySetOutputWithContext(context.Background())
+func (i JsonWebKeySetArgs) ToJsonWebKeySetOutput() JsonWebKeySetOutput {
+	return i.ToJsonWebKeySetOutputWithContext(context.Background())
 }
 
-func (i JSONWebKeySetArgs) ToJSONWebKeySetOutputWithContext(ctx context.Context) JSONWebKeySetOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JSONWebKeySetOutput)
+func (i JsonWebKeySetArgs) ToJsonWebKeySetOutputWithContext(ctx context.Context) JsonWebKeySetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JsonWebKeySetOutput)
 }
 
-func (i JSONWebKeySetArgs) ToJSONWebKeySetPtrOutput() JSONWebKeySetPtrOutput {
-	return i.ToJSONWebKeySetPtrOutputWithContext(context.Background())
+func (i JsonWebKeySetArgs) ToJsonWebKeySetPtrOutput() JsonWebKeySetPtrOutput {
+	return i.ToJsonWebKeySetPtrOutputWithContext(context.Background())
 }
 
-func (i JSONWebKeySetArgs) ToJSONWebKeySetPtrOutputWithContext(ctx context.Context) JSONWebKeySetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JSONWebKeySetOutput).ToJSONWebKeySetPtrOutputWithContext(ctx)
+func (i JsonWebKeySetArgs) ToJsonWebKeySetPtrOutputWithContext(ctx context.Context) JsonWebKeySetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JsonWebKeySetOutput).ToJsonWebKeySetPtrOutputWithContext(ctx)
 }
 
-// JSONWebKeySetPtrInput is an input type that accepts JSONWebKeySetArgs, JSONWebKeySetPtr and JSONWebKeySetPtrOutput values.
-// You can construct a concrete instance of `JSONWebKeySetPtrInput` via:
+// JsonWebKeySetPtrInput is an input type that accepts JsonWebKeySetArgs, JsonWebKeySetPtr and JsonWebKeySetPtrOutput values.
+// You can construct a concrete instance of `JsonWebKeySetPtrInput` via:
 //
-//	        JSONWebKeySetArgs{...}
+//	        JsonWebKeySetArgs{...}
 //
 //	or:
 //
 //	        nil
-type JSONWebKeySetPtrInput interface {
+type JsonWebKeySetPtrInput interface {
 	pulumi.Input
 
-	ToJSONWebKeySetPtrOutput() JSONWebKeySetPtrOutput
-	ToJSONWebKeySetPtrOutputWithContext(context.Context) JSONWebKeySetPtrOutput
+	ToJsonWebKeySetPtrOutput() JsonWebKeySetPtrOutput
+	ToJsonWebKeySetPtrOutputWithContext(context.Context) JsonWebKeySetPtrOutput
 }
 
-type jsonwebKeySetPtrType JSONWebKeySetArgs
+type jsonWebKeySetPtrType JsonWebKeySetArgs
 
-func JSONWebKeySetPtr(v *JSONWebKeySetArgs) JSONWebKeySetPtrInput {
-	return (*jsonwebKeySetPtrType)(v)
+func JsonWebKeySetPtr(v *JsonWebKeySetArgs) JsonWebKeySetPtrInput {
+	return (*jsonWebKeySetPtrType)(v)
 }
 
-func (*jsonwebKeySetPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**JSONWebKeySet)(nil)).Elem()
+func (*jsonWebKeySetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JsonWebKeySet)(nil)).Elem()
 }
 
-func (i *jsonwebKeySetPtrType) ToJSONWebKeySetPtrOutput() JSONWebKeySetPtrOutput {
-	return i.ToJSONWebKeySetPtrOutputWithContext(context.Background())
+func (i *jsonWebKeySetPtrType) ToJsonWebKeySetPtrOutput() JsonWebKeySetPtrOutput {
+	return i.ToJsonWebKeySetPtrOutputWithContext(context.Background())
 }
 
-func (i *jsonwebKeySetPtrType) ToJSONWebKeySetPtrOutputWithContext(ctx context.Context) JSONWebKeySetPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(JSONWebKeySetPtrOutput)
+func (i *jsonWebKeySetPtrType) ToJsonWebKeySetPtrOutputWithContext(ctx context.Context) JsonWebKeySetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JsonWebKeySetPtrOutput)
 }
 
-type JSONWebKeySetOutput struct{ *pulumi.OutputState }
+type JsonWebKeySetOutput struct{ *pulumi.OutputState }
 
-func (JSONWebKeySetOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JSONWebKeySet)(nil)).Elem()
+func (JsonWebKeySetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JsonWebKeySet)(nil)).Elem()
 }
 
-func (o JSONWebKeySetOutput) ToJSONWebKeySetOutput() JSONWebKeySetOutput {
+func (o JsonWebKeySetOutput) ToJsonWebKeySetOutput() JsonWebKeySetOutput {
 	return o
 }
 
-func (o JSONWebKeySetOutput) ToJSONWebKeySetOutputWithContext(ctx context.Context) JSONWebKeySetOutput {
+func (o JsonWebKeySetOutput) ToJsonWebKeySetOutputWithContext(ctx context.Context) JsonWebKeySetOutput {
 	return o
 }
 
-func (o JSONWebKeySetOutput) ToJSONWebKeySetPtrOutput() JSONWebKeySetPtrOutput {
-	return o.ToJSONWebKeySetPtrOutputWithContext(context.Background())
+func (o JsonWebKeySetOutput) ToJsonWebKeySetPtrOutput() JsonWebKeySetPtrOutput {
+	return o.ToJsonWebKeySetPtrOutputWithContext(context.Background())
 }
 
-func (o JSONWebKeySetOutput) ToJSONWebKeySetPtrOutputWithContext(ctx context.Context) JSONWebKeySetPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v JSONWebKeySet) *JSONWebKeySet {
+func (o JsonWebKeySetOutput) ToJsonWebKeySetPtrOutputWithContext(ctx context.Context) JsonWebKeySetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JsonWebKeySet) *JsonWebKeySet {
 		return &v
-	}).(JSONWebKeySetPtrOutput)
+	}).(JsonWebKeySetPtrOutput)
 }
 
 // The value of the "keys" parameter is an array of JWK values.  By
@@ -513,32 +544,32 @@ func (o JSONWebKeySetOutput) ToJSONWebKeySetPtrOutputWithContext(ctx context.Con
 // an order of preference among them, although applications of JWK Sets
 // can choose to assign a meaning to the order for their purposes, if
 // desired.
-func (o JSONWebKeySetOutput) Keys() JSONWebKeyArrayOutput {
-	return o.ApplyT(func(v JSONWebKeySet) []JSONWebKey { return v.Keys }).(JSONWebKeyArrayOutput)
+func (o JsonWebKeySetOutput) Keys() JsonWebKeyArrayOutput {
+	return o.ApplyT(func(v JsonWebKeySet) []JsonWebKey { return v.Keys }).(JsonWebKeyArrayOutput)
 }
 
-type JSONWebKeySetPtrOutput struct{ *pulumi.OutputState }
+type JsonWebKeySetPtrOutput struct{ *pulumi.OutputState }
 
-func (JSONWebKeySetPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**JSONWebKeySet)(nil)).Elem()
+func (JsonWebKeySetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JsonWebKeySet)(nil)).Elem()
 }
 
-func (o JSONWebKeySetPtrOutput) ToJSONWebKeySetPtrOutput() JSONWebKeySetPtrOutput {
+func (o JsonWebKeySetPtrOutput) ToJsonWebKeySetPtrOutput() JsonWebKeySetPtrOutput {
 	return o
 }
 
-func (o JSONWebKeySetPtrOutput) ToJSONWebKeySetPtrOutputWithContext(ctx context.Context) JSONWebKeySetPtrOutput {
+func (o JsonWebKeySetPtrOutput) ToJsonWebKeySetPtrOutputWithContext(ctx context.Context) JsonWebKeySetPtrOutput {
 	return o
 }
 
-func (o JSONWebKeySetPtrOutput) Elem() JSONWebKeySetOutput {
-	return o.ApplyT(func(v *JSONWebKeySet) JSONWebKeySet {
+func (o JsonWebKeySetPtrOutput) Elem() JsonWebKeySetOutput {
+	return o.ApplyT(func(v *JsonWebKeySet) JsonWebKeySet {
 		if v != nil {
 			return *v
 		}
-		var ret JSONWebKeySet
+		var ret JsonWebKeySet
 		return ret
-	}).(JSONWebKeySetOutput)
+	}).(JsonWebKeySetOutput)
 }
 
 // The value of the "keys" parameter is an array of JWK values.  By
@@ -546,343 +577,19 @@ func (o JSONWebKeySetPtrOutput) Elem() JSONWebKeySetOutput {
 // an order of preference among them, although applications of JWK Sets
 // can choose to assign a meaning to the order for their purposes, if
 // desired.
-func (o JSONWebKeySetPtrOutput) Keys() JSONWebKeyArrayOutput {
-	return o.ApplyT(func(v *JSONWebKeySet) []JSONWebKey {
+func (o JsonWebKeySetPtrOutput) Keys() JsonWebKeyArrayOutput {
+	return o.ApplyT(func(v *JsonWebKeySet) []JsonWebKey {
 		if v == nil {
 			return nil
 		}
 		return v.Keys
-	}).(JSONWebKeyArrayOutput)
-}
-
-// The Private Endpoint Connection resource.
-type PrivateEndpointConnectionResponse struct {
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-	Id string `pulumi:"id"`
-	// The name of the resource
-	Name string `pulumi:"name"`
-	// The resource of private end point.
-	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
-	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
-	// The provisioning state of the private endpoint connection resource.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-	Type string `pulumi:"type"`
-}
-
-// The Private Endpoint Connection resource.
-type PrivateEndpointConnectionResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointConnectionResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutput() PrivateEndpointConnectionResponseOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseOutput {
-	return o
-}
-
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The name of the resource
-func (o PrivateEndpointConnectionResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The resource of private end point.
-func (o PrivateEndpointConnectionResponseOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *PrivateEndpointResponse { return v.PrivateEndpoint }).(PrivateEndpointResponsePtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponseOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) PrivateLinkServiceConnectionStateResponse {
-		return v.PrivateLinkServiceConnectionState
-	}).(PrivateLinkServiceConnectionStateResponseOutput)
-}
-
-// The provisioning state of the private endpoint connection resource.
-func (o PrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o PrivateEndpointConnectionResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type PrivateEndpointConnectionResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivateEndpointConnectionResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectionResponseArrayOutput() PrivateEndpointConnectionResponseArrayOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectionResponseArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseArrayOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
-		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
-	}).(PrivateEndpointConnectionResponseOutput)
-}
-
-// The Private Endpoint resource.
-type PrivateEndpointResponse struct {
-	// The ARM identifier for Private Endpoint
-	Id string `pulumi:"id"`
-}
-
-// The Private Endpoint resource.
-type PrivateEndpointResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutput() PrivateEndpointResponseOutput {
-	return o
-}
-
-func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContext(ctx context.Context) PrivateEndpointResponseOutput {
-	return o
-}
-
-// The ARM identifier for Private Endpoint
-func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type PrivateEndpointResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateEndpointResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() PrivateEndpointResponsePtrOutput {
-	return o
-}
-
-func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
-	return o
-}
-
-func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
-	return o.ApplyT(func(v *PrivateEndpointResponse) PrivateEndpointResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PrivateEndpointResponse
-		return ret
-	}).(PrivateEndpointResponseOutput)
-}
-
-// The ARM identifier for Private Endpoint
-func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionState struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionsRequired *string `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
-	Description *string `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status *string `pulumi:"status"`
-}
-
-// PrivateLinkServiceConnectionStateInput is an input type that accepts PrivateLinkServiceConnectionStateArgs and PrivateLinkServiceConnectionStateOutput values.
-// You can construct a concrete instance of `PrivateLinkServiceConnectionStateInput` via:
-//
-//	PrivateLinkServiceConnectionStateArgs{...}
-type PrivateLinkServiceConnectionStateInput interface {
-	pulumi.Input
-
-	ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput
-	ToPrivateLinkServiceConnectionStateOutputWithContext(context.Context) PrivateLinkServiceConnectionStateOutput
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateArgs struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionsRequired pulumi.StringPtrInput `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-}
-
-func (PrivateLinkServiceConnectionStateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
-}
-
-func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
-	return i.ToPrivateLinkServiceConnectionStateOutputWithContext(context.Background())
-}
-
-func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceConnectionStateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
-	return o
-}
-
-// A message indicating if changes on the service provider require any updates on the consumer.
-func (o PrivateLinkServiceConnectionStateOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
-}
-
-// The reason for approval/rejection of the connection.
-func (o PrivateLinkServiceConnectionStateOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-func (o PrivateLinkServiceConnectionStateOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateResponse struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionsRequired *string `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
-	Description *string `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status *string `pulumi:"status"`
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceConnectionStateResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionStateResponse)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutput() PrivateLinkServiceConnectionStateResponseOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponseOutput {
-	return o
-}
-
-// A message indicating if changes on the service provider require any updates on the consumer.
-func (o PrivateLinkServiceConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
-}
-
-// The reason for approval/rejection of the connection.
-func (o PrivateLinkServiceConnectionStateResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-func (o PrivateLinkServiceConnectionStateResponseOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
-}
-
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponseOutput struct{ *pulumi.OutputState }
-
-func (SystemDataResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
-	return o
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
-	return o
-}
-
-// The timestamp of resource creation (UTC).
-func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+	}).(JsonWebKeyArrayOutput)
 }
 
 func init() {
 	pulumi.RegisterOutputType(AttestationServiceCreationSpecificParamsOutput{})
-	pulumi.RegisterOutputType(JSONWebKeyOutput{})
-	pulumi.RegisterOutputType(JSONWebKeyArrayOutput{})
-	pulumi.RegisterOutputType(JSONWebKeySetOutput{})
-	pulumi.RegisterOutputType(JSONWebKeySetPtrOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
-	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(JsonWebKeyOutput{})
+	pulumi.RegisterOutputType(JsonWebKeyArrayOutput{})
+	pulumi.RegisterOutputType(JsonWebKeySetOutput{})
+	pulumi.RegisterOutputType(JsonWebKeySetPtrOutput{})
 }

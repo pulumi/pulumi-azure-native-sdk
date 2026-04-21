@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv1"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Object model for the Azure PowerShell script.
 //
-// Uses Azure REST API version 2020-10-01. In version 1.x of the Azure Native provider, it used API version 2020-10-01.
+// Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2020-10-01.
 type AzurePowerShellScript struct {
 	pulumi.CustomResourceState
 
@@ -22,6 +23,8 @@ type AzurePowerShellScript struct {
 	Arguments pulumi.StringPtrOutput `pulumi:"arguments"`
 	// Azure PowerShell module version to be used.
 	AzPowerShellVersion pulumi.StringOutput `pulumi:"azPowerShellVersion"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The clean up preference when the script execution gets in a terminal state. Default setting is 'Always'.
 	CleanupPreference pulumi.StringPtrOutput `pulumi:"cleanupPreference"`
 	// Container settings.
@@ -56,7 +59,7 @@ type AzurePowerShellScript struct {
 	// Supporting files for the external script.
 	SupportingScriptUris pulumi.StringArrayOutput `pulumi:"supportingScriptUris"`
 	// The system metadata related to this resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv1.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Maximum allowed script execution time specified in ISO 8601 format. Default value is P1D
@@ -93,13 +96,25 @@ func NewAzurePowerShellScript(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:resources/v20191001preview:AzureCliScript"),
+		},
+		{
 			Type: pulumi.String("azure-native:resources/v20191001preview:AzurePowerShellScript"),
+		},
+		{
+			Type: pulumi.String("azure-native:resources/v20201001:AzureCliScript"),
 		},
 		{
 			Type: pulumi.String("azure-native:resources/v20201001:AzurePowerShellScript"),
 		},
 		{
+			Type: pulumi.String("azure-native:resources/v20230801:AzureCliScript"),
+		},
+		{
 			Type: pulumi.String("azure-native:resources/v20230801:AzurePowerShellScript"),
+		},
+		{
+			Type: pulumi.String("azure-native:resources:AzureCliScript"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -263,6 +278,11 @@ func (o AzurePowerShellScriptOutput) AzPowerShellVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzurePowerShellScript) pulumi.StringOutput { return v.AzPowerShellVersion }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o AzurePowerShellScriptOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzurePowerShellScript) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The clean up preference when the script execution gets in a terminal state. Default setting is 'Always'.
 func (o AzurePowerShellScriptOutput) CleanupPreference() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzurePowerShellScript) pulumi.StringPtrOutput { return v.CleanupPreference }).(pulumi.StringPtrOutput)
@@ -347,8 +367,8 @@ func (o AzurePowerShellScriptOutput) SupportingScriptUris() pulumi.StringArrayOu
 }
 
 // The system metadata related to this resource.
-func (o AzurePowerShellScriptOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *AzurePowerShellScript) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o AzurePowerShellScriptOutput) SystemData() commontypesv1.SystemDataResponseOutput {
+	return o.ApplyT(func(v *AzurePowerShellScript) commontypesv1.SystemDataResponseOutput { return v.SystemData }).(commontypesv1.SystemDataResponseOutput)
 }
 
 // Resource tags.

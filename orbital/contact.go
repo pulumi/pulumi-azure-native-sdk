@@ -8,20 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Customer creates a contact resource for a spacecraft resource.
 //
-// Uses Azure REST API version 2022-11-01.
-//
-// Other available API versions: 2022-03-01.
+// Uses Azure REST API version 2022-11-01. In version 2.x of the Azure Native provider, it used API version 2022-11-01.
 type Contact struct {
 	pulumi.CustomResourceState
 
 	// The configuration associated with the allocated antenna.
 	AntennaConfiguration ContactsPropertiesResponseAntennaConfigurationOutput `pulumi:"antennaConfiguration"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The reference to the contact profile resource.
 	ContactProfile ContactsPropertiesResponseContactProfileOutput `pulumi:"contactProfile"`
 	// Azimuth of the antenna at the end of the contact in decimal degrees.
@@ -51,7 +52,7 @@ type Contact struct {
 	// Status of a contact.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Transmit end time of a contact (ISO 8601 UTC standard).
 	TxEndTime pulumi.StringOutput `pulumi:"txEndTime"`
 	// Transmit start time of a contact (ISO 8601 UTC standard).
@@ -203,6 +204,11 @@ func (o ContactOutput) AntennaConfiguration() ContactsPropertiesResponseAntennaC
 	return o.ApplyT(func(v *Contact) ContactsPropertiesResponseAntennaConfigurationOutput { return v.AntennaConfiguration }).(ContactsPropertiesResponseAntennaConfigurationOutput)
 }
 
+// The Azure API version of the resource.
+func (o ContactOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Contact) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The reference to the contact profile resource.
 func (o ContactOutput) ContactProfile() ContactsPropertiesResponseContactProfileOutput {
 	return o.ApplyT(func(v *Contact) ContactsPropertiesResponseContactProfileOutput { return v.ContactProfile }).(ContactsPropertiesResponseContactProfileOutput)
@@ -274,8 +280,8 @@ func (o ContactOutput) Status() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ContactOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Contact) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o ContactOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Contact) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Transmit end time of a contact (ISO 8601 UTC standard).

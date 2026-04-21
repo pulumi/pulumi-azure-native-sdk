@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -803,60 +803,6 @@ func (o ResourceReferenceResponseArrayOutput) Index(i pulumi.IntInput) ResourceR
 	}).(ResourceReferenceResponseOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type TrackedResourceResponseSystemData struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
-}
-
-// Metadata pertaining to creation and last modification of the resource.
-type TrackedResourceResponseSystemDataOutput struct{ *pulumi.OutputState }
-
-func (TrackedResourceResponseSystemDataOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TrackedResourceResponseSystemData)(nil)).Elem()
-}
-
-func (o TrackedResourceResponseSystemDataOutput) ToTrackedResourceResponseSystemDataOutput() TrackedResourceResponseSystemDataOutput {
-	return o
-}
-
-func (o TrackedResourceResponseSystemDataOutput) ToTrackedResourceResponseSystemDataOutputWithContext(ctx context.Context) TrackedResourceResponseSystemDataOutput {
-	return o
-}
-
-// The timestamp of resource creation (UTC).
-func (o TrackedResourceResponseSystemDataOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TrackedResourceResponseSystemData) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o TrackedResourceResponseSystemDataOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TrackedResourceResponseSystemData) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o TrackedResourceResponseSystemDataOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TrackedResourceResponseSystemData) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o TrackedResourceResponseSystemDataOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TrackedResourceResponseSystemData) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o TrackedResourceResponseSystemDataOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TrackedResourceResponseSystemData) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterOutputType(EmissionPoliciesPropertiesFormatOutput{})
 	pulumi.RegisterOutputType(EmissionPoliciesPropertiesFormatArrayOutput{})
@@ -877,5 +823,4 @@ func init() {
 	pulumi.RegisterOutputType(ResourceReferenceResponseOutput{})
 	pulumi.RegisterOutputType(ResourceReferenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(ResourceReferenceResponseArrayOutput{})
-	pulumi.RegisterOutputType(TrackedResourceResponseSystemDataOutput{})
 }

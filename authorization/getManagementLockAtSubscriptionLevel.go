@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,6 +32,8 @@ type LookupManagementLockAtSubscriptionLevelArgs struct {
 
 // The lock information.
 type LookupManagementLockAtSubscriptionLevelResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource ID of the lock.
 	Id string `pulumi:"id"`
 	// The level of the lock. Possible values are: NotSpecified, CanNotDelete, ReadOnly. CanNotDelete means authorized users are able to read and modify the resources, but not delete. ReadOnly means authorized users can only read from a resource, but they can't modify or delete it.
@@ -42,7 +45,7 @@ type LookupManagementLockAtSubscriptionLevelResult struct {
 	// The owners of the lock.
 	Owners []ManagementLockOwnerResponse `pulumi:"owners"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// The resource type of the lock - Microsoft.Authorization/locks.
 	Type string `pulumi:"type"`
 }
@@ -80,6 +83,11 @@ func (o LookupManagementLockAtSubscriptionLevelResultOutput) ToLookupManagementL
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupManagementLockAtSubscriptionLevelResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagementLockAtSubscriptionLevelResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The resource ID of the lock.
 func (o LookupManagementLockAtSubscriptionLevelResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementLockAtSubscriptionLevelResult) string { return v.Id }).(pulumi.StringOutput)
@@ -106,8 +114,10 @@ func (o LookupManagementLockAtSubscriptionLevelResultOutput) Owners() Management
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupManagementLockAtSubscriptionLevelResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupManagementLockAtSubscriptionLevelResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupManagementLockAtSubscriptionLevelResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupManagementLockAtSubscriptionLevelResult) commontypesv2.SystemDataResponse {
+		return v.SystemData
+	}).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The resource type of the lock - Microsoft.Authorization/locks.

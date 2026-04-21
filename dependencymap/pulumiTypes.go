@@ -7,73 +7,549 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = utilities.GetEnvOrDefault
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+// DependencyProcessFilter model
+type DependencyProcessFilter struct {
+	// Process name filter
+	ProcessNameFilter *ProcessNameFilter `pulumi:"processNameFilter"`
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponseOutput struct{ *pulumi.OutputState }
+// DependencyProcessFilterInput is an input type that accepts DependencyProcessFilterArgs and DependencyProcessFilterOutput values.
+// You can construct a concrete instance of `DependencyProcessFilterInput` via:
+//
+//	DependencyProcessFilterArgs{...}
+type DependencyProcessFilterInput interface {
+	pulumi.Input
 
-func (SystemDataResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+	ToDependencyProcessFilterOutput() DependencyProcessFilterOutput
+	ToDependencyProcessFilterOutputWithContext(context.Context) DependencyProcessFilterOutput
 }
 
-func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+// DependencyProcessFilter model
+type DependencyProcessFilterArgs struct {
+	// Process name filter
+	ProcessNameFilter ProcessNameFilterPtrInput `pulumi:"processNameFilter"`
+}
+
+func (DependencyProcessFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DependencyProcessFilter)(nil)).Elem()
+}
+
+func (i DependencyProcessFilterArgs) ToDependencyProcessFilterOutput() DependencyProcessFilterOutput {
+	return i.ToDependencyProcessFilterOutputWithContext(context.Background())
+}
+
+func (i DependencyProcessFilterArgs) ToDependencyProcessFilterOutputWithContext(ctx context.Context) DependencyProcessFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DependencyProcessFilterOutput)
+}
+
+func (i DependencyProcessFilterArgs) ToDependencyProcessFilterPtrOutput() DependencyProcessFilterPtrOutput {
+	return i.ToDependencyProcessFilterPtrOutputWithContext(context.Background())
+}
+
+func (i DependencyProcessFilterArgs) ToDependencyProcessFilterPtrOutputWithContext(ctx context.Context) DependencyProcessFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DependencyProcessFilterOutput).ToDependencyProcessFilterPtrOutputWithContext(ctx)
+}
+
+// DependencyProcessFilterPtrInput is an input type that accepts DependencyProcessFilterArgs, DependencyProcessFilterPtr and DependencyProcessFilterPtrOutput values.
+// You can construct a concrete instance of `DependencyProcessFilterPtrInput` via:
+//
+//	        DependencyProcessFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type DependencyProcessFilterPtrInput interface {
+	pulumi.Input
+
+	ToDependencyProcessFilterPtrOutput() DependencyProcessFilterPtrOutput
+	ToDependencyProcessFilterPtrOutputWithContext(context.Context) DependencyProcessFilterPtrOutput
+}
+
+type dependencyProcessFilterPtrType DependencyProcessFilterArgs
+
+func DependencyProcessFilterPtr(v *DependencyProcessFilterArgs) DependencyProcessFilterPtrInput {
+	return (*dependencyProcessFilterPtrType)(v)
+}
+
+func (*dependencyProcessFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DependencyProcessFilter)(nil)).Elem()
+}
+
+func (i *dependencyProcessFilterPtrType) ToDependencyProcessFilterPtrOutput() DependencyProcessFilterPtrOutput {
+	return i.ToDependencyProcessFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *dependencyProcessFilterPtrType) ToDependencyProcessFilterPtrOutputWithContext(ctx context.Context) DependencyProcessFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DependencyProcessFilterPtrOutput)
+}
+
+// DependencyProcessFilter model
+type DependencyProcessFilterOutput struct{ *pulumi.OutputState }
+
+func (DependencyProcessFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DependencyProcessFilter)(nil)).Elem()
+}
+
+func (o DependencyProcessFilterOutput) ToDependencyProcessFilterOutput() DependencyProcessFilterOutput {
 	return o
 }
 
-func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+func (o DependencyProcessFilterOutput) ToDependencyProcessFilterOutputWithContext(ctx context.Context) DependencyProcessFilterOutput {
 	return o
 }
 
-// The timestamp of resource creation (UTC).
-func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+func (o DependencyProcessFilterOutput) ToDependencyProcessFilterPtrOutput() DependencyProcessFilterPtrOutput {
+	return o.ToDependencyProcessFilterPtrOutputWithContext(context.Background())
 }
 
-// The identity that created the resource.
-func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+func (o DependencyProcessFilterOutput) ToDependencyProcessFilterPtrOutputWithContext(ctx context.Context) DependencyProcessFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DependencyProcessFilter) *DependencyProcessFilter {
+		return &v
+	}).(DependencyProcessFilterPtrOutput)
 }
 
-// The type of identity that created the resource.
-func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+// Process name filter
+func (o DependencyProcessFilterOutput) ProcessNameFilter() ProcessNameFilterPtrOutput {
+	return o.ApplyT(func(v DependencyProcessFilter) *ProcessNameFilter { return v.ProcessNameFilter }).(ProcessNameFilterPtrOutput)
 }
 
-// The timestamp of resource last modification (UTC)
-func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+type DependencyProcessFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (DependencyProcessFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DependencyProcessFilter)(nil)).Elem()
 }
 
-// The identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+func (o DependencyProcessFilterPtrOutput) ToDependencyProcessFilterPtrOutput() DependencyProcessFilterPtrOutput {
+	return o
 }
 
-// The type of identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+func (o DependencyProcessFilterPtrOutput) ToDependencyProcessFilterPtrOutputWithContext(ctx context.Context) DependencyProcessFilterPtrOutput {
+	return o
+}
+
+func (o DependencyProcessFilterPtrOutput) Elem() DependencyProcessFilterOutput {
+	return o.ApplyT(func(v *DependencyProcessFilter) DependencyProcessFilter {
+		if v != nil {
+			return *v
+		}
+		var ret DependencyProcessFilter
+		return ret
+	}).(DependencyProcessFilterOutput)
+}
+
+// Process name filter
+func (o DependencyProcessFilterPtrOutput) ProcessNameFilter() ProcessNameFilterPtrOutput {
+	return o.ApplyT(func(v *DependencyProcessFilter) *ProcessNameFilter {
+		if v == nil {
+			return nil
+		}
+		return v.ProcessNameFilter
+	}).(ProcessNameFilterPtrOutput)
+}
+
+// Model representing properties returned upon successful completion of the export dependencies asynchronous operation.
+type GetDependencyViewForAllMachinesResultPropertiesResponse struct {
+	// The SAS URI of the blob containing the layout file for the multi-server view.
+	LayoutFileSasUrl string `pulumi:"layoutFileSasUrl"`
+}
+
+// Model representing properties returned upon successful completion of the export dependencies asynchronous operation.
+type GetDependencyViewForAllMachinesResultPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (GetDependencyViewForAllMachinesResultPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDependencyViewForAllMachinesResultPropertiesResponse)(nil)).Elem()
+}
+
+func (o GetDependencyViewForAllMachinesResultPropertiesResponseOutput) ToGetDependencyViewForAllMachinesResultPropertiesResponseOutput() GetDependencyViewForAllMachinesResultPropertiesResponseOutput {
+	return o
+}
+
+func (o GetDependencyViewForAllMachinesResultPropertiesResponseOutput) ToGetDependencyViewForAllMachinesResultPropertiesResponseOutputWithContext(ctx context.Context) GetDependencyViewForAllMachinesResultPropertiesResponseOutput {
+	return o
+}
+
+// The SAS URI of the blob containing the layout file for the multi-server view.
+func (o GetDependencyViewForAllMachinesResultPropertiesResponseOutput) LayoutFileSasUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDependencyViewForAllMachinesResultPropertiesResponse) string { return v.LayoutFileSasUrl }).(pulumi.StringOutput)
+}
+
+// OffAzure discovery source resource properties
+type OffAzureDiscoverySourceResourceProperties struct {
+	// Source ArmId of Discovery Source resource
+	SourceId string `pulumi:"sourceId"`
+	// Source type of the discoverySource
+	// Expected value is 'OffAzure'.
+	SourceType string `pulumi:"sourceType"`
+}
+
+// OffAzureDiscoverySourceResourcePropertiesInput is an input type that accepts OffAzureDiscoverySourceResourcePropertiesArgs and OffAzureDiscoverySourceResourcePropertiesOutput values.
+// You can construct a concrete instance of `OffAzureDiscoverySourceResourcePropertiesInput` via:
+//
+//	OffAzureDiscoverySourceResourcePropertiesArgs{...}
+type OffAzureDiscoverySourceResourcePropertiesInput interface {
+	pulumi.Input
+
+	ToOffAzureDiscoverySourceResourcePropertiesOutput() OffAzureDiscoverySourceResourcePropertiesOutput
+	ToOffAzureDiscoverySourceResourcePropertiesOutputWithContext(context.Context) OffAzureDiscoverySourceResourcePropertiesOutput
+}
+
+// OffAzure discovery source resource properties
+type OffAzureDiscoverySourceResourcePropertiesArgs struct {
+	// Source ArmId of Discovery Source resource
+	SourceId pulumi.StringInput `pulumi:"sourceId"`
+	// Source type of the discoverySource
+	// Expected value is 'OffAzure'.
+	SourceType pulumi.StringInput `pulumi:"sourceType"`
+}
+
+func (OffAzureDiscoverySourceResourcePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OffAzureDiscoverySourceResourceProperties)(nil)).Elem()
+}
+
+func (i OffAzureDiscoverySourceResourcePropertiesArgs) ToOffAzureDiscoverySourceResourcePropertiesOutput() OffAzureDiscoverySourceResourcePropertiesOutput {
+	return i.ToOffAzureDiscoverySourceResourcePropertiesOutputWithContext(context.Background())
+}
+
+func (i OffAzureDiscoverySourceResourcePropertiesArgs) ToOffAzureDiscoverySourceResourcePropertiesOutputWithContext(ctx context.Context) OffAzureDiscoverySourceResourcePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OffAzureDiscoverySourceResourcePropertiesOutput)
+}
+
+func (i OffAzureDiscoverySourceResourcePropertiesArgs) ToOffAzureDiscoverySourceResourcePropertiesPtrOutput() OffAzureDiscoverySourceResourcePropertiesPtrOutput {
+	return i.ToOffAzureDiscoverySourceResourcePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i OffAzureDiscoverySourceResourcePropertiesArgs) ToOffAzureDiscoverySourceResourcePropertiesPtrOutputWithContext(ctx context.Context) OffAzureDiscoverySourceResourcePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OffAzureDiscoverySourceResourcePropertiesOutput).ToOffAzureDiscoverySourceResourcePropertiesPtrOutputWithContext(ctx)
+}
+
+// OffAzureDiscoverySourceResourcePropertiesPtrInput is an input type that accepts OffAzureDiscoverySourceResourcePropertiesArgs, OffAzureDiscoverySourceResourcePropertiesPtr and OffAzureDiscoverySourceResourcePropertiesPtrOutput values.
+// You can construct a concrete instance of `OffAzureDiscoverySourceResourcePropertiesPtrInput` via:
+//
+//	        OffAzureDiscoverySourceResourcePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type OffAzureDiscoverySourceResourcePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToOffAzureDiscoverySourceResourcePropertiesPtrOutput() OffAzureDiscoverySourceResourcePropertiesPtrOutput
+	ToOffAzureDiscoverySourceResourcePropertiesPtrOutputWithContext(context.Context) OffAzureDiscoverySourceResourcePropertiesPtrOutput
+}
+
+type offAzureDiscoverySourceResourcePropertiesPtrType OffAzureDiscoverySourceResourcePropertiesArgs
+
+func OffAzureDiscoverySourceResourcePropertiesPtr(v *OffAzureDiscoverySourceResourcePropertiesArgs) OffAzureDiscoverySourceResourcePropertiesPtrInput {
+	return (*offAzureDiscoverySourceResourcePropertiesPtrType)(v)
+}
+
+func (*offAzureDiscoverySourceResourcePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OffAzureDiscoverySourceResourceProperties)(nil)).Elem()
+}
+
+func (i *offAzureDiscoverySourceResourcePropertiesPtrType) ToOffAzureDiscoverySourceResourcePropertiesPtrOutput() OffAzureDiscoverySourceResourcePropertiesPtrOutput {
+	return i.ToOffAzureDiscoverySourceResourcePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *offAzureDiscoverySourceResourcePropertiesPtrType) ToOffAzureDiscoverySourceResourcePropertiesPtrOutputWithContext(ctx context.Context) OffAzureDiscoverySourceResourcePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OffAzureDiscoverySourceResourcePropertiesPtrOutput)
+}
+
+// OffAzure discovery source resource properties
+type OffAzureDiscoverySourceResourcePropertiesOutput struct{ *pulumi.OutputState }
+
+func (OffAzureDiscoverySourceResourcePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OffAzureDiscoverySourceResourceProperties)(nil)).Elem()
+}
+
+func (o OffAzureDiscoverySourceResourcePropertiesOutput) ToOffAzureDiscoverySourceResourcePropertiesOutput() OffAzureDiscoverySourceResourcePropertiesOutput {
+	return o
+}
+
+func (o OffAzureDiscoverySourceResourcePropertiesOutput) ToOffAzureDiscoverySourceResourcePropertiesOutputWithContext(ctx context.Context) OffAzureDiscoverySourceResourcePropertiesOutput {
+	return o
+}
+
+func (o OffAzureDiscoverySourceResourcePropertiesOutput) ToOffAzureDiscoverySourceResourcePropertiesPtrOutput() OffAzureDiscoverySourceResourcePropertiesPtrOutput {
+	return o.ToOffAzureDiscoverySourceResourcePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o OffAzureDiscoverySourceResourcePropertiesOutput) ToOffAzureDiscoverySourceResourcePropertiesPtrOutputWithContext(ctx context.Context) OffAzureDiscoverySourceResourcePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OffAzureDiscoverySourceResourceProperties) *OffAzureDiscoverySourceResourceProperties {
+		return &v
+	}).(OffAzureDiscoverySourceResourcePropertiesPtrOutput)
+}
+
+// Source ArmId of Discovery Source resource
+func (o OffAzureDiscoverySourceResourcePropertiesOutput) SourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v OffAzureDiscoverySourceResourceProperties) string { return v.SourceId }).(pulumi.StringOutput)
+}
+
+// Source type of the discoverySource
+// Expected value is 'OffAzure'.
+func (o OffAzureDiscoverySourceResourcePropertiesOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v OffAzureDiscoverySourceResourceProperties) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
+type OffAzureDiscoverySourceResourcePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (OffAzureDiscoverySourceResourcePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OffAzureDiscoverySourceResourceProperties)(nil)).Elem()
+}
+
+func (o OffAzureDiscoverySourceResourcePropertiesPtrOutput) ToOffAzureDiscoverySourceResourcePropertiesPtrOutput() OffAzureDiscoverySourceResourcePropertiesPtrOutput {
+	return o
+}
+
+func (o OffAzureDiscoverySourceResourcePropertiesPtrOutput) ToOffAzureDiscoverySourceResourcePropertiesPtrOutputWithContext(ctx context.Context) OffAzureDiscoverySourceResourcePropertiesPtrOutput {
+	return o
+}
+
+func (o OffAzureDiscoverySourceResourcePropertiesPtrOutput) Elem() OffAzureDiscoverySourceResourcePropertiesOutput {
+	return o.ApplyT(func(v *OffAzureDiscoverySourceResourceProperties) OffAzureDiscoverySourceResourceProperties {
+		if v != nil {
+			return *v
+		}
+		var ret OffAzureDiscoverySourceResourceProperties
+		return ret
+	}).(OffAzureDiscoverySourceResourcePropertiesOutput)
+}
+
+// Source ArmId of Discovery Source resource
+func (o OffAzureDiscoverySourceResourcePropertiesPtrOutput) SourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OffAzureDiscoverySourceResourceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Source type of the discoverySource
+// Expected value is 'OffAzure'.
+func (o OffAzureDiscoverySourceResourcePropertiesPtrOutput) SourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OffAzureDiscoverySourceResourceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// OffAzure discovery source resource properties
+type OffAzureDiscoverySourceResourcePropertiesResponse struct {
+	// Provisioning state of Discovery Source resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Source ArmId of Discovery Source resource
+	SourceId string `pulumi:"sourceId"`
+	// Source type of the discoverySource
+	// Expected value is 'OffAzure'.
+	SourceType string `pulumi:"sourceType"`
+}
+
+// OffAzure discovery source resource properties
+type OffAzureDiscoverySourceResourcePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (OffAzureDiscoverySourceResourcePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OffAzureDiscoverySourceResourcePropertiesResponse)(nil)).Elem()
+}
+
+func (o OffAzureDiscoverySourceResourcePropertiesResponseOutput) ToOffAzureDiscoverySourceResourcePropertiesResponseOutput() OffAzureDiscoverySourceResourcePropertiesResponseOutput {
+	return o
+}
+
+func (o OffAzureDiscoverySourceResourcePropertiesResponseOutput) ToOffAzureDiscoverySourceResourcePropertiesResponseOutputWithContext(ctx context.Context) OffAzureDiscoverySourceResourcePropertiesResponseOutput {
+	return o
+}
+
+// Provisioning state of Discovery Source resource.
+func (o OffAzureDiscoverySourceResourcePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v OffAzureDiscoverySourceResourcePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Source ArmId of Discovery Source resource
+func (o OffAzureDiscoverySourceResourcePropertiesResponseOutput) SourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v OffAzureDiscoverySourceResourcePropertiesResponse) string { return v.SourceId }).(pulumi.StringOutput)
+}
+
+// Source type of the discoverySource
+// Expected value is 'OffAzure'.
+func (o OffAzureDiscoverySourceResourcePropertiesResponseOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v OffAzureDiscoverySourceResourcePropertiesResponse) string { return v.SourceType }).(pulumi.StringOutput)
+}
+
+// Process name filter for dependency map visualization apis
+type ProcessNameFilter struct {
+	// Operator for process name filter
+	Operator string `pulumi:"operator"`
+	// List of process names on which the operator should be applied
+	ProcessNames []string `pulumi:"processNames"`
+}
+
+// ProcessNameFilterInput is an input type that accepts ProcessNameFilterArgs and ProcessNameFilterOutput values.
+// You can construct a concrete instance of `ProcessNameFilterInput` via:
+//
+//	ProcessNameFilterArgs{...}
+type ProcessNameFilterInput interface {
+	pulumi.Input
+
+	ToProcessNameFilterOutput() ProcessNameFilterOutput
+	ToProcessNameFilterOutputWithContext(context.Context) ProcessNameFilterOutput
+}
+
+// Process name filter for dependency map visualization apis
+type ProcessNameFilterArgs struct {
+	// Operator for process name filter
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// List of process names on which the operator should be applied
+	ProcessNames pulumi.StringArrayInput `pulumi:"processNames"`
+}
+
+func (ProcessNameFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProcessNameFilter)(nil)).Elem()
+}
+
+func (i ProcessNameFilterArgs) ToProcessNameFilterOutput() ProcessNameFilterOutput {
+	return i.ToProcessNameFilterOutputWithContext(context.Background())
+}
+
+func (i ProcessNameFilterArgs) ToProcessNameFilterOutputWithContext(ctx context.Context) ProcessNameFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProcessNameFilterOutput)
+}
+
+func (i ProcessNameFilterArgs) ToProcessNameFilterPtrOutput() ProcessNameFilterPtrOutput {
+	return i.ToProcessNameFilterPtrOutputWithContext(context.Background())
+}
+
+func (i ProcessNameFilterArgs) ToProcessNameFilterPtrOutputWithContext(ctx context.Context) ProcessNameFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProcessNameFilterOutput).ToProcessNameFilterPtrOutputWithContext(ctx)
+}
+
+// ProcessNameFilterPtrInput is an input type that accepts ProcessNameFilterArgs, ProcessNameFilterPtr and ProcessNameFilterPtrOutput values.
+// You can construct a concrete instance of `ProcessNameFilterPtrInput` via:
+//
+//	        ProcessNameFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type ProcessNameFilterPtrInput interface {
+	pulumi.Input
+
+	ToProcessNameFilterPtrOutput() ProcessNameFilterPtrOutput
+	ToProcessNameFilterPtrOutputWithContext(context.Context) ProcessNameFilterPtrOutput
+}
+
+type processNameFilterPtrType ProcessNameFilterArgs
+
+func ProcessNameFilterPtr(v *ProcessNameFilterArgs) ProcessNameFilterPtrInput {
+	return (*processNameFilterPtrType)(v)
+}
+
+func (*processNameFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProcessNameFilter)(nil)).Elem()
+}
+
+func (i *processNameFilterPtrType) ToProcessNameFilterPtrOutput() ProcessNameFilterPtrOutput {
+	return i.ToProcessNameFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *processNameFilterPtrType) ToProcessNameFilterPtrOutputWithContext(ctx context.Context) ProcessNameFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProcessNameFilterPtrOutput)
+}
+
+// Process name filter for dependency map visualization apis
+type ProcessNameFilterOutput struct{ *pulumi.OutputState }
+
+func (ProcessNameFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProcessNameFilter)(nil)).Elem()
+}
+
+func (o ProcessNameFilterOutput) ToProcessNameFilterOutput() ProcessNameFilterOutput {
+	return o
+}
+
+func (o ProcessNameFilterOutput) ToProcessNameFilterOutputWithContext(ctx context.Context) ProcessNameFilterOutput {
+	return o
+}
+
+func (o ProcessNameFilterOutput) ToProcessNameFilterPtrOutput() ProcessNameFilterPtrOutput {
+	return o.ToProcessNameFilterPtrOutputWithContext(context.Background())
+}
+
+func (o ProcessNameFilterOutput) ToProcessNameFilterPtrOutputWithContext(ctx context.Context) ProcessNameFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProcessNameFilter) *ProcessNameFilter {
+		return &v
+	}).(ProcessNameFilterPtrOutput)
+}
+
+// Operator for process name filter
+func (o ProcessNameFilterOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v ProcessNameFilter) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// List of process names on which the operator should be applied
+func (o ProcessNameFilterOutput) ProcessNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ProcessNameFilter) []string { return v.ProcessNames }).(pulumi.StringArrayOutput)
+}
+
+type ProcessNameFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (ProcessNameFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProcessNameFilter)(nil)).Elem()
+}
+
+func (o ProcessNameFilterPtrOutput) ToProcessNameFilterPtrOutput() ProcessNameFilterPtrOutput {
+	return o
+}
+
+func (o ProcessNameFilterPtrOutput) ToProcessNameFilterPtrOutputWithContext(ctx context.Context) ProcessNameFilterPtrOutput {
+	return o
+}
+
+func (o ProcessNameFilterPtrOutput) Elem() ProcessNameFilterOutput {
+	return o.ApplyT(func(v *ProcessNameFilter) ProcessNameFilter {
+		if v != nil {
+			return *v
+		}
+		var ret ProcessNameFilter
+		return ret
+	}).(ProcessNameFilterOutput)
+}
+
+// Operator for process name filter
+func (o ProcessNameFilterPtrOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProcessNameFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of process names on which the operator should be applied
+func (o ProcessNameFilterPtrOutput) ProcessNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ProcessNameFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProcessNames
+	}).(pulumi.StringArrayOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(DependencyProcessFilterOutput{})
+	pulumi.RegisterOutputType(DependencyProcessFilterPtrOutput{})
+	pulumi.RegisterOutputType(GetDependencyViewForAllMachinesResultPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(OffAzureDiscoverySourceResourcePropertiesOutput{})
+	pulumi.RegisterOutputType(OffAzureDiscoverySourceResourcePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(OffAzureDiscoverySourceResourcePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ProcessNameFilterOutput{})
+	pulumi.RegisterOutputType(ProcessNameFilterPtrOutput{})
 }

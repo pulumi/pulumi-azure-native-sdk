@@ -8,24 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Resource Manager resource envelope.
 //
-// Uses Azure REST API version 2023-04-01-preview. In version 1.x of the Azure Native provider, it used API version 2020-09-01-preview.
+// Uses Azure REST API version 2024-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
 //
-// Other available API versions: 2020-09-01-preview, 2021-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-04-01-preview.
+// Other available API versions: 2020-09-01-preview, 2021-03-01-preview, 2022-06-01-preview, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type LabelingJob struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// [Required] Additional attributes of the entity.
 	LabelingJobProperties LabelingJobResponseOutput `pulumi:"labelingJobProperties"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -175,6 +178,11 @@ func (o LabelingJobOutput) ToLabelingJobOutputWithContext(ctx context.Context) L
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LabelingJobOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *LabelingJob) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // [Required] Additional attributes of the entity.
 func (o LabelingJobOutput) LabelingJobProperties() LabelingJobResponseOutput {
 	return o.ApplyT(func(v *LabelingJob) LabelingJobResponseOutput { return v.LabelingJobProperties }).(LabelingJobResponseOutput)
@@ -186,8 +194,8 @@ func (o LabelingJobOutput) Name() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LabelingJobOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *LabelingJob) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o LabelingJobOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *LabelingJob) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

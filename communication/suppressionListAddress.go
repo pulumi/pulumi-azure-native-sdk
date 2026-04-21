@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A object that represents a SuppressionList record.
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2023-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
 //
-// Other available API versions: 2024-09-01-preview.
+// Other available API versions: 2024-09-01-preview, 2025-05-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SuppressionListAddress struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The location where the SuppressionListAddress data is stored at rest. This value is inherited from the parent Domains resource.
 	DataLocation pulumi.StringOutput `pulumi:"dataLocation"`
 	// Email address of the recipient.
@@ -35,7 +38,7 @@ type SuppressionListAddress struct {
 	// An optional property to provide contextual notes or a description for an address.
 	Notes pulumi.StringPtrOutput `pulumi:"notes"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -68,6 +71,12 @@ func NewSuppressionListAddress(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:communication/v20240901preview:SuppressionListAddress"),
+		},
+		{
+			Type: pulumi.String("azure-native:communication/v20250501preview:SuppressionListAddress"),
+		},
+		{
+			Type: pulumi.String("azure-native:communication/v20250901:SuppressionListAddress"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -183,6 +192,11 @@ func (o SuppressionListAddressOutput) ToSuppressionListAddressOutputWithContext(
 	return o
 }
 
+// The Azure API version of the resource.
+func (o SuppressionListAddressOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SuppressionListAddress) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The location where the SuppressionListAddress data is stored at rest. This value is inherited from the parent Domains resource.
 func (o SuppressionListAddressOutput) DataLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v *SuppressionListAddress) pulumi.StringOutput { return v.DataLocation }).(pulumi.StringOutput)
@@ -219,8 +233,8 @@ func (o SuppressionListAddressOutput) Notes() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o SuppressionListAddressOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *SuppressionListAddress) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o SuppressionListAddressOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *SuppressionListAddress) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

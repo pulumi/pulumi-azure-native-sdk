@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +34,8 @@ type LookupPrivateLinkServicesForM365ComplianceCenterArgs struct {
 
 // The description of the service.
 type LookupPrivateLinkServicesForM365ComplianceCenterResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// An etag associated with the resource, used for optimistic concurrency when editing it.
 	Etag *string `pulumi:"etag"`
 	// The resource identifier.
@@ -48,7 +51,7 @@ type LookupPrivateLinkServicesForM365ComplianceCenterResult struct {
 	// The common properties of a service.
 	Properties ServicesPropertiesResponse `pulumi:"properties"`
 	// Required property for system data
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// The resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The resource type.
@@ -88,6 +91,11 @@ func (o LookupPrivateLinkServicesForM365ComplianceCenterResultOutput) ToLookupPr
 
 func (o LookupPrivateLinkServicesForM365ComplianceCenterResultOutput) ToLookupPrivateLinkServicesForM365ComplianceCenterResultOutputWithContext(ctx context.Context) LookupPrivateLinkServicesForM365ComplianceCenterResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPrivateLinkServicesForM365ComplianceCenterResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateLinkServicesForM365ComplianceCenterResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An etag associated with the resource, used for optimistic concurrency when editing it.
@@ -130,8 +138,10 @@ func (o LookupPrivateLinkServicesForM365ComplianceCenterResultOutput) Properties
 }
 
 // Required property for system data
-func (o LookupPrivateLinkServicesForM365ComplianceCenterResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupPrivateLinkServicesForM365ComplianceCenterResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupPrivateLinkServicesForM365ComplianceCenterResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPrivateLinkServicesForM365ComplianceCenterResult) commontypesv2.SystemDataResponse {
+		return v.SystemData
+	}).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The resource tags.

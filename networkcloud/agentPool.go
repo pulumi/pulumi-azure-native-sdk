@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2023-10-01-preview.
+// Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
 //
-// Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview, 2025-02-01.
+// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AgentPool struct {
 	pulumi.CustomResourceState
 
@@ -26,12 +27,16 @@ type AgentPool struct {
 	AttachedNetworkConfiguration AttachedNetworkConfigurationResponsePtrOutput `pulumi:"attachedNetworkConfiguration"`
 	// The list of availability zones of the Network Cloud cluster used for the provisioning of nodes in this agent pool. If not specified, all availability zones will be used.
 	AvailabilityZones pulumi.StringArrayOutput `pulumi:"availabilityZones"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The number of virtual machines that use this configuration.
 	Count pulumi.Float64Output `pulumi:"count"`
 	// The current status of the agent pool.
 	DetailedStatus pulumi.StringOutput `pulumi:"detailedStatus"`
 	// The descriptive message about the current detailed status.
 	DetailedStatusMessage pulumi.StringOutput `pulumi:"detailedStatusMessage"`
+	// Resource ETag.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// The Kubernetes version running in this agent pool.
@@ -47,7 +52,7 @@ type AgentPool struct {
 	// The provisioning state of the agent pool.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The taints applied to the nodes in this agent pool.
@@ -85,9 +90,6 @@ func NewAgentPool(ctx *pulumi.Context,
 	if args.AgentOptions != nil {
 		args.AgentOptions = args.AgentOptions.ToAgentOptionsPtrOutput().ApplyT(func(v *AgentOptions) *AgentOptions { return v.Defaults() }).(AgentOptionsPtrOutput)
 	}
-	if args.UpgradeSettings != nil {
-		args.UpgradeSettings = args.UpgradeSettings.ToAgentPoolUpgradeSettingsPtrOutput().ApplyT(func(v *AgentPoolUpgradeSettings) *AgentPoolUpgradeSettings { return v.Defaults() }).(AgentPoolUpgradeSettingsPtrOutput)
-	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20230701:AgentPool"),
@@ -106,6 +108,15 @@ func NewAgentPool(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20250201:AgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20250701preview:AgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20250901:AgentPool"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20260101preview:AgentPool"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -271,6 +282,11 @@ func (o AgentPoolOutput) AvailabilityZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AgentPool) pulumi.StringArrayOutput { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o AgentPoolOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AgentPool) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The number of virtual machines that use this configuration.
 func (o AgentPoolOutput) Count() pulumi.Float64Output {
 	return o.ApplyT(func(v *AgentPool) pulumi.Float64Output { return v.Count }).(pulumi.Float64Output)
@@ -284,6 +300,11 @@ func (o AgentPoolOutput) DetailedStatus() pulumi.StringOutput {
 // The descriptive message about the current detailed status.
 func (o AgentPoolOutput) DetailedStatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v *AgentPool) pulumi.StringOutput { return v.DetailedStatusMessage }).(pulumi.StringOutput)
+}
+
+// Resource ETag.
+func (o AgentPoolOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *AgentPool) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The extended location of the cluster associated with the resource.
@@ -322,8 +343,8 @@ func (o AgentPoolOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o AgentPoolOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *AgentPool) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o AgentPoolOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *AgentPool) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -7,13 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = utilities.GetEnvOrDefault
 
+// Link to an application package inside the batch account
 type ApplicationPackageReference struct {
+	// The ID of the application package to install. This must be inside the same batch account as the pool. This can either be a reference to a specific version or the default version if one exists.
 	Id string `pulumi:"id"`
 	// If this is omitted, and no default version is specified for this application, the request fails with the error code InvalidApplicationPackageReferences. If you are calling the REST API directly, the HTTP status code is 409.
 	Version *string `pulumi:"version"`
@@ -30,7 +33,9 @@ type ApplicationPackageReferenceInput interface {
 	ToApplicationPackageReferenceOutputWithContext(context.Context) ApplicationPackageReferenceOutput
 }
 
+// Link to an application package inside the batch account
 type ApplicationPackageReferenceArgs struct {
+	// The ID of the application package to install. This must be inside the same batch account as the pool. This can either be a reference to a specific version or the default version if one exists.
 	Id pulumi.StringInput `pulumi:"id"`
 	// If this is omitted, and no default version is specified for this application, the request fails with the error code InvalidApplicationPackageReferences. If you are calling the REST API directly, the HTTP status code is 409.
 	Version pulumi.StringPtrInput `pulumi:"version"`
@@ -73,6 +78,7 @@ func (i ApplicationPackageReferenceArray) ToApplicationPackageReferenceArrayOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPackageReferenceArrayOutput)
 }
 
+// Link to an application package inside the batch account
 type ApplicationPackageReferenceOutput struct{ *pulumi.OutputState }
 
 func (ApplicationPackageReferenceOutput) ElementType() reflect.Type {
@@ -87,6 +93,7 @@ func (o ApplicationPackageReferenceOutput) ToApplicationPackageReferenceOutputWi
 	return o
 }
 
+// The ID of the application package to install. This must be inside the same batch account as the pool. This can either be a reference to a specific version or the default version if one exists.
 func (o ApplicationPackageReferenceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationPackageReference) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -116,12 +123,15 @@ func (o ApplicationPackageReferenceArrayOutput) Index(i pulumi.IntInput) Applica
 	}).(ApplicationPackageReferenceOutput)
 }
 
+// Link to an application package inside the batch account
 type ApplicationPackageReferenceResponse struct {
+	// The ID of the application package to install. This must be inside the same batch account as the pool. This can either be a reference to a specific version or the default version if one exists.
 	Id string `pulumi:"id"`
 	// If this is omitted, and no default version is specified for this application, the request fails with the error code InvalidApplicationPackageReferences. If you are calling the REST API directly, the HTTP status code is 409.
 	Version *string `pulumi:"version"`
 }
 
+// Link to an application package inside the batch account
 type ApplicationPackageReferenceResponseOutput struct{ *pulumi.OutputState }
 
 func (ApplicationPackageReferenceResponseOutput) ElementType() reflect.Type {
@@ -136,6 +146,7 @@ func (o ApplicationPackageReferenceResponseOutput) ToApplicationPackageReference
 	return o
 }
 
+// The ID of the application package to install. This must be inside the same batch account as the pool. This can either be a reference to a specific version or the default version if one exists.
 func (o ApplicationPackageReferenceResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationPackageReferenceResponse) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -165,14 +176,17 @@ func (o ApplicationPackageReferenceResponseArrayOutput) Index(i pulumi.IntInput)
 	}).(ApplicationPackageReferenceResponseOutput)
 }
 
+// An error that occurred when autoscaling a pool.
 type AutoScaleRunErrorResponse struct {
 	// An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
-	Code    string                      `pulumi:"code"`
+	Code string `pulumi:"code"`
+	// Additional details about the error.
 	Details []AutoScaleRunErrorResponse `pulumi:"details"`
 	// A message describing the error, intended to be suitable for display in a user interface.
 	Message string `pulumi:"message"`
 }
 
+// An error that occurred when autoscaling a pool.
 type AutoScaleRunErrorResponseOutput struct{ *pulumi.OutputState }
 
 func (AutoScaleRunErrorResponseOutput) ElementType() reflect.Type {
@@ -192,6 +206,7 @@ func (o AutoScaleRunErrorResponseOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v AutoScaleRunErrorResponse) string { return v.Code }).(pulumi.StringOutput)
 }
 
+// Additional details about the error.
 func (o AutoScaleRunErrorResponseOutput) Details() AutoScaleRunErrorResponseArrayOutput {
 	return o.ApplyT(func(v AutoScaleRunErrorResponse) []AutoScaleRunErrorResponse { return v.Details }).(AutoScaleRunErrorResponseArrayOutput)
 }
@@ -235,6 +250,7 @@ func (o AutoScaleRunErrorResponsePtrOutput) Code() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Additional details about the error.
 func (o AutoScaleRunErrorResponsePtrOutput) Details() AutoScaleRunErrorResponseArrayOutput {
 	return o.ApplyT(func(v *AutoScaleRunErrorResponse) []AutoScaleRunErrorResponse {
 		if v == nil {
@@ -274,13 +290,17 @@ func (o AutoScaleRunErrorResponseArrayOutput) Index(i pulumi.IntInput) AutoScale
 	}).(AutoScaleRunErrorResponseOutput)
 }
 
+// The results and errors from an execution of a pool autoscale formula.
 type AutoScaleRunResponse struct {
-	Error          *AutoScaleRunErrorResponse `pulumi:"error"`
-	EvaluationTime string                     `pulumi:"evaluationTime"`
+	// An error that occurred when autoscaling a pool.
+	Error *AutoScaleRunErrorResponse `pulumi:"error"`
+	// The time at which the autoscale formula was last evaluated.
+	EvaluationTime string `pulumi:"evaluationTime"`
 	// Each variable value is returned in the form $variable=value, and variables are separated by semicolons.
 	Results *string `pulumi:"results"`
 }
 
+// The results and errors from an execution of a pool autoscale formula.
 type AutoScaleRunResponseOutput struct{ *pulumi.OutputState }
 
 func (AutoScaleRunResponseOutput) ElementType() reflect.Type {
@@ -295,10 +315,12 @@ func (o AutoScaleRunResponseOutput) ToAutoScaleRunResponseOutputWithContext(ctx 
 	return o
 }
 
+// An error that occurred when autoscaling a pool.
 func (o AutoScaleRunResponseOutput) Error() AutoScaleRunErrorResponsePtrOutput {
 	return o.ApplyT(func(v AutoScaleRunResponse) *AutoScaleRunErrorResponse { return v.Error }).(AutoScaleRunErrorResponsePtrOutput)
 }
 
+// The time at which the autoscale formula was last evaluated.
 func (o AutoScaleRunResponseOutput) EvaluationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v AutoScaleRunResponse) string { return v.EvaluationTime }).(pulumi.StringOutput)
 }
@@ -308,10 +330,12 @@ func (o AutoScaleRunResponseOutput) Results() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AutoScaleRunResponse) *string { return v.Results }).(pulumi.StringPtrOutput)
 }
 
+// AutoScale settings for the pool.
 type AutoScaleSettings struct {
 	// If omitted, the default value is 15 minutes (PT15M).
 	EvaluationInterval *string `pulumi:"evaluationInterval"`
-	Formula            string  `pulumi:"formula"`
+	// A formula for the desired number of compute nodes in the pool.
+	Formula string `pulumi:"formula"`
 }
 
 // AutoScaleSettingsInput is an input type that accepts AutoScaleSettingsArgs and AutoScaleSettingsOutput values.
@@ -325,10 +349,12 @@ type AutoScaleSettingsInput interface {
 	ToAutoScaleSettingsOutputWithContext(context.Context) AutoScaleSettingsOutput
 }
 
+// AutoScale settings for the pool.
 type AutoScaleSettingsArgs struct {
 	// If omitted, the default value is 15 minutes (PT15M).
 	EvaluationInterval pulumi.StringPtrInput `pulumi:"evaluationInterval"`
-	Formula            pulumi.StringInput    `pulumi:"formula"`
+	// A formula for the desired number of compute nodes in the pool.
+	Formula pulumi.StringInput `pulumi:"formula"`
 }
 
 func (AutoScaleSettingsArgs) ElementType() reflect.Type {
@@ -384,6 +410,7 @@ func (i *autoScaleSettingsPtrType) ToAutoScaleSettingsPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(AutoScaleSettingsPtrOutput)
 }
 
+// AutoScale settings for the pool.
 type AutoScaleSettingsOutput struct{ *pulumi.OutputState }
 
 func (AutoScaleSettingsOutput) ElementType() reflect.Type {
@@ -413,6 +440,7 @@ func (o AutoScaleSettingsOutput) EvaluationInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AutoScaleSettings) *string { return v.EvaluationInterval }).(pulumi.StringPtrOutput)
 }
 
+// A formula for the desired number of compute nodes in the pool.
 func (o AutoScaleSettingsOutput) Formula() pulumi.StringOutput {
 	return o.ApplyT(func(v AutoScaleSettings) string { return v.Formula }).(pulumi.StringOutput)
 }
@@ -451,6 +479,7 @@ func (o AutoScaleSettingsPtrOutput) EvaluationInterval() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// A formula for the desired number of compute nodes in the pool.
 func (o AutoScaleSettingsPtrOutput) Formula() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AutoScaleSettings) *string {
 		if v == nil {
@@ -460,12 +489,15 @@ func (o AutoScaleSettingsPtrOutput) Formula() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// AutoScale settings for the pool.
 type AutoScaleSettingsResponse struct {
 	// If omitted, the default value is 15 minutes (PT15M).
 	EvaluationInterval *string `pulumi:"evaluationInterval"`
-	Formula            string  `pulumi:"formula"`
+	// A formula for the desired number of compute nodes in the pool.
+	Formula string `pulumi:"formula"`
 }
 
+// AutoScale settings for the pool.
 type AutoScaleSettingsResponseOutput struct{ *pulumi.OutputState }
 
 func (AutoScaleSettingsResponseOutput) ElementType() reflect.Type {
@@ -485,6 +517,7 @@ func (o AutoScaleSettingsResponseOutput) EvaluationInterval() pulumi.StringPtrOu
 	return o.ApplyT(func(v AutoScaleSettingsResponse) *string { return v.EvaluationInterval }).(pulumi.StringPtrOutput)
 }
 
+// A formula for the desired number of compute nodes in the pool.
 func (o AutoScaleSettingsResponseOutput) Formula() pulumi.StringOutput {
 	return o.ApplyT(func(v AutoScaleSettingsResponse) string { return v.Formula }).(pulumi.StringOutput)
 }
@@ -523,6 +556,7 @@ func (o AutoScaleSettingsResponsePtrOutput) EvaluationInterval() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// A formula for the desired number of compute nodes in the pool.
 func (o AutoScaleSettingsResponsePtrOutput) Formula() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AutoScaleSettingsResponse) *string {
 		if v == nil {
@@ -796,6 +830,7 @@ func (o AutoStoragePropertiesResponseOutput) StorageAccountId() pulumi.StringOut
 	return o.ApplyT(func(v AutoStoragePropertiesResponse) string { return v.StorageAccountId }).(pulumi.StringOutput)
 }
 
+// Specifies the parameters for the auto user that runs a task on the Batch service.
 type AutoUserSpecification struct {
 	// The default value is nonAdmin.
 	ElevationLevel *ElevationLevel `pulumi:"elevationLevel"`
@@ -814,6 +849,7 @@ type AutoUserSpecificationInput interface {
 	ToAutoUserSpecificationOutputWithContext(context.Context) AutoUserSpecificationOutput
 }
 
+// Specifies the parameters for the auto user that runs a task on the Batch service.
 type AutoUserSpecificationArgs struct {
 	// The default value is nonAdmin.
 	ElevationLevel ElevationLevelPtrInput `pulumi:"elevationLevel"`
@@ -874,6 +910,7 @@ func (i *autoUserSpecificationPtrType) ToAutoUserSpecificationPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(AutoUserSpecificationPtrOutput)
 }
 
+// Specifies the parameters for the auto user that runs a task on the Batch service.
 type AutoUserSpecificationOutput struct{ *pulumi.OutputState }
 
 func (AutoUserSpecificationOutput) ElementType() reflect.Type {
@@ -952,6 +989,7 @@ func (o AutoUserSpecificationPtrOutput) Scope() AutoUserScopePtrOutput {
 	}).(AutoUserScopePtrOutput)
 }
 
+// Specifies the parameters for the auto user that runs a task on the Batch service.
 type AutoUserSpecificationResponse struct {
 	// The default value is nonAdmin.
 	ElevationLevel *string `pulumi:"elevationLevel"`
@@ -959,6 +997,7 @@ type AutoUserSpecificationResponse struct {
 	Scope *string `pulumi:"scope"`
 }
 
+// Specifies the parameters for the auto user that runs a task on the Batch service.
 type AutoUserSpecificationResponseOutput struct{ *pulumi.OutputState }
 
 func (AutoUserSpecificationResponseOutput) ElementType() reflect.Type {
@@ -1027,13 +1066,324 @@ func (o AutoUserSpecificationResponsePtrOutput) Scope() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The configuration parameters used for performing automatic OS upgrade.
+type AutomaticOSUpgradePolicy struct {
+	// Whether OS image rollback feature should be disabled.
+	DisableAutomaticRollback *bool `pulumi:"disableAutomaticRollback"`
+	// Indicates whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the OS image becomes available. <br /><br /> If this is set to true for Windows based pools, [WindowsConfiguration.enableAutomaticUpdates](https://learn.microsoft.com/rest/api/batchmanagement/pool/create?tabs=HTTP#windowsconfiguration) cannot be set to true.
+	EnableAutomaticOSUpgrade *bool `pulumi:"enableAutomaticOSUpgrade"`
+	// Defer OS upgrades on the TVMs if they are running tasks.
+	OsRollingUpgradeDeferral *bool `pulumi:"osRollingUpgradeDeferral"`
+	// Indicates whether rolling upgrade policy should be used during Auto OS Upgrade. Auto OS Upgrade will fallback to the default policy if no policy is defined on the VMSS.
+	UseRollingUpgradePolicy *bool `pulumi:"useRollingUpgradePolicy"`
+}
+
+// AutomaticOSUpgradePolicyInput is an input type that accepts AutomaticOSUpgradePolicyArgs and AutomaticOSUpgradePolicyOutput values.
+// You can construct a concrete instance of `AutomaticOSUpgradePolicyInput` via:
+//
+//	AutomaticOSUpgradePolicyArgs{...}
+type AutomaticOSUpgradePolicyInput interface {
+	pulumi.Input
+
+	ToAutomaticOSUpgradePolicyOutput() AutomaticOSUpgradePolicyOutput
+	ToAutomaticOSUpgradePolicyOutputWithContext(context.Context) AutomaticOSUpgradePolicyOutput
+}
+
+// The configuration parameters used for performing automatic OS upgrade.
+type AutomaticOSUpgradePolicyArgs struct {
+	// Whether OS image rollback feature should be disabled.
+	DisableAutomaticRollback pulumi.BoolPtrInput `pulumi:"disableAutomaticRollback"`
+	// Indicates whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the OS image becomes available. <br /><br /> If this is set to true for Windows based pools, [WindowsConfiguration.enableAutomaticUpdates](https://learn.microsoft.com/rest/api/batchmanagement/pool/create?tabs=HTTP#windowsconfiguration) cannot be set to true.
+	EnableAutomaticOSUpgrade pulumi.BoolPtrInput `pulumi:"enableAutomaticOSUpgrade"`
+	// Defer OS upgrades on the TVMs if they are running tasks.
+	OsRollingUpgradeDeferral pulumi.BoolPtrInput `pulumi:"osRollingUpgradeDeferral"`
+	// Indicates whether rolling upgrade policy should be used during Auto OS Upgrade. Auto OS Upgrade will fallback to the default policy if no policy is defined on the VMSS.
+	UseRollingUpgradePolicy pulumi.BoolPtrInput `pulumi:"useRollingUpgradePolicy"`
+}
+
+func (AutomaticOSUpgradePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomaticOSUpgradePolicy)(nil)).Elem()
+}
+
+func (i AutomaticOSUpgradePolicyArgs) ToAutomaticOSUpgradePolicyOutput() AutomaticOSUpgradePolicyOutput {
+	return i.ToAutomaticOSUpgradePolicyOutputWithContext(context.Background())
+}
+
+func (i AutomaticOSUpgradePolicyArgs) ToAutomaticOSUpgradePolicyOutputWithContext(ctx context.Context) AutomaticOSUpgradePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomaticOSUpgradePolicyOutput)
+}
+
+func (i AutomaticOSUpgradePolicyArgs) ToAutomaticOSUpgradePolicyPtrOutput() AutomaticOSUpgradePolicyPtrOutput {
+	return i.ToAutomaticOSUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i AutomaticOSUpgradePolicyArgs) ToAutomaticOSUpgradePolicyPtrOutputWithContext(ctx context.Context) AutomaticOSUpgradePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomaticOSUpgradePolicyOutput).ToAutomaticOSUpgradePolicyPtrOutputWithContext(ctx)
+}
+
+// AutomaticOSUpgradePolicyPtrInput is an input type that accepts AutomaticOSUpgradePolicyArgs, AutomaticOSUpgradePolicyPtr and AutomaticOSUpgradePolicyPtrOutput values.
+// You can construct a concrete instance of `AutomaticOSUpgradePolicyPtrInput` via:
+//
+//	        AutomaticOSUpgradePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type AutomaticOSUpgradePolicyPtrInput interface {
+	pulumi.Input
+
+	ToAutomaticOSUpgradePolicyPtrOutput() AutomaticOSUpgradePolicyPtrOutput
+	ToAutomaticOSUpgradePolicyPtrOutputWithContext(context.Context) AutomaticOSUpgradePolicyPtrOutput
+}
+
+type automaticOSUpgradePolicyPtrType AutomaticOSUpgradePolicyArgs
+
+func AutomaticOSUpgradePolicyPtr(v *AutomaticOSUpgradePolicyArgs) AutomaticOSUpgradePolicyPtrInput {
+	return (*automaticOSUpgradePolicyPtrType)(v)
+}
+
+func (*automaticOSUpgradePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomaticOSUpgradePolicy)(nil)).Elem()
+}
+
+func (i *automaticOSUpgradePolicyPtrType) ToAutomaticOSUpgradePolicyPtrOutput() AutomaticOSUpgradePolicyPtrOutput {
+	return i.ToAutomaticOSUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *automaticOSUpgradePolicyPtrType) ToAutomaticOSUpgradePolicyPtrOutputWithContext(ctx context.Context) AutomaticOSUpgradePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomaticOSUpgradePolicyPtrOutput)
+}
+
+// The configuration parameters used for performing automatic OS upgrade.
+type AutomaticOSUpgradePolicyOutput struct{ *pulumi.OutputState }
+
+func (AutomaticOSUpgradePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomaticOSUpgradePolicy)(nil)).Elem()
+}
+
+func (o AutomaticOSUpgradePolicyOutput) ToAutomaticOSUpgradePolicyOutput() AutomaticOSUpgradePolicyOutput {
+	return o
+}
+
+func (o AutomaticOSUpgradePolicyOutput) ToAutomaticOSUpgradePolicyOutputWithContext(ctx context.Context) AutomaticOSUpgradePolicyOutput {
+	return o
+}
+
+func (o AutomaticOSUpgradePolicyOutput) ToAutomaticOSUpgradePolicyPtrOutput() AutomaticOSUpgradePolicyPtrOutput {
+	return o.ToAutomaticOSUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o AutomaticOSUpgradePolicyOutput) ToAutomaticOSUpgradePolicyPtrOutputWithContext(ctx context.Context) AutomaticOSUpgradePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutomaticOSUpgradePolicy) *AutomaticOSUpgradePolicy {
+		return &v
+	}).(AutomaticOSUpgradePolicyPtrOutput)
+}
+
+// Whether OS image rollback feature should be disabled.
+func (o AutomaticOSUpgradePolicyOutput) DisableAutomaticRollback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AutomaticOSUpgradePolicy) *bool { return v.DisableAutomaticRollback }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the OS image becomes available. <br /><br /> If this is set to true for Windows based pools, [WindowsConfiguration.enableAutomaticUpdates](https://learn.microsoft.com/rest/api/batchmanagement/pool/create?tabs=HTTP#windowsconfiguration) cannot be set to true.
+func (o AutomaticOSUpgradePolicyOutput) EnableAutomaticOSUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AutomaticOSUpgradePolicy) *bool { return v.EnableAutomaticOSUpgrade }).(pulumi.BoolPtrOutput)
+}
+
+// Defer OS upgrades on the TVMs if they are running tasks.
+func (o AutomaticOSUpgradePolicyOutput) OsRollingUpgradeDeferral() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AutomaticOSUpgradePolicy) *bool { return v.OsRollingUpgradeDeferral }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether rolling upgrade policy should be used during Auto OS Upgrade. Auto OS Upgrade will fallback to the default policy if no policy is defined on the VMSS.
+func (o AutomaticOSUpgradePolicyOutput) UseRollingUpgradePolicy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AutomaticOSUpgradePolicy) *bool { return v.UseRollingUpgradePolicy }).(pulumi.BoolPtrOutput)
+}
+
+type AutomaticOSUpgradePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (AutomaticOSUpgradePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomaticOSUpgradePolicy)(nil)).Elem()
+}
+
+func (o AutomaticOSUpgradePolicyPtrOutput) ToAutomaticOSUpgradePolicyPtrOutput() AutomaticOSUpgradePolicyPtrOutput {
+	return o
+}
+
+func (o AutomaticOSUpgradePolicyPtrOutput) ToAutomaticOSUpgradePolicyPtrOutputWithContext(ctx context.Context) AutomaticOSUpgradePolicyPtrOutput {
+	return o
+}
+
+func (o AutomaticOSUpgradePolicyPtrOutput) Elem() AutomaticOSUpgradePolicyOutput {
+	return o.ApplyT(func(v *AutomaticOSUpgradePolicy) AutomaticOSUpgradePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret AutomaticOSUpgradePolicy
+		return ret
+	}).(AutomaticOSUpgradePolicyOutput)
+}
+
+// Whether OS image rollback feature should be disabled.
+func (o AutomaticOSUpgradePolicyPtrOutput) DisableAutomaticRollback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AutomaticOSUpgradePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableAutomaticRollback
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the OS image becomes available. <br /><br /> If this is set to true for Windows based pools, [WindowsConfiguration.enableAutomaticUpdates](https://learn.microsoft.com/rest/api/batchmanagement/pool/create?tabs=HTTP#windowsconfiguration) cannot be set to true.
+func (o AutomaticOSUpgradePolicyPtrOutput) EnableAutomaticOSUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AutomaticOSUpgradePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableAutomaticOSUpgrade
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defer OS upgrades on the TVMs if they are running tasks.
+func (o AutomaticOSUpgradePolicyPtrOutput) OsRollingUpgradeDeferral() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AutomaticOSUpgradePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OsRollingUpgradeDeferral
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether rolling upgrade policy should be used during Auto OS Upgrade. Auto OS Upgrade will fallback to the default policy if no policy is defined on the VMSS.
+func (o AutomaticOSUpgradePolicyPtrOutput) UseRollingUpgradePolicy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AutomaticOSUpgradePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseRollingUpgradePolicy
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The configuration parameters used for performing automatic OS upgrade.
+type AutomaticOSUpgradePolicyResponse struct {
+	// Whether OS image rollback feature should be disabled.
+	DisableAutomaticRollback *bool `pulumi:"disableAutomaticRollback"`
+	// Indicates whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the OS image becomes available. <br /><br /> If this is set to true for Windows based pools, [WindowsConfiguration.enableAutomaticUpdates](https://learn.microsoft.com/rest/api/batchmanagement/pool/create?tabs=HTTP#windowsconfiguration) cannot be set to true.
+	EnableAutomaticOSUpgrade *bool `pulumi:"enableAutomaticOSUpgrade"`
+	// Defer OS upgrades on the TVMs if they are running tasks.
+	OsRollingUpgradeDeferral *bool `pulumi:"osRollingUpgradeDeferral"`
+	// Indicates whether rolling upgrade policy should be used during Auto OS Upgrade. Auto OS Upgrade will fallback to the default policy if no policy is defined on the VMSS.
+	UseRollingUpgradePolicy *bool `pulumi:"useRollingUpgradePolicy"`
+}
+
+// The configuration parameters used for performing automatic OS upgrade.
+type AutomaticOSUpgradePolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (AutomaticOSUpgradePolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomaticOSUpgradePolicyResponse)(nil)).Elem()
+}
+
+func (o AutomaticOSUpgradePolicyResponseOutput) ToAutomaticOSUpgradePolicyResponseOutput() AutomaticOSUpgradePolicyResponseOutput {
+	return o
+}
+
+func (o AutomaticOSUpgradePolicyResponseOutput) ToAutomaticOSUpgradePolicyResponseOutputWithContext(ctx context.Context) AutomaticOSUpgradePolicyResponseOutput {
+	return o
+}
+
+// Whether OS image rollback feature should be disabled.
+func (o AutomaticOSUpgradePolicyResponseOutput) DisableAutomaticRollback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AutomaticOSUpgradePolicyResponse) *bool { return v.DisableAutomaticRollback }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the OS image becomes available. <br /><br /> If this is set to true for Windows based pools, [WindowsConfiguration.enableAutomaticUpdates](https://learn.microsoft.com/rest/api/batchmanagement/pool/create?tabs=HTTP#windowsconfiguration) cannot be set to true.
+func (o AutomaticOSUpgradePolicyResponseOutput) EnableAutomaticOSUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AutomaticOSUpgradePolicyResponse) *bool { return v.EnableAutomaticOSUpgrade }).(pulumi.BoolPtrOutput)
+}
+
+// Defer OS upgrades on the TVMs if they are running tasks.
+func (o AutomaticOSUpgradePolicyResponseOutput) OsRollingUpgradeDeferral() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AutomaticOSUpgradePolicyResponse) *bool { return v.OsRollingUpgradeDeferral }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether rolling upgrade policy should be used during Auto OS Upgrade. Auto OS Upgrade will fallback to the default policy if no policy is defined on the VMSS.
+func (o AutomaticOSUpgradePolicyResponseOutput) UseRollingUpgradePolicy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AutomaticOSUpgradePolicyResponse) *bool { return v.UseRollingUpgradePolicy }).(pulumi.BoolPtrOutput)
+}
+
+type AutomaticOSUpgradePolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AutomaticOSUpgradePolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomaticOSUpgradePolicyResponse)(nil)).Elem()
+}
+
+func (o AutomaticOSUpgradePolicyResponsePtrOutput) ToAutomaticOSUpgradePolicyResponsePtrOutput() AutomaticOSUpgradePolicyResponsePtrOutput {
+	return o
+}
+
+func (o AutomaticOSUpgradePolicyResponsePtrOutput) ToAutomaticOSUpgradePolicyResponsePtrOutputWithContext(ctx context.Context) AutomaticOSUpgradePolicyResponsePtrOutput {
+	return o
+}
+
+func (o AutomaticOSUpgradePolicyResponsePtrOutput) Elem() AutomaticOSUpgradePolicyResponseOutput {
+	return o.ApplyT(func(v *AutomaticOSUpgradePolicyResponse) AutomaticOSUpgradePolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AutomaticOSUpgradePolicyResponse
+		return ret
+	}).(AutomaticOSUpgradePolicyResponseOutput)
+}
+
+// Whether OS image rollback feature should be disabled.
+func (o AutomaticOSUpgradePolicyResponsePtrOutput) DisableAutomaticRollback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AutomaticOSUpgradePolicyResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableAutomaticRollback
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the OS image becomes available. <br /><br /> If this is set to true for Windows based pools, [WindowsConfiguration.enableAutomaticUpdates](https://learn.microsoft.com/rest/api/batchmanagement/pool/create?tabs=HTTP#windowsconfiguration) cannot be set to true.
+func (o AutomaticOSUpgradePolicyResponsePtrOutput) EnableAutomaticOSUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AutomaticOSUpgradePolicyResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableAutomaticOSUpgrade
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defer OS upgrades on the TVMs if they are running tasks.
+func (o AutomaticOSUpgradePolicyResponsePtrOutput) OsRollingUpgradeDeferral() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AutomaticOSUpgradePolicyResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OsRollingUpgradeDeferral
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether rolling upgrade policy should be used during Auto OS Upgrade. Auto OS Upgrade will fallback to the default policy if no policy is defined on the VMSS.
+func (o AutomaticOSUpgradePolicyResponsePtrOutput) UseRollingUpgradePolicy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AutomaticOSUpgradePolicyResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseRollingUpgradePolicy
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Information used to connect to an Azure Storage Container using Blobfuse.
 type AzureBlobFileSystemConfiguration struct {
 	// This property is mutually exclusive with both sasKey and identity; exactly one must be specified.
-	AccountKey  *string `pulumi:"accountKey"`
-	AccountName string  `pulumi:"accountName"`
+	AccountKey *string `pulumi:"accountKey"`
+	// The Azure Storage Account name.
+	AccountName string `pulumi:"accountName"`
 	// These are 'net use' options in Windows and 'mount' options in Linux.
 	BlobfuseOptions *string `pulumi:"blobfuseOptions"`
-	ContainerName   string  `pulumi:"containerName"`
+	// The Azure Blob Storage Container name.
+	ContainerName string `pulumi:"containerName"`
 	// This property is mutually exclusive with both accountKey and sasKey; exactly one must be specified.
 	IdentityReference *ComputeNodeIdentityReference `pulumi:"identityReference"`
 	// All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
@@ -1053,13 +1403,16 @@ type AzureBlobFileSystemConfigurationInput interface {
 	ToAzureBlobFileSystemConfigurationOutputWithContext(context.Context) AzureBlobFileSystemConfigurationOutput
 }
 
+// Information used to connect to an Azure Storage Container using Blobfuse.
 type AzureBlobFileSystemConfigurationArgs struct {
 	// This property is mutually exclusive with both sasKey and identity; exactly one must be specified.
-	AccountKey  pulumi.StringPtrInput `pulumi:"accountKey"`
-	AccountName pulumi.StringInput    `pulumi:"accountName"`
+	AccountKey pulumi.StringPtrInput `pulumi:"accountKey"`
+	// The Azure Storage Account name.
+	AccountName pulumi.StringInput `pulumi:"accountName"`
 	// These are 'net use' options in Windows and 'mount' options in Linux.
 	BlobfuseOptions pulumi.StringPtrInput `pulumi:"blobfuseOptions"`
-	ContainerName   pulumi.StringInput    `pulumi:"containerName"`
+	// The Azure Blob Storage Container name.
+	ContainerName pulumi.StringInput `pulumi:"containerName"`
 	// This property is mutually exclusive with both accountKey and sasKey; exactly one must be specified.
 	IdentityReference ComputeNodeIdentityReferencePtrInput `pulumi:"identityReference"`
 	// All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
@@ -1121,6 +1474,7 @@ func (i *azureBlobFileSystemConfigurationPtrType) ToAzureBlobFileSystemConfigura
 	return pulumi.ToOutputWithContext(ctx, i).(AzureBlobFileSystemConfigurationPtrOutput)
 }
 
+// Information used to connect to an Azure Storage Container using Blobfuse.
 type AzureBlobFileSystemConfigurationOutput struct{ *pulumi.OutputState }
 
 func (AzureBlobFileSystemConfigurationOutput) ElementType() reflect.Type {
@@ -1150,6 +1504,7 @@ func (o AzureBlobFileSystemConfigurationOutput) AccountKey() pulumi.StringPtrOut
 	return o.ApplyT(func(v AzureBlobFileSystemConfiguration) *string { return v.AccountKey }).(pulumi.StringPtrOutput)
 }
 
+// The Azure Storage Account name.
 func (o AzureBlobFileSystemConfigurationOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureBlobFileSystemConfiguration) string { return v.AccountName }).(pulumi.StringOutput)
 }
@@ -1159,6 +1514,7 @@ func (o AzureBlobFileSystemConfigurationOutput) BlobfuseOptions() pulumi.StringP
 	return o.ApplyT(func(v AzureBlobFileSystemConfiguration) *string { return v.BlobfuseOptions }).(pulumi.StringPtrOutput)
 }
 
+// The Azure Blob Storage Container name.
 func (o AzureBlobFileSystemConfigurationOutput) ContainerName() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureBlobFileSystemConfiguration) string { return v.ContainerName }).(pulumi.StringOutput)
 }
@@ -1212,6 +1568,7 @@ func (o AzureBlobFileSystemConfigurationPtrOutput) AccountKey() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Azure Storage Account name.
 func (o AzureBlobFileSystemConfigurationPtrOutput) AccountName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureBlobFileSystemConfiguration) *string {
 		if v == nil {
@@ -1231,6 +1588,7 @@ func (o AzureBlobFileSystemConfigurationPtrOutput) BlobfuseOptions() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Azure Blob Storage Container name.
 func (o AzureBlobFileSystemConfigurationPtrOutput) ContainerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureBlobFileSystemConfiguration) *string {
 		if v == nil {
@@ -1270,13 +1628,16 @@ func (o AzureBlobFileSystemConfigurationPtrOutput) SasKey() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Information used to connect to an Azure Storage Container using Blobfuse.
 type AzureBlobFileSystemConfigurationResponse struct {
 	// This property is mutually exclusive with both sasKey and identity; exactly one must be specified.
-	AccountKey  *string `pulumi:"accountKey"`
-	AccountName string  `pulumi:"accountName"`
+	AccountKey *string `pulumi:"accountKey"`
+	// The Azure Storage Account name.
+	AccountName string `pulumi:"accountName"`
 	// These are 'net use' options in Windows and 'mount' options in Linux.
 	BlobfuseOptions *string `pulumi:"blobfuseOptions"`
-	ContainerName   string  `pulumi:"containerName"`
+	// The Azure Blob Storage Container name.
+	ContainerName string `pulumi:"containerName"`
 	// This property is mutually exclusive with both accountKey and sasKey; exactly one must be specified.
 	IdentityReference *ComputeNodeIdentityReferenceResponse `pulumi:"identityReference"`
 	// All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
@@ -1285,6 +1646,7 @@ type AzureBlobFileSystemConfigurationResponse struct {
 	SasKey *string `pulumi:"sasKey"`
 }
 
+// Information used to connect to an Azure Storage Container using Blobfuse.
 type AzureBlobFileSystemConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (AzureBlobFileSystemConfigurationResponseOutput) ElementType() reflect.Type {
@@ -1304,6 +1666,7 @@ func (o AzureBlobFileSystemConfigurationResponseOutput) AccountKey() pulumi.Stri
 	return o.ApplyT(func(v AzureBlobFileSystemConfigurationResponse) *string { return v.AccountKey }).(pulumi.StringPtrOutput)
 }
 
+// The Azure Storage Account name.
 func (o AzureBlobFileSystemConfigurationResponseOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureBlobFileSystemConfigurationResponse) string { return v.AccountName }).(pulumi.StringOutput)
 }
@@ -1313,6 +1676,7 @@ func (o AzureBlobFileSystemConfigurationResponseOutput) BlobfuseOptions() pulumi
 	return o.ApplyT(func(v AzureBlobFileSystemConfigurationResponse) *string { return v.BlobfuseOptions }).(pulumi.StringPtrOutput)
 }
 
+// The Azure Blob Storage Container name.
 func (o AzureBlobFileSystemConfigurationResponseOutput) ContainerName() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureBlobFileSystemConfigurationResponse) string { return v.ContainerName }).(pulumi.StringOutput)
 }
@@ -1368,6 +1732,7 @@ func (o AzureBlobFileSystemConfigurationResponsePtrOutput) AccountKey() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Azure Storage Account name.
 func (o AzureBlobFileSystemConfigurationResponsePtrOutput) AccountName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureBlobFileSystemConfigurationResponse) *string {
 		if v == nil {
@@ -1387,6 +1752,7 @@ func (o AzureBlobFileSystemConfigurationResponsePtrOutput) BlobfuseOptions() pul
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Azure Blob Storage Container name.
 func (o AzureBlobFileSystemConfigurationResponsePtrOutput) ContainerName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureBlobFileSystemConfigurationResponse) *string {
 		if v == nil {
@@ -1426,8 +1792,11 @@ func (o AzureBlobFileSystemConfigurationResponsePtrOutput) SasKey() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// Information used to connect to an Azure Fileshare.
 type AzureFileShareConfiguration struct {
-	AccountKey  string `pulumi:"accountKey"`
+	// The Azure Storage account key.
+	AccountKey string `pulumi:"accountKey"`
+	// The Azure Storage account name.
 	AccountName string `pulumi:"accountName"`
 	// This is of the form 'https://{account}.file.core.windows.net/'.
 	AzureFileUrl string `pulumi:"azureFileUrl"`
@@ -1448,8 +1817,11 @@ type AzureFileShareConfigurationInput interface {
 	ToAzureFileShareConfigurationOutputWithContext(context.Context) AzureFileShareConfigurationOutput
 }
 
+// Information used to connect to an Azure Fileshare.
 type AzureFileShareConfigurationArgs struct {
-	AccountKey  pulumi.StringInput `pulumi:"accountKey"`
+	// The Azure Storage account key.
+	AccountKey pulumi.StringInput `pulumi:"accountKey"`
+	// The Azure Storage account name.
 	AccountName pulumi.StringInput `pulumi:"accountName"`
 	// This is of the form 'https://{account}.file.core.windows.net/'.
 	AzureFileUrl pulumi.StringInput `pulumi:"azureFileUrl"`
@@ -1512,6 +1884,7 @@ func (i *azureFileShareConfigurationPtrType) ToAzureFileShareConfigurationPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(AzureFileShareConfigurationPtrOutput)
 }
 
+// Information used to connect to an Azure Fileshare.
 type AzureFileShareConfigurationOutput struct{ *pulumi.OutputState }
 
 func (AzureFileShareConfigurationOutput) ElementType() reflect.Type {
@@ -1536,10 +1909,12 @@ func (o AzureFileShareConfigurationOutput) ToAzureFileShareConfigurationPtrOutpu
 	}).(AzureFileShareConfigurationPtrOutput)
 }
 
+// The Azure Storage account key.
 func (o AzureFileShareConfigurationOutput) AccountKey() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureFileShareConfiguration) string { return v.AccountKey }).(pulumi.StringOutput)
 }
 
+// The Azure Storage account name.
 func (o AzureFileShareConfigurationOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureFileShareConfiguration) string { return v.AccountName }).(pulumi.StringOutput)
 }
@@ -1583,6 +1958,7 @@ func (o AzureFileShareConfigurationPtrOutput) Elem() AzureFileShareConfiguration
 	}).(AzureFileShareConfigurationOutput)
 }
 
+// The Azure Storage account key.
 func (o AzureFileShareConfigurationPtrOutput) AccountKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureFileShareConfiguration) *string {
 		if v == nil {
@@ -1592,6 +1968,7 @@ func (o AzureFileShareConfigurationPtrOutput) AccountKey() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Azure Storage account name.
 func (o AzureFileShareConfigurationPtrOutput) AccountName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureFileShareConfiguration) *string {
 		if v == nil {
@@ -1631,8 +2008,11 @@ func (o AzureFileShareConfigurationPtrOutput) RelativeMountPath() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// Information used to connect to an Azure Fileshare.
 type AzureFileShareConfigurationResponse struct {
-	AccountKey  string `pulumi:"accountKey"`
+	// The Azure Storage account key.
+	AccountKey string `pulumi:"accountKey"`
+	// The Azure Storage account name.
 	AccountName string `pulumi:"accountName"`
 	// This is of the form 'https://{account}.file.core.windows.net/'.
 	AzureFileUrl string `pulumi:"azureFileUrl"`
@@ -1642,6 +2022,7 @@ type AzureFileShareConfigurationResponse struct {
 	RelativeMountPath string `pulumi:"relativeMountPath"`
 }
 
+// Information used to connect to an Azure Fileshare.
 type AzureFileShareConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (AzureFileShareConfigurationResponseOutput) ElementType() reflect.Type {
@@ -1656,10 +2037,12 @@ func (o AzureFileShareConfigurationResponseOutput) ToAzureFileShareConfiguration
 	return o
 }
 
+// The Azure Storage account key.
 func (o AzureFileShareConfigurationResponseOutput) AccountKey() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureFileShareConfigurationResponse) string { return v.AccountKey }).(pulumi.StringOutput)
 }
 
+// The Azure Storage account name.
 func (o AzureFileShareConfigurationResponseOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureFileShareConfigurationResponse) string { return v.AccountName }).(pulumi.StringOutput)
 }
@@ -1703,6 +2086,7 @@ func (o AzureFileShareConfigurationResponsePtrOutput) Elem() AzureFileShareConfi
 	}).(AzureFileShareConfigurationResponseOutput)
 }
 
+// The Azure Storage account key.
 func (o AzureFileShareConfigurationResponsePtrOutput) AccountKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureFileShareConfigurationResponse) *string {
 		if v == nil {
@@ -1712,6 +2096,7 @@ func (o AzureFileShareConfigurationResponsePtrOutput) AccountKey() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Azure Storage account name.
 func (o AzureFileShareConfigurationResponsePtrOutput) AccountName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureFileShareConfigurationResponse) *string {
 		if v == nil {
@@ -2261,14 +2646,18 @@ func (o BatchPoolIdentityResponsePtrOutput) UserAssignedIdentities() UserAssigne
 	}).(UserAssignedIdentitiesResponseMapOutput)
 }
 
+// Information used to connect to a CIFS file system.
 type CIFSMountConfiguration struct {
 	// These are 'net use' options in Windows and 'mount' options in Linux.
 	MountOptions *string `pulumi:"mountOptions"`
-	Password     string  `pulumi:"password"`
+	// The password to use for authentication against the CIFS file system.
+	Password string `pulumi:"password"`
 	// All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
 	RelativeMountPath string `pulumi:"relativeMountPath"`
-	Source            string `pulumi:"source"`
-	UserName          string `pulumi:"userName"`
+	// The URI of the file system to mount.
+	Source string `pulumi:"source"`
+	// The user to use for authentication against the CIFS file system.
+	UserName string `pulumi:"userName"`
 }
 
 // CIFSMountConfigurationInput is an input type that accepts CIFSMountConfigurationArgs and CIFSMountConfigurationOutput values.
@@ -2282,14 +2671,18 @@ type CIFSMountConfigurationInput interface {
 	ToCIFSMountConfigurationOutputWithContext(context.Context) CIFSMountConfigurationOutput
 }
 
+// Information used to connect to a CIFS file system.
 type CIFSMountConfigurationArgs struct {
 	// These are 'net use' options in Windows and 'mount' options in Linux.
 	MountOptions pulumi.StringPtrInput `pulumi:"mountOptions"`
-	Password     pulumi.StringInput    `pulumi:"password"`
+	// The password to use for authentication against the CIFS file system.
+	Password pulumi.StringInput `pulumi:"password"`
 	// All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
 	RelativeMountPath pulumi.StringInput `pulumi:"relativeMountPath"`
-	Source            pulumi.StringInput `pulumi:"source"`
-	UserName          pulumi.StringInput `pulumi:"userName"`
+	// The URI of the file system to mount.
+	Source pulumi.StringInput `pulumi:"source"`
+	// The user to use for authentication against the CIFS file system.
+	UserName pulumi.StringInput `pulumi:"userName"`
 }
 
 func (CIFSMountConfigurationArgs) ElementType() reflect.Type {
@@ -2345,6 +2738,7 @@ func (i *cifsmountConfigurationPtrType) ToCIFSMountConfigurationPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(CIFSMountConfigurationPtrOutput)
 }
 
+// Information used to connect to a CIFS file system.
 type CIFSMountConfigurationOutput struct{ *pulumi.OutputState }
 
 func (CIFSMountConfigurationOutput) ElementType() reflect.Type {
@@ -2374,6 +2768,7 @@ func (o CIFSMountConfigurationOutput) MountOptions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CIFSMountConfiguration) *string { return v.MountOptions }).(pulumi.StringPtrOutput)
 }
 
+// The password to use for authentication against the CIFS file system.
 func (o CIFSMountConfigurationOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v CIFSMountConfiguration) string { return v.Password }).(pulumi.StringOutput)
 }
@@ -2383,10 +2778,12 @@ func (o CIFSMountConfigurationOutput) RelativeMountPath() pulumi.StringOutput {
 	return o.ApplyT(func(v CIFSMountConfiguration) string { return v.RelativeMountPath }).(pulumi.StringOutput)
 }
 
+// The URI of the file system to mount.
 func (o CIFSMountConfigurationOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v CIFSMountConfiguration) string { return v.Source }).(pulumi.StringOutput)
 }
 
+// The user to use for authentication against the CIFS file system.
 func (o CIFSMountConfigurationOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v CIFSMountConfiguration) string { return v.UserName }).(pulumi.StringOutput)
 }
@@ -2425,6 +2822,7 @@ func (o CIFSMountConfigurationPtrOutput) MountOptions() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The password to use for authentication against the CIFS file system.
 func (o CIFSMountConfigurationPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CIFSMountConfiguration) *string {
 		if v == nil {
@@ -2444,6 +2842,7 @@ func (o CIFSMountConfigurationPtrOutput) RelativeMountPath() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// The URI of the file system to mount.
 func (o CIFSMountConfigurationPtrOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CIFSMountConfiguration) *string {
 		if v == nil {
@@ -2453,6 +2852,7 @@ func (o CIFSMountConfigurationPtrOutput) Source() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The user to use for authentication against the CIFS file system.
 func (o CIFSMountConfigurationPtrOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CIFSMountConfiguration) *string {
 		if v == nil {
@@ -2462,16 +2862,21 @@ func (o CIFSMountConfigurationPtrOutput) UserName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Information used to connect to a CIFS file system.
 type CIFSMountConfigurationResponse struct {
 	// These are 'net use' options in Windows and 'mount' options in Linux.
 	MountOptions *string `pulumi:"mountOptions"`
-	Password     string  `pulumi:"password"`
+	// The password to use for authentication against the CIFS file system.
+	Password string `pulumi:"password"`
 	// All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
 	RelativeMountPath string `pulumi:"relativeMountPath"`
-	Source            string `pulumi:"source"`
-	UserName          string `pulumi:"userName"`
+	// The URI of the file system to mount.
+	Source string `pulumi:"source"`
+	// The user to use for authentication against the CIFS file system.
+	UserName string `pulumi:"userName"`
 }
 
+// Information used to connect to a CIFS file system.
 type CIFSMountConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (CIFSMountConfigurationResponseOutput) ElementType() reflect.Type {
@@ -2491,6 +2896,7 @@ func (o CIFSMountConfigurationResponseOutput) MountOptions() pulumi.StringPtrOut
 	return o.ApplyT(func(v CIFSMountConfigurationResponse) *string { return v.MountOptions }).(pulumi.StringPtrOutput)
 }
 
+// The password to use for authentication against the CIFS file system.
 func (o CIFSMountConfigurationResponseOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v CIFSMountConfigurationResponse) string { return v.Password }).(pulumi.StringOutput)
 }
@@ -2500,10 +2906,12 @@ func (o CIFSMountConfigurationResponseOutput) RelativeMountPath() pulumi.StringO
 	return o.ApplyT(func(v CIFSMountConfigurationResponse) string { return v.RelativeMountPath }).(pulumi.StringOutput)
 }
 
+// The URI of the file system to mount.
 func (o CIFSMountConfigurationResponseOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v CIFSMountConfigurationResponse) string { return v.Source }).(pulumi.StringOutput)
 }
 
+// The user to use for authentication against the CIFS file system.
 func (o CIFSMountConfigurationResponseOutput) UserName() pulumi.StringOutput {
 	return o.ApplyT(func(v CIFSMountConfigurationResponse) string { return v.UserName }).(pulumi.StringOutput)
 }
@@ -2542,6 +2950,7 @@ func (o CIFSMountConfigurationResponsePtrOutput) MountOptions() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// The password to use for authentication against the CIFS file system.
 func (o CIFSMountConfigurationResponsePtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CIFSMountConfigurationResponse) *string {
 		if v == nil {
@@ -2561,6 +2970,7 @@ func (o CIFSMountConfigurationResponsePtrOutput) RelativeMountPath() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// The URI of the file system to mount.
 func (o CIFSMountConfigurationResponsePtrOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CIFSMountConfigurationResponse) *string {
 		if v == nil {
@@ -2570,6 +2980,7 @@ func (o CIFSMountConfigurationResponsePtrOutput) Source() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// The user to use for authentication against the CIFS file system.
 func (o CIFSMountConfigurationResponsePtrOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CIFSMountConfigurationResponse) *string {
 		if v == nil {
@@ -2581,11 +2992,13 @@ func (o CIFSMountConfigurationResponsePtrOutput) UserName() pulumi.StringPtrOutp
 
 // Warning: This object is deprecated and will be removed after February, 2024. Please use the [Azure KeyVault Extension](https://learn.microsoft.com/azure/batch/batch-certificate-migration-guide) instead.
 type CertificateReference struct {
+	// The fully qualified ID of the certificate to install on the pool. This must be inside the same batch account as the pool.
 	Id string `pulumi:"id"`
-	// The default value is currentUser. This property is applicable only for pools configured with Windows nodes (that is, created with cloudServiceConfiguration, or with virtualMachineConfiguration using a Windows image reference). For Linux compute nodes, the certificates are stored in a directory inside the task working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this location. For certificates with visibility of 'remoteUser', a 'certs' directory is created in the user's home directory (e.g., /home/{user-name}/certs) and certificates are placed in that directory.
+	// The default value is currentUser. This property is applicable only for pools configured with Windows compute nodes. For Linux compute nodes, the certificates are stored in a directory inside the task working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this location. For certificates with visibility of 'remoteUser', a 'certs' directory is created in the user's home directory (e.g., /home/{user-name}/certs) and certificates are placed in that directory.
 	StoreLocation *CertificateStoreLocation `pulumi:"storeLocation"`
-	// This property is applicable only for pools configured with Windows nodes (that is, created with cloudServiceConfiguration, or with virtualMachineConfiguration using a Windows image reference). Common store names include: My, Root, CA, Trust, Disallowed, TrustedPeople, TrustedPublisher, AuthRoot, AddressBook, but any custom store name can also be used. The default value is My.
-	StoreName  *string                 `pulumi:"storeName"`
+	// This property is applicable only for pools configured with Windows compute nodes. Common store names include: My, Root, CA, Trust, Disallowed, TrustedPeople, TrustedPublisher, AuthRoot, AddressBook, but any custom store name can also be used. The default value is My.
+	StoreName *string `pulumi:"storeName"`
+	// Which user accounts on the compute node should have access to the private data of the certificate.
 	Visibility []CertificateVisibility `pulumi:"visibility"`
 }
 
@@ -2602,11 +3015,13 @@ type CertificateReferenceInput interface {
 
 // Warning: This object is deprecated and will be removed after February, 2024. Please use the [Azure KeyVault Extension](https://learn.microsoft.com/azure/batch/batch-certificate-migration-guide) instead.
 type CertificateReferenceArgs struct {
+	// The fully qualified ID of the certificate to install on the pool. This must be inside the same batch account as the pool.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The default value is currentUser. This property is applicable only for pools configured with Windows nodes (that is, created with cloudServiceConfiguration, or with virtualMachineConfiguration using a Windows image reference). For Linux compute nodes, the certificates are stored in a directory inside the task working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this location. For certificates with visibility of 'remoteUser', a 'certs' directory is created in the user's home directory (e.g., /home/{user-name}/certs) and certificates are placed in that directory.
+	// The default value is currentUser. This property is applicable only for pools configured with Windows compute nodes. For Linux compute nodes, the certificates are stored in a directory inside the task working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this location. For certificates with visibility of 'remoteUser', a 'certs' directory is created in the user's home directory (e.g., /home/{user-name}/certs) and certificates are placed in that directory.
 	StoreLocation CertificateStoreLocationPtrInput `pulumi:"storeLocation"`
-	// This property is applicable only for pools configured with Windows nodes (that is, created with cloudServiceConfiguration, or with virtualMachineConfiguration using a Windows image reference). Common store names include: My, Root, CA, Trust, Disallowed, TrustedPeople, TrustedPublisher, AuthRoot, AddressBook, but any custom store name can also be used. The default value is My.
-	StoreName  pulumi.StringPtrInput           `pulumi:"storeName"`
+	// This property is applicable only for pools configured with Windows compute nodes. Common store names include: My, Root, CA, Trust, Disallowed, TrustedPeople, TrustedPublisher, AuthRoot, AddressBook, but any custom store name can also be used. The default value is My.
+	StoreName pulumi.StringPtrInput `pulumi:"storeName"`
+	// Which user accounts on the compute node should have access to the private data of the certificate.
 	Visibility CertificateVisibilityArrayInput `pulumi:"visibility"`
 }
 
@@ -2662,20 +3077,22 @@ func (o CertificateReferenceOutput) ToCertificateReferenceOutputWithContext(ctx 
 	return o
 }
 
+// The fully qualified ID of the certificate to install on the pool. This must be inside the same batch account as the pool.
 func (o CertificateReferenceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v CertificateReference) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The default value is currentUser. This property is applicable only for pools configured with Windows nodes (that is, created with cloudServiceConfiguration, or with virtualMachineConfiguration using a Windows image reference). For Linux compute nodes, the certificates are stored in a directory inside the task working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this location. For certificates with visibility of 'remoteUser', a 'certs' directory is created in the user's home directory (e.g., /home/{user-name}/certs) and certificates are placed in that directory.
+// The default value is currentUser. This property is applicable only for pools configured with Windows compute nodes. For Linux compute nodes, the certificates are stored in a directory inside the task working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this location. For certificates with visibility of 'remoteUser', a 'certs' directory is created in the user's home directory (e.g., /home/{user-name}/certs) and certificates are placed in that directory.
 func (o CertificateReferenceOutput) StoreLocation() CertificateStoreLocationPtrOutput {
 	return o.ApplyT(func(v CertificateReference) *CertificateStoreLocation { return v.StoreLocation }).(CertificateStoreLocationPtrOutput)
 }
 
-// This property is applicable only for pools configured with Windows nodes (that is, created with cloudServiceConfiguration, or with virtualMachineConfiguration using a Windows image reference). Common store names include: My, Root, CA, Trust, Disallowed, TrustedPeople, TrustedPublisher, AuthRoot, AddressBook, but any custom store name can also be used. The default value is My.
+// This property is applicable only for pools configured with Windows compute nodes. Common store names include: My, Root, CA, Trust, Disallowed, TrustedPeople, TrustedPublisher, AuthRoot, AddressBook, but any custom store name can also be used. The default value is My.
 func (o CertificateReferenceOutput) StoreName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateReference) *string { return v.StoreName }).(pulumi.StringPtrOutput)
 }
 
+// Which user accounts on the compute node should have access to the private data of the certificate.
 func (o CertificateReferenceOutput) Visibility() CertificateVisibilityArrayOutput {
 	return o.ApplyT(func(v CertificateReference) []CertificateVisibility { return v.Visibility }).(CertificateVisibilityArrayOutput)
 }
@@ -2702,11 +3119,13 @@ func (o CertificateReferenceArrayOutput) Index(i pulumi.IntInput) CertificateRef
 
 // Warning: This object is deprecated and will be removed after February, 2024. Please use the [Azure KeyVault Extension](https://learn.microsoft.com/azure/batch/batch-certificate-migration-guide) instead.
 type CertificateReferenceResponse struct {
+	// The fully qualified ID of the certificate to install on the pool. This must be inside the same batch account as the pool.
 	Id string `pulumi:"id"`
-	// The default value is currentUser. This property is applicable only for pools configured with Windows nodes (that is, created with cloudServiceConfiguration, or with virtualMachineConfiguration using a Windows image reference). For Linux compute nodes, the certificates are stored in a directory inside the task working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this location. For certificates with visibility of 'remoteUser', a 'certs' directory is created in the user's home directory (e.g., /home/{user-name}/certs) and certificates are placed in that directory.
+	// The default value is currentUser. This property is applicable only for pools configured with Windows compute nodes. For Linux compute nodes, the certificates are stored in a directory inside the task working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this location. For certificates with visibility of 'remoteUser', a 'certs' directory is created in the user's home directory (e.g., /home/{user-name}/certs) and certificates are placed in that directory.
 	StoreLocation *string `pulumi:"storeLocation"`
-	// This property is applicable only for pools configured with Windows nodes (that is, created with cloudServiceConfiguration, or with virtualMachineConfiguration using a Windows image reference). Common store names include: My, Root, CA, Trust, Disallowed, TrustedPeople, TrustedPublisher, AuthRoot, AddressBook, but any custom store name can also be used. The default value is My.
-	StoreName  *string  `pulumi:"storeName"`
+	// This property is applicable only for pools configured with Windows compute nodes. Common store names include: My, Root, CA, Trust, Disallowed, TrustedPeople, TrustedPublisher, AuthRoot, AddressBook, but any custom store name can also be used. The default value is My.
+	StoreName *string `pulumi:"storeName"`
+	// Which user accounts on the compute node should have access to the private data of the certificate.
 	Visibility []string `pulumi:"visibility"`
 }
 
@@ -2725,20 +3144,22 @@ func (o CertificateReferenceResponseOutput) ToCertificateReferenceResponseOutput
 	return o
 }
 
+// The fully qualified ID of the certificate to install on the pool. This must be inside the same batch account as the pool.
 func (o CertificateReferenceResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v CertificateReferenceResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The default value is currentUser. This property is applicable only for pools configured with Windows nodes (that is, created with cloudServiceConfiguration, or with virtualMachineConfiguration using a Windows image reference). For Linux compute nodes, the certificates are stored in a directory inside the task working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this location. For certificates with visibility of 'remoteUser', a 'certs' directory is created in the user's home directory (e.g., /home/{user-name}/certs) and certificates are placed in that directory.
+// The default value is currentUser. This property is applicable only for pools configured with Windows compute nodes. For Linux compute nodes, the certificates are stored in a directory inside the task working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this location. For certificates with visibility of 'remoteUser', a 'certs' directory is created in the user's home directory (e.g., /home/{user-name}/certs) and certificates are placed in that directory.
 func (o CertificateReferenceResponseOutput) StoreLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateReferenceResponse) *string { return v.StoreLocation }).(pulumi.StringPtrOutput)
 }
 
-// This property is applicable only for pools configured with Windows nodes (that is, created with cloudServiceConfiguration, or with virtualMachineConfiguration using a Windows image reference). Common store names include: My, Root, CA, Trust, Disallowed, TrustedPeople, TrustedPublisher, AuthRoot, AddressBook, but any custom store name can also be used. The default value is My.
+// This property is applicable only for pools configured with Windows compute nodes. Common store names include: My, Root, CA, Trust, Disallowed, TrustedPeople, TrustedPublisher, AuthRoot, AddressBook, but any custom store name can also be used. The default value is My.
 func (o CertificateReferenceResponseOutput) StoreName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateReferenceResponse) *string { return v.StoreName }).(pulumi.StringPtrOutput)
 }
 
+// Which user accounts on the compute node should have access to the private data of the certificate.
 func (o CertificateReferenceResponseOutput) Visibility() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CertificateReferenceResponse) []string { return v.Visibility }).(pulumi.StringArrayOutput)
 }
@@ -2761,237 +3182,6 @@ func (o CertificateReferenceResponseArrayOutput) Index(i pulumi.IntInput) Certif
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateReferenceResponse {
 		return vs[0].([]CertificateReferenceResponse)[vs[1].(int)]
 	}).(CertificateReferenceResponseOutput)
-}
-
-type CloudServiceConfiguration struct {
-	// Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4, equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows Server 2016. 6 - OS Family 6, equivalent to Windows Server 2019. For more information, see Azure Guest OS Releases (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
-	OsFamily string `pulumi:"osFamily"`
-	// The default value is * which specifies the latest operating system version for the specified OS family.
-	OsVersion *string `pulumi:"osVersion"`
-}
-
-// CloudServiceConfigurationInput is an input type that accepts CloudServiceConfigurationArgs and CloudServiceConfigurationOutput values.
-// You can construct a concrete instance of `CloudServiceConfigurationInput` via:
-//
-//	CloudServiceConfigurationArgs{...}
-type CloudServiceConfigurationInput interface {
-	pulumi.Input
-
-	ToCloudServiceConfigurationOutput() CloudServiceConfigurationOutput
-	ToCloudServiceConfigurationOutputWithContext(context.Context) CloudServiceConfigurationOutput
-}
-
-type CloudServiceConfigurationArgs struct {
-	// Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4, equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows Server 2016. 6 - OS Family 6, equivalent to Windows Server 2019. For more information, see Azure Guest OS Releases (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
-	OsFamily pulumi.StringInput `pulumi:"osFamily"`
-	// The default value is * which specifies the latest operating system version for the specified OS family.
-	OsVersion pulumi.StringPtrInput `pulumi:"osVersion"`
-}
-
-func (CloudServiceConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudServiceConfiguration)(nil)).Elem()
-}
-
-func (i CloudServiceConfigurationArgs) ToCloudServiceConfigurationOutput() CloudServiceConfigurationOutput {
-	return i.ToCloudServiceConfigurationOutputWithContext(context.Background())
-}
-
-func (i CloudServiceConfigurationArgs) ToCloudServiceConfigurationOutputWithContext(ctx context.Context) CloudServiceConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudServiceConfigurationOutput)
-}
-
-func (i CloudServiceConfigurationArgs) ToCloudServiceConfigurationPtrOutput() CloudServiceConfigurationPtrOutput {
-	return i.ToCloudServiceConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i CloudServiceConfigurationArgs) ToCloudServiceConfigurationPtrOutputWithContext(ctx context.Context) CloudServiceConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudServiceConfigurationOutput).ToCloudServiceConfigurationPtrOutputWithContext(ctx)
-}
-
-// CloudServiceConfigurationPtrInput is an input type that accepts CloudServiceConfigurationArgs, CloudServiceConfigurationPtr and CloudServiceConfigurationPtrOutput values.
-// You can construct a concrete instance of `CloudServiceConfigurationPtrInput` via:
-//
-//	        CloudServiceConfigurationArgs{...}
-//
-//	or:
-//
-//	        nil
-type CloudServiceConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToCloudServiceConfigurationPtrOutput() CloudServiceConfigurationPtrOutput
-	ToCloudServiceConfigurationPtrOutputWithContext(context.Context) CloudServiceConfigurationPtrOutput
-}
-
-type cloudServiceConfigurationPtrType CloudServiceConfigurationArgs
-
-func CloudServiceConfigurationPtr(v *CloudServiceConfigurationArgs) CloudServiceConfigurationPtrInput {
-	return (*cloudServiceConfigurationPtrType)(v)
-}
-
-func (*cloudServiceConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudServiceConfiguration)(nil)).Elem()
-}
-
-func (i *cloudServiceConfigurationPtrType) ToCloudServiceConfigurationPtrOutput() CloudServiceConfigurationPtrOutput {
-	return i.ToCloudServiceConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *cloudServiceConfigurationPtrType) ToCloudServiceConfigurationPtrOutputWithContext(ctx context.Context) CloudServiceConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudServiceConfigurationPtrOutput)
-}
-
-type CloudServiceConfigurationOutput struct{ *pulumi.OutputState }
-
-func (CloudServiceConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudServiceConfiguration)(nil)).Elem()
-}
-
-func (o CloudServiceConfigurationOutput) ToCloudServiceConfigurationOutput() CloudServiceConfigurationOutput {
-	return o
-}
-
-func (o CloudServiceConfigurationOutput) ToCloudServiceConfigurationOutputWithContext(ctx context.Context) CloudServiceConfigurationOutput {
-	return o
-}
-
-func (o CloudServiceConfigurationOutput) ToCloudServiceConfigurationPtrOutput() CloudServiceConfigurationPtrOutput {
-	return o.ToCloudServiceConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o CloudServiceConfigurationOutput) ToCloudServiceConfigurationPtrOutputWithContext(ctx context.Context) CloudServiceConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudServiceConfiguration) *CloudServiceConfiguration {
-		return &v
-	}).(CloudServiceConfigurationPtrOutput)
-}
-
-// Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4, equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows Server 2016. 6 - OS Family 6, equivalent to Windows Server 2019. For more information, see Azure Guest OS Releases (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
-func (o CloudServiceConfigurationOutput) OsFamily() pulumi.StringOutput {
-	return o.ApplyT(func(v CloudServiceConfiguration) string { return v.OsFamily }).(pulumi.StringOutput)
-}
-
-// The default value is * which specifies the latest operating system version for the specified OS family.
-func (o CloudServiceConfigurationOutput) OsVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudServiceConfiguration) *string { return v.OsVersion }).(pulumi.StringPtrOutput)
-}
-
-type CloudServiceConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (CloudServiceConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudServiceConfiguration)(nil)).Elem()
-}
-
-func (o CloudServiceConfigurationPtrOutput) ToCloudServiceConfigurationPtrOutput() CloudServiceConfigurationPtrOutput {
-	return o
-}
-
-func (o CloudServiceConfigurationPtrOutput) ToCloudServiceConfigurationPtrOutputWithContext(ctx context.Context) CloudServiceConfigurationPtrOutput {
-	return o
-}
-
-func (o CloudServiceConfigurationPtrOutput) Elem() CloudServiceConfigurationOutput {
-	return o.ApplyT(func(v *CloudServiceConfiguration) CloudServiceConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret CloudServiceConfiguration
-		return ret
-	}).(CloudServiceConfigurationOutput)
-}
-
-// Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4, equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows Server 2016. 6 - OS Family 6, equivalent to Windows Server 2019. For more information, see Azure Guest OS Releases (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
-func (o CloudServiceConfigurationPtrOutput) OsFamily() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudServiceConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OsFamily
-	}).(pulumi.StringPtrOutput)
-}
-
-// The default value is * which specifies the latest operating system version for the specified OS family.
-func (o CloudServiceConfigurationPtrOutput) OsVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudServiceConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OsVersion
-	}).(pulumi.StringPtrOutput)
-}
-
-type CloudServiceConfigurationResponse struct {
-	// Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4, equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows Server 2016. 6 - OS Family 6, equivalent to Windows Server 2019. For more information, see Azure Guest OS Releases (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
-	OsFamily string `pulumi:"osFamily"`
-	// The default value is * which specifies the latest operating system version for the specified OS family.
-	OsVersion *string `pulumi:"osVersion"`
-}
-
-type CloudServiceConfigurationResponseOutput struct{ *pulumi.OutputState }
-
-func (CloudServiceConfigurationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudServiceConfigurationResponse)(nil)).Elem()
-}
-
-func (o CloudServiceConfigurationResponseOutput) ToCloudServiceConfigurationResponseOutput() CloudServiceConfigurationResponseOutput {
-	return o
-}
-
-func (o CloudServiceConfigurationResponseOutput) ToCloudServiceConfigurationResponseOutputWithContext(ctx context.Context) CloudServiceConfigurationResponseOutput {
-	return o
-}
-
-// Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4, equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows Server 2016. 6 - OS Family 6, equivalent to Windows Server 2019. For more information, see Azure Guest OS Releases (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
-func (o CloudServiceConfigurationResponseOutput) OsFamily() pulumi.StringOutput {
-	return o.ApplyT(func(v CloudServiceConfigurationResponse) string { return v.OsFamily }).(pulumi.StringOutput)
-}
-
-// The default value is * which specifies the latest operating system version for the specified OS family.
-func (o CloudServiceConfigurationResponseOutput) OsVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudServiceConfigurationResponse) *string { return v.OsVersion }).(pulumi.StringPtrOutput)
-}
-
-type CloudServiceConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CloudServiceConfigurationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudServiceConfigurationResponse)(nil)).Elem()
-}
-
-func (o CloudServiceConfigurationResponsePtrOutput) ToCloudServiceConfigurationResponsePtrOutput() CloudServiceConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o CloudServiceConfigurationResponsePtrOutput) ToCloudServiceConfigurationResponsePtrOutputWithContext(ctx context.Context) CloudServiceConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o CloudServiceConfigurationResponsePtrOutput) Elem() CloudServiceConfigurationResponseOutput {
-	return o.ApplyT(func(v *CloudServiceConfigurationResponse) CloudServiceConfigurationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CloudServiceConfigurationResponse
-		return ret
-	}).(CloudServiceConfigurationResponseOutput)
-}
-
-// Possible values are: 2 - OS Family 2, equivalent to Windows Server 2008 R2 SP1. 3 - OS Family 3, equivalent to Windows Server 2012. 4 - OS Family 4, equivalent to Windows Server 2012 R2. 5 - OS Family 5, equivalent to Windows Server 2016. 6 - OS Family 6, equivalent to Windows Server 2019. For more information, see Azure Guest OS Releases (https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).
-func (o CloudServiceConfigurationResponsePtrOutput) OsFamily() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudServiceConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OsFamily
-	}).(pulumi.StringPtrOutput)
-}
-
-// The default value is * which specifies the latest operating system version for the specified OS family.
-func (o CloudServiceConfigurationResponsePtrOutput) OsVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudServiceConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.OsVersion
-	}).(pulumi.StringPtrOutput)
 }
 
 // The reference to a user assigned identity associated with the Batch pool which a compute node will use.
@@ -3194,12 +3384,14 @@ func (o ComputeNodeIdentityReferenceResponsePtrOutput) ResourceId() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// The configuration for container-enabled pools.
 type ContainerConfiguration struct {
 	// This is the full image reference, as would be specified to "docker pull". An image will be sourced from the default Docker registry unless the image is fully qualified with an alternative registry.
 	ContainerImageNames []string `pulumi:"containerImageNames"`
 	// If any images must be downloaded from a private registry which requires credentials, then those credentials must be provided here.
 	ContainerRegistries []ContainerRegistry `pulumi:"containerRegistries"`
-	Type                string              `pulumi:"type"`
+	// The container technology to be used.
+	Type string `pulumi:"type"`
 }
 
 // ContainerConfigurationInput is an input type that accepts ContainerConfigurationArgs and ContainerConfigurationOutput values.
@@ -3213,12 +3405,14 @@ type ContainerConfigurationInput interface {
 	ToContainerConfigurationOutputWithContext(context.Context) ContainerConfigurationOutput
 }
 
+// The configuration for container-enabled pools.
 type ContainerConfigurationArgs struct {
 	// This is the full image reference, as would be specified to "docker pull". An image will be sourced from the default Docker registry unless the image is fully qualified with an alternative registry.
 	ContainerImageNames pulumi.StringArrayInput `pulumi:"containerImageNames"`
 	// If any images must be downloaded from a private registry which requires credentials, then those credentials must be provided here.
 	ContainerRegistries ContainerRegistryArrayInput `pulumi:"containerRegistries"`
-	Type                pulumi.StringInput          `pulumi:"type"`
+	// The container technology to be used.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (ContainerConfigurationArgs) ElementType() reflect.Type {
@@ -3274,6 +3468,7 @@ func (i *containerConfigurationPtrType) ToContainerConfigurationPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerConfigurationPtrOutput)
 }
 
+// The configuration for container-enabled pools.
 type ContainerConfigurationOutput struct{ *pulumi.OutputState }
 
 func (ContainerConfigurationOutput) ElementType() reflect.Type {
@@ -3308,6 +3503,7 @@ func (o ContainerConfigurationOutput) ContainerRegistries() ContainerRegistryArr
 	return o.ApplyT(func(v ContainerConfiguration) []ContainerRegistry { return v.ContainerRegistries }).(ContainerRegistryArrayOutput)
 }
 
+// The container technology to be used.
 func (o ContainerConfigurationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerConfiguration) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -3356,6 +3552,7 @@ func (o ContainerConfigurationPtrOutput) ContainerRegistries() ContainerRegistry
 	}).(ContainerRegistryArrayOutput)
 }
 
+// The container technology to be used.
 func (o ContainerConfigurationPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerConfiguration) *string {
 		if v == nil {
@@ -3365,14 +3562,17 @@ func (o ContainerConfigurationPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The configuration for container-enabled pools.
 type ContainerConfigurationResponse struct {
 	// This is the full image reference, as would be specified to "docker pull". An image will be sourced from the default Docker registry unless the image is fully qualified with an alternative registry.
 	ContainerImageNames []string `pulumi:"containerImageNames"`
 	// If any images must be downloaded from a private registry which requires credentials, then those credentials must be provided here.
 	ContainerRegistries []ContainerRegistryResponse `pulumi:"containerRegistries"`
-	Type                string                      `pulumi:"type"`
+	// The container technology to be used.
+	Type string `pulumi:"type"`
 }
 
+// The configuration for container-enabled pools.
 type ContainerConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (ContainerConfigurationResponseOutput) ElementType() reflect.Type {
@@ -3397,6 +3597,7 @@ func (o ContainerConfigurationResponseOutput) ContainerRegistries() ContainerReg
 	return o.ApplyT(func(v ContainerConfigurationResponse) []ContainerRegistryResponse { return v.ContainerRegistries }).(ContainerRegistryResponseArrayOutput)
 }
 
+// The container technology to be used.
 func (o ContainerConfigurationResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerConfigurationResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -3445,6 +3646,7 @@ func (o ContainerConfigurationResponsePtrOutput) ContainerRegistries() Container
 	}).(ContainerRegistryResponseArrayOutput)
 }
 
+// The container technology to be used.
 func (o ContainerConfigurationResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerConfigurationResponse) *string {
 		if v == nil {
@@ -3454,13 +3656,178 @@ func (o ContainerConfigurationResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The entry of path and mount mode you want to mount into task container.
+type ContainerHostBatchBindMountEntry struct {
+	// For Linux, if you mount this path as a read/write mode, this does not mean that all users in container have the read/write access for the path, it depends on the access in host VM. If this path is mounted read-only, all users within the container will not be able to modify the path.
+	IsReadOnly *bool `pulumi:"isReadOnly"`
+	// The paths which will be mounted to container task's container.
+	Source *string `pulumi:"source"`
+}
+
+// ContainerHostBatchBindMountEntryInput is an input type that accepts ContainerHostBatchBindMountEntryArgs and ContainerHostBatchBindMountEntryOutput values.
+// You can construct a concrete instance of `ContainerHostBatchBindMountEntryInput` via:
+//
+//	ContainerHostBatchBindMountEntryArgs{...}
+type ContainerHostBatchBindMountEntryInput interface {
+	pulumi.Input
+
+	ToContainerHostBatchBindMountEntryOutput() ContainerHostBatchBindMountEntryOutput
+	ToContainerHostBatchBindMountEntryOutputWithContext(context.Context) ContainerHostBatchBindMountEntryOutput
+}
+
+// The entry of path and mount mode you want to mount into task container.
+type ContainerHostBatchBindMountEntryArgs struct {
+	// For Linux, if you mount this path as a read/write mode, this does not mean that all users in container have the read/write access for the path, it depends on the access in host VM. If this path is mounted read-only, all users within the container will not be able to modify the path.
+	IsReadOnly pulumi.BoolPtrInput `pulumi:"isReadOnly"`
+	// The paths which will be mounted to container task's container.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+}
+
+func (ContainerHostBatchBindMountEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerHostBatchBindMountEntry)(nil)).Elem()
+}
+
+func (i ContainerHostBatchBindMountEntryArgs) ToContainerHostBatchBindMountEntryOutput() ContainerHostBatchBindMountEntryOutput {
+	return i.ToContainerHostBatchBindMountEntryOutputWithContext(context.Background())
+}
+
+func (i ContainerHostBatchBindMountEntryArgs) ToContainerHostBatchBindMountEntryOutputWithContext(ctx context.Context) ContainerHostBatchBindMountEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerHostBatchBindMountEntryOutput)
+}
+
+// ContainerHostBatchBindMountEntryArrayInput is an input type that accepts ContainerHostBatchBindMountEntryArray and ContainerHostBatchBindMountEntryArrayOutput values.
+// You can construct a concrete instance of `ContainerHostBatchBindMountEntryArrayInput` via:
+//
+//	ContainerHostBatchBindMountEntryArray{ ContainerHostBatchBindMountEntryArgs{...} }
+type ContainerHostBatchBindMountEntryArrayInput interface {
+	pulumi.Input
+
+	ToContainerHostBatchBindMountEntryArrayOutput() ContainerHostBatchBindMountEntryArrayOutput
+	ToContainerHostBatchBindMountEntryArrayOutputWithContext(context.Context) ContainerHostBatchBindMountEntryArrayOutput
+}
+
+type ContainerHostBatchBindMountEntryArray []ContainerHostBatchBindMountEntryInput
+
+func (ContainerHostBatchBindMountEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerHostBatchBindMountEntry)(nil)).Elem()
+}
+
+func (i ContainerHostBatchBindMountEntryArray) ToContainerHostBatchBindMountEntryArrayOutput() ContainerHostBatchBindMountEntryArrayOutput {
+	return i.ToContainerHostBatchBindMountEntryArrayOutputWithContext(context.Background())
+}
+
+func (i ContainerHostBatchBindMountEntryArray) ToContainerHostBatchBindMountEntryArrayOutputWithContext(ctx context.Context) ContainerHostBatchBindMountEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerHostBatchBindMountEntryArrayOutput)
+}
+
+// The entry of path and mount mode you want to mount into task container.
+type ContainerHostBatchBindMountEntryOutput struct{ *pulumi.OutputState }
+
+func (ContainerHostBatchBindMountEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerHostBatchBindMountEntry)(nil)).Elem()
+}
+
+func (o ContainerHostBatchBindMountEntryOutput) ToContainerHostBatchBindMountEntryOutput() ContainerHostBatchBindMountEntryOutput {
+	return o
+}
+
+func (o ContainerHostBatchBindMountEntryOutput) ToContainerHostBatchBindMountEntryOutputWithContext(ctx context.Context) ContainerHostBatchBindMountEntryOutput {
+	return o
+}
+
+// For Linux, if you mount this path as a read/write mode, this does not mean that all users in container have the read/write access for the path, it depends on the access in host VM. If this path is mounted read-only, all users within the container will not be able to modify the path.
+func (o ContainerHostBatchBindMountEntryOutput) IsReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerHostBatchBindMountEntry) *bool { return v.IsReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// The paths which will be mounted to container task's container.
+func (o ContainerHostBatchBindMountEntryOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerHostBatchBindMountEntry) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+type ContainerHostBatchBindMountEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerHostBatchBindMountEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerHostBatchBindMountEntry)(nil)).Elem()
+}
+
+func (o ContainerHostBatchBindMountEntryArrayOutput) ToContainerHostBatchBindMountEntryArrayOutput() ContainerHostBatchBindMountEntryArrayOutput {
+	return o
+}
+
+func (o ContainerHostBatchBindMountEntryArrayOutput) ToContainerHostBatchBindMountEntryArrayOutputWithContext(ctx context.Context) ContainerHostBatchBindMountEntryArrayOutput {
+	return o
+}
+
+func (o ContainerHostBatchBindMountEntryArrayOutput) Index(i pulumi.IntInput) ContainerHostBatchBindMountEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerHostBatchBindMountEntry {
+		return vs[0].([]ContainerHostBatchBindMountEntry)[vs[1].(int)]
+	}).(ContainerHostBatchBindMountEntryOutput)
+}
+
+// The entry of path and mount mode you want to mount into task container.
+type ContainerHostBatchBindMountEntryResponse struct {
+	// For Linux, if you mount this path as a read/write mode, this does not mean that all users in container have the read/write access for the path, it depends on the access in host VM. If this path is mounted read-only, all users within the container will not be able to modify the path.
+	IsReadOnly *bool `pulumi:"isReadOnly"`
+	// The paths which will be mounted to container task's container.
+	Source *string `pulumi:"source"`
+}
+
+// The entry of path and mount mode you want to mount into task container.
+type ContainerHostBatchBindMountEntryResponseOutput struct{ *pulumi.OutputState }
+
+func (ContainerHostBatchBindMountEntryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerHostBatchBindMountEntryResponse)(nil)).Elem()
+}
+
+func (o ContainerHostBatchBindMountEntryResponseOutput) ToContainerHostBatchBindMountEntryResponseOutput() ContainerHostBatchBindMountEntryResponseOutput {
+	return o
+}
+
+func (o ContainerHostBatchBindMountEntryResponseOutput) ToContainerHostBatchBindMountEntryResponseOutputWithContext(ctx context.Context) ContainerHostBatchBindMountEntryResponseOutput {
+	return o
+}
+
+// For Linux, if you mount this path as a read/write mode, this does not mean that all users in container have the read/write access for the path, it depends on the access in host VM. If this path is mounted read-only, all users within the container will not be able to modify the path.
+func (o ContainerHostBatchBindMountEntryResponseOutput) IsReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerHostBatchBindMountEntryResponse) *bool { return v.IsReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// The paths which will be mounted to container task's container.
+func (o ContainerHostBatchBindMountEntryResponseOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerHostBatchBindMountEntryResponse) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+type ContainerHostBatchBindMountEntryResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerHostBatchBindMountEntryResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerHostBatchBindMountEntryResponse)(nil)).Elem()
+}
+
+func (o ContainerHostBatchBindMountEntryResponseArrayOutput) ToContainerHostBatchBindMountEntryResponseArrayOutput() ContainerHostBatchBindMountEntryResponseArrayOutput {
+	return o
+}
+
+func (o ContainerHostBatchBindMountEntryResponseArrayOutput) ToContainerHostBatchBindMountEntryResponseArrayOutputWithContext(ctx context.Context) ContainerHostBatchBindMountEntryResponseArrayOutput {
+	return o
+}
+
+func (o ContainerHostBatchBindMountEntryResponseArrayOutput) Index(i pulumi.IntInput) ContainerHostBatchBindMountEntryResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerHostBatchBindMountEntryResponse {
+		return vs[0].([]ContainerHostBatchBindMountEntryResponse)[vs[1].(int)]
+	}).(ContainerHostBatchBindMountEntryResponseOutput)
+}
+
+// A private container registry.
 type ContainerRegistry struct {
 	// The reference to a user assigned identity associated with the Batch pool which a compute node will use.
 	IdentityReference *ComputeNodeIdentityReference `pulumi:"identityReference"`
-	Password          *string                       `pulumi:"password"`
+	// The password to log into the registry server.
+	Password *string `pulumi:"password"`
 	// If omitted, the default is "docker.io".
 	RegistryServer *string `pulumi:"registryServer"`
-	UserName       *string `pulumi:"userName"`
+	// The user name to log into the registry server.
+	UserName *string `pulumi:"userName"`
 }
 
 // ContainerRegistryInput is an input type that accepts ContainerRegistryArgs and ContainerRegistryOutput values.
@@ -3474,13 +3841,16 @@ type ContainerRegistryInput interface {
 	ToContainerRegistryOutputWithContext(context.Context) ContainerRegistryOutput
 }
 
+// A private container registry.
 type ContainerRegistryArgs struct {
 	// The reference to a user assigned identity associated with the Batch pool which a compute node will use.
 	IdentityReference ComputeNodeIdentityReferencePtrInput `pulumi:"identityReference"`
-	Password          pulumi.StringPtrInput                `pulumi:"password"`
+	// The password to log into the registry server.
+	Password pulumi.StringPtrInput `pulumi:"password"`
 	// If omitted, the default is "docker.io".
 	RegistryServer pulumi.StringPtrInput `pulumi:"registryServer"`
-	UserName       pulumi.StringPtrInput `pulumi:"userName"`
+	// The user name to log into the registry server.
+	UserName pulumi.StringPtrInput `pulumi:"userName"`
 }
 
 func (ContainerRegistryArgs) ElementType() reflect.Type {
@@ -3561,6 +3931,7 @@ func (i ContainerRegistryArray) ToContainerRegistryArrayOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ContainerRegistryArrayOutput)
 }
 
+// A private container registry.
 type ContainerRegistryOutput struct{ *pulumi.OutputState }
 
 func (ContainerRegistryOutput) ElementType() reflect.Type {
@@ -3590,6 +3961,7 @@ func (o ContainerRegistryOutput) IdentityReference() ComputeNodeIdentityReferenc
 	return o.ApplyT(func(v ContainerRegistry) *ComputeNodeIdentityReference { return v.IdentityReference }).(ComputeNodeIdentityReferencePtrOutput)
 }
 
+// The password to log into the registry server.
 func (o ContainerRegistryOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerRegistry) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
@@ -3599,6 +3971,7 @@ func (o ContainerRegistryOutput) RegistryServer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerRegistry) *string { return v.RegistryServer }).(pulumi.StringPtrOutput)
 }
 
+// The user name to log into the registry server.
 func (o ContainerRegistryOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerRegistry) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }
@@ -3637,6 +4010,7 @@ func (o ContainerRegistryPtrOutput) IdentityReference() ComputeNodeIdentityRefer
 	}).(ComputeNodeIdentityReferencePtrOutput)
 }
 
+// The password to log into the registry server.
 func (o ContainerRegistryPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerRegistry) *string {
 		if v == nil {
@@ -3656,6 +4030,7 @@ func (o ContainerRegistryPtrOutput) RegistryServer() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The user name to log into the registry server.
 func (o ContainerRegistryPtrOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerRegistry) *string {
 		if v == nil {
@@ -3685,15 +4060,19 @@ func (o ContainerRegistryArrayOutput) Index(i pulumi.IntInput) ContainerRegistry
 	}).(ContainerRegistryOutput)
 }
 
+// A private container registry.
 type ContainerRegistryResponse struct {
 	// The reference to a user assigned identity associated with the Batch pool which a compute node will use.
 	IdentityReference *ComputeNodeIdentityReferenceResponse `pulumi:"identityReference"`
-	Password          *string                               `pulumi:"password"`
+	// The password to log into the registry server.
+	Password *string `pulumi:"password"`
 	// If omitted, the default is "docker.io".
 	RegistryServer *string `pulumi:"registryServer"`
-	UserName       *string `pulumi:"userName"`
+	// The user name to log into the registry server.
+	UserName *string `pulumi:"userName"`
 }
 
+// A private container registry.
 type ContainerRegistryResponseOutput struct{ *pulumi.OutputState }
 
 func (ContainerRegistryResponseOutput) ElementType() reflect.Type {
@@ -3713,6 +4092,7 @@ func (o ContainerRegistryResponseOutput) IdentityReference() ComputeNodeIdentity
 	return o.ApplyT(func(v ContainerRegistryResponse) *ComputeNodeIdentityReferenceResponse { return v.IdentityReference }).(ComputeNodeIdentityReferenceResponsePtrOutput)
 }
 
+// The password to log into the registry server.
 func (o ContainerRegistryResponseOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerRegistryResponse) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
@@ -3722,6 +4102,7 @@ func (o ContainerRegistryResponseOutput) RegistryServer() pulumi.StringPtrOutput
 	return o.ApplyT(func(v ContainerRegistryResponse) *string { return v.RegistryServer }).(pulumi.StringPtrOutput)
 }
 
+// The user name to log into the registry server.
 func (o ContainerRegistryResponseOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerRegistryResponse) *string { return v.UserName }).(pulumi.StringPtrOutput)
 }
@@ -3760,6 +4141,7 @@ func (o ContainerRegistryResponsePtrOutput) IdentityReference() ComputeNodeIdent
 	}).(ComputeNodeIdentityReferenceResponsePtrOutput)
 }
 
+// The password to log into the registry server.
 func (o ContainerRegistryResponsePtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerRegistryResponse) *string {
 		if v == nil {
@@ -3779,6 +4161,7 @@ func (o ContainerRegistryResponsePtrOutput) RegistryServer() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// The user name to log into the registry server.
 func (o ContainerRegistryResponsePtrOutput) UserName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerRegistryResponse) *string {
 		if v == nil {
@@ -3812,19 +4195,20 @@ func (o ContainerRegistryResponseArrayOutput) Index(i pulumi.IntInput) Container
 type DataDisk struct {
 	// Values are:
 	//
-	//  none - The caching mode for the disk is not enabled.
-	//  readOnly - The caching mode for the disk is read only.
-	//  readWrite - The caching mode for the disk is read and write.
+	// none - The caching mode for the disk is not enabled.
+	// readOnly - The caching mode for the disk is read only.
+	// readWrite - The caching mode for the disk is read and write.
 	//
-	//  The default value for caching is none. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
-	Caching    *CachingType `pulumi:"caching"`
-	DiskSizeGB int          `pulumi:"diskSizeGB"`
+	// The default value for caching is none. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
+	Caching *CachingType `pulumi:"caching"`
+	// The initial disk size in GB when creating new data disk.
+	DiskSizeGB int `pulumi:"diskSizeGB"`
 	// The lun is used to uniquely identify each data disk. If attaching multiple disks, each should have a distinct lun. The value must be between 0 and 63, inclusive.
 	Lun int `pulumi:"lun"`
 	// If omitted, the default is "Standard_LRS". Values are:
 	//
-	//  Standard_LRS - The data disk should use standard locally redundant storage.
-	//  Premium_LRS - The data disk should use premium locally redundant storage.
+	// Standard_LRS - The data disk should use standard locally redundant storage.
+	// Premium_LRS - The data disk should use premium locally redundant storage.
 	StorageAccountType *StorageAccountType `pulumi:"storageAccountType"`
 }
 
@@ -3843,19 +4227,20 @@ type DataDiskInput interface {
 type DataDiskArgs struct {
 	// Values are:
 	//
-	//  none - The caching mode for the disk is not enabled.
-	//  readOnly - The caching mode for the disk is read only.
-	//  readWrite - The caching mode for the disk is read and write.
+	// none - The caching mode for the disk is not enabled.
+	// readOnly - The caching mode for the disk is read only.
+	// readWrite - The caching mode for the disk is read and write.
 	//
-	//  The default value for caching is none. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
-	Caching    CachingTypePtrInput `pulumi:"caching"`
-	DiskSizeGB pulumi.IntInput     `pulumi:"diskSizeGB"`
+	// The default value for caching is none. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
+	Caching CachingTypePtrInput `pulumi:"caching"`
+	// The initial disk size in GB when creating new data disk.
+	DiskSizeGB pulumi.IntInput `pulumi:"diskSizeGB"`
 	// The lun is used to uniquely identify each data disk. If attaching multiple disks, each should have a distinct lun. The value must be between 0 and 63, inclusive.
 	Lun pulumi.IntInput `pulumi:"lun"`
 	// If omitted, the default is "Standard_LRS". Values are:
 	//
-	//  Standard_LRS - The data disk should use standard locally redundant storage.
-	//  Premium_LRS - The data disk should use premium locally redundant storage.
+	// Standard_LRS - The data disk should use standard locally redundant storage.
+	// Premium_LRS - The data disk should use premium locally redundant storage.
 	StorageAccountType StorageAccountTypePtrInput `pulumi:"storageAccountType"`
 }
 
@@ -3913,15 +4298,16 @@ func (o DataDiskOutput) ToDataDiskOutputWithContext(ctx context.Context) DataDis
 
 // Values are:
 //
-//	none - The caching mode for the disk is not enabled.
-//	readOnly - The caching mode for the disk is read only.
-//	readWrite - The caching mode for the disk is read and write.
+// none - The caching mode for the disk is not enabled.
+// readOnly - The caching mode for the disk is read only.
+// readWrite - The caching mode for the disk is read and write.
 //
-//	The default value for caching is none. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
+// The default value for caching is none. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
 func (o DataDiskOutput) Caching() CachingTypePtrOutput {
 	return o.ApplyT(func(v DataDisk) *CachingType { return v.Caching }).(CachingTypePtrOutput)
 }
 
+// The initial disk size in GB when creating new data disk.
 func (o DataDiskOutput) DiskSizeGB() pulumi.IntOutput {
 	return o.ApplyT(func(v DataDisk) int { return v.DiskSizeGB }).(pulumi.IntOutput)
 }
@@ -3933,8 +4319,8 @@ func (o DataDiskOutput) Lun() pulumi.IntOutput {
 
 // If omitted, the default is "Standard_LRS". Values are:
 //
-//	Standard_LRS - The data disk should use standard locally redundant storage.
-//	Premium_LRS - The data disk should use premium locally redundant storage.
+// Standard_LRS - The data disk should use standard locally redundant storage.
+// Premium_LRS - The data disk should use premium locally redundant storage.
 func (o DataDiskOutput) StorageAccountType() StorageAccountTypePtrOutput {
 	return o.ApplyT(func(v DataDisk) *StorageAccountType { return v.StorageAccountType }).(StorageAccountTypePtrOutput)
 }
@@ -3963,19 +4349,20 @@ func (o DataDiskArrayOutput) Index(i pulumi.IntInput) DataDiskOutput {
 type DataDiskResponse struct {
 	// Values are:
 	//
-	//  none - The caching mode for the disk is not enabled.
-	//  readOnly - The caching mode for the disk is read only.
-	//  readWrite - The caching mode for the disk is read and write.
+	// none - The caching mode for the disk is not enabled.
+	// readOnly - The caching mode for the disk is read only.
+	// readWrite - The caching mode for the disk is read and write.
 	//
-	//  The default value for caching is none. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
-	Caching    *string `pulumi:"caching"`
-	DiskSizeGB int     `pulumi:"diskSizeGB"`
+	// The default value for caching is none. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
+	Caching *string `pulumi:"caching"`
+	// The initial disk size in GB when creating new data disk.
+	DiskSizeGB int `pulumi:"diskSizeGB"`
 	// The lun is used to uniquely identify each data disk. If attaching multiple disks, each should have a distinct lun. The value must be between 0 and 63, inclusive.
 	Lun int `pulumi:"lun"`
 	// If omitted, the default is "Standard_LRS". Values are:
 	//
-	//  Standard_LRS - The data disk should use standard locally redundant storage.
-	//  Premium_LRS - The data disk should use premium locally redundant storage.
+	// Standard_LRS - The data disk should use standard locally redundant storage.
+	// Premium_LRS - The data disk should use premium locally redundant storage.
 	StorageAccountType *string `pulumi:"storageAccountType"`
 }
 
@@ -3996,15 +4383,16 @@ func (o DataDiskResponseOutput) ToDataDiskResponseOutputWithContext(ctx context.
 
 // Values are:
 //
-//	none - The caching mode for the disk is not enabled.
-//	readOnly - The caching mode for the disk is read only.
-//	readWrite - The caching mode for the disk is read and write.
+// none - The caching mode for the disk is not enabled.
+// readOnly - The caching mode for the disk is read only.
+// readWrite - The caching mode for the disk is read and write.
 //
-//	The default value for caching is none. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
+// The default value for caching is none. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
 func (o DataDiskResponseOutput) Caching() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataDiskResponse) *string { return v.Caching }).(pulumi.StringPtrOutput)
 }
 
+// The initial disk size in GB when creating new data disk.
 func (o DataDiskResponseOutput) DiskSizeGB() pulumi.IntOutput {
 	return o.ApplyT(func(v DataDiskResponse) int { return v.DiskSizeGB }).(pulumi.IntOutput)
 }
@@ -4016,8 +4404,8 @@ func (o DataDiskResponseOutput) Lun() pulumi.IntOutput {
 
 // If omitted, the default is "Standard_LRS". Values are:
 //
-//	Standard_LRS - The data disk should use standard locally redundant storage.
-//	Premium_LRS - The data disk should use premium locally redundant storage.
+// Standard_LRS - The data disk should use standard locally redundant storage.
+// Premium_LRS - The data disk should use premium locally redundant storage.
 func (o DataDiskResponseOutput) StorageAccountType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataDiskResponse) *string { return v.StorageAccountType }).(pulumi.StringPtrOutput)
 }
@@ -4042,22 +4430,10 @@ func (o DataDiskResponseArrayOutput) Index(i pulumi.IntInput) DataDiskResponseOu
 	}).(DataDiskResponseOutput)
 }
 
+// Deployment configuration properties.
 type DeploymentConfiguration struct {
-	// This property and virtualMachineConfiguration are mutually exclusive and one of the properties must be specified. This property cannot be specified if the Batch account was created with its poolAllocationMode property set to 'UserSubscription'.
-	CloudServiceConfiguration *CloudServiceConfiguration `pulumi:"cloudServiceConfiguration"`
-	// This property and cloudServiceConfiguration are mutually exclusive and one of the properties must be specified.
+	// The configuration for compute nodes in a pool based on the Azure Virtual Machines infrastructure.
 	VirtualMachineConfiguration *VirtualMachineConfiguration `pulumi:"virtualMachineConfiguration"`
-}
-
-// Defaults sets the appropriate defaults for DeploymentConfiguration
-func (val *DeploymentConfiguration) Defaults() *DeploymentConfiguration {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.VirtualMachineConfiguration = tmp.VirtualMachineConfiguration.Defaults()
-
-	return &tmp
 }
 
 // DeploymentConfigurationInput is an input type that accepts DeploymentConfigurationArgs and DeploymentConfigurationOutput values.
@@ -4071,22 +4447,12 @@ type DeploymentConfigurationInput interface {
 	ToDeploymentConfigurationOutputWithContext(context.Context) DeploymentConfigurationOutput
 }
 
+// Deployment configuration properties.
 type DeploymentConfigurationArgs struct {
-	// This property and virtualMachineConfiguration are mutually exclusive and one of the properties must be specified. This property cannot be specified if the Batch account was created with its poolAllocationMode property set to 'UserSubscription'.
-	CloudServiceConfiguration CloudServiceConfigurationPtrInput `pulumi:"cloudServiceConfiguration"`
-	// This property and cloudServiceConfiguration are mutually exclusive and one of the properties must be specified.
+	// The configuration for compute nodes in a pool based on the Azure Virtual Machines infrastructure.
 	VirtualMachineConfiguration VirtualMachineConfigurationPtrInput `pulumi:"virtualMachineConfiguration"`
 }
 
-// Defaults sets the appropriate defaults for DeploymentConfigurationArgs
-func (val *DeploymentConfigurationArgs) Defaults() *DeploymentConfigurationArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-
-	return &tmp
-}
 func (DeploymentConfigurationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*DeploymentConfiguration)(nil)).Elem()
 }
@@ -4140,6 +4506,7 @@ func (i *deploymentConfigurationPtrType) ToDeploymentConfigurationPtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(DeploymentConfigurationPtrOutput)
 }
 
+// Deployment configuration properties.
 type DeploymentConfigurationOutput struct{ *pulumi.OutputState }
 
 func (DeploymentConfigurationOutput) ElementType() reflect.Type {
@@ -4164,12 +4531,7 @@ func (o DeploymentConfigurationOutput) ToDeploymentConfigurationPtrOutputWithCon
 	}).(DeploymentConfigurationPtrOutput)
 }
 
-// This property and virtualMachineConfiguration are mutually exclusive and one of the properties must be specified. This property cannot be specified if the Batch account was created with its poolAllocationMode property set to 'UserSubscription'.
-func (o DeploymentConfigurationOutput) CloudServiceConfiguration() CloudServiceConfigurationPtrOutput {
-	return o.ApplyT(func(v DeploymentConfiguration) *CloudServiceConfiguration { return v.CloudServiceConfiguration }).(CloudServiceConfigurationPtrOutput)
-}
-
-// This property and cloudServiceConfiguration are mutually exclusive and one of the properties must be specified.
+// The configuration for compute nodes in a pool based on the Azure Virtual Machines infrastructure.
 func (o DeploymentConfigurationOutput) VirtualMachineConfiguration() VirtualMachineConfigurationPtrOutput {
 	return o.ApplyT(func(v DeploymentConfiguration) *VirtualMachineConfiguration { return v.VirtualMachineConfiguration }).(VirtualMachineConfigurationPtrOutput)
 }
@@ -4198,17 +4560,7 @@ func (o DeploymentConfigurationPtrOutput) Elem() DeploymentConfigurationOutput {
 	}).(DeploymentConfigurationOutput)
 }
 
-// This property and virtualMachineConfiguration are mutually exclusive and one of the properties must be specified. This property cannot be specified if the Batch account was created with its poolAllocationMode property set to 'UserSubscription'.
-func (o DeploymentConfigurationPtrOutput) CloudServiceConfiguration() CloudServiceConfigurationPtrOutput {
-	return o.ApplyT(func(v *DeploymentConfiguration) *CloudServiceConfiguration {
-		if v == nil {
-			return nil
-		}
-		return v.CloudServiceConfiguration
-	}).(CloudServiceConfigurationPtrOutput)
-}
-
-// This property and cloudServiceConfiguration are mutually exclusive and one of the properties must be specified.
+// The configuration for compute nodes in a pool based on the Azure Virtual Machines infrastructure.
 func (o DeploymentConfigurationPtrOutput) VirtualMachineConfiguration() VirtualMachineConfigurationPtrOutput {
 	return o.ApplyT(func(v *DeploymentConfiguration) *VirtualMachineConfiguration {
 		if v == nil {
@@ -4218,24 +4570,13 @@ func (o DeploymentConfigurationPtrOutput) VirtualMachineConfiguration() VirtualM
 	}).(VirtualMachineConfigurationPtrOutput)
 }
 
+// Deployment configuration properties.
 type DeploymentConfigurationResponse struct {
-	// This property and virtualMachineConfiguration are mutually exclusive and one of the properties must be specified. This property cannot be specified if the Batch account was created with its poolAllocationMode property set to 'UserSubscription'.
-	CloudServiceConfiguration *CloudServiceConfigurationResponse `pulumi:"cloudServiceConfiguration"`
-	// This property and cloudServiceConfiguration are mutually exclusive and one of the properties must be specified.
+	// The configuration for compute nodes in a pool based on the Azure Virtual Machines infrastructure.
 	VirtualMachineConfiguration *VirtualMachineConfigurationResponse `pulumi:"virtualMachineConfiguration"`
 }
 
-// Defaults sets the appropriate defaults for DeploymentConfigurationResponse
-func (val *DeploymentConfigurationResponse) Defaults() *DeploymentConfigurationResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.VirtualMachineConfiguration = tmp.VirtualMachineConfiguration.Defaults()
-
-	return &tmp
-}
-
+// Deployment configuration properties.
 type DeploymentConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (DeploymentConfigurationResponseOutput) ElementType() reflect.Type {
@@ -4250,14 +4591,7 @@ func (o DeploymentConfigurationResponseOutput) ToDeploymentConfigurationResponse
 	return o
 }
 
-// This property and virtualMachineConfiguration are mutually exclusive and one of the properties must be specified. This property cannot be specified if the Batch account was created with its poolAllocationMode property set to 'UserSubscription'.
-func (o DeploymentConfigurationResponseOutput) CloudServiceConfiguration() CloudServiceConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v DeploymentConfigurationResponse) *CloudServiceConfigurationResponse {
-		return v.CloudServiceConfiguration
-	}).(CloudServiceConfigurationResponsePtrOutput)
-}
-
-// This property and cloudServiceConfiguration are mutually exclusive and one of the properties must be specified.
+// The configuration for compute nodes in a pool based on the Azure Virtual Machines infrastructure.
 func (o DeploymentConfigurationResponseOutput) VirtualMachineConfiguration() VirtualMachineConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v DeploymentConfigurationResponse) *VirtualMachineConfigurationResponse {
 		return v.VirtualMachineConfiguration
@@ -4288,17 +4622,7 @@ func (o DeploymentConfigurationResponsePtrOutput) Elem() DeploymentConfiguration
 	}).(DeploymentConfigurationResponseOutput)
 }
 
-// This property and virtualMachineConfiguration are mutually exclusive and one of the properties must be specified. This property cannot be specified if the Batch account was created with its poolAllocationMode property set to 'UserSubscription'.
-func (o DeploymentConfigurationResponsePtrOutput) CloudServiceConfiguration() CloudServiceConfigurationResponsePtrOutput {
-	return o.ApplyT(func(v *DeploymentConfigurationResponse) *CloudServiceConfigurationResponse {
-		if v == nil {
-			return nil
-		}
-		return v.CloudServiceConfiguration
-	}).(CloudServiceConfigurationResponsePtrOutput)
-}
-
-// This property and cloudServiceConfiguration are mutually exclusive and one of the properties must be specified.
+// The configuration for compute nodes in a pool based on the Azure Virtual Machines infrastructure.
 func (o DeploymentConfigurationResponsePtrOutput) VirtualMachineConfiguration() VirtualMachineConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *DeploymentConfigurationResponse) *VirtualMachineConfigurationResponse {
 		if v == nil {
@@ -4308,8 +4632,9 @@ func (o DeploymentConfigurationResponsePtrOutput) VirtualMachineConfiguration() 
 	}).(VirtualMachineConfigurationResponsePtrOutput)
 }
 
+// Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
 type DiffDiskSettings struct {
-	// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
+	// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://learn.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://learn.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
 	Placement *DiffDiskPlacement `pulumi:"placement"`
 }
 
@@ -4324,8 +4649,9 @@ type DiffDiskSettingsInput interface {
 	ToDiffDiskSettingsOutputWithContext(context.Context) DiffDiskSettingsOutput
 }
 
+// Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
 type DiffDiskSettingsArgs struct {
-	// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
+	// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://learn.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://learn.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
 	Placement DiffDiskPlacementPtrInput `pulumi:"placement"`
 }
 
@@ -4382,6 +4708,7 @@ func (i *diffDiskSettingsPtrType) ToDiffDiskSettingsPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(DiffDiskSettingsPtrOutput)
 }
 
+// Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
 type DiffDiskSettingsOutput struct{ *pulumi.OutputState }
 
 func (DiffDiskSettingsOutput) ElementType() reflect.Type {
@@ -4406,7 +4733,7 @@ func (o DiffDiskSettingsOutput) ToDiffDiskSettingsPtrOutputWithContext(ctx conte
 	}).(DiffDiskSettingsPtrOutput)
 }
 
-// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
+// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://learn.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://learn.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
 func (o DiffDiskSettingsOutput) Placement() DiffDiskPlacementPtrOutput {
 	return o.ApplyT(func(v DiffDiskSettings) *DiffDiskPlacement { return v.Placement }).(DiffDiskPlacementPtrOutput)
 }
@@ -4435,7 +4762,7 @@ func (o DiffDiskSettingsPtrOutput) Elem() DiffDiskSettingsOutput {
 	}).(DiffDiskSettingsOutput)
 }
 
-// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
+// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://learn.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://learn.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
 func (o DiffDiskSettingsPtrOutput) Placement() DiffDiskPlacementPtrOutput {
 	return o.ApplyT(func(v *DiffDiskSettings) *DiffDiskPlacement {
 		if v == nil {
@@ -4445,11 +4772,13 @@ func (o DiffDiskSettingsPtrOutput) Placement() DiffDiskPlacementPtrOutput {
 	}).(DiffDiskPlacementPtrOutput)
 }
 
+// Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
 type DiffDiskSettingsResponse struct {
-	// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
+	// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://learn.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://learn.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
 	Placement *string `pulumi:"placement"`
 }
 
+// Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
 type DiffDiskSettingsResponseOutput struct{ *pulumi.OutputState }
 
 func (DiffDiskSettingsResponseOutput) ElementType() reflect.Type {
@@ -4464,7 +4793,7 @@ func (o DiffDiskSettingsResponseOutput) ToDiffDiskSettingsResponseOutputWithCont
 	return o
 }
 
-// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
+// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://learn.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://learn.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
 func (o DiffDiskSettingsResponseOutput) Placement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DiffDiskSettingsResponse) *string { return v.Placement }).(pulumi.StringPtrOutput)
 }
@@ -4493,7 +4822,7 @@ func (o DiffDiskSettingsResponsePtrOutput) Elem() DiffDiskSettingsResponseOutput
 	}).(DiffDiskSettingsResponseOutput)
 }
 
-// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
+// This property can be used by user in the request to choose which location the operating system should be in. e.g., cache disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer to Ephemeral OS disk size requirements for Windows VMs at https://learn.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VMs at https://learn.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements.
 func (o DiffDiskSettingsResponsePtrOutput) Placement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DiffDiskSettingsResponse) *string {
 		if v == nil {
@@ -4503,7 +4832,7 @@ func (o DiffDiskSettingsResponsePtrOutput) Placement() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The disk encryption configuration applied on compute nodes in the pool. Disk encryption configuration is not supported on Linux pool created with Virtual Machine Image or Shared Image Gallery Image.
+// The disk encryption configuration applied on compute nodes in the pool. Disk encryption configuration is not supported on Linux pool created with Virtual Machine Image or Azure Compute Gallery Image.
 type DiskEncryptionConfiguration struct {
 	// On Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and "TemporaryDisk" must be specified.
 	Targets []DiskEncryptionTarget `pulumi:"targets"`
@@ -4520,7 +4849,7 @@ type DiskEncryptionConfigurationInput interface {
 	ToDiskEncryptionConfigurationOutputWithContext(context.Context) DiskEncryptionConfigurationOutput
 }
 
-// The disk encryption configuration applied on compute nodes in the pool. Disk encryption configuration is not supported on Linux pool created with Virtual Machine Image or Shared Image Gallery Image.
+// The disk encryption configuration applied on compute nodes in the pool. Disk encryption configuration is not supported on Linux pool created with Virtual Machine Image or Azure Compute Gallery Image.
 type DiskEncryptionConfigurationArgs struct {
 	// On Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and "TemporaryDisk" must be specified.
 	Targets DiskEncryptionTargetArrayInput `pulumi:"targets"`
@@ -4579,7 +4908,7 @@ func (i *diskEncryptionConfigurationPtrType) ToDiskEncryptionConfigurationPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(DiskEncryptionConfigurationPtrOutput)
 }
 
-// The disk encryption configuration applied on compute nodes in the pool. Disk encryption configuration is not supported on Linux pool created with Virtual Machine Image or Shared Image Gallery Image.
+// The disk encryption configuration applied on compute nodes in the pool. Disk encryption configuration is not supported on Linux pool created with Virtual Machine Image or Azure Compute Gallery Image.
 type DiskEncryptionConfigurationOutput struct{ *pulumi.OutputState }
 
 func (DiskEncryptionConfigurationOutput) ElementType() reflect.Type {
@@ -4643,13 +4972,13 @@ func (o DiskEncryptionConfigurationPtrOutput) Targets() DiskEncryptionTargetArra
 	}).(DiskEncryptionTargetArrayOutput)
 }
 
-// The disk encryption configuration applied on compute nodes in the pool. Disk encryption configuration is not supported on Linux pool created with Virtual Machine Image or Shared Image Gallery Image.
+// The disk encryption configuration applied on compute nodes in the pool. Disk encryption configuration is not supported on Linux pool created with Virtual Machine Image or Azure Compute Gallery Image.
 type DiskEncryptionConfigurationResponse struct {
 	// On Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and "TemporaryDisk" must be specified.
 	Targets []string `pulumi:"targets"`
 }
 
-// The disk encryption configuration applied on compute nodes in the pool. Disk encryption configuration is not supported on Linux pool created with Virtual Machine Image or Shared Image Gallery Image.
+// The disk encryption configuration applied on compute nodes in the pool. Disk encryption configuration is not supported on Linux pool created with Virtual Machine Image or Azure Compute Gallery Image.
 type DiskEncryptionConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (DiskEncryptionConfigurationResponseOutput) ElementType() reflect.Type {
@@ -5131,8 +5460,11 @@ func (o EndpointAccessProfileResponsePtrOutput) IpRules() IPRuleResponseArrayOut
 	}).(IPRuleResponseArrayOutput)
 }
 
+// An environment variable to be set on a task process.
 type EnvironmentSetting struct {
-	Name  string  `pulumi:"name"`
+	// The name of the environment variable.
+	Name string `pulumi:"name"`
+	// The value of the environment variable.
 	Value *string `pulumi:"value"`
 }
 
@@ -5147,8 +5479,11 @@ type EnvironmentSettingInput interface {
 	ToEnvironmentSettingOutputWithContext(context.Context) EnvironmentSettingOutput
 }
 
+// An environment variable to be set on a task process.
 type EnvironmentSettingArgs struct {
-	Name  pulumi.StringInput    `pulumi:"name"`
+	// The name of the environment variable.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the environment variable.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -5189,6 +5524,7 @@ func (i EnvironmentSettingArray) ToEnvironmentSettingArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentSettingArrayOutput)
 }
 
+// An environment variable to be set on a task process.
 type EnvironmentSettingOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentSettingOutput) ElementType() reflect.Type {
@@ -5203,10 +5539,12 @@ func (o EnvironmentSettingOutput) ToEnvironmentSettingOutputWithContext(ctx cont
 	return o
 }
 
+// The name of the environment variable.
 func (o EnvironmentSettingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvironmentSetting) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The value of the environment variable.
 func (o EnvironmentSettingOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentSetting) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -5231,11 +5569,15 @@ func (o EnvironmentSettingArrayOutput) Index(i pulumi.IntInput) EnvironmentSetti
 	}).(EnvironmentSettingOutput)
 }
 
+// An environment variable to be set on a task process.
 type EnvironmentSettingResponse struct {
-	Name  string  `pulumi:"name"`
+	// The name of the environment variable.
+	Name string `pulumi:"name"`
+	// The value of the environment variable.
 	Value *string `pulumi:"value"`
 }
 
+// An environment variable to be set on a task process.
 type EnvironmentSettingResponseOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentSettingResponseOutput) ElementType() reflect.Type {
@@ -5250,10 +5592,12 @@ func (o EnvironmentSettingResponseOutput) ToEnvironmentSettingResponseOutputWith
 	return o
 }
 
+// The name of the environment variable.
 func (o EnvironmentSettingResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvironmentSettingResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The value of the environment variable.
 func (o EnvironmentSettingResponseOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentSettingResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -5278,6 +5622,7 @@ func (o EnvironmentSettingResponseArrayOutput) Index(i pulumi.IntInput) Environm
 	}).(EnvironmentSettingResponseOutput)
 }
 
+// Fixed scale settings for the pool.
 type FixedScaleSettings struct {
 	// If omitted, the default value is Requeue.
 	NodeDeallocationOption *ComputeNodeDeallocationOption `pulumi:"nodeDeallocationOption"`
@@ -5313,6 +5658,7 @@ type FixedScaleSettingsInput interface {
 	ToFixedScaleSettingsOutputWithContext(context.Context) FixedScaleSettingsOutput
 }
 
+// Fixed scale settings for the pool.
 type FixedScaleSettingsArgs struct {
 	// If omitted, the default value is Requeue.
 	NodeDeallocationOption ComputeNodeDeallocationOptionPtrInput `pulumi:"nodeDeallocationOption"`
@@ -5388,6 +5734,7 @@ func (i *fixedScaleSettingsPtrType) ToFixedScaleSettingsPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(FixedScaleSettingsPtrOutput)
 }
 
+// Fixed scale settings for the pool.
 type FixedScaleSettingsOutput struct{ *pulumi.OutputState }
 
 func (FixedScaleSettingsOutput) ElementType() reflect.Type {
@@ -5496,6 +5843,7 @@ func (o FixedScaleSettingsPtrOutput) TargetLowPriorityNodes() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
+// Fixed scale settings for the pool.
 type FixedScaleSettingsResponse struct {
 	// The default value is 15 minutes. Timeout values use ISO 8601 format. For example, use PT10M for 10 minutes. The minimum value is 5 minutes. If you specify a value less than 5 minutes, the Batch service rejects the request with an error; if you are calling the REST API directly, the HTTP status code is 400 (Bad Request).
 	ResizeTimeout *string `pulumi:"resizeTimeout"`
@@ -5518,6 +5866,7 @@ func (val *FixedScaleSettingsResponse) Defaults() *FixedScaleSettingsResponse {
 	return &tmp
 }
 
+// Fixed scale settings for the pool.
 type FixedScaleSettingsResponseOutput struct{ *pulumi.OutputState }
 
 func (FixedScaleSettingsResponseOutput) ElementType() reflect.Type {
@@ -5763,30 +6112,22 @@ func (o IPRuleResponseArrayOutput) Index(i pulumi.IntInput) IPRuleResponseOutput
 	}).(IPRuleResponseOutput)
 }
 
+// A reference to an Azure Virtual Machines Marketplace image or the Azure Image resource of a custom Virtual Machine. To get the list of all imageReferences verified by Azure Batch, see the 'List supported node agent SKUs' operation.
 type ImageReference struct {
-	// This property is mutually exclusive with other properties. The Shared Image Gallery image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+	// This property is mutually exclusive with other properties and can be fetched from community gallery image GET call.
+	CommunityGalleryImageId *string `pulumi:"communityGalleryImageId"`
+	// This property is mutually exclusive with other properties. The Azure Compute Gallery Image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
 	Id *string `pulumi:"id"`
 	// For example, UbuntuServer or WindowsServer.
 	Offer *string `pulumi:"offer"`
 	// For example, Canonical or MicrosoftWindowsServer.
 	Publisher *string `pulumi:"publisher"`
+	// This property is mutually exclusive with other properties and can be fetched from shared gallery image GET call.
+	SharedGalleryImageId *string `pulumi:"sharedGalleryImageId"`
 	// For example, 18.04-LTS or 2022-datacenter.
 	Sku *string `pulumi:"sku"`
 	// A value of 'latest' can be specified to select the latest version of an image. If omitted, the default is 'latest'.
 	Version *string `pulumi:"version"`
-}
-
-// Defaults sets the appropriate defaults for ImageReference
-func (val *ImageReference) Defaults() *ImageReference {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Version == nil {
-		version_ := "latest"
-		tmp.Version = &version_
-	}
-	return &tmp
 }
 
 // ImageReferenceInput is an input type that accepts ImageReferenceArgs and ImageReferenceOutput values.
@@ -5800,30 +6141,24 @@ type ImageReferenceInput interface {
 	ToImageReferenceOutputWithContext(context.Context) ImageReferenceOutput
 }
 
+// A reference to an Azure Virtual Machines Marketplace image or the Azure Image resource of a custom Virtual Machine. To get the list of all imageReferences verified by Azure Batch, see the 'List supported node agent SKUs' operation.
 type ImageReferenceArgs struct {
-	// This property is mutually exclusive with other properties. The Shared Image Gallery image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+	// This property is mutually exclusive with other properties and can be fetched from community gallery image GET call.
+	CommunityGalleryImageId pulumi.StringPtrInput `pulumi:"communityGalleryImageId"`
+	// This property is mutually exclusive with other properties. The Azure Compute Gallery Image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// For example, UbuntuServer or WindowsServer.
 	Offer pulumi.StringPtrInput `pulumi:"offer"`
 	// For example, Canonical or MicrosoftWindowsServer.
 	Publisher pulumi.StringPtrInput `pulumi:"publisher"`
+	// This property is mutually exclusive with other properties and can be fetched from shared gallery image GET call.
+	SharedGalleryImageId pulumi.StringPtrInput `pulumi:"sharedGalleryImageId"`
 	// For example, 18.04-LTS or 2022-datacenter.
 	Sku pulumi.StringPtrInput `pulumi:"sku"`
 	// A value of 'latest' can be specified to select the latest version of an image. If omitted, the default is 'latest'.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
-// Defaults sets the appropriate defaults for ImageReferenceArgs
-func (val *ImageReferenceArgs) Defaults() *ImageReferenceArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Version == nil {
-		tmp.Version = pulumi.StringPtr("latest")
-	}
-	return &tmp
-}
 func (ImageReferenceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ImageReference)(nil)).Elem()
 }
@@ -5877,6 +6212,7 @@ func (i *imageReferencePtrType) ToImageReferencePtrOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ImageReferencePtrOutput)
 }
 
+// A reference to an Azure Virtual Machines Marketplace image or the Azure Image resource of a custom Virtual Machine. To get the list of all imageReferences verified by Azure Batch, see the 'List supported node agent SKUs' operation.
 type ImageReferenceOutput struct{ *pulumi.OutputState }
 
 func (ImageReferenceOutput) ElementType() reflect.Type {
@@ -5901,7 +6237,12 @@ func (o ImageReferenceOutput) ToImageReferencePtrOutputWithContext(ctx context.C
 	}).(ImageReferencePtrOutput)
 }
 
-// This property is mutually exclusive with other properties. The Shared Image Gallery image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+// This property is mutually exclusive with other properties and can be fetched from community gallery image GET call.
+func (o ImageReferenceOutput) CommunityGalleryImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageReference) *string { return v.CommunityGalleryImageId }).(pulumi.StringPtrOutput)
+}
+
+// This property is mutually exclusive with other properties. The Azure Compute Gallery Image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
 func (o ImageReferenceOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageReference) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -5914,6 +6255,11 @@ func (o ImageReferenceOutput) Offer() pulumi.StringPtrOutput {
 // For example, Canonical or MicrosoftWindowsServer.
 func (o ImageReferenceOutput) Publisher() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageReference) *string { return v.Publisher }).(pulumi.StringPtrOutput)
+}
+
+// This property is mutually exclusive with other properties and can be fetched from shared gallery image GET call.
+func (o ImageReferenceOutput) SharedGalleryImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageReference) *string { return v.SharedGalleryImageId }).(pulumi.StringPtrOutput)
 }
 
 // For example, 18.04-LTS or 2022-datacenter.
@@ -5950,7 +6296,17 @@ func (o ImageReferencePtrOutput) Elem() ImageReferenceOutput {
 	}).(ImageReferenceOutput)
 }
 
-// This property is mutually exclusive with other properties. The Shared Image Gallery image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+// This property is mutually exclusive with other properties and can be fetched from community gallery image GET call.
+func (o ImageReferencePtrOutput) CommunityGalleryImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommunityGalleryImageId
+	}).(pulumi.StringPtrOutput)
+}
+
+// This property is mutually exclusive with other properties. The Azure Compute Gallery Image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
 func (o ImageReferencePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageReference) *string {
 		if v == nil {
@@ -5980,6 +6336,16 @@ func (o ImageReferencePtrOutput) Publisher() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// This property is mutually exclusive with other properties and can be fetched from shared gallery image GET call.
+func (o ImageReferencePtrOutput) SharedGalleryImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SharedGalleryImageId
+	}).(pulumi.StringPtrOutput)
+}
+
 // For example, 18.04-LTS or 2022-datacenter.
 func (o ImageReferencePtrOutput) Sku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageReference) *string {
@@ -6000,32 +6366,25 @@ func (o ImageReferencePtrOutput) Version() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A reference to an Azure Virtual Machines Marketplace image or the Azure Image resource of a custom Virtual Machine. To get the list of all imageReferences verified by Azure Batch, see the 'List supported node agent SKUs' operation.
 type ImageReferenceResponse struct {
-	// This property is mutually exclusive with other properties. The Shared Image Gallery image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+	// This property is mutually exclusive with other properties and can be fetched from community gallery image GET call.
+	CommunityGalleryImageId *string `pulumi:"communityGalleryImageId"`
+	// This property is mutually exclusive with other properties. The Azure Compute Gallery Image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
 	Id *string `pulumi:"id"`
 	// For example, UbuntuServer or WindowsServer.
 	Offer *string `pulumi:"offer"`
 	// For example, Canonical or MicrosoftWindowsServer.
 	Publisher *string `pulumi:"publisher"`
+	// This property is mutually exclusive with other properties and can be fetched from shared gallery image GET call.
+	SharedGalleryImageId *string `pulumi:"sharedGalleryImageId"`
 	// For example, 18.04-LTS or 2022-datacenter.
 	Sku *string `pulumi:"sku"`
 	// A value of 'latest' can be specified to select the latest version of an image. If omitted, the default is 'latest'.
 	Version *string `pulumi:"version"`
 }
 
-// Defaults sets the appropriate defaults for ImageReferenceResponse
-func (val *ImageReferenceResponse) Defaults() *ImageReferenceResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Version == nil {
-		version_ := "latest"
-		tmp.Version = &version_
-	}
-	return &tmp
-}
-
+// A reference to an Azure Virtual Machines Marketplace image or the Azure Image resource of a custom Virtual Machine. To get the list of all imageReferences verified by Azure Batch, see the 'List supported node agent SKUs' operation.
 type ImageReferenceResponseOutput struct{ *pulumi.OutputState }
 
 func (ImageReferenceResponseOutput) ElementType() reflect.Type {
@@ -6040,7 +6399,12 @@ func (o ImageReferenceResponseOutput) ToImageReferenceResponseOutputWithContext(
 	return o
 }
 
-// This property is mutually exclusive with other properties. The Shared Image Gallery image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+// This property is mutually exclusive with other properties and can be fetched from community gallery image GET call.
+func (o ImageReferenceResponseOutput) CommunityGalleryImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageReferenceResponse) *string { return v.CommunityGalleryImageId }).(pulumi.StringPtrOutput)
+}
+
+// This property is mutually exclusive with other properties. The Azure Compute Gallery Image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
 func (o ImageReferenceResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageReferenceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -6053,6 +6417,11 @@ func (o ImageReferenceResponseOutput) Offer() pulumi.StringPtrOutput {
 // For example, Canonical or MicrosoftWindowsServer.
 func (o ImageReferenceResponseOutput) Publisher() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ImageReferenceResponse) *string { return v.Publisher }).(pulumi.StringPtrOutput)
+}
+
+// This property is mutually exclusive with other properties and can be fetched from shared gallery image GET call.
+func (o ImageReferenceResponseOutput) SharedGalleryImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageReferenceResponse) *string { return v.SharedGalleryImageId }).(pulumi.StringPtrOutput)
 }
 
 // For example, 18.04-LTS or 2022-datacenter.
@@ -6089,7 +6458,17 @@ func (o ImageReferenceResponsePtrOutput) Elem() ImageReferenceResponseOutput {
 	}).(ImageReferenceResponseOutput)
 }
 
-// This property is mutually exclusive with other properties. The Shared Image Gallery image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
+// This property is mutually exclusive with other properties and can be fetched from community gallery image GET call.
+func (o ImageReferenceResponsePtrOutput) CommunityGalleryImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommunityGalleryImageId
+	}).(pulumi.StringPtrOutput)
+}
+
+// This property is mutually exclusive with other properties. The Azure Compute Gallery Image must have replicas in the same region as the Azure Batch account. For information about the firewall settings for the Batch node agent to communicate with the Batch service see https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration.
 func (o ImageReferenceResponsePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageReferenceResponse) *string {
 		if v == nil {
@@ -6119,6 +6498,16 @@ func (o ImageReferenceResponsePtrOutput) Publisher() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// This property is mutually exclusive with other properties and can be fetched from shared gallery image GET call.
+func (o ImageReferenceResponsePtrOutput) SharedGalleryImageId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SharedGalleryImageId
+	}).(pulumi.StringPtrOutput)
+}
+
 // For example, 18.04-LTS or 2022-datacenter.
 func (o ImageReferenceResponsePtrOutput) Sku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ImageReferenceResponse) *string {
@@ -6139,8 +6528,9 @@ func (o ImageReferenceResponsePtrOutput) Version() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A inbound NAT pool that can be used to address specific ports on compute nodes in a Batch pool externally.
 type InboundNatPool struct {
-	// This must be unique within a Batch pool. Acceptable values are between 1 and 65535 except for 22, 3389, 29876 and 29877 as these are reserved. If any reserved values are provided the request fails with HTTP status code 400.
+	// This must be unique within a Batch pool. Acceptable values are between 1 and 65535 except for 29876 and 29877 as these are reserved. If any reserved values are provided the request fails with HTTP status code 400.
 	BackendPort int `pulumi:"backendPort"`
 	// Acceptable values range between 1 and 65534 except ports from 50000 to 55000 which are reserved by the Batch service. All ranges within a pool must be distinct and cannot overlap. If any reserved or overlapping values are provided the request fails with HTTP status code 400.
 	FrontendPortRangeEnd int `pulumi:"frontendPortRangeEnd"`
@@ -6150,7 +6540,8 @@ type InboundNatPool struct {
 	Name string `pulumi:"name"`
 	// The maximum number of rules that can be specified across all the endpoints on a Batch pool is 25. If no network security group rules are specified, a default rule will be created to allow inbound access to the specified backendPort. If the maximum number of network security group rules is exceeded the request fails with HTTP status code 400.
 	NetworkSecurityGroupRules []NetworkSecurityGroupRule `pulumi:"networkSecurityGroupRules"`
-	Protocol                  InboundEndpointProtocol    `pulumi:"protocol"`
+	// The protocol of the endpoint.
+	Protocol InboundEndpointProtocol `pulumi:"protocol"`
 }
 
 // InboundNatPoolInput is an input type that accepts InboundNatPoolArgs and InboundNatPoolOutput values.
@@ -6164,8 +6555,9 @@ type InboundNatPoolInput interface {
 	ToInboundNatPoolOutputWithContext(context.Context) InboundNatPoolOutput
 }
 
+// A inbound NAT pool that can be used to address specific ports on compute nodes in a Batch pool externally.
 type InboundNatPoolArgs struct {
-	// This must be unique within a Batch pool. Acceptable values are between 1 and 65535 except for 22, 3389, 29876 and 29877 as these are reserved. If any reserved values are provided the request fails with HTTP status code 400.
+	// This must be unique within a Batch pool. Acceptable values are between 1 and 65535 except for 29876 and 29877 as these are reserved. If any reserved values are provided the request fails with HTTP status code 400.
 	BackendPort pulumi.IntInput `pulumi:"backendPort"`
 	// Acceptable values range between 1 and 65534 except ports from 50000 to 55000 which are reserved by the Batch service. All ranges within a pool must be distinct and cannot overlap. If any reserved or overlapping values are provided the request fails with HTTP status code 400.
 	FrontendPortRangeEnd pulumi.IntInput `pulumi:"frontendPortRangeEnd"`
@@ -6175,7 +6567,8 @@ type InboundNatPoolArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The maximum number of rules that can be specified across all the endpoints on a Batch pool is 25. If no network security group rules are specified, a default rule will be created to allow inbound access to the specified backendPort. If the maximum number of network security group rules is exceeded the request fails with HTTP status code 400.
 	NetworkSecurityGroupRules NetworkSecurityGroupRuleArrayInput `pulumi:"networkSecurityGroupRules"`
-	Protocol                  InboundEndpointProtocolInput       `pulumi:"protocol"`
+	// The protocol of the endpoint.
+	Protocol InboundEndpointProtocolInput `pulumi:"protocol"`
 }
 
 func (InboundNatPoolArgs) ElementType() reflect.Type {
@@ -6215,6 +6608,7 @@ func (i InboundNatPoolArray) ToInboundNatPoolArrayOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(InboundNatPoolArrayOutput)
 }
 
+// A inbound NAT pool that can be used to address specific ports on compute nodes in a Batch pool externally.
 type InboundNatPoolOutput struct{ *pulumi.OutputState }
 
 func (InboundNatPoolOutput) ElementType() reflect.Type {
@@ -6229,7 +6623,7 @@ func (o InboundNatPoolOutput) ToInboundNatPoolOutputWithContext(ctx context.Cont
 	return o
 }
 
-// This must be unique within a Batch pool. Acceptable values are between 1 and 65535 except for 22, 3389, 29876 and 29877 as these are reserved. If any reserved values are provided the request fails with HTTP status code 400.
+// This must be unique within a Batch pool. Acceptable values are between 1 and 65535 except for 29876 and 29877 as these are reserved. If any reserved values are provided the request fails with HTTP status code 400.
 func (o InboundNatPoolOutput) BackendPort() pulumi.IntOutput {
 	return o.ApplyT(func(v InboundNatPool) int { return v.BackendPort }).(pulumi.IntOutput)
 }
@@ -6254,6 +6648,7 @@ func (o InboundNatPoolOutput) NetworkSecurityGroupRules() NetworkSecurityGroupRu
 	return o.ApplyT(func(v InboundNatPool) []NetworkSecurityGroupRule { return v.NetworkSecurityGroupRules }).(NetworkSecurityGroupRuleArrayOutput)
 }
 
+// The protocol of the endpoint.
 func (o InboundNatPoolOutput) Protocol() InboundEndpointProtocolOutput {
 	return o.ApplyT(func(v InboundNatPool) InboundEndpointProtocol { return v.Protocol }).(InboundEndpointProtocolOutput)
 }
@@ -6278,8 +6673,9 @@ func (o InboundNatPoolArrayOutput) Index(i pulumi.IntInput) InboundNatPoolOutput
 	}).(InboundNatPoolOutput)
 }
 
+// A inbound NAT pool that can be used to address specific ports on compute nodes in a Batch pool externally.
 type InboundNatPoolResponse struct {
-	// This must be unique within a Batch pool. Acceptable values are between 1 and 65535 except for 22, 3389, 29876 and 29877 as these are reserved. If any reserved values are provided the request fails with HTTP status code 400.
+	// This must be unique within a Batch pool. Acceptable values are between 1 and 65535 except for 29876 and 29877 as these are reserved. If any reserved values are provided the request fails with HTTP status code 400.
 	BackendPort int `pulumi:"backendPort"`
 	// Acceptable values range between 1 and 65534 except ports from 50000 to 55000 which are reserved by the Batch service. All ranges within a pool must be distinct and cannot overlap. If any reserved or overlapping values are provided the request fails with HTTP status code 400.
 	FrontendPortRangeEnd int `pulumi:"frontendPortRangeEnd"`
@@ -6289,9 +6685,11 @@ type InboundNatPoolResponse struct {
 	Name string `pulumi:"name"`
 	// The maximum number of rules that can be specified across all the endpoints on a Batch pool is 25. If no network security group rules are specified, a default rule will be created to allow inbound access to the specified backendPort. If the maximum number of network security group rules is exceeded the request fails with HTTP status code 400.
 	NetworkSecurityGroupRules []NetworkSecurityGroupRuleResponse `pulumi:"networkSecurityGroupRules"`
-	Protocol                  string                             `pulumi:"protocol"`
+	// The protocol of the endpoint.
+	Protocol string `pulumi:"protocol"`
 }
 
+// A inbound NAT pool that can be used to address specific ports on compute nodes in a Batch pool externally.
 type InboundNatPoolResponseOutput struct{ *pulumi.OutputState }
 
 func (InboundNatPoolResponseOutput) ElementType() reflect.Type {
@@ -6306,7 +6704,7 @@ func (o InboundNatPoolResponseOutput) ToInboundNatPoolResponseOutputWithContext(
 	return o
 }
 
-// This must be unique within a Batch pool. Acceptable values are between 1 and 65535 except for 22, 3389, 29876 and 29877 as these are reserved. If any reserved values are provided the request fails with HTTP status code 400.
+// This must be unique within a Batch pool. Acceptable values are between 1 and 65535 except for 29876 and 29877 as these are reserved. If any reserved values are provided the request fails with HTTP status code 400.
 func (o InboundNatPoolResponseOutput) BackendPort() pulumi.IntOutput {
 	return o.ApplyT(func(v InboundNatPoolResponse) int { return v.BackendPort }).(pulumi.IntOutput)
 }
@@ -6331,6 +6729,7 @@ func (o InboundNatPoolResponseOutput) NetworkSecurityGroupRules() NetworkSecurit
 	return o.ApplyT(func(v InboundNatPoolResponse) []NetworkSecurityGroupRuleResponse { return v.NetworkSecurityGroupRules }).(NetworkSecurityGroupRuleResponseArrayOutput)
 }
 
+// The protocol of the endpoint.
 func (o InboundNatPoolResponseOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v InboundNatPoolResponse) string { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -6359,9 +6758,9 @@ func (o InboundNatPoolResponseArrayOutput) Index(i pulumi.IntInput) InboundNatPo
 type KeyVaultProperties struct {
 	// Full path to the secret with or without version. Example https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053. or https://mykeyvault.vault.azure.net/keys/testkey. To be usable the following prerequisites must be met:
 	//
-	//  The Batch Account has a System Assigned identity
-	//  The account identity has been granted Key/Get, Key/Unwrap and Key/Wrap permissions
-	//  The KeyVault has soft-delete and purge protection enabled
+	// The Batch Account has a System Assigned identity
+	// The account identity has been granted Key/Get, Key/Unwrap and Key/Wrap permissions
+	// The KeyVault has soft-delete and purge protection enabled
 	KeyIdentifier *string `pulumi:"keyIdentifier"`
 }
 
@@ -6380,9 +6779,9 @@ type KeyVaultPropertiesInput interface {
 type KeyVaultPropertiesArgs struct {
 	// Full path to the secret with or without version. Example https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053. or https://mykeyvault.vault.azure.net/keys/testkey. To be usable the following prerequisites must be met:
 	//
-	//  The Batch Account has a System Assigned identity
-	//  The account identity has been granted Key/Get, Key/Unwrap and Key/Wrap permissions
-	//  The KeyVault has soft-delete and purge protection enabled
+	// The Batch Account has a System Assigned identity
+	// The account identity has been granted Key/Get, Key/Unwrap and Key/Wrap permissions
+	// The KeyVault has soft-delete and purge protection enabled
 	KeyIdentifier pulumi.StringPtrInput `pulumi:"keyIdentifier"`
 }
 
@@ -6466,9 +6865,9 @@ func (o KeyVaultPropertiesOutput) ToKeyVaultPropertiesPtrOutputWithContext(ctx c
 
 // Full path to the secret with or without version. Example https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053. or https://mykeyvault.vault.azure.net/keys/testkey. To be usable the following prerequisites must be met:
 //
-//	The Batch Account has a System Assigned identity
-//	The account identity has been granted Key/Get, Key/Unwrap and Key/Wrap permissions
-//	The KeyVault has soft-delete and purge protection enabled
+// The Batch Account has a System Assigned identity
+// The account identity has been granted Key/Get, Key/Unwrap and Key/Wrap permissions
+// The KeyVault has soft-delete and purge protection enabled
 func (o KeyVaultPropertiesOutput) KeyIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyVaultProperties) *string { return v.KeyIdentifier }).(pulumi.StringPtrOutput)
 }
@@ -6499,9 +6898,9 @@ func (o KeyVaultPropertiesPtrOutput) Elem() KeyVaultPropertiesOutput {
 
 // Full path to the secret with or without version. Example https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053. or https://mykeyvault.vault.azure.net/keys/testkey. To be usable the following prerequisites must be met:
 //
-//	The Batch Account has a System Assigned identity
-//	The account identity has been granted Key/Get, Key/Unwrap and Key/Wrap permissions
-//	The KeyVault has soft-delete and purge protection enabled
+// The Batch Account has a System Assigned identity
+// The account identity has been granted Key/Get, Key/Unwrap and Key/Wrap permissions
+// The KeyVault has soft-delete and purge protection enabled
 func (o KeyVaultPropertiesPtrOutput) KeyIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KeyVaultProperties) *string {
 		if v == nil {
@@ -6515,9 +6914,9 @@ func (o KeyVaultPropertiesPtrOutput) KeyIdentifier() pulumi.StringPtrOutput {
 type KeyVaultPropertiesResponse struct {
 	// Full path to the secret with or without version. Example https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053. or https://mykeyvault.vault.azure.net/keys/testkey. To be usable the following prerequisites must be met:
 	//
-	//  The Batch Account has a System Assigned identity
-	//  The account identity has been granted Key/Get, Key/Unwrap and Key/Wrap permissions
-	//  The KeyVault has soft-delete and purge protection enabled
+	// The Batch Account has a System Assigned identity
+	// The account identity has been granted Key/Get, Key/Unwrap and Key/Wrap permissions
+	// The KeyVault has soft-delete and purge protection enabled
 	KeyIdentifier *string `pulumi:"keyIdentifier"`
 }
 
@@ -6538,9 +6937,9 @@ func (o KeyVaultPropertiesResponseOutput) ToKeyVaultPropertiesResponseOutputWith
 
 // Full path to the secret with or without version. Example https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053. or https://mykeyvault.vault.azure.net/keys/testkey. To be usable the following prerequisites must be met:
 //
-//	The Batch Account has a System Assigned identity
-//	The account identity has been granted Key/Get, Key/Unwrap and Key/Wrap permissions
-//	The KeyVault has soft-delete and purge protection enabled
+// The Batch Account has a System Assigned identity
+// The account identity has been granted Key/Get, Key/Unwrap and Key/Wrap permissions
+// The KeyVault has soft-delete and purge protection enabled
 func (o KeyVaultPropertiesResponseOutput) KeyIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyVaultPropertiesResponse) *string { return v.KeyIdentifier }).(pulumi.StringPtrOutput)
 }
@@ -6571,9 +6970,9 @@ func (o KeyVaultPropertiesResponsePtrOutput) Elem() KeyVaultPropertiesResponseOu
 
 // Full path to the secret with or without version. Example https://mykeyvault.vault.azure.net/keys/testkey/6e34a81fef704045975661e297a4c053. or https://mykeyvault.vault.azure.net/keys/testkey. To be usable the following prerequisites must be met:
 //
-//	The Batch Account has a System Assigned identity
-//	The account identity has been granted Key/Get, Key/Unwrap and Key/Wrap permissions
-//	The KeyVault has soft-delete and purge protection enabled
+// The Batch Account has a System Assigned identity
+// The account identity has been granted Key/Get, Key/Unwrap and Key/Wrap permissions
+// The KeyVault has soft-delete and purge protection enabled
 func (o KeyVaultPropertiesResponsePtrOutput) KeyIdentifier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KeyVaultPropertiesResponse) *string {
 		if v == nil {
@@ -6775,6 +7174,7 @@ func (o KeyVaultReferenceResponseOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVaultReferenceResponse) string { return v.Url }).(pulumi.StringOutput)
 }
 
+// Properties used to create a user account on a Linux node.
 type LinuxUserConfiguration struct {
 	// The uid and gid properties must be specified together or not at all. If not specified the underlying operating system picks the gid.
 	Gid *int `pulumi:"gid"`
@@ -6795,6 +7195,7 @@ type LinuxUserConfigurationInput interface {
 	ToLinuxUserConfigurationOutputWithContext(context.Context) LinuxUserConfigurationOutput
 }
 
+// Properties used to create a user account on a Linux node.
 type LinuxUserConfigurationArgs struct {
 	// The uid and gid properties must be specified together or not at all. If not specified the underlying operating system picks the gid.
 	Gid pulumi.IntPtrInput `pulumi:"gid"`
@@ -6857,6 +7258,7 @@ func (i *linuxUserConfigurationPtrType) ToLinuxUserConfigurationPtrOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(LinuxUserConfigurationPtrOutput)
 }
 
+// Properties used to create a user account on a Linux node.
 type LinuxUserConfigurationOutput struct{ *pulumi.OutputState }
 
 func (LinuxUserConfigurationOutput) ElementType() reflect.Type {
@@ -6950,6 +7352,7 @@ func (o LinuxUserConfigurationPtrOutput) Uid() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Properties used to create a user account on a Linux node.
 type LinuxUserConfigurationResponse struct {
 	// The uid and gid properties must be specified together or not at all. If not specified the underlying operating system picks the gid.
 	Gid *int `pulumi:"gid"`
@@ -6959,6 +7362,7 @@ type LinuxUserConfigurationResponse struct {
 	Uid *int `pulumi:"uid"`
 }
 
+// Properties used to create a user account on a Linux node.
 type LinuxUserConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (LinuxUserConfigurationResponseOutput) ElementType() reflect.Type {
@@ -7042,9 +7446,247 @@ func (o LinuxUserConfigurationResponsePtrOutput) Uid() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// The managed disk parameters.
+type ManagedDisk struct {
+	// Specifies the security profile settings for the managed disk. **Note**: It can only be set for Confidential VMs and is required when using Confidential VMs.
+	SecurityProfile *VMDiskSecurityProfile `pulumi:"securityProfile"`
+	// The storage account type for use in creating data disks or OS disk.
+	StorageAccountType *StorageAccountType `pulumi:"storageAccountType"`
+}
+
+// ManagedDiskInput is an input type that accepts ManagedDiskArgs and ManagedDiskOutput values.
+// You can construct a concrete instance of `ManagedDiskInput` via:
+//
+//	ManagedDiskArgs{...}
+type ManagedDiskInput interface {
+	pulumi.Input
+
+	ToManagedDiskOutput() ManagedDiskOutput
+	ToManagedDiskOutputWithContext(context.Context) ManagedDiskOutput
+}
+
+// The managed disk parameters.
+type ManagedDiskArgs struct {
+	// Specifies the security profile settings for the managed disk. **Note**: It can only be set for Confidential VMs and is required when using Confidential VMs.
+	SecurityProfile VMDiskSecurityProfilePtrInput `pulumi:"securityProfile"`
+	// The storage account type for use in creating data disks or OS disk.
+	StorageAccountType StorageAccountTypePtrInput `pulumi:"storageAccountType"`
+}
+
+func (ManagedDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedDisk)(nil)).Elem()
+}
+
+func (i ManagedDiskArgs) ToManagedDiskOutput() ManagedDiskOutput {
+	return i.ToManagedDiskOutputWithContext(context.Background())
+}
+
+func (i ManagedDiskArgs) ToManagedDiskOutputWithContext(ctx context.Context) ManagedDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedDiskOutput)
+}
+
+func (i ManagedDiskArgs) ToManagedDiskPtrOutput() ManagedDiskPtrOutput {
+	return i.ToManagedDiskPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedDiskArgs) ToManagedDiskPtrOutputWithContext(ctx context.Context) ManagedDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedDiskOutput).ToManagedDiskPtrOutputWithContext(ctx)
+}
+
+// ManagedDiskPtrInput is an input type that accepts ManagedDiskArgs, ManagedDiskPtr and ManagedDiskPtrOutput values.
+// You can construct a concrete instance of `ManagedDiskPtrInput` via:
+//
+//	        ManagedDiskArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedDiskPtrInput interface {
+	pulumi.Input
+
+	ToManagedDiskPtrOutput() ManagedDiskPtrOutput
+	ToManagedDiskPtrOutputWithContext(context.Context) ManagedDiskPtrOutput
+}
+
+type managedDiskPtrType ManagedDiskArgs
+
+func ManagedDiskPtr(v *ManagedDiskArgs) ManagedDiskPtrInput {
+	return (*managedDiskPtrType)(v)
+}
+
+func (*managedDiskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedDisk)(nil)).Elem()
+}
+
+func (i *managedDiskPtrType) ToManagedDiskPtrOutput() ManagedDiskPtrOutput {
+	return i.ToManagedDiskPtrOutputWithContext(context.Background())
+}
+
+func (i *managedDiskPtrType) ToManagedDiskPtrOutputWithContext(ctx context.Context) ManagedDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedDiskPtrOutput)
+}
+
+// The managed disk parameters.
+type ManagedDiskOutput struct{ *pulumi.OutputState }
+
+func (ManagedDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedDisk)(nil)).Elem()
+}
+
+func (o ManagedDiskOutput) ToManagedDiskOutput() ManagedDiskOutput {
+	return o
+}
+
+func (o ManagedDiskOutput) ToManagedDiskOutputWithContext(ctx context.Context) ManagedDiskOutput {
+	return o
+}
+
+func (o ManagedDiskOutput) ToManagedDiskPtrOutput() ManagedDiskPtrOutput {
+	return o.ToManagedDiskPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedDiskOutput) ToManagedDiskPtrOutputWithContext(ctx context.Context) ManagedDiskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedDisk) *ManagedDisk {
+		return &v
+	}).(ManagedDiskPtrOutput)
+}
+
+// Specifies the security profile settings for the managed disk. **Note**: It can only be set for Confidential VMs and is required when using Confidential VMs.
+func (o ManagedDiskOutput) SecurityProfile() VMDiskSecurityProfilePtrOutput {
+	return o.ApplyT(func(v ManagedDisk) *VMDiskSecurityProfile { return v.SecurityProfile }).(VMDiskSecurityProfilePtrOutput)
+}
+
+// The storage account type for use in creating data disks or OS disk.
+func (o ManagedDiskOutput) StorageAccountType() StorageAccountTypePtrOutput {
+	return o.ApplyT(func(v ManagedDisk) *StorageAccountType { return v.StorageAccountType }).(StorageAccountTypePtrOutput)
+}
+
+type ManagedDiskPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedDiskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedDisk)(nil)).Elem()
+}
+
+func (o ManagedDiskPtrOutput) ToManagedDiskPtrOutput() ManagedDiskPtrOutput {
+	return o
+}
+
+func (o ManagedDiskPtrOutput) ToManagedDiskPtrOutputWithContext(ctx context.Context) ManagedDiskPtrOutput {
+	return o
+}
+
+func (o ManagedDiskPtrOutput) Elem() ManagedDiskOutput {
+	return o.ApplyT(func(v *ManagedDisk) ManagedDisk {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedDisk
+		return ret
+	}).(ManagedDiskOutput)
+}
+
+// Specifies the security profile settings for the managed disk. **Note**: It can only be set for Confidential VMs and is required when using Confidential VMs.
+func (o ManagedDiskPtrOutput) SecurityProfile() VMDiskSecurityProfilePtrOutput {
+	return o.ApplyT(func(v *ManagedDisk) *VMDiskSecurityProfile {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityProfile
+	}).(VMDiskSecurityProfilePtrOutput)
+}
+
+// The storage account type for use in creating data disks or OS disk.
+func (o ManagedDiskPtrOutput) StorageAccountType() StorageAccountTypePtrOutput {
+	return o.ApplyT(func(v *ManagedDisk) *StorageAccountType {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountType
+	}).(StorageAccountTypePtrOutput)
+}
+
+// The managed disk parameters.
+type ManagedDiskResponse struct {
+	// Specifies the security profile settings for the managed disk. **Note**: It can only be set for Confidential VMs and is required when using Confidential VMs.
+	SecurityProfile *VMDiskSecurityProfileResponse `pulumi:"securityProfile"`
+	// The storage account type for use in creating data disks or OS disk.
+	StorageAccountType *string `pulumi:"storageAccountType"`
+}
+
+// The managed disk parameters.
+type ManagedDiskResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedDiskResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedDiskResponse)(nil)).Elem()
+}
+
+func (o ManagedDiskResponseOutput) ToManagedDiskResponseOutput() ManagedDiskResponseOutput {
+	return o
+}
+
+func (o ManagedDiskResponseOutput) ToManagedDiskResponseOutputWithContext(ctx context.Context) ManagedDiskResponseOutput {
+	return o
+}
+
+// Specifies the security profile settings for the managed disk. **Note**: It can only be set for Confidential VMs and is required when using Confidential VMs.
+func (o ManagedDiskResponseOutput) SecurityProfile() VMDiskSecurityProfileResponsePtrOutput {
+	return o.ApplyT(func(v ManagedDiskResponse) *VMDiskSecurityProfileResponse { return v.SecurityProfile }).(VMDiskSecurityProfileResponsePtrOutput)
+}
+
+// The storage account type for use in creating data disks or OS disk.
+func (o ManagedDiskResponseOutput) StorageAccountType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedDiskResponse) *string { return v.StorageAccountType }).(pulumi.StringPtrOutput)
+}
+
+type ManagedDiskResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedDiskResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedDiskResponse)(nil)).Elem()
+}
+
+func (o ManagedDiskResponsePtrOutput) ToManagedDiskResponsePtrOutput() ManagedDiskResponsePtrOutput {
+	return o
+}
+
+func (o ManagedDiskResponsePtrOutput) ToManagedDiskResponsePtrOutputWithContext(ctx context.Context) ManagedDiskResponsePtrOutput {
+	return o
+}
+
+func (o ManagedDiskResponsePtrOutput) Elem() ManagedDiskResponseOutput {
+	return o.ApplyT(func(v *ManagedDiskResponse) ManagedDiskResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedDiskResponse
+		return ret
+	}).(ManagedDiskResponseOutput)
+}
+
+// Specifies the security profile settings for the managed disk. **Note**: It can only be set for Confidential VMs and is required when using Confidential VMs.
+func (o ManagedDiskResponsePtrOutput) SecurityProfile() VMDiskSecurityProfileResponsePtrOutput {
+	return o.ApplyT(func(v *ManagedDiskResponse) *VMDiskSecurityProfileResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityProfile
+	}).(VMDiskSecurityProfileResponsePtrOutput)
+}
+
+// The storage account type for use in creating data disks or OS disk.
+func (o ManagedDiskResponsePtrOutput) StorageAccountType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedDiskResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageAccountType
+	}).(pulumi.StringPtrOutput)
+}
+
 // The Batch service does not assign any meaning to this metadata; it is solely for the use of user code.
 type MetadataItem struct {
-	Name  string `pulumi:"name"`
+	// The name of the metadata item.
+	Name string `pulumi:"name"`
+	// The value of the metadata item.
 	Value string `pulumi:"value"`
 }
 
@@ -7061,7 +7703,9 @@ type MetadataItemInput interface {
 
 // The Batch service does not assign any meaning to this metadata; it is solely for the use of user code.
 type MetadataItemArgs struct {
-	Name  pulumi.StringInput `pulumi:"name"`
+	// The name of the metadata item.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The value of the metadata item.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -7117,10 +7761,12 @@ func (o MetadataItemOutput) ToMetadataItemOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The name of the metadata item.
 func (o MetadataItemOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v MetadataItem) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The value of the metadata item.
 func (o MetadataItemOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v MetadataItem) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -7147,7 +7793,9 @@ func (o MetadataItemArrayOutput) Index(i pulumi.IntInput) MetadataItemOutput {
 
 // The Batch service does not assign any meaning to this metadata; it is solely for the use of user code.
 type MetadataItemResponse struct {
-	Name  string `pulumi:"name"`
+	// The name of the metadata item.
+	Name string `pulumi:"name"`
+	// The value of the metadata item.
 	Value string `pulumi:"value"`
 }
 
@@ -7166,10 +7814,12 @@ func (o MetadataItemResponseOutput) ToMetadataItemResponseOutputWithContext(ctx 
 	return o
 }
 
+// The name of the metadata item.
 func (o MetadataItemResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v MetadataItemResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The value of the metadata item.
 func (o MetadataItemResponseOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v MetadataItemResponse) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -7194,6 +7844,7 @@ func (o MetadataItemResponseArrayOutput) Index(i pulumi.IntInput) MetadataItemRe
 	}).(MetadataItemResponseOutput)
 }
 
+// The file system to mount on each node.
 type MountConfiguration struct {
 	// This property is mutually exclusive with all other properties.
 	AzureBlobFileSystemConfiguration *AzureBlobFileSystemConfiguration `pulumi:"azureBlobFileSystemConfiguration"`
@@ -7216,6 +7867,7 @@ type MountConfigurationInput interface {
 	ToMountConfigurationOutputWithContext(context.Context) MountConfigurationOutput
 }
 
+// The file system to mount on each node.
 type MountConfigurationArgs struct {
 	// This property is mutually exclusive with all other properties.
 	AzureBlobFileSystemConfiguration AzureBlobFileSystemConfigurationPtrInput `pulumi:"azureBlobFileSystemConfiguration"`
@@ -7264,6 +7916,7 @@ func (i MountConfigurationArray) ToMountConfigurationArrayOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(MountConfigurationArrayOutput)
 }
 
+// The file system to mount on each node.
 type MountConfigurationOutput struct{ *pulumi.OutputState }
 
 func (MountConfigurationOutput) ElementType() reflect.Type {
@@ -7320,6 +7973,7 @@ func (o MountConfigurationArrayOutput) Index(i pulumi.IntInput) MountConfigurati
 	}).(MountConfigurationOutput)
 }
 
+// The file system to mount on each node.
 type MountConfigurationResponse struct {
 	// This property is mutually exclusive with all other properties.
 	AzureBlobFileSystemConfiguration *AzureBlobFileSystemConfigurationResponse `pulumi:"azureBlobFileSystemConfiguration"`
@@ -7331,6 +7985,7 @@ type MountConfigurationResponse struct {
 	NfsMountConfiguration *NFSMountConfigurationResponse `pulumi:"nfsMountConfiguration"`
 }
 
+// The file system to mount on each node.
 type MountConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (MountConfigurationResponseOutput) ElementType() reflect.Type {
@@ -7389,12 +8044,14 @@ func (o MountConfigurationResponseArrayOutput) Index(i pulumi.IntInput) MountCon
 	}).(MountConfigurationResponseOutput)
 }
 
+// Information used to connect to an NFS file system.
 type NFSMountConfiguration struct {
 	// These are 'net use' options in Windows and 'mount' options in Linux.
 	MountOptions *string `pulumi:"mountOptions"`
 	// All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
 	RelativeMountPath string `pulumi:"relativeMountPath"`
-	Source            string `pulumi:"source"`
+	// The URI of the file system to mount.
+	Source string `pulumi:"source"`
 }
 
 // NFSMountConfigurationInput is an input type that accepts NFSMountConfigurationArgs and NFSMountConfigurationOutput values.
@@ -7408,12 +8065,14 @@ type NFSMountConfigurationInput interface {
 	ToNFSMountConfigurationOutputWithContext(context.Context) NFSMountConfigurationOutput
 }
 
+// Information used to connect to an NFS file system.
 type NFSMountConfigurationArgs struct {
 	// These are 'net use' options in Windows and 'mount' options in Linux.
 	MountOptions pulumi.StringPtrInput `pulumi:"mountOptions"`
 	// All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
 	RelativeMountPath pulumi.StringInput `pulumi:"relativeMountPath"`
-	Source            pulumi.StringInput `pulumi:"source"`
+	// The URI of the file system to mount.
+	Source pulumi.StringInput `pulumi:"source"`
 }
 
 func (NFSMountConfigurationArgs) ElementType() reflect.Type {
@@ -7469,6 +8128,7 @@ func (i *nfsmountConfigurationPtrType) ToNFSMountConfigurationPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(NFSMountConfigurationPtrOutput)
 }
 
+// Information used to connect to an NFS file system.
 type NFSMountConfigurationOutput struct{ *pulumi.OutputState }
 
 func (NFSMountConfigurationOutput) ElementType() reflect.Type {
@@ -7503,6 +8163,7 @@ func (o NFSMountConfigurationOutput) RelativeMountPath() pulumi.StringOutput {
 	return o.ApplyT(func(v NFSMountConfiguration) string { return v.RelativeMountPath }).(pulumi.StringOutput)
 }
 
+// The URI of the file system to mount.
 func (o NFSMountConfigurationOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v NFSMountConfiguration) string { return v.Source }).(pulumi.StringOutput)
 }
@@ -7551,6 +8212,7 @@ func (o NFSMountConfigurationPtrOutput) RelativeMountPath() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// The URI of the file system to mount.
 func (o NFSMountConfigurationPtrOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NFSMountConfiguration) *string {
 		if v == nil {
@@ -7560,14 +8222,17 @@ func (o NFSMountConfigurationPtrOutput) Source() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Information used to connect to an NFS file system.
 type NFSMountConfigurationResponse struct {
 	// These are 'net use' options in Windows and 'mount' options in Linux.
 	MountOptions *string `pulumi:"mountOptions"`
 	// All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
 	RelativeMountPath string `pulumi:"relativeMountPath"`
-	Source            string `pulumi:"source"`
+	// The URI of the file system to mount.
+	Source string `pulumi:"source"`
 }
 
+// Information used to connect to an NFS file system.
 type NFSMountConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (NFSMountConfigurationResponseOutput) ElementType() reflect.Type {
@@ -7592,6 +8257,7 @@ func (o NFSMountConfigurationResponseOutput) RelativeMountPath() pulumi.StringOu
 	return o.ApplyT(func(v NFSMountConfigurationResponse) string { return v.RelativeMountPath }).(pulumi.StringOutput)
 }
 
+// The URI of the file system to mount.
 func (o NFSMountConfigurationResponseOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v NFSMountConfigurationResponse) string { return v.Source }).(pulumi.StringOutput)
 }
@@ -7640,6 +8306,7 @@ func (o NFSMountConfigurationResponsePtrOutput) RelativeMountPath() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
+// The URI of the file system to mount.
 func (o NFSMountConfigurationResponsePtrOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NFSMountConfigurationResponse) *string {
 		if v == nil {
@@ -7651,14 +8318,15 @@ func (o NFSMountConfigurationResponsePtrOutput) Source() pulumi.StringPtrOutput 
 
 // The network configuration for a pool.
 type NetworkConfiguration struct {
+	// The scope of dynamic vnet assignment.
 	DynamicVnetAssignmentScope *DynamicVNetAssignmentScope `pulumi:"dynamicVnetAssignmentScope"`
 	// Accelerated networking enables single root I/O virtualization (SR-IOV) to a VM, which may lead to improved networking performance. For more details, see: https://learn.microsoft.com/azure/virtual-network/accelerated-networking-overview.
 	EnableAcceleratedNetworking *bool `pulumi:"enableAcceleratedNetworking"`
-	// Pool endpoint configuration is only supported on pools with the virtualMachineConfiguration property.
+	// The endpoint configuration for a pool.
 	EndpointConfiguration *PoolEndpointConfiguration `pulumi:"endpointConfiguration"`
-	// This property is only supported on Pools with the virtualMachineConfiguration property.
+	// The public IP Address configuration of the networking configuration of a Pool.
 	PublicIPAddressConfiguration *PublicIPAddressConfiguration `pulumi:"publicIPAddressConfiguration"`
-	// The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication. For pools created with a virtual machine configuration, enable ports 29876 and 29877, as well as port 22 for Linux and port 3389 for Windows. For pools created with a cloud service configuration, enable ports 10100, 20100, and 30100. Also enable outbound connections to Azure Storage on port 443. For cloudServiceConfiguration pools, only 'classic' VNETs are supported. For more details see: https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+	// The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication，including ports 29876 and 29877. Also enable outbound connections to Azure Storage on port 443. For more details see: https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
 	SubnetId *string `pulumi:"subnetId"`
 }
 
@@ -7688,14 +8356,15 @@ type NetworkConfigurationInput interface {
 
 // The network configuration for a pool.
 type NetworkConfigurationArgs struct {
+	// The scope of dynamic vnet assignment.
 	DynamicVnetAssignmentScope DynamicVNetAssignmentScopePtrInput `pulumi:"dynamicVnetAssignmentScope"`
 	// Accelerated networking enables single root I/O virtualization (SR-IOV) to a VM, which may lead to improved networking performance. For more details, see: https://learn.microsoft.com/azure/virtual-network/accelerated-networking-overview.
 	EnableAcceleratedNetworking pulumi.BoolPtrInput `pulumi:"enableAcceleratedNetworking"`
-	// Pool endpoint configuration is only supported on pools with the virtualMachineConfiguration property.
+	// The endpoint configuration for a pool.
 	EndpointConfiguration PoolEndpointConfigurationPtrInput `pulumi:"endpointConfiguration"`
-	// This property is only supported on Pools with the virtualMachineConfiguration property.
+	// The public IP Address configuration of the networking configuration of a Pool.
 	PublicIPAddressConfiguration PublicIPAddressConfigurationPtrInput `pulumi:"publicIPAddressConfiguration"`
-	// The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication. For pools created with a virtual machine configuration, enable ports 29876 and 29877, as well as port 22 for Linux and port 3389 for Windows. For pools created with a cloud service configuration, enable ports 10100, 20100, and 30100. Also enable outbound connections to Azure Storage on port 443. For cloudServiceConfiguration pools, only 'classic' VNETs are supported. For more details see: https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+	// The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication，including ports 29876 and 29877. Also enable outbound connections to Azure Storage on port 443. For more details see: https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
 	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
 }
 
@@ -7788,6 +8457,7 @@ func (o NetworkConfigurationOutput) ToNetworkConfigurationPtrOutputWithContext(c
 	}).(NetworkConfigurationPtrOutput)
 }
 
+// The scope of dynamic vnet assignment.
 func (o NetworkConfigurationOutput) DynamicVnetAssignmentScope() DynamicVNetAssignmentScopePtrOutput {
 	return o.ApplyT(func(v NetworkConfiguration) *DynamicVNetAssignmentScope { return v.DynamicVnetAssignmentScope }).(DynamicVNetAssignmentScopePtrOutput)
 }
@@ -7797,17 +8467,17 @@ func (o NetworkConfigurationOutput) EnableAcceleratedNetworking() pulumi.BoolPtr
 	return o.ApplyT(func(v NetworkConfiguration) *bool { return v.EnableAcceleratedNetworking }).(pulumi.BoolPtrOutput)
 }
 
-// Pool endpoint configuration is only supported on pools with the virtualMachineConfiguration property.
+// The endpoint configuration for a pool.
 func (o NetworkConfigurationOutput) EndpointConfiguration() PoolEndpointConfigurationPtrOutput {
 	return o.ApplyT(func(v NetworkConfiguration) *PoolEndpointConfiguration { return v.EndpointConfiguration }).(PoolEndpointConfigurationPtrOutput)
 }
 
-// This property is only supported on Pools with the virtualMachineConfiguration property.
+// The public IP Address configuration of the networking configuration of a Pool.
 func (o NetworkConfigurationOutput) PublicIPAddressConfiguration() PublicIPAddressConfigurationPtrOutput {
 	return o.ApplyT(func(v NetworkConfiguration) *PublicIPAddressConfiguration { return v.PublicIPAddressConfiguration }).(PublicIPAddressConfigurationPtrOutput)
 }
 
-// The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication. For pools created with a virtual machine configuration, enable ports 29876 and 29877, as well as port 22 for Linux and port 3389 for Windows. For pools created with a cloud service configuration, enable ports 10100, 20100, and 30100. Also enable outbound connections to Azure Storage on port 443. For cloudServiceConfiguration pools, only 'classic' VNETs are supported. For more details see: https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+// The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication，including ports 29876 and 29877. Also enable outbound connections to Azure Storage on port 443. For more details see: https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
 func (o NetworkConfigurationOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfiguration) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
@@ -7836,6 +8506,7 @@ func (o NetworkConfigurationPtrOutput) Elem() NetworkConfigurationOutput {
 	}).(NetworkConfigurationOutput)
 }
 
+// The scope of dynamic vnet assignment.
 func (o NetworkConfigurationPtrOutput) DynamicVnetAssignmentScope() DynamicVNetAssignmentScopePtrOutput {
 	return o.ApplyT(func(v *NetworkConfiguration) *DynamicVNetAssignmentScope {
 		if v == nil {
@@ -7855,7 +8526,7 @@ func (o NetworkConfigurationPtrOutput) EnableAcceleratedNetworking() pulumi.Bool
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Pool endpoint configuration is only supported on pools with the virtualMachineConfiguration property.
+// The endpoint configuration for a pool.
 func (o NetworkConfigurationPtrOutput) EndpointConfiguration() PoolEndpointConfigurationPtrOutput {
 	return o.ApplyT(func(v *NetworkConfiguration) *PoolEndpointConfiguration {
 		if v == nil {
@@ -7865,7 +8536,7 @@ func (o NetworkConfigurationPtrOutput) EndpointConfiguration() PoolEndpointConfi
 	}).(PoolEndpointConfigurationPtrOutput)
 }
 
-// This property is only supported on Pools with the virtualMachineConfiguration property.
+// The public IP Address configuration of the networking configuration of a Pool.
 func (o NetworkConfigurationPtrOutput) PublicIPAddressConfiguration() PublicIPAddressConfigurationPtrOutput {
 	return o.ApplyT(func(v *NetworkConfiguration) *PublicIPAddressConfiguration {
 		if v == nil {
@@ -7875,7 +8546,7 @@ func (o NetworkConfigurationPtrOutput) PublicIPAddressConfiguration() PublicIPAd
 	}).(PublicIPAddressConfigurationPtrOutput)
 }
 
-// The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication. For pools created with a virtual machine configuration, enable ports 29876 and 29877, as well as port 22 for Linux and port 3389 for Windows. For pools created with a cloud service configuration, enable ports 10100, 20100, and 30100. Also enable outbound connections to Azure Storage on port 443. For cloudServiceConfiguration pools, only 'classic' VNETs are supported. For more details see: https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+// The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication，including ports 29876 and 29877. Also enable outbound connections to Azure Storage on port 443. For more details see: https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
 func (o NetworkConfigurationPtrOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkConfiguration) *string {
 		if v == nil {
@@ -7887,14 +8558,15 @@ func (o NetworkConfigurationPtrOutput) SubnetId() pulumi.StringPtrOutput {
 
 // The network configuration for a pool.
 type NetworkConfigurationResponse struct {
+	// The scope of dynamic vnet assignment.
 	DynamicVnetAssignmentScope *string `pulumi:"dynamicVnetAssignmentScope"`
 	// Accelerated networking enables single root I/O virtualization (SR-IOV) to a VM, which may lead to improved networking performance. For more details, see: https://learn.microsoft.com/azure/virtual-network/accelerated-networking-overview.
 	EnableAcceleratedNetworking *bool `pulumi:"enableAcceleratedNetworking"`
-	// Pool endpoint configuration is only supported on pools with the virtualMachineConfiguration property.
+	// The endpoint configuration for a pool.
 	EndpointConfiguration *PoolEndpointConfigurationResponse `pulumi:"endpointConfiguration"`
-	// This property is only supported on Pools with the virtualMachineConfiguration property.
+	// The public IP Address configuration of the networking configuration of a Pool.
 	PublicIPAddressConfiguration *PublicIPAddressConfigurationResponse `pulumi:"publicIPAddressConfiguration"`
-	// The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication. For pools created with a virtual machine configuration, enable ports 29876 and 29877, as well as port 22 for Linux and port 3389 for Windows. For pools created with a cloud service configuration, enable ports 10100, 20100, and 30100. Also enable outbound connections to Azure Storage on port 443. For cloudServiceConfiguration pools, only 'classic' VNETs are supported. For more details see: https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+	// The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication，including ports 29876 and 29877. Also enable outbound connections to Azure Storage on port 443. For more details see: https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
 	SubnetId *string `pulumi:"subnetId"`
 }
 
@@ -7926,6 +8598,7 @@ func (o NetworkConfigurationResponseOutput) ToNetworkConfigurationResponseOutput
 	return o
 }
 
+// The scope of dynamic vnet assignment.
 func (o NetworkConfigurationResponseOutput) DynamicVnetAssignmentScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfigurationResponse) *string { return v.DynamicVnetAssignmentScope }).(pulumi.StringPtrOutput)
 }
@@ -7935,21 +8608,21 @@ func (o NetworkConfigurationResponseOutput) EnableAcceleratedNetworking() pulumi
 	return o.ApplyT(func(v NetworkConfigurationResponse) *bool { return v.EnableAcceleratedNetworking }).(pulumi.BoolPtrOutput)
 }
 
-// Pool endpoint configuration is only supported on pools with the virtualMachineConfiguration property.
+// The endpoint configuration for a pool.
 func (o NetworkConfigurationResponseOutput) EndpointConfiguration() PoolEndpointConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v NetworkConfigurationResponse) *PoolEndpointConfigurationResponse {
 		return v.EndpointConfiguration
 	}).(PoolEndpointConfigurationResponsePtrOutput)
 }
 
-// This property is only supported on Pools with the virtualMachineConfiguration property.
+// The public IP Address configuration of the networking configuration of a Pool.
 func (o NetworkConfigurationResponseOutput) PublicIPAddressConfiguration() PublicIPAddressConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v NetworkConfigurationResponse) *PublicIPAddressConfigurationResponse {
 		return v.PublicIPAddressConfiguration
 	}).(PublicIPAddressConfigurationResponsePtrOutput)
 }
 
-// The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication. For pools created with a virtual machine configuration, enable ports 29876 and 29877, as well as port 22 for Linux and port 3389 for Windows. For pools created with a cloud service configuration, enable ports 10100, 20100, and 30100. Also enable outbound connections to Azure Storage on port 443. For cloudServiceConfiguration pools, only 'classic' VNETs are supported. For more details see: https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+// The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication，including ports 29876 and 29877. Also enable outbound connections to Azure Storage on port 443. For more details see: https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
 func (o NetworkConfigurationResponseOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfigurationResponse) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
@@ -7978,6 +8651,7 @@ func (o NetworkConfigurationResponsePtrOutput) Elem() NetworkConfigurationRespon
 	}).(NetworkConfigurationResponseOutput)
 }
 
+// The scope of dynamic vnet assignment.
 func (o NetworkConfigurationResponsePtrOutput) DynamicVnetAssignmentScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkConfigurationResponse) *string {
 		if v == nil {
@@ -7997,7 +8671,7 @@ func (o NetworkConfigurationResponsePtrOutput) EnableAcceleratedNetworking() pul
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Pool endpoint configuration is only supported on pools with the virtualMachineConfiguration property.
+// The endpoint configuration for a pool.
 func (o NetworkConfigurationResponsePtrOutput) EndpointConfiguration() PoolEndpointConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *NetworkConfigurationResponse) *PoolEndpointConfigurationResponse {
 		if v == nil {
@@ -8007,7 +8681,7 @@ func (o NetworkConfigurationResponsePtrOutput) EndpointConfiguration() PoolEndpo
 	}).(PoolEndpointConfigurationResponsePtrOutput)
 }
 
-// This property is only supported on Pools with the virtualMachineConfiguration property.
+// The public IP Address configuration of the networking configuration of a Pool.
 func (o NetworkConfigurationResponsePtrOutput) PublicIPAddressConfiguration() PublicIPAddressConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *NetworkConfigurationResponse) *PublicIPAddressConfigurationResponse {
 		if v == nil {
@@ -8017,7 +8691,7 @@ func (o NetworkConfigurationResponsePtrOutput) PublicIPAddressConfiguration() Pu
 	}).(PublicIPAddressConfigurationResponsePtrOutput)
 }
 
-// The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication. For pools created with a virtual machine configuration, enable ports 29876 and 29877, as well as port 22 for Linux and port 3389 for Windows. For pools created with a cloud service configuration, enable ports 10100, 20100, and 30100. Also enable outbound connections to Azure Storage on port 443. For cloudServiceConfiguration pools, only 'classic' VNETs are supported. For more details see: https://docs.microsoft.com/en-us/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
+// The virtual network must be in the same region and subscription as the Azure Batch account. The specified subnet should have enough free IP addresses to accommodate the number of nodes in the pool. If the subnet doesn't have enough free IP addresses, the pool will partially allocate compute nodes and a resize error will occur. The 'MicrosoftAzureBatch' service principal must have the 'Classic Virtual Machine Contributor' Role-Based Access Control (RBAC) role for the specified VNet. The specified subnet must allow communication from the Azure Batch service to be able to schedule tasks on the compute nodes. This can be verified by checking if the specified VNet has any associated Network Security Groups (NSG). If communication to the compute nodes in the specified subnet is denied by an NSG, then the Batch service will set the state of the compute nodes to unusable. If the specified VNet has any associated Network Security Groups (NSG), then a few reserved system ports must be enabled for inbound communication，including ports 29876 and 29877. Also enable outbound connections to Azure Storage on port 443. For more details see: https://learn.microsoft.com/azure/batch/batch-api-basics#virtual-network-vnet-and-firewall-configuration
 func (o NetworkConfigurationResponsePtrOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkConfigurationResponse) *string {
 		if v == nil {
@@ -8263,7 +8937,9 @@ func (o NetworkProfileResponsePtrOutput) NodeManagementAccess() EndpointAccessPr
 	}).(EndpointAccessProfileResponsePtrOutput)
 }
 
+// A network security group rule to apply to an inbound endpoint.
 type NetworkSecurityGroupRule struct {
+	// The action that should be taken for a specified IP address, subnet range or tag.
 	Access NetworkSecurityGroupRuleAccess `pulumi:"access"`
 	// Priorities within a pool must be unique and are evaluated in order of priority. The lower the number the higher the priority. For example, rules could be specified with order numbers of 150, 250, and 350. The rule with the order number of 150 takes precedence over the rule that has an order of 250. Allowed priorities are 150 to 4096. If any reserved or duplicate values are provided the request fails with HTTP status code 400.
 	Priority int `pulumi:"priority"`
@@ -8284,7 +8960,9 @@ type NetworkSecurityGroupRuleInput interface {
 	ToNetworkSecurityGroupRuleOutputWithContext(context.Context) NetworkSecurityGroupRuleOutput
 }
 
+// A network security group rule to apply to an inbound endpoint.
 type NetworkSecurityGroupRuleArgs struct {
+	// The action that should be taken for a specified IP address, subnet range or tag.
 	Access NetworkSecurityGroupRuleAccessInput `pulumi:"access"`
 	// Priorities within a pool must be unique and are evaluated in order of priority. The lower the number the higher the priority. For example, rules could be specified with order numbers of 150, 250, and 350. The rule with the order number of 150 takes precedence over the rule that has an order of 250. Allowed priorities are 150 to 4096. If any reserved or duplicate values are provided the request fails with HTTP status code 400.
 	Priority pulumi.IntInput `pulumi:"priority"`
@@ -8331,6 +9009,7 @@ func (i NetworkSecurityGroupRuleArray) ToNetworkSecurityGroupRuleArrayOutputWith
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkSecurityGroupRuleArrayOutput)
 }
 
+// A network security group rule to apply to an inbound endpoint.
 type NetworkSecurityGroupRuleOutput struct{ *pulumi.OutputState }
 
 func (NetworkSecurityGroupRuleOutput) ElementType() reflect.Type {
@@ -8345,6 +9024,7 @@ func (o NetworkSecurityGroupRuleOutput) ToNetworkSecurityGroupRuleOutputWithCont
 	return o
 }
 
+// The action that should be taken for a specified IP address, subnet range or tag.
 func (o NetworkSecurityGroupRuleOutput) Access() NetworkSecurityGroupRuleAccessOutput {
 	return o.ApplyT(func(v NetworkSecurityGroupRule) NetworkSecurityGroupRuleAccess { return v.Access }).(NetworkSecurityGroupRuleAccessOutput)
 }
@@ -8384,7 +9064,9 @@ func (o NetworkSecurityGroupRuleArrayOutput) Index(i pulumi.IntInput) NetworkSec
 	}).(NetworkSecurityGroupRuleOutput)
 }
 
+// A network security group rule to apply to an inbound endpoint.
 type NetworkSecurityGroupRuleResponse struct {
+	// The action that should be taken for a specified IP address, subnet range or tag.
 	Access string `pulumi:"access"`
 	// Priorities within a pool must be unique and are evaluated in order of priority. The lower the number the higher the priority. For example, rules could be specified with order numbers of 150, 250, and 350. The rule with the order number of 150 takes precedence over the rule that has an order of 250. Allowed priorities are 150 to 4096. If any reserved or duplicate values are provided the request fails with HTTP status code 400.
 	Priority int `pulumi:"priority"`
@@ -8394,6 +9076,7 @@ type NetworkSecurityGroupRuleResponse struct {
 	SourcePortRanges []string `pulumi:"sourcePortRanges"`
 }
 
+// A network security group rule to apply to an inbound endpoint.
 type NetworkSecurityGroupRuleResponseOutput struct{ *pulumi.OutputState }
 
 func (NetworkSecurityGroupRuleResponseOutput) ElementType() reflect.Type {
@@ -8408,6 +9091,7 @@ func (o NetworkSecurityGroupRuleResponseOutput) ToNetworkSecurityGroupRuleRespon
 	return o
 }
 
+// The action that should be taken for a specified IP address, subnet range or tag.
 func (o NetworkSecurityGroupRuleResponseOutput) Access() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkSecurityGroupRuleResponse) string { return v.Access }).(pulumi.StringOutput)
 }
@@ -8647,8 +9331,18 @@ func (o NodePlacementConfigurationResponsePtrOutput) Policy() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Settings for the operating system disk of the virtual machine.
 type OSDisk struct {
+	// The type of caching to enable for the disk.
+	Caching *CachingType `pulumi:"caching"`
+	// The initial disk size in GB when creating new OS disk.
+	DiskSizeGB *int `pulumi:"diskSizeGB"`
+	// Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
 	EphemeralOSDiskSettings *DiffDiskSettings `pulumi:"ephemeralOSDiskSettings"`
+	// The managed disk parameters.
+	ManagedDisk *ManagedDisk `pulumi:"managedDisk"`
+	// Specifies whether writeAccelerator should be enabled or disabled on the disk.
+	WriteAcceleratorEnabled *bool `pulumi:"writeAcceleratorEnabled"`
 }
 
 // OSDiskInput is an input type that accepts OSDiskArgs and OSDiskOutput values.
@@ -8662,8 +9356,18 @@ type OSDiskInput interface {
 	ToOSDiskOutputWithContext(context.Context) OSDiskOutput
 }
 
+// Settings for the operating system disk of the virtual machine.
 type OSDiskArgs struct {
+	// The type of caching to enable for the disk.
+	Caching CachingTypePtrInput `pulumi:"caching"`
+	// The initial disk size in GB when creating new OS disk.
+	DiskSizeGB pulumi.IntPtrInput `pulumi:"diskSizeGB"`
+	// Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
 	EphemeralOSDiskSettings DiffDiskSettingsPtrInput `pulumi:"ephemeralOSDiskSettings"`
+	// The managed disk parameters.
+	ManagedDisk ManagedDiskPtrInput `pulumi:"managedDisk"`
+	// Specifies whether writeAccelerator should be enabled or disabled on the disk.
+	WriteAcceleratorEnabled pulumi.BoolPtrInput `pulumi:"writeAcceleratorEnabled"`
 }
 
 func (OSDiskArgs) ElementType() reflect.Type {
@@ -8719,6 +9423,7 @@ func (i *osdiskPtrType) ToOSDiskPtrOutputWithContext(ctx context.Context) OSDisk
 	return pulumi.ToOutputWithContext(ctx, i).(OSDiskPtrOutput)
 }
 
+// Settings for the operating system disk of the virtual machine.
 type OSDiskOutput struct{ *pulumi.OutputState }
 
 func (OSDiskOutput) ElementType() reflect.Type {
@@ -8743,8 +9448,29 @@ func (o OSDiskOutput) ToOSDiskPtrOutputWithContext(ctx context.Context) OSDiskPt
 	}).(OSDiskPtrOutput)
 }
 
+// The type of caching to enable for the disk.
+func (o OSDiskOutput) Caching() CachingTypePtrOutput {
+	return o.ApplyT(func(v OSDisk) *CachingType { return v.Caching }).(CachingTypePtrOutput)
+}
+
+// The initial disk size in GB when creating new OS disk.
+func (o OSDiskOutput) DiskSizeGB() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OSDisk) *int { return v.DiskSizeGB }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
 func (o OSDiskOutput) EphemeralOSDiskSettings() DiffDiskSettingsPtrOutput {
 	return o.ApplyT(func(v OSDisk) *DiffDiskSettings { return v.EphemeralOSDiskSettings }).(DiffDiskSettingsPtrOutput)
+}
+
+// The managed disk parameters.
+func (o OSDiskOutput) ManagedDisk() ManagedDiskPtrOutput {
+	return o.ApplyT(func(v OSDisk) *ManagedDisk { return v.ManagedDisk }).(ManagedDiskPtrOutput)
+}
+
+// Specifies whether writeAccelerator should be enabled or disabled on the disk.
+func (o OSDiskOutput) WriteAcceleratorEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OSDisk) *bool { return v.WriteAcceleratorEnabled }).(pulumi.BoolPtrOutput)
 }
 
 type OSDiskPtrOutput struct{ *pulumi.OutputState }
@@ -8771,6 +9497,27 @@ func (o OSDiskPtrOutput) Elem() OSDiskOutput {
 	}).(OSDiskOutput)
 }
 
+// The type of caching to enable for the disk.
+func (o OSDiskPtrOutput) Caching() CachingTypePtrOutput {
+	return o.ApplyT(func(v *OSDisk) *CachingType {
+		if v == nil {
+			return nil
+		}
+		return v.Caching
+	}).(CachingTypePtrOutput)
+}
+
+// The initial disk size in GB when creating new OS disk.
+func (o OSDiskPtrOutput) DiskSizeGB() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OSDisk) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DiskSizeGB
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
 func (o OSDiskPtrOutput) EphemeralOSDiskSettings() DiffDiskSettingsPtrOutput {
 	return o.ApplyT(func(v *OSDisk) *DiffDiskSettings {
 		if v == nil {
@@ -8780,10 +9527,41 @@ func (o OSDiskPtrOutput) EphemeralOSDiskSettings() DiffDiskSettingsPtrOutput {
 	}).(DiffDiskSettingsPtrOutput)
 }
 
-type OSDiskResponse struct {
-	EphemeralOSDiskSettings *DiffDiskSettingsResponse `pulumi:"ephemeralOSDiskSettings"`
+// The managed disk parameters.
+func (o OSDiskPtrOutput) ManagedDisk() ManagedDiskPtrOutput {
+	return o.ApplyT(func(v *OSDisk) *ManagedDisk {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedDisk
+	}).(ManagedDiskPtrOutput)
 }
 
+// Specifies whether writeAccelerator should be enabled or disabled on the disk.
+func (o OSDiskPtrOutput) WriteAcceleratorEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OSDisk) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WriteAcceleratorEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Settings for the operating system disk of the virtual machine.
+type OSDiskResponse struct {
+	// The type of caching to enable for the disk.
+	Caching *string `pulumi:"caching"`
+	// The initial disk size in GB when creating new OS disk.
+	DiskSizeGB *int `pulumi:"diskSizeGB"`
+	// Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
+	EphemeralOSDiskSettings *DiffDiskSettingsResponse `pulumi:"ephemeralOSDiskSettings"`
+	// The managed disk parameters.
+	ManagedDisk *ManagedDiskResponse `pulumi:"managedDisk"`
+	// Specifies whether writeAccelerator should be enabled or disabled on the disk.
+	WriteAcceleratorEnabled *bool `pulumi:"writeAcceleratorEnabled"`
+}
+
+// Settings for the operating system disk of the virtual machine.
 type OSDiskResponseOutput struct{ *pulumi.OutputState }
 
 func (OSDiskResponseOutput) ElementType() reflect.Type {
@@ -8798,8 +9576,29 @@ func (o OSDiskResponseOutput) ToOSDiskResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The type of caching to enable for the disk.
+func (o OSDiskResponseOutput) Caching() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OSDiskResponse) *string { return v.Caching }).(pulumi.StringPtrOutput)
+}
+
+// The initial disk size in GB when creating new OS disk.
+func (o OSDiskResponseOutput) DiskSizeGB() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OSDiskResponse) *int { return v.DiskSizeGB }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
 func (o OSDiskResponseOutput) EphemeralOSDiskSettings() DiffDiskSettingsResponsePtrOutput {
 	return o.ApplyT(func(v OSDiskResponse) *DiffDiskSettingsResponse { return v.EphemeralOSDiskSettings }).(DiffDiskSettingsResponsePtrOutput)
+}
+
+// The managed disk parameters.
+func (o OSDiskResponseOutput) ManagedDisk() ManagedDiskResponsePtrOutput {
+	return o.ApplyT(func(v OSDiskResponse) *ManagedDiskResponse { return v.ManagedDisk }).(ManagedDiskResponsePtrOutput)
+}
+
+// Specifies whether writeAccelerator should be enabled or disabled on the disk.
+func (o OSDiskResponseOutput) WriteAcceleratorEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OSDiskResponse) *bool { return v.WriteAcceleratorEnabled }).(pulumi.BoolPtrOutput)
 }
 
 type OSDiskResponsePtrOutput struct{ *pulumi.OutputState }
@@ -8826,6 +9625,27 @@ func (o OSDiskResponsePtrOutput) Elem() OSDiskResponseOutput {
 	}).(OSDiskResponseOutput)
 }
 
+// The type of caching to enable for the disk.
+func (o OSDiskResponsePtrOutput) Caching() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OSDiskResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Caching
+	}).(pulumi.StringPtrOutput)
+}
+
+// The initial disk size in GB when creating new OS disk.
+func (o OSDiskResponsePtrOutput) DiskSizeGB() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OSDiskResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DiskSizeGB
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the ephemeral Disk Settings for the operating system disk used by the virtual machine.
 func (o OSDiskResponsePtrOutput) EphemeralOSDiskSettings() DiffDiskSettingsResponsePtrOutput {
 	return o.ApplyT(func(v *OSDiskResponse) *DiffDiskSettingsResponse {
 		if v == nil {
@@ -8835,6 +9655,27 @@ func (o OSDiskResponsePtrOutput) EphemeralOSDiskSettings() DiffDiskSettingsRespo
 	}).(DiffDiskSettingsResponsePtrOutput)
 }
 
+// The managed disk parameters.
+func (o OSDiskResponsePtrOutput) ManagedDisk() ManagedDiskResponsePtrOutput {
+	return o.ApplyT(func(v *OSDiskResponse) *ManagedDiskResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ManagedDisk
+	}).(ManagedDiskResponsePtrOutput)
+}
+
+// Specifies whether writeAccelerator should be enabled or disabled on the disk.
+func (o OSDiskResponsePtrOutput) WriteAcceleratorEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OSDiskResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.WriteAcceleratorEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The endpoint configuration for a pool.
 type PoolEndpointConfiguration struct {
 	// The maximum number of inbound NAT pools per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded the request fails with HTTP status code 400. This cannot be specified if the IPAddressProvisioningType is NoPublicIPAddresses.
 	InboundNatPools []InboundNatPool `pulumi:"inboundNatPools"`
@@ -8851,6 +9692,7 @@ type PoolEndpointConfigurationInput interface {
 	ToPoolEndpointConfigurationOutputWithContext(context.Context) PoolEndpointConfigurationOutput
 }
 
+// The endpoint configuration for a pool.
 type PoolEndpointConfigurationArgs struct {
 	// The maximum number of inbound NAT pools per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded the request fails with HTTP status code 400. This cannot be specified if the IPAddressProvisioningType is NoPublicIPAddresses.
 	InboundNatPools InboundNatPoolArrayInput `pulumi:"inboundNatPools"`
@@ -8909,6 +9751,7 @@ func (i *poolEndpointConfigurationPtrType) ToPoolEndpointConfigurationPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(PoolEndpointConfigurationPtrOutput)
 }
 
+// The endpoint configuration for a pool.
 type PoolEndpointConfigurationOutput struct{ *pulumi.OutputState }
 
 func (PoolEndpointConfigurationOutput) ElementType() reflect.Type {
@@ -8972,11 +9815,13 @@ func (o PoolEndpointConfigurationPtrOutput) InboundNatPools() InboundNatPoolArra
 	}).(InboundNatPoolArrayOutput)
 }
 
+// The endpoint configuration for a pool.
 type PoolEndpointConfigurationResponse struct {
 	// The maximum number of inbound NAT pools per Batch pool is 5. If the maximum number of inbound NAT pools is exceeded the request fails with HTTP status code 400. This cannot be specified if the IPAddressProvisioningType is NoPublicIPAddresses.
 	InboundNatPools []InboundNatPoolResponse `pulumi:"inboundNatPools"`
 }
 
+// The endpoint configuration for a pool.
 type PoolEndpointConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (PoolEndpointConfigurationResponseOutput) ElementType() reflect.Type {
@@ -9036,16 +9881,21 @@ type PrivateEndpointConnectionResponse struct {
 	Etag string `pulumi:"etag"`
 	// The value has one and only one group id.
 	GroupIds []string `pulumi:"groupIds"`
-	// The ID of the resource.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// The name of the resource.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The private endpoint of the private endpoint connection.
 	PrivateEndpoint PrivateEndpointResponse `pulumi:"privateEndpoint"`
-	// The private link service connection state of the private endpoint connection
+	// The private link service connection state of the private endpoint connection.
 	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
-	ProvisioningState                 string                                     `pulumi:"provisioningState"`
-	// The type of the resource.
+	// The provisioning state of the private endpoint connection.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	// The tags of the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -9074,12 +9924,12 @@ func (o PrivateEndpointConnectionResponseOutput) GroupIds() pulumi.StringArrayOu
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
 }
 
-// The ID of the resource.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o PrivateEndpointConnectionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -9089,18 +9939,29 @@ func (o PrivateEndpointConnectionResponseOutput) PrivateEndpoint() PrivateEndpoi
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) PrivateEndpointResponse { return v.PrivateEndpoint }).(PrivateEndpointResponseOutput)
 }
 
-// The private link service connection state of the private endpoint connection
+// The private link service connection state of the private endpoint connection.
 func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponsePtrOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *PrivateLinkServiceConnectionStateResponse {
 		return v.PrivateLinkServiceConnectionState
 	}).(PrivateLinkServiceConnectionStateResponsePtrOutput)
 }
 
+// The provisioning state of the private endpoint connection.
 func (o PrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The type of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o PrivateEndpointConnectionResponseOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+}
+
+// The tags of the resource.
+func (o PrivateEndpointConnectionResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o PrivateEndpointConnectionResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -9127,6 +9988,7 @@ func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) P
 
 // The private endpoint of the private endpoint connection.
 type PrivateEndpointResponse struct {
+	// The ARM resource identifier of the private endpoint. This is of the form /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/privateEndpoints/{privateEndpoint}.
 	Id string `pulumi:"id"`
 }
 
@@ -9145,15 +10007,19 @@ func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContex
 	return o
 }
 
+// The ARM resource identifier of the private endpoint. This is of the form /subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.Network/privateEndpoints/{privateEndpoint}.
 func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The private link service connection state of the private endpoint connection
 type PrivateLinkServiceConnectionStateResponse struct {
-	ActionsRequired string  `pulumi:"actionsRequired"`
-	Description     *string `pulumi:"description"`
-	Status          string  `pulumi:"status"`
+	// Action required on the private connection state
+	ActionsRequired string `pulumi:"actionsRequired"`
+	// Description of the private Connection state
+	Description *string `pulumi:"description"`
+	// The status of the Batch private endpoint connection
+	Status string `pulumi:"status"`
 }
 
 // The private link service connection state of the private endpoint connection
@@ -9171,14 +10037,17 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceCon
 	return o
 }
 
+// Action required on the private connection state
 func (o PrivateLinkServiceConnectionStateResponseOutput) ActionsRequired() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) string { return v.ActionsRequired }).(pulumi.StringOutput)
 }
 
+// Description of the private Connection state
 func (o PrivateLinkServiceConnectionStateResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The status of the Batch private endpoint connection
 func (o PrivateLinkServiceConnectionStateResponseOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -9207,6 +10076,7 @@ func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Elem() PrivateLinkSe
 	}).(PrivateLinkServiceConnectionStateResponseOutput)
 }
 
+// Action required on the private connection state
 func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ActionsRequired() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateLinkServiceConnectionStateResponse) *string {
 		if v == nil {
@@ -9216,6 +10086,7 @@ func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ActionsRequired() pu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Description of the private Connection state
 func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateLinkServiceConnectionStateResponse) *string {
 		if v == nil {
@@ -9225,6 +10096,7 @@ func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Description() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// The status of the Batch private endpoint connection
 func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateLinkServiceConnectionStateResponse) *string {
 		if v == nil {
@@ -9470,14 +10342,17 @@ func (o PublicIPAddressConfigurationResponsePtrOutput) Provision() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// An error that occurred when resizing a pool.
 type ResizeErrorResponse struct {
 	// An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
-	Code    string                `pulumi:"code"`
+	Code string `pulumi:"code"`
+	// Additional details about the error.
 	Details []ResizeErrorResponse `pulumi:"details"`
 	// A message describing the error, intended to be suitable for display in a user interface.
 	Message string `pulumi:"message"`
 }
 
+// An error that occurred when resizing a pool.
 type ResizeErrorResponseOutput struct{ *pulumi.OutputState }
 
 func (ResizeErrorResponseOutput) ElementType() reflect.Type {
@@ -9497,6 +10372,7 @@ func (o ResizeErrorResponseOutput) Code() pulumi.StringOutput {
 	return o.ApplyT(func(v ResizeErrorResponse) string { return v.Code }).(pulumi.StringOutput)
 }
 
+// Additional details about the error.
 func (o ResizeErrorResponseOutput) Details() ResizeErrorResponseArrayOutput {
 	return o.ApplyT(func(v ResizeErrorResponse) []ResizeErrorResponse { return v.Details }).(ResizeErrorResponseArrayOutput)
 }
@@ -9530,13 +10406,14 @@ func (o ResizeErrorResponseArrayOutput) Index(i pulumi.IntInput) ResizeErrorResp
 type ResizeOperationStatusResponse struct {
 	// This property is set only if an error occurred during the last pool resize, and only when the pool allocationState is Steady.
 	Errors []ResizeErrorResponse `pulumi:"errors"`
-	// The default value is requeue.
-	NodeDeallocationOption *string `pulumi:"nodeDeallocationOption"`
 	// The default value is 15 minutes. The minimum value is 5 minutes. If you specify a value less than 5 minutes, the Batch service returns an error; if you are calling the REST API directly, the HTTP status code is 400 (Bad Request).
-	ResizeTimeout          *string `pulumi:"resizeTimeout"`
-	StartTime              *string `pulumi:"startTime"`
-	TargetDedicatedNodes   *int    `pulumi:"targetDedicatedNodes"`
-	TargetLowPriorityNodes *int    `pulumi:"targetLowPriorityNodes"`
+	ResizeTimeout *string `pulumi:"resizeTimeout"`
+	// The time when this resize operation was started.
+	StartTime *string `pulumi:"startTime"`
+	// The desired number of dedicated compute nodes in the pool.
+	TargetDedicatedNodes *int `pulumi:"targetDedicatedNodes"`
+	// The desired number of Spot/low-priority compute nodes in the pool.
+	TargetLowPriorityNodes *int `pulumi:"targetLowPriorityNodes"`
 }
 
 // Describes either the current operation (if the pool AllocationState is Resizing) or the previously completed operation (if the AllocationState is Steady).
@@ -9559,28 +10436,27 @@ func (o ResizeOperationStatusResponseOutput) Errors() ResizeErrorResponseArrayOu
 	return o.ApplyT(func(v ResizeOperationStatusResponse) []ResizeErrorResponse { return v.Errors }).(ResizeErrorResponseArrayOutput)
 }
 
-// The default value is requeue.
-func (o ResizeOperationStatusResponseOutput) NodeDeallocationOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResizeOperationStatusResponse) *string { return v.NodeDeallocationOption }).(pulumi.StringPtrOutput)
-}
-
 // The default value is 15 minutes. The minimum value is 5 minutes. If you specify a value less than 5 minutes, the Batch service returns an error; if you are calling the REST API directly, the HTTP status code is 400 (Bad Request).
 func (o ResizeOperationStatusResponseOutput) ResizeTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResizeOperationStatusResponse) *string { return v.ResizeTimeout }).(pulumi.StringPtrOutput)
 }
 
+// The time when this resize operation was started.
 func (o ResizeOperationStatusResponseOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResizeOperationStatusResponse) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
+// The desired number of dedicated compute nodes in the pool.
 func (o ResizeOperationStatusResponseOutput) TargetDedicatedNodes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResizeOperationStatusResponse) *int { return v.TargetDedicatedNodes }).(pulumi.IntPtrOutput)
 }
 
+// The desired number of Spot/low-priority compute nodes in the pool.
 func (o ResizeOperationStatusResponseOutput) TargetLowPriorityNodes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResizeOperationStatusResponse) *int { return v.TargetLowPriorityNodes }).(pulumi.IntPtrOutput)
 }
 
+// A single file or multiple files to be downloaded to a compute node.
 type ResourceFile struct {
 	// The autoStorageContainerName, storageContainerUrl and httpUrl properties are mutually exclusive and one of them must be specified.
 	AutoStorageContainerName *string `pulumi:"autoStorageContainerName"`
@@ -9609,6 +10485,7 @@ type ResourceFileInput interface {
 	ToResourceFileOutputWithContext(context.Context) ResourceFileOutput
 }
 
+// A single file or multiple files to be downloaded to a compute node.
 type ResourceFileArgs struct {
 	// The autoStorageContainerName, storageContainerUrl and httpUrl properties are mutually exclusive and one of them must be specified.
 	AutoStorageContainerName pulumi.StringPtrInput `pulumi:"autoStorageContainerName"`
@@ -9663,6 +10540,7 @@ func (i ResourceFileArray) ToResourceFileArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ResourceFileArrayOutput)
 }
 
+// A single file or multiple files to be downloaded to a compute node.
 type ResourceFileOutput struct{ *pulumi.OutputState }
 
 func (ResourceFileOutput) ElementType() reflect.Type {
@@ -9732,6 +10610,7 @@ func (o ResourceFileArrayOutput) Index(i pulumi.IntInput) ResourceFileOutput {
 	}).(ResourceFileOutput)
 }
 
+// A single file or multiple files to be downloaded to a compute node.
 type ResourceFileResponse struct {
 	// The autoStorageContainerName, storageContainerUrl and httpUrl properties are mutually exclusive and one of them must be specified.
 	AutoStorageContainerName *string `pulumi:"autoStorageContainerName"`
@@ -9749,6 +10628,7 @@ type ResourceFileResponse struct {
 	StorageContainerUrl *string `pulumi:"storageContainerUrl"`
 }
 
+// A single file or multiple files to be downloaded to a compute node.
 type ResourceFileResponseOutput struct{ *pulumi.OutputState }
 
 func (ResourceFileResponseOutput) ElementType() reflect.Type {
@@ -9816,6 +10696,422 @@ func (o ResourceFileResponseArrayOutput) Index(i pulumi.IntInput) ResourceFileRe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceFileResponse {
 		return vs[0].([]ResourceFileResponse)[vs[1].(int)]
 	}).(ResourceFileResponseOutput)
+}
+
+// The configuration parameters used while performing a rolling upgrade.
+type RollingUpgradePolicy struct {
+	// Allow VMSS to ignore AZ boundaries when constructing upgrade batches. Take into consideration the Update Domain and maxBatchInstancePercent to determine the batch size. If this field is not set, Azure Azure Batch will not set its default value. The value of enableCrossZoneUpgrade on the created VirtualMachineScaleSet will be decided by the default configurations on VirtualMachineScaleSet. This field is able to be set to true or false only when using NodePlacementConfiguration as Zonal.
+	EnableCrossZoneUpgrade *bool `pulumi:"enableCrossZoneUpgrade"`
+	// The maximum percent of total virtual machine instances that will be upgraded simultaneously by the rolling upgrade in one batch. As this is a maximum, unhealthy instances in previous or future batches can cause the percentage of instances in a batch to decrease to ensure higher reliability. The value of this field should be between 5 and 100, inclusive. If both maxBatchInstancePercent and maxUnhealthyInstancePercent are assigned with value, the value of maxBatchInstancePercent should not be more than maxUnhealthyInstancePercent.
+	MaxBatchInstancePercent *int `pulumi:"maxBatchInstancePercent"`
+	// The maximum percentage of the total virtual machine instances in the scale set that can be simultaneously unhealthy, either as a result of being upgraded, or by being found in an unhealthy state by the virtual machine health checks before the rolling upgrade aborts. This constraint will be checked prior to starting any batch. The value of this field should be between 5 and 100, inclusive. If both maxBatchInstancePercent and maxUnhealthyInstancePercent are assigned with value, the value of maxBatchInstancePercent should not be more than maxUnhealthyInstancePercent.
+	MaxUnhealthyInstancePercent *int `pulumi:"maxUnhealthyInstancePercent"`
+	// The maximum percentage of upgraded virtual machine instances that can be found to be in an unhealthy state. This check will happen after each batch is upgraded. If this percentage is ever exceeded, the rolling update aborts. The value of this field should be between 0 and 100, inclusive.
+	MaxUnhealthyUpgradedInstancePercent *int `pulumi:"maxUnhealthyUpgradedInstancePercent"`
+	// The wait time between completing the update for all virtual machines in one batch and starting the next batch. The time duration should be specified in ISO 8601 format.
+	PauseTimeBetweenBatches *string `pulumi:"pauseTimeBetweenBatches"`
+	// Upgrade all unhealthy instances in a scale set before any healthy instances.
+	PrioritizeUnhealthyInstances *bool `pulumi:"prioritizeUnhealthyInstances"`
+	// Rollback failed instances to previous model if the Rolling Upgrade policy is violated.
+	RollbackFailedInstancesOnPolicyBreach *bool `pulumi:"rollbackFailedInstancesOnPolicyBreach"`
+}
+
+// RollingUpgradePolicyInput is an input type that accepts RollingUpgradePolicyArgs and RollingUpgradePolicyOutput values.
+// You can construct a concrete instance of `RollingUpgradePolicyInput` via:
+//
+//	RollingUpgradePolicyArgs{...}
+type RollingUpgradePolicyInput interface {
+	pulumi.Input
+
+	ToRollingUpgradePolicyOutput() RollingUpgradePolicyOutput
+	ToRollingUpgradePolicyOutputWithContext(context.Context) RollingUpgradePolicyOutput
+}
+
+// The configuration parameters used while performing a rolling upgrade.
+type RollingUpgradePolicyArgs struct {
+	// Allow VMSS to ignore AZ boundaries when constructing upgrade batches. Take into consideration the Update Domain and maxBatchInstancePercent to determine the batch size. If this field is not set, Azure Azure Batch will not set its default value. The value of enableCrossZoneUpgrade on the created VirtualMachineScaleSet will be decided by the default configurations on VirtualMachineScaleSet. This field is able to be set to true or false only when using NodePlacementConfiguration as Zonal.
+	EnableCrossZoneUpgrade pulumi.BoolPtrInput `pulumi:"enableCrossZoneUpgrade"`
+	// The maximum percent of total virtual machine instances that will be upgraded simultaneously by the rolling upgrade in one batch. As this is a maximum, unhealthy instances in previous or future batches can cause the percentage of instances in a batch to decrease to ensure higher reliability. The value of this field should be between 5 and 100, inclusive. If both maxBatchInstancePercent and maxUnhealthyInstancePercent are assigned with value, the value of maxBatchInstancePercent should not be more than maxUnhealthyInstancePercent.
+	MaxBatchInstancePercent pulumi.IntPtrInput `pulumi:"maxBatchInstancePercent"`
+	// The maximum percentage of the total virtual machine instances in the scale set that can be simultaneously unhealthy, either as a result of being upgraded, or by being found in an unhealthy state by the virtual machine health checks before the rolling upgrade aborts. This constraint will be checked prior to starting any batch. The value of this field should be between 5 and 100, inclusive. If both maxBatchInstancePercent and maxUnhealthyInstancePercent are assigned with value, the value of maxBatchInstancePercent should not be more than maxUnhealthyInstancePercent.
+	MaxUnhealthyInstancePercent pulumi.IntPtrInput `pulumi:"maxUnhealthyInstancePercent"`
+	// The maximum percentage of upgraded virtual machine instances that can be found to be in an unhealthy state. This check will happen after each batch is upgraded. If this percentage is ever exceeded, the rolling update aborts. The value of this field should be between 0 and 100, inclusive.
+	MaxUnhealthyUpgradedInstancePercent pulumi.IntPtrInput `pulumi:"maxUnhealthyUpgradedInstancePercent"`
+	// The wait time between completing the update for all virtual machines in one batch and starting the next batch. The time duration should be specified in ISO 8601 format.
+	PauseTimeBetweenBatches pulumi.StringPtrInput `pulumi:"pauseTimeBetweenBatches"`
+	// Upgrade all unhealthy instances in a scale set before any healthy instances.
+	PrioritizeUnhealthyInstances pulumi.BoolPtrInput `pulumi:"prioritizeUnhealthyInstances"`
+	// Rollback failed instances to previous model if the Rolling Upgrade policy is violated.
+	RollbackFailedInstancesOnPolicyBreach pulumi.BoolPtrInput `pulumi:"rollbackFailedInstancesOnPolicyBreach"`
+}
+
+func (RollingUpgradePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RollingUpgradePolicy)(nil)).Elem()
+}
+
+func (i RollingUpgradePolicyArgs) ToRollingUpgradePolicyOutput() RollingUpgradePolicyOutput {
+	return i.ToRollingUpgradePolicyOutputWithContext(context.Background())
+}
+
+func (i RollingUpgradePolicyArgs) ToRollingUpgradePolicyOutputWithContext(ctx context.Context) RollingUpgradePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RollingUpgradePolicyOutput)
+}
+
+func (i RollingUpgradePolicyArgs) ToRollingUpgradePolicyPtrOutput() RollingUpgradePolicyPtrOutput {
+	return i.ToRollingUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i RollingUpgradePolicyArgs) ToRollingUpgradePolicyPtrOutputWithContext(ctx context.Context) RollingUpgradePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RollingUpgradePolicyOutput).ToRollingUpgradePolicyPtrOutputWithContext(ctx)
+}
+
+// RollingUpgradePolicyPtrInput is an input type that accepts RollingUpgradePolicyArgs, RollingUpgradePolicyPtr and RollingUpgradePolicyPtrOutput values.
+// You can construct a concrete instance of `RollingUpgradePolicyPtrInput` via:
+//
+//	        RollingUpgradePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type RollingUpgradePolicyPtrInput interface {
+	pulumi.Input
+
+	ToRollingUpgradePolicyPtrOutput() RollingUpgradePolicyPtrOutput
+	ToRollingUpgradePolicyPtrOutputWithContext(context.Context) RollingUpgradePolicyPtrOutput
+}
+
+type rollingUpgradePolicyPtrType RollingUpgradePolicyArgs
+
+func RollingUpgradePolicyPtr(v *RollingUpgradePolicyArgs) RollingUpgradePolicyPtrInput {
+	return (*rollingUpgradePolicyPtrType)(v)
+}
+
+func (*rollingUpgradePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RollingUpgradePolicy)(nil)).Elem()
+}
+
+func (i *rollingUpgradePolicyPtrType) ToRollingUpgradePolicyPtrOutput() RollingUpgradePolicyPtrOutput {
+	return i.ToRollingUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *rollingUpgradePolicyPtrType) ToRollingUpgradePolicyPtrOutputWithContext(ctx context.Context) RollingUpgradePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RollingUpgradePolicyPtrOutput)
+}
+
+// The configuration parameters used while performing a rolling upgrade.
+type RollingUpgradePolicyOutput struct{ *pulumi.OutputState }
+
+func (RollingUpgradePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RollingUpgradePolicy)(nil)).Elem()
+}
+
+func (o RollingUpgradePolicyOutput) ToRollingUpgradePolicyOutput() RollingUpgradePolicyOutput {
+	return o
+}
+
+func (o RollingUpgradePolicyOutput) ToRollingUpgradePolicyOutputWithContext(ctx context.Context) RollingUpgradePolicyOutput {
+	return o
+}
+
+func (o RollingUpgradePolicyOutput) ToRollingUpgradePolicyPtrOutput() RollingUpgradePolicyPtrOutput {
+	return o.ToRollingUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o RollingUpgradePolicyOutput) ToRollingUpgradePolicyPtrOutputWithContext(ctx context.Context) RollingUpgradePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RollingUpgradePolicy) *RollingUpgradePolicy {
+		return &v
+	}).(RollingUpgradePolicyPtrOutput)
+}
+
+// Allow VMSS to ignore AZ boundaries when constructing upgrade batches. Take into consideration the Update Domain and maxBatchInstancePercent to determine the batch size. If this field is not set, Azure Azure Batch will not set its default value. The value of enableCrossZoneUpgrade on the created VirtualMachineScaleSet will be decided by the default configurations on VirtualMachineScaleSet. This field is able to be set to true or false only when using NodePlacementConfiguration as Zonal.
+func (o RollingUpgradePolicyOutput) EnableCrossZoneUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RollingUpgradePolicy) *bool { return v.EnableCrossZoneUpgrade }).(pulumi.BoolPtrOutput)
+}
+
+// The maximum percent of total virtual machine instances that will be upgraded simultaneously by the rolling upgrade in one batch. As this is a maximum, unhealthy instances in previous or future batches can cause the percentage of instances in a batch to decrease to ensure higher reliability. The value of this field should be between 5 and 100, inclusive. If both maxBatchInstancePercent and maxUnhealthyInstancePercent are assigned with value, the value of maxBatchInstancePercent should not be more than maxUnhealthyInstancePercent.
+func (o RollingUpgradePolicyOutput) MaxBatchInstancePercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RollingUpgradePolicy) *int { return v.MaxBatchInstancePercent }).(pulumi.IntPtrOutput)
+}
+
+// The maximum percentage of the total virtual machine instances in the scale set that can be simultaneously unhealthy, either as a result of being upgraded, or by being found in an unhealthy state by the virtual machine health checks before the rolling upgrade aborts. This constraint will be checked prior to starting any batch. The value of this field should be between 5 and 100, inclusive. If both maxBatchInstancePercent and maxUnhealthyInstancePercent are assigned with value, the value of maxBatchInstancePercent should not be more than maxUnhealthyInstancePercent.
+func (o RollingUpgradePolicyOutput) MaxUnhealthyInstancePercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RollingUpgradePolicy) *int { return v.MaxUnhealthyInstancePercent }).(pulumi.IntPtrOutput)
+}
+
+// The maximum percentage of upgraded virtual machine instances that can be found to be in an unhealthy state. This check will happen after each batch is upgraded. If this percentage is ever exceeded, the rolling update aborts. The value of this field should be between 0 and 100, inclusive.
+func (o RollingUpgradePolicyOutput) MaxUnhealthyUpgradedInstancePercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RollingUpgradePolicy) *int { return v.MaxUnhealthyUpgradedInstancePercent }).(pulumi.IntPtrOutput)
+}
+
+// The wait time between completing the update for all virtual machines in one batch and starting the next batch. The time duration should be specified in ISO 8601 format.
+func (o RollingUpgradePolicyOutput) PauseTimeBetweenBatches() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RollingUpgradePolicy) *string { return v.PauseTimeBetweenBatches }).(pulumi.StringPtrOutput)
+}
+
+// Upgrade all unhealthy instances in a scale set before any healthy instances.
+func (o RollingUpgradePolicyOutput) PrioritizeUnhealthyInstances() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RollingUpgradePolicy) *bool { return v.PrioritizeUnhealthyInstances }).(pulumi.BoolPtrOutput)
+}
+
+// Rollback failed instances to previous model if the Rolling Upgrade policy is violated.
+func (o RollingUpgradePolicyOutput) RollbackFailedInstancesOnPolicyBreach() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RollingUpgradePolicy) *bool { return v.RollbackFailedInstancesOnPolicyBreach }).(pulumi.BoolPtrOutput)
+}
+
+type RollingUpgradePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (RollingUpgradePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RollingUpgradePolicy)(nil)).Elem()
+}
+
+func (o RollingUpgradePolicyPtrOutput) ToRollingUpgradePolicyPtrOutput() RollingUpgradePolicyPtrOutput {
+	return o
+}
+
+func (o RollingUpgradePolicyPtrOutput) ToRollingUpgradePolicyPtrOutputWithContext(ctx context.Context) RollingUpgradePolicyPtrOutput {
+	return o
+}
+
+func (o RollingUpgradePolicyPtrOutput) Elem() RollingUpgradePolicyOutput {
+	return o.ApplyT(func(v *RollingUpgradePolicy) RollingUpgradePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret RollingUpgradePolicy
+		return ret
+	}).(RollingUpgradePolicyOutput)
+}
+
+// Allow VMSS to ignore AZ boundaries when constructing upgrade batches. Take into consideration the Update Domain and maxBatchInstancePercent to determine the batch size. If this field is not set, Azure Azure Batch will not set its default value. The value of enableCrossZoneUpgrade on the created VirtualMachineScaleSet will be decided by the default configurations on VirtualMachineScaleSet. This field is able to be set to true or false only when using NodePlacementConfiguration as Zonal.
+func (o RollingUpgradePolicyPtrOutput) EnableCrossZoneUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RollingUpgradePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableCrossZoneUpgrade
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The maximum percent of total virtual machine instances that will be upgraded simultaneously by the rolling upgrade in one batch. As this is a maximum, unhealthy instances in previous or future batches can cause the percentage of instances in a batch to decrease to ensure higher reliability. The value of this field should be between 5 and 100, inclusive. If both maxBatchInstancePercent and maxUnhealthyInstancePercent are assigned with value, the value of maxBatchInstancePercent should not be more than maxUnhealthyInstancePercent.
+func (o RollingUpgradePolicyPtrOutput) MaxBatchInstancePercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RollingUpgradePolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBatchInstancePercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum percentage of the total virtual machine instances in the scale set that can be simultaneously unhealthy, either as a result of being upgraded, or by being found in an unhealthy state by the virtual machine health checks before the rolling upgrade aborts. This constraint will be checked prior to starting any batch. The value of this field should be between 5 and 100, inclusive. If both maxBatchInstancePercent and maxUnhealthyInstancePercent are assigned with value, the value of maxBatchInstancePercent should not be more than maxUnhealthyInstancePercent.
+func (o RollingUpgradePolicyPtrOutput) MaxUnhealthyInstancePercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RollingUpgradePolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxUnhealthyInstancePercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum percentage of upgraded virtual machine instances that can be found to be in an unhealthy state. This check will happen after each batch is upgraded. If this percentage is ever exceeded, the rolling update aborts. The value of this field should be between 0 and 100, inclusive.
+func (o RollingUpgradePolicyPtrOutput) MaxUnhealthyUpgradedInstancePercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RollingUpgradePolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxUnhealthyUpgradedInstancePercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// The wait time between completing the update for all virtual machines in one batch and starting the next batch. The time duration should be specified in ISO 8601 format.
+func (o RollingUpgradePolicyPtrOutput) PauseTimeBetweenBatches() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RollingUpgradePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PauseTimeBetweenBatches
+	}).(pulumi.StringPtrOutput)
+}
+
+// Upgrade all unhealthy instances in a scale set before any healthy instances.
+func (o RollingUpgradePolicyPtrOutput) PrioritizeUnhealthyInstances() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RollingUpgradePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PrioritizeUnhealthyInstances
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Rollback failed instances to previous model if the Rolling Upgrade policy is violated.
+func (o RollingUpgradePolicyPtrOutput) RollbackFailedInstancesOnPolicyBreach() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RollingUpgradePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RollbackFailedInstancesOnPolicyBreach
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The configuration parameters used while performing a rolling upgrade.
+type RollingUpgradePolicyResponse struct {
+	// Allow VMSS to ignore AZ boundaries when constructing upgrade batches. Take into consideration the Update Domain and maxBatchInstancePercent to determine the batch size. If this field is not set, Azure Azure Batch will not set its default value. The value of enableCrossZoneUpgrade on the created VirtualMachineScaleSet will be decided by the default configurations on VirtualMachineScaleSet. This field is able to be set to true or false only when using NodePlacementConfiguration as Zonal.
+	EnableCrossZoneUpgrade *bool `pulumi:"enableCrossZoneUpgrade"`
+	// The maximum percent of total virtual machine instances that will be upgraded simultaneously by the rolling upgrade in one batch. As this is a maximum, unhealthy instances in previous or future batches can cause the percentage of instances in a batch to decrease to ensure higher reliability. The value of this field should be between 5 and 100, inclusive. If both maxBatchInstancePercent and maxUnhealthyInstancePercent are assigned with value, the value of maxBatchInstancePercent should not be more than maxUnhealthyInstancePercent.
+	MaxBatchInstancePercent *int `pulumi:"maxBatchInstancePercent"`
+	// The maximum percentage of the total virtual machine instances in the scale set that can be simultaneously unhealthy, either as a result of being upgraded, or by being found in an unhealthy state by the virtual machine health checks before the rolling upgrade aborts. This constraint will be checked prior to starting any batch. The value of this field should be between 5 and 100, inclusive. If both maxBatchInstancePercent and maxUnhealthyInstancePercent are assigned with value, the value of maxBatchInstancePercent should not be more than maxUnhealthyInstancePercent.
+	MaxUnhealthyInstancePercent *int `pulumi:"maxUnhealthyInstancePercent"`
+	// The maximum percentage of upgraded virtual machine instances that can be found to be in an unhealthy state. This check will happen after each batch is upgraded. If this percentage is ever exceeded, the rolling update aborts. The value of this field should be between 0 and 100, inclusive.
+	MaxUnhealthyUpgradedInstancePercent *int `pulumi:"maxUnhealthyUpgradedInstancePercent"`
+	// The wait time between completing the update for all virtual machines in one batch and starting the next batch. The time duration should be specified in ISO 8601 format.
+	PauseTimeBetweenBatches *string `pulumi:"pauseTimeBetweenBatches"`
+	// Upgrade all unhealthy instances in a scale set before any healthy instances.
+	PrioritizeUnhealthyInstances *bool `pulumi:"prioritizeUnhealthyInstances"`
+	// Rollback failed instances to previous model if the Rolling Upgrade policy is violated.
+	RollbackFailedInstancesOnPolicyBreach *bool `pulumi:"rollbackFailedInstancesOnPolicyBreach"`
+}
+
+// The configuration parameters used while performing a rolling upgrade.
+type RollingUpgradePolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (RollingUpgradePolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RollingUpgradePolicyResponse)(nil)).Elem()
+}
+
+func (o RollingUpgradePolicyResponseOutput) ToRollingUpgradePolicyResponseOutput() RollingUpgradePolicyResponseOutput {
+	return o
+}
+
+func (o RollingUpgradePolicyResponseOutput) ToRollingUpgradePolicyResponseOutputWithContext(ctx context.Context) RollingUpgradePolicyResponseOutput {
+	return o
+}
+
+// Allow VMSS to ignore AZ boundaries when constructing upgrade batches. Take into consideration the Update Domain and maxBatchInstancePercent to determine the batch size. If this field is not set, Azure Azure Batch will not set its default value. The value of enableCrossZoneUpgrade on the created VirtualMachineScaleSet will be decided by the default configurations on VirtualMachineScaleSet. This field is able to be set to true or false only when using NodePlacementConfiguration as Zonal.
+func (o RollingUpgradePolicyResponseOutput) EnableCrossZoneUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RollingUpgradePolicyResponse) *bool { return v.EnableCrossZoneUpgrade }).(pulumi.BoolPtrOutput)
+}
+
+// The maximum percent of total virtual machine instances that will be upgraded simultaneously by the rolling upgrade in one batch. As this is a maximum, unhealthy instances in previous or future batches can cause the percentage of instances in a batch to decrease to ensure higher reliability. The value of this field should be between 5 and 100, inclusive. If both maxBatchInstancePercent and maxUnhealthyInstancePercent are assigned with value, the value of maxBatchInstancePercent should not be more than maxUnhealthyInstancePercent.
+func (o RollingUpgradePolicyResponseOutput) MaxBatchInstancePercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RollingUpgradePolicyResponse) *int { return v.MaxBatchInstancePercent }).(pulumi.IntPtrOutput)
+}
+
+// The maximum percentage of the total virtual machine instances in the scale set that can be simultaneously unhealthy, either as a result of being upgraded, or by being found in an unhealthy state by the virtual machine health checks before the rolling upgrade aborts. This constraint will be checked prior to starting any batch. The value of this field should be between 5 and 100, inclusive. If both maxBatchInstancePercent and maxUnhealthyInstancePercent are assigned with value, the value of maxBatchInstancePercent should not be more than maxUnhealthyInstancePercent.
+func (o RollingUpgradePolicyResponseOutput) MaxUnhealthyInstancePercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RollingUpgradePolicyResponse) *int { return v.MaxUnhealthyInstancePercent }).(pulumi.IntPtrOutput)
+}
+
+// The maximum percentage of upgraded virtual machine instances that can be found to be in an unhealthy state. This check will happen after each batch is upgraded. If this percentage is ever exceeded, the rolling update aborts. The value of this field should be between 0 and 100, inclusive.
+func (o RollingUpgradePolicyResponseOutput) MaxUnhealthyUpgradedInstancePercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RollingUpgradePolicyResponse) *int { return v.MaxUnhealthyUpgradedInstancePercent }).(pulumi.IntPtrOutput)
+}
+
+// The wait time between completing the update for all virtual machines in one batch and starting the next batch. The time duration should be specified in ISO 8601 format.
+func (o RollingUpgradePolicyResponseOutput) PauseTimeBetweenBatches() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RollingUpgradePolicyResponse) *string { return v.PauseTimeBetweenBatches }).(pulumi.StringPtrOutput)
+}
+
+// Upgrade all unhealthy instances in a scale set before any healthy instances.
+func (o RollingUpgradePolicyResponseOutput) PrioritizeUnhealthyInstances() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RollingUpgradePolicyResponse) *bool { return v.PrioritizeUnhealthyInstances }).(pulumi.BoolPtrOutput)
+}
+
+// Rollback failed instances to previous model if the Rolling Upgrade policy is violated.
+func (o RollingUpgradePolicyResponseOutput) RollbackFailedInstancesOnPolicyBreach() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RollingUpgradePolicyResponse) *bool { return v.RollbackFailedInstancesOnPolicyBreach }).(pulumi.BoolPtrOutput)
+}
+
+type RollingUpgradePolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RollingUpgradePolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RollingUpgradePolicyResponse)(nil)).Elem()
+}
+
+func (o RollingUpgradePolicyResponsePtrOutput) ToRollingUpgradePolicyResponsePtrOutput() RollingUpgradePolicyResponsePtrOutput {
+	return o
+}
+
+func (o RollingUpgradePolicyResponsePtrOutput) ToRollingUpgradePolicyResponsePtrOutputWithContext(ctx context.Context) RollingUpgradePolicyResponsePtrOutput {
+	return o
+}
+
+func (o RollingUpgradePolicyResponsePtrOutput) Elem() RollingUpgradePolicyResponseOutput {
+	return o.ApplyT(func(v *RollingUpgradePolicyResponse) RollingUpgradePolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RollingUpgradePolicyResponse
+		return ret
+	}).(RollingUpgradePolicyResponseOutput)
+}
+
+// Allow VMSS to ignore AZ boundaries when constructing upgrade batches. Take into consideration the Update Domain and maxBatchInstancePercent to determine the batch size. If this field is not set, Azure Azure Batch will not set its default value. The value of enableCrossZoneUpgrade on the created VirtualMachineScaleSet will be decided by the default configurations on VirtualMachineScaleSet. This field is able to be set to true or false only when using NodePlacementConfiguration as Zonal.
+func (o RollingUpgradePolicyResponsePtrOutput) EnableCrossZoneUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RollingUpgradePolicyResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableCrossZoneUpgrade
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The maximum percent of total virtual machine instances that will be upgraded simultaneously by the rolling upgrade in one batch. As this is a maximum, unhealthy instances in previous or future batches can cause the percentage of instances in a batch to decrease to ensure higher reliability. The value of this field should be between 5 and 100, inclusive. If both maxBatchInstancePercent and maxUnhealthyInstancePercent are assigned with value, the value of maxBatchInstancePercent should not be more than maxUnhealthyInstancePercent.
+func (o RollingUpgradePolicyResponsePtrOutput) MaxBatchInstancePercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RollingUpgradePolicyResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBatchInstancePercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum percentage of the total virtual machine instances in the scale set that can be simultaneously unhealthy, either as a result of being upgraded, or by being found in an unhealthy state by the virtual machine health checks before the rolling upgrade aborts. This constraint will be checked prior to starting any batch. The value of this field should be between 5 and 100, inclusive. If both maxBatchInstancePercent and maxUnhealthyInstancePercent are assigned with value, the value of maxBatchInstancePercent should not be more than maxUnhealthyInstancePercent.
+func (o RollingUpgradePolicyResponsePtrOutput) MaxUnhealthyInstancePercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RollingUpgradePolicyResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxUnhealthyInstancePercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum percentage of upgraded virtual machine instances that can be found to be in an unhealthy state. This check will happen after each batch is upgraded. If this percentage is ever exceeded, the rolling update aborts. The value of this field should be between 0 and 100, inclusive.
+func (o RollingUpgradePolicyResponsePtrOutput) MaxUnhealthyUpgradedInstancePercent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RollingUpgradePolicyResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxUnhealthyUpgradedInstancePercent
+	}).(pulumi.IntPtrOutput)
+}
+
+// The wait time between completing the update for all virtual machines in one batch and starting the next batch. The time duration should be specified in ISO 8601 format.
+func (o RollingUpgradePolicyResponsePtrOutput) PauseTimeBetweenBatches() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RollingUpgradePolicyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PauseTimeBetweenBatches
+	}).(pulumi.StringPtrOutput)
+}
+
+// Upgrade all unhealthy instances in a scale set before any healthy instances.
+func (o RollingUpgradePolicyResponsePtrOutput) PrioritizeUnhealthyInstances() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RollingUpgradePolicyResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PrioritizeUnhealthyInstances
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Rollback failed instances to previous model if the Rolling Upgrade policy is violated.
+func (o RollingUpgradePolicyResponsePtrOutput) RollbackFailedInstancesOnPolicyBreach() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RollingUpgradePolicyResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RollbackFailedInstancesOnPolicyBreach
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Defines the desired size of the pool. This can either be 'fixedScale' where the requested targetDedicatedNodes is specified, or 'autoScale' which defines a formula which is periodically reevaluated. If this property is not specified, the pool will have a fixed scale with 0 targetDedicatedNodes.
@@ -10085,16 +11381,490 @@ func (o ScaleSettingsResponsePtrOutput) FixedScale() FixedScaleSettingsResponseP
 	}).(FixedScaleSettingsResponsePtrOutput)
 }
 
+// Specifies the security profile settings for the virtual machine or virtual machine scale set.
+type SecurityProfile struct {
+	// This property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. This will enable the encryption for all the disks including Resource/Temp disk at host itself.
+	EncryptionAtHost *bool `pulumi:"encryptionAtHost"`
+	// Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings.
+	SecurityType *SecurityTypes `pulumi:"securityType"`
+	// Specifies the security settings like secure boot and vTPM used while creating the virtual machine.
+	UefiSettings *UefiSettings `pulumi:"uefiSettings"`
+}
+
+// SecurityProfileInput is an input type that accepts SecurityProfileArgs and SecurityProfileOutput values.
+// You can construct a concrete instance of `SecurityProfileInput` via:
+//
+//	SecurityProfileArgs{...}
+type SecurityProfileInput interface {
+	pulumi.Input
+
+	ToSecurityProfileOutput() SecurityProfileOutput
+	ToSecurityProfileOutputWithContext(context.Context) SecurityProfileOutput
+}
+
+// Specifies the security profile settings for the virtual machine or virtual machine scale set.
+type SecurityProfileArgs struct {
+	// This property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. This will enable the encryption for all the disks including Resource/Temp disk at host itself.
+	EncryptionAtHost pulumi.BoolPtrInput `pulumi:"encryptionAtHost"`
+	// Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings.
+	SecurityType SecurityTypesPtrInput `pulumi:"securityType"`
+	// Specifies the security settings like secure boot and vTPM used while creating the virtual machine.
+	UefiSettings UefiSettingsPtrInput `pulumi:"uefiSettings"`
+}
+
+func (SecurityProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfile)(nil)).Elem()
+}
+
+func (i SecurityProfileArgs) ToSecurityProfileOutput() SecurityProfileOutput {
+	return i.ToSecurityProfileOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileArgs) ToSecurityProfileOutputWithContext(ctx context.Context) SecurityProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileOutput)
+}
+
+func (i SecurityProfileArgs) ToSecurityProfilePtrOutput() SecurityProfilePtrOutput {
+	return i.ToSecurityProfilePtrOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileArgs) ToSecurityProfilePtrOutputWithContext(ctx context.Context) SecurityProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileOutput).ToSecurityProfilePtrOutputWithContext(ctx)
+}
+
+// SecurityProfilePtrInput is an input type that accepts SecurityProfileArgs, SecurityProfilePtr and SecurityProfilePtrOutput values.
+// You can construct a concrete instance of `SecurityProfilePtrInput` via:
+//
+//	        SecurityProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityProfilePtrInput interface {
+	pulumi.Input
+
+	ToSecurityProfilePtrOutput() SecurityProfilePtrOutput
+	ToSecurityProfilePtrOutputWithContext(context.Context) SecurityProfilePtrOutput
+}
+
+type securityProfilePtrType SecurityProfileArgs
+
+func SecurityProfilePtr(v *SecurityProfileArgs) SecurityProfilePtrInput {
+	return (*securityProfilePtrType)(v)
+}
+
+func (*securityProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityProfile)(nil)).Elem()
+}
+
+func (i *securityProfilePtrType) ToSecurityProfilePtrOutput() SecurityProfilePtrOutput {
+	return i.ToSecurityProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *securityProfilePtrType) ToSecurityProfilePtrOutputWithContext(ctx context.Context) SecurityProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfilePtrOutput)
+}
+
+// Specifies the security profile settings for the virtual machine or virtual machine scale set.
+type SecurityProfileOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfile)(nil)).Elem()
+}
+
+func (o SecurityProfileOutput) ToSecurityProfileOutput() SecurityProfileOutput {
+	return o
+}
+
+func (o SecurityProfileOutput) ToSecurityProfileOutputWithContext(ctx context.Context) SecurityProfileOutput {
+	return o
+}
+
+func (o SecurityProfileOutput) ToSecurityProfilePtrOutput() SecurityProfilePtrOutput {
+	return o.ToSecurityProfilePtrOutputWithContext(context.Background())
+}
+
+func (o SecurityProfileOutput) ToSecurityProfilePtrOutputWithContext(ctx context.Context) SecurityProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityProfile) *SecurityProfile {
+		return &v
+	}).(SecurityProfilePtrOutput)
+}
+
+// This property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. This will enable the encryption for all the disks including Resource/Temp disk at host itself.
+func (o SecurityProfileOutput) EncryptionAtHost() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecurityProfile) *bool { return v.EncryptionAtHost }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings.
+func (o SecurityProfileOutput) SecurityType() SecurityTypesPtrOutput {
+	return o.ApplyT(func(v SecurityProfile) *SecurityTypes { return v.SecurityType }).(SecurityTypesPtrOutput)
+}
+
+// Specifies the security settings like secure boot and vTPM used while creating the virtual machine.
+func (o SecurityProfileOutput) UefiSettings() UefiSettingsPtrOutput {
+	return o.ApplyT(func(v SecurityProfile) *UefiSettings { return v.UefiSettings }).(UefiSettingsPtrOutput)
+}
+
+type SecurityProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityProfile)(nil)).Elem()
+}
+
+func (o SecurityProfilePtrOutput) ToSecurityProfilePtrOutput() SecurityProfilePtrOutput {
+	return o
+}
+
+func (o SecurityProfilePtrOutput) ToSecurityProfilePtrOutputWithContext(ctx context.Context) SecurityProfilePtrOutput {
+	return o
+}
+
+func (o SecurityProfilePtrOutput) Elem() SecurityProfileOutput {
+	return o.ApplyT(func(v *SecurityProfile) SecurityProfile {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityProfile
+		return ret
+	}).(SecurityProfileOutput)
+}
+
+// This property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. This will enable the encryption for all the disks including Resource/Temp disk at host itself.
+func (o SecurityProfilePtrOutput) EncryptionAtHost() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecurityProfile) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionAtHost
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings.
+func (o SecurityProfilePtrOutput) SecurityType() SecurityTypesPtrOutput {
+	return o.ApplyT(func(v *SecurityProfile) *SecurityTypes {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityType
+	}).(SecurityTypesPtrOutput)
+}
+
+// Specifies the security settings like secure boot and vTPM used while creating the virtual machine.
+func (o SecurityProfilePtrOutput) UefiSettings() UefiSettingsPtrOutput {
+	return o.ApplyT(func(v *SecurityProfile) *UefiSettings {
+		if v == nil {
+			return nil
+		}
+		return v.UefiSettings
+	}).(UefiSettingsPtrOutput)
+}
+
+// Specifies the security profile settings for the virtual machine or virtual machine scale set.
+type SecurityProfileResponse struct {
+	// This property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. This will enable the encryption for all the disks including Resource/Temp disk at host itself.
+	EncryptionAtHost *bool `pulumi:"encryptionAtHost"`
+	// Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings.
+	SecurityType *string `pulumi:"securityType"`
+	// Specifies the security settings like secure boot and vTPM used while creating the virtual machine.
+	UefiSettings *UefiSettingsResponse `pulumi:"uefiSettings"`
+}
+
+// Specifies the security profile settings for the virtual machine or virtual machine scale set.
+type SecurityProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileResponse)(nil)).Elem()
+}
+
+func (o SecurityProfileResponseOutput) ToSecurityProfileResponseOutput() SecurityProfileResponseOutput {
+	return o
+}
+
+func (o SecurityProfileResponseOutput) ToSecurityProfileResponseOutputWithContext(ctx context.Context) SecurityProfileResponseOutput {
+	return o
+}
+
+// This property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. This will enable the encryption for all the disks including Resource/Temp disk at host itself.
+func (o SecurityProfileResponseOutput) EncryptionAtHost() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecurityProfileResponse) *bool { return v.EncryptionAtHost }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings.
+func (o SecurityProfileResponseOutput) SecurityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityProfileResponse) *string { return v.SecurityType }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the security settings like secure boot and vTPM used while creating the virtual machine.
+func (o SecurityProfileResponseOutput) UefiSettings() UefiSettingsResponsePtrOutput {
+	return o.ApplyT(func(v SecurityProfileResponse) *UefiSettingsResponse { return v.UefiSettings }).(UefiSettingsResponsePtrOutput)
+}
+
+type SecurityProfileResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityProfileResponse)(nil)).Elem()
+}
+
+func (o SecurityProfileResponsePtrOutput) ToSecurityProfileResponsePtrOutput() SecurityProfileResponsePtrOutput {
+	return o
+}
+
+func (o SecurityProfileResponsePtrOutput) ToSecurityProfileResponsePtrOutputWithContext(ctx context.Context) SecurityProfileResponsePtrOutput {
+	return o
+}
+
+func (o SecurityProfileResponsePtrOutput) Elem() SecurityProfileResponseOutput {
+	return o.ApplyT(func(v *SecurityProfileResponse) SecurityProfileResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityProfileResponse
+		return ret
+	}).(SecurityProfileResponseOutput)
+}
+
+// This property can be used by user in the request to enable or disable the Host Encryption for the virtual machine or virtual machine scale set. This will enable the encryption for all the disks including Resource/Temp disk at host itself.
+func (o SecurityProfileResponsePtrOutput) EncryptionAtHost() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecurityProfileResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionAtHost
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings.
+func (o SecurityProfileResponsePtrOutput) SecurityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the security settings like secure boot and vTPM used while creating the virtual machine.
+func (o SecurityProfileResponsePtrOutput) UefiSettings() UefiSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *SecurityProfileResponse) *UefiSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UefiSettings
+	}).(UefiSettingsResponsePtrOutput)
+}
+
+// Specifies the service artifact reference id used to set same image version for all virtual machines in the scale set when using 'latest' image version.
+type ServiceArtifactReference struct {
+	// The service artifact reference id in the form of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
+	Id string `pulumi:"id"`
+}
+
+// ServiceArtifactReferenceInput is an input type that accepts ServiceArtifactReferenceArgs and ServiceArtifactReferenceOutput values.
+// You can construct a concrete instance of `ServiceArtifactReferenceInput` via:
+//
+//	ServiceArtifactReferenceArgs{...}
+type ServiceArtifactReferenceInput interface {
+	pulumi.Input
+
+	ToServiceArtifactReferenceOutput() ServiceArtifactReferenceOutput
+	ToServiceArtifactReferenceOutputWithContext(context.Context) ServiceArtifactReferenceOutput
+}
+
+// Specifies the service artifact reference id used to set same image version for all virtual machines in the scale set when using 'latest' image version.
+type ServiceArtifactReferenceArgs struct {
+	// The service artifact reference id in the form of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
+	Id pulumi.StringInput `pulumi:"id"`
+}
+
+func (ServiceArtifactReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceArtifactReference)(nil)).Elem()
+}
+
+func (i ServiceArtifactReferenceArgs) ToServiceArtifactReferenceOutput() ServiceArtifactReferenceOutput {
+	return i.ToServiceArtifactReferenceOutputWithContext(context.Background())
+}
+
+func (i ServiceArtifactReferenceArgs) ToServiceArtifactReferenceOutputWithContext(ctx context.Context) ServiceArtifactReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceArtifactReferenceOutput)
+}
+
+func (i ServiceArtifactReferenceArgs) ToServiceArtifactReferencePtrOutput() ServiceArtifactReferencePtrOutput {
+	return i.ToServiceArtifactReferencePtrOutputWithContext(context.Background())
+}
+
+func (i ServiceArtifactReferenceArgs) ToServiceArtifactReferencePtrOutputWithContext(ctx context.Context) ServiceArtifactReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceArtifactReferenceOutput).ToServiceArtifactReferencePtrOutputWithContext(ctx)
+}
+
+// ServiceArtifactReferencePtrInput is an input type that accepts ServiceArtifactReferenceArgs, ServiceArtifactReferencePtr and ServiceArtifactReferencePtrOutput values.
+// You can construct a concrete instance of `ServiceArtifactReferencePtrInput` via:
+//
+//	        ServiceArtifactReferenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceArtifactReferencePtrInput interface {
+	pulumi.Input
+
+	ToServiceArtifactReferencePtrOutput() ServiceArtifactReferencePtrOutput
+	ToServiceArtifactReferencePtrOutputWithContext(context.Context) ServiceArtifactReferencePtrOutput
+}
+
+type serviceArtifactReferencePtrType ServiceArtifactReferenceArgs
+
+func ServiceArtifactReferencePtr(v *ServiceArtifactReferenceArgs) ServiceArtifactReferencePtrInput {
+	return (*serviceArtifactReferencePtrType)(v)
+}
+
+func (*serviceArtifactReferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceArtifactReference)(nil)).Elem()
+}
+
+func (i *serviceArtifactReferencePtrType) ToServiceArtifactReferencePtrOutput() ServiceArtifactReferencePtrOutput {
+	return i.ToServiceArtifactReferencePtrOutputWithContext(context.Background())
+}
+
+func (i *serviceArtifactReferencePtrType) ToServiceArtifactReferencePtrOutputWithContext(ctx context.Context) ServiceArtifactReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceArtifactReferencePtrOutput)
+}
+
+// Specifies the service artifact reference id used to set same image version for all virtual machines in the scale set when using 'latest' image version.
+type ServiceArtifactReferenceOutput struct{ *pulumi.OutputState }
+
+func (ServiceArtifactReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceArtifactReference)(nil)).Elem()
+}
+
+func (o ServiceArtifactReferenceOutput) ToServiceArtifactReferenceOutput() ServiceArtifactReferenceOutput {
+	return o
+}
+
+func (o ServiceArtifactReferenceOutput) ToServiceArtifactReferenceOutputWithContext(ctx context.Context) ServiceArtifactReferenceOutput {
+	return o
+}
+
+func (o ServiceArtifactReferenceOutput) ToServiceArtifactReferencePtrOutput() ServiceArtifactReferencePtrOutput {
+	return o.ToServiceArtifactReferencePtrOutputWithContext(context.Background())
+}
+
+func (o ServiceArtifactReferenceOutput) ToServiceArtifactReferencePtrOutputWithContext(ctx context.Context) ServiceArtifactReferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceArtifactReference) *ServiceArtifactReference {
+		return &v
+	}).(ServiceArtifactReferencePtrOutput)
+}
+
+// The service artifact reference id in the form of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
+func (o ServiceArtifactReferenceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceArtifactReference) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type ServiceArtifactReferencePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceArtifactReferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceArtifactReference)(nil)).Elem()
+}
+
+func (o ServiceArtifactReferencePtrOutput) ToServiceArtifactReferencePtrOutput() ServiceArtifactReferencePtrOutput {
+	return o
+}
+
+func (o ServiceArtifactReferencePtrOutput) ToServiceArtifactReferencePtrOutputWithContext(ctx context.Context) ServiceArtifactReferencePtrOutput {
+	return o
+}
+
+func (o ServiceArtifactReferencePtrOutput) Elem() ServiceArtifactReferenceOutput {
+	return o.ApplyT(func(v *ServiceArtifactReference) ServiceArtifactReference {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceArtifactReference
+		return ret
+	}).(ServiceArtifactReferenceOutput)
+}
+
+// The service artifact reference id in the form of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
+func (o ServiceArtifactReferencePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceArtifactReference) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the service artifact reference id used to set same image version for all virtual machines in the scale set when using 'latest' image version.
+type ServiceArtifactReferenceResponse struct {
+	// The service artifact reference id in the form of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
+	Id string `pulumi:"id"`
+}
+
+// Specifies the service artifact reference id used to set same image version for all virtual machines in the scale set when using 'latest' image version.
+type ServiceArtifactReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceArtifactReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceArtifactReferenceResponse)(nil)).Elem()
+}
+
+func (o ServiceArtifactReferenceResponseOutput) ToServiceArtifactReferenceResponseOutput() ServiceArtifactReferenceResponseOutput {
+	return o
+}
+
+func (o ServiceArtifactReferenceResponseOutput) ToServiceArtifactReferenceResponseOutputWithContext(ctx context.Context) ServiceArtifactReferenceResponseOutput {
+	return o
+}
+
+// The service artifact reference id in the form of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
+func (o ServiceArtifactReferenceResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceArtifactReferenceResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type ServiceArtifactReferenceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceArtifactReferenceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceArtifactReferenceResponse)(nil)).Elem()
+}
+
+func (o ServiceArtifactReferenceResponsePtrOutput) ToServiceArtifactReferenceResponsePtrOutput() ServiceArtifactReferenceResponsePtrOutput {
+	return o
+}
+
+func (o ServiceArtifactReferenceResponsePtrOutput) ToServiceArtifactReferenceResponsePtrOutputWithContext(ctx context.Context) ServiceArtifactReferenceResponsePtrOutput {
+	return o
+}
+
+func (o ServiceArtifactReferenceResponsePtrOutput) Elem() ServiceArtifactReferenceResponseOutput {
+	return o.ApplyT(func(v *ServiceArtifactReferenceResponse) ServiceArtifactReferenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceArtifactReferenceResponse
+		return ret
+	}).(ServiceArtifactReferenceResponseOutput)
+}
+
+// The service artifact reference id in the form of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
+func (o ServiceArtifactReferenceResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceArtifactReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
 // In some cases the start task may be re-run even though the node was not rebooted. Due to this, start tasks should be idempotent and exit gracefully if the setup they're performing has already been done. Special care should be taken to avoid start tasks which create breakaway process or install/launch services from the start task working directory, as this will block Batch from being able to re-run the start task.
 type StartTask struct {
 	// The command line does not run under a shell, and therefore cannot take advantage of shell features such as environment variable expansion. If you want to take advantage of such features, you should invoke the shell in the command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Required if any other properties of the startTask are specified.
 	CommandLine *string `pulumi:"commandLine"`
 	// When this is specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are mapped into the container, all task environment variables are mapped into the container, and the task command line is executed in the container.
-	ContainerSettings   *TaskContainerSettings `pulumi:"containerSettings"`
-	EnvironmentSettings []EnvironmentSetting   `pulumi:"environmentSettings"`
-	// The Batch service retries a task if its exit code is nonzero. Note that this value specifically controls the number of retries. The Batch service will try the task once, and may then retry up to this limit. For example, if the maximum retry count is 3, Batch tries the task up to 4 times (one initial try and 3 retries). If the maximum retry count is 0, the Batch service does not retry the task. If the maximum retry count is -1, the Batch service retries the task without limit. Default is 0.
-	MaxTaskRetryCount *int           `pulumi:"maxTaskRetryCount"`
-	ResourceFiles     []ResourceFile `pulumi:"resourceFiles"`
+	ContainerSettings *TaskContainerSettings `pulumi:"containerSettings"`
+	// A list of environment variable settings for the start task.
+	EnvironmentSettings []EnvironmentSetting `pulumi:"environmentSettings"`
+	// The Batch service retries a task if its exit code is nonzero. Note that this value specifically controls the number of retries. The Batch service will try the task once, and may then retry up to this limit. For example, if the maximum retry count is 3, Batch tries the task up to 4 times (one initial try and 3 retries). If the maximum retry count is 0, the Batch service does not retry the task. If the maximum retry count is -1, the Batch service retries the task without limit. Default is 0
+	MaxTaskRetryCount *int `pulumi:"maxTaskRetryCount"`
+	// A list of files that the Batch service will download to the compute node before running the command line.
+	ResourceFiles []ResourceFile `pulumi:"resourceFiles"`
 	// If omitted, the task runs as a non-administrative user unique to the task.
 	UserIdentity *UserIdentity `pulumi:"userIdentity"`
 	// If true and the start task fails on a compute node, the Batch service retries the start task up to its maximum retry count (maxTaskRetryCount). If the task has still not completed successfully after all retries, then the Batch service marks the compute node unusable, and will not schedule tasks to it. This condition can be detected via the node state and scheduling error detail. If false, the Batch service will not wait for the start task to complete. In this case, other tasks can start executing on the compute node while the start task is still running; and even if the start task fails, new tasks will continue to be scheduled on the node. The default is true.
@@ -10130,11 +11900,13 @@ type StartTaskArgs struct {
 	// The command line does not run under a shell, and therefore cannot take advantage of shell features such as environment variable expansion. If you want to take advantage of such features, you should invoke the shell in the command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Required if any other properties of the startTask are specified.
 	CommandLine pulumi.StringPtrInput `pulumi:"commandLine"`
 	// When this is specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are mapped into the container, all task environment variables are mapped into the container, and the task command line is executed in the container.
-	ContainerSettings   TaskContainerSettingsPtrInput `pulumi:"containerSettings"`
-	EnvironmentSettings EnvironmentSettingArrayInput  `pulumi:"environmentSettings"`
-	// The Batch service retries a task if its exit code is nonzero. Note that this value specifically controls the number of retries. The Batch service will try the task once, and may then retry up to this limit. For example, if the maximum retry count is 3, Batch tries the task up to 4 times (one initial try and 3 retries). If the maximum retry count is 0, the Batch service does not retry the task. If the maximum retry count is -1, the Batch service retries the task without limit. Default is 0.
-	MaxTaskRetryCount pulumi.IntPtrInput     `pulumi:"maxTaskRetryCount"`
-	ResourceFiles     ResourceFileArrayInput `pulumi:"resourceFiles"`
+	ContainerSettings TaskContainerSettingsPtrInput `pulumi:"containerSettings"`
+	// A list of environment variable settings for the start task.
+	EnvironmentSettings EnvironmentSettingArrayInput `pulumi:"environmentSettings"`
+	// The Batch service retries a task if its exit code is nonzero. Note that this value specifically controls the number of retries. The Batch service will try the task once, and may then retry up to this limit. For example, if the maximum retry count is 3, Batch tries the task up to 4 times (one initial try and 3 retries). If the maximum retry count is 0, the Batch service does not retry the task. If the maximum retry count is -1, the Batch service retries the task without limit. Default is 0
+	MaxTaskRetryCount pulumi.IntPtrInput `pulumi:"maxTaskRetryCount"`
+	// A list of files that the Batch service will download to the compute node before running the command line.
+	ResourceFiles ResourceFileArrayInput `pulumi:"resourceFiles"`
 	// If omitted, the task runs as a non-administrative user unique to the task.
 	UserIdentity UserIdentityPtrInput `pulumi:"userIdentity"`
 	// If true and the start task fails on a compute node, the Batch service retries the start task up to its maximum retry count (maxTaskRetryCount). If the task has still not completed successfully after all retries, then the Batch service marks the compute node unusable, and will not schedule tasks to it. This condition can be detected via the node state and scheduling error detail. If false, the Batch service will not wait for the start task to complete. In this case, other tasks can start executing on the compute node while the start task is still running; and even if the start task fails, new tasks will continue to be scheduled on the node. The default is true.
@@ -10240,15 +12012,17 @@ func (o StartTaskOutput) ContainerSettings() TaskContainerSettingsPtrOutput {
 	return o.ApplyT(func(v StartTask) *TaskContainerSettings { return v.ContainerSettings }).(TaskContainerSettingsPtrOutput)
 }
 
+// A list of environment variable settings for the start task.
 func (o StartTaskOutput) EnvironmentSettings() EnvironmentSettingArrayOutput {
 	return o.ApplyT(func(v StartTask) []EnvironmentSetting { return v.EnvironmentSettings }).(EnvironmentSettingArrayOutput)
 }
 
-// The Batch service retries a task if its exit code is nonzero. Note that this value specifically controls the number of retries. The Batch service will try the task once, and may then retry up to this limit. For example, if the maximum retry count is 3, Batch tries the task up to 4 times (one initial try and 3 retries). If the maximum retry count is 0, the Batch service does not retry the task. If the maximum retry count is -1, the Batch service retries the task without limit. Default is 0.
+// The Batch service retries a task if its exit code is nonzero. Note that this value specifically controls the number of retries. The Batch service will try the task once, and may then retry up to this limit. For example, if the maximum retry count is 3, Batch tries the task up to 4 times (one initial try and 3 retries). If the maximum retry count is 0, the Batch service does not retry the task. If the maximum retry count is -1, the Batch service retries the task without limit. Default is 0
 func (o StartTaskOutput) MaxTaskRetryCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StartTask) *int { return v.MaxTaskRetryCount }).(pulumi.IntPtrOutput)
 }
 
+// A list of files that the Batch service will download to the compute node before running the command line.
 func (o StartTaskOutput) ResourceFiles() ResourceFileArrayOutput {
 	return o.ApplyT(func(v StartTask) []ResourceFile { return v.ResourceFiles }).(ResourceFileArrayOutput)
 }
@@ -10307,6 +12081,7 @@ func (o StartTaskPtrOutput) ContainerSettings() TaskContainerSettingsPtrOutput {
 	}).(TaskContainerSettingsPtrOutput)
 }
 
+// A list of environment variable settings for the start task.
 func (o StartTaskPtrOutput) EnvironmentSettings() EnvironmentSettingArrayOutput {
 	return o.ApplyT(func(v *StartTask) []EnvironmentSetting {
 		if v == nil {
@@ -10316,7 +12091,7 @@ func (o StartTaskPtrOutput) EnvironmentSettings() EnvironmentSettingArrayOutput 
 	}).(EnvironmentSettingArrayOutput)
 }
 
-// The Batch service retries a task if its exit code is nonzero. Note that this value specifically controls the number of retries. The Batch service will try the task once, and may then retry up to this limit. For example, if the maximum retry count is 3, Batch tries the task up to 4 times (one initial try and 3 retries). If the maximum retry count is 0, the Batch service does not retry the task. If the maximum retry count is -1, the Batch service retries the task without limit. Default is 0.
+// The Batch service retries a task if its exit code is nonzero. Note that this value specifically controls the number of retries. The Batch service will try the task once, and may then retry up to this limit. For example, if the maximum retry count is 3, Batch tries the task up to 4 times (one initial try and 3 retries). If the maximum retry count is 0, the Batch service does not retry the task. If the maximum retry count is -1, the Batch service retries the task without limit. Default is 0
 func (o StartTaskPtrOutput) MaxTaskRetryCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *StartTask) *int {
 		if v == nil {
@@ -10326,6 +12101,7 @@ func (o StartTaskPtrOutput) MaxTaskRetryCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// A list of files that the Batch service will download to the compute node before running the command line.
 func (o StartTaskPtrOutput) ResourceFiles() ResourceFileArrayOutput {
 	return o.ApplyT(func(v *StartTask) []ResourceFile {
 		if v == nil {
@@ -10360,11 +12136,13 @@ type StartTaskResponse struct {
 	// The command line does not run under a shell, and therefore cannot take advantage of shell features such as environment variable expansion. If you want to take advantage of such features, you should invoke the shell in the command line, for example using "cmd /c MyCommand" in Windows or "/bin/sh -c MyCommand" in Linux. Required if any other properties of the startTask are specified.
 	CommandLine *string `pulumi:"commandLine"`
 	// When this is specified, all directories recursively below the AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are mapped into the container, all task environment variables are mapped into the container, and the task command line is executed in the container.
-	ContainerSettings   *TaskContainerSettingsResponse `pulumi:"containerSettings"`
-	EnvironmentSettings []EnvironmentSettingResponse   `pulumi:"environmentSettings"`
-	// The Batch service retries a task if its exit code is nonzero. Note that this value specifically controls the number of retries. The Batch service will try the task once, and may then retry up to this limit. For example, if the maximum retry count is 3, Batch tries the task up to 4 times (one initial try and 3 retries). If the maximum retry count is 0, the Batch service does not retry the task. If the maximum retry count is -1, the Batch service retries the task without limit. Default is 0.
-	MaxTaskRetryCount *int                   `pulumi:"maxTaskRetryCount"`
-	ResourceFiles     []ResourceFileResponse `pulumi:"resourceFiles"`
+	ContainerSettings *TaskContainerSettingsResponse `pulumi:"containerSettings"`
+	// A list of environment variable settings for the start task.
+	EnvironmentSettings []EnvironmentSettingResponse `pulumi:"environmentSettings"`
+	// The Batch service retries a task if its exit code is nonzero. Note that this value specifically controls the number of retries. The Batch service will try the task once, and may then retry up to this limit. For example, if the maximum retry count is 3, Batch tries the task up to 4 times (one initial try and 3 retries). If the maximum retry count is 0, the Batch service does not retry the task. If the maximum retry count is -1, the Batch service retries the task without limit. Default is 0
+	MaxTaskRetryCount *int `pulumi:"maxTaskRetryCount"`
+	// A list of files that the Batch service will download to the compute node before running the command line.
+	ResourceFiles []ResourceFileResponse `pulumi:"resourceFiles"`
 	// If omitted, the task runs as a non-administrative user unique to the task.
 	UserIdentity *UserIdentityResponse `pulumi:"userIdentity"`
 	// If true and the start task fails on a compute node, the Batch service retries the start task up to its maximum retry count (maxTaskRetryCount). If the task has still not completed successfully after all retries, then the Batch service marks the compute node unusable, and will not schedule tasks to it. This condition can be detected via the node state and scheduling error detail. If false, the Batch service will not wait for the start task to complete. In this case, other tasks can start executing on the compute node while the start task is still running; and even if the start task fails, new tasks will continue to be scheduled on the node. The default is true.
@@ -10409,15 +12187,17 @@ func (o StartTaskResponseOutput) ContainerSettings() TaskContainerSettingsRespon
 	return o.ApplyT(func(v StartTaskResponse) *TaskContainerSettingsResponse { return v.ContainerSettings }).(TaskContainerSettingsResponsePtrOutput)
 }
 
+// A list of environment variable settings for the start task.
 func (o StartTaskResponseOutput) EnvironmentSettings() EnvironmentSettingResponseArrayOutput {
 	return o.ApplyT(func(v StartTaskResponse) []EnvironmentSettingResponse { return v.EnvironmentSettings }).(EnvironmentSettingResponseArrayOutput)
 }
 
-// The Batch service retries a task if its exit code is nonzero. Note that this value specifically controls the number of retries. The Batch service will try the task once, and may then retry up to this limit. For example, if the maximum retry count is 3, Batch tries the task up to 4 times (one initial try and 3 retries). If the maximum retry count is 0, the Batch service does not retry the task. If the maximum retry count is -1, the Batch service retries the task without limit. Default is 0.
+// The Batch service retries a task if its exit code is nonzero. Note that this value specifically controls the number of retries. The Batch service will try the task once, and may then retry up to this limit. For example, if the maximum retry count is 3, Batch tries the task up to 4 times (one initial try and 3 retries). If the maximum retry count is 0, the Batch service does not retry the task. If the maximum retry count is -1, the Batch service retries the task without limit. Default is 0
 func (o StartTaskResponseOutput) MaxTaskRetryCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StartTaskResponse) *int { return v.MaxTaskRetryCount }).(pulumi.IntPtrOutput)
 }
 
+// A list of files that the Batch service will download to the compute node before running the command line.
 func (o StartTaskResponseOutput) ResourceFiles() ResourceFileResponseArrayOutput {
 	return o.ApplyT(func(v StartTaskResponse) []ResourceFileResponse { return v.ResourceFiles }).(ResourceFileResponseArrayOutput)
 }
@@ -10476,6 +12256,7 @@ func (o StartTaskResponsePtrOutput) ContainerSettings() TaskContainerSettingsRes
 	}).(TaskContainerSettingsResponsePtrOutput)
 }
 
+// A list of environment variable settings for the start task.
 func (o StartTaskResponsePtrOutput) EnvironmentSettings() EnvironmentSettingResponseArrayOutput {
 	return o.ApplyT(func(v *StartTaskResponse) []EnvironmentSettingResponse {
 		if v == nil {
@@ -10485,7 +12266,7 @@ func (o StartTaskResponsePtrOutput) EnvironmentSettings() EnvironmentSettingResp
 	}).(EnvironmentSettingResponseArrayOutput)
 }
 
-// The Batch service retries a task if its exit code is nonzero. Note that this value specifically controls the number of retries. The Batch service will try the task once, and may then retry up to this limit. For example, if the maximum retry count is 3, Batch tries the task up to 4 times (one initial try and 3 retries). If the maximum retry count is 0, the Batch service does not retry the task. If the maximum retry count is -1, the Batch service retries the task without limit. Default is 0.
+// The Batch service retries a task if its exit code is nonzero. Note that this value specifically controls the number of retries. The Batch service will try the task once, and may then retry up to this limit. For example, if the maximum retry count is 3, Batch tries the task up to 4 times (one initial try and 3 retries). If the maximum retry count is 0, the Batch service does not retry the task. If the maximum retry count is -1, the Batch service retries the task without limit. Default is 0
 func (o StartTaskResponsePtrOutput) MaxTaskRetryCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *StartTaskResponse) *int {
 		if v == nil {
@@ -10495,6 +12276,7 @@ func (o StartTaskResponsePtrOutput) MaxTaskRetryCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// A list of files that the Batch service will download to the compute node before running the command line.
 func (o StartTaskResponsePtrOutput) ResourceFiles() ResourceFileResponseArrayOutput {
 	return o.ApplyT(func(v *StartTaskResponse) []ResourceFileResponse {
 		if v == nil {
@@ -10524,13 +12306,17 @@ func (o StartTaskResponsePtrOutput) WaitForSuccess() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The container settings for a task.
 type TaskContainerSettings struct {
+	// If this array is null or be not present, container task will mount entire temporary disk drive in windows (or AZ_BATCH_NODE_ROOT_DIR in Linux). It won't' mount any data paths into container if this array is set as empty.
+	ContainerHostBatchBindMounts []ContainerHostBatchBindMountEntry `pulumi:"containerHostBatchBindMounts"`
 	// These additional options are supplied as arguments to the "docker create" command, in addition to those controlled by the Batch Service.
 	ContainerRunOptions *string `pulumi:"containerRunOptions"`
 	// This is the full image reference, as would be specified to "docker pull". If no tag is provided as part of the image name, the tag ":latest" is used as a default.
 	ImageName string `pulumi:"imageName"`
 	// This setting can be omitted if was already provided at pool creation.
-	Registry         *ContainerRegistry         `pulumi:"registry"`
+	Registry *ContainerRegistry `pulumi:"registry"`
+	// A flag to indicate where the container task working directory is. The default is 'taskWorkingDirectory'.
 	WorkingDirectory *ContainerWorkingDirectory `pulumi:"workingDirectory"`
 }
 
@@ -10545,13 +12331,17 @@ type TaskContainerSettingsInput interface {
 	ToTaskContainerSettingsOutputWithContext(context.Context) TaskContainerSettingsOutput
 }
 
+// The container settings for a task.
 type TaskContainerSettingsArgs struct {
+	// If this array is null or be not present, container task will mount entire temporary disk drive in windows (or AZ_BATCH_NODE_ROOT_DIR in Linux). It won't' mount any data paths into container if this array is set as empty.
+	ContainerHostBatchBindMounts ContainerHostBatchBindMountEntryArrayInput `pulumi:"containerHostBatchBindMounts"`
 	// These additional options are supplied as arguments to the "docker create" command, in addition to those controlled by the Batch Service.
 	ContainerRunOptions pulumi.StringPtrInput `pulumi:"containerRunOptions"`
 	// This is the full image reference, as would be specified to "docker pull". If no tag is provided as part of the image name, the tag ":latest" is used as a default.
 	ImageName pulumi.StringInput `pulumi:"imageName"`
 	// This setting can be omitted if was already provided at pool creation.
-	Registry         ContainerRegistryPtrInput         `pulumi:"registry"`
+	Registry ContainerRegistryPtrInput `pulumi:"registry"`
+	// A flag to indicate where the container task working directory is. The default is 'taskWorkingDirectory'.
 	WorkingDirectory ContainerWorkingDirectoryPtrInput `pulumi:"workingDirectory"`
 }
 
@@ -10608,6 +12398,7 @@ func (i *taskContainerSettingsPtrType) ToTaskContainerSettingsPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(TaskContainerSettingsPtrOutput)
 }
 
+// The container settings for a task.
 type TaskContainerSettingsOutput struct{ *pulumi.OutputState }
 
 func (TaskContainerSettingsOutput) ElementType() reflect.Type {
@@ -10632,6 +12423,13 @@ func (o TaskContainerSettingsOutput) ToTaskContainerSettingsPtrOutputWithContext
 	}).(TaskContainerSettingsPtrOutput)
 }
 
+// If this array is null or be not present, container task will mount entire temporary disk drive in windows (or AZ_BATCH_NODE_ROOT_DIR in Linux). It won't' mount any data paths into container if this array is set as empty.
+func (o TaskContainerSettingsOutput) ContainerHostBatchBindMounts() ContainerHostBatchBindMountEntryArrayOutput {
+	return o.ApplyT(func(v TaskContainerSettings) []ContainerHostBatchBindMountEntry {
+		return v.ContainerHostBatchBindMounts
+	}).(ContainerHostBatchBindMountEntryArrayOutput)
+}
+
 // These additional options are supplied as arguments to the "docker create" command, in addition to those controlled by the Batch Service.
 func (o TaskContainerSettingsOutput) ContainerRunOptions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TaskContainerSettings) *string { return v.ContainerRunOptions }).(pulumi.StringPtrOutput)
@@ -10647,6 +12445,7 @@ func (o TaskContainerSettingsOutput) Registry() ContainerRegistryPtrOutput {
 	return o.ApplyT(func(v TaskContainerSettings) *ContainerRegistry { return v.Registry }).(ContainerRegistryPtrOutput)
 }
 
+// A flag to indicate where the container task working directory is. The default is 'taskWorkingDirectory'.
 func (o TaskContainerSettingsOutput) WorkingDirectory() ContainerWorkingDirectoryPtrOutput {
 	return o.ApplyT(func(v TaskContainerSettings) *ContainerWorkingDirectory { return v.WorkingDirectory }).(ContainerWorkingDirectoryPtrOutput)
 }
@@ -10673,6 +12472,16 @@ func (o TaskContainerSettingsPtrOutput) Elem() TaskContainerSettingsOutput {
 		var ret TaskContainerSettings
 		return ret
 	}).(TaskContainerSettingsOutput)
+}
+
+// If this array is null or be not present, container task will mount entire temporary disk drive in windows (or AZ_BATCH_NODE_ROOT_DIR in Linux). It won't' mount any data paths into container if this array is set as empty.
+func (o TaskContainerSettingsPtrOutput) ContainerHostBatchBindMounts() ContainerHostBatchBindMountEntryArrayOutput {
+	return o.ApplyT(func(v *TaskContainerSettings) []ContainerHostBatchBindMountEntry {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerHostBatchBindMounts
+	}).(ContainerHostBatchBindMountEntryArrayOutput)
 }
 
 // These additional options are supplied as arguments to the "docker create" command, in addition to those controlled by the Batch Service.
@@ -10705,6 +12514,7 @@ func (o TaskContainerSettingsPtrOutput) Registry() ContainerRegistryPtrOutput {
 	}).(ContainerRegistryPtrOutput)
 }
 
+// A flag to indicate where the container task working directory is. The default is 'taskWorkingDirectory'.
 func (o TaskContainerSettingsPtrOutput) WorkingDirectory() ContainerWorkingDirectoryPtrOutput {
 	return o.ApplyT(func(v *TaskContainerSettings) *ContainerWorkingDirectory {
 		if v == nil {
@@ -10714,16 +12524,21 @@ func (o TaskContainerSettingsPtrOutput) WorkingDirectory() ContainerWorkingDirec
 	}).(ContainerWorkingDirectoryPtrOutput)
 }
 
+// The container settings for a task.
 type TaskContainerSettingsResponse struct {
+	// If this array is null or be not present, container task will mount entire temporary disk drive in windows (or AZ_BATCH_NODE_ROOT_DIR in Linux). It won't' mount any data paths into container if this array is set as empty.
+	ContainerHostBatchBindMounts []ContainerHostBatchBindMountEntryResponse `pulumi:"containerHostBatchBindMounts"`
 	// These additional options are supplied as arguments to the "docker create" command, in addition to those controlled by the Batch Service.
 	ContainerRunOptions *string `pulumi:"containerRunOptions"`
 	// This is the full image reference, as would be specified to "docker pull". If no tag is provided as part of the image name, the tag ":latest" is used as a default.
 	ImageName string `pulumi:"imageName"`
 	// This setting can be omitted if was already provided at pool creation.
-	Registry         *ContainerRegistryResponse `pulumi:"registry"`
-	WorkingDirectory *string                    `pulumi:"workingDirectory"`
+	Registry *ContainerRegistryResponse `pulumi:"registry"`
+	// A flag to indicate where the container task working directory is. The default is 'taskWorkingDirectory'.
+	WorkingDirectory *string `pulumi:"workingDirectory"`
 }
 
+// The container settings for a task.
 type TaskContainerSettingsResponseOutput struct{ *pulumi.OutputState }
 
 func (TaskContainerSettingsResponseOutput) ElementType() reflect.Type {
@@ -10736,6 +12551,13 @@ func (o TaskContainerSettingsResponseOutput) ToTaskContainerSettingsResponseOutp
 
 func (o TaskContainerSettingsResponseOutput) ToTaskContainerSettingsResponseOutputWithContext(ctx context.Context) TaskContainerSettingsResponseOutput {
 	return o
+}
+
+// If this array is null or be not present, container task will mount entire temporary disk drive in windows (or AZ_BATCH_NODE_ROOT_DIR in Linux). It won't' mount any data paths into container if this array is set as empty.
+func (o TaskContainerSettingsResponseOutput) ContainerHostBatchBindMounts() ContainerHostBatchBindMountEntryResponseArrayOutput {
+	return o.ApplyT(func(v TaskContainerSettingsResponse) []ContainerHostBatchBindMountEntryResponse {
+		return v.ContainerHostBatchBindMounts
+	}).(ContainerHostBatchBindMountEntryResponseArrayOutput)
 }
 
 // These additional options are supplied as arguments to the "docker create" command, in addition to those controlled by the Batch Service.
@@ -10753,6 +12575,7 @@ func (o TaskContainerSettingsResponseOutput) Registry() ContainerRegistryRespons
 	return o.ApplyT(func(v TaskContainerSettingsResponse) *ContainerRegistryResponse { return v.Registry }).(ContainerRegistryResponsePtrOutput)
 }
 
+// A flag to indicate where the container task working directory is. The default is 'taskWorkingDirectory'.
 func (o TaskContainerSettingsResponseOutput) WorkingDirectory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TaskContainerSettingsResponse) *string { return v.WorkingDirectory }).(pulumi.StringPtrOutput)
 }
@@ -10779,6 +12602,16 @@ func (o TaskContainerSettingsResponsePtrOutput) Elem() TaskContainerSettingsResp
 		var ret TaskContainerSettingsResponse
 		return ret
 	}).(TaskContainerSettingsResponseOutput)
+}
+
+// If this array is null or be not present, container task will mount entire temporary disk drive in windows (or AZ_BATCH_NODE_ROOT_DIR in Linux). It won't' mount any data paths into container if this array is set as empty.
+func (o TaskContainerSettingsResponsePtrOutput) ContainerHostBatchBindMounts() ContainerHostBatchBindMountEntryResponseArrayOutput {
+	return o.ApplyT(func(v *TaskContainerSettingsResponse) []ContainerHostBatchBindMountEntryResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerHostBatchBindMounts
+	}).(ContainerHostBatchBindMountEntryResponseArrayOutput)
 }
 
 // These additional options are supplied as arguments to the "docker create" command, in addition to those controlled by the Batch Service.
@@ -10811,6 +12644,7 @@ func (o TaskContainerSettingsResponsePtrOutput) Registry() ContainerRegistryResp
 	}).(ContainerRegistryResponsePtrOutput)
 }
 
+// A flag to indicate where the container task working directory is. The default is 'taskWorkingDirectory'.
 func (o TaskContainerSettingsResponsePtrOutput) WorkingDirectory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TaskContainerSettingsResponse) *string {
 		if v == nil {
@@ -10820,7 +12654,9 @@ func (o TaskContainerSettingsResponsePtrOutput) WorkingDirectory() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specifies how tasks should be distributed across compute nodes.
 type TaskSchedulingPolicy struct {
+	// How tasks should be distributed across compute nodes.
 	NodeFillType ComputeNodeFillType `pulumi:"nodeFillType"`
 }
 
@@ -10847,7 +12683,9 @@ type TaskSchedulingPolicyInput interface {
 	ToTaskSchedulingPolicyOutputWithContext(context.Context) TaskSchedulingPolicyOutput
 }
 
+// Specifies how tasks should be distributed across compute nodes.
 type TaskSchedulingPolicyArgs struct {
+	// How tasks should be distributed across compute nodes.
 	NodeFillType ComputeNodeFillTypeInput `pulumi:"nodeFillType"`
 }
 
@@ -10915,6 +12753,7 @@ func (i *taskSchedulingPolicyPtrType) ToTaskSchedulingPolicyPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(TaskSchedulingPolicyPtrOutput)
 }
 
+// Specifies how tasks should be distributed across compute nodes.
 type TaskSchedulingPolicyOutput struct{ *pulumi.OutputState }
 
 func (TaskSchedulingPolicyOutput) ElementType() reflect.Type {
@@ -10939,6 +12778,7 @@ func (o TaskSchedulingPolicyOutput) ToTaskSchedulingPolicyPtrOutputWithContext(c
 	}).(TaskSchedulingPolicyPtrOutput)
 }
 
+// How tasks should be distributed across compute nodes.
 func (o TaskSchedulingPolicyOutput) NodeFillType() ComputeNodeFillTypeOutput {
 	return o.ApplyT(func(v TaskSchedulingPolicy) ComputeNodeFillType { return v.NodeFillType }).(ComputeNodeFillTypeOutput)
 }
@@ -10967,6 +12807,7 @@ func (o TaskSchedulingPolicyPtrOutput) Elem() TaskSchedulingPolicyOutput {
 	}).(TaskSchedulingPolicyOutput)
 }
 
+// How tasks should be distributed across compute nodes.
 func (o TaskSchedulingPolicyPtrOutput) NodeFillType() ComputeNodeFillTypePtrOutput {
 	return o.ApplyT(func(v *TaskSchedulingPolicy) *ComputeNodeFillType {
 		if v == nil {
@@ -10976,7 +12817,9 @@ func (o TaskSchedulingPolicyPtrOutput) NodeFillType() ComputeNodeFillTypePtrOutp
 	}).(ComputeNodeFillTypePtrOutput)
 }
 
+// Specifies how tasks should be distributed across compute nodes.
 type TaskSchedulingPolicyResponse struct {
+	// How tasks should be distributed across compute nodes.
 	NodeFillType string `pulumi:"nodeFillType"`
 }
 
@@ -10992,6 +12835,7 @@ func (val *TaskSchedulingPolicyResponse) Defaults() *TaskSchedulingPolicyRespons
 	return &tmp
 }
 
+// Specifies how tasks should be distributed across compute nodes.
 type TaskSchedulingPolicyResponseOutput struct{ *pulumi.OutputState }
 
 func (TaskSchedulingPolicyResponseOutput) ElementType() reflect.Type {
@@ -11006,6 +12850,7 @@ func (o TaskSchedulingPolicyResponseOutput) ToTaskSchedulingPolicyResponseOutput
 	return o
 }
 
+// How tasks should be distributed across compute nodes.
 func (o TaskSchedulingPolicyResponseOutput) NodeFillType() pulumi.StringOutput {
 	return o.ApplyT(func(v TaskSchedulingPolicyResponse) string { return v.NodeFillType }).(pulumi.StringOutput)
 }
@@ -11034,6 +12879,7 @@ func (o TaskSchedulingPolicyResponsePtrOutput) Elem() TaskSchedulingPolicyRespon
 	}).(TaskSchedulingPolicyResponseOutput)
 }
 
+// How tasks should be distributed across compute nodes.
 func (o TaskSchedulingPolicyResponsePtrOutput) NodeFillType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TaskSchedulingPolicyResponse) *string {
 		if v == nil {
@@ -11043,13 +12889,524 @@ func (o TaskSchedulingPolicyResponsePtrOutput) NodeFillType() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specifies the security settings like secure boot and vTPM used while creating the virtual machine.
+type UefiSettings struct {
+	// Specifies whether secure boot should be enabled on the virtual machine.
+	SecureBootEnabled *bool `pulumi:"secureBootEnabled"`
+	// Specifies whether vTPM should be enabled on the virtual machine.
+	VTpmEnabled *bool `pulumi:"vTpmEnabled"`
+}
+
+// UefiSettingsInput is an input type that accepts UefiSettingsArgs and UefiSettingsOutput values.
+// You can construct a concrete instance of `UefiSettingsInput` via:
+//
+//	UefiSettingsArgs{...}
+type UefiSettingsInput interface {
+	pulumi.Input
+
+	ToUefiSettingsOutput() UefiSettingsOutput
+	ToUefiSettingsOutputWithContext(context.Context) UefiSettingsOutput
+}
+
+// Specifies the security settings like secure boot and vTPM used while creating the virtual machine.
+type UefiSettingsArgs struct {
+	// Specifies whether secure boot should be enabled on the virtual machine.
+	SecureBootEnabled pulumi.BoolPtrInput `pulumi:"secureBootEnabled"`
+	// Specifies whether vTPM should be enabled on the virtual machine.
+	VTpmEnabled pulumi.BoolPtrInput `pulumi:"vTpmEnabled"`
+}
+
+func (UefiSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UefiSettings)(nil)).Elem()
+}
+
+func (i UefiSettingsArgs) ToUefiSettingsOutput() UefiSettingsOutput {
+	return i.ToUefiSettingsOutputWithContext(context.Background())
+}
+
+func (i UefiSettingsArgs) ToUefiSettingsOutputWithContext(ctx context.Context) UefiSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UefiSettingsOutput)
+}
+
+func (i UefiSettingsArgs) ToUefiSettingsPtrOutput() UefiSettingsPtrOutput {
+	return i.ToUefiSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i UefiSettingsArgs) ToUefiSettingsPtrOutputWithContext(ctx context.Context) UefiSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UefiSettingsOutput).ToUefiSettingsPtrOutputWithContext(ctx)
+}
+
+// UefiSettingsPtrInput is an input type that accepts UefiSettingsArgs, UefiSettingsPtr and UefiSettingsPtrOutput values.
+// You can construct a concrete instance of `UefiSettingsPtrInput` via:
+//
+//	        UefiSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type UefiSettingsPtrInput interface {
+	pulumi.Input
+
+	ToUefiSettingsPtrOutput() UefiSettingsPtrOutput
+	ToUefiSettingsPtrOutputWithContext(context.Context) UefiSettingsPtrOutput
+}
+
+type uefiSettingsPtrType UefiSettingsArgs
+
+func UefiSettingsPtr(v *UefiSettingsArgs) UefiSettingsPtrInput {
+	return (*uefiSettingsPtrType)(v)
+}
+
+func (*uefiSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UefiSettings)(nil)).Elem()
+}
+
+func (i *uefiSettingsPtrType) ToUefiSettingsPtrOutput() UefiSettingsPtrOutput {
+	return i.ToUefiSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *uefiSettingsPtrType) ToUefiSettingsPtrOutputWithContext(ctx context.Context) UefiSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UefiSettingsPtrOutput)
+}
+
+// Specifies the security settings like secure boot and vTPM used while creating the virtual machine.
+type UefiSettingsOutput struct{ *pulumi.OutputState }
+
+func (UefiSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UefiSettings)(nil)).Elem()
+}
+
+func (o UefiSettingsOutput) ToUefiSettingsOutput() UefiSettingsOutput {
+	return o
+}
+
+func (o UefiSettingsOutput) ToUefiSettingsOutputWithContext(ctx context.Context) UefiSettingsOutput {
+	return o
+}
+
+func (o UefiSettingsOutput) ToUefiSettingsPtrOutput() UefiSettingsPtrOutput {
+	return o.ToUefiSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o UefiSettingsOutput) ToUefiSettingsPtrOutputWithContext(ctx context.Context) UefiSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UefiSettings) *UefiSettings {
+		return &v
+	}).(UefiSettingsPtrOutput)
+}
+
+// Specifies whether secure boot should be enabled on the virtual machine.
+func (o UefiSettingsOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UefiSettings) *bool { return v.SecureBootEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether vTPM should be enabled on the virtual machine.
+func (o UefiSettingsOutput) VTpmEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UefiSettings) *bool { return v.VTpmEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type UefiSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (UefiSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UefiSettings)(nil)).Elem()
+}
+
+func (o UefiSettingsPtrOutput) ToUefiSettingsPtrOutput() UefiSettingsPtrOutput {
+	return o
+}
+
+func (o UefiSettingsPtrOutput) ToUefiSettingsPtrOutputWithContext(ctx context.Context) UefiSettingsPtrOutput {
+	return o
+}
+
+func (o UefiSettingsPtrOutput) Elem() UefiSettingsOutput {
+	return o.ApplyT(func(v *UefiSettings) UefiSettings {
+		if v != nil {
+			return *v
+		}
+		var ret UefiSettings
+		return ret
+	}).(UefiSettingsOutput)
+}
+
+// Specifies whether secure boot should be enabled on the virtual machine.
+func (o UefiSettingsPtrOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *UefiSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SecureBootEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether vTPM should be enabled on the virtual machine.
+func (o UefiSettingsPtrOutput) VTpmEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *UefiSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.VTpmEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the security settings like secure boot and vTPM used while creating the virtual machine.
+type UefiSettingsResponse struct {
+	// Specifies whether secure boot should be enabled on the virtual machine.
+	SecureBootEnabled *bool `pulumi:"secureBootEnabled"`
+	// Specifies whether vTPM should be enabled on the virtual machine.
+	VTpmEnabled *bool `pulumi:"vTpmEnabled"`
+}
+
+// Specifies the security settings like secure boot and vTPM used while creating the virtual machine.
+type UefiSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (UefiSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UefiSettingsResponse)(nil)).Elem()
+}
+
+func (o UefiSettingsResponseOutput) ToUefiSettingsResponseOutput() UefiSettingsResponseOutput {
+	return o
+}
+
+func (o UefiSettingsResponseOutput) ToUefiSettingsResponseOutputWithContext(ctx context.Context) UefiSettingsResponseOutput {
+	return o
+}
+
+// Specifies whether secure boot should be enabled on the virtual machine.
+func (o UefiSettingsResponseOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UefiSettingsResponse) *bool { return v.SecureBootEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether vTPM should be enabled on the virtual machine.
+func (o UefiSettingsResponseOutput) VTpmEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UefiSettingsResponse) *bool { return v.VTpmEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type UefiSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (UefiSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UefiSettingsResponse)(nil)).Elem()
+}
+
+func (o UefiSettingsResponsePtrOutput) ToUefiSettingsResponsePtrOutput() UefiSettingsResponsePtrOutput {
+	return o
+}
+
+func (o UefiSettingsResponsePtrOutput) ToUefiSettingsResponsePtrOutputWithContext(ctx context.Context) UefiSettingsResponsePtrOutput {
+	return o
+}
+
+func (o UefiSettingsResponsePtrOutput) Elem() UefiSettingsResponseOutput {
+	return o.ApplyT(func(v *UefiSettingsResponse) UefiSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret UefiSettingsResponse
+		return ret
+	}).(UefiSettingsResponseOutput)
+}
+
+// Specifies whether secure boot should be enabled on the virtual machine.
+func (o UefiSettingsResponsePtrOutput) SecureBootEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *UefiSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SecureBootEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies whether vTPM should be enabled on the virtual machine.
+func (o UefiSettingsResponsePtrOutput) VTpmEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *UefiSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.VTpmEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Describes an upgrade policy - automatic, manual, or rolling.
+type UpgradePolicy struct {
+	// The configuration parameters used for performing automatic OS upgrade.
+	AutomaticOSUpgradePolicy *AutomaticOSUpgradePolicy `pulumi:"automaticOSUpgradePolicy"`
+	// Specifies the mode of an upgrade to virtual machines in the scale set.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of updates to virtual machines in the scale set. You do this by using the manualUpgrade action.<br /><br /> **Automatic** - All virtual machines in the scale set are automatically updated at the same time.<br /><br /> **Rolling** - Scale set performs updates in batches with an optional pause time in between.
+	Mode UpgradeMode `pulumi:"mode"`
+	// The configuration parameters used while performing a rolling upgrade.
+	RollingUpgradePolicy *RollingUpgradePolicy `pulumi:"rollingUpgradePolicy"`
+}
+
+// UpgradePolicyInput is an input type that accepts UpgradePolicyArgs and UpgradePolicyOutput values.
+// You can construct a concrete instance of `UpgradePolicyInput` via:
+//
+//	UpgradePolicyArgs{...}
+type UpgradePolicyInput interface {
+	pulumi.Input
+
+	ToUpgradePolicyOutput() UpgradePolicyOutput
+	ToUpgradePolicyOutputWithContext(context.Context) UpgradePolicyOutput
+}
+
+// Describes an upgrade policy - automatic, manual, or rolling.
+type UpgradePolicyArgs struct {
+	// The configuration parameters used for performing automatic OS upgrade.
+	AutomaticOSUpgradePolicy AutomaticOSUpgradePolicyPtrInput `pulumi:"automaticOSUpgradePolicy"`
+	// Specifies the mode of an upgrade to virtual machines in the scale set.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of updates to virtual machines in the scale set. You do this by using the manualUpgrade action.<br /><br /> **Automatic** - All virtual machines in the scale set are automatically updated at the same time.<br /><br /> **Rolling** - Scale set performs updates in batches with an optional pause time in between.
+	Mode UpgradeModeInput `pulumi:"mode"`
+	// The configuration parameters used while performing a rolling upgrade.
+	RollingUpgradePolicy RollingUpgradePolicyPtrInput `pulumi:"rollingUpgradePolicy"`
+}
+
+func (UpgradePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpgradePolicy)(nil)).Elem()
+}
+
+func (i UpgradePolicyArgs) ToUpgradePolicyOutput() UpgradePolicyOutput {
+	return i.ToUpgradePolicyOutputWithContext(context.Background())
+}
+
+func (i UpgradePolicyArgs) ToUpgradePolicyOutputWithContext(ctx context.Context) UpgradePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpgradePolicyOutput)
+}
+
+func (i UpgradePolicyArgs) ToUpgradePolicyPtrOutput() UpgradePolicyPtrOutput {
+	return i.ToUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i UpgradePolicyArgs) ToUpgradePolicyPtrOutputWithContext(ctx context.Context) UpgradePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpgradePolicyOutput).ToUpgradePolicyPtrOutputWithContext(ctx)
+}
+
+// UpgradePolicyPtrInput is an input type that accepts UpgradePolicyArgs, UpgradePolicyPtr and UpgradePolicyPtrOutput values.
+// You can construct a concrete instance of `UpgradePolicyPtrInput` via:
+//
+//	        UpgradePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type UpgradePolicyPtrInput interface {
+	pulumi.Input
+
+	ToUpgradePolicyPtrOutput() UpgradePolicyPtrOutput
+	ToUpgradePolicyPtrOutputWithContext(context.Context) UpgradePolicyPtrOutput
+}
+
+type upgradePolicyPtrType UpgradePolicyArgs
+
+func UpgradePolicyPtr(v *UpgradePolicyArgs) UpgradePolicyPtrInput {
+	return (*upgradePolicyPtrType)(v)
+}
+
+func (*upgradePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpgradePolicy)(nil)).Elem()
+}
+
+func (i *upgradePolicyPtrType) ToUpgradePolicyPtrOutput() UpgradePolicyPtrOutput {
+	return i.ToUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *upgradePolicyPtrType) ToUpgradePolicyPtrOutputWithContext(ctx context.Context) UpgradePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpgradePolicyPtrOutput)
+}
+
+// Describes an upgrade policy - automatic, manual, or rolling.
+type UpgradePolicyOutput struct{ *pulumi.OutputState }
+
+func (UpgradePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpgradePolicy)(nil)).Elem()
+}
+
+func (o UpgradePolicyOutput) ToUpgradePolicyOutput() UpgradePolicyOutput {
+	return o
+}
+
+func (o UpgradePolicyOutput) ToUpgradePolicyOutputWithContext(ctx context.Context) UpgradePolicyOutput {
+	return o
+}
+
+func (o UpgradePolicyOutput) ToUpgradePolicyPtrOutput() UpgradePolicyPtrOutput {
+	return o.ToUpgradePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o UpgradePolicyOutput) ToUpgradePolicyPtrOutputWithContext(ctx context.Context) UpgradePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UpgradePolicy) *UpgradePolicy {
+		return &v
+	}).(UpgradePolicyPtrOutput)
+}
+
+// The configuration parameters used for performing automatic OS upgrade.
+func (o UpgradePolicyOutput) AutomaticOSUpgradePolicy() AutomaticOSUpgradePolicyPtrOutput {
+	return o.ApplyT(func(v UpgradePolicy) *AutomaticOSUpgradePolicy { return v.AutomaticOSUpgradePolicy }).(AutomaticOSUpgradePolicyPtrOutput)
+}
+
+// Specifies the mode of an upgrade to virtual machines in the scale set.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of updates to virtual machines in the scale set. You do this by using the manualUpgrade action.<br /><br /> **Automatic** - All virtual machines in the scale set are automatically updated at the same time.<br /><br /> **Rolling** - Scale set performs updates in batches with an optional pause time in between.
+func (o UpgradePolicyOutput) Mode() UpgradeModeOutput {
+	return o.ApplyT(func(v UpgradePolicy) UpgradeMode { return v.Mode }).(UpgradeModeOutput)
+}
+
+// The configuration parameters used while performing a rolling upgrade.
+func (o UpgradePolicyOutput) RollingUpgradePolicy() RollingUpgradePolicyPtrOutput {
+	return o.ApplyT(func(v UpgradePolicy) *RollingUpgradePolicy { return v.RollingUpgradePolicy }).(RollingUpgradePolicyPtrOutput)
+}
+
+type UpgradePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (UpgradePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpgradePolicy)(nil)).Elem()
+}
+
+func (o UpgradePolicyPtrOutput) ToUpgradePolicyPtrOutput() UpgradePolicyPtrOutput {
+	return o
+}
+
+func (o UpgradePolicyPtrOutput) ToUpgradePolicyPtrOutputWithContext(ctx context.Context) UpgradePolicyPtrOutput {
+	return o
+}
+
+func (o UpgradePolicyPtrOutput) Elem() UpgradePolicyOutput {
+	return o.ApplyT(func(v *UpgradePolicy) UpgradePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret UpgradePolicy
+		return ret
+	}).(UpgradePolicyOutput)
+}
+
+// The configuration parameters used for performing automatic OS upgrade.
+func (o UpgradePolicyPtrOutput) AutomaticOSUpgradePolicy() AutomaticOSUpgradePolicyPtrOutput {
+	return o.ApplyT(func(v *UpgradePolicy) *AutomaticOSUpgradePolicy {
+		if v == nil {
+			return nil
+		}
+		return v.AutomaticOSUpgradePolicy
+	}).(AutomaticOSUpgradePolicyPtrOutput)
+}
+
+// Specifies the mode of an upgrade to virtual machines in the scale set.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of updates to virtual machines in the scale set. You do this by using the manualUpgrade action.<br /><br /> **Automatic** - All virtual machines in the scale set are automatically updated at the same time.<br /><br /> **Rolling** - Scale set performs updates in batches with an optional pause time in between.
+func (o UpgradePolicyPtrOutput) Mode() UpgradeModePtrOutput {
+	return o.ApplyT(func(v *UpgradePolicy) *UpgradeMode {
+		if v == nil {
+			return nil
+		}
+		return &v.Mode
+	}).(UpgradeModePtrOutput)
+}
+
+// The configuration parameters used while performing a rolling upgrade.
+func (o UpgradePolicyPtrOutput) RollingUpgradePolicy() RollingUpgradePolicyPtrOutput {
+	return o.ApplyT(func(v *UpgradePolicy) *RollingUpgradePolicy {
+		if v == nil {
+			return nil
+		}
+		return v.RollingUpgradePolicy
+	}).(RollingUpgradePolicyPtrOutput)
+}
+
+// Describes an upgrade policy - automatic, manual, or rolling.
+type UpgradePolicyResponse struct {
+	// The configuration parameters used for performing automatic OS upgrade.
+	AutomaticOSUpgradePolicy *AutomaticOSUpgradePolicyResponse `pulumi:"automaticOSUpgradePolicy"`
+	// Specifies the mode of an upgrade to virtual machines in the scale set.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of updates to virtual machines in the scale set. You do this by using the manualUpgrade action.<br /><br /> **Automatic** - All virtual machines in the scale set are automatically updated at the same time.<br /><br /> **Rolling** - Scale set performs updates in batches with an optional pause time in between.
+	Mode string `pulumi:"mode"`
+	// The configuration parameters used while performing a rolling upgrade.
+	RollingUpgradePolicy *RollingUpgradePolicyResponse `pulumi:"rollingUpgradePolicy"`
+}
+
+// Describes an upgrade policy - automatic, manual, or rolling.
+type UpgradePolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (UpgradePolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpgradePolicyResponse)(nil)).Elem()
+}
+
+func (o UpgradePolicyResponseOutput) ToUpgradePolicyResponseOutput() UpgradePolicyResponseOutput {
+	return o
+}
+
+func (o UpgradePolicyResponseOutput) ToUpgradePolicyResponseOutputWithContext(ctx context.Context) UpgradePolicyResponseOutput {
+	return o
+}
+
+// The configuration parameters used for performing automatic OS upgrade.
+func (o UpgradePolicyResponseOutput) AutomaticOSUpgradePolicy() AutomaticOSUpgradePolicyResponsePtrOutput {
+	return o.ApplyT(func(v UpgradePolicyResponse) *AutomaticOSUpgradePolicyResponse { return v.AutomaticOSUpgradePolicy }).(AutomaticOSUpgradePolicyResponsePtrOutput)
+}
+
+// Specifies the mode of an upgrade to virtual machines in the scale set.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of updates to virtual machines in the scale set. You do this by using the manualUpgrade action.<br /><br /> **Automatic** - All virtual machines in the scale set are automatically updated at the same time.<br /><br /> **Rolling** - Scale set performs updates in batches with an optional pause time in between.
+func (o UpgradePolicyResponseOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v UpgradePolicyResponse) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// The configuration parameters used while performing a rolling upgrade.
+func (o UpgradePolicyResponseOutput) RollingUpgradePolicy() RollingUpgradePolicyResponsePtrOutput {
+	return o.ApplyT(func(v UpgradePolicyResponse) *RollingUpgradePolicyResponse { return v.RollingUpgradePolicy }).(RollingUpgradePolicyResponsePtrOutput)
+}
+
+type UpgradePolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (UpgradePolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UpgradePolicyResponse)(nil)).Elem()
+}
+
+func (o UpgradePolicyResponsePtrOutput) ToUpgradePolicyResponsePtrOutput() UpgradePolicyResponsePtrOutput {
+	return o
+}
+
+func (o UpgradePolicyResponsePtrOutput) ToUpgradePolicyResponsePtrOutputWithContext(ctx context.Context) UpgradePolicyResponsePtrOutput {
+	return o
+}
+
+func (o UpgradePolicyResponsePtrOutput) Elem() UpgradePolicyResponseOutput {
+	return o.ApplyT(func(v *UpgradePolicyResponse) UpgradePolicyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret UpgradePolicyResponse
+		return ret
+	}).(UpgradePolicyResponseOutput)
+}
+
+// The configuration parameters used for performing automatic OS upgrade.
+func (o UpgradePolicyResponsePtrOutput) AutomaticOSUpgradePolicy() AutomaticOSUpgradePolicyResponsePtrOutput {
+	return o.ApplyT(func(v *UpgradePolicyResponse) *AutomaticOSUpgradePolicyResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AutomaticOSUpgradePolicy
+	}).(AutomaticOSUpgradePolicyResponsePtrOutput)
+}
+
+// Specifies the mode of an upgrade to virtual machines in the scale set.<br /><br /> Possible values are:<br /><br /> **Manual** - You  control the application of updates to virtual machines in the scale set. You do this by using the manualUpgrade action.<br /><br /> **Automatic** - All virtual machines in the scale set are automatically updated at the same time.<br /><br /> **Rolling** - Scale set performs updates in batches with an optional pause time in between.
+func (o UpgradePolicyResponsePtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UpgradePolicyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The configuration parameters used while performing a rolling upgrade.
+func (o UpgradePolicyResponsePtrOutput) RollingUpgradePolicy() RollingUpgradePolicyResponsePtrOutput {
+	return o.ApplyT(func(v *UpgradePolicyResponse) *RollingUpgradePolicyResponse {
+		if v == nil {
+			return nil
+		}
+		return v.RollingUpgradePolicy
+	}).(RollingUpgradePolicyResponsePtrOutput)
+}
+
+// Properties used to create a user on an Azure Batch node.
 type UserAccount struct {
 	// nonAdmin - The auto user is a standard user without elevated access. admin - The auto user is a user with elevated access and operates with full Administrator permissions. The default value is nonAdmin.
 	ElevationLevel *ElevationLevel `pulumi:"elevationLevel"`
 	// This property is ignored if specified on a Windows pool. If not specified, the user is created with the default options.
 	LinuxUserConfiguration *LinuxUserConfiguration `pulumi:"linuxUserConfiguration"`
-	Name                   string                  `pulumi:"name"`
-	Password               string                  `pulumi:"password"`
+	// The name of the user account. Names can contain any Unicode characters up to a maximum length of 20.
+	Name string `pulumi:"name"`
+	// The password for the user account.
+	Password string `pulumi:"password"`
 	// This property can only be specified if the user is on a Windows pool. If not specified and on a Windows pool, the user is created with the default options.
 	WindowsUserConfiguration *WindowsUserConfiguration `pulumi:"windowsUserConfiguration"`
 }
@@ -11065,13 +13422,16 @@ type UserAccountInput interface {
 	ToUserAccountOutputWithContext(context.Context) UserAccountOutput
 }
 
+// Properties used to create a user on an Azure Batch node.
 type UserAccountArgs struct {
 	// nonAdmin - The auto user is a standard user without elevated access. admin - The auto user is a user with elevated access and operates with full Administrator permissions. The default value is nonAdmin.
 	ElevationLevel ElevationLevelPtrInput `pulumi:"elevationLevel"`
 	// This property is ignored if specified on a Windows pool. If not specified, the user is created with the default options.
 	LinuxUserConfiguration LinuxUserConfigurationPtrInput `pulumi:"linuxUserConfiguration"`
-	Name                   pulumi.StringInput             `pulumi:"name"`
-	Password               pulumi.StringInput             `pulumi:"password"`
+	// The name of the user account. Names can contain any Unicode characters up to a maximum length of 20.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The password for the user account.
+	Password pulumi.StringInput `pulumi:"password"`
 	// This property can only be specified if the user is on a Windows pool. If not specified and on a Windows pool, the user is created with the default options.
 	WindowsUserConfiguration WindowsUserConfigurationPtrInput `pulumi:"windowsUserConfiguration"`
 }
@@ -11113,6 +13473,7 @@ func (i UserAccountArray) ToUserAccountArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(UserAccountArrayOutput)
 }
 
+// Properties used to create a user on an Azure Batch node.
 type UserAccountOutput struct{ *pulumi.OutputState }
 
 func (UserAccountOutput) ElementType() reflect.Type {
@@ -11137,10 +13498,12 @@ func (o UserAccountOutput) LinuxUserConfiguration() LinuxUserConfigurationPtrOut
 	return o.ApplyT(func(v UserAccount) *LinuxUserConfiguration { return v.LinuxUserConfiguration }).(LinuxUserConfigurationPtrOutput)
 }
 
+// The name of the user account. Names can contain any Unicode characters up to a maximum length of 20.
 func (o UserAccountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAccount) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The password for the user account.
 func (o UserAccountOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAccount) string { return v.Password }).(pulumi.StringOutput)
 }
@@ -11170,17 +13533,21 @@ func (o UserAccountArrayOutput) Index(i pulumi.IntInput) UserAccountOutput {
 	}).(UserAccountOutput)
 }
 
+// Properties used to create a user on an Azure Batch node.
 type UserAccountResponse struct {
 	// nonAdmin - The auto user is a standard user without elevated access. admin - The auto user is a user with elevated access and operates with full Administrator permissions. The default value is nonAdmin.
 	ElevationLevel *string `pulumi:"elevationLevel"`
 	// This property is ignored if specified on a Windows pool. If not specified, the user is created with the default options.
 	LinuxUserConfiguration *LinuxUserConfigurationResponse `pulumi:"linuxUserConfiguration"`
-	Name                   string                          `pulumi:"name"`
-	Password               string                          `pulumi:"password"`
+	// The name of the user account. Names can contain any Unicode characters up to a maximum length of 20.
+	Name string `pulumi:"name"`
+	// The password for the user account.
+	Password string `pulumi:"password"`
 	// This property can only be specified if the user is on a Windows pool. If not specified and on a Windows pool, the user is created with the default options.
 	WindowsUserConfiguration *WindowsUserConfigurationResponse `pulumi:"windowsUserConfiguration"`
 }
 
+// Properties used to create a user on an Azure Batch node.
 type UserAccountResponseOutput struct{ *pulumi.OutputState }
 
 func (UserAccountResponseOutput) ElementType() reflect.Type {
@@ -11205,10 +13572,12 @@ func (o UserAccountResponseOutput) LinuxUserConfiguration() LinuxUserConfigurati
 	return o.ApplyT(func(v UserAccountResponse) *LinuxUserConfigurationResponse { return v.LinuxUserConfiguration }).(LinuxUserConfigurationResponsePtrOutput)
 }
 
+// The name of the user account. Names can contain any Unicode characters up to a maximum length of 20.
 func (o UserAccountResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAccountResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The password for the user account.
 func (o UserAccountResponseOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAccountResponse) string { return v.Password }).(pulumi.StringOutput)
 }
@@ -11527,20 +13896,226 @@ func (o UserIdentityResponsePtrOutput) UserName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specifies the security profile settings for the managed disk. **Note**: It can only be set for Confidential VMs and is required when using Confidential VMs.
+type VMDiskSecurityProfile struct {
+	// Specifies the EncryptionType of the managed disk. It is set to VMGuestStateOnly for encryption of just the VMGuestState blob, and NonPersistedTPM for not persisting firmware state in the VMGuestState blob. **Note**: It can be set for only Confidential VMs and required when using Confidential VMs.
+	SecurityEncryptionType *string `pulumi:"securityEncryptionType"`
+}
+
+// VMDiskSecurityProfileInput is an input type that accepts VMDiskSecurityProfileArgs and VMDiskSecurityProfileOutput values.
+// You can construct a concrete instance of `VMDiskSecurityProfileInput` via:
+//
+//	VMDiskSecurityProfileArgs{...}
+type VMDiskSecurityProfileInput interface {
+	pulumi.Input
+
+	ToVMDiskSecurityProfileOutput() VMDiskSecurityProfileOutput
+	ToVMDiskSecurityProfileOutputWithContext(context.Context) VMDiskSecurityProfileOutput
+}
+
+// Specifies the security profile settings for the managed disk. **Note**: It can only be set for Confidential VMs and is required when using Confidential VMs.
+type VMDiskSecurityProfileArgs struct {
+	// Specifies the EncryptionType of the managed disk. It is set to VMGuestStateOnly for encryption of just the VMGuestState blob, and NonPersistedTPM for not persisting firmware state in the VMGuestState blob. **Note**: It can be set for only Confidential VMs and required when using Confidential VMs.
+	SecurityEncryptionType pulumi.StringPtrInput `pulumi:"securityEncryptionType"`
+}
+
+func (VMDiskSecurityProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMDiskSecurityProfile)(nil)).Elem()
+}
+
+func (i VMDiskSecurityProfileArgs) ToVMDiskSecurityProfileOutput() VMDiskSecurityProfileOutput {
+	return i.ToVMDiskSecurityProfileOutputWithContext(context.Background())
+}
+
+func (i VMDiskSecurityProfileArgs) ToVMDiskSecurityProfileOutputWithContext(ctx context.Context) VMDiskSecurityProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMDiskSecurityProfileOutput)
+}
+
+func (i VMDiskSecurityProfileArgs) ToVMDiskSecurityProfilePtrOutput() VMDiskSecurityProfilePtrOutput {
+	return i.ToVMDiskSecurityProfilePtrOutputWithContext(context.Background())
+}
+
+func (i VMDiskSecurityProfileArgs) ToVMDiskSecurityProfilePtrOutputWithContext(ctx context.Context) VMDiskSecurityProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMDiskSecurityProfileOutput).ToVMDiskSecurityProfilePtrOutputWithContext(ctx)
+}
+
+// VMDiskSecurityProfilePtrInput is an input type that accepts VMDiskSecurityProfileArgs, VMDiskSecurityProfilePtr and VMDiskSecurityProfilePtrOutput values.
+// You can construct a concrete instance of `VMDiskSecurityProfilePtrInput` via:
+//
+//	        VMDiskSecurityProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type VMDiskSecurityProfilePtrInput interface {
+	pulumi.Input
+
+	ToVMDiskSecurityProfilePtrOutput() VMDiskSecurityProfilePtrOutput
+	ToVMDiskSecurityProfilePtrOutputWithContext(context.Context) VMDiskSecurityProfilePtrOutput
+}
+
+type vmdiskSecurityProfilePtrType VMDiskSecurityProfileArgs
+
+func VMDiskSecurityProfilePtr(v *VMDiskSecurityProfileArgs) VMDiskSecurityProfilePtrInput {
+	return (*vmdiskSecurityProfilePtrType)(v)
+}
+
+func (*vmdiskSecurityProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VMDiskSecurityProfile)(nil)).Elem()
+}
+
+func (i *vmdiskSecurityProfilePtrType) ToVMDiskSecurityProfilePtrOutput() VMDiskSecurityProfilePtrOutput {
+	return i.ToVMDiskSecurityProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *vmdiskSecurityProfilePtrType) ToVMDiskSecurityProfilePtrOutputWithContext(ctx context.Context) VMDiskSecurityProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMDiskSecurityProfilePtrOutput)
+}
+
+// Specifies the security profile settings for the managed disk. **Note**: It can only be set for Confidential VMs and is required when using Confidential VMs.
+type VMDiskSecurityProfileOutput struct{ *pulumi.OutputState }
+
+func (VMDiskSecurityProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMDiskSecurityProfile)(nil)).Elem()
+}
+
+func (o VMDiskSecurityProfileOutput) ToVMDiskSecurityProfileOutput() VMDiskSecurityProfileOutput {
+	return o
+}
+
+func (o VMDiskSecurityProfileOutput) ToVMDiskSecurityProfileOutputWithContext(ctx context.Context) VMDiskSecurityProfileOutput {
+	return o
+}
+
+func (o VMDiskSecurityProfileOutput) ToVMDiskSecurityProfilePtrOutput() VMDiskSecurityProfilePtrOutput {
+	return o.ToVMDiskSecurityProfilePtrOutputWithContext(context.Background())
+}
+
+func (o VMDiskSecurityProfileOutput) ToVMDiskSecurityProfilePtrOutputWithContext(ctx context.Context) VMDiskSecurityProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VMDiskSecurityProfile) *VMDiskSecurityProfile {
+		return &v
+	}).(VMDiskSecurityProfilePtrOutput)
+}
+
+// Specifies the EncryptionType of the managed disk. It is set to VMGuestStateOnly for encryption of just the VMGuestState blob, and NonPersistedTPM for not persisting firmware state in the VMGuestState blob. **Note**: It can be set for only Confidential VMs and required when using Confidential VMs.
+func (o VMDiskSecurityProfileOutput) SecurityEncryptionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VMDiskSecurityProfile) *string { return v.SecurityEncryptionType }).(pulumi.StringPtrOutput)
+}
+
+type VMDiskSecurityProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (VMDiskSecurityProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VMDiskSecurityProfile)(nil)).Elem()
+}
+
+func (o VMDiskSecurityProfilePtrOutput) ToVMDiskSecurityProfilePtrOutput() VMDiskSecurityProfilePtrOutput {
+	return o
+}
+
+func (o VMDiskSecurityProfilePtrOutput) ToVMDiskSecurityProfilePtrOutputWithContext(ctx context.Context) VMDiskSecurityProfilePtrOutput {
+	return o
+}
+
+func (o VMDiskSecurityProfilePtrOutput) Elem() VMDiskSecurityProfileOutput {
+	return o.ApplyT(func(v *VMDiskSecurityProfile) VMDiskSecurityProfile {
+		if v != nil {
+			return *v
+		}
+		var ret VMDiskSecurityProfile
+		return ret
+	}).(VMDiskSecurityProfileOutput)
+}
+
+// Specifies the EncryptionType of the managed disk. It is set to VMGuestStateOnly for encryption of just the VMGuestState blob, and NonPersistedTPM for not persisting firmware state in the VMGuestState blob. **Note**: It can be set for only Confidential VMs and required when using Confidential VMs.
+func (o VMDiskSecurityProfilePtrOutput) SecurityEncryptionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VMDiskSecurityProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityEncryptionType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the security profile settings for the managed disk. **Note**: It can only be set for Confidential VMs and is required when using Confidential VMs.
+type VMDiskSecurityProfileResponse struct {
+	// Specifies the EncryptionType of the managed disk. It is set to VMGuestStateOnly for encryption of just the VMGuestState blob, and NonPersistedTPM for not persisting firmware state in the VMGuestState blob. **Note**: It can be set for only Confidential VMs and required when using Confidential VMs.
+	SecurityEncryptionType *string `pulumi:"securityEncryptionType"`
+}
+
+// Specifies the security profile settings for the managed disk. **Note**: It can only be set for Confidential VMs and is required when using Confidential VMs.
+type VMDiskSecurityProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (VMDiskSecurityProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMDiskSecurityProfileResponse)(nil)).Elem()
+}
+
+func (o VMDiskSecurityProfileResponseOutput) ToVMDiskSecurityProfileResponseOutput() VMDiskSecurityProfileResponseOutput {
+	return o
+}
+
+func (o VMDiskSecurityProfileResponseOutput) ToVMDiskSecurityProfileResponseOutputWithContext(ctx context.Context) VMDiskSecurityProfileResponseOutput {
+	return o
+}
+
+// Specifies the EncryptionType of the managed disk. It is set to VMGuestStateOnly for encryption of just the VMGuestState blob, and NonPersistedTPM for not persisting firmware state in the VMGuestState blob. **Note**: It can be set for only Confidential VMs and required when using Confidential VMs.
+func (o VMDiskSecurityProfileResponseOutput) SecurityEncryptionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VMDiskSecurityProfileResponse) *string { return v.SecurityEncryptionType }).(pulumi.StringPtrOutput)
+}
+
+type VMDiskSecurityProfileResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VMDiskSecurityProfileResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VMDiskSecurityProfileResponse)(nil)).Elem()
+}
+
+func (o VMDiskSecurityProfileResponsePtrOutput) ToVMDiskSecurityProfileResponsePtrOutput() VMDiskSecurityProfileResponsePtrOutput {
+	return o
+}
+
+func (o VMDiskSecurityProfileResponsePtrOutput) ToVMDiskSecurityProfileResponsePtrOutputWithContext(ctx context.Context) VMDiskSecurityProfileResponsePtrOutput {
+	return o
+}
+
+func (o VMDiskSecurityProfileResponsePtrOutput) Elem() VMDiskSecurityProfileResponseOutput {
+	return o.ApplyT(func(v *VMDiskSecurityProfileResponse) VMDiskSecurityProfileResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VMDiskSecurityProfileResponse
+		return ret
+	}).(VMDiskSecurityProfileResponseOutput)
+}
+
+// Specifies the EncryptionType of the managed disk. It is set to VMGuestStateOnly for encryption of just the VMGuestState blob, and NonPersistedTPM for not persisting firmware state in the VMGuestState blob. **Note**: It can be set for only Confidential VMs and required when using Confidential VMs.
+func (o VMDiskSecurityProfileResponsePtrOutput) SecurityEncryptionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VMDiskSecurityProfileResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityEncryptionType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The configuration for virtual machine extensions.
 type VMExtension struct {
 	// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
 	AutoUpgradeMinorVersion *bool `pulumi:"autoUpgradeMinorVersion"`
 	// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
-	EnableAutomaticUpgrade *bool  `pulumi:"enableAutomaticUpgrade"`
-	Name                   string `pulumi:"name"`
+	EnableAutomaticUpgrade *bool `pulumi:"enableAutomaticUpgrade"`
+	// The name of the virtual machine extension.
+	Name string `pulumi:"name"`
 	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 	ProtectedSettings interface{} `pulumi:"protectedSettings"`
 	// Collection of extension names after which this extension needs to be provisioned.
-	ProvisionAfterExtensions []string    `pulumi:"provisionAfterExtensions"`
-	Publisher                string      `pulumi:"publisher"`
-	Settings                 interface{} `pulumi:"settings"`
-	Type                     string      `pulumi:"type"`
-	TypeHandlerVersion       *string     `pulumi:"typeHandlerVersion"`
+	ProvisionAfterExtensions []string `pulumi:"provisionAfterExtensions"`
+	// The name of the extension handler publisher.
+	Publisher string `pulumi:"publisher"`
+	// JSON formatted public settings for the extension.
+	Settings interface{} `pulumi:"settings"`
+	// The type of the extensions.
+	Type string `pulumi:"type"`
+	// The version of script handler.
+	TypeHandlerVersion *string `pulumi:"typeHandlerVersion"`
 }
 
 // VMExtensionInput is an input type that accepts VMExtensionArgs and VMExtensionOutput values.
@@ -11554,20 +14129,26 @@ type VMExtensionInput interface {
 	ToVMExtensionOutputWithContext(context.Context) VMExtensionOutput
 }
 
+// The configuration for virtual machine extensions.
 type VMExtensionArgs struct {
 	// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
 	AutoUpgradeMinorVersion pulumi.BoolPtrInput `pulumi:"autoUpgradeMinorVersion"`
 	// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
 	EnableAutomaticUpgrade pulumi.BoolPtrInput `pulumi:"enableAutomaticUpgrade"`
-	Name                   pulumi.StringInput  `pulumi:"name"`
+	// The name of the virtual machine extension.
+	Name pulumi.StringInput `pulumi:"name"`
 	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 	ProtectedSettings pulumi.Input `pulumi:"protectedSettings"`
 	// Collection of extension names after which this extension needs to be provisioned.
 	ProvisionAfterExtensions pulumi.StringArrayInput `pulumi:"provisionAfterExtensions"`
-	Publisher                pulumi.StringInput      `pulumi:"publisher"`
-	Settings                 pulumi.Input            `pulumi:"settings"`
-	Type                     pulumi.StringInput      `pulumi:"type"`
-	TypeHandlerVersion       pulumi.StringPtrInput   `pulumi:"typeHandlerVersion"`
+	// The name of the extension handler publisher.
+	Publisher pulumi.StringInput `pulumi:"publisher"`
+	// JSON formatted public settings for the extension.
+	Settings pulumi.Input `pulumi:"settings"`
+	// The type of the extensions.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The version of script handler.
+	TypeHandlerVersion pulumi.StringPtrInput `pulumi:"typeHandlerVersion"`
 }
 
 func (VMExtensionArgs) ElementType() reflect.Type {
@@ -11607,6 +14188,7 @@ func (i VMExtensionArray) ToVMExtensionArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(VMExtensionArrayOutput)
 }
 
+// The configuration for virtual machine extensions.
 type VMExtensionOutput struct{ *pulumi.OutputState }
 
 func (VMExtensionOutput) ElementType() reflect.Type {
@@ -11631,6 +14213,7 @@ func (o VMExtensionOutput) EnableAutomaticUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VMExtension) *bool { return v.EnableAutomaticUpgrade }).(pulumi.BoolPtrOutput)
 }
 
+// The name of the virtual machine extension.
 func (o VMExtensionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v VMExtension) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -11645,18 +14228,22 @@ func (o VMExtensionOutput) ProvisionAfterExtensions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VMExtension) []string { return v.ProvisionAfterExtensions }).(pulumi.StringArrayOutput)
 }
 
+// The name of the extension handler publisher.
 func (o VMExtensionOutput) Publisher() pulumi.StringOutput {
 	return o.ApplyT(func(v VMExtension) string { return v.Publisher }).(pulumi.StringOutput)
 }
 
+// JSON formatted public settings for the extension.
 func (o VMExtensionOutput) Settings() pulumi.AnyOutput {
 	return o.ApplyT(func(v VMExtension) interface{} { return v.Settings }).(pulumi.AnyOutput)
 }
 
+// The type of the extensions.
 func (o VMExtensionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v VMExtension) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The version of script handler.
 func (o VMExtensionOutput) TypeHandlerVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMExtension) *string { return v.TypeHandlerVersion }).(pulumi.StringPtrOutput)
 }
@@ -11681,22 +14268,29 @@ func (o VMExtensionArrayOutput) Index(i pulumi.IntInput) VMExtensionOutput {
 	}).(VMExtensionOutput)
 }
 
+// The configuration for virtual machine extensions.
 type VMExtensionResponse struct {
 	// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
 	AutoUpgradeMinorVersion *bool `pulumi:"autoUpgradeMinorVersion"`
 	// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
-	EnableAutomaticUpgrade *bool  `pulumi:"enableAutomaticUpgrade"`
-	Name                   string `pulumi:"name"`
+	EnableAutomaticUpgrade *bool `pulumi:"enableAutomaticUpgrade"`
+	// The name of the virtual machine extension.
+	Name string `pulumi:"name"`
 	// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
 	ProtectedSettings interface{} `pulumi:"protectedSettings"`
 	// Collection of extension names after which this extension needs to be provisioned.
-	ProvisionAfterExtensions []string    `pulumi:"provisionAfterExtensions"`
-	Publisher                string      `pulumi:"publisher"`
-	Settings                 interface{} `pulumi:"settings"`
-	Type                     string      `pulumi:"type"`
-	TypeHandlerVersion       *string     `pulumi:"typeHandlerVersion"`
+	ProvisionAfterExtensions []string `pulumi:"provisionAfterExtensions"`
+	// The name of the extension handler publisher.
+	Publisher string `pulumi:"publisher"`
+	// JSON formatted public settings for the extension.
+	Settings interface{} `pulumi:"settings"`
+	// The type of the extensions.
+	Type string `pulumi:"type"`
+	// The version of script handler.
+	TypeHandlerVersion *string `pulumi:"typeHandlerVersion"`
 }
 
+// The configuration for virtual machine extensions.
 type VMExtensionResponseOutput struct{ *pulumi.OutputState }
 
 func (VMExtensionResponseOutput) ElementType() reflect.Type {
@@ -11721,6 +14315,7 @@ func (o VMExtensionResponseOutput) EnableAutomaticUpgrade() pulumi.BoolPtrOutput
 	return o.ApplyT(func(v VMExtensionResponse) *bool { return v.EnableAutomaticUpgrade }).(pulumi.BoolPtrOutput)
 }
 
+// The name of the virtual machine extension.
 func (o VMExtensionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v VMExtensionResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -11735,18 +14330,22 @@ func (o VMExtensionResponseOutput) ProvisionAfterExtensions() pulumi.StringArray
 	return o.ApplyT(func(v VMExtensionResponse) []string { return v.ProvisionAfterExtensions }).(pulumi.StringArrayOutput)
 }
 
+// The name of the extension handler publisher.
 func (o VMExtensionResponseOutput) Publisher() pulumi.StringOutput {
 	return o.ApplyT(func(v VMExtensionResponse) string { return v.Publisher }).(pulumi.StringOutput)
 }
 
+// JSON formatted public settings for the extension.
 func (o VMExtensionResponseOutput) Settings() pulumi.AnyOutput {
 	return o.ApplyT(func(v VMExtensionResponse) interface{} { return v.Settings }).(pulumi.AnyOutput)
 }
 
+// The type of the extensions.
 func (o VMExtensionResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v VMExtensionResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// The version of script handler.
 func (o VMExtensionResponseOutput) TypeHandlerVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMExtensionResponse) *string { return v.TypeHandlerVersion }).(pulumi.StringPtrOutput)
 }
@@ -11771,6 +14370,7 @@ func (o VMExtensionResponseArrayOutput) Index(i pulumi.IntInput) VMExtensionResp
 	}).(VMExtensionResponseOutput)
 }
 
+// The configuration for compute nodes in a pool based on the Azure Virtual Machines infrastructure.
 type VirtualMachineConfiguration struct {
 	// If specified, setup is performed on each node in the pool to allow tasks to run in containers. All regular tasks and job manager tasks run on this pool must specify the containerSettings property, and all other tasks may specify it.
 	ContainerConfiguration *ContainerConfiguration `pulumi:"containerConfiguration"`
@@ -11779,12 +14379,13 @@ type VirtualMachineConfiguration struct {
 	// If specified, encryption is performed on each node in the pool during node provisioning.
 	DiskEncryptionConfiguration *DiskEncryptionConfiguration `pulumi:"diskEncryptionConfiguration"`
 	// If specified, the extensions mentioned in this configuration will be installed on each node.
-	Extensions     []VMExtension  `pulumi:"extensions"`
+	Extensions []VMExtension `pulumi:"extensions"`
+	// A reference to an Azure Virtual Machines Marketplace image or the Azure Image resource of a custom Virtual Machine. To get the list of all imageReferences verified by Azure Batch, see the 'List supported node agent SKUs' operation.
 	ImageReference ImageReference `pulumi:"imageReference"`
 	// This only applies to images that contain the Windows operating system, and should only be used when you hold valid on-premises licenses for the nodes which will be deployed. If omitted, no on-premises licensing discount is applied. Values are:
 	//
-	//  Windows_Server - The on-premises license is for Windows Server.
-	//  Windows_Client - The on-premises license is for Windows Client.
+	// Windows_Server - The on-premises license is for Windows Server.
+	// Windows_Client - The on-premises license is for Windows Client.
 	LicenseType *string `pulumi:"licenseType"`
 	// The Batch node agent is a program that runs on each node in the pool, and provides the command-and-control interface between the node and the Batch service. There are different implementations of the node agent, known as SKUs, for different operating systems. You must specify a node agent SKU which matches the selected image reference. To get the list of supported node agent SKUs along with their list of verified image references, see the 'List supported node agent SKUs' operation.
 	NodeAgentSkuId string `pulumi:"nodeAgentSkuId"`
@@ -11792,19 +14393,12 @@ type VirtualMachineConfiguration struct {
 	NodePlacementConfiguration *NodePlacementConfiguration `pulumi:"nodePlacementConfiguration"`
 	// Contains configuration for ephemeral OSDisk settings.
 	OsDisk *OSDisk `pulumi:"osDisk"`
+	// Specifies the security profile settings for the virtual machine or virtual machine scale set.
+	SecurityProfile *SecurityProfile `pulumi:"securityProfile"`
+	// The service artifact reference id in the form of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
+	ServiceArtifactReference *ServiceArtifactReference `pulumi:"serviceArtifactReference"`
 	// This property must not be specified if the imageReference specifies a Linux OS image.
 	WindowsConfiguration *WindowsConfiguration `pulumi:"windowsConfiguration"`
-}
-
-// Defaults sets the appropriate defaults for VirtualMachineConfiguration
-func (val *VirtualMachineConfiguration) Defaults() *VirtualMachineConfiguration {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.ImageReference = *tmp.ImageReference.Defaults()
-
-	return &tmp
 }
 
 // VirtualMachineConfigurationInput is an input type that accepts VirtualMachineConfigurationArgs and VirtualMachineConfigurationOutput values.
@@ -11818,6 +14412,7 @@ type VirtualMachineConfigurationInput interface {
 	ToVirtualMachineConfigurationOutputWithContext(context.Context) VirtualMachineConfigurationOutput
 }
 
+// The configuration for compute nodes in a pool based on the Azure Virtual Machines infrastructure.
 type VirtualMachineConfigurationArgs struct {
 	// If specified, setup is performed on each node in the pool to allow tasks to run in containers. All regular tasks and job manager tasks run on this pool must specify the containerSettings property, and all other tasks may specify it.
 	ContainerConfiguration ContainerConfigurationPtrInput `pulumi:"containerConfiguration"`
@@ -11826,12 +14421,13 @@ type VirtualMachineConfigurationArgs struct {
 	// If specified, encryption is performed on each node in the pool during node provisioning.
 	DiskEncryptionConfiguration DiskEncryptionConfigurationPtrInput `pulumi:"diskEncryptionConfiguration"`
 	// If specified, the extensions mentioned in this configuration will be installed on each node.
-	Extensions     VMExtensionArrayInput `pulumi:"extensions"`
-	ImageReference ImageReferenceInput   `pulumi:"imageReference"`
+	Extensions VMExtensionArrayInput `pulumi:"extensions"`
+	// A reference to an Azure Virtual Machines Marketplace image or the Azure Image resource of a custom Virtual Machine. To get the list of all imageReferences verified by Azure Batch, see the 'List supported node agent SKUs' operation.
+	ImageReference ImageReferenceInput `pulumi:"imageReference"`
 	// This only applies to images that contain the Windows operating system, and should only be used when you hold valid on-premises licenses for the nodes which will be deployed. If omitted, no on-premises licensing discount is applied. Values are:
 	//
-	//  Windows_Server - The on-premises license is for Windows Server.
-	//  Windows_Client - The on-premises license is for Windows Client.
+	// Windows_Server - The on-premises license is for Windows Server.
+	// Windows_Client - The on-premises license is for Windows Client.
 	LicenseType pulumi.StringPtrInput `pulumi:"licenseType"`
 	// The Batch node agent is a program that runs on each node in the pool, and provides the command-and-control interface between the node and the Batch service. There are different implementations of the node agent, known as SKUs, for different operating systems. You must specify a node agent SKU which matches the selected image reference. To get the list of supported node agent SKUs along with their list of verified image references, see the 'List supported node agent SKUs' operation.
 	NodeAgentSkuId pulumi.StringInput `pulumi:"nodeAgentSkuId"`
@@ -11839,19 +14435,14 @@ type VirtualMachineConfigurationArgs struct {
 	NodePlacementConfiguration NodePlacementConfigurationPtrInput `pulumi:"nodePlacementConfiguration"`
 	// Contains configuration for ephemeral OSDisk settings.
 	OsDisk OSDiskPtrInput `pulumi:"osDisk"`
+	// Specifies the security profile settings for the virtual machine or virtual machine scale set.
+	SecurityProfile SecurityProfilePtrInput `pulumi:"securityProfile"`
+	// The service artifact reference id in the form of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
+	ServiceArtifactReference ServiceArtifactReferencePtrInput `pulumi:"serviceArtifactReference"`
 	// This property must not be specified if the imageReference specifies a Linux OS image.
 	WindowsConfiguration WindowsConfigurationPtrInput `pulumi:"windowsConfiguration"`
 }
 
-// Defaults sets the appropriate defaults for VirtualMachineConfigurationArgs
-func (val *VirtualMachineConfigurationArgs) Defaults() *VirtualMachineConfigurationArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-
-	return &tmp
-}
 func (VirtualMachineConfigurationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*VirtualMachineConfiguration)(nil)).Elem()
 }
@@ -11905,6 +14496,7 @@ func (i *virtualMachineConfigurationPtrType) ToVirtualMachineConfigurationPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineConfigurationPtrOutput)
 }
 
+// The configuration for compute nodes in a pool based on the Azure Virtual Machines infrastructure.
 type VirtualMachineConfigurationOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineConfigurationOutput) ElementType() reflect.Type {
@@ -11949,14 +14541,15 @@ func (o VirtualMachineConfigurationOutput) Extensions() VMExtensionArrayOutput {
 	return o.ApplyT(func(v VirtualMachineConfiguration) []VMExtension { return v.Extensions }).(VMExtensionArrayOutput)
 }
 
+// A reference to an Azure Virtual Machines Marketplace image or the Azure Image resource of a custom Virtual Machine. To get the list of all imageReferences verified by Azure Batch, see the 'List supported node agent SKUs' operation.
 func (o VirtualMachineConfigurationOutput) ImageReference() ImageReferenceOutput {
 	return o.ApplyT(func(v VirtualMachineConfiguration) ImageReference { return v.ImageReference }).(ImageReferenceOutput)
 }
 
 // This only applies to images that contain the Windows operating system, and should only be used when you hold valid on-premises licenses for the nodes which will be deployed. If omitted, no on-premises licensing discount is applied. Values are:
 //
-//	Windows_Server - The on-premises license is for Windows Server.
-//	Windows_Client - The on-premises license is for Windows Client.
+// Windows_Server - The on-premises license is for Windows Server.
+// Windows_Client - The on-premises license is for Windows Client.
 func (o VirtualMachineConfigurationOutput) LicenseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineConfiguration) *string { return v.LicenseType }).(pulumi.StringPtrOutput)
 }
@@ -11974,6 +14567,16 @@ func (o VirtualMachineConfigurationOutput) NodePlacementConfiguration() NodePlac
 // Contains configuration for ephemeral OSDisk settings.
 func (o VirtualMachineConfigurationOutput) OsDisk() OSDiskPtrOutput {
 	return o.ApplyT(func(v VirtualMachineConfiguration) *OSDisk { return v.OsDisk }).(OSDiskPtrOutput)
+}
+
+// Specifies the security profile settings for the virtual machine or virtual machine scale set.
+func (o VirtualMachineConfigurationOutput) SecurityProfile() SecurityProfilePtrOutput {
+	return o.ApplyT(func(v VirtualMachineConfiguration) *SecurityProfile { return v.SecurityProfile }).(SecurityProfilePtrOutput)
+}
+
+// The service artifact reference id in the form of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
+func (o VirtualMachineConfigurationOutput) ServiceArtifactReference() ServiceArtifactReferencePtrOutput {
+	return o.ApplyT(func(v VirtualMachineConfiguration) *ServiceArtifactReference { return v.ServiceArtifactReference }).(ServiceArtifactReferencePtrOutput)
 }
 
 // This property must not be specified if the imageReference specifies a Linux OS image.
@@ -12045,6 +14648,7 @@ func (o VirtualMachineConfigurationPtrOutput) Extensions() VMExtensionArrayOutpu
 	}).(VMExtensionArrayOutput)
 }
 
+// A reference to an Azure Virtual Machines Marketplace image or the Azure Image resource of a custom Virtual Machine. To get the list of all imageReferences verified by Azure Batch, see the 'List supported node agent SKUs' operation.
 func (o VirtualMachineConfigurationPtrOutput) ImageReference() ImageReferencePtrOutput {
 	return o.ApplyT(func(v *VirtualMachineConfiguration) *ImageReference {
 		if v == nil {
@@ -12056,8 +14660,8 @@ func (o VirtualMachineConfigurationPtrOutput) ImageReference() ImageReferencePtr
 
 // This only applies to images that contain the Windows operating system, and should only be used when you hold valid on-premises licenses for the nodes which will be deployed. If omitted, no on-premises licensing discount is applied. Values are:
 //
-//	Windows_Server - The on-premises license is for Windows Server.
-//	Windows_Client - The on-premises license is for Windows Client.
+// Windows_Server - The on-premises license is for Windows Server.
+// Windows_Client - The on-premises license is for Windows Client.
 func (o VirtualMachineConfigurationPtrOutput) LicenseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineConfiguration) *string {
 		if v == nil {
@@ -12097,6 +14701,26 @@ func (o VirtualMachineConfigurationPtrOutput) OsDisk() OSDiskPtrOutput {
 	}).(OSDiskPtrOutput)
 }
 
+// Specifies the security profile settings for the virtual machine or virtual machine scale set.
+func (o VirtualMachineConfigurationPtrOutput) SecurityProfile() SecurityProfilePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineConfiguration) *SecurityProfile {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityProfile
+	}).(SecurityProfilePtrOutput)
+}
+
+// The service artifact reference id in the form of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
+func (o VirtualMachineConfigurationPtrOutput) ServiceArtifactReference() ServiceArtifactReferencePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineConfiguration) *ServiceArtifactReference {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceArtifactReference
+	}).(ServiceArtifactReferencePtrOutput)
+}
+
 // This property must not be specified if the imageReference specifies a Linux OS image.
 func (o VirtualMachineConfigurationPtrOutput) WindowsConfiguration() WindowsConfigurationPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineConfiguration) *WindowsConfiguration {
@@ -12107,6 +14731,7 @@ func (o VirtualMachineConfigurationPtrOutput) WindowsConfiguration() WindowsConf
 	}).(WindowsConfigurationPtrOutput)
 }
 
+// The configuration for compute nodes in a pool based on the Azure Virtual Machines infrastructure.
 type VirtualMachineConfigurationResponse struct {
 	// If specified, setup is performed on each node in the pool to allow tasks to run in containers. All regular tasks and job manager tasks run on this pool must specify the containerSettings property, and all other tasks may specify it.
 	ContainerConfiguration *ContainerConfigurationResponse `pulumi:"containerConfiguration"`
@@ -12115,12 +14740,13 @@ type VirtualMachineConfigurationResponse struct {
 	// If specified, encryption is performed on each node in the pool during node provisioning.
 	DiskEncryptionConfiguration *DiskEncryptionConfigurationResponse `pulumi:"diskEncryptionConfiguration"`
 	// If specified, the extensions mentioned in this configuration will be installed on each node.
-	Extensions     []VMExtensionResponse  `pulumi:"extensions"`
+	Extensions []VMExtensionResponse `pulumi:"extensions"`
+	// A reference to an Azure Virtual Machines Marketplace image or the Azure Image resource of a custom Virtual Machine. To get the list of all imageReferences verified by Azure Batch, see the 'List supported node agent SKUs' operation.
 	ImageReference ImageReferenceResponse `pulumi:"imageReference"`
 	// This only applies to images that contain the Windows operating system, and should only be used when you hold valid on-premises licenses for the nodes which will be deployed. If omitted, no on-premises licensing discount is applied. Values are:
 	//
-	//  Windows_Server - The on-premises license is for Windows Server.
-	//  Windows_Client - The on-premises license is for Windows Client.
+	// Windows_Server - The on-premises license is for Windows Server.
+	// Windows_Client - The on-premises license is for Windows Client.
 	LicenseType *string `pulumi:"licenseType"`
 	// The Batch node agent is a program that runs on each node in the pool, and provides the command-and-control interface between the node and the Batch service. There are different implementations of the node agent, known as SKUs, for different operating systems. You must specify a node agent SKU which matches the selected image reference. To get the list of supported node agent SKUs along with their list of verified image references, see the 'List supported node agent SKUs' operation.
 	NodeAgentSkuId string `pulumi:"nodeAgentSkuId"`
@@ -12128,21 +14754,15 @@ type VirtualMachineConfigurationResponse struct {
 	NodePlacementConfiguration *NodePlacementConfigurationResponse `pulumi:"nodePlacementConfiguration"`
 	// Contains configuration for ephemeral OSDisk settings.
 	OsDisk *OSDiskResponse `pulumi:"osDisk"`
+	// Specifies the security profile settings for the virtual machine or virtual machine scale set.
+	SecurityProfile *SecurityProfileResponse `pulumi:"securityProfile"`
+	// The service artifact reference id in the form of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
+	ServiceArtifactReference *ServiceArtifactReferenceResponse `pulumi:"serviceArtifactReference"`
 	// This property must not be specified if the imageReference specifies a Linux OS image.
 	WindowsConfiguration *WindowsConfigurationResponse `pulumi:"windowsConfiguration"`
 }
 
-// Defaults sets the appropriate defaults for VirtualMachineConfigurationResponse
-func (val *VirtualMachineConfigurationResponse) Defaults() *VirtualMachineConfigurationResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.ImageReference = *tmp.ImageReference.Defaults()
-
-	return &tmp
-}
-
+// The configuration for compute nodes in a pool based on the Azure Virtual Machines infrastructure.
 type VirtualMachineConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineConfigurationResponseOutput) ElementType() reflect.Type {
@@ -12181,14 +14801,15 @@ func (o VirtualMachineConfigurationResponseOutput) Extensions() VMExtensionRespo
 	return o.ApplyT(func(v VirtualMachineConfigurationResponse) []VMExtensionResponse { return v.Extensions }).(VMExtensionResponseArrayOutput)
 }
 
+// A reference to an Azure Virtual Machines Marketplace image or the Azure Image resource of a custom Virtual Machine. To get the list of all imageReferences verified by Azure Batch, see the 'List supported node agent SKUs' operation.
 func (o VirtualMachineConfigurationResponseOutput) ImageReference() ImageReferenceResponseOutput {
 	return o.ApplyT(func(v VirtualMachineConfigurationResponse) ImageReferenceResponse { return v.ImageReference }).(ImageReferenceResponseOutput)
 }
 
 // This only applies to images that contain the Windows operating system, and should only be used when you hold valid on-premises licenses for the nodes which will be deployed. If omitted, no on-premises licensing discount is applied. Values are:
 //
-//	Windows_Server - The on-premises license is for Windows Server.
-//	Windows_Client - The on-premises license is for Windows Client.
+// Windows_Server - The on-premises license is for Windows Server.
+// Windows_Client - The on-premises license is for Windows Client.
 func (o VirtualMachineConfigurationResponseOutput) LicenseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineConfigurationResponse) *string { return v.LicenseType }).(pulumi.StringPtrOutput)
 }
@@ -12208,6 +14829,18 @@ func (o VirtualMachineConfigurationResponseOutput) NodePlacementConfiguration() 
 // Contains configuration for ephemeral OSDisk settings.
 func (o VirtualMachineConfigurationResponseOutput) OsDisk() OSDiskResponsePtrOutput {
 	return o.ApplyT(func(v VirtualMachineConfigurationResponse) *OSDiskResponse { return v.OsDisk }).(OSDiskResponsePtrOutput)
+}
+
+// Specifies the security profile settings for the virtual machine or virtual machine scale set.
+func (o VirtualMachineConfigurationResponseOutput) SecurityProfile() SecurityProfileResponsePtrOutput {
+	return o.ApplyT(func(v VirtualMachineConfigurationResponse) *SecurityProfileResponse { return v.SecurityProfile }).(SecurityProfileResponsePtrOutput)
+}
+
+// The service artifact reference id in the form of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
+func (o VirtualMachineConfigurationResponseOutput) ServiceArtifactReference() ServiceArtifactReferenceResponsePtrOutput {
+	return o.ApplyT(func(v VirtualMachineConfigurationResponse) *ServiceArtifactReferenceResponse {
+		return v.ServiceArtifactReference
+	}).(ServiceArtifactReferenceResponsePtrOutput)
 }
 
 // This property must not be specified if the imageReference specifies a Linux OS image.
@@ -12281,6 +14914,7 @@ func (o VirtualMachineConfigurationResponsePtrOutput) Extensions() VMExtensionRe
 	}).(VMExtensionResponseArrayOutput)
 }
 
+// A reference to an Azure Virtual Machines Marketplace image or the Azure Image resource of a custom Virtual Machine. To get the list of all imageReferences verified by Azure Batch, see the 'List supported node agent SKUs' operation.
 func (o VirtualMachineConfigurationResponsePtrOutput) ImageReference() ImageReferenceResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualMachineConfigurationResponse) *ImageReferenceResponse {
 		if v == nil {
@@ -12292,8 +14926,8 @@ func (o VirtualMachineConfigurationResponsePtrOutput) ImageReference() ImageRefe
 
 // This only applies to images that contain the Windows operating system, and should only be used when you hold valid on-premises licenses for the nodes which will be deployed. If omitted, no on-premises licensing discount is applied. Values are:
 //
-//	Windows_Server - The on-premises license is for Windows Server.
-//	Windows_Client - The on-premises license is for Windows Client.
+// Windows_Server - The on-premises license is for Windows Server.
+// Windows_Client - The on-premises license is for Windows Client.
 func (o VirtualMachineConfigurationResponsePtrOutput) LicenseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineConfigurationResponse) *string {
 		if v == nil {
@@ -12331,6 +14965,26 @@ func (o VirtualMachineConfigurationResponsePtrOutput) OsDisk() OSDiskResponsePtr
 		}
 		return v.OsDisk
 	}).(OSDiskResponsePtrOutput)
+}
+
+// Specifies the security profile settings for the virtual machine or virtual machine scale set.
+func (o VirtualMachineConfigurationResponsePtrOutput) SecurityProfile() SecurityProfileResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineConfigurationResponse) *SecurityProfileResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SecurityProfile
+	}).(SecurityProfileResponsePtrOutput)
+}
+
+// The service artifact reference id in the form of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
+func (o VirtualMachineConfigurationResponsePtrOutput) ServiceArtifactReference() ServiceArtifactReferenceResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineConfigurationResponse) *ServiceArtifactReferenceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceArtifactReference
+	}).(ServiceArtifactReferenceResponsePtrOutput)
 }
 
 // This property must not be specified if the imageReference specifies a Linux OS image.
@@ -12396,6 +15050,7 @@ func (o VirtualMachineFamilyCoreQuotaResponseArrayOutput) Index(i pulumi.IntInpu
 	}).(VirtualMachineFamilyCoreQuotaResponseOutput)
 }
 
+// Windows operating system settings to apply to the virtual machine.
 type WindowsConfiguration struct {
 	// If omitted, the default value is true.
 	EnableAutomaticUpdates *bool `pulumi:"enableAutomaticUpdates"`
@@ -12412,6 +15067,7 @@ type WindowsConfigurationInput interface {
 	ToWindowsConfigurationOutputWithContext(context.Context) WindowsConfigurationOutput
 }
 
+// Windows operating system settings to apply to the virtual machine.
 type WindowsConfigurationArgs struct {
 	// If omitted, the default value is true.
 	EnableAutomaticUpdates pulumi.BoolPtrInput `pulumi:"enableAutomaticUpdates"`
@@ -12470,6 +15126,7 @@ func (i *windowsConfigurationPtrType) ToWindowsConfigurationPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(WindowsConfigurationPtrOutput)
 }
 
+// Windows operating system settings to apply to the virtual machine.
 type WindowsConfigurationOutput struct{ *pulumi.OutputState }
 
 func (WindowsConfigurationOutput) ElementType() reflect.Type {
@@ -12533,11 +15190,13 @@ func (o WindowsConfigurationPtrOutput) EnableAutomaticUpdates() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Windows operating system settings to apply to the virtual machine.
 type WindowsConfigurationResponse struct {
 	// If omitted, the default value is true.
 	EnableAutomaticUpdates *bool `pulumi:"enableAutomaticUpdates"`
 }
 
+// Windows operating system settings to apply to the virtual machine.
 type WindowsConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (WindowsConfigurationResponseOutput) ElementType() reflect.Type {
@@ -12591,8 +15250,9 @@ func (o WindowsConfigurationResponsePtrOutput) EnableAutomaticUpdates() pulumi.B
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Properties used to create a user account on a Windows node.
 type WindowsUserConfiguration struct {
-	// Specifies login mode for the user. The default value for VirtualMachineConfiguration pools is interactive mode and for CloudServiceConfiguration pools is batch mode.
+	// Specifies login mode for the user. The default value is Interactive.
 	LoginMode *LoginMode `pulumi:"loginMode"`
 }
 
@@ -12607,8 +15267,9 @@ type WindowsUserConfigurationInput interface {
 	ToWindowsUserConfigurationOutputWithContext(context.Context) WindowsUserConfigurationOutput
 }
 
+// Properties used to create a user account on a Windows node.
 type WindowsUserConfigurationArgs struct {
-	// Specifies login mode for the user. The default value for VirtualMachineConfiguration pools is interactive mode and for CloudServiceConfiguration pools is batch mode.
+	// Specifies login mode for the user. The default value is Interactive.
 	LoginMode LoginModePtrInput `pulumi:"loginMode"`
 }
 
@@ -12665,6 +15326,7 @@ func (i *windowsUserConfigurationPtrType) ToWindowsUserConfigurationPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(WindowsUserConfigurationPtrOutput)
 }
 
+// Properties used to create a user account on a Windows node.
 type WindowsUserConfigurationOutput struct{ *pulumi.OutputState }
 
 func (WindowsUserConfigurationOutput) ElementType() reflect.Type {
@@ -12689,7 +15351,7 @@ func (o WindowsUserConfigurationOutput) ToWindowsUserConfigurationPtrOutputWithC
 	}).(WindowsUserConfigurationPtrOutput)
 }
 
-// Specifies login mode for the user. The default value for VirtualMachineConfiguration pools is interactive mode and for CloudServiceConfiguration pools is batch mode.
+// Specifies login mode for the user. The default value is Interactive.
 func (o WindowsUserConfigurationOutput) LoginMode() LoginModePtrOutput {
 	return o.ApplyT(func(v WindowsUserConfiguration) *LoginMode { return v.LoginMode }).(LoginModePtrOutput)
 }
@@ -12718,7 +15380,7 @@ func (o WindowsUserConfigurationPtrOutput) Elem() WindowsUserConfigurationOutput
 	}).(WindowsUserConfigurationOutput)
 }
 
-// Specifies login mode for the user. The default value for VirtualMachineConfiguration pools is interactive mode and for CloudServiceConfiguration pools is batch mode.
+// Specifies login mode for the user. The default value is Interactive.
 func (o WindowsUserConfigurationPtrOutput) LoginMode() LoginModePtrOutput {
 	return o.ApplyT(func(v *WindowsUserConfiguration) *LoginMode {
 		if v == nil {
@@ -12728,11 +15390,13 @@ func (o WindowsUserConfigurationPtrOutput) LoginMode() LoginModePtrOutput {
 	}).(LoginModePtrOutput)
 }
 
+// Properties used to create a user account on a Windows node.
 type WindowsUserConfigurationResponse struct {
-	// Specifies login mode for the user. The default value for VirtualMachineConfiguration pools is interactive mode and for CloudServiceConfiguration pools is batch mode.
+	// Specifies login mode for the user. The default value is Interactive.
 	LoginMode *string `pulumi:"loginMode"`
 }
 
+// Properties used to create a user account on a Windows node.
 type WindowsUserConfigurationResponseOutput struct{ *pulumi.OutputState }
 
 func (WindowsUserConfigurationResponseOutput) ElementType() reflect.Type {
@@ -12747,7 +15411,7 @@ func (o WindowsUserConfigurationResponseOutput) ToWindowsUserConfigurationRespon
 	return o
 }
 
-// Specifies login mode for the user. The default value for VirtualMachineConfiguration pools is interactive mode and for CloudServiceConfiguration pools is batch mode.
+// Specifies login mode for the user. The default value is Interactive.
 func (o WindowsUserConfigurationResponseOutput) LoginMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WindowsUserConfigurationResponse) *string { return v.LoginMode }).(pulumi.StringPtrOutput)
 }
@@ -12776,7 +15440,7 @@ func (o WindowsUserConfigurationResponsePtrOutput) Elem() WindowsUserConfigurati
 	}).(WindowsUserConfigurationResponseOutput)
 }
 
-// Specifies login mode for the user. The default value for VirtualMachineConfiguration pools is interactive mode and for CloudServiceConfiguration pools is batch mode.
+// Specifies login mode for the user. The default value is Interactive.
 func (o WindowsUserConfigurationResponsePtrOutput) LoginMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WindowsUserConfigurationResponse) *string {
 		if v == nil {
@@ -12806,6 +15470,10 @@ func init() {
 	pulumi.RegisterOutputType(AutoUserSpecificationPtrOutput{})
 	pulumi.RegisterOutputType(AutoUserSpecificationResponseOutput{})
 	pulumi.RegisterOutputType(AutoUserSpecificationResponsePtrOutput{})
+	pulumi.RegisterOutputType(AutomaticOSUpgradePolicyOutput{})
+	pulumi.RegisterOutputType(AutomaticOSUpgradePolicyPtrOutput{})
+	pulumi.RegisterOutputType(AutomaticOSUpgradePolicyResponseOutput{})
+	pulumi.RegisterOutputType(AutomaticOSUpgradePolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(AzureBlobFileSystemConfigurationOutput{})
 	pulumi.RegisterOutputType(AzureBlobFileSystemConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(AzureBlobFileSystemConfigurationResponseOutput{})
@@ -12830,10 +15498,6 @@ func init() {
 	pulumi.RegisterOutputType(CertificateReferenceArrayOutput{})
 	pulumi.RegisterOutputType(CertificateReferenceResponseOutput{})
 	pulumi.RegisterOutputType(CertificateReferenceResponseArrayOutput{})
-	pulumi.RegisterOutputType(CloudServiceConfigurationOutput{})
-	pulumi.RegisterOutputType(CloudServiceConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(CloudServiceConfigurationResponseOutput{})
-	pulumi.RegisterOutputType(CloudServiceConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(ComputeNodeIdentityReferenceOutput{})
 	pulumi.RegisterOutputType(ComputeNodeIdentityReferencePtrOutput{})
 	pulumi.RegisterOutputType(ComputeNodeIdentityReferenceResponseOutput{})
@@ -12842,6 +15506,10 @@ func init() {
 	pulumi.RegisterOutputType(ContainerConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ContainerConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(ContainerConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ContainerHostBatchBindMountEntryOutput{})
+	pulumi.RegisterOutputType(ContainerHostBatchBindMountEntryArrayOutput{})
+	pulumi.RegisterOutputType(ContainerHostBatchBindMountEntryResponseOutput{})
+	pulumi.RegisterOutputType(ContainerHostBatchBindMountEntryResponseArrayOutput{})
 	pulumi.RegisterOutputType(ContainerRegistryOutput{})
 	pulumi.RegisterOutputType(ContainerRegistryPtrOutput{})
 	pulumi.RegisterOutputType(ContainerRegistryArrayOutput{})
@@ -12902,6 +15570,10 @@ func init() {
 	pulumi.RegisterOutputType(LinuxUserConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(LinuxUserConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(LinuxUserConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ManagedDiskOutput{})
+	pulumi.RegisterOutputType(ManagedDiskPtrOutput{})
+	pulumi.RegisterOutputType(ManagedDiskResponseOutput{})
+	pulumi.RegisterOutputType(ManagedDiskResponsePtrOutput{})
 	pulumi.RegisterOutputType(MetadataItemOutput{})
 	pulumi.RegisterOutputType(MetadataItemArrayOutput{})
 	pulumi.RegisterOutputType(MetadataItemResponseOutput{})
@@ -12954,10 +15626,22 @@ func init() {
 	pulumi.RegisterOutputType(ResourceFileArrayOutput{})
 	pulumi.RegisterOutputType(ResourceFileResponseOutput{})
 	pulumi.RegisterOutputType(ResourceFileResponseArrayOutput{})
+	pulumi.RegisterOutputType(RollingUpgradePolicyOutput{})
+	pulumi.RegisterOutputType(RollingUpgradePolicyPtrOutput{})
+	pulumi.RegisterOutputType(RollingUpgradePolicyResponseOutput{})
+	pulumi.RegisterOutputType(RollingUpgradePolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(ScaleSettingsOutput{})
 	pulumi.RegisterOutputType(ScaleSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ScaleSettingsResponseOutput{})
 	pulumi.RegisterOutputType(ScaleSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(SecurityProfileOutput{})
+	pulumi.RegisterOutputType(SecurityProfilePtrOutput{})
+	pulumi.RegisterOutputType(SecurityProfileResponseOutput{})
+	pulumi.RegisterOutputType(SecurityProfileResponsePtrOutput{})
+	pulumi.RegisterOutputType(ServiceArtifactReferenceOutput{})
+	pulumi.RegisterOutputType(ServiceArtifactReferencePtrOutput{})
+	pulumi.RegisterOutputType(ServiceArtifactReferenceResponseOutput{})
+	pulumi.RegisterOutputType(ServiceArtifactReferenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(StartTaskOutput{})
 	pulumi.RegisterOutputType(StartTaskPtrOutput{})
 	pulumi.RegisterOutputType(StartTaskResponseOutput{})
@@ -12970,6 +15654,14 @@ func init() {
 	pulumi.RegisterOutputType(TaskSchedulingPolicyPtrOutput{})
 	pulumi.RegisterOutputType(TaskSchedulingPolicyResponseOutput{})
 	pulumi.RegisterOutputType(TaskSchedulingPolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(UefiSettingsOutput{})
+	pulumi.RegisterOutputType(UefiSettingsPtrOutput{})
+	pulumi.RegisterOutputType(UefiSettingsResponseOutput{})
+	pulumi.RegisterOutputType(UefiSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(UpgradePolicyOutput{})
+	pulumi.RegisterOutputType(UpgradePolicyPtrOutput{})
+	pulumi.RegisterOutputType(UpgradePolicyResponseOutput{})
+	pulumi.RegisterOutputType(UpgradePolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(UserAccountOutput{})
 	pulumi.RegisterOutputType(UserAccountArrayOutput{})
 	pulumi.RegisterOutputType(UserAccountResponseOutput{})
@@ -12980,6 +15672,10 @@ func init() {
 	pulumi.RegisterOutputType(UserIdentityPtrOutput{})
 	pulumi.RegisterOutputType(UserIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(VMDiskSecurityProfileOutput{})
+	pulumi.RegisterOutputType(VMDiskSecurityProfilePtrOutput{})
+	pulumi.RegisterOutputType(VMDiskSecurityProfileResponseOutput{})
+	pulumi.RegisterOutputType(VMDiskSecurityProfileResponsePtrOutput{})
 	pulumi.RegisterOutputType(VMExtensionOutput{})
 	pulumi.RegisterOutputType(VMExtensionArrayOutput{})
 	pulumi.RegisterOutputType(VMExtensionResponseOutput{})

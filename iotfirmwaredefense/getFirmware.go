@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get firmware.
 //
-// Uses Azure REST API version 2023-02-08-preview.
+// Uses Azure REST API version 2024-01-10.
 //
-// Other available API versions: 2024-01-10, 2025-04-01-preview.
+// Other available API versions: 2023-02-08-preview, 2025-04-01-preview, 2025-08-02, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotfirmwaredefense [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupFirmware(ctx *pulumi.Context, args *LookupFirmwareArgs, opts ...pulumi.InvokeOption) (*LookupFirmwareResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFirmwareResult
@@ -37,13 +38,15 @@ type LookupFirmwareArgs struct {
 
 // Firmware definition
 type LookupFirmwareResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// User-specified description of the firmware.
 	Description *string `pulumi:"description"`
 	// File name for a firmware that user uploaded.
 	FileName *string `pulumi:"fileName"`
 	// File size of the uploaded firmware image.
 	FileSize *float64 `pulumi:"fileSize"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Firmware model.
 	Model *string `pulumi:"model"`
@@ -54,9 +57,9 @@ type LookupFirmwareResult struct {
 	// The status of firmware scan.
 	Status *string `pulumi:"status"`
 	// A list of errors or other messages generated during firmware analysis
-	StatusMessages []interface{} `pulumi:"statusMessages"`
+	StatusMessages []StatusMessageResponse `pulumi:"statusMessages"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Firmware vendor.
@@ -114,6 +117,11 @@ func (o LookupFirmwareResultOutput) ToLookupFirmwareResultOutputWithContext(ctx 
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupFirmwareResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFirmwareResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // User-specified description of the firmware.
 func (o LookupFirmwareResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFirmwareResult) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -129,7 +137,7 @@ func (o LookupFirmwareResultOutput) FileSize() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v LookupFirmwareResult) *float64 { return v.FileSize }).(pulumi.Float64PtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupFirmwareResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirmwareResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -155,13 +163,13 @@ func (o LookupFirmwareResultOutput) Status() pulumi.StringPtrOutput {
 }
 
 // A list of errors or other messages generated during firmware analysis
-func (o LookupFirmwareResultOutput) StatusMessages() pulumi.ArrayOutput {
-	return o.ApplyT(func(v LookupFirmwareResult) []interface{} { return v.StatusMessages }).(pulumi.ArrayOutput)
+func (o LookupFirmwareResultOutput) StatusMessages() StatusMessageResponseArrayOutput {
+	return o.ApplyT(func(v LookupFirmwareResult) []StatusMessageResponse { return v.StatusMessages }).(StatusMessageResponseArrayOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupFirmwareResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupFirmwareResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupFirmwareResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupFirmwareResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

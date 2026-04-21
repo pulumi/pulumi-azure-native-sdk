@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the alert rule.
 //
-// Uses Azure REST API version 2023-02-01.
+// Uses Azure REST API version 2024-09-01.
 func LookupScheduledAlertRule(ctx *pulumi.Context, args *LookupScheduledAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupScheduledAlertRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupScheduledAlertRuleResult
@@ -39,6 +40,8 @@ type LookupScheduledAlertRuleResult struct {
 	AlertDetailsOverride *AlertDetailsOverrideResponse `pulumi:"alertDetailsOverride"`
 	// The Name of the alert rule template used to create this rule.
 	AlertRuleTemplateName *string `pulumi:"alertRuleTemplateName"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Dictionary of string key-value pairs of columns to be attached to the alert
 	CustomDetails map[string]string `pulumi:"customDetails"`
 	// The description of the alert rule.
@@ -77,7 +80,7 @@ type LookupScheduledAlertRuleResult struct {
 	// Determines whether the suppression for this alert rule is enabled or disabled.
 	SuppressionEnabled bool `pulumi:"suppressionEnabled"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The tactics of the alert rule
 	Tactics []string `pulumi:"tactics"`
 	// The techniques of the alert rule
@@ -137,6 +140,11 @@ func (o LookupScheduledAlertRuleResultOutput) AlertDetailsOverride() AlertDetail
 // The Name of the alert rule template used to create this rule.
 func (o LookupScheduledAlertRuleResultOutput) AlertRuleTemplateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupScheduledAlertRuleResult) *string { return v.AlertRuleTemplateName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupScheduledAlertRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupScheduledAlertRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Dictionary of string key-value pairs of columns to be attached to the alert
@@ -231,8 +239,8 @@ func (o LookupScheduledAlertRuleResultOutput) SuppressionEnabled() pulumi.BoolOu
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupScheduledAlertRuleResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupScheduledAlertRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupScheduledAlertRuleResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupScheduledAlertRuleResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The tactics of the alert rule

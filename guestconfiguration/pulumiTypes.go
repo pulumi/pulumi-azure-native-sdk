@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1094,6 +1094,8 @@ type GuestConfigurationNavigation struct {
 	ConfigurationProtectedParameter []ConfigurationParameter `pulumi:"configurationProtectedParameter"`
 	// Combined hash of the guest configuration package and configuration parameters.
 	ContentHash *string `pulumi:"contentHash"`
+	// Managed identity with storage access of the guest configuration package and configuration parameters.
+	ContentManagedIdentity *string `pulumi:"contentManagedIdentity"`
 	// Uri of the storage where guest configuration package is uploaded.
 	ContentUri *string `pulumi:"contentUri"`
 	// Kind of the guest configuration. For example:DSC
@@ -1125,6 +1127,8 @@ type GuestConfigurationNavigationArgs struct {
 	ConfigurationProtectedParameter ConfigurationParameterArrayInput `pulumi:"configurationProtectedParameter"`
 	// Combined hash of the guest configuration package and configuration parameters.
 	ContentHash pulumi.StringPtrInput `pulumi:"contentHash"`
+	// Managed identity with storage access of the guest configuration package and configuration parameters.
+	ContentManagedIdentity pulumi.StringPtrInput `pulumi:"contentManagedIdentity"`
 	// Uri of the storage where guest configuration package is uploaded.
 	ContentUri pulumi.StringPtrInput `pulumi:"contentUri"`
 	// Kind of the guest configuration. For example:DSC
@@ -1235,6 +1239,11 @@ func (o GuestConfigurationNavigationOutput) ContentHash() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GuestConfigurationNavigation) *string { return v.ContentHash }).(pulumi.StringPtrOutput)
 }
 
+// Managed identity with storage access of the guest configuration package and configuration parameters.
+func (o GuestConfigurationNavigationOutput) ContentManagedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestConfigurationNavigation) *string { return v.ContentManagedIdentity }).(pulumi.StringPtrOutput)
+}
+
 // Uri of the storage where guest configuration package is uploaded.
 func (o GuestConfigurationNavigationOutput) ContentUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestConfigurationNavigation) *string { return v.ContentUri }).(pulumi.StringPtrOutput)
@@ -1319,6 +1328,16 @@ func (o GuestConfigurationNavigationPtrOutput) ContentHash() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Managed identity with storage access of the guest configuration package and configuration parameters.
+func (o GuestConfigurationNavigationPtrOutput) ContentManagedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestConfigurationNavigation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentManagedIdentity
+	}).(pulumi.StringPtrOutput)
+}
+
 // Uri of the storage where guest configuration package is uploaded.
 func (o GuestConfigurationNavigationPtrOutput) ContentUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestConfigurationNavigation) *string {
@@ -1373,6 +1392,8 @@ type GuestConfigurationNavigationResponse struct {
 	ConfigurationSetting ConfigurationSettingResponse `pulumi:"configurationSetting"`
 	// Combined hash of the guest configuration package and configuration parameters.
 	ContentHash *string `pulumi:"contentHash"`
+	// Managed identity with storage access of the guest configuration package and configuration parameters.
+	ContentManagedIdentity *string `pulumi:"contentManagedIdentity"`
 	// Specifies the content type of the configuration. Possible values could be Builtin or Custom.
 	ContentType string `pulumi:"contentType"`
 	// Uri of the storage where guest configuration package is uploaded.
@@ -1445,6 +1466,11 @@ func (o GuestConfigurationNavigationResponseOutput) ConfigurationSetting() Confi
 // Combined hash of the guest configuration package and configuration parameters.
 func (o GuestConfigurationNavigationResponseOutput) ContentHash() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestConfigurationNavigationResponse) *string { return v.ContentHash }).(pulumi.StringPtrOutput)
+}
+
+// Managed identity with storage access of the guest configuration package and configuration parameters.
+func (o GuestConfigurationNavigationResponseOutput) ContentManagedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GuestConfigurationNavigationResponse) *string { return v.ContentManagedIdentity }).(pulumi.StringPtrOutput)
 }
 
 // Specifies the content type of the configuration. Possible values could be Builtin or Custom.
@@ -1556,6 +1582,16 @@ func (o GuestConfigurationNavigationResponsePtrOutput) ContentHash() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Managed identity with storage access of the guest configuration package and configuration parameters.
+func (o GuestConfigurationNavigationResponsePtrOutput) ContentManagedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GuestConfigurationNavigationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentManagedIdentity
+	}).(pulumi.StringPtrOutput)
+}
+
 // Specifies the content type of the configuration. Possible values could be Builtin or Custom.
 func (o GuestConfigurationNavigationResponsePtrOutput) ContentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestConfigurationNavigationResponse) *string {
@@ -1604,67 +1640,6 @@ func (o GuestConfigurationNavigationResponsePtrOutput) Version() pulumi.StringPt
 		}
 		return v.Version
 	}).(pulumi.StringPtrOutput)
-}
-
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
-}
-
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponseOutput struct{ *pulumi.OutputState }
-
-func (SystemDataResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
-	return o
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
-	return o
-}
-
-// The timestamp of resource creation (UTC).
-func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
 // Information about the VM.
@@ -1842,7 +1817,6 @@ func init() {
 	pulumi.RegisterOutputType(GuestConfigurationNavigationPtrOutput{})
 	pulumi.RegisterOutputType(GuestConfigurationNavigationResponseOutput{})
 	pulumi.RegisterOutputType(GuestConfigurationNavigationResponsePtrOutput{})
-	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(VMInfoResponseOutput{})
 	pulumi.RegisterOutputType(VMInfoResponsePtrOutput{})
 	pulumi.RegisterOutputType(VMSSVMInfoResponseOutput{})

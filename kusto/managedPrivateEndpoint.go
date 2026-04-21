@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Class representing a managed private endpoint.
 //
-// Uses Azure REST API version 2022-12-29. In version 1.x of the Azure Native provider, it used API version 2021-08-27.
+// Uses Azure REST API version 2024-04-13. In version 2.x of the Azure Native provider, it used API version 2022-12-29.
 //
-// Other available API versions: 2023-05-02, 2023-08-15, 2024-04-13.
+// Other available API versions: 2021-08-27, 2022-02-01, 2022-07-07, 2022-11-11, 2022-12-29, 2023-05-02, 2023-08-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kusto [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ManagedPrivateEndpoint struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The groupId in which the managed private endpoint is created.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
 	// The name of the resource
@@ -33,7 +36,7 @@ type ManagedPrivateEndpoint struct {
 	// The user request message.
 	RequestMessage pulumi.StringPtrOutput `pulumi:"requestMessage"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -129,7 +132,7 @@ type managedPrivateEndpointArgs struct {
 	PrivateLinkResourceRegion *string `pulumi:"privateLinkResourceRegion"`
 	// The user request message.
 	RequestMessage *string `pulumi:"requestMessage"`
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -147,7 +150,7 @@ type ManagedPrivateEndpointArgs struct {
 	PrivateLinkResourceRegion pulumi.StringPtrInput
 	// The user request message.
 	RequestMessage pulumi.StringPtrInput
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 }
 
@@ -188,6 +191,11 @@ func (o ManagedPrivateEndpointOutput) ToManagedPrivateEndpointOutputWithContext(
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ManagedPrivateEndpointOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedPrivateEndpoint) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The groupId in which the managed private endpoint is created.
 func (o ManagedPrivateEndpointOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedPrivateEndpoint) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
@@ -219,8 +227,8 @@ func (o ManagedPrivateEndpointOutput) RequestMessage() pulumi.StringPtrOutput {
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o ManagedPrivateEndpointOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *ManagedPrivateEndpoint) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o ManagedPrivateEndpointOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *ManagedPrivateEndpoint) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

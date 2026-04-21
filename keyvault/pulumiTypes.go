@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -272,7 +272,7 @@ func (o AccessPolicyEntryResponseArrayOutput) Index(i pulumi.IntInput) AccessPol
 }
 
 type Action struct {
-	// The type of the action. The value should be compared case-insensitively.
+	// The type of action.
 	Type *KeyRotationPolicyActionType `pulumi:"type"`
 }
 
@@ -288,7 +288,7 @@ type ActionInput interface {
 }
 
 type ActionArgs struct {
-	// The type of the action. The value should be compared case-insensitively.
+	// The type of action.
 	Type KeyRotationPolicyActionTypePtrInput `pulumi:"type"`
 }
 
@@ -369,7 +369,7 @@ func (o ActionOutput) ToActionPtrOutputWithContext(ctx context.Context) ActionPt
 	}).(ActionPtrOutput)
 }
 
-// The type of the action. The value should be compared case-insensitively.
+// The type of action.
 func (o ActionOutput) Type() KeyRotationPolicyActionTypePtrOutput {
 	return o.ApplyT(func(v Action) *KeyRotationPolicyActionType { return v.Type }).(KeyRotationPolicyActionTypePtrOutput)
 }
@@ -398,7 +398,7 @@ func (o ActionPtrOutput) Elem() ActionOutput {
 	}).(ActionOutput)
 }
 
-// The type of the action. The value should be compared case-insensitively.
+// The type of action.
 func (o ActionPtrOutput) Type() KeyRotationPolicyActionTypePtrOutput {
 	return o.ApplyT(func(v *Action) *KeyRotationPolicyActionType {
 		if v == nil {
@@ -409,7 +409,7 @@ func (o ActionPtrOutput) Type() KeyRotationPolicyActionTypePtrOutput {
 }
 
 type ActionResponse struct {
-	// The type of the action. The value should be compared case-insensitively.
+	// The type of action.
 	Type *string `pulumi:"type"`
 }
 
@@ -427,7 +427,7 @@ func (o ActionResponseOutput) ToActionResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The type of the action. The value should be compared case-insensitively.
+// The type of action.
 func (o ActionResponseOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ActionResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -456,7 +456,7 @@ func (o ActionResponsePtrOutput) Elem() ActionResponseOutput {
 	}).(ActionResponseOutput)
 }
 
-// The type of the action. The value should be compared case-insensitively.
+// The type of action.
 func (o ActionResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActionResponse) *string {
 		if v == nil {
@@ -1012,10 +1012,10 @@ func (o KeyAttributesResponsePtrOutput) Updated() pulumi.Float64PtrOutput {
 type KeyProperties struct {
 	// The attributes of the key.
 	Attributes *KeyAttributes `pulumi:"attributes"`
-	// The elliptic curve name. For valid values, see JsonWebKeyCurveName.
+	// The elliptic curve name. For valid values, see JsonWebKeyCurveName. Default for EC and EC-HSM keys is P-256
 	CurveName *string  `pulumi:"curveName"`
 	KeyOps    []string `pulumi:"keyOps"`
-	// The key size in bits. For example: 2048, 3072, or 4096 for RSA.
+	// The key size in bits. For example: 2048, 3072, or 4096 for RSA. Default for RSA and RSA-HSM keys is 2048. Exception made for bring your own key (BYOK), key exchange keys default to 4096.
 	KeySize *int `pulumi:"keySize"`
 	// The type of the key. For valid values, see JsonWebKeyType.
 	Kty *string `pulumi:"kty"`
@@ -1053,10 +1053,10 @@ type KeyPropertiesInput interface {
 type KeyPropertiesArgs struct {
 	// The attributes of the key.
 	Attributes KeyAttributesPtrInput `pulumi:"attributes"`
-	// The elliptic curve name. For valid values, see JsonWebKeyCurveName.
+	// The elliptic curve name. For valid values, see JsonWebKeyCurveName. Default for EC and EC-HSM keys is P-256
 	CurveName pulumi.StringPtrInput   `pulumi:"curveName"`
 	KeyOps    pulumi.StringArrayInput `pulumi:"keyOps"`
-	// The key size in bits. For example: 2048, 3072, or 4096 for RSA.
+	// The key size in bits. For example: 2048, 3072, or 4096 for RSA. Default for RSA and RSA-HSM keys is 2048. Exception made for bring your own key (BYOK), key exchange keys default to 4096.
 	KeySize pulumi.IntPtrInput `pulumi:"keySize"`
 	// The type of the key. For valid values, see JsonWebKeyType.
 	Kty pulumi.StringPtrInput `pulumi:"kty"`
@@ -1107,7 +1107,7 @@ func (o KeyPropertiesOutput) Attributes() KeyAttributesPtrOutput {
 	return o.ApplyT(func(v KeyProperties) *KeyAttributes { return v.Attributes }).(KeyAttributesPtrOutput)
 }
 
-// The elliptic curve name. For valid values, see JsonWebKeyCurveName.
+// The elliptic curve name. For valid values, see JsonWebKeyCurveName. Default for EC and EC-HSM keys is P-256
 func (o KeyPropertiesOutput) CurveName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyProperties) *string { return v.CurveName }).(pulumi.StringPtrOutput)
 }
@@ -1116,7 +1116,7 @@ func (o KeyPropertiesOutput) KeyOps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KeyProperties) []string { return v.KeyOps }).(pulumi.StringArrayOutput)
 }
 
-// The key size in bits. For example: 2048, 3072, or 4096 for RSA.
+// The key size in bits. For example: 2048, 3072, or 4096 for RSA. Default for RSA and RSA-HSM keys is 2048. Exception made for bring your own key (BYOK), key exchange keys default to 4096.
 func (o KeyPropertiesOutput) KeySize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v KeyProperties) *int { return v.KeySize }).(pulumi.IntPtrOutput)
 }
@@ -5728,6 +5728,18 @@ func (val *VaultProperties) Defaults() *VaultProperties {
 		enableSoftDelete_ := true
 		tmp.EnableSoftDelete = &enableSoftDelete_
 	}
+	if tmp.EnabledForDeployment == nil {
+		enabledForDeployment_ := false
+		tmp.EnabledForDeployment = &enabledForDeployment_
+	}
+	if tmp.EnabledForDiskEncryption == nil {
+		enabledForDiskEncryption_ := false
+		tmp.EnabledForDiskEncryption = &enabledForDiskEncryption_
+	}
+	if tmp.EnabledForTemplateDeployment == nil {
+		enabledForTemplateDeployment_ := false
+		tmp.EnabledForTemplateDeployment = &enabledForTemplateDeployment_
+	}
 	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "enabled"
 		tmp.PublicNetworkAccess = &publicNetworkAccess_
@@ -5792,6 +5804,15 @@ func (val *VaultPropertiesArgs) Defaults() *VaultPropertiesArgs {
 	}
 	if tmp.EnableSoftDelete == nil {
 		tmp.EnableSoftDelete = pulumi.BoolPtr(true)
+	}
+	if tmp.EnabledForDeployment == nil {
+		tmp.EnabledForDeployment = pulumi.BoolPtr(false)
+	}
+	if tmp.EnabledForDiskEncryption == nil {
+		tmp.EnabledForDiskEncryption = pulumi.BoolPtr(false)
+	}
+	if tmp.EnabledForTemplateDeployment == nil {
+		tmp.EnabledForTemplateDeployment = pulumi.BoolPtr(false)
 	}
 	if tmp.PublicNetworkAccess == nil {
 		tmp.PublicNetworkAccess = pulumi.StringPtr("enabled")
@@ -5944,6 +5965,18 @@ func (val *VaultPropertiesResponse) Defaults() *VaultPropertiesResponse {
 	if tmp.EnableSoftDelete == nil {
 		enableSoftDelete_ := true
 		tmp.EnableSoftDelete = &enableSoftDelete_
+	}
+	if tmp.EnabledForDeployment == nil {
+		enabledForDeployment_ := false
+		tmp.EnabledForDeployment = &enabledForDeployment_
+	}
+	if tmp.EnabledForDiskEncryption == nil {
+		enabledForDiskEncryption_ := false
+		tmp.EnabledForDiskEncryption = &enabledForDiskEncryption_
+	}
+	if tmp.EnabledForTemplateDeployment == nil {
+		enabledForTemplateDeployment_ := false
+		tmp.EnabledForTemplateDeployment = &enabledForTemplateDeployment_
 	}
 	if tmp.PublicNetworkAccess == nil {
 		publicNetworkAccess_ := "enabled"

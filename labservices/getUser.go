@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the properties of a lab user.
 //
-// Uses Azure REST API version 2022-08-01.
+// Uses Azure REST API version 2023-06-07.
 //
-// Other available API versions: 2018-10-15, 2023-06-07.
+// Other available API versions: 2021-10-01-preview, 2021-11-15-preview, 2022-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native labservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupUserResult
@@ -39,6 +40,8 @@ type LookupUserArgs struct {
 type LookupUserResult struct {
 	// The amount of usage quota time the user gets in addition to the lab usage quota.
 	AdditionalUsageQuota *string `pulumi:"additionalUsageQuota"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Display name of the user, for example user's full name.
 	DisplayName string `pulumi:"displayName"`
 	// Email address of the user.
@@ -55,8 +58,10 @@ type LookupUserResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// State of the user's registration within the lab.
 	RegistrationState string `pulumi:"registrationState"`
+	// Error details of last operation done on lab plan.
+	ResourceOperationError ResourceOperationErrorResponse `pulumi:"resourceOperationError"`
 	// Metadata pertaining to creation and last modification of the user resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// How long the user has used their virtual machines in this lab.
 	TotalUsage string `pulumi:"totalUsage"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -105,6 +110,11 @@ func (o LookupUserResultOutput) AdditionalUsageQuota() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupUserResult) *string { return v.AdditionalUsageQuota }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupUserResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Display name of the user, for example user's full name.
 func (o LookupUserResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.DisplayName }).(pulumi.StringOutput)
@@ -145,9 +155,14 @@ func (o LookupUserResultOutput) RegistrationState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.RegistrationState }).(pulumi.StringOutput)
 }
 
+// Error details of last operation done on lab plan.
+func (o LookupUserResultOutput) ResourceOperationError() ResourceOperationErrorResponseOutput {
+	return o.ApplyT(func(v LookupUserResult) ResourceOperationErrorResponse { return v.ResourceOperationError }).(ResourceOperationErrorResponseOutput)
+}
+
 // Metadata pertaining to creation and last modification of the user resource.
-func (o LookupUserResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupUserResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupUserResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupUserResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // How long the user has used their virtual machines in this lab.

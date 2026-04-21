@@ -178,126 +178,125 @@ func (in *appSkuPtr) ToAppSkuPtrOutputWithContext(ctx context.Context) AppSkuPtr
 	return pulumi.ToOutputWithContext(ctx, in).(AppSkuPtrOutput)
 }
 
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-type PrivateEndpointServiceConnectionStatus string
+// The default network action to apply.
+type NetworkAction string
 
 const (
-	PrivateEndpointServiceConnectionStatusPending  = PrivateEndpointServiceConnectionStatus("Pending")
-	PrivateEndpointServiceConnectionStatusApproved = PrivateEndpointServiceConnectionStatus("Approved")
-	PrivateEndpointServiceConnectionStatusRejected = PrivateEndpointServiceConnectionStatus("Rejected")
+	NetworkActionAllow = NetworkAction("Allow")
+	NetworkActionDeny  = NetworkAction("Deny")
 )
 
-func (PrivateEndpointServiceConnectionStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointServiceConnectionStatus)(nil)).Elem()
+func (NetworkAction) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAction)(nil)).Elem()
 }
 
-func (e PrivateEndpointServiceConnectionStatus) ToPrivateEndpointServiceConnectionStatusOutput() PrivateEndpointServiceConnectionStatusOutput {
-	return pulumi.ToOutput(e).(PrivateEndpointServiceConnectionStatusOutput)
+func (e NetworkAction) ToNetworkActionOutput() NetworkActionOutput {
+	return pulumi.ToOutput(e).(NetworkActionOutput)
 }
 
-func (e PrivateEndpointServiceConnectionStatus) ToPrivateEndpointServiceConnectionStatusOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(PrivateEndpointServiceConnectionStatusOutput)
+func (e NetworkAction) ToNetworkActionOutputWithContext(ctx context.Context) NetworkActionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NetworkActionOutput)
 }
 
-func (e PrivateEndpointServiceConnectionStatus) ToPrivateEndpointServiceConnectionStatusPtrOutput() PrivateEndpointServiceConnectionStatusPtrOutput {
-	return e.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(context.Background())
+func (e NetworkAction) ToNetworkActionPtrOutput() NetworkActionPtrOutput {
+	return e.ToNetworkActionPtrOutputWithContext(context.Background())
 }
 
-func (e PrivateEndpointServiceConnectionStatus) ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusPtrOutput {
-	return PrivateEndpointServiceConnectionStatus(e).ToPrivateEndpointServiceConnectionStatusOutputWithContext(ctx).ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx)
+func (e NetworkAction) ToNetworkActionPtrOutputWithContext(ctx context.Context) NetworkActionPtrOutput {
+	return NetworkAction(e).ToNetworkActionOutputWithContext(ctx).ToNetworkActionPtrOutputWithContext(ctx)
 }
 
-func (e PrivateEndpointServiceConnectionStatus) ToStringOutput() pulumi.StringOutput {
+func (e NetworkAction) ToStringOutput() pulumi.StringOutput {
 	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e PrivateEndpointServiceConnectionStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+func (e NetworkAction) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
 	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e PrivateEndpointServiceConnectionStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (e NetworkAction) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
 }
 
-func (e PrivateEndpointServiceConnectionStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+func (e NetworkAction) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type PrivateEndpointServiceConnectionStatusOutput struct{ *pulumi.OutputState }
+type NetworkActionOutput struct{ *pulumi.OutputState }
 
-func (PrivateEndpointServiceConnectionStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointServiceConnectionStatus)(nil)).Elem()
+func (NetworkActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAction)(nil)).Elem()
 }
 
-func (o PrivateEndpointServiceConnectionStatusOutput) ToPrivateEndpointServiceConnectionStatusOutput() PrivateEndpointServiceConnectionStatusOutput {
+func (o NetworkActionOutput) ToNetworkActionOutput() NetworkActionOutput {
 	return o
 }
 
-func (o PrivateEndpointServiceConnectionStatusOutput) ToPrivateEndpointServiceConnectionStatusOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusOutput {
+func (o NetworkActionOutput) ToNetworkActionOutputWithContext(ctx context.Context) NetworkActionOutput {
 	return o
 }
 
-func (o PrivateEndpointServiceConnectionStatusOutput) ToPrivateEndpointServiceConnectionStatusPtrOutput() PrivateEndpointServiceConnectionStatusPtrOutput {
-	return o.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(context.Background())
+func (o NetworkActionOutput) ToNetworkActionPtrOutput() NetworkActionPtrOutput {
+	return o.ToNetworkActionPtrOutputWithContext(context.Background())
 }
 
-func (o PrivateEndpointServiceConnectionStatusOutput) ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateEndpointServiceConnectionStatus) *PrivateEndpointServiceConnectionStatus {
+func (o NetworkActionOutput) ToNetworkActionPtrOutputWithContext(ctx context.Context) NetworkActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkAction) *NetworkAction {
 		return &v
-	}).(PrivateEndpointServiceConnectionStatusPtrOutput)
+	}).(NetworkActionPtrOutput)
 }
 
-func (o PrivateEndpointServiceConnectionStatusOutput) ToStringOutput() pulumi.StringOutput {
+func (o NetworkActionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
 
-func (o PrivateEndpointServiceConnectionStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e PrivateEndpointServiceConnectionStatus) string {
+func (o NetworkActionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkAction) string {
 		return string(e)
 	}).(pulumi.StringOutput)
 }
 
-func (o PrivateEndpointServiceConnectionStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o NetworkActionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o PrivateEndpointServiceConnectionStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e PrivateEndpointServiceConnectionStatus) *string {
+func (o NetworkActionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkAction) *string {
 		v := string(e)
 		return &v
 	}).(pulumi.StringPtrOutput)
 }
 
-type PrivateEndpointServiceConnectionStatusPtrOutput struct{ *pulumi.OutputState }
+type NetworkActionPtrOutput struct{ *pulumi.OutputState }
 
-func (PrivateEndpointServiceConnectionStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateEndpointServiceConnectionStatus)(nil)).Elem()
+func (NetworkActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkAction)(nil)).Elem()
 }
 
-func (o PrivateEndpointServiceConnectionStatusPtrOutput) ToPrivateEndpointServiceConnectionStatusPtrOutput() PrivateEndpointServiceConnectionStatusPtrOutput {
+func (o NetworkActionPtrOutput) ToNetworkActionPtrOutput() NetworkActionPtrOutput {
 	return o
 }
 
-func (o PrivateEndpointServiceConnectionStatusPtrOutput) ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusPtrOutput {
+func (o NetworkActionPtrOutput) ToNetworkActionPtrOutputWithContext(ctx context.Context) NetworkActionPtrOutput {
 	return o
 }
 
-func (o PrivateEndpointServiceConnectionStatusPtrOutput) Elem() PrivateEndpointServiceConnectionStatusOutput {
-	return o.ApplyT(func(v *PrivateEndpointServiceConnectionStatus) PrivateEndpointServiceConnectionStatus {
+func (o NetworkActionPtrOutput) Elem() NetworkActionOutput {
+	return o.ApplyT(func(v *NetworkAction) NetworkAction {
 		if v != nil {
 			return *v
 		}
-		var ret PrivateEndpointServiceConnectionStatus
+		var ret NetworkAction
 		return ret
-	}).(PrivateEndpointServiceConnectionStatusOutput)
+	}).(NetworkActionOutput)
 }
 
-func (o PrivateEndpointServiceConnectionStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o NetworkActionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o PrivateEndpointServiceConnectionStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PrivateEndpointServiceConnectionStatus) *string {
+func (o NetworkActionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NetworkAction) *string {
 		if e == nil {
 			return nil
 		}
@@ -306,165 +305,164 @@ func (o PrivateEndpointServiceConnectionStatusPtrOutput) ToStringPtrOutputWithCo
 	}).(pulumi.StringPtrOutput)
 }
 
-// PrivateEndpointServiceConnectionStatusInput is an input type that accepts values of the PrivateEndpointServiceConnectionStatus enum
-// A concrete instance of `PrivateEndpointServiceConnectionStatusInput` can be one of the following:
+// NetworkActionInput is an input type that accepts values of the NetworkAction enum
+// A concrete instance of `NetworkActionInput` can be one of the following:
 //
-//	PrivateEndpointServiceConnectionStatusPending
-//	PrivateEndpointServiceConnectionStatusApproved
-//	PrivateEndpointServiceConnectionStatusRejected
-type PrivateEndpointServiceConnectionStatusInput interface {
+//	NetworkActionAllow
+//	NetworkActionDeny
+type NetworkActionInput interface {
 	pulumi.Input
 
-	ToPrivateEndpointServiceConnectionStatusOutput() PrivateEndpointServiceConnectionStatusOutput
-	ToPrivateEndpointServiceConnectionStatusOutputWithContext(context.Context) PrivateEndpointServiceConnectionStatusOutput
+	ToNetworkActionOutput() NetworkActionOutput
+	ToNetworkActionOutputWithContext(context.Context) NetworkActionOutput
 }
 
-var privateEndpointServiceConnectionStatusPtrType = reflect.TypeOf((**PrivateEndpointServiceConnectionStatus)(nil)).Elem()
+var networkActionPtrType = reflect.TypeOf((**NetworkAction)(nil)).Elem()
 
-type PrivateEndpointServiceConnectionStatusPtrInput interface {
+type NetworkActionPtrInput interface {
 	pulumi.Input
 
-	ToPrivateEndpointServiceConnectionStatusPtrOutput() PrivateEndpointServiceConnectionStatusPtrOutput
-	ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(context.Context) PrivateEndpointServiceConnectionStatusPtrOutput
+	ToNetworkActionPtrOutput() NetworkActionPtrOutput
+	ToNetworkActionPtrOutputWithContext(context.Context) NetworkActionPtrOutput
 }
 
-type privateEndpointServiceConnectionStatusPtr string
+type networkActionPtr string
 
-func PrivateEndpointServiceConnectionStatusPtr(v string) PrivateEndpointServiceConnectionStatusPtrInput {
-	return (*privateEndpointServiceConnectionStatusPtr)(&v)
+func NetworkActionPtr(v string) NetworkActionPtrInput {
+	return (*networkActionPtr)(&v)
 }
 
-func (*privateEndpointServiceConnectionStatusPtr) ElementType() reflect.Type {
-	return privateEndpointServiceConnectionStatusPtrType
+func (*networkActionPtr) ElementType() reflect.Type {
+	return networkActionPtrType
 }
 
-func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceConnectionStatusPtrOutput() PrivateEndpointServiceConnectionStatusPtrOutput {
-	return pulumi.ToOutput(in).(PrivateEndpointServiceConnectionStatusPtrOutput)
+func (in *networkActionPtr) ToNetworkActionPtrOutput() NetworkActionPtrOutput {
+	return pulumi.ToOutput(in).(NetworkActionPtrOutput)
 }
 
-func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
+func (in *networkActionPtr) ToNetworkActionPtrOutputWithContext(ctx context.Context) NetworkActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NetworkActionPtrOutput)
 }
 
-// Type of managed service identity (either system assigned, or none).
-type SystemAssignedServiceIdentityType string
+// Whether requests from the public network are allowed.
+type PublicNetworkAccess string
 
 const (
-	SystemAssignedServiceIdentityTypeNone           = SystemAssignedServiceIdentityType("None")
-	SystemAssignedServiceIdentityTypeSystemAssigned = SystemAssignedServiceIdentityType("SystemAssigned")
+	PublicNetworkAccessEnabled  = PublicNetworkAccess("Enabled")
+	PublicNetworkAccessDisabled = PublicNetworkAccess("Disabled")
 )
 
-func (SystemAssignedServiceIdentityType) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemAssignedServiceIdentityType)(nil)).Elem()
+func (PublicNetworkAccess) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicNetworkAccess)(nil)).Elem()
 }
 
-func (e SystemAssignedServiceIdentityType) ToSystemAssignedServiceIdentityTypeOutput() SystemAssignedServiceIdentityTypeOutput {
-	return pulumi.ToOutput(e).(SystemAssignedServiceIdentityTypeOutput)
+func (e PublicNetworkAccess) ToPublicNetworkAccessOutput() PublicNetworkAccessOutput {
+	return pulumi.ToOutput(e).(PublicNetworkAccessOutput)
 }
 
-func (e SystemAssignedServiceIdentityType) ToSystemAssignedServiceIdentityTypeOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(SystemAssignedServiceIdentityTypeOutput)
+func (e PublicNetworkAccess) ToPublicNetworkAccessOutputWithContext(ctx context.Context) PublicNetworkAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PublicNetworkAccessOutput)
 }
 
-func (e SystemAssignedServiceIdentityType) ToSystemAssignedServiceIdentityTypePtrOutput() SystemAssignedServiceIdentityTypePtrOutput {
-	return e.ToSystemAssignedServiceIdentityTypePtrOutputWithContext(context.Background())
+func (e PublicNetworkAccess) ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput {
+	return e.ToPublicNetworkAccessPtrOutputWithContext(context.Background())
 }
 
-func (e SystemAssignedServiceIdentityType) ToSystemAssignedServiceIdentityTypePtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityTypePtrOutput {
-	return SystemAssignedServiceIdentityType(e).ToSystemAssignedServiceIdentityTypeOutputWithContext(ctx).ToSystemAssignedServiceIdentityTypePtrOutputWithContext(ctx)
+func (e PublicNetworkAccess) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
+	return PublicNetworkAccess(e).ToPublicNetworkAccessOutputWithContext(ctx).ToPublicNetworkAccessPtrOutputWithContext(ctx)
 }
 
-func (e SystemAssignedServiceIdentityType) ToStringOutput() pulumi.StringOutput {
+func (e PublicNetworkAccess) ToStringOutput() pulumi.StringOutput {
 	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e SystemAssignedServiceIdentityType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+func (e PublicNetworkAccess) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
 	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e SystemAssignedServiceIdentityType) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (e PublicNetworkAccess) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
 }
 
-func (e SystemAssignedServiceIdentityType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+func (e PublicNetworkAccess) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type SystemAssignedServiceIdentityTypeOutput struct{ *pulumi.OutputState }
+type PublicNetworkAccessOutput struct{ *pulumi.OutputState }
 
-func (SystemAssignedServiceIdentityTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemAssignedServiceIdentityType)(nil)).Elem()
+func (PublicNetworkAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicNetworkAccess)(nil)).Elem()
 }
 
-func (o SystemAssignedServiceIdentityTypeOutput) ToSystemAssignedServiceIdentityTypeOutput() SystemAssignedServiceIdentityTypeOutput {
+func (o PublicNetworkAccessOutput) ToPublicNetworkAccessOutput() PublicNetworkAccessOutput {
 	return o
 }
 
-func (o SystemAssignedServiceIdentityTypeOutput) ToSystemAssignedServiceIdentityTypeOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityTypeOutput {
+func (o PublicNetworkAccessOutput) ToPublicNetworkAccessOutputWithContext(ctx context.Context) PublicNetworkAccessOutput {
 	return o
 }
 
-func (o SystemAssignedServiceIdentityTypeOutput) ToSystemAssignedServiceIdentityTypePtrOutput() SystemAssignedServiceIdentityTypePtrOutput {
-	return o.ToSystemAssignedServiceIdentityTypePtrOutputWithContext(context.Background())
+func (o PublicNetworkAccessOutput) ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput {
+	return o.ToPublicNetworkAccessPtrOutputWithContext(context.Background())
 }
 
-func (o SystemAssignedServiceIdentityTypeOutput) ToSystemAssignedServiceIdentityTypePtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SystemAssignedServiceIdentityType) *SystemAssignedServiceIdentityType {
+func (o PublicNetworkAccessOutput) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublicNetworkAccess) *PublicNetworkAccess {
 		return &v
-	}).(SystemAssignedServiceIdentityTypePtrOutput)
+	}).(PublicNetworkAccessPtrOutput)
 }
 
-func (o SystemAssignedServiceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
+func (o PublicNetworkAccessOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
 
-func (o SystemAssignedServiceIdentityTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e SystemAssignedServiceIdentityType) string {
+func (o PublicNetworkAccessOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicNetworkAccess) string {
 		return string(e)
 	}).(pulumi.StringOutput)
 }
 
-func (o SystemAssignedServiceIdentityTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o PublicNetworkAccessOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o SystemAssignedServiceIdentityTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e SystemAssignedServiceIdentityType) *string {
+func (o PublicNetworkAccessOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicNetworkAccess) *string {
 		v := string(e)
 		return &v
 	}).(pulumi.StringPtrOutput)
 }
 
-type SystemAssignedServiceIdentityTypePtrOutput struct{ *pulumi.OutputState }
+type PublicNetworkAccessPtrOutput struct{ *pulumi.OutputState }
 
-func (SystemAssignedServiceIdentityTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SystemAssignedServiceIdentityType)(nil)).Elem()
+func (PublicNetworkAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicNetworkAccess)(nil)).Elem()
 }
 
-func (o SystemAssignedServiceIdentityTypePtrOutput) ToSystemAssignedServiceIdentityTypePtrOutput() SystemAssignedServiceIdentityTypePtrOutput {
+func (o PublicNetworkAccessPtrOutput) ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput {
 	return o
 }
 
-func (o SystemAssignedServiceIdentityTypePtrOutput) ToSystemAssignedServiceIdentityTypePtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityTypePtrOutput {
+func (o PublicNetworkAccessPtrOutput) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
 	return o
 }
 
-func (o SystemAssignedServiceIdentityTypePtrOutput) Elem() SystemAssignedServiceIdentityTypeOutput {
-	return o.ApplyT(func(v *SystemAssignedServiceIdentityType) SystemAssignedServiceIdentityType {
+func (o PublicNetworkAccessPtrOutput) Elem() PublicNetworkAccessOutput {
+	return o.ApplyT(func(v *PublicNetworkAccess) PublicNetworkAccess {
 		if v != nil {
 			return *v
 		}
-		var ret SystemAssignedServiceIdentityType
+		var ret PublicNetworkAccess
 		return ret
-	}).(SystemAssignedServiceIdentityTypeOutput)
+	}).(PublicNetworkAccessOutput)
 }
 
-func (o SystemAssignedServiceIdentityTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o PublicNetworkAccessPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o SystemAssignedServiceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SystemAssignedServiceIdentityType) *string {
+func (o PublicNetworkAccessPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PublicNetworkAccess) *string {
 		if e == nil {
 			return nil
 		}
@@ -473,50 +471,50 @@ func (o SystemAssignedServiceIdentityTypePtrOutput) ToStringPtrOutputWithContext
 	}).(pulumi.StringPtrOutput)
 }
 
-// SystemAssignedServiceIdentityTypeInput is an input type that accepts values of the SystemAssignedServiceIdentityType enum
-// A concrete instance of `SystemAssignedServiceIdentityTypeInput` can be one of the following:
+// PublicNetworkAccessInput is an input type that accepts values of the PublicNetworkAccess enum
+// A concrete instance of `PublicNetworkAccessInput` can be one of the following:
 //
-//	SystemAssignedServiceIdentityTypeNone
-//	SystemAssignedServiceIdentityTypeSystemAssigned
-type SystemAssignedServiceIdentityTypeInput interface {
+//	PublicNetworkAccessEnabled
+//	PublicNetworkAccessDisabled
+type PublicNetworkAccessInput interface {
 	pulumi.Input
 
-	ToSystemAssignedServiceIdentityTypeOutput() SystemAssignedServiceIdentityTypeOutput
-	ToSystemAssignedServiceIdentityTypeOutputWithContext(context.Context) SystemAssignedServiceIdentityTypeOutput
+	ToPublicNetworkAccessOutput() PublicNetworkAccessOutput
+	ToPublicNetworkAccessOutputWithContext(context.Context) PublicNetworkAccessOutput
 }
 
-var systemAssignedServiceIdentityTypePtrType = reflect.TypeOf((**SystemAssignedServiceIdentityType)(nil)).Elem()
+var publicNetworkAccessPtrType = reflect.TypeOf((**PublicNetworkAccess)(nil)).Elem()
 
-type SystemAssignedServiceIdentityTypePtrInput interface {
+type PublicNetworkAccessPtrInput interface {
 	pulumi.Input
 
-	ToSystemAssignedServiceIdentityTypePtrOutput() SystemAssignedServiceIdentityTypePtrOutput
-	ToSystemAssignedServiceIdentityTypePtrOutputWithContext(context.Context) SystemAssignedServiceIdentityTypePtrOutput
+	ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput
+	ToPublicNetworkAccessPtrOutputWithContext(context.Context) PublicNetworkAccessPtrOutput
 }
 
-type systemAssignedServiceIdentityTypePtr string
+type publicNetworkAccessPtr string
 
-func SystemAssignedServiceIdentityTypePtr(v string) SystemAssignedServiceIdentityTypePtrInput {
-	return (*systemAssignedServiceIdentityTypePtr)(&v)
+func PublicNetworkAccessPtr(v string) PublicNetworkAccessPtrInput {
+	return (*publicNetworkAccessPtr)(&v)
 }
 
-func (*systemAssignedServiceIdentityTypePtr) ElementType() reflect.Type {
-	return systemAssignedServiceIdentityTypePtrType
+func (*publicNetworkAccessPtr) ElementType() reflect.Type {
+	return publicNetworkAccessPtrType
 }
 
-func (in *systemAssignedServiceIdentityTypePtr) ToSystemAssignedServiceIdentityTypePtrOutput() SystemAssignedServiceIdentityTypePtrOutput {
-	return pulumi.ToOutput(in).(SystemAssignedServiceIdentityTypePtrOutput)
+func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutput() PublicNetworkAccessPtrOutput {
+	return pulumi.ToOutput(in).(PublicNetworkAccessPtrOutput)
 }
 
-func (in *systemAssignedServiceIdentityTypePtr) ToSystemAssignedServiceIdentityTypePtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(SystemAssignedServiceIdentityTypePtrOutput)
+func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx context.Context) PublicNetworkAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
 }
 
 func init() {
 	pulumi.RegisterOutputType(AppSkuOutput{})
 	pulumi.RegisterOutputType(AppSkuPtrOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointServiceConnectionStatusOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointServiceConnectionStatusPtrOutput{})
-	pulumi.RegisterOutputType(SystemAssignedServiceIdentityTypeOutput{})
-	pulumi.RegisterOutputType(SystemAssignedServiceIdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(NetworkActionOutput{})
+	pulumi.RegisterOutputType(NetworkActionPtrOutput{})
+	pulumi.RegisterOutputType(PublicNetworkAccessOutput{})
+	pulumi.RegisterOutputType(PublicNetworkAccessPtrOutput{})
 }

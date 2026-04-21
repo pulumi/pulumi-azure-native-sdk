@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Security Standard on a resource
 //
-// Uses Azure REST API version 2021-08-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-08-01-preview.
+// Uses Azure REST API version 2021-08-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-08-01-preview.
 type Standard struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// category of the standard provided
 	Category pulumi.StringPtrOutput `pulumi:"category"`
 	// List of component objects containing component unique keys (such as assessment keys) to apply to standard scope.  Currently only supports assessment keys.
@@ -39,7 +42,7 @@ type Standard struct {
 	// List of all standard supported clouds.
 	SupportedClouds pulumi.StringArrayOutput `pulumi:"supportedClouds"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// A list of key value pairs that describe the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type
@@ -178,6 +181,11 @@ func (o StandardOutput) ToStandardOutputWithContext(ctx context.Context) Standar
 	return o
 }
 
+// The Azure API version of the resource.
+func (o StandardOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Standard) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // category of the standard provided
 func (o StandardOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Standard) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
@@ -229,8 +237,8 @@ func (o StandardOutput) SupportedClouds() pulumi.StringArrayOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o StandardOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Standard) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o StandardOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Standard) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // A list of key value pairs that describe the resource.

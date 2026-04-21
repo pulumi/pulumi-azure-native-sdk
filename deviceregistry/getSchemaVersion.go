@@ -7,13 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a SchemaVersion
 //
 // Uses Azure REST API version 2024-09-01-preview.
+//
+// Other available API versions: 2025-07-01-preview, 2025-10-01, 2025-11-01-preview, 2026-03-01-preview, 2026-04-01, 2026-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSchemaVersion(ctx *pulumi.Context, args *LookupSchemaVersionArgs, opts ...pulumi.InvokeOption) (*LookupSchemaVersionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSchemaVersionResult
@@ -37,6 +40,8 @@ type LookupSchemaVersionArgs struct {
 
 // Schema version's definition.
 type LookupSchemaVersionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Human-readable description of the schema.
 	Description *string `pulumi:"description"`
 	// Hash of the schema content.
@@ -50,7 +55,7 @@ type LookupSchemaVersionResult struct {
 	// Schema content.
 	SchemaContent string `pulumi:"schemaContent"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Globally unique, immutable, non-reusable id.
@@ -96,6 +101,11 @@ func (o LookupSchemaVersionResultOutput) ToLookupSchemaVersionResultOutputWithCo
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupSchemaVersionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSchemaVersionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Human-readable description of the schema.
 func (o LookupSchemaVersionResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSchemaVersionResult) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -127,8 +137,8 @@ func (o LookupSchemaVersionResultOutput) SchemaContent() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupSchemaVersionResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSchemaVersionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupSchemaVersionResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSchemaVersionResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

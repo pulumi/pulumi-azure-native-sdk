@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get properties of the provided storage appliance.
 //
-// Uses Azure REST API version 2023-10-01-preview.
+// Uses Azure REST API version 2025-02-01.
 //
-// Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview, 2025-02-01.
+// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupStorageAppliance(ctx *pulumi.Context, args *LookupStorageApplianceArgs, opts ...pulumi.InvokeOption) (*LookupStorageApplianceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageApplianceResult
@@ -36,16 +37,20 @@ type LookupStorageApplianceArgs struct {
 type LookupStorageApplianceResult struct {
 	// The credentials of the administrative interface on this storage appliance.
 	AdministratorCredentials AdministrativeCredentialsResponse `pulumi:"administratorCredentials"`
-	// The total capacity of the storage appliance.
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// The total capacity of the storage appliance. Measured in GiB.
 	Capacity float64 `pulumi:"capacity"`
 	// The amount of storage consumed.
 	CapacityUsed float64 `pulumi:"capacityUsed"`
-	// The resource ID of the cluster this storage appliance is associated with.
+	// The resource ID of the cluster this storage appliance is associated with. Measured in GiB.
 	ClusterId string `pulumi:"clusterId"`
 	// The detailed status of the storage appliance.
 	DetailedStatus string `pulumi:"detailedStatus"`
 	// The descriptive message about the current detailed status.
 	DetailedStatusMessage string `pulumi:"detailedStatusMessage"`
+	// Resource ETag.
+	Etag string `pulumi:"etag"`
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -54,6 +59,10 @@ type LookupStorageApplianceResult struct {
 	Location string `pulumi:"location"`
 	// The endpoint for the management interface of the storage appliance.
 	ManagementIpv4Address string `pulumi:"managementIpv4Address"`
+	// The manufacturer of the storage appliance.
+	Manufacturer string `pulumi:"manufacturer"`
+	// The model of the storage appliance.
+	Model string `pulumi:"model"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// The provisioning state of the storage appliance.
@@ -66,16 +75,20 @@ type LookupStorageApplianceResult struct {
 	RemoteVendorManagementFeature string `pulumi:"remoteVendorManagementFeature"`
 	// The indicator of whether the remote vendor management feature is enabled or disabled, or unsupported if it is an unsupported feature.
 	RemoteVendorManagementStatus string `pulumi:"remoteVendorManagementStatus"`
+	// The list of statuses that represent secret rotation activity.
+	SecretRotationStatus []SecretRotationStatusResponse `pulumi:"secretRotationStatus"`
 	// The serial number for the storage appliance.
 	SerialNumber string `pulumi:"serialNumber"`
 	// The SKU for the storage appliance.
 	StorageApplianceSkuId string `pulumi:"storageApplianceSkuId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
+	// The version of the storage appliance.
+	Version string `pulumi:"version"`
 }
 
 func LookupStorageApplianceOutput(ctx *pulumi.Context, args LookupStorageApplianceOutputArgs, opts ...pulumi.InvokeOption) LookupStorageApplianceResultOutput {
@@ -119,7 +132,12 @@ func (o LookupStorageApplianceResultOutput) AdministratorCredentials() Administr
 	}).(AdministrativeCredentialsResponseOutput)
 }
 
-// The total capacity of the storage appliance.
+// The Azure API version of the resource.
+func (o LookupStorageApplianceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageApplianceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The total capacity of the storage appliance. Measured in GiB.
 func (o LookupStorageApplianceResultOutput) Capacity() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupStorageApplianceResult) float64 { return v.Capacity }).(pulumi.Float64Output)
 }
@@ -129,7 +147,7 @@ func (o LookupStorageApplianceResultOutput) CapacityUsed() pulumi.Float64Output 
 	return o.ApplyT(func(v LookupStorageApplianceResult) float64 { return v.CapacityUsed }).(pulumi.Float64Output)
 }
 
-// The resource ID of the cluster this storage appliance is associated with.
+// The resource ID of the cluster this storage appliance is associated with. Measured in GiB.
 func (o LookupStorageApplianceResultOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageApplianceResult) string { return v.ClusterId }).(pulumi.StringOutput)
 }
@@ -142,6 +160,11 @@ func (o LookupStorageApplianceResultOutput) DetailedStatus() pulumi.StringOutput
 // The descriptive message about the current detailed status.
 func (o LookupStorageApplianceResultOutput) DetailedStatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageApplianceResult) string { return v.DetailedStatusMessage }).(pulumi.StringOutput)
+}
+
+// Resource ETag.
+func (o LookupStorageApplianceResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageApplianceResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The extended location of the cluster associated with the resource.
@@ -162,6 +185,16 @@ func (o LookupStorageApplianceResultOutput) Location() pulumi.StringOutput {
 // The endpoint for the management interface of the storage appliance.
 func (o LookupStorageApplianceResultOutput) ManagementIpv4Address() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageApplianceResult) string { return v.ManagementIpv4Address }).(pulumi.StringOutput)
+}
+
+// The manufacturer of the storage appliance.
+func (o LookupStorageApplianceResultOutput) Manufacturer() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageApplianceResult) string { return v.Manufacturer }).(pulumi.StringOutput)
+}
+
+// The model of the storage appliance.
+func (o LookupStorageApplianceResultOutput) Model() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageApplianceResult) string { return v.Model }).(pulumi.StringOutput)
 }
 
 // The name of the resource
@@ -194,6 +227,11 @@ func (o LookupStorageApplianceResultOutput) RemoteVendorManagementStatus() pulum
 	return o.ApplyT(func(v LookupStorageApplianceResult) string { return v.RemoteVendorManagementStatus }).(pulumi.StringOutput)
 }
 
+// The list of statuses that represent secret rotation activity.
+func (o LookupStorageApplianceResultOutput) SecretRotationStatus() SecretRotationStatusResponseArrayOutput {
+	return o.ApplyT(func(v LookupStorageApplianceResult) []SecretRotationStatusResponse { return v.SecretRotationStatus }).(SecretRotationStatusResponseArrayOutput)
+}
+
 // The serial number for the storage appliance.
 func (o LookupStorageApplianceResultOutput) SerialNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageApplianceResult) string { return v.SerialNumber }).(pulumi.StringOutput)
@@ -205,8 +243,8 @@ func (o LookupStorageApplianceResultOutput) StorageApplianceSkuId() pulumi.Strin
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupStorageApplianceResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupStorageApplianceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupStorageApplianceResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupStorageApplianceResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.
@@ -217,6 +255,11 @@ func (o LookupStorageApplianceResultOutput) Tags() pulumi.StringMapOutput {
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupStorageApplianceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageApplianceResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The version of the storage appliance.
+func (o LookupStorageApplianceResultOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageApplianceResult) string { return v.Version }).(pulumi.StringOutput)
 }
 
 func init() {

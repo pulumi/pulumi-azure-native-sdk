@@ -10,6 +10,172 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Additional Patch to be enable or enabled on the SQL Virtual Machine.
+type AdditionalVmPatch string
+
+const (
+	AdditionalVmPatchNotSet          = AdditionalVmPatch("NotSet")
+	AdditionalVmPatchMicrosoftUpdate = AdditionalVmPatch("MicrosoftUpdate")
+)
+
+func (AdditionalVmPatch) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdditionalVmPatch)(nil)).Elem()
+}
+
+func (e AdditionalVmPatch) ToAdditionalVmPatchOutput() AdditionalVmPatchOutput {
+	return pulumi.ToOutput(e).(AdditionalVmPatchOutput)
+}
+
+func (e AdditionalVmPatch) ToAdditionalVmPatchOutputWithContext(ctx context.Context) AdditionalVmPatchOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AdditionalVmPatchOutput)
+}
+
+func (e AdditionalVmPatch) ToAdditionalVmPatchPtrOutput() AdditionalVmPatchPtrOutput {
+	return e.ToAdditionalVmPatchPtrOutputWithContext(context.Background())
+}
+
+func (e AdditionalVmPatch) ToAdditionalVmPatchPtrOutputWithContext(ctx context.Context) AdditionalVmPatchPtrOutput {
+	return AdditionalVmPatch(e).ToAdditionalVmPatchOutputWithContext(ctx).ToAdditionalVmPatchPtrOutputWithContext(ctx)
+}
+
+func (e AdditionalVmPatch) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AdditionalVmPatch) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AdditionalVmPatch) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AdditionalVmPatch) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AdditionalVmPatchOutput struct{ *pulumi.OutputState }
+
+func (AdditionalVmPatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdditionalVmPatch)(nil)).Elem()
+}
+
+func (o AdditionalVmPatchOutput) ToAdditionalVmPatchOutput() AdditionalVmPatchOutput {
+	return o
+}
+
+func (o AdditionalVmPatchOutput) ToAdditionalVmPatchOutputWithContext(ctx context.Context) AdditionalVmPatchOutput {
+	return o
+}
+
+func (o AdditionalVmPatchOutput) ToAdditionalVmPatchPtrOutput() AdditionalVmPatchPtrOutput {
+	return o.ToAdditionalVmPatchPtrOutputWithContext(context.Background())
+}
+
+func (o AdditionalVmPatchOutput) ToAdditionalVmPatchPtrOutputWithContext(ctx context.Context) AdditionalVmPatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AdditionalVmPatch) *AdditionalVmPatch {
+		return &v
+	}).(AdditionalVmPatchPtrOutput)
+}
+
+func (o AdditionalVmPatchOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AdditionalVmPatchOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AdditionalVmPatch) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AdditionalVmPatchOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AdditionalVmPatchOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AdditionalVmPatch) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AdditionalVmPatchPtrOutput struct{ *pulumi.OutputState }
+
+func (AdditionalVmPatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AdditionalVmPatch)(nil)).Elem()
+}
+
+func (o AdditionalVmPatchPtrOutput) ToAdditionalVmPatchPtrOutput() AdditionalVmPatchPtrOutput {
+	return o
+}
+
+func (o AdditionalVmPatchPtrOutput) ToAdditionalVmPatchPtrOutputWithContext(ctx context.Context) AdditionalVmPatchPtrOutput {
+	return o
+}
+
+func (o AdditionalVmPatchPtrOutput) Elem() AdditionalVmPatchOutput {
+	return o.ApplyT(func(v *AdditionalVmPatch) AdditionalVmPatch {
+		if v != nil {
+			return *v
+		}
+		var ret AdditionalVmPatch
+		return ret
+	}).(AdditionalVmPatchOutput)
+}
+
+func (o AdditionalVmPatchPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AdditionalVmPatchPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AdditionalVmPatch) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AdditionalVmPatchInput is an input type that accepts values of the AdditionalVmPatch enum
+// A concrete instance of `AdditionalVmPatchInput` can be one of the following:
+//
+//	AdditionalVmPatchNotSet
+//	AdditionalVmPatchMicrosoftUpdate
+type AdditionalVmPatchInput interface {
+	pulumi.Input
+
+	ToAdditionalVmPatchOutput() AdditionalVmPatchOutput
+	ToAdditionalVmPatchOutputWithContext(context.Context) AdditionalVmPatchOutput
+}
+
+var additionalVmPatchPtrType = reflect.TypeOf((**AdditionalVmPatch)(nil)).Elem()
+
+type AdditionalVmPatchPtrInput interface {
+	pulumi.Input
+
+	ToAdditionalVmPatchPtrOutput() AdditionalVmPatchPtrOutput
+	ToAdditionalVmPatchPtrOutputWithContext(context.Context) AdditionalVmPatchPtrOutput
+}
+
+type additionalVmPatchPtr string
+
+func AdditionalVmPatchPtr(v string) AdditionalVmPatchPtrInput {
+	return (*additionalVmPatchPtr)(&v)
+}
+
+func (*additionalVmPatchPtr) ElementType() reflect.Type {
+	return additionalVmPatchPtrType
+}
+
+func (in *additionalVmPatchPtr) ToAdditionalVmPatchPtrOutput() AdditionalVmPatchPtrOutput {
+	return pulumi.ToOutput(in).(AdditionalVmPatchPtrOutput)
+}
+
+func (in *additionalVmPatchPtr) ToAdditionalVmPatchPtrOutputWithContext(ctx context.Context) AdditionalVmPatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AdditionalVmPatchPtrOutput)
+}
+
 // Day of the week to run assessment.
 type AssessmentDayOfWeek string
 
@@ -1709,8 +1875,10 @@ func (in *fullBackupFrequencyTypePtr) ToFullBackupFrequencyTypePtrOutputWithCont
 type IdentityType string
 
 const (
-	IdentityTypeNone           = IdentityType("None")
-	IdentityTypeSystemAssigned = IdentityType("SystemAssigned")
+	IdentityTypeNone                         = IdentityType("None")
+	IdentityTypeSystemAssigned               = IdentityType("SystemAssigned")
+	IdentityTypeUserAssigned                 = IdentityType("UserAssigned")
+	IdentityType_SystemAssigned_UserAssigned = IdentityType("SystemAssigned,UserAssigned")
 )
 
 func (IdentityType) ElementType() reflect.Type {
@@ -1837,6 +2005,8 @@ func (o IdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 //
 //	IdentityTypeNone
 //	IdentityTypeSystemAssigned
+//	IdentityTypeUserAssigned
+//	IdentityType_SystemAssigned_UserAssigned
 type IdentityTypeInput interface {
 	pulumi.Input
 
@@ -1869,6 +2039,172 @@ func (in *identityTypePtr) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
 
 func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
+}
+
+// SQL IaaS Agent least privilege mode.
+type LeastPrivilegeMode string
+
+const (
+	LeastPrivilegeModeEnabled = LeastPrivilegeMode("Enabled")
+	LeastPrivilegeModeNotSet  = LeastPrivilegeMode("NotSet")
+)
+
+func (LeastPrivilegeMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*LeastPrivilegeMode)(nil)).Elem()
+}
+
+func (e LeastPrivilegeMode) ToLeastPrivilegeModeOutput() LeastPrivilegeModeOutput {
+	return pulumi.ToOutput(e).(LeastPrivilegeModeOutput)
+}
+
+func (e LeastPrivilegeMode) ToLeastPrivilegeModeOutputWithContext(ctx context.Context) LeastPrivilegeModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(LeastPrivilegeModeOutput)
+}
+
+func (e LeastPrivilegeMode) ToLeastPrivilegeModePtrOutput() LeastPrivilegeModePtrOutput {
+	return e.ToLeastPrivilegeModePtrOutputWithContext(context.Background())
+}
+
+func (e LeastPrivilegeMode) ToLeastPrivilegeModePtrOutputWithContext(ctx context.Context) LeastPrivilegeModePtrOutput {
+	return LeastPrivilegeMode(e).ToLeastPrivilegeModeOutputWithContext(ctx).ToLeastPrivilegeModePtrOutputWithContext(ctx)
+}
+
+func (e LeastPrivilegeMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LeastPrivilegeMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LeastPrivilegeMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e LeastPrivilegeMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type LeastPrivilegeModeOutput struct{ *pulumi.OutputState }
+
+func (LeastPrivilegeModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LeastPrivilegeMode)(nil)).Elem()
+}
+
+func (o LeastPrivilegeModeOutput) ToLeastPrivilegeModeOutput() LeastPrivilegeModeOutput {
+	return o
+}
+
+func (o LeastPrivilegeModeOutput) ToLeastPrivilegeModeOutputWithContext(ctx context.Context) LeastPrivilegeModeOutput {
+	return o
+}
+
+func (o LeastPrivilegeModeOutput) ToLeastPrivilegeModePtrOutput() LeastPrivilegeModePtrOutput {
+	return o.ToLeastPrivilegeModePtrOutputWithContext(context.Background())
+}
+
+func (o LeastPrivilegeModeOutput) ToLeastPrivilegeModePtrOutputWithContext(ctx context.Context) LeastPrivilegeModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LeastPrivilegeMode) *LeastPrivilegeMode {
+		return &v
+	}).(LeastPrivilegeModePtrOutput)
+}
+
+func (o LeastPrivilegeModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o LeastPrivilegeModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LeastPrivilegeMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o LeastPrivilegeModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LeastPrivilegeModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LeastPrivilegeMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type LeastPrivilegeModePtrOutput struct{ *pulumi.OutputState }
+
+func (LeastPrivilegeModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LeastPrivilegeMode)(nil)).Elem()
+}
+
+func (o LeastPrivilegeModePtrOutput) ToLeastPrivilegeModePtrOutput() LeastPrivilegeModePtrOutput {
+	return o
+}
+
+func (o LeastPrivilegeModePtrOutput) ToLeastPrivilegeModePtrOutputWithContext(ctx context.Context) LeastPrivilegeModePtrOutput {
+	return o
+}
+
+func (o LeastPrivilegeModePtrOutput) Elem() LeastPrivilegeModeOutput {
+	return o.ApplyT(func(v *LeastPrivilegeMode) LeastPrivilegeMode {
+		if v != nil {
+			return *v
+		}
+		var ret LeastPrivilegeMode
+		return ret
+	}).(LeastPrivilegeModeOutput)
+}
+
+func (o LeastPrivilegeModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LeastPrivilegeModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LeastPrivilegeMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// LeastPrivilegeModeInput is an input type that accepts values of the LeastPrivilegeMode enum
+// A concrete instance of `LeastPrivilegeModeInput` can be one of the following:
+//
+//	LeastPrivilegeModeEnabled
+//	LeastPrivilegeModeNotSet
+type LeastPrivilegeModeInput interface {
+	pulumi.Input
+
+	ToLeastPrivilegeModeOutput() LeastPrivilegeModeOutput
+	ToLeastPrivilegeModeOutputWithContext(context.Context) LeastPrivilegeModeOutput
+}
+
+var leastPrivilegeModePtrType = reflect.TypeOf((**LeastPrivilegeMode)(nil)).Elem()
+
+type LeastPrivilegeModePtrInput interface {
+	pulumi.Input
+
+	ToLeastPrivilegeModePtrOutput() LeastPrivilegeModePtrOutput
+	ToLeastPrivilegeModePtrOutputWithContext(context.Context) LeastPrivilegeModePtrOutput
+}
+
+type leastPrivilegeModePtr string
+
+func LeastPrivilegeModePtr(v string) LeastPrivilegeModePtrInput {
+	return (*leastPrivilegeModePtr)(&v)
+}
+
+func (*leastPrivilegeModePtr) ElementType() reflect.Type {
+	return leastPrivilegeModePtrType
+}
+
+func (in *leastPrivilegeModePtr) ToLeastPrivilegeModePtrOutput() LeastPrivilegeModePtrOutput {
+	return pulumi.ToOutput(in).(LeastPrivilegeModePtrOutput)
+}
+
+func (in *leastPrivilegeModePtr) ToLeastPrivilegeModePtrOutputWithContext(ctx context.Context) LeastPrivilegeModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(LeastPrivilegeModePtrOutput)
 }
 
 // Replica readable secondary mode in availability group.
@@ -2377,7 +2713,7 @@ func (in *sqlImageSkuPtr) ToSqlImageSkuPtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(SqlImageSkuPtrOutput)
 }
 
-// SQL Server Management type.
+// SQL Server Management type. NOTE: This parameter is not used anymore. API will automatically detect the Sql Management, refrain from using it.
 type SqlManagementMode string
 
 const (
@@ -3215,7 +3551,177 @@ func (in *storageWorkloadTypePtr) ToStorageWorkloadTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(StorageWorkloadTypePtrOutput)
 }
 
+// Identity type of the virtual machine. Specify None to opt-out of Managed Identities.
+type VmIdentityType string
+
+const (
+	VmIdentityTypeNone           = VmIdentityType("None")
+	VmIdentityTypeSystemAssigned = VmIdentityType("SystemAssigned")
+	VmIdentityTypeUserAssigned   = VmIdentityType("UserAssigned")
+)
+
+func (VmIdentityType) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmIdentityType)(nil)).Elem()
+}
+
+func (e VmIdentityType) ToVmIdentityTypeOutput() VmIdentityTypeOutput {
+	return pulumi.ToOutput(e).(VmIdentityTypeOutput)
+}
+
+func (e VmIdentityType) ToVmIdentityTypeOutputWithContext(ctx context.Context) VmIdentityTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(VmIdentityTypeOutput)
+}
+
+func (e VmIdentityType) ToVmIdentityTypePtrOutput() VmIdentityTypePtrOutput {
+	return e.ToVmIdentityTypePtrOutputWithContext(context.Background())
+}
+
+func (e VmIdentityType) ToVmIdentityTypePtrOutputWithContext(ctx context.Context) VmIdentityTypePtrOutput {
+	return VmIdentityType(e).ToVmIdentityTypeOutputWithContext(ctx).ToVmIdentityTypePtrOutputWithContext(ctx)
+}
+
+func (e VmIdentityType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VmIdentityType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VmIdentityType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e VmIdentityType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type VmIdentityTypeOutput struct{ *pulumi.OutputState }
+
+func (VmIdentityTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmIdentityType)(nil)).Elem()
+}
+
+func (o VmIdentityTypeOutput) ToVmIdentityTypeOutput() VmIdentityTypeOutput {
+	return o
+}
+
+func (o VmIdentityTypeOutput) ToVmIdentityTypeOutputWithContext(ctx context.Context) VmIdentityTypeOutput {
+	return o
+}
+
+func (o VmIdentityTypeOutput) ToVmIdentityTypePtrOutput() VmIdentityTypePtrOutput {
+	return o.ToVmIdentityTypePtrOutputWithContext(context.Background())
+}
+
+func (o VmIdentityTypeOutput) ToVmIdentityTypePtrOutputWithContext(ctx context.Context) VmIdentityTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmIdentityType) *VmIdentityType {
+		return &v
+	}).(VmIdentityTypePtrOutput)
+}
+
+func (o VmIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o VmIdentityTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VmIdentityType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o VmIdentityTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VmIdentityTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VmIdentityType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type VmIdentityTypePtrOutput struct{ *pulumi.OutputState }
+
+func (VmIdentityTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmIdentityType)(nil)).Elem()
+}
+
+func (o VmIdentityTypePtrOutput) ToVmIdentityTypePtrOutput() VmIdentityTypePtrOutput {
+	return o
+}
+
+func (o VmIdentityTypePtrOutput) ToVmIdentityTypePtrOutputWithContext(ctx context.Context) VmIdentityTypePtrOutput {
+	return o
+}
+
+func (o VmIdentityTypePtrOutput) Elem() VmIdentityTypeOutput {
+	return o.ApplyT(func(v *VmIdentityType) VmIdentityType {
+		if v != nil {
+			return *v
+		}
+		var ret VmIdentityType
+		return ret
+	}).(VmIdentityTypeOutput)
+}
+
+func (o VmIdentityTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VmIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *VmIdentityType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// VmIdentityTypeInput is an input type that accepts values of the VmIdentityType enum
+// A concrete instance of `VmIdentityTypeInput` can be one of the following:
+//
+//	VmIdentityTypeNone
+//	VmIdentityTypeSystemAssigned
+//	VmIdentityTypeUserAssigned
+type VmIdentityTypeInput interface {
+	pulumi.Input
+
+	ToVmIdentityTypeOutput() VmIdentityTypeOutput
+	ToVmIdentityTypeOutputWithContext(context.Context) VmIdentityTypeOutput
+}
+
+var vmIdentityTypePtrType = reflect.TypeOf((**VmIdentityType)(nil)).Elem()
+
+type VmIdentityTypePtrInput interface {
+	pulumi.Input
+
+	ToVmIdentityTypePtrOutput() VmIdentityTypePtrOutput
+	ToVmIdentityTypePtrOutputWithContext(context.Context) VmIdentityTypePtrOutput
+}
+
+type vmIdentityTypePtr string
+
+func VmIdentityTypePtr(v string) VmIdentityTypePtrInput {
+	return (*vmIdentityTypePtr)(&v)
+}
+
+func (*vmIdentityTypePtr) ElementType() reflect.Type {
+	return vmIdentityTypePtrType
+}
+
+func (in *vmIdentityTypePtr) ToVmIdentityTypePtrOutput() VmIdentityTypePtrOutput {
+	return pulumi.ToOutput(in).(VmIdentityTypePtrOutput)
+}
+
+func (in *vmIdentityTypePtr) ToVmIdentityTypePtrOutputWithContext(ctx context.Context) VmIdentityTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(VmIdentityTypePtrOutput)
+}
+
 func init() {
+	pulumi.RegisterOutputType(AdditionalVmPatchOutput{})
+	pulumi.RegisterOutputType(AdditionalVmPatchPtrOutput{})
 	pulumi.RegisterOutputType(AssessmentDayOfWeekOutput{})
 	pulumi.RegisterOutputType(AssessmentDayOfWeekPtrOutput{})
 	pulumi.RegisterOutputType(AutoBackupDaysOfWeekOutput{})
@@ -3238,6 +3744,8 @@ func init() {
 	pulumi.RegisterOutputType(FullBackupFrequencyTypePtrOutput{})
 	pulumi.RegisterOutputType(IdentityTypeOutput{})
 	pulumi.RegisterOutputType(IdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(LeastPrivilegeModeOutput{})
+	pulumi.RegisterOutputType(LeastPrivilegeModePtrOutput{})
 	pulumi.RegisterOutputType(ReadableSecondaryOutput{})
 	pulumi.RegisterOutputType(ReadableSecondaryPtrOutput{})
 	pulumi.RegisterOutputType(RoleOutput{})
@@ -3254,4 +3762,6 @@ func init() {
 	pulumi.RegisterOutputType(SqlWorkloadTypePtrOutput{})
 	pulumi.RegisterOutputType(StorageWorkloadTypeOutput{})
 	pulumi.RegisterOutputType(StorageWorkloadTypePtrOutput{})
+	pulumi.RegisterOutputType(VmIdentityTypeOutput{})
+	pulumi.RegisterOutputType(VmIdentityTypePtrOutput{})
 }

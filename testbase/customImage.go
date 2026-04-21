@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The test base custom image resource.
 //
-// Uses Azure REST API version 2023-11-01-preview.
+// Uses Azure REST API version 2023-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-11-01-preview.
 type CustomImage struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The UTC timestamp when the custom image was published.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
 	// Image definition name.
@@ -39,7 +42,7 @@ type CustomImage struct {
 	// Status of the custom image.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The validation result of the custom image.
@@ -184,6 +187,11 @@ func (o CustomImageOutput) ToCustomImageOutputWithContext(ctx context.Context) C
 	return o
 }
 
+// The Azure API version of the resource.
+func (o CustomImageOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomImage) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The UTC timestamp when the custom image was published.
 func (o CustomImageOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomImage) pulumi.StringOutput { return v.CreationTime }).(pulumi.StringOutput)
@@ -235,8 +243,8 @@ func (o CustomImageOutput) Status() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o CustomImageOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *CustomImage) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o CustomImageOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *CustomImage) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

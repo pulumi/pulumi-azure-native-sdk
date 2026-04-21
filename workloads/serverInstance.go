@@ -8,20 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Define the Server Instance resource.
 //
-// Uses Azure REST API version 2023-10-01-preview.
+// Uses Azure REST API version 2023-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
 type ServerInstance struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Configuration data for this server instance.
 	ConfigurationData ConfigurationDataResponseOutput `pulumi:"configurationData"`
 	// Defines the errors related to SAP Instance resource.
-	Errors SAPMigrateErrorResponseOutput `pulumi:"errors"`
+	Errors SAPMigrateErrorResponseV2Output `pulumi:"errors"`
 	// This is the Instance SID for ASCS/AP/DB instance.  An SAP system with HANA database for example could have a different SID for database Instance than that of ASCS instance.
 	InstanceSid pulumi.StringOutput `pulumi:"instanceSid"`
 	// The name of the resource
@@ -41,7 +44,7 @@ type ServerInstance struct {
 	// This is the Virtual Machine Name of the SAP system. Add all the virtual machines attached to an SAP system which you wish to migrate to Azure. Keeping this not equal to ID as for single tier all InstanceTypes would be on same server, leading to multiple resources with same servername.
 	ServerName pulumi.StringOutput `pulumi:"serverName"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -160,14 +163,19 @@ func (o ServerInstanceOutput) ToServerInstanceOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ServerInstanceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerInstance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Configuration data for this server instance.
 func (o ServerInstanceOutput) ConfigurationData() ConfigurationDataResponseOutput {
 	return o.ApplyT(func(v *ServerInstance) ConfigurationDataResponseOutput { return v.ConfigurationData }).(ConfigurationDataResponseOutput)
 }
 
 // Defines the errors related to SAP Instance resource.
-func (o ServerInstanceOutput) Errors() SAPMigrateErrorResponseOutput {
-	return o.ApplyT(func(v *ServerInstance) SAPMigrateErrorResponseOutput { return v.Errors }).(SAPMigrateErrorResponseOutput)
+func (o ServerInstanceOutput) Errors() SAPMigrateErrorResponseV2Output {
+	return o.ApplyT(func(v *ServerInstance) SAPMigrateErrorResponseV2Output { return v.Errors }).(SAPMigrateErrorResponseV2Output)
 }
 
 // This is the Instance SID for ASCS/AP/DB instance.  An SAP system with HANA database for example could have a different SID for database Instance than that of ASCS instance.
@@ -216,8 +224,8 @@ func (o ServerInstanceOutput) ServerName() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ServerInstanceOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *ServerInstance) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o ServerInstanceOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *ServerInstance) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

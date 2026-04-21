@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a FleetUpdateStrategy
 //
-// Uses Azure REST API version 2023-08-15-preview.
+// Uses Azure REST API version 2024-05-02-preview.
 //
-// Other available API versions: 2023-10-15, 2024-02-02-preview, 2024-04-01, 2024-05-02-preview.
+// Other available API versions: 2023-08-15-preview, 2023-10-15, 2024-02-02-preview, 2024-04-01, 2025-03-01, 2025-04-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupFleetUpdateStrategy(ctx *pulumi.Context, args *LookupFleetUpdateStrategyArgs, opts ...pulumi.InvokeOption) (*LookupFleetUpdateStrategyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFleetUpdateStrategyResult
@@ -37,6 +38,8 @@ type LookupFleetUpdateStrategyArgs struct {
 
 // Defines a multi-stage process to perform update operations across members of a Fleet.
 type LookupFleetUpdateStrategyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 	ETag string `pulumi:"eTag"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -48,7 +51,7 @@ type LookupFleetUpdateStrategyResult struct {
 	// Defines the update sequence of the clusters.
 	Strategy UpdateRunStrategyResponse `pulumi:"strategy"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -90,6 +93,11 @@ func (o LookupFleetUpdateStrategyResultOutput) ToLookupFleetUpdateStrategyResult
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupFleetUpdateStrategyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFleetUpdateStrategyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 func (o LookupFleetUpdateStrategyResultOutput) ETag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFleetUpdateStrategyResult) string { return v.ETag }).(pulumi.StringOutput)
@@ -116,8 +124,8 @@ func (o LookupFleetUpdateStrategyResultOutput) Strategy() UpdateRunStrategyRespo
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupFleetUpdateStrategyResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupFleetUpdateStrategyResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupFleetUpdateStrategyResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupFleetUpdateStrategyResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

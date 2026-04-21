@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Snapshot policy information
 //
-// Uses Azure REST API version 2022-11-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
+// Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2022-11-01.
 //
-// Other available API versions: 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01, 2024-09-01-preview.
+// Other available API versions: 2022-11-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01-preview, 2025-01-01, 2025-01-01-preview, 2025-03-01, 2025-03-01-preview, 2025-06-01, 2025-07-01-preview, 2025-08-01, 2025-08-01-preview, 2025-09-01, 2025-09-01-preview, 2025-12-01, 2025-12-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SnapshotPolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Schedule for daily snapshots
 	DailySchedule DailyScheduleResponsePtrOutput `pulumi:"dailySchedule"`
 	// The property to decide policy is enabled or not
@@ -37,7 +40,7 @@ type SnapshotPolicy struct {
 	// Azure lifecycle management
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -162,6 +165,42 @@ func NewSnapshotPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:netapp/v20240901preview:SnapshotPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250101:SnapshotPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250101preview:SnapshotPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250301:SnapshotPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250301preview:SnapshotPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250601:SnapshotPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250701preview:SnapshotPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250801:SnapshotPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250801preview:SnapshotPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250901:SnapshotPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250901preview:SnapshotPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20251201:SnapshotPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20251215preview:SnapshotPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -280,6 +319,11 @@ func (o SnapshotPolicyOutput) ToSnapshotPolicyOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o SnapshotPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SnapshotPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Schedule for daily snapshots
 func (o SnapshotPolicyOutput) DailySchedule() DailyScheduleResponsePtrOutput {
 	return o.ApplyT(func(v *SnapshotPolicy) DailyScheduleResponsePtrOutput { return v.DailySchedule }).(DailyScheduleResponsePtrOutput)
@@ -321,8 +365,8 @@ func (o SnapshotPolicyOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o SnapshotPolicyOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *SnapshotPolicy) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o SnapshotPolicyOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *SnapshotPolicy) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

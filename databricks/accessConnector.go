@@ -8,28 +8,31 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Information about azure databricks accessConnector.
+// Information about Azure Databricks Access Connector.
 //
-// Uses Azure REST API version 2023-05-01. In version 1.x of the Azure Native provider, it used API version 2022-04-01-preview.
+// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
 //
-// Other available API versions: 2022-04-01-preview, 2024-05-01, 2024-09-01-preview, 2025-03-01-preview.
+// Other available API versions: 2023-05-01, 2024-09-01-preview, 2025-03-01-preview, 2025-08-01-preview, 2025-10-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databricks [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AccessConnector struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity commontypesv3.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Azure Databricks accessConnector properties
+	// Azure Databricks Access Connector properties
 	Properties AccessConnectorPropertiesResponseOutput `pulumi:"properties"`
 	// The system metadata relating to this resource
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
@@ -64,6 +67,15 @@ func NewAccessConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:databricks/v20250301preview:AccessConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:databricks/v20250801preview:AccessConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:databricks/v20251001preview:AccessConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:databricks/v20260101:AccessConnector"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -100,10 +112,10 @@ func (AccessConnectorState) ElementType() reflect.Type {
 }
 
 type accessConnectorArgs struct {
-	// The name of the azure databricks accessConnector.
+	// The name of the Azure Databricks Access Connector.
 	ConnectorName *string `pulumi:"connectorName"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity *ManagedServiceIdentity `pulumi:"identity"`
+	Identity *commontypesv3.ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the resource group. The name is case insensitive.
@@ -114,10 +126,10 @@ type accessConnectorArgs struct {
 
 // The set of arguments for constructing a AccessConnector resource.
 type AccessConnectorArgs struct {
-	// The name of the azure databricks accessConnector.
+	// The name of the Azure Databricks Access Connector.
 	ConnectorName pulumi.StringPtrInput
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity ManagedServiceIdentityPtrInput
+	Identity commontypesv3.ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -163,9 +175,14 @@ func (o AccessConnectorOutput) ToAccessConnectorOutputWithContext(ctx context.Co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o AccessConnectorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessConnector) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Managed service identity (system assigned and/or user assigned identities)
-func (o AccessConnectorOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *AccessConnector) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o AccessConnectorOutput) Identity() commontypesv3.ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *AccessConnector) commontypesv3.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv3.ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -178,14 +195,14 @@ func (o AccessConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Azure Databricks accessConnector properties
+// Azure Databricks Access Connector properties
 func (o AccessConnectorOutput) Properties() AccessConnectorPropertiesResponseOutput {
 	return o.ApplyT(func(v *AccessConnector) AccessConnectorPropertiesResponseOutput { return v.Properties }).(AccessConnectorPropertiesResponseOutput)
 }
 
 // The system metadata relating to this resource
-func (o AccessConnectorOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *AccessConnector) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o AccessConnectorOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *AccessConnector) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // MQ resource
 //
-// Uses Azure REST API version 2023-10-04-preview.
+// Uses Azure REST API version 2023-10-04-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-04-preview.
 type Mq struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Extended Location
 	ExtendedLocation ExtendedLocationPropertyResponseOutput `pulumi:"extendedLocation"`
 	// The geo-location where the resource lives
@@ -27,7 +30,7 @@ type Mq struct {
 	// The status of the last operation.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -149,6 +152,11 @@ func (o MqOutput) ToMqOutputWithContext(ctx context.Context) MqOutput {
 	return o
 }
 
+// The Azure API version of the resource.
+func (o MqOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Mq) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Extended Location
 func (o MqOutput) ExtendedLocation() ExtendedLocationPropertyResponseOutput {
 	return o.ApplyT(func(v *Mq) ExtendedLocationPropertyResponseOutput { return v.ExtendedLocation }).(ExtendedLocationPropertyResponseOutput)
@@ -170,8 +178,8 @@ func (o MqOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o MqOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Mq) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o MqOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Mq) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

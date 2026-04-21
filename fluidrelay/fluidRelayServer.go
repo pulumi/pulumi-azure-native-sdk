@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A FluidRelay Server.
 //
-// Uses Azure REST API version 2022-06-01. In version 1.x of the Azure Native provider, it used API version 2021-03-12-preview.
+// Uses Azure REST API version 2022-06-01. In version 2.x of the Azure Native provider, it used API version 2022-06-01.
 //
-// Other available API versions: 2021-06-15-preview.
+// Other available API versions: 2025-06-20-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native fluidrelay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type FluidRelayServer struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// All encryption configuration for a resource.
 	Encryption EncryptionPropertiesResponsePtrOutput `pulumi:"encryption"`
 	// The Fluid Relay Service endpoints for this server.
@@ -37,7 +40,7 @@ type FluidRelayServer struct {
 	// Sku of the storage associated with the resource
 	Storagesku pulumi.StringPtrOutput `pulumi:"storagesku"`
 	// System meta data for this resource, including creation and modification information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -81,6 +84,9 @@ func NewFluidRelayServer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:fluidrelay/v20220601:FluidRelayServer"),
+		},
+		{
+			Type: pulumi.String("azure-native:fluidrelay/v20250620preview:FluidRelayServer"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -192,6 +198,11 @@ func (o FluidRelayServerOutput) ToFluidRelayServerOutputWithContext(ctx context.
 	return o
 }
 
+// The Azure API version of the resource.
+func (o FluidRelayServerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *FluidRelayServer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // All encryption configuration for a resource.
 func (o FluidRelayServerOutput) Encryption() EncryptionPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v *FluidRelayServer) EncryptionPropertiesResponsePtrOutput { return v.Encryption }).(EncryptionPropertiesResponsePtrOutput)
@@ -233,8 +244,8 @@ func (o FluidRelayServerOutput) Storagesku() pulumi.StringPtrOutput {
 }
 
 // System meta data for this resource, including creation and modification information.
-func (o FluidRelayServerOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *FluidRelayServer) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o FluidRelayServerOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *FluidRelayServer) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Resource tags.

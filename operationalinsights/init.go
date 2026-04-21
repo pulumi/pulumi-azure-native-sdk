@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +41,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SavedSearch{}
 	case "azure-native:operationalinsights:StorageInsightConfig":
 		r = &StorageInsightConfig{}
+	case "azure-native:operationalinsights:SummaryLog":
+		r = &SummaryLog{}
 	case "azure-native:operationalinsights:Table":
 		r = &Table{}
 	case "azure-native:operationalinsights:Workspace":

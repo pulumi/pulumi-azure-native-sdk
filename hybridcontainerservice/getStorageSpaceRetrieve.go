@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +34,8 @@ type LookupStorageSpaceRetrieveArgs struct {
 
 // The storageSpaces resource definition.
 type LookupStorageSpaceRetrieveResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion  string                                 `pulumi:"azureApiVersion"`
 	ExtendedLocation *StorageSpacesResponseExtendedLocation `pulumi:"extendedLocation"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
@@ -43,7 +46,7 @@ type LookupStorageSpaceRetrieveResult struct {
 	// HybridAKSStorageSpec defines the desired state of HybridAKSStorage
 	Properties StorageSpacesPropertiesResponse `pulumi:"properties"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -85,6 +88,11 @@ func (o LookupStorageSpaceRetrieveResultOutput) ToLookupStorageSpaceRetrieveResu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupStorageSpaceRetrieveResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageSpaceRetrieveResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 func (o LookupStorageSpaceRetrieveResultOutput) ExtendedLocation() StorageSpacesResponseExtendedLocationPtrOutput {
 	return o.ApplyT(func(v LookupStorageSpaceRetrieveResult) *StorageSpacesResponseExtendedLocation {
 		return v.ExtendedLocation
@@ -112,8 +120,8 @@ func (o LookupStorageSpaceRetrieveResultOutput) Properties() StorageSpacesProper
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupStorageSpaceRetrieveResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupStorageSpaceRetrieveResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupStorageSpaceRetrieveResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupStorageSpaceRetrieveResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Resource tags.

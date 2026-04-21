@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Private Endpoint Connection resource.
 //
-// Uses Azure REST API version 2021-03-25-preview. In version 1.x of the Azure Native provider, it used API version 2021-03-25-preview.
+// Uses Azure REST API version 2021-03-25-preview. In version 2.x of the Azure Native provider, it used API version 2021-03-25-preview.
 type PrivateEndpointConnectionsForMIPPolicySync struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource of private end point.
@@ -27,7 +30,7 @@ type PrivateEndpointConnectionsForMIPPolicySync struct {
 	// The provisioning state of the private endpoint connection resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Required property for system data
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -146,6 +149,11 @@ func (o PrivateEndpointConnectionsForMIPPolicySyncOutput) ToPrivateEndpointConne
 	return o
 }
 
+// The Azure API version of the resource.
+func (o PrivateEndpointConnectionsForMIPPolicySyncOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionsForMIPPolicySync) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o PrivateEndpointConnectionsForMIPPolicySyncOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateEndpointConnectionsForMIPPolicySync) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -171,8 +179,10 @@ func (o PrivateEndpointConnectionsForMIPPolicySyncOutput) ProvisioningState() pu
 }
 
 // Required property for system data
-func (o PrivateEndpointConnectionsForMIPPolicySyncOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *PrivateEndpointConnectionsForMIPPolicySync) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o PrivateEndpointConnectionsForMIPPolicySyncOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionsForMIPPolicySync) commontypesv2.SystemDataResponseOutput {
+		return v.SystemData
+	}).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

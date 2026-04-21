@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Security Assignment on a resource group over a given scope
 //
-// Uses Azure REST API version 2021-08-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-08-01-preview.
+// Uses Azure REST API version 2021-08-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-08-01-preview.
 type Assignment struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +25,8 @@ type Assignment struct {
 	AssignedComponent AssignedComponentItemResponsePtrOutput `pulumi:"assignedComponent"`
 	// Standard item with key as applied to this standard assignment over the given scope
 	AssignedStandard AssignedStandardItemResponsePtrOutput `pulumi:"assignedStandard"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// description of the standardAssignment
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// display name of the standardAssignment
@@ -45,7 +48,7 @@ type Assignment struct {
 	// Scope to which the standardAssignment applies - can be a subscription path or a resource group under that subscription
 	Scope pulumi.StringPtrOutput `pulumi:"scope"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// A list of key value pairs that describe the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type
@@ -215,6 +218,11 @@ func (o AssignmentOutput) AssignedStandard() AssignedStandardItemResponsePtrOutp
 	return o.ApplyT(func(v *Assignment) AssignedStandardItemResponsePtrOutput { return v.AssignedStandard }).(AssignedStandardItemResponsePtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o AssignmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Assignment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // description of the standardAssignment
 func (o AssignmentOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Assignment) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -266,8 +274,8 @@ func (o AssignmentOutput) Scope() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o AssignmentOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Assignment) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o AssignmentOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Assignment) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // A list of key value pairs that describe the resource.

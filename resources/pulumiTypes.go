@@ -7,11 +7,391 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv1"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = utilities.GetEnvOrDefault
+
+// Defines the behavior of resources that are no longer managed after the stack is updated or deleted.
+type ActionOnUnmanage struct {
+	// Specifies an action for a newly unmanaged resource management group.
+	ManagementGroups *string `pulumi:"managementGroups"`
+	// Specifies an action for a newly unmanaged resource group.
+	ResourceGroups *string `pulumi:"resourceGroups"`
+	// Specifies an action for a newly unmanaged resource.
+	Resources string `pulumi:"resources"`
+	// Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
+	ResourcesWithoutDeleteSupport *string `pulumi:"resourcesWithoutDeleteSupport"`
+}
+
+// ActionOnUnmanageInput is an input type that accepts ActionOnUnmanageArgs and ActionOnUnmanageOutput values.
+// You can construct a concrete instance of `ActionOnUnmanageInput` via:
+//
+//	ActionOnUnmanageArgs{...}
+type ActionOnUnmanageInput interface {
+	pulumi.Input
+
+	ToActionOnUnmanageOutput() ActionOnUnmanageOutput
+	ToActionOnUnmanageOutputWithContext(context.Context) ActionOnUnmanageOutput
+}
+
+// Defines the behavior of resources that are no longer managed after the stack is updated or deleted.
+type ActionOnUnmanageArgs struct {
+	// Specifies an action for a newly unmanaged resource management group.
+	ManagementGroups pulumi.StringPtrInput `pulumi:"managementGroups"`
+	// Specifies an action for a newly unmanaged resource group.
+	ResourceGroups pulumi.StringPtrInput `pulumi:"resourceGroups"`
+	// Specifies an action for a newly unmanaged resource.
+	Resources pulumi.StringInput `pulumi:"resources"`
+	// Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
+	ResourcesWithoutDeleteSupport pulumi.StringPtrInput `pulumi:"resourcesWithoutDeleteSupport"`
+}
+
+func (ActionOnUnmanageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionOnUnmanage)(nil)).Elem()
+}
+
+func (i ActionOnUnmanageArgs) ToActionOnUnmanageOutput() ActionOnUnmanageOutput {
+	return i.ToActionOnUnmanageOutputWithContext(context.Background())
+}
+
+func (i ActionOnUnmanageArgs) ToActionOnUnmanageOutputWithContext(ctx context.Context) ActionOnUnmanageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionOnUnmanageOutput)
+}
+
+func (i ActionOnUnmanageArgs) ToActionOnUnmanagePtrOutput() ActionOnUnmanagePtrOutput {
+	return i.ToActionOnUnmanagePtrOutputWithContext(context.Background())
+}
+
+func (i ActionOnUnmanageArgs) ToActionOnUnmanagePtrOutputWithContext(ctx context.Context) ActionOnUnmanagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionOnUnmanageOutput).ToActionOnUnmanagePtrOutputWithContext(ctx)
+}
+
+// ActionOnUnmanagePtrInput is an input type that accepts ActionOnUnmanageArgs, ActionOnUnmanagePtr and ActionOnUnmanagePtrOutput values.
+// You can construct a concrete instance of `ActionOnUnmanagePtrInput` via:
+//
+//	        ActionOnUnmanageArgs{...}
+//
+//	or:
+//
+//	        nil
+type ActionOnUnmanagePtrInput interface {
+	pulumi.Input
+
+	ToActionOnUnmanagePtrOutput() ActionOnUnmanagePtrOutput
+	ToActionOnUnmanagePtrOutputWithContext(context.Context) ActionOnUnmanagePtrOutput
+}
+
+type actionOnUnmanagePtrType ActionOnUnmanageArgs
+
+func ActionOnUnmanagePtr(v *ActionOnUnmanageArgs) ActionOnUnmanagePtrInput {
+	return (*actionOnUnmanagePtrType)(v)
+}
+
+func (*actionOnUnmanagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionOnUnmanage)(nil)).Elem()
+}
+
+func (i *actionOnUnmanagePtrType) ToActionOnUnmanagePtrOutput() ActionOnUnmanagePtrOutput {
+	return i.ToActionOnUnmanagePtrOutputWithContext(context.Background())
+}
+
+func (i *actionOnUnmanagePtrType) ToActionOnUnmanagePtrOutputWithContext(ctx context.Context) ActionOnUnmanagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ActionOnUnmanagePtrOutput)
+}
+
+// Defines the behavior of resources that are no longer managed after the stack is updated or deleted.
+type ActionOnUnmanageOutput struct{ *pulumi.OutputState }
+
+func (ActionOnUnmanageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionOnUnmanage)(nil)).Elem()
+}
+
+func (o ActionOnUnmanageOutput) ToActionOnUnmanageOutput() ActionOnUnmanageOutput {
+	return o
+}
+
+func (o ActionOnUnmanageOutput) ToActionOnUnmanageOutputWithContext(ctx context.Context) ActionOnUnmanageOutput {
+	return o
+}
+
+func (o ActionOnUnmanageOutput) ToActionOnUnmanagePtrOutput() ActionOnUnmanagePtrOutput {
+	return o.ToActionOnUnmanagePtrOutputWithContext(context.Background())
+}
+
+func (o ActionOnUnmanageOutput) ToActionOnUnmanagePtrOutputWithContext(ctx context.Context) ActionOnUnmanagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ActionOnUnmanage) *ActionOnUnmanage {
+		return &v
+	}).(ActionOnUnmanagePtrOutput)
+}
+
+// Specifies an action for a newly unmanaged resource management group.
+func (o ActionOnUnmanageOutput) ManagementGroups() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionOnUnmanage) *string { return v.ManagementGroups }).(pulumi.StringPtrOutput)
+}
+
+// Specifies an action for a newly unmanaged resource group.
+func (o ActionOnUnmanageOutput) ResourceGroups() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionOnUnmanage) *string { return v.ResourceGroups }).(pulumi.StringPtrOutput)
+}
+
+// Specifies an action for a newly unmanaged resource.
+func (o ActionOnUnmanageOutput) Resources() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionOnUnmanage) string { return v.Resources }).(pulumi.StringOutput)
+}
+
+// Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
+func (o ActionOnUnmanageOutput) ResourcesWithoutDeleteSupport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionOnUnmanage) *string { return v.ResourcesWithoutDeleteSupport }).(pulumi.StringPtrOutput)
+}
+
+type ActionOnUnmanagePtrOutput struct{ *pulumi.OutputState }
+
+func (ActionOnUnmanagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionOnUnmanage)(nil)).Elem()
+}
+
+func (o ActionOnUnmanagePtrOutput) ToActionOnUnmanagePtrOutput() ActionOnUnmanagePtrOutput {
+	return o
+}
+
+func (o ActionOnUnmanagePtrOutput) ToActionOnUnmanagePtrOutputWithContext(ctx context.Context) ActionOnUnmanagePtrOutput {
+	return o
+}
+
+func (o ActionOnUnmanagePtrOutput) Elem() ActionOnUnmanageOutput {
+	return o.ApplyT(func(v *ActionOnUnmanage) ActionOnUnmanage {
+		if v != nil {
+			return *v
+		}
+		var ret ActionOnUnmanage
+		return ret
+	}).(ActionOnUnmanageOutput)
+}
+
+// Specifies an action for a newly unmanaged resource management group.
+func (o ActionOnUnmanagePtrOutput) ManagementGroups() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionOnUnmanage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ManagementGroups
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies an action for a newly unmanaged resource group.
+func (o ActionOnUnmanagePtrOutput) ResourceGroups() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionOnUnmanage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceGroups
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies an action for a newly unmanaged resource.
+func (o ActionOnUnmanagePtrOutput) Resources() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionOnUnmanage) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Resources
+	}).(pulumi.StringPtrOutput)
+}
+
+// Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
+func (o ActionOnUnmanagePtrOutput) ResourcesWithoutDeleteSupport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ActionOnUnmanage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourcesWithoutDeleteSupport
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines the behavior of resources that are no longer managed after the stack is updated or deleted.
+type ActionOnUnmanageResponse struct {
+	// Specifies an action for a newly unmanaged resource management group.
+	ManagementGroups *string `pulumi:"managementGroups"`
+	// Specifies an action for a newly unmanaged resource group.
+	ResourceGroups *string `pulumi:"resourceGroups"`
+	// Specifies an action for a newly unmanaged resource.
+	Resources string `pulumi:"resources"`
+}
+
+// Defines the behavior of resources that are no longer managed after the stack is updated or deleted.
+type ActionOnUnmanageResponseOutput struct{ *pulumi.OutputState }
+
+func (ActionOnUnmanageResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionOnUnmanageResponse)(nil)).Elem()
+}
+
+func (o ActionOnUnmanageResponseOutput) ToActionOnUnmanageResponseOutput() ActionOnUnmanageResponseOutput {
+	return o
+}
+
+func (o ActionOnUnmanageResponseOutput) ToActionOnUnmanageResponseOutputWithContext(ctx context.Context) ActionOnUnmanageResponseOutput {
+	return o
+}
+
+// Specifies an action for a newly unmanaged resource management group.
+func (o ActionOnUnmanageResponseOutput) ManagementGroups() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionOnUnmanageResponse) *string { return v.ManagementGroups }).(pulumi.StringPtrOutput)
+}
+
+// Specifies an action for a newly unmanaged resource group.
+func (o ActionOnUnmanageResponseOutput) ResourceGroups() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionOnUnmanageResponse) *string { return v.ResourceGroups }).(pulumi.StringPtrOutput)
+}
+
+// Specifies an action for a newly unmanaged resource.
+func (o ActionOnUnmanageResponseOutput) Resources() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionOnUnmanageResponse) string { return v.Resources }).(pulumi.StringOutput)
+}
+
+// Defines the behavior of resources that are no longer managed after the stack is updated or deleted.
+type ActionOnUnmanageResponseV1 struct {
+	// Specifies an action for a newly unmanaged resource management group.
+	ManagementGroups *string `pulumi:"managementGroups"`
+	// Specifies an action for a newly unmanaged resource group.
+	ResourceGroups *string `pulumi:"resourceGroups"`
+	// Specifies an action for a newly unmanaged resource.
+	Resources string `pulumi:"resources"`
+	// Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
+	ResourcesWithoutDeleteSupport *string `pulumi:"resourcesWithoutDeleteSupport"`
+}
+
+// Defines the behavior of resources that are no longer managed after the stack is updated or deleted.
+type ActionOnUnmanageResponseV1Output struct{ *pulumi.OutputState }
+
+func (ActionOnUnmanageResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionOnUnmanageResponseV1)(nil)).Elem()
+}
+
+func (o ActionOnUnmanageResponseV1Output) ToActionOnUnmanageResponseV1Output() ActionOnUnmanageResponseV1Output {
+	return o
+}
+
+func (o ActionOnUnmanageResponseV1Output) ToActionOnUnmanageResponseV1OutputWithContext(ctx context.Context) ActionOnUnmanageResponseV1Output {
+	return o
+}
+
+// Specifies an action for a newly unmanaged resource management group.
+func (o ActionOnUnmanageResponseV1Output) ManagementGroups() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionOnUnmanageResponseV1) *string { return v.ManagementGroups }).(pulumi.StringPtrOutput)
+}
+
+// Specifies an action for a newly unmanaged resource group.
+func (o ActionOnUnmanageResponseV1Output) ResourceGroups() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionOnUnmanageResponseV1) *string { return v.ResourceGroups }).(pulumi.StringPtrOutput)
+}
+
+// Specifies an action for a newly unmanaged resource.
+func (o ActionOnUnmanageResponseV1Output) Resources() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionOnUnmanageResponseV1) string { return v.Resources }).(pulumi.StringOutput)
+}
+
+// Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
+func (o ActionOnUnmanageResponseV1Output) ResourcesWithoutDeleteSupport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionOnUnmanageResponseV1) *string { return v.ResourcesWithoutDeleteSupport }).(pulumi.StringPtrOutput)
+}
+
+// Defines the behavior of resources that are no longer managed after the stack is updated or deleted.
+type ActionOnUnmanageResponseV2 struct {
+	// Specifies an action for a newly unmanaged resource management group.
+	ManagementGroups *string `pulumi:"managementGroups"`
+	// Specifies an action for a newly unmanaged resource group.
+	ResourceGroups *string `pulumi:"resourceGroups"`
+	// Specifies an action for a newly unmanaged resource.
+	Resources string `pulumi:"resources"`
+	// Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
+	ResourcesWithoutDeleteSupport *string `pulumi:"resourcesWithoutDeleteSupport"`
+}
+
+// Defines the behavior of resources that are no longer managed after the stack is updated or deleted.
+type ActionOnUnmanageResponseV2Output struct{ *pulumi.OutputState }
+
+func (ActionOnUnmanageResponseV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionOnUnmanageResponseV2)(nil)).Elem()
+}
+
+func (o ActionOnUnmanageResponseV2Output) ToActionOnUnmanageResponseV2Output() ActionOnUnmanageResponseV2Output {
+	return o
+}
+
+func (o ActionOnUnmanageResponseV2Output) ToActionOnUnmanageResponseV2OutputWithContext(ctx context.Context) ActionOnUnmanageResponseV2Output {
+	return o
+}
+
+// Specifies an action for a newly unmanaged resource management group.
+func (o ActionOnUnmanageResponseV2Output) ManagementGroups() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionOnUnmanageResponseV2) *string { return v.ManagementGroups }).(pulumi.StringPtrOutput)
+}
+
+// Specifies an action for a newly unmanaged resource group.
+func (o ActionOnUnmanageResponseV2Output) ResourceGroups() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionOnUnmanageResponseV2) *string { return v.ResourceGroups }).(pulumi.StringPtrOutput)
+}
+
+// Specifies an action for a newly unmanaged resource.
+func (o ActionOnUnmanageResponseV2Output) Resources() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionOnUnmanageResponseV2) string { return v.Resources }).(pulumi.StringOutput)
+}
+
+// Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
+func (o ActionOnUnmanageResponseV2Output) ResourcesWithoutDeleteSupport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionOnUnmanageResponseV2) *string { return v.ResourcesWithoutDeleteSupport }).(pulumi.StringPtrOutput)
+}
+
+// Defines the behavior of resources that are no longer managed after the stack is updated or deleted.
+type ActionOnUnmanageResponseV3 struct {
+	// Specifies an action for a newly unmanaged resource management group.
+	ManagementGroups *string `pulumi:"managementGroups"`
+	// Specifies an action for a newly unmanaged resource group.
+	ResourceGroups *string `pulumi:"resourceGroups"`
+	// Specifies an action for a newly unmanaged resource.
+	Resources string `pulumi:"resources"`
+	// Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
+	ResourcesWithoutDeleteSupport *string `pulumi:"resourcesWithoutDeleteSupport"`
+}
+
+// Defines the behavior of resources that are no longer managed after the stack is updated or deleted.
+type ActionOnUnmanageResponseV3Output struct{ *pulumi.OutputState }
+
+func (ActionOnUnmanageResponseV3Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionOnUnmanageResponseV3)(nil)).Elem()
+}
+
+func (o ActionOnUnmanageResponseV3Output) ToActionOnUnmanageResponseV3Output() ActionOnUnmanageResponseV3Output {
+	return o
+}
+
+func (o ActionOnUnmanageResponseV3Output) ToActionOnUnmanageResponseV3OutputWithContext(ctx context.Context) ActionOnUnmanageResponseV3Output {
+	return o
+}
+
+// Specifies an action for a newly unmanaged resource management group.
+func (o ActionOnUnmanageResponseV3Output) ManagementGroups() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionOnUnmanageResponseV3) *string { return v.ManagementGroups }).(pulumi.StringPtrOutput)
+}
+
+// Specifies an action for a newly unmanaged resource group.
+func (o ActionOnUnmanageResponseV3Output) ResourceGroups() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionOnUnmanageResponseV3) *string { return v.ResourceGroups }).(pulumi.StringPtrOutput)
+}
+
+// Specifies an action for a newly unmanaged resource.
+func (o ActionOnUnmanageResponseV3Output) Resources() pulumi.StringOutput {
+	return o.ApplyT(func(v ActionOnUnmanageResponseV3) string { return v.Resources }).(pulumi.StringOutput)
+}
+
+// Some resources do not support deletion.  This flag will denote how the stack should handle those resources.
+func (o ActionOnUnmanageResponseV3Output) ResourcesWithoutDeleteSupport() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ActionOnUnmanageResponseV3) *string { return v.ResourcesWithoutDeleteSupport }).(pulumi.StringPtrOutput)
+}
 
 type AliasPathMetadataResponse struct {
 	// The attributes of the token that the alias path is referring to.
@@ -401,6 +781,8 @@ func (o BasicDependencyResponseArrayOutput) Index(i pulumi.IntInput) BasicDepend
 type ContainerConfiguration struct {
 	// Container group name, if not specified then the name will get auto-generated. Not specifying a 'containerGroupName' indicates the system to generate a unique name which might end up flagging an Azure Policy as non-compliant. Use 'containerGroupName' when you have an Azure Policy that expects a specific naming convention or when you want to fully control the name. 'containerGroupName' property must be between 1 and 63 characters long, must contain only lowercase letters, numbers, and dashes and it cannot start or end with a dash and consecutive dashes are not allowed. To specify a 'containerGroupName', add the following object to properties: { "containerSettings": { "containerGroupName": "contoso-container" } }. If you do not want to specify a 'containerGroupName' then do not add 'containerSettings' property.
 	ContainerGroupName *string `pulumi:"containerGroupName"`
+	// The subnet resource IDs for a container group.
+	SubnetIds []ContainerGroupSubnetId `pulumi:"subnetIds"`
 }
 
 // ContainerConfigurationInput is an input type that accepts ContainerConfigurationArgs and ContainerConfigurationOutput values.
@@ -418,6 +800,8 @@ type ContainerConfigurationInput interface {
 type ContainerConfigurationArgs struct {
 	// Container group name, if not specified then the name will get auto-generated. Not specifying a 'containerGroupName' indicates the system to generate a unique name which might end up flagging an Azure Policy as non-compliant. Use 'containerGroupName' when you have an Azure Policy that expects a specific naming convention or when you want to fully control the name. 'containerGroupName' property must be between 1 and 63 characters long, must contain only lowercase letters, numbers, and dashes and it cannot start or end with a dash and consecutive dashes are not allowed. To specify a 'containerGroupName', add the following object to properties: { "containerSettings": { "containerGroupName": "contoso-container" } }. If you do not want to specify a 'containerGroupName' then do not add 'containerSettings' property.
 	ContainerGroupName pulumi.StringPtrInput `pulumi:"containerGroupName"`
+	// The subnet resource IDs for a container group.
+	SubnetIds ContainerGroupSubnetIdArrayInput `pulumi:"subnetIds"`
 }
 
 func (ContainerConfigurationArgs) ElementType() reflect.Type {
@@ -503,6 +887,11 @@ func (o ContainerConfigurationOutput) ContainerGroupName() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v ContainerConfiguration) *string { return v.ContainerGroupName }).(pulumi.StringPtrOutput)
 }
 
+// The subnet resource IDs for a container group.
+func (o ContainerConfigurationOutput) SubnetIds() ContainerGroupSubnetIdArrayOutput {
+	return o.ApplyT(func(v ContainerConfiguration) []ContainerGroupSubnetId { return v.SubnetIds }).(ContainerGroupSubnetIdArrayOutput)
+}
+
 type ContainerConfigurationPtrOutput struct{ *pulumi.OutputState }
 
 func (ContainerConfigurationPtrOutput) ElementType() reflect.Type {
@@ -537,10 +926,22 @@ func (o ContainerConfigurationPtrOutput) ContainerGroupName() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The subnet resource IDs for a container group.
+func (o ContainerConfigurationPtrOutput) SubnetIds() ContainerGroupSubnetIdArrayOutput {
+	return o.ApplyT(func(v *ContainerConfiguration) []ContainerGroupSubnetId {
+		if v == nil {
+			return nil
+		}
+		return v.SubnetIds
+	}).(ContainerGroupSubnetIdArrayOutput)
+}
+
 // Settings to customize ACI container instance.
 type ContainerConfigurationResponse struct {
 	// Container group name, if not specified then the name will get auto-generated. Not specifying a 'containerGroupName' indicates the system to generate a unique name which might end up flagging an Azure Policy as non-compliant. Use 'containerGroupName' when you have an Azure Policy that expects a specific naming convention or when you want to fully control the name. 'containerGroupName' property must be between 1 and 63 characters long, must contain only lowercase letters, numbers, and dashes and it cannot start or end with a dash and consecutive dashes are not allowed. To specify a 'containerGroupName', add the following object to properties: { "containerSettings": { "containerGroupName": "contoso-container" } }. If you do not want to specify a 'containerGroupName' then do not add 'containerSettings' property.
 	ContainerGroupName *string `pulumi:"containerGroupName"`
+	// The subnet resource IDs for a container group.
+	SubnetIds []ContainerGroupSubnetIdResponse `pulumi:"subnetIds"`
 }
 
 // Settings to customize ACI container instance.
@@ -561,6 +962,11 @@ func (o ContainerConfigurationResponseOutput) ToContainerConfigurationResponseOu
 // Container group name, if not specified then the name will get auto-generated. Not specifying a 'containerGroupName' indicates the system to generate a unique name which might end up flagging an Azure Policy as non-compliant. Use 'containerGroupName' when you have an Azure Policy that expects a specific naming convention or when you want to fully control the name. 'containerGroupName' property must be between 1 and 63 characters long, must contain only lowercase letters, numbers, and dashes and it cannot start or end with a dash and consecutive dashes are not allowed. To specify a 'containerGroupName', add the following object to properties: { "containerSettings": { "containerGroupName": "contoso-container" } }. If you do not want to specify a 'containerGroupName' then do not add 'containerSettings' property.
 func (o ContainerConfigurationResponseOutput) ContainerGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerConfigurationResponse) *string { return v.ContainerGroupName }).(pulumi.StringPtrOutput)
+}
+
+// The subnet resource IDs for a container group.
+func (o ContainerConfigurationResponseOutput) SubnetIds() ContainerGroupSubnetIdResponseArrayOutput {
+	return o.ApplyT(func(v ContainerConfigurationResponse) []ContainerGroupSubnetIdResponse { return v.SubnetIds }).(ContainerGroupSubnetIdResponseArrayOutput)
 }
 
 type ContainerConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
@@ -595,6 +1001,178 @@ func (o ContainerConfigurationResponsePtrOutput) ContainerGroupName() pulumi.Str
 		}
 		return v.ContainerGroupName
 	}).(pulumi.StringPtrOutput)
+}
+
+// The subnet resource IDs for a container group.
+func (o ContainerConfigurationResponsePtrOutput) SubnetIds() ContainerGroupSubnetIdResponseArrayOutput {
+	return o.ApplyT(func(v *ContainerConfigurationResponse) []ContainerGroupSubnetIdResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SubnetIds
+	}).(ContainerGroupSubnetIdResponseArrayOutput)
+}
+
+// Container group subnet information.
+type ContainerGroupSubnetId struct {
+	// Resource ID of subnet.
+	Id string `pulumi:"id"`
+	// Friendly name for the subnet.
+	Name *string `pulumi:"name"`
+}
+
+// ContainerGroupSubnetIdInput is an input type that accepts ContainerGroupSubnetIdArgs and ContainerGroupSubnetIdOutput values.
+// You can construct a concrete instance of `ContainerGroupSubnetIdInput` via:
+//
+//	ContainerGroupSubnetIdArgs{...}
+type ContainerGroupSubnetIdInput interface {
+	pulumi.Input
+
+	ToContainerGroupSubnetIdOutput() ContainerGroupSubnetIdOutput
+	ToContainerGroupSubnetIdOutputWithContext(context.Context) ContainerGroupSubnetIdOutput
+}
+
+// Container group subnet information.
+type ContainerGroupSubnetIdArgs struct {
+	// Resource ID of subnet.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Friendly name for the subnet.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ContainerGroupSubnetIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupSubnetId)(nil)).Elem()
+}
+
+func (i ContainerGroupSubnetIdArgs) ToContainerGroupSubnetIdOutput() ContainerGroupSubnetIdOutput {
+	return i.ToContainerGroupSubnetIdOutputWithContext(context.Background())
+}
+
+func (i ContainerGroupSubnetIdArgs) ToContainerGroupSubnetIdOutputWithContext(ctx context.Context) ContainerGroupSubnetIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupSubnetIdOutput)
+}
+
+// ContainerGroupSubnetIdArrayInput is an input type that accepts ContainerGroupSubnetIdArray and ContainerGroupSubnetIdArrayOutput values.
+// You can construct a concrete instance of `ContainerGroupSubnetIdArrayInput` via:
+//
+//	ContainerGroupSubnetIdArray{ ContainerGroupSubnetIdArgs{...} }
+type ContainerGroupSubnetIdArrayInput interface {
+	pulumi.Input
+
+	ToContainerGroupSubnetIdArrayOutput() ContainerGroupSubnetIdArrayOutput
+	ToContainerGroupSubnetIdArrayOutputWithContext(context.Context) ContainerGroupSubnetIdArrayOutput
+}
+
+type ContainerGroupSubnetIdArray []ContainerGroupSubnetIdInput
+
+func (ContainerGroupSubnetIdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerGroupSubnetId)(nil)).Elem()
+}
+
+func (i ContainerGroupSubnetIdArray) ToContainerGroupSubnetIdArrayOutput() ContainerGroupSubnetIdArrayOutput {
+	return i.ToContainerGroupSubnetIdArrayOutputWithContext(context.Background())
+}
+
+func (i ContainerGroupSubnetIdArray) ToContainerGroupSubnetIdArrayOutputWithContext(ctx context.Context) ContainerGroupSubnetIdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerGroupSubnetIdArrayOutput)
+}
+
+// Container group subnet information.
+type ContainerGroupSubnetIdOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupSubnetIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupSubnetId)(nil)).Elem()
+}
+
+func (o ContainerGroupSubnetIdOutput) ToContainerGroupSubnetIdOutput() ContainerGroupSubnetIdOutput {
+	return o
+}
+
+func (o ContainerGroupSubnetIdOutput) ToContainerGroupSubnetIdOutputWithContext(ctx context.Context) ContainerGroupSubnetIdOutput {
+	return o
+}
+
+// Resource ID of subnet.
+func (o ContainerGroupSubnetIdOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerGroupSubnetId) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Friendly name for the subnet.
+func (o ContainerGroupSubnetIdOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerGroupSubnetId) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ContainerGroupSubnetIdArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupSubnetIdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerGroupSubnetId)(nil)).Elem()
+}
+
+func (o ContainerGroupSubnetIdArrayOutput) ToContainerGroupSubnetIdArrayOutput() ContainerGroupSubnetIdArrayOutput {
+	return o
+}
+
+func (o ContainerGroupSubnetIdArrayOutput) ToContainerGroupSubnetIdArrayOutputWithContext(ctx context.Context) ContainerGroupSubnetIdArrayOutput {
+	return o
+}
+
+func (o ContainerGroupSubnetIdArrayOutput) Index(i pulumi.IntInput) ContainerGroupSubnetIdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerGroupSubnetId {
+		return vs[0].([]ContainerGroupSubnetId)[vs[1].(int)]
+	}).(ContainerGroupSubnetIdOutput)
+}
+
+// Container group subnet information.
+type ContainerGroupSubnetIdResponse struct {
+	// Resource ID of subnet.
+	Id string `pulumi:"id"`
+	// Friendly name for the subnet.
+	Name *string `pulumi:"name"`
+}
+
+// Container group subnet information.
+type ContainerGroupSubnetIdResponseOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupSubnetIdResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerGroupSubnetIdResponse)(nil)).Elem()
+}
+
+func (o ContainerGroupSubnetIdResponseOutput) ToContainerGroupSubnetIdResponseOutput() ContainerGroupSubnetIdResponseOutput {
+	return o
+}
+
+func (o ContainerGroupSubnetIdResponseOutput) ToContainerGroupSubnetIdResponseOutputWithContext(ctx context.Context) ContainerGroupSubnetIdResponseOutput {
+	return o
+}
+
+// Resource ID of subnet.
+func (o ContainerGroupSubnetIdResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerGroupSubnetIdResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Friendly name for the subnet.
+func (o ContainerGroupSubnetIdResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerGroupSubnetIdResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ContainerGroupSubnetIdResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerGroupSubnetIdResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerGroupSubnetIdResponse)(nil)).Elem()
+}
+
+func (o ContainerGroupSubnetIdResponseArrayOutput) ToContainerGroupSubnetIdResponseArrayOutput() ContainerGroupSubnetIdResponseArrayOutput {
+	return o
+}
+
+func (o ContainerGroupSubnetIdResponseArrayOutput) ToContainerGroupSubnetIdResponseArrayOutputWithContext(ctx context.Context) ContainerGroupSubnetIdResponseArrayOutput {
+	return o
+}
+
+func (o ContainerGroupSubnetIdResponseArrayOutput) Index(i pulumi.IntInput) ContainerGroupSubnetIdResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerGroupSubnetIdResponse {
+		return vs[0].([]ContainerGroupSubnetIdResponse)[vs[1].(int)]
+	}).(ContainerGroupSubnetIdResponseOutput)
 }
 
 // The debug setting.
@@ -763,15 +1341,15 @@ func (o DebugSettingResponseOutput) DetailLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DebugSettingResponse) *string { return v.DetailLevel }).(pulumi.StringPtrOutput)
 }
 
-// Defines how resources deployed by the deployment stack are locked.
+// Defines how resources deployed by the Deployment stack are locked.
 type DenySettings struct {
-	// DenySettings will be applied to child scopes.
+	// DenySettings will be applied to child resource scopes of every managed resource with a deny assignment.
 	ApplyToChildScopes *bool `pulumi:"applyToChildScopes"`
 	// List of role-based management operations that are excluded from the denySettings. Up to 200 actions are permitted. If the denySetting mode is set to 'denyWriteAndDelete', then the following actions are automatically appended to 'excludedActions': '*\/read' and 'Microsoft.Authorization/locks/delete'. If the denySetting mode is set to 'denyDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will be removed.
 	ExcludedActions []string `pulumi:"excludedActions"`
 	// List of AAD principal IDs excluded from the lock. Up to 5 principals are permitted.
 	ExcludedPrincipals []string `pulumi:"excludedPrincipals"`
-	// denySettings Mode.
+	// denySettings Mode that defines denied actions.
 	Mode string `pulumi:"mode"`
 }
 
@@ -786,15 +1364,15 @@ type DenySettingsInput interface {
 	ToDenySettingsOutputWithContext(context.Context) DenySettingsOutput
 }
 
-// Defines how resources deployed by the deployment stack are locked.
+// Defines how resources deployed by the Deployment stack are locked.
 type DenySettingsArgs struct {
-	// DenySettings will be applied to child scopes.
+	// DenySettings will be applied to child resource scopes of every managed resource with a deny assignment.
 	ApplyToChildScopes pulumi.BoolPtrInput `pulumi:"applyToChildScopes"`
 	// List of role-based management operations that are excluded from the denySettings. Up to 200 actions are permitted. If the denySetting mode is set to 'denyWriteAndDelete', then the following actions are automatically appended to 'excludedActions': '*\/read' and 'Microsoft.Authorization/locks/delete'. If the denySetting mode is set to 'denyDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will be removed.
 	ExcludedActions pulumi.StringArrayInput `pulumi:"excludedActions"`
 	// List of AAD principal IDs excluded from the lock. Up to 5 principals are permitted.
 	ExcludedPrincipals pulumi.StringArrayInput `pulumi:"excludedPrincipals"`
-	// denySettings Mode.
+	// denySettings Mode that defines denied actions.
 	Mode pulumi.StringInput `pulumi:"mode"`
 }
 
@@ -810,7 +1388,48 @@ func (i DenySettingsArgs) ToDenySettingsOutputWithContext(ctx context.Context) D
 	return pulumi.ToOutputWithContext(ctx, i).(DenySettingsOutput)
 }
 
-// Defines how resources deployed by the deployment stack are locked.
+func (i DenySettingsArgs) ToDenySettingsPtrOutput() DenySettingsPtrOutput {
+	return i.ToDenySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i DenySettingsArgs) ToDenySettingsPtrOutputWithContext(ctx context.Context) DenySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DenySettingsOutput).ToDenySettingsPtrOutputWithContext(ctx)
+}
+
+// DenySettingsPtrInput is an input type that accepts DenySettingsArgs, DenySettingsPtr and DenySettingsPtrOutput values.
+// You can construct a concrete instance of `DenySettingsPtrInput` via:
+//
+//	        DenySettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DenySettingsPtrInput interface {
+	pulumi.Input
+
+	ToDenySettingsPtrOutput() DenySettingsPtrOutput
+	ToDenySettingsPtrOutputWithContext(context.Context) DenySettingsPtrOutput
+}
+
+type denySettingsPtrType DenySettingsArgs
+
+func DenySettingsPtr(v *DenySettingsArgs) DenySettingsPtrInput {
+	return (*denySettingsPtrType)(v)
+}
+
+func (*denySettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DenySettings)(nil)).Elem()
+}
+
+func (i *denySettingsPtrType) ToDenySettingsPtrOutput() DenySettingsPtrOutput {
+	return i.ToDenySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *denySettingsPtrType) ToDenySettingsPtrOutputWithContext(ctx context.Context) DenySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DenySettingsPtrOutput)
+}
+
+// Defines how resources deployed by the Deployment stack are locked.
 type DenySettingsOutput struct{ *pulumi.OutputState }
 
 func (DenySettingsOutput) ElementType() reflect.Type {
@@ -825,7 +1444,17 @@ func (o DenySettingsOutput) ToDenySettingsOutputWithContext(ctx context.Context)
 	return o
 }
 
-// DenySettings will be applied to child scopes.
+func (o DenySettingsOutput) ToDenySettingsPtrOutput() DenySettingsPtrOutput {
+	return o.ToDenySettingsPtrOutputWithContext(context.Background())
+}
+
+func (o DenySettingsOutput) ToDenySettingsPtrOutputWithContext(ctx context.Context) DenySettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DenySettings) *DenySettings {
+		return &v
+	}).(DenySettingsPtrOutput)
+}
+
+// DenySettings will be applied to child resource scopes of every managed resource with a deny assignment.
 func (o DenySettingsOutput) ApplyToChildScopes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DenySettings) *bool { return v.ApplyToChildScopes }).(pulumi.BoolPtrOutput)
 }
@@ -840,24 +1469,88 @@ func (o DenySettingsOutput) ExcludedPrincipals() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DenySettings) []string { return v.ExcludedPrincipals }).(pulumi.StringArrayOutput)
 }
 
-// denySettings Mode.
+// denySettings Mode that defines denied actions.
 func (o DenySettingsOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v DenySettings) string { return v.Mode }).(pulumi.StringOutput)
 }
 
-// Defines how resources deployed by the deployment stack are locked.
+type DenySettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (DenySettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DenySettings)(nil)).Elem()
+}
+
+func (o DenySettingsPtrOutput) ToDenySettingsPtrOutput() DenySettingsPtrOutput {
+	return o
+}
+
+func (o DenySettingsPtrOutput) ToDenySettingsPtrOutputWithContext(ctx context.Context) DenySettingsPtrOutput {
+	return o
+}
+
+func (o DenySettingsPtrOutput) Elem() DenySettingsOutput {
+	return o.ApplyT(func(v *DenySettings) DenySettings {
+		if v != nil {
+			return *v
+		}
+		var ret DenySettings
+		return ret
+	}).(DenySettingsOutput)
+}
+
+// DenySettings will be applied to child resource scopes of every managed resource with a deny assignment.
+func (o DenySettingsPtrOutput) ApplyToChildScopes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DenySettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ApplyToChildScopes
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of role-based management operations that are excluded from the denySettings. Up to 200 actions are permitted. If the denySetting mode is set to 'denyWriteAndDelete', then the following actions are automatically appended to 'excludedActions': '*\/read' and 'Microsoft.Authorization/locks/delete'. If the denySetting mode is set to 'denyDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will be removed.
+func (o DenySettingsPtrOutput) ExcludedActions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DenySettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedActions
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of AAD principal IDs excluded from the lock. Up to 5 principals are permitted.
+func (o DenySettingsPtrOutput) ExcludedPrincipals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DenySettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedPrincipals
+	}).(pulumi.StringArrayOutput)
+}
+
+// denySettings Mode that defines denied actions.
+func (o DenySettingsPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DenySettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines how resources deployed by the Deployment stack are locked.
 type DenySettingsResponse struct {
-	// DenySettings will be applied to child scopes.
+	// DenySettings will be applied to child resource scopes of every managed resource with a deny assignment.
 	ApplyToChildScopes *bool `pulumi:"applyToChildScopes"`
 	// List of role-based management operations that are excluded from the denySettings. Up to 200 actions are permitted. If the denySetting mode is set to 'denyWriteAndDelete', then the following actions are automatically appended to 'excludedActions': '*\/read' and 'Microsoft.Authorization/locks/delete'. If the denySetting mode is set to 'denyDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will be removed.
 	ExcludedActions []string `pulumi:"excludedActions"`
 	// List of AAD principal IDs excluded from the lock. Up to 5 principals are permitted.
 	ExcludedPrincipals []string `pulumi:"excludedPrincipals"`
-	// denySettings Mode.
+	// denySettings Mode that defines denied actions.
 	Mode string `pulumi:"mode"`
 }
 
-// Defines how resources deployed by the deployment stack are locked.
+// Defines how resources deployed by the Deployment stack are locked.
 type DenySettingsResponseOutput struct{ *pulumi.OutputState }
 
 func (DenySettingsResponseOutput) ElementType() reflect.Type {
@@ -872,7 +1565,7 @@ func (o DenySettingsResponseOutput) ToDenySettingsResponseOutputWithContext(ctx 
 	return o
 }
 
-// DenySettings will be applied to child scopes.
+// DenySettings will be applied to child resource scopes of every managed resource with a deny assignment.
 func (o DenySettingsResponseOutput) ApplyToChildScopes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DenySettingsResponse) *bool { return v.ApplyToChildScopes }).(pulumi.BoolPtrOutput)
 }
@@ -887,9 +1580,73 @@ func (o DenySettingsResponseOutput) ExcludedPrincipals() pulumi.StringArrayOutpu
 	return o.ApplyT(func(v DenySettingsResponse) []string { return v.ExcludedPrincipals }).(pulumi.StringArrayOutput)
 }
 
-// denySettings Mode.
+// denySettings Mode that defines denied actions.
 func (o DenySettingsResponseOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v DenySettingsResponse) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type DenySettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DenySettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DenySettingsResponse)(nil)).Elem()
+}
+
+func (o DenySettingsResponsePtrOutput) ToDenySettingsResponsePtrOutput() DenySettingsResponsePtrOutput {
+	return o
+}
+
+func (o DenySettingsResponsePtrOutput) ToDenySettingsResponsePtrOutputWithContext(ctx context.Context) DenySettingsResponsePtrOutput {
+	return o
+}
+
+func (o DenySettingsResponsePtrOutput) Elem() DenySettingsResponseOutput {
+	return o.ApplyT(func(v *DenySettingsResponse) DenySettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DenySettingsResponse
+		return ret
+	}).(DenySettingsResponseOutput)
+}
+
+// DenySettings will be applied to child resource scopes of every managed resource with a deny assignment.
+func (o DenySettingsResponsePtrOutput) ApplyToChildScopes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DenySettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ApplyToChildScopes
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of role-based management operations that are excluded from the denySettings. Up to 200 actions are permitted. If the denySetting mode is set to 'denyWriteAndDelete', then the following actions are automatically appended to 'excludedActions': '*\/read' and 'Microsoft.Authorization/locks/delete'. If the denySetting mode is set to 'denyDelete', then the following actions are automatically appended to 'excludedActions': 'Microsoft.Authorization/locks/delete'. Duplicate actions will be removed.
+func (o DenySettingsResponsePtrOutput) ExcludedActions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DenySettingsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedActions
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of AAD principal IDs excluded from the lock. Up to 5 principals are permitted.
+func (o DenySettingsResponsePtrOutput) ExcludedPrincipals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DenySettingsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedPrincipals
+	}).(pulumi.StringArrayOutput)
+}
+
+// denySettings Mode that defines denied actions.
+func (o DenySettingsResponsePtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DenySettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Mode
+	}).(pulumi.StringPtrOutput)
 }
 
 // Deployment dependency information.
@@ -959,11 +1716,442 @@ func (o DependencyResponseArrayOutput) Index(i pulumi.IntInput) DependencyRespon
 	}).(DependencyResponseOutput)
 }
 
+// The value or how to get a value for an extension config property.
+type DeploymentExtensionConfigItem struct {
+	// The key vault reference of the config item.
+	KeyVaultReference *KeyVaultParameterReference `pulumi:"keyVaultReference"`
+	// The value of the config item. The type is determined by the extension config schema.
+	Value interface{} `pulumi:"value"`
+}
+
+// DeploymentExtensionConfigItemInput is an input type that accepts DeploymentExtensionConfigItemArgs and DeploymentExtensionConfigItemOutput values.
+// You can construct a concrete instance of `DeploymentExtensionConfigItemInput` via:
+//
+//	DeploymentExtensionConfigItemArgs{...}
+type DeploymentExtensionConfigItemInput interface {
+	pulumi.Input
+
+	ToDeploymentExtensionConfigItemOutput() DeploymentExtensionConfigItemOutput
+	ToDeploymentExtensionConfigItemOutputWithContext(context.Context) DeploymentExtensionConfigItemOutput
+}
+
+// The value or how to get a value for an extension config property.
+type DeploymentExtensionConfigItemArgs struct {
+	// The key vault reference of the config item.
+	KeyVaultReference KeyVaultParameterReferencePtrInput `pulumi:"keyVaultReference"`
+	// The value of the config item. The type is determined by the extension config schema.
+	Value pulumi.Input `pulumi:"value"`
+}
+
+func (DeploymentExtensionConfigItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentExtensionConfigItem)(nil)).Elem()
+}
+
+func (i DeploymentExtensionConfigItemArgs) ToDeploymentExtensionConfigItemOutput() DeploymentExtensionConfigItemOutput {
+	return i.ToDeploymentExtensionConfigItemOutputWithContext(context.Background())
+}
+
+func (i DeploymentExtensionConfigItemArgs) ToDeploymentExtensionConfigItemOutputWithContext(ctx context.Context) DeploymentExtensionConfigItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentExtensionConfigItemOutput)
+}
+
+// DeploymentExtensionConfigItemMapInput is an input type that accepts DeploymentExtensionConfigItemMap and DeploymentExtensionConfigItemMapOutput values.
+// You can construct a concrete instance of `DeploymentExtensionConfigItemMapInput` via:
+//
+//	DeploymentExtensionConfigItemMap{ "key": DeploymentExtensionConfigItemArgs{...} }
+type DeploymentExtensionConfigItemMapInput interface {
+	pulumi.Input
+
+	ToDeploymentExtensionConfigItemMapOutput() DeploymentExtensionConfigItemMapOutput
+	ToDeploymentExtensionConfigItemMapOutputWithContext(context.Context) DeploymentExtensionConfigItemMapOutput
+}
+
+type DeploymentExtensionConfigItemMap map[string]DeploymentExtensionConfigItemInput
+
+func (DeploymentExtensionConfigItemMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DeploymentExtensionConfigItem)(nil)).Elem()
+}
+
+func (i DeploymentExtensionConfigItemMap) ToDeploymentExtensionConfigItemMapOutput() DeploymentExtensionConfigItemMapOutput {
+	return i.ToDeploymentExtensionConfigItemMapOutputWithContext(context.Background())
+}
+
+func (i DeploymentExtensionConfigItemMap) ToDeploymentExtensionConfigItemMapOutputWithContext(ctx context.Context) DeploymentExtensionConfigItemMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentExtensionConfigItemMapOutput)
+}
+
+// The value or how to get a value for an extension config property.
+type DeploymentExtensionConfigItemOutput struct{ *pulumi.OutputState }
+
+func (DeploymentExtensionConfigItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentExtensionConfigItem)(nil)).Elem()
+}
+
+func (o DeploymentExtensionConfigItemOutput) ToDeploymentExtensionConfigItemOutput() DeploymentExtensionConfigItemOutput {
+	return o
+}
+
+func (o DeploymentExtensionConfigItemOutput) ToDeploymentExtensionConfigItemOutputWithContext(ctx context.Context) DeploymentExtensionConfigItemOutput {
+	return o
+}
+
+// The key vault reference of the config item.
+func (o DeploymentExtensionConfigItemOutput) KeyVaultReference() KeyVaultParameterReferencePtrOutput {
+	return o.ApplyT(func(v DeploymentExtensionConfigItem) *KeyVaultParameterReference { return v.KeyVaultReference }).(KeyVaultParameterReferencePtrOutput)
+}
+
+// The value of the config item. The type is determined by the extension config schema.
+func (o DeploymentExtensionConfigItemOutput) Value() pulumi.AnyOutput {
+	return o.ApplyT(func(v DeploymentExtensionConfigItem) interface{} { return v.Value }).(pulumi.AnyOutput)
+}
+
+type DeploymentExtensionConfigItemMapOutput struct{ *pulumi.OutputState }
+
+func (DeploymentExtensionConfigItemMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DeploymentExtensionConfigItem)(nil)).Elem()
+}
+
+func (o DeploymentExtensionConfigItemMapOutput) ToDeploymentExtensionConfigItemMapOutput() DeploymentExtensionConfigItemMapOutput {
+	return o
+}
+
+func (o DeploymentExtensionConfigItemMapOutput) ToDeploymentExtensionConfigItemMapOutputWithContext(ctx context.Context) DeploymentExtensionConfigItemMapOutput {
+	return o
+}
+
+func (o DeploymentExtensionConfigItemMapOutput) MapIndex(k pulumi.StringInput) DeploymentExtensionConfigItemOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DeploymentExtensionConfigItem {
+		return vs[0].(map[string]DeploymentExtensionConfigItem)[vs[1].(string)]
+	}).(DeploymentExtensionConfigItemOutput)
+}
+
+// The value or how to get a value for an extension config property.
+type DeploymentExtensionConfigItemResponse struct {
+	// The key vault reference of the config item.
+	KeyVaultReference *KeyVaultParameterReferenceResponse `pulumi:"keyVaultReference"`
+	// The type of the value.
+	Type string `pulumi:"type"`
+	// The value of the config item. The type is determined by the extension config schema.
+	Value interface{} `pulumi:"value"`
+}
+
+// The value or how to get a value for an extension config property.
+type DeploymentExtensionConfigItemResponseOutput struct{ *pulumi.OutputState }
+
+func (DeploymentExtensionConfigItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentExtensionConfigItemResponse)(nil)).Elem()
+}
+
+func (o DeploymentExtensionConfigItemResponseOutput) ToDeploymentExtensionConfigItemResponseOutput() DeploymentExtensionConfigItemResponseOutput {
+	return o
+}
+
+func (o DeploymentExtensionConfigItemResponseOutput) ToDeploymentExtensionConfigItemResponseOutputWithContext(ctx context.Context) DeploymentExtensionConfigItemResponseOutput {
+	return o
+}
+
+// The key vault reference of the config item.
+func (o DeploymentExtensionConfigItemResponseOutput) KeyVaultReference() KeyVaultParameterReferenceResponsePtrOutput {
+	return o.ApplyT(func(v DeploymentExtensionConfigItemResponse) *KeyVaultParameterReferenceResponse {
+		return v.KeyVaultReference
+	}).(KeyVaultParameterReferenceResponsePtrOutput)
+}
+
+// The type of the value.
+func (o DeploymentExtensionConfigItemResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentExtensionConfigItemResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The value of the config item. The type is determined by the extension config schema.
+func (o DeploymentExtensionConfigItemResponseOutput) Value() pulumi.AnyOutput {
+	return o.ApplyT(func(v DeploymentExtensionConfigItemResponse) interface{} { return v.Value }).(pulumi.AnyOutput)
+}
+
+type DeploymentExtensionConfigItemResponseMapOutput struct{ *pulumi.OutputState }
+
+func (DeploymentExtensionConfigItemResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DeploymentExtensionConfigItemResponse)(nil)).Elem()
+}
+
+func (o DeploymentExtensionConfigItemResponseMapOutput) ToDeploymentExtensionConfigItemResponseMapOutput() DeploymentExtensionConfigItemResponseMapOutput {
+	return o
+}
+
+func (o DeploymentExtensionConfigItemResponseMapOutput) ToDeploymentExtensionConfigItemResponseMapOutputWithContext(ctx context.Context) DeploymentExtensionConfigItemResponseMapOutput {
+	return o
+}
+
+func (o DeploymentExtensionConfigItemResponseMapOutput) MapIndex(k pulumi.StringInput) DeploymentExtensionConfigItemResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DeploymentExtensionConfigItemResponse {
+		return vs[0].(map[string]DeploymentExtensionConfigItemResponse)[vs[1].(string)]
+	}).(DeploymentExtensionConfigItemResponseOutput)
+}
+
+// Details about the usage of a deployment extension.
+type DeploymentExtensionResponse struct {
+	// The configuration used for deployment. The keys of this object should align with the extension config schema.
+	Config map[string]DeploymentExtensionConfigItemResponse `pulumi:"config"`
+	// The configuration ID of the extension usage. It uniquely identifies a target the extension deploys to.
+	ConfigId *string `pulumi:"configId"`
+	// The extension name.
+	Name string `pulumi:"name"`
+	// The extension version.
+	Version string `pulumi:"version"`
+}
+
+// Details about the usage of a deployment extension.
+type DeploymentExtensionResponseOutput struct{ *pulumi.OutputState }
+
+func (DeploymentExtensionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentExtensionResponse)(nil)).Elem()
+}
+
+func (o DeploymentExtensionResponseOutput) ToDeploymentExtensionResponseOutput() DeploymentExtensionResponseOutput {
+	return o
+}
+
+func (o DeploymentExtensionResponseOutput) ToDeploymentExtensionResponseOutputWithContext(ctx context.Context) DeploymentExtensionResponseOutput {
+	return o
+}
+
+// The configuration used for deployment. The keys of this object should align with the extension config schema.
+func (o DeploymentExtensionResponseOutput) Config() DeploymentExtensionConfigItemResponseMapOutput {
+	return o.ApplyT(func(v DeploymentExtensionResponse) map[string]DeploymentExtensionConfigItemResponse { return v.Config }).(DeploymentExtensionConfigItemResponseMapOutput)
+}
+
+// The configuration ID of the extension usage. It uniquely identifies a target the extension deploys to.
+func (o DeploymentExtensionResponseOutput) ConfigId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentExtensionResponse) *string { return v.ConfigId }).(pulumi.StringPtrOutput)
+}
+
+// The extension name.
+func (o DeploymentExtensionResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentExtensionResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The extension version.
+func (o DeploymentExtensionResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentExtensionResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+// Deployment external input for parameterization.
+type DeploymentExternalInput struct {
+	// External input value.
+	Value interface{} `pulumi:"value"`
+}
+
+// DeploymentExternalInputInput is an input type that accepts DeploymentExternalInputArgs and DeploymentExternalInputOutput values.
+// You can construct a concrete instance of `DeploymentExternalInputInput` via:
+//
+//	DeploymentExternalInputArgs{...}
+type DeploymentExternalInputInput interface {
+	pulumi.Input
+
+	ToDeploymentExternalInputOutput() DeploymentExternalInputOutput
+	ToDeploymentExternalInputOutputWithContext(context.Context) DeploymentExternalInputOutput
+}
+
+// Deployment external input for parameterization.
+type DeploymentExternalInputArgs struct {
+	// External input value.
+	Value pulumi.Input `pulumi:"value"`
+}
+
+func (DeploymentExternalInputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentExternalInput)(nil)).Elem()
+}
+
+func (i DeploymentExternalInputArgs) ToDeploymentExternalInputOutput() DeploymentExternalInputOutput {
+	return i.ToDeploymentExternalInputOutputWithContext(context.Background())
+}
+
+func (i DeploymentExternalInputArgs) ToDeploymentExternalInputOutputWithContext(ctx context.Context) DeploymentExternalInputOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentExternalInputOutput)
+}
+
+// DeploymentExternalInputMapInput is an input type that accepts DeploymentExternalInputMap and DeploymentExternalInputMapOutput values.
+// You can construct a concrete instance of `DeploymentExternalInputMapInput` via:
+//
+//	DeploymentExternalInputMap{ "key": DeploymentExternalInputArgs{...} }
+type DeploymentExternalInputMapInput interface {
+	pulumi.Input
+
+	ToDeploymentExternalInputMapOutput() DeploymentExternalInputMapOutput
+	ToDeploymentExternalInputMapOutputWithContext(context.Context) DeploymentExternalInputMapOutput
+}
+
+type DeploymentExternalInputMap map[string]DeploymentExternalInputInput
+
+func (DeploymentExternalInputMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DeploymentExternalInput)(nil)).Elem()
+}
+
+func (i DeploymentExternalInputMap) ToDeploymentExternalInputMapOutput() DeploymentExternalInputMapOutput {
+	return i.ToDeploymentExternalInputMapOutputWithContext(context.Background())
+}
+
+func (i DeploymentExternalInputMap) ToDeploymentExternalInputMapOutputWithContext(ctx context.Context) DeploymentExternalInputMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentExternalInputMapOutput)
+}
+
+// Deployment external input for parameterization.
+type DeploymentExternalInputOutput struct{ *pulumi.OutputState }
+
+func (DeploymentExternalInputOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentExternalInput)(nil)).Elem()
+}
+
+func (o DeploymentExternalInputOutput) ToDeploymentExternalInputOutput() DeploymentExternalInputOutput {
+	return o
+}
+
+func (o DeploymentExternalInputOutput) ToDeploymentExternalInputOutputWithContext(ctx context.Context) DeploymentExternalInputOutput {
+	return o
+}
+
+// External input value.
+func (o DeploymentExternalInputOutput) Value() pulumi.AnyOutput {
+	return o.ApplyT(func(v DeploymentExternalInput) interface{} { return v.Value }).(pulumi.AnyOutput)
+}
+
+type DeploymentExternalInputMapOutput struct{ *pulumi.OutputState }
+
+func (DeploymentExternalInputMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DeploymentExternalInput)(nil)).Elem()
+}
+
+func (o DeploymentExternalInputMapOutput) ToDeploymentExternalInputMapOutput() DeploymentExternalInputMapOutput {
+	return o
+}
+
+func (o DeploymentExternalInputMapOutput) ToDeploymentExternalInputMapOutputWithContext(ctx context.Context) DeploymentExternalInputMapOutput {
+	return o
+}
+
+func (o DeploymentExternalInputMapOutput) MapIndex(k pulumi.StringInput) DeploymentExternalInputOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DeploymentExternalInput {
+		return vs[0].(map[string]DeploymentExternalInput)[vs[1].(string)]
+	}).(DeploymentExternalInputOutput)
+}
+
+// Deployment external input definition for parameterization.
+type DeploymentExternalInputDefinition struct {
+	// Configuration for the external input.
+	Config interface{} `pulumi:"config"`
+	// The kind of external input.
+	Kind string `pulumi:"kind"`
+}
+
+// DeploymentExternalInputDefinitionInput is an input type that accepts DeploymentExternalInputDefinitionArgs and DeploymentExternalInputDefinitionOutput values.
+// You can construct a concrete instance of `DeploymentExternalInputDefinitionInput` via:
+//
+//	DeploymentExternalInputDefinitionArgs{...}
+type DeploymentExternalInputDefinitionInput interface {
+	pulumi.Input
+
+	ToDeploymentExternalInputDefinitionOutput() DeploymentExternalInputDefinitionOutput
+	ToDeploymentExternalInputDefinitionOutputWithContext(context.Context) DeploymentExternalInputDefinitionOutput
+}
+
+// Deployment external input definition for parameterization.
+type DeploymentExternalInputDefinitionArgs struct {
+	// Configuration for the external input.
+	Config pulumi.Input `pulumi:"config"`
+	// The kind of external input.
+	Kind pulumi.StringInput `pulumi:"kind"`
+}
+
+func (DeploymentExternalInputDefinitionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentExternalInputDefinition)(nil)).Elem()
+}
+
+func (i DeploymentExternalInputDefinitionArgs) ToDeploymentExternalInputDefinitionOutput() DeploymentExternalInputDefinitionOutput {
+	return i.ToDeploymentExternalInputDefinitionOutputWithContext(context.Background())
+}
+
+func (i DeploymentExternalInputDefinitionArgs) ToDeploymentExternalInputDefinitionOutputWithContext(ctx context.Context) DeploymentExternalInputDefinitionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentExternalInputDefinitionOutput)
+}
+
+// DeploymentExternalInputDefinitionMapInput is an input type that accepts DeploymentExternalInputDefinitionMap and DeploymentExternalInputDefinitionMapOutput values.
+// You can construct a concrete instance of `DeploymentExternalInputDefinitionMapInput` via:
+//
+//	DeploymentExternalInputDefinitionMap{ "key": DeploymentExternalInputDefinitionArgs{...} }
+type DeploymentExternalInputDefinitionMapInput interface {
+	pulumi.Input
+
+	ToDeploymentExternalInputDefinitionMapOutput() DeploymentExternalInputDefinitionMapOutput
+	ToDeploymentExternalInputDefinitionMapOutputWithContext(context.Context) DeploymentExternalInputDefinitionMapOutput
+}
+
+type DeploymentExternalInputDefinitionMap map[string]DeploymentExternalInputDefinitionInput
+
+func (DeploymentExternalInputDefinitionMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DeploymentExternalInputDefinition)(nil)).Elem()
+}
+
+func (i DeploymentExternalInputDefinitionMap) ToDeploymentExternalInputDefinitionMapOutput() DeploymentExternalInputDefinitionMapOutput {
+	return i.ToDeploymentExternalInputDefinitionMapOutputWithContext(context.Background())
+}
+
+func (i DeploymentExternalInputDefinitionMap) ToDeploymentExternalInputDefinitionMapOutputWithContext(ctx context.Context) DeploymentExternalInputDefinitionMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentExternalInputDefinitionMapOutput)
+}
+
+// Deployment external input definition for parameterization.
+type DeploymentExternalInputDefinitionOutput struct{ *pulumi.OutputState }
+
+func (DeploymentExternalInputDefinitionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentExternalInputDefinition)(nil)).Elem()
+}
+
+func (o DeploymentExternalInputDefinitionOutput) ToDeploymentExternalInputDefinitionOutput() DeploymentExternalInputDefinitionOutput {
+	return o
+}
+
+func (o DeploymentExternalInputDefinitionOutput) ToDeploymentExternalInputDefinitionOutputWithContext(ctx context.Context) DeploymentExternalInputDefinitionOutput {
+	return o
+}
+
+// Configuration for the external input.
+func (o DeploymentExternalInputDefinitionOutput) Config() pulumi.AnyOutput {
+	return o.ApplyT(func(v DeploymentExternalInputDefinition) interface{} { return v.Config }).(pulumi.AnyOutput)
+}
+
+// The kind of external input.
+func (o DeploymentExternalInputDefinitionOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentExternalInputDefinition) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+type DeploymentExternalInputDefinitionMapOutput struct{ *pulumi.OutputState }
+
+func (DeploymentExternalInputDefinitionMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DeploymentExternalInputDefinition)(nil)).Elem()
+}
+
+func (o DeploymentExternalInputDefinitionMapOutput) ToDeploymentExternalInputDefinitionMapOutput() DeploymentExternalInputDefinitionMapOutput {
+	return o
+}
+
+func (o DeploymentExternalInputDefinitionMapOutput) ToDeploymentExternalInputDefinitionMapOutputWithContext(ctx context.Context) DeploymentExternalInputDefinitionMapOutput {
+	return o
+}
+
+func (o DeploymentExternalInputDefinitionMapOutput) MapIndex(k pulumi.StringInput) DeploymentExternalInputDefinitionOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DeploymentExternalInputDefinition {
+		return vs[0].(map[string]DeploymentExternalInputDefinition)[vs[1].(string)]
+	}).(DeploymentExternalInputDefinitionOutput)
+}
+
 // Deployment parameter for the template.
 type DeploymentParameter struct {
+	// Input expression to the parameter.
+	Expression *string `pulumi:"expression"`
 	// Azure Key Vault parameter reference.
 	Reference *KeyVaultParameterReference `pulumi:"reference"`
-	// Input value to the parameter .
+	// Type of the value.
+	Type *string `pulumi:"type"`
+	// Input value to the parameter.
 	Value interface{} `pulumi:"value"`
 }
 
@@ -980,9 +2168,13 @@ type DeploymentParameterInput interface {
 
 // Deployment parameter for the template.
 type DeploymentParameterArgs struct {
+	// Input expression to the parameter.
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
 	// Azure Key Vault parameter reference.
 	Reference KeyVaultParameterReferencePtrInput `pulumi:"reference"`
-	// Input value to the parameter .
+	// Type of the value.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Input value to the parameter.
 	Value pulumi.Input `pulumi:"value"`
 }
 
@@ -1038,12 +2230,22 @@ func (o DeploymentParameterOutput) ToDeploymentParameterOutputWithContext(ctx co
 	return o
 }
 
+// Input expression to the parameter.
+func (o DeploymentParameterOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentParameter) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
 // Azure Key Vault parameter reference.
 func (o DeploymentParameterOutput) Reference() KeyVaultParameterReferencePtrOutput {
 	return o.ApplyT(func(v DeploymentParameter) *KeyVaultParameterReference { return v.Reference }).(KeyVaultParameterReferencePtrOutput)
 }
 
-// Input value to the parameter .
+// Type of the value.
+func (o DeploymentParameterOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentParameter) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Input value to the parameter.
 func (o DeploymentParameterOutput) Value() pulumi.AnyOutput {
 	return o.ApplyT(func(v DeploymentParameter) interface{} { return v.Value }).(pulumi.AnyOutput)
 }
@@ -1066,6 +2268,66 @@ func (o DeploymentParameterMapOutput) MapIndex(k pulumi.StringInput) DeploymentP
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DeploymentParameter {
 		return vs[0].(map[string]DeploymentParameter)[vs[1].(string)]
 	}).(DeploymentParameterOutput)
+}
+
+// Deployment parameter for the template.
+type DeploymentParameterResponse struct {
+	// Azure Key Vault parameter reference.
+	Reference *KeyVaultParameterReferenceResponse `pulumi:"reference"`
+	// Type of the value.
+	Type *string `pulumi:"type"`
+	// Input value to the parameter.
+	Value interface{} `pulumi:"value"`
+}
+
+// Deployment parameter for the template.
+type DeploymentParameterResponseOutput struct{ *pulumi.OutputState }
+
+func (DeploymentParameterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentParameterResponse)(nil)).Elem()
+}
+
+func (o DeploymentParameterResponseOutput) ToDeploymentParameterResponseOutput() DeploymentParameterResponseOutput {
+	return o
+}
+
+func (o DeploymentParameterResponseOutput) ToDeploymentParameterResponseOutputWithContext(ctx context.Context) DeploymentParameterResponseOutput {
+	return o
+}
+
+// Azure Key Vault parameter reference.
+func (o DeploymentParameterResponseOutput) Reference() KeyVaultParameterReferenceResponsePtrOutput {
+	return o.ApplyT(func(v DeploymentParameterResponse) *KeyVaultParameterReferenceResponse { return v.Reference }).(KeyVaultParameterReferenceResponsePtrOutput)
+}
+
+// Type of the value.
+func (o DeploymentParameterResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentParameterResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Input value to the parameter.
+func (o DeploymentParameterResponseOutput) Value() pulumi.AnyOutput {
+	return o.ApplyT(func(v DeploymentParameterResponse) interface{} { return v.Value }).(pulumi.AnyOutput)
+}
+
+type DeploymentParameterResponseMapOutput struct{ *pulumi.OutputState }
+
+func (DeploymentParameterResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DeploymentParameterResponse)(nil)).Elem()
+}
+
+func (o DeploymentParameterResponseMapOutput) ToDeploymentParameterResponseMapOutput() DeploymentParameterResponseMapOutput {
+	return o
+}
+
+func (o DeploymentParameterResponseMapOutput) ToDeploymentParameterResponseMapOutputWithContext(ctx context.Context) DeploymentParameterResponseMapOutput {
+	return o
+}
+
+func (o DeploymentParameterResponseMapOutput) MapIndex(k pulumi.StringInput) DeploymentParameterResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DeploymentParameterResponse {
+		return vs[0].(map[string]DeploymentParameterResponse)[vs[1].(string)]
+	}).(DeploymentParameterResponseOutput)
 }
 
 // Deployment properties.
@@ -1197,7 +2459,7 @@ type DeploymentPropertiesExtendedResponse struct {
 	// The duration of the template deployment.
 	Duration string `pulumi:"duration"`
 	// The deployment error.
-	Error ErrorResponseResponse `pulumi:"error"`
+	Error commontypesv1.ErrorResponseResponse `pulumi:"error"`
 	// The deployment mode. Possible values are Incremental and Complete.
 	Mode string `pulumi:"mode"`
 	// The deployment on error behavior.
@@ -1260,8 +2522,8 @@ func (o DeploymentPropertiesExtendedResponseOutput) Duration() pulumi.StringOutp
 }
 
 // The deployment error.
-func (o DeploymentPropertiesExtendedResponseOutput) Error() ErrorResponseResponseOutput {
-	return o.ApplyT(func(v DeploymentPropertiesExtendedResponse) ErrorResponseResponse { return v.Error }).(ErrorResponseResponseOutput)
+func (o DeploymentPropertiesExtendedResponseOutput) Error() commontypesv1.ErrorResponseResponseOutput {
+	return o.ApplyT(func(v DeploymentPropertiesExtendedResponse) commontypesv1.ErrorResponseResponse { return v.Error }).(commontypesv1.ErrorResponseResponseOutput)
 }
 
 // The deployment mode. Possible values are Incremental and Complete.
@@ -1324,119 +2586,6 @@ func (o DeploymentPropertiesExtendedResponseOutput) Timestamp() pulumi.StringOut
 // Array of validated resources.
 func (o DeploymentPropertiesExtendedResponseOutput) ValidatedResources() ResourceReferenceResponseArrayOutput {
 	return o.ApplyT(func(v DeploymentPropertiesExtendedResponse) []ResourceReferenceResponse { return v.ValidatedResources }).(ResourceReferenceResponseArrayOutput)
-}
-
-// Defines the behavior of resources that are not managed immediately after the stack is updated.
-type DeploymentStackPropertiesActionOnUnmanage struct {
-	// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-	ManagementGroups *string `pulumi:"managementGroups"`
-	// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-	ResourceGroups *string `pulumi:"resourceGroups"`
-	// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-	Resources string `pulumi:"resources"`
-}
-
-// DeploymentStackPropertiesActionOnUnmanageInput is an input type that accepts DeploymentStackPropertiesActionOnUnmanageArgs and DeploymentStackPropertiesActionOnUnmanageOutput values.
-// You can construct a concrete instance of `DeploymentStackPropertiesActionOnUnmanageInput` via:
-//
-//	DeploymentStackPropertiesActionOnUnmanageArgs{...}
-type DeploymentStackPropertiesActionOnUnmanageInput interface {
-	pulumi.Input
-
-	ToDeploymentStackPropertiesActionOnUnmanageOutput() DeploymentStackPropertiesActionOnUnmanageOutput
-	ToDeploymentStackPropertiesActionOnUnmanageOutputWithContext(context.Context) DeploymentStackPropertiesActionOnUnmanageOutput
-}
-
-// Defines the behavior of resources that are not managed immediately after the stack is updated.
-type DeploymentStackPropertiesActionOnUnmanageArgs struct {
-	// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-	ManagementGroups pulumi.StringPtrInput `pulumi:"managementGroups"`
-	// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-	ResourceGroups pulumi.StringPtrInput `pulumi:"resourceGroups"`
-	// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-	Resources pulumi.StringInput `pulumi:"resources"`
-}
-
-func (DeploymentStackPropertiesActionOnUnmanageArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeploymentStackPropertiesActionOnUnmanage)(nil)).Elem()
-}
-
-func (i DeploymentStackPropertiesActionOnUnmanageArgs) ToDeploymentStackPropertiesActionOnUnmanageOutput() DeploymentStackPropertiesActionOnUnmanageOutput {
-	return i.ToDeploymentStackPropertiesActionOnUnmanageOutputWithContext(context.Background())
-}
-
-func (i DeploymentStackPropertiesActionOnUnmanageArgs) ToDeploymentStackPropertiesActionOnUnmanageOutputWithContext(ctx context.Context) DeploymentStackPropertiesActionOnUnmanageOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DeploymentStackPropertiesActionOnUnmanageOutput)
-}
-
-// Defines the behavior of resources that are not managed immediately after the stack is updated.
-type DeploymentStackPropertiesActionOnUnmanageOutput struct{ *pulumi.OutputState }
-
-func (DeploymentStackPropertiesActionOnUnmanageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeploymentStackPropertiesActionOnUnmanage)(nil)).Elem()
-}
-
-func (o DeploymentStackPropertiesActionOnUnmanageOutput) ToDeploymentStackPropertiesActionOnUnmanageOutput() DeploymentStackPropertiesActionOnUnmanageOutput {
-	return o
-}
-
-func (o DeploymentStackPropertiesActionOnUnmanageOutput) ToDeploymentStackPropertiesActionOnUnmanageOutputWithContext(ctx context.Context) DeploymentStackPropertiesActionOnUnmanageOutput {
-	return o
-}
-
-// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-func (o DeploymentStackPropertiesActionOnUnmanageOutput) ManagementGroups() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeploymentStackPropertiesActionOnUnmanage) *string { return v.ManagementGroups }).(pulumi.StringPtrOutput)
-}
-
-// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-func (o DeploymentStackPropertiesActionOnUnmanageOutput) ResourceGroups() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeploymentStackPropertiesActionOnUnmanage) *string { return v.ResourceGroups }).(pulumi.StringPtrOutput)
-}
-
-// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-func (o DeploymentStackPropertiesActionOnUnmanageOutput) Resources() pulumi.StringOutput {
-	return o.ApplyT(func(v DeploymentStackPropertiesActionOnUnmanage) string { return v.Resources }).(pulumi.StringOutput)
-}
-
-// Defines the behavior of resources that are not managed immediately after the stack is updated.
-type DeploymentStackPropertiesResponseActionOnUnmanage struct {
-	// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-	ManagementGroups *string `pulumi:"managementGroups"`
-	// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-	ResourceGroups *string `pulumi:"resourceGroups"`
-	// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-	Resources string `pulumi:"resources"`
-}
-
-// Defines the behavior of resources that are not managed immediately after the stack is updated.
-type DeploymentStackPropertiesResponseActionOnUnmanageOutput struct{ *pulumi.OutputState }
-
-func (DeploymentStackPropertiesResponseActionOnUnmanageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DeploymentStackPropertiesResponseActionOnUnmanage)(nil)).Elem()
-}
-
-func (o DeploymentStackPropertiesResponseActionOnUnmanageOutput) ToDeploymentStackPropertiesResponseActionOnUnmanageOutput() DeploymentStackPropertiesResponseActionOnUnmanageOutput {
-	return o
-}
-
-func (o DeploymentStackPropertiesResponseActionOnUnmanageOutput) ToDeploymentStackPropertiesResponseActionOnUnmanageOutputWithContext(ctx context.Context) DeploymentStackPropertiesResponseActionOnUnmanageOutput {
-	return o
-}
-
-// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-func (o DeploymentStackPropertiesResponseActionOnUnmanageOutput) ManagementGroups() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeploymentStackPropertiesResponseActionOnUnmanage) *string { return v.ManagementGroups }).(pulumi.StringPtrOutput)
-}
-
-// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-func (o DeploymentStackPropertiesResponseActionOnUnmanageOutput) ResourceGroups() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeploymentStackPropertiesResponseActionOnUnmanage) *string { return v.ResourceGroups }).(pulumi.StringPtrOutput)
-}
-
-// Specifies the action that should be taken on the resource when the deployment stack is deleted. Delete will attempt to delete the resource from Azure. Detach will leave the resource in it's current state.
-func (o DeploymentStackPropertiesResponseActionOnUnmanageOutput) Resources() pulumi.StringOutput {
-	return o.ApplyT(func(v DeploymentStackPropertiesResponseActionOnUnmanage) string { return v.Resources }).(pulumi.StringOutput)
 }
 
 // The debug setting.
@@ -1637,6 +2786,82 @@ func (o DeploymentStacksDebugSettingResponsePtrOutput) DetailLevel() pulumi.Stri
 		}
 		return v.DetailLevel
 	}).(pulumi.StringPtrOutput)
+}
+
+// The error additional info
+type DeploymentStacksDiagnosticResponse struct {
+	// Additional error information.
+	AdditionalInfo []commontypesv6.ErrorAdditionalInfoResponse `pulumi:"additionalInfo"`
+	// The error code.
+	Code string `pulumi:"code"`
+	// Denotes the additional response level.
+	Level string `pulumi:"level"`
+	// The error message.
+	Message string `pulumi:"message"`
+	// The error target.
+	Target *string `pulumi:"target"`
+}
+
+// The error additional info
+type DeploymentStacksDiagnosticResponseOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStacksDiagnosticResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStacksDiagnosticResponse)(nil)).Elem()
+}
+
+func (o DeploymentStacksDiagnosticResponseOutput) ToDeploymentStacksDiagnosticResponseOutput() DeploymentStacksDiagnosticResponseOutput {
+	return o
+}
+
+func (o DeploymentStacksDiagnosticResponseOutput) ToDeploymentStacksDiagnosticResponseOutputWithContext(ctx context.Context) DeploymentStacksDiagnosticResponseOutput {
+	return o
+}
+
+// Additional error information.
+func (o DeploymentStacksDiagnosticResponseOutput) AdditionalInfo() commontypesv6.ErrorAdditionalInfoResponseArrayOutput {
+	return o.ApplyT(func(v DeploymentStacksDiagnosticResponse) []commontypesv6.ErrorAdditionalInfoResponse {
+		return v.AdditionalInfo
+	}).(commontypesv6.ErrorAdditionalInfoResponseArrayOutput)
+}
+
+// The error code.
+func (o DeploymentStacksDiagnosticResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStacksDiagnosticResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// Denotes the additional response level.
+func (o DeploymentStacksDiagnosticResponseOutput) Level() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStacksDiagnosticResponse) string { return v.Level }).(pulumi.StringOutput)
+}
+
+// The error message.
+func (o DeploymentStacksDiagnosticResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStacksDiagnosticResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// The error target.
+func (o DeploymentStacksDiagnosticResponseOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStacksDiagnosticResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+type DeploymentStacksDiagnosticResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStacksDiagnosticResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeploymentStacksDiagnosticResponse)(nil)).Elem()
+}
+
+func (o DeploymentStacksDiagnosticResponseArrayOutput) ToDeploymentStacksDiagnosticResponseArrayOutput() DeploymentStacksDiagnosticResponseArrayOutput {
+	return o
+}
+
+func (o DeploymentStacksDiagnosticResponseArrayOutput) ToDeploymentStacksDiagnosticResponseArrayOutputWithContext(ctx context.Context) DeploymentStacksDiagnosticResponseArrayOutput {
+	return o
+}
+
+func (o DeploymentStacksDiagnosticResponseArrayOutput) Index(i pulumi.IntInput) DeploymentStacksDiagnosticResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeploymentStacksDiagnosticResponse {
+		return vs[0].([]DeploymentStacksDiagnosticResponse)[vs[1].(int)]
+	}).(DeploymentStacksDiagnosticResponseOutput)
 }
 
 // Entity representing the reference to the deployment parameters.
@@ -1879,11 +3104,11 @@ func (o DeploymentStacksParametersLinkResponsePtrOutput) Uri() pulumi.StringPtrO
 type DeploymentStacksTemplateLink struct {
 	// If included, must match the ContentVersion in the template.
 	ContentVersion *string `pulumi:"contentVersion"`
-	// The resource id of a Template Spec. Use either the id or uri property, but not both.
+	// The resourceId of a Template Spec. Use either the id or uri property, but not both.
 	Id *string `pulumi:"id"`
 	// The query string (for example, a SAS token) to be used with the templateLink URI.
 	QueryString *string `pulumi:"queryString"`
-	// The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs
+	// The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs.
 	RelativePath *string `pulumi:"relativePath"`
 	// The URI of the template to deploy. Use either the uri or id property, but not both.
 	Uri *string `pulumi:"uri"`
@@ -1904,11 +3129,11 @@ type DeploymentStacksTemplateLinkInput interface {
 type DeploymentStacksTemplateLinkArgs struct {
 	// If included, must match the ContentVersion in the template.
 	ContentVersion pulumi.StringPtrInput `pulumi:"contentVersion"`
-	// The resource id of a Template Spec. Use either the id or uri property, but not both.
+	// The resourceId of a Template Spec. Use either the id or uri property, but not both.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The query string (for example, a SAS token) to be used with the templateLink URI.
 	QueryString pulumi.StringPtrInput `pulumi:"queryString"`
-	// The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs
+	// The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs.
 	RelativePath pulumi.StringPtrInput `pulumi:"relativePath"`
 	// The URI of the template to deploy. Use either the uri or id property, but not both.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
@@ -1997,7 +3222,7 @@ func (o DeploymentStacksTemplateLinkOutput) ContentVersion() pulumi.StringPtrOut
 	return o.ApplyT(func(v DeploymentStacksTemplateLink) *string { return v.ContentVersion }).(pulumi.StringPtrOutput)
 }
 
-// The resource id of a Template Spec. Use either the id or uri property, but not both.
+// The resourceId of a Template Spec. Use either the id or uri property, but not both.
 func (o DeploymentStacksTemplateLinkOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeploymentStacksTemplateLink) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -2007,7 +3232,7 @@ func (o DeploymentStacksTemplateLinkOutput) QueryString() pulumi.StringPtrOutput
 	return o.ApplyT(func(v DeploymentStacksTemplateLink) *string { return v.QueryString }).(pulumi.StringPtrOutput)
 }
 
-// The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs
+// The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs.
 func (o DeploymentStacksTemplateLinkOutput) RelativePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeploymentStacksTemplateLink) *string { return v.RelativePath }).(pulumi.StringPtrOutput)
 }
@@ -2051,7 +3276,7 @@ func (o DeploymentStacksTemplateLinkPtrOutput) ContentVersion() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// The resource id of a Template Spec. Use either the id or uri property, but not both.
+// The resourceId of a Template Spec. Use either the id or uri property, but not both.
 func (o DeploymentStacksTemplateLinkPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeploymentStacksTemplateLink) *string {
 		if v == nil {
@@ -2071,7 +3296,7 @@ func (o DeploymentStacksTemplateLinkPtrOutput) QueryString() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs
+// The relativePath property can be used to deploy a linked template at a location relative to the parent. If the parent template was linked with a TemplateSpec, this will reference an artifact in the TemplateSpec.  If the parent was linked with a URI, the child deployment will be a combination of the parent and relativePath URIs.
 func (o DeploymentStacksTemplateLinkPtrOutput) RelativePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeploymentStacksTemplateLink) *string {
 		if v == nil {
@@ -2089,6 +3314,1486 @@ func (o DeploymentStacksTemplateLinkPtrOutput) Uri() pulumi.StringPtrOutput {
 		}
 		return v.Uri
 	}).(pulumi.StringPtrOutput)
+}
+
+// Changes predicted to the deployment stack as a result of the what-if operation.
+type DeploymentStacksWhatIfChangeResponse struct {
+	// Predicted changes to the deployment stack deny settings.
+	DenySettingsChange DeploymentStacksWhatIfChangeResponseDenySettingsChange `pulumi:"denySettingsChange"`
+	// Predicted changes to the deployment scope for the deployment stack.
+	DeploymentScopeChange *DeploymentStacksWhatIfChangeResponseDeploymentScopeChange `pulumi:"deploymentScopeChange"`
+	// List of resource changes predicted by What-If operation.
+	ResourceChanges []DeploymentStacksWhatIfResourceChangeResponse `pulumi:"resourceChanges"`
+}
+
+// Changes predicted to the deployment stack as a result of the what-if operation.
+type DeploymentStacksWhatIfChangeResponseOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStacksWhatIfChangeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStacksWhatIfChangeResponse)(nil)).Elem()
+}
+
+func (o DeploymentStacksWhatIfChangeResponseOutput) ToDeploymentStacksWhatIfChangeResponseOutput() DeploymentStacksWhatIfChangeResponseOutput {
+	return o
+}
+
+func (o DeploymentStacksWhatIfChangeResponseOutput) ToDeploymentStacksWhatIfChangeResponseOutputWithContext(ctx context.Context) DeploymentStacksWhatIfChangeResponseOutput {
+	return o
+}
+
+// Predicted changes to the deployment stack deny settings.
+func (o DeploymentStacksWhatIfChangeResponseOutput) DenySettingsChange() DeploymentStacksWhatIfChangeResponseDenySettingsChangeOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfChangeResponse) DeploymentStacksWhatIfChangeResponseDenySettingsChange {
+		return v.DenySettingsChange
+	}).(DeploymentStacksWhatIfChangeResponseDenySettingsChangeOutput)
+}
+
+// Predicted changes to the deployment scope for the deployment stack.
+func (o DeploymentStacksWhatIfChangeResponseOutput) DeploymentScopeChange() DeploymentStacksWhatIfChangeResponseDeploymentScopeChangePtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfChangeResponse) *DeploymentStacksWhatIfChangeResponseDeploymentScopeChange {
+		return v.DeploymentScopeChange
+	}).(DeploymentStacksWhatIfChangeResponseDeploymentScopeChangePtrOutput)
+}
+
+// List of resource changes predicted by What-If operation.
+func (o DeploymentStacksWhatIfChangeResponseOutput) ResourceChanges() DeploymentStacksWhatIfResourceChangeResponseArrayOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfChangeResponse) []DeploymentStacksWhatIfResourceChangeResponse {
+		return v.ResourceChanges
+	}).(DeploymentStacksWhatIfResourceChangeResponseArrayOutput)
+}
+
+// Predicted changes to the deployment stack deny settings.
+type DeploymentStacksWhatIfChangeResponseDenySettingsChange struct {
+	// The predicted value after the deployment is executed.
+	After *DenySettingsResponse `pulumi:"after"`
+	// The predicted value before the deployment is executed.
+	Before *DenySettingsResponse `pulumi:"before"`
+	// The predicted changes to the properties."
+	Delta []DeploymentStacksWhatIfPropertyChangeResponse `pulumi:"delta"`
+}
+
+// Predicted changes to the deployment stack deny settings.
+type DeploymentStacksWhatIfChangeResponseDenySettingsChangeOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStacksWhatIfChangeResponseDenySettingsChangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStacksWhatIfChangeResponseDenySettingsChange)(nil)).Elem()
+}
+
+func (o DeploymentStacksWhatIfChangeResponseDenySettingsChangeOutput) ToDeploymentStacksWhatIfChangeResponseDenySettingsChangeOutput() DeploymentStacksWhatIfChangeResponseDenySettingsChangeOutput {
+	return o
+}
+
+func (o DeploymentStacksWhatIfChangeResponseDenySettingsChangeOutput) ToDeploymentStacksWhatIfChangeResponseDenySettingsChangeOutputWithContext(ctx context.Context) DeploymentStacksWhatIfChangeResponseDenySettingsChangeOutput {
+	return o
+}
+
+// The predicted value after the deployment is executed.
+func (o DeploymentStacksWhatIfChangeResponseDenySettingsChangeOutput) After() DenySettingsResponsePtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfChangeResponseDenySettingsChange) *DenySettingsResponse { return v.After }).(DenySettingsResponsePtrOutput)
+}
+
+// The predicted value before the deployment is executed.
+func (o DeploymentStacksWhatIfChangeResponseDenySettingsChangeOutput) Before() DenySettingsResponsePtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfChangeResponseDenySettingsChange) *DenySettingsResponse { return v.Before }).(DenySettingsResponsePtrOutput)
+}
+
+// The predicted changes to the properties."
+func (o DeploymentStacksWhatIfChangeResponseDenySettingsChangeOutput) Delta() DeploymentStacksWhatIfPropertyChangeResponseArrayOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfChangeResponseDenySettingsChange) []DeploymentStacksWhatIfPropertyChangeResponse {
+		return v.Delta
+	}).(DeploymentStacksWhatIfPropertyChangeResponseArrayOutput)
+}
+
+// Predicted changes to the deployment scope for the deployment stack.
+type DeploymentStacksWhatIfChangeResponseDeploymentScopeChange struct {
+	// The predicted value after the deployment is executed.
+	After *string `pulumi:"after"`
+	// The predicted value before the deployment is executed.
+	Before *string `pulumi:"before"`
+}
+
+// Predicted changes to the deployment scope for the deployment stack.
+type DeploymentStacksWhatIfChangeResponseDeploymentScopeChangeOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStacksWhatIfChangeResponseDeploymentScopeChangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStacksWhatIfChangeResponseDeploymentScopeChange)(nil)).Elem()
+}
+
+func (o DeploymentStacksWhatIfChangeResponseDeploymentScopeChangeOutput) ToDeploymentStacksWhatIfChangeResponseDeploymentScopeChangeOutput() DeploymentStacksWhatIfChangeResponseDeploymentScopeChangeOutput {
+	return o
+}
+
+func (o DeploymentStacksWhatIfChangeResponseDeploymentScopeChangeOutput) ToDeploymentStacksWhatIfChangeResponseDeploymentScopeChangeOutputWithContext(ctx context.Context) DeploymentStacksWhatIfChangeResponseDeploymentScopeChangeOutput {
+	return o
+}
+
+// The predicted value after the deployment is executed.
+func (o DeploymentStacksWhatIfChangeResponseDeploymentScopeChangeOutput) After() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfChangeResponseDeploymentScopeChange) *string { return v.After }).(pulumi.StringPtrOutput)
+}
+
+// The predicted value before the deployment is executed.
+func (o DeploymentStacksWhatIfChangeResponseDeploymentScopeChangeOutput) Before() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfChangeResponseDeploymentScopeChange) *string { return v.Before }).(pulumi.StringPtrOutput)
+}
+
+type DeploymentStacksWhatIfChangeResponseDeploymentScopeChangePtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStacksWhatIfChangeResponseDeploymentScopeChangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentStacksWhatIfChangeResponseDeploymentScopeChange)(nil)).Elem()
+}
+
+func (o DeploymentStacksWhatIfChangeResponseDeploymentScopeChangePtrOutput) ToDeploymentStacksWhatIfChangeResponseDeploymentScopeChangePtrOutput() DeploymentStacksWhatIfChangeResponseDeploymentScopeChangePtrOutput {
+	return o
+}
+
+func (o DeploymentStacksWhatIfChangeResponseDeploymentScopeChangePtrOutput) ToDeploymentStacksWhatIfChangeResponseDeploymentScopeChangePtrOutputWithContext(ctx context.Context) DeploymentStacksWhatIfChangeResponseDeploymentScopeChangePtrOutput {
+	return o
+}
+
+func (o DeploymentStacksWhatIfChangeResponseDeploymentScopeChangePtrOutput) Elem() DeploymentStacksWhatIfChangeResponseDeploymentScopeChangeOutput {
+	return o.ApplyT(func(v *DeploymentStacksWhatIfChangeResponseDeploymentScopeChange) DeploymentStacksWhatIfChangeResponseDeploymentScopeChange {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentStacksWhatIfChangeResponseDeploymentScopeChange
+		return ret
+	}).(DeploymentStacksWhatIfChangeResponseDeploymentScopeChangeOutput)
+}
+
+// The predicted value after the deployment is executed.
+func (o DeploymentStacksWhatIfChangeResponseDeploymentScopeChangePtrOutput) After() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentStacksWhatIfChangeResponseDeploymentScopeChange) *string {
+		if v == nil {
+			return nil
+		}
+		return v.After
+	}).(pulumi.StringPtrOutput)
+}
+
+// The predicted value before the deployment is executed.
+func (o DeploymentStacksWhatIfChangeResponseDeploymentScopeChangePtrOutput) Before() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentStacksWhatIfChangeResponseDeploymentScopeChange) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Before
+	}).(pulumi.StringPtrOutput)
+}
+
+// The predicted change to the resource property.
+type DeploymentStacksWhatIfPropertyChangeResponse struct {
+	// The predicted value after the deployment is executed.
+	After interface{} `pulumi:"after"`
+	// The predicted value before the deployment is executed.
+	Before interface{} `pulumi:"before"`
+	// Type of change that will be made to the resource when the deployment is executed.
+	ChangeType string `pulumi:"changeType"`
+	// Nested property changes.
+	Children []DeploymentStacksWhatIfPropertyChangeResponse `pulumi:"children"`
+	// Type of change that will be made to the resource when the deployment is executed.
+	Path string `pulumi:"path"`
+}
+
+// The predicted change to the resource property.
+type DeploymentStacksWhatIfPropertyChangeResponseOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStacksWhatIfPropertyChangeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStacksWhatIfPropertyChangeResponse)(nil)).Elem()
+}
+
+func (o DeploymentStacksWhatIfPropertyChangeResponseOutput) ToDeploymentStacksWhatIfPropertyChangeResponseOutput() DeploymentStacksWhatIfPropertyChangeResponseOutput {
+	return o
+}
+
+func (o DeploymentStacksWhatIfPropertyChangeResponseOutput) ToDeploymentStacksWhatIfPropertyChangeResponseOutputWithContext(ctx context.Context) DeploymentStacksWhatIfPropertyChangeResponseOutput {
+	return o
+}
+
+// The predicted value after the deployment is executed.
+func (o DeploymentStacksWhatIfPropertyChangeResponseOutput) After() pulumi.AnyOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfPropertyChangeResponse) interface{} { return v.After }).(pulumi.AnyOutput)
+}
+
+// The predicted value before the deployment is executed.
+func (o DeploymentStacksWhatIfPropertyChangeResponseOutput) Before() pulumi.AnyOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfPropertyChangeResponse) interface{} { return v.Before }).(pulumi.AnyOutput)
+}
+
+// Type of change that will be made to the resource when the deployment is executed.
+func (o DeploymentStacksWhatIfPropertyChangeResponseOutput) ChangeType() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfPropertyChangeResponse) string { return v.ChangeType }).(pulumi.StringOutput)
+}
+
+// Nested property changes.
+func (o DeploymentStacksWhatIfPropertyChangeResponseOutput) Children() DeploymentStacksWhatIfPropertyChangeResponseArrayOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfPropertyChangeResponse) []DeploymentStacksWhatIfPropertyChangeResponse {
+		return v.Children
+	}).(DeploymentStacksWhatIfPropertyChangeResponseArrayOutput)
+}
+
+// Type of change that will be made to the resource when the deployment is executed.
+func (o DeploymentStacksWhatIfPropertyChangeResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfPropertyChangeResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type DeploymentStacksWhatIfPropertyChangeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStacksWhatIfPropertyChangeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeploymentStacksWhatIfPropertyChangeResponse)(nil)).Elem()
+}
+
+func (o DeploymentStacksWhatIfPropertyChangeResponseArrayOutput) ToDeploymentStacksWhatIfPropertyChangeResponseArrayOutput() DeploymentStacksWhatIfPropertyChangeResponseArrayOutput {
+	return o
+}
+
+func (o DeploymentStacksWhatIfPropertyChangeResponseArrayOutput) ToDeploymentStacksWhatIfPropertyChangeResponseArrayOutputWithContext(ctx context.Context) DeploymentStacksWhatIfPropertyChangeResponseArrayOutput {
+	return o
+}
+
+func (o DeploymentStacksWhatIfPropertyChangeResponseArrayOutput) Index(i pulumi.IntInput) DeploymentStacksWhatIfPropertyChangeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeploymentStacksWhatIfPropertyChangeResponse {
+		return vs[0].([]DeploymentStacksWhatIfPropertyChangeResponse)[vs[1].(int)]
+	}).(DeploymentStacksWhatIfPropertyChangeResponseOutput)
+}
+
+// Information about a single resource change predicted by What-If operation.
+type DeploymentStacksWhatIfResourceChangeResponse struct {
+	// The API version the resource was deployed with
+	ApiVersion string `pulumi:"apiVersion"`
+	// The confidence level of the predicted change.
+	ChangeCertainty string `pulumi:"changeCertainty"`
+	// Type of change that will be made to the resource when the deployment is executed.
+	ChangeType string `pulumi:"changeType"`
+	// The predicted changes to the deployment stack deny status of the resource.
+	DenyStatusChange *DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange `pulumi:"denyStatusChange"`
+	// The resource id of the Deployment responsible for this change.
+	DeploymentId *string `pulumi:"deploymentId"`
+	// The extension the resource was deployed with.
+	Extension DeploymentExtensionResponse `pulumi:"extension"`
+	// The ARM Resource ID of a resource managed by the deployment stack.
+	Id string `pulumi:"id"`
+	// The extensible resource identifiers.
+	Identifiers interface{} `pulumi:"identifiers"`
+	// The predicted changes to the deployment stack management status of the resource.
+	ManagementStatusChange *DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange `pulumi:"managementStatusChange"`
+	// The predicted changes to the resource configuration.
+	ResourceConfigurationChanges *DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges `pulumi:"resourceConfigurationChanges"`
+	// The symbolic name of the resource being changed.
+	SymbolicName *string `pulumi:"symbolicName"`
+	// The resource type.
+	Type string `pulumi:"type"`
+	// The explanation about why the resource is unsupported by What-If.
+	UnsupportedReason *string `pulumi:"unsupportedReason"`
+}
+
+// Information about a single resource change predicted by What-If operation.
+type DeploymentStacksWhatIfResourceChangeResponseOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStacksWhatIfResourceChangeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStacksWhatIfResourceChangeResponse)(nil)).Elem()
+}
+
+func (o DeploymentStacksWhatIfResourceChangeResponseOutput) ToDeploymentStacksWhatIfResourceChangeResponseOutput() DeploymentStacksWhatIfResourceChangeResponseOutput {
+	return o
+}
+
+func (o DeploymentStacksWhatIfResourceChangeResponseOutput) ToDeploymentStacksWhatIfResourceChangeResponseOutputWithContext(ctx context.Context) DeploymentStacksWhatIfResourceChangeResponseOutput {
+	return o
+}
+
+// The API version the resource was deployed with
+func (o DeploymentStacksWhatIfResourceChangeResponseOutput) ApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResourceChangeResponse) string { return v.ApiVersion }).(pulumi.StringOutput)
+}
+
+// The confidence level of the predicted change.
+func (o DeploymentStacksWhatIfResourceChangeResponseOutput) ChangeCertainty() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResourceChangeResponse) string { return v.ChangeCertainty }).(pulumi.StringOutput)
+}
+
+// Type of change that will be made to the resource when the deployment is executed.
+func (o DeploymentStacksWhatIfResourceChangeResponseOutput) ChangeType() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResourceChangeResponse) string { return v.ChangeType }).(pulumi.StringOutput)
+}
+
+// The predicted changes to the deployment stack deny status of the resource.
+func (o DeploymentStacksWhatIfResourceChangeResponseOutput) DenyStatusChange() DeploymentStacksWhatIfResourceChangeResponseDenyStatusChangePtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResourceChangeResponse) *DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange {
+		return v.DenyStatusChange
+	}).(DeploymentStacksWhatIfResourceChangeResponseDenyStatusChangePtrOutput)
+}
+
+// The resource id of the Deployment responsible for this change.
+func (o DeploymentStacksWhatIfResourceChangeResponseOutput) DeploymentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResourceChangeResponse) *string { return v.DeploymentId }).(pulumi.StringPtrOutput)
+}
+
+// The extension the resource was deployed with.
+func (o DeploymentStacksWhatIfResourceChangeResponseOutput) Extension() DeploymentExtensionResponseOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResourceChangeResponse) DeploymentExtensionResponse { return v.Extension }).(DeploymentExtensionResponseOutput)
+}
+
+// The ARM Resource ID of a resource managed by the deployment stack.
+func (o DeploymentStacksWhatIfResourceChangeResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResourceChangeResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The extensible resource identifiers.
+func (o DeploymentStacksWhatIfResourceChangeResponseOutput) Identifiers() pulumi.AnyOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResourceChangeResponse) interface{} { return v.Identifiers }).(pulumi.AnyOutput)
+}
+
+// The predicted changes to the deployment stack management status of the resource.
+func (o DeploymentStacksWhatIfResourceChangeResponseOutput) ManagementStatusChange() DeploymentStacksWhatIfResourceChangeResponseManagementStatusChangePtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResourceChangeResponse) *DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange {
+		return v.ManagementStatusChange
+	}).(DeploymentStacksWhatIfResourceChangeResponseManagementStatusChangePtrOutput)
+}
+
+// The predicted changes to the resource configuration.
+func (o DeploymentStacksWhatIfResourceChangeResponseOutput) ResourceConfigurationChanges() DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChangesPtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResourceChangeResponse) *DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges {
+		return v.ResourceConfigurationChanges
+	}).(DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChangesPtrOutput)
+}
+
+// The symbolic name of the resource being changed.
+func (o DeploymentStacksWhatIfResourceChangeResponseOutput) SymbolicName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResourceChangeResponse) *string { return v.SymbolicName }).(pulumi.StringPtrOutput)
+}
+
+// The resource type.
+func (o DeploymentStacksWhatIfResourceChangeResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResourceChangeResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The explanation about why the resource is unsupported by What-If.
+func (o DeploymentStacksWhatIfResourceChangeResponseOutput) UnsupportedReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResourceChangeResponse) *string { return v.UnsupportedReason }).(pulumi.StringPtrOutput)
+}
+
+type DeploymentStacksWhatIfResourceChangeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStacksWhatIfResourceChangeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeploymentStacksWhatIfResourceChangeResponse)(nil)).Elem()
+}
+
+func (o DeploymentStacksWhatIfResourceChangeResponseArrayOutput) ToDeploymentStacksWhatIfResourceChangeResponseArrayOutput() DeploymentStacksWhatIfResourceChangeResponseArrayOutput {
+	return o
+}
+
+func (o DeploymentStacksWhatIfResourceChangeResponseArrayOutput) ToDeploymentStacksWhatIfResourceChangeResponseArrayOutputWithContext(ctx context.Context) DeploymentStacksWhatIfResourceChangeResponseArrayOutput {
+	return o
+}
+
+func (o DeploymentStacksWhatIfResourceChangeResponseArrayOutput) Index(i pulumi.IntInput) DeploymentStacksWhatIfResourceChangeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeploymentStacksWhatIfResourceChangeResponse {
+		return vs[0].([]DeploymentStacksWhatIfResourceChangeResponse)[vs[1].(int)]
+	}).(DeploymentStacksWhatIfResourceChangeResponseOutput)
+}
+
+// The predicted changes to the deployment stack deny status of the resource.
+type DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange struct {
+	// The predicted value after the deployment is executed.
+	After *string `pulumi:"after"`
+	// The predicted value before the deployment is executed.
+	Before *string `pulumi:"before"`
+}
+
+// The predicted changes to the deployment stack deny status of the resource.
+type DeploymentStacksWhatIfResourceChangeResponseDenyStatusChangeOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStacksWhatIfResourceChangeResponseDenyStatusChangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange)(nil)).Elem()
+}
+
+func (o DeploymentStacksWhatIfResourceChangeResponseDenyStatusChangeOutput) ToDeploymentStacksWhatIfResourceChangeResponseDenyStatusChangeOutput() DeploymentStacksWhatIfResourceChangeResponseDenyStatusChangeOutput {
+	return o
+}
+
+func (o DeploymentStacksWhatIfResourceChangeResponseDenyStatusChangeOutput) ToDeploymentStacksWhatIfResourceChangeResponseDenyStatusChangeOutputWithContext(ctx context.Context) DeploymentStacksWhatIfResourceChangeResponseDenyStatusChangeOutput {
+	return o
+}
+
+// The predicted value after the deployment is executed.
+func (o DeploymentStacksWhatIfResourceChangeResponseDenyStatusChangeOutput) After() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange) *string { return v.After }).(pulumi.StringPtrOutput)
+}
+
+// The predicted value before the deployment is executed.
+func (o DeploymentStacksWhatIfResourceChangeResponseDenyStatusChangeOutput) Before() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange) *string { return v.Before }).(pulumi.StringPtrOutput)
+}
+
+type DeploymentStacksWhatIfResourceChangeResponseDenyStatusChangePtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStacksWhatIfResourceChangeResponseDenyStatusChangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange)(nil)).Elem()
+}
+
+func (o DeploymentStacksWhatIfResourceChangeResponseDenyStatusChangePtrOutput) ToDeploymentStacksWhatIfResourceChangeResponseDenyStatusChangePtrOutput() DeploymentStacksWhatIfResourceChangeResponseDenyStatusChangePtrOutput {
+	return o
+}
+
+func (o DeploymentStacksWhatIfResourceChangeResponseDenyStatusChangePtrOutput) ToDeploymentStacksWhatIfResourceChangeResponseDenyStatusChangePtrOutputWithContext(ctx context.Context) DeploymentStacksWhatIfResourceChangeResponseDenyStatusChangePtrOutput {
+	return o
+}
+
+func (o DeploymentStacksWhatIfResourceChangeResponseDenyStatusChangePtrOutput) Elem() DeploymentStacksWhatIfResourceChangeResponseDenyStatusChangeOutput {
+	return o.ApplyT(func(v *DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange) DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange
+		return ret
+	}).(DeploymentStacksWhatIfResourceChangeResponseDenyStatusChangeOutput)
+}
+
+// The predicted value after the deployment is executed.
+func (o DeploymentStacksWhatIfResourceChangeResponseDenyStatusChangePtrOutput) After() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange) *string {
+		if v == nil {
+			return nil
+		}
+		return v.After
+	}).(pulumi.StringPtrOutput)
+}
+
+// The predicted value before the deployment is executed.
+func (o DeploymentStacksWhatIfResourceChangeResponseDenyStatusChangePtrOutput) Before() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentStacksWhatIfResourceChangeResponseDenyStatusChange) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Before
+	}).(pulumi.StringPtrOutput)
+}
+
+// The predicted changes to the deployment stack management status of the resource.
+type DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange struct {
+	// The predicted value after the deployment is executed.
+	After *string `pulumi:"after"`
+	// The predicted value before the deployment is executed.
+	Before *string `pulumi:"before"`
+}
+
+// The predicted changes to the deployment stack management status of the resource.
+type DeploymentStacksWhatIfResourceChangeResponseManagementStatusChangeOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStacksWhatIfResourceChangeResponseManagementStatusChangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange)(nil)).Elem()
+}
+
+func (o DeploymentStacksWhatIfResourceChangeResponseManagementStatusChangeOutput) ToDeploymentStacksWhatIfResourceChangeResponseManagementStatusChangeOutput() DeploymentStacksWhatIfResourceChangeResponseManagementStatusChangeOutput {
+	return o
+}
+
+func (o DeploymentStacksWhatIfResourceChangeResponseManagementStatusChangeOutput) ToDeploymentStacksWhatIfResourceChangeResponseManagementStatusChangeOutputWithContext(ctx context.Context) DeploymentStacksWhatIfResourceChangeResponseManagementStatusChangeOutput {
+	return o
+}
+
+// The predicted value after the deployment is executed.
+func (o DeploymentStacksWhatIfResourceChangeResponseManagementStatusChangeOutput) After() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange) *string { return v.After }).(pulumi.StringPtrOutput)
+}
+
+// The predicted value before the deployment is executed.
+func (o DeploymentStacksWhatIfResourceChangeResponseManagementStatusChangeOutput) Before() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange) *string { return v.Before }).(pulumi.StringPtrOutput)
+}
+
+type DeploymentStacksWhatIfResourceChangeResponseManagementStatusChangePtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStacksWhatIfResourceChangeResponseManagementStatusChangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange)(nil)).Elem()
+}
+
+func (o DeploymentStacksWhatIfResourceChangeResponseManagementStatusChangePtrOutput) ToDeploymentStacksWhatIfResourceChangeResponseManagementStatusChangePtrOutput() DeploymentStacksWhatIfResourceChangeResponseManagementStatusChangePtrOutput {
+	return o
+}
+
+func (o DeploymentStacksWhatIfResourceChangeResponseManagementStatusChangePtrOutput) ToDeploymentStacksWhatIfResourceChangeResponseManagementStatusChangePtrOutputWithContext(ctx context.Context) DeploymentStacksWhatIfResourceChangeResponseManagementStatusChangePtrOutput {
+	return o
+}
+
+func (o DeploymentStacksWhatIfResourceChangeResponseManagementStatusChangePtrOutput) Elem() DeploymentStacksWhatIfResourceChangeResponseManagementStatusChangeOutput {
+	return o.ApplyT(func(v *DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange) DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange
+		return ret
+	}).(DeploymentStacksWhatIfResourceChangeResponseManagementStatusChangeOutput)
+}
+
+// The predicted value after the deployment is executed.
+func (o DeploymentStacksWhatIfResourceChangeResponseManagementStatusChangePtrOutput) After() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange) *string {
+		if v == nil {
+			return nil
+		}
+		return v.After
+	}).(pulumi.StringPtrOutput)
+}
+
+// The predicted value before the deployment is executed.
+func (o DeploymentStacksWhatIfResourceChangeResponseManagementStatusChangePtrOutput) Before() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Before
+	}).(pulumi.StringPtrOutput)
+}
+
+// The predicted changes to the resource configuration.
+type DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges struct {
+	// The predicted value after the deployment is executed.
+	After interface{} `pulumi:"after"`
+	// The predicted value before the deployment is executed.
+	Before interface{} `pulumi:"before"`
+	// The predicted changes to the properties."
+	Delta []DeploymentStacksWhatIfPropertyChangeResponse `pulumi:"delta"`
+}
+
+// The predicted changes to the resource configuration.
+type DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChangesOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChangesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges)(nil)).Elem()
+}
+
+func (o DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChangesOutput) ToDeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChangesOutput() DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChangesOutput {
+	return o
+}
+
+func (o DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChangesOutput) ToDeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChangesOutputWithContext(ctx context.Context) DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChangesOutput {
+	return o
+}
+
+// The predicted value after the deployment is executed.
+func (o DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChangesOutput) After() pulumi.AnyOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges) interface{} {
+		return v.After
+	}).(pulumi.AnyOutput)
+}
+
+// The predicted value before the deployment is executed.
+func (o DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChangesOutput) Before() pulumi.AnyOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges) interface{} {
+		return v.Before
+	}).(pulumi.AnyOutput)
+}
+
+// The predicted changes to the properties."
+func (o DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChangesOutput) Delta() DeploymentStacksWhatIfPropertyChangeResponseArrayOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges) []DeploymentStacksWhatIfPropertyChangeResponse {
+		return v.Delta
+	}).(DeploymentStacksWhatIfPropertyChangeResponseArrayOutput)
+}
+
+type DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChangesPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChangesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges)(nil)).Elem()
+}
+
+func (o DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChangesPtrOutput) ToDeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChangesPtrOutput() DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChangesPtrOutput {
+	return o
+}
+
+func (o DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChangesPtrOutput) ToDeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChangesPtrOutputWithContext(ctx context.Context) DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChangesPtrOutput {
+	return o
+}
+
+func (o DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChangesPtrOutput) Elem() DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChangesOutput {
+	return o.ApplyT(func(v *DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges) DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges
+		return ret
+	}).(DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChangesOutput)
+}
+
+// The predicted value after the deployment is executed.
+func (o DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChangesPtrOutput) After() pulumi.AnyOutput {
+	return o.ApplyT(func(v *DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.After
+	}).(pulumi.AnyOutput)
+}
+
+// The predicted value before the deployment is executed.
+func (o DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChangesPtrOutput) Before() pulumi.AnyOutput {
+	return o.ApplyT(func(v *DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Before
+	}).(pulumi.AnyOutput)
+}
+
+// The predicted changes to the properties."
+func (o DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChangesPtrOutput) Delta() DeploymentStacksWhatIfPropertyChangeResponseArrayOutput {
+	return o.ApplyT(func(v *DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges) []DeploymentStacksWhatIfPropertyChangeResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Delta
+	}).(DeploymentStacksWhatIfPropertyChangeResponseArrayOutput)
+}
+
+// DeploymentStack WhatIfResult Properties
+type DeploymentStacksWhatIfResultProperties struct {
+	// Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.
+	ActionOnUnmanage ActionOnUnmanage `pulumi:"actionOnUnmanage"`
+	// The debug setting of the deployment.
+	DebugSetting *DeploymentStacksDebugSetting `pulumi:"debugSetting"`
+	// Defines how resources deployed by the stack are locked.
+	DenySettings DenySettings `pulumi:"denySettings"`
+	// The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}').
+	DeploymentScope *string `pulumi:"deploymentScope"`
+	// The deployment stack id to use as the basis for comparison.
+	DeploymentStackResourceId string `pulumi:"deploymentStackResourceId"`
+	// Deployment stack description. Max length of 4096 characters.
+	Description *string `pulumi:"description"`
+	// The deployment extension configs. Keys of this object are extension aliases as defined in the deployment template.
+	ExtensionConfigs map[string]map[string]DeploymentExtensionConfigItem `pulumi:"extensionConfigs"`
+	// External input definitions, used by external tooling to define expected external input values.
+	ExternalInputDefinitions map[string]DeploymentExternalInputDefinition `pulumi:"externalInputDefinitions"`
+	// External input values, used by external tooling for parameter evaluation.
+	ExternalInputs map[string]DeploymentExternalInput `pulumi:"externalInputs"`
+	// Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both.
+	Parameters map[string]DeploymentParameter `pulumi:"parameters"`
+	// The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
+	ParametersLink *DeploymentStacksParametersLink `pulumi:"parametersLink"`
+	// The interval to persist the deployment stack what-if result in ISO 8601 format.
+	RetentionInterval string `pulumi:"retentionInterval"`
+	// The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both.
+	Template interface{} `pulumi:"template"`
+	// The URI of the template. Use either the templateLink property or the template property, but not both.
+	TemplateLink *DeploymentStacksTemplateLink `pulumi:"templateLink"`
+	// The validation level of the deployment stack
+	ValidationLevel *string `pulumi:"validationLevel"`
+}
+
+// DeploymentStacksWhatIfResultPropertiesInput is an input type that accepts DeploymentStacksWhatIfResultPropertiesArgs and DeploymentStacksWhatIfResultPropertiesOutput values.
+// You can construct a concrete instance of `DeploymentStacksWhatIfResultPropertiesInput` via:
+//
+//	DeploymentStacksWhatIfResultPropertiesArgs{...}
+type DeploymentStacksWhatIfResultPropertiesInput interface {
+	pulumi.Input
+
+	ToDeploymentStacksWhatIfResultPropertiesOutput() DeploymentStacksWhatIfResultPropertiesOutput
+	ToDeploymentStacksWhatIfResultPropertiesOutputWithContext(context.Context) DeploymentStacksWhatIfResultPropertiesOutput
+}
+
+// DeploymentStack WhatIfResult Properties
+type DeploymentStacksWhatIfResultPropertiesArgs struct {
+	// Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.
+	ActionOnUnmanage ActionOnUnmanageInput `pulumi:"actionOnUnmanage"`
+	// The debug setting of the deployment.
+	DebugSetting DeploymentStacksDebugSettingPtrInput `pulumi:"debugSetting"`
+	// Defines how resources deployed by the stack are locked.
+	DenySettings DenySettingsInput `pulumi:"denySettings"`
+	// The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}').
+	DeploymentScope pulumi.StringPtrInput `pulumi:"deploymentScope"`
+	// The deployment stack id to use as the basis for comparison.
+	DeploymentStackResourceId pulumi.StringInput `pulumi:"deploymentStackResourceId"`
+	// Deployment stack description. Max length of 4096 characters.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The deployment extension configs. Keys of this object are extension aliases as defined in the deployment template.
+	ExtensionConfigs DeploymentExtensionConfigItemMapMapInput `pulumi:"extensionConfigs"`
+	// External input definitions, used by external tooling to define expected external input values.
+	ExternalInputDefinitions DeploymentExternalInputDefinitionMapInput `pulumi:"externalInputDefinitions"`
+	// External input values, used by external tooling for parameter evaluation.
+	ExternalInputs DeploymentExternalInputMapInput `pulumi:"externalInputs"`
+	// Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both.
+	Parameters DeploymentParameterMapInput `pulumi:"parameters"`
+	// The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
+	ParametersLink DeploymentStacksParametersLinkPtrInput `pulumi:"parametersLink"`
+	// The interval to persist the deployment stack what-if result in ISO 8601 format.
+	RetentionInterval pulumi.StringInput `pulumi:"retentionInterval"`
+	// The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both.
+	Template pulumi.Input `pulumi:"template"`
+	// The URI of the template. Use either the templateLink property or the template property, but not both.
+	TemplateLink DeploymentStacksTemplateLinkPtrInput `pulumi:"templateLink"`
+	// The validation level of the deployment stack
+	ValidationLevel pulumi.StringPtrInput `pulumi:"validationLevel"`
+}
+
+func (DeploymentStacksWhatIfResultPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStacksWhatIfResultProperties)(nil)).Elem()
+}
+
+func (i DeploymentStacksWhatIfResultPropertiesArgs) ToDeploymentStacksWhatIfResultPropertiesOutput() DeploymentStacksWhatIfResultPropertiesOutput {
+	return i.ToDeploymentStacksWhatIfResultPropertiesOutputWithContext(context.Background())
+}
+
+func (i DeploymentStacksWhatIfResultPropertiesArgs) ToDeploymentStacksWhatIfResultPropertiesOutputWithContext(ctx context.Context) DeploymentStacksWhatIfResultPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentStacksWhatIfResultPropertiesOutput)
+}
+
+func (i DeploymentStacksWhatIfResultPropertiesArgs) ToDeploymentStacksWhatIfResultPropertiesPtrOutput() DeploymentStacksWhatIfResultPropertiesPtrOutput {
+	return i.ToDeploymentStacksWhatIfResultPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentStacksWhatIfResultPropertiesArgs) ToDeploymentStacksWhatIfResultPropertiesPtrOutputWithContext(ctx context.Context) DeploymentStacksWhatIfResultPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentStacksWhatIfResultPropertiesOutput).ToDeploymentStacksWhatIfResultPropertiesPtrOutputWithContext(ctx)
+}
+
+// DeploymentStacksWhatIfResultPropertiesPtrInput is an input type that accepts DeploymentStacksWhatIfResultPropertiesArgs, DeploymentStacksWhatIfResultPropertiesPtr and DeploymentStacksWhatIfResultPropertiesPtrOutput values.
+// You can construct a concrete instance of `DeploymentStacksWhatIfResultPropertiesPtrInput` via:
+//
+//	        DeploymentStacksWhatIfResultPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeploymentStacksWhatIfResultPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentStacksWhatIfResultPropertiesPtrOutput() DeploymentStacksWhatIfResultPropertiesPtrOutput
+	ToDeploymentStacksWhatIfResultPropertiesPtrOutputWithContext(context.Context) DeploymentStacksWhatIfResultPropertiesPtrOutput
+}
+
+type deploymentStacksWhatIfResultPropertiesPtrType DeploymentStacksWhatIfResultPropertiesArgs
+
+func DeploymentStacksWhatIfResultPropertiesPtr(v *DeploymentStacksWhatIfResultPropertiesArgs) DeploymentStacksWhatIfResultPropertiesPtrInput {
+	return (*deploymentStacksWhatIfResultPropertiesPtrType)(v)
+}
+
+func (*deploymentStacksWhatIfResultPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentStacksWhatIfResultProperties)(nil)).Elem()
+}
+
+func (i *deploymentStacksWhatIfResultPropertiesPtrType) ToDeploymentStacksWhatIfResultPropertiesPtrOutput() DeploymentStacksWhatIfResultPropertiesPtrOutput {
+	return i.ToDeploymentStacksWhatIfResultPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentStacksWhatIfResultPropertiesPtrType) ToDeploymentStacksWhatIfResultPropertiesPtrOutputWithContext(ctx context.Context) DeploymentStacksWhatIfResultPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentStacksWhatIfResultPropertiesPtrOutput)
+}
+
+// DeploymentStack WhatIfResult Properties
+type DeploymentStacksWhatIfResultPropertiesOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStacksWhatIfResultPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStacksWhatIfResultProperties)(nil)).Elem()
+}
+
+func (o DeploymentStacksWhatIfResultPropertiesOutput) ToDeploymentStacksWhatIfResultPropertiesOutput() DeploymentStacksWhatIfResultPropertiesOutput {
+	return o
+}
+
+func (o DeploymentStacksWhatIfResultPropertiesOutput) ToDeploymentStacksWhatIfResultPropertiesOutputWithContext(ctx context.Context) DeploymentStacksWhatIfResultPropertiesOutput {
+	return o
+}
+
+func (o DeploymentStacksWhatIfResultPropertiesOutput) ToDeploymentStacksWhatIfResultPropertiesPtrOutput() DeploymentStacksWhatIfResultPropertiesPtrOutput {
+	return o.ToDeploymentStacksWhatIfResultPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentStacksWhatIfResultPropertiesOutput) ToDeploymentStacksWhatIfResultPropertiesPtrOutputWithContext(ctx context.Context) DeploymentStacksWhatIfResultPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeploymentStacksWhatIfResultProperties) *DeploymentStacksWhatIfResultProperties {
+		return &v
+	}).(DeploymentStacksWhatIfResultPropertiesPtrOutput)
+}
+
+// Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.
+func (o DeploymentStacksWhatIfResultPropertiesOutput) ActionOnUnmanage() ActionOnUnmanageOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultProperties) ActionOnUnmanage { return v.ActionOnUnmanage }).(ActionOnUnmanageOutput)
+}
+
+// The debug setting of the deployment.
+func (o DeploymentStacksWhatIfResultPropertiesOutput) DebugSetting() DeploymentStacksDebugSettingPtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultProperties) *DeploymentStacksDebugSetting { return v.DebugSetting }).(DeploymentStacksDebugSettingPtrOutput)
+}
+
+// Defines how resources deployed by the stack are locked.
+func (o DeploymentStacksWhatIfResultPropertiesOutput) DenySettings() DenySettingsOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultProperties) DenySettings { return v.DenySettings }).(DenySettingsOutput)
+}
+
+// The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}').
+func (o DeploymentStacksWhatIfResultPropertiesOutput) DeploymentScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultProperties) *string { return v.DeploymentScope }).(pulumi.StringPtrOutput)
+}
+
+// The deployment stack id to use as the basis for comparison.
+func (o DeploymentStacksWhatIfResultPropertiesOutput) DeploymentStackResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultProperties) string { return v.DeploymentStackResourceId }).(pulumi.StringOutput)
+}
+
+// Deployment stack description. Max length of 4096 characters.
+func (o DeploymentStacksWhatIfResultPropertiesOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The deployment extension configs. Keys of this object are extension aliases as defined in the deployment template.
+func (o DeploymentStacksWhatIfResultPropertiesOutput) ExtensionConfigs() DeploymentExtensionConfigItemMapMapOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultProperties) map[string]map[string]DeploymentExtensionConfigItem {
+		return v.ExtensionConfigs
+	}).(DeploymentExtensionConfigItemMapMapOutput)
+}
+
+// External input definitions, used by external tooling to define expected external input values.
+func (o DeploymentStacksWhatIfResultPropertiesOutput) ExternalInputDefinitions() DeploymentExternalInputDefinitionMapOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultProperties) map[string]DeploymentExternalInputDefinition {
+		return v.ExternalInputDefinitions
+	}).(DeploymentExternalInputDefinitionMapOutput)
+}
+
+// External input values, used by external tooling for parameter evaluation.
+func (o DeploymentStacksWhatIfResultPropertiesOutput) ExternalInputs() DeploymentExternalInputMapOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultProperties) map[string]DeploymentExternalInput {
+		return v.ExternalInputs
+	}).(DeploymentExternalInputMapOutput)
+}
+
+// Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both.
+func (o DeploymentStacksWhatIfResultPropertiesOutput) Parameters() DeploymentParameterMapOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultProperties) map[string]DeploymentParameter { return v.Parameters }).(DeploymentParameterMapOutput)
+}
+
+// The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
+func (o DeploymentStacksWhatIfResultPropertiesOutput) ParametersLink() DeploymentStacksParametersLinkPtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultProperties) *DeploymentStacksParametersLink {
+		return v.ParametersLink
+	}).(DeploymentStacksParametersLinkPtrOutput)
+}
+
+// The interval to persist the deployment stack what-if result in ISO 8601 format.
+func (o DeploymentStacksWhatIfResultPropertiesOutput) RetentionInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultProperties) string { return v.RetentionInterval }).(pulumi.StringOutput)
+}
+
+// The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both.
+func (o DeploymentStacksWhatIfResultPropertiesOutput) Template() pulumi.AnyOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultProperties) interface{} { return v.Template }).(pulumi.AnyOutput)
+}
+
+// The URI of the template. Use either the templateLink property or the template property, but not both.
+func (o DeploymentStacksWhatIfResultPropertiesOutput) TemplateLink() DeploymentStacksTemplateLinkPtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultProperties) *DeploymentStacksTemplateLink { return v.TemplateLink }).(DeploymentStacksTemplateLinkPtrOutput)
+}
+
+// The validation level of the deployment stack
+func (o DeploymentStacksWhatIfResultPropertiesOutput) ValidationLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultProperties) *string { return v.ValidationLevel }).(pulumi.StringPtrOutput)
+}
+
+type DeploymentStacksWhatIfResultPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStacksWhatIfResultPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentStacksWhatIfResultProperties)(nil)).Elem()
+}
+
+func (o DeploymentStacksWhatIfResultPropertiesPtrOutput) ToDeploymentStacksWhatIfResultPropertiesPtrOutput() DeploymentStacksWhatIfResultPropertiesPtrOutput {
+	return o
+}
+
+func (o DeploymentStacksWhatIfResultPropertiesPtrOutput) ToDeploymentStacksWhatIfResultPropertiesPtrOutputWithContext(ctx context.Context) DeploymentStacksWhatIfResultPropertiesPtrOutput {
+	return o
+}
+
+func (o DeploymentStacksWhatIfResultPropertiesPtrOutput) Elem() DeploymentStacksWhatIfResultPropertiesOutput {
+	return o.ApplyT(func(v *DeploymentStacksWhatIfResultProperties) DeploymentStacksWhatIfResultProperties {
+		if v != nil {
+			return *v
+		}
+		var ret DeploymentStacksWhatIfResultProperties
+		return ret
+	}).(DeploymentStacksWhatIfResultPropertiesOutput)
+}
+
+// Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.
+func (o DeploymentStacksWhatIfResultPropertiesPtrOutput) ActionOnUnmanage() ActionOnUnmanagePtrOutput {
+	return o.ApplyT(func(v *DeploymentStacksWhatIfResultProperties) *ActionOnUnmanage {
+		if v == nil {
+			return nil
+		}
+		return &v.ActionOnUnmanage
+	}).(ActionOnUnmanagePtrOutput)
+}
+
+// The debug setting of the deployment.
+func (o DeploymentStacksWhatIfResultPropertiesPtrOutput) DebugSetting() DeploymentStacksDebugSettingPtrOutput {
+	return o.ApplyT(func(v *DeploymentStacksWhatIfResultProperties) *DeploymentStacksDebugSetting {
+		if v == nil {
+			return nil
+		}
+		return v.DebugSetting
+	}).(DeploymentStacksDebugSettingPtrOutput)
+}
+
+// Defines how resources deployed by the stack are locked.
+func (o DeploymentStacksWhatIfResultPropertiesPtrOutput) DenySettings() DenySettingsPtrOutput {
+	return o.ApplyT(func(v *DeploymentStacksWhatIfResultProperties) *DenySettings {
+		if v == nil {
+			return nil
+		}
+		return &v.DenySettings
+	}).(DenySettingsPtrOutput)
+}
+
+// The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}').
+func (o DeploymentStacksWhatIfResultPropertiesPtrOutput) DeploymentScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentStacksWhatIfResultProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeploymentScope
+	}).(pulumi.StringPtrOutput)
+}
+
+// The deployment stack id to use as the basis for comparison.
+func (o DeploymentStacksWhatIfResultPropertiesPtrOutput) DeploymentStackResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentStacksWhatIfResultProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DeploymentStackResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Deployment stack description. Max length of 4096 characters.
+func (o DeploymentStacksWhatIfResultPropertiesPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentStacksWhatIfResultProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// The deployment extension configs. Keys of this object are extension aliases as defined in the deployment template.
+func (o DeploymentStacksWhatIfResultPropertiesPtrOutput) ExtensionConfigs() DeploymentExtensionConfigItemMapMapOutput {
+	return o.ApplyT(func(v *DeploymentStacksWhatIfResultProperties) map[string]map[string]DeploymentExtensionConfigItem {
+		if v == nil {
+			return nil
+		}
+		return v.ExtensionConfigs
+	}).(DeploymentExtensionConfigItemMapMapOutput)
+}
+
+// External input definitions, used by external tooling to define expected external input values.
+func (o DeploymentStacksWhatIfResultPropertiesPtrOutput) ExternalInputDefinitions() DeploymentExternalInputDefinitionMapOutput {
+	return o.ApplyT(func(v *DeploymentStacksWhatIfResultProperties) map[string]DeploymentExternalInputDefinition {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalInputDefinitions
+	}).(DeploymentExternalInputDefinitionMapOutput)
+}
+
+// External input values, used by external tooling for parameter evaluation.
+func (o DeploymentStacksWhatIfResultPropertiesPtrOutput) ExternalInputs() DeploymentExternalInputMapOutput {
+	return o.ApplyT(func(v *DeploymentStacksWhatIfResultProperties) map[string]DeploymentExternalInput {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalInputs
+	}).(DeploymentExternalInputMapOutput)
+}
+
+// Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both.
+func (o DeploymentStacksWhatIfResultPropertiesPtrOutput) Parameters() DeploymentParameterMapOutput {
+	return o.ApplyT(func(v *DeploymentStacksWhatIfResultProperties) map[string]DeploymentParameter {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(DeploymentParameterMapOutput)
+}
+
+// The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
+func (o DeploymentStacksWhatIfResultPropertiesPtrOutput) ParametersLink() DeploymentStacksParametersLinkPtrOutput {
+	return o.ApplyT(func(v *DeploymentStacksWhatIfResultProperties) *DeploymentStacksParametersLink {
+		if v == nil {
+			return nil
+		}
+		return v.ParametersLink
+	}).(DeploymentStacksParametersLinkPtrOutput)
+}
+
+// The interval to persist the deployment stack what-if result in ISO 8601 format.
+func (o DeploymentStacksWhatIfResultPropertiesPtrOutput) RetentionInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentStacksWhatIfResultProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RetentionInterval
+	}).(pulumi.StringPtrOutput)
+}
+
+// The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both.
+func (o DeploymentStacksWhatIfResultPropertiesPtrOutput) Template() pulumi.AnyOutput {
+	return o.ApplyT(func(v *DeploymentStacksWhatIfResultProperties) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Template
+	}).(pulumi.AnyOutput)
+}
+
+// The URI of the template. Use either the templateLink property or the template property, but not both.
+func (o DeploymentStacksWhatIfResultPropertiesPtrOutput) TemplateLink() DeploymentStacksTemplateLinkPtrOutput {
+	return o.ApplyT(func(v *DeploymentStacksWhatIfResultProperties) *DeploymentStacksTemplateLink {
+		if v == nil {
+			return nil
+		}
+		return v.TemplateLink
+	}).(DeploymentStacksTemplateLinkPtrOutput)
+}
+
+// The validation level of the deployment stack
+func (o DeploymentStacksWhatIfResultPropertiesPtrOutput) ValidationLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DeploymentStacksWhatIfResultProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ValidationLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+// DeploymentStack WhatIfResult Properties
+type DeploymentStacksWhatIfResultPropertiesResponse struct {
+	// Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.
+	ActionOnUnmanage ActionOnUnmanageResponseV1 `pulumi:"actionOnUnmanage"`
+	// All of the changes predicted by the deployment stack what-if operation.
+	Changes DeploymentStacksWhatIfChangeResponse `pulumi:"changes"`
+	// The correlation id of the last Deployment stack upsert or delete operation. It is in GUID format and is used for tracing.
+	CorrelationId string `pulumi:"correlationId"`
+	// The debug setting of the deployment.
+	DebugSetting *DeploymentStacksDebugSettingResponse `pulumi:"debugSetting"`
+	// Defines how resources deployed by the stack are locked.
+	DenySettings DenySettingsResponse `pulumi:"denySettings"`
+	// The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}').
+	DeploymentScope *string `pulumi:"deploymentScope"`
+	// The timestamp for when the deployment stack was last modified. This can be used to determine if the what-if data is still current.
+	DeploymentStackLastModified string `pulumi:"deploymentStackLastModified"`
+	// The deployment stack id to use as the basis for comparison.
+	DeploymentStackResourceId string `pulumi:"deploymentStackResourceId"`
+	// Deployment stack description. Max length of 4096 characters.
+	Description *string `pulumi:"description"`
+	// List of resource diagnostics detected by What-If operation.
+	Diagnostics []DeploymentStacksDiagnosticResponse `pulumi:"diagnostics"`
+	// The error detail.
+	Error commontypesv6.ErrorDetailResponse `pulumi:"error"`
+	// Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both.
+	Parameters map[string]DeploymentParameterResponse `pulumi:"parameters"`
+	// The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
+	ParametersLink *DeploymentStacksParametersLinkResponse `pulumi:"parametersLink"`
+	// State of the deployment stack.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The interval to persist the deployment stack what-if result in ISO 8601 format.
+	RetentionInterval string `pulumi:"retentionInterval"`
+	// The validation level of the deployment stack
+	ValidationLevel *string `pulumi:"validationLevel"`
+}
+
+// DeploymentStack WhatIfResult Properties
+type DeploymentStacksWhatIfResultPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (DeploymentStacksWhatIfResultPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStacksWhatIfResultPropertiesResponse)(nil)).Elem()
+}
+
+func (o DeploymentStacksWhatIfResultPropertiesResponseOutput) ToDeploymentStacksWhatIfResultPropertiesResponseOutput() DeploymentStacksWhatIfResultPropertiesResponseOutput {
+	return o
+}
+
+func (o DeploymentStacksWhatIfResultPropertiesResponseOutput) ToDeploymentStacksWhatIfResultPropertiesResponseOutputWithContext(ctx context.Context) DeploymentStacksWhatIfResultPropertiesResponseOutput {
+	return o
+}
+
+// Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.
+func (o DeploymentStacksWhatIfResultPropertiesResponseOutput) ActionOnUnmanage() ActionOnUnmanageResponseV1Output {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponse) ActionOnUnmanageResponseV1 {
+		return v.ActionOnUnmanage
+	}).(ActionOnUnmanageResponseV1Output)
+}
+
+// All of the changes predicted by the deployment stack what-if operation.
+func (o DeploymentStacksWhatIfResultPropertiesResponseOutput) Changes() DeploymentStacksWhatIfChangeResponseOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponse) DeploymentStacksWhatIfChangeResponse {
+		return v.Changes
+	}).(DeploymentStacksWhatIfChangeResponseOutput)
+}
+
+// The correlation id of the last Deployment stack upsert or delete operation. It is in GUID format and is used for tracing.
+func (o DeploymentStacksWhatIfResultPropertiesResponseOutput) CorrelationId() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponse) string { return v.CorrelationId }).(pulumi.StringOutput)
+}
+
+// The debug setting of the deployment.
+func (o DeploymentStacksWhatIfResultPropertiesResponseOutput) DebugSetting() DeploymentStacksDebugSettingResponsePtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponse) *DeploymentStacksDebugSettingResponse {
+		return v.DebugSetting
+	}).(DeploymentStacksDebugSettingResponsePtrOutput)
+}
+
+// Defines how resources deployed by the stack are locked.
+func (o DeploymentStacksWhatIfResultPropertiesResponseOutput) DenySettings() DenySettingsResponseOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponse) DenySettingsResponse { return v.DenySettings }).(DenySettingsResponseOutput)
+}
+
+// The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}').
+func (o DeploymentStacksWhatIfResultPropertiesResponseOutput) DeploymentScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponse) *string { return v.DeploymentScope }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp for when the deployment stack was last modified. This can be used to determine if the what-if data is still current.
+func (o DeploymentStacksWhatIfResultPropertiesResponseOutput) DeploymentStackLastModified() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponse) string { return v.DeploymentStackLastModified }).(pulumi.StringOutput)
+}
+
+// The deployment stack id to use as the basis for comparison.
+func (o DeploymentStacksWhatIfResultPropertiesResponseOutput) DeploymentStackResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponse) string { return v.DeploymentStackResourceId }).(pulumi.StringOutput)
+}
+
+// Deployment stack description. Max length of 4096 characters.
+func (o DeploymentStacksWhatIfResultPropertiesResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// List of resource diagnostics detected by What-If operation.
+func (o DeploymentStacksWhatIfResultPropertiesResponseOutput) Diagnostics() DeploymentStacksDiagnosticResponseArrayOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponse) []DeploymentStacksDiagnosticResponse {
+		return v.Diagnostics
+	}).(DeploymentStacksDiagnosticResponseArrayOutput)
+}
+
+// The error detail.
+func (o DeploymentStacksWhatIfResultPropertiesResponseOutput) Error() commontypesv6.ErrorDetailResponseOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponse) commontypesv6.ErrorDetailResponse {
+		return v.Error
+	}).(commontypesv6.ErrorDetailResponseOutput)
+}
+
+// Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both.
+func (o DeploymentStacksWhatIfResultPropertiesResponseOutput) Parameters() DeploymentParameterResponseMapOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponse) map[string]DeploymentParameterResponse {
+		return v.Parameters
+	}).(DeploymentParameterResponseMapOutput)
+}
+
+// The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
+func (o DeploymentStacksWhatIfResultPropertiesResponseOutput) ParametersLink() DeploymentStacksParametersLinkResponsePtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponse) *DeploymentStacksParametersLinkResponse {
+		return v.ParametersLink
+	}).(DeploymentStacksParametersLinkResponsePtrOutput)
+}
+
+// State of the deployment stack.
+func (o DeploymentStacksWhatIfResultPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The interval to persist the deployment stack what-if result in ISO 8601 format.
+func (o DeploymentStacksWhatIfResultPropertiesResponseOutput) RetentionInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponse) string { return v.RetentionInterval }).(pulumi.StringOutput)
+}
+
+// The validation level of the deployment stack
+func (o DeploymentStacksWhatIfResultPropertiesResponseOutput) ValidationLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponse) *string { return v.ValidationLevel }).(pulumi.StringPtrOutput)
+}
+
+// DeploymentStack WhatIfResult Properties
+type DeploymentStacksWhatIfResultPropertiesResponseV1 struct {
+	// Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.
+	ActionOnUnmanage ActionOnUnmanageResponseV2 `pulumi:"actionOnUnmanage"`
+	// All of the changes predicted by the deployment stack what-if operation.
+	Changes DeploymentStacksWhatIfChangeResponse `pulumi:"changes"`
+	// The correlation id of the last Deployment stack upsert or delete operation. It is in GUID format and is used for tracing.
+	CorrelationId string `pulumi:"correlationId"`
+	// The debug setting of the deployment.
+	DebugSetting *DeploymentStacksDebugSettingResponse `pulumi:"debugSetting"`
+	// Defines how resources deployed by the stack are locked.
+	DenySettings DenySettingsResponse `pulumi:"denySettings"`
+	// The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}').
+	DeploymentScope *string `pulumi:"deploymentScope"`
+	// The timestamp for when the deployment stack was last modified. This can be used to determine if the what-if data is still current.
+	DeploymentStackLastModified string `pulumi:"deploymentStackLastModified"`
+	// The deployment stack id to use as the basis for comparison.
+	DeploymentStackResourceId string `pulumi:"deploymentStackResourceId"`
+	// Deployment stack description. Max length of 4096 characters.
+	Description *string `pulumi:"description"`
+	// List of resource diagnostics detected by What-If operation.
+	Diagnostics []DeploymentStacksDiagnosticResponse `pulumi:"diagnostics"`
+	// The error detail.
+	Error commontypesv6.ErrorDetailResponse `pulumi:"error"`
+	// Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both.
+	Parameters map[string]DeploymentParameterResponse `pulumi:"parameters"`
+	// The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
+	ParametersLink *DeploymentStacksParametersLinkResponse `pulumi:"parametersLink"`
+	// State of the deployment stack.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The interval to persist the deployment stack what-if result in ISO 8601 format.
+	RetentionInterval string `pulumi:"retentionInterval"`
+	// The validation level of the deployment stack
+	ValidationLevel *string `pulumi:"validationLevel"`
+}
+
+// DeploymentStack WhatIfResult Properties
+type DeploymentStacksWhatIfResultPropertiesResponseV1Output struct{ *pulumi.OutputState }
+
+func (DeploymentStacksWhatIfResultPropertiesResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStacksWhatIfResultPropertiesResponseV1)(nil)).Elem()
+}
+
+func (o DeploymentStacksWhatIfResultPropertiesResponseV1Output) ToDeploymentStacksWhatIfResultPropertiesResponseV1Output() DeploymentStacksWhatIfResultPropertiesResponseV1Output {
+	return o
+}
+
+func (o DeploymentStacksWhatIfResultPropertiesResponseV1Output) ToDeploymentStacksWhatIfResultPropertiesResponseV1OutputWithContext(ctx context.Context) DeploymentStacksWhatIfResultPropertiesResponseV1Output {
+	return o
+}
+
+// Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.
+func (o DeploymentStacksWhatIfResultPropertiesResponseV1Output) ActionOnUnmanage() ActionOnUnmanageResponseV2Output {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV1) ActionOnUnmanageResponseV2 {
+		return v.ActionOnUnmanage
+	}).(ActionOnUnmanageResponseV2Output)
+}
+
+// All of the changes predicted by the deployment stack what-if operation.
+func (o DeploymentStacksWhatIfResultPropertiesResponseV1Output) Changes() DeploymentStacksWhatIfChangeResponseOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV1) DeploymentStacksWhatIfChangeResponse {
+		return v.Changes
+	}).(DeploymentStacksWhatIfChangeResponseOutput)
+}
+
+// The correlation id of the last Deployment stack upsert or delete operation. It is in GUID format and is used for tracing.
+func (o DeploymentStacksWhatIfResultPropertiesResponseV1Output) CorrelationId() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV1) string { return v.CorrelationId }).(pulumi.StringOutput)
+}
+
+// The debug setting of the deployment.
+func (o DeploymentStacksWhatIfResultPropertiesResponseV1Output) DebugSetting() DeploymentStacksDebugSettingResponsePtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV1) *DeploymentStacksDebugSettingResponse {
+		return v.DebugSetting
+	}).(DeploymentStacksDebugSettingResponsePtrOutput)
+}
+
+// Defines how resources deployed by the stack are locked.
+func (o DeploymentStacksWhatIfResultPropertiesResponseV1Output) DenySettings() DenySettingsResponseOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV1) DenySettingsResponse { return v.DenySettings }).(DenySettingsResponseOutput)
+}
+
+// The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}').
+func (o DeploymentStacksWhatIfResultPropertiesResponseV1Output) DeploymentScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV1) *string { return v.DeploymentScope }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp for when the deployment stack was last modified. This can be used to determine if the what-if data is still current.
+func (o DeploymentStacksWhatIfResultPropertiesResponseV1Output) DeploymentStackLastModified() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV1) string { return v.DeploymentStackLastModified }).(pulumi.StringOutput)
+}
+
+// The deployment stack id to use as the basis for comparison.
+func (o DeploymentStacksWhatIfResultPropertiesResponseV1Output) DeploymentStackResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV1) string { return v.DeploymentStackResourceId }).(pulumi.StringOutput)
+}
+
+// Deployment stack description. Max length of 4096 characters.
+func (o DeploymentStacksWhatIfResultPropertiesResponseV1Output) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV1) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// List of resource diagnostics detected by What-If operation.
+func (o DeploymentStacksWhatIfResultPropertiesResponseV1Output) Diagnostics() DeploymentStacksDiagnosticResponseArrayOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV1) []DeploymentStacksDiagnosticResponse {
+		return v.Diagnostics
+	}).(DeploymentStacksDiagnosticResponseArrayOutput)
+}
+
+// The error detail.
+func (o DeploymentStacksWhatIfResultPropertiesResponseV1Output) Error() commontypesv6.ErrorDetailResponseOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV1) commontypesv6.ErrorDetailResponse {
+		return v.Error
+	}).(commontypesv6.ErrorDetailResponseOutput)
+}
+
+// Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both.
+func (o DeploymentStacksWhatIfResultPropertiesResponseV1Output) Parameters() DeploymentParameterResponseMapOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV1) map[string]DeploymentParameterResponse {
+		return v.Parameters
+	}).(DeploymentParameterResponseMapOutput)
+}
+
+// The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
+func (o DeploymentStacksWhatIfResultPropertiesResponseV1Output) ParametersLink() DeploymentStacksParametersLinkResponsePtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV1) *DeploymentStacksParametersLinkResponse {
+		return v.ParametersLink
+	}).(DeploymentStacksParametersLinkResponsePtrOutput)
+}
+
+// State of the deployment stack.
+func (o DeploymentStacksWhatIfResultPropertiesResponseV1Output) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV1) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The interval to persist the deployment stack what-if result in ISO 8601 format.
+func (o DeploymentStacksWhatIfResultPropertiesResponseV1Output) RetentionInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV1) string { return v.RetentionInterval }).(pulumi.StringOutput)
+}
+
+// The validation level of the deployment stack
+func (o DeploymentStacksWhatIfResultPropertiesResponseV1Output) ValidationLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV1) *string { return v.ValidationLevel }).(pulumi.StringPtrOutput)
+}
+
+// DeploymentStack WhatIfResult Properties
+type DeploymentStacksWhatIfResultPropertiesResponseV2 struct {
+	// Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.
+	ActionOnUnmanage ActionOnUnmanageResponseV3 `pulumi:"actionOnUnmanage"`
+	// All of the changes predicted by the deployment stack what-if operation.
+	Changes DeploymentStacksWhatIfChangeResponse `pulumi:"changes"`
+	// The correlation id of the last Deployment stack upsert or delete operation. It is in GUID format and is used for tracing.
+	CorrelationId string `pulumi:"correlationId"`
+	// The debug setting of the deployment.
+	DebugSetting *DeploymentStacksDebugSettingResponse `pulumi:"debugSetting"`
+	// Defines how resources deployed by the stack are locked.
+	DenySettings DenySettingsResponse `pulumi:"denySettings"`
+	// The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}').
+	DeploymentScope *string `pulumi:"deploymentScope"`
+	// The timestamp for when the deployment stack was last modified. This can be used to determine if the what-if data is still current.
+	DeploymentStackLastModified string `pulumi:"deploymentStackLastModified"`
+	// The deployment stack id to use as the basis for comparison.
+	DeploymentStackResourceId string `pulumi:"deploymentStackResourceId"`
+	// Deployment stack description. Max length of 4096 characters.
+	Description *string `pulumi:"description"`
+	// List of resource diagnostics detected by What-If operation.
+	Diagnostics []DeploymentStacksDiagnosticResponse `pulumi:"diagnostics"`
+	// The error detail.
+	Error commontypesv6.ErrorDetailResponse `pulumi:"error"`
+	// Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both.
+	Parameters map[string]DeploymentParameterResponse `pulumi:"parameters"`
+	// The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
+	ParametersLink *DeploymentStacksParametersLinkResponse `pulumi:"parametersLink"`
+	// State of the deployment stack.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The interval to persist the deployment stack what-if result in ISO 8601 format.
+	RetentionInterval string `pulumi:"retentionInterval"`
+	// The validation level of the deployment stack
+	ValidationLevel *string `pulumi:"validationLevel"`
+}
+
+// DeploymentStack WhatIfResult Properties
+type DeploymentStacksWhatIfResultPropertiesResponseV2Output struct{ *pulumi.OutputState }
+
+func (DeploymentStacksWhatIfResultPropertiesResponseV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentStacksWhatIfResultPropertiesResponseV2)(nil)).Elem()
+}
+
+func (o DeploymentStacksWhatIfResultPropertiesResponseV2Output) ToDeploymentStacksWhatIfResultPropertiesResponseV2Output() DeploymentStacksWhatIfResultPropertiesResponseV2Output {
+	return o
+}
+
+func (o DeploymentStacksWhatIfResultPropertiesResponseV2Output) ToDeploymentStacksWhatIfResultPropertiesResponseV2OutputWithContext(ctx context.Context) DeploymentStacksWhatIfResultPropertiesResponseV2Output {
+	return o
+}
+
+// Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.
+func (o DeploymentStacksWhatIfResultPropertiesResponseV2Output) ActionOnUnmanage() ActionOnUnmanageResponseV3Output {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV2) ActionOnUnmanageResponseV3 {
+		return v.ActionOnUnmanage
+	}).(ActionOnUnmanageResponseV3Output)
+}
+
+// All of the changes predicted by the deployment stack what-if operation.
+func (o DeploymentStacksWhatIfResultPropertiesResponseV2Output) Changes() DeploymentStacksWhatIfChangeResponseOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV2) DeploymentStacksWhatIfChangeResponse {
+		return v.Changes
+	}).(DeploymentStacksWhatIfChangeResponseOutput)
+}
+
+// The correlation id of the last Deployment stack upsert or delete operation. It is in GUID format and is used for tracing.
+func (o DeploymentStacksWhatIfResultPropertiesResponseV2Output) CorrelationId() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV2) string { return v.CorrelationId }).(pulumi.StringOutput)
+}
+
+// The debug setting of the deployment.
+func (o DeploymentStacksWhatIfResultPropertiesResponseV2Output) DebugSetting() DeploymentStacksDebugSettingResponsePtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV2) *DeploymentStacksDebugSettingResponse {
+		return v.DebugSetting
+	}).(DeploymentStacksDebugSettingResponsePtrOutput)
+}
+
+// Defines how resources deployed by the stack are locked.
+func (o DeploymentStacksWhatIfResultPropertiesResponseV2Output) DenySettings() DenySettingsResponseOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV2) DenySettingsResponse { return v.DenySettings }).(DenySettingsResponseOutput)
+}
+
+// The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}').
+func (o DeploymentStacksWhatIfResultPropertiesResponseV2Output) DeploymentScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV2) *string { return v.DeploymentScope }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp for when the deployment stack was last modified. This can be used to determine if the what-if data is still current.
+func (o DeploymentStacksWhatIfResultPropertiesResponseV2Output) DeploymentStackLastModified() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV2) string { return v.DeploymentStackLastModified }).(pulumi.StringOutput)
+}
+
+// The deployment stack id to use as the basis for comparison.
+func (o DeploymentStacksWhatIfResultPropertiesResponseV2Output) DeploymentStackResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV2) string { return v.DeploymentStackResourceId }).(pulumi.StringOutput)
+}
+
+// Deployment stack description. Max length of 4096 characters.
+func (o DeploymentStacksWhatIfResultPropertiesResponseV2Output) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV2) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// List of resource diagnostics detected by What-If operation.
+func (o DeploymentStacksWhatIfResultPropertiesResponseV2Output) Diagnostics() DeploymentStacksDiagnosticResponseArrayOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV2) []DeploymentStacksDiagnosticResponse {
+		return v.Diagnostics
+	}).(DeploymentStacksDiagnosticResponseArrayOutput)
+}
+
+// The error detail.
+func (o DeploymentStacksWhatIfResultPropertiesResponseV2Output) Error() commontypesv6.ErrorDetailResponseOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV2) commontypesv6.ErrorDetailResponse {
+		return v.Error
+	}).(commontypesv6.ErrorDetailResponseOutput)
+}
+
+// Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both.
+func (o DeploymentStacksWhatIfResultPropertiesResponseV2Output) Parameters() DeploymentParameterResponseMapOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV2) map[string]DeploymentParameterResponse {
+		return v.Parameters
+	}).(DeploymentParameterResponseMapOutput)
+}
+
+// The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
+func (o DeploymentStacksWhatIfResultPropertiesResponseV2Output) ParametersLink() DeploymentStacksParametersLinkResponsePtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV2) *DeploymentStacksParametersLinkResponse {
+		return v.ParametersLink
+	}).(DeploymentStacksParametersLinkResponsePtrOutput)
+}
+
+// State of the deployment stack.
+func (o DeploymentStacksWhatIfResultPropertiesResponseV2Output) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV2) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The interval to persist the deployment stack what-if result in ISO 8601 format.
+func (o DeploymentStacksWhatIfResultPropertiesResponseV2Output) RetentionInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV2) string { return v.RetentionInterval }).(pulumi.StringOutput)
+}
+
+// The validation level of the deployment stack
+func (o DeploymentStacksWhatIfResultPropertiesResponseV2Output) ValidationLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentStacksWhatIfResultPropertiesResponseV2) *string { return v.ValidationLevel }).(pulumi.StringPtrOutput)
 }
 
 // The environment variable to pass to the script in the container instance.
@@ -2267,372 +4972,6 @@ func (o EnvironmentVariableResponseArrayOutput) Index(i pulumi.IntInput) Environ
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvironmentVariableResponse {
 		return vs[0].([]EnvironmentVariableResponse)[vs[1].(int)]
 	}).(EnvironmentVariableResponseOutput)
-}
-
-// The resource management error additional info.
-type ErrorAdditionalInfoResponse struct {
-	// The additional info.
-	Info interface{} `pulumi:"info"`
-	// The additional info type.
-	Type string `pulumi:"type"`
-}
-
-// The resource management error additional info.
-type ErrorAdditionalInfoResponseOutput struct{ *pulumi.OutputState }
-
-func (ErrorAdditionalInfoResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ErrorAdditionalInfoResponse)(nil)).Elem()
-}
-
-func (o ErrorAdditionalInfoResponseOutput) ToErrorAdditionalInfoResponseOutput() ErrorAdditionalInfoResponseOutput {
-	return o
-}
-
-func (o ErrorAdditionalInfoResponseOutput) ToErrorAdditionalInfoResponseOutputWithContext(ctx context.Context) ErrorAdditionalInfoResponseOutput {
-	return o
-}
-
-// The additional info.
-func (o ErrorAdditionalInfoResponseOutput) Info() pulumi.AnyOutput {
-	return o.ApplyT(func(v ErrorAdditionalInfoResponse) interface{} { return v.Info }).(pulumi.AnyOutput)
-}
-
-// The additional info type.
-func (o ErrorAdditionalInfoResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ErrorAdditionalInfoResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type ErrorAdditionalInfoResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (ErrorAdditionalInfoResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ErrorAdditionalInfoResponse)(nil)).Elem()
-}
-
-func (o ErrorAdditionalInfoResponseArrayOutput) ToErrorAdditionalInfoResponseArrayOutput() ErrorAdditionalInfoResponseArrayOutput {
-	return o
-}
-
-func (o ErrorAdditionalInfoResponseArrayOutput) ToErrorAdditionalInfoResponseArrayOutputWithContext(ctx context.Context) ErrorAdditionalInfoResponseArrayOutput {
-	return o
-}
-
-func (o ErrorAdditionalInfoResponseArrayOutput) Index(i pulumi.IntInput) ErrorAdditionalInfoResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorAdditionalInfoResponse {
-		return vs[0].([]ErrorAdditionalInfoResponse)[vs[1].(int)]
-	}).(ErrorAdditionalInfoResponseOutput)
-}
-
-// The error detail.
-type ErrorDetailResponse struct {
-	// The error additional info.
-	AdditionalInfo []ErrorAdditionalInfoResponse `pulumi:"additionalInfo"`
-	// The error code.
-	Code string `pulumi:"code"`
-	// The error details.
-	Details []ErrorDetailResponse `pulumi:"details"`
-	// The error message.
-	Message string `pulumi:"message"`
-	// The error target.
-	Target string `pulumi:"target"`
-}
-
-// The error detail.
-type ErrorDetailResponseOutput struct{ *pulumi.OutputState }
-
-func (ErrorDetailResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ErrorDetailResponse)(nil)).Elem()
-}
-
-func (o ErrorDetailResponseOutput) ToErrorDetailResponseOutput() ErrorDetailResponseOutput {
-	return o
-}
-
-func (o ErrorDetailResponseOutput) ToErrorDetailResponseOutputWithContext(ctx context.Context) ErrorDetailResponseOutput {
-	return o
-}
-
-// The error additional info.
-func (o ErrorDetailResponseOutput) AdditionalInfo() ErrorAdditionalInfoResponseArrayOutput {
-	return o.ApplyT(func(v ErrorDetailResponse) []ErrorAdditionalInfoResponse { return v.AdditionalInfo }).(ErrorAdditionalInfoResponseArrayOutput)
-}
-
-// The error code.
-func (o ErrorDetailResponseOutput) Code() pulumi.StringOutput {
-	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Code }).(pulumi.StringOutput)
-}
-
-// The error details.
-func (o ErrorDetailResponseOutput) Details() ErrorDetailResponseArrayOutput {
-	return o.ApplyT(func(v ErrorDetailResponse) []ErrorDetailResponse { return v.Details }).(ErrorDetailResponseArrayOutput)
-}
-
-// The error message.
-func (o ErrorDetailResponseOutput) Message() pulumi.StringOutput {
-	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Message }).(pulumi.StringOutput)
-}
-
-// The error target.
-func (o ErrorDetailResponseOutput) Target() pulumi.StringOutput {
-	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Target }).(pulumi.StringOutput)
-}
-
-type ErrorDetailResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ErrorDetailResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ErrorDetailResponse)(nil)).Elem()
-}
-
-func (o ErrorDetailResponsePtrOutput) ToErrorDetailResponsePtrOutput() ErrorDetailResponsePtrOutput {
-	return o
-}
-
-func (o ErrorDetailResponsePtrOutput) ToErrorDetailResponsePtrOutputWithContext(ctx context.Context) ErrorDetailResponsePtrOutput {
-	return o
-}
-
-func (o ErrorDetailResponsePtrOutput) Elem() ErrorDetailResponseOutput {
-	return o.ApplyT(func(v *ErrorDetailResponse) ErrorDetailResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ErrorDetailResponse
-		return ret
-	}).(ErrorDetailResponseOutput)
-}
-
-// The error additional info.
-func (o ErrorDetailResponsePtrOutput) AdditionalInfo() ErrorAdditionalInfoResponseArrayOutput {
-	return o.ApplyT(func(v *ErrorDetailResponse) []ErrorAdditionalInfoResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AdditionalInfo
-	}).(ErrorAdditionalInfoResponseArrayOutput)
-}
-
-// The error code.
-func (o ErrorDetailResponsePtrOutput) Code() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorDetailResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Code
-	}).(pulumi.StringPtrOutput)
-}
-
-// The error details.
-func (o ErrorDetailResponsePtrOutput) Details() ErrorDetailResponseArrayOutput {
-	return o.ApplyT(func(v *ErrorDetailResponse) []ErrorDetailResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Details
-	}).(ErrorDetailResponseArrayOutput)
-}
-
-// The error message.
-func (o ErrorDetailResponsePtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorDetailResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Message
-	}).(pulumi.StringPtrOutput)
-}
-
-// The error target.
-func (o ErrorDetailResponsePtrOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorDetailResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Target
-	}).(pulumi.StringPtrOutput)
-}
-
-type ErrorDetailResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (ErrorDetailResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ErrorDetailResponse)(nil)).Elem()
-}
-
-func (o ErrorDetailResponseArrayOutput) ToErrorDetailResponseArrayOutput() ErrorDetailResponseArrayOutput {
-	return o
-}
-
-func (o ErrorDetailResponseArrayOutput) ToErrorDetailResponseArrayOutputWithContext(ctx context.Context) ErrorDetailResponseArrayOutput {
-	return o
-}
-
-func (o ErrorDetailResponseArrayOutput) Index(i pulumi.IntInput) ErrorDetailResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorDetailResponse {
-		return vs[0].([]ErrorDetailResponse)[vs[1].(int)]
-	}).(ErrorDetailResponseOutput)
-}
-
-// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.).
-type ErrorResponseResponse struct {
-	// The error additional info.
-	AdditionalInfo []ErrorAdditionalInfoResponse `pulumi:"additionalInfo"`
-	// The error code.
-	Code *string `pulumi:"code"`
-	// The error details.
-	Details []ErrorResponseResponse `pulumi:"details"`
-	// The error object.
-	Error *ErrorDetailResponse `pulumi:"error"`
-	// The error message.
-	Message *string `pulumi:"message"`
-	// The error target.
-	Target *string `pulumi:"target"`
-}
-
-// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.).
-type ErrorResponseResponseOutput struct{ *pulumi.OutputState }
-
-func (ErrorResponseResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ErrorResponseResponse)(nil)).Elem()
-}
-
-func (o ErrorResponseResponseOutput) ToErrorResponseResponseOutput() ErrorResponseResponseOutput {
-	return o
-}
-
-func (o ErrorResponseResponseOutput) ToErrorResponseResponseOutputWithContext(ctx context.Context) ErrorResponseResponseOutput {
-	return o
-}
-
-// The error additional info.
-func (o ErrorResponseResponseOutput) AdditionalInfo() ErrorAdditionalInfoResponseArrayOutput {
-	return o.ApplyT(func(v ErrorResponseResponse) []ErrorAdditionalInfoResponse { return v.AdditionalInfo }).(ErrorAdditionalInfoResponseArrayOutput)
-}
-
-// The error code.
-func (o ErrorResponseResponseOutput) Code() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ErrorResponseResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
-}
-
-// The error details.
-func (o ErrorResponseResponseOutput) Details() ErrorResponseResponseArrayOutput {
-	return o.ApplyT(func(v ErrorResponseResponse) []ErrorResponseResponse { return v.Details }).(ErrorResponseResponseArrayOutput)
-}
-
-// The error object.
-func (o ErrorResponseResponseOutput) Error() ErrorDetailResponsePtrOutput {
-	return o.ApplyT(func(v ErrorResponseResponse) *ErrorDetailResponse { return v.Error }).(ErrorDetailResponsePtrOutput)
-}
-
-// The error message.
-func (o ErrorResponseResponseOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ErrorResponseResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
-}
-
-// The error target.
-func (o ErrorResponseResponseOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ErrorResponseResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
-}
-
-type ErrorResponseResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ErrorResponseResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ErrorResponseResponse)(nil)).Elem()
-}
-
-func (o ErrorResponseResponsePtrOutput) ToErrorResponseResponsePtrOutput() ErrorResponseResponsePtrOutput {
-	return o
-}
-
-func (o ErrorResponseResponsePtrOutput) ToErrorResponseResponsePtrOutputWithContext(ctx context.Context) ErrorResponseResponsePtrOutput {
-	return o
-}
-
-func (o ErrorResponseResponsePtrOutput) Elem() ErrorResponseResponseOutput {
-	return o.ApplyT(func(v *ErrorResponseResponse) ErrorResponseResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ErrorResponseResponse
-		return ret
-	}).(ErrorResponseResponseOutput)
-}
-
-// The error additional info.
-func (o ErrorResponseResponsePtrOutput) AdditionalInfo() ErrorAdditionalInfoResponseArrayOutput {
-	return o.ApplyT(func(v *ErrorResponseResponse) []ErrorAdditionalInfoResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AdditionalInfo
-	}).(ErrorAdditionalInfoResponseArrayOutput)
-}
-
-// The error code.
-func (o ErrorResponseResponsePtrOutput) Code() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorResponseResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Code
-	}).(pulumi.StringPtrOutput)
-}
-
-// The error details.
-func (o ErrorResponseResponsePtrOutput) Details() ErrorResponseResponseArrayOutput {
-	return o.ApplyT(func(v *ErrorResponseResponse) []ErrorResponseResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Details
-	}).(ErrorResponseResponseArrayOutput)
-}
-
-// The error object.
-func (o ErrorResponseResponsePtrOutput) Error() ErrorDetailResponsePtrOutput {
-	return o.ApplyT(func(v *ErrorResponseResponse) *ErrorDetailResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Error
-	}).(ErrorDetailResponsePtrOutput)
-}
-
-// The error message.
-func (o ErrorResponseResponsePtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorResponseResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Message
-	}).(pulumi.StringPtrOutput)
-}
-
-// The error target.
-func (o ErrorResponseResponsePtrOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorResponseResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Target
-	}).(pulumi.StringPtrOutput)
-}
-
-type ErrorResponseResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (ErrorResponseResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ErrorResponseResponse)(nil)).Elem()
-}
-
-func (o ErrorResponseResponseArrayOutput) ToErrorResponseResponseArrayOutput() ErrorResponseResponseArrayOutput {
-	return o
-}
-
-func (o ErrorResponseResponseArrayOutput) ToErrorResponseResponseArrayOutputWithContext(ctx context.Context) ErrorResponseResponseArrayOutput {
-	return o
-}
-
-func (o ErrorResponseResponseArrayOutput) Index(i pulumi.IntInput) ErrorResponseResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorResponseResponse {
-		return vs[0].([]ErrorResponseResponse)[vs[1].(int)]
-	}).(ErrorResponseResponseOutput)
 }
 
 // Specifies whether template expressions are evaluated within the scope of the parent template or nested template.
@@ -3512,9 +5851,103 @@ func (o KeyVaultParameterReferencePtrOutput) SecretVersion() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Azure Key Vault parameter reference.
+type KeyVaultParameterReferenceResponse struct {
+	// Azure Key Vault reference.
+	KeyVault KeyVaultReferenceResponse `pulumi:"keyVault"`
+	// Azure Key Vault secret name.
+	SecretName string `pulumi:"secretName"`
+	// Azure Key Vault secret version.
+	SecretVersion *string `pulumi:"secretVersion"`
+}
+
+// Azure Key Vault parameter reference.
+type KeyVaultParameterReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultParameterReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultParameterReferenceResponse)(nil)).Elem()
+}
+
+func (o KeyVaultParameterReferenceResponseOutput) ToKeyVaultParameterReferenceResponseOutput() KeyVaultParameterReferenceResponseOutput {
+	return o
+}
+
+func (o KeyVaultParameterReferenceResponseOutput) ToKeyVaultParameterReferenceResponseOutputWithContext(ctx context.Context) KeyVaultParameterReferenceResponseOutput {
+	return o
+}
+
+// Azure Key Vault reference.
+func (o KeyVaultParameterReferenceResponseOutput) KeyVault() KeyVaultReferenceResponseOutput {
+	return o.ApplyT(func(v KeyVaultParameterReferenceResponse) KeyVaultReferenceResponse { return v.KeyVault }).(KeyVaultReferenceResponseOutput)
+}
+
+// Azure Key Vault secret name.
+func (o KeyVaultParameterReferenceResponseOutput) SecretName() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultParameterReferenceResponse) string { return v.SecretName }).(pulumi.StringOutput)
+}
+
+// Azure Key Vault secret version.
+func (o KeyVaultParameterReferenceResponseOutput) SecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyVaultParameterReferenceResponse) *string { return v.SecretVersion }).(pulumi.StringPtrOutput)
+}
+
+type KeyVaultParameterReferenceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultParameterReferenceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyVaultParameterReferenceResponse)(nil)).Elem()
+}
+
+func (o KeyVaultParameterReferenceResponsePtrOutput) ToKeyVaultParameterReferenceResponsePtrOutput() KeyVaultParameterReferenceResponsePtrOutput {
+	return o
+}
+
+func (o KeyVaultParameterReferenceResponsePtrOutput) ToKeyVaultParameterReferenceResponsePtrOutputWithContext(ctx context.Context) KeyVaultParameterReferenceResponsePtrOutput {
+	return o
+}
+
+func (o KeyVaultParameterReferenceResponsePtrOutput) Elem() KeyVaultParameterReferenceResponseOutput {
+	return o.ApplyT(func(v *KeyVaultParameterReferenceResponse) KeyVaultParameterReferenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret KeyVaultParameterReferenceResponse
+		return ret
+	}).(KeyVaultParameterReferenceResponseOutput)
+}
+
+// Azure Key Vault reference.
+func (o KeyVaultParameterReferenceResponsePtrOutput) KeyVault() KeyVaultReferenceResponsePtrOutput {
+	return o.ApplyT(func(v *KeyVaultParameterReferenceResponse) *KeyVaultReferenceResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyVault
+	}).(KeyVaultReferenceResponsePtrOutput)
+}
+
+// Azure Key Vault secret name.
+func (o KeyVaultParameterReferenceResponsePtrOutput) SecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultParameterReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Key Vault secret version.
+func (o KeyVaultParameterReferenceResponsePtrOutput) SecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultParameterReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
 // Azure Key Vault reference.
 type KeyVaultReference struct {
-	// Azure Key Vault resource id.
+	// Azure Key Vault resourceId.
 	Id string `pulumi:"id"`
 }
 
@@ -3531,7 +5964,7 @@ type KeyVaultReferenceInput interface {
 
 // Azure Key Vault reference.
 type KeyVaultReferenceArgs struct {
-	// Azure Key Vault resource id.
+	// Azure Key Vault resourceId.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -3613,7 +6046,7 @@ func (o KeyVaultReferenceOutput) ToKeyVaultReferencePtrOutputWithContext(ctx con
 	}).(KeyVaultReferencePtrOutput)
 }
 
-// Azure Key Vault resource id.
+// Azure Key Vault resourceId.
 func (o KeyVaultReferenceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVaultReference) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -3642,9 +6075,69 @@ func (o KeyVaultReferencePtrOutput) Elem() KeyVaultReferenceOutput {
 	}).(KeyVaultReferenceOutput)
 }
 
-// Azure Key Vault resource id.
+// Azure Key Vault resourceId.
 func (o KeyVaultReferencePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KeyVaultReference) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Azure Key Vault reference.
+type KeyVaultReferenceResponse struct {
+	// Azure Key Vault resourceId.
+	Id string `pulumi:"id"`
+}
+
+// Azure Key Vault reference.
+type KeyVaultReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVaultReferenceResponse)(nil)).Elem()
+}
+
+func (o KeyVaultReferenceResponseOutput) ToKeyVaultReferenceResponseOutput() KeyVaultReferenceResponseOutput {
+	return o
+}
+
+func (o KeyVaultReferenceResponseOutput) ToKeyVaultReferenceResponseOutputWithContext(ctx context.Context) KeyVaultReferenceResponseOutput {
+	return o
+}
+
+// Azure Key Vault resourceId.
+func (o KeyVaultReferenceResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVaultReferenceResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type KeyVaultReferenceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (KeyVaultReferenceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyVaultReferenceResponse)(nil)).Elem()
+}
+
+func (o KeyVaultReferenceResponsePtrOutput) ToKeyVaultReferenceResponsePtrOutput() KeyVaultReferenceResponsePtrOutput {
+	return o
+}
+
+func (o KeyVaultReferenceResponsePtrOutput) ToKeyVaultReferenceResponsePtrOutputWithContext(ctx context.Context) KeyVaultReferenceResponsePtrOutput {
+	return o
+}
+
+func (o KeyVaultReferenceResponsePtrOutput) Elem() KeyVaultReferenceResponseOutput {
+	return o.ApplyT(func(v *KeyVaultReferenceResponse) KeyVaultReferenceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret KeyVaultReferenceResponse
+		return ret
+	}).(KeyVaultReferenceResponseOutput)
+}
+
+// Azure Key Vault resourceId.
+func (o KeyVaultReferenceResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultReferenceResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -3818,7 +6311,7 @@ func (o LinkedTemplateArtifactResponseArrayOutput) Index(i pulumi.IntInput) Link
 type ManagedResourceReferenceResponse struct {
 	// denyAssignment settings applied to the resource.
 	DenyStatus *string `pulumi:"denyStatus"`
-	// The resourceId of a resource managed by the deployment stack.
+	// The ARM Resource ID of a resource managed by the deployment stack.
 	Id string `pulumi:"id"`
 	// Current management state of the resource in the deployment stack.
 	Status *string `pulumi:"status"`
@@ -3831,12 +6324,8 @@ func (val *ManagedResourceReferenceResponse) Defaults() *ManagedResourceReferenc
 	}
 	tmp := *val
 	if tmp.DenyStatus == nil {
-		denyStatus_ := "None"
+		denyStatus_ := "none"
 		tmp.DenyStatus = &denyStatus_
-	}
-	if tmp.Status == nil {
-		status_ := "None"
-		tmp.Status = &status_
 	}
 	return &tmp
 }
@@ -3861,7 +6350,7 @@ func (o ManagedResourceReferenceResponseOutput) DenyStatus() pulumi.StringPtrOut
 	return o.ApplyT(func(v ManagedResourceReferenceResponse) *string { return v.DenyStatus }).(pulumi.StringPtrOutput)
 }
 
-// The resourceId of a resource managed by the deployment stack.
+// The ARM Resource ID of a resource managed by the deployment stack.
 func (o ManagedResourceReferenceResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedResourceReferenceResponse) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -5155,15 +7644,15 @@ func (o ResourceGroupPropertiesResponseOutput) ProvisioningState() pulumi.String
 	return o.ApplyT(func(v ResourceGroupPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The resource Id extended model.
+// The resourceId extended model. This is used to document failed resources with a resourceId and a corresponding error.
 type ResourceReferenceExtendedResponse struct {
-	// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.).
-	Error *ErrorResponseResponse `pulumi:"error"`
-	// The resourceId of a resource managed by the deployment stack.
+	// The error detail.
+	Error commontypesv6.ErrorDetailResponse `pulumi:"error"`
+	// The ARM Resource ID of a resource managed by the deployment stack.
 	Id string `pulumi:"id"`
 }
 
-// The resource Id extended model.
+// The resourceId extended model. This is used to document failed resources with a resourceId and a corresponding error.
 type ResourceReferenceExtendedResponseOutput struct{ *pulumi.OutputState }
 
 func (ResourceReferenceExtendedResponseOutput) ElementType() reflect.Type {
@@ -5178,12 +7667,12 @@ func (o ResourceReferenceExtendedResponseOutput) ToResourceReferenceExtendedResp
 	return o
 }
 
-// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.).
-func (o ResourceReferenceExtendedResponseOutput) Error() ErrorResponseResponsePtrOutput {
-	return o.ApplyT(func(v ResourceReferenceExtendedResponse) *ErrorResponseResponse { return v.Error }).(ErrorResponseResponsePtrOutput)
+// The error detail.
+func (o ResourceReferenceExtendedResponseOutput) Error() commontypesv6.ErrorDetailResponseOutput {
+	return o.ApplyT(func(v ResourceReferenceExtendedResponse) commontypesv6.ErrorDetailResponse { return v.Error }).(commontypesv6.ErrorDetailResponseOutput)
 }
 
-// The resourceId of a resource managed by the deployment stack.
+// The ARM Resource ID of a resource managed by the deployment stack.
 func (o ResourceReferenceExtendedResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceReferenceExtendedResponse) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -5208,13 +7697,13 @@ func (o ResourceReferenceExtendedResponseArrayOutput) Index(i pulumi.IntInput) R
 	}).(ResourceReferenceExtendedResponseOutput)
 }
 
-// The resource Id model.
+// The resourceId model.
 type ResourceReferenceResponse struct {
-	// The resourceId of a resource managed by the deployment stack.
+	// The ARM Resource ID of a resource managed by the deployment stack.
 	Id string `pulumi:"id"`
 }
 
-// The resource Id model.
+// The resourceId model.
 type ResourceReferenceResponseOutput struct{ *pulumi.OutputState }
 
 func (ResourceReferenceResponseOutput) ElementType() reflect.Type {
@@ -5229,7 +7718,7 @@ func (o ResourceReferenceResponseOutput) ToResourceReferenceResponseOutputWithCo
 	return o
 }
 
-// The resourceId of a resource managed by the deployment stack.
+// The ARM Resource ID of a resource managed by the deployment stack.
 func (o ResourceReferenceResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceReferenceResponse) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -5261,7 +7750,7 @@ type ScriptStatusResponse struct {
 	// End time of the script execution.
 	EndTime string `pulumi:"endTime"`
 	// Error that is relayed from the script execution.
-	Error *ErrorResponseResponse `pulumi:"error"`
+	Error *commontypesv1.ErrorResponseResponse `pulumi:"error"`
 	// Time the deployment script resource will expire.
 	ExpirationTime string `pulumi:"expirationTime"`
 	// Start time of the script execution.
@@ -5296,8 +7785,8 @@ func (o ScriptStatusResponseOutput) EndTime() pulumi.StringOutput {
 }
 
 // Error that is relayed from the script execution.
-func (o ScriptStatusResponseOutput) Error() ErrorResponseResponsePtrOutput {
-	return o.ApplyT(func(v ScriptStatusResponse) *ErrorResponseResponse { return v.Error }).(ErrorResponseResponsePtrOutput)
+func (o ScriptStatusResponseOutput) Error() commontypesv1.ErrorResponseResponsePtrOutput {
+	return o.ApplyT(func(v ScriptStatusResponse) *commontypesv1.ErrorResponseResponse { return v.Error }).(commontypesv1.ErrorResponseResponsePtrOutput)
 }
 
 // Time the deployment script resource will expire.
@@ -5931,67 +8420,6 @@ func (o StorageAccountConfigurationResponsePtrOutput) StorageAccountName() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
-}
-
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponseOutput struct{ *pulumi.OutputState }
-
-func (SystemDataResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
-	return o
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
-	return o
-}
-
-// The timestamp of resource creation (UTC).
-func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
-}
-
 // A dictionary of name and value pairs.
 type Tags struct {
 	Tags map[string]string `pulumi:"tags"`
@@ -6500,7 +8928,58 @@ func (o ZoneMappingResponseArrayOutput) Index(i pulumi.IntInput) ZoneMappingResp
 	}).(ZoneMappingResponseOutput)
 }
 
+type DeploymentExtensionConfigItemMapMap map[string]DeploymentExtensionConfigItemMapInput
+
+func (DeploymentExtensionConfigItemMapMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]map[string]DeploymentExtensionConfigItem)(nil)).Elem()
+}
+
+func (i DeploymentExtensionConfigItemMapMap) ToDeploymentExtensionConfigItemMapMapOutput() DeploymentExtensionConfigItemMapMapOutput {
+	return i.ToDeploymentExtensionConfigItemMapMapOutputWithContext(context.Background())
+}
+
+func (i DeploymentExtensionConfigItemMapMap) ToDeploymentExtensionConfigItemMapMapOutputWithContext(ctx context.Context) DeploymentExtensionConfigItemMapMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentExtensionConfigItemMapMapOutput)
+}
+
+// DeploymentExtensionConfigItemMapMapInput is an input type that accepts DeploymentExtensionConfigItemMapMap and DeploymentExtensionConfigItemMapMapOutput values.
+// You can construct a concrete instance of `DeploymentExtensionConfigItemMapMapInput` via:
+//
+//	DeploymentExtensionConfigItemMapMap{ "key": DeploymentExtensionConfigItemMap{ "key": DeploymentExtensionConfigItemArgs{...} } }
+type DeploymentExtensionConfigItemMapMapInput interface {
+	pulumi.Input
+
+	ToDeploymentExtensionConfigItemMapMapOutput() DeploymentExtensionConfigItemMapMapOutput
+	ToDeploymentExtensionConfigItemMapMapOutputWithContext(context.Context) DeploymentExtensionConfigItemMapMapOutput
+}
+
+type DeploymentExtensionConfigItemMapMapOutput struct{ *pulumi.OutputState }
+
+func (DeploymentExtensionConfigItemMapMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]map[string]DeploymentExtensionConfigItem)(nil)).Elem()
+}
+
+func (o DeploymentExtensionConfigItemMapMapOutput) ToDeploymentExtensionConfigItemMapMapOutput() DeploymentExtensionConfigItemMapMapOutput {
+	return o
+}
+
+func (o DeploymentExtensionConfigItemMapMapOutput) ToDeploymentExtensionConfigItemMapMapOutputWithContext(ctx context.Context) DeploymentExtensionConfigItemMapMapOutput {
+	return o
+}
+
+func (o DeploymentExtensionConfigItemMapMapOutput) MapIndex(k pulumi.StringInput) DeploymentExtensionConfigItemMapOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) map[string]DeploymentExtensionConfigItem {
+		return vs[0].(map[string]map[string]DeploymentExtensionConfigItem)[vs[1].(string)]
+	}).(DeploymentExtensionConfigItemMapOutput)
+}
+
 func init() {
+	pulumi.RegisterOutputType(ActionOnUnmanageOutput{})
+	pulumi.RegisterOutputType(ActionOnUnmanagePtrOutput{})
+	pulumi.RegisterOutputType(ActionOnUnmanageResponseOutput{})
+	pulumi.RegisterOutputType(ActionOnUnmanageResponseV1Output{})
+	pulumi.RegisterOutputType(ActionOnUnmanageResponseV2Output{})
+	pulumi.RegisterOutputType(ActionOnUnmanageResponseV3Output{})
 	pulumi.RegisterOutputType(AliasPathMetadataResponseOutput{})
 	pulumi.RegisterOutputType(AliasPathResponseOutput{})
 	pulumi.RegisterOutputType(AliasPathResponseArrayOutput{})
@@ -6516,41 +8995,69 @@ func init() {
 	pulumi.RegisterOutputType(ContainerConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ContainerConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(ContainerConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ContainerGroupSubnetIdOutput{})
+	pulumi.RegisterOutputType(ContainerGroupSubnetIdArrayOutput{})
+	pulumi.RegisterOutputType(ContainerGroupSubnetIdResponseOutput{})
+	pulumi.RegisterOutputType(ContainerGroupSubnetIdResponseArrayOutput{})
 	pulumi.RegisterOutputType(DebugSettingOutput{})
 	pulumi.RegisterOutputType(DebugSettingPtrOutput{})
 	pulumi.RegisterOutputType(DebugSettingResponseOutput{})
 	pulumi.RegisterOutputType(DenySettingsOutput{})
+	pulumi.RegisterOutputType(DenySettingsPtrOutput{})
 	pulumi.RegisterOutputType(DenySettingsResponseOutput{})
+	pulumi.RegisterOutputType(DenySettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(DependencyResponseOutput{})
 	pulumi.RegisterOutputType(DependencyResponseArrayOutput{})
+	pulumi.RegisterOutputType(DeploymentExtensionConfigItemOutput{})
+	pulumi.RegisterOutputType(DeploymentExtensionConfigItemMapOutput{})
+	pulumi.RegisterOutputType(DeploymentExtensionConfigItemResponseOutput{})
+	pulumi.RegisterOutputType(DeploymentExtensionConfigItemResponseMapOutput{})
+	pulumi.RegisterOutputType(DeploymentExtensionResponseOutput{})
+	pulumi.RegisterOutputType(DeploymentExternalInputOutput{})
+	pulumi.RegisterOutputType(DeploymentExternalInputMapOutput{})
+	pulumi.RegisterOutputType(DeploymentExternalInputDefinitionOutput{})
+	pulumi.RegisterOutputType(DeploymentExternalInputDefinitionMapOutput{})
 	pulumi.RegisterOutputType(DeploymentParameterOutput{})
 	pulumi.RegisterOutputType(DeploymentParameterMapOutput{})
+	pulumi.RegisterOutputType(DeploymentParameterResponseOutput{})
+	pulumi.RegisterOutputType(DeploymentParameterResponseMapOutput{})
 	pulumi.RegisterOutputType(DeploymentPropertiesOutput{})
 	pulumi.RegisterOutputType(DeploymentPropertiesExtendedResponseOutput{})
-	pulumi.RegisterOutputType(DeploymentStackPropertiesActionOnUnmanageOutput{})
-	pulumi.RegisterOutputType(DeploymentStackPropertiesResponseActionOnUnmanageOutput{})
 	pulumi.RegisterOutputType(DeploymentStacksDebugSettingOutput{})
 	pulumi.RegisterOutputType(DeploymentStacksDebugSettingPtrOutput{})
 	pulumi.RegisterOutputType(DeploymentStacksDebugSettingResponseOutput{})
 	pulumi.RegisterOutputType(DeploymentStacksDebugSettingResponsePtrOutput{})
+	pulumi.RegisterOutputType(DeploymentStacksDiagnosticResponseOutput{})
+	pulumi.RegisterOutputType(DeploymentStacksDiagnosticResponseArrayOutput{})
 	pulumi.RegisterOutputType(DeploymentStacksParametersLinkOutput{})
 	pulumi.RegisterOutputType(DeploymentStacksParametersLinkPtrOutput{})
 	pulumi.RegisterOutputType(DeploymentStacksParametersLinkResponseOutput{})
 	pulumi.RegisterOutputType(DeploymentStacksParametersLinkResponsePtrOutput{})
 	pulumi.RegisterOutputType(DeploymentStacksTemplateLinkOutput{})
 	pulumi.RegisterOutputType(DeploymentStacksTemplateLinkPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentStacksWhatIfChangeResponseOutput{})
+	pulumi.RegisterOutputType(DeploymentStacksWhatIfChangeResponseDenySettingsChangeOutput{})
+	pulumi.RegisterOutputType(DeploymentStacksWhatIfChangeResponseDeploymentScopeChangeOutput{})
+	pulumi.RegisterOutputType(DeploymentStacksWhatIfChangeResponseDeploymentScopeChangePtrOutput{})
+	pulumi.RegisterOutputType(DeploymentStacksWhatIfPropertyChangeResponseOutput{})
+	pulumi.RegisterOutputType(DeploymentStacksWhatIfPropertyChangeResponseArrayOutput{})
+	pulumi.RegisterOutputType(DeploymentStacksWhatIfResourceChangeResponseOutput{})
+	pulumi.RegisterOutputType(DeploymentStacksWhatIfResourceChangeResponseArrayOutput{})
+	pulumi.RegisterOutputType(DeploymentStacksWhatIfResourceChangeResponseDenyStatusChangeOutput{})
+	pulumi.RegisterOutputType(DeploymentStacksWhatIfResourceChangeResponseDenyStatusChangePtrOutput{})
+	pulumi.RegisterOutputType(DeploymentStacksWhatIfResourceChangeResponseManagementStatusChangeOutput{})
+	pulumi.RegisterOutputType(DeploymentStacksWhatIfResourceChangeResponseManagementStatusChangePtrOutput{})
+	pulumi.RegisterOutputType(DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChangesOutput{})
+	pulumi.RegisterOutputType(DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChangesPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentStacksWhatIfResultPropertiesOutput{})
+	pulumi.RegisterOutputType(DeploymentStacksWhatIfResultPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentStacksWhatIfResultPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(DeploymentStacksWhatIfResultPropertiesResponseV1Output{})
+	pulumi.RegisterOutputType(DeploymentStacksWhatIfResultPropertiesResponseV2Output{})
 	pulumi.RegisterOutputType(EnvironmentVariableOutput{})
 	pulumi.RegisterOutputType(EnvironmentVariableArrayOutput{})
 	pulumi.RegisterOutputType(EnvironmentVariableResponseOutput{})
 	pulumi.RegisterOutputType(EnvironmentVariableResponseArrayOutput{})
-	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseOutput{})
-	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseArrayOutput{})
-	pulumi.RegisterOutputType(ErrorDetailResponseOutput{})
-	pulumi.RegisterOutputType(ErrorDetailResponsePtrOutput{})
-	pulumi.RegisterOutputType(ErrorDetailResponseArrayOutput{})
-	pulumi.RegisterOutputType(ErrorResponseResponseOutput{})
-	pulumi.RegisterOutputType(ErrorResponseResponsePtrOutput{})
-	pulumi.RegisterOutputType(ErrorResponseResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExpressionEvaluationOptionsOutput{})
 	pulumi.RegisterOutputType(ExpressionEvaluationOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationOutput{})
@@ -6565,8 +9072,12 @@ func init() {
 	pulumi.RegisterOutputType(IdentityResponseUserAssignedIdentitiesMapOutput{})
 	pulumi.RegisterOutputType(KeyVaultParameterReferenceOutput{})
 	pulumi.RegisterOutputType(KeyVaultParameterReferencePtrOutput{})
+	pulumi.RegisterOutputType(KeyVaultParameterReferenceResponseOutput{})
+	pulumi.RegisterOutputType(KeyVaultParameterReferenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(KeyVaultReferenceOutput{})
 	pulumi.RegisterOutputType(KeyVaultReferencePtrOutput{})
+	pulumi.RegisterOutputType(KeyVaultReferenceResponseOutput{})
+	pulumi.RegisterOutputType(KeyVaultReferenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(LinkedTemplateArtifactOutput{})
 	pulumi.RegisterOutputType(LinkedTemplateArtifactArrayOutput{})
 	pulumi.RegisterOutputType(LinkedTemplateArtifactResponseOutput{})
@@ -6607,7 +9118,6 @@ func init() {
 	pulumi.RegisterOutputType(StorageAccountConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(StorageAccountConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(StorageAccountConfigurationResponsePtrOutput{})
-	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(TagsOutput{})
 	pulumi.RegisterOutputType(TagsResponseOutput{})
 	pulumi.RegisterOutputType(TemplateLinkOutput{})
@@ -6619,4 +9129,5 @@ func init() {
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 	pulumi.RegisterOutputType(ZoneMappingResponseOutput{})
 	pulumi.RegisterOutputType(ZoneMappingResponseArrayOutput{})
+	pulumi.RegisterOutputType(DeploymentExtensionConfigItemMapMapOutput{})
 }

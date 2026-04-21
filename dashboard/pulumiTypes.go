@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -157,6 +158,761 @@ func (o AzureMonitorWorkspaceIntegrationResponseArrayOutput) Index(i pulumi.IntI
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AzureMonitorWorkspaceIntegrationResponse {
 		return vs[0].([]AzureMonitorWorkspaceIntegrationResponse)[vs[1].(int)]
 	}).(AzureMonitorWorkspaceIntegrationResponseOutput)
+}
+
+// Properties specific to the dashboard definition.
+type DashboardDefinitionProperties struct {
+	// The dashboard definition data in JSON format.
+	SerializedData *string `pulumi:"serializedData"`
+}
+
+// DashboardDefinitionPropertiesInput is an input type that accepts DashboardDefinitionPropertiesArgs and DashboardDefinitionPropertiesOutput values.
+// You can construct a concrete instance of `DashboardDefinitionPropertiesInput` via:
+//
+//	DashboardDefinitionPropertiesArgs{...}
+type DashboardDefinitionPropertiesInput interface {
+	pulumi.Input
+
+	ToDashboardDefinitionPropertiesOutput() DashboardDefinitionPropertiesOutput
+	ToDashboardDefinitionPropertiesOutputWithContext(context.Context) DashboardDefinitionPropertiesOutput
+}
+
+// Properties specific to the dashboard definition.
+type DashboardDefinitionPropertiesArgs struct {
+	// The dashboard definition data in JSON format.
+	SerializedData pulumi.StringPtrInput `pulumi:"serializedData"`
+}
+
+func (DashboardDefinitionPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardDefinitionProperties)(nil)).Elem()
+}
+
+func (i DashboardDefinitionPropertiesArgs) ToDashboardDefinitionPropertiesOutput() DashboardDefinitionPropertiesOutput {
+	return i.ToDashboardDefinitionPropertiesOutputWithContext(context.Background())
+}
+
+func (i DashboardDefinitionPropertiesArgs) ToDashboardDefinitionPropertiesOutputWithContext(ctx context.Context) DashboardDefinitionPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardDefinitionPropertiesOutput)
+}
+
+func (i DashboardDefinitionPropertiesArgs) ToDashboardDefinitionPropertiesPtrOutput() DashboardDefinitionPropertiesPtrOutput {
+	return i.ToDashboardDefinitionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i DashboardDefinitionPropertiesArgs) ToDashboardDefinitionPropertiesPtrOutputWithContext(ctx context.Context) DashboardDefinitionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardDefinitionPropertiesOutput).ToDashboardDefinitionPropertiesPtrOutputWithContext(ctx)
+}
+
+// DashboardDefinitionPropertiesPtrInput is an input type that accepts DashboardDefinitionPropertiesArgs, DashboardDefinitionPropertiesPtr and DashboardDefinitionPropertiesPtrOutput values.
+// You can construct a concrete instance of `DashboardDefinitionPropertiesPtrInput` via:
+//
+//	        DashboardDefinitionPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DashboardDefinitionPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToDashboardDefinitionPropertiesPtrOutput() DashboardDefinitionPropertiesPtrOutput
+	ToDashboardDefinitionPropertiesPtrOutputWithContext(context.Context) DashboardDefinitionPropertiesPtrOutput
+}
+
+type dashboardDefinitionPropertiesPtrType DashboardDefinitionPropertiesArgs
+
+func DashboardDefinitionPropertiesPtr(v *DashboardDefinitionPropertiesArgs) DashboardDefinitionPropertiesPtrInput {
+	return (*dashboardDefinitionPropertiesPtrType)(v)
+}
+
+func (*dashboardDefinitionPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DashboardDefinitionProperties)(nil)).Elem()
+}
+
+func (i *dashboardDefinitionPropertiesPtrType) ToDashboardDefinitionPropertiesPtrOutput() DashboardDefinitionPropertiesPtrOutput {
+	return i.ToDashboardDefinitionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *dashboardDefinitionPropertiesPtrType) ToDashboardDefinitionPropertiesPtrOutputWithContext(ctx context.Context) DashboardDefinitionPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DashboardDefinitionPropertiesPtrOutput)
+}
+
+// Properties specific to the dashboard definition.
+type DashboardDefinitionPropertiesOutput struct{ *pulumi.OutputState }
+
+func (DashboardDefinitionPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardDefinitionProperties)(nil)).Elem()
+}
+
+func (o DashboardDefinitionPropertiesOutput) ToDashboardDefinitionPropertiesOutput() DashboardDefinitionPropertiesOutput {
+	return o
+}
+
+func (o DashboardDefinitionPropertiesOutput) ToDashboardDefinitionPropertiesOutputWithContext(ctx context.Context) DashboardDefinitionPropertiesOutput {
+	return o
+}
+
+func (o DashboardDefinitionPropertiesOutput) ToDashboardDefinitionPropertiesPtrOutput() DashboardDefinitionPropertiesPtrOutput {
+	return o.ToDashboardDefinitionPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o DashboardDefinitionPropertiesOutput) ToDashboardDefinitionPropertiesPtrOutputWithContext(ctx context.Context) DashboardDefinitionPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DashboardDefinitionProperties) *DashboardDefinitionProperties {
+		return &v
+	}).(DashboardDefinitionPropertiesPtrOutput)
+}
+
+// The dashboard definition data in JSON format.
+func (o DashboardDefinitionPropertiesOutput) SerializedData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardDefinitionProperties) *string { return v.SerializedData }).(pulumi.StringPtrOutput)
+}
+
+type DashboardDefinitionPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (DashboardDefinitionPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DashboardDefinitionProperties)(nil)).Elem()
+}
+
+func (o DashboardDefinitionPropertiesPtrOutput) ToDashboardDefinitionPropertiesPtrOutput() DashboardDefinitionPropertiesPtrOutput {
+	return o
+}
+
+func (o DashboardDefinitionPropertiesPtrOutput) ToDashboardDefinitionPropertiesPtrOutputWithContext(ctx context.Context) DashboardDefinitionPropertiesPtrOutput {
+	return o
+}
+
+func (o DashboardDefinitionPropertiesPtrOutput) Elem() DashboardDefinitionPropertiesOutput {
+	return o.ApplyT(func(v *DashboardDefinitionProperties) DashboardDefinitionProperties {
+		if v != nil {
+			return *v
+		}
+		var ret DashboardDefinitionProperties
+		return ret
+	}).(DashboardDefinitionPropertiesOutput)
+}
+
+// The dashboard definition data in JSON format.
+func (o DashboardDefinitionPropertiesPtrOutput) SerializedData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DashboardDefinitionProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SerializedData
+	}).(pulumi.StringPtrOutput)
+}
+
+// Properties specific to the dashboard definition.
+type DashboardDefinitionPropertiesResponse struct {
+	// The provisioning state of the dashboard definition resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The dashboard definition data in JSON format.
+	SerializedData *string `pulumi:"serializedData"`
+}
+
+// Properties specific to the dashboard definition.
+type DashboardDefinitionPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (DashboardDefinitionPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DashboardDefinitionPropertiesResponse)(nil)).Elem()
+}
+
+func (o DashboardDefinitionPropertiesResponseOutput) ToDashboardDefinitionPropertiesResponseOutput() DashboardDefinitionPropertiesResponseOutput {
+	return o
+}
+
+func (o DashboardDefinitionPropertiesResponseOutput) ToDashboardDefinitionPropertiesResponseOutputWithContext(ctx context.Context) DashboardDefinitionPropertiesResponseOutput {
+	return o
+}
+
+// The provisioning state of the dashboard definition resource.
+func (o DashboardDefinitionPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v DashboardDefinitionPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The dashboard definition data in JSON format.
+func (o DashboardDefinitionPropertiesResponseOutput) SerializedData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DashboardDefinitionPropertiesResponse) *string { return v.SerializedData }).(pulumi.StringPtrOutput)
+}
+
+// Enterprise settings of a Grafana instance
+type EnterpriseConfigurations struct {
+	// The AutoRenew setting of the Enterprise subscription
+	MarketplaceAutoRenew *string `pulumi:"marketplaceAutoRenew"`
+	// The Plan Id of the Azure Marketplace subscription for the Enterprise plugins
+	MarketplacePlanId *string `pulumi:"marketplacePlanId"`
+}
+
+// EnterpriseConfigurationsInput is an input type that accepts EnterpriseConfigurationsArgs and EnterpriseConfigurationsOutput values.
+// You can construct a concrete instance of `EnterpriseConfigurationsInput` via:
+//
+//	EnterpriseConfigurationsArgs{...}
+type EnterpriseConfigurationsInput interface {
+	pulumi.Input
+
+	ToEnterpriseConfigurationsOutput() EnterpriseConfigurationsOutput
+	ToEnterpriseConfigurationsOutputWithContext(context.Context) EnterpriseConfigurationsOutput
+}
+
+// Enterprise settings of a Grafana instance
+type EnterpriseConfigurationsArgs struct {
+	// The AutoRenew setting of the Enterprise subscription
+	MarketplaceAutoRenew pulumi.StringPtrInput `pulumi:"marketplaceAutoRenew"`
+	// The Plan Id of the Azure Marketplace subscription for the Enterprise plugins
+	MarketplacePlanId pulumi.StringPtrInput `pulumi:"marketplacePlanId"`
+}
+
+func (EnterpriseConfigurationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseConfigurations)(nil)).Elem()
+}
+
+func (i EnterpriseConfigurationsArgs) ToEnterpriseConfigurationsOutput() EnterpriseConfigurationsOutput {
+	return i.ToEnterpriseConfigurationsOutputWithContext(context.Background())
+}
+
+func (i EnterpriseConfigurationsArgs) ToEnterpriseConfigurationsOutputWithContext(ctx context.Context) EnterpriseConfigurationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseConfigurationsOutput)
+}
+
+func (i EnterpriseConfigurationsArgs) ToEnterpriseConfigurationsPtrOutput() EnterpriseConfigurationsPtrOutput {
+	return i.ToEnterpriseConfigurationsPtrOutputWithContext(context.Background())
+}
+
+func (i EnterpriseConfigurationsArgs) ToEnterpriseConfigurationsPtrOutputWithContext(ctx context.Context) EnterpriseConfigurationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseConfigurationsOutput).ToEnterpriseConfigurationsPtrOutputWithContext(ctx)
+}
+
+// EnterpriseConfigurationsPtrInput is an input type that accepts EnterpriseConfigurationsArgs, EnterpriseConfigurationsPtr and EnterpriseConfigurationsPtrOutput values.
+// You can construct a concrete instance of `EnterpriseConfigurationsPtrInput` via:
+//
+//	        EnterpriseConfigurationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnterpriseConfigurationsPtrInput interface {
+	pulumi.Input
+
+	ToEnterpriseConfigurationsPtrOutput() EnterpriseConfigurationsPtrOutput
+	ToEnterpriseConfigurationsPtrOutputWithContext(context.Context) EnterpriseConfigurationsPtrOutput
+}
+
+type enterpriseConfigurationsPtrType EnterpriseConfigurationsArgs
+
+func EnterpriseConfigurationsPtr(v *EnterpriseConfigurationsArgs) EnterpriseConfigurationsPtrInput {
+	return (*enterpriseConfigurationsPtrType)(v)
+}
+
+func (*enterpriseConfigurationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnterpriseConfigurations)(nil)).Elem()
+}
+
+func (i *enterpriseConfigurationsPtrType) ToEnterpriseConfigurationsPtrOutput() EnterpriseConfigurationsPtrOutput {
+	return i.ToEnterpriseConfigurationsPtrOutputWithContext(context.Background())
+}
+
+func (i *enterpriseConfigurationsPtrType) ToEnterpriseConfigurationsPtrOutputWithContext(ctx context.Context) EnterpriseConfigurationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseConfigurationsPtrOutput)
+}
+
+// Enterprise settings of a Grafana instance
+type EnterpriseConfigurationsOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseConfigurationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseConfigurations)(nil)).Elem()
+}
+
+func (o EnterpriseConfigurationsOutput) ToEnterpriseConfigurationsOutput() EnterpriseConfigurationsOutput {
+	return o
+}
+
+func (o EnterpriseConfigurationsOutput) ToEnterpriseConfigurationsOutputWithContext(ctx context.Context) EnterpriseConfigurationsOutput {
+	return o
+}
+
+func (o EnterpriseConfigurationsOutput) ToEnterpriseConfigurationsPtrOutput() EnterpriseConfigurationsPtrOutput {
+	return o.ToEnterpriseConfigurationsPtrOutputWithContext(context.Background())
+}
+
+func (o EnterpriseConfigurationsOutput) ToEnterpriseConfigurationsPtrOutputWithContext(ctx context.Context) EnterpriseConfigurationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseConfigurations) *EnterpriseConfigurations {
+		return &v
+	}).(EnterpriseConfigurationsPtrOutput)
+}
+
+// The AutoRenew setting of the Enterprise subscription
+func (o EnterpriseConfigurationsOutput) MarketplaceAutoRenew() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnterpriseConfigurations) *string { return v.MarketplaceAutoRenew }).(pulumi.StringPtrOutput)
+}
+
+// The Plan Id of the Azure Marketplace subscription for the Enterprise plugins
+func (o EnterpriseConfigurationsOutput) MarketplacePlanId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnterpriseConfigurations) *string { return v.MarketplacePlanId }).(pulumi.StringPtrOutput)
+}
+
+type EnterpriseConfigurationsPtrOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseConfigurationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnterpriseConfigurations)(nil)).Elem()
+}
+
+func (o EnterpriseConfigurationsPtrOutput) ToEnterpriseConfigurationsPtrOutput() EnterpriseConfigurationsPtrOutput {
+	return o
+}
+
+func (o EnterpriseConfigurationsPtrOutput) ToEnterpriseConfigurationsPtrOutputWithContext(ctx context.Context) EnterpriseConfigurationsPtrOutput {
+	return o
+}
+
+func (o EnterpriseConfigurationsPtrOutput) Elem() EnterpriseConfigurationsOutput {
+	return o.ApplyT(func(v *EnterpriseConfigurations) EnterpriseConfigurations {
+		if v != nil {
+			return *v
+		}
+		var ret EnterpriseConfigurations
+		return ret
+	}).(EnterpriseConfigurationsOutput)
+}
+
+// The AutoRenew setting of the Enterprise subscription
+func (o EnterpriseConfigurationsPtrOutput) MarketplaceAutoRenew() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnterpriseConfigurations) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MarketplaceAutoRenew
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Plan Id of the Azure Marketplace subscription for the Enterprise plugins
+func (o EnterpriseConfigurationsPtrOutput) MarketplacePlanId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnterpriseConfigurations) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MarketplacePlanId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enterprise settings of a Grafana instance
+type EnterpriseConfigurationsResponse struct {
+	// The AutoRenew setting of the Enterprise subscription
+	MarketplaceAutoRenew *string `pulumi:"marketplaceAutoRenew"`
+	// The Plan Id of the Azure Marketplace subscription for the Enterprise plugins
+	MarketplacePlanId *string `pulumi:"marketplacePlanId"`
+}
+
+// Enterprise settings of a Grafana instance
+type EnterpriseConfigurationsResponseOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseConfigurationsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseConfigurationsResponse)(nil)).Elem()
+}
+
+func (o EnterpriseConfigurationsResponseOutput) ToEnterpriseConfigurationsResponseOutput() EnterpriseConfigurationsResponseOutput {
+	return o
+}
+
+func (o EnterpriseConfigurationsResponseOutput) ToEnterpriseConfigurationsResponseOutputWithContext(ctx context.Context) EnterpriseConfigurationsResponseOutput {
+	return o
+}
+
+// The AutoRenew setting of the Enterprise subscription
+func (o EnterpriseConfigurationsResponseOutput) MarketplaceAutoRenew() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnterpriseConfigurationsResponse) *string { return v.MarketplaceAutoRenew }).(pulumi.StringPtrOutput)
+}
+
+// The Plan Id of the Azure Marketplace subscription for the Enterprise plugins
+func (o EnterpriseConfigurationsResponseOutput) MarketplacePlanId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnterpriseConfigurationsResponse) *string { return v.MarketplacePlanId }).(pulumi.StringPtrOutput)
+}
+
+type EnterpriseConfigurationsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseConfigurationsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnterpriseConfigurationsResponse)(nil)).Elem()
+}
+
+func (o EnterpriseConfigurationsResponsePtrOutput) ToEnterpriseConfigurationsResponsePtrOutput() EnterpriseConfigurationsResponsePtrOutput {
+	return o
+}
+
+func (o EnterpriseConfigurationsResponsePtrOutput) ToEnterpriseConfigurationsResponsePtrOutputWithContext(ctx context.Context) EnterpriseConfigurationsResponsePtrOutput {
+	return o
+}
+
+func (o EnterpriseConfigurationsResponsePtrOutput) Elem() EnterpriseConfigurationsResponseOutput {
+	return o.ApplyT(func(v *EnterpriseConfigurationsResponse) EnterpriseConfigurationsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EnterpriseConfigurationsResponse
+		return ret
+	}).(EnterpriseConfigurationsResponseOutput)
+}
+
+// The AutoRenew setting of the Enterprise subscription
+func (o EnterpriseConfigurationsResponsePtrOutput) MarketplaceAutoRenew() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnterpriseConfigurationsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MarketplaceAutoRenew
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Plan Id of the Azure Marketplace subscription for the Enterprise plugins
+func (o EnterpriseConfigurationsResponsePtrOutput) MarketplacePlanId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnterpriseConfigurationsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MarketplacePlanId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Server configurations of a Grafana instance
+type GrafanaConfigurations struct {
+	// Grafana security settings
+	Security *Security `pulumi:"security"`
+	// Email server settings.
+	// https://grafana.com/docs/grafana/v9.0/setup-grafana/configure-grafana/#smtp
+	Smtp *Smtp `pulumi:"smtp"`
+	// Grafana Snapshots settings
+	Snapshots *Snapshots `pulumi:"snapshots"`
+	// Grafana users settings
+	Users *Users `pulumi:"users"`
+}
+
+// Defaults sets the appropriate defaults for GrafanaConfigurations
+func (val *GrafanaConfigurations) Defaults() *GrafanaConfigurations {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Smtp = tmp.Smtp.Defaults()
+
+	return &tmp
+}
+
+// GrafanaConfigurationsInput is an input type that accepts GrafanaConfigurationsArgs and GrafanaConfigurationsOutput values.
+// You can construct a concrete instance of `GrafanaConfigurationsInput` via:
+//
+//	GrafanaConfigurationsArgs{...}
+type GrafanaConfigurationsInput interface {
+	pulumi.Input
+
+	ToGrafanaConfigurationsOutput() GrafanaConfigurationsOutput
+	ToGrafanaConfigurationsOutputWithContext(context.Context) GrafanaConfigurationsOutput
+}
+
+// Server configurations of a Grafana instance
+type GrafanaConfigurationsArgs struct {
+	// Grafana security settings
+	Security SecurityPtrInput `pulumi:"security"`
+	// Email server settings.
+	// https://grafana.com/docs/grafana/v9.0/setup-grafana/configure-grafana/#smtp
+	Smtp SmtpPtrInput `pulumi:"smtp"`
+	// Grafana Snapshots settings
+	Snapshots SnapshotsPtrInput `pulumi:"snapshots"`
+	// Grafana users settings
+	Users UsersPtrInput `pulumi:"users"`
+}
+
+// Defaults sets the appropriate defaults for GrafanaConfigurationsArgs
+func (val *GrafanaConfigurationsArgs) Defaults() *GrafanaConfigurationsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (GrafanaConfigurationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrafanaConfigurations)(nil)).Elem()
+}
+
+func (i GrafanaConfigurationsArgs) ToGrafanaConfigurationsOutput() GrafanaConfigurationsOutput {
+	return i.ToGrafanaConfigurationsOutputWithContext(context.Background())
+}
+
+func (i GrafanaConfigurationsArgs) ToGrafanaConfigurationsOutputWithContext(ctx context.Context) GrafanaConfigurationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrafanaConfigurationsOutput)
+}
+
+func (i GrafanaConfigurationsArgs) ToGrafanaConfigurationsPtrOutput() GrafanaConfigurationsPtrOutput {
+	return i.ToGrafanaConfigurationsPtrOutputWithContext(context.Background())
+}
+
+func (i GrafanaConfigurationsArgs) ToGrafanaConfigurationsPtrOutputWithContext(ctx context.Context) GrafanaConfigurationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrafanaConfigurationsOutput).ToGrafanaConfigurationsPtrOutputWithContext(ctx)
+}
+
+// GrafanaConfigurationsPtrInput is an input type that accepts GrafanaConfigurationsArgs, GrafanaConfigurationsPtr and GrafanaConfigurationsPtrOutput values.
+// You can construct a concrete instance of `GrafanaConfigurationsPtrInput` via:
+//
+//	        GrafanaConfigurationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GrafanaConfigurationsPtrInput interface {
+	pulumi.Input
+
+	ToGrafanaConfigurationsPtrOutput() GrafanaConfigurationsPtrOutput
+	ToGrafanaConfigurationsPtrOutputWithContext(context.Context) GrafanaConfigurationsPtrOutput
+}
+
+type grafanaConfigurationsPtrType GrafanaConfigurationsArgs
+
+func GrafanaConfigurationsPtr(v *GrafanaConfigurationsArgs) GrafanaConfigurationsPtrInput {
+	return (*grafanaConfigurationsPtrType)(v)
+}
+
+func (*grafanaConfigurationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GrafanaConfigurations)(nil)).Elem()
+}
+
+func (i *grafanaConfigurationsPtrType) ToGrafanaConfigurationsPtrOutput() GrafanaConfigurationsPtrOutput {
+	return i.ToGrafanaConfigurationsPtrOutputWithContext(context.Background())
+}
+
+func (i *grafanaConfigurationsPtrType) ToGrafanaConfigurationsPtrOutputWithContext(ctx context.Context) GrafanaConfigurationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GrafanaConfigurationsPtrOutput)
+}
+
+// Server configurations of a Grafana instance
+type GrafanaConfigurationsOutput struct{ *pulumi.OutputState }
+
+func (GrafanaConfigurationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrafanaConfigurations)(nil)).Elem()
+}
+
+func (o GrafanaConfigurationsOutput) ToGrafanaConfigurationsOutput() GrafanaConfigurationsOutput {
+	return o
+}
+
+func (o GrafanaConfigurationsOutput) ToGrafanaConfigurationsOutputWithContext(ctx context.Context) GrafanaConfigurationsOutput {
+	return o
+}
+
+func (o GrafanaConfigurationsOutput) ToGrafanaConfigurationsPtrOutput() GrafanaConfigurationsPtrOutput {
+	return o.ToGrafanaConfigurationsPtrOutputWithContext(context.Background())
+}
+
+func (o GrafanaConfigurationsOutput) ToGrafanaConfigurationsPtrOutputWithContext(ctx context.Context) GrafanaConfigurationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GrafanaConfigurations) *GrafanaConfigurations {
+		return &v
+	}).(GrafanaConfigurationsPtrOutput)
+}
+
+// Grafana security settings
+func (o GrafanaConfigurationsOutput) Security() SecurityPtrOutput {
+	return o.ApplyT(func(v GrafanaConfigurations) *Security { return v.Security }).(SecurityPtrOutput)
+}
+
+// Email server settings.
+// https://grafana.com/docs/grafana/v9.0/setup-grafana/configure-grafana/#smtp
+func (o GrafanaConfigurationsOutput) Smtp() SmtpPtrOutput {
+	return o.ApplyT(func(v GrafanaConfigurations) *Smtp { return v.Smtp }).(SmtpPtrOutput)
+}
+
+// Grafana Snapshots settings
+func (o GrafanaConfigurationsOutput) Snapshots() SnapshotsPtrOutput {
+	return o.ApplyT(func(v GrafanaConfigurations) *Snapshots { return v.Snapshots }).(SnapshotsPtrOutput)
+}
+
+// Grafana users settings
+func (o GrafanaConfigurationsOutput) Users() UsersPtrOutput {
+	return o.ApplyT(func(v GrafanaConfigurations) *Users { return v.Users }).(UsersPtrOutput)
+}
+
+type GrafanaConfigurationsPtrOutput struct{ *pulumi.OutputState }
+
+func (GrafanaConfigurationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GrafanaConfigurations)(nil)).Elem()
+}
+
+func (o GrafanaConfigurationsPtrOutput) ToGrafanaConfigurationsPtrOutput() GrafanaConfigurationsPtrOutput {
+	return o
+}
+
+func (o GrafanaConfigurationsPtrOutput) ToGrafanaConfigurationsPtrOutputWithContext(ctx context.Context) GrafanaConfigurationsPtrOutput {
+	return o
+}
+
+func (o GrafanaConfigurationsPtrOutput) Elem() GrafanaConfigurationsOutput {
+	return o.ApplyT(func(v *GrafanaConfigurations) GrafanaConfigurations {
+		if v != nil {
+			return *v
+		}
+		var ret GrafanaConfigurations
+		return ret
+	}).(GrafanaConfigurationsOutput)
+}
+
+// Grafana security settings
+func (o GrafanaConfigurationsPtrOutput) Security() SecurityPtrOutput {
+	return o.ApplyT(func(v *GrafanaConfigurations) *Security {
+		if v == nil {
+			return nil
+		}
+		return v.Security
+	}).(SecurityPtrOutput)
+}
+
+// Email server settings.
+// https://grafana.com/docs/grafana/v9.0/setup-grafana/configure-grafana/#smtp
+func (o GrafanaConfigurationsPtrOutput) Smtp() SmtpPtrOutput {
+	return o.ApplyT(func(v *GrafanaConfigurations) *Smtp {
+		if v == nil {
+			return nil
+		}
+		return v.Smtp
+	}).(SmtpPtrOutput)
+}
+
+// Grafana Snapshots settings
+func (o GrafanaConfigurationsPtrOutput) Snapshots() SnapshotsPtrOutput {
+	return o.ApplyT(func(v *GrafanaConfigurations) *Snapshots {
+		if v == nil {
+			return nil
+		}
+		return v.Snapshots
+	}).(SnapshotsPtrOutput)
+}
+
+// Grafana users settings
+func (o GrafanaConfigurationsPtrOutput) Users() UsersPtrOutput {
+	return o.ApplyT(func(v *GrafanaConfigurations) *Users {
+		if v == nil {
+			return nil
+		}
+		return v.Users
+	}).(UsersPtrOutput)
+}
+
+// Server configurations of a Grafana instance
+type GrafanaConfigurationsResponse struct {
+	// Grafana security settings
+	Security *SecurityResponse `pulumi:"security"`
+	// Email server settings.
+	// https://grafana.com/docs/grafana/v9.0/setup-grafana/configure-grafana/#smtp
+	Smtp *SmtpResponse `pulumi:"smtp"`
+	// Grafana Snapshots settings
+	Snapshots *SnapshotsResponse `pulumi:"snapshots"`
+	// Grafana users settings
+	Users *UsersResponse `pulumi:"users"`
+}
+
+// Defaults sets the appropriate defaults for GrafanaConfigurationsResponse
+func (val *GrafanaConfigurationsResponse) Defaults() *GrafanaConfigurationsResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Smtp = tmp.Smtp.Defaults()
+
+	return &tmp
+}
+
+// Server configurations of a Grafana instance
+type GrafanaConfigurationsResponseOutput struct{ *pulumi.OutputState }
+
+func (GrafanaConfigurationsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrafanaConfigurationsResponse)(nil)).Elem()
+}
+
+func (o GrafanaConfigurationsResponseOutput) ToGrafanaConfigurationsResponseOutput() GrafanaConfigurationsResponseOutput {
+	return o
+}
+
+func (o GrafanaConfigurationsResponseOutput) ToGrafanaConfigurationsResponseOutputWithContext(ctx context.Context) GrafanaConfigurationsResponseOutput {
+	return o
+}
+
+// Grafana security settings
+func (o GrafanaConfigurationsResponseOutput) Security() SecurityResponsePtrOutput {
+	return o.ApplyT(func(v GrafanaConfigurationsResponse) *SecurityResponse { return v.Security }).(SecurityResponsePtrOutput)
+}
+
+// Email server settings.
+// https://grafana.com/docs/grafana/v9.0/setup-grafana/configure-grafana/#smtp
+func (o GrafanaConfigurationsResponseOutput) Smtp() SmtpResponsePtrOutput {
+	return o.ApplyT(func(v GrafanaConfigurationsResponse) *SmtpResponse { return v.Smtp }).(SmtpResponsePtrOutput)
+}
+
+// Grafana Snapshots settings
+func (o GrafanaConfigurationsResponseOutput) Snapshots() SnapshotsResponsePtrOutput {
+	return o.ApplyT(func(v GrafanaConfigurationsResponse) *SnapshotsResponse { return v.Snapshots }).(SnapshotsResponsePtrOutput)
+}
+
+// Grafana users settings
+func (o GrafanaConfigurationsResponseOutput) Users() UsersResponsePtrOutput {
+	return o.ApplyT(func(v GrafanaConfigurationsResponse) *UsersResponse { return v.Users }).(UsersResponsePtrOutput)
+}
+
+type GrafanaConfigurationsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GrafanaConfigurationsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GrafanaConfigurationsResponse)(nil)).Elem()
+}
+
+func (o GrafanaConfigurationsResponsePtrOutput) ToGrafanaConfigurationsResponsePtrOutput() GrafanaConfigurationsResponsePtrOutput {
+	return o
+}
+
+func (o GrafanaConfigurationsResponsePtrOutput) ToGrafanaConfigurationsResponsePtrOutputWithContext(ctx context.Context) GrafanaConfigurationsResponsePtrOutput {
+	return o
+}
+
+func (o GrafanaConfigurationsResponsePtrOutput) Elem() GrafanaConfigurationsResponseOutput {
+	return o.ApplyT(func(v *GrafanaConfigurationsResponse) GrafanaConfigurationsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GrafanaConfigurationsResponse
+		return ret
+	}).(GrafanaConfigurationsResponseOutput)
+}
+
+// Grafana security settings
+func (o GrafanaConfigurationsResponsePtrOutput) Security() SecurityResponsePtrOutput {
+	return o.ApplyT(func(v *GrafanaConfigurationsResponse) *SecurityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Security
+	}).(SecurityResponsePtrOutput)
+}
+
+// Email server settings.
+// https://grafana.com/docs/grafana/v9.0/setup-grafana/configure-grafana/#smtp
+func (o GrafanaConfigurationsResponsePtrOutput) Smtp() SmtpResponsePtrOutput {
+	return o.ApplyT(func(v *GrafanaConfigurationsResponse) *SmtpResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Smtp
+	}).(SmtpResponsePtrOutput)
+}
+
+// Grafana Snapshots settings
+func (o GrafanaConfigurationsResponsePtrOutput) Snapshots() SnapshotsResponsePtrOutput {
+	return o.ApplyT(func(v *GrafanaConfigurationsResponse) *SnapshotsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Snapshots
+	}).(SnapshotsResponsePtrOutput)
+}
+
+// Grafana users settings
+func (o GrafanaConfigurationsResponsePtrOutput) Users() UsersResponsePtrOutput {
+	return o.ApplyT(func(v *GrafanaConfigurationsResponse) *UsersResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Users
+	}).(UsersResponsePtrOutput)
 }
 
 // GrafanaIntegrations is a bundled observability experience (e.g. pre-configured data source, tailored Grafana dashboards, alerting defaults) for common monitoring scenarios.
@@ -354,6 +1110,52 @@ func (o GrafanaIntegrationsResponsePtrOutput) AzureMonitorWorkspaceIntegrations(
 		}
 		return v.AzureMonitorWorkspaceIntegrations
 	}).(AzureMonitorWorkspaceIntegrationResponseArrayOutput)
+}
+
+// Plugin of Grafana
+type GrafanaPluginResponse struct {
+	// Grafana plugin id
+	PluginId string `pulumi:"pluginId"`
+}
+
+// Plugin of Grafana
+type GrafanaPluginResponseOutput struct{ *pulumi.OutputState }
+
+func (GrafanaPluginResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GrafanaPluginResponse)(nil)).Elem()
+}
+
+func (o GrafanaPluginResponseOutput) ToGrafanaPluginResponseOutput() GrafanaPluginResponseOutput {
+	return o
+}
+
+func (o GrafanaPluginResponseOutput) ToGrafanaPluginResponseOutputWithContext(ctx context.Context) GrafanaPluginResponseOutput {
+	return o
+}
+
+// Grafana plugin id
+func (o GrafanaPluginResponseOutput) PluginId() pulumi.StringOutput {
+	return o.ApplyT(func(v GrafanaPluginResponse) string { return v.PluginId }).(pulumi.StringOutput)
+}
+
+type GrafanaPluginResponseMapOutput struct{ *pulumi.OutputState }
+
+func (GrafanaPluginResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GrafanaPluginResponse)(nil)).Elem()
+}
+
+func (o GrafanaPluginResponseMapOutput) ToGrafanaPluginResponseMapOutput() GrafanaPluginResponseMapOutput {
+	return o
+}
+
+func (o GrafanaPluginResponseMapOutput) ToGrafanaPluginResponseMapOutputWithContext(ctx context.Context) GrafanaPluginResponseMapOutput {
+	return o
+}
+
+func (o GrafanaPluginResponseMapOutput) MapIndex(k pulumi.StringInput) GrafanaPluginResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GrafanaPluginResponse {
+		return vs[0].(map[string]GrafanaPluginResponse)[vs[1].(string)]
+	}).(GrafanaPluginResponseOutput)
 }
 
 type IntegrationFabricProperties struct {
@@ -584,12 +1386,31 @@ type ManagedGrafanaProperties struct {
 	AutoGeneratedDomainNameLabelScope *string `pulumi:"autoGeneratedDomainNameLabelScope"`
 	// Whether a Grafana instance uses deterministic outbound IPs.
 	DeterministicOutboundIP *string `pulumi:"deterministicOutboundIP"`
+	// Enterprise settings of a Grafana instance
+	EnterpriseConfigurations *EnterpriseConfigurations `pulumi:"enterpriseConfigurations"`
+	// Server configurations of a Grafana instance
+	GrafanaConfigurations *GrafanaConfigurations `pulumi:"grafanaConfigurations"`
 	// GrafanaIntegrations is a bundled observability experience (e.g. pre-configured data source, tailored Grafana dashboards, alerting defaults) for common monitoring scenarios.
 	GrafanaIntegrations *GrafanaIntegrations `pulumi:"grafanaIntegrations"`
+	// The major Grafana software version to target.
+	GrafanaMajorVersion *string `pulumi:"grafanaMajorVersion"`
+	// Installed plugin list of the Grafana instance. Key is plugin id, value is plugin definition.
+	GrafanaPlugins []string `pulumi:"grafanaPlugins"`
 	// Indicate the state for enable or disable traffic over the public interface.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// The zone redundancy setting of the Grafana instance.
 	ZoneRedundancy *string `pulumi:"zoneRedundancy"`
+}
+
+// Defaults sets the appropriate defaults for ManagedGrafanaProperties
+func (val *ManagedGrafanaProperties) Defaults() *ManagedGrafanaProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.GrafanaConfigurations = tmp.GrafanaConfigurations.Defaults()
+
+	return &tmp
 }
 
 // ManagedGrafanaPropertiesInput is an input type that accepts ManagedGrafanaPropertiesArgs and ManagedGrafanaPropertiesOutput values.
@@ -611,14 +1432,31 @@ type ManagedGrafanaPropertiesArgs struct {
 	AutoGeneratedDomainNameLabelScope pulumi.StringPtrInput `pulumi:"autoGeneratedDomainNameLabelScope"`
 	// Whether a Grafana instance uses deterministic outbound IPs.
 	DeterministicOutboundIP pulumi.StringPtrInput `pulumi:"deterministicOutboundIP"`
+	// Enterprise settings of a Grafana instance
+	EnterpriseConfigurations EnterpriseConfigurationsPtrInput `pulumi:"enterpriseConfigurations"`
+	// Server configurations of a Grafana instance
+	GrafanaConfigurations GrafanaConfigurationsPtrInput `pulumi:"grafanaConfigurations"`
 	// GrafanaIntegrations is a bundled observability experience (e.g. pre-configured data source, tailored Grafana dashboards, alerting defaults) for common monitoring scenarios.
 	GrafanaIntegrations GrafanaIntegrationsPtrInput `pulumi:"grafanaIntegrations"`
+	// The major Grafana software version to target.
+	GrafanaMajorVersion pulumi.StringPtrInput `pulumi:"grafanaMajorVersion"`
+	// Installed plugin list of the Grafana instance. Key is plugin id, value is plugin definition.
+	GrafanaPlugins pulumi.StringArrayInput `pulumi:"grafanaPlugins"`
 	// Indicate the state for enable or disable traffic over the public interface.
 	PublicNetworkAccess pulumi.StringPtrInput `pulumi:"publicNetworkAccess"`
 	// The zone redundancy setting of the Grafana instance.
 	ZoneRedundancy pulumi.StringPtrInput `pulumi:"zoneRedundancy"`
 }
 
+// Defaults sets the appropriate defaults for ManagedGrafanaPropertiesArgs
+func (val *ManagedGrafanaPropertiesArgs) Defaults() *ManagedGrafanaPropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
 func (ManagedGrafanaPropertiesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ManagedGrafanaProperties)(nil)).Elem()
 }
@@ -712,9 +1550,29 @@ func (o ManagedGrafanaPropertiesOutput) DeterministicOutboundIP() pulumi.StringP
 	return o.ApplyT(func(v ManagedGrafanaProperties) *string { return v.DeterministicOutboundIP }).(pulumi.StringPtrOutput)
 }
 
+// Enterprise settings of a Grafana instance
+func (o ManagedGrafanaPropertiesOutput) EnterpriseConfigurations() EnterpriseConfigurationsPtrOutput {
+	return o.ApplyT(func(v ManagedGrafanaProperties) *EnterpriseConfigurations { return v.EnterpriseConfigurations }).(EnterpriseConfigurationsPtrOutput)
+}
+
+// Server configurations of a Grafana instance
+func (o ManagedGrafanaPropertiesOutput) GrafanaConfigurations() GrafanaConfigurationsPtrOutput {
+	return o.ApplyT(func(v ManagedGrafanaProperties) *GrafanaConfigurations { return v.GrafanaConfigurations }).(GrafanaConfigurationsPtrOutput)
+}
+
 // GrafanaIntegrations is a bundled observability experience (e.g. pre-configured data source, tailored Grafana dashboards, alerting defaults) for common monitoring scenarios.
 func (o ManagedGrafanaPropertiesOutput) GrafanaIntegrations() GrafanaIntegrationsPtrOutput {
 	return o.ApplyT(func(v ManagedGrafanaProperties) *GrafanaIntegrations { return v.GrafanaIntegrations }).(GrafanaIntegrationsPtrOutput)
+}
+
+// The major Grafana software version to target.
+func (o ManagedGrafanaPropertiesOutput) GrafanaMajorVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedGrafanaProperties) *string { return v.GrafanaMajorVersion }).(pulumi.StringPtrOutput)
+}
+
+// Installed plugin list of the Grafana instance. Key is plugin id, value is plugin definition.
+func (o ManagedGrafanaPropertiesOutput) GrafanaPlugins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedGrafanaProperties) []string { return v.GrafanaPlugins }).(pulumi.StringArrayOutput)
 }
 
 // Indicate the state for enable or disable traffic over the public interface.
@@ -781,6 +1639,26 @@ func (o ManagedGrafanaPropertiesPtrOutput) DeterministicOutboundIP() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Enterprise settings of a Grafana instance
+func (o ManagedGrafanaPropertiesPtrOutput) EnterpriseConfigurations() EnterpriseConfigurationsPtrOutput {
+	return o.ApplyT(func(v *ManagedGrafanaProperties) *EnterpriseConfigurations {
+		if v == nil {
+			return nil
+		}
+		return v.EnterpriseConfigurations
+	}).(EnterpriseConfigurationsPtrOutput)
+}
+
+// Server configurations of a Grafana instance
+func (o ManagedGrafanaPropertiesPtrOutput) GrafanaConfigurations() GrafanaConfigurationsPtrOutput {
+	return o.ApplyT(func(v *ManagedGrafanaProperties) *GrafanaConfigurations {
+		if v == nil {
+			return nil
+		}
+		return v.GrafanaConfigurations
+	}).(GrafanaConfigurationsPtrOutput)
+}
+
 // GrafanaIntegrations is a bundled observability experience (e.g. pre-configured data source, tailored Grafana dashboards, alerting defaults) for common monitoring scenarios.
 func (o ManagedGrafanaPropertiesPtrOutput) GrafanaIntegrations() GrafanaIntegrationsPtrOutput {
 	return o.ApplyT(func(v *ManagedGrafanaProperties) *GrafanaIntegrations {
@@ -789,6 +1667,26 @@ func (o ManagedGrafanaPropertiesPtrOutput) GrafanaIntegrations() GrafanaIntegrat
 		}
 		return v.GrafanaIntegrations
 	}).(GrafanaIntegrationsPtrOutput)
+}
+
+// The major Grafana software version to target.
+func (o ManagedGrafanaPropertiesPtrOutput) GrafanaMajorVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedGrafanaProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GrafanaMajorVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Installed plugin list of the Grafana instance. Key is plugin id, value is plugin definition.
+func (o ManagedGrafanaPropertiesPtrOutput) GrafanaPlugins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedGrafanaProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.GrafanaPlugins
+	}).(pulumi.StringArrayOutput)
 }
 
 // Indicate the state for enable or disable traffic over the public interface.
@@ -821,8 +1719,16 @@ type ManagedGrafanaPropertiesResponse struct {
 	DeterministicOutboundIP *string `pulumi:"deterministicOutboundIP"`
 	// The endpoint of the Grafana instance.
 	Endpoint string `pulumi:"endpoint"`
+	// Enterprise settings of a Grafana instance
+	EnterpriseConfigurations *EnterpriseConfigurationsResponse `pulumi:"enterpriseConfigurations"`
+	// Server configurations of a Grafana instance
+	GrafanaConfigurations *GrafanaConfigurationsResponse `pulumi:"grafanaConfigurations"`
 	// GrafanaIntegrations is a bundled observability experience (e.g. pre-configured data source, tailored Grafana dashboards, alerting defaults) for common monitoring scenarios.
 	GrafanaIntegrations *GrafanaIntegrationsResponse `pulumi:"grafanaIntegrations"`
+	// The major Grafana software version to target.
+	GrafanaMajorVersion *string `pulumi:"grafanaMajorVersion"`
+	// Installed plugin list of the Grafana instance. Key is plugin id, value is plugin definition.
+	GrafanaPlugins map[string]GrafanaPluginResponse `pulumi:"grafanaPlugins"`
 	// The Grafana software version.
 	GrafanaVersion string `pulumi:"grafanaVersion"`
 	// List of outbound IPs if deterministicOutboundIP is enabled.
@@ -835,6 +1741,17 @@ type ManagedGrafanaPropertiesResponse struct {
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// The zone redundancy setting of the Grafana instance.
 	ZoneRedundancy *string `pulumi:"zoneRedundancy"`
+}
+
+// Defaults sets the appropriate defaults for ManagedGrafanaPropertiesResponse
+func (val *ManagedGrafanaPropertiesResponse) Defaults() *ManagedGrafanaPropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.GrafanaConfigurations = tmp.GrafanaConfigurations.Defaults()
+
+	return &tmp
 }
 
 // Properties specific to the grafana resource.
@@ -872,9 +1789,33 @@ func (o ManagedGrafanaPropertiesResponseOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedGrafanaPropertiesResponse) string { return v.Endpoint }).(pulumi.StringOutput)
 }
 
+// Enterprise settings of a Grafana instance
+func (o ManagedGrafanaPropertiesResponseOutput) EnterpriseConfigurations() EnterpriseConfigurationsResponsePtrOutput {
+	return o.ApplyT(func(v ManagedGrafanaPropertiesResponse) *EnterpriseConfigurationsResponse {
+		return v.EnterpriseConfigurations
+	}).(EnterpriseConfigurationsResponsePtrOutput)
+}
+
+// Server configurations of a Grafana instance
+func (o ManagedGrafanaPropertiesResponseOutput) GrafanaConfigurations() GrafanaConfigurationsResponsePtrOutput {
+	return o.ApplyT(func(v ManagedGrafanaPropertiesResponse) *GrafanaConfigurationsResponse {
+		return v.GrafanaConfigurations
+	}).(GrafanaConfigurationsResponsePtrOutput)
+}
+
 // GrafanaIntegrations is a bundled observability experience (e.g. pre-configured data source, tailored Grafana dashboards, alerting defaults) for common monitoring scenarios.
 func (o ManagedGrafanaPropertiesResponseOutput) GrafanaIntegrations() GrafanaIntegrationsResponsePtrOutput {
 	return o.ApplyT(func(v ManagedGrafanaPropertiesResponse) *GrafanaIntegrationsResponse { return v.GrafanaIntegrations }).(GrafanaIntegrationsResponsePtrOutput)
+}
+
+// The major Grafana software version to target.
+func (o ManagedGrafanaPropertiesResponseOutput) GrafanaMajorVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedGrafanaPropertiesResponse) *string { return v.GrafanaMajorVersion }).(pulumi.StringPtrOutput)
+}
+
+// Installed plugin list of the Grafana instance. Key is plugin id, value is plugin definition.
+func (o ManagedGrafanaPropertiesResponseOutput) GrafanaPlugins() GrafanaPluginResponseMapOutput {
+	return o.ApplyT(func(v ManagedGrafanaPropertiesResponse) map[string]GrafanaPluginResponse { return v.GrafanaPlugins }).(GrafanaPluginResponseMapOutput)
 }
 
 // The Grafana software version.
@@ -942,278 +1883,6 @@ func (o ManagedPrivateEndpointConnectionStateResponseOutput) Status() pulumi.Str
 	return o.ApplyT(func(v ManagedPrivateEndpointConnectionStateResponse) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Managed service identity (system assigned and/or user assigned identities)
-type ManagedServiceIdentity struct {
-	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-	Type string `pulumi:"type"`
-	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
-}
-
-// ManagedServiceIdentityInput is an input type that accepts ManagedServiceIdentityArgs and ManagedServiceIdentityOutput values.
-// You can construct a concrete instance of `ManagedServiceIdentityInput` via:
-//
-//	ManagedServiceIdentityArgs{...}
-type ManagedServiceIdentityInput interface {
-	pulumi.Input
-
-	ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput
-	ToManagedServiceIdentityOutputWithContext(context.Context) ManagedServiceIdentityOutput
-}
-
-// Managed service identity (system assigned and/or user assigned identities)
-type ManagedServiceIdentityArgs struct {
-	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-	Type pulumi.StringInput `pulumi:"type"`
-	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
-}
-
-func (ManagedServiceIdentityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
-}
-
-func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
-	return i.ToManagedServiceIdentityOutputWithContext(context.Background())
-}
-
-func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
-}
-
-func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
-	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
-}
-
-func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput).ToManagedServiceIdentityPtrOutputWithContext(ctx)
-}
-
-// ManagedServiceIdentityPtrInput is an input type that accepts ManagedServiceIdentityArgs, ManagedServiceIdentityPtr and ManagedServiceIdentityPtrOutput values.
-// You can construct a concrete instance of `ManagedServiceIdentityPtrInput` via:
-//
-//	        ManagedServiceIdentityArgs{...}
-//
-//	or:
-//
-//	        nil
-type ManagedServiceIdentityPtrInput interface {
-	pulumi.Input
-
-	ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput
-	ToManagedServiceIdentityPtrOutputWithContext(context.Context) ManagedServiceIdentityPtrOutput
-}
-
-type managedServiceIdentityPtrType ManagedServiceIdentityArgs
-
-func ManagedServiceIdentityPtr(v *ManagedServiceIdentityArgs) ManagedServiceIdentityPtrInput {
-	return (*managedServiceIdentityPtrType)(v)
-}
-
-func (*managedServiceIdentityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
-}
-
-func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
-	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
-}
-
-func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
-}
-
-// Managed service identity (system assigned and/or user assigned identities)
-type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
-
-func (ManagedServiceIdentityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
-}
-
-func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
-	return o
-}
-
-func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
-	return o
-}
-
-func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
-	return o.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
-}
-
-func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedServiceIdentity) *ManagedServiceIdentity {
-		return &v
-	}).(ManagedServiceIdentityPtrOutput)
-}
-
-// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ManagedServiceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
-}
-
-type ManagedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedServiceIdentityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
-}
-
-func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
-	return o
-}
-
-func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
-	return o
-}
-
-func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentity) ManagedServiceIdentity {
-		if v != nil {
-			return *v
-		}
-		var ret ManagedServiceIdentity
-		return ret
-	}).(ManagedServiceIdentityOutput)
-}
-
-// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-func (o ManagedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentity) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentity) []string {
-		if v == nil {
-			return nil
-		}
-		return v.UserAssignedIdentities
-	}).(pulumi.StringArrayOutput)
-}
-
-// Managed service identity (system assigned and/or user assigned identities)
-type ManagedServiceIdentityResponse struct {
-	// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-	PrincipalId string `pulumi:"principalId"`
-	// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-	TenantId string `pulumi:"tenantId"`
-	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-	Type string `pulumi:"type"`
-	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
-}
-
-// Managed service identity (system assigned and/or user assigned identities)
-type ManagedServiceIdentityResponseOutput struct{ *pulumi.OutputState }
-
-func (ManagedServiceIdentityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedServiceIdentityResponse)(nil)).Elem()
-}
-
-func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutput() ManagedServiceIdentityResponseOutput {
-	return o
-}
-
-func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutputWithContext(ctx context.Context) ManagedServiceIdentityResponseOutput {
-	return o
-}
-
-// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o ManagedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
-}
-
-// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o ManagedServiceIdentityResponseOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
-}
-
-// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-func (o ManagedServiceIdentityResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
-	return o.ApplyT(func(v ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
-		return v.UserAssignedIdentities
-	}).(UserAssignedIdentityResponseMapOutput)
-}
-
-type ManagedServiceIdentityResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedServiceIdentityResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedServiceIdentityResponse)(nil)).Elem()
-}
-
-func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutput() ManagedServiceIdentityResponsePtrOutput {
-	return o
-}
-
-func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
-	return o
-}
-
-func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) ManagedServiceIdentityResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ManagedServiceIdentityResponse
-		return ret
-	}).(ManagedServiceIdentityResponseOutput)
-}
-
-// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o ManagedServiceIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrincipalId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o ManagedServiceIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TenantId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-func (o ManagedServiceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
-		if v == nil {
-			return nil
-		}
-		return v.UserAssignedIdentities
-	}).(UserAssignedIdentityResponseMapOutput)
-}
-
 // The Private Endpoint Connection resource.
 type PrivateEndpointConnectionResponse struct {
 	// The private endpoint connection group ids.
@@ -1223,13 +1892,13 @@ type PrivateEndpointConnectionResponse struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// The resource of private end point.
-	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
+	PrivateEndpoint *commontypesv3.PrivateEndpointResponse `pulumi:"privateEndpoint"`
 	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
+	PrivateLinkServiceConnectionState commontypesv3.PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state of the private endpoint connection resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -1265,15 +1934,17 @@ func (o PrivateEndpointConnectionResponseOutput) Name() pulumi.StringOutput {
 }
 
 // The resource of private end point.
-func (o PrivateEndpointConnectionResponseOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *PrivateEndpointResponse { return v.PrivateEndpoint }).(PrivateEndpointResponsePtrOutput)
+func (o PrivateEndpointConnectionResponseOutput) PrivateEndpoint() commontypesv3.PrivateEndpointResponsePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *commontypesv3.PrivateEndpointResponse {
+		return v.PrivateEndpoint
+	}).(commontypesv3.PrivateEndpointResponsePtrOutput)
 }
 
 // A collection of information about the state of the connection between service consumer and provider.
-func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponseOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) PrivateLinkServiceConnectionStateResponse {
+func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionState() commontypesv3.PrivateLinkServiceConnectionStateResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) commontypesv3.PrivateLinkServiceConnectionStateResponse {
 		return v.PrivateLinkServiceConnectionState
-	}).(PrivateLinkServiceConnectionStateResponseOutput)
+	}).(commontypesv3.PrivateLinkServiceConnectionStateResponseOutput)
 }
 
 // The provisioning state of the private endpoint connection resource.
@@ -1282,8 +1953,8 @@ func (o PrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.Stri
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o PrivateEndpointConnectionResponseOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o PrivateEndpointConnectionResponseOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -1309,179 +1980,6 @@ func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) P
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
 		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
 	}).(PrivateEndpointConnectionResponseOutput)
-}
-
-// The Private Endpoint resource.
-type PrivateEndpointResponse struct {
-	// The ARM identifier for Private Endpoint
-	Id string `pulumi:"id"`
-}
-
-// The Private Endpoint resource.
-type PrivateEndpointResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutput() PrivateEndpointResponseOutput {
-	return o
-}
-
-func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContext(ctx context.Context) PrivateEndpointResponseOutput {
-	return o
-}
-
-// The ARM identifier for Private Endpoint
-func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type PrivateEndpointResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateEndpointResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() PrivateEndpointResponsePtrOutput {
-	return o
-}
-
-func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
-	return o
-}
-
-func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
-	return o.ApplyT(func(v *PrivateEndpointResponse) PrivateEndpointResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PrivateEndpointResponse
-		return ret
-	}).(PrivateEndpointResponseOutput)
-}
-
-// The ARM identifier for Private Endpoint
-func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionState struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionsRequired *string `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
-	Description *string `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status *string `pulumi:"status"`
-}
-
-// PrivateLinkServiceConnectionStateInput is an input type that accepts PrivateLinkServiceConnectionStateArgs and PrivateLinkServiceConnectionStateOutput values.
-// You can construct a concrete instance of `PrivateLinkServiceConnectionStateInput` via:
-//
-//	PrivateLinkServiceConnectionStateArgs{...}
-type PrivateLinkServiceConnectionStateInput interface {
-	pulumi.Input
-
-	ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput
-	ToPrivateLinkServiceConnectionStateOutputWithContext(context.Context) PrivateLinkServiceConnectionStateOutput
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateArgs struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionsRequired pulumi.StringPtrInput `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-}
-
-func (PrivateLinkServiceConnectionStateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
-}
-
-func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
-	return i.ToPrivateLinkServiceConnectionStateOutputWithContext(context.Background())
-}
-
-func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceConnectionStateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
-	return o
-}
-
-// A message indicating if changes on the service provider require any updates on the consumer.
-func (o PrivateLinkServiceConnectionStateOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
-}
-
-// The reason for approval/rejection of the connection.
-func (o PrivateLinkServiceConnectionStateOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-func (o PrivateLinkServiceConnectionStateOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateResponse struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionsRequired *string `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
-	Description *string `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status *string `pulumi:"status"`
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceConnectionStateResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionStateResponse)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutput() PrivateLinkServiceConnectionStateResponseOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponseOutput {
-	return o
-}
-
-// A message indicating if changes on the service provider require any updates on the consumer.
-func (o PrivateLinkServiceConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
-}
-
-// The reason for approval/rejection of the connection.
-func (o PrivateLinkServiceConnectionStateResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-func (o PrivateLinkServiceConnectionStateResponseOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 type ResourceSku struct {
@@ -1672,118 +2170,1126 @@ func (o ResourceSkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+// Grafana security settings
+type Security struct {
+	// Set to true to execute the CSRF check even if the login cookie is not in a request (default false).
+	CsrfAlwaysCheck *bool `pulumi:"csrfAlwaysCheck"`
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponseOutput struct{ *pulumi.OutputState }
+// SecurityInput is an input type that accepts SecurityArgs and SecurityOutput values.
+// You can construct a concrete instance of `SecurityInput` via:
+//
+//	SecurityArgs{...}
+type SecurityInput interface {
+	pulumi.Input
 
-func (SystemDataResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+	ToSecurityOutput() SecurityOutput
+	ToSecurityOutputWithContext(context.Context) SecurityOutput
 }
 
-func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+// Grafana security settings
+type SecurityArgs struct {
+	// Set to true to execute the CSRF check even if the login cookie is not in a request (default false).
+	CsrfAlwaysCheck pulumi.BoolPtrInput `pulumi:"csrfAlwaysCheck"`
+}
+
+func (SecurityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Security)(nil)).Elem()
+}
+
+func (i SecurityArgs) ToSecurityOutput() SecurityOutput {
+	return i.ToSecurityOutputWithContext(context.Background())
+}
+
+func (i SecurityArgs) ToSecurityOutputWithContext(ctx context.Context) SecurityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityOutput)
+}
+
+func (i SecurityArgs) ToSecurityPtrOutput() SecurityPtrOutput {
+	return i.ToSecurityPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityArgs) ToSecurityPtrOutputWithContext(ctx context.Context) SecurityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityOutput).ToSecurityPtrOutputWithContext(ctx)
+}
+
+// SecurityPtrInput is an input type that accepts SecurityArgs, SecurityPtr and SecurityPtrOutput values.
+// You can construct a concrete instance of `SecurityPtrInput` via:
+//
+//	        SecurityArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPtrOutput() SecurityPtrOutput
+	ToSecurityPtrOutputWithContext(context.Context) SecurityPtrOutput
+}
+
+type securityPtrType SecurityArgs
+
+func SecurityPtr(v *SecurityArgs) SecurityPtrInput {
+	return (*securityPtrType)(v)
+}
+
+func (*securityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Security)(nil)).Elem()
+}
+
+func (i *securityPtrType) ToSecurityPtrOutput() SecurityPtrOutput {
+	return i.ToSecurityPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPtrType) ToSecurityPtrOutputWithContext(ctx context.Context) SecurityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPtrOutput)
+}
+
+// Grafana security settings
+type SecurityOutput struct{ *pulumi.OutputState }
+
+func (SecurityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Security)(nil)).Elem()
+}
+
+func (o SecurityOutput) ToSecurityOutput() SecurityOutput {
 	return o
 }
 
-func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+func (o SecurityOutput) ToSecurityOutputWithContext(ctx context.Context) SecurityOutput {
 	return o
 }
 
-// The timestamp of resource creation (UTC).
-func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+func (o SecurityOutput) ToSecurityPtrOutput() SecurityPtrOutput {
+	return o.ToSecurityPtrOutputWithContext(context.Background())
 }
 
-// The identity that created the resource.
-func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+func (o SecurityOutput) ToSecurityPtrOutputWithContext(ctx context.Context) SecurityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Security) *Security {
+		return &v
+	}).(SecurityPtrOutput)
 }
 
-// The type of identity that created the resource.
-func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+// Set to true to execute the CSRF check even if the login cookie is not in a request (default false).
+func (o SecurityOutput) CsrfAlwaysCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Security) *bool { return v.CsrfAlwaysCheck }).(pulumi.BoolPtrOutput)
 }
 
-// The timestamp of resource last modification (UTC)
-func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+type SecurityPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Security)(nil)).Elem()
 }
 
-// The identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
-}
-
-// User assigned identity properties
-type UserAssignedIdentityResponse struct {
-	// The client ID of the assigned identity.
-	ClientId string `pulumi:"clientId"`
-	// The principal ID of the assigned identity.
-	PrincipalId string `pulumi:"principalId"`
-}
-
-// User assigned identity properties
-type UserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
-
-func (UserAssignedIdentityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserAssignedIdentityResponse)(nil)).Elem()
-}
-
-func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput() UserAssignedIdentityResponseOutput {
+func (o SecurityPtrOutput) ToSecurityPtrOutput() SecurityPtrOutput {
 	return o
 }
 
-func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutputWithContext(ctx context.Context) UserAssignedIdentityResponseOutput {
+func (o SecurityPtrOutput) ToSecurityPtrOutputWithContext(ctx context.Context) SecurityPtrOutput {
 	return o
 }
 
-// The client ID of the assigned identity.
-func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
+func (o SecurityPtrOutput) Elem() SecurityOutput {
+	return o.ApplyT(func(v *Security) Security {
+		if v != nil {
+			return *v
+		}
+		var ret Security
+		return ret
+	}).(SecurityOutput)
 }
 
-// The principal ID of the assigned identity.
-func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+// Set to true to execute the CSRF check even if the login cookie is not in a request (default false).
+func (o SecurityPtrOutput) CsrfAlwaysCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Security) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CsrfAlwaysCheck
+	}).(pulumi.BoolPtrOutput)
 }
 
-type UserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
-
-func (UserAssignedIdentityResponseMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]UserAssignedIdentityResponse)(nil)).Elem()
+// Grafana security settings
+type SecurityResponse struct {
+	// Set to true to execute the CSRF check even if the login cookie is not in a request (default false).
+	CsrfAlwaysCheck *bool `pulumi:"csrfAlwaysCheck"`
 }
 
-func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutput() UserAssignedIdentityResponseMapOutput {
+// Grafana security settings
+type SecurityResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityResponse)(nil)).Elem()
+}
+
+func (o SecurityResponseOutput) ToSecurityResponseOutput() SecurityResponseOutput {
 	return o
 }
 
-func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
+func (o SecurityResponseOutput) ToSecurityResponseOutputWithContext(ctx context.Context) SecurityResponseOutput {
 	return o
 }
 
-func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
-		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
-	}).(UserAssignedIdentityResponseOutput)
+// Set to true to execute the CSRF check even if the login cookie is not in a request (default false).
+func (o SecurityResponseOutput) CsrfAlwaysCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecurityResponse) *bool { return v.CsrfAlwaysCheck }).(pulumi.BoolPtrOutput)
+}
+
+type SecurityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityResponse)(nil)).Elem()
+}
+
+func (o SecurityResponsePtrOutput) ToSecurityResponsePtrOutput() SecurityResponsePtrOutput {
+	return o
+}
+
+func (o SecurityResponsePtrOutput) ToSecurityResponsePtrOutputWithContext(ctx context.Context) SecurityResponsePtrOutput {
+	return o
+}
+
+func (o SecurityResponsePtrOutput) Elem() SecurityResponseOutput {
+	return o.ApplyT(func(v *SecurityResponse) SecurityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityResponse
+		return ret
+	}).(SecurityResponseOutput)
+}
+
+// Set to true to execute the CSRF check even if the login cookie is not in a request (default false).
+func (o SecurityResponsePtrOutput) CsrfAlwaysCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecurityResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CsrfAlwaysCheck
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Email server settings.
+// https://grafana.com/docs/grafana/v9.0/setup-grafana/configure-grafana/#smtp
+type Smtp struct {
+	// Enable this to allow Grafana to send email. Default is false
+	Enabled *bool `pulumi:"enabled"`
+	// Address used when sending out emails
+	// https://pkg.go.dev/net/mail#Address
+	FromAddress *string `pulumi:"fromAddress"`
+	// Name to be used when sending out emails. Default is "Azure Managed Grafana Notification"
+	// https://pkg.go.dev/net/mail#Address
+	FromName *string `pulumi:"fromName"`
+	// SMTP server hostname with port, e.g. test.email.net:587
+	Host *string `pulumi:"host"`
+	// Password of SMTP auth. If the password contains # or ;, then you have to wrap it with triple quotes
+	Password *string `pulumi:"password"`
+	// Verify SSL for SMTP server. Default is false
+	// https://pkg.go.dev/crypto/tls#Config
+	SkipVerify *bool `pulumi:"skipVerify"`
+	// The StartTLSPolicy setting of the SMTP configuration
+	// https://pkg.go.dev/github.com/go-mail/mail#StartTLSPolicy
+	StartTLSPolicy *string `pulumi:"startTLSPolicy"`
+	// User of SMTP auth
+	User *string `pulumi:"user"`
+}
+
+// Defaults sets the appropriate defaults for Smtp
+func (val *Smtp) Defaults() *Smtp {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Enabled == nil {
+		enabled_ := false
+		tmp.Enabled = &enabled_
+	}
+	return &tmp
+}
+
+// SmtpInput is an input type that accepts SmtpArgs and SmtpOutput values.
+// You can construct a concrete instance of `SmtpInput` via:
+//
+//	SmtpArgs{...}
+type SmtpInput interface {
+	pulumi.Input
+
+	ToSmtpOutput() SmtpOutput
+	ToSmtpOutputWithContext(context.Context) SmtpOutput
+}
+
+// Email server settings.
+// https://grafana.com/docs/grafana/v9.0/setup-grafana/configure-grafana/#smtp
+type SmtpArgs struct {
+	// Enable this to allow Grafana to send email. Default is false
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Address used when sending out emails
+	// https://pkg.go.dev/net/mail#Address
+	FromAddress pulumi.StringPtrInput `pulumi:"fromAddress"`
+	// Name to be used when sending out emails. Default is "Azure Managed Grafana Notification"
+	// https://pkg.go.dev/net/mail#Address
+	FromName pulumi.StringPtrInput `pulumi:"fromName"`
+	// SMTP server hostname with port, e.g. test.email.net:587
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// Password of SMTP auth. If the password contains # or ;, then you have to wrap it with triple quotes
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Verify SSL for SMTP server. Default is false
+	// https://pkg.go.dev/crypto/tls#Config
+	SkipVerify pulumi.BoolPtrInput `pulumi:"skipVerify"`
+	// The StartTLSPolicy setting of the SMTP configuration
+	// https://pkg.go.dev/github.com/go-mail/mail#StartTLSPolicy
+	StartTLSPolicy pulumi.StringPtrInput `pulumi:"startTLSPolicy"`
+	// User of SMTP auth
+	User pulumi.StringPtrInput `pulumi:"user"`
+}
+
+// Defaults sets the appropriate defaults for SmtpArgs
+func (val *SmtpArgs) Defaults() *SmtpArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Enabled == nil {
+		tmp.Enabled = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
+func (SmtpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Smtp)(nil)).Elem()
+}
+
+func (i SmtpArgs) ToSmtpOutput() SmtpOutput {
+	return i.ToSmtpOutputWithContext(context.Background())
+}
+
+func (i SmtpArgs) ToSmtpOutputWithContext(ctx context.Context) SmtpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SmtpOutput)
+}
+
+func (i SmtpArgs) ToSmtpPtrOutput() SmtpPtrOutput {
+	return i.ToSmtpPtrOutputWithContext(context.Background())
+}
+
+func (i SmtpArgs) ToSmtpPtrOutputWithContext(ctx context.Context) SmtpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SmtpOutput).ToSmtpPtrOutputWithContext(ctx)
+}
+
+// SmtpPtrInput is an input type that accepts SmtpArgs, SmtpPtr and SmtpPtrOutput values.
+// You can construct a concrete instance of `SmtpPtrInput` via:
+//
+//	        SmtpArgs{...}
+//
+//	or:
+//
+//	        nil
+type SmtpPtrInput interface {
+	pulumi.Input
+
+	ToSmtpPtrOutput() SmtpPtrOutput
+	ToSmtpPtrOutputWithContext(context.Context) SmtpPtrOutput
+}
+
+type smtpPtrType SmtpArgs
+
+func SmtpPtr(v *SmtpArgs) SmtpPtrInput {
+	return (*smtpPtrType)(v)
+}
+
+func (*smtpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Smtp)(nil)).Elem()
+}
+
+func (i *smtpPtrType) ToSmtpPtrOutput() SmtpPtrOutput {
+	return i.ToSmtpPtrOutputWithContext(context.Background())
+}
+
+func (i *smtpPtrType) ToSmtpPtrOutputWithContext(ctx context.Context) SmtpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SmtpPtrOutput)
+}
+
+// Email server settings.
+// https://grafana.com/docs/grafana/v9.0/setup-grafana/configure-grafana/#smtp
+type SmtpOutput struct{ *pulumi.OutputState }
+
+func (SmtpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Smtp)(nil)).Elem()
+}
+
+func (o SmtpOutput) ToSmtpOutput() SmtpOutput {
+	return o
+}
+
+func (o SmtpOutput) ToSmtpOutputWithContext(ctx context.Context) SmtpOutput {
+	return o
+}
+
+func (o SmtpOutput) ToSmtpPtrOutput() SmtpPtrOutput {
+	return o.ToSmtpPtrOutputWithContext(context.Background())
+}
+
+func (o SmtpOutput) ToSmtpPtrOutputWithContext(ctx context.Context) SmtpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Smtp) *Smtp {
+		return &v
+	}).(SmtpPtrOutput)
+}
+
+// Enable this to allow Grafana to send email. Default is false
+func (o SmtpOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Smtp) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Address used when sending out emails
+// https://pkg.go.dev/net/mail#Address
+func (o SmtpOutput) FromAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Smtp) *string { return v.FromAddress }).(pulumi.StringPtrOutput)
+}
+
+// Name to be used when sending out emails. Default is "Azure Managed Grafana Notification"
+// https://pkg.go.dev/net/mail#Address
+func (o SmtpOutput) FromName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Smtp) *string { return v.FromName }).(pulumi.StringPtrOutput)
+}
+
+// SMTP server hostname with port, e.g. test.email.net:587
+func (o SmtpOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Smtp) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// Password of SMTP auth. If the password contains # or ;, then you have to wrap it with triple quotes
+func (o SmtpOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Smtp) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Verify SSL for SMTP server. Default is false
+// https://pkg.go.dev/crypto/tls#Config
+func (o SmtpOutput) SkipVerify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Smtp) *bool { return v.SkipVerify }).(pulumi.BoolPtrOutput)
+}
+
+// The StartTLSPolicy setting of the SMTP configuration
+// https://pkg.go.dev/github.com/go-mail/mail#StartTLSPolicy
+func (o SmtpOutput) StartTLSPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Smtp) *string { return v.StartTLSPolicy }).(pulumi.StringPtrOutput)
+}
+
+// User of SMTP auth
+func (o SmtpOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Smtp) *string { return v.User }).(pulumi.StringPtrOutput)
+}
+
+type SmtpPtrOutput struct{ *pulumi.OutputState }
+
+func (SmtpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Smtp)(nil)).Elem()
+}
+
+func (o SmtpPtrOutput) ToSmtpPtrOutput() SmtpPtrOutput {
+	return o
+}
+
+func (o SmtpPtrOutput) ToSmtpPtrOutputWithContext(ctx context.Context) SmtpPtrOutput {
+	return o
+}
+
+func (o SmtpPtrOutput) Elem() SmtpOutput {
+	return o.ApplyT(func(v *Smtp) Smtp {
+		if v != nil {
+			return *v
+		}
+		var ret Smtp
+		return ret
+	}).(SmtpOutput)
+}
+
+// Enable this to allow Grafana to send email. Default is false
+func (o SmtpPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Smtp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Address used when sending out emails
+// https://pkg.go.dev/net/mail#Address
+func (o SmtpPtrOutput) FromAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Smtp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FromAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name to be used when sending out emails. Default is "Azure Managed Grafana Notification"
+// https://pkg.go.dev/net/mail#Address
+func (o SmtpPtrOutput) FromName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Smtp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FromName
+	}).(pulumi.StringPtrOutput)
+}
+
+// SMTP server hostname with port, e.g. test.email.net:587
+func (o SmtpPtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Smtp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Password of SMTP auth. If the password contains # or ;, then you have to wrap it with triple quotes
+func (o SmtpPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Smtp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Verify SSL for SMTP server. Default is false
+// https://pkg.go.dev/crypto/tls#Config
+func (o SmtpPtrOutput) SkipVerify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Smtp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SkipVerify
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The StartTLSPolicy setting of the SMTP configuration
+// https://pkg.go.dev/github.com/go-mail/mail#StartTLSPolicy
+func (o SmtpPtrOutput) StartTLSPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Smtp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTLSPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// User of SMTP auth
+func (o SmtpPtrOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Smtp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.User
+	}).(pulumi.StringPtrOutput)
+}
+
+// Email server settings.
+// https://grafana.com/docs/grafana/v9.0/setup-grafana/configure-grafana/#smtp
+type SmtpResponse struct {
+	// Enable this to allow Grafana to send email. Default is false
+	Enabled *bool `pulumi:"enabled"`
+	// Address used when sending out emails
+	// https://pkg.go.dev/net/mail#Address
+	FromAddress *string `pulumi:"fromAddress"`
+	// Name to be used when sending out emails. Default is "Azure Managed Grafana Notification"
+	// https://pkg.go.dev/net/mail#Address
+	FromName *string `pulumi:"fromName"`
+	// SMTP server hostname with port, e.g. test.email.net:587
+	Host *string `pulumi:"host"`
+	// Password of SMTP auth. If the password contains # or ;, then you have to wrap it with triple quotes
+	Password *string `pulumi:"password"`
+	// Verify SSL for SMTP server. Default is false
+	// https://pkg.go.dev/crypto/tls#Config
+	SkipVerify *bool `pulumi:"skipVerify"`
+	// The StartTLSPolicy setting of the SMTP configuration
+	// https://pkg.go.dev/github.com/go-mail/mail#StartTLSPolicy
+	StartTLSPolicy *string `pulumi:"startTLSPolicy"`
+	// User of SMTP auth
+	User *string `pulumi:"user"`
+}
+
+// Defaults sets the appropriate defaults for SmtpResponse
+func (val *SmtpResponse) Defaults() *SmtpResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Enabled == nil {
+		enabled_ := false
+		tmp.Enabled = &enabled_
+	}
+	return &tmp
+}
+
+// Email server settings.
+// https://grafana.com/docs/grafana/v9.0/setup-grafana/configure-grafana/#smtp
+type SmtpResponseOutput struct{ *pulumi.OutputState }
+
+func (SmtpResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SmtpResponse)(nil)).Elem()
+}
+
+func (o SmtpResponseOutput) ToSmtpResponseOutput() SmtpResponseOutput {
+	return o
+}
+
+func (o SmtpResponseOutput) ToSmtpResponseOutputWithContext(ctx context.Context) SmtpResponseOutput {
+	return o
+}
+
+// Enable this to allow Grafana to send email. Default is false
+func (o SmtpResponseOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SmtpResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Address used when sending out emails
+// https://pkg.go.dev/net/mail#Address
+func (o SmtpResponseOutput) FromAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SmtpResponse) *string { return v.FromAddress }).(pulumi.StringPtrOutput)
+}
+
+// Name to be used when sending out emails. Default is "Azure Managed Grafana Notification"
+// https://pkg.go.dev/net/mail#Address
+func (o SmtpResponseOutput) FromName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SmtpResponse) *string { return v.FromName }).(pulumi.StringPtrOutput)
+}
+
+// SMTP server hostname with port, e.g. test.email.net:587
+func (o SmtpResponseOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SmtpResponse) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// Password of SMTP auth. If the password contains # or ;, then you have to wrap it with triple quotes
+func (o SmtpResponseOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SmtpResponse) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Verify SSL for SMTP server. Default is false
+// https://pkg.go.dev/crypto/tls#Config
+func (o SmtpResponseOutput) SkipVerify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SmtpResponse) *bool { return v.SkipVerify }).(pulumi.BoolPtrOutput)
+}
+
+// The StartTLSPolicy setting of the SMTP configuration
+// https://pkg.go.dev/github.com/go-mail/mail#StartTLSPolicy
+func (o SmtpResponseOutput) StartTLSPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SmtpResponse) *string { return v.StartTLSPolicy }).(pulumi.StringPtrOutput)
+}
+
+// User of SMTP auth
+func (o SmtpResponseOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SmtpResponse) *string { return v.User }).(pulumi.StringPtrOutput)
+}
+
+type SmtpResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SmtpResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SmtpResponse)(nil)).Elem()
+}
+
+func (o SmtpResponsePtrOutput) ToSmtpResponsePtrOutput() SmtpResponsePtrOutput {
+	return o
+}
+
+func (o SmtpResponsePtrOutput) ToSmtpResponsePtrOutputWithContext(ctx context.Context) SmtpResponsePtrOutput {
+	return o
+}
+
+func (o SmtpResponsePtrOutput) Elem() SmtpResponseOutput {
+	return o.ApplyT(func(v *SmtpResponse) SmtpResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SmtpResponse
+		return ret
+	}).(SmtpResponseOutput)
+}
+
+// Enable this to allow Grafana to send email. Default is false
+func (o SmtpResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SmtpResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Address used when sending out emails
+// https://pkg.go.dev/net/mail#Address
+func (o SmtpResponsePtrOutput) FromAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SmtpResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FromAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name to be used when sending out emails. Default is "Azure Managed Grafana Notification"
+// https://pkg.go.dev/net/mail#Address
+func (o SmtpResponsePtrOutput) FromName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SmtpResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FromName
+	}).(pulumi.StringPtrOutput)
+}
+
+// SMTP server hostname with port, e.g. test.email.net:587
+func (o SmtpResponsePtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SmtpResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Password of SMTP auth. If the password contains # or ;, then you have to wrap it with triple quotes
+func (o SmtpResponsePtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SmtpResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Verify SSL for SMTP server. Default is false
+// https://pkg.go.dev/crypto/tls#Config
+func (o SmtpResponsePtrOutput) SkipVerify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SmtpResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SkipVerify
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The StartTLSPolicy setting of the SMTP configuration
+// https://pkg.go.dev/github.com/go-mail/mail#StartTLSPolicy
+func (o SmtpResponsePtrOutput) StartTLSPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SmtpResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTLSPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// User of SMTP auth
+func (o SmtpResponsePtrOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SmtpResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.User
+	}).(pulumi.StringPtrOutput)
+}
+
+// Grafana Snapshots settings
+type Snapshots struct {
+	// Set to false to disable external snapshot publish endpoint
+	ExternalEnabled *bool `pulumi:"externalEnabled"`
+}
+
+// SnapshotsInput is an input type that accepts SnapshotsArgs and SnapshotsOutput values.
+// You can construct a concrete instance of `SnapshotsInput` via:
+//
+//	SnapshotsArgs{...}
+type SnapshotsInput interface {
+	pulumi.Input
+
+	ToSnapshotsOutput() SnapshotsOutput
+	ToSnapshotsOutputWithContext(context.Context) SnapshotsOutput
+}
+
+// Grafana Snapshots settings
+type SnapshotsArgs struct {
+	// Set to false to disable external snapshot publish endpoint
+	ExternalEnabled pulumi.BoolPtrInput `pulumi:"externalEnabled"`
+}
+
+func (SnapshotsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Snapshots)(nil)).Elem()
+}
+
+func (i SnapshotsArgs) ToSnapshotsOutput() SnapshotsOutput {
+	return i.ToSnapshotsOutputWithContext(context.Background())
+}
+
+func (i SnapshotsArgs) ToSnapshotsOutputWithContext(ctx context.Context) SnapshotsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotsOutput)
+}
+
+func (i SnapshotsArgs) ToSnapshotsPtrOutput() SnapshotsPtrOutput {
+	return i.ToSnapshotsPtrOutputWithContext(context.Background())
+}
+
+func (i SnapshotsArgs) ToSnapshotsPtrOutputWithContext(ctx context.Context) SnapshotsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotsOutput).ToSnapshotsPtrOutputWithContext(ctx)
+}
+
+// SnapshotsPtrInput is an input type that accepts SnapshotsArgs, SnapshotsPtr and SnapshotsPtrOutput values.
+// You can construct a concrete instance of `SnapshotsPtrInput` via:
+//
+//	        SnapshotsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SnapshotsPtrInput interface {
+	pulumi.Input
+
+	ToSnapshotsPtrOutput() SnapshotsPtrOutput
+	ToSnapshotsPtrOutputWithContext(context.Context) SnapshotsPtrOutput
+}
+
+type snapshotsPtrType SnapshotsArgs
+
+func SnapshotsPtr(v *SnapshotsArgs) SnapshotsPtrInput {
+	return (*snapshotsPtrType)(v)
+}
+
+func (*snapshotsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Snapshots)(nil)).Elem()
+}
+
+func (i *snapshotsPtrType) ToSnapshotsPtrOutput() SnapshotsPtrOutput {
+	return i.ToSnapshotsPtrOutputWithContext(context.Background())
+}
+
+func (i *snapshotsPtrType) ToSnapshotsPtrOutputWithContext(ctx context.Context) SnapshotsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotsPtrOutput)
+}
+
+// Grafana Snapshots settings
+type SnapshotsOutput struct{ *pulumi.OutputState }
+
+func (SnapshotsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Snapshots)(nil)).Elem()
+}
+
+func (o SnapshotsOutput) ToSnapshotsOutput() SnapshotsOutput {
+	return o
+}
+
+func (o SnapshotsOutput) ToSnapshotsOutputWithContext(ctx context.Context) SnapshotsOutput {
+	return o
+}
+
+func (o SnapshotsOutput) ToSnapshotsPtrOutput() SnapshotsPtrOutput {
+	return o.ToSnapshotsPtrOutputWithContext(context.Background())
+}
+
+func (o SnapshotsOutput) ToSnapshotsPtrOutputWithContext(ctx context.Context) SnapshotsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Snapshots) *Snapshots {
+		return &v
+	}).(SnapshotsPtrOutput)
+}
+
+// Set to false to disable external snapshot publish endpoint
+func (o SnapshotsOutput) ExternalEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Snapshots) *bool { return v.ExternalEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type SnapshotsPtrOutput struct{ *pulumi.OutputState }
+
+func (SnapshotsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Snapshots)(nil)).Elem()
+}
+
+func (o SnapshotsPtrOutput) ToSnapshotsPtrOutput() SnapshotsPtrOutput {
+	return o
+}
+
+func (o SnapshotsPtrOutput) ToSnapshotsPtrOutputWithContext(ctx context.Context) SnapshotsPtrOutput {
+	return o
+}
+
+func (o SnapshotsPtrOutput) Elem() SnapshotsOutput {
+	return o.ApplyT(func(v *Snapshots) Snapshots {
+		if v != nil {
+			return *v
+		}
+		var ret Snapshots
+		return ret
+	}).(SnapshotsOutput)
+}
+
+// Set to false to disable external snapshot publish endpoint
+func (o SnapshotsPtrOutput) ExternalEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Snapshots) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Grafana Snapshots settings
+type SnapshotsResponse struct {
+	// Set to false to disable external snapshot publish endpoint
+	ExternalEnabled *bool `pulumi:"externalEnabled"`
+}
+
+// Grafana Snapshots settings
+type SnapshotsResponseOutput struct{ *pulumi.OutputState }
+
+func (SnapshotsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotsResponse)(nil)).Elem()
+}
+
+func (o SnapshotsResponseOutput) ToSnapshotsResponseOutput() SnapshotsResponseOutput {
+	return o
+}
+
+func (o SnapshotsResponseOutput) ToSnapshotsResponseOutputWithContext(ctx context.Context) SnapshotsResponseOutput {
+	return o
+}
+
+// Set to false to disable external snapshot publish endpoint
+func (o SnapshotsResponseOutput) ExternalEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SnapshotsResponse) *bool { return v.ExternalEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type SnapshotsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SnapshotsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnapshotsResponse)(nil)).Elem()
+}
+
+func (o SnapshotsResponsePtrOutput) ToSnapshotsResponsePtrOutput() SnapshotsResponsePtrOutput {
+	return o
+}
+
+func (o SnapshotsResponsePtrOutput) ToSnapshotsResponsePtrOutputWithContext(ctx context.Context) SnapshotsResponsePtrOutput {
+	return o
+}
+
+func (o SnapshotsResponsePtrOutput) Elem() SnapshotsResponseOutput {
+	return o.ApplyT(func(v *SnapshotsResponse) SnapshotsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SnapshotsResponse
+		return ret
+	}).(SnapshotsResponseOutput)
+}
+
+// Set to false to disable external snapshot publish endpoint
+func (o SnapshotsResponsePtrOutput) ExternalEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SnapshotsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Grafana users settings
+type Users struct {
+	// Set to true so viewers can access and use explore and perform temporary edits on panels in dashboards they have access to. They cannot save their changes.
+	ViewersCanEdit *bool `pulumi:"viewersCanEdit"`
+}
+
+// UsersInput is an input type that accepts UsersArgs and UsersOutput values.
+// You can construct a concrete instance of `UsersInput` via:
+//
+//	UsersArgs{...}
+type UsersInput interface {
+	pulumi.Input
+
+	ToUsersOutput() UsersOutput
+	ToUsersOutputWithContext(context.Context) UsersOutput
+}
+
+// Grafana users settings
+type UsersArgs struct {
+	// Set to true so viewers can access and use explore and perform temporary edits on panels in dashboards they have access to. They cannot save their changes.
+	ViewersCanEdit pulumi.BoolPtrInput `pulumi:"viewersCanEdit"`
+}
+
+func (UsersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Users)(nil)).Elem()
+}
+
+func (i UsersArgs) ToUsersOutput() UsersOutput {
+	return i.ToUsersOutputWithContext(context.Background())
+}
+
+func (i UsersArgs) ToUsersOutputWithContext(ctx context.Context) UsersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsersOutput)
+}
+
+func (i UsersArgs) ToUsersPtrOutput() UsersPtrOutput {
+	return i.ToUsersPtrOutputWithContext(context.Background())
+}
+
+func (i UsersArgs) ToUsersPtrOutputWithContext(ctx context.Context) UsersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsersOutput).ToUsersPtrOutputWithContext(ctx)
+}
+
+// UsersPtrInput is an input type that accepts UsersArgs, UsersPtr and UsersPtrOutput values.
+// You can construct a concrete instance of `UsersPtrInput` via:
+//
+//	        UsersArgs{...}
+//
+//	or:
+//
+//	        nil
+type UsersPtrInput interface {
+	pulumi.Input
+
+	ToUsersPtrOutput() UsersPtrOutput
+	ToUsersPtrOutputWithContext(context.Context) UsersPtrOutput
+}
+
+type usersPtrType UsersArgs
+
+func UsersPtr(v *UsersArgs) UsersPtrInput {
+	return (*usersPtrType)(v)
+}
+
+func (*usersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Users)(nil)).Elem()
+}
+
+func (i *usersPtrType) ToUsersPtrOutput() UsersPtrOutput {
+	return i.ToUsersPtrOutputWithContext(context.Background())
+}
+
+func (i *usersPtrType) ToUsersPtrOutputWithContext(ctx context.Context) UsersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsersPtrOutput)
+}
+
+// Grafana users settings
+type UsersOutput struct{ *pulumi.OutputState }
+
+func (UsersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Users)(nil)).Elem()
+}
+
+func (o UsersOutput) ToUsersOutput() UsersOutput {
+	return o
+}
+
+func (o UsersOutput) ToUsersOutputWithContext(ctx context.Context) UsersOutput {
+	return o
+}
+
+func (o UsersOutput) ToUsersPtrOutput() UsersPtrOutput {
+	return o.ToUsersPtrOutputWithContext(context.Background())
+}
+
+func (o UsersOutput) ToUsersPtrOutputWithContext(ctx context.Context) UsersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Users) *Users {
+		return &v
+	}).(UsersPtrOutput)
+}
+
+// Set to true so viewers can access and use explore and perform temporary edits on panels in dashboards they have access to. They cannot save their changes.
+func (o UsersOutput) ViewersCanEdit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Users) *bool { return v.ViewersCanEdit }).(pulumi.BoolPtrOutput)
+}
+
+type UsersPtrOutput struct{ *pulumi.OutputState }
+
+func (UsersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Users)(nil)).Elem()
+}
+
+func (o UsersPtrOutput) ToUsersPtrOutput() UsersPtrOutput {
+	return o
+}
+
+func (o UsersPtrOutput) ToUsersPtrOutputWithContext(ctx context.Context) UsersPtrOutput {
+	return o
+}
+
+func (o UsersPtrOutput) Elem() UsersOutput {
+	return o.ApplyT(func(v *Users) Users {
+		if v != nil {
+			return *v
+		}
+		var ret Users
+		return ret
+	}).(UsersOutput)
+}
+
+// Set to true so viewers can access and use explore and perform temporary edits on panels in dashboards they have access to. They cannot save their changes.
+func (o UsersPtrOutput) ViewersCanEdit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Users) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ViewersCanEdit
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Grafana users settings
+type UsersResponse struct {
+	// Set to true so viewers can access and use explore and perform temporary edits on panels in dashboards they have access to. They cannot save their changes.
+	ViewersCanEdit *bool `pulumi:"viewersCanEdit"`
+}
+
+// Grafana users settings
+type UsersResponseOutput struct{ *pulumi.OutputState }
+
+func (UsersResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsersResponse)(nil)).Elem()
+}
+
+func (o UsersResponseOutput) ToUsersResponseOutput() UsersResponseOutput {
+	return o
+}
+
+func (o UsersResponseOutput) ToUsersResponseOutputWithContext(ctx context.Context) UsersResponseOutput {
+	return o
+}
+
+// Set to true so viewers can access and use explore and perform temporary edits on panels in dashboards they have access to. They cannot save their changes.
+func (o UsersResponseOutput) ViewersCanEdit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UsersResponse) *bool { return v.ViewersCanEdit }).(pulumi.BoolPtrOutput)
+}
+
+type UsersResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (UsersResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UsersResponse)(nil)).Elem()
+}
+
+func (o UsersResponsePtrOutput) ToUsersResponsePtrOutput() UsersResponsePtrOutput {
+	return o
+}
+
+func (o UsersResponsePtrOutput) ToUsersResponsePtrOutputWithContext(ctx context.Context) UsersResponsePtrOutput {
+	return o
+}
+
+func (o UsersResponsePtrOutput) Elem() UsersResponseOutput {
+	return o.ApplyT(func(v *UsersResponse) UsersResponse {
+		if v != nil {
+			return *v
+		}
+		var ret UsersResponse
+		return ret
+	}).(UsersResponseOutput)
+}
+
+// Set to true so viewers can access and use explore and perform temporary edits on panels in dashboards they have access to. They cannot save their changes.
+func (o UsersResponsePtrOutput) ViewersCanEdit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *UsersResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ViewersCanEdit
+	}).(pulumi.BoolPtrOutput)
 }
 
 func init() {
@@ -1791,10 +3297,23 @@ func init() {
 	pulumi.RegisterOutputType(AzureMonitorWorkspaceIntegrationArrayOutput{})
 	pulumi.RegisterOutputType(AzureMonitorWorkspaceIntegrationResponseOutput{})
 	pulumi.RegisterOutputType(AzureMonitorWorkspaceIntegrationResponseArrayOutput{})
+	pulumi.RegisterOutputType(DashboardDefinitionPropertiesOutput{})
+	pulumi.RegisterOutputType(DashboardDefinitionPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(DashboardDefinitionPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(EnterpriseConfigurationsOutput{})
+	pulumi.RegisterOutputType(EnterpriseConfigurationsPtrOutput{})
+	pulumi.RegisterOutputType(EnterpriseConfigurationsResponseOutput{})
+	pulumi.RegisterOutputType(EnterpriseConfigurationsResponsePtrOutput{})
+	pulumi.RegisterOutputType(GrafanaConfigurationsOutput{})
+	pulumi.RegisterOutputType(GrafanaConfigurationsPtrOutput{})
+	pulumi.RegisterOutputType(GrafanaConfigurationsResponseOutput{})
+	pulumi.RegisterOutputType(GrafanaConfigurationsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GrafanaIntegrationsOutput{})
 	pulumi.RegisterOutputType(GrafanaIntegrationsPtrOutput{})
 	pulumi.RegisterOutputType(GrafanaIntegrationsResponseOutput{})
 	pulumi.RegisterOutputType(GrafanaIntegrationsResponsePtrOutput{})
+	pulumi.RegisterOutputType(GrafanaPluginResponseOutput{})
+	pulumi.RegisterOutputType(GrafanaPluginResponseMapOutput{})
 	pulumi.RegisterOutputType(IntegrationFabricPropertiesOutput{})
 	pulumi.RegisterOutputType(IntegrationFabricPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(IntegrationFabricPropertiesResponseOutput{})
@@ -1802,21 +3321,26 @@ func init() {
 	pulumi.RegisterOutputType(ManagedGrafanaPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ManagedGrafanaPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ManagedPrivateEndpointConnectionStateResponseOutput{})
-	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
-	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
-	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
-	pulumi.RegisterOutputType(ManagedServiceIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
 	pulumi.RegisterOutputType(ResourceSkuOutput{})
 	pulumi.RegisterOutputType(ResourceSkuPtrOutput{})
 	pulumi.RegisterOutputType(ResourceSkuResponseOutput{})
 	pulumi.RegisterOutputType(ResourceSkuResponsePtrOutput{})
-	pulumi.RegisterOutputType(SystemDataResponseOutput{})
-	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
-	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
+	pulumi.RegisterOutputType(SecurityOutput{})
+	pulumi.RegisterOutputType(SecurityPtrOutput{})
+	pulumi.RegisterOutputType(SecurityResponseOutput{})
+	pulumi.RegisterOutputType(SecurityResponsePtrOutput{})
+	pulumi.RegisterOutputType(SmtpOutput{})
+	pulumi.RegisterOutputType(SmtpPtrOutput{})
+	pulumi.RegisterOutputType(SmtpResponseOutput{})
+	pulumi.RegisterOutputType(SmtpResponsePtrOutput{})
+	pulumi.RegisterOutputType(SnapshotsOutput{})
+	pulumi.RegisterOutputType(SnapshotsPtrOutput{})
+	pulumi.RegisterOutputType(SnapshotsResponseOutput{})
+	pulumi.RegisterOutputType(SnapshotsResponsePtrOutput{})
+	pulumi.RegisterOutputType(UsersOutput{})
+	pulumi.RegisterOutputType(UsersPtrOutput{})
+	pulumi.RegisterOutputType(UsersResponseOutput{})
+	pulumi.RegisterOutputType(UsersResponsePtrOutput{})
 }

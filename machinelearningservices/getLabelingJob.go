@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Resource Manager resource envelope.
 //
-// Uses Azure REST API version 2023-04-01-preview.
+// Uses Azure REST API version 2024-01-01-preview.
 //
-// Other available API versions: 2020-09-01-preview, 2021-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-04-01-preview.
+// Other available API versions: 2020-09-01-preview, 2021-03-01-preview, 2022-06-01-preview, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupLabelingJob(ctx *pulumi.Context, args *LookupLabelingJobArgs, opts ...pulumi.InvokeOption) (*LookupLabelingJobResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLabelingJobResult
@@ -29,10 +30,6 @@ func LookupLabelingJob(ctx *pulumi.Context, args *LookupLabelingJobArgs, opts ..
 type LookupLabelingJobArgs struct {
 	// The name and identifier for the LabelingJob.
 	Id string `pulumi:"id"`
-	// Boolean value to indicate whether to include JobInstructions in response.
-	IncludeJobInstructions *bool `pulumi:"includeJobInstructions"`
-	// Boolean value to indicate Whether to include LabelCategories in response.
-	IncludeLabelCategories *bool `pulumi:"includeLabelCategories"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of Azure Machine Learning workspace.
@@ -41,6 +38,8 @@ type LookupLabelingJobArgs struct {
 
 // Azure Resource Manager resource envelope.
 type LookupLabelingJobResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// [Required] Additional attributes of the entity.
@@ -48,7 +47,7 @@ type LookupLabelingJobResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -75,10 +74,6 @@ func LookupLabelingJobOutput(ctx *pulumi.Context, args LookupLabelingJobOutputAr
 type LookupLabelingJobOutputArgs struct {
 	// The name and identifier for the LabelingJob.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Boolean value to indicate whether to include JobInstructions in response.
-	IncludeJobInstructions pulumi.BoolPtrInput `pulumi:"includeJobInstructions"`
-	// Boolean value to indicate Whether to include LabelCategories in response.
-	IncludeLabelCategories pulumi.BoolPtrInput `pulumi:"includeLabelCategories"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Name of Azure Machine Learning workspace.
@@ -104,6 +99,11 @@ func (o LookupLabelingJobResultOutput) ToLookupLabelingJobResultOutputWithContex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupLabelingJobResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLabelingJobResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupLabelingJobResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLabelingJobResult) string { return v.Id }).(pulumi.StringOutput)
@@ -120,8 +120,8 @@ func (o LookupLabelingJobResultOutput) Name() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupLabelingJobResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupLabelingJobResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupLabelingJobResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupLabelingJobResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

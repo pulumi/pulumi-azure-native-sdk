@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Obtains the details of a suppression.
 //
-// Uses Azure REST API version 2023-01-01.
+// Uses Azure REST API version 2023-09-01-preview.
 //
-// Other available API versions: 2023-09-01-preview, 2025-01-01.
+// Other available API versions: 2023-01-01, 2024-11-18-preview, 2025-01-01, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native advisor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSuppression(ctx *pulumi.Context, args *LookupSuppressionArgs, opts ...pulumi.InvokeOption) (*LookupSuppressionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSuppressionResult
@@ -37,6 +38,8 @@ type LookupSuppressionArgs struct {
 
 // The details of the snoozed or dismissed rule; for example, the duration, name, and GUID associated with the rule.
 type LookupSuppressionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the expiration time stamp.
 	ExpirationTimeStamp string `pulumi:"expirationTimeStamp"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -46,7 +49,7 @@ type LookupSuppressionResult struct {
 	// The GUID of the suppression.
 	SuppressionId *string `pulumi:"suppressionId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv4.SystemDataResponse `pulumi:"systemData"`
 	// The duration for which the suppression is valid.
 	Ttl *string `pulumi:"ttl"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -90,6 +93,11 @@ func (o LookupSuppressionResultOutput) ToLookupSuppressionResultOutputWithContex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupSuppressionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSuppressionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Gets or sets the expiration time stamp.
 func (o LookupSuppressionResultOutput) ExpirationTimeStamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSuppressionResult) string { return v.ExpirationTimeStamp }).(pulumi.StringOutput)
@@ -111,8 +119,8 @@ func (o LookupSuppressionResultOutput) SuppressionId() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupSuppressionResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSuppressionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupSuppressionResultOutput) SystemData() commontypesv4.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSuppressionResult) commontypesv4.SystemDataResponse { return v.SystemData }).(commontypesv4.SystemDataResponseOutput)
 }
 
 // The duration for which the suppression is valid.

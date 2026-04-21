@@ -8,27 +8,32 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Settings defined at the Management Group scope.
 //
-// Uses Azure REST API version 2021-04-01. In version 1.x of the Azure Native provider, it used API version 2020-05-01.
+// Uses Azure REST API version 2023-04-01. In version 2.x of the Azure Native provider, it used API version 2021-04-01.
 //
-// Other available API versions: 2023-04-01.
+// Other available API versions: 2021-04-01, 2024-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native management [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type HierarchySetting struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Settings that sets the default Management Group under which new subscriptions get added in this tenant. For example, /providers/Microsoft.Management/managementGroups/defaultGroup
 	DefaultManagementGroup pulumi.StringPtrOutput `pulumi:"defaultManagementGroup"`
-	// The name of the object. In this case, default.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Indicates whether RBAC access is required upon group creation under the root Management Group. If set to true, user will require Microsoft.Management/managementGroups/write action on the root Management Group scope in order to create new Groups directly under the root. This will prevent new users from creating new Management Groups, unless they are given access.
 	RequireAuthorizationForGroupCreation pulumi.BoolPtrOutput `pulumi:"requireAuthorizationForGroupCreation"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// The AAD Tenant ID associated with the hierarchy settings. For example, 00000000-0000-0000-0000-000000000000
 	TenantId pulumi.StringPtrOutput `pulumi:"tenantId"`
-	// The type of the resource.  For example, Microsoft.Management/managementGroups/settings.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -57,6 +62,9 @@ func NewHierarchySetting(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:management/v20230401:HierarchySetting"),
+		},
+		{
+			Type: pulumi.String("azure-native:management/v20240201preview:HierarchySetting"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -148,12 +156,17 @@ func (o HierarchySettingOutput) ToHierarchySettingOutputWithContext(ctx context.
 	return o
 }
 
+// The Azure API version of the resource.
+func (o HierarchySettingOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *HierarchySetting) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Settings that sets the default Management Group under which new subscriptions get added in this tenant. For example, /providers/Microsoft.Management/managementGroups/defaultGroup
 func (o HierarchySettingOutput) DefaultManagementGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HierarchySetting) pulumi.StringPtrOutput { return v.DefaultManagementGroup }).(pulumi.StringPtrOutput)
 }
 
-// The name of the object. In this case, default.
+// The name of the resource
 func (o HierarchySettingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *HierarchySetting) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -163,12 +176,17 @@ func (o HierarchySettingOutput) RequireAuthorizationForGroupCreation() pulumi.Bo
 	return o.ApplyT(func(v *HierarchySetting) pulumi.BoolPtrOutput { return v.RequireAuthorizationForGroupCreation }).(pulumi.BoolPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o HierarchySettingOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *HierarchySetting) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+}
+
 // The AAD Tenant ID associated with the hierarchy settings. For example, 00000000-0000-0000-0000-000000000000
 func (o HierarchySettingOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HierarchySetting) pulumi.StringPtrOutput { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
-// The type of the resource.  For example, Microsoft.Management/managementGroups/settings.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o HierarchySettingOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *HierarchySetting) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

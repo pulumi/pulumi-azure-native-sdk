@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +35,8 @@ type LookupGen2EnvironmentArgs struct {
 
 // An environment is a set of time-series data available for query, and is the top level Azure Time Series Insights resource. Gen2 environments do not have set data retention limits.
 type LookupGen2EnvironmentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The time the resource was created.
 	CreationTime string `pulumi:"creationTime"`
 	// The fully qualified domain name used to access the environment data, e.g. to query the environment's events or upload reference data for the environment.
@@ -103,6 +105,11 @@ func (o LookupGen2EnvironmentResultOutput) ToLookupGen2EnvironmentResultOutput()
 
 func (o LookupGen2EnvironmentResultOutput) ToLookupGen2EnvironmentResultOutputWithContext(ctx context.Context) LookupGen2EnvironmentResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupGen2EnvironmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGen2EnvironmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The time the resource was created.

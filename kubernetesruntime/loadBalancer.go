@@ -8,15 +8,14 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A LoadBalancer resource for an Arc connected cluster (Microsoft.Kubernetes/connectedClusters)
 //
-// Uses Azure REST API version 2024-03-01.
-//
-// Other available API versions: 2023-10-01-preview.
+// Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2024-03-01.
 type LoadBalancer struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +23,8 @@ type LoadBalancer struct {
 	Addresses pulumi.StringArrayOutput `pulumi:"addresses"`
 	// Advertise Mode
 	AdvertiseMode pulumi.StringOutput `pulumi:"advertiseMode"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The list of BGP peers it should advertise to. Null or empty means to advertise to all peers.
 	BgpPeers pulumi.StringArrayOutput `pulumi:"bgpPeers"`
 	// The name of the resource
@@ -33,7 +34,7 @@ type LoadBalancer struct {
 	// A dynamic label mapping to select related services. For instance, if you want to create a load balancer only for services with label "a=b", then please specify {"a": "b"} in the field.
 	ServiceSelector pulumi.StringMapOutput `pulumi:"serviceSelector"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -173,6 +174,11 @@ func (o LoadBalancerOutput) AdvertiseMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.AdvertiseMode }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o LoadBalancerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The list of BGP peers it should advertise to. Null or empty means to advertise to all peers.
 func (o LoadBalancerOutput) BgpPeers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringArrayOutput { return v.BgpPeers }).(pulumi.StringArrayOutput)
@@ -194,8 +200,8 @@ func (o LoadBalancerOutput) ServiceSelector() pulumi.StringMapOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LoadBalancerOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *LoadBalancer) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o LoadBalancerOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *LoadBalancer) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

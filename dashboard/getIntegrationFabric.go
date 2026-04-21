@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The integration fabric resource type.
 //
-// Uses Azure REST API version 2023-10-01-preview.
+// Uses Azure REST API version 2024-10-01.
 //
-// Other available API versions: 2024-10-01.
+// Other available API versions: 2023-10-01-preview, 2024-11-01-preview, 2025-08-01, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dashboard [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupIntegrationFabric(ctx *pulumi.Context, args *LookupIntegrationFabricArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationFabricResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIntegrationFabricResult
@@ -37,6 +38,8 @@ type LookupIntegrationFabricArgs struct {
 
 // The integration fabric resource type.
 type LookupIntegrationFabricResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -45,7 +48,7 @@ type LookupIntegrationFabricResult struct {
 	Name       string                              `pulumi:"name"`
 	Properties IntegrationFabricPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -89,6 +92,11 @@ func (o LookupIntegrationFabricResultOutput) ToLookupIntegrationFabricResultOutp
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupIntegrationFabricResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntegrationFabricResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupIntegrationFabricResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationFabricResult) string { return v.Id }).(pulumi.StringOutput)
@@ -109,8 +117,8 @@ func (o LookupIntegrationFabricResultOutput) Properties() IntegrationFabricPrope
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupIntegrationFabricResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupIntegrationFabricResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupIntegrationFabricResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupIntegrationFabricResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the Security ML Analytics Settings.
 //
-// Uses Azure REST API version 2023-02-01.
+// Uses Azure REST API version 2024-09-01.
 func LookupAnomalySecurityMLAnalyticsSettings(ctx *pulumi.Context, args *LookupAnomalySecurityMLAnalyticsSettingsArgs, opts ...pulumi.InvokeOption) (*LookupAnomalySecurityMLAnalyticsSettingsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAnomalySecurityMLAnalyticsSettingsResult
@@ -39,6 +40,8 @@ type LookupAnomalySecurityMLAnalyticsSettingsResult struct {
 	AnomalySettingsVersion *int `pulumi:"anomalySettingsVersion"`
 	// The anomaly version of the AnomalySecurityMLAnalyticsSettings.
 	AnomalyVersion string `pulumi:"anomalyVersion"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The customizable observations of the AnomalySecurityMLAnalyticsSettings.
 	CustomizableObservations interface{} `pulumi:"customizableObservations"`
 	// The description of the SecurityMLAnalyticsSettings.
@@ -69,7 +72,7 @@ type LookupAnomalySecurityMLAnalyticsSettingsResult struct {
 	// The anomaly SecurityMLAnalyticsSettings status
 	SettingsStatus string `pulumi:"settingsStatus"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The tactics of the SecurityMLAnalyticsSettings
 	Tactics []string `pulumi:"tactics"`
 	// The techniques of the SecurityMLAnalyticsSettings
@@ -123,6 +126,11 @@ func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) AnomalySettingsVer
 // The anomaly version of the AnomalySecurityMLAnalyticsSettings.
 func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) AnomalyVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAnomalySecurityMLAnalyticsSettingsResult) string { return v.AnomalyVersion }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAnomalySecurityMLAnalyticsSettingsResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The customizable observations of the AnomalySecurityMLAnalyticsSettings.
@@ -199,8 +207,10 @@ func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) SettingsStatus() p
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAnomalySecurityMLAnalyticsSettingsResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupAnomalySecurityMLAnalyticsSettingsResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAnomalySecurityMLAnalyticsSettingsResult) commontypesv5.SystemDataResponse {
+		return v.SystemData
+	}).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The tactics of the SecurityMLAnalyticsSettings

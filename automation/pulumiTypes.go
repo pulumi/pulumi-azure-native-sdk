@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -982,7 +983,7 @@ func (o ContentHashResponsePtrOutput) Value() pulumi.StringPtrOutput {
 type ContentLink struct {
 	// Gets or sets the hash.
 	ContentHash *ContentHash `pulumi:"contentHash"`
-	// Gets or sets the uri of the runbook content.
+	// Gets or sets the uri of content.
 	Uri *string `pulumi:"uri"`
 	// Gets or sets the version of the content.
 	Version *string `pulumi:"version"`
@@ -1003,7 +1004,7 @@ type ContentLinkInput interface {
 type ContentLinkArgs struct {
 	// Gets or sets the hash.
 	ContentHash ContentHashPtrInput `pulumi:"contentHash"`
-	// Gets or sets the uri of the runbook content.
+	// Gets or sets the uri of content.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
 	// Gets or sets the version of the content.
 	Version pulumi.StringPtrInput `pulumi:"version"`
@@ -1092,7 +1093,7 @@ func (o ContentLinkOutput) ContentHash() ContentHashPtrOutput {
 	return o.ApplyT(func(v ContentLink) *ContentHash { return v.ContentHash }).(ContentHashPtrOutput)
 }
 
-// Gets or sets the uri of the runbook content.
+// Gets or sets the uri of content.
 func (o ContentLinkOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContentLink) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
@@ -1136,7 +1137,7 @@ func (o ContentLinkPtrOutput) ContentHash() ContentHashPtrOutput {
 	}).(ContentHashPtrOutput)
 }
 
-// Gets or sets the uri of the runbook content.
+// Gets or sets the uri of content.
 func (o ContentLinkPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContentLink) *string {
 		if v == nil {
@@ -1160,7 +1161,7 @@ func (o ContentLinkPtrOutput) Version() pulumi.StringPtrOutput {
 type ContentLinkResponse struct {
 	// Gets or sets the hash.
 	ContentHash *ContentHashResponse `pulumi:"contentHash"`
-	// Gets or sets the uri of the runbook content.
+	// Gets or sets the uri of content.
 	Uri *string `pulumi:"uri"`
 	// Gets or sets the version of the content.
 	Version *string `pulumi:"version"`
@@ -1186,7 +1187,7 @@ func (o ContentLinkResponseOutput) ContentHash() ContentHashResponsePtrOutput {
 	return o.ApplyT(func(v ContentLinkResponse) *ContentHashResponse { return v.ContentHash }).(ContentHashResponsePtrOutput)
 }
 
-// Gets or sets the uri of the runbook content.
+// Gets or sets the uri of content.
 func (o ContentLinkResponseOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContentLinkResponse) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
@@ -1230,7 +1231,7 @@ func (o ContentLinkResponsePtrOutput) ContentHash() ContentHashResponsePtrOutput
 	}).(ContentHashResponsePtrOutput)
 }
 
-// Gets or sets the uri of the runbook content.
+// Gets or sets the uri of content.
 func (o ContentLinkResponsePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContentLinkResponse) *string {
 		if v == nil {
@@ -2901,7 +2902,7 @@ func (o IdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
 
 // Identity for the resource.
 type IdentityResponse struct {
-	// The principal ID of resource identity.
+	// The principal ID of resource identity. The value must be an UUID.
 	PrincipalId string `pulumi:"principalId"`
 	// The tenant ID of resource.
 	TenantId string `pulumi:"tenantId"`
@@ -2926,7 +2927,7 @@ func (o IdentityResponseOutput) ToIdentityResponseOutputWithContext(ctx context.
 	return o
 }
 
-// The principal ID of resource identity.
+// The principal ID of resource identity. The value must be an UUID.
 func (o IdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
 }
@@ -2972,7 +2973,7 @@ func (o IdentityResponsePtrOutput) Elem() IdentityResponseOutput {
 	}).(IdentityResponseOutput)
 }
 
-// The principal ID of resource identity.
+// The principal ID of resource identity. The value must be an UUID.
 func (o IdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IdentityResponse) *string {
 		if v == nil {
@@ -3972,7 +3973,7 @@ func (o PackageErrorInfoResponsePtrOutput) Message() pulumi.StringPtrOutput {
 type PrivateEndpointConnectionResponse struct {
 	// Gets the groupIds.
 	GroupIds []string `pulumi:"groupIds"`
-	// Fully qualified resource Id for the resource
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
@@ -3980,7 +3981,9 @@ type PrivateEndpointConnectionResponse struct {
 	PrivateEndpoint *PrivateEndpointPropertyResponse `pulumi:"privateEndpoint"`
 	// Connection State of the Private Endpoint Connection.
 	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionStatePropertyResponse `pulumi:"privateLinkServiceConnectionState"`
-	// The type of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -4004,7 +4007,7 @@ func (o PrivateEndpointConnectionResponseOutput) GroupIds() pulumi.StringArrayOu
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
 }
 
-// Fully qualified resource Id for the resource
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -4026,7 +4029,12 @@ func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionSta
 	}).(PrivateLinkServiceConnectionStatePropertyResponsePtrOutput)
 }
 
-// The type of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o PrivateEndpointConnectionResponseOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o PrivateEndpointConnectionResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -6588,67 +6596,6 @@ func (o SourceControlSecurityTokenPropertiesPtrOutput) TokenType() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
-}
-
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponseOutput struct{ *pulumi.OutputState }
-
-func (SystemDataResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
-	return o
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
-	return o
-}
-
-// The timestamp of resource creation (UTC).
-func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
-}
-
 // Tag filter information for the VM.
 type TagSettingsProperties struct {
 	// Filter VMs by Any or All specified tags.
@@ -7357,165 +7304,6 @@ func (o TaskPropertiesResponsePtrOutput) Source() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
-type TrackedResource struct {
-	// The geo-location where the resource lives
-	Location string `pulumi:"location"`
-	// Resource tags.
-	Tags map[string]string `pulumi:"tags"`
-}
-
-// TrackedResourceInput is an input type that accepts TrackedResourceArgs and TrackedResourceOutput values.
-// You can construct a concrete instance of `TrackedResourceInput` via:
-//
-//	TrackedResourceArgs{...}
-type TrackedResourceInput interface {
-	pulumi.Input
-
-	ToTrackedResourceOutput() TrackedResourceOutput
-	ToTrackedResourceOutputWithContext(context.Context) TrackedResourceOutput
-}
-
-// The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
-type TrackedResourceArgs struct {
-	// The geo-location where the resource lives
-	Location pulumi.StringInput `pulumi:"location"`
-	// Resource tags.
-	Tags pulumi.StringMapInput `pulumi:"tags"`
-}
-
-func (TrackedResourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TrackedResource)(nil)).Elem()
-}
-
-func (i TrackedResourceArgs) ToTrackedResourceOutput() TrackedResourceOutput {
-	return i.ToTrackedResourceOutputWithContext(context.Background())
-}
-
-func (i TrackedResourceArgs) ToTrackedResourceOutputWithContext(ctx context.Context) TrackedResourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TrackedResourceOutput)
-}
-
-func (i TrackedResourceArgs) ToTrackedResourcePtrOutput() TrackedResourcePtrOutput {
-	return i.ToTrackedResourcePtrOutputWithContext(context.Background())
-}
-
-func (i TrackedResourceArgs) ToTrackedResourcePtrOutputWithContext(ctx context.Context) TrackedResourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TrackedResourceOutput).ToTrackedResourcePtrOutputWithContext(ctx)
-}
-
-// TrackedResourcePtrInput is an input type that accepts TrackedResourceArgs, TrackedResourcePtr and TrackedResourcePtrOutput values.
-// You can construct a concrete instance of `TrackedResourcePtrInput` via:
-//
-//	        TrackedResourceArgs{...}
-//
-//	or:
-//
-//	        nil
-type TrackedResourcePtrInput interface {
-	pulumi.Input
-
-	ToTrackedResourcePtrOutput() TrackedResourcePtrOutput
-	ToTrackedResourcePtrOutputWithContext(context.Context) TrackedResourcePtrOutput
-}
-
-type trackedResourcePtrType TrackedResourceArgs
-
-func TrackedResourcePtr(v *TrackedResourceArgs) TrackedResourcePtrInput {
-	return (*trackedResourcePtrType)(v)
-}
-
-func (*trackedResourcePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TrackedResource)(nil)).Elem()
-}
-
-func (i *trackedResourcePtrType) ToTrackedResourcePtrOutput() TrackedResourcePtrOutput {
-	return i.ToTrackedResourcePtrOutputWithContext(context.Background())
-}
-
-func (i *trackedResourcePtrType) ToTrackedResourcePtrOutputWithContext(ctx context.Context) TrackedResourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TrackedResourcePtrOutput)
-}
-
-// The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
-type TrackedResourceOutput struct{ *pulumi.OutputState }
-
-func (TrackedResourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TrackedResource)(nil)).Elem()
-}
-
-func (o TrackedResourceOutput) ToTrackedResourceOutput() TrackedResourceOutput {
-	return o
-}
-
-func (o TrackedResourceOutput) ToTrackedResourceOutputWithContext(ctx context.Context) TrackedResourceOutput {
-	return o
-}
-
-func (o TrackedResourceOutput) ToTrackedResourcePtrOutput() TrackedResourcePtrOutput {
-	return o.ToTrackedResourcePtrOutputWithContext(context.Background())
-}
-
-func (o TrackedResourceOutput) ToTrackedResourcePtrOutputWithContext(ctx context.Context) TrackedResourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TrackedResource) *TrackedResource {
-		return &v
-	}).(TrackedResourcePtrOutput)
-}
-
-// The geo-location where the resource lives
-func (o TrackedResourceOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v TrackedResource) string { return v.Location }).(pulumi.StringOutput)
-}
-
-// Resource tags.
-func (o TrackedResourceOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v TrackedResource) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-type TrackedResourcePtrOutput struct{ *pulumi.OutputState }
-
-func (TrackedResourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TrackedResource)(nil)).Elem()
-}
-
-func (o TrackedResourcePtrOutput) ToTrackedResourcePtrOutput() TrackedResourcePtrOutput {
-	return o
-}
-
-func (o TrackedResourcePtrOutput) ToTrackedResourcePtrOutputWithContext(ctx context.Context) TrackedResourcePtrOutput {
-	return o
-}
-
-func (o TrackedResourcePtrOutput) Elem() TrackedResourceOutput {
-	return o.ApplyT(func(v *TrackedResource) TrackedResource {
-		if v != nil {
-			return *v
-		}
-		var ret TrackedResource
-		return ret
-	}).(TrackedResourceOutput)
-}
-
-// The geo-location where the resource lives
-func (o TrackedResourcePtrOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TrackedResource) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Location
-	}).(pulumi.StringPtrOutput)
-}
-
-// Resource tags.
-func (o TrackedResourcePtrOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *TrackedResource) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Tags
-	}).(pulumi.StringMapOutput)
-}
-
 // Update specific properties of the software update configuration.
 type UpdateConfiguration struct {
 	// List of azure resource Ids for azure virtual machines targeted by the software update configuration.
@@ -8167,7 +7955,6 @@ func init() {
 	pulumi.RegisterOutputType(SoftwareUpdateConfigurationTasksResponsePtrOutput{})
 	pulumi.RegisterOutputType(SourceControlSecurityTokenPropertiesOutput{})
 	pulumi.RegisterOutputType(SourceControlSecurityTokenPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(TagSettingsPropertiesOutput{})
 	pulumi.RegisterOutputType(TagSettingsPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(TagSettingsPropertiesResponseOutput{})
@@ -8180,8 +7967,6 @@ func init() {
 	pulumi.RegisterOutputType(TaskPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(TaskPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(TaskPropertiesResponsePtrOutput{})
-	pulumi.RegisterOutputType(TrackedResourceOutput{})
-	pulumi.RegisterOutputType(TrackedResourcePtrOutput{})
 	pulumi.RegisterOutputType(UpdateConfigurationOutput{})
 	pulumi.RegisterOutputType(UpdateConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentitiesPropertiesResponseOutput{})

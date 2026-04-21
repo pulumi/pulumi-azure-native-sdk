@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2021-07-01.
 //
-// Other available API versions: 2023-12-01-preview.
+// Other available API versions: 2023-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native solutions [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupApplicationDefinition(ctx *pulumi.Context, args *LookupApplicationDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupApplicationDefinitionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApplicationDefinitionResult
@@ -39,6 +40,8 @@ type LookupApplicationDefinitionResult struct {
 	Artifacts []ApplicationDefinitionArtifactResponse `pulumi:"artifacts"`
 	// The managed application provider authorizations.
 	Authorizations []ApplicationAuthorizationResponse `pulumi:"authorizations"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The createUiDefinition json for the backing template with Microsoft.Solutions/applications resource. It can be a JObject or well-formed JSON string.
 	CreateUiDefinition interface{} `pulumi:"createUiDefinition"`
 	// The managed application deployment policy.
@@ -76,7 +79,7 @@ type LookupApplicationDefinitionResult struct {
 	// The storage account id for bring your own storage scenario.
 	StorageAccountId *string `pulumi:"storageAccountId"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
 	// Resource type
@@ -126,6 +129,11 @@ func (o LookupApplicationDefinitionResultOutput) Artifacts() ApplicationDefiniti
 // The managed application provider authorizations.
 func (o LookupApplicationDefinitionResultOutput) Authorizations() ApplicationAuthorizationResponseArrayOutput {
 	return o.ApplyT(func(v LookupApplicationDefinitionResult) []ApplicationAuthorizationResponse { return v.Authorizations }).(ApplicationAuthorizationResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupApplicationDefinitionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApplicationDefinitionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The createUiDefinition json for the backing template with Microsoft.Solutions/applications resource. It can be a JObject or well-formed JSON string.
@@ -227,8 +235,8 @@ func (o LookupApplicationDefinitionResultOutput) StorageAccountId() pulumi.Strin
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupApplicationDefinitionResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupApplicationDefinitionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupApplicationDefinitionResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupApplicationDefinitionResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Resource tags

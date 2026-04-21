@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A Microsoft.AwsConnector resource
 //
-// Uses Azure REST API version 2024-12-01.
+// Uses Azure REST API version 2024-12-01. In version 2.x of the Azure Native provider, it used API version 2024-12-01.
 type ElasticLoadBalancingV2LoadBalancer struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -25,7 +28,7 @@ type ElasticLoadBalancingV2LoadBalancer struct {
 	// The resource-specific properties for this resource.
 	Properties ElasticLoadBalancingV2LoadBalancerPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -144,6 +147,11 @@ func (o ElasticLoadBalancingV2LoadBalancerOutput) ToElasticLoadBalancingV2LoadBa
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ElasticLoadBalancingV2LoadBalancerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ElasticLoadBalancingV2LoadBalancer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The geo-location where the resource lives
 func (o ElasticLoadBalancingV2LoadBalancerOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElasticLoadBalancingV2LoadBalancer) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -162,8 +170,10 @@ func (o ElasticLoadBalancingV2LoadBalancerOutput) Properties() ElasticLoadBalanc
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ElasticLoadBalancingV2LoadBalancerOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *ElasticLoadBalancingV2LoadBalancer) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o ElasticLoadBalancingV2LoadBalancerOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *ElasticLoadBalancingV2LoadBalancer) commontypesv5.SystemDataResponseOutput {
+		return v.SystemData
+	}).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

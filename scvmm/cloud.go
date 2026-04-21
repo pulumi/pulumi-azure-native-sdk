@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Clouds resource definition.
 //
-// Uses Azure REST API version 2022-05-21-preview. In version 1.x of the Azure Native provider, it used API version 2020-06-05-preview.
+// Uses Azure REST API version 2023-04-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-05-21-preview.
 //
-// Other available API versions: 2023-04-01-preview, 2023-10-07, 2024-06-01.
+// Other available API versions: 2022-05-21-preview, 2023-10-07, 2024-06-01, 2025-03-13. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native scvmm [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Cloud struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Capacity of the cloud.
 	CloudCapacity CloudCapacityResponseOutput `pulumi:"cloudCapacity"`
 	// Name of the cloud in VMMServer.
@@ -37,7 +40,7 @@ type Cloud struct {
 	// List of QoS policies available for the cloud.
 	StorageQoSPolicies StorageQoSPolicyResponseArrayOutput `pulumi:"storageQoSPolicies"`
 	// The system data.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource Type
@@ -76,6 +79,9 @@ func NewCloud(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:scvmm/v20240601:Cloud"),
+		},
+		{
+			Type: pulumi.String("azure-native:scvmm/v20250313:Cloud"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -187,6 +193,11 @@ func (o CloudOutput) ToCloudOutputWithContext(ctx context.Context) CloudOutput {
 	return o
 }
 
+// The Azure API version of the resource.
+func (o CloudOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cloud) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Capacity of the cloud.
 func (o CloudOutput) CloudCapacity() CloudCapacityResponseOutput {
 	return o.ApplyT(func(v *Cloud) CloudCapacityResponseOutput { return v.CloudCapacity }).(CloudCapacityResponseOutput)
@@ -228,8 +239,8 @@ func (o CloudOutput) StorageQoSPolicies() StorageQoSPolicyResponseArrayOutput {
 }
 
 // The system data.
-func (o CloudOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Cloud) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o CloudOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Cloud) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags

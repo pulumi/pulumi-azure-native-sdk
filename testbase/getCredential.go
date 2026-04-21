@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +36,8 @@ type LookupCredentialArgs struct {
 
 // The test base credential resource.
 type LookupCredentialResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Credential type.
 	CredentialType string `pulumi:"credentialType"`
 	// Credential display name.
@@ -44,7 +47,7 @@ type LookupCredentialResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -86,6 +89,11 @@ func (o LookupCredentialResultOutput) ToLookupCredentialResultOutputWithContext(
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupCredentialResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCredentialResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Credential type.
 func (o LookupCredentialResultOutput) CredentialType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCredentialResult) string { return v.CredentialType }).(pulumi.StringOutput)
@@ -107,8 +115,8 @@ func (o LookupCredentialResultOutput) Name() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupCredentialResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupCredentialResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupCredentialResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupCredentialResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

@@ -1031,174 +1031,6 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-type PrivateEndpointServiceConnectionStatus string
-
-const (
-	PrivateEndpointServiceConnectionStatusPending  = PrivateEndpointServiceConnectionStatus("Pending")
-	PrivateEndpointServiceConnectionStatusApproved = PrivateEndpointServiceConnectionStatus("Approved")
-	PrivateEndpointServiceConnectionStatusRejected = PrivateEndpointServiceConnectionStatus("Rejected")
-)
-
-func (PrivateEndpointServiceConnectionStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointServiceConnectionStatus)(nil)).Elem()
-}
-
-func (e PrivateEndpointServiceConnectionStatus) ToPrivateEndpointServiceConnectionStatusOutput() PrivateEndpointServiceConnectionStatusOutput {
-	return pulumi.ToOutput(e).(PrivateEndpointServiceConnectionStatusOutput)
-}
-
-func (e PrivateEndpointServiceConnectionStatus) ToPrivateEndpointServiceConnectionStatusOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(PrivateEndpointServiceConnectionStatusOutput)
-}
-
-func (e PrivateEndpointServiceConnectionStatus) ToPrivateEndpointServiceConnectionStatusPtrOutput() PrivateEndpointServiceConnectionStatusPtrOutput {
-	return e.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(context.Background())
-}
-
-func (e PrivateEndpointServiceConnectionStatus) ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusPtrOutput {
-	return PrivateEndpointServiceConnectionStatus(e).ToPrivateEndpointServiceConnectionStatusOutputWithContext(ctx).ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx)
-}
-
-func (e PrivateEndpointServiceConnectionStatus) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e PrivateEndpointServiceConnectionStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e PrivateEndpointServiceConnectionStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e PrivateEndpointServiceConnectionStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type PrivateEndpointServiceConnectionStatusOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointServiceConnectionStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointServiceConnectionStatus)(nil)).Elem()
-}
-
-func (o PrivateEndpointServiceConnectionStatusOutput) ToPrivateEndpointServiceConnectionStatusOutput() PrivateEndpointServiceConnectionStatusOutput {
-	return o
-}
-
-func (o PrivateEndpointServiceConnectionStatusOutput) ToPrivateEndpointServiceConnectionStatusOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusOutput {
-	return o
-}
-
-func (o PrivateEndpointServiceConnectionStatusOutput) ToPrivateEndpointServiceConnectionStatusPtrOutput() PrivateEndpointServiceConnectionStatusPtrOutput {
-	return o.ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(context.Background())
-}
-
-func (o PrivateEndpointServiceConnectionStatusOutput) ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateEndpointServiceConnectionStatus) *PrivateEndpointServiceConnectionStatus {
-		return &v
-	}).(PrivateEndpointServiceConnectionStatusPtrOutput)
-}
-
-func (o PrivateEndpointServiceConnectionStatusOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o PrivateEndpointServiceConnectionStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e PrivateEndpointServiceConnectionStatus) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o PrivateEndpointServiceConnectionStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o PrivateEndpointServiceConnectionStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e PrivateEndpointServiceConnectionStatus) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type PrivateEndpointServiceConnectionStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointServiceConnectionStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateEndpointServiceConnectionStatus)(nil)).Elem()
-}
-
-func (o PrivateEndpointServiceConnectionStatusPtrOutput) ToPrivateEndpointServiceConnectionStatusPtrOutput() PrivateEndpointServiceConnectionStatusPtrOutput {
-	return o
-}
-
-func (o PrivateEndpointServiceConnectionStatusPtrOutput) ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusPtrOutput {
-	return o
-}
-
-func (o PrivateEndpointServiceConnectionStatusPtrOutput) Elem() PrivateEndpointServiceConnectionStatusOutput {
-	return o.ApplyT(func(v *PrivateEndpointServiceConnectionStatus) PrivateEndpointServiceConnectionStatus {
-		if v != nil {
-			return *v
-		}
-		var ret PrivateEndpointServiceConnectionStatus
-		return ret
-	}).(PrivateEndpointServiceConnectionStatusOutput)
-}
-
-func (o PrivateEndpointServiceConnectionStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o PrivateEndpointServiceConnectionStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PrivateEndpointServiceConnectionStatus) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// PrivateEndpointServiceConnectionStatusInput is an input type that accepts values of the PrivateEndpointServiceConnectionStatus enum
-// A concrete instance of `PrivateEndpointServiceConnectionStatusInput` can be one of the following:
-//
-//	PrivateEndpointServiceConnectionStatusPending
-//	PrivateEndpointServiceConnectionStatusApproved
-//	PrivateEndpointServiceConnectionStatusRejected
-type PrivateEndpointServiceConnectionStatusInput interface {
-	pulumi.Input
-
-	ToPrivateEndpointServiceConnectionStatusOutput() PrivateEndpointServiceConnectionStatusOutput
-	ToPrivateEndpointServiceConnectionStatusOutputWithContext(context.Context) PrivateEndpointServiceConnectionStatusOutput
-}
-
-var privateEndpointServiceConnectionStatusPtrType = reflect.TypeOf((**PrivateEndpointServiceConnectionStatus)(nil)).Elem()
-
-type PrivateEndpointServiceConnectionStatusPtrInput interface {
-	pulumi.Input
-
-	ToPrivateEndpointServiceConnectionStatusPtrOutput() PrivateEndpointServiceConnectionStatusPtrOutput
-	ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(context.Context) PrivateEndpointServiceConnectionStatusPtrOutput
-}
-
-type privateEndpointServiceConnectionStatusPtr string
-
-func PrivateEndpointServiceConnectionStatusPtr(v string) PrivateEndpointServiceConnectionStatusPtrInput {
-	return (*privateEndpointServiceConnectionStatusPtr)(&v)
-}
-
-func (*privateEndpointServiceConnectionStatusPtr) ElementType() reflect.Type {
-	return privateEndpointServiceConnectionStatusPtrType
-}
-
-func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceConnectionStatusPtrOutput() PrivateEndpointServiceConnectionStatusPtrOutput {
-	return pulumi.ToOutput(in).(PrivateEndpointServiceConnectionStatusPtrOutput)
-}
-
-func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointServiceConnectionStatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointServiceConnectionStatusPtrOutput)
-}
-
 // Control permission for data plane traffic coming from public networks while private endpoint is enabled.
 type PublicNetworkAccess string
 
@@ -1535,6 +1367,170 @@ func (in *serviceManagedIdentityTypePtr) ToServiceManagedIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceManagedIdentityTypePtrOutput)
 }
 
+// The Data Actions that can be enabled for a Smart Identity Provider Application.
+type SmartDataActions string
+
+const (
+	SmartDataActionsRead = SmartDataActions("Read")
+)
+
+func (SmartDataActions) ElementType() reflect.Type {
+	return reflect.TypeOf((*SmartDataActions)(nil)).Elem()
+}
+
+func (e SmartDataActions) ToSmartDataActionsOutput() SmartDataActionsOutput {
+	return pulumi.ToOutput(e).(SmartDataActionsOutput)
+}
+
+func (e SmartDataActions) ToSmartDataActionsOutputWithContext(ctx context.Context) SmartDataActionsOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SmartDataActionsOutput)
+}
+
+func (e SmartDataActions) ToSmartDataActionsPtrOutput() SmartDataActionsPtrOutput {
+	return e.ToSmartDataActionsPtrOutputWithContext(context.Background())
+}
+
+func (e SmartDataActions) ToSmartDataActionsPtrOutputWithContext(ctx context.Context) SmartDataActionsPtrOutput {
+	return SmartDataActions(e).ToSmartDataActionsOutputWithContext(ctx).ToSmartDataActionsPtrOutputWithContext(ctx)
+}
+
+func (e SmartDataActions) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SmartDataActions) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SmartDataActions) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SmartDataActions) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SmartDataActionsOutput struct{ *pulumi.OutputState }
+
+func (SmartDataActionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SmartDataActions)(nil)).Elem()
+}
+
+func (o SmartDataActionsOutput) ToSmartDataActionsOutput() SmartDataActionsOutput {
+	return o
+}
+
+func (o SmartDataActionsOutput) ToSmartDataActionsOutputWithContext(ctx context.Context) SmartDataActionsOutput {
+	return o
+}
+
+func (o SmartDataActionsOutput) ToSmartDataActionsPtrOutput() SmartDataActionsPtrOutput {
+	return o.ToSmartDataActionsPtrOutputWithContext(context.Background())
+}
+
+func (o SmartDataActionsOutput) ToSmartDataActionsPtrOutputWithContext(ctx context.Context) SmartDataActionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SmartDataActions) *SmartDataActions {
+		return &v
+	}).(SmartDataActionsPtrOutput)
+}
+
+func (o SmartDataActionsOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SmartDataActionsOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SmartDataActions) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SmartDataActionsOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SmartDataActionsOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SmartDataActions) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SmartDataActionsPtrOutput struct{ *pulumi.OutputState }
+
+func (SmartDataActionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SmartDataActions)(nil)).Elem()
+}
+
+func (o SmartDataActionsPtrOutput) ToSmartDataActionsPtrOutput() SmartDataActionsPtrOutput {
+	return o
+}
+
+func (o SmartDataActionsPtrOutput) ToSmartDataActionsPtrOutputWithContext(ctx context.Context) SmartDataActionsPtrOutput {
+	return o
+}
+
+func (o SmartDataActionsPtrOutput) Elem() SmartDataActionsOutput {
+	return o.ApplyT(func(v *SmartDataActions) SmartDataActions {
+		if v != nil {
+			return *v
+		}
+		var ret SmartDataActions
+		return ret
+	}).(SmartDataActionsOutput)
+}
+
+func (o SmartDataActionsPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SmartDataActionsPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SmartDataActions) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SmartDataActionsInput is an input type that accepts values of the SmartDataActions enum
+// A concrete instance of `SmartDataActionsInput` can be one of the following:
+//
+//	SmartDataActionsRead
+type SmartDataActionsInput interface {
+	pulumi.Input
+
+	ToSmartDataActionsOutput() SmartDataActionsOutput
+	ToSmartDataActionsOutputWithContext(context.Context) SmartDataActionsOutput
+}
+
+var smartDataActionsPtrType = reflect.TypeOf((**SmartDataActions)(nil)).Elem()
+
+type SmartDataActionsPtrInput interface {
+	pulumi.Input
+
+	ToSmartDataActionsPtrOutput() SmartDataActionsPtrOutput
+	ToSmartDataActionsPtrOutputWithContext(context.Context) SmartDataActionsPtrOutput
+}
+
+type smartDataActionsPtr string
+
+func SmartDataActionsPtr(v string) SmartDataActionsPtrInput {
+	return (*smartDataActionsPtr)(&v)
+}
+
+func (*smartDataActionsPtr) ElementType() reflect.Type {
+	return smartDataActionsPtrType
+}
+
+func (in *smartDataActionsPtr) ToSmartDataActionsPtrOutput() SmartDataActionsPtrOutput {
+	return pulumi.ToOutput(in).(SmartDataActionsPtrOutput)
+}
+
+func (in *smartDataActionsPtr) ToSmartDataActionsPtrOutputWithContext(ctx context.Context) SmartDataActionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SmartDataActionsPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(FhirResourceVersionPolicyOutput{})
 	pulumi.RegisterOutputType(FhirResourceVersionPolicyPtrOutput{})
@@ -1548,10 +1544,10 @@ func init() {
 	pulumi.RegisterOutputType(KindPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypePtrOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointServiceConnectionStatusOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointServiceConnectionStatusPtrOutput{})
 	pulumi.RegisterOutputType(PublicNetworkAccessOutput{})
 	pulumi.RegisterOutputType(PublicNetworkAccessPtrOutput{})
 	pulumi.RegisterOutputType(ServiceManagedIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ServiceManagedIdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(SmartDataActionsOutput{})
+	pulumi.RegisterOutputType(SmartDataActionsPtrOutput{})
 }

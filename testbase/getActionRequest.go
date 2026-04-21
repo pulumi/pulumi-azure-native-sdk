@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,7 +34,9 @@ type LookupActionRequestArgs struct {
 }
 
 type LookupActionRequestResult struct {
-	CreationDate string `pulumi:"creationDate"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	CreationDate    string `pulumi:"creationDate"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -44,7 +47,7 @@ type LookupActionRequestResult struct {
 	RequestType       string `pulumi:"requestType"`
 	Status            string `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -84,6 +87,11 @@ func (o LookupActionRequestResultOutput) ToLookupActionRequestResultOutputWithCo
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupActionRequestResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupActionRequestResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 func (o LookupActionRequestResultOutput) CreationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupActionRequestResult) string { return v.CreationDate }).(pulumi.StringOutput)
 }
@@ -118,8 +126,8 @@ func (o LookupActionRequestResultOutput) Status() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupActionRequestResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupActionRequestResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupActionRequestResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupActionRequestResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

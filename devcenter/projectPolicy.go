@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents an project policy resource.
 //
-// Uses Azure REST API version 2024-10-01-preview.
+// Uses Azure REST API version 2024-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-10-01-preview.
 //
-// Other available API versions: 2025-02-01.
+// Other available API versions: 2025-02-01, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ProjectPolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the resource.
@@ -29,7 +32,7 @@ type ProjectPolicy struct {
 	// Resources that have access to the shared resources that are a part of this project policy.
 	Scopes pulumi.StringArrayOutput `pulumi:"scopes"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -53,6 +56,18 @@ func NewProjectPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20250201:ProjectPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20250401preview:ProjectPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20250701preview:ProjectPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20251001preview:ProjectPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20260101preview:ProjectPolicy"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -152,6 +167,11 @@ func (o ProjectPolicyOutput) ToProjectPolicyOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ProjectPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProjectPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o ProjectPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -173,8 +193,8 @@ func (o ProjectPolicyOutput) Scopes() pulumi.StringArrayOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ProjectPolicyOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *ProjectPolicy) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o ProjectPolicyOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *ProjectPolicy) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

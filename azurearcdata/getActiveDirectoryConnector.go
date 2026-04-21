@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves an Active Directory connector resource
 //
-// Uses Azure REST API version 2023-01-15-preview.
+// Uses Azure REST API version 2025-03-01-preview.
 //
-// Other available API versions: 2024-01-01, 2024-05-01-preview, 2025-03-01-preview.
+// Other available API versions: 2023-01-15-preview, 2024-01-01, 2024-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupActiveDirectoryConnector(ctx *pulumi.Context, args *LookupActiveDirectoryConnectorArgs, opts ...pulumi.InvokeOption) (*LookupActiveDirectoryConnectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupActiveDirectoryConnectorResult
@@ -37,6 +38,8 @@ type LookupActiveDirectoryConnectorArgs struct {
 
 // Active directory connector resource
 type LookupActiveDirectoryConnectorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -44,7 +47,7 @@ type LookupActiveDirectoryConnectorResult struct {
 	// null
 	Properties ActiveDirectoryConnectorPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -96,6 +99,11 @@ func (o LookupActiveDirectoryConnectorResultOutput) ToLookupActiveDirectoryConne
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupActiveDirectoryConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupActiveDirectoryConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupActiveDirectoryConnectorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupActiveDirectoryConnectorResult) string { return v.Id }).(pulumi.StringOutput)
@@ -114,8 +122,8 @@ func (o LookupActiveDirectoryConnectorResultOutput) Properties() ActiveDirectory
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupActiveDirectoryConnectorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupActiveDirectoryConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupActiveDirectoryConnectorResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupActiveDirectoryConnectorResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

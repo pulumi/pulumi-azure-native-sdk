@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +36,8 @@ type LookupDiscoveredAssetEndpointProfileArgs struct {
 type LookupDiscoveredAssetEndpointProfileResult struct {
 	// Stringified JSON that contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
 	AdditionalConfiguration *string `pulumi:"additionalConfiguration"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Identifier used to detect changes in the asset endpoint profile.
 	DiscoveryId string `pulumi:"discoveryId"`
 	// Defines the configuration for the connector type that is being used with the endpoint profile.
@@ -52,7 +55,7 @@ type LookupDiscoveredAssetEndpointProfileResult struct {
 	// List of supported authentication methods supported by the target server.
 	SupportedAuthenticationMethods []string `pulumi:"supportedAuthenticationMethods"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
@@ -103,6 +106,11 @@ func (o LookupDiscoveredAssetEndpointProfileResultOutput) AdditionalConfiguratio
 	return o.ApplyT(func(v LookupDiscoveredAssetEndpointProfileResult) *string { return v.AdditionalConfiguration }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupDiscoveredAssetEndpointProfileResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiscoveredAssetEndpointProfileResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Identifier used to detect changes in the asset endpoint profile.
 func (o LookupDiscoveredAssetEndpointProfileResultOutput) DiscoveryId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiscoveredAssetEndpointProfileResult) string { return v.DiscoveryId }).(pulumi.StringOutput)
@@ -144,8 +152,10 @@ func (o LookupDiscoveredAssetEndpointProfileResultOutput) SupportedAuthenticatio
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupDiscoveredAssetEndpointProfileResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupDiscoveredAssetEndpointProfileResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupDiscoveredAssetEndpointProfileResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupDiscoveredAssetEndpointProfileResult) commontypesv5.SystemDataResponse {
+		return v.SystemData
+	}).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

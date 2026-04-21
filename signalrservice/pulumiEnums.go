@@ -688,7 +688,7 @@ func (in *privateLinkServiceConnectionStatusPtr) ToPrivateLinkServiceConnectionS
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateLinkServiceConnectionStatusPtrOutput)
 }
 
-// The kind of the service, it can be SignalR or RawWebSockets
+// The kind of the service
 type ServiceKind string
 
 const (

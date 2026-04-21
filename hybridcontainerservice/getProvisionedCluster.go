@@ -7,15 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the Hybrid AKS provisioned cluster
 //
 // Uses Azure REST API version 2022-09-01-preview.
-//
-// Other available API versions: 2022-05-01-preview.
 func LookupProvisionedCluster(ctx *pulumi.Context, args *LookupProvisionedClusterArgs, opts ...pulumi.InvokeOption) (*LookupProvisionedClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProvisionedClusterResult
@@ -35,6 +34,8 @@ type LookupProvisionedClusterArgs struct {
 
 // The provisionedClusters resource definition.
 type LookupProvisionedClusterResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion  string                                               `pulumi:"azureApiVersion"`
 	ExtendedLocation *ProvisionedClustersResponseResponseExtendedLocation `pulumi:"extendedLocation"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
@@ -46,7 +47,7 @@ type LookupProvisionedClusterResult struct {
 	Name       string                                        `pulumi:"name"`
 	Properties ProvisionedClustersResponsePropertiesResponse `pulumi:"properties"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -98,6 +99,11 @@ func (o LookupProvisionedClusterResultOutput) ToLookupProvisionedClusterResultOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupProvisionedClusterResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProvisionedClusterResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 func (o LookupProvisionedClusterResultOutput) ExtendedLocation() ProvisionedClustersResponseResponseExtendedLocationPtrOutput {
 	return o.ApplyT(func(v LookupProvisionedClusterResult) *ProvisionedClustersResponseResponseExtendedLocation {
 		return v.ExtendedLocation
@@ -131,8 +137,8 @@ func (o LookupProvisionedClusterResultOutput) Properties() ProvisionedClustersRe
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupProvisionedClusterResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupProvisionedClusterResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupProvisionedClusterResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupProvisionedClusterResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Resource tags.

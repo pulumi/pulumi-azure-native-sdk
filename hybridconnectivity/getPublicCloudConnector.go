@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +36,8 @@ type LookupPublicCloudConnectorArgs struct {
 type LookupPublicCloudConnectorResult struct {
 	// Cloud profile for AWS.
 	AwsCloudProfile AwsCloudProfileResponse `pulumi:"awsCloudProfile"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Connector primary identifier.
 	ConnectorPrimaryIdentifier string `pulumi:"connectorPrimaryIdentifier"`
 	// Host cloud the public cloud connector.
@@ -48,7 +51,7 @@ type LookupPublicCloudConnectorResult struct {
 	// The resource provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -105,6 +108,11 @@ func (o LookupPublicCloudConnectorResultOutput) AwsCloudProfile() AwsCloudProfil
 	return o.ApplyT(func(v LookupPublicCloudConnectorResult) AwsCloudProfileResponse { return v.AwsCloudProfile }).(AwsCloudProfileResponseOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupPublicCloudConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublicCloudConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Connector primary identifier.
 func (o LookupPublicCloudConnectorResultOutput) ConnectorPrimaryIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPublicCloudConnectorResult) string { return v.ConnectorPrimaryIdentifier }).(pulumi.StringOutput)
@@ -136,8 +144,8 @@ func (o LookupPublicCloudConnectorResultOutput) ProvisioningState() pulumi.Strin
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupPublicCloudConnectorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupPublicCloudConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupPublicCloudConnectorResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPublicCloudConnectorResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

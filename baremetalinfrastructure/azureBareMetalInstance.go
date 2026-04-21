@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // AzureBareMetal instance info on Azure (ARM properties and AzureBareMetal properties)
 //
-// Uses Azure REST API version 2024-08-01-preview.
+// Uses Azure REST API version 2024-08-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-08-01-preview.
 type AzureBareMetalInstance struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Specifies the Azure Bare Metal Instance unique ID.
 	AzureBareMetalInstanceId pulumi.StringPtrOutput `pulumi:"azureBareMetalInstanceId"`
 	// Specifies the hardware settings for the Azure Bare Metal Instance.
@@ -43,7 +46,7 @@ type AzureBareMetalInstance struct {
 	// Specifies the storage settings for the Azure Bare Metal Instance disks.
 	StorageProfile StorageProfileResponsePtrOutput `pulumi:"storageProfile"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -194,6 +197,11 @@ func (o AzureBareMetalInstanceOutput) ToAzureBareMetalInstanceOutputWithContext(
 	return o
 }
 
+// The Azure API version of the resource.
+func (o AzureBareMetalInstanceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzureBareMetalInstance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Specifies the Azure Bare Metal Instance unique ID.
 func (o AzureBareMetalInstanceOutput) AzureBareMetalInstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureBareMetalInstance) pulumi.StringPtrOutput { return v.AzureBareMetalInstanceId }).(pulumi.StringPtrOutput)
@@ -255,8 +263,8 @@ func (o AzureBareMetalInstanceOutput) StorageProfile() StorageProfileResponsePtr
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o AzureBareMetalInstanceOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *AzureBareMetalInstance) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o AzureBareMetalInstanceOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *AzureBareMetalInstance) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

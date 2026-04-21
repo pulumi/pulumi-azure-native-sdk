@@ -7,15 +7,17 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a devcenter encryption set.
 //
-// Uses Azure REST API version 2024-05-01-preview.
+// Uses Azure REST API version 2024-10-01-preview.
 //
-// Other available API versions: 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview.
+// Other available API versions: 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupEncryptionSet(ctx *pulumi.Context, args *LookupEncryptionSetArgs, opts ...pulumi.InvokeOption) (*LookupEncryptionSetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEncryptionSetResult
@@ -37,12 +39,14 @@ type LookupEncryptionSetArgs struct {
 
 // Represents a devcenter encryption set resource.
 type LookupEncryptionSetResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Devbox disk encryption enable or disable status. Indicates if Devbox disks encryption using DevCenter CMK is enabled or not.
 	DevboxDisksEncryptionEnableStatus *string `pulumi:"devboxDisksEncryptionEnableStatus"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Managed identity properties
-	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *commontypesv4.ManagedServiceIdentityResponse `pulumi:"identity"`
 	// Key encryption key Url, versioned or non-versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
 	KeyEncryptionKeyUrl *string `pulumi:"keyEncryptionKeyUrl"`
 	// The geo-location where the resource lives
@@ -52,7 +56,7 @@ type LookupEncryptionSetResult struct {
 	// The provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -96,6 +100,11 @@ func (o LookupEncryptionSetResultOutput) ToLookupEncryptionSetResultOutputWithCo
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupEncryptionSetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEncryptionSetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Devbox disk encryption enable or disable status. Indicates if Devbox disks encryption using DevCenter CMK is enabled or not.
 func (o LookupEncryptionSetResultOutput) DevboxDisksEncryptionEnableStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupEncryptionSetResult) *string { return v.DevboxDisksEncryptionEnableStatus }).(pulumi.StringPtrOutput)
@@ -107,8 +116,8 @@ func (o LookupEncryptionSetResultOutput) Id() pulumi.StringOutput {
 }
 
 // Managed identity properties
-func (o LookupEncryptionSetResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupEncryptionSetResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o LookupEncryptionSetResultOutput) Identity() commontypesv4.ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupEncryptionSetResult) *commontypesv4.ManagedServiceIdentityResponse { return v.Identity }).(commontypesv4.ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Key encryption key Url, versioned or non-versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
@@ -132,8 +141,8 @@ func (o LookupEncryptionSetResultOutput) ProvisioningState() pulumi.StringOutput
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupEncryptionSetResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupEncryptionSetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupEncryptionSetResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupEncryptionSetResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

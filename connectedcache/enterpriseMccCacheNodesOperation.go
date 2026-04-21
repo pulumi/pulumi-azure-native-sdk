@@ -8,16 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents the high level Nodes needed to provision cache node resources
 //
-// Uses Azure REST API version 2023-05-01-preview.
+// Uses Azure REST API version 2023-05-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-05-01-preview.
+//
+// Other available API versions: 2024-11-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedcache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type EnterpriseMccCacheNodesOperation struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -25,7 +30,7 @@ type EnterpriseMccCacheNodesOperation struct {
 	// The resource-specific properties for this resource.
 	Properties CacheNodePropertyResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -48,6 +53,9 @@ func NewEnterpriseMccCacheNodesOperation(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:connectedcache/v20230501preview:EnterpriseMccCacheNodesOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:connectedcache/v20241130preview:EnterpriseMccCacheNodesOperation"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -151,6 +159,11 @@ func (o EnterpriseMccCacheNodesOperationOutput) ToEnterpriseMccCacheNodesOperati
 	return o
 }
 
+// The Azure API version of the resource.
+func (o EnterpriseMccCacheNodesOperationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnterpriseMccCacheNodesOperation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The geo-location where the resource lives
 func (o EnterpriseMccCacheNodesOperationOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnterpriseMccCacheNodesOperation) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -167,8 +180,8 @@ func (o EnterpriseMccCacheNodesOperationOutput) Properties() CacheNodePropertyRe
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o EnterpriseMccCacheNodesOperationOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *EnterpriseMccCacheNodesOperation) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o EnterpriseMccCacheNodesOperationOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *EnterpriseMccCacheNodesOperation) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

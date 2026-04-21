@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Sku sub resource.
 //
-// Uses Azure REST API version 2022-01-01-preview. In version 1.x of the Azure Native provider, it used API version 2020-01-01-preview.
+// Uses Azure REST API version 2022-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
 type VendorSkus struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The sku deployment mode.
 	DeploymentMode pulumi.StringPtrOutput `pulumi:"deploymentMode"`
 	// The parameters for the managed application to be supplied by the vendor.
@@ -37,7 +40,7 @@ type VendorSkus struct {
 	// The sku type.
 	SkuType pulumi.StringPtrOutput `pulumi:"skuType"`
 	// The system meta data relating to this resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -176,6 +179,11 @@ func (o VendorSkusOutput) ToVendorSkusOutputWithContext(ctx context.Context) Ven
 	return o
 }
 
+// The Azure API version of the resource.
+func (o VendorSkusOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VendorSkus) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The sku deployment mode.
 func (o VendorSkusOutput) DeploymentMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VendorSkus) pulumi.StringPtrOutput { return v.DeploymentMode }).(pulumi.StringPtrOutput)
@@ -222,8 +230,8 @@ func (o VendorSkusOutput) SkuType() pulumi.StringPtrOutput {
 }
 
 // The system meta data relating to this resource.
-func (o VendorSkusOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *VendorSkus) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o VendorSkusOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *VendorSkus) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

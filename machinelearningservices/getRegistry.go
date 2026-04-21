@@ -7,13 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2023-04-01.
+// Get registry
 //
-// Other available API versions: 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
+// Uses Azure REST API version 2025-12-01.
+//
+// Other available API versions: 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupRegistry(ctx *pulumi.Context, args *LookupRegistryArgs, opts ...pulumi.InvokeOption) (*LookupRegistryResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegistryResult
@@ -31,23 +34,41 @@ type LookupRegistryArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
+// Concrete tracked resource types can be created by aliasing this type using a specific property type.
 type LookupRegistryResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Discovery URL for the Registry
+	DiscoveryUrl *string `pulumi:"discoveryUrl"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *commontypesv3.ManagedServiceIdentityResponse `pulumi:"identity"`
+	// IntellectualPropertyPublisher for the registry
+	IntellectualPropertyPublisher *string `pulumi:"intellectualPropertyPublisher"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
+	// ResourceId of the managed RG if the registry has system created resources
+	ManagedResourceGroup *ArmResourceIdResponse `pulumi:"managedResourceGroup"`
+	// Managed resource group specific settings
+	ManagedResourceGroupSettings *ManagedResourceGroupSettingsResponse `pulumi:"managedResourceGroupSettings"`
+	// MLFlow Registry URI for the Registry
+	MlFlowRegistryUri *string `pulumi:"mlFlowRegistryUri"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// [Required] Additional attributes of the entity.
-	RegistryProperties RegistryResponse `pulumi:"registryProperties"`
+	// Is the Registry accessible from the internet?
+	// Possible values: "Enabled" or "Disabled"
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
+	// Details of each region the registry is in
+	RegionDetails []RegistryRegionArmDetailsResponse `pulumi:"regionDetails"`
+	// Private endpoint connections info used for pending connections in private link portal
+	RegistryPrivateEndpointConnections []RegistryPrivateEndpointConnectionResponse `pulumi:"registryPrivateEndpointConnections"`
 	// Sku details required for ARM contract for Autoscaling.
-	Sku *SkuResponse `pulumi:"sku"`
+	Sku *commontypesv3.SkuResponse `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -74,6 +95,7 @@ func (LookupRegistryOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupRegistryArgs)(nil)).Elem()
 }
 
+// Concrete tracked resource types can be created by aliasing this type using a specific property type.
 type LookupRegistryResultOutput struct{ *pulumi.OutputState }
 
 func (LookupRegistryResultOutput) ElementType() reflect.Type {
@@ -88,14 +110,29 @@ func (o LookupRegistryResultOutput) ToLookupRegistryResultOutputWithContext(ctx 
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupRegistryResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegistryResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Discovery URL for the Registry
+func (o LookupRegistryResultOutput) DiscoveryUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRegistryResult) *string { return v.DiscoveryUrl }).(pulumi.StringPtrOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupRegistryResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistryResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
-func (o LookupRegistryResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupRegistryResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o LookupRegistryResultOutput) Identity() commontypesv3.ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupRegistryResult) *commontypesv3.ManagedServiceIdentityResponse { return v.Identity }).(commontypesv3.ManagedServiceIdentityResponsePtrOutput)
+}
+
+// IntellectualPropertyPublisher for the registry
+func (o LookupRegistryResultOutput) IntellectualPropertyPublisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRegistryResult) *string { return v.IntellectualPropertyPublisher }).(pulumi.StringPtrOutput)
 }
 
 // Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
@@ -108,24 +145,54 @@ func (o LookupRegistryResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistryResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// ResourceId of the managed RG if the registry has system created resources
+func (o LookupRegistryResultOutput) ManagedResourceGroup() ArmResourceIdResponsePtrOutput {
+	return o.ApplyT(func(v LookupRegistryResult) *ArmResourceIdResponse { return v.ManagedResourceGroup }).(ArmResourceIdResponsePtrOutput)
+}
+
+// Managed resource group specific settings
+func (o LookupRegistryResultOutput) ManagedResourceGroupSettings() ManagedResourceGroupSettingsResponsePtrOutput {
+	return o.ApplyT(func(v LookupRegistryResult) *ManagedResourceGroupSettingsResponse {
+		return v.ManagedResourceGroupSettings
+	}).(ManagedResourceGroupSettingsResponsePtrOutput)
+}
+
+// MLFlow Registry URI for the Registry
+func (o LookupRegistryResultOutput) MlFlowRegistryUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRegistryResult) *string { return v.MlFlowRegistryUri }).(pulumi.StringPtrOutput)
+}
+
 // The name of the resource
 func (o LookupRegistryResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegistryResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// [Required] Additional attributes of the entity.
-func (o LookupRegistryResultOutput) RegistryProperties() RegistryResponseOutput {
-	return o.ApplyT(func(v LookupRegistryResult) RegistryResponse { return v.RegistryProperties }).(RegistryResponseOutput)
+// Is the Registry accessible from the internet?
+// Possible values: "Enabled" or "Disabled"
+func (o LookupRegistryResultOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRegistryResult) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
+}
+
+// Details of each region the registry is in
+func (o LookupRegistryResultOutput) RegionDetails() RegistryRegionArmDetailsResponseArrayOutput {
+	return o.ApplyT(func(v LookupRegistryResult) []RegistryRegionArmDetailsResponse { return v.RegionDetails }).(RegistryRegionArmDetailsResponseArrayOutput)
+}
+
+// Private endpoint connections info used for pending connections in private link portal
+func (o LookupRegistryResultOutput) RegistryPrivateEndpointConnections() RegistryPrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v LookupRegistryResult) []RegistryPrivateEndpointConnectionResponse {
+		return v.RegistryPrivateEndpointConnections
+	}).(RegistryPrivateEndpointConnectionResponseArrayOutput)
 }
 
 // Sku details required for ARM contract for Autoscaling.
-func (o LookupRegistryResultOutput) Sku() SkuResponsePtrOutput {
-	return o.ApplyT(func(v LookupRegistryResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
+func (o LookupRegistryResultOutput) Sku() commontypesv3.SkuResponsePtrOutput {
+	return o.ApplyT(func(v LookupRegistryResult) *commontypesv3.SkuResponse { return v.Sku }).(commontypesv3.SkuResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupRegistryResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupRegistryResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupRegistryResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupRegistryResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the properties of the provided cluster manager.
 //
-// Uses Azure REST API version 2023-10-01-preview.
+// Uses Azure REST API version 2025-02-01.
 //
-// Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview, 2025-02-01.
+// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupClusterManager(ctx *pulumi.Context, args *LookupClusterManagerArgs, opts ...pulumi.InvokeOption) (*LookupClusterManagerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterManagerResult
@@ -38,16 +39,22 @@ type LookupClusterManagerResult struct {
 	AnalyticsWorkspaceId *string `pulumi:"analyticsWorkspaceId"`
 	// Field deprecated, this value will no longer influence the cluster manager allocation process and will be removed in a future version. The Azure availability zones within the region that will be used to support the cluster manager resource.
 	AvailabilityZones []string `pulumi:"availabilityZones"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The list of the cluster versions the manager supports. It is used as input in clusterVersion property of a cluster resource.
 	ClusterVersions []ClusterAvailableVersionResponse `pulumi:"clusterVersions"`
 	// The detailed status that provides additional information about the cluster manager.
 	DetailedStatus string `pulumi:"detailedStatus"`
 	// The descriptive message about the current detailed status.
 	DetailedStatusMessage string `pulumi:"detailedStatusMessage"`
+	// Resource ETag.
+	Etag string `pulumi:"etag"`
 	// The resource ID of the fabric controller that has one to one mapping with the cluster manager.
 	FabricControllerId string `pulumi:"fabricControllerId"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
+	// The identity of the cluster manager.
+	Identity *commontypesv5.ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The configuration of the managed resource group associated with the resource.
@@ -59,7 +66,7 @@ type LookupClusterManagerResult struct {
 	// The provisioning state of the cluster manager.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -112,6 +119,11 @@ func (o LookupClusterManagerResultOutput) AvailabilityZones() pulumi.StringArray
 	return o.ApplyT(func(v LookupClusterManagerResult) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupClusterManagerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterManagerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The list of the cluster versions the manager supports. It is used as input in clusterVersion property of a cluster resource.
 func (o LookupClusterManagerResultOutput) ClusterVersions() ClusterAvailableVersionResponseArrayOutput {
 	return o.ApplyT(func(v LookupClusterManagerResult) []ClusterAvailableVersionResponse { return v.ClusterVersions }).(ClusterAvailableVersionResponseArrayOutput)
@@ -127,6 +139,11 @@ func (o LookupClusterManagerResultOutput) DetailedStatusMessage() pulumi.StringO
 	return o.ApplyT(func(v LookupClusterManagerResult) string { return v.DetailedStatusMessage }).(pulumi.StringOutput)
 }
 
+// Resource ETag.
+func (o LookupClusterManagerResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterManagerResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
 // The resource ID of the fabric controller that has one to one mapping with the cluster manager.
 func (o LookupClusterManagerResultOutput) FabricControllerId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterManagerResult) string { return v.FabricControllerId }).(pulumi.StringOutput)
@@ -135,6 +152,11 @@ func (o LookupClusterManagerResultOutput) FabricControllerId() pulumi.StringOutp
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupClusterManagerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterManagerResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The identity of the cluster manager.
+func (o LookupClusterManagerResultOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupClusterManagerResult) *commontypesv5.ManagedServiceIdentityResponse { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -165,8 +187,8 @@ func (o LookupClusterManagerResultOutput) ProvisioningState() pulumi.StringOutpu
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupClusterManagerResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupClusterManagerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupClusterManagerResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupClusterManagerResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

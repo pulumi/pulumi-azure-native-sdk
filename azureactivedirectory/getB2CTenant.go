@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the Azure AD B2C tenant resource.
 //
-// Uses Azure REST API version 2021-04-01.
+// Uses Azure REST API version 2023-05-17-preview.
 //
-// Other available API versions: 2019-01-01-preview, 2023-01-18-preview, 2023-05-17-preview.
+// Other available API versions: 2021-04-01, 2023-01-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azureactivedirectory [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupB2CTenant(ctx *pulumi.Context, args *LookupB2CTenantArgs, opts ...pulumi.InvokeOption) (*LookupB2CTenantResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupB2CTenantResult
@@ -34,10 +35,14 @@ type LookupB2CTenantArgs struct {
 }
 
 type LookupB2CTenantResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The billing configuration for the tenant.
 	BillingConfig *B2CTenantResourcePropertiesResponseBillingConfig `pulumi:"billingConfig"`
 	// An identifier that represents the Azure AD B2C tenant resource.
 	Id string `pulumi:"id"`
+	// Enable GoLocal add-on to store data at rest in the specific Geo. Refer to [aka.ms/B2CDataResidency](https://aka.ms/B2CDataResidency) to see local data residency options.
+	IsGoLocalTenant *bool `pulumi:"isGoLocalTenant"`
 	// The location in which the resource is hosted and data resides. Can be one of 'United States', 'Europe', 'Asia Pacific', or 'Australia'. Refer to [this documentation](https://aka.ms/B2CDataResidency) for more information.
 	Location string `pulumi:"location"`
 	// The name of the Azure AD B2C tenant resource.
@@ -45,7 +50,7 @@ type LookupB2CTenantResult struct {
 	// SKU properties of the Azure AD B2C tenant. Learn more about Azure AD B2C billing at [aka.ms/b2cBilling](https://aka.ms/b2cBilling).
 	Sku B2CResourceSKUResponse `pulumi:"sku"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// Resource Tags
 	Tags map[string]string `pulumi:"tags"`
 	// An identifier of the Azure AD B2C tenant.
@@ -88,6 +93,11 @@ func (o LookupB2CTenantResultOutput) ToLookupB2CTenantResultOutputWithContext(ct
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupB2CTenantResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupB2CTenantResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The billing configuration for the tenant.
 func (o LookupB2CTenantResultOutput) BillingConfig() B2CTenantResourcePropertiesResponseBillingConfigPtrOutput {
 	return o.ApplyT(func(v LookupB2CTenantResult) *B2CTenantResourcePropertiesResponseBillingConfig {
@@ -98,6 +108,11 @@ func (o LookupB2CTenantResultOutput) BillingConfig() B2CTenantResourceProperties
 // An identifier that represents the Azure AD B2C tenant resource.
 func (o LookupB2CTenantResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupB2CTenantResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Enable GoLocal add-on to store data at rest in the specific Geo. Refer to [aka.ms/B2CDataResidency](https://aka.ms/B2CDataResidency) to see local data residency options.
+func (o LookupB2CTenantResultOutput) IsGoLocalTenant() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupB2CTenantResult) *bool { return v.IsGoLocalTenant }).(pulumi.BoolPtrOutput)
 }
 
 // The location in which the resource is hosted and data resides. Can be one of 'United States', 'Europe', 'Asia Pacific', or 'Australia'. Refer to [this documentation](https://aka.ms/B2CDataResidency) for more information.
@@ -116,8 +131,8 @@ func (o LookupB2CTenantResultOutput) Sku() B2CResourceSKUResponseOutput {
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupB2CTenantResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupB2CTenantResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupB2CTenantResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupB2CTenantResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Resource Tags

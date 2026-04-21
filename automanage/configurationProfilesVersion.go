@@ -8,16 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Definition of the configuration profile.
 //
-// Uses Azure REST API version 2022-05-04.
+// Uses Azure REST API version 2022-05-04. In version 2.x of the Azure Native provider, it used API version 2022-05-04.
+//
+// Other available API versions: 2021-04-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automanage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ConfigurationProfilesVersion struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -25,7 +30,7 @@ type ConfigurationProfilesVersion struct {
 	// Properties of the configuration profile.
 	Properties ConfigurationProfilePropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -154,6 +159,11 @@ func (o ConfigurationProfilesVersionOutput) ToConfigurationProfilesVersionOutput
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ConfigurationProfilesVersionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConfigurationProfilesVersion) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The geo-location where the resource lives
 func (o ConfigurationProfilesVersionOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConfigurationProfilesVersion) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -172,8 +182,8 @@ func (o ConfigurationProfilesVersionOutput) Properties() ConfigurationProfilePro
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ConfigurationProfilesVersionOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *ConfigurationProfilesVersion) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o ConfigurationProfilesVersionOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *ConfigurationProfilesVersion) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a specific role by name.
 //
-// Uses Azure REST API version 2022-03-01.
+// Uses Azure REST API version 2023-07-01.
 func LookupKubernetesRole(ctx *pulumi.Context, args *LookupKubernetesRoleArgs, opts ...pulumi.InvokeOption) (*LookupKubernetesRoleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKubernetesRoleResult
@@ -42,6 +43,8 @@ type LookupKubernetesRoleArgs struct {
 //     Or Demo: https://databoxupdatepackages.blob.core.windows.net/documentation/Microsoft-Azure-Stack-Edge-K8S-Cloud-Management-20210323.mp4
 //     By using this feature, you agree to the preview legal terms. See the https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/
 type LookupKubernetesRoleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Host OS supported by the Kubernetes role.
 	HostPlatform string `pulumi:"hostPlatform"`
 	// Platform where the runtime is hosted.
@@ -62,7 +65,7 @@ type LookupKubernetesRoleResult struct {
 	// Role status.
 	RoleStatus string `pulumi:"roleStatus"`
 	// Metadata pertaining to creation and last modification of Role
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type string `pulumi:"type"`
 }
@@ -109,6 +112,11 @@ func (o LookupKubernetesRoleResultOutput) ToLookupKubernetesRoleResultOutput() L
 
 func (o LookupKubernetesRoleResultOutput) ToLookupKubernetesRoleResultOutputWithContext(ctx context.Context) LookupKubernetesRoleResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupKubernetesRoleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesRoleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Host OS supported by the Kubernetes role.
@@ -158,8 +166,8 @@ func (o LookupKubernetesRoleResultOutput) RoleStatus() pulumi.StringOutput {
 }
 
 // Metadata pertaining to creation and last modification of Role
-func (o LookupKubernetesRoleResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupKubernetesRoleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupKubernetesRoleResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupKubernetesRoleResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.

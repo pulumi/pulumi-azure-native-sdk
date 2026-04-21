@@ -8,18 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Customer creates a spacecraft resource to schedule a contact.
 //
-// Uses Azure REST API version 2022-11-01.
-//
-// Other available API versions: 2022-03-01.
+// Uses Azure REST API version 2022-11-01. In version 2.x of the Azure Native provider, it used API version 2022-11-01.
 type Spacecraft struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Immutable list of Spacecraft links.
 	Links SpacecraftLinkResponseArrayOutput `pulumi:"links"`
 	// The geo-location where the resource lives
@@ -29,7 +30,7 @@ type Spacecraft struct {
 	// NORAD ID of the spacecraft.
 	NoradId pulumi.StringPtrOutput `pulumi:"noradId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Title line of the two-line element set (TLE).
@@ -185,6 +186,11 @@ func (o SpacecraftOutput) ToSpacecraftOutputWithContext(ctx context.Context) Spa
 	return o
 }
 
+// The Azure API version of the resource.
+func (o SpacecraftOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Spacecraft) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Immutable list of Spacecraft links.
 func (o SpacecraftOutput) Links() SpacecraftLinkResponseArrayOutput {
 	return o.ApplyT(func(v *Spacecraft) SpacecraftLinkResponseArrayOutput { return v.Links }).(SpacecraftLinkResponseArrayOutput)
@@ -206,8 +212,8 @@ func (o SpacecraftOutput) NoradId() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o SpacecraftOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Spacecraft) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o SpacecraftOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Spacecraft) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

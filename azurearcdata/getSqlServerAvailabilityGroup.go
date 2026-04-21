@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves an Arc Sql Server availability group.
 //
-// Uses Azure REST API version 2024-01-01.
+// Uses Azure REST API version 2025-03-01-preview.
 //
-// Other available API versions: 2024-05-01-preview, 2025-03-01-preview.
+// Other available API versions: 2024-01-01, 2024-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSqlServerAvailabilityGroup(ctx *pulumi.Context, args *LookupSqlServerAvailabilityGroupArgs, opts ...pulumi.InvokeOption) (*LookupSqlServerAvailabilityGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlServerAvailabilityGroupResult
@@ -37,6 +38,8 @@ type LookupSqlServerAvailabilityGroupArgs struct {
 
 // Arc Sql Server Availability Group
 type LookupSqlServerAvailabilityGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -46,7 +49,7 @@ type LookupSqlServerAvailabilityGroupResult struct {
 	// Properties of Arc Sql Server availability group
 	Properties SqlServerAvailabilityGroupResourcePropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -90,6 +93,11 @@ func (o LookupSqlServerAvailabilityGroupResultOutput) ToLookupSqlServerAvailabil
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupSqlServerAvailabilityGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSqlServerAvailabilityGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupSqlServerAvailabilityGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlServerAvailabilityGroupResult) string { return v.Id }).(pulumi.StringOutput)
@@ -113,8 +121,8 @@ func (o LookupSqlServerAvailabilityGroupResultOutput) Properties() SqlServerAvai
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupSqlServerAvailabilityGroupResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSqlServerAvailabilityGroupResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupSqlServerAvailabilityGroupResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSqlServerAvailabilityGroupResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

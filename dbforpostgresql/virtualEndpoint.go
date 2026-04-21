@@ -8,29 +8,32 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a virtual endpoint for a server.
+// Pair of virtual endpoints for a server.
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2025-08-01. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
 //
-// Other available API versions: 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview.
+// Other available API versions: 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type VirtualEndpoint struct {
 	pulumi.CustomResourceState
 
-	// The endpoint type for the virtual endpoint.
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Type of endpoint for the virtual endpoints.
 	EndpointType pulumi.StringPtrOutput `pulumi:"endpointType"`
-	// List of members for a virtual endpoint
+	// List of servers that one of the virtual endpoints can refer to.
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv6.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
-	// List of virtual endpoints for a server
+	// List of virtual endpoints for a server.
 	VirtualEndpoints pulumi.StringArrayOutput `pulumi:"virtualEndpoints"`
 }
 
@@ -62,6 +65,18 @@ func NewVirtualEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20241101preview:VirtualEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20250101preview:VirtualEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20250601preview:VirtualEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20250801:VirtualEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20260101preview:VirtualEndpoint"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -98,29 +113,29 @@ func (VirtualEndpointState) ElementType() reflect.Type {
 }
 
 type virtualEndpointArgs struct {
-	// The endpoint type for the virtual endpoint.
+	// Type of endpoint for the virtual endpoints.
 	EndpointType *string `pulumi:"endpointType"`
-	// List of members for a virtual endpoint
+	// List of servers that one of the virtual endpoints can refer to.
 	Members []string `pulumi:"members"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the server.
 	ServerName string `pulumi:"serverName"`
-	// The name of the virtual endpoint.
+	// Base name of the virtual endpoints.
 	VirtualEndpointName *string `pulumi:"virtualEndpointName"`
 }
 
 // The set of arguments for constructing a VirtualEndpoint resource.
 type VirtualEndpointArgs struct {
-	// The endpoint type for the virtual endpoint.
+	// Type of endpoint for the virtual endpoints.
 	EndpointType pulumi.StringPtrInput
-	// List of members for a virtual endpoint
+	// List of servers that one of the virtual endpoints can refer to.
 	Members pulumi.StringArrayInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the server.
 	ServerName pulumi.StringInput
-	// The name of the virtual endpoint.
+	// Base name of the virtual endpoints.
 	VirtualEndpointName pulumi.StringPtrInput
 }
 
@@ -161,12 +176,17 @@ func (o VirtualEndpointOutput) ToVirtualEndpointOutputWithContext(ctx context.Co
 	return o
 }
 
-// The endpoint type for the virtual endpoint.
+// The Azure API version of the resource.
+func (o VirtualEndpointOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualEndpoint) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Type of endpoint for the virtual endpoints.
 func (o VirtualEndpointOutput) EndpointType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualEndpoint) pulumi.StringPtrOutput { return v.EndpointType }).(pulumi.StringPtrOutput)
 }
 
-// List of members for a virtual endpoint
+// List of servers that one of the virtual endpoints can refer to.
 func (o VirtualEndpointOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VirtualEndpoint) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -177,8 +197,8 @@ func (o VirtualEndpointOutput) Name() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o VirtualEndpointOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *VirtualEndpoint) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o VirtualEndpointOutput) SystemData() commontypesv6.SystemDataResponseOutput {
+	return o.ApplyT(func(v *VirtualEndpoint) commontypesv6.SystemDataResponseOutput { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -186,7 +206,7 @@ func (o VirtualEndpointOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualEndpoint) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// List of virtual endpoints for a server
+// List of virtual endpoints for a server.
 func (o VirtualEndpointOutput) VirtualEndpoints() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VirtualEndpoint) pulumi.StringArrayOutput { return v.VirtualEndpoints }).(pulumi.StringArrayOutput)
 }

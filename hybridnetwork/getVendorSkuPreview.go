@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +36,8 @@ type LookupVendorSkuPreviewArgs struct {
 
 // Customer subscription which can use a sku.
 type LookupVendorSkuPreviewResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The ARM ID of the resource.
 	Id string `pulumi:"id"`
 	// The preview subscription ID.
@@ -42,7 +45,7 @@ type LookupVendorSkuPreviewResult struct {
 	// The provisioning state of the PreviewSubscription resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The system meta data relating to this resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource.
 	Type string `pulumi:"type"`
 }
@@ -84,6 +87,11 @@ func (o LookupVendorSkuPreviewResultOutput) ToLookupVendorSkuPreviewResultOutput
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupVendorSkuPreviewResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVendorSkuPreviewResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The ARM ID of the resource.
 func (o LookupVendorSkuPreviewResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVendorSkuPreviewResult) string { return v.Id }).(pulumi.StringOutput)
@@ -100,8 +108,8 @@ func (o LookupVendorSkuPreviewResultOutput) ProvisioningState() pulumi.StringOut
 }
 
 // The system meta data relating to this resource.
-func (o LookupVendorSkuPreviewResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupVendorSkuPreviewResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupVendorSkuPreviewResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupVendorSkuPreviewResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The type of the resource.

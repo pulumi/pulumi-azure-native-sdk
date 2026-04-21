@@ -8,22 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2023-10-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-12-12-preview.
+// Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
 //
-// Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview, 2025-02-01.
+// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type BareMetalMachineKeySet struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The object ID of Azure Active Directory group that all users in the list must be in for access to be granted. Users that are not in the group will not have access.
 	AzureGroupId pulumi.StringOutput `pulumi:"azureGroupId"`
 	// The more detailed status of the key set.
 	DetailedStatus pulumi.StringOutput `pulumi:"detailedStatus"`
 	// The descriptive message about the current detailed status.
 	DetailedStatusMessage pulumi.StringOutput `pulumi:"detailedStatusMessage"`
+	// Resource ETag.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The date and time after which the users in this key set will be removed from the bare metal machines.
 	Expiration pulumi.StringOutput `pulumi:"expiration"`
 	// The extended location of the cluster associated with the resource.
@@ -43,7 +48,7 @@ type BareMetalMachineKeySet struct {
 	// The provisioning state of the bare metal machine key set.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -103,6 +108,15 @@ func NewBareMetalMachineKeySet(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20250201:BareMetalMachineKeySet"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20250701preview:BareMetalMachineKeySet"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20250901:BareMetalMachineKeySet"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20260101preview:BareMetalMachineKeySet"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -230,6 +244,11 @@ func (o BareMetalMachineKeySetOutput) ToBareMetalMachineKeySetOutputWithContext(
 	return o
 }
 
+// The Azure API version of the resource.
+func (o BareMetalMachineKeySetOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BareMetalMachineKeySet) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The object ID of Azure Active Directory group that all users in the list must be in for access to be granted. Users that are not in the group will not have access.
 func (o BareMetalMachineKeySetOutput) AzureGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *BareMetalMachineKeySet) pulumi.StringOutput { return v.AzureGroupId }).(pulumi.StringOutput)
@@ -243,6 +262,11 @@ func (o BareMetalMachineKeySetOutput) DetailedStatus() pulumi.StringOutput {
 // The descriptive message about the current detailed status.
 func (o BareMetalMachineKeySetOutput) DetailedStatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v *BareMetalMachineKeySet) pulumi.StringOutput { return v.DetailedStatusMessage }).(pulumi.StringOutput)
+}
+
+// Resource ETag.
+func (o BareMetalMachineKeySetOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *BareMetalMachineKeySet) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The date and time after which the users in this key set will be removed from the bare metal machines.
@@ -291,8 +315,8 @@ func (o BareMetalMachineKeySetOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o BareMetalMachineKeySetOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *BareMetalMachineKeySet) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o BareMetalMachineKeySetOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *BareMetalMachineKeySet) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

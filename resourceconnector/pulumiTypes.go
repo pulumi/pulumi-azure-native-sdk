@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -207,58 +207,58 @@ func (o AppliancePropertiesInfrastructureConfigPtrOutput) Provider() pulumi.Stri
 }
 
 // Contains infrastructure information about the Appliance
-type AppliancePropertiesResponseInfrastructureConfig struct {
+type AppliancePropertiesInfrastructureConfigResponse struct {
 	// Information about the connected appliance.
 	Provider *string `pulumi:"provider"`
 }
 
 // Contains infrastructure information about the Appliance
-type AppliancePropertiesResponseInfrastructureConfigOutput struct{ *pulumi.OutputState }
+type AppliancePropertiesInfrastructureConfigResponseOutput struct{ *pulumi.OutputState }
 
-func (AppliancePropertiesResponseInfrastructureConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppliancePropertiesResponseInfrastructureConfig)(nil)).Elem()
+func (AppliancePropertiesInfrastructureConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppliancePropertiesInfrastructureConfigResponse)(nil)).Elem()
 }
 
-func (o AppliancePropertiesResponseInfrastructureConfigOutput) ToAppliancePropertiesResponseInfrastructureConfigOutput() AppliancePropertiesResponseInfrastructureConfigOutput {
+func (o AppliancePropertiesInfrastructureConfigResponseOutput) ToAppliancePropertiesInfrastructureConfigResponseOutput() AppliancePropertiesInfrastructureConfigResponseOutput {
 	return o
 }
 
-func (o AppliancePropertiesResponseInfrastructureConfigOutput) ToAppliancePropertiesResponseInfrastructureConfigOutputWithContext(ctx context.Context) AppliancePropertiesResponseInfrastructureConfigOutput {
+func (o AppliancePropertiesInfrastructureConfigResponseOutput) ToAppliancePropertiesInfrastructureConfigResponseOutputWithContext(ctx context.Context) AppliancePropertiesInfrastructureConfigResponseOutput {
 	return o
 }
 
 // Information about the connected appliance.
-func (o AppliancePropertiesResponseInfrastructureConfigOutput) Provider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppliancePropertiesResponseInfrastructureConfig) *string { return v.Provider }).(pulumi.StringPtrOutput)
+func (o AppliancePropertiesInfrastructureConfigResponseOutput) Provider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppliancePropertiesInfrastructureConfigResponse) *string { return v.Provider }).(pulumi.StringPtrOutput)
 }
 
-type AppliancePropertiesResponseInfrastructureConfigPtrOutput struct{ *pulumi.OutputState }
+type AppliancePropertiesInfrastructureConfigResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (AppliancePropertiesResponseInfrastructureConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppliancePropertiesResponseInfrastructureConfig)(nil)).Elem()
+func (AppliancePropertiesInfrastructureConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppliancePropertiesInfrastructureConfigResponse)(nil)).Elem()
 }
 
-func (o AppliancePropertiesResponseInfrastructureConfigPtrOutput) ToAppliancePropertiesResponseInfrastructureConfigPtrOutput() AppliancePropertiesResponseInfrastructureConfigPtrOutput {
+func (o AppliancePropertiesInfrastructureConfigResponsePtrOutput) ToAppliancePropertiesInfrastructureConfigResponsePtrOutput() AppliancePropertiesInfrastructureConfigResponsePtrOutput {
 	return o
 }
 
-func (o AppliancePropertiesResponseInfrastructureConfigPtrOutput) ToAppliancePropertiesResponseInfrastructureConfigPtrOutputWithContext(ctx context.Context) AppliancePropertiesResponseInfrastructureConfigPtrOutput {
+func (o AppliancePropertiesInfrastructureConfigResponsePtrOutput) ToAppliancePropertiesInfrastructureConfigResponsePtrOutputWithContext(ctx context.Context) AppliancePropertiesInfrastructureConfigResponsePtrOutput {
 	return o
 }
 
-func (o AppliancePropertiesResponseInfrastructureConfigPtrOutput) Elem() AppliancePropertiesResponseInfrastructureConfigOutput {
-	return o.ApplyT(func(v *AppliancePropertiesResponseInfrastructureConfig) AppliancePropertiesResponseInfrastructureConfig {
+func (o AppliancePropertiesInfrastructureConfigResponsePtrOutput) Elem() AppliancePropertiesInfrastructureConfigResponseOutput {
+	return o.ApplyT(func(v *AppliancePropertiesInfrastructureConfigResponse) AppliancePropertiesInfrastructureConfigResponse {
 		if v != nil {
 			return *v
 		}
-		var ret AppliancePropertiesResponseInfrastructureConfig
+		var ret AppliancePropertiesInfrastructureConfigResponse
 		return ret
-	}).(AppliancePropertiesResponseInfrastructureConfigOutput)
+	}).(AppliancePropertiesInfrastructureConfigResponseOutput)
 }
 
 // Information about the connected appliance.
-func (o AppliancePropertiesResponseInfrastructureConfigPtrOutput) Provider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppliancePropertiesResponseInfrastructureConfig) *string {
+func (o AppliancePropertiesInfrastructureConfigResponsePtrOutput) Provider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppliancePropertiesInfrastructureConfigResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -595,16 +595,10 @@ func (o IdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
 
 // Appliance SSHKey definition.
 type SSHKeyResponse struct {
-	// Certificate associated with the public key if the key is signed.
-	Certificate string `pulumi:"certificate"`
-	// Certificate creation timestamp (Unix).
-	CreationTimeStamp float64 `pulumi:"creationTimeStamp"`
-	// Certificate expiration timestamp (Unix).
-	ExpirationTimeStamp float64 `pulumi:"expirationTimeStamp"`
-	// Private Key.
-	PrivateKey string `pulumi:"privateKey"`
-	// Public Key.
-	PublicKey string `pulumi:"publicKey"`
+	// User Private Key.
+	PrivateKey *string `pulumi:"privateKey"`
+	// User Public Key.
+	PublicKey *string `pulumi:"publicKey"`
 }
 
 // Appliance SSHKey definition.
@@ -622,29 +616,14 @@ func (o SSHKeyResponseOutput) ToSSHKeyResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Certificate associated with the public key if the key is signed.
-func (o SSHKeyResponseOutput) Certificate() pulumi.StringOutput {
-	return o.ApplyT(func(v SSHKeyResponse) string { return v.Certificate }).(pulumi.StringOutput)
+// User Private Key.
+func (o SSHKeyResponseOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SSHKeyResponse) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
 }
 
-// Certificate creation timestamp (Unix).
-func (o SSHKeyResponseOutput) CreationTimeStamp() pulumi.Float64Output {
-	return o.ApplyT(func(v SSHKeyResponse) float64 { return v.CreationTimeStamp }).(pulumi.Float64Output)
-}
-
-// Certificate expiration timestamp (Unix).
-func (o SSHKeyResponseOutput) ExpirationTimeStamp() pulumi.Float64Output {
-	return o.ApplyT(func(v SSHKeyResponse) float64 { return v.ExpirationTimeStamp }).(pulumi.Float64Output)
-}
-
-// Private Key.
-func (o SSHKeyResponseOutput) PrivateKey() pulumi.StringOutput {
-	return o.ApplyT(func(v SSHKeyResponse) string { return v.PrivateKey }).(pulumi.StringOutput)
-}
-
-// Public Key.
-func (o SSHKeyResponseOutput) PublicKey() pulumi.StringOutput {
-	return o.ApplyT(func(v SSHKeyResponse) string { return v.PublicKey }).(pulumi.StringOutput)
+// User Public Key.
+func (o SSHKeyResponseOutput) PublicKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SSHKeyResponse) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
 }
 
 type SSHKeyResponseMapOutput struct{ *pulumi.OutputState }
@@ -667,65 +646,78 @@ func (o SSHKeyResponseMapOutput) MapIndex(k pulumi.StringInput) SSHKeyResponseOu
 	}).(SSHKeyResponseOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+// Appliance SSHKey definition.
+type SSHKeyResponseV1 struct {
+	// Certificate associated with the public key if the key is signed.
+	Certificate string `pulumi:"certificate"`
+	// Certificate creation timestamp (Unix).
+	CreationTimeStamp float64 `pulumi:"creationTimeStamp"`
+	// Certificate expiration timestamp (Unix).
+	ExpirationTimeStamp float64 `pulumi:"expirationTimeStamp"`
+	// Private Key.
+	PrivateKey string `pulumi:"privateKey"`
+	// Public Key.
+	PublicKey string `pulumi:"publicKey"`
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponseOutput struct{ *pulumi.OutputState }
+// Appliance SSHKey definition.
+type SSHKeyResponseV1Output struct{ *pulumi.OutputState }
 
-func (SystemDataResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+func (SSHKeyResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*SSHKeyResponseV1)(nil)).Elem()
 }
 
-func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+func (o SSHKeyResponseV1Output) ToSSHKeyResponseV1Output() SSHKeyResponseV1Output {
 	return o
 }
 
-func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+func (o SSHKeyResponseV1Output) ToSSHKeyResponseV1OutputWithContext(ctx context.Context) SSHKeyResponseV1Output {
 	return o
 }
 
-// The timestamp of resource creation (UTC).
-func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+// Certificate associated with the public key if the key is signed.
+func (o SSHKeyResponseV1Output) Certificate() pulumi.StringOutput {
+	return o.ApplyT(func(v SSHKeyResponseV1) string { return v.Certificate }).(pulumi.StringOutput)
 }
 
-// The identity that created the resource.
-func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+// Certificate creation timestamp (Unix).
+func (o SSHKeyResponseV1Output) CreationTimeStamp() pulumi.Float64Output {
+	return o.ApplyT(func(v SSHKeyResponseV1) float64 { return v.CreationTimeStamp }).(pulumi.Float64Output)
 }
 
-// The type of identity that created the resource.
-func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+// Certificate expiration timestamp (Unix).
+func (o SSHKeyResponseV1Output) ExpirationTimeStamp() pulumi.Float64Output {
+	return o.ApplyT(func(v SSHKeyResponseV1) float64 { return v.ExpirationTimeStamp }).(pulumi.Float64Output)
 }
 
-// The timestamp of resource last modification (UTC)
-func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+// Private Key.
+func (o SSHKeyResponseV1Output) PrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v SSHKeyResponseV1) string { return v.PrivateKey }).(pulumi.StringOutput)
 }
 
-// The identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+// Public Key.
+func (o SSHKeyResponseV1Output) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v SSHKeyResponseV1) string { return v.PublicKey }).(pulumi.StringOutput)
 }
 
-// The type of identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+type SSHKeyResponseV1MapOutput struct{ *pulumi.OutputState }
+
+func (SSHKeyResponseV1MapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SSHKeyResponseV1)(nil)).Elem()
+}
+
+func (o SSHKeyResponseV1MapOutput) ToSSHKeyResponseV1MapOutput() SSHKeyResponseV1MapOutput {
+	return o
+}
+
+func (o SSHKeyResponseV1MapOutput) ToSSHKeyResponseV1MapOutputWithContext(ctx context.Context) SSHKeyResponseV1MapOutput {
+	return o
+}
+
+func (o SSHKeyResponseV1MapOutput) MapIndex(k pulumi.StringInput) SSHKeyResponseV1Output {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SSHKeyResponseV1 {
+		return vs[0].(map[string]SSHKeyResponseV1)[vs[1].(string)]
+	}).(SSHKeyResponseV1Output)
 }
 
 func init() {
@@ -733,8 +725,8 @@ func init() {
 	pulumi.RegisterOutputType(ApplianceCredentialKubeconfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(AppliancePropertiesInfrastructureConfigOutput{})
 	pulumi.RegisterOutputType(AppliancePropertiesInfrastructureConfigPtrOutput{})
-	pulumi.RegisterOutputType(AppliancePropertiesResponseInfrastructureConfigOutput{})
-	pulumi.RegisterOutputType(AppliancePropertiesResponseInfrastructureConfigPtrOutput{})
+	pulumi.RegisterOutputType(AppliancePropertiesInfrastructureConfigResponseOutput{})
+	pulumi.RegisterOutputType(AppliancePropertiesInfrastructureConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(ArtifactProfileResponseOutput{})
 	pulumi.RegisterOutputType(ArtifactProfileResponseMapOutput{})
 	pulumi.RegisterOutputType(HybridConnectionConfigResponseOutput{})
@@ -744,5 +736,6 @@ func init() {
 	pulumi.RegisterOutputType(IdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(SSHKeyResponseOutput{})
 	pulumi.RegisterOutputType(SSHKeyResponseMapOutput{})
-	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(SSHKeyResponseV1Output{})
+	pulumi.RegisterOutputType(SSHKeyResponseV1MapOutput{})
 }

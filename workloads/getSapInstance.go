@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,6 +38,8 @@ type LookupSapInstanceArgs struct {
 type LookupSapInstanceResult struct {
 	// Enter a business function/department identifier to group multiple SIDs.
 	Application string `pulumi:"application"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The Environment; PRD, QA, DEV, etc to which SAP system belongs to. Select from the list of available dropdown values.
 	Environment string `pulumi:"environment"`
 	// Defines the errors related to SAP Instance resource.
@@ -52,7 +55,7 @@ type LookupSapInstanceResult struct {
 	// Defines the provisioning states.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// This is the SID of SAP System. Keeping this not equal to ID as different landscapes can have repeated System SID IDs.
 	SystemSid string `pulumi:"systemSid"`
 	// Resource tags.
@@ -103,6 +106,11 @@ func (o LookupSapInstanceResultOutput) Application() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSapInstanceResult) string { return v.Application }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupSapInstanceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSapInstanceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The Environment; PRD, QA, DEV, etc to which SAP system belongs to. Select from the list of available dropdown values.
 func (o LookupSapInstanceResultOutput) Environment() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSapInstanceResult) string { return v.Environment }).(pulumi.StringOutput)
@@ -139,8 +147,8 @@ func (o LookupSapInstanceResultOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupSapInstanceResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSapInstanceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupSapInstanceResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSapInstanceResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // This is the SID of SAP System. Keeping this not equal to ID as different landscapes can have repeated System SID IDs.

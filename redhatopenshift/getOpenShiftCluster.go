@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The operation returns properties of a OpenShift cluster.
 //
-// Uses Azure REST API version 2022-09-04.
+// Uses Azure REST API version 2023-11-22.
 //
-// Other available API versions: 2023-04-01, 2023-07-01-preview, 2023-09-04, 2023-11-22, 2024-08-12-preview.
+// Other available API versions: 2022-09-04, 2023-04-01, 2023-07-01-preview, 2023-09-04, 2024-08-12-preview, 2025-07-25. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native redhatopenshift [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupOpenShiftCluster(ctx *pulumi.Context, args *LookupOpenShiftClusterArgs, opts ...pulumi.InvokeOption) (*LookupOpenShiftClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOpenShiftClusterResult
@@ -37,6 +38,8 @@ type LookupOpenShiftClusterArgs struct {
 type LookupOpenShiftClusterResult struct {
 	// The cluster API server profile.
 	ApiserverProfile *APIServerProfileResponse `pulumi:"apiserverProfile"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The cluster profile.
 	ClusterProfile *ClusterProfileResponse `pulumi:"clusterProfile"`
 	// The console profile.
@@ -58,13 +61,15 @@ type LookupOpenShiftClusterResult struct {
 	// The cluster service principal profile.
 	ServicePrincipalProfile *ServicePrincipalProfileResponse `pulumi:"servicePrincipalProfile"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The cluster worker profiles.
 	WorkerProfiles []WorkerProfileResponse `pulumi:"workerProfiles"`
+	// The cluster worker profiles status.
+	WorkerProfilesStatus []WorkerProfileResponse `pulumi:"workerProfilesStatus"`
 }
 
 func LookupOpenShiftClusterOutput(ctx *pulumi.Context, args LookupOpenShiftClusterOutputArgs, opts ...pulumi.InvokeOption) LookupOpenShiftClusterResultOutput {
@@ -105,6 +110,11 @@ func (o LookupOpenShiftClusterResultOutput) ToLookupOpenShiftClusterResultOutput
 // The cluster API server profile.
 func (o LookupOpenShiftClusterResultOutput) ApiserverProfile() APIServerProfileResponsePtrOutput {
 	return o.ApplyT(func(v LookupOpenShiftClusterResult) *APIServerProfileResponse { return v.ApiserverProfile }).(APIServerProfileResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupOpenShiftClusterResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOpenShiftClusterResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The cluster profile.
@@ -160,8 +170,8 @@ func (o LookupOpenShiftClusterResultOutput) ServicePrincipalProfile() ServicePri
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupOpenShiftClusterResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupOpenShiftClusterResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupOpenShiftClusterResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupOpenShiftClusterResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.
@@ -177,6 +187,11 @@ func (o LookupOpenShiftClusterResultOutput) Type() pulumi.StringOutput {
 // The cluster worker profiles.
 func (o LookupOpenShiftClusterResultOutput) WorkerProfiles() WorkerProfileResponseArrayOutput {
 	return o.ApplyT(func(v LookupOpenShiftClusterResult) []WorkerProfileResponse { return v.WorkerProfiles }).(WorkerProfileResponseArrayOutput)
+}
+
+// The cluster worker profiles status.
+func (o LookupOpenShiftClusterResultOutput) WorkerProfilesStatus() WorkerProfileResponseArrayOutput {
+	return o.ApplyT(func(v LookupOpenShiftClusterResult) []WorkerProfileResponse { return v.WorkerProfilesStatus }).(WorkerProfileResponseArrayOutput)
 }
 
 func init() {

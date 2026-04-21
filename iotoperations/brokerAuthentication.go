@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Instance broker authentication resource
 //
-// Uses Azure REST API version 2024-07-01-preview.
+// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2024-07-01-preview.
 //
-// Other available API versions: 2024-08-15-preview, 2024-09-15-preview, 2024-11-01, 2025-04-01.
+// Other available API versions: 2024-07-01-preview, 2024-08-15-preview, 2024-09-15-preview, 2025-04-01, 2025-07-01-preview, 2025-10-01, 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native iotoperations [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type BrokerAuthentication struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Edge location of the resource.
 	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
 	// The name of the resource
@@ -27,7 +30,7 @@ type BrokerAuthentication struct {
 	// The resource-specific properties for this resource.
 	Properties BrokerAuthenticationPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -66,6 +69,15 @@ func NewBrokerAuthentication(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:iotoperations/v20250401:BrokerAuthentication"),
+		},
+		{
+			Type: pulumi.String("azure-native:iotoperations/v20250701preview:BrokerAuthentication"),
+		},
+		{
+			Type: pulumi.String("azure-native:iotoperations/v20251001:BrokerAuthentication"),
+		},
+		{
+			Type: pulumi.String("azure-native:iotoperations/v20260301:BrokerAuthentication"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -169,6 +181,11 @@ func (o BrokerAuthenticationOutput) ToBrokerAuthenticationOutputWithContext(ctx 
 	return o
 }
 
+// The Azure API version of the resource.
+func (o BrokerAuthenticationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BrokerAuthentication) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Edge location of the resource.
 func (o BrokerAuthenticationOutput) ExtendedLocation() ExtendedLocationResponseOutput {
 	return o.ApplyT(func(v *BrokerAuthentication) ExtendedLocationResponseOutput { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
@@ -185,8 +202,8 @@ func (o BrokerAuthenticationOutput) Properties() BrokerAuthenticationPropertiesR
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o BrokerAuthenticationOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *BrokerAuthentication) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o BrokerAuthenticationOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *BrokerAuthentication) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

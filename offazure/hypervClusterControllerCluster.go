@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A cluster resource belonging to a site resource.
 //
-// Uses Azure REST API version 2023-06-06.
+// Uses Azure REST API version 2023-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-06.
 //
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Other available API versions: 2023-06-06, 2024-05-01-preview, 2024-07-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type HypervClusterControllerCluster struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets the timestamp marking Hyper-V cluster creation.
 	CreatedTimestamp pulumi.StringOutput `pulumi:"createdTimestamp"`
 	// Gets the errors.
@@ -39,7 +42,7 @@ type HypervClusterControllerCluster struct {
 	// Gets the status of the Hyper-V cluster.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Gets the timestamp marking last updated on the Hyper-V cluster.
@@ -68,6 +71,12 @@ func NewHypervClusterControllerCluster(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:offazure/v20240501preview:HypervClusterControllerCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20240701preview:HypervClusterControllerCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20241201preview:HypervClusterControllerCluster"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -175,6 +184,11 @@ func (o HypervClusterControllerClusterOutput) ToHypervClusterControllerClusterOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o HypervClusterControllerClusterOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *HypervClusterControllerCluster) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Gets the timestamp marking Hyper-V cluster creation.
 func (o HypervClusterControllerClusterOutput) CreatedTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *HypervClusterControllerCluster) pulumi.StringOutput { return v.CreatedTimestamp }).(pulumi.StringOutput)
@@ -221,8 +235,8 @@ func (o HypervClusterControllerClusterOutput) Status() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o HypervClusterControllerClusterOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *HypervClusterControllerCluster) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o HypervClusterControllerClusterOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *HypervClusterControllerCluster) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

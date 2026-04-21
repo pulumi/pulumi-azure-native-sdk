@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the cluster customer credentials for the dedicated appliance.
 //
 // Uses Azure REST API version 2022-10-27.
+//
+// Other available API versions: 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resourceconnector [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListApplianceKeys(ctx *pulumi.Context, args *ListApplianceKeysArgs, opts ...pulumi.InvokeOption) (*ListApplianceKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListApplianceKeysResult
@@ -40,7 +42,7 @@ type ListApplianceKeysResult struct {
 	// The list of appliance kubeconfigs.
 	Kubeconfigs []ApplianceCredentialKubeconfigResponse `pulumi:"kubeconfigs"`
 	// Map of Customer User Public, Private SSH Keys and Certificate when available.
-	SshKeys map[string]SSHKeyResponse `pulumi:"sshKeys"`
+	SshKeys map[string]SSHKeyResponseV1 `pulumi:"sshKeys"`
 }
 
 func ListApplianceKeysOutput(ctx *pulumi.Context, args ListApplianceKeysOutputArgs, opts ...pulumi.InvokeOption) ListApplianceKeysResultOutput {
@@ -91,8 +93,8 @@ func (o ListApplianceKeysResultOutput) Kubeconfigs() ApplianceCredentialKubeconf
 }
 
 // Map of Customer User Public, Private SSH Keys and Certificate when available.
-func (o ListApplianceKeysResultOutput) SshKeys() SSHKeyResponseMapOutput {
-	return o.ApplyT(func(v ListApplianceKeysResult) map[string]SSHKeyResponse { return v.SshKeys }).(SSHKeyResponseMapOutput)
+func (o ListApplianceKeysResultOutput) SshKeys() SSHKeyResponseV1MapOutput {
+	return o.ApplyT(func(v ListApplianceKeysResult) map[string]SSHKeyResponseV1 { return v.SshKeys }).(SSHKeyResponseV1MapOutput)
 }
 
 func init() {

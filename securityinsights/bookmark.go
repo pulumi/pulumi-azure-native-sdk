@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a bookmark in Azure Security Insights.
 //
-// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2020-01-01.
+// Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 //
-// Other available API versions: 2019-01-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-09-01, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01.
+// Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Bookmark struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The time the bookmark was created
 	Created pulumi.StringPtrOutput `pulumi:"created"`
 	// Describes a user that created the bookmark
@@ -47,7 +50,7 @@ type Bookmark struct {
 	// The start time for the query
 	QueryStartTime pulumi.StringPtrOutput `pulumi:"queryStartTime"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The last time the bookmark was updated
@@ -183,6 +186,18 @@ func NewBookmark(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250301:Bookmark"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250401preview:Bookmark"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250601:Bookmark"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250701preview:Bookmark"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250901:Bookmark"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -326,6 +341,11 @@ func (o BookmarkOutput) ToBookmarkOutputWithContext(ctx context.Context) Bookmar
 	return o
 }
 
+// The Azure API version of the resource.
+func (o BookmarkOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bookmark) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The time the bookmark was created
 func (o BookmarkOutput) Created() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Bookmark) pulumi.StringPtrOutput { return v.Created }).(pulumi.StringPtrOutput)
@@ -392,8 +412,8 @@ func (o BookmarkOutput) QueryStartTime() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o BookmarkOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Bookmark) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o BookmarkOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Bookmark) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

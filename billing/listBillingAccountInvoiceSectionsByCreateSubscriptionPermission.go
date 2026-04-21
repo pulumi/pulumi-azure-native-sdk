@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists the invoice sections for which the user has permission to create Azure subscriptions. The operation is supported only for billing accounts with agreement type Microsoft Customer Agreement.
 //
-// Uses Azure REST API version 2020-05-01.
+// Uses Azure REST API version 2024-04-01.
 //
-// Other available API versions: 2019-10-01-preview, 2024-04-01.
+// Other available API versions: 2019-10-01-preview, 2020-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native billing [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListBillingAccountInvoiceSectionsByCreateSubscriptionPermission(ctx *pulumi.Context, args *ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionArgs, opts ...pulumi.InvokeOption) (*ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult
@@ -29,13 +29,15 @@ func ListBillingAccountInvoiceSectionsByCreateSubscriptionPermission(ctx *pulumi
 type ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionArgs struct {
 	// The ID that uniquely identifies a billing account.
 	BillingAccountName string `pulumi:"billingAccountName"`
+	// The filter query option allows clients to filter a collection of resources that are addressed by a request URL.
+	Filter *string `pulumi:"filter"`
 }
 
-// The list of invoice section properties with create subscription permission.
+// A container for a list of resources
 type ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult struct {
 	// The link (url) to the next page of results.
 	NextLink string `pulumi:"nextLink"`
-	// The list of invoice section properties with create subscription permission.
+	// The list of resources.
 	Value []InvoiceSectionWithCreateSubPermissionResponse `pulumi:"value"`
 }
 
@@ -51,13 +53,15 @@ func ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionOutput(ctx *
 type ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionOutputArgs struct {
 	// The ID that uniquely identifies a billing account.
 	BillingAccountName pulumi.StringInput `pulumi:"billingAccountName"`
+	// The filter query option allows clients to filter a collection of resources that are addressed by a request URL.
+	Filter pulumi.StringPtrInput `pulumi:"filter"`
 }
 
 func (ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionArgs)(nil)).Elem()
 }
 
-// The list of invoice section properties with create subscription permission.
+// A container for a list of resources
 type ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResultOutput struct{ *pulumi.OutputState }
 
 func (ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResultOutput) ElementType() reflect.Type {
@@ -79,7 +83,7 @@ func (o ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResultOut
 	}).(pulumi.StringOutput)
 }
 
-// The list of invoice section properties with create subscription permission.
+// The list of resources.
 func (o ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResultOutput) Value() InvoiceSectionWithCreateSubPermissionResponseArrayOutput {
 	return o.ApplyT(func(v ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult) []InvoiceSectionWithCreateSubPermissionResponse {
 		return v.Value

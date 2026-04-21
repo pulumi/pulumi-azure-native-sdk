@@ -8,13 +8,13 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Security Assignment on a resource group over a given scope
 //
-// Uses Azure REST API version 2024-08-01.
+// Uses Azure REST API version 2024-08-01. In version 2.x of the Azure Native provider, it used API version 2024-08-01.
 type StandardAssignment struct {
 	pulumi.CustomResourceState
 
@@ -22,6 +22,8 @@ type StandardAssignment struct {
 	AssignedStandard AssignedStandardItemResponsePtrOutput `pulumi:"assignedStandard"`
 	// Additional data about assignment that has Attest effect
 	AttestationData StandardAssignmentPropertiesResponseAttestationDataPtrOutput `pulumi:"attestationData"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Description of the standardAssignment
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Display name of the standardAssignment
@@ -184,6 +186,11 @@ func (o StandardAssignmentOutput) AttestationData() StandardAssignmentProperties
 	return o.ApplyT(func(v *StandardAssignment) StandardAssignmentPropertiesResponseAttestationDataPtrOutput {
 		return v.AttestationData
 	}).(StandardAssignmentPropertiesResponseAttestationDataPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o StandardAssignmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *StandardAssignment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Description of the standardAssignment

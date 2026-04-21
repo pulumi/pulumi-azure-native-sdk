@@ -176,7 +176,7 @@ func (in *billingTypePtr) ToBillingTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(BillingTypePtrOutput)
 }
 
-// The name of the SKU.
+// The SKU (tier) of a cluster.
 type ClusterSkuNameEnum string
 
 const (
@@ -1598,11 +1598,176 @@ func (in *publicNetworkAccessTypePtr) ToPublicNetworkAccessTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessTypePtrOutput)
 }
 
+// SummaryRules rule type: User.
+type RuleTypeEnum string
+
+const (
+	// User defined summary rule. This is the definition for rules created and defined by users.
+	RuleTypeEnumUser = RuleTypeEnum("User")
+)
+
+func (RuleTypeEnum) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleTypeEnum)(nil)).Elem()
+}
+
+func (e RuleTypeEnum) ToRuleTypeEnumOutput() RuleTypeEnumOutput {
+	return pulumi.ToOutput(e).(RuleTypeEnumOutput)
+}
+
+func (e RuleTypeEnum) ToRuleTypeEnumOutputWithContext(ctx context.Context) RuleTypeEnumOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RuleTypeEnumOutput)
+}
+
+func (e RuleTypeEnum) ToRuleTypeEnumPtrOutput() RuleTypeEnumPtrOutput {
+	return e.ToRuleTypeEnumPtrOutputWithContext(context.Background())
+}
+
+func (e RuleTypeEnum) ToRuleTypeEnumPtrOutputWithContext(ctx context.Context) RuleTypeEnumPtrOutput {
+	return RuleTypeEnum(e).ToRuleTypeEnumOutputWithContext(ctx).ToRuleTypeEnumPtrOutputWithContext(ctx)
+}
+
+func (e RuleTypeEnum) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RuleTypeEnum) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RuleTypeEnum) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RuleTypeEnum) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RuleTypeEnumOutput struct{ *pulumi.OutputState }
+
+func (RuleTypeEnumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleTypeEnum)(nil)).Elem()
+}
+
+func (o RuleTypeEnumOutput) ToRuleTypeEnumOutput() RuleTypeEnumOutput {
+	return o
+}
+
+func (o RuleTypeEnumOutput) ToRuleTypeEnumOutputWithContext(ctx context.Context) RuleTypeEnumOutput {
+	return o
+}
+
+func (o RuleTypeEnumOutput) ToRuleTypeEnumPtrOutput() RuleTypeEnumPtrOutput {
+	return o.ToRuleTypeEnumPtrOutputWithContext(context.Background())
+}
+
+func (o RuleTypeEnumOutput) ToRuleTypeEnumPtrOutputWithContext(ctx context.Context) RuleTypeEnumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleTypeEnum) *RuleTypeEnum {
+		return &v
+	}).(RuleTypeEnumPtrOutput)
+}
+
+func (o RuleTypeEnumOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RuleTypeEnumOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RuleTypeEnum) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RuleTypeEnumOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RuleTypeEnumOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RuleTypeEnum) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RuleTypeEnumPtrOutput struct{ *pulumi.OutputState }
+
+func (RuleTypeEnumPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleTypeEnum)(nil)).Elem()
+}
+
+func (o RuleTypeEnumPtrOutput) ToRuleTypeEnumPtrOutput() RuleTypeEnumPtrOutput {
+	return o
+}
+
+func (o RuleTypeEnumPtrOutput) ToRuleTypeEnumPtrOutputWithContext(ctx context.Context) RuleTypeEnumPtrOutput {
+	return o
+}
+
+func (o RuleTypeEnumPtrOutput) Elem() RuleTypeEnumOutput {
+	return o.ApplyT(func(v *RuleTypeEnum) RuleTypeEnum {
+		if v != nil {
+			return *v
+		}
+		var ret RuleTypeEnum
+		return ret
+	}).(RuleTypeEnumOutput)
+}
+
+func (o RuleTypeEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RuleTypeEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RuleTypeEnum) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RuleTypeEnumInput is an input type that accepts values of the RuleTypeEnum enum
+// A concrete instance of `RuleTypeEnumInput` can be one of the following:
+//
+//	RuleTypeEnumUser
+type RuleTypeEnumInput interface {
+	pulumi.Input
+
+	ToRuleTypeEnumOutput() RuleTypeEnumOutput
+	ToRuleTypeEnumOutputWithContext(context.Context) RuleTypeEnumOutput
+}
+
+var ruleTypeEnumPtrType = reflect.TypeOf((**RuleTypeEnum)(nil)).Elem()
+
+type RuleTypeEnumPtrInput interface {
+	pulumi.Input
+
+	ToRuleTypeEnumPtrOutput() RuleTypeEnumPtrOutput
+	ToRuleTypeEnumPtrOutputWithContext(context.Context) RuleTypeEnumPtrOutput
+}
+
+type ruleTypeEnumPtr string
+
+func RuleTypeEnumPtr(v string) RuleTypeEnumPtrInput {
+	return (*ruleTypeEnumPtr)(&v)
+}
+
+func (*ruleTypeEnumPtr) ElementType() reflect.Type {
+	return ruleTypeEnumPtrType
+}
+
+func (in *ruleTypeEnumPtr) ToRuleTypeEnumPtrOutput() RuleTypeEnumPtrOutput {
+	return pulumi.ToOutput(in).(RuleTypeEnumPtrOutput)
+}
+
+func (in *ruleTypeEnumPtr) ToRuleTypeEnumPtrOutputWithContext(ctx context.Context) RuleTypeEnumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RuleTypeEnumPtrOutput)
+}
+
 // Instruct the system how to handle and charge the logs ingested to this table.
 type TablePlanEnum string
 
 const (
-	// Logs  that are adjusted to support high volume low value verbose logs.
+	// Logs that are adjusted to support high volume low value verbose logs.
 	TablePlanEnumBasic = TablePlanEnum("Basic")
 	// Logs  that allow monitoring and analytics.
 	TablePlanEnumAnalytics = TablePlanEnum("Analytics")
@@ -1764,6 +1929,171 @@ func (in *tablePlanEnumPtr) ToTablePlanEnumPtrOutput() TablePlanEnumPtrOutput {
 
 func (in *tablePlanEnumPtr) ToTablePlanEnumPtrOutputWithContext(ctx context.Context) TablePlanEnumPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(TablePlanEnumPtrOutput)
+}
+
+// The time cursor used in Summary rules bins processing, e.g. TimeGenerated.
+type TimeSelectorEnum string
+
+const (
+	// TimeGenerated.
+	TimeSelectorEnumTimeGenerated = TimeSelectorEnum("TimeGenerated")
+)
+
+func (TimeSelectorEnum) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeSelectorEnum)(nil)).Elem()
+}
+
+func (e TimeSelectorEnum) ToTimeSelectorEnumOutput() TimeSelectorEnumOutput {
+	return pulumi.ToOutput(e).(TimeSelectorEnumOutput)
+}
+
+func (e TimeSelectorEnum) ToTimeSelectorEnumOutputWithContext(ctx context.Context) TimeSelectorEnumOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TimeSelectorEnumOutput)
+}
+
+func (e TimeSelectorEnum) ToTimeSelectorEnumPtrOutput() TimeSelectorEnumPtrOutput {
+	return e.ToTimeSelectorEnumPtrOutputWithContext(context.Background())
+}
+
+func (e TimeSelectorEnum) ToTimeSelectorEnumPtrOutputWithContext(ctx context.Context) TimeSelectorEnumPtrOutput {
+	return TimeSelectorEnum(e).ToTimeSelectorEnumOutputWithContext(ctx).ToTimeSelectorEnumPtrOutputWithContext(ctx)
+}
+
+func (e TimeSelectorEnum) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TimeSelectorEnum) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TimeSelectorEnum) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TimeSelectorEnum) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TimeSelectorEnumOutput struct{ *pulumi.OutputState }
+
+func (TimeSelectorEnumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeSelectorEnum)(nil)).Elem()
+}
+
+func (o TimeSelectorEnumOutput) ToTimeSelectorEnumOutput() TimeSelectorEnumOutput {
+	return o
+}
+
+func (o TimeSelectorEnumOutput) ToTimeSelectorEnumOutputWithContext(ctx context.Context) TimeSelectorEnumOutput {
+	return o
+}
+
+func (o TimeSelectorEnumOutput) ToTimeSelectorEnumPtrOutput() TimeSelectorEnumPtrOutput {
+	return o.ToTimeSelectorEnumPtrOutputWithContext(context.Background())
+}
+
+func (o TimeSelectorEnumOutput) ToTimeSelectorEnumPtrOutputWithContext(ctx context.Context) TimeSelectorEnumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeSelectorEnum) *TimeSelectorEnum {
+		return &v
+	}).(TimeSelectorEnumPtrOutput)
+}
+
+func (o TimeSelectorEnumOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TimeSelectorEnumOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TimeSelectorEnum) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TimeSelectorEnumOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TimeSelectorEnumOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TimeSelectorEnum) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TimeSelectorEnumPtrOutput struct{ *pulumi.OutputState }
+
+func (TimeSelectorEnumPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TimeSelectorEnum)(nil)).Elem()
+}
+
+func (o TimeSelectorEnumPtrOutput) ToTimeSelectorEnumPtrOutput() TimeSelectorEnumPtrOutput {
+	return o
+}
+
+func (o TimeSelectorEnumPtrOutput) ToTimeSelectorEnumPtrOutputWithContext(ctx context.Context) TimeSelectorEnumPtrOutput {
+	return o
+}
+
+func (o TimeSelectorEnumPtrOutput) Elem() TimeSelectorEnumOutput {
+	return o.ApplyT(func(v *TimeSelectorEnum) TimeSelectorEnum {
+		if v != nil {
+			return *v
+		}
+		var ret TimeSelectorEnum
+		return ret
+	}).(TimeSelectorEnumOutput)
+}
+
+func (o TimeSelectorEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TimeSelectorEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TimeSelectorEnum) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TimeSelectorEnumInput is an input type that accepts values of the TimeSelectorEnum enum
+// A concrete instance of `TimeSelectorEnumInput` can be one of the following:
+//
+//	TimeSelectorEnumTimeGenerated
+type TimeSelectorEnumInput interface {
+	pulumi.Input
+
+	ToTimeSelectorEnumOutput() TimeSelectorEnumOutput
+	ToTimeSelectorEnumOutputWithContext(context.Context) TimeSelectorEnumOutput
+}
+
+var timeSelectorEnumPtrType = reflect.TypeOf((**TimeSelectorEnum)(nil)).Elem()
+
+type TimeSelectorEnumPtrInput interface {
+	pulumi.Input
+
+	ToTimeSelectorEnumPtrOutput() TimeSelectorEnumPtrOutput
+	ToTimeSelectorEnumPtrOutputWithContext(context.Context) TimeSelectorEnumPtrOutput
+}
+
+type timeSelectorEnumPtr string
+
+func TimeSelectorEnumPtr(v string) TimeSelectorEnumPtrInput {
+	return (*timeSelectorEnumPtr)(&v)
+}
+
+func (*timeSelectorEnumPtr) ElementType() reflect.Type {
+	return timeSelectorEnumPtrType
+}
+
+func (in *timeSelectorEnumPtr) ToTimeSelectorEnumPtrOutput() TimeSelectorEnumPtrOutput {
+	return pulumi.ToOutput(in).(TimeSelectorEnumPtrOutput)
+}
+
+func (in *timeSelectorEnumPtr) ToTimeSelectorEnumPtrOutputWithContext(ctx context.Context) TimeSelectorEnumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TimeSelectorEnumPtrOutput)
 }
 
 // The name of the SKU.
@@ -1963,8 +2293,12 @@ func init() {
 	pulumi.RegisterOutputType(MachineGroupTypePtrOutput{})
 	pulumi.RegisterOutputType(PublicNetworkAccessTypeOutput{})
 	pulumi.RegisterOutputType(PublicNetworkAccessTypePtrOutput{})
+	pulumi.RegisterOutputType(RuleTypeEnumOutput{})
+	pulumi.RegisterOutputType(RuleTypeEnumPtrOutput{})
 	pulumi.RegisterOutputType(TablePlanEnumOutput{})
 	pulumi.RegisterOutputType(TablePlanEnumPtrOutput{})
+	pulumi.RegisterOutputType(TimeSelectorEnumOutput{})
+	pulumi.RegisterOutputType(TimeSelectorEnumPtrOutput{})
 	pulumi.RegisterOutputType(WorkspaceSkuNameEnumOutput{})
 	pulumi.RegisterOutputType(WorkspaceSkuNameEnumPtrOutput{})
 }

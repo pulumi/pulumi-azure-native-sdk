@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,6 +38,8 @@ type LookupBusinessProcessArgs struct {
 
 // A business process under application.
 type LookupBusinessProcessResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The business process mapping.
 	BusinessProcessMapping map[string]BusinessProcessMappingItemResponse `pulumi:"businessProcessMapping"`
 	// The business process stages.
@@ -52,7 +55,7 @@ type LookupBusinessProcessResult struct {
 	// The status of the last operation.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// The table name of the business process.
 	TableName *string `pulumi:"tableName"`
 	// The tracking data store reference name.
@@ -102,6 +105,11 @@ func (o LookupBusinessProcessResultOutput) ToLookupBusinessProcessResultOutputWi
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupBusinessProcessResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBusinessProcessResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The business process mapping.
 func (o LookupBusinessProcessResultOutput) BusinessProcessMapping() BusinessProcessMappingItemResponseMapOutput {
 	return o.ApplyT(func(v LookupBusinessProcessResult) map[string]BusinessProcessMappingItemResponse {
@@ -142,8 +150,8 @@ func (o LookupBusinessProcessResultOutput) ProvisioningState() pulumi.StringOutp
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupBusinessProcessResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupBusinessProcessResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupBusinessProcessResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupBusinessProcessResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The table name of the business process.

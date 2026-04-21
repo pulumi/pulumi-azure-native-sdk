@@ -8,21 +8,24 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2024-01-01-preview.
+// Uses Azure REST API version 2025-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-01-01-preview.
 //
-// Other available API versions: 2024-04-01-preview, 2024-07-01-preview, 2024-10-01-preview, 2025-01-01-preview.
+// Other available API versions: 2024-01-01-preview, 2024-07-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type EndpointDeployment struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name       pulumi.StringOutput `pulumi:"name"`
 	Properties pulumi.AnyOutput    `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -61,6 +64,15 @@ func NewEndpointDeployment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:EndpointDeployment"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250401preview:EndpointDeployment"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250701preview:EndpointDeployment"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20251001preview:EndpointDeployment"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -158,6 +170,11 @@ func (o EndpointDeploymentOutput) ToEndpointDeploymentOutputWithContext(ctx cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o EndpointDeploymentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointDeployment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o EndpointDeploymentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EndpointDeployment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -168,8 +185,8 @@ func (o EndpointDeploymentOutput) Properties() pulumi.AnyOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o EndpointDeploymentOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *EndpointDeployment) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o EndpointDeploymentOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *EndpointDeployment) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

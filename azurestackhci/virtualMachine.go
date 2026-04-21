@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The virtual machine resource definition.
 //
-// Uses Azure REST API version 2022-12-15-preview.
+// Uses Azure REST API version 2022-12-15-preview. In version 2.x of the Azure Native provider, it used API version 2022-12-15-preview.
 type VirtualMachine struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The extendedLocation of the resource.
 	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// Guest agent status properties.
@@ -25,7 +28,7 @@ type VirtualMachine struct {
 	// HardwareProfile - Specifies the hardware settings for the virtual machine.
 	HardwareProfile VirtualMachinePropertiesResponseHardwareProfilePtrOutput `pulumi:"hardwareProfile"`
 	// Identity for the resource.
-	Identity IdentityResponsePtrOutput `pulumi:"identity"`
+	Identity commontypesv3.IdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -43,7 +46,7 @@ type VirtualMachine struct {
 	// StorageProfile - contains information about the disks and storage information for the virtual machine
 	StorageProfile VirtualMachinePropertiesResponseStorageProfilePtrOutput `pulumi:"storageProfile"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -78,6 +81,9 @@ func NewVirtualMachine(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:VirtualMachine"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:VirtualmachineRetrieve"),
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20221215preview:VirtualMachine"),
@@ -122,7 +128,7 @@ type virtualMachineArgs struct {
 	// HardwareProfile - Specifies the hardware settings for the virtual machine.
 	HardwareProfile *VirtualMachinePropertiesHardwareProfile `pulumi:"hardwareProfile"`
 	// Identity for the resource.
-	Identity *Identity `pulumi:"identity"`
+	Identity *commontypesv3.Identity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// NetworkProfile - describes the network configuration the virtual machine
@@ -148,7 +154,7 @@ type VirtualMachineArgs struct {
 	// HardwareProfile - Specifies the hardware settings for the virtual machine.
 	HardwareProfile VirtualMachinePropertiesHardwareProfilePtrInput
 	// Identity for the resource.
-	Identity IdentityPtrInput
+	Identity commontypesv3.IdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// NetworkProfile - describes the network configuration the virtual machine
@@ -204,6 +210,11 @@ func (o VirtualMachineOutput) ToVirtualMachineOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o VirtualMachineOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The extendedLocation of the resource.
 func (o VirtualMachineOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) ExtendedLocationResponsePtrOutput { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
@@ -222,8 +233,8 @@ func (o VirtualMachineOutput) HardwareProfile() VirtualMachinePropertiesResponse
 }
 
 // Identity for the resource.
-func (o VirtualMachineOutput) Identity() IdentityResponsePtrOutput {
-	return o.ApplyT(func(v *VirtualMachine) IdentityResponsePtrOutput { return v.Identity }).(IdentityResponsePtrOutput)
+func (o VirtualMachineOutput) Identity() commontypesv3.IdentityResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) commontypesv3.IdentityResponsePtrOutput { return v.Identity }).(commontypesv3.IdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -273,8 +284,8 @@ func (o VirtualMachineOutput) StorageProfile() VirtualMachinePropertiesResponseS
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o VirtualMachineOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *VirtualMachine) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o VirtualMachineOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *VirtualMachine) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

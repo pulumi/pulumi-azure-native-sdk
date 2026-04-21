@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a devcenter plan resource.
 //
-// Uses Azure REST API version 2024-05-01-preview.
+// Uses Azure REST API version 2024-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-05-01-preview.
 //
-// Other available API versions: 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview.
+// Other available API versions: 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Plan struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -27,9 +30,9 @@ type Plan struct {
 	// The provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The SKU for DevCenters created using this definition.
-	Sku SkuResponsePtrOutput `pulumi:"sku"`
+	Sku commontypesv5.SkuResponsePtrOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -104,7 +107,7 @@ type planArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The SKU for DevCenters created using this definition.
-	Sku *Sku `pulumi:"sku"`
+	Sku *commontypesv5.Sku `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -118,7 +121,7 @@ type PlanArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The SKU for DevCenters created using this definition.
-	Sku SkuPtrInput
+	Sku commontypesv5.SkuPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 }
@@ -160,6 +163,11 @@ func (o PlanOutput) ToPlanOutputWithContext(ctx context.Context) PlanOutput {
 	return o
 }
 
+// The Azure API version of the resource.
+func (o PlanOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Plan) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The geo-location where the resource lives
 func (o PlanOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Plan) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -176,13 +184,13 @@ func (o PlanOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // The SKU for DevCenters created using this definition.
-func (o PlanOutput) Sku() SkuResponsePtrOutput {
-	return o.ApplyT(func(v *Plan) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
+func (o PlanOutput) Sku() commontypesv5.SkuResponsePtrOutput {
+	return o.ApplyT(func(v *Plan) commontypesv5.SkuResponsePtrOutput { return v.Sku }).(commontypesv5.SkuResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o PlanOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Plan) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o PlanOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Plan) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

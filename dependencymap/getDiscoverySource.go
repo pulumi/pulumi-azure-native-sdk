@@ -7,13 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a DiscoverySourceResource
 //
 // Uses Azure REST API version 2025-01-31-preview.
+//
+// Other available API versions: 2025-05-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dependencymap [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupDiscoverySource(ctx *pulumi.Context, args *LookupDiscoverySourceArgs, opts ...pulumi.InvokeOption) (*LookupDiscoverySourceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDiscoverySourceResult
@@ -35,20 +38,18 @@ type LookupDiscoverySourceArgs struct {
 
 // A Discovery Source resource
 type LookupDiscoverySourceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Provisioning state of Discovery Source resource.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// Source ArmId of Discovery Source resource
-	SourceId string `pulumi:"sourceId"`
-	// Source type of Discovery Source resource.
-	SourceType string `pulumi:"sourceType"`
+	// The resource-specific properties for this resource.
+	Properties OffAzureDiscoverySourceResourcePropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -92,6 +93,11 @@ func (o LookupDiscoverySourceResultOutput) ToLookupDiscoverySourceResultOutputWi
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupDiscoverySourceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiscoverySourceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupDiscoverySourceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiscoverySourceResult) string { return v.Id }).(pulumi.StringOutput)
@@ -107,24 +113,16 @@ func (o LookupDiscoverySourceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiscoverySourceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Provisioning state of Discovery Source resource.
-func (o LookupDiscoverySourceResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDiscoverySourceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Source ArmId of Discovery Source resource
-func (o LookupDiscoverySourceResultOutput) SourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDiscoverySourceResult) string { return v.SourceId }).(pulumi.StringOutput)
-}
-
-// Source type of Discovery Source resource.
-func (o LookupDiscoverySourceResultOutput) SourceType() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDiscoverySourceResult) string { return v.SourceType }).(pulumi.StringOutput)
+// The resource-specific properties for this resource.
+func (o LookupDiscoverySourceResultOutput) Properties() OffAzureDiscoverySourceResourcePropertiesResponseOutput {
+	return o.ApplyT(func(v LookupDiscoverySourceResult) OffAzureDiscoverySourceResourcePropertiesResponse {
+		return v.Properties
+	}).(OffAzureDiscoverySourceResourcePropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupDiscoverySourceResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupDiscoverySourceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupDiscoverySourceResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupDiscoverySourceResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

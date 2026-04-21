@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a msixpackage.
 //
-// Uses Azure REST API version 2022-09-09.
+// Uses Azure REST API version 2024-04-03.
 //
-// Other available API versions: 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-03, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview.
+// Other available API versions: 2022-09-09, 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01-preview, 2025-08-01-preview, 2025-09-01-preview, 2025-11-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupMSIXPackage(ctx *pulumi.Context, args *LookupMSIXPackageArgs, opts ...pulumi.InvokeOption) (*LookupMSIXPackageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMSIXPackageResult
@@ -37,9 +38,11 @@ type LookupMSIXPackageArgs struct {
 
 // Schema for MSIX Package properties.
 type LookupMSIXPackageResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// User friendly Name to be displayed in the portal.
 	DisplayName *string `pulumi:"displayName"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// VHD/CIM image path on Network Share.
 	ImagePath *string `pulumi:"imagePath"`
@@ -61,11 +64,11 @@ type LookupMSIXPackageResult struct {
 	PackageName *string `pulumi:"packageName"`
 	// Relative Path to the package inside the image.
 	PackageRelativePath *string `pulumi:"packageRelativePath"`
-	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
-	// Package Version found in the appxmanifest.xml.
+	// Package version found in the appxmanifest.xml.
 	Version *string `pulumi:"version"`
 }
 
@@ -106,12 +109,17 @@ func (o LookupMSIXPackageResultOutput) ToLookupMSIXPackageResultOutputWithContex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupMSIXPackageResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMSIXPackageResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // User friendly Name to be displayed in the portal.
 func (o LookupMSIXPackageResultOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMSIXPackageResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupMSIXPackageResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMSIXPackageResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -166,9 +174,9 @@ func (o LookupMSIXPackageResultOutput) PackageRelativePath() pulumi.StringPtrOut
 	return o.ApplyT(func(v LookupMSIXPackageResult) *string { return v.PackageRelativePath }).(pulumi.StringPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-func (o LookupMSIXPackageResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupMSIXPackageResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupMSIXPackageResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupMSIXPackageResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -176,7 +184,7 @@ func (o LookupMSIXPackageResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMSIXPackageResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Package Version found in the appxmanifest.xml.
+// Package version found in the appxmanifest.xml.
 func (o LookupMSIXPackageResultOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupMSIXPackageResult) *string { return v.Version }).(pulumi.StringPtrOutput)
 }

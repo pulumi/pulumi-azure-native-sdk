@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +34,8 @@ type LookupTargetArgs struct {
 
 // A Target resource belonging to an Instance resource.
 type LookupTargetResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A list of components.
 	Components []ComponentPropertiesResponse `pulumi:"components"`
 	// Edge location of the resource.
@@ -50,7 +53,7 @@ type LookupTargetResult struct {
 	// Deployment scope (such as Kubernetes namespace).
 	Scope *string `pulumi:"scope"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Defines the device topology for a target or instance.
@@ -96,6 +99,11 @@ func (o LookupTargetResultOutput) ToLookupTargetResultOutputWithContext(ctx cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupTargetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTargetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // A list of components.
 func (o LookupTargetResultOutput) Components() ComponentPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v LookupTargetResult) []ComponentPropertiesResponse { return v.Components }).(ComponentPropertiesResponseArrayOutput)
@@ -137,8 +145,8 @@ func (o LookupTargetResultOutput) Scope() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupTargetResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupTargetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupTargetResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupTargetResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

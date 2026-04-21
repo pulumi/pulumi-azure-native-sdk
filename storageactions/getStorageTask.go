@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +36,8 @@ type LookupStorageTaskArgs struct {
 type LookupStorageTaskResult struct {
 	// The storage task action that is executed
 	Action StorageTaskActionResponse `pulumi:"action"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date and time of the storage task in UTC.
 	CreationTimeInUtc string `pulumi:"creationTimeInUtc"`
 	// Text that describes the purpose of the storage task
@@ -44,7 +47,7 @@ type LookupStorageTaskResult struct {
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The managed service identity of the resource.
-	Identity ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity commontypesv5.ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
@@ -52,7 +55,7 @@ type LookupStorageTaskResult struct {
 	// Represents the provisioning state of the storage task.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Storage task version.
@@ -101,6 +104,11 @@ func (o LookupStorageTaskResultOutput) Action() StorageTaskActionResponseOutput 
 	return o.ApplyT(func(v LookupStorageTaskResult) StorageTaskActionResponse { return v.Action }).(StorageTaskActionResponseOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupStorageTaskResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageTaskResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The creation date and time of the storage task in UTC.
 func (o LookupStorageTaskResultOutput) CreationTimeInUtc() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStorageTaskResult) string { return v.CreationTimeInUtc }).(pulumi.StringOutput)
@@ -122,8 +130,8 @@ func (o LookupStorageTaskResultOutput) Id() pulumi.StringOutput {
 }
 
 // The managed service identity of the resource.
-func (o LookupStorageTaskResultOutput) Identity() ManagedServiceIdentityResponseOutput {
-	return o.ApplyT(func(v LookupStorageTaskResult) ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponseOutput)
+func (o LookupStorageTaskResultOutput) Identity() commontypesv5.ManagedServiceIdentityResponseOutput {
+	return o.ApplyT(func(v LookupStorageTaskResult) commontypesv5.ManagedServiceIdentityResponse { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponseOutput)
 }
 
 // The geo-location where the resource lives
@@ -142,8 +150,8 @@ func (o LookupStorageTaskResultOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupStorageTaskResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupStorageTaskResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupStorageTaskResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupStorageTaskResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

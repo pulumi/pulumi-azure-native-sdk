@@ -8,20 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Private endpoint connection resource.
 //
-// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2021-06-01-preview.
+// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 //
-// Other available API versions: 2023-07-01, 2024-04-01-preview, 2024-11-01, 2024-12-01-preview.
+// Other available API versions: 2023-02-01, 2023-07-01, 2024-04-01-preview, 2024-12-01-preview, 2025-05-01, 2026-02-01, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native keyvault [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type MHSMPrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Modified whenever there is a change in the state of private endpoint connection.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
+	// Managed service identity (system assigned and/or user assigned identities)
+	Identity commontypesv5.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The supported Azure location where the managed HSM Pool should be created.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The name of the managed HSM Pool.
@@ -92,6 +97,15 @@ func NewMHSMPrivateEndpointConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:keyvault/v20241201preview:MHSMPrivateEndpointConnection"),
 		},
+		{
+			Type: pulumi.String("azure-native:keyvault/v20250501:MHSMPrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:keyvault/v20260201:MHSMPrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:keyvault/v20260301preview:MHSMPrivateEndpointConnection"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -127,6 +141,8 @@ func (MHSMPrivateEndpointConnectionState) ElementType() reflect.Type {
 }
 
 type mhsmprivateEndpointConnectionArgs struct {
+	// Managed service identity (system assigned and/or user assigned identities)
+	Identity *commontypesv5.ManagedServiceIdentity `pulumi:"identity"`
 	// The supported Azure location where the managed HSM Pool should be created.
 	Location *string `pulumi:"location"`
 	// Name of the managed HSM Pool
@@ -145,6 +161,8 @@ type mhsmprivateEndpointConnectionArgs struct {
 
 // The set of arguments for constructing a MHSMPrivateEndpointConnection resource.
 type MHSMPrivateEndpointConnectionArgs struct {
+	// Managed service identity (system assigned and/or user assigned identities)
+	Identity commontypesv5.ManagedServiceIdentityPtrInput
 	// The supported Azure location where the managed HSM Pool should be created.
 	Location pulumi.StringPtrInput
 	// Name of the managed HSM Pool
@@ -198,9 +216,21 @@ func (o MHSMPrivateEndpointConnectionOutput) ToMHSMPrivateEndpointConnectionOutp
 	return o
 }
 
+// The Azure API version of the resource.
+func (o MHSMPrivateEndpointConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MHSMPrivateEndpointConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Modified whenever there is a change in the state of private endpoint connection.
 func (o MHSMPrivateEndpointConnectionOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MHSMPrivateEndpointConnection) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+func (o MHSMPrivateEndpointConnectionOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *MHSMPrivateEndpointConnection) commontypesv5.ManagedServiceIdentityResponsePtrOutput {
+		return v.Identity
+	}).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The supported Azure location where the managed HSM Pool should be created.

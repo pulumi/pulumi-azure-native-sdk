@@ -8,16 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Database Migration Resource for Mongo to CosmosDb.
 //
-// Uses Azure REST API version 2023-07-15-preview.
+// Uses Azure REST API version 2023-07-15-preview. In version 2.x of the Azure Native provider, it used API version 2023-07-15-preview.
+//
+// Other available API versions: 2025-03-15-preview, 2025-06-30, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type DatabaseMigrationsMongoToCosmosDbRUMongo struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// List of Mongo Collections to be migrated.
 	CollectionList MongoMigrationCollectionResponseArrayOutput `pulumi:"collectionList"`
 	// Database migration end time.
@@ -45,7 +50,7 @@ type DatabaseMigrationsMongoToCosmosDbRUMongo struct {
 	// Database migration start time.
 	StartedOn pulumi.StringOutput `pulumi:"startedOn"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Target Cosmos DB Mongo connection details.
 	TargetMongoConnection MongoConnectionInformationResponsePtrOutput `pulumi:"targetMongoConnection"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -72,6 +77,15 @@ func NewDatabaseMigrationsMongoToCosmosDbRUMongo(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:datamigration/v20230715preview:DatabaseMigrationsMongoToCosmosDbRUMongo"),
+		},
+		{
+			Type: pulumi.String("azure-native:datamigration/v20250315preview:DatabaseMigrationsMongoToCosmosDbRUMongo"),
+		},
+		{
+			Type: pulumi.String("azure-native:datamigration/v20250630:DatabaseMigrationsMongoToCosmosDbRUMongo"),
+		},
+		{
+			Type: pulumi.String("azure-native:datamigration/v20250901preview:DatabaseMigrationsMongoToCosmosDbRUMongo"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -195,6 +209,11 @@ func (o DatabaseMigrationsMongoToCosmosDbRUMongoOutput) ToDatabaseMigrationsMong
 	return o
 }
 
+// The Azure API version of the resource.
+func (o DatabaseMigrationsMongoToCosmosDbRUMongoOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseMigrationsMongoToCosmosDbRUMongo) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // List of Mongo Collections to be migrated.
 func (o DatabaseMigrationsMongoToCosmosDbRUMongoOutput) CollectionList() MongoMigrationCollectionResponseArrayOutput {
 	return o.ApplyT(func(v *DatabaseMigrationsMongoToCosmosDbRUMongo) MongoMigrationCollectionResponseArrayOutput {
@@ -269,8 +288,10 @@ func (o DatabaseMigrationsMongoToCosmosDbRUMongoOutput) StartedOn() pulumi.Strin
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o DatabaseMigrationsMongoToCosmosDbRUMongoOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *DatabaseMigrationsMongoToCosmosDbRUMongo) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o DatabaseMigrationsMongoToCosmosDbRUMongoOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *DatabaseMigrationsMongoToCosmosDbRUMongo) commontypesv5.SystemDataResponseOutput {
+		return v.SystemData
+	}).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Target Cosmos DB Mongo connection details.

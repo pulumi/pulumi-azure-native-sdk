@@ -8,22 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The registration assignment.
 //
-// Uses Azure REST API version 2022-10-01. In version 1.x of the Azure Native provider, it used API version 2019-09-01.
+// Uses Azure REST API version 2022-10-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
 type RegistrationAssignment struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the registration assignment.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The properties of a registration assignment.
 	Properties RegistrationAssignmentPropertiesResponseOutput `pulumi:"properties"`
 	// The metadata for the registration assignment resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the Azure resource (Microsoft.ManagedServices/registrationAssignments).
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -150,6 +153,11 @@ func (o RegistrationAssignmentOutput) ToRegistrationAssignmentOutputWithContext(
 	return o
 }
 
+// The Azure API version of the resource.
+func (o RegistrationAssignmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistrationAssignment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The name of the registration assignment.
 func (o RegistrationAssignmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistrationAssignment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -161,8 +169,8 @@ func (o RegistrationAssignmentOutput) Properties() RegistrationAssignmentPropert
 }
 
 // The metadata for the registration assignment resource.
-func (o RegistrationAssignmentOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *RegistrationAssignment) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o RegistrationAssignmentOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *RegistrationAssignment) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the Azure resource (Microsoft.ManagedServices/registrationAssignments).

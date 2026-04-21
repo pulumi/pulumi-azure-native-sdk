@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +36,8 @@ type LookupDataLakeConnectorArgs struct {
 
 // MQ dataLakeConnector resource
 type LookupDataLakeConnectorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// DataLake database format to use.
 	DatabaseFormat string `pulumi:"databaseFormat"`
 	// Extended Location
@@ -60,7 +63,7 @@ type LookupDataLakeConnectorResult struct {
 	// The status of the last operation.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The protocol to use for connecting with Brokers. NOTE - Enum only storage is supported at at time.
@@ -114,6 +117,11 @@ func (o LookupDataLakeConnectorResultOutput) ToLookupDataLakeConnectorResultOutp
 
 func (o LookupDataLakeConnectorResultOutput) ToLookupDataLakeConnectorResultOutputWithContext(ctx context.Context) LookupDataLakeConnectorResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDataLakeConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDataLakeConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // DataLake database format to use.
@@ -179,8 +187,8 @@ func (o LookupDataLakeConnectorResultOutput) ProvisioningState() pulumi.StringOu
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupDataLakeConnectorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupDataLakeConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupDataLakeConnectorResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupDataLakeConnectorResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

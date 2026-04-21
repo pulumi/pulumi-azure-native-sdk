@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1153,13 +1153,13 @@ func (o CommonExportPropertiesResponsePtrOutput) RunHistory() ExportExecutionLis
 
 // Details of any error encountered on last collection attempt
 type ConnectorCollectionErrorInfoResponse struct {
-	// Short error message
+	// Short error code
 	ErrorCode string `pulumi:"errorCode"`
 	// External Provider error message
-	ErrorInnerMessage *string `pulumi:"errorInnerMessage"`
+	ErrorInnerMessage string `pulumi:"errorInnerMessage"`
 	// Detailed error message
 	ErrorMessage string `pulumi:"errorMessage"`
-	// Time the error started occurring (Last time error occurred in lastRun)
+	// Time the error started occurring (Last time error occurred in lastChecked)
 	ErrorStartTime string `pulumi:"errorStartTime"`
 }
 
@@ -1178,14 +1178,14 @@ func (o ConnectorCollectionErrorInfoResponseOutput) ToConnectorCollectionErrorIn
 	return o
 }
 
-// Short error message
+// Short error code
 func (o ConnectorCollectionErrorInfoResponseOutput) ErrorCode() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectorCollectionErrorInfoResponse) string { return v.ErrorCode }).(pulumi.StringOutput)
 }
 
 // External Provider error message
-func (o ConnectorCollectionErrorInfoResponseOutput) ErrorInnerMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectorCollectionErrorInfoResponse) *string { return v.ErrorInnerMessage }).(pulumi.StringPtrOutput)
+func (o ConnectorCollectionErrorInfoResponseOutput) ErrorInnerMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorCollectionErrorInfoResponse) string { return v.ErrorInnerMessage }).(pulumi.StringOutput)
 }
 
 // Detailed error message
@@ -1193,7 +1193,7 @@ func (o ConnectorCollectionErrorInfoResponseOutput) ErrorMessage() pulumi.String
 	return o.ApplyT(func(v ConnectorCollectionErrorInfoResponse) string { return v.ErrorMessage }).(pulumi.StringOutput)
 }
 
-// Time the error started occurring (Last time error occurred in lastRun)
+// Time the error started occurring (Last time error occurred in lastChecked)
 func (o ConnectorCollectionErrorInfoResponseOutput) ErrorStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectorCollectionErrorInfoResponse) string { return v.ErrorStartTime }).(pulumi.StringOutput)
 }
@@ -1222,7 +1222,7 @@ func (o ConnectorCollectionErrorInfoResponsePtrOutput) Elem() ConnectorCollectio
 	}).(ConnectorCollectionErrorInfoResponseOutput)
 }
 
-// Short error message
+// Short error code
 func (o ConnectorCollectionErrorInfoResponsePtrOutput) ErrorCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorCollectionErrorInfoResponse) *string {
 		if v == nil {
@@ -1238,7 +1238,7 @@ func (o ConnectorCollectionErrorInfoResponsePtrOutput) ErrorInnerMessage() pulum
 		if v == nil {
 			return nil
 		}
-		return v.ErrorInnerMessage
+		return &v.ErrorInnerMessage
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1252,9 +1252,103 @@ func (o ConnectorCollectionErrorInfoResponsePtrOutput) ErrorMessage() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// Time the error started occurring (Last time error occurred in lastRun)
+// Time the error started occurring (Last time error occurred in lastChecked)
 func (o ConnectorCollectionErrorInfoResponsePtrOutput) ErrorStartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorCollectionErrorInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ErrorStartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Details of any error encountered on last collection attempt
+type ConnectorCollectionErrorInfoResponseV1 struct {
+	// Short error message
+	ErrorCode string `pulumi:"errorCode"`
+	// Detailed error message
+	ErrorMessage string `pulumi:"errorMessage"`
+	// Time the error started occurring (Last time error occurred in lastRun)
+	ErrorStartTime string `pulumi:"errorStartTime"`
+}
+
+// Details of any error encountered on last collection attempt
+type ConnectorCollectionErrorInfoResponseV1Output struct{ *pulumi.OutputState }
+
+func (ConnectorCollectionErrorInfoResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorCollectionErrorInfoResponseV1)(nil)).Elem()
+}
+
+func (o ConnectorCollectionErrorInfoResponseV1Output) ToConnectorCollectionErrorInfoResponseV1Output() ConnectorCollectionErrorInfoResponseV1Output {
+	return o
+}
+
+func (o ConnectorCollectionErrorInfoResponseV1Output) ToConnectorCollectionErrorInfoResponseV1OutputWithContext(ctx context.Context) ConnectorCollectionErrorInfoResponseV1Output {
+	return o
+}
+
+// Short error message
+func (o ConnectorCollectionErrorInfoResponseV1Output) ErrorCode() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorCollectionErrorInfoResponseV1) string { return v.ErrorCode }).(pulumi.StringOutput)
+}
+
+// Detailed error message
+func (o ConnectorCollectionErrorInfoResponseV1Output) ErrorMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorCollectionErrorInfoResponseV1) string { return v.ErrorMessage }).(pulumi.StringOutput)
+}
+
+// Time the error started occurring (Last time error occurred in lastRun)
+func (o ConnectorCollectionErrorInfoResponseV1Output) ErrorStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorCollectionErrorInfoResponseV1) string { return v.ErrorStartTime }).(pulumi.StringOutput)
+}
+
+type ConnectorCollectionErrorInfoResponseV1PtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectorCollectionErrorInfoResponseV1PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectorCollectionErrorInfoResponseV1)(nil)).Elem()
+}
+
+func (o ConnectorCollectionErrorInfoResponseV1PtrOutput) ToConnectorCollectionErrorInfoResponseV1PtrOutput() ConnectorCollectionErrorInfoResponseV1PtrOutput {
+	return o
+}
+
+func (o ConnectorCollectionErrorInfoResponseV1PtrOutput) ToConnectorCollectionErrorInfoResponseV1PtrOutputWithContext(ctx context.Context) ConnectorCollectionErrorInfoResponseV1PtrOutput {
+	return o
+}
+
+func (o ConnectorCollectionErrorInfoResponseV1PtrOutput) Elem() ConnectorCollectionErrorInfoResponseV1Output {
+	return o.ApplyT(func(v *ConnectorCollectionErrorInfoResponseV1) ConnectorCollectionErrorInfoResponseV1 {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectorCollectionErrorInfoResponseV1
+		return ret
+	}).(ConnectorCollectionErrorInfoResponseV1Output)
+}
+
+// Short error message
+func (o ConnectorCollectionErrorInfoResponseV1PtrOutput) ErrorCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorCollectionErrorInfoResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ErrorCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Detailed error message
+func (o ConnectorCollectionErrorInfoResponseV1PtrOutput) ErrorMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorCollectionErrorInfoResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ErrorMessage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time the error started occurring (Last time error occurred in lastRun)
+func (o ConnectorCollectionErrorInfoResponseV1PtrOutput) ErrorStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectorCollectionErrorInfoResponseV1) *string {
 		if v == nil {
 			return nil
 		}
@@ -1267,9 +1361,7 @@ type ConnectorCollectionInfoResponse struct {
 	// Error information of last collection
 	Error *ConnectorCollectionErrorInfoResponse `pulumi:"error"`
 	// Last time the data acquisition process initiated connecting to the external provider
-	LastChecked *string `pulumi:"lastChecked"`
-	// Last time the data acquisition process completed (even if no new data was found)
-	LastRun string `pulumi:"lastRun"`
+	LastChecked string `pulumi:"lastChecked"`
 	// Last time the external data was updated into Azure
 	LastUpdated string `pulumi:"lastUpdated"`
 	// Source timestamp of external data currently available in Azure (eg AWS last processed CUR file timestamp)
@@ -1297,13 +1389,8 @@ func (o ConnectorCollectionInfoResponseOutput) Error() ConnectorCollectionErrorI
 }
 
 // Last time the data acquisition process initiated connecting to the external provider
-func (o ConnectorCollectionInfoResponseOutput) LastChecked() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConnectorCollectionInfoResponse) *string { return v.LastChecked }).(pulumi.StringPtrOutput)
-}
-
-// Last time the data acquisition process completed (even if no new data was found)
-func (o ConnectorCollectionInfoResponseOutput) LastRun() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectorCollectionInfoResponse) string { return v.LastRun }).(pulumi.StringOutput)
+func (o ConnectorCollectionInfoResponseOutput) LastChecked() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorCollectionInfoResponse) string { return v.LastChecked }).(pulumi.StringOutput)
 }
 
 // Last time the external data was updated into Azure
@@ -1314,6 +1401,53 @@ func (o ConnectorCollectionInfoResponseOutput) LastUpdated() pulumi.StringOutput
 // Source timestamp of external data currently available in Azure (eg AWS last processed CUR file timestamp)
 func (o ConnectorCollectionInfoResponseOutput) SourceLastUpdated() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectorCollectionInfoResponse) string { return v.SourceLastUpdated }).(pulumi.StringOutput)
+}
+
+// Collection and ingestion information
+type ConnectorCollectionInfoResponseV1 struct {
+	// Error information of last collection
+	Error *ConnectorCollectionErrorInfoResponseV1 `pulumi:"error"`
+	// Last time the data acquisition process completed (even if no new data was found)
+	LastRun string `pulumi:"lastRun"`
+	// Last time the external data was updated into Azure
+	LastUpdated string `pulumi:"lastUpdated"`
+	// Source timestamp of external data currently available in Azure (eg AWS last processed CUR file timestamp)
+	SourceLastUpdated string `pulumi:"sourceLastUpdated"`
+}
+
+// Collection and ingestion information
+type ConnectorCollectionInfoResponseV1Output struct{ *pulumi.OutputState }
+
+func (ConnectorCollectionInfoResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorCollectionInfoResponseV1)(nil)).Elem()
+}
+
+func (o ConnectorCollectionInfoResponseV1Output) ToConnectorCollectionInfoResponseV1Output() ConnectorCollectionInfoResponseV1Output {
+	return o
+}
+
+func (o ConnectorCollectionInfoResponseV1Output) ToConnectorCollectionInfoResponseV1OutputWithContext(ctx context.Context) ConnectorCollectionInfoResponseV1Output {
+	return o
+}
+
+// Error information of last collection
+func (o ConnectorCollectionInfoResponseV1Output) Error() ConnectorCollectionErrorInfoResponseV1PtrOutput {
+	return o.ApplyT(func(v ConnectorCollectionInfoResponseV1) *ConnectorCollectionErrorInfoResponseV1 { return v.Error }).(ConnectorCollectionErrorInfoResponseV1PtrOutput)
+}
+
+// Last time the data acquisition process completed (even if no new data was found)
+func (o ConnectorCollectionInfoResponseV1Output) LastRun() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorCollectionInfoResponseV1) string { return v.LastRun }).(pulumi.StringOutput)
+}
+
+// Last time the external data was updated into Azure
+func (o ConnectorCollectionInfoResponseV1Output) LastUpdated() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorCollectionInfoResponseV1) string { return v.LastUpdated }).(pulumi.StringOutput)
+}
+
+// Source timestamp of external data currently available in Azure (eg AWS last processed CUR file timestamp)
+func (o ConnectorCollectionInfoResponseV1Output) SourceLastUpdated() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorCollectionInfoResponseV1) string { return v.SourceLastUpdated }).(pulumi.StringOutput)
 }
 
 // Target resources and allocation
@@ -10345,70 +10479,9 @@ func (o SourceCostAllocationResourceResponseArrayOutput) Index(i pulumi.IntInput
 	}).(SourceCostAllocationResourceResponseOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
-}
-
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponseOutput struct{ *pulumi.OutputState }
-
-func (SystemDataResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
-	return o
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
-	return o
-}
-
-// The timestamp of resource creation (UTC).
-func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
-}
-
 // The properties of the tag inheritance setting.
 type TagInheritanceProperties struct {
-	// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
+	// This property defines the behavior when an inherited tag being applied matches a lower scope tag (Eg. Subscription tag matches the resource tag). If set to true - when tags match, the highest scope tags will be applied. Billing profile is the highest scope,  followed by invoice sections, subscriptions and resource groups (allows overriding of lower scope tag values). If set to false - when tags match, the lowest scope tags will be applied. So, if a resource has the same tag as a subscription tag, the resource tag will be applied (does not allow overriding of lower scope tag values).
 	PreferContainerTags bool `pulumi:"preferContainerTags"`
 }
 
@@ -10425,7 +10498,7 @@ type TagInheritancePropertiesInput interface {
 
 // The properties of the tag inheritance setting.
 type TagInheritancePropertiesArgs struct {
-	// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
+	// This property defines the behavior when an inherited tag being applied matches a lower scope tag (Eg. Subscription tag matches the resource tag). If set to true - when tags match, the highest scope tags will be applied. Billing profile is the highest scope,  followed by invoice sections, subscriptions and resource groups (allows overriding of lower scope tag values). If set to false - when tags match, the lowest scope tags will be applied. So, if a resource has the same tag as a subscription tag, the resource tag will be applied (does not allow overriding of lower scope tag values).
 	PreferContainerTags pulumi.BoolInput `pulumi:"preferContainerTags"`
 }
 
@@ -10507,7 +10580,7 @@ func (o TagInheritancePropertiesOutput) ToTagInheritancePropertiesPtrOutputWithC
 	}).(TagInheritancePropertiesPtrOutput)
 }
 
-// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
+// This property defines the behavior when an inherited tag being applied matches a lower scope tag (Eg. Subscription tag matches the resource tag). If set to true - when tags match, the highest scope tags will be applied. Billing profile is the highest scope,  followed by invoice sections, subscriptions and resource groups (allows overriding of lower scope tag values). If set to false - when tags match, the lowest scope tags will be applied. So, if a resource has the same tag as a subscription tag, the resource tag will be applied (does not allow overriding of lower scope tag values).
 func (o TagInheritancePropertiesOutput) PreferContainerTags() pulumi.BoolOutput {
 	return o.ApplyT(func(v TagInheritanceProperties) bool { return v.PreferContainerTags }).(pulumi.BoolOutput)
 }
@@ -10536,7 +10609,7 @@ func (o TagInheritancePropertiesPtrOutput) Elem() TagInheritancePropertiesOutput
 	}).(TagInheritancePropertiesOutput)
 }
 
-// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
+// This property defines the behavior when an inherited tag being applied matches a lower scope tag (Eg. Subscription tag matches the resource tag). If set to true - when tags match, the highest scope tags will be applied. Billing profile is the highest scope,  followed by invoice sections, subscriptions and resource groups (allows overriding of lower scope tag values). If set to false - when tags match, the lowest scope tags will be applied. So, if a resource has the same tag as a subscription tag, the resource tag will be applied (does not allow overriding of lower scope tag values).
 func (o TagInheritancePropertiesPtrOutput) PreferContainerTags() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TagInheritanceProperties) *bool {
 		if v == nil {
@@ -10548,7 +10621,7 @@ func (o TagInheritancePropertiesPtrOutput) PreferContainerTags() pulumi.BoolPtrO
 
 // The properties of the tag inheritance setting.
 type TagInheritancePropertiesResponse struct {
-	// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
+	// This property defines the behavior when an inherited tag being applied matches a lower scope tag (Eg. Subscription tag matches the resource tag). If set to true - when tags match, the highest scope tags will be applied. Billing profile is the highest scope,  followed by invoice sections, subscriptions and resource groups (allows overriding of lower scope tag values). If set to false - when tags match, the lowest scope tags will be applied. So, if a resource has the same tag as a subscription tag, the resource tag will be applied (does not allow overriding of lower scope tag values).
 	PreferContainerTags bool `pulumi:"preferContainerTags"`
 }
 
@@ -10567,7 +10640,7 @@ func (o TagInheritancePropertiesResponseOutput) ToTagInheritancePropertiesRespon
 	return o
 }
 
-// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
+// This property defines the behavior when an inherited tag being applied matches a lower scope tag (Eg. Subscription tag matches the resource tag). If set to true - when tags match, the highest scope tags will be applied. Billing profile is the highest scope,  followed by invoice sections, subscriptions and resource groups (allows overriding of lower scope tag values). If set to false - when tags match, the lowest scope tags will be applied. So, if a resource has the same tag as a subscription tag, the resource tag will be applied (does not allow overriding of lower scope tag values).
 func (o TagInheritancePropertiesResponseOutput) PreferContainerTags() pulumi.BoolOutput {
 	return o.ApplyT(func(v TagInheritancePropertiesResponse) bool { return v.PreferContainerTags }).(pulumi.BoolOutput)
 }
@@ -10785,7 +10858,10 @@ func init() {
 	pulumi.RegisterOutputType(CommonExportPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(ConnectorCollectionErrorInfoResponseOutput{})
 	pulumi.RegisterOutputType(ConnectorCollectionErrorInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(ConnectorCollectionErrorInfoResponseV1Output{})
+	pulumi.RegisterOutputType(ConnectorCollectionErrorInfoResponseV1PtrOutput{})
 	pulumi.RegisterOutputType(ConnectorCollectionInfoResponseOutput{})
+	pulumi.RegisterOutputType(ConnectorCollectionInfoResponseV1Output{})
 	pulumi.RegisterOutputType(CostAllocationProportionOutput{})
 	pulumi.RegisterOutputType(CostAllocationProportionArrayOutput{})
 	pulumi.RegisterOutputType(CostAllocationProportionResponseOutput{})
@@ -10941,7 +11017,6 @@ func init() {
 	pulumi.RegisterOutputType(SourceCostAllocationResourceArrayOutput{})
 	pulumi.RegisterOutputType(SourceCostAllocationResourceResponseOutput{})
 	pulumi.RegisterOutputType(SourceCostAllocationResourceResponseArrayOutput{})
-	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(TagInheritancePropertiesOutput{})
 	pulumi.RegisterOutputType(TagInheritancePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(TagInheritancePropertiesResponseOutput{})

@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,8 +16,8 @@ var _ = utilities.GetEnvOrDefault
 
 // The API entity reference.
 type ApiEntityReference struct {
-	// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
-	Id *string `pulumi:"id"`
+	// The Azure resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+	ResourceId *string `pulumi:"resourceId"`
 }
 
 // ApiEntityReferenceInput is an input type that accepts ApiEntityReferenceArgs and ApiEntityReferenceOutput values.
@@ -32,8 +33,8 @@ type ApiEntityReferenceInput interface {
 
 // The API entity reference.
 type ApiEntityReferenceArgs struct {
-	// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The Azure resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
 }
 
 func (ApiEntityReferenceArgs) ElementType() reflect.Type {
@@ -114,9 +115,9 @@ func (o ApiEntityReferenceOutput) ToApiEntityReferencePtrOutputWithContext(ctx c
 	}).(ApiEntityReferencePtrOutput)
 }
 
-// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
-func (o ApiEntityReferenceOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApiEntityReference) *string { return v.Id }).(pulumi.StringPtrOutput)
+// The Azure resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+func (o ApiEntityReferenceOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiEntityReference) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
 }
 
 type ApiEntityReferencePtrOutput struct{ *pulumi.OutputState }
@@ -143,20 +144,20 @@ func (o ApiEntityReferencePtrOutput) Elem() ApiEntityReferenceOutput {
 	}).(ApiEntityReferenceOutput)
 }
 
-// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
-func (o ApiEntityReferencePtrOutput) Id() pulumi.StringPtrOutput {
+// The Azure resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+func (o ApiEntityReferencePtrOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiEntityReference) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Id
+		return v.ResourceId
 	}).(pulumi.StringPtrOutput)
 }
 
 // The API entity reference.
 type ApiEntityReferenceResponse struct {
-	// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
-	Id *string `pulumi:"id"`
+	// The Azure resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+	ResourceId *string `pulumi:"resourceId"`
 }
 
 // The API entity reference.
@@ -174,9 +175,9 @@ func (o ApiEntityReferenceResponseOutput) ToApiEntityReferenceResponseOutputWith
 	return o
 }
 
-// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
-func (o ApiEntityReferenceResponseOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApiEntityReferenceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+// The Azure resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+func (o ApiEntityReferenceResponseOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiEntityReferenceResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
 }
 
 type ApiEntityReferenceResponsePtrOutput struct{ *pulumi.OutputState }
@@ -203,250 +204,14 @@ func (o ApiEntityReferenceResponsePtrOutput) Elem() ApiEntityReferenceResponseOu
 	}).(ApiEntityReferenceResponseOutput)
 }
 
-// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
-func (o ApiEntityReferenceResponsePtrOutput) Id() pulumi.StringPtrOutput {
+// The Azure resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+func (o ApiEntityReferenceResponsePtrOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApiEntityReferenceResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Id
+		return v.ResourceId
 	}).(pulumi.StringPtrOutput)
-}
-
-// Security domain properties information for Cloud HSM cluster
-type CloudHsmClusterSecurityDomainProperties struct {
-	// status of security domain activation
-	ActivationStatus *string `pulumi:"activationStatus"`
-	// FIPS state information for security domain
-	FipsState *int `pulumi:"fipsState"`
-}
-
-// CloudHsmClusterSecurityDomainPropertiesInput is an input type that accepts CloudHsmClusterSecurityDomainPropertiesArgs and CloudHsmClusterSecurityDomainPropertiesOutput values.
-// You can construct a concrete instance of `CloudHsmClusterSecurityDomainPropertiesInput` via:
-//
-//	CloudHsmClusterSecurityDomainPropertiesArgs{...}
-type CloudHsmClusterSecurityDomainPropertiesInput interface {
-	pulumi.Input
-
-	ToCloudHsmClusterSecurityDomainPropertiesOutput() CloudHsmClusterSecurityDomainPropertiesOutput
-	ToCloudHsmClusterSecurityDomainPropertiesOutputWithContext(context.Context) CloudHsmClusterSecurityDomainPropertiesOutput
-}
-
-// Security domain properties information for Cloud HSM cluster
-type CloudHsmClusterSecurityDomainPropertiesArgs struct {
-	// status of security domain activation
-	ActivationStatus pulumi.StringPtrInput `pulumi:"activationStatus"`
-	// FIPS state information for security domain
-	FipsState pulumi.IntPtrInput `pulumi:"fipsState"`
-}
-
-func (CloudHsmClusterSecurityDomainPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudHsmClusterSecurityDomainProperties)(nil)).Elem()
-}
-
-func (i CloudHsmClusterSecurityDomainPropertiesArgs) ToCloudHsmClusterSecurityDomainPropertiesOutput() CloudHsmClusterSecurityDomainPropertiesOutput {
-	return i.ToCloudHsmClusterSecurityDomainPropertiesOutputWithContext(context.Background())
-}
-
-func (i CloudHsmClusterSecurityDomainPropertiesArgs) ToCloudHsmClusterSecurityDomainPropertiesOutputWithContext(ctx context.Context) CloudHsmClusterSecurityDomainPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudHsmClusterSecurityDomainPropertiesOutput)
-}
-
-func (i CloudHsmClusterSecurityDomainPropertiesArgs) ToCloudHsmClusterSecurityDomainPropertiesPtrOutput() CloudHsmClusterSecurityDomainPropertiesPtrOutput {
-	return i.ToCloudHsmClusterSecurityDomainPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i CloudHsmClusterSecurityDomainPropertiesArgs) ToCloudHsmClusterSecurityDomainPropertiesPtrOutputWithContext(ctx context.Context) CloudHsmClusterSecurityDomainPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudHsmClusterSecurityDomainPropertiesOutput).ToCloudHsmClusterSecurityDomainPropertiesPtrOutputWithContext(ctx)
-}
-
-// CloudHsmClusterSecurityDomainPropertiesPtrInput is an input type that accepts CloudHsmClusterSecurityDomainPropertiesArgs, CloudHsmClusterSecurityDomainPropertiesPtr and CloudHsmClusterSecurityDomainPropertiesPtrOutput values.
-// You can construct a concrete instance of `CloudHsmClusterSecurityDomainPropertiesPtrInput` via:
-//
-//	        CloudHsmClusterSecurityDomainPropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type CloudHsmClusterSecurityDomainPropertiesPtrInput interface {
-	pulumi.Input
-
-	ToCloudHsmClusterSecurityDomainPropertiesPtrOutput() CloudHsmClusterSecurityDomainPropertiesPtrOutput
-	ToCloudHsmClusterSecurityDomainPropertiesPtrOutputWithContext(context.Context) CloudHsmClusterSecurityDomainPropertiesPtrOutput
-}
-
-type cloudHsmClusterSecurityDomainPropertiesPtrType CloudHsmClusterSecurityDomainPropertiesArgs
-
-func CloudHsmClusterSecurityDomainPropertiesPtr(v *CloudHsmClusterSecurityDomainPropertiesArgs) CloudHsmClusterSecurityDomainPropertiesPtrInput {
-	return (*cloudHsmClusterSecurityDomainPropertiesPtrType)(v)
-}
-
-func (*cloudHsmClusterSecurityDomainPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudHsmClusterSecurityDomainProperties)(nil)).Elem()
-}
-
-func (i *cloudHsmClusterSecurityDomainPropertiesPtrType) ToCloudHsmClusterSecurityDomainPropertiesPtrOutput() CloudHsmClusterSecurityDomainPropertiesPtrOutput {
-	return i.ToCloudHsmClusterSecurityDomainPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *cloudHsmClusterSecurityDomainPropertiesPtrType) ToCloudHsmClusterSecurityDomainPropertiesPtrOutputWithContext(ctx context.Context) CloudHsmClusterSecurityDomainPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudHsmClusterSecurityDomainPropertiesPtrOutput)
-}
-
-// Security domain properties information for Cloud HSM cluster
-type CloudHsmClusterSecurityDomainPropertiesOutput struct{ *pulumi.OutputState }
-
-func (CloudHsmClusterSecurityDomainPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudHsmClusterSecurityDomainProperties)(nil)).Elem()
-}
-
-func (o CloudHsmClusterSecurityDomainPropertiesOutput) ToCloudHsmClusterSecurityDomainPropertiesOutput() CloudHsmClusterSecurityDomainPropertiesOutput {
-	return o
-}
-
-func (o CloudHsmClusterSecurityDomainPropertiesOutput) ToCloudHsmClusterSecurityDomainPropertiesOutputWithContext(ctx context.Context) CloudHsmClusterSecurityDomainPropertiesOutput {
-	return o
-}
-
-func (o CloudHsmClusterSecurityDomainPropertiesOutput) ToCloudHsmClusterSecurityDomainPropertiesPtrOutput() CloudHsmClusterSecurityDomainPropertiesPtrOutput {
-	return o.ToCloudHsmClusterSecurityDomainPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (o CloudHsmClusterSecurityDomainPropertiesOutput) ToCloudHsmClusterSecurityDomainPropertiesPtrOutputWithContext(ctx context.Context) CloudHsmClusterSecurityDomainPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudHsmClusterSecurityDomainProperties) *CloudHsmClusterSecurityDomainProperties {
-		return &v
-	}).(CloudHsmClusterSecurityDomainPropertiesPtrOutput)
-}
-
-// status of security domain activation
-func (o CloudHsmClusterSecurityDomainPropertiesOutput) ActivationStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudHsmClusterSecurityDomainProperties) *string { return v.ActivationStatus }).(pulumi.StringPtrOutput)
-}
-
-// FIPS state information for security domain
-func (o CloudHsmClusterSecurityDomainPropertiesOutput) FipsState() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v CloudHsmClusterSecurityDomainProperties) *int { return v.FipsState }).(pulumi.IntPtrOutput)
-}
-
-type CloudHsmClusterSecurityDomainPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (CloudHsmClusterSecurityDomainPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudHsmClusterSecurityDomainProperties)(nil)).Elem()
-}
-
-func (o CloudHsmClusterSecurityDomainPropertiesPtrOutput) ToCloudHsmClusterSecurityDomainPropertiesPtrOutput() CloudHsmClusterSecurityDomainPropertiesPtrOutput {
-	return o
-}
-
-func (o CloudHsmClusterSecurityDomainPropertiesPtrOutput) ToCloudHsmClusterSecurityDomainPropertiesPtrOutputWithContext(ctx context.Context) CloudHsmClusterSecurityDomainPropertiesPtrOutput {
-	return o
-}
-
-func (o CloudHsmClusterSecurityDomainPropertiesPtrOutput) Elem() CloudHsmClusterSecurityDomainPropertiesOutput {
-	return o.ApplyT(func(v *CloudHsmClusterSecurityDomainProperties) CloudHsmClusterSecurityDomainProperties {
-		if v != nil {
-			return *v
-		}
-		var ret CloudHsmClusterSecurityDomainProperties
-		return ret
-	}).(CloudHsmClusterSecurityDomainPropertiesOutput)
-}
-
-// status of security domain activation
-func (o CloudHsmClusterSecurityDomainPropertiesPtrOutput) ActivationStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudHsmClusterSecurityDomainProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ActivationStatus
-	}).(pulumi.StringPtrOutput)
-}
-
-// FIPS state information for security domain
-func (o CloudHsmClusterSecurityDomainPropertiesPtrOutput) FipsState() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *CloudHsmClusterSecurityDomainProperties) *int {
-		if v == nil {
-			return nil
-		}
-		return v.FipsState
-	}).(pulumi.IntPtrOutput)
-}
-
-// Security domain properties information for Cloud HSM cluster
-type CloudHsmClusterSecurityDomainPropertiesResponse struct {
-	// status of security domain activation
-	ActivationStatus *string `pulumi:"activationStatus"`
-	// FIPS state information for security domain
-	FipsState *int `pulumi:"fipsState"`
-}
-
-// Security domain properties information for Cloud HSM cluster
-type CloudHsmClusterSecurityDomainPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (CloudHsmClusterSecurityDomainPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudHsmClusterSecurityDomainPropertiesResponse)(nil)).Elem()
-}
-
-func (o CloudHsmClusterSecurityDomainPropertiesResponseOutput) ToCloudHsmClusterSecurityDomainPropertiesResponseOutput() CloudHsmClusterSecurityDomainPropertiesResponseOutput {
-	return o
-}
-
-func (o CloudHsmClusterSecurityDomainPropertiesResponseOutput) ToCloudHsmClusterSecurityDomainPropertiesResponseOutputWithContext(ctx context.Context) CloudHsmClusterSecurityDomainPropertiesResponseOutput {
-	return o
-}
-
-// status of security domain activation
-func (o CloudHsmClusterSecurityDomainPropertiesResponseOutput) ActivationStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudHsmClusterSecurityDomainPropertiesResponse) *string { return v.ActivationStatus }).(pulumi.StringPtrOutput)
-}
-
-// FIPS state information for security domain
-func (o CloudHsmClusterSecurityDomainPropertiesResponseOutput) FipsState() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v CloudHsmClusterSecurityDomainPropertiesResponse) *int { return v.FipsState }).(pulumi.IntPtrOutput)
-}
-
-type CloudHsmClusterSecurityDomainPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (CloudHsmClusterSecurityDomainPropertiesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CloudHsmClusterSecurityDomainPropertiesResponse)(nil)).Elem()
-}
-
-func (o CloudHsmClusterSecurityDomainPropertiesResponsePtrOutput) ToCloudHsmClusterSecurityDomainPropertiesResponsePtrOutput() CloudHsmClusterSecurityDomainPropertiesResponsePtrOutput {
-	return o
-}
-
-func (o CloudHsmClusterSecurityDomainPropertiesResponsePtrOutput) ToCloudHsmClusterSecurityDomainPropertiesResponsePtrOutputWithContext(ctx context.Context) CloudHsmClusterSecurityDomainPropertiesResponsePtrOutput {
-	return o
-}
-
-func (o CloudHsmClusterSecurityDomainPropertiesResponsePtrOutput) Elem() CloudHsmClusterSecurityDomainPropertiesResponseOutput {
-	return o.ApplyT(func(v *CloudHsmClusterSecurityDomainPropertiesResponse) CloudHsmClusterSecurityDomainPropertiesResponse {
-		if v != nil {
-			return *v
-		}
-		var ret CloudHsmClusterSecurityDomainPropertiesResponse
-		return ret
-	}).(CloudHsmClusterSecurityDomainPropertiesResponseOutput)
-}
-
-// status of security domain activation
-func (o CloudHsmClusterSecurityDomainPropertiesResponsePtrOutput) ActivationStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudHsmClusterSecurityDomainPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ActivationStatus
-	}).(pulumi.StringPtrOutput)
-}
-
-// FIPS state information for security domain
-func (o CloudHsmClusterSecurityDomainPropertiesResponsePtrOutput) FipsState() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *CloudHsmClusterSecurityDomainPropertiesResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.FipsState
-	}).(pulumi.IntPtrOutput)
 }
 
 // Cloud Hsm Cluster SKU information
@@ -722,128 +487,10 @@ func (o CloudHsmClusterSkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 // The Cloud HSM Properties
-type CloudHsmProperties struct {
-	// FQDN of the Cloud HSM
-	Fqdn *string `pulumi:"fqdn"`
-	// The Cloud HSM State
-	State *string `pulumi:"state"`
-	// The Cloud HSM State message
-	StateMessage *string `pulumi:"stateMessage"`
-}
-
-// CloudHsmPropertiesInput is an input type that accepts CloudHsmPropertiesArgs and CloudHsmPropertiesOutput values.
-// You can construct a concrete instance of `CloudHsmPropertiesInput` via:
-//
-//	CloudHsmPropertiesArgs{...}
-type CloudHsmPropertiesInput interface {
-	pulumi.Input
-
-	ToCloudHsmPropertiesOutput() CloudHsmPropertiesOutput
-	ToCloudHsmPropertiesOutputWithContext(context.Context) CloudHsmPropertiesOutput
-}
-
-// The Cloud HSM Properties
-type CloudHsmPropertiesArgs struct {
-	// FQDN of the Cloud HSM
-	Fqdn pulumi.StringPtrInput `pulumi:"fqdn"`
-	// The Cloud HSM State
-	State pulumi.StringPtrInput `pulumi:"state"`
-	// The Cloud HSM State message
-	StateMessage pulumi.StringPtrInput `pulumi:"stateMessage"`
-}
-
-func (CloudHsmPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudHsmProperties)(nil)).Elem()
-}
-
-func (i CloudHsmPropertiesArgs) ToCloudHsmPropertiesOutput() CloudHsmPropertiesOutput {
-	return i.ToCloudHsmPropertiesOutputWithContext(context.Background())
-}
-
-func (i CloudHsmPropertiesArgs) ToCloudHsmPropertiesOutputWithContext(ctx context.Context) CloudHsmPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudHsmPropertiesOutput)
-}
-
-// CloudHsmPropertiesArrayInput is an input type that accepts CloudHsmPropertiesArray and CloudHsmPropertiesArrayOutput values.
-// You can construct a concrete instance of `CloudHsmPropertiesArrayInput` via:
-//
-//	CloudHsmPropertiesArray{ CloudHsmPropertiesArgs{...} }
-type CloudHsmPropertiesArrayInput interface {
-	pulumi.Input
-
-	ToCloudHsmPropertiesArrayOutput() CloudHsmPropertiesArrayOutput
-	ToCloudHsmPropertiesArrayOutputWithContext(context.Context) CloudHsmPropertiesArrayOutput
-}
-
-type CloudHsmPropertiesArray []CloudHsmPropertiesInput
-
-func (CloudHsmPropertiesArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CloudHsmProperties)(nil)).Elem()
-}
-
-func (i CloudHsmPropertiesArray) ToCloudHsmPropertiesArrayOutput() CloudHsmPropertiesArrayOutput {
-	return i.ToCloudHsmPropertiesArrayOutputWithContext(context.Background())
-}
-
-func (i CloudHsmPropertiesArray) ToCloudHsmPropertiesArrayOutputWithContext(ctx context.Context) CloudHsmPropertiesArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CloudHsmPropertiesArrayOutput)
-}
-
-// The Cloud HSM Properties
-type CloudHsmPropertiesOutput struct{ *pulumi.OutputState }
-
-func (CloudHsmPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CloudHsmProperties)(nil)).Elem()
-}
-
-func (o CloudHsmPropertiesOutput) ToCloudHsmPropertiesOutput() CloudHsmPropertiesOutput {
-	return o
-}
-
-func (o CloudHsmPropertiesOutput) ToCloudHsmPropertiesOutputWithContext(ctx context.Context) CloudHsmPropertiesOutput {
-	return o
-}
-
-// FQDN of the Cloud HSM
-func (o CloudHsmPropertiesOutput) Fqdn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudHsmProperties) *string { return v.Fqdn }).(pulumi.StringPtrOutput)
-}
-
-// The Cloud HSM State
-func (o CloudHsmPropertiesOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudHsmProperties) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-// The Cloud HSM State message
-func (o CloudHsmPropertiesOutput) StateMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudHsmProperties) *string { return v.StateMessage }).(pulumi.StringPtrOutput)
-}
-
-type CloudHsmPropertiesArrayOutput struct{ *pulumi.OutputState }
-
-func (CloudHsmPropertiesArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CloudHsmProperties)(nil)).Elem()
-}
-
-func (o CloudHsmPropertiesArrayOutput) ToCloudHsmPropertiesArrayOutput() CloudHsmPropertiesArrayOutput {
-	return o
-}
-
-func (o CloudHsmPropertiesArrayOutput) ToCloudHsmPropertiesArrayOutputWithContext(ctx context.Context) CloudHsmPropertiesArrayOutput {
-	return o
-}
-
-func (o CloudHsmPropertiesArrayOutput) Index(i pulumi.IntInput) CloudHsmPropertiesOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloudHsmProperties {
-		return vs[0].([]CloudHsmProperties)[vs[1].(int)]
-	}).(CloudHsmPropertiesOutput)
-}
-
-// The Cloud HSM Properties
 type CloudHsmPropertiesResponse struct {
 	// FQDN of the Cloud HSM
 	Fqdn *string `pulumi:"fqdn"`
-	// The Cloud HSM State
+	// The Cloud HSM State. Values are: Deploying, ConfiguringSlb, Starting, Starting, Failed, Failed, Deleting, DeletingSlbEntry, InitialProvisioning, Updating
 	State *string `pulumi:"state"`
 	// The Cloud HSM State message
 	StateMessage *string `pulumi:"stateMessage"`
@@ -869,7 +516,7 @@ func (o CloudHsmPropertiesResponseOutput) Fqdn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudHsmPropertiesResponse) *string { return v.Fqdn }).(pulumi.StringPtrOutput)
 }
 
-// The Cloud HSM State
+// The Cloud HSM State. Values are: Deploying, ConfiguringSlb, Starting, Starting, Failed, Failed, Deleting, DeletingSlbEntry, InitialProvisioning, Updating
 func (o CloudHsmPropertiesResponseOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudHsmPropertiesResponse) *string { return v.State }).(pulumi.StringPtrOutput)
 }
@@ -1001,10 +648,10 @@ func (o NetworkInterfaceArrayOutput) Index(i pulumi.IntInput) NetworkInterfaceOu
 
 // The network interface definition.
 type NetworkInterfaceResponse struct {
-	// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
-	Id string `pulumi:"id"`
 	// Private Ip address of the interface
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
+	// The Azure resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+	ResourceId string `pulumi:"resourceId"`
 }
 
 // The network interface definition.
@@ -1022,14 +669,14 @@ func (o NetworkInterfaceResponseOutput) ToNetworkInterfaceResponseOutputWithCont
 	return o
 }
 
-// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
-func (o NetworkInterfaceResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
 // Private Ip address of the interface
 func (o NetworkInterfaceResponseOutput) PrivateIpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) *string { return v.PrivateIpAddress }).(pulumi.StringPtrOutput)
+}
+
+// The Azure resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+func (o NetworkInterfaceResponseOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.ResourceId }).(pulumi.StringOutput)
 }
 
 type NetworkInterfaceResponseArrayOutput struct{ *pulumi.OutputState }
@@ -1289,117 +936,6 @@ func (o NetworkProfileResponsePtrOutput) Subnet() ApiEntityReferenceResponsePtrO
 }
 
 // The private endpoint connection resource.
-type PrivateEndpointConnection struct {
-	// Modified whenever there is a change in the state of private endpoint connection.
-	Etag *string `pulumi:"etag"`
-	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
-}
-
-// PrivateEndpointConnectionInput is an input type that accepts PrivateEndpointConnectionArgs and PrivateEndpointConnectionOutput values.
-// You can construct a concrete instance of `PrivateEndpointConnectionInput` via:
-//
-//	PrivateEndpointConnectionArgs{...}
-type PrivateEndpointConnectionInput interface {
-	pulumi.Input
-
-	ToPrivateEndpointConnectionOutput() PrivateEndpointConnectionOutput
-	ToPrivateEndpointConnectionOutputWithContext(context.Context) PrivateEndpointConnectionOutput
-}
-
-// The private endpoint connection resource.
-type PrivateEndpointConnectionArgs struct {
-	// Modified whenever there is a change in the state of private endpoint connection.
-	Etag pulumi.StringPtrInput `pulumi:"etag"`
-	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateInput `pulumi:"privateLinkServiceConnectionState"`
-}
-
-func (PrivateEndpointConnectionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointConnection)(nil)).Elem()
-}
-
-func (i PrivateEndpointConnectionArgs) ToPrivateEndpointConnectionOutput() PrivateEndpointConnectionOutput {
-	return i.ToPrivateEndpointConnectionOutputWithContext(context.Background())
-}
-
-func (i PrivateEndpointConnectionArgs) ToPrivateEndpointConnectionOutputWithContext(ctx context.Context) PrivateEndpointConnectionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionOutput)
-}
-
-// PrivateEndpointConnectionArrayInput is an input type that accepts PrivateEndpointConnectionArray and PrivateEndpointConnectionArrayOutput values.
-// You can construct a concrete instance of `PrivateEndpointConnectionArrayInput` via:
-//
-//	PrivateEndpointConnectionArray{ PrivateEndpointConnectionArgs{...} }
-type PrivateEndpointConnectionArrayInput interface {
-	pulumi.Input
-
-	ToPrivateEndpointConnectionArrayOutput() PrivateEndpointConnectionArrayOutput
-	ToPrivateEndpointConnectionArrayOutputWithContext(context.Context) PrivateEndpointConnectionArrayOutput
-}
-
-type PrivateEndpointConnectionArray []PrivateEndpointConnectionInput
-
-func (PrivateEndpointConnectionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivateEndpointConnection)(nil)).Elem()
-}
-
-func (i PrivateEndpointConnectionArray) ToPrivateEndpointConnectionArrayOutput() PrivateEndpointConnectionArrayOutput {
-	return i.ToPrivateEndpointConnectionArrayOutputWithContext(context.Background())
-}
-
-func (i PrivateEndpointConnectionArray) ToPrivateEndpointConnectionArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionArrayOutput)
-}
-
-// The private endpoint connection resource.
-type PrivateEndpointConnectionOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointConnection)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutput() PrivateEndpointConnectionOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutputWithContext(ctx context.Context) PrivateEndpointConnectionOutput {
-	return o
-}
-
-// Modified whenever there is a change in the state of private endpoint connection.
-func (o PrivateEndpointConnectionOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnection) *string { return v.Etag }).(pulumi.StringPtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-func (o PrivateEndpointConnectionOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateOutput {
-	return o.ApplyT(func(v PrivateEndpointConnection) PrivateLinkServiceConnectionState {
-		return v.PrivateLinkServiceConnectionState
-	}).(PrivateLinkServiceConnectionStateOutput)
-}
-
-type PrivateEndpointConnectionArrayOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivateEndpointConnection)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionArrayOutput) ToPrivateEndpointConnectionArrayOutput() PrivateEndpointConnectionArrayOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionArrayOutput) ToPrivateEndpointConnectionArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionArrayOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnection {
-		return vs[0].([]PrivateEndpointConnection)[vs[1].(int)]
-	}).(PrivateEndpointConnectionOutput)
-}
-
-// The private endpoint connection resource.
 type PrivateEndpointConnectionResponse struct {
 	// Modified whenever there is a change in the state of private endpoint connection.
 	Etag *string `pulumi:"etag"`
@@ -1410,13 +946,13 @@ type PrivateEndpointConnectionResponse struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// The private endpoint resource.
-	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
+	PrivateEndpoint *commontypesv5.PrivateEndpointResponse `pulumi:"privateEndpoint"`
 	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
+	PrivateLinkServiceConnectionState commontypesv5.PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state of the private endpoint connection resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -1457,15 +993,17 @@ func (o PrivateEndpointConnectionResponseOutput) Name() pulumi.StringOutput {
 }
 
 // The private endpoint resource.
-func (o PrivateEndpointConnectionResponseOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *PrivateEndpointResponse { return v.PrivateEndpoint }).(PrivateEndpointResponsePtrOutput)
+func (o PrivateEndpointConnectionResponseOutput) PrivateEndpoint() commontypesv5.PrivateEndpointResponsePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *commontypesv5.PrivateEndpointResponse {
+		return v.PrivateEndpoint
+	}).(commontypesv5.PrivateEndpointResponsePtrOutput)
 }
 
 // A collection of information about the state of the connection between service consumer and provider.
-func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponseOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) PrivateLinkServiceConnectionStateResponse {
+func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionState() commontypesv5.PrivateLinkServiceConnectionStateResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) commontypesv5.PrivateLinkServiceConnectionStateResponse {
 		return v.PrivateLinkServiceConnectionState
-	}).(PrivateLinkServiceConnectionStateResponseOutput)
+	}).(commontypesv5.PrivateLinkServiceConnectionStateResponseOutput)
 }
 
 // The provisioning state of the private endpoint connection resource.
@@ -1474,8 +1012,8 @@ func (o PrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.Stri
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o PrivateEndpointConnectionResponseOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o PrivateEndpointConnectionResponseOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -1501,179 +1039,6 @@ func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) P
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
 		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
 	}).(PrivateEndpointConnectionResponseOutput)
-}
-
-// The private endpoint resource.
-type PrivateEndpointResponse struct {
-	// The ARM identifier for private endpoint.
-	Id string `pulumi:"id"`
-}
-
-// The private endpoint resource.
-type PrivateEndpointResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutput() PrivateEndpointResponseOutput {
-	return o
-}
-
-func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContext(ctx context.Context) PrivateEndpointResponseOutput {
-	return o
-}
-
-// The ARM identifier for private endpoint.
-func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type PrivateEndpointResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateEndpointResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() PrivateEndpointResponsePtrOutput {
-	return o
-}
-
-func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
-	return o
-}
-
-func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
-	return o.ApplyT(func(v *PrivateEndpointResponse) PrivateEndpointResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PrivateEndpointResponse
-		return ret
-	}).(PrivateEndpointResponseOutput)
-}
-
-// The ARM identifier for private endpoint.
-func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionState struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionsRequired *string `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
-	Description *string `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status *string `pulumi:"status"`
-}
-
-// PrivateLinkServiceConnectionStateInput is an input type that accepts PrivateLinkServiceConnectionStateArgs and PrivateLinkServiceConnectionStateOutput values.
-// You can construct a concrete instance of `PrivateLinkServiceConnectionStateInput` via:
-//
-//	PrivateLinkServiceConnectionStateArgs{...}
-type PrivateLinkServiceConnectionStateInput interface {
-	pulumi.Input
-
-	ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput
-	ToPrivateLinkServiceConnectionStateOutputWithContext(context.Context) PrivateLinkServiceConnectionStateOutput
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateArgs struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionsRequired pulumi.StringPtrInput `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-}
-
-func (PrivateLinkServiceConnectionStateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
-}
-
-func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
-	return i.ToPrivateLinkServiceConnectionStateOutputWithContext(context.Background())
-}
-
-func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceConnectionStateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
-	return o
-}
-
-// A message indicating if changes on the service provider require any updates on the consumer.
-func (o PrivateLinkServiceConnectionStateOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
-}
-
-// The reason for approval/rejection of the connection.
-func (o PrivateLinkServiceConnectionStateOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-func (o PrivateLinkServiceConnectionStateOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateResponse struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionsRequired *string `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
-	Description *string `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status *string `pulumi:"status"`
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceConnectionStateResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionStateResponse)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutput() PrivateLinkServiceConnectionStateResponseOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponseOutput {
-	return o
-}
-
-// A message indicating if changes on the service provider require any updates on the consumer.
-func (o PrivateLinkServiceConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
-}
-
-// The reason for approval/rejection of the connection.
-func (o PrivateLinkServiceConnectionStateResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-func (o PrivateLinkServiceConnectionStateResponseOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
 // SKU of the dedicated HSM
@@ -1757,82 +1122,15 @@ func (o SkuResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SkuResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of dedicated hsm resource.
-type SystemDataResponse struct {
-	// The timestamp of dedicated hsm resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created dedicated hsm resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created dedicated hsm resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of dedicated hsm resource last modification (UTC).
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified dedicated hsm resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified dedicated hsm resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
-}
-
-// Metadata pertaining to creation and last modification of dedicated hsm resource.
-type SystemDataResponseOutput struct{ *pulumi.OutputState }
-
-func (SystemDataResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
-	return o
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
-	return o
-}
-
-// The timestamp of dedicated hsm resource creation (UTC).
-func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created dedicated hsm resource.
-func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created dedicated hsm resource.
-func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
-// The timestamp of dedicated hsm resource last modification (UTC).
-func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified dedicated hsm resource.
-func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified dedicated hsm resource.
-func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterOutputType(ApiEntityReferenceOutput{})
 	pulumi.RegisterOutputType(ApiEntityReferencePtrOutput{})
 	pulumi.RegisterOutputType(ApiEntityReferenceResponseOutput{})
 	pulumi.RegisterOutputType(ApiEntityReferenceResponsePtrOutput{})
-	pulumi.RegisterOutputType(CloudHsmClusterSecurityDomainPropertiesOutput{})
-	pulumi.RegisterOutputType(CloudHsmClusterSecurityDomainPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(CloudHsmClusterSecurityDomainPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(CloudHsmClusterSecurityDomainPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(CloudHsmClusterSkuOutput{})
 	pulumi.RegisterOutputType(CloudHsmClusterSkuPtrOutput{})
 	pulumi.RegisterOutputType(CloudHsmClusterSkuResponseOutput{})
 	pulumi.RegisterOutputType(CloudHsmClusterSkuResponsePtrOutput{})
-	pulumi.RegisterOutputType(CloudHsmPropertiesOutput{})
-	pulumi.RegisterOutputType(CloudHsmPropertiesArrayOutput{})
 	pulumi.RegisterOutputType(CloudHsmPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(CloudHsmPropertiesResponseArrayOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceOutput{})
@@ -1843,15 +1141,8 @@ func init() {
 	pulumi.RegisterOutputType(NetworkProfilePtrOutput{})
 	pulumi.RegisterOutputType(NetworkProfileResponseOutput{})
 	pulumi.RegisterOutputType(NetworkProfileResponsePtrOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
 	pulumi.RegisterOutputType(SkuOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})
-	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 }

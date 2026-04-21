@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:storagecache:AmlFilesystem":
 		r = &AmlFilesystem{}
+	case "azure-native:storagecache:AutoExportJob":
+		r = &AutoExportJob{}
+	case "azure-native:storagecache:AutoImportJob":
+		r = &AutoImportJob{}
 	case "azure-native:storagecache:Cache":
 		r = &Cache{}
 	case "azure-native:storagecache:ImportJob":

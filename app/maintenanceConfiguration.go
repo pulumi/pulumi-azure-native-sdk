@@ -8,22 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Information about the Maintenance Configuration resource.
 //
-// Uses Azure REST API version 2024-10-02-preview.
+// Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2024-10-02-preview.
+//
+// Other available API versions: 2024-10-02-preview, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type MaintenanceConfiguration struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of maintenance schedules for a managed environment.
 	ScheduledEntries ScheduledEntryResponseArrayOutput `pulumi:"scheduledEntries"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -47,6 +52,15 @@ func NewMaintenanceConfiguration(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:app/v20241002preview:MaintenanceConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20250202preview:MaintenanceConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20250701:MaintenanceConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20251002preview:MaintenanceConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -142,6 +156,11 @@ func (o MaintenanceConfigurationOutput) ToMaintenanceConfigurationOutputWithCont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o MaintenanceConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MaintenanceConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o MaintenanceConfigurationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MaintenanceConfiguration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -153,8 +172,8 @@ func (o MaintenanceConfigurationOutput) ScheduledEntries() ScheduledEntryRespons
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o MaintenanceConfigurationOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *MaintenanceConfiguration) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o MaintenanceConfigurationOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *MaintenanceConfiguration) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

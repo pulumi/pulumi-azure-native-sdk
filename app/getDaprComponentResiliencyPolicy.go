@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Dapr Component Resiliency Policy.
 //
-// Uses Azure REST API version 2023-08-01-preview.
+// Uses Azure REST API version 2025-02-02-preview.
 //
-// Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview.
+// Other available API versions: 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupDaprComponentResiliencyPolicy(ctx *pulumi.Context, args *LookupDaprComponentResiliencyPolicyArgs, opts ...pulumi.InvokeOption) (*LookupDaprComponentResiliencyPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDaprComponentResiliencyPolicyResult
@@ -39,7 +40,9 @@ type LookupDaprComponentResiliencyPolicyArgs struct {
 
 // Dapr Component Resiliency Policy.
 type LookupDaprComponentResiliencyPolicyResult struct {
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The optional inbound component resiliency policy configuration
 	InboundPolicy *DaprComponentResiliencyPolicyConfigurationResponse `pulumi:"inboundPolicy"`
@@ -48,7 +51,7 @@ type LookupDaprComponentResiliencyPolicyResult struct {
 	// The optional outbound component resiliency policy configuration
 	OutboundPolicy *DaprComponentResiliencyPolicyConfigurationResponse `pulumi:"outboundPolicy"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -92,7 +95,12 @@ func (o LookupDaprComponentResiliencyPolicyResultOutput) ToLookupDaprComponentRe
 	return o
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// The Azure API version of the resource.
+func (o LookupDaprComponentResiliencyPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDaprComponentResiliencyPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupDaprComponentResiliencyPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDaprComponentResiliencyPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -117,8 +125,10 @@ func (o LookupDaprComponentResiliencyPolicyResultOutput) OutboundPolicy() DaprCo
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupDaprComponentResiliencyPolicyResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupDaprComponentResiliencyPolicyResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupDaprComponentResiliencyPolicyResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupDaprComponentResiliencyPolicyResult) commontypesv5.SystemDataResponse {
+		return v.SystemData
+	}).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

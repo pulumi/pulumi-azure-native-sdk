@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv1"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified private endpoint connection associated with the workspace.
 //
-// Uses Azure REST API version 2023-02-28.
+// Uses Azure REST API version 2024-03-31.
 //
-// Other available API versions: 2023-09-06, 2023-11-01, 2023-12-01, 2024-03-01, 2024-03-31, 2025-03-01-preview.
+// Other available API versions: 2022-10-01-preview, 2022-12-01, 2023-02-28, 2023-09-06, 2023-11-01, 2023-12-01, 2024-03-01, 2025-03-01-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native healthcareapis [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWorkspacePrivateEndpointConnection(ctx *pulumi.Context, args *LookupWorkspacePrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupWorkspacePrivateEndpointConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspacePrivateEndpointConnectionResult
@@ -37,18 +38,20 @@ type LookupWorkspacePrivateEndpointConnectionArgs struct {
 
 // The Private Endpoint Connection resource.
 type LookupWorkspacePrivateEndpointConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// The resource of private end point.
-	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
+	PrivateEndpoint *commontypesv1.PrivateEndpointResponse `pulumi:"privateEndpoint"`
 	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
+	PrivateLinkServiceConnectionState commontypesv1.PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state of the private endpoint connection resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv1.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -90,6 +93,11 @@ func (o LookupWorkspacePrivateEndpointConnectionResultOutput) ToLookupWorkspaceP
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupWorkspacePrivateEndpointConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspacePrivateEndpointConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupWorkspacePrivateEndpointConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspacePrivateEndpointConnectionResult) string { return v.Id }).(pulumi.StringOutput)
@@ -101,17 +109,17 @@ func (o LookupWorkspacePrivateEndpointConnectionResultOutput) Name() pulumi.Stri
 }
 
 // The resource of private end point.
-func (o LookupWorkspacePrivateEndpointConnectionResultOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
-	return o.ApplyT(func(v LookupWorkspacePrivateEndpointConnectionResult) *PrivateEndpointResponse {
+func (o LookupWorkspacePrivateEndpointConnectionResultOutput) PrivateEndpoint() commontypesv1.PrivateEndpointResponsePtrOutput {
+	return o.ApplyT(func(v LookupWorkspacePrivateEndpointConnectionResult) *commontypesv1.PrivateEndpointResponse {
 		return v.PrivateEndpoint
-	}).(PrivateEndpointResponsePtrOutput)
+	}).(commontypesv1.PrivateEndpointResponsePtrOutput)
 }
 
 // A collection of information about the state of the connection between service consumer and provider.
-func (o LookupWorkspacePrivateEndpointConnectionResultOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponseOutput {
-	return o.ApplyT(func(v LookupWorkspacePrivateEndpointConnectionResult) PrivateLinkServiceConnectionStateResponse {
+func (o LookupWorkspacePrivateEndpointConnectionResultOutput) PrivateLinkServiceConnectionState() commontypesv1.PrivateLinkServiceConnectionStateResponseOutput {
+	return o.ApplyT(func(v LookupWorkspacePrivateEndpointConnectionResult) commontypesv1.PrivateLinkServiceConnectionStateResponse {
 		return v.PrivateLinkServiceConnectionState
-	}).(PrivateLinkServiceConnectionStateResponseOutput)
+	}).(commontypesv1.PrivateLinkServiceConnectionStateResponseOutput)
 }
 
 // The provisioning state of the private endpoint connection resource.
@@ -120,8 +128,10 @@ func (o LookupWorkspacePrivateEndpointConnectionResultOutput) ProvisioningState(
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupWorkspacePrivateEndpointConnectionResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupWorkspacePrivateEndpointConnectionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupWorkspacePrivateEndpointConnectionResultOutput) SystemData() commontypesv1.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupWorkspacePrivateEndpointConnectionResult) commontypesv1.SystemDataResponse {
+		return v.SystemData
+	}).(commontypesv1.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

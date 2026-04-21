@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns details of the environment.
 //
-// Uses Azure REST API version 2024-03-01.
+// Uses Azure REST API version 2024-03-15-preview.
 //
-// Other available API versions: 2024-03-15-preview, 2024-06-01-preview.
+// Other available API versions: 2024-03-01, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apicenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupEnvironment(ctx *pulumi.Context, args *LookupEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupEnvironmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEnvironmentResult
@@ -39,6 +40,8 @@ type LookupEnvironmentArgs struct {
 
 // Environment entity.
 type LookupEnvironmentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The custom metadata defined for API catalog entities.
 	CustomProperties interface{} `pulumi:"customProperties"`
 	// The environment description.
@@ -54,7 +57,7 @@ type LookupEnvironmentResult struct {
 	// Server information of the environment.
 	Server *EnvironmentServerResponse `pulumi:"server"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Environment title.
 	Title string `pulumi:"title"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -100,6 +103,11 @@ func (o LookupEnvironmentResultOutput) ToLookupEnvironmentResultOutputWithContex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupEnvironmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The custom metadata defined for API catalog entities.
 func (o LookupEnvironmentResultOutput) CustomProperties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) interface{} { return v.CustomProperties }).(pulumi.AnyOutput)
@@ -136,8 +144,8 @@ func (o LookupEnvironmentResultOutput) Server() EnvironmentServerResponsePtrOutp
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupEnvironmentResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupEnvironmentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupEnvironmentResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Environment title.

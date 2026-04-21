@@ -8,15 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Machine assessment resource.
 //
-// Uses Azure REST API version 2023-04-01-preview.
+// Uses Azure REST API version 2024-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
 //
-// Other available API versions: 2023-03-15, 2023-05-01-preview, 2023-09-09-preview, 2024-01-01-preview.
+// Other available API versions: 2023-03-15, 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview, 2024-01-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AssessmentsOperation struct {
 	pulumi.CustomResourceState
 
@@ -26,6 +27,8 @@ type AssessmentsOperation struct {
 	AssessmentErrorSummary pulumi.IntMapOutput `pulumi:"assessmentErrorSummary"`
 	// Assessment type of the assessment.
 	AssessmentType pulumi.StringOutput `pulumi:"assessmentType"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the azure storage type. Premium, Standard etc.
 	AzureDiskTypes pulumi.StringArrayOutput `pulumi:"azureDiskTypes"`
 	// Gets or sets the user configurable setting to display the azure hybrid use
@@ -111,7 +114,7 @@ type AssessmentsOperation struct {
 	// assessment.
 	SuitabilitySummary pulumi.IntMapOutput `pulumi:"suitabilitySummary"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Time Range for which the historic utilization data should be considered for
 	// assessment.
 	TimeRange pulumi.StringPtrOutput `pulumi:"timeRange"`
@@ -121,7 +124,7 @@ type AssessmentsOperation struct {
 	UpdatedTimestamp pulumi.StringOutput `pulumi:"updatedTimestamp"`
 	// Gets or sets the duration for which the VMs are up in the on-premises
 	// environment.
-	VmUptime VmUptimeResponsePtrOutput `pulumi:"vmUptime"`
+	VmUptime VmUptimeResponseV1PtrOutput `pulumi:"vmUptime"`
 }
 
 // NewAssessmentsOperation registers a new resource with the given unique name, arguments, and options.
@@ -142,6 +145,9 @@ func NewAssessmentsOperation(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:migrate/v20191001:Assessment"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20191001:AssessmentsOperation"),
 		},
 		{
@@ -158,6 +164,12 @@ func NewAssessmentsOperation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20240101preview:AssessmentsOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240115:AssessmentsOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate:Assessment"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -359,6 +371,11 @@ func (o AssessmentsOperationOutput) AssessmentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AssessmentsOperation) pulumi.StringOutput { return v.AssessmentType }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o AssessmentsOperationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AssessmentsOperation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Gets or sets the azure storage type. Premium, Standard etc.
 func (o AssessmentsOperationOutput) AzureDiskTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AssessmentsOperation) pulumi.StringArrayOutput { return v.AzureDiskTypes }).(pulumi.StringArrayOutput)
@@ -558,8 +575,8 @@ func (o AssessmentsOperationOutput) SuitabilitySummary() pulumi.IntMapOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o AssessmentsOperationOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *AssessmentsOperation) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o AssessmentsOperationOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *AssessmentsOperation) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Time Range for which the historic utilization data should be considered for
@@ -580,8 +597,8 @@ func (o AssessmentsOperationOutput) UpdatedTimestamp() pulumi.StringOutput {
 
 // Gets or sets the duration for which the VMs are up in the on-premises
 // environment.
-func (o AssessmentsOperationOutput) VmUptime() VmUptimeResponsePtrOutput {
-	return o.ApplyT(func(v *AssessmentsOperation) VmUptimeResponsePtrOutput { return v.VmUptime }).(VmUptimeResponsePtrOutput)
+func (o AssessmentsOperationOutput) VmUptime() VmUptimeResponseV1PtrOutput {
+	return o.ApplyT(func(v *AssessmentsOperation) VmUptimeResponseV1PtrOutput { return v.VmUptime }).(VmUptimeResponseV1PtrOutput)
 }
 
 func init() {

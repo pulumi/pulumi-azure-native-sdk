@@ -7,24 +7,27 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Subscription Information with the alias.
 //
-// Uses Azure REST API version 2021-10-01. In version 1.x of the Azure Native provider, it used API version 2020-09-01.
+// Uses Azure REST API version 2024-08-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-10-01.
 //
-// Other available API versions: 2020-09-01, 2024-08-01-preview.
+// Other available API versions: 2021-10-01, 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native subscription [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Alias struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Alias ID.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Subscription Alias response properties.
 	Properties SubscriptionAliasResponsePropertiesResponseOutput `pulumi:"properties"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource type, Microsoft.Subscription/aliases.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -48,6 +51,9 @@ func NewAlias(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:subscription/v20240801preview:Alias"),
+		},
+		{
+			Type: pulumi.String("azure-native:subscription/v20251101preview:Alias"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -135,6 +141,11 @@ func (o AliasOutput) ToAliasOutputWithContext(ctx context.Context) AliasOutput {
 	return o
 }
 
+// The Azure API version of the resource.
+func (o AliasOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Alias) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Alias ID.
 func (o AliasOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alias) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -146,8 +157,8 @@ func (o AliasOutput) Properties() SubscriptionAliasResponsePropertiesResponseOut
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o AliasOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Alias) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o AliasOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Alias) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Resource type, Microsoft.Subscription/aliases.

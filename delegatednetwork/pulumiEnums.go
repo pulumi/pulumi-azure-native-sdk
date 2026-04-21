@@ -10,6 +10,172 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The purpose of the dnc controller resource.
+type ControllerPurpose string
+
+const (
+	ControllerPurposeTest = ControllerPurpose("test")
+	ControllerPurposeProd = ControllerPurpose("prod")
+)
+
+func (ControllerPurpose) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControllerPurpose)(nil)).Elem()
+}
+
+func (e ControllerPurpose) ToControllerPurposeOutput() ControllerPurposeOutput {
+	return pulumi.ToOutput(e).(ControllerPurposeOutput)
+}
+
+func (e ControllerPurpose) ToControllerPurposeOutputWithContext(ctx context.Context) ControllerPurposeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ControllerPurposeOutput)
+}
+
+func (e ControllerPurpose) ToControllerPurposePtrOutput() ControllerPurposePtrOutput {
+	return e.ToControllerPurposePtrOutputWithContext(context.Background())
+}
+
+func (e ControllerPurpose) ToControllerPurposePtrOutputWithContext(ctx context.Context) ControllerPurposePtrOutput {
+	return ControllerPurpose(e).ToControllerPurposeOutputWithContext(ctx).ToControllerPurposePtrOutputWithContext(ctx)
+}
+
+func (e ControllerPurpose) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ControllerPurpose) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ControllerPurpose) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ControllerPurpose) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ControllerPurposeOutput struct{ *pulumi.OutputState }
+
+func (ControllerPurposeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControllerPurpose)(nil)).Elem()
+}
+
+func (o ControllerPurposeOutput) ToControllerPurposeOutput() ControllerPurposeOutput {
+	return o
+}
+
+func (o ControllerPurposeOutput) ToControllerPurposeOutputWithContext(ctx context.Context) ControllerPurposeOutput {
+	return o
+}
+
+func (o ControllerPurposeOutput) ToControllerPurposePtrOutput() ControllerPurposePtrOutput {
+	return o.ToControllerPurposePtrOutputWithContext(context.Background())
+}
+
+func (o ControllerPurposeOutput) ToControllerPurposePtrOutputWithContext(ctx context.Context) ControllerPurposePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ControllerPurpose) *ControllerPurpose {
+		return &v
+	}).(ControllerPurposePtrOutput)
+}
+
+func (o ControllerPurposeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ControllerPurposeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ControllerPurpose) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ControllerPurposeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ControllerPurposeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ControllerPurpose) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ControllerPurposePtrOutput struct{ *pulumi.OutputState }
+
+func (ControllerPurposePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControllerPurpose)(nil)).Elem()
+}
+
+func (o ControllerPurposePtrOutput) ToControllerPurposePtrOutput() ControllerPurposePtrOutput {
+	return o
+}
+
+func (o ControllerPurposePtrOutput) ToControllerPurposePtrOutputWithContext(ctx context.Context) ControllerPurposePtrOutput {
+	return o
+}
+
+func (o ControllerPurposePtrOutput) Elem() ControllerPurposeOutput {
+	return o.ApplyT(func(v *ControllerPurpose) ControllerPurpose {
+		if v != nil {
+			return *v
+		}
+		var ret ControllerPurpose
+		return ret
+	}).(ControllerPurposeOutput)
+}
+
+func (o ControllerPurposePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ControllerPurposePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ControllerPurpose) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ControllerPurposeInput is an input type that accepts values of the ControllerPurpose enum
+// A concrete instance of `ControllerPurposeInput` can be one of the following:
+//
+//	ControllerPurposeTest
+//	ControllerPurposeProd
+type ControllerPurposeInput interface {
+	pulumi.Input
+
+	ToControllerPurposeOutput() ControllerPurposeOutput
+	ToControllerPurposeOutputWithContext(context.Context) ControllerPurposeOutput
+}
+
+var controllerPurposePtrType = reflect.TypeOf((**ControllerPurpose)(nil)).Elem()
+
+type ControllerPurposePtrInput interface {
+	pulumi.Input
+
+	ToControllerPurposePtrOutput() ControllerPurposePtrOutput
+	ToControllerPurposePtrOutputWithContext(context.Context) ControllerPurposePtrOutput
+}
+
+type controllerPurposePtr string
+
+func ControllerPurposePtr(v string) ControllerPurposePtrInput {
+	return (*controllerPurposePtr)(&v)
+}
+
+func (*controllerPurposePtr) ElementType() reflect.Type {
+	return controllerPurposePtrType
+}
+
+func (in *controllerPurposePtr) ToControllerPurposePtrOutput() ControllerPurposePtrOutput {
+	return pulumi.ToOutput(in).(ControllerPurposePtrOutput)
+}
+
+func (in *controllerPurposePtr) ToControllerPurposePtrOutputWithContext(ctx context.Context) ControllerPurposePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ControllerPurposePtrOutput)
+}
+
 // The kind of workbook. Choices are user and shared.
 type OrchestratorKind string
 
@@ -341,6 +507,8 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 }
 
 func init() {
+	pulumi.RegisterOutputType(ControllerPurposeOutput{})
+	pulumi.RegisterOutputType(ControllerPurposePtrOutput{})
 	pulumi.RegisterOutputType(OrchestratorKindOutput{})
 	pulumi.RegisterOutputType(OrchestratorKindPtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypeOutput{})

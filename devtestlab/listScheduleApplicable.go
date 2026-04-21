@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,19 +25,19 @@ func ListScheduleApplicable(ctx *pulumi.Context, args *ListScheduleApplicableArg
 }
 
 type ListScheduleApplicableArgs struct {
-	// The name of the lab.
+	// labs
 	LabName string `pulumi:"labName"`
-	// The name of the schedule.
+	// The name of the Schedule
 	Name string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The response of a list operation.
 type ListScheduleApplicableResult struct {
-	// Link for next set of results.
+	// The link to the next page of items
 	NextLink *string `pulumi:"nextLink"`
-	// Results of the list operation.
+	// The Schedule items on this page
 	Value []ScheduleResponse `pulumi:"value"`
 }
 
@@ -51,11 +51,11 @@ func ListScheduleApplicableOutput(ctx *pulumi.Context, args ListScheduleApplicab
 }
 
 type ListScheduleApplicableOutputArgs struct {
-	// The name of the lab.
+	// labs
 	LabName pulumi.StringInput `pulumi:"labName"`
-	// The name of the schedule.
+	// The name of the Schedule
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -78,12 +78,12 @@ func (o ListScheduleApplicableResultOutput) ToListScheduleApplicableResultOutput
 	return o
 }
 
-// Link for next set of results.
+// The link to the next page of items
 func (o ListScheduleApplicableResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListScheduleApplicableResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
-// Results of the list operation.
+// The Schedule items on this page
 func (o ListScheduleApplicableResultOutput) Value() ScheduleResponseArrayOutput {
 	return o.ApplyT(func(v ListScheduleApplicableResult) []ScheduleResponse { return v.Value }).(ScheduleResponseArrayOutput)
 }

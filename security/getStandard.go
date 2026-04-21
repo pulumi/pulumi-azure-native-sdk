@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +34,8 @@ type LookupStandardArgs struct {
 
 // Security Standard on a resource
 type LookupStandardResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// category of the standard provided
 	Category *string `pulumi:"category"`
 	// List of component objects containing component unique keys (such as assessment keys) to apply to standard scope.  Currently only supports assessment keys.
@@ -56,7 +59,7 @@ type LookupStandardResult struct {
 	// List of all standard supported clouds.
 	SupportedClouds []string `pulumi:"supportedClouds"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// A list of key value pairs that describe the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// Resource type
@@ -96,6 +99,11 @@ func (o LookupStandardResultOutput) ToLookupStandardResultOutput() LookupStandar
 
 func (o LookupStandardResultOutput) ToLookupStandardResultOutputWithContext(ctx context.Context) LookupStandardResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupStandardResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStandardResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // category of the standard provided
@@ -154,8 +162,8 @@ func (o LookupStandardResultOutput) SupportedClouds() pulumi.StringArrayOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupStandardResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupStandardResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupStandardResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupStandardResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // A list of key value pairs that describe the resource.

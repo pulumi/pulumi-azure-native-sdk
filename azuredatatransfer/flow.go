@@ -8,30 +8,34 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The flow resource definition.
 //
-// Uses Azure REST API version 2023-10-11-preview.
+// Uses Azure REST API version 2024-09-27. In version 2.x of the Azure Native provider, it used API version 2023-10-11-preview.
 //
-// Other available API versions: 2024-01-25, 2024-05-07, 2024-09-11, 2024-09-27, 2025-03-01-preview.
+// Other available API versions: 2023-10-11-preview, 2024-01-25, 2024-05-07, 2024-09-11, 2025-03-01-preview, 2025-04-11-preview, 2025-05-21, 2025-05-30-preview, 2025-10-10-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azuredatatransfer [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Flow struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The managed identity of the flow resource, if configured.
-	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity commontypesv3.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Plan for the resource.
-	Plan PlanResponsePtrOutput `pulumi:"plan"`
+	Plan commontypesv5.PlanResponsePtrOutput `pulumi:"plan"`
 	// Properties of flow
 	Properties FlowPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -69,6 +73,18 @@ func NewFlow(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azuredatatransfer/v20250301preview:Flow"),
+		},
+		{
+			Type: pulumi.String("azure-native:azuredatatransfer/v20250411preview:Flow"),
+		},
+		{
+			Type: pulumi.String("azure-native:azuredatatransfer/v20250521:Flow"),
+		},
+		{
+			Type: pulumi.String("azure-native:azuredatatransfer/v20250530preview:Flow"),
+		},
+		{
+			Type: pulumi.String("azure-native:azuredatatransfer/v20251010preview:Flow"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -110,11 +126,11 @@ type flowArgs struct {
 	// The name for the flow that is to be onboarded.
 	FlowName *string `pulumi:"flowName"`
 	// The managed identity of the flow resource, if configured.
-	Identity *ManagedServiceIdentity `pulumi:"identity"`
+	Identity *commontypesv3.ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Plan for the resource.
-	Plan *Plan `pulumi:"plan"`
+	Plan *commontypesv5.Plan `pulumi:"plan"`
 	// Properties of flow
 	Properties *FlowProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
@@ -130,11 +146,11 @@ type FlowArgs struct {
 	// The name for the flow that is to be onboarded.
 	FlowName pulumi.StringPtrInput
 	// The managed identity of the flow resource, if configured.
-	Identity ManagedServiceIdentityPtrInput
+	Identity commontypesv3.ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Plan for the resource.
-	Plan PlanPtrInput
+	Plan commontypesv5.PlanPtrInput
 	// Properties of flow
 	Properties FlowPropertiesPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -180,9 +196,14 @@ func (o FlowOutput) ToFlowOutputWithContext(ctx context.Context) FlowOutput {
 	return o
 }
 
+// The Azure API version of the resource.
+func (o FlowOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Flow) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The managed identity of the flow resource, if configured.
-func (o FlowOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *Flow) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o FlowOutput) Identity() commontypesv3.ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Flow) commontypesv3.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv3.ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -196,8 +217,8 @@ func (o FlowOutput) Name() pulumi.StringOutput {
 }
 
 // Plan for the resource.
-func (o FlowOutput) Plan() PlanResponsePtrOutput {
-	return o.ApplyT(func(v *Flow) PlanResponsePtrOutput { return v.Plan }).(PlanResponsePtrOutput)
+func (o FlowOutput) Plan() commontypesv5.PlanResponsePtrOutput {
+	return o.ApplyT(func(v *Flow) commontypesv5.PlanResponsePtrOutput { return v.Plan }).(commontypesv5.PlanResponsePtrOutput)
 }
 
 // Properties of flow
@@ -206,8 +227,8 @@ func (o FlowOutput) Properties() FlowPropertiesResponseOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o FlowOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Flow) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o FlowOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Flow) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

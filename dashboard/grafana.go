@@ -8,20 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The grafana resource type.
 //
-// Uses Azure REST API version 2022-08-01. In version 1.x of the Azure Native provider, it used API version 2022-05-01-preview.
+// Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
 //
-// Other available API versions: 2021-09-01-preview, 2022-10-01-preview, 2023-09-01, 2023-10-01-preview, 2024-10-01.
+// Other available API versions: 2022-08-01, 2022-10-01-preview, 2023-09-01, 2023-10-01-preview, 2024-11-01-preview, 2025-08-01, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dashboard [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Grafana struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The managed identity of the grafana resource.
-	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity commontypesv3.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the grafana resource lives
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Name of the grafana resource.
@@ -31,7 +34,7 @@ type Grafana struct {
 	// The Sku of the grafana resource.
 	Sku ResourceSkuResponsePtrOutput `pulumi:"sku"`
 	// The system meta data relating to this grafana resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// The tags for grafana resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the grafana resource.
@@ -47,6 +50,9 @@ func NewGrafana(ctx *pulumi.Context,
 
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.Properties != nil {
+		args.Properties = args.Properties.ToManagedGrafanaPropertiesPtrOutput().ApplyT(func(v *ManagedGrafanaProperties) *ManagedGrafanaProperties { return v.Defaults() }).(ManagedGrafanaPropertiesPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -69,6 +75,15 @@ func NewGrafana(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dashboard/v20241001:Grafana"),
+		},
+		{
+			Type: pulumi.String("azure-native:dashboard/v20241101preview:Grafana"),
+		},
+		{
+			Type: pulumi.String("azure-native:dashboard/v20250801:Grafana"),
+		},
+		{
+			Type: pulumi.String("azure-native:dashboard/v20250901preview:Grafana"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -106,7 +121,7 @@ func (GrafanaState) ElementType() reflect.Type {
 
 type grafanaArgs struct {
 	// The managed identity of the grafana resource.
-	Identity *ManagedServiceIdentity `pulumi:"identity"`
+	Identity *commontypesv3.ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the grafana resource lives
 	Location *string `pulumi:"location"`
 	// Properties specific to the grafana resource.
@@ -124,7 +139,7 @@ type grafanaArgs struct {
 // The set of arguments for constructing a Grafana resource.
 type GrafanaArgs struct {
 	// The managed identity of the grafana resource.
-	Identity ManagedServiceIdentityPtrInput
+	Identity commontypesv3.ManagedServiceIdentityPtrInput
 	// The geo-location where the grafana resource lives
 	Location pulumi.StringPtrInput
 	// Properties specific to the grafana resource.
@@ -176,9 +191,14 @@ func (o GrafanaOutput) ToGrafanaOutputWithContext(ctx context.Context) GrafanaOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o GrafanaOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Grafana) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The managed identity of the grafana resource.
-func (o GrafanaOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *Grafana) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o GrafanaOutput) Identity() commontypesv3.ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Grafana) commontypesv3.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv3.ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the grafana resource lives
@@ -202,8 +222,8 @@ func (o GrafanaOutput) Sku() ResourceSkuResponsePtrOutput {
 }
 
 // The system meta data relating to this grafana resource.
-func (o GrafanaOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Grafana) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o GrafanaOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Grafana) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The tags for grafana resource.

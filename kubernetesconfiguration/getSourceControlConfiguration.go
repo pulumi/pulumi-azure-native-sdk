@@ -7,13 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details of the Source Control Configuration.
 //
 // Uses Azure REST API version 2023-05-01.
+//
+// Other available API versions: 2022-07-01, 2022-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kubernetesconfiguration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSourceControlConfiguration(ctx *pulumi.Context, args *LookupSourceControlConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupSourceControlConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSourceControlConfigurationResult
@@ -39,6 +42,8 @@ type LookupSourceControlConfigurationArgs struct {
 
 // The SourceControl Configuration object returned in Get & Put response.
 type LookupSourceControlConfigurationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Compliance Status of the Configuration
 	ComplianceStatus ComplianceStatusResponse `pulumi:"complianceStatus"`
 	// Name-value pairs of protected configuration settings for the configuration
@@ -70,7 +75,7 @@ type LookupSourceControlConfigurationResult struct {
 	// Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances
 	SshKnownHostsContents *string `pulumi:"sshKnownHostsContents"`
 	// Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -126,6 +131,11 @@ func (o LookupSourceControlConfigurationResultOutput) ToLookupSourceControlConfi
 
 func (o LookupSourceControlConfigurationResultOutput) ToLookupSourceControlConfigurationResultOutputWithContext(ctx context.Context) LookupSourceControlConfigurationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSourceControlConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSourceControlConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Compliance Status of the Configuration
@@ -208,8 +218,8 @@ func (o LookupSourceControlConfigurationResultOutput) SshKnownHostsContents() pu
 }
 
 // Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
-func (o LookupSourceControlConfigurationResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSourceControlConfigurationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupSourceControlConfigurationResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSourceControlConfigurationResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

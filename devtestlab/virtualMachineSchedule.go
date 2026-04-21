@@ -8,25 +8,28 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A schedule.
 //
-// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
+// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
 type VirtualMachineSchedule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation date of the schedule.
 	CreatedDate pulumi.StringOutput `pulumi:"createdDate"`
 	// If the schedule will occur once each day of the week, specify the daily recurrence.
 	DailyRecurrence DayDetailsResponsePtrOutput `pulumi:"dailyRecurrence"`
 	// If the schedule will occur multiple times a day, specify the hourly recurrence.
 	HourlyRecurrence HourDetailsResponsePtrOutput `pulumi:"hourlyRecurrence"`
-	// The location of the resource.
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// The name of the resource.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Notification settings.
 	NotificationSettings NotificationSettingsResponsePtrOutput `pulumi:"notificationSettings"`
@@ -34,7 +37,9 @@ type VirtualMachineSchedule struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The status of the schedule (i.e. Enabled, Disabled)
 	Status pulumi.StringPtrOutput `pulumi:"status"`
-	// The tags of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The resource ID to which the schedule belongs
 	TargetResourceId pulumi.StringPtrOutput `pulumi:"targetResourceId"`
@@ -42,7 +47,7 @@ type VirtualMachineSchedule struct {
 	TaskType pulumi.StringPtrOutput `pulumi:"taskType"`
 	// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection<string> TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
 	TimeZoneId pulumi.StringPtrOutput `pulumi:"timeZoneId"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The unique immutable identifier of a resource (Guid).
 	UniqueIdentifier pulumi.StringOutput `pulumi:"uniqueIdentifier"`
@@ -118,19 +123,19 @@ type virtualMachineScheduleArgs struct {
 	DailyRecurrence *DayDetails `pulumi:"dailyRecurrence"`
 	// If the schedule will occur multiple times a day, specify the hourly recurrence.
 	HourlyRecurrence *HourDetails `pulumi:"hourlyRecurrence"`
-	// The name of the lab.
+	// labs
 	LabName string `pulumi:"labName"`
-	// The location of the resource.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// The name of the schedule.
+	// The name of the Schedule
 	Name *string `pulumi:"name"`
 	// Notification settings.
 	NotificationSettings *NotificationSettings `pulumi:"notificationSettings"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The status of the schedule (i.e. Enabled, Disabled)
 	Status *string `pulumi:"status"`
-	// The tags of the resource.
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The resource ID to which the schedule belongs
 	TargetResourceId *string `pulumi:"targetResourceId"`
@@ -138,7 +143,7 @@ type virtualMachineScheduleArgs struct {
 	TaskType *string `pulumi:"taskType"`
 	// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection<string> TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
 	TimeZoneId *string `pulumi:"timeZoneId"`
-	// The name of the virtual machine.
+	// virtualmachines
 	VirtualMachineName string `pulumi:"virtualMachineName"`
 	// If the schedule will occur only some days of the week, specify the weekly recurrence.
 	WeeklyRecurrence *WeekDetails `pulumi:"weeklyRecurrence"`
@@ -150,19 +155,19 @@ type VirtualMachineScheduleArgs struct {
 	DailyRecurrence DayDetailsPtrInput
 	// If the schedule will occur multiple times a day, specify the hourly recurrence.
 	HourlyRecurrence HourDetailsPtrInput
-	// The name of the lab.
+	// labs
 	LabName pulumi.StringInput
-	// The location of the resource.
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// The name of the schedule.
+	// The name of the Schedule
 	Name pulumi.StringPtrInput
 	// Notification settings.
 	NotificationSettings NotificationSettingsPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The status of the schedule (i.e. Enabled, Disabled)
 	Status pulumi.StringPtrInput
-	// The tags of the resource.
+	// Resource tags.
 	Tags pulumi.StringMapInput
 	// The resource ID to which the schedule belongs
 	TargetResourceId pulumi.StringPtrInput
@@ -170,7 +175,7 @@ type VirtualMachineScheduleArgs struct {
 	TaskType pulumi.StringPtrInput
 	// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection<string> TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
 	TimeZoneId pulumi.StringPtrInput
-	// The name of the virtual machine.
+	// virtualmachines
 	VirtualMachineName pulumi.StringInput
 	// If the schedule will occur only some days of the week, specify the weekly recurrence.
 	WeeklyRecurrence WeekDetailsPtrInput
@@ -213,6 +218,11 @@ func (o VirtualMachineScheduleOutput) ToVirtualMachineScheduleOutputWithContext(
 	return o
 }
 
+// The Azure API version of the resource.
+func (o VirtualMachineScheduleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualMachineSchedule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The creation date of the schedule.
 func (o VirtualMachineScheduleOutput) CreatedDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachineSchedule) pulumi.StringOutput { return v.CreatedDate }).(pulumi.StringOutput)
@@ -228,12 +238,12 @@ func (o VirtualMachineScheduleOutput) HourlyRecurrence() HourDetailsResponsePtrO
 	return o.ApplyT(func(v *VirtualMachineSchedule) HourDetailsResponsePtrOutput { return v.HourlyRecurrence }).(HourDetailsResponsePtrOutput)
 }
 
-// The location of the resource.
+// The geo-location where the resource lives
 func (o VirtualMachineScheduleOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineSchedule) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o VirtualMachineScheduleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachineSchedule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -253,7 +263,12 @@ func (o VirtualMachineScheduleOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineSchedule) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// The tags of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o VirtualMachineScheduleOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *VirtualMachineSchedule) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o VirtualMachineScheduleOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VirtualMachineSchedule) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -273,7 +288,7 @@ func (o VirtualMachineScheduleOutput) TimeZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineSchedule) pulumi.StringPtrOutput { return v.TimeZoneId }).(pulumi.StringPtrOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o VirtualMachineScheduleOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachineSchedule) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

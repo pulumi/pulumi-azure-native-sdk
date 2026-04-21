@@ -7,18 +7,23 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Advisor assessment result data structure.
 //
-// Uses Azure REST API version 2023-09-01-preview.
+// Uses Azure REST API version 2023-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-09-01-preview.
+//
+// Other available API versions: 2024-11-18-preview, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native advisor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Assessment struct {
 	pulumi.CustomResourceState
 
 	// Assessment Id.
 	AssessmentId pulumi.StringOutput `pulumi:"assessmentId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Assessment Type Description.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Assessment Type Locale.
@@ -30,7 +35,7 @@ type Assessment struct {
 	// Assessment State.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv4.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource Type
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Assessment Type Id.
@@ -53,6 +58,12 @@ func NewAssessment(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:advisor/v20230901preview:Assessment"),
+		},
+		{
+			Type: pulumi.String("azure-native:advisor/v20241118preview:Assessment"),
+		},
+		{
+			Type: pulumi.String("azure-native:advisor/v20250501preview:Assessment"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -153,6 +164,11 @@ func (o AssessmentOutput) AssessmentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Assessment) pulumi.StringOutput { return v.AssessmentId }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o AssessmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Assessment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Assessment Type Description.
 func (o AssessmentOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Assessment) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
@@ -179,8 +195,8 @@ func (o AssessmentOutput) State() pulumi.StringOutput {
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o AssessmentOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Assessment) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o AssessmentOutput) SystemData() commontypesv4.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Assessment) commontypesv4.SystemDataResponseOutput { return v.SystemData }).(commontypesv4.SystemDataResponseOutput)
 }
 
 // Resource Type

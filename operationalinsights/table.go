@@ -8,20 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Workspace data table definition.
 //
-// Uses Azure REST API version 2022-10-01. In version 1.x of the Azure Native provider, it used API version 2021-12-01-preview.
+// Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
 //
-// Other available API versions: 2023-09-01, 2025-02-01.
+// Other available API versions: 2021-12-01-preview, 2022-10-01, 2025-02-01, 2025-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native operationalinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Table struct {
 	pulumi.CustomResourceState
 
 	// The table data archive retention in days. Calculated as (totalRetentionInDays-retentionInDays)
 	ArchiveRetentionInDays pulumi.IntOutput `pulumi:"archiveRetentionInDays"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The timestamp that table plan was last modified (UTC).
 	LastPlanModifiedDate pulumi.StringOutput `pulumi:"lastPlanModifiedDate"`
 	// The name of the resource
@@ -43,7 +46,7 @@ type Table struct {
 	// Parameters of the search job that initiated this table.
 	SearchResults SearchResultsResponsePtrOutput `pulumi:"searchResults"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// The table total retention in days, between 4 and 4383. Setting this property to -1 will default to table retention.
 	TotalRetentionInDays pulumi.IntPtrOutput `pulumi:"totalRetentionInDays"`
 	// True - Value originates from retention in days, False - Customer specific.
@@ -77,6 +80,9 @@ func NewTable(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:operationalinsights/v20250201:Table"),
+		},
+		{
+			Type: pulumi.String("azure-native:operationalinsights/v20250701:Table"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -197,6 +203,11 @@ func (o TableOutput) ArchiveRetentionInDays() pulumi.IntOutput {
 	return o.ApplyT(func(v *Table) pulumi.IntOutput { return v.ArchiveRetentionInDays }).(pulumi.IntOutput)
 }
 
+// The Azure API version of the resource.
+func (o TableOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The timestamp that table plan was last modified (UTC).
 func (o TableOutput) LastPlanModifiedDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.LastPlanModifiedDate }).(pulumi.StringOutput)
@@ -248,8 +259,8 @@ func (o TableOutput) SearchResults() SearchResultsResponsePtrOutput {
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o TableOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Table) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o TableOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Table) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The table total retention in days, between 4 and 4383. Setting this property to -1 will default to table retention.

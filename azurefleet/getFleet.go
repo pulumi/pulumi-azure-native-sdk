@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Fleet
 //
-// Uses Azure REST API version 2024-05-01-preview.
+// Uses Azure REST API version 2024-11-01.
 //
-// Other available API versions: 2023-11-01-preview, 2024-11-01.
+// Other available API versions: 2024-05-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurefleet [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupFleet(ctx *pulumi.Context, args *LookupFleetArgs, opts ...pulumi.InvokeOption) (*LookupFleetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFleetResult
@@ -35,18 +36,22 @@ type LookupFleetArgs struct {
 
 // An Compute Fleet resource
 type LookupFleetResult struct {
+	// Represents the configuration for additional locations where Fleet resources may be deployed.
+	AdditionalLocationsProfile *AdditionalLocationsProfileResponse `pulumi:"additionalLocationsProfile"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Compute Profile to use for running user's workloads.
 	ComputeProfile ComputeProfileResponse `pulumi:"computeProfile"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The managed service identities assigned to this resource.
-	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *commontypesv5.ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Details of the resource plan.
-	Plan *PlanResponse `pulumi:"plan"`
+	Plan *commontypesv5.PlanResponse `pulumi:"plan"`
 	// The status of the last operation.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Configuration Options for Regular instances in Compute Fleet.
@@ -54,7 +59,7 @@ type LookupFleetResult struct {
 	// Configuration Options for Spot instances in Compute Fleet.
 	SpotPriorityProfile *SpotPriorityProfileResponse `pulumi:"spotPriorityProfile"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Specifies the time at which the Compute Fleet is created.
@@ -63,6 +68,8 @@ type LookupFleetResult struct {
 	Type string `pulumi:"type"`
 	// Specifies the ID which uniquely identifies a Compute Fleet.
 	UniqueId string `pulumi:"uniqueId"`
+	// Attribute based Fleet.
+	VmAttributes *VMAttributesResponse `pulumi:"vmAttributes"`
 	// List of VM sizes supported for Compute Fleet
 	VmSizesProfile []VmSizeProfileResponse `pulumi:"vmSizesProfile"`
 	// Zones in which the Compute Fleet is available
@@ -104,6 +111,16 @@ func (o LookupFleetResultOutput) ToLookupFleetResultOutputWithContext(ctx contex
 	return o
 }
 
+// Represents the configuration for additional locations where Fleet resources may be deployed.
+func (o LookupFleetResultOutput) AdditionalLocationsProfile() AdditionalLocationsProfileResponsePtrOutput {
+	return o.ApplyT(func(v LookupFleetResult) *AdditionalLocationsProfileResponse { return v.AdditionalLocationsProfile }).(AdditionalLocationsProfileResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupFleetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFleetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Compute Profile to use for running user's workloads.
 func (o LookupFleetResultOutput) ComputeProfile() ComputeProfileResponseOutput {
 	return o.ApplyT(func(v LookupFleetResult) ComputeProfileResponse { return v.ComputeProfile }).(ComputeProfileResponseOutput)
@@ -115,8 +132,8 @@ func (o LookupFleetResultOutput) Id() pulumi.StringOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o LookupFleetResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupFleetResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o LookupFleetResultOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupFleetResult) *commontypesv5.ManagedServiceIdentityResponse { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -130,8 +147,8 @@ func (o LookupFleetResultOutput) Name() pulumi.StringOutput {
 }
 
 // Details of the resource plan.
-func (o LookupFleetResultOutput) Plan() PlanResponsePtrOutput {
-	return o.ApplyT(func(v LookupFleetResult) *PlanResponse { return v.Plan }).(PlanResponsePtrOutput)
+func (o LookupFleetResultOutput) Plan() commontypesv5.PlanResponsePtrOutput {
+	return o.ApplyT(func(v LookupFleetResult) *commontypesv5.PlanResponse { return v.Plan }).(commontypesv5.PlanResponsePtrOutput)
 }
 
 // The status of the last operation.
@@ -150,8 +167,8 @@ func (o LookupFleetResultOutput) SpotPriorityProfile() SpotPriorityProfileRespon
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupFleetResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupFleetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupFleetResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupFleetResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.
@@ -172,6 +189,11 @@ func (o LookupFleetResultOutput) Type() pulumi.StringOutput {
 // Specifies the ID which uniquely identifies a Compute Fleet.
 func (o LookupFleetResultOutput) UniqueId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFleetResult) string { return v.UniqueId }).(pulumi.StringOutput)
+}
+
+// Attribute based Fleet.
+func (o LookupFleetResultOutput) VmAttributes() VMAttributesResponsePtrOutput {
+	return o.ApplyT(func(v LookupFleetResult) *VMAttributesResponse { return v.VmAttributes }).(VMAttributesResponsePtrOutput)
 }
 
 // List of VM sizes supported for Compute Fleet

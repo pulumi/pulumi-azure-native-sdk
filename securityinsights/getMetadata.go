@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Metadata.
 //
-// Uses Azure REST API version 2023-02-01.
+// Uses Azure REST API version 2024-09-01.
 //
-// Other available API versions: 2021-03-01-preview, 2023-02-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-09-01, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01.
+// Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupMetadata(ctx *pulumi.Context, args *LookupMetadataArgs, opts ...pulumi.InvokeOption) (*LookupMetadataResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMetadataResult
@@ -39,6 +40,8 @@ type LookupMetadataArgs struct {
 type LookupMetadataResult struct {
 	// The creator of the content item.
 	Author *MetadataAuthorResponse `pulumi:"author"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Categories for the solution content item
 	Categories *MetadataCategoriesResponse `pulumi:"categories"`
 	// Static ID for the content.  Used to identify dependencies and content from solutions or community.  Hard-coded/static for out of the box content and solutions. Dynamic for user-created.  This is the resource name
@@ -76,7 +79,7 @@ type LookupMetadataResult struct {
 	// Support information for the metadata - type, name, contact information
 	Support *MetadataSupportResponse `pulumi:"support"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// the tactics the resource covers
 	ThreatAnalysisTactics []string `pulumi:"threatAnalysisTactics"`
 	// the techniques the resource covers, these have to be aligned with the tactics being used
@@ -127,6 +130,11 @@ func (o LookupMetadataResultOutput) ToLookupMetadataResultOutputWithContext(ctx 
 // The creator of the content item.
 func (o LookupMetadataResultOutput) Author() MetadataAuthorResponsePtrOutput {
 	return o.ApplyT(func(v LookupMetadataResult) *MetadataAuthorResponse { return v.Author }).(MetadataAuthorResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupMetadataResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMetadataResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Categories for the solution content item
@@ -220,8 +228,8 @@ func (o LookupMetadataResultOutput) Support() MetadataSupportResponsePtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupMetadataResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupMetadataResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupMetadataResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupMetadataResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // the tactics the resource covers

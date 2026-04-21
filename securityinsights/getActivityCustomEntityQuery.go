@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an entity query.
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2025-01-01-preview.
 func LookupActivityCustomEntityQuery(ctx *pulumi.Context, args *LookupActivityCustomEntityQueryArgs, opts ...pulumi.InvokeOption) (*LookupActivityCustomEntityQueryResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupActivityCustomEntityQueryResult
@@ -35,6 +36,8 @@ type LookupActivityCustomEntityQueryArgs struct {
 
 // Represents Activity entity query.
 type LookupActivityCustomEntityQueryResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The entity query content to display in timeline
 	Content *string `pulumi:"content"`
 	// The time the activity was created
@@ -63,7 +66,7 @@ type LookupActivityCustomEntityQueryResult struct {
 	// List of the fields of the source entity that are required to run the query
 	RequiredInputFieldsSets [][]string `pulumi:"requiredInputFieldsSets"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The template id this activity was created from
 	TemplateName *string `pulumi:"templateName"`
 	// The entity query title
@@ -107,6 +110,11 @@ func (o LookupActivityCustomEntityQueryResultOutput) ToLookupActivityCustomEntit
 
 func (o LookupActivityCustomEntityQueryResultOutput) ToLookupActivityCustomEntityQueryResultOutputWithContext(ctx context.Context) LookupActivityCustomEntityQueryResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupActivityCustomEntityQueryResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The entity query content to display in timeline
@@ -178,8 +186,8 @@ func (o LookupActivityCustomEntityQueryResultOutput) RequiredInputFieldsSets() p
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupActivityCustomEntityQueryResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupActivityCustomEntityQueryResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The template id this activity was created from

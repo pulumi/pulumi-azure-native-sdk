@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2021-07-01.
 //
-// Other available API versions: 2023-12-01-preview.
+// Other available API versions: 2023-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native solutions [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApplicationResult
@@ -41,6 +42,8 @@ type LookupApplicationResult struct {
 	Artifacts []ApplicationArtifactResponse `pulumi:"artifacts"`
 	// The  read-only authorizations property that is retrieved from the application package.
 	Authorizations []ApplicationAuthorizationResponse `pulumi:"authorizations"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The managed application billing details.
 	BillingDetails ApplicationBillingDetailsDefinitionResponse `pulumi:"billingDetails"`
 	// The client entity that created the JIT request.
@@ -80,7 +83,7 @@ type LookupApplicationResult struct {
 	// The read-only support URLs property that is retrieved from the application package.
 	SupportUrls ApplicationPackageSupportUrlsResponse `pulumi:"supportUrls"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
 	// Resource type
@@ -137,6 +140,11 @@ func (o LookupApplicationResultOutput) Artifacts() ApplicationArtifactResponseAr
 // The  read-only authorizations property that is retrieved from the application package.
 func (o LookupApplicationResultOutput) Authorizations() ApplicationAuthorizationResponseArrayOutput {
 	return o.ApplyT(func(v LookupApplicationResult) []ApplicationAuthorizationResponse { return v.Authorizations }).(ApplicationAuthorizationResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupApplicationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApplicationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The managed application billing details.
@@ -235,8 +243,8 @@ func (o LookupApplicationResultOutput) SupportUrls() ApplicationPackageSupportUr
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupApplicationResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupApplicationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupApplicationResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupApplicationResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Resource tags

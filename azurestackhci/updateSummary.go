@@ -8,18 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the update summaries for the cluster
 //
-// Uses Azure REST API version 2023-03-01.
+// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
 //
-// Other available API versions: 2022-12-15-preview, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-04-01, 2024-09-01-preview, 2024-12-01-preview.
+// Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01, 2026-02-15-preview, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type UpdateSummary struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Current OEM Version.
+	CurrentOemVersion pulumi.StringPtrOutput `pulumi:"currentOemVersion"`
+	// Current Sbe version of the stamp.
+	CurrentSbeVersion pulumi.StringPtrOutput `pulumi:"currentSbeVersion"`
 	// Current Solution Bundle version of the stamp.
 	CurrentVersion pulumi.StringPtrOutput `pulumi:"currentVersion"`
 	// Name of the hardware model.
@@ -41,7 +48,7 @@ type UpdateSummary struct {
 	// Overall update state of the stamp.
 	State pulumi.StringPtrOutput `pulumi:"state"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -99,6 +106,30 @@ func NewUpdateSummary(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20241201preview:UpdateSummary"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250201preview:UpdateSummary"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250915preview:UpdateSummary"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20251001:UpdateSummary"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20251101preview:UpdateSummary"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20251201preview:UpdateSummary"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20260201:UpdateSummary"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20260215preview:UpdateSummary"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20260301preview:UpdateSummary"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -136,6 +167,10 @@ func (UpdateSummaryState) ElementType() reflect.Type {
 type updateSummaryArgs struct {
 	// The name of the cluster.
 	ClusterName string `pulumi:"clusterName"`
+	// Current OEM Version.
+	CurrentOemVersion *string `pulumi:"currentOemVersion"`
+	// Current Sbe version of the stamp.
+	CurrentSbeVersion *string `pulumi:"currentSbeVersion"`
 	// Current Solution Bundle version of the stamp.
 	CurrentVersion *string `pulumi:"currentVersion"`
 	// Name of the hardware model.
@@ -160,6 +195,10 @@ type updateSummaryArgs struct {
 type UpdateSummaryArgs struct {
 	// The name of the cluster.
 	ClusterName pulumi.StringInput
+	// Current OEM Version.
+	CurrentOemVersion pulumi.StringPtrInput
+	// Current Sbe version of the stamp.
+	CurrentSbeVersion pulumi.StringPtrInput
 	// Current Solution Bundle version of the stamp.
 	CurrentVersion pulumi.StringPtrInput
 	// Name of the hardware model.
@@ -217,6 +256,21 @@ func (o UpdateSummaryOutput) ToUpdateSummaryOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o UpdateSummaryOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *UpdateSummary) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Current OEM Version.
+func (o UpdateSummaryOutput) CurrentOemVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UpdateSummary) pulumi.StringPtrOutput { return v.CurrentOemVersion }).(pulumi.StringPtrOutput)
+}
+
+// Current Sbe version of the stamp.
+func (o UpdateSummaryOutput) CurrentSbeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UpdateSummary) pulumi.StringPtrOutput { return v.CurrentSbeVersion }).(pulumi.StringPtrOutput)
+}
+
 // Current Solution Bundle version of the stamp.
 func (o UpdateSummaryOutput) CurrentVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UpdateSummary) pulumi.StringPtrOutput { return v.CurrentVersion }).(pulumi.StringPtrOutput)
@@ -268,8 +322,8 @@ func (o UpdateSummaryOutput) State() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o UpdateSummaryOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *UpdateSummary) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o UpdateSummaryOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *UpdateSummary) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

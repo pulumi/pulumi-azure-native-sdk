@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // DataConnector Model.
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2023-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
 type DataConnector struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The ETag value to implement optimistic concurrency.
 	ETag pulumi.StringOutput `pulumi:"eTag"`
 	// The name of the resource
@@ -25,7 +28,7 @@ type DataConnector struct {
 	// DataConnector Properties.
 	Properties DataConnectorPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv4.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -144,6 +147,11 @@ func (o DataConnectorOutput) ToDataConnectorOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o DataConnectorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataConnector) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The ETag value to implement optimistic concurrency.
 func (o DataConnectorOutput) ETag() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataConnector) pulumi.StringOutput { return v.ETag }).(pulumi.StringOutput)
@@ -160,8 +168,8 @@ func (o DataConnectorOutput) Properties() DataConnectorPropertiesResponseOutput 
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o DataConnectorOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *DataConnector) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o DataConnectorOutput) SystemData() commontypesv4.SystemDataResponseOutput {
+	return o.ApplyT(func(v *DataConnector) commontypesv4.SystemDataResponseOutput { return v.SystemData }).(commontypesv4.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

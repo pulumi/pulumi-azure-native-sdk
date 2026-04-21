@@ -8,20 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // LocalRulestack fqdnList
 //
-// Uses Azure REST API version 2023-09-01.
+// Uses Azure REST API version 2025-05-23. In version 2.x of the Azure Native provider, it used API version 2023-09-01.
 //
-// Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview.
+// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type FqdnListLocalRulestack struct {
 	pulumi.CustomResourceState
 
 	// comment for this object
 	AuditComment pulumi.StringPtrOutput `pulumi:"auditComment"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// fqdn object description
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// etag info
@@ -33,7 +36,7 @@ type FqdnListLocalRulestack struct {
 	// Provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -78,6 +81,18 @@ func NewFqdnListLocalRulestack(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cloudngfw/v20250206preview:FqdnListLocalRulestack"),
+		},
+		{
+			Type: pulumi.String("azure-native:cloudngfw/v20250523:FqdnListLocalRulestack"),
+		},
+		{
+			Type: pulumi.String("azure-native:cloudngfw/v20250707preview:FqdnListLocalRulestack"),
+		},
+		{
+			Type: pulumi.String("azure-native:cloudngfw/v20251008:FqdnListLocalRulestack"),
+		},
+		{
+			Type: pulumi.String("azure-native:cloudngfw/v20260126preview:FqdnListLocalRulestack"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -186,6 +201,11 @@ func (o FqdnListLocalRulestackOutput) AuditComment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FqdnListLocalRulestack) pulumi.StringPtrOutput { return v.AuditComment }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o FqdnListLocalRulestackOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *FqdnListLocalRulestack) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // fqdn object description
 func (o FqdnListLocalRulestackOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FqdnListLocalRulestack) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -212,8 +232,8 @@ func (o FqdnListLocalRulestackOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o FqdnListLocalRulestackOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *FqdnListLocalRulestack) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o FqdnListLocalRulestackOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *FqdnListLocalRulestack) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

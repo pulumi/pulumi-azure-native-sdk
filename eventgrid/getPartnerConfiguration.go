@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get properties of a partner configuration.
 //
-// Uses Azure REST API version 2022-06-15.
+// Uses Azure REST API version 2025-02-15.
 //
-// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Other available API versions: 2022-06-15, 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupPartnerConfiguration(ctx *pulumi.Context, args *LookupPartnerConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupPartnerConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPartnerConfigurationResult
@@ -33,6 +34,8 @@ type LookupPartnerConfigurationArgs struct {
 
 // Partner configuration information
 type LookupPartnerConfigurationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified identifier of the resource.
 	Id string `pulumi:"id"`
 	// Location of the resource.
@@ -43,8 +46,8 @@ type LookupPartnerConfigurationResult struct {
 	PartnerAuthorization *PartnerAuthorizationResponse `pulumi:"partnerAuthorization"`
 	// Provisioning state of the partner configuration.
 	ProvisioningState *string `pulumi:"provisioningState"`
-	// The system metadata relating to partner configuration resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The system metadata relating to the Event Grid resource.
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// Type of the resource.
@@ -84,6 +87,11 @@ func (o LookupPartnerConfigurationResultOutput) ToLookupPartnerConfigurationResu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupPartnerConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPartnerConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified identifier of the resource.
 func (o LookupPartnerConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPartnerConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
@@ -109,9 +117,9 @@ func (o LookupPartnerConfigurationResultOutput) ProvisioningState() pulumi.Strin
 	return o.ApplyT(func(v LookupPartnerConfigurationResult) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
-// The system metadata relating to partner configuration resource.
-func (o LookupPartnerConfigurationResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupPartnerConfigurationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+// The system metadata relating to the Event Grid resource.
+func (o LookupPartnerConfigurationResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPartnerConfigurationResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Tags of the resource.

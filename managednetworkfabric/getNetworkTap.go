@@ -7,13 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves details of this Network Tap.
 //
 // Uses Azure REST API version 2023-06-15.
+//
+// Other available API versions: 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupNetworkTap(ctx *pulumi.Context, args *LookupNetworkTapArgs, opts ...pulumi.InvokeOption) (*LookupNetworkTapResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkTapResult
@@ -37,6 +40,8 @@ type LookupNetworkTapResult struct {
 	AdministrativeState string `pulumi:"administrativeState"`
 	// Switch configuration description.
 	Annotation *string `pulumi:"annotation"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets the configurations state of the resource.
 	ConfigurationState string `pulumi:"configurationState"`
 	// List of destinations to send the filter traffic.
@@ -56,7 +61,7 @@ type LookupNetworkTapResult struct {
 	// Source Tap Rule Id. ARM Resource ID of the Network Tap Rule.
 	SourceTapRuleId string `pulumi:"sourceTapRuleId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -120,6 +125,11 @@ func (o LookupNetworkTapResultOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNetworkTapResult) *string { return v.Annotation }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupNetworkTapResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkTapResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Gets the configurations state of the resource.
 func (o LookupNetworkTapResultOutput) ConfigurationState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkTapResult) string { return v.ConfigurationState }).(pulumi.StringOutput)
@@ -166,8 +176,8 @@ func (o LookupNetworkTapResultOutput) SourceTapRuleId() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupNetworkTapResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupNetworkTapResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupNetworkTapResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupNetworkTapResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

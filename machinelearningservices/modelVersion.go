@@ -8,24 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Resource Manager resource envelope.
 //
-// Uses Azure REST API version 2023-04-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01-preview.
+// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 //
-// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
+// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ModelVersion struct {
 	pulumi.CustomResourceState
 
-	// [Required] Additional attributes of the entity.
-	ModelVersionProperties ModelVersionResponseOutput `pulumi:"modelVersionProperties"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// [Required] Additional attributes of the entity.
+	Properties ModelVersionPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -37,11 +40,11 @@ func NewModelVersion(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ModelVersionProperties == nil {
-		return nil, errors.New("invalid value for required argument 'ModelVersionProperties'")
-	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
+	}
+	if args.Properties == nil {
+		return nil, errors.New("invalid value for required argument 'Properties'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
@@ -49,7 +52,7 @@ func NewModelVersion(ctx *pulumi.Context,
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
-	args.ModelVersionProperties = args.ModelVersionProperties.ToModelVersionTypeOutput().ApplyT(func(v ModelVersionType) ModelVersionType { return *v.Defaults() }).(ModelVersionTypeOutput)
+	args.Properties = args.Properties.ToModelVersionPropertiesOutput().ApplyT(func(v ModelVersionProperties) ModelVersionProperties { return *v.Defaults() }).(ModelVersionPropertiesOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20210301preview:ModelVersion"),
@@ -111,6 +114,27 @@ func NewModelVersion(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:ModelVersion"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250401:ModelVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250401preview:ModelVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250601:ModelVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250701preview:ModelVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250901:ModelVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20251001preview:ModelVersion"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20251201:ModelVersion"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -146,10 +170,10 @@ func (ModelVersionState) ElementType() reflect.Type {
 }
 
 type modelVersionArgs struct {
-	// [Required] Additional attributes of the entity.
-	ModelVersionProperties ModelVersionType `pulumi:"modelVersionProperties"`
 	// Container name. This is case-sensitive.
 	Name string `pulumi:"name"`
+	// [Required] Additional attributes of the entity.
+	Properties ModelVersionProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Version identifier. This is case-sensitive.
@@ -160,10 +184,10 @@ type modelVersionArgs struct {
 
 // The set of arguments for constructing a ModelVersion resource.
 type ModelVersionArgs struct {
-	// [Required] Additional attributes of the entity.
-	ModelVersionProperties ModelVersionTypeInput
 	// Container name. This is case-sensitive.
 	Name pulumi.StringInput
+	// [Required] Additional attributes of the entity.
+	Properties ModelVersionPropertiesInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Version identifier. This is case-sensitive.
@@ -209,9 +233,9 @@ func (o ModelVersionOutput) ToModelVersionOutputWithContext(ctx context.Context)
 	return o
 }
 
-// [Required] Additional attributes of the entity.
-func (o ModelVersionOutput) ModelVersionProperties() ModelVersionResponseOutput {
-	return o.ApplyT(func(v *ModelVersion) ModelVersionResponseOutput { return v.ModelVersionProperties }).(ModelVersionResponseOutput)
+// The Azure API version of the resource.
+func (o ModelVersionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ModelVersion) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource
@@ -219,9 +243,14 @@ func (o ModelVersionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ModelVersion) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// [Required] Additional attributes of the entity.
+func (o ModelVersionOutput) Properties() ModelVersionPropertiesResponseOutput {
+	return o.ApplyT(func(v *ModelVersion) ModelVersionPropertiesResponseOutput { return v.Properties }).(ModelVersionPropertiesResponseOutput)
+}
+
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ModelVersionOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *ModelVersion) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o ModelVersionOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *ModelVersion) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

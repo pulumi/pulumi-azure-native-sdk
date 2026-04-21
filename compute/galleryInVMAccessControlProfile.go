@@ -8,25 +8,32 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Specifies information about the gallery inVMAccessControlProfile that you want to create or update.
 //
-// Uses Azure REST API version 2024-03-03.
+// Uses Azure REST API version 2024-03-03. In version 2.x of the Azure Native provider, it used API version 2024-03-03.
+//
+// Other available API versions: 2025-03-03. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type GalleryInVMAccessControlProfile struct {
 	pulumi.CustomResourceState
 
-	// Resource location
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Describes the properties of a gallery inVMAccessControlProfile.
 	Properties GalleryInVMAccessControlProfilePropertiesResponseOutput `pulumi:"properties"`
-	// Resource tags
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -46,6 +53,9 @@ func NewGalleryInVMAccessControlProfile(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:compute/v20240303:GalleryInVMAccessControlProfile"),
+		},
+		{
+			Type: pulumi.String("azure-native:compute/v20250303:GalleryInVMAccessControlProfile"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -82,33 +92,33 @@ func (GalleryInVMAccessControlProfileState) ElementType() reflect.Type {
 }
 
 type galleryInVMAccessControlProfileArgs struct {
-	// The name of the Shared Image Gallery in which the InVMAccessControlProfile is to be created.
+	// The name of the Shared Image Gallery.
 	GalleryName string `pulumi:"galleryName"`
-	// The name of the gallery inVMAccessControlProfile to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+	// The name of the gallery inVMAccessControlProfile to be retrieved.
 	InVMAccessControlProfileName *string `pulumi:"inVMAccessControlProfileName"`
-	// Resource location
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Describes the properties of a gallery inVMAccessControlProfile.
 	Properties *GalleryInVMAccessControlProfileProperties `pulumi:"properties"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Resource tags
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a GalleryInVMAccessControlProfile resource.
 type GalleryInVMAccessControlProfileArgs struct {
-	// The name of the Shared Image Gallery in which the InVMAccessControlProfile is to be created.
+	// The name of the Shared Image Gallery.
 	GalleryName pulumi.StringInput
-	// The name of the gallery inVMAccessControlProfile to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
+	// The name of the gallery inVMAccessControlProfile to be retrieved.
 	InVMAccessControlProfileName pulumi.StringPtrInput
-	// Resource location
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Describes the properties of a gallery inVMAccessControlProfile.
 	Properties GalleryInVMAccessControlProfilePropertiesPtrInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Resource tags
+	// Resource tags.
 	Tags pulumi.StringMapInput
 }
 
@@ -149,12 +159,17 @@ func (o GalleryInVMAccessControlProfileOutput) ToGalleryInVMAccessControlProfile
 	return o
 }
 
-// Resource location
+// The Azure API version of the resource.
+func (o GalleryInVMAccessControlProfileOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *GalleryInVMAccessControlProfile) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The geo-location where the resource lives
 func (o GalleryInVMAccessControlProfileOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *GalleryInVMAccessControlProfile) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o GalleryInVMAccessControlProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GalleryInVMAccessControlProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -166,12 +181,17 @@ func (o GalleryInVMAccessControlProfileOutput) Properties() GalleryInVMAccessCon
 	}).(GalleryInVMAccessControlProfilePropertiesResponseOutput)
 }
 
-// Resource tags
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o GalleryInVMAccessControlProfileOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *GalleryInVMAccessControlProfile) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o GalleryInVMAccessControlProfileOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GalleryInVMAccessControlProfile) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o GalleryInVMAccessControlProfileOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *GalleryInVMAccessControlProfile) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

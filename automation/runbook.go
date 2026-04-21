@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Definition of the runbook type.
 //
-// Uses Azure REST API version 2022-08-08. In version 1.x of the Azure Native provider, it used API version 2019-06-01.
+// Uses Azure REST API version 2024-10-23. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
 //
-// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
+// Other available API versions: 2015-10-31, 2018-06-30, 2019-06-01, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Runbook struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the creation time.
 	CreationTime pulumi.StringPtrOutput `pulumi:"creationTime"`
 	// Gets or sets the description.
@@ -34,8 +37,8 @@ type Runbook struct {
 	LastModifiedBy pulumi.StringPtrOutput `pulumi:"lastModifiedBy"`
 	// Gets or sets the last modified time.
 	LastModifiedTime pulumi.StringPtrOutput `pulumi:"lastModifiedTime"`
-	// The Azure Region where the resource lives
-	Location pulumi.StringPtrOutput `pulumi:"location"`
+	// The geo-location where the resource lives
+	Location pulumi.StringOutput `pulumi:"location"`
 	// Gets or sets the option to log activity trace of the runbook.
 	LogActivityTrace pulumi.IntPtrOutput `pulumi:"logActivityTrace"`
 	// Gets or sets progress log option.
@@ -54,11 +57,15 @@ type Runbook struct {
 	PublishContentLink ContentLinkResponsePtrOutput `pulumi:"publishContentLink"`
 	// Gets or sets the type of the runbook.
 	RunbookType pulumi.StringPtrOutput `pulumi:"runbookType"`
+	// Runtime Environment of the runbook execution.
+	RuntimeEnvironment pulumi.StringPtrOutput `pulumi:"runtimeEnvironment"`
 	// Gets or sets the state of the runbook.
 	State pulumi.StringPtrOutput `pulumi:"state"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -159,6 +166,8 @@ type runbookArgs struct {
 	RunbookName *string `pulumi:"runbookName"`
 	// Gets or sets the type of the runbook.
 	RunbookType string `pulumi:"runbookType"`
+	// Environment of the runbook.
+	RuntimeEnvironment *string `pulumi:"runtimeEnvironment"`
 	// Gets or sets the tags attached to the resource.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -189,6 +198,8 @@ type RunbookArgs struct {
 	RunbookName pulumi.StringPtrInput
 	// Gets or sets the type of the runbook.
 	RunbookType pulumi.StringInput
+	// Environment of the runbook.
+	RuntimeEnvironment pulumi.StringPtrInput
 	// Gets or sets the tags attached to the resource.
 	Tags pulumi.StringMapInput
 }
@@ -230,6 +241,11 @@ func (o RunbookOutput) ToRunbookOutputWithContext(ctx context.Context) RunbookOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o RunbookOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Runbook) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Gets or sets the creation time.
 func (o RunbookOutput) CreationTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Runbook) pulumi.StringPtrOutput { return v.CreationTime }).(pulumi.StringPtrOutput)
@@ -265,9 +281,9 @@ func (o RunbookOutput) LastModifiedTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Runbook) pulumi.StringPtrOutput { return v.LastModifiedTime }).(pulumi.StringPtrOutput)
 }
 
-// The Azure Region where the resource lives
-func (o RunbookOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Runbook) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
+// The geo-location where the resource lives
+func (o RunbookOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Runbook) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // Gets or sets the option to log activity trace of the runbook.
@@ -315,9 +331,19 @@ func (o RunbookOutput) RunbookType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Runbook) pulumi.StringPtrOutput { return v.RunbookType }).(pulumi.StringPtrOutput)
 }
 
+// Runtime Environment of the runbook execution.
+func (o RunbookOutput) RuntimeEnvironment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Runbook) pulumi.StringPtrOutput { return v.RuntimeEnvironment }).(pulumi.StringPtrOutput)
+}
+
 // Gets or sets the state of the runbook.
 func (o RunbookOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Runbook) pulumi.StringPtrOutput { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o RunbookOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Runbook) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.
@@ -325,7 +351,7 @@ func (o RunbookOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Runbook) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o RunbookOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Runbook) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

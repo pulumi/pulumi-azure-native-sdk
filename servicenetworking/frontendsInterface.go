@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Frontend Subresource of Traffic Controller.
+// Frontend Sub Resource of Traffic Controller.
 //
-// Uses Azure REST API version 2023-05-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-10-01-preview.
+// Uses Azure REST API version 2025-01-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01-preview.
 //
-// Other available API versions: 2022-10-01-preview, 2023-11-01, 2024-05-01-preview, 2025-01-01, 2025-03-01-preview.
+// Other available API versions: 2023-05-01-preview, 2023-11-01, 2024-05-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicenetworking [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type FrontendsInterface struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The Fully Qualified Domain Name of the DNS record associated to a Traffic Controller frontend.
 	Fqdn pulumi.StringOutput `pulumi:"fqdn"`
 	// The geo-location where the resource lives
@@ -29,7 +32,7 @@ type FrontendsInterface struct {
 	// Provisioning State of Traffic Controller Frontend Resource
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -166,6 +169,11 @@ func (o FrontendsInterfaceOutput) ToFrontendsInterfaceOutputWithContext(ctx cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o FrontendsInterfaceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *FrontendsInterface) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The Fully Qualified Domain Name of the DNS record associated to a Traffic Controller frontend.
 func (o FrontendsInterfaceOutput) Fqdn() pulumi.StringOutput {
 	return o.ApplyT(func(v *FrontendsInterface) pulumi.StringOutput { return v.Fqdn }).(pulumi.StringOutput)
@@ -187,8 +195,8 @@ func (o FrontendsInterfaceOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o FrontendsInterfaceOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *FrontendsInterface) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o FrontendsInterfaceOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *FrontendsInterface) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

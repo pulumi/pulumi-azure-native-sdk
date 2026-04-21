@@ -8,23 +8,28 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // NSX DHCP
 //
-// Uses Azure REST API version 2022-05-01. In version 1.x of the Azure Native provider, it used API version 2020-07-17-preview.
+// Uses Azure REST API version 2023-09-01. In version 2.x of the Azure Native provider, it used API version 2022-05-01.
 //
-// Other available API versions: 2021-01-01-preview, 2023-03-01, 2023-09-01.
+// Other available API versions: 2022-05-01, 2023-03-01, 2024-09-01, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type WorkloadNetworkDhcp struct {
 	pulumi.CustomResourceState
 
-	// Resource name.
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// DHCP properties.
+	// The resource-specific properties for this resource.
 	Properties pulumi.AnyOutput `pulumi:"properties"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -63,6 +68,12 @@ func NewWorkloadNetworkDhcp(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:avs/v20230901:WorkloadNetworkDhcp"),
 		},
+		{
+			Type: pulumi.String("azure-native:avs/v20240901:WorkloadNetworkDhcp"),
+		},
+		{
+			Type: pulumi.String("azure-native:avs/v20250901:WorkloadNetworkDhcp"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -98,11 +109,11 @@ func (WorkloadNetworkDhcpState) ElementType() reflect.Type {
 }
 
 type workloadNetworkDhcpArgs struct {
-	// NSX DHCP identifier. Generally the same as the DHCP display name
+	// The ID of the DHCP configuration
 	DhcpId *string `pulumi:"dhcpId"`
 	// Name of the private cloud
 	PrivateCloudName string `pulumi:"privateCloudName"`
-	// DHCP properties.
+	// The resource-specific properties for this resource.
 	Properties interface{} `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -110,11 +121,11 @@ type workloadNetworkDhcpArgs struct {
 
 // The set of arguments for constructing a WorkloadNetworkDhcp resource.
 type WorkloadNetworkDhcpArgs struct {
-	// NSX DHCP identifier. Generally the same as the DHCP display name
+	// The ID of the DHCP configuration
 	DhcpId pulumi.StringPtrInput
 	// Name of the private cloud
 	PrivateCloudName pulumi.StringInput
-	// DHCP properties.
+	// The resource-specific properties for this resource.
 	Properties pulumi.Input
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -157,17 +168,27 @@ func (o WorkloadNetworkDhcpOutput) ToWorkloadNetworkDhcpOutputWithContext(ctx co
 	return o
 }
 
-// Resource name.
+// The Azure API version of the resource.
+func (o WorkloadNetworkDhcpOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WorkloadNetworkDhcp) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The name of the resource
 func (o WorkloadNetworkDhcpOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadNetworkDhcp) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// DHCP properties.
+// The resource-specific properties for this resource.
 func (o WorkloadNetworkDhcpOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v *WorkloadNetworkDhcp) pulumi.AnyOutput { return v.Properties }).(pulumi.AnyOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o WorkloadNetworkDhcpOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *WorkloadNetworkDhcp) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o WorkloadNetworkDhcpOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadNetworkDhcp) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

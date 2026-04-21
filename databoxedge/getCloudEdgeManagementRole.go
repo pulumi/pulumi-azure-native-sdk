@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a specific role by name.
 //
-// Uses Azure REST API version 2022-03-01.
+// Uses Azure REST API version 2023-07-01.
 func LookupCloudEdgeManagementRole(ctx *pulumi.Context, args *LookupCloudEdgeManagementRoleArgs, opts ...pulumi.InvokeOption) (*LookupCloudEdgeManagementRoleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCloudEdgeManagementRoleResult
@@ -37,6 +38,8 @@ type LookupCloudEdgeManagementRoleArgs struct {
 // For more information, refer to: https://docs.microsoft.com/en-us/azure/databox-online/azure-stack-edge-gpu-virtual-machine-overview
 // By using this feature, you agree to the preview legal terms. See the https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/ for additional details.
 type LookupCloudEdgeManagementRoleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Edge Profile of the resource
 	EdgeProfile EdgeProfileResponse `pulumi:"edgeProfile"`
 	// The path ID that uniquely identifies the object.
@@ -51,7 +54,7 @@ type LookupCloudEdgeManagementRoleResult struct {
 	// Role status.
 	RoleStatus string `pulumi:"roleStatus"`
 	// Metadata pertaining to creation and last modification of Role
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type string `pulumi:"type"`
 }
@@ -95,6 +98,11 @@ func (o LookupCloudEdgeManagementRoleResultOutput) ToLookupCloudEdgeManagementRo
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupCloudEdgeManagementRoleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCloudEdgeManagementRoleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Edge Profile of the resource
 func (o LookupCloudEdgeManagementRoleResultOutput) EdgeProfile() EdgeProfileResponseOutput {
 	return o.ApplyT(func(v LookupCloudEdgeManagementRoleResult) EdgeProfileResponse { return v.EdgeProfile }).(EdgeProfileResponseOutput)
@@ -127,8 +135,8 @@ func (o LookupCloudEdgeManagementRoleResultOutput) RoleStatus() pulumi.StringOut
 }
 
 // Metadata pertaining to creation and last modification of Role
-func (o LookupCloudEdgeManagementRoleResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupCloudEdgeManagementRoleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupCloudEdgeManagementRoleResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupCloudEdgeManagementRoleResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.

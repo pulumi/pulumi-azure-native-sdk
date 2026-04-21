@@ -8,20 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource representation of a IacProfile.
 //
-// Uses Azure REST API version 2024-05-01-preview.
+// Uses Azure REST API version 2024-05-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-05-01-preview.
 //
-// Other available API versions: 2024-08-01-preview, 2025-03-01-preview.
+// Other available API versions: 2024-08-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type IacProfile struct {
 	pulumi.CustomResourceState
 
 	// Determines the authorization status of requests.
 	AuthStatus pulumi.StringOutput `pulumi:"authStatus"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Repository Branch Name
 	BranchName pulumi.StringPtrOutput `pulumi:"branchName"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -50,7 +53,7 @@ type IacProfile struct {
 	// Terraform Container Name
 	StorageContainerName pulumi.StringPtrOutput `pulumi:"storageContainerName"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags      pulumi.StringMapOutput                   `pulumi:"tags"`
 	Templates IacTemplatePropertiesResponseArrayOutput `pulumi:"templates"`
@@ -213,6 +216,11 @@ func (o IacProfileOutput) AuthStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *IacProfile) pulumi.StringOutput { return v.AuthStatus }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o IacProfileOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *IacProfile) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Repository Branch Name
 func (o IacProfileOutput) BranchName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IacProfile) pulumi.StringPtrOutput { return v.BranchName }).(pulumi.StringPtrOutput)
@@ -283,8 +291,8 @@ func (o IacProfileOutput) StorageContainerName() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o IacProfileOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *IacProfile) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o IacProfileOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *IacProfile) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

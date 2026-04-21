@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The storage account blob inventory policy.
 //
-// Uses Azure REST API version 2022-09-01. In version 1.x of the Azure Native provider, it used API version 2021-02-01.
+// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 //
-// Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01, 2024-01-01.
+// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type BlobInventoryPolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Returns the last modified date and time of the blob inventory policy.
 	LastModifiedTime pulumi.StringOutput `pulumi:"lastModifiedTime"`
 	// The name of the resource
@@ -27,7 +30,7 @@ type BlobInventoryPolicy struct {
 	// The storage account blob inventory policy object. It is composed of policy rules.
 	Policy BlobInventoryPolicySchemaResponseOutput `pulumi:"policy"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -90,6 +93,12 @@ func NewBlobInventoryPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storage/v20240101:BlobInventoryPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:storage/v20250101:BlobInventoryPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:storage/v20250601:BlobInventoryPolicy"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -185,6 +194,11 @@ func (o BlobInventoryPolicyOutput) ToBlobInventoryPolicyOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o BlobInventoryPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BlobInventoryPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Returns the last modified date and time of the blob inventory policy.
 func (o BlobInventoryPolicyOutput) LastModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *BlobInventoryPolicy) pulumi.StringOutput { return v.LastModifiedTime }).(pulumi.StringOutput)
@@ -201,8 +215,8 @@ func (o BlobInventoryPolicyOutput) Policy() BlobInventoryPolicySchemaResponseOut
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o BlobInventoryPolicyOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *BlobInventoryPolicy) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o BlobInventoryPolicyOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *BlobInventoryPolicy) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

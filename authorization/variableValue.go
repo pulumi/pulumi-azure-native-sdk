@@ -8,22 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The variable value.
 //
-// Uses Azure REST API version 2022-08-01-preview.
+// Uses Azure REST API version 2022-08-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-08-01-preview.
 //
-// Other available API versions: 2024-12-01-preview.
+// Other available API versions: 2024-12-01-preview, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type VariableValue struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the variable.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource (Microsoft.Authorization/variables/values).
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Variable value column value array.
@@ -49,6 +52,9 @@ func NewVariableValue(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:authorization/v20241201preview:VariableValue"),
+		},
+		{
+			Type: pulumi.String("azure-native:authorization/v20251201preview:VariableValue"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -140,14 +146,19 @@ func (o VariableValueOutput) ToVariableValueOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o VariableValueOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VariableValue) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The name of the variable.
 func (o VariableValueOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VariableValue) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o VariableValueOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *VariableValue) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o VariableValueOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *VariableValue) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The type of the resource (Microsoft.Authorization/variables/values).

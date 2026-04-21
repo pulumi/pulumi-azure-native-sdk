@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the details of the management group.
 //
-// Uses Azure REST API version 2021-04-01.
+// Uses Azure REST API version 2023-04-01.
 //
-// Other available API versions: 2023-04-01.
+// Other available API versions: 2021-04-01, 2024-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native management [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupManagementGroup(ctx *pulumi.Context, args *LookupManagementGroupArgs, opts ...pulumi.InvokeOption) (*LookupManagementGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagementGroupResult
@@ -39,19 +40,23 @@ type LookupManagementGroupArgs struct {
 
 // The management group details.
 type LookupManagementGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The list of children.
 	Children []ManagementGroupChildInfoResponse `pulumi:"children"`
 	// The details of a management group.
 	Details *ManagementGroupDetailsResponse `pulumi:"details"`
 	// The friendly name of the management group.
 	DisplayName *string `pulumi:"displayName"`
-	// The fully qualified ID for the management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// The name of the management group. For example, 00000000-0000-0000-0000-000000000000
+	// The name of the resource
 	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// The AAD Tenant ID associated with the management group. For example, 00000000-0000-0000-0000-000000000000
 	TenantId *string `pulumi:"tenantId"`
-	// The type of the resource.  For example, Microsoft.Management/managementGroups
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -94,6 +99,11 @@ func (o LookupManagementGroupResultOutput) ToLookupManagementGroupResultOutputWi
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupManagementGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagementGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The list of children.
 func (o LookupManagementGroupResultOutput) Children() ManagementGroupChildInfoResponseArrayOutput {
 	return o.ApplyT(func(v LookupManagementGroupResult) []ManagementGroupChildInfoResponse { return v.Children }).(ManagementGroupChildInfoResponseArrayOutput)
@@ -109,14 +119,19 @@ func (o LookupManagementGroupResultOutput) DisplayName() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v LookupManagementGroupResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// The fully qualified ID for the management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupManagementGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the management group. For example, 00000000-0000-0000-0000-000000000000
+// The name of the resource
 func (o LookupManagementGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementGroupResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupManagementGroupResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupManagementGroupResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The AAD Tenant ID associated with the management group. For example, 00000000-0000-0000-0000-000000000000
@@ -124,7 +139,7 @@ func (o LookupManagementGroupResultOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagementGroupResult) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
-// The type of the resource.  For example, Microsoft.Management/managementGroups
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupManagementGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagementGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

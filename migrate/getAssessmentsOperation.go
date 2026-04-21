@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Assessment
 //
-// Uses Azure REST API version 2023-04-01-preview.
+// Uses Azure REST API version 2024-01-01-preview.
 //
-// Other available API versions: 2023-03-15, 2023-05-01-preview, 2023-09-09-preview, 2024-01-01-preview.
+// Other available API versions: 2023-03-15, 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview, 2024-01-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAssessmentsOperation(ctx *pulumi.Context, args *LookupAssessmentsOperationArgs, opts ...pulumi.InvokeOption) (*LookupAssessmentsOperationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAssessmentsOperationResult
@@ -45,6 +46,8 @@ type LookupAssessmentsOperationResult struct {
 	AssessmentErrorSummary map[string]int `pulumi:"assessmentErrorSummary"`
 	// Assessment type of the assessment.
 	AssessmentType string `pulumi:"assessmentType"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the azure storage type. Premium, Standard etc.
 	AzureDiskTypes []string `pulumi:"azureDiskTypes"`
 	// Gets or sets the user configurable setting to display the azure hybrid use
@@ -132,7 +135,7 @@ type LookupAssessmentsOperationResult struct {
 	// assessment.
 	SuitabilitySummary map[string]int `pulumi:"suitabilitySummary"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Time Range for which the historic utilization data should be considered for
 	// assessment.
 	TimeRange *string `pulumi:"timeRange"`
@@ -196,6 +199,11 @@ func (o LookupAssessmentsOperationResultOutput) AssessmentErrorSummary() pulumi.
 // Assessment type of the assessment.
 func (o LookupAssessmentsOperationResultOutput) AssessmentType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssessmentsOperationResult) string { return v.AssessmentType }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAssessmentsOperationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAssessmentsOperationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the azure storage type. Premium, Standard etc.
@@ -402,8 +410,8 @@ func (o LookupAssessmentsOperationResultOutput) SuitabilitySummary() pulumi.IntM
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupAssessmentsOperationResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAssessmentsOperationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupAssessmentsOperationResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAssessmentsOperationResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Time Range for which the historic utilization data should be considered for

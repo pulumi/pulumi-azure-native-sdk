@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2022-10-27.
 //
-// Other available API versions: 2021-10-31-preview.
+// Other available API versions: 2022-04-15-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resourceconnector [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAppliance(ctx *pulumi.Context, args *LookupApplianceArgs, opts ...pulumi.InvokeOption) (*LookupApplianceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApplianceResult
@@ -35,6 +36,8 @@ type LookupApplianceArgs struct {
 
 // Appliances definition.
 type LookupApplianceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Represents a supported Fabric/Infra. (AKSEdge etc...).
 	Distro *string `pulumi:"distro"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -42,7 +45,7 @@ type LookupApplianceResult struct {
 	// Identity for the resource.
 	Identity *IdentityResponse `pulumi:"identity"`
 	// Contains infrastructure information about the Appliance
-	InfrastructureConfig *AppliancePropertiesResponseInfrastructureConfig `pulumi:"infrastructureConfig"`
+	InfrastructureConfig *AppliancePropertiesInfrastructureConfigResponse `pulumi:"infrastructureConfig"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
@@ -51,10 +54,10 @@ type LookupApplianceResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Certificates pair used to download MSI certificate from HIS. Can only be set once.
 	PublicKey *string `pulumi:"publicKey"`
-	// Appliance’s health and state of connection to on-prem
+	// Appliance’s health and state of connection to on-prem. This list of values is not exhaustive.
 	Status string `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -110,6 +113,11 @@ func (o LookupApplianceResultOutput) ToLookupApplianceResultOutputWithContext(ct
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupApplianceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApplianceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Represents a supported Fabric/Infra. (AKSEdge etc...).
 func (o LookupApplianceResultOutput) Distro() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplianceResult) *string { return v.Distro }).(pulumi.StringPtrOutput)
@@ -126,10 +134,10 @@ func (o LookupApplianceResultOutput) Identity() IdentityResponsePtrOutput {
 }
 
 // Contains infrastructure information about the Appliance
-func (o LookupApplianceResultOutput) InfrastructureConfig() AppliancePropertiesResponseInfrastructureConfigPtrOutput {
-	return o.ApplyT(func(v LookupApplianceResult) *AppliancePropertiesResponseInfrastructureConfig {
+func (o LookupApplianceResultOutput) InfrastructureConfig() AppliancePropertiesInfrastructureConfigResponsePtrOutput {
+	return o.ApplyT(func(v LookupApplianceResult) *AppliancePropertiesInfrastructureConfigResponse {
 		return v.InfrastructureConfig
-	}).(AppliancePropertiesResponseInfrastructureConfigPtrOutput)
+	}).(AppliancePropertiesInfrastructureConfigResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -152,14 +160,14 @@ func (o LookupApplianceResultOutput) PublicKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupApplianceResult) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
 }
 
-// Appliance’s health and state of connection to on-prem
+// Appliance’s health and state of connection to on-prem. This list of values is not exhaustive.
 func (o LookupApplianceResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplianceResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupApplianceResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupApplianceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupApplianceResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupApplianceResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.
