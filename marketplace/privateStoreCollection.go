@@ -8,13 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Collection data structure.
 //
-// Uses Azure REST API version 2023-01-01. In version 1.x of the Azure Native provider, it used API version 2021-12-01.
+// Uses Azure REST API version 2023-01-01. In version 2.x of the Azure Native provider, it used API version 2023-01-01.
+//
+// Other available API versions: 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native marketplace [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type PrivateStoreCollection struct {
 	pulumi.CustomResourceState
 
@@ -26,6 +28,8 @@ type PrivateStoreCollection struct {
 	ApproveAllItems pulumi.BoolOutput `pulumi:"approveAllItems"`
 	// Gets the modified date of all items approved.
 	ApproveAllItemsModifiedAt pulumi.StringOutput `pulumi:"approveAllItemsModifiedAt"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the association with Commercial's Billing Account.
 	Claim pulumi.StringPtrOutput `pulumi:"claim"`
 	// Gets collection Id.
@@ -71,6 +75,9 @@ func NewPrivateStoreCollection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:marketplace/v20230101:PrivateStoreCollection"),
+		},
+		{
+			Type: pulumi.String("azure-native:marketplace/v20250101:PrivateStoreCollection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -196,6 +203,11 @@ func (o PrivateStoreCollectionOutput) ApproveAllItems() pulumi.BoolOutput {
 // Gets the modified date of all items approved.
 func (o PrivateStoreCollectionOutput) ApproveAllItemsModifiedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateStoreCollection) pulumi.StringOutput { return v.ApproveAllItemsModifiedAt }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o PrivateStoreCollectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateStoreCollection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the association with Commercial's Billing Account.

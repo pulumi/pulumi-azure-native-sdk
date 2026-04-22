@@ -8,18 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The provisionedClusters resource definition.
 //
-// Uses Azure REST API version 2022-09-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-05-01-preview.
-//
-// Other available API versions: 2022-05-01-preview.
+// Uses Azure REST API version 2022-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
 type ProvisionedCluster struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion  pulumi.StringOutput                                          `pulumi:"azureApiVersion"`
 	ExtendedLocation ProvisionedClustersResponseResponseExtendedLocationPtrOutput `pulumi:"extendedLocation"`
 	// Identity for the Provisioned cluster.
 	Identity ProvisionedClusterIdentityResponsePtrOutput `pulumi:"identity"`
@@ -29,7 +30,7 @@ type ProvisionedCluster struct {
 	Name       pulumi.StringOutput                                 `pulumi:"name"`
 	Properties ProvisionedClustersResponsePropertiesResponseOutput `pulumi:"properties"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -160,6 +161,11 @@ func (o ProvisionedClusterOutput) ToProvisionedClusterOutputWithContext(ctx cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ProvisionedClusterOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ProvisionedCluster) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 func (o ProvisionedClusterOutput) ExtendedLocation() ProvisionedClustersResponseResponseExtendedLocationPtrOutput {
 	return o.ApplyT(func(v *ProvisionedCluster) ProvisionedClustersResponseResponseExtendedLocationPtrOutput {
 		return v.ExtendedLocation
@@ -186,8 +192,8 @@ func (o ProvisionedClusterOutput) Properties() ProvisionedClustersResponseProper
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o ProvisionedClusterOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *ProvisionedCluster) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o ProvisionedClusterOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *ProvisionedCluster) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Resource tags.

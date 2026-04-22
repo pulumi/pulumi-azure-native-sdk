@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get properties of a namespace.
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2025-02-15.
 //
-// Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupNamespace(ctx *pulumi.Context, args *LookupNamespaceArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNamespaceResult
@@ -35,13 +36,18 @@ type LookupNamespaceArgs struct {
 
 // Namespace resource.
 type LookupNamespaceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified identifier of the resource.
 	Id string `pulumi:"id"`
 	// Identity information for the Namespace resource.
 	Identity *IdentityInfoResponse `pulumi:"identity"`
 	// This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
 	InboundIpRules []InboundIpRuleResponse `pulumi:"inboundIpRules"`
-	// Allows the user to specify if the service is zone-redundant. This is a required property and user needs to specify this value explicitly.
+	// This is an optional property and it allows the user to specify if the namespace resource supports zone-redundancy capability or not. If this
+	// property is not specified explicitly by the user, its default value depends on the following conditions:
+	//     a. For Availability Zones enabled regions - The default property value would be true.
+	//     b. For non-Availability Zones enabled regions - The default property value would be false.
 	// Once specified, this property cannot be updated.
 	IsZoneRedundant *bool `pulumi:"isZoneRedundant"`
 	// Location of the resource.
@@ -49,7 +55,8 @@ type LookupNamespaceResult struct {
 	// Minimum TLS version of the publisher allowed to publish to this namespace. Only TLS version 1.2 is supported.
 	MinimumTlsVersionAllowed *string `pulumi:"minimumTlsVersionAllowed"`
 	// Name of the resource.
-	Name                       string                              `pulumi:"name"`
+	Name string `pulumi:"name"`
+	// List of private endpoint connections.
 	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// Provisioning state of the namespace resource.
 	ProvisioningState string `pulumi:"provisioningState"`
@@ -58,8 +65,8 @@ type LookupNamespaceResult struct {
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Represents available Sku pricing tiers.
 	Sku *NamespaceSkuResponse `pulumi:"sku"`
-	// The system metadata relating to the namespace resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The system metadata relating to the Event Grid resource.
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// Topic spaces configuration information for the namespace resource
@@ -115,6 +122,11 @@ func (o LookupNamespaceResultOutput) ToLookupNamespaceResultOutputWithContext(ct
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupNamespaceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified identifier of the resource.
 func (o LookupNamespaceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Id }).(pulumi.StringOutput)
@@ -130,7 +142,12 @@ func (o LookupNamespaceResultOutput) InboundIpRules() InboundIpRuleResponseArray
 	return o.ApplyT(func(v LookupNamespaceResult) []InboundIpRuleResponse { return v.InboundIpRules }).(InboundIpRuleResponseArrayOutput)
 }
 
-// Allows the user to specify if the service is zone-redundant. This is a required property and user needs to specify this value explicitly.
+// This is an optional property and it allows the user to specify if the namespace resource supports zone-redundancy capability or not. If this
+// property is not specified explicitly by the user, its default value depends on the following conditions:
+//
+//	a. For Availability Zones enabled regions - The default property value would be true.
+//	b. For non-Availability Zones enabled regions - The default property value would be false.
+//
 // Once specified, this property cannot be updated.
 func (o LookupNamespaceResultOutput) IsZoneRedundant() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) *bool { return v.IsZoneRedundant }).(pulumi.BoolPtrOutput)
@@ -151,6 +168,7 @@ func (o LookupNamespaceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// List of private endpoint connections.
 func (o LookupNamespaceResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) []PrivateEndpointConnectionResponse { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionResponseArrayOutput)
 }
@@ -171,9 +189,9 @@ func (o LookupNamespaceResultOutput) Sku() NamespaceSkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupNamespaceResult) *NamespaceSkuResponse { return v.Sku }).(NamespaceSkuResponsePtrOutput)
 }
 
-// The system metadata relating to the namespace resource.
-func (o LookupNamespaceResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupNamespaceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+// The system metadata relating to the Event Grid resource.
+func (o LookupNamespaceResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupNamespaceResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Tags of the resource.

@@ -7,15 +7,17 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Watcher
 //
-// Uses Azure REST API version 2023-09-01-preview.
+// Uses Azure REST API version 2024-10-01-preview.
 //
-// Other available API versions: 2024-07-19-preview, 2024-10-01-preview, 2025-01-02.
+// Other available API versions: 2023-09-01-preview, 2024-07-19-preview, 2025-01-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databasewatcher [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWatcher(ctx *pulumi.Context, args *LookupWatcherArgs, opts ...pulumi.InvokeOption) (*LookupWatcherResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWatcherResult
@@ -35,12 +37,16 @@ type LookupWatcherArgs struct {
 
 // The DatabaseWatcherProviderHub resource.
 type LookupWatcherResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The data store for collected monitoring data.
 	Datastore *DatastoreResponse `pulumi:"datastore"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// The resource ID of a user-assigned managed identity that will be assigned to a new alert rule.
+	DefaultAlertRuleIdentityResourceId *string `pulumi:"defaultAlertRuleIdentityResourceId"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The managed service identities assigned to this resource.
-	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *commontypesv4.ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
@@ -50,7 +56,7 @@ type LookupWatcherResult struct {
 	// The monitoring collection status of the watcher.
 	Status string `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -92,19 +98,29 @@ func (o LookupWatcherResultOutput) ToLookupWatcherResultOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupWatcherResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWatcherResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The data store for collected monitoring data.
 func (o LookupWatcherResultOutput) Datastore() DatastoreResponsePtrOutput {
 	return o.ApplyT(func(v LookupWatcherResult) *DatastoreResponse { return v.Datastore }).(DatastoreResponsePtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// The resource ID of a user-assigned managed identity that will be assigned to a new alert rule.
+func (o LookupWatcherResultOutput) DefaultAlertRuleIdentityResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupWatcherResult) *string { return v.DefaultAlertRuleIdentityResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupWatcherResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWatcherResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The managed service identities assigned to this resource.
-func (o LookupWatcherResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupWatcherResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o LookupWatcherResultOutput) Identity() commontypesv4.ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupWatcherResult) *commontypesv4.ManagedServiceIdentityResponse { return v.Identity }).(commontypesv4.ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -128,8 +144,8 @@ func (o LookupWatcherResultOutput) Status() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupWatcherResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupWatcherResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupWatcherResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupWatcherResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

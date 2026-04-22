@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The bandwidth schedule details.
 //
-// Uses Azure REST API version 2022-03-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
+// Uses Azure REST API version 2023-07-01. In version 2.x of the Azure Native provider, it used API version 2022-03-01.
 //
-// Other available API versions: 2023-01-01-preview, 2023-07-01, 2023-12-01.
+// Other available API versions: 2022-03-01, 2022-04-01-preview, 2022-12-01-preview, 2023-01-01-preview, 2023-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databoxedge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type BandwidthSchedule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The days of the week when this schedule is applicable.
 	Days pulumi.StringArrayOutput `pulumi:"days"`
 	// The object name.
@@ -31,7 +34,7 @@ type BandwidthSchedule struct {
 	// The stop time of the schedule in UTC.
 	Stop pulumi.StringOutput `pulumi:"stop"`
 	// Metadata pertaining to creation and last modification of BandwidthSchedule
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -219,6 +222,11 @@ func (o BandwidthScheduleOutput) ToBandwidthScheduleOutputWithContext(ctx contex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o BandwidthScheduleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BandwidthSchedule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The days of the week when this schedule is applicable.
 func (o BandwidthScheduleOutput) Days() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BandwidthSchedule) pulumi.StringArrayOutput { return v.Days }).(pulumi.StringArrayOutput)
@@ -245,8 +253,8 @@ func (o BandwidthScheduleOutput) Stop() pulumi.StringOutput {
 }
 
 // Metadata pertaining to creation and last modification of BandwidthSchedule
-func (o BandwidthScheduleOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *BandwidthSchedule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o BandwidthScheduleOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *BandwidthSchedule) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.

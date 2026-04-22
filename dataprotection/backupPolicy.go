@@ -8,24 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // BaseBackupPolicy resource
 //
-// Uses Azure REST API version 2023-01-01. In version 1.x of the Azure Native provider, it used API version 2021-01-01.
+// Uses Azure REST API version 2025-01-01. In version 2.x of the Azure Native provider, it used API version 2023-01-01.
 //
-// Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01, 2023-12-01, 2024-02-01-preview, 2024-03-01, 2024-04-01, 2025-01-01, 2025-02-01.
+// Other available API versions: 2023-01-01, 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01, 2023-12-01, 2024-02-01-preview, 2024-03-01, 2024-04-01, 2025-02-01, 2025-07-01, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dataprotection [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type BackupPolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource name associated with the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// BaseBackupPolicyResource properties
 	Properties BackupPolicyResponseOutput `pulumi:"properties"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv4.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -128,6 +131,12 @@ func NewBackupPolicy(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dataprotection/v20250201:BackupPolicy"),
 		},
+		{
+			Type: pulumi.String("azure-native:dataprotection/v20250701:BackupPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:dataprotection/v20250901:BackupPolicy"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -222,6 +231,11 @@ func (o BackupPolicyOutput) ToBackupPolicyOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The Azure API version of the resource.
+func (o BackupPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Resource name associated with the resource.
 func (o BackupPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -233,8 +247,8 @@ func (o BackupPolicyOutput) Properties() BackupPolicyResponseOutput {
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o BackupPolicyOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *BackupPolicy) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o BackupPolicyOutput) SystemData() commontypesv4.SystemDataResponseOutput {
+	return o.ApplyT(func(v *BackupPolicy) commontypesv4.SystemDataResponseOutput { return v.SystemData }).(commontypesv4.SystemDataResponseOutput)
 }
 
 // Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...

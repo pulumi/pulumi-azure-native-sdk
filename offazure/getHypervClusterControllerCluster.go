@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Method to get a Hyper-V cluster.
 //
-// Uses Azure REST API version 2023-06-06.
+// Uses Azure REST API version 2023-10-01-preview.
 //
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Other available API versions: 2023-06-06, 2024-05-01-preview, 2024-07-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupHypervClusterControllerCluster(ctx *pulumi.Context, args *LookupHypervClusterControllerClusterArgs, opts ...pulumi.InvokeOption) (*LookupHypervClusterControllerClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHypervClusterControllerClusterResult
@@ -37,6 +38,8 @@ type LookupHypervClusterControllerClusterArgs struct {
 
 // A cluster resource belonging to a site resource.
 type LookupHypervClusterControllerClusterResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets the timestamp marking Hyper-V cluster creation.
 	CreatedTimestamp string `pulumi:"createdTimestamp"`
 	// Gets the errors.
@@ -58,7 +61,7 @@ type LookupHypervClusterControllerClusterResult struct {
 	// Gets the status of the Hyper-V cluster.
 	Status string `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Gets the timestamp marking last updated on the Hyper-V cluster.
@@ -100,6 +103,11 @@ func (o LookupHypervClusterControllerClusterResultOutput) ToLookupHypervClusterC
 
 func (o LookupHypervClusterControllerClusterResultOutput) ToLookupHypervClusterControllerClusterResultOutputWithContext(ctx context.Context) LookupHypervClusterControllerClusterResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupHypervClusterControllerClusterResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHypervClusterControllerClusterResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the timestamp marking Hyper-V cluster creation.
@@ -153,8 +161,10 @@ func (o LookupHypervClusterControllerClusterResultOutput) Status() pulumi.String
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupHypervClusterControllerClusterResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupHypervClusterControllerClusterResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupHypervClusterControllerClusterResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupHypervClusterControllerClusterResult) commontypesv3.SystemDataResponse {
+		return v.SystemData
+	}).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

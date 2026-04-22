@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a relation between two resources
 //
-// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01-preview.
+// Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 //
-// Other available API versions: 2021-03-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-09-01, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01.
+// Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type IncidentRelation struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Etag of the azure resource
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// The name of the resource
@@ -33,7 +36,7 @@ type IncidentRelation struct {
 	// The resource type of the related resource
 	RelatedResourceType pulumi.StringOutput `pulumi:"relatedResourceType"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -169,6 +172,18 @@ func NewIncidentRelation(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250301:IncidentRelation"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250401preview:IncidentRelation"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250601:IncidentRelation"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250701preview:IncidentRelation"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250901:IncidentRelation"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -267,6 +282,11 @@ func (o IncidentRelationOutput) ToIncidentRelationOutputWithContext(ctx context.
 	return o
 }
 
+// The Azure API version of the resource.
+func (o IncidentRelationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *IncidentRelation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Etag of the azure resource
 func (o IncidentRelationOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IncidentRelation) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
@@ -298,8 +318,8 @@ func (o IncidentRelationOutput) RelatedResourceType() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o IncidentRelationOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *IncidentRelation) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o IncidentRelationOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *IncidentRelation) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

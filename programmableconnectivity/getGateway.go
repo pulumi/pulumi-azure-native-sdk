@@ -7,13 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Gateway resource by name.
 //
 // Uses Azure REST API version 2024-01-15-preview.
+//
+// Other available API versions: 2025-03-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native programmableconnectivity [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupGateway(ctx *pulumi.Context, args *LookupGatewayArgs, opts ...pulumi.InvokeOption) (*LookupGatewayResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGatewayResult
@@ -25,15 +28,17 @@ func LookupGateway(ctx *pulumi.Context, args *LookupGatewayArgs, opts ...pulumi.
 }
 
 type LookupGatewayArgs struct {
-	// Azure Programmable Connectivity Gateway Name
+	// Azure Programmable Connectivity Gateway Name.
 	GatewayName string `pulumi:"gatewayName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// A Programmable Connectivity Gateway resource
+// A Programmable Connectivity Gateway resource.
 type LookupGatewayResult struct {
-	// Base URL of the Gateway resource. This is the URL that the users would use to make Open API Gateway requests to the Operators via Azure.
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Base URL of the Gateway resource. This is the URL that the users would use to make Network API requests to the Operators via Azure.
 	GatewayBaseUrl string `pulumi:"gatewayBaseUrl"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
@@ -41,12 +46,12 @@ type LookupGatewayResult struct {
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// List of Operator API Connections selected by the user
+	// List of Operator API Connections selected by the user.
 	OperatorApiConnections []string `pulumi:"operatorApiConnections"`
 	// The status of the last operation on the Gateway resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -63,7 +68,7 @@ func LookupGatewayOutput(ctx *pulumi.Context, args LookupGatewayOutputArgs, opts
 }
 
 type LookupGatewayOutputArgs struct {
-	// Azure Programmable Connectivity Gateway Name
+	// Azure Programmable Connectivity Gateway Name.
 	GatewayName pulumi.StringInput `pulumi:"gatewayName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -73,7 +78,7 @@ func (LookupGatewayOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupGatewayArgs)(nil)).Elem()
 }
 
-// A Programmable Connectivity Gateway resource
+// A Programmable Connectivity Gateway resource.
 type LookupGatewayResultOutput struct{ *pulumi.OutputState }
 
 func (LookupGatewayResultOutput) ElementType() reflect.Type {
@@ -88,7 +93,12 @@ func (o LookupGatewayResultOutput) ToLookupGatewayResultOutputWithContext(ctx co
 	return o
 }
 
-// Base URL of the Gateway resource. This is the URL that the users would use to make Open API Gateway requests to the Operators via Azure.
+// The Azure API version of the resource.
+func (o LookupGatewayResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGatewayResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Base URL of the Gateway resource. This is the URL that the users would use to make Network API requests to the Operators via Azure.
 func (o LookupGatewayResultOutput) GatewayBaseUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayResult) string { return v.GatewayBaseUrl }).(pulumi.StringOutput)
 }
@@ -108,7 +118,7 @@ func (o LookupGatewayResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGatewayResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// List of Operator API Connections selected by the user
+// List of Operator API Connections selected by the user.
 func (o LookupGatewayResultOutput) OperatorApiConnections() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupGatewayResult) []string { return v.OperatorApiConnections }).(pulumi.StringArrayOutput)
 }
@@ -119,8 +129,8 @@ func (o LookupGatewayResultOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupGatewayResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupGatewayResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupGatewayResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupGatewayResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

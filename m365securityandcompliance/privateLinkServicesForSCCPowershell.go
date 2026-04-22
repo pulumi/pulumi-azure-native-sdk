@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The description of the service.
 //
-// Uses Azure REST API version 2021-03-25-preview. In version 1.x of the Azure Native provider, it used API version 2021-03-25-preview.
+// Uses Azure REST API version 2021-03-25-preview.
 type PrivateLinkServicesForSCCPowershell struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// An etag associated with the resource, used for optimistic concurrency when editing it.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Setting indicating whether the service has a managed identity associated with it.
@@ -31,7 +34,7 @@ type PrivateLinkServicesForSCCPowershell struct {
 	// The common properties of a service.
 	Properties ServicesPropertiesResponseOutput `pulumi:"properties"`
 	// Required property for system data
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// The resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The resource type.
@@ -54,12 +57,6 @@ func NewPrivateLinkServicesForSCCPowershell(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:m365securityandcompliance/v20210325preview:PrivateLinkServicesForSCCPowershell"),
-		},
-		{
-			Type: pulumi.String("azure-native:m365securityandcompliance/v20210325preview:privateLinkServicesForSCCPowershell"),
-		},
-		{
-			Type: pulumi.String("azure-native:m365securityandcompliance:privateLinkServicesForSCCPowershell"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -167,6 +164,11 @@ func (o PrivateLinkServicesForSCCPowershellOutput) ToPrivateLinkServicesForSCCPo
 	return o
 }
 
+// The Azure API version of the resource.
+func (o PrivateLinkServicesForSCCPowershellOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateLinkServicesForSCCPowershell) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // An etag associated with the resource, used for optimistic concurrency when editing it.
 func (o PrivateLinkServicesForSCCPowershellOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateLinkServicesForSCCPowershell) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
@@ -200,8 +202,10 @@ func (o PrivateLinkServicesForSCCPowershellOutput) Properties() ServicesProperti
 }
 
 // Required property for system data
-func (o PrivateLinkServicesForSCCPowershellOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *PrivateLinkServicesForSCCPowershell) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o PrivateLinkServicesForSCCPowershellOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *PrivateLinkServicesForSCCPowershell) commontypesv2.SystemDataResponseOutput {
+		return v.SystemData
+	}).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The resource tags.

@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // MEC role.
 //
-// Uses Azure REST API version 2022-03-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
+// Uses Azure REST API version 2023-07-01. In version 2.x of the Azure Native provider, it used API version 2022-03-01.
 type MECRole struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Activation key of the MEC.
 	ConnectionString AsymmetricEncryptedSecretResponsePtrOutput `pulumi:"connectionString"`
 	// Controller Endpoint.
@@ -32,7 +35,7 @@ type MECRole struct {
 	// Role status.
 	RoleStatus pulumi.StringOutput `pulumi:"roleStatus"`
 	// Metadata pertaining to creation and last modification of Role
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -101,13 +104,49 @@ func NewMECRole(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:databoxedge/v20221201preview:MECRole"),
 		},
 		{
+			Type: pulumi.String("azure-native:databoxedge/v20230101preview:CloudEdgeManagementRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20230101preview:IoTRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20230101preview:KubernetesRole"),
+		},
+		{
 			Type: pulumi.String("azure-native:databoxedge/v20230101preview:MECRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20230701:CloudEdgeManagementRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20230701:IoTRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20230701:KubernetesRole"),
 		},
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20230701:MECRole"),
 		},
 		{
+			Type: pulumi.String("azure-native:databoxedge/v20231201:CloudEdgeManagementRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20231201:IoTRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20231201:KubernetesRole"),
+		},
+		{
 			Type: pulumi.String("azure-native:databoxedge/v20231201:MECRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge:CloudEdgeManagementRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge:IoTRole"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge:KubernetesRole"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -221,6 +260,11 @@ func (o MECRoleOutput) ToMECRoleOutputWithContext(ctx context.Context) MECRoleOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o MECRoleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MECRole) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Activation key of the MEC.
 func (o MECRoleOutput) ConnectionString() AsymmetricEncryptedSecretResponsePtrOutput {
 	return o.ApplyT(func(v *MECRole) AsymmetricEncryptedSecretResponsePtrOutput { return v.ConnectionString }).(AsymmetricEncryptedSecretResponsePtrOutput)
@@ -253,8 +297,8 @@ func (o MECRoleOutput) RoleStatus() pulumi.StringOutput {
 }
 
 // Metadata pertaining to creation and last modification of Role
-func (o MECRoleOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *MECRole) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o MECRoleOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *MECRole) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.

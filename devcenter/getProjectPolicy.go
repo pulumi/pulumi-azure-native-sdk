@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2024-10-01-preview.
 //
-// Other available API versions: 2025-02-01.
+// Other available API versions: 2025-02-01, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupProjectPolicy(ctx *pulumi.Context, args *LookupProjectPolicyArgs, opts ...pulumi.InvokeOption) (*LookupProjectPolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProjectPolicyResult
@@ -37,6 +38,8 @@ type LookupProjectPolicyArgs struct {
 
 // Represents an project policy resource.
 type LookupProjectPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -48,7 +51,7 @@ type LookupProjectPolicyResult struct {
 	// Resources that have access to the shared resources that are a part of this project policy.
 	Scopes []string `pulumi:"scopes"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -90,6 +93,11 @@ func (o LookupProjectPolicyResultOutput) ToLookupProjectPolicyResultOutputWithCo
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupProjectPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProjectPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupProjectPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProjectPolicyResult) string { return v.Id }).(pulumi.StringOutput)
@@ -116,8 +124,8 @@ func (o LookupProjectPolicyResultOutput) Scopes() pulumi.StringArrayOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupProjectPolicyResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupProjectPolicyResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupProjectPolicyResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupProjectPolicyResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The virtual network resource definition.
 //
-// Uses Azure REST API version 2022-12-15-preview.
+// Uses Azure REST API version 2023-07-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-12-15-preview.
 //
-// Other available API versions: 2023-07-01-preview.
+// Other available API versions: 2022-12-15-preview, 2025-09-01-preview, 2026-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type VirtualNetwork struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// DhcpOptions contains an array of DNS servers available to VMs deployed in the virtual network. Standard DHCP option for a subnet overrides VNET DHCP options.
 	DhcpOptions VirtualNetworkPropertiesResponseDhcpOptionsPtrOutput `pulumi:"dhcpOptions"`
 	// The extendedLocation of the resource.
@@ -37,7 +40,7 @@ type VirtualNetwork struct {
 	// Subnet - list of subnets under the virtual network
 	Subnets VirtualNetworkPropertiesResponseSubnetsArrayOutput `pulumi:"subnets"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -64,10 +67,19 @@ func NewVirtualNetwork(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:VirtualNetwork"),
 		},
 		{
+			Type: pulumi.String("azure-native:azurestackhci/v20210901preview:VirtualnetworkRetrieve"),
+		},
+		{
 			Type: pulumi.String("azure-native:azurestackhci/v20221215preview:VirtualNetwork"),
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20230701preview:VirtualNetwork"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250901preview:VirtualNetwork"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20260201preview:VirtualNetwork"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -183,6 +195,11 @@ func (o VirtualNetworkOutput) ToVirtualNetworkOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o VirtualNetworkOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualNetwork) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // DhcpOptions contains an array of DNS servers available to VMs deployed in the virtual network. Standard DHCP option for a subnet overrides VNET DHCP options.
 func (o VirtualNetworkOutput) DhcpOptions() VirtualNetworkPropertiesResponseDhcpOptionsPtrOutput {
 	return o.ApplyT(func(v *VirtualNetwork) VirtualNetworkPropertiesResponseDhcpOptionsPtrOutput { return v.DhcpOptions }).(VirtualNetworkPropertiesResponseDhcpOptionsPtrOutput)
@@ -224,8 +241,8 @@ func (o VirtualNetworkOutput) Subnets() VirtualNetworkPropertiesResponseSubnetsA
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o VirtualNetworkOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *VirtualNetwork) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o VirtualNetworkOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *VirtualNetwork) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

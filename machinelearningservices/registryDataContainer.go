@@ -8,24 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Resource Manager resource envelope.
 //
-// Uses Azure REST API version 2023-04-01.
+// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 //
-// Other available API versions: 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
+// Other available API versions: 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type RegistryDataContainer struct {
 	pulumi.CustomResourceState
 
-	// [Required] Additional attributes of the entity.
-	DataContainerProperties DataContainerResponseOutput `pulumi:"dataContainerProperties"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// [Required] Additional attributes of the entity.
+	Properties DataContainerPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -37,8 +40,8 @@ func NewRegistryDataContainer(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DataContainerProperties == nil {
-		return nil, errors.New("invalid value for required argument 'DataContainerProperties'")
+	if args.Properties == nil {
+		return nil, errors.New("invalid value for required argument 'Properties'")
 	}
 	if args.RegistryName == nil {
 		return nil, errors.New("invalid value for required argument 'RegistryName'")
@@ -46,7 +49,7 @@ func NewRegistryDataContainer(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	args.DataContainerProperties = args.DataContainerProperties.ToDataContainerTypeOutput().ApplyT(func(v DataContainerType) DataContainerType { return *v.Defaults() }).(DataContainerTypeOutput)
+	args.Properties = args.Properties.ToDataContainerPropertiesOutput().ApplyT(func(v DataContainerProperties) DataContainerProperties { return *v.Defaults() }).(DataContainerPropertiesOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:RegistryDataContainer"),
@@ -87,6 +90,27 @@ func NewRegistryDataContainer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:RegistryDataContainer"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250401:RegistryDataContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250401preview:RegistryDataContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250601:RegistryDataContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250701preview:RegistryDataContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250901:RegistryDataContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20251001preview:RegistryDataContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20251201:RegistryDataContainer"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -122,10 +146,10 @@ func (RegistryDataContainerState) ElementType() reflect.Type {
 }
 
 type registryDataContainerArgs struct {
-	// [Required] Additional attributes of the entity.
-	DataContainerProperties DataContainerType `pulumi:"dataContainerProperties"`
 	// Container name.
 	Name *string `pulumi:"name"`
+	// [Required] Additional attributes of the entity.
+	Properties DataContainerProperties `pulumi:"properties"`
 	// Name of Azure Machine Learning registry. This is case-insensitive
 	RegistryName string `pulumi:"registryName"`
 	// The name of the resource group. The name is case insensitive.
@@ -134,10 +158,10 @@ type registryDataContainerArgs struct {
 
 // The set of arguments for constructing a RegistryDataContainer resource.
 type RegistryDataContainerArgs struct {
-	// [Required] Additional attributes of the entity.
-	DataContainerProperties DataContainerTypeInput
 	// Container name.
 	Name pulumi.StringPtrInput
+	// [Required] Additional attributes of the entity.
+	Properties DataContainerPropertiesInput
 	// Name of Azure Machine Learning registry. This is case-insensitive
 	RegistryName pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
@@ -181,9 +205,9 @@ func (o RegistryDataContainerOutput) ToRegistryDataContainerOutputWithContext(ct
 	return o
 }
 
-// [Required] Additional attributes of the entity.
-func (o RegistryDataContainerOutput) DataContainerProperties() DataContainerResponseOutput {
-	return o.ApplyT(func(v *RegistryDataContainer) DataContainerResponseOutput { return v.DataContainerProperties }).(DataContainerResponseOutput)
+// The Azure API version of the resource.
+func (o RegistryDataContainerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistryDataContainer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource
@@ -191,9 +215,14 @@ func (o RegistryDataContainerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryDataContainer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// [Required] Additional attributes of the entity.
+func (o RegistryDataContainerOutput) Properties() DataContainerPropertiesResponseOutput {
+	return o.ApplyT(func(v *RegistryDataContainer) DataContainerPropertiesResponseOutput { return v.Properties }).(DataContainerPropertiesResponseOutput)
+}
+
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o RegistryDataContainerOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *RegistryDataContainer) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o RegistryDataContainerOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *RegistryDataContainer) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

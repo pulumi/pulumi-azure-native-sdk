@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Private Endpoint Connection resource.
 //
-// Uses Azure REST API version 2024-02-02-preview.
+// Uses Azure REST API version 2025-02-02-preview.
 //
-// Other available API versions: 2024-08-02-preview, 2024-10-02-preview.
+// Other available API versions: 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-07-01, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupManagedEnvironmentPrivateEndpointConnection(ctx *pulumi.Context, args *LookupManagedEnvironmentPrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupManagedEnvironmentPrivateEndpointConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedEnvironmentPrivateEndpointConnectionResult
@@ -37,6 +38,8 @@ type LookupManagedEnvironmentPrivateEndpointConnectionArgs struct {
 
 // The Private Endpoint Connection resource.
 type LookupManagedEnvironmentPrivateEndpointConnectionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The group ids for the private endpoint resource.
 	GroupIds []string `pulumi:"groupIds"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -50,7 +53,7 @@ type LookupManagedEnvironmentPrivateEndpointConnectionResult struct {
 	// The provisioning state of the private endpoint connection resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -92,6 +95,11 @@ func (o LookupManagedEnvironmentPrivateEndpointConnectionResultOutput) ToLookupM
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupManagedEnvironmentPrivateEndpointConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedEnvironmentPrivateEndpointConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The group ids for the private endpoint resource.
 func (o LookupManagedEnvironmentPrivateEndpointConnectionResultOutput) GroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupManagedEnvironmentPrivateEndpointConnectionResult) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
@@ -127,10 +135,10 @@ func (o LookupManagedEnvironmentPrivateEndpointConnectionResultOutput) Provision
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupManagedEnvironmentPrivateEndpointConnectionResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupManagedEnvironmentPrivateEndpointConnectionResult) SystemDataResponse {
+func (o LookupManagedEnvironmentPrivateEndpointConnectionResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupManagedEnvironmentPrivateEndpointConnectionResult) commontypesv5.SystemDataResponse {
 		return v.SystemData
-	}).(SystemDataResponseOutput)
+	}).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

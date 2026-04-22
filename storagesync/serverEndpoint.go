@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Server Endpoint object.
 //
-// Uses Azure REST API version 2022-06-01. In version 1.x of the Azure Native provider, it used API version 2020-03-01.
+// Uses Azure REST API version 2022-09-01. In version 2.x of the Azure Native provider, it used API version 2022-06-01.
 //
-// Other available API versions: 2022-09-01.
+// Other available API versions: 2022-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagesync [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ServerEndpoint struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Cloud Tiering.
 	CloudTiering pulumi.StringPtrOutput `pulumi:"cloudTiering"`
 	// Cloud tiering status. Only populated if cloud tiering is enabled.
@@ -50,6 +53,8 @@ type ServerEndpoint struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Recall status. Only populated if cloud tiering is enabled.
 	RecallStatus ServerEndpointRecallStatusResponseOutput `pulumi:"recallStatus"`
+	// Server Endpoint provisioning status
+	ServerEndpointProvisioningStatus ServerEndpointProvisioningStatusResponsePtrOutput `pulumi:"serverEndpointProvisioningStatus"`
 	// Server Local path.
 	ServerLocalPath pulumi.StringPtrOutput `pulumi:"serverLocalPath"`
 	// Server name
@@ -59,7 +64,7 @@ type ServerEndpoint struct {
 	// Server Endpoint sync status
 	SyncStatus ServerEndpointSyncStatusResponseOutput `pulumi:"syncStatus"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Tier files older than days.
 	TierFilesOlderThanDays pulumi.IntPtrOutput `pulumi:"tierFilesOlderThanDays"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -274,6 +279,11 @@ func (o ServerEndpointOutput) ToServerEndpointOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ServerEndpointOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerEndpoint) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Cloud Tiering.
 func (o ServerEndpointOutput) CloudTiering() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerEndpoint) pulumi.StringPtrOutput { return v.CloudTiering }).(pulumi.StringPtrOutput)
@@ -349,6 +359,13 @@ func (o ServerEndpointOutput) RecallStatus() ServerEndpointRecallStatusResponseO
 	return o.ApplyT(func(v *ServerEndpoint) ServerEndpointRecallStatusResponseOutput { return v.RecallStatus }).(ServerEndpointRecallStatusResponseOutput)
 }
 
+// Server Endpoint provisioning status
+func (o ServerEndpointOutput) ServerEndpointProvisioningStatus() ServerEndpointProvisioningStatusResponsePtrOutput {
+	return o.ApplyT(func(v *ServerEndpoint) ServerEndpointProvisioningStatusResponsePtrOutput {
+		return v.ServerEndpointProvisioningStatus
+	}).(ServerEndpointProvisioningStatusResponsePtrOutput)
+}
+
 // Server Local path.
 func (o ServerEndpointOutput) ServerLocalPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerEndpoint) pulumi.StringPtrOutput { return v.ServerLocalPath }).(pulumi.StringPtrOutput)
@@ -370,8 +387,8 @@ func (o ServerEndpointOutput) SyncStatus() ServerEndpointSyncStatusResponseOutpu
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ServerEndpointOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *ServerEndpoint) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o ServerEndpointOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *ServerEndpoint) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Tier files older than days.

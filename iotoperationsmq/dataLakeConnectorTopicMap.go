@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // MQ dataLakeConnector/topicMap resource
 //
-// Uses Azure REST API version 2023-10-04-preview.
+// Uses Azure REST API version 2023-10-04-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-04-preview.
 type DataLakeConnectorTopicMap struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// DataLake Connector CRD to use.
 	DataLakeConnectorRef pulumi.StringOutput `pulumi:"dataLakeConnectorRef"`
 	// Extended Location
@@ -31,7 +34,7 @@ type DataLakeConnectorTopicMap struct {
 	// The status of the last operation.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -182,6 +185,11 @@ func (o DataLakeConnectorTopicMapOutput) ToDataLakeConnectorTopicMapOutputWithCo
 	return o
 }
 
+// The Azure API version of the resource.
+func (o DataLakeConnectorTopicMapOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataLakeConnectorTopicMap) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // DataLake Connector CRD to use.
 func (o DataLakeConnectorTopicMapOutput) DataLakeConnectorRef() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataLakeConnectorTopicMap) pulumi.StringOutput { return v.DataLakeConnectorRef }).(pulumi.StringOutput)
@@ -213,8 +221,8 @@ func (o DataLakeConnectorTopicMapOutput) ProvisioningState() pulumi.StringOutput
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o DataLakeConnectorTopicMapOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *DataLakeConnectorTopicMap) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o DataLakeConnectorTopicMapOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *DataLakeConnectorTopicMap) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

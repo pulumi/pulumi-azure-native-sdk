@@ -7,15 +7,17 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Dev Box definition
 //
-// Uses Azure REST API version 2023-04-01.
+// Uses Azure REST API version 2024-02-01.
 //
-// Other available API versions: 2022-11-11-preview, 2023-08-01-preview, 2023-10-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01.
+// Other available API versions: 2023-04-01, 2023-08-01-preview, 2023-10-01-preview, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupDevBoxDefinition(ctx *pulumi.Context, args *LookupDevBoxDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupDevBoxDefinitionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDevBoxDefinitionResult
@@ -39,9 +41,11 @@ type LookupDevBoxDefinitionArgs struct {
 type LookupDevBoxDefinitionResult struct {
 	// Image reference information for the currently active image (only populated during updates).
 	ActiveImageReference ImageReferenceResponse `pulumi:"activeImageReference"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate
 	HibernateSupport *string `pulumi:"hibernateSupport"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Image reference information.
 	ImageReference ImageReferenceResponse `pulumi:"imageReference"`
@@ -58,13 +62,15 @@ type LookupDevBoxDefinitionResult struct {
 	// The provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The SKU for Dev Boxes created using this definition.
-	Sku SkuResponse `pulumi:"sku"`
+	Sku commontypesv3.SkuResponse `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
+	// Validation status for the Dev Box Definition.
+	ValidationStatus string `pulumi:"validationStatus"`
 }
 
 func LookupDevBoxDefinitionOutput(ctx *pulumi.Context, args LookupDevBoxDefinitionOutputArgs, opts ...pulumi.InvokeOption) LookupDevBoxDefinitionResultOutput {
@@ -109,12 +115,17 @@ func (o LookupDevBoxDefinitionResultOutput) ActiveImageReference() ImageReferenc
 	return o.ApplyT(func(v LookupDevBoxDefinitionResult) ImageReferenceResponse { return v.ActiveImageReference }).(ImageReferenceResponseOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupDevBoxDefinitionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDevBoxDefinitionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate
 func (o LookupDevBoxDefinitionResultOutput) HibernateSupport() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDevBoxDefinitionResult) *string { return v.HibernateSupport }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupDevBoxDefinitionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDevBoxDefinitionResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -157,13 +168,13 @@ func (o LookupDevBoxDefinitionResultOutput) ProvisioningState() pulumi.StringOut
 }
 
 // The SKU for Dev Boxes created using this definition.
-func (o LookupDevBoxDefinitionResultOutput) Sku() SkuResponseOutput {
-	return o.ApplyT(func(v LookupDevBoxDefinitionResult) SkuResponse { return v.Sku }).(SkuResponseOutput)
+func (o LookupDevBoxDefinitionResultOutput) Sku() commontypesv3.SkuResponseOutput {
+	return o.ApplyT(func(v LookupDevBoxDefinitionResult) commontypesv3.SkuResponse { return v.Sku }).(commontypesv3.SkuResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupDevBoxDefinitionResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupDevBoxDefinitionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupDevBoxDefinitionResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupDevBoxDefinitionResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.
@@ -174,6 +185,11 @@ func (o LookupDevBoxDefinitionResultOutput) Tags() pulumi.StringMapOutput {
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupDevBoxDefinitionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDevBoxDefinitionResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Validation status for the Dev Box Definition.
+func (o LookupDevBoxDefinitionResultOutput) ValidationStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDevBoxDefinitionResult) string { return v.ValidationStatus }).(pulumi.StringOutput)
 }
 
 func init() {

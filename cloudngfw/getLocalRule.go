@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a LocalRulesResource
 //
-// Uses Azure REST API version 2023-09-01.
+// Uses Azure REST API version 2025-05-23.
 //
-// Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview.
+// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupLocalRule(ctx *pulumi.Context, args *LookupLocalRuleArgs, opts ...pulumi.InvokeOption) (*LookupLocalRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLocalRuleResult
@@ -43,6 +44,8 @@ type LookupLocalRuleResult struct {
 	Applications []string `pulumi:"applications"`
 	// rule comment
 	AuditComment *string `pulumi:"auditComment"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// rule category
 	Category *CategoryResponse `pulumi:"category"`
 	// enable or disable decryption
@@ -79,7 +82,7 @@ type LookupLocalRuleResult struct {
 	// source address
 	Source *SourceAddrResponse `pulumi:"source"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// tag for rule
 	Tags []TagInfoResponse `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -148,6 +151,11 @@ func (o LookupLocalRuleResultOutput) Applications() pulumi.StringArrayOutput {
 // rule comment
 func (o LookupLocalRuleResultOutput) AuditComment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLocalRuleResult) *string { return v.AuditComment }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupLocalRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLocalRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // rule category
@@ -240,8 +248,8 @@ func (o LookupLocalRuleResultOutput) Source() SourceAddrResponsePtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupLocalRuleResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupLocalRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupLocalRuleResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupLocalRuleResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // tag for rule

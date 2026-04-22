@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns details of the API.
 //
-// Uses Azure REST API version 2024-03-01.
+// Uses Azure REST API version 2024-03-15-preview.
 //
-// Other available API versions: 2024-03-15-preview, 2024-06-01-preview.
+// Other available API versions: 2024-03-01, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apicenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupApi(ctx *pulumi.Context, args *LookupApiArgs, opts ...pulumi.InvokeOption) (*LookupApiResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiResult
@@ -39,6 +40,8 @@ type LookupApiArgs struct {
 
 // API entity.
 type LookupApiResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The set of contacts
 	Contacts []ContactResponse `pulumi:"contacts"`
 	// The custom metadata defined for API catalog entities.
@@ -60,7 +63,7 @@ type LookupApiResult struct {
 	// Short description of the API.
 	Summary *string `pulumi:"summary"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Terms of service for the API.
 	TermsOfService *TermsOfServiceResponse `pulumi:"termsOfService"`
 	// API title.
@@ -106,6 +109,11 @@ func (o LookupApiResultOutput) ToLookupApiResultOutput() LookupApiResultOutput {
 
 func (o LookupApiResultOutput) ToLookupApiResultOutputWithContext(ctx context.Context) LookupApiResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupApiResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The set of contacts
@@ -159,8 +167,8 @@ func (o LookupApiResultOutput) Summary() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupApiResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupApiResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupApiResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupApiResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Terms of service for the API.

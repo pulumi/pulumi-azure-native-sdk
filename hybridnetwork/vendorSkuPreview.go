@@ -8,22 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Customer subscription which can use a sku.
 //
-// Uses Azure REST API version 2022-01-01-preview. In version 1.x of the Azure Native provider, it used API version 2020-01-01-preview.
+// Uses Azure REST API version 2022-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
 type VendorSkuPreview struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The preview subscription ID.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the PreviewSubscription resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The system meta data relating to this resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -141,6 +144,11 @@ func (o VendorSkuPreviewOutput) ToVendorSkuPreviewOutputWithContext(ctx context.
 	return o
 }
 
+// The Azure API version of the resource.
+func (o VendorSkuPreviewOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VendorSkuPreview) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The preview subscription ID.
 func (o VendorSkuPreviewOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VendorSkuPreview) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -152,8 +160,8 @@ func (o VendorSkuPreviewOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // The system meta data relating to this resource.
-func (o VendorSkuPreviewOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *VendorSkuPreview) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o VendorSkuPreviewOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *VendorSkuPreview) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The type of the resource.

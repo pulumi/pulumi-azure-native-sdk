@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The AzureKeyVaultSecretProviderClass resource.
 //
-// Uses Azure REST API version 2024-08-21-preview.
+// Uses Azure REST API version 2024-08-21-preview. In version 2.x of the Azure Native provider, it used API version 2024-08-21-preview.
 type AzureKeyVaultSecretProviderClass struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The user assigned managed identity client ID that should be used to access the Azure Key Vault.
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// The complex type of the extended location.
@@ -33,7 +36,7 @@ type AzureKeyVaultSecretProviderClass struct {
 	// Provisioning state of the AzureKeyVaultSecretProviderClass instance.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The Azure Active Directory tenant ID that should be used for authenticating requests to the Azure Key Vault.
@@ -179,6 +182,11 @@ func (o AzureKeyVaultSecretProviderClassOutput) ToAzureKeyVaultSecretProviderCla
 	return o
 }
 
+// The Azure API version of the resource.
+func (o AzureKeyVaultSecretProviderClassOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzureKeyVaultSecretProviderClass) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The user assigned managed identity client ID that should be used to access the Azure Key Vault.
 func (o AzureKeyVaultSecretProviderClassOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureKeyVaultSecretProviderClass) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
@@ -217,8 +225,8 @@ func (o AzureKeyVaultSecretProviderClassOutput) ProvisioningState() pulumi.Strin
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o AzureKeyVaultSecretProviderClassOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *AzureKeyVaultSecretProviderClass) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o AzureKeyVaultSecretProviderClassOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *AzureKeyVaultSecretProviderClass) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

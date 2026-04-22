@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -308,6 +308,8 @@ func (o StandbyContainerGroupPoolElasticityProfileResponseOutput) RefillPolicy()
 type StandbyVirtualMachinePoolElasticityProfile struct {
 	// Specifies the maximum number of virtual machines in the standby virtual machine pool.
 	MaxReadyCapacity float64 `pulumi:"maxReadyCapacity"`
+	// Specifies the desired minimum number of virtual machines in the standby virtual machine pool. MinReadyCapacity cannot exceed MaxReadyCapacity.
+	MinReadyCapacity *float64 `pulumi:"minReadyCapacity"`
 }
 
 // StandbyVirtualMachinePoolElasticityProfileInput is an input type that accepts StandbyVirtualMachinePoolElasticityProfileArgs and StandbyVirtualMachinePoolElasticityProfileOutput values.
@@ -325,6 +327,8 @@ type StandbyVirtualMachinePoolElasticityProfileInput interface {
 type StandbyVirtualMachinePoolElasticityProfileArgs struct {
 	// Specifies the maximum number of virtual machines in the standby virtual machine pool.
 	MaxReadyCapacity pulumi.Float64Input `pulumi:"maxReadyCapacity"`
+	// Specifies the desired minimum number of virtual machines in the standby virtual machine pool. MinReadyCapacity cannot exceed MaxReadyCapacity.
+	MinReadyCapacity pulumi.Float64PtrInput `pulumi:"minReadyCapacity"`
 }
 
 func (StandbyVirtualMachinePoolElasticityProfileArgs) ElementType() reflect.Type {
@@ -410,6 +414,11 @@ func (o StandbyVirtualMachinePoolElasticityProfileOutput) MaxReadyCapacity() pul
 	return o.ApplyT(func(v StandbyVirtualMachinePoolElasticityProfile) float64 { return v.MaxReadyCapacity }).(pulumi.Float64Output)
 }
 
+// Specifies the desired minimum number of virtual machines in the standby virtual machine pool. MinReadyCapacity cannot exceed MaxReadyCapacity.
+func (o StandbyVirtualMachinePoolElasticityProfileOutput) MinReadyCapacity() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v StandbyVirtualMachinePoolElasticityProfile) *float64 { return v.MinReadyCapacity }).(pulumi.Float64PtrOutput)
+}
+
 type StandbyVirtualMachinePoolElasticityProfilePtrOutput struct{ *pulumi.OutputState }
 
 func (StandbyVirtualMachinePoolElasticityProfilePtrOutput) ElementType() reflect.Type {
@@ -444,10 +453,22 @@ func (o StandbyVirtualMachinePoolElasticityProfilePtrOutput) MaxReadyCapacity() 
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Specifies the desired minimum number of virtual machines in the standby virtual machine pool. MinReadyCapacity cannot exceed MaxReadyCapacity.
+func (o StandbyVirtualMachinePoolElasticityProfilePtrOutput) MinReadyCapacity() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *StandbyVirtualMachinePoolElasticityProfile) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MinReadyCapacity
+	}).(pulumi.Float64PtrOutput)
+}
+
 // Details of the elasticity profile.
 type StandbyVirtualMachinePoolElasticityProfileResponse struct {
 	// Specifies the maximum number of virtual machines in the standby virtual machine pool.
 	MaxReadyCapacity float64 `pulumi:"maxReadyCapacity"`
+	// Specifies the desired minimum number of virtual machines in the standby virtual machine pool. MinReadyCapacity cannot exceed MaxReadyCapacity.
+	MinReadyCapacity *float64 `pulumi:"minReadyCapacity"`
 }
 
 // Details of the elasticity profile.
@@ -468,6 +489,11 @@ func (o StandbyVirtualMachinePoolElasticityProfileResponseOutput) ToStandbyVirtu
 // Specifies the maximum number of virtual machines in the standby virtual machine pool.
 func (o StandbyVirtualMachinePoolElasticityProfileResponseOutput) MaxReadyCapacity() pulumi.Float64Output {
 	return o.ApplyT(func(v StandbyVirtualMachinePoolElasticityProfileResponse) float64 { return v.MaxReadyCapacity }).(pulumi.Float64Output)
+}
+
+// Specifies the desired minimum number of virtual machines in the standby virtual machine pool. MinReadyCapacity cannot exceed MaxReadyCapacity.
+func (o StandbyVirtualMachinePoolElasticityProfileResponseOutput) MinReadyCapacity() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v StandbyVirtualMachinePoolElasticityProfileResponse) *float64 { return v.MinReadyCapacity }).(pulumi.Float64PtrOutput)
 }
 
 type StandbyVirtualMachinePoolElasticityProfileResponsePtrOutput struct{ *pulumi.OutputState }
@@ -501,6 +527,16 @@ func (o StandbyVirtualMachinePoolElasticityProfileResponsePtrOutput) MaxReadyCap
 			return nil
 		}
 		return &v.MaxReadyCapacity
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Specifies the desired minimum number of virtual machines in the standby virtual machine pool. MinReadyCapacity cannot exceed MaxReadyCapacity.
+func (o StandbyVirtualMachinePoolElasticityProfileResponsePtrOutput) MinReadyCapacity() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *StandbyVirtualMachinePoolElasticityProfileResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MinReadyCapacity
 	}).(pulumi.Float64PtrOutput)
 }
 
@@ -650,67 +686,6 @@ func (o SubnetResponseArrayOutput) Index(i pulumi.IntInput) SubnetResponseOutput
 	}).(SubnetResponseOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
-}
-
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponseOutput struct{ *pulumi.OutputState }
-
-func (SystemDataResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
-	return o
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
-	return o
-}
-
-// The timestamp of resource creation (UTC).
-func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterOutputType(ContainerGroupProfileOutput{})
 	pulumi.RegisterOutputType(ContainerGroupProfileResponseOutput{})
@@ -726,5 +701,4 @@ func init() {
 	pulumi.RegisterOutputType(SubnetArrayOutput{})
 	pulumi.RegisterOutputType(SubnetResponseOutput{})
 	pulumi.RegisterOutputType(SubnetResponseArrayOutput{})
-	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 }

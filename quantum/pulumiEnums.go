@@ -10,295 +10,135 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The identity type.
-type ResourceIdentityType string
-
-const (
-	ResourceIdentityTypeSystemAssigned = ResourceIdentityType("SystemAssigned")
-	ResourceIdentityTypeNone           = ResourceIdentityType("None")
-)
-
-func (ResourceIdentityType) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceIdentityType)(nil)).Elem()
-}
-
-func (e ResourceIdentityType) ToResourceIdentityTypeOutput() ResourceIdentityTypeOutput {
-	return pulumi.ToOutput(e).(ResourceIdentityTypeOutput)
-}
-
-func (e ResourceIdentityType) ToResourceIdentityTypeOutputWithContext(ctx context.Context) ResourceIdentityTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(ResourceIdentityTypeOutput)
-}
-
-func (e ResourceIdentityType) ToResourceIdentityTypePtrOutput() ResourceIdentityTypePtrOutput {
-	return e.ToResourceIdentityTypePtrOutputWithContext(context.Background())
-}
-
-func (e ResourceIdentityType) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
-	return ResourceIdentityType(e).ToResourceIdentityTypeOutputWithContext(ctx).ToResourceIdentityTypePtrOutputWithContext(ctx)
-}
-
-func (e ResourceIdentityType) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ResourceIdentityType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ResourceIdentityType) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e ResourceIdentityType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type ResourceIdentityTypeOutput struct{ *pulumi.OutputState }
-
-func (ResourceIdentityTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceIdentityType)(nil)).Elem()
-}
-
-func (o ResourceIdentityTypeOutput) ToResourceIdentityTypeOutput() ResourceIdentityTypeOutput {
-	return o
-}
-
-func (o ResourceIdentityTypeOutput) ToResourceIdentityTypeOutputWithContext(ctx context.Context) ResourceIdentityTypeOutput {
-	return o
-}
-
-func (o ResourceIdentityTypeOutput) ToResourceIdentityTypePtrOutput() ResourceIdentityTypePtrOutput {
-	return o.ToResourceIdentityTypePtrOutputWithContext(context.Background())
-}
-
-func (o ResourceIdentityTypeOutput) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceIdentityType) *ResourceIdentityType {
-		return &v
-	}).(ResourceIdentityTypePtrOutput)
-}
-
-func (o ResourceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o ResourceIdentityTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ResourceIdentityType) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o ResourceIdentityTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ResourceIdentityTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ResourceIdentityType) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type ResourceIdentityTypePtrOutput struct{ *pulumi.OutputState }
-
-func (ResourceIdentityTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourceIdentityType)(nil)).Elem()
-}
-
-func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutput() ResourceIdentityTypePtrOutput {
-	return o
-}
-
-func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
-	return o
-}
-
-func (o ResourceIdentityTypePtrOutput) Elem() ResourceIdentityTypeOutput {
-	return o.ApplyT(func(v *ResourceIdentityType) ResourceIdentityType {
-		if v != nil {
-			return *v
-		}
-		var ret ResourceIdentityType
-		return ret
-	}).(ResourceIdentityTypeOutput)
-}
-
-func (o ResourceIdentityTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ResourceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ResourceIdentityType) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// ResourceIdentityTypeInput is an input type that accepts values of the ResourceIdentityType enum
-// A concrete instance of `ResourceIdentityTypeInput` can be one of the following:
-//
-//	ResourceIdentityTypeSystemAssigned
-//	ResourceIdentityTypeNone
-type ResourceIdentityTypeInput interface {
-	pulumi.Input
-
-	ToResourceIdentityTypeOutput() ResourceIdentityTypeOutput
-	ToResourceIdentityTypeOutputWithContext(context.Context) ResourceIdentityTypeOutput
-}
-
-var resourceIdentityTypePtrType = reflect.TypeOf((**ResourceIdentityType)(nil)).Elem()
-
-type ResourceIdentityTypePtrInput interface {
-	pulumi.Input
-
-	ToResourceIdentityTypePtrOutput() ResourceIdentityTypePtrOutput
-	ToResourceIdentityTypePtrOutputWithContext(context.Context) ResourceIdentityTypePtrOutput
-}
-
-type resourceIdentityTypePtr string
-
-func ResourceIdentityTypePtr(v string) ResourceIdentityTypePtrInput {
-	return (*resourceIdentityTypePtr)(&v)
-}
-
-func (*resourceIdentityTypePtr) ElementType() reflect.Type {
-	return resourceIdentityTypePtrType
-}
-
-func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIdentityTypePtrOutput {
-	return pulumi.ToOutput(in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
 // Provisioning status field
-type Status string
+type ProviderStatus string
 
 const (
-	StatusSucceeded = Status("Succeeded")
-	StatusLaunching = Status("Launching")
-	StatusUpdating  = Status("Updating")
-	StatusDeleting  = Status("Deleting")
-	StatusDeleted   = Status("Deleted")
-	StatusFailed    = Status("Failed")
+	// The provider is successfully provisioned.
+	ProviderStatusSucceeded = ProviderStatus("Succeeded")
+	// The provider is starting provisioning.
+	ProviderStatusLaunching = ProviderStatus("Launching")
+	// The provider is updating.
+	ProviderStatusUpdating = ProviderStatus("Updating")
+	// The provider is deleting.
+	ProviderStatusDeleting = ProviderStatus("Deleting")
+	// The provider is deleted.
+	ProviderStatusDeleted = ProviderStatus("Deleted")
+	// The provider is failed.
+	ProviderStatusFailed = ProviderStatus("Failed")
 )
 
-func (Status) ElementType() reflect.Type {
-	return reflect.TypeOf((*Status)(nil)).Elem()
+func (ProviderStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderStatus)(nil)).Elem()
 }
 
-func (e Status) ToStatusOutput() StatusOutput {
-	return pulumi.ToOutput(e).(StatusOutput)
+func (e ProviderStatus) ToProviderStatusOutput() ProviderStatusOutput {
+	return pulumi.ToOutput(e).(ProviderStatusOutput)
 }
 
-func (e Status) ToStatusOutputWithContext(ctx context.Context) StatusOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(StatusOutput)
+func (e ProviderStatus) ToProviderStatusOutputWithContext(ctx context.Context) ProviderStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ProviderStatusOutput)
 }
 
-func (e Status) ToStatusPtrOutput() StatusPtrOutput {
-	return e.ToStatusPtrOutputWithContext(context.Background())
+func (e ProviderStatus) ToProviderStatusPtrOutput() ProviderStatusPtrOutput {
+	return e.ToProviderStatusPtrOutputWithContext(context.Background())
 }
 
-func (e Status) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
-	return Status(e).ToStatusOutputWithContext(ctx).ToStatusPtrOutputWithContext(ctx)
+func (e ProviderStatus) ToProviderStatusPtrOutputWithContext(ctx context.Context) ProviderStatusPtrOutput {
+	return ProviderStatus(e).ToProviderStatusOutputWithContext(ctx).ToProviderStatusPtrOutputWithContext(ctx)
 }
 
-func (e Status) ToStringOutput() pulumi.StringOutput {
+func (e ProviderStatus) ToStringOutput() pulumi.StringOutput {
 	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e Status) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+func (e ProviderStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
 	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e Status) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (e ProviderStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
 }
 
-func (e Status) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+func (e ProviderStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type StatusOutput struct{ *pulumi.OutputState }
+type ProviderStatusOutput struct{ *pulumi.OutputState }
 
-func (StatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Status)(nil)).Elem()
+func (ProviderStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProviderStatus)(nil)).Elem()
 }
 
-func (o StatusOutput) ToStatusOutput() StatusOutput {
+func (o ProviderStatusOutput) ToProviderStatusOutput() ProviderStatusOutput {
 	return o
 }
 
-func (o StatusOutput) ToStatusOutputWithContext(ctx context.Context) StatusOutput {
+func (o ProviderStatusOutput) ToProviderStatusOutputWithContext(ctx context.Context) ProviderStatusOutput {
 	return o
 }
 
-func (o StatusOutput) ToStatusPtrOutput() StatusPtrOutput {
-	return o.ToStatusPtrOutputWithContext(context.Background())
+func (o ProviderStatusOutput) ToProviderStatusPtrOutput() ProviderStatusPtrOutput {
+	return o.ToProviderStatusPtrOutputWithContext(context.Background())
 }
 
-func (o StatusOutput) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Status) *Status {
+func (o ProviderStatusOutput) ToProviderStatusPtrOutputWithContext(ctx context.Context) ProviderStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProviderStatus) *ProviderStatus {
 		return &v
-	}).(StatusPtrOutput)
+	}).(ProviderStatusPtrOutput)
 }
 
-func (o StatusOutput) ToStringOutput() pulumi.StringOutput {
+func (o ProviderStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
 
-func (o StatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e Status) string {
+func (o ProviderStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ProviderStatus) string {
 		return string(e)
 	}).(pulumi.StringOutput)
 }
 
-func (o StatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o ProviderStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o StatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e Status) *string {
+func (o ProviderStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ProviderStatus) *string {
 		v := string(e)
 		return &v
 	}).(pulumi.StringPtrOutput)
 }
 
-type StatusPtrOutput struct{ *pulumi.OutputState }
+type ProviderStatusPtrOutput struct{ *pulumi.OutputState }
 
-func (StatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Status)(nil)).Elem()
+func (ProviderStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProviderStatus)(nil)).Elem()
 }
 
-func (o StatusPtrOutput) ToStatusPtrOutput() StatusPtrOutput {
+func (o ProviderStatusPtrOutput) ToProviderStatusPtrOutput() ProviderStatusPtrOutput {
 	return o
 }
 
-func (o StatusPtrOutput) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
+func (o ProviderStatusPtrOutput) ToProviderStatusPtrOutputWithContext(ctx context.Context) ProviderStatusPtrOutput {
 	return o
 }
 
-func (o StatusPtrOutput) Elem() StatusOutput {
-	return o.ApplyT(func(v *Status) Status {
+func (o ProviderStatusPtrOutput) Elem() ProviderStatusOutput {
+	return o.ApplyT(func(v *ProviderStatus) ProviderStatus {
 		if v != nil {
 			return *v
 		}
-		var ret Status
+		var ret ProviderStatus
 		return ret
-	}).(StatusOutput)
+	}).(ProviderStatusOutput)
 }
 
-func (o StatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o ProviderStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o StatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *Status) *string {
+func (o ProviderStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ProviderStatus) *string {
 		if e == nil {
 			return nil
 		}
@@ -307,52 +147,50 @@ func (o StatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// StatusInput is an input type that accepts values of the Status enum
-// A concrete instance of `StatusInput` can be one of the following:
+// ProviderStatusInput is an input type that accepts values of the ProviderStatus enum
+// A concrete instance of `ProviderStatusInput` can be one of the following:
 //
-//	StatusSucceeded
-//	StatusLaunching
-//	StatusUpdating
-//	StatusDeleting
-//	StatusDeleted
-//	StatusFailed
-type StatusInput interface {
+//	ProviderStatusSucceeded
+//	ProviderStatusLaunching
+//	ProviderStatusUpdating
+//	ProviderStatusDeleting
+//	ProviderStatusDeleted
+//	ProviderStatusFailed
+type ProviderStatusInput interface {
 	pulumi.Input
 
-	ToStatusOutput() StatusOutput
-	ToStatusOutputWithContext(context.Context) StatusOutput
+	ToProviderStatusOutput() ProviderStatusOutput
+	ToProviderStatusOutputWithContext(context.Context) ProviderStatusOutput
 }
 
-var statusPtrType = reflect.TypeOf((**Status)(nil)).Elem()
+var providerStatusPtrType = reflect.TypeOf((**ProviderStatus)(nil)).Elem()
 
-type StatusPtrInput interface {
+type ProviderStatusPtrInput interface {
 	pulumi.Input
 
-	ToStatusPtrOutput() StatusPtrOutput
-	ToStatusPtrOutputWithContext(context.Context) StatusPtrOutput
+	ToProviderStatusPtrOutput() ProviderStatusPtrOutput
+	ToProviderStatusPtrOutputWithContext(context.Context) ProviderStatusPtrOutput
 }
 
-type statusPtr string
+type providerStatusPtr string
 
-func StatusPtr(v string) StatusPtrInput {
-	return (*statusPtr)(&v)
+func ProviderStatusPtr(v string) ProviderStatusPtrInput {
+	return (*providerStatusPtr)(&v)
 }
 
-func (*statusPtr) ElementType() reflect.Type {
-	return statusPtrType
+func (*providerStatusPtr) ElementType() reflect.Type {
+	return providerStatusPtrType
 }
 
-func (in *statusPtr) ToStatusPtrOutput() StatusPtrOutput {
-	return pulumi.ToOutput(in).(StatusPtrOutput)
+func (in *providerStatusPtr) ToProviderStatusPtrOutput() ProviderStatusPtrOutput {
+	return pulumi.ToOutput(in).(ProviderStatusPtrOutput)
 }
 
-func (in *statusPtr) ToStatusPtrOutputWithContext(ctx context.Context) StatusPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(StatusPtrOutput)
+func (in *providerStatusPtr) ToProviderStatusPtrOutputWithContext(ctx context.Context) ProviderStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ProviderStatusPtrOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(ResourceIdentityTypeOutput{})
-	pulumi.RegisterOutputType(ResourceIdentityTypePtrOutput{})
-	pulumi.RegisterOutputType(StatusOutput{})
-	pulumi.RegisterOutputType(StatusPtrOutput{})
+	pulumi.RegisterOutputType(ProviderStatusOutput{})
+	pulumi.RegisterOutputType(ProviderStatusPtrOutput{})
 }

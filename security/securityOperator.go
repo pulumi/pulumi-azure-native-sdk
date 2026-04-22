@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Security operator under a given subscription and pricing
 //
-// Uses Azure REST API version 2023-01-01-preview.
+// Uses Azure REST API version 2023-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-01-01-preview.
 type SecurityOperator struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Identity for the resource.
-	Identity IdentityResponsePtrOutput `pulumi:"identity"`
+	Identity commontypesv2.IdentityResponsePtrOutput `pulumi:"identity"`
 	// Resource name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Resource type
@@ -126,9 +129,14 @@ func (o SecurityOperatorOutput) ToSecurityOperatorOutputWithContext(ctx context.
 	return o
 }
 
+// The Azure API version of the resource.
+func (o SecurityOperatorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityOperator) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Identity for the resource.
-func (o SecurityOperatorOutput) Identity() IdentityResponsePtrOutput {
-	return o.ApplyT(func(v *SecurityOperator) IdentityResponsePtrOutput { return v.Identity }).(IdentityResponsePtrOutput)
+func (o SecurityOperatorOutput) Identity() commontypesv2.IdentityResponsePtrOutput {
+	return o.ApplyT(func(v *SecurityOperator) commontypesv2.IdentityResponsePtrOutput { return v.Identity }).(commontypesv2.IdentityResponsePtrOutput)
 }
 
 // Resource name

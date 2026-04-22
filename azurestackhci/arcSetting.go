@@ -8,15 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // ArcSetting details.
 //
-// Uses Azure REST API version 2023-03-01. In version 1.x of the Azure Native provider, it used API version 2021-01-01-preview.
+// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
 //
-// Other available API versions: 2021-09-01-preview, 2022-12-15-preview, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-04-01, 2024-09-01-preview, 2024-12-01-preview.
+// Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01, 2026-02-15-preview, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ArcSetting struct {
 	pulumi.CustomResourceState
 
@@ -32,6 +33,8 @@ type ArcSetting struct {
 	ArcInstanceResourceGroup pulumi.StringPtrOutput `pulumi:"arcInstanceResourceGroup"`
 	// Object id of arc AAD service principal.
 	ArcServicePrincipalObjectId pulumi.StringPtrOutput `pulumi:"arcServicePrincipalObjectId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// contains connectivity related configuration for ARC resources
 	ConnectivityProperties ArcConnectivityPropertiesResponseArrayOutput `pulumi:"connectivityProperties"`
 	// Properties for each of the default extensions category
@@ -43,7 +46,7 @@ type ArcSetting struct {
 	// Provisioning state of the ArcSetting proxy resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -124,6 +127,30 @@ func NewArcSetting(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20241201preview:ArcSetting"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250201preview:ArcSetting"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250915preview:ArcSetting"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20251001:ArcSetting"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20251101preview:ArcSetting"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20251201preview:ArcSetting"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20260201:ArcSetting"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20260215preview:ArcSetting"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20260301preview:ArcSetting"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -269,6 +296,11 @@ func (o ArcSettingOutput) ArcServicePrincipalObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ArcSetting) pulumi.StringPtrOutput { return v.ArcServicePrincipalObjectId }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o ArcSettingOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ArcSetting) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // contains connectivity related configuration for ARC resources
 func (o ArcSettingOutput) ConnectivityProperties() ArcConnectivityPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v *ArcSetting) ArcConnectivityPropertiesResponseArrayOutput { return v.ConnectivityProperties }).(ArcConnectivityPropertiesResponseArrayOutput)
@@ -295,8 +327,8 @@ func (o ArcSettingOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ArcSettingOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *ArcSetting) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o ArcSettingOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *ArcSetting) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

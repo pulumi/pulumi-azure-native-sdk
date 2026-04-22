@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Cloud Endpoint object.
 //
-// Uses Azure REST API version 2022-06-01. In version 1.x of the Azure Native provider, it used API version 2020-03-01.
+// Uses Azure REST API version 2022-09-01. In version 2.x of the Azure Native provider, it used API version 2022-06-01.
 //
-// Other available API versions: 2022-09-01.
+// Other available API versions: 2022-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagesync [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type CloudEndpoint struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Azure file share name
 	AzureFileShareName pulumi.StringPtrOutput `pulumi:"azureFileShareName"`
 	// Backup Enabled
@@ -43,7 +46,7 @@ type CloudEndpoint struct {
 	// Storage Account Tenant Id
 	StorageAccountTenantId pulumi.StringPtrOutput `pulumi:"storageAccountTenantId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -211,6 +214,11 @@ func (o CloudEndpointOutput) ToCloudEndpointOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o CloudEndpointOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudEndpoint) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Azure file share name
 func (o CloudEndpointOutput) AzureFileShareName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudEndpoint) pulumi.StringPtrOutput { return v.AzureFileShareName }).(pulumi.StringPtrOutput)
@@ -269,8 +277,8 @@ func (o CloudEndpointOutput) StorageAccountTenantId() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o CloudEndpointOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *CloudEndpoint) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o CloudEndpointOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *CloudEndpoint) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

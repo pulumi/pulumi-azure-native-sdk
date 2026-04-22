@@ -8,20 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A HealthDataAIServicesProviderHub resource
 //
-// Uses Azure REST API version 2024-02-28-preview.
-//
-// Other available API versions: 2024-09-20.
+// Uses Azure REST API version 2024-09-20. In version 2.x of the Azure Native provider, it used API version 2024-02-28-preview.
 type DeidService struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The managed service identities assigned to this resource.
-	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity commontypesv5.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -29,7 +30,7 @@ type DeidService struct {
 	// The resource-specific properties for this resource.
 	Properties DeidServicePropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -91,7 +92,7 @@ type deidServiceArgs struct {
 	// The name of the deid service
 	DeidServiceName *string `pulumi:"deidServiceName"`
 	// The managed service identities assigned to this resource.
-	Identity *ManagedServiceIdentity `pulumi:"identity"`
+	Identity *commontypesv5.ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The resource-specific properties for this resource.
@@ -107,7 +108,7 @@ type DeidServiceArgs struct {
 	// The name of the deid service
 	DeidServiceName pulumi.StringPtrInput
 	// The managed service identities assigned to this resource.
-	Identity ManagedServiceIdentityPtrInput
+	Identity commontypesv5.ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The resource-specific properties for this resource.
@@ -155,9 +156,14 @@ func (o DeidServiceOutput) ToDeidServiceOutputWithContext(ctx context.Context) D
 	return o
 }
 
+// The Azure API version of the resource.
+func (o DeidServiceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeidService) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The managed service identities assigned to this resource.
-func (o DeidServiceOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *DeidService) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o DeidServiceOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *DeidService) commontypesv5.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -176,8 +182,8 @@ func (o DeidServiceOutput) Properties() DeidServicePropertiesResponseOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o DeidServiceOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *DeidService) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o DeidServiceOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *DeidService) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

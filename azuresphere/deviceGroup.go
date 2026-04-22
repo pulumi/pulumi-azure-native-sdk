@@ -8,20 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An device group resource belonging to a product resource.
 //
-// Uses Azure REST API version 2022-09-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-09-01-preview.
-//
-// Other available API versions: 2024-04-01.
+// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
 type DeviceGroup struct {
 	pulumi.CustomResourceState
 
 	// Flag to define if the user allows for crash dump collection.
 	AllowCrashDumpsCollection pulumi.StringPtrOutput `pulumi:"allowCrashDumpsCollection"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Description of the device group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Deployment status for the device group.
@@ -35,7 +36,7 @@ type DeviceGroup struct {
 	// Regional data boundary for the device group.
 	RegionalDataBoundary pulumi.StringPtrOutput `pulumi:"regionalDataBoundary"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Update policy of the device group.
@@ -184,6 +185,11 @@ func (o DeviceGroupOutput) AllowCrashDumpsCollection() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceGroup) pulumi.StringPtrOutput { return v.AllowCrashDumpsCollection }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o DeviceGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeviceGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Description of the device group.
 func (o DeviceGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeviceGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -215,8 +221,8 @@ func (o DeviceGroupOutput) RegionalDataBoundary() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o DeviceGroupOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *DeviceGroup) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o DeviceGroupOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *DeviceGroup) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

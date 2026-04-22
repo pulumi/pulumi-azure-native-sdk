@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +36,8 @@ type LookupPipelineArgs struct {
 
 // A Pipeline resource belonging to an Instance resource.
 type LookupPipelineResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Detailed description of the Pipeline.
 	Description *string `pulumi:"description"`
 	// Flag indicating whether the pipeline should be running or not.
@@ -54,7 +57,7 @@ type LookupPipelineResult struct {
 	// Map of stage ids to stage configurations for all pipeline processing and output stages.
 	Stages map[string]PipelineStageResponse `pulumi:"stages"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -96,6 +99,11 @@ func (o LookupPipelineResultOutput) ToLookupPipelineResultOutput() LookupPipelin
 
 func (o LookupPipelineResultOutput) ToLookupPipelineResultOutputWithContext(ctx context.Context) LookupPipelineResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPipelineResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPipelineResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Detailed description of the Pipeline.
@@ -144,8 +152,8 @@ func (o LookupPipelineResultOutput) Stages() PipelineStageResponseMapOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupPipelineResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupPipelineResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupPipelineResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPipelineResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

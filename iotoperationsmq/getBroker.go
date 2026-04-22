@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,6 +38,8 @@ type LookupBrokerArgs struct {
 type LookupBrokerResult struct {
 	// The details of Authentication Docker Image.
 	AuthImage ContainerImageResponse `pulumi:"authImage"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The details of Broker Docker Image.
 	BrokerImage ContainerImageResponse `pulumi:"brokerImage"`
 	// The details of Node Tolerations for Broker Pods.
@@ -70,7 +73,7 @@ type LookupBrokerResult struct {
 	// The status of the last operation.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -139,6 +142,11 @@ func (o LookupBrokerResultOutput) ToLookupBrokerResultOutputWithContext(ctx cont
 // The details of Authentication Docker Image.
 func (o LookupBrokerResultOutput) AuthImage() ContainerImageResponseOutput {
 	return o.ApplyT(func(v LookupBrokerResult) ContainerImageResponse { return v.AuthImage }).(ContainerImageResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupBrokerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBrokerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The details of Broker Docker Image.
@@ -224,8 +232,8 @@ func (o LookupBrokerResultOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupBrokerResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupBrokerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupBrokerResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupBrokerResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

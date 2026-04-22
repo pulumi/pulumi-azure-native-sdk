@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +34,8 @@ type LookupEvidenceArgs struct {
 
 // A class represent an AppComplianceAutomation evidence resource.
 type LookupEvidenceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Control id.
 	ControlId *string `pulumi:"controlId"`
 	// Evidence type.
@@ -50,7 +53,7 @@ type LookupEvidenceResult struct {
 	// Responsibility id.
 	ResponsibilityId *string `pulumi:"responsibilityId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -88,6 +91,11 @@ func (o LookupEvidenceResultOutput) ToLookupEvidenceResultOutput() LookupEvidenc
 
 func (o LookupEvidenceResultOutput) ToLookupEvidenceResultOutputWithContext(ctx context.Context) LookupEvidenceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupEvidenceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEvidenceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Control id.
@@ -131,8 +139,8 @@ func (o LookupEvidenceResultOutput) ResponsibilityId() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupEvidenceResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupEvidenceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupEvidenceResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupEvidenceResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

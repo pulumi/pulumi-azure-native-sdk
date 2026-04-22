@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns details of the API deployment.
 //
-// Uses Azure REST API version 2024-03-01.
+// Uses Azure REST API version 2024-03-15-preview.
 //
-// Other available API versions: 2024-03-15-preview, 2024-06-01-preview.
+// Other available API versions: 2024-03-01, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apicenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupDeployment(ctx *pulumi.Context, args *LookupDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupDeploymentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDeploymentResult
@@ -41,6 +42,8 @@ type LookupDeploymentArgs struct {
 
 // API deployment entity.
 type LookupDeploymentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The custom metadata defined for API catalog entities.
 	CustomProperties interface{} `pulumi:"customProperties"`
 	// API center-scoped definition resource ID.
@@ -58,7 +61,7 @@ type LookupDeploymentResult struct {
 	// State of API deployment.
 	State *string `pulumi:"state"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// API deployment title
 	Title *string `pulumi:"title"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -106,6 +109,11 @@ func (o LookupDeploymentResultOutput) ToLookupDeploymentResultOutputWithContext(
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupDeploymentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeploymentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The custom metadata defined for API catalog entities.
 func (o LookupDeploymentResultOutput) CustomProperties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupDeploymentResult) interface{} { return v.CustomProperties }).(pulumi.AnyOutput)
@@ -147,8 +155,8 @@ func (o LookupDeploymentResultOutput) State() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupDeploymentResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupDeploymentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupDeploymentResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupDeploymentResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // API deployment title

@@ -535,7 +535,7 @@ func (in *createModePtr) ToCreateModePtrOutputWithContext(ctx context.Context) C
 	return pulumi.ToOutputWithContext(ctx, in).(CreateModePtrOutput)
 }
 
-// The elliptic curve name. For valid values, see JsonWebKeyCurveName.
+// The elliptic curve name. For valid values, see JsonWebKeyCurveName. Default for EC and EC-HSM keys is P-256
 type JsonWebKeyCurveName string
 
 const (
@@ -1256,14 +1256,12 @@ func (in *keyPermissionsPtr) ToKeyPermissionsPtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(KeyPermissionsPtrOutput)
 }
 
-// The type of the action. The value should be compared case-insensitively.
+// The type of action.
 type KeyRotationPolicyActionType string
 
 const (
-	// Rotate the key based on the key policy.
-	KeyRotationPolicyActionTypeRotate = KeyRotationPolicyActionType("Rotate")
-	// Trigger Event Grid events. Defaults to 30 days before expiry. Key Vault only.
-	KeyRotationPolicyActionTypeNotify = KeyRotationPolicyActionType("Notify")
+	KeyRotationPolicyActionTypeRotate = KeyRotationPolicyActionType("rotate")
+	KeyRotationPolicyActionTypeNotify = KeyRotationPolicyActionType("notify")
 )
 
 func (KeyRotationPolicyActionType) ElementType() reflect.Type {
@@ -1429,6 +1427,7 @@ type ManagedHsmSkuFamily string
 
 const (
 	ManagedHsmSkuFamilyB = ManagedHsmSkuFamily("B")
+	ManagedHsmSkuFamilyC = ManagedHsmSkuFamily("C")
 )
 
 func (ManagedHsmSkuFamily) ElementType() reflect.Type {
@@ -1554,6 +1553,7 @@ func (o ManagedHsmSkuFamilyPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // A concrete instance of `ManagedHsmSkuFamilyInput` can be one of the following:
 //
 //	ManagedHsmSkuFamilyB
+//	ManagedHsmSkuFamilyC
 type ManagedHsmSkuFamilyInput interface {
 	pulumi.Input
 
@@ -1595,6 +1595,8 @@ const (
 	ManagedHsmSkuName_Standard_B1 = ManagedHsmSkuName("Standard_B1")
 	ManagedHsmSkuName_Custom_B32  = ManagedHsmSkuName("Custom_B32")
 	ManagedHsmSkuName_Custom_B6   = ManagedHsmSkuName("Custom_B6")
+	ManagedHsmSkuName_Custom_C42  = ManagedHsmSkuName("Custom_C42")
+	ManagedHsmSkuName_Custom_C10  = ManagedHsmSkuName("Custom_C10")
 )
 
 func (ManagedHsmSkuName) ElementType() reflect.Type {
@@ -1722,6 +1724,8 @@ func (o ManagedHsmSkuNamePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 //	ManagedHsmSkuName_Standard_B1
 //	ManagedHsmSkuName_Custom_B32
 //	ManagedHsmSkuName_Custom_B6
+//	ManagedHsmSkuName_Custom_C42
+//	ManagedHsmSkuName_Custom_C10
 type ManagedHsmSkuNameInput interface {
 	pulumi.Input
 

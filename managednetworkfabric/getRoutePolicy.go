@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Implements Route Policy GET method.
 //
-// Uses Azure REST API version 2023-02-01-preview.
+// Uses Azure REST API version 2023-06-15.
 //
-// Other available API versions: 2023-06-15.
+// Other available API versions: 2023-02-01-preview, 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupRoutePolicy(ctx *pulumi.Context, args *LookupRoutePolicyArgs, opts ...pulumi.InvokeOption) (*LookupRoutePolicyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoutePolicyResult
@@ -23,38 +24,66 @@ func LookupRoutePolicy(ctx *pulumi.Context, args *LookupRoutePolicyArgs, opts ..
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupRoutePolicyArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Name of the Route Policy
+	// Name of the Route Policy.
 	RoutePolicyName string `pulumi:"routePolicyName"`
 }
 
 // The RoutePolicy resource definition.
 type LookupRoutePolicyResult struct {
+	// AddressFamilyType. This parameter decides whether the given ipv4 or ipv6 route policy.
+	AddressFamilyType *string `pulumi:"addressFamilyType"`
+	// Administrative state of the resource.
+	AdministrativeState string `pulumi:"administrativeState"`
 	// Switch configuration description.
 	Annotation *string `pulumi:"annotation"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Configuration state of the resource.
+	ConfigurationState string `pulumi:"configurationState"`
+	// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
+	DefaultAction *string `pulumi:"defaultAction"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Gets the provisioning state of the resource.
+	// Arm Resource ID of Network Fabric.
+	NetworkFabricId string `pulumi:"networkFabricId"`
+	// Provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Route Policy statements.
 	Statements []RoutePolicyStatementPropertiesResponse `pulumi:"statements"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
+// Defaults sets the appropriate defaults for LookupRoutePolicyResult
+func (val *LookupRoutePolicyResult) Defaults() *LookupRoutePolicyResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.AddressFamilyType == nil {
+		addressFamilyType_ := "IPv4"
+		tmp.AddressFamilyType = &addressFamilyType_
+	}
+	if tmp.DefaultAction == nil {
+		defaultAction_ := "Deny"
+		tmp.DefaultAction = &defaultAction_
+	}
+	return &tmp
+}
 func LookupRoutePolicyOutput(ctx *pulumi.Context, args LookupRoutePolicyOutputArgs, opts ...pulumi.InvokeOption) LookupRoutePolicyResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRoutePolicyResultOutput, error) {
@@ -67,7 +96,7 @@ func LookupRoutePolicyOutput(ctx *pulumi.Context, args LookupRoutePolicyOutputAr
 type LookupRoutePolicyOutputArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// Name of the Route Policy
+	// Name of the Route Policy.
 	RoutePolicyName pulumi.StringInput `pulumi:"routePolicyName"`
 }
 
@@ -90,12 +119,37 @@ func (o LookupRoutePolicyResultOutput) ToLookupRoutePolicyResultOutputWithContex
 	return o
 }
 
+// AddressFamilyType. This parameter decides whether the given ipv4 or ipv6 route policy.
+func (o LookupRoutePolicyResultOutput) AddressFamilyType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRoutePolicyResult) *string { return v.AddressFamilyType }).(pulumi.StringPtrOutput)
+}
+
+// Administrative state of the resource.
+func (o LookupRoutePolicyResultOutput) AdministrativeState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoutePolicyResult) string { return v.AdministrativeState }).(pulumi.StringOutput)
+}
+
 // Switch configuration description.
 func (o LookupRoutePolicyResultOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRoutePolicyResult) *string { return v.Annotation }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// The Azure API version of the resource.
+func (o LookupRoutePolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoutePolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Configuration state of the resource.
+func (o LookupRoutePolicyResultOutput) ConfigurationState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoutePolicyResult) string { return v.ConfigurationState }).(pulumi.StringOutput)
+}
+
+// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
+func (o LookupRoutePolicyResultOutput) DefaultAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRoutePolicyResult) *string { return v.DefaultAction }).(pulumi.StringPtrOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupRoutePolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoutePolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -110,7 +164,12 @@ func (o LookupRoutePolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoutePolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Gets the provisioning state of the resource.
+// Arm Resource ID of Network Fabric.
+func (o LookupRoutePolicyResultOutput) NetworkFabricId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoutePolicyResult) string { return v.NetworkFabricId }).(pulumi.StringOutput)
+}
+
+// Provisioning state of the resource.
 func (o LookupRoutePolicyResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoutePolicyResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
@@ -121,8 +180,8 @@ func (o LookupRoutePolicyResultOutput) Statements() RoutePolicyStatementProperti
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupRoutePolicyResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupRoutePolicyResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupRoutePolicyResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupRoutePolicyResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

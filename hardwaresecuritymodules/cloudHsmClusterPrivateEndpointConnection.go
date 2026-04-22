@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The private endpoint connection resource.
 //
-// Uses Azure REST API version 2022-08-31-preview.
+// Uses Azure REST API version 2024-06-30-preview. In version 2.x of the Azure Native provider, it used API version 2022-08-31-preview.
 //
-// Other available API versions: 2023-12-10-preview, 2024-06-30-preview.
+// Other available API versions: 2022-08-31-preview, 2023-12-10-preview, 2025-03-31. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hardwaresecuritymodules [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type CloudHsmClusterPrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Modified whenever there is a change in the state of private endpoint connection.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// The group ids for the private endpoint resource.
@@ -27,13 +30,13 @@ type CloudHsmClusterPrivateEndpointConnection struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The private endpoint resource.
-	PrivateEndpoint PrivateEndpointResponsePtrOutput `pulumi:"privateEndpoint"`
+	PrivateEndpoint commontypesv5.PrivateEndpointResponsePtrOutput `pulumi:"privateEndpoint"`
 	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponseOutput `pulumi:"privateLinkServiceConnectionState"`
+	PrivateLinkServiceConnectionState commontypesv5.PrivateLinkServiceConnectionStateResponseOutput `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state of the private endpoint connection resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -63,6 +66,9 @@ func NewCloudHsmClusterPrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hardwaresecuritymodules/v20240630preview:CloudHsmClusterPrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:hardwaresecuritymodules/v20250331:CloudHsmClusterPrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -99,24 +105,24 @@ func (CloudHsmClusterPrivateEndpointConnectionState) ElementType() reflect.Type 
 }
 
 type cloudHsmClusterPrivateEndpointConnectionArgs struct {
-	// The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 24 characters in length.
+	// The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
 	CloudHsmClusterName string `pulumi:"cloudHsmClusterName"`
 	// Name of the private endpoint connection associated with the Cloud HSM Cluster.
 	PeConnectionName *string `pulumi:"peConnectionName"`
 	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
+	PrivateLinkServiceConnectionState commontypesv5.PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The set of arguments for constructing a CloudHsmClusterPrivateEndpointConnection resource.
 type CloudHsmClusterPrivateEndpointConnectionArgs struct {
-	// The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 24 characters in length.
+	// The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
 	CloudHsmClusterName pulumi.StringInput
 	// Name of the private endpoint connection associated with the Cloud HSM Cluster.
 	PeConnectionName pulumi.StringPtrInput
 	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateInput
+	PrivateLinkServiceConnectionState commontypesv5.PrivateLinkServiceConnectionStateInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 }
@@ -158,6 +164,11 @@ func (o CloudHsmClusterPrivateEndpointConnectionOutput) ToCloudHsmClusterPrivate
 	return o
 }
 
+// The Azure API version of the resource.
+func (o CloudHsmClusterPrivateEndpointConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CloudHsmClusterPrivateEndpointConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Modified whenever there is a change in the state of private endpoint connection.
 func (o CloudHsmClusterPrivateEndpointConnectionOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudHsmClusterPrivateEndpointConnection) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
@@ -174,17 +185,17 @@ func (o CloudHsmClusterPrivateEndpointConnectionOutput) Name() pulumi.StringOutp
 }
 
 // The private endpoint resource.
-func (o CloudHsmClusterPrivateEndpointConnectionOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
-	return o.ApplyT(func(v *CloudHsmClusterPrivateEndpointConnection) PrivateEndpointResponsePtrOutput {
+func (o CloudHsmClusterPrivateEndpointConnectionOutput) PrivateEndpoint() commontypesv5.PrivateEndpointResponsePtrOutput {
+	return o.ApplyT(func(v *CloudHsmClusterPrivateEndpointConnection) commontypesv5.PrivateEndpointResponsePtrOutput {
 		return v.PrivateEndpoint
-	}).(PrivateEndpointResponsePtrOutput)
+	}).(commontypesv5.PrivateEndpointResponsePtrOutput)
 }
 
 // A collection of information about the state of the connection between service consumer and provider.
-func (o CloudHsmClusterPrivateEndpointConnectionOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponseOutput {
-	return o.ApplyT(func(v *CloudHsmClusterPrivateEndpointConnection) PrivateLinkServiceConnectionStateResponseOutput {
+func (o CloudHsmClusterPrivateEndpointConnectionOutput) PrivateLinkServiceConnectionState() commontypesv5.PrivateLinkServiceConnectionStateResponseOutput {
+	return o.ApplyT(func(v *CloudHsmClusterPrivateEndpointConnection) commontypesv5.PrivateLinkServiceConnectionStateResponseOutput {
 		return v.PrivateLinkServiceConnectionState
-	}).(PrivateLinkServiceConnectionStateResponseOutput)
+	}).(commontypesv5.PrivateLinkServiceConnectionStateResponseOutput)
 }
 
 // The provisioning state of the private endpoint connection resource.
@@ -193,8 +204,10 @@ func (o CloudHsmClusterPrivateEndpointConnectionOutput) ProvisioningState() pulu
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o CloudHsmClusterPrivateEndpointConnectionOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *CloudHsmClusterPrivateEndpointConnection) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o CloudHsmClusterPrivateEndpointConnectionOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *CloudHsmClusterPrivateEndpointConnection) commontypesv5.SystemDataResponseOutput {
+		return v.SystemData
+	}).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

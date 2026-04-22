@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the properties of a storage account’s Blob service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules.
 //
-// Uses Azure REST API version 2022-09-01.
+// Uses Azure REST API version 2024-01-01.
 //
-// Other available API versions: 2023-01-01, 2023-04-01, 2023-05-01, 2024-01-01.
+// Other available API versions: 2022-09-01, 2023-01-01, 2023-04-01, 2023-05-01, 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storage [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupBlobServiceProperties(ctx *pulumi.Context, args *LookupBlobServicePropertiesArgs, opts ...pulumi.InvokeOption) (*LookupBlobServicePropertiesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBlobServicePropertiesResult
@@ -39,6 +39,8 @@ type LookupBlobServicePropertiesArgs struct {
 type LookupBlobServicePropertiesResult struct {
 	// Deprecated in favor of isVersioningEnabled property.
 	AutomaticSnapshotPolicyEnabled *bool `pulumi:"automaticSnapshotPolicyEnabled"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The blob service properties for change feed events.
 	ChangeFeed *ChangeFeedResponse `pulumi:"changeFeed"`
 	// The blob service properties for container soft delete.
@@ -105,6 +107,11 @@ func (o LookupBlobServicePropertiesResultOutput) ToLookupBlobServicePropertiesRe
 // Deprecated in favor of isVersioningEnabled property.
 func (o LookupBlobServicePropertiesResultOutput) AutomaticSnapshotPolicyEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupBlobServicePropertiesResult) *bool { return v.AutomaticSnapshotPolicyEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupBlobServicePropertiesResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBlobServicePropertiesResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The blob service properties for change feed events.

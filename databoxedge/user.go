@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a user who has access to one or more shares on the Data Box Edge/Gateway device.
 //
-// Uses Azure REST API version 2022-03-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
+// Uses Azure REST API version 2023-07-01. In version 2.x of the Azure Native provider, it used API version 2022-03-01.
 //
-// Other available API versions: 2021-02-01-preview, 2023-01-01-preview, 2023-07-01, 2023-12-01.
+// Other available API versions: 2022-03-01, 2022-04-01-preview, 2022-12-01-preview, 2023-01-01-preview, 2023-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databoxedge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type User struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The password details.
 	EncryptedPassword AsymmetricEncryptedSecretResponsePtrOutput `pulumi:"encryptedPassword"`
 	// The object name.
@@ -27,7 +30,7 @@ type User struct {
 	// List of shares that the user has rights on. This field should not be specified during user creation.
 	ShareAccessRights ShareAccessRightResponseArrayOutput `pulumi:"shareAccessRights"`
 	// Metadata pertaining to creation and last modification of User
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Type of the user.
@@ -200,6 +203,11 @@ func (o UserOutput) ToUserOutputWithContext(ctx context.Context) UserOutput {
 	return o
 }
 
+// The Azure API version of the resource.
+func (o UserOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The password details.
 func (o UserOutput) EncryptedPassword() AsymmetricEncryptedSecretResponsePtrOutput {
 	return o.ApplyT(func(v *User) AsymmetricEncryptedSecretResponsePtrOutput { return v.EncryptedPassword }).(AsymmetricEncryptedSecretResponsePtrOutput)
@@ -216,8 +224,8 @@ func (o UserOutput) ShareAccessRights() ShareAccessRightResponseArrayOutput {
 }
 
 // Metadata pertaining to creation and last modification of User
-func (o UserOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *User) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o UserOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *User) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.

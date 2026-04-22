@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,6 +38,8 @@ type LookupEnvironmentSpecificationVersionArgs struct {
 
 // Azure Resource Manager resource envelope.
 type LookupEnvironmentSpecificationVersionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -44,7 +47,7 @@ type LookupEnvironmentSpecificationVersionResult struct {
 	// [Required] Additional attributes of the entity.
 	Properties EnvironmentSpecificationVersionResponse `pulumi:"properties"`
 	// System data associated with resource provider
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -88,6 +91,11 @@ func (o LookupEnvironmentSpecificationVersionResultOutput) ToLookupEnvironmentSp
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupEnvironmentSpecificationVersionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnvironmentSpecificationVersionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupEnvironmentSpecificationVersionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentSpecificationVersionResult) string { return v.Id }).(pulumi.StringOutput)
@@ -106,8 +114,10 @@ func (o LookupEnvironmentSpecificationVersionResultOutput) Properties() Environm
 }
 
 // System data associated with resource provider
-func (o LookupEnvironmentSpecificationVersionResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupEnvironmentSpecificationVersionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupEnvironmentSpecificationVersionResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupEnvironmentSpecificationVersionResult) commontypesv2.SystemDataResponse {
+		return v.SystemData
+	}).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

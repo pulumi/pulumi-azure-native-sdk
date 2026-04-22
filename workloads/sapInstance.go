@@ -8,22 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Define the SAP Instance resource.
 //
-// Uses Azure REST API version 2023-10-01-preview.
+// Uses Azure REST API version 2023-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
 type SapInstance struct {
 	pulumi.CustomResourceState
 
 	// Enter a business function/department identifier to group multiple SIDs.
 	Application pulumi.StringOutput `pulumi:"application"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The Environment; PRD, QA, DEV, etc to which SAP system belongs to. Select from the list of available dropdown values.
 	Environment pulumi.StringOutput `pulumi:"environment"`
 	// Defines the errors related to SAP Instance resource.
-	Errors SAPMigrateErrorResponseOutput `pulumi:"errors"`
+	Errors SAPMigrateErrorResponseV1Output `pulumi:"errors"`
 	// This is the SID of the production system in a landscape.  An SAP system could itself be a production SID or a part of a landscape with a different Production SID. This field can be used to relate non-prod SIDs, other components, SID (WEBDISP) to the prod SID. Enter the value of Production SID.
 	LandscapeSid pulumi.StringOutput `pulumi:"landscapeSid"`
 	// The geo-location where the resource lives
@@ -33,7 +36,7 @@ type SapInstance struct {
 	// Defines the provisioning states.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// This is the SID of SAP System. Keeping this not equal to ID as different landscapes can have repeated System SID IDs.
 	SystemSid pulumi.StringOutput `pulumi:"systemSid"`
 	// Resource tags.
@@ -162,14 +165,19 @@ func (o SapInstanceOutput) Application() pulumi.StringOutput {
 	return o.ApplyT(func(v *SapInstance) pulumi.StringOutput { return v.Application }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o SapInstanceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SapInstance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The Environment; PRD, QA, DEV, etc to which SAP system belongs to. Select from the list of available dropdown values.
 func (o SapInstanceOutput) Environment() pulumi.StringOutput {
 	return o.ApplyT(func(v *SapInstance) pulumi.StringOutput { return v.Environment }).(pulumi.StringOutput)
 }
 
 // Defines the errors related to SAP Instance resource.
-func (o SapInstanceOutput) Errors() SAPMigrateErrorResponseOutput {
-	return o.ApplyT(func(v *SapInstance) SAPMigrateErrorResponseOutput { return v.Errors }).(SAPMigrateErrorResponseOutput)
+func (o SapInstanceOutput) Errors() SAPMigrateErrorResponseV1Output {
+	return o.ApplyT(func(v *SapInstance) SAPMigrateErrorResponseV1Output { return v.Errors }).(SAPMigrateErrorResponseV1Output)
 }
 
 // This is the SID of the production system in a landscape.  An SAP system could itself be a production SID or a part of a landscape with a different Production SID. This field can be used to relate non-prod SIDs, other components, SID (WEBDISP) to the prod SID. Enter the value of Production SID.
@@ -193,8 +201,8 @@ func (o SapInstanceOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o SapInstanceOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *SapInstance) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o SapInstanceOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *SapInstance) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // This is the SID of SAP System. Keeping this not equal to ID as different landscapes can have repeated System SID IDs.

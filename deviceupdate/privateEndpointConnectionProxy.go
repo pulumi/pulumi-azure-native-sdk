@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Private endpoint connection proxy details.
 //
-// Uses Azure REST API version 2023-07-01. In version 1.x of the Azure Native provider, it used API version 2020-03-01-preview.
+// Uses Azure REST API version 2023-07-01. In version 2.x of the Azure Native provider, it used API version 2023-07-01.
 type PrivateEndpointConnectionProxy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// ETag from NRP.
 	ETag pulumi.StringOutput `pulumi:"eTag"`
 	// The name of the resource
@@ -29,7 +32,7 @@ type PrivateEndpointConnectionProxy struct {
 	// Operation status.
 	Status pulumi.StringPtrOutput `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -161,6 +164,11 @@ func (o PrivateEndpointConnectionProxyOutput) ToPrivateEndpointConnectionProxyOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o PrivateEndpointConnectionProxyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionProxy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // ETag from NRP.
 func (o PrivateEndpointConnectionProxyOutput) ETag() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateEndpointConnectionProxy) pulumi.StringOutput { return v.ETag }).(pulumi.StringOutput)
@@ -189,8 +197,8 @@ func (o PrivateEndpointConnectionProxyOutput) Status() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o PrivateEndpointConnectionProxyOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *PrivateEndpointConnectionProxy) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o PrivateEndpointConnectionProxyOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionProxy) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

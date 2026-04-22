@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A ManufacturingPlatformProviderHub resource
 //
-// Uses Azure REST API version 2025-03-01.
+// Uses Azure REST API version 2025-03-01. In version 2.x of the Azure Native provider, it used API version 2025-03-01.
 type ManufacturingDataService struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The managed service identities assigned to this resource.
-	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity commontypesv5.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -27,9 +30,9 @@ type ManufacturingDataService struct {
 	// The resource-specific properties for this resource.
 	Properties MdsResourcePropertiesResponseOutput `pulumi:"properties"`
 	// The SKU (Stock Keeping Unit) assigned to this resource.
-	Sku SkuResponsePtrOutput `pulumi:"sku"`
+	Sku commontypesv5.SkuResponsePtrOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -89,7 +92,7 @@ func (ManufacturingDataServiceState) ElementType() reflect.Type {
 
 type manufacturingDataServiceArgs struct {
 	// The managed service identities assigned to this resource.
-	Identity *ManagedServiceIdentity `pulumi:"identity"`
+	Identity *commontypesv5.ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Name.
@@ -99,7 +102,7 @@ type manufacturingDataServiceArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The SKU (Stock Keeping Unit) assigned to this resource.
-	Sku *Sku `pulumi:"sku"`
+	Sku *commontypesv5.Sku `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -107,7 +110,7 @@ type manufacturingDataServiceArgs struct {
 // The set of arguments for constructing a ManufacturingDataService resource.
 type ManufacturingDataServiceArgs struct {
 	// The managed service identities assigned to this resource.
-	Identity ManagedServiceIdentityPtrInput
+	Identity commontypesv5.ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Name.
@@ -117,7 +120,7 @@ type ManufacturingDataServiceArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The SKU (Stock Keeping Unit) assigned to this resource.
-	Sku SkuPtrInput
+	Sku commontypesv5.SkuPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 }
@@ -159,9 +162,16 @@ func (o ManufacturingDataServiceOutput) ToManufacturingDataServiceOutputWithCont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ManufacturingDataServiceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManufacturingDataService) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The managed service identities assigned to this resource.
-func (o ManufacturingDataServiceOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *ManufacturingDataService) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o ManufacturingDataServiceOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *ManufacturingDataService) commontypesv5.ManagedServiceIdentityResponsePtrOutput {
+		return v.Identity
+	}).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -180,13 +190,13 @@ func (o ManufacturingDataServiceOutput) Properties() MdsResourcePropertiesRespon
 }
 
 // The SKU (Stock Keeping Unit) assigned to this resource.
-func (o ManufacturingDataServiceOutput) Sku() SkuResponsePtrOutput {
-	return o.ApplyT(func(v *ManufacturingDataService) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
+func (o ManufacturingDataServiceOutput) Sku() commontypesv5.SkuResponsePtrOutput {
+	return o.ApplyT(func(v *ManufacturingDataService) commontypesv5.SkuResponsePtrOutput { return v.Sku }).(commontypesv5.SkuResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ManufacturingDataServiceOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *ManufacturingDataService) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o ManufacturingDataServiceOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *ManufacturingDataService) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

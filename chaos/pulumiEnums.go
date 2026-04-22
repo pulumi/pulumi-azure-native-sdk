@@ -17,126 +17,134 @@ const (
 	FilterTypeSimple = FilterType("Simple")
 )
 
-// String of the resource identity type.
-type ResourceIdentityType string
+// overwrite default enum for type to reflect experiment's support of only one identity
+type ManagedServiceIdentityType string
 
 const (
-	ResourceIdentityTypeNone           = ResourceIdentityType("None")
-	ResourceIdentityTypeSystemAssigned = ResourceIdentityType("SystemAssigned")
-	ResourceIdentityTypeUserAssigned   = ResourceIdentityType("UserAssigned")
+	ManagedServiceIdentityTypeNone           = ManagedServiceIdentityType("None")
+	ManagedServiceIdentityTypeSystemAssigned = ManagedServiceIdentityType("SystemAssigned")
+	ManagedServiceIdentityTypeUserAssigned   = ManagedServiceIdentityType("UserAssigned")
 )
 
-func (ResourceIdentityType) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceIdentityType)(nil)).Elem()
+// Public Network Access Control for PrivateAccess resource.
+type PublicNetworkAccessOption string
+
+const (
+	PublicNetworkAccessOptionEnabled  = PublicNetworkAccessOption("Enabled")
+	PublicNetworkAccessOptionDisabled = PublicNetworkAccessOption("Disabled")
+)
+
+func (PublicNetworkAccessOption) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicNetworkAccessOption)(nil)).Elem()
 }
 
-func (e ResourceIdentityType) ToResourceIdentityTypeOutput() ResourceIdentityTypeOutput {
-	return pulumi.ToOutput(e).(ResourceIdentityTypeOutput)
+func (e PublicNetworkAccessOption) ToPublicNetworkAccessOptionOutput() PublicNetworkAccessOptionOutput {
+	return pulumi.ToOutput(e).(PublicNetworkAccessOptionOutput)
 }
 
-func (e ResourceIdentityType) ToResourceIdentityTypeOutputWithContext(ctx context.Context) ResourceIdentityTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(ResourceIdentityTypeOutput)
+func (e PublicNetworkAccessOption) ToPublicNetworkAccessOptionOutputWithContext(ctx context.Context) PublicNetworkAccessOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PublicNetworkAccessOptionOutput)
 }
 
-func (e ResourceIdentityType) ToResourceIdentityTypePtrOutput() ResourceIdentityTypePtrOutput {
-	return e.ToResourceIdentityTypePtrOutputWithContext(context.Background())
+func (e PublicNetworkAccessOption) ToPublicNetworkAccessOptionPtrOutput() PublicNetworkAccessOptionPtrOutput {
+	return e.ToPublicNetworkAccessOptionPtrOutputWithContext(context.Background())
 }
 
-func (e ResourceIdentityType) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
-	return ResourceIdentityType(e).ToResourceIdentityTypeOutputWithContext(ctx).ToResourceIdentityTypePtrOutputWithContext(ctx)
+func (e PublicNetworkAccessOption) ToPublicNetworkAccessOptionPtrOutputWithContext(ctx context.Context) PublicNetworkAccessOptionPtrOutput {
+	return PublicNetworkAccessOption(e).ToPublicNetworkAccessOptionOutputWithContext(ctx).ToPublicNetworkAccessOptionPtrOutputWithContext(ctx)
 }
 
-func (e ResourceIdentityType) ToStringOutput() pulumi.StringOutput {
+func (e PublicNetworkAccessOption) ToStringOutput() pulumi.StringOutput {
 	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e ResourceIdentityType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+func (e PublicNetworkAccessOption) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
 	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e ResourceIdentityType) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (e PublicNetworkAccessOption) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
 }
 
-func (e ResourceIdentityType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+func (e PublicNetworkAccessOption) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type ResourceIdentityTypeOutput struct{ *pulumi.OutputState }
+type PublicNetworkAccessOptionOutput struct{ *pulumi.OutputState }
 
-func (ResourceIdentityTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceIdentityType)(nil)).Elem()
+func (PublicNetworkAccessOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicNetworkAccessOption)(nil)).Elem()
 }
 
-func (o ResourceIdentityTypeOutput) ToResourceIdentityTypeOutput() ResourceIdentityTypeOutput {
+func (o PublicNetworkAccessOptionOutput) ToPublicNetworkAccessOptionOutput() PublicNetworkAccessOptionOutput {
 	return o
 }
 
-func (o ResourceIdentityTypeOutput) ToResourceIdentityTypeOutputWithContext(ctx context.Context) ResourceIdentityTypeOutput {
+func (o PublicNetworkAccessOptionOutput) ToPublicNetworkAccessOptionOutputWithContext(ctx context.Context) PublicNetworkAccessOptionOutput {
 	return o
 }
 
-func (o ResourceIdentityTypeOutput) ToResourceIdentityTypePtrOutput() ResourceIdentityTypePtrOutput {
-	return o.ToResourceIdentityTypePtrOutputWithContext(context.Background())
+func (o PublicNetworkAccessOptionOutput) ToPublicNetworkAccessOptionPtrOutput() PublicNetworkAccessOptionPtrOutput {
+	return o.ToPublicNetworkAccessOptionPtrOutputWithContext(context.Background())
 }
 
-func (o ResourceIdentityTypeOutput) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceIdentityType) *ResourceIdentityType {
+func (o PublicNetworkAccessOptionOutput) ToPublicNetworkAccessOptionPtrOutputWithContext(ctx context.Context) PublicNetworkAccessOptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublicNetworkAccessOption) *PublicNetworkAccessOption {
 		return &v
-	}).(ResourceIdentityTypePtrOutput)
+	}).(PublicNetworkAccessOptionPtrOutput)
 }
 
-func (o ResourceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
+func (o PublicNetworkAccessOptionOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
 
-func (o ResourceIdentityTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ResourceIdentityType) string {
+func (o PublicNetworkAccessOptionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicNetworkAccessOption) string {
 		return string(e)
 	}).(pulumi.StringOutput)
 }
 
-func (o ResourceIdentityTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o PublicNetworkAccessOptionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o ResourceIdentityTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ResourceIdentityType) *string {
+func (o PublicNetworkAccessOptionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicNetworkAccessOption) *string {
 		v := string(e)
 		return &v
 	}).(pulumi.StringPtrOutput)
 }
 
-type ResourceIdentityTypePtrOutput struct{ *pulumi.OutputState }
+type PublicNetworkAccessOptionPtrOutput struct{ *pulumi.OutputState }
 
-func (ResourceIdentityTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourceIdentityType)(nil)).Elem()
+func (PublicNetworkAccessOptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicNetworkAccessOption)(nil)).Elem()
 }
 
-func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutput() ResourceIdentityTypePtrOutput {
+func (o PublicNetworkAccessOptionPtrOutput) ToPublicNetworkAccessOptionPtrOutput() PublicNetworkAccessOptionPtrOutput {
 	return o
 }
 
-func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
+func (o PublicNetworkAccessOptionPtrOutput) ToPublicNetworkAccessOptionPtrOutputWithContext(ctx context.Context) PublicNetworkAccessOptionPtrOutput {
 	return o
 }
 
-func (o ResourceIdentityTypePtrOutput) Elem() ResourceIdentityTypeOutput {
-	return o.ApplyT(func(v *ResourceIdentityType) ResourceIdentityType {
+func (o PublicNetworkAccessOptionPtrOutput) Elem() PublicNetworkAccessOptionOutput {
+	return o.ApplyT(func(v *PublicNetworkAccessOption) PublicNetworkAccessOption {
 		if v != nil {
 			return *v
 		}
-		var ret ResourceIdentityType
+		var ret PublicNetworkAccessOption
 		return ret
-	}).(ResourceIdentityTypeOutput)
+	}).(PublicNetworkAccessOptionOutput)
 }
 
-func (o ResourceIdentityTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o PublicNetworkAccessOptionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o ResourceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ResourceIdentityType) *string {
+func (o PublicNetworkAccessOptionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PublicNetworkAccessOption) *string {
 		if e == nil {
 			return nil
 		}
@@ -145,44 +153,43 @@ func (o ResourceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 	}).(pulumi.StringPtrOutput)
 }
 
-// ResourceIdentityTypeInput is an input type that accepts values of the ResourceIdentityType enum
-// A concrete instance of `ResourceIdentityTypeInput` can be one of the following:
+// PublicNetworkAccessOptionInput is an input type that accepts values of the PublicNetworkAccessOption enum
+// A concrete instance of `PublicNetworkAccessOptionInput` can be one of the following:
 //
-//	ResourceIdentityTypeNone
-//	ResourceIdentityTypeSystemAssigned
-//	ResourceIdentityTypeUserAssigned
-type ResourceIdentityTypeInput interface {
+//	PublicNetworkAccessOptionEnabled
+//	PublicNetworkAccessOptionDisabled
+type PublicNetworkAccessOptionInput interface {
 	pulumi.Input
 
-	ToResourceIdentityTypeOutput() ResourceIdentityTypeOutput
-	ToResourceIdentityTypeOutputWithContext(context.Context) ResourceIdentityTypeOutput
+	ToPublicNetworkAccessOptionOutput() PublicNetworkAccessOptionOutput
+	ToPublicNetworkAccessOptionOutputWithContext(context.Context) PublicNetworkAccessOptionOutput
 }
 
-var resourceIdentityTypePtrType = reflect.TypeOf((**ResourceIdentityType)(nil)).Elem()
+var publicNetworkAccessOptionPtrType = reflect.TypeOf((**PublicNetworkAccessOption)(nil)).Elem()
 
-type ResourceIdentityTypePtrInput interface {
+type PublicNetworkAccessOptionPtrInput interface {
 	pulumi.Input
 
-	ToResourceIdentityTypePtrOutput() ResourceIdentityTypePtrOutput
-	ToResourceIdentityTypePtrOutputWithContext(context.Context) ResourceIdentityTypePtrOutput
+	ToPublicNetworkAccessOptionPtrOutput() PublicNetworkAccessOptionPtrOutput
+	ToPublicNetworkAccessOptionPtrOutputWithContext(context.Context) PublicNetworkAccessOptionPtrOutput
 }
 
-type resourceIdentityTypePtr string
+type publicNetworkAccessOptionPtr string
 
-func ResourceIdentityTypePtr(v string) ResourceIdentityTypePtrInput {
-	return (*resourceIdentityTypePtr)(&v)
+func PublicNetworkAccessOptionPtr(v string) PublicNetworkAccessOptionPtrInput {
+	return (*publicNetworkAccessOptionPtr)(&v)
 }
 
-func (*resourceIdentityTypePtr) ElementType() reflect.Type {
-	return resourceIdentityTypePtrType
+func (*publicNetworkAccessOptionPtr) ElementType() reflect.Type {
+	return publicNetworkAccessOptionPtrType
 }
 
-func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIdentityTypePtrOutput {
-	return pulumi.ToOutput(in).(ResourceIdentityTypePtrOutput)
+func (in *publicNetworkAccessOptionPtr) ToPublicNetworkAccessOptionPtrOutput() PublicNetworkAccessOptionPtrOutput {
+	return pulumi.ToOutput(in).(PublicNetworkAccessOptionPtrOutput)
 }
 
-func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
+func (in *publicNetworkAccessOptionPtr) ToPublicNetworkAccessOptionPtrOutputWithContext(ctx context.Context) PublicNetworkAccessOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessOptionPtrOutput)
 }
 
 // Enum of the selector type.
@@ -358,8 +365,8 @@ func (in *targetReferenceTypePtr) ToTargetReferenceTypePtrOutputWithContext(ctx 
 }
 
 func init() {
-	pulumi.RegisterOutputType(ResourceIdentityTypeOutput{})
-	pulumi.RegisterOutputType(ResourceIdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(PublicNetworkAccessOptionOutput{})
+	pulumi.RegisterOutputType(PublicNetworkAccessOptionPtrOutput{})
 	pulumi.RegisterOutputType(TargetReferenceTypeOutput{})
 	pulumi.RegisterOutputType(TargetReferenceTypePtrOutput{})
 }

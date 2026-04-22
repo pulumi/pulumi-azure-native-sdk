@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a file import in Azure Security Insights.
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2025-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview.
+// Other available API versions: 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type FileImport struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The content type of this file.
 	ContentType pulumi.StringOutput `pulumi:"contentType"`
 	// The time the file was imported.
@@ -45,7 +48,7 @@ type FileImport struct {
 	// The state of the file import.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The number of records in the file.
 	TotalRecordCount pulumi.IntOutput `pulumi:"totalRecordCount"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -136,6 +139,12 @@ func NewFileImport(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250101preview:FileImport"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250401preview:FileImport"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250701preview:FileImport"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -243,6 +252,11 @@ func (o FileImportOutput) ToFileImportOutputWithContext(ctx context.Context) Fil
 	return o
 }
 
+// The Azure API version of the resource.
+func (o FileImportOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *FileImport) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The content type of this file.
 func (o FileImportOutput) ContentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *FileImport) pulumi.StringOutput { return v.ContentType }).(pulumi.StringOutput)
@@ -304,8 +318,8 @@ func (o FileImportOutput) State() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o FileImportOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *FileImport) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o FileImportOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *FileImport) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The number of records in the file.

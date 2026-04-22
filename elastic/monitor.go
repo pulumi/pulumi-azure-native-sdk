@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Monitor resource.
 //
-// Uses Azure REST API version 2023-06-01. In version 1.x of the Azure Native provider, it used API version 2020-07-01.
+// Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2023-06-01.
 //
-// Other available API versions: 2023-06-15-preview, 2023-07-01-preview, 2023-10-01-preview, 2023-11-01-preview, 2024-01-01-preview, 2024-03-01, 2024-05-01-preview, 2024-06-15-preview, 2024-10-01-preview, 2025-01-15-preview.
+// Other available API versions: 2023-06-01, 2023-06-15-preview, 2023-07-01-preview, 2023-10-01-preview, 2023-11-01-preview, 2024-01-01-preview, 2024-05-01-preview, 2024-06-15-preview, 2024-10-01-preview, 2025-01-15-preview, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native elastic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Monitor struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Identity properties of the monitor resource.
 	Identity IdentityPropertiesResponsePtrOutput `pulumi:"identity"`
 	// The location of the monitor resource
@@ -31,7 +34,7 @@ type Monitor struct {
 	// SKU of the monitor resource.
 	Sku ResourceSkuResponsePtrOutput `pulumi:"sku"`
 	// The system metadata relating to this resource
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The tags of the monitor resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the monitor resource.
@@ -109,6 +112,9 @@ func NewMonitor(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:elastic/v20250115preview:Monitor"),
 		},
+		{
+			Type: pulumi.String("azure-native:elastic/v20250601:Monitor"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -152,7 +158,7 @@ type monitorArgs struct {
 	MonitorName *string `pulumi:"monitorName"`
 	// Properties of the monitor resource.
 	Properties *MonitorProperties `pulumi:"properties"`
-	// The name of the resource group to which the Elastic resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// SKU of the monitor resource.
 	Sku *ResourceSku `pulumi:"sku"`
@@ -170,7 +176,7 @@ type MonitorArgs struct {
 	MonitorName pulumi.StringPtrInput
 	// Properties of the monitor resource.
 	Properties MonitorPropertiesPtrInput
-	// The name of the resource group to which the Elastic resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// SKU of the monitor resource.
 	Sku ResourceSkuPtrInput
@@ -215,6 +221,11 @@ func (o MonitorOutput) ToMonitorOutputWithContext(ctx context.Context) MonitorOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o MonitorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Monitor) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Identity properties of the monitor resource.
 func (o MonitorOutput) Identity() IdentityPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v *Monitor) IdentityPropertiesResponsePtrOutput { return v.Identity }).(IdentityPropertiesResponsePtrOutput)
@@ -241,8 +252,8 @@ func (o MonitorOutput) Sku() ResourceSkuResponsePtrOutput {
 }
 
 // The system metadata relating to this resource
-func (o MonitorOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Monitor) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o MonitorOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Monitor) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The tags of the monitor resource.

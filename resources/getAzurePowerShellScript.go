@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv1"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a deployment script with a given name.
 //
-// Uses Azure REST API version 2020-10-01.
+// Uses Azure REST API version 2023-08-01.
 func LookupAzurePowerShellScript(ctx *pulumi.Context, args *LookupAzurePowerShellScriptArgs, opts ...pulumi.InvokeOption) (*LookupAzurePowerShellScriptResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzurePowerShellScriptResult
@@ -37,6 +38,8 @@ type LookupAzurePowerShellScriptResult struct {
 	Arguments *string `pulumi:"arguments"`
 	// Azure PowerShell module version to be used.
 	AzPowerShellVersion string `pulumi:"azPowerShellVersion"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The clean up preference when the script execution gets in a terminal state. Default setting is 'Always'.
 	CleanupPreference *string `pulumi:"cleanupPreference"`
 	// Container settings.
@@ -73,7 +76,7 @@ type LookupAzurePowerShellScriptResult struct {
 	// Supporting files for the external script.
 	SupportingScriptUris []string `pulumi:"supportingScriptUris"`
 	// The system metadata related to this resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv1.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Maximum allowed script execution time specified in ISO 8601 format. Default value is P1D
@@ -141,6 +144,11 @@ func (o LookupAzurePowerShellScriptResultOutput) Arguments() pulumi.StringPtrOut
 // Azure PowerShell module version to be used.
 func (o LookupAzurePowerShellScriptResultOutput) AzPowerShellVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzurePowerShellScriptResult) string { return v.AzPowerShellVersion }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAzurePowerShellScriptResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAzurePowerShellScriptResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The clean up preference when the script execution gets in a terminal state. Default setting is 'Always'.
@@ -232,8 +240,8 @@ func (o LookupAzurePowerShellScriptResultOutput) SupportingScriptUris() pulumi.S
 }
 
 // The system metadata related to this resource.
-func (o LookupAzurePowerShellScriptResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAzurePowerShellScriptResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupAzurePowerShellScriptResultOutput) SystemData() commontypesv1.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAzurePowerShellScriptResult) commontypesv1.SystemDataResponse { return v.SystemData }).(commontypesv1.SystemDataResponseOutput)
 }
 
 // Resource tags.

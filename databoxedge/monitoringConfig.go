@@ -8,24 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The metric setting details for the role
 //
-// Uses Azure REST API version 2022-03-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
+// Uses Azure REST API version 2023-07-01. In version 2.x of the Azure Native provider, it used API version 2022-03-01.
 //
-// Other available API versions: 2023-01-01-preview, 2023-07-01, 2023-12-01.
+// Other available API versions: 2022-03-01, 2022-04-01-preview, 2022-12-01-preview, 2023-01-01-preview, 2023-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databoxedge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type MonitoringConfig struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The metrics configuration details
 	MetricConfigurations MetricConfigurationResponseArrayOutput `pulumi:"metricConfigurations"`
 	// The object name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Metadata pertaining to creation and last modification of MonitoringConfiguration
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -183,6 +186,11 @@ func (o MonitoringConfigOutput) ToMonitoringConfigOutputWithContext(ctx context.
 	return o
 }
 
+// The Azure API version of the resource.
+func (o MonitoringConfigOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MonitoringConfig) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The metrics configuration details
 func (o MonitoringConfigOutput) MetricConfigurations() MetricConfigurationResponseArrayOutput {
 	return o.ApplyT(func(v *MonitoringConfig) MetricConfigurationResponseArrayOutput { return v.MetricConfigurations }).(MetricConfigurationResponseArrayOutput)
@@ -194,8 +202,8 @@ func (o MonitoringConfigOutput) Name() pulumi.StringOutput {
 }
 
 // Metadata pertaining to creation and last modification of MonitoringConfiguration
-func (o MonitoringConfigOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *MonitoringConfig) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o MonitoringConfigOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *MonitoringConfig) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.

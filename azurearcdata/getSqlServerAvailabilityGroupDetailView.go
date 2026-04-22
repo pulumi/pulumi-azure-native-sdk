@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves detailed properties of the Availability Group.
 //
-// Uses Azure REST API version 2024-01-01.
+// Uses Azure REST API version 2025-03-01-preview.
 //
-// Other available API versions: 2024-05-01-preview, 2025-03-01-preview.
+// Other available API versions: 2024-01-01, 2024-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func GetSqlServerAvailabilityGroupDetailView(ctx *pulumi.Context, args *GetSqlServerAvailabilityGroupDetailViewArgs, opts ...pulumi.InvokeOption) (*GetSqlServerAvailabilityGroupDetailViewResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetSqlServerAvailabilityGroupDetailViewResult
@@ -46,7 +47,7 @@ type GetSqlServerAvailabilityGroupDetailViewResult struct {
 	// Properties of Arc Sql Server availability group
 	Properties SqlServerAvailabilityGroupResourcePropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -113,8 +114,10 @@ func (o GetSqlServerAvailabilityGroupDetailViewResultOutput) Properties() SqlSer
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o GetSqlServerAvailabilityGroupDetailViewResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v GetSqlServerAvailabilityGroupDetailViewResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetSqlServerAvailabilityGroupDetailViewResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v GetSqlServerAvailabilityGroupDetailViewResult) commontypesv3.SystemDataResponse {
+		return v.SystemData
+	}).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

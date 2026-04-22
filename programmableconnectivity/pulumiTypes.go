@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +21,7 @@ type ApplicationProperties struct {
 	ApplicationType *string `pulumi:"applicationType"`
 	// Legal name of the organization owning the application.
 	LegalName *string `pulumi:"legalName"`
-	// Name of the application. Example: Contoso App.
+	// Name of the application.
 	Name *string `pulumi:"name"`
 	// A description of the organization owning the application.
 	OrganizationDescription *string `pulumi:"organizationDescription"`
@@ -50,7 +50,7 @@ type ApplicationPropertiesArgs struct {
 	ApplicationType pulumi.StringPtrInput `pulumi:"applicationType"`
 	// Legal name of the organization owning the application.
 	LegalName pulumi.StringPtrInput `pulumi:"legalName"`
-	// Name of the application. Example: Contoso App.
+	// Name of the application.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// A description of the organization owning the application.
 	OrganizationDescription pulumi.StringPtrInput `pulumi:"organizationDescription"`
@@ -153,7 +153,7 @@ func (o ApplicationPropertiesOutput) LegalName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationProperties) *string { return v.LegalName }).(pulumi.StringPtrOutput)
 }
 
-// Name of the application. Example: Contoso App.
+// Name of the application.
 func (o ApplicationPropertiesOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationProperties) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -227,7 +227,7 @@ func (o ApplicationPropertiesPtrOutput) LegalName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of the application. Example: Contoso App.
+// Name of the application.
 func (o ApplicationPropertiesPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationProperties) *string {
 		if v == nil {
@@ -275,7 +275,7 @@ type ApplicationPropertiesResponse struct {
 	ApplicationType *string `pulumi:"applicationType"`
 	// Legal name of the organization owning the application.
 	LegalName *string `pulumi:"legalName"`
-	// Name of the application. Example: Contoso App.
+	// Name of the application.
 	Name *string `pulumi:"name"`
 	// A description of the organization owning the application.
 	OrganizationDescription *string `pulumi:"organizationDescription"`
@@ -315,7 +315,7 @@ func (o ApplicationPropertiesResponseOutput) LegalName() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v ApplicationPropertiesResponse) *string { return v.LegalName }).(pulumi.StringPtrOutput)
 }
 
-// Name of the application. Example: Contoso App.
+// Name of the application.
 func (o ApplicationPropertiesResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationPropertiesResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -389,7 +389,7 @@ func (o ApplicationPropertiesResponsePtrOutput) LegalName() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of the application. Example: Contoso App.
+// Name of the application.
 func (o ApplicationPropertiesResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationPropertiesResponse) *string {
 		if v == nil {
@@ -698,67 +698,6 @@ func (o StatusResponseOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StatusResponse) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
-}
-
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponseOutput struct{ *pulumi.OutputState }
-
-func (SystemDataResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
-	return o
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
-	return o
-}
-
-// The timestamp of resource creation (UTC).
-func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterOutputType(ApplicationPropertiesOutput{})
 	pulumi.RegisterOutputType(ApplicationPropertiesPtrOutput{})
@@ -769,5 +708,4 @@ func init() {
 	pulumi.RegisterOutputType(SaasPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SaasPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
-	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 }

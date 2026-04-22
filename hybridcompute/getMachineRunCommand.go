@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The operation to get a run command.
 //
-// Uses Azure REST API version 2023-10-03-preview.
+// Uses Azure REST API version 2024-07-31-preview.
 //
-// Other available API versions: 2024-03-31-preview, 2024-05-20-preview, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview, 2025-01-13.
+// Other available API versions: 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-09-10-preview, 2024-11-10-preview, 2025-01-13, 2025-02-19-preview, 2025-06-01, 2025-08-21-preview, 2025-09-16-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridcompute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupMachineRunCommand(ctx *pulumi.Context, args *LookupMachineRunCommandArgs, opts ...pulumi.InvokeOption) (*LookupMachineRunCommandResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMachineRunCommandResult
@@ -39,6 +40,8 @@ type LookupMachineRunCommandArgs struct {
 type LookupMachineRunCommandResult struct {
 	// Optional. If set to true, provisioning will complete as soon as script starts and will not wait for script to complete.
 	AsyncExecution *bool `pulumi:"asyncExecution"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// User-assigned managed identity that has access to errorBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged
 	ErrorBlobManagedIdentity *RunCommandManagedIdentityResponse `pulumi:"errorBlobManagedIdentity"`
 	// Specifies the Azure storage blob where script error stream will be uploaded. Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob. Refer errorBlobManagedIdentity parameter.
@@ -68,7 +71,7 @@ type LookupMachineRunCommandResult struct {
 	// The source of the run command script.
 	Source *MachineRunCommandScriptSourceResponse `pulumi:"source"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The timeout in seconds to execute the run command.
@@ -129,6 +132,11 @@ func (o LookupMachineRunCommandResultOutput) ToLookupMachineRunCommandResultOutp
 // Optional. If set to true, provisioning will complete as soon as script starts and will not wait for script to complete.
 func (o LookupMachineRunCommandResultOutput) AsyncExecution() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupMachineRunCommandResult) *bool { return v.AsyncExecution }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupMachineRunCommandResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMachineRunCommandResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // User-assigned managed identity that has access to errorBlobUri storage blob. Use an empty object in case of system-assigned identity. Make sure managed identity has been given access to blob's container with 'Storage Blob Data Contributor' role assignment. In case of user-assigned identity, make sure you add it under VM's identity. For more info on managed identity and Run Command, refer https://aka.ms/ManagedIdentity and https://aka.ms/RunCommandManaged
@@ -206,8 +214,8 @@ func (o LookupMachineRunCommandResultOutput) Source() MachineRunCommandScriptSou
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupMachineRunCommandResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupMachineRunCommandResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupMachineRunCommandResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupMachineRunCommandResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

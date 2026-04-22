@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The SecretSync resource.
 //
-// Uses Azure REST API version 2024-08-21-preview.
+// Uses Azure REST API version 2024-08-21-preview. In version 2.x of the Azure Native provider, it used API version 2024-08-21-preview.
 type SecretSync struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The complex type of the extended location.
 	ExtendedLocation AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// ForceSynchronization can be used to force the secret synchronization. The secret synchronization is triggered by changing the value in this field. This field is not used to resolve synchronization conflicts.
@@ -39,7 +42,7 @@ type SecretSync struct {
 	// SecretSyncStatus defines the observed state of the secret synchronization process.
 	Status SecretSyncStatusResponseOutput `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -190,6 +193,11 @@ func (o SecretSyncOutput) ToSecretSyncOutputWithContext(ctx context.Context) Sec
 	return o
 }
 
+// The Azure API version of the resource.
+func (o SecretSyncOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecretSync) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The complex type of the extended location.
 func (o SecretSyncOutput) ExtendedLocation() AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput {
 	return o.ApplyT(func(v *SecretSync) AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput {
@@ -243,8 +251,8 @@ func (o SecretSyncOutput) Status() SecretSyncStatusResponseOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o SecretSyncOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *SecretSync) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o SecretSyncOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *SecretSync) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

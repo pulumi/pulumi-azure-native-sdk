@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,8 @@ type LookupBrokerListenerResult struct {
 	AuthenticationEnabled *bool `pulumi:"authenticationEnabled"`
 	// The flag for enabling Authorization policies on Listener Port. false - AllowAll, true - Use Authorization resource rules if present.
 	AuthorizationEnabled *bool `pulumi:"authorizationEnabled"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The k8s cr/resource reference of mq/broker.
 	BrokerRef string `pulumi:"brokerRef"`
 	// Extended Location
@@ -62,7 +65,7 @@ type LookupBrokerListenerResult struct {
 	// The Kubernetes Service type to deploy for Listener.
 	ServiceType *string `pulumi:"serviceType"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Defines configuration of a TLS server certificate. NOTE Enum - Only one TLS Cert method is supported
@@ -146,6 +149,11 @@ func (o LookupBrokerListenerResultOutput) AuthorizationEnabled() pulumi.BoolPtrO
 	return o.ApplyT(func(v LookupBrokerListenerResult) *bool { return v.AuthorizationEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupBrokerListenerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBrokerListenerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The k8s cr/resource reference of mq/broker.
 func (o LookupBrokerListenerResultOutput) BrokerRef() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBrokerListenerResult) string { return v.BrokerRef }).(pulumi.StringOutput)
@@ -197,8 +205,8 @@ func (o LookupBrokerListenerResultOutput) ServiceType() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupBrokerListenerResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupBrokerListenerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupBrokerListenerResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupBrokerListenerResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

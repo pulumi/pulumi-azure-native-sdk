@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a valid sender username for a domains resource.
 //
-// Uses Azure REST API version 2023-03-31.
+// Uses Azure REST API version 2023-06-01-preview.
 //
-// Other available API versions: 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2024-09-01-preview.
+// Other available API versions: 2023-03-31, 2023-04-01, 2023-04-01-preview, 2024-09-01-preview, 2025-05-01, 2025-05-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSenderUsername(ctx *pulumi.Context, args *LookupSenderUsernameArgs, opts ...pulumi.InvokeOption) (*LookupSenderUsernameResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSenderUsernameResult
@@ -39,6 +40,8 @@ type LookupSenderUsernameArgs struct {
 
 // A class representing a SenderUsername resource.
 type LookupSenderUsernameResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The location where the SenderUsername resource data is stored at rest.
 	DataLocation string `pulumi:"dataLocation"`
 	// The display name for the senderUsername.
@@ -50,7 +53,7 @@ type LookupSenderUsernameResult struct {
 	// Provisioning state of the resource. Unknown is the default state for Communication Services.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// A sender senderUsername to be used when sending emails.
@@ -96,6 +99,11 @@ func (o LookupSenderUsernameResultOutput) ToLookupSenderUsernameResultOutputWith
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupSenderUsernameResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSenderUsernameResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The location where the SenderUsername resource data is stored at rest.
 func (o LookupSenderUsernameResultOutput) DataLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSenderUsernameResult) string { return v.DataLocation }).(pulumi.StringOutput)
@@ -122,8 +130,8 @@ func (o LookupSenderUsernameResultOutput) ProvisioningState() pulumi.StringOutpu
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupSenderUsernameResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSenderUsernameResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupSenderUsernameResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSenderUsernameResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

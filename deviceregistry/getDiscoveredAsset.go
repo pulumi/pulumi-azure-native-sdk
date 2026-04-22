@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +36,8 @@ type LookupDiscoveredAssetArgs struct {
 type LookupDiscoveredAssetResult struct {
 	// A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must provide asset endpoint profile name.
 	AssetEndpointProfileRef string `pulumi:"assetEndpointProfileRef"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Array of datasets that are part of the asset. Each dataset spec describes the data points that make up the set.
 	Datasets []DiscoveredDatasetResponse `pulumi:"datasets"`
 	// Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here.
@@ -74,7 +77,7 @@ type LookupDiscoveredAssetResult struct {
 	// Revision number of the software.
 	SoftwareRevision *string `pulumi:"softwareRevision"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -131,6 +134,11 @@ func (o LookupDiscoveredAssetResultOutput) ToLookupDiscoveredAssetResultOutputWi
 // A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must provide asset endpoint profile name.
 func (o LookupDiscoveredAssetResultOutput) AssetEndpointProfileRef() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiscoveredAssetResult) string { return v.AssetEndpointProfileRef }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupDiscoveredAssetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiscoveredAssetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Array of datasets that are part of the asset. Each dataset spec describes the data points that make up the set.
@@ -229,8 +237,8 @@ func (o LookupDiscoveredAssetResultOutput) SoftwareRevision() pulumi.StringPtrOu
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupDiscoveredAssetResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupDiscoveredAssetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupDiscoveredAssetResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupDiscoveredAssetResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

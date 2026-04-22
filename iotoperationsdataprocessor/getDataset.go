@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +36,8 @@ type LookupDatasetArgs struct {
 
 // A Dataset resource belonging to an Instance resource.
 type LookupDatasetResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Detailed description of the Dataset.
 	Description *string `pulumi:"description"`
 	// Edge location of the resource.
@@ -52,7 +55,7 @@ type LookupDatasetResult struct {
 	// The status of the last operation.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Path to an RFC3339 timestamp in the message. If no path is provided, the ingestion time of the record is used for time-based joins.
@@ -100,6 +103,11 @@ func (o LookupDatasetResultOutput) ToLookupDatasetResultOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupDatasetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatasetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Detailed description of the Dataset.
 func (o LookupDatasetResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDatasetResult) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -141,8 +149,8 @@ func (o LookupDatasetResultOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupDatasetResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupDatasetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupDatasetResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupDatasetResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

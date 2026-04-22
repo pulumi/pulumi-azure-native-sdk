@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a data connector definition.
 //
-// Uses Azure REST API version 2023-07-01-preview.
+// Uses Azure REST API version 2024-09-01.
 func LookupCustomizableConnectorDefinition(ctx *pulumi.Context, args *LookupCustomizableConnectorDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupCustomizableConnectorDefinitionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCustomizableConnectorDefinitionResult
@@ -35,6 +36,8 @@ type LookupCustomizableConnectorDefinitionArgs struct {
 
 // Connector definition for kind 'Customizable'.
 type LookupCustomizableConnectorDefinitionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The UiConfig for 'Customizable' connector definition kind.
 	ConnectionsConfig *CustomizableConnectionsConfigResponse `pulumi:"connectionsConfig"`
 	// The UiConfig for 'Customizable' connector definition kind.
@@ -53,7 +56,7 @@ type LookupCustomizableConnectorDefinitionResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -93,6 +96,11 @@ func (o LookupCustomizableConnectorDefinitionResultOutput) ToLookupCustomizableC
 
 func (o LookupCustomizableConnectorDefinitionResultOutput) ToLookupCustomizableConnectorDefinitionResultOutputWithContext(ctx context.Context) LookupCustomizableConnectorDefinitionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupCustomizableConnectorDefinitionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomizableConnectorDefinitionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The UiConfig for 'Customizable' connector definition kind.
@@ -141,8 +149,10 @@ func (o LookupCustomizableConnectorDefinitionResultOutput) Name() pulumi.StringO
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupCustomizableConnectorDefinitionResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupCustomizableConnectorDefinitionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupCustomizableConnectorDefinitionResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupCustomizableConnectorDefinitionResult) commontypesv5.SystemDataResponse {
+		return v.SystemData
+	}).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

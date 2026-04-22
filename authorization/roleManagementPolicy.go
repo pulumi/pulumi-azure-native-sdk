@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Role management policy
 //
-// Uses Azure REST API version 2024-09-01-preview.
+// Uses Azure REST API version 2024-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-09-01-preview.
 //
-// Other available API versions: 2020-10-01, 2020-10-01-preview, 2024-02-01-preview.
+// Other available API versions: 2020-10-01, 2020-10-01-preview, 2024-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type RoleManagementPolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The role management policy description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The role management policy display name.
@@ -167,6 +169,11 @@ func (o RoleManagementPolicyOutput) ToRoleManagementPolicyOutput() RoleManagemen
 
 func (o RoleManagementPolicyOutput) ToRoleManagementPolicyOutputWithContext(ctx context.Context) RoleManagementPolicyOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o RoleManagementPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoleManagementPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The role management policy description.

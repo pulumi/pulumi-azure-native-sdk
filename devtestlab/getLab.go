@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +30,7 @@ type LookupLabArgs struct {
 	Expand *string `pulumi:"expand"`
 	// The name of the lab.
 	Name string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -39,6 +40,8 @@ type LookupLabResult struct {
 	Announcement *LabAnnouncementPropertiesResponse `pulumi:"announcement"`
 	// The lab's artifact storage account.
 	ArtifactsStorageAccount string `pulumi:"artifactsStorageAccount"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the lab.
 	CreatedDate string `pulumi:"createdDate"`
 	// The lab's default premium storage account.
@@ -49,19 +52,19 @@ type LookupLabResult struct {
 	EnvironmentPermission *string `pulumi:"environmentPermission"`
 	// Extended properties of the lab used for experimental features
 	ExtendedProperties map[string]string `pulumi:"extendedProperties"`
-	// The identifier of the resource.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Type of storage used by the lab. It can be either Premium or Standard. Default is Premium.
 	LabStorageType *string `pulumi:"labStorageType"`
 	// The load balancer used to for lab VMs that use shared IP address.
 	LoadBalancerId string `pulumi:"loadBalancerId"`
-	// The location of the resource.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The ordered list of artifact resource IDs that should be applied on all Linux VM creations by default, prior to the artifacts specified by the user.
 	MandatoryArtifactsResourceIdsLinux []string `pulumi:"mandatoryArtifactsResourceIdsLinux"`
 	// The ordered list of artifact resource IDs that should be applied on all Windows VM creations by default, prior to the artifacts specified by the user.
 	MandatoryArtifactsResourceIdsWindows []string `pulumi:"mandatoryArtifactsResourceIdsWindows"`
-	// The name of the resource.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The Network Security Group attached to the lab VMs Network interfaces to restrict open ports.
 	NetworkSecurityGroupId string `pulumi:"networkSecurityGroupId"`
@@ -77,9 +80,11 @@ type LookupLabResult struct {
 	PublicIpId string `pulumi:"publicIpId"`
 	// The properties of any lab support message associated with this lab
 	Support *LabSupportPropertiesResponse `pulumi:"support"`
-	// The tags of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The unique immutable identifier of a resource (Guid).
 	UniqueIdentifier string `pulumi:"uniqueIdentifier"`
@@ -115,7 +120,7 @@ type LookupLabOutputArgs struct {
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
 	// The name of the lab.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -148,6 +153,11 @@ func (o LookupLabResultOutput) ArtifactsStorageAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLabResult) string { return v.ArtifactsStorageAccount }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupLabResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLabResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The creation date of the lab.
 func (o LookupLabResultOutput) CreatedDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLabResult) string { return v.CreatedDate }).(pulumi.StringOutput)
@@ -173,7 +183,7 @@ func (o LookupLabResultOutput) ExtendedProperties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupLabResult) map[string]string { return v.ExtendedProperties }).(pulumi.StringMapOutput)
 }
 
-// The identifier of the resource.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupLabResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLabResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -188,7 +198,7 @@ func (o LookupLabResultOutput) LoadBalancerId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLabResult) string { return v.LoadBalancerId }).(pulumi.StringOutput)
 }
 
-// The location of the resource.
+// The geo-location where the resource lives
 func (o LookupLabResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLabResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -203,7 +213,7 @@ func (o LookupLabResultOutput) MandatoryArtifactsResourceIdsWindows() pulumi.Str
 	return o.ApplyT(func(v LookupLabResult) []string { return v.MandatoryArtifactsResourceIdsWindows }).(pulumi.StringArrayOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o LookupLabResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLabResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -240,12 +250,17 @@ func (o LookupLabResultOutput) Support() LabSupportPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupLabResult) *LabSupportPropertiesResponse { return v.Support }).(LabSupportPropertiesResponsePtrOutput)
 }
 
-// The tags of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupLabResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupLabResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o LookupLabResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupLabResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupLabResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLabResult) string { return v.Type }).(pulumi.StringOutput)
 }

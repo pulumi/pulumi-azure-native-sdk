@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Association
 //
-// Uses Azure REST API version 2023-05-01-preview.
+// Uses Azure REST API version 2025-01-01.
 //
-// Other available API versions: 2022-10-01-preview, 2023-11-01, 2024-05-01-preview, 2025-01-01, 2025-03-01-preview.
+// Other available API versions: 2023-05-01-preview, 2023-11-01, 2024-05-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicenetworking [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAssociationsInterface(ctx *pulumi.Context, args *LookupAssociationsInterfaceArgs, opts ...pulumi.InvokeOption) (*LookupAssociationsInterfaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAssociationsInterfaceResult
@@ -39,6 +40,8 @@ type LookupAssociationsInterfaceArgs struct {
 type LookupAssociationsInterfaceResult struct {
 	// Association Type
 	AssociationType string `pulumi:"associationType"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -50,7 +53,7 @@ type LookupAssociationsInterfaceResult struct {
 	// Association Subnet
 	Subnet *AssociationSubnetResponse `pulumi:"subnet"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -99,6 +102,11 @@ func (o LookupAssociationsInterfaceResultOutput) AssociationType() pulumi.String
 	return o.ApplyT(func(v LookupAssociationsInterfaceResult) string { return v.AssociationType }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupAssociationsInterfaceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAssociationsInterfaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupAssociationsInterfaceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssociationsInterfaceResult) string { return v.Id }).(pulumi.StringOutput)
@@ -125,8 +133,8 @@ func (o LookupAssociationsInterfaceResultOutput) Subnet() AssociationSubnetRespo
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupAssociationsInterfaceResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAssociationsInterfaceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupAssociationsInterfaceResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAssociationsInterfaceResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

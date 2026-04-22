@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -123,6 +123,8 @@ func (o BillingHubExecutionUsageDetailResponseArrayOutput) Index(i pulumi.IntInp
 type BillingHubFreeHourIncrementEntryResponse struct {
 	CreateTimeStamp      *string  `pulumi:"createTimeStamp"`
 	ExpirationTimeStamp  *string  `pulumi:"expirationTimeStamp"`
+	FreeHourStatus       *string  `pulumi:"freeHourStatus"`
+	FreeHourType         *string  `pulumi:"freeHourType"`
 	IncrementalFreeHours *float64 `pulumi:"incrementalFreeHours"`
 	RemainingFreeHours   *float64 `pulumi:"remainingFreeHours"`
 }
@@ -147,6 +149,14 @@ func (o BillingHubFreeHourIncrementEntryResponseOutput) CreateTimeStamp() pulumi
 
 func (o BillingHubFreeHourIncrementEntryResponseOutput) ExpirationTimeStamp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BillingHubFreeHourIncrementEntryResponse) *string { return v.ExpirationTimeStamp }).(pulumi.StringPtrOutput)
+}
+
+func (o BillingHubFreeHourIncrementEntryResponseOutput) FreeHourStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingHubFreeHourIncrementEntryResponse) *string { return v.FreeHourStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o BillingHubFreeHourIncrementEntryResponseOutput) FreeHourType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BillingHubFreeHourIncrementEntryResponse) *string { return v.FreeHourType }).(pulumi.StringPtrOutput)
 }
 
 func (o BillingHubFreeHourIncrementEntryResponseOutput) IncrementalFreeHours() pulumi.Float64PtrOutput {
@@ -5271,67 +5281,6 @@ func (o SubscriptionReceiverValueResponsePtrOutput) SubscriptionName() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The type of identity that last modified the resource.
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
-}
-
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponseOutput struct{ *pulumi.OutputState }
-
-func (SystemDataResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
-	return o
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
-	return o
-}
-
-// The timestamp of resource creation (UTC).
-func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
-}
-
 // Specifies current state of tabs.
 type TabState struct {
 	// Current tab.
@@ -6501,7 +6450,6 @@ func init() {
 	pulumi.RegisterOutputType(SubscriptionReceiverValuePtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionReceiverValueResponseOutput{})
 	pulumi.RegisterOutputType(SubscriptionReceiverValueResponsePtrOutput{})
-	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(TabStateOutput{})
 	pulumi.RegisterOutputType(TabStatePtrOutput{})
 	pulumi.RegisterOutputType(TabStateResponseOutput{})

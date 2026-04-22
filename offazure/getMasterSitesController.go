@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a MasterSite
 //
-// Uses Azure REST API version 2023-06-06.
+// Uses Azure REST API version 2023-10-01-preview.
 //
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Other available API versions: 2023-06-06, 2024-05-01-preview, 2024-07-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupMasterSitesController(ctx *pulumi.Context, args *LookupMasterSitesControllerArgs, opts ...pulumi.InvokeOption) (*LookupMasterSitesControllerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMasterSitesControllerResult
@@ -38,6 +39,8 @@ type LookupMasterSitesControllerResult struct {
 	// Gets or sets a value indicating whether multiple sites per site type are
 	// allowed.
 	AllowMultipleSites *bool `pulumi:"allowMultipleSites"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets a value for customer storage account ARM id.
 	CustomerStorageAccountArmId *string `pulumi:"customerStorageAccountArmId"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -59,7 +62,7 @@ type LookupMasterSitesControllerResult struct {
 	// should contain the Site ARM name.
 	Sites []string `pulumi:"sites"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -105,6 +108,11 @@ func (o LookupMasterSitesControllerResultOutput) ToLookupMasterSitesControllerRe
 // allowed.
 func (o LookupMasterSitesControllerResultOutput) AllowMultipleSites() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupMasterSitesControllerResult) *bool { return v.AllowMultipleSites }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupMasterSitesControllerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMasterSitesControllerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets a value for customer storage account ARM id.
@@ -159,8 +167,8 @@ func (o LookupMasterSitesControllerResultOutput) Sites() pulumi.StringArrayOutpu
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupMasterSitesControllerResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupMasterSitesControllerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupMasterSitesControllerResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupMasterSitesControllerResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

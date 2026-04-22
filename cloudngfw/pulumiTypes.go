@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -2829,6 +2829,8 @@ type NetworkProfile struct {
 	EnableEgressNat string `pulumi:"enableEgressNat"`
 	// vnet or vwan, cannot be updated
 	NetworkType string `pulumi:"networkType"`
+	// Array of ipv4 destination address for which source NAT is to be performed
+	PrivateSourceNatRulesDestination []string `pulumi:"privateSourceNatRulesDestination"`
 	// List of IPs associated with the Firewall
 	PublicIps []IPAddress `pulumi:"publicIps"`
 	// Non-RFC 1918 address
@@ -2858,6 +2860,8 @@ type NetworkProfileArgs struct {
 	EnableEgressNat pulumi.StringInput `pulumi:"enableEgressNat"`
 	// vnet or vwan, cannot be updated
 	NetworkType pulumi.StringInput `pulumi:"networkType"`
+	// Array of ipv4 destination address for which source NAT is to be performed
+	PrivateSourceNatRulesDestination pulumi.StringArrayInput `pulumi:"privateSourceNatRulesDestination"`
 	// List of IPs associated with the Firewall
 	PublicIps IPAddressArrayInput `pulumi:"publicIps"`
 	// Non-RFC 1918 address
@@ -2910,6 +2914,11 @@ func (o NetworkProfileOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkProfile) string { return v.NetworkType }).(pulumi.StringOutput)
 }
 
+// Array of ipv4 destination address for which source NAT is to be performed
+func (o NetworkProfileOutput) PrivateSourceNatRulesDestination() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkProfile) []string { return v.PrivateSourceNatRulesDestination }).(pulumi.StringArrayOutput)
+}
+
 // List of IPs associated with the Firewall
 func (o NetworkProfileOutput) PublicIps() IPAddressArrayOutput {
 	return o.ApplyT(func(v NetworkProfile) []IPAddress { return v.PublicIps }).(IPAddressArrayOutput)
@@ -2938,6 +2947,8 @@ type NetworkProfileResponse struct {
 	EnableEgressNat string `pulumi:"enableEgressNat"`
 	// vnet or vwan, cannot be updated
 	NetworkType string `pulumi:"networkType"`
+	// Array of ipv4 destination address for which source NAT is to be performed
+	PrivateSourceNatRulesDestination []string `pulumi:"privateSourceNatRulesDestination"`
 	// List of IPs associated with the Firewall
 	PublicIps []IPAddressResponse `pulumi:"publicIps"`
 	// Non-RFC 1918 address
@@ -2976,6 +2987,11 @@ func (o NetworkProfileResponseOutput) EnableEgressNat() pulumi.StringOutput {
 // vnet or vwan, cannot be updated
 func (o NetworkProfileResponseOutput) NetworkType() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkProfileResponse) string { return v.NetworkType }).(pulumi.StringOutput)
+}
+
+// Array of ipv4 destination address for which source NAT is to be performed
+func (o NetworkProfileResponseOutput) PrivateSourceNatRulesDestination() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkProfileResponse) []string { return v.PrivateSourceNatRulesDestination }).(pulumi.StringArrayOutput)
 }
 
 // List of IPs associated with the Firewall
@@ -4645,65 +4661,204 @@ func (o StorageAccountResponsePtrOutput) SubscriptionId() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+// This field is only present if Strata Cloud Manager is managing the policy for this firewall
+type StrataCloudManagerConfig struct {
+	// Strata Cloud Manager name which is intended to manage the policy for this firewall.
+	CloudManagerName string `pulumi:"cloudManagerName"`
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponseOutput struct{ *pulumi.OutputState }
+// StrataCloudManagerConfigInput is an input type that accepts StrataCloudManagerConfigArgs and StrataCloudManagerConfigOutput values.
+// You can construct a concrete instance of `StrataCloudManagerConfigInput` via:
+//
+//	StrataCloudManagerConfigArgs{...}
+type StrataCloudManagerConfigInput interface {
+	pulumi.Input
 
-func (SystemDataResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+	ToStrataCloudManagerConfigOutput() StrataCloudManagerConfigOutput
+	ToStrataCloudManagerConfigOutputWithContext(context.Context) StrataCloudManagerConfigOutput
 }
 
-func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+// This field is only present if Strata Cloud Manager is managing the policy for this firewall
+type StrataCloudManagerConfigArgs struct {
+	// Strata Cloud Manager name which is intended to manage the policy for this firewall.
+	CloudManagerName pulumi.StringInput `pulumi:"cloudManagerName"`
+}
+
+func (StrataCloudManagerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StrataCloudManagerConfig)(nil)).Elem()
+}
+
+func (i StrataCloudManagerConfigArgs) ToStrataCloudManagerConfigOutput() StrataCloudManagerConfigOutput {
+	return i.ToStrataCloudManagerConfigOutputWithContext(context.Background())
+}
+
+func (i StrataCloudManagerConfigArgs) ToStrataCloudManagerConfigOutputWithContext(ctx context.Context) StrataCloudManagerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StrataCloudManagerConfigOutput)
+}
+
+func (i StrataCloudManagerConfigArgs) ToStrataCloudManagerConfigPtrOutput() StrataCloudManagerConfigPtrOutput {
+	return i.ToStrataCloudManagerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i StrataCloudManagerConfigArgs) ToStrataCloudManagerConfigPtrOutputWithContext(ctx context.Context) StrataCloudManagerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StrataCloudManagerConfigOutput).ToStrataCloudManagerConfigPtrOutputWithContext(ctx)
+}
+
+// StrataCloudManagerConfigPtrInput is an input type that accepts StrataCloudManagerConfigArgs, StrataCloudManagerConfigPtr and StrataCloudManagerConfigPtrOutput values.
+// You can construct a concrete instance of `StrataCloudManagerConfigPtrInput` via:
+//
+//	        StrataCloudManagerConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type StrataCloudManagerConfigPtrInput interface {
+	pulumi.Input
+
+	ToStrataCloudManagerConfigPtrOutput() StrataCloudManagerConfigPtrOutput
+	ToStrataCloudManagerConfigPtrOutputWithContext(context.Context) StrataCloudManagerConfigPtrOutput
+}
+
+type strataCloudManagerConfigPtrType StrataCloudManagerConfigArgs
+
+func StrataCloudManagerConfigPtr(v *StrataCloudManagerConfigArgs) StrataCloudManagerConfigPtrInput {
+	return (*strataCloudManagerConfigPtrType)(v)
+}
+
+func (*strataCloudManagerConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StrataCloudManagerConfig)(nil)).Elem()
+}
+
+func (i *strataCloudManagerConfigPtrType) ToStrataCloudManagerConfigPtrOutput() StrataCloudManagerConfigPtrOutput {
+	return i.ToStrataCloudManagerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *strataCloudManagerConfigPtrType) ToStrataCloudManagerConfigPtrOutputWithContext(ctx context.Context) StrataCloudManagerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StrataCloudManagerConfigPtrOutput)
+}
+
+// This field is only present if Strata Cloud Manager is managing the policy for this firewall
+type StrataCloudManagerConfigOutput struct{ *pulumi.OutputState }
+
+func (StrataCloudManagerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StrataCloudManagerConfig)(nil)).Elem()
+}
+
+func (o StrataCloudManagerConfigOutput) ToStrataCloudManagerConfigOutput() StrataCloudManagerConfigOutput {
 	return o
 }
 
-func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+func (o StrataCloudManagerConfigOutput) ToStrataCloudManagerConfigOutputWithContext(ctx context.Context) StrataCloudManagerConfigOutput {
 	return o
 }
 
-// The timestamp of resource creation (UTC).
-func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+func (o StrataCloudManagerConfigOutput) ToStrataCloudManagerConfigPtrOutput() StrataCloudManagerConfigPtrOutput {
+	return o.ToStrataCloudManagerConfigPtrOutputWithContext(context.Background())
 }
 
-// The identity that created the resource.
-func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+func (o StrataCloudManagerConfigOutput) ToStrataCloudManagerConfigPtrOutputWithContext(ctx context.Context) StrataCloudManagerConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StrataCloudManagerConfig) *StrataCloudManagerConfig {
+		return &v
+	}).(StrataCloudManagerConfigPtrOutput)
 }
 
-// The type of identity that created the resource.
-func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+// Strata Cloud Manager name which is intended to manage the policy for this firewall.
+func (o StrataCloudManagerConfigOutput) CloudManagerName() pulumi.StringOutput {
+	return o.ApplyT(func(v StrataCloudManagerConfig) string { return v.CloudManagerName }).(pulumi.StringOutput)
 }
 
-// The timestamp of resource last modification (UTC)
-func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+type StrataCloudManagerConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (StrataCloudManagerConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StrataCloudManagerConfig)(nil)).Elem()
 }
 
-// The identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+func (o StrataCloudManagerConfigPtrOutput) ToStrataCloudManagerConfigPtrOutput() StrataCloudManagerConfigPtrOutput {
+	return o
 }
 
-// The type of identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+func (o StrataCloudManagerConfigPtrOutput) ToStrataCloudManagerConfigPtrOutputWithContext(ctx context.Context) StrataCloudManagerConfigPtrOutput {
+	return o
+}
+
+func (o StrataCloudManagerConfigPtrOutput) Elem() StrataCloudManagerConfigOutput {
+	return o.ApplyT(func(v *StrataCloudManagerConfig) StrataCloudManagerConfig {
+		if v != nil {
+			return *v
+		}
+		var ret StrataCloudManagerConfig
+		return ret
+	}).(StrataCloudManagerConfigOutput)
+}
+
+// Strata Cloud Manager name which is intended to manage the policy for this firewall.
+func (o StrataCloudManagerConfigPtrOutput) CloudManagerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StrataCloudManagerConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CloudManagerName
+	}).(pulumi.StringPtrOutput)
+}
+
+// This field is only present if Strata Cloud Manager is managing the policy for this firewall
+type StrataCloudManagerConfigResponse struct {
+	// Strata Cloud Manager name which is intended to manage the policy for this firewall.
+	CloudManagerName string `pulumi:"cloudManagerName"`
+}
+
+// This field is only present if Strata Cloud Manager is managing the policy for this firewall
+type StrataCloudManagerConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (StrataCloudManagerConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StrataCloudManagerConfigResponse)(nil)).Elem()
+}
+
+func (o StrataCloudManagerConfigResponseOutput) ToStrataCloudManagerConfigResponseOutput() StrataCloudManagerConfigResponseOutput {
+	return o
+}
+
+func (o StrataCloudManagerConfigResponseOutput) ToStrataCloudManagerConfigResponseOutputWithContext(ctx context.Context) StrataCloudManagerConfigResponseOutput {
+	return o
+}
+
+// Strata Cloud Manager name which is intended to manage the policy for this firewall.
+func (o StrataCloudManagerConfigResponseOutput) CloudManagerName() pulumi.StringOutput {
+	return o.ApplyT(func(v StrataCloudManagerConfigResponse) string { return v.CloudManagerName }).(pulumi.StringOutput)
+}
+
+type StrataCloudManagerConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StrataCloudManagerConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StrataCloudManagerConfigResponse)(nil)).Elem()
+}
+
+func (o StrataCloudManagerConfigResponsePtrOutput) ToStrataCloudManagerConfigResponsePtrOutput() StrataCloudManagerConfigResponsePtrOutput {
+	return o
+}
+
+func (o StrataCloudManagerConfigResponsePtrOutput) ToStrataCloudManagerConfigResponsePtrOutputWithContext(ctx context.Context) StrataCloudManagerConfigResponsePtrOutput {
+	return o
+}
+
+func (o StrataCloudManagerConfigResponsePtrOutput) Elem() StrataCloudManagerConfigResponseOutput {
+	return o.ApplyT(func(v *StrataCloudManagerConfigResponse) StrataCloudManagerConfigResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StrataCloudManagerConfigResponse
+		return ret
+	}).(StrataCloudManagerConfigResponseOutput)
+}
+
+// Strata Cloud Manager name which is intended to manage the policy for this firewall.
+func (o StrataCloudManagerConfigResponsePtrOutput) CloudManagerName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StrataCloudManagerConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CloudManagerName
+	}).(pulumi.StringPtrOutput)
 }
 
 // Tag
@@ -5599,7 +5754,10 @@ func init() {
 	pulumi.RegisterOutputType(SourceAddrResponsePtrOutput{})
 	pulumi.RegisterOutputType(StorageAccountResponseOutput{})
 	pulumi.RegisterOutputType(StorageAccountResponsePtrOutput{})
-	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(StrataCloudManagerConfigOutput{})
+	pulumi.RegisterOutputType(StrataCloudManagerConfigPtrOutput{})
+	pulumi.RegisterOutputType(StrataCloudManagerConfigResponseOutput{})
+	pulumi.RegisterOutputType(StrataCloudManagerConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(TagInfoOutput{})
 	pulumi.RegisterOutputType(TagInfoArrayOutput{})
 	pulumi.RegisterOutputType(TagInfoResponseOutput{})

@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Details of an Update run
 //
-// Uses Azure REST API version 2023-03-01.
+// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
 //
-// Other available API versions: 2022-12-15-preview, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-04-01, 2024-09-01-preview, 2024-12-01-preview.
+// Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01, 2026-02-15-preview, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type UpdateRun struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// More detailed description of the step.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Duration of the update run.
@@ -28,6 +31,8 @@ type UpdateRun struct {
 	EndTimeUtc pulumi.StringPtrOutput `pulumi:"endTimeUtc"`
 	// Error message, specified if the step is in a failed state.
 	ErrorMessage pulumi.StringPtrOutput `pulumi:"errorMessage"`
+	// Expected execution time of a given step. This is optionally authored in the update action plan and can be empty.
+	ExpectedExecutionTime pulumi.StringPtrOutput `pulumi:"expectedExecutionTime"`
 	// Timestamp of the most recently completed step in the update run.
 	LastUpdatedTime pulumi.StringPtrOutput `pulumi:"lastUpdatedTime"`
 	// Completion time of this step or the last completed sub-step.
@@ -47,7 +52,7 @@ type UpdateRun struct {
 	// Recursive model for child steps of this step.
 	Steps StepResponseArrayOutput `pulumi:"steps"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Timestamp of the update run was started.
 	TimeStarted pulumi.StringPtrOutput `pulumi:"timeStarted"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -110,6 +115,30 @@ func NewUpdateRun(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20241201preview:UpdateRun"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250201preview:UpdateRun"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250915preview:UpdateRun"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20251001:UpdateRun"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20251101preview:UpdateRun"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20251201preview:UpdateRun"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20260201:UpdateRun"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20260215preview:UpdateRun"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20260301preview:UpdateRun"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -155,6 +184,8 @@ type updateRunArgs struct {
 	EndTimeUtc *string `pulumi:"endTimeUtc"`
 	// Error message, specified if the step is in a failed state.
 	ErrorMessage *string `pulumi:"errorMessage"`
+	// Expected execution time of a given step. This is optionally authored in the update action plan and can be empty.
+	ExpectedExecutionTime *string `pulumi:"expectedExecutionTime"`
 	// Timestamp of the most recently completed step in the update run.
 	LastUpdatedTime *string `pulumi:"lastUpdatedTime"`
 	// Completion time of this step or the last completed sub-step.
@@ -193,6 +224,8 @@ type UpdateRunArgs struct {
 	EndTimeUtc pulumi.StringPtrInput
 	// Error message, specified if the step is in a failed state.
 	ErrorMessage pulumi.StringPtrInput
+	// Expected execution time of a given step. This is optionally authored in the update action plan and can be empty.
+	ExpectedExecutionTime pulumi.StringPtrInput
 	// Timestamp of the most recently completed step in the update run.
 	LastUpdatedTime pulumi.StringPtrInput
 	// Completion time of this step or the last completed sub-step.
@@ -256,6 +289,11 @@ func (o UpdateRunOutput) ToUpdateRunOutputWithContext(ctx context.Context) Updat
 	return o
 }
 
+// The Azure API version of the resource.
+func (o UpdateRunOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *UpdateRun) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // More detailed description of the step.
 func (o UpdateRunOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UpdateRun) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -274,6 +312,11 @@ func (o UpdateRunOutput) EndTimeUtc() pulumi.StringPtrOutput {
 // Error message, specified if the step is in a failed state.
 func (o UpdateRunOutput) ErrorMessage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UpdateRun) pulumi.StringPtrOutput { return v.ErrorMessage }).(pulumi.StringPtrOutput)
+}
+
+// Expected execution time of a given step. This is optionally authored in the update action plan and can be empty.
+func (o UpdateRunOutput) ExpectedExecutionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UpdateRun) pulumi.StringPtrOutput { return v.ExpectedExecutionTime }).(pulumi.StringPtrOutput)
 }
 
 // Timestamp of the most recently completed step in the update run.
@@ -322,8 +365,8 @@ func (o UpdateRunOutput) Steps() StepResponseArrayOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o UpdateRunOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *UpdateRun) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o UpdateRunOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *UpdateRun) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Timestamp of the update run was started.

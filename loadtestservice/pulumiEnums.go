@@ -10,127 +10,127 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-type ManagedServiceIdentityType string
+// Controls the connection region for client workers to cloud-hosted browsers. When enabled, workers connect to browsers in the closest Azure region for lower latency. When disabled, workers connect to browsers in the Azure region where the workspace was created.
+type EnablementStatus string
 
 const (
-	ManagedServiceIdentityTypeNone                         = ManagedServiceIdentityType("None")
-	ManagedServiceIdentityTypeSystemAssigned               = ManagedServiceIdentityType("SystemAssigned")
-	ManagedServiceIdentityTypeUserAssigned                 = ManagedServiceIdentityType("UserAssigned")
-	ManagedServiceIdentityType_SystemAssigned_UserAssigned = ManagedServiceIdentityType("SystemAssigned,UserAssigned")
+	// The feature is enabled.
+	EnablementStatusEnabled = EnablementStatus("Enabled")
+	// The feature is disabled.
+	EnablementStatusDisabled = EnablementStatus("Disabled")
 )
 
-func (ManagedServiceIdentityType) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedServiceIdentityType)(nil)).Elem()
+func (EnablementStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnablementStatus)(nil)).Elem()
 }
 
-func (e ManagedServiceIdentityType) ToManagedServiceIdentityTypeOutput() ManagedServiceIdentityTypeOutput {
-	return pulumi.ToOutput(e).(ManagedServiceIdentityTypeOutput)
+func (e EnablementStatus) ToEnablementStatusOutput() EnablementStatusOutput {
+	return pulumi.ToOutput(e).(EnablementStatusOutput)
 }
 
-func (e ManagedServiceIdentityType) ToManagedServiceIdentityTypeOutputWithContext(ctx context.Context) ManagedServiceIdentityTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(ManagedServiceIdentityTypeOutput)
+func (e EnablementStatus) ToEnablementStatusOutputWithContext(ctx context.Context) EnablementStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(EnablementStatusOutput)
 }
 
-func (e ManagedServiceIdentityType) ToManagedServiceIdentityTypePtrOutput() ManagedServiceIdentityTypePtrOutput {
-	return e.ToManagedServiceIdentityTypePtrOutputWithContext(context.Background())
+func (e EnablementStatus) ToEnablementStatusPtrOutput() EnablementStatusPtrOutput {
+	return e.ToEnablementStatusPtrOutputWithContext(context.Background())
 }
 
-func (e ManagedServiceIdentityType) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
-	return ManagedServiceIdentityType(e).ToManagedServiceIdentityTypeOutputWithContext(ctx).ToManagedServiceIdentityTypePtrOutputWithContext(ctx)
+func (e EnablementStatus) ToEnablementStatusPtrOutputWithContext(ctx context.Context) EnablementStatusPtrOutput {
+	return EnablementStatus(e).ToEnablementStatusOutputWithContext(ctx).ToEnablementStatusPtrOutputWithContext(ctx)
 }
 
-func (e ManagedServiceIdentityType) ToStringOutput() pulumi.StringOutput {
+func (e EnablementStatus) ToStringOutput() pulumi.StringOutput {
 	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e ManagedServiceIdentityType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+func (e EnablementStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
 	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e ManagedServiceIdentityType) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (e EnablementStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
 }
 
-func (e ManagedServiceIdentityType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+func (e EnablementStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type ManagedServiceIdentityTypeOutput struct{ *pulumi.OutputState }
+type EnablementStatusOutput struct{ *pulumi.OutputState }
 
-func (ManagedServiceIdentityTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedServiceIdentityType)(nil)).Elem()
+func (EnablementStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnablementStatus)(nil)).Elem()
 }
 
-func (o ManagedServiceIdentityTypeOutput) ToManagedServiceIdentityTypeOutput() ManagedServiceIdentityTypeOutput {
+func (o EnablementStatusOutput) ToEnablementStatusOutput() EnablementStatusOutput {
 	return o
 }
 
-func (o ManagedServiceIdentityTypeOutput) ToManagedServiceIdentityTypeOutputWithContext(ctx context.Context) ManagedServiceIdentityTypeOutput {
+func (o EnablementStatusOutput) ToEnablementStatusOutputWithContext(ctx context.Context) EnablementStatusOutput {
 	return o
 }
 
-func (o ManagedServiceIdentityTypeOutput) ToManagedServiceIdentityTypePtrOutput() ManagedServiceIdentityTypePtrOutput {
-	return o.ToManagedServiceIdentityTypePtrOutputWithContext(context.Background())
+func (o EnablementStatusOutput) ToEnablementStatusPtrOutput() EnablementStatusPtrOutput {
+	return o.ToEnablementStatusPtrOutputWithContext(context.Background())
 }
 
-func (o ManagedServiceIdentityTypeOutput) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedServiceIdentityType) *ManagedServiceIdentityType {
+func (o EnablementStatusOutput) ToEnablementStatusPtrOutputWithContext(ctx context.Context) EnablementStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnablementStatus) *EnablementStatus {
 		return &v
-	}).(ManagedServiceIdentityTypePtrOutput)
+	}).(EnablementStatusPtrOutput)
 }
 
-func (o ManagedServiceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
+func (o EnablementStatusOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
 
-func (o ManagedServiceIdentityTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ManagedServiceIdentityType) string {
+func (o EnablementStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EnablementStatus) string {
 		return string(e)
 	}).(pulumi.StringOutput)
 }
 
-func (o ManagedServiceIdentityTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o EnablementStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o ManagedServiceIdentityTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ManagedServiceIdentityType) *string {
+func (o EnablementStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EnablementStatus) *string {
 		v := string(e)
 		return &v
 	}).(pulumi.StringPtrOutput)
 }
 
-type ManagedServiceIdentityTypePtrOutput struct{ *pulumi.OutputState }
+type EnablementStatusPtrOutput struct{ *pulumi.OutputState }
 
-func (ManagedServiceIdentityTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedServiceIdentityType)(nil)).Elem()
+func (EnablementStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnablementStatus)(nil)).Elem()
 }
 
-func (o ManagedServiceIdentityTypePtrOutput) ToManagedServiceIdentityTypePtrOutput() ManagedServiceIdentityTypePtrOutput {
+func (o EnablementStatusPtrOutput) ToEnablementStatusPtrOutput() EnablementStatusPtrOutput {
 	return o
 }
 
-func (o ManagedServiceIdentityTypePtrOutput) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
+func (o EnablementStatusPtrOutput) ToEnablementStatusPtrOutputWithContext(ctx context.Context) EnablementStatusPtrOutput {
 	return o
 }
 
-func (o ManagedServiceIdentityTypePtrOutput) Elem() ManagedServiceIdentityTypeOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityType) ManagedServiceIdentityType {
+func (o EnablementStatusPtrOutput) Elem() EnablementStatusOutput {
+	return o.ApplyT(func(v *EnablementStatus) EnablementStatus {
 		if v != nil {
 			return *v
 		}
-		var ret ManagedServiceIdentityType
+		var ret EnablementStatus
 		return ret
-	}).(ManagedServiceIdentityTypeOutput)
+	}).(EnablementStatusOutput)
 }
 
-func (o ManagedServiceIdentityTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o EnablementStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o ManagedServiceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ManagedServiceIdentityType) *string {
+func (o EnablementStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *EnablementStatus) *string {
 		if e == nil {
 			return nil
 		}
@@ -139,45 +139,43 @@ func (o ManagedServiceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx co
 	}).(pulumi.StringPtrOutput)
 }
 
-// ManagedServiceIdentityTypeInput is an input type that accepts values of the ManagedServiceIdentityType enum
-// A concrete instance of `ManagedServiceIdentityTypeInput` can be one of the following:
+// EnablementStatusInput is an input type that accepts values of the EnablementStatus enum
+// A concrete instance of `EnablementStatusInput` can be one of the following:
 //
-//	ManagedServiceIdentityTypeNone
-//	ManagedServiceIdentityTypeSystemAssigned
-//	ManagedServiceIdentityTypeUserAssigned
-//	ManagedServiceIdentityType_SystemAssigned_UserAssigned
-type ManagedServiceIdentityTypeInput interface {
+//	EnablementStatusEnabled
+//	EnablementStatusDisabled
+type EnablementStatusInput interface {
 	pulumi.Input
 
-	ToManagedServiceIdentityTypeOutput() ManagedServiceIdentityTypeOutput
-	ToManagedServiceIdentityTypeOutputWithContext(context.Context) ManagedServiceIdentityTypeOutput
+	ToEnablementStatusOutput() EnablementStatusOutput
+	ToEnablementStatusOutputWithContext(context.Context) EnablementStatusOutput
 }
 
-var managedServiceIdentityTypePtrType = reflect.TypeOf((**ManagedServiceIdentityType)(nil)).Elem()
+var enablementStatusPtrType = reflect.TypeOf((**EnablementStatus)(nil)).Elem()
 
-type ManagedServiceIdentityTypePtrInput interface {
+type EnablementStatusPtrInput interface {
 	pulumi.Input
 
-	ToManagedServiceIdentityTypePtrOutput() ManagedServiceIdentityTypePtrOutput
-	ToManagedServiceIdentityTypePtrOutputWithContext(context.Context) ManagedServiceIdentityTypePtrOutput
+	ToEnablementStatusPtrOutput() EnablementStatusPtrOutput
+	ToEnablementStatusPtrOutputWithContext(context.Context) EnablementStatusPtrOutput
 }
 
-type managedServiceIdentityTypePtr string
+type enablementStatusPtr string
 
-func ManagedServiceIdentityTypePtr(v string) ManagedServiceIdentityTypePtrInput {
-	return (*managedServiceIdentityTypePtr)(&v)
+func EnablementStatusPtr(v string) EnablementStatusPtrInput {
+	return (*enablementStatusPtr)(&v)
 }
 
-func (*managedServiceIdentityTypePtr) ElementType() reflect.Type {
-	return managedServiceIdentityTypePtrType
+func (*enablementStatusPtr) ElementType() reflect.Type {
+	return enablementStatusPtrType
 }
 
-func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutput() ManagedServiceIdentityTypePtrOutput {
-	return pulumi.ToOutput(in).(ManagedServiceIdentityTypePtrOutput)
+func (in *enablementStatusPtr) ToEnablementStatusPtrOutput() EnablementStatusPtrOutput {
+	return pulumi.ToOutput(in).(EnablementStatusPtrOutput)
 }
 
-func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
+func (in *enablementStatusPtr) ToEnablementStatusPtrOutputWithContext(ctx context.Context) EnablementStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(EnablementStatusPtrOutput)
 }
 
 // Managed identity type to use for accessing encryption key Url.
@@ -349,8 +347,8 @@ func (in *typePtr) ToTypePtrOutputWithContext(ctx context.Context) TypePtrOutput
 }
 
 func init() {
-	pulumi.RegisterOutputType(ManagedServiceIdentityTypeOutput{})
-	pulumi.RegisterOutputType(ManagedServiceIdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(EnablementStatusOutput{})
+	pulumi.RegisterOutputType(EnablementStatusPtrOutput{})
 	pulumi.RegisterOutputType(TypeOutput{})
 	pulumi.RegisterOutputType(TypePtrOutput{})
 }

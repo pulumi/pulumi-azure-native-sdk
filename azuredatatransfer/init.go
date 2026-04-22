@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Connection{}
 	case "azure-native:azuredatatransfer:Flow":
 		r = &Flow{}
+	case "azure-native:azuredatatransfer:FlowProfile":
+		r = &FlowProfile{}
 	case "azure-native:azuredatatransfer:Pipeline":
 		r = &Pipeline{}
 	default:

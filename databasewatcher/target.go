@@ -8,32 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Concrete proxy resource types can be created by aliasing this type using a specific property type.
 //
-// Uses Azure REST API version 2023-09-01-preview.
+// Uses Azure REST API version 2024-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-09-01-preview.
 //
-// Other available API versions: 2024-07-19-preview, 2024-10-01-preview, 2025-01-02.
+// Other available API versions: 2023-09-01-preview, 2024-07-19-preview, 2025-01-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databasewatcher [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Target struct {
 	pulumi.CustomResourceState
 
-	// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
-	ConnectionServerName pulumi.StringOutput `pulumi:"connectionServerName"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The provisioning state of the resource.
-	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// The resource-specific properties for this resource.
+	Properties pulumi.AnyOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The type of authentication to use when connecting to a target.
-	TargetAuthenticationType pulumi.StringOutput `pulumi:"targetAuthenticationType"`
-	// Discriminator property for TargetProperties.
-	TargetType pulumi.StringOutput `pulumi:"targetType"`
-	// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
-	TargetVault VaultSecretResponsePtrOutput `pulumi:"targetVault"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -45,17 +40,8 @@ func NewTarget(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ConnectionServerName == nil {
-		return nil, errors.New("invalid value for required argument 'ConnectionServerName'")
-	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
-	}
-	if args.TargetAuthenticationType == nil {
-		return nil, errors.New("invalid value for required argument 'TargetAuthenticationType'")
-	}
-	if args.TargetType == nil {
-		return nil, errors.New("invalid value for required argument 'TargetType'")
 	}
 	if args.WatcherName == nil {
 		return nil, errors.New("invalid value for required argument 'WatcherName'")
@@ -108,36 +94,24 @@ func (TargetState) ElementType() reflect.Type {
 }
 
 type targetArgs struct {
-	// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
-	ConnectionServerName string `pulumi:"connectionServerName"`
+	// The resource-specific properties for this resource.
+	Properties interface{} `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The type of authentication to use when connecting to a target.
-	TargetAuthenticationType string `pulumi:"targetAuthenticationType"`
 	// The target resource name.
 	TargetName *string `pulumi:"targetName"`
-	// Discriminator property for TargetProperties.
-	TargetType string `pulumi:"targetType"`
-	// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
-	TargetVault *VaultSecret `pulumi:"targetVault"`
 	// The database watcher name.
 	WatcherName string `pulumi:"watcherName"`
 }
 
 // The set of arguments for constructing a Target resource.
 type TargetArgs struct {
-	// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
-	ConnectionServerName pulumi.StringInput
+	// The resource-specific properties for this resource.
+	Properties pulumi.Input
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// The type of authentication to use when connecting to a target.
-	TargetAuthenticationType pulumi.StringInput
 	// The target resource name.
 	TargetName pulumi.StringPtrInput
-	// Discriminator property for TargetProperties.
-	TargetType pulumi.StringInput
-	// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
-	TargetVault VaultSecretPtrInput
 	// The database watcher name.
 	WatcherName pulumi.StringInput
 }
@@ -179,9 +153,9 @@ func (o TargetOutput) ToTargetOutputWithContext(ctx context.Context) TargetOutpu
 	return o
 }
 
-// The FQDN host name of the server to use in the connection string when connecting to a target. For example, for an Azure SQL logical server in the Azure commercial cloud, the value might be 'sql-logical-server-22092780.database.windows.net'; for an Azure SQL managed instance in the Azure commercial cloud, the value might be 'sql-mi-39441134.767d5869f605.database.windows.net'. Port number and instance name must be specified separately.
-func (o TargetOutput) ConnectionServerName() pulumi.StringOutput {
-	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.ConnectionServerName }).(pulumi.StringOutput)
+// The Azure API version of the resource.
+func (o TargetOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource
@@ -189,29 +163,14 @@ func (o TargetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The provisioning state of the resource.
-func (o TargetOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+// The resource-specific properties for this resource.
+func (o TargetOutput) Properties() pulumi.AnyOutput {
+	return o.ApplyT(func(v *Target) pulumi.AnyOutput { return v.Properties }).(pulumi.AnyOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o TargetOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Target) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// The type of authentication to use when connecting to a target.
-func (o TargetOutput) TargetAuthenticationType() pulumi.StringOutput {
-	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.TargetAuthenticationType }).(pulumi.StringOutput)
-}
-
-// Discriminator property for TargetProperties.
-func (o TargetOutput) TargetType() pulumi.StringOutput {
-	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.TargetType }).(pulumi.StringOutput)
-}
-
-// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
-func (o TargetOutput) TargetVault() VaultSecretResponsePtrOutput {
-	return o.ApplyT(func(v *Target) VaultSecretResponsePtrOutput { return v.TargetVault }).(VaultSecretResponsePtrOutput)
+func (o TargetOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Target) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

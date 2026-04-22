@@ -8,24 +8,29 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2023-10-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-12-12-preview.
+// Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
 //
-// Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview, 2025-02-01.
+// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Rack struct {
 	pulumi.CustomResourceState
 
 	// The value that will be used for machines in this rack to represent the availability zones that can be referenced by Hybrid AKS Clusters for node arrangement.
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The resource ID of the cluster the rack is created for. This value is set when the rack is created by the cluster.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
 	// The more detailed status of the rack.
 	DetailedStatus pulumi.StringOutput `pulumi:"detailedStatus"`
 	// The descriptive message about the current detailed status.
 	DetailedStatusMessage pulumi.StringOutput `pulumi:"detailedStatusMessage"`
+	// Resource ETag.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
 	// The geo-location where the resource lives
@@ -41,7 +46,7 @@ type Rack struct {
 	// The SKU for the rack.
 	RackSkuId pulumi.StringOutput `pulumi:"rackSkuId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -91,6 +96,15 @@ func NewRack(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20250201:Rack"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20250701preview:Rack"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20250901:Rack"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20260101preview:Rack"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -211,6 +225,11 @@ func (o RackOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rack) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o RackOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rack) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The resource ID of the cluster the rack is created for. This value is set when the rack is created by the cluster.
 func (o RackOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rack) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
@@ -224,6 +243,11 @@ func (o RackOutput) DetailedStatus() pulumi.StringOutput {
 // The descriptive message about the current detailed status.
 func (o RackOutput) DetailedStatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rack) pulumi.StringOutput { return v.DetailedStatusMessage }).(pulumi.StringOutput)
+}
+
+// Resource ETag.
+func (o RackOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rack) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The extended location of the cluster associated with the resource.
@@ -262,8 +286,8 @@ func (o RackOutput) RackSkuId() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o RackOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Rack) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o RackOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Rack) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

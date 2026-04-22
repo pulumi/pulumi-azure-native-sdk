@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv1"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Class representing an Event Grid data connection.
 //
-// Uses Azure REST API version 2021-06-01-preview.
+// Uses Azure REST API version 2021-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-06-01-preview.
 type EventGridDataConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of blob storage event type to process.
 	BlobStorageEventType pulumi.StringPtrOutput `pulumi:"blobStorageEventType"`
 	// The event hub consumer group.
@@ -42,7 +45,7 @@ type EventGridDataConnection struct {
 	// The resource ID of the storage account where the data resides.
 	StorageAccountResourceId pulumi.StringOutput `pulumi:"storageAccountResourceId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv1.SystemDataResponseOutput `pulumi:"systemData"`
 	// The table where the data should be ingested. Optionally the table information can be added to each message.
 	TableName pulumi.StringPtrOutput `pulumi:"tableName"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -87,6 +90,18 @@ func NewEventGridDataConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:synapse/v20210601preview:EventGridDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:synapse/v20210601preview:EventHubDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:synapse/v20210601preview:IotHubDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:synapse:EventHubDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:synapse:IotHubDataConnection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -228,6 +243,11 @@ func (o EventGridDataConnectionOutput) ToEventGridDataConnectionOutputWithContex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o EventGridDataConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EventGridDataConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The name of blob storage event type to process.
 func (o EventGridDataConnectionOutput) BlobStorageEventType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EventGridDataConnection) pulumi.StringPtrOutput { return v.BlobStorageEventType }).(pulumi.StringPtrOutput)
@@ -285,8 +305,8 @@ func (o EventGridDataConnectionOutput) StorageAccountResourceId() pulumi.StringO
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o EventGridDataConnectionOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *EventGridDataConnection) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o EventGridDataConnectionOutput) SystemData() commontypesv1.SystemDataResponseOutput {
+	return o.ApplyT(func(v *EventGridDataConnection) commontypesv1.SystemDataResponseOutput { return v.SystemData }).(commontypesv1.SystemDataResponseOutput)
 }
 
 // The table where the data should be ingested. Optionally the table information can be added to each message.

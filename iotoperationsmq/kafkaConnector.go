@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // MQ kafkaConnector resource
 //
-// Uses Azure REST API version 2023-10-04-preview.
+// Uses Azure REST API version 2023-10-04-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-04-preview.
 type KafkaConnector struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The client id prefix of the dynamically generated client ids.
 	ClientIdPrefix pulumi.StringPtrOutput `pulumi:"clientIdPrefix"`
 	// Extended Location
@@ -41,7 +44,7 @@ type KafkaConnector struct {
 	// The status of the last operation.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -207,6 +210,11 @@ func (o KafkaConnectorOutput) ToKafkaConnectorOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o KafkaConnectorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *KafkaConnector) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The client id prefix of the dynamically generated client ids.
 func (o KafkaConnectorOutput) ClientIdPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaConnector) pulumi.StringPtrOutput { return v.ClientIdPrefix }).(pulumi.StringPtrOutput)
@@ -263,8 +271,8 @@ func (o KafkaConnectorOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o KafkaConnectorOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *KafkaConnector) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o KafkaConnectorOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *KafkaConnector) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

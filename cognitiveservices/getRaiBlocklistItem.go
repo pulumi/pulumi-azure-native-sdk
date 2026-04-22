@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified custom blocklist Item associated with the custom blocklist.
 //
-// Uses Azure REST API version 2023-10-01-preview.
+// Uses Azure REST API version 2025-06-01.
 //
-// Other available API versions: 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview.
+// Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupRaiBlocklistItem(ctx *pulumi.Context, args *LookupRaiBlocklistItemArgs, opts ...pulumi.InvokeOption) (*LookupRaiBlocklistItemResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRaiBlocklistItemResult
@@ -39,6 +40,8 @@ type LookupRaiBlocklistItemArgs struct {
 
 // Cognitive Services RaiBlocklist Item.
 type LookupRaiBlocklistItemResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Etag.
 	Etag string `pulumi:"etag"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -48,7 +51,7 @@ type LookupRaiBlocklistItemResult struct {
 	// Properties of Cognitive Services RaiBlocklist Item.
 	Properties RaiBlocklistItemPropertiesResponse `pulumi:"properties"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -94,6 +97,11 @@ func (o LookupRaiBlocklistItemResultOutput) ToLookupRaiBlocklistItemResultOutput
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupRaiBlocklistItemResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRaiBlocklistItemResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Resource Etag.
 func (o LookupRaiBlocklistItemResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRaiBlocklistItemResult) string { return v.Etag }).(pulumi.StringOutput)
@@ -115,8 +123,8 @@ func (o LookupRaiBlocklistItemResultOutput) Properties() RaiBlocklistItemPropert
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupRaiBlocklistItemResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupRaiBlocklistItemResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupRaiBlocklistItemResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupRaiBlocklistItemResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Resource tags.

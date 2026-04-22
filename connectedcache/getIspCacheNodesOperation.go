@@ -7,13 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // This api gets ispCacheNode resource information
 //
 // Uses Azure REST API version 2023-05-01-preview.
+//
+// Other available API versions: 2024-11-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedcache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupIspCacheNodesOperation(ctx *pulumi.Context, args *LookupIspCacheNodesOperationArgs, opts ...pulumi.InvokeOption) (*LookupIspCacheNodesOperationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIspCacheNodesOperationResult
@@ -35,6 +38,8 @@ type LookupIspCacheNodesOperationArgs struct {
 
 // Represents the high level Nodes needed to provision cache node resources
 type LookupIspCacheNodesOperationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -44,7 +49,7 @@ type LookupIspCacheNodesOperationResult struct {
 	// The resource-specific properties for this resource.
 	Properties CacheNodePropertyResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -88,6 +93,11 @@ func (o LookupIspCacheNodesOperationResultOutput) ToLookupIspCacheNodesOperation
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupIspCacheNodesOperationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIspCacheNodesOperationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupIspCacheNodesOperationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIspCacheNodesOperationResult) string { return v.Id }).(pulumi.StringOutput)
@@ -109,8 +119,8 @@ func (o LookupIspCacheNodesOperationResultOutput) Properties() CacheNodeProperty
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupIspCacheNodesOperationResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupIspCacheNodesOperationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupIspCacheNodesOperationResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupIspCacheNodesOperationResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

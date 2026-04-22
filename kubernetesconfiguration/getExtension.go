@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2023-05-01.
 //
-// Other available API versions: 2020-07-01-preview, 2022-04-02-preview, 2022-07-01, 2024-11-01.
+// Other available API versions: 2022-04-02-preview, 2022-07-01, 2022-11-01, 2024-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kubernetesconfiguration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupExtension(ctx *pulumi.Context, args *LookupExtensionArgs, opts ...pulumi.InvokeOption) (*LookupExtensionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupExtensionResult
@@ -45,6 +46,8 @@ type LookupExtensionResult struct {
 	AksAssignedIdentity *ExtensionResponseAksAssignedIdentity `pulumi:"aksAssignedIdentity"`
 	// Flag to note if this extension participates in auto upgrade of minor version, or not.
 	AutoUpgradeMinorVersion *bool `pulumi:"autoUpgradeMinorVersion"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Configuration settings that are sensitive, as name-value pairs for configuring this extension.
 	ConfigurationProtectedSettings map[string]string `pulumi:"configurationProtectedSettings"`
 	// Configuration settings, as name-value pairs for configuring this extension.
@@ -54,13 +57,13 @@ type LookupExtensionResult struct {
 	// Custom Location settings properties.
 	CustomLocationSettings map[string]string `pulumi:"customLocationSettings"`
 	// Error information from the Agent - e.g. errors during installation.
-	ErrorInfo ErrorDetailResponse `pulumi:"errorInfo"`
+	ErrorInfo commontypesv2.ErrorDetailResponse `pulumi:"errorInfo"`
 	// Type of the Extension, of which this resource is an instance of.  It must be one of the Extension Types registered with Microsoft.KubernetesConfiguration by the Extension publisher.
 	ExtensionType *string `pulumi:"extensionType"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Identity of the Extension resource
-	Identity *IdentityResponse `pulumi:"identity"`
+	Identity *commontypesv2.IdentityResponse `pulumi:"identity"`
 	// Flag to note if this extension is a system extension
 	IsSystemExtension bool `pulumi:"isSystemExtension"`
 	// The name of the resource
@@ -68,7 +71,7 @@ type LookupExtensionResult struct {
 	// Uri of the Helm package
 	PackageUri string `pulumi:"packageUri"`
 	// The plan information.
-	Plan *PlanResponse `pulumi:"plan"`
+	Plan *commontypesv2.PlanResponse `pulumi:"plan"`
 	// Status of installation of this extension.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// ReleaseTrain this extension participates in for auto-upgrade (e.g. Stable, Preview, etc.) - only if autoUpgradeMinorVersion is 'true'.
@@ -78,7 +81,7 @@ type LookupExtensionResult struct {
 	// Status from this extension.
 	Statuses []ExtensionStatusResponse `pulumi:"statuses"`
 	// Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// User-specified version of the extension for this extension to 'pin'. To use 'version', autoUpgradeMinorVersion must be 'false'.
@@ -155,6 +158,11 @@ func (o LookupExtensionResultOutput) AutoUpgradeMinorVersion() pulumi.BoolPtrOut
 	return o.ApplyT(func(v LookupExtensionResult) *bool { return v.AutoUpgradeMinorVersion }).(pulumi.BoolPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupExtensionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExtensionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Configuration settings that are sensitive, as name-value pairs for configuring this extension.
 func (o LookupExtensionResultOutput) ConfigurationProtectedSettings() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupExtensionResult) map[string]string { return v.ConfigurationProtectedSettings }).(pulumi.StringMapOutput)
@@ -176,8 +184,8 @@ func (o LookupExtensionResultOutput) CustomLocationSettings() pulumi.StringMapOu
 }
 
 // Error information from the Agent - e.g. errors during installation.
-func (o LookupExtensionResultOutput) ErrorInfo() ErrorDetailResponseOutput {
-	return o.ApplyT(func(v LookupExtensionResult) ErrorDetailResponse { return v.ErrorInfo }).(ErrorDetailResponseOutput)
+func (o LookupExtensionResultOutput) ErrorInfo() commontypesv2.ErrorDetailResponseOutput {
+	return o.ApplyT(func(v LookupExtensionResult) commontypesv2.ErrorDetailResponse { return v.ErrorInfo }).(commontypesv2.ErrorDetailResponseOutput)
 }
 
 // Type of the Extension, of which this resource is an instance of.  It must be one of the Extension Types registered with Microsoft.KubernetesConfiguration by the Extension publisher.
@@ -191,8 +199,8 @@ func (o LookupExtensionResultOutput) Id() pulumi.StringOutput {
 }
 
 // Identity of the Extension resource
-func (o LookupExtensionResultOutput) Identity() IdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupExtensionResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
+func (o LookupExtensionResultOutput) Identity() commontypesv2.IdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupExtensionResult) *commontypesv2.IdentityResponse { return v.Identity }).(commontypesv2.IdentityResponsePtrOutput)
 }
 
 // Flag to note if this extension is a system extension
@@ -211,8 +219,8 @@ func (o LookupExtensionResultOutput) PackageUri() pulumi.StringOutput {
 }
 
 // The plan information.
-func (o LookupExtensionResultOutput) Plan() PlanResponsePtrOutput {
-	return o.ApplyT(func(v LookupExtensionResult) *PlanResponse { return v.Plan }).(PlanResponsePtrOutput)
+func (o LookupExtensionResultOutput) Plan() commontypesv2.PlanResponsePtrOutput {
+	return o.ApplyT(func(v LookupExtensionResult) *commontypesv2.PlanResponse { return v.Plan }).(commontypesv2.PlanResponsePtrOutput)
 }
 
 // Status of installation of this extension.
@@ -236,8 +244,8 @@ func (o LookupExtensionResultOutput) Statuses() ExtensionStatusResponseArrayOutp
 }
 
 // Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
-func (o LookupExtensionResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupExtensionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupExtensionResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupExtensionResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

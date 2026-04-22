@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -226,6 +228,146 @@ func (o CatalogSyncErrorResponseArrayOutput) Index(i pulumi.IntInput) CatalogSyn
 }
 
 // Project catalog settings for project catalogs under a project associated to this dev center.
+type DevCenterProjectCatalogSettings struct {
+	// Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
+	CatalogItemSyncEnableStatus *string `pulumi:"catalogItemSyncEnableStatus"`
+}
+
+// DevCenterProjectCatalogSettingsInput is an input type that accepts DevCenterProjectCatalogSettingsArgs and DevCenterProjectCatalogSettingsOutput values.
+// You can construct a concrete instance of `DevCenterProjectCatalogSettingsInput` via:
+//
+//	DevCenterProjectCatalogSettingsArgs{...}
+type DevCenterProjectCatalogSettingsInput interface {
+	pulumi.Input
+
+	ToDevCenterProjectCatalogSettingsOutput() DevCenterProjectCatalogSettingsOutput
+	ToDevCenterProjectCatalogSettingsOutputWithContext(context.Context) DevCenterProjectCatalogSettingsOutput
+}
+
+// Project catalog settings for project catalogs under a project associated to this dev center.
+type DevCenterProjectCatalogSettingsArgs struct {
+	// Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
+	CatalogItemSyncEnableStatus pulumi.StringPtrInput `pulumi:"catalogItemSyncEnableStatus"`
+}
+
+func (DevCenterProjectCatalogSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DevCenterProjectCatalogSettings)(nil)).Elem()
+}
+
+func (i DevCenterProjectCatalogSettingsArgs) ToDevCenterProjectCatalogSettingsOutput() DevCenterProjectCatalogSettingsOutput {
+	return i.ToDevCenterProjectCatalogSettingsOutputWithContext(context.Background())
+}
+
+func (i DevCenterProjectCatalogSettingsArgs) ToDevCenterProjectCatalogSettingsOutputWithContext(ctx context.Context) DevCenterProjectCatalogSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DevCenterProjectCatalogSettingsOutput)
+}
+
+func (i DevCenterProjectCatalogSettingsArgs) ToDevCenterProjectCatalogSettingsPtrOutput() DevCenterProjectCatalogSettingsPtrOutput {
+	return i.ToDevCenterProjectCatalogSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i DevCenterProjectCatalogSettingsArgs) ToDevCenterProjectCatalogSettingsPtrOutputWithContext(ctx context.Context) DevCenterProjectCatalogSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DevCenterProjectCatalogSettingsOutput).ToDevCenterProjectCatalogSettingsPtrOutputWithContext(ctx)
+}
+
+// DevCenterProjectCatalogSettingsPtrInput is an input type that accepts DevCenterProjectCatalogSettingsArgs, DevCenterProjectCatalogSettingsPtr and DevCenterProjectCatalogSettingsPtrOutput values.
+// You can construct a concrete instance of `DevCenterProjectCatalogSettingsPtrInput` via:
+//
+//	        DevCenterProjectCatalogSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DevCenterProjectCatalogSettingsPtrInput interface {
+	pulumi.Input
+
+	ToDevCenterProjectCatalogSettingsPtrOutput() DevCenterProjectCatalogSettingsPtrOutput
+	ToDevCenterProjectCatalogSettingsPtrOutputWithContext(context.Context) DevCenterProjectCatalogSettingsPtrOutput
+}
+
+type devCenterProjectCatalogSettingsPtrType DevCenterProjectCatalogSettingsArgs
+
+func DevCenterProjectCatalogSettingsPtr(v *DevCenterProjectCatalogSettingsArgs) DevCenterProjectCatalogSettingsPtrInput {
+	return (*devCenterProjectCatalogSettingsPtrType)(v)
+}
+
+func (*devCenterProjectCatalogSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DevCenterProjectCatalogSettings)(nil)).Elem()
+}
+
+func (i *devCenterProjectCatalogSettingsPtrType) ToDevCenterProjectCatalogSettingsPtrOutput() DevCenterProjectCatalogSettingsPtrOutput {
+	return i.ToDevCenterProjectCatalogSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *devCenterProjectCatalogSettingsPtrType) ToDevCenterProjectCatalogSettingsPtrOutputWithContext(ctx context.Context) DevCenterProjectCatalogSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DevCenterProjectCatalogSettingsPtrOutput)
+}
+
+// Project catalog settings for project catalogs under a project associated to this dev center.
+type DevCenterProjectCatalogSettingsOutput struct{ *pulumi.OutputState }
+
+func (DevCenterProjectCatalogSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DevCenterProjectCatalogSettings)(nil)).Elem()
+}
+
+func (o DevCenterProjectCatalogSettingsOutput) ToDevCenterProjectCatalogSettingsOutput() DevCenterProjectCatalogSettingsOutput {
+	return o
+}
+
+func (o DevCenterProjectCatalogSettingsOutput) ToDevCenterProjectCatalogSettingsOutputWithContext(ctx context.Context) DevCenterProjectCatalogSettingsOutput {
+	return o
+}
+
+func (o DevCenterProjectCatalogSettingsOutput) ToDevCenterProjectCatalogSettingsPtrOutput() DevCenterProjectCatalogSettingsPtrOutput {
+	return o.ToDevCenterProjectCatalogSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o DevCenterProjectCatalogSettingsOutput) ToDevCenterProjectCatalogSettingsPtrOutputWithContext(ctx context.Context) DevCenterProjectCatalogSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DevCenterProjectCatalogSettings) *DevCenterProjectCatalogSettings {
+		return &v
+	}).(DevCenterProjectCatalogSettingsPtrOutput)
+}
+
+// Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
+func (o DevCenterProjectCatalogSettingsOutput) CatalogItemSyncEnableStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DevCenterProjectCatalogSettings) *string { return v.CatalogItemSyncEnableStatus }).(pulumi.StringPtrOutput)
+}
+
+type DevCenterProjectCatalogSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (DevCenterProjectCatalogSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DevCenterProjectCatalogSettings)(nil)).Elem()
+}
+
+func (o DevCenterProjectCatalogSettingsPtrOutput) ToDevCenterProjectCatalogSettingsPtrOutput() DevCenterProjectCatalogSettingsPtrOutput {
+	return o
+}
+
+func (o DevCenterProjectCatalogSettingsPtrOutput) ToDevCenterProjectCatalogSettingsPtrOutputWithContext(ctx context.Context) DevCenterProjectCatalogSettingsPtrOutput {
+	return o
+}
+
+func (o DevCenterProjectCatalogSettingsPtrOutput) Elem() DevCenterProjectCatalogSettingsOutput {
+	return o.ApplyT(func(v *DevCenterProjectCatalogSettings) DevCenterProjectCatalogSettings {
+		if v != nil {
+			return *v
+		}
+		var ret DevCenterProjectCatalogSettings
+		return ret
+	}).(DevCenterProjectCatalogSettingsOutput)
+}
+
+// Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
+func (o DevCenterProjectCatalogSettingsPtrOutput) CatalogItemSyncEnableStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DevCenterProjectCatalogSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CatalogItemSyncEnableStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// Project catalog settings for project catalogs under a project associated to this dev center.
 type DevCenterProjectCatalogSettingsResponse struct {
 	// Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
 	CatalogItemSyncEnableStatus *string `pulumi:"catalogItemSyncEnableStatus"`
@@ -249,6 +391,40 @@ func (o DevCenterProjectCatalogSettingsResponseOutput) ToDevCenterProjectCatalog
 // Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
 func (o DevCenterProjectCatalogSettingsResponseOutput) CatalogItemSyncEnableStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DevCenterProjectCatalogSettingsResponse) *string { return v.CatalogItemSyncEnableStatus }).(pulumi.StringPtrOutput)
+}
+
+type DevCenterProjectCatalogSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DevCenterProjectCatalogSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DevCenterProjectCatalogSettingsResponse)(nil)).Elem()
+}
+
+func (o DevCenterProjectCatalogSettingsResponsePtrOutput) ToDevCenterProjectCatalogSettingsResponsePtrOutput() DevCenterProjectCatalogSettingsResponsePtrOutput {
+	return o
+}
+
+func (o DevCenterProjectCatalogSettingsResponsePtrOutput) ToDevCenterProjectCatalogSettingsResponsePtrOutputWithContext(ctx context.Context) DevCenterProjectCatalogSettingsResponsePtrOutput {
+	return o
+}
+
+func (o DevCenterProjectCatalogSettingsResponsePtrOutput) Elem() DevCenterProjectCatalogSettingsResponseOutput {
+	return o.ApplyT(func(v *DevCenterProjectCatalogSettingsResponse) DevCenterProjectCatalogSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DevCenterProjectCatalogSettingsResponse
+		return ret
+	}).(DevCenterProjectCatalogSettingsResponseOutput)
+}
+
+// Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
+func (o DevCenterProjectCatalogSettingsResponsePtrOutput) CatalogItemSyncEnableStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DevCenterProjectCatalogSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CatalogItemSyncEnableStatus
+	}).(pulumi.StringPtrOutput)
 }
 
 // The resource model definition representing SKU for DevCenter resources
@@ -344,6 +520,203 @@ func (o DevCenterSkuResponseArrayOutput) Index(i pulumi.IntInput) DevCenterSkuRe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DevCenterSkuResponse {
 		return vs[0].([]DevCenterSkuResponse)[vs[1].(int)]
 	}).(DevCenterSkuResponseOutput)
+}
+
+type Encryption struct {
+	// All Customer-managed key encryption properties for the resource.
+	CustomerManagedKeyEncryption *commontypesv4.CustomerManagedKeyEncryption `pulumi:"customerManagedKeyEncryption"`
+}
+
+// EncryptionInput is an input type that accepts EncryptionArgs and EncryptionOutput values.
+// You can construct a concrete instance of `EncryptionInput` via:
+//
+//	EncryptionArgs{...}
+type EncryptionInput interface {
+	pulumi.Input
+
+	ToEncryptionOutput() EncryptionOutput
+	ToEncryptionOutputWithContext(context.Context) EncryptionOutput
+}
+
+type EncryptionArgs struct {
+	// All Customer-managed key encryption properties for the resource.
+	CustomerManagedKeyEncryption commontypesv4.CustomerManagedKeyEncryptionPtrInput `pulumi:"customerManagedKeyEncryption"`
+}
+
+func (EncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Encryption)(nil)).Elem()
+}
+
+func (i EncryptionArgs) ToEncryptionOutput() EncryptionOutput {
+	return i.ToEncryptionOutputWithContext(context.Background())
+}
+
+func (i EncryptionArgs) ToEncryptionOutputWithContext(ctx context.Context) EncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionOutput)
+}
+
+func (i EncryptionArgs) ToEncryptionPtrOutput() EncryptionPtrOutput {
+	return i.ToEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i EncryptionArgs) ToEncryptionPtrOutputWithContext(ctx context.Context) EncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionOutput).ToEncryptionPtrOutputWithContext(ctx)
+}
+
+// EncryptionPtrInput is an input type that accepts EncryptionArgs, EncryptionPtr and EncryptionPtrOutput values.
+// You can construct a concrete instance of `EncryptionPtrInput` via:
+//
+//	        EncryptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type EncryptionPtrInput interface {
+	pulumi.Input
+
+	ToEncryptionPtrOutput() EncryptionPtrOutput
+	ToEncryptionPtrOutputWithContext(context.Context) EncryptionPtrOutput
+}
+
+type encryptionPtrType EncryptionArgs
+
+func EncryptionPtr(v *EncryptionArgs) EncryptionPtrInput {
+	return (*encryptionPtrType)(v)
+}
+
+func (*encryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Encryption)(nil)).Elem()
+}
+
+func (i *encryptionPtrType) ToEncryptionPtrOutput() EncryptionPtrOutput {
+	return i.ToEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *encryptionPtrType) ToEncryptionPtrOutputWithContext(ctx context.Context) EncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionPtrOutput)
+}
+
+type EncryptionOutput struct{ *pulumi.OutputState }
+
+func (EncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Encryption)(nil)).Elem()
+}
+
+func (o EncryptionOutput) ToEncryptionOutput() EncryptionOutput {
+	return o
+}
+
+func (o EncryptionOutput) ToEncryptionOutputWithContext(ctx context.Context) EncryptionOutput {
+	return o
+}
+
+func (o EncryptionOutput) ToEncryptionPtrOutput() EncryptionPtrOutput {
+	return o.ToEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o EncryptionOutput) ToEncryptionPtrOutputWithContext(ctx context.Context) EncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Encryption) *Encryption {
+		return &v
+	}).(EncryptionPtrOutput)
+}
+
+// All Customer-managed key encryption properties for the resource.
+func (o EncryptionOutput) CustomerManagedKeyEncryption() commontypesv4.CustomerManagedKeyEncryptionPtrOutput {
+	return o.ApplyT(func(v Encryption) *commontypesv4.CustomerManagedKeyEncryption { return v.CustomerManagedKeyEncryption }).(commontypesv4.CustomerManagedKeyEncryptionPtrOutput)
+}
+
+type EncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Encryption)(nil)).Elem()
+}
+
+func (o EncryptionPtrOutput) ToEncryptionPtrOutput() EncryptionPtrOutput {
+	return o
+}
+
+func (o EncryptionPtrOutput) ToEncryptionPtrOutputWithContext(ctx context.Context) EncryptionPtrOutput {
+	return o
+}
+
+func (o EncryptionPtrOutput) Elem() EncryptionOutput {
+	return o.ApplyT(func(v *Encryption) Encryption {
+		if v != nil {
+			return *v
+		}
+		var ret Encryption
+		return ret
+	}).(EncryptionOutput)
+}
+
+// All Customer-managed key encryption properties for the resource.
+func (o EncryptionPtrOutput) CustomerManagedKeyEncryption() commontypesv4.CustomerManagedKeyEncryptionPtrOutput {
+	return o.ApplyT(func(v *Encryption) *commontypesv4.CustomerManagedKeyEncryption {
+		if v == nil {
+			return nil
+		}
+		return v.CustomerManagedKeyEncryption
+	}).(commontypesv4.CustomerManagedKeyEncryptionPtrOutput)
+}
+
+type EncryptionResponse struct {
+	// All Customer-managed key encryption properties for the resource.
+	CustomerManagedKeyEncryption *commontypesv4.CustomerManagedKeyEncryptionResponse `pulumi:"customerManagedKeyEncryption"`
+}
+
+type EncryptionResponseOutput struct{ *pulumi.OutputState }
+
+func (EncryptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionResponse)(nil)).Elem()
+}
+
+func (o EncryptionResponseOutput) ToEncryptionResponseOutput() EncryptionResponseOutput {
+	return o
+}
+
+func (o EncryptionResponseOutput) ToEncryptionResponseOutputWithContext(ctx context.Context) EncryptionResponseOutput {
+	return o
+}
+
+// All Customer-managed key encryption properties for the resource.
+func (o EncryptionResponseOutput) CustomerManagedKeyEncryption() commontypesv4.CustomerManagedKeyEncryptionResponsePtrOutput {
+	return o.ApplyT(func(v EncryptionResponse) *commontypesv4.CustomerManagedKeyEncryptionResponse {
+		return v.CustomerManagedKeyEncryption
+	}).(commontypesv4.CustomerManagedKeyEncryptionResponsePtrOutput)
+}
+
+type EncryptionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionResponse)(nil)).Elem()
+}
+
+func (o EncryptionResponsePtrOutput) ToEncryptionResponsePtrOutput() EncryptionResponsePtrOutput {
+	return o
+}
+
+func (o EncryptionResponsePtrOutput) ToEncryptionResponsePtrOutputWithContext(ctx context.Context) EncryptionResponsePtrOutput {
+	return o
+}
+
+func (o EncryptionResponsePtrOutput) Elem() EncryptionResponseOutput {
+	return o.ApplyT(func(v *EncryptionResponse) EncryptionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionResponse
+		return ret
+	}).(EncryptionResponseOutput)
+}
+
+// All Customer-managed key encryption properties for the resource.
+func (o EncryptionResponsePtrOutput) CustomerManagedKeyEncryption() commontypesv4.CustomerManagedKeyEncryptionResponsePtrOutput {
+	return o.ApplyT(func(v *EncryptionResponse) *commontypesv4.CustomerManagedKeyEncryptionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CustomerManagedKeyEncryption
+	}).(commontypesv4.CustomerManagedKeyEncryptionResponsePtrOutput)
 }
 
 // A role that can be assigned to a user.
@@ -1132,276 +1505,244 @@ func (o ImageValidationErrorDetailsResponseOutput) Message() pulumi.StringPtrOut
 	return o.ApplyT(func(v ImageValidationErrorDetailsResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
-// Managed service identity (system assigned and/or user assigned identities)
-type ManagedServiceIdentity struct {
-	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-	Type string `pulumi:"type"`
-	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
+// The sync status of the plan member.
+type PlanMemberSyncStatusResponse struct {
+	// Error response describing why the sync failed.
+	LastSyncError *commontypesv5.ErrorDetailResponse `pulumi:"lastSyncError"`
+	// When the plan member was last synced.
+	LastSyncTime string `pulumi:"lastSyncTime"`
+	// The synchronization state of the plan member.
+	SyncState string `pulumi:"syncState"`
 }
 
-// ManagedServiceIdentityInput is an input type that accepts ManagedServiceIdentityArgs and ManagedServiceIdentityOutput values.
-// You can construct a concrete instance of `ManagedServiceIdentityInput` via:
+// The sync status of the plan member.
+type PlanMemberSyncStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (PlanMemberSyncStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlanMemberSyncStatusResponse)(nil)).Elem()
+}
+
+func (o PlanMemberSyncStatusResponseOutput) ToPlanMemberSyncStatusResponseOutput() PlanMemberSyncStatusResponseOutput {
+	return o
+}
+
+func (o PlanMemberSyncStatusResponseOutput) ToPlanMemberSyncStatusResponseOutputWithContext(ctx context.Context) PlanMemberSyncStatusResponseOutput {
+	return o
+}
+
+// Error response describing why the sync failed.
+func (o PlanMemberSyncStatusResponseOutput) LastSyncError() commontypesv5.ErrorDetailResponsePtrOutput {
+	return o.ApplyT(func(v PlanMemberSyncStatusResponse) *commontypesv5.ErrorDetailResponse { return v.LastSyncError }).(commontypesv5.ErrorDetailResponsePtrOutput)
+}
+
+// When the plan member was last synced.
+func (o PlanMemberSyncStatusResponseOutput) LastSyncTime() pulumi.StringOutput {
+	return o.ApplyT(func(v PlanMemberSyncStatusResponse) string { return v.LastSyncTime }).(pulumi.StringOutput)
+}
+
+// The synchronization state of the plan member.
+func (o PlanMemberSyncStatusResponseOutput) SyncState() pulumi.StringOutput {
+	return o.ApplyT(func(v PlanMemberSyncStatusResponse) string { return v.SyncState }).(pulumi.StringOutput)
+}
+
+// Settings to be used when associating a project with a catalog.
+type ProjectCatalogSettings struct {
+	// Indicates catalog item types that can be synced.
+	CatalogItemSyncTypes []string `pulumi:"catalogItemSyncTypes"`
+}
+
+// ProjectCatalogSettingsInput is an input type that accepts ProjectCatalogSettingsArgs and ProjectCatalogSettingsOutput values.
+// You can construct a concrete instance of `ProjectCatalogSettingsInput` via:
 //
-//	ManagedServiceIdentityArgs{...}
-type ManagedServiceIdentityInput interface {
+//	ProjectCatalogSettingsArgs{...}
+type ProjectCatalogSettingsInput interface {
 	pulumi.Input
 
-	ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput
-	ToManagedServiceIdentityOutputWithContext(context.Context) ManagedServiceIdentityOutput
+	ToProjectCatalogSettingsOutput() ProjectCatalogSettingsOutput
+	ToProjectCatalogSettingsOutputWithContext(context.Context) ProjectCatalogSettingsOutput
 }
 
-// Managed service identity (system assigned and/or user assigned identities)
-type ManagedServiceIdentityArgs struct {
-	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-	Type pulumi.StringInput `pulumi:"type"`
-	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
+// Settings to be used when associating a project with a catalog.
+type ProjectCatalogSettingsArgs struct {
+	// Indicates catalog item types that can be synced.
+	CatalogItemSyncTypes pulumi.StringArrayInput `pulumi:"catalogItemSyncTypes"`
 }
 
-func (ManagedServiceIdentityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
+func (ProjectCatalogSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectCatalogSettings)(nil)).Elem()
 }
 
-func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
-	return i.ToManagedServiceIdentityOutputWithContext(context.Background())
+func (i ProjectCatalogSettingsArgs) ToProjectCatalogSettingsOutput() ProjectCatalogSettingsOutput {
+	return i.ToProjectCatalogSettingsOutputWithContext(context.Background())
 }
 
-func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
+func (i ProjectCatalogSettingsArgs) ToProjectCatalogSettingsOutputWithContext(ctx context.Context) ProjectCatalogSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectCatalogSettingsOutput)
 }
 
-func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
-	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+func (i ProjectCatalogSettingsArgs) ToProjectCatalogSettingsPtrOutput() ProjectCatalogSettingsPtrOutput {
+	return i.ToProjectCatalogSettingsPtrOutputWithContext(context.Background())
 }
 
-func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput).ToManagedServiceIdentityPtrOutputWithContext(ctx)
+func (i ProjectCatalogSettingsArgs) ToProjectCatalogSettingsPtrOutputWithContext(ctx context.Context) ProjectCatalogSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectCatalogSettingsOutput).ToProjectCatalogSettingsPtrOutputWithContext(ctx)
 }
 
-// ManagedServiceIdentityPtrInput is an input type that accepts ManagedServiceIdentityArgs, ManagedServiceIdentityPtr and ManagedServiceIdentityPtrOutput values.
-// You can construct a concrete instance of `ManagedServiceIdentityPtrInput` via:
+// ProjectCatalogSettingsPtrInput is an input type that accepts ProjectCatalogSettingsArgs, ProjectCatalogSettingsPtr and ProjectCatalogSettingsPtrOutput values.
+// You can construct a concrete instance of `ProjectCatalogSettingsPtrInput` via:
 //
-//	        ManagedServiceIdentityArgs{...}
+//	        ProjectCatalogSettingsArgs{...}
 //
 //	or:
 //
 //	        nil
-type ManagedServiceIdentityPtrInput interface {
+type ProjectCatalogSettingsPtrInput interface {
 	pulumi.Input
 
-	ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput
-	ToManagedServiceIdentityPtrOutputWithContext(context.Context) ManagedServiceIdentityPtrOutput
+	ToProjectCatalogSettingsPtrOutput() ProjectCatalogSettingsPtrOutput
+	ToProjectCatalogSettingsPtrOutputWithContext(context.Context) ProjectCatalogSettingsPtrOutput
 }
 
-type managedServiceIdentityPtrType ManagedServiceIdentityArgs
+type projectCatalogSettingsPtrType ProjectCatalogSettingsArgs
 
-func ManagedServiceIdentityPtr(v *ManagedServiceIdentityArgs) ManagedServiceIdentityPtrInput {
-	return (*managedServiceIdentityPtrType)(v)
+func ProjectCatalogSettingsPtr(v *ProjectCatalogSettingsArgs) ProjectCatalogSettingsPtrInput {
+	return (*projectCatalogSettingsPtrType)(v)
 }
 
-func (*managedServiceIdentityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
+func (*projectCatalogSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectCatalogSettings)(nil)).Elem()
 }
 
-func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
-	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+func (i *projectCatalogSettingsPtrType) ToProjectCatalogSettingsPtrOutput() ProjectCatalogSettingsPtrOutput {
+	return i.ToProjectCatalogSettingsPtrOutputWithContext(context.Background())
 }
 
-func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
+func (i *projectCatalogSettingsPtrType) ToProjectCatalogSettingsPtrOutputWithContext(ctx context.Context) ProjectCatalogSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectCatalogSettingsPtrOutput)
 }
 
-// Managed service identity (system assigned and/or user assigned identities)
-type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
+// Settings to be used when associating a project with a catalog.
+type ProjectCatalogSettingsOutput struct{ *pulumi.OutputState }
 
-func (ManagedServiceIdentityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
+func (ProjectCatalogSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectCatalogSettings)(nil)).Elem()
 }
 
-func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
+func (o ProjectCatalogSettingsOutput) ToProjectCatalogSettingsOutput() ProjectCatalogSettingsOutput {
 	return o
 }
 
-func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
+func (o ProjectCatalogSettingsOutput) ToProjectCatalogSettingsOutputWithContext(ctx context.Context) ProjectCatalogSettingsOutput {
 	return o
 }
 
-func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
-	return o.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+func (o ProjectCatalogSettingsOutput) ToProjectCatalogSettingsPtrOutput() ProjectCatalogSettingsPtrOutput {
+	return o.ToProjectCatalogSettingsPtrOutputWithContext(context.Background())
 }
 
-func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedServiceIdentity) *ManagedServiceIdentity {
+func (o ProjectCatalogSettingsOutput) ToProjectCatalogSettingsPtrOutputWithContext(ctx context.Context) ProjectCatalogSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProjectCatalogSettings) *ProjectCatalogSettings {
 		return &v
-	}).(ManagedServiceIdentityPtrOutput)
+	}).(ProjectCatalogSettingsPtrOutput)
 }
 
-// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
+// Indicates catalog item types that can be synced.
+func (o ProjectCatalogSettingsOutput) CatalogItemSyncTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ProjectCatalogSettings) []string { return v.CatalogItemSyncTypes }).(pulumi.StringArrayOutput)
 }
 
-// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ManagedServiceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
+type ProjectCatalogSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (ProjectCatalogSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectCatalogSettings)(nil)).Elem()
 }
 
-type ManagedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedServiceIdentityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
-}
-
-func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+func (o ProjectCatalogSettingsPtrOutput) ToProjectCatalogSettingsPtrOutput() ProjectCatalogSettingsPtrOutput {
 	return o
 }
 
-func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+func (o ProjectCatalogSettingsPtrOutput) ToProjectCatalogSettingsPtrOutputWithContext(ctx context.Context) ProjectCatalogSettingsPtrOutput {
 	return o
 }
 
-func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentity) ManagedServiceIdentity {
+func (o ProjectCatalogSettingsPtrOutput) Elem() ProjectCatalogSettingsOutput {
+	return o.ApplyT(func(v *ProjectCatalogSettings) ProjectCatalogSettings {
 		if v != nil {
 			return *v
 		}
-		var ret ManagedServiceIdentity
+		var ret ProjectCatalogSettings
 		return ret
-	}).(ManagedServiceIdentityOutput)
+	}).(ProjectCatalogSettingsOutput)
 }
 
-// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-func (o ManagedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentity) *string {
+// Indicates catalog item types that can be synced.
+func (o ProjectCatalogSettingsPtrOutput) CatalogItemSyncTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ProjectCatalogSettings) []string {
 		if v == nil {
 			return nil
 		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentity) []string {
-		if v == nil {
-			return nil
-		}
-		return v.UserAssignedIdentities
+		return v.CatalogItemSyncTypes
 	}).(pulumi.StringArrayOutput)
 }
 
-// Managed service identity (system assigned and/or user assigned identities)
-type ManagedServiceIdentityResponse struct {
-	// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-	PrincipalId string `pulumi:"principalId"`
-	// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-	TenantId string `pulumi:"tenantId"`
-	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-	Type string `pulumi:"type"`
-	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
+// Settings to be used when associating a project with a catalog.
+type ProjectCatalogSettingsResponse struct {
+	// Indicates catalog item types that can be synced.
+	CatalogItemSyncTypes []string `pulumi:"catalogItemSyncTypes"`
 }
 
-// Managed service identity (system assigned and/or user assigned identities)
-type ManagedServiceIdentityResponseOutput struct{ *pulumi.OutputState }
+// Settings to be used when associating a project with a catalog.
+type ProjectCatalogSettingsResponseOutput struct{ *pulumi.OutputState }
 
-func (ManagedServiceIdentityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedServiceIdentityResponse)(nil)).Elem()
+func (ProjectCatalogSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectCatalogSettingsResponse)(nil)).Elem()
 }
 
-func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutput() ManagedServiceIdentityResponseOutput {
+func (o ProjectCatalogSettingsResponseOutput) ToProjectCatalogSettingsResponseOutput() ProjectCatalogSettingsResponseOutput {
 	return o
 }
 
-func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutputWithContext(ctx context.Context) ManagedServiceIdentityResponseOutput {
+func (o ProjectCatalogSettingsResponseOutput) ToProjectCatalogSettingsResponseOutputWithContext(ctx context.Context) ProjectCatalogSettingsResponseOutput {
 	return o
 }
 
-// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o ManagedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+// Indicates catalog item types that can be synced.
+func (o ProjectCatalogSettingsResponseOutput) CatalogItemSyncTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ProjectCatalogSettingsResponse) []string { return v.CatalogItemSyncTypes }).(pulumi.StringArrayOutput)
 }
 
-// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o ManagedServiceIdentityResponseOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
+type ProjectCatalogSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ProjectCatalogSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectCatalogSettingsResponse)(nil)).Elem()
 }
 
-// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-func (o ManagedServiceIdentityResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
-	return o.ApplyT(func(v ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
-		return v.UserAssignedIdentities
-	}).(UserAssignedIdentityResponseMapOutput)
-}
-
-type ManagedServiceIdentityResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedServiceIdentityResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedServiceIdentityResponse)(nil)).Elem()
-}
-
-func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutput() ManagedServiceIdentityResponsePtrOutput {
+func (o ProjectCatalogSettingsResponsePtrOutput) ToProjectCatalogSettingsResponsePtrOutput() ProjectCatalogSettingsResponsePtrOutput {
 	return o
 }
 
-func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
+func (o ProjectCatalogSettingsResponsePtrOutput) ToProjectCatalogSettingsResponsePtrOutputWithContext(ctx context.Context) ProjectCatalogSettingsResponsePtrOutput {
 	return o
 }
 
-func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) ManagedServiceIdentityResponse {
+func (o ProjectCatalogSettingsResponsePtrOutput) Elem() ProjectCatalogSettingsResponseOutput {
+	return o.ApplyT(func(v *ProjectCatalogSettingsResponse) ProjectCatalogSettingsResponse {
 		if v != nil {
 			return *v
 		}
-		var ret ManagedServiceIdentityResponse
+		var ret ProjectCatalogSettingsResponse
 		return ret
-	}).(ManagedServiceIdentityResponseOutput)
+	}).(ProjectCatalogSettingsResponseOutput)
 }
 
-// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o ManagedServiceIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+// Indicates catalog item types that can be synced.
+func (o ProjectCatalogSettingsResponsePtrOutput) CatalogItemSyncTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ProjectCatalogSettingsResponse) []string {
 		if v == nil {
 			return nil
 		}
-		return &v.PrincipalId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o ManagedServiceIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TenantId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-func (o ManagedServiceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
-		if v == nil {
-			return nil
-		}
-		return v.UserAssignedIdentities
-	}).(UserAssignedIdentityResponseMapOutput)
+		return v.CatalogItemSyncTypes
+	}).(pulumi.StringArrayOutput)
 }
 
 // The role definition assigned to the environment creator on backing resources.
@@ -1794,350 +2135,6 @@ func (o ResourcePolicyResponseArrayOutput) Index(i pulumi.IntInput) ResourcePoli
 	}).(ResourcePolicyResponseOutput)
 }
 
-// The resource model definition representing SKU
-type Sku struct {
-	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-	Capacity *int `pulumi:"capacity"`
-	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
-	Family *string `pulumi:"family"`
-	// The name of the SKU. E.g. P3. It is typically a letter+number code
-	Name string `pulumi:"name"`
-	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
-	Size *string `pulumi:"size"`
-	// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-	Tier *SkuTier `pulumi:"tier"`
-}
-
-// SkuInput is an input type that accepts SkuArgs and SkuOutput values.
-// You can construct a concrete instance of `SkuInput` via:
-//
-//	SkuArgs{...}
-type SkuInput interface {
-	pulumi.Input
-
-	ToSkuOutput() SkuOutput
-	ToSkuOutputWithContext(context.Context) SkuOutput
-}
-
-// The resource model definition representing SKU
-type SkuArgs struct {
-	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-	Capacity pulumi.IntPtrInput `pulumi:"capacity"`
-	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
-	Family pulumi.StringPtrInput `pulumi:"family"`
-	// The name of the SKU. E.g. P3. It is typically a letter+number code
-	Name pulumi.StringInput `pulumi:"name"`
-	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
-	Size pulumi.StringPtrInput `pulumi:"size"`
-	// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-	Tier SkuTierPtrInput `pulumi:"tier"`
-}
-
-func (SkuArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Sku)(nil)).Elem()
-}
-
-func (i SkuArgs) ToSkuOutput() SkuOutput {
-	return i.ToSkuOutputWithContext(context.Background())
-}
-
-func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
-}
-
-func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
-	return i.ToSkuPtrOutputWithContext(context.Background())
-}
-
-func (i SkuArgs) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput).ToSkuPtrOutputWithContext(ctx)
-}
-
-// SkuPtrInput is an input type that accepts SkuArgs, SkuPtr and SkuPtrOutput values.
-// You can construct a concrete instance of `SkuPtrInput` via:
-//
-//	        SkuArgs{...}
-//
-//	or:
-//
-//	        nil
-type SkuPtrInput interface {
-	pulumi.Input
-
-	ToSkuPtrOutput() SkuPtrOutput
-	ToSkuPtrOutputWithContext(context.Context) SkuPtrOutput
-}
-
-type skuPtrType SkuArgs
-
-func SkuPtr(v *SkuArgs) SkuPtrInput {
-	return (*skuPtrType)(v)
-}
-
-func (*skuPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Sku)(nil)).Elem()
-}
-
-func (i *skuPtrType) ToSkuPtrOutput() SkuPtrOutput {
-	return i.ToSkuPtrOutputWithContext(context.Background())
-}
-
-func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
-}
-
-// The resource model definition representing SKU
-type SkuOutput struct{ *pulumi.OutputState }
-
-func (SkuOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Sku)(nil)).Elem()
-}
-
-func (o SkuOutput) ToSkuOutput() SkuOutput {
-	return o
-}
-
-func (o SkuOutput) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
-	return o
-}
-
-func (o SkuOutput) ToSkuPtrOutput() SkuPtrOutput {
-	return o.ToSkuPtrOutputWithContext(context.Background())
-}
-
-func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Sku) *Sku {
-		return &v
-	}).(SkuPtrOutput)
-}
-
-// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-func (o SkuOutput) Capacity() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Sku) *int { return v.Capacity }).(pulumi.IntPtrOutput)
-}
-
-// If the service has different generations of hardware, for the same SKU, then that can be captured here.
-func (o SkuOutput) Family() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Sku) *string { return v.Family }).(pulumi.StringPtrOutput)
-}
-
-// The name of the SKU. E.g. P3. It is typically a letter+number code
-func (o SkuOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v Sku) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
-func (o SkuOutput) Size() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Sku) *string { return v.Size }).(pulumi.StringPtrOutput)
-}
-
-// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-func (o SkuOutput) Tier() SkuTierPtrOutput {
-	return o.ApplyT(func(v Sku) *SkuTier { return v.Tier }).(SkuTierPtrOutput)
-}
-
-type SkuPtrOutput struct{ *pulumi.OutputState }
-
-func (SkuPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Sku)(nil)).Elem()
-}
-
-func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
-	return o
-}
-
-func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
-	return o
-}
-
-func (o SkuPtrOutput) Elem() SkuOutput {
-	return o.ApplyT(func(v *Sku) Sku {
-		if v != nil {
-			return *v
-		}
-		var ret Sku
-		return ret
-	}).(SkuOutput)
-}
-
-// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-func (o SkuPtrOutput) Capacity() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Sku) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Capacity
-	}).(pulumi.IntPtrOutput)
-}
-
-// If the service has different generations of hardware, for the same SKU, then that can be captured here.
-func (o SkuPtrOutput) Family() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Sku) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Family
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the SKU. E.g. P3. It is typically a letter+number code
-func (o SkuPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Sku) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
-func (o SkuPtrOutput) Size() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Sku) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Size
-	}).(pulumi.StringPtrOutput)
-}
-
-// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-func (o SkuPtrOutput) Tier() SkuTierPtrOutput {
-	return o.ApplyT(func(v *Sku) *SkuTier {
-		if v == nil {
-			return nil
-		}
-		return v.Tier
-	}).(SkuTierPtrOutput)
-}
-
-// The resource model definition representing SKU
-type SkuResponse struct {
-	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-	Capacity *int `pulumi:"capacity"`
-	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
-	Family *string `pulumi:"family"`
-	// The name of the SKU. E.g. P3. It is typically a letter+number code
-	Name string `pulumi:"name"`
-	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
-	Size *string `pulumi:"size"`
-	// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-	Tier *string `pulumi:"tier"`
-}
-
-// The resource model definition representing SKU
-type SkuResponseOutput struct{ *pulumi.OutputState }
-
-func (SkuResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SkuResponse)(nil)).Elem()
-}
-
-func (o SkuResponseOutput) ToSkuResponseOutput() SkuResponseOutput {
-	return o
-}
-
-func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) SkuResponseOutput {
-	return o
-}
-
-// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-func (o SkuResponseOutput) Capacity() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
-}
-
-// If the service has different generations of hardware, for the same SKU, then that can be captured here.
-func (o SkuResponseOutput) Family() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SkuResponse) *string { return v.Family }).(pulumi.StringPtrOutput)
-}
-
-// The name of the SKU. E.g. P3. It is typically a letter+number code
-func (o SkuResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v SkuResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
-func (o SkuResponseOutput) Size() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SkuResponse) *string { return v.Size }).(pulumi.StringPtrOutput)
-}
-
-// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-func (o SkuResponseOutput) Tier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SkuResponse) *string { return v.Tier }).(pulumi.StringPtrOutput)
-}
-
-type SkuResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SkuResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SkuResponse)(nil)).Elem()
-}
-
-func (o SkuResponsePtrOutput) ToSkuResponsePtrOutput() SkuResponsePtrOutput {
-	return o
-}
-
-func (o SkuResponsePtrOutput) ToSkuResponsePtrOutputWithContext(ctx context.Context) SkuResponsePtrOutput {
-	return o
-}
-
-func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {
-	return o.ApplyT(func(v *SkuResponse) SkuResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SkuResponse
-		return ret
-	}).(SkuResponseOutput)
-}
-
-// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-func (o SkuResponsePtrOutput) Capacity() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *SkuResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Capacity
-	}).(pulumi.IntPtrOutput)
-}
-
-// If the service has different generations of hardware, for the same SKU, then that can be captured here.
-func (o SkuResponsePtrOutput) Family() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SkuResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Family
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the SKU. E.g. P3. It is typically a letter+number code
-func (o SkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SkuResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
-func (o SkuResponsePtrOutput) Size() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SkuResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Size
-	}).(pulumi.StringPtrOutput)
-}
-
-// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-func (o SkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SkuResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Tier
-	}).(pulumi.StringPtrOutput)
-}
-
 // Stop on disconnect configuration settings for Dev Boxes created in this pool.
 type StopOnDisconnectConfiguration struct {
 	// The specified time in minutes to wait before stopping a Dev Box once disconnect is detected.
@@ -2442,120 +2439,6 @@ func (o SyncStatsResponseOutput) ValidationErrors() pulumi.IntOutput {
 	return o.ApplyT(func(v SyncStatsResponse) int { return v.ValidationErrors }).(pulumi.IntOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
-}
-
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponseOutput struct{ *pulumi.OutputState }
-
-func (SystemDataResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
-	return o
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
-	return o
-}
-
-// The timestamp of resource creation (UTC).
-func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
-}
-
-// User assigned identity properties
-type UserAssignedIdentityResponse struct {
-	// The client ID of the assigned identity.
-	ClientId string `pulumi:"clientId"`
-	// The principal ID of the assigned identity.
-	PrincipalId string `pulumi:"principalId"`
-}
-
-// User assigned identity properties
-type UserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
-
-func (UserAssignedIdentityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserAssignedIdentityResponse)(nil)).Elem()
-}
-
-func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput() UserAssignedIdentityResponseOutput {
-	return o
-}
-
-func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutputWithContext(ctx context.Context) UserAssignedIdentityResponseOutput {
-	return o
-}
-
-// The client ID of the assigned identity.
-func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
-}
-
-// The principal ID of the assigned identity.
-func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
-}
-
-type UserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
-
-func (UserAssignedIdentityResponseMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]UserAssignedIdentityResponse)(nil)).Elem()
-}
-
-func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutput() UserAssignedIdentityResponseMapOutput {
-	return o
-}
-
-func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
-	return o
-}
-
-func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
-		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
-	}).(UserAssignedIdentityResponseOutput)
-}
-
 // Mapping of user object ID to role assignments.
 type UserRoleAssignment struct {
 	// A map of roles to assign to the parent user.
@@ -2711,9 +2594,16 @@ func init() {
 	pulumi.RegisterOutputType(CatalogErrorDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(CatalogSyncErrorResponseOutput{})
 	pulumi.RegisterOutputType(CatalogSyncErrorResponseArrayOutput{})
+	pulumi.RegisterOutputType(DevCenterProjectCatalogSettingsOutput{})
+	pulumi.RegisterOutputType(DevCenterProjectCatalogSettingsPtrOutput{})
 	pulumi.RegisterOutputType(DevCenterProjectCatalogSettingsResponseOutput{})
+	pulumi.RegisterOutputType(DevCenterProjectCatalogSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(DevCenterSkuResponseOutput{})
 	pulumi.RegisterOutputType(DevCenterSkuResponseArrayOutput{})
+	pulumi.RegisterOutputType(EncryptionOutput{})
+	pulumi.RegisterOutputType(EncryptionPtrOutput{})
+	pulumi.RegisterOutputType(EncryptionResponseOutput{})
+	pulumi.RegisterOutputType(EncryptionResponsePtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentRoleResponseOutput{})
 	pulumi.RegisterOutputType(EnvironmentRoleResponseMapOutput{})
 	pulumi.RegisterOutputType(GitCatalogOutput{})
@@ -2732,10 +2622,11 @@ func init() {
 	pulumi.RegisterOutputType(ImageReferenceOutput{})
 	pulumi.RegisterOutputType(ImageReferenceResponseOutput{})
 	pulumi.RegisterOutputType(ImageValidationErrorDetailsResponseOutput{})
-	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
-	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
-	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
-	pulumi.RegisterOutputType(ManagedServiceIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(PlanMemberSyncStatusResponseOutput{})
+	pulumi.RegisterOutputType(ProjectCatalogSettingsOutput{})
+	pulumi.RegisterOutputType(ProjectCatalogSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ProjectCatalogSettingsResponseOutput{})
+	pulumi.RegisterOutputType(ProjectCatalogSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentOutput{})
 	pulumi.RegisterOutputType(ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignmentPtrOutput{})
 	pulumi.RegisterOutputType(ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignmentOutput{})
@@ -2745,18 +2636,11 @@ func init() {
 	pulumi.RegisterOutputType(ResourcePolicyArrayOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyResponseOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyResponseArrayOutput{})
-	pulumi.RegisterOutputType(SkuOutput{})
-	pulumi.RegisterOutputType(SkuPtrOutput{})
-	pulumi.RegisterOutputType(SkuResponseOutput{})
-	pulumi.RegisterOutputType(SkuResponsePtrOutput{})
 	pulumi.RegisterOutputType(StopOnDisconnectConfigurationOutput{})
 	pulumi.RegisterOutputType(StopOnDisconnectConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(StopOnDisconnectConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(StopOnDisconnectConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(SyncStatsResponseOutput{})
-	pulumi.RegisterOutputType(SystemDataResponseOutput{})
-	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
-	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 	pulumi.RegisterOutputType(UserRoleAssignmentOutput{})
 	pulumi.RegisterOutputType(UserRoleAssignmentMapOutput{})
 	pulumi.RegisterOutputType(UserRoleAssignmentResponseOutput{})

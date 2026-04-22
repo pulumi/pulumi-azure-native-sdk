@@ -7,15 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the status of Attestation Provider.
 //
 // Uses Azure REST API version 2021-06-01.
-//
-// Other available API versions: 2021-06-01-preview.
 func LookupAttestationProvider(ctx *pulumi.Context, args *LookupAttestationProviderArgs, opts ...pulumi.InvokeOption) (*LookupAttestationProviderResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAttestationProviderResult
@@ -23,7 +22,7 @@ func LookupAttestationProvider(ctx *pulumi.Context, args *LookupAttestationProvi
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupAttestationProviderArgs struct {
@@ -37,6 +36,8 @@ type LookupAttestationProviderArgs struct {
 type LookupAttestationProviderResult struct {
 	// Gets the uri of attestation service
 	AttestUri *string `pulumi:"attestUri"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -44,13 +45,13 @@ type LookupAttestationProviderResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// List of private endpoint connections associated with the attestation provider.
-	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections []commontypesv3.PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// Controls whether traffic from the public network is allowed to access the Attestation Provider APIs.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Status of attestation service.
 	Status *string `pulumi:"status"`
-	// The system metadata relating to this resource
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs.
@@ -61,6 +62,22 @@ type LookupAttestationProviderResult struct {
 	Type string `pulumi:"type"`
 }
 
+// Defaults sets the appropriate defaults for LookupAttestationProviderResult
+func (val *LookupAttestationProviderResult) Defaults() *LookupAttestationProviderResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.PublicNetworkAccess == nil {
+		publicNetworkAccess_ := "Enabled"
+		tmp.PublicNetworkAccess = &publicNetworkAccess_
+	}
+	if tmp.TpmAttestationAuthentication == nil {
+		tpmAttestationAuthentication_ := "Enabled"
+		tmp.TpmAttestationAuthentication = &tpmAttestationAuthentication_
+	}
+	return &tmp
+}
 func LookupAttestationProviderOutput(ctx *pulumi.Context, args LookupAttestationProviderOutputArgs, opts ...pulumi.InvokeOption) LookupAttestationProviderResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAttestationProviderResultOutput, error) {
@@ -101,6 +118,11 @@ func (o LookupAttestationProviderResultOutput) AttestUri() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v LookupAttestationProviderResult) *string { return v.AttestUri }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupAttestationProviderResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAttestationProviderResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupAttestationProviderResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAttestationProviderResult) string { return v.Id }).(pulumi.StringOutput)
@@ -117,10 +139,10 @@ func (o LookupAttestationProviderResultOutput) Name() pulumi.StringOutput {
 }
 
 // List of private endpoint connections associated with the attestation provider.
-func (o LookupAttestationProviderResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v LookupAttestationProviderResult) []PrivateEndpointConnectionResponse {
+func (o LookupAttestationProviderResultOutput) PrivateEndpointConnections() commontypesv3.PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v LookupAttestationProviderResult) []commontypesv3.PrivateEndpointConnectionResponse {
 		return v.PrivateEndpointConnections
-	}).(PrivateEndpointConnectionResponseArrayOutput)
+	}).(commontypesv3.PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // Controls whether traffic from the public network is allowed to access the Attestation Provider APIs.
@@ -133,9 +155,9 @@ func (o LookupAttestationProviderResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAttestationProviderResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// The system metadata relating to this resource
-func (o LookupAttestationProviderResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAttestationProviderResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupAttestationProviderResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAttestationProviderResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

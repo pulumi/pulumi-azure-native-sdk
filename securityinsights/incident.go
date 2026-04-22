@@ -8,20 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents an incident in Azure Security Insights.
 //
-// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2020-01-01.
+// Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 //
-// Other available API versions: 2021-03-01-preview, 2023-02-01-preview, 2023-03-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-09-01, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01.
+// Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Incident struct {
 	pulumi.CustomResourceState
 
 	// Additional data on the incident
 	AdditionalData IncidentAdditionalDataResponseOutput `pulumi:"additionalData"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The reason the incident was closed
 	Classification pulumi.StringPtrOutput `pulumi:"classification"`
 	// Describes the reason the incident was closed
@@ -61,7 +64,7 @@ type Incident struct {
 	// The status of the incident
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The title of the incident
 	Title pulumi.StringOutput `pulumi:"title"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -205,6 +208,18 @@ func NewIncident(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250301:Incident"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250401preview:Incident"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250601:Incident"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250701preview:Incident"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250901:Incident"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -344,6 +359,11 @@ func (o IncidentOutput) AdditionalData() IncidentAdditionalDataResponseOutput {
 	return o.ApplyT(func(v *Incident) IncidentAdditionalDataResponseOutput { return v.AdditionalData }).(IncidentAdditionalDataResponseOutput)
 }
 
+// The Azure API version of the resource.
+func (o IncidentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Incident) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The reason the incident was closed
 func (o IncidentOutput) Classification() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Incident) pulumi.StringPtrOutput { return v.Classification }).(pulumi.StringPtrOutput)
@@ -440,8 +460,8 @@ func (o IncidentOutput) Status() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o IncidentOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Incident) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o IncidentOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Incident) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The title of the incident

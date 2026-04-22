@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets information about a server.
+// Gets information about an existing server.
 //
-// Uses Azure REST API version 2022-12-01.
+// Uses Azure REST API version 2025-08-01.
 //
-// Other available API versions: 2017-12-01, 2017-12-01-preview, 2020-02-14-preview, 2021-04-10-privatepreview, 2021-06-15-privatepreview, 2022-03-08-preview, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview.
+// Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupServer(ctx *pulumi.Context, args *LookupServerArgs, opts ...pulumi.InvokeOption) (*LookupServerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerResult
@@ -33,55 +34,63 @@ type LookupServerArgs struct {
 	ServerName string `pulumi:"serverName"`
 }
 
-// Represents a server.
+// Properties of a server.
 type LookupServerResult struct {
-	// The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
+	// Name of the login designated as the first password based administrator assigned to your instance of PostgreSQL. Must be specified the first time that you enable password based authentication on a server. Once set to a given value, it cannot be changed for the rest of the life of a server. If you disable password based authentication on a server which had it enabled, this password based role isn't deleted.
 	AdministratorLogin *string `pulumi:"administratorLogin"`
-	// AuthConfig properties of a server.
+	// Authentication configuration properties of a server.
 	AuthConfig *AuthConfigResponse `pulumi:"authConfig"`
-	// availability zone information of the server.
+	// Availability zone of a server.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Backup properties of a server.
 	Backup *BackupResponse `pulumi:"backup"`
+	// Cluster properties of a server.
+	Cluster *ClusterResponse `pulumi:"cluster"`
 	// Data encryption properties of a server.
 	DataEncryption *DataEncryptionResponse `pulumi:"dataEncryption"`
-	// The fully qualified domain name of a server.
+	// Fully qualified domain name of a server.
 	FullyQualifiedDomainName string `pulumi:"fullyQualifiedDomainName"`
 	// High availability properties of a server.
 	HighAvailability *HighAvailabilityResponse `pulumi:"highAvailability"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// Describes the identity of the application.
+	// User assigned managed identities assigned to the server.
 	Identity *UserAssignedIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// Maintenance window properties of a server.
 	MaintenanceWindow *MaintenanceWindowResponse `pulumi:"maintenanceWindow"`
-	// The minor version of the server.
+	// Minor version of PostgreSQL database engine.
 	MinorVersion string `pulumi:"minorVersion"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Network properties of a server. This Network property is required to be passed only in case you want the server to be Private access server.
+	// Network properties of a server. Only required if you want your server to be integrated into a virtual network provided by customer.
 	Network *NetworkResponse `pulumi:"network"`
-	// Replicas allowed for a server.
+	// List of private endpoint connections associated with the specified server.
+	PrivateEndpointConnections []commontypesv6.PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
+	// Read replica properties of a server. Required only in case that you want to promote a server.
+	Replica *ReplicaResponse `pulumi:"replica"`
+	// Maximum number of read replicas allowed for a server.
 	ReplicaCapacity int `pulumi:"replicaCapacity"`
-	// Replication role of the server
+	// Role of the server in a replication set.
 	ReplicationRole *string `pulumi:"replicationRole"`
-	// The SKU (pricing tier) of the server.
+	// Compute tier and size of a server.
 	Sku *SkuResponse `pulumi:"sku"`
-	// The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica'. This property is returned only for Replica server
+	// Identifier of the server to be used as the source of the new server. Required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', 'Replica', or 'ReviveDropped'. This property is returned only when the target server is a read replica.
 	SourceServerResourceId *string `pulumi:"sourceServerResourceId"`
-	// A state of a server that is visible to user.
+	// Possible states of a server.
 	State string `pulumi:"state"`
 	// Storage properties of a server.
 	Storage *StorageResponse `pulumi:"storage"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv6.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
-	// PostgreSQL Server version.
+	// Major version of PostgreSQL database engine.
 	Version *string `pulumi:"version"`
 }
 
@@ -98,6 +107,8 @@ func (val *LookupServerResult) Defaults() *LookupServerResult {
 		tmp.AvailabilityZone = &availabilityZone_
 	}
 	tmp.Backup = tmp.Backup.Defaults()
+
+	tmp.Cluster = tmp.Cluster.Defaults()
 
 	tmp.HighAvailability = tmp.HighAvailability.Defaults()
 
@@ -125,7 +136,7 @@ func (LookupServerOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupServerArgs)(nil)).Elem()
 }
 
-// Represents a server.
+// Properties of a server.
 type LookupServerResultOutput struct{ *pulumi.OutputState }
 
 func (LookupServerResultOutput) ElementType() reflect.Type {
@@ -140,19 +151,24 @@ func (o LookupServerResultOutput) ToLookupServerResultOutputWithContext(ctx cont
 	return o
 }
 
-// The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
+// Name of the login designated as the first password based administrator assigned to your instance of PostgreSQL. Must be specified the first time that you enable password based authentication on a server. Once set to a given value, it cannot be changed for the rest of the life of a server. If you disable password based authentication on a server which had it enabled, this password based role isn't deleted.
 func (o LookupServerResultOutput) AdministratorLogin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *string { return v.AdministratorLogin }).(pulumi.StringPtrOutput)
 }
 
-// AuthConfig properties of a server.
+// Authentication configuration properties of a server.
 func (o LookupServerResultOutput) AuthConfig() AuthConfigResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *AuthConfigResponse { return v.AuthConfig }).(AuthConfigResponsePtrOutput)
 }
 
-// availability zone information of the server.
+// Availability zone of a server.
 func (o LookupServerResultOutput) AvailabilityZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupServerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Backup properties of a server.
@@ -160,12 +176,17 @@ func (o LookupServerResultOutput) Backup() BackupResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *BackupResponse { return v.Backup }).(BackupResponsePtrOutput)
 }
 
+// Cluster properties of a server.
+func (o LookupServerResultOutput) Cluster() ClusterResponsePtrOutput {
+	return o.ApplyT(func(v LookupServerResult) *ClusterResponse { return v.Cluster }).(ClusterResponsePtrOutput)
+}
+
 // Data encryption properties of a server.
 func (o LookupServerResultOutput) DataEncryption() DataEncryptionResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *DataEncryptionResponse { return v.DataEncryption }).(DataEncryptionResponsePtrOutput)
 }
 
-// The fully qualified domain name of a server.
+// Fully qualified domain name of a server.
 func (o LookupServerResultOutput) FullyQualifiedDomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerResult) string { return v.FullyQualifiedDomainName }).(pulumi.StringOutput)
 }
@@ -175,12 +196,12 @@ func (o LookupServerResultOutput) HighAvailability() HighAvailabilityResponsePtr
 	return o.ApplyT(func(v LookupServerResult) *HighAvailabilityResponse { return v.HighAvailability }).(HighAvailabilityResponsePtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupServerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Describes the identity of the application.
+// User assigned managed identities assigned to the server.
 func (o LookupServerResultOutput) Identity() UserAssignedIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *UserAssignedIdentityResponse { return v.Identity }).(UserAssignedIdentityResponsePtrOutput)
 }
@@ -195,7 +216,7 @@ func (o LookupServerResultOutput) MaintenanceWindow() MaintenanceWindowResponseP
 	return o.ApplyT(func(v LookupServerResult) *MaintenanceWindowResponse { return v.MaintenanceWindow }).(MaintenanceWindowResponsePtrOutput)
 }
 
-// The minor version of the server.
+// Minor version of PostgreSQL database engine.
 func (o LookupServerResultOutput) MinorVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerResult) string { return v.MinorVersion }).(pulumi.StringOutput)
 }
@@ -205,32 +226,44 @@ func (o LookupServerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Network properties of a server. This Network property is required to be passed only in case you want the server to be Private access server.
+// Network properties of a server. Only required if you want your server to be integrated into a virtual network provided by customer.
 func (o LookupServerResultOutput) Network() NetworkResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *NetworkResponse { return v.Network }).(NetworkResponsePtrOutput)
 }
 
-// Replicas allowed for a server.
+// List of private endpoint connections associated with the specified server.
+func (o LookupServerResultOutput) PrivateEndpointConnections() commontypesv6.PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v LookupServerResult) []commontypesv6.PrivateEndpointConnectionResponse {
+		return v.PrivateEndpointConnections
+	}).(commontypesv6.PrivateEndpointConnectionResponseArrayOutput)
+}
+
+// Read replica properties of a server. Required only in case that you want to promote a server.
+func (o LookupServerResultOutput) Replica() ReplicaResponsePtrOutput {
+	return o.ApplyT(func(v LookupServerResult) *ReplicaResponse { return v.Replica }).(ReplicaResponsePtrOutput)
+}
+
+// Maximum number of read replicas allowed for a server.
 func (o LookupServerResultOutput) ReplicaCapacity() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupServerResult) int { return v.ReplicaCapacity }).(pulumi.IntOutput)
 }
 
-// Replication role of the server
+// Role of the server in a replication set.
 func (o LookupServerResultOutput) ReplicationRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *string { return v.ReplicationRole }).(pulumi.StringPtrOutput)
 }
 
-// The SKU (pricing tier) of the server.
+// Compute tier and size of a server.
 func (o LookupServerResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
-// The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica'. This property is returned only for Replica server
+// Identifier of the server to be used as the source of the new server. Required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', 'Replica', or 'ReviveDropped'. This property is returned only when the target server is a read replica.
 func (o LookupServerResultOutput) SourceServerResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *string { return v.SourceServerResourceId }).(pulumi.StringPtrOutput)
 }
 
-// A state of a server that is visible to user.
+// Possible states of a server.
 func (o LookupServerResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerResult) string { return v.State }).(pulumi.StringOutput)
 }
@@ -241,8 +274,8 @@ func (o LookupServerResultOutput) Storage() StorageResponsePtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupServerResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupServerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupServerResultOutput) SystemData() commontypesv6.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupServerResult) commontypesv6.SystemDataResponse { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
 }
 
 // Resource tags.
@@ -255,7 +288,7 @@ func (o LookupServerResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// PostgreSQL Server version.
+// Major version of PostgreSQL database engine.
 func (o LookupServerResultOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *string { return v.Version }).(pulumi.StringPtrOutput)
 }

@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the properties of a Lab Plan.
 //
-// Uses Azure REST API version 2022-08-01.
+// Uses Azure REST API version 2023-06-07.
 //
-// Other available API versions: 2023-06-07.
+// Other available API versions: 2021-10-01-preview, 2021-11-15-preview, 2022-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native labservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupLabPlan(ctx *pulumi.Context, args *LookupLabPlanArgs, opts ...pulumi.InvokeOption) (*LookupLabPlanResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLabPlanResult
@@ -37,6 +38,8 @@ type LookupLabPlanArgs struct {
 type LookupLabPlanResult struct {
 	// The allowed regions for the lab creator to use when creating labs using this lab plan.
 	AllowedRegions []string `pulumi:"allowedRegions"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The default lab shutdown profile. This can be changed on a lab resource and only provides a default profile.
 	DefaultAutoShutdownProfile *AutoShutdownProfileResponse `pulumi:"defaultAutoShutdownProfile"`
 	// The default lab connection profile. This can be changed on a lab resource and only provides a default profile.
@@ -46,7 +49,7 @@ type LookupLabPlanResult struct {
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Managed Identity Information
-	Identity *IdentityResponse `pulumi:"identity"`
+	Identity *commontypesv2.IdentityResponse `pulumi:"identity"`
 	// Base Url of the lms instance this lab plan can link lab rosters against.
 	LinkedLmsInstance *string `pulumi:"linkedLmsInstance"`
 	// The geo-location where the resource lives
@@ -55,12 +58,14 @@ type LookupLabPlanResult struct {
 	Name string `pulumi:"name"`
 	// Current provisioning state of the lab plan.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Error details of last operation done on lab plan.
+	ResourceOperationError ResourceOperationErrorResponse `pulumi:"resourceOperationError"`
 	// Resource ID of the Shared Image Gallery attached to this lab plan. When saving a lab template virtual machine image it will be persisted in this gallery. Shared images from the gallery can be made available to use when creating new labs.
 	SharedGalleryId *string `pulumi:"sharedGalleryId"`
 	// Support contact information and instructions for users of the lab plan. This information is displayed to lab owners and virtual machine users for all labs in the lab plan.
 	SupportInfo *SupportInfoResponse `pulumi:"supportInfo"`
 	// Metadata pertaining to creation and last modification of the lab plan.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -119,6 +124,11 @@ func (o LookupLabPlanResultOutput) AllowedRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupLabPlanResult) []string { return v.AllowedRegions }).(pulumi.StringArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupLabPlanResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLabPlanResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The default lab shutdown profile. This can be changed on a lab resource and only provides a default profile.
 func (o LookupLabPlanResultOutput) DefaultAutoShutdownProfile() AutoShutdownProfileResponsePtrOutput {
 	return o.ApplyT(func(v LookupLabPlanResult) *AutoShutdownProfileResponse { return v.DefaultAutoShutdownProfile }).(AutoShutdownProfileResponsePtrOutput)
@@ -140,8 +150,8 @@ func (o LookupLabPlanResultOutput) Id() pulumi.StringOutput {
 }
 
 // Managed Identity Information
-func (o LookupLabPlanResultOutput) Identity() IdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupLabPlanResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
+func (o LookupLabPlanResultOutput) Identity() commontypesv2.IdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupLabPlanResult) *commontypesv2.IdentityResponse { return v.Identity }).(commontypesv2.IdentityResponsePtrOutput)
 }
 
 // Base Url of the lms instance this lab plan can link lab rosters against.
@@ -164,6 +174,11 @@ func (o LookupLabPlanResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLabPlanResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Error details of last operation done on lab plan.
+func (o LookupLabPlanResultOutput) ResourceOperationError() ResourceOperationErrorResponseOutput {
+	return o.ApplyT(func(v LookupLabPlanResult) ResourceOperationErrorResponse { return v.ResourceOperationError }).(ResourceOperationErrorResponseOutput)
+}
+
 // Resource ID of the Shared Image Gallery attached to this lab plan. When saving a lab template virtual machine image it will be persisted in this gallery. Shared images from the gallery can be made available to use when creating new labs.
 func (o LookupLabPlanResultOutput) SharedGalleryId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLabPlanResult) *string { return v.SharedGalleryId }).(pulumi.StringPtrOutput)
@@ -175,8 +190,8 @@ func (o LookupLabPlanResultOutput) SupportInfo() SupportInfoResponsePtrOutput {
 }
 
 // Metadata pertaining to creation and last modification of the lab plan.
-func (o LookupLabPlanResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupLabPlanResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupLabPlanResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupLabPlanResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Resource tags.

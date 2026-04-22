@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The operation to get the extension.
 //
-// Uses Azure REST API version 2022-07-15-preview.
+// Uses Azure REST API version 2023-03-01-preview.
 //
-// Other available API versions: 2022-01-10-preview, 2023-03-01-preview.
+// Other available API versions: 2022-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedvmwarevsphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupMachineExtension(ctx *pulumi.Context, args *LookupMachineExtensionArgs, opts ...pulumi.InvokeOption) (*LookupMachineExtensionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMachineExtensionResult
@@ -39,6 +40,8 @@ type LookupMachineExtensionArgs struct {
 type LookupMachineExtensionResult struct {
 	// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
 	AutoUpgradeMinorVersion *bool `pulumi:"autoUpgradeMinorVersion"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
 	EnableAutomaticUpgrade *bool `pulumi:"enableAutomaticUpgrade"`
 	// How the extension handler should be forced to update even if the extension configuration has not changed.
@@ -60,7 +63,7 @@ type LookupMachineExtensionResult struct {
 	// Json formatted public settings for the extension.
 	Settings interface{} `pulumi:"settings"`
 	// The system data.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// Gets or sets the Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Gets or sets the type of the resource.
@@ -109,6 +112,11 @@ func (o LookupMachineExtensionResultOutput) ToLookupMachineExtensionResultOutput
 // Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
 func (o LookupMachineExtensionResultOutput) AutoUpgradeMinorVersion() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupMachineExtensionResult) *bool { return v.AutoUpgradeMinorVersion }).(pulumi.BoolPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupMachineExtensionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMachineExtensionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
@@ -164,8 +172,8 @@ func (o LookupMachineExtensionResultOutput) Settings() pulumi.AnyOutput {
 }
 
 // The system data.
-func (o LookupMachineExtensionResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupMachineExtensionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupMachineExtensionResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupMachineExtensionResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Gets or sets the Resource tags.

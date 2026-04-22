@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +36,8 @@ type LookupContactArgs struct {
 
 // A Contact resource
 type LookupContactResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Full name of contact
 	ContactName string `pulumi:"contactName"`
 	// Email address of contact
@@ -52,7 +55,7 @@ type LookupContactResult struct {
 	// Job title of contact
 	Role string `pulumi:"role"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -96,6 +99,11 @@ func (o LookupContactResultOutput) ToLookupContactResultOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupContactResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupContactResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Full name of contact
 func (o LookupContactResultOutput) ContactName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContactResult) string { return v.ContactName }).(pulumi.StringOutput)
@@ -137,8 +145,8 @@ func (o LookupContactResultOutput) Role() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupContactResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupContactResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupContactResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupContactResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

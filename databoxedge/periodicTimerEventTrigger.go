@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Trigger details.
 //
-// Uses Azure REST API version 2022-03-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
+// Uses Azure REST API version 2023-07-01. In version 2.x of the Azure Native provider, it used API version 2022-03-01.
 type PeriodicTimerEventTrigger struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A custom context tag typically used to correlate the trigger against its usage. For example, if a periodic timer trigger is intended for certain specific IoT modules in the device, the tag can be the name or the image URL of the module.
 	CustomContextTag pulumi.StringPtrOutput `pulumi:"customContextTag"`
 	// Trigger Kind.
@@ -30,7 +33,7 @@ type PeriodicTimerEventTrigger struct {
 	// Periodic timer details.
 	SourceInfo PeriodicTimerSourceInfoResponseOutput `pulumi:"sourceInfo"`
 	// Metadata pertaining to creation and last modification of Trigger
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -102,13 +105,25 @@ func NewPeriodicTimerEventTrigger(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:databoxedge/v20221201preview:PeriodicTimerEventTrigger"),
 		},
 		{
+			Type: pulumi.String("azure-native:databoxedge/v20230101preview:FileEventTrigger"),
+		},
+		{
 			Type: pulumi.String("azure-native:databoxedge/v20230101preview:PeriodicTimerEventTrigger"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20230701:FileEventTrigger"),
 		},
 		{
 			Type: pulumi.String("azure-native:databoxedge/v20230701:PeriodicTimerEventTrigger"),
 		},
 		{
+			Type: pulumi.String("azure-native:databoxedge/v20231201:FileEventTrigger"),
+		},
+		{
 			Type: pulumi.String("azure-native:databoxedge/v20231201:PeriodicTimerEventTrigger"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge:FileEventTrigger"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -218,6 +233,11 @@ func (o PeriodicTimerEventTriggerOutput) ToPeriodicTimerEventTriggerOutputWithCo
 	return o
 }
 
+// The Azure API version of the resource.
+func (o PeriodicTimerEventTriggerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PeriodicTimerEventTrigger) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // A custom context tag typically used to correlate the trigger against its usage. For example, if a periodic timer trigger is intended for certain specific IoT modules in the device, the tag can be the name or the image URL of the module.
 func (o PeriodicTimerEventTriggerOutput) CustomContextTag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PeriodicTimerEventTrigger) pulumi.StringPtrOutput { return v.CustomContextTag }).(pulumi.StringPtrOutput)
@@ -245,8 +265,8 @@ func (o PeriodicTimerEventTriggerOutput) SourceInfo() PeriodicTimerSourceInfoRes
 }
 
 // Metadata pertaining to creation and last modification of Trigger
-func (o PeriodicTimerEventTriggerOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *PeriodicTimerEventTrigger) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o PeriodicTimerEventTriggerOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *PeriodicTimerEventTrigger) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.

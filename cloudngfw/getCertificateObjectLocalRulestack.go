@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a CertificateObjectLocalRulestackResource
 //
-// Uses Azure REST API version 2023-09-01.
+// Uses Azure REST API version 2025-05-23.
 //
-// Other available API versions: 2022-08-29, 2022-08-29-preview, 2023-09-01-preview, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview.
+// Other available API versions: 2023-09-01, 2023-10-10-preview, 2024-01-19-preview, 2024-02-07-preview, 2025-02-06-preview, 2025-07-07-preview, 2025-10-08, 2026-01-26-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cloudngfw [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupCertificateObjectLocalRulestack(ctx *pulumi.Context, args *LookupCertificateObjectLocalRulestackArgs, opts ...pulumi.InvokeOption) (*LookupCertificateObjectLocalRulestackResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCertificateObjectLocalRulestackResult
@@ -39,6 +40,8 @@ type LookupCertificateObjectLocalRulestackArgs struct {
 type LookupCertificateObjectLocalRulestackResult struct {
 	// comment for this object
 	AuditComment *string `pulumi:"auditComment"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// use certificate self signed
 	CertificateSelfSigned string `pulumi:"certificateSelfSigned"`
 	// Resource Id of certificate signer, to be populated only when certificateSelfSigned is false
@@ -54,7 +57,7 @@ type LookupCertificateObjectLocalRulestackResult struct {
 	// Provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -101,6 +104,11 @@ func (o LookupCertificateObjectLocalRulestackResultOutput) AuditComment() pulumi
 	return o.ApplyT(func(v LookupCertificateObjectLocalRulestackResult) *string { return v.AuditComment }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupCertificateObjectLocalRulestackResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCertificateObjectLocalRulestackResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // use certificate self signed
 func (o LookupCertificateObjectLocalRulestackResultOutput) CertificateSelfSigned() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateObjectLocalRulestackResult) string { return v.CertificateSelfSigned }).(pulumi.StringOutput)
@@ -137,8 +145,10 @@ func (o LookupCertificateObjectLocalRulestackResultOutput) ProvisioningState() p
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupCertificateObjectLocalRulestackResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupCertificateObjectLocalRulestackResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupCertificateObjectLocalRulestackResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupCertificateObjectLocalRulestackResult) commontypesv3.SystemDataResponse {
+		return v.SystemData
+	}).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

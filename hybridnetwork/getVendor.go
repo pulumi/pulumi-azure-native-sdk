@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,6 +32,8 @@ type LookupVendorArgs struct {
 
 // Vendor resource.
 type LookupVendorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -40,7 +43,7 @@ type LookupVendorResult struct {
 	// A list of IDs of the vendor skus offered by the vendor.
 	Skus []SubResourceResponse `pulumi:"skus"`
 	// The system meta data relating to this resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -78,6 +81,11 @@ func (o LookupVendorResultOutput) ToLookupVendorResultOutputWithContext(ctx cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupVendorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVendorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupVendorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVendorResult) string { return v.Id }).(pulumi.StringOutput)
@@ -99,8 +107,8 @@ func (o LookupVendorResultOutput) Skus() SubResourceResponseArrayOutput {
 }
 
 // The system meta data relating to this resource.
-func (o LookupVendorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupVendorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupVendorResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupVendorResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

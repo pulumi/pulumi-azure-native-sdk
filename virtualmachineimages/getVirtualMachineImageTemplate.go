@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get information about a virtual machine image template
 //
-// Uses Azure REST API version 2022-07-01.
+// Uses Azure REST API version 2024-02-01.
 //
-// Other available API versions: 2023-07-01, 2024-02-01.
+// Other available API versions: 2022-07-01, 2023-07-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native virtualmachineimages [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupVirtualMachineImageTemplate(ctx *pulumi.Context, args *LookupVirtualMachineImageTemplateArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineImageTemplateResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualMachineImageTemplateResult
@@ -35,12 +36,18 @@ type LookupVirtualMachineImageTemplateArgs struct {
 
 // Image template is an ARM resource managed by Microsoft.VirtualMachineImages provider
 type LookupVirtualMachineImageTemplateResult struct {
+	// Indicates whether or not to automatically run the image template build on template creation or update.
+	AutoRun *ImageTemplateAutoRunResponse `pulumi:"autoRun"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Maximum duration to wait while building the image template (includes all customizations, optimization, validations, and distributions). Omit or specify 0 to use the default (4 hours).
 	BuildTimeoutInMinutes *int `pulumi:"buildTimeoutInMinutes"`
 	// Specifies the properties used to describe the customization steps of the image, like Image source etc
 	Customize []interface{} `pulumi:"customize"`
 	// The distribution targets where the image output needs to go to.
 	Distribute []interface{} `pulumi:"distribute"`
+	// Error handling options upon a build failure
+	ErrorHandling *ImageTemplatePropertiesResponseErrorHandling `pulumi:"errorHandling"`
 	// The staging resource group id in the same subscription as the image template that will be used to build the image. This read-only field differs from 'stagingResourceGroup' only if the value specified in the 'stagingResourceGroup' field is empty.
 	ExactStagingResourceGroup string `pulumi:"exactStagingResourceGroup"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -51,6 +58,8 @@ type LookupVirtualMachineImageTemplateResult struct {
 	LastRunStatus ImageTemplateLastRunStatusResponse `pulumi:"lastRunStatus"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
+	// Tags that will be applied to the resource group and/or resources created by the service.
+	ManagedResourceTags map[string]string `pulumi:"managedResourceTags"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Specifies optimization to be performed on image.
@@ -64,7 +73,7 @@ type LookupVirtualMachineImageTemplateResult struct {
 	// The staging resource group id in the same subscription as the image template that will be used to build the image. If this field is empty, a resource group with a random name will be created. If the resource group specified in this field doesn't exist, it will be created with the same name. If the resource group specified exists, it must be empty and in the same region as the image template. The resource group created will be deleted during template deletion if this field is empty or the resource group specified doesn't exist, but if the resource group specified exists the resources created in the resource group will be deleted during template deletion and the resource group itself will remain.
 	StagingResourceGroup *string `pulumi:"stagingResourceGroup"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -85,6 +94,8 @@ func (val *LookupVirtualMachineImageTemplateResult) Defaults() *LookupVirtualMac
 		buildTimeoutInMinutes_ := 0
 		tmp.BuildTimeoutInMinutes = &buildTimeoutInMinutes_
 	}
+	tmp.ErrorHandling = tmp.ErrorHandling.Defaults()
+
 	tmp.Validate = tmp.Validate.Defaults()
 
 	tmp.VmProfile = tmp.VmProfile.Defaults()
@@ -126,6 +137,16 @@ func (o LookupVirtualMachineImageTemplateResultOutput) ToLookupVirtualMachineIma
 	return o
 }
 
+// Indicates whether or not to automatically run the image template build on template creation or update.
+func (o LookupVirtualMachineImageTemplateResultOutput) AutoRun() ImageTemplateAutoRunResponsePtrOutput {
+	return o.ApplyT(func(v LookupVirtualMachineImageTemplateResult) *ImageTemplateAutoRunResponse { return v.AutoRun }).(ImageTemplateAutoRunResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupVirtualMachineImageTemplateResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualMachineImageTemplateResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Maximum duration to wait while building the image template (includes all customizations, optimization, validations, and distributions). Omit or specify 0 to use the default (4 hours).
 func (o LookupVirtualMachineImageTemplateResultOutput) BuildTimeoutInMinutes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineImageTemplateResult) *int { return v.BuildTimeoutInMinutes }).(pulumi.IntPtrOutput)
@@ -139,6 +160,13 @@ func (o LookupVirtualMachineImageTemplateResultOutput) Customize() pulumi.ArrayO
 // The distribution targets where the image output needs to go to.
 func (o LookupVirtualMachineImageTemplateResultOutput) Distribute() pulumi.ArrayOutput {
 	return o.ApplyT(func(v LookupVirtualMachineImageTemplateResult) []interface{} { return v.Distribute }).(pulumi.ArrayOutput)
+}
+
+// Error handling options upon a build failure
+func (o LookupVirtualMachineImageTemplateResultOutput) ErrorHandling() ImageTemplatePropertiesResponseErrorHandlingPtrOutput {
+	return o.ApplyT(func(v LookupVirtualMachineImageTemplateResult) *ImageTemplatePropertiesResponseErrorHandling {
+		return v.ErrorHandling
+	}).(ImageTemplatePropertiesResponseErrorHandlingPtrOutput)
 }
 
 // The staging resource group id in the same subscription as the image template that will be used to build the image. This read-only field differs from 'stagingResourceGroup' only if the value specified in the 'stagingResourceGroup' field is empty.
@@ -166,6 +194,11 @@ func (o LookupVirtualMachineImageTemplateResultOutput) LastRunStatus() ImageTemp
 // The geo-location where the resource lives
 func (o LookupVirtualMachineImageTemplateResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineImageTemplateResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Tags that will be applied to the resource group and/or resources created by the service.
+func (o LookupVirtualMachineImageTemplateResultOutput) ManagedResourceTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupVirtualMachineImageTemplateResult) map[string]string { return v.ManagedResourceTags }).(pulumi.StringMapOutput)
 }
 
 // The name of the resource
@@ -201,8 +234,8 @@ func (o LookupVirtualMachineImageTemplateResultOutput) StagingResourceGroup() pu
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupVirtualMachineImageTemplateResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupVirtualMachineImageTemplateResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupVirtualMachineImageTemplateResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupVirtualMachineImageTemplateResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

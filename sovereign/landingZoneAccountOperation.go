@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Landing zone account resource type. A Landing zone account is the container for configuring, deploying and managing multiple landing zones.
 //
-// Uses Azure REST API version 2025-02-27-preview.
+// Uses Azure REST API version 2025-02-27-preview. In version 2.x of the Azure Native provider, it used API version 2025-02-27-preview.
 type LandingZoneAccountOperation struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The managed service identities assigned to this resource.
-	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity commontypesv5.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -27,7 +30,7 @@ type LandingZoneAccountOperation struct {
 	// The resource-specific properties for this resource.
 	Properties LandingZoneAccountResourcePropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -84,7 +87,7 @@ func (LandingZoneAccountOperationState) ElementType() reflect.Type {
 
 type landingZoneAccountOperationArgs struct {
 	// The managed service identities assigned to this resource.
-	Identity *ManagedServiceIdentity `pulumi:"identity"`
+	Identity *commontypesv5.ManagedServiceIdentity `pulumi:"identity"`
 	// The landing zone account.
 	LandingZoneAccountName *string `pulumi:"landingZoneAccountName"`
 	// The geo-location where the resource lives
@@ -100,7 +103,7 @@ type landingZoneAccountOperationArgs struct {
 // The set of arguments for constructing a LandingZoneAccountOperation resource.
 type LandingZoneAccountOperationArgs struct {
 	// The managed service identities assigned to this resource.
-	Identity ManagedServiceIdentityPtrInput
+	Identity commontypesv5.ManagedServiceIdentityPtrInput
 	// The landing zone account.
 	LandingZoneAccountName pulumi.StringPtrInput
 	// The geo-location where the resource lives
@@ -150,9 +153,16 @@ func (o LandingZoneAccountOperationOutput) ToLandingZoneAccountOperationOutputWi
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LandingZoneAccountOperationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *LandingZoneAccountOperation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The managed service identities assigned to this resource.
-func (o LandingZoneAccountOperationOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *LandingZoneAccountOperation) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o LandingZoneAccountOperationOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *LandingZoneAccountOperation) commontypesv5.ManagedServiceIdentityResponsePtrOutput {
+		return v.Identity
+	}).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -173,8 +183,8 @@ func (o LandingZoneAccountOperationOutput) Properties() LandingZoneAccountResour
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LandingZoneAccountOperationOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *LandingZoneAccountOperation) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o LandingZoneAccountOperationOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *LandingZoneAccountOperation) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a license in a hybrid machine.
 //
-// Uses Azure REST API version 2023-06-20-preview.
+// Uses Azure REST API version 2024-07-10. In version 2.x of the Azure Native provider, it used API version 2023-06-20-preview.
 //
-// Other available API versions: 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-07-10, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview, 2025-01-13.
+// Other available API versions: 2023-06-20-preview, 2023-10-03-preview, 2024-03-31-preview, 2024-05-20-preview, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview, 2025-01-13, 2025-02-19-preview, 2025-06-01, 2025-08-21-preview, 2025-09-16-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridcompute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type License struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Describes the properties of a License.
 	LicenseDetails LicenseDetailsResponsePtrOutput `pulumi:"licenseDetails"`
 	// The type of the license resource.
@@ -31,7 +34,7 @@ type License struct {
 	// The provisioning state, which only appears in the response.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Describes the tenant id.
@@ -77,6 +80,18 @@ func NewLicense(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20250113:License"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20250219preview:License"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20250601:License"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20250821preview:License"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20250916preview:License"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -184,6 +199,11 @@ func (o LicenseOutput) ToLicenseOutputWithContext(ctx context.Context) LicenseOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LicenseOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *License) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Describes the properties of a License.
 func (o LicenseOutput) LicenseDetails() LicenseDetailsResponsePtrOutput {
 	return o.ApplyT(func(v *License) LicenseDetailsResponsePtrOutput { return v.LicenseDetails }).(LicenseDetailsResponsePtrOutput)
@@ -210,8 +230,8 @@ func (o LicenseOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LicenseOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *License) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o LicenseOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *License) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

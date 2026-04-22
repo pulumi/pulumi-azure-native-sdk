@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets additional information for the specified Azure Stack Edge/Data Box Gateway device.
 //
-// Uses Azure REST API version 2022-03-01.
+// Uses Azure REST API version 2023-07-01.
 //
-// Other available API versions: 2021-02-01, 2021-02-01-preview, 2022-04-01-preview, 2023-01-01-preview, 2023-07-01, 2023-12-01.
+// Other available API versions: 2022-03-01, 2022-04-01-preview, 2022-12-01-preview, 2023-01-01-preview, 2023-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databoxedge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func GetDeviceExtendedInformation(ctx *pulumi.Context, args *GetDeviceExtendedInformationArgs, opts ...pulumi.InvokeOption) (*GetDeviceExtendedInformationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetDeviceExtendedInformationResult
@@ -70,7 +71,7 @@ type GetDeviceExtendedInformationResult struct {
 	// The Resource ID of the Resource.
 	ResourceKey string `pulumi:"resourceKey"`
 	// Metadata pertaining to creation and last modification of DataBoxEdgeDevice
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type string `pulumi:"type"`
 }
@@ -196,8 +197,8 @@ func (o GetDeviceExtendedInformationResultOutput) ResourceKey() pulumi.StringOut
 }
 
 // Metadata pertaining to creation and last modification of DataBoxEdgeDevice
-func (o GetDeviceExtendedInformationResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v GetDeviceExtendedInformationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetDeviceExtendedInformationResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v GetDeviceExtendedInformationResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.

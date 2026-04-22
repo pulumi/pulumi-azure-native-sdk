@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv1"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an existing remediation at subscription scope.
 //
-// Uses Azure REST API version 2021-10-01.
+// Uses Azure REST API version 2024-10-01.
 //
-// Other available API versions: 2024-10-01.
+// Other available API versions: 2021-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native policyinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupRemediationAtSubscription(ctx *pulumi.Context, args *LookupRemediationAtSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupRemediationAtSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRemediationAtSubscriptionResult
@@ -33,6 +34,8 @@ type LookupRemediationAtSubscriptionArgs struct {
 
 // The remediation definition.
 type LookupRemediationAtSubscriptionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The remediation correlation Id. Can be used to find events related to the remediation in the activity log.
 	CorrelationId string `pulumi:"correlationId"`
 	// The time at which the remediation was created.
@@ -64,7 +67,7 @@ type LookupRemediationAtSubscriptionResult struct {
 	// The remediation status message. Provides additional details regarding the state of the remediation.
 	StatusMessage string `pulumi:"statusMessage"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv1.SystemDataResponse `pulumi:"systemData"`
 	// The type of the remediation.
 	Type string `pulumi:"type"`
 }
@@ -100,6 +103,11 @@ func (o LookupRemediationAtSubscriptionResultOutput) ToLookupRemediationAtSubscr
 
 func (o LookupRemediationAtSubscriptionResultOutput) ToLookupRemediationAtSubscriptionResultOutputWithContext(ctx context.Context) LookupRemediationAtSubscriptionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupRemediationAtSubscriptionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRemediationAtSubscriptionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The remediation correlation Id. Can be used to find events related to the remediation in the activity log.
@@ -182,8 +190,8 @@ func (o LookupRemediationAtSubscriptionResultOutput) StatusMessage() pulumi.Stri
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupRemediationAtSubscriptionResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupRemediationAtSubscriptionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupRemediationAtSubscriptionResultOutput) SystemData() commontypesv1.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupRemediationAtSubscriptionResult) commontypesv1.SystemDataResponse { return v.SystemData }).(commontypesv1.SystemDataResponseOutput)
 }
 
 // The type of the remediation.

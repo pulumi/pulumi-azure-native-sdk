@@ -8,29 +8,34 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The details of subscription under management group.
 //
-// Uses Azure REST API version 2021-04-01. In version 1.x of the Azure Native provider, it used API version 2020-05-01.
+// Uses Azure REST API version 2023-04-01. In version 2.x of the Azure Native provider, it used API version 2021-04-01.
 //
-// Other available API versions: 2023-04-01.
+// Other available API versions: 2021-04-01, 2024-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native management [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ManagementGroupSubscription struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The friendly name of the subscription.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// The stringified id of the subscription. For example, 00000000-0000-0000-0000-000000000000
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the parent management group.
 	Parent DescendantParentGroupInfoResponsePtrOutput `pulumi:"parent"`
 	// The state of the subscription.
 	State pulumi.StringPtrOutput `pulumi:"state"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// The AAD Tenant ID associated with the subscription. For example, 00000000-0000-0000-0000-000000000000
 	Tenant pulumi.StringPtrOutput `pulumi:"tenant"`
-	// The type of the resource.  For example, Microsoft.Management/managementGroups/subscriptions
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -56,6 +61,9 @@ func NewManagementGroupSubscription(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:management/v20230401:ManagementGroupSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:management/v20240201preview:ManagementGroupSubscription"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -94,16 +102,12 @@ func (ManagementGroupSubscriptionState) ElementType() reflect.Type {
 type managementGroupSubscriptionArgs struct {
 	// Management Group ID.
 	GroupId string `pulumi:"groupId"`
-	// Subscription ID.
-	SubscriptionId *string `pulumi:"subscriptionId"`
 }
 
 // The set of arguments for constructing a ManagementGroupSubscription resource.
 type ManagementGroupSubscriptionArgs struct {
 	// Management Group ID.
 	GroupId pulumi.StringInput
-	// Subscription ID.
-	SubscriptionId pulumi.StringPtrInput
 }
 
 func (ManagementGroupSubscriptionArgs) ElementType() reflect.Type {
@@ -143,12 +147,17 @@ func (o ManagementGroupSubscriptionOutput) ToManagementGroupSubscriptionOutputWi
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ManagementGroupSubscriptionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagementGroupSubscription) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The friendly name of the subscription.
 func (o ManagementGroupSubscriptionOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagementGroupSubscription) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// The stringified id of the subscription. For example, 00000000-0000-0000-0000-000000000000
+// The name of the resource
 func (o ManagementGroupSubscriptionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagementGroupSubscription) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -163,12 +172,17 @@ func (o ManagementGroupSubscriptionOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagementGroupSubscription) pulumi.StringPtrOutput { return v.State }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o ManagementGroupSubscriptionOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *ManagementGroupSubscription) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+}
+
 // The AAD Tenant ID associated with the subscription. For example, 00000000-0000-0000-0000-000000000000
 func (o ManagementGroupSubscriptionOutput) Tenant() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagementGroupSubscription) pulumi.StringPtrOutput { return v.Tenant }).(pulumi.StringPtrOutput)
 }
 
-// The type of the resource.  For example, Microsoft.Management/managementGroups/subscriptions
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ManagementGroupSubscriptionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagementGroupSubscription) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

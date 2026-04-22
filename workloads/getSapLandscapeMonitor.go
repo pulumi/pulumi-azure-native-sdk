@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets configuration values for Single Pane Of Glass for SAP monitor for the specified subscription, resource group, and resource name.
 //
-// Uses Azure REST API version 2023-04-01.
+// Uses Azure REST API version 2024-02-01-preview.
 //
-// Other available API versions: 2023-10-01-preview, 2023-12-01-preview, 2024-02-01-preview.
+// Other available API versions: 2023-04-01, 2023-10-01-preview, 2023-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native workloads [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSapLandscapeMonitor(ctx *pulumi.Context, args *LookupSapLandscapeMonitorArgs, opts ...pulumi.InvokeOption) (*LookupSapLandscapeMonitorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSapLandscapeMonitorResult
@@ -35,16 +36,18 @@ type LookupSapLandscapeMonitorArgs struct {
 
 // configuration associated with SAP Landscape Monitor Dashboard.
 type LookupSapLandscapeMonitorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the SID groupings by landscape and Environment.
-	Grouping *SapLandscapeMonitorPropertiesResponseGrouping `pulumi:"grouping"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Grouping *SapLandscapeMonitorPropertiesGroupingResponse `pulumi:"grouping"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// State of provisioning of the SAP monitor.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard
 	TopMetricsThresholds []SapLandscapeMonitorMetricThresholdsResponse `pulumi:"topMetricsThresholds"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -86,14 +89,19 @@ func (o LookupSapLandscapeMonitorResultOutput) ToLookupSapLandscapeMonitorResult
 	return o
 }
 
-// Gets or sets the SID groupings by landscape and Environment.
-func (o LookupSapLandscapeMonitorResultOutput) Grouping() SapLandscapeMonitorPropertiesResponseGroupingPtrOutput {
-	return o.ApplyT(func(v LookupSapLandscapeMonitorResult) *SapLandscapeMonitorPropertiesResponseGrouping {
-		return v.Grouping
-	}).(SapLandscapeMonitorPropertiesResponseGroupingPtrOutput)
+// The Azure API version of the resource.
+func (o LookupSapLandscapeMonitorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSapLandscapeMonitorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Gets or sets the SID groupings by landscape and Environment.
+func (o LookupSapLandscapeMonitorResultOutput) Grouping() SapLandscapeMonitorPropertiesGroupingResponsePtrOutput {
+	return o.ApplyT(func(v LookupSapLandscapeMonitorResult) *SapLandscapeMonitorPropertiesGroupingResponse {
+		return v.Grouping
+	}).(SapLandscapeMonitorPropertiesGroupingResponsePtrOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupSapLandscapeMonitorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSapLandscapeMonitorResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -109,8 +117,8 @@ func (o LookupSapLandscapeMonitorResultOutput) ProvisioningState() pulumi.String
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupSapLandscapeMonitorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSapLandscapeMonitorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupSapLandscapeMonitorResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSapLandscapeMonitorResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard

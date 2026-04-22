@@ -7,24 +7,27 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The tenant configuration resource definition.
 //
-// Uses Azure REST API version 2020-09-01-preview. In version 1.x of the Azure Native provider, it used API version 2020-09-01-preview.
+// Uses Azure REST API version 2022-12-01-preview. In version 2.x of the Azure Native provider, it used API version 2020-09-01-preview.
 //
-// Other available API versions: 2022-12-01-preview, 2025-04-01-preview.
+// Other available API versions: 2019-01-01-preview, 2020-09-01-preview, 2025-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native portal [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type TenantConfiguration struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource-specific properties for this resource.
 	Properties ConfigurationPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -135,6 +138,11 @@ func (o TenantConfigurationOutput) ToTenantConfigurationOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o TenantConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *TenantConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o TenantConfigurationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TenantConfiguration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -146,8 +154,8 @@ func (o TenantConfigurationOutput) Properties() ConfigurationPropertiesResponseO
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o TenantConfigurationOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *TenantConfiguration) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o TenantConfigurationOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *TenantConfiguration) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

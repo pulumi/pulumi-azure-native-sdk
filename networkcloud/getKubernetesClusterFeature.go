@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get properties of the provided the Kubernetes cluster feature.
 //
-// Uses Azure REST API version 2024-06-01-preview.
+// Uses Azure REST API version 2025-02-01.
 //
-// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-02-01.
+// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupKubernetesClusterFeature(ctx *pulumi.Context, args *LookupKubernetesClusterFeatureArgs, opts ...pulumi.InvokeOption) (*LookupKubernetesClusterFeatureResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKubernetesClusterFeatureResult
@@ -38,10 +39,14 @@ type LookupKubernetesClusterFeatureArgs struct {
 type LookupKubernetesClusterFeatureResult struct {
 	// The lifecycle indicator of the feature.
 	AvailabilityLifecycle string `pulumi:"availabilityLifecycle"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The detailed status of the feature.
 	DetailedStatus string `pulumi:"detailedStatus"`
 	// The descriptive message for the detailed status of the feature.
 	DetailedStatusMessage string `pulumi:"detailedStatusMessage"`
+	// Resource ETag.
+	Etag string `pulumi:"etag"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -55,7 +60,7 @@ type LookupKubernetesClusterFeatureResult struct {
 	// The indicator of if the feature is required or optional. Optional features may be deleted by the user, while required features are managed with the kubernetes cluster lifecycle.
 	Required string `pulumi:"required"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -105,6 +110,11 @@ func (o LookupKubernetesClusterFeatureResultOutput) AvailabilityLifecycle() pulu
 	return o.ApplyT(func(v LookupKubernetesClusterFeatureResult) string { return v.AvailabilityLifecycle }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupKubernetesClusterFeatureResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterFeatureResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The detailed status of the feature.
 func (o LookupKubernetesClusterFeatureResultOutput) DetailedStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubernetesClusterFeatureResult) string { return v.DetailedStatus }).(pulumi.StringOutput)
@@ -113,6 +123,11 @@ func (o LookupKubernetesClusterFeatureResultOutput) DetailedStatus() pulumi.Stri
 // The descriptive message for the detailed status of the feature.
 func (o LookupKubernetesClusterFeatureResultOutput) DetailedStatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubernetesClusterFeatureResult) string { return v.DetailedStatusMessage }).(pulumi.StringOutput)
+}
+
+// Resource ETag.
+func (o LookupKubernetesClusterFeatureResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterFeatureResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -146,8 +161,8 @@ func (o LookupKubernetesClusterFeatureResultOutput) Required() pulumi.StringOutp
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupKubernetesClusterFeatureResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupKubernetesClusterFeatureResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupKubernetesClusterFeatureResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterFeatureResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

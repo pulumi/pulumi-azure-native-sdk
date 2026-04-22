@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve the Package identified by Package name.
 //
-// Uses Azure REST API version 2023-05-15-preview.
+// Uses Azure REST API version 2024-10-23.
 //
-// Other available API versions: 2024-10-23.
+// Other available API versions: 2023-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupPackage(ctx *pulumi.Context, args *LookupPackageArgs, opts ...pulumi.InvokeOption) (*LookupPackageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPackageResult
@@ -40,7 +41,9 @@ type LookupPackageArgs struct {
 // Definition of the Package type.
 type LookupPackageResult struct {
 	// Metadata pertaining to creation and last modification of the resource.
-	AllOf SystemDataResponse `pulumi:"allOf"`
+	AllOf commontypesv5.SystemDataResponse `pulumi:"allOf"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the contentLink of the Package.
 	ContentLink *ContentLinkResponse `pulumi:"contentLink"`
 	// Gets or sets the isGlobal flag of the package.
@@ -58,7 +61,7 @@ type LookupPackageResult struct {
 	// Gets or sets the size in bytes of the Package.
 	SizeInBytes *float64 `pulumi:"sizeInBytes"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -107,8 +110,13 @@ func (o LookupPackageResultOutput) ToLookupPackageResultOutputWithContext(ctx co
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupPackageResultOutput) AllOf() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupPackageResult) SystemDataResponse { return v.AllOf }).(SystemDataResponseOutput)
+func (o LookupPackageResultOutput) AllOf() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPackageResult) commontypesv5.SystemDataResponse { return v.AllOf }).(commontypesv5.SystemDataResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupPackageResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPackageResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the contentLink of the Package.
@@ -152,8 +160,8 @@ func (o LookupPackageResultOutput) SizeInBytes() pulumi.Float64PtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupPackageResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupPackageResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupPackageResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPackageResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

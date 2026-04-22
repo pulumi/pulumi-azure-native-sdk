@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Data Box Edge/Gateway device.
 //
-// Uses Azure REST API version 2022-03-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
+// Uses Azure REST API version 2023-07-01. In version 2.x of the Azure Native provider, it used API version 2022-03-01.
 //
-// Other available API versions: 2021-02-01, 2021-02-01-preview, 2022-04-01-preview, 2023-01-01-preview, 2023-07-01, 2023-12-01.
+// Other available API versions: 2022-03-01, 2022-04-01-preview, 2022-12-01-preview, 2023-01-01-preview, 2023-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databoxedge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Device struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Type of compute roles configured.
 	ConfiguredRoleTypes pulumi.StringArrayOutput `pulumi:"configuredRoleTypes"`
 	// The Data Box Edge/Gateway device culture.
@@ -50,6 +53,8 @@ type Device struct {
 	Identity ResourceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The kind of the device.
 	Kind pulumi.StringOutput `pulumi:"kind"`
+	// Kubernetes Workload Profile
+	KubernetesWorkloadProfile pulumi.StringOutput `pulumi:"kubernetesWorkloadProfile"`
 	// The location of the device. This is a supported and registered Azure geographical region (for example, West US, East US, or Southeast Asia). The geographical region of a device cannot be changed once it is created, but if an identical geographical region is specified on update, the request will succeed.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The description of the Data Box Edge/Gateway device model.
@@ -65,7 +70,7 @@ type Device struct {
 	// The SKU type.
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// DataBoxEdge Resource
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// The list of tags that describe the device. These tags can be used to view and group this device (across resource groups).
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The Data Box Edge/Gateway device timezone.
@@ -242,6 +247,11 @@ func (o DeviceOutput) ToDeviceOutputWithContext(ctx context.Context) DeviceOutpu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o DeviceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Type of compute roles configured.
 func (o DeviceOutput) ConfiguredRoleTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringArrayOutput { return v.ConfiguredRoleTypes }).(pulumi.StringArrayOutput)
@@ -317,6 +327,11 @@ func (o DeviceOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
+// Kubernetes Workload Profile
+func (o DeviceOutput) KubernetesWorkloadProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.KubernetesWorkloadProfile }).(pulumi.StringOutput)
+}
+
 // The location of the device. This is a supported and registered Azure geographical region (for example, West US, East US, or Southeast Asia). The geographical region of a device cannot be changed once it is created, but if an identical geographical region is specified on update, the request will succeed.
 func (o DeviceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -353,8 +368,8 @@ func (o DeviceOutput) Sku() SkuResponsePtrOutput {
 }
 
 // DataBoxEdge Resource
-func (o DeviceOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Device) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o DeviceOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Device) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The list of tags that describe the device. These tags can be used to view and group this device (across resource groups).

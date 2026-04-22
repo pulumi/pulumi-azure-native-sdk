@@ -8,45 +8,48 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a Configuration.
+// Configuration (also known as server parameter).
 //
-// Uses Azure REST API version 2022-12-01. In version 1.x of the Azure Native provider, it used API version 2017-12-01.
+// Uses Azure REST API version 2025-08-01. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
 //
-// Other available API versions: 2017-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview.
+// Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Configuration struct {
 	pulumi.CustomResourceState
 
-	// Allowed values of the configuration.
+	// Allowed values of the configuration (also known as server parameter).
 	AllowedValues pulumi.StringOutput `pulumi:"allowedValues"`
-	// Data type of the configuration.
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Data type of the configuration (also known as server parameter).
 	DataType pulumi.StringOutput `pulumi:"dataType"`
-	// Default value of the configuration.
+	// Value assigned by default to the configuration (also known as server parameter).
 	DefaultValue pulumi.StringOutput `pulumi:"defaultValue"`
-	// Description of the configuration.
+	// Description of the configuration (also known as server parameter).
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Configuration documentation link.
+	// Link pointing to the documentation of the configuration (also known as server parameter).
 	DocumentationLink pulumi.StringOutput `pulumi:"documentationLink"`
-	// Configuration is pending restart or not.
+	// Indicates if the value assigned to the configuration (also known as server parameter) is pending a server restart for it to take effect.
 	IsConfigPendingRestart pulumi.BoolOutput `pulumi:"isConfigPendingRestart"`
-	// Configuration dynamic or static.
+	// Indicates if it's a dynamic (true) or static (false) configuration (also known as server parameter). Static server parameters require a server restart after changing the value assigned to them, for the change to take effect. Dynamic server parameters do not require a server restart after changing the value assigned to them, for the change to take effect.
 	IsDynamicConfig pulumi.BoolOutput `pulumi:"isDynamicConfig"`
-	// Configuration read-only or not.
+	// Indicates if it's a read-only (true) or modifiable (false) configuration (also known as server parameter).
 	IsReadOnly pulumi.BoolOutput `pulumi:"isReadOnly"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Source of the configuration. Required to update the configuration.
+	// Source of the value assigned to the configuration (also known as server parameter). Required to update the value assigned to a specific modifiable configuration.
 	Source pulumi.StringPtrOutput `pulumi:"source"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv6.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
-	// Configuration unit.
+	// Units in which the configuration (also known as server parameter) value is expressed.
 	Unit pulumi.StringOutput `pulumi:"unit"`
-	// Value of the configuration. Required to update the configuration.
+	// Value of the configuration (also known as server parameter). Required to update the value assigned to a specific modifiable configuration.
 	Value pulumi.StringPtrOutput `pulumi:"value"`
 }
 
@@ -64,6 +67,9 @@ func NewConfiguration(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ServerName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20171201:Configuration"),
+		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20210601:Configuration"),
 		},
@@ -100,6 +106,18 @@ func NewConfiguration(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20241101preview:Configuration"),
 		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20250101preview:Configuration"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20250601preview:Configuration"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20250801:Configuration"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20260101preview:Configuration"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -135,29 +153,29 @@ func (ConfigurationState) ElementType() reflect.Type {
 }
 
 type configurationArgs struct {
-	// The name of the server configuration.
+	// Name of the configuration (also known as server parameter).
 	ConfigurationName *string `pulumi:"configurationName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the server.
 	ServerName string `pulumi:"serverName"`
-	// Source of the configuration. Required to update the configuration.
+	// Source of the value assigned to the configuration (also known as server parameter). Required to update the value assigned to a specific modifiable configuration.
 	Source *string `pulumi:"source"`
-	// Value of the configuration. Required to update the configuration.
+	// Value of the configuration (also known as server parameter). Required to update the value assigned to a specific modifiable configuration.
 	Value *string `pulumi:"value"`
 }
 
 // The set of arguments for constructing a Configuration resource.
 type ConfigurationArgs struct {
-	// The name of the server configuration.
+	// Name of the configuration (also known as server parameter).
 	ConfigurationName pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the server.
 	ServerName pulumi.StringInput
-	// Source of the configuration. Required to update the configuration.
+	// Source of the value assigned to the configuration (also known as server parameter). Required to update the value assigned to a specific modifiable configuration.
 	Source pulumi.StringPtrInput
-	// Value of the configuration. Required to update the configuration.
+	// Value of the configuration (also known as server parameter). Required to update the value assigned to a specific modifiable configuration.
 	Value pulumi.StringPtrInput
 }
 
@@ -198,42 +216,47 @@ func (o ConfigurationOutput) ToConfigurationOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Allowed values of the configuration.
+// Allowed values of the configuration (also known as server parameter).
 func (o ConfigurationOutput) AllowedValues() pulumi.StringOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.AllowedValues }).(pulumi.StringOutput)
 }
 
-// Data type of the configuration.
+// The Azure API version of the resource.
+func (o ConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Data type of the configuration (also known as server parameter).
 func (o ConfigurationOutput) DataType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.DataType }).(pulumi.StringOutput)
 }
 
-// Default value of the configuration.
+// Value assigned by default to the configuration (also known as server parameter).
 func (o ConfigurationOutput) DefaultValue() pulumi.StringOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.DefaultValue }).(pulumi.StringOutput)
 }
 
-// Description of the configuration.
+// Description of the configuration (also known as server parameter).
 func (o ConfigurationOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Configuration documentation link.
+// Link pointing to the documentation of the configuration (also known as server parameter).
 func (o ConfigurationOutput) DocumentationLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.DocumentationLink }).(pulumi.StringOutput)
 }
 
-// Configuration is pending restart or not.
+// Indicates if the value assigned to the configuration (also known as server parameter) is pending a server restart for it to take effect.
 func (o ConfigurationOutput) IsConfigPendingRestart() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.BoolOutput { return v.IsConfigPendingRestart }).(pulumi.BoolOutput)
 }
 
-// Configuration dynamic or static.
+// Indicates if it's a dynamic (true) or static (false) configuration (also known as server parameter). Static server parameters require a server restart after changing the value assigned to them, for the change to take effect. Dynamic server parameters do not require a server restart after changing the value assigned to them, for the change to take effect.
 func (o ConfigurationOutput) IsDynamicConfig() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.BoolOutput { return v.IsDynamicConfig }).(pulumi.BoolOutput)
 }
 
-// Configuration read-only or not.
+// Indicates if it's a read-only (true) or modifiable (false) configuration (also known as server parameter).
 func (o ConfigurationOutput) IsReadOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.BoolOutput { return v.IsReadOnly }).(pulumi.BoolOutput)
 }
@@ -243,14 +266,14 @@ func (o ConfigurationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Source of the configuration. Required to update the configuration.
+// Source of the value assigned to the configuration (also known as server parameter). Required to update the value assigned to a specific modifiable configuration.
 func (o ConfigurationOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.StringPtrOutput { return v.Source }).(pulumi.StringPtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ConfigurationOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Configuration) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o ConfigurationOutput) SystemData() commontypesv6.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Configuration) commontypesv6.SystemDataResponseOutput { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -258,12 +281,12 @@ func (o ConfigurationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// Configuration unit.
+// Units in which the configuration (also known as server parameter) value is expressed.
 func (o ConfigurationOutput) Unit() pulumi.StringOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.StringOutput { return v.Unit }).(pulumi.StringOutput)
 }
 
-// Value of the configuration. Required to update the configuration.
+// Value of the configuration (also known as server parameter). Required to update the value assigned to a specific modifiable configuration.
 func (o ConfigurationOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Configuration) pulumi.StringPtrOutput { return v.Value }).(pulumi.StringPtrOutput)
 }

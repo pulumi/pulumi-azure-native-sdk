@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Device Update instance details.
 //
-// Uses Azure REST API version 2023-07-01. In version 1.x of the Azure Native provider, it used API version 2020-03-01-preview.
+// Uses Azure REST API version 2023-07-01. In version 2.x of the Azure Native provider, it used API version 2023-07-01.
 type Instance struct {
 	pulumi.CustomResourceState
 
 	// Parent Device Update Account name which Instance belongs to.
 	AccountName pulumi.StringOutput `pulumi:"accountName"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Customer-initiated diagnostic log collection storage properties
 	DiagnosticStorageProperties DiagnosticStoragePropertiesResponsePtrOutput `pulumi:"diagnosticStorageProperties"`
 	// Enables or Disables the diagnostic logs collection
@@ -33,7 +36,7 @@ type Instance struct {
 	// Provisioning state.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -184,6 +187,11 @@ func (o InstanceOutput) AccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AccountName }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o InstanceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Customer-initiated diagnostic log collection storage properties
 func (o InstanceOutput) DiagnosticStorageProperties() DiagnosticStoragePropertiesResponsePtrOutput {
 	return o.ApplyT(func(v *Instance) DiagnosticStoragePropertiesResponsePtrOutput { return v.DiagnosticStorageProperties }).(DiagnosticStoragePropertiesResponsePtrOutput)
@@ -215,8 +223,8 @@ func (o InstanceOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o InstanceOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Instance) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o InstanceOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Instance) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

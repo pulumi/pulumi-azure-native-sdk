@@ -8,24 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Active directory connector resource
 //
-// Uses Azure REST API version 2023-01-15-preview. In version 1.x of the Azure Native provider, it used API version 2022-03-01-preview.
+// Uses Azure REST API version 2025-03-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-01-15-preview.
 //
-// Other available API versions: 2024-01-01, 2024-05-01-preview, 2025-03-01-preview.
+// Other available API versions: 2023-01-15-preview, 2024-01-01, 2024-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ActiveDirectoryConnector struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// null
 	Properties ActiveDirectoryConnectorPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -65,6 +68,9 @@ func NewActiveDirectoryConnector(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20250301preview:ActiveDirectoryConnector"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20260101:ActiveDirectoryConnector"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -160,6 +166,11 @@ func (o ActiveDirectoryConnectorOutput) ToActiveDirectoryConnectorOutputWithCont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ActiveDirectoryConnectorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ActiveDirectoryConnector) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o ActiveDirectoryConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ActiveDirectoryConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -173,8 +184,8 @@ func (o ActiveDirectoryConnectorOutput) Properties() ActiveDirectoryConnectorPro
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ActiveDirectoryConnectorOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *ActiveDirectoryConnector) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o ActiveDirectoryConnectorOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *ActiveDirectoryConnector) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

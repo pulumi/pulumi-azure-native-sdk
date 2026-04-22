@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a data connector.
 //
-// Uses Azure REST API version 2023-02-01.
+// Uses Azure REST API version 2024-09-01.
 func LookupMCASDataConnector(ctx *pulumi.Context, args *LookupMCASDataConnectorArgs, opts ...pulumi.InvokeOption) (*LookupMCASDataConnectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMCASDataConnectorResult
@@ -35,8 +36,10 @@ type LookupMCASDataConnectorArgs struct {
 
 // Represents MCAS (Microsoft Cloud App Security) data connector.
 type LookupMCASDataConnectorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The available data types for the connector.
-	DataTypes *MCASDataConnectorDataTypesResponse `pulumi:"dataTypes"`
+	DataTypes MCASDataConnectorDataTypesResponse `pulumi:"dataTypes"`
 	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -47,9 +50,9 @@ type LookupMCASDataConnectorResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The tenant id to connect to, and get the data from.
-	TenantId *string `pulumi:"tenantId"`
+	TenantId string `pulumi:"tenantId"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -91,9 +94,14 @@ func (o LookupMCASDataConnectorResultOutput) ToLookupMCASDataConnectorResultOutp
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupMCASDataConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMCASDataConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The available data types for the connector.
-func (o LookupMCASDataConnectorResultOutput) DataTypes() MCASDataConnectorDataTypesResponsePtrOutput {
-	return o.ApplyT(func(v LookupMCASDataConnectorResult) *MCASDataConnectorDataTypesResponse { return v.DataTypes }).(MCASDataConnectorDataTypesResponsePtrOutput)
+func (o LookupMCASDataConnectorResultOutput) DataTypes() MCASDataConnectorDataTypesResponseOutput {
+	return o.ApplyT(func(v LookupMCASDataConnectorResult) MCASDataConnectorDataTypesResponse { return v.DataTypes }).(MCASDataConnectorDataTypesResponseOutput)
 }
 
 // Etag of the azure resource
@@ -118,13 +126,13 @@ func (o LookupMCASDataConnectorResultOutput) Name() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupMCASDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupMCASDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupMCASDataConnectorResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupMCASDataConnectorResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The tenant id to connect to, and get the data from.
-func (o LookupMCASDataConnectorResultOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupMCASDataConnectorResult) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+func (o LookupMCASDataConnectorResultOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMCASDataConnectorResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

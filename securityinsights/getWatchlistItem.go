@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a watchlist item.
 //
-// Uses Azure REST API version 2023-02-01.
+// Uses Azure REST API version 2024-09-01.
 //
-// Other available API versions: 2021-04-01, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-09-01, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01.
+// Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWatchlistItem(ctx *pulumi.Context, args *LookupWatchlistItemArgs, opts ...pulumi.InvokeOption) (*LookupWatchlistItemResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWatchlistItemResult
@@ -39,6 +40,8 @@ type LookupWatchlistItemArgs struct {
 
 // Represents a Watchlist Item in Azure Security Insights.
 type LookupWatchlistItemResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The time the watchlist item was created
 	Created *string `pulumi:"created"`
 	// Describes a user that created the watchlist item
@@ -56,7 +59,7 @@ type LookupWatchlistItemResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The tenantId to which the watchlist item belongs to
 	TenantId *string `pulumi:"tenantId"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -110,6 +113,11 @@ func (o LookupWatchlistItemResultOutput) ToLookupWatchlistItemResultOutputWithCo
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupWatchlistItemResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWatchlistItemResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The time the watchlist item was created
 func (o LookupWatchlistItemResultOutput) Created() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWatchlistItemResult) *string { return v.Created }).(pulumi.StringPtrOutput)
@@ -151,8 +159,8 @@ func (o LookupWatchlistItemResultOutput) Name() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupWatchlistItemResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupWatchlistItemResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupWatchlistItemResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupWatchlistItemResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The tenantId to which the watchlist item belongs to

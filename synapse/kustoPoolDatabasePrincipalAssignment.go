@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv1"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Class representing a database principal assignment.
 //
-// Uses Azure REST API version 2021-06-01-preview.
+// Uses Azure REST API version 2021-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-06-01-preview.
 type KustoPoolDatabasePrincipalAssignment struct {
 	pulumi.CustomResourceState
 
 	// The service principal object id in AAD (Azure active directory)
 	AadObjectId pulumi.StringOutput `pulumi:"aadObjectId"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The principal ID assigned to the database principal. It can be a user email, application ID, or security group name.
@@ -33,7 +36,7 @@ type KustoPoolDatabasePrincipalAssignment struct {
 	// Database principal role.
 	Role pulumi.StringOutput `pulumi:"role"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv1.SystemDataResponseOutput `pulumi:"systemData"`
 	// The tenant id of the principal
 	TenantId pulumi.StringPtrOutput `pulumi:"tenantId"`
 	// The tenant name of the principal
@@ -72,10 +75,16 @@ func NewKustoPoolDatabasePrincipalAssignment(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:synapse/v20210401preview:DatabasePrincipalAssignment"),
+		},
+		{
 			Type: pulumi.String("azure-native:synapse/v20210401preview:KustoPoolDatabasePrincipalAssignment"),
 		},
 		{
 			Type: pulumi.String("azure-native:synapse/v20210601preview:KustoPoolDatabasePrincipalAssignment"),
+		},
+		{
+			Type: pulumi.String("azure-native:synapse:DatabasePrincipalAssignment"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -196,6 +205,11 @@ func (o KustoPoolDatabasePrincipalAssignmentOutput) AadObjectId() pulumi.StringO
 	return o.ApplyT(func(v *KustoPoolDatabasePrincipalAssignment) pulumi.StringOutput { return v.AadObjectId }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o KustoPoolDatabasePrincipalAssignmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *KustoPoolDatabasePrincipalAssignment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o KustoPoolDatabasePrincipalAssignmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *KustoPoolDatabasePrincipalAssignment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -227,8 +241,10 @@ func (o KustoPoolDatabasePrincipalAssignmentOutput) Role() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o KustoPoolDatabasePrincipalAssignmentOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *KustoPoolDatabasePrincipalAssignment) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o KustoPoolDatabasePrincipalAssignmentOutput) SystemData() commontypesv1.SystemDataResponseOutput {
+	return o.ApplyT(func(v *KustoPoolDatabasePrincipalAssignment) commontypesv1.SystemDataResponseOutput {
+		return v.SystemData
+	}).(commontypesv1.SystemDataResponseOutput)
 }
 
 // The tenant id of the principal

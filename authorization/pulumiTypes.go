@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -501,6 +502,314 @@ func (o AccessReviewInstanceResponseArrayOutput) Index(i pulumi.IntInput) Access
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessReviewInstanceResponse {
 		return vs[0].([]AccessReviewInstanceResponse)[vs[1].(int)]
 	}).(AccessReviewInstanceResponseOutput)
+}
+
+// Recurrence Range of an Access Review Schedule Definition.
+type AccessReviewRecurrenceRange struct {
+	// The DateTime when the review is scheduled to end. Required if type is endDate
+	EndDate *string `pulumi:"endDate"`
+	// The number of times to repeat the access review. Required and must be positive if type is numbered.
+	NumberOfOccurrences *int `pulumi:"numberOfOccurrences"`
+	// The DateTime when the review is scheduled to be start. This could be a date in the future. Required on create.
+	StartDate *string `pulumi:"startDate"`
+	// The recurrence range type. The possible values are: endDate, noEnd, numbered.
+	Type *string `pulumi:"type"`
+}
+
+// AccessReviewRecurrenceRangeInput is an input type that accepts AccessReviewRecurrenceRangeArgs and AccessReviewRecurrenceRangeOutput values.
+// You can construct a concrete instance of `AccessReviewRecurrenceRangeInput` via:
+//
+//	AccessReviewRecurrenceRangeArgs{...}
+type AccessReviewRecurrenceRangeInput interface {
+	pulumi.Input
+
+	ToAccessReviewRecurrenceRangeOutput() AccessReviewRecurrenceRangeOutput
+	ToAccessReviewRecurrenceRangeOutputWithContext(context.Context) AccessReviewRecurrenceRangeOutput
+}
+
+// Recurrence Range of an Access Review Schedule Definition.
+type AccessReviewRecurrenceRangeArgs struct {
+	// The DateTime when the review is scheduled to end. Required if type is endDate
+	EndDate pulumi.StringPtrInput `pulumi:"endDate"`
+	// The number of times to repeat the access review. Required and must be positive if type is numbered.
+	NumberOfOccurrences pulumi.IntPtrInput `pulumi:"numberOfOccurrences"`
+	// The DateTime when the review is scheduled to be start. This could be a date in the future. Required on create.
+	StartDate pulumi.StringPtrInput `pulumi:"startDate"`
+	// The recurrence range type. The possible values are: endDate, noEnd, numbered.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (AccessReviewRecurrenceRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessReviewRecurrenceRange)(nil)).Elem()
+}
+
+func (i AccessReviewRecurrenceRangeArgs) ToAccessReviewRecurrenceRangeOutput() AccessReviewRecurrenceRangeOutput {
+	return i.ToAccessReviewRecurrenceRangeOutputWithContext(context.Background())
+}
+
+func (i AccessReviewRecurrenceRangeArgs) ToAccessReviewRecurrenceRangeOutputWithContext(ctx context.Context) AccessReviewRecurrenceRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessReviewRecurrenceRangeOutput)
+}
+
+func (i AccessReviewRecurrenceRangeArgs) ToAccessReviewRecurrenceRangePtrOutput() AccessReviewRecurrenceRangePtrOutput {
+	return i.ToAccessReviewRecurrenceRangePtrOutputWithContext(context.Background())
+}
+
+func (i AccessReviewRecurrenceRangeArgs) ToAccessReviewRecurrenceRangePtrOutputWithContext(ctx context.Context) AccessReviewRecurrenceRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessReviewRecurrenceRangeOutput).ToAccessReviewRecurrenceRangePtrOutputWithContext(ctx)
+}
+
+// AccessReviewRecurrenceRangePtrInput is an input type that accepts AccessReviewRecurrenceRangeArgs, AccessReviewRecurrenceRangePtr and AccessReviewRecurrenceRangePtrOutput values.
+// You can construct a concrete instance of `AccessReviewRecurrenceRangePtrInput` via:
+//
+//	        AccessReviewRecurrenceRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessReviewRecurrenceRangePtrInput interface {
+	pulumi.Input
+
+	ToAccessReviewRecurrenceRangePtrOutput() AccessReviewRecurrenceRangePtrOutput
+	ToAccessReviewRecurrenceRangePtrOutputWithContext(context.Context) AccessReviewRecurrenceRangePtrOutput
+}
+
+type accessReviewRecurrenceRangePtrType AccessReviewRecurrenceRangeArgs
+
+func AccessReviewRecurrenceRangePtr(v *AccessReviewRecurrenceRangeArgs) AccessReviewRecurrenceRangePtrInput {
+	return (*accessReviewRecurrenceRangePtrType)(v)
+}
+
+func (*accessReviewRecurrenceRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessReviewRecurrenceRange)(nil)).Elem()
+}
+
+func (i *accessReviewRecurrenceRangePtrType) ToAccessReviewRecurrenceRangePtrOutput() AccessReviewRecurrenceRangePtrOutput {
+	return i.ToAccessReviewRecurrenceRangePtrOutputWithContext(context.Background())
+}
+
+func (i *accessReviewRecurrenceRangePtrType) ToAccessReviewRecurrenceRangePtrOutputWithContext(ctx context.Context) AccessReviewRecurrenceRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessReviewRecurrenceRangePtrOutput)
+}
+
+// Recurrence Range of an Access Review Schedule Definition.
+type AccessReviewRecurrenceRangeOutput struct{ *pulumi.OutputState }
+
+func (AccessReviewRecurrenceRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessReviewRecurrenceRange)(nil)).Elem()
+}
+
+func (o AccessReviewRecurrenceRangeOutput) ToAccessReviewRecurrenceRangeOutput() AccessReviewRecurrenceRangeOutput {
+	return o
+}
+
+func (o AccessReviewRecurrenceRangeOutput) ToAccessReviewRecurrenceRangeOutputWithContext(ctx context.Context) AccessReviewRecurrenceRangeOutput {
+	return o
+}
+
+func (o AccessReviewRecurrenceRangeOutput) ToAccessReviewRecurrenceRangePtrOutput() AccessReviewRecurrenceRangePtrOutput {
+	return o.ToAccessReviewRecurrenceRangePtrOutputWithContext(context.Background())
+}
+
+func (o AccessReviewRecurrenceRangeOutput) ToAccessReviewRecurrenceRangePtrOutputWithContext(ctx context.Context) AccessReviewRecurrenceRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessReviewRecurrenceRange) *AccessReviewRecurrenceRange {
+		return &v
+	}).(AccessReviewRecurrenceRangePtrOutput)
+}
+
+// The DateTime when the review is scheduled to end. Required if type is endDate
+func (o AccessReviewRecurrenceRangeOutput) EndDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessReviewRecurrenceRange) *string { return v.EndDate }).(pulumi.StringPtrOutput)
+}
+
+// The number of times to repeat the access review. Required and must be positive if type is numbered.
+func (o AccessReviewRecurrenceRangeOutput) NumberOfOccurrences() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AccessReviewRecurrenceRange) *int { return v.NumberOfOccurrences }).(pulumi.IntPtrOutput)
+}
+
+// The DateTime when the review is scheduled to be start. This could be a date in the future. Required on create.
+func (o AccessReviewRecurrenceRangeOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessReviewRecurrenceRange) *string { return v.StartDate }).(pulumi.StringPtrOutput)
+}
+
+// The recurrence range type. The possible values are: endDate, noEnd, numbered.
+func (o AccessReviewRecurrenceRangeOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessReviewRecurrenceRange) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type AccessReviewRecurrenceRangePtrOutput struct{ *pulumi.OutputState }
+
+func (AccessReviewRecurrenceRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessReviewRecurrenceRange)(nil)).Elem()
+}
+
+func (o AccessReviewRecurrenceRangePtrOutput) ToAccessReviewRecurrenceRangePtrOutput() AccessReviewRecurrenceRangePtrOutput {
+	return o
+}
+
+func (o AccessReviewRecurrenceRangePtrOutput) ToAccessReviewRecurrenceRangePtrOutputWithContext(ctx context.Context) AccessReviewRecurrenceRangePtrOutput {
+	return o
+}
+
+func (o AccessReviewRecurrenceRangePtrOutput) Elem() AccessReviewRecurrenceRangeOutput {
+	return o.ApplyT(func(v *AccessReviewRecurrenceRange) AccessReviewRecurrenceRange {
+		if v != nil {
+			return *v
+		}
+		var ret AccessReviewRecurrenceRange
+		return ret
+	}).(AccessReviewRecurrenceRangeOutput)
+}
+
+// The DateTime when the review is scheduled to end. Required if type is endDate
+func (o AccessReviewRecurrenceRangePtrOutput) EndDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessReviewRecurrenceRange) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of times to repeat the access review. Required and must be positive if type is numbered.
+func (o AccessReviewRecurrenceRangePtrOutput) NumberOfOccurrences() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AccessReviewRecurrenceRange) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumberOfOccurrences
+	}).(pulumi.IntPtrOutput)
+}
+
+// The DateTime when the review is scheduled to be start. This could be a date in the future. Required on create.
+func (o AccessReviewRecurrenceRangePtrOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessReviewRecurrenceRange) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// The recurrence range type. The possible values are: endDate, noEnd, numbered.
+func (o AccessReviewRecurrenceRangePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessReviewRecurrenceRange) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Recurrence Range of an Access Review Schedule Definition.
+type AccessReviewRecurrenceRangeResponse struct {
+	// The DateTime when the review is scheduled to end. Required if type is endDate
+	EndDate *string `pulumi:"endDate"`
+	// The number of times to repeat the access review. Required and must be positive if type is numbered.
+	NumberOfOccurrences *int `pulumi:"numberOfOccurrences"`
+	// The DateTime when the review is scheduled to be start. This could be a date in the future. Required on create.
+	StartDate *string `pulumi:"startDate"`
+	// The recurrence range type. The possible values are: endDate, noEnd, numbered.
+	Type *string `pulumi:"type"`
+}
+
+// Recurrence Range of an Access Review Schedule Definition.
+type AccessReviewRecurrenceRangeResponseOutput struct{ *pulumi.OutputState }
+
+func (AccessReviewRecurrenceRangeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessReviewRecurrenceRangeResponse)(nil)).Elem()
+}
+
+func (o AccessReviewRecurrenceRangeResponseOutput) ToAccessReviewRecurrenceRangeResponseOutput() AccessReviewRecurrenceRangeResponseOutput {
+	return o
+}
+
+func (o AccessReviewRecurrenceRangeResponseOutput) ToAccessReviewRecurrenceRangeResponseOutputWithContext(ctx context.Context) AccessReviewRecurrenceRangeResponseOutput {
+	return o
+}
+
+// The DateTime when the review is scheduled to end. Required if type is endDate
+func (o AccessReviewRecurrenceRangeResponseOutput) EndDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessReviewRecurrenceRangeResponse) *string { return v.EndDate }).(pulumi.StringPtrOutput)
+}
+
+// The number of times to repeat the access review. Required and must be positive if type is numbered.
+func (o AccessReviewRecurrenceRangeResponseOutput) NumberOfOccurrences() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AccessReviewRecurrenceRangeResponse) *int { return v.NumberOfOccurrences }).(pulumi.IntPtrOutput)
+}
+
+// The DateTime when the review is scheduled to be start. This could be a date in the future. Required on create.
+func (o AccessReviewRecurrenceRangeResponseOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessReviewRecurrenceRangeResponse) *string { return v.StartDate }).(pulumi.StringPtrOutput)
+}
+
+// The recurrence range type. The possible values are: endDate, noEnd, numbered.
+func (o AccessReviewRecurrenceRangeResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessReviewRecurrenceRangeResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type AccessReviewRecurrenceRangeResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AccessReviewRecurrenceRangeResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessReviewRecurrenceRangeResponse)(nil)).Elem()
+}
+
+func (o AccessReviewRecurrenceRangeResponsePtrOutput) ToAccessReviewRecurrenceRangeResponsePtrOutput() AccessReviewRecurrenceRangeResponsePtrOutput {
+	return o
+}
+
+func (o AccessReviewRecurrenceRangeResponsePtrOutput) ToAccessReviewRecurrenceRangeResponsePtrOutputWithContext(ctx context.Context) AccessReviewRecurrenceRangeResponsePtrOutput {
+	return o
+}
+
+func (o AccessReviewRecurrenceRangeResponsePtrOutput) Elem() AccessReviewRecurrenceRangeResponseOutput {
+	return o.ApplyT(func(v *AccessReviewRecurrenceRangeResponse) AccessReviewRecurrenceRangeResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AccessReviewRecurrenceRangeResponse
+		return ret
+	}).(AccessReviewRecurrenceRangeResponseOutput)
+}
+
+// The DateTime when the review is scheduled to end. Required if type is endDate
+func (o AccessReviewRecurrenceRangeResponsePtrOutput) EndDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessReviewRecurrenceRangeResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of times to repeat the access review. Required and must be positive if type is numbered.
+func (o AccessReviewRecurrenceRangeResponsePtrOutput) NumberOfOccurrences() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AccessReviewRecurrenceRangeResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumberOfOccurrences
+	}).(pulumi.IntPtrOutput)
+}
+
+// The DateTime when the review is scheduled to be start. This could be a date in the future. Required on create.
+func (o AccessReviewRecurrenceRangeResponsePtrOutput) StartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessReviewRecurrenceRangeResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// The recurrence range type. The possible values are: endDate, noEnd, numbered.
+func (o AccessReviewRecurrenceRangeResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessReviewRecurrenceRangeResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // Descriptor for what needs to be reviewed
@@ -2140,6 +2449,52 @@ func (o IdentityResponseUserAssignedIdentitiesMapOutput) MapIndex(k pulumi.Strin
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) IdentityResponseUserAssignedIdentities {
 		return vs[0].(map[string]IdentityResponseUserAssignedIdentities)[vs[1].(string)]
 	}).(IdentityResponseUserAssignedIdentitiesOutput)
+}
+
+// Information about a tenant managing the subscription.
+type ManagedByTenantResponse struct {
+	// The tenant ID of the managing tenant.
+	TenantId *string `pulumi:"tenantId"`
+}
+
+// Information about a tenant managing the subscription.
+type ManagedByTenantResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedByTenantResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedByTenantResponse)(nil)).Elem()
+}
+
+func (o ManagedByTenantResponseOutput) ToManagedByTenantResponseOutput() ManagedByTenantResponseOutput {
+	return o
+}
+
+func (o ManagedByTenantResponseOutput) ToManagedByTenantResponseOutputWithContext(ctx context.Context) ManagedByTenantResponseOutput {
+	return o
+}
+
+// The tenant ID of the managing tenant.
+func (o ManagedByTenantResponseOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedByTenantResponse) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+type ManagedByTenantResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedByTenantResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedByTenantResponse)(nil)).Elem()
+}
+
+func (o ManagedByTenantResponseArrayOutput) ToManagedByTenantResponseArrayOutput() ManagedByTenantResponseArrayOutput {
+	return o
+}
+
+func (o ManagedByTenantResponseArrayOutput) ToManagedByTenantResponseArrayOutputWithContext(ctx context.Context) ManagedByTenantResponseArrayOutput {
+	return o
+}
+
+func (o ManagedByTenantResponseArrayOutput) Index(i pulumi.IntInput) ManagedByTenantResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedByTenantResponse {
+		return vs[0].([]ManagedByTenantResponse)[vs[1].(int)]
+	}).(ManagedByTenantResponseOutput)
 }
 
 // Lock owner properties.
@@ -4553,7 +4908,7 @@ type PolicyDefinitionVersionResponse struct {
 	// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
 	PolicyType *string `pulumi:"policyType"`
 	// The system metadata relating to this resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource (Microsoft.Authorization/policyDefinitions/versions).
 	Type string `pulumi:"type"`
 	// The policy definition version in #.#.# format.
@@ -4636,8 +4991,8 @@ func (o PolicyDefinitionVersionResponseOutput) PolicyType() pulumi.StringPtrOutp
 }
 
 // The system metadata relating to this resource.
-func (o PolicyDefinitionVersionResponseOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v PolicyDefinitionVersionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o PolicyDefinitionVersionResponseOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v PolicyDefinitionVersionResponse) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource (Microsoft.Authorization/policyDefinitions/versions).
@@ -4757,7 +5112,7 @@ type PolicySetDefinitionVersionResponse struct {
 	// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
 	PolicyType *string `pulumi:"policyType"`
 	// The system metadata relating to this resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource (Microsoft.Authorization/policySetDefinitions/versions).
 	Type string `pulumi:"type"`
 	// The policy set definition version in #.#.# format.
@@ -4831,8 +5186,8 @@ func (o PolicySetDefinitionVersionResponseOutput) PolicyType() pulumi.StringPtrO
 }
 
 // The system metadata relating to this resource.
-func (o PolicySetDefinitionVersionResponseOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v PolicySetDefinitionVersionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o PolicySetDefinitionVersionResponseOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v PolicySetDefinitionVersionResponse) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource (Microsoft.Authorization/policySetDefinitions/versions).
@@ -7905,65 +8260,200 @@ func (o SelectorResponseArrayOutput) Index(i pulumi.IntInput) SelectorResponseOu
 	}).(SelectorResponseOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+// Subscription policies.
+type SubscriptionPoliciesResponse struct {
+	// The subscription location placement ID.
+	LocationPlacementId *string `pulumi:"locationPlacementId"`
+	// The subscription quota ID.
+	QuotaId *string `pulumi:"quotaId"`
+	// The subscription spending limit.
+	SpendingLimit *string `pulumi:"spendingLimit"`
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponseOutput struct{ *pulumi.OutputState }
+// Subscription policies.
+type SubscriptionPoliciesResponseOutput struct{ *pulumi.OutputState }
 
-func (SystemDataResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+func (SubscriptionPoliciesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionPoliciesResponse)(nil)).Elem()
 }
 
-func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+func (o SubscriptionPoliciesResponseOutput) ToSubscriptionPoliciesResponseOutput() SubscriptionPoliciesResponseOutput {
 	return o
 }
 
-func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+func (o SubscriptionPoliciesResponseOutput) ToSubscriptionPoliciesResponseOutputWithContext(ctx context.Context) SubscriptionPoliciesResponseOutput {
 	return o
 }
 
-// The timestamp of resource creation (UTC).
-func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+// The subscription location placement ID.
+func (o SubscriptionPoliciesResponseOutput) LocationPlacementId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionPoliciesResponse) *string { return v.LocationPlacementId }).(pulumi.StringPtrOutput)
 }
 
-// The identity that created the resource.
-func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+// The subscription quota ID.
+func (o SubscriptionPoliciesResponseOutput) QuotaId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionPoliciesResponse) *string { return v.QuotaId }).(pulumi.StringPtrOutput)
 }
 
-// The type of identity that created the resource.
-func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+// The subscription spending limit.
+func (o SubscriptionPoliciesResponseOutput) SpendingLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionPoliciesResponse) *string { return v.SpendingLimit }).(pulumi.StringPtrOutput)
 }
 
-// The timestamp of resource last modification (UTC)
-func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+type SubscriptionPoliciesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionPoliciesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionPoliciesResponse)(nil)).Elem()
 }
 
-// The identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+func (o SubscriptionPoliciesResponsePtrOutput) ToSubscriptionPoliciesResponsePtrOutput() SubscriptionPoliciesResponsePtrOutput {
+	return o
 }
 
-// The type of identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+func (o SubscriptionPoliciesResponsePtrOutput) ToSubscriptionPoliciesResponsePtrOutputWithContext(ctx context.Context) SubscriptionPoliciesResponsePtrOutput {
+	return o
+}
+
+func (o SubscriptionPoliciesResponsePtrOutput) Elem() SubscriptionPoliciesResponseOutput {
+	return o.ApplyT(func(v *SubscriptionPoliciesResponse) SubscriptionPoliciesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SubscriptionPoliciesResponse
+		return ret
+	}).(SubscriptionPoliciesResponseOutput)
+}
+
+// The subscription location placement ID.
+func (o SubscriptionPoliciesResponsePtrOutput) LocationPlacementId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionPoliciesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocationPlacementId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The subscription quota ID.
+func (o SubscriptionPoliciesResponsePtrOutput) QuotaId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionPoliciesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QuotaId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The subscription spending limit.
+func (o SubscriptionPoliciesResponsePtrOutput) SpendingLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubscriptionPoliciesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SpendingLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subscription information.
+type SubscriptionResponse struct {
+	// The authorization source of the request.
+	AuthorizationSource *string `pulumi:"authorizationSource"`
+	// The subscription display name.
+	DisplayName *string `pulumi:"displayName"`
+	// The fully qualified ID for the subscription.
+	Id *string `pulumi:"id"`
+	// An array containing the tenants managing the subscription.
+	ManagedByTenants []ManagedByTenantResponse `pulumi:"managedByTenants"`
+	// The subscription state. Possible values are Enabled, Warned, PastDue, Disabled, and Deleted.
+	State *string `pulumi:"state"`
+	// The subscription ID.
+	SubscriptionId *string `pulumi:"subscriptionId"`
+	// The subscription policies.
+	SubscriptionPolicies *SubscriptionPoliciesResponse `pulumi:"subscriptionPolicies"`
+	// The tags attached to the subscription.
+	Tags map[string]string `pulumi:"tags"`
+	// The subscription tenant ID.
+	TenantId *string `pulumi:"tenantId"`
+}
+
+// Subscription information.
+type SubscriptionResponseOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionResponse)(nil)).Elem()
+}
+
+func (o SubscriptionResponseOutput) ToSubscriptionResponseOutput() SubscriptionResponseOutput {
+	return o
+}
+
+func (o SubscriptionResponseOutput) ToSubscriptionResponseOutputWithContext(ctx context.Context) SubscriptionResponseOutput {
+	return o
+}
+
+// The authorization source of the request.
+func (o SubscriptionResponseOutput) AuthorizationSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionResponse) *string { return v.AuthorizationSource }).(pulumi.StringPtrOutput)
+}
+
+// The subscription display name.
+func (o SubscriptionResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The fully qualified ID for the subscription.
+func (o SubscriptionResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// An array containing the tenants managing the subscription.
+func (o SubscriptionResponseOutput) ManagedByTenants() ManagedByTenantResponseArrayOutput {
+	return o.ApplyT(func(v SubscriptionResponse) []ManagedByTenantResponse { return v.ManagedByTenants }).(ManagedByTenantResponseArrayOutput)
+}
+
+// The subscription state. Possible values are Enabled, Warned, PastDue, Disabled, and Deleted.
+func (o SubscriptionResponseOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionResponse) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// The subscription ID.
+func (o SubscriptionResponseOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionResponse) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+// The subscription policies.
+func (o SubscriptionResponseOutput) SubscriptionPolicies() SubscriptionPoliciesResponsePtrOutput {
+	return o.ApplyT(func(v SubscriptionResponse) *SubscriptionPoliciesResponse { return v.SubscriptionPolicies }).(SubscriptionPoliciesResponsePtrOutput)
+}
+
+// The tags attached to the subscription.
+func (o SubscriptionResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SubscriptionResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The subscription tenant ID.
+func (o SubscriptionResponseOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubscriptionResponse) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+type SubscriptionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubscriptionResponse)(nil)).Elem()
+}
+
+func (o SubscriptionResponseArrayOutput) ToSubscriptionResponseArrayOutput() SubscriptionResponseArrayOutput {
+	return o
+}
+
+func (o SubscriptionResponseArrayOutput) ToSubscriptionResponseArrayOutputWithContext(ctx context.Context) SubscriptionResponseArrayOutput {
+	return o
+}
+
+func (o SubscriptionResponseArrayOutput) Index(i pulumi.IntInput) SubscriptionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubscriptionResponse {
+		return vs[0].([]SubscriptionResponse)[vs[1].(int)]
+	}).(SubscriptionResponseOutput)
 }
 
 // The detail of a user.
@@ -8347,6 +8837,10 @@ func init() {
 	pulumi.RegisterOutputType(AccessReviewInstanceArrayOutput{})
 	pulumi.RegisterOutputType(AccessReviewInstanceResponseOutput{})
 	pulumi.RegisterOutputType(AccessReviewInstanceResponseArrayOutput{})
+	pulumi.RegisterOutputType(AccessReviewRecurrenceRangeOutput{})
+	pulumi.RegisterOutputType(AccessReviewRecurrenceRangePtrOutput{})
+	pulumi.RegisterOutputType(AccessReviewRecurrenceRangeResponseOutput{})
+	pulumi.RegisterOutputType(AccessReviewRecurrenceRangeResponsePtrOutput{})
 	pulumi.RegisterOutputType(AccessReviewReviewerOutput{})
 	pulumi.RegisterOutputType(AccessReviewReviewerArrayOutput{})
 	pulumi.RegisterOutputType(AccessReviewReviewerResponseOutput{})
@@ -8376,6 +8870,8 @@ func init() {
 	pulumi.RegisterOutputType(IdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(IdentityResponseUserAssignedIdentitiesOutput{})
 	pulumi.RegisterOutputType(IdentityResponseUserAssignedIdentitiesMapOutput{})
+	pulumi.RegisterOutputType(ManagedByTenantResponseOutput{})
+	pulumi.RegisterOutputType(ManagedByTenantResponseArrayOutput{})
 	pulumi.RegisterOutputType(ManagementLockOwnerOutput{})
 	pulumi.RegisterOutputType(ManagementLockOwnerArrayOutput{})
 	pulumi.RegisterOutputType(ManagementLockOwnerResponseOutput{})
@@ -8479,7 +8975,10 @@ func init() {
 	pulumi.RegisterOutputType(SelectorArrayOutput{})
 	pulumi.RegisterOutputType(SelectorResponseOutput{})
 	pulumi.RegisterOutputType(SelectorResponseArrayOutput{})
-	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(SubscriptionPoliciesResponseOutput{})
+	pulumi.RegisterOutputType(SubscriptionPoliciesResponsePtrOutput{})
+	pulumi.RegisterOutputType(SubscriptionResponseOutput{})
+	pulumi.RegisterOutputType(SubscriptionResponseArrayOutput{})
 	pulumi.RegisterOutputType(UserSetOutput{})
 	pulumi.RegisterOutputType(UserSetArrayOutput{})
 	pulumi.RegisterOutputType(UserSetResponseOutput{})

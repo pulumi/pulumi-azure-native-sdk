@@ -8,20 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a ApplicationGroup definition.
 //
-// Uses Azure REST API version 2022-09-09. In version 1.x of the Azure Native provider, it used API version 2021-02-01-preview.
+// Uses Azure REST API version 2024-04-03. In version 2.x of the Azure Native provider, it used API version 2022-09-09.
 //
-// Other available API versions: 2022-04-01-preview, 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-03, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview.
+// Other available API versions: 2022-09-09, 2022-10-14-preview, 2023-09-05, 2023-10-04-preview, 2023-11-01-preview, 2024-01-16-preview, 2024-03-06-preview, 2024-04-08-preview, 2024-08-08-preview, 2024-11-01-preview, 2025-03-01-preview, 2025-04-01-preview, 2025-08-01-preview, 2025-09-01-preview, 2025-11-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native desktopvirtualization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ApplicationGroup struct {
 	pulumi.CustomResourceState
 
 	// Resource Type of ApplicationGroup.
 	ApplicationGroupType pulumi.StringOutput `pulumi:"applicationGroupType"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Is cloud pc resource.
 	CloudPcResource pulumi.BoolOutput `pulumi:"cloudPcResource"`
 	// Description of ApplicationGroup.
@@ -31,22 +34,24 @@ type ApplicationGroup struct {
 	// Friendly name of ApplicationGroup.
 	FriendlyName pulumi.StringPtrOutput `pulumi:"friendlyName"`
 	// HostPool arm path of ApplicationGroup.
-	HostPoolArmPath pulumi.StringOutput                                          `pulumi:"hostPoolArmPath"`
-	Identity        ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput `pulumi:"identity"`
-	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+	HostPoolArmPath pulumi.StringOutput                                                        `pulumi:"hostPoolArmPath"`
+	Identity        commontypesv5.ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput `pulumi:"identity"`
+	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// The geo-location where the resource lives
-	Location pulumi.StringPtrOutput `pulumi:"location"`
+	Location pulumi.StringOutput `pulumi:"location"`
 	// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
 	ManagedBy pulumi.StringPtrOutput `pulumi:"managedBy"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// ObjectId of ApplicationGroup. (internal use)
-	ObjectId pulumi.StringOutput                                      `pulumi:"objectId"`
-	Plan     ResourceModelWithAllowedPropertySetResponsePlanPtrOutput `pulumi:"plan"`
-	Sku      ResourceModelWithAllowedPropertySetResponseSkuPtrOutput  `pulumi:"sku"`
-	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	ObjectId pulumi.StringOutput                                                    `pulumi:"objectId"`
+	Plan     commontypesv5.ResourceModelWithAllowedPropertySetResponsePlanPtrOutput `pulumi:"plan"`
+	// Boolean representing whether the applicationGroup is show in the feed.
+	ShowInFeed pulumi.BoolPtrOutput                                                  `pulumi:"showInFeed"`
+	Sku        commontypesv5.ResourceModelWithAllowedPropertySetResponseSkuPtrOutput `pulumi:"sku"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -124,6 +129,9 @@ func NewApplicationGroup(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:desktopvirtualization/v20221014preview:ApplicationGroup"),
 		},
 		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20230707preview:ApplicationGroup"),
+		},
+		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20230905:ApplicationGroup"),
 		},
 		{
@@ -149,6 +157,24 @@ func NewApplicationGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:desktopvirtualization/v20241101preview:ApplicationGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20250301preview:ApplicationGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20250401preview:ApplicationGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20250801preview:ApplicationGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20250901preview:ApplicationGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20251101preview:ApplicationGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:desktopvirtualization/v20260101preview:ApplicationGroup"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -194,18 +220,20 @@ type applicationGroupArgs struct {
 	// Friendly name of ApplicationGroup.
 	FriendlyName *string `pulumi:"friendlyName"`
 	// HostPool arm path of ApplicationGroup.
-	HostPoolArmPath string                                       `pulumi:"hostPoolArmPath"`
-	Identity        *ResourceModelWithAllowedPropertySetIdentity `pulumi:"identity"`
-	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+	HostPoolArmPath string                                                     `pulumi:"hostPoolArmPath"`
+	Identity        *commontypesv5.ResourceModelWithAllowedPropertySetIdentity `pulumi:"identity"`
+	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
-	ManagedBy *string                                  `pulumi:"managedBy"`
-	Plan      *ResourceModelWithAllowedPropertySetPlan `pulumi:"plan"`
+	ManagedBy *string                                                `pulumi:"managedBy"`
+	Plan      *commontypesv5.ResourceModelWithAllowedPropertySetPlan `pulumi:"plan"`
 	// The name of the resource group. The name is case insensitive.
-	ResourceGroupName string                                  `pulumi:"resourceGroupName"`
-	Sku               *ResourceModelWithAllowedPropertySetSku `pulumi:"sku"`
+	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Boolean representing whether the applicationGroup is show in the feed.
+	ShowInFeed *bool                                                 `pulumi:"showInFeed"`
+	Sku        *commontypesv5.ResourceModelWithAllowedPropertySetSku `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -222,17 +250,19 @@ type ApplicationGroupArgs struct {
 	FriendlyName pulumi.StringPtrInput
 	// HostPool arm path of ApplicationGroup.
 	HostPoolArmPath pulumi.StringInput
-	Identity        ResourceModelWithAllowedPropertySetIdentityPtrInput
-	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+	Identity        commontypesv5.ResourceModelWithAllowedPropertySetIdentityPtrInput
+	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
 	ManagedBy pulumi.StringPtrInput
-	Plan      ResourceModelWithAllowedPropertySetPlanPtrInput
+	Plan      commontypesv5.ResourceModelWithAllowedPropertySetPlanPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	Sku               ResourceModelWithAllowedPropertySetSkuPtrInput
+	// Boolean representing whether the applicationGroup is show in the feed.
+	ShowInFeed pulumi.BoolPtrInput
+	Sku        commontypesv5.ResourceModelWithAllowedPropertySetSkuPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 }
@@ -279,6 +309,11 @@ func (o ApplicationGroupOutput) ApplicationGroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationGroup) pulumi.StringOutput { return v.ApplicationGroupType }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o ApplicationGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Is cloud pc resource.
 func (o ApplicationGroupOutput) CloudPcResource() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ApplicationGroup) pulumi.BoolOutput { return v.CloudPcResource }).(pulumi.BoolOutput)
@@ -304,20 +339,20 @@ func (o ApplicationGroupOutput) HostPoolArmPath() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationGroup) pulumi.StringOutput { return v.HostPoolArmPath }).(pulumi.StringOutput)
 }
 
-func (o ApplicationGroupOutput) Identity() ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput {
-	return o.ApplyT(func(v *ApplicationGroup) ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput {
+func (o ApplicationGroupOutput) Identity() commontypesv5.ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput {
+	return o.ApplyT(func(v *ApplicationGroup) commontypesv5.ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput {
 		return v.Identity
-	}).(ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput)
+	}).(commontypesv5.ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput)
 }
 
-// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
+// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 func (o ApplicationGroupOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationGroup) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
 // The geo-location where the resource lives
-func (o ApplicationGroupOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ApplicationGroup) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
+func (o ApplicationGroupOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationGroup) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
 // The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
@@ -335,17 +370,26 @@ func (o ApplicationGroupOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationGroup) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-func (o ApplicationGroupOutput) Plan() ResourceModelWithAllowedPropertySetResponsePlanPtrOutput {
-	return o.ApplyT(func(v *ApplicationGroup) ResourceModelWithAllowedPropertySetResponsePlanPtrOutput { return v.Plan }).(ResourceModelWithAllowedPropertySetResponsePlanPtrOutput)
+func (o ApplicationGroupOutput) Plan() commontypesv5.ResourceModelWithAllowedPropertySetResponsePlanPtrOutput {
+	return o.ApplyT(func(v *ApplicationGroup) commontypesv5.ResourceModelWithAllowedPropertySetResponsePlanPtrOutput {
+		return v.Plan
+	}).(commontypesv5.ResourceModelWithAllowedPropertySetResponsePlanPtrOutput)
 }
 
-func (o ApplicationGroupOutput) Sku() ResourceModelWithAllowedPropertySetResponseSkuPtrOutput {
-	return o.ApplyT(func(v *ApplicationGroup) ResourceModelWithAllowedPropertySetResponseSkuPtrOutput { return v.Sku }).(ResourceModelWithAllowedPropertySetResponseSkuPtrOutput)
+// Boolean representing whether the applicationGroup is show in the feed.
+func (o ApplicationGroupOutput) ShowInFeed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApplicationGroup) pulumi.BoolPtrOutput { return v.ShowInFeed }).(pulumi.BoolPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-func (o ApplicationGroupOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *ApplicationGroup) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o ApplicationGroupOutput) Sku() commontypesv5.ResourceModelWithAllowedPropertySetResponseSkuPtrOutput {
+	return o.ApplyT(func(v *ApplicationGroup) commontypesv5.ResourceModelWithAllowedPropertySetResponseSkuPtrOutput {
+		return v.Sku
+	}).(commontypesv5.ResourceModelWithAllowedPropertySetResponseSkuPtrOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o ApplicationGroupOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *ApplicationGroup) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

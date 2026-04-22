@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,7 +32,7 @@ type LookupFormulaArgs struct {
 	LabName string `pulumi:"labName"`
 	// The name of the formula.
 	Name string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -39,25 +40,29 @@ type LookupFormulaArgs struct {
 type LookupFormulaResult struct {
 	// The author of the formula.
 	Author string `pulumi:"author"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the formula.
 	CreationDate string `pulumi:"creationDate"`
 	// The description of the formula.
 	Description *string `pulumi:"description"`
 	// The content of the formula.
 	FormulaContent *LabVirtualMachineCreationParameterResponse `pulumi:"formulaContent"`
-	// The identifier of the resource.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// The location of the resource.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// The name of the resource.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The OS type of the formula.
 	OsType *string `pulumi:"osType"`
 	// The provisioning status of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// The tags of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The unique immutable identifier of a resource (Guid).
 	UniqueIdentifier string `pulumi:"uniqueIdentifier"`
@@ -91,7 +96,7 @@ type LookupFormulaOutputArgs struct {
 	LabName pulumi.StringInput `pulumi:"labName"`
 	// The name of the formula.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -119,6 +124,11 @@ func (o LookupFormulaResultOutput) Author() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFormulaResult) string { return v.Author }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupFormulaResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFormulaResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The creation date of the formula.
 func (o LookupFormulaResultOutput) CreationDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFormulaResult) string { return v.CreationDate }).(pulumi.StringOutput)
@@ -134,17 +144,17 @@ func (o LookupFormulaResultOutput) FormulaContent() LabVirtualMachineCreationPar
 	return o.ApplyT(func(v LookupFormulaResult) *LabVirtualMachineCreationParameterResponse { return v.FormulaContent }).(LabVirtualMachineCreationParameterResponsePtrOutput)
 }
 
-// The identifier of the resource.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupFormulaResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFormulaResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The location of the resource.
+// The geo-location where the resource lives
 func (o LookupFormulaResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFormulaResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o LookupFormulaResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFormulaResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -159,12 +169,17 @@ func (o LookupFormulaResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFormulaResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The tags of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupFormulaResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupFormulaResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o LookupFormulaResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupFormulaResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupFormulaResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFormulaResult) string { return v.Type }).(pulumi.StringOutput)
 }

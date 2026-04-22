@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Concrete proxy resource types can be created by aliasing this type using a specific property type.
 //
-// Uses Azure REST API version 2023-07-01-preview. In version 1.x of the Azure Native provider, it used API version 2023-03-01-preview.
+// Uses Azure REST API version 2023-07-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-07-01-preview.
 type Volume struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Requested capacity in GiB
 	CapacityGiB pulumi.Float64Output `pulumi:"capacityGiB"`
 	// String KV pairs indicating labels
@@ -29,7 +32,7 @@ type Volume struct {
 	// The status of the resource.
 	Status ResourceOperationalStatusResponseOutput `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Properties of the volume
@@ -157,6 +160,11 @@ func (o VolumeOutput) ToVolumeOutputWithContext(ctx context.Context) VolumeOutpu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o VolumeOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Requested capacity in GiB
 func (o VolumeOutput) CapacityGiB() pulumi.Float64Output {
 	return o.ApplyT(func(v *Volume) pulumi.Float64Output { return v.CapacityGiB }).(pulumi.Float64Output)
@@ -183,8 +191,8 @@ func (o VolumeOutput) Status() ResourceOperationalStatusResponseOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o VolumeOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Volume) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o VolumeOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Volume) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

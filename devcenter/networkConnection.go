@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Network related settings
 //
-// Uses Azure REST API version 2023-04-01. In version 1.x of the Azure Native provider, it used API version 2022-09-01-preview.
+// Uses Azure REST API version 2024-02-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 //
-// Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01.
+// Other available API versions: 2023-04-01, 2023-08-01-preview, 2023-10-01-preview, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type NetworkConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// AAD Join type.
 	DomainJoinType pulumi.StringOutput `pulumi:"domainJoinType"`
 	// Active Directory domain name
@@ -43,7 +46,7 @@ type NetworkConnection struct {
 	// The subnet to attach Virtual Machines to
 	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -111,6 +114,18 @@ func NewNetworkConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:devcenter/v20250201:NetworkConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20250401preview:NetworkConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20250701preview:NetworkConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20251001preview:NetworkConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20260101preview:NetworkConnection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -234,6 +249,11 @@ func (o NetworkConnectionOutput) ToNetworkConnectionOutputWithContext(ctx contex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o NetworkConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // AAD Join type.
 func (o NetworkConnectionOutput) DomainJoinType() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkConnection) pulumi.StringOutput { return v.DomainJoinType }).(pulumi.StringOutput)
@@ -290,8 +310,8 @@ func (o NetworkConnectionOutput) SubnetId() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o NetworkConnectionOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *NetworkConnection) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o NetworkConnectionOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *NetworkConnection) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

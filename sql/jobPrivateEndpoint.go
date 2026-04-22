@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A job agent private endpoint.
 //
-// Uses Azure REST API version 2023-05-01-preview.
+// Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01-preview.
 //
-// Other available API versions: 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
+// Other available API versions: 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type JobPrivateEndpoint struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Private endpoint id of the private endpoint.
@@ -61,6 +63,9 @@ func NewJobPrivateEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:JobPrivateEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:sql/v20241101preview:JobPrivateEndpoint"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -158,6 +163,11 @@ func (o JobPrivateEndpointOutput) ToJobPrivateEndpointOutput() JobPrivateEndpoin
 
 func (o JobPrivateEndpointOutput) ToJobPrivateEndpointOutputWithContext(ctx context.Context) JobPrivateEndpointOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o JobPrivateEndpointOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobPrivateEndpoint) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource name.

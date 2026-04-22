@@ -8,20 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv1"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An attestation resource.
 //
-// Uses Azure REST API version 2022-09-01. In version 1.x of the Azure Native provider, it used API version 2021-01-01.
+// Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 //
-// Other available API versions: 2024-10-01.
+// Other available API versions: 2022-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native policyinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AttestationAtSubscription struct {
 	pulumi.CustomResourceState
 
 	// The time the evidence was assessed
 	AssessmentDate pulumi.StringPtrOutput `pulumi:"assessmentDate"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Comments describing why this attestation was created.
 	Comments pulumi.StringPtrOutput `pulumi:"comments"`
 	// The compliance state that should be set on the resource.
@@ -45,7 +48,7 @@ type AttestationAtSubscription struct {
 	// The status of the attestation.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv1.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -193,6 +196,11 @@ func (o AttestationAtSubscriptionOutput) AssessmentDate() pulumi.StringPtrOutput
 	return o.ApplyT(func(v *AttestationAtSubscription) pulumi.StringPtrOutput { return v.AssessmentDate }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o AttestationAtSubscriptionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AttestationAtSubscription) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Comments describing why this attestation was created.
 func (o AttestationAtSubscriptionOutput) Comments() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AttestationAtSubscription) pulumi.StringPtrOutput { return v.Comments }).(pulumi.StringPtrOutput)
@@ -249,8 +257,8 @@ func (o AttestationAtSubscriptionOutput) ProvisioningState() pulumi.StringOutput
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o AttestationAtSubscriptionOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *AttestationAtSubscription) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o AttestationAtSubscriptionOutput) SystemData() commontypesv1.SystemDataResponseOutput {
+	return o.ApplyT(func(v *AttestationAtSubscription) commontypesv1.SystemDataResponseOutput { return v.SystemData }).(commontypesv1.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

@@ -8,63 +8,72 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a server.
+// Properties of a server.
 //
-// Uses Azure REST API version 2022-12-01. In version 1.x of the Azure Native provider, it used API version 2017-12-01.
+// Uses Azure REST API version 2025-08-01. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
 //
-// Other available API versions: 2017-12-01, 2017-12-01-preview, 2020-02-14-preview, 2021-04-10-privatepreview, 2021-06-15-privatepreview, 2022-03-08-preview, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview.
+// Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Server struct {
 	pulumi.CustomResourceState
 
-	// The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
+	// Name of the login designated as the first password based administrator assigned to your instance of PostgreSQL. Must be specified the first time that you enable password based authentication on a server. Once set to a given value, it cannot be changed for the rest of the life of a server. If you disable password based authentication on a server which had it enabled, this password based role isn't deleted.
 	AdministratorLogin pulumi.StringPtrOutput `pulumi:"administratorLogin"`
-	// AuthConfig properties of a server.
+	// Authentication configuration properties of a server.
 	AuthConfig AuthConfigResponsePtrOutput `pulumi:"authConfig"`
-	// availability zone information of the server.
+	// Availability zone of a server.
 	AvailabilityZone pulumi.StringPtrOutput `pulumi:"availabilityZone"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Backup properties of a server.
 	Backup BackupResponsePtrOutput `pulumi:"backup"`
+	// Cluster properties of a server.
+	Cluster ClusterResponsePtrOutput `pulumi:"cluster"`
 	// Data encryption properties of a server.
 	DataEncryption DataEncryptionResponsePtrOutput `pulumi:"dataEncryption"`
-	// The fully qualified domain name of a server.
+	// Fully qualified domain name of a server.
 	FullyQualifiedDomainName pulumi.StringOutput `pulumi:"fullyQualifiedDomainName"`
 	// High availability properties of a server.
 	HighAvailability HighAvailabilityResponsePtrOutput `pulumi:"highAvailability"`
-	// Describes the identity of the application.
+	// User assigned managed identities assigned to the server.
 	Identity UserAssignedIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Maintenance window properties of a server.
 	MaintenanceWindow MaintenanceWindowResponsePtrOutput `pulumi:"maintenanceWindow"`
-	// The minor version of the server.
+	// Minor version of PostgreSQL database engine.
 	MinorVersion pulumi.StringOutput `pulumi:"minorVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Network properties of a server. This Network property is required to be passed only in case you want the server to be Private access server.
+	// Network properties of a server. Only required if you want your server to be integrated into a virtual network provided by customer.
 	Network NetworkResponsePtrOutput `pulumi:"network"`
-	// Replicas allowed for a server.
+	// List of private endpoint connections associated with the specified server.
+	PrivateEndpointConnections commontypesv6.PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
+	// Read replica properties of a server. Required only in case that you want to promote a server.
+	Replica ReplicaResponsePtrOutput `pulumi:"replica"`
+	// Maximum number of read replicas allowed for a server.
 	ReplicaCapacity pulumi.IntOutput `pulumi:"replicaCapacity"`
-	// Replication role of the server
+	// Role of the server in a replication set.
 	ReplicationRole pulumi.StringPtrOutput `pulumi:"replicationRole"`
-	// The SKU (pricing tier) of the server.
+	// Compute tier and size of a server.
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
-	// The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica'. This property is returned only for Replica server
+	// Identifier of the server to be used as the source of the new server. Required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', 'Replica', or 'ReviveDropped'. This property is returned only when the target server is a read replica.
 	SourceServerResourceId pulumi.StringPtrOutput `pulumi:"sourceServerResourceId"`
-	// A state of a server that is visible to user.
+	// Possible states of a server.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Storage properties of a server.
 	Storage StorageResponsePtrOutput `pulumi:"storage"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv6.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
-	// PostgreSQL Server version.
+	// Major version of PostgreSQL database engine.
 	Version pulumi.StringPtrOutput `pulumi:"version"`
 }
 
@@ -87,6 +96,9 @@ func NewServer(ctx *pulumi.Context,
 	if args.Backup != nil {
 		args.Backup = args.Backup.ToBackupTypePtrOutput().ApplyT(func(v *BackupType) *BackupType { return v.Defaults() }).(BackupTypePtrOutput)
 	}
+	if args.Cluster != nil {
+		args.Cluster = args.Cluster.ToClusterPtrOutput().ApplyT(func(v *Cluster) *Cluster { return v.Defaults() }).(ClusterPtrOutput)
+	}
 	if args.HighAvailability != nil {
 		args.HighAvailability = args.HighAvailability.ToHighAvailabilityPtrOutput().ApplyT(func(v *HighAvailability) *HighAvailability { return v.Defaults() }).(HighAvailabilityPtrOutput)
 	}
@@ -94,6 +106,12 @@ func NewServer(ctx *pulumi.Context,
 		args.MaintenanceWindow = args.MaintenanceWindow.ToMaintenanceWindowPtrOutput().ApplyT(func(v *MaintenanceWindow) *MaintenanceWindow { return v.Defaults() }).(MaintenanceWindowPtrOutput)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20171201:Server"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20171201preview:Server"),
+		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20200214preview:Server"),
 		},
@@ -139,6 +157,18 @@ func NewServer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20241101preview:Server"),
 		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20250101preview:Server"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20250601preview:Server"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20250801:Server"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20260101preview:Server"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -174,93 +204,101 @@ func (ServerState) ElementType() reflect.Type {
 }
 
 type serverArgs struct {
-	// The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
+	// Name of the login designated as the first password based administrator assigned to your instance of PostgreSQL. Must be specified the first time that you enable password based authentication on a server. Once set to a given value, it cannot be changed for the rest of the life of a server. If you disable password based authentication on a server which had it enabled, this password based role isn't deleted.
 	AdministratorLogin *string `pulumi:"administratorLogin"`
-	// The administrator login password (required for server creation).
+	// Password assigned to the administrator login. As long as password authentication is enabled, this password can be changed at any time.
 	AdministratorLoginPassword *string `pulumi:"administratorLoginPassword"`
-	// AuthConfig properties of a server.
+	// Authentication configuration properties of a server.
 	AuthConfig *AuthConfig `pulumi:"authConfig"`
-	// availability zone information of the server.
+	// Availability zone of a server.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// Backup properties of a server.
 	Backup *BackupType `pulumi:"backup"`
-	// The mode to create a new PostgreSQL server.
+	// Cluster properties of a server.
+	Cluster *Cluster `pulumi:"cluster"`
+	// Creation mode of a new server.
 	CreateMode *string `pulumi:"createMode"`
 	// Data encryption properties of a server.
 	DataEncryption *DataEncryption `pulumi:"dataEncryption"`
 	// High availability properties of a server.
 	HighAvailability *HighAvailability `pulumi:"highAvailability"`
-	// Describes the identity of the application.
+	// User assigned managed identities assigned to the server.
 	Identity *UserAssignedIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Maintenance window properties of a server.
 	MaintenanceWindow *MaintenanceWindow `pulumi:"maintenanceWindow"`
-	// Network properties of a server. This Network property is required to be passed only in case you want the server to be Private access server.
+	// Network properties of a server. Only required if you want your server to be integrated into a virtual network provided by customer.
 	Network *Network `pulumi:"network"`
-	// Restore point creation time (ISO8601 format), specifying the time to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore'.
+	// Creation time (in ISO8601 format) of the backup which you want to restore in the new server. It's required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', or 'ReviveDropped'.
 	PointInTimeUTC *string `pulumi:"pointInTimeUTC"`
-	// Replication role of the server
+	// Read replica properties of a server. Required only in case that you want to promote a server.
+	Replica *Replica `pulumi:"replica"`
+	// Role of the server in a replication set.
 	ReplicationRole *string `pulumi:"replicationRole"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the server.
 	ServerName *string `pulumi:"serverName"`
-	// The SKU (pricing tier) of the server.
+	// Compute tier and size of a server.
 	Sku *Sku `pulumi:"sku"`
-	// The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica'. This property is returned only for Replica server
+	// Identifier of the server to be used as the source of the new server. Required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', 'Replica', or 'ReviveDropped'. This property is returned only when the target server is a read replica.
 	SourceServerResourceId *string `pulumi:"sourceServerResourceId"`
 	// Storage properties of a server.
 	Storage *Storage `pulumi:"storage"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// PostgreSQL Server version.
+	// Major version of PostgreSQL database engine.
 	Version *string `pulumi:"version"`
 }
 
 // The set of arguments for constructing a Server resource.
 type ServerArgs struct {
-	// The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
+	// Name of the login designated as the first password based administrator assigned to your instance of PostgreSQL. Must be specified the first time that you enable password based authentication on a server. Once set to a given value, it cannot be changed for the rest of the life of a server. If you disable password based authentication on a server which had it enabled, this password based role isn't deleted.
 	AdministratorLogin pulumi.StringPtrInput
-	// The administrator login password (required for server creation).
+	// Password assigned to the administrator login. As long as password authentication is enabled, this password can be changed at any time.
 	AdministratorLoginPassword pulumi.StringPtrInput
-	// AuthConfig properties of a server.
+	// Authentication configuration properties of a server.
 	AuthConfig AuthConfigPtrInput
-	// availability zone information of the server.
+	// Availability zone of a server.
 	AvailabilityZone pulumi.StringPtrInput
 	// Backup properties of a server.
 	Backup BackupTypePtrInput
-	// The mode to create a new PostgreSQL server.
+	// Cluster properties of a server.
+	Cluster ClusterPtrInput
+	// Creation mode of a new server.
 	CreateMode pulumi.StringPtrInput
 	// Data encryption properties of a server.
 	DataEncryption DataEncryptionPtrInput
 	// High availability properties of a server.
 	HighAvailability HighAvailabilityPtrInput
-	// Describes the identity of the application.
+	// User assigned managed identities assigned to the server.
 	Identity UserAssignedIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Maintenance window properties of a server.
 	MaintenanceWindow MaintenanceWindowPtrInput
-	// Network properties of a server. This Network property is required to be passed only in case you want the server to be Private access server.
+	// Network properties of a server. Only required if you want your server to be integrated into a virtual network provided by customer.
 	Network NetworkPtrInput
-	// Restore point creation time (ISO8601 format), specifying the time to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore'.
+	// Creation time (in ISO8601 format) of the backup which you want to restore in the new server. It's required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', or 'ReviveDropped'.
 	PointInTimeUTC pulumi.StringPtrInput
-	// Replication role of the server
+	// Read replica properties of a server. Required only in case that you want to promote a server.
+	Replica ReplicaPtrInput
+	// Role of the server in a replication set.
 	ReplicationRole pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the server.
 	ServerName pulumi.StringPtrInput
-	// The SKU (pricing tier) of the server.
+	// Compute tier and size of a server.
 	Sku SkuPtrInput
-	// The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica'. This property is returned only for Replica server
+	// Identifier of the server to be used as the source of the new server. Required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', 'Replica', or 'ReviveDropped'. This property is returned only when the target server is a read replica.
 	SourceServerResourceId pulumi.StringPtrInput
 	// Storage properties of a server.
 	Storage StoragePtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
-	// PostgreSQL Server version.
+	// Major version of PostgreSQL database engine.
 	Version pulumi.StringPtrInput
 }
 
@@ -301,19 +339,24 @@ func (o ServerOutput) ToServerOutputWithContext(ctx context.Context) ServerOutpu
 	return o
 }
 
-// The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
+// Name of the login designated as the first password based administrator assigned to your instance of PostgreSQL. Must be specified the first time that you enable password based authentication on a server. Once set to a given value, it cannot be changed for the rest of the life of a server. If you disable password based authentication on a server which had it enabled, this password based role isn't deleted.
 func (o ServerOutput) AdministratorLogin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringPtrOutput { return v.AdministratorLogin }).(pulumi.StringPtrOutput)
 }
 
-// AuthConfig properties of a server.
+// Authentication configuration properties of a server.
 func (o ServerOutput) AuthConfig() AuthConfigResponsePtrOutput {
 	return o.ApplyT(func(v *Server) AuthConfigResponsePtrOutput { return v.AuthConfig }).(AuthConfigResponsePtrOutput)
 }
 
-// availability zone information of the server.
+// Availability zone of a server.
 func (o ServerOutput) AvailabilityZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringPtrOutput { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o ServerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Backup properties of a server.
@@ -321,12 +364,17 @@ func (o ServerOutput) Backup() BackupResponsePtrOutput {
 	return o.ApplyT(func(v *Server) BackupResponsePtrOutput { return v.Backup }).(BackupResponsePtrOutput)
 }
 
+// Cluster properties of a server.
+func (o ServerOutput) Cluster() ClusterResponsePtrOutput {
+	return o.ApplyT(func(v *Server) ClusterResponsePtrOutput { return v.Cluster }).(ClusterResponsePtrOutput)
+}
+
 // Data encryption properties of a server.
 func (o ServerOutput) DataEncryption() DataEncryptionResponsePtrOutput {
 	return o.ApplyT(func(v *Server) DataEncryptionResponsePtrOutput { return v.DataEncryption }).(DataEncryptionResponsePtrOutput)
 }
 
-// The fully qualified domain name of a server.
+// Fully qualified domain name of a server.
 func (o ServerOutput) FullyQualifiedDomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.FullyQualifiedDomainName }).(pulumi.StringOutput)
 }
@@ -336,7 +384,7 @@ func (o ServerOutput) HighAvailability() HighAvailabilityResponsePtrOutput {
 	return o.ApplyT(func(v *Server) HighAvailabilityResponsePtrOutput { return v.HighAvailability }).(HighAvailabilityResponsePtrOutput)
 }
 
-// Describes the identity of the application.
+// User assigned managed identities assigned to the server.
 func (o ServerOutput) Identity() UserAssignedIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *Server) UserAssignedIdentityResponsePtrOutput { return v.Identity }).(UserAssignedIdentityResponsePtrOutput)
 }
@@ -351,7 +399,7 @@ func (o ServerOutput) MaintenanceWindow() MaintenanceWindowResponsePtrOutput {
 	return o.ApplyT(func(v *Server) MaintenanceWindowResponsePtrOutput { return v.MaintenanceWindow }).(MaintenanceWindowResponsePtrOutput)
 }
 
-// The minor version of the server.
+// Minor version of PostgreSQL database engine.
 func (o ServerOutput) MinorVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.MinorVersion }).(pulumi.StringOutput)
 }
@@ -361,32 +409,44 @@ func (o ServerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Network properties of a server. This Network property is required to be passed only in case you want the server to be Private access server.
+// Network properties of a server. Only required if you want your server to be integrated into a virtual network provided by customer.
 func (o ServerOutput) Network() NetworkResponsePtrOutput {
 	return o.ApplyT(func(v *Server) NetworkResponsePtrOutput { return v.Network }).(NetworkResponsePtrOutput)
 }
 
-// Replicas allowed for a server.
+// List of private endpoint connections associated with the specified server.
+func (o ServerOutput) PrivateEndpointConnections() commontypesv6.PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v *Server) commontypesv6.PrivateEndpointConnectionResponseArrayOutput {
+		return v.PrivateEndpointConnections
+	}).(commontypesv6.PrivateEndpointConnectionResponseArrayOutput)
+}
+
+// Read replica properties of a server. Required only in case that you want to promote a server.
+func (o ServerOutput) Replica() ReplicaResponsePtrOutput {
+	return o.ApplyT(func(v *Server) ReplicaResponsePtrOutput { return v.Replica }).(ReplicaResponsePtrOutput)
+}
+
+// Maximum number of read replicas allowed for a server.
 func (o ServerOutput) ReplicaCapacity() pulumi.IntOutput {
 	return o.ApplyT(func(v *Server) pulumi.IntOutput { return v.ReplicaCapacity }).(pulumi.IntOutput)
 }
 
-// Replication role of the server
+// Role of the server in a replication set.
 func (o ServerOutput) ReplicationRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringPtrOutput { return v.ReplicationRole }).(pulumi.StringPtrOutput)
 }
 
-// The SKU (pricing tier) of the server.
+// Compute tier and size of a server.
 func (o ServerOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v *Server) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
 }
 
-// The source server resource ID to restore from. It's required when 'createMode' is 'PointInTimeRestore' or 'GeoRestore' or 'Replica'. This property is returned only for Replica server
+// Identifier of the server to be used as the source of the new server. Required when 'createMode' is 'PointInTimeRestore', 'GeoRestore', 'Replica', or 'ReviveDropped'. This property is returned only when the target server is a read replica.
 func (o ServerOutput) SourceServerResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringPtrOutput { return v.SourceServerResourceId }).(pulumi.StringPtrOutput)
 }
 
-// A state of a server that is visible to user.
+// Possible states of a server.
 func (o ServerOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
@@ -397,8 +457,8 @@ func (o ServerOutput) Storage() StorageResponsePtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ServerOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Server) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o ServerOutput) SystemData() commontypesv6.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Server) commontypesv6.SystemDataResponseOutput { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
 }
 
 // Resource tags.
@@ -411,7 +471,7 @@ func (o ServerOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// PostgreSQL Server version.
+// Major version of PostgreSQL database engine.
 func (o ServerOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringPtrOutput { return v.Version }).(pulumi.StringPtrOutput)
 }

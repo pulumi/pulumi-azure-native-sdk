@@ -8,20 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Defines the GuestAgent.
 //
-// Uses Azure REST API version 2023-03-01-preview.
+// Uses Azure REST API version 2023-12-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01-preview.
 //
-// Other available API versions: 2023-10-01, 2023-12-01.
+// Other available API versions: 2023-03-01-preview, 2023-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedvmwarevsphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type VMInstanceGuestAgent struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Username / Password Credentials to provision guest agent.
-	Credentials GuestCredentialResponsePtrOutput `pulumi:"credentials"`
+	Credentials GuestCredentialResponseV1PtrOutput `pulumi:"credentials"`
 	// Gets the name of the corresponding resource in Kubernetes.
 	CustomResourceName pulumi.StringOutput `pulumi:"customResourceName"`
 	// HTTP Proxy configuration for the VM.
@@ -39,7 +42,7 @@ type VMInstanceGuestAgent struct {
 	// The resource status information.
 	Statuses ResourceStatusResponseArrayOutput `pulumi:"statuses"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Gets or sets a unique identifier for this resource.
@@ -164,9 +167,14 @@ func (o VMInstanceGuestAgentOutput) ToVMInstanceGuestAgentOutputWithContext(ctx 
 	return o
 }
 
+// The Azure API version of the resource.
+func (o VMInstanceGuestAgentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VMInstanceGuestAgent) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Username / Password Credentials to provision guest agent.
-func (o VMInstanceGuestAgentOutput) Credentials() GuestCredentialResponsePtrOutput {
-	return o.ApplyT(func(v *VMInstanceGuestAgent) GuestCredentialResponsePtrOutput { return v.Credentials }).(GuestCredentialResponsePtrOutput)
+func (o VMInstanceGuestAgentOutput) Credentials() GuestCredentialResponseV1PtrOutput {
+	return o.ApplyT(func(v *VMInstanceGuestAgent) GuestCredentialResponseV1PtrOutput { return v.Credentials }).(GuestCredentialResponseV1PtrOutput)
 }
 
 // Gets the name of the corresponding resource in Kubernetes.
@@ -210,8 +218,8 @@ func (o VMInstanceGuestAgentOutput) Statuses() ResourceStatusResponseArrayOutput
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o VMInstanceGuestAgentOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *VMInstanceGuestAgent) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o VMInstanceGuestAgentOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *VMInstanceGuestAgent) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

@@ -8,20 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // VMware collector resource.
 //
-// Uses Azure REST API version 2023-03-15.
+// Uses Azure REST API version 2024-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-03-15.
 //
-// Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview, 2024-01-01-preview.
+// Other available API versions: 2023-03-15, 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview, 2024-01-15, 2024-03-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type VmwareCollectorsOperation struct {
 	pulumi.CustomResourceState
 
 	// Gets or sets the collector agent properties.
 	AgentProperties CollectorAgentPropertiesBaseResponsePtrOutput `pulumi:"agentProperties"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets the Timestamp when collector was created.
 	CreatedTimestamp pulumi.StringOutput `pulumi:"createdTimestamp"`
 	// Gets the discovery site id.
@@ -31,7 +34,7 @@ type VmwareCollectorsOperation struct {
 	// The status of the last operation.
 	ProvisioningState pulumi.StringPtrOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Timestamp when collector was last updated.
@@ -53,6 +56,9 @@ func NewVmwareCollectorsOperation(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:migrate/v20191001:VMwareCollector"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20191001:VmwareCollectorsOperation"),
 		},
 		{
@@ -69,6 +75,15 @@ func NewVmwareCollectorsOperation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20240101preview:VmwareCollectorsOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240115:VmwareCollectorsOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240303preview:VmwareCollectorsOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate:VMwareCollector"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -179,6 +194,11 @@ func (o VmwareCollectorsOperationOutput) AgentProperties() CollectorAgentPropert
 	}).(CollectorAgentPropertiesBaseResponsePtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o VmwareCollectorsOperationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VmwareCollectorsOperation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Gets the Timestamp when collector was created.
 func (o VmwareCollectorsOperationOutput) CreatedTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *VmwareCollectorsOperation) pulumi.StringOutput { return v.CreatedTimestamp }).(pulumi.StringOutput)
@@ -200,8 +220,8 @@ func (o VmwareCollectorsOperationOutput) ProvisioningState() pulumi.StringPtrOut
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o VmwareCollectorsOperationOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *VmwareCollectorsOperation) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o VmwareCollectorsOperationOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *VmwareCollectorsOperation) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

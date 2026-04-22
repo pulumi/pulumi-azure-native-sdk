@@ -7,13 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a AutoUpgradeProfile
 //
 // Uses Azure REST API version 2024-05-02-preview.
+//
+// Other available API versions: 2025-03-01, 2025-04-01-preview, 2025-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAutoUpgradeProfile(ctx *pulumi.Context, args *LookupAutoUpgradeProfileArgs, opts ...pulumi.InvokeOption) (*LookupAutoUpgradeProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAutoUpgradeProfileResult
@@ -35,6 +38,8 @@ type LookupAutoUpgradeProfileArgs struct {
 
 // The AutoUpgradeProfile resource.
 type LookupAutoUpgradeProfileResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Configures how auto-upgrade will be run.
 	Channel string `pulumi:"channel"`
 	// If set to False: the auto upgrade has effect - target managed clusters will be upgraded on schedule.
@@ -53,7 +58,7 @@ type LookupAutoUpgradeProfileResult struct {
 	// The provisioning state of the AutoUpgradeProfile resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The resource id of the UpdateStrategy resource to reference. If not specified, the auto upgrade will run on all clusters which are members of the fleet.
@@ -97,6 +102,11 @@ func (o LookupAutoUpgradeProfileResultOutput) ToLookupAutoUpgradeProfileResultOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupAutoUpgradeProfileResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAutoUpgradeProfileResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Configures how auto-upgrade will be run.
 func (o LookupAutoUpgradeProfileResultOutput) Channel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAutoUpgradeProfileResult) string { return v.Channel }).(pulumi.StringOutput)
@@ -138,8 +148,8 @@ func (o LookupAutoUpgradeProfileResultOutput) ProvisioningState() pulumi.StringO
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupAutoUpgradeProfileResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAutoUpgradeProfileResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupAutoUpgradeProfileResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAutoUpgradeProfileResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

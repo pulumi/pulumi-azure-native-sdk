@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describe SQL Server license resource.
 //
-// Uses Azure REST API version 2024-05-01-preview.
+// Uses Azure REST API version 2025-03-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-05-01-preview.
 //
-// Other available API versions: 2025-03-01-preview.
+// Other available API versions: 2024-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SqlServerLicense struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -27,7 +30,7 @@ type SqlServerLicense struct {
 	// SQL Server license properties
 	Properties SqlServerLicensePropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -53,6 +56,9 @@ func NewSqlServerLicense(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20250301preview:SqlServerLicense"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20260101:SqlServerLicense"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -152,6 +158,11 @@ func (o SqlServerLicenseOutput) ToSqlServerLicenseOutputWithContext(ctx context.
 	return o
 }
 
+// The Azure API version of the resource.
+func (o SqlServerLicenseOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SqlServerLicense) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The geo-location where the resource lives
 func (o SqlServerLicenseOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlServerLicense) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -168,8 +179,8 @@ func (o SqlServerLicenseOutput) Properties() SqlServerLicensePropertiesResponseO
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o SqlServerLicenseOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *SqlServerLicense) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o SqlServerLicenseOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *SqlServerLicense) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

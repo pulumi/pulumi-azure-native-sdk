@@ -7,11 +7,5365 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = utilities.GetEnvOrDefault
+
+// Optional field to record suppression reason for automatic shortfall.
+type AutomaticShortfallSuppressReason struct {
+	// Code for the suppression reason.
+	Code *string `pulumi:"code"`
+	// Message for suppression reason.
+	Message *string `pulumi:"message"`
+}
+
+// AutomaticShortfallSuppressReasonInput is an input type that accepts AutomaticShortfallSuppressReasonArgs and AutomaticShortfallSuppressReasonOutput values.
+// You can construct a concrete instance of `AutomaticShortfallSuppressReasonInput` via:
+//
+//	AutomaticShortfallSuppressReasonArgs{...}
+type AutomaticShortfallSuppressReasonInput interface {
+	pulumi.Input
+
+	ToAutomaticShortfallSuppressReasonOutput() AutomaticShortfallSuppressReasonOutput
+	ToAutomaticShortfallSuppressReasonOutputWithContext(context.Context) AutomaticShortfallSuppressReasonOutput
+}
+
+// Optional field to record suppression reason for automatic shortfall.
+type AutomaticShortfallSuppressReasonArgs struct {
+	// Code for the suppression reason.
+	Code pulumi.StringPtrInput `pulumi:"code"`
+	// Message for suppression reason.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (AutomaticShortfallSuppressReasonArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomaticShortfallSuppressReason)(nil)).Elem()
+}
+
+func (i AutomaticShortfallSuppressReasonArgs) ToAutomaticShortfallSuppressReasonOutput() AutomaticShortfallSuppressReasonOutput {
+	return i.ToAutomaticShortfallSuppressReasonOutputWithContext(context.Background())
+}
+
+func (i AutomaticShortfallSuppressReasonArgs) ToAutomaticShortfallSuppressReasonOutputWithContext(ctx context.Context) AutomaticShortfallSuppressReasonOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomaticShortfallSuppressReasonOutput)
+}
+
+func (i AutomaticShortfallSuppressReasonArgs) ToAutomaticShortfallSuppressReasonPtrOutput() AutomaticShortfallSuppressReasonPtrOutput {
+	return i.ToAutomaticShortfallSuppressReasonPtrOutputWithContext(context.Background())
+}
+
+func (i AutomaticShortfallSuppressReasonArgs) ToAutomaticShortfallSuppressReasonPtrOutputWithContext(ctx context.Context) AutomaticShortfallSuppressReasonPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomaticShortfallSuppressReasonOutput).ToAutomaticShortfallSuppressReasonPtrOutputWithContext(ctx)
+}
+
+// AutomaticShortfallSuppressReasonPtrInput is an input type that accepts AutomaticShortfallSuppressReasonArgs, AutomaticShortfallSuppressReasonPtr and AutomaticShortfallSuppressReasonPtrOutput values.
+// You can construct a concrete instance of `AutomaticShortfallSuppressReasonPtrInput` via:
+//
+//	        AutomaticShortfallSuppressReasonArgs{...}
+//
+//	or:
+//
+//	        nil
+type AutomaticShortfallSuppressReasonPtrInput interface {
+	pulumi.Input
+
+	ToAutomaticShortfallSuppressReasonPtrOutput() AutomaticShortfallSuppressReasonPtrOutput
+	ToAutomaticShortfallSuppressReasonPtrOutputWithContext(context.Context) AutomaticShortfallSuppressReasonPtrOutput
+}
+
+type automaticShortfallSuppressReasonPtrType AutomaticShortfallSuppressReasonArgs
+
+func AutomaticShortfallSuppressReasonPtr(v *AutomaticShortfallSuppressReasonArgs) AutomaticShortfallSuppressReasonPtrInput {
+	return (*automaticShortfallSuppressReasonPtrType)(v)
+}
+
+func (*automaticShortfallSuppressReasonPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomaticShortfallSuppressReason)(nil)).Elem()
+}
+
+func (i *automaticShortfallSuppressReasonPtrType) ToAutomaticShortfallSuppressReasonPtrOutput() AutomaticShortfallSuppressReasonPtrOutput {
+	return i.ToAutomaticShortfallSuppressReasonPtrOutputWithContext(context.Background())
+}
+
+func (i *automaticShortfallSuppressReasonPtrType) ToAutomaticShortfallSuppressReasonPtrOutputWithContext(ctx context.Context) AutomaticShortfallSuppressReasonPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomaticShortfallSuppressReasonPtrOutput)
+}
+
+// Optional field to record suppression reason for automatic shortfall.
+type AutomaticShortfallSuppressReasonOutput struct{ *pulumi.OutputState }
+
+func (AutomaticShortfallSuppressReasonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomaticShortfallSuppressReason)(nil)).Elem()
+}
+
+func (o AutomaticShortfallSuppressReasonOutput) ToAutomaticShortfallSuppressReasonOutput() AutomaticShortfallSuppressReasonOutput {
+	return o
+}
+
+func (o AutomaticShortfallSuppressReasonOutput) ToAutomaticShortfallSuppressReasonOutputWithContext(ctx context.Context) AutomaticShortfallSuppressReasonOutput {
+	return o
+}
+
+func (o AutomaticShortfallSuppressReasonOutput) ToAutomaticShortfallSuppressReasonPtrOutput() AutomaticShortfallSuppressReasonPtrOutput {
+	return o.ToAutomaticShortfallSuppressReasonPtrOutputWithContext(context.Background())
+}
+
+func (o AutomaticShortfallSuppressReasonOutput) ToAutomaticShortfallSuppressReasonPtrOutputWithContext(ctx context.Context) AutomaticShortfallSuppressReasonPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutomaticShortfallSuppressReason) *AutomaticShortfallSuppressReason {
+		return &v
+	}).(AutomaticShortfallSuppressReasonPtrOutput)
+}
+
+// Code for the suppression reason.
+func (o AutomaticShortfallSuppressReasonOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomaticShortfallSuppressReason) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// Message for suppression reason.
+func (o AutomaticShortfallSuppressReasonOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomaticShortfallSuppressReason) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type AutomaticShortfallSuppressReasonPtrOutput struct{ *pulumi.OutputState }
+
+func (AutomaticShortfallSuppressReasonPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomaticShortfallSuppressReason)(nil)).Elem()
+}
+
+func (o AutomaticShortfallSuppressReasonPtrOutput) ToAutomaticShortfallSuppressReasonPtrOutput() AutomaticShortfallSuppressReasonPtrOutput {
+	return o
+}
+
+func (o AutomaticShortfallSuppressReasonPtrOutput) ToAutomaticShortfallSuppressReasonPtrOutputWithContext(ctx context.Context) AutomaticShortfallSuppressReasonPtrOutput {
+	return o
+}
+
+func (o AutomaticShortfallSuppressReasonPtrOutput) Elem() AutomaticShortfallSuppressReasonOutput {
+	return o.ApplyT(func(v *AutomaticShortfallSuppressReason) AutomaticShortfallSuppressReason {
+		if v != nil {
+			return *v
+		}
+		var ret AutomaticShortfallSuppressReason
+		return ret
+	}).(AutomaticShortfallSuppressReasonOutput)
+}
+
+// Code for the suppression reason.
+func (o AutomaticShortfallSuppressReasonPtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomaticShortfallSuppressReason) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// Message for suppression reason.
+func (o AutomaticShortfallSuppressReasonPtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomaticShortfallSuppressReason) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional field to record suppression reason for automatic shortfall.
+type AutomaticShortfallSuppressReasonResponse struct {
+	// Code for the suppression reason.
+	Code *string `pulumi:"code"`
+	// Message for suppression reason.
+	Message *string `pulumi:"message"`
+}
+
+// Optional field to record suppression reason for automatic shortfall.
+type AutomaticShortfallSuppressReasonResponseOutput struct{ *pulumi.OutputState }
+
+func (AutomaticShortfallSuppressReasonResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomaticShortfallSuppressReasonResponse)(nil)).Elem()
+}
+
+func (o AutomaticShortfallSuppressReasonResponseOutput) ToAutomaticShortfallSuppressReasonResponseOutput() AutomaticShortfallSuppressReasonResponseOutput {
+	return o
+}
+
+func (o AutomaticShortfallSuppressReasonResponseOutput) ToAutomaticShortfallSuppressReasonResponseOutputWithContext(ctx context.Context) AutomaticShortfallSuppressReasonResponseOutput {
+	return o
+}
+
+// Code for the suppression reason.
+func (o AutomaticShortfallSuppressReasonResponseOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomaticShortfallSuppressReasonResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// Message for suppression reason.
+func (o AutomaticShortfallSuppressReasonResponseOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomaticShortfallSuppressReasonResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type AutomaticShortfallSuppressReasonResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AutomaticShortfallSuppressReasonResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomaticShortfallSuppressReasonResponse)(nil)).Elem()
+}
+
+func (o AutomaticShortfallSuppressReasonResponsePtrOutput) ToAutomaticShortfallSuppressReasonResponsePtrOutput() AutomaticShortfallSuppressReasonResponsePtrOutput {
+	return o
+}
+
+func (o AutomaticShortfallSuppressReasonResponsePtrOutput) ToAutomaticShortfallSuppressReasonResponsePtrOutputWithContext(ctx context.Context) AutomaticShortfallSuppressReasonResponsePtrOutput {
+	return o
+}
+
+func (o AutomaticShortfallSuppressReasonResponsePtrOutput) Elem() AutomaticShortfallSuppressReasonResponseOutput {
+	return o.ApplyT(func(v *AutomaticShortfallSuppressReasonResponse) AutomaticShortfallSuppressReasonResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AutomaticShortfallSuppressReasonResponse
+		return ret
+	}).(AutomaticShortfallSuppressReasonResponseOutput)
+}
+
+// Code for the suppression reason.
+func (o AutomaticShortfallSuppressReasonResponsePtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomaticShortfallSuppressReasonResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// Message for suppression reason.
+func (o AutomaticShortfallSuppressReasonResponsePtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomaticShortfallSuppressReasonResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// Catalog claim for a discount.
+type CatalogClaimsItem struct {
+	CatalogClaimsItemType *string `pulumi:"catalogClaimsItemType"`
+	Value                 *string `pulumi:"value"`
+}
+
+// CatalogClaimsItemInput is an input type that accepts CatalogClaimsItemArgs and CatalogClaimsItemOutput values.
+// You can construct a concrete instance of `CatalogClaimsItemInput` via:
+//
+//	CatalogClaimsItemArgs{...}
+type CatalogClaimsItemInput interface {
+	pulumi.Input
+
+	ToCatalogClaimsItemOutput() CatalogClaimsItemOutput
+	ToCatalogClaimsItemOutputWithContext(context.Context) CatalogClaimsItemOutput
+}
+
+// Catalog claim for a discount.
+type CatalogClaimsItemArgs struct {
+	CatalogClaimsItemType pulumi.StringPtrInput `pulumi:"catalogClaimsItemType"`
+	Value                 pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (CatalogClaimsItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogClaimsItem)(nil)).Elem()
+}
+
+func (i CatalogClaimsItemArgs) ToCatalogClaimsItemOutput() CatalogClaimsItemOutput {
+	return i.ToCatalogClaimsItemOutputWithContext(context.Background())
+}
+
+func (i CatalogClaimsItemArgs) ToCatalogClaimsItemOutputWithContext(ctx context.Context) CatalogClaimsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogClaimsItemOutput)
+}
+
+// CatalogClaimsItemArrayInput is an input type that accepts CatalogClaimsItemArray and CatalogClaimsItemArrayOutput values.
+// You can construct a concrete instance of `CatalogClaimsItemArrayInput` via:
+//
+//	CatalogClaimsItemArray{ CatalogClaimsItemArgs{...} }
+type CatalogClaimsItemArrayInput interface {
+	pulumi.Input
+
+	ToCatalogClaimsItemArrayOutput() CatalogClaimsItemArrayOutput
+	ToCatalogClaimsItemArrayOutputWithContext(context.Context) CatalogClaimsItemArrayOutput
+}
+
+type CatalogClaimsItemArray []CatalogClaimsItemInput
+
+func (CatalogClaimsItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CatalogClaimsItem)(nil)).Elem()
+}
+
+func (i CatalogClaimsItemArray) ToCatalogClaimsItemArrayOutput() CatalogClaimsItemArrayOutput {
+	return i.ToCatalogClaimsItemArrayOutputWithContext(context.Background())
+}
+
+func (i CatalogClaimsItemArray) ToCatalogClaimsItemArrayOutputWithContext(ctx context.Context) CatalogClaimsItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CatalogClaimsItemArrayOutput)
+}
+
+// Catalog claim for a discount.
+type CatalogClaimsItemOutput struct{ *pulumi.OutputState }
+
+func (CatalogClaimsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogClaimsItem)(nil)).Elem()
+}
+
+func (o CatalogClaimsItemOutput) ToCatalogClaimsItemOutput() CatalogClaimsItemOutput {
+	return o
+}
+
+func (o CatalogClaimsItemOutput) ToCatalogClaimsItemOutputWithContext(ctx context.Context) CatalogClaimsItemOutput {
+	return o
+}
+
+func (o CatalogClaimsItemOutput) CatalogClaimsItemType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogClaimsItem) *string { return v.CatalogClaimsItemType }).(pulumi.StringPtrOutput)
+}
+
+func (o CatalogClaimsItemOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogClaimsItem) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type CatalogClaimsItemArrayOutput struct{ *pulumi.OutputState }
+
+func (CatalogClaimsItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CatalogClaimsItem)(nil)).Elem()
+}
+
+func (o CatalogClaimsItemArrayOutput) ToCatalogClaimsItemArrayOutput() CatalogClaimsItemArrayOutput {
+	return o
+}
+
+func (o CatalogClaimsItemArrayOutput) ToCatalogClaimsItemArrayOutputWithContext(ctx context.Context) CatalogClaimsItemArrayOutput {
+	return o
+}
+
+func (o CatalogClaimsItemArrayOutput) Index(i pulumi.IntInput) CatalogClaimsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CatalogClaimsItem {
+		return vs[0].([]CatalogClaimsItem)[vs[1].(int)]
+	}).(CatalogClaimsItemOutput)
+}
+
+// Catalog claim for a discount.
+type CatalogClaimsItemResponse struct {
+	CatalogClaimsItemType *string `pulumi:"catalogClaimsItemType"`
+	Value                 *string `pulumi:"value"`
+}
+
+// Catalog claim for a discount.
+type CatalogClaimsItemResponseOutput struct{ *pulumi.OutputState }
+
+func (CatalogClaimsItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CatalogClaimsItemResponse)(nil)).Elem()
+}
+
+func (o CatalogClaimsItemResponseOutput) ToCatalogClaimsItemResponseOutput() CatalogClaimsItemResponseOutput {
+	return o
+}
+
+func (o CatalogClaimsItemResponseOutput) ToCatalogClaimsItemResponseOutputWithContext(ctx context.Context) CatalogClaimsItemResponseOutput {
+	return o
+}
+
+func (o CatalogClaimsItemResponseOutput) CatalogClaimsItemType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogClaimsItemResponse) *string { return v.CatalogClaimsItemType }).(pulumi.StringPtrOutput)
+}
+
+func (o CatalogClaimsItemResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CatalogClaimsItemResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type CatalogClaimsItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CatalogClaimsItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CatalogClaimsItemResponse)(nil)).Elem()
+}
+
+func (o CatalogClaimsItemResponseArrayOutput) ToCatalogClaimsItemResponseArrayOutput() CatalogClaimsItemResponseArrayOutput {
+	return o
+}
+
+func (o CatalogClaimsItemResponseArrayOutput) ToCatalogClaimsItemResponseArrayOutputWithContext(ctx context.Context) CatalogClaimsItemResponseArrayOutput {
+	return o
+}
+
+func (o CatalogClaimsItemResponseArrayOutput) Index(i pulumi.IntInput) CatalogClaimsItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CatalogClaimsItemResponse {
+		return vs[0].([]CatalogClaimsItemResponse)[vs[1].(int)]
+	}).(CatalogClaimsItemResponseOutput)
+}
+
+// Commitment towards the benefit.
+type Commitment struct {
+	Amount *float64 `pulumi:"amount"`
+	// The ISO 4217 3-letter currency code for the currency used by this purchase record.
+	CurrencyCode *string `pulumi:"currencyCode"`
+	// The grain of the commitment.
+	Grain *string `pulumi:"grain"`
+}
+
+// CommitmentInput is an input type that accepts CommitmentArgs and CommitmentOutput values.
+// You can construct a concrete instance of `CommitmentInput` via:
+//
+//	CommitmentArgs{...}
+type CommitmentInput interface {
+	pulumi.Input
+
+	ToCommitmentOutput() CommitmentOutput
+	ToCommitmentOutputWithContext(context.Context) CommitmentOutput
+}
+
+// Commitment towards the benefit.
+type CommitmentArgs struct {
+	Amount pulumi.Float64PtrInput `pulumi:"amount"`
+	// The ISO 4217 3-letter currency code for the currency used by this purchase record.
+	CurrencyCode pulumi.StringPtrInput `pulumi:"currencyCode"`
+	// The grain of the commitment.
+	Grain pulumi.StringPtrInput `pulumi:"grain"`
+}
+
+func (CommitmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Commitment)(nil)).Elem()
+}
+
+func (i CommitmentArgs) ToCommitmentOutput() CommitmentOutput {
+	return i.ToCommitmentOutputWithContext(context.Background())
+}
+
+func (i CommitmentArgs) ToCommitmentOutputWithContext(ctx context.Context) CommitmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommitmentOutput)
+}
+
+func (i CommitmentArgs) ToCommitmentPtrOutput() CommitmentPtrOutput {
+	return i.ToCommitmentPtrOutputWithContext(context.Background())
+}
+
+func (i CommitmentArgs) ToCommitmentPtrOutputWithContext(ctx context.Context) CommitmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommitmentOutput).ToCommitmentPtrOutputWithContext(ctx)
+}
+
+// CommitmentPtrInput is an input type that accepts CommitmentArgs, CommitmentPtr and CommitmentPtrOutput values.
+// You can construct a concrete instance of `CommitmentPtrInput` via:
+//
+//	        CommitmentArgs{...}
+//
+//	or:
+//
+//	        nil
+type CommitmentPtrInput interface {
+	pulumi.Input
+
+	ToCommitmentPtrOutput() CommitmentPtrOutput
+	ToCommitmentPtrOutputWithContext(context.Context) CommitmentPtrOutput
+}
+
+type commitmentPtrType CommitmentArgs
+
+func CommitmentPtr(v *CommitmentArgs) CommitmentPtrInput {
+	return (*commitmentPtrType)(v)
+}
+
+func (*commitmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Commitment)(nil)).Elem()
+}
+
+func (i *commitmentPtrType) ToCommitmentPtrOutput() CommitmentPtrOutput {
+	return i.ToCommitmentPtrOutputWithContext(context.Background())
+}
+
+func (i *commitmentPtrType) ToCommitmentPtrOutputWithContext(ctx context.Context) CommitmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommitmentPtrOutput)
+}
+
+// Commitment towards the benefit.
+type CommitmentOutput struct{ *pulumi.OutputState }
+
+func (CommitmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Commitment)(nil)).Elem()
+}
+
+func (o CommitmentOutput) ToCommitmentOutput() CommitmentOutput {
+	return o
+}
+
+func (o CommitmentOutput) ToCommitmentOutputWithContext(ctx context.Context) CommitmentOutput {
+	return o
+}
+
+func (o CommitmentOutput) ToCommitmentPtrOutput() CommitmentPtrOutput {
+	return o.ToCommitmentPtrOutputWithContext(context.Background())
+}
+
+func (o CommitmentOutput) ToCommitmentPtrOutputWithContext(ctx context.Context) CommitmentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Commitment) *Commitment {
+		return &v
+	}).(CommitmentPtrOutput)
+}
+
+func (o CommitmentOutput) Amount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v Commitment) *float64 { return v.Amount }).(pulumi.Float64PtrOutput)
+}
+
+// The ISO 4217 3-letter currency code for the currency used by this purchase record.
+func (o CommitmentOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Commitment) *string { return v.CurrencyCode }).(pulumi.StringPtrOutput)
+}
+
+// The grain of the commitment.
+func (o CommitmentOutput) Grain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Commitment) *string { return v.Grain }).(pulumi.StringPtrOutput)
+}
+
+type CommitmentPtrOutput struct{ *pulumi.OutputState }
+
+func (CommitmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Commitment)(nil)).Elem()
+}
+
+func (o CommitmentPtrOutput) ToCommitmentPtrOutput() CommitmentPtrOutput {
+	return o
+}
+
+func (o CommitmentPtrOutput) ToCommitmentPtrOutputWithContext(ctx context.Context) CommitmentPtrOutput {
+	return o
+}
+
+func (o CommitmentPtrOutput) Elem() CommitmentOutput {
+	return o.ApplyT(func(v *Commitment) Commitment {
+		if v != nil {
+			return *v
+		}
+		var ret Commitment
+		return ret
+	}).(CommitmentOutput)
+}
+
+func (o CommitmentPtrOutput) Amount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *Commitment) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Amount
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The ISO 4217 3-letter currency code for the currency used by this purchase record.
+func (o CommitmentPtrOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Commitment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CurrencyCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The grain of the commitment.
+func (o CommitmentPtrOutput) Grain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Commitment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Grain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Commitment towards the benefit.
+type CommitmentResponse struct {
+	Amount *float64 `pulumi:"amount"`
+	// The ISO 4217 3-letter currency code for the currency used by this purchase record.
+	CurrencyCode *string `pulumi:"currencyCode"`
+	// The grain of the commitment.
+	Grain *string `pulumi:"grain"`
+}
+
+// Commitment towards the benefit.
+type CommitmentResponseOutput struct{ *pulumi.OutputState }
+
+func (CommitmentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommitmentResponse)(nil)).Elem()
+}
+
+func (o CommitmentResponseOutput) ToCommitmentResponseOutput() CommitmentResponseOutput {
+	return o
+}
+
+func (o CommitmentResponseOutput) ToCommitmentResponseOutputWithContext(ctx context.Context) CommitmentResponseOutput {
+	return o
+}
+
+func (o CommitmentResponseOutput) Amount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v CommitmentResponse) *float64 { return v.Amount }).(pulumi.Float64PtrOutput)
+}
+
+// The ISO 4217 3-letter currency code for the currency used by this purchase record.
+func (o CommitmentResponseOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CommitmentResponse) *string { return v.CurrencyCode }).(pulumi.StringPtrOutput)
+}
+
+// The grain of the commitment.
+func (o CommitmentResponseOutput) Grain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CommitmentResponse) *string { return v.Grain }).(pulumi.StringPtrOutput)
+}
+
+type CommitmentResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CommitmentResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommitmentResponse)(nil)).Elem()
+}
+
+func (o CommitmentResponsePtrOutput) ToCommitmentResponsePtrOutput() CommitmentResponsePtrOutput {
+	return o
+}
+
+func (o CommitmentResponsePtrOutput) ToCommitmentResponsePtrOutputWithContext(ctx context.Context) CommitmentResponsePtrOutput {
+	return o
+}
+
+func (o CommitmentResponsePtrOutput) Elem() CommitmentResponseOutput {
+	return o.ApplyT(func(v *CommitmentResponse) CommitmentResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CommitmentResponse
+		return ret
+	}).(CommitmentResponseOutput)
+}
+
+func (o CommitmentResponsePtrOutput) Amount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CommitmentResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Amount
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The ISO 4217 3-letter currency code for the currency used by this purchase record.
+func (o CommitmentResponsePtrOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CommitmentResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CurrencyCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The grain of the commitment.
+func (o CommitmentResponsePtrOutput) Grain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CommitmentResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Grain
+	}).(pulumi.StringPtrOutput)
+}
+
+// Condition for a discount.
+type ConditionsItem struct {
+	ConditionName *string `pulumi:"conditionName"`
+	Type          *string `pulumi:"type"`
+	// These items are open-ended strings.
+	Value []string `pulumi:"value"`
+}
+
+// ConditionsItemInput is an input type that accepts ConditionsItemArgs and ConditionsItemOutput values.
+// You can construct a concrete instance of `ConditionsItemInput` via:
+//
+//	ConditionsItemArgs{...}
+type ConditionsItemInput interface {
+	pulumi.Input
+
+	ToConditionsItemOutput() ConditionsItemOutput
+	ToConditionsItemOutputWithContext(context.Context) ConditionsItemOutput
+}
+
+// Condition for a discount.
+type ConditionsItemArgs struct {
+	ConditionName pulumi.StringPtrInput `pulumi:"conditionName"`
+	Type          pulumi.StringPtrInput `pulumi:"type"`
+	// These items are open-ended strings.
+	Value pulumi.StringArrayInput `pulumi:"value"`
+}
+
+func (ConditionsItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionsItem)(nil)).Elem()
+}
+
+func (i ConditionsItemArgs) ToConditionsItemOutput() ConditionsItemOutput {
+	return i.ToConditionsItemOutputWithContext(context.Background())
+}
+
+func (i ConditionsItemArgs) ToConditionsItemOutputWithContext(ctx context.Context) ConditionsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionsItemOutput)
+}
+
+// ConditionsItemArrayInput is an input type that accepts ConditionsItemArray and ConditionsItemArrayOutput values.
+// You can construct a concrete instance of `ConditionsItemArrayInput` via:
+//
+//	ConditionsItemArray{ ConditionsItemArgs{...} }
+type ConditionsItemArrayInput interface {
+	pulumi.Input
+
+	ToConditionsItemArrayOutput() ConditionsItemArrayOutput
+	ToConditionsItemArrayOutputWithContext(context.Context) ConditionsItemArrayOutput
+}
+
+type ConditionsItemArray []ConditionsItemInput
+
+func (ConditionsItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConditionsItem)(nil)).Elem()
+}
+
+func (i ConditionsItemArray) ToConditionsItemArrayOutput() ConditionsItemArrayOutput {
+	return i.ToConditionsItemArrayOutputWithContext(context.Background())
+}
+
+func (i ConditionsItemArray) ToConditionsItemArrayOutputWithContext(ctx context.Context) ConditionsItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionsItemArrayOutput)
+}
+
+// Condition for a discount.
+type ConditionsItemOutput struct{ *pulumi.OutputState }
+
+func (ConditionsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionsItem)(nil)).Elem()
+}
+
+func (o ConditionsItemOutput) ToConditionsItemOutput() ConditionsItemOutput {
+	return o
+}
+
+func (o ConditionsItemOutput) ToConditionsItemOutputWithContext(ctx context.Context) ConditionsItemOutput {
+	return o
+}
+
+func (o ConditionsItemOutput) ConditionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConditionsItem) *string { return v.ConditionName }).(pulumi.StringPtrOutput)
+}
+
+func (o ConditionsItemOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConditionsItem) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// These items are open-ended strings.
+func (o ConditionsItemOutput) Value() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionsItem) []string { return v.Value }).(pulumi.StringArrayOutput)
+}
+
+type ConditionsItemArrayOutput struct{ *pulumi.OutputState }
+
+func (ConditionsItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConditionsItem)(nil)).Elem()
+}
+
+func (o ConditionsItemArrayOutput) ToConditionsItemArrayOutput() ConditionsItemArrayOutput {
+	return o
+}
+
+func (o ConditionsItemArrayOutput) ToConditionsItemArrayOutputWithContext(ctx context.Context) ConditionsItemArrayOutput {
+	return o
+}
+
+func (o ConditionsItemArrayOutput) Index(i pulumi.IntInput) ConditionsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConditionsItem {
+		return vs[0].([]ConditionsItem)[vs[1].(int)]
+	}).(ConditionsItemOutput)
+}
+
+// Condition for a discount.
+type ConditionsItemResponse struct {
+	ConditionName *string `pulumi:"conditionName"`
+	Type          *string `pulumi:"type"`
+	// These items are open-ended strings.
+	Value []string `pulumi:"value"`
+}
+
+// Condition for a discount.
+type ConditionsItemResponseOutput struct{ *pulumi.OutputState }
+
+func (ConditionsItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionsItemResponse)(nil)).Elem()
+}
+
+func (o ConditionsItemResponseOutput) ToConditionsItemResponseOutput() ConditionsItemResponseOutput {
+	return o
+}
+
+func (o ConditionsItemResponseOutput) ToConditionsItemResponseOutputWithContext(ctx context.Context) ConditionsItemResponseOutput {
+	return o
+}
+
+func (o ConditionsItemResponseOutput) ConditionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConditionsItemResponse) *string { return v.ConditionName }).(pulumi.StringPtrOutput)
+}
+
+func (o ConditionsItemResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConditionsItemResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// These items are open-ended strings.
+func (o ConditionsItemResponseOutput) Value() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionsItemResponse) []string { return v.Value }).(pulumi.StringArrayOutput)
+}
+
+type ConditionsItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ConditionsItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConditionsItemResponse)(nil)).Elem()
+}
+
+func (o ConditionsItemResponseArrayOutput) ToConditionsItemResponseArrayOutput() ConditionsItemResponseArrayOutput {
+	return o
+}
+
+func (o ConditionsItemResponseArrayOutput) ToConditionsItemResponseArrayOutputWithContext(ctx context.Context) ConditionsItemResponseArrayOutput {
+	return o
+}
+
+func (o ConditionsItemResponseArrayOutput) Index(i pulumi.IntInput) ConditionsItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConditionsItemResponse {
+		return vs[0].([]ConditionsItemResponse)[vs[1].(int)]
+	}).(ConditionsItemResponseOutput)
+}
+
+// Credit breakdown item representing a milestone, line-item, or no-charge service
+type CreditBreakdownItem struct {
+	// Allocation details including currency and amount for this breakdown item
+	Allocation *Commitment `pulumi:"allocation"`
+	// Key-value pairs for additional parameters and metadata
+	Dimensions []CreditDimension `pulumi:"dimensions"`
+	// End DateTime in UTC.
+	EndAt *string `pulumi:"endAt"`
+	// Start DateTime.
+	StartAt *string `pulumi:"startAt"`
+}
+
+// CreditBreakdownItemInput is an input type that accepts CreditBreakdownItemArgs and CreditBreakdownItemOutput values.
+// You can construct a concrete instance of `CreditBreakdownItemInput` via:
+//
+//	CreditBreakdownItemArgs{...}
+type CreditBreakdownItemInput interface {
+	pulumi.Input
+
+	ToCreditBreakdownItemOutput() CreditBreakdownItemOutput
+	ToCreditBreakdownItemOutputWithContext(context.Context) CreditBreakdownItemOutput
+}
+
+// Credit breakdown item representing a milestone, line-item, or no-charge service
+type CreditBreakdownItemArgs struct {
+	// Allocation details including currency and amount for this breakdown item
+	Allocation CommitmentPtrInput `pulumi:"allocation"`
+	// Key-value pairs for additional parameters and metadata
+	Dimensions CreditDimensionArrayInput `pulumi:"dimensions"`
+	// End DateTime in UTC.
+	EndAt pulumi.StringPtrInput `pulumi:"endAt"`
+	// Start DateTime.
+	StartAt pulumi.StringPtrInput `pulumi:"startAt"`
+}
+
+func (CreditBreakdownItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreditBreakdownItem)(nil)).Elem()
+}
+
+func (i CreditBreakdownItemArgs) ToCreditBreakdownItemOutput() CreditBreakdownItemOutput {
+	return i.ToCreditBreakdownItemOutputWithContext(context.Background())
+}
+
+func (i CreditBreakdownItemArgs) ToCreditBreakdownItemOutputWithContext(ctx context.Context) CreditBreakdownItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CreditBreakdownItemOutput)
+}
+
+// CreditBreakdownItemArrayInput is an input type that accepts CreditBreakdownItemArray and CreditBreakdownItemArrayOutput values.
+// You can construct a concrete instance of `CreditBreakdownItemArrayInput` via:
+//
+//	CreditBreakdownItemArray{ CreditBreakdownItemArgs{...} }
+type CreditBreakdownItemArrayInput interface {
+	pulumi.Input
+
+	ToCreditBreakdownItemArrayOutput() CreditBreakdownItemArrayOutput
+	ToCreditBreakdownItemArrayOutputWithContext(context.Context) CreditBreakdownItemArrayOutput
+}
+
+type CreditBreakdownItemArray []CreditBreakdownItemInput
+
+func (CreditBreakdownItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CreditBreakdownItem)(nil)).Elem()
+}
+
+func (i CreditBreakdownItemArray) ToCreditBreakdownItemArrayOutput() CreditBreakdownItemArrayOutput {
+	return i.ToCreditBreakdownItemArrayOutputWithContext(context.Background())
+}
+
+func (i CreditBreakdownItemArray) ToCreditBreakdownItemArrayOutputWithContext(ctx context.Context) CreditBreakdownItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CreditBreakdownItemArrayOutput)
+}
+
+// Credit breakdown item representing a milestone, line-item, or no-charge service
+type CreditBreakdownItemOutput struct{ *pulumi.OutputState }
+
+func (CreditBreakdownItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreditBreakdownItem)(nil)).Elem()
+}
+
+func (o CreditBreakdownItemOutput) ToCreditBreakdownItemOutput() CreditBreakdownItemOutput {
+	return o
+}
+
+func (o CreditBreakdownItemOutput) ToCreditBreakdownItemOutputWithContext(ctx context.Context) CreditBreakdownItemOutput {
+	return o
+}
+
+// Allocation details including currency and amount for this breakdown item
+func (o CreditBreakdownItemOutput) Allocation() CommitmentPtrOutput {
+	return o.ApplyT(func(v CreditBreakdownItem) *Commitment { return v.Allocation }).(CommitmentPtrOutput)
+}
+
+// Key-value pairs for additional parameters and metadata
+func (o CreditBreakdownItemOutput) Dimensions() CreditDimensionArrayOutput {
+	return o.ApplyT(func(v CreditBreakdownItem) []CreditDimension { return v.Dimensions }).(CreditDimensionArrayOutput)
+}
+
+// End DateTime in UTC.
+func (o CreditBreakdownItemOutput) EndAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CreditBreakdownItem) *string { return v.EndAt }).(pulumi.StringPtrOutput)
+}
+
+// Start DateTime.
+func (o CreditBreakdownItemOutput) StartAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CreditBreakdownItem) *string { return v.StartAt }).(pulumi.StringPtrOutput)
+}
+
+type CreditBreakdownItemArrayOutput struct{ *pulumi.OutputState }
+
+func (CreditBreakdownItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CreditBreakdownItem)(nil)).Elem()
+}
+
+func (o CreditBreakdownItemArrayOutput) ToCreditBreakdownItemArrayOutput() CreditBreakdownItemArrayOutput {
+	return o
+}
+
+func (o CreditBreakdownItemArrayOutput) ToCreditBreakdownItemArrayOutputWithContext(ctx context.Context) CreditBreakdownItemArrayOutput {
+	return o
+}
+
+func (o CreditBreakdownItemArrayOutput) Index(i pulumi.IntInput) CreditBreakdownItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CreditBreakdownItem {
+		return vs[0].([]CreditBreakdownItem)[vs[1].(int)]
+	}).(CreditBreakdownItemOutput)
+}
+
+// Credit breakdown item representing a milestone, line-item, or no-charge service
+type CreditBreakdownItemResponse struct {
+	// Allocation details including currency and amount for this breakdown item
+	Allocation *CommitmentResponse `pulumi:"allocation"`
+	// Key-value pairs for additional parameters and metadata
+	Dimensions []CreditDimensionResponse `pulumi:"dimensions"`
+	// End DateTime in UTC.
+	EndAt *string `pulumi:"endAt"`
+	// Start DateTime.
+	StartAt *string `pulumi:"startAt"`
+}
+
+// Credit breakdown item representing a milestone, line-item, or no-charge service
+type CreditBreakdownItemResponseOutput struct{ *pulumi.OutputState }
+
+func (CreditBreakdownItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreditBreakdownItemResponse)(nil)).Elem()
+}
+
+func (o CreditBreakdownItemResponseOutput) ToCreditBreakdownItemResponseOutput() CreditBreakdownItemResponseOutput {
+	return o
+}
+
+func (o CreditBreakdownItemResponseOutput) ToCreditBreakdownItemResponseOutputWithContext(ctx context.Context) CreditBreakdownItemResponseOutput {
+	return o
+}
+
+// Allocation details including currency and amount for this breakdown item
+func (o CreditBreakdownItemResponseOutput) Allocation() CommitmentResponsePtrOutput {
+	return o.ApplyT(func(v CreditBreakdownItemResponse) *CommitmentResponse { return v.Allocation }).(CommitmentResponsePtrOutput)
+}
+
+// Key-value pairs for additional parameters and metadata
+func (o CreditBreakdownItemResponseOutput) Dimensions() CreditDimensionResponseArrayOutput {
+	return o.ApplyT(func(v CreditBreakdownItemResponse) []CreditDimensionResponse { return v.Dimensions }).(CreditDimensionResponseArrayOutput)
+}
+
+// End DateTime in UTC.
+func (o CreditBreakdownItemResponseOutput) EndAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CreditBreakdownItemResponse) *string { return v.EndAt }).(pulumi.StringPtrOutput)
+}
+
+// Start DateTime.
+func (o CreditBreakdownItemResponseOutput) StartAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CreditBreakdownItemResponse) *string { return v.StartAt }).(pulumi.StringPtrOutput)
+}
+
+type CreditBreakdownItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CreditBreakdownItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CreditBreakdownItemResponse)(nil)).Elem()
+}
+
+func (o CreditBreakdownItemResponseArrayOutput) ToCreditBreakdownItemResponseArrayOutput() CreditBreakdownItemResponseArrayOutput {
+	return o
+}
+
+func (o CreditBreakdownItemResponseArrayOutput) ToCreditBreakdownItemResponseArrayOutputWithContext(ctx context.Context) CreditBreakdownItemResponseArrayOutput {
+	return o
+}
+
+func (o CreditBreakdownItemResponseArrayOutput) Index(i pulumi.IntInput) CreditBreakdownItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CreditBreakdownItemResponse {
+		return vs[0].([]CreditBreakdownItemResponse)[vs[1].(int)]
+	}).(CreditBreakdownItemResponseOutput)
+}
+
+// Key-value pair for additional credit parameters and metadata
+type CreditDimension struct {
+	// The dimension key (e.g., productFamily, description, creditType)
+	Key string `pulumi:"key"`
+	// The dimension value
+	Value string `pulumi:"value"`
+}
+
+// CreditDimensionInput is an input type that accepts CreditDimensionArgs and CreditDimensionOutput values.
+// You can construct a concrete instance of `CreditDimensionInput` via:
+//
+//	CreditDimensionArgs{...}
+type CreditDimensionInput interface {
+	pulumi.Input
+
+	ToCreditDimensionOutput() CreditDimensionOutput
+	ToCreditDimensionOutputWithContext(context.Context) CreditDimensionOutput
+}
+
+// Key-value pair for additional credit parameters and metadata
+type CreditDimensionArgs struct {
+	// The dimension key (e.g., productFamily, description, creditType)
+	Key pulumi.StringInput `pulumi:"key"`
+	// The dimension value
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (CreditDimensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreditDimension)(nil)).Elem()
+}
+
+func (i CreditDimensionArgs) ToCreditDimensionOutput() CreditDimensionOutput {
+	return i.ToCreditDimensionOutputWithContext(context.Background())
+}
+
+func (i CreditDimensionArgs) ToCreditDimensionOutputWithContext(ctx context.Context) CreditDimensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CreditDimensionOutput)
+}
+
+// CreditDimensionArrayInput is an input type that accepts CreditDimensionArray and CreditDimensionArrayOutput values.
+// You can construct a concrete instance of `CreditDimensionArrayInput` via:
+//
+//	CreditDimensionArray{ CreditDimensionArgs{...} }
+type CreditDimensionArrayInput interface {
+	pulumi.Input
+
+	ToCreditDimensionArrayOutput() CreditDimensionArrayOutput
+	ToCreditDimensionArrayOutputWithContext(context.Context) CreditDimensionArrayOutput
+}
+
+type CreditDimensionArray []CreditDimensionInput
+
+func (CreditDimensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CreditDimension)(nil)).Elem()
+}
+
+func (i CreditDimensionArray) ToCreditDimensionArrayOutput() CreditDimensionArrayOutput {
+	return i.ToCreditDimensionArrayOutputWithContext(context.Background())
+}
+
+func (i CreditDimensionArray) ToCreditDimensionArrayOutputWithContext(ctx context.Context) CreditDimensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CreditDimensionArrayOutput)
+}
+
+// Key-value pair for additional credit parameters and metadata
+type CreditDimensionOutput struct{ *pulumi.OutputState }
+
+func (CreditDimensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreditDimension)(nil)).Elem()
+}
+
+func (o CreditDimensionOutput) ToCreditDimensionOutput() CreditDimensionOutput {
+	return o
+}
+
+func (o CreditDimensionOutput) ToCreditDimensionOutputWithContext(ctx context.Context) CreditDimensionOutput {
+	return o
+}
+
+// The dimension key (e.g., productFamily, description, creditType)
+func (o CreditDimensionOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v CreditDimension) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The dimension value
+func (o CreditDimensionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v CreditDimension) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type CreditDimensionArrayOutput struct{ *pulumi.OutputState }
+
+func (CreditDimensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CreditDimension)(nil)).Elem()
+}
+
+func (o CreditDimensionArrayOutput) ToCreditDimensionArrayOutput() CreditDimensionArrayOutput {
+	return o
+}
+
+func (o CreditDimensionArrayOutput) ToCreditDimensionArrayOutputWithContext(ctx context.Context) CreditDimensionArrayOutput {
+	return o
+}
+
+func (o CreditDimensionArrayOutput) Index(i pulumi.IntInput) CreditDimensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CreditDimension {
+		return vs[0].([]CreditDimension)[vs[1].(int)]
+	}).(CreditDimensionOutput)
+}
+
+// Key-value pair for additional credit parameters and metadata
+type CreditDimensionResponse struct {
+	// The dimension key (e.g., productFamily, description, creditType)
+	Key string `pulumi:"key"`
+	// The dimension value
+	Value string `pulumi:"value"`
+}
+
+// Key-value pair for additional credit parameters and metadata
+type CreditDimensionResponseOutput struct{ *pulumi.OutputState }
+
+func (CreditDimensionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreditDimensionResponse)(nil)).Elem()
+}
+
+func (o CreditDimensionResponseOutput) ToCreditDimensionResponseOutput() CreditDimensionResponseOutput {
+	return o
+}
+
+func (o CreditDimensionResponseOutput) ToCreditDimensionResponseOutputWithContext(ctx context.Context) CreditDimensionResponseOutput {
+	return o
+}
+
+// The dimension key (e.g., productFamily, description, creditType)
+func (o CreditDimensionResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v CreditDimensionResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The dimension value
+func (o CreditDimensionResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v CreditDimensionResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type CreditDimensionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CreditDimensionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CreditDimensionResponse)(nil)).Elem()
+}
+
+func (o CreditDimensionResponseArrayOutput) ToCreditDimensionResponseArrayOutput() CreditDimensionResponseArrayOutput {
+	return o
+}
+
+func (o CreditDimensionResponseArrayOutput) ToCreditDimensionResponseArrayOutputWithContext(ctx context.Context) CreditDimensionResponseArrayOutput {
+	return o
+}
+
+func (o CreditDimensionResponseArrayOutput) Index(i pulumi.IntInput) CreditDimensionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CreditDimensionResponse {
+		return vs[0].([]CreditDimensionResponse)[vs[1].(int)]
+	}).(CreditDimensionResponseOutput)
+}
+
+// Credit breakdown item representing a milestone, line-item, or no-charge service
+type CreditPolicies struct {
+	// Expiration policy of the Credit
+	Expiration *string `pulumi:"expiration"`
+	// Redemption policy of the Credit
+	Redemption *string `pulumi:"redemption"`
+}
+
+// CreditPoliciesInput is an input type that accepts CreditPoliciesArgs and CreditPoliciesOutput values.
+// You can construct a concrete instance of `CreditPoliciesInput` via:
+//
+//	CreditPoliciesArgs{...}
+type CreditPoliciesInput interface {
+	pulumi.Input
+
+	ToCreditPoliciesOutput() CreditPoliciesOutput
+	ToCreditPoliciesOutputWithContext(context.Context) CreditPoliciesOutput
+}
+
+// Credit breakdown item representing a milestone, line-item, or no-charge service
+type CreditPoliciesArgs struct {
+	// Expiration policy of the Credit
+	Expiration pulumi.StringPtrInput `pulumi:"expiration"`
+	// Redemption policy of the Credit
+	Redemption pulumi.StringPtrInput `pulumi:"redemption"`
+}
+
+func (CreditPoliciesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreditPolicies)(nil)).Elem()
+}
+
+func (i CreditPoliciesArgs) ToCreditPoliciesOutput() CreditPoliciesOutput {
+	return i.ToCreditPoliciesOutputWithContext(context.Background())
+}
+
+func (i CreditPoliciesArgs) ToCreditPoliciesOutputWithContext(ctx context.Context) CreditPoliciesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CreditPoliciesOutput)
+}
+
+func (i CreditPoliciesArgs) ToCreditPoliciesPtrOutput() CreditPoliciesPtrOutput {
+	return i.ToCreditPoliciesPtrOutputWithContext(context.Background())
+}
+
+func (i CreditPoliciesArgs) ToCreditPoliciesPtrOutputWithContext(ctx context.Context) CreditPoliciesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CreditPoliciesOutput).ToCreditPoliciesPtrOutputWithContext(ctx)
+}
+
+// CreditPoliciesPtrInput is an input type that accepts CreditPoliciesArgs, CreditPoliciesPtr and CreditPoliciesPtrOutput values.
+// You can construct a concrete instance of `CreditPoliciesPtrInput` via:
+//
+//	        CreditPoliciesArgs{...}
+//
+//	or:
+//
+//	        nil
+type CreditPoliciesPtrInput interface {
+	pulumi.Input
+
+	ToCreditPoliciesPtrOutput() CreditPoliciesPtrOutput
+	ToCreditPoliciesPtrOutputWithContext(context.Context) CreditPoliciesPtrOutput
+}
+
+type creditPoliciesPtrType CreditPoliciesArgs
+
+func CreditPoliciesPtr(v *CreditPoliciesArgs) CreditPoliciesPtrInput {
+	return (*creditPoliciesPtrType)(v)
+}
+
+func (*creditPoliciesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CreditPolicies)(nil)).Elem()
+}
+
+func (i *creditPoliciesPtrType) ToCreditPoliciesPtrOutput() CreditPoliciesPtrOutput {
+	return i.ToCreditPoliciesPtrOutputWithContext(context.Background())
+}
+
+func (i *creditPoliciesPtrType) ToCreditPoliciesPtrOutputWithContext(ctx context.Context) CreditPoliciesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CreditPoliciesPtrOutput)
+}
+
+// Credit breakdown item representing a milestone, line-item, or no-charge service
+type CreditPoliciesOutput struct{ *pulumi.OutputState }
+
+func (CreditPoliciesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreditPolicies)(nil)).Elem()
+}
+
+func (o CreditPoliciesOutput) ToCreditPoliciesOutput() CreditPoliciesOutput {
+	return o
+}
+
+func (o CreditPoliciesOutput) ToCreditPoliciesOutputWithContext(ctx context.Context) CreditPoliciesOutput {
+	return o
+}
+
+func (o CreditPoliciesOutput) ToCreditPoliciesPtrOutput() CreditPoliciesPtrOutput {
+	return o.ToCreditPoliciesPtrOutputWithContext(context.Background())
+}
+
+func (o CreditPoliciesOutput) ToCreditPoliciesPtrOutputWithContext(ctx context.Context) CreditPoliciesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CreditPolicies) *CreditPolicies {
+		return &v
+	}).(CreditPoliciesPtrOutput)
+}
+
+// Expiration policy of the Credit
+func (o CreditPoliciesOutput) Expiration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CreditPolicies) *string { return v.Expiration }).(pulumi.StringPtrOutput)
+}
+
+// Redemption policy of the Credit
+func (o CreditPoliciesOutput) Redemption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CreditPolicies) *string { return v.Redemption }).(pulumi.StringPtrOutput)
+}
+
+type CreditPoliciesPtrOutput struct{ *pulumi.OutputState }
+
+func (CreditPoliciesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CreditPolicies)(nil)).Elem()
+}
+
+func (o CreditPoliciesPtrOutput) ToCreditPoliciesPtrOutput() CreditPoliciesPtrOutput {
+	return o
+}
+
+func (o CreditPoliciesPtrOutput) ToCreditPoliciesPtrOutputWithContext(ctx context.Context) CreditPoliciesPtrOutput {
+	return o
+}
+
+func (o CreditPoliciesPtrOutput) Elem() CreditPoliciesOutput {
+	return o.ApplyT(func(v *CreditPolicies) CreditPolicies {
+		if v != nil {
+			return *v
+		}
+		var ret CreditPolicies
+		return ret
+	}).(CreditPoliciesOutput)
+}
+
+// Expiration policy of the Credit
+func (o CreditPoliciesPtrOutput) Expiration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CreditPolicies) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Expiration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Redemption policy of the Credit
+func (o CreditPoliciesPtrOutput) Redemption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CreditPolicies) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Redemption
+	}).(pulumi.StringPtrOutput)
+}
+
+// Credit breakdown item representing a milestone, line-item, or no-charge service
+type CreditPoliciesResponse struct {
+	// Expiration policy of the Credit
+	Expiration *string `pulumi:"expiration"`
+	// Redemption policy of the Credit
+	Redemption *string `pulumi:"redemption"`
+}
+
+// Credit breakdown item representing a milestone, line-item, or no-charge service
+type CreditPoliciesResponseOutput struct{ *pulumi.OutputState }
+
+func (CreditPoliciesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreditPoliciesResponse)(nil)).Elem()
+}
+
+func (o CreditPoliciesResponseOutput) ToCreditPoliciesResponseOutput() CreditPoliciesResponseOutput {
+	return o
+}
+
+func (o CreditPoliciesResponseOutput) ToCreditPoliciesResponseOutputWithContext(ctx context.Context) CreditPoliciesResponseOutput {
+	return o
+}
+
+// Expiration policy of the Credit
+func (o CreditPoliciesResponseOutput) Expiration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CreditPoliciesResponse) *string { return v.Expiration }).(pulumi.StringPtrOutput)
+}
+
+// Redemption policy of the Credit
+func (o CreditPoliciesResponseOutput) Redemption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CreditPoliciesResponse) *string { return v.Redemption }).(pulumi.StringPtrOutput)
+}
+
+type CreditPoliciesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CreditPoliciesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CreditPoliciesResponse)(nil)).Elem()
+}
+
+func (o CreditPoliciesResponsePtrOutput) ToCreditPoliciesResponsePtrOutput() CreditPoliciesResponsePtrOutput {
+	return o
+}
+
+func (o CreditPoliciesResponsePtrOutput) ToCreditPoliciesResponsePtrOutputWithContext(ctx context.Context) CreditPoliciesResponsePtrOutput {
+	return o
+}
+
+func (o CreditPoliciesResponsePtrOutput) Elem() CreditPoliciesResponseOutput {
+	return o.ApplyT(func(v *CreditPoliciesResponse) CreditPoliciesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CreditPoliciesResponse
+		return ret
+	}).(CreditPoliciesResponseOutput)
+}
+
+// Expiration policy of the Credit
+func (o CreditPoliciesResponsePtrOutput) Expiration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CreditPoliciesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Expiration
+	}).(pulumi.StringPtrOutput)
+}
+
+// Redemption policy of the Credit
+func (o CreditPoliciesResponsePtrOutput) Redemption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CreditPoliciesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Redemption
+	}).(pulumi.StringPtrOutput)
+}
+
+// The reason for the credit. Not required if not applicable.
+type CreditReasonResponse struct {
+	// The reason code for credit.
+	Code float64 `pulumi:"code"`
+	// The free string description of the credit.
+	Description string `pulumi:"description"`
+}
+
+// The reason for the credit. Not required if not applicable.
+type CreditReasonResponseOutput struct{ *pulumi.OutputState }
+
+func (CreditReasonResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreditReasonResponse)(nil)).Elem()
+}
+
+func (o CreditReasonResponseOutput) ToCreditReasonResponseOutput() CreditReasonResponseOutput {
+	return o
+}
+
+func (o CreditReasonResponseOutput) ToCreditReasonResponseOutputWithContext(ctx context.Context) CreditReasonResponseOutput {
+	return o
+}
+
+// The reason code for credit.
+func (o CreditReasonResponseOutput) Code() pulumi.Float64Output {
+	return o.ApplyT(func(v CreditReasonResponse) float64 { return v.Code }).(pulumi.Float64Output)
+}
+
+// The free string description of the credit.
+func (o CreditReasonResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v CreditReasonResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+type CreditReasonResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CreditReasonResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CreditReasonResponse)(nil)).Elem()
+}
+
+func (o CreditReasonResponsePtrOutput) ToCreditReasonResponsePtrOutput() CreditReasonResponsePtrOutput {
+	return o
+}
+
+func (o CreditReasonResponsePtrOutput) ToCreditReasonResponsePtrOutputWithContext(ctx context.Context) CreditReasonResponsePtrOutput {
+	return o
+}
+
+func (o CreditReasonResponsePtrOutput) Elem() CreditReasonResponseOutput {
+	return o.ApplyT(func(v *CreditReasonResponse) CreditReasonResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CreditReasonResponse
+		return ret
+	}).(CreditReasonResponseOutput)
+}
+
+// The reason code for credit.
+func (o CreditReasonResponsePtrOutput) Code() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *CreditReasonResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Code
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The free string description of the credit.
+func (o CreditReasonResponsePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CreditReasonResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom price properties for a given discount.
+type CustomPriceProperties struct {
+	// The billing period of the priceable node. Validation: Optional, Maximum length 128 characters. Only allowed if the availability derived by market, product, sku, and claims has terms and at least one of those terms has a billing period. When specified, termUnits must be specified.
+	BillingPeriod *string `pulumi:"billingPeriod"`
+	// The set of BigCat claims. Validation: Required. Must contain AgreementType, NationalCloud, and PricingAudience claims. Additionally requires AccessPass claim when creating custom price with action == consume on the pricing instructions.
+	CatalogClaims []CatalogClaimsItem `pulumi:"catalogClaims"`
+	// The catalog instance where the priceable node lives. Validation: Required. No defined format, will vary per team.
+	CatalogId string `pulumi:"catalogId"`
+	// The set of market set prices of the priceable node. Validation: Required. Must contain at least one element.
+	MarketSetPrices []MarketSetPricesItems `pulumi:"marketSetPrices"`
+	// Must be present if the market, product, sku, and claims, and optional term information resolves to multiple availabilities that only differ by meter type. Validation: Maximum length 128 characters.
+	MeterType *string `pulumi:"meterType"`
+	// The type of the priceable node pricing rule. Validation: Required. Supported values are fixedPriceLock, fixedListPrice, and priceCeiling.
+	RuleType string `pulumi:"ruleType"`
+	// The term units for the priceable node. Validation: Optional, Maximum length 128 characters. Must be present if and only if the availability derived by market, product, sku, and claims has terms.
+	TermUnits *string `pulumi:"termUnits"`
+}
+
+// CustomPricePropertiesInput is an input type that accepts CustomPricePropertiesArgs and CustomPricePropertiesOutput values.
+// You can construct a concrete instance of `CustomPricePropertiesInput` via:
+//
+//	CustomPricePropertiesArgs{...}
+type CustomPricePropertiesInput interface {
+	pulumi.Input
+
+	ToCustomPricePropertiesOutput() CustomPricePropertiesOutput
+	ToCustomPricePropertiesOutputWithContext(context.Context) CustomPricePropertiesOutput
+}
+
+// Custom price properties for a given discount.
+type CustomPricePropertiesArgs struct {
+	// The billing period of the priceable node. Validation: Optional, Maximum length 128 characters. Only allowed if the availability derived by market, product, sku, and claims has terms and at least one of those terms has a billing period. When specified, termUnits must be specified.
+	BillingPeriod pulumi.StringPtrInput `pulumi:"billingPeriod"`
+	// The set of BigCat claims. Validation: Required. Must contain AgreementType, NationalCloud, and PricingAudience claims. Additionally requires AccessPass claim when creating custom price with action == consume on the pricing instructions.
+	CatalogClaims CatalogClaimsItemArrayInput `pulumi:"catalogClaims"`
+	// The catalog instance where the priceable node lives. Validation: Required. No defined format, will vary per team.
+	CatalogId pulumi.StringInput `pulumi:"catalogId"`
+	// The set of market set prices of the priceable node. Validation: Required. Must contain at least one element.
+	MarketSetPrices MarketSetPricesItemsArrayInput `pulumi:"marketSetPrices"`
+	// Must be present if the market, product, sku, and claims, and optional term information resolves to multiple availabilities that only differ by meter type. Validation: Maximum length 128 characters.
+	MeterType pulumi.StringPtrInput `pulumi:"meterType"`
+	// The type of the priceable node pricing rule. Validation: Required. Supported values are fixedPriceLock, fixedListPrice, and priceCeiling.
+	RuleType pulumi.StringInput `pulumi:"ruleType"`
+	// The term units for the priceable node. Validation: Optional, Maximum length 128 characters. Must be present if and only if the availability derived by market, product, sku, and claims has terms.
+	TermUnits pulumi.StringPtrInput `pulumi:"termUnits"`
+}
+
+func (CustomPricePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomPriceProperties)(nil)).Elem()
+}
+
+func (i CustomPricePropertiesArgs) ToCustomPricePropertiesOutput() CustomPricePropertiesOutput {
+	return i.ToCustomPricePropertiesOutputWithContext(context.Background())
+}
+
+func (i CustomPricePropertiesArgs) ToCustomPricePropertiesOutputWithContext(ctx context.Context) CustomPricePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomPricePropertiesOutput)
+}
+
+func (i CustomPricePropertiesArgs) ToCustomPricePropertiesPtrOutput() CustomPricePropertiesPtrOutput {
+	return i.ToCustomPricePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i CustomPricePropertiesArgs) ToCustomPricePropertiesPtrOutputWithContext(ctx context.Context) CustomPricePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomPricePropertiesOutput).ToCustomPricePropertiesPtrOutputWithContext(ctx)
+}
+
+// CustomPricePropertiesPtrInput is an input type that accepts CustomPricePropertiesArgs, CustomPricePropertiesPtr and CustomPricePropertiesPtrOutput values.
+// You can construct a concrete instance of `CustomPricePropertiesPtrInput` via:
+//
+//	        CustomPricePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type CustomPricePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToCustomPricePropertiesPtrOutput() CustomPricePropertiesPtrOutput
+	ToCustomPricePropertiesPtrOutputWithContext(context.Context) CustomPricePropertiesPtrOutput
+}
+
+type customPricePropertiesPtrType CustomPricePropertiesArgs
+
+func CustomPricePropertiesPtr(v *CustomPricePropertiesArgs) CustomPricePropertiesPtrInput {
+	return (*customPricePropertiesPtrType)(v)
+}
+
+func (*customPricePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomPriceProperties)(nil)).Elem()
+}
+
+func (i *customPricePropertiesPtrType) ToCustomPricePropertiesPtrOutput() CustomPricePropertiesPtrOutput {
+	return i.ToCustomPricePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *customPricePropertiesPtrType) ToCustomPricePropertiesPtrOutputWithContext(ctx context.Context) CustomPricePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomPricePropertiesPtrOutput)
+}
+
+// Custom price properties for a given discount.
+type CustomPricePropertiesOutput struct{ *pulumi.OutputState }
+
+func (CustomPricePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomPriceProperties)(nil)).Elem()
+}
+
+func (o CustomPricePropertiesOutput) ToCustomPricePropertiesOutput() CustomPricePropertiesOutput {
+	return o
+}
+
+func (o CustomPricePropertiesOutput) ToCustomPricePropertiesOutputWithContext(ctx context.Context) CustomPricePropertiesOutput {
+	return o
+}
+
+func (o CustomPricePropertiesOutput) ToCustomPricePropertiesPtrOutput() CustomPricePropertiesPtrOutput {
+	return o.ToCustomPricePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o CustomPricePropertiesOutput) ToCustomPricePropertiesPtrOutputWithContext(ctx context.Context) CustomPricePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomPriceProperties) *CustomPriceProperties {
+		return &v
+	}).(CustomPricePropertiesPtrOutput)
+}
+
+// The billing period of the priceable node. Validation: Optional, Maximum length 128 characters. Only allowed if the availability derived by market, product, sku, and claims has terms and at least one of those terms has a billing period. When specified, termUnits must be specified.
+func (o CustomPricePropertiesOutput) BillingPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomPriceProperties) *string { return v.BillingPeriod }).(pulumi.StringPtrOutput)
+}
+
+// The set of BigCat claims. Validation: Required. Must contain AgreementType, NationalCloud, and PricingAudience claims. Additionally requires AccessPass claim when creating custom price with action == consume on the pricing instructions.
+func (o CustomPricePropertiesOutput) CatalogClaims() CatalogClaimsItemArrayOutput {
+	return o.ApplyT(func(v CustomPriceProperties) []CatalogClaimsItem { return v.CatalogClaims }).(CatalogClaimsItemArrayOutput)
+}
+
+// The catalog instance where the priceable node lives. Validation: Required. No defined format, will vary per team.
+func (o CustomPricePropertiesOutput) CatalogId() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomPriceProperties) string { return v.CatalogId }).(pulumi.StringOutput)
+}
+
+// The set of market set prices of the priceable node. Validation: Required. Must contain at least one element.
+func (o CustomPricePropertiesOutput) MarketSetPrices() MarketSetPricesItemsArrayOutput {
+	return o.ApplyT(func(v CustomPriceProperties) []MarketSetPricesItems { return v.MarketSetPrices }).(MarketSetPricesItemsArrayOutput)
+}
+
+// Must be present if the market, product, sku, and claims, and optional term information resolves to multiple availabilities that only differ by meter type. Validation: Maximum length 128 characters.
+func (o CustomPricePropertiesOutput) MeterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomPriceProperties) *string { return v.MeterType }).(pulumi.StringPtrOutput)
+}
+
+// The type of the priceable node pricing rule. Validation: Required. Supported values are fixedPriceLock, fixedListPrice, and priceCeiling.
+func (o CustomPricePropertiesOutput) RuleType() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomPriceProperties) string { return v.RuleType }).(pulumi.StringOutput)
+}
+
+// The term units for the priceable node. Validation: Optional, Maximum length 128 characters. Must be present if and only if the availability derived by market, product, sku, and claims has terms.
+func (o CustomPricePropertiesOutput) TermUnits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomPriceProperties) *string { return v.TermUnits }).(pulumi.StringPtrOutput)
+}
+
+type CustomPricePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomPricePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomPriceProperties)(nil)).Elem()
+}
+
+func (o CustomPricePropertiesPtrOutput) ToCustomPricePropertiesPtrOutput() CustomPricePropertiesPtrOutput {
+	return o
+}
+
+func (o CustomPricePropertiesPtrOutput) ToCustomPricePropertiesPtrOutputWithContext(ctx context.Context) CustomPricePropertiesPtrOutput {
+	return o
+}
+
+func (o CustomPricePropertiesPtrOutput) Elem() CustomPricePropertiesOutput {
+	return o.ApplyT(func(v *CustomPriceProperties) CustomPriceProperties {
+		if v != nil {
+			return *v
+		}
+		var ret CustomPriceProperties
+		return ret
+	}).(CustomPricePropertiesOutput)
+}
+
+// The billing period of the priceable node. Validation: Optional, Maximum length 128 characters. Only allowed if the availability derived by market, product, sku, and claims has terms and at least one of those terms has a billing period. When specified, termUnits must be specified.
+func (o CustomPricePropertiesPtrOutput) BillingPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomPriceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BillingPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of BigCat claims. Validation: Required. Must contain AgreementType, NationalCloud, and PricingAudience claims. Additionally requires AccessPass claim when creating custom price with action == consume on the pricing instructions.
+func (o CustomPricePropertiesPtrOutput) CatalogClaims() CatalogClaimsItemArrayOutput {
+	return o.ApplyT(func(v *CustomPriceProperties) []CatalogClaimsItem {
+		if v == nil {
+			return nil
+		}
+		return v.CatalogClaims
+	}).(CatalogClaimsItemArrayOutput)
+}
+
+// The catalog instance where the priceable node lives. Validation: Required. No defined format, will vary per team.
+func (o CustomPricePropertiesPtrOutput) CatalogId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomPriceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CatalogId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of market set prices of the priceable node. Validation: Required. Must contain at least one element.
+func (o CustomPricePropertiesPtrOutput) MarketSetPrices() MarketSetPricesItemsArrayOutput {
+	return o.ApplyT(func(v *CustomPriceProperties) []MarketSetPricesItems {
+		if v == nil {
+			return nil
+		}
+		return v.MarketSetPrices
+	}).(MarketSetPricesItemsArrayOutput)
+}
+
+// Must be present if the market, product, sku, and claims, and optional term information resolves to multiple availabilities that only differ by meter type. Validation: Maximum length 128 characters.
+func (o CustomPricePropertiesPtrOutput) MeterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomPriceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MeterType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the priceable node pricing rule. Validation: Required. Supported values are fixedPriceLock, fixedListPrice, and priceCeiling.
+func (o CustomPricePropertiesPtrOutput) RuleType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomPriceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RuleType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The term units for the priceable node. Validation: Optional, Maximum length 128 characters. Must be present if and only if the availability derived by market, product, sku, and claims has terms.
+func (o CustomPricePropertiesPtrOutput) TermUnits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomPriceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TermUnits
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom price properties for a given discount.
+type CustomPricePropertiesResponse struct {
+	// The billing period of the priceable node. Validation: Optional, Maximum length 128 characters. Only allowed if the availability derived by market, product, sku, and claims has terms and at least one of those terms has a billing period. When specified, termUnits must be specified.
+	BillingPeriod *string `pulumi:"billingPeriod"`
+	// The set of BigCat claims. Validation: Required. Must contain AgreementType, NationalCloud, and PricingAudience claims. Additionally requires AccessPass claim when creating custom price with action == consume on the pricing instructions.
+	CatalogClaims []CatalogClaimsItemResponse `pulumi:"catalogClaims"`
+	// The catalog instance where the priceable node lives. Validation: Required. No defined format, will vary per team.
+	CatalogId string `pulumi:"catalogId"`
+	// The set of market set prices of the priceable node. Validation: Required. Must contain at least one element.
+	MarketSetPrices []MarketSetPricesItemsResponse `pulumi:"marketSetPrices"`
+	// Must be present if the market, product, sku, and claims, and optional term information resolves to multiple availabilities that only differ by meter type. Validation: Maximum length 128 characters.
+	MeterType *string `pulumi:"meterType"`
+	// The type of the priceable node pricing rule. Validation: Required. Supported values are fixedPriceLock, fixedListPrice, and priceCeiling.
+	RuleType string `pulumi:"ruleType"`
+	// The term units for the priceable node. Validation: Optional, Maximum length 128 characters. Must be present if and only if the availability derived by market, product, sku, and claims has terms.
+	TermUnits *string `pulumi:"termUnits"`
+}
+
+// Custom price properties for a given discount.
+type CustomPricePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomPricePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomPricePropertiesResponse)(nil)).Elem()
+}
+
+func (o CustomPricePropertiesResponseOutput) ToCustomPricePropertiesResponseOutput() CustomPricePropertiesResponseOutput {
+	return o
+}
+
+func (o CustomPricePropertiesResponseOutput) ToCustomPricePropertiesResponseOutputWithContext(ctx context.Context) CustomPricePropertiesResponseOutput {
+	return o
+}
+
+// The billing period of the priceable node. Validation: Optional, Maximum length 128 characters. Only allowed if the availability derived by market, product, sku, and claims has terms and at least one of those terms has a billing period. When specified, termUnits must be specified.
+func (o CustomPricePropertiesResponseOutput) BillingPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomPricePropertiesResponse) *string { return v.BillingPeriod }).(pulumi.StringPtrOutput)
+}
+
+// The set of BigCat claims. Validation: Required. Must contain AgreementType, NationalCloud, and PricingAudience claims. Additionally requires AccessPass claim when creating custom price with action == consume on the pricing instructions.
+func (o CustomPricePropertiesResponseOutput) CatalogClaims() CatalogClaimsItemResponseArrayOutput {
+	return o.ApplyT(func(v CustomPricePropertiesResponse) []CatalogClaimsItemResponse { return v.CatalogClaims }).(CatalogClaimsItemResponseArrayOutput)
+}
+
+// The catalog instance where the priceable node lives. Validation: Required. No defined format, will vary per team.
+func (o CustomPricePropertiesResponseOutput) CatalogId() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomPricePropertiesResponse) string { return v.CatalogId }).(pulumi.StringOutput)
+}
+
+// The set of market set prices of the priceable node. Validation: Required. Must contain at least one element.
+func (o CustomPricePropertiesResponseOutput) MarketSetPrices() MarketSetPricesItemsResponseArrayOutput {
+	return o.ApplyT(func(v CustomPricePropertiesResponse) []MarketSetPricesItemsResponse { return v.MarketSetPrices }).(MarketSetPricesItemsResponseArrayOutput)
+}
+
+// Must be present if the market, product, sku, and claims, and optional term information resolves to multiple availabilities that only differ by meter type. Validation: Maximum length 128 characters.
+func (o CustomPricePropertiesResponseOutput) MeterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomPricePropertiesResponse) *string { return v.MeterType }).(pulumi.StringPtrOutput)
+}
+
+// The type of the priceable node pricing rule. Validation: Required. Supported values are fixedPriceLock, fixedListPrice, and priceCeiling.
+func (o CustomPricePropertiesResponseOutput) RuleType() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomPricePropertiesResponse) string { return v.RuleType }).(pulumi.StringOutput)
+}
+
+// The term units for the priceable node. Validation: Optional, Maximum length 128 characters. Must be present if and only if the availability derived by market, product, sku, and claims has terms.
+func (o CustomPricePropertiesResponseOutput) TermUnits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomPricePropertiesResponse) *string { return v.TermUnits }).(pulumi.StringPtrOutput)
+}
+
+type CustomPricePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CustomPricePropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomPricePropertiesResponse)(nil)).Elem()
+}
+
+func (o CustomPricePropertiesResponsePtrOutput) ToCustomPricePropertiesResponsePtrOutput() CustomPricePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o CustomPricePropertiesResponsePtrOutput) ToCustomPricePropertiesResponsePtrOutputWithContext(ctx context.Context) CustomPricePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o CustomPricePropertiesResponsePtrOutput) Elem() CustomPricePropertiesResponseOutput {
+	return o.ApplyT(func(v *CustomPricePropertiesResponse) CustomPricePropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CustomPricePropertiesResponse
+		return ret
+	}).(CustomPricePropertiesResponseOutput)
+}
+
+// The billing period of the priceable node. Validation: Optional, Maximum length 128 characters. Only allowed if the availability derived by market, product, sku, and claims has terms and at least one of those terms has a billing period. When specified, termUnits must be specified.
+func (o CustomPricePropertiesResponsePtrOutput) BillingPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomPricePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BillingPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of BigCat claims. Validation: Required. Must contain AgreementType, NationalCloud, and PricingAudience claims. Additionally requires AccessPass claim when creating custom price with action == consume on the pricing instructions.
+func (o CustomPricePropertiesResponsePtrOutput) CatalogClaims() CatalogClaimsItemResponseArrayOutput {
+	return o.ApplyT(func(v *CustomPricePropertiesResponse) []CatalogClaimsItemResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CatalogClaims
+	}).(CatalogClaimsItemResponseArrayOutput)
+}
+
+// The catalog instance where the priceable node lives. Validation: Required. No defined format, will vary per team.
+func (o CustomPricePropertiesResponsePtrOutput) CatalogId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomPricePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CatalogId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of market set prices of the priceable node. Validation: Required. Must contain at least one element.
+func (o CustomPricePropertiesResponsePtrOutput) MarketSetPrices() MarketSetPricesItemsResponseArrayOutput {
+	return o.ApplyT(func(v *CustomPricePropertiesResponse) []MarketSetPricesItemsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.MarketSetPrices
+	}).(MarketSetPricesItemsResponseArrayOutput)
+}
+
+// Must be present if the market, product, sku, and claims, and optional term information resolves to multiple availabilities that only differ by meter type. Validation: Maximum length 128 characters.
+func (o CustomPricePropertiesResponsePtrOutput) MeterType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomPricePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MeterType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the priceable node pricing rule. Validation: Required. Supported values are fixedPriceLock, fixedListPrice, and priceCeiling.
+func (o CustomPricePropertiesResponsePtrOutput) RuleType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomPricePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RuleType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The term units for the priceable node. Validation: Optional, Maximum length 128 characters. Must be present if and only if the availability derived by market, product, sku, and claims has terms.
+func (o CustomPricePropertiesResponsePtrOutput) TermUnits() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomPricePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TermUnits
+	}).(pulumi.StringPtrOutput)
+}
+
+// Discount type properties including product family name, product id, sku, and custom price properties. Allows a single entry in marketSetPrices.
+type DiscountCustomPrice struct {
+	// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+	ApplyDiscountOn string `pulumi:"applyDiscountOn"`
+	// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+	Conditions []ConditionsItem `pulumi:"conditions"`
+	// Custom price properties for a given discount.
+	CustomPriceProperties *CustomPriceProperties `pulumi:"customPriceProperties"`
+	// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+	DiscountCombinationRule *string `pulumi:"discountCombinationRule"`
+	// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+	DiscountPercentage *float64 `pulumi:"discountPercentage"`
+	// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+	// Expected value is 'CustomPrice'.
+	DiscountType string `pulumi:"discountType"`
+	// Set only in price guarantee scenario.
+	PriceGuaranteeProperties *PriceGuaranteeProperties `pulumi:"priceGuaranteeProperties"`
+	// Product family for which the discount is given. Validation: Optional
+	ProductFamilyName *string `pulumi:"productFamilyName"`
+	// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
+	ProductId *string `pulumi:"productId"`
+	// ResourceSku for the given discount. Validation: Optional.
+	SkuId *string `pulumi:"skuId"`
+}
+
+// DiscountCustomPriceInput is an input type that accepts DiscountCustomPriceArgs and DiscountCustomPriceOutput values.
+// You can construct a concrete instance of `DiscountCustomPriceInput` via:
+//
+//	DiscountCustomPriceArgs{...}
+type DiscountCustomPriceInput interface {
+	pulumi.Input
+
+	ToDiscountCustomPriceOutput() DiscountCustomPriceOutput
+	ToDiscountCustomPriceOutputWithContext(context.Context) DiscountCustomPriceOutput
+}
+
+// Discount type properties including product family name, product id, sku, and custom price properties. Allows a single entry in marketSetPrices.
+type DiscountCustomPriceArgs struct {
+	// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+	ApplyDiscountOn pulumi.StringInput `pulumi:"applyDiscountOn"`
+	// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+	Conditions ConditionsItemArrayInput `pulumi:"conditions"`
+	// Custom price properties for a given discount.
+	CustomPriceProperties CustomPricePropertiesPtrInput `pulumi:"customPriceProperties"`
+	// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+	DiscountCombinationRule pulumi.StringPtrInput `pulumi:"discountCombinationRule"`
+	// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+	DiscountPercentage pulumi.Float64PtrInput `pulumi:"discountPercentage"`
+	// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+	// Expected value is 'CustomPrice'.
+	DiscountType pulumi.StringInput `pulumi:"discountType"`
+	// Set only in price guarantee scenario.
+	PriceGuaranteeProperties PriceGuaranteePropertiesPtrInput `pulumi:"priceGuaranteeProperties"`
+	// Product family for which the discount is given. Validation: Optional
+	ProductFamilyName pulumi.StringPtrInput `pulumi:"productFamilyName"`
+	// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
+	ProductId pulumi.StringPtrInput `pulumi:"productId"`
+	// ResourceSku for the given discount. Validation: Optional.
+	SkuId pulumi.StringPtrInput `pulumi:"skuId"`
+}
+
+func (DiscountCustomPriceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscountCustomPrice)(nil)).Elem()
+}
+
+func (i DiscountCustomPriceArgs) ToDiscountCustomPriceOutput() DiscountCustomPriceOutput {
+	return i.ToDiscountCustomPriceOutputWithContext(context.Background())
+}
+
+func (i DiscountCustomPriceArgs) ToDiscountCustomPriceOutputWithContext(ctx context.Context) DiscountCustomPriceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscountCustomPriceOutput)
+}
+
+func (i DiscountCustomPriceArgs) ToDiscountCustomPricePtrOutput() DiscountCustomPricePtrOutput {
+	return i.ToDiscountCustomPricePtrOutputWithContext(context.Background())
+}
+
+func (i DiscountCustomPriceArgs) ToDiscountCustomPricePtrOutputWithContext(ctx context.Context) DiscountCustomPricePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscountCustomPriceOutput).ToDiscountCustomPricePtrOutputWithContext(ctx)
+}
+
+// DiscountCustomPricePtrInput is an input type that accepts DiscountCustomPriceArgs, DiscountCustomPricePtr and DiscountCustomPricePtrOutput values.
+// You can construct a concrete instance of `DiscountCustomPricePtrInput` via:
+//
+//	        DiscountCustomPriceArgs{...}
+//
+//	or:
+//
+//	        nil
+type DiscountCustomPricePtrInput interface {
+	pulumi.Input
+
+	ToDiscountCustomPricePtrOutput() DiscountCustomPricePtrOutput
+	ToDiscountCustomPricePtrOutputWithContext(context.Context) DiscountCustomPricePtrOutput
+}
+
+type discountCustomPricePtrType DiscountCustomPriceArgs
+
+func DiscountCustomPricePtr(v *DiscountCustomPriceArgs) DiscountCustomPricePtrInput {
+	return (*discountCustomPricePtrType)(v)
+}
+
+func (*discountCustomPricePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscountCustomPrice)(nil)).Elem()
+}
+
+func (i *discountCustomPricePtrType) ToDiscountCustomPricePtrOutput() DiscountCustomPricePtrOutput {
+	return i.ToDiscountCustomPricePtrOutputWithContext(context.Background())
+}
+
+func (i *discountCustomPricePtrType) ToDiscountCustomPricePtrOutputWithContext(ctx context.Context) DiscountCustomPricePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscountCustomPricePtrOutput)
+}
+
+// Discount type properties including product family name, product id, sku, and custom price properties. Allows a single entry in marketSetPrices.
+type DiscountCustomPriceOutput struct{ *pulumi.OutputState }
+
+func (DiscountCustomPriceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscountCustomPrice)(nil)).Elem()
+}
+
+func (o DiscountCustomPriceOutput) ToDiscountCustomPriceOutput() DiscountCustomPriceOutput {
+	return o
+}
+
+func (o DiscountCustomPriceOutput) ToDiscountCustomPriceOutputWithContext(ctx context.Context) DiscountCustomPriceOutput {
+	return o
+}
+
+func (o DiscountCustomPriceOutput) ToDiscountCustomPricePtrOutput() DiscountCustomPricePtrOutput {
+	return o.ToDiscountCustomPricePtrOutputWithContext(context.Background())
+}
+
+func (o DiscountCustomPriceOutput) ToDiscountCustomPricePtrOutputWithContext(ctx context.Context) DiscountCustomPricePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiscountCustomPrice) *DiscountCustomPrice {
+		return &v
+	}).(DiscountCustomPricePtrOutput)
+}
+
+// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+func (o DiscountCustomPriceOutput) ApplyDiscountOn() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscountCustomPrice) string { return v.ApplyDiscountOn }).(pulumi.StringOutput)
+}
+
+// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+func (o DiscountCustomPriceOutput) Conditions() ConditionsItemArrayOutput {
+	return o.ApplyT(func(v DiscountCustomPrice) []ConditionsItem { return v.Conditions }).(ConditionsItemArrayOutput)
+}
+
+// Custom price properties for a given discount.
+func (o DiscountCustomPriceOutput) CustomPriceProperties() CustomPricePropertiesPtrOutput {
+	return o.ApplyT(func(v DiscountCustomPrice) *CustomPriceProperties { return v.CustomPriceProperties }).(CustomPricePropertiesPtrOutput)
+}
+
+// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+func (o DiscountCustomPriceOutput) DiscountCombinationRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountCustomPrice) *string { return v.DiscountCombinationRule }).(pulumi.StringPtrOutput)
+}
+
+// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+func (o DiscountCustomPriceOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DiscountCustomPrice) *float64 { return v.DiscountPercentage }).(pulumi.Float64PtrOutput)
+}
+
+// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+// Expected value is 'CustomPrice'.
+func (o DiscountCustomPriceOutput) DiscountType() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscountCustomPrice) string { return v.DiscountType }).(pulumi.StringOutput)
+}
+
+// Set only in price guarantee scenario.
+func (o DiscountCustomPriceOutput) PriceGuaranteeProperties() PriceGuaranteePropertiesPtrOutput {
+	return o.ApplyT(func(v DiscountCustomPrice) *PriceGuaranteeProperties { return v.PriceGuaranteeProperties }).(PriceGuaranteePropertiesPtrOutput)
+}
+
+// Product family for which the discount is given. Validation: Optional
+func (o DiscountCustomPriceOutput) ProductFamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountCustomPrice) *string { return v.ProductFamilyName }).(pulumi.StringPtrOutput)
+}
+
+// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
+func (o DiscountCustomPriceOutput) ProductId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountCustomPrice) *string { return v.ProductId }).(pulumi.StringPtrOutput)
+}
+
+// ResourceSku for the given discount. Validation: Optional.
+func (o DiscountCustomPriceOutput) SkuId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountCustomPrice) *string { return v.SkuId }).(pulumi.StringPtrOutput)
+}
+
+type DiscountCustomPricePtrOutput struct{ *pulumi.OutputState }
+
+func (DiscountCustomPricePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscountCustomPrice)(nil)).Elem()
+}
+
+func (o DiscountCustomPricePtrOutput) ToDiscountCustomPricePtrOutput() DiscountCustomPricePtrOutput {
+	return o
+}
+
+func (o DiscountCustomPricePtrOutput) ToDiscountCustomPricePtrOutputWithContext(ctx context.Context) DiscountCustomPricePtrOutput {
+	return o
+}
+
+func (o DiscountCustomPricePtrOutput) Elem() DiscountCustomPriceOutput {
+	return o.ApplyT(func(v *DiscountCustomPrice) DiscountCustomPrice {
+		if v != nil {
+			return *v
+		}
+		var ret DiscountCustomPrice
+		return ret
+	}).(DiscountCustomPriceOutput)
+}
+
+// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+func (o DiscountCustomPricePtrOutput) ApplyDiscountOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPrice) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApplyDiscountOn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+func (o DiscountCustomPricePtrOutput) Conditions() ConditionsItemArrayOutput {
+	return o.ApplyT(func(v *DiscountCustomPrice) []ConditionsItem {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(ConditionsItemArrayOutput)
+}
+
+// Custom price properties for a given discount.
+func (o DiscountCustomPricePtrOutput) CustomPriceProperties() CustomPricePropertiesPtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPrice) *CustomPriceProperties {
+		if v == nil {
+			return nil
+		}
+		return v.CustomPriceProperties
+	}).(CustomPricePropertiesPtrOutput)
+}
+
+// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+func (o DiscountCustomPricePtrOutput) DiscountCombinationRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPrice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiscountCombinationRule
+	}).(pulumi.StringPtrOutput)
+}
+
+// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+func (o DiscountCustomPricePtrOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPrice) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DiscountPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+// Expected value is 'CustomPrice'.
+func (o DiscountCustomPricePtrOutput) DiscountType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPrice) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DiscountType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Set only in price guarantee scenario.
+func (o DiscountCustomPricePtrOutput) PriceGuaranteeProperties() PriceGuaranteePropertiesPtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPrice) *PriceGuaranteeProperties {
+		if v == nil {
+			return nil
+		}
+		return v.PriceGuaranteeProperties
+	}).(PriceGuaranteePropertiesPtrOutput)
+}
+
+// Product family for which the discount is given. Validation: Optional
+func (o DiscountCustomPricePtrOutput) ProductFamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPrice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductFamilyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
+func (o DiscountCustomPricePtrOutput) ProductId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPrice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ResourceSku for the given discount. Validation: Optional.
+func (o DiscountCustomPricePtrOutput) SkuId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPrice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SkuId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Discount type properties including product family name, product id, sku, and custom price properties. Allows multiple entries in marketSetPrices.
+type DiscountCustomPriceMultiCurrency struct {
+	// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+	ApplyDiscountOn string `pulumi:"applyDiscountOn"`
+	// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+	Conditions []ConditionsItem `pulumi:"conditions"`
+	// Custom price properties for a given discount.
+	CustomPriceProperties *CustomPriceProperties `pulumi:"customPriceProperties"`
+	// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+	DiscountCombinationRule *string `pulumi:"discountCombinationRule"`
+	// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+	DiscountPercentage *float64 `pulumi:"discountPercentage"`
+	// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+	// Expected value is 'CustomPriceMultiCurrency'.
+	DiscountType string `pulumi:"discountType"`
+	// Set only in price guarantee scenario.
+	PriceGuaranteeProperties *PriceGuaranteeProperties `pulumi:"priceGuaranteeProperties"`
+	// Product family for which the discount is given. Validation: Optional
+	ProductFamilyName *string `pulumi:"productFamilyName"`
+	// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
+	ProductId *string `pulumi:"productId"`
+	// ResourceSku for the given discount. Validation: Optional.
+	SkuId *string `pulumi:"skuId"`
+}
+
+// DiscountCustomPriceMultiCurrencyInput is an input type that accepts DiscountCustomPriceMultiCurrencyArgs and DiscountCustomPriceMultiCurrencyOutput values.
+// You can construct a concrete instance of `DiscountCustomPriceMultiCurrencyInput` via:
+//
+//	DiscountCustomPriceMultiCurrencyArgs{...}
+type DiscountCustomPriceMultiCurrencyInput interface {
+	pulumi.Input
+
+	ToDiscountCustomPriceMultiCurrencyOutput() DiscountCustomPriceMultiCurrencyOutput
+	ToDiscountCustomPriceMultiCurrencyOutputWithContext(context.Context) DiscountCustomPriceMultiCurrencyOutput
+}
+
+// Discount type properties including product family name, product id, sku, and custom price properties. Allows multiple entries in marketSetPrices.
+type DiscountCustomPriceMultiCurrencyArgs struct {
+	// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+	ApplyDiscountOn pulumi.StringInput `pulumi:"applyDiscountOn"`
+	// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+	Conditions ConditionsItemArrayInput `pulumi:"conditions"`
+	// Custom price properties for a given discount.
+	CustomPriceProperties CustomPricePropertiesPtrInput `pulumi:"customPriceProperties"`
+	// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+	DiscountCombinationRule pulumi.StringPtrInput `pulumi:"discountCombinationRule"`
+	// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+	DiscountPercentage pulumi.Float64PtrInput `pulumi:"discountPercentage"`
+	// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+	// Expected value is 'CustomPriceMultiCurrency'.
+	DiscountType pulumi.StringInput `pulumi:"discountType"`
+	// Set only in price guarantee scenario.
+	PriceGuaranteeProperties PriceGuaranteePropertiesPtrInput `pulumi:"priceGuaranteeProperties"`
+	// Product family for which the discount is given. Validation: Optional
+	ProductFamilyName pulumi.StringPtrInput `pulumi:"productFamilyName"`
+	// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
+	ProductId pulumi.StringPtrInput `pulumi:"productId"`
+	// ResourceSku for the given discount. Validation: Optional.
+	SkuId pulumi.StringPtrInput `pulumi:"skuId"`
+}
+
+func (DiscountCustomPriceMultiCurrencyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscountCustomPriceMultiCurrency)(nil)).Elem()
+}
+
+func (i DiscountCustomPriceMultiCurrencyArgs) ToDiscountCustomPriceMultiCurrencyOutput() DiscountCustomPriceMultiCurrencyOutput {
+	return i.ToDiscountCustomPriceMultiCurrencyOutputWithContext(context.Background())
+}
+
+func (i DiscountCustomPriceMultiCurrencyArgs) ToDiscountCustomPriceMultiCurrencyOutputWithContext(ctx context.Context) DiscountCustomPriceMultiCurrencyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscountCustomPriceMultiCurrencyOutput)
+}
+
+func (i DiscountCustomPriceMultiCurrencyArgs) ToDiscountCustomPriceMultiCurrencyPtrOutput() DiscountCustomPriceMultiCurrencyPtrOutput {
+	return i.ToDiscountCustomPriceMultiCurrencyPtrOutputWithContext(context.Background())
+}
+
+func (i DiscountCustomPriceMultiCurrencyArgs) ToDiscountCustomPriceMultiCurrencyPtrOutputWithContext(ctx context.Context) DiscountCustomPriceMultiCurrencyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscountCustomPriceMultiCurrencyOutput).ToDiscountCustomPriceMultiCurrencyPtrOutputWithContext(ctx)
+}
+
+// DiscountCustomPriceMultiCurrencyPtrInput is an input type that accepts DiscountCustomPriceMultiCurrencyArgs, DiscountCustomPriceMultiCurrencyPtr and DiscountCustomPriceMultiCurrencyPtrOutput values.
+// You can construct a concrete instance of `DiscountCustomPriceMultiCurrencyPtrInput` via:
+//
+//	        DiscountCustomPriceMultiCurrencyArgs{...}
+//
+//	or:
+//
+//	        nil
+type DiscountCustomPriceMultiCurrencyPtrInput interface {
+	pulumi.Input
+
+	ToDiscountCustomPriceMultiCurrencyPtrOutput() DiscountCustomPriceMultiCurrencyPtrOutput
+	ToDiscountCustomPriceMultiCurrencyPtrOutputWithContext(context.Context) DiscountCustomPriceMultiCurrencyPtrOutput
+}
+
+type discountCustomPriceMultiCurrencyPtrType DiscountCustomPriceMultiCurrencyArgs
+
+func DiscountCustomPriceMultiCurrencyPtr(v *DiscountCustomPriceMultiCurrencyArgs) DiscountCustomPriceMultiCurrencyPtrInput {
+	return (*discountCustomPriceMultiCurrencyPtrType)(v)
+}
+
+func (*discountCustomPriceMultiCurrencyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscountCustomPriceMultiCurrency)(nil)).Elem()
+}
+
+func (i *discountCustomPriceMultiCurrencyPtrType) ToDiscountCustomPriceMultiCurrencyPtrOutput() DiscountCustomPriceMultiCurrencyPtrOutput {
+	return i.ToDiscountCustomPriceMultiCurrencyPtrOutputWithContext(context.Background())
+}
+
+func (i *discountCustomPriceMultiCurrencyPtrType) ToDiscountCustomPriceMultiCurrencyPtrOutputWithContext(ctx context.Context) DiscountCustomPriceMultiCurrencyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscountCustomPriceMultiCurrencyPtrOutput)
+}
+
+// Discount type properties including product family name, product id, sku, and custom price properties. Allows multiple entries in marketSetPrices.
+type DiscountCustomPriceMultiCurrencyOutput struct{ *pulumi.OutputState }
+
+func (DiscountCustomPriceMultiCurrencyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscountCustomPriceMultiCurrency)(nil)).Elem()
+}
+
+func (o DiscountCustomPriceMultiCurrencyOutput) ToDiscountCustomPriceMultiCurrencyOutput() DiscountCustomPriceMultiCurrencyOutput {
+	return o
+}
+
+func (o DiscountCustomPriceMultiCurrencyOutput) ToDiscountCustomPriceMultiCurrencyOutputWithContext(ctx context.Context) DiscountCustomPriceMultiCurrencyOutput {
+	return o
+}
+
+func (o DiscountCustomPriceMultiCurrencyOutput) ToDiscountCustomPriceMultiCurrencyPtrOutput() DiscountCustomPriceMultiCurrencyPtrOutput {
+	return o.ToDiscountCustomPriceMultiCurrencyPtrOutputWithContext(context.Background())
+}
+
+func (o DiscountCustomPriceMultiCurrencyOutput) ToDiscountCustomPriceMultiCurrencyPtrOutputWithContext(ctx context.Context) DiscountCustomPriceMultiCurrencyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiscountCustomPriceMultiCurrency) *DiscountCustomPriceMultiCurrency {
+		return &v
+	}).(DiscountCustomPriceMultiCurrencyPtrOutput)
+}
+
+// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+func (o DiscountCustomPriceMultiCurrencyOutput) ApplyDiscountOn() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscountCustomPriceMultiCurrency) string { return v.ApplyDiscountOn }).(pulumi.StringOutput)
+}
+
+// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+func (o DiscountCustomPriceMultiCurrencyOutput) Conditions() ConditionsItemArrayOutput {
+	return o.ApplyT(func(v DiscountCustomPriceMultiCurrency) []ConditionsItem { return v.Conditions }).(ConditionsItemArrayOutput)
+}
+
+// Custom price properties for a given discount.
+func (o DiscountCustomPriceMultiCurrencyOutput) CustomPriceProperties() CustomPricePropertiesPtrOutput {
+	return o.ApplyT(func(v DiscountCustomPriceMultiCurrency) *CustomPriceProperties { return v.CustomPriceProperties }).(CustomPricePropertiesPtrOutput)
+}
+
+// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+func (o DiscountCustomPriceMultiCurrencyOutput) DiscountCombinationRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountCustomPriceMultiCurrency) *string { return v.DiscountCombinationRule }).(pulumi.StringPtrOutput)
+}
+
+// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+func (o DiscountCustomPriceMultiCurrencyOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DiscountCustomPriceMultiCurrency) *float64 { return v.DiscountPercentage }).(pulumi.Float64PtrOutput)
+}
+
+// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+// Expected value is 'CustomPriceMultiCurrency'.
+func (o DiscountCustomPriceMultiCurrencyOutput) DiscountType() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscountCustomPriceMultiCurrency) string { return v.DiscountType }).(pulumi.StringOutput)
+}
+
+// Set only in price guarantee scenario.
+func (o DiscountCustomPriceMultiCurrencyOutput) PriceGuaranteeProperties() PriceGuaranteePropertiesPtrOutput {
+	return o.ApplyT(func(v DiscountCustomPriceMultiCurrency) *PriceGuaranteeProperties { return v.PriceGuaranteeProperties }).(PriceGuaranteePropertiesPtrOutput)
+}
+
+// Product family for which the discount is given. Validation: Optional
+func (o DiscountCustomPriceMultiCurrencyOutput) ProductFamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountCustomPriceMultiCurrency) *string { return v.ProductFamilyName }).(pulumi.StringPtrOutput)
+}
+
+// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
+func (o DiscountCustomPriceMultiCurrencyOutput) ProductId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountCustomPriceMultiCurrency) *string { return v.ProductId }).(pulumi.StringPtrOutput)
+}
+
+// ResourceSku for the given discount. Validation: Optional.
+func (o DiscountCustomPriceMultiCurrencyOutput) SkuId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountCustomPriceMultiCurrency) *string { return v.SkuId }).(pulumi.StringPtrOutput)
+}
+
+type DiscountCustomPriceMultiCurrencyPtrOutput struct{ *pulumi.OutputState }
+
+func (DiscountCustomPriceMultiCurrencyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscountCustomPriceMultiCurrency)(nil)).Elem()
+}
+
+func (o DiscountCustomPriceMultiCurrencyPtrOutput) ToDiscountCustomPriceMultiCurrencyPtrOutput() DiscountCustomPriceMultiCurrencyPtrOutput {
+	return o
+}
+
+func (o DiscountCustomPriceMultiCurrencyPtrOutput) ToDiscountCustomPriceMultiCurrencyPtrOutputWithContext(ctx context.Context) DiscountCustomPriceMultiCurrencyPtrOutput {
+	return o
+}
+
+func (o DiscountCustomPriceMultiCurrencyPtrOutput) Elem() DiscountCustomPriceMultiCurrencyOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceMultiCurrency) DiscountCustomPriceMultiCurrency {
+		if v != nil {
+			return *v
+		}
+		var ret DiscountCustomPriceMultiCurrency
+		return ret
+	}).(DiscountCustomPriceMultiCurrencyOutput)
+}
+
+// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+func (o DiscountCustomPriceMultiCurrencyPtrOutput) ApplyDiscountOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceMultiCurrency) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApplyDiscountOn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+func (o DiscountCustomPriceMultiCurrencyPtrOutput) Conditions() ConditionsItemArrayOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceMultiCurrency) []ConditionsItem {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(ConditionsItemArrayOutput)
+}
+
+// Custom price properties for a given discount.
+func (o DiscountCustomPriceMultiCurrencyPtrOutput) CustomPriceProperties() CustomPricePropertiesPtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceMultiCurrency) *CustomPriceProperties {
+		if v == nil {
+			return nil
+		}
+		return v.CustomPriceProperties
+	}).(CustomPricePropertiesPtrOutput)
+}
+
+// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+func (o DiscountCustomPriceMultiCurrencyPtrOutput) DiscountCombinationRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceMultiCurrency) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiscountCombinationRule
+	}).(pulumi.StringPtrOutput)
+}
+
+// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+func (o DiscountCustomPriceMultiCurrencyPtrOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceMultiCurrency) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DiscountPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+// Expected value is 'CustomPriceMultiCurrency'.
+func (o DiscountCustomPriceMultiCurrencyPtrOutput) DiscountType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceMultiCurrency) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DiscountType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Set only in price guarantee scenario.
+func (o DiscountCustomPriceMultiCurrencyPtrOutput) PriceGuaranteeProperties() PriceGuaranteePropertiesPtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceMultiCurrency) *PriceGuaranteeProperties {
+		if v == nil {
+			return nil
+		}
+		return v.PriceGuaranteeProperties
+	}).(PriceGuaranteePropertiesPtrOutput)
+}
+
+// Product family for which the discount is given. Validation: Optional
+func (o DiscountCustomPriceMultiCurrencyPtrOutput) ProductFamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceMultiCurrency) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductFamilyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
+func (o DiscountCustomPriceMultiCurrencyPtrOutput) ProductId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceMultiCurrency) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ResourceSku for the given discount. Validation: Optional.
+func (o DiscountCustomPriceMultiCurrencyPtrOutput) SkuId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceMultiCurrency) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SkuId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Discount type properties including product family name, product id, sku, and custom price properties. Allows multiple entries in marketSetPrices.
+type DiscountCustomPriceMultiCurrencyResponse struct {
+	// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+	ApplyDiscountOn string `pulumi:"applyDiscountOn"`
+	// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+	Conditions []ConditionsItemResponse `pulumi:"conditions"`
+	// Custom price properties for a given discount.
+	CustomPriceProperties *CustomPricePropertiesResponse `pulumi:"customPriceProperties"`
+	// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+	DiscountCombinationRule *string `pulumi:"discountCombinationRule"`
+	// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+	DiscountPercentage *float64 `pulumi:"discountPercentage"`
+	// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+	// Expected value is 'CustomPriceMultiCurrency'.
+	DiscountType string `pulumi:"discountType"`
+	// Set only in price guarantee scenario.
+	PriceGuaranteeProperties *PriceGuaranteePropertiesResponse `pulumi:"priceGuaranteeProperties"`
+	// Product family for which the discount is given. Validation: Optional
+	ProductFamilyName *string `pulumi:"productFamilyName"`
+	// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
+	ProductId *string `pulumi:"productId"`
+	// ResourceSku for the given discount. Validation: Optional.
+	SkuId *string `pulumi:"skuId"`
+}
+
+// Discount type properties including product family name, product id, sku, and custom price properties. Allows multiple entries in marketSetPrices.
+type DiscountCustomPriceMultiCurrencyResponseOutput struct{ *pulumi.OutputState }
+
+func (DiscountCustomPriceMultiCurrencyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscountCustomPriceMultiCurrencyResponse)(nil)).Elem()
+}
+
+func (o DiscountCustomPriceMultiCurrencyResponseOutput) ToDiscountCustomPriceMultiCurrencyResponseOutput() DiscountCustomPriceMultiCurrencyResponseOutput {
+	return o
+}
+
+func (o DiscountCustomPriceMultiCurrencyResponseOutput) ToDiscountCustomPriceMultiCurrencyResponseOutputWithContext(ctx context.Context) DiscountCustomPriceMultiCurrencyResponseOutput {
+	return o
+}
+
+// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+func (o DiscountCustomPriceMultiCurrencyResponseOutput) ApplyDiscountOn() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscountCustomPriceMultiCurrencyResponse) string { return v.ApplyDiscountOn }).(pulumi.StringOutput)
+}
+
+// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+func (o DiscountCustomPriceMultiCurrencyResponseOutput) Conditions() ConditionsItemResponseArrayOutput {
+	return o.ApplyT(func(v DiscountCustomPriceMultiCurrencyResponse) []ConditionsItemResponse { return v.Conditions }).(ConditionsItemResponseArrayOutput)
+}
+
+// Custom price properties for a given discount.
+func (o DiscountCustomPriceMultiCurrencyResponseOutput) CustomPriceProperties() CustomPricePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v DiscountCustomPriceMultiCurrencyResponse) *CustomPricePropertiesResponse {
+		return v.CustomPriceProperties
+	}).(CustomPricePropertiesResponsePtrOutput)
+}
+
+// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+func (o DiscountCustomPriceMultiCurrencyResponseOutput) DiscountCombinationRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountCustomPriceMultiCurrencyResponse) *string { return v.DiscountCombinationRule }).(pulumi.StringPtrOutput)
+}
+
+// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+func (o DiscountCustomPriceMultiCurrencyResponseOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DiscountCustomPriceMultiCurrencyResponse) *float64 { return v.DiscountPercentage }).(pulumi.Float64PtrOutput)
+}
+
+// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+// Expected value is 'CustomPriceMultiCurrency'.
+func (o DiscountCustomPriceMultiCurrencyResponseOutput) DiscountType() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscountCustomPriceMultiCurrencyResponse) string { return v.DiscountType }).(pulumi.StringOutput)
+}
+
+// Set only in price guarantee scenario.
+func (o DiscountCustomPriceMultiCurrencyResponseOutput) PriceGuaranteeProperties() PriceGuaranteePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v DiscountCustomPriceMultiCurrencyResponse) *PriceGuaranteePropertiesResponse {
+		return v.PriceGuaranteeProperties
+	}).(PriceGuaranteePropertiesResponsePtrOutput)
+}
+
+// Product family for which the discount is given. Validation: Optional
+func (o DiscountCustomPriceMultiCurrencyResponseOutput) ProductFamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountCustomPriceMultiCurrencyResponse) *string { return v.ProductFamilyName }).(pulumi.StringPtrOutput)
+}
+
+// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
+func (o DiscountCustomPriceMultiCurrencyResponseOutput) ProductId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountCustomPriceMultiCurrencyResponse) *string { return v.ProductId }).(pulumi.StringPtrOutput)
+}
+
+// ResourceSku for the given discount. Validation: Optional.
+func (o DiscountCustomPriceMultiCurrencyResponseOutput) SkuId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountCustomPriceMultiCurrencyResponse) *string { return v.SkuId }).(pulumi.StringPtrOutput)
+}
+
+type DiscountCustomPriceMultiCurrencyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DiscountCustomPriceMultiCurrencyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscountCustomPriceMultiCurrencyResponse)(nil)).Elem()
+}
+
+func (o DiscountCustomPriceMultiCurrencyResponsePtrOutput) ToDiscountCustomPriceMultiCurrencyResponsePtrOutput() DiscountCustomPriceMultiCurrencyResponsePtrOutput {
+	return o
+}
+
+func (o DiscountCustomPriceMultiCurrencyResponsePtrOutput) ToDiscountCustomPriceMultiCurrencyResponsePtrOutputWithContext(ctx context.Context) DiscountCustomPriceMultiCurrencyResponsePtrOutput {
+	return o
+}
+
+func (o DiscountCustomPriceMultiCurrencyResponsePtrOutput) Elem() DiscountCustomPriceMultiCurrencyResponseOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceMultiCurrencyResponse) DiscountCustomPriceMultiCurrencyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DiscountCustomPriceMultiCurrencyResponse
+		return ret
+	}).(DiscountCustomPriceMultiCurrencyResponseOutput)
+}
+
+// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+func (o DiscountCustomPriceMultiCurrencyResponsePtrOutput) ApplyDiscountOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceMultiCurrencyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApplyDiscountOn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+func (o DiscountCustomPriceMultiCurrencyResponsePtrOutput) Conditions() ConditionsItemResponseArrayOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceMultiCurrencyResponse) []ConditionsItemResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(ConditionsItemResponseArrayOutput)
+}
+
+// Custom price properties for a given discount.
+func (o DiscountCustomPriceMultiCurrencyResponsePtrOutput) CustomPriceProperties() CustomPricePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceMultiCurrencyResponse) *CustomPricePropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CustomPriceProperties
+	}).(CustomPricePropertiesResponsePtrOutput)
+}
+
+// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+func (o DiscountCustomPriceMultiCurrencyResponsePtrOutput) DiscountCombinationRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceMultiCurrencyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiscountCombinationRule
+	}).(pulumi.StringPtrOutput)
+}
+
+// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+func (o DiscountCustomPriceMultiCurrencyResponsePtrOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceMultiCurrencyResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DiscountPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+// Expected value is 'CustomPriceMultiCurrency'.
+func (o DiscountCustomPriceMultiCurrencyResponsePtrOutput) DiscountType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceMultiCurrencyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DiscountType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Set only in price guarantee scenario.
+func (o DiscountCustomPriceMultiCurrencyResponsePtrOutput) PriceGuaranteeProperties() PriceGuaranteePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceMultiCurrencyResponse) *PriceGuaranteePropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PriceGuaranteeProperties
+	}).(PriceGuaranteePropertiesResponsePtrOutput)
+}
+
+// Product family for which the discount is given. Validation: Optional
+func (o DiscountCustomPriceMultiCurrencyResponsePtrOutput) ProductFamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceMultiCurrencyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductFamilyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
+func (o DiscountCustomPriceMultiCurrencyResponsePtrOutput) ProductId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceMultiCurrencyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ResourceSku for the given discount. Validation: Optional.
+func (o DiscountCustomPriceMultiCurrencyResponsePtrOutput) SkuId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceMultiCurrencyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SkuId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Discount type properties including product family name, product id, sku, and custom price properties. Allows a single entry in marketSetPrices.
+type DiscountCustomPriceResponse struct {
+	// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+	ApplyDiscountOn string `pulumi:"applyDiscountOn"`
+	// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+	Conditions []ConditionsItemResponse `pulumi:"conditions"`
+	// Custom price properties for a given discount.
+	CustomPriceProperties *CustomPricePropertiesResponse `pulumi:"customPriceProperties"`
+	// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+	DiscountCombinationRule *string `pulumi:"discountCombinationRule"`
+	// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+	DiscountPercentage *float64 `pulumi:"discountPercentage"`
+	// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+	// Expected value is 'CustomPrice'.
+	DiscountType string `pulumi:"discountType"`
+	// Set only in price guarantee scenario.
+	PriceGuaranteeProperties *PriceGuaranteePropertiesResponse `pulumi:"priceGuaranteeProperties"`
+	// Product family for which the discount is given. Validation: Optional
+	ProductFamilyName *string `pulumi:"productFamilyName"`
+	// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
+	ProductId *string `pulumi:"productId"`
+	// ResourceSku for the given discount. Validation: Optional.
+	SkuId *string `pulumi:"skuId"`
+}
+
+// Discount type properties including product family name, product id, sku, and custom price properties. Allows a single entry in marketSetPrices.
+type DiscountCustomPriceResponseOutput struct{ *pulumi.OutputState }
+
+func (DiscountCustomPriceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscountCustomPriceResponse)(nil)).Elem()
+}
+
+func (o DiscountCustomPriceResponseOutput) ToDiscountCustomPriceResponseOutput() DiscountCustomPriceResponseOutput {
+	return o
+}
+
+func (o DiscountCustomPriceResponseOutput) ToDiscountCustomPriceResponseOutputWithContext(ctx context.Context) DiscountCustomPriceResponseOutput {
+	return o
+}
+
+// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+func (o DiscountCustomPriceResponseOutput) ApplyDiscountOn() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscountCustomPriceResponse) string { return v.ApplyDiscountOn }).(pulumi.StringOutput)
+}
+
+// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+func (o DiscountCustomPriceResponseOutput) Conditions() ConditionsItemResponseArrayOutput {
+	return o.ApplyT(func(v DiscountCustomPriceResponse) []ConditionsItemResponse { return v.Conditions }).(ConditionsItemResponseArrayOutput)
+}
+
+// Custom price properties for a given discount.
+func (o DiscountCustomPriceResponseOutput) CustomPriceProperties() CustomPricePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v DiscountCustomPriceResponse) *CustomPricePropertiesResponse { return v.CustomPriceProperties }).(CustomPricePropertiesResponsePtrOutput)
+}
+
+// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+func (o DiscountCustomPriceResponseOutput) DiscountCombinationRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountCustomPriceResponse) *string { return v.DiscountCombinationRule }).(pulumi.StringPtrOutput)
+}
+
+// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+func (o DiscountCustomPriceResponseOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DiscountCustomPriceResponse) *float64 { return v.DiscountPercentage }).(pulumi.Float64PtrOutput)
+}
+
+// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+// Expected value is 'CustomPrice'.
+func (o DiscountCustomPriceResponseOutput) DiscountType() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscountCustomPriceResponse) string { return v.DiscountType }).(pulumi.StringOutput)
+}
+
+// Set only in price guarantee scenario.
+func (o DiscountCustomPriceResponseOutput) PriceGuaranteeProperties() PriceGuaranteePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v DiscountCustomPriceResponse) *PriceGuaranteePropertiesResponse {
+		return v.PriceGuaranteeProperties
+	}).(PriceGuaranteePropertiesResponsePtrOutput)
+}
+
+// Product family for which the discount is given. Validation: Optional
+func (o DiscountCustomPriceResponseOutput) ProductFamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountCustomPriceResponse) *string { return v.ProductFamilyName }).(pulumi.StringPtrOutput)
+}
+
+// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
+func (o DiscountCustomPriceResponseOutput) ProductId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountCustomPriceResponse) *string { return v.ProductId }).(pulumi.StringPtrOutput)
+}
+
+// ResourceSku for the given discount. Validation: Optional.
+func (o DiscountCustomPriceResponseOutput) SkuId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountCustomPriceResponse) *string { return v.SkuId }).(pulumi.StringPtrOutput)
+}
+
+type DiscountCustomPriceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DiscountCustomPriceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscountCustomPriceResponse)(nil)).Elem()
+}
+
+func (o DiscountCustomPriceResponsePtrOutput) ToDiscountCustomPriceResponsePtrOutput() DiscountCustomPriceResponsePtrOutput {
+	return o
+}
+
+func (o DiscountCustomPriceResponsePtrOutput) ToDiscountCustomPriceResponsePtrOutputWithContext(ctx context.Context) DiscountCustomPriceResponsePtrOutput {
+	return o
+}
+
+func (o DiscountCustomPriceResponsePtrOutput) Elem() DiscountCustomPriceResponseOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceResponse) DiscountCustomPriceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DiscountCustomPriceResponse
+		return ret
+	}).(DiscountCustomPriceResponseOutput)
+}
+
+// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+func (o DiscountCustomPriceResponsePtrOutput) ApplyDiscountOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApplyDiscountOn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+func (o DiscountCustomPriceResponsePtrOutput) Conditions() ConditionsItemResponseArrayOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceResponse) []ConditionsItemResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(ConditionsItemResponseArrayOutput)
+}
+
+// Custom price properties for a given discount.
+func (o DiscountCustomPriceResponsePtrOutput) CustomPriceProperties() CustomPricePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceResponse) *CustomPricePropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CustomPriceProperties
+	}).(CustomPricePropertiesResponsePtrOutput)
+}
+
+// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+func (o DiscountCustomPriceResponsePtrOutput) DiscountCombinationRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiscountCombinationRule
+	}).(pulumi.StringPtrOutput)
+}
+
+// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+func (o DiscountCustomPriceResponsePtrOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DiscountPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+// Expected value is 'CustomPrice'.
+func (o DiscountCustomPriceResponsePtrOutput) DiscountType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DiscountType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Set only in price guarantee scenario.
+func (o DiscountCustomPriceResponsePtrOutput) PriceGuaranteeProperties() PriceGuaranteePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceResponse) *PriceGuaranteePropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PriceGuaranteeProperties
+	}).(PriceGuaranteePropertiesResponsePtrOutput)
+}
+
+// Product family for which the discount is given. Validation: Optional
+func (o DiscountCustomPriceResponsePtrOutput) ProductFamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductFamilyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
+func (o DiscountCustomPriceResponsePtrOutput) ProductId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ResourceSku for the given discount. Validation: Optional.
+func (o DiscountCustomPriceResponsePtrOutput) SkuId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountCustomPriceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SkuId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Discount type properties including product family name and product id.
+type DiscountProduct struct {
+	// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+	ApplyDiscountOn string `pulumi:"applyDiscountOn"`
+	// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+	Conditions []ConditionsItem `pulumi:"conditions"`
+	// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+	DiscountCombinationRule *string `pulumi:"discountCombinationRule"`
+	// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+	DiscountPercentage *float64 `pulumi:"discountPercentage"`
+	// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+	// Expected value is 'Product'.
+	DiscountType string `pulumi:"discountType"`
+	// Set only in price guarantee scenario.
+	PriceGuaranteeProperties *PriceGuaranteeProperties `pulumi:"priceGuaranteeProperties"`
+	// Product family for which the discount is given. Validation: Optional
+	ProductFamilyName *string `pulumi:"productFamilyName"`
+	// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
+	ProductId *string `pulumi:"productId"`
+}
+
+// DiscountProductInput is an input type that accepts DiscountProductArgs and DiscountProductOutput values.
+// You can construct a concrete instance of `DiscountProductInput` via:
+//
+//	DiscountProductArgs{...}
+type DiscountProductInput interface {
+	pulumi.Input
+
+	ToDiscountProductOutput() DiscountProductOutput
+	ToDiscountProductOutputWithContext(context.Context) DiscountProductOutput
+}
+
+// Discount type properties including product family name and product id.
+type DiscountProductArgs struct {
+	// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+	ApplyDiscountOn pulumi.StringInput `pulumi:"applyDiscountOn"`
+	// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+	Conditions ConditionsItemArrayInput `pulumi:"conditions"`
+	// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+	DiscountCombinationRule pulumi.StringPtrInput `pulumi:"discountCombinationRule"`
+	// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+	DiscountPercentage pulumi.Float64PtrInput `pulumi:"discountPercentage"`
+	// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+	// Expected value is 'Product'.
+	DiscountType pulumi.StringInput `pulumi:"discountType"`
+	// Set only in price guarantee scenario.
+	PriceGuaranteeProperties PriceGuaranteePropertiesPtrInput `pulumi:"priceGuaranteeProperties"`
+	// Product family for which the discount is given. Validation: Optional
+	ProductFamilyName pulumi.StringPtrInput `pulumi:"productFamilyName"`
+	// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
+	ProductId pulumi.StringPtrInput `pulumi:"productId"`
+}
+
+func (DiscountProductArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscountProduct)(nil)).Elem()
+}
+
+func (i DiscountProductArgs) ToDiscountProductOutput() DiscountProductOutput {
+	return i.ToDiscountProductOutputWithContext(context.Background())
+}
+
+func (i DiscountProductArgs) ToDiscountProductOutputWithContext(ctx context.Context) DiscountProductOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscountProductOutput)
+}
+
+func (i DiscountProductArgs) ToDiscountProductPtrOutput() DiscountProductPtrOutput {
+	return i.ToDiscountProductPtrOutputWithContext(context.Background())
+}
+
+func (i DiscountProductArgs) ToDiscountProductPtrOutputWithContext(ctx context.Context) DiscountProductPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscountProductOutput).ToDiscountProductPtrOutputWithContext(ctx)
+}
+
+// DiscountProductPtrInput is an input type that accepts DiscountProductArgs, DiscountProductPtr and DiscountProductPtrOutput values.
+// You can construct a concrete instance of `DiscountProductPtrInput` via:
+//
+//	        DiscountProductArgs{...}
+//
+//	or:
+//
+//	        nil
+type DiscountProductPtrInput interface {
+	pulumi.Input
+
+	ToDiscountProductPtrOutput() DiscountProductPtrOutput
+	ToDiscountProductPtrOutputWithContext(context.Context) DiscountProductPtrOutput
+}
+
+type discountProductPtrType DiscountProductArgs
+
+func DiscountProductPtr(v *DiscountProductArgs) DiscountProductPtrInput {
+	return (*discountProductPtrType)(v)
+}
+
+func (*discountProductPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscountProduct)(nil)).Elem()
+}
+
+func (i *discountProductPtrType) ToDiscountProductPtrOutput() DiscountProductPtrOutput {
+	return i.ToDiscountProductPtrOutputWithContext(context.Background())
+}
+
+func (i *discountProductPtrType) ToDiscountProductPtrOutputWithContext(ctx context.Context) DiscountProductPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscountProductPtrOutput)
+}
+
+// Discount type properties including product family name and product id.
+type DiscountProductOutput struct{ *pulumi.OutputState }
+
+func (DiscountProductOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscountProduct)(nil)).Elem()
+}
+
+func (o DiscountProductOutput) ToDiscountProductOutput() DiscountProductOutput {
+	return o
+}
+
+func (o DiscountProductOutput) ToDiscountProductOutputWithContext(ctx context.Context) DiscountProductOutput {
+	return o
+}
+
+func (o DiscountProductOutput) ToDiscountProductPtrOutput() DiscountProductPtrOutput {
+	return o.ToDiscountProductPtrOutputWithContext(context.Background())
+}
+
+func (o DiscountProductOutput) ToDiscountProductPtrOutputWithContext(ctx context.Context) DiscountProductPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiscountProduct) *DiscountProduct {
+		return &v
+	}).(DiscountProductPtrOutput)
+}
+
+// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+func (o DiscountProductOutput) ApplyDiscountOn() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscountProduct) string { return v.ApplyDiscountOn }).(pulumi.StringOutput)
+}
+
+// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+func (o DiscountProductOutput) Conditions() ConditionsItemArrayOutput {
+	return o.ApplyT(func(v DiscountProduct) []ConditionsItem { return v.Conditions }).(ConditionsItemArrayOutput)
+}
+
+// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+func (o DiscountProductOutput) DiscountCombinationRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountProduct) *string { return v.DiscountCombinationRule }).(pulumi.StringPtrOutput)
+}
+
+// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+func (o DiscountProductOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DiscountProduct) *float64 { return v.DiscountPercentage }).(pulumi.Float64PtrOutput)
+}
+
+// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+// Expected value is 'Product'.
+func (o DiscountProductOutput) DiscountType() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscountProduct) string { return v.DiscountType }).(pulumi.StringOutput)
+}
+
+// Set only in price guarantee scenario.
+func (o DiscountProductOutput) PriceGuaranteeProperties() PriceGuaranteePropertiesPtrOutput {
+	return o.ApplyT(func(v DiscountProduct) *PriceGuaranteeProperties { return v.PriceGuaranteeProperties }).(PriceGuaranteePropertiesPtrOutput)
+}
+
+// Product family for which the discount is given. Validation: Optional
+func (o DiscountProductOutput) ProductFamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountProduct) *string { return v.ProductFamilyName }).(pulumi.StringPtrOutput)
+}
+
+// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
+func (o DiscountProductOutput) ProductId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountProduct) *string { return v.ProductId }).(pulumi.StringPtrOutput)
+}
+
+type DiscountProductPtrOutput struct{ *pulumi.OutputState }
+
+func (DiscountProductPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscountProduct)(nil)).Elem()
+}
+
+func (o DiscountProductPtrOutput) ToDiscountProductPtrOutput() DiscountProductPtrOutput {
+	return o
+}
+
+func (o DiscountProductPtrOutput) ToDiscountProductPtrOutputWithContext(ctx context.Context) DiscountProductPtrOutput {
+	return o
+}
+
+func (o DiscountProductPtrOutput) Elem() DiscountProductOutput {
+	return o.ApplyT(func(v *DiscountProduct) DiscountProduct {
+		if v != nil {
+			return *v
+		}
+		var ret DiscountProduct
+		return ret
+	}).(DiscountProductOutput)
+}
+
+// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+func (o DiscountProductPtrOutput) ApplyDiscountOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountProduct) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApplyDiscountOn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+func (o DiscountProductPtrOutput) Conditions() ConditionsItemArrayOutput {
+	return o.ApplyT(func(v *DiscountProduct) []ConditionsItem {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(ConditionsItemArrayOutput)
+}
+
+// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+func (o DiscountProductPtrOutput) DiscountCombinationRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountProduct) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiscountCombinationRule
+	}).(pulumi.StringPtrOutput)
+}
+
+// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+func (o DiscountProductPtrOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DiscountProduct) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DiscountPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+// Expected value is 'Product'.
+func (o DiscountProductPtrOutput) DiscountType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountProduct) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DiscountType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Set only in price guarantee scenario.
+func (o DiscountProductPtrOutput) PriceGuaranteeProperties() PriceGuaranteePropertiesPtrOutput {
+	return o.ApplyT(func(v *DiscountProduct) *PriceGuaranteeProperties {
+		if v == nil {
+			return nil
+		}
+		return v.PriceGuaranteeProperties
+	}).(PriceGuaranteePropertiesPtrOutput)
+}
+
+// Product family for which the discount is given. Validation: Optional
+func (o DiscountProductPtrOutput) ProductFamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountProduct) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductFamilyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
+func (o DiscountProductPtrOutput) ProductId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountProduct) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Discount type properties including product family name
+type DiscountProductFamily struct {
+	// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+	ApplyDiscountOn string `pulumi:"applyDiscountOn"`
+	// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+	Conditions []ConditionsItem `pulumi:"conditions"`
+	// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+	DiscountCombinationRule *string `pulumi:"discountCombinationRule"`
+	// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+	DiscountPercentage *float64 `pulumi:"discountPercentage"`
+	// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+	// Expected value is 'ProductFamily'.
+	DiscountType string `pulumi:"discountType"`
+	// Set only in price guarantee scenario.
+	PriceGuaranteeProperties *PriceGuaranteeProperties `pulumi:"priceGuaranteeProperties"`
+	// Product family for which the discount is given. Validation: Optional
+	ProductFamilyName *string `pulumi:"productFamilyName"`
+}
+
+// DiscountProductFamilyInput is an input type that accepts DiscountProductFamilyArgs and DiscountProductFamilyOutput values.
+// You can construct a concrete instance of `DiscountProductFamilyInput` via:
+//
+//	DiscountProductFamilyArgs{...}
+type DiscountProductFamilyInput interface {
+	pulumi.Input
+
+	ToDiscountProductFamilyOutput() DiscountProductFamilyOutput
+	ToDiscountProductFamilyOutputWithContext(context.Context) DiscountProductFamilyOutput
+}
+
+// Discount type properties including product family name
+type DiscountProductFamilyArgs struct {
+	// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+	ApplyDiscountOn pulumi.StringInput `pulumi:"applyDiscountOn"`
+	// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+	Conditions ConditionsItemArrayInput `pulumi:"conditions"`
+	// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+	DiscountCombinationRule pulumi.StringPtrInput `pulumi:"discountCombinationRule"`
+	// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+	DiscountPercentage pulumi.Float64PtrInput `pulumi:"discountPercentage"`
+	// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+	// Expected value is 'ProductFamily'.
+	DiscountType pulumi.StringInput `pulumi:"discountType"`
+	// Set only in price guarantee scenario.
+	PriceGuaranteeProperties PriceGuaranteePropertiesPtrInput `pulumi:"priceGuaranteeProperties"`
+	// Product family for which the discount is given. Validation: Optional
+	ProductFamilyName pulumi.StringPtrInput `pulumi:"productFamilyName"`
+}
+
+func (DiscountProductFamilyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscountProductFamily)(nil)).Elem()
+}
+
+func (i DiscountProductFamilyArgs) ToDiscountProductFamilyOutput() DiscountProductFamilyOutput {
+	return i.ToDiscountProductFamilyOutputWithContext(context.Background())
+}
+
+func (i DiscountProductFamilyArgs) ToDiscountProductFamilyOutputWithContext(ctx context.Context) DiscountProductFamilyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscountProductFamilyOutput)
+}
+
+func (i DiscountProductFamilyArgs) ToDiscountProductFamilyPtrOutput() DiscountProductFamilyPtrOutput {
+	return i.ToDiscountProductFamilyPtrOutputWithContext(context.Background())
+}
+
+func (i DiscountProductFamilyArgs) ToDiscountProductFamilyPtrOutputWithContext(ctx context.Context) DiscountProductFamilyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscountProductFamilyOutput).ToDiscountProductFamilyPtrOutputWithContext(ctx)
+}
+
+// DiscountProductFamilyPtrInput is an input type that accepts DiscountProductFamilyArgs, DiscountProductFamilyPtr and DiscountProductFamilyPtrOutput values.
+// You can construct a concrete instance of `DiscountProductFamilyPtrInput` via:
+//
+//	        DiscountProductFamilyArgs{...}
+//
+//	or:
+//
+//	        nil
+type DiscountProductFamilyPtrInput interface {
+	pulumi.Input
+
+	ToDiscountProductFamilyPtrOutput() DiscountProductFamilyPtrOutput
+	ToDiscountProductFamilyPtrOutputWithContext(context.Context) DiscountProductFamilyPtrOutput
+}
+
+type discountProductFamilyPtrType DiscountProductFamilyArgs
+
+func DiscountProductFamilyPtr(v *DiscountProductFamilyArgs) DiscountProductFamilyPtrInput {
+	return (*discountProductFamilyPtrType)(v)
+}
+
+func (*discountProductFamilyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscountProductFamily)(nil)).Elem()
+}
+
+func (i *discountProductFamilyPtrType) ToDiscountProductFamilyPtrOutput() DiscountProductFamilyPtrOutput {
+	return i.ToDiscountProductFamilyPtrOutputWithContext(context.Background())
+}
+
+func (i *discountProductFamilyPtrType) ToDiscountProductFamilyPtrOutputWithContext(ctx context.Context) DiscountProductFamilyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscountProductFamilyPtrOutput)
+}
+
+// Discount type properties including product family name
+type DiscountProductFamilyOutput struct{ *pulumi.OutputState }
+
+func (DiscountProductFamilyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscountProductFamily)(nil)).Elem()
+}
+
+func (o DiscountProductFamilyOutput) ToDiscountProductFamilyOutput() DiscountProductFamilyOutput {
+	return o
+}
+
+func (o DiscountProductFamilyOutput) ToDiscountProductFamilyOutputWithContext(ctx context.Context) DiscountProductFamilyOutput {
+	return o
+}
+
+func (o DiscountProductFamilyOutput) ToDiscountProductFamilyPtrOutput() DiscountProductFamilyPtrOutput {
+	return o.ToDiscountProductFamilyPtrOutputWithContext(context.Background())
+}
+
+func (o DiscountProductFamilyOutput) ToDiscountProductFamilyPtrOutputWithContext(ctx context.Context) DiscountProductFamilyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiscountProductFamily) *DiscountProductFamily {
+		return &v
+	}).(DiscountProductFamilyPtrOutput)
+}
+
+// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+func (o DiscountProductFamilyOutput) ApplyDiscountOn() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscountProductFamily) string { return v.ApplyDiscountOn }).(pulumi.StringOutput)
+}
+
+// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+func (o DiscountProductFamilyOutput) Conditions() ConditionsItemArrayOutput {
+	return o.ApplyT(func(v DiscountProductFamily) []ConditionsItem { return v.Conditions }).(ConditionsItemArrayOutput)
+}
+
+// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+func (o DiscountProductFamilyOutput) DiscountCombinationRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountProductFamily) *string { return v.DiscountCombinationRule }).(pulumi.StringPtrOutput)
+}
+
+// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+func (o DiscountProductFamilyOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DiscountProductFamily) *float64 { return v.DiscountPercentage }).(pulumi.Float64PtrOutput)
+}
+
+// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+// Expected value is 'ProductFamily'.
+func (o DiscountProductFamilyOutput) DiscountType() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscountProductFamily) string { return v.DiscountType }).(pulumi.StringOutput)
+}
+
+// Set only in price guarantee scenario.
+func (o DiscountProductFamilyOutput) PriceGuaranteeProperties() PriceGuaranteePropertiesPtrOutput {
+	return o.ApplyT(func(v DiscountProductFamily) *PriceGuaranteeProperties { return v.PriceGuaranteeProperties }).(PriceGuaranteePropertiesPtrOutput)
+}
+
+// Product family for which the discount is given. Validation: Optional
+func (o DiscountProductFamilyOutput) ProductFamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountProductFamily) *string { return v.ProductFamilyName }).(pulumi.StringPtrOutput)
+}
+
+type DiscountProductFamilyPtrOutput struct{ *pulumi.OutputState }
+
+func (DiscountProductFamilyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscountProductFamily)(nil)).Elem()
+}
+
+func (o DiscountProductFamilyPtrOutput) ToDiscountProductFamilyPtrOutput() DiscountProductFamilyPtrOutput {
+	return o
+}
+
+func (o DiscountProductFamilyPtrOutput) ToDiscountProductFamilyPtrOutputWithContext(ctx context.Context) DiscountProductFamilyPtrOutput {
+	return o
+}
+
+func (o DiscountProductFamilyPtrOutput) Elem() DiscountProductFamilyOutput {
+	return o.ApplyT(func(v *DiscountProductFamily) DiscountProductFamily {
+		if v != nil {
+			return *v
+		}
+		var ret DiscountProductFamily
+		return ret
+	}).(DiscountProductFamilyOutput)
+}
+
+// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+func (o DiscountProductFamilyPtrOutput) ApplyDiscountOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountProductFamily) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApplyDiscountOn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+func (o DiscountProductFamilyPtrOutput) Conditions() ConditionsItemArrayOutput {
+	return o.ApplyT(func(v *DiscountProductFamily) []ConditionsItem {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(ConditionsItemArrayOutput)
+}
+
+// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+func (o DiscountProductFamilyPtrOutput) DiscountCombinationRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountProductFamily) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiscountCombinationRule
+	}).(pulumi.StringPtrOutput)
+}
+
+// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+func (o DiscountProductFamilyPtrOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DiscountProductFamily) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DiscountPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+// Expected value is 'ProductFamily'.
+func (o DiscountProductFamilyPtrOutput) DiscountType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountProductFamily) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DiscountType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Set only in price guarantee scenario.
+func (o DiscountProductFamilyPtrOutput) PriceGuaranteeProperties() PriceGuaranteePropertiesPtrOutput {
+	return o.ApplyT(func(v *DiscountProductFamily) *PriceGuaranteeProperties {
+		if v == nil {
+			return nil
+		}
+		return v.PriceGuaranteeProperties
+	}).(PriceGuaranteePropertiesPtrOutput)
+}
+
+// Product family for which the discount is given. Validation: Optional
+func (o DiscountProductFamilyPtrOutput) ProductFamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountProductFamily) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductFamilyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Discount type properties including product family name
+type DiscountProductFamilyResponse struct {
+	// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+	ApplyDiscountOn string `pulumi:"applyDiscountOn"`
+	// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+	Conditions []ConditionsItemResponse `pulumi:"conditions"`
+	// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+	DiscountCombinationRule *string `pulumi:"discountCombinationRule"`
+	// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+	DiscountPercentage *float64 `pulumi:"discountPercentage"`
+	// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+	// Expected value is 'ProductFamily'.
+	DiscountType string `pulumi:"discountType"`
+	// Set only in price guarantee scenario.
+	PriceGuaranteeProperties *PriceGuaranteePropertiesResponse `pulumi:"priceGuaranteeProperties"`
+	// Product family for which the discount is given. Validation: Optional
+	ProductFamilyName *string `pulumi:"productFamilyName"`
+}
+
+// Discount type properties including product family name
+type DiscountProductFamilyResponseOutput struct{ *pulumi.OutputState }
+
+func (DiscountProductFamilyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscountProductFamilyResponse)(nil)).Elem()
+}
+
+func (o DiscountProductFamilyResponseOutput) ToDiscountProductFamilyResponseOutput() DiscountProductFamilyResponseOutput {
+	return o
+}
+
+func (o DiscountProductFamilyResponseOutput) ToDiscountProductFamilyResponseOutputWithContext(ctx context.Context) DiscountProductFamilyResponseOutput {
+	return o
+}
+
+// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+func (o DiscountProductFamilyResponseOutput) ApplyDiscountOn() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscountProductFamilyResponse) string { return v.ApplyDiscountOn }).(pulumi.StringOutput)
+}
+
+// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+func (o DiscountProductFamilyResponseOutput) Conditions() ConditionsItemResponseArrayOutput {
+	return o.ApplyT(func(v DiscountProductFamilyResponse) []ConditionsItemResponse { return v.Conditions }).(ConditionsItemResponseArrayOutput)
+}
+
+// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+func (o DiscountProductFamilyResponseOutput) DiscountCombinationRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountProductFamilyResponse) *string { return v.DiscountCombinationRule }).(pulumi.StringPtrOutput)
+}
+
+// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+func (o DiscountProductFamilyResponseOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DiscountProductFamilyResponse) *float64 { return v.DiscountPercentage }).(pulumi.Float64PtrOutput)
+}
+
+// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+// Expected value is 'ProductFamily'.
+func (o DiscountProductFamilyResponseOutput) DiscountType() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscountProductFamilyResponse) string { return v.DiscountType }).(pulumi.StringOutput)
+}
+
+// Set only in price guarantee scenario.
+func (o DiscountProductFamilyResponseOutput) PriceGuaranteeProperties() PriceGuaranteePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v DiscountProductFamilyResponse) *PriceGuaranteePropertiesResponse {
+		return v.PriceGuaranteeProperties
+	}).(PriceGuaranteePropertiesResponsePtrOutput)
+}
+
+// Product family for which the discount is given. Validation: Optional
+func (o DiscountProductFamilyResponseOutput) ProductFamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountProductFamilyResponse) *string { return v.ProductFamilyName }).(pulumi.StringPtrOutput)
+}
+
+type DiscountProductFamilyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DiscountProductFamilyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscountProductFamilyResponse)(nil)).Elem()
+}
+
+func (o DiscountProductFamilyResponsePtrOutput) ToDiscountProductFamilyResponsePtrOutput() DiscountProductFamilyResponsePtrOutput {
+	return o
+}
+
+func (o DiscountProductFamilyResponsePtrOutput) ToDiscountProductFamilyResponsePtrOutputWithContext(ctx context.Context) DiscountProductFamilyResponsePtrOutput {
+	return o
+}
+
+func (o DiscountProductFamilyResponsePtrOutput) Elem() DiscountProductFamilyResponseOutput {
+	return o.ApplyT(func(v *DiscountProductFamilyResponse) DiscountProductFamilyResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DiscountProductFamilyResponse
+		return ret
+	}).(DiscountProductFamilyResponseOutput)
+}
+
+// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+func (o DiscountProductFamilyResponsePtrOutput) ApplyDiscountOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountProductFamilyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApplyDiscountOn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+func (o DiscountProductFamilyResponsePtrOutput) Conditions() ConditionsItemResponseArrayOutput {
+	return o.ApplyT(func(v *DiscountProductFamilyResponse) []ConditionsItemResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(ConditionsItemResponseArrayOutput)
+}
+
+// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+func (o DiscountProductFamilyResponsePtrOutput) DiscountCombinationRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountProductFamilyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiscountCombinationRule
+	}).(pulumi.StringPtrOutput)
+}
+
+// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+func (o DiscountProductFamilyResponsePtrOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DiscountProductFamilyResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DiscountPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+// Expected value is 'ProductFamily'.
+func (o DiscountProductFamilyResponsePtrOutput) DiscountType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountProductFamilyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DiscountType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Set only in price guarantee scenario.
+func (o DiscountProductFamilyResponsePtrOutput) PriceGuaranteeProperties() PriceGuaranteePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *DiscountProductFamilyResponse) *PriceGuaranteePropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PriceGuaranteeProperties
+	}).(PriceGuaranteePropertiesResponsePtrOutput)
+}
+
+// Product family for which the discount is given. Validation: Optional
+func (o DiscountProductFamilyResponsePtrOutput) ProductFamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountProductFamilyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductFamilyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Discount type properties including product family name and product id.
+type DiscountProductResponse struct {
+	// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+	ApplyDiscountOn string `pulumi:"applyDiscountOn"`
+	// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+	Conditions []ConditionsItemResponse `pulumi:"conditions"`
+	// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+	DiscountCombinationRule *string `pulumi:"discountCombinationRule"`
+	// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+	DiscountPercentage *float64 `pulumi:"discountPercentage"`
+	// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+	// Expected value is 'Product'.
+	DiscountType string `pulumi:"discountType"`
+	// Set only in price guarantee scenario.
+	PriceGuaranteeProperties *PriceGuaranteePropertiesResponse `pulumi:"priceGuaranteeProperties"`
+	// Product family for which the discount is given. Validation: Optional
+	ProductFamilyName *string `pulumi:"productFamilyName"`
+	// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
+	ProductId *string `pulumi:"productId"`
+}
+
+// Discount type properties including product family name and product id.
+type DiscountProductResponseOutput struct{ *pulumi.OutputState }
+
+func (DiscountProductResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscountProductResponse)(nil)).Elem()
+}
+
+func (o DiscountProductResponseOutput) ToDiscountProductResponseOutput() DiscountProductResponseOutput {
+	return o
+}
+
+func (o DiscountProductResponseOutput) ToDiscountProductResponseOutputWithContext(ctx context.Context) DiscountProductResponseOutput {
+	return o
+}
+
+// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+func (o DiscountProductResponseOutput) ApplyDiscountOn() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscountProductResponse) string { return v.ApplyDiscountOn }).(pulumi.StringOutput)
+}
+
+// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+func (o DiscountProductResponseOutput) Conditions() ConditionsItemResponseArrayOutput {
+	return o.ApplyT(func(v DiscountProductResponse) []ConditionsItemResponse { return v.Conditions }).(ConditionsItemResponseArrayOutput)
+}
+
+// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+func (o DiscountProductResponseOutput) DiscountCombinationRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountProductResponse) *string { return v.DiscountCombinationRule }).(pulumi.StringPtrOutput)
+}
+
+// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+func (o DiscountProductResponseOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DiscountProductResponse) *float64 { return v.DiscountPercentage }).(pulumi.Float64PtrOutput)
+}
+
+// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+// Expected value is 'Product'.
+func (o DiscountProductResponseOutput) DiscountType() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscountProductResponse) string { return v.DiscountType }).(pulumi.StringOutput)
+}
+
+// Set only in price guarantee scenario.
+func (o DiscountProductResponseOutput) PriceGuaranteeProperties() PriceGuaranteePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v DiscountProductResponse) *PriceGuaranteePropertiesResponse { return v.PriceGuaranteeProperties }).(PriceGuaranteePropertiesResponsePtrOutput)
+}
+
+// Product family for which the discount is given. Validation: Optional
+func (o DiscountProductResponseOutput) ProductFamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountProductResponse) *string { return v.ProductFamilyName }).(pulumi.StringPtrOutput)
+}
+
+// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
+func (o DiscountProductResponseOutput) ProductId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountProductResponse) *string { return v.ProductId }).(pulumi.StringPtrOutput)
+}
+
+type DiscountProductResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DiscountProductResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscountProductResponse)(nil)).Elem()
+}
+
+func (o DiscountProductResponsePtrOutput) ToDiscountProductResponsePtrOutput() DiscountProductResponsePtrOutput {
+	return o
+}
+
+func (o DiscountProductResponsePtrOutput) ToDiscountProductResponsePtrOutputWithContext(ctx context.Context) DiscountProductResponsePtrOutput {
+	return o
+}
+
+func (o DiscountProductResponsePtrOutput) Elem() DiscountProductResponseOutput {
+	return o.ApplyT(func(v *DiscountProductResponse) DiscountProductResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DiscountProductResponse
+		return ret
+	}).(DiscountProductResponseOutput)
+}
+
+// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+func (o DiscountProductResponsePtrOutput) ApplyDiscountOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountProductResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApplyDiscountOn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+func (o DiscountProductResponsePtrOutput) Conditions() ConditionsItemResponseArrayOutput {
+	return o.ApplyT(func(v *DiscountProductResponse) []ConditionsItemResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(ConditionsItemResponseArrayOutput)
+}
+
+// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+func (o DiscountProductResponsePtrOutput) DiscountCombinationRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountProductResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiscountCombinationRule
+	}).(pulumi.StringPtrOutput)
+}
+
+// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+func (o DiscountProductResponsePtrOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DiscountProductResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DiscountPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+// Expected value is 'Product'.
+func (o DiscountProductResponsePtrOutput) DiscountType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountProductResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DiscountType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Set only in price guarantee scenario.
+func (o DiscountProductResponsePtrOutput) PriceGuaranteeProperties() PriceGuaranteePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *DiscountProductResponse) *PriceGuaranteePropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PriceGuaranteeProperties
+	}).(PriceGuaranteePropertiesResponsePtrOutput)
+}
+
+// Product family for which the discount is given. Validation: Optional
+func (o DiscountProductResponsePtrOutput) ProductFamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountProductResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductFamilyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
+func (o DiscountProductResponsePtrOutput) ProductId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountProductResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Discount type properties including product family name, product id, and sku id.
+type DiscountTypeProductSku struct {
+	// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+	ApplyDiscountOn string `pulumi:"applyDiscountOn"`
+	// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+	Conditions []ConditionsItem `pulumi:"conditions"`
+	// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+	DiscountCombinationRule *string `pulumi:"discountCombinationRule"`
+	// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+	DiscountPercentage *float64 `pulumi:"discountPercentage"`
+	// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+	// Expected value is 'Sku'.
+	DiscountType string `pulumi:"discountType"`
+	// Set only in price guarantee scenario.
+	PriceGuaranteeProperties *PriceGuaranteeProperties `pulumi:"priceGuaranteeProperties"`
+	// Product family for which the discount is given. Validation: Optional
+	ProductFamilyName *string `pulumi:"productFamilyName"`
+	// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
+	ProductId *string `pulumi:"productId"`
+	// ResourceSku for the given discount. Validation: Optional.
+	SkuId *string `pulumi:"skuId"`
+}
+
+// DiscountTypeProductSkuInput is an input type that accepts DiscountTypeProductSkuArgs and DiscountTypeProductSkuOutput values.
+// You can construct a concrete instance of `DiscountTypeProductSkuInput` via:
+//
+//	DiscountTypeProductSkuArgs{...}
+type DiscountTypeProductSkuInput interface {
+	pulumi.Input
+
+	ToDiscountTypeProductSkuOutput() DiscountTypeProductSkuOutput
+	ToDiscountTypeProductSkuOutputWithContext(context.Context) DiscountTypeProductSkuOutput
+}
+
+// Discount type properties including product family name, product id, and sku id.
+type DiscountTypeProductSkuArgs struct {
+	// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+	ApplyDiscountOn pulumi.StringInput `pulumi:"applyDiscountOn"`
+	// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+	Conditions ConditionsItemArrayInput `pulumi:"conditions"`
+	// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+	DiscountCombinationRule pulumi.StringPtrInput `pulumi:"discountCombinationRule"`
+	// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+	DiscountPercentage pulumi.Float64PtrInput `pulumi:"discountPercentage"`
+	// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+	// Expected value is 'Sku'.
+	DiscountType pulumi.StringInput `pulumi:"discountType"`
+	// Set only in price guarantee scenario.
+	PriceGuaranteeProperties PriceGuaranteePropertiesPtrInput `pulumi:"priceGuaranteeProperties"`
+	// Product family for which the discount is given. Validation: Optional
+	ProductFamilyName pulumi.StringPtrInput `pulumi:"productFamilyName"`
+	// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
+	ProductId pulumi.StringPtrInput `pulumi:"productId"`
+	// ResourceSku for the given discount. Validation: Optional.
+	SkuId pulumi.StringPtrInput `pulumi:"skuId"`
+}
+
+func (DiscountTypeProductSkuArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscountTypeProductSku)(nil)).Elem()
+}
+
+func (i DiscountTypeProductSkuArgs) ToDiscountTypeProductSkuOutput() DiscountTypeProductSkuOutput {
+	return i.ToDiscountTypeProductSkuOutputWithContext(context.Background())
+}
+
+func (i DiscountTypeProductSkuArgs) ToDiscountTypeProductSkuOutputWithContext(ctx context.Context) DiscountTypeProductSkuOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscountTypeProductSkuOutput)
+}
+
+func (i DiscountTypeProductSkuArgs) ToDiscountTypeProductSkuPtrOutput() DiscountTypeProductSkuPtrOutput {
+	return i.ToDiscountTypeProductSkuPtrOutputWithContext(context.Background())
+}
+
+func (i DiscountTypeProductSkuArgs) ToDiscountTypeProductSkuPtrOutputWithContext(ctx context.Context) DiscountTypeProductSkuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscountTypeProductSkuOutput).ToDiscountTypeProductSkuPtrOutputWithContext(ctx)
+}
+
+// DiscountTypeProductSkuPtrInput is an input type that accepts DiscountTypeProductSkuArgs, DiscountTypeProductSkuPtr and DiscountTypeProductSkuPtrOutput values.
+// You can construct a concrete instance of `DiscountTypeProductSkuPtrInput` via:
+//
+//	        DiscountTypeProductSkuArgs{...}
+//
+//	or:
+//
+//	        nil
+type DiscountTypeProductSkuPtrInput interface {
+	pulumi.Input
+
+	ToDiscountTypeProductSkuPtrOutput() DiscountTypeProductSkuPtrOutput
+	ToDiscountTypeProductSkuPtrOutputWithContext(context.Context) DiscountTypeProductSkuPtrOutput
+}
+
+type discountTypeProductSkuPtrType DiscountTypeProductSkuArgs
+
+func DiscountTypeProductSkuPtr(v *DiscountTypeProductSkuArgs) DiscountTypeProductSkuPtrInput {
+	return (*discountTypeProductSkuPtrType)(v)
+}
+
+func (*discountTypeProductSkuPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscountTypeProductSku)(nil)).Elem()
+}
+
+func (i *discountTypeProductSkuPtrType) ToDiscountTypeProductSkuPtrOutput() DiscountTypeProductSkuPtrOutput {
+	return i.ToDiscountTypeProductSkuPtrOutputWithContext(context.Background())
+}
+
+func (i *discountTypeProductSkuPtrType) ToDiscountTypeProductSkuPtrOutputWithContext(ctx context.Context) DiscountTypeProductSkuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiscountTypeProductSkuPtrOutput)
+}
+
+// Discount type properties including product family name, product id, and sku id.
+type DiscountTypeProductSkuOutput struct{ *pulumi.OutputState }
+
+func (DiscountTypeProductSkuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscountTypeProductSku)(nil)).Elem()
+}
+
+func (o DiscountTypeProductSkuOutput) ToDiscountTypeProductSkuOutput() DiscountTypeProductSkuOutput {
+	return o
+}
+
+func (o DiscountTypeProductSkuOutput) ToDiscountTypeProductSkuOutputWithContext(ctx context.Context) DiscountTypeProductSkuOutput {
+	return o
+}
+
+func (o DiscountTypeProductSkuOutput) ToDiscountTypeProductSkuPtrOutput() DiscountTypeProductSkuPtrOutput {
+	return o.ToDiscountTypeProductSkuPtrOutputWithContext(context.Background())
+}
+
+func (o DiscountTypeProductSkuOutput) ToDiscountTypeProductSkuPtrOutputWithContext(ctx context.Context) DiscountTypeProductSkuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiscountTypeProductSku) *DiscountTypeProductSku {
+		return &v
+	}).(DiscountTypeProductSkuPtrOutput)
+}
+
+// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+func (o DiscountTypeProductSkuOutput) ApplyDiscountOn() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscountTypeProductSku) string { return v.ApplyDiscountOn }).(pulumi.StringOutput)
+}
+
+// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+func (o DiscountTypeProductSkuOutput) Conditions() ConditionsItemArrayOutput {
+	return o.ApplyT(func(v DiscountTypeProductSku) []ConditionsItem { return v.Conditions }).(ConditionsItemArrayOutput)
+}
+
+// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+func (o DiscountTypeProductSkuOutput) DiscountCombinationRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountTypeProductSku) *string { return v.DiscountCombinationRule }).(pulumi.StringPtrOutput)
+}
+
+// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+func (o DiscountTypeProductSkuOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DiscountTypeProductSku) *float64 { return v.DiscountPercentage }).(pulumi.Float64PtrOutput)
+}
+
+// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+// Expected value is 'Sku'.
+func (o DiscountTypeProductSkuOutput) DiscountType() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscountTypeProductSku) string { return v.DiscountType }).(pulumi.StringOutput)
+}
+
+// Set only in price guarantee scenario.
+func (o DiscountTypeProductSkuOutput) PriceGuaranteeProperties() PriceGuaranteePropertiesPtrOutput {
+	return o.ApplyT(func(v DiscountTypeProductSku) *PriceGuaranteeProperties { return v.PriceGuaranteeProperties }).(PriceGuaranteePropertiesPtrOutput)
+}
+
+// Product family for which the discount is given. Validation: Optional
+func (o DiscountTypeProductSkuOutput) ProductFamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountTypeProductSku) *string { return v.ProductFamilyName }).(pulumi.StringPtrOutput)
+}
+
+// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
+func (o DiscountTypeProductSkuOutput) ProductId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountTypeProductSku) *string { return v.ProductId }).(pulumi.StringPtrOutput)
+}
+
+// ResourceSku for the given discount. Validation: Optional.
+func (o DiscountTypeProductSkuOutput) SkuId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountTypeProductSku) *string { return v.SkuId }).(pulumi.StringPtrOutput)
+}
+
+type DiscountTypeProductSkuPtrOutput struct{ *pulumi.OutputState }
+
+func (DiscountTypeProductSkuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscountTypeProductSku)(nil)).Elem()
+}
+
+func (o DiscountTypeProductSkuPtrOutput) ToDiscountTypeProductSkuPtrOutput() DiscountTypeProductSkuPtrOutput {
+	return o
+}
+
+func (o DiscountTypeProductSkuPtrOutput) ToDiscountTypeProductSkuPtrOutputWithContext(ctx context.Context) DiscountTypeProductSkuPtrOutput {
+	return o
+}
+
+func (o DiscountTypeProductSkuPtrOutput) Elem() DiscountTypeProductSkuOutput {
+	return o.ApplyT(func(v *DiscountTypeProductSku) DiscountTypeProductSku {
+		if v != nil {
+			return *v
+		}
+		var ret DiscountTypeProductSku
+		return ret
+	}).(DiscountTypeProductSkuOutput)
+}
+
+// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+func (o DiscountTypeProductSkuPtrOutput) ApplyDiscountOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountTypeProductSku) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApplyDiscountOn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+func (o DiscountTypeProductSkuPtrOutput) Conditions() ConditionsItemArrayOutput {
+	return o.ApplyT(func(v *DiscountTypeProductSku) []ConditionsItem {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(ConditionsItemArrayOutput)
+}
+
+// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+func (o DiscountTypeProductSkuPtrOutput) DiscountCombinationRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountTypeProductSku) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiscountCombinationRule
+	}).(pulumi.StringPtrOutput)
+}
+
+// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+func (o DiscountTypeProductSkuPtrOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DiscountTypeProductSku) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DiscountPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+// Expected value is 'Sku'.
+func (o DiscountTypeProductSkuPtrOutput) DiscountType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountTypeProductSku) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DiscountType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Set only in price guarantee scenario.
+func (o DiscountTypeProductSkuPtrOutput) PriceGuaranteeProperties() PriceGuaranteePropertiesPtrOutput {
+	return o.ApplyT(func(v *DiscountTypeProductSku) *PriceGuaranteeProperties {
+		if v == nil {
+			return nil
+		}
+		return v.PriceGuaranteeProperties
+	}).(PriceGuaranteePropertiesPtrOutput)
+}
+
+// Product family for which the discount is given. Validation: Optional
+func (o DiscountTypeProductSkuPtrOutput) ProductFamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountTypeProductSku) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductFamilyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
+func (o DiscountTypeProductSkuPtrOutput) ProductId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountTypeProductSku) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ResourceSku for the given discount. Validation: Optional.
+func (o DiscountTypeProductSkuPtrOutput) SkuId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountTypeProductSku) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SkuId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Discount type properties including product family name, product id, and sku id.
+type DiscountTypeProductSkuResponse struct {
+	// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+	ApplyDiscountOn string `pulumi:"applyDiscountOn"`
+	// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+	Conditions []ConditionsItemResponse `pulumi:"conditions"`
+	// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+	DiscountCombinationRule *string `pulumi:"discountCombinationRule"`
+	// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+	DiscountPercentage *float64 `pulumi:"discountPercentage"`
+	// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+	// Expected value is 'Sku'.
+	DiscountType string `pulumi:"discountType"`
+	// Set only in price guarantee scenario.
+	PriceGuaranteeProperties *PriceGuaranteePropertiesResponse `pulumi:"priceGuaranteeProperties"`
+	// Product family for which the discount is given. Validation: Optional
+	ProductFamilyName *string `pulumi:"productFamilyName"`
+	// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
+	ProductId *string `pulumi:"productId"`
+	// ResourceSku for the given discount. Validation: Optional.
+	SkuId *string `pulumi:"skuId"`
+}
+
+// Discount type properties including product family name, product id, and sku id.
+type DiscountTypeProductSkuResponseOutput struct{ *pulumi.OutputState }
+
+func (DiscountTypeProductSkuResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiscountTypeProductSkuResponse)(nil)).Elem()
+}
+
+func (o DiscountTypeProductSkuResponseOutput) ToDiscountTypeProductSkuResponseOutput() DiscountTypeProductSkuResponseOutput {
+	return o
+}
+
+func (o DiscountTypeProductSkuResponseOutput) ToDiscountTypeProductSkuResponseOutputWithContext(ctx context.Context) DiscountTypeProductSkuResponseOutput {
+	return o
+}
+
+// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+func (o DiscountTypeProductSkuResponseOutput) ApplyDiscountOn() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscountTypeProductSkuResponse) string { return v.ApplyDiscountOn }).(pulumi.StringOutput)
+}
+
+// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+func (o DiscountTypeProductSkuResponseOutput) Conditions() ConditionsItemResponseArrayOutput {
+	return o.ApplyT(func(v DiscountTypeProductSkuResponse) []ConditionsItemResponse { return v.Conditions }).(ConditionsItemResponseArrayOutput)
+}
+
+// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+func (o DiscountTypeProductSkuResponseOutput) DiscountCombinationRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountTypeProductSkuResponse) *string { return v.DiscountCombinationRule }).(pulumi.StringPtrOutput)
+}
+
+// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+func (o DiscountTypeProductSkuResponseOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DiscountTypeProductSkuResponse) *float64 { return v.DiscountPercentage }).(pulumi.Float64PtrOutput)
+}
+
+// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+// Expected value is 'Sku'.
+func (o DiscountTypeProductSkuResponseOutput) DiscountType() pulumi.StringOutput {
+	return o.ApplyT(func(v DiscountTypeProductSkuResponse) string { return v.DiscountType }).(pulumi.StringOutput)
+}
+
+// Set only in price guarantee scenario.
+func (o DiscountTypeProductSkuResponseOutput) PriceGuaranteeProperties() PriceGuaranteePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v DiscountTypeProductSkuResponse) *PriceGuaranteePropertiesResponse {
+		return v.PriceGuaranteeProperties
+	}).(PriceGuaranteePropertiesResponsePtrOutput)
+}
+
+// Product family for which the discount is given. Validation: Optional
+func (o DiscountTypeProductSkuResponseOutput) ProductFamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountTypeProductSkuResponse) *string { return v.ProductFamilyName }).(pulumi.StringPtrOutput)
+}
+
+// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
+func (o DiscountTypeProductSkuResponseOutput) ProductId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountTypeProductSkuResponse) *string { return v.ProductId }).(pulumi.StringPtrOutput)
+}
+
+// ResourceSku for the given discount. Validation: Optional.
+func (o DiscountTypeProductSkuResponseOutput) SkuId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiscountTypeProductSkuResponse) *string { return v.SkuId }).(pulumi.StringPtrOutput)
+}
+
+type DiscountTypeProductSkuResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DiscountTypeProductSkuResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiscountTypeProductSkuResponse)(nil)).Elem()
+}
+
+func (o DiscountTypeProductSkuResponsePtrOutput) ToDiscountTypeProductSkuResponsePtrOutput() DiscountTypeProductSkuResponsePtrOutput {
+	return o
+}
+
+func (o DiscountTypeProductSkuResponsePtrOutput) ToDiscountTypeProductSkuResponsePtrOutputWithContext(ctx context.Context) DiscountTypeProductSkuResponsePtrOutput {
+	return o
+}
+
+func (o DiscountTypeProductSkuResponsePtrOutput) Elem() DiscountTypeProductSkuResponseOutput {
+	return o.ApplyT(func(v *DiscountTypeProductSkuResponse) DiscountTypeProductSkuResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DiscountTypeProductSkuResponse
+		return ret
+	}).(DiscountTypeProductSkuResponseOutput)
+}
+
+// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
+func (o DiscountTypeProductSkuResponsePtrOutput) ApplyDiscountOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountTypeProductSkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApplyDiscountOn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
+func (o DiscountTypeProductSkuResponsePtrOutput) Conditions() ConditionsItemResponseArrayOutput {
+	return o.ApplyT(func(v *DiscountTypeProductSkuResponse) []ConditionsItemResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Conditions
+	}).(ConditionsItemResponseArrayOutput)
+}
+
+// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
+func (o DiscountTypeProductSkuResponsePtrOutput) DiscountCombinationRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountTypeProductSkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DiscountCombinationRule
+	}).(pulumi.StringPtrOutput)
+}
+
+// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
+func (o DiscountTypeProductSkuResponsePtrOutput) DiscountPercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DiscountTypeProductSkuResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.DiscountPercentage
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
+// Expected value is 'Sku'.
+func (o DiscountTypeProductSkuResponsePtrOutput) DiscountType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountTypeProductSkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DiscountType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Set only in price guarantee scenario.
+func (o DiscountTypeProductSkuResponsePtrOutput) PriceGuaranteeProperties() PriceGuaranteePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *DiscountTypeProductSkuResponse) *PriceGuaranteePropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PriceGuaranteeProperties
+	}).(PriceGuaranteePropertiesResponsePtrOutput)
+}
+
+// Product family for which the discount is given. Validation: Optional
+func (o DiscountTypeProductSkuResponsePtrOutput) ProductFamilyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountTypeProductSkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductFamilyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
+func (o DiscountTypeProductSkuResponsePtrOutput) ProductId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountTypeProductSkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductId
+	}).(pulumi.StringPtrOutput)
+}
+
+// ResourceSku for the given discount. Validation: Optional.
+func (o DiscountTypeProductSkuResponsePtrOutput) SkuId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiscountTypeProductSkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SkuId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Entity type for affiliate discounts
+type EntityTypeAffiliateDiscount struct {
+	// List of applied scopes supported for discounts.
+	AppliedScopeType *string `pulumi:"appliedScopeType"`
+	// This defines a user friendly display name for the discount.
+	DisplayName *string `pulumi:"displayName"`
+	// This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values.
+	// Expected value is 'Affiliate'.
+	EntityType string `pulumi:"entityType"`
+	// This is the catalog UPN for the product.
+	ProductCode string `pulumi:"productCode"`
+	// Start date of the discount. Value is the date the discount started or will start in the future.
+	StartAt string `pulumi:"startAt"`
+	// This is the globally unique identifier of the Discount which will not change for the lifetime of the Discount.
+	SystemId *string `pulumi:"systemId"`
+}
+
+// EntityTypeAffiliateDiscountInput is an input type that accepts EntityTypeAffiliateDiscountArgs and EntityTypeAffiliateDiscountOutput values.
+// You can construct a concrete instance of `EntityTypeAffiliateDiscountInput` via:
+//
+//	EntityTypeAffiliateDiscountArgs{...}
+type EntityTypeAffiliateDiscountInput interface {
+	pulumi.Input
+
+	ToEntityTypeAffiliateDiscountOutput() EntityTypeAffiliateDiscountOutput
+	ToEntityTypeAffiliateDiscountOutputWithContext(context.Context) EntityTypeAffiliateDiscountOutput
+}
+
+// Entity type for affiliate discounts
+type EntityTypeAffiliateDiscountArgs struct {
+	// List of applied scopes supported for discounts.
+	AppliedScopeType pulumi.StringPtrInput `pulumi:"appliedScopeType"`
+	// This defines a user friendly display name for the discount.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values.
+	// Expected value is 'Affiliate'.
+	EntityType pulumi.StringInput `pulumi:"entityType"`
+	// This is the catalog UPN for the product.
+	ProductCode pulumi.StringInput `pulumi:"productCode"`
+	// Start date of the discount. Value is the date the discount started or will start in the future.
+	StartAt pulumi.StringInput `pulumi:"startAt"`
+	// This is the globally unique identifier of the Discount which will not change for the lifetime of the Discount.
+	SystemId pulumi.StringPtrInput `pulumi:"systemId"`
+}
+
+func (EntityTypeAffiliateDiscountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityTypeAffiliateDiscount)(nil)).Elem()
+}
+
+func (i EntityTypeAffiliateDiscountArgs) ToEntityTypeAffiliateDiscountOutput() EntityTypeAffiliateDiscountOutput {
+	return i.ToEntityTypeAffiliateDiscountOutputWithContext(context.Background())
+}
+
+func (i EntityTypeAffiliateDiscountArgs) ToEntityTypeAffiliateDiscountOutputWithContext(ctx context.Context) EntityTypeAffiliateDiscountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityTypeAffiliateDiscountOutput)
+}
+
+func (i EntityTypeAffiliateDiscountArgs) ToEntityTypeAffiliateDiscountPtrOutput() EntityTypeAffiliateDiscountPtrOutput {
+	return i.ToEntityTypeAffiliateDiscountPtrOutputWithContext(context.Background())
+}
+
+func (i EntityTypeAffiliateDiscountArgs) ToEntityTypeAffiliateDiscountPtrOutputWithContext(ctx context.Context) EntityTypeAffiliateDiscountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityTypeAffiliateDiscountOutput).ToEntityTypeAffiliateDiscountPtrOutputWithContext(ctx)
+}
+
+// EntityTypeAffiliateDiscountPtrInput is an input type that accepts EntityTypeAffiliateDiscountArgs, EntityTypeAffiliateDiscountPtr and EntityTypeAffiliateDiscountPtrOutput values.
+// You can construct a concrete instance of `EntityTypeAffiliateDiscountPtrInput` via:
+//
+//	        EntityTypeAffiliateDiscountArgs{...}
+//
+//	or:
+//
+//	        nil
+type EntityTypeAffiliateDiscountPtrInput interface {
+	pulumi.Input
+
+	ToEntityTypeAffiliateDiscountPtrOutput() EntityTypeAffiliateDiscountPtrOutput
+	ToEntityTypeAffiliateDiscountPtrOutputWithContext(context.Context) EntityTypeAffiliateDiscountPtrOutput
+}
+
+type entityTypeAffiliateDiscountPtrType EntityTypeAffiliateDiscountArgs
+
+func EntityTypeAffiliateDiscountPtr(v *EntityTypeAffiliateDiscountArgs) EntityTypeAffiliateDiscountPtrInput {
+	return (*entityTypeAffiliateDiscountPtrType)(v)
+}
+
+func (*entityTypeAffiliateDiscountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntityTypeAffiliateDiscount)(nil)).Elem()
+}
+
+func (i *entityTypeAffiliateDiscountPtrType) ToEntityTypeAffiliateDiscountPtrOutput() EntityTypeAffiliateDiscountPtrOutput {
+	return i.ToEntityTypeAffiliateDiscountPtrOutputWithContext(context.Background())
+}
+
+func (i *entityTypeAffiliateDiscountPtrType) ToEntityTypeAffiliateDiscountPtrOutputWithContext(ctx context.Context) EntityTypeAffiliateDiscountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityTypeAffiliateDiscountPtrOutput)
+}
+
+// Entity type for affiliate discounts
+type EntityTypeAffiliateDiscountOutput struct{ *pulumi.OutputState }
+
+func (EntityTypeAffiliateDiscountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityTypeAffiliateDiscount)(nil)).Elem()
+}
+
+func (o EntityTypeAffiliateDiscountOutput) ToEntityTypeAffiliateDiscountOutput() EntityTypeAffiliateDiscountOutput {
+	return o
+}
+
+func (o EntityTypeAffiliateDiscountOutput) ToEntityTypeAffiliateDiscountOutputWithContext(ctx context.Context) EntityTypeAffiliateDiscountOutput {
+	return o
+}
+
+func (o EntityTypeAffiliateDiscountOutput) ToEntityTypeAffiliateDiscountPtrOutput() EntityTypeAffiliateDiscountPtrOutput {
+	return o.ToEntityTypeAffiliateDiscountPtrOutputWithContext(context.Background())
+}
+
+func (o EntityTypeAffiliateDiscountOutput) ToEntityTypeAffiliateDiscountPtrOutputWithContext(ctx context.Context) EntityTypeAffiliateDiscountPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntityTypeAffiliateDiscount) *EntityTypeAffiliateDiscount {
+		return &v
+	}).(EntityTypeAffiliateDiscountPtrOutput)
+}
+
+// List of applied scopes supported for discounts.
+func (o EntityTypeAffiliateDiscountOutput) AppliedScopeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntityTypeAffiliateDiscount) *string { return v.AppliedScopeType }).(pulumi.StringPtrOutput)
+}
+
+// This defines a user friendly display name for the discount.
+func (o EntityTypeAffiliateDiscountOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntityTypeAffiliateDiscount) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values.
+// Expected value is 'Affiliate'.
+func (o EntityTypeAffiliateDiscountOutput) EntityType() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityTypeAffiliateDiscount) string { return v.EntityType }).(pulumi.StringOutput)
+}
+
+// This is the catalog UPN for the product.
+func (o EntityTypeAffiliateDiscountOutput) ProductCode() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityTypeAffiliateDiscount) string { return v.ProductCode }).(pulumi.StringOutput)
+}
+
+// Start date of the discount. Value is the date the discount started or will start in the future.
+func (o EntityTypeAffiliateDiscountOutput) StartAt() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityTypeAffiliateDiscount) string { return v.StartAt }).(pulumi.StringOutput)
+}
+
+// This is the globally unique identifier of the Discount which will not change for the lifetime of the Discount.
+func (o EntityTypeAffiliateDiscountOutput) SystemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntityTypeAffiliateDiscount) *string { return v.SystemId }).(pulumi.StringPtrOutput)
+}
+
+type EntityTypeAffiliateDiscountPtrOutput struct{ *pulumi.OutputState }
+
+func (EntityTypeAffiliateDiscountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntityTypeAffiliateDiscount)(nil)).Elem()
+}
+
+func (o EntityTypeAffiliateDiscountPtrOutput) ToEntityTypeAffiliateDiscountPtrOutput() EntityTypeAffiliateDiscountPtrOutput {
+	return o
+}
+
+func (o EntityTypeAffiliateDiscountPtrOutput) ToEntityTypeAffiliateDiscountPtrOutputWithContext(ctx context.Context) EntityTypeAffiliateDiscountPtrOutput {
+	return o
+}
+
+func (o EntityTypeAffiliateDiscountPtrOutput) Elem() EntityTypeAffiliateDiscountOutput {
+	return o.ApplyT(func(v *EntityTypeAffiliateDiscount) EntityTypeAffiliateDiscount {
+		if v != nil {
+			return *v
+		}
+		var ret EntityTypeAffiliateDiscount
+		return ret
+	}).(EntityTypeAffiliateDiscountOutput)
+}
+
+// List of applied scopes supported for discounts.
+func (o EntityTypeAffiliateDiscountPtrOutput) AppliedScopeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntityTypeAffiliateDiscount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AppliedScopeType
+	}).(pulumi.StringPtrOutput)
+}
+
+// This defines a user friendly display name for the discount.
+func (o EntityTypeAffiliateDiscountPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntityTypeAffiliateDiscount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values.
+// Expected value is 'Affiliate'.
+func (o EntityTypeAffiliateDiscountPtrOutput) EntityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntityTypeAffiliateDiscount) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EntityType
+	}).(pulumi.StringPtrOutput)
+}
+
+// This is the catalog UPN for the product.
+func (o EntityTypeAffiliateDiscountPtrOutput) ProductCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntityTypeAffiliateDiscount) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProductCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Start date of the discount. Value is the date the discount started or will start in the future.
+func (o EntityTypeAffiliateDiscountPtrOutput) StartAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntityTypeAffiliateDiscount) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// This is the globally unique identifier of the Discount which will not change for the lifetime of the Discount.
+func (o EntityTypeAffiliateDiscountPtrOutput) SystemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntityTypeAffiliateDiscount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SystemId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Entity type for affiliate discounts
+type EntityTypeAffiliateDiscountResponse struct {
+	// List of applied scopes supported for discounts.
+	AppliedScopeType *string `pulumi:"appliedScopeType"`
+	// Fully-qualified identifier of the benefit under applicable benefit list.
+	BenefitResourceId string `pulumi:"benefitResourceId"`
+	// Billing account resource id where the discount metadata is present.
+	BillingAccountResourceId string `pulumi:"billingAccountResourceId"`
+	// Billing profile resource id where the discount is scoped to.
+	BillingProfileResourceId string `pulumi:"billingProfileResourceId"`
+	// Customer resource id where the discount is scoped to.
+	CustomerResourceId string `pulumi:"customerResourceId"`
+	// This defines a user friendly display name for the discount.
+	DisplayName *string `pulumi:"displayName"`
+	// End date of the discount. No duration will be supported. Allowed value is any date greater than or equal to startDate.
+	EndAt string `pulumi:"endAt"`
+	// This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values.
+	// Expected value is 'Affiliate'.
+	EntityType string `pulumi:"entityType"`
+	// This will be present in the response if the primary has a resource ID
+	PrimaryResourceId string `pulumi:"primaryResourceId"`
+	// This is the catalog UPN for the product.
+	ProductCode string `pulumi:"productCode"`
+	// The state of the resource. Supported values are Pending, Failed, Succeeded, Canceled.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Start date of the discount. Value is the date the discount started or will start in the future.
+	StartAt string `pulumi:"startAt"`
+	// Represents the current status of the discount.
+	Status string `pulumi:"status"`
+	// This is the globally unique identifier of the Discount which will not change for the lifetime of the Discount.
+	SystemId *string `pulumi:"systemId"`
+}
+
+// Entity type for affiliate discounts
+type EntityTypeAffiliateDiscountResponseOutput struct{ *pulumi.OutputState }
+
+func (EntityTypeAffiliateDiscountResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityTypeAffiliateDiscountResponse)(nil)).Elem()
+}
+
+func (o EntityTypeAffiliateDiscountResponseOutput) ToEntityTypeAffiliateDiscountResponseOutput() EntityTypeAffiliateDiscountResponseOutput {
+	return o
+}
+
+func (o EntityTypeAffiliateDiscountResponseOutput) ToEntityTypeAffiliateDiscountResponseOutputWithContext(ctx context.Context) EntityTypeAffiliateDiscountResponseOutput {
+	return o
+}
+
+// List of applied scopes supported for discounts.
+func (o EntityTypeAffiliateDiscountResponseOutput) AppliedScopeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntityTypeAffiliateDiscountResponse) *string { return v.AppliedScopeType }).(pulumi.StringPtrOutput)
+}
+
+// Fully-qualified identifier of the benefit under applicable benefit list.
+func (o EntityTypeAffiliateDiscountResponseOutput) BenefitResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityTypeAffiliateDiscountResponse) string { return v.BenefitResourceId }).(pulumi.StringOutput)
+}
+
+// Billing account resource id where the discount metadata is present.
+func (o EntityTypeAffiliateDiscountResponseOutput) BillingAccountResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityTypeAffiliateDiscountResponse) string { return v.BillingAccountResourceId }).(pulumi.StringOutput)
+}
+
+// Billing profile resource id where the discount is scoped to.
+func (o EntityTypeAffiliateDiscountResponseOutput) BillingProfileResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityTypeAffiliateDiscountResponse) string { return v.BillingProfileResourceId }).(pulumi.StringOutput)
+}
+
+// Customer resource id where the discount is scoped to.
+func (o EntityTypeAffiliateDiscountResponseOutput) CustomerResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityTypeAffiliateDiscountResponse) string { return v.CustomerResourceId }).(pulumi.StringOutput)
+}
+
+// This defines a user friendly display name for the discount.
+func (o EntityTypeAffiliateDiscountResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntityTypeAffiliateDiscountResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// End date of the discount. No duration will be supported. Allowed value is any date greater than or equal to startDate.
+func (o EntityTypeAffiliateDiscountResponseOutput) EndAt() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityTypeAffiliateDiscountResponse) string { return v.EndAt }).(pulumi.StringOutput)
+}
+
+// This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values.
+// Expected value is 'Affiliate'.
+func (o EntityTypeAffiliateDiscountResponseOutput) EntityType() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityTypeAffiliateDiscountResponse) string { return v.EntityType }).(pulumi.StringOutput)
+}
+
+// This will be present in the response if the primary has a resource ID
+func (o EntityTypeAffiliateDiscountResponseOutput) PrimaryResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityTypeAffiliateDiscountResponse) string { return v.PrimaryResourceId }).(pulumi.StringOutput)
+}
+
+// This is the catalog UPN for the product.
+func (o EntityTypeAffiliateDiscountResponseOutput) ProductCode() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityTypeAffiliateDiscountResponse) string { return v.ProductCode }).(pulumi.StringOutput)
+}
+
+// The state of the resource. Supported values are Pending, Failed, Succeeded, Canceled.
+func (o EntityTypeAffiliateDiscountResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityTypeAffiliateDiscountResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Start date of the discount. Value is the date the discount started or will start in the future.
+func (o EntityTypeAffiliateDiscountResponseOutput) StartAt() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityTypeAffiliateDiscountResponse) string { return v.StartAt }).(pulumi.StringOutput)
+}
+
+// Represents the current status of the discount.
+func (o EntityTypeAffiliateDiscountResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityTypeAffiliateDiscountResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// This is the globally unique identifier of the Discount which will not change for the lifetime of the Discount.
+func (o EntityTypeAffiliateDiscountResponseOutput) SystemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntityTypeAffiliateDiscountResponse) *string { return v.SystemId }).(pulumi.StringPtrOutput)
+}
+
+// Entity type for primary discounts
+type EntityTypePrimaryDiscount struct {
+	// List of applied scopes supported for discounts.
+	AppliedScopeType *string `pulumi:"appliedScopeType"`
+	// This defines the conditions for a given discount type.
+	DiscountTypeProperties interface{} `pulumi:"discountTypeProperties"`
+	// This defines a user friendly display name for the discount.
+	DisplayName *string `pulumi:"displayName"`
+	// End date of the discount. No duration will be supported. Allowed value is any date greater than or equal to startDate.
+	EndAt string `pulumi:"endAt"`
+	// This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values.
+	// Expected value is 'Primary'.
+	EntityType string `pulumi:"entityType"`
+	// This is the catalog UPN for the product.
+	ProductCode string `pulumi:"productCode"`
+	// Start date of the discount. Value is the date the discount started or will start in the future.
+	StartAt string `pulumi:"startAt"`
+	// This is the globally unique identifier of the Discount which will not change for the lifetime of the Discount.
+	SystemId *string `pulumi:"systemId"`
+}
+
+// EntityTypePrimaryDiscountInput is an input type that accepts EntityTypePrimaryDiscountArgs and EntityTypePrimaryDiscountOutput values.
+// You can construct a concrete instance of `EntityTypePrimaryDiscountInput` via:
+//
+//	EntityTypePrimaryDiscountArgs{...}
+type EntityTypePrimaryDiscountInput interface {
+	pulumi.Input
+
+	ToEntityTypePrimaryDiscountOutput() EntityTypePrimaryDiscountOutput
+	ToEntityTypePrimaryDiscountOutputWithContext(context.Context) EntityTypePrimaryDiscountOutput
+}
+
+// Entity type for primary discounts
+type EntityTypePrimaryDiscountArgs struct {
+	// List of applied scopes supported for discounts.
+	AppliedScopeType pulumi.StringPtrInput `pulumi:"appliedScopeType"`
+	// This defines the conditions for a given discount type.
+	DiscountTypeProperties pulumi.Input `pulumi:"discountTypeProperties"`
+	// This defines a user friendly display name for the discount.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// End date of the discount. No duration will be supported. Allowed value is any date greater than or equal to startDate.
+	EndAt pulumi.StringInput `pulumi:"endAt"`
+	// This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values.
+	// Expected value is 'Primary'.
+	EntityType pulumi.StringInput `pulumi:"entityType"`
+	// This is the catalog UPN for the product.
+	ProductCode pulumi.StringInput `pulumi:"productCode"`
+	// Start date of the discount. Value is the date the discount started or will start in the future.
+	StartAt pulumi.StringInput `pulumi:"startAt"`
+	// This is the globally unique identifier of the Discount which will not change for the lifetime of the Discount.
+	SystemId pulumi.StringPtrInput `pulumi:"systemId"`
+}
+
+func (EntityTypePrimaryDiscountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityTypePrimaryDiscount)(nil)).Elem()
+}
+
+func (i EntityTypePrimaryDiscountArgs) ToEntityTypePrimaryDiscountOutput() EntityTypePrimaryDiscountOutput {
+	return i.ToEntityTypePrimaryDiscountOutputWithContext(context.Background())
+}
+
+func (i EntityTypePrimaryDiscountArgs) ToEntityTypePrimaryDiscountOutputWithContext(ctx context.Context) EntityTypePrimaryDiscountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityTypePrimaryDiscountOutput)
+}
+
+func (i EntityTypePrimaryDiscountArgs) ToEntityTypePrimaryDiscountPtrOutput() EntityTypePrimaryDiscountPtrOutput {
+	return i.ToEntityTypePrimaryDiscountPtrOutputWithContext(context.Background())
+}
+
+func (i EntityTypePrimaryDiscountArgs) ToEntityTypePrimaryDiscountPtrOutputWithContext(ctx context.Context) EntityTypePrimaryDiscountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityTypePrimaryDiscountOutput).ToEntityTypePrimaryDiscountPtrOutputWithContext(ctx)
+}
+
+// EntityTypePrimaryDiscountPtrInput is an input type that accepts EntityTypePrimaryDiscountArgs, EntityTypePrimaryDiscountPtr and EntityTypePrimaryDiscountPtrOutput values.
+// You can construct a concrete instance of `EntityTypePrimaryDiscountPtrInput` via:
+//
+//	        EntityTypePrimaryDiscountArgs{...}
+//
+//	or:
+//
+//	        nil
+type EntityTypePrimaryDiscountPtrInput interface {
+	pulumi.Input
+
+	ToEntityTypePrimaryDiscountPtrOutput() EntityTypePrimaryDiscountPtrOutput
+	ToEntityTypePrimaryDiscountPtrOutputWithContext(context.Context) EntityTypePrimaryDiscountPtrOutput
+}
+
+type entityTypePrimaryDiscountPtrType EntityTypePrimaryDiscountArgs
+
+func EntityTypePrimaryDiscountPtr(v *EntityTypePrimaryDiscountArgs) EntityTypePrimaryDiscountPtrInput {
+	return (*entityTypePrimaryDiscountPtrType)(v)
+}
+
+func (*entityTypePrimaryDiscountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntityTypePrimaryDiscount)(nil)).Elem()
+}
+
+func (i *entityTypePrimaryDiscountPtrType) ToEntityTypePrimaryDiscountPtrOutput() EntityTypePrimaryDiscountPtrOutput {
+	return i.ToEntityTypePrimaryDiscountPtrOutputWithContext(context.Background())
+}
+
+func (i *entityTypePrimaryDiscountPtrType) ToEntityTypePrimaryDiscountPtrOutputWithContext(ctx context.Context) EntityTypePrimaryDiscountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityTypePrimaryDiscountPtrOutput)
+}
+
+// Entity type for primary discounts
+type EntityTypePrimaryDiscountOutput struct{ *pulumi.OutputState }
+
+func (EntityTypePrimaryDiscountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityTypePrimaryDiscount)(nil)).Elem()
+}
+
+func (o EntityTypePrimaryDiscountOutput) ToEntityTypePrimaryDiscountOutput() EntityTypePrimaryDiscountOutput {
+	return o
+}
+
+func (o EntityTypePrimaryDiscountOutput) ToEntityTypePrimaryDiscountOutputWithContext(ctx context.Context) EntityTypePrimaryDiscountOutput {
+	return o
+}
+
+func (o EntityTypePrimaryDiscountOutput) ToEntityTypePrimaryDiscountPtrOutput() EntityTypePrimaryDiscountPtrOutput {
+	return o.ToEntityTypePrimaryDiscountPtrOutputWithContext(context.Background())
+}
+
+func (o EntityTypePrimaryDiscountOutput) ToEntityTypePrimaryDiscountPtrOutputWithContext(ctx context.Context) EntityTypePrimaryDiscountPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntityTypePrimaryDiscount) *EntityTypePrimaryDiscount {
+		return &v
+	}).(EntityTypePrimaryDiscountPtrOutput)
+}
+
+// List of applied scopes supported for discounts.
+func (o EntityTypePrimaryDiscountOutput) AppliedScopeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntityTypePrimaryDiscount) *string { return v.AppliedScopeType }).(pulumi.StringPtrOutput)
+}
+
+// This defines the conditions for a given discount type.
+func (o EntityTypePrimaryDiscountOutput) DiscountTypeProperties() pulumi.AnyOutput {
+	return o.ApplyT(func(v EntityTypePrimaryDiscount) interface{} { return v.DiscountTypeProperties }).(pulumi.AnyOutput)
+}
+
+// This defines a user friendly display name for the discount.
+func (o EntityTypePrimaryDiscountOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntityTypePrimaryDiscount) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// End date of the discount. No duration will be supported. Allowed value is any date greater than or equal to startDate.
+func (o EntityTypePrimaryDiscountOutput) EndAt() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityTypePrimaryDiscount) string { return v.EndAt }).(pulumi.StringOutput)
+}
+
+// This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values.
+// Expected value is 'Primary'.
+func (o EntityTypePrimaryDiscountOutput) EntityType() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityTypePrimaryDiscount) string { return v.EntityType }).(pulumi.StringOutput)
+}
+
+// This is the catalog UPN for the product.
+func (o EntityTypePrimaryDiscountOutput) ProductCode() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityTypePrimaryDiscount) string { return v.ProductCode }).(pulumi.StringOutput)
+}
+
+// Start date of the discount. Value is the date the discount started or will start in the future.
+func (o EntityTypePrimaryDiscountOutput) StartAt() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityTypePrimaryDiscount) string { return v.StartAt }).(pulumi.StringOutput)
+}
+
+// This is the globally unique identifier of the Discount which will not change for the lifetime of the Discount.
+func (o EntityTypePrimaryDiscountOutput) SystemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntityTypePrimaryDiscount) *string { return v.SystemId }).(pulumi.StringPtrOutput)
+}
+
+type EntityTypePrimaryDiscountPtrOutput struct{ *pulumi.OutputState }
+
+func (EntityTypePrimaryDiscountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntityTypePrimaryDiscount)(nil)).Elem()
+}
+
+func (o EntityTypePrimaryDiscountPtrOutput) ToEntityTypePrimaryDiscountPtrOutput() EntityTypePrimaryDiscountPtrOutput {
+	return o
+}
+
+func (o EntityTypePrimaryDiscountPtrOutput) ToEntityTypePrimaryDiscountPtrOutputWithContext(ctx context.Context) EntityTypePrimaryDiscountPtrOutput {
+	return o
+}
+
+func (o EntityTypePrimaryDiscountPtrOutput) Elem() EntityTypePrimaryDiscountOutput {
+	return o.ApplyT(func(v *EntityTypePrimaryDiscount) EntityTypePrimaryDiscount {
+		if v != nil {
+			return *v
+		}
+		var ret EntityTypePrimaryDiscount
+		return ret
+	}).(EntityTypePrimaryDiscountOutput)
+}
+
+// List of applied scopes supported for discounts.
+func (o EntityTypePrimaryDiscountPtrOutput) AppliedScopeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntityTypePrimaryDiscount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AppliedScopeType
+	}).(pulumi.StringPtrOutput)
+}
+
+// This defines the conditions for a given discount type.
+func (o EntityTypePrimaryDiscountPtrOutput) DiscountTypeProperties() pulumi.AnyOutput {
+	return o.ApplyT(func(v *EntityTypePrimaryDiscount) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.DiscountTypeProperties
+	}).(pulumi.AnyOutput)
+}
+
+// This defines a user friendly display name for the discount.
+func (o EntityTypePrimaryDiscountPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntityTypePrimaryDiscount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// End date of the discount. No duration will be supported. Allowed value is any date greater than or equal to startDate.
+func (o EntityTypePrimaryDiscountPtrOutput) EndAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntityTypePrimaryDiscount) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values.
+// Expected value is 'Primary'.
+func (o EntityTypePrimaryDiscountPtrOutput) EntityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntityTypePrimaryDiscount) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EntityType
+	}).(pulumi.StringPtrOutput)
+}
+
+// This is the catalog UPN for the product.
+func (o EntityTypePrimaryDiscountPtrOutput) ProductCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntityTypePrimaryDiscount) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProductCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Start date of the discount. Value is the date the discount started or will start in the future.
+func (o EntityTypePrimaryDiscountPtrOutput) StartAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntityTypePrimaryDiscount) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// This is the globally unique identifier of the Discount which will not change for the lifetime of the Discount.
+func (o EntityTypePrimaryDiscountPtrOutput) SystemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EntityTypePrimaryDiscount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SystemId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Entity type for primary discounts
+type EntityTypePrimaryDiscountResponse struct {
+	// List of applied scopes supported for discounts.
+	AppliedScopeType *string `pulumi:"appliedScopeType"`
+	// Fully-qualified identifier of the benefit under applicable benefit list.
+	BenefitResourceId string `pulumi:"benefitResourceId"`
+	// Billing account resource id where the discount metadata is present.
+	BillingAccountResourceId string `pulumi:"billingAccountResourceId"`
+	// Billing profile resource id where the discount is scoped to.
+	BillingProfileResourceId string `pulumi:"billingProfileResourceId"`
+	// Customer resource id where the discount is scoped to.
+	CustomerResourceId string `pulumi:"customerResourceId"`
+	// This defines the conditions for a given discount type.
+	DiscountTypeProperties interface{} `pulumi:"discountTypeProperties"`
+	// This defines a user friendly display name for the discount.
+	DisplayName *string `pulumi:"displayName"`
+	// End date of the discount. No duration will be supported. Allowed value is any date greater than or equal to startDate.
+	EndAt string `pulumi:"endAt"`
+	// This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values.
+	// Expected value is 'Primary'.
+	EntityType string `pulumi:"entityType"`
+	// This is the catalog UPN for the product.
+	ProductCode string `pulumi:"productCode"`
+	// The state of the resource. Supported values are Pending, Failed, Succeeded, Canceled.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Start date of the discount. Value is the date the discount started or will start in the future.
+	StartAt string `pulumi:"startAt"`
+	// Represents the current status of the discount.
+	Status string `pulumi:"status"`
+	// This is the globally unique identifier of the Discount which will not change for the lifetime of the Discount.
+	SystemId *string `pulumi:"systemId"`
+}
+
+// Entity type for primary discounts
+type EntityTypePrimaryDiscountResponseOutput struct{ *pulumi.OutputState }
+
+func (EntityTypePrimaryDiscountResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityTypePrimaryDiscountResponse)(nil)).Elem()
+}
+
+func (o EntityTypePrimaryDiscountResponseOutput) ToEntityTypePrimaryDiscountResponseOutput() EntityTypePrimaryDiscountResponseOutput {
+	return o
+}
+
+func (o EntityTypePrimaryDiscountResponseOutput) ToEntityTypePrimaryDiscountResponseOutputWithContext(ctx context.Context) EntityTypePrimaryDiscountResponseOutput {
+	return o
+}
+
+// List of applied scopes supported for discounts.
+func (o EntityTypePrimaryDiscountResponseOutput) AppliedScopeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntityTypePrimaryDiscountResponse) *string { return v.AppliedScopeType }).(pulumi.StringPtrOutput)
+}
+
+// Fully-qualified identifier of the benefit under applicable benefit list.
+func (o EntityTypePrimaryDiscountResponseOutput) BenefitResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityTypePrimaryDiscountResponse) string { return v.BenefitResourceId }).(pulumi.StringOutput)
+}
+
+// Billing account resource id where the discount metadata is present.
+func (o EntityTypePrimaryDiscountResponseOutput) BillingAccountResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityTypePrimaryDiscountResponse) string { return v.BillingAccountResourceId }).(pulumi.StringOutput)
+}
+
+// Billing profile resource id where the discount is scoped to.
+func (o EntityTypePrimaryDiscountResponseOutput) BillingProfileResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityTypePrimaryDiscountResponse) string { return v.BillingProfileResourceId }).(pulumi.StringOutput)
+}
+
+// Customer resource id where the discount is scoped to.
+func (o EntityTypePrimaryDiscountResponseOutput) CustomerResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityTypePrimaryDiscountResponse) string { return v.CustomerResourceId }).(pulumi.StringOutput)
+}
+
+// This defines the conditions for a given discount type.
+func (o EntityTypePrimaryDiscountResponseOutput) DiscountTypeProperties() pulumi.AnyOutput {
+	return o.ApplyT(func(v EntityTypePrimaryDiscountResponse) interface{} { return v.DiscountTypeProperties }).(pulumi.AnyOutput)
+}
+
+// This defines a user friendly display name for the discount.
+func (o EntityTypePrimaryDiscountResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntityTypePrimaryDiscountResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// End date of the discount. No duration will be supported. Allowed value is any date greater than or equal to startDate.
+func (o EntityTypePrimaryDiscountResponseOutput) EndAt() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityTypePrimaryDiscountResponse) string { return v.EndAt }).(pulumi.StringOutput)
+}
+
+// This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values.
+// Expected value is 'Primary'.
+func (o EntityTypePrimaryDiscountResponseOutput) EntityType() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityTypePrimaryDiscountResponse) string { return v.EntityType }).(pulumi.StringOutput)
+}
+
+// This is the catalog UPN for the product.
+func (o EntityTypePrimaryDiscountResponseOutput) ProductCode() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityTypePrimaryDiscountResponse) string { return v.ProductCode }).(pulumi.StringOutput)
+}
+
+// The state of the resource. Supported values are Pending, Failed, Succeeded, Canceled.
+func (o EntityTypePrimaryDiscountResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityTypePrimaryDiscountResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Start date of the discount. Value is the date the discount started or will start in the future.
+func (o EntityTypePrimaryDiscountResponseOutput) StartAt() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityTypePrimaryDiscountResponse) string { return v.StartAt }).(pulumi.StringOutput)
+}
+
+// Represents the current status of the discount.
+func (o EntityTypePrimaryDiscountResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v EntityTypePrimaryDiscountResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// This is the globally unique identifier of the Discount which will not change for the lifetime of the Discount.
+func (o EntityTypePrimaryDiscountResponseOutput) SystemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EntityTypePrimaryDiscountResponse) *string { return v.SystemId }).(pulumi.StringPtrOutput)
+}
+
+// MACC milestone represents interim targets within the period of MACC.
+type MaccMilestone struct {
+	// Setting this to 'Enable' enables automatic shortfall invoicing when milestone commitment is not met.
+	AutomaticShortfall *string `pulumi:"automaticShortfall"`
+	// Optional field to record suppression reason for automatic shortfall.
+	AutomaticShortfallSuppressReason *AutomaticShortfallSuppressReason `pulumi:"automaticShortfallSuppressReason"`
+	// Commitment associated with this milestone.
+	Commitment *Price `pulumi:"commitment"`
+	// End date time for the milestone. Timestamp must be in the ISO date format YYYY-MM-DDT23:59:59Z.
+	EndAt *string `pulumi:"endAt"`
+	// Globally unique identifier for the milestone. Format: {guid}
+	MilestoneId *string `pulumi:"milestoneId"`
+	// Details of the shortfall associated with this milestone.
+	Shortfall *Shortfall `pulumi:"shortfall"`
+	// Represents the current status of the Milestone.
+	Status *string `pulumi:"status"`
+}
+
+// MaccMilestoneInput is an input type that accepts MaccMilestoneArgs and MaccMilestoneOutput values.
+// You can construct a concrete instance of `MaccMilestoneInput` via:
+//
+//	MaccMilestoneArgs{...}
+type MaccMilestoneInput interface {
+	pulumi.Input
+
+	ToMaccMilestoneOutput() MaccMilestoneOutput
+	ToMaccMilestoneOutputWithContext(context.Context) MaccMilestoneOutput
+}
+
+// MACC milestone represents interim targets within the period of MACC.
+type MaccMilestoneArgs struct {
+	// Setting this to 'Enable' enables automatic shortfall invoicing when milestone commitment is not met.
+	AutomaticShortfall pulumi.StringPtrInput `pulumi:"automaticShortfall"`
+	// Optional field to record suppression reason for automatic shortfall.
+	AutomaticShortfallSuppressReason AutomaticShortfallSuppressReasonPtrInput `pulumi:"automaticShortfallSuppressReason"`
+	// Commitment associated with this milestone.
+	Commitment PricePtrInput `pulumi:"commitment"`
+	// End date time for the milestone. Timestamp must be in the ISO date format YYYY-MM-DDT23:59:59Z.
+	EndAt pulumi.StringPtrInput `pulumi:"endAt"`
+	// Globally unique identifier for the milestone. Format: {guid}
+	MilestoneId pulumi.StringPtrInput `pulumi:"milestoneId"`
+	// Details of the shortfall associated with this milestone.
+	Shortfall ShortfallPtrInput `pulumi:"shortfall"`
+	// Represents the current status of the Milestone.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (MaccMilestoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaccMilestone)(nil)).Elem()
+}
+
+func (i MaccMilestoneArgs) ToMaccMilestoneOutput() MaccMilestoneOutput {
+	return i.ToMaccMilestoneOutputWithContext(context.Background())
+}
+
+func (i MaccMilestoneArgs) ToMaccMilestoneOutputWithContext(ctx context.Context) MaccMilestoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaccMilestoneOutput)
+}
+
+// MaccMilestoneArrayInput is an input type that accepts MaccMilestoneArray and MaccMilestoneArrayOutput values.
+// You can construct a concrete instance of `MaccMilestoneArrayInput` via:
+//
+//	MaccMilestoneArray{ MaccMilestoneArgs{...} }
+type MaccMilestoneArrayInput interface {
+	pulumi.Input
+
+	ToMaccMilestoneArrayOutput() MaccMilestoneArrayOutput
+	ToMaccMilestoneArrayOutputWithContext(context.Context) MaccMilestoneArrayOutput
+}
+
+type MaccMilestoneArray []MaccMilestoneInput
+
+func (MaccMilestoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MaccMilestone)(nil)).Elem()
+}
+
+func (i MaccMilestoneArray) ToMaccMilestoneArrayOutput() MaccMilestoneArrayOutput {
+	return i.ToMaccMilestoneArrayOutputWithContext(context.Background())
+}
+
+func (i MaccMilestoneArray) ToMaccMilestoneArrayOutputWithContext(ctx context.Context) MaccMilestoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaccMilestoneArrayOutput)
+}
+
+// MACC milestone represents interim targets within the period of MACC.
+type MaccMilestoneOutput struct{ *pulumi.OutputState }
+
+func (MaccMilestoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaccMilestone)(nil)).Elem()
+}
+
+func (o MaccMilestoneOutput) ToMaccMilestoneOutput() MaccMilestoneOutput {
+	return o
+}
+
+func (o MaccMilestoneOutput) ToMaccMilestoneOutputWithContext(ctx context.Context) MaccMilestoneOutput {
+	return o
+}
+
+// Setting this to 'Enable' enables automatic shortfall invoicing when milestone commitment is not met.
+func (o MaccMilestoneOutput) AutomaticShortfall() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MaccMilestone) *string { return v.AutomaticShortfall }).(pulumi.StringPtrOutput)
+}
+
+// Optional field to record suppression reason for automatic shortfall.
+func (o MaccMilestoneOutput) AutomaticShortfallSuppressReason() AutomaticShortfallSuppressReasonPtrOutput {
+	return o.ApplyT(func(v MaccMilestone) *AutomaticShortfallSuppressReason { return v.AutomaticShortfallSuppressReason }).(AutomaticShortfallSuppressReasonPtrOutput)
+}
+
+// Commitment associated with this milestone.
+func (o MaccMilestoneOutput) Commitment() PricePtrOutput {
+	return o.ApplyT(func(v MaccMilestone) *Price { return v.Commitment }).(PricePtrOutput)
+}
+
+// End date time for the milestone. Timestamp must be in the ISO date format YYYY-MM-DDT23:59:59Z.
+func (o MaccMilestoneOutput) EndAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MaccMilestone) *string { return v.EndAt }).(pulumi.StringPtrOutput)
+}
+
+// Globally unique identifier for the milestone. Format: {guid}
+func (o MaccMilestoneOutput) MilestoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MaccMilestone) *string { return v.MilestoneId }).(pulumi.StringPtrOutput)
+}
+
+// Details of the shortfall associated with this milestone.
+func (o MaccMilestoneOutput) Shortfall() ShortfallPtrOutput {
+	return o.ApplyT(func(v MaccMilestone) *Shortfall { return v.Shortfall }).(ShortfallPtrOutput)
+}
+
+// Represents the current status of the Milestone.
+func (o MaccMilestoneOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MaccMilestone) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type MaccMilestoneArrayOutput struct{ *pulumi.OutputState }
+
+func (MaccMilestoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MaccMilestone)(nil)).Elem()
+}
+
+func (o MaccMilestoneArrayOutput) ToMaccMilestoneArrayOutput() MaccMilestoneArrayOutput {
+	return o
+}
+
+func (o MaccMilestoneArrayOutput) ToMaccMilestoneArrayOutputWithContext(ctx context.Context) MaccMilestoneArrayOutput {
+	return o
+}
+
+func (o MaccMilestoneArrayOutput) Index(i pulumi.IntInput) MaccMilestoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MaccMilestone {
+		return vs[0].([]MaccMilestone)[vs[1].(int)]
+	}).(MaccMilestoneOutput)
+}
+
+// MACC milestone represents interim targets within the period of MACC.
+type MaccMilestoneResponse struct {
+	// Setting this to 'Enable' enables automatic shortfall invoicing when milestone commitment is not met.
+	AutomaticShortfall *string `pulumi:"automaticShortfall"`
+	// Optional field to record suppression reason for automatic shortfall.
+	AutomaticShortfallSuppressReason *AutomaticShortfallSuppressReasonResponse `pulumi:"automaticShortfallSuppressReason"`
+	// Commitment associated with this milestone.
+	Commitment *PriceResponse `pulumi:"commitment"`
+	// End date time for the milestone. Timestamp must be in the ISO date format YYYY-MM-DDT23:59:59Z.
+	EndAt *string `pulumi:"endAt"`
+	// Globally unique identifier for the milestone. Format: {guid}
+	MilestoneId *string `pulumi:"milestoneId"`
+	// Details of the shortfall associated with this milestone.
+	Shortfall *ShortfallResponse `pulumi:"shortfall"`
+	// Represents the current status of the Milestone.
+	Status *string `pulumi:"status"`
+}
+
+// MACC milestone represents interim targets within the period of MACC.
+type MaccMilestoneResponseOutput struct{ *pulumi.OutputState }
+
+func (MaccMilestoneResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaccMilestoneResponse)(nil)).Elem()
+}
+
+func (o MaccMilestoneResponseOutput) ToMaccMilestoneResponseOutput() MaccMilestoneResponseOutput {
+	return o
+}
+
+func (o MaccMilestoneResponseOutput) ToMaccMilestoneResponseOutputWithContext(ctx context.Context) MaccMilestoneResponseOutput {
+	return o
+}
+
+// Setting this to 'Enable' enables automatic shortfall invoicing when milestone commitment is not met.
+func (o MaccMilestoneResponseOutput) AutomaticShortfall() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MaccMilestoneResponse) *string { return v.AutomaticShortfall }).(pulumi.StringPtrOutput)
+}
+
+// Optional field to record suppression reason for automatic shortfall.
+func (o MaccMilestoneResponseOutput) AutomaticShortfallSuppressReason() AutomaticShortfallSuppressReasonResponsePtrOutput {
+	return o.ApplyT(func(v MaccMilestoneResponse) *AutomaticShortfallSuppressReasonResponse {
+		return v.AutomaticShortfallSuppressReason
+	}).(AutomaticShortfallSuppressReasonResponsePtrOutput)
+}
+
+// Commitment associated with this milestone.
+func (o MaccMilestoneResponseOutput) Commitment() PriceResponsePtrOutput {
+	return o.ApplyT(func(v MaccMilestoneResponse) *PriceResponse { return v.Commitment }).(PriceResponsePtrOutput)
+}
+
+// End date time for the milestone. Timestamp must be in the ISO date format YYYY-MM-DDT23:59:59Z.
+func (o MaccMilestoneResponseOutput) EndAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MaccMilestoneResponse) *string { return v.EndAt }).(pulumi.StringPtrOutput)
+}
+
+// Globally unique identifier for the milestone. Format: {guid}
+func (o MaccMilestoneResponseOutput) MilestoneId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MaccMilestoneResponse) *string { return v.MilestoneId }).(pulumi.StringPtrOutput)
+}
+
+// Details of the shortfall associated with this milestone.
+func (o MaccMilestoneResponseOutput) Shortfall() ShortfallResponsePtrOutput {
+	return o.ApplyT(func(v MaccMilestoneResponse) *ShortfallResponse { return v.Shortfall }).(ShortfallResponsePtrOutput)
+}
+
+// Represents the current status of the Milestone.
+func (o MaccMilestoneResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MaccMilestoneResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type MaccMilestoneResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MaccMilestoneResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MaccMilestoneResponse)(nil)).Elem()
+}
+
+func (o MaccMilestoneResponseArrayOutput) ToMaccMilestoneResponseArrayOutput() MaccMilestoneResponseArrayOutput {
+	return o
+}
+
+func (o MaccMilestoneResponseArrayOutput) ToMaccMilestoneResponseArrayOutputWithContext(ctx context.Context) MaccMilestoneResponseArrayOutput {
+	return o
+}
+
+func (o MaccMilestoneResponseArrayOutput) Index(i pulumi.IntInput) MaccMilestoneResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MaccMilestoneResponse {
+		return vs[0].([]MaccMilestoneResponse)[vs[1].(int)]
+	}).(MaccMilestoneResponseOutput)
+}
 
 // Managed service identity (system assigned and/or user assigned identities)
 type ManagedServiceIdentity struct {
@@ -181,7 +5535,7 @@ type ManagedServiceIdentityResponse struct {
 	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 	Type string `pulumi:"type"`
 	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities map[string]commontypesv6.UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
@@ -215,10 +5569,10 @@ func (o ManagedServiceIdentityResponseOutput) Type() pulumi.StringOutput {
 }
 
 // The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
-	return o.ApplyT(func(v ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
+func (o ManagedServiceIdentityResponseOutput) UserAssignedIdentities() commontypesv6.UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) map[string]commontypesv6.UserAssignedIdentityResponse {
 		return v.UserAssignedIdentities
-	}).(UserAssignedIdentityResponseMapOutput)
+	}).(commontypesv6.UserAssignedIdentityResponseMapOutput)
 }
 
 type ManagedServiceIdentityResponsePtrOutput struct{ *pulumi.OutputState }
@@ -276,13 +5630,186 @@ func (o ManagedServiceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
+func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() commontypesv6.UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) map[string]commontypesv6.UserAssignedIdentityResponse {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(UserAssignedIdentityResponseMapOutput)
+	}).(commontypesv6.UserAssignedIdentityResponseMapOutput)
+}
+
+// Items in the MarketSetPrices array.
+type MarketSetPricesItems struct {
+	// The currency of the locked price value. Validation: Required. Must be a valid ISO 4217 3-letter currency code.
+	Currency string   `pulumi:"currency"`
+	Markets  []string `pulumi:"markets"`
+	// The locked price for the priceable node. Validation: Required. Must be greater than or equal to 0. If the case of billing plans. This represents the price for each cycle charge.
+	Value float64 `pulumi:"value"`
+}
+
+// MarketSetPricesItemsInput is an input type that accepts MarketSetPricesItemsArgs and MarketSetPricesItemsOutput values.
+// You can construct a concrete instance of `MarketSetPricesItemsInput` via:
+//
+//	MarketSetPricesItemsArgs{...}
+type MarketSetPricesItemsInput interface {
+	pulumi.Input
+
+	ToMarketSetPricesItemsOutput() MarketSetPricesItemsOutput
+	ToMarketSetPricesItemsOutputWithContext(context.Context) MarketSetPricesItemsOutput
+}
+
+// Items in the MarketSetPrices array.
+type MarketSetPricesItemsArgs struct {
+	// The currency of the locked price value. Validation: Required. Must be a valid ISO 4217 3-letter currency code.
+	Currency pulumi.StringInput      `pulumi:"currency"`
+	Markets  pulumi.StringArrayInput `pulumi:"markets"`
+	// The locked price for the priceable node. Validation: Required. Must be greater than or equal to 0. If the case of billing plans. This represents the price for each cycle charge.
+	Value pulumi.Float64Input `pulumi:"value"`
+}
+
+func (MarketSetPricesItemsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MarketSetPricesItems)(nil)).Elem()
+}
+
+func (i MarketSetPricesItemsArgs) ToMarketSetPricesItemsOutput() MarketSetPricesItemsOutput {
+	return i.ToMarketSetPricesItemsOutputWithContext(context.Background())
+}
+
+func (i MarketSetPricesItemsArgs) ToMarketSetPricesItemsOutputWithContext(ctx context.Context) MarketSetPricesItemsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MarketSetPricesItemsOutput)
+}
+
+// MarketSetPricesItemsArrayInput is an input type that accepts MarketSetPricesItemsArray and MarketSetPricesItemsArrayOutput values.
+// You can construct a concrete instance of `MarketSetPricesItemsArrayInput` via:
+//
+//	MarketSetPricesItemsArray{ MarketSetPricesItemsArgs{...} }
+type MarketSetPricesItemsArrayInput interface {
+	pulumi.Input
+
+	ToMarketSetPricesItemsArrayOutput() MarketSetPricesItemsArrayOutput
+	ToMarketSetPricesItemsArrayOutputWithContext(context.Context) MarketSetPricesItemsArrayOutput
+}
+
+type MarketSetPricesItemsArray []MarketSetPricesItemsInput
+
+func (MarketSetPricesItemsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MarketSetPricesItems)(nil)).Elem()
+}
+
+func (i MarketSetPricesItemsArray) ToMarketSetPricesItemsArrayOutput() MarketSetPricesItemsArrayOutput {
+	return i.ToMarketSetPricesItemsArrayOutputWithContext(context.Background())
+}
+
+func (i MarketSetPricesItemsArray) ToMarketSetPricesItemsArrayOutputWithContext(ctx context.Context) MarketSetPricesItemsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MarketSetPricesItemsArrayOutput)
+}
+
+// Items in the MarketSetPrices array.
+type MarketSetPricesItemsOutput struct{ *pulumi.OutputState }
+
+func (MarketSetPricesItemsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MarketSetPricesItems)(nil)).Elem()
+}
+
+func (o MarketSetPricesItemsOutput) ToMarketSetPricesItemsOutput() MarketSetPricesItemsOutput {
+	return o
+}
+
+func (o MarketSetPricesItemsOutput) ToMarketSetPricesItemsOutputWithContext(ctx context.Context) MarketSetPricesItemsOutput {
+	return o
+}
+
+// The currency of the locked price value. Validation: Required. Must be a valid ISO 4217 3-letter currency code.
+func (o MarketSetPricesItemsOutput) Currency() pulumi.StringOutput {
+	return o.ApplyT(func(v MarketSetPricesItems) string { return v.Currency }).(pulumi.StringOutput)
+}
+
+func (o MarketSetPricesItemsOutput) Markets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MarketSetPricesItems) []string { return v.Markets }).(pulumi.StringArrayOutput)
+}
+
+// The locked price for the priceable node. Validation: Required. Must be greater than or equal to 0. If the case of billing plans. This represents the price for each cycle charge.
+func (o MarketSetPricesItemsOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v MarketSetPricesItems) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type MarketSetPricesItemsArrayOutput struct{ *pulumi.OutputState }
+
+func (MarketSetPricesItemsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MarketSetPricesItems)(nil)).Elem()
+}
+
+func (o MarketSetPricesItemsArrayOutput) ToMarketSetPricesItemsArrayOutput() MarketSetPricesItemsArrayOutput {
+	return o
+}
+
+func (o MarketSetPricesItemsArrayOutput) ToMarketSetPricesItemsArrayOutputWithContext(ctx context.Context) MarketSetPricesItemsArrayOutput {
+	return o
+}
+
+func (o MarketSetPricesItemsArrayOutput) Index(i pulumi.IntInput) MarketSetPricesItemsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MarketSetPricesItems {
+		return vs[0].([]MarketSetPricesItems)[vs[1].(int)]
+	}).(MarketSetPricesItemsOutput)
+}
+
+// Items in the MarketSetPrices array.
+type MarketSetPricesItemsResponse struct {
+	// The currency of the locked price value. Validation: Required. Must be a valid ISO 4217 3-letter currency code.
+	Currency string   `pulumi:"currency"`
+	Markets  []string `pulumi:"markets"`
+	// The locked price for the priceable node. Validation: Required. Must be greater than or equal to 0. If the case of billing plans. This represents the price for each cycle charge.
+	Value float64 `pulumi:"value"`
+}
+
+// Items in the MarketSetPrices array.
+type MarketSetPricesItemsResponseOutput struct{ *pulumi.OutputState }
+
+func (MarketSetPricesItemsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MarketSetPricesItemsResponse)(nil)).Elem()
+}
+
+func (o MarketSetPricesItemsResponseOutput) ToMarketSetPricesItemsResponseOutput() MarketSetPricesItemsResponseOutput {
+	return o
+}
+
+func (o MarketSetPricesItemsResponseOutput) ToMarketSetPricesItemsResponseOutputWithContext(ctx context.Context) MarketSetPricesItemsResponseOutput {
+	return o
+}
+
+// The currency of the locked price value. Validation: Required. Must be a valid ISO 4217 3-letter currency code.
+func (o MarketSetPricesItemsResponseOutput) Currency() pulumi.StringOutput {
+	return o.ApplyT(func(v MarketSetPricesItemsResponse) string { return v.Currency }).(pulumi.StringOutput)
+}
+
+func (o MarketSetPricesItemsResponseOutput) Markets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MarketSetPricesItemsResponse) []string { return v.Markets }).(pulumi.StringArrayOutput)
+}
+
+// The locked price for the priceable node. Validation: Required. Must be greater than or equal to 0. If the case of billing plans. This represents the price for each cycle charge.
+func (o MarketSetPricesItemsResponseOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v MarketSetPricesItemsResponse) float64 { return v.Value }).(pulumi.Float64Output)
+}
+
+type MarketSetPricesItemsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MarketSetPricesItemsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MarketSetPricesItemsResponse)(nil)).Elem()
+}
+
+func (o MarketSetPricesItemsResponseArrayOutput) ToMarketSetPricesItemsResponseArrayOutput() MarketSetPricesItemsResponseArrayOutput {
+	return o
+}
+
+func (o MarketSetPricesItemsResponseArrayOutput) ToMarketSetPricesItemsResponseArrayOutputWithContext(ctx context.Context) MarketSetPricesItemsResponseArrayOutput {
+	return o
+}
+
+func (o MarketSetPricesItemsResponseArrayOutput) Index(i pulumi.IntInput) MarketSetPricesItemsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MarketSetPricesItemsResponse {
+		return vs[0].([]MarketSetPricesItemsResponse)[vs[1].(int)]
+	}).(MarketSetPricesItemsResponseOutput)
 }
 
 // Plan for the resource.
@@ -629,6 +6156,882 @@ func (o PlanResponsePtrOutput) Version() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type Price struct {
+	Amount *float64 `pulumi:"amount"`
+	// The ISO 4217 3-letter currency code for the currency used by this purchase record.
+	CurrencyCode *string `pulumi:"currencyCode"`
+}
+
+// PriceInput is an input type that accepts PriceArgs and PriceOutput values.
+// You can construct a concrete instance of `PriceInput` via:
+//
+//	PriceArgs{...}
+type PriceInput interface {
+	pulumi.Input
+
+	ToPriceOutput() PriceOutput
+	ToPriceOutputWithContext(context.Context) PriceOutput
+}
+
+type PriceArgs struct {
+	Amount pulumi.Float64PtrInput `pulumi:"amount"`
+	// The ISO 4217 3-letter currency code for the currency used by this purchase record.
+	CurrencyCode pulumi.StringPtrInput `pulumi:"currencyCode"`
+}
+
+func (PriceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Price)(nil)).Elem()
+}
+
+func (i PriceArgs) ToPriceOutput() PriceOutput {
+	return i.ToPriceOutputWithContext(context.Background())
+}
+
+func (i PriceArgs) ToPriceOutputWithContext(ctx context.Context) PriceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PriceOutput)
+}
+
+func (i PriceArgs) ToPricePtrOutput() PricePtrOutput {
+	return i.ToPricePtrOutputWithContext(context.Background())
+}
+
+func (i PriceArgs) ToPricePtrOutputWithContext(ctx context.Context) PricePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PriceOutput).ToPricePtrOutputWithContext(ctx)
+}
+
+// PricePtrInput is an input type that accepts PriceArgs, PricePtr and PricePtrOutput values.
+// You can construct a concrete instance of `PricePtrInput` via:
+//
+//	        PriceArgs{...}
+//
+//	or:
+//
+//	        nil
+type PricePtrInput interface {
+	pulumi.Input
+
+	ToPricePtrOutput() PricePtrOutput
+	ToPricePtrOutputWithContext(context.Context) PricePtrOutput
+}
+
+type pricePtrType PriceArgs
+
+func PricePtr(v *PriceArgs) PricePtrInput {
+	return (*pricePtrType)(v)
+}
+
+func (*pricePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Price)(nil)).Elem()
+}
+
+func (i *pricePtrType) ToPricePtrOutput() PricePtrOutput {
+	return i.ToPricePtrOutputWithContext(context.Background())
+}
+
+func (i *pricePtrType) ToPricePtrOutputWithContext(ctx context.Context) PricePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PricePtrOutput)
+}
+
+type PriceOutput struct{ *pulumi.OutputState }
+
+func (PriceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Price)(nil)).Elem()
+}
+
+func (o PriceOutput) ToPriceOutput() PriceOutput {
+	return o
+}
+
+func (o PriceOutput) ToPriceOutputWithContext(ctx context.Context) PriceOutput {
+	return o
+}
+
+func (o PriceOutput) ToPricePtrOutput() PricePtrOutput {
+	return o.ToPricePtrOutputWithContext(context.Background())
+}
+
+func (o PriceOutput) ToPricePtrOutputWithContext(ctx context.Context) PricePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Price) *Price {
+		return &v
+	}).(PricePtrOutput)
+}
+
+func (o PriceOutput) Amount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v Price) *float64 { return v.Amount }).(pulumi.Float64PtrOutput)
+}
+
+// The ISO 4217 3-letter currency code for the currency used by this purchase record.
+func (o PriceOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Price) *string { return v.CurrencyCode }).(pulumi.StringPtrOutput)
+}
+
+type PricePtrOutput struct{ *pulumi.OutputState }
+
+func (PricePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Price)(nil)).Elem()
+}
+
+func (o PricePtrOutput) ToPricePtrOutput() PricePtrOutput {
+	return o
+}
+
+func (o PricePtrOutput) ToPricePtrOutputWithContext(ctx context.Context) PricePtrOutput {
+	return o
+}
+
+func (o PricePtrOutput) Elem() PriceOutput {
+	return o.ApplyT(func(v *Price) Price {
+		if v != nil {
+			return *v
+		}
+		var ret Price
+		return ret
+	}).(PriceOutput)
+}
+
+func (o PricePtrOutput) Amount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *Price) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Amount
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The ISO 4217 3-letter currency code for the currency used by this purchase record.
+func (o PricePtrOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Price) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CurrencyCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Set only in price guarantee scenario.
+type PriceGuaranteeProperties struct {
+	// The date on which prices are to be used for guarantee calculation. Validation: expected to be 00 hours, Format: 2024-09-30T00:00:00Z. Must be in UTC.
+	PriceGuaranteeDate *string `pulumi:"priceGuaranteeDate"`
+	// Supported values: Protected, Locked
+	PricingPolicy *string `pulumi:"pricingPolicy"`
+}
+
+// PriceGuaranteePropertiesInput is an input type that accepts PriceGuaranteePropertiesArgs and PriceGuaranteePropertiesOutput values.
+// You can construct a concrete instance of `PriceGuaranteePropertiesInput` via:
+//
+//	PriceGuaranteePropertiesArgs{...}
+type PriceGuaranteePropertiesInput interface {
+	pulumi.Input
+
+	ToPriceGuaranteePropertiesOutput() PriceGuaranteePropertiesOutput
+	ToPriceGuaranteePropertiesOutputWithContext(context.Context) PriceGuaranteePropertiesOutput
+}
+
+// Set only in price guarantee scenario.
+type PriceGuaranteePropertiesArgs struct {
+	// The date on which prices are to be used for guarantee calculation. Validation: expected to be 00 hours, Format: 2024-09-30T00:00:00Z. Must be in UTC.
+	PriceGuaranteeDate pulumi.StringPtrInput `pulumi:"priceGuaranteeDate"`
+	// Supported values: Protected, Locked
+	PricingPolicy pulumi.StringPtrInput `pulumi:"pricingPolicy"`
+}
+
+func (PriceGuaranteePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PriceGuaranteeProperties)(nil)).Elem()
+}
+
+func (i PriceGuaranteePropertiesArgs) ToPriceGuaranteePropertiesOutput() PriceGuaranteePropertiesOutput {
+	return i.ToPriceGuaranteePropertiesOutputWithContext(context.Background())
+}
+
+func (i PriceGuaranteePropertiesArgs) ToPriceGuaranteePropertiesOutputWithContext(ctx context.Context) PriceGuaranteePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PriceGuaranteePropertiesOutput)
+}
+
+func (i PriceGuaranteePropertiesArgs) ToPriceGuaranteePropertiesPtrOutput() PriceGuaranteePropertiesPtrOutput {
+	return i.ToPriceGuaranteePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i PriceGuaranteePropertiesArgs) ToPriceGuaranteePropertiesPtrOutputWithContext(ctx context.Context) PriceGuaranteePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PriceGuaranteePropertiesOutput).ToPriceGuaranteePropertiesPtrOutputWithContext(ctx)
+}
+
+// PriceGuaranteePropertiesPtrInput is an input type that accepts PriceGuaranteePropertiesArgs, PriceGuaranteePropertiesPtr and PriceGuaranteePropertiesPtrOutput values.
+// You can construct a concrete instance of `PriceGuaranteePropertiesPtrInput` via:
+//
+//	        PriceGuaranteePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type PriceGuaranteePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToPriceGuaranteePropertiesPtrOutput() PriceGuaranteePropertiesPtrOutput
+	ToPriceGuaranteePropertiesPtrOutputWithContext(context.Context) PriceGuaranteePropertiesPtrOutput
+}
+
+type priceGuaranteePropertiesPtrType PriceGuaranteePropertiesArgs
+
+func PriceGuaranteePropertiesPtr(v *PriceGuaranteePropertiesArgs) PriceGuaranteePropertiesPtrInput {
+	return (*priceGuaranteePropertiesPtrType)(v)
+}
+
+func (*priceGuaranteePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PriceGuaranteeProperties)(nil)).Elem()
+}
+
+func (i *priceGuaranteePropertiesPtrType) ToPriceGuaranteePropertiesPtrOutput() PriceGuaranteePropertiesPtrOutput {
+	return i.ToPriceGuaranteePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *priceGuaranteePropertiesPtrType) ToPriceGuaranteePropertiesPtrOutputWithContext(ctx context.Context) PriceGuaranteePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PriceGuaranteePropertiesPtrOutput)
+}
+
+// Set only in price guarantee scenario.
+type PriceGuaranteePropertiesOutput struct{ *pulumi.OutputState }
+
+func (PriceGuaranteePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PriceGuaranteeProperties)(nil)).Elem()
+}
+
+func (o PriceGuaranteePropertiesOutput) ToPriceGuaranteePropertiesOutput() PriceGuaranteePropertiesOutput {
+	return o
+}
+
+func (o PriceGuaranteePropertiesOutput) ToPriceGuaranteePropertiesOutputWithContext(ctx context.Context) PriceGuaranteePropertiesOutput {
+	return o
+}
+
+func (o PriceGuaranteePropertiesOutput) ToPriceGuaranteePropertiesPtrOutput() PriceGuaranteePropertiesPtrOutput {
+	return o.ToPriceGuaranteePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o PriceGuaranteePropertiesOutput) ToPriceGuaranteePropertiesPtrOutputWithContext(ctx context.Context) PriceGuaranteePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PriceGuaranteeProperties) *PriceGuaranteeProperties {
+		return &v
+	}).(PriceGuaranteePropertiesPtrOutput)
+}
+
+// The date on which prices are to be used for guarantee calculation. Validation: expected to be 00 hours, Format: 2024-09-30T00:00:00Z. Must be in UTC.
+func (o PriceGuaranteePropertiesOutput) PriceGuaranteeDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PriceGuaranteeProperties) *string { return v.PriceGuaranteeDate }).(pulumi.StringPtrOutput)
+}
+
+// Supported values: Protected, Locked
+func (o PriceGuaranteePropertiesOutput) PricingPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PriceGuaranteeProperties) *string { return v.PricingPolicy }).(pulumi.StringPtrOutput)
+}
+
+type PriceGuaranteePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (PriceGuaranteePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PriceGuaranteeProperties)(nil)).Elem()
+}
+
+func (o PriceGuaranteePropertiesPtrOutput) ToPriceGuaranteePropertiesPtrOutput() PriceGuaranteePropertiesPtrOutput {
+	return o
+}
+
+func (o PriceGuaranteePropertiesPtrOutput) ToPriceGuaranteePropertiesPtrOutputWithContext(ctx context.Context) PriceGuaranteePropertiesPtrOutput {
+	return o
+}
+
+func (o PriceGuaranteePropertiesPtrOutput) Elem() PriceGuaranteePropertiesOutput {
+	return o.ApplyT(func(v *PriceGuaranteeProperties) PriceGuaranteeProperties {
+		if v != nil {
+			return *v
+		}
+		var ret PriceGuaranteeProperties
+		return ret
+	}).(PriceGuaranteePropertiesOutput)
+}
+
+// The date on which prices are to be used for guarantee calculation. Validation: expected to be 00 hours, Format: 2024-09-30T00:00:00Z. Must be in UTC.
+func (o PriceGuaranteePropertiesPtrOutput) PriceGuaranteeDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PriceGuaranteeProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PriceGuaranteeDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Supported values: Protected, Locked
+func (o PriceGuaranteePropertiesPtrOutput) PricingPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PriceGuaranteeProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PricingPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Set only in price guarantee scenario.
+type PriceGuaranteePropertiesResponse struct {
+	// The date on which prices are to be used for guarantee calculation. Validation: expected to be 00 hours, Format: 2024-09-30T00:00:00Z. Must be in UTC.
+	PriceGuaranteeDate *string `pulumi:"priceGuaranteeDate"`
+	// Supported values: Protected, Locked
+	PricingPolicy *string `pulumi:"pricingPolicy"`
+}
+
+// Set only in price guarantee scenario.
+type PriceGuaranteePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (PriceGuaranteePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PriceGuaranteePropertiesResponse)(nil)).Elem()
+}
+
+func (o PriceGuaranteePropertiesResponseOutput) ToPriceGuaranteePropertiesResponseOutput() PriceGuaranteePropertiesResponseOutput {
+	return o
+}
+
+func (o PriceGuaranteePropertiesResponseOutput) ToPriceGuaranteePropertiesResponseOutputWithContext(ctx context.Context) PriceGuaranteePropertiesResponseOutput {
+	return o
+}
+
+// The date on which prices are to be used for guarantee calculation. Validation: expected to be 00 hours, Format: 2024-09-30T00:00:00Z. Must be in UTC.
+func (o PriceGuaranteePropertiesResponseOutput) PriceGuaranteeDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PriceGuaranteePropertiesResponse) *string { return v.PriceGuaranteeDate }).(pulumi.StringPtrOutput)
+}
+
+// Supported values: Protected, Locked
+func (o PriceGuaranteePropertiesResponseOutput) PricingPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PriceGuaranteePropertiesResponse) *string { return v.PricingPolicy }).(pulumi.StringPtrOutput)
+}
+
+type PriceGuaranteePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PriceGuaranteePropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PriceGuaranteePropertiesResponse)(nil)).Elem()
+}
+
+func (o PriceGuaranteePropertiesResponsePtrOutput) ToPriceGuaranteePropertiesResponsePtrOutput() PriceGuaranteePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o PriceGuaranteePropertiesResponsePtrOutput) ToPriceGuaranteePropertiesResponsePtrOutputWithContext(ctx context.Context) PriceGuaranteePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o PriceGuaranteePropertiesResponsePtrOutput) Elem() PriceGuaranteePropertiesResponseOutput {
+	return o.ApplyT(func(v *PriceGuaranteePropertiesResponse) PriceGuaranteePropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PriceGuaranteePropertiesResponse
+		return ret
+	}).(PriceGuaranteePropertiesResponseOutput)
+}
+
+// The date on which prices are to be used for guarantee calculation. Validation: expected to be 00 hours, Format: 2024-09-30T00:00:00Z. Must be in UTC.
+func (o PriceGuaranteePropertiesResponsePtrOutput) PriceGuaranteeDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PriceGuaranteePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PriceGuaranteeDate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Supported values: Protected, Locked
+func (o PriceGuaranteePropertiesResponsePtrOutput) PricingPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PriceGuaranteePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PricingPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+type PriceResponse struct {
+	Amount *float64 `pulumi:"amount"`
+	// The ISO 4217 3-letter currency code for the currency used by this purchase record.
+	CurrencyCode *string `pulumi:"currencyCode"`
+}
+
+type PriceResponseOutput struct{ *pulumi.OutputState }
+
+func (PriceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PriceResponse)(nil)).Elem()
+}
+
+func (o PriceResponseOutput) ToPriceResponseOutput() PriceResponseOutput {
+	return o
+}
+
+func (o PriceResponseOutput) ToPriceResponseOutputWithContext(ctx context.Context) PriceResponseOutput {
+	return o
+}
+
+func (o PriceResponseOutput) Amount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v PriceResponse) *float64 { return v.Amount }).(pulumi.Float64PtrOutput)
+}
+
+// The ISO 4217 3-letter currency code for the currency used by this purchase record.
+func (o PriceResponseOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PriceResponse) *string { return v.CurrencyCode }).(pulumi.StringPtrOutput)
+}
+
+type PriceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PriceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PriceResponse)(nil)).Elem()
+}
+
+func (o PriceResponsePtrOutput) ToPriceResponsePtrOutput() PriceResponsePtrOutput {
+	return o
+}
+
+func (o PriceResponsePtrOutput) ToPriceResponsePtrOutputWithContext(ctx context.Context) PriceResponsePtrOutput {
+	return o
+}
+
+func (o PriceResponsePtrOutput) Elem() PriceResponseOutput {
+	return o.ApplyT(func(v *PriceResponse) PriceResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PriceResponse
+		return ret
+	}).(PriceResponseOutput)
+}
+
+func (o PriceResponsePtrOutput) Amount() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *PriceResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Amount
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The ISO 4217 3-letter currency code for the currency used by this purchase record.
+func (o PriceResponsePtrOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PriceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CurrencyCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// MACC shortfall
+type Shortfall struct {
+	// Points to BalanceVersion document that indicates the remaining commitment balance when the credit was created.
+	BalanceVersion *float64 `pulumi:"balanceVersion"`
+	// Shortfall amount with grain.
+	Charge *Commitment `pulumi:"charge"`
+	// End DateTime in UTC.
+	EndAt *string `pulumi:"endAt"`
+	// Represents catalog UPN.
+	ProductCode *string `pulumi:"productCode"`
+	// Fully-qualified resource identifier of the credits associated with the shortfall.
+	ResourceId *string `pulumi:"resourceId"`
+	// Start DateTime.
+	StartAt *string `pulumi:"startAt"`
+	// This is an identifier of the shortfall which will not change for its lifetime.
+	SystemId *string `pulumi:"systemId"`
+}
+
+// ShortfallInput is an input type that accepts ShortfallArgs and ShortfallOutput values.
+// You can construct a concrete instance of `ShortfallInput` via:
+//
+//	ShortfallArgs{...}
+type ShortfallInput interface {
+	pulumi.Input
+
+	ToShortfallOutput() ShortfallOutput
+	ToShortfallOutputWithContext(context.Context) ShortfallOutput
+}
+
+// MACC shortfall
+type ShortfallArgs struct {
+	// Points to BalanceVersion document that indicates the remaining commitment balance when the credit was created.
+	BalanceVersion pulumi.Float64PtrInput `pulumi:"balanceVersion"`
+	// Shortfall amount with grain.
+	Charge CommitmentPtrInput `pulumi:"charge"`
+	// End DateTime in UTC.
+	EndAt pulumi.StringPtrInput `pulumi:"endAt"`
+	// Represents catalog UPN.
+	ProductCode pulumi.StringPtrInput `pulumi:"productCode"`
+	// Fully-qualified resource identifier of the credits associated with the shortfall.
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+	// Start DateTime.
+	StartAt pulumi.StringPtrInput `pulumi:"startAt"`
+	// This is an identifier of the shortfall which will not change for its lifetime.
+	SystemId pulumi.StringPtrInput `pulumi:"systemId"`
+}
+
+func (ShortfallArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Shortfall)(nil)).Elem()
+}
+
+func (i ShortfallArgs) ToShortfallOutput() ShortfallOutput {
+	return i.ToShortfallOutputWithContext(context.Background())
+}
+
+func (i ShortfallArgs) ToShortfallOutputWithContext(ctx context.Context) ShortfallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShortfallOutput)
+}
+
+func (i ShortfallArgs) ToShortfallPtrOutput() ShortfallPtrOutput {
+	return i.ToShortfallPtrOutputWithContext(context.Background())
+}
+
+func (i ShortfallArgs) ToShortfallPtrOutputWithContext(ctx context.Context) ShortfallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShortfallOutput).ToShortfallPtrOutputWithContext(ctx)
+}
+
+// ShortfallPtrInput is an input type that accepts ShortfallArgs, ShortfallPtr and ShortfallPtrOutput values.
+// You can construct a concrete instance of `ShortfallPtrInput` via:
+//
+//	        ShortfallArgs{...}
+//
+//	or:
+//
+//	        nil
+type ShortfallPtrInput interface {
+	pulumi.Input
+
+	ToShortfallPtrOutput() ShortfallPtrOutput
+	ToShortfallPtrOutputWithContext(context.Context) ShortfallPtrOutput
+}
+
+type shortfallPtrType ShortfallArgs
+
+func ShortfallPtr(v *ShortfallArgs) ShortfallPtrInput {
+	return (*shortfallPtrType)(v)
+}
+
+func (*shortfallPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Shortfall)(nil)).Elem()
+}
+
+func (i *shortfallPtrType) ToShortfallPtrOutput() ShortfallPtrOutput {
+	return i.ToShortfallPtrOutputWithContext(context.Background())
+}
+
+func (i *shortfallPtrType) ToShortfallPtrOutputWithContext(ctx context.Context) ShortfallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShortfallPtrOutput)
+}
+
+// MACC shortfall
+type ShortfallOutput struct{ *pulumi.OutputState }
+
+func (ShortfallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Shortfall)(nil)).Elem()
+}
+
+func (o ShortfallOutput) ToShortfallOutput() ShortfallOutput {
+	return o
+}
+
+func (o ShortfallOutput) ToShortfallOutputWithContext(ctx context.Context) ShortfallOutput {
+	return o
+}
+
+func (o ShortfallOutput) ToShortfallPtrOutput() ShortfallPtrOutput {
+	return o.ToShortfallPtrOutputWithContext(context.Background())
+}
+
+func (o ShortfallOutput) ToShortfallPtrOutputWithContext(ctx context.Context) ShortfallPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Shortfall) *Shortfall {
+		return &v
+	}).(ShortfallPtrOutput)
+}
+
+// Points to BalanceVersion document that indicates the remaining commitment balance when the credit was created.
+func (o ShortfallOutput) BalanceVersion() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v Shortfall) *float64 { return v.BalanceVersion }).(pulumi.Float64PtrOutput)
+}
+
+// Shortfall amount with grain.
+func (o ShortfallOutput) Charge() CommitmentPtrOutput {
+	return o.ApplyT(func(v Shortfall) *Commitment { return v.Charge }).(CommitmentPtrOutput)
+}
+
+// End DateTime in UTC.
+func (o ShortfallOutput) EndAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Shortfall) *string { return v.EndAt }).(pulumi.StringPtrOutput)
+}
+
+// Represents catalog UPN.
+func (o ShortfallOutput) ProductCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Shortfall) *string { return v.ProductCode }).(pulumi.StringPtrOutput)
+}
+
+// Fully-qualified resource identifier of the credits associated with the shortfall.
+func (o ShortfallOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Shortfall) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Start DateTime.
+func (o ShortfallOutput) StartAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Shortfall) *string { return v.StartAt }).(pulumi.StringPtrOutput)
+}
+
+// This is an identifier of the shortfall which will not change for its lifetime.
+func (o ShortfallOutput) SystemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Shortfall) *string { return v.SystemId }).(pulumi.StringPtrOutput)
+}
+
+type ShortfallPtrOutput struct{ *pulumi.OutputState }
+
+func (ShortfallPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Shortfall)(nil)).Elem()
+}
+
+func (o ShortfallPtrOutput) ToShortfallPtrOutput() ShortfallPtrOutput {
+	return o
+}
+
+func (o ShortfallPtrOutput) ToShortfallPtrOutputWithContext(ctx context.Context) ShortfallPtrOutput {
+	return o
+}
+
+func (o ShortfallPtrOutput) Elem() ShortfallOutput {
+	return o.ApplyT(func(v *Shortfall) Shortfall {
+		if v != nil {
+			return *v
+		}
+		var ret Shortfall
+		return ret
+	}).(ShortfallOutput)
+}
+
+// Points to BalanceVersion document that indicates the remaining commitment balance when the credit was created.
+func (o ShortfallPtrOutput) BalanceVersion() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *Shortfall) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.BalanceVersion
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Shortfall amount with grain.
+func (o ShortfallPtrOutput) Charge() CommitmentPtrOutput {
+	return o.ApplyT(func(v *Shortfall) *Commitment {
+		if v == nil {
+			return nil
+		}
+		return v.Charge
+	}).(CommitmentPtrOutput)
+}
+
+// End DateTime in UTC.
+func (o ShortfallPtrOutput) EndAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Shortfall) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents catalog UPN.
+func (o ShortfallPtrOutput) ProductCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Shortfall) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Fully-qualified resource identifier of the credits associated with the shortfall.
+func (o ShortfallPtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Shortfall) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Start DateTime.
+func (o ShortfallPtrOutput) StartAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Shortfall) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// This is an identifier of the shortfall which will not change for its lifetime.
+func (o ShortfallPtrOutput) SystemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Shortfall) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SystemId
+	}).(pulumi.StringPtrOutput)
+}
+
+// MACC shortfall
+type ShortfallResponse struct {
+	// Points to BalanceVersion document that indicates the remaining commitment balance when the credit was created.
+	BalanceVersion *float64 `pulumi:"balanceVersion"`
+	// Shortfall amount with grain.
+	Charge *CommitmentResponse `pulumi:"charge"`
+	// End DateTime in UTC.
+	EndAt *string `pulumi:"endAt"`
+	// Represents catalog UPN.
+	ProductCode *string `pulumi:"productCode"`
+	// Fully-qualified resource identifier of the credits associated with the shortfall.
+	ResourceId *string `pulumi:"resourceId"`
+	// Start DateTime.
+	StartAt *string `pulumi:"startAt"`
+	// This is an identifier of the shortfall which will not change for its lifetime.
+	SystemId *string `pulumi:"systemId"`
+}
+
+// MACC shortfall
+type ShortfallResponseOutput struct{ *pulumi.OutputState }
+
+func (ShortfallResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShortfallResponse)(nil)).Elem()
+}
+
+func (o ShortfallResponseOutput) ToShortfallResponseOutput() ShortfallResponseOutput {
+	return o
+}
+
+func (o ShortfallResponseOutput) ToShortfallResponseOutputWithContext(ctx context.Context) ShortfallResponseOutput {
+	return o
+}
+
+// Points to BalanceVersion document that indicates the remaining commitment balance when the credit was created.
+func (o ShortfallResponseOutput) BalanceVersion() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ShortfallResponse) *float64 { return v.BalanceVersion }).(pulumi.Float64PtrOutput)
+}
+
+// Shortfall amount with grain.
+func (o ShortfallResponseOutput) Charge() CommitmentResponsePtrOutput {
+	return o.ApplyT(func(v ShortfallResponse) *CommitmentResponse { return v.Charge }).(CommitmentResponsePtrOutput)
+}
+
+// End DateTime in UTC.
+func (o ShortfallResponseOutput) EndAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShortfallResponse) *string { return v.EndAt }).(pulumi.StringPtrOutput)
+}
+
+// Represents catalog UPN.
+func (o ShortfallResponseOutput) ProductCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShortfallResponse) *string { return v.ProductCode }).(pulumi.StringPtrOutput)
+}
+
+// Fully-qualified resource identifier of the credits associated with the shortfall.
+func (o ShortfallResponseOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShortfallResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Start DateTime.
+func (o ShortfallResponseOutput) StartAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShortfallResponse) *string { return v.StartAt }).(pulumi.StringPtrOutput)
+}
+
+// This is an identifier of the shortfall which will not change for its lifetime.
+func (o ShortfallResponseOutput) SystemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ShortfallResponse) *string { return v.SystemId }).(pulumi.StringPtrOutput)
+}
+
+type ShortfallResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ShortfallResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ShortfallResponse)(nil)).Elem()
+}
+
+func (o ShortfallResponsePtrOutput) ToShortfallResponsePtrOutput() ShortfallResponsePtrOutput {
+	return o
+}
+
+func (o ShortfallResponsePtrOutput) ToShortfallResponsePtrOutputWithContext(ctx context.Context) ShortfallResponsePtrOutput {
+	return o
+}
+
+func (o ShortfallResponsePtrOutput) Elem() ShortfallResponseOutput {
+	return o.ApplyT(func(v *ShortfallResponse) ShortfallResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ShortfallResponse
+		return ret
+	}).(ShortfallResponseOutput)
+}
+
+// Points to BalanceVersion document that indicates the remaining commitment balance when the credit was created.
+func (o ShortfallResponsePtrOutput) BalanceVersion() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ShortfallResponse) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.BalanceVersion
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Shortfall amount with grain.
+func (o ShortfallResponsePtrOutput) Charge() CommitmentResponsePtrOutput {
+	return o.ApplyT(func(v *ShortfallResponse) *CommitmentResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Charge
+	}).(CommitmentResponsePtrOutput)
+}
+
+// End DateTime in UTC.
+func (o ShortfallResponsePtrOutput) EndAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ShortfallResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EndAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents catalog UPN.
+func (o ShortfallResponsePtrOutput) ProductCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ShortfallResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProductCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Fully-qualified resource identifier of the credits associated with the shortfall.
+func (o ShortfallResponsePtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ShortfallResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Start DateTime.
+func (o ShortfallResponsePtrOutput) StartAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ShortfallResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// This is an identifier of the shortfall which will not change for its lifetime.
+func (o ShortfallResponsePtrOutput) SystemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ShortfallResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SystemId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The resource model definition representing SKU
 type Sku struct {
 	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
@@ -640,7 +7043,7 @@ type Sku struct {
 	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
 	Size *string `pulumi:"size"`
 	// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-	Tier *SkuTier `pulumi:"tier"`
+	Tier *commontypesv6.SkuTier `pulumi:"tier"`
 }
 
 // SkuInput is an input type that accepts SkuArgs and SkuOutput values.
@@ -665,7 +7068,7 @@ type SkuArgs struct {
 	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
 	Size pulumi.StringPtrInput `pulumi:"size"`
 	// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-	Tier SkuTierPtrInput `pulumi:"tier"`
+	Tier commontypesv6.SkuTierPtrInput `pulumi:"tier"`
 }
 
 func (SkuArgs) ElementType() reflect.Type {
@@ -767,8 +7170,8 @@ func (o SkuOutput) Size() pulumi.StringPtrOutput {
 }
 
 // This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-func (o SkuOutput) Tier() SkuTierPtrOutput {
-	return o.ApplyT(func(v Sku) *SkuTier { return v.Tier }).(SkuTierPtrOutput)
+func (o SkuOutput) Tier() commontypesv6.SkuTierPtrOutput {
+	return o.ApplyT(func(v Sku) *commontypesv6.SkuTier { return v.Tier }).(commontypesv6.SkuTierPtrOutput)
 }
 
 type SkuPtrOutput struct{ *pulumi.OutputState }
@@ -836,13 +7239,13 @@ func (o SkuPtrOutput) Size() pulumi.StringPtrOutput {
 }
 
 // This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-func (o SkuPtrOutput) Tier() SkuTierPtrOutput {
-	return o.ApplyT(func(v *Sku) *SkuTier {
+func (o SkuPtrOutput) Tier() commontypesv6.SkuTierPtrOutput {
+	return o.ApplyT(func(v *Sku) *commontypesv6.SkuTier {
 		if v == nil {
 			return nil
 		}
 		return v.Tier
-	}).(SkuTierPtrOutput)
+	}).(commontypesv6.SkuTierPtrOutput)
 }
 
 // The resource model definition representing SKU
@@ -973,134 +7376,97 @@ func (o SkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
-}
-
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponseOutput struct{ *pulumi.OutputState }
-
-func (SystemDataResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
-	return o
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
-	return o
-}
-
-// The timestamp of resource creation (UTC).
-func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
-}
-
-// User assigned identity properties
-type UserAssignedIdentityResponse struct {
-	// The client ID of the assigned identity.
-	ClientId string `pulumi:"clientId"`
-	// The principal ID of the assigned identity.
-	PrincipalId string `pulumi:"principalId"`
-}
-
-// User assigned identity properties
-type UserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
-
-func (UserAssignedIdentityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserAssignedIdentityResponse)(nil)).Elem()
-}
-
-func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput() UserAssignedIdentityResponseOutput {
-	return o
-}
-
-func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutputWithContext(ctx context.Context) UserAssignedIdentityResponseOutput {
-	return o
-}
-
-// The client ID of the assigned identity.
-func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
-}
-
-// The principal ID of the assigned identity.
-func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
-}
-
-type UserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
-
-func (UserAssignedIdentityResponseMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]UserAssignedIdentityResponse)(nil)).Elem()
-}
-
-func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutput() UserAssignedIdentityResponseMapOutput {
-	return o
-}
-
-func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
-	return o
-}
-
-func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
-		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
-	}).(UserAssignedIdentityResponseOutput)
-}
-
 func init() {
+	pulumi.RegisterOutputType(AutomaticShortfallSuppressReasonOutput{})
+	pulumi.RegisterOutputType(AutomaticShortfallSuppressReasonPtrOutput{})
+	pulumi.RegisterOutputType(AutomaticShortfallSuppressReasonResponseOutput{})
+	pulumi.RegisterOutputType(AutomaticShortfallSuppressReasonResponsePtrOutput{})
+	pulumi.RegisterOutputType(CatalogClaimsItemOutput{})
+	pulumi.RegisterOutputType(CatalogClaimsItemArrayOutput{})
+	pulumi.RegisterOutputType(CatalogClaimsItemResponseOutput{})
+	pulumi.RegisterOutputType(CatalogClaimsItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(CommitmentOutput{})
+	pulumi.RegisterOutputType(CommitmentPtrOutput{})
+	pulumi.RegisterOutputType(CommitmentResponseOutput{})
+	pulumi.RegisterOutputType(CommitmentResponsePtrOutput{})
+	pulumi.RegisterOutputType(ConditionsItemOutput{})
+	pulumi.RegisterOutputType(ConditionsItemArrayOutput{})
+	pulumi.RegisterOutputType(ConditionsItemResponseOutput{})
+	pulumi.RegisterOutputType(ConditionsItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(CreditBreakdownItemOutput{})
+	pulumi.RegisterOutputType(CreditBreakdownItemArrayOutput{})
+	pulumi.RegisterOutputType(CreditBreakdownItemResponseOutput{})
+	pulumi.RegisterOutputType(CreditBreakdownItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(CreditDimensionOutput{})
+	pulumi.RegisterOutputType(CreditDimensionArrayOutput{})
+	pulumi.RegisterOutputType(CreditDimensionResponseOutput{})
+	pulumi.RegisterOutputType(CreditDimensionResponseArrayOutput{})
+	pulumi.RegisterOutputType(CreditPoliciesOutput{})
+	pulumi.RegisterOutputType(CreditPoliciesPtrOutput{})
+	pulumi.RegisterOutputType(CreditPoliciesResponseOutput{})
+	pulumi.RegisterOutputType(CreditPoliciesResponsePtrOutput{})
+	pulumi.RegisterOutputType(CreditReasonResponseOutput{})
+	pulumi.RegisterOutputType(CreditReasonResponsePtrOutput{})
+	pulumi.RegisterOutputType(CustomPricePropertiesOutput{})
+	pulumi.RegisterOutputType(CustomPricePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(CustomPricePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(CustomPricePropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(DiscountCustomPriceOutput{})
+	pulumi.RegisterOutputType(DiscountCustomPricePtrOutput{})
+	pulumi.RegisterOutputType(DiscountCustomPriceMultiCurrencyOutput{})
+	pulumi.RegisterOutputType(DiscountCustomPriceMultiCurrencyPtrOutput{})
+	pulumi.RegisterOutputType(DiscountCustomPriceMultiCurrencyResponseOutput{})
+	pulumi.RegisterOutputType(DiscountCustomPriceMultiCurrencyResponsePtrOutput{})
+	pulumi.RegisterOutputType(DiscountCustomPriceResponseOutput{})
+	pulumi.RegisterOutputType(DiscountCustomPriceResponsePtrOutput{})
+	pulumi.RegisterOutputType(DiscountProductOutput{})
+	pulumi.RegisterOutputType(DiscountProductPtrOutput{})
+	pulumi.RegisterOutputType(DiscountProductFamilyOutput{})
+	pulumi.RegisterOutputType(DiscountProductFamilyPtrOutput{})
+	pulumi.RegisterOutputType(DiscountProductFamilyResponseOutput{})
+	pulumi.RegisterOutputType(DiscountProductFamilyResponsePtrOutput{})
+	pulumi.RegisterOutputType(DiscountProductResponseOutput{})
+	pulumi.RegisterOutputType(DiscountProductResponsePtrOutput{})
+	pulumi.RegisterOutputType(DiscountTypeProductSkuOutput{})
+	pulumi.RegisterOutputType(DiscountTypeProductSkuPtrOutput{})
+	pulumi.RegisterOutputType(DiscountTypeProductSkuResponseOutput{})
+	pulumi.RegisterOutputType(DiscountTypeProductSkuResponsePtrOutput{})
+	pulumi.RegisterOutputType(EntityTypeAffiliateDiscountOutput{})
+	pulumi.RegisterOutputType(EntityTypeAffiliateDiscountPtrOutput{})
+	pulumi.RegisterOutputType(EntityTypeAffiliateDiscountResponseOutput{})
+	pulumi.RegisterOutputType(EntityTypePrimaryDiscountOutput{})
+	pulumi.RegisterOutputType(EntityTypePrimaryDiscountPtrOutput{})
+	pulumi.RegisterOutputType(EntityTypePrimaryDiscountResponseOutput{})
+	pulumi.RegisterOutputType(MaccMilestoneOutput{})
+	pulumi.RegisterOutputType(MaccMilestoneArrayOutput{})
+	pulumi.RegisterOutputType(MaccMilestoneResponseOutput{})
+	pulumi.RegisterOutputType(MaccMilestoneResponseArrayOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(MarketSetPricesItemsOutput{})
+	pulumi.RegisterOutputType(MarketSetPricesItemsArrayOutput{})
+	pulumi.RegisterOutputType(MarketSetPricesItemsResponseOutput{})
+	pulumi.RegisterOutputType(MarketSetPricesItemsResponseArrayOutput{})
 	pulumi.RegisterOutputType(PlanOutput{})
 	pulumi.RegisterOutputType(PlanPtrOutput{})
 	pulumi.RegisterOutputType(PlanResponseOutput{})
 	pulumi.RegisterOutputType(PlanResponsePtrOutput{})
+	pulumi.RegisterOutputType(PriceOutput{})
+	pulumi.RegisterOutputType(PricePtrOutput{})
+	pulumi.RegisterOutputType(PriceGuaranteePropertiesOutput{})
+	pulumi.RegisterOutputType(PriceGuaranteePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(PriceGuaranteePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(PriceGuaranteePropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(PriceResponseOutput{})
+	pulumi.RegisterOutputType(PriceResponsePtrOutput{})
+	pulumi.RegisterOutputType(ShortfallOutput{})
+	pulumi.RegisterOutputType(ShortfallPtrOutput{})
+	pulumi.RegisterOutputType(ShortfallResponseOutput{})
+	pulumi.RegisterOutputType(ShortfallResponsePtrOutput{})
 	pulumi.RegisterOutputType(SkuOutput{})
 	pulumi.RegisterOutputType(SkuPtrOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})
 	pulumi.RegisterOutputType(SkuResponsePtrOutput{})
-	pulumi.RegisterOutputType(SystemDataResponseOutput{})
-	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
-	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 }

@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Solution Configuration
 //
-// Uses Azure REST API version 2024-12-01.
+// Uses Azure REST API version 2024-12-01. In version 2.x of the Azure Native provider, it used API version 2024-12-01.
 type SolutionConfiguration struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The last time resources were inventoried
 	LastSyncTime pulumi.StringOutput `pulumi:"lastSyncTime"`
 	// The name of the resource
@@ -33,7 +36,7 @@ type SolutionConfiguration struct {
 	// The detailed message of status details
 	StatusDetails pulumi.StringOutput `pulumi:"statusDetails"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -149,6 +152,11 @@ func (o SolutionConfigurationOutput) ToSolutionConfigurationOutputWithContext(ct
 	return o
 }
 
+// The Azure API version of the resource.
+func (o SolutionConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SolutionConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The last time resources were inventoried
 func (o SolutionConfigurationOutput) LastSyncTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *SolutionConfiguration) pulumi.StringOutput { return v.LastSyncTime }).(pulumi.StringOutput)
@@ -185,8 +193,8 @@ func (o SolutionConfigurationOutput) StatusDetails() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o SolutionConfigurationOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *SolutionConfiguration) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o SolutionConfigurationOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *SolutionConfiguration) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

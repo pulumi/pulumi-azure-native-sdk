@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get baseboard management controller key set of the provided cluster.
 //
-// Uses Azure REST API version 2023-10-01-preview.
+// Uses Azure REST API version 2025-02-01.
 //
-// Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview, 2025-02-01.
+// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupBmcKeySet(ctx *pulumi.Context, args *LookupBmcKeySetArgs, opts ...pulumi.InvokeOption) (*LookupBmcKeySetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBmcKeySetResult
@@ -36,12 +37,16 @@ type LookupBmcKeySetArgs struct {
 }
 
 type LookupBmcKeySetResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The object ID of Azure Active Directory group that all users in the list must be in for access to be granted. Users that are not in the group will not have access.
 	AzureGroupId string `pulumi:"azureGroupId"`
 	// The more detailed status of the key set.
 	DetailedStatus string `pulumi:"detailedStatus"`
 	// The descriptive message about the current detailed status.
 	DetailedStatusMessage string `pulumi:"detailedStatusMessage"`
+	// Resource ETag.
+	Etag string `pulumi:"etag"`
 	// The date and time after which the users in this key set will be removed from the baseboard management controllers.
 	Expiration string `pulumi:"expiration"`
 	// The extended location of the cluster associated with the resource.
@@ -59,7 +64,7 @@ type LookupBmcKeySetResult struct {
 	// The provisioning state of the baseboard management controller key set.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -106,6 +111,11 @@ func (o LookupBmcKeySetResultOutput) ToLookupBmcKeySetResultOutputWithContext(ct
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupBmcKeySetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBmcKeySetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The object ID of Azure Active Directory group that all users in the list must be in for access to be granted. Users that are not in the group will not have access.
 func (o LookupBmcKeySetResultOutput) AzureGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBmcKeySetResult) string { return v.AzureGroupId }).(pulumi.StringOutput)
@@ -119,6 +129,11 @@ func (o LookupBmcKeySetResultOutput) DetailedStatus() pulumi.StringOutput {
 // The descriptive message about the current detailed status.
 func (o LookupBmcKeySetResultOutput) DetailedStatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBmcKeySetResult) string { return v.DetailedStatusMessage }).(pulumi.StringOutput)
+}
+
+// Resource ETag.
+func (o LookupBmcKeySetResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBmcKeySetResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The date and time after which the users in this key set will be removed from the baseboard management controllers.
@@ -162,8 +177,8 @@ func (o LookupBmcKeySetResultOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupBmcKeySetResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupBmcKeySetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupBmcKeySetResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupBmcKeySetResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

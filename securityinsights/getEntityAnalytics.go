@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a setting.
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2025-01-01-preview.
 func LookupEntityAnalytics(ctx *pulumi.Context, args *LookupEntityAnalyticsArgs, opts ...pulumi.InvokeOption) (*LookupEntityAnalyticsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupEntityAnalyticsResult
@@ -35,6 +36,8 @@ type LookupEntityAnalyticsArgs struct {
 
 // Settings with single toggle.
 type LookupEntityAnalyticsResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The relevant entity providers that are synced
 	EntityProviders []string `pulumi:"entityProviders"`
 	// Etag of the azure resource
@@ -47,7 +50,7 @@ type LookupEntityAnalyticsResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -89,6 +92,11 @@ func (o LookupEntityAnalyticsResultOutput) ToLookupEntityAnalyticsResultOutputWi
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupEntityAnalyticsResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEntityAnalyticsResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The relevant entity providers that are synced
 func (o LookupEntityAnalyticsResultOutput) EntityProviders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupEntityAnalyticsResult) []string { return v.EntityProviders }).(pulumi.StringArrayOutput)
@@ -116,8 +124,8 @@ func (o LookupEntityAnalyticsResultOutput) Name() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupEntityAnalyticsResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupEntityAnalyticsResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupEntityAnalyticsResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupEntityAnalyticsResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

@@ -8,22 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Schema registry definition.
 //
-// Uses Azure REST API version 2024-09-01-preview.
+// Uses Azure REST API version 2024-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-09-01-preview.
+//
+// Other available API versions: 2025-07-01-preview, 2025-10-01, 2025-11-01-preview, 2026-03-01-preview, 2026-04-01, 2026-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native deviceregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SchemaRegistry struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Human-readable description of the schema registry.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Human-readable display name.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// The managed service identities assigned to this resource.
-	Identity SystemAssignedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity commontypesv5.SystemAssignedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -35,7 +40,7 @@ type SchemaRegistry struct {
 	// The Storage Account's Container URL where schemas will be stored.
 	StorageAccountContainerUrl pulumi.StringOutput `pulumi:"storageAccountContainerUrl"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -63,6 +68,24 @@ func NewSchemaRegistry(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:deviceregistry/v20240901preview:SchemaRegistry"),
+		},
+		{
+			Type: pulumi.String("azure-native:deviceregistry/v20250701preview:SchemaRegistry"),
+		},
+		{
+			Type: pulumi.String("azure-native:deviceregistry/v20251001:SchemaRegistry"),
+		},
+		{
+			Type: pulumi.String("azure-native:deviceregistry/v20251101preview:SchemaRegistry"),
+		},
+		{
+			Type: pulumi.String("azure-native:deviceregistry/v20260301preview:SchemaRegistry"),
+		},
+		{
+			Type: pulumi.String("azure-native:deviceregistry/v20260401:SchemaRegistry"),
+		},
+		{
+			Type: pulumi.String("azure-native:deviceregistry/v20261101preview:SchemaRegistry"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -104,7 +127,7 @@ type schemaRegistryArgs struct {
 	// Human-readable display name.
 	DisplayName *string `pulumi:"displayName"`
 	// The managed service identities assigned to this resource.
-	Identity *SystemAssignedServiceIdentity `pulumi:"identity"`
+	Identity *commontypesv5.SystemAssignedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Schema registry namespace. Uniquely identifies a schema registry within a tenant.
@@ -126,7 +149,7 @@ type SchemaRegistryArgs struct {
 	// Human-readable display name.
 	DisplayName pulumi.StringPtrInput
 	// The managed service identities assigned to this resource.
-	Identity SystemAssignedServiceIdentityPtrInput
+	Identity commontypesv5.SystemAssignedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Schema registry namespace. Uniquely identifies a schema registry within a tenant.
@@ -178,6 +201,11 @@ func (o SchemaRegistryOutput) ToSchemaRegistryOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o SchemaRegistryOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SchemaRegistry) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Human-readable description of the schema registry.
 func (o SchemaRegistryOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SchemaRegistry) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -189,8 +217,10 @@ func (o SchemaRegistryOutput) DisplayName() pulumi.StringPtrOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o SchemaRegistryOutput) Identity() SystemAssignedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *SchemaRegistry) SystemAssignedServiceIdentityResponsePtrOutput { return v.Identity }).(SystemAssignedServiceIdentityResponsePtrOutput)
+func (o SchemaRegistryOutput) Identity() commontypesv5.SystemAssignedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *SchemaRegistry) commontypesv5.SystemAssignedServiceIdentityResponsePtrOutput {
+		return v.Identity
+	}).(commontypesv5.SystemAssignedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -219,8 +249,8 @@ func (o SchemaRegistryOutput) StorageAccountContainerUrl() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o SchemaRegistryOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *SchemaRegistry) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o SchemaRegistryOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *SchemaRegistry) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

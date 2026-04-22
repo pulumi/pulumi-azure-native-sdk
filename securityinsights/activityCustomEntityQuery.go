@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents Activity entity query.
 //
-// Uses Azure REST API version 2023-06-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-03-01-preview.
+// Uses Azure REST API version 2025-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
 type ActivityCustomEntityQuery struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The entity query content to display in timeline
 	Content pulumi.StringPtrOutput `pulumi:"content"`
 	// The time the activity was created
@@ -44,7 +47,7 @@ type ActivityCustomEntityQuery struct {
 	// List of the fields of the source entity that are required to run the query
 	RequiredInputFieldsSets pulumi.StringArrayArrayOutput `pulumi:"requiredInputFieldsSets"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The template id this activity was created from
 	TemplateName pulumi.StringPtrOutput `pulumi:"templateName"`
 	// The entity query title
@@ -151,6 +154,12 @@ func NewActivityCustomEntityQuery(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250101preview:ActivityCustomEntityQuery"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250401preview:ActivityCustomEntityQuery"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250701preview:ActivityCustomEntityQuery"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -284,6 +293,11 @@ func (o ActivityCustomEntityQueryOutput) ToActivityCustomEntityQueryOutputWithCo
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ActivityCustomEntityQueryOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ActivityCustomEntityQuery) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The entity query content to display in timeline
 func (o ActivityCustomEntityQueryOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActivityCustomEntityQuery) pulumi.StringPtrOutput { return v.Content }).(pulumi.StringPtrOutput)
@@ -348,8 +362,8 @@ func (o ActivityCustomEntityQueryOutput) RequiredInputFieldsSets() pulumi.String
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ActivityCustomEntityQueryOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *ActivityCustomEntityQuery) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o ActivityCustomEntityQueryOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *ActivityCustomEntityQuery) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The template id this activity was created from

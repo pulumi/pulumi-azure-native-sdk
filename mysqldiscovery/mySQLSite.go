@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The MySQLSite resource definition.
 //
-// Uses Azure REST API version 2024-09-30-preview.
+// Uses Azure REST API version 2024-09-30-preview. In version 2.x of the Azure Native provider, it used API version 2024-09-30-preview.
 type MySQLSite struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The extended location.
 	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
 	// The geo-location where the resource lives
@@ -31,7 +34,7 @@ type MySQLSite struct {
 	// Gets or sets the provisioning state.
 	ProvisioningState pulumi.StringPtrOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv4.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -171,6 +174,11 @@ func (o MySQLSiteOutput) ToMySQLSiteOutputWithContext(ctx context.Context) MySQL
 	return o
 }
 
+// The Azure API version of the resource.
+func (o MySQLSiteOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MySQLSite) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The extended location.
 func (o MySQLSiteOutput) ExtendedLocation() ExtendedLocationResponseOutput {
 	return o.ApplyT(func(v *MySQLSite) ExtendedLocationResponseOutput { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
@@ -202,8 +210,8 @@ func (o MySQLSiteOutput) ProvisioningState() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o MySQLSiteOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *MySQLSite) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o MySQLSiteOutput) SystemData() commontypesv4.SystemDataResponseOutput {
+	return o.ApplyT(func(v *MySQLSite) commontypesv4.SystemDataResponseOutput { return v.SystemData }).(commontypesv4.SystemDataResponseOutput)
 }
 
 // Resource tags.

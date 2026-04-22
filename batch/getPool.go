@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about the specified pool.
 //
-// Uses Azure REST API version 2023-05-01.
+// Uses Azure REST API version 2024-07-01.
 //
-// Other available API versions: 2023-11-01, 2024-02-01, 2024-07-01.
+// Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupPool(ctx *pulumi.Context, args *LookupPoolArgs, opts ...pulumi.InvokeOption) (*LookupPoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPoolResult
@@ -27,17 +28,19 @@ func LookupPool(ctx *pulumi.Context, args *LookupPoolArgs, opts ...pulumi.Invoke
 }
 
 type LookupPoolArgs struct {
-	// The name of the Batch account.
+	// A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
 	AccountName string `pulumi:"accountName"`
 	// The pool name. This must be unique within the account.
 	PoolName string `pulumi:"poolName"`
-	// The name of the resource group that contains the Batch account.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Contains information about a pool.
 type LookupPoolResult struct {
-	AllocationState               string `pulumi:"allocationState"`
+	// Whether the pool is resizing.
+	AllocationState string `pulumi:"allocationState"`
+	// The time at which the pool entered its current allocation state.
 	AllocationStateTransitionTime string `pulumi:"allocationStateTransitionTime"`
 	// The list of application licenses must be a subset of available Batch service application licenses. If a license is requested which is not supported, pool creation will fail.
 	ApplicationLicenses []string `pulumi:"applicationLicenses"`
@@ -45,21 +48,27 @@ type LookupPoolResult struct {
 	ApplicationPackages []ApplicationPackageReferenceResponse `pulumi:"applicationPackages"`
 	// This property is set only if the pool automatically scales, i.e. autoScaleSettings are used.
 	AutoScaleRun AutoScaleRunResponse `pulumi:"autoScaleRun"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// For Windows compute nodes, the Batch service installs the certificates to the specified certificate store and location. For Linux compute nodes, the certificates are stored in a directory inside the task working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this location. For certificates with visibility of 'remoteUser', a 'certs' directory is created in the user's home directory (e.g., /home/{user-name}/certs) and certificates are placed in that directory.
 	//
 	// Warning: This property is deprecated and will be removed after February, 2024. Please use the [Azure KeyVault Extension](https://learn.microsoft.com/azure/batch/batch-certificate-migration-guide) instead.
-	Certificates                 []CertificateReferenceResponse `pulumi:"certificates"`
-	CreationTime                 string                         `pulumi:"creationTime"`
-	CurrentDedicatedNodes        int                            `pulumi:"currentDedicatedNodes"`
-	CurrentLowPriorityNodes      int                            `pulumi:"currentLowPriorityNodes"`
-	CurrentNodeCommunicationMode string                         `pulumi:"currentNodeCommunicationMode"`
-	// Using CloudServiceConfiguration specifies that the nodes should be creating using Azure Cloud Services (PaaS), while VirtualMachineConfiguration uses Azure Virtual Machines (IaaS).
+	Certificates []CertificateReferenceResponse `pulumi:"certificates"`
+	// The creation time of the pool.
+	CreationTime string `pulumi:"creationTime"`
+	// The number of dedicated compute nodes currently in the pool.
+	CurrentDedicatedNodes int `pulumi:"currentDedicatedNodes"`
+	// The number of Spot/low-priority compute nodes currently in the pool.
+	CurrentLowPriorityNodes int `pulumi:"currentLowPriorityNodes"`
+	// Determines how a pool communicates with the Batch service.
+	CurrentNodeCommunicationMode string `pulumi:"currentNodeCommunicationMode"`
+	// Deployment configuration properties.
 	DeploymentConfiguration *DeploymentConfigurationResponse `pulumi:"deploymentConfiguration"`
 	// The display name need not be unique and can contain any Unicode characters up to a maximum length of 1024.
 	DisplayName *string `pulumi:"displayName"`
 	// The ETag of the resource, used for concurrency statements.
 	Etag string `pulumi:"etag"`
-	// The ID of the resource.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The type of identity used for the Batch Pool.
 	Identity *BatchPoolIdentityResponse `pulumi:"identity"`
@@ -71,28 +80,39 @@ type LookupPoolResult struct {
 	Metadata []MetadataItemResponse `pulumi:"metadata"`
 	// This supports Azure Files, NFS, CIFS/SMB, and Blobfuse.
 	MountConfiguration []MountConfigurationResponse `pulumi:"mountConfiguration"`
-	// The name of the resource.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The network configuration for a pool.
-	NetworkConfiguration            *NetworkConfigurationResponse `pulumi:"networkConfiguration"`
-	ProvisioningState               string                        `pulumi:"provisioningState"`
-	ProvisioningStateTransitionTime string                        `pulumi:"provisioningStateTransitionTime"`
+	NetworkConfiguration *NetworkConfigurationResponse `pulumi:"networkConfiguration"`
+	// The current state of the pool.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The time at which the pool entered its current state.
+	ProvisioningStateTransitionTime string `pulumi:"provisioningStateTransitionTime"`
 	// Describes either the current operation (if the pool AllocationState is Resizing) or the previously completed operation (if the AllocationState is Steady).
 	ResizeOperationStatus ResizeOperationStatusResponse `pulumi:"resizeOperationStatus"`
+	// The user-defined tags to be associated with the Azure Batch Pool. When specified, these tags are propagated to the backing Azure resources associated with the pool. This property can only be specified when the Batch account was created with the poolAllocationMode property set to 'UserSubscription'.
+	ResourceTags map[string]string `pulumi:"resourceTags"`
 	// Defines the desired size of the pool. This can either be 'fixedScale' where the requested targetDedicatedNodes is specified, or 'autoScale' which defines a formula which is periodically reevaluated. If this property is not specified, the pool will have a fixed scale with 0 targetDedicatedNodes.
 	ScaleSettings *ScaleSettingsResponse `pulumi:"scaleSettings"`
 	// In an PATCH (update) operation, this property can be set to an empty object to remove the start task from the pool.
 	StartTask *StartTaskResponse `pulumi:"startTask"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	// The tags of the resource.
+	Tags map[string]string `pulumi:"tags"`
 	// If omitted, the default value is Default.
 	TargetNodeCommunicationMode *string `pulumi:"targetNodeCommunicationMode"`
 	// If not specified, the default is spread.
 	TaskSchedulingPolicy *TaskSchedulingPolicyResponse `pulumi:"taskSchedulingPolicy"`
 	// The default value is 1. The maximum value is the smaller of 4 times the number of cores of the vmSize of the pool or 256.
 	TaskSlotsPerNode *int `pulumi:"taskSlotsPerNode"`
-	// The type of the resource.
-	Type         string                `pulumi:"type"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+	// Describes an upgrade policy - automatic, manual, or rolling.
+	UpgradePolicy *UpgradePolicyResponse `pulumi:"upgradePolicy"`
+	// The list of user accounts to be created on each node in the pool.
 	UserAccounts []UserAccountResponse `pulumi:"userAccounts"`
-	// For information about available sizes of virtual machines for Cloud Services pools (pools created with cloudServiceConfiguration), see Sizes for Cloud Services (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/). Batch supports all Cloud Services VM sizes except ExtraSmall. For information about available VM sizes for pools using images from the Virtual Machines Marketplace (pools created with virtualMachineConfiguration) see Sizes for Virtual Machines (Linux) (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/) or Sizes for Virtual Machines (Windows) (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/). Batch supports all Azure VM sizes except STANDARD_A0 and those with premium storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+	// For information about available VM sizes, see Sizes for Virtual Machines in Azure (https://learn.microsoft.com/azure/virtual-machines/sizes/overview). Batch supports all Azure VM sizes except STANDARD_A0 and those with premium storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
 	VmSize *string `pulumi:"vmSize"`
 }
 
@@ -102,8 +122,6 @@ func (val *LookupPoolResult) Defaults() *LookupPoolResult {
 		return nil
 	}
 	tmp := *val
-	tmp.DeploymentConfiguration = tmp.DeploymentConfiguration.Defaults()
-
 	tmp.NetworkConfiguration = tmp.NetworkConfiguration.Defaults()
 
 	tmp.ScaleSettings = tmp.ScaleSettings.Defaults()
@@ -128,11 +146,11 @@ func LookupPoolOutput(ctx *pulumi.Context, args LookupPoolOutputArgs, opts ...pu
 }
 
 type LookupPoolOutputArgs struct {
-	// The name of the Batch account.
+	// A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
 	AccountName pulumi.StringInput `pulumi:"accountName"`
 	// The pool name. This must be unique within the account.
 	PoolName pulumi.StringInput `pulumi:"poolName"`
-	// The name of the resource group that contains the Batch account.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -155,10 +173,12 @@ func (o LookupPoolResultOutput) ToLookupPoolResultOutputWithContext(ctx context.
 	return o
 }
 
+// Whether the pool is resizing.
 func (o LookupPoolResultOutput) AllocationState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.AllocationState }).(pulumi.StringOutput)
 }
 
+// The time at which the pool entered its current allocation state.
 func (o LookupPoolResultOutput) AllocationStateTransitionTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.AllocationStateTransitionTime }).(pulumi.StringOutput)
 }
@@ -178,6 +198,11 @@ func (o LookupPoolResultOutput) AutoScaleRun() AutoScaleRunResponseOutput {
 	return o.ApplyT(func(v LookupPoolResult) AutoScaleRunResponse { return v.AutoScaleRun }).(AutoScaleRunResponseOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupPoolResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPoolResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // For Windows compute nodes, the Batch service installs the certificates to the specified certificate store and location. For Linux compute nodes, the certificates are stored in a directory inside the task working directory and an environment variable AZ_BATCH_CERTIFICATES_DIR is supplied to the task to query for this location. For certificates with visibility of 'remoteUser', a 'certs' directory is created in the user's home directory (e.g., /home/{user-name}/certs) and certificates are placed in that directory.
 //
 // Warning: This property is deprecated and will be removed after February, 2024. Please use the [Azure KeyVault Extension](https://learn.microsoft.com/azure/batch/batch-certificate-migration-guide) instead.
@@ -185,23 +210,27 @@ func (o LookupPoolResultOutput) Certificates() CertificateReferenceResponseArray
 	return o.ApplyT(func(v LookupPoolResult) []CertificateReferenceResponse { return v.Certificates }).(CertificateReferenceResponseArrayOutput)
 }
 
+// The creation time of the pool.
 func (o LookupPoolResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
+// The number of dedicated compute nodes currently in the pool.
 func (o LookupPoolResultOutput) CurrentDedicatedNodes() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupPoolResult) int { return v.CurrentDedicatedNodes }).(pulumi.IntOutput)
 }
 
+// The number of Spot/low-priority compute nodes currently in the pool.
 func (o LookupPoolResultOutput) CurrentLowPriorityNodes() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupPoolResult) int { return v.CurrentLowPriorityNodes }).(pulumi.IntOutput)
 }
 
+// Determines how a pool communicates with the Batch service.
 func (o LookupPoolResultOutput) CurrentNodeCommunicationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.CurrentNodeCommunicationMode }).(pulumi.StringOutput)
 }
 
-// Using CloudServiceConfiguration specifies that the nodes should be creating using Azure Cloud Services (PaaS), while VirtualMachineConfiguration uses Azure Virtual Machines (IaaS).
+// Deployment configuration properties.
 func (o LookupPoolResultOutput) DeploymentConfiguration() DeploymentConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v LookupPoolResult) *DeploymentConfigurationResponse { return v.DeploymentConfiguration }).(DeploymentConfigurationResponsePtrOutput)
 }
@@ -216,7 +245,7 @@ func (o LookupPoolResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
-// The ID of the resource.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupPoolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -246,7 +275,7 @@ func (o LookupPoolResultOutput) MountConfiguration() MountConfigurationResponseA
 	return o.ApplyT(func(v LookupPoolResult) []MountConfigurationResponse { return v.MountConfiguration }).(MountConfigurationResponseArrayOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o LookupPoolResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -256,10 +285,12 @@ func (o LookupPoolResultOutput) NetworkConfiguration() NetworkConfigurationRespo
 	return o.ApplyT(func(v LookupPoolResult) *NetworkConfigurationResponse { return v.NetworkConfiguration }).(NetworkConfigurationResponsePtrOutput)
 }
 
+// The current state of the pool.
 func (o LookupPoolResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The time at which the pool entered its current state.
 func (o LookupPoolResultOutput) ProvisioningStateTransitionTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.ProvisioningStateTransitionTime }).(pulumi.StringOutput)
 }
@@ -267,6 +298,11 @@ func (o LookupPoolResultOutput) ProvisioningStateTransitionTime() pulumi.StringO
 // Describes either the current operation (if the pool AllocationState is Resizing) or the previously completed operation (if the AllocationState is Steady).
 func (o LookupPoolResultOutput) ResizeOperationStatus() ResizeOperationStatusResponseOutput {
 	return o.ApplyT(func(v LookupPoolResult) ResizeOperationStatusResponse { return v.ResizeOperationStatus }).(ResizeOperationStatusResponseOutput)
+}
+
+// The user-defined tags to be associated with the Azure Batch Pool. When specified, these tags are propagated to the backing Azure resources associated with the pool. This property can only be specified when the Batch account was created with the poolAllocationMode property set to 'UserSubscription'.
+func (o LookupPoolResultOutput) ResourceTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupPoolResult) map[string]string { return v.ResourceTags }).(pulumi.StringMapOutput)
 }
 
 // Defines the desired size of the pool. This can either be 'fixedScale' where the requested targetDedicatedNodes is specified, or 'autoScale' which defines a formula which is periodically reevaluated. If this property is not specified, the pool will have a fixed scale with 0 targetDedicatedNodes.
@@ -277,6 +313,16 @@ func (o LookupPoolResultOutput) ScaleSettings() ScaleSettingsResponsePtrOutput {
 // In an PATCH (update) operation, this property can be set to an empty object to remove the start task from the pool.
 func (o LookupPoolResultOutput) StartTask() StartTaskResponsePtrOutput {
 	return o.ApplyT(func(v LookupPoolResult) *StartTaskResponse { return v.StartTask }).(StartTaskResponsePtrOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupPoolResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPoolResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+}
+
+// The tags of the resource.
+func (o LookupPoolResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupPoolResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // If omitted, the default value is Default.
@@ -294,16 +340,22 @@ func (o LookupPoolResultOutput) TaskSlotsPerNode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupPoolResult) *int { return v.TaskSlotsPerNode }).(pulumi.IntPtrOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupPoolResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPoolResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Describes an upgrade policy - automatic, manual, or rolling.
+func (o LookupPoolResultOutput) UpgradePolicy() UpgradePolicyResponsePtrOutput {
+	return o.ApplyT(func(v LookupPoolResult) *UpgradePolicyResponse { return v.UpgradePolicy }).(UpgradePolicyResponsePtrOutput)
+}
+
+// The list of user accounts to be created on each node in the pool.
 func (o LookupPoolResultOutput) UserAccounts() UserAccountResponseArrayOutput {
 	return o.ApplyT(func(v LookupPoolResult) []UserAccountResponse { return v.UserAccounts }).(UserAccountResponseArrayOutput)
 }
 
-// For information about available sizes of virtual machines for Cloud Services pools (pools created with cloudServiceConfiguration), see Sizes for Cloud Services (https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/). Batch supports all Cloud Services VM sizes except ExtraSmall. For information about available VM sizes for pools using images from the Virtual Machines Marketplace (pools created with virtualMachineConfiguration) see Sizes for Virtual Machines (Linux) (https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/) or Sizes for Virtual Machines (Windows) (https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/). Batch supports all Azure VM sizes except STANDARD_A0 and those with premium storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
+// For information about available VM sizes, see Sizes for Virtual Machines in Azure (https://learn.microsoft.com/azure/virtual-machines/sizes/overview). Batch supports all Azure VM sizes except STANDARD_A0 and those with premium storage (STANDARD_GS, STANDARD_DS, and STANDARD_DSV2 series).
 func (o LookupPoolResultOutput) VmSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPoolResult) *string { return v.VmSize }).(pulumi.StringPtrOutput)
 }

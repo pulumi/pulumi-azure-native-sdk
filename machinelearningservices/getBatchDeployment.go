@@ -7,13 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2023-04-01.
+// Gets a batch inference deployment by id.
 //
-// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
+// Uses Azure REST API version 2025-12-01.
+//
+// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupBatchDeployment(ctx *pulumi.Context, args *LookupBatchDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupBatchDeploymentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBatchDeploymentResult
@@ -27,31 +30,34 @@ func LookupBatchDeployment(ctx *pulumi.Context, args *LookupBatchDeploymentArgs,
 type LookupBatchDeploymentArgs struct {
 	// The identifier for the Batch deployments.
 	DeploymentName string `pulumi:"deploymentName"`
-	// Endpoint name
+	// Name for the Batch Endpoint.
 	EndpointName string `pulumi:"endpointName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
+// Concrete tracked resource types can be created by aliasing this type using a specific property type.
 type LookupBatchDeploymentResult struct {
-	// [Required] Additional attributes of the entity.
-	BatchDeploymentProperties BatchDeploymentResponse `pulumi:"batchDeploymentProperties"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *commontypesv3.ManagedServiceIdentityResponse `pulumi:"identity"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
+	// [Required] Additional attributes of the entity.
+	Properties BatchDeploymentPropertiesResponse `pulumi:"properties"`
 	// Sku details required for ARM contract for Autoscaling.
-	Sku *SkuResponse `pulumi:"sku"`
+	Sku *commontypesv3.SkuResponse `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -64,7 +70,7 @@ func (val *LookupBatchDeploymentResult) Defaults() *LookupBatchDeploymentResult 
 		return nil
 	}
 	tmp := *val
-	tmp.BatchDeploymentProperties = *tmp.BatchDeploymentProperties.Defaults()
+	tmp.Properties = *tmp.Properties.Defaults()
 
 	return &tmp
 }
@@ -80,11 +86,11 @@ func LookupBatchDeploymentOutput(ctx *pulumi.Context, args LookupBatchDeployment
 type LookupBatchDeploymentOutputArgs struct {
 	// The identifier for the Batch deployments.
 	DeploymentName pulumi.StringInput `pulumi:"deploymentName"`
-	// Endpoint name
+	// Name for the Batch Endpoint.
 	EndpointName pulumi.StringInput `pulumi:"endpointName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
@@ -92,6 +98,7 @@ func (LookupBatchDeploymentOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupBatchDeploymentArgs)(nil)).Elem()
 }
 
+// Concrete tracked resource types can be created by aliasing this type using a specific property type.
 type LookupBatchDeploymentResultOutput struct{ *pulumi.OutputState }
 
 func (LookupBatchDeploymentResultOutput) ElementType() reflect.Type {
@@ -106,9 +113,9 @@ func (o LookupBatchDeploymentResultOutput) ToLookupBatchDeploymentResultOutputWi
 	return o
 }
 
-// [Required] Additional attributes of the entity.
-func (o LookupBatchDeploymentResultOutput) BatchDeploymentProperties() BatchDeploymentResponseOutput {
-	return o.ApplyT(func(v LookupBatchDeploymentResult) BatchDeploymentResponse { return v.BatchDeploymentProperties }).(BatchDeploymentResponseOutput)
+// The Azure API version of the resource.
+func (o LookupBatchDeploymentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBatchDeploymentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -117,8 +124,8 @@ func (o LookupBatchDeploymentResultOutput) Id() pulumi.StringOutput {
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
-func (o LookupBatchDeploymentResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupBatchDeploymentResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o LookupBatchDeploymentResultOutput) Identity() commontypesv3.ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupBatchDeploymentResult) *commontypesv3.ManagedServiceIdentityResponse { return v.Identity }).(commontypesv3.ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
@@ -136,14 +143,19 @@ func (o LookupBatchDeploymentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBatchDeploymentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// [Required] Additional attributes of the entity.
+func (o LookupBatchDeploymentResultOutput) Properties() BatchDeploymentPropertiesResponseOutput {
+	return o.ApplyT(func(v LookupBatchDeploymentResult) BatchDeploymentPropertiesResponse { return v.Properties }).(BatchDeploymentPropertiesResponseOutput)
+}
+
 // Sku details required for ARM contract for Autoscaling.
-func (o LookupBatchDeploymentResultOutput) Sku() SkuResponsePtrOutput {
-	return o.ApplyT(func(v LookupBatchDeploymentResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
+func (o LookupBatchDeploymentResultOutput) Sku() commontypesv3.SkuResponsePtrOutput {
+	return o.ApplyT(func(v LookupBatchDeploymentResult) *commontypesv3.SkuResponse { return v.Sku }).(commontypesv3.SkuResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupBatchDeploymentResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupBatchDeploymentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupBatchDeploymentResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupBatchDeploymentResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

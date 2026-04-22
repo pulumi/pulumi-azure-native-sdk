@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A vcenter resource belonging to a site resource.
 //
-// Uses Azure REST API version 2023-06-06.
+// Uses Azure REST API version 2023-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-06.
 //
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Other available API versions: 2023-06-06, 2024-05-01-preview, 2024-07-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type VcenterController struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets the timestamp marking vCenter creation.
 	CreatedTimestamp pulumi.StringOutput `pulumi:"createdTimestamp"`
 	// Gets the errors.
@@ -41,7 +44,7 @@ type VcenterController struct {
 	// Gets or sets the run as account ID of the vCenter.
 	RunAsAccountId pulumi.StringPtrOutput `pulumi:"runAsAccountId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Gets the timestamp marking last updated on the vCenter.
@@ -78,6 +81,12 @@ func NewVcenterController(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:offazure/v20240501preview:VcenterController"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20240701preview:VcenterController"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20241201preview:VcenterController"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -189,6 +198,11 @@ func (o VcenterControllerOutput) ToVcenterControllerOutputWithContext(ctx contex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o VcenterControllerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VcenterController) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Gets the timestamp marking vCenter creation.
 func (o VcenterControllerOutput) CreatedTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *VcenterController) pulumi.StringOutput { return v.CreatedTimestamp }).(pulumi.StringOutput)
@@ -240,8 +254,8 @@ func (o VcenterControllerOutput) RunAsAccountId() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o VcenterControllerOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *VcenterController) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o VcenterControllerOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *VcenterController) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv1"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,8 @@ type LookupKustoPoolAttachedDatabaseConfigurationArgs struct {
 type LookupKustoPoolAttachedDatabaseConfigurationResult struct {
 	// The list of databases from the clusterResourceId which are currently attached to the kusto pool.
 	AttachedDatabaseNames []string `pulumi:"attachedDatabaseNames"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The name of the database which you would like to attach, use * if you want to follow all current and future databases.
 	DatabaseName string `pulumi:"databaseName"`
 	// The default principals modification kind
@@ -54,7 +57,7 @@ type LookupKustoPoolAttachedDatabaseConfigurationResult struct {
 	// The provisioned state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv1.SystemDataResponse `pulumi:"systemData"`
 	// Table level sharing specifications
 	TableLevelSharingProperties *TableLevelSharingPropertiesResponse `pulumi:"tableLevelSharingProperties"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -105,6 +108,11 @@ func (o LookupKustoPoolAttachedDatabaseConfigurationResultOutput) AttachedDataba
 	return o.ApplyT(func(v LookupKustoPoolAttachedDatabaseConfigurationResult) []string { return v.AttachedDatabaseNames }).(pulumi.StringArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupKustoPoolAttachedDatabaseConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKustoPoolAttachedDatabaseConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The name of the database which you would like to attach, use * if you want to follow all current and future databases.
 func (o LookupKustoPoolAttachedDatabaseConfigurationResultOutput) DatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKustoPoolAttachedDatabaseConfigurationResult) string { return v.DatabaseName }).(pulumi.StringOutput)
@@ -143,8 +151,10 @@ func (o LookupKustoPoolAttachedDatabaseConfigurationResultOutput) ProvisioningSt
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupKustoPoolAttachedDatabaseConfigurationResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupKustoPoolAttachedDatabaseConfigurationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupKustoPoolAttachedDatabaseConfigurationResultOutput) SystemData() commontypesv1.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupKustoPoolAttachedDatabaseConfigurationResult) commontypesv1.SystemDataResponse {
+		return v.SystemData
+	}).(commontypesv1.SystemDataResponseOutput)
 }
 
 // Table level sharing specifications

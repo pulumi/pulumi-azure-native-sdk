@@ -7,16 +7,367 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = utilities.GetEnvOrDefault
 
+// Specifies a CORS rule for the Map Account.
+type CorsRule struct {
+	// Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains
+	AllowedOrigins []string `pulumi:"allowedOrigins"`
+}
+
+// CorsRuleInput is an input type that accepts CorsRuleArgs and CorsRuleOutput values.
+// You can construct a concrete instance of `CorsRuleInput` via:
+//
+//	CorsRuleArgs{...}
+type CorsRuleInput interface {
+	pulumi.Input
+
+	ToCorsRuleOutput() CorsRuleOutput
+	ToCorsRuleOutputWithContext(context.Context) CorsRuleOutput
+}
+
+// Specifies a CORS rule for the Map Account.
+type CorsRuleArgs struct {
+	// Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains
+	AllowedOrigins pulumi.StringArrayInput `pulumi:"allowedOrigins"`
+}
+
+func (CorsRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CorsRule)(nil)).Elem()
+}
+
+func (i CorsRuleArgs) ToCorsRuleOutput() CorsRuleOutput {
+	return i.ToCorsRuleOutputWithContext(context.Background())
+}
+
+func (i CorsRuleArgs) ToCorsRuleOutputWithContext(ctx context.Context) CorsRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CorsRuleOutput)
+}
+
+// CorsRuleArrayInput is an input type that accepts CorsRuleArray and CorsRuleArrayOutput values.
+// You can construct a concrete instance of `CorsRuleArrayInput` via:
+//
+//	CorsRuleArray{ CorsRuleArgs{...} }
+type CorsRuleArrayInput interface {
+	pulumi.Input
+
+	ToCorsRuleArrayOutput() CorsRuleArrayOutput
+	ToCorsRuleArrayOutputWithContext(context.Context) CorsRuleArrayOutput
+}
+
+type CorsRuleArray []CorsRuleInput
+
+func (CorsRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CorsRule)(nil)).Elem()
+}
+
+func (i CorsRuleArray) ToCorsRuleArrayOutput() CorsRuleArrayOutput {
+	return i.ToCorsRuleArrayOutputWithContext(context.Background())
+}
+
+func (i CorsRuleArray) ToCorsRuleArrayOutputWithContext(ctx context.Context) CorsRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CorsRuleArrayOutput)
+}
+
+// Specifies a CORS rule for the Map Account.
+type CorsRuleOutput struct{ *pulumi.OutputState }
+
+func (CorsRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CorsRule)(nil)).Elem()
+}
+
+func (o CorsRuleOutput) ToCorsRuleOutput() CorsRuleOutput {
+	return o
+}
+
+func (o CorsRuleOutput) ToCorsRuleOutputWithContext(ctx context.Context) CorsRuleOutput {
+	return o
+}
+
+// Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains
+func (o CorsRuleOutput) AllowedOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CorsRule) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
+}
+
+type CorsRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (CorsRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CorsRule)(nil)).Elem()
+}
+
+func (o CorsRuleArrayOutput) ToCorsRuleArrayOutput() CorsRuleArrayOutput {
+	return o
+}
+
+func (o CorsRuleArrayOutput) ToCorsRuleArrayOutputWithContext(ctx context.Context) CorsRuleArrayOutput {
+	return o
+}
+
+func (o CorsRuleArrayOutput) Index(i pulumi.IntInput) CorsRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CorsRule {
+		return vs[0].([]CorsRule)[vs[1].(int)]
+	}).(CorsRuleOutput)
+}
+
+// Specifies a CORS rule for the Map Account.
+type CorsRuleResponse struct {
+	// Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains
+	AllowedOrigins []string `pulumi:"allowedOrigins"`
+}
+
+// Specifies a CORS rule for the Map Account.
+type CorsRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (CorsRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CorsRuleResponse)(nil)).Elem()
+}
+
+func (o CorsRuleResponseOutput) ToCorsRuleResponseOutput() CorsRuleResponseOutput {
+	return o
+}
+
+func (o CorsRuleResponseOutput) ToCorsRuleResponseOutputWithContext(ctx context.Context) CorsRuleResponseOutput {
+	return o
+}
+
+// Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains
+func (o CorsRuleResponseOutput) AllowedOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CorsRuleResponse) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
+}
+
+type CorsRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CorsRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CorsRuleResponse)(nil)).Elem()
+}
+
+func (o CorsRuleResponseArrayOutput) ToCorsRuleResponseArrayOutput() CorsRuleResponseArrayOutput {
+	return o
+}
+
+func (o CorsRuleResponseArrayOutput) ToCorsRuleResponseArrayOutputWithContext(ctx context.Context) CorsRuleResponseArrayOutput {
+	return o
+}
+
+func (o CorsRuleResponseArrayOutput) Index(i pulumi.IntInput) CorsRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CorsRuleResponse {
+		return vs[0].([]CorsRuleResponse)[vs[1].(int)]
+	}).(CorsRuleResponseOutput)
+}
+
+// Sets the CORS rules. You can include up to five CorsRule elements in the request.
+type CorsRules struct {
+	// The list of CORS rules. You can include up to five CorsRule elements in the request.
+	CorsRules []CorsRule `pulumi:"corsRules"`
+}
+
+// CorsRulesInput is an input type that accepts CorsRulesArgs and CorsRulesOutput values.
+// You can construct a concrete instance of `CorsRulesInput` via:
+//
+//	CorsRulesArgs{...}
+type CorsRulesInput interface {
+	pulumi.Input
+
+	ToCorsRulesOutput() CorsRulesOutput
+	ToCorsRulesOutputWithContext(context.Context) CorsRulesOutput
+}
+
+// Sets the CORS rules. You can include up to five CorsRule elements in the request.
+type CorsRulesArgs struct {
+	// The list of CORS rules. You can include up to five CorsRule elements in the request.
+	CorsRules CorsRuleArrayInput `pulumi:"corsRules"`
+}
+
+func (CorsRulesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CorsRules)(nil)).Elem()
+}
+
+func (i CorsRulesArgs) ToCorsRulesOutput() CorsRulesOutput {
+	return i.ToCorsRulesOutputWithContext(context.Background())
+}
+
+func (i CorsRulesArgs) ToCorsRulesOutputWithContext(ctx context.Context) CorsRulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CorsRulesOutput)
+}
+
+func (i CorsRulesArgs) ToCorsRulesPtrOutput() CorsRulesPtrOutput {
+	return i.ToCorsRulesPtrOutputWithContext(context.Background())
+}
+
+func (i CorsRulesArgs) ToCorsRulesPtrOutputWithContext(ctx context.Context) CorsRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CorsRulesOutput).ToCorsRulesPtrOutputWithContext(ctx)
+}
+
+// CorsRulesPtrInput is an input type that accepts CorsRulesArgs, CorsRulesPtr and CorsRulesPtrOutput values.
+// You can construct a concrete instance of `CorsRulesPtrInput` via:
+//
+//	        CorsRulesArgs{...}
+//
+//	or:
+//
+//	        nil
+type CorsRulesPtrInput interface {
+	pulumi.Input
+
+	ToCorsRulesPtrOutput() CorsRulesPtrOutput
+	ToCorsRulesPtrOutputWithContext(context.Context) CorsRulesPtrOutput
+}
+
+type corsRulesPtrType CorsRulesArgs
+
+func CorsRulesPtr(v *CorsRulesArgs) CorsRulesPtrInput {
+	return (*corsRulesPtrType)(v)
+}
+
+func (*corsRulesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CorsRules)(nil)).Elem()
+}
+
+func (i *corsRulesPtrType) ToCorsRulesPtrOutput() CorsRulesPtrOutput {
+	return i.ToCorsRulesPtrOutputWithContext(context.Background())
+}
+
+func (i *corsRulesPtrType) ToCorsRulesPtrOutputWithContext(ctx context.Context) CorsRulesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CorsRulesPtrOutput)
+}
+
+// Sets the CORS rules. You can include up to five CorsRule elements in the request.
+type CorsRulesOutput struct{ *pulumi.OutputState }
+
+func (CorsRulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CorsRules)(nil)).Elem()
+}
+
+func (o CorsRulesOutput) ToCorsRulesOutput() CorsRulesOutput {
+	return o
+}
+
+func (o CorsRulesOutput) ToCorsRulesOutputWithContext(ctx context.Context) CorsRulesOutput {
+	return o
+}
+
+func (o CorsRulesOutput) ToCorsRulesPtrOutput() CorsRulesPtrOutput {
+	return o.ToCorsRulesPtrOutputWithContext(context.Background())
+}
+
+func (o CorsRulesOutput) ToCorsRulesPtrOutputWithContext(ctx context.Context) CorsRulesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CorsRules) *CorsRules {
+		return &v
+	}).(CorsRulesPtrOutput)
+}
+
+// The list of CORS rules. You can include up to five CorsRule elements in the request.
+func (o CorsRulesOutput) CorsRules() CorsRuleArrayOutput {
+	return o.ApplyT(func(v CorsRules) []CorsRule { return v.CorsRules }).(CorsRuleArrayOutput)
+}
+
+type CorsRulesPtrOutput struct{ *pulumi.OutputState }
+
+func (CorsRulesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CorsRules)(nil)).Elem()
+}
+
+func (o CorsRulesPtrOutput) ToCorsRulesPtrOutput() CorsRulesPtrOutput {
+	return o
+}
+
+func (o CorsRulesPtrOutput) ToCorsRulesPtrOutputWithContext(ctx context.Context) CorsRulesPtrOutput {
+	return o
+}
+
+func (o CorsRulesPtrOutput) Elem() CorsRulesOutput {
+	return o.ApplyT(func(v *CorsRules) CorsRules {
+		if v != nil {
+			return *v
+		}
+		var ret CorsRules
+		return ret
+	}).(CorsRulesOutput)
+}
+
+// The list of CORS rules. You can include up to five CorsRule elements in the request.
+func (o CorsRulesPtrOutput) CorsRules() CorsRuleArrayOutput {
+	return o.ApplyT(func(v *CorsRules) []CorsRule {
+		if v == nil {
+			return nil
+		}
+		return v.CorsRules
+	}).(CorsRuleArrayOutput)
+}
+
+// Sets the CORS rules. You can include up to five CorsRule elements in the request.
+type CorsRulesResponse struct {
+	// The list of CORS rules. You can include up to five CorsRule elements in the request.
+	CorsRules []CorsRuleResponse `pulumi:"corsRules"`
+}
+
+// Sets the CORS rules. You can include up to five CorsRule elements in the request.
+type CorsRulesResponseOutput struct{ *pulumi.OutputState }
+
+func (CorsRulesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CorsRulesResponse)(nil)).Elem()
+}
+
+func (o CorsRulesResponseOutput) ToCorsRulesResponseOutput() CorsRulesResponseOutput {
+	return o
+}
+
+func (o CorsRulesResponseOutput) ToCorsRulesResponseOutputWithContext(ctx context.Context) CorsRulesResponseOutput {
+	return o
+}
+
+// The list of CORS rules. You can include up to five CorsRule elements in the request.
+func (o CorsRulesResponseOutput) CorsRules() CorsRuleResponseArrayOutput {
+	return o.ApplyT(func(v CorsRulesResponse) []CorsRuleResponse { return v.CorsRules }).(CorsRuleResponseArrayOutput)
+}
+
+type CorsRulesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CorsRulesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CorsRulesResponse)(nil)).Elem()
+}
+
+func (o CorsRulesResponsePtrOutput) ToCorsRulesResponsePtrOutput() CorsRulesResponsePtrOutput {
+	return o
+}
+
+func (o CorsRulesResponsePtrOutput) ToCorsRulesResponsePtrOutputWithContext(ctx context.Context) CorsRulesResponsePtrOutput {
+	return o
+}
+
+func (o CorsRulesResponsePtrOutput) Elem() CorsRulesResponseOutput {
+	return o.ApplyT(func(v *CorsRulesResponse) CorsRulesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CorsRulesResponse
+		return ret
+	}).(CorsRulesResponseOutput)
+}
+
+// The list of CORS rules. You can include up to five CorsRule elements in the request.
+func (o CorsRulesResponsePtrOutput) CorsRules() CorsRuleResponseArrayOutput {
+	return o.ApplyT(func(v *CorsRulesResponse) []CorsRuleResponse {
+		if v == nil {
+			return nil
+		}
+		return v.CorsRules
+	}).(CorsRuleResponseArrayOutput)
+}
+
 // Creator resource properties
 type CreatorProperties struct {
+	// The consumed storage unit size in bytes for the creator resource.
+	ConsumedStorageUnitSizeInBytes *int `pulumi:"consumedStorageUnitSizeInBytes"`
 	// The storage units to be allocated. Integer values from 1 to 100, inclusive.
 	StorageUnits int `pulumi:"storageUnits"`
+	// The total allocated storage unit size in bytes for the creator resource.
+	TotalStorageUnitSizeInBytes *int `pulumi:"totalStorageUnitSizeInBytes"`
 }
 
 // CreatorPropertiesInput is an input type that accepts CreatorPropertiesArgs and CreatorPropertiesOutput values.
@@ -32,8 +383,12 @@ type CreatorPropertiesInput interface {
 
 // Creator resource properties
 type CreatorPropertiesArgs struct {
+	// The consumed storage unit size in bytes for the creator resource.
+	ConsumedStorageUnitSizeInBytes pulumi.IntPtrInput `pulumi:"consumedStorageUnitSizeInBytes"`
 	// The storage units to be allocated. Integer values from 1 to 100, inclusive.
 	StorageUnits pulumi.IntInput `pulumi:"storageUnits"`
+	// The total allocated storage unit size in bytes for the creator resource.
+	TotalStorageUnitSizeInBytes pulumi.IntPtrInput `pulumi:"totalStorageUnitSizeInBytes"`
 }
 
 func (CreatorPropertiesArgs) ElementType() reflect.Type {
@@ -63,17 +418,31 @@ func (o CreatorPropertiesOutput) ToCreatorPropertiesOutputWithContext(ctx contex
 	return o
 }
 
+// The consumed storage unit size in bytes for the creator resource.
+func (o CreatorPropertiesOutput) ConsumedStorageUnitSizeInBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CreatorProperties) *int { return v.ConsumedStorageUnitSizeInBytes }).(pulumi.IntPtrOutput)
+}
+
 // The storage units to be allocated. Integer values from 1 to 100, inclusive.
 func (o CreatorPropertiesOutput) StorageUnits() pulumi.IntOutput {
 	return o.ApplyT(func(v CreatorProperties) int { return v.StorageUnits }).(pulumi.IntOutput)
 }
 
+// The total allocated storage unit size in bytes for the creator resource.
+func (o CreatorPropertiesOutput) TotalStorageUnitSizeInBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CreatorProperties) *int { return v.TotalStorageUnitSizeInBytes }).(pulumi.IntPtrOutput)
+}
+
 // Creator resource properties
 type CreatorPropertiesResponse struct {
+	// The consumed storage unit size in bytes for the creator resource.
+	ConsumedStorageUnitSizeInBytes *int `pulumi:"consumedStorageUnitSizeInBytes"`
 	// The state of the resource provisioning, terminal states: Succeeded, Failed, Canceled
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The storage units to be allocated. Integer values from 1 to 100, inclusive.
 	StorageUnits int `pulumi:"storageUnits"`
+	// The total allocated storage unit size in bytes for the creator resource.
+	TotalStorageUnitSizeInBytes *int `pulumi:"totalStorageUnitSizeInBytes"`
 }
 
 // Creator resource properties
@@ -91,6 +460,11 @@ func (o CreatorPropertiesResponseOutput) ToCreatorPropertiesResponseOutputWithCo
 	return o
 }
 
+// The consumed storage unit size in bytes for the creator resource.
+func (o CreatorPropertiesResponseOutput) ConsumedStorageUnitSizeInBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CreatorPropertiesResponse) *int { return v.ConsumedStorageUnitSizeInBytes }).(pulumi.IntPtrOutput)
+}
+
 // The state of the resource provisioning, terminal states: Succeeded, Failed, Canceled
 func (o CreatorPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v CreatorPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
@@ -101,10 +475,185 @@ func (o CreatorPropertiesResponseOutput) StorageUnits() pulumi.IntOutput {
 	return o.ApplyT(func(v CreatorPropertiesResponse) int { return v.StorageUnits }).(pulumi.IntOutput)
 }
 
-// Additional Map account properties
+// The total allocated storage unit size in bytes for the creator resource.
+func (o CreatorPropertiesResponseOutput) TotalStorageUnitSizeInBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CreatorPropertiesResponse) *int { return v.TotalStorageUnitSizeInBytes }).(pulumi.IntPtrOutput)
+}
+
+// Linked resource is reference to a resource deployed in an Azure subscription, add the linked resource `uniqueName` value as an optional parameter for operations on Azure Maps Geospatial REST APIs.
+type LinkedResource struct {
+	// ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/accounts/{storageName}'.
+	Id string `pulumi:"id"`
+	// A provided name which uniquely identifies the linked resource.
+	UniqueName string `pulumi:"uniqueName"`
+}
+
+// LinkedResourceInput is an input type that accepts LinkedResourceArgs and LinkedResourceOutput values.
+// You can construct a concrete instance of `LinkedResourceInput` via:
+//
+//	LinkedResourceArgs{...}
+type LinkedResourceInput interface {
+	pulumi.Input
+
+	ToLinkedResourceOutput() LinkedResourceOutput
+	ToLinkedResourceOutputWithContext(context.Context) LinkedResourceOutput
+}
+
+// Linked resource is reference to a resource deployed in an Azure subscription, add the linked resource `uniqueName` value as an optional parameter for operations on Azure Maps Geospatial REST APIs.
+type LinkedResourceArgs struct {
+	// ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/accounts/{storageName}'.
+	Id pulumi.StringInput `pulumi:"id"`
+	// A provided name which uniquely identifies the linked resource.
+	UniqueName pulumi.StringInput `pulumi:"uniqueName"`
+}
+
+func (LinkedResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedResource)(nil)).Elem()
+}
+
+func (i LinkedResourceArgs) ToLinkedResourceOutput() LinkedResourceOutput {
+	return i.ToLinkedResourceOutputWithContext(context.Background())
+}
+
+func (i LinkedResourceArgs) ToLinkedResourceOutputWithContext(ctx context.Context) LinkedResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedResourceOutput)
+}
+
+// LinkedResourceArrayInput is an input type that accepts LinkedResourceArray and LinkedResourceArrayOutput values.
+// You can construct a concrete instance of `LinkedResourceArrayInput` via:
+//
+//	LinkedResourceArray{ LinkedResourceArgs{...} }
+type LinkedResourceArrayInput interface {
+	pulumi.Input
+
+	ToLinkedResourceArrayOutput() LinkedResourceArrayOutput
+	ToLinkedResourceArrayOutputWithContext(context.Context) LinkedResourceArrayOutput
+}
+
+type LinkedResourceArray []LinkedResourceInput
+
+func (LinkedResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LinkedResource)(nil)).Elem()
+}
+
+func (i LinkedResourceArray) ToLinkedResourceArrayOutput() LinkedResourceArrayOutput {
+	return i.ToLinkedResourceArrayOutputWithContext(context.Background())
+}
+
+func (i LinkedResourceArray) ToLinkedResourceArrayOutputWithContext(ctx context.Context) LinkedResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LinkedResourceArrayOutput)
+}
+
+// Linked resource is reference to a resource deployed in an Azure subscription, add the linked resource `uniqueName` value as an optional parameter for operations on Azure Maps Geospatial REST APIs.
+type LinkedResourceOutput struct{ *pulumi.OutputState }
+
+func (LinkedResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedResource)(nil)).Elem()
+}
+
+func (o LinkedResourceOutput) ToLinkedResourceOutput() LinkedResourceOutput {
+	return o
+}
+
+func (o LinkedResourceOutput) ToLinkedResourceOutputWithContext(ctx context.Context) LinkedResourceOutput {
+	return o
+}
+
+// ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/accounts/{storageName}'.
+func (o LinkedResourceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LinkedResource) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A provided name which uniquely identifies the linked resource.
+func (o LinkedResourceOutput) UniqueName() pulumi.StringOutput {
+	return o.ApplyT(func(v LinkedResource) string { return v.UniqueName }).(pulumi.StringOutput)
+}
+
+type LinkedResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (LinkedResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LinkedResource)(nil)).Elem()
+}
+
+func (o LinkedResourceArrayOutput) ToLinkedResourceArrayOutput() LinkedResourceArrayOutput {
+	return o
+}
+
+func (o LinkedResourceArrayOutput) ToLinkedResourceArrayOutputWithContext(ctx context.Context) LinkedResourceArrayOutput {
+	return o
+}
+
+func (o LinkedResourceArrayOutput) Index(i pulumi.IntInput) LinkedResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LinkedResource {
+		return vs[0].([]LinkedResource)[vs[1].(int)]
+	}).(LinkedResourceOutput)
+}
+
+// Linked resource is reference to a resource deployed in an Azure subscription, add the linked resource `uniqueName` value as an optional parameter for operations on Azure Maps Geospatial REST APIs.
+type LinkedResourceResponse struct {
+	// ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/accounts/{storageName}'.
+	Id string `pulumi:"id"`
+	// A provided name which uniquely identifies the linked resource.
+	UniqueName string `pulumi:"uniqueName"`
+}
+
+// Linked resource is reference to a resource deployed in an Azure subscription, add the linked resource `uniqueName` value as an optional parameter for operations on Azure Maps Geospatial REST APIs.
+type LinkedResourceResponseOutput struct{ *pulumi.OutputState }
+
+func (LinkedResourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkedResourceResponse)(nil)).Elem()
+}
+
+func (o LinkedResourceResponseOutput) ToLinkedResourceResponseOutput() LinkedResourceResponseOutput {
+	return o
+}
+
+func (o LinkedResourceResponseOutput) ToLinkedResourceResponseOutputWithContext(ctx context.Context) LinkedResourceResponseOutput {
+	return o
+}
+
+// ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/accounts/{storageName}'.
+func (o LinkedResourceResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LinkedResourceResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A provided name which uniquely identifies the linked resource.
+func (o LinkedResourceResponseOutput) UniqueName() pulumi.StringOutput {
+	return o.ApplyT(func(v LinkedResourceResponse) string { return v.UniqueName }).(pulumi.StringOutput)
+}
+
+type LinkedResourceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LinkedResourceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LinkedResourceResponse)(nil)).Elem()
+}
+
+func (o LinkedResourceResponseArrayOutput) ToLinkedResourceResponseArrayOutput() LinkedResourceResponseArrayOutput {
+	return o
+}
+
+func (o LinkedResourceResponseArrayOutput) ToLinkedResourceResponseArrayOutputWithContext(ctx context.Context) LinkedResourceResponseArrayOutput {
+	return o
+}
+
+func (o LinkedResourceResponseArrayOutput) Index(i pulumi.IntInput) LinkedResourceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LinkedResourceResponse {
+		return vs[0].([]LinkedResourceResponse)[vs[1].(int)]
+	}).(LinkedResourceResponseOutput)
+}
+
+// Additional Maps account properties
 type MapsAccountProperties struct {
-	// Allows toggle functionality on Azure Policy to disable Azure Maps local authentication support. This will disable Shared Keys authentication from any usage.
+	// Specifies CORS rules for the Blob service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Blob service.
+	Cors *CorsRules `pulumi:"cors"`
+	// Allows toggle functionality on Azure Policy to disable Azure Maps local authentication support. This will disable Shared Keys and Shared Access Signature Token authentication from any usage.
 	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
+	// All encryption configuration for a resource.
+	Encryption *commontypesv5.Encryption `pulumi:"encryption"`
+	// The array of associated resources to the Maps account. Linked resource in the array cannot individually update, you must update all linked resources in the array together. These resources may be used on operations on the Azure Maps REST API. Access is controlled by the Maps Account Managed Identity(s) permissions to those resource(s).
+	LinkedResources []LinkedResource `pulumi:"linkedResources"`
+	// List of additional data processing regions for the Maps Account, which may result in requests being processed in another geography. Some features or results may be restricted to specific regions. By default, Maps REST APIs process requests according to the account location or the [geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).
+	Locations []MapsAccountPropertiesLocations `pulumi:"locations"`
 }
 
 // Defaults sets the appropriate defaults for MapsAccountProperties
@@ -131,10 +680,18 @@ type MapsAccountPropertiesInput interface {
 	ToMapsAccountPropertiesOutputWithContext(context.Context) MapsAccountPropertiesOutput
 }
 
-// Additional Map account properties
+// Additional Maps account properties
 type MapsAccountPropertiesArgs struct {
-	// Allows toggle functionality on Azure Policy to disable Azure Maps local authentication support. This will disable Shared Keys authentication from any usage.
+	// Specifies CORS rules for the Blob service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Blob service.
+	Cors CorsRulesPtrInput `pulumi:"cors"`
+	// Allows toggle functionality on Azure Policy to disable Azure Maps local authentication support. This will disable Shared Keys and Shared Access Signature Token authentication from any usage.
 	DisableLocalAuth pulumi.BoolPtrInput `pulumi:"disableLocalAuth"`
+	// All encryption configuration for a resource.
+	Encryption commontypesv5.EncryptionPtrInput `pulumi:"encryption"`
+	// The array of associated resources to the Maps account. Linked resource in the array cannot individually update, you must update all linked resources in the array together. These resources may be used on operations on the Azure Maps REST API. Access is controlled by the Maps Account Managed Identity(s) permissions to those resource(s).
+	LinkedResources LinkedResourceArrayInput `pulumi:"linkedResources"`
+	// List of additional data processing regions for the Maps Account, which may result in requests being processed in another geography. Some features or results may be restricted to specific regions. By default, Maps REST APIs process requests according to the account location or the [geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).
+	Locations MapsAccountPropertiesLocationsArrayInput `pulumi:"locations"`
 }
 
 // Defaults sets the appropriate defaults for MapsAccountPropertiesArgs
@@ -201,7 +758,7 @@ func (i *mapsAccountPropertiesPtrType) ToMapsAccountPropertiesPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(MapsAccountPropertiesPtrOutput)
 }
 
-// Additional Map account properties
+// Additional Maps account properties
 type MapsAccountPropertiesOutput struct{ *pulumi.OutputState }
 
 func (MapsAccountPropertiesOutput) ElementType() reflect.Type {
@@ -226,9 +783,29 @@ func (o MapsAccountPropertiesOutput) ToMapsAccountPropertiesPtrOutputWithContext
 	}).(MapsAccountPropertiesPtrOutput)
 }
 
-// Allows toggle functionality on Azure Policy to disable Azure Maps local authentication support. This will disable Shared Keys authentication from any usage.
+// Specifies CORS rules for the Blob service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Blob service.
+func (o MapsAccountPropertiesOutput) Cors() CorsRulesPtrOutput {
+	return o.ApplyT(func(v MapsAccountProperties) *CorsRules { return v.Cors }).(CorsRulesPtrOutput)
+}
+
+// Allows toggle functionality on Azure Policy to disable Azure Maps local authentication support. This will disable Shared Keys and Shared Access Signature Token authentication from any usage.
 func (o MapsAccountPropertiesOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MapsAccountProperties) *bool { return v.DisableLocalAuth }).(pulumi.BoolPtrOutput)
+}
+
+// All encryption configuration for a resource.
+func (o MapsAccountPropertiesOutput) Encryption() commontypesv5.EncryptionPtrOutput {
+	return o.ApplyT(func(v MapsAccountProperties) *commontypesv5.Encryption { return v.Encryption }).(commontypesv5.EncryptionPtrOutput)
+}
+
+// The array of associated resources to the Maps account. Linked resource in the array cannot individually update, you must update all linked resources in the array together. These resources may be used on operations on the Azure Maps REST API. Access is controlled by the Maps Account Managed Identity(s) permissions to those resource(s).
+func (o MapsAccountPropertiesOutput) LinkedResources() LinkedResourceArrayOutput {
+	return o.ApplyT(func(v MapsAccountProperties) []LinkedResource { return v.LinkedResources }).(LinkedResourceArrayOutput)
+}
+
+// List of additional data processing regions for the Maps Account, which may result in requests being processed in another geography. Some features or results may be restricted to specific regions. By default, Maps REST APIs process requests according to the account location or the [geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).
+func (o MapsAccountPropertiesOutput) Locations() MapsAccountPropertiesLocationsArrayOutput {
+	return o.ApplyT(func(v MapsAccountProperties) []MapsAccountPropertiesLocations { return v.Locations }).(MapsAccountPropertiesLocationsArrayOutput)
 }
 
 type MapsAccountPropertiesPtrOutput struct{ *pulumi.OutputState }
@@ -255,7 +832,17 @@ func (o MapsAccountPropertiesPtrOutput) Elem() MapsAccountPropertiesOutput {
 	}).(MapsAccountPropertiesOutput)
 }
 
-// Allows toggle functionality on Azure Policy to disable Azure Maps local authentication support. This will disable Shared Keys authentication from any usage.
+// Specifies CORS rules for the Blob service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Blob service.
+func (o MapsAccountPropertiesPtrOutput) Cors() CorsRulesPtrOutput {
+	return o.ApplyT(func(v *MapsAccountProperties) *CorsRules {
+		if v == nil {
+			return nil
+		}
+		return v.Cors
+	}).(CorsRulesPtrOutput)
+}
+
+// Allows toggle functionality on Azure Policy to disable Azure Maps local authentication support. This will disable Shared Keys and Shared Access Signature Token authentication from any usage.
 func (o MapsAccountPropertiesPtrOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MapsAccountProperties) *bool {
 		if v == nil {
@@ -265,13 +852,151 @@ func (o MapsAccountPropertiesPtrOutput) DisableLocalAuth() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Additional Map account properties
+// All encryption configuration for a resource.
+func (o MapsAccountPropertiesPtrOutput) Encryption() commontypesv5.EncryptionPtrOutput {
+	return o.ApplyT(func(v *MapsAccountProperties) *commontypesv5.Encryption {
+		if v == nil {
+			return nil
+		}
+		return v.Encryption
+	}).(commontypesv5.EncryptionPtrOutput)
+}
+
+// The array of associated resources to the Maps account. Linked resource in the array cannot individually update, you must update all linked resources in the array together. These resources may be used on operations on the Azure Maps REST API. Access is controlled by the Maps Account Managed Identity(s) permissions to those resource(s).
+func (o MapsAccountPropertiesPtrOutput) LinkedResources() LinkedResourceArrayOutput {
+	return o.ApplyT(func(v *MapsAccountProperties) []LinkedResource {
+		if v == nil {
+			return nil
+		}
+		return v.LinkedResources
+	}).(LinkedResourceArrayOutput)
+}
+
+// List of additional data processing regions for the Maps Account, which may result in requests being processed in another geography. Some features or results may be restricted to specific regions. By default, Maps REST APIs process requests according to the account location or the [geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).
+func (o MapsAccountPropertiesPtrOutput) Locations() MapsAccountPropertiesLocationsArrayOutput {
+	return o.ApplyT(func(v *MapsAccountProperties) []MapsAccountPropertiesLocations {
+		if v == nil {
+			return nil
+		}
+		return v.Locations
+	}).(MapsAccountPropertiesLocationsArrayOutput)
+}
+
+// Data processing location.
+type MapsAccountPropertiesLocations struct {
+	// The location name.
+	LocationName string `pulumi:"locationName"`
+}
+
+// MapsAccountPropertiesLocationsInput is an input type that accepts MapsAccountPropertiesLocationsArgs and MapsAccountPropertiesLocationsOutput values.
+// You can construct a concrete instance of `MapsAccountPropertiesLocationsInput` via:
+//
+//	MapsAccountPropertiesLocationsArgs{...}
+type MapsAccountPropertiesLocationsInput interface {
+	pulumi.Input
+
+	ToMapsAccountPropertiesLocationsOutput() MapsAccountPropertiesLocationsOutput
+	ToMapsAccountPropertiesLocationsOutputWithContext(context.Context) MapsAccountPropertiesLocationsOutput
+}
+
+// Data processing location.
+type MapsAccountPropertiesLocationsArgs struct {
+	// The location name.
+	LocationName pulumi.StringInput `pulumi:"locationName"`
+}
+
+func (MapsAccountPropertiesLocationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapsAccountPropertiesLocations)(nil)).Elem()
+}
+
+func (i MapsAccountPropertiesLocationsArgs) ToMapsAccountPropertiesLocationsOutput() MapsAccountPropertiesLocationsOutput {
+	return i.ToMapsAccountPropertiesLocationsOutputWithContext(context.Background())
+}
+
+func (i MapsAccountPropertiesLocationsArgs) ToMapsAccountPropertiesLocationsOutputWithContext(ctx context.Context) MapsAccountPropertiesLocationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapsAccountPropertiesLocationsOutput)
+}
+
+// MapsAccountPropertiesLocationsArrayInput is an input type that accepts MapsAccountPropertiesLocationsArray and MapsAccountPropertiesLocationsArrayOutput values.
+// You can construct a concrete instance of `MapsAccountPropertiesLocationsArrayInput` via:
+//
+//	MapsAccountPropertiesLocationsArray{ MapsAccountPropertiesLocationsArgs{...} }
+type MapsAccountPropertiesLocationsArrayInput interface {
+	pulumi.Input
+
+	ToMapsAccountPropertiesLocationsArrayOutput() MapsAccountPropertiesLocationsArrayOutput
+	ToMapsAccountPropertiesLocationsArrayOutputWithContext(context.Context) MapsAccountPropertiesLocationsArrayOutput
+}
+
+type MapsAccountPropertiesLocationsArray []MapsAccountPropertiesLocationsInput
+
+func (MapsAccountPropertiesLocationsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MapsAccountPropertiesLocations)(nil)).Elem()
+}
+
+func (i MapsAccountPropertiesLocationsArray) ToMapsAccountPropertiesLocationsArrayOutput() MapsAccountPropertiesLocationsArrayOutput {
+	return i.ToMapsAccountPropertiesLocationsArrayOutputWithContext(context.Background())
+}
+
+func (i MapsAccountPropertiesLocationsArray) ToMapsAccountPropertiesLocationsArrayOutputWithContext(ctx context.Context) MapsAccountPropertiesLocationsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MapsAccountPropertiesLocationsArrayOutput)
+}
+
+// Data processing location.
+type MapsAccountPropertiesLocationsOutput struct{ *pulumi.OutputState }
+
+func (MapsAccountPropertiesLocationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapsAccountPropertiesLocations)(nil)).Elem()
+}
+
+func (o MapsAccountPropertiesLocationsOutput) ToMapsAccountPropertiesLocationsOutput() MapsAccountPropertiesLocationsOutput {
+	return o
+}
+
+func (o MapsAccountPropertiesLocationsOutput) ToMapsAccountPropertiesLocationsOutputWithContext(ctx context.Context) MapsAccountPropertiesLocationsOutput {
+	return o
+}
+
+// The location name.
+func (o MapsAccountPropertiesLocationsOutput) LocationName() pulumi.StringOutput {
+	return o.ApplyT(func(v MapsAccountPropertiesLocations) string { return v.LocationName }).(pulumi.StringOutput)
+}
+
+type MapsAccountPropertiesLocationsArrayOutput struct{ *pulumi.OutputState }
+
+func (MapsAccountPropertiesLocationsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MapsAccountPropertiesLocations)(nil)).Elem()
+}
+
+func (o MapsAccountPropertiesLocationsArrayOutput) ToMapsAccountPropertiesLocationsArrayOutput() MapsAccountPropertiesLocationsArrayOutput {
+	return o
+}
+
+func (o MapsAccountPropertiesLocationsArrayOutput) ToMapsAccountPropertiesLocationsArrayOutputWithContext(ctx context.Context) MapsAccountPropertiesLocationsArrayOutput {
+	return o
+}
+
+func (o MapsAccountPropertiesLocationsArrayOutput) Index(i pulumi.IntInput) MapsAccountPropertiesLocationsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MapsAccountPropertiesLocations {
+		return vs[0].([]MapsAccountPropertiesLocations)[vs[1].(int)]
+	}).(MapsAccountPropertiesLocationsOutput)
+}
+
+// Additional Maps account properties
 type MapsAccountPropertiesResponse struct {
-	// Allows toggle functionality on Azure Policy to disable Azure Maps local authentication support. This will disable Shared Keys authentication from any usage.
+	// Specifies CORS rules for the Blob service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Blob service.
+	Cors *CorsRulesResponse `pulumi:"cors"`
+	// Allows toggle functionality on Azure Policy to disable Azure Maps local authentication support. This will disable Shared Keys and Shared Access Signature Token authentication from any usage.
 	DisableLocalAuth *bool `pulumi:"disableLocalAuth"`
-	// the state of the provisioning.
+	// All encryption configuration for a resource.
+	Encryption *commontypesv5.EncryptionResponse `pulumi:"encryption"`
+	// The array of associated resources to the Maps account. Linked resource in the array cannot individually update, you must update all linked resources in the array together. These resources may be used on operations on the Azure Maps REST API. Access is controlled by the Maps Account Managed Identity(s) permissions to those resource(s).
+	LinkedResources []LinkedResourceResponse `pulumi:"linkedResources"`
+	// List of additional data processing regions for the Maps Account, which may result in requests being processed in another geography. Some features or results may be restricted to specific regions. By default, Maps REST APIs process requests according to the account location or the [geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).
+	Locations []MapsAccountPropertiesResponseLocations `pulumi:"locations"`
+	// The provisioning state of the Maps account resource, Account updates can only be performed on terminal states. Terminal states: `Succeeded` and `Failed`
 	ProvisioningState string `pulumi:"provisioningState"`
-	// A unique identifier for the maps account
+	// A unique identifier for the Maps Account
 	UniqueId string `pulumi:"uniqueId"`
 }
 
@@ -288,7 +1013,7 @@ func (val *MapsAccountPropertiesResponse) Defaults() *MapsAccountPropertiesRespo
 	return &tmp
 }
 
-// Additional Map account properties
+// Additional Maps account properties
 type MapsAccountPropertiesResponseOutput struct{ *pulumi.OutputState }
 
 func (MapsAccountPropertiesResponseOutput) ElementType() reflect.Type {
@@ -303,19 +1028,85 @@ func (o MapsAccountPropertiesResponseOutput) ToMapsAccountPropertiesResponseOutp
 	return o
 }
 
-// Allows toggle functionality on Azure Policy to disable Azure Maps local authentication support. This will disable Shared Keys authentication from any usage.
+// Specifies CORS rules for the Blob service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the Blob service.
+func (o MapsAccountPropertiesResponseOutput) Cors() CorsRulesResponsePtrOutput {
+	return o.ApplyT(func(v MapsAccountPropertiesResponse) *CorsRulesResponse { return v.Cors }).(CorsRulesResponsePtrOutput)
+}
+
+// Allows toggle functionality on Azure Policy to disable Azure Maps local authentication support. This will disable Shared Keys and Shared Access Signature Token authentication from any usage.
 func (o MapsAccountPropertiesResponseOutput) DisableLocalAuth() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MapsAccountPropertiesResponse) *bool { return v.DisableLocalAuth }).(pulumi.BoolPtrOutput)
 }
 
-// the state of the provisioning.
+// All encryption configuration for a resource.
+func (o MapsAccountPropertiesResponseOutput) Encryption() commontypesv5.EncryptionResponsePtrOutput {
+	return o.ApplyT(func(v MapsAccountPropertiesResponse) *commontypesv5.EncryptionResponse { return v.Encryption }).(commontypesv5.EncryptionResponsePtrOutput)
+}
+
+// The array of associated resources to the Maps account. Linked resource in the array cannot individually update, you must update all linked resources in the array together. These resources may be used on operations on the Azure Maps REST API. Access is controlled by the Maps Account Managed Identity(s) permissions to those resource(s).
+func (o MapsAccountPropertiesResponseOutput) LinkedResources() LinkedResourceResponseArrayOutput {
+	return o.ApplyT(func(v MapsAccountPropertiesResponse) []LinkedResourceResponse { return v.LinkedResources }).(LinkedResourceResponseArrayOutput)
+}
+
+// List of additional data processing regions for the Maps Account, which may result in requests being processed in another geography. Some features or results may be restricted to specific regions. By default, Maps REST APIs process requests according to the account location or the [geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).
+func (o MapsAccountPropertiesResponseOutput) Locations() MapsAccountPropertiesResponseLocationsArrayOutput {
+	return o.ApplyT(func(v MapsAccountPropertiesResponse) []MapsAccountPropertiesResponseLocations { return v.Locations }).(MapsAccountPropertiesResponseLocationsArrayOutput)
+}
+
+// The provisioning state of the Maps account resource, Account updates can only be performed on terminal states. Terminal states: `Succeeded` and `Failed`
 func (o MapsAccountPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v MapsAccountPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// A unique identifier for the maps account
+// A unique identifier for the Maps Account
 func (o MapsAccountPropertiesResponseOutput) UniqueId() pulumi.StringOutput {
 	return o.ApplyT(func(v MapsAccountPropertiesResponse) string { return v.UniqueId }).(pulumi.StringOutput)
+}
+
+// Data processing location.
+type MapsAccountPropertiesResponseLocations struct {
+	// The location name.
+	LocationName string `pulumi:"locationName"`
+}
+
+// Data processing location.
+type MapsAccountPropertiesResponseLocationsOutput struct{ *pulumi.OutputState }
+
+func (MapsAccountPropertiesResponseLocationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MapsAccountPropertiesResponseLocations)(nil)).Elem()
+}
+
+func (o MapsAccountPropertiesResponseLocationsOutput) ToMapsAccountPropertiesResponseLocationsOutput() MapsAccountPropertiesResponseLocationsOutput {
+	return o
+}
+
+func (o MapsAccountPropertiesResponseLocationsOutput) ToMapsAccountPropertiesResponseLocationsOutputWithContext(ctx context.Context) MapsAccountPropertiesResponseLocationsOutput {
+	return o
+}
+
+// The location name.
+func (o MapsAccountPropertiesResponseLocationsOutput) LocationName() pulumi.StringOutput {
+	return o.ApplyT(func(v MapsAccountPropertiesResponseLocations) string { return v.LocationName }).(pulumi.StringOutput)
+}
+
+type MapsAccountPropertiesResponseLocationsArrayOutput struct{ *pulumi.OutputState }
+
+func (MapsAccountPropertiesResponseLocationsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MapsAccountPropertiesResponseLocations)(nil)).Elem()
+}
+
+func (o MapsAccountPropertiesResponseLocationsArrayOutput) ToMapsAccountPropertiesResponseLocationsArrayOutput() MapsAccountPropertiesResponseLocationsArrayOutput {
+	return o
+}
+
+func (o MapsAccountPropertiesResponseLocationsArrayOutput) ToMapsAccountPropertiesResponseLocationsArrayOutputWithContext(ctx context.Context) MapsAccountPropertiesResponseLocationsArrayOutput {
+	return o
+}
+
+func (o MapsAccountPropertiesResponseLocationsArrayOutput) Index(i pulumi.IntInput) MapsAccountPropertiesResponseLocationsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MapsAccountPropertiesResponseLocations {
+		return vs[0].([]MapsAccountPropertiesResponseLocations)[vs[1].(int)]
+	}).(MapsAccountPropertiesResponseLocationsOutput)
 }
 
 // Private Atlas resource properties
@@ -344,182 +1135,9 @@ func (o PrivateAtlasPropertiesResponseOutput) ProvisioningState() pulumi.StringP
 	return o.ApplyT(func(v PrivateAtlasPropertiesResponse) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
-// The private endpoint resource.
-type PrivateEndpointResponse struct {
-	// The ARM identifier for private endpoint.
-	Id string `pulumi:"id"`
-}
-
-// The private endpoint resource.
-type PrivateEndpointResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutput() PrivateEndpointResponseOutput {
-	return o
-}
-
-func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContext(ctx context.Context) PrivateEndpointResponseOutput {
-	return o
-}
-
-// The ARM identifier for private endpoint.
-func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-type PrivateEndpointResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PrivateEndpointResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() PrivateEndpointResponsePtrOutput {
-	return o
-}
-
-func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
-	return o
-}
-
-func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
-	return o.ApplyT(func(v *PrivateEndpointResponse) PrivateEndpointResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PrivateEndpointResponse
-		return ret
-	}).(PrivateEndpointResponseOutput)
-}
-
-// The ARM identifier for private endpoint.
-func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionState struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionsRequired *string `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
-	Description *string `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status *string `pulumi:"status"`
-}
-
-// PrivateLinkServiceConnectionStateInput is an input type that accepts PrivateLinkServiceConnectionStateArgs and PrivateLinkServiceConnectionStateOutput values.
-// You can construct a concrete instance of `PrivateLinkServiceConnectionStateInput` via:
-//
-//	PrivateLinkServiceConnectionStateArgs{...}
-type PrivateLinkServiceConnectionStateInput interface {
-	pulumi.Input
-
-	ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput
-	ToPrivateLinkServiceConnectionStateOutputWithContext(context.Context) PrivateLinkServiceConnectionStateOutput
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateArgs struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionsRequired pulumi.StringPtrInput `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-}
-
-func (PrivateLinkServiceConnectionStateArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
-}
-
-func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
-	return i.ToPrivateLinkServiceConnectionStateOutputWithContext(context.Background())
-}
-
-func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceConnectionStateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
-	return o
-}
-
-// A message indicating if changes on the service provider require any updates on the consumer.
-func (o PrivateLinkServiceConnectionStateOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
-}
-
-// The reason for approval/rejection of the connection.
-func (o PrivateLinkServiceConnectionStateOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-func (o PrivateLinkServiceConnectionStateOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateResponse struct {
-	// A message indicating if changes on the service provider require any updates on the consumer.
-	ActionsRequired *string `pulumi:"actionsRequired"`
-	// The reason for approval/rejection of the connection.
-	Description *string `pulumi:"description"`
-	// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-	Status *string `pulumi:"status"`
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-type PrivateLinkServiceConnectionStateResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateLinkServiceConnectionStateResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateLinkServiceConnectionStateResponse)(nil)).Elem()
-}
-
-func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutput() PrivateLinkServiceConnectionStateResponseOutput {
-	return o
-}
-
-func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponseOutput {
-	return o
-}
-
-// A message indicating if changes on the service provider require any updates on the consumer.
-func (o PrivateLinkServiceConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
-}
-
-// The reason for approval/rejection of the connection.
-func (o PrivateLinkServiceConnectionStateResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-func (o PrivateLinkServiceConnectionStateResponseOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
-}
-
 // The SKU of the Maps Account.
 type Sku struct {
-	// The name of the SKU, in standard format (such as S0).
+	// The name of the SKU, in standard format (such as G2).
 	Name string `pulumi:"name"`
 }
 
@@ -536,7 +1154,7 @@ type SkuInput interface {
 
 // The SKU of the Maps Account.
 type SkuArgs struct {
-	// The name of the SKU, in standard format (such as S0).
+	// The name of the SKU, in standard format (such as G2).
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -567,14 +1185,14 @@ func (o SkuOutput) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
 	return o
 }
 
-// The name of the SKU, in standard format (such as S0).
+// The name of the SKU, in standard format (such as G2).
 func (o SkuOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v Sku) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The SKU of the Maps Account.
 type SkuResponse struct {
-	// The name of the SKU, in standard format (such as S0).
+	// The name of the SKU, in standard format (such as G2).
 	Name string `pulumi:"name"`
 	// Gets the sku tier. This is based on the SKU name.
 	Tier string `pulumi:"tier"`
@@ -595,7 +1213,7 @@ func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) S
 	return o
 }
 
-// The name of the SKU, in standard format (such as S0).
+// The name of the SKU, in standard format (such as G2).
 func (o SkuResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SkuResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -605,79 +1223,29 @@ func (o SkuResponseOutput) Tier() pulumi.StringOutput {
 	return o.ApplyT(func(v SkuResponse) string { return v.Tier }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
-}
-
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponseOutput struct{ *pulumi.OutputState }
-
-func (SystemDataResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
-	return o
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
-	return o
-}
-
-// The timestamp of resource creation (UTC).
-func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
-}
-
 func init() {
+	pulumi.RegisterOutputType(CorsRuleOutput{})
+	pulumi.RegisterOutputType(CorsRuleArrayOutput{})
+	pulumi.RegisterOutputType(CorsRuleResponseOutput{})
+	pulumi.RegisterOutputType(CorsRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(CorsRulesOutput{})
+	pulumi.RegisterOutputType(CorsRulesPtrOutput{})
+	pulumi.RegisterOutputType(CorsRulesResponseOutput{})
+	pulumi.RegisterOutputType(CorsRulesResponsePtrOutput{})
 	pulumi.RegisterOutputType(CreatorPropertiesOutput{})
 	pulumi.RegisterOutputType(CreatorPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(LinkedResourceOutput{})
+	pulumi.RegisterOutputType(LinkedResourceArrayOutput{})
+	pulumi.RegisterOutputType(LinkedResourceResponseOutput{})
+	pulumi.RegisterOutputType(LinkedResourceResponseArrayOutput{})
 	pulumi.RegisterOutputType(MapsAccountPropertiesOutput{})
 	pulumi.RegisterOutputType(MapsAccountPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(MapsAccountPropertiesLocationsOutput{})
+	pulumi.RegisterOutputType(MapsAccountPropertiesLocationsArrayOutput{})
 	pulumi.RegisterOutputType(MapsAccountPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(MapsAccountPropertiesResponseLocationsOutput{})
+	pulumi.RegisterOutputType(MapsAccountPropertiesResponseLocationsArrayOutput{})
 	pulumi.RegisterOutputType(PrivateAtlasPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
-	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
 	pulumi.RegisterOutputType(SkuOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})
-	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 }

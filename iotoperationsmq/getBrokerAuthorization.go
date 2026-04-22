@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,8 @@ type LookupBrokerAuthorizationArgs struct {
 type LookupBrokerAuthorizationResult struct {
 	// The list of authorization policies supported by the Authorization Resource.
 	AuthorizationPolicies AuthorizationConfigResponse `pulumi:"authorizationPolicies"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Extended Location
 	ExtendedLocation ExtendedLocationPropertyResponse `pulumi:"extendedLocation"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -52,7 +55,7 @@ type LookupBrokerAuthorizationResult struct {
 	// The status of the last operation.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -113,6 +116,11 @@ func (o LookupBrokerAuthorizationResultOutput) AuthorizationPolicies() Authoriza
 	return o.ApplyT(func(v LookupBrokerAuthorizationResult) AuthorizationConfigResponse { return v.AuthorizationPolicies }).(AuthorizationConfigResponseOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupBrokerAuthorizationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBrokerAuthorizationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Extended Location
 func (o LookupBrokerAuthorizationResultOutput) ExtendedLocation() ExtendedLocationPropertyResponseOutput {
 	return o.ApplyT(func(v LookupBrokerAuthorizationResult) ExtendedLocationPropertyResponse { return v.ExtendedLocation }).(ExtendedLocationPropertyResponseOutput)
@@ -144,8 +152,8 @@ func (o LookupBrokerAuthorizationResultOutput) ProvisioningState() pulumi.String
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupBrokerAuthorizationResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupBrokerAuthorizationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupBrokerAuthorizationResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupBrokerAuthorizationResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

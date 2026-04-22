@@ -8,26 +8,29 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Represents a Database.
+// Represents a database.
 //
-// Uses Azure REST API version 2022-12-01. In version 1.x of the Azure Native provider, it used API version 2017-12-01.
+// Uses Azure REST API version 2025-08-01. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
 //
-// Other available API versions: 2017-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview.
+// Other available API versions: 2022-12-01, 2023-03-01-preview, 2023-06-01-preview, 2023-12-01-preview, 2024-03-01-preview, 2024-08-01, 2024-11-01-preview, 2025-01-01-preview, 2025-06-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbforpostgresql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Database struct {
 	pulumi.CustomResourceState
 
-	// The charset of the database.
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Character set of the database.
 	Charset pulumi.StringPtrOutput `pulumi:"charset"`
-	// The collation of the database.
+	// Collation of the database.
 	Collation pulumi.StringPtrOutput `pulumi:"collation"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv6.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -46,6 +49,9 @@ func NewDatabase(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'ServerName'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20171201:Database"),
+		},
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20201105preview:Database"),
 		},
@@ -82,6 +88,18 @@ func NewDatabase(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dbforpostgresql/v20241101preview:Database"),
 		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20250101preview:Database"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20250601preview:Database"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20250801:Database"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbforpostgresql/v20260101preview:Database"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -117,11 +135,11 @@ func (DatabaseState) ElementType() reflect.Type {
 }
 
 type databaseArgs struct {
-	// The charset of the database.
+	// Character set of the database.
 	Charset *string `pulumi:"charset"`
-	// The collation of the database.
+	// Collation of the database.
 	Collation *string `pulumi:"collation"`
-	// The name of the database.
+	// Name of the database (case-sensitive). Exact database names can be retrieved by getting the list of all existing databases in a server.
 	DatabaseName *string `pulumi:"databaseName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -131,11 +149,11 @@ type databaseArgs struct {
 
 // The set of arguments for constructing a Database resource.
 type DatabaseArgs struct {
-	// The charset of the database.
+	// Character set of the database.
 	Charset pulumi.StringPtrInput
-	// The collation of the database.
+	// Collation of the database.
 	Collation pulumi.StringPtrInput
-	// The name of the database.
+	// Name of the database (case-sensitive). Exact database names can be retrieved by getting the list of all existing databases in a server.
 	DatabaseName pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -180,12 +198,17 @@ func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) Databas
 	return o
 }
 
-// The charset of the database.
+// The Azure API version of the resource.
+func (o DatabaseOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Character set of the database.
 func (o DatabaseOutput) Charset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.Charset }).(pulumi.StringPtrOutput)
 }
 
-// The collation of the database.
+// Collation of the database.
 func (o DatabaseOutput) Collation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringPtrOutput { return v.Collation }).(pulumi.StringPtrOutput)
 }
@@ -196,8 +219,8 @@ func (o DatabaseOutput) Name() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o DatabaseOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Database) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o DatabaseOutput) SystemData() commontypesv6.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Database) commontypesv6.SystemDataResponseOutput { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

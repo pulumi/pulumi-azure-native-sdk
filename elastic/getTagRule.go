@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Capture logs and metrics of Azure resources based on ARM tags.
 //
-// Uses Azure REST API version 2023-06-01.
+// Uses Azure REST API version 2024-03-01.
 //
-// Other available API versions: 2023-06-15-preview, 2023-07-01-preview, 2023-10-01-preview, 2023-11-01-preview, 2024-01-01-preview, 2024-03-01, 2024-05-01-preview, 2024-06-15-preview, 2024-10-01-preview, 2025-01-15-preview.
+// Other available API versions: 2023-06-01, 2023-06-15-preview, 2023-07-01-preview, 2023-10-01-preview, 2023-11-01-preview, 2024-01-01-preview, 2024-05-01-preview, 2024-06-15-preview, 2024-10-01-preview, 2025-01-15-preview, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native elastic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupTagRule(ctx *pulumi.Context, args *LookupTagRuleArgs, opts ...pulumi.InvokeOption) (*LookupTagRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTagRuleResult
@@ -29,7 +30,7 @@ func LookupTagRule(ctx *pulumi.Context, args *LookupTagRuleArgs, opts ...pulumi.
 type LookupTagRuleArgs struct {
 	// Monitor resource name
 	MonitorName string `pulumi:"monitorName"`
-	// The name of the resource group to which the Elastic resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Tag Rule Set resource name
 	RuleSetName string `pulumi:"ruleSetName"`
@@ -37,6 +38,8 @@ type LookupTagRuleArgs struct {
 
 // Capture logs and metrics of Azure resources based on ARM tags.
 type LookupTagRuleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The id of the rule set.
 	Id string `pulumi:"id"`
 	// Name of the rule set.
@@ -44,7 +47,7 @@ type LookupTagRuleResult struct {
 	// Properties of the monitoring tag rules.
 	Properties MonitoringTagRulesPropertiesResponse `pulumi:"properties"`
 	// The system metadata relating to this resource
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The type of the rule set.
 	Type string `pulumi:"type"`
 }
@@ -61,7 +64,7 @@ func LookupTagRuleOutput(ctx *pulumi.Context, args LookupTagRuleOutputArgs, opts
 type LookupTagRuleOutputArgs struct {
 	// Monitor resource name
 	MonitorName pulumi.StringInput `pulumi:"monitorName"`
-	// The name of the resource group to which the Elastic resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Tag Rule Set resource name
 	RuleSetName pulumi.StringInput `pulumi:"ruleSetName"`
@@ -86,6 +89,11 @@ func (o LookupTagRuleResultOutput) ToLookupTagRuleResultOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupTagRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The id of the rule set.
 func (o LookupTagRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagRuleResult) string { return v.Id }).(pulumi.StringOutput)
@@ -102,8 +110,8 @@ func (o LookupTagRuleResultOutput) Properties() MonitoringTagRulesPropertiesResp
 }
 
 // The system metadata relating to this resource
-func (o LookupTagRuleResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupTagRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupTagRuleResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupTagRuleResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the rule set.

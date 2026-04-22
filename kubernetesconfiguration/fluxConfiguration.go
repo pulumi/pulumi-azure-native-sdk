@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Flux Configuration object returned in Get & Put response.
 //
-// Uses Azure REST API version 2023-05-01. In version 1.x of the Azure Native provider, it used API version 2021-11-01-preview.
+// Uses Azure REST API version 2023-05-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
 //
-// Other available API versions: 2021-11-01-preview, 2022-01-01-preview, 2024-04-01-preview, 2024-11-01.
+// Other available API versions: 2022-07-01, 2022-11-01, 2024-04-01-preview, 2024-11-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kubernetesconfiguration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type FluxConfiguration struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Parameters to reconcile to the AzureBlob source kind type.
 	AzureBlob AzureBlobDefinitionResponsePtrOutput `pulumi:"azureBlob"`
 	// Parameters to reconcile to the Bucket source kind type.
@@ -59,7 +62,7 @@ type FluxConfiguration struct {
 	// Whether this configuration should suspend its reconciliation of its kustomizations and sources.
 	Suspend pulumi.BoolPtrOutput `pulumi:"suspend"`
 	// Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Whether flux configuration deployment should wait for cluster to reconcile the kustomizations.
@@ -127,6 +130,9 @@ func NewFluxConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:kubernetesconfiguration/v20241101:FluxConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:kubernetesconfiguration/v20250401:FluxConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -270,6 +276,11 @@ func (o FluxConfigurationOutput) ToFluxConfigurationOutputWithContext(ctx contex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o FluxConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *FluxConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Parameters to reconcile to the AzureBlob source kind type.
 func (o FluxConfigurationOutput) AzureBlob() AzureBlobDefinitionResponsePtrOutput {
 	return o.ApplyT(func(v *FluxConfiguration) AzureBlobDefinitionResponsePtrOutput { return v.AzureBlob }).(AzureBlobDefinitionResponsePtrOutput)
@@ -366,8 +377,8 @@ func (o FluxConfigurationOutput) Suspend() pulumi.BoolPtrOutput {
 }
 
 // Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
-func (o FluxConfigurationOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *FluxConfiguration) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o FluxConfigurationOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *FluxConfiguration) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

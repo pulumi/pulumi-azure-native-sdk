@@ -7,15 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get installed extension details by extension id.
 //
 // Uses Azure REST API version 2023-06-01-preview.
-//
-// Other available API versions: 2021-09-01-preview.
 func LookupExtension(ctx *pulumi.Context, args *LookupExtensionArgs, opts ...pulumi.InvokeOption) (*LookupExtensionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupExtensionResult
@@ -39,6 +38,8 @@ type LookupExtensionArgs struct {
 type LookupExtensionResult struct {
 	// Additional Api Properties.
 	AdditionalApiProperties map[string]ApiPropertiesResponse `pulumi:"additionalApiProperties"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The ETag value to implement optimistic concurrency.
 	ETag string `pulumi:"eTag"`
 	// Extension api docs link.
@@ -56,7 +57,7 @@ type LookupExtensionResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv4.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -103,6 +104,11 @@ func (o LookupExtensionResultOutput) AdditionalApiProperties() ApiPropertiesResp
 	return o.ApplyT(func(v LookupExtensionResult) map[string]ApiPropertiesResponse { return v.AdditionalApiProperties }).(ApiPropertiesResponseMapOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupExtensionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExtensionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The ETag value to implement optimistic concurrency.
 func (o LookupExtensionResultOutput) ETag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExtensionResult) string { return v.ETag }).(pulumi.StringOutput)
@@ -144,8 +150,8 @@ func (o LookupExtensionResultOutput) Name() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupExtensionResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupExtensionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupExtensionResultOutput) SystemData() commontypesv4.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupExtensionResult) commontypesv4.SystemDataResponse { return v.SystemData }).(commontypesv4.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

@@ -8,14 +8,17 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2020-06-01. In version 1.x of the Azure Native provider, it used API version 2020-06-01.
+// Uses Azure REST API version 2020-06-01. In version 2.x of the Azure Native provider, it used API version 2020-06-01.
 type PowerBIResource struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Specifies the location of the resource.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Specifies the name of the resource.
@@ -23,7 +26,7 @@ type PowerBIResource struct {
 	// Specifies the private endpoint connections of the resource.
 	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// The system metadata relating to this resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// Specifies the tags of the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Specifies the tenant id of the resource.
@@ -150,6 +153,11 @@ func (o PowerBIResourceOutput) ToPowerBIResourceOutputWithContext(ctx context.Co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o PowerBIResourceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PowerBIResource) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Specifies the location of the resource.
 func (o PowerBIResourceOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PowerBIResource) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
@@ -168,8 +176,8 @@ func (o PowerBIResourceOutput) PrivateEndpointConnections() PrivateEndpointConne
 }
 
 // The system metadata relating to this resource.
-func (o PowerBIResourceOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *PowerBIResource) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o PowerBIResourceOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *PowerBIResource) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Specifies the tags of the resource.

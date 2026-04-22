@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Schema of the AgriService resource from Microsoft.AgriculturePlatform resource provider.
 //
-// Uses Azure REST API version 2024-06-01-preview.
+// Uses Azure REST API version 2024-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-06-01-preview.
 type AgriService struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The managed service identities assigned to this resource.
-	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity commontypesv5.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -27,9 +30,9 @@ type AgriService struct {
 	// The resource-specific properties for this resource.
 	Properties AgriServiceResourcePropertiesResponseOutput `pulumi:"properties"`
 	// The SKU (Stock Keeping Unit) assigned to this resource.
-	Sku SkuResponsePtrOutput `pulumi:"sku"`
+	Sku commontypesv5.SkuResponsePtrOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -88,7 +91,7 @@ type agriServiceArgs struct {
 	// The name of the AgriService resource.
 	AgriServiceResourceName *string `pulumi:"agriServiceResourceName"`
 	// The managed service identities assigned to this resource.
-	Identity *ManagedServiceIdentity `pulumi:"identity"`
+	Identity *commontypesv5.ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The resource-specific properties for this resource.
@@ -96,7 +99,7 @@ type agriServiceArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The SKU (Stock Keeping Unit) assigned to this resource.
-	Sku *Sku `pulumi:"sku"`
+	Sku *commontypesv5.Sku `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -106,7 +109,7 @@ type AgriServiceArgs struct {
 	// The name of the AgriService resource.
 	AgriServiceResourceName pulumi.StringPtrInput
 	// The managed service identities assigned to this resource.
-	Identity ManagedServiceIdentityPtrInput
+	Identity commontypesv5.ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The resource-specific properties for this resource.
@@ -114,7 +117,7 @@ type AgriServiceArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The SKU (Stock Keeping Unit) assigned to this resource.
-	Sku SkuPtrInput
+	Sku commontypesv5.SkuPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 }
@@ -156,9 +159,14 @@ func (o AgriServiceOutput) ToAgriServiceOutputWithContext(ctx context.Context) A
 	return o
 }
 
+// The Azure API version of the resource.
+func (o AgriServiceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AgriService) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The managed service identities assigned to this resource.
-func (o AgriServiceOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *AgriService) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o AgriServiceOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *AgriService) commontypesv5.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -177,13 +185,13 @@ func (o AgriServiceOutput) Properties() AgriServiceResourcePropertiesResponseOut
 }
 
 // The SKU (Stock Keeping Unit) assigned to this resource.
-func (o AgriServiceOutput) Sku() SkuResponsePtrOutput {
-	return o.ApplyT(func(v *AgriService) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
+func (o AgriServiceOutput) Sku() commontypesv5.SkuResponsePtrOutput {
+	return o.ApplyT(func(v *AgriService) commontypesv5.SkuResponsePtrOutput { return v.Sku }).(commontypesv5.SkuResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o AgriServiceOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *AgriService) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o AgriServiceOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *AgriService) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

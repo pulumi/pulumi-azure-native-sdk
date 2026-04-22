@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // ARM model of AKS Assessment.
 //
-// Uses Azure REST API version 2023-04-01-preview.
+// Uses Azure REST API version 2024-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
 //
-// Other available API versions: 2023-05-01-preview, 2023-09-09-preview, 2024-01-01-preview.
+// Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview, 2024-01-15, 2024-03-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AksAssessmentOperation struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets AKS Assessment Details.
 	Details AKSAssessmentDetailsResponseOutput `pulumi:"details"`
 	// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
@@ -33,7 +36,7 @@ type AksAssessmentOperation struct {
 	// Gets or sets AKS Assessment Settings.
 	Settings AKSAssessmentSettingsResponseOutput `pulumi:"settings"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -66,6 +69,12 @@ func NewAksAssessmentOperation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20240101preview:AksAssessmentOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240115:AksAssessmentOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240303preview:AksAssessmentOperation"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -165,6 +174,11 @@ func (o AksAssessmentOperationOutput) ToAksAssessmentOperationOutputWithContext(
 	return o
 }
 
+// The Azure API version of the resource.
+func (o AksAssessmentOperationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AksAssessmentOperation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Gets AKS Assessment Details.
 func (o AksAssessmentOperationOutput) Details() AKSAssessmentDetailsResponseOutput {
 	return o.ApplyT(func(v *AksAssessmentOperation) AKSAssessmentDetailsResponseOutput { return v.Details }).(AKSAssessmentDetailsResponseOutput)
@@ -196,8 +210,8 @@ func (o AksAssessmentOperationOutput) Settings() AKSAssessmentSettingsResponseOu
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o AksAssessmentOperationOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *AksAssessmentOperation) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o AksAssessmentOperationOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *AksAssessmentOperation) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

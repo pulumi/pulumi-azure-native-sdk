@@ -8,15 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Update details
 //
-// Uses Azure REST API version 2023-03-01.
+// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
 //
-// Other available API versions: 2022-12-15-preview, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-04-01, 2024-09-01-preview, 2024-12-01-preview.
+// Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01, 2026-02-15-preview, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Update struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +25,8 @@ type Update struct {
 	AdditionalProperties pulumi.StringPtrOutput `pulumi:"additionalProperties"`
 	// Indicates the way the update content can be downloaded.
 	AvailabilityType pulumi.StringPtrOutput `pulumi:"availabilityType"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Description of the update.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Display name of the Update
@@ -34,6 +37,8 @@ type Update struct {
 	InstalledDate pulumi.StringPtrOutput `pulumi:"installedDate"`
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrOutput `pulumi:"location"`
+	// Minimum Sbe Version of the update.
+	MinSbeVersionRequired pulumi.StringPtrOutput `pulumi:"minSbeVersionRequired"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Brief message with instructions for updates of AvailabilityType Notify.
@@ -57,7 +62,7 @@ type Update struct {
 	// State of the update as it relates to this stamp.
 	State pulumi.StringPtrOutput `pulumi:"state"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Version of the update.
@@ -117,6 +122,30 @@ func NewUpdate(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:azurestackhci/v20241201preview:Update"),
 		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250201preview:Update"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20250915preview:Update"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20251001:Update"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20251101preview:Update"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20251201preview:Update"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20260201:Update"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20260215preview:Update"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurestackhci/v20260301preview:Update"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -168,6 +197,8 @@ type updateArgs struct {
 	InstalledDate *string `pulumi:"installedDate"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
+	// Minimum Sbe Version of the update.
+	MinSbeVersionRequired *string `pulumi:"minSbeVersionRequired"`
 	// Brief message with instructions for updates of AvailabilityType Notify.
 	NotifyMessage *string `pulumi:"notifyMessage"`
 	// Path where the update package is available.
@@ -212,6 +243,8 @@ type UpdateArgs struct {
 	InstalledDate pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
+	// Minimum Sbe Version of the update.
+	MinSbeVersionRequired pulumi.StringPtrInput
 	// Brief message with instructions for updates of AvailabilityType Notify.
 	NotifyMessage pulumi.StringPtrInput
 	// Path where the update package is available.
@@ -285,6 +318,11 @@ func (o UpdateOutput) AvailabilityType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Update) pulumi.StringPtrOutput { return v.AvailabilityType }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o UpdateOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Update) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Description of the update.
 func (o UpdateOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Update) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -308,6 +346,11 @@ func (o UpdateOutput) InstalledDate() pulumi.StringPtrOutput {
 // The geo-location where the resource lives
 func (o UpdateOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Update) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Minimum Sbe Version of the update.
+func (o UpdateOutput) MinSbeVersionRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Update) pulumi.StringPtrOutput { return v.MinSbeVersionRequired }).(pulumi.StringPtrOutput)
 }
 
 // The name of the resource
@@ -366,8 +409,8 @@ func (o UpdateOutput) State() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o UpdateOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Update) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o UpdateOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Update) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

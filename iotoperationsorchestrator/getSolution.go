@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +34,8 @@ type LookupSolutionArgs struct {
 
 // A Solution resource belonging to an Instance resource.
 type LookupSolutionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A list of components
 	Components []ComponentPropertiesResponse `pulumi:"components"`
 	// Edge location of the resource.
@@ -46,7 +49,7 @@ type LookupSolutionResult struct {
 	// The status of the last operation.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -90,6 +93,11 @@ func (o LookupSolutionResultOutput) ToLookupSolutionResultOutputWithContext(ctx 
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupSolutionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSolutionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // A list of components
 func (o LookupSolutionResultOutput) Components() ComponentPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v LookupSolutionResult) []ComponentPropertiesResponse { return v.Components }).(ComponentPropertiesResponseArrayOutput)
@@ -121,8 +129,8 @@ func (o LookupSolutionResultOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupSolutionResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSolutionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupSolutionResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSolutionResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +36,8 @@ type LookupAzureLargeInstanceArgs struct {
 // Azure Large Instance info on Azure (ARM properties and AzureLargeInstance
 // properties)
 type LookupAzureLargeInstanceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Specifies the Azure Large Instance unique ID.
 	AzureLargeInstanceId *string `pulumi:"azureLargeInstanceId"`
 	// Specifies the hardware settings for the Azure Large Instance.
@@ -60,7 +63,7 @@ type LookupAzureLargeInstanceResult struct {
 	// Specifies the storage settings for the Azure Large Instance disks.
 	StorageProfile *StorageProfileResponse `pulumi:"storageProfile"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -101,6 +104,11 @@ func (o LookupAzureLargeInstanceResultOutput) ToLookupAzureLargeInstanceResultOu
 
 func (o LookupAzureLargeInstanceResultOutput) ToLookupAzureLargeInstanceResultOutputWithContext(ctx context.Context) LookupAzureLargeInstanceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAzureLargeInstanceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAzureLargeInstanceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the Azure Large Instance unique ID.
@@ -164,8 +172,8 @@ func (o LookupAzureLargeInstanceResultOutput) StorageProfile() StorageProfileRes
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupAzureLargeInstanceResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAzureLargeInstanceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupAzureLargeInstanceResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAzureLargeInstanceResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

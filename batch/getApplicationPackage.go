@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about the specified application package.
 //
-// Uses Azure REST API version 2023-05-01.
+// Uses Azure REST API version 2024-07-01.
 //
-// Other available API versions: 2023-11-01, 2024-02-01, 2024-07-01.
+// Other available API versions: 2023-05-01, 2023-11-01, 2024-02-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native batch [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupApplicationPackage(ctx *pulumi.Context, args *LookupApplicationPackageArgs, opts ...pulumi.InvokeOption) (*LookupApplicationPackageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApplicationPackageResult
@@ -27,11 +28,11 @@ func LookupApplicationPackage(ctx *pulumi.Context, args *LookupApplicationPackag
 }
 
 type LookupApplicationPackageArgs struct {
-	// The name of the Batch account.
+	// A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
 	AccountName string `pulumi:"accountName"`
 	// The name of the application. This must be unique within the account.
 	ApplicationName string `pulumi:"applicationName"`
-	// The name of the resource group that contains the Batch account.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The version of the application.
 	VersionName string `pulumi:"versionName"`
@@ -39,15 +40,17 @@ type LookupApplicationPackageArgs struct {
 
 // An application package which represents a particular version of an application.
 type LookupApplicationPackageResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The ETag of the resource, used for concurrency statements.
 	Etag string `pulumi:"etag"`
 	// The format of the application package, if the package is active.
 	Format string `pulumi:"format"`
-	// The ID of the resource.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The time at which the package was last activated, if the package is active.
 	LastActivationTime string `pulumi:"lastActivationTime"`
-	// The name of the resource.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The current state of the application package.
 	State string `pulumi:"state"`
@@ -55,7 +58,11 @@ type LookupApplicationPackageResult struct {
 	StorageUrl string `pulumi:"storageUrl"`
 	// The UTC time at which the Azure Storage URL will expire.
 	StorageUrlExpiry string `pulumi:"storageUrlExpiry"`
-	// The type of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	// The tags of the resource.
+	Tags map[string]string `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -69,11 +76,11 @@ func LookupApplicationPackageOutput(ctx *pulumi.Context, args LookupApplicationP
 }
 
 type LookupApplicationPackageOutputArgs struct {
-	// The name of the Batch account.
+	// A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
 	AccountName pulumi.StringInput `pulumi:"accountName"`
 	// The name of the application. This must be unique within the account.
 	ApplicationName pulumi.StringInput `pulumi:"applicationName"`
-	// The name of the resource group that contains the Batch account.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The version of the application.
 	VersionName pulumi.StringInput `pulumi:"versionName"`
@@ -98,6 +105,11 @@ func (o LookupApplicationPackageResultOutput) ToLookupApplicationPackageResultOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupApplicationPackageResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApplicationPackageResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The ETag of the resource, used for concurrency statements.
 func (o LookupApplicationPackageResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationPackageResult) string { return v.Etag }).(pulumi.StringOutput)
@@ -108,7 +120,7 @@ func (o LookupApplicationPackageResultOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationPackageResult) string { return v.Format }).(pulumi.StringOutput)
 }
 
-// The ID of the resource.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupApplicationPackageResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationPackageResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -118,7 +130,7 @@ func (o LookupApplicationPackageResultOutput) LastActivationTime() pulumi.String
 	return o.ApplyT(func(v LookupApplicationPackageResult) string { return v.LastActivationTime }).(pulumi.StringOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o LookupApplicationPackageResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationPackageResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -138,7 +150,17 @@ func (o LookupApplicationPackageResultOutput) StorageUrlExpiry() pulumi.StringOu
 	return o.ApplyT(func(v LookupApplicationPackageResult) string { return v.StorageUrlExpiry }).(pulumi.StringOutput)
 }
 
-// The type of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupApplicationPackageResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupApplicationPackageResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+}
+
+// The tags of the resource.
+func (o LookupApplicationPackageResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupApplicationPackageResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupApplicationPackageResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationPackageResult) string { return v.Type }).(pulumi.StringOutput)
 }

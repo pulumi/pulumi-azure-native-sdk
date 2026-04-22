@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv1"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an existing attestation at resource group scope.
 //
-// Uses Azure REST API version 2022-09-01.
+// Uses Azure REST API version 2024-10-01.
 //
-// Other available API versions: 2024-10-01.
+// Other available API versions: 2022-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native policyinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAttestationAtResourceGroup(ctx *pulumi.Context, args *LookupAttestationAtResourceGroupArgs, opts ...pulumi.InvokeOption) (*LookupAttestationAtResourceGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAttestationAtResourceGroupResult
@@ -37,6 +38,8 @@ type LookupAttestationAtResourceGroupArgs struct {
 type LookupAttestationAtResourceGroupResult struct {
 	// The time the evidence was assessed
 	AssessmentDate *string `pulumi:"assessmentDate"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Comments describing why this attestation was created.
 	Comments *string `pulumi:"comments"`
 	// The compliance state that should be set on the resource.
@@ -62,7 +65,7 @@ type LookupAttestationAtResourceGroupResult struct {
 	// The status of the attestation.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv1.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -105,6 +108,11 @@ func (o LookupAttestationAtResourceGroupResultOutput) ToLookupAttestationAtResou
 // The time the evidence was assessed
 func (o LookupAttestationAtResourceGroupResultOutput) AssessmentDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAttestationAtResourceGroupResult) *string { return v.AssessmentDate }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAttestationAtResourceGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAttestationAtResourceGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Comments describing why this attestation was created.
@@ -168,8 +176,8 @@ func (o LookupAttestationAtResourceGroupResultOutput) ProvisioningState() pulumi
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupAttestationAtResourceGroupResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAttestationAtResourceGroupResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupAttestationAtResourceGroupResultOutput) SystemData() commontypesv1.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAttestationAtResourceGroupResult) commontypesv1.SystemDataResponse { return v.SystemData }).(commontypesv1.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

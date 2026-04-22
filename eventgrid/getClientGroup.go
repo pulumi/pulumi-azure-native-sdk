@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get properties of a client group.
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2025-02-15.
 //
-// Other available API versions: 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-02-15.
+// Other available API versions: 2023-06-01-preview, 2023-12-15-preview, 2024-06-01-preview, 2024-12-15-preview, 2025-04-01-preview, 2025-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventgrid [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupClientGroup(ctx *pulumi.Context, args *LookupClientGroupArgs, opts ...pulumi.InvokeOption) (*LookupClientGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupClientGroupResult
@@ -37,6 +38,8 @@ type LookupClientGroupArgs struct {
 
 // The Client group resource.
 type LookupClientGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Description for the Client Group resource.
 	Description *string `pulumi:"description"`
 	// Fully qualified identifier of the resource.
@@ -48,8 +51,8 @@ type LookupClientGroupResult struct {
 	// The grouping query for the clients.
 	// Example : attributes.keyName IN ['a', 'b', 'c'].
 	Query *string `pulumi:"query"`
-	// The system metadata relating to the ClientGroup resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The system metadata relating to the Event Grid resource.
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Type of the resource.
 	Type string `pulumi:"type"`
 }
@@ -91,6 +94,11 @@ func (o LookupClientGroupResultOutput) ToLookupClientGroupResultOutputWithContex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupClientGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClientGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Description for the Client Group resource.
 func (o LookupClientGroupResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupClientGroupResult) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -117,9 +125,9 @@ func (o LookupClientGroupResultOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupClientGroupResult) *string { return v.Query }).(pulumi.StringPtrOutput)
 }
 
-// The system metadata relating to the ClientGroup resource.
-func (o LookupClientGroupResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupClientGroupResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+// The system metadata relating to the Event Grid resource.
+func (o LookupClientGroupResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupClientGroupResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Type of the resource.

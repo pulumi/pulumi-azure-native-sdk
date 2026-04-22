@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a specific addon by name.
 //
-// Uses Azure REST API version 2022-03-01.
+// Uses Azure REST API version 2023-07-01.
 func LookupIoTAddon(ctx *pulumi.Context, args *LookupIoTAddonArgs, opts ...pulumi.InvokeOption) (*LookupIoTAddonResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIoTAddonResult
@@ -37,6 +38,8 @@ type LookupIoTAddonArgs struct {
 
 // IoT Addon.
 type LookupIoTAddonResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Host OS supported by the IoT addon.
 	HostPlatform string `pulumi:"hostPlatform"`
 	// Platform where the runtime is hosted.
@@ -55,7 +58,7 @@ type LookupIoTAddonResult struct {
 	// Addon Provisioning State
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Metadata pertaining to creation and last modification of Addon
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type string `pulumi:"type"`
 	// Version of IoT running on the appliance.
@@ -101,6 +104,11 @@ func (o LookupIoTAddonResultOutput) ToLookupIoTAddonResultOutputWithContext(ctx 
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupIoTAddonResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIoTAddonResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Host OS supported by the IoT addon.
 func (o LookupIoTAddonResultOutput) HostPlatform() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIoTAddonResult) string { return v.HostPlatform }).(pulumi.StringOutput)
@@ -143,8 +151,8 @@ func (o LookupIoTAddonResultOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Metadata pertaining to creation and last modification of Addon
-func (o LookupIoTAddonResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupIoTAddonResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupIoTAddonResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupIoTAddonResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.

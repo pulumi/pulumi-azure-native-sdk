@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2023-08-01-preview.
+// Uses Azure REST API version 2025-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-08-01-preview.
 //
-// Other available API versions: 2024-01-01-preview, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview.
+// Other available API versions: 2023-08-01-preview, 2024-01-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type InferenceEndpoint struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity commontypesv3.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// [Required] Additional attributes of the entity.
 	InferenceEndpointProperties InferenceEndpointResponseOutput `pulumi:"inferenceEndpointProperties"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
@@ -29,9 +32,9 @@ type InferenceEndpoint struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Sku details required for ARM contract for Autoscaling.
-	Sku SkuResponsePtrOutput `pulumi:"sku"`
+	Sku commontypesv3.SkuResponsePtrOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -57,6 +60,7 @@ func NewInferenceEndpoint(ctx *pulumi.Context,
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
+	args.InferenceEndpointProperties = args.InferenceEndpointProperties.ToInferenceEndpointTypeOutput().ApplyT(func(v InferenceEndpointType) InferenceEndpointType { return *v.Defaults() }).(InferenceEndpointTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230801preview:InferenceEndpoint"),
@@ -72,6 +76,15 @@ func NewInferenceEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:InferenceEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250401preview:InferenceEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250701preview:InferenceEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20251001preview:InferenceEndpoint"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -111,7 +124,7 @@ type inferenceEndpointArgs struct {
 	// InferenceEndpoint name.
 	EndpointName *string `pulumi:"endpointName"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity *ManagedServiceIdentity `pulumi:"identity"`
+	Identity *commontypesv3.ManagedServiceIdentity `pulumi:"identity"`
 	// [Required] Additional attributes of the entity.
 	InferenceEndpointProperties InferenceEndpointType `pulumi:"inferenceEndpointProperties"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
@@ -123,7 +136,7 @@ type inferenceEndpointArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Sku details required for ARM contract for Autoscaling.
-	Sku *Sku `pulumi:"sku"`
+	Sku *commontypesv3.Sku `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Name of Azure Machine Learning workspace.
@@ -135,7 +148,7 @@ type InferenceEndpointArgs struct {
 	// InferenceEndpoint name.
 	EndpointName pulumi.StringPtrInput
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity ManagedServiceIdentityPtrInput
+	Identity commontypesv3.ManagedServiceIdentityPtrInput
 	// [Required] Additional attributes of the entity.
 	InferenceEndpointProperties InferenceEndpointTypeInput
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
@@ -147,7 +160,7 @@ type InferenceEndpointArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Sku details required for ARM contract for Autoscaling.
-	Sku SkuPtrInput
+	Sku commontypesv3.SkuPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 	// Name of Azure Machine Learning workspace.
@@ -191,9 +204,14 @@ func (o InferenceEndpointOutput) ToInferenceEndpointOutputWithContext(ctx contex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o InferenceEndpointOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *InferenceEndpoint) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Managed service identity (system assigned and/or user assigned identities)
-func (o InferenceEndpointOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *InferenceEndpoint) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o InferenceEndpointOutput) Identity() commontypesv3.ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *InferenceEndpoint) commontypesv3.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv3.ManagedServiceIdentityResponsePtrOutput)
 }
 
 // [Required] Additional attributes of the entity.
@@ -217,13 +235,13 @@ func (o InferenceEndpointOutput) Name() pulumi.StringOutput {
 }
 
 // Sku details required for ARM contract for Autoscaling.
-func (o InferenceEndpointOutput) Sku() SkuResponsePtrOutput {
-	return o.ApplyT(func(v *InferenceEndpoint) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
+func (o InferenceEndpointOutput) Sku() commontypesv3.SkuResponsePtrOutput {
+	return o.ApplyT(func(v *InferenceEndpoint) commontypesv3.SkuResponsePtrOutput { return v.Sku }).(commontypesv3.SkuResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o InferenceEndpointOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *InferenceEndpoint) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o InferenceEndpointOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *InferenceEndpoint) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

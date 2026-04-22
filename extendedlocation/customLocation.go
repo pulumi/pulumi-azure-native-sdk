@@ -8,20 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Custom Locations definition.
 //
-// Uses Azure REST API version 2021-08-15. In version 1.x of the Azure Native provider, it used API version 2021-03-15-preview.
+// Uses Azure REST API version 2021-08-31-preview. In version 2.x of the Azure Native provider, it used API version 2021-08-15.
 //
-// Other available API versions: 2021-08-31-preview.
+// Other available API versions: 2021-08-15, 2024-09-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native extendedlocation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type CustomLocation struct {
 	pulumi.CustomResourceState
 
 	// This is optional input that contains the authentication that should be used to generate the namespace.
 	Authentication CustomLocationPropertiesResponseAuthenticationPtrOutput `pulumi:"authentication"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Contains the reference to the add-on that contains charts to deploy CRDs and operators.
 	ClusterExtensionIds pulumi.StringArrayOutput `pulumi:"clusterExtensionIds"`
 	// Display name for the Custom Locations location.
@@ -41,7 +44,7 @@ type CustomLocation struct {
 	// Provisioning State for the Custom Location.
 	ProvisioningState pulumi.StringPtrOutput `pulumi:"provisioningState"`
 	// Metadata pertaining to creation and last modification of the resource
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -67,6 +70,9 @@ func NewCustomLocation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:extendedlocation/v20210831preview:CustomLocation"),
+		},
+		{
+			Type: pulumi.String("azure-native:extendedlocation/v20240915preview:CustomLocation"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -201,6 +207,11 @@ func (o CustomLocationOutput) Authentication() CustomLocationPropertiesResponseA
 	}).(CustomLocationPropertiesResponseAuthenticationPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o CustomLocationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomLocation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Contains the reference to the add-on that contains charts to deploy CRDs and operators.
 func (o CustomLocationOutput) ClusterExtensionIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CustomLocation) pulumi.StringArrayOutput { return v.ClusterExtensionIds }).(pulumi.StringArrayOutput)
@@ -247,8 +258,8 @@ func (o CustomLocationOutput) ProvisioningState() pulumi.StringPtrOutput {
 }
 
 // Metadata pertaining to creation and last modification of the resource
-func (o CustomLocationOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *CustomLocation) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o CustomLocationOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *CustomLocation) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Resource tags.

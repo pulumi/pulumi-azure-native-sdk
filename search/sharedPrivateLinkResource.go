@@ -8,22 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Describes a Shared Private Link Resource managed by the Azure Cognitive Search service.
+// Describes a shared private link resource managed by the Azure AI Search service.
 //
-// Uses Azure REST API version 2022-09-01. In version 1.x of the Azure Native provider, it used API version 2020-08-01.
+// Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 //
-// Other available API versions: 2023-11-01, 2024-03-01-preview, 2024-06-01-preview, 2025-02-01-preview.
+// Other available API versions: 2022-09-01, 2023-11-01, 2024-03-01-preview, 2024-06-01-preview, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native search [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SharedPrivateLinkResource struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Describes the properties of a Shared Private Link Resource managed by the Azure Cognitive Search service.
+	// Describes the properties of a shared private link resource managed by the Azure AI Search service.
 	Properties SharedPrivateLinkResourcePropertiesResponseOutput `pulumi:"properties"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv6.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -66,6 +71,9 @@ func NewSharedPrivateLinkResource(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:search/v20250201preview:SharedPrivateLinkResource"),
 		},
+		{
+			Type: pulumi.String("azure-native:search/v20250501:SharedPrivateLinkResource"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -101,25 +109,25 @@ func (SharedPrivateLinkResourceState) ElementType() reflect.Type {
 }
 
 type sharedPrivateLinkResourceArgs struct {
-	// Describes the properties of a Shared Private Link Resource managed by the Azure Cognitive Search service.
+	// Describes the properties of a shared private link resource managed by the Azure AI Search service.
 	Properties *SharedPrivateLinkResourceProperties `pulumi:"properties"`
-	// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The name of the Azure Cognitive Search service associated with the specified resource group.
+	// The name of the Azure AI Search service associated with the specified resource group.
 	SearchServiceName string `pulumi:"searchServiceName"`
-	// The name of the shared private link resource managed by the Azure Cognitive Search service within the specified resource group.
+	// The name of the shared private link resource managed by the Azure AI Search service within the specified resource group.
 	SharedPrivateLinkResourceName *string `pulumi:"sharedPrivateLinkResourceName"`
 }
 
 // The set of arguments for constructing a SharedPrivateLinkResource resource.
 type SharedPrivateLinkResourceArgs struct {
-	// Describes the properties of a Shared Private Link Resource managed by the Azure Cognitive Search service.
+	// Describes the properties of a shared private link resource managed by the Azure AI Search service.
 	Properties SharedPrivateLinkResourcePropertiesPtrInput
-	// The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// The name of the Azure Cognitive Search service associated with the specified resource group.
+	// The name of the Azure AI Search service associated with the specified resource group.
 	SearchServiceName pulumi.StringInput
-	// The name of the shared private link resource managed by the Azure Cognitive Search service within the specified resource group.
+	// The name of the shared private link resource managed by the Azure AI Search service within the specified resource group.
 	SharedPrivateLinkResourceName pulumi.StringPtrInput
 }
 
@@ -160,16 +168,26 @@ func (o SharedPrivateLinkResourceOutput) ToSharedPrivateLinkResourceOutputWithCo
 	return o
 }
 
+// The Azure API version of the resource.
+func (o SharedPrivateLinkResourceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SharedPrivateLinkResource) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o SharedPrivateLinkResourceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SharedPrivateLinkResource) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Describes the properties of a Shared Private Link Resource managed by the Azure Cognitive Search service.
+// Describes the properties of a shared private link resource managed by the Azure AI Search service.
 func (o SharedPrivateLinkResourceOutput) Properties() SharedPrivateLinkResourcePropertiesResponseOutput {
 	return o.ApplyT(func(v *SharedPrivateLinkResource) SharedPrivateLinkResourcePropertiesResponseOutput {
 		return v.Properties
 	}).(SharedPrivateLinkResourcePropertiesResponseOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o SharedPrivateLinkResourceOutput) SystemData() commontypesv6.SystemDataResponseOutput {
+	return o.ApplyT(func(v *SharedPrivateLinkResource) commontypesv6.SystemDataResponseOutput { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

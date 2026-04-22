@@ -8,18 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2021-04-01. In version 1.x of the Azure Native provider, it used API version 2019-01-01-preview.
+// Uses Azure REST API version 2023-05-17-preview. In version 2.x of the Azure Native provider, it used API version 2021-04-01.
 //
-// Other available API versions: 2019-01-01-preview, 2023-01-18-preview, 2023-05-17-preview.
+// Other available API versions: 2021-04-01, 2023-01-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azureactivedirectory [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type B2CTenant struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The billing configuration for the tenant.
 	BillingConfig B2CTenantResourcePropertiesResponseBillingConfigPtrOutput `pulumi:"billingConfig"`
+	// Enable GoLocal add-on to store data at rest in the specific Geo. Refer to [aka.ms/B2CDataResidency](https://aka.ms/B2CDataResidency) to see local data residency options.
+	IsGoLocalTenant pulumi.BoolPtrOutput `pulumi:"isGoLocalTenant"`
 	// The location in which the resource is hosted and data resides. Can be one of 'United States', 'Europe', 'Asia Pacific', or 'Australia'. Refer to [this documentation](https://aka.ms/B2CDataResidency) for more information.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the Azure AD B2C tenant resource.
@@ -27,7 +32,7 @@ type B2CTenant struct {
 	// SKU properties of the Azure AD B2C tenant. Learn more about Azure AD B2C billing at [aka.ms/b2cBilling](https://aka.ms/b2cBilling).
 	Sku B2CResourceSKUResponseOutput `pulumi:"sku"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource Tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// An identifier of the Azure AD B2C tenant.
@@ -101,6 +106,8 @@ type b2ctenantArgs struct {
 	CountryCode *string `pulumi:"countryCode"`
 	// The display name of the Azure AD B2C tenant.
 	DisplayName *string `pulumi:"displayName"`
+	// Enable GoLocal add-on to store data at rest in the specific Geo. Refer to [aka.ms/B2CDataResidency](https://aka.ms/B2CDataResidency) to see local data residency options.
+	IsGoLocalTenant *bool `pulumi:"isGoLocalTenant"`
 	// The location in which the resource is hosted and data resides. Can be one of 'United States', 'Europe', 'Asia Pacific', or 'Australia'. Refer to [this documentation](https://aka.ms/B2CDataResidency) for more information.
 	Location *string `pulumi:"location"`
 	// The name of the resource group.
@@ -119,6 +126,8 @@ type B2CTenantArgs struct {
 	CountryCode pulumi.StringPtrInput
 	// The display name of the Azure AD B2C tenant.
 	DisplayName pulumi.StringPtrInput
+	// Enable GoLocal add-on to store data at rest in the specific Geo. Refer to [aka.ms/B2CDataResidency](https://aka.ms/B2CDataResidency) to see local data residency options.
+	IsGoLocalTenant pulumi.BoolPtrInput
 	// The location in which the resource is hosted and data resides. Can be one of 'United States', 'Europe', 'Asia Pacific', or 'Australia'. Refer to [this documentation](https://aka.ms/B2CDataResidency) for more information.
 	Location pulumi.StringPtrInput
 	// The name of the resource group.
@@ -168,9 +177,19 @@ func (o B2CTenantOutput) ToB2CTenantOutputWithContext(ctx context.Context) B2CTe
 	return o
 }
 
+// The Azure API version of the resource.
+func (o B2CTenantOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *B2CTenant) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The billing configuration for the tenant.
 func (o B2CTenantOutput) BillingConfig() B2CTenantResourcePropertiesResponseBillingConfigPtrOutput {
 	return o.ApplyT(func(v *B2CTenant) B2CTenantResourcePropertiesResponseBillingConfigPtrOutput { return v.BillingConfig }).(B2CTenantResourcePropertiesResponseBillingConfigPtrOutput)
+}
+
+// Enable GoLocal add-on to store data at rest in the specific Geo. Refer to [aka.ms/B2CDataResidency](https://aka.ms/B2CDataResidency) to see local data residency options.
+func (o B2CTenantOutput) IsGoLocalTenant() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *B2CTenant) pulumi.BoolPtrOutput { return v.IsGoLocalTenant }).(pulumi.BoolPtrOutput)
 }
 
 // The location in which the resource is hosted and data resides. Can be one of 'United States', 'Europe', 'Asia Pacific', or 'Australia'. Refer to [this documentation](https://aka.ms/B2CDataResidency) for more information.
@@ -189,8 +208,8 @@ func (o B2CTenantOutput) Sku() B2CResourceSKUResponseOutput {
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o B2CTenantOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *B2CTenant) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o B2CTenantOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *B2CTenant) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Resource Tags

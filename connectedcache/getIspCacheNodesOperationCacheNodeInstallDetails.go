@@ -7,13 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // This api gets secrets of the ispCacheNode resource install details
 //
 // Uses Azure REST API version 2023-05-01-preview.
+//
+// Other available API versions: 2024-11-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedcache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func GetIspCacheNodesOperationCacheNodeInstallDetails(ctx *pulumi.Context, args *GetIspCacheNodesOperationCacheNodeInstallDetailsArgs, opts ...pulumi.InvokeOption) (*GetIspCacheNodesOperationCacheNodeInstallDetailsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetIspCacheNodesOperationCacheNodeInstallDetailsResult
@@ -44,7 +47,7 @@ type GetIspCacheNodesOperationCacheNodeInstallDetailsResult struct {
 	// Mcc cache node resource install script details.
 	Properties CacheNodeInstallPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -111,8 +114,10 @@ func (o GetIspCacheNodesOperationCacheNodeInstallDetailsResultOutput) Properties
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o GetIspCacheNodesOperationCacheNodeInstallDetailsResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v GetIspCacheNodesOperationCacheNodeInstallDetailsResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetIspCacheNodesOperationCacheNodeInstallDetailsResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v GetIspCacheNodesOperationCacheNodeInstallDetailsResult) commontypesv5.SystemDataResponse {
+		return v.SystemData
+	}).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

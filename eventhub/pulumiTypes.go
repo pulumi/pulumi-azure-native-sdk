@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -391,6 +391,242 @@ func (o CaptureDescriptionResponsePtrOutput) SkipEmptyArchives() pulumi.BoolPtrO
 		}
 		return v.SkipEmptyArchives
 	}).(pulumi.BoolPtrOutput)
+}
+
+// A value that indicates whether capture description is enabled.
+type CaptureIdentity struct {
+	// Type of Azure Active Directory Managed Identity.
+	Type *CaptureIdentityType `pulumi:"type"`
+	// ARM ID of Managed User Identity. This property is required is the type is UserAssignedIdentity. If type is SystemAssigned, then the System Assigned Identity Associated with the namespace will be used.
+	UserAssignedIdentity *string `pulumi:"userAssignedIdentity"`
+}
+
+// CaptureIdentityInput is an input type that accepts CaptureIdentityArgs and CaptureIdentityOutput values.
+// You can construct a concrete instance of `CaptureIdentityInput` via:
+//
+//	CaptureIdentityArgs{...}
+type CaptureIdentityInput interface {
+	pulumi.Input
+
+	ToCaptureIdentityOutput() CaptureIdentityOutput
+	ToCaptureIdentityOutputWithContext(context.Context) CaptureIdentityOutput
+}
+
+// A value that indicates whether capture description is enabled.
+type CaptureIdentityArgs struct {
+	// Type of Azure Active Directory Managed Identity.
+	Type CaptureIdentityTypePtrInput `pulumi:"type"`
+	// ARM ID of Managed User Identity. This property is required is the type is UserAssignedIdentity. If type is SystemAssigned, then the System Assigned Identity Associated with the namespace will be used.
+	UserAssignedIdentity pulumi.StringPtrInput `pulumi:"userAssignedIdentity"`
+}
+
+func (CaptureIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CaptureIdentity)(nil)).Elem()
+}
+
+func (i CaptureIdentityArgs) ToCaptureIdentityOutput() CaptureIdentityOutput {
+	return i.ToCaptureIdentityOutputWithContext(context.Background())
+}
+
+func (i CaptureIdentityArgs) ToCaptureIdentityOutputWithContext(ctx context.Context) CaptureIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CaptureIdentityOutput)
+}
+
+func (i CaptureIdentityArgs) ToCaptureIdentityPtrOutput() CaptureIdentityPtrOutput {
+	return i.ToCaptureIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i CaptureIdentityArgs) ToCaptureIdentityPtrOutputWithContext(ctx context.Context) CaptureIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CaptureIdentityOutput).ToCaptureIdentityPtrOutputWithContext(ctx)
+}
+
+// CaptureIdentityPtrInput is an input type that accepts CaptureIdentityArgs, CaptureIdentityPtr and CaptureIdentityPtrOutput values.
+// You can construct a concrete instance of `CaptureIdentityPtrInput` via:
+//
+//	        CaptureIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type CaptureIdentityPtrInput interface {
+	pulumi.Input
+
+	ToCaptureIdentityPtrOutput() CaptureIdentityPtrOutput
+	ToCaptureIdentityPtrOutputWithContext(context.Context) CaptureIdentityPtrOutput
+}
+
+type captureIdentityPtrType CaptureIdentityArgs
+
+func CaptureIdentityPtr(v *CaptureIdentityArgs) CaptureIdentityPtrInput {
+	return (*captureIdentityPtrType)(v)
+}
+
+func (*captureIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CaptureIdentity)(nil)).Elem()
+}
+
+func (i *captureIdentityPtrType) ToCaptureIdentityPtrOutput() CaptureIdentityPtrOutput {
+	return i.ToCaptureIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *captureIdentityPtrType) ToCaptureIdentityPtrOutputWithContext(ctx context.Context) CaptureIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CaptureIdentityPtrOutput)
+}
+
+// A value that indicates whether capture description is enabled.
+type CaptureIdentityOutput struct{ *pulumi.OutputState }
+
+func (CaptureIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CaptureIdentity)(nil)).Elem()
+}
+
+func (o CaptureIdentityOutput) ToCaptureIdentityOutput() CaptureIdentityOutput {
+	return o
+}
+
+func (o CaptureIdentityOutput) ToCaptureIdentityOutputWithContext(ctx context.Context) CaptureIdentityOutput {
+	return o
+}
+
+func (o CaptureIdentityOutput) ToCaptureIdentityPtrOutput() CaptureIdentityPtrOutput {
+	return o.ToCaptureIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o CaptureIdentityOutput) ToCaptureIdentityPtrOutputWithContext(ctx context.Context) CaptureIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CaptureIdentity) *CaptureIdentity {
+		return &v
+	}).(CaptureIdentityPtrOutput)
+}
+
+// Type of Azure Active Directory Managed Identity.
+func (o CaptureIdentityOutput) Type() CaptureIdentityTypePtrOutput {
+	return o.ApplyT(func(v CaptureIdentity) *CaptureIdentityType { return v.Type }).(CaptureIdentityTypePtrOutput)
+}
+
+// ARM ID of Managed User Identity. This property is required is the type is UserAssignedIdentity. If type is SystemAssigned, then the System Assigned Identity Associated with the namespace will be used.
+func (o CaptureIdentityOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CaptureIdentity) *string { return v.UserAssignedIdentity }).(pulumi.StringPtrOutput)
+}
+
+type CaptureIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (CaptureIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CaptureIdentity)(nil)).Elem()
+}
+
+func (o CaptureIdentityPtrOutput) ToCaptureIdentityPtrOutput() CaptureIdentityPtrOutput {
+	return o
+}
+
+func (o CaptureIdentityPtrOutput) ToCaptureIdentityPtrOutputWithContext(ctx context.Context) CaptureIdentityPtrOutput {
+	return o
+}
+
+func (o CaptureIdentityPtrOutput) Elem() CaptureIdentityOutput {
+	return o.ApplyT(func(v *CaptureIdentity) CaptureIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret CaptureIdentity
+		return ret
+	}).(CaptureIdentityOutput)
+}
+
+// Type of Azure Active Directory Managed Identity.
+func (o CaptureIdentityPtrOutput) Type() CaptureIdentityTypePtrOutput {
+	return o.ApplyT(func(v *CaptureIdentity) *CaptureIdentityType {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(CaptureIdentityTypePtrOutput)
+}
+
+// ARM ID of Managed User Identity. This property is required is the type is UserAssignedIdentity. If type is SystemAssigned, then the System Assigned Identity Associated with the namespace will be used.
+func (o CaptureIdentityPtrOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CaptureIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentity
+	}).(pulumi.StringPtrOutput)
+}
+
+// A value that indicates whether capture description is enabled.
+type CaptureIdentityResponse struct {
+	// Type of Azure Active Directory Managed Identity.
+	Type *string `pulumi:"type"`
+	// ARM ID of Managed User Identity. This property is required is the type is UserAssignedIdentity. If type is SystemAssigned, then the System Assigned Identity Associated with the namespace will be used.
+	UserAssignedIdentity *string `pulumi:"userAssignedIdentity"`
+}
+
+// A value that indicates whether capture description is enabled.
+type CaptureIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (CaptureIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CaptureIdentityResponse)(nil)).Elem()
+}
+
+func (o CaptureIdentityResponseOutput) ToCaptureIdentityResponseOutput() CaptureIdentityResponseOutput {
+	return o
+}
+
+func (o CaptureIdentityResponseOutput) ToCaptureIdentityResponseOutputWithContext(ctx context.Context) CaptureIdentityResponseOutput {
+	return o
+}
+
+// Type of Azure Active Directory Managed Identity.
+func (o CaptureIdentityResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CaptureIdentityResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// ARM ID of Managed User Identity. This property is required is the type is UserAssignedIdentity. If type is SystemAssigned, then the System Assigned Identity Associated with the namespace will be used.
+func (o CaptureIdentityResponseOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CaptureIdentityResponse) *string { return v.UserAssignedIdentity }).(pulumi.StringPtrOutput)
+}
+
+type CaptureIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CaptureIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CaptureIdentityResponse)(nil)).Elem()
+}
+
+func (o CaptureIdentityResponsePtrOutput) ToCaptureIdentityResponsePtrOutput() CaptureIdentityResponsePtrOutput {
+	return o
+}
+
+func (o CaptureIdentityResponsePtrOutput) ToCaptureIdentityResponsePtrOutputWithContext(ctx context.Context) CaptureIdentityResponsePtrOutput {
+	return o
+}
+
+func (o CaptureIdentityResponsePtrOutput) Elem() CaptureIdentityResponseOutput {
+	return o.ApplyT(func(v *CaptureIdentityResponse) CaptureIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CaptureIdentityResponse
+		return ret
+	}).(CaptureIdentityResponseOutput)
+}
+
+// Type of Azure Active Directory Managed Identity.
+func (o CaptureIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CaptureIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// ARM ID of Managed User Identity. This property is required is the type is UserAssignedIdentity. If type is SystemAssigned, then the System Assigned Identity Associated with the namespace will be used.
+func (o CaptureIdentityResponsePtrOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CaptureIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentity
+	}).(pulumi.StringPtrOutput)
 }
 
 // SKU parameters particular to a cluster instance.
@@ -877,6 +1113,8 @@ type Destination struct {
 	DataLakeFolderPath *string `pulumi:"dataLakeFolderPath"`
 	// Subscription Id of Azure Data Lake Store
 	DataLakeSubscriptionId *string `pulumi:"dataLakeSubscriptionId"`
+	// A value that indicates whether capture description is enabled.
+	Identity *CaptureIdentity `pulumi:"identity"`
 	// Name for capture destination
 	Name *string `pulumi:"name"`
 	// Resource id of the storage account to be used to create the blobs
@@ -906,6 +1144,8 @@ type DestinationArgs struct {
 	DataLakeFolderPath pulumi.StringPtrInput `pulumi:"dataLakeFolderPath"`
 	// Subscription Id of Azure Data Lake Store
 	DataLakeSubscriptionId pulumi.StringPtrInput `pulumi:"dataLakeSubscriptionId"`
+	// A value that indicates whether capture description is enabled.
+	Identity CaptureIdentityPtrInput `pulumi:"identity"`
 	// Name for capture destination
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Resource id of the storage account to be used to create the blobs
@@ -1015,6 +1255,11 @@ func (o DestinationOutput) DataLakeSubscriptionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Destination) *string { return v.DataLakeSubscriptionId }).(pulumi.StringPtrOutput)
 }
 
+// A value that indicates whether capture description is enabled.
+func (o DestinationOutput) Identity() CaptureIdentityPtrOutput {
+	return o.ApplyT(func(v Destination) *CaptureIdentity { return v.Identity }).(CaptureIdentityPtrOutput)
+}
+
 // Name for capture destination
 func (o DestinationOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Destination) *string { return v.Name }).(pulumi.StringPtrOutput)
@@ -1099,6 +1344,16 @@ func (o DestinationPtrOutput) DataLakeSubscriptionId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A value that indicates whether capture description is enabled.
+func (o DestinationPtrOutput) Identity() CaptureIdentityPtrOutput {
+	return o.ApplyT(func(v *Destination) *CaptureIdentity {
+		if v == nil {
+			return nil
+		}
+		return v.Identity
+	}).(CaptureIdentityPtrOutput)
+}
+
 // Name for capture destination
 func (o DestinationPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Destination) *string {
@@ -1131,6 +1386,8 @@ type DestinationResponse struct {
 	DataLakeFolderPath *string `pulumi:"dataLakeFolderPath"`
 	// Subscription Id of Azure Data Lake Store
 	DataLakeSubscriptionId *string `pulumi:"dataLakeSubscriptionId"`
+	// A value that indicates whether capture description is enabled.
+	Identity *CaptureIdentityResponse `pulumi:"identity"`
 	// Name for capture destination
 	Name *string `pulumi:"name"`
 	// Resource id of the storage account to be used to create the blobs
@@ -1175,6 +1432,11 @@ func (o DestinationResponseOutput) DataLakeFolderPath() pulumi.StringPtrOutput {
 // Subscription Id of Azure Data Lake Store
 func (o DestinationResponseOutput) DataLakeSubscriptionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DestinationResponse) *string { return v.DataLakeSubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+// A value that indicates whether capture description is enabled.
+func (o DestinationResponseOutput) Identity() CaptureIdentityResponsePtrOutput {
+	return o.ApplyT(func(v DestinationResponse) *CaptureIdentityResponse { return v.Identity }).(CaptureIdentityResponsePtrOutput)
 }
 
 // Name for capture destination
@@ -1259,6 +1521,16 @@ func (o DestinationResponsePtrOutput) DataLakeSubscriptionId() pulumi.StringPtrO
 		}
 		return v.DataLakeSubscriptionId
 	}).(pulumi.StringPtrOutput)
+}
+
+// A value that indicates whether capture description is enabled.
+func (o DestinationResponsePtrOutput) Identity() CaptureIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *DestinationResponse) *CaptureIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Identity
+	}).(CaptureIdentityResponsePtrOutput)
 }
 
 // Name for capture destination
@@ -4045,6 +4317,10 @@ func init() {
 	pulumi.RegisterOutputType(CaptureDescriptionPtrOutput{})
 	pulumi.RegisterOutputType(CaptureDescriptionResponseOutput{})
 	pulumi.RegisterOutputType(CaptureDescriptionResponsePtrOutput{})
+	pulumi.RegisterOutputType(CaptureIdentityOutput{})
+	pulumi.RegisterOutputType(CaptureIdentityPtrOutput{})
+	pulumi.RegisterOutputType(CaptureIdentityResponseOutput{})
+	pulumi.RegisterOutputType(CaptureIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(ClusterSkuOutput{})
 	pulumi.RegisterOutputType(ClusterSkuPtrOutput{})
 	pulumi.RegisterOutputType(ClusterSkuResponseOutput{})

@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Blueprint artifact that applies a Role assignment.
 //
-// Uses Azure REST API version 2018-11-01-preview. In version 1.x of the Azure Native provider, it used API version 2018-11-01-preview.
+// Uses Azure REST API version 2018-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2018-11-01-preview.
 type RoleAssignmentArtifact struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Artifacts which need to be deployed before the specified artifact.
 	DependsOn pulumi.StringArrayOutput `pulumi:"dependsOn"`
 	// Multi-line explain this resource.
@@ -64,7 +66,19 @@ func NewRoleAssignmentArtifact(ctx *pulumi.Context,
 	args.Kind = pulumi.String("roleAssignment")
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:blueprint/v20181101preview:PolicyAssignmentArtifact"),
+		},
+		{
 			Type: pulumi.String("azure-native:blueprint/v20181101preview:RoleAssignmentArtifact"),
+		},
+		{
+			Type: pulumi.String("azure-native:blueprint/v20181101preview:TemplateArtifact"),
+		},
+		{
+			Type: pulumi.String("azure-native:blueprint:PolicyAssignmentArtifact"),
+		},
+		{
+			Type: pulumi.String("azure-native:blueprint:TemplateArtifact"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -184,6 +198,11 @@ func (o RoleAssignmentArtifactOutput) ToRoleAssignmentArtifactOutput() RoleAssig
 
 func (o RoleAssignmentArtifactOutput) ToRoleAssignmentArtifactOutputWithContext(ctx context.Context) RoleAssignmentArtifactOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o RoleAssignmentArtifactOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoleAssignmentArtifact) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Artifacts which need to be deployed before the specified artifact.

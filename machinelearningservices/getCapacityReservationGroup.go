@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2023-08-01-preview.
+// Uses Azure REST API version 2024-01-01-preview.
 //
-// Other available API versions: 2024-01-01-preview, 2024-04-01-preview.
+// Other available API versions: 2023-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupCapacityReservationGroup(ctx *pulumi.Context, args *LookupCapacityReservationGroupArgs, opts ...pulumi.InvokeOption) (*LookupCapacityReservationGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCapacityReservationGroupResult
@@ -25,18 +26,21 @@ func LookupCapacityReservationGroup(ctx *pulumi.Context, args *LookupCapacityRes
 }
 
 type LookupCapacityReservationGroupArgs struct {
+	// Group ID
 	GroupId string `pulumi:"groupId"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 type LookupCapacityReservationGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// [Required] Additional attributes of the entity.
 	CapacityReservationGroupProperties CapacityReservationGroupResponse `pulumi:"capacityReservationGroupProperties"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *commontypesv3.ManagedServiceIdentityResponse `pulumi:"identity"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
@@ -44,9 +48,9 @@ type LookupCapacityReservationGroupResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Sku details required for ARM contract for Autoscaling.
-	Sku *SkuResponse `pulumi:"sku"`
+	Sku *commontypesv3.SkuResponse `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -63,6 +67,7 @@ func LookupCapacityReservationGroupOutput(ctx *pulumi.Context, args LookupCapaci
 }
 
 type LookupCapacityReservationGroupOutputArgs struct {
+	// Group ID
 	GroupId pulumi.StringInput `pulumi:"groupId"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
@@ -86,6 +91,11 @@ func (o LookupCapacityReservationGroupResultOutput) ToLookupCapacityReservationG
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupCapacityReservationGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCapacityReservationGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // [Required] Additional attributes of the entity.
 func (o LookupCapacityReservationGroupResultOutput) CapacityReservationGroupProperties() CapacityReservationGroupResponseOutput {
 	return o.ApplyT(func(v LookupCapacityReservationGroupResult) CapacityReservationGroupResponse {
@@ -99,8 +109,10 @@ func (o LookupCapacityReservationGroupResultOutput) Id() pulumi.StringOutput {
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
-func (o LookupCapacityReservationGroupResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupCapacityReservationGroupResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o LookupCapacityReservationGroupResultOutput) Identity() commontypesv3.ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupCapacityReservationGroupResult) *commontypesv3.ManagedServiceIdentityResponse {
+		return v.Identity
+	}).(commontypesv3.ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
@@ -119,13 +131,13 @@ func (o LookupCapacityReservationGroupResultOutput) Name() pulumi.StringOutput {
 }
 
 // Sku details required for ARM contract for Autoscaling.
-func (o LookupCapacityReservationGroupResultOutput) Sku() SkuResponsePtrOutput {
-	return o.ApplyT(func(v LookupCapacityReservationGroupResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
+func (o LookupCapacityReservationGroupResultOutput) Sku() commontypesv3.SkuResponsePtrOutput {
+	return o.ApplyT(func(v LookupCapacityReservationGroupResult) *commontypesv3.SkuResponse { return v.Sku }).(commontypesv3.SkuResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupCapacityReservationGroupResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupCapacityReservationGroupResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupCapacityReservationGroupResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupCapacityReservationGroupResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a ServerSiteResource
 //
-// Uses Azure REST API version 2023-06-06.
+// Uses Azure REST API version 2023-10-01-preview.
 //
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Other available API versions: 2023-06-06, 2024-05-01-preview, 2024-07-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupServerSitesController(ctx *pulumi.Context, args *LookupServerSitesControllerArgs, opts ...pulumi.InvokeOption) (*LookupServerSitesControllerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerSitesControllerResult
@@ -39,6 +40,8 @@ type LookupServerSitesControllerResult struct {
 	AgentDetails *SiteAgentPropertiesResponse `pulumi:"agentDetails"`
 	// Gets or sets the Appliance Name.
 	ApplianceName *string `pulumi:"applianceName"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the ARM ID of migration hub solution for SDS.
 	DiscoverySolutionId *string `pulumi:"discoverySolutionId"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -58,7 +61,7 @@ type LookupServerSitesControllerResult struct {
 	//             to the service.
 	ServicePrincipalIdentityDetails *SiteSpnPropertiesResponse `pulumi:"servicePrincipalIdentityDetails"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -110,6 +113,11 @@ func (o LookupServerSitesControllerResultOutput) ApplianceName() pulumi.StringPt
 	return o.ApplyT(func(v LookupServerSitesControllerResult) *string { return v.ApplianceName }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupServerSitesControllerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerSitesControllerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Gets or sets the ARM ID of migration hub solution for SDS.
 func (o LookupServerSitesControllerResultOutput) DiscoverySolutionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerSitesControllerResult) *string { return v.DiscoverySolutionId }).(pulumi.StringPtrOutput)
@@ -156,8 +164,8 @@ func (o LookupServerSitesControllerResultOutput) ServicePrincipalIdentityDetails
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupServerSitesControllerResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupServerSitesControllerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupServerSitesControllerResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupServerSitesControllerResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

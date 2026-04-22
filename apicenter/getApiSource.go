@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,8 @@ type LookupApiSourceArgs struct {
 type LookupApiSourceResult struct {
 	// API source configuration for Azure API Management.
 	AzureApiManagementSource *AzureApiManagementSourceResponse `pulumi:"azureApiManagementSource"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Indicates if the specification should be imported along with metadata.
@@ -48,7 +51,7 @@ type LookupApiSourceResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The target environment resource ID.
 	TargetEnvironmentId *string `pulumi:"targetEnvironmentId"`
 	// The target lifecycle stage.
@@ -113,6 +116,11 @@ func (o LookupApiSourceResultOutput) AzureApiManagementSource() AzureApiManageme
 	return o.ApplyT(func(v LookupApiSourceResult) *AzureApiManagementSourceResponse { return v.AzureApiManagementSource }).(AzureApiManagementSourceResponsePtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupApiSourceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiSourceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupApiSourceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiSourceResult) string { return v.Id }).(pulumi.StringOutput)
@@ -134,8 +142,8 @@ func (o LookupApiSourceResultOutput) Name() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupApiSourceResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupApiSourceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupApiSourceResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupApiSourceResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The target environment resource ID.

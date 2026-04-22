@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,8 +40,10 @@ type LookupAlertResult struct {
 	AlertRuleProperties *AlertRulePropertiesResponse `pulumi:"alertRuleProperties"`
 	// ID of the alert rule resource created.
 	AlertRuleResourceId string `pulumi:"alertRuleResourceId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Defines the alert instance errors.
-	Errors ErrorDetailResponse `pulumi:"errors"`
+	Errors commontypesv5.ErrorDetailResponse `pulumi:"errors"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -52,7 +55,7 @@ type LookupAlertResult struct {
 	// State of provisioning of the alert instance
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Name of the alert template from which it was created.
 	TemplateName *string `pulumi:"templateName"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -106,9 +109,14 @@ func (o LookupAlertResultOutput) AlertRuleResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertResult) string { return v.AlertRuleResourceId }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupAlertResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAlertResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Defines the alert instance errors.
-func (o LookupAlertResultOutput) Errors() ErrorDetailResponseOutput {
-	return o.ApplyT(func(v LookupAlertResult) ErrorDetailResponse { return v.Errors }).(ErrorDetailResponseOutput)
+func (o LookupAlertResultOutput) Errors() commontypesv5.ErrorDetailResponseOutput {
+	return o.ApplyT(func(v LookupAlertResult) commontypesv5.ErrorDetailResponse { return v.Errors }).(commontypesv5.ErrorDetailResponseOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -137,8 +145,8 @@ func (o LookupAlertResultOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupAlertResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAlertResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupAlertResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAlertResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Name of the alert template from which it was created.

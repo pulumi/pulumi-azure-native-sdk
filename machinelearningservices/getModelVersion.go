@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure Resource Manager resource envelope.
+// Get version.
 //
-// Uses Azure REST API version 2023-04-01.
+// Uses Azure REST API version 2025-12-01.
 //
-// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
+// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupModelVersion(ctx *pulumi.Context, args *LookupModelVersionArgs, opts ...pulumi.InvokeOption) (*LookupModelVersionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupModelVersionResult
@@ -39,14 +40,16 @@ type LookupModelVersionArgs struct {
 
 // Azure Resource Manager resource envelope.
 type LookupModelVersionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// [Required] Additional attributes of the entity.
-	ModelVersionProperties ModelVersionResponse `pulumi:"modelVersionProperties"`
 	// The name of the resource
 	Name string `pulumi:"name"`
+	// [Required] Additional attributes of the entity.
+	Properties ModelVersionPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -57,7 +60,7 @@ func (val *LookupModelVersionResult) Defaults() *LookupModelVersionResult {
 		return nil
 	}
 	tmp := *val
-	tmp.ModelVersionProperties = *tmp.ModelVersionProperties.Defaults()
+	tmp.Properties = *tmp.Properties.Defaults()
 
 	return &tmp
 }
@@ -100,14 +103,14 @@ func (o LookupModelVersionResultOutput) ToLookupModelVersionResultOutputWithCont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupModelVersionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupModelVersionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupModelVersionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupModelVersionResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// [Required] Additional attributes of the entity.
-func (o LookupModelVersionResultOutput) ModelVersionProperties() ModelVersionResponseOutput {
-	return o.ApplyT(func(v LookupModelVersionResult) ModelVersionResponse { return v.ModelVersionProperties }).(ModelVersionResponseOutput)
 }
 
 // The name of the resource
@@ -115,9 +118,14 @@ func (o LookupModelVersionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupModelVersionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// [Required] Additional attributes of the entity.
+func (o LookupModelVersionResultOutput) Properties() ModelVersionPropertiesResponseOutput {
+	return o.ApplyT(func(v LookupModelVersionResult) ModelVersionPropertiesResponse { return v.Properties }).(ModelVersionPropertiesResponseOutput)
+}
+
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupModelVersionResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupModelVersionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupModelVersionResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupModelVersionResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

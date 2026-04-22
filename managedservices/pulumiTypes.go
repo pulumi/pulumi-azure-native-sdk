@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1615,7 +1616,7 @@ type RegistrationAssignmentPropertiesResponseRegistrationDefinition struct {
 	// The properties of the registration definition associated with the registration assignment.
 	Properties *RegistrationAssignmentPropertiesResponseProperties `pulumi:"properties"`
 	// The metadata for the registration definition resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// The type of the Azure resource (Microsoft.ManagedServices/registrationDefinitions).
 	Type string `pulumi:"type"`
 }
@@ -1658,10 +1659,10 @@ func (o RegistrationAssignmentPropertiesResponseRegistrationDefinitionOutput) Pr
 }
 
 // The metadata for the registration definition resource.
-func (o RegistrationAssignmentPropertiesResponseRegistrationDefinitionOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v RegistrationAssignmentPropertiesResponseRegistrationDefinition) SystemDataResponse {
+func (o RegistrationAssignmentPropertiesResponseRegistrationDefinitionOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v RegistrationAssignmentPropertiesResponseRegistrationDefinition) commontypesv3.SystemDataResponse {
 		return v.SystemData
-	}).(SystemDataResponseOutput)
+	}).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the Azure resource (Microsoft.ManagedServices/registrationDefinitions).
@@ -1969,67 +1970,6 @@ func (o RegistrationDefinitionPropertiesResponseOutput) RegistrationDefinitionNa
 	return o.ApplyT(func(v RegistrationDefinitionPropertiesResponse) *string { return v.RegistrationDefinitionName }).(pulumi.StringPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
-}
-
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponseOutput struct{ *pulumi.OutputState }
-
-func (SystemDataResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
-	return o
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
-	return o
-}
-
-// The timestamp of resource creation (UTC).
-func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterOutputType(AuthorizationOutput{})
 	pulumi.RegisterOutputType(AuthorizationArrayOutput{})
@@ -2060,5 +2000,4 @@ func init() {
 	pulumi.RegisterOutputType(RegistrationDefinitionPropertiesOutput{})
 	pulumi.RegisterOutputType(RegistrationDefinitionPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(RegistrationDefinitionPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 }

@@ -8,16 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv1"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Template Spec object.
 //
-// Uses Azure REST API version 2022-02-01. In version 1.x of the Azure Native provider, it used API version 2022-02-01.
+// Uses Azure REST API version 2022-02-01. In version 2.x of the Azure Native provider, it used API version 2022-02-01.
+//
+// Other available API versions: 2021-03-01-preview, 2021-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resources [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type TemplateSpec struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Template Spec description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Template Spec display name.
@@ -29,7 +34,7 @@ type TemplateSpec struct {
 	// Name of this resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv1.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Type of this resource.
@@ -167,6 +172,11 @@ func (o TemplateSpecOutput) ToTemplateSpecOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The Azure API version of the resource.
+func (o TemplateSpecOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *TemplateSpec) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Template Spec description.
 func (o TemplateSpecOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TemplateSpec) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -193,8 +203,8 @@ func (o TemplateSpecOutput) Name() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o TemplateSpecOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *TemplateSpec) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o TemplateSpecOutput) SystemData() commontypesv1.SystemDataResponseOutput {
+	return o.ApplyT(func(v *TemplateSpec) commontypesv1.SystemDataResponseOutput { return v.SystemData }).(commontypesv1.SystemDataResponseOutput)
 }
 
 // Resource tags.

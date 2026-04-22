@@ -7,15 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a BgpPeer
 //
 // Uses Azure REST API version 2024-03-01.
-//
-// Other available API versions: 2023-10-01-preview.
 func LookupBgpPeer(ctx *pulumi.Context, args *LookupBgpPeerArgs, opts ...pulumi.InvokeOption) (*LookupBgpPeerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBgpPeerResult
@@ -35,6 +34,8 @@ type LookupBgpPeerArgs struct {
 
 // A BgpPeer resource for an Arc connected cluster (Microsoft.Kubernetes/connectedClusters)
 type LookupBgpPeerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// My ASN
@@ -48,7 +49,7 @@ type LookupBgpPeerResult struct {
 	// Resource provision state
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -88,6 +89,11 @@ func (o LookupBgpPeerResultOutput) ToLookupBgpPeerResultOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupBgpPeerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBgpPeerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupBgpPeerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBgpPeerResult) string { return v.Id }).(pulumi.StringOutput)
@@ -119,8 +125,8 @@ func (o LookupBgpPeerResultOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupBgpPeerResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupBgpPeerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupBgpPeerResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupBgpPeerResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

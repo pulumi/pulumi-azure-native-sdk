@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get information about the Runtime Environment
 //
-// Uses Azure REST API version 2023-05-15-preview.
+// Uses Azure REST API version 2024-10-23.
 //
-// Other available API versions: 2024-10-23.
+// Other available API versions: 2023-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupRuntimeEnvironment(ctx *pulumi.Context, args *LookupRuntimeEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupRuntimeEnvironmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRuntimeEnvironmentResult
@@ -37,6 +38,8 @@ type LookupRuntimeEnvironmentArgs struct {
 
 // Definition of the Runtime Environment type.
 type LookupRuntimeEnvironmentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// List of Default packages for Environment
 	DefaultPackages map[string]string `pulumi:"defaultPackages"`
 	// Gets or sets the description.
@@ -50,7 +53,7 @@ type LookupRuntimeEnvironmentResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -96,6 +99,11 @@ func (o LookupRuntimeEnvironmentResultOutput) ToLookupRuntimeEnvironmentResultOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupRuntimeEnvironmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRuntimeEnvironmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // List of Default packages for Environment
 func (o LookupRuntimeEnvironmentResultOutput) DefaultPackages() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupRuntimeEnvironmentResult) map[string]string { return v.DefaultPackages }).(pulumi.StringMapOutput)
@@ -127,8 +135,8 @@ func (o LookupRuntimeEnvironmentResultOutput) Name() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupRuntimeEnvironmentResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupRuntimeEnvironmentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupRuntimeEnvironmentResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupRuntimeEnvironmentResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

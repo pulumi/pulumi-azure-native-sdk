@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve the source control identified by source control name.
 //
-// Uses Azure REST API version 2022-08-08.
+// Uses Azure REST API version 2024-10-23.
 //
-// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
+// Other available API versions: 2017-05-15-preview, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSourceControl(ctx *pulumi.Context, args *LookupSourceControlArgs, opts ...pulumi.InvokeOption) (*LookupSourceControlResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSourceControlResult
@@ -39,6 +40,8 @@ type LookupSourceControlArgs struct {
 type LookupSourceControlResult struct {
 	// The auto sync of the source control. Default is false.
 	AutoSync *bool `pulumi:"autoSync"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The repo branch of the source control. Include branch as empty string for VsoTfvc.
 	Branch *string `pulumi:"branch"`
 	// The creation time.
@@ -47,7 +50,7 @@ type LookupSourceControlResult struct {
 	Description *string `pulumi:"description"`
 	// The folder path of the source control.
 	FolderPath *string `pulumi:"folderPath"`
-	// Fully qualified resource Id for the resource
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The last modified time.
 	LastModifiedTime *string `pulumi:"lastModifiedTime"`
@@ -59,7 +62,9 @@ type LookupSourceControlResult struct {
 	RepoUrl *string `pulumi:"repoUrl"`
 	// The source type. Must be one of VsoGit, VsoTfvc, GitHub.
 	SourceType *string `pulumi:"sourceType"`
-	// The type of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -105,6 +110,11 @@ func (o LookupSourceControlResultOutput) AutoSync() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupSourceControlResult) *bool { return v.AutoSync }).(pulumi.BoolPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupSourceControlResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSourceControlResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The repo branch of the source control. Include branch as empty string for VsoTfvc.
 func (o LookupSourceControlResultOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSourceControlResult) *string { return v.Branch }).(pulumi.StringPtrOutput)
@@ -125,7 +135,7 @@ func (o LookupSourceControlResultOutput) FolderPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSourceControlResult) *string { return v.FolderPath }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource Id for the resource
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupSourceControlResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSourceControlResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -155,7 +165,12 @@ func (o LookupSourceControlResultOutput) SourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSourceControlResult) *string { return v.SourceType }).(pulumi.StringPtrOutput)
 }
 
-// The type of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupSourceControlResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSourceControlResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSourceControlResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSourceControlResult) string { return v.Type }).(pulumi.StringOutput)
 }

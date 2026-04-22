@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +36,8 @@ type LookupDataConnectorArgs struct {
 
 // DataConnector Model.
 type LookupDataConnectorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The ETag value to implement optimistic concurrency.
 	ETag string `pulumi:"eTag"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -44,7 +47,7 @@ type LookupDataConnectorResult struct {
 	// DataConnector Properties.
 	Properties DataConnectorPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv4.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -86,6 +89,11 @@ func (o LookupDataConnectorResultOutput) ToLookupDataConnectorResultOutputWithCo
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupDataConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDataConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The ETag value to implement optimistic concurrency.
 func (o LookupDataConnectorResultOutput) ETag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDataConnectorResult) string { return v.ETag }).(pulumi.StringOutput)
@@ -107,8 +115,8 @@ func (o LookupDataConnectorResultOutput) Properties() DataConnectorPropertiesRes
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupDataConnectorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupDataConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupDataConnectorResultOutput) SystemData() commontypesv4.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupDataConnectorResult) commontypesv4.SystemDataResponse { return v.SystemData }).(commontypesv4.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

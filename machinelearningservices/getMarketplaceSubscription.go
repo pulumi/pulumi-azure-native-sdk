@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Azure Resource Manager resource envelope.
+// Get container.
 //
-// Uses Azure REST API version 2024-01-01-preview.
+// Uses Azure REST API version 2025-12-01.
 //
-// Other available API versions: 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
+// Other available API versions: 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupMarketplaceSubscription(ctx *pulumi.Context, args *LookupMarketplaceSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupMarketplaceSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMarketplaceSubscriptionResult
@@ -31,20 +32,22 @@ type LookupMarketplaceSubscriptionArgs struct {
 	Name string `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // Azure Resource Manager resource envelope.
 type LookupMarketplaceSubscriptionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// [Required] Additional attributes of the entity.
-	MarketplaceSubscriptionProperties MarketplaceSubscriptionResponse `pulumi:"marketplaceSubscriptionProperties"`
 	// The name of the resource
 	Name string `pulumi:"name"`
+	// [Required] Additional attributes of the entity.
+	Properties MarketplaceSubscriptionPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -63,7 +66,7 @@ type LookupMarketplaceSubscriptionOutputArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
@@ -86,16 +89,14 @@ func (o LookupMarketplaceSubscriptionResultOutput) ToLookupMarketplaceSubscripti
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupMarketplaceSubscriptionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMarketplaceSubscriptionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupMarketplaceSubscriptionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMarketplaceSubscriptionResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// [Required] Additional attributes of the entity.
-func (o LookupMarketplaceSubscriptionResultOutput) MarketplaceSubscriptionProperties() MarketplaceSubscriptionResponseOutput {
-	return o.ApplyT(func(v LookupMarketplaceSubscriptionResult) MarketplaceSubscriptionResponse {
-		return v.MarketplaceSubscriptionProperties
-	}).(MarketplaceSubscriptionResponseOutput)
 }
 
 // The name of the resource
@@ -103,9 +104,16 @@ func (o LookupMarketplaceSubscriptionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMarketplaceSubscriptionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// [Required] Additional attributes of the entity.
+func (o LookupMarketplaceSubscriptionResultOutput) Properties() MarketplaceSubscriptionPropertiesResponseOutput {
+	return o.ApplyT(func(v LookupMarketplaceSubscriptionResult) MarketplaceSubscriptionPropertiesResponse {
+		return v.Properties
+	}).(MarketplaceSubscriptionPropertiesResponseOutput)
+}
+
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupMarketplaceSubscriptionResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupMarketplaceSubscriptionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupMarketplaceSubscriptionResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupMarketplaceSubscriptionResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

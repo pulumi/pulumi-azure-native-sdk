@@ -8,20 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a federated identity credential.
 //
-// Uses Azure REST API version 2023-01-31. In version 1.x of the Azure Native provider, it used API version 2022-01-31-preview.
+// Uses Azure REST API version 2023-01-31. In version 2.x of the Azure Native provider, it used API version 2023-01-31.
 //
-// Other available API versions: 2023-07-31-preview, 2024-11-30, 2025-01-31-preview.
+// Other available API versions: 2022-01-31-preview, 2023-07-31-preview, 2024-11-30, 2025-01-31-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managedidentity [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type FederatedIdentityCredential struct {
 	pulumi.CustomResourceState
 
 	// The list of audiences that can appear in the issued token.
 	Audiences pulumi.StringArrayOutput `pulumi:"audiences"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The URL of the issuer to be trusted.
 	Issuer pulumi.StringOutput `pulumi:"issuer"`
 	// The name of the resource
@@ -29,7 +32,7 @@ type FederatedIdentityCredential struct {
 	// The identifier of the external identity.
 	Subject pulumi.StringOutput `pulumi:"subject"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv4.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -179,6 +182,11 @@ func (o FederatedIdentityCredentialOutput) Audiences() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v *FederatedIdentityCredential) pulumi.StringArrayOutput { return v.Audiences }).(pulumi.StringArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o FederatedIdentityCredentialOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *FederatedIdentityCredential) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The URL of the issuer to be trusted.
 func (o FederatedIdentityCredentialOutput) Issuer() pulumi.StringOutput {
 	return o.ApplyT(func(v *FederatedIdentityCredential) pulumi.StringOutput { return v.Issuer }).(pulumi.StringOutput)
@@ -195,8 +203,8 @@ func (o FederatedIdentityCredentialOutput) Subject() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o FederatedIdentityCredentialOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *FederatedIdentityCredential) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o FederatedIdentityCredentialOutput) SystemData() commontypesv4.SystemDataResponseOutput {
+	return o.ApplyT(func(v *FederatedIdentityCredential) commontypesv4.SystemDataResponseOutput { return v.SystemData }).(commontypesv4.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

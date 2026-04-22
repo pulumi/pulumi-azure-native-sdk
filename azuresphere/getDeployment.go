@@ -7,15 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
 //
-// Uses Azure REST API version 2022-09-01-preview.
-//
-// Other available API versions: 2024-04-01.
+// Uses Azure REST API version 2024-04-01.
 func LookupDeployment(ctx *pulumi.Context, args *LookupDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupDeploymentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDeploymentResult
@@ -41,6 +40,8 @@ type LookupDeploymentArgs struct {
 
 // An deployment resource belonging to a device group resource.
 type LookupDeploymentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Images deployed
 	DeployedImages []ImageResponse `pulumi:"deployedImages"`
 	// Deployment date UTC
@@ -54,7 +55,7 @@ type LookupDeploymentResult struct {
 	// The status of the last operation.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -100,6 +101,11 @@ func (o LookupDeploymentResultOutput) ToLookupDeploymentResultOutputWithContext(
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupDeploymentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeploymentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Images deployed
 func (o LookupDeploymentResultOutput) DeployedImages() ImageResponseArrayOutput {
 	return o.ApplyT(func(v LookupDeploymentResult) []ImageResponse { return v.DeployedImages }).(ImageResponseArrayOutput)
@@ -131,8 +137,8 @@ func (o LookupDeploymentResultOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupDeploymentResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupDeploymentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupDeploymentResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupDeploymentResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

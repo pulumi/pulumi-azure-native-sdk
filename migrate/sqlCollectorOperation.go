@@ -8,20 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The SQL collector REST object.
 //
-// Uses Azure REST API version 2023-03-15.
+// Uses Azure REST API version 2024-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-03-15.
 //
-// Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview, 2024-01-01-preview.
+// Other available API versions: 2023-03-15, 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview, 2024-01-15, 2024-03-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SqlCollectorOperation struct {
 	pulumi.CustomResourceState
 
 	// Gets or sets the collector agent properties.
 	AgentProperties CollectorAgentPropertiesBaseResponsePtrOutput `pulumi:"agentProperties"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets the Timestamp when collector was created.
 	CreatedTimestamp pulumi.StringOutput `pulumi:"createdTimestamp"`
 	// Gets the discovery site id.
@@ -31,7 +34,7 @@ type SqlCollectorOperation struct {
 	// The status of the last operation.
 	ProvisioningState pulumi.StringPtrOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Timestamp when collector was last updated.
@@ -66,6 +69,12 @@ func NewSqlCollectorOperation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20240101preview:SqlCollectorOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240115:SqlCollectorOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240303preview:SqlCollectorOperation"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -174,6 +183,11 @@ func (o SqlCollectorOperationOutput) AgentProperties() CollectorAgentPropertiesB
 	return o.ApplyT(func(v *SqlCollectorOperation) CollectorAgentPropertiesBaseResponsePtrOutput { return v.AgentProperties }).(CollectorAgentPropertiesBaseResponsePtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o SqlCollectorOperationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SqlCollectorOperation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Gets the Timestamp when collector was created.
 func (o SqlCollectorOperationOutput) CreatedTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlCollectorOperation) pulumi.StringOutput { return v.CreatedTimestamp }).(pulumi.StringOutput)
@@ -195,8 +209,8 @@ func (o SqlCollectorOperationOutput) ProvisioningState() pulumi.StringPtrOutput 
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o SqlCollectorOperationOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *SqlCollectorOperation) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o SqlCollectorOperationOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *SqlCollectorOperation) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

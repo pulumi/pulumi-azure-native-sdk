@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Test Base Draft Package resource.
 //
-// Uses Azure REST API version 2023-11-01-preview.
+// Uses Azure REST API version 2023-11-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-11-01-preview.
 type DraftPackage struct {
 	pulumi.CustomResourceState
 
@@ -22,6 +23,8 @@ type DraftPackage struct {
 	AppFileName pulumi.StringPtrOutput `pulumi:"appFileName"`
 	// Application name
 	ApplicationName pulumi.StringPtrOutput `pulumi:"applicationName"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Comments added by user.
 	Comments pulumi.StringPtrOutput `pulumi:"comments"`
 	// The relative path of the folder hosting package files.
@@ -59,7 +62,7 @@ type DraftPackage struct {
 	// The source type.
 	SourceType pulumi.StringPtrOutput `pulumi:"sourceType"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Tab state.
 	TabState TabStateResponsePtrOutput `pulumi:"tabState"`
 	// Specifies the target OSs of specific OS Update types.
@@ -295,6 +298,11 @@ func (o DraftPackageOutput) ApplicationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DraftPackage) pulumi.StringPtrOutput { return v.ApplicationName }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o DraftPackageOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DraftPackage) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Comments added by user.
 func (o DraftPackageOutput) Comments() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DraftPackage) pulumi.StringPtrOutput { return v.Comments }).(pulumi.StringPtrOutput)
@@ -386,8 +394,8 @@ func (o DraftPackageOutput) SourceType() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o DraftPackageOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *DraftPackage) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o DraftPackageOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *DraftPackage) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Tab state.

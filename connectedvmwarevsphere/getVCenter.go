@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Implements vCenter GET method.
 //
-// Uses Azure REST API version 2022-07-15-preview.
+// Uses Azure REST API version 2023-12-01.
 //
-// Other available API versions: 2023-03-01-preview, 2023-10-01, 2023-12-01.
+// Other available API versions: 2022-07-15-preview, 2023-03-01-preview, 2023-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedvmwarevsphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupVCenter(ctx *pulumi.Context, args *LookupVCenterArgs, opts ...pulumi.InvokeOption) (*LookupVCenterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVCenterResult
@@ -35,6 +36,8 @@ type LookupVCenterArgs struct {
 
 // Defines the vCenter.
 type LookupVCenterResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the connection status to the vCenter.
 	ConnectionStatus string `pulumi:"connectionStatus"`
 	// Username / Password Credentials to connect to vcenter.
@@ -57,12 +60,12 @@ type LookupVCenterResult struct {
 	Name string `pulumi:"name"`
 	// Gets or sets the port of the vCenter.
 	Port *int `pulumi:"port"`
-	// Gets or sets the provisioning state.
+	// Gets the provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The resource status information.
 	Statuses []ResourceStatusResponse `pulumi:"statuses"`
 	// The system data.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// Gets or sets the Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Gets or sets the type of the resource.
@@ -106,6 +109,11 @@ func (o LookupVCenterResultOutput) ToLookupVCenterResultOutput() LookupVCenterRe
 
 func (o LookupVCenterResultOutput) ToLookupVCenterResultOutputWithContext(ctx context.Context) LookupVCenterResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVCenterResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVCenterResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the connection status to the vCenter.
@@ -163,7 +171,7 @@ func (o LookupVCenterResultOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupVCenterResult) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Gets or sets the provisioning state.
+// Gets the provisioning state.
 func (o LookupVCenterResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVCenterResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
@@ -174,8 +182,8 @@ func (o LookupVCenterResultOutput) Statuses() ResourceStatusResponseArrayOutput 
 }
 
 // The system data.
-func (o LookupVCenterResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupVCenterResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupVCenterResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupVCenterResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Gets or sets the Resource tags.

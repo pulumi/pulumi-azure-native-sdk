@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Use this method to get the device security group for the specified IoT Hub resource.
 //
 // Uses Azure REST API version 2019-08-01.
+//
+// Other available API versions: 2017-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupDeviceSecurityGroup(ctx *pulumi.Context, args *LookupDeviceSecurityGroupArgs, opts ...pulumi.InvokeOption) (*LookupDeviceSecurityGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDeviceSecurityGroupResult
@@ -35,6 +37,8 @@ type LookupDeviceSecurityGroupArgs struct {
 type LookupDeviceSecurityGroupResult struct {
 	// The allow-list custom alert rules.
 	AllowlistRules []AllowlistCustomAlertRuleResponse `pulumi:"allowlistRules"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The deny-list custom alert rules.
 	DenylistRules []DenylistCustomAlertRuleResponse `pulumi:"denylistRules"`
 	// Resource Id
@@ -87,6 +91,11 @@ func (o LookupDeviceSecurityGroupResultOutput) ToLookupDeviceSecurityGroupResult
 // The allow-list custom alert rules.
 func (o LookupDeviceSecurityGroupResultOutput) AllowlistRules() AllowlistCustomAlertRuleResponseArrayOutput {
 	return o.ApplyT(func(v LookupDeviceSecurityGroupResult) []AllowlistCustomAlertRuleResponse { return v.AllowlistRules }).(AllowlistCustomAlertRuleResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupDeviceSecurityGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceSecurityGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The deny-list custom alert rules.

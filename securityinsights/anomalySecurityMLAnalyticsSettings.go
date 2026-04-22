@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents Anomaly Security ML Analytics Settings
 //
-// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2022-05-01-preview.
+// Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 type AnomalySecurityMLAnalyticsSettings struct {
 	pulumi.CustomResourceState
 
@@ -22,6 +23,8 @@ type AnomalySecurityMLAnalyticsSettings struct {
 	AnomalySettingsVersion pulumi.IntPtrOutput `pulumi:"anomalySettingsVersion"`
 	// The anomaly version of the AnomalySecurityMLAnalyticsSettings.
 	AnomalyVersion pulumi.StringOutput `pulumi:"anomalyVersion"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The customizable observations of the AnomalySecurityMLAnalyticsSettings.
 	CustomizableObservations pulumi.AnyOutput `pulumi:"customizableObservations"`
 	// The description of the SecurityMLAnalyticsSettings.
@@ -50,7 +53,7 @@ type AnomalySecurityMLAnalyticsSettings struct {
 	// The anomaly SecurityMLAnalyticsSettings status
 	SettingsStatus pulumi.StringOutput `pulumi:"settingsStatus"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The tactics of the SecurityMLAnalyticsSettings
 	Tactics pulumi.StringArrayOutput `pulumi:"tactics"`
 	// The techniques of the SecurityMLAnalyticsSettings
@@ -178,6 +181,18 @@ func NewAnomalySecurityMLAnalyticsSettings(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250301:AnomalySecurityMLAnalyticsSettings"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250401preview:AnomalySecurityMLAnalyticsSettings"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250601:AnomalySecurityMLAnalyticsSettings"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250701preview:AnomalySecurityMLAnalyticsSettings"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250901:AnomalySecurityMLAnalyticsSettings"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -337,6 +352,11 @@ func (o AnomalySecurityMLAnalyticsSettingsOutput) AnomalyVersion() pulumi.String
 	return o.ApplyT(func(v *AnomalySecurityMLAnalyticsSettings) pulumi.StringOutput { return v.AnomalyVersion }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o AnomalySecurityMLAnalyticsSettingsOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AnomalySecurityMLAnalyticsSettings) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The customizable observations of the AnomalySecurityMLAnalyticsSettings.
 func (o AnomalySecurityMLAnalyticsSettingsOutput) CustomizableObservations() pulumi.AnyOutput {
 	return o.ApplyT(func(v *AnomalySecurityMLAnalyticsSettings) pulumi.AnyOutput { return v.CustomizableObservations }).(pulumi.AnyOutput)
@@ -406,8 +426,10 @@ func (o AnomalySecurityMLAnalyticsSettingsOutput) SettingsStatus() pulumi.String
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o AnomalySecurityMLAnalyticsSettingsOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *AnomalySecurityMLAnalyticsSettings) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o AnomalySecurityMLAnalyticsSettingsOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *AnomalySecurityMLAnalyticsSettings) commontypesv5.SystemDataResponseOutput {
+		return v.SystemData
+	}).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The tactics of the SecurityMLAnalyticsSettings

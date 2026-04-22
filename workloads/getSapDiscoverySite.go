@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +34,8 @@ type LookupSapDiscoverySiteArgs struct {
 
 // Define the SAP Migration discovery site resource.
 type LookupSapDiscoverySiteResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Indicates any errors on the SAP Migration discovery site resource.
 	Errors SAPMigrateErrorResponse `pulumi:"errors"`
 	// The extended location definition.
@@ -50,7 +53,7 @@ type LookupSapDiscoverySiteResult struct {
 	// Defines the provisioning states.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -90,6 +93,11 @@ func (o LookupSapDiscoverySiteResultOutput) ToLookupSapDiscoverySiteResultOutput
 
 func (o LookupSapDiscoverySiteResultOutput) ToLookupSapDiscoverySiteResultOutputWithContext(ctx context.Context) LookupSapDiscoverySiteResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSapDiscoverySiteResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSapDiscoverySiteResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Indicates any errors on the SAP Migration discovery site resource.
@@ -133,8 +141,8 @@ func (o LookupSapDiscoverySiteResultOutput) ProvisioningState() pulumi.StringOut
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupSapDiscoverySiteResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSapDiscoverySiteResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupSapDiscoverySiteResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSapDiscoverySiteResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

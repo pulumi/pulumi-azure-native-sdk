@@ -7,15 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Catalog
 //
-// Uses Azure REST API version 2022-09-01-preview.
-//
-// Other available API versions: 2024-04-01.
+// Uses Azure REST API version 2024-04-01.
 func LookupCatalog(ctx *pulumi.Context, args *LookupCatalogArgs, opts ...pulumi.InvokeOption) (*LookupCatalogResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCatalogResult
@@ -35,6 +34,8 @@ type LookupCatalogArgs struct {
 
 // An Azure Sphere catalog
 type LookupCatalogResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -44,9 +45,11 @@ type LookupCatalogResult struct {
 	// The status of the last operation.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
+	// The Azure Sphere tenant ID associated with the catalog.
+	TenantId string `pulumi:"tenantId"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -86,6 +89,11 @@ func (o LookupCatalogResultOutput) ToLookupCatalogResultOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupCatalogResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCatalogResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupCatalogResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCatalogResult) string { return v.Id }).(pulumi.StringOutput)
@@ -107,13 +115,18 @@ func (o LookupCatalogResultOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupCatalogResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupCatalogResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupCatalogResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupCatalogResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.
 func (o LookupCatalogResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupCatalogResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The Azure Sphere tenant ID associated with the catalog.
+func (o LookupCatalogResultOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCatalogResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

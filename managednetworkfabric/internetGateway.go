@@ -8,18 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Internet Gateway resource definition.
 //
-// Uses Azure REST API version 2023-06-15.
+// Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-06-15.
+//
+// Other available API versions: 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type InternetGateway struct {
 	pulumi.CustomResourceState
 
 	// Switch configuration description.
 	Annotation pulumi.StringPtrOutput `pulumi:"annotation"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// ARM Resource ID of the Internet Gateway Rule.
 	InternetGatewayRuleId pulumi.StringPtrOutput `pulumi:"internetGatewayRuleId"`
 	// IPv4 Address of Internet Gateway.
@@ -35,7 +40,7 @@ type InternetGateway struct {
 	// Provisioning state of resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -61,6 +66,12 @@ func NewInternetGateway(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:managednetworkfabric/v20230615:InternetGateway"),
+		},
+		{
+			Type: pulumi.String("azure-native:managednetworkfabric/v20240215preview:InternetGateway"),
+		},
+		{
+			Type: pulumi.String("azure-native:managednetworkfabric/v20240615preview:InternetGateway"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -177,6 +188,11 @@ func (o InternetGatewayOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InternetGateway) pulumi.StringPtrOutput { return v.Annotation }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o InternetGatewayOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *InternetGateway) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // ARM Resource ID of the Internet Gateway Rule.
 func (o InternetGatewayOutput) InternetGatewayRuleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InternetGateway) pulumi.StringPtrOutput { return v.InternetGatewayRuleId }).(pulumi.StringPtrOutput)
@@ -213,8 +229,8 @@ func (o InternetGatewayOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o InternetGatewayOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *InternetGateway) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o InternetGatewayOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *InternetGateway) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

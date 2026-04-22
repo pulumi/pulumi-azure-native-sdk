@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The type of private cloud addon
+// Addon type
 type AddonType string
 
 const (
@@ -24,8 +24,10 @@ const (
 type AffinityStrength string
 
 const (
+	// is should
 	AffinityStrengthShould = AffinityStrength("Should")
-	AffinityStrengthMust   = AffinityStrength("Must")
+	// is must
+	AffinityStrengthMust = AffinityStrength("Must")
 )
 
 func (AffinityStrength) ElementType() reflect.Type {
@@ -190,7 +192,9 @@ func (in *affinityStrengthPtr) ToAffinityStrengthPtrOutputWithContext(ctx contex
 type AffinityType string
 
 const (
-	AffinityTypeAffinity     = AffinityType("Affinity")
+	// is affinity
+	AffinityTypeAffinity = AffinityType("Affinity")
+	// is anti-affinity
 	AffinityTypeAntiAffinity = AffinityType("AntiAffinity")
 )
 
@@ -356,8 +360,10 @@ func (in *affinityTypePtr) ToAffinityTypePtrOutputWithContext(ctx context.Contex
 type AvailabilityStrategy string
 
 const (
+	// in single zone
 	AvailabilityStrategySingleZone = AvailabilityStrategy("SingleZone")
-	AvailabilityStrategyDualZone   = AvailabilityStrategy("DualZone")
+	// in two zones
+	AvailabilityStrategyDualZone = AvailabilityStrategy("DualZone")
 )
 
 func (AvailabilityStrategy) ElementType() reflect.Type {
@@ -522,8 +528,10 @@ func (in *availabilityStrategyPtr) ToAvailabilityStrategyPtrOutputWithContext(ct
 type AzureHybridBenefitType string
 
 const (
+	// is SqlHost
 	AzureHybridBenefitTypeSqlHost = AzureHybridBenefitType("SqlHost")
-	AzureHybridBenefitTypeNone    = AzureHybridBenefitType("None")
+	// is None
+	AzureHybridBenefitTypeNone = AzureHybridBenefitType("None")
 )
 
 func (AzureHybridBenefitType) ElementType() reflect.Type {
@@ -696,11 +704,16 @@ const (
 type DnsServiceLogLevelEnum string
 
 const (
-	DnsServiceLogLevelEnumDEBUG   = DnsServiceLogLevelEnum("DEBUG")
-	DnsServiceLogLevelEnumINFO    = DnsServiceLogLevelEnum("INFO")
+	// is debug
+	DnsServiceLogLevelEnumDEBUG = DnsServiceLogLevelEnum("DEBUG")
+	// is info
+	DnsServiceLogLevelEnumINFO = DnsServiceLogLevelEnum("INFO")
+	// is warning
 	DnsServiceLogLevelEnumWARNING = DnsServiceLogLevelEnum("WARNING")
-	DnsServiceLogLevelEnumERROR   = DnsServiceLogLevelEnum("ERROR")
-	DnsServiceLogLevelEnumFATAL   = DnsServiceLogLevelEnum("FATAL")
+	// is error
+	DnsServiceLogLevelEnumERROR = DnsServiceLogLevelEnum("ERROR")
+	// is fatal
+	DnsServiceLogLevelEnumFATAL = DnsServiceLogLevelEnum("FATAL")
 )
 
 func (DnsServiceLogLevelEnum) ElementType() reflect.Type {
@@ -864,11 +877,181 @@ func (in *dnsServiceLogLevelEnumPtr) ToDnsServiceLogLevelEnumPtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(DnsServiceLogLevelEnumPtrOutput)
 }
 
+// The type of DNS zone to use.
+type DnsZoneType string
+
+const (
+	// Primary DNS zone.
+	DnsZoneTypePublic = DnsZoneType("Public")
+	// Private DNS zone.
+	DnsZoneTypePrivate = DnsZoneType("Private")
+)
+
+func (DnsZoneType) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsZoneType)(nil)).Elem()
+}
+
+func (e DnsZoneType) ToDnsZoneTypeOutput() DnsZoneTypeOutput {
+	return pulumi.ToOutput(e).(DnsZoneTypeOutput)
+}
+
+func (e DnsZoneType) ToDnsZoneTypeOutputWithContext(ctx context.Context) DnsZoneTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DnsZoneTypeOutput)
+}
+
+func (e DnsZoneType) ToDnsZoneTypePtrOutput() DnsZoneTypePtrOutput {
+	return e.ToDnsZoneTypePtrOutputWithContext(context.Background())
+}
+
+func (e DnsZoneType) ToDnsZoneTypePtrOutputWithContext(ctx context.Context) DnsZoneTypePtrOutput {
+	return DnsZoneType(e).ToDnsZoneTypeOutputWithContext(ctx).ToDnsZoneTypePtrOutputWithContext(ctx)
+}
+
+func (e DnsZoneType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DnsZoneType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DnsZoneType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DnsZoneType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DnsZoneTypeOutput struct{ *pulumi.OutputState }
+
+func (DnsZoneTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsZoneType)(nil)).Elem()
+}
+
+func (o DnsZoneTypeOutput) ToDnsZoneTypeOutput() DnsZoneTypeOutput {
+	return o
+}
+
+func (o DnsZoneTypeOutput) ToDnsZoneTypeOutputWithContext(ctx context.Context) DnsZoneTypeOutput {
+	return o
+}
+
+func (o DnsZoneTypeOutput) ToDnsZoneTypePtrOutput() DnsZoneTypePtrOutput {
+	return o.ToDnsZoneTypePtrOutputWithContext(context.Background())
+}
+
+func (o DnsZoneTypeOutput) ToDnsZoneTypePtrOutputWithContext(ctx context.Context) DnsZoneTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DnsZoneType) *DnsZoneType {
+		return &v
+	}).(DnsZoneTypePtrOutput)
+}
+
+func (o DnsZoneTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DnsZoneTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DnsZoneType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DnsZoneTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DnsZoneTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DnsZoneType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DnsZoneTypePtrOutput struct{ *pulumi.OutputState }
+
+func (DnsZoneTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DnsZoneType)(nil)).Elem()
+}
+
+func (o DnsZoneTypePtrOutput) ToDnsZoneTypePtrOutput() DnsZoneTypePtrOutput {
+	return o
+}
+
+func (o DnsZoneTypePtrOutput) ToDnsZoneTypePtrOutputWithContext(ctx context.Context) DnsZoneTypePtrOutput {
+	return o
+}
+
+func (o DnsZoneTypePtrOutput) Elem() DnsZoneTypeOutput {
+	return o.ApplyT(func(v *DnsZoneType) DnsZoneType {
+		if v != nil {
+			return *v
+		}
+		var ret DnsZoneType
+		return ret
+	}).(DnsZoneTypeOutput)
+}
+
+func (o DnsZoneTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DnsZoneTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DnsZoneType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DnsZoneTypeInput is an input type that accepts values of the DnsZoneType enum
+// A concrete instance of `DnsZoneTypeInput` can be one of the following:
+//
+//	DnsZoneTypePublic
+//	DnsZoneTypePrivate
+type DnsZoneTypeInput interface {
+	pulumi.Input
+
+	ToDnsZoneTypeOutput() DnsZoneTypeOutput
+	ToDnsZoneTypeOutputWithContext(context.Context) DnsZoneTypeOutput
+}
+
+var dnsZoneTypePtrType = reflect.TypeOf((**DnsZoneType)(nil)).Elem()
+
+type DnsZoneTypePtrInput interface {
+	pulumi.Input
+
+	ToDnsZoneTypePtrOutput() DnsZoneTypePtrOutput
+	ToDnsZoneTypePtrOutputWithContext(context.Context) DnsZoneTypePtrOutput
+}
+
+type dnsZoneTypePtr string
+
+func DnsZoneTypePtr(v string) DnsZoneTypePtrInput {
+	return (*dnsZoneTypePtr)(&v)
+}
+
+func (*dnsZoneTypePtr) ElementType() reflect.Type {
+	return dnsZoneTypePtrType
+}
+
+func (in *dnsZoneTypePtr) ToDnsZoneTypePtrOutput() DnsZoneTypePtrOutput {
+	return pulumi.ToOutput(in).(DnsZoneTypePtrOutput)
+}
+
+func (in *dnsZoneTypePtr) ToDnsZoneTypePtrOutputWithContext(ctx context.Context) DnsZoneTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DnsZoneTypePtrOutput)
+}
+
 // Status of customer managed encryption key
 type EncryptionState string
 
 const (
-	EncryptionStateEnabled  = EncryptionState("Enabled")
+	// is enabled
+	EncryptionStateEnabled = EncryptionState("Enabled")
+	// is disabled
 	EncryptionStateDisabled = EncryptionState("Disabled")
 )
 
@@ -1034,7 +1217,9 @@ func (in *encryptionStatePtr) ToEncryptionStatePtrOutputWithContext(ctx context.
 type InternetEnum string
 
 const (
-	InternetEnumEnabled  = InternetEnum("Enabled")
+	// is enabled
+	InternetEnumEnabled = InternetEnum("Enabled")
+	// is disabled
 	InternetEnumDisabled = InternetEnum("Disabled")
 )
 
@@ -1196,11 +1381,21 @@ func (in *internetEnumPtr) ToInternetEnumPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(InternetEnumPtrOutput)
 }
 
-// Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN
+// License kind
+type LicenseKind string
+
+const (
+	LicenseKindVmwareFirewall = LicenseKind("VmwareFirewall")
+)
+
+// Mode that describes whether the LUN has to be mounted as a datastore or
+// attached as a LUN
 type MountOptionEnum string
 
 const (
-	MountOptionEnumMOUNT  = MountOptionEnum("MOUNT")
+	// is mount
+	MountOptionEnumMOUNT = MountOptionEnum("MOUNT")
+	// is attach
 	MountOptionEnumATTACH = MountOptionEnum("ATTACH")
 )
 
@@ -1366,7 +1561,9 @@ func (in *mountOptionEnumPtr) ToMountOptionEnumPtrOutputWithContext(ctx context.
 type PlacementPolicyStateEnum string
 
 const (
-	PlacementPolicyStateEnumEnabled  = PlacementPolicyStateEnum("Enabled")
+	// is enabled
+	PlacementPolicyStateEnumEnabled = PlacementPolicyStateEnum("Enabled")
+	// is disabled
 	PlacementPolicyStateEnumDisabled = PlacementPolicyStateEnum("Disabled")
 )
 
@@ -1528,7 +1725,7 @@ func (in *placementPolicyStateEnumPtr) ToPlacementPolicyStateEnumPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(PlacementPolicyStateEnumPtrOutput)
 }
 
-// placement policy type
+// Placement Policy type
 type PlacementPolicyType string
 
 const (
@@ -1540,8 +1737,11 @@ const (
 type PortMirroringDirectionEnum string
 
 const (
-	PortMirroringDirectionEnumINGRESS       = PortMirroringDirectionEnum("INGRESS")
-	PortMirroringDirectionEnumEGRESS        = PortMirroringDirectionEnum("EGRESS")
+	// is ingress
+	PortMirroringDirectionEnumINGRESS = PortMirroringDirectionEnum("INGRESS")
+	// is egress
+	PortMirroringDirectionEnumEGRESS = PortMirroringDirectionEnum("EGRESS")
+	// is bidirectional
 	PortMirroringDirectionEnumBIDIRECTIONAL = PortMirroringDirectionEnum("BIDIRECTIONAL")
 )
 
@@ -1704,173 +1904,7 @@ func (in *portMirroringDirectionEnumPtr) ToPortMirroringDirectionEnumPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(PortMirroringDirectionEnumPtrOutput)
 }
 
-// The type of identity used for the private cloud. The type 'SystemAssigned' refers to an implicitly created identity. The type 'None' will remove any identities from the Private Cloud.
-type ResourceIdentityType string
-
-const (
-	ResourceIdentityTypeSystemAssigned = ResourceIdentityType("SystemAssigned")
-	ResourceIdentityTypeNone           = ResourceIdentityType("None")
-)
-
-func (ResourceIdentityType) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceIdentityType)(nil)).Elem()
-}
-
-func (e ResourceIdentityType) ToResourceIdentityTypeOutput() ResourceIdentityTypeOutput {
-	return pulumi.ToOutput(e).(ResourceIdentityTypeOutput)
-}
-
-func (e ResourceIdentityType) ToResourceIdentityTypeOutputWithContext(ctx context.Context) ResourceIdentityTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(ResourceIdentityTypeOutput)
-}
-
-func (e ResourceIdentityType) ToResourceIdentityTypePtrOutput() ResourceIdentityTypePtrOutput {
-	return e.ToResourceIdentityTypePtrOutputWithContext(context.Background())
-}
-
-func (e ResourceIdentityType) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
-	return ResourceIdentityType(e).ToResourceIdentityTypeOutputWithContext(ctx).ToResourceIdentityTypePtrOutputWithContext(ctx)
-}
-
-func (e ResourceIdentityType) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ResourceIdentityType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e ResourceIdentityType) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e ResourceIdentityType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type ResourceIdentityTypeOutput struct{ *pulumi.OutputState }
-
-func (ResourceIdentityTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ResourceIdentityType)(nil)).Elem()
-}
-
-func (o ResourceIdentityTypeOutput) ToResourceIdentityTypeOutput() ResourceIdentityTypeOutput {
-	return o
-}
-
-func (o ResourceIdentityTypeOutput) ToResourceIdentityTypeOutputWithContext(ctx context.Context) ResourceIdentityTypeOutput {
-	return o
-}
-
-func (o ResourceIdentityTypeOutput) ToResourceIdentityTypePtrOutput() ResourceIdentityTypePtrOutput {
-	return o.ToResourceIdentityTypePtrOutputWithContext(context.Background())
-}
-
-func (o ResourceIdentityTypeOutput) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceIdentityType) *ResourceIdentityType {
-		return &v
-	}).(ResourceIdentityTypePtrOutput)
-}
-
-func (o ResourceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o ResourceIdentityTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ResourceIdentityType) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o ResourceIdentityTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ResourceIdentityTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e ResourceIdentityType) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type ResourceIdentityTypePtrOutput struct{ *pulumi.OutputState }
-
-func (ResourceIdentityTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ResourceIdentityType)(nil)).Elem()
-}
-
-func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutput() ResourceIdentityTypePtrOutput {
-	return o
-}
-
-func (o ResourceIdentityTypePtrOutput) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
-	return o
-}
-
-func (o ResourceIdentityTypePtrOutput) Elem() ResourceIdentityTypeOutput {
-	return o.ApplyT(func(v *ResourceIdentityType) ResourceIdentityType {
-		if v != nil {
-			return *v
-		}
-		var ret ResourceIdentityType
-		return ret
-	}).(ResourceIdentityTypeOutput)
-}
-
-func (o ResourceIdentityTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o ResourceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ResourceIdentityType) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// ResourceIdentityTypeInput is an input type that accepts values of the ResourceIdentityType enum
-// A concrete instance of `ResourceIdentityTypeInput` can be one of the following:
-//
-//	ResourceIdentityTypeSystemAssigned
-//	ResourceIdentityTypeNone
-type ResourceIdentityTypeInput interface {
-	pulumi.Input
-
-	ToResourceIdentityTypeOutput() ResourceIdentityTypeOutput
-	ToResourceIdentityTypeOutputWithContext(context.Context) ResourceIdentityTypeOutput
-}
-
-var resourceIdentityTypePtrType = reflect.TypeOf((**ResourceIdentityType)(nil)).Elem()
-
-type ResourceIdentityTypePtrInput interface {
-	pulumi.Input
-
-	ToResourceIdentityTypePtrOutput() ResourceIdentityTypePtrOutput
-	ToResourceIdentityTypePtrOutputWithContext(context.Context) ResourceIdentityTypePtrOutput
-}
-
-type resourceIdentityTypePtr string
-
-func ResourceIdentityTypePtr(v string) ResourceIdentityTypePtrInput {
-	return (*resourceIdentityTypePtr)(&v)
-}
-
-func (*resourceIdentityTypePtr) ElementType() reflect.Type {
-	return resourceIdentityTypePtrType
-}
-
-func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutput() ResourceIdentityTypePtrOutput {
-	return pulumi.ToOutput(in).(ResourceIdentityTypePtrOutput)
-}
-
-func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ctx context.Context) ResourceIdentityTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(ResourceIdentityTypePtrOutput)
-}
-
-// The type of execution parameter
+// script execution parameter type
 type ScriptExecutionParameterType string
 
 const (
@@ -1883,7 +1917,9 @@ const (
 type SslEnum string
 
 const (
-	SslEnumEnabled  = SslEnum("Enabled")
+	// is enabled
+	SslEnumEnabled = SslEnum("Enabled")
+	// is disabled
 	SslEnumDisabled = SslEnum("Disabled")
 )
 
@@ -2056,6 +2092,8 @@ func init() {
 	pulumi.RegisterOutputType(AzureHybridBenefitTypePtrOutput{})
 	pulumi.RegisterOutputType(DnsServiceLogLevelEnumOutput{})
 	pulumi.RegisterOutputType(DnsServiceLogLevelEnumPtrOutput{})
+	pulumi.RegisterOutputType(DnsZoneTypeOutput{})
+	pulumi.RegisterOutputType(DnsZoneTypePtrOutput{})
 	pulumi.RegisterOutputType(EncryptionStateOutput{})
 	pulumi.RegisterOutputType(EncryptionStatePtrOutput{})
 	pulumi.RegisterOutputType(InternetEnumOutput{})
@@ -2066,8 +2104,6 @@ func init() {
 	pulumi.RegisterOutputType(PlacementPolicyStateEnumPtrOutput{})
 	pulumi.RegisterOutputType(PortMirroringDirectionEnumOutput{})
 	pulumi.RegisterOutputType(PortMirroringDirectionEnumPtrOutput{})
-	pulumi.RegisterOutputType(ResourceIdentityTypeOutput{})
-	pulumi.RegisterOutputType(ResourceIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(SslEnumOutput{})
 	pulumi.RegisterOutputType(SslEnumPtrOutput{})
 }

@@ -8,26 +8,29 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // configuration associated with SAP Landscape Monitor Dashboard.
 //
-// Uses Azure REST API version 2023-04-01.
+// Uses Azure REST API version 2024-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 //
-// Other available API versions: 2023-10-01-preview, 2023-12-01-preview, 2024-02-01-preview.
+// Other available API versions: 2023-04-01, 2023-10-01-preview, 2023-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native workloads [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SapLandscapeMonitor struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the SID groupings by landscape and Environment.
-	Grouping SapLandscapeMonitorPropertiesResponseGroupingPtrOutput `pulumi:"grouping"`
+	Grouping SapLandscapeMonitorPropertiesGroupingResponsePtrOutput `pulumi:"grouping"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// State of provisioning of the SAP monitor.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard
 	TopMetricsThresholds SapLandscapeMonitorMetricThresholdsResponseArrayOutput `pulumi:"topMetricsThresholds"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -157,9 +160,14 @@ func (o SapLandscapeMonitorOutput) ToSapLandscapeMonitorOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o SapLandscapeMonitorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SapLandscapeMonitor) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Gets or sets the SID groupings by landscape and Environment.
-func (o SapLandscapeMonitorOutput) Grouping() SapLandscapeMonitorPropertiesResponseGroupingPtrOutput {
-	return o.ApplyT(func(v *SapLandscapeMonitor) SapLandscapeMonitorPropertiesResponseGroupingPtrOutput { return v.Grouping }).(SapLandscapeMonitorPropertiesResponseGroupingPtrOutput)
+func (o SapLandscapeMonitorOutput) Grouping() SapLandscapeMonitorPropertiesGroupingResponsePtrOutput {
+	return o.ApplyT(func(v *SapLandscapeMonitor) SapLandscapeMonitorPropertiesGroupingResponsePtrOutput { return v.Grouping }).(SapLandscapeMonitorPropertiesGroupingResponsePtrOutput)
 }
 
 // The name of the resource
@@ -173,8 +181,8 @@ func (o SapLandscapeMonitorOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o SapLandscapeMonitorOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *SapLandscapeMonitor) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o SapLandscapeMonitorOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *SapLandscapeMonitor) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard

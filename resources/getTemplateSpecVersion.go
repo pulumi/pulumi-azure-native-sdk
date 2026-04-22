@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv1"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2022-02-01.
 //
-// Other available API versions: 2019-06-01-preview.
+// Other available API versions: 2021-03-01-preview, 2021-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resources [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupTemplateSpecVersion(ctx *pulumi.Context, args *LookupTemplateSpecVersionArgs, opts ...pulumi.InvokeOption) (*LookupTemplateSpecVersionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTemplateSpecVersionResult
@@ -37,6 +38,8 @@ type LookupTemplateSpecVersionArgs struct {
 
 // Template Spec Version object.
 type LookupTemplateSpecVersionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Template Spec version description.
 	Description *string `pulumi:"description"`
 	// String Id used to locate any resource on Azure.
@@ -52,7 +55,7 @@ type LookupTemplateSpecVersionResult struct {
 	// Name of this resource.
 	Name string `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv1.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Type of this resource.
@@ -98,6 +101,11 @@ func (o LookupTemplateSpecVersionResultOutput) ToLookupTemplateSpecVersionResult
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupTemplateSpecVersionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTemplateSpecVersionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Template Spec version description.
 func (o LookupTemplateSpecVersionResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupTemplateSpecVersionResult) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -134,8 +142,8 @@ func (o LookupTemplateSpecVersionResultOutput) Name() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupTemplateSpecVersionResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupTemplateSpecVersionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupTemplateSpecVersionResultOutput) SystemData() commontypesv1.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupTemplateSpecVersionResult) commontypesv1.SystemDataResponse { return v.SystemData }).(commontypesv1.SystemDataResponseOutput)
 }
 
 // Resource tags.

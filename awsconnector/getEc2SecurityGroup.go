@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +34,8 @@ type LookupEc2SecurityGroupArgs struct {
 
 // A Microsoft.AwsConnector resource
 type LookupEc2SecurityGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -42,7 +45,7 @@ type LookupEc2SecurityGroupResult struct {
 	// The resource-specific properties for this resource.
 	Properties Ec2SecurityGroupPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -84,6 +87,11 @@ func (o LookupEc2SecurityGroupResultOutput) ToLookupEc2SecurityGroupResultOutput
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupEc2SecurityGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEc2SecurityGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupEc2SecurityGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEc2SecurityGroupResult) string { return v.Id }).(pulumi.StringOutput)
@@ -105,8 +113,8 @@ func (o LookupEc2SecurityGroupResultOutput) Properties() Ec2SecurityGroupPropert
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupEc2SecurityGroupResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupEc2SecurityGroupResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupEc2SecurityGroupResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupEc2SecurityGroupResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

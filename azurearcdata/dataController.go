@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Data controller resource
 //
-// Uses Azure REST API version 2023-01-15-preview. In version 1.x of the Azure Native provider, it used API version 2021-06-01-preview.
+// Uses Azure REST API version 2025-03-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-01-15-preview.
 //
-// Other available API versions: 2024-01-01, 2024-05-01-preview, 2025-03-01-preview.
+// Other available API versions: 2023-01-15-preview, 2024-01-01, 2024-05-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurearcdata [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type DataController struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The extendedLocation of the resource.
 	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// The geo-location where the resource lives
@@ -29,7 +32,7 @@ type DataController struct {
 	// The data controller's properties
 	Properties DataControllerPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -80,6 +83,9 @@ func NewDataController(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:azurearcdata/v20250301preview:DataController"),
+		},
+		{
+			Type: pulumi.String("azure-native:azurearcdata/v20260101:DataController"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -183,6 +189,11 @@ func (o DataControllerOutput) ToDataControllerOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o DataControllerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataController) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The extendedLocation of the resource.
 func (o DataControllerOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
 	return o.ApplyT(func(v *DataController) ExtendedLocationResponsePtrOutput { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
@@ -204,8 +215,8 @@ func (o DataControllerOutput) Properties() DataControllerPropertiesResponseOutpu
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o DataControllerOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *DataController) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o DataControllerOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *DataController) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

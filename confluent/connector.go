@@ -8,16 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Details of connector record
 //
-// Uses Azure REST API version 2024-07-01.
+// Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2024-07-01.
+//
+// Other available API versions: 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Connector struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Connector Info Base
 	ConnectorBasicInfo ConnectorInfoBaseResponsePtrOutput `pulumi:"connectorBasicInfo"`
 	// Connector Service type info base properties.
@@ -27,7 +32,7 @@ type Connector struct {
 	// The connection information consumed by applications.
 	PartnerConnectorInfo pulumi.AnyOutput `pulumi:"partnerConnectorInfo"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -54,6 +59,12 @@ func NewConnector(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:confluent/v20240701:Connector"),
+		},
+		{
+			Type: pulumi.String("azure-native:confluent/v20250717preview:Connector"),
+		},
+		{
+			Type: pulumi.String("azure-native:confluent/v20250818preview:Connector"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -165,6 +176,11 @@ func (o ConnectorOutput) ToConnectorOutputWithContext(ctx context.Context) Conne
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ConnectorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Connector Info Base
 func (o ConnectorOutput) ConnectorBasicInfo() ConnectorInfoBaseResponsePtrOutput {
 	return o.ApplyT(func(v *Connector) ConnectorInfoBaseResponsePtrOutput { return v.ConnectorBasicInfo }).(ConnectorInfoBaseResponsePtrOutput)
@@ -186,8 +202,8 @@ func (o ConnectorOutput) PartnerConnectorInfo() pulumi.AnyOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ConnectorOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Connector) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o ConnectorOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Connector) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

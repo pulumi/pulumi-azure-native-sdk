@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,6 +38,8 @@ type LookupServerInstanceArgs struct {
 
 // Define the Server Instance resource.
 type LookupServerInstanceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Configuration data for this server instance.
 	ConfigurationData ConfigurationDataResponse `pulumi:"configurationData"`
 	// Defines the errors related to SAP Instance resource.
@@ -62,7 +65,7 @@ type LookupServerInstanceResult struct {
 	// This is the Virtual Machine Name of the SAP system. Add all the virtual machines attached to an SAP system which you wish to migrate to Azure. Keeping this not equal to ID as for single tier all InstanceTypes would be on same server, leading to multiple resources with same servername.
 	ServerName string `pulumi:"serverName"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -104,6 +107,11 @@ func (o LookupServerInstanceResultOutput) ToLookupServerInstanceResultOutput() L
 
 func (o LookupServerInstanceResultOutput) ToLookupServerInstanceResultOutputWithContext(ctx context.Context) LookupServerInstanceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupServerInstanceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerInstanceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Configuration data for this server instance.
@@ -167,8 +175,8 @@ func (o LookupServerInstanceResultOutput) ServerName() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupServerInstanceResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupServerInstanceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupServerInstanceResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupServerInstanceResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

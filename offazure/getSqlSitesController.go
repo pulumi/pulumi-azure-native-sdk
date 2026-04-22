@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Method to get a site.
 //
-// Uses Azure REST API version 2023-06-06.
+// Uses Azure REST API version 2023-10-01-preview.
 //
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Other available API versions: 2023-06-06, 2024-05-01-preview, 2024-07-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSqlSitesController(ctx *pulumi.Context, args *LookupSqlSitesControllerArgs, opts ...pulumi.InvokeOption) (*LookupSqlSitesControllerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSqlSitesControllerResult
@@ -37,6 +38,8 @@ type LookupSqlSitesControllerArgs struct {
 
 // SQL site web model.
 type LookupSqlSitesControllerResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the discovery scenario.
 	DiscoveryScenario *string `pulumi:"discoveryScenario"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -52,7 +55,7 @@ type LookupSqlSitesControllerResult struct {
 	// to the appliance.
 	SiteAppliancePropertiesCollection []SiteAppliancePropertiesResponse `pulumi:"siteAppliancePropertiesCollection"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -94,6 +97,11 @@ func (o LookupSqlSitesControllerResultOutput) ToLookupSqlSitesControllerResultOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupSqlSitesControllerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSqlSitesControllerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Gets or sets the discovery scenario.
 func (o LookupSqlSitesControllerResultOutput) DiscoveryScenario() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSqlSitesControllerResult) *string { return v.DiscoveryScenario }).(pulumi.StringPtrOutput)
@@ -129,8 +137,8 @@ func (o LookupSqlSitesControllerResultOutput) SiteAppliancePropertiesCollection(
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupSqlSitesControllerResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSqlSitesControllerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupSqlSitesControllerResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSqlSitesControllerResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

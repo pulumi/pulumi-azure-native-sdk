@@ -8,15 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A VmwareSite
 //
-// Uses Azure REST API version 2023-06-06.
+// Uses Azure REST API version 2023-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-06.
 //
-// Other available API versions: 2023-10-01-preview, 2024-05-01-preview.
+// Other available API versions: 2023-06-06, 2024-05-01-preview, 2024-07-01-preview, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native offazure [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SitesController struct {
 	pulumi.CustomResourceState
 
@@ -24,6 +25,8 @@ type SitesController struct {
 	AgentDetails SiteAgentPropertiesResponsePtrOutput `pulumi:"agentDetails"`
 	// Gets or sets the Appliance Name.
 	ApplianceName pulumi.StringPtrOutput `pulumi:"applianceName"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the ARM ID of migration hub solution for SDS.
 	DiscoverySolutionId pulumi.StringPtrOutput `pulumi:"discoverySolutionId"`
 	// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
@@ -43,7 +46,7 @@ type SitesController struct {
 	//             to the service.
 	ServicePrincipalIdentityDetails SiteSpnPropertiesResponsePtrOutput `pulumi:"servicePrincipalIdentityDetails"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -65,6 +68,9 @@ func NewSitesController(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:offazure/v20200101:SitesController"),
 		},
 		{
+			Type: pulumi.String("azure-native:offazure/v20200707:Site"),
+		},
+		{
 			Type: pulumi.String("azure-native:offazure/v20200707:SitesController"),
 		},
 		{
@@ -75,6 +81,15 @@ func NewSitesController(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:offazure/v20240501preview:SitesController"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20240701preview:SitesController"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure/v20241201preview:SitesController"),
+		},
+		{
+			Type: pulumi.String("azure-native:offazure:Site"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -200,6 +215,11 @@ func (o SitesControllerOutput) ApplianceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SitesController) pulumi.StringPtrOutput { return v.ApplianceName }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o SitesControllerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SitesController) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Gets or sets the ARM ID of migration hub solution for SDS.
 func (o SitesControllerOutput) DiscoverySolutionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SitesController) pulumi.StringPtrOutput { return v.DiscoverySolutionId }).(pulumi.StringPtrOutput)
@@ -244,8 +264,8 @@ func (o SitesControllerOutput) ServicePrincipalIdentityDetails() SiteSpnProperti
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o SitesControllerOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *SitesController) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o SitesControllerOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *SitesController) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

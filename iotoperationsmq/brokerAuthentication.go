@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // MQ broker/authentication resource
 //
-// Uses Azure REST API version 2023-10-04-preview.
+// Uses Azure REST API version 2023-10-04-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-04-preview.
 type BrokerAuthentication struct {
 	pulumi.CustomResourceState
 
 	// The list of authentication methods supported by the Authentication Resource. For each array element, NOTE - Enum only authenticator type supported.
 	AuthenticationMethods BrokerAuthenticatorMethodsResponseArrayOutput `pulumi:"authenticationMethods"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Extended Location
 	ExtendedLocation ExtendedLocationPropertyResponseOutput `pulumi:"extendedLocation"`
 	// The array of listener Resources it supports.
@@ -31,7 +34,7 @@ type BrokerAuthentication struct {
 	// The status of the last operation.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -188,6 +191,11 @@ func (o BrokerAuthenticationOutput) AuthenticationMethods() BrokerAuthenticatorM
 	}).(BrokerAuthenticatorMethodsResponseArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o BrokerAuthenticationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *BrokerAuthentication) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Extended Location
 func (o BrokerAuthenticationOutput) ExtendedLocation() ExtendedLocationPropertyResponseOutput {
 	return o.ApplyT(func(v *BrokerAuthentication) ExtendedLocationPropertyResponseOutput { return v.ExtendedLocation }).(ExtendedLocationPropertyResponseOutput)
@@ -214,8 +222,8 @@ func (o BrokerAuthenticationOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o BrokerAuthenticationOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *BrokerAuthentication) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o BrokerAuthenticationOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *BrokerAuthentication) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

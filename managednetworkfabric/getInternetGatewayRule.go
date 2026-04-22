@@ -7,13 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an Internet Gateway Rule resource.
 //
 // Uses Azure REST API version 2023-06-15.
+//
+// Other available API versions: 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupInternetGatewayRule(ctx *pulumi.Context, args *LookupInternetGatewayRuleArgs, opts ...pulumi.InvokeOption) (*LookupInternetGatewayRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupInternetGatewayRuleResult
@@ -35,6 +38,8 @@ type LookupInternetGatewayRuleArgs struct {
 type LookupInternetGatewayRuleResult struct {
 	// Switch configuration description.
 	Annotation *string `pulumi:"annotation"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// List of Internet Gateway resource Id.
@@ -48,7 +53,7 @@ type LookupInternetGatewayRuleResult struct {
 	// Rules for the InternetGateways
 	RuleProperties RulePropertiesResponse `pulumi:"ruleProperties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -95,6 +100,11 @@ func (o LookupInternetGatewayRuleResultOutput) Annotation() pulumi.StringPtrOutp
 	return o.ApplyT(func(v LookupInternetGatewayRuleResult) *string { return v.Annotation }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupInternetGatewayRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInternetGatewayRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupInternetGatewayRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInternetGatewayRuleResult) string { return v.Id }).(pulumi.StringOutput)
@@ -126,8 +136,8 @@ func (o LookupInternetGatewayRuleResultOutput) RuleProperties() RulePropertiesRe
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupInternetGatewayRuleResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupInternetGatewayRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupInternetGatewayRuleResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupInternetGatewayRuleResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

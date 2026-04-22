@@ -8,15 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Information about managed application.
 //
-// Uses Azure REST API version 2021-07-01. In version 1.x of the Azure Native provider, it used API version 2019-07-01.
+// Uses Azure REST API version 2021-07-01. In version 2.x of the Azure Native provider, it used API version 2021-07-01.
 //
-// Other available API versions: 2023-12-01-preview.
+// Other available API versions: 2023-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native solutions [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Application struct {
 	pulumi.CustomResourceState
 
@@ -26,6 +27,8 @@ type Application struct {
 	Artifacts ApplicationArtifactResponseArrayOutput `pulumi:"artifacts"`
 	// The  read-only authorizations property that is retrieved from the application package.
 	Authorizations ApplicationAuthorizationResponseArrayOutput `pulumi:"authorizations"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The managed application billing details.
 	BillingDetails ApplicationBillingDetailsDefinitionResponseOutput `pulumi:"billingDetails"`
 	// The client entity that created the JIT request.
@@ -63,7 +66,7 @@ type Application struct {
 	// The read-only support URLs property that is retrieved from the application package.
 	SupportUrls ApplicationPackageSupportUrlsResponseOutput `pulumi:"supportUrls"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type
@@ -267,6 +270,11 @@ func (o ApplicationOutput) Authorizations() ApplicationAuthorizationResponseArra
 	return o.ApplyT(func(v *Application) ApplicationAuthorizationResponseArrayOutput { return v.Authorizations }).(ApplicationAuthorizationResponseArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o ApplicationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The managed application billing details.
 func (o ApplicationOutput) BillingDetails() ApplicationBillingDetailsDefinitionResponseOutput {
 	return o.ApplyT(func(v *Application) ApplicationBillingDetailsDefinitionResponseOutput { return v.BillingDetails }).(ApplicationBillingDetailsDefinitionResponseOutput)
@@ -358,8 +366,8 @@ func (o ApplicationOutput) SupportUrls() ApplicationPackageSupportUrlsResponseOu
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o ApplicationOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Application) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o ApplicationOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Application) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Resource tags

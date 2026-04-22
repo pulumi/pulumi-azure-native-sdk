@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +36,8 @@ type LookupPrivateEndpointConnectionProxyArgs struct {
 
 // Private endpoint connection proxy details.
 type LookupPrivateEndpointConnectionProxyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// ETag from NRP.
 	ETag string `pulumi:"eTag"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -48,7 +51,7 @@ type LookupPrivateEndpointConnectionProxyResult struct {
 	// Operation status.
 	Status *string `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -90,6 +93,11 @@ func (o LookupPrivateEndpointConnectionProxyResultOutput) ToLookupPrivateEndpoin
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupPrivateEndpointConnectionProxyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateEndpointConnectionProxyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // ETag from NRP.
 func (o LookupPrivateEndpointConnectionProxyResultOutput) ETag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateEndpointConnectionProxyResult) string { return v.ETag }).(pulumi.StringOutput)
@@ -123,8 +131,10 @@ func (o LookupPrivateEndpointConnectionProxyResultOutput) Status() pulumi.String
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupPrivateEndpointConnectionProxyResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupPrivateEndpointConnectionProxyResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupPrivateEndpointConnectionProxyResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPrivateEndpointConnectionProxyResult) commontypesv3.SystemDataResponse {
+		return v.SystemData
+	}).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

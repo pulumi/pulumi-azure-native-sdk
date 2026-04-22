@@ -8,20 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // NetApp account resource
 //
-// Uses Azure REST API version 2022-11-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
+// Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2022-11-01.
 //
-// Other available API versions: 2022-05-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01, 2024-09-01-preview.
+// Other available API versions: 2022-11-01, 2022-11-01-preview, 2023-05-01, 2023-05-01-preview, 2023-07-01, 2023-07-01-preview, 2023-11-01, 2023-11-01-preview, 2024-01-01, 2024-03-01, 2024-03-01-preview, 2024-05-01, 2024-05-01-preview, 2024-07-01, 2024-07-01-preview, 2024-09-01-preview, 2025-01-01, 2025-01-01-preview, 2025-03-01, 2025-03-01-preview, 2025-06-01, 2025-07-01-preview, 2025-08-01, 2025-08-01-preview, 2025-09-01, 2025-09-01-preview, 2025-12-01, 2025-12-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native netapp [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Account struct {
 	pulumi.CustomResourceState
 
 	// Active Directories
 	ActiveDirectories ActiveDirectoryResponseArrayOutput `pulumi:"activeDirectories"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Shows the status of disableShowmount for all volumes under the subscription, null equals false
 	DisableShowmount pulumi.BoolOutput `pulumi:"disableShowmount"`
 	// Encryption settings
@@ -29,7 +32,7 @@ type Account struct {
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The identity used for the resource.
-	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity commontypesv5.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -37,7 +40,7 @@ type Account struct {
 	// Azure lifecycle management
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -187,6 +190,42 @@ func NewAccount(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:netapp/v20240901preview:Account"),
 		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250101:Account"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250101preview:Account"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250301:Account"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250301preview:Account"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250601:Account"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250701preview:Account"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250801:Account"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250801preview:Account"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250901:Account"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20250901preview:Account"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20251201:Account"),
+		},
+		{
+			Type: pulumi.String("azure-native:netapp/v20251215preview:Account"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -229,7 +268,7 @@ type accountArgs struct {
 	// Encryption settings
 	Encryption *AccountEncryption `pulumi:"encryption"`
 	// The identity used for the resource.
-	Identity *ManagedServiceIdentity `pulumi:"identity"`
+	Identity *commontypesv5.ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the resource group. The name is case insensitive.
@@ -247,7 +286,7 @@ type AccountArgs struct {
 	// Encryption settings
 	Encryption AccountEncryptionPtrInput
 	// The identity used for the resource.
-	Identity ManagedServiceIdentityPtrInput
+	Identity commontypesv5.ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -298,6 +337,11 @@ func (o AccountOutput) ActiveDirectories() ActiveDirectoryResponseArrayOutput {
 	return o.ApplyT(func(v *Account) ActiveDirectoryResponseArrayOutput { return v.ActiveDirectories }).(ActiveDirectoryResponseArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o AccountOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Shows the status of disableShowmount for all volumes under the subscription, null equals false
 func (o AccountOutput) DisableShowmount() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Account) pulumi.BoolOutput { return v.DisableShowmount }).(pulumi.BoolOutput)
@@ -314,8 +358,8 @@ func (o AccountOutput) Etag() pulumi.StringOutput {
 }
 
 // The identity used for the resource.
-func (o AccountOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *Account) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o AccountOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Account) commontypesv5.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -334,8 +378,8 @@ func (o AccountOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o AccountOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Account) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o AccountOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Account) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

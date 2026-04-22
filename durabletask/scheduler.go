@@ -8,16 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A Durable Task Scheduler resource
 //
-// Uses Azure REST API version 2024-10-01-preview.
+// Uses Azure REST API version 2024-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-10-01-preview.
+//
+// Other available API versions: 2025-04-01-preview, 2025-11-01, 2026-02-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Scheduler struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -25,7 +30,7 @@ type Scheduler struct {
 	// The resource-specific properties for this resource.
 	Properties SchedulerPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -45,6 +50,15 @@ func NewScheduler(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:durabletask/v20241001preview:Scheduler"),
+		},
+		{
+			Type: pulumi.String("azure-native:durabletask/v20250401preview:Scheduler"),
+		},
+		{
+			Type: pulumi.String("azure-native:durabletask/v20251101:Scheduler"),
+		},
+		{
+			Type: pulumi.String("azure-native:durabletask/v20260201:Scheduler"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -144,6 +158,11 @@ func (o SchedulerOutput) ToSchedulerOutputWithContext(ctx context.Context) Sched
 	return o
 }
 
+// The Azure API version of the resource.
+func (o SchedulerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Scheduler) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The geo-location where the resource lives
 func (o SchedulerOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Scheduler) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -160,8 +179,8 @@ func (o SchedulerOutput) Properties() SchedulerPropertiesResponseOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o SchedulerOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Scheduler) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o SchedulerOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Scheduler) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

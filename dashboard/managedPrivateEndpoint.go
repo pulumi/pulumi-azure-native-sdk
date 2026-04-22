@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The managed private endpoint resource type.
 //
-// Uses Azure REST API version 2022-10-01-preview.
+// Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01-preview.
 //
-// Other available API versions: 2023-09-01, 2023-10-01-preview, 2024-10-01.
+// Other available API versions: 2022-10-01-preview, 2023-09-01, 2023-10-01-preview, 2024-11-01-preview, 2025-08-01, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dashboard [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ManagedPrivateEndpoint struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The state of managed private endpoint connection.
 	ConnectionState ManagedPrivateEndpointConnectionStateResponseOutput `pulumi:"connectionState"`
 	// The group Ids of the managed private endpoint.
@@ -41,7 +44,7 @@ type ManagedPrivateEndpoint struct {
 	// User input request message of the managed private endpoint.
 	RequestMessage pulumi.StringPtrOutput `pulumi:"requestMessage"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -73,6 +76,15 @@ func NewManagedPrivateEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dashboard/v20241001:ManagedPrivateEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:dashboard/v20241101preview:ManagedPrivateEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:dashboard/v20250801:ManagedPrivateEndpoint"),
+		},
+		{
+			Type: pulumi.String("azure-native:dashboard/v20250901preview:ManagedPrivateEndpoint"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -192,6 +204,11 @@ func (o ManagedPrivateEndpointOutput) ToManagedPrivateEndpointOutputWithContext(
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ManagedPrivateEndpointOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedPrivateEndpoint) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The state of managed private endpoint connection.
 func (o ManagedPrivateEndpointOutput) ConnectionState() ManagedPrivateEndpointConnectionStateResponseOutput {
 	return o.ApplyT(func(v *ManagedPrivateEndpoint) ManagedPrivateEndpointConnectionStateResponseOutput {
@@ -245,8 +262,8 @@ func (o ManagedPrivateEndpointOutput) RequestMessage() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ManagedPrivateEndpointOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *ManagedPrivateEndpoint) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o ManagedPrivateEndpointOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *ManagedPrivateEndpoint) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

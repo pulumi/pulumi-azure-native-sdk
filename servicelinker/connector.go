@@ -8,20 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Linker of source and target resource
 //
-// Uses Azure REST API version 2022-11-01-preview.
+// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2022-11-01-preview.
 //
-// Other available API versions: 2023-04-01-preview, 2024-04-01, 2024-07-01-preview.
+// Other available API versions: 2022-11-01-preview, 2023-04-01-preview, 2024-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicelinker [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Connector struct {
 	pulumi.CustomResourceState
 
 	// The authentication type.
 	AuthInfo pulumi.AnyOutput `pulumi:"authInfo"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The application client type
 	ClientType pulumi.StringPtrOutput `pulumi:"clientType"`
 	// The connection information consumed by applications, including secrets, connection strings.
@@ -37,7 +40,7 @@ type Connector struct {
 	// An option to store secret value in secure place
 	SecretStore SecretStoreResponsePtrOutput `pulumi:"secretStore"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// The target service properties
 	TargetService pulumi.AnyOutput `pulumi:"targetService"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -203,6 +206,11 @@ func (o ConnectorOutput) AuthInfo() pulumi.AnyOutput {
 	return o.ApplyT(func(v *Connector) pulumi.AnyOutput { return v.AuthInfo }).(pulumi.AnyOutput)
 }
 
+// The Azure API version of the resource.
+func (o ConnectorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The application client type
 func (o ConnectorOutput) ClientType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Connector) pulumi.StringPtrOutput { return v.ClientType }).(pulumi.StringPtrOutput)
@@ -239,8 +247,8 @@ func (o ConnectorOutput) SecretStore() SecretStoreResponsePtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ConnectorOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Connector) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o ConnectorOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Connector) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The target service properties

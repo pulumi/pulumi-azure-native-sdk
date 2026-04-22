@@ -7,15 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified contact Profile in a specified resource group.
 //
 // Uses Azure REST API version 2022-11-01.
-//
-// Other available API versions: 2022-03-01.
 func LookupContactProfile(ctx *pulumi.Context, args *LookupContactProfileArgs, opts ...pulumi.InvokeOption) (*LookupContactProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupContactProfileResult
@@ -37,6 +36,8 @@ type LookupContactProfileArgs struct {
 type LookupContactProfileResult struct {
 	// Auto-tracking configuration.
 	AutoTrackingConfiguration *string `pulumi:"autoTrackingConfiguration"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// ARM resource identifier of the Event Hub used for telemetry. Requires granting Orbital Resource Provider the rights to send telemetry into the hub.
 	EventHubUri *string `pulumi:"eventHubUri"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -54,7 +55,7 @@ type LookupContactProfileResult struct {
 	// Network configuration of customer virtual network.
 	NetworkConfiguration ContactProfilesPropertiesResponseNetworkConfiguration `pulumi:"networkConfiguration"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Third-party mission configuration of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
@@ -103,6 +104,11 @@ func (o LookupContactProfileResultOutput) AutoTrackingConfiguration() pulumi.Str
 	return o.ApplyT(func(v LookupContactProfileResult) *string { return v.AutoTrackingConfiguration }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupContactProfileResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupContactProfileResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // ARM resource identifier of the Event Hub used for telemetry. Requires granting Orbital Resource Provider the rights to send telemetry into the hub.
 func (o LookupContactProfileResultOutput) EventHubUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupContactProfileResult) *string { return v.EventHubUri }).(pulumi.StringPtrOutput)
@@ -146,8 +152,8 @@ func (o LookupContactProfileResultOutput) NetworkConfiguration() ContactProfiles
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupContactProfileResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupContactProfileResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupContactProfileResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupContactProfileResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

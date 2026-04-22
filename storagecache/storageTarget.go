@@ -8,20 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Type of the Storage Target.
 //
-// Uses Azure REST API version 2023-05-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01.
+// Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
 //
-// Other available API versions: 2021-03-01, 2023-11-01-preview, 2024-03-01, 2024-07-01.
+// Other available API versions: 2023-05-01, 2023-11-01-preview, 2024-07-01, 2025-07-01, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type StorageTarget struct {
 	pulumi.CustomResourceState
 
 	// The percentage of cache space allocated for this storage target
 	AllocationPercentage pulumi.IntOutput `pulumi:"allocationPercentage"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Properties when targetType is blobNfs.
 	BlobNfs BlobNfsTargetResponsePtrOutput `pulumi:"blobNfs"`
 	// Properties when targetType is clfs.
@@ -39,7 +42,7 @@ type StorageTarget struct {
 	// Storage target operational state.
 	State pulumi.StringPtrOutput `pulumi:"state"`
 	// The system meta data relating to this resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// Type of the Storage Target.
 	TargetType pulumi.StringOutput `pulumi:"targetType"`
 	// Type of the Storage Target; Microsoft.StorageCache/Cache/StorageTarget
@@ -109,6 +112,12 @@ func NewStorageTarget(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storagecache/v20240701:StorageTarget"),
+		},
+		{
+			Type: pulumi.String("azure-native:storagecache/v20250701:StorageTarget"),
+		},
+		{
+			Type: pulumi.String("azure-native:storagecache/v20260101:StorageTarget"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -233,6 +242,11 @@ func (o StorageTargetOutput) AllocationPercentage() pulumi.IntOutput {
 	return o.ApplyT(func(v *StorageTarget) pulumi.IntOutput { return v.AllocationPercentage }).(pulumi.IntOutput)
 }
 
+// The Azure API version of the resource.
+func (o StorageTargetOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *StorageTarget) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Properties when targetType is blobNfs.
 func (o StorageTargetOutput) BlobNfs() BlobNfsTargetResponsePtrOutput {
 	return o.ApplyT(func(v *StorageTarget) BlobNfsTargetResponsePtrOutput { return v.BlobNfs }).(BlobNfsTargetResponsePtrOutput)
@@ -274,8 +288,8 @@ func (o StorageTargetOutput) State() pulumi.StringPtrOutput {
 }
 
 // The system meta data relating to this resource.
-func (o StorageTargetOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *StorageTarget) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o StorageTargetOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *StorageTarget) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Type of the Storage Target.

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -316,299 +316,243 @@ func (o ProviderResponseArrayOutput) Index(i pulumi.IntInput) ProviderResponseOu
 	}).(ProviderResponseOutput)
 }
 
-// Managed Identity information.
-type QuantumWorkspaceIdentity struct {
-	// The identity type.
-	Type *string `pulumi:"type"`
+// Properties of a Workspace
+type WorkspaceResourceProperties struct {
+	// Indicator of enablement of the Quantum workspace Api keys.
+	ApiKeyEnabled *bool `pulumi:"apiKeyEnabled"`
+	// List of Providers selected for this Workspace
+	Providers []Provider `pulumi:"providers"`
+	// ARM Resource Id of the storage account associated with this workspace.
+	StorageAccount *string `pulumi:"storageAccount"`
 }
 
-// QuantumWorkspaceIdentityInput is an input type that accepts QuantumWorkspaceIdentityArgs and QuantumWorkspaceIdentityOutput values.
-// You can construct a concrete instance of `QuantumWorkspaceIdentityInput` via:
+// WorkspaceResourcePropertiesInput is an input type that accepts WorkspaceResourcePropertiesArgs and WorkspaceResourcePropertiesOutput values.
+// You can construct a concrete instance of `WorkspaceResourcePropertiesInput` via:
 //
-//	QuantumWorkspaceIdentityArgs{...}
-type QuantumWorkspaceIdentityInput interface {
+//	WorkspaceResourcePropertiesArgs{...}
+type WorkspaceResourcePropertiesInput interface {
 	pulumi.Input
 
-	ToQuantumWorkspaceIdentityOutput() QuantumWorkspaceIdentityOutput
-	ToQuantumWorkspaceIdentityOutputWithContext(context.Context) QuantumWorkspaceIdentityOutput
+	ToWorkspaceResourcePropertiesOutput() WorkspaceResourcePropertiesOutput
+	ToWorkspaceResourcePropertiesOutputWithContext(context.Context) WorkspaceResourcePropertiesOutput
 }
 
-// Managed Identity information.
-type QuantumWorkspaceIdentityArgs struct {
-	// The identity type.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+// Properties of a Workspace
+type WorkspaceResourcePropertiesArgs struct {
+	// Indicator of enablement of the Quantum workspace Api keys.
+	ApiKeyEnabled pulumi.BoolPtrInput `pulumi:"apiKeyEnabled"`
+	// List of Providers selected for this Workspace
+	Providers ProviderArrayInput `pulumi:"providers"`
+	// ARM Resource Id of the storage account associated with this workspace.
+	StorageAccount pulumi.StringPtrInput `pulumi:"storageAccount"`
 }
 
-func (QuantumWorkspaceIdentityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*QuantumWorkspaceIdentity)(nil)).Elem()
+func (WorkspaceResourcePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceResourceProperties)(nil)).Elem()
 }
 
-func (i QuantumWorkspaceIdentityArgs) ToQuantumWorkspaceIdentityOutput() QuantumWorkspaceIdentityOutput {
-	return i.ToQuantumWorkspaceIdentityOutputWithContext(context.Background())
+func (i WorkspaceResourcePropertiesArgs) ToWorkspaceResourcePropertiesOutput() WorkspaceResourcePropertiesOutput {
+	return i.ToWorkspaceResourcePropertiesOutputWithContext(context.Background())
 }
 
-func (i QuantumWorkspaceIdentityArgs) ToQuantumWorkspaceIdentityOutputWithContext(ctx context.Context) QuantumWorkspaceIdentityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QuantumWorkspaceIdentityOutput)
+func (i WorkspaceResourcePropertiesArgs) ToWorkspaceResourcePropertiesOutputWithContext(ctx context.Context) WorkspaceResourcePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceResourcePropertiesOutput)
 }
 
-func (i QuantumWorkspaceIdentityArgs) ToQuantumWorkspaceIdentityPtrOutput() QuantumWorkspaceIdentityPtrOutput {
-	return i.ToQuantumWorkspaceIdentityPtrOutputWithContext(context.Background())
+func (i WorkspaceResourcePropertiesArgs) ToWorkspaceResourcePropertiesPtrOutput() WorkspaceResourcePropertiesPtrOutput {
+	return i.ToWorkspaceResourcePropertiesPtrOutputWithContext(context.Background())
 }
 
-func (i QuantumWorkspaceIdentityArgs) ToQuantumWorkspaceIdentityPtrOutputWithContext(ctx context.Context) QuantumWorkspaceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QuantumWorkspaceIdentityOutput).ToQuantumWorkspaceIdentityPtrOutputWithContext(ctx)
+func (i WorkspaceResourcePropertiesArgs) ToWorkspaceResourcePropertiesPtrOutputWithContext(ctx context.Context) WorkspaceResourcePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceResourcePropertiesOutput).ToWorkspaceResourcePropertiesPtrOutputWithContext(ctx)
 }
 
-// QuantumWorkspaceIdentityPtrInput is an input type that accepts QuantumWorkspaceIdentityArgs, QuantumWorkspaceIdentityPtr and QuantumWorkspaceIdentityPtrOutput values.
-// You can construct a concrete instance of `QuantumWorkspaceIdentityPtrInput` via:
+// WorkspaceResourcePropertiesPtrInput is an input type that accepts WorkspaceResourcePropertiesArgs, WorkspaceResourcePropertiesPtr and WorkspaceResourcePropertiesPtrOutput values.
+// You can construct a concrete instance of `WorkspaceResourcePropertiesPtrInput` via:
 //
-//	        QuantumWorkspaceIdentityArgs{...}
+//	        WorkspaceResourcePropertiesArgs{...}
 //
 //	or:
 //
 //	        nil
-type QuantumWorkspaceIdentityPtrInput interface {
+type WorkspaceResourcePropertiesPtrInput interface {
 	pulumi.Input
 
-	ToQuantumWorkspaceIdentityPtrOutput() QuantumWorkspaceIdentityPtrOutput
-	ToQuantumWorkspaceIdentityPtrOutputWithContext(context.Context) QuantumWorkspaceIdentityPtrOutput
+	ToWorkspaceResourcePropertiesPtrOutput() WorkspaceResourcePropertiesPtrOutput
+	ToWorkspaceResourcePropertiesPtrOutputWithContext(context.Context) WorkspaceResourcePropertiesPtrOutput
 }
 
-type quantumWorkspaceIdentityPtrType QuantumWorkspaceIdentityArgs
+type workspaceResourcePropertiesPtrType WorkspaceResourcePropertiesArgs
 
-func QuantumWorkspaceIdentityPtr(v *QuantumWorkspaceIdentityArgs) QuantumWorkspaceIdentityPtrInput {
-	return (*quantumWorkspaceIdentityPtrType)(v)
+func WorkspaceResourcePropertiesPtr(v *WorkspaceResourcePropertiesArgs) WorkspaceResourcePropertiesPtrInput {
+	return (*workspaceResourcePropertiesPtrType)(v)
 }
 
-func (*quantumWorkspaceIdentityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**QuantumWorkspaceIdentity)(nil)).Elem()
+func (*workspaceResourcePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceResourceProperties)(nil)).Elem()
 }
 
-func (i *quantumWorkspaceIdentityPtrType) ToQuantumWorkspaceIdentityPtrOutput() QuantumWorkspaceIdentityPtrOutput {
-	return i.ToQuantumWorkspaceIdentityPtrOutputWithContext(context.Background())
+func (i *workspaceResourcePropertiesPtrType) ToWorkspaceResourcePropertiesPtrOutput() WorkspaceResourcePropertiesPtrOutput {
+	return i.ToWorkspaceResourcePropertiesPtrOutputWithContext(context.Background())
 }
 
-func (i *quantumWorkspaceIdentityPtrType) ToQuantumWorkspaceIdentityPtrOutputWithContext(ctx context.Context) QuantumWorkspaceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(QuantumWorkspaceIdentityPtrOutput)
+func (i *workspaceResourcePropertiesPtrType) ToWorkspaceResourcePropertiesPtrOutputWithContext(ctx context.Context) WorkspaceResourcePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceResourcePropertiesPtrOutput)
 }
 
-// Managed Identity information.
-type QuantumWorkspaceIdentityOutput struct{ *pulumi.OutputState }
+// Properties of a Workspace
+type WorkspaceResourcePropertiesOutput struct{ *pulumi.OutputState }
 
-func (QuantumWorkspaceIdentityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*QuantumWorkspaceIdentity)(nil)).Elem()
+func (WorkspaceResourcePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceResourceProperties)(nil)).Elem()
 }
 
-func (o QuantumWorkspaceIdentityOutput) ToQuantumWorkspaceIdentityOutput() QuantumWorkspaceIdentityOutput {
+func (o WorkspaceResourcePropertiesOutput) ToWorkspaceResourcePropertiesOutput() WorkspaceResourcePropertiesOutput {
 	return o
 }
 
-func (o QuantumWorkspaceIdentityOutput) ToQuantumWorkspaceIdentityOutputWithContext(ctx context.Context) QuantumWorkspaceIdentityOutput {
+func (o WorkspaceResourcePropertiesOutput) ToWorkspaceResourcePropertiesOutputWithContext(ctx context.Context) WorkspaceResourcePropertiesOutput {
 	return o
 }
 
-func (o QuantumWorkspaceIdentityOutput) ToQuantumWorkspaceIdentityPtrOutput() QuantumWorkspaceIdentityPtrOutput {
-	return o.ToQuantumWorkspaceIdentityPtrOutputWithContext(context.Background())
+func (o WorkspaceResourcePropertiesOutput) ToWorkspaceResourcePropertiesPtrOutput() WorkspaceResourcePropertiesPtrOutput {
+	return o.ToWorkspaceResourcePropertiesPtrOutputWithContext(context.Background())
 }
 
-func (o QuantumWorkspaceIdentityOutput) ToQuantumWorkspaceIdentityPtrOutputWithContext(ctx context.Context) QuantumWorkspaceIdentityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v QuantumWorkspaceIdentity) *QuantumWorkspaceIdentity {
+func (o WorkspaceResourcePropertiesOutput) ToWorkspaceResourcePropertiesPtrOutputWithContext(ctx context.Context) WorkspaceResourcePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkspaceResourceProperties) *WorkspaceResourceProperties {
 		return &v
-	}).(QuantumWorkspaceIdentityPtrOutput)
+	}).(WorkspaceResourcePropertiesPtrOutput)
 }
 
-// The identity type.
-func (o QuantumWorkspaceIdentityOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v QuantumWorkspaceIdentity) *string { return v.Type }).(pulumi.StringPtrOutput)
+// Indicator of enablement of the Quantum workspace Api keys.
+func (o WorkspaceResourcePropertiesOutput) ApiKeyEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkspaceResourceProperties) *bool { return v.ApiKeyEnabled }).(pulumi.BoolPtrOutput)
 }
 
-type QuantumWorkspaceIdentityPtrOutput struct{ *pulumi.OutputState }
-
-func (QuantumWorkspaceIdentityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**QuantumWorkspaceIdentity)(nil)).Elem()
+// List of Providers selected for this Workspace
+func (o WorkspaceResourcePropertiesOutput) Providers() ProviderArrayOutput {
+	return o.ApplyT(func(v WorkspaceResourceProperties) []Provider { return v.Providers }).(ProviderArrayOutput)
 }
 
-func (o QuantumWorkspaceIdentityPtrOutput) ToQuantumWorkspaceIdentityPtrOutput() QuantumWorkspaceIdentityPtrOutput {
+// ARM Resource Id of the storage account associated with this workspace.
+func (o WorkspaceResourcePropertiesOutput) StorageAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceResourceProperties) *string { return v.StorageAccount }).(pulumi.StringPtrOutput)
+}
+
+type WorkspaceResourcePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceResourcePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceResourceProperties)(nil)).Elem()
+}
+
+func (o WorkspaceResourcePropertiesPtrOutput) ToWorkspaceResourcePropertiesPtrOutput() WorkspaceResourcePropertiesPtrOutput {
 	return o
 }
 
-func (o QuantumWorkspaceIdentityPtrOutput) ToQuantumWorkspaceIdentityPtrOutputWithContext(ctx context.Context) QuantumWorkspaceIdentityPtrOutput {
+func (o WorkspaceResourcePropertiesPtrOutput) ToWorkspaceResourcePropertiesPtrOutputWithContext(ctx context.Context) WorkspaceResourcePropertiesPtrOutput {
 	return o
 }
 
-func (o QuantumWorkspaceIdentityPtrOutput) Elem() QuantumWorkspaceIdentityOutput {
-	return o.ApplyT(func(v *QuantumWorkspaceIdentity) QuantumWorkspaceIdentity {
+func (o WorkspaceResourcePropertiesPtrOutput) Elem() WorkspaceResourcePropertiesOutput {
+	return o.ApplyT(func(v *WorkspaceResourceProperties) WorkspaceResourceProperties {
 		if v != nil {
 			return *v
 		}
-		var ret QuantumWorkspaceIdentity
+		var ret WorkspaceResourceProperties
 		return ret
-	}).(QuantumWorkspaceIdentityOutput)
+	}).(WorkspaceResourcePropertiesOutput)
 }
 
-// The identity type.
-func (o QuantumWorkspaceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *QuantumWorkspaceIdentity) *string {
+// Indicator of enablement of the Quantum workspace Api keys.
+func (o WorkspaceResourcePropertiesPtrOutput) ApiKeyEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkspaceResourceProperties) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
+		return v.ApiKeyEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
-// Managed Identity information.
-type QuantumWorkspaceResponseIdentity struct {
-	// The principal ID of resource identity.
-	PrincipalId string `pulumi:"principalId"`
-	// The tenant ID of resource.
-	TenantId string `pulumi:"tenantId"`
-	// The identity type.
-	Type *string `pulumi:"type"`
-}
-
-// Managed Identity information.
-type QuantumWorkspaceResponseIdentityOutput struct{ *pulumi.OutputState }
-
-func (QuantumWorkspaceResponseIdentityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*QuantumWorkspaceResponseIdentity)(nil)).Elem()
-}
-
-func (o QuantumWorkspaceResponseIdentityOutput) ToQuantumWorkspaceResponseIdentityOutput() QuantumWorkspaceResponseIdentityOutput {
-	return o
-}
-
-func (o QuantumWorkspaceResponseIdentityOutput) ToQuantumWorkspaceResponseIdentityOutputWithContext(ctx context.Context) QuantumWorkspaceResponseIdentityOutput {
-	return o
-}
-
-// The principal ID of resource identity.
-func (o QuantumWorkspaceResponseIdentityOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v QuantumWorkspaceResponseIdentity) string { return v.PrincipalId }).(pulumi.StringOutput)
-}
-
-// The tenant ID of resource.
-func (o QuantumWorkspaceResponseIdentityOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v QuantumWorkspaceResponseIdentity) string { return v.TenantId }).(pulumi.StringOutput)
-}
-
-// The identity type.
-func (o QuantumWorkspaceResponseIdentityOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v QuantumWorkspaceResponseIdentity) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-type QuantumWorkspaceResponseIdentityPtrOutput struct{ *pulumi.OutputState }
-
-func (QuantumWorkspaceResponseIdentityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**QuantumWorkspaceResponseIdentity)(nil)).Elem()
-}
-
-func (o QuantumWorkspaceResponseIdentityPtrOutput) ToQuantumWorkspaceResponseIdentityPtrOutput() QuantumWorkspaceResponseIdentityPtrOutput {
-	return o
-}
-
-func (o QuantumWorkspaceResponseIdentityPtrOutput) ToQuantumWorkspaceResponseIdentityPtrOutputWithContext(ctx context.Context) QuantumWorkspaceResponseIdentityPtrOutput {
-	return o
-}
-
-func (o QuantumWorkspaceResponseIdentityPtrOutput) Elem() QuantumWorkspaceResponseIdentityOutput {
-	return o.ApplyT(func(v *QuantumWorkspaceResponseIdentity) QuantumWorkspaceResponseIdentity {
-		if v != nil {
-			return *v
-		}
-		var ret QuantumWorkspaceResponseIdentity
-		return ret
-	}).(QuantumWorkspaceResponseIdentityOutput)
-}
-
-// The principal ID of resource identity.
-func (o QuantumWorkspaceResponseIdentityPtrOutput) PrincipalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *QuantumWorkspaceResponseIdentity) *string {
+// List of Providers selected for this Workspace
+func (o WorkspaceResourcePropertiesPtrOutput) Providers() ProviderArrayOutput {
+	return o.ApplyT(func(v *WorkspaceResourceProperties) []Provider {
 		if v == nil {
 			return nil
 		}
-		return &v.PrincipalId
-	}).(pulumi.StringPtrOutput)
+		return v.Providers
+	}).(ProviderArrayOutput)
 }
 
-// The tenant ID of resource.
-func (o QuantumWorkspaceResponseIdentityPtrOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *QuantumWorkspaceResponseIdentity) *string {
+// ARM Resource Id of the storage account associated with this workspace.
+func (o WorkspaceResourcePropertiesPtrOutput) StorageAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceResourceProperties) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.TenantId
+		return v.StorageAccount
 	}).(pulumi.StringPtrOutput)
 }
 
-// The identity type.
-func (o QuantumWorkspaceResponseIdentityPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *QuantumWorkspaceResponseIdentity) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(pulumi.StringPtrOutput)
+// Properties of a Workspace
+type WorkspaceResourcePropertiesResponse struct {
+	// Indicator of enablement of the Quantum workspace Api keys.
+	ApiKeyEnabled *bool `pulumi:"apiKeyEnabled"`
+	// The URI of the workspace endpoint.
+	EndpointUri string `pulumi:"endpointUri"`
+	// List of Providers selected for this Workspace
+	Providers []ProviderResponse `pulumi:"providers"`
+	// Provisioning status field
+	ProvisioningState string `pulumi:"provisioningState"`
+	// ARM Resource Id of the storage account associated with this workspace.
+	StorageAccount *string `pulumi:"storageAccount"`
+	// Whether the current workspace is ready to accept Jobs.
+	Usable string `pulumi:"usable"`
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+// Properties of a Workspace
+type WorkspaceResourcePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceResourcePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceResourcePropertiesResponse)(nil)).Elem()
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponseOutput struct{ *pulumi.OutputState }
-
-func (SystemDataResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
-}
-
-func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+func (o WorkspaceResourcePropertiesResponseOutput) ToWorkspaceResourcePropertiesResponseOutput() WorkspaceResourcePropertiesResponseOutput {
 	return o
 }
 
-func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+func (o WorkspaceResourcePropertiesResponseOutput) ToWorkspaceResourcePropertiesResponseOutputWithContext(ctx context.Context) WorkspaceResourcePropertiesResponseOutput {
 	return o
 }
 
-// The timestamp of resource creation (UTC).
-func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+// Indicator of enablement of the Quantum workspace Api keys.
+func (o WorkspaceResourcePropertiesResponseOutput) ApiKeyEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkspaceResourcePropertiesResponse) *bool { return v.ApiKeyEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The identity that created the resource.
-func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+// The URI of the workspace endpoint.
+func (o WorkspaceResourcePropertiesResponseOutput) EndpointUri() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkspaceResourcePropertiesResponse) string { return v.EndpointUri }).(pulumi.StringOutput)
 }
 
-// The type of identity that created the resource.
-func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+// List of Providers selected for this Workspace
+func (o WorkspaceResourcePropertiesResponseOutput) Providers() ProviderResponseArrayOutput {
+	return o.ApplyT(func(v WorkspaceResourcePropertiesResponse) []ProviderResponse { return v.Providers }).(ProviderResponseArrayOutput)
 }
 
-// The timestamp of resource last modification (UTC)
-func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+// Provisioning status field
+func (o WorkspaceResourcePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkspaceResourcePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+// ARM Resource Id of the storage account associated with this workspace.
+func (o WorkspaceResourcePropertiesResponseOutput) StorageAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceResourcePropertiesResponse) *string { return v.StorageAccount }).(pulumi.StringPtrOutput)
 }
 
-// The type of identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+// Whether the current workspace is ready to accept Jobs.
+func (o WorkspaceResourcePropertiesResponseOutput) Usable() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkspaceResourcePropertiesResponse) string { return v.Usable }).(pulumi.StringOutput)
 }
 
 func init() {
@@ -618,9 +562,7 @@ func init() {
 	pulumi.RegisterOutputType(ProviderArrayOutput{})
 	pulumi.RegisterOutputType(ProviderResponseOutput{})
 	pulumi.RegisterOutputType(ProviderResponseArrayOutput{})
-	pulumi.RegisterOutputType(QuantumWorkspaceIdentityOutput{})
-	pulumi.RegisterOutputType(QuantumWorkspaceIdentityPtrOutput{})
-	pulumi.RegisterOutputType(QuantumWorkspaceResponseIdentityOutput{})
-	pulumi.RegisterOutputType(QuantumWorkspaceResponseIdentityPtrOutput{})
-	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(WorkspaceResourcePropertiesOutput{})
+	pulumi.RegisterOutputType(WorkspaceResourcePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(WorkspaceResourcePropertiesResponseOutput{})
 }

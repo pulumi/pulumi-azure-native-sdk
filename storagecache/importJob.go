@@ -8,16 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An import job instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md
 //
 // Uses Azure REST API version 2024-03-01.
+//
+// Other available API versions: 2024-07-01, 2025-07-01, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagecache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ImportJob struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A recent and frequently updated rate of total files, directories, and symlinks imported per second.
 	BlobsImportedPerSecond pulumi.Float64Output `pulumi:"blobsImportedPerSecond"`
 	// A recent and frequently updated rate of blobs walked per second.
@@ -43,7 +48,7 @@ type ImportJob struct {
 	// The status message of the import job.
 	StatusMessage pulumi.StringOutput `pulumi:"statusMessage"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The total blobs that have been imported since import began.
@@ -82,16 +87,13 @@ func NewImportJob(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:storagecache/v20240301:ImportJob"),
 		},
 		{
-			Type: pulumi.String("azure-native:storagecache/v20240301:importJob"),
-		},
-		{
 			Type: pulumi.String("azure-native:storagecache/v20240701:ImportJob"),
 		},
 		{
-			Type: pulumi.String("azure-native:storagecache/v20240701:importJob"),
+			Type: pulumi.String("azure-native:storagecache/v20250701:ImportJob"),
 		},
 		{
-			Type: pulumi.String("azure-native:storagecache:importJob"),
+			Type: pulumi.String("azure-native:storagecache/v20260101:ImportJob"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -203,6 +205,11 @@ func (o ImportJobOutput) ToImportJobOutputWithContext(ctx context.Context) Impor
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ImportJobOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImportJob) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // A recent and frequently updated rate of total files, directories, and symlinks imported per second.
 func (o ImportJobOutput) BlobsImportedPerSecond() pulumi.Float64Output {
 	return o.ApplyT(func(v *ImportJob) pulumi.Float64Output { return v.BlobsImportedPerSecond }).(pulumi.Float64Output)
@@ -264,8 +271,8 @@ func (o ImportJobOutput) StatusMessage() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ImportJobOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *ImportJob) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o ImportJobOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *ImportJob) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

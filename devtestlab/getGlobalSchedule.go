@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,25 +28,27 @@ func LookupGlobalSchedule(ctx *pulumi.Context, args *LookupGlobalScheduleArgs, o
 type LookupGlobalScheduleArgs struct {
 	// Specify the $expand query. Example: 'properties($select=status)'
 	Expand *string `pulumi:"expand"`
-	// The name of the schedule.
+	// The name of the Schedule
 	Name string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A schedule.
 type LookupGlobalScheduleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the schedule.
 	CreatedDate string `pulumi:"createdDate"`
 	// If the schedule will occur once each day of the week, specify the daily recurrence.
 	DailyRecurrence *DayDetailsResponse `pulumi:"dailyRecurrence"`
 	// If the schedule will occur multiple times a day, specify the hourly recurrence.
 	HourlyRecurrence *HourDetailsResponse `pulumi:"hourlyRecurrence"`
-	// The identifier of the resource.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// The location of the resource.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// The name of the resource.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Notification settings.
 	NotificationSettings *NotificationSettingsResponse `pulumi:"notificationSettings"`
@@ -53,7 +56,9 @@ type LookupGlobalScheduleResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The status of the schedule (i.e. Enabled, Disabled)
 	Status *string `pulumi:"status"`
-	// The tags of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The resource ID to which the schedule belongs
 	TargetResourceId *string `pulumi:"targetResourceId"`
@@ -61,7 +66,7 @@ type LookupGlobalScheduleResult struct {
 	TaskType *string `pulumi:"taskType"`
 	// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection<string> TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
 	TimeZoneId *string `pulumi:"timeZoneId"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The unique immutable identifier of a resource (Guid).
 	UniqueIdentifier string `pulumi:"uniqueIdentifier"`
@@ -95,9 +100,9 @@ func LookupGlobalScheduleOutput(ctx *pulumi.Context, args LookupGlobalScheduleOu
 type LookupGlobalScheduleOutputArgs struct {
 	// Specify the $expand query. Example: 'properties($select=status)'
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
-	// The name of the schedule.
+	// The name of the Schedule
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -120,6 +125,11 @@ func (o LookupGlobalScheduleResultOutput) ToLookupGlobalScheduleResultOutputWith
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupGlobalScheduleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalScheduleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The creation date of the schedule.
 func (o LookupGlobalScheduleResultOutput) CreatedDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalScheduleResult) string { return v.CreatedDate }).(pulumi.StringOutput)
@@ -135,17 +145,17 @@ func (o LookupGlobalScheduleResultOutput) HourlyRecurrence() HourDetailsResponse
 	return o.ApplyT(func(v LookupGlobalScheduleResult) *HourDetailsResponse { return v.HourlyRecurrence }).(HourDetailsResponsePtrOutput)
 }
 
-// The identifier of the resource.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupGlobalScheduleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalScheduleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The location of the resource.
+// The geo-location where the resource lives
 func (o LookupGlobalScheduleResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGlobalScheduleResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o LookupGlobalScheduleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalScheduleResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -165,7 +175,12 @@ func (o LookupGlobalScheduleResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGlobalScheduleResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// The tags of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupGlobalScheduleResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupGlobalScheduleResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o LookupGlobalScheduleResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupGlobalScheduleResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -185,7 +200,7 @@ func (o LookupGlobalScheduleResultOutput) TimeZoneId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGlobalScheduleResult) *string { return v.TimeZoneId }).(pulumi.StringPtrOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupGlobalScheduleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalScheduleResult) string { return v.Type }).(pulumi.StringOutput)
 }

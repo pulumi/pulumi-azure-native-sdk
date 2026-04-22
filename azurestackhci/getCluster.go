@@ -7,15 +7,17 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get HCI cluster.
 //
-// Uses Azure REST API version 2023-03-01.
+// Uses Azure REST API version 2024-04-01.
 //
-// Other available API versions: 2022-01-01, 2022-09-01, 2022-12-15-preview, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-04-01, 2024-09-01-preview, 2024-12-01-preview.
+// Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01, 2026-02-15-preview, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterResult
@@ -43,22 +45,30 @@ type LookupClusterResult struct {
 	AadServicePrincipalObjectId *string `pulumi:"aadServicePrincipalObjectId"`
 	// Tenant id of cluster AAD identity.
 	AadTenantId *string `pulumi:"aadTenantId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Type of billing applied to the resource.
 	BillingModel string `pulumi:"billingModel"`
 	// Unique, immutable resource id.
 	CloudId string `pulumi:"cloudId"`
 	// Endpoint configured for management from the Azure portal.
 	CloudManagementEndpoint *string `pulumi:"cloudManagementEndpoint"`
+	// Overall connectivity status for the cluster resource.
+	ConnectivityStatus string `pulumi:"connectivityStatus"`
 	// Desired properties of the cluster.
 	DesiredProperties *ClusterDesiredPropertiesResponse `pulumi:"desiredProperties"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
+	// Attestation configurations for isolated VM (e.g. TVM, CVM) of the cluster.
+	IsolatedVmAttestationConfiguration IsolatedVmAttestationConfigurationResponse `pulumi:"isolatedVmAttestationConfiguration"`
 	// Most recent billing meter timestamp.
 	LastBillingTimestamp string `pulumi:"lastBillingTimestamp"`
 	// Most recent cluster sync timestamp.
 	LastSyncTimestamp string `pulumi:"lastSyncTimestamp"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
+	// Log Collection properties of the cluster.
+	LogCollectionProperties *LogCollectionPropertiesResponse `pulumi:"logCollectionProperties"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
@@ -67,6 +77,8 @@ type LookupClusterResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// First cluster sync timestamp.
 	RegistrationTimestamp string `pulumi:"registrationTimestamp"`
+	// RemoteSupport properties of the cluster.
+	RemoteSupportProperties *RemoteSupportPropertiesResponse `pulumi:"remoteSupportProperties"`
 	// Properties reported by cluster agent.
 	ReportedProperties ClusterReportedPropertiesResponse `pulumi:"reportedProperties"`
 	// Object id of RP Service Principal
@@ -78,7 +90,7 @@ type LookupClusterResult struct {
 	// Status of the cluster agent.
 	Status string `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
@@ -88,7 +100,7 @@ type LookupClusterResult struct {
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities map[string]commontypesv4.UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
 }
 
 func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts ...pulumi.InvokeOption) LookupClusterResultOutput {
@@ -146,6 +158,11 @@ func (o LookupClusterResultOutput) AadTenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupClusterResult) *string { return v.AadTenantId }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupClusterResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Type of billing applied to the resource.
 func (o LookupClusterResultOutput) BillingModel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.BillingModel }).(pulumi.StringOutput)
@@ -161,14 +178,26 @@ func (o LookupClusterResultOutput) CloudManagementEndpoint() pulumi.StringPtrOut
 	return o.ApplyT(func(v LookupClusterResult) *string { return v.CloudManagementEndpoint }).(pulumi.StringPtrOutput)
 }
 
+// Overall connectivity status for the cluster resource.
+func (o LookupClusterResultOutput) ConnectivityStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupClusterResult) string { return v.ConnectivityStatus }).(pulumi.StringOutput)
+}
+
 // Desired properties of the cluster.
 func (o LookupClusterResultOutput) DesiredProperties() ClusterDesiredPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v LookupClusterResult) *ClusterDesiredPropertiesResponse { return v.DesiredProperties }).(ClusterDesiredPropertiesResponsePtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Attestation configurations for isolated VM (e.g. TVM, CVM) of the cluster.
+func (o LookupClusterResultOutput) IsolatedVmAttestationConfiguration() IsolatedVmAttestationConfigurationResponseOutput {
+	return o.ApplyT(func(v LookupClusterResult) IsolatedVmAttestationConfigurationResponse {
+		return v.IsolatedVmAttestationConfiguration
+	}).(IsolatedVmAttestationConfigurationResponseOutput)
 }
 
 // Most recent billing meter timestamp.
@@ -184,6 +213,11 @@ func (o LookupClusterResultOutput) LastSyncTimestamp() pulumi.StringOutput {
 // The geo-location where the resource lives
 func (o LookupClusterResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Log Collection properties of the cluster.
+func (o LookupClusterResultOutput) LogCollectionProperties() LogCollectionPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v LookupClusterResult) *LogCollectionPropertiesResponse { return v.LogCollectionProperties }).(LogCollectionPropertiesResponsePtrOutput)
 }
 
 // The name of the resource
@@ -204,6 +238,11 @@ func (o LookupClusterResultOutput) ProvisioningState() pulumi.StringOutput {
 // First cluster sync timestamp.
 func (o LookupClusterResultOutput) RegistrationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.RegistrationTimestamp }).(pulumi.StringOutput)
+}
+
+// RemoteSupport properties of the cluster.
+func (o LookupClusterResultOutput) RemoteSupportProperties() RemoteSupportPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v LookupClusterResult) *RemoteSupportPropertiesResponse { return v.RemoteSupportProperties }).(RemoteSupportPropertiesResponsePtrOutput)
 }
 
 // Properties reported by cluster agent.
@@ -232,8 +271,8 @@ func (o LookupClusterResultOutput) Status() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupClusterResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupClusterResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupClusterResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupClusterResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.
@@ -257,8 +296,10 @@ func (o LookupClusterResultOutput) Type() pulumi.StringOutput {
 }
 
 // The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o LookupClusterResultOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
-	return o.ApplyT(func(v LookupClusterResult) map[string]UserAssignedIdentityResponse { return v.UserAssignedIdentities }).(UserAssignedIdentityResponseMapOutput)
+func (o LookupClusterResultOutput) UserAssignedIdentities() commontypesv4.UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v LookupClusterResult) map[string]commontypesv4.UserAssignedIdentityResponse {
+		return v.UserAssignedIdentities
+	}).(commontypesv4.UserAssignedIdentityResponseMapOutput)
 }
 
 func init() {

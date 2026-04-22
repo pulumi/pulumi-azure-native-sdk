@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the alert rule.
 //
-// Uses Azure REST API version 2023-02-01.
+// Uses Azure REST API version 2024-09-01.
 func LookupFusionAlertRule(ctx *pulumi.Context, args *LookupFusionAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupFusionAlertRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFusionAlertRuleResult
@@ -37,6 +38,8 @@ type LookupFusionAlertRuleArgs struct {
 type LookupFusionAlertRuleResult struct {
 	// The Name of the alert rule template used to create this rule.
 	AlertRuleTemplateName string `pulumi:"alertRuleTemplateName"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The description of the alert rule.
 	Description string `pulumi:"description"`
 	// The display name for alerts created by this alert rule.
@@ -57,7 +60,7 @@ type LookupFusionAlertRuleResult struct {
 	// The severity for alerts created by this alert rule.
 	Severity string `pulumi:"severity"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The tactics of the alert rule
 	Tactics []string `pulumi:"tactics"`
 	// The techniques of the alert rule
@@ -108,6 +111,11 @@ func (o LookupFusionAlertRuleResultOutput) AlertRuleTemplateName() pulumi.String
 	return o.ApplyT(func(v LookupFusionAlertRuleResult) string { return v.AlertRuleTemplateName }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupFusionAlertRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFusionAlertRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The description of the alert rule.
 func (o LookupFusionAlertRuleResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFusionAlertRuleResult) string { return v.Description }).(pulumi.StringOutput)
@@ -155,8 +163,8 @@ func (o LookupFusionAlertRuleResultOutput) Severity() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupFusionAlertRuleResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupFusionAlertRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupFusionAlertRuleResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupFusionAlertRuleResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The tactics of the alert rule

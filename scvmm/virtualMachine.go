@@ -8,20 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The VirtualMachines resource definition.
 //
-// Uses Azure REST API version 2022-05-21-preview. In version 1.x of the Azure Native provider, it used API version 2020-06-05-preview.
+// Uses Azure REST API version 2023-04-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-05-21-preview.
 //
-// Other available API versions: 2023-04-01-preview.
+// Other available API versions: 2022-05-21-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native scvmm [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type VirtualMachine struct {
 	pulumi.CustomResourceState
 
 	// Availability Sets in vm.
 	AvailabilitySets VirtualMachinePropertiesResponseAvailabilitySetsArrayOutput `pulumi:"availabilitySets"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Type of checkpoint supported for the vm.
 	CheckpointType pulumi.StringPtrOutput `pulumi:"checkpointType"`
 	// Checkpoints in the vm.
@@ -57,7 +60,7 @@ type VirtualMachine struct {
 	// Storage properties.
 	StorageProfile StorageProfileResponsePtrOutput `pulumi:"storageProfile"`
 	// The system data.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// ARM Id of the template resource to use for deploying the vm.
@@ -264,6 +267,11 @@ func (o VirtualMachineOutput) AvailabilitySets() VirtualMachinePropertiesRespons
 	}).(VirtualMachinePropertiesResponseAvailabilitySetsArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o VirtualMachineOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Type of checkpoint supported for the vm.
 func (o VirtualMachineOutput) CheckpointType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.CheckpointType }).(pulumi.StringPtrOutput)
@@ -350,8 +358,8 @@ func (o VirtualMachineOutput) StorageProfile() StorageProfileResponsePtrOutput {
 }
 
 // The system data.
-func (o VirtualMachineOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *VirtualMachine) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o VirtualMachineOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *VirtualMachine) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags

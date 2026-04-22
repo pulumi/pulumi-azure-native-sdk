@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Define the virtualMachine.
 //
-// Uses Azure REST API version 2022-07-15-preview. In version 1.x of the Azure Native provider, it used API version 2020-10-01-preview.
+// Uses Azure REST API version 2023-03-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-07-15-preview.
 //
-// Other available API versions: 2023-03-01-preview.
+// Other available API versions: 2022-07-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedvmwarevsphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type VirtualMachine struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets the name of the corresponding resource in Kubernetes.
 	CustomResourceName pulumi.StringOutput `pulumi:"customResourceName"`
 	// Gets or sets the extended location.
@@ -56,7 +59,7 @@ type VirtualMachine struct {
 	PlacementProfile PlacementProfileResponsePtrOutput `pulumi:"placementProfile"`
 	// Gets the power state of the virtual machine.
 	PowerState pulumi.StringOutput `pulumi:"powerState"`
-	// Gets or sets the provisioning state.
+	// Gets the provisioning state.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Gets or sets the ARM Id of the resourcePool resource on which this virtual machine will
 	// deploy.
@@ -70,7 +73,7 @@ type VirtualMachine struct {
 	// Storage properties.
 	StorageProfile StorageProfileResponsePtrOutput `pulumi:"storageProfile"`
 	// The system data.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// Gets or sets the Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Gets or sets the ARM Id of the template resource to deploy the virtual machine.
@@ -272,6 +275,11 @@ func (o VirtualMachineOutput) ToVirtualMachineOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o VirtualMachineOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Gets the name of the corresponding resource in Kubernetes.
 func (o VirtualMachineOutput) CustomResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.CustomResourceName }).(pulumi.StringOutput)
@@ -362,7 +370,7 @@ func (o VirtualMachineOutput) PowerState() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.PowerState }).(pulumi.StringOutput)
 }
 
-// Gets or sets the provisioning state.
+// Gets the provisioning state.
 func (o VirtualMachineOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
@@ -394,8 +402,8 @@ func (o VirtualMachineOutput) StorageProfile() StorageProfileResponsePtrOutput {
 }
 
 // The system data.
-func (o VirtualMachineOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *VirtualMachine) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o VirtualMachineOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *VirtualMachine) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Gets or sets the Resource tags.

@@ -8,20 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a Administrator.
 //
-// Uses Azure REST API version 2022-01-01.
+// Uses Azure REST API version 2023-12-30. In version 2.x of the Azure Native provider, it used API version 2022-01-01.
 //
-// Other available API versions: 2023-06-01-preview, 2023-06-30, 2023-12-30.
+// Other available API versions: 2022-01-01, 2023-06-01-preview, 2023-06-30, 2024-12-01-preview, 2024-12-30, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dbformysql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AzureADAdministrator struct {
 	pulumi.CustomResourceState
 
 	// Type of the sever administrator.
 	AdministratorType pulumi.StringPtrOutput `pulumi:"administratorType"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The resource id of the identity used for AAD Authentication.
 	IdentityResourceId pulumi.StringPtrOutput `pulumi:"identityResourceId"`
 	// Login name of the server administrator.
@@ -30,8 +33,8 @@ type AzureADAdministrator struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// SID (object ID) of the server administrator.
 	Sid pulumi.StringPtrOutput `pulumi:"sid"`
-	// The system metadata relating to this resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Tenant ID of the administrator.
 	TenantId pulumi.StringPtrOutput `pulumi:"tenantId"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -66,6 +69,15 @@ func NewAzureADAdministrator(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:dbformysql/v20231230:AzureADAdministrator"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20241201preview:AzureADAdministrator"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20241230:AzureADAdministrator"),
+		},
+		{
+			Type: pulumi.String("azure-native:dbformysql/v20250601preview:AzureADAdministrator"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -182,6 +194,11 @@ func (o AzureADAdministratorOutput) AdministratorType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureADAdministrator) pulumi.StringPtrOutput { return v.AdministratorType }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o AzureADAdministratorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzureADAdministrator) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The resource id of the identity used for AAD Authentication.
 func (o AzureADAdministratorOutput) IdentityResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureADAdministrator) pulumi.StringPtrOutput { return v.IdentityResourceId }).(pulumi.StringPtrOutput)
@@ -202,9 +219,9 @@ func (o AzureADAdministratorOutput) Sid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureADAdministrator) pulumi.StringPtrOutput { return v.Sid }).(pulumi.StringPtrOutput)
 }
 
-// The system metadata relating to this resource.
-func (o AzureADAdministratorOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *AzureADAdministrator) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o AzureADAdministratorOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *AzureADAdministrator) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Tenant ID of the administrator.

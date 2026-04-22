@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The agentPool resource definition
 //
-// Uses Azure REST API version 2022-09-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-05-01-preview.
+// Uses Azure REST API version 2022-09-01-preview.
 type AgentPool struct {
 	pulumi.CustomResourceState
 
 	// AvailabilityZones - The list of Availability zones to use for nodes. Datacenter racks modelled as zones
 	AvailabilityZones pulumi.StringArrayOutput `pulumi:"availabilityZones"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The underlying cloud infra provider properties.
 	CloudProviderProfile CloudProviderProfileResponsePtrOutput `pulumi:"cloudProviderProfile"`
 	// Count - Number of agents to host docker containers. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1.
@@ -49,7 +52,7 @@ type AgentPool struct {
 	// HybridAKSNodePoolStatus defines the observed state of HybridAKSNodePool
 	Status AgentPoolProvisioningStatusResponseStatusPtrOutput `pulumi:"status"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource Type
@@ -82,16 +85,13 @@ func NewAgentPool(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:hybridcontainerservice/v20220501preview:AgentPool"),
 		},
 		{
-			Type: pulumi.String("azure-native:hybridcontainerservice/v20220501preview:agentPool"),
-		},
-		{
 			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:AgentPool"),
 		},
 		{
-			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:agentPool"),
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20231115preview:AgentPool"),
 		},
 		{
-			Type: pulumi.String("azure-native:hybridcontainerservice:agentPool"),
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20240101:AgentPool"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -250,6 +250,11 @@ func (o AgentPoolOutput) AvailabilityZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AgentPool) pulumi.StringArrayOutput { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o AgentPoolOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AgentPool) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The underlying cloud infra provider properties.
 func (o AgentPoolOutput) CloudProviderProfile() CloudProviderProfileResponsePtrOutput {
 	return o.ApplyT(func(v *AgentPool) CloudProviderProfileResponsePtrOutput { return v.CloudProviderProfile }).(CloudProviderProfileResponsePtrOutput)
@@ -324,8 +329,8 @@ func (o AgentPoolOutput) Status() AgentPoolProvisioningStatusResponseStatusPtrOu
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o AgentPoolOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *AgentPool) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o AgentPoolOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *AgentPool) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Resource tags

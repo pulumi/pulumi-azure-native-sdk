@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Implements datastore GET method.
 //
-// Uses Azure REST API version 2022-07-15-preview.
+// Uses Azure REST API version 2023-12-01.
 //
-// Other available API versions: 2023-03-01-preview, 2023-10-01, 2023-12-01.
+// Other available API versions: 2022-07-15-preview, 2023-03-01-preview, 2023-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedvmwarevsphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupDatastore(ctx *pulumi.Context, args *LookupDatastoreArgs, opts ...pulumi.InvokeOption) (*LookupDatastoreResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatastoreResult
@@ -35,6 +36,8 @@ type LookupDatastoreArgs struct {
 
 // Define the datastore.
 type LookupDatastoreResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets Maximum capacity of this datastore in GBs.
 	CapacityGB float64 `pulumi:"capacityGB"`
 	// Gets the name of the corresponding resource in Kubernetes.
@@ -62,7 +65,7 @@ type LookupDatastoreResult struct {
 	// The resource status information.
 	Statuses []ResourceStatusResponse `pulumi:"statuses"`
 	// The system data.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// Gets or sets the Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Gets or sets the type of the resource.
@@ -106,6 +109,11 @@ func (o LookupDatastoreResultOutput) ToLookupDatastoreResultOutput() LookupDatas
 
 func (o LookupDatastoreResultOutput) ToLookupDatastoreResultOutputWithContext(ctx context.Context) LookupDatastoreResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDatastoreResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatastoreResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets Maximum capacity of this datastore in GBs.
@@ -174,8 +182,8 @@ func (o LookupDatastoreResultOutput) Statuses() ResourceStatusResponseArrayOutpu
 }
 
 // The system data.
-func (o LookupDatastoreResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupDatastoreResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupDatastoreResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupDatastoreResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Gets or sets the Resource tags.

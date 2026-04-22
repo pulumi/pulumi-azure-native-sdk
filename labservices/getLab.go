@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the properties of a lab resource.
 //
-// Uses Azure REST API version 2022-08-01.
+// Uses Azure REST API version 2023-06-07.
 //
-// Other available API versions: 2018-10-15, 2023-06-07.
+// Other available API versions: 2021-10-01-preview, 2021-11-15-preview, 2022-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native labservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupLab(ctx *pulumi.Context, args *LookupLabArgs, opts ...pulumi.InvokeOption) (*LookupLabResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLabResult
@@ -37,6 +38,8 @@ type LookupLabArgs struct {
 type LookupLabResult struct {
 	// The resource auto shutdown configuration for the lab. This controls whether actions are taken on resources that are sitting idle.
 	AutoShutdownProfile AutoShutdownProfileResponse `pulumi:"autoShutdownProfile"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The connection profile for the lab. This controls settings such as web access to lab resources or whether RDP or SSH ports are open.
 	ConnectionProfile ConnectionProfileResponse `pulumi:"connectionProfile"`
 	// The description of the lab.
@@ -53,6 +56,8 @@ type LookupLabResult struct {
 	NetworkProfile *LabNetworkProfileResponse `pulumi:"networkProfile"`
 	// Current provisioning state of the lab.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Error details of last operation done on lab.
+	ResourceOperationError ResourceOperationErrorResponse `pulumi:"resourceOperationError"`
 	// The lab user list management profile.
 	RosterProfile *RosterProfileResponse `pulumi:"rosterProfile"`
 	// The lab security profile.
@@ -60,7 +65,7 @@ type LookupLabResult struct {
 	// The lab state.
 	State string `pulumi:"state"`
 	// Metadata pertaining to creation and last modification of the lab.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The title of the lab.
@@ -125,6 +130,11 @@ func (o LookupLabResultOutput) AutoShutdownProfile() AutoShutdownProfileResponse
 	return o.ApplyT(func(v LookupLabResult) AutoShutdownProfileResponse { return v.AutoShutdownProfile }).(AutoShutdownProfileResponseOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupLabResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLabResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The connection profile for the lab. This controls settings such as web access to lab resources or whether RDP or SSH ports are open.
 func (o LookupLabResultOutput) ConnectionProfile() ConnectionProfileResponseOutput {
 	return o.ApplyT(func(v LookupLabResult) ConnectionProfileResponse { return v.ConnectionProfile }).(ConnectionProfileResponseOutput)
@@ -165,6 +175,11 @@ func (o LookupLabResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLabResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// Error details of last operation done on lab.
+func (o LookupLabResultOutput) ResourceOperationError() ResourceOperationErrorResponseOutput {
+	return o.ApplyT(func(v LookupLabResult) ResourceOperationErrorResponse { return v.ResourceOperationError }).(ResourceOperationErrorResponseOutput)
+}
+
 // The lab user list management profile.
 func (o LookupLabResultOutput) RosterProfile() RosterProfileResponsePtrOutput {
 	return o.ApplyT(func(v LookupLabResult) *RosterProfileResponse { return v.RosterProfile }).(RosterProfileResponsePtrOutput)
@@ -181,8 +196,8 @@ func (o LookupLabResultOutput) State() pulumi.StringOutput {
 }
 
 // Metadata pertaining to creation and last modification of the lab.
-func (o LookupLabResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupLabResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupLabResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupLabResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Resource tags.

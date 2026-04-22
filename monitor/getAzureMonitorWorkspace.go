@@ -7,7 +7,9 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +17,7 @@ import (
 //
 // Uses Azure REST API version 2023-04-03.
 //
-// Other available API versions: 2023-10-01-preview.
+// Other available API versions: 2023-10-01-preview, 2025-05-03-preview, 2025-10-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native monitor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAzureMonitorWorkspace(ctx *pulumi.Context, args *LookupAzureMonitorWorkspaceArgs, opts ...pulumi.InvokeOption) (*LookupAzureMonitorWorkspaceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzureMonitorWorkspaceResult
@@ -37,6 +39,8 @@ type LookupAzureMonitorWorkspaceArgs struct {
 type LookupAzureMonitorWorkspaceResult struct {
 	// The immutable Id of the Azure Monitor Workspace. This property is read-only.
 	AccountId string `pulumi:"accountId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The Data Collection Rule and Endpoint used for ingestion by default.
 	DefaultIngestionSettings AzureMonitorWorkspaceResponseDefaultIngestionSettings `pulumi:"defaultIngestionSettings"`
 	// Resource entity tag (ETag)
@@ -50,13 +54,13 @@ type LookupAzureMonitorWorkspaceResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// List of private endpoint connections
-	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections []commontypesv4.PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// The provisioning state of the Azure Monitor Workspace. Set to Succeeded if everything is healthy.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Gets or sets allow or disallow public network access to Azure Monitor Workspace
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -103,6 +107,11 @@ func (o LookupAzureMonitorWorkspaceResultOutput) AccountId() pulumi.StringOutput
 	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupAzureMonitorWorkspaceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The Data Collection Rule and Endpoint used for ingestion by default.
 func (o LookupAzureMonitorWorkspaceResultOutput) DefaultIngestionSettings() AzureMonitorWorkspaceResponseDefaultIngestionSettingsOutput {
 	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) AzureMonitorWorkspaceResponseDefaultIngestionSettings {
@@ -136,10 +145,10 @@ func (o LookupAzureMonitorWorkspaceResultOutput) Name() pulumi.StringOutput {
 }
 
 // List of private endpoint connections
-func (o LookupAzureMonitorWorkspaceResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) []PrivateEndpointConnectionResponse {
+func (o LookupAzureMonitorWorkspaceResultOutput) PrivateEndpointConnections() commontypesv4.PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) []commontypesv4.PrivateEndpointConnectionResponse {
 		return v.PrivateEndpointConnections
-	}).(PrivateEndpointConnectionResponseArrayOutput)
+	}).(commontypesv4.PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // The provisioning state of the Azure Monitor Workspace. Set to Succeeded if everything is healthy.
@@ -153,8 +162,8 @@ func (o LookupAzureMonitorWorkspaceResultOutput) PublicNetworkAccess() pulumi.St
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupAzureMonitorWorkspaceResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupAzureMonitorWorkspaceResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAzureMonitorWorkspaceResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

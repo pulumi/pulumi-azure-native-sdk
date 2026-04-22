@@ -7,13 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Site
 //
 // Uses Azure REST API version 2024-02-01-preview.
+//
+// Other available API versions: 2025-03-01-preview, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSitesBySubscription(ctx *pulumi.Context, args *LookupSitesBySubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupSitesBySubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSitesBySubscriptionResult
@@ -25,12 +28,14 @@ func LookupSitesBySubscription(ctx *pulumi.Context, args *LookupSitesBySubscript
 }
 
 type LookupSitesBySubscriptionArgs struct {
-	// Name of Site resource
+	// The name of the Site
 	SiteName string `pulumi:"siteName"`
 }
 
-// Site as ARM Resource
+// Site as Extension Resource
 type LookupSitesBySubscriptionResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -38,7 +43,7 @@ type LookupSitesBySubscriptionResult struct {
 	// The resource-specific properties for this resource.
 	Properties SitePropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -53,7 +58,7 @@ func LookupSitesBySubscriptionOutput(ctx *pulumi.Context, args LookupSitesBySubs
 }
 
 type LookupSitesBySubscriptionOutputArgs struct {
-	// Name of Site resource
+	// The name of the Site
 	SiteName pulumi.StringInput `pulumi:"siteName"`
 }
 
@@ -61,7 +66,7 @@ func (LookupSitesBySubscriptionOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupSitesBySubscriptionArgs)(nil)).Elem()
 }
 
-// Site as ARM Resource
+// Site as Extension Resource
 type LookupSitesBySubscriptionResultOutput struct{ *pulumi.OutputState }
 
 func (LookupSitesBySubscriptionResultOutput) ElementType() reflect.Type {
@@ -74,6 +79,11 @@ func (o LookupSitesBySubscriptionResultOutput) ToLookupSitesBySubscriptionResult
 
 func (o LookupSitesBySubscriptionResultOutput) ToLookupSitesBySubscriptionResultOutputWithContext(ctx context.Context) LookupSitesBySubscriptionResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSitesBySubscriptionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSitesBySubscriptionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -92,8 +102,8 @@ func (o LookupSitesBySubscriptionResultOutput) Properties() SitePropertiesRespon
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupSitesBySubscriptionResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSitesBySubscriptionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupSitesBySubscriptionResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSitesBySubscriptionResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

@@ -7,13 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets Topology of the underlying resources in the given Network Fabric instance.
 //
 // Uses Azure REST API version 2023-06-15.
+//
+// Other available API versions: 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func GetNetworkFabricTopology(ctx *pulumi.Context, args *GetNetworkFabricTopologyArgs, opts ...pulumi.InvokeOption) (*GetNetworkFabricTopologyResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetNetworkFabricTopologyResult
@@ -36,7 +39,7 @@ type GetNetworkFabricTopologyResult struct {
 	// Gets the configuration state.
 	ConfigurationState string `pulumi:"configurationState"`
 	// The error object.
-	Error *ErrorDetailResponse `pulumi:"error"`
+	Error *commontypesv5.ErrorDetailResponse `pulumi:"error"`
 	// URL for the details of the response.
 	Url *string `pulumi:"url"`
 }
@@ -82,8 +85,8 @@ func (o GetNetworkFabricTopologyResultOutput) ConfigurationState() pulumi.String
 }
 
 // The error object.
-func (o GetNetworkFabricTopologyResultOutput) Error() ErrorDetailResponsePtrOutput {
-	return o.ApplyT(func(v GetNetworkFabricTopologyResult) *ErrorDetailResponse { return v.Error }).(ErrorDetailResponsePtrOutput)
+func (o GetNetworkFabricTopologyResultOutput) Error() commontypesv5.ErrorDetailResponsePtrOutput {
+	return o.ApplyT(func(v GetNetworkFabricTopologyResult) *commontypesv5.ErrorDetailResponse { return v.Error }).(commontypesv5.ErrorDetailResponsePtrOutput)
 }
 
 // URL for the details of the response.

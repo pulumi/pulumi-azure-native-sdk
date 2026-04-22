@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents an instance of a DFP instance resource.
 //
-// Uses Azure REST API version 2021-02-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-02-01-preview.
+// Uses Azure REST API version 2021-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-02-01-preview.
 type InstanceDetails struct {
 	pulumi.CustomResourceState
 
 	// A collection of DFP instance administrators
 	Administration DFPInstanceAdministratorsResponsePtrOutput `pulumi:"administration"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Location of the DFP resource.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -27,7 +30,7 @@ type InstanceDetails struct {
 	// The current deployment state of DFP resource. The provisioningState is to indicate states for resource provisioning.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// Key-value pairs of additional resource provisioning properties.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -151,6 +154,11 @@ func (o InstanceDetailsOutput) Administration() DFPInstanceAdministratorsRespons
 	return o.ApplyT(func(v *InstanceDetails) DFPInstanceAdministratorsResponsePtrOutput { return v.Administration }).(DFPInstanceAdministratorsResponsePtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o InstanceDetailsOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *InstanceDetails) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Location of the DFP resource.
 func (o InstanceDetailsOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceDetails) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -167,8 +175,8 @@ func (o InstanceDetailsOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o InstanceDetailsOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *InstanceDetails) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o InstanceDetailsOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *InstanceDetails) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Key-value pairs of additional resource provisioning properties.

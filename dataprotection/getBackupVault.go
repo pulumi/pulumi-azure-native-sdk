@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns a resource belonging to a resource group.
 //
-// Uses Azure REST API version 2023-01-01.
+// Uses Azure REST API version 2025-01-01.
 //
-// Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01, 2023-12-01, 2024-02-01-preview, 2024-03-01, 2024-04-01, 2025-01-01, 2025-02-01.
+// Other available API versions: 2023-01-01, 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01, 2023-12-01, 2024-02-01-preview, 2024-03-01, 2024-04-01, 2025-02-01, 2025-07-01, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dataprotection [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupBackupVault(ctx *pulumi.Context, args *LookupBackupVaultArgs, opts ...pulumi.InvokeOption) (*LookupBackupVaultResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBackupVaultResult
@@ -35,6 +36,8 @@ type LookupBackupVaultArgs struct {
 
 // Backup Vault Resource
 type LookupBackupVaultResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Optional ETag.
 	ETag *string `pulumi:"eTag"`
 	// Resource Id represents the complete path to the resource.
@@ -48,7 +51,7 @@ type LookupBackupVaultResult struct {
 	// BackupVaultResource properties
 	Properties BackupVaultResponse `pulumi:"properties"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv4.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
@@ -90,6 +93,11 @@ func (o LookupBackupVaultResultOutput) ToLookupBackupVaultResultOutputWithContex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupBackupVaultResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupVaultResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Optional ETag.
 func (o LookupBackupVaultResultOutput) ETag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupBackupVaultResult) *string { return v.ETag }).(pulumi.StringPtrOutput)
@@ -121,8 +129,8 @@ func (o LookupBackupVaultResultOutput) Properties() BackupVaultResponseOutput {
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupBackupVaultResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupBackupVaultResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupBackupVaultResultOutput) SystemData() commontypesv4.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupBackupVaultResult) commontypesv4.SystemDataResponse { return v.SystemData }).(commontypesv4.SystemDataResponseOutput)
 }
 
 // Resource tags.

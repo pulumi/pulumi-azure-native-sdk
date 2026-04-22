@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +34,8 @@ type LookupSecretSyncArgs struct {
 
 // The SecretSync resource.
 type LookupSecretSyncResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The complex type of the extended location.
 	ExtendedLocation *AzureResourceManagerCommonTypesExtendedLocationResponse `pulumi:"extendedLocation"`
 	// ForceSynchronization can be used to force the secret synchronization. The secret synchronization is triggered by changing the value in this field. This field is not used to resolve synchronization conflicts.
@@ -56,7 +59,7 @@ type LookupSecretSyncResult struct {
 	// SecretSyncStatus defines the observed state of the secret synchronization process.
 	Status SecretSyncStatusResponse `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -96,6 +99,11 @@ func (o LookupSecretSyncResultOutput) ToLookupSecretSyncResultOutput() LookupSec
 
 func (o LookupSecretSyncResultOutput) ToLookupSecretSyncResultOutputWithContext(ctx context.Context) LookupSecretSyncResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSecretSyncResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecretSyncResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The complex type of the extended location.
@@ -156,8 +164,8 @@ func (o LookupSecretSyncResultOutput) Status() SecretSyncStatusResponseOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupSecretSyncResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSecretSyncResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupSecretSyncResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSecretSyncResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

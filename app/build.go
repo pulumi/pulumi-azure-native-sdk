@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Information pertaining to an individual build.
 //
-// Uses Azure REST API version 2023-08-01-preview.
+// Uses Azure REST API version 2025-02-02-preview. In version 2.x of the Azure Native provider, it used API version 2023-08-01-preview.
 //
-// Other available API versions: 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview.
+// Other available API versions: 2023-08-01-preview, 2023-11-02-preview, 2024-02-02-preview, 2024-08-02-preview, 2024-10-02-preview, 2025-10-02-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native app [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Build struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Status of the build once it has been provisioned.
 	BuildStatus pulumi.StringOutput `pulumi:"buildStatus"`
 	// Configuration of the build.
@@ -33,7 +36,7 @@ type Build struct {
 	// Build provisioning state.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Endpoint to use to retrieve an authentication token for log streaming and uploading source code.
 	TokenEndpoint pulumi.StringOutput `pulumi:"tokenEndpoint"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -70,6 +73,12 @@ func NewBuild(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:app/v20241002preview:Build"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20250202preview:Build"),
+		},
+		{
+			Type: pulumi.String("azure-native:app/v20251002preview:Build"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -169,6 +178,11 @@ func (o BuildOutput) ToBuildOutputWithContext(ctx context.Context) BuildOutput {
 	return o
 }
 
+// The Azure API version of the resource.
+func (o BuildOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Build) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Status of the build once it has been provisioned.
 func (o BuildOutput) BuildStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Build) pulumi.StringOutput { return v.BuildStatus }).(pulumi.StringOutput)
@@ -202,8 +216,8 @@ func (o BuildOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o BuildOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Build) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o BuildOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Build) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Endpoint to use to retrieve an authentication token for log streaming and uploading source code.

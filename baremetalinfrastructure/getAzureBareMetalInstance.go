@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +34,8 @@ type LookupAzureBareMetalInstanceArgs struct {
 
 // AzureBareMetal instance info on Azure (ARM properties and AzureBareMetal properties)
 type LookupAzureBareMetalInstanceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Specifies the Azure Bare Metal Instance unique ID.
 	AzureBareMetalInstanceId *string `pulumi:"azureBareMetalInstanceId"`
 	// Specifies the hardware settings for the Azure Bare Metal Instance.
@@ -60,7 +63,7 @@ type LookupAzureBareMetalInstanceResult struct {
 	// Specifies the storage settings for the Azure Bare Metal Instance disks.
 	StorageProfile *StorageProfileResponse `pulumi:"storageProfile"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -100,6 +103,11 @@ func (o LookupAzureBareMetalInstanceResultOutput) ToLookupAzureBareMetalInstance
 
 func (o LookupAzureBareMetalInstanceResultOutput) ToLookupAzureBareMetalInstanceResultOutputWithContext(ctx context.Context) LookupAzureBareMetalInstanceResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAzureBareMetalInstanceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAzureBareMetalInstanceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the Azure Bare Metal Instance unique ID.
@@ -168,8 +176,8 @@ func (o LookupAzureBareMetalInstanceResultOutput) StorageProfile() StorageProfil
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupAzureBareMetalInstanceResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAzureBareMetalInstanceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupAzureBareMetalInstanceResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAzureBareMetalInstanceResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

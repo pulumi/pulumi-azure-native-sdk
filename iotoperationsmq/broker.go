@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // MQ broker resource
 //
-// Uses Azure REST API version 2023-10-04-preview.
+// Uses Azure REST API version 2023-10-04-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-04-preview.
 type Broker struct {
 	pulumi.CustomResourceState
 
 	// The details of Authentication Docker Image.
 	AuthImage ContainerImageResponseOutput `pulumi:"authImage"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The details of Broker Docker Image.
 	BrokerImage ContainerImageResponseOutput `pulumi:"brokerImage"`
 	// The details of Node Tolerations for Broker Pods.
@@ -51,7 +54,7 @@ type Broker struct {
 	// The status of the last operation.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -260,6 +263,11 @@ func (o BrokerOutput) AuthImage() ContainerImageResponseOutput {
 	return o.ApplyT(func(v *Broker) ContainerImageResponseOutput { return v.AuthImage }).(ContainerImageResponseOutput)
 }
 
+// The Azure API version of the resource.
+func (o BrokerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Broker) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The details of Broker Docker Image.
 func (o BrokerOutput) BrokerImage() ContainerImageResponseOutput {
 	return o.ApplyT(func(v *Broker) ContainerImageResponseOutput { return v.BrokerImage }).(ContainerImageResponseOutput)
@@ -338,8 +346,8 @@ func (o BrokerOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o BrokerOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Broker) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o BrokerOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Broker) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

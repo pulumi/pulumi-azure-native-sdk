@@ -10,6 +10,171 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type AKSVolumeTypes string
+
+const (
+	AKSVolumeTypesAzureDisk         = AKSVolumeTypes("AzureDisk")
+	AKSVolumeTypesAzureFileShareSMB = AKSVolumeTypes("AzureFileShareSMB")
+)
+
+func (AKSVolumeTypes) ElementType() reflect.Type {
+	return reflect.TypeOf((*AKSVolumeTypes)(nil)).Elem()
+}
+
+func (e AKSVolumeTypes) ToAKSVolumeTypesOutput() AKSVolumeTypesOutput {
+	return pulumi.ToOutput(e).(AKSVolumeTypesOutput)
+}
+
+func (e AKSVolumeTypes) ToAKSVolumeTypesOutputWithContext(ctx context.Context) AKSVolumeTypesOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AKSVolumeTypesOutput)
+}
+
+func (e AKSVolumeTypes) ToAKSVolumeTypesPtrOutput() AKSVolumeTypesPtrOutput {
+	return e.ToAKSVolumeTypesPtrOutputWithContext(context.Background())
+}
+
+func (e AKSVolumeTypes) ToAKSVolumeTypesPtrOutputWithContext(ctx context.Context) AKSVolumeTypesPtrOutput {
+	return AKSVolumeTypes(e).ToAKSVolumeTypesOutputWithContext(ctx).ToAKSVolumeTypesPtrOutputWithContext(ctx)
+}
+
+func (e AKSVolumeTypes) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AKSVolumeTypes) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AKSVolumeTypes) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AKSVolumeTypes) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AKSVolumeTypesOutput struct{ *pulumi.OutputState }
+
+func (AKSVolumeTypesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AKSVolumeTypes)(nil)).Elem()
+}
+
+func (o AKSVolumeTypesOutput) ToAKSVolumeTypesOutput() AKSVolumeTypesOutput {
+	return o
+}
+
+func (o AKSVolumeTypesOutput) ToAKSVolumeTypesOutputWithContext(ctx context.Context) AKSVolumeTypesOutput {
+	return o
+}
+
+func (o AKSVolumeTypesOutput) ToAKSVolumeTypesPtrOutput() AKSVolumeTypesPtrOutput {
+	return o.ToAKSVolumeTypesPtrOutputWithContext(context.Background())
+}
+
+func (o AKSVolumeTypesOutput) ToAKSVolumeTypesPtrOutputWithContext(ctx context.Context) AKSVolumeTypesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AKSVolumeTypes) *AKSVolumeTypes {
+		return &v
+	}).(AKSVolumeTypesPtrOutput)
+}
+
+func (o AKSVolumeTypesOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AKSVolumeTypesOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AKSVolumeTypes) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AKSVolumeTypesOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AKSVolumeTypesOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AKSVolumeTypes) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AKSVolumeTypesPtrOutput struct{ *pulumi.OutputState }
+
+func (AKSVolumeTypesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AKSVolumeTypes)(nil)).Elem()
+}
+
+func (o AKSVolumeTypesPtrOutput) ToAKSVolumeTypesPtrOutput() AKSVolumeTypesPtrOutput {
+	return o
+}
+
+func (o AKSVolumeTypesPtrOutput) ToAKSVolumeTypesPtrOutputWithContext(ctx context.Context) AKSVolumeTypesPtrOutput {
+	return o
+}
+
+func (o AKSVolumeTypesPtrOutput) Elem() AKSVolumeTypesOutput {
+	return o.ApplyT(func(v *AKSVolumeTypes) AKSVolumeTypes {
+		if v != nil {
+			return *v
+		}
+		var ret AKSVolumeTypes
+		return ret
+	}).(AKSVolumeTypesOutput)
+}
+
+func (o AKSVolumeTypesPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AKSVolumeTypesPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AKSVolumeTypes) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AKSVolumeTypesInput is an input type that accepts values of the AKSVolumeTypes enum
+// A concrete instance of `AKSVolumeTypesInput` can be one of the following:
+//
+//	AKSVolumeTypesAzureDisk
+//	AKSVolumeTypesAzureFileShareSMB
+type AKSVolumeTypesInput interface {
+	pulumi.Input
+
+	ToAKSVolumeTypesOutput() AKSVolumeTypesOutput
+	ToAKSVolumeTypesOutputWithContext(context.Context) AKSVolumeTypesOutput
+}
+
+var aksvolumeTypesPtrType = reflect.TypeOf((**AKSVolumeTypes)(nil)).Elem()
+
+type AKSVolumeTypesPtrInput interface {
+	pulumi.Input
+
+	ToAKSVolumeTypesPtrOutput() AKSVolumeTypesPtrOutput
+	ToAKSVolumeTypesPtrOutputWithContext(context.Context) AKSVolumeTypesPtrOutput
+}
+
+type aksvolumeTypesPtr string
+
+func AKSVolumeTypesPtr(v string) AKSVolumeTypesPtrInput {
+	return (*aksvolumeTypesPtr)(&v)
+}
+
+func (*aksvolumeTypesPtr) ElementType() reflect.Type {
+	return aksvolumeTypesPtrType
+}
+
+func (in *aksvolumeTypesPtr) ToAKSVolumeTypesPtrOutput() AKSVolumeTypesPtrOutput {
+	return pulumi.ToOutput(in).(AKSVolumeTypesPtrOutput)
+}
+
+func (in *aksvolumeTypesPtr) ToAKSVolumeTypesPtrOutputWithContext(ctx context.Context) AKSVolumeTypesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AKSVolumeTypesPtrOutput)
+}
+
 type AbsoluteMarker string
 
 const (
@@ -344,6 +509,172 @@ func (in *alertsStatePtr) ToAlertsStatePtrOutput() AlertsStatePtrOutput {
 
 func (in *alertsStatePtr) ToAlertsStatePtrOutputWithContext(ctx context.Context) AlertsStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AlertsStatePtrOutput)
+}
+
+// CrossRegionRestore state
+type CrossRegionRestoreState string
+
+const (
+	CrossRegionRestoreStateDisabled = CrossRegionRestoreState("Disabled")
+	CrossRegionRestoreStateEnabled  = CrossRegionRestoreState("Enabled")
+)
+
+func (CrossRegionRestoreState) ElementType() reflect.Type {
+	return reflect.TypeOf((*CrossRegionRestoreState)(nil)).Elem()
+}
+
+func (e CrossRegionRestoreState) ToCrossRegionRestoreStateOutput() CrossRegionRestoreStateOutput {
+	return pulumi.ToOutput(e).(CrossRegionRestoreStateOutput)
+}
+
+func (e CrossRegionRestoreState) ToCrossRegionRestoreStateOutputWithContext(ctx context.Context) CrossRegionRestoreStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CrossRegionRestoreStateOutput)
+}
+
+func (e CrossRegionRestoreState) ToCrossRegionRestoreStatePtrOutput() CrossRegionRestoreStatePtrOutput {
+	return e.ToCrossRegionRestoreStatePtrOutputWithContext(context.Background())
+}
+
+func (e CrossRegionRestoreState) ToCrossRegionRestoreStatePtrOutputWithContext(ctx context.Context) CrossRegionRestoreStatePtrOutput {
+	return CrossRegionRestoreState(e).ToCrossRegionRestoreStateOutputWithContext(ctx).ToCrossRegionRestoreStatePtrOutputWithContext(ctx)
+}
+
+func (e CrossRegionRestoreState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CrossRegionRestoreState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CrossRegionRestoreState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CrossRegionRestoreState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CrossRegionRestoreStateOutput struct{ *pulumi.OutputState }
+
+func (CrossRegionRestoreStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CrossRegionRestoreState)(nil)).Elem()
+}
+
+func (o CrossRegionRestoreStateOutput) ToCrossRegionRestoreStateOutput() CrossRegionRestoreStateOutput {
+	return o
+}
+
+func (o CrossRegionRestoreStateOutput) ToCrossRegionRestoreStateOutputWithContext(ctx context.Context) CrossRegionRestoreStateOutput {
+	return o
+}
+
+func (o CrossRegionRestoreStateOutput) ToCrossRegionRestoreStatePtrOutput() CrossRegionRestoreStatePtrOutput {
+	return o.ToCrossRegionRestoreStatePtrOutputWithContext(context.Background())
+}
+
+func (o CrossRegionRestoreStateOutput) ToCrossRegionRestoreStatePtrOutputWithContext(ctx context.Context) CrossRegionRestoreStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CrossRegionRestoreState) *CrossRegionRestoreState {
+		return &v
+	}).(CrossRegionRestoreStatePtrOutput)
+}
+
+func (o CrossRegionRestoreStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CrossRegionRestoreStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CrossRegionRestoreState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CrossRegionRestoreStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CrossRegionRestoreStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CrossRegionRestoreState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CrossRegionRestoreStatePtrOutput struct{ *pulumi.OutputState }
+
+func (CrossRegionRestoreStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CrossRegionRestoreState)(nil)).Elem()
+}
+
+func (o CrossRegionRestoreStatePtrOutput) ToCrossRegionRestoreStatePtrOutput() CrossRegionRestoreStatePtrOutput {
+	return o
+}
+
+func (o CrossRegionRestoreStatePtrOutput) ToCrossRegionRestoreStatePtrOutputWithContext(ctx context.Context) CrossRegionRestoreStatePtrOutput {
+	return o
+}
+
+func (o CrossRegionRestoreStatePtrOutput) Elem() CrossRegionRestoreStateOutput {
+	return o.ApplyT(func(v *CrossRegionRestoreState) CrossRegionRestoreState {
+		if v != nil {
+			return *v
+		}
+		var ret CrossRegionRestoreState
+		return ret
+	}).(CrossRegionRestoreStateOutput)
+}
+
+func (o CrossRegionRestoreStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CrossRegionRestoreStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CrossRegionRestoreState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CrossRegionRestoreStateInput is an input type that accepts values of the CrossRegionRestoreState enum
+// A concrete instance of `CrossRegionRestoreStateInput` can be one of the following:
+//
+//	CrossRegionRestoreStateDisabled
+//	CrossRegionRestoreStateEnabled
+type CrossRegionRestoreStateInput interface {
+	pulumi.Input
+
+	ToCrossRegionRestoreStateOutput() CrossRegionRestoreStateOutput
+	ToCrossRegionRestoreStateOutputWithContext(context.Context) CrossRegionRestoreStateOutput
+}
+
+var crossRegionRestoreStatePtrType = reflect.TypeOf((**CrossRegionRestoreState)(nil)).Elem()
+
+type CrossRegionRestoreStatePtrInput interface {
+	pulumi.Input
+
+	ToCrossRegionRestoreStatePtrOutput() CrossRegionRestoreStatePtrOutput
+	ToCrossRegionRestoreStatePtrOutputWithContext(context.Context) CrossRegionRestoreStatePtrOutput
+}
+
+type crossRegionRestoreStatePtr string
+
+func CrossRegionRestoreStatePtr(v string) CrossRegionRestoreStatePtrInput {
+	return (*crossRegionRestoreStatePtr)(&v)
+}
+
+func (*crossRegionRestoreStatePtr) ElementType() reflect.Type {
+	return crossRegionRestoreStatePtrType
+}
+
+func (in *crossRegionRestoreStatePtr) ToCrossRegionRestoreStatePtrOutput() CrossRegionRestoreStatePtrOutput {
+	return pulumi.ToOutput(in).(CrossRegionRestoreStatePtrOutput)
+}
+
+func (in *crossRegionRestoreStatePtr) ToCrossRegionRestoreStatePtrOutputWithContext(ctx context.Context) CrossRegionRestoreStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CrossRegionRestoreStatePtrOutput)
 }
 
 // CrossSubscriptionRestore state
@@ -857,6 +1188,343 @@ func (in *dayOfWeekPtr) ToDayOfWeekPtrOutputWithContext(ctx context.Context) Day
 	return pulumi.ToOutputWithContext(ctx, in).(DayOfWeekPtrOutput)
 }
 
+// Encryption state of the Backup Vault.
+type EncryptionState string
+
+const (
+	// CMK encryption is enabled on the Backup Vault
+	EncryptionStateEnabled = EncryptionState("Enabled")
+	// CMK encryption is disabled on the Backup Vault. User can not set this state once Encryption State is 'Enabled'.
+	EncryptionStateDisabled = EncryptionState("Disabled")
+	// CMK encryption is in inconsistent state on the Backup Vault. This state indicates that user needs to retry the encryption settings operation immediately to correct the state.
+	EncryptionStateInconsistent = EncryptionState("Inconsistent")
+)
+
+func (EncryptionState) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionState)(nil)).Elem()
+}
+
+func (e EncryptionState) ToEncryptionStateOutput() EncryptionStateOutput {
+	return pulumi.ToOutput(e).(EncryptionStateOutput)
+}
+
+func (e EncryptionState) ToEncryptionStateOutputWithContext(ctx context.Context) EncryptionStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(EncryptionStateOutput)
+}
+
+func (e EncryptionState) ToEncryptionStatePtrOutput() EncryptionStatePtrOutput {
+	return e.ToEncryptionStatePtrOutputWithContext(context.Background())
+}
+
+func (e EncryptionState) ToEncryptionStatePtrOutputWithContext(ctx context.Context) EncryptionStatePtrOutput {
+	return EncryptionState(e).ToEncryptionStateOutputWithContext(ctx).ToEncryptionStatePtrOutputWithContext(ctx)
+}
+
+func (e EncryptionState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EncryptionState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EncryptionState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e EncryptionState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type EncryptionStateOutput struct{ *pulumi.OutputState }
+
+func (EncryptionStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionState)(nil)).Elem()
+}
+
+func (o EncryptionStateOutput) ToEncryptionStateOutput() EncryptionStateOutput {
+	return o
+}
+
+func (o EncryptionStateOutput) ToEncryptionStateOutputWithContext(ctx context.Context) EncryptionStateOutput {
+	return o
+}
+
+func (o EncryptionStateOutput) ToEncryptionStatePtrOutput() EncryptionStatePtrOutput {
+	return o.ToEncryptionStatePtrOutputWithContext(context.Background())
+}
+
+func (o EncryptionStateOutput) ToEncryptionStatePtrOutputWithContext(ctx context.Context) EncryptionStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionState) *EncryptionState {
+		return &v
+	}).(EncryptionStatePtrOutput)
+}
+
+func (o EncryptionStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o EncryptionStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EncryptionState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o EncryptionStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EncryptionStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EncryptionState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type EncryptionStatePtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionState)(nil)).Elem()
+}
+
+func (o EncryptionStatePtrOutput) ToEncryptionStatePtrOutput() EncryptionStatePtrOutput {
+	return o
+}
+
+func (o EncryptionStatePtrOutput) ToEncryptionStatePtrOutputWithContext(ctx context.Context) EncryptionStatePtrOutput {
+	return o
+}
+
+func (o EncryptionStatePtrOutput) Elem() EncryptionStateOutput {
+	return o.ApplyT(func(v *EncryptionState) EncryptionState {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionState
+		return ret
+	}).(EncryptionStateOutput)
+}
+
+func (o EncryptionStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EncryptionStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *EncryptionState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// EncryptionStateInput is an input type that accepts values of the EncryptionState enum
+// A concrete instance of `EncryptionStateInput` can be one of the following:
+//
+//	EncryptionStateEnabled
+//	EncryptionStateDisabled
+//	EncryptionStateInconsistent
+type EncryptionStateInput interface {
+	pulumi.Input
+
+	ToEncryptionStateOutput() EncryptionStateOutput
+	ToEncryptionStateOutputWithContext(context.Context) EncryptionStateOutput
+}
+
+var encryptionStatePtrType = reflect.TypeOf((**EncryptionState)(nil)).Elem()
+
+type EncryptionStatePtrInput interface {
+	pulumi.Input
+
+	ToEncryptionStatePtrOutput() EncryptionStatePtrOutput
+	ToEncryptionStatePtrOutputWithContext(context.Context) EncryptionStatePtrOutput
+}
+
+type encryptionStatePtr string
+
+func EncryptionStatePtr(v string) EncryptionStatePtrInput {
+	return (*encryptionStatePtr)(&v)
+}
+
+func (*encryptionStatePtr) ElementType() reflect.Type {
+	return encryptionStatePtrType
+}
+
+func (in *encryptionStatePtr) ToEncryptionStatePtrOutput() EncryptionStatePtrOutput {
+	return pulumi.ToOutput(in).(EncryptionStatePtrOutput)
+}
+
+func (in *encryptionStatePtr) ToEncryptionStatePtrOutputWithContext(ctx context.Context) EncryptionStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(EncryptionStatePtrOutput)
+}
+
+// The identity type. 'SystemAssigned' and 'UserAssigned' are mutually exclusive. 'SystemAssigned' will use implicitly created managed identity.
+type IdentityType string
+
+const (
+	IdentityTypeSystemAssigned = IdentityType("SystemAssigned")
+	IdentityTypeUserAssigned   = IdentityType("UserAssigned")
+)
+
+func (IdentityType) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityType)(nil)).Elem()
+}
+
+func (e IdentityType) ToIdentityTypeOutput() IdentityTypeOutput {
+	return pulumi.ToOutput(e).(IdentityTypeOutput)
+}
+
+func (e IdentityType) ToIdentityTypeOutputWithContext(ctx context.Context) IdentityTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(IdentityTypeOutput)
+}
+
+func (e IdentityType) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
+	return e.ToIdentityTypePtrOutputWithContext(context.Background())
+}
+
+func (e IdentityType) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
+	return IdentityType(e).ToIdentityTypeOutputWithContext(ctx).ToIdentityTypePtrOutputWithContext(ctx)
+}
+
+func (e IdentityType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IdentityType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IdentityType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e IdentityType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type IdentityTypeOutput struct{ *pulumi.OutputState }
+
+func (IdentityTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityType)(nil)).Elem()
+}
+
+func (o IdentityTypeOutput) ToIdentityTypeOutput() IdentityTypeOutput {
+	return o
+}
+
+func (o IdentityTypeOutput) ToIdentityTypeOutputWithContext(ctx context.Context) IdentityTypeOutput {
+	return o
+}
+
+func (o IdentityTypeOutput) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
+	return o.ToIdentityTypePtrOutputWithContext(context.Background())
+}
+
+func (o IdentityTypeOutput) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentityType) *IdentityType {
+		return &v
+	}).(IdentityTypePtrOutput)
+}
+
+func (o IdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o IdentityTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IdentityType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o IdentityTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IdentityTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IdentityType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type IdentityTypePtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityType)(nil)).Elem()
+}
+
+func (o IdentityTypePtrOutput) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
+	return o
+}
+
+func (o IdentityTypePtrOutput) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
+	return o
+}
+
+func (o IdentityTypePtrOutput) Elem() IdentityTypeOutput {
+	return o.ApplyT(func(v *IdentityType) IdentityType {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityType
+		return ret
+	}).(IdentityTypeOutput)
+}
+
+func (o IdentityTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *IdentityType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// IdentityTypeInput is an input type that accepts values of the IdentityType enum
+// A concrete instance of `IdentityTypeInput` can be one of the following:
+//
+//	IdentityTypeSystemAssigned
+//	IdentityTypeUserAssigned
+type IdentityTypeInput interface {
+	pulumi.Input
+
+	ToIdentityTypeOutput() IdentityTypeOutput
+	ToIdentityTypeOutputWithContext(context.Context) IdentityTypeOutput
+}
+
+var identityTypePtrType = reflect.TypeOf((**IdentityType)(nil)).Elem()
+
+type IdentityTypePtrInput interface {
+	pulumi.Input
+
+	ToIdentityTypePtrOutput() IdentityTypePtrOutput
+	ToIdentityTypePtrOutputWithContext(context.Context) IdentityTypePtrOutput
+}
+
+type identityTypePtr string
+
+func IdentityTypePtr(v string) IdentityTypePtrInput {
+	return (*identityTypePtr)(&v)
+}
+
+func (*identityTypePtr) ElementType() reflect.Type {
+	return identityTypePtrType
+}
+
+func (in *identityTypePtr) ToIdentityTypePtrOutput() IdentityTypePtrOutput {
+	return pulumi.ToOutput(in).(IdentityTypePtrOutput)
+}
+
+func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Context) IdentityTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(IdentityTypePtrOutput)
+}
+
 // Immutability state
 type ImmutabilityState string
 
@@ -1023,6 +1691,172 @@ func (in *immutabilityStatePtr) ToImmutabilityStatePtrOutput() ImmutabilityState
 
 func (in *immutabilityStatePtr) ToImmutabilityStatePtrOutputWithContext(ctx context.Context) ImmutabilityStatePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ImmutabilityStatePtrOutput)
+}
+
+// Enabling/Disabling the Double Encryption state
+type InfrastructureEncryptionState string
+
+const (
+	InfrastructureEncryptionStateEnabled  = InfrastructureEncryptionState("Enabled")
+	InfrastructureEncryptionStateDisabled = InfrastructureEncryptionState("Disabled")
+)
+
+func (InfrastructureEncryptionState) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureEncryptionState)(nil)).Elem()
+}
+
+func (e InfrastructureEncryptionState) ToInfrastructureEncryptionStateOutput() InfrastructureEncryptionStateOutput {
+	return pulumi.ToOutput(e).(InfrastructureEncryptionStateOutput)
+}
+
+func (e InfrastructureEncryptionState) ToInfrastructureEncryptionStateOutputWithContext(ctx context.Context) InfrastructureEncryptionStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(InfrastructureEncryptionStateOutput)
+}
+
+func (e InfrastructureEncryptionState) ToInfrastructureEncryptionStatePtrOutput() InfrastructureEncryptionStatePtrOutput {
+	return e.ToInfrastructureEncryptionStatePtrOutputWithContext(context.Background())
+}
+
+func (e InfrastructureEncryptionState) ToInfrastructureEncryptionStatePtrOutputWithContext(ctx context.Context) InfrastructureEncryptionStatePtrOutput {
+	return InfrastructureEncryptionState(e).ToInfrastructureEncryptionStateOutputWithContext(ctx).ToInfrastructureEncryptionStatePtrOutputWithContext(ctx)
+}
+
+func (e InfrastructureEncryptionState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InfrastructureEncryptionState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InfrastructureEncryptionState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e InfrastructureEncryptionState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type InfrastructureEncryptionStateOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureEncryptionStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InfrastructureEncryptionState)(nil)).Elem()
+}
+
+func (o InfrastructureEncryptionStateOutput) ToInfrastructureEncryptionStateOutput() InfrastructureEncryptionStateOutput {
+	return o
+}
+
+func (o InfrastructureEncryptionStateOutput) ToInfrastructureEncryptionStateOutputWithContext(ctx context.Context) InfrastructureEncryptionStateOutput {
+	return o
+}
+
+func (o InfrastructureEncryptionStateOutput) ToInfrastructureEncryptionStatePtrOutput() InfrastructureEncryptionStatePtrOutput {
+	return o.ToInfrastructureEncryptionStatePtrOutputWithContext(context.Background())
+}
+
+func (o InfrastructureEncryptionStateOutput) ToInfrastructureEncryptionStatePtrOutputWithContext(ctx context.Context) InfrastructureEncryptionStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InfrastructureEncryptionState) *InfrastructureEncryptionState {
+		return &v
+	}).(InfrastructureEncryptionStatePtrOutput)
+}
+
+func (o InfrastructureEncryptionStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o InfrastructureEncryptionStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InfrastructureEncryptionState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o InfrastructureEncryptionStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InfrastructureEncryptionStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InfrastructureEncryptionState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type InfrastructureEncryptionStatePtrOutput struct{ *pulumi.OutputState }
+
+func (InfrastructureEncryptionStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InfrastructureEncryptionState)(nil)).Elem()
+}
+
+func (o InfrastructureEncryptionStatePtrOutput) ToInfrastructureEncryptionStatePtrOutput() InfrastructureEncryptionStatePtrOutput {
+	return o
+}
+
+func (o InfrastructureEncryptionStatePtrOutput) ToInfrastructureEncryptionStatePtrOutputWithContext(ctx context.Context) InfrastructureEncryptionStatePtrOutput {
+	return o
+}
+
+func (o InfrastructureEncryptionStatePtrOutput) Elem() InfrastructureEncryptionStateOutput {
+	return o.ApplyT(func(v *InfrastructureEncryptionState) InfrastructureEncryptionState {
+		if v != nil {
+			return *v
+		}
+		var ret InfrastructureEncryptionState
+		return ret
+	}).(InfrastructureEncryptionStateOutput)
+}
+
+func (o InfrastructureEncryptionStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InfrastructureEncryptionStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InfrastructureEncryptionState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// InfrastructureEncryptionStateInput is an input type that accepts values of the InfrastructureEncryptionState enum
+// A concrete instance of `InfrastructureEncryptionStateInput` can be one of the following:
+//
+//	InfrastructureEncryptionStateEnabled
+//	InfrastructureEncryptionStateDisabled
+type InfrastructureEncryptionStateInput interface {
+	pulumi.Input
+
+	ToInfrastructureEncryptionStateOutput() InfrastructureEncryptionStateOutput
+	ToInfrastructureEncryptionStateOutputWithContext(context.Context) InfrastructureEncryptionStateOutput
+}
+
+var infrastructureEncryptionStatePtrType = reflect.TypeOf((**InfrastructureEncryptionState)(nil)).Elem()
+
+type InfrastructureEncryptionStatePtrInput interface {
+	pulumi.Input
+
+	ToInfrastructureEncryptionStatePtrOutput() InfrastructureEncryptionStatePtrOutput
+	ToInfrastructureEncryptionStatePtrOutputWithContext(context.Context) InfrastructureEncryptionStatePtrOutput
+}
+
+type infrastructureEncryptionStatePtr string
+
+func InfrastructureEncryptionStatePtr(v string) InfrastructureEncryptionStatePtrInput {
+	return (*infrastructureEncryptionStatePtr)(&v)
+}
+
+func (*infrastructureEncryptionStatePtr) ElementType() reflect.Type {
+	return infrastructureEncryptionStatePtrType
+}
+
+func (in *infrastructureEncryptionStatePtr) ToInfrastructureEncryptionStatePtrOutput() InfrastructureEncryptionStatePtrOutput {
+	return pulumi.ToOutput(in).(InfrastructureEncryptionStatePtrOutput)
+}
+
+func (in *infrastructureEncryptionStatePtr) ToInfrastructureEncryptionStatePtrOutputWithContext(ctx context.Context) InfrastructureEncryptionStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(InfrastructureEncryptionStatePtrOutput)
 }
 
 type Month string
@@ -1209,6 +2043,13 @@ func (in *monthPtr) ToMonthPtrOutput() MonthPtrOutput {
 func (in *monthPtr) ToMonthPtrOutputWithContext(ctx context.Context) MonthPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MonthPtrOutput)
 }
+
+// Type of the specific object - used for deserializing
+type ResourcePropertiesObjectType string
+
+const (
+	ResourcePropertiesObjectTypeDefaultResourceProperties = ResourcePropertiesObjectType("DefaultResourceProperties")
+)
 
 // Gets or sets the type of secret store
 type SecretStoreType string
@@ -2221,18 +3062,28 @@ func (in *weekNumberPtr) ToWeekNumberPtrOutputWithContext(ctx context.Context) W
 }
 
 func init() {
+	pulumi.RegisterOutputType(AKSVolumeTypesOutput{})
+	pulumi.RegisterOutputType(AKSVolumeTypesPtrOutput{})
 	pulumi.RegisterOutputType(AbsoluteMarkerOutput{})
 	pulumi.RegisterOutputType(AbsoluteMarkerPtrOutput{})
 	pulumi.RegisterOutputType(AlertsStateOutput{})
 	pulumi.RegisterOutputType(AlertsStatePtrOutput{})
+	pulumi.RegisterOutputType(CrossRegionRestoreStateOutput{})
+	pulumi.RegisterOutputType(CrossRegionRestoreStatePtrOutput{})
 	pulumi.RegisterOutputType(CrossSubscriptionRestoreStateOutput{})
 	pulumi.RegisterOutputType(CrossSubscriptionRestoreStatePtrOutput{})
 	pulumi.RegisterOutputType(DataStoreTypesOutput{})
 	pulumi.RegisterOutputType(DataStoreTypesPtrOutput{})
 	pulumi.RegisterOutputType(DayOfWeekOutput{})
 	pulumi.RegisterOutputType(DayOfWeekPtrOutput{})
+	pulumi.RegisterOutputType(EncryptionStateOutput{})
+	pulumi.RegisterOutputType(EncryptionStatePtrOutput{})
+	pulumi.RegisterOutputType(IdentityTypeOutput{})
+	pulumi.RegisterOutputType(IdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(ImmutabilityStateOutput{})
 	pulumi.RegisterOutputType(ImmutabilityStatePtrOutput{})
+	pulumi.RegisterOutputType(InfrastructureEncryptionStateOutput{})
+	pulumi.RegisterOutputType(InfrastructureEncryptionStatePtrOutput{})
 	pulumi.RegisterOutputType(MonthOutput{})
 	pulumi.RegisterOutputType(MonthPtrOutput{})
 	pulumi.RegisterOutputType(SecretStoreTypeOutput{})

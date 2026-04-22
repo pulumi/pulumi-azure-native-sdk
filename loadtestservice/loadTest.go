@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // LoadTest details.
 //
-// Uses Azure REST API version 2022-12-01. In version 1.x of the Azure Native provider, it used API version 2021-12-01-preview.
+// Uses Azure REST API version 2023-12-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-12-01.
 //
-// Other available API versions: 2021-12-01-preview, 2023-12-01-preview, 2024-12-01-preview.
+// Other available API versions: 2022-12-01, 2024-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native loadtestservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type LoadTest struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource data plane URI.
 	DataPlaneURI pulumi.StringOutput `pulumi:"dataPlaneURI"`
 	// Description of the resource.
@@ -27,7 +30,7 @@ type LoadTest struct {
 	// CMK Encryption property.
 	Encryption EncryptionPropertiesResponsePtrOutput `pulumi:"encryption"`
 	// The managed service identities assigned to this resource.
-	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity commontypesv5.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -35,7 +38,7 @@ type LoadTest struct {
 	// Resource provisioning state.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -55,9 +58,6 @@ func NewLoadTest(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:loadtestservice/v20211201preview:LoadTest"),
-		},
-		{
-			Type: pulumi.String("azure-native:loadtestservice/v20220415preview:LoadTest"),
 		},
 		{
 			Type: pulumi.String("azure-native:loadtestservice/v20221201:LoadTest"),
@@ -108,7 +108,7 @@ type loadTestArgs struct {
 	// CMK Encryption property.
 	Encryption *EncryptionProperties `pulumi:"encryption"`
 	// The managed service identities assigned to this resource.
-	Identity *ManagedServiceIdentity `pulumi:"identity"`
+	Identity *commontypesv5.ManagedServiceIdentity `pulumi:"identity"`
 	// Load Test name
 	LoadTestName *string `pulumi:"loadTestName"`
 	// The geo-location where the resource lives
@@ -126,7 +126,7 @@ type LoadTestArgs struct {
 	// CMK Encryption property.
 	Encryption EncryptionPropertiesPtrInput
 	// The managed service identities assigned to this resource.
-	Identity ManagedServiceIdentityPtrInput
+	Identity commontypesv5.ManagedServiceIdentityPtrInput
 	// Load Test name
 	LoadTestName pulumi.StringPtrInput
 	// The geo-location where the resource lives
@@ -174,6 +174,11 @@ func (o LoadTestOutput) ToLoadTestOutputWithContext(ctx context.Context) LoadTes
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LoadTestOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadTest) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Resource data plane URI.
 func (o LoadTestOutput) DataPlaneURI() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadTest) pulumi.StringOutput { return v.DataPlaneURI }).(pulumi.StringOutput)
@@ -190,8 +195,8 @@ func (o LoadTestOutput) Encryption() EncryptionPropertiesResponsePtrOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o LoadTestOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *LoadTest) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+func (o LoadTestOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *LoadTest) commontypesv5.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -210,8 +215,8 @@ func (o LoadTestOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LoadTestOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *LoadTest) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o LoadTestOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *LoadTest) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

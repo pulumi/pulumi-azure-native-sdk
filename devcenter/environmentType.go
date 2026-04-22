@@ -8,24 +8,29 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents an environment type.
 //
-// Uses Azure REST API version 2023-04-01. In version 1.x of the Azure Native provider, it used API version 2022-09-01-preview.
+// Uses Azure REST API version 2024-02-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 //
-// Other available API versions: 2023-08-01-preview, 2023-10-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01.
+// Other available API versions: 2023-04-01, 2023-08-01-preview, 2023-10-01-preview, 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-02-01, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type EnvironmentType struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The display name of the environment type.
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -91,6 +96,18 @@ func NewEnvironmentType(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:devcenter/v20250201:EnvironmentType"),
 		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20250401preview:EnvironmentType"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20250701preview:EnvironmentType"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20251001preview:EnvironmentType"),
+		},
+		{
+			Type: pulumi.String("azure-native:devcenter/v20260101preview:EnvironmentType"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -128,6 +145,8 @@ func (EnvironmentTypeState) ElementType() reflect.Type {
 type environmentTypeArgs struct {
 	// The name of the devcenter.
 	DevCenterName string `pulumi:"devCenterName"`
+	// The display name of the environment type.
+	DisplayName *string `pulumi:"displayName"`
 	// The name of the environment type.
 	EnvironmentTypeName *string `pulumi:"environmentTypeName"`
 	// The name of the resource group. The name is case insensitive.
@@ -140,6 +159,8 @@ type environmentTypeArgs struct {
 type EnvironmentTypeArgs struct {
 	// The name of the devcenter.
 	DevCenterName pulumi.StringInput
+	// The display name of the environment type.
+	DisplayName pulumi.StringPtrInput
 	// The name of the environment type.
 	EnvironmentTypeName pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -185,6 +206,16 @@ func (o EnvironmentTypeOutput) ToEnvironmentTypeOutputWithContext(ctx context.Co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o EnvironmentTypeOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnvironmentType) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The display name of the environment type.
+func (o EnvironmentTypeOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentType) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
 // The name of the resource
 func (o EnvironmentTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnvironmentType) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -196,8 +227,8 @@ func (o EnvironmentTypeOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o EnvironmentTypeOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *EnvironmentType) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o EnvironmentTypeOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *EnvironmentType) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

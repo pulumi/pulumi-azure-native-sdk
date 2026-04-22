@@ -8,26 +8,29 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Guest configuration assignment is an association between a machine and guest configuration.
 //
-// Uses Azure REST API version 2022-01-25. In version 1.x of the Azure Native provider, it used API version 2020-06-25.
+// Uses Azure REST API version 2024-04-05. In version 2.x of the Azure Native provider, it used API version 2022-01-25.
 //
-// Other available API versions: 2024-04-05.
+// Other available API versions: 2022-01-25. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native guestconfiguration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type GuestConfigurationAssignment struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Region where the VM is located.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// Name of the guest configuration assignment.
-	Name pulumi.StringPtrOutput `pulumi:"name"`
+	// The guest configuration assignment name.
+	Name pulumi.StringOutput `pulumi:"name"`
 	// Properties of the Guest configuration assignment.
 	Properties GuestConfigurationAssignmentPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -39,6 +42,9 @@ func NewGuestConfigurationAssignment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
@@ -99,15 +105,15 @@ func (GuestConfigurationAssignmentState) ElementType() reflect.Type {
 }
 
 type guestConfigurationAssignmentArgs struct {
-	// Name of the guest configuration assignment.
+	// The guest configuration assignment name.
 	GuestConfigurationAssignmentName *string `pulumi:"guestConfigurationAssignmentName"`
 	// Region where the VM is located.
 	Location *string `pulumi:"location"`
-	// Name of the guest configuration assignment.
-	Name *string `pulumi:"name"`
+	// The guest configuration assignment name.
+	Name string `pulumi:"name"`
 	// Properties of the Guest configuration assignment.
 	Properties *GuestConfigurationAssignmentProperties `pulumi:"properties"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the virtual machine.
 	VmName string `pulumi:"vmName"`
@@ -115,15 +121,15 @@ type guestConfigurationAssignmentArgs struct {
 
 // The set of arguments for constructing a GuestConfigurationAssignment resource.
 type GuestConfigurationAssignmentArgs struct {
-	// Name of the guest configuration assignment.
+	// The guest configuration assignment name.
 	GuestConfigurationAssignmentName pulumi.StringPtrInput
 	// Region where the VM is located.
 	Location pulumi.StringPtrInput
-	// Name of the guest configuration assignment.
-	Name pulumi.StringPtrInput
+	// The guest configuration assignment name.
+	Name pulumi.StringInput
 	// Properties of the Guest configuration assignment.
 	Properties GuestConfigurationAssignmentPropertiesPtrInput
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the virtual machine.
 	VmName pulumi.StringInput
@@ -166,14 +172,19 @@ func (o GuestConfigurationAssignmentOutput) ToGuestConfigurationAssignmentOutput
 	return o
 }
 
+// The Azure API version of the resource.
+func (o GuestConfigurationAssignmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *GuestConfigurationAssignment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Region where the VM is located.
 func (o GuestConfigurationAssignmentOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GuestConfigurationAssignment) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// Name of the guest configuration assignment.
-func (o GuestConfigurationAssignmentOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GuestConfigurationAssignment) pulumi.StringPtrOutput { return v.Name }).(pulumi.StringPtrOutput)
+// The guest configuration assignment name.
+func (o GuestConfigurationAssignmentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *GuestConfigurationAssignment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // Properties of the Guest configuration assignment.
@@ -184,8 +195,8 @@ func (o GuestConfigurationAssignmentOutput) Properties() GuestConfigurationAssig
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o GuestConfigurationAssignmentOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *GuestConfigurationAssignment) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o GuestConfigurationAssignmentOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *GuestConfigurationAssignment) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource.

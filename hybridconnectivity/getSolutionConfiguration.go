@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +34,8 @@ type LookupSolutionConfigurationArgs struct {
 
 // Solution Configuration
 type LookupSolutionConfigurationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The last time resources were inventoried
@@ -50,7 +53,7 @@ type LookupSolutionConfigurationResult struct {
 	// The detailed message of status details
 	StatusDetails string `pulumi:"statusDetails"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -88,6 +91,11 @@ func (o LookupSolutionConfigurationResultOutput) ToLookupSolutionConfigurationRe
 
 func (o LookupSolutionConfigurationResultOutput) ToLookupSolutionConfigurationResultOutputWithContext(ctx context.Context) LookupSolutionConfigurationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSolutionConfigurationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSolutionConfigurationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -131,8 +139,8 @@ func (o LookupSolutionConfigurationResultOutput) StatusDetails() pulumi.StringOu
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupSolutionConfigurationResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSolutionConfigurationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupSolutionConfigurationResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSolutionConfigurationResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

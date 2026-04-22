@@ -8,20 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The integration account agreement.
 //
-// Uses Azure REST API version 2019-05-01. In version 1.x of the Azure Native provider, it used API version 2019-05-01.
+// Uses Azure REST API version 2019-05-01. In version 2.x of the Azure Native provider, it used API version 2019-05-01.
 //
-// Other available API versions: 2015-08-01-preview.
+// Other available API versions: 2015-08-01-preview, 2018-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native logic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type IntegrationAccountAgreement struct {
 	pulumi.CustomResourceState
 
 	// The agreement type.
 	AgreementType pulumi.StringOutput `pulumi:"agreementType"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The changed time.
 	ChangedTime pulumi.StringOutput `pulumi:"changedTime"`
 	// The agreement content.
@@ -82,6 +84,9 @@ func NewIntegrationAccountAgreement(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:logic/v20150801preview:IntegrationAccountAgreement"),
+		},
+		{
+			Type: pulumi.String("azure-native:logic/v20160601:Agreement"),
 		},
 		{
 			Type: pulumi.String("azure-native:logic/v20160601:IntegrationAccountAgreement"),
@@ -221,6 +226,11 @@ func (o IntegrationAccountAgreementOutput) ToIntegrationAccountAgreementOutputWi
 // The agreement type.
 func (o IntegrationAccountAgreementOutput) AgreementType() pulumi.StringOutput {
 	return o.ApplyT(func(v *IntegrationAccountAgreement) pulumi.StringOutput { return v.AgreementType }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o IntegrationAccountAgreementOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *IntegrationAccountAgreement) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The changed time.

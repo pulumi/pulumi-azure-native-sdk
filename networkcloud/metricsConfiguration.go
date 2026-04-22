@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2023-10-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-12-12-preview.
+// Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
 //
-// Other available API versions: 2023-07-01, 2024-06-01-preview, 2024-07-01, 2024-10-01-preview, 2025-02-01.
+// Other available API versions: 2024-07-01, 2024-10-01-preview, 2025-07-01-preview, 2025-09-01, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native networkcloud [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type MetricsConfiguration struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The interval in minutes by which metrics will be collected.
 	CollectionInterval pulumi.Float64Output `pulumi:"collectionInterval"`
 	// The more detailed status of the metrics configuration.
@@ -28,6 +31,8 @@ type MetricsConfiguration struct {
 	DisabledMetrics pulumi.StringArrayOutput `pulumi:"disabledMetrics"`
 	// The list of metric names that have been chosen to be enabled in addition to the core set of enabled metrics.
 	EnabledMetrics pulumi.StringArrayOutput `pulumi:"enabledMetrics"`
+	// Resource ETag.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The extended location of the cluster associated with the resource.
 	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
 	// The geo-location where the resource lives
@@ -37,7 +42,7 @@ type MetricsConfiguration struct {
 	// The provisioning state of the metrics configuration.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -81,6 +86,15 @@ func NewMetricsConfiguration(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:networkcloud/v20250201:MetricsConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20250701preview:MetricsConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20250901:MetricsConfiguration"),
+		},
+		{
+			Type: pulumi.String("azure-native:networkcloud/v20260101preview:MetricsConfiguration"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -192,6 +206,11 @@ func (o MetricsConfigurationOutput) ToMetricsConfigurationOutputWithContext(ctx 
 	return o
 }
 
+// The Azure API version of the resource.
+func (o MetricsConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetricsConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The interval in minutes by which metrics will be collected.
 func (o MetricsConfigurationOutput) CollectionInterval() pulumi.Float64Output {
 	return o.ApplyT(func(v *MetricsConfiguration) pulumi.Float64Output { return v.CollectionInterval }).(pulumi.Float64Output)
@@ -217,6 +236,11 @@ func (o MetricsConfigurationOutput) EnabledMetrics() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MetricsConfiguration) pulumi.StringArrayOutput { return v.EnabledMetrics }).(pulumi.StringArrayOutput)
 }
 
+// Resource ETag.
+func (o MetricsConfigurationOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetricsConfiguration) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
 // The extended location of the cluster associated with the resource.
 func (o MetricsConfigurationOutput) ExtendedLocation() ExtendedLocationResponseOutput {
 	return o.ApplyT(func(v *MetricsConfiguration) ExtendedLocationResponseOutput { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
@@ -238,8 +262,8 @@ func (o MetricsConfigurationOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o MetricsConfigurationOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *MetricsConfiguration) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o MetricsConfigurationOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *MetricsConfiguration) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

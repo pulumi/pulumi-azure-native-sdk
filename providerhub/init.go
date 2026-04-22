@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,12 +21,18 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azure-native:providerhub:AuthorizedApplication":
+		r = &AuthorizedApplication{}
+	case "azure-native:providerhub:CustomRollout":
+		r = &CustomRollout{}
 	case "azure-native:providerhub:DefaultRollout":
 		r = &DefaultRollout{}
 	case "azure-native:providerhub:NotificationRegistration":
 		r = &NotificationRegistration{}
 	case "azure-native:providerhub:OperationByProviderRegistration":
 		r = &OperationByProviderRegistration{}
+	case "azure-native:providerhub:ProviderMonitorSetting":
+		r = &ProviderMonitorSetting{}
 	case "azure-native:providerhub:ProviderRegistration":
 		r = &ProviderRegistration{}
 	case "azure-native:providerhub:ResourceTypeRegistration":

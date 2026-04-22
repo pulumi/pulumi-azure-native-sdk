@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get all Update summaries under the HCI cluster
 //
-// Uses Azure REST API version 2023-03-01.
+// Uses Azure REST API version 2024-04-01.
 //
-// Other available API versions: 2022-12-15-preview, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-04-01, 2024-09-01-preview, 2024-12-01-preview.
+// Other available API versions: 2022-12-15-preview, 2023-02-01, 2023-03-01, 2023-06-01, 2023-08-01, 2023-08-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-15-preview, 2024-09-01-preview, 2024-12-01-preview, 2025-02-01-preview, 2025-09-15-preview, 2025-10-01, 2025-11-01-preview, 2025-12-01-preview, 2026-02-01, 2026-02-15-preview, 2026-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azurestackhci [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupUpdateSummary(ctx *pulumi.Context, args *LookupUpdateSummaryArgs, opts ...pulumi.InvokeOption) (*LookupUpdateSummaryResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupUpdateSummaryResult
@@ -35,6 +36,12 @@ type LookupUpdateSummaryArgs struct {
 
 // Get the update summaries for the cluster
 type LookupUpdateSummaryResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Current OEM Version.
+	CurrentOemVersion *string `pulumi:"currentOemVersion"`
+	// Current Sbe version of the stamp.
+	CurrentSbeVersion *string `pulumi:"currentSbeVersion"`
 	// Current Solution Bundle version of the stamp.
 	CurrentVersion *string `pulumi:"currentVersion"`
 	// Name of the hardware model.
@@ -58,7 +65,7 @@ type LookupUpdateSummaryResult struct {
 	// Overall update state of the stamp.
 	State *string `pulumi:"state"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -96,6 +103,21 @@ func (o LookupUpdateSummaryResultOutput) ToLookupUpdateSummaryResultOutput() Loo
 
 func (o LookupUpdateSummaryResultOutput) ToLookupUpdateSummaryResultOutputWithContext(ctx context.Context) LookupUpdateSummaryResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupUpdateSummaryResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUpdateSummaryResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Current OEM Version.
+func (o LookupUpdateSummaryResultOutput) CurrentOemVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupUpdateSummaryResult) *string { return v.CurrentOemVersion }).(pulumi.StringPtrOutput)
+}
+
+// Current Sbe version of the stamp.
+func (o LookupUpdateSummaryResultOutput) CurrentSbeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupUpdateSummaryResult) *string { return v.CurrentSbeVersion }).(pulumi.StringPtrOutput)
 }
 
 // Current Solution Bundle version of the stamp.
@@ -154,8 +176,8 @@ func (o LookupUpdateSummaryResultOutput) State() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupUpdateSummaryResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupUpdateSummaryResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupUpdateSummaryResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupUpdateSummaryResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

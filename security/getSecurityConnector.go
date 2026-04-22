@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves details of a specific security connector
 //
-// Uses Azure REST API version 2023-03-01-preview.
+// Uses Azure REST API version 2024-08-01-preview.
 //
-// Other available API versions: 2021-07-01-preview, 2023-10-01-preview, 2024-03-01-preview, 2024-07-01-preview, 2024-08-01-preview.
+// Other available API versions: 2021-07-01-preview, 2021-12-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2023-03-01-preview, 2023-10-01-preview, 2024-03-01-preview, 2024-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSecurityConnector(ctx *pulumi.Context, args *LookupSecurityConnectorArgs, opts ...pulumi.InvokeOption) (*LookupSecurityConnectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecurityConnectorResult
@@ -35,6 +36,8 @@ type LookupSecurityConnectorArgs struct {
 
 // The security connector resource.
 type LookupSecurityConnectorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The security connector environment data.
 	EnvironmentData interface{} `pulumi:"environmentData"`
 	// The multi cloud resource's cloud name.
@@ -56,7 +59,7 @@ type LookupSecurityConnectorResult struct {
 	// A collection of offerings for the security connector.
 	Offerings []interface{} `pulumi:"offerings"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// A list of key value pairs that describe the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// Resource type
@@ -96,6 +99,11 @@ func (o LookupSecurityConnectorResultOutput) ToLookupSecurityConnectorResultOutp
 
 func (o LookupSecurityConnectorResultOutput) ToLookupSecurityConnectorResultOutputWithContext(ctx context.Context) LookupSecurityConnectorResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSecurityConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecurityConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The security connector environment data.
@@ -149,8 +157,8 @@ func (o LookupSecurityConnectorResultOutput) Offerings() pulumi.ArrayOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupSecurityConnectorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSecurityConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupSecurityConnectorResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSecurityConnectorResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // A list of key value pairs that describe the resource.

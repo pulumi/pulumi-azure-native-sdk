@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a managed private endpoint.
 //
-// Uses Azure REST API version 2022-12-29.
+// Uses Azure REST API version 2024-04-13.
 //
-// Other available API versions: 2023-05-02, 2023-08-15, 2024-04-13.
+// Other available API versions: 2021-08-27, 2022-02-01, 2022-07-07, 2022-11-11, 2022-12-29, 2023-05-02, 2023-08-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kusto [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupManagedPrivateEndpoint(ctx *pulumi.Context, args *LookupManagedPrivateEndpointArgs, opts ...pulumi.InvokeOption) (*LookupManagedPrivateEndpointResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedPrivateEndpointResult
@@ -31,12 +32,14 @@ type LookupManagedPrivateEndpointArgs struct {
 	ClusterName string `pulumi:"clusterName"`
 	// The name of the managed private endpoint.
 	ManagedPrivateEndpointName string `pulumi:"managedPrivateEndpointName"`
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Class representing a managed private endpoint.
 type LookupManagedPrivateEndpointResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The groupId in which the managed private endpoint is created.
 	GroupId string `pulumi:"groupId"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -52,7 +55,7 @@ type LookupManagedPrivateEndpointResult struct {
 	// The user request message.
 	RequestMessage *string `pulumi:"requestMessage"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -71,7 +74,7 @@ type LookupManagedPrivateEndpointOutputArgs struct {
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
 	// The name of the managed private endpoint.
 	ManagedPrivateEndpointName pulumi.StringInput `pulumi:"managedPrivateEndpointName"`
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -92,6 +95,11 @@ func (o LookupManagedPrivateEndpointResultOutput) ToLookupManagedPrivateEndpoint
 
 func (o LookupManagedPrivateEndpointResultOutput) ToLookupManagedPrivateEndpointResultOutputWithContext(ctx context.Context) LookupManagedPrivateEndpointResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupManagedPrivateEndpointResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupManagedPrivateEndpointResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The groupId in which the managed private endpoint is created.
@@ -130,8 +138,8 @@ func (o LookupManagedPrivateEndpointResultOutput) RequestMessage() pulumi.String
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupManagedPrivateEndpointResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupManagedPrivateEndpointResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupManagedPrivateEndpointResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupManagedPrivateEndpointResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

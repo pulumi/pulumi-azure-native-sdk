@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // This operation retrieves the policy set definition in the given management group with the given name.
 //
-// Uses Azure REST API version 2021-06-01.
+// Uses Azure REST API version 2025-01-01.
 //
-// Other available API versions: 2019-06-01, 2023-04-01, 2024-05-01, 2025-01-01, 2025-03-01.
+// Other available API versions: 2020-09-01, 2021-06-01, 2023-04-01, 2024-05-01, 2025-03-01, 2025-11-01, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupPolicySetDefinitionAtManagementGroup(ctx *pulumi.Context, args *LookupPolicySetDefinitionAtManagementGroupArgs, opts ...pulumi.InvokeOption) (*LookupPolicySetDefinitionAtManagementGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPolicySetDefinitionAtManagementGroupResult
@@ -27,6 +28,8 @@ func LookupPolicySetDefinitionAtManagementGroup(ctx *pulumi.Context, args *Looku
 }
 
 type LookupPolicySetDefinitionAtManagementGroupArgs struct {
+	// Comma-separated list of additional properties to be included in the response. Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
+	Expand *string `pulumi:"expand"`
 	// The ID of the management group.
 	ManagementGroupId string `pulumi:"managementGroupId"`
 	// The name of the policy set definition to get.
@@ -35,6 +38,8 @@ type LookupPolicySetDefinitionAtManagementGroupArgs struct {
 
 // The policy set definition.
 type LookupPolicySetDefinitionAtManagementGroupResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The policy set definition description.
 	Description *string `pulumi:"description"`
 	// The display name of the policy set definition.
@@ -51,12 +56,16 @@ type LookupPolicySetDefinitionAtManagementGroupResult struct {
 	PolicyDefinitionGroups []PolicyDefinitionGroupResponse `pulumi:"policyDefinitionGroups"`
 	// An array of policy definition references.
 	PolicyDefinitions []PolicyDefinitionReferenceResponse `pulumi:"policyDefinitions"`
-	// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
+	// The type of policy set definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
 	PolicyType *string `pulumi:"policyType"`
 	// The system metadata relating to this resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource (Microsoft.Authorization/policySetDefinitions).
 	Type string `pulumi:"type"`
+	// The policy set definition version in #.#.# format.
+	Version *string `pulumi:"version"`
+	// A list of available versions for this policy set definition.
+	Versions []string `pulumi:"versions"`
 }
 
 func LookupPolicySetDefinitionAtManagementGroupOutput(ctx *pulumi.Context, args LookupPolicySetDefinitionAtManagementGroupOutputArgs, opts ...pulumi.InvokeOption) LookupPolicySetDefinitionAtManagementGroupResultOutput {
@@ -69,6 +78,8 @@ func LookupPolicySetDefinitionAtManagementGroupOutput(ctx *pulumi.Context, args 
 }
 
 type LookupPolicySetDefinitionAtManagementGroupOutputArgs struct {
+	// Comma-separated list of additional properties to be included in the response. Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
+	Expand pulumi.StringPtrInput `pulumi:"expand"`
 	// The ID of the management group.
 	ManagementGroupId pulumi.StringInput `pulumi:"managementGroupId"`
 	// The name of the policy set definition to get.
@@ -92,6 +103,11 @@ func (o LookupPolicySetDefinitionAtManagementGroupResultOutput) ToLookupPolicySe
 
 func (o LookupPolicySetDefinitionAtManagementGroupResultOutput) ToLookupPolicySetDefinitionAtManagementGroupResultOutputWithContext(ctx context.Context) LookupPolicySetDefinitionAtManagementGroupResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPolicySetDefinitionAtManagementGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPolicySetDefinitionAtManagementGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The policy set definition description.
@@ -140,19 +156,31 @@ func (o LookupPolicySetDefinitionAtManagementGroupResultOutput) PolicyDefinition
 	}).(PolicyDefinitionReferenceResponseArrayOutput)
 }
 
-// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
+// The type of policy set definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
 func (o LookupPolicySetDefinitionAtManagementGroupResultOutput) PolicyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPolicySetDefinitionAtManagementGroupResult) *string { return v.PolicyType }).(pulumi.StringPtrOutput)
 }
 
 // The system metadata relating to this resource.
-func (o LookupPolicySetDefinitionAtManagementGroupResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupPolicySetDefinitionAtManagementGroupResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupPolicySetDefinitionAtManagementGroupResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPolicySetDefinitionAtManagementGroupResult) commontypesv5.SystemDataResponse {
+		return v.SystemData
+	}).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource (Microsoft.Authorization/policySetDefinitions).
 func (o LookupPolicySetDefinitionAtManagementGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPolicySetDefinitionAtManagementGroupResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The policy set definition version in #.#.# format.
+func (o LookupPolicySetDefinitionAtManagementGroupResultOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPolicySetDefinitionAtManagementGroupResult) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+// A list of available versions for this policy set definition.
+func (o LookupPolicySetDefinitionAtManagementGroupResultOutput) Versions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupPolicySetDefinitionAtManagementGroupResult) []string { return v.Versions }).(pulumi.StringArrayOutput)
 }
 
 func init() {

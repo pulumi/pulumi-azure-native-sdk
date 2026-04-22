@@ -7,13 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = utilities.GetEnvOrDefault
 
-// SKU of the trusted signing account.
+// SKU of the artifact signing account.
 type AccountSku struct {
 	// Name of the SKU.
 	Name string `pulumi:"name"`
@@ -30,7 +30,7 @@ type AccountSkuInput interface {
 	ToAccountSkuOutputWithContext(context.Context) AccountSkuOutput
 }
 
-// SKU of the trusted signing account.
+// SKU of the artifact signing account.
 type AccountSkuArgs struct {
 	// Name of the SKU.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -89,7 +89,7 @@ func (i *accountSkuPtrType) ToAccountSkuPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(AccountSkuPtrOutput)
 }
 
-// SKU of the trusted signing account.
+// SKU of the artifact signing account.
 type AccountSkuOutput struct{ *pulumi.OutputState }
 
 func (AccountSkuOutput) ElementType() reflect.Type {
@@ -153,13 +153,13 @@ func (o AccountSkuPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// SKU of the trusted signing account.
+// SKU of the artifact signing account.
 type AccountSkuResponse struct {
 	// Name of the SKU.
 	Name string `pulumi:"name"`
 }
 
-// SKU of the trusted signing account.
+// SKU of the artifact signing account.
 type AccountSkuResponseOutput struct{ *pulumi.OutputState }
 
 func (AccountSkuResponseOutput) ElementType() reflect.Type {
@@ -213,65 +213,127 @@ func (o AccountSkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponse struct {
-	// The timestamp of resource creation (UTC).
-	CreatedAt *string `pulumi:"createdAt"`
-	// The identity that created the resource.
-	CreatedBy *string `pulumi:"createdBy"`
-	// The type of identity that created the resource.
-	CreatedByType *string `pulumi:"createdByType"`
-	// The timestamp of resource last modification (UTC)
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// The identity that last modified the resource.
-	LastModifiedBy *string `pulumi:"lastModifiedBy"`
-	// The type of identity that last modified the resource.
-	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+// Properties of the certificate.
+type CertificateResponse struct {
+	// Certificate created date.
+	CreatedDate *string `pulumi:"createdDate"`
+	// The timestamp when the revocation is effective.
+	EffectiveAt *string `pulumi:"effectiveAt"`
+	// Enhanced key usage of the certificate.
+	EnhancedKeyUsage *string `pulumi:"enhancedKeyUsage"`
+	// Certificate expiry date.
+	ExpiryDate *string `pulumi:"expiryDate"`
+	// Reason for the revocation failure.
+	FailureReason *string `pulumi:"failureReason"`
+	// Reason for revocation.
+	Reason *string `pulumi:"reason"`
+	// Remarks for the revocation.
+	Remarks *string `pulumi:"remarks"`
+	// The timestamp when the revocation is requested.
+	RequestedAt *string `pulumi:"requestedAt"`
+	// Serial number of the certificate.
+	SerialNumber *string `pulumi:"serialNumber"`
+	// Status of the certificate.
+	Status string `pulumi:"status"`
+	// Subject name of the certificate.
+	SubjectName *string `pulumi:"subjectName"`
+	// Thumbprint of the certificate.
+	Thumbprint *string `pulumi:"thumbprint"`
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-type SystemDataResponseOutput struct{ *pulumi.OutputState }
+// Properties of the certificate.
+type CertificateResponseOutput struct{ *pulumi.OutputState }
 
-func (SystemDataResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+func (CertificateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateResponse)(nil)).Elem()
 }
 
-func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+func (o CertificateResponseOutput) ToCertificateResponseOutput() CertificateResponseOutput {
 	return o
 }
 
-func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+func (o CertificateResponseOutput) ToCertificateResponseOutputWithContext(ctx context.Context) CertificateResponseOutput {
 	return o
 }
 
-// The timestamp of resource creation (UTC).
-func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+// Certificate created date.
+func (o CertificateResponseOutput) CreatedDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateResponse) *string { return v.CreatedDate }).(pulumi.StringPtrOutput)
 }
 
-// The identity that created the resource.
-func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+// The timestamp when the revocation is effective.
+func (o CertificateResponseOutput) EffectiveAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateResponse) *string { return v.EffectiveAt }).(pulumi.StringPtrOutput)
 }
 
-// The type of identity that created the resource.
-func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+// Enhanced key usage of the certificate.
+func (o CertificateResponseOutput) EnhancedKeyUsage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateResponse) *string { return v.EnhancedKeyUsage }).(pulumi.StringPtrOutput)
 }
 
-// The timestamp of resource last modification (UTC)
-func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+// Certificate expiry date.
+func (o CertificateResponseOutput) ExpiryDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateResponse) *string { return v.ExpiryDate }).(pulumi.StringPtrOutput)
 }
 
-// The identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+// Reason for the revocation failure.
+func (o CertificateResponseOutput) FailureReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateResponse) *string { return v.FailureReason }).(pulumi.StringPtrOutput)
 }
 
-// The type of identity that last modified the resource.
-func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+// Reason for revocation.
+func (o CertificateResponseOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateResponse) *string { return v.Reason }).(pulumi.StringPtrOutput)
+}
+
+// Remarks for the revocation.
+func (o CertificateResponseOutput) Remarks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateResponse) *string { return v.Remarks }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp when the revocation is requested.
+func (o CertificateResponseOutput) RequestedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateResponse) *string { return v.RequestedAt }).(pulumi.StringPtrOutput)
+}
+
+// Serial number of the certificate.
+func (o CertificateResponseOutput) SerialNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateResponse) *string { return v.SerialNumber }).(pulumi.StringPtrOutput)
+}
+
+// Status of the certificate.
+func (o CertificateResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Subject name of the certificate.
+func (o CertificateResponseOutput) SubjectName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateResponse) *string { return v.SubjectName }).(pulumi.StringPtrOutput)
+}
+
+// Thumbprint of the certificate.
+func (o CertificateResponseOutput) Thumbprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateResponse) *string { return v.Thumbprint }).(pulumi.StringPtrOutput)
+}
+
+type CertificateResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificateResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateResponse)(nil)).Elem()
+}
+
+func (o CertificateResponseArrayOutput) ToCertificateResponseArrayOutput() CertificateResponseArrayOutput {
+	return o
+}
+
+func (o CertificateResponseArrayOutput) ToCertificateResponseArrayOutputWithContext(ctx context.Context) CertificateResponseArrayOutput {
+	return o
+}
+
+func (o CertificateResponseArrayOutput) Index(i pulumi.IntInput) CertificateResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateResponse {
+		return vs[0].([]CertificateResponse)[vs[1].(int)]
+	}).(CertificateResponseOutput)
 }
 
 func init() {
@@ -279,5 +341,6 @@ func init() {
 	pulumi.RegisterOutputType(AccountSkuPtrOutput{})
 	pulumi.RegisterOutputType(AccountSkuResponseOutput{})
 	pulumi.RegisterOutputType(AccountSkuResponsePtrOutput{})
-	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(CertificateResponseOutput{})
+	pulumi.RegisterOutputType(CertificateResponseArrayOutput{})
 }

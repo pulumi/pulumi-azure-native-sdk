@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,12 +32,14 @@ type LookupNotificationChannelArgs struct {
 	LabName string `pulumi:"labName"`
 	// The name of the notification channel.
 	Name string `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A notification.
 type LookupNotificationChannelResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the notification channel.
 	CreatedDate string `pulumi:"createdDate"`
 	// Description of notification.
@@ -45,19 +48,21 @@ type LookupNotificationChannelResult struct {
 	EmailRecipient *string `pulumi:"emailRecipient"`
 	// The list of event for which this notification is enabled.
 	Events []EventResponse `pulumi:"events"`
-	// The identifier of the resource.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// The location of the resource.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// The name of the resource.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The locale to use when sending a notification (fallback for unsupported languages is EN).
 	NotificationLocale *string `pulumi:"notificationLocale"`
 	// The provisioning status of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// The tags of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The unique immutable identifier of a resource (Guid).
 	UniqueIdentifier string `pulumi:"uniqueIdentifier"`
@@ -81,7 +86,7 @@ type LookupNotificationChannelOutputArgs struct {
 	LabName pulumi.StringInput `pulumi:"labName"`
 	// The name of the notification channel.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -104,6 +109,11 @@ func (o LookupNotificationChannelResultOutput) ToLookupNotificationChannelResult
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupNotificationChannelResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNotificationChannelResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The creation date of the notification channel.
 func (o LookupNotificationChannelResultOutput) CreatedDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationChannelResult) string { return v.CreatedDate }).(pulumi.StringOutput)
@@ -124,17 +134,17 @@ func (o LookupNotificationChannelResultOutput) Events() EventResponseArrayOutput
 	return o.ApplyT(func(v LookupNotificationChannelResult) []EventResponse { return v.Events }).(EventResponseArrayOutput)
 }
 
-// The identifier of the resource.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupNotificationChannelResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationChannelResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The location of the resource.
+// The geo-location where the resource lives
 func (o LookupNotificationChannelResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNotificationChannelResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o LookupNotificationChannelResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationChannelResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -149,12 +159,17 @@ func (o LookupNotificationChannelResultOutput) ProvisioningState() pulumi.String
 	return o.ApplyT(func(v LookupNotificationChannelResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The tags of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupNotificationChannelResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupNotificationChannelResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o LookupNotificationChannelResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupNotificationChannelResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupNotificationChannelResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationChannelResult) string { return v.Type }).(pulumi.StringOutput)
 }

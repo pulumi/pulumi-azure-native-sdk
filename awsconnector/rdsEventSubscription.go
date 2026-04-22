@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A Microsoft.AwsConnector resource
 //
-// Uses Azure REST API version 2024-12-01.
+// Uses Azure REST API version 2024-12-01. In version 2.x of the Azure Native provider, it used API version 2024-12-01.
 type RdsEventSubscription struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -25,7 +28,7 @@ type RdsEventSubscription struct {
 	// The resource-specific properties for this resource.
 	Properties RdsEventSubscriptionPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -147,6 +150,11 @@ func (o RdsEventSubscriptionOutput) ToRdsEventSubscriptionOutputWithContext(ctx 
 	return o
 }
 
+// The Azure API version of the resource.
+func (o RdsEventSubscriptionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RdsEventSubscription) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The geo-location where the resource lives
 func (o RdsEventSubscriptionOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsEventSubscription) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -163,8 +171,8 @@ func (o RdsEventSubscriptionOutput) Properties() RdsEventSubscriptionPropertiesR
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o RdsEventSubscriptionOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *RdsEventSubscription) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o RdsEventSubscriptionOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *RdsEventSubscription) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

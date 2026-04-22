@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,6 +32,8 @@ type LookupVMInstanceGuestAgentArgs struct {
 
 // Defines the GuestAgent.
 type LookupVMInstanceGuestAgentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Username / Password Credentials to provision guest agent.
 	Credentials *GuestCredentialResponse `pulumi:"credentials"`
 	// Gets the name of the corresponding resource in Kubernetes.
@@ -48,7 +51,7 @@ type LookupVMInstanceGuestAgentResult struct {
 	// Gets or sets the guest agent status.
 	Status string `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Gets or sets a unique identifier for this resource.
@@ -86,6 +89,11 @@ func (o LookupVMInstanceGuestAgentResultOutput) ToLookupVMInstanceGuestAgentResu
 
 func (o LookupVMInstanceGuestAgentResultOutput) ToLookupVMInstanceGuestAgentResultOutputWithContext(ctx context.Context) LookupVMInstanceGuestAgentResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVMInstanceGuestAgentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVMInstanceGuestAgentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Username / Password Credentials to provision guest agent.
@@ -129,8 +137,8 @@ func (o LookupVMInstanceGuestAgentResultOutput) Status() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupVMInstanceGuestAgentResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupVMInstanceGuestAgentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupVMInstanceGuestAgentResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupVMInstanceGuestAgentResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +36,8 @@ type LookupLabelByWorkspaceArgs struct {
 
 // Label details
 type LookupLabelByWorkspaceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Label color.
 	Color *string `pulumi:"color"`
 	// Label display name.
@@ -46,7 +49,7 @@ type LookupLabelByWorkspaceResult struct {
 	// Resource provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -88,6 +91,11 @@ func (o LookupLabelByWorkspaceResultOutput) ToLookupLabelByWorkspaceResultOutput
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupLabelByWorkspaceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLabelByWorkspaceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Label color.
 func (o LookupLabelByWorkspaceResultOutput) Color() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLabelByWorkspaceResult) *string { return v.Color }).(pulumi.StringPtrOutput)
@@ -114,8 +122,8 @@ func (o LookupLabelByWorkspaceResultOutput) ProvisioningState() pulumi.StringOut
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupLabelByWorkspaceResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupLabelByWorkspaceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupLabelByWorkspaceResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupLabelByWorkspaceResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

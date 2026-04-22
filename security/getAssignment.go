@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,8 @@ type LookupAssignmentResult struct {
 	AssignedComponent *AssignedComponentItemResponse `pulumi:"assignedComponent"`
 	// Standard item with key as applied to this standard assignment over the given scope
 	AssignedStandard *AssignedStandardItemResponse `pulumi:"assignedStandard"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// description of the standardAssignment
 	Description *string `pulumi:"description"`
 	// display name of the standardAssignment
@@ -62,7 +65,7 @@ type LookupAssignmentResult struct {
 	// Scope to which the standardAssignment applies - can be a subscription path or a resource group under that subscription
 	Scope *string `pulumi:"scope"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// A list of key value pairs that describe the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// Resource type
@@ -117,6 +120,11 @@ func (o LookupAssignmentResultOutput) AssignedComponent() AssignedComponentItemR
 // Standard item with key as applied to this standard assignment over the given scope
 func (o LookupAssignmentResultOutput) AssignedStandard() AssignedStandardItemResponsePtrOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) *AssignedStandardItemResponse { return v.AssignedStandard }).(AssignedStandardItemResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAssignmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAssignmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // description of the standardAssignment
@@ -175,8 +183,8 @@ func (o LookupAssignmentResultOutput) Scope() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupAssignmentResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAssignmentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupAssignmentResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAssignmentResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // A list of key value pairs that describe the resource.

@@ -7,13 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a IscsiPath
 //
 // Uses Azure REST API version 2023-09-01.
+//
+// Other available API versions: 2024-09-01, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native avs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupIscsiPath(ctx *pulumi.Context, args *LookupIscsiPathArgs, opts ...pulumi.InvokeOption) (*LookupIscsiPathResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIscsiPathResult
@@ -33,6 +36,8 @@ type LookupIscsiPathArgs struct {
 
 // An iSCSI path resource
 type LookupIscsiPathResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -42,7 +47,7 @@ type LookupIscsiPathResult struct {
 	// The state of the iSCSI path provisioning
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -82,6 +87,11 @@ func (o LookupIscsiPathResultOutput) ToLookupIscsiPathResultOutputWithContext(ct
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupIscsiPathResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIscsiPathResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupIscsiPathResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIscsiPathResult) string { return v.Id }).(pulumi.StringOutput)
@@ -103,8 +113,8 @@ func (o LookupIscsiPathResultOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupIscsiPathResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupIscsiPathResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupIscsiPathResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupIscsiPathResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

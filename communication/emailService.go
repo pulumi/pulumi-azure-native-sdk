@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A class representing an EmailService resource.
 //
-// Uses Azure REST API version 2023-03-31. In version 1.x of the Azure Native provider, it used API version 2021-10-01-preview.
+// Uses Azure REST API version 2023-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-03-31.
 //
-// Other available API versions: 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2024-09-01-preview.
+// Other available API versions: 2023-03-31, 2023-04-01, 2023-04-01-preview, 2024-09-01-preview, 2025-05-01, 2025-05-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type EmailService struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The location where the email service stores its data at rest.
 	DataLocation pulumi.StringOutput `pulumi:"dataLocation"`
 	// The geo-location where the resource lives
@@ -29,7 +32,7 @@ type EmailService struct {
 	// Provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -73,6 +76,15 @@ func NewEmailService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:communication/v20240901preview:EmailService"),
+		},
+		{
+			Type: pulumi.String("azure-native:communication/v20250501:EmailService"),
+		},
+		{
+			Type: pulumi.String("azure-native:communication/v20250501preview:EmailService"),
+		},
+		{
+			Type: pulumi.String("azure-native:communication/v20250901:EmailService"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -172,6 +184,11 @@ func (o EmailServiceOutput) ToEmailServiceOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The Azure API version of the resource.
+func (o EmailServiceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EmailService) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The location where the email service stores its data at rest.
 func (o EmailServiceOutput) DataLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailService) pulumi.StringOutput { return v.DataLocation }).(pulumi.StringOutput)
@@ -193,8 +210,8 @@ func (o EmailServiceOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o EmailServiceOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *EmailService) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o EmailServiceOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *EmailService) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Employee resource
 //
-// Uses Azure REST API version 2021-10-01-preview.
+// Uses Azure REST API version 2021-11-01. In version 2.x of the Azure Native provider, it used API version 2021-10-01-preview.
 //
-// Other available API versions: 2021-11-01.
+// Other available API versions: 2021-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native contoso [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Employee struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -27,7 +30,7 @@ type Employee struct {
 	// The resource-specific properties for this resource.
 	Properties EmployeePropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -149,6 +152,11 @@ func (o EmployeeOutput) ToEmployeeOutputWithContext(ctx context.Context) Employe
 	return o
 }
 
+// The Azure API version of the resource.
+func (o EmployeeOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Employee) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The geo-location where the resource lives
 func (o EmployeeOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Employee) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -165,8 +173,8 @@ func (o EmployeeOutput) Properties() EmployeePropertiesResponseOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o EmployeeOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Employee) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o EmployeeOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Employee) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

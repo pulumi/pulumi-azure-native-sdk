@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // MQ dataLakeConnector resource
 //
-// Uses Azure REST API version 2023-10-04-preview.
+// Uses Azure REST API version 2023-10-04-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-04-preview.
 type DataLakeConnector struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// DataLake database format to use.
 	DatabaseFormat pulumi.StringOutput `pulumi:"databaseFormat"`
 	// Extended Location
@@ -41,7 +44,7 @@ type DataLakeConnector struct {
 	// The status of the last operation.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The protocol to use for connecting with Brokers. NOTE - Enum only storage is supported at at time.
@@ -219,6 +222,11 @@ func (o DataLakeConnectorOutput) ToDataLakeConnectorOutputWithContext(ctx contex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o DataLakeConnectorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataLakeConnector) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // DataLake database format to use.
 func (o DataLakeConnectorOutput) DatabaseFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataLakeConnector) pulumi.StringOutput { return v.DatabaseFormat }).(pulumi.StringOutput)
@@ -275,8 +283,8 @@ func (o DataLakeConnectorOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o DataLakeConnectorOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *DataLakeConnector) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o DataLakeConnectorOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *DataLakeConnector) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // Resource tags.

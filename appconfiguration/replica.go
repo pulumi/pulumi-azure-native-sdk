@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The replica resource.
 //
-// Uses Azure REST API version 2023-03-01.
+// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
 //
-// Other available API versions: 2023-08-01-preview, 2023-09-01-preview, 2024-05-01.
+// Other available API versions: 2023-03-01, 2023-08-01-preview, 2023-09-01-preview, 2024-06-01, 2024-06-15-preview, 2025-02-01-preview, 2025-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native appconfiguration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Replica struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The URI of the replica where the replica API will be available.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// The location of the replica.
@@ -29,7 +32,7 @@ type Replica struct {
 	// The provisioning state of the replica.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Resource system metadata.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -62,6 +65,18 @@ func NewReplica(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:appconfiguration/v20240501:Replica"),
+		},
+		{
+			Type: pulumi.String("azure-native:appconfiguration/v20240601:Replica"),
+		},
+		{
+			Type: pulumi.String("azure-native:appconfiguration/v20240615preview:Replica"),
+		},
+		{
+			Type: pulumi.String("azure-native:appconfiguration/v20250201preview:Replica"),
+		},
+		{
+			Type: pulumi.String("azure-native:appconfiguration/v20250601preview:Replica"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -157,6 +172,11 @@ func (o ReplicaOutput) ToReplicaOutputWithContext(ctx context.Context) ReplicaOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ReplicaOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Replica) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The URI of the replica where the replica API will be available.
 func (o ReplicaOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Replica) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
@@ -178,8 +198,8 @@ func (o ReplicaOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Resource system metadata.
-func (o ReplicaOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Replica) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o ReplicaOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Replica) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // The type of the resource.

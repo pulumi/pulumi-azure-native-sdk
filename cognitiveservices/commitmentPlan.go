@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Cognitive Services account commitment plan.
 //
-// Uses Azure REST API version 2023-05-01. In version 1.x of the Azure Native provider, it used API version 2021-10-01.
+// Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
 //
-// Other available API versions: 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview.
+// Other available API versions: 2023-05-01, 2023-10-01-preview, 2024-04-01-preview, 2024-06-01-preview, 2024-10-01, 2025-04-01-preview, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cognitiveservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type CommitmentPlan struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource Etag.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The Kind of the resource.
@@ -33,7 +36,7 @@ type CommitmentPlan struct {
 	// The resource model definition representing SKU
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -83,6 +86,18 @@ func NewCommitmentPlan(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:cognitiveservices/v20250401preview:CommitmentPlan"),
+		},
+		{
+			Type: pulumi.String("azure-native:cognitiveservices/v20250601:CommitmentPlan"),
+		},
+		{
+			Type: pulumi.String("azure-native:cognitiveservices/v20250701preview:CommitmentPlan"),
+		},
+		{
+			Type: pulumi.String("azure-native:cognitiveservices/v20250901:CommitmentPlan"),
+		},
+		{
+			Type: pulumi.String("azure-native:cognitiveservices/v20251001preview:CommitmentPlan"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -194,6 +209,11 @@ func (o CommitmentPlanOutput) ToCommitmentPlanOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o CommitmentPlanOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CommitmentPlan) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Resource Etag.
 func (o CommitmentPlanOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *CommitmentPlan) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
@@ -225,8 +245,8 @@ func (o CommitmentPlanOutput) Sku() SkuResponsePtrOutput {
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o CommitmentPlanOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *CommitmentPlan) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o CommitmentPlanOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *CommitmentPlan) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Resource tags.

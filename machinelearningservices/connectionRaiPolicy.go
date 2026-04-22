@@ -8,24 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure OpenAI Content Filters resource.
 //
-// Uses Azure REST API version 2024-04-01-preview.
+// Uses Azure REST API version 2025-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-04-01-preview.
 //
-// Other available API versions: 2024-07-01-preview, 2024-10-01-preview, 2025-01-01-preview.
+// Other available API versions: 2024-04-01-preview, 2024-07-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ConnectionRaiPolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Azure OpenAI Content Filters properties.
 	Properties RaiPolicyPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -61,6 +64,15 @@ func NewConnectionRaiPolicy(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:ConnectionRaiPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250401preview:ConnectionRaiPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250701preview:ConnectionRaiPolicy"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20251001preview:ConnectionRaiPolicy"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -101,6 +113,8 @@ type connectionRaiPolicyArgs struct {
 	ConnectionName string `pulumi:"connectionName"`
 	// Azure OpenAI Content Filters properties.
 	Properties RaiPolicyProperties `pulumi:"properties"`
+	// Api version used by proxy call
+	ProxyApiVersion *string `pulumi:"proxyApiVersion"`
 	// Name of the Rai Policy.
 	RaiPolicyName *string `pulumi:"raiPolicyName"`
 	// The name of the resource group. The name is case insensitive.
@@ -115,6 +129,8 @@ type ConnectionRaiPolicyArgs struct {
 	ConnectionName pulumi.StringInput
 	// Azure OpenAI Content Filters properties.
 	Properties RaiPolicyPropertiesInput
+	// Api version used by proxy call
+	ProxyApiVersion pulumi.StringPtrInput
 	// Name of the Rai Policy.
 	RaiPolicyName pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -160,6 +176,11 @@ func (o ConnectionRaiPolicyOutput) ToConnectionRaiPolicyOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ConnectionRaiPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConnectionRaiPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o ConnectionRaiPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionRaiPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -171,8 +192,8 @@ func (o ConnectionRaiPolicyOutput) Properties() RaiPolicyPropertiesResponseOutpu
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ConnectionRaiPolicyOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *ConnectionRaiPolicy) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o ConnectionRaiPolicyOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *ConnectionRaiPolicy) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

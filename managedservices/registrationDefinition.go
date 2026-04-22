@@ -8,16 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The registration definition.
 //
-// Uses Azure REST API version 2022-10-01. In version 1.x of the Azure Native provider, it used API version 2019-09-01.
+// Uses Azure REST API version 2022-10-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
 type RegistrationDefinition struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the registration definition.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The details for the Managed Services offer’s plan in Azure Marketplace.
@@ -25,7 +28,7 @@ type RegistrationDefinition struct {
 	// The properties of a registration definition.
 	Properties RegistrationDefinitionPropertiesResponseOutput `pulumi:"properties"`
 	// The metadata for the registration assignment resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the Azure resource (Microsoft.ManagedServices/registrationDefinitions).
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -156,6 +159,11 @@ func (o RegistrationDefinitionOutput) ToRegistrationDefinitionOutputWithContext(
 	return o
 }
 
+// The Azure API version of the resource.
+func (o RegistrationDefinitionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistrationDefinition) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The name of the registration definition.
 func (o RegistrationDefinitionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistrationDefinition) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -172,8 +180,8 @@ func (o RegistrationDefinitionOutput) Properties() RegistrationDefinitionPropert
 }
 
 // The metadata for the registration assignment resource.
-func (o RegistrationDefinitionOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *RegistrationDefinition) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o RegistrationDefinitionOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *RegistrationDefinition) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the Azure resource (Microsoft.ManagedServices/registrationDefinitions).

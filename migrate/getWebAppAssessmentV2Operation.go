@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a WebAppAssessmentV2
 //
-// Uses Azure REST API version 2023-04-01-preview.
+// Uses Azure REST API version 2024-01-01-preview.
 //
-// Other available API versions: 2023-05-01-preview, 2023-09-09-preview, 2024-01-01-preview.
+// Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview, 2024-01-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWebAppAssessmentV2Operation(ctx *pulumi.Context, args *LookupWebAppAssessmentV2OperationArgs, opts ...pulumi.InvokeOption) (*LookupWebAppAssessmentV2OperationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppAssessmentV2OperationResult
@@ -45,6 +46,8 @@ type LookupWebAppAssessmentV2OperationResult struct {
 	AppSvcNativeSettings *AppSvcNativeSettingsResponse `pulumi:"appSvcNativeSettings"`
 	// Assessment type of the assessment.
 	AssessmentType *string `pulumi:"assessmentType"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Azure Location or Azure region where to which the machines will be migrated.
 	AzureLocation *string `pulumi:"azureLocation"`
 	// Azure Offer Code.
@@ -99,7 +102,7 @@ type LookupWebAppAssessmentV2OperationResult struct {
 	// Whether assessment is in valid state and all machines have been assessed.
 	Status string `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Time Range for which the historic utilization data should be considered for
 	// assessment.
 	TimeRange *string `pulumi:"timeRange"`
@@ -165,6 +168,11 @@ func (o LookupWebAppAssessmentV2OperationResultOutput) AppSvcNativeSettings() Ap
 // Assessment type of the assessment.
 func (o LookupWebAppAssessmentV2OperationResultOutput) AssessmentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppAssessmentV2OperationResult) *string { return v.AssessmentType }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupWebAppAssessmentV2OperationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWebAppAssessmentV2OperationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Azure Location or Azure region where to which the machines will be migrated.
@@ -298,8 +306,8 @@ func (o LookupWebAppAssessmentV2OperationResultOutput) Status() pulumi.StringOut
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupWebAppAssessmentV2OperationResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupWebAppAssessmentV2OperationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupWebAppAssessmentV2OperationResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupWebAppAssessmentV2OperationResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Time Range for which the historic utilization data should be considered for

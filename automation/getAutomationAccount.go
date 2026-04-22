@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get information about an Automation Account.
 //
-// Uses Azure REST API version 2022-08-08.
+// Uses Azure REST API version 2024-10-23.
 //
-// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
+// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2021-06-22, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAutomationAccount(ctx *pulumi.Context, args *LookupAutomationAccountArgs, opts ...pulumi.InvokeOption) (*LookupAutomationAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAutomationAccountResult
@@ -37,6 +38,8 @@ type LookupAutomationAccountArgs struct {
 type LookupAutomationAccountResult struct {
 	// URL of automation hybrid service which is used for hybrid worker on-boarding.
 	AutomationHybridServiceUrl *string `pulumi:"automationHybridServiceUrl"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets the creation time.
 	CreationTime string `pulumi:"creationTime"`
 	// Gets or sets the description.
@@ -47,7 +50,7 @@ type LookupAutomationAccountResult struct {
 	Encryption *EncryptionPropertiesResponse `pulumi:"encryption"`
 	// Gets or sets the etag of the resource.
 	Etag *string `pulumi:"etag"`
-	// Fully qualified resource Id for the resource
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Identity for the resource.
 	Identity *IdentityResponse `pulumi:"identity"`
@@ -55,8 +58,8 @@ type LookupAutomationAccountResult struct {
 	LastModifiedBy *string `pulumi:"lastModifiedBy"`
 	// Gets the last modified time.
 	LastModifiedTime string `pulumi:"lastModifiedTime"`
-	// The Azure Region where the resource lives
-	Location *string `pulumi:"location"`
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// List of Automation operations supported by the Automation resource provider.
@@ -67,11 +70,11 @@ type LookupAutomationAccountResult struct {
 	Sku *SkuResponse `pulumi:"sku"`
 	// Gets status of account.
 	State string `pulumi:"state"`
-	// Resource system metadata.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -115,6 +118,11 @@ func (o LookupAutomationAccountResultOutput) AutomationHybridServiceUrl() pulumi
 	return o.ApplyT(func(v LookupAutomationAccountResult) *string { return v.AutomationHybridServiceUrl }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupAutomationAccountResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAutomationAccountResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Gets the creation time.
 func (o LookupAutomationAccountResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAutomationAccountResult) string { return v.CreationTime }).(pulumi.StringOutput)
@@ -140,7 +148,7 @@ func (o LookupAutomationAccountResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAutomationAccountResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource Id for the resource
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupAutomationAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAutomationAccountResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -160,9 +168,9 @@ func (o LookupAutomationAccountResultOutput) LastModifiedTime() pulumi.StringOut
 	return o.ApplyT(func(v LookupAutomationAccountResult) string { return v.LastModifiedTime }).(pulumi.StringOutput)
 }
 
-// The Azure Region where the resource lives
-func (o LookupAutomationAccountResultOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupAutomationAccountResult) *string { return v.Location }).(pulumi.StringPtrOutput)
+// The geo-location where the resource lives
+func (o LookupAutomationAccountResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAutomationAccountResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
 // The name of the resource
@@ -192,9 +200,9 @@ func (o LookupAutomationAccountResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAutomationAccountResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Resource system metadata.
-func (o LookupAutomationAccountResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAutomationAccountResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupAutomationAccountResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAutomationAccountResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.
@@ -202,7 +210,7 @@ func (o LookupAutomationAccountResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAutomationAccountResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupAutomationAccountResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAutomationAccountResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -7,15 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Disk pool.
 //
 // Uses Azure REST API version 2021-08-01.
-//
-// Other available API versions: 2020-03-15-preview.
 func LookupDiskPool(ctx *pulumi.Context, args *LookupDiskPoolArgs, opts ...pulumi.InvokeOption) (*LookupDiskPoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDiskPoolResult
@@ -39,6 +37,8 @@ type LookupDiskPoolResult struct {
 	AdditionalCapabilities []string `pulumi:"additionalCapabilities"`
 	// Logical zone for Disk Pool resource; example: ["1"].
 	AvailabilityZones []string `pulumi:"availabilityZones"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// List of Azure Managed Disks to attach to a Disk Pool.
 	Disks []DiskResponse `pulumi:"disks"`
 	// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -110,6 +110,11 @@ func (o LookupDiskPoolResultOutput) AdditionalCapabilities() pulumi.StringArrayO
 // Logical zone for Disk Pool resource; example: ["1"].
 func (o LookupDiskPoolResultOutput) AvailabilityZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDiskPoolResult) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupDiskPoolResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDiskPoolResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of Azure Managed Disks to attach to a Disk Pool.

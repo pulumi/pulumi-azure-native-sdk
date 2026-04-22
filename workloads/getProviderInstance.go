@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets properties of a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
 //
-// Uses Azure REST API version 2023-04-01.
+// Uses Azure REST API version 2024-02-01-preview.
 //
-// Other available API versions: 2023-10-01-preview, 2023-12-01-preview, 2024-02-01-preview.
+// Other available API versions: 2023-04-01, 2023-10-01-preview, 2023-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native workloads [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupProviderInstance(ctx *pulumi.Context, args *LookupProviderInstanceArgs, opts ...pulumi.InvokeOption) (*LookupProviderInstanceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProviderInstanceResult
@@ -37,12 +38,14 @@ type LookupProviderInstanceArgs struct {
 
 // A provider instance associated with SAP monitor.
 type LookupProviderInstanceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Defines the provider instance errors.
-	Errors ProviderInstancePropertiesResponseErrors `pulumi:"errors"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Errors commontypesv5.ErrorDetailResponse `pulumi:"errors"`
+	// Resource health details
+	Health HealthResponse `pulumi:"health"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// [currently not in use] Managed service identity(user assigned identities)
-	Identity *UserAssignedServiceIdentityResponse `pulumi:"identity"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Defines the provider specific properties.
@@ -50,7 +53,7 @@ type LookupProviderInstanceResult struct {
 	// State of provisioning of the provider instance
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -92,19 +95,24 @@ func (o LookupProviderInstanceResultOutput) ToLookupProviderInstanceResultOutput
 	return o
 }
 
-// Defines the provider instance errors.
-func (o LookupProviderInstanceResultOutput) Errors() ProviderInstancePropertiesResponseErrorsOutput {
-	return o.ApplyT(func(v LookupProviderInstanceResult) ProviderInstancePropertiesResponseErrors { return v.Errors }).(ProviderInstancePropertiesResponseErrorsOutput)
+// The Azure API version of the resource.
+func (o LookupProviderInstanceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupProviderInstanceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Defines the provider instance errors.
+func (o LookupProviderInstanceResultOutput) Errors() commontypesv5.ErrorDetailResponseOutput {
+	return o.ApplyT(func(v LookupProviderInstanceResult) commontypesv5.ErrorDetailResponse { return v.Errors }).(commontypesv5.ErrorDetailResponseOutput)
+}
+
+// Resource health details
+func (o LookupProviderInstanceResultOutput) Health() HealthResponseOutput {
+	return o.ApplyT(func(v LookupProviderInstanceResult) HealthResponse { return v.Health }).(HealthResponseOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupProviderInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProviderInstanceResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// [currently not in use] Managed service identity(user assigned identities)
-func (o LookupProviderInstanceResultOutput) Identity() UserAssignedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupProviderInstanceResult) *UserAssignedServiceIdentityResponse { return v.Identity }).(UserAssignedServiceIdentityResponsePtrOutput)
 }
 
 // The name of the resource
@@ -123,8 +131,8 @@ func (o LookupProviderInstanceResultOutput) ProvisioningState() pulumi.StringOut
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupProviderInstanceResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupProviderInstanceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupProviderInstanceResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupProviderInstanceResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

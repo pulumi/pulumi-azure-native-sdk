@@ -7,15 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets Build details
 //
-// Uses Azure REST API version 2024-07-01-preview.
+// Uses Azure REST API version 2024-10-01-preview.
 //
-// Other available API versions: 2024-08-01-preview, 2024-10-01-preview, 2025-02-01.
+// Other available API versions: 2024-07-01-preview, 2024-08-01-preview, 2025-02-01, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func GetProjectCatalogImageDefinitionBuildDetails(ctx *pulumi.Context, args *GetProjectCatalogImageDefinitionBuildDetailsArgs, opts ...pulumi.InvokeOption) (*GetProjectCatalogImageDefinitionBuildDetailsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectCatalogImageDefinitionBuildDetailsResult
@@ -56,7 +57,7 @@ type GetProjectCatalogImageDefinitionBuildDetailsResult struct {
 	// The status of the build.
 	Status string `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
 	// The list of task groups executed during the image definition build.
 	TaskGroups []ImageDefinitionBuildTaskGroupResponse `pulumi:"taskGroups"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -144,8 +145,10 @@ func (o GetProjectCatalogImageDefinitionBuildDetailsResultOutput) Status() pulum
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o GetProjectCatalogImageDefinitionBuildDetailsResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v GetProjectCatalogImageDefinitionBuildDetailsResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o GetProjectCatalogImageDefinitionBuildDetailsResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v GetProjectCatalogImageDefinitionBuildDetailsResult) commontypesv5.SystemDataResponse {
+		return v.SystemData
+	}).(commontypesv5.SystemDataResponseOutput)
 }
 
 // The list of task groups executed during the image definition build.

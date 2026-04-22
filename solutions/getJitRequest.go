@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2021-07-01.
 //
-// Other available API versions: 2023-12-01-preview.
+// Other available API versions: 2023-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native solutions [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupJitRequest(ctx *pulumi.Context, args *LookupJitRequestArgs, opts ...pulumi.InvokeOption) (*LookupJitRequestResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupJitRequestResult
@@ -37,6 +38,8 @@ type LookupJitRequestArgs struct {
 type LookupJitRequestResult struct {
 	// The parent application id.
 	ApplicationResourceId string `pulumi:"applicationResourceId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The client entity that created the JIT request.
 	CreatedBy ApplicationClientDetailsResponse `pulumi:"createdBy"`
 	// Resource ID
@@ -56,7 +59,7 @@ type LookupJitRequestResult struct {
 	// The publisher tenant id.
 	PublisherTenantId string `pulumi:"publisherTenantId"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
 	// Resource type
@@ -105,6 +108,11 @@ func (o LookupJitRequestResultOutput) ApplicationResourceId() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupJitRequestResult) string { return v.ApplicationResourceId }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupJitRequestResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJitRequestResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The client entity that created the JIT request.
 func (o LookupJitRequestResultOutput) CreatedBy() ApplicationClientDetailsResponseOutput {
 	return o.ApplyT(func(v LookupJitRequestResult) ApplicationClientDetailsResponse { return v.CreatedBy }).(ApplicationClientDetailsResponseOutput)
@@ -151,8 +159,8 @@ func (o LookupJitRequestResultOutput) PublisherTenantId() pulumi.StringOutput {
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupJitRequestResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupJitRequestResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupJitRequestResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupJitRequestResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Resource tags

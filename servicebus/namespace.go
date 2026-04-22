@@ -8,20 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description of a namespace resource.
 //
-// Uses Azure REST API version 2022-01-01-preview. In version 1.x of the Azure Native provider, it used API version 2017-04-01.
+// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
 //
-// Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
+// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Namespace struct {
 	pulumi.CustomResourceState
 
 	// Alternate name for namespace
 	AlternateName pulumi.StringPtrOutput `pulumi:"alternateName"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The time the namespace was created
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// This property disables SAS authentication for the Service Bus namespace.
@@ -38,6 +40,8 @@ type Namespace struct {
 	MinimumTlsVersion pulumi.StringPtrOutput `pulumi:"minimumTlsVersion"`
 	// Resource name
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default value is 1 and possible values are 1, 2 and 4
+	PremiumMessagingPartitions pulumi.IntPtrOutput `pulumi:"premiumMessagingPartitions"`
 	// List of private endpoint connections.
 	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// Provisioning state of the namespace.
@@ -58,7 +62,7 @@ type Namespace struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The time the namespace was updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
-	// Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
+	// This property reflects if zone redundancy has been enabled for namespaces in regions that support availability zones.
 	ZoneRedundant pulumi.BoolPtrOutput `pulumi:"zoneRedundant"`
 }
 
@@ -112,6 +116,9 @@ func NewNamespace(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:servicebus/v20240101:Namespace"),
 		},
+		{
+			Type: pulumi.String("azure-native:servicebus/v20250501preview:Namespace"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -161,18 +168,20 @@ type namespaceArgs struct {
 	MinimumTlsVersion *string `pulumi:"minimumTlsVersion"`
 	// The namespace name.
 	NamespaceName *string `pulumi:"namespaceName"`
+	// The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default value is 1 and possible values are 1, 2 and 4
+	PremiumMessagingPartitions *int `pulumi:"premiumMessagingPartitions"`
 	// List of private endpoint connections.
 	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	PrivateEndpointConnections []PrivateEndpointConnectionType `pulumi:"privateEndpointConnections"`
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Properties of SKU
 	Sku *SBSku `pulumi:"sku"`
 	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
-	// Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
+	// This property reflects if zone redundancy has been enabled for namespaces in regions that support availability zones.
 	ZoneRedundant *bool `pulumi:"zoneRedundant"`
 }
 
@@ -192,18 +201,20 @@ type NamespaceArgs struct {
 	MinimumTlsVersion pulumi.StringPtrInput
 	// The namespace name.
 	NamespaceName pulumi.StringPtrInput
+	// The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default value is 1 and possible values are 1, 2 and 4
+	PremiumMessagingPartitions pulumi.IntPtrInput
 	// List of private endpoint connections.
 	// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
 	PrivateEndpointConnections PrivateEndpointConnectionTypeArrayInput
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	PublicNetworkAccess pulumi.StringPtrInput
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Properties of SKU
 	Sku SBSkuPtrInput
 	// Resource tags
 	Tags pulumi.StringMapInput
-	// Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
+	// This property reflects if zone redundancy has been enabled for namespaces in regions that support availability zones.
 	ZoneRedundant pulumi.BoolPtrInput
 }
 
@@ -249,6 +260,11 @@ func (o NamespaceOutput) AlternateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringPtrOutput { return v.AlternateName }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o NamespaceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The time the namespace was created
 func (o NamespaceOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
@@ -287,6 +303,11 @@ func (o NamespaceOutput) MinimumTlsVersion() pulumi.StringPtrOutput {
 // Resource name
 func (o NamespaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default value is 1 and possible values are 1, 2 and 4
+func (o NamespaceOutput) PremiumMessagingPartitions() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.IntPtrOutput { return v.PremiumMessagingPartitions }).(pulumi.IntPtrOutput)
 }
 
 // List of private endpoint connections.
@@ -339,7 +360,7 @@ func (o NamespaceOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// Enabling this property creates a Premium Service Bus Namespace in regions supported availability zones.
+// This property reflects if zone redundancy has been enabled for namespaces in regions that support availability zones.
 func (o NamespaceOutput) ZoneRedundant() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.BoolPtrOutput { return v.ZoneRedundant }).(pulumi.BoolPtrOutput)
 }

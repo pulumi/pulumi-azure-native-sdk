@@ -7,13 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2022-06-01.
+// Uses Azure REST API version 2023-10-20.
 //
-// Other available API versions: 2022-08-01, 2023-01-01, 2023-07-07, 2023-10-20.
+// Other available API versions: 2022-06-01, 2022-08-01, 2023-01-01, 2023-07-07, 2024-03-01, 2025-01-07, 2025-06-11, 2025-11-03-preview, 2025-12-26-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupMonitor(ctx *pulumi.Context, args *LookupMonitorArgs, opts ...pulumi.InvokeOption) (*LookupMonitorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMonitorResult
@@ -32,6 +33,8 @@ type LookupMonitorArgs struct {
 }
 
 type LookupMonitorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// ARM id of the monitor resource.
 	Id       string                      `pulumi:"id"`
 	Identity *IdentityPropertiesResponse `pulumi:"identity"`
@@ -42,8 +45,8 @@ type LookupMonitorResult struct {
 	Properties MonitorPropertiesResponse `pulumi:"properties"`
 	Sku        *ResourceSkuResponse      `pulumi:"sku"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
-	Tags       map[string]string  `pulumi:"tags"`
+	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	Tags       map[string]string                `pulumi:"tags"`
 	// The type of the monitor resource.
 	Type string `pulumi:"type"`
 }
@@ -82,6 +85,11 @@ func (o LookupMonitorResultOutput) ToLookupMonitorResultOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupMonitorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMonitorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // ARM id of the monitor resource.
 func (o LookupMonitorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMonitorResult) string { return v.Id }).(pulumi.StringOutput)
@@ -110,8 +118,8 @@ func (o LookupMonitorResultOutput) Sku() ResourceSkuResponsePtrOutput {
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupMonitorResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupMonitorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupMonitorResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupMonitorResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 func (o LookupMonitorResultOutput) Tags() pulumi.StringMapOutput {

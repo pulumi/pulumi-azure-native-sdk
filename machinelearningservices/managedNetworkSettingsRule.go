@@ -8,24 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Outbound Rule Basic Resource for the managed network of a machine learning workspace.
+// Concrete proxy resource types can be created by aliasing this type using a specific property type.
 //
-// Uses Azure REST API version 2023-04-01-preview.
+// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
 //
-// Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
+// Other available API versions: 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ManagedNetworkSettingsRule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Outbound Rule for the managed network of a machine learning workspace.
 	Properties pulumi.AnyOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -80,6 +83,27 @@ func NewManagedNetworkSettingsRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:ManagedNetworkSettingsRule"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250401:ManagedNetworkSettingsRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250401preview:ManagedNetworkSettingsRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250601:ManagedNetworkSettingsRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250701preview:ManagedNetworkSettingsRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250901:ManagedNetworkSettingsRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20251001preview:ManagedNetworkSettingsRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20251201:ManagedNetworkSettingsRule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -121,7 +145,7 @@ type managedNetworkSettingsRuleArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of the workspace managed network outbound rule
 	RuleName *string `pulumi:"ruleName"`
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
@@ -133,7 +157,7 @@ type ManagedNetworkSettingsRuleArgs struct {
 	ResourceGroupName pulumi.StringInput
 	// Name of the workspace managed network outbound rule
 	RuleName pulumi.StringPtrInput
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName pulumi.StringInput
 }
 
@@ -174,6 +198,11 @@ func (o ManagedNetworkSettingsRuleOutput) ToManagedNetworkSettingsRuleOutputWith
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ManagedNetworkSettingsRuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedNetworkSettingsRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o ManagedNetworkSettingsRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedNetworkSettingsRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -185,8 +214,8 @@ func (o ManagedNetworkSettingsRuleOutput) Properties() pulumi.AnyOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ManagedNetworkSettingsRuleOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *ManagedNetworkSettingsRule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o ManagedNetworkSettingsRuleOutput) SystemData() commontypesv3.SystemDataResponseOutput {
+	return o.ApplyT(func(v *ManagedNetworkSettingsRule) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

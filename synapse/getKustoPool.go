@@ -7,13 +7,16 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv1"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Kusto pool.
 //
 // Uses Azure REST API version 2021-06-01-preview.
+//
+// Other available API versions: 2021-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native synapse [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupKustoPool(ctx *pulumi.Context, args *LookupKustoPoolArgs, opts ...pulumi.InvokeOption) (*LookupKustoPoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupKustoPoolResult
@@ -35,6 +38,8 @@ type LookupKustoPoolArgs struct {
 
 // Class representing a Kusto kusto pool.
 type LookupKustoPoolResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The Kusto Pool data ingestion URI.
 	DataIngestionUri string `pulumi:"dataIngestionUri"`
 	// A boolean value that indicates if the purge operations are enabled.
@@ -62,7 +67,7 @@ type LookupKustoPoolResult struct {
 	// The reason for the Kusto Pool's current state.
 	StateReason string `pulumi:"stateReason"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
+	SystemData commontypesv1.SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -124,6 +129,11 @@ func (o LookupKustoPoolResultOutput) ToLookupKustoPoolResultOutput() LookupKusto
 
 func (o LookupKustoPoolResultOutput) ToLookupKustoPoolResultOutputWithContext(ctx context.Context) LookupKustoPoolResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupKustoPoolResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupKustoPoolResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The Kusto Pool data ingestion URI.
@@ -192,8 +202,8 @@ func (o LookupKustoPoolResultOutput) StateReason() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupKustoPoolResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupKustoPoolResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+func (o LookupKustoPoolResultOutput) SystemData() commontypesv1.SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupKustoPoolResult) commontypesv1.SystemDataResponse { return v.SystemData }).(commontypesv1.SystemDataResponseOutput)
 }
 
 // Resource tags.

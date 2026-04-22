@@ -8,20 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes an Arc Gateway.
 //
-// Uses Azure REST API version 2024-03-31-preview.
+// Uses Azure REST API version 2024-07-31-preview. In version 2.x of the Azure Native provider, it used API version 2024-03-31-preview.
 //
-// Other available API versions: 2024-05-20-preview, 2024-07-31-preview, 2024-09-10-preview, 2024-11-10-preview, 2025-01-13.
+// Other available API versions: 2024-03-31-preview, 2024-05-20-preview, 2024-09-10-preview, 2024-11-10-preview, 2025-01-13, 2025-02-19-preview, 2025-06-01, 2025-08-21-preview, 2025-09-16-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridcompute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Gateway struct {
 	pulumi.CustomResourceState
 
 	// Specifies the list of features that are enabled for this Gateway.
 	AllowedFeatures pulumi.StringArrayOutput `pulumi:"allowedFeatures"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The endpoint fqdn for the Gateway.
 	GatewayEndpoint pulumi.StringOutput `pulumi:"gatewayEndpoint"`
 	// A unique, immutable, identifier for the Gateway.
@@ -35,7 +38,7 @@ type Gateway struct {
 	// The provisioning state, which only appears in the response.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -70,6 +73,18 @@ func NewGateway(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hybridcompute/v20250113:Gateway"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20250219preview:Gateway"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20250601:Gateway"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20250821preview:Gateway"),
+		},
+		{
+			Type: pulumi.String("azure-native:hybridcompute/v20250916preview:Gateway"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -178,6 +193,11 @@ func (o GatewayOutput) AllowedFeatures() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringArrayOutput { return v.AllowedFeatures }).(pulumi.StringArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o GatewayOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The endpoint fqdn for the Gateway.
 func (o GatewayOutput) GatewayEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.GatewayEndpoint }).(pulumi.StringOutput)
@@ -209,8 +229,8 @@ func (o GatewayOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o GatewayOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *Gateway) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o GatewayOutput) SystemData() commontypesv5.SystemDataResponseOutput {
+	return o.ApplyT(func(v *Gateway) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
 }
 
 // Resource tags.

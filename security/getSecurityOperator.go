@@ -7,7 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,10 +34,12 @@ type LookupSecurityOperatorArgs struct {
 
 // Security operator under a given subscription and pricing
 type LookupSecurityOperatorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id
 	Id string `pulumi:"id"`
 	// Identity for the resource.
-	Identity *IdentityResponse `pulumi:"identity"`
+	Identity *commontypesv2.IdentityResponse `pulumi:"identity"`
 	// Resource name
 	Name string `pulumi:"name"`
 	// Resource type
@@ -78,14 +81,19 @@ func (o LookupSecurityOperatorResultOutput) ToLookupSecurityOperatorResultOutput
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupSecurityOperatorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecurityOperatorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Resource Id
 func (o LookupSecurityOperatorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityOperatorResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Identity for the resource.
-func (o LookupSecurityOperatorResultOutput) Identity() IdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupSecurityOperatorResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
+func (o LookupSecurityOperatorResultOutput) Identity() commontypesv2.IdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupSecurityOperatorResult) *commontypesv2.IdentityResponse { return v.Identity }).(commontypesv2.IdentityResponsePtrOutput)
 }
 
 // Resource name

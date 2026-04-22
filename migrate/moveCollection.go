@@ -8,18 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Define the move collection.
 //
-// Uses Azure REST API version 2022-08-01. In version 1.x of the Azure Native provider, it used API version 2021-01-01.
+// Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
 //
-// Other available API versions: 2023-08-01.
+// Other available API versions: 2019-10-01-preview, 2021-01-01, 2021-08-01, 2022-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type MoveCollection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The etag of the resource.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Defines the MSI properties of the Move Collection.
@@ -31,7 +34,7 @@ type MoveCollection struct {
 	// Defines the move collection properties.
 	Properties MoveCollectionPropertiesResponseOutput `pulumi:"properties"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource.
@@ -166,6 +169,11 @@ func (o MoveCollectionOutput) ToMoveCollectionOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o MoveCollectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MoveCollection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The etag of the resource.
 func (o MoveCollectionOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *MoveCollection) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
@@ -192,8 +200,8 @@ func (o MoveCollectionOutput) Properties() MoveCollectionPropertiesResponseOutpu
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o MoveCollectionOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *MoveCollection) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+func (o MoveCollectionOutput) SystemData() commontypesv2.SystemDataResponseOutput {
+	return o.ApplyT(func(v *MoveCollection) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
 }
 
 // Resource tags.
