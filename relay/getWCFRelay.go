@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -59,7 +58,7 @@ type LookupWCFRelayResult struct {
 	// Returns true if transport security is needed for this relay; otherwise, false.
 	RequiresTransportSecurity *bool `pulumi:"requiresTransportSecurity"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The time the namespace was updated.
@@ -156,8 +155,8 @@ func (o LookupWCFRelayResultOutput) RequiresTransportSecurity() pulumi.BoolPtrOu
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupWCFRelayResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupWCFRelayResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o LookupWCFRelayResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupWCFRelayResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

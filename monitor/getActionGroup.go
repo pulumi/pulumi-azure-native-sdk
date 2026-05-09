@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -57,7 +56,7 @@ type LookupActionGroupResult struct {
 	// Azure resource Id
 	Id string `pulumi:"id"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity *commontypesv5.ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The list of incident receivers that are part of this action group.
 	IncidentReceivers []IncidentReceiverResponse `pulumi:"incidentReceivers"`
 	// The list of ITSM receivers that are part of this action group.
@@ -179,8 +178,8 @@ func (o LookupActionGroupResultOutput) Id() pulumi.StringOutput {
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
-func (o LookupActionGroupResultOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupActionGroupResult) *commontypesv5.ManagedServiceIdentityResponse { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+func (o LookupActionGroupResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupActionGroupResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The list of incident receivers that are part of this action group.

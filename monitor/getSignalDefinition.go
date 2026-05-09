@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -47,7 +46,7 @@ type LookupSignalDefinitionResult struct {
 	// The resource-specific properties for this resource.
 	Properties interface{} `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv6.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -112,8 +111,8 @@ func (o LookupSignalDefinitionResultOutput) Properties() pulumi.AnyOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupSignalDefinitionResultOutput) SystemData() commontypesv6.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSignalDefinitionResult) commontypesv6.SystemDataResponse { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
+func (o LookupSignalDefinitionResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSignalDefinitionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

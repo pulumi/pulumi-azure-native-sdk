@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -61,7 +60,7 @@ type LookupSourceControlResult struct {
 	// Information regarding the resources created in user's repository.
 	RepositoryResourceInfo *RepositoryResourceInfoResponse `pulumi:"repositoryResourceInfo"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The version number associated with the source control
@@ -161,8 +160,8 @@ func (o LookupSourceControlResultOutput) RepositoryResourceInfo() RepositoryReso
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupSourceControlResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSourceControlResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupSourceControlResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSourceControlResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

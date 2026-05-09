@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -47,7 +46,7 @@ type LookupSourceResult struct {
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity *commontypesv6.ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The billing period of the impact for the resource. Format YYYYMM
 	ImpactedBillingPeriod *string `pulumi:"impactedBillingPeriod"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
@@ -59,15 +58,15 @@ type LookupSourceResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Plan for the resource.
-	Plan *commontypesv6.PlanResponse `pulumi:"plan"`
+	Plan *PlanResponse `pulumi:"plan"`
 	// The resource model definition representing SKU
-	Sku *commontypesv6.SkuResponse `pulumi:"sku"`
+	Sku *SkuResponse `pulumi:"sku"`
 	// The uri of the resource impacted which lead to the grant of the credit.
 	SourceResourceId *string `pulumi:"sourceResourceId"`
 	// Status of the credit
 	Status *string `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv6.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -132,8 +131,8 @@ func (o LookupSourceResultOutput) Id() pulumi.StringOutput {
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
-func (o LookupSourceResultOutput) Identity() commontypesv6.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupSourceResult) *commontypesv6.ManagedServiceIdentityResponse { return v.Identity }).(commontypesv6.ManagedServiceIdentityResponsePtrOutput)
+func (o LookupSourceResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupSourceResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The billing period of the impact for the resource. Format YYYYMM
@@ -162,13 +161,13 @@ func (o LookupSourceResultOutput) Name() pulumi.StringOutput {
 }
 
 // Plan for the resource.
-func (o LookupSourceResultOutput) Plan() commontypesv6.PlanResponsePtrOutput {
-	return o.ApplyT(func(v LookupSourceResult) *commontypesv6.PlanResponse { return v.Plan }).(commontypesv6.PlanResponsePtrOutput)
+func (o LookupSourceResultOutput) Plan() PlanResponsePtrOutput {
+	return o.ApplyT(func(v LookupSourceResult) *PlanResponse { return v.Plan }).(PlanResponsePtrOutput)
 }
 
 // The resource model definition representing SKU
-func (o LookupSourceResultOutput) Sku() commontypesv6.SkuResponsePtrOutput {
-	return o.ApplyT(func(v LookupSourceResult) *commontypesv6.SkuResponse { return v.Sku }).(commontypesv6.SkuResponsePtrOutput)
+func (o LookupSourceResultOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v LookupSourceResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
 // The uri of the resource impacted which lead to the grant of the credit.
@@ -182,8 +181,8 @@ func (o LookupSourceResultOutput) Status() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupSourceResultOutput) SystemData() commontypesv6.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSourceResult) commontypesv6.SystemDataResponse { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
+func (o LookupSourceResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSourceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

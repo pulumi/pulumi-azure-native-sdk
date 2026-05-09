@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -55,7 +54,7 @@ type LookupContactProfileResult struct {
 	// Network configuration of customer virtual network.
 	NetworkConfiguration ContactProfilesPropertiesResponseNetworkConfiguration `pulumi:"networkConfiguration"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Third-party mission configuration of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
@@ -152,8 +151,8 @@ func (o LookupContactProfileResultOutput) NetworkConfiguration() ContactProfiles
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupContactProfileResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupContactProfileResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o LookupContactProfileResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupContactProfileResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

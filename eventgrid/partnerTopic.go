@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -48,7 +47,7 @@ type PartnerTopic struct {
 	// Source associated with this partner topic. This represents a unique partner resource.
 	Source pulumi.StringPtrOutput `pulumi:"source"`
 	// The system metadata relating to the Event Grid resource.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Tags of the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Type of the resource.
@@ -286,8 +285,8 @@ func (o PartnerTopicOutput) Source() pulumi.StringPtrOutput {
 }
 
 // The system metadata relating to the Event Grid resource.
-func (o PartnerTopicOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *PartnerTopic) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o PartnerTopicOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *PartnerTopic) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Tags of the resource.

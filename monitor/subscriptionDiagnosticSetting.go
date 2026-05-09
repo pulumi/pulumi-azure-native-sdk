@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -35,7 +34,7 @@ type SubscriptionDiagnosticSetting struct {
 	// The resource ID of the storage account to which you would like to send Diagnostic Logs.
 	StorageAccountId pulumi.StringPtrOutput `pulumi:"storageAccountId"`
 	// The system metadata related to this resource.
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The full ARM resource ID of the Log Analytics workspace to which you would like to send Diagnostic Logs. Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
@@ -216,8 +215,8 @@ func (o SubscriptionDiagnosticSettingOutput) StorageAccountId() pulumi.StringPtr
 }
 
 // The system metadata related to this resource.
-func (o SubscriptionDiagnosticSettingOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *SubscriptionDiagnosticSetting) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o SubscriptionDiagnosticSettingOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *SubscriptionDiagnosticSetting) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

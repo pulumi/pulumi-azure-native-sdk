@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -24,9 +23,9 @@ type BookshelfPrivateEndpointConnection struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource-specific properties for this resource.
-	Properties commontypesv5.PrivateEndpointConnectionPropertiesResponseOutput `pulumi:"properties"`
+	Properties PrivateEndpointConnectionPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -88,7 +87,7 @@ type bookshelfPrivateEndpointConnectionArgs struct {
 	// The name of the private endpoint connection associated with the Azure resource.
 	PrivateEndpointConnectionName *string `pulumi:"privateEndpointConnectionName"`
 	// The resource-specific properties for this resource.
-	Properties *commontypesv5.PrivateEndpointConnectionProperties `pulumi:"properties"`
+	Properties *PrivateEndpointConnectionProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
@@ -100,7 +99,7 @@ type BookshelfPrivateEndpointConnectionArgs struct {
 	// The name of the private endpoint connection associated with the Azure resource.
 	PrivateEndpointConnectionName pulumi.StringPtrInput
 	// The resource-specific properties for this resource.
-	Properties commontypesv5.PrivateEndpointConnectionPropertiesPtrInput
+	Properties PrivateEndpointConnectionPropertiesPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 }
@@ -153,17 +152,15 @@ func (o BookshelfPrivateEndpointConnectionOutput) Name() pulumi.StringOutput {
 }
 
 // The resource-specific properties for this resource.
-func (o BookshelfPrivateEndpointConnectionOutput) Properties() commontypesv5.PrivateEndpointConnectionPropertiesResponseOutput {
-	return o.ApplyT(func(v *BookshelfPrivateEndpointConnection) commontypesv5.PrivateEndpointConnectionPropertiesResponseOutput {
+func (o BookshelfPrivateEndpointConnectionOutput) Properties() PrivateEndpointConnectionPropertiesResponseOutput {
+	return o.ApplyT(func(v *BookshelfPrivateEndpointConnection) PrivateEndpointConnectionPropertiesResponseOutput {
 		return v.Properties
-	}).(commontypesv5.PrivateEndpointConnectionPropertiesResponseOutput)
+	}).(PrivateEndpointConnectionPropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o BookshelfPrivateEndpointConnectionOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *BookshelfPrivateEndpointConnection) commontypesv5.SystemDataResponseOutput {
-		return v.SystemData
-	}).(commontypesv5.SystemDataResponseOutput)
+func (o BookshelfPrivateEndpointConnectionOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *BookshelfPrivateEndpointConnection) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

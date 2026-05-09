@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -26,7 +25,7 @@ type ElasticAccount struct {
 	// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 	ETag pulumi.StringOutput `pulumi:"eTag"`
 	// The managed service identities assigned to this resource.
-	Identity commontypesv6.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -34,7 +33,7 @@ type ElasticAccount struct {
 	// The resource-specific properties for this resource.
 	Properties ElasticAccountPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv6.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -96,7 +95,7 @@ type elasticAccountArgs struct {
 	// The name of the ElasticAccount
 	AccountName *string `pulumi:"accountName"`
 	// The managed service identities assigned to this resource.
-	Identity *commontypesv6.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The resource-specific properties for this resource.
@@ -112,7 +111,7 @@ type ElasticAccountArgs struct {
 	// The name of the ElasticAccount
 	AccountName pulumi.StringPtrInput
 	// The managed service identities assigned to this resource.
-	Identity commontypesv6.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The resource-specific properties for this resource.
@@ -171,8 +170,8 @@ func (o ElasticAccountOutput) ETag() pulumi.StringOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o ElasticAccountOutput) Identity() commontypesv6.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *ElasticAccount) commontypesv6.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv6.ManagedServiceIdentityResponsePtrOutput)
+func (o ElasticAccountOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *ElasticAccount) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -191,8 +190,8 @@ func (o ElasticAccountOutput) Properties() ElasticAccountPropertiesResponseOutpu
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ElasticAccountOutput) SystemData() commontypesv6.SystemDataResponseOutput {
-	return o.ApplyT(func(v *ElasticAccount) commontypesv6.SystemDataResponseOutput { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
+func (o ElasticAccountOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ElasticAccount) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -55,7 +54,7 @@ type LookupSqlSitesControllerResult struct {
 	// to the appliance.
 	SiteAppliancePropertiesCollection []SiteAppliancePropertiesResponse `pulumi:"siteAppliancePropertiesCollection"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -137,8 +136,8 @@ func (o LookupSqlSitesControllerResultOutput) SiteAppliancePropertiesCollection(
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupSqlSitesControllerResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSqlSitesControllerResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o LookupSqlSitesControllerResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSqlSitesControllerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

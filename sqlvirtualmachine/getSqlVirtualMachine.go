@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -81,7 +80,7 @@ type LookupSqlVirtualMachineResult struct {
 	// Storage Configuration Settings.
 	StorageConfigurationSettings *StorageConfigurationSettingsResponse `pulumi:"storageConfigurationSettings"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Troubleshooting status
@@ -267,8 +266,8 @@ func (o LookupSqlVirtualMachineResultOutput) StorageConfigurationSettings() Stor
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupSqlVirtualMachineResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSqlVirtualMachineResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o LookupSqlVirtualMachineResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSqlVirtualMachineResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

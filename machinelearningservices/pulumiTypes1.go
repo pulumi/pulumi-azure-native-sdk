@@ -7,12 +7,957 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = utilities.GetEnvOrDefault
+
+// Settings for a personal compute instance.
+type PersonalComputeInstanceSettingsResponse struct {
+	// A user explicitly assigned to a personal compute instance.
+	AssignedUser *AssignedUserResponse `pulumi:"assignedUser"`
+}
+
+// Settings for a personal compute instance.
+type PersonalComputeInstanceSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (PersonalComputeInstanceSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PersonalComputeInstanceSettingsResponse)(nil)).Elem()
+}
+
+func (o PersonalComputeInstanceSettingsResponseOutput) ToPersonalComputeInstanceSettingsResponseOutput() PersonalComputeInstanceSettingsResponseOutput {
+	return o
+}
+
+func (o PersonalComputeInstanceSettingsResponseOutput) ToPersonalComputeInstanceSettingsResponseOutputWithContext(ctx context.Context) PersonalComputeInstanceSettingsResponseOutput {
+	return o
+}
+
+// A user explicitly assigned to a personal compute instance.
+func (o PersonalComputeInstanceSettingsResponseOutput) AssignedUser() AssignedUserResponsePtrOutput {
+	return o.ApplyT(func(v PersonalComputeInstanceSettingsResponse) *AssignedUserResponse { return v.AssignedUser }).(AssignedUserResponsePtrOutput)
+}
+
+type PersonalComputeInstanceSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PersonalComputeInstanceSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PersonalComputeInstanceSettingsResponse)(nil)).Elem()
+}
+
+func (o PersonalComputeInstanceSettingsResponsePtrOutput) ToPersonalComputeInstanceSettingsResponsePtrOutput() PersonalComputeInstanceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o PersonalComputeInstanceSettingsResponsePtrOutput) ToPersonalComputeInstanceSettingsResponsePtrOutputWithContext(ctx context.Context) PersonalComputeInstanceSettingsResponsePtrOutput {
+	return o
+}
+
+func (o PersonalComputeInstanceSettingsResponsePtrOutput) Elem() PersonalComputeInstanceSettingsResponseOutput {
+	return o.ApplyT(func(v *PersonalComputeInstanceSettingsResponse) PersonalComputeInstanceSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PersonalComputeInstanceSettingsResponse
+		return ret
+	}).(PersonalComputeInstanceSettingsResponseOutput)
+}
+
+// A user explicitly assigned to a personal compute instance.
+func (o PersonalComputeInstanceSettingsResponsePtrOutput) AssignedUser() AssignedUserResponsePtrOutput {
+	return o.ApplyT(func(v *PersonalComputeInstanceSettingsResponse) *AssignedUserResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AssignedUser
+	}).(AssignedUserResponsePtrOutput)
+}
+
+// Pipeline Job definition: defines generic to MFE attributes.
+type PipelineJob struct {
+	// ARM resource ID of the component resource.
+	ComponentId *string `pulumi:"componentId"`
+	// ARM resource ID of the compute resource.
+	ComputeId *string `pulumi:"computeId"`
+	// The asset description text.
+	Description *string `pulumi:"description"`
+	// Display name of job.
+	DisplayName *string `pulumi:"displayName"`
+	// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
+	ExperimentName *string `pulumi:"experimentName"`
+	// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
+	// Defaults to AmlToken if null.
+	Identity interface{} `pulumi:"identity"`
+	// Inputs for the pipeline job.
+	Inputs map[string]interface{} `pulumi:"inputs"`
+	// Is the asset archived?
+	IsArchived *bool `pulumi:"isArchived"`
+	// Enum to determine the type of job.
+	// Expected value is 'Pipeline'.
+	JobType string `pulumi:"jobType"`
+	// Jobs construct the Pipeline Job.
+	Jobs map[string]interface{} `pulumi:"jobs"`
+	// Notification setting for the job
+	NotificationSetting *NotificationSetting `pulumi:"notificationSetting"`
+	// Outputs for the pipeline job
+	Outputs map[string]interface{} `pulumi:"outputs"`
+	// The asset property dictionary.
+	Properties map[string]string `pulumi:"properties"`
+	// List of JobEndpoints.
+	// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
+	Services map[string]JobService `pulumi:"services"`
+	// Pipeline settings, for things like ContinueRunOnStepFailure etc.
+	Settings interface{} `pulumi:"settings"`
+	// ARM resource ID of source job.
+	SourceJobId *string `pulumi:"sourceJobId"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// Defaults sets the appropriate defaults for PipelineJob
+func (val *PipelineJob) Defaults() *PipelineJob {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ExperimentName == nil {
+		experimentName_ := "Default"
+		tmp.ExperimentName = &experimentName_
+	}
+	if tmp.IsArchived == nil {
+		isArchived_ := false
+		tmp.IsArchived = &isArchived_
+	}
+	return &tmp
+}
+
+// PipelineJobInput is an input type that accepts PipelineJobArgs and PipelineJobOutput values.
+// You can construct a concrete instance of `PipelineJobInput` via:
+//
+//	PipelineJobArgs{...}
+type PipelineJobInput interface {
+	pulumi.Input
+
+	ToPipelineJobOutput() PipelineJobOutput
+	ToPipelineJobOutputWithContext(context.Context) PipelineJobOutput
+}
+
+// Pipeline Job definition: defines generic to MFE attributes.
+type PipelineJobArgs struct {
+	// ARM resource ID of the component resource.
+	ComponentId pulumi.StringPtrInput `pulumi:"componentId"`
+	// ARM resource ID of the compute resource.
+	ComputeId pulumi.StringPtrInput `pulumi:"computeId"`
+	// The asset description text.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Display name of job.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
+	ExperimentName pulumi.StringPtrInput `pulumi:"experimentName"`
+	// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
+	// Defaults to AmlToken if null.
+	Identity pulumi.Input `pulumi:"identity"`
+	// Inputs for the pipeline job.
+	Inputs pulumi.MapInput `pulumi:"inputs"`
+	// Is the asset archived?
+	IsArchived pulumi.BoolPtrInput `pulumi:"isArchived"`
+	// Enum to determine the type of job.
+	// Expected value is 'Pipeline'.
+	JobType pulumi.StringInput `pulumi:"jobType"`
+	// Jobs construct the Pipeline Job.
+	Jobs pulumi.MapInput `pulumi:"jobs"`
+	// Notification setting for the job
+	NotificationSetting NotificationSettingPtrInput `pulumi:"notificationSetting"`
+	// Outputs for the pipeline job
+	Outputs pulumi.MapInput `pulumi:"outputs"`
+	// The asset property dictionary.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// List of JobEndpoints.
+	// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
+	Services JobServiceMapInput `pulumi:"services"`
+	// Pipeline settings, for things like ContinueRunOnStepFailure etc.
+	Settings pulumi.Input `pulumi:"settings"`
+	// ARM resource ID of source job.
+	SourceJobId pulumi.StringPtrInput `pulumi:"sourceJobId"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+}
+
+// Defaults sets the appropriate defaults for PipelineJobArgs
+func (val *PipelineJobArgs) Defaults() *PipelineJobArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ExperimentName == nil {
+		tmp.ExperimentName = pulumi.StringPtr("Default")
+	}
+	if tmp.IsArchived == nil {
+		tmp.IsArchived = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
+func (PipelineJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineJob)(nil)).Elem()
+}
+
+func (i PipelineJobArgs) ToPipelineJobOutput() PipelineJobOutput {
+	return i.ToPipelineJobOutputWithContext(context.Background())
+}
+
+func (i PipelineJobArgs) ToPipelineJobOutputWithContext(ctx context.Context) PipelineJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobOutput)
+}
+
+// Pipeline Job definition: defines generic to MFE attributes.
+type PipelineJobOutput struct{ *pulumi.OutputState }
+
+func (PipelineJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineJob)(nil)).Elem()
+}
+
+func (o PipelineJobOutput) ToPipelineJobOutput() PipelineJobOutput {
+	return o
+}
+
+func (o PipelineJobOutput) ToPipelineJobOutputWithContext(ctx context.Context) PipelineJobOutput {
+	return o
+}
+
+// ARM resource ID of the component resource.
+func (o PipelineJobOutput) ComponentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJob) *string { return v.ComponentId }).(pulumi.StringPtrOutput)
+}
+
+// ARM resource ID of the compute resource.
+func (o PipelineJobOutput) ComputeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJob) *string { return v.ComputeId }).(pulumi.StringPtrOutput)
+}
+
+// The asset description text.
+func (o PipelineJobOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJob) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Display name of job.
+func (o PipelineJobOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJob) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
+func (o PipelineJobOutput) ExperimentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJob) *string { return v.ExperimentName }).(pulumi.StringPtrOutput)
+}
+
+// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
+// Defaults to AmlToken if null.
+func (o PipelineJobOutput) Identity() pulumi.AnyOutput {
+	return o.ApplyT(func(v PipelineJob) interface{} { return v.Identity }).(pulumi.AnyOutput)
+}
+
+// Inputs for the pipeline job.
+func (o PipelineJobOutput) Inputs() pulumi.MapOutput {
+	return o.ApplyT(func(v PipelineJob) map[string]interface{} { return v.Inputs }).(pulumi.MapOutput)
+}
+
+// Is the asset archived?
+func (o PipelineJobOutput) IsArchived() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PipelineJob) *bool { return v.IsArchived }).(pulumi.BoolPtrOutput)
+}
+
+// Enum to determine the type of job.
+// Expected value is 'Pipeline'.
+func (o PipelineJobOutput) JobType() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineJob) string { return v.JobType }).(pulumi.StringOutput)
+}
+
+// Jobs construct the Pipeline Job.
+func (o PipelineJobOutput) Jobs() pulumi.MapOutput {
+	return o.ApplyT(func(v PipelineJob) map[string]interface{} { return v.Jobs }).(pulumi.MapOutput)
+}
+
+// Notification setting for the job
+func (o PipelineJobOutput) NotificationSetting() NotificationSettingPtrOutput {
+	return o.ApplyT(func(v PipelineJob) *NotificationSetting { return v.NotificationSetting }).(NotificationSettingPtrOutput)
+}
+
+// Outputs for the pipeline job
+func (o PipelineJobOutput) Outputs() pulumi.MapOutput {
+	return o.ApplyT(func(v PipelineJob) map[string]interface{} { return v.Outputs }).(pulumi.MapOutput)
+}
+
+// The asset property dictionary.
+func (o PipelineJobOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PipelineJob) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// List of JobEndpoints.
+// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
+func (o PipelineJobOutput) Services() JobServiceMapOutput {
+	return o.ApplyT(func(v PipelineJob) map[string]JobService { return v.Services }).(JobServiceMapOutput)
+}
+
+// Pipeline settings, for things like ContinueRunOnStepFailure etc.
+func (o PipelineJobOutput) Settings() pulumi.AnyOutput {
+	return o.ApplyT(func(v PipelineJob) interface{} { return v.Settings }).(pulumi.AnyOutput)
+}
+
+// ARM resource ID of source job.
+func (o PipelineJobOutput) SourceJobId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJob) *string { return v.SourceJobId }).(pulumi.StringPtrOutput)
+}
+
+// Tag dictionary. Tags can be added, removed, and updated.
+func (o PipelineJobOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PipelineJob) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Pipeline Job definition: defines generic to MFE attributes.
+type PipelineJobResponse struct {
+	// ARM resource ID of the component resource.
+	ComponentId *string `pulumi:"componentId"`
+	// ARM resource ID of the compute resource.
+	ComputeId *string `pulumi:"computeId"`
+	// The asset description text.
+	Description *string `pulumi:"description"`
+	// Display name of job.
+	DisplayName *string `pulumi:"displayName"`
+	// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
+	ExperimentName *string `pulumi:"experimentName"`
+	// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
+	// Defaults to AmlToken if null.
+	Identity interface{} `pulumi:"identity"`
+	// Inputs for the pipeline job.
+	Inputs map[string]interface{} `pulumi:"inputs"`
+	// Is the asset archived?
+	IsArchived *bool `pulumi:"isArchived"`
+	// Enum to determine the type of job.
+	// Expected value is 'Pipeline'.
+	JobType string `pulumi:"jobType"`
+	// Jobs construct the Pipeline Job.
+	Jobs map[string]interface{} `pulumi:"jobs"`
+	// Notification setting for the job
+	NotificationSetting *NotificationSettingResponse `pulumi:"notificationSetting"`
+	// Outputs for the pipeline job
+	Outputs map[string]interface{} `pulumi:"outputs"`
+	// The asset property dictionary.
+	Properties map[string]string `pulumi:"properties"`
+	// List of JobEndpoints.
+	// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
+	Services map[string]JobServiceResponse `pulumi:"services"`
+	// Pipeline settings, for things like ContinueRunOnStepFailure etc.
+	Settings interface{} `pulumi:"settings"`
+	// ARM resource ID of source job.
+	SourceJobId *string `pulumi:"sourceJobId"`
+	// Status of the job.
+	Status string `pulumi:"status"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// Defaults sets the appropriate defaults for PipelineJobResponse
+func (val *PipelineJobResponse) Defaults() *PipelineJobResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ExperimentName == nil {
+		experimentName_ := "Default"
+		tmp.ExperimentName = &experimentName_
+	}
+	if tmp.IsArchived == nil {
+		isArchived_ := false
+		tmp.IsArchived = &isArchived_
+	}
+	return &tmp
+}
+
+// Pipeline Job definition: defines generic to MFE attributes.
+type PipelineJobResponseOutput struct{ *pulumi.OutputState }
+
+func (PipelineJobResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineJobResponse)(nil)).Elem()
+}
+
+func (o PipelineJobResponseOutput) ToPipelineJobResponseOutput() PipelineJobResponseOutput {
+	return o
+}
+
+func (o PipelineJobResponseOutput) ToPipelineJobResponseOutputWithContext(ctx context.Context) PipelineJobResponseOutput {
+	return o
+}
+
+// ARM resource ID of the component resource.
+func (o PipelineJobResponseOutput) ComponentId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJobResponse) *string { return v.ComponentId }).(pulumi.StringPtrOutput)
+}
+
+// ARM resource ID of the compute resource.
+func (o PipelineJobResponseOutput) ComputeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJobResponse) *string { return v.ComputeId }).(pulumi.StringPtrOutput)
+}
+
+// The asset description text.
+func (o PipelineJobResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJobResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Display name of job.
+func (o PipelineJobResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJobResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
+func (o PipelineJobResponseOutput) ExperimentName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJobResponse) *string { return v.ExperimentName }).(pulumi.StringPtrOutput)
+}
+
+// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
+// Defaults to AmlToken if null.
+func (o PipelineJobResponseOutput) Identity() pulumi.AnyOutput {
+	return o.ApplyT(func(v PipelineJobResponse) interface{} { return v.Identity }).(pulumi.AnyOutput)
+}
+
+// Inputs for the pipeline job.
+func (o PipelineJobResponseOutput) Inputs() pulumi.MapOutput {
+	return o.ApplyT(func(v PipelineJobResponse) map[string]interface{} { return v.Inputs }).(pulumi.MapOutput)
+}
+
+// Is the asset archived?
+func (o PipelineJobResponseOutput) IsArchived() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PipelineJobResponse) *bool { return v.IsArchived }).(pulumi.BoolPtrOutput)
+}
+
+// Enum to determine the type of job.
+// Expected value is 'Pipeline'.
+func (o PipelineJobResponseOutput) JobType() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineJobResponse) string { return v.JobType }).(pulumi.StringOutput)
+}
+
+// Jobs construct the Pipeline Job.
+func (o PipelineJobResponseOutput) Jobs() pulumi.MapOutput {
+	return o.ApplyT(func(v PipelineJobResponse) map[string]interface{} { return v.Jobs }).(pulumi.MapOutput)
+}
+
+// Notification setting for the job
+func (o PipelineJobResponseOutput) NotificationSetting() NotificationSettingResponsePtrOutput {
+	return o.ApplyT(func(v PipelineJobResponse) *NotificationSettingResponse { return v.NotificationSetting }).(NotificationSettingResponsePtrOutput)
+}
+
+// Outputs for the pipeline job
+func (o PipelineJobResponseOutput) Outputs() pulumi.MapOutput {
+	return o.ApplyT(func(v PipelineJobResponse) map[string]interface{} { return v.Outputs }).(pulumi.MapOutput)
+}
+
+// The asset property dictionary.
+func (o PipelineJobResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PipelineJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// List of JobEndpoints.
+// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
+func (o PipelineJobResponseOutput) Services() JobServiceResponseMapOutput {
+	return o.ApplyT(func(v PipelineJobResponse) map[string]JobServiceResponse { return v.Services }).(JobServiceResponseMapOutput)
+}
+
+// Pipeline settings, for things like ContinueRunOnStepFailure etc.
+func (o PipelineJobResponseOutput) Settings() pulumi.AnyOutput {
+	return o.ApplyT(func(v PipelineJobResponse) interface{} { return v.Settings }).(pulumi.AnyOutput)
+}
+
+// ARM resource ID of source job.
+func (o PipelineJobResponseOutput) SourceJobId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineJobResponse) *string { return v.SourceJobId }).(pulumi.StringPtrOutput)
+}
+
+// Status of the job.
+func (o PipelineJobResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineJobResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Tag dictionary. Tags can be added, removed, and updated.
+func (o PipelineJobResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PipelineJobResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+type PredictionDriftMonitoringSignal struct {
+	// A dictionary that maps feature names to their respective data types.
+	FeatureDataTypeOverride map[string]string `pulumi:"featureDataTypeOverride"`
+	// [Required] A list of metrics to calculate and their associated thresholds.
+	MetricThresholds []interface{} `pulumi:"metricThresholds"`
+	// The current notification mode for this signal.
+	NotificationTypes []string `pulumi:"notificationTypes"`
+	// [Required] The data which drift will be calculated for.
+	ProductionData interface{} `pulumi:"productionData"`
+	// Property dictionary. Properties can be added, but not removed or altered.
+	Properties map[string]string `pulumi:"properties"`
+	// [Required] The data to calculate drift against.
+	ReferenceData interface{} `pulumi:"referenceData"`
+	// Expected value is 'PredictionDrift'.
+	SignalType string `pulumi:"signalType"`
+}
+
+// PredictionDriftMonitoringSignalInput is an input type that accepts PredictionDriftMonitoringSignalArgs and PredictionDriftMonitoringSignalOutput values.
+// You can construct a concrete instance of `PredictionDriftMonitoringSignalInput` via:
+//
+//	PredictionDriftMonitoringSignalArgs{...}
+type PredictionDriftMonitoringSignalInput interface {
+	pulumi.Input
+
+	ToPredictionDriftMonitoringSignalOutput() PredictionDriftMonitoringSignalOutput
+	ToPredictionDriftMonitoringSignalOutputWithContext(context.Context) PredictionDriftMonitoringSignalOutput
+}
+
+type PredictionDriftMonitoringSignalArgs struct {
+	// A dictionary that maps feature names to their respective data types.
+	FeatureDataTypeOverride pulumi.StringMapInput `pulumi:"featureDataTypeOverride"`
+	// [Required] A list of metrics to calculate and their associated thresholds.
+	MetricThresholds pulumi.ArrayInput `pulumi:"metricThresholds"`
+	// The current notification mode for this signal.
+	NotificationTypes pulumi.StringArrayInput `pulumi:"notificationTypes"`
+	// [Required] The data which drift will be calculated for.
+	ProductionData pulumi.Input `pulumi:"productionData"`
+	// Property dictionary. Properties can be added, but not removed or altered.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// [Required] The data to calculate drift against.
+	ReferenceData pulumi.Input `pulumi:"referenceData"`
+	// Expected value is 'PredictionDrift'.
+	SignalType pulumi.StringInput `pulumi:"signalType"`
+}
+
+func (PredictionDriftMonitoringSignalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PredictionDriftMonitoringSignal)(nil)).Elem()
+}
+
+func (i PredictionDriftMonitoringSignalArgs) ToPredictionDriftMonitoringSignalOutput() PredictionDriftMonitoringSignalOutput {
+	return i.ToPredictionDriftMonitoringSignalOutputWithContext(context.Background())
+}
+
+func (i PredictionDriftMonitoringSignalArgs) ToPredictionDriftMonitoringSignalOutputWithContext(ctx context.Context) PredictionDriftMonitoringSignalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PredictionDriftMonitoringSignalOutput)
+}
+
+type PredictionDriftMonitoringSignalOutput struct{ *pulumi.OutputState }
+
+func (PredictionDriftMonitoringSignalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PredictionDriftMonitoringSignal)(nil)).Elem()
+}
+
+func (o PredictionDriftMonitoringSignalOutput) ToPredictionDriftMonitoringSignalOutput() PredictionDriftMonitoringSignalOutput {
+	return o
+}
+
+func (o PredictionDriftMonitoringSignalOutput) ToPredictionDriftMonitoringSignalOutputWithContext(ctx context.Context) PredictionDriftMonitoringSignalOutput {
+	return o
+}
+
+// A dictionary that maps feature names to their respective data types.
+func (o PredictionDriftMonitoringSignalOutput) FeatureDataTypeOverride() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PredictionDriftMonitoringSignal) map[string]string { return v.FeatureDataTypeOverride }).(pulumi.StringMapOutput)
+}
+
+// [Required] A list of metrics to calculate and their associated thresholds.
+func (o PredictionDriftMonitoringSignalOutput) MetricThresholds() pulumi.ArrayOutput {
+	return o.ApplyT(func(v PredictionDriftMonitoringSignal) []interface{} { return v.MetricThresholds }).(pulumi.ArrayOutput)
+}
+
+// The current notification mode for this signal.
+func (o PredictionDriftMonitoringSignalOutput) NotificationTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PredictionDriftMonitoringSignal) []string { return v.NotificationTypes }).(pulumi.StringArrayOutput)
+}
+
+// [Required] The data which drift will be calculated for.
+func (o PredictionDriftMonitoringSignalOutput) ProductionData() pulumi.AnyOutput {
+	return o.ApplyT(func(v PredictionDriftMonitoringSignal) interface{} { return v.ProductionData }).(pulumi.AnyOutput)
+}
+
+// Property dictionary. Properties can be added, but not removed or altered.
+func (o PredictionDriftMonitoringSignalOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PredictionDriftMonitoringSignal) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// [Required] The data to calculate drift against.
+func (o PredictionDriftMonitoringSignalOutput) ReferenceData() pulumi.AnyOutput {
+	return o.ApplyT(func(v PredictionDriftMonitoringSignal) interface{} { return v.ReferenceData }).(pulumi.AnyOutput)
+}
+
+// Expected value is 'PredictionDrift'.
+func (o PredictionDriftMonitoringSignalOutput) SignalType() pulumi.StringOutput {
+	return o.ApplyT(func(v PredictionDriftMonitoringSignal) string { return v.SignalType }).(pulumi.StringOutput)
+}
+
+type PredictionDriftMonitoringSignalResponse struct {
+	// A dictionary that maps feature names to their respective data types.
+	FeatureDataTypeOverride map[string]string `pulumi:"featureDataTypeOverride"`
+	// [Required] A list of metrics to calculate and their associated thresholds.
+	MetricThresholds []interface{} `pulumi:"metricThresholds"`
+	// The current notification mode for this signal.
+	NotificationTypes []string `pulumi:"notificationTypes"`
+	// [Required] The data which drift will be calculated for.
+	ProductionData interface{} `pulumi:"productionData"`
+	// Property dictionary. Properties can be added, but not removed or altered.
+	Properties map[string]string `pulumi:"properties"`
+	// [Required] The data to calculate drift against.
+	ReferenceData interface{} `pulumi:"referenceData"`
+	// Expected value is 'PredictionDrift'.
+	SignalType string `pulumi:"signalType"`
+}
+
+type PredictionDriftMonitoringSignalResponseOutput struct{ *pulumi.OutputState }
+
+func (PredictionDriftMonitoringSignalResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PredictionDriftMonitoringSignalResponse)(nil)).Elem()
+}
+
+func (o PredictionDriftMonitoringSignalResponseOutput) ToPredictionDriftMonitoringSignalResponseOutput() PredictionDriftMonitoringSignalResponseOutput {
+	return o
+}
+
+func (o PredictionDriftMonitoringSignalResponseOutput) ToPredictionDriftMonitoringSignalResponseOutputWithContext(ctx context.Context) PredictionDriftMonitoringSignalResponseOutput {
+	return o
+}
+
+// A dictionary that maps feature names to their respective data types.
+func (o PredictionDriftMonitoringSignalResponseOutput) FeatureDataTypeOverride() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PredictionDriftMonitoringSignalResponse) map[string]string { return v.FeatureDataTypeOverride }).(pulumi.StringMapOutput)
+}
+
+// [Required] A list of metrics to calculate and their associated thresholds.
+func (o PredictionDriftMonitoringSignalResponseOutput) MetricThresholds() pulumi.ArrayOutput {
+	return o.ApplyT(func(v PredictionDriftMonitoringSignalResponse) []interface{} { return v.MetricThresholds }).(pulumi.ArrayOutput)
+}
+
+// The current notification mode for this signal.
+func (o PredictionDriftMonitoringSignalResponseOutput) NotificationTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PredictionDriftMonitoringSignalResponse) []string { return v.NotificationTypes }).(pulumi.StringArrayOutput)
+}
+
+// [Required] The data which drift will be calculated for.
+func (o PredictionDriftMonitoringSignalResponseOutput) ProductionData() pulumi.AnyOutput {
+	return o.ApplyT(func(v PredictionDriftMonitoringSignalResponse) interface{} { return v.ProductionData }).(pulumi.AnyOutput)
+}
+
+// Property dictionary. Properties can be added, but not removed or altered.
+func (o PredictionDriftMonitoringSignalResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PredictionDriftMonitoringSignalResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// [Required] The data to calculate drift against.
+func (o PredictionDriftMonitoringSignalResponseOutput) ReferenceData() pulumi.AnyOutput {
+	return o.ApplyT(func(v PredictionDriftMonitoringSignalResponse) interface{} { return v.ReferenceData }).(pulumi.AnyOutput)
+}
+
+// Expected value is 'PredictionDrift'.
+func (o PredictionDriftMonitoringSignalResponseOutput) SignalType() pulumi.StringOutput {
+	return o.ApplyT(func(v PredictionDriftMonitoringSignalResponse) string { return v.SignalType }).(pulumi.StringOutput)
+}
+
+// The Private Endpoint Connection resource.
+type PrivateEndpointConnectionResponse struct {
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The managed service identities assigned to this resource.
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	// *Same as workspace location.
+	Location *string `pulumi:"location"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The Private Endpoint resource.
+	PrivateEndpoint *WorkspacePrivateEndpointResourceResponse `pulumi:"privateEndpoint"`
+	// The connection state.
+	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
+	// The current provisioning state.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
+	Sku *SkuResponse `pulumi:"sku"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	Tags       map[string]string  `pulumi:"tags"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+}
+
+// The Private Endpoint Connection resource.
+type PrivateEndpointConnectionResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnectionResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutput() PrivateEndpointConnectionResponseOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseOutput {
+	return o
+}
+
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The managed service identities assigned to this resource.
+func (o PrivateEndpointConnectionResponseOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+}
+
+// *Same as workspace location.
+func (o PrivateEndpointConnectionResponseOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource
+func (o PrivateEndpointConnectionResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Private Endpoint resource.
+func (o PrivateEndpointConnectionResponseOutput) PrivateEndpoint() WorkspacePrivateEndpointResourceResponsePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *WorkspacePrivateEndpointResourceResponse {
+		return v.PrivateEndpoint
+	}).(WorkspacePrivateEndpointResourceResponsePtrOutput)
+}
+
+// The connection state.
+func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponsePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *PrivateLinkServiceConnectionStateResponse {
+		return v.PrivateLinkServiceConnectionState
+	}).(PrivateLinkServiceConnectionStateResponsePtrOutput)
+}
+
+// The current provisioning state.
+func (o PrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
+func (o PrivateEndpointConnectionResponseOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o PrivateEndpointConnectionResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+func (o PrivateEndpointConnectionResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+func (o PrivateEndpointConnectionResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type PrivateEndpointConnectionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateEndpointConnectionResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectionResponseArrayOutput() PrivateEndpointConnectionResponseArrayOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionResponseArrayOutput) ToPrivateEndpointConnectionResponseArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseArrayOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
+		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
+	}).(PrivateEndpointConnectionResponseOutput)
+}
+
+// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
+type PrivateEndpointDestination struct {
+	// A type definition that refers the id to an Azure Resource Manager resource.
+	ServiceResourceId *string `pulumi:"serviceResourceId"`
+	SparkEnabled      *bool   `pulumi:"sparkEnabled"`
+	// Type of a managed network Outbound Rule of a machine learning workspace.
+	SparkStatus       *string `pulumi:"sparkStatus"`
+	SubresourceTarget *string `pulumi:"subresourceTarget"`
+}
+
+// PrivateEndpointDestinationInput is an input type that accepts PrivateEndpointDestinationArgs and PrivateEndpointDestinationOutput values.
+// You can construct a concrete instance of `PrivateEndpointDestinationInput` via:
+//
+//	PrivateEndpointDestinationArgs{...}
+type PrivateEndpointDestinationInput interface {
+	pulumi.Input
+
+	ToPrivateEndpointDestinationOutput() PrivateEndpointDestinationOutput
+	ToPrivateEndpointDestinationOutputWithContext(context.Context) PrivateEndpointDestinationOutput
+}
+
+// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
+type PrivateEndpointDestinationArgs struct {
+	// A type definition that refers the id to an Azure Resource Manager resource.
+	ServiceResourceId pulumi.StringPtrInput `pulumi:"serviceResourceId"`
+	SparkEnabled      pulumi.BoolPtrInput   `pulumi:"sparkEnabled"`
+	// Type of a managed network Outbound Rule of a machine learning workspace.
+	SparkStatus       pulumi.StringPtrInput `pulumi:"sparkStatus"`
+	SubresourceTarget pulumi.StringPtrInput `pulumi:"subresourceTarget"`
+}
+
+func (PrivateEndpointDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointDestination)(nil)).Elem()
+}
+
+func (i PrivateEndpointDestinationArgs) ToPrivateEndpointDestinationOutput() PrivateEndpointDestinationOutput {
+	return i.ToPrivateEndpointDestinationOutputWithContext(context.Background())
+}
+
+func (i PrivateEndpointDestinationArgs) ToPrivateEndpointDestinationOutputWithContext(ctx context.Context) PrivateEndpointDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointDestinationOutput)
+}
+
+func (i PrivateEndpointDestinationArgs) ToPrivateEndpointDestinationPtrOutput() PrivateEndpointDestinationPtrOutput {
+	return i.ToPrivateEndpointDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i PrivateEndpointDestinationArgs) ToPrivateEndpointDestinationPtrOutputWithContext(ctx context.Context) PrivateEndpointDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointDestinationOutput).ToPrivateEndpointDestinationPtrOutputWithContext(ctx)
+}
+
+// PrivateEndpointDestinationPtrInput is an input type that accepts PrivateEndpointDestinationArgs, PrivateEndpointDestinationPtr and PrivateEndpointDestinationPtrOutput values.
+// You can construct a concrete instance of `PrivateEndpointDestinationPtrInput` via:
+//
+//	        PrivateEndpointDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrivateEndpointDestinationPtrInput interface {
+	pulumi.Input
+
+	ToPrivateEndpointDestinationPtrOutput() PrivateEndpointDestinationPtrOutput
+	ToPrivateEndpointDestinationPtrOutputWithContext(context.Context) PrivateEndpointDestinationPtrOutput
+}
+
+type privateEndpointDestinationPtrType PrivateEndpointDestinationArgs
+
+func PrivateEndpointDestinationPtr(v *PrivateEndpointDestinationArgs) PrivateEndpointDestinationPtrInput {
+	return (*privateEndpointDestinationPtrType)(v)
+}
+
+func (*privateEndpointDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateEndpointDestination)(nil)).Elem()
+}
+
+func (i *privateEndpointDestinationPtrType) ToPrivateEndpointDestinationPtrOutput() PrivateEndpointDestinationPtrOutput {
+	return i.ToPrivateEndpointDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *privateEndpointDestinationPtrType) ToPrivateEndpointDestinationPtrOutputWithContext(ctx context.Context) PrivateEndpointDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointDestinationPtrOutput)
+}
+
+// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
+type PrivateEndpointDestinationOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointDestination)(nil)).Elem()
+}
+
+func (o PrivateEndpointDestinationOutput) ToPrivateEndpointDestinationOutput() PrivateEndpointDestinationOutput {
+	return o
+}
+
+func (o PrivateEndpointDestinationOutput) ToPrivateEndpointDestinationOutputWithContext(ctx context.Context) PrivateEndpointDestinationOutput {
+	return o
+}
+
+func (o PrivateEndpointDestinationOutput) ToPrivateEndpointDestinationPtrOutput() PrivateEndpointDestinationPtrOutput {
+	return o.ToPrivateEndpointDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateEndpointDestinationOutput) ToPrivateEndpointDestinationPtrOutputWithContext(ctx context.Context) PrivateEndpointDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateEndpointDestination) *PrivateEndpointDestination {
+		return &v
+	}).(PrivateEndpointDestinationPtrOutput)
+}
+
+// A type definition that refers the id to an Azure Resource Manager resource.
+func (o PrivateEndpointDestinationOutput) ServiceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointDestination) *string { return v.ServiceResourceId }).(pulumi.StringPtrOutput)
+}
+
+func (o PrivateEndpointDestinationOutput) SparkEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointDestination) *bool { return v.SparkEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Type of a managed network Outbound Rule of a machine learning workspace.
+func (o PrivateEndpointDestinationOutput) SparkStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointDestination) *string { return v.SparkStatus }).(pulumi.StringPtrOutput)
+}
+
+func (o PrivateEndpointDestinationOutput) SubresourceTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointDestination) *string { return v.SubresourceTarget }).(pulumi.StringPtrOutput)
+}
+
+type PrivateEndpointDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateEndpointDestination)(nil)).Elem()
+}
+
+func (o PrivateEndpointDestinationPtrOutput) ToPrivateEndpointDestinationPtrOutput() PrivateEndpointDestinationPtrOutput {
+	return o
+}
+
+func (o PrivateEndpointDestinationPtrOutput) ToPrivateEndpointDestinationPtrOutputWithContext(ctx context.Context) PrivateEndpointDestinationPtrOutput {
+	return o
+}
+
+func (o PrivateEndpointDestinationPtrOutput) Elem() PrivateEndpointDestinationOutput {
+	return o.ApplyT(func(v *PrivateEndpointDestination) PrivateEndpointDestination {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateEndpointDestination
+		return ret
+	}).(PrivateEndpointDestinationOutput)
+}
+
+// A type definition that refers the id to an Azure Resource Manager resource.
+func (o PrivateEndpointDestinationPtrOutput) ServiceResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PrivateEndpointDestinationPtrOutput) SparkEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointDestination) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SparkEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Type of a managed network Outbound Rule of a machine learning workspace.
+func (o PrivateEndpointDestinationPtrOutput) SparkStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SparkStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PrivateEndpointDestinationPtrOutput) SubresourceTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubresourceTarget
+	}).(pulumi.StringPtrOutput)
+}
 
 // Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
 type PrivateEndpointDestinationResponse struct {
@@ -10940,15 +11885,237 @@ func (o SharedPrivateLinkResourceResponseArrayOutput) Index(i pulumi.IntInput) S
 	}).(SharedPrivateLinkResourceResponseOutput)
 }
 
-// Sku of the resource
+// The resource model definition representing SKU
+type Sku struct {
+	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+	Capacity *int `pulumi:"capacity"`
+	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+	Family *string `pulumi:"family"`
+	// The name of the SKU. Ex - P3. It is typically a letter+number code
+	Name string `pulumi:"name"`
+	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+	Size *string `pulumi:"size"`
+	// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+	Tier *SkuTier `pulumi:"tier"`
+}
+
+// SkuInput is an input type that accepts SkuArgs and SkuOutput values.
+// You can construct a concrete instance of `SkuInput` via:
+//
+//	SkuArgs{...}
+type SkuInput interface {
+	pulumi.Input
+
+	ToSkuOutput() SkuOutput
+	ToSkuOutputWithContext(context.Context) SkuOutput
+}
+
+// The resource model definition representing SKU
+type SkuArgs struct {
+	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+	Capacity pulumi.IntPtrInput `pulumi:"capacity"`
+	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+	Family pulumi.StringPtrInput `pulumi:"family"`
+	// The name of the SKU. Ex - P3. It is typically a letter+number code
+	Name pulumi.StringInput `pulumi:"name"`
+	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+	Size pulumi.StringPtrInput `pulumi:"size"`
+	// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+	Tier SkuTierPtrInput `pulumi:"tier"`
+}
+
+func (SkuArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Sku)(nil)).Elem()
+}
+
+func (i SkuArgs) ToSkuOutput() SkuOutput {
+	return i.ToSkuOutputWithContext(context.Background())
+}
+
+func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
+}
+
+func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
+	return i.ToSkuPtrOutputWithContext(context.Background())
+}
+
+func (i SkuArgs) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput).ToSkuPtrOutputWithContext(ctx)
+}
+
+// SkuPtrInput is an input type that accepts SkuArgs, SkuPtr and SkuPtrOutput values.
+// You can construct a concrete instance of `SkuPtrInput` via:
+//
+//	        SkuArgs{...}
+//
+//	or:
+//
+//	        nil
+type SkuPtrInput interface {
+	pulumi.Input
+
+	ToSkuPtrOutput() SkuPtrOutput
+	ToSkuPtrOutputWithContext(context.Context) SkuPtrOutput
+}
+
+type skuPtrType SkuArgs
+
+func SkuPtr(v *SkuArgs) SkuPtrInput {
+	return (*skuPtrType)(v)
+}
+
+func (*skuPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Sku)(nil)).Elem()
+}
+
+func (i *skuPtrType) ToSkuPtrOutput() SkuPtrOutput {
+	return i.ToSkuPtrOutputWithContext(context.Background())
+}
+
+func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
+}
+
+// The resource model definition representing SKU
+type SkuOutput struct{ *pulumi.OutputState }
+
+func (SkuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Sku)(nil)).Elem()
+}
+
+func (o SkuOutput) ToSkuOutput() SkuOutput {
+	return o
+}
+
+func (o SkuOutput) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
+	return o
+}
+
+func (o SkuOutput) ToSkuPtrOutput() SkuPtrOutput {
+	return o.ToSkuPtrOutputWithContext(context.Background())
+}
+
+func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Sku) *Sku {
+		return &v
+	}).(SkuPtrOutput)
+}
+
+// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+func (o SkuOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Sku) *int { return v.Capacity }).(pulumi.IntPtrOutput)
+}
+
+// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+func (o SkuOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Sku) *string { return v.Family }).(pulumi.StringPtrOutput)
+}
+
+// The name of the SKU. Ex - P3. It is typically a letter+number code
+func (o SkuOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v Sku) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+func (o SkuOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Sku) *string { return v.Size }).(pulumi.StringPtrOutput)
+}
+
+// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+func (o SkuOutput) Tier() SkuTierPtrOutput {
+	return o.ApplyT(func(v Sku) *SkuTier { return v.Tier }).(SkuTierPtrOutput)
+}
+
+type SkuPtrOutput struct{ *pulumi.OutputState }
+
+func (SkuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Sku)(nil)).Elem()
+}
+
+func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
+	return o
+}
+
+func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
+	return o
+}
+
+func (o SkuPtrOutput) Elem() SkuOutput {
+	return o.ApplyT(func(v *Sku) Sku {
+		if v != nil {
+			return *v
+		}
+		var ret Sku
+		return ret
+	}).(SkuOutput)
+}
+
+// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+func (o SkuPtrOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Sku) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Capacity
+	}).(pulumi.IntPtrOutput)
+}
+
+// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+func (o SkuPtrOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Sku) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Family
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the SKU. Ex - P3. It is typically a letter+number code
+func (o SkuPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Sku) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+func (o SkuPtrOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Sku) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.StringPtrOutput)
+}
+
+// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+func (o SkuPtrOutput) Tier() SkuTierPtrOutput {
+	return o.ApplyT(func(v *Sku) *SkuTier {
+		if v == nil {
+			return nil
+		}
+		return v.Tier
+	}).(SkuTierPtrOutput)
+}
+
+// The resource model definition representing SKU
 type SkuResponse struct {
-	// Name of the sku
-	Name *string `pulumi:"name"`
-	// Tier of the sku like Basic or Enterprise
+	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+	Capacity *int `pulumi:"capacity"`
+	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+	Family *string `pulumi:"family"`
+	// The name of the SKU. Ex - P3. It is typically a letter+number code
+	Name string `pulumi:"name"`
+	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+	Size *string `pulumi:"size"`
+	// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
 	Tier *string `pulumi:"tier"`
 }
 
-// Sku of the resource
+// The resource model definition representing SKU
 type SkuResponseOutput struct{ *pulumi.OutputState }
 
 func (SkuResponseOutput) ElementType() reflect.Type {
@@ -10963,12 +12130,27 @@ func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) S
 	return o
 }
 
-// Name of the sku
-func (o SkuResponseOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SkuResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+func (o SkuResponseOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
 }
 
-// Tier of the sku like Basic or Enterprise
+// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+func (o SkuResponseOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuResponse) *string { return v.Family }).(pulumi.StringPtrOutput)
+}
+
+// The name of the SKU. Ex - P3. It is typically a letter+number code
+func (o SkuResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SkuResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+func (o SkuResponseOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuResponse) *string { return v.Size }).(pulumi.StringPtrOutput)
+}
+
+// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
 func (o SkuResponseOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SkuResponse) *string { return v.Tier }).(pulumi.StringPtrOutput)
 }
@@ -10997,9 +12179,116 @@ func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {
 	}).(SkuResponseOutput)
 }
 
-// Name of the sku
+// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+func (o SkuResponsePtrOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SkuResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Capacity
+	}).(pulumi.IntPtrOutput)
+}
+
+// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+func (o SkuResponsePtrOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Family
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the SKU. Ex - P3. It is typically a letter+number code
 func (o SkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+func (o SkuResponsePtrOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.StringPtrOutput)
+}
+
+// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+func (o SkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tier
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sku of the resource
+type SkuResponseV1 struct {
+	// Name of the sku
+	Name *string `pulumi:"name"`
+	// Tier of the sku like Basic or Enterprise
+	Tier *string `pulumi:"tier"`
+}
+
+// Sku of the resource
+type SkuResponseV1Output struct{ *pulumi.OutputState }
+
+func (SkuResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkuResponseV1)(nil)).Elem()
+}
+
+func (o SkuResponseV1Output) ToSkuResponseV1Output() SkuResponseV1Output {
+	return o
+}
+
+func (o SkuResponseV1Output) ToSkuResponseV1OutputWithContext(ctx context.Context) SkuResponseV1Output {
+	return o
+}
+
+// Name of the sku
+func (o SkuResponseV1Output) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuResponseV1) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Tier of the sku like Basic or Enterprise
+func (o SkuResponseV1Output) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuResponseV1) *string { return v.Tier }).(pulumi.StringPtrOutput)
+}
+
+type SkuResponseV1PtrOutput struct{ *pulumi.OutputState }
+
+func (SkuResponseV1PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkuResponseV1)(nil)).Elem()
+}
+
+func (o SkuResponseV1PtrOutput) ToSkuResponseV1PtrOutput() SkuResponseV1PtrOutput {
+	return o
+}
+
+func (o SkuResponseV1PtrOutput) ToSkuResponseV1PtrOutputWithContext(ctx context.Context) SkuResponseV1PtrOutput {
+	return o
+}
+
+func (o SkuResponseV1PtrOutput) Elem() SkuResponseV1Output {
+	return o.ApplyT(func(v *SkuResponseV1) SkuResponseV1 {
+		if v != nil {
+			return *v
+		}
+		var ret SkuResponseV1
+		return ret
+	}).(SkuResponseV1Output)
+}
+
+// Name of the sku
+func (o SkuResponseV1PtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuResponseV1) *string {
 		if v == nil {
 			return nil
 		}
@@ -11008,8 +12297,85 @@ func (o SkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 // Tier of the sku like Basic or Enterprise
-func (o SkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SkuResponse) *string {
+func (o SkuResponseV1PtrOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tier
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sku of the resource
+type SkuResponseV2 struct {
+	// Name of the sku
+	Name *string `pulumi:"name"`
+	// Tier of the sku like Basic or Enterprise
+	Tier *string `pulumi:"tier"`
+}
+
+// Sku of the resource
+type SkuResponseV2Output struct{ *pulumi.OutputState }
+
+func (SkuResponseV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkuResponseV2)(nil)).Elem()
+}
+
+func (o SkuResponseV2Output) ToSkuResponseV2Output() SkuResponseV2Output {
+	return o
+}
+
+func (o SkuResponseV2Output) ToSkuResponseV2OutputWithContext(ctx context.Context) SkuResponseV2Output {
+	return o
+}
+
+// Name of the sku
+func (o SkuResponseV2Output) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuResponseV2) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Tier of the sku like Basic or Enterprise
+func (o SkuResponseV2Output) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuResponseV2) *string { return v.Tier }).(pulumi.StringPtrOutput)
+}
+
+type SkuResponseV2PtrOutput struct{ *pulumi.OutputState }
+
+func (SkuResponseV2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkuResponseV2)(nil)).Elem()
+}
+
+func (o SkuResponseV2PtrOutput) ToSkuResponseV2PtrOutput() SkuResponseV2PtrOutput {
+	return o
+}
+
+func (o SkuResponseV2PtrOutput) ToSkuResponseV2PtrOutputWithContext(ctx context.Context) SkuResponseV2PtrOutput {
+	return o
+}
+
+func (o SkuResponseV2PtrOutput) Elem() SkuResponseV2Output {
+	return o.ApplyT(func(v *SkuResponseV2) SkuResponseV2 {
+		if v != nil {
+			return *v
+		}
+		var ret SkuResponseV2
+		return ret
+	}).(SkuResponseV2Output)
+}
+
+// Name of the sku
+func (o SkuResponseV2PtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tier of the sku like Basic or Enterprise
+func (o SkuResponseV2PtrOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuResponseV2) *string {
 		if v == nil {
 			return nil
 		}
@@ -15051,7 +16417,7 @@ type SynapseSparkResponse struct {
 	ModifiedOn string                          `pulumi:"modifiedOn"`
 	Properties *SynapseSparkPropertiesResponse `pulumi:"properties"`
 	// Errors during provisioning
-	ProvisioningErrors []commontypesv3.ErrorResponseResponse `pulumi:"provisioningErrors"`
+	ProvisioningErrors []ErrorResponseResponse `pulumi:"provisioningErrors"`
 	// The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// ARM resource id of the underlying compute
@@ -15114,8 +16480,8 @@ func (o SynapseSparkResponseOutput) Properties() SynapseSparkPropertiesResponseP
 }
 
 // Errors during provisioning
-func (o SynapseSparkResponseOutput) ProvisioningErrors() commontypesv3.ErrorResponseResponseArrayOutput {
-	return o.ApplyT(func(v SynapseSparkResponse) []commontypesv3.ErrorResponseResponse { return v.ProvisioningErrors }).(commontypesv3.ErrorResponseResponseArrayOutput)
+func (o SynapseSparkResponseOutput) ProvisioningErrors() ErrorResponseResponseArrayOutput {
+	return o.ApplyT(func(v SynapseSparkResponse) []ErrorResponseResponse { return v.ProvisioningErrors }).(ErrorResponseResponseArrayOutput)
 }
 
 // The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
@@ -15788,6 +17154,67 @@ func (o SystemCreatedStorageAccountResponsePtrOutput) StorageAccountType() pulum
 		}
 		return v.StorageAccountType
 	}).(pulumi.StringPtrOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponse struct {
+	// The timestamp of resource creation (UTC).
+	CreatedAt *string `pulumi:"createdAt"`
+	// The identity that created the resource.
+	CreatedBy *string `pulumi:"createdBy"`
+	// The type of identity that created the resource.
+	CreatedByType *string `pulumi:"createdByType"`
+	// The timestamp of resource last modification (UTC)
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// The identity that last modified the resource.
+	LastModifiedBy *string `pulumi:"lastModifiedBy"`
+	// The type of identity that last modified the resource.
+	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+	return o
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+	return o
+}
+
+// The timestamp of resource creation (UTC).
+func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that created the resource.
+func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that created the resource.
+func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of resource last modification (UTC)
+func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
 // A system service running on a compute.
@@ -21108,17 +22535,15 @@ func (o UserAccountCredentialsResponsePtrOutput) AdminUserSshPublicKey() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// User Assigned Identity
+// User assigned identity properties
 type UserAssignedIdentityResponse struct {
-	// The clientId(aka appId) of the user assigned identity.
+	// The client ID of the assigned identity.
 	ClientId string `pulumi:"clientId"`
-	// The principal ID of the user assigned identity.
+	// The principal ID of the assigned identity.
 	PrincipalId string `pulumi:"principalId"`
-	// The tenant ID of the user assigned identity.
-	TenantId string `pulumi:"tenantId"`
 }
 
-// User Assigned Identity
+// User assigned identity properties
 type UserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
 
 func (UserAssignedIdentityResponseOutput) ElementType() reflect.Type {
@@ -21133,19 +22558,14 @@ func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput
 	return o
 }
 
-// The clientId(aka appId) of the user assigned identity.
+// The client ID of the assigned identity.
 func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
 }
 
-// The principal ID of the user assigned identity.
+// The principal ID of the assigned identity.
 func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
-}
-
-// The tenant ID of the user assigned identity.
-func (o UserAssignedIdentityResponseOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
 type UserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
@@ -21166,6 +22586,186 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
 		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
 	}).(UserAssignedIdentityResponseOutput)
+}
+
+// User Assigned Identity
+type UserAssignedIdentityResponseV1 struct {
+	// The clientId(aka appId) of the user assigned identity.
+	ClientId string `pulumi:"clientId"`
+	// The principal ID of the user assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+	// The tenant ID of the user assigned identity.
+	TenantId string `pulumi:"tenantId"`
+}
+
+// User Assigned Identity
+type UserAssignedIdentityResponseV1Output struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentityResponseV1)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseV1Output) ToUserAssignedIdentityResponseV1Output() UserAssignedIdentityResponseV1Output {
+	return o
+}
+
+func (o UserAssignedIdentityResponseV1Output) ToUserAssignedIdentityResponseV1OutputWithContext(ctx context.Context) UserAssignedIdentityResponseV1Output {
+	return o
+}
+
+// The clientId(aka appId) of the user assigned identity.
+func (o UserAssignedIdentityResponseV1Output) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponseV1) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The principal ID of the user assigned identity.
+func (o UserAssignedIdentityResponseV1Output) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponseV1) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The tenant ID of the user assigned identity.
+func (o UserAssignedIdentityResponseV1Output) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponseV1) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+type UserAssignedIdentityResponseV1MapOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseV1MapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserAssignedIdentityResponseV1)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseV1MapOutput) ToUserAssignedIdentityResponseV1MapOutput() UserAssignedIdentityResponseV1MapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseV1MapOutput) ToUserAssignedIdentityResponseV1MapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseV1MapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseV1MapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseV1Output {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponseV1 {
+		return vs[0].(map[string]UserAssignedIdentityResponseV1)[vs[1].(string)]
+	}).(UserAssignedIdentityResponseV1Output)
+}
+
+// User Assigned Identity
+type UserAssignedIdentityResponseV2 struct {
+	// The clientId(aka appId) of the user assigned identity.
+	ClientId string `pulumi:"clientId"`
+	// The principal ID of the user assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+	// The tenant ID of the user assigned identity.
+	TenantId string `pulumi:"tenantId"`
+}
+
+// User Assigned Identity
+type UserAssignedIdentityResponseV2Output struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentityResponseV2)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseV2Output) ToUserAssignedIdentityResponseV2Output() UserAssignedIdentityResponseV2Output {
+	return o
+}
+
+func (o UserAssignedIdentityResponseV2Output) ToUserAssignedIdentityResponseV2OutputWithContext(ctx context.Context) UserAssignedIdentityResponseV2Output {
+	return o
+}
+
+// The clientId(aka appId) of the user assigned identity.
+func (o UserAssignedIdentityResponseV2Output) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponseV2) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The principal ID of the user assigned identity.
+func (o UserAssignedIdentityResponseV2Output) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponseV2) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The tenant ID of the user assigned identity.
+func (o UserAssignedIdentityResponseV2Output) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponseV2) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+type UserAssignedIdentityResponseV2MapOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseV2MapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserAssignedIdentityResponseV2)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseV2MapOutput) ToUserAssignedIdentityResponseV2MapOutput() UserAssignedIdentityResponseV2MapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseV2MapOutput) ToUserAssignedIdentityResponseV2MapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseV2MapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseV2MapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseV2Output {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponseV2 {
+		return vs[0].(map[string]UserAssignedIdentityResponseV2)[vs[1].(string)]
+	}).(UserAssignedIdentityResponseV2Output)
+}
+
+// User Assigned Identity
+type UserAssignedIdentityResponseV3 struct {
+	// The clientId(aka appId) of the user assigned identity.
+	ClientId string `pulumi:"clientId"`
+	// The principal ID of the user assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+	// The tenant ID of the user assigned identity.
+	TenantId string `pulumi:"tenantId"`
+}
+
+// User Assigned Identity
+type UserAssignedIdentityResponseV3Output struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseV3Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentityResponseV3)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseV3Output) ToUserAssignedIdentityResponseV3Output() UserAssignedIdentityResponseV3Output {
+	return o
+}
+
+func (o UserAssignedIdentityResponseV3Output) ToUserAssignedIdentityResponseV3OutputWithContext(ctx context.Context) UserAssignedIdentityResponseV3Output {
+	return o
+}
+
+// The clientId(aka appId) of the user assigned identity.
+func (o UserAssignedIdentityResponseV3Output) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponseV3) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The principal ID of the user assigned identity.
+func (o UserAssignedIdentityResponseV3Output) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponseV3) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The tenant ID of the user assigned identity.
+func (o UserAssignedIdentityResponseV3Output) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponseV3) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+type UserAssignedIdentityResponseV3MapOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseV3MapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserAssignedIdentityResponseV3)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseV3MapOutput) ToUserAssignedIdentityResponseV3MapOutput() UserAssignedIdentityResponseV3MapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseV3MapOutput) ToUserAssignedIdentityResponseV3MapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseV3MapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseV3MapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseV3Output {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponseV3 {
+		return vs[0].(map[string]UserAssignedIdentityResponseV3)[vs[1].(string)]
+	}).(UserAssignedIdentityResponseV3Output)
 }
 
 // User identity configuration.
@@ -22231,7 +23831,7 @@ type VirtualMachineResponse struct {
 	ModifiedOn string                                  `pulumi:"modifiedOn"`
 	Properties *VirtualMachineSchemaPropertiesResponse `pulumi:"properties"`
 	// Errors during provisioning
-	ProvisioningErrors []commontypesv3.ErrorResponseResponse `pulumi:"provisioningErrors"`
+	ProvisioningErrors []ErrorResponseResponse `pulumi:"provisioningErrors"`
 	// The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// ARM resource id of the underlying compute
@@ -22294,8 +23894,8 @@ func (o VirtualMachineResponseOutput) Properties() VirtualMachineSchemaPropertie
 }
 
 // Errors during provisioning
-func (o VirtualMachineResponseOutput) ProvisioningErrors() commontypesv3.ErrorResponseResponseArrayOutput {
-	return o.ApplyT(func(v VirtualMachineResponse) []commontypesv3.ErrorResponseResponse { return v.ProvisioningErrors }).(commontypesv3.ErrorResponseResponseArrayOutput)
+func (o VirtualMachineResponseOutput) ProvisioningErrors() ErrorResponseResponseArrayOutput {
+	return o.ApplyT(func(v VirtualMachineResponse) []ErrorResponseResponse { return v.ProvisioningErrors }).(ErrorResponseResponseArrayOutput)
 }
 
 // The provision state of the cluster. Valid values are Unknown, Updating, Provisioning, Succeeded, and Failed.
@@ -26046,6 +27646,16 @@ func (o WorkspacePrivateEndpointResourceResponsePtrOutput) SubnetArmId() pulumi.
 }
 
 func init() {
+	pulumi.RegisterOutputType(PersonalComputeInstanceSettingsResponseOutput{})
+	pulumi.RegisterOutputType(PersonalComputeInstanceSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(PipelineJobOutput{})
+	pulumi.RegisterOutputType(PipelineJobResponseOutput{})
+	pulumi.RegisterOutputType(PredictionDriftMonitoringSignalOutput{})
+	pulumi.RegisterOutputType(PredictionDriftMonitoringSignalResponseOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointDestinationOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointDestinationPtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointDestinationResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointDestinationResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointOutboundRuleOutput{})
@@ -26202,8 +27812,14 @@ func init() {
 	pulumi.RegisterOutputType(SharedPrivateLinkResourceArrayOutput{})
 	pulumi.RegisterOutputType(SharedPrivateLinkResourceResponseOutput{})
 	pulumi.RegisterOutputType(SharedPrivateLinkResourceResponseArrayOutput{})
+	pulumi.RegisterOutputType(SkuOutput{})
+	pulumi.RegisterOutputType(SkuPtrOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})
 	pulumi.RegisterOutputType(SkuResponsePtrOutput{})
+	pulumi.RegisterOutputType(SkuResponseV1Output{})
+	pulumi.RegisterOutputType(SkuResponseV1PtrOutput{})
+	pulumi.RegisterOutputType(SkuResponseV2Output{})
+	pulumi.RegisterOutputType(SkuResponseV2PtrOutput{})
 	pulumi.RegisterOutputType(SparkJobOutput{})
 	pulumi.RegisterOutputType(SparkJobPythonEntryOutput{})
 	pulumi.RegisterOutputType(SparkJobPythonEntryResponseOutput{})
@@ -26257,6 +27873,7 @@ func init() {
 	pulumi.RegisterOutputType(SystemCreatedStorageAccountPtrOutput{})
 	pulumi.RegisterOutputType(SystemCreatedStorageAccountResponseOutput{})
 	pulumi.RegisterOutputType(SystemCreatedStorageAccountResponsePtrOutput{})
+	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(SystemServiceResponseOutput{})
 	pulumi.RegisterOutputType(SystemServiceResponseArrayOutput{})
 	pulumi.RegisterOutputType(TableVerticalFeaturizationSettingsOutput{})
@@ -26317,6 +27934,12 @@ func init() {
 	pulumi.RegisterOutputType(UserAccountCredentialsResponsePtrOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseV1Output{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseV1MapOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseV2Output{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseV2MapOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseV3Output{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseV3MapOutput{})
 	pulumi.RegisterOutputType(UserIdentityOutput{})
 	pulumi.RegisterOutputType(UserIdentityPtrOutput{})
 	pulumi.RegisterOutputType(UserIdentityResponseOutput{})

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -42,7 +41,7 @@ type User struct {
 	// Error details of last operation done on lab plan.
 	ResourceOperationError ResourceOperationErrorResponseOutput `pulumi:"resourceOperationError"`
 	// Metadata pertaining to creation and last modification of the user resource.
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// How long the user has used their virtual machines in this lab.
 	TotalUsage pulumi.StringOutput `pulumi:"totalUsage"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -230,8 +229,8 @@ func (o UserOutput) ResourceOperationError() ResourceOperationErrorResponseOutpu
 }
 
 // Metadata pertaining to creation and last modification of the user resource.
-func (o UserOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *User) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o UserOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *User) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // How long the user has used their virtual machines in this lab.

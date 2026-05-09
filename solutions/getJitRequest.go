@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -59,7 +58,7 @@ type LookupJitRequestResult struct {
 	// The publisher tenant id.
 	PublisherTenantId string `pulumi:"publisherTenantId"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
 	// Resource type
@@ -159,8 +158,8 @@ func (o LookupJitRequestResultOutput) PublisherTenantId() pulumi.StringOutput {
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupJitRequestResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupJitRequestResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o LookupJitRequestResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupJitRequestResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags

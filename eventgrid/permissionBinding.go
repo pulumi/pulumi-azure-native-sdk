@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -35,7 +34,7 @@ type PermissionBinding struct {
 	// Provisioning state of the PermissionBinding resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The system metadata relating to the Event Grid resource.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The name of the Topic Space resource that the permission is bound to.
 	// The Topic space needs to be a resource under the same namespace the permission binding is a part of.
 	TopicSpaceName pulumi.StringPtrOutput `pulumi:"topicSpaceName"`
@@ -220,8 +219,8 @@ func (o PermissionBindingOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // The system metadata relating to the Event Grid resource.
-func (o PermissionBindingOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *PermissionBinding) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o PermissionBindingOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *PermissionBinding) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The name of the Topic Space resource that the permission is bound to.

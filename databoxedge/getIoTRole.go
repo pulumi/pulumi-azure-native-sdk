@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -62,7 +61,7 @@ type LookupIoTRoleResult struct {
 	// Mount points of shares in role(s).
 	ShareMappings []MountPointMapResponse `pulumi:"shareMappings"`
 	// Metadata pertaining to creation and last modification of Role
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type string `pulumi:"type"`
 }
@@ -166,8 +165,8 @@ func (o LookupIoTRoleResultOutput) ShareMappings() MountPointMapResponseArrayOut
 }
 
 // Metadata pertaining to creation and last modification of Role
-func (o LookupIoTRoleResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupIoTRoleResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o LookupIoTRoleResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupIoTRoleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.

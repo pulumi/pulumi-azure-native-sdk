@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -63,7 +62,7 @@ type PreRule struct {
 	// source address
 	Source SourceAddrResponsePtrOutput `pulumi:"source"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// tag for rule
 	Tags TagInfoResponseArrayOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -382,8 +381,8 @@ func (o PreRuleOutput) Source() SourceAddrResponsePtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o PreRuleOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v *PreRule) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o PreRuleOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *PreRule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // tag for rule

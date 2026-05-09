@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -65,7 +64,7 @@ type LookupWebhookResult struct {
 	// Gets or sets the runbook the webhook is associated with.
 	Runbook *RunbookAssociationPropertyResponse `pulumi:"runbook"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Gets or sets the webhook uri.
@@ -187,8 +186,8 @@ func (o LookupWebhookResultOutput) Runbook() RunbookAssociationPropertyResponseP
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupWebhookResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupWebhookResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupWebhookResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupWebhookResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

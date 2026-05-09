@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -47,7 +46,7 @@ type LookupCloudHsmClusterResult struct {
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity *commontypesv5.ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
@@ -63,7 +62,7 @@ type LookupCloudHsmClusterResult struct {
 	// Cloud HSM Cluster status message
 	StatusMessage string `pulumi:"statusMessage"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -131,8 +130,8 @@ func (o LookupCloudHsmClusterResultOutput) Id() pulumi.StringOutput {
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
-func (o LookupCloudHsmClusterResultOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupCloudHsmClusterResult) *commontypesv5.ManagedServiceIdentityResponse { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+func (o LookupCloudHsmClusterResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupCloudHsmClusterResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -173,8 +172,8 @@ func (o LookupCloudHsmClusterResultOutput) StatusMessage() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupCloudHsmClusterResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupCloudHsmClusterResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupCloudHsmClusterResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupCloudHsmClusterResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

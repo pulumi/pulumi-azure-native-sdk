@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -32,8 +31,8 @@ type Workspace struct {
 	// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Friendly name of Workspace.
-	FriendlyName pulumi.StringPtrOutput                                                     `pulumi:"friendlyName"`
-	Identity     commontypesv5.ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput `pulumi:"identity"`
+	FriendlyName pulumi.StringPtrOutput                                       `pulumi:"friendlyName"`
+	Identity     ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput `pulumi:"identity"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// The geo-location where the resource lives
@@ -43,15 +42,15 @@ type Workspace struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// ObjectId of Workspace. (internal use)
-	ObjectId pulumi.StringOutput                                                    `pulumi:"objectId"`
-	Plan     commontypesv5.ResourceModelWithAllowedPropertySetResponsePlanPtrOutput `pulumi:"plan"`
+	ObjectId pulumi.StringOutput                                      `pulumi:"objectId"`
+	Plan     ResourceModelWithAllowedPropertySetResponsePlanPtrOutput `pulumi:"plan"`
 	// List of private endpoint connection associated with the specified resource
-	PrivateEndpointConnections commontypesv5.PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints
-	PublicNetworkAccess pulumi.StringPtrOutput                                                `pulumi:"publicNetworkAccess"`
-	Sku                 commontypesv5.ResourceModelWithAllowedPropertySetResponseSkuPtrOutput `pulumi:"sku"`
+	PublicNetworkAccess pulumi.StringPtrOutput                                  `pulumi:"publicNetworkAccess"`
+	Sku                 ResourceModelWithAllowedPropertySetResponseSkuPtrOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -208,20 +207,20 @@ type workspaceArgs struct {
 	// Description of Workspace.
 	Description *string `pulumi:"description"`
 	// Friendly name of Workspace.
-	FriendlyName *string                                                    `pulumi:"friendlyName"`
-	Identity     *commontypesv5.ResourceModelWithAllowedPropertySetIdentity `pulumi:"identity"`
+	FriendlyName *string                                      `pulumi:"friendlyName"`
+	Identity     *ResourceModelWithAllowedPropertySetIdentity `pulumi:"identity"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
-	ManagedBy *string                                                `pulumi:"managedBy"`
-	Plan      *commontypesv5.ResourceModelWithAllowedPropertySetPlan `pulumi:"plan"`
+	ManagedBy *string                                  `pulumi:"managedBy"`
+	Plan      *ResourceModelWithAllowedPropertySetPlan `pulumi:"plan"`
 	// Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// The name of the resource group. The name is case insensitive.
-	ResourceGroupName string                                                `pulumi:"resourceGroupName"`
-	Sku               *commontypesv5.ResourceModelWithAllowedPropertySetSku `pulumi:"sku"`
+	ResourceGroupName string                                  `pulumi:"resourceGroupName"`
+	Sku               *ResourceModelWithAllowedPropertySetSku `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The name of the workspace
@@ -236,19 +235,19 @@ type WorkspaceArgs struct {
 	Description pulumi.StringPtrInput
 	// Friendly name of Workspace.
 	FriendlyName pulumi.StringPtrInput
-	Identity     commontypesv5.ResourceModelWithAllowedPropertySetIdentityPtrInput
+	Identity     ResourceModelWithAllowedPropertySetIdentityPtrInput
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
 	ManagedBy pulumi.StringPtrInput
-	Plan      commontypesv5.ResourceModelWithAllowedPropertySetPlanPtrInput
+	Plan      ResourceModelWithAllowedPropertySetPlanPtrInput
 	// Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints
 	PublicNetworkAccess pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	Sku               commontypesv5.ResourceModelWithAllowedPropertySetSkuPtrInput
+	Sku               ResourceModelWithAllowedPropertySetSkuPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 	// The name of the workspace
@@ -322,10 +321,8 @@ func (o WorkspaceOutput) FriendlyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.FriendlyName }).(pulumi.StringPtrOutput)
 }
 
-func (o WorkspaceOutput) Identity() commontypesv5.ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput {
-	return o.ApplyT(func(v *Workspace) commontypesv5.ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput {
-		return v.Identity
-	}).(commontypesv5.ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput)
+func (o WorkspaceOutput) Identity() ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput {
+	return o.ApplyT(func(v *Workspace) ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput { return v.Identity }).(ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput)
 }
 
 // Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
@@ -353,17 +350,13 @@ func (o WorkspaceOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-func (o WorkspaceOutput) Plan() commontypesv5.ResourceModelWithAllowedPropertySetResponsePlanPtrOutput {
-	return o.ApplyT(func(v *Workspace) commontypesv5.ResourceModelWithAllowedPropertySetResponsePlanPtrOutput {
-		return v.Plan
-	}).(commontypesv5.ResourceModelWithAllowedPropertySetResponsePlanPtrOutput)
+func (o WorkspaceOutput) Plan() ResourceModelWithAllowedPropertySetResponsePlanPtrOutput {
+	return o.ApplyT(func(v *Workspace) ResourceModelWithAllowedPropertySetResponsePlanPtrOutput { return v.Plan }).(ResourceModelWithAllowedPropertySetResponsePlanPtrOutput)
 }
 
 // List of private endpoint connection associated with the specified resource
-func (o WorkspaceOutput) PrivateEndpointConnections() commontypesv5.PrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v *Workspace) commontypesv5.PrivateEndpointConnectionResponseArrayOutput {
-		return v.PrivateEndpointConnections
-	}).(commontypesv5.PrivateEndpointConnectionResponseArrayOutput)
+func (o WorkspaceOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v *Workspace) PrivateEndpointConnectionResponseArrayOutput { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints
@@ -371,13 +364,13 @@ func (o WorkspaceOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
-func (o WorkspaceOutput) Sku() commontypesv5.ResourceModelWithAllowedPropertySetResponseSkuPtrOutput {
-	return o.ApplyT(func(v *Workspace) commontypesv5.ResourceModelWithAllowedPropertySetResponseSkuPtrOutput { return v.Sku }).(commontypesv5.ResourceModelWithAllowedPropertySetResponseSkuPtrOutput)
+func (o WorkspaceOutput) Sku() ResourceModelWithAllowedPropertySetResponseSkuPtrOutput {
+	return o.ApplyT(func(v *Workspace) ResourceModelWithAllowedPropertySetResponseSkuPtrOutput { return v.Sku }).(ResourceModelWithAllowedPropertySetResponseSkuPtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o WorkspaceOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Workspace) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o WorkspaceOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Workspace) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

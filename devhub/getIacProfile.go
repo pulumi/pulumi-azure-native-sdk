@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -70,7 +69,7 @@ type LookupIacProfileResult struct {
 	// Terraform Container Name
 	StorageContainerName *string `pulumi:"storageContainerName"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags      map[string]string               `pulumi:"tags"`
 	Templates []IacTemplatePropertiesResponse `pulumi:"templates"`
@@ -198,8 +197,8 @@ func (o LookupIacProfileResultOutput) StorageContainerName() pulumi.StringPtrOut
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupIacProfileResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupIacProfileResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupIacProfileResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupIacProfileResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -40,7 +39,7 @@ type Approval struct {
 	// Approval request state change time, time at which approval request state changed from pending to approved or rejected.
 	StateChangedAt pulumi.StringPtrOutput `pulumi:"stateChangedAt"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Ticket ID for the approval request
 	TicketId pulumi.StringPtrOutput `pulumi:"ticketId"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -231,8 +230,8 @@ func (o ApprovalOutput) StateChangedAt() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ApprovalOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Approval) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o ApprovalOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Approval) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Ticket ID for the approval request

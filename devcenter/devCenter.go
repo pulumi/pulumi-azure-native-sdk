@@ -8,8 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -31,7 +29,7 @@ type DevCenter struct {
 	// Encryption settings to be used for server-side encryption for proprietary content (such as catalogs, logs, customizations).
 	Encryption EncryptionResponsePtrOutput `pulumi:"encryption"`
 	// Managed identity properties
-	Identity commontypesv4.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -41,7 +39,7 @@ type DevCenter struct {
 	// The provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -158,7 +156,7 @@ type devCenterArgs struct {
 	// Encryption settings to be used for server-side encryption for proprietary content (such as catalogs, logs, customizations).
 	Encryption *Encryption `pulumi:"encryption"`
 	// Managed identity properties
-	Identity *commontypesv4.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Dev Center settings to be used when associating a project with a catalog.
@@ -178,7 +176,7 @@ type DevCenterArgs struct {
 	// Encryption settings to be used for server-side encryption for proprietary content (such as catalogs, logs, customizations).
 	Encryption EncryptionPtrInput
 	// Managed identity properties
-	Identity commontypesv4.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Dev Center settings to be used when associating a project with a catalog.
@@ -247,8 +245,8 @@ func (o DevCenterOutput) Encryption() EncryptionResponsePtrOutput {
 }
 
 // Managed identity properties
-func (o DevCenterOutput) Identity() commontypesv4.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *DevCenter) commontypesv4.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv4.ManagedServiceIdentityResponsePtrOutput)
+func (o DevCenterOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *DevCenter) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -272,8 +270,8 @@ func (o DevCenterOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o DevCenterOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *DevCenter) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o DevCenterOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *DevCenter) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

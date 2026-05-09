@@ -8,8 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -33,7 +31,7 @@ type ProjectEnvironmentType struct {
 	// The number of environments of this type.
 	EnvironmentCount pulumi.IntOutput `pulumi:"environmentCount"`
 	// Managed identity properties
-	Identity commontypesv4.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location for the environment type
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The name of the resource
@@ -43,7 +41,7 @@ type ProjectEnvironmentType struct {
 	// Defines whether this Environment Type can be used in this Project.
 	Status pulumi.StringPtrOutput `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -167,7 +165,7 @@ type projectEnvironmentTypeArgs struct {
 	// The name of the environment type.
 	EnvironmentTypeName *string `pulumi:"environmentTypeName"`
 	// Managed identity properties
-	Identity *commontypesv4.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location for the environment type
 	Location *string `pulumi:"location"`
 	// The name of the project.
@@ -193,7 +191,7 @@ type ProjectEnvironmentTypeArgs struct {
 	// The name of the environment type.
 	EnvironmentTypeName pulumi.StringPtrInput
 	// Managed identity properties
-	Identity commontypesv4.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// The geo-location for the environment type
 	Location pulumi.StringPtrInput
 	// The name of the project.
@@ -273,10 +271,8 @@ func (o ProjectEnvironmentTypeOutput) EnvironmentCount() pulumi.IntOutput {
 }
 
 // Managed identity properties
-func (o ProjectEnvironmentTypeOutput) Identity() commontypesv4.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *ProjectEnvironmentType) commontypesv4.ManagedServiceIdentityResponsePtrOutput {
-		return v.Identity
-	}).(commontypesv4.ManagedServiceIdentityResponsePtrOutput)
+func (o ProjectEnvironmentTypeOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *ProjectEnvironmentType) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location for the environment type
@@ -300,8 +296,8 @@ func (o ProjectEnvironmentTypeOutput) Status() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ProjectEnvironmentTypeOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *ProjectEnvironmentType) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o ProjectEnvironmentTypeOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ProjectEnvironmentType) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

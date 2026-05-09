@@ -8,8 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -27,7 +25,7 @@ type IotDpsResource struct {
 	// The Etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal ETag convention.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// The managed identities for a provisioning service.
-	Identity commontypesv5.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The resource location.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name.
@@ -41,7 +39,7 @@ type IotDpsResource struct {
 	// The subscription id of the resource.
 	Subscriptionid pulumi.StringPtrOutput `pulumi:"subscriptionid"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The resource type.
@@ -149,7 +147,7 @@ func (IotDpsResourceState) ElementType() reflect.Type {
 
 type iotDpsResourceArgs struct {
 	// The managed identities for a provisioning service.
-	Identity *commontypesv5.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The resource location.
 	Location *string `pulumi:"location"`
 	// Service specific properties for a provisioning service
@@ -171,7 +169,7 @@ type iotDpsResourceArgs struct {
 // The set of arguments for constructing a IotDpsResource resource.
 type IotDpsResourceArgs struct {
 	// The managed identities for a provisioning service.
-	Identity commontypesv5.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// The resource location.
 	Location pulumi.StringPtrInput
 	// Service specific properties for a provisioning service
@@ -238,8 +236,8 @@ func (o IotDpsResourceOutput) Etag() pulumi.StringPtrOutput {
 }
 
 // The managed identities for a provisioning service.
-func (o IotDpsResourceOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *IotDpsResource) commontypesv5.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+func (o IotDpsResourceOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *IotDpsResource) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The resource location.
@@ -273,8 +271,8 @@ func (o IotDpsResourceOutput) Subscriptionid() pulumi.StringPtrOutput {
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o IotDpsResourceOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *IotDpsResource) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o IotDpsResourceOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *IotDpsResource) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The resource tags.

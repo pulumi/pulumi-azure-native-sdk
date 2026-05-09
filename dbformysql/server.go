@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -48,7 +47,7 @@ type Server struct {
 	// Network related properties of a server.
 	Network NetworkResponsePtrOutput `pulumi:"network"`
 	// PrivateEndpointConnections related properties of a server.
-	PrivateEndpointConnections commontypesv5.PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// The maximum number of replicas that a primary server can have.
 	ReplicaCapacity pulumi.IntOutput `pulumi:"replicaCapacity"`
 	// The replication role.
@@ -62,7 +61,7 @@ type Server struct {
 	// Storage related properties of a server.
 	Storage StorageResponsePtrOutput `pulumi:"storage"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -376,10 +375,8 @@ func (o ServerOutput) Network() NetworkResponsePtrOutput {
 }
 
 // PrivateEndpointConnections related properties of a server.
-func (o ServerOutput) PrivateEndpointConnections() commontypesv5.PrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v *Server) commontypesv5.PrivateEndpointConnectionResponseArrayOutput {
-		return v.PrivateEndpointConnections
-	}).(commontypesv5.PrivateEndpointConnectionResponseArrayOutput)
+func (o ServerOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v *Server) PrivateEndpointConnectionResponseArrayOutput { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // The maximum number of replicas that a primary server can have.
@@ -413,8 +410,8 @@ func (o ServerOutput) Storage() StorageResponsePtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ServerOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Server) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o ServerOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Server) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

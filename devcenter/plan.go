@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -30,9 +29,9 @@ type Plan struct {
 	// The provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The SKU for DevCenters created using this definition.
-	Sku commontypesv5.SkuResponsePtrOutput `pulumi:"sku"`
+	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -107,7 +106,7 @@ type planArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The SKU for DevCenters created using this definition.
-	Sku *commontypesv5.Sku `pulumi:"sku"`
+	Sku *Sku `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -121,7 +120,7 @@ type PlanArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The SKU for DevCenters created using this definition.
-	Sku commontypesv5.SkuPtrInput
+	Sku SkuPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 }
@@ -184,13 +183,13 @@ func (o PlanOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // The SKU for DevCenters created using this definition.
-func (o PlanOutput) Sku() commontypesv5.SkuResponsePtrOutput {
-	return o.ApplyT(func(v *Plan) commontypesv5.SkuResponsePtrOutput { return v.Sku }).(commontypesv5.SkuResponsePtrOutput)
+func (o PlanOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v *Plan) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o PlanOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Plan) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o PlanOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Plan) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

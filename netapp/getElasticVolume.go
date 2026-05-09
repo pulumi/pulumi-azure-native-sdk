@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -53,7 +52,7 @@ type LookupElasticVolumeResult struct {
 	// The resource-specific properties for this resource.
 	Properties ElasticVolumePropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv6.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -142,8 +141,8 @@ func (o LookupElasticVolumeResultOutput) Properties() ElasticVolumePropertiesRes
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupElasticVolumeResultOutput) SystemData() commontypesv6.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupElasticVolumeResult) commontypesv6.SystemDataResponse { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
+func (o LookupElasticVolumeResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupElasticVolumeResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

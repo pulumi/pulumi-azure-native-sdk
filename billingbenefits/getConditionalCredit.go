@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -53,7 +52,7 @@ type LookupConditionalCreditResult struct {
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity *commontypesv6.ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
@@ -63,7 +62,7 @@ type LookupConditionalCreditResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Plan for the resource.
-	Plan *commontypesv6.PlanResponse `pulumi:"plan"`
+	Plan *PlanResponse `pulumi:"plan"`
 	// Product code for the conditional credit
 	ProductCode *string `pulumi:"productCode"`
 	// The provisioning state of the resource
@@ -71,13 +70,13 @@ type LookupConditionalCreditResult struct {
 	// Fully-qualified resource identifier of the resource. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/{benefitType}/{benefitName}.
 	ResourceId *string `pulumi:"resourceId"`
 	// The resource model definition representing SKU
-	Sku *commontypesv6.SkuResponse `pulumi:"sku"`
+	Sku *SkuResponse `pulumi:"sku"`
 	// Start date of the conditional credit
 	StartAt *string `pulumi:"startAt"`
 	// The status of the conditional credit
 	Status *string `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv6.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -160,8 +159,8 @@ func (o LookupConditionalCreditResultOutput) Id() pulumi.StringOutput {
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
-func (o LookupConditionalCreditResultOutput) Identity() commontypesv6.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupConditionalCreditResult) *commontypesv6.ManagedServiceIdentityResponse { return v.Identity }).(commontypesv6.ManagedServiceIdentityResponsePtrOutput)
+func (o LookupConditionalCreditResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupConditionalCreditResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
@@ -185,8 +184,8 @@ func (o LookupConditionalCreditResultOutput) Name() pulumi.StringOutput {
 }
 
 // Plan for the resource.
-func (o LookupConditionalCreditResultOutput) Plan() commontypesv6.PlanResponsePtrOutput {
-	return o.ApplyT(func(v LookupConditionalCreditResult) *commontypesv6.PlanResponse { return v.Plan }).(commontypesv6.PlanResponsePtrOutput)
+func (o LookupConditionalCreditResultOutput) Plan() PlanResponsePtrOutput {
+	return o.ApplyT(func(v LookupConditionalCreditResult) *PlanResponse { return v.Plan }).(PlanResponsePtrOutput)
 }
 
 // Product code for the conditional credit
@@ -205,8 +204,8 @@ func (o LookupConditionalCreditResultOutput) ResourceId() pulumi.StringPtrOutput
 }
 
 // The resource model definition representing SKU
-func (o LookupConditionalCreditResultOutput) Sku() commontypesv6.SkuResponsePtrOutput {
-	return o.ApplyT(func(v LookupConditionalCreditResult) *commontypesv6.SkuResponse { return v.Sku }).(commontypesv6.SkuResponsePtrOutput)
+func (o LookupConditionalCreditResultOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v LookupConditionalCreditResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
 // Start date of the conditional credit
@@ -220,8 +219,8 @@ func (o LookupConditionalCreditResultOutput) Status() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupConditionalCreditResultOutput) SystemData() commontypesv6.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupConditionalCreditResult) commontypesv6.SystemDataResponse { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
+func (o LookupConditionalCreditResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupConditionalCreditResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

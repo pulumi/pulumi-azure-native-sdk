@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -30,7 +29,7 @@ type PrivateEndpointConnectionsAdtAPI struct {
 	// The provisioning state of the private endpoint connection resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Required property for system data
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -180,8 +179,8 @@ func (o PrivateEndpointConnectionsAdtAPIOutput) ProvisioningState() pulumi.Strin
 }
 
 // Required property for system data
-func (o PrivateEndpointConnectionsAdtAPIOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *PrivateEndpointConnectionsAdtAPI) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o PrivateEndpointConnectionsAdtAPIOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionsAdtAPI) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

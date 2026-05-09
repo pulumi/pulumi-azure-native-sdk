@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -52,7 +51,7 @@ type MachineRunCommand struct {
 	// The source of the run command script.
 	Source MachineRunCommandScriptSourceResponsePtrOutput `pulumi:"source"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The timeout in seconds to execute the run command.
@@ -333,8 +332,8 @@ func (o MachineRunCommandOutput) Source() MachineRunCommandScriptSourceResponseP
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o MachineRunCommandOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v *MachineRunCommand) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o MachineRunCommandOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *MachineRunCommand) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

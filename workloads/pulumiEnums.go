@@ -1451,12 +1451,14 @@ func (in *managedResourcesNetworkAccessTypePtr) ToManagedResourcesNetworkAccessT
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedResourcesNetworkAccessTypePtrOutput)
 }
 
-// Type of manage identity
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 type ManagedServiceIdentityType string
 
 const (
-	ManagedServiceIdentityTypeNone         = ManagedServiceIdentityType("None")
-	ManagedServiceIdentityTypeUserAssigned = ManagedServiceIdentityType("UserAssigned")
+	ManagedServiceIdentityTypeNone                         = ManagedServiceIdentityType("None")
+	ManagedServiceIdentityTypeSystemAssigned               = ManagedServiceIdentityType("SystemAssigned")
+	ManagedServiceIdentityTypeUserAssigned                 = ManagedServiceIdentityType("UserAssigned")
+	ManagedServiceIdentityType_SystemAssigned_UserAssigned = ManagedServiceIdentityType("SystemAssigned,UserAssigned")
 )
 
 func (ManagedServiceIdentityType) ElementType() reflect.Type {
@@ -1582,7 +1584,9 @@ func (o ManagedServiceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx co
 // A concrete instance of `ManagedServiceIdentityTypeInput` can be one of the following:
 //
 //	ManagedServiceIdentityTypeNone
+//	ManagedServiceIdentityTypeSystemAssigned
 //	ManagedServiceIdentityTypeUserAssigned
+//	ManagedServiceIdentityType_SystemAssigned_UserAssigned
 type ManagedServiceIdentityTypeInput interface {
 	pulumi.Input
 

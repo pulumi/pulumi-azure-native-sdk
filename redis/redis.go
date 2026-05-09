@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -32,7 +31,7 @@ type Redis struct {
 	// Redis host name.
 	HostName pulumi.StringOutput `pulumi:"hostName"`
 	// The managed service identities assigned to this resource.
-	Identity commontypesv4.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// List of the Redis instances associated with the cache
 	Instances RedisInstanceDetailsResponseArrayOutput `pulumi:"instances"`
 	// List of the linked servers associated with the cache
@@ -46,7 +45,7 @@ type Redis struct {
 	// Redis non-SSL port.
 	Port pulumi.IntOutput `pulumi:"port"`
 	// List of private endpoint connection associated with the specified redis cache
-	PrivateEndpointConnections commontypesv4.PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// Redis instance provisioning status.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Whether or not public endpoint access is allowed for this cache.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method.
@@ -70,7 +69,7 @@ type Redis struct {
 	// The full resource ID of a subnet in a virtual network to deploy the Redis cache in. Example format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/Microsoft.{Network|ClassicNetwork}/VirtualNetworks/vnet1/subnets/subnet1
 	SubnetId pulumi.StringPtrOutput `pulumi:"subnetId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv4.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// A dictionary of tenant settings
@@ -220,7 +219,7 @@ type redisArgs struct {
 	// Specifies whether the non-ssl Redis server port (6379) is enabled.
 	EnableNonSslPort *bool `pulumi:"enableNonSslPort"`
 	// The identity of the resource.
-	Identity *commontypesv4.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Optional: requires clients to use a specified TLS version (or higher) to connect (e,g, '1.0', '1.1', '1.2')
@@ -266,7 +265,7 @@ type RedisArgs struct {
 	// Specifies whether the non-ssl Redis server port (6379) is enabled.
 	EnableNonSslPort pulumi.BoolPtrInput
 	// The identity of the resource.
-	Identity commontypesv4.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Optional: requires clients to use a specified TLS version (or higher) to connect (e,g, '1.0', '1.1', '1.2')
@@ -368,8 +367,8 @@ func (o RedisOutput) HostName() pulumi.StringOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o RedisOutput) Identity() commontypesv4.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *Redis) commontypesv4.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv4.ManagedServiceIdentityResponsePtrOutput)
+func (o RedisOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Redis) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // List of the Redis instances associated with the cache
@@ -403,10 +402,8 @@ func (o RedisOutput) Port() pulumi.IntOutput {
 }
 
 // List of private endpoint connection associated with the specified redis cache
-func (o RedisOutput) PrivateEndpointConnections() commontypesv4.PrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v *Redis) commontypesv4.PrivateEndpointConnectionResponseArrayOutput {
-		return v.PrivateEndpointConnections
-	}).(commontypesv4.PrivateEndpointConnectionResponseArrayOutput)
+func (o RedisOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v *Redis) PrivateEndpointConnectionResponseArrayOutput { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // Redis instance provisioning status.
@@ -465,8 +462,8 @@ func (o RedisOutput) SubnetId() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o RedisOutput) SystemData() commontypesv4.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Redis) commontypesv4.SystemDataResponseOutput { return v.SystemData }).(commontypesv4.SystemDataResponseOutput)
+func (o RedisOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Redis) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

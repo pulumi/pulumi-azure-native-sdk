@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -53,7 +52,7 @@ type LookupSystemTopicResult struct {
 	// Source for the system topic.
 	Source *string `pulumi:"source"`
 	// The system metadata relating to the Event Grid resource.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// TopicType for the system topic.
@@ -138,8 +137,8 @@ func (o LookupSystemTopicResultOutput) Source() pulumi.StringPtrOutput {
 }
 
 // The system metadata relating to the Event Grid resource.
-func (o LookupSystemTopicResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSystemTopicResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupSystemTopicResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSystemTopicResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Tags of the resource.

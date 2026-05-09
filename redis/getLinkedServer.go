@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -57,7 +56,7 @@ type LookupLinkedServerResult struct {
 	// Role of the linked server.
 	ServerRole string `pulumi:"serverRole"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv4.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -145,8 +144,8 @@ func (o LookupLinkedServerResultOutput) ServerRole() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupLinkedServerResultOutput) SystemData() commontypesv4.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupLinkedServerResult) commontypesv4.SystemDataResponse { return v.SystemData }).(commontypesv4.SystemDataResponseOutput)
+func (o LookupLinkedServerResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupLinkedServerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -28,9 +27,9 @@ type Monitor struct {
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Defines the SAP monitor errors.
-	Errors commontypesv5.ErrorDetailResponseOutput `pulumi:"errors"`
+	Errors ErrorDetailResponseOutput `pulumi:"errors"`
 	// The managed service identities assigned to this resource.
-	Identity commontypesv5.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The ARM ID of the Log Analytics Workspace that is used for SAP monitoring.
@@ -50,7 +49,7 @@ type Monitor struct {
 	// The ARM ID of the Storage account used for SAP monitoring.
 	StorageAccountArmId pulumi.StringOutput `pulumi:"storageAccountArmId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -128,7 +127,7 @@ type monitorArgs struct {
 	// App service plan configuration
 	AppServicePlanConfiguration *AppServicePlanConfiguration `pulumi:"appServicePlanConfiguration"`
 	// The managed service identities assigned to this resource.
-	Identity *commontypesv5.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The ARM ID of the Log Analytics Workspace that is used for SAP monitoring.
@@ -156,7 +155,7 @@ type MonitorArgs struct {
 	// App service plan configuration
 	AppServicePlanConfiguration AppServicePlanConfigurationPtrInput
 	// The managed service identities assigned to this resource.
-	Identity commontypesv5.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The ARM ID of the Log Analytics Workspace that is used for SAP monitoring.
@@ -230,13 +229,13 @@ func (o MonitorOutput) AzureApiVersion() pulumi.StringOutput {
 }
 
 // Defines the SAP monitor errors.
-func (o MonitorOutput) Errors() commontypesv5.ErrorDetailResponseOutput {
-	return o.ApplyT(func(v *Monitor) commontypesv5.ErrorDetailResponseOutput { return v.Errors }).(commontypesv5.ErrorDetailResponseOutput)
+func (o MonitorOutput) Errors() ErrorDetailResponseOutput {
+	return o.ApplyT(func(v *Monitor) ErrorDetailResponseOutput { return v.Errors }).(ErrorDetailResponseOutput)
 }
 
 // The managed service identities assigned to this resource.
-func (o MonitorOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *Monitor) commontypesv5.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+func (o MonitorOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Monitor) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -287,8 +286,8 @@ func (o MonitorOutput) StorageAccountArmId() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o MonitorOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Monitor) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o MonitorOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Monitor) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

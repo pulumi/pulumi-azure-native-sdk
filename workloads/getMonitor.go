@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -43,11 +42,11 @@ type LookupMonitorResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Defines the SAP monitor errors.
-	Errors commontypesv5.ErrorDetailResponse `pulumi:"errors"`
+	Errors ErrorDetailResponse `pulumi:"errors"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The managed service identities assigned to this resource.
-	Identity *commontypesv5.ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The ARM ID of the Log Analytics Workspace that is used for SAP monitoring.
@@ -67,7 +66,7 @@ type LookupMonitorResult struct {
 	// The ARM ID of the Storage account used for SAP monitoring.
 	StorageAccountArmId string `pulumi:"storageAccountArmId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -127,8 +126,8 @@ func (o LookupMonitorResultOutput) AzureApiVersion() pulumi.StringOutput {
 }
 
 // Defines the SAP monitor errors.
-func (o LookupMonitorResultOutput) Errors() commontypesv5.ErrorDetailResponseOutput {
-	return o.ApplyT(func(v LookupMonitorResult) commontypesv5.ErrorDetailResponse { return v.Errors }).(commontypesv5.ErrorDetailResponseOutput)
+func (o LookupMonitorResultOutput) Errors() ErrorDetailResponseOutput {
+	return o.ApplyT(func(v LookupMonitorResult) ErrorDetailResponse { return v.Errors }).(ErrorDetailResponseOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -137,8 +136,8 @@ func (o LookupMonitorResultOutput) Id() pulumi.StringOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o LookupMonitorResultOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupMonitorResult) *commontypesv5.ManagedServiceIdentityResponse { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+func (o LookupMonitorResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupMonitorResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -189,8 +188,8 @@ func (o LookupMonitorResultOutput) StorageAccountArmId() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupMonitorResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupMonitorResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupMonitorResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupMonitorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

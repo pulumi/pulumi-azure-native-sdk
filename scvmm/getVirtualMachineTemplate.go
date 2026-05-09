@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -79,7 +78,7 @@ type LookupVirtualMachineTemplateResult struct {
 	// Gets or sets the provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The system data.
-	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
 	// Resource Type
@@ -231,8 +230,8 @@ func (o LookupVirtualMachineTemplateResultOutput) ProvisioningState() pulumi.Str
 }
 
 // The system data.
-func (o LookupVirtualMachineTemplateResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupVirtualMachineTemplateResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o LookupVirtualMachineTemplateResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupVirtualMachineTemplateResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags

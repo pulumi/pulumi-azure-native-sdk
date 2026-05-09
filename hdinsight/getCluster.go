@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -51,7 +50,7 @@ type LookupClusterResult struct {
 	// The properties of the cluster.
 	Properties ClusterGetPropertiesResponse `pulumi:"properties"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -141,8 +140,8 @@ func (o LookupClusterResultOutput) Properties() ClusterGetPropertiesResponseOutp
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupClusterResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupClusterResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o LookupClusterResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupClusterResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

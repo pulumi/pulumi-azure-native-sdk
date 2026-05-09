@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -47,7 +46,7 @@ type LookupWorkspaceManagerMemberResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Fully qualified resource ID of the target Sentinel workspace joining the given Sentinel workspace manager
 	TargetWorkspaceResourceId string `pulumi:"targetWorkspaceResourceId"`
 	// Tenant id of the target Sentinel workspace joining the given Sentinel workspace manager
@@ -114,8 +113,8 @@ func (o LookupWorkspaceManagerMemberResultOutput) Name() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupWorkspaceManagerMemberResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupWorkspaceManagerMemberResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupWorkspaceManagerMemberResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupWorkspaceManagerMemberResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Fully qualified resource ID of the target Sentinel workspace joining the given Sentinel workspace manager

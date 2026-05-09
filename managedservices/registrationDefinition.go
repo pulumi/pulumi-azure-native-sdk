@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -28,7 +27,7 @@ type RegistrationDefinition struct {
 	// The properties of a registration definition.
 	Properties RegistrationDefinitionPropertiesResponseOutput `pulumi:"properties"`
 	// The metadata for the registration assignment resource.
-	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the Azure resource (Microsoft.ManagedServices/registrationDefinitions).
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -180,8 +179,8 @@ func (o RegistrationDefinitionOutput) Properties() RegistrationDefinitionPropert
 }
 
 // The metadata for the registration assignment resource.
-func (o RegistrationDefinitionOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v *RegistrationDefinition) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o RegistrationDefinitionOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *RegistrationDefinition) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the Azure resource (Microsoft.ManagedServices/registrationDefinitions).

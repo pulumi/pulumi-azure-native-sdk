@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -81,7 +80,7 @@ type LookupDraftPackageResult struct {
 	// The source type.
 	SourceType *string `pulumi:"sourceType"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Tab state.
 	TabState *TabStateResponse `pulumi:"tabState"`
 	// Specifies the target OSs of specific OS Update types.
@@ -266,8 +265,8 @@ func (o LookupDraftPackageResultOutput) SourceType() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupDraftPackageResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupDraftPackageResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupDraftPackageResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupDraftPackageResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Tab state.

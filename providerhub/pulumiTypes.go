@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -2992,7 +2991,7 @@ type CustomRolloutSpecificationProviderRegistrationResponse struct {
 	Name       string                                  `pulumi:"name"`
 	Properties *ProviderRegistrationPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv6.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -3047,10 +3046,8 @@ func (o CustomRolloutSpecificationProviderRegistrationResponseOutput) Properties
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o CustomRolloutSpecificationProviderRegistrationResponseOutput) SystemData() commontypesv6.SystemDataResponseOutput {
-	return o.ApplyT(func(v CustomRolloutSpecificationProviderRegistrationResponse) commontypesv6.SystemDataResponse {
-		return v.SystemData
-	}).(commontypesv6.SystemDataResponseOutput)
+func (o CustomRolloutSpecificationProviderRegistrationResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v CustomRolloutSpecificationProviderRegistrationResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -3122,13 +3119,13 @@ func (o CustomRolloutSpecificationProviderRegistrationResponsePtrOutput) Propert
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o CustomRolloutSpecificationProviderRegistrationResponsePtrOutput) SystemData() commontypesv6.SystemDataResponsePtrOutput {
-	return o.ApplyT(func(v *CustomRolloutSpecificationProviderRegistrationResponse) *commontypesv6.SystemDataResponse {
+func (o CustomRolloutSpecificationProviderRegistrationResponsePtrOutput) SystemData() SystemDataResponsePtrOutput {
+	return o.ApplyT(func(v *CustomRolloutSpecificationProviderRegistrationResponse) *SystemDataResponse {
 		if v == nil {
 			return nil
 		}
 		return &v.SystemData
-	}).(commontypesv6.SystemDataResponsePtrOutput)
+	}).(SystemDataResponsePtrOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -6205,7 +6202,7 @@ type DefaultRolloutSpecificationProviderRegistrationResponse struct {
 	Name       string                                  `pulumi:"name"`
 	Properties *ProviderRegistrationPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv6.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -6260,10 +6257,10 @@ func (o DefaultRolloutSpecificationProviderRegistrationResponseOutput) Propertie
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o DefaultRolloutSpecificationProviderRegistrationResponseOutput) SystemData() commontypesv6.SystemDataResponseOutput {
-	return o.ApplyT(func(v DefaultRolloutSpecificationProviderRegistrationResponse) commontypesv6.SystemDataResponse {
+func (o DefaultRolloutSpecificationProviderRegistrationResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v DefaultRolloutSpecificationProviderRegistrationResponse) SystemDataResponse {
 		return v.SystemData
-	}).(commontypesv6.SystemDataResponseOutput)
+	}).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -6335,13 +6332,13 @@ func (o DefaultRolloutSpecificationProviderRegistrationResponsePtrOutput) Proper
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o DefaultRolloutSpecificationProviderRegistrationResponsePtrOutput) SystemData() commontypesv6.SystemDataResponsePtrOutput {
-	return o.ApplyT(func(v *DefaultRolloutSpecificationProviderRegistrationResponse) *commontypesv6.SystemDataResponse {
+func (o DefaultRolloutSpecificationProviderRegistrationResponsePtrOutput) SystemData() SystemDataResponsePtrOutput {
+	return o.ApplyT(func(v *DefaultRolloutSpecificationProviderRegistrationResponse) *SystemDataResponse {
 		if v == nil {
 			return nil
 		}
 		return &v.SystemData
-	}).(commontypesv6.SystemDataResponsePtrOutput)
+	}).(SystemDataResponsePtrOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -29334,7 +29331,7 @@ type ResourceTypeRegistrationResponse struct {
 	Name       string                                      `pulumi:"name"`
 	Properties *ResourceTypeRegistrationPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv6.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -29389,8 +29386,8 @@ func (o ResourceTypeRegistrationResponseOutput) Properties() ResourceTypeRegistr
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ResourceTypeRegistrationResponseOutput) SystemData() commontypesv6.SystemDataResponseOutput {
-	return o.ApplyT(func(v ResourceTypeRegistrationResponse) commontypesv6.SystemDataResponse { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
+func (o ResourceTypeRegistrationResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v ResourceTypeRegistrationResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -31688,6 +31685,151 @@ func (o SwaggerSpecificationResponseArrayOutput) Index(i pulumi.IntInput) Swagge
 	}).(SwaggerSpecificationResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponse struct {
+	// The timestamp of resource creation (UTC).
+	CreatedAt *string `pulumi:"createdAt"`
+	// The identity that created the resource.
+	CreatedBy *string `pulumi:"createdBy"`
+	// The type of identity that created the resource.
+	CreatedByType *string `pulumi:"createdByType"`
+	// The timestamp of resource last modification (UTC)
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// The identity that last modified the resource.
+	LastModifiedBy *string `pulumi:"lastModifiedBy"`
+	// The type of identity that last modified the resource.
+	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+	return o
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+	return o
+}
+
+// The timestamp of resource creation (UTC).
+func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that created the resource.
+func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that created the resource.
+func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of resource last modification (UTC)
+func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+}
+
+type SystemDataResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SystemDataResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemDataResponse)(nil)).Elem()
+}
+
+func (o SystemDataResponsePtrOutput) ToSystemDataResponsePtrOutput() SystemDataResponsePtrOutput {
+	return o
+}
+
+func (o SystemDataResponsePtrOutput) ToSystemDataResponsePtrOutputWithContext(ctx context.Context) SystemDataResponsePtrOutput {
+	return o
+}
+
+func (o SystemDataResponsePtrOutput) Elem() SystemDataResponseOutput {
+	return o.ApplyT(func(v *SystemDataResponse) SystemDataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SystemDataResponse
+		return ret
+	}).(SystemDataResponseOutput)
+}
+
+// The timestamp of resource creation (UTC).
+func (o SystemDataResponsePtrOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identity that created the resource.
+func (o SystemDataResponsePtrOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that created the resource.
+func (o SystemDataResponsePtrOutput) CreatedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedByType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of resource last modification (UTC)
+func (o SystemDataResponsePtrOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastModifiedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identity that last modified the resource.
+func (o SystemDataResponsePtrOutput) LastModifiedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastModifiedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that last modified the resource.
+func (o SystemDataResponsePtrOutput) LastModifiedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastModifiedByType
+	}).(pulumi.StringPtrOutput)
+}
+
 type ThirdPartyExtension struct {
 	// Name of third party extension.
 	Name *string `pulumi:"name"`
@@ -33091,6 +33233,8 @@ func init() {
 	pulumi.RegisterOutputType(SwaggerSpecificationArrayOutput{})
 	pulumi.RegisterOutputType(SwaggerSpecificationResponseOutput{})
 	pulumi.RegisterOutputType(SwaggerSpecificationResponseArrayOutput{})
+	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(SystemDataResponsePtrOutput{})
 	pulumi.RegisterOutputType(ThirdPartyExtensionOutput{})
 	pulumi.RegisterOutputType(ThirdPartyExtensionArrayOutput{})
 	pulumi.RegisterOutputType(ThirdPartyExtensionResponseOutput{})

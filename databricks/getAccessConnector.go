@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -41,7 +40,7 @@ type LookupAccessConnectorResult struct {
 	// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity *commontypesv3.ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
@@ -49,7 +48,7 @@ type LookupAccessConnectorResult struct {
 	// Azure Databricks Access Connector properties
 	Properties AccessConnectorPropertiesResponse `pulumi:"properties"`
 	// The system metadata relating to this resource
-	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
@@ -102,8 +101,8 @@ func (o LookupAccessConnectorResultOutput) Id() pulumi.StringOutput {
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
-func (o LookupAccessConnectorResultOutput) Identity() commontypesv3.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupAccessConnectorResult) *commontypesv3.ManagedServiceIdentityResponse { return v.Identity }).(commontypesv3.ManagedServiceIdentityResponsePtrOutput)
+func (o LookupAccessConnectorResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupAccessConnectorResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -122,8 +121,8 @@ func (o LookupAccessConnectorResultOutput) Properties() AccessConnectorPropertie
 }
 
 // The system metadata relating to this resource
-func (o LookupAccessConnectorResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAccessConnectorResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o LookupAccessConnectorResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAccessConnectorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -30,7 +29,7 @@ type AkriConnector struct {
 	// The resource-specific properties for this resource.
 	Properties AkriConnectorPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -180,8 +179,8 @@ func (o AkriConnectorOutput) Properties() AkriConnectorPropertiesResponseOutput 
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o AkriConnectorOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *AkriConnector) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o AkriConnectorOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *AkriConnector) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

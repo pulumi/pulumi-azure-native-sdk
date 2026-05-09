@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -30,11 +29,11 @@ type PrivateLinkScope struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of private endpoint connections.
-	PrivateEndpointConnections commontypesv2.PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections PrivateEndpointConnectionResponseV1ArrayOutput `pulumi:"privateEndpointConnections"`
 	// Current state of this PrivateLinkScope: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// System data
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -201,10 +200,10 @@ func (o PrivateLinkScopeOutput) Name() pulumi.StringOutput {
 }
 
 // List of private endpoint connections.
-func (o PrivateLinkScopeOutput) PrivateEndpointConnections() commontypesv2.PrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v *PrivateLinkScope) commontypesv2.PrivateEndpointConnectionResponseArrayOutput {
+func (o PrivateLinkScopeOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseV1ArrayOutput {
+	return o.ApplyT(func(v *PrivateLinkScope) PrivateEndpointConnectionResponseV1ArrayOutput {
 		return v.PrivateEndpointConnections
-	}).(commontypesv2.PrivateEndpointConnectionResponseArrayOutput)
+	}).(PrivateEndpointConnectionResponseV1ArrayOutput)
 }
 
 // Current state of this PrivateLinkScope: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it.
@@ -213,8 +212,8 @@ func (o PrivateLinkScopeOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // System data
-func (o PrivateLinkScopeOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *PrivateLinkScope) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o PrivateLinkScopeOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *PrivateLinkScope) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -8,8 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -35,7 +33,7 @@ type Project struct {
 	// The display name of the project.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Managed identity properties
-	Identity commontypesv4.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// When specified, limits the maximum number of Dev Boxes a single user can create across all pools in the project. This will have no effect on existing Dev Boxes when reduced.
@@ -45,7 +43,7 @@ type Project struct {
 	// The provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -164,7 +162,7 @@ type projectArgs struct {
 	// The display name of the project.
 	DisplayName *string `pulumi:"displayName"`
 	// Managed identity properties
-	Identity *commontypesv4.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// When specified, limits the maximum number of Dev Boxes a single user can create across all pools in the project. This will have no effect on existing Dev Boxes when reduced.
@@ -188,7 +186,7 @@ type ProjectArgs struct {
 	// The display name of the project.
 	DisplayName pulumi.StringPtrInput
 	// Managed identity properties
-	Identity commontypesv4.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// When specified, limits the maximum number of Dev Boxes a single user can create across all pools in the project. This will have no effect on existing Dev Boxes when reduced.
@@ -269,8 +267,8 @@ func (o ProjectOutput) DisplayName() pulumi.StringPtrOutput {
 }
 
 // Managed identity properties
-func (o ProjectOutput) Identity() commontypesv4.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *Project) commontypesv4.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv4.ManagedServiceIdentityResponsePtrOutput)
+func (o ProjectOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Project) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -294,8 +292,8 @@ func (o ProjectOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ProjectOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Project) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o ProjectOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Project) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

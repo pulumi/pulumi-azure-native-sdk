@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -40,7 +39,7 @@ type VendorSkus struct {
 	// The sku type.
 	SkuType pulumi.StringPtrOutput `pulumi:"skuType"`
 	// The system meta data relating to this resource.
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -230,8 +229,8 @@ func (o VendorSkusOutput) SkuType() pulumi.StringPtrOutput {
 }
 
 // The system meta data relating to this resource.
-func (o VendorSkusOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *VendorSkus) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o VendorSkusOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *VendorSkus) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

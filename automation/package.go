@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -22,7 +21,7 @@ type Package struct {
 	pulumi.CustomResourceState
 
 	// Metadata pertaining to creation and last modification of the resource.
-	AllOf commontypesv5.SystemDataResponseOutput `pulumi:"allOf"`
+	AllOf SystemDataResponseOutput `pulumi:"allOf"`
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the contentLink of the Package.
@@ -40,7 +39,7 @@ type Package struct {
 	// Gets or sets the size in bytes of the Package.
 	SizeInBytes pulumi.Float64PtrOutput `pulumi:"sizeInBytes"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -111,7 +110,7 @@ func (PackageState) ElementType() reflect.Type {
 
 type packageArgs struct {
 	// The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
-	AllOf *commontypesv5.TrackedResource `pulumi:"allOf"`
+	AllOf *TrackedResource `pulumi:"allOf"`
 	// The name of the automation account.
 	AutomationAccountName string `pulumi:"automationAccountName"`
 	// Gets or sets the package content link.
@@ -127,7 +126,7 @@ type packageArgs struct {
 // The set of arguments for constructing a Package resource.
 type PackageArgs struct {
 	// The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
-	AllOf commontypesv5.TrackedResourcePtrInput
+	AllOf TrackedResourcePtrInput
 	// The name of the automation account.
 	AutomationAccountName pulumi.StringInput
 	// Gets or sets the package content link.
@@ -178,8 +177,8 @@ func (o PackageOutput) ToPackageOutputWithContext(ctx context.Context) PackageOu
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o PackageOutput) AllOf() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Package) commontypesv5.SystemDataResponseOutput { return v.AllOf }).(commontypesv5.SystemDataResponseOutput)
+func (o PackageOutput) AllOf() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Package) SystemDataResponseOutput { return v.AllOf }).(SystemDataResponseOutput)
 }
 
 // The Azure API version of the resource.
@@ -223,8 +222,8 @@ func (o PackageOutput) SizeInBytes() pulumi.Float64PtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o PackageOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Package) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o PackageOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Package) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -49,7 +48,7 @@ type LookupTopicSpaceResult struct {
 	// Provisioning state of the TopicSpace resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The system metadata relating to the Event Grid resource.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The topic filters in the topic space.
 	// Example: "topicTemplates": [
 	//               "devices/foo/bar",
@@ -123,8 +122,8 @@ func (o LookupTopicSpaceResultOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // The system metadata relating to the Event Grid resource.
-func (o LookupTopicSpaceResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupTopicSpaceResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupTopicSpaceResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupTopicSpaceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The topic filters in the topic space.

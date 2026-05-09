@@ -7,8 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -225,6 +223,526 @@ func (o CatalogSyncErrorResponseArrayOutput) Index(i pulumi.IntInput) CatalogSyn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CatalogSyncErrorResponse {
 		return vs[0].([]CatalogSyncErrorResponse)[vs[1].(int)]
 	}).(CatalogSyncErrorResponseOutput)
+}
+
+// All Customer-managed key encryption properties for the resource.
+type CustomerManagedKeyEncryption struct {
+	// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
+	KeyEncryptionKeyIdentity *CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity `pulumi:"keyEncryptionKeyIdentity"`
+	// key encryption key Url, versioned or non-versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
+	KeyEncryptionKeyUrl *string `pulumi:"keyEncryptionKeyUrl"`
+}
+
+// CustomerManagedKeyEncryptionInput is an input type that accepts CustomerManagedKeyEncryptionArgs and CustomerManagedKeyEncryptionOutput values.
+// You can construct a concrete instance of `CustomerManagedKeyEncryptionInput` via:
+//
+//	CustomerManagedKeyEncryptionArgs{...}
+type CustomerManagedKeyEncryptionInput interface {
+	pulumi.Input
+
+	ToCustomerManagedKeyEncryptionOutput() CustomerManagedKeyEncryptionOutput
+	ToCustomerManagedKeyEncryptionOutputWithContext(context.Context) CustomerManagedKeyEncryptionOutput
+}
+
+// All Customer-managed key encryption properties for the resource.
+type CustomerManagedKeyEncryptionArgs struct {
+	// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
+	KeyEncryptionKeyIdentity CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrInput `pulumi:"keyEncryptionKeyIdentity"`
+	// key encryption key Url, versioned or non-versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
+	KeyEncryptionKeyUrl pulumi.StringPtrInput `pulumi:"keyEncryptionKeyUrl"`
+}
+
+func (CustomerManagedKeyEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomerManagedKeyEncryption)(nil)).Elem()
+}
+
+func (i CustomerManagedKeyEncryptionArgs) ToCustomerManagedKeyEncryptionOutput() CustomerManagedKeyEncryptionOutput {
+	return i.ToCustomerManagedKeyEncryptionOutputWithContext(context.Background())
+}
+
+func (i CustomerManagedKeyEncryptionArgs) ToCustomerManagedKeyEncryptionOutputWithContext(ctx context.Context) CustomerManagedKeyEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomerManagedKeyEncryptionOutput)
+}
+
+func (i CustomerManagedKeyEncryptionArgs) ToCustomerManagedKeyEncryptionPtrOutput() CustomerManagedKeyEncryptionPtrOutput {
+	return i.ToCustomerManagedKeyEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i CustomerManagedKeyEncryptionArgs) ToCustomerManagedKeyEncryptionPtrOutputWithContext(ctx context.Context) CustomerManagedKeyEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomerManagedKeyEncryptionOutput).ToCustomerManagedKeyEncryptionPtrOutputWithContext(ctx)
+}
+
+// CustomerManagedKeyEncryptionPtrInput is an input type that accepts CustomerManagedKeyEncryptionArgs, CustomerManagedKeyEncryptionPtr and CustomerManagedKeyEncryptionPtrOutput values.
+// You can construct a concrete instance of `CustomerManagedKeyEncryptionPtrInput` via:
+//
+//	        CustomerManagedKeyEncryptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type CustomerManagedKeyEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToCustomerManagedKeyEncryptionPtrOutput() CustomerManagedKeyEncryptionPtrOutput
+	ToCustomerManagedKeyEncryptionPtrOutputWithContext(context.Context) CustomerManagedKeyEncryptionPtrOutput
+}
+
+type customerManagedKeyEncryptionPtrType CustomerManagedKeyEncryptionArgs
+
+func CustomerManagedKeyEncryptionPtr(v *CustomerManagedKeyEncryptionArgs) CustomerManagedKeyEncryptionPtrInput {
+	return (*customerManagedKeyEncryptionPtrType)(v)
+}
+
+func (*customerManagedKeyEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomerManagedKeyEncryption)(nil)).Elem()
+}
+
+func (i *customerManagedKeyEncryptionPtrType) ToCustomerManagedKeyEncryptionPtrOutput() CustomerManagedKeyEncryptionPtrOutput {
+	return i.ToCustomerManagedKeyEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *customerManagedKeyEncryptionPtrType) ToCustomerManagedKeyEncryptionPtrOutputWithContext(ctx context.Context) CustomerManagedKeyEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomerManagedKeyEncryptionPtrOutput)
+}
+
+// All Customer-managed key encryption properties for the resource.
+type CustomerManagedKeyEncryptionOutput struct{ *pulumi.OutputState }
+
+func (CustomerManagedKeyEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomerManagedKeyEncryption)(nil)).Elem()
+}
+
+func (o CustomerManagedKeyEncryptionOutput) ToCustomerManagedKeyEncryptionOutput() CustomerManagedKeyEncryptionOutput {
+	return o
+}
+
+func (o CustomerManagedKeyEncryptionOutput) ToCustomerManagedKeyEncryptionOutputWithContext(ctx context.Context) CustomerManagedKeyEncryptionOutput {
+	return o
+}
+
+func (o CustomerManagedKeyEncryptionOutput) ToCustomerManagedKeyEncryptionPtrOutput() CustomerManagedKeyEncryptionPtrOutput {
+	return o.ToCustomerManagedKeyEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o CustomerManagedKeyEncryptionOutput) ToCustomerManagedKeyEncryptionPtrOutputWithContext(ctx context.Context) CustomerManagedKeyEncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomerManagedKeyEncryption) *CustomerManagedKeyEncryption {
+		return &v
+	}).(CustomerManagedKeyEncryptionPtrOutput)
+}
+
+// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
+func (o CustomerManagedKeyEncryptionOutput) KeyEncryptionKeyIdentity() CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput {
+	return o.ApplyT(func(v CustomerManagedKeyEncryption) *CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity {
+		return v.KeyEncryptionKeyIdentity
+	}).(CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput)
+}
+
+// key encryption key Url, versioned or non-versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
+func (o CustomerManagedKeyEncryptionOutput) KeyEncryptionKeyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomerManagedKeyEncryption) *string { return v.KeyEncryptionKeyUrl }).(pulumi.StringPtrOutput)
+}
+
+type CustomerManagedKeyEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomerManagedKeyEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomerManagedKeyEncryption)(nil)).Elem()
+}
+
+func (o CustomerManagedKeyEncryptionPtrOutput) ToCustomerManagedKeyEncryptionPtrOutput() CustomerManagedKeyEncryptionPtrOutput {
+	return o
+}
+
+func (o CustomerManagedKeyEncryptionPtrOutput) ToCustomerManagedKeyEncryptionPtrOutputWithContext(ctx context.Context) CustomerManagedKeyEncryptionPtrOutput {
+	return o
+}
+
+func (o CustomerManagedKeyEncryptionPtrOutput) Elem() CustomerManagedKeyEncryptionOutput {
+	return o.ApplyT(func(v *CustomerManagedKeyEncryption) CustomerManagedKeyEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret CustomerManagedKeyEncryption
+		return ret
+	}).(CustomerManagedKeyEncryptionOutput)
+}
+
+// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
+func (o CustomerManagedKeyEncryptionPtrOutput) KeyEncryptionKeyIdentity() CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput {
+	return o.ApplyT(func(v *CustomerManagedKeyEncryption) *CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity {
+		if v == nil {
+			return nil
+		}
+		return v.KeyEncryptionKeyIdentity
+	}).(CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput)
+}
+
+// key encryption key Url, versioned or non-versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
+func (o CustomerManagedKeyEncryptionPtrOutput) KeyEncryptionKeyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomerManagedKeyEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyEncryptionKeyUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
+type CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity struct {
+	// delegated identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and userAssignedIdentity - internal use only.
+	DelegatedIdentityClientId *string `pulumi:"delegatedIdentityClientId"`
+	// Values can be systemAssignedIdentity or userAssignedIdentity
+	IdentityType *string `pulumi:"identityType"`
+	// user assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and delegatedResourceIdentity.
+	UserAssignedIdentityResourceId *string `pulumi:"userAssignedIdentityResourceId"`
+}
+
+// CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityInput is an input type that accepts CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityArgs and CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutput values.
+// You can construct a concrete instance of `CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityInput` via:
+//
+//	CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityArgs{...}
+type CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityInput interface {
+	pulumi.Input
+
+	ToCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutput() CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutput
+	ToCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutputWithContext(context.Context) CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutput
+}
+
+// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
+type CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityArgs struct {
+	// delegated identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and userAssignedIdentity - internal use only.
+	DelegatedIdentityClientId pulumi.StringPtrInput `pulumi:"delegatedIdentityClientId"`
+	// Values can be systemAssignedIdentity or userAssignedIdentity
+	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
+	// user assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and delegatedResourceIdentity.
+	UserAssignedIdentityResourceId pulumi.StringPtrInput `pulumi:"userAssignedIdentityResourceId"`
+}
+
+func (CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity)(nil)).Elem()
+}
+
+func (i CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityArgs) ToCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutput() CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutput {
+	return i.ToCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutputWithContext(context.Background())
+}
+
+func (i CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityArgs) ToCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutputWithContext(ctx context.Context) CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutput)
+}
+
+func (i CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityArgs) ToCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput() CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput {
+	return i.ToCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityArgs) ToCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutputWithContext(ctx context.Context) CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutput).ToCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutputWithContext(ctx)
+}
+
+// CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrInput is an input type that accepts CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityArgs, CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtr and CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput values.
+// You can construct a concrete instance of `CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrInput` via:
+//
+//	        CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrInput interface {
+	pulumi.Input
+
+	ToCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput() CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput
+	ToCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutputWithContext(context.Context) CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput
+}
+
+type customerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrType CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityArgs
+
+func CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtr(v *CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityArgs) CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrInput {
+	return (*customerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrType)(v)
+}
+
+func (*customerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity)(nil)).Elem()
+}
+
+func (i *customerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrType) ToCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput() CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput {
+	return i.ToCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *customerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrType) ToCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutputWithContext(ctx context.Context) CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput)
+}
+
+// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
+type CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutput struct{ *pulumi.OutputState }
+
+func (CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity)(nil)).Elem()
+}
+
+func (o CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutput) ToCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutput() CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutput {
+	return o
+}
+
+func (o CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutput) ToCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutputWithContext(ctx context.Context) CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutput {
+	return o
+}
+
+func (o CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutput) ToCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput() CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput {
+	return o.ToCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutput) ToCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutputWithContext(ctx context.Context) CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity) *CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity {
+		return &v
+	}).(CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput)
+}
+
+// delegated identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and userAssignedIdentity - internal use only.
+func (o CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutput) DelegatedIdentityClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity) *string {
+		return v.DelegatedIdentityClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Values can be systemAssignedIdentity or userAssignedIdentity
+func (o CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
+}
+
+// user assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and delegatedResourceIdentity.
+func (o CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutput) UserAssignedIdentityResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity) *string {
+		return v.UserAssignedIdentityResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity)(nil)).Elem()
+}
+
+func (o CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput) ToCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput() CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput {
+	return o
+}
+
+func (o CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput) ToCustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutputWithContext(ctx context.Context) CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput {
+	return o
+}
+
+func (o CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput) Elem() CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutput {
+	return o.ApplyT(func(v *CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity) CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity
+		return ret
+	}).(CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutput)
+}
+
+// delegated identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and userAssignedIdentity - internal use only.
+func (o CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput) DelegatedIdentityClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DelegatedIdentityClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Values can be systemAssignedIdentity or userAssignedIdentity
+func (o CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityType
+	}).(pulumi.StringPtrOutput)
+}
+
+// user assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and delegatedResourceIdentity.
+func (o CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput) UserAssignedIdentityResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomerManagedKeyEncryptionKeyEncryptionKeyIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentityResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// All Customer-managed key encryption properties for the resource.
+type CustomerManagedKeyEncryptionResponse struct {
+	// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
+	KeyEncryptionKeyIdentity *CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentity `pulumi:"keyEncryptionKeyIdentity"`
+	// key encryption key Url, versioned or non-versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
+	KeyEncryptionKeyUrl *string `pulumi:"keyEncryptionKeyUrl"`
+}
+
+// All Customer-managed key encryption properties for the resource.
+type CustomerManagedKeyEncryptionResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomerManagedKeyEncryptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomerManagedKeyEncryptionResponse)(nil)).Elem()
+}
+
+func (o CustomerManagedKeyEncryptionResponseOutput) ToCustomerManagedKeyEncryptionResponseOutput() CustomerManagedKeyEncryptionResponseOutput {
+	return o
+}
+
+func (o CustomerManagedKeyEncryptionResponseOutput) ToCustomerManagedKeyEncryptionResponseOutputWithContext(ctx context.Context) CustomerManagedKeyEncryptionResponseOutput {
+	return o
+}
+
+// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
+func (o CustomerManagedKeyEncryptionResponseOutput) KeyEncryptionKeyIdentity() CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityPtrOutput {
+	return o.ApplyT(func(v CustomerManagedKeyEncryptionResponse) *CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentity {
+		return v.KeyEncryptionKeyIdentity
+	}).(CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityPtrOutput)
+}
+
+// key encryption key Url, versioned or non-versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
+func (o CustomerManagedKeyEncryptionResponseOutput) KeyEncryptionKeyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomerManagedKeyEncryptionResponse) *string { return v.KeyEncryptionKeyUrl }).(pulumi.StringPtrOutput)
+}
+
+type CustomerManagedKeyEncryptionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CustomerManagedKeyEncryptionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomerManagedKeyEncryptionResponse)(nil)).Elem()
+}
+
+func (o CustomerManagedKeyEncryptionResponsePtrOutput) ToCustomerManagedKeyEncryptionResponsePtrOutput() CustomerManagedKeyEncryptionResponsePtrOutput {
+	return o
+}
+
+func (o CustomerManagedKeyEncryptionResponsePtrOutput) ToCustomerManagedKeyEncryptionResponsePtrOutputWithContext(ctx context.Context) CustomerManagedKeyEncryptionResponsePtrOutput {
+	return o
+}
+
+func (o CustomerManagedKeyEncryptionResponsePtrOutput) Elem() CustomerManagedKeyEncryptionResponseOutput {
+	return o.ApplyT(func(v *CustomerManagedKeyEncryptionResponse) CustomerManagedKeyEncryptionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CustomerManagedKeyEncryptionResponse
+		return ret
+	}).(CustomerManagedKeyEncryptionResponseOutput)
+}
+
+// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
+func (o CustomerManagedKeyEncryptionResponsePtrOutput) KeyEncryptionKeyIdentity() CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityPtrOutput {
+	return o.ApplyT(func(v *CustomerManagedKeyEncryptionResponse) *CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentity {
+		if v == nil {
+			return nil
+		}
+		return v.KeyEncryptionKeyIdentity
+	}).(CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityPtrOutput)
+}
+
+// key encryption key Url, versioned or non-versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
+func (o CustomerManagedKeyEncryptionResponsePtrOutput) KeyEncryptionKeyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomerManagedKeyEncryptionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyEncryptionKeyUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
+type CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentity struct {
+	// delegated identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and userAssignedIdentity - internal use only.
+	DelegatedIdentityClientId *string `pulumi:"delegatedIdentityClientId"`
+	// Values can be systemAssignedIdentity or userAssignedIdentity
+	IdentityType *string `pulumi:"identityType"`
+	// user assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and delegatedResourceIdentity.
+	UserAssignedIdentityResourceId *string `pulumi:"userAssignedIdentityResourceId"`
+}
+
+// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
+type CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityOutput struct{ *pulumi.OutputState }
+
+func (CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentity)(nil)).Elem()
+}
+
+func (o CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityOutput) ToCustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityOutput() CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityOutput {
+	return o
+}
+
+func (o CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityOutput) ToCustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityOutputWithContext(ctx context.Context) CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityOutput {
+	return o
+}
+
+// delegated identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and userAssignedIdentity - internal use only.
+func (o CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityOutput) DelegatedIdentityClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentity) *string {
+		return v.DelegatedIdentityClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Values can be systemAssignedIdentity or userAssignedIdentity
+func (o CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentity) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
+}
+
+// user assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and delegatedResourceIdentity.
+func (o CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityOutput) UserAssignedIdentityResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentity) *string {
+		return v.UserAssignedIdentityResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+type CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentity)(nil)).Elem()
+}
+
+func (o CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityPtrOutput) ToCustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityPtrOutput() CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityPtrOutput {
+	return o
+}
+
+func (o CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityPtrOutput) ToCustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityPtrOutputWithContext(ctx context.Context) CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityPtrOutput {
+	return o
+}
+
+func (o CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityPtrOutput) Elem() CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityOutput {
+	return o.ApplyT(func(v *CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentity) CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentity
+		return ret
+	}).(CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityOutput)
+}
+
+// delegated identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and userAssignedIdentity - internal use only.
+func (o CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityPtrOutput) DelegatedIdentityClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DelegatedIdentityClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Values can be systemAssignedIdentity or userAssignedIdentity
+func (o CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityPtrOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityType
+	}).(pulumi.StringPtrOutput)
+}
+
+// user assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity and delegatedResourceIdentity.
+func (o CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityPtrOutput) UserAssignedIdentityResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentityResourceId
+	}).(pulumi.StringPtrOutput)
 }
 
 // Project catalog settings for project catalogs under a project associated to this dev center.
@@ -524,7 +1042,7 @@ func (o DevCenterSkuResponseArrayOutput) Index(i pulumi.IntInput) DevCenterSkuRe
 
 type Encryption struct {
 	// All Customer-managed key encryption properties for the resource.
-	CustomerManagedKeyEncryption *commontypesv4.CustomerManagedKeyEncryption `pulumi:"customerManagedKeyEncryption"`
+	CustomerManagedKeyEncryption *CustomerManagedKeyEncryption `pulumi:"customerManagedKeyEncryption"`
 }
 
 // EncryptionInput is an input type that accepts EncryptionArgs and EncryptionOutput values.
@@ -540,7 +1058,7 @@ type EncryptionInput interface {
 
 type EncryptionArgs struct {
 	// All Customer-managed key encryption properties for the resource.
-	CustomerManagedKeyEncryption commontypesv4.CustomerManagedKeyEncryptionPtrInput `pulumi:"customerManagedKeyEncryption"`
+	CustomerManagedKeyEncryption CustomerManagedKeyEncryptionPtrInput `pulumi:"customerManagedKeyEncryption"`
 }
 
 func (EncryptionArgs) ElementType() reflect.Type {
@@ -621,8 +1139,8 @@ func (o EncryptionOutput) ToEncryptionPtrOutputWithContext(ctx context.Context) 
 }
 
 // All Customer-managed key encryption properties for the resource.
-func (o EncryptionOutput) CustomerManagedKeyEncryption() commontypesv4.CustomerManagedKeyEncryptionPtrOutput {
-	return o.ApplyT(func(v Encryption) *commontypesv4.CustomerManagedKeyEncryption { return v.CustomerManagedKeyEncryption }).(commontypesv4.CustomerManagedKeyEncryptionPtrOutput)
+func (o EncryptionOutput) CustomerManagedKeyEncryption() CustomerManagedKeyEncryptionPtrOutput {
+	return o.ApplyT(func(v Encryption) *CustomerManagedKeyEncryption { return v.CustomerManagedKeyEncryption }).(CustomerManagedKeyEncryptionPtrOutput)
 }
 
 type EncryptionPtrOutput struct{ *pulumi.OutputState }
@@ -650,18 +1168,18 @@ func (o EncryptionPtrOutput) Elem() EncryptionOutput {
 }
 
 // All Customer-managed key encryption properties for the resource.
-func (o EncryptionPtrOutput) CustomerManagedKeyEncryption() commontypesv4.CustomerManagedKeyEncryptionPtrOutput {
-	return o.ApplyT(func(v *Encryption) *commontypesv4.CustomerManagedKeyEncryption {
+func (o EncryptionPtrOutput) CustomerManagedKeyEncryption() CustomerManagedKeyEncryptionPtrOutput {
+	return o.ApplyT(func(v *Encryption) *CustomerManagedKeyEncryption {
 		if v == nil {
 			return nil
 		}
 		return v.CustomerManagedKeyEncryption
-	}).(commontypesv4.CustomerManagedKeyEncryptionPtrOutput)
+	}).(CustomerManagedKeyEncryptionPtrOutput)
 }
 
 type EncryptionResponse struct {
 	// All Customer-managed key encryption properties for the resource.
-	CustomerManagedKeyEncryption *commontypesv4.CustomerManagedKeyEncryptionResponse `pulumi:"customerManagedKeyEncryption"`
+	CustomerManagedKeyEncryption *CustomerManagedKeyEncryptionResponse `pulumi:"customerManagedKeyEncryption"`
 }
 
 type EncryptionResponseOutput struct{ *pulumi.OutputState }
@@ -679,10 +1197,10 @@ func (o EncryptionResponseOutput) ToEncryptionResponseOutputWithContext(ctx cont
 }
 
 // All Customer-managed key encryption properties for the resource.
-func (o EncryptionResponseOutput) CustomerManagedKeyEncryption() commontypesv4.CustomerManagedKeyEncryptionResponsePtrOutput {
-	return o.ApplyT(func(v EncryptionResponse) *commontypesv4.CustomerManagedKeyEncryptionResponse {
+func (o EncryptionResponseOutput) CustomerManagedKeyEncryption() CustomerManagedKeyEncryptionResponsePtrOutput {
+	return o.ApplyT(func(v EncryptionResponse) *CustomerManagedKeyEncryptionResponse {
 		return v.CustomerManagedKeyEncryption
-	}).(commontypesv4.CustomerManagedKeyEncryptionResponsePtrOutput)
+	}).(CustomerManagedKeyEncryptionResponsePtrOutput)
 }
 
 type EncryptionResponsePtrOutput struct{ *pulumi.OutputState }
@@ -710,13 +1228,13 @@ func (o EncryptionResponsePtrOutput) Elem() EncryptionResponseOutput {
 }
 
 // All Customer-managed key encryption properties for the resource.
-func (o EncryptionResponsePtrOutput) CustomerManagedKeyEncryption() commontypesv4.CustomerManagedKeyEncryptionResponsePtrOutput {
-	return o.ApplyT(func(v *EncryptionResponse) *commontypesv4.CustomerManagedKeyEncryptionResponse {
+func (o EncryptionResponsePtrOutput) CustomerManagedKeyEncryption() CustomerManagedKeyEncryptionResponsePtrOutput {
+	return o.ApplyT(func(v *EncryptionResponse) *CustomerManagedKeyEncryptionResponse {
 		if v == nil {
 			return nil
 		}
 		return v.CustomerManagedKeyEncryption
-	}).(commontypesv4.CustomerManagedKeyEncryptionResponsePtrOutput)
+	}).(CustomerManagedKeyEncryptionResponsePtrOutput)
 }
 
 // A role that can be assigned to a user.
@@ -770,6 +1288,207 @@ func (o EnvironmentRoleResponseMapOutput) MapIndex(k pulumi.StringInput) Environ
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EnvironmentRoleResponse {
 		return vs[0].(map[string]EnvironmentRoleResponse)[vs[1].(string)]
 	}).(EnvironmentRoleResponseOutput)
+}
+
+// The resource management error additional info.
+type ErrorAdditionalInfoResponse struct {
+	// The additional info.
+	Info interface{} `pulumi:"info"`
+	// The additional info type.
+	Type string `pulumi:"type"`
+}
+
+// The resource management error additional info.
+type ErrorAdditionalInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (ErrorAdditionalInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorAdditionalInfoResponse)(nil)).Elem()
+}
+
+func (o ErrorAdditionalInfoResponseOutput) ToErrorAdditionalInfoResponseOutput() ErrorAdditionalInfoResponseOutput {
+	return o
+}
+
+func (o ErrorAdditionalInfoResponseOutput) ToErrorAdditionalInfoResponseOutputWithContext(ctx context.Context) ErrorAdditionalInfoResponseOutput {
+	return o
+}
+
+// The additional info.
+func (o ErrorAdditionalInfoResponseOutput) Info() pulumi.AnyOutput {
+	return o.ApplyT(func(v ErrorAdditionalInfoResponse) interface{} { return v.Info }).(pulumi.AnyOutput)
+}
+
+// The additional info type.
+func (o ErrorAdditionalInfoResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorAdditionalInfoResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ErrorAdditionalInfoResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ErrorAdditionalInfoResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ErrorAdditionalInfoResponse)(nil)).Elem()
+}
+
+func (o ErrorAdditionalInfoResponseArrayOutput) ToErrorAdditionalInfoResponseArrayOutput() ErrorAdditionalInfoResponseArrayOutput {
+	return o
+}
+
+func (o ErrorAdditionalInfoResponseArrayOutput) ToErrorAdditionalInfoResponseArrayOutputWithContext(ctx context.Context) ErrorAdditionalInfoResponseArrayOutput {
+	return o
+}
+
+func (o ErrorAdditionalInfoResponseArrayOutput) Index(i pulumi.IntInput) ErrorAdditionalInfoResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorAdditionalInfoResponse {
+		return vs[0].([]ErrorAdditionalInfoResponse)[vs[1].(int)]
+	}).(ErrorAdditionalInfoResponseOutput)
+}
+
+// The error detail.
+type ErrorDetailResponse struct {
+	// The error additional info.
+	AdditionalInfo []ErrorAdditionalInfoResponse `pulumi:"additionalInfo"`
+	// The error code.
+	Code string `pulumi:"code"`
+	// The error details.
+	Details []ErrorDetailResponse `pulumi:"details"`
+	// The error message.
+	Message string `pulumi:"message"`
+	// The error target.
+	Target string `pulumi:"target"`
+}
+
+// The error detail.
+type ErrorDetailResponseOutput struct{ *pulumi.OutputState }
+
+func (ErrorDetailResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorDetailResponse)(nil)).Elem()
+}
+
+func (o ErrorDetailResponseOutput) ToErrorDetailResponseOutput() ErrorDetailResponseOutput {
+	return o
+}
+
+func (o ErrorDetailResponseOutput) ToErrorDetailResponseOutputWithContext(ctx context.Context) ErrorDetailResponseOutput {
+	return o
+}
+
+// The error additional info.
+func (o ErrorDetailResponseOutput) AdditionalInfo() ErrorAdditionalInfoResponseArrayOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) []ErrorAdditionalInfoResponse { return v.AdditionalInfo }).(ErrorAdditionalInfoResponseArrayOutput)
+}
+
+// The error code.
+func (o ErrorDetailResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// The error details.
+func (o ErrorDetailResponseOutput) Details() ErrorDetailResponseArrayOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) []ErrorDetailResponse { return v.Details }).(ErrorDetailResponseArrayOutput)
+}
+
+// The error message.
+func (o ErrorDetailResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// The error target.
+func (o ErrorDetailResponseOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Target }).(pulumi.StringOutput)
+}
+
+type ErrorDetailResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ErrorDetailResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErrorDetailResponse)(nil)).Elem()
+}
+
+func (o ErrorDetailResponsePtrOutput) ToErrorDetailResponsePtrOutput() ErrorDetailResponsePtrOutput {
+	return o
+}
+
+func (o ErrorDetailResponsePtrOutput) ToErrorDetailResponsePtrOutputWithContext(ctx context.Context) ErrorDetailResponsePtrOutput {
+	return o
+}
+
+func (o ErrorDetailResponsePtrOutput) Elem() ErrorDetailResponseOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) ErrorDetailResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ErrorDetailResponse
+		return ret
+	}).(ErrorDetailResponseOutput)
+}
+
+// The error additional info.
+func (o ErrorDetailResponsePtrOutput) AdditionalInfo() ErrorAdditionalInfoResponseArrayOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) []ErrorAdditionalInfoResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalInfo
+	}).(ErrorAdditionalInfoResponseArrayOutput)
+}
+
+// The error code.
+func (o ErrorDetailResponsePtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// The error details.
+func (o ErrorDetailResponsePtrOutput) Details() ErrorDetailResponseArrayOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) []ErrorDetailResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Details
+	}).(ErrorDetailResponseArrayOutput)
+}
+
+// The error message.
+func (o ErrorDetailResponsePtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// The error target.
+func (o ErrorDetailResponsePtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErrorDetailResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ErrorDetailResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ErrorDetailResponse)(nil)).Elem()
+}
+
+func (o ErrorDetailResponseArrayOutput) ToErrorDetailResponseArrayOutput() ErrorDetailResponseArrayOutput {
+	return o
+}
+
+func (o ErrorDetailResponseArrayOutput) ToErrorDetailResponseArrayOutputWithContext(ctx context.Context) ErrorDetailResponseArrayOutput {
+	return o
+}
+
+func (o ErrorDetailResponseArrayOutput) Index(i pulumi.IntInput) ErrorDetailResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorDetailResponse {
+		return vs[0].([]ErrorDetailResponse)[vs[1].(int)]
+	}).(ErrorDetailResponseOutput)
 }
 
 // Properties for a Git repository catalog.
@@ -1505,10 +2224,282 @@ func (o ImageValidationErrorDetailsResponseOutput) Message() pulumi.StringPtrOut
 	return o.ApplyT(func(v ImageValidationErrorDetailsResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentity struct {
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type string `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
+}
+
+// ManagedServiceIdentityInput is an input type that accepts ManagedServiceIdentityArgs and ManagedServiceIdentityOutput values.
+// You can construct a concrete instance of `ManagedServiceIdentityInput` via:
+//
+//	ManagedServiceIdentityArgs{...}
+type ManagedServiceIdentityInput interface {
+	pulumi.Input
+
+	ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput
+	ToManagedServiceIdentityOutputWithContext(context.Context) ManagedServiceIdentityOutput
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityArgs struct {
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type pulumi.StringInput `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
+}
+
+func (ManagedServiceIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
+	return i.ToManagedServiceIdentityOutputWithContext(context.Background())
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput).ToManagedServiceIdentityPtrOutputWithContext(ctx)
+}
+
+// ManagedServiceIdentityPtrInput is an input type that accepts ManagedServiceIdentityArgs, ManagedServiceIdentityPtr and ManagedServiceIdentityPtrOutput values.
+// You can construct a concrete instance of `ManagedServiceIdentityPtrInput` via:
+//
+//	        ManagedServiceIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedServiceIdentityPtrInput interface {
+	pulumi.Input
+
+	ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput
+	ToManagedServiceIdentityPtrOutputWithContext(context.Context) ManagedServiceIdentityPtrOutput
+}
+
+type managedServiceIdentityPtrType ManagedServiceIdentityArgs
+
+func ManagedServiceIdentityPtr(v *ManagedServiceIdentityArgs) ManagedServiceIdentityPtrInput {
+	return (*managedServiceIdentityPtrType)(v)
+}
+
+func (*managedServiceIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return o.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedServiceIdentity) *ManagedServiceIdentity {
+		return &v
+	}).(ManagedServiceIdentityPtrOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
+}
+
+type ManagedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) ManagedServiceIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedServiceIdentity
+		return ret
+	}).(ManagedServiceIdentityOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(pulumi.StringArrayOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityResponse struct {
+	// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+	// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+	TenantId string `pulumi:"tenantId"`
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type string `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentityResponse)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutput() ManagedServiceIdentityResponseOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutputWithContext(ctx context.Context) ManagedServiceIdentityResponseOutput {
+	return o
+}
+
+// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
+}
+
+type ManagedServiceIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentityResponse)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutput() ManagedServiceIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) ManagedServiceIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedServiceIdentityResponse
+		return ret
+	}).(ManagedServiceIdentityResponseOutput)
+}
+
+// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
+}
+
 // The sync status of the plan member.
 type PlanMemberSyncStatusResponse struct {
 	// Error response describing why the sync failed.
-	LastSyncError *commontypesv5.ErrorDetailResponse `pulumi:"lastSyncError"`
+	LastSyncError *ErrorDetailResponse `pulumi:"lastSyncError"`
 	// When the plan member was last synced.
 	LastSyncTime string `pulumi:"lastSyncTime"`
 	// The synchronization state of the plan member.
@@ -1531,8 +2522,8 @@ func (o PlanMemberSyncStatusResponseOutput) ToPlanMemberSyncStatusResponseOutput
 }
 
 // Error response describing why the sync failed.
-func (o PlanMemberSyncStatusResponseOutput) LastSyncError() commontypesv5.ErrorDetailResponsePtrOutput {
-	return o.ApplyT(func(v PlanMemberSyncStatusResponse) *commontypesv5.ErrorDetailResponse { return v.LastSyncError }).(commontypesv5.ErrorDetailResponsePtrOutput)
+func (o PlanMemberSyncStatusResponseOutput) LastSyncError() ErrorDetailResponsePtrOutput {
+	return o.ApplyT(func(v PlanMemberSyncStatusResponse) *ErrorDetailResponse { return v.LastSyncError }).(ErrorDetailResponsePtrOutput)
 }
 
 // When the plan member was last synced.
@@ -2135,6 +3126,350 @@ func (o ResourcePolicyResponseArrayOutput) Index(i pulumi.IntInput) ResourcePoli
 	}).(ResourcePolicyResponseOutput)
 }
 
+// The resource model definition representing SKU
+type Sku struct {
+	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+	Capacity *int `pulumi:"capacity"`
+	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+	Family *string `pulumi:"family"`
+	// The name of the SKU. E.g. P3. It is typically a letter+number code
+	Name string `pulumi:"name"`
+	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+	Size *string `pulumi:"size"`
+	// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+	Tier *SkuTier `pulumi:"tier"`
+}
+
+// SkuInput is an input type that accepts SkuArgs and SkuOutput values.
+// You can construct a concrete instance of `SkuInput` via:
+//
+//	SkuArgs{...}
+type SkuInput interface {
+	pulumi.Input
+
+	ToSkuOutput() SkuOutput
+	ToSkuOutputWithContext(context.Context) SkuOutput
+}
+
+// The resource model definition representing SKU
+type SkuArgs struct {
+	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+	Capacity pulumi.IntPtrInput `pulumi:"capacity"`
+	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+	Family pulumi.StringPtrInput `pulumi:"family"`
+	// The name of the SKU. E.g. P3. It is typically a letter+number code
+	Name pulumi.StringInput `pulumi:"name"`
+	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+	Size pulumi.StringPtrInput `pulumi:"size"`
+	// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+	Tier SkuTierPtrInput `pulumi:"tier"`
+}
+
+func (SkuArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Sku)(nil)).Elem()
+}
+
+func (i SkuArgs) ToSkuOutput() SkuOutput {
+	return i.ToSkuOutputWithContext(context.Background())
+}
+
+func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
+}
+
+func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
+	return i.ToSkuPtrOutputWithContext(context.Background())
+}
+
+func (i SkuArgs) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput).ToSkuPtrOutputWithContext(ctx)
+}
+
+// SkuPtrInput is an input type that accepts SkuArgs, SkuPtr and SkuPtrOutput values.
+// You can construct a concrete instance of `SkuPtrInput` via:
+//
+//	        SkuArgs{...}
+//
+//	or:
+//
+//	        nil
+type SkuPtrInput interface {
+	pulumi.Input
+
+	ToSkuPtrOutput() SkuPtrOutput
+	ToSkuPtrOutputWithContext(context.Context) SkuPtrOutput
+}
+
+type skuPtrType SkuArgs
+
+func SkuPtr(v *SkuArgs) SkuPtrInput {
+	return (*skuPtrType)(v)
+}
+
+func (*skuPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Sku)(nil)).Elem()
+}
+
+func (i *skuPtrType) ToSkuPtrOutput() SkuPtrOutput {
+	return i.ToSkuPtrOutputWithContext(context.Background())
+}
+
+func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
+}
+
+// The resource model definition representing SKU
+type SkuOutput struct{ *pulumi.OutputState }
+
+func (SkuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Sku)(nil)).Elem()
+}
+
+func (o SkuOutput) ToSkuOutput() SkuOutput {
+	return o
+}
+
+func (o SkuOutput) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
+	return o
+}
+
+func (o SkuOutput) ToSkuPtrOutput() SkuPtrOutput {
+	return o.ToSkuPtrOutputWithContext(context.Background())
+}
+
+func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Sku) *Sku {
+		return &v
+	}).(SkuPtrOutput)
+}
+
+// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+func (o SkuOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Sku) *int { return v.Capacity }).(pulumi.IntPtrOutput)
+}
+
+// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+func (o SkuOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Sku) *string { return v.Family }).(pulumi.StringPtrOutput)
+}
+
+// The name of the SKU. E.g. P3. It is typically a letter+number code
+func (o SkuOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v Sku) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+func (o SkuOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Sku) *string { return v.Size }).(pulumi.StringPtrOutput)
+}
+
+// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+func (o SkuOutput) Tier() SkuTierPtrOutput {
+	return o.ApplyT(func(v Sku) *SkuTier { return v.Tier }).(SkuTierPtrOutput)
+}
+
+type SkuPtrOutput struct{ *pulumi.OutputState }
+
+func (SkuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Sku)(nil)).Elem()
+}
+
+func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
+	return o
+}
+
+func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
+	return o
+}
+
+func (o SkuPtrOutput) Elem() SkuOutput {
+	return o.ApplyT(func(v *Sku) Sku {
+		if v != nil {
+			return *v
+		}
+		var ret Sku
+		return ret
+	}).(SkuOutput)
+}
+
+// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+func (o SkuPtrOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Sku) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Capacity
+	}).(pulumi.IntPtrOutput)
+}
+
+// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+func (o SkuPtrOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Sku) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Family
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the SKU. E.g. P3. It is typically a letter+number code
+func (o SkuPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Sku) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+func (o SkuPtrOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Sku) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.StringPtrOutput)
+}
+
+// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+func (o SkuPtrOutput) Tier() SkuTierPtrOutput {
+	return o.ApplyT(func(v *Sku) *SkuTier {
+		if v == nil {
+			return nil
+		}
+		return v.Tier
+	}).(SkuTierPtrOutput)
+}
+
+// The resource model definition representing SKU
+type SkuResponse struct {
+	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+	Capacity *int `pulumi:"capacity"`
+	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+	Family *string `pulumi:"family"`
+	// The name of the SKU. E.g. P3. It is typically a letter+number code
+	Name string `pulumi:"name"`
+	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+	Size *string `pulumi:"size"`
+	// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+	Tier *string `pulumi:"tier"`
+}
+
+// The resource model definition representing SKU
+type SkuResponseOutput struct{ *pulumi.OutputState }
+
+func (SkuResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkuResponse)(nil)).Elem()
+}
+
+func (o SkuResponseOutput) ToSkuResponseOutput() SkuResponseOutput {
+	return o
+}
+
+func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) SkuResponseOutput {
+	return o
+}
+
+// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+func (o SkuResponseOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
+}
+
+// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+func (o SkuResponseOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuResponse) *string { return v.Family }).(pulumi.StringPtrOutput)
+}
+
+// The name of the SKU. E.g. P3. It is typically a letter+number code
+func (o SkuResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SkuResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+func (o SkuResponseOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuResponse) *string { return v.Size }).(pulumi.StringPtrOutput)
+}
+
+// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+func (o SkuResponseOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuResponse) *string { return v.Tier }).(pulumi.StringPtrOutput)
+}
+
+type SkuResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SkuResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkuResponse)(nil)).Elem()
+}
+
+func (o SkuResponsePtrOutput) ToSkuResponsePtrOutput() SkuResponsePtrOutput {
+	return o
+}
+
+func (o SkuResponsePtrOutput) ToSkuResponsePtrOutputWithContext(ctx context.Context) SkuResponsePtrOutput {
+	return o
+}
+
+func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {
+	return o.ApplyT(func(v *SkuResponse) SkuResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SkuResponse
+		return ret
+	}).(SkuResponseOutput)
+}
+
+// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+func (o SkuResponsePtrOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SkuResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Capacity
+	}).(pulumi.IntPtrOutput)
+}
+
+// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+func (o SkuResponsePtrOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Family
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the SKU. E.g. P3. It is typically a letter+number code
+func (o SkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+func (o SkuResponsePtrOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.StringPtrOutput)
+}
+
+// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+func (o SkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tier
+	}).(pulumi.StringPtrOutput)
+}
+
 // Stop on disconnect configuration settings for Dev Boxes created in this pool.
 type StopOnDisconnectConfiguration struct {
 	// The specified time in minutes to wait before stopping a Dev Box once disconnect is detected.
@@ -2439,6 +3774,120 @@ func (o SyncStatsResponseOutput) ValidationErrors() pulumi.IntOutput {
 	return o.ApplyT(func(v SyncStatsResponse) int { return v.ValidationErrors }).(pulumi.IntOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponse struct {
+	// The timestamp of resource creation (UTC).
+	CreatedAt *string `pulumi:"createdAt"`
+	// The identity that created the resource.
+	CreatedBy *string `pulumi:"createdBy"`
+	// The type of identity that created the resource.
+	CreatedByType *string `pulumi:"createdByType"`
+	// The timestamp of resource last modification (UTC)
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// The identity that last modified the resource.
+	LastModifiedBy *string `pulumi:"lastModifiedBy"`
+	// The type of identity that last modified the resource.
+	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+	return o
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+	return o
+}
+
+// The timestamp of resource creation (UTC).
+func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that created the resource.
+func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that created the resource.
+func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of resource last modification (UTC)
+func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+}
+
+// User assigned identity properties
+type UserAssignedIdentityResponse struct {
+	// The client ID of the assigned identity.
+	ClientId string `pulumi:"clientId"`
+	// The principal ID of the assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+}
+
+// User assigned identity properties
+type UserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput() UserAssignedIdentityResponseOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutputWithContext(ctx context.Context) UserAssignedIdentityResponseOutput {
+	return o
+}
+
+// The client ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The principal ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+type UserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutput() UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
+		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
+	}).(UserAssignedIdentityResponseOutput)
+}
+
 // Mapping of user object ID to role assignments.
 type UserRoleAssignment struct {
 	// A map of roles to assign to the parent user.
@@ -2594,6 +4043,14 @@ func init() {
 	pulumi.RegisterOutputType(CatalogErrorDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(CatalogSyncErrorResponseOutput{})
 	pulumi.RegisterOutputType(CatalogSyncErrorResponseArrayOutput{})
+	pulumi.RegisterOutputType(CustomerManagedKeyEncryptionOutput{})
+	pulumi.RegisterOutputType(CustomerManagedKeyEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityOutput{})
+	pulumi.RegisterOutputType(CustomerManagedKeyEncryptionKeyEncryptionKeyIdentityPtrOutput{})
+	pulumi.RegisterOutputType(CustomerManagedKeyEncryptionResponseOutput{})
+	pulumi.RegisterOutputType(CustomerManagedKeyEncryptionResponsePtrOutput{})
+	pulumi.RegisterOutputType(CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityOutput{})
+	pulumi.RegisterOutputType(CustomerManagedKeyEncryptionResponseKeyEncryptionKeyIdentityPtrOutput{})
 	pulumi.RegisterOutputType(DevCenterProjectCatalogSettingsOutput{})
 	pulumi.RegisterOutputType(DevCenterProjectCatalogSettingsPtrOutput{})
 	pulumi.RegisterOutputType(DevCenterProjectCatalogSettingsResponseOutput{})
@@ -2606,6 +4063,11 @@ func init() {
 	pulumi.RegisterOutputType(EncryptionResponsePtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentRoleResponseOutput{})
 	pulumi.RegisterOutputType(EnvironmentRoleResponseMapOutput{})
+	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseOutput{})
+	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseArrayOutput{})
+	pulumi.RegisterOutputType(ErrorDetailResponseOutput{})
+	pulumi.RegisterOutputType(ErrorDetailResponsePtrOutput{})
+	pulumi.RegisterOutputType(ErrorDetailResponseArrayOutput{})
 	pulumi.RegisterOutputType(GitCatalogOutput{})
 	pulumi.RegisterOutputType(GitCatalogPtrOutput{})
 	pulumi.RegisterOutputType(GitCatalogResponseOutput{})
@@ -2622,6 +4084,10 @@ func init() {
 	pulumi.RegisterOutputType(ImageReferenceOutput{})
 	pulumi.RegisterOutputType(ImageReferenceResponseOutput{})
 	pulumi.RegisterOutputType(ImageValidationErrorDetailsResponseOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(PlanMemberSyncStatusResponseOutput{})
 	pulumi.RegisterOutputType(ProjectCatalogSettingsOutput{})
 	pulumi.RegisterOutputType(ProjectCatalogSettingsPtrOutput{})
@@ -2636,11 +4102,18 @@ func init() {
 	pulumi.RegisterOutputType(ResourcePolicyArrayOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyResponseOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyResponseArrayOutput{})
+	pulumi.RegisterOutputType(SkuOutput{})
+	pulumi.RegisterOutputType(SkuPtrOutput{})
+	pulumi.RegisterOutputType(SkuResponseOutput{})
+	pulumi.RegisterOutputType(SkuResponsePtrOutput{})
 	pulumi.RegisterOutputType(StopOnDisconnectConfigurationOutput{})
 	pulumi.RegisterOutputType(StopOnDisconnectConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(StopOnDisconnectConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(StopOnDisconnectConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(SyncStatsResponseOutput{})
+	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 	pulumi.RegisterOutputType(UserRoleAssignmentOutput{})
 	pulumi.RegisterOutputType(UserRoleAssignmentMapOutput{})
 	pulumi.RegisterOutputType(UserRoleAssignmentResponseOutput{})

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -34,7 +33,7 @@ type Device struct {
 	// The current device status.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The system meta data relating to this resource.
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -198,8 +197,8 @@ func (o DeviceOutput) Status() pulumi.StringOutput {
 }
 
 // The system meta data relating to this resource.
-func (o DeviceOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Device) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o DeviceOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Device) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -65,7 +64,7 @@ type LookupTableResult struct {
 	// Parameters of the search job that initiated this table.
 	SearchResults *SearchResultsResponse `pulumi:"searchResults"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The table total retention in days, between 4 and 4383. Setting this property to -1 will default to table retention.
 	TotalRetentionInDays *int `pulumi:"totalRetentionInDays"`
 	// True - Value originates from retention in days, False - Customer specific.
@@ -177,8 +176,8 @@ func (o LookupTableResultOutput) SearchResults() SearchResultsResponsePtrOutput 
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupTableResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupTableResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o LookupTableResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupTableResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The table total retention in days, between 4 and 4383. Setting this property to -1 will default to table retention.

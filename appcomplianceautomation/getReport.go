@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -63,7 +62,7 @@ type LookupReportResult struct {
 	// List of subscription Ids.
 	Subscriptions []string `pulumi:"subscriptions"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Report's tenant id.
 	TenantId string `pulumi:"tenantId"`
 	// Report collection trigger time's time zone, the available list can be obtained by executing "Get-TimeZone -ListAvailable" in PowerShell.
@@ -179,8 +178,8 @@ func (o LookupReportResultOutput) Subscriptions() pulumi.StringArrayOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupReportResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupReportResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o LookupReportResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupReportResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Report's tenant id.

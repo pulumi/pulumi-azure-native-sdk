@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -81,7 +80,7 @@ type WebAppAssessmentV2Operation struct {
 	// Whether assessment is in valid state and all machines have been assessed.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Time Range for which the historic utilization data should be considered for
 	// assessment.
 	TimeRange pulumi.StringPtrOutput `pulumi:"timeRange"`
@@ -459,8 +458,8 @@ func (o WebAppAssessmentV2OperationOutput) Status() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o WebAppAssessmentV2OperationOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *WebAppAssessmentV2Operation) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o WebAppAssessmentV2OperationOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *WebAppAssessmentV2Operation) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Time Range for which the historic utilization data should be considered for

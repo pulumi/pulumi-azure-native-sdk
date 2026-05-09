@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -55,7 +54,7 @@ type LookupDiscoveredAssetEndpointProfileResult struct {
 	// List of supported authentication methods supported by the target server.
 	SupportedAuthenticationMethods []string `pulumi:"supportedAuthenticationMethods"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
@@ -152,10 +151,8 @@ func (o LookupDiscoveredAssetEndpointProfileResultOutput) SupportedAuthenticatio
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupDiscoveredAssetEndpointProfileResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupDiscoveredAssetEndpointProfileResult) commontypesv5.SystemDataResponse {
-		return v.SystemData
-	}).(commontypesv5.SystemDataResponseOutput)
+func (o LookupDiscoveredAssetEndpointProfileResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupDiscoveredAssetEndpointProfileResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

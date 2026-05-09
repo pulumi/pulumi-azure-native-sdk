@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -44,7 +43,7 @@ type LookupAzureServersSettingResult struct {
 	// The selected vulnerability assessments provider on Azure servers in the defined scope.
 	SelectedProvider string `pulumi:"selectedProvider"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -109,8 +108,8 @@ func (o LookupAzureServersSettingResultOutput) SelectedProvider() pulumi.StringO
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupAzureServersSettingResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAzureServersSettingResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupAzureServersSettingResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAzureServersSettingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

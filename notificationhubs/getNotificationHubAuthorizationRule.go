@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -68,8 +67,8 @@ type LookupNotificationHubAuthorizationRuleResult struct {
 	// validating the SAS token.
 	SecondaryKey *string `pulumi:"secondaryKey"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
-	Tags       map[string]string                `pulumi:"tags"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	Tags       map[string]string  `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -180,10 +179,8 @@ func (o LookupNotificationHubAuthorizationRuleResultOutput) SecondaryKey() pulum
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupNotificationHubAuthorizationRuleResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupNotificationHubAuthorizationRuleResult) commontypesv5.SystemDataResponse {
-		return v.SystemData
-	}).(commontypesv5.SystemDataResponseOutput)
+func (o LookupNotificationHubAuthorizationRuleResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupNotificationHubAuthorizationRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 func (o LookupNotificationHubAuthorizationRuleResultOutput) Tags() pulumi.StringMapOutput {

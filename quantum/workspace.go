@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -24,7 +23,7 @@ type Workspace struct {
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The managed service identities assigned to this resource.
-	Identity commontypesv5.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -32,7 +31,7 @@ type Workspace struct {
 	// Gets or sets the properties. Define quantum workspace's specific properties.
 	Properties WorkspaceResourcePropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -107,7 +106,7 @@ func (WorkspaceState) ElementType() reflect.Type {
 
 type workspaceArgs struct {
 	// The managed service identities assigned to this resource.
-	Identity *commontypesv5.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Gets or sets the properties. Define quantum workspace's specific properties.
@@ -123,7 +122,7 @@ type workspaceArgs struct {
 // The set of arguments for constructing a Workspace resource.
 type WorkspaceArgs struct {
 	// The managed service identities assigned to this resource.
-	Identity commontypesv5.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Gets or sets the properties. Define quantum workspace's specific properties.
@@ -179,8 +178,8 @@ func (o WorkspaceOutput) AzureApiVersion() pulumi.StringOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o WorkspaceOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *Workspace) commontypesv5.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+func (o WorkspaceOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Workspace) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -199,8 +198,8 @@ func (o WorkspaceOutput) Properties() WorkspaceResourcePropertiesResponseOutput 
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o WorkspaceOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Workspace) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o WorkspaceOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Workspace) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

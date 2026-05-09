@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -26,7 +25,7 @@ type NetworkFunction struct {
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// The managed identity of the network function.
-	Identity commontypesv3.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -34,7 +33,7 @@ type NetworkFunction struct {
 	// Network function properties.
 	Properties pulumi.AnyOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -103,7 +102,7 @@ func (NetworkFunctionState) ElementType() reflect.Type {
 
 type networkFunctionArgs struct {
 	// The managed identity of the network function.
-	Identity *commontypesv3.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Resource name for the network function resource.
@@ -119,7 +118,7 @@ type networkFunctionArgs struct {
 // The set of arguments for constructing a NetworkFunction resource.
 type NetworkFunctionArgs struct {
 	// The managed identity of the network function.
-	Identity commontypesv3.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Resource name for the network function resource.
@@ -180,8 +179,8 @@ func (o NetworkFunctionOutput) Etag() pulumi.StringPtrOutput {
 }
 
 // The managed identity of the network function.
-func (o NetworkFunctionOutput) Identity() commontypesv3.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *NetworkFunction) commontypesv3.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv3.ManagedServiceIdentityResponsePtrOutput)
+func (o NetworkFunctionOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *NetworkFunction) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -200,8 +199,8 @@ func (o NetworkFunctionOutput) Properties() pulumi.AnyOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o NetworkFunctionOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v *NetworkFunction) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o NetworkFunctionOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *NetworkFunction) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

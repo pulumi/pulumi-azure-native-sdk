@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -38,7 +37,7 @@ type Schedule struct {
 	// When lab user virtual machines will be stopped. Timestamp offsets will be ignored and timeZoneId is used instead.
 	StopAt pulumi.StringOutput `pulumi:"stopAt"`
 	// Metadata pertaining to creation and last modification of the schedule.
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The IANA timezone id for the schedule.
 	TimeZoneId pulumi.StringOutput `pulumi:"timeZoneId"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -228,8 +227,8 @@ func (o ScheduleOutput) StopAt() pulumi.StringOutput {
 }
 
 // Metadata pertaining to creation and last modification of the schedule.
-func (o ScheduleOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Schedule) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o ScheduleOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Schedule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The IANA timezone id for the schedule.

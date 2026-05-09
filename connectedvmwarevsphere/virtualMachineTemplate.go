@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -64,7 +63,7 @@ type VirtualMachineTemplate struct {
 	// The resource status information.
 	Statuses ResourceStatusResponseArrayOutput `pulumi:"statuses"`
 	// The system data.
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Gets or sets the Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Gets or sets the current version of VMware Tools.
@@ -327,8 +326,8 @@ func (o VirtualMachineTemplateOutput) Statuses() ResourceStatusResponseArrayOutp
 }
 
 // The system data.
-func (o VirtualMachineTemplateOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *VirtualMachineTemplate) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o VirtualMachineTemplateOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *VirtualMachineTemplate) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Gets or sets the Resource tags.

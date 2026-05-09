@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -34,7 +33,7 @@ type VirtualMachineInstance struct {
 	// HTTP Proxy configuration for the VM.
 	HttpProxyConfig HttpProxyConfigurationResponsePtrOutput `pulumi:"httpProxyConfig"`
 	// The managed service identities assigned to this resource.
-	Identity commontypesv5.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The virtual machine instance view.
 	InstanceView VirtualMachineInstanceViewResponseOutput `pulumi:"instanceView"`
 	// The name of the resource
@@ -54,7 +53,7 @@ type VirtualMachineInstance struct {
 	// StorageProfile - contains information about the disks and storage information for the virtual machine instance
 	StorageProfile VirtualMachineInstancePropertiesStorageProfileResponsePtrOutput `pulumi:"storageProfile"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Unique identifier for the vm resource.
@@ -173,7 +172,7 @@ type virtualMachineInstanceArgs struct {
 	// HTTP Proxy configuration for the VM.
 	HttpProxyConfig *HttpProxyConfiguration `pulumi:"httpProxyConfig"`
 	// The managed service identities assigned to this resource.
-	Identity *commontypesv5.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// NetworkProfile - describes the network configuration the virtual machine instance
 	NetworkProfile *VirtualMachineInstancePropertiesNetworkProfile `pulumi:"networkProfile"`
 	// OsProfile - describes the configuration of the operating system and sets login data
@@ -199,7 +198,7 @@ type VirtualMachineInstanceArgs struct {
 	// HTTP Proxy configuration for the VM.
 	HttpProxyConfig HttpProxyConfigurationPtrInput
 	// The managed service identities assigned to this resource.
-	Identity commontypesv5.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// NetworkProfile - describes the network configuration the virtual machine instance
 	NetworkProfile VirtualMachineInstancePropertiesNetworkProfilePtrInput
 	// OsProfile - describes the configuration of the operating system and sets login data
@@ -286,10 +285,8 @@ func (o VirtualMachineInstanceOutput) HttpProxyConfig() HttpProxyConfigurationRe
 }
 
 // The managed service identities assigned to this resource.
-func (o VirtualMachineInstanceOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *VirtualMachineInstance) commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-		return v.Identity
-	}).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+func (o VirtualMachineInstanceOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInstance) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The virtual machine instance view.
@@ -346,8 +343,8 @@ func (o VirtualMachineInstanceOutput) StorageProfile() VirtualMachineInstancePro
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o VirtualMachineInstanceOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *VirtualMachineInstance) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o VirtualMachineInstanceOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *VirtualMachineInstance) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

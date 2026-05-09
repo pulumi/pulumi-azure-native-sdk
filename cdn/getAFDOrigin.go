@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -70,7 +69,7 @@ type LookupAFDOriginResult struct {
 	// The properties of the private link resource for private origin.
 	SharedPrivateLinkResource *SharedPrivateLinkResourcePropertiesResponse `pulumi:"sharedPrivateLinkResource"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv6.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Weight of the origin in given origin group for load balancing. Must be between 1 and 1000
@@ -213,8 +212,8 @@ func (o LookupAFDOriginResultOutput) SharedPrivateLinkResource() SharedPrivateLi
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupAFDOriginResultOutput) SystemData() commontypesv6.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAFDOriginResult) commontypesv6.SystemDataResponse { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
+func (o LookupAFDOriginResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAFDOriginResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

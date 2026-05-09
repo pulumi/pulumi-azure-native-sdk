@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -47,7 +46,7 @@ type LookupPrivateLinkScopeResult struct {
 	// Properties that define a Azure Arc PrivateLinkScope resource.
 	Properties HybridComputePrivateLinkScopePropertiesResponse `pulumi:"properties"`
 	// The system meta data relating to this resource.
-	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
 	// Azure resource type
@@ -117,8 +116,8 @@ func (o LookupPrivateLinkScopeResultOutput) Properties() HybridComputePrivateLin
 }
 
 // The system meta data relating to this resource.
-func (o LookupPrivateLinkScopeResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupPrivateLinkScopeResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o LookupPrivateLinkScopeResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPrivateLinkScopeResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags

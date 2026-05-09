@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv1"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -48,7 +47,7 @@ type KustoPool struct {
 	// The reason for the Kusto Pool's current state.
 	StateReason pulumi.StringOutput `pulumi:"stateReason"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv1.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -272,8 +271,8 @@ func (o KustoPoolOutput) StateReason() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o KustoPoolOutput) SystemData() commontypesv1.SystemDataResponseOutput {
-	return o.ApplyT(func(v *KustoPool) commontypesv1.SystemDataResponseOutput { return v.SystemData }).(commontypesv1.SystemDataResponseOutput)
+func (o KustoPoolOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *KustoPool) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

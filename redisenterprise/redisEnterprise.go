@@ -8,8 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -31,7 +29,7 @@ type RedisEnterprise struct {
 	// DNS name of the cluster endpoint
 	HostName pulumi.StringOutput `pulumi:"hostName"`
 	// The identity of the resource.
-	Identity commontypesv4.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Distinguishes the kind of cluster. Read-only.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The geo-location where the resource lives
@@ -41,7 +39,7 @@ type RedisEnterprise struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of private endpoint connections associated with the specified Redis Enterprise cluster
-	PrivateEndpointConnections commontypesv2.PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// Current provisioning status of the cluster
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Version of redis the cluster supports, e.g. '6'
@@ -212,7 +210,7 @@ type redisEnterpriseArgs struct {
 	// Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA, and increases the risk of data loss.
 	HighAvailability *string `pulumi:"highAvailability"`
 	// The identity of the resource.
-	Identity *commontypesv4.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency with old API versions.
@@ -236,7 +234,7 @@ type RedisEnterpriseArgs struct {
 	// Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA, and increases the risk of data loss.
 	HighAvailability pulumi.StringPtrInput
 	// The identity of the resource.
-	Identity commontypesv4.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The minimum TLS version for the cluster to support, e.g. '1.2'. Newer versions can be added in the future. Note that TLS 1.0 and TLS 1.1 are now completely obsolete -- you cannot use them. They are mentioned only for the sake of consistency with old API versions.
@@ -309,8 +307,8 @@ func (o RedisEnterpriseOutput) HostName() pulumi.StringOutput {
 }
 
 // The identity of the resource.
-func (o RedisEnterpriseOutput) Identity() commontypesv4.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *RedisEnterprise) commontypesv4.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv4.ManagedServiceIdentityResponsePtrOutput)
+func (o RedisEnterpriseOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *RedisEnterprise) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Distinguishes the kind of cluster. Read-only.
@@ -334,10 +332,10 @@ func (o RedisEnterpriseOutput) Name() pulumi.StringOutput {
 }
 
 // List of private endpoint connections associated with the specified Redis Enterprise cluster
-func (o RedisEnterpriseOutput) PrivateEndpointConnections() commontypesv2.PrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v *RedisEnterprise) commontypesv2.PrivateEndpointConnectionResponseArrayOutput {
+func (o RedisEnterpriseOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v *RedisEnterprise) PrivateEndpointConnectionResponseArrayOutput {
 		return v.PrivateEndpointConnections
-	}).(commontypesv2.PrivateEndpointConnectionResponseArrayOutput)
+	}).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // Current provisioning status of the cluster

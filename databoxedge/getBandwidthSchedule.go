@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -53,7 +52,7 @@ type LookupBandwidthScheduleResult struct {
 	// The stop time of the schedule in UTC.
 	Stop string `pulumi:"stop"`
 	// Metadata pertaining to creation and last modification of BandwidthSchedule
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type string `pulumi:"type"`
 }
@@ -131,8 +130,8 @@ func (o LookupBandwidthScheduleResultOutput) Stop() pulumi.StringOutput {
 }
 
 // Metadata pertaining to creation and last modification of BandwidthSchedule
-func (o LookupBandwidthScheduleResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupBandwidthScheduleResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o LookupBandwidthScheduleResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupBandwidthScheduleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.

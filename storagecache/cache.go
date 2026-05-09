@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -54,7 +53,7 @@ type Cache struct {
 	// Subnet used for the cache.
 	Subnet pulumi.StringPtrOutput `pulumi:"subnet"`
 	// The system meta data relating to this resource.
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Type of the cache; Microsoft.StorageCache/Cache
@@ -350,8 +349,8 @@ func (o CacheOutput) Subnet() pulumi.StringPtrOutput {
 }
 
 // The system meta data relating to this resource.
-func (o CacheOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Cache) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o CacheOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Cache) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

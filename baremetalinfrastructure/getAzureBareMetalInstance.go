@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -63,7 +62,7 @@ type LookupAzureBareMetalInstanceResult struct {
 	// Specifies the storage settings for the Azure Bare Metal Instance disks.
 	StorageProfile *StorageProfileResponse `pulumi:"storageProfile"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -176,8 +175,8 @@ func (o LookupAzureBareMetalInstanceResultOutput) StorageProfile() StorageProfil
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupAzureBareMetalInstanceResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAzureBareMetalInstanceResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupAzureBareMetalInstanceResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAzureBareMetalInstanceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

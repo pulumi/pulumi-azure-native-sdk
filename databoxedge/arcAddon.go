@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -41,7 +40,7 @@ type ArcAddon struct {
 	// Arc resource subscription Id
 	SubscriptionId pulumi.StringOutput `pulumi:"subscriptionId"`
 	// Metadata pertaining to creation and last modification of Addon
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Arc resource version
@@ -293,8 +292,8 @@ func (o ArcAddonOutput) SubscriptionId() pulumi.StringOutput {
 }
 
 // Metadata pertaining to creation and last modification of Addon
-func (o ArcAddonOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *ArcAddon) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o ArcAddonOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ArcAddon) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.

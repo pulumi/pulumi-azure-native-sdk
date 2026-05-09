@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -36,7 +35,7 @@ type SharedCommitmentPlan struct {
 	// The resource model definition representing SKU
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -229,8 +228,8 @@ func (o SharedCommitmentPlanOutput) Sku() SkuResponsePtrOutput {
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o SharedCommitmentPlanOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *SharedCommitmentPlan) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o SharedCommitmentPlanOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *SharedCommitmentPlan) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

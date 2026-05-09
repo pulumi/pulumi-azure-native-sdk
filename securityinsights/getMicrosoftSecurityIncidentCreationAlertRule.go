@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -66,7 +65,7 @@ type LookupMicrosoftSecurityIncidentCreationAlertRuleResult struct {
 	// the alerts' severities on which the cases will be generated
 	SeveritiesFilter []string `pulumi:"severitiesFilter"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -182,10 +181,8 @@ func (o LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput) Severities
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupMicrosoftSecurityIncidentCreationAlertRuleResult) commontypesv5.SystemDataResponse {
-		return v.SystemData
-	}).(commontypesv5.SystemDataResponseOutput)
+func (o LookupMicrosoftSecurityIncidentCreationAlertRuleResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupMicrosoftSecurityIncidentCreationAlertRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

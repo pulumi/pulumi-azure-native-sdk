@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -26,7 +25,7 @@ type ServerlessEndpoint struct {
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity commontypesv3.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// The geo-location where the resource lives
@@ -36,9 +35,9 @@ type ServerlessEndpoint struct {
 	// [Required] Additional attributes of the entity.
 	Properties ServerlessEndpointPropertiesResponseOutput `pulumi:"properties"`
 	// Sku details required for ARM contract for Autoscaling.
-	Sku commontypesv3.SkuResponsePtrOutput `pulumi:"sku"`
+	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -143,7 +142,7 @@ func (ServerlessEndpointState) ElementType() reflect.Type {
 
 type serverlessEndpointArgs struct {
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity *commontypesv3.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
@@ -155,7 +154,7 @@ type serverlessEndpointArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Sku details required for ARM contract for Autoscaling.
-	Sku *commontypesv3.Sku `pulumi:"sku"`
+	Sku *Sku `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Azure Machine Learning Workspace Name
@@ -165,7 +164,7 @@ type serverlessEndpointArgs struct {
 // The set of arguments for constructing a ServerlessEndpoint resource.
 type ServerlessEndpointArgs struct {
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity commontypesv3.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
 	Kind pulumi.StringPtrInput
 	// The geo-location where the resource lives
@@ -177,7 +176,7 @@ type ServerlessEndpointArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Sku details required for ARM contract for Autoscaling.
-	Sku commontypesv3.SkuPtrInput
+	Sku SkuPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 	// Azure Machine Learning Workspace Name
@@ -227,8 +226,8 @@ func (o ServerlessEndpointOutput) AzureApiVersion() pulumi.StringOutput {
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
-func (o ServerlessEndpointOutput) Identity() commontypesv3.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *ServerlessEndpoint) commontypesv3.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv3.ManagedServiceIdentityResponsePtrOutput)
+func (o ServerlessEndpointOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *ServerlessEndpoint) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
@@ -252,13 +251,13 @@ func (o ServerlessEndpointOutput) Properties() ServerlessEndpointPropertiesRespo
 }
 
 // Sku details required for ARM contract for Autoscaling.
-func (o ServerlessEndpointOutput) Sku() commontypesv3.SkuResponsePtrOutput {
-	return o.ApplyT(func(v *ServerlessEndpoint) commontypesv3.SkuResponsePtrOutput { return v.Sku }).(commontypesv3.SkuResponsePtrOutput)
+func (o ServerlessEndpointOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v *ServerlessEndpoint) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ServerlessEndpointOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v *ServerlessEndpoint) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o ServerlessEndpointOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ServerlessEndpoint) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

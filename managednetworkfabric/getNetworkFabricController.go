@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -65,7 +64,7 @@ type LookupNetworkFabricControllerResult struct {
 	// Provides you the latest status of the NFC service, whether it is Accepted, updating, Succeeded or Failed. During this process, the states keep changing based on the status of NFC provisioning.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// List of tenant InternetGateway resource IDs
@@ -219,8 +218,8 @@ func (o LookupNetworkFabricControllerResultOutput) ProvisioningState() pulumi.St
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupNetworkFabricControllerResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupNetworkFabricControllerResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupNetworkFabricControllerResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupNetworkFabricControllerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

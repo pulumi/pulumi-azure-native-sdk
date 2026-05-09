@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -135,7 +134,7 @@ type LookupAssessmentsOperationResult struct {
 	// assessment.
 	SuitabilitySummary map[string]int `pulumi:"suitabilitySummary"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Time Range for which the historic utilization data should be considered for
 	// assessment.
 	TimeRange *string `pulumi:"timeRange"`
@@ -410,8 +409,8 @@ func (o LookupAssessmentsOperationResultOutput) SuitabilitySummary() pulumi.IntM
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupAssessmentsOperationResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAssessmentsOperationResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupAssessmentsOperationResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAssessmentsOperationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Time Range for which the historic utilization data should be considered for

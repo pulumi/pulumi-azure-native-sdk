@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -26,7 +25,7 @@ type VendorSkuPreview struct {
 	// The provisioning state of the PreviewSubscription resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The system meta data relating to this resource.
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -160,8 +159,8 @@ func (o VendorSkuPreviewOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // The system meta data relating to this resource.
-func (o VendorSkuPreviewOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *VendorSkuPreview) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o VendorSkuPreviewOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *VendorSkuPreview) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource.

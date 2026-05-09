@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -53,7 +52,7 @@ type LookupAzureKeyVaultSecretProviderClassResult struct {
 	// Provisioning state of the AzureKeyVaultSecretProviderClass instance.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The Azure Active Directory tenant ID that should be used for authenticating requests to the Azure Key Vault.
@@ -145,10 +144,8 @@ func (o LookupAzureKeyVaultSecretProviderClassResultOutput) ProvisioningState() 
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupAzureKeyVaultSecretProviderClassResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAzureKeyVaultSecretProviderClassResult) commontypesv5.SystemDataResponse {
-		return v.SystemData
-	}).(commontypesv5.SystemDataResponseOutput)
+func (o LookupAzureKeyVaultSecretProviderClassResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAzureKeyVaultSecretProviderClassResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

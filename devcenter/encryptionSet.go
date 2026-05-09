@@ -8,8 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -27,7 +25,7 @@ type EncryptionSet struct {
 	// Devbox disk encryption enable or disable status. Indicates if Devbox disks encryption using DevCenter CMK is enabled or not.
 	DevboxDisksEncryptionEnableStatus pulumi.StringPtrOutput `pulumi:"devboxDisksEncryptionEnableStatus"`
 	// Managed identity properties
-	Identity commontypesv4.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Key encryption key Url, versioned or non-versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
 	KeyEncryptionKeyUrl pulumi.StringPtrOutput `pulumi:"keyEncryptionKeyUrl"`
 	// The geo-location where the resource lives
@@ -37,7 +35,7 @@ type EncryptionSet struct {
 	// The provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -127,7 +125,7 @@ type encryptionSetArgs struct {
 	// The name of the devcenter encryption set.
 	EncryptionSetName *string `pulumi:"encryptionSetName"`
 	// Managed identity properties
-	Identity *commontypesv4.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// Key encryption key Url, versioned or non-versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
 	KeyEncryptionKeyUrl *string `pulumi:"keyEncryptionKeyUrl"`
 	// The geo-location where the resource lives
@@ -147,7 +145,7 @@ type EncryptionSetArgs struct {
 	// The name of the devcenter encryption set.
 	EncryptionSetName pulumi.StringPtrInput
 	// Managed identity properties
-	Identity commontypesv4.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// Key encryption key Url, versioned or non-versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
 	KeyEncryptionKeyUrl pulumi.StringPtrInput
 	// The geo-location where the resource lives
@@ -206,8 +204,8 @@ func (o EncryptionSetOutput) DevboxDisksEncryptionEnableStatus() pulumi.StringPt
 }
 
 // Managed identity properties
-func (o EncryptionSetOutput) Identity() commontypesv4.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *EncryptionSet) commontypesv4.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv4.ManagedServiceIdentityResponsePtrOutput)
+func (o EncryptionSetOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *EncryptionSet) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Key encryption key Url, versioned or non-versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
@@ -231,8 +229,8 @@ func (o EncryptionSetOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o EncryptionSetOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *EncryptionSet) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o EncryptionSetOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *EncryptionSet) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

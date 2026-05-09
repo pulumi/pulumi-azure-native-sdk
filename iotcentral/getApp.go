@@ -7,8 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -46,7 +44,7 @@ type LookupAppResult struct {
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The managed identities for the IoT Central application.
-	Identity *commontypesv3.SystemAssignedServiceIdentityResponse `pulumi:"identity"`
+	Identity *SystemAssignedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
@@ -54,7 +52,7 @@ type LookupAppResult struct {
 	// Network Rule Set Properties of this IoT Central application.
 	NetworkRuleSets *NetworkRuleSetsResponse `pulumi:"networkRuleSets"`
 	// Private endpoint connections created on this IoT Central application.
-	PrivateEndpointConnections []commontypesv4.PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// The provisioning state of the application.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Whether requests from the public network are allowed.
@@ -66,7 +64,7 @@ type LookupAppResult struct {
 	// The subdomain of the application.
 	Subdomain *string `pulumi:"subdomain"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The ID of the application template, which is a blueprint that defines the characteristics and behaviors of an application. Optional; if not specified, defaults to a blank blueprint and allows the application to be defined from scratch.
@@ -141,8 +139,8 @@ func (o LookupAppResultOutput) Id() pulumi.StringOutput {
 }
 
 // The managed identities for the IoT Central application.
-func (o LookupAppResultOutput) Identity() commontypesv3.SystemAssignedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupAppResult) *commontypesv3.SystemAssignedServiceIdentityResponse { return v.Identity }).(commontypesv3.SystemAssignedServiceIdentityResponsePtrOutput)
+func (o LookupAppResultOutput) Identity() SystemAssignedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupAppResult) *SystemAssignedServiceIdentityResponse { return v.Identity }).(SystemAssignedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -161,10 +159,8 @@ func (o LookupAppResultOutput) NetworkRuleSets() NetworkRuleSetsResponsePtrOutpu
 }
 
 // Private endpoint connections created on this IoT Central application.
-func (o LookupAppResultOutput) PrivateEndpointConnections() commontypesv4.PrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v LookupAppResult) []commontypesv4.PrivateEndpointConnectionResponse {
-		return v.PrivateEndpointConnections
-	}).(commontypesv4.PrivateEndpointConnectionResponseArrayOutput)
+func (o LookupAppResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v LookupAppResult) []PrivateEndpointConnectionResponse { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // The provisioning state of the application.
@@ -193,8 +189,8 @@ func (o LookupAppResultOutput) Subdomain() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupAppResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAppResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o LookupAppResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAppResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

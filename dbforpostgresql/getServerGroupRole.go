@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -51,7 +50,7 @@ type LookupServerGroupRoleResult struct {
 	ProvisioningState string  `pulumi:"provisioningState"`
 	RoleType          *string `pulumi:"roleType"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv4.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// A type definition that refers the id to an Azure Resource Manager resource.
 	TenantId *string `pulumi:"tenantId"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -141,8 +140,8 @@ func (o LookupServerGroupRoleResultOutput) RoleType() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupServerGroupRoleResultOutput) SystemData() commontypesv4.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupServerGroupRoleResult) commontypesv4.SystemDataResponse { return v.SystemData }).(commontypesv4.SystemDataResponseOutput)
+func (o LookupServerGroupRoleResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupServerGroupRoleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // A type definition that refers the id to an Azure Resource Manager resource.

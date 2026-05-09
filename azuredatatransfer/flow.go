@@ -8,8 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -25,17 +23,17 @@ type Flow struct {
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The managed identity of the flow resource, if configured.
-	Identity commontypesv3.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Plan for the resource.
-	Plan commontypesv5.PlanResponsePtrOutput `pulumi:"plan"`
+	Plan PlanResponsePtrOutput `pulumi:"plan"`
 	// Properties of flow
 	Properties FlowPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -126,11 +124,11 @@ type flowArgs struct {
 	// The name for the flow that is to be onboarded.
 	FlowName *string `pulumi:"flowName"`
 	// The managed identity of the flow resource, if configured.
-	Identity *commontypesv3.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Plan for the resource.
-	Plan *commontypesv5.Plan `pulumi:"plan"`
+	Plan *Plan `pulumi:"plan"`
 	// Properties of flow
 	Properties *FlowProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
@@ -146,11 +144,11 @@ type FlowArgs struct {
 	// The name for the flow that is to be onboarded.
 	FlowName pulumi.StringPtrInput
 	// The managed identity of the flow resource, if configured.
-	Identity commontypesv3.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Plan for the resource.
-	Plan commontypesv5.PlanPtrInput
+	Plan PlanPtrInput
 	// Properties of flow
 	Properties FlowPropertiesPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -202,8 +200,8 @@ func (o FlowOutput) AzureApiVersion() pulumi.StringOutput {
 }
 
 // The managed identity of the flow resource, if configured.
-func (o FlowOutput) Identity() commontypesv3.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *Flow) commontypesv3.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv3.ManagedServiceIdentityResponsePtrOutput)
+func (o FlowOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Flow) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -217,8 +215,8 @@ func (o FlowOutput) Name() pulumi.StringOutput {
 }
 
 // Plan for the resource.
-func (o FlowOutput) Plan() commontypesv5.PlanResponsePtrOutput {
-	return o.ApplyT(func(v *Flow) commontypesv5.PlanResponsePtrOutput { return v.Plan }).(commontypesv5.PlanResponsePtrOutput)
+func (o FlowOutput) Plan() PlanResponsePtrOutput {
+	return o.ApplyT(func(v *Flow) PlanResponsePtrOutput { return v.Plan }).(PlanResponsePtrOutput)
 }
 
 // Properties of flow
@@ -227,8 +225,8 @@ func (o FlowOutput) Properties() FlowPropertiesResponseOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o FlowOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Flow) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o FlowOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Flow) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

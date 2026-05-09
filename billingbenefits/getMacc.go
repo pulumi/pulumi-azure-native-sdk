@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -59,7 +58,7 @@ type LookupMaccResult struct {
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity *commontypesv6.ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
@@ -71,7 +70,7 @@ type LookupMaccResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Plan for the resource.
-	Plan *commontypesv6.PlanResponse `pulumi:"plan"`
+	Plan *PlanResponse `pulumi:"plan"`
 	// Fully-qualified billing account resource identifier of the primary MACC. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}.
 	PrimaryBillingAccountResourceId *string `pulumi:"primaryBillingAccountResourceId"`
 	// Fully-qualified resource identifier of the primary MACC. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}.
@@ -85,13 +84,13 @@ type LookupMaccResult struct {
 	// MACC shortfall
 	Shortfall *ShortfallResponse `pulumi:"shortfall"`
 	// The resource model definition representing SKU
-	Sku *commontypesv6.SkuResponse `pulumi:"sku"`
+	Sku *SkuResponse `pulumi:"sku"`
 	// Must be start of month. Timestamp must be in the ISO date format YYYY-MM-DDT00:00:00Z.
 	StartAt *string `pulumi:"startAt"`
 	// Represents the current status of the MACC.
 	Status *string `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv6.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// This is the globally unique identifier of the MACC which will not change for the lifetime of the MACC.
 	SystemId *string `pulumi:"systemId"`
 	// Resource tags.
@@ -193,8 +192,8 @@ func (o LookupMaccResultOutput) Id() pulumi.StringOutput {
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
-func (o LookupMaccResultOutput) Identity() commontypesv6.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupMaccResult) *commontypesv6.ManagedServiceIdentityResponse { return v.Identity }).(commontypesv6.ManagedServiceIdentityResponsePtrOutput)
+func (o LookupMaccResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupMaccResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
@@ -223,8 +222,8 @@ func (o LookupMaccResultOutput) Name() pulumi.StringOutput {
 }
 
 // Plan for the resource.
-func (o LookupMaccResultOutput) Plan() commontypesv6.PlanResponsePtrOutput {
-	return o.ApplyT(func(v LookupMaccResult) *commontypesv6.PlanResponse { return v.Plan }).(commontypesv6.PlanResponsePtrOutput)
+func (o LookupMaccResultOutput) Plan() PlanResponsePtrOutput {
+	return o.ApplyT(func(v LookupMaccResult) *PlanResponse { return v.Plan }).(PlanResponsePtrOutput)
 }
 
 // Fully-qualified billing account resource identifier of the primary MACC. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}.
@@ -258,8 +257,8 @@ func (o LookupMaccResultOutput) Shortfall() ShortfallResponsePtrOutput {
 }
 
 // The resource model definition representing SKU
-func (o LookupMaccResultOutput) Sku() commontypesv6.SkuResponsePtrOutput {
-	return o.ApplyT(func(v LookupMaccResult) *commontypesv6.SkuResponse { return v.Sku }).(commontypesv6.SkuResponsePtrOutput)
+func (o LookupMaccResultOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v LookupMaccResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
 // Must be start of month. Timestamp must be in the ISO date format YYYY-MM-DDT00:00:00Z.
@@ -273,8 +272,8 @@ func (o LookupMaccResultOutput) Status() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupMaccResultOutput) SystemData() commontypesv6.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupMaccResult) commontypesv6.SystemDataResponse { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
+func (o LookupMaccResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupMaccResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // This is the globally unique identifier of the MACC which will not change for the lifetime of the MACC.

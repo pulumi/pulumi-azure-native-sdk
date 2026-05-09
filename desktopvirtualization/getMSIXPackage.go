@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -65,7 +64,7 @@ type LookupMSIXPackageResult struct {
 	// Relative Path to the package inside the image.
 	PackageRelativePath *string `pulumi:"packageRelativePath"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Package version found in the appxmanifest.xml.
@@ -175,8 +174,8 @@ func (o LookupMSIXPackageResultOutput) PackageRelativePath() pulumi.StringPtrOut
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupMSIXPackageResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupMSIXPackageResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupMSIXPackageResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupMSIXPackageResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

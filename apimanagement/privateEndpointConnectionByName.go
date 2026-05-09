@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -26,9 +25,9 @@ type PrivateEndpointConnectionByName struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource of private end point.
-	PrivateEndpoint commontypesv2.PrivateEndpointResponsePtrOutput `pulumi:"privateEndpoint"`
+	PrivateEndpoint PrivateEndpointResponsePtrOutput `pulumi:"privateEndpoint"`
 	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState commontypesv2.PrivateLinkServiceConnectionStateResponseOutput `pulumi:"privateLinkServiceConnectionState"`
+	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponseOutput `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state of the private endpoint connection resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -197,17 +196,15 @@ func (o PrivateEndpointConnectionByNameOutput) Name() pulumi.StringOutput {
 }
 
 // The resource of private end point.
-func (o PrivateEndpointConnectionByNameOutput) PrivateEndpoint() commontypesv2.PrivateEndpointResponsePtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointConnectionByName) commontypesv2.PrivateEndpointResponsePtrOutput {
-		return v.PrivateEndpoint
-	}).(commontypesv2.PrivateEndpointResponsePtrOutput)
+func (o PrivateEndpointConnectionByNameOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionByName) PrivateEndpointResponsePtrOutput { return v.PrivateEndpoint }).(PrivateEndpointResponsePtrOutput)
 }
 
 // A collection of information about the state of the connection between service consumer and provider.
-func (o PrivateEndpointConnectionByNameOutput) PrivateLinkServiceConnectionState() commontypesv2.PrivateLinkServiceConnectionStateResponseOutput {
-	return o.ApplyT(func(v *PrivateEndpointConnectionByName) commontypesv2.PrivateLinkServiceConnectionStateResponseOutput {
+func (o PrivateEndpointConnectionByNameOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponseOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionByName) PrivateLinkServiceConnectionStateResponseOutput {
 		return v.PrivateLinkServiceConnectionState
-	}).(commontypesv2.PrivateLinkServiceConnectionStateResponseOutput)
+	}).(PrivateLinkServiceConnectionStateResponseOutput)
 }
 
 // The provisioning state of the private endpoint connection resource.

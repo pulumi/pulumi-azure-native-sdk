@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -24,7 +23,7 @@ type FlowProfile struct {
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The managed service identities assigned to this resource.
-	Identity commontypesv5.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -32,7 +31,7 @@ type FlowProfile struct {
 	// The set of configuration properties that define the behavior and rules of the FlowProfile.
 	Properties FlowProfilePropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -100,7 +99,7 @@ type flowProfileArgs struct {
 	// The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
 	FlowProfileName *string `pulumi:"flowProfileName"`
 	// The managed service identities assigned to this resource.
-	Identity *commontypesv5.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the pipeline on which to operate.
@@ -118,7 +117,7 @@ type FlowProfileArgs struct {
 	// The name of the FlowProfile resource to operate on. Must be 3 to 64 characters long and contain only alphanumeric characters or hyphens.
 	FlowProfileName pulumi.StringPtrInput
 	// The managed service identities assigned to this resource.
-	Identity commontypesv5.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The name of the pipeline on which to operate.
@@ -174,8 +173,8 @@ func (o FlowProfileOutput) AzureApiVersion() pulumi.StringOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o FlowProfileOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *FlowProfile) commontypesv5.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+func (o FlowProfileOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *FlowProfile) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -194,8 +193,8 @@ func (o FlowProfileOutput) Properties() FlowProfilePropertiesResponseOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o FlowProfileOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *FlowProfile) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o FlowProfileOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *FlowProfile) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

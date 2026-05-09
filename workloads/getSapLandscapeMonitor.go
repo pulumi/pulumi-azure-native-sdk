@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -47,7 +46,7 @@ type LookupSapLandscapeMonitorResult struct {
 	// State of provisioning of the SAP monitor.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard
 	TopMetricsThresholds []SapLandscapeMonitorMetricThresholdsResponse `pulumi:"topMetricsThresholds"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -117,8 +116,8 @@ func (o LookupSapLandscapeMonitorResultOutput) ProvisioningState() pulumi.String
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupSapLandscapeMonitorResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSapLandscapeMonitorResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupSapLandscapeMonitorResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSapLandscapeMonitorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard

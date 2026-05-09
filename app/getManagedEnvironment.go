@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -63,7 +62,7 @@ type LookupManagedEnvironmentResult struct {
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Managed identities for the Managed Environment to interact with other Azure services without maintaining any secrets or credentials in code.
-	Identity *commontypesv5.ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. If a subnet ID is provided, this resource group will be created in the same subscription as the subnet.
 	InfrastructureResourceGroup *string `pulumi:"infrastructureResourceGroup"`
 	// Ingress configuration for the Managed Environment.
@@ -93,7 +92,7 @@ type LookupManagedEnvironmentResult struct {
 	// Static IP of the Environment
 	StaticIp string `pulumi:"staticIp"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -213,10 +212,8 @@ func (o LookupManagedEnvironmentResultOutput) Id() pulumi.StringOutput {
 }
 
 // Managed identities for the Managed Environment to interact with other Azure services without maintaining any secrets or credentials in code.
-func (o LookupManagedEnvironmentResultOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupManagedEnvironmentResult) *commontypesv5.ManagedServiceIdentityResponse {
-		return v.Identity
-	}).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+func (o LookupManagedEnvironmentResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupManagedEnvironmentResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. If a subnet ID is provided, this resource group will be created in the same subscription as the subnet.
@@ -298,8 +295,8 @@ func (o LookupManagedEnvironmentResultOutput) StaticIp() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupManagedEnvironmentResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupManagedEnvironmentResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupManagedEnvironmentResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupManagedEnvironmentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

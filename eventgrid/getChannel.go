@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -58,7 +57,7 @@ type LookupChannelResult struct {
 	// The readiness state of the corresponding partner topic.
 	ReadinessState *string `pulumi:"readinessState"`
 	// The system metadata relating to the Event Grid resource.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Type of the resource.
 	Type string `pulumi:"type"`
 }
@@ -147,8 +146,8 @@ func (o LookupChannelResultOutput) ReadinessState() pulumi.StringPtrOutput {
 }
 
 // The system metadata relating to the Event Grid resource.
-func (o LookupChannelResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupChannelResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupChannelResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupChannelResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Type of the resource.

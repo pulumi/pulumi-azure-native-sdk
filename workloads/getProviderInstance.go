@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -41,7 +40,7 @@ type LookupProviderInstanceResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Defines the provider instance errors.
-	Errors commontypesv5.ErrorDetailResponse `pulumi:"errors"`
+	Errors ErrorDetailResponse `pulumi:"errors"`
 	// Resource health details
 	Health HealthResponse `pulumi:"health"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -53,7 +52,7 @@ type LookupProviderInstanceResult struct {
 	// State of provisioning of the provider instance
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -101,8 +100,8 @@ func (o LookupProviderInstanceResultOutput) AzureApiVersion() pulumi.StringOutpu
 }
 
 // Defines the provider instance errors.
-func (o LookupProviderInstanceResultOutput) Errors() commontypesv5.ErrorDetailResponseOutput {
-	return o.ApplyT(func(v LookupProviderInstanceResult) commontypesv5.ErrorDetailResponse { return v.Errors }).(commontypesv5.ErrorDetailResponseOutput)
+func (o LookupProviderInstanceResultOutput) Errors() ErrorDetailResponseOutput {
+	return o.ApplyT(func(v LookupProviderInstanceResult) ErrorDetailResponse { return v.Errors }).(ErrorDetailResponseOutput)
 }
 
 // Resource health details
@@ -131,8 +130,8 @@ func (o LookupProviderInstanceResultOutput) ProvisioningState() pulumi.StringOut
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupProviderInstanceResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupProviderInstanceResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupProviderInstanceResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupProviderInstanceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -46,7 +45,7 @@ type SitesController struct {
 	//             to the service.
 	ServicePrincipalIdentityDetails SiteSpnPropertiesResponsePtrOutput `pulumi:"servicePrincipalIdentityDetails"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -264,8 +263,8 @@ func (o SitesControllerOutput) ServicePrincipalIdentityDetails() SiteSpnProperti
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o SitesControllerOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v *SitesController) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o SitesControllerOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *SitesController) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

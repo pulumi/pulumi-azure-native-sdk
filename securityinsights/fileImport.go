@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -48,7 +47,7 @@ type FileImport struct {
 	// The state of the file import.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The number of records in the file.
 	TotalRecordCount pulumi.IntOutput `pulumi:"totalRecordCount"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -318,8 +317,8 @@ func (o FileImportOutput) State() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o FileImportOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *FileImport) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o FileImportOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *FileImport) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The number of records in the file.

@@ -7,8 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -62,9 +60,9 @@ type LookupDevBoxDefinitionResult struct {
 	// The provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The SKU for Dev Boxes created using this definition.
-	Sku commontypesv3.SkuResponse `pulumi:"sku"`
+	Sku SkuResponse `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -168,13 +166,13 @@ func (o LookupDevBoxDefinitionResultOutput) ProvisioningState() pulumi.StringOut
 }
 
 // The SKU for Dev Boxes created using this definition.
-func (o LookupDevBoxDefinitionResultOutput) Sku() commontypesv3.SkuResponseOutput {
-	return o.ApplyT(func(v LookupDevBoxDefinitionResult) commontypesv3.SkuResponse { return v.Sku }).(commontypesv3.SkuResponseOutput)
+func (o LookupDevBoxDefinitionResultOutput) Sku() SkuResponseOutput {
+	return o.ApplyT(func(v LookupDevBoxDefinitionResult) SkuResponse { return v.Sku }).(SkuResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupDevBoxDefinitionResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupDevBoxDefinitionResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupDevBoxDefinitionResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupDevBoxDefinitionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

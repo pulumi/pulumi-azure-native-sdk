@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -542,6 +541,207 @@ func (o ConfigurationExtensionResponseArrayOutput) Index(i pulumi.IntInput) Conf
 	}).(ConfigurationExtensionResponseOutput)
 }
 
+// The resource management error additional info.
+type ErrorAdditionalInfoResponse struct {
+	// The additional info.
+	Info interface{} `pulumi:"info"`
+	// The additional info type.
+	Type string `pulumi:"type"`
+}
+
+// The resource management error additional info.
+type ErrorAdditionalInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (ErrorAdditionalInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorAdditionalInfoResponse)(nil)).Elem()
+}
+
+func (o ErrorAdditionalInfoResponseOutput) ToErrorAdditionalInfoResponseOutput() ErrorAdditionalInfoResponseOutput {
+	return o
+}
+
+func (o ErrorAdditionalInfoResponseOutput) ToErrorAdditionalInfoResponseOutputWithContext(ctx context.Context) ErrorAdditionalInfoResponseOutput {
+	return o
+}
+
+// The additional info.
+func (o ErrorAdditionalInfoResponseOutput) Info() pulumi.AnyOutput {
+	return o.ApplyT(func(v ErrorAdditionalInfoResponse) interface{} { return v.Info }).(pulumi.AnyOutput)
+}
+
+// The additional info type.
+func (o ErrorAdditionalInfoResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorAdditionalInfoResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ErrorAdditionalInfoResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ErrorAdditionalInfoResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ErrorAdditionalInfoResponse)(nil)).Elem()
+}
+
+func (o ErrorAdditionalInfoResponseArrayOutput) ToErrorAdditionalInfoResponseArrayOutput() ErrorAdditionalInfoResponseArrayOutput {
+	return o
+}
+
+func (o ErrorAdditionalInfoResponseArrayOutput) ToErrorAdditionalInfoResponseArrayOutputWithContext(ctx context.Context) ErrorAdditionalInfoResponseArrayOutput {
+	return o
+}
+
+func (o ErrorAdditionalInfoResponseArrayOutput) Index(i pulumi.IntInput) ErrorAdditionalInfoResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorAdditionalInfoResponse {
+		return vs[0].([]ErrorAdditionalInfoResponse)[vs[1].(int)]
+	}).(ErrorAdditionalInfoResponseOutput)
+}
+
+// The error detail.
+type ErrorDetailResponse struct {
+	// The error additional info.
+	AdditionalInfo []ErrorAdditionalInfoResponse `pulumi:"additionalInfo"`
+	// The error code.
+	Code string `pulumi:"code"`
+	// The error details.
+	Details []ErrorDetailResponse `pulumi:"details"`
+	// The error message.
+	Message string `pulumi:"message"`
+	// The error target.
+	Target string `pulumi:"target"`
+}
+
+// The error detail.
+type ErrorDetailResponseOutput struct{ *pulumi.OutputState }
+
+func (ErrorDetailResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorDetailResponse)(nil)).Elem()
+}
+
+func (o ErrorDetailResponseOutput) ToErrorDetailResponseOutput() ErrorDetailResponseOutput {
+	return o
+}
+
+func (o ErrorDetailResponseOutput) ToErrorDetailResponseOutputWithContext(ctx context.Context) ErrorDetailResponseOutput {
+	return o
+}
+
+// The error additional info.
+func (o ErrorDetailResponseOutput) AdditionalInfo() ErrorAdditionalInfoResponseArrayOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) []ErrorAdditionalInfoResponse { return v.AdditionalInfo }).(ErrorAdditionalInfoResponseArrayOutput)
+}
+
+// The error code.
+func (o ErrorDetailResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// The error details.
+func (o ErrorDetailResponseOutput) Details() ErrorDetailResponseArrayOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) []ErrorDetailResponse { return v.Details }).(ErrorDetailResponseArrayOutput)
+}
+
+// The error message.
+func (o ErrorDetailResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// The error target.
+func (o ErrorDetailResponseOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Target }).(pulumi.StringOutput)
+}
+
+type ErrorDetailResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ErrorDetailResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ErrorDetailResponse)(nil)).Elem()
+}
+
+func (o ErrorDetailResponsePtrOutput) ToErrorDetailResponsePtrOutput() ErrorDetailResponsePtrOutput {
+	return o
+}
+
+func (o ErrorDetailResponsePtrOutput) ToErrorDetailResponsePtrOutputWithContext(ctx context.Context) ErrorDetailResponsePtrOutput {
+	return o
+}
+
+func (o ErrorDetailResponsePtrOutput) Elem() ErrorDetailResponseOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) ErrorDetailResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ErrorDetailResponse
+		return ret
+	}).(ErrorDetailResponseOutput)
+}
+
+// The error additional info.
+func (o ErrorDetailResponsePtrOutput) AdditionalInfo() ErrorAdditionalInfoResponseArrayOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) []ErrorAdditionalInfoResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalInfo
+	}).(ErrorAdditionalInfoResponseArrayOutput)
+}
+
+// The error code.
+func (o ErrorDetailResponsePtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// The error details.
+func (o ErrorDetailResponsePtrOutput) Details() ErrorDetailResponseArrayOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) []ErrorDetailResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Details
+	}).(ErrorDetailResponseArrayOutput)
+}
+
+// The error message.
+func (o ErrorDetailResponsePtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// The error target.
+func (o ErrorDetailResponsePtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ErrorDetailResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
+type ErrorDetailResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ErrorDetailResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ErrorDetailResponse)(nil)).Elem()
+}
+
+func (o ErrorDetailResponseArrayOutput) ToErrorDetailResponseArrayOutput() ErrorDetailResponseArrayOutput {
+	return o
+}
+
+func (o ErrorDetailResponseArrayOutput) ToErrorDetailResponseArrayOutputWithContext(ctx context.Context) ErrorDetailResponseArrayOutput {
+	return o
+}
+
+func (o ErrorDetailResponseArrayOutput) Index(i pulumi.IntInput) ErrorDetailResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorDetailResponse {
+		return vs[0].([]ErrorDetailResponse)[vs[1].(int)]
+	}).(ErrorDetailResponseOutput)
+}
+
 // ESU key
 type EsuKeyResponse struct {
 	// The current status of the license profile key. Represented by the same integer value that is presented on the machine itself when querying the license key status.
@@ -856,6 +1056,240 @@ func (o HybridComputePrivateLinkScopePropertiesResponseOutput) ProvisioningState
 // Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.
 func (o HybridComputePrivateLinkScopePropertiesResponseOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HybridComputePrivateLinkScopePropertiesResponse) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
+}
+
+// Identity for the resource.
+type Identity struct {
+	// The identity type.
+	Type *ResourceIdentityType `pulumi:"type"`
+}
+
+// IdentityInput is an input type that accepts IdentityArgs and IdentityOutput values.
+// You can construct a concrete instance of `IdentityInput` via:
+//
+//	IdentityArgs{...}
+type IdentityInput interface {
+	pulumi.Input
+
+	ToIdentityOutput() IdentityOutput
+	ToIdentityOutputWithContext(context.Context) IdentityOutput
+}
+
+// Identity for the resource.
+type IdentityArgs struct {
+	// The identity type.
+	Type ResourceIdentityTypePtrInput `pulumi:"type"`
+}
+
+func (IdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Identity)(nil)).Elem()
+}
+
+func (i IdentityArgs) ToIdentityOutput() IdentityOutput {
+	return i.ToIdentityOutputWithContext(context.Background())
+}
+
+func (i IdentityArgs) ToIdentityOutputWithContext(ctx context.Context) IdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityOutput)
+}
+
+func (i IdentityArgs) ToIdentityPtrOutput() IdentityPtrOutput {
+	return i.ToIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i IdentityArgs) ToIdentityPtrOutputWithContext(ctx context.Context) IdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityOutput).ToIdentityPtrOutputWithContext(ctx)
+}
+
+// IdentityPtrInput is an input type that accepts IdentityArgs, IdentityPtr and IdentityPtrOutput values.
+// You can construct a concrete instance of `IdentityPtrInput` via:
+//
+//	        IdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdentityPtrInput interface {
+	pulumi.Input
+
+	ToIdentityPtrOutput() IdentityPtrOutput
+	ToIdentityPtrOutputWithContext(context.Context) IdentityPtrOutput
+}
+
+type identityPtrType IdentityArgs
+
+func IdentityPtr(v *IdentityArgs) IdentityPtrInput {
+	return (*identityPtrType)(v)
+}
+
+func (*identityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Identity)(nil)).Elem()
+}
+
+func (i *identityPtrType) ToIdentityPtrOutput() IdentityPtrOutput {
+	return i.ToIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *identityPtrType) ToIdentityPtrOutputWithContext(ctx context.Context) IdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityPtrOutput)
+}
+
+// Identity for the resource.
+type IdentityOutput struct{ *pulumi.OutputState }
+
+func (IdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Identity)(nil)).Elem()
+}
+
+func (o IdentityOutput) ToIdentityOutput() IdentityOutput {
+	return o
+}
+
+func (o IdentityOutput) ToIdentityOutputWithContext(ctx context.Context) IdentityOutput {
+	return o
+}
+
+func (o IdentityOutput) ToIdentityPtrOutput() IdentityPtrOutput {
+	return o.ToIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o IdentityOutput) ToIdentityPtrOutputWithContext(ctx context.Context) IdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Identity) *Identity {
+		return &v
+	}).(IdentityPtrOutput)
+}
+
+// The identity type.
+func (o IdentityOutput) Type() ResourceIdentityTypePtrOutput {
+	return o.ApplyT(func(v Identity) *ResourceIdentityType { return v.Type }).(ResourceIdentityTypePtrOutput)
+}
+
+type IdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Identity)(nil)).Elem()
+}
+
+func (o IdentityPtrOutput) ToIdentityPtrOutput() IdentityPtrOutput {
+	return o
+}
+
+func (o IdentityPtrOutput) ToIdentityPtrOutputWithContext(ctx context.Context) IdentityPtrOutput {
+	return o
+}
+
+func (o IdentityPtrOutput) Elem() IdentityOutput {
+	return o.ApplyT(func(v *Identity) Identity {
+		if v != nil {
+			return *v
+		}
+		var ret Identity
+		return ret
+	}).(IdentityOutput)
+}
+
+// The identity type.
+func (o IdentityPtrOutput) Type() ResourceIdentityTypePtrOutput {
+	return o.ApplyT(func(v *Identity) *ResourceIdentityType {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(ResourceIdentityTypePtrOutput)
+}
+
+// Identity for the resource.
+type IdentityResponse struct {
+	// The principal ID of resource identity.
+	PrincipalId string `pulumi:"principalId"`
+	// The tenant ID of resource.
+	TenantId string `pulumi:"tenantId"`
+	// The identity type.
+	Type *string `pulumi:"type"`
+}
+
+// Identity for the resource.
+type IdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (IdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityResponse)(nil)).Elem()
+}
+
+func (o IdentityResponseOutput) ToIdentityResponseOutput() IdentityResponseOutput {
+	return o
+}
+
+func (o IdentityResponseOutput) ToIdentityResponseOutputWithContext(ctx context.Context) IdentityResponseOutput {
+	return o
+}
+
+// The principal ID of resource identity.
+func (o IdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The tenant ID of resource.
+func (o IdentityResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// The identity type.
+func (o IdentityResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type IdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityResponse)(nil)).Elem()
+}
+
+func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutput() IdentityResponsePtrOutput {
+	return o
+}
+
+func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutputWithContext(ctx context.Context) IdentityResponsePtrOutput {
+	return o
+}
+
+func (o IdentityResponsePtrOutput) Elem() IdentityResponseOutput {
+	return o.ApplyT(func(v *IdentityResponse) IdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityResponse
+		return ret
+	}).(IdentityResponseOutput)
+}
+
+// The principal ID of resource identity.
+func (o IdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tenant ID of resource.
+func (o IdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identity type.
+func (o IdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // Describes properties of the IP address.
@@ -2104,7 +2538,7 @@ type LicenseProfileMachineInstanceViewResponse struct {
 	// The timestamp in UTC when the user enrolls the feature.
 	EnrollmentDate string `pulumi:"enrollmentDate"`
 	// The errors that were encountered during the feature enrollment or disenrollment.
-	Error commontypesv3.ErrorDetailResponse `pulumi:"error"`
+	Error ErrorDetailResponse `pulumi:"error"`
 	// Properties for the Machine ESU profile.
 	EsuProfile *LicenseProfileMachineInstanceViewEsuPropertiesResponse `pulumi:"esuProfile"`
 	// Indicates the license channel.
@@ -2157,8 +2591,8 @@ func (o LicenseProfileMachineInstanceViewResponseOutput) EnrollmentDate() pulumi
 }
 
 // The errors that were encountered during the feature enrollment or disenrollment.
-func (o LicenseProfileMachineInstanceViewResponseOutput) Error() commontypesv3.ErrorDetailResponseOutput {
-	return o.ApplyT(func(v LicenseProfileMachineInstanceViewResponse) commontypesv3.ErrorDetailResponse { return v.Error }).(commontypesv3.ErrorDetailResponseOutput)
+func (o LicenseProfileMachineInstanceViewResponseOutput) Error() ErrorDetailResponseOutput {
+	return o.ApplyT(func(v LicenseProfileMachineInstanceViewResponse) ErrorDetailResponse { return v.Error }).(ErrorDetailResponseOutput)
 }
 
 // Properties for the Machine ESU profile.
@@ -2263,13 +2697,13 @@ func (o LicenseProfileMachineInstanceViewResponsePtrOutput) EnrollmentDate() pul
 }
 
 // The errors that were encountered during the feature enrollment or disenrollment.
-func (o LicenseProfileMachineInstanceViewResponsePtrOutput) Error() commontypesv3.ErrorDetailResponsePtrOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceViewResponse) *commontypesv3.ErrorDetailResponse {
+func (o LicenseProfileMachineInstanceViewResponsePtrOutput) Error() ErrorDetailResponsePtrOutput {
+	return o.ApplyT(func(v *LicenseProfileMachineInstanceViewResponse) *ErrorDetailResponse {
 		if v == nil {
 			return nil
 		}
 		return &v.Error
-	}).(commontypesv3.ErrorDetailResponsePtrOutput)
+	}).(ErrorDetailResponsePtrOutput)
 }
 
 // Properties for the Machine ESU profile.
@@ -2357,7 +2791,7 @@ type LicenseResponse struct {
 	// The provisioning state, which only appears in the response.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Describes the tenant id.
@@ -2412,8 +2846,8 @@ func (o LicenseResponseOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LicenseResponseOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v LicenseResponse) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o LicenseResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LicenseResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.
@@ -2516,13 +2950,13 @@ func (o LicenseResponsePtrOutput) ProvisioningState() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LicenseResponsePtrOutput) SystemData() commontypesv3.SystemDataResponsePtrOutput {
-	return o.ApplyT(func(v *LicenseResponse) *commontypesv3.SystemDataResponse {
+func (o LicenseResponsePtrOutput) SystemData() SystemDataResponsePtrOutput {
+	return o.ApplyT(func(v *LicenseResponse) *SystemDataResponse {
 		if v == nil {
 			return nil
 		}
 		return &v.SystemData
-	}).(commontypesv3.SystemDataResponsePtrOutput)
+	}).(SystemDataResponsePtrOutput)
 }
 
 // Resource tags.
@@ -2552,6 +2986,314 @@ func (o LicenseResponsePtrOutput) Type() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Metadata pertaining to the geographic location of the resource.
+type LocationData struct {
+	// The city or locality where the resource is located.
+	City *string `pulumi:"city"`
+	// The country or region where the resource is located
+	CountryOrRegion *string `pulumi:"countryOrRegion"`
+	// The district, state, or province where the resource is located.
+	District *string `pulumi:"district"`
+	// A canonical name for the geographic or physical location.
+	Name string `pulumi:"name"`
+}
+
+// LocationDataInput is an input type that accepts LocationDataArgs and LocationDataOutput values.
+// You can construct a concrete instance of `LocationDataInput` via:
+//
+//	LocationDataArgs{...}
+type LocationDataInput interface {
+	pulumi.Input
+
+	ToLocationDataOutput() LocationDataOutput
+	ToLocationDataOutputWithContext(context.Context) LocationDataOutput
+}
+
+// Metadata pertaining to the geographic location of the resource.
+type LocationDataArgs struct {
+	// The city or locality where the resource is located.
+	City pulumi.StringPtrInput `pulumi:"city"`
+	// The country or region where the resource is located
+	CountryOrRegion pulumi.StringPtrInput `pulumi:"countryOrRegion"`
+	// The district, state, or province where the resource is located.
+	District pulumi.StringPtrInput `pulumi:"district"`
+	// A canonical name for the geographic or physical location.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (LocationDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationData)(nil)).Elem()
+}
+
+func (i LocationDataArgs) ToLocationDataOutput() LocationDataOutput {
+	return i.ToLocationDataOutputWithContext(context.Background())
+}
+
+func (i LocationDataArgs) ToLocationDataOutputWithContext(ctx context.Context) LocationDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationDataOutput)
+}
+
+func (i LocationDataArgs) ToLocationDataPtrOutput() LocationDataPtrOutput {
+	return i.ToLocationDataPtrOutputWithContext(context.Background())
+}
+
+func (i LocationDataArgs) ToLocationDataPtrOutputWithContext(ctx context.Context) LocationDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationDataOutput).ToLocationDataPtrOutputWithContext(ctx)
+}
+
+// LocationDataPtrInput is an input type that accepts LocationDataArgs, LocationDataPtr and LocationDataPtrOutput values.
+// You can construct a concrete instance of `LocationDataPtrInput` via:
+//
+//	        LocationDataArgs{...}
+//
+//	or:
+//
+//	        nil
+type LocationDataPtrInput interface {
+	pulumi.Input
+
+	ToLocationDataPtrOutput() LocationDataPtrOutput
+	ToLocationDataPtrOutputWithContext(context.Context) LocationDataPtrOutput
+}
+
+type locationDataPtrType LocationDataArgs
+
+func LocationDataPtr(v *LocationDataArgs) LocationDataPtrInput {
+	return (*locationDataPtrType)(v)
+}
+
+func (*locationDataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocationData)(nil)).Elem()
+}
+
+func (i *locationDataPtrType) ToLocationDataPtrOutput() LocationDataPtrOutput {
+	return i.ToLocationDataPtrOutputWithContext(context.Background())
+}
+
+func (i *locationDataPtrType) ToLocationDataPtrOutputWithContext(ctx context.Context) LocationDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationDataPtrOutput)
+}
+
+// Metadata pertaining to the geographic location of the resource.
+type LocationDataOutput struct{ *pulumi.OutputState }
+
+func (LocationDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationData)(nil)).Elem()
+}
+
+func (o LocationDataOutput) ToLocationDataOutput() LocationDataOutput {
+	return o
+}
+
+func (o LocationDataOutput) ToLocationDataOutputWithContext(ctx context.Context) LocationDataOutput {
+	return o
+}
+
+func (o LocationDataOutput) ToLocationDataPtrOutput() LocationDataPtrOutput {
+	return o.ToLocationDataPtrOutputWithContext(context.Background())
+}
+
+func (o LocationDataOutput) ToLocationDataPtrOutputWithContext(ctx context.Context) LocationDataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LocationData) *LocationData {
+		return &v
+	}).(LocationDataPtrOutput)
+}
+
+// The city or locality where the resource is located.
+func (o LocationDataOutput) City() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LocationData) *string { return v.City }).(pulumi.StringPtrOutput)
+}
+
+// The country or region where the resource is located
+func (o LocationDataOutput) CountryOrRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LocationData) *string { return v.CountryOrRegion }).(pulumi.StringPtrOutput)
+}
+
+// The district, state, or province where the resource is located.
+func (o LocationDataOutput) District() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LocationData) *string { return v.District }).(pulumi.StringPtrOutput)
+}
+
+// A canonical name for the geographic or physical location.
+func (o LocationDataOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LocationData) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type LocationDataPtrOutput struct{ *pulumi.OutputState }
+
+func (LocationDataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocationData)(nil)).Elem()
+}
+
+func (o LocationDataPtrOutput) ToLocationDataPtrOutput() LocationDataPtrOutput {
+	return o
+}
+
+func (o LocationDataPtrOutput) ToLocationDataPtrOutputWithContext(ctx context.Context) LocationDataPtrOutput {
+	return o
+}
+
+func (o LocationDataPtrOutput) Elem() LocationDataOutput {
+	return o.ApplyT(func(v *LocationData) LocationData {
+		if v != nil {
+			return *v
+		}
+		var ret LocationData
+		return ret
+	}).(LocationDataOutput)
+}
+
+// The city or locality where the resource is located.
+func (o LocationDataPtrOutput) City() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LocationData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.City
+	}).(pulumi.StringPtrOutput)
+}
+
+// The country or region where the resource is located
+func (o LocationDataPtrOutput) CountryOrRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LocationData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CountryOrRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The district, state, or province where the resource is located.
+func (o LocationDataPtrOutput) District() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LocationData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.District
+	}).(pulumi.StringPtrOutput)
+}
+
+// A canonical name for the geographic or physical location.
+func (o LocationDataPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LocationData) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Metadata pertaining to the geographic location of the resource.
+type LocationDataResponse struct {
+	// The city or locality where the resource is located.
+	City *string `pulumi:"city"`
+	// The country or region where the resource is located
+	CountryOrRegion *string `pulumi:"countryOrRegion"`
+	// The district, state, or province where the resource is located.
+	District *string `pulumi:"district"`
+	// A canonical name for the geographic or physical location.
+	Name string `pulumi:"name"`
+}
+
+// Metadata pertaining to the geographic location of the resource.
+type LocationDataResponseOutput struct{ *pulumi.OutputState }
+
+func (LocationDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationDataResponse)(nil)).Elem()
+}
+
+func (o LocationDataResponseOutput) ToLocationDataResponseOutput() LocationDataResponseOutput {
+	return o
+}
+
+func (o LocationDataResponseOutput) ToLocationDataResponseOutputWithContext(ctx context.Context) LocationDataResponseOutput {
+	return o
+}
+
+// The city or locality where the resource is located.
+func (o LocationDataResponseOutput) City() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LocationDataResponse) *string { return v.City }).(pulumi.StringPtrOutput)
+}
+
+// The country or region where the resource is located
+func (o LocationDataResponseOutput) CountryOrRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LocationDataResponse) *string { return v.CountryOrRegion }).(pulumi.StringPtrOutput)
+}
+
+// The district, state, or province where the resource is located.
+func (o LocationDataResponseOutput) District() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LocationDataResponse) *string { return v.District }).(pulumi.StringPtrOutput)
+}
+
+// A canonical name for the geographic or physical location.
+func (o LocationDataResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LocationDataResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type LocationDataResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LocationDataResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocationDataResponse)(nil)).Elem()
+}
+
+func (o LocationDataResponsePtrOutput) ToLocationDataResponsePtrOutput() LocationDataResponsePtrOutput {
+	return o
+}
+
+func (o LocationDataResponsePtrOutput) ToLocationDataResponsePtrOutputWithContext(ctx context.Context) LocationDataResponsePtrOutput {
+	return o
+}
+
+func (o LocationDataResponsePtrOutput) Elem() LocationDataResponseOutput {
+	return o.ApplyT(func(v *LocationDataResponse) LocationDataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LocationDataResponse
+		return ret
+	}).(LocationDataResponseOutput)
+}
+
+// The city or locality where the resource is located.
+func (o LocationDataResponsePtrOutput) City() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LocationDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.City
+	}).(pulumi.StringPtrOutput)
+}
+
+// The country or region where the resource is located
+func (o LocationDataResponsePtrOutput) CountryOrRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LocationDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CountryOrRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The district, state, or province where the resource is located.
+func (o LocationDataResponsePtrOutput) District() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LocationDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.District
+	}).(pulumi.StringPtrOutput)
+}
+
+// A canonical name for the geographic or physical location.
+func (o LocationDataResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LocationDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3792,7 +4534,7 @@ type MachineExtensionResponse struct {
 	// Describes Machine Extension Properties.
 	Properties *MachineExtensionPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -3835,8 +4577,8 @@ func (o MachineExtensionResponseOutput) Properties() MachineExtensionPropertiesR
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o MachineExtensionResponseOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v MachineExtensionResponse) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o MachineExtensionResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v MachineExtensionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.
@@ -5160,7 +5902,7 @@ func (o OSProfileWindowsConfigurationPtrOutput) PatchMode() pulumi.StringPtrOutp
 // Status of the hotpatch capability enrollment or disenrollment.
 type PatchSettingsResponseStatus struct {
 	// The errors that were encountered during the hotpatch capability enrollment or disenrollment.
-	Error commontypesv3.ErrorDetailResponse `pulumi:"error"`
+	Error ErrorDetailResponse `pulumi:"error"`
 	// Indicates the current status of the hotpatch being enabled or disabled.
 	HotpatchEnablementStatus *string `pulumi:"hotpatchEnablementStatus"`
 }
@@ -5181,8 +5923,8 @@ func (o PatchSettingsResponseStatusOutput) ToPatchSettingsResponseStatusOutputWi
 }
 
 // The errors that were encountered during the hotpatch capability enrollment or disenrollment.
-func (o PatchSettingsResponseStatusOutput) Error() commontypesv3.ErrorDetailResponseOutput {
-	return o.ApplyT(func(v PatchSettingsResponseStatus) commontypesv3.ErrorDetailResponse { return v.Error }).(commontypesv3.ErrorDetailResponseOutput)
+func (o PatchSettingsResponseStatusOutput) Error() ErrorDetailResponseOutput {
+	return o.ApplyT(func(v PatchSettingsResponseStatus) ErrorDetailResponse { return v.Error }).(ErrorDetailResponseOutput)
 }
 
 // Indicates the current status of the hotpatch being enabled or disabled.
@@ -5215,13 +5957,13 @@ func (o PatchSettingsResponseStatusPtrOutput) Elem() PatchSettingsResponseStatus
 }
 
 // The errors that were encountered during the hotpatch capability enrollment or disenrollment.
-func (o PatchSettingsResponseStatusPtrOutput) Error() commontypesv3.ErrorDetailResponsePtrOutput {
-	return o.ApplyT(func(v *PatchSettingsResponseStatus) *commontypesv3.ErrorDetailResponse {
+func (o PatchSettingsResponseStatusPtrOutput) Error() ErrorDetailResponsePtrOutput {
+	return o.ApplyT(func(v *PatchSettingsResponseStatus) *ErrorDetailResponse {
 		if v == nil {
 			return nil
 		}
 		return &v.Error
-	}).(commontypesv3.ErrorDetailResponsePtrOutput)
+	}).(ErrorDetailResponsePtrOutput)
 }
 
 // Indicates the current status of the hotpatch being enabled or disabled.
@@ -6152,7 +6894,7 @@ type ProductFeatureResponse struct {
 	// The timestamp in UTC when the user enrolls the feature.
 	EnrollmentDate string `pulumi:"enrollmentDate"`
 	// The errors that were encountered during the feature enrollment or disenrollment.
-	Error commontypesv3.ErrorDetailResponse `pulumi:"error"`
+	Error ErrorDetailResponse `pulumi:"error"`
 	// Product feature name.
 	Name *string `pulumi:"name"`
 	// Indicates the current status of the product features.
@@ -6195,8 +6937,8 @@ func (o ProductFeatureResponseOutput) EnrollmentDate() pulumi.StringOutput {
 }
 
 // The errors that were encountered during the feature enrollment or disenrollment.
-func (o ProductFeatureResponseOutput) Error() commontypesv3.ErrorDetailResponseOutput {
-	return o.ApplyT(func(v ProductFeatureResponse) commontypesv3.ErrorDetailResponse { return v.Error }).(commontypesv3.ErrorDetailResponseOutput)
+func (o ProductFeatureResponseOutput) Error() ErrorDetailResponseOutput {
+	return o.ApplyT(func(v ProductFeatureResponse) ErrorDetailResponse { return v.Error }).(ErrorDetailResponseOutput)
 }
 
 // Product feature name.
@@ -7125,6 +7867,151 @@ func (o SubnetResponseOutput) AddressPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubnetResponse) *string { return v.AddressPrefix }).(pulumi.StringPtrOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponse struct {
+	// The timestamp of resource creation (UTC).
+	CreatedAt *string `pulumi:"createdAt"`
+	// The identity that created the resource.
+	CreatedBy *string `pulumi:"createdBy"`
+	// The type of identity that created the resource.
+	CreatedByType *string `pulumi:"createdByType"`
+	// The timestamp of resource last modification (UTC)
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// The identity that last modified the resource.
+	LastModifiedBy *string `pulumi:"lastModifiedBy"`
+	// The type of identity that last modified the resource.
+	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+	return o
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+	return o
+}
+
+// The timestamp of resource creation (UTC).
+func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that created the resource.
+func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that created the resource.
+func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of resource last modification (UTC)
+func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+}
+
+type SystemDataResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SystemDataResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemDataResponse)(nil)).Elem()
+}
+
+func (o SystemDataResponsePtrOutput) ToSystemDataResponsePtrOutput() SystemDataResponsePtrOutput {
+	return o
+}
+
+func (o SystemDataResponsePtrOutput) ToSystemDataResponsePtrOutputWithContext(ctx context.Context) SystemDataResponsePtrOutput {
+	return o
+}
+
+func (o SystemDataResponsePtrOutput) Elem() SystemDataResponseOutput {
+	return o.ApplyT(func(v *SystemDataResponse) SystemDataResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SystemDataResponse
+		return ret
+	}).(SystemDataResponseOutput)
+}
+
+// The timestamp of resource creation (UTC).
+func (o SystemDataResponsePtrOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identity that created the resource.
+func (o SystemDataResponsePtrOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that created the resource.
+func (o SystemDataResponsePtrOutput) CreatedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreatedByType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of resource last modification (UTC)
+func (o SystemDataResponsePtrOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastModifiedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identity that last modified the resource.
+func (o SystemDataResponsePtrOutput) LastModifiedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastModifiedBy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that last modified the resource.
+func (o SystemDataResponsePtrOutput) LastModifiedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SystemDataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastModifiedByType
+	}).(pulumi.StringPtrOutput)
+}
+
 type VolumeLicenseDetails struct {
 	// The invoice id for the volume license.
 	InvoiceId *string `pulumi:"invoiceId"`
@@ -7292,6 +8179,11 @@ func init() {
 	pulumi.RegisterOutputType(CloudMetadataResponsePtrOutput{})
 	pulumi.RegisterOutputType(ConfigurationExtensionResponseOutput{})
 	pulumi.RegisterOutputType(ConfigurationExtensionResponseArrayOutput{})
+	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseOutput{})
+	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseArrayOutput{})
+	pulumi.RegisterOutputType(ErrorDetailResponseOutput{})
+	pulumi.RegisterOutputType(ErrorDetailResponsePtrOutput{})
+	pulumi.RegisterOutputType(ErrorDetailResponseArrayOutput{})
 	pulumi.RegisterOutputType(EsuKeyResponseOutput{})
 	pulumi.RegisterOutputType(EsuKeyResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExtensionsResourceStatusResponseOutput{})
@@ -7299,6 +8191,10 @@ func init() {
 	pulumi.RegisterOutputType(HybridComputePrivateLinkScopePropertiesOutput{})
 	pulumi.RegisterOutputType(HybridComputePrivateLinkScopePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(HybridComputePrivateLinkScopePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(IdentityOutput{})
+	pulumi.RegisterOutputType(IdentityPtrOutput{})
+	pulumi.RegisterOutputType(IdentityResponseOutput{})
+	pulumi.RegisterOutputType(IdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(IpAddressResponseOutput{})
 	pulumi.RegisterOutputType(IpAddressResponseArrayOutput{})
 	pulumi.RegisterOutputType(LicenseTypeOutput{})
@@ -7317,6 +8213,10 @@ func init() {
 	pulumi.RegisterOutputType(LicenseProfileMachineInstanceViewResponsePtrOutput{})
 	pulumi.RegisterOutputType(LicenseResponseOutput{})
 	pulumi.RegisterOutputType(LicenseResponsePtrOutput{})
+	pulumi.RegisterOutputType(LocationDataOutput{})
+	pulumi.RegisterOutputType(LocationDataPtrOutput{})
+	pulumi.RegisterOutputType(LocationDataResponseOutput{})
+	pulumi.RegisterOutputType(LocationDataResponsePtrOutput{})
 	pulumi.RegisterOutputType(MachineExtensionInstanceViewOutput{})
 	pulumi.RegisterOutputType(MachineExtensionInstanceViewPtrOutput{})
 	pulumi.RegisterOutputType(MachineExtensionInstanceViewArrayOutput{})
@@ -7390,6 +8290,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceStatusesResponseOutput{})
 	pulumi.RegisterOutputType(ServiceStatusesResponsePtrOutput{})
 	pulumi.RegisterOutputType(SubnetResponseOutput{})
+	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(SystemDataResponsePtrOutput{})
 	pulumi.RegisterOutputType(VolumeLicenseDetailsOutput{})
 	pulumi.RegisterOutputType(VolumeLicenseDetailsArrayOutput{})
 	pulumi.RegisterOutputType(VolumeLicenseDetailsResponseOutput{})

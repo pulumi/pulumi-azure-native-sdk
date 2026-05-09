@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -36,7 +35,7 @@ type ClusterManager struct {
 	// The resource ID of the fabric controller that has one to one mapping with the cluster manager.
 	FabricControllerId pulumi.StringOutput `pulumi:"fabricControllerId"`
 	// The identity of the cluster manager.
-	Identity commontypesv5.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The configuration of the managed resource group associated with the resource.
@@ -48,7 +47,7 @@ type ClusterManager struct {
 	// The provisioning state of the cluster manager.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -142,7 +141,7 @@ type clusterManagerArgs struct {
 	// The resource ID of the fabric controller that has one to one mapping with the cluster manager.
 	FabricControllerId string `pulumi:"fabricControllerId"`
 	// The identity of the cluster manager.
-	Identity *commontypesv5.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The configuration of the managed resource group associated with the resource.
@@ -166,7 +165,7 @@ type ClusterManagerArgs struct {
 	// The resource ID of the fabric controller that has one to one mapping with the cluster manager.
 	FabricControllerId pulumi.StringInput
 	// The identity of the cluster manager.
-	Identity commontypesv5.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The configuration of the managed resource group associated with the resource.
@@ -257,8 +256,8 @@ func (o ClusterManagerOutput) FabricControllerId() pulumi.StringOutput {
 }
 
 // The identity of the cluster manager.
-func (o ClusterManagerOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *ClusterManager) commontypesv5.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+func (o ClusterManagerOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *ClusterManager) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -289,8 +288,8 @@ func (o ClusterManagerOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ClusterManagerOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *ClusterManager) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o ClusterManagerOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ClusterManager) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

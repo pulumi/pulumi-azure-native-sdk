@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -47,7 +46,7 @@ type LookupJobResult struct {
 	// Specifies the job properties
 	Properties JobDetailsResponse `pulumi:"properties"`
 	// SystemData of ImportExport Jobs.
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Specifies the tags that are assigned to the job.
 	Tags interface{} `pulumi:"tags"`
 	// Specifies the type of the job resource.
@@ -132,8 +131,8 @@ func (o LookupJobResultOutput) Properties() JobDetailsResponseOutput {
 }
 
 // SystemData of ImportExport Jobs.
-func (o LookupJobResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupJobResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o LookupJobResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupJobResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Specifies the tags that are assigned to the job.

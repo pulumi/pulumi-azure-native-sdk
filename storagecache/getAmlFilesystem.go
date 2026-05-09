@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -67,7 +66,7 @@ type LookupAmlFilesystemResult struct {
 	// The size of the AML file system, in TiB. This might be rounded up.
 	StorageCapacityTiB float64 `pulumi:"storageCapacityTiB"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Throughput provisioned in MB per sec, calculated as storageCapacityTiB * per-unit storage throughput
@@ -203,8 +202,8 @@ func (o LookupAmlFilesystemResultOutput) StorageCapacityTiB() pulumi.Float64Outp
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupAmlFilesystemResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAmlFilesystemResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o LookupAmlFilesystemResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAmlFilesystemResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

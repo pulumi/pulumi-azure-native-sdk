@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -27,7 +26,7 @@ type SubscriptionRaiPolicy struct {
 	// Properties of Cognitive Services RaiPolicy.
 	Properties RaiPolicyPropertiesResponseV1Output `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -156,8 +155,8 @@ func (o SubscriptionRaiPolicyOutput) Properties() RaiPolicyPropertiesResponseV1O
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o SubscriptionRaiPolicyOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v *SubscriptionRaiPolicy) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o SubscriptionRaiPolicyOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *SubscriptionRaiPolicy) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

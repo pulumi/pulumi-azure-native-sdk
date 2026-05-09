@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -52,7 +51,7 @@ type LookupClientGroupResult struct {
 	// Example : attributes.keyName IN ['a', 'b', 'c'].
 	Query *string `pulumi:"query"`
 	// The system metadata relating to the Event Grid resource.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Type of the resource.
 	Type string `pulumi:"type"`
 }
@@ -126,8 +125,8 @@ func (o LookupClientGroupResultOutput) Query() pulumi.StringPtrOutput {
 }
 
 // The system metadata relating to the Event Grid resource.
-func (o LookupClientGroupResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupClientGroupResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupClientGroupResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupClientGroupResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Type of the resource.

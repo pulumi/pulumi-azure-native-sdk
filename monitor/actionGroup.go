@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -40,7 +39,7 @@ type ActionGroup struct {
 	// The short name of the action group. This will be used in SMS messages.
 	GroupShortName pulumi.StringOutput `pulumi:"groupShortName"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity commontypesv5.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The list of incident receivers that are part of this action group.
 	IncidentReceivers IncidentReceiverResponseArrayOutput `pulumi:"incidentReceivers"`
 	// The list of ITSM receivers that are part of this action group.
@@ -179,7 +178,7 @@ type actionGroupArgs struct {
 	// The short name of the action group. This will be used in SMS messages.
 	GroupShortName string `pulumi:"groupShortName"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity *commontypesv5.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The list of incident receivers that are part of this action group.
 	IncidentReceivers []IncidentReceiver `pulumi:"incidentReceivers"`
 	// The list of ITSM receivers that are part of this action group.
@@ -221,7 +220,7 @@ type ActionGroupArgs struct {
 	// The short name of the action group. This will be used in SMS messages.
 	GroupShortName pulumi.StringInput
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity commontypesv5.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// The list of incident receivers that are part of this action group.
 	IncidentReceivers IncidentReceiverArrayInput
 	// The list of ITSM receivers that are part of this action group.
@@ -325,8 +324,8 @@ func (o ActionGroupOutput) GroupShortName() pulumi.StringOutput {
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
-func (o ActionGroupOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *ActionGroup) commontypesv5.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+func (o ActionGroupOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *ActionGroup) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The list of incident receivers that are part of this action group.

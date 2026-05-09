@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -32,7 +31,7 @@ type ContainerAppsSessionPool struct {
 	// Resource ID of the session pool's environment.
 	EnvironmentId pulumi.StringPtrOutput `pulumi:"environmentId"`
 	// Managed identities needed by a session pool to interact with other Azure services to not maintain any secrets or credentials in code.
-	Identity commontypesv5.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Optional settings for a Managed Identity that is assigned to the Session pool.
@@ -54,7 +53,7 @@ type ContainerAppsSessionPool struct {
 	// The network configuration of the sessions in the session pool.
 	SessionNetworkConfiguration SessionNetworkConfigurationResponsePtrOutput `pulumi:"sessionNetworkConfiguration"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -137,7 +136,7 @@ type containerAppsSessionPoolArgs struct {
 	// Resource ID of the session pool's environment.
 	EnvironmentId *string `pulumi:"environmentId"`
 	// Managed identities needed by a session pool to interact with other Azure services to not maintain any secrets or credentials in code.
-	Identity *commontypesv5.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Optional settings for a Managed Identity that is assigned to the Session pool.
@@ -169,7 +168,7 @@ type ContainerAppsSessionPoolArgs struct {
 	// Resource ID of the session pool's environment.
 	EnvironmentId pulumi.StringPtrInput
 	// Managed identities needed by a session pool to interact with other Azure services to not maintain any secrets or credentials in code.
-	Identity commontypesv5.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Optional settings for a Managed Identity that is assigned to the Session pool.
@@ -257,10 +256,8 @@ func (o ContainerAppsSessionPoolOutput) EnvironmentId() pulumi.StringPtrOutput {
 }
 
 // Managed identities needed by a session pool to interact with other Azure services to not maintain any secrets or credentials in code.
-func (o ContainerAppsSessionPoolOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *ContainerAppsSessionPool) commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-		return v.Identity
-	}).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+func (o ContainerAppsSessionPoolOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *ContainerAppsSessionPool) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -318,8 +315,8 @@ func (o ContainerAppsSessionPoolOutput) SessionNetworkConfiguration() SessionNet
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ContainerAppsSessionPoolOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *ContainerAppsSessionPool) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o ContainerAppsSessionPoolOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ContainerAppsSessionPool) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

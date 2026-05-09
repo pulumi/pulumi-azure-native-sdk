@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -32,7 +31,7 @@ type Job struct {
 	// The complex type of the extended location.
 	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// Managed identities needed by a container app job to interact with other Azure services to not maintain any secrets or credentials in code.
-	Identity commontypesv5.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -44,7 +43,7 @@ type Job struct {
 	// Current running state of the job
 	RunningState pulumi.StringOutput `pulumi:"runningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Container Apps job definition.
@@ -153,7 +152,7 @@ type jobArgs struct {
 	// The complex type of the extended location.
 	ExtendedLocation *ExtendedLocation `pulumi:"extendedLocation"`
 	// Managed identities needed by a container app job to interact with other Azure services to not maintain any secrets or credentials in code.
-	Identity *commontypesv5.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// Job Name
 	JobName *string `pulumi:"jobName"`
 	// The geo-location where the resource lives
@@ -177,7 +176,7 @@ type JobArgs struct {
 	// The complex type of the extended location.
 	ExtendedLocation ExtendedLocationPtrInput
 	// Managed identities needed by a container app job to interact with other Azure services to not maintain any secrets or credentials in code.
-	Identity commontypesv5.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// Job Name
 	JobName pulumi.StringPtrInput
 	// The geo-location where the resource lives
@@ -255,8 +254,8 @@ func (o JobOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
 }
 
 // Managed identities needed by a container app job to interact with other Azure services to not maintain any secrets or credentials in code.
-func (o JobOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *Job) commontypesv5.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+func (o JobOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Job) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -285,8 +284,8 @@ func (o JobOutput) RunningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o JobOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Job) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o JobOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Job) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

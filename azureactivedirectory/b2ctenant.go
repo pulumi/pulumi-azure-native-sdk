@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -32,7 +31,7 @@ type B2CTenant struct {
 	// SKU properties of the Azure AD B2C tenant. Learn more about Azure AD B2C billing at [aka.ms/b2cBilling](https://aka.ms/b2cBilling).
 	Sku B2CResourceSKUResponseOutput `pulumi:"sku"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource Tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// An identifier of the Azure AD B2C tenant.
@@ -208,8 +207,8 @@ func (o B2CTenantOutput) Sku() B2CResourceSKUResponseOutput {
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o B2CTenantOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *B2CTenant) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o B2CTenantOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *B2CTenant) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource Tags

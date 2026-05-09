@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv1"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -59,7 +58,7 @@ type LookupKustoPoolPrincipalAssignmentResult struct {
 	// Cluster principal role.
 	Role string `pulumi:"role"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv1.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The tenant id of the principal
 	TenantId *string `pulumi:"tenantId"`
 	// The tenant name of the principal
@@ -153,8 +152,8 @@ func (o LookupKustoPoolPrincipalAssignmentResultOutput) Role() pulumi.StringOutp
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupKustoPoolPrincipalAssignmentResultOutput) SystemData() commontypesv1.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupKustoPoolPrincipalAssignmentResult) commontypesv1.SystemDataResponse { return v.SystemData }).(commontypesv1.SystemDataResponseOutput)
+func (o LookupKustoPoolPrincipalAssignmentResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupKustoPoolPrincipalAssignmentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The tenant id of the principal

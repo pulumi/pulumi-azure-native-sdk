@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -49,7 +48,7 @@ type Namespace struct {
 	// Represents available Sku pricing tiers.
 	Sku NamespaceSkuResponsePtrOutput `pulumi:"sku"`
 	// The system metadata relating to the Event Grid resource.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Tags of the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Topic spaces configuration information for the namespace resource
@@ -298,8 +297,8 @@ func (o NamespaceOutput) Sku() NamespaceSkuResponsePtrOutput {
 }
 
 // The system metadata relating to the Event Grid resource.
-func (o NamespaceOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Namespace) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o NamespaceOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Namespace) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Tags of the resource.

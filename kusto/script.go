@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -38,7 +37,7 @@ type Script struct {
 	// The url to the KQL script blob file. Must not be used together with scriptContent property
 	ScriptUrl pulumi.StringPtrOutput `pulumi:"scriptUrl"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -253,8 +252,8 @@ func (o ScriptOutput) ScriptUrl() pulumi.StringPtrOutput {
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o ScriptOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Script) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o ScriptOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Script) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

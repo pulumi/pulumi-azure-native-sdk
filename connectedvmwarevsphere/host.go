@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -56,7 +55,7 @@ type Host struct {
 	// The resource status information.
 	Statuses ResourceStatusResponseArrayOutput `pulumi:"statuses"`
 	// The system data.
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Gets or sets the Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Gets or sets the type of the resource.
@@ -296,8 +295,8 @@ func (o HostOutput) Statuses() ResourceStatusResponseArrayOutput {
 }
 
 // The system data.
-func (o HostOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Host) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o HostOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Host) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Gets or sets the Resource tags.

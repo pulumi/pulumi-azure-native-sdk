@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -28,7 +27,7 @@ type IotDpsResourcePrivateEndpointConnection struct {
 	// The properties of a private endpoint connection
 	Properties PrivateEndpointConnectionPropertiesResponseOutput `pulumi:"properties"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -195,10 +194,8 @@ func (o IotDpsResourcePrivateEndpointConnectionOutput) Properties() PrivateEndpo
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o IotDpsResourcePrivateEndpointConnectionOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *IotDpsResourcePrivateEndpointConnection) commontypesv2.SystemDataResponseOutput {
-		return v.SystemData
-	}).(commontypesv2.SystemDataResponseOutput)
+func (o IotDpsResourcePrivateEndpointConnectionOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *IotDpsResourcePrivateEndpointConnection) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The resource type.

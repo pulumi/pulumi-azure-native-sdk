@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -49,7 +48,7 @@ type LookupConfigurationProfilesVersionResult struct {
 	// Properties of the configuration profile.
 	Properties ConfigurationProfilePropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -121,8 +120,8 @@ func (o LookupConfigurationProfilesVersionResultOutput) Properties() Configurati
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupConfigurationProfilesVersionResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupConfigurationProfilesVersionResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o LookupConfigurationProfilesVersionResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupConfigurationProfilesVersionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

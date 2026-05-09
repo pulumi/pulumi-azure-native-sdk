@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -91,7 +90,7 @@ type LookupResourcePoolResult struct {
 	// The resource status information.
 	Statuses []ResourceStatusResponse `pulumi:"statuses"`
 	// The system data.
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Gets or sets the Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Gets or sets the type of the resource.
@@ -264,8 +263,8 @@ func (o LookupResourcePoolResultOutput) Statuses() ResourceStatusResponseArrayOu
 }
 
 // The system data.
-func (o LookupResourcePoolResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupResourcePoolResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o LookupResourcePoolResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupResourcePoolResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Gets or sets the Resource tags.

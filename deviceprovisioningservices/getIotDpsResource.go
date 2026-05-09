@@ -7,8 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -44,7 +42,7 @@ type LookupIotDpsResourceResult struct {
 	// The resource identifier.
 	Id string `pulumi:"id"`
 	// The managed identities for a provisioning service.
-	Identity *commontypesv5.ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The resource location.
 	Location string `pulumi:"location"`
 	// The resource name.
@@ -58,7 +56,7 @@ type LookupIotDpsResourceResult struct {
 	// The subscription id of the resource.
 	Subscriptionid *string `pulumi:"subscriptionid"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The resource type.
@@ -116,8 +114,8 @@ func (o LookupIotDpsResourceResultOutput) Id() pulumi.StringOutput {
 }
 
 // The managed identities for a provisioning service.
-func (o LookupIotDpsResourceResultOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupIotDpsResourceResult) *commontypesv5.ManagedServiceIdentityResponse { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+func (o LookupIotDpsResourceResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupIotDpsResourceResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The resource location.
@@ -151,8 +149,8 @@ func (o LookupIotDpsResourceResultOutput) Subscriptionid() pulumi.StringPtrOutpu
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupIotDpsResourceResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupIotDpsResourceResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o LookupIotDpsResourceResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupIotDpsResourceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The resource tags.

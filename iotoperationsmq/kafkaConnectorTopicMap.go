@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -44,7 +43,7 @@ type KafkaConnectorTopicMap struct {
 	// The route details for Kafka connector.
 	Routes KafkaRoutesResponseArrayOutput `pulumi:"routes"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -284,8 +283,8 @@ func (o KafkaConnectorTopicMapOutput) Routes() KafkaRoutesResponseArrayOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o KafkaConnectorTopicMapOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v *KafkaConnectorTopicMap) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o KafkaConnectorTopicMapOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *KafkaConnectorTopicMap) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -26,7 +25,7 @@ type Workload struct {
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Managed On Behalf Of Configuration.
-	ManagedOnBehalfOfConfiguration commontypesv5.ManagedOnBehalfOfConfigurationResponseOutput `pulumi:"managedOnBehalfOfConfiguration"`
+	ManagedOnBehalfOfConfiguration ManagedOnBehalfOfConfigurationResponseOutput `pulumi:"managedOnBehalfOfConfiguration"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Provisioning State.
@@ -34,7 +33,7 @@ type Workload struct {
 	// List of resource group ids.
 	ResourceGroupCollection pulumi.StringArrayOutput `pulumi:"resourceGroupCollection"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -177,10 +176,10 @@ func (o WorkloadOutput) Location() pulumi.StringOutput {
 }
 
 // Managed On Behalf Of Configuration.
-func (o WorkloadOutput) ManagedOnBehalfOfConfiguration() commontypesv5.ManagedOnBehalfOfConfigurationResponseOutput {
-	return o.ApplyT(func(v *Workload) commontypesv5.ManagedOnBehalfOfConfigurationResponseOutput {
+func (o WorkloadOutput) ManagedOnBehalfOfConfiguration() ManagedOnBehalfOfConfigurationResponseOutput {
+	return o.ApplyT(func(v *Workload) ManagedOnBehalfOfConfigurationResponseOutput {
 		return v.ManagedOnBehalfOfConfiguration
-	}).(commontypesv5.ManagedOnBehalfOfConfigurationResponseOutput)
+	}).(ManagedOnBehalfOfConfigurationResponseOutput)
 }
 
 // The name of the resource
@@ -199,8 +198,8 @@ func (o WorkloadOutput) ResourceGroupCollection() pulumi.StringArrayOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o WorkloadOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Workload) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o WorkloadOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Workload) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

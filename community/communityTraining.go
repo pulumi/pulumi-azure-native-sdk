@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -40,9 +39,9 @@ type CommunityTraining struct {
 	// The status of the last operation.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The SKU (Stock Keeping Unit) assigned to this resource.
-	Sku commontypesv3.SkuResponsePtrOutput `pulumi:"sku"`
+	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -141,7 +140,7 @@ type communityTrainingArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The SKU (Stock Keeping Unit) assigned to this resource.
-	Sku *commontypesv3.Sku `pulumi:"sku"`
+	Sku *Sku `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// To indicate whether the Community Training instance has Zone Redundancy enabled
@@ -169,7 +168,7 @@ type CommunityTrainingArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The SKU (Stock Keeping Unit) assigned to this resource.
-	Sku commontypesv3.SkuPtrInput
+	Sku SkuPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 	// To indicate whether the Community Training instance has Zone Redundancy enabled
@@ -266,13 +265,13 @@ func (o CommunityTrainingOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // The SKU (Stock Keeping Unit) assigned to this resource.
-func (o CommunityTrainingOutput) Sku() commontypesv3.SkuResponsePtrOutput {
-	return o.ApplyT(func(v *CommunityTraining) commontypesv3.SkuResponsePtrOutput { return v.Sku }).(commontypesv3.SkuResponsePtrOutput)
+func (o CommunityTrainingOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v *CommunityTraining) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o CommunityTrainingOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v *CommunityTraining) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o CommunityTrainingOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *CommunityTraining) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

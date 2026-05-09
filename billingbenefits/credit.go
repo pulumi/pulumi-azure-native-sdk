@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -38,7 +37,7 @@ type Credit struct {
 	// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity commontypesv6.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// The geo-location where the resource lives
@@ -48,7 +47,7 @@ type Credit struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Plan for the resource.
-	Plan commontypesv6.PlanResponsePtrOutput `pulumi:"plan"`
+	Plan PlanResponsePtrOutput `pulumi:"plan"`
 	// Credit breakdown item representing a milestone, line-item, or no-charge service
 	Policies CreditPoliciesResponsePtrOutput `pulumi:"policies"`
 	// Product UPN for the credit type
@@ -60,13 +59,13 @@ type Credit struct {
 	// Fully-qualified resource identifier of the resource. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/{benefitType}/{benefitName}.
 	ResourceId pulumi.StringPtrOutput `pulumi:"resourceId"`
 	// The resource model definition representing SKU
-	Sku commontypesv6.SkuResponsePtrOutput `pulumi:"sku"`
+	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// Start DateTime.
 	StartAt pulumi.StringPtrOutput `pulumi:"startAt"`
 	// Status of the credit
 	Status pulumi.StringPtrOutput `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv6.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// System identifier
 	SystemId pulumi.StringPtrOutput `pulumi:"systemId"`
 	// Resource tags.
@@ -138,7 +137,7 @@ type creditArgs struct {
 	// End DateTime in UTC.
 	EndAt *string `pulumi:"endAt"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity *commontypesv6.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
@@ -146,7 +145,7 @@ type creditArgs struct {
 	// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
 	ManagedBy *string `pulumi:"managedBy"`
 	// Plan for the resource.
-	Plan *commontypesv6.Plan `pulumi:"plan"`
+	Plan *Plan `pulumi:"plan"`
 	// Credit breakdown item representing a milestone, line-item, or no-charge service
 	Policies *CreditPolicies `pulumi:"policies"`
 	// Product UPN for the credit type
@@ -156,7 +155,7 @@ type creditArgs struct {
 	// Fully-qualified resource identifier of the resource. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/{benefitType}/{benefitName}.
 	ResourceId *string `pulumi:"resourceId"`
 	// The resource model definition representing SKU
-	Sku *commontypesv6.Sku `pulumi:"sku"`
+	Sku *Sku `pulumi:"sku"`
 	// Start DateTime.
 	StartAt *string `pulumi:"startAt"`
 	// Status of the credit
@@ -180,7 +179,7 @@ type CreditArgs struct {
 	// End DateTime in UTC.
 	EndAt pulumi.StringPtrInput
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity commontypesv6.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind pulumi.StringPtrInput
 	// The geo-location where the resource lives
@@ -188,7 +187,7 @@ type CreditArgs struct {
 	// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
 	ManagedBy pulumi.StringPtrInput
 	// Plan for the resource.
-	Plan commontypesv6.PlanPtrInput
+	Plan PlanPtrInput
 	// Credit breakdown item representing a milestone, line-item, or no-charge service
 	Policies CreditPoliciesPtrInput
 	// Product UPN for the credit type
@@ -198,7 +197,7 @@ type CreditArgs struct {
 	// Fully-qualified resource identifier of the resource. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/{benefitType}/{benefitName}.
 	ResourceId pulumi.StringPtrInput
 	// The resource model definition representing SKU
-	Sku commontypesv6.SkuPtrInput
+	Sku SkuPtrInput
 	// Start DateTime.
 	StartAt pulumi.StringPtrInput
 	// Status of the credit
@@ -287,8 +286,8 @@ func (o CreditOutput) Etag() pulumi.StringOutput {
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
-func (o CreditOutput) Identity() commontypesv6.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *Credit) commontypesv6.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv6.ManagedServiceIdentityResponsePtrOutput)
+func (o CreditOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Credit) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
@@ -312,8 +311,8 @@ func (o CreditOutput) Name() pulumi.StringOutput {
 }
 
 // Plan for the resource.
-func (o CreditOutput) Plan() commontypesv6.PlanResponsePtrOutput {
-	return o.ApplyT(func(v *Credit) commontypesv6.PlanResponsePtrOutput { return v.Plan }).(commontypesv6.PlanResponsePtrOutput)
+func (o CreditOutput) Plan() PlanResponsePtrOutput {
+	return o.ApplyT(func(v *Credit) PlanResponsePtrOutput { return v.Plan }).(PlanResponsePtrOutput)
 }
 
 // Credit breakdown item representing a milestone, line-item, or no-charge service
@@ -342,8 +341,8 @@ func (o CreditOutput) ResourceId() pulumi.StringPtrOutput {
 }
 
 // The resource model definition representing SKU
-func (o CreditOutput) Sku() commontypesv6.SkuResponsePtrOutput {
-	return o.ApplyT(func(v *Credit) commontypesv6.SkuResponsePtrOutput { return v.Sku }).(commontypesv6.SkuResponsePtrOutput)
+func (o CreditOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v *Credit) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
 }
 
 // Start DateTime.
@@ -357,8 +356,8 @@ func (o CreditOutput) Status() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o CreditOutput) SystemData() commontypesv6.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Credit) commontypesv6.SystemDataResponseOutput { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
+func (o CreditOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Credit) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // System identifier

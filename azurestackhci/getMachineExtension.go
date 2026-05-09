@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -59,7 +58,7 @@ type LookupMachineExtensionResult struct {
 	// Json formatted public settings for the extension.
 	Settings interface{} `pulumi:"settings"`
 	// The system data.
-	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource.
@@ -163,8 +162,8 @@ func (o LookupMachineExtensionResultOutput) Settings() pulumi.AnyOutput {
 }
 
 // The system data.
-func (o LookupMachineExtensionResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupMachineExtensionResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o LookupMachineExtensionResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupMachineExtensionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The Resource tags.

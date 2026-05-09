@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -49,13 +48,13 @@ type LookupCloudHsmClusterPrivateEndpointConnectionResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// The private endpoint resource.
-	PrivateEndpoint *commontypesv5.PrivateEndpointResponse `pulumi:"privateEndpoint"`
+	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
 	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState commontypesv5.PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
+	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state of the private endpoint connection resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -123,17 +122,17 @@ func (o LookupCloudHsmClusterPrivateEndpointConnectionResultOutput) Name() pulum
 }
 
 // The private endpoint resource.
-func (o LookupCloudHsmClusterPrivateEndpointConnectionResultOutput) PrivateEndpoint() commontypesv5.PrivateEndpointResponsePtrOutput {
-	return o.ApplyT(func(v LookupCloudHsmClusterPrivateEndpointConnectionResult) *commontypesv5.PrivateEndpointResponse {
+func (o LookupCloudHsmClusterPrivateEndpointConnectionResultOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
+	return o.ApplyT(func(v LookupCloudHsmClusterPrivateEndpointConnectionResult) *PrivateEndpointResponse {
 		return v.PrivateEndpoint
-	}).(commontypesv5.PrivateEndpointResponsePtrOutput)
+	}).(PrivateEndpointResponsePtrOutput)
 }
 
 // A collection of information about the state of the connection between service consumer and provider.
-func (o LookupCloudHsmClusterPrivateEndpointConnectionResultOutput) PrivateLinkServiceConnectionState() commontypesv5.PrivateLinkServiceConnectionStateResponseOutput {
-	return o.ApplyT(func(v LookupCloudHsmClusterPrivateEndpointConnectionResult) commontypesv5.PrivateLinkServiceConnectionStateResponse {
+func (o LookupCloudHsmClusterPrivateEndpointConnectionResultOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponseOutput {
+	return o.ApplyT(func(v LookupCloudHsmClusterPrivateEndpointConnectionResult) PrivateLinkServiceConnectionStateResponse {
 		return v.PrivateLinkServiceConnectionState
-	}).(commontypesv5.PrivateLinkServiceConnectionStateResponseOutput)
+	}).(PrivateLinkServiceConnectionStateResponseOutput)
 }
 
 // The provisioning state of the private endpoint connection resource.
@@ -142,10 +141,8 @@ func (o LookupCloudHsmClusterPrivateEndpointConnectionResultOutput) Provisioning
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupCloudHsmClusterPrivateEndpointConnectionResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupCloudHsmClusterPrivateEndpointConnectionResult) commontypesv5.SystemDataResponse {
-		return v.SystemData
-	}).(commontypesv5.SystemDataResponseOutput)
+func (o LookupCloudHsmClusterPrivateEndpointConnectionResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupCloudHsmClusterPrivateEndpointConnectionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -51,7 +50,7 @@ type LookupPrivateLinkServicesForM365SecurityCenterResult struct {
 	// The common properties of a service.
 	Properties ServicesPropertiesResponse `pulumi:"properties"`
 	// Required property for system data
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The resource type.
@@ -138,10 +137,8 @@ func (o LookupPrivateLinkServicesForM365SecurityCenterResultOutput) Properties()
 }
 
 // Required property for system data
-func (o LookupPrivateLinkServicesForM365SecurityCenterResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupPrivateLinkServicesForM365SecurityCenterResult) commontypesv2.SystemDataResponse {
-		return v.SystemData
-	}).(commontypesv2.SystemDataResponseOutput)
+func (o LookupPrivateLinkServicesForM365SecurityCenterResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPrivateLinkServicesForM365SecurityCenterResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The resource tags.

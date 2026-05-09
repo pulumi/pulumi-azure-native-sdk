@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -45,7 +44,7 @@ type LookupDevOpsConfigurationResult struct {
 	// DevOps Configuration properties.
 	Properties DevOpsConfigurationPropertiesResponse `pulumi:"properties"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -106,8 +105,8 @@ func (o LookupDevOpsConfigurationResultOutput) Properties() DevOpsConfigurationP
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupDevOpsConfigurationResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupDevOpsConfigurationResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o LookupDevOpsConfigurationResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupDevOpsConfigurationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

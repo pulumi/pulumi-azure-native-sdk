@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -46,7 +45,7 @@ type LookupResourceGuardResult struct {
 	// ResourceGuardResource properties
 	Properties ResourceGuardResponse `pulumi:"properties"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData commontypesv4.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
@@ -118,8 +117,8 @@ func (o LookupResourceGuardResultOutput) Properties() ResourceGuardResponseOutpu
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupResourceGuardResultOutput) SystemData() commontypesv4.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupResourceGuardResult) commontypesv4.SystemDataResponse { return v.SystemData }).(commontypesv4.SystemDataResponseOutput)
+func (o LookupResourceGuardResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupResourceGuardResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

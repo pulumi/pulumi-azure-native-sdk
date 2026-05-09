@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -71,7 +70,7 @@ type GetDeviceExtendedInformationResult struct {
 	// The Resource ID of the Resource.
 	ResourceKey string `pulumi:"resourceKey"`
 	// Metadata pertaining to creation and last modification of DataBoxEdgeDevice
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type string `pulumi:"type"`
 }
@@ -197,8 +196,8 @@ func (o GetDeviceExtendedInformationResultOutput) ResourceKey() pulumi.StringOut
 }
 
 // Metadata pertaining to creation and last modification of DataBoxEdgeDevice
-func (o GetDeviceExtendedInformationResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v GetDeviceExtendedInformationResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o GetDeviceExtendedInformationResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetDeviceExtendedInformationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.

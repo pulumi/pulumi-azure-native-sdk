@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -80,7 +79,7 @@ type LookupScheduledAlertRuleResult struct {
 	// Determines whether the suppression for this alert rule is enabled or disabled.
 	SuppressionEnabled bool `pulumi:"suppressionEnabled"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The tactics of the alert rule
 	Tactics []string `pulumi:"tactics"`
 	// The techniques of the alert rule
@@ -239,8 +238,8 @@ func (o LookupScheduledAlertRuleResultOutput) SuppressionEnabled() pulumi.BoolOu
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupScheduledAlertRuleResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupScheduledAlertRuleResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupScheduledAlertRuleResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupScheduledAlertRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The tactics of the alert rule

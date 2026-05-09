@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -43,9 +42,9 @@ type LookupBookshelfPrivateEndpointConnectionResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// The resource-specific properties for this resource.
-	Properties commontypesv5.PrivateEndpointConnectionPropertiesResponse `pulumi:"properties"`
+	Properties PrivateEndpointConnectionPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -103,17 +102,15 @@ func (o LookupBookshelfPrivateEndpointConnectionResultOutput) Name() pulumi.Stri
 }
 
 // The resource-specific properties for this resource.
-func (o LookupBookshelfPrivateEndpointConnectionResultOutput) Properties() commontypesv5.PrivateEndpointConnectionPropertiesResponseOutput {
-	return o.ApplyT(func(v LookupBookshelfPrivateEndpointConnectionResult) commontypesv5.PrivateEndpointConnectionPropertiesResponse {
+func (o LookupBookshelfPrivateEndpointConnectionResultOutput) Properties() PrivateEndpointConnectionPropertiesResponseOutput {
+	return o.ApplyT(func(v LookupBookshelfPrivateEndpointConnectionResult) PrivateEndpointConnectionPropertiesResponse {
 		return v.Properties
-	}).(commontypesv5.PrivateEndpointConnectionPropertiesResponseOutput)
+	}).(PrivateEndpointConnectionPropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupBookshelfPrivateEndpointConnectionResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupBookshelfPrivateEndpointConnectionResult) commontypesv5.SystemDataResponse {
-		return v.SystemData
-	}).(commontypesv5.SystemDataResponseOutput)
+func (o LookupBookshelfPrivateEndpointConnectionResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupBookshelfPrivateEndpointConnectionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

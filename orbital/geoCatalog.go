@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -24,7 +23,7 @@ type GeoCatalog struct {
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The managed service identities assigned to this resource.
-	Identity commontypesv5.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -32,7 +31,7 @@ type GeoCatalog struct {
 	// The resource-specific properties for this resource.
 	Properties GeoCatalogPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -97,7 +96,7 @@ type geoCatalogArgs struct {
 	// The name of the catalog
 	CatalogName *string `pulumi:"catalogName"`
 	// The managed service identities assigned to this resource.
-	Identity *commontypesv5.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The resource-specific properties for this resource.
@@ -113,7 +112,7 @@ type GeoCatalogArgs struct {
 	// The name of the catalog
 	CatalogName pulumi.StringPtrInput
 	// The managed service identities assigned to this resource.
-	Identity commontypesv5.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The resource-specific properties for this resource.
@@ -167,8 +166,8 @@ func (o GeoCatalogOutput) AzureApiVersion() pulumi.StringOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o GeoCatalogOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *GeoCatalog) commontypesv5.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+func (o GeoCatalogOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *GeoCatalog) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -187,8 +186,8 @@ func (o GeoCatalogOutput) Properties() GeoCatalogPropertiesResponseOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o GeoCatalogOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *GeoCatalog) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o GeoCatalogOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *GeoCatalog) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

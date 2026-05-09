@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -42,7 +41,7 @@ type ApiGateway struct {
 	// SKU properties of the API Management gateway.
 	Sku ApiManagementGatewaySkuPropertiesResponseOutput `pulumi:"sku"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The provisioning state of the API Management gateway, which is targeted by the long running operation started on the gateway.
@@ -239,8 +238,8 @@ func (o ApiGatewayOutput) Sku() ApiManagementGatewaySkuPropertiesResponseOutput 
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o ApiGatewayOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *ApiGateway) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o ApiGatewayOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ApiGateway) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -63,7 +62,7 @@ type LookupOuContainerResult struct {
 	// Status of OuContainer instance
 	ServiceStatus string `pulumi:"serviceStatus"`
 	// The system meta data relating to this resource.
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
 	// Azure Active Directory tenant id
@@ -170,8 +169,8 @@ func (o LookupOuContainerResultOutput) ServiceStatus() pulumi.StringOutput {
 }
 
 // The system meta data relating to this resource.
-func (o LookupOuContainerResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupOuContainerResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o LookupOuContainerResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupOuContainerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -45,7 +44,7 @@ type Workspace struct {
 	HbiWorkspace  pulumi.BoolPtrOutput   `pulumi:"hbiWorkspace"`
 	HubResourceId pulumi.StringPtrOutput `pulumi:"hubResourceId"`
 	// The managed service identities assigned to this resource.
-	Identity commontypesv3.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The compute name for image build
 	ImageBuildCompute pulumi.StringPtrOutput `pulumi:"imageBuildCompute"`
 	// ARM id of the key vault associated with this workspace. This cannot be changed once the workspace has been created
@@ -81,13 +80,13 @@ type Workspace struct {
 	// The list of shared private link resources in this workspace.
 	SharedPrivateLinkResources SharedPrivateLinkResourceResponseArrayOutput `pulumi:"sharedPrivateLinkResources"`
 	// Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
-	Sku commontypesv3.SkuResponsePtrOutput `pulumi:"sku"`
+	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
 	StorageAccount pulumi.StringPtrOutput `pulumi:"storageAccount"`
 	// If the storage associated with the workspace has hierarchical namespace(HNS) enabled.
 	StorageHnsEnabled pulumi.BoolOutput `pulumi:"storageHnsEnabled"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The auth mode used for accessing the system datastores of the workspace.
 	SystemDatastoresAuthMode pulumi.StringPtrOutput `pulumi:"systemDatastoresAuthMode"`
 	Tags                     pulumi.StringMapOutput `pulumi:"tags"`
@@ -309,7 +308,7 @@ type workspaceArgs struct {
 	HbiWorkspace  *bool   `pulumi:"hbiWorkspace"`
 	HubResourceId *string `pulumi:"hubResourceId"`
 	// The managed service identities assigned to this resource.
-	Identity *commontypesv3.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The compute name for image build
 	ImageBuildCompute *string `pulumi:"imageBuildCompute"`
 	// ARM id of the key vault associated with this workspace. This cannot be changed once the workspace has been created
@@ -333,7 +332,7 @@ type workspaceArgs struct {
 	// The list of shared private link resources in this workspace.
 	SharedPrivateLinkResources []SharedPrivateLinkResource `pulumi:"sharedPrivateLinkResources"`
 	// Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
-	Sku *commontypesv3.Sku `pulumi:"sku"`
+	Sku *Sku `pulumi:"sku"`
 	// ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
 	StorageAccount *string `pulumi:"storageAccount"`
 	// The auth mode used for accessing the system datastores of the workspace.
@@ -371,7 +370,7 @@ type WorkspaceArgs struct {
 	HbiWorkspace  pulumi.BoolPtrInput
 	HubResourceId pulumi.StringPtrInput
 	// The managed service identities assigned to this resource.
-	Identity commontypesv3.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// The compute name for image build
 	ImageBuildCompute pulumi.StringPtrInput
 	// ARM id of the key vault associated with this workspace. This cannot be changed once the workspace has been created
@@ -395,7 +394,7 @@ type WorkspaceArgs struct {
 	// The list of shared private link resources in this workspace.
 	SharedPrivateLinkResources SharedPrivateLinkResourceArrayInput
 	// Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
-	Sku commontypesv3.SkuPtrInput
+	Sku SkuPtrInput
 	// ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
 	StorageAccount pulumi.StringPtrInput
 	// The auth mode used for accessing the system datastores of the workspace.
@@ -512,8 +511,8 @@ func (o WorkspaceOutput) HubResourceId() pulumi.StringPtrOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o WorkspaceOutput) Identity() commontypesv3.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *Workspace) commontypesv3.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv3.ManagedServiceIdentityResponsePtrOutput)
+func (o WorkspaceOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Workspace) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The compute name for image build
@@ -607,8 +606,8 @@ func (o WorkspaceOutput) SharedPrivateLinkResources() SharedPrivateLinkResourceR
 }
 
 // Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
-func (o WorkspaceOutput) Sku() commontypesv3.SkuResponsePtrOutput {
-	return o.ApplyT(func(v *Workspace) commontypesv3.SkuResponsePtrOutput { return v.Sku }).(commontypesv3.SkuResponsePtrOutput)
+func (o WorkspaceOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v *Workspace) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
 }
 
 // ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
@@ -622,8 +621,8 @@ func (o WorkspaceOutput) StorageHnsEnabled() pulumi.BoolOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o WorkspaceOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Workspace) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o WorkspaceOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Workspace) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The auth mode used for accessing the system datastores of the workspace.

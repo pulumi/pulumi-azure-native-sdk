@@ -8,8 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -29,7 +27,7 @@ type App struct {
 	// The display name of the application.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// The managed identities for the IoT Central application.
-	Identity commontypesv3.SystemAssignedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity SystemAssignedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -37,7 +35,7 @@ type App struct {
 	// Network Rule Set Properties of this IoT Central application.
 	NetworkRuleSets NetworkRuleSetsResponsePtrOutput `pulumi:"networkRuleSets"`
 	// Private endpoint connections created on this IoT Central application.
-	PrivateEndpointConnections commontypesv4.PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// The provisioning state of the application.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Whether requests from the public network are allowed.
@@ -49,7 +47,7 @@ type App struct {
 	// The subdomain of the application.
 	Subdomain pulumi.StringPtrOutput `pulumi:"subdomain"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The ID of the application template, which is a blueprint that defines the characteristics and behaviors of an application. Optional; if not specified, defaults to a blank blueprint and allows the application to be defined from scratch.
@@ -122,7 +120,7 @@ type appArgs struct {
 	// The display name of the application.
 	DisplayName *string `pulumi:"displayName"`
 	// The managed identities for the IoT Central application.
-	Identity *commontypesv3.SystemAssignedServiceIdentity `pulumi:"identity"`
+	Identity *SystemAssignedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Network Rule Set Properties of this IoT Central application.
@@ -148,7 +146,7 @@ type AppArgs struct {
 	// The display name of the application.
 	DisplayName pulumi.StringPtrInput
 	// The managed identities for the IoT Central application.
-	Identity commontypesv3.SystemAssignedServiceIdentityPtrInput
+	Identity SystemAssignedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Network Rule Set Properties of this IoT Central application.
@@ -222,8 +220,8 @@ func (o AppOutput) DisplayName() pulumi.StringPtrOutput {
 }
 
 // The managed identities for the IoT Central application.
-func (o AppOutput) Identity() commontypesv3.SystemAssignedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *App) commontypesv3.SystemAssignedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv3.SystemAssignedServiceIdentityResponsePtrOutput)
+func (o AppOutput) Identity() SystemAssignedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *App) SystemAssignedServiceIdentityResponsePtrOutput { return v.Identity }).(SystemAssignedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -242,10 +240,8 @@ func (o AppOutput) NetworkRuleSets() NetworkRuleSetsResponsePtrOutput {
 }
 
 // Private endpoint connections created on this IoT Central application.
-func (o AppOutput) PrivateEndpointConnections() commontypesv4.PrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v *App) commontypesv4.PrivateEndpointConnectionResponseArrayOutput {
-		return v.PrivateEndpointConnections
-	}).(commontypesv4.PrivateEndpointConnectionResponseArrayOutput)
+func (o AppOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v *App) PrivateEndpointConnectionResponseArrayOutput { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // The provisioning state of the application.
@@ -274,8 +270,8 @@ func (o AppOutput) Subdomain() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o AppOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v *App) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o AppOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *App) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

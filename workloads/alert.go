@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -26,7 +25,7 @@ type Alert struct {
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Defines the alert instance errors.
-	Errors commontypesv5.ErrorDetailResponseOutput `pulumi:"errors"`
+	Errors ErrorDetailResponseOutput `pulumi:"errors"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Name of provider instances associated with the alert.
@@ -36,7 +35,7 @@ type Alert struct {
 	// State of provisioning of the alert instance
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Name of the alert template from which it was created.
 	TemplateName pulumi.StringPtrOutput `pulumi:"templateName"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -182,8 +181,8 @@ func (o AlertOutput) AzureApiVersion() pulumi.StringOutput {
 }
 
 // Defines the alert instance errors.
-func (o AlertOutput) Errors() commontypesv5.ErrorDetailResponseOutput {
-	return o.ApplyT(func(v *Alert) commontypesv5.ErrorDetailResponseOutput { return v.Errors }).(commontypesv5.ErrorDetailResponseOutput)
+func (o AlertOutput) Errors() ErrorDetailResponseOutput {
+	return o.ApplyT(func(v *Alert) ErrorDetailResponseOutput { return v.Errors }).(ErrorDetailResponseOutput)
 }
 
 // The name of the resource
@@ -207,8 +206,8 @@ func (o AlertOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o AlertOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Alert) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o AlertOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Alert) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Name of the alert template from which it was created.

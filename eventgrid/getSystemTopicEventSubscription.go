@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -69,7 +68,7 @@ type LookupSystemTopicEventSubscriptionResult struct {
 	// The retry policy for events. This can be used to configure maximum number of delivery attempts and time to live for events.
 	RetryPolicy *RetryPolicyResponse `pulumi:"retryPolicy"`
 	// The system metadata relating to the Event Grid resource.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Name of the topic of the event subscription.
 	Topic string `pulumi:"topic"`
 	// Type of the resource.
@@ -205,8 +204,8 @@ func (o LookupSystemTopicEventSubscriptionResultOutput) RetryPolicy() RetryPolic
 }
 
 // The system metadata relating to the Event Grid resource.
-func (o LookupSystemTopicEventSubscriptionResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSystemTopicEventSubscriptionResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupSystemTopicEventSubscriptionResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSystemTopicEventSubscriptionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Name of the topic of the event subscription.

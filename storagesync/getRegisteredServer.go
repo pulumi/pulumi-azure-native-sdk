@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -99,7 +98,7 @@ type LookupRegisteredServerResult struct {
 	// Registered Server storageSyncServiceUid
 	StorageSyncServiceUid *string `pulumi:"storageSyncServiceUid"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -292,8 +291,8 @@ func (o LookupRegisteredServerResultOutput) StorageSyncServiceUid() pulumi.Strin
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupRegisteredServerResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupRegisteredServerResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupRegisteredServerResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupRegisteredServerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

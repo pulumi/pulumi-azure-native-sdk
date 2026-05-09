@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -44,11 +43,11 @@ type Machine struct {
 	// Specifies the Windows domain name.
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
 	// Details about the error state.
-	ErrorDetails commontypesv3.ErrorDetailResponseArrayOutput `pulumi:"errorDetails"`
+	ErrorDetails ErrorDetailResponseArrayOutput `pulumi:"errorDetails"`
 	// Machine Extensions information (deprecated field)
 	Extensions MachineExtensionInstanceViewResponseArrayOutput `pulumi:"extensions"`
 	// Identity for the resource.
-	Identity commontypesv3.IdentityResponsePtrOutput `pulumi:"identity"`
+	Identity IdentityResponsePtrOutput `pulumi:"identity"`
 	// Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// The time of the last status change.
@@ -58,7 +57,7 @@ type Machine struct {
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Metadata pertaining to the geographic location of the resource.
-	LocationData commontypesv3.LocationDataResponsePtrOutput `pulumi:"locationData"`
+	LocationData LocationDataResponsePtrOutput `pulumi:"locationData"`
 	// Specifies the hybrid machine FQDN.
 	MachineFqdn pulumi.StringOutput `pulumi:"machineFqdn"`
 	// Specifies whether any MS SQL instance is discovered on the machine.
@@ -92,7 +91,7 @@ type Machine struct {
 	// The status of the hybrid machine agent.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -257,7 +256,7 @@ type machineArgs struct {
 	// Machine Extensions information (deprecated field)
 	Extensions []MachineExtensionInstanceView `pulumi:"extensions"`
 	// Identity for the resource.
-	Identity *commontypesv3.Identity `pulumi:"identity"`
+	Identity *Identity `pulumi:"identity"`
 	// Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
 	Kind *string `pulumi:"kind"`
 	// Specifies the License related properties for a machine.
@@ -265,7 +264,7 @@ type machineArgs struct {
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Metadata pertaining to the geographic location of the resource.
-	LocationData *commontypesv3.LocationData `pulumi:"locationData"`
+	LocationData *LocationData `pulumi:"locationData"`
 	// The name of the hybrid machine.
 	MachineName *string `pulumi:"machineName"`
 	// Specifies whether any MS SQL instance is discovered on the machine.
@@ -299,7 +298,7 @@ type MachineArgs struct {
 	// Machine Extensions information (deprecated field)
 	Extensions MachineExtensionInstanceViewArrayInput
 	// Identity for the resource.
-	Identity commontypesv3.IdentityPtrInput
+	Identity IdentityPtrInput
 	// Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
 	Kind pulumi.StringPtrInput
 	// Specifies the License related properties for a machine.
@@ -307,7 +306,7 @@ type MachineArgs struct {
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Metadata pertaining to the geographic location of the resource.
-	LocationData commontypesv3.LocationDataPtrInput
+	LocationData LocationDataPtrInput
 	// The name of the hybrid machine.
 	MachineName pulumi.StringPtrInput
 	// Specifies whether any MS SQL instance is discovered on the machine.
@@ -423,8 +422,8 @@ func (o MachineOutput) DomainName() pulumi.StringOutput {
 }
 
 // Details about the error state.
-func (o MachineOutput) ErrorDetails() commontypesv3.ErrorDetailResponseArrayOutput {
-	return o.ApplyT(func(v *Machine) commontypesv3.ErrorDetailResponseArrayOutput { return v.ErrorDetails }).(commontypesv3.ErrorDetailResponseArrayOutput)
+func (o MachineOutput) ErrorDetails() ErrorDetailResponseArrayOutput {
+	return o.ApplyT(func(v *Machine) ErrorDetailResponseArrayOutput { return v.ErrorDetails }).(ErrorDetailResponseArrayOutput)
 }
 
 // Machine Extensions information (deprecated field)
@@ -433,8 +432,8 @@ func (o MachineOutput) Extensions() MachineExtensionInstanceViewResponseArrayOut
 }
 
 // Identity for the resource.
-func (o MachineOutput) Identity() commontypesv3.IdentityResponsePtrOutput {
-	return o.ApplyT(func(v *Machine) commontypesv3.IdentityResponsePtrOutput { return v.Identity }).(commontypesv3.IdentityResponsePtrOutput)
+func (o MachineOutput) Identity() IdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Machine) IdentityResponsePtrOutput { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
 // Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
@@ -458,8 +457,8 @@ func (o MachineOutput) Location() pulumi.StringOutput {
 }
 
 // Metadata pertaining to the geographic location of the resource.
-func (o MachineOutput) LocationData() commontypesv3.LocationDataResponsePtrOutput {
-	return o.ApplyT(func(v *Machine) commontypesv3.LocationDataResponsePtrOutput { return v.LocationData }).(commontypesv3.LocationDataResponsePtrOutput)
+func (o MachineOutput) LocationData() LocationDataResponsePtrOutput {
+	return o.ApplyT(func(v *Machine) LocationDataResponsePtrOutput { return v.LocationData }).(LocationDataResponsePtrOutput)
 }
 
 // Specifies the hybrid machine FQDN.
@@ -543,8 +542,8 @@ func (o MachineOutput) Status() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o MachineOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Machine) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o MachineOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Machine) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

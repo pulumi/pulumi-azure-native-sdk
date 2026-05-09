@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -31,7 +30,7 @@ type ManagementGroup struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The AAD Tenant ID associated with the management group. For example, 00000000-0000-0000-0000-000000000000
 	TenantId pulumi.StringPtrOutput `pulumi:"tenantId"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -196,8 +195,8 @@ func (o ManagementGroupOutput) Name() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ManagementGroupOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v *ManagementGroup) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o ManagementGroupOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ManagementGroup) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The AAD Tenant ID associated with the management group. For example, 00000000-0000-0000-0000-000000000000

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -24,7 +23,7 @@ type ManagedHsm struct {
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity commontypesv5.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The supported Azure location where the managed HSM Pool should be created.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The name of the managed HSM Pool.
@@ -139,7 +138,7 @@ func (ManagedHsmState) ElementType() reflect.Type {
 
 type managedHsmArgs struct {
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity *commontypesv5.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The supported Azure location where the managed HSM Pool should be created.
 	Location *string `pulumi:"location"`
 	// Name of the managed HSM Pool
@@ -157,7 +156,7 @@ type managedHsmArgs struct {
 // The set of arguments for constructing a ManagedHsm resource.
 type ManagedHsmArgs struct {
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity commontypesv5.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// The supported Azure location where the managed HSM Pool should be created.
 	Location pulumi.StringPtrInput
 	// Name of the managed HSM Pool
@@ -215,8 +214,8 @@ func (o ManagedHsmOutput) AzureApiVersion() pulumi.StringOutput {
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
-func (o ManagedHsmOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *ManagedHsm) commontypesv5.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+func (o ManagedHsmOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *ManagedHsm) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The supported Azure location where the managed HSM Pool should be created.

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -90,7 +89,7 @@ type LookupVirtualMachineResult struct {
 	// Storage properties.
 	StorageProfile *StorageProfileResponse `pulumi:"storageProfile"`
 	// The system data.
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Gets or sets the Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Gets or sets the ARM Id of the template resource to deploy the virtual machine.
@@ -272,8 +271,8 @@ func (o LookupVirtualMachineResultOutput) StorageProfile() StorageProfileRespons
 }
 
 // The system data.
-func (o LookupVirtualMachineResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupVirtualMachineResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o LookupVirtualMachineResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupVirtualMachineResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Gets or sets the Resource tags.

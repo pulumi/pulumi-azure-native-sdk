@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -57,7 +56,7 @@ type LookupStorageAccountResult struct {
 	// Current status of the storage account
 	StorageAccountStatus *string `pulumi:"storageAccountStatus"`
 	// Metadata pertaining to creation and last modification of StorageAccount
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type string `pulumi:"type"`
 }
@@ -145,8 +144,8 @@ func (o LookupStorageAccountResultOutput) StorageAccountStatus() pulumi.StringPt
 }
 
 // Metadata pertaining to creation and last modification of StorageAccount
-func (o LookupStorageAccountResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupStorageAccountResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o LookupStorageAccountResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupStorageAccountResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.

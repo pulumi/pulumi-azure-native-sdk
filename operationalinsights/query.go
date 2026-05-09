@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -38,7 +37,7 @@ type Query struct {
 	// The related metadata items for the function.
 	Related LogAnalyticsQueryPackQueryPropertiesResponseRelatedPtrOutput `pulumi:"related"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Tags associated with the query.
 	Tags pulumi.StringArrayMapOutput `pulumi:"tags"`
 	// Creation Date for the Log Analytics Query, in ISO 8601 format.
@@ -239,8 +238,8 @@ func (o QueryOutput) Related() LogAnalyticsQueryPackQueryPropertiesResponseRelat
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o QueryOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Query) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o QueryOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Query) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Tags associated with the query.

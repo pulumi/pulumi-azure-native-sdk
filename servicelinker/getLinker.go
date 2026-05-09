@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -57,7 +56,7 @@ type LookupLinkerResult struct {
 	// An option to store secret value in secure place
 	SecretStore *SecretStoreResponse `pulumi:"secretStore"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The target service properties
 	TargetService interface{} `pulumi:"targetService"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -152,8 +151,8 @@ func (o LookupLinkerResultOutput) SecretStore() SecretStoreResponsePtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupLinkerResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupLinkerResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o LookupLinkerResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupLinkerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The target service properties

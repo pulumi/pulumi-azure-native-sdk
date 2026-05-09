@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -61,13 +60,13 @@ type LookupMachineResult struct {
 	// Specifies the Windows domain name.
 	DomainName string `pulumi:"domainName"`
 	// Details about the error state.
-	ErrorDetails []commontypesv3.ErrorDetailResponse `pulumi:"errorDetails"`
+	ErrorDetails []ErrorDetailResponse `pulumi:"errorDetails"`
 	// Machine Extensions information (deprecated field)
 	Extensions []MachineExtensionInstanceViewResponse `pulumi:"extensions"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Identity for the resource.
-	Identity *commontypesv3.IdentityResponse `pulumi:"identity"`
+	Identity *IdentityResponse `pulumi:"identity"`
 	// Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
 	Kind *string `pulumi:"kind"`
 	// The time of the last status change.
@@ -77,7 +76,7 @@ type LookupMachineResult struct {
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// Metadata pertaining to the geographic location of the resource.
-	LocationData *commontypesv3.LocationDataResponse `pulumi:"locationData"`
+	LocationData *LocationDataResponse `pulumi:"locationData"`
 	// Specifies the hybrid machine FQDN.
 	MachineFqdn string `pulumi:"machineFqdn"`
 	// Specifies whether any MS SQL instance is discovered on the machine.
@@ -111,7 +110,7 @@ type LookupMachineResult struct {
 	// The status of the hybrid machine agent.
 	Status string `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -215,8 +214,8 @@ func (o LookupMachineResultOutput) DomainName() pulumi.StringOutput {
 }
 
 // Details about the error state.
-func (o LookupMachineResultOutput) ErrorDetails() commontypesv3.ErrorDetailResponseArrayOutput {
-	return o.ApplyT(func(v LookupMachineResult) []commontypesv3.ErrorDetailResponse { return v.ErrorDetails }).(commontypesv3.ErrorDetailResponseArrayOutput)
+func (o LookupMachineResultOutput) ErrorDetails() ErrorDetailResponseArrayOutput {
+	return o.ApplyT(func(v LookupMachineResult) []ErrorDetailResponse { return v.ErrorDetails }).(ErrorDetailResponseArrayOutput)
 }
 
 // Machine Extensions information (deprecated field)
@@ -230,8 +229,8 @@ func (o LookupMachineResultOutput) Id() pulumi.StringOutput {
 }
 
 // Identity for the resource.
-func (o LookupMachineResultOutput) Identity() commontypesv3.IdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupMachineResult) *commontypesv3.IdentityResponse { return v.Identity }).(commontypesv3.IdentityResponsePtrOutput)
+func (o LookupMachineResultOutput) Identity() IdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupMachineResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
 // Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
@@ -255,8 +254,8 @@ func (o LookupMachineResultOutput) Location() pulumi.StringOutput {
 }
 
 // Metadata pertaining to the geographic location of the resource.
-func (o LookupMachineResultOutput) LocationData() commontypesv3.LocationDataResponsePtrOutput {
-	return o.ApplyT(func(v LookupMachineResult) *commontypesv3.LocationDataResponse { return v.LocationData }).(commontypesv3.LocationDataResponsePtrOutput)
+func (o LookupMachineResultOutput) LocationData() LocationDataResponsePtrOutput {
+	return o.ApplyT(func(v LookupMachineResult) *LocationDataResponse { return v.LocationData }).(LocationDataResponsePtrOutput)
 }
 
 // Specifies the hybrid machine FQDN.
@@ -340,8 +339,8 @@ func (o LookupMachineResultOutput) Status() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupMachineResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupMachineResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o LookupMachineResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupMachineResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

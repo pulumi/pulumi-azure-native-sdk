@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -73,7 +72,7 @@ type LookupUpdateRunResult struct {
 	// Recursive model for child steps of this step.
 	Steps []StepResponse `pulumi:"steps"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Timestamp of the update run was started.
 	TimeStarted *string `pulumi:"timeStarted"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -200,8 +199,8 @@ func (o LookupUpdateRunResultOutput) Steps() StepResponseArrayOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupUpdateRunResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupUpdateRunResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o LookupUpdateRunResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupUpdateRunResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Timestamp of the update run was started.

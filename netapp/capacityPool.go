@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -44,7 +43,7 @@ type CapacityPool struct {
 	// Provisioned size of the pool (in bytes). Allowed values are in 1TiB chunks (value must be multiple of 1099511627776).
 	Size pulumi.Float64Output `pulumi:"size"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Total throughput of pool in MiB/s
@@ -474,8 +473,8 @@ func (o CapacityPoolOutput) Size() pulumi.Float64Output {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o CapacityPoolOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *CapacityPool) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o CapacityPoolOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *CapacityPool) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

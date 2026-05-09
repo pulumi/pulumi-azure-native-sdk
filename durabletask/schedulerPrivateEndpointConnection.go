@@ -8,8 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -27,13 +25,13 @@ type SchedulerPrivateEndpointConnection struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The private endpoint resource.
-	PrivateEndpoint commontypesv6.PrivateEndpointResponsePtrOutput `pulumi:"privateEndpoint"`
+	PrivateEndpoint PrivateEndpointResponsePtrOutput `pulumi:"privateEndpoint"`
 	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState commontypesv6.PrivateLinkServiceConnectionStateResponseOutput `pulumi:"privateLinkServiceConnectionState"`
+	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponseOutput `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state of the private endpoint connection resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -96,7 +94,7 @@ type schedulerPrivateEndpointConnectionArgs struct {
 	// The name of the private endpoint connection associated with the Azure resource.
 	PrivateEndpointConnectionName *string `pulumi:"privateEndpointConnectionName"`
 	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState commontypesv6.PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
+	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the Scheduler
@@ -108,7 +106,7 @@ type SchedulerPrivateEndpointConnectionArgs struct {
 	// The name of the private endpoint connection associated with the Azure resource.
 	PrivateEndpointConnectionName pulumi.StringPtrInput
 	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState commontypesv6.PrivateLinkServiceConnectionStateInput
+	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the Scheduler
@@ -168,17 +166,15 @@ func (o SchedulerPrivateEndpointConnectionOutput) Name() pulumi.StringOutput {
 }
 
 // The private endpoint resource.
-func (o SchedulerPrivateEndpointConnectionOutput) PrivateEndpoint() commontypesv6.PrivateEndpointResponsePtrOutput {
-	return o.ApplyT(func(v *SchedulerPrivateEndpointConnection) commontypesv6.PrivateEndpointResponsePtrOutput {
-		return v.PrivateEndpoint
-	}).(commontypesv6.PrivateEndpointResponsePtrOutput)
+func (o SchedulerPrivateEndpointConnectionOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
+	return o.ApplyT(func(v *SchedulerPrivateEndpointConnection) PrivateEndpointResponsePtrOutput { return v.PrivateEndpoint }).(PrivateEndpointResponsePtrOutput)
 }
 
 // A collection of information about the state of the connection between service consumer and provider.
-func (o SchedulerPrivateEndpointConnectionOutput) PrivateLinkServiceConnectionState() commontypesv6.PrivateLinkServiceConnectionStateResponseOutput {
-	return o.ApplyT(func(v *SchedulerPrivateEndpointConnection) commontypesv6.PrivateLinkServiceConnectionStateResponseOutput {
+func (o SchedulerPrivateEndpointConnectionOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponseOutput {
+	return o.ApplyT(func(v *SchedulerPrivateEndpointConnection) PrivateLinkServiceConnectionStateResponseOutput {
 		return v.PrivateLinkServiceConnectionState
-	}).(commontypesv6.PrivateLinkServiceConnectionStateResponseOutput)
+	}).(PrivateLinkServiceConnectionStateResponseOutput)
 }
 
 // The provisioning state of the private endpoint connection resource.
@@ -187,10 +183,8 @@ func (o SchedulerPrivateEndpointConnectionOutput) ProvisioningState() pulumi.Str
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o SchedulerPrivateEndpointConnectionOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *SchedulerPrivateEndpointConnection) commontypesv5.SystemDataResponseOutput {
-		return v.SystemData
-	}).(commontypesv5.SystemDataResponseOutput)
+func (o SchedulerPrivateEndpointConnectionOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *SchedulerPrivateEndpointConnection) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

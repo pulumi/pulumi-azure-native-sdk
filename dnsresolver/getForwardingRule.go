@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -55,7 +54,7 @@ type LookupForwardingRuleResult struct {
 	// The current provisioning state of the forwarding rule. This is a read-only property and any attempt to set this value will be ignored.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// DNS servers to forward the DNS query to.
 	TargetDnsServers []TargetDnsServerResponse `pulumi:"targetDnsServers"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -140,8 +139,8 @@ func (o LookupForwardingRuleResultOutput) ProvisioningState() pulumi.StringOutpu
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupForwardingRuleResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupForwardingRuleResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupForwardingRuleResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // DNS servers to forward the DNS query to.

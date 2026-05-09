@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -57,8 +56,8 @@ type LookupHostPoolResult struct {
 	// HostPool type for desktop.
 	HostPoolType string `pulumi:"hostPoolType"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-	Id       string                                                             `pulumi:"id"`
-	Identity *commontypesv5.ResourceModelWithAllowedPropertySetResponseIdentity `pulumi:"identity"`
+	Id       string                                               `pulumi:"id"`
+	Identity *ResourceModelWithAllowedPropertySetResponseIdentity `pulumi:"identity"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind *string `pulumi:"kind"`
 	// The type of the load balancer.
@@ -74,19 +73,19 @@ type LookupHostPoolResult struct {
 	// ObjectId of HostPool. (internal use)
 	ObjectId string `pulumi:"objectId"`
 	// PersonalDesktopAssignment type for HostPool.
-	PersonalDesktopAssignmentType *string                                                        `pulumi:"personalDesktopAssignmentType"`
-	Plan                          *commontypesv5.ResourceModelWithAllowedPropertySetResponsePlan `pulumi:"plan"`
+	PersonalDesktopAssignmentType *string                                          `pulumi:"personalDesktopAssignmentType"`
+	Plan                          *ResourceModelWithAllowedPropertySetResponsePlan `pulumi:"plan"`
 	// The type of preferred application group type, default to Desktop Application Group
 	PreferredAppGroupType string `pulumi:"preferredAppGroupType"`
 	// List of private endpoint connection associated with the specified resource
-	PrivateEndpointConnections []commontypesv5.PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// The registration info of HostPool.
 	RegistrationInfo *RegistrationInfoResponse `pulumi:"registrationInfo"`
 	// The ring number of HostPool.
-	Ring *int                                                          `pulumi:"ring"`
-	Sku  *commontypesv5.ResourceModelWithAllowedPropertySetResponseSku `pulumi:"sku"`
+	Ring *int                                            `pulumi:"ring"`
+	Sku  *ResourceModelWithAllowedPropertySetResponseSku `pulumi:"sku"`
 	// ClientId for the registered Relying Party used to issue WVD SSO certificates.
 	SsoClientId *string `pulumi:"ssoClientId"`
 	// Path to Azure KeyVault storing the secret used for communication to ADFS.
@@ -98,7 +97,7 @@ type LookupHostPoolResult struct {
 	// The flag to turn on/off StartVMOnConnect feature.
 	StartVMOnConnect *bool `pulumi:"startVMOnConnect"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -199,10 +198,8 @@ func (o LookupHostPoolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostPoolResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o LookupHostPoolResultOutput) Identity() commontypesv5.ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput {
-	return o.ApplyT(func(v LookupHostPoolResult) *commontypesv5.ResourceModelWithAllowedPropertySetResponseIdentity {
-		return v.Identity
-	}).(commontypesv5.ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput)
+func (o LookupHostPoolResultOutput) Identity() ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput {
+	return o.ApplyT(func(v LookupHostPoolResult) *ResourceModelWithAllowedPropertySetResponseIdentity { return v.Identity }).(ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput)
 }
 
 // Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
@@ -245,10 +242,8 @@ func (o LookupHostPoolResultOutput) PersonalDesktopAssignmentType() pulumi.Strin
 	return o.ApplyT(func(v LookupHostPoolResult) *string { return v.PersonalDesktopAssignmentType }).(pulumi.StringPtrOutput)
 }
 
-func (o LookupHostPoolResultOutput) Plan() commontypesv5.ResourceModelWithAllowedPropertySetResponsePlanPtrOutput {
-	return o.ApplyT(func(v LookupHostPoolResult) *commontypesv5.ResourceModelWithAllowedPropertySetResponsePlan {
-		return v.Plan
-	}).(commontypesv5.ResourceModelWithAllowedPropertySetResponsePlanPtrOutput)
+func (o LookupHostPoolResultOutput) Plan() ResourceModelWithAllowedPropertySetResponsePlanPtrOutput {
+	return o.ApplyT(func(v LookupHostPoolResult) *ResourceModelWithAllowedPropertySetResponsePlan { return v.Plan }).(ResourceModelWithAllowedPropertySetResponsePlanPtrOutput)
 }
 
 // The type of preferred application group type, default to Desktop Application Group
@@ -257,10 +252,8 @@ func (o LookupHostPoolResultOutput) PreferredAppGroupType() pulumi.StringOutput 
 }
 
 // List of private endpoint connection associated with the specified resource
-func (o LookupHostPoolResultOutput) PrivateEndpointConnections() commontypesv5.PrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v LookupHostPoolResult) []commontypesv5.PrivateEndpointConnectionResponse {
-		return v.PrivateEndpointConnections
-	}).(commontypesv5.PrivateEndpointConnectionResponseArrayOutput)
+func (o LookupHostPoolResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v LookupHostPoolResult) []PrivateEndpointConnectionResponse { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints
@@ -278,10 +271,8 @@ func (o LookupHostPoolResultOutput) Ring() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupHostPoolResult) *int { return v.Ring }).(pulumi.IntPtrOutput)
 }
 
-func (o LookupHostPoolResultOutput) Sku() commontypesv5.ResourceModelWithAllowedPropertySetResponseSkuPtrOutput {
-	return o.ApplyT(func(v LookupHostPoolResult) *commontypesv5.ResourceModelWithAllowedPropertySetResponseSku {
-		return v.Sku
-	}).(commontypesv5.ResourceModelWithAllowedPropertySetResponseSkuPtrOutput)
+func (o LookupHostPoolResultOutput) Sku() ResourceModelWithAllowedPropertySetResponseSkuPtrOutput {
+	return o.ApplyT(func(v LookupHostPoolResult) *ResourceModelWithAllowedPropertySetResponseSku { return v.Sku }).(ResourceModelWithAllowedPropertySetResponseSkuPtrOutput)
 }
 
 // ClientId for the registered Relying Party used to issue WVD SSO certificates.
@@ -310,8 +301,8 @@ func (o LookupHostPoolResultOutput) StartVMOnConnect() pulumi.BoolPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupHostPoolResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupHostPoolResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupHostPoolResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupHostPoolResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -97,7 +96,7 @@ type LookupScalingPlanPersonalScheduleResult struct {
 	// The desired configuration of Start VM On Connect for the hostpool during the ramp up phase. If this is disabled, session hosts must be turned on using rampUpAutoStartHosts or by turning them on manually.
 	RampUpStartVMOnConnect *string `pulumi:"rampUpStartVMOnConnect"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -309,8 +308,8 @@ func (o LookupScalingPlanPersonalScheduleResultOutput) RampUpStartVMOnConnect() 
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupScalingPlanPersonalScheduleResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupScalingPlanPersonalScheduleResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupScalingPlanPersonalScheduleResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupScalingPlanPersonalScheduleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

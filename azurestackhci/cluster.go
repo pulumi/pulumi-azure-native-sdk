@@ -8,8 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -73,7 +71,7 @@ type Cluster struct {
 	// Status of the cluster agent.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
@@ -83,7 +81,7 @@ type Cluster struct {
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities commontypesv4.UserAssignedIdentityResponseMapOutput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities UserAssignedIdentityResponseMapOutput `pulumi:"userAssignedIdentities"`
 }
 
 // NewCluster registers a new resource with the given unique name, arguments, and options.
@@ -451,8 +449,8 @@ func (o ClusterOutput) Status() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ClusterOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Cluster) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o ClusterOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Cluster) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.
@@ -476,8 +474,8 @@ func (o ClusterOutput) Type() pulumi.StringOutput {
 }
 
 // The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ClusterOutput) UserAssignedIdentities() commontypesv4.UserAssignedIdentityResponseMapOutput {
-	return o.ApplyT(func(v *Cluster) commontypesv4.UserAssignedIdentityResponseMapOutput { return v.UserAssignedIdentities }).(commontypesv4.UserAssignedIdentityResponseMapOutput)
+func (o ClusterOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v *Cluster) UserAssignedIdentityResponseMapOutput { return v.UserAssignedIdentities }).(UserAssignedIdentityResponseMapOutput)
 }
 
 func init() {

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -51,7 +50,7 @@ type LookupBackupsAutomaticAndOnDemandResult struct {
 	// Source of the backup.
 	Source *string `pulumi:"source"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv6.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -124,8 +123,8 @@ func (o LookupBackupsAutomaticAndOnDemandResultOutput) Source() pulumi.StringPtr
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupBackupsAutomaticAndOnDemandResultOutput) SystemData() commontypesv6.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupBackupsAutomaticAndOnDemandResult) commontypesv6.SystemDataResponse { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
+func (o LookupBackupsAutomaticAndOnDemandResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupBackupsAutomaticAndOnDemandResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

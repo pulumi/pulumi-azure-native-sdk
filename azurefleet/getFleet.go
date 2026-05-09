@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -45,13 +44,13 @@ type LookupFleetResult struct {
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The managed service identities assigned to this resource.
-	Identity *commontypesv5.ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Details of the resource plan.
-	Plan *commontypesv5.PlanResponse `pulumi:"plan"`
+	Plan *PlanResponse `pulumi:"plan"`
 	// The status of the last operation.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Configuration Options for Regular instances in Compute Fleet.
@@ -59,7 +58,7 @@ type LookupFleetResult struct {
 	// Configuration Options for Spot instances in Compute Fleet.
 	SpotPriorityProfile *SpotPriorityProfileResponse `pulumi:"spotPriorityProfile"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Specifies the time at which the Compute Fleet is created.
@@ -132,8 +131,8 @@ func (o LookupFleetResultOutput) Id() pulumi.StringOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o LookupFleetResultOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupFleetResult) *commontypesv5.ManagedServiceIdentityResponse { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+func (o LookupFleetResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupFleetResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -147,8 +146,8 @@ func (o LookupFleetResultOutput) Name() pulumi.StringOutput {
 }
 
 // Details of the resource plan.
-func (o LookupFleetResultOutput) Plan() commontypesv5.PlanResponsePtrOutput {
-	return o.ApplyT(func(v LookupFleetResult) *commontypesv5.PlanResponse { return v.Plan }).(commontypesv5.PlanResponsePtrOutput)
+func (o LookupFleetResultOutput) Plan() PlanResponsePtrOutput {
+	return o.ApplyT(func(v LookupFleetResult) *PlanResponse { return v.Plan }).(PlanResponsePtrOutput)
 }
 
 // The status of the last operation.
@@ -167,8 +166,8 @@ func (o LookupFleetResultOutput) SpotPriorityProfile() SpotPriorityProfileRespon
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupFleetResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupFleetResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupFleetResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupFleetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -52,7 +51,7 @@ type LookupPeriodicTimerEventTriggerResult struct {
 	// Periodic timer details.
 	SourceInfo PeriodicTimerSourceInfoResponse `pulumi:"sourceInfo"`
 	// Metadata pertaining to creation and last modification of Trigger
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type string `pulumi:"type"`
 }
@@ -131,8 +130,8 @@ func (o LookupPeriodicTimerEventTriggerResultOutput) SourceInfo() PeriodicTimerS
 }
 
 // Metadata pertaining to creation and last modification of Trigger
-func (o LookupPeriodicTimerEventTriggerResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupPeriodicTimerEventTriggerResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o LookupPeriodicTimerEventTriggerResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPeriodicTimerEventTriggerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.

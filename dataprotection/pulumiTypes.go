@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -4814,7 +4813,7 @@ type DppIdentityDetailsResponse struct {
 	// The identityType which can be either SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' or None
 	Type *string `pulumi:"type"`
 	// Gets or sets the user assigned identities.
-	UserAssignedIdentities map[string]commontypesv4.UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
 }
 
 // Identity details
@@ -4848,10 +4847,10 @@ func (o DppIdentityDetailsResponseOutput) Type() pulumi.StringPtrOutput {
 }
 
 // Gets or sets the user assigned identities.
-func (o DppIdentityDetailsResponseOutput) UserAssignedIdentities() commontypesv4.UserAssignedIdentityResponseMapOutput {
-	return o.ApplyT(func(v DppIdentityDetailsResponse) map[string]commontypesv4.UserAssignedIdentityResponse {
+func (o DppIdentityDetailsResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v DppIdentityDetailsResponse) map[string]UserAssignedIdentityResponse {
 		return v.UserAssignedIdentities
-	}).(commontypesv4.UserAssignedIdentityResponseMapOutput)
+	}).(UserAssignedIdentityResponseMapOutput)
 }
 
 type DppIdentityDetailsResponsePtrOutput struct{ *pulumi.OutputState }
@@ -4909,13 +4908,13 @@ func (o DppIdentityDetailsResponsePtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // Gets or sets the user assigned identities.
-func (o DppIdentityDetailsResponsePtrOutput) UserAssignedIdentities() commontypesv4.UserAssignedIdentityResponseMapOutput {
-	return o.ApplyT(func(v *DppIdentityDetailsResponse) map[string]commontypesv4.UserAssignedIdentityResponse {
+func (o DppIdentityDetailsResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v *DppIdentityDetailsResponse) map[string]UserAssignedIdentityResponse {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(commontypesv4.UserAssignedIdentityResponseMapOutput)
+	}).(UserAssignedIdentityResponseMapOutput)
 }
 
 // Customer Managed Key details of the resource.
@@ -9766,6 +9765,67 @@ func (o StorageSettingResponseArrayOutput) Index(i pulumi.IntInput) StorageSetti
 	}).(StorageSettingResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponse struct {
+	// The timestamp of resource creation (UTC).
+	CreatedAt *string `pulumi:"createdAt"`
+	// The identity that created the resource.
+	CreatedBy *string `pulumi:"createdBy"`
+	// The type of identity that created the resource.
+	CreatedByType *string `pulumi:"createdByType"`
+	// The timestamp of resource last modification (UTC)
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// The identity that last modified the resource.
+	LastModifiedBy *string `pulumi:"lastModifiedBy"`
+	// The type of identity that last modified the resource.
+	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+	return o
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+	return o
+}
+
+// The timestamp of resource creation (UTC).
+func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that created the resource.
+func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that created the resource.
+func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of resource last modification (UTC)
+func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+}
+
 // Tagging criteria
 type TaggingCriteria struct {
 	// Criteria which decides whether the tag can be applied to a triggered backup.
@@ -10120,6 +10180,59 @@ func (o TargetCopySettingResponseArrayOutput) Index(i pulumi.IntInput) TargetCop
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetCopySettingResponse {
 		return vs[0].([]TargetCopySettingResponse)[vs[1].(int)]
 	}).(TargetCopySettingResponseOutput)
+}
+
+// User assigned identity properties
+type UserAssignedIdentityResponse struct {
+	// The client ID of the assigned identity.
+	ClientId string `pulumi:"clientId"`
+	// The principal ID of the assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+}
+
+// User assigned identity properties
+type UserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput() UserAssignedIdentityResponseOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutputWithContext(ctx context.Context) UserAssignedIdentityResponseOutput {
+	return o
+}
+
+// The client ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The principal ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+type UserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutput() UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
+		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
+	}).(UserAssignedIdentityResponseOutput)
 }
 
 // Error object used by layers that have access to localized content, and propagate that to user
@@ -10496,6 +10609,7 @@ func init() {
 	pulumi.RegisterOutputType(StorageSettingArrayOutput{})
 	pulumi.RegisterOutputType(StorageSettingResponseOutput{})
 	pulumi.RegisterOutputType(StorageSettingResponseArrayOutput{})
+	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(TaggingCriteriaOutput{})
 	pulumi.RegisterOutputType(TaggingCriteriaArrayOutput{})
 	pulumi.RegisterOutputType(TaggingCriteriaResponseOutput{})
@@ -10504,6 +10618,8 @@ func init() {
 	pulumi.RegisterOutputType(TargetCopySettingArrayOutput{})
 	pulumi.RegisterOutputType(TargetCopySettingResponseOutput{})
 	pulumi.RegisterOutputType(TargetCopySettingResponseArrayOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 	pulumi.RegisterOutputType(UserFacingErrorResponseOutput{})
 	pulumi.RegisterOutputType(UserFacingErrorResponsePtrOutput{})
 	pulumi.RegisterOutputType(UserFacingErrorResponseArrayOutput{})

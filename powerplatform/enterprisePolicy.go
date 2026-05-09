@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -38,7 +37,7 @@ type EnterprisePolicy struct {
 	// Settings concerning network injection.
 	NetworkInjection PropertiesResponseNetworkInjectionPtrOutput `pulumi:"networkInjection"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The internally assigned unique identifier of the resource.
 	SystemId pulumi.StringOutput `pulumi:"systemId"`
 	// Resource tags.
@@ -228,8 +227,8 @@ func (o EnterprisePolicyOutput) NetworkInjection() PropertiesResponseNetworkInje
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o EnterprisePolicyOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *EnterprisePolicy) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o EnterprisePolicyOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *EnterprisePolicy) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The internally assigned unique identifier of the resource.

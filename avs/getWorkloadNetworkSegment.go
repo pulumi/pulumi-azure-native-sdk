@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -59,7 +58,7 @@ type LookupWorkloadNetworkSegmentResult struct {
 	// Subnet which to connect segment to.
 	Subnet *WorkloadNetworkSegmentSubnetResponse `pulumi:"subnet"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -152,8 +151,8 @@ func (o LookupWorkloadNetworkSegmentResultOutput) Subnet() WorkloadNetworkSegmen
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupWorkloadNetworkSegmentResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupWorkloadNetworkSegmentResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupWorkloadNetworkSegmentResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupWorkloadNetworkSegmentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

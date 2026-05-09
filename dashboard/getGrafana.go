@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -41,7 +40,7 @@ type LookupGrafanaResult struct {
 	// ARM id of the grafana resource
 	Id string `pulumi:"id"`
 	// The managed identity of the grafana resource.
-	Identity *commontypesv3.ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the grafana resource lives
 	Location *string `pulumi:"location"`
 	// Name of the grafana resource.
@@ -51,7 +50,7 @@ type LookupGrafanaResult struct {
 	// The Sku of the grafana resource.
 	Sku *ResourceSkuResponse `pulumi:"sku"`
 	// The system meta data relating to this grafana resource.
-	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The tags for grafana resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the grafana resource.
@@ -114,8 +113,8 @@ func (o LookupGrafanaResultOutput) Id() pulumi.StringOutput {
 }
 
 // The managed identity of the grafana resource.
-func (o LookupGrafanaResultOutput) Identity() commontypesv3.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupGrafanaResult) *commontypesv3.ManagedServiceIdentityResponse { return v.Identity }).(commontypesv3.ManagedServiceIdentityResponsePtrOutput)
+func (o LookupGrafanaResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupGrafanaResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the grafana resource lives
@@ -139,8 +138,8 @@ func (o LookupGrafanaResultOutput) Sku() ResourceSkuResponsePtrOutput {
 }
 
 // The system meta data relating to this grafana resource.
-func (o LookupGrafanaResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupGrafanaResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o LookupGrafanaResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupGrafanaResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The tags for grafana resource.

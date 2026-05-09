@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -36,7 +35,7 @@ type LicenseProfile struct {
 	// The timestamp in UTC when the user enrolls the feature.
 	EnrollmentDate pulumi.StringOutput `pulumi:"enrollmentDate"`
 	// The errors that were encountered during the feature enrollment or disenrollment.
-	Error commontypesv3.ErrorDetailResponseOutput `pulumi:"error"`
+	Error ErrorDetailResponseOutput `pulumi:"error"`
 	// Indicates the eligibility state of Esu.
 	EsuEligibility pulumi.StringOutput `pulumi:"esuEligibility"`
 	// Indicates whether there is an ESU Key currently active for the machine.
@@ -60,7 +59,7 @@ type LicenseProfile struct {
 	// Indicates the subscription status of the product.
 	SubscriptionStatus pulumi.StringPtrOutput `pulumi:"subscriptionStatus"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -274,8 +273,8 @@ func (o LicenseProfileOutput) EnrollmentDate() pulumi.StringOutput {
 }
 
 // The errors that were encountered during the feature enrollment or disenrollment.
-func (o LicenseProfileOutput) Error() commontypesv3.ErrorDetailResponseOutput {
-	return o.ApplyT(func(v *LicenseProfile) commontypesv3.ErrorDetailResponseOutput { return v.Error }).(commontypesv3.ErrorDetailResponseOutput)
+func (o LicenseProfileOutput) Error() ErrorDetailResponseOutput {
+	return o.ApplyT(func(v *LicenseProfile) ErrorDetailResponseOutput { return v.Error }).(ErrorDetailResponseOutput)
 }
 
 // Indicates the eligibility state of Esu.
@@ -334,8 +333,8 @@ func (o LicenseProfileOutput) SubscriptionStatus() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LicenseProfileOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v *LicenseProfile) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o LicenseProfileOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *LicenseProfile) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

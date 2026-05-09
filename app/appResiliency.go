@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -32,7 +31,7 @@ type AppResiliency struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Defines parameters for tcp connection pooling
 	TcpConnectionPool TcpConnectionPoolResponsePtrOutput `pulumi:"tcpConnectionPool"`
 	// Policy that defines tcp request retry conditions
@@ -218,8 +217,8 @@ func (o AppResiliencyOutput) Name() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o AppResiliencyOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *AppResiliency) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o AppResiliencyOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *AppResiliency) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Defines parameters for tcp connection pooling

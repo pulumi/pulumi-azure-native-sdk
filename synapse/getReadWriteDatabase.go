@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv1"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -60,7 +59,7 @@ type LookupReadWriteDatabaseResult struct {
 	// The statistics of the database.
 	Statistics DatabaseStatisticsResponse `pulumi:"statistics"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv1.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -156,8 +155,8 @@ func (o LookupReadWriteDatabaseResultOutput) Statistics() DatabaseStatisticsResp
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupReadWriteDatabaseResultOutput) SystemData() commontypesv1.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupReadWriteDatabaseResult) commontypesv1.SystemDataResponse { return v.SystemData }).(commontypesv1.SystemDataResponseOutput)
+func (o LookupReadWriteDatabaseResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupReadWriteDatabaseResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -53,7 +52,7 @@ type LookupFleetspaceResult struct {
 	// Service Tier for the fleetspace. GeneralPurpose types refers to single write region accounts that can be added to this fleetspace, whereas BusinessCritical refers to multi write region.
 	ServiceTier *string `pulumi:"serviceTier"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv6.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Configuration for throughput pool in the fleetspace.
 	ThroughputPoolConfiguration *FleetspacePropertiesResponseThroughputPoolConfiguration `pulumi:"throughputPoolConfiguration"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -133,8 +132,8 @@ func (o LookupFleetspaceResultOutput) ServiceTier() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupFleetspaceResultOutput) SystemData() commontypesv6.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupFleetspaceResult) commontypesv6.SystemDataResponse { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
+func (o LookupFleetspaceResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupFleetspaceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Configuration for throughput pool in the fleetspace.

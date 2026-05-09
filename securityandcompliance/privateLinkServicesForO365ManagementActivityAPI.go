@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -34,7 +33,7 @@ type PrivateLinkServicesForO365ManagementActivityAPI struct {
 	// The common properties of a service.
 	Properties ServicesPropertiesResponseOutput `pulumi:"properties"`
 	// Required property for system data
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The resource type.
@@ -207,10 +206,8 @@ func (o PrivateLinkServicesForO365ManagementActivityAPIOutput) Properties() Serv
 }
 
 // Required property for system data
-func (o PrivateLinkServicesForO365ManagementActivityAPIOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *PrivateLinkServicesForO365ManagementActivityAPI) commontypesv2.SystemDataResponseOutput {
-		return v.SystemData
-	}).(commontypesv2.SystemDataResponseOutput)
+func (o PrivateLinkServicesForO365ManagementActivityAPIOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *PrivateLinkServicesForO365ManagementActivityAPI) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The resource tags.

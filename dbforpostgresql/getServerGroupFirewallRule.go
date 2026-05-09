@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -51,7 +50,7 @@ type LookupServerGroupFirewallRuleResult struct {
 	// The start IP address of the cluster firewall rule. Must be IPv4 format.
 	StartIpAddress string `pulumi:"startIpAddress"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv4.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -124,8 +123,8 @@ func (o LookupServerGroupFirewallRuleResultOutput) StartIpAddress() pulumi.Strin
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupServerGroupFirewallRuleResultOutput) SystemData() commontypesv4.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupServerGroupFirewallRuleResult) commontypesv4.SystemDataResponse { return v.SystemData }).(commontypesv4.SystemDataResponseOutput)
+func (o LookupServerGroupFirewallRuleResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupServerGroupFirewallRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

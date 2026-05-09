@@ -7,8 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -44,17 +42,17 @@ type LookupFlowResult struct {
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The managed identity of the flow resource, if configured.
-	Identity *commontypesv3.ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Plan for the resource.
-	Plan *commontypesv5.PlanResponse `pulumi:"plan"`
+	Plan *PlanResponse `pulumi:"plan"`
 	// Properties of flow
 	Properties FlowPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -109,8 +107,8 @@ func (o LookupFlowResultOutput) Id() pulumi.StringOutput {
 }
 
 // The managed identity of the flow resource, if configured.
-func (o LookupFlowResultOutput) Identity() commontypesv3.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupFlowResult) *commontypesv3.ManagedServiceIdentityResponse { return v.Identity }).(commontypesv3.ManagedServiceIdentityResponsePtrOutput)
+func (o LookupFlowResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupFlowResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -124,8 +122,8 @@ func (o LookupFlowResultOutput) Name() pulumi.StringOutput {
 }
 
 // Plan for the resource.
-func (o LookupFlowResultOutput) Plan() commontypesv5.PlanResponsePtrOutput {
-	return o.ApplyT(func(v LookupFlowResult) *commontypesv5.PlanResponse { return v.Plan }).(commontypesv5.PlanResponsePtrOutput)
+func (o LookupFlowResultOutput) Plan() PlanResponsePtrOutput {
+	return o.ApplyT(func(v LookupFlowResult) *PlanResponse { return v.Plan }).(PlanResponsePtrOutput)
 }
 
 // Properties of flow
@@ -134,8 +132,8 @@ func (o LookupFlowResultOutput) Properties() FlowPropertiesResponseOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupFlowResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupFlowResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupFlowResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupFlowResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

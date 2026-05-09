@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -71,7 +70,7 @@ type LookupAgentPoolResult struct {
 	// HybridAKSNodePoolStatus defines the observed state of HybridAKSNodePool
 	Status *AgentPoolProvisioningStatusResponseStatus `pulumi:"status"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
 	// Resource Type
@@ -222,8 +221,8 @@ func (o LookupAgentPoolResultOutput) Status() AgentPoolProvisioningStatusRespons
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupAgentPoolResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAgentPoolResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o LookupAgentPoolResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAgentPoolResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags

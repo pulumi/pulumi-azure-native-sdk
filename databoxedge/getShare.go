@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -63,7 +62,7 @@ type LookupShareResult struct {
 	// Current status of the share.
 	ShareStatus string `pulumi:"shareStatus"`
 	// Metadata pertaining to creation and last modification of Share
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type string `pulumi:"type"`
 	// Mapping of users and corresponding access rights on the share (required for SMB protocol).
@@ -168,8 +167,8 @@ func (o LookupShareResultOutput) ShareStatus() pulumi.StringOutput {
 }
 
 // Metadata pertaining to creation and last modification of Share
-func (o LookupShareResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupShareResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o LookupShareResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupShareResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.

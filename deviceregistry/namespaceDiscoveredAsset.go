@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -78,7 +77,7 @@ type NamespaceDiscoveredAsset struct {
 	// Array of streams that are part of the asset. Each stream can have a per-stream configuration.
 	Streams NamespaceDiscoveredStreamResponseArrayOutput `pulumi:"streams"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -474,8 +473,8 @@ func (o NamespaceDiscoveredAssetOutput) Streams() NamespaceDiscoveredStreamRespo
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o NamespaceDiscoveredAssetOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *NamespaceDiscoveredAsset) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o NamespaceDiscoveredAssetOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *NamespaceDiscoveredAsset) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

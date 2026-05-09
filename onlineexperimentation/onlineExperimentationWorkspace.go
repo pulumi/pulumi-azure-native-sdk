@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -24,7 +23,7 @@ type OnlineExperimentationWorkspace struct {
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The managed service identities assigned to this resource.
-	Identity commontypesv6.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -34,7 +33,7 @@ type OnlineExperimentationWorkspace struct {
 	// The SKU (Stock Keeping Unit) assigned to this resource.
 	Sku OnlineExperimentationWorkspaceSkuResponsePtrOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv6.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -94,7 +93,7 @@ func (OnlineExperimentationWorkspaceState) ElementType() reflect.Type {
 
 type onlineExperimentationWorkspaceArgs struct {
 	// The managed service identities assigned to this resource.
-	Identity *commontypesv6.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The resource-specific properties for this resource.
@@ -112,7 +111,7 @@ type onlineExperimentationWorkspaceArgs struct {
 // The set of arguments for constructing a OnlineExperimentationWorkspace resource.
 type OnlineExperimentationWorkspaceArgs struct {
 	// The managed service identities assigned to this resource.
-	Identity commontypesv6.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The resource-specific properties for this resource.
@@ -170,10 +169,8 @@ func (o OnlineExperimentationWorkspaceOutput) AzureApiVersion() pulumi.StringOut
 }
 
 // The managed service identities assigned to this resource.
-func (o OnlineExperimentationWorkspaceOutput) Identity() commontypesv6.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *OnlineExperimentationWorkspace) commontypesv6.ManagedServiceIdentityResponsePtrOutput {
-		return v.Identity
-	}).(commontypesv6.ManagedServiceIdentityResponsePtrOutput)
+func (o OnlineExperimentationWorkspaceOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *OnlineExperimentationWorkspace) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -201,8 +198,8 @@ func (o OnlineExperimentationWorkspaceOutput) Sku() OnlineExperimentationWorkspa
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o OnlineExperimentationWorkspaceOutput) SystemData() commontypesv6.SystemDataResponseOutput {
-	return o.ApplyT(func(v *OnlineExperimentationWorkspace) commontypesv6.SystemDataResponseOutput { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
+func (o OnlineExperimentationWorkspaceOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *OnlineExperimentationWorkspace) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

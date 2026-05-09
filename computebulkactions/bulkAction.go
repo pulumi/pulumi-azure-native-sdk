@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -22,15 +21,15 @@ type BulkAction struct {
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The managed service identities assigned to this resource.
-	Identity commontypesv6.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Details of the resource plan.
-	Plan commontypesv6.PlanResponsePtrOutput `pulumi:"plan"`
+	Plan PlanResponsePtrOutput `pulumi:"plan"`
 	// The resource-specific properties for this resource.
 	Properties LaunchBulkInstancesOperationPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv6.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -92,13 +91,13 @@ func (BulkActionState) ElementType() reflect.Type {
 
 type bulkActionArgs struct {
 	// The managed service identities assigned to this resource.
-	Identity *commontypesv6.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The location name.
 	Location string `pulumi:"location"`
 	// The name of the LaunchBulkInstancesOperation.
 	Name *string `pulumi:"name"`
 	// Details of the resource plan.
-	Plan *commontypesv6.Plan `pulumi:"plan"`
+	Plan *Plan `pulumi:"plan"`
 	// The resource-specific properties for this resource.
 	Properties *LaunchBulkInstancesOperationProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
@@ -112,13 +111,13 @@ type bulkActionArgs struct {
 // The set of arguments for constructing a BulkAction resource.
 type BulkActionArgs struct {
 	// The managed service identities assigned to this resource.
-	Identity commontypesv6.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// The location name.
 	Location pulumi.StringInput
 	// The name of the LaunchBulkInstancesOperation.
 	Name pulumi.StringPtrInput
 	// Details of the resource plan.
-	Plan commontypesv6.PlanPtrInput
+	Plan PlanPtrInput
 	// The resource-specific properties for this resource.
 	Properties LaunchBulkInstancesOperationPropertiesPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -172,8 +171,8 @@ func (o BulkActionOutput) AzureApiVersion() pulumi.StringOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o BulkActionOutput) Identity() commontypesv6.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *BulkAction) commontypesv6.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv6.ManagedServiceIdentityResponsePtrOutput)
+func (o BulkActionOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *BulkAction) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The name of the resource
@@ -182,8 +181,8 @@ func (o BulkActionOutput) Name() pulumi.StringOutput {
 }
 
 // Details of the resource plan.
-func (o BulkActionOutput) Plan() commontypesv6.PlanResponsePtrOutput {
-	return o.ApplyT(func(v *BulkAction) commontypesv6.PlanResponsePtrOutput { return v.Plan }).(commontypesv6.PlanResponsePtrOutput)
+func (o BulkActionOutput) Plan() PlanResponsePtrOutput {
+	return o.ApplyT(func(v *BulkAction) PlanResponsePtrOutput { return v.Plan }).(PlanResponsePtrOutput)
 }
 
 // The resource-specific properties for this resource.
@@ -192,8 +191,8 @@ func (o BulkActionOutput) Properties() LaunchBulkInstancesOperationPropertiesRes
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o BulkActionOutput) SystemData() commontypesv6.SystemDataResponseOutput {
-	return o.ApplyT(func(v *BulkAction) commontypesv6.SystemDataResponseOutput { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
+func (o BulkActionOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *BulkAction) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

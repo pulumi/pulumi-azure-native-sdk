@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -68,7 +67,7 @@ type ContentPackage struct {
 	// The support tier of the package
 	Support MetadataSupportResponsePtrOutput `pulumi:"support"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// the tactics the resource covers
 	ThreatAnalysisTactics pulumi.StringArrayOutput `pulumi:"threatAnalysisTactics"`
 	// the techniques the resource covers, these have to be aligned with the tactics being used
@@ -466,8 +465,8 @@ func (o ContentPackageOutput) Support() MetadataSupportResponsePtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ContentPackageOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *ContentPackage) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o ContentPackageOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ContentPackage) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // the tactics the resource covers

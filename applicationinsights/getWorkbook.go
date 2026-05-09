@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv1"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -67,7 +66,7 @@ type LookupWorkbookResult struct {
 	// The resourceId to the storage account when bring your own storage is used
 	StorageUri *string `pulumi:"storageUri"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData commontypesv1.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Date and time in UTC of the last modification that was made to this workbook definition.
@@ -188,8 +187,8 @@ func (o LookupWorkbookResultOutput) StorageUri() pulumi.StringPtrOutput {
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupWorkbookResultOutput) SystemData() commontypesv1.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupWorkbookResult) commontypesv1.SystemDataResponse { return v.SystemData }).(commontypesv1.SystemDataResponseOutput)
+func (o LookupWorkbookResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupWorkbookResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

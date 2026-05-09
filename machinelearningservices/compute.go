@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -24,7 +23,7 @@ type Compute struct {
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The identity of the resource.
-	Identity commontypesv3.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Specifies the location of the resource.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The name of the resource
@@ -32,9 +31,9 @@ type Compute struct {
 	// The resource-specific properties for this resource.
 	Properties pulumi.AnyOutput `pulumi:"properties"`
 	// The sku of the workspace.
-	Sku commontypesv3.SkuResponsePtrOutput `pulumi:"sku"`
+	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Contains resource tags defined as key/value pairs.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -231,7 +230,7 @@ type computeArgs struct {
 	// Name of the Azure Machine Learning compute.
 	ComputeName *string `pulumi:"computeName"`
 	// The identity of the resource.
-	Identity *commontypesv3.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// Specifies the location of the resource.
 	Location *string `pulumi:"location"`
 	// The resource-specific properties for this resource.
@@ -239,7 +238,7 @@ type computeArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The sku of the workspace.
-	Sku *commontypesv3.Sku `pulumi:"sku"`
+	Sku *Sku `pulumi:"sku"`
 	// Contains resource tags defined as key/value pairs.
 	Tags map[string]string `pulumi:"tags"`
 	// Azure Machine Learning Workspace Name
@@ -251,7 +250,7 @@ type ComputeArgs struct {
 	// Name of the Azure Machine Learning compute.
 	ComputeName pulumi.StringPtrInput
 	// The identity of the resource.
-	Identity commontypesv3.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// Specifies the location of the resource.
 	Location pulumi.StringPtrInput
 	// The resource-specific properties for this resource.
@@ -259,7 +258,7 @@ type ComputeArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The sku of the workspace.
-	Sku commontypesv3.SkuPtrInput
+	Sku SkuPtrInput
 	// Contains resource tags defined as key/value pairs.
 	Tags pulumi.StringMapInput
 	// Azure Machine Learning Workspace Name
@@ -309,8 +308,8 @@ func (o ComputeOutput) AzureApiVersion() pulumi.StringOutput {
 }
 
 // The identity of the resource.
-func (o ComputeOutput) Identity() commontypesv3.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *Compute) commontypesv3.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv3.ManagedServiceIdentityResponsePtrOutput)
+func (o ComputeOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Compute) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Specifies the location of the resource.
@@ -329,13 +328,13 @@ func (o ComputeOutput) Properties() pulumi.AnyOutput {
 }
 
 // The sku of the workspace.
-func (o ComputeOutput) Sku() commontypesv3.SkuResponsePtrOutput {
-	return o.ApplyT(func(v *Compute) commontypesv3.SkuResponsePtrOutput { return v.Sku }).(commontypesv3.SkuResponsePtrOutput)
+func (o ComputeOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v *Compute) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ComputeOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Compute) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o ComputeOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Compute) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Contains resource tags defined as key/value pairs.

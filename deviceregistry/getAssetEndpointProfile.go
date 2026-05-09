@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -59,7 +58,7 @@ type LookupAssetEndpointProfileResult struct {
 	// Read only object to reflect changes that have occurred on the Edge. Similar to Kubernetes status property for custom resources.
 	Status AssetEndpointProfileStatusResponse `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
@@ -171,8 +170,8 @@ func (o LookupAssetEndpointProfileResultOutput) Status() AssetEndpointProfileSta
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupAssetEndpointProfileResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAssetEndpointProfileResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupAssetEndpointProfileResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAssetEndpointProfileResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

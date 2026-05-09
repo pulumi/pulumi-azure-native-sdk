@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -50,7 +49,7 @@ type NetworkToNetworkInterconnect struct {
 	// Provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Based on this option layer3 parameters are mandatory. Example: True/False
@@ -309,8 +308,8 @@ func (o NetworkToNetworkInterconnectOutput) ProvisioningState() pulumi.StringOut
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o NetworkToNetworkInterconnectOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *NetworkToNetworkInterconnect) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o NetworkToNetworkInterconnectOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *NetworkToNetworkInterconnect) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -30,7 +29,7 @@ type RaiPolicy struct {
 	// Properties of Cognitive Services RaiPolicy.
 	Properties RaiPolicyPropertiesResponseOutput `pulumi:"properties"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -197,8 +196,8 @@ func (o RaiPolicyOutput) Properties() RaiPolicyPropertiesResponseOutput {
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o RaiPolicyOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *RaiPolicy) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o RaiPolicyOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *RaiPolicy) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -35,7 +34,7 @@ type CloudEdgeManagementRole struct {
 	// Role status.
 	RoleStatus pulumi.StringOutput `pulumi:"roleStatus"`
 	// Metadata pertaining to creation and last modification of Role
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -280,8 +279,8 @@ func (o CloudEdgeManagementRoleOutput) RoleStatus() pulumi.StringOutput {
 }
 
 // Metadata pertaining to creation and last modification of Role
-func (o CloudEdgeManagementRoleOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *CloudEdgeManagementRole) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o CloudEdgeManagementRoleOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *CloudEdgeManagementRole) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.

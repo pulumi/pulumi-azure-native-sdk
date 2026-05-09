@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -53,7 +52,7 @@ type AnomalySecurityMLAnalyticsSettings struct {
 	// The anomaly SecurityMLAnalyticsSettings status
 	SettingsStatus pulumi.StringOutput `pulumi:"settingsStatus"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The tactics of the SecurityMLAnalyticsSettings
 	Tactics pulumi.StringArrayOutput `pulumi:"tactics"`
 	// The techniques of the SecurityMLAnalyticsSettings
@@ -426,10 +425,8 @@ func (o AnomalySecurityMLAnalyticsSettingsOutput) SettingsStatus() pulumi.String
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o AnomalySecurityMLAnalyticsSettingsOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *AnomalySecurityMLAnalyticsSettings) commontypesv5.SystemDataResponseOutput {
-		return v.SystemData
-	}).(commontypesv5.SystemDataResponseOutput)
+func (o AnomalySecurityMLAnalyticsSettingsOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *AnomalySecurityMLAnalyticsSettings) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The tactics of the SecurityMLAnalyticsSettings

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -24,7 +23,7 @@ type Namespace struct {
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The managed service identities assigned to this resource.
-	Identity commontypesv5.SystemAssignedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity SystemAssignedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Assigned and unassigned messaging endpoints.
@@ -34,7 +33,7 @@ type Namespace struct {
 	// Provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -108,7 +107,7 @@ func (NamespaceState) ElementType() reflect.Type {
 
 type namespaceArgs struct {
 	// The managed service identities assigned to this resource.
-	Identity *commontypesv5.SystemAssignedServiceIdentity `pulumi:"identity"`
+	Identity *SystemAssignedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Assigned and unassigned messaging endpoints.
@@ -124,7 +123,7 @@ type namespaceArgs struct {
 // The set of arguments for constructing a Namespace resource.
 type NamespaceArgs struct {
 	// The managed service identities assigned to this resource.
-	Identity commontypesv5.SystemAssignedServiceIdentityPtrInput
+	Identity SystemAssignedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Assigned and unassigned messaging endpoints.
@@ -180,8 +179,8 @@ func (o NamespaceOutput) AzureApiVersion() pulumi.StringOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o NamespaceOutput) Identity() commontypesv5.SystemAssignedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *Namespace) commontypesv5.SystemAssignedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv5.SystemAssignedServiceIdentityResponsePtrOutput)
+func (o NamespaceOutput) Identity() SystemAssignedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Namespace) SystemAssignedServiceIdentityResponsePtrOutput { return v.Identity }).(SystemAssignedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -205,8 +204,8 @@ func (o NamespaceOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o NamespaceOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Namespace) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o NamespaceOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Namespace) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

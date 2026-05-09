@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -64,7 +63,7 @@ type ServerEndpoint struct {
 	// Server Endpoint sync status
 	SyncStatus ServerEndpointSyncStatusResponseOutput `pulumi:"syncStatus"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Tier files older than days.
 	TierFilesOlderThanDays pulumi.IntPtrOutput `pulumi:"tierFilesOlderThanDays"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -387,8 +386,8 @@ func (o ServerEndpointOutput) SyncStatus() ServerEndpointSyncStatusResponseOutpu
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ServerEndpointOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *ServerEndpoint) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o ServerEndpointOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ServerEndpoint) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Tier files older than days.

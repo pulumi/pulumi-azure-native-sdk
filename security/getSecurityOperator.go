@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -39,7 +38,7 @@ type LookupSecurityOperatorResult struct {
 	// Resource Id
 	Id string `pulumi:"id"`
 	// Identity for the resource.
-	Identity *commontypesv2.IdentityResponse `pulumi:"identity"`
+	Identity *IdentityResponse `pulumi:"identity"`
 	// Resource name
 	Name string `pulumi:"name"`
 	// Resource type
@@ -92,8 +91,8 @@ func (o LookupSecurityOperatorResultOutput) Id() pulumi.StringOutput {
 }
 
 // Identity for the resource.
-func (o LookupSecurityOperatorResultOutput) Identity() commontypesv2.IdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupSecurityOperatorResult) *commontypesv2.IdentityResponse { return v.Identity }).(commontypesv2.IdentityResponsePtrOutput)
+func (o LookupSecurityOperatorResultOutput) Identity() IdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupSecurityOperatorResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
 // Resource name

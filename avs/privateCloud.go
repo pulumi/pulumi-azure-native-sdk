@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -41,7 +40,7 @@ type PrivateCloud struct {
 	// Array of cloud link IDs from other clouds that connect to this one
 	ExternalCloudLinks pulumi.StringArrayOutput `pulumi:"externalCloudLinks"`
 	// The managed service identities assigned to this resource.
-	Identity commontypesv5.SystemAssignedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity SystemAssignedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// vCenter Single Sign On Identity Sources
 	IdentitySources IdentitySourceResponseArrayOutput `pulumi:"identitySources"`
 	// Connectivity to internet is enabled or disabled
@@ -73,9 +72,9 @@ type PrivateCloud struct {
 	// stretched private cloud
 	SecondaryCircuit CircuitResponsePtrOutput `pulumi:"secondaryCircuit"`
 	// The SKU (Stock Keeping Unit) assigned to this resource.
-	Sku commontypesv5.SkuResponseOutput `pulumi:"sku"`
+	Sku SkuResponseOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -190,7 +189,7 @@ type privateCloudArgs struct {
 	// (A.B.C.D/X).
 	ExtendedNetworkBlocks []string `pulumi:"extendedNetworkBlocks"`
 	// The managed service identities assigned to this resource.
-	Identity *commontypesv5.SystemAssignedServiceIdentity `pulumi:"identity"`
+	Identity *SystemAssignedServiceIdentity `pulumi:"identity"`
 	// vCenter Single Sign On Identity Sources
 	IdentitySources []IdentitySource `pulumi:"identitySources"`
 	// Connectivity to internet is enabled or disabled
@@ -210,7 +209,7 @@ type privateCloudArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The SKU (Stock Keeping Unit) assigned to this resource.
-	Sku commontypesv5.Sku `pulumi:"sku"`
+	Sku Sku `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Optionally, set the vCenter admin password when the private cloud is created
@@ -233,7 +232,7 @@ type PrivateCloudArgs struct {
 	// (A.B.C.D/X).
 	ExtendedNetworkBlocks pulumi.StringArrayInput
 	// The managed service identities assigned to this resource.
-	Identity commontypesv5.SystemAssignedServiceIdentityPtrInput
+	Identity SystemAssignedServiceIdentityPtrInput
 	// vCenter Single Sign On Identity Sources
 	IdentitySources IdentitySourceArrayInput
 	// Connectivity to internet is enabled or disabled
@@ -253,7 +252,7 @@ type PrivateCloudArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The SKU (Stock Keeping Unit) assigned to this resource.
-	Sku commontypesv5.SkuInput
+	Sku SkuInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 	// Optionally, set the vCenter admin password when the private cloud is created
@@ -343,8 +342,8 @@ func (o PrivateCloudOutput) ExternalCloudLinks() pulumi.StringArrayOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o PrivateCloudOutput) Identity() commontypesv5.SystemAssignedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *PrivateCloud) commontypesv5.SystemAssignedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv5.SystemAssignedServiceIdentityResponsePtrOutput)
+func (o PrivateCloudOutput) Identity() SystemAssignedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *PrivateCloud) SystemAssignedServiceIdentityResponsePtrOutput { return v.Identity }).(SystemAssignedServiceIdentityResponsePtrOutput)
 }
 
 // vCenter Single Sign On Identity Sources
@@ -417,13 +416,13 @@ func (o PrivateCloudOutput) SecondaryCircuit() CircuitResponsePtrOutput {
 }
 
 // The SKU (Stock Keeping Unit) assigned to this resource.
-func (o PrivateCloudOutput) Sku() commontypesv5.SkuResponseOutput {
-	return o.ApplyT(func(v *PrivateCloud) commontypesv5.SkuResponseOutput { return v.Sku }).(commontypesv5.SkuResponseOutput)
+func (o PrivateCloudOutput) Sku() SkuResponseOutput {
+	return o.ApplyT(func(v *PrivateCloud) SkuResponseOutput { return v.Sku }).(SkuResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o PrivateCloudOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *PrivateCloud) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o PrivateCloudOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *PrivateCloud) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

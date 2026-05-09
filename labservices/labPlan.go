@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -32,7 +31,7 @@ type LabPlan struct {
 	// The lab plan network profile. To enforce lab network policies they must be defined here and cannot be changed when there are existing labs associated with this lab plan.
 	DefaultNetworkProfile LabPlanNetworkProfileResponsePtrOutput `pulumi:"defaultNetworkProfile"`
 	// Managed Identity Information
-	Identity commontypesv2.IdentityResponsePtrOutput `pulumi:"identity"`
+	Identity IdentityResponsePtrOutput `pulumi:"identity"`
 	// Base Url of the lms instance this lab plan can link lab rosters against.
 	LinkedLmsInstance pulumi.StringPtrOutput `pulumi:"linkedLmsInstance"`
 	// The geo-location where the resource lives
@@ -48,7 +47,7 @@ type LabPlan struct {
 	// Support contact information and instructions for users of the lab plan. This information is displayed to lab owners and virtual machine users for all labs in the lab plan.
 	SupportInfo SupportInfoResponsePtrOutput `pulumi:"supportInfo"`
 	// Metadata pertaining to creation and last modification of the lab plan.
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -128,7 +127,7 @@ type labPlanArgs struct {
 	// The lab plan network profile. To enforce lab network policies they must be defined here and cannot be changed when there are existing labs associated with this lab plan.
 	DefaultNetworkProfile *LabPlanNetworkProfile `pulumi:"defaultNetworkProfile"`
 	// Managed Identity Information
-	Identity *commontypesv2.Identity `pulumi:"identity"`
+	Identity *Identity `pulumi:"identity"`
 	// The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
 	LabPlanName *string `pulumi:"labPlanName"`
 	// Base Url of the lms instance this lab plan can link lab rosters against.
@@ -156,7 +155,7 @@ type LabPlanArgs struct {
 	// The lab plan network profile. To enforce lab network policies they must be defined here and cannot be changed when there are existing labs associated with this lab plan.
 	DefaultNetworkProfile LabPlanNetworkProfilePtrInput
 	// Managed Identity Information
-	Identity commontypesv2.IdentityPtrInput
+	Identity IdentityPtrInput
 	// The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
 	LabPlanName pulumi.StringPtrInput
 	// Base Url of the lms instance this lab plan can link lab rosters against.
@@ -236,8 +235,8 @@ func (o LabPlanOutput) DefaultNetworkProfile() LabPlanNetworkProfileResponsePtrO
 }
 
 // Managed Identity Information
-func (o LabPlanOutput) Identity() commontypesv2.IdentityResponsePtrOutput {
-	return o.ApplyT(func(v *LabPlan) commontypesv2.IdentityResponsePtrOutput { return v.Identity }).(commontypesv2.IdentityResponsePtrOutput)
+func (o LabPlanOutput) Identity() IdentityResponsePtrOutput {
+	return o.ApplyT(func(v *LabPlan) IdentityResponsePtrOutput { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
 // Base Url of the lms instance this lab plan can link lab rosters against.
@@ -276,8 +275,8 @@ func (o LabPlanOutput) SupportInfo() SupportInfoResponsePtrOutput {
 }
 
 // Metadata pertaining to creation and last modification of the lab plan.
-func (o LabPlanOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *LabPlan) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o LabPlanOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *LabPlan) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.
