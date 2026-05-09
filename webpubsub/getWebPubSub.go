@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -95,7 +94,7 @@ type LookupWebPubSubResult struct {
 	// SocketIO settings for the resource
 	SocketIO *WebPubSubSocketIOSettingsResponse `pulumi:"socketIO"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// TLS settings for the resource
@@ -304,8 +303,8 @@ func (o LookupWebPubSubResultOutput) SocketIO() WebPubSubSocketIOSettingsRespons
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupWebPubSubResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupWebPubSubResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupWebPubSubResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupWebPubSubResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

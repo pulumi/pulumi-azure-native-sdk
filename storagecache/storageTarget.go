@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -42,7 +41,7 @@ type StorageTarget struct {
 	// Storage target operational state.
 	State pulumi.StringPtrOutput `pulumi:"state"`
 	// The system meta data relating to this resource.
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Type of the Storage Target.
 	TargetType pulumi.StringOutput `pulumi:"targetType"`
 	// Type of the Storage Target; Microsoft.StorageCache/Cache/StorageTarget
@@ -288,8 +287,8 @@ func (o StorageTargetOutput) State() pulumi.StringPtrOutput {
 }
 
 // The system meta data relating to this resource.
-func (o StorageTargetOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *StorageTarget) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o StorageTargetOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *StorageTarget) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Type of the Storage Target.

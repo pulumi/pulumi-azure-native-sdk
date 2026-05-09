@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -40,7 +39,7 @@ type StorageAccountCredential struct {
 	// Id of the storage account.
 	StorageAccountId pulumi.StringPtrOutput `pulumi:"storageAccountId"`
 	// Metadata pertaining to creation and last modification of StorageAccountCredential
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Username for the storage account.
@@ -289,8 +288,8 @@ func (o StorageAccountCredentialOutput) StorageAccountId() pulumi.StringPtrOutpu
 }
 
 // Metadata pertaining to creation and last modification of StorageAccountCredential
-func (o StorageAccountCredentialOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *StorageAccountCredential) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o StorageAccountCredentialOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *StorageAccountCredential) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.

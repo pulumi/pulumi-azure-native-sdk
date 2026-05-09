@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -28,7 +27,7 @@ type CommunicationService struct {
 	// FQDN of the CommunicationService instance.
 	HostName pulumi.StringOutput `pulumi:"hostName"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity commontypesv5.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The immutable resource Id of the communication service.
 	ImmutableResourceId pulumi.StringOutput `pulumi:"immutableResourceId"`
 	// List of email Domain resource Ids.
@@ -42,7 +41,7 @@ type CommunicationService struct {
 	// Provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -144,7 +143,7 @@ type communicationServiceArgs struct {
 	// The location where the communication service stores its data at rest.
 	DataLocation string `pulumi:"dataLocation"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity *commontypesv5.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// List of email Domain resource Ids.
 	LinkedDomains []string `pulumi:"linkedDomains"`
 	// The geo-location where the resource lives
@@ -162,7 +161,7 @@ type CommunicationServiceArgs struct {
 	// The location where the communication service stores its data at rest.
 	DataLocation pulumi.StringInput
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity commontypesv5.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// List of email Domain resource Ids.
 	LinkedDomains pulumi.StringArrayInput
 	// The geo-location where the resource lives
@@ -226,8 +225,8 @@ func (o CommunicationServiceOutput) HostName() pulumi.StringOutput {
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
-func (o CommunicationServiceOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *CommunicationService) commontypesv5.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+func (o CommunicationServiceOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *CommunicationService) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The immutable resource Id of the communication service.
@@ -261,8 +260,8 @@ func (o CommunicationServiceOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o CommunicationServiceOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *CommunicationService) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o CommunicationServiceOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *CommunicationService) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

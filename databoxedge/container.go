@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -34,7 +33,7 @@ type Container struct {
 	// Details of the refresh job on this container.
 	RefreshDetails RefreshDetailsResponseOutput `pulumi:"refreshDetails"`
 	// Metadata pertaining to creation and last modification of Container
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -233,8 +232,8 @@ func (o ContainerOutput) RefreshDetails() RefreshDetailsResponseOutput {
 }
 
 // Metadata pertaining to creation and last modification of Container
-func (o ContainerOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Container) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o ContainerOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Container) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.

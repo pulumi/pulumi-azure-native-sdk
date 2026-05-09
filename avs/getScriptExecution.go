@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -73,7 +72,7 @@ type LookupScriptExecutionResult struct {
 	// Time the script execution was submitted
 	SubmittedAt string `pulumi:"submittedAt"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Time limit for execution
 	Timeout string `pulumi:"timeout"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -202,8 +201,8 @@ func (o LookupScriptExecutionResultOutput) SubmittedAt() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupScriptExecutionResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupScriptExecutionResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupScriptExecutionResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupScriptExecutionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Time limit for execution

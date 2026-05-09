@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -46,7 +45,7 @@ type LookupBackupPolicyResult struct {
 	// BaseBackupPolicyResource properties
 	Properties BackupPolicyResponse `pulumi:"properties"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData commontypesv4.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
 	Type string `pulumi:"type"`
 }
@@ -108,8 +107,8 @@ func (o LookupBackupPolicyResultOutput) Properties() BackupPolicyResponseOutput 
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupBackupPolicyResultOutput) SystemData() commontypesv4.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupBackupPolicyResult) commontypesv4.SystemDataResponse { return v.SystemData }).(commontypesv4.SystemDataResponseOutput)
+func (o LookupBackupPolicyResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupBackupPolicyResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...

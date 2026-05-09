@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -41,7 +40,7 @@ type LookupHybridIdentityMetadatumResult struct {
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Identity for the resource.
-	Identity commontypesv3.IdentityResponse `pulumi:"identity"`
+	Identity IdentityResponse `pulumi:"identity"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// The provisioning state.
@@ -51,7 +50,7 @@ type LookupHybridIdentityMetadatumResult struct {
 	// The unique identifier for the resource.
 	ResourceUid *string `pulumi:"resourceUid"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -104,8 +103,8 @@ func (o LookupHybridIdentityMetadatumResultOutput) Id() pulumi.StringOutput {
 }
 
 // Identity for the resource.
-func (o LookupHybridIdentityMetadatumResultOutput) Identity() commontypesv3.IdentityResponseOutput {
-	return o.ApplyT(func(v LookupHybridIdentityMetadatumResult) commontypesv3.IdentityResponse { return v.Identity }).(commontypesv3.IdentityResponseOutput)
+func (o LookupHybridIdentityMetadatumResultOutput) Identity() IdentityResponseOutput {
+	return o.ApplyT(func(v LookupHybridIdentityMetadatumResult) IdentityResponse { return v.Identity }).(IdentityResponseOutput)
 }
 
 // The name of the resource
@@ -129,8 +128,8 @@ func (o LookupHybridIdentityMetadatumResultOutput) ResourceUid() pulumi.StringPt
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupHybridIdentityMetadatumResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupHybridIdentityMetadatumResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o LookupHybridIdentityMetadatumResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupHybridIdentityMetadatumResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

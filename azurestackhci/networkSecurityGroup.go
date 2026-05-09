@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -40,7 +39,7 @@ type NetworkSecurityGroup struct {
 	// A collection of references to logical networks that are currently using this NSG
 	Subnets LogicalNetworkArmReferenceResponseArrayOutput `pulumi:"subnets"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -234,8 +233,8 @@ func (o NetworkSecurityGroupOutput) Subnets() LogicalNetworkArmReferenceResponse
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o NetworkSecurityGroupOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *NetworkSecurityGroup) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o NetworkSecurityGroupOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *NetworkSecurityGroup) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

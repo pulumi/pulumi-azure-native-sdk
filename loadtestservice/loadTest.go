@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -30,7 +29,7 @@ type LoadTest struct {
 	// CMK Encryption property.
 	Encryption EncryptionPropertiesResponsePtrOutput `pulumi:"encryption"`
 	// The managed service identities assigned to this resource.
-	Identity commontypesv5.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -38,7 +37,7 @@ type LoadTest struct {
 	// Resource provisioning state.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -108,7 +107,7 @@ type loadTestArgs struct {
 	// CMK Encryption property.
 	Encryption *EncryptionProperties `pulumi:"encryption"`
 	// The managed service identities assigned to this resource.
-	Identity *commontypesv5.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// Load Test name
 	LoadTestName *string `pulumi:"loadTestName"`
 	// The geo-location where the resource lives
@@ -126,7 +125,7 @@ type LoadTestArgs struct {
 	// CMK Encryption property.
 	Encryption EncryptionPropertiesPtrInput
 	// The managed service identities assigned to this resource.
-	Identity commontypesv5.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// Load Test name
 	LoadTestName pulumi.StringPtrInput
 	// The geo-location where the resource lives
@@ -195,8 +194,8 @@ func (o LoadTestOutput) Encryption() EncryptionPropertiesResponsePtrOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o LoadTestOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *LoadTest) commontypesv5.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+func (o LoadTestOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *LoadTest) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -215,8 +214,8 @@ func (o LoadTestOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LoadTestOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *LoadTest) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LoadTestOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *LoadTest) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -45,7 +44,7 @@ type LookupDatabaseMigrationServiceReplicationInstanceResult struct {
 	// The resource-specific properties for this resource.
 	Properties DatabaseMigrationServiceReplicationInstancePropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -115,10 +114,10 @@ func (o LookupDatabaseMigrationServiceReplicationInstanceResultOutput) Propertie
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupDatabaseMigrationServiceReplicationInstanceResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupDatabaseMigrationServiceReplicationInstanceResult) commontypesv5.SystemDataResponse {
+func (o LookupDatabaseMigrationServiceReplicationInstanceResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupDatabaseMigrationServiceReplicationInstanceResult) SystemDataResponse {
 		return v.SystemData
-	}).(commontypesv5.SystemDataResponseOutput)
+	}).(SystemDataResponseOutput)
 }
 
 // Resource tags.

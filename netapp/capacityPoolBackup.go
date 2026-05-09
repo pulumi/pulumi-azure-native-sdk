@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -40,7 +39,7 @@ type CapacityPoolBackup struct {
 	// Size of backup
 	Size pulumi.Float64Output `pulumi:"size"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Manual backup an already existing snapshot. This will always be false for scheduled backups and true/false for manual backups
@@ -293,8 +292,8 @@ func (o CapacityPoolBackupOutput) Size() pulumi.Float64Output {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o CapacityPoolBackupOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v *CapacityPoolBackup) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o CapacityPoolBackupOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *CapacityPoolBackup) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

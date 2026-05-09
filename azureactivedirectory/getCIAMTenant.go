@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -54,7 +53,7 @@ type LookupCIAMTenantResult struct {
 	// SKU properties of the Azure AD for customers tenant. Learn more about Azure AD for customers billing at [https://aka.ms/ciambilling](https://aka.ms/ciambilling).
 	Sku CIAMResourceSKUResponse `pulumi:"sku"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource Tags
 	Tags map[string]string `pulumi:"tags"`
 	// An identifier of the Azure AD for customers tenant.
@@ -148,8 +147,8 @@ func (o LookupCIAMTenantResultOutput) Sku() CIAMResourceSKUResponseOutput {
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupCIAMTenantResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupCIAMTenantResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupCIAMTenantResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupCIAMTenantResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource Tags

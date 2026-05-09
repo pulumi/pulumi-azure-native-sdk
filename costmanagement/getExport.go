@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -51,7 +50,7 @@ type LookupExportResult struct {
 	// Resource Id.
 	Id string `pulumi:"id"`
 	// The managed identity associated with Export
-	Identity *commontypesv5.SystemAssignedServiceIdentityResponse `pulumi:"identity"`
+	Identity *SystemAssignedServiceIdentityResponse `pulumi:"identity"`
 	// The location of the Export's managed identity. Only required when utilizing managed identity.
 	Location *string `pulumi:"location"`
 	// Resource name.
@@ -136,8 +135,8 @@ func (o LookupExportResultOutput) Id() pulumi.StringOutput {
 }
 
 // The managed identity associated with Export
-func (o LookupExportResultOutput) Identity() commontypesv5.SystemAssignedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupExportResult) *commontypesv5.SystemAssignedServiceIdentityResponse { return v.Identity }).(commontypesv5.SystemAssignedServiceIdentityResponsePtrOutput)
+func (o LookupExportResultOutput) Identity() SystemAssignedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupExportResult) *SystemAssignedServiceIdentityResponse { return v.Identity }).(SystemAssignedServiceIdentityResponsePtrOutput)
 }
 
 // The location of the Export's managed identity. Only required when utilizing managed identity.

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -52,7 +51,7 @@ type Server struct {
 	// Network properties of a server. Only required if you want your server to be integrated into a virtual network provided by customer.
 	Network NetworkResponsePtrOutput `pulumi:"network"`
 	// List of private endpoint connections associated with the specified server.
-	PrivateEndpointConnections commontypesv6.PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// Read replica properties of a server. Required only in case that you want to promote a server.
 	Replica ReplicaResponsePtrOutput `pulumi:"replica"`
 	// Maximum number of read replicas allowed for a server.
@@ -68,7 +67,7 @@ type Server struct {
 	// Storage properties of a server.
 	Storage StorageResponsePtrOutput `pulumi:"storage"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv6.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -415,10 +414,8 @@ func (o ServerOutput) Network() NetworkResponsePtrOutput {
 }
 
 // List of private endpoint connections associated with the specified server.
-func (o ServerOutput) PrivateEndpointConnections() commontypesv6.PrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v *Server) commontypesv6.PrivateEndpointConnectionResponseArrayOutput {
-		return v.PrivateEndpointConnections
-	}).(commontypesv6.PrivateEndpointConnectionResponseArrayOutput)
+func (o ServerOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v *Server) PrivateEndpointConnectionResponseArrayOutput { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // Read replica properties of a server. Required only in case that you want to promote a server.
@@ -457,8 +454,8 @@ func (o ServerOutput) Storage() StorageResponsePtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ServerOutput) SystemData() commontypesv6.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Server) commontypesv6.SystemDataResponseOutput { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
+func (o ServerOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Server) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

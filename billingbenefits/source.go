@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -28,7 +27,7 @@ type Source struct {
 	// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity commontypesv6.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The billing period of the impact for the resource. Format YYYYMM
 	ImpactedBillingPeriod pulumi.StringPtrOutput `pulumi:"impactedBillingPeriod"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
@@ -40,15 +39,15 @@ type Source struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Plan for the resource.
-	Plan commontypesv6.PlanResponsePtrOutput `pulumi:"plan"`
+	Plan PlanResponsePtrOutput `pulumi:"plan"`
 	// The resource model definition representing SKU
-	Sku commontypesv6.SkuResponsePtrOutput `pulumi:"sku"`
+	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// The uri of the resource impacted which lead to the grant of the credit.
 	SourceResourceId pulumi.StringPtrOutput `pulumi:"sourceResourceId"`
 	// Status of the credit
 	Status pulumi.StringPtrOutput `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv6.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -115,7 +114,7 @@ type sourceArgs struct {
 	// Name of the credit
 	CreditName string `pulumi:"creditName"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity *commontypesv6.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The billing period of the impact for the resource. Format YYYYMM
 	ImpactedBillingPeriod *string `pulumi:"impactedBillingPeriod"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
@@ -125,11 +124,11 @@ type sourceArgs struct {
 	// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
 	ManagedBy *string `pulumi:"managedBy"`
 	// Plan for the resource.
-	Plan *commontypesv6.Plan `pulumi:"plan"`
+	Plan *Plan `pulumi:"plan"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The resource model definition representing SKU
-	Sku *commontypesv6.Sku `pulumi:"sku"`
+	Sku *Sku `pulumi:"sku"`
 	// Name of the credit source
 	SourceName *string `pulumi:"sourceName"`
 	// The uri of the resource impacted which lead to the grant of the credit.
@@ -147,7 +146,7 @@ type SourceArgs struct {
 	// Name of the credit
 	CreditName pulumi.StringInput
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity commontypesv6.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// The billing period of the impact for the resource. Format YYYYMM
 	ImpactedBillingPeriod pulumi.StringPtrInput
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
@@ -157,11 +156,11 @@ type SourceArgs struct {
 	// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
 	ManagedBy pulumi.StringPtrInput
 	// Plan for the resource.
-	Plan commontypesv6.PlanPtrInput
+	Plan PlanPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The resource model definition representing SKU
-	Sku commontypesv6.SkuPtrInput
+	Sku SkuPtrInput
 	// Name of the credit source
 	SourceName pulumi.StringPtrInput
 	// The uri of the resource impacted which lead to the grant of the credit.
@@ -225,8 +224,8 @@ func (o SourceOutput) Etag() pulumi.StringOutput {
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
-func (o SourceOutput) Identity() commontypesv6.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *Source) commontypesv6.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv6.ManagedServiceIdentityResponsePtrOutput)
+func (o SourceOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Source) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The billing period of the impact for the resource. Format YYYYMM
@@ -255,13 +254,13 @@ func (o SourceOutput) Name() pulumi.StringOutput {
 }
 
 // Plan for the resource.
-func (o SourceOutput) Plan() commontypesv6.PlanResponsePtrOutput {
-	return o.ApplyT(func(v *Source) commontypesv6.PlanResponsePtrOutput { return v.Plan }).(commontypesv6.PlanResponsePtrOutput)
+func (o SourceOutput) Plan() PlanResponsePtrOutput {
+	return o.ApplyT(func(v *Source) PlanResponsePtrOutput { return v.Plan }).(PlanResponsePtrOutput)
 }
 
 // The resource model definition representing SKU
-func (o SourceOutput) Sku() commontypesv6.SkuResponsePtrOutput {
-	return o.ApplyT(func(v *Source) commontypesv6.SkuResponsePtrOutput { return v.Sku }).(commontypesv6.SkuResponsePtrOutput)
+func (o SourceOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v *Source) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
 }
 
 // The uri of the resource impacted which lead to the grant of the credit.
@@ -275,8 +274,8 @@ func (o SourceOutput) Status() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o SourceOutput) SystemData() commontypesv6.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Source) commontypesv6.SystemDataResponseOutput { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
+func (o SourceOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Source) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

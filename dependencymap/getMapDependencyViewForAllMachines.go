@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -39,7 +38,7 @@ type GetMapDependencyViewForAllMachinesResult struct {
 	// The end time of the operation.
 	EndTime *string `pulumi:"endTime"`
 	// Contains error details if status is Failed/Canceled.
-	Error *commontypesv3.ErrorDetailResponse `pulumi:"error"`
+	Error *ErrorDetailResponse `pulumi:"error"`
 	// The status URL of the asynchronous operation.
 	Id *string `pulumi:"id"`
 	// The resource name of the operation status. It must match the last segment of 'id' field.
@@ -95,8 +94,8 @@ func (o GetMapDependencyViewForAllMachinesResultOutput) EndTime() pulumi.StringP
 }
 
 // Contains error details if status is Failed/Canceled.
-func (o GetMapDependencyViewForAllMachinesResultOutput) Error() commontypesv3.ErrorDetailResponsePtrOutput {
-	return o.ApplyT(func(v GetMapDependencyViewForAllMachinesResult) *commontypesv3.ErrorDetailResponse { return v.Error }).(commontypesv3.ErrorDetailResponsePtrOutput)
+func (o GetMapDependencyViewForAllMachinesResultOutput) Error() ErrorDetailResponsePtrOutput {
+	return o.ApplyT(func(v GetMapDependencyViewForAllMachinesResult) *ErrorDetailResponse { return v.Error }).(ErrorDetailResponsePtrOutput)
 }
 
 // The status URL of the asynchronous operation.

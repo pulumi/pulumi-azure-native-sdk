@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -61,7 +60,7 @@ type LookupGroupsOperationResult struct {
 	// List of assessment types supported on this group.
 	SupportedAssessmentTypes []string `pulumi:"supportedAssessmentTypes"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Time when this group was last updated. Date-Time represented in ISO-8601 format.
@@ -161,8 +160,8 @@ func (o LookupGroupsOperationResultOutput) SupportedAssessmentTypes() pulumi.Str
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupGroupsOperationResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupGroupsOperationResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupGroupsOperationResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupGroupsOperationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

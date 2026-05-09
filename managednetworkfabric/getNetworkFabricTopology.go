@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -39,7 +38,7 @@ type GetNetworkFabricTopologyResult struct {
 	// Gets the configuration state.
 	ConfigurationState string `pulumi:"configurationState"`
 	// The error object.
-	Error *commontypesv5.ErrorDetailResponse `pulumi:"error"`
+	Error *ErrorDetailResponse `pulumi:"error"`
 	// URL for the details of the response.
 	Url *string `pulumi:"url"`
 }
@@ -85,8 +84,8 @@ func (o GetNetworkFabricTopologyResultOutput) ConfigurationState() pulumi.String
 }
 
 // The error object.
-func (o GetNetworkFabricTopologyResultOutput) Error() commontypesv5.ErrorDetailResponsePtrOutput {
-	return o.ApplyT(func(v GetNetworkFabricTopologyResult) *commontypesv5.ErrorDetailResponse { return v.Error }).(commontypesv5.ErrorDetailResponsePtrOutput)
+func (o GetNetworkFabricTopologyResultOutput) Error() ErrorDetailResponsePtrOutput {
+	return o.ApplyT(func(v GetNetworkFabricTopologyResult) *ErrorDetailResponse { return v.Error }).(ErrorDetailResponsePtrOutput)
 }
 
 // URL for the details of the response.

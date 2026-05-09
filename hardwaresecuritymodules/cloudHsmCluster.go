@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -30,7 +29,7 @@ type CloudHsmCluster struct {
 	// An array of Cloud HSM Cluster's HSMs
 	Hsms CloudHsmPropertiesResponseArrayOutput `pulumi:"hsms"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity commontypesv5.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -46,7 +45,7 @@ type CloudHsmCluster struct {
 	// Cloud HSM Cluster status message
 	StatusMessage pulumi.StringOutput `pulumi:"statusMessage"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -116,7 +115,7 @@ type cloudHsmClusterArgs struct {
 	// The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
 	CloudHsmClusterName *string `pulumi:"cloudHsmClusterName"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity *commontypesv5.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The Cloud HSM Cluster public network access
@@ -136,7 +135,7 @@ type CloudHsmClusterArgs struct {
 	// The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
 	CloudHsmClusterName pulumi.StringPtrInput
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity commontypesv5.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The Cloud HSM Cluster public network access
@@ -207,8 +206,8 @@ func (o CloudHsmClusterOutput) Hsms() CloudHsmPropertiesResponseArrayOutput {
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
-func (o CloudHsmClusterOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *CloudHsmCluster) commontypesv5.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+func (o CloudHsmClusterOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *CloudHsmCluster) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -249,8 +248,8 @@ func (o CloudHsmClusterOutput) StatusMessage() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o CloudHsmClusterOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *CloudHsmCluster) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o CloudHsmClusterOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *CloudHsmCluster) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

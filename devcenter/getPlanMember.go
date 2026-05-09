@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -53,7 +52,7 @@ type LookupPlanMemberResult struct {
 	// The sync status of the member.
 	SyncStatus PlanMemberSyncStatusResponse `pulumi:"syncStatus"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The tier of the member.
@@ -135,8 +134,8 @@ func (o LookupPlanMemberResultOutput) SyncStatus() PlanMemberSyncStatusResponseO
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupPlanMemberResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupPlanMemberResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupPlanMemberResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPlanMemberResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -44,7 +43,7 @@ type LookupProviderMonitorSettingResult struct {
 	Name       string                                   `pulumi:"name"`
 	Properties ProviderMonitorSettingPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv6.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -113,8 +112,8 @@ func (o LookupProviderMonitorSettingResultOutput) Properties() ProviderMonitorSe
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupProviderMonitorSettingResultOutput) SystemData() commontypesv6.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupProviderMonitorSettingResult) commontypesv6.SystemDataResponse { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
+func (o LookupProviderMonitorSettingResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupProviderMonitorSettingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

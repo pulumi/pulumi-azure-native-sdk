@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -79,7 +78,7 @@ type LookupDomainServiceResult struct {
 	// All or CloudOnly, All users in AAD are synced to AAD DS domain or only users actively syncing in the cloud
 	SyncScope *string `pulumi:"syncScope"`
 	// The system meta data relating to this resource.
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
 	// Azure Active Directory Tenant Id
@@ -247,8 +246,8 @@ func (o LookupDomainServiceResultOutput) SyncScope() pulumi.StringPtrOutput {
 }
 
 // The system meta data relating to this resource.
-func (o LookupDomainServiceResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupDomainServiceResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o LookupDomainServiceResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupDomainServiceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags

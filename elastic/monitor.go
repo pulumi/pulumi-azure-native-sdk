@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -34,7 +33,7 @@ type Monitor struct {
 	// SKU of the monitor resource.
 	Sku ResourceSkuResponsePtrOutput `pulumi:"sku"`
 	// The system metadata relating to this resource
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The tags of the monitor resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the monitor resource.
@@ -252,8 +251,8 @@ func (o MonitorOutput) Sku() ResourceSkuResponsePtrOutput {
 }
 
 // The system metadata relating to this resource
-func (o MonitorOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Monitor) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o MonitorOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Monitor) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The tags of the monitor resource.

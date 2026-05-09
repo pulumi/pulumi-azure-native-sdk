@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -34,7 +33,7 @@ type Cluster struct {
 	// The cluster creation time
 	CreatedDate pulumi.StringOutput `pulumi:"createdDate"`
 	// Resource's identity.
-	Identity commontypesv5.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Sets whether the cluster will support availability zones. This can be set as true only in regions where Azure Data Explorer support Availability Zones. This Property can not be modified after cluster creation. Default value is 'true' if region supports Availability Zones.
 	IsAvailabilityZonesEnabled pulumi.BoolPtrOutput `pulumi:"isAvailabilityZonesEnabled"`
 	// Configures whether cluster will use double encryption. This Property can not be modified after cluster creation. Default value is 'true'
@@ -135,7 +134,7 @@ type clusterArgs struct {
 	// The name of the Log Analytics cluster.
 	ClusterName *string `pulumi:"clusterName"`
 	// Resource's identity.
-	Identity *commontypesv5.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// Sets whether the cluster will support availability zones. This can be set as true only in regions where Azure Data Explorer support Availability Zones. This Property can not be modified after cluster creation. Default value is 'true' if region supports Availability Zones.
 	IsAvailabilityZonesEnabled *bool `pulumi:"isAvailabilityZonesEnabled"`
 	// Configures whether cluster will use double encryption. This Property can not be modified after cluster creation. Default value is 'true'
@@ -159,7 +158,7 @@ type ClusterArgs struct {
 	// The name of the Log Analytics cluster.
 	ClusterName pulumi.StringPtrInput
 	// Resource's identity.
-	Identity commontypesv5.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// Sets whether the cluster will support availability zones. This can be set as true only in regions where Azure Data Explorer support Availability Zones. This Property can not be modified after cluster creation. Default value is 'true' if region supports Availability Zones.
 	IsAvailabilityZonesEnabled pulumi.BoolPtrInput
 	// Configures whether cluster will use double encryption. This Property can not be modified after cluster creation. Default value is 'true'
@@ -246,8 +245,8 @@ func (o ClusterOutput) CreatedDate() pulumi.StringOutput {
 }
 
 // Resource's identity.
-func (o ClusterOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *Cluster) commontypesv5.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+func (o ClusterOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Cluster) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Sets whether the cluster will support availability zones. This can be set as true only in regions where Azure Data Explorer support Availability Zones. This Property can not be modified after cluster creation. Default value is 'true' if region supports Availability Zones.

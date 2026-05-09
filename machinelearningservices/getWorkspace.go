@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -62,7 +61,7 @@ type LookupWorkspaceResult struct {
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The managed service identities assigned to this resource.
-	Identity *commontypesv3.ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The compute name for image build
 	ImageBuildCompute *string `pulumi:"imageBuildCompute"`
 	// ARM id of the key vault associated with this workspace. This cannot be changed once the workspace has been created
@@ -98,13 +97,13 @@ type LookupWorkspaceResult struct {
 	// The list of shared private link resources in this workspace.
 	SharedPrivateLinkResources []SharedPrivateLinkResourceResponse `pulumi:"sharedPrivateLinkResources"`
 	// Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
-	Sku *commontypesv3.SkuResponse `pulumi:"sku"`
+	Sku *SkuResponse `pulumi:"sku"`
 	// ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
 	StorageAccount *string `pulumi:"storageAccount"`
 	// If the storage associated with the workspace has hierarchical namespace(HNS) enabled.
 	StorageHnsEnabled bool `pulumi:"storageHnsEnabled"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The auth mode used for accessing the system datastores of the workspace.
 	SystemDatastoresAuthMode *string           `pulumi:"systemDatastoresAuthMode"`
 	Tags                     map[string]string `pulumi:"tags"`
@@ -236,8 +235,8 @@ func (o LookupWorkspaceResultOutput) Id() pulumi.StringOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o LookupWorkspaceResultOutput) Identity() commontypesv3.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupWorkspaceResult) *commontypesv3.ManagedServiceIdentityResponse { return v.Identity }).(commontypesv3.ManagedServiceIdentityResponsePtrOutput)
+func (o LookupWorkspaceResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The compute name for image build
@@ -331,8 +330,8 @@ func (o LookupWorkspaceResultOutput) SharedPrivateLinkResources() SharedPrivateL
 }
 
 // Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
-func (o LookupWorkspaceResultOutput) Sku() commontypesv3.SkuResponsePtrOutput {
-	return o.ApplyT(func(v LookupWorkspaceResult) *commontypesv3.SkuResponse { return v.Sku }).(commontypesv3.SkuResponsePtrOutput)
+func (o LookupWorkspaceResultOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
 // ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
@@ -346,8 +345,8 @@ func (o LookupWorkspaceResultOutput) StorageHnsEnabled() pulumi.BoolOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupWorkspaceResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupWorkspaceResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o LookupWorkspaceResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The auth mode used for accessing the system datastores of the workspace.

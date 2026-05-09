@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -35,7 +34,7 @@ type Assessment struct {
 	// Assessment State.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData commontypesv4.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource Type
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Assessment Type Id.
@@ -195,8 +194,8 @@ func (o AssessmentOutput) State() pulumi.StringOutput {
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o AssessmentOutput) SystemData() commontypesv4.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Assessment) commontypesv4.SystemDataResponseOutput { return v.SystemData }).(commontypesv4.SystemDataResponseOutput)
+func (o AssessmentOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Assessment) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource Type

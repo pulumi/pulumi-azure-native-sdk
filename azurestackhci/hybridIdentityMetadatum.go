@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -22,7 +21,7 @@ type HybridIdentityMetadatum struct {
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Identity for the resource.
-	Identity commontypesv3.IdentityResponseOutput `pulumi:"identity"`
+	Identity IdentityResponseOutput `pulumi:"identity"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state.
@@ -32,7 +31,7 @@ type HybridIdentityMetadatum struct {
 	// The unique identifier for the resource.
 	ResourceUid pulumi.StringPtrOutput `pulumi:"resourceUid"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -161,8 +160,8 @@ func (o HybridIdentityMetadatumOutput) AzureApiVersion() pulumi.StringOutput {
 }
 
 // Identity for the resource.
-func (o HybridIdentityMetadatumOutput) Identity() commontypesv3.IdentityResponseOutput {
-	return o.ApplyT(func(v *HybridIdentityMetadatum) commontypesv3.IdentityResponseOutput { return v.Identity }).(commontypesv3.IdentityResponseOutput)
+func (o HybridIdentityMetadatumOutput) Identity() IdentityResponseOutput {
+	return o.ApplyT(func(v *HybridIdentityMetadatum) IdentityResponseOutput { return v.Identity }).(IdentityResponseOutput)
 }
 
 // The name of the resource
@@ -186,8 +185,8 @@ func (o HybridIdentityMetadatumOutput) ResourceUid() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o HybridIdentityMetadatumOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v *HybridIdentityMetadatum) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o HybridIdentityMetadatumOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *HybridIdentityMetadatum) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

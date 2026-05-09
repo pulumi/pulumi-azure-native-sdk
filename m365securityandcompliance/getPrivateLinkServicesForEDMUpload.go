@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -51,7 +50,7 @@ type LookupPrivateLinkServicesForEDMUploadResult struct {
 	// The common properties of a service.
 	Properties ServicesPropertiesResponse `pulumi:"properties"`
 	// Required property for system data
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The resource type.
@@ -136,10 +135,8 @@ func (o LookupPrivateLinkServicesForEDMUploadResultOutput) Properties() Services
 }
 
 // Required property for system data
-func (o LookupPrivateLinkServicesForEDMUploadResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupPrivateLinkServicesForEDMUploadResult) commontypesv2.SystemDataResponse {
-		return v.SystemData
-	}).(commontypesv2.SystemDataResponseOutput)
+func (o LookupPrivateLinkServicesForEDMUploadResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPrivateLinkServicesForEDMUploadResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The resource tags.

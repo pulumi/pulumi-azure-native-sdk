@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -69,7 +68,7 @@ type LookupJobDefinitionResult struct {
 	// The subpath to use when reading from the source Endpoint.
 	SourceSubpath *string `pulumi:"sourceSubpath"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The name of the target Endpoint.
 	TargetName string `pulumi:"targetName"`
 	// Fully qualified resource ID of the target Endpoint.
@@ -190,8 +189,8 @@ func (o LookupJobDefinitionResultOutput) SourceSubpath() pulumi.StringPtrOutput 
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupJobDefinitionResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupJobDefinitionResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o LookupJobDefinitionResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupJobDefinitionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The name of the target Endpoint.

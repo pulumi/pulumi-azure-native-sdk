@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -61,7 +60,7 @@ type LookupLinkedSubscriptionResult struct {
 	// The identifier associated with the device registration.
 	RegistrationResourceId *string `pulumi:"registrationResourceId"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Custom tags for the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// Type of Resource.
@@ -169,8 +168,8 @@ func (o LookupLinkedSubscriptionResultOutput) RegistrationResourceId() pulumi.St
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupLinkedSubscriptionResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupLinkedSubscriptionResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o LookupLinkedSubscriptionResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupLinkedSubscriptionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Custom tags for the resource.

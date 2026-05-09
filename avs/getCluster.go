@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -53,9 +52,9 @@ type LookupClusterResult struct {
 	// The state of the cluster provisioning
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The SKU (Stock Keeping Unit) assigned to this resource.
-	Sku commontypesv5.SkuResponse `pulumi:"sku"`
+	Sku SkuResponse `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Name of the vsan datastore associated with the cluster
@@ -135,13 +134,13 @@ func (o LookupClusterResultOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // The SKU (Stock Keeping Unit) assigned to this resource.
-func (o LookupClusterResultOutput) Sku() commontypesv5.SkuResponseOutput {
-	return o.ApplyT(func(v LookupClusterResult) commontypesv5.SkuResponse { return v.Sku }).(commontypesv5.SkuResponseOutput)
+func (o LookupClusterResultOutput) Sku() SkuResponseOutput {
+	return o.ApplyT(func(v LookupClusterResult) SkuResponse { return v.Sku }).(SkuResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupClusterResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupClusterResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupClusterResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupClusterResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

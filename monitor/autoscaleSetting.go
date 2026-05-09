@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -28,7 +27,7 @@ type AutoscaleSetting struct {
 	// The autoscale setting of the resource.
 	Properties AutoscaleSettingResponseOutput `pulumi:"properties"`
 	// The system metadata related to the response.
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater in length than 128 characters and a value no greater in length than 256 characters.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Azure resource type
@@ -213,8 +212,8 @@ func (o AutoscaleSettingOutput) Properties() AutoscaleSettingResponseOutput {
 }
 
 // The system metadata related to the response.
-func (o AutoscaleSettingOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *AutoscaleSetting) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o AutoscaleSettingOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *AutoscaleSetting) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Gets or sets a list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater in length than 128 characters and a value no greater in length than 256 characters.

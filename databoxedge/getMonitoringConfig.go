@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -47,7 +46,7 @@ type LookupMonitoringConfigResult struct {
 	// The object name.
 	Name string `pulumi:"name"`
 	// Metadata pertaining to creation and last modification of MonitoringConfiguration
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type string `pulumi:"type"`
 }
@@ -110,8 +109,8 @@ func (o LookupMonitoringConfigResultOutput) Name() pulumi.StringOutput {
 }
 
 // Metadata pertaining to creation and last modification of MonitoringConfiguration
-func (o LookupMonitoringConfigResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupMonitoringConfigResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o LookupMonitoringConfigResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupMonitoringConfigResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.

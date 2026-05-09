@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -44,7 +43,7 @@ type MyWorkbook struct {
 	// BYOS Storage Account URI
 	StorageUri pulumi.StringPtrOutput `pulumi:"storageUri"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Date and time in UTC of the last modification that was made to this private workbook definition.
@@ -286,8 +285,8 @@ func (o MyWorkbookOutput) StorageUri() pulumi.StringPtrOutput {
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o MyWorkbookOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *MyWorkbook) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o MyWorkbookOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *MyWorkbook) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags

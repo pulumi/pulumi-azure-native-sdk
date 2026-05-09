@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -51,7 +50,7 @@ type LookupReplicaResult struct {
 	// The provisioning state of the replica.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Resource system metadata.
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource.
 	Type string `pulumi:"type"`
 }
@@ -124,8 +123,8 @@ func (o LookupReplicaResultOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Resource system metadata.
-func (o LookupReplicaResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupReplicaResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o LookupReplicaResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupReplicaResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource.

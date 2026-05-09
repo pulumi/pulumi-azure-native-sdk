@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -37,7 +36,7 @@ type IoTAddon struct {
 	// Addon Provisioning State
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Metadata pertaining to creation and last modification of Addon
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Version of IoT running on the appliance.
@@ -272,8 +271,8 @@ func (o IoTAddonOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Metadata pertaining to creation and last modification of Addon
-func (o IoTAddonOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *IoTAddon) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o IoTAddonOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *IoTAddon) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.

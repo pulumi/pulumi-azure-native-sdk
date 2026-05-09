@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -51,7 +50,7 @@ type LookupAdministratorResult struct {
 	// Type of Microsoft Entra principal to which the server administrator is associated.
 	PrincipalType *string `pulumi:"principalType"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv6.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Identifier of the tenant in which the Microsoft Entra principal exists.
 	TenantId *string `pulumi:"tenantId"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -126,8 +125,8 @@ func (o LookupAdministratorResultOutput) PrincipalType() pulumi.StringPtrOutput 
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupAdministratorResultOutput) SystemData() commontypesv6.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAdministratorResult) commontypesv6.SystemDataResponse { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
+func (o LookupAdministratorResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAdministratorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Identifier of the tenant in which the Microsoft Entra principal exists.

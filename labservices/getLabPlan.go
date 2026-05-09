@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -49,7 +48,7 @@ type LookupLabPlanResult struct {
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Managed Identity Information
-	Identity *commontypesv2.IdentityResponse `pulumi:"identity"`
+	Identity *IdentityResponse `pulumi:"identity"`
 	// Base Url of the lms instance this lab plan can link lab rosters against.
 	LinkedLmsInstance *string `pulumi:"linkedLmsInstance"`
 	// The geo-location where the resource lives
@@ -65,7 +64,7 @@ type LookupLabPlanResult struct {
 	// Support contact information and instructions for users of the lab plan. This information is displayed to lab owners and virtual machine users for all labs in the lab plan.
 	SupportInfo *SupportInfoResponse `pulumi:"supportInfo"`
 	// Metadata pertaining to creation and last modification of the lab plan.
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -150,8 +149,8 @@ func (o LookupLabPlanResultOutput) Id() pulumi.StringOutput {
 }
 
 // Managed Identity Information
-func (o LookupLabPlanResultOutput) Identity() commontypesv2.IdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupLabPlanResult) *commontypesv2.IdentityResponse { return v.Identity }).(commontypesv2.IdentityResponsePtrOutput)
+func (o LookupLabPlanResultOutput) Identity() IdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupLabPlanResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
 // Base Url of the lms instance this lab plan can link lab rosters against.
@@ -190,8 +189,8 @@ func (o LookupLabPlanResultOutput) SupportInfo() SupportInfoResponsePtrOutput {
 }
 
 // Metadata pertaining to creation and last modification of the lab plan.
-func (o LookupLabPlanResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupLabPlanResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o LookupLabPlanResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupLabPlanResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

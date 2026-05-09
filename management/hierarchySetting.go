@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -30,7 +29,7 @@ type HierarchySetting struct {
 	// Indicates whether RBAC access is required upon group creation under the root Management Group. If set to true, user will require Microsoft.Management/managementGroups/write action on the root Management Group scope in order to create new Groups directly under the root. This will prevent new users from creating new Management Groups, unless they are given access.
 	RequireAuthorizationForGroupCreation pulumi.BoolPtrOutput `pulumi:"requireAuthorizationForGroupCreation"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The AAD Tenant ID associated with the hierarchy settings. For example, 00000000-0000-0000-0000-000000000000
 	TenantId pulumi.StringPtrOutput `pulumi:"tenantId"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -177,8 +176,8 @@ func (o HierarchySettingOutput) RequireAuthorizationForGroupCreation() pulumi.Bo
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o HierarchySettingOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v *HierarchySetting) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o HierarchySettingOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *HierarchySetting) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The AAD Tenant ID associated with the hierarchy settings. For example, 00000000-0000-0000-0000-000000000000

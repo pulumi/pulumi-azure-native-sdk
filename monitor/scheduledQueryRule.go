@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -68,7 +67,7 @@ type ScheduledQueryRule struct {
 	// The flag which indicates whether the provided query should be validated or not. The default is false. Relevant only for rules of the kind LogAlert.
 	SkipQueryValidation pulumi.BoolPtrOutput `pulumi:"skipQueryValidation"`
 	// SystemData of ScheduledQueryRule.
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// List of resource type of the target resource(s) on which the alert is created/updated. For example if the scope is a resource group and targetResourceTypes is Microsoft.Compute/virtualMachines, then a different alert will be fired for each virtual machine in the resource group which meet the alert criteria. Relevant only for rules of the kind LogAlert
@@ -432,8 +431,8 @@ func (o ScheduledQueryRuleOutput) SkipQueryValidation() pulumi.BoolPtrOutput {
 }
 
 // SystemData of ScheduledQueryRule.
-func (o ScheduledQueryRuleOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *ScheduledQueryRule) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o ScheduledQueryRuleOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ScheduledQueryRule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

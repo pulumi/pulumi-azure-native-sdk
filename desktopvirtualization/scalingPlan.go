@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -34,8 +33,8 @@ type ScalingPlan struct {
 	// List of ScalingHostPoolReference definitions.
 	HostPoolReferences ScalingHostPoolReferenceResponseArrayOutput `pulumi:"hostPoolReferences"`
 	// HostPool type for desktop.
-	HostPoolType pulumi.StringPtrOutput                                                     `pulumi:"hostPoolType"`
-	Identity     commontypesv5.ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput `pulumi:"identity"`
+	HostPoolType pulumi.StringPtrOutput                                       `pulumi:"hostPoolType"`
+	Identity     ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput `pulumi:"identity"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// The geo-location where the resource lives
@@ -45,13 +44,13 @@ type ScalingPlan struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// ObjectId of scaling plan. (internal use)
-	ObjectId pulumi.StringOutput                                                    `pulumi:"objectId"`
-	Plan     commontypesv5.ResourceModelWithAllowedPropertySetResponsePlanPtrOutput `pulumi:"plan"`
+	ObjectId pulumi.StringOutput                                      `pulumi:"objectId"`
+	Plan     ResourceModelWithAllowedPropertySetResponsePlanPtrOutput `pulumi:"plan"`
 	// List of ScalingPlanPooledSchedule definitions.
-	Schedules ScalingScheduleResponseArrayOutput                                    `pulumi:"schedules"`
-	Sku       commontypesv5.ResourceModelWithAllowedPropertySetResponseSkuPtrOutput `pulumi:"sku"`
+	Schedules ScalingScheduleResponseArrayOutput                      `pulumi:"schedules"`
+	Sku       ResourceModelWithAllowedPropertySetResponseSkuPtrOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Timezone of the scaling plan.
@@ -202,22 +201,22 @@ type scalingPlanArgs struct {
 	// List of ScalingHostPoolReference definitions.
 	HostPoolReferences []ScalingHostPoolReference `pulumi:"hostPoolReferences"`
 	// HostPool type for desktop.
-	HostPoolType *string                                                    `pulumi:"hostPoolType"`
-	Identity     *commontypesv5.ResourceModelWithAllowedPropertySetIdentity `pulumi:"identity"`
+	HostPoolType *string                                      `pulumi:"hostPoolType"`
+	Identity     *ResourceModelWithAllowedPropertySetIdentity `pulumi:"identity"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
-	ManagedBy *string                                                `pulumi:"managedBy"`
-	Plan      *commontypesv5.ResourceModelWithAllowedPropertySetPlan `pulumi:"plan"`
+	ManagedBy *string                                  `pulumi:"managedBy"`
+	Plan      *ResourceModelWithAllowedPropertySetPlan `pulumi:"plan"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the scaling plan.
 	ScalingPlanName *string `pulumi:"scalingPlanName"`
 	// List of ScalingPlanPooledSchedule definitions.
-	Schedules []ScalingSchedule                                     `pulumi:"schedules"`
-	Sku       *commontypesv5.ResourceModelWithAllowedPropertySetSku `pulumi:"sku"`
+	Schedules []ScalingSchedule                       `pulumi:"schedules"`
+	Sku       *ResourceModelWithAllowedPropertySetSku `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Timezone of the scaling plan.
@@ -236,21 +235,21 @@ type ScalingPlanArgs struct {
 	HostPoolReferences ScalingHostPoolReferenceArrayInput
 	// HostPool type for desktop.
 	HostPoolType pulumi.StringPtrInput
-	Identity     commontypesv5.ResourceModelWithAllowedPropertySetIdentityPtrInput
+	Identity     ResourceModelWithAllowedPropertySetIdentityPtrInput
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
 	ManagedBy pulumi.StringPtrInput
-	Plan      commontypesv5.ResourceModelWithAllowedPropertySetPlanPtrInput
+	Plan      ResourceModelWithAllowedPropertySetPlanPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the scaling plan.
 	ScalingPlanName pulumi.StringPtrInput
 	// List of ScalingPlanPooledSchedule definitions.
 	Schedules ScalingScheduleArrayInput
-	Sku       commontypesv5.ResourceModelWithAllowedPropertySetSkuPtrInput
+	Sku       ResourceModelWithAllowedPropertySetSkuPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 	// Timezone of the scaling plan.
@@ -329,10 +328,8 @@ func (o ScalingPlanOutput) HostPoolType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScalingPlan) pulumi.StringPtrOutput { return v.HostPoolType }).(pulumi.StringPtrOutput)
 }
 
-func (o ScalingPlanOutput) Identity() commontypesv5.ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput {
-	return o.ApplyT(func(v *ScalingPlan) commontypesv5.ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput {
-		return v.Identity
-	}).(commontypesv5.ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput)
+func (o ScalingPlanOutput) Identity() ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput {
+	return o.ApplyT(func(v *ScalingPlan) ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput { return v.Identity }).(ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput)
 }
 
 // Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
@@ -360,10 +357,8 @@ func (o ScalingPlanOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScalingPlan) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-func (o ScalingPlanOutput) Plan() commontypesv5.ResourceModelWithAllowedPropertySetResponsePlanPtrOutput {
-	return o.ApplyT(func(v *ScalingPlan) commontypesv5.ResourceModelWithAllowedPropertySetResponsePlanPtrOutput {
-		return v.Plan
-	}).(commontypesv5.ResourceModelWithAllowedPropertySetResponsePlanPtrOutput)
+func (o ScalingPlanOutput) Plan() ResourceModelWithAllowedPropertySetResponsePlanPtrOutput {
+	return o.ApplyT(func(v *ScalingPlan) ResourceModelWithAllowedPropertySetResponsePlanPtrOutput { return v.Plan }).(ResourceModelWithAllowedPropertySetResponsePlanPtrOutput)
 }
 
 // List of ScalingPlanPooledSchedule definitions.
@@ -371,15 +366,13 @@ func (o ScalingPlanOutput) Schedules() ScalingScheduleResponseArrayOutput {
 	return o.ApplyT(func(v *ScalingPlan) ScalingScheduleResponseArrayOutput { return v.Schedules }).(ScalingScheduleResponseArrayOutput)
 }
 
-func (o ScalingPlanOutput) Sku() commontypesv5.ResourceModelWithAllowedPropertySetResponseSkuPtrOutput {
-	return o.ApplyT(func(v *ScalingPlan) commontypesv5.ResourceModelWithAllowedPropertySetResponseSkuPtrOutput {
-		return v.Sku
-	}).(commontypesv5.ResourceModelWithAllowedPropertySetResponseSkuPtrOutput)
+func (o ScalingPlanOutput) Sku() ResourceModelWithAllowedPropertySetResponseSkuPtrOutput {
+	return o.ApplyT(func(v *ScalingPlan) ResourceModelWithAllowedPropertySetResponseSkuPtrOutput { return v.Sku }).(ResourceModelWithAllowedPropertySetResponseSkuPtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ScalingPlanOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *ScalingPlan) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o ScalingPlanOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ScalingPlan) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

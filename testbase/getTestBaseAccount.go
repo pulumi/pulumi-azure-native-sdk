@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -43,7 +42,7 @@ type LookupTestBaseAccountResult struct {
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The identity of the testBaseAccount.
-	Identity *commontypesv5.SystemAssignedServiceIdentityResponse `pulumi:"identity"`
+	Identity *SystemAssignedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
@@ -53,7 +52,7 @@ type LookupTestBaseAccountResult struct {
 	// The SKU of the Test Base Account.
 	Sku TestBaseAccountSKUResponse `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -111,10 +110,8 @@ func (o LookupTestBaseAccountResultOutput) Id() pulumi.StringOutput {
 }
 
 // The identity of the testBaseAccount.
-func (o LookupTestBaseAccountResultOutput) Identity() commontypesv5.SystemAssignedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupTestBaseAccountResult) *commontypesv5.SystemAssignedServiceIdentityResponse {
-		return v.Identity
-	}).(commontypesv5.SystemAssignedServiceIdentityResponsePtrOutput)
+func (o LookupTestBaseAccountResultOutput) Identity() SystemAssignedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupTestBaseAccountResult) *SystemAssignedServiceIdentityResponse { return v.Identity }).(SystemAssignedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -138,8 +135,8 @@ func (o LookupTestBaseAccountResultOutput) Sku() TestBaseAccountSKUResponseOutpu
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupTestBaseAccountResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupTestBaseAccountResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupTestBaseAccountResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupTestBaseAccountResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

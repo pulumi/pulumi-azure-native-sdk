@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -3509,17 +3508,17 @@ type FlowResponse struct {
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The managed service identities assigned to this resource.
-	Identity *commontypesv5.ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Details of the resource plan.
-	Plan *commontypesv5.PlanResponse `pulumi:"plan"`
+	Plan *PlanResponse `pulumi:"plan"`
 	// Properties of flow
 	Properties *FlowPropertiesResponseV1 `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -3547,8 +3546,8 @@ func (o FlowResponseOutput) Id() pulumi.StringOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o FlowResponseOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v FlowResponse) *commontypesv5.ManagedServiceIdentityResponse { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+func (o FlowResponseOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v FlowResponse) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -3562,8 +3561,8 @@ func (o FlowResponseOutput) Name() pulumi.StringOutput {
 }
 
 // Details of the resource plan.
-func (o FlowResponseOutput) Plan() commontypesv5.PlanResponsePtrOutput {
-	return o.ApplyT(func(v FlowResponse) *commontypesv5.PlanResponse { return v.Plan }).(commontypesv5.PlanResponsePtrOutput)
+func (o FlowResponseOutput) Plan() PlanResponsePtrOutput {
+	return o.ApplyT(func(v FlowResponse) *PlanResponse { return v.Plan }).(PlanResponsePtrOutput)
 }
 
 // Properties of flow
@@ -3572,8 +3571,8 @@ func (o FlowResponseOutput) Properties() FlowPropertiesResponseV1PtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o FlowResponseOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v FlowResponse) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o FlowResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v FlowResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.
@@ -3736,6 +3735,278 @@ func (o ListFlowsByPipelineConnectionResponseArrayOutput) Index(i pulumi.IntInpu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ListFlowsByPipelineConnectionResponse {
 		return vs[0].([]ListFlowsByPipelineConnectionResponse)[vs[1].(int)]
 	}).(ListFlowsByPipelineConnectionResponseOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentity struct {
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type string `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
+}
+
+// ManagedServiceIdentityInput is an input type that accepts ManagedServiceIdentityArgs and ManagedServiceIdentityOutput values.
+// You can construct a concrete instance of `ManagedServiceIdentityInput` via:
+//
+//	ManagedServiceIdentityArgs{...}
+type ManagedServiceIdentityInput interface {
+	pulumi.Input
+
+	ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput
+	ToManagedServiceIdentityOutputWithContext(context.Context) ManagedServiceIdentityOutput
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityArgs struct {
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type pulumi.StringInput `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
+}
+
+func (ManagedServiceIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
+	return i.ToManagedServiceIdentityOutputWithContext(context.Background())
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput).ToManagedServiceIdentityPtrOutputWithContext(ctx)
+}
+
+// ManagedServiceIdentityPtrInput is an input type that accepts ManagedServiceIdentityArgs, ManagedServiceIdentityPtr and ManagedServiceIdentityPtrOutput values.
+// You can construct a concrete instance of `ManagedServiceIdentityPtrInput` via:
+//
+//	        ManagedServiceIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ManagedServiceIdentityPtrInput interface {
+	pulumi.Input
+
+	ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput
+	ToManagedServiceIdentityPtrOutputWithContext(context.Context) ManagedServiceIdentityPtrOutput
+}
+
+type managedServiceIdentityPtrType ManagedServiceIdentityArgs
+
+func ManagedServiceIdentityPtr(v *ManagedServiceIdentityArgs) ManagedServiceIdentityPtrInput {
+	return (*managedServiceIdentityPtrType)(v)
+}
+
+func (*managedServiceIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return o.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedServiceIdentity) *ManagedServiceIdentity {
+		return &v
+	}).(ManagedServiceIdentityPtrOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ManagedServiceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
+}
+
+type ManagedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) ManagedServiceIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedServiceIdentity
+		return ret
+	}).(ManagedServiceIdentityOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(pulumi.StringArrayOutput)
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityResponse struct {
+	// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+	// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+	TenantId string `pulumi:"tenantId"`
+	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+	Type string `pulumi:"type"`
+	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
+}
+
+// Managed service identity (system assigned and/or user assigned identities)
+type ManagedServiceIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedServiceIdentityResponse)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutput() ManagedServiceIdentityResponseOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutputWithContext(ctx context.Context) ManagedServiceIdentityResponseOutput {
+	return o
+}
+
+// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
+}
+
+type ManagedServiceIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedServiceIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedServiceIdentityResponse)(nil)).Elem()
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutput() ManagedServiceIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
+	return o
+}
+
+func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) ManagedServiceIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedServiceIdentityResponse
+		return ret
+	}).(ManagedServiceIdentityResponseOutput)
+}
+
+// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
+func (o ManagedServiceIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+func (o ManagedServiceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
+func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v *ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
 }
 
 // The option associated with messaging flows.
@@ -4479,7 +4750,7 @@ type PendingConnectionResponse struct {
 	// Subscription ID of the pending connection.
 	SubscriptionId string `pulumi:"subscriptionId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -4617,8 +4888,8 @@ func (o PendingConnectionResponseOutput) SubscriptionId() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o PendingConnectionResponseOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v PendingConnectionResponse) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o PendingConnectionResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v PendingConnectionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.
@@ -4712,7 +4983,7 @@ type PendingFlowResponse struct {
 	// Subscription ID of the pending flow.
 	SubscriptionId string `pulumi:"subscriptionId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -4880,8 +5151,8 @@ func (o PendingFlowResponseOutput) SubscriptionId() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o PendingFlowResponseOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v PendingFlowResponse) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o PendingFlowResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v PendingFlowResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.
@@ -4927,7 +5198,7 @@ type PipelineConnectionResponse struct {
 	// Connection properties inside pipeline
 	Properties *PipelineConnectionResponseProperties `pulumi:"properties"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Connection type inside pipeline
 	Type string `pulumi:"type"`
 }
@@ -4973,8 +5244,8 @@ func (o PipelineConnectionResponseOutput) Properties() PipelineConnectionRespons
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o PipelineConnectionResponseOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v PipelineConnectionResponse) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o PipelineConnectionResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v PipelineConnectionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Connection type inside pipeline
@@ -5346,6 +5617,350 @@ func (o PipelinePropertiesResponseOutput) RemoteCloud() pulumi.StringOutput {
 // Subscribers of this resource
 func (o PipelinePropertiesResponseOutput) Subscribers() SubscriberResponseArrayOutput {
 	return o.ApplyT(func(v PipelinePropertiesResponse) []SubscriberResponse { return v.Subscribers }).(SubscriberResponseArrayOutput)
+}
+
+// Plan for the resource.
+type Plan struct {
+	// A user defined name of the 3rd Party Artifact that is being procured.
+	Name string `pulumi:"name"`
+	// The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding.
+	Product string `pulumi:"product"`
+	// A publisher provided promotion code as provisioned in Data Market for the said product/artifact.
+	PromotionCode *string `pulumi:"promotionCode"`
+	// The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic
+	Publisher string `pulumi:"publisher"`
+	// The version of the desired product/artifact.
+	Version *string `pulumi:"version"`
+}
+
+// PlanInput is an input type that accepts PlanArgs and PlanOutput values.
+// You can construct a concrete instance of `PlanInput` via:
+//
+//	PlanArgs{...}
+type PlanInput interface {
+	pulumi.Input
+
+	ToPlanOutput() PlanOutput
+	ToPlanOutputWithContext(context.Context) PlanOutput
+}
+
+// Plan for the resource.
+type PlanArgs struct {
+	// A user defined name of the 3rd Party Artifact that is being procured.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding.
+	Product pulumi.StringInput `pulumi:"product"`
+	// A publisher provided promotion code as provisioned in Data Market for the said product/artifact.
+	PromotionCode pulumi.StringPtrInput `pulumi:"promotionCode"`
+	// The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic
+	Publisher pulumi.StringInput `pulumi:"publisher"`
+	// The version of the desired product/artifact.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (PlanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Plan)(nil)).Elem()
+}
+
+func (i PlanArgs) ToPlanOutput() PlanOutput {
+	return i.ToPlanOutputWithContext(context.Background())
+}
+
+func (i PlanArgs) ToPlanOutputWithContext(ctx context.Context) PlanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlanOutput)
+}
+
+func (i PlanArgs) ToPlanPtrOutput() PlanPtrOutput {
+	return i.ToPlanPtrOutputWithContext(context.Background())
+}
+
+func (i PlanArgs) ToPlanPtrOutputWithContext(ctx context.Context) PlanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlanOutput).ToPlanPtrOutputWithContext(ctx)
+}
+
+// PlanPtrInput is an input type that accepts PlanArgs, PlanPtr and PlanPtrOutput values.
+// You can construct a concrete instance of `PlanPtrInput` via:
+//
+//	        PlanArgs{...}
+//
+//	or:
+//
+//	        nil
+type PlanPtrInput interface {
+	pulumi.Input
+
+	ToPlanPtrOutput() PlanPtrOutput
+	ToPlanPtrOutputWithContext(context.Context) PlanPtrOutput
+}
+
+type planPtrType PlanArgs
+
+func PlanPtr(v *PlanArgs) PlanPtrInput {
+	return (*planPtrType)(v)
+}
+
+func (*planPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Plan)(nil)).Elem()
+}
+
+func (i *planPtrType) ToPlanPtrOutput() PlanPtrOutput {
+	return i.ToPlanPtrOutputWithContext(context.Background())
+}
+
+func (i *planPtrType) ToPlanPtrOutputWithContext(ctx context.Context) PlanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlanPtrOutput)
+}
+
+// Plan for the resource.
+type PlanOutput struct{ *pulumi.OutputState }
+
+func (PlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Plan)(nil)).Elem()
+}
+
+func (o PlanOutput) ToPlanOutput() PlanOutput {
+	return o
+}
+
+func (o PlanOutput) ToPlanOutputWithContext(ctx context.Context) PlanOutput {
+	return o
+}
+
+func (o PlanOutput) ToPlanPtrOutput() PlanPtrOutput {
+	return o.ToPlanPtrOutputWithContext(context.Background())
+}
+
+func (o PlanOutput) ToPlanPtrOutputWithContext(ctx context.Context) PlanPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Plan) *Plan {
+		return &v
+	}).(PlanPtrOutput)
+}
+
+// A user defined name of the 3rd Party Artifact that is being procured.
+func (o PlanOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v Plan) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding.
+func (o PlanOutput) Product() pulumi.StringOutput {
+	return o.ApplyT(func(v Plan) string { return v.Product }).(pulumi.StringOutput)
+}
+
+// A publisher provided promotion code as provisioned in Data Market for the said product/artifact.
+func (o PlanOutput) PromotionCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Plan) *string { return v.PromotionCode }).(pulumi.StringPtrOutput)
+}
+
+// The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic
+func (o PlanOutput) Publisher() pulumi.StringOutput {
+	return o.ApplyT(func(v Plan) string { return v.Publisher }).(pulumi.StringOutput)
+}
+
+// The version of the desired product/artifact.
+func (o PlanOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Plan) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type PlanPtrOutput struct{ *pulumi.OutputState }
+
+func (PlanPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Plan)(nil)).Elem()
+}
+
+func (o PlanPtrOutput) ToPlanPtrOutput() PlanPtrOutput {
+	return o
+}
+
+func (o PlanPtrOutput) ToPlanPtrOutputWithContext(ctx context.Context) PlanPtrOutput {
+	return o
+}
+
+func (o PlanPtrOutput) Elem() PlanOutput {
+	return o.ApplyT(func(v *Plan) Plan {
+		if v != nil {
+			return *v
+		}
+		var ret Plan
+		return ret
+	}).(PlanOutput)
+}
+
+// A user defined name of the 3rd Party Artifact that is being procured.
+func (o PlanPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Plan) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding.
+func (o PlanPtrOutput) Product() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Plan) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Product
+	}).(pulumi.StringPtrOutput)
+}
+
+// A publisher provided promotion code as provisioned in Data Market for the said product/artifact.
+func (o PlanPtrOutput) PromotionCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Plan) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PromotionCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic
+func (o PlanPtrOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Plan) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Publisher
+	}).(pulumi.StringPtrOutput)
+}
+
+// The version of the desired product/artifact.
+func (o PlanPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Plan) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+// Plan for the resource.
+type PlanResponse struct {
+	// A user defined name of the 3rd Party Artifact that is being procured.
+	Name string `pulumi:"name"`
+	// The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding.
+	Product string `pulumi:"product"`
+	// A publisher provided promotion code as provisioned in Data Market for the said product/artifact.
+	PromotionCode *string `pulumi:"promotionCode"`
+	// The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic
+	Publisher string `pulumi:"publisher"`
+	// The version of the desired product/artifact.
+	Version *string `pulumi:"version"`
+}
+
+// Plan for the resource.
+type PlanResponseOutput struct{ *pulumi.OutputState }
+
+func (PlanResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlanResponse)(nil)).Elem()
+}
+
+func (o PlanResponseOutput) ToPlanResponseOutput() PlanResponseOutput {
+	return o
+}
+
+func (o PlanResponseOutput) ToPlanResponseOutputWithContext(ctx context.Context) PlanResponseOutput {
+	return o
+}
+
+// A user defined name of the 3rd Party Artifact that is being procured.
+func (o PlanResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PlanResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding.
+func (o PlanResponseOutput) Product() pulumi.StringOutput {
+	return o.ApplyT(func(v PlanResponse) string { return v.Product }).(pulumi.StringOutput)
+}
+
+// A publisher provided promotion code as provisioned in Data Market for the said product/artifact.
+func (o PlanResponseOutput) PromotionCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PlanResponse) *string { return v.PromotionCode }).(pulumi.StringPtrOutput)
+}
+
+// The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic
+func (o PlanResponseOutput) Publisher() pulumi.StringOutput {
+	return o.ApplyT(func(v PlanResponse) string { return v.Publisher }).(pulumi.StringOutput)
+}
+
+// The version of the desired product/artifact.
+func (o PlanResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PlanResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type PlanResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PlanResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PlanResponse)(nil)).Elem()
+}
+
+func (o PlanResponsePtrOutput) ToPlanResponsePtrOutput() PlanResponsePtrOutput {
+	return o
+}
+
+func (o PlanResponsePtrOutput) ToPlanResponsePtrOutputWithContext(ctx context.Context) PlanResponsePtrOutput {
+	return o
+}
+
+func (o PlanResponsePtrOutput) Elem() PlanResponseOutput {
+	return o.ApplyT(func(v *PlanResponse) PlanResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PlanResponse
+		return ret
+	}).(PlanResponseOutput)
+}
+
+// A user defined name of the 3rd Party Artifact that is being procured.
+func (o PlanResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PlanResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding.
+func (o PlanResponsePtrOutput) Product() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PlanResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Product
+	}).(pulumi.StringPtrOutput)
+}
+
+// A publisher provided promotion code as provisioned in Data Market for the said product/artifact.
+func (o PlanResponsePtrOutput) PromotionCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PlanResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PromotionCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic
+func (o PlanResponsePtrOutput) Publisher() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PlanResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Publisher
+	}).(pulumi.StringPtrOutput)
+}
+
+// The version of the desired product/artifact.
+func (o PlanResponsePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PlanResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
 }
 
 // The schema object.
@@ -6530,6 +7145,67 @@ func (o SubscriberResponseArrayOutput) Index(i pulumi.IntInput) SubscriberRespon
 	}).(SubscriberResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponse struct {
+	// The timestamp of resource creation (UTC).
+	CreatedAt *string `pulumi:"createdAt"`
+	// The identity that created the resource.
+	CreatedBy *string `pulumi:"createdBy"`
+	// The type of identity that created the resource.
+	CreatedByType *string `pulumi:"createdByType"`
+	// The timestamp of resource last modification (UTC)
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// The identity that last modified the resource.
+	LastModifiedBy *string `pulumi:"lastModifiedBy"`
+	// The type of identity that last modified the resource.
+	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+	return o
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+	return o
+}
+
+// The timestamp of resource creation (UTC).
+func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that created the resource.
+func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that created the resource.
+func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of resource last modification (UTC)
+func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+}
+
 // Configuration options for the text matching ruleset. For example, if the configuration is to deny "hello world" for partial case-insensitive words then "chello worlds" would get detected and the resulting file would be denied.
 type TextMatch struct {
 	// Specifies the text matching conditions based on casing. For more detail please refer to the Casing model.
@@ -6952,6 +7628,59 @@ func (o TextMatchingRulesetResponsePtrOutput) Deny() TextMatchResponseArrayOutpu
 	}).(TextMatchResponseArrayOutput)
 }
 
+// User assigned identity properties
+type UserAssignedIdentityResponse struct {
+	// The client ID of the assigned identity.
+	ClientId string `pulumi:"clientId"`
+	// The principal ID of the assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+}
+
+// User assigned identity properties
+type UserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput() UserAssignedIdentityResponseOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutputWithContext(ctx context.Context) UserAssignedIdentityResponseOutput {
+	return o
+}
+
+// The client ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The principal ID of the assigned identity.
+func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+type UserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutput() UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
+		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
+	}).(UserAssignedIdentityResponseOutput)
+}
+
 // Rules for filtering XML content using XSD schemas.
 type XmlFilterRuleset struct {
 	// The default XML namespace used for schema validation.
@@ -7262,6 +7991,10 @@ func init() {
 	pulumi.RegisterOutputType(InternalMetadataPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(ListFlowsByPipelineConnectionResponseOutput{})
 	pulumi.RegisterOutputType(ListFlowsByPipelineConnectionResponseArrayOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
+	pulumi.RegisterOutputType(ManagedServiceIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(MessagingOptionsOutput{})
 	pulumi.RegisterOutputType(MessagingOptionsPtrOutput{})
 	pulumi.RegisterOutputType(MessagingOptionsResponseOutput{})
@@ -7287,6 +8020,10 @@ func init() {
 	pulumi.RegisterOutputType(PipelinePropertiesOutput{})
 	pulumi.RegisterOutputType(PipelinePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(PipelinePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(PlanOutput{})
+	pulumi.RegisterOutputType(PlanPtrOutput{})
+	pulumi.RegisterOutputType(PlanResponseOutput{})
+	pulumi.RegisterOutputType(PlanResponsePtrOutput{})
 	pulumi.RegisterOutputType(SchemaOutput{})
 	pulumi.RegisterOutputType(SchemaPtrOutput{})
 	pulumi.RegisterOutputType(SchemaArrayOutput{})
@@ -7305,6 +8042,7 @@ func init() {
 	pulumi.RegisterOutputType(SubscriberArrayOutput{})
 	pulumi.RegisterOutputType(SubscriberResponseOutput{})
 	pulumi.RegisterOutputType(SubscriberResponseArrayOutput{})
+	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(TextMatchOutput{})
 	pulumi.RegisterOutputType(TextMatchArrayOutput{})
 	pulumi.RegisterOutputType(TextMatchResponseOutput{})
@@ -7313,6 +8051,8 @@ func init() {
 	pulumi.RegisterOutputType(TextMatchingRulesetPtrOutput{})
 	pulumi.RegisterOutputType(TextMatchingRulesetResponseOutput{})
 	pulumi.RegisterOutputType(TextMatchingRulesetResponsePtrOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 	pulumi.RegisterOutputType(XmlFilterRulesetOutput{})
 	pulumi.RegisterOutputType(XmlFilterRulesetPtrOutput{})
 	pulumi.RegisterOutputType(XmlFilterRulesetResponseOutput{})

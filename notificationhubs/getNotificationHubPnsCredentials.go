@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -60,7 +59,7 @@ type GetNotificationHubPnsCredentialsResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Deprecated - only for compatibility.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -160,8 +159,8 @@ func (o GetNotificationHubPnsCredentialsResultOutput) Name() pulumi.StringOutput
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o GetNotificationHubPnsCredentialsResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v GetNotificationHubPnsCredentialsResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o GetNotificationHubPnsCredentialsResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetNotificationHubPnsCredentialsResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Deprecated - only for compatibility.

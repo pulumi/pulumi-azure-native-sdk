@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv1"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -57,7 +56,7 @@ type LookupKustoPoolAttachedDatabaseConfigurationResult struct {
 	// The provisioned state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv1.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Table level sharing specifications
 	TableLevelSharingProperties *TableLevelSharingPropertiesResponse `pulumi:"tableLevelSharingProperties"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -151,10 +150,8 @@ func (o LookupKustoPoolAttachedDatabaseConfigurationResultOutput) ProvisioningSt
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupKustoPoolAttachedDatabaseConfigurationResultOutput) SystemData() commontypesv1.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupKustoPoolAttachedDatabaseConfigurationResult) commontypesv1.SystemDataResponse {
-		return v.SystemData
-	}).(commontypesv1.SystemDataResponseOutput)
+func (o LookupKustoPoolAttachedDatabaseConfigurationResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupKustoPoolAttachedDatabaseConfigurationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Table level sharing specifications

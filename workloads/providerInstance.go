@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -24,7 +23,7 @@ type ProviderInstance struct {
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Defines the provider instance errors.
-	Errors commontypesv5.ErrorDetailResponseOutput `pulumi:"errors"`
+	Errors ErrorDetailResponseOutput `pulumi:"errors"`
 	// Resource health details
 	Health HealthResponseOutput `pulumi:"health"`
 	// The name of the resource
@@ -34,7 +33,7 @@ type ProviderInstance struct {
 	// State of provisioning of the provider instance
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -171,8 +170,8 @@ func (o ProviderInstanceOutput) AzureApiVersion() pulumi.StringOutput {
 }
 
 // Defines the provider instance errors.
-func (o ProviderInstanceOutput) Errors() commontypesv5.ErrorDetailResponseOutput {
-	return o.ApplyT(func(v *ProviderInstance) commontypesv5.ErrorDetailResponseOutput { return v.Errors }).(commontypesv5.ErrorDetailResponseOutput)
+func (o ProviderInstanceOutput) Errors() ErrorDetailResponseOutput {
+	return o.ApplyT(func(v *ProviderInstance) ErrorDetailResponseOutput { return v.Errors }).(ErrorDetailResponseOutput)
 }
 
 // Resource health details
@@ -196,8 +195,8 @@ func (o ProviderInstanceOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ProviderInstanceOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *ProviderInstance) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o ProviderInstanceOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ProviderInstance) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -26,7 +25,7 @@ type TestBaseAccount struct {
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The identity of the testBaseAccount.
-	Identity commontypesv5.SystemAssignedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity SystemAssignedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -36,7 +35,7 @@ type TestBaseAccount struct {
 	// The SKU of the Test Base Account.
 	Sku TestBaseAccountSKUResponseOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -102,7 +101,7 @@ func (TestBaseAccountState) ElementType() reflect.Type {
 
 type testBaseAccountArgs struct {
 	// The identity of the testBaseAccount.
-	Identity *commontypesv5.SystemAssignedServiceIdentity `pulumi:"identity"`
+	Identity *SystemAssignedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the resource group. The name is case insensitive.
@@ -120,7 +119,7 @@ type testBaseAccountArgs struct {
 // The set of arguments for constructing a TestBaseAccount resource.
 type TestBaseAccountArgs struct {
 	// The identity of the testBaseAccount.
-	Identity commontypesv5.SystemAssignedServiceIdentityPtrInput
+	Identity SystemAssignedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -183,10 +182,8 @@ func (o TestBaseAccountOutput) AzureApiVersion() pulumi.StringOutput {
 }
 
 // The identity of the testBaseAccount.
-func (o TestBaseAccountOutput) Identity() commontypesv5.SystemAssignedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *TestBaseAccount) commontypesv5.SystemAssignedServiceIdentityResponsePtrOutput {
-		return v.Identity
-	}).(commontypesv5.SystemAssignedServiceIdentityResponsePtrOutput)
+func (o TestBaseAccountOutput) Identity() SystemAssignedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *TestBaseAccount) SystemAssignedServiceIdentityResponsePtrOutput { return v.Identity }).(SystemAssignedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -210,8 +207,8 @@ func (o TestBaseAccountOutput) Sku() TestBaseAccountSKUResponseOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o TestBaseAccountOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *TestBaseAccount) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o TestBaseAccountOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *TestBaseAccount) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

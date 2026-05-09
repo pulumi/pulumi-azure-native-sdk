@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -45,7 +44,7 @@ type LookupGuestUsageResult struct {
 	// The name of the Guest Usages resource.
 	Name string `pulumi:"name"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Key-value pairs of additional resource provisioning properties.
 	Tags map[string]string `pulumi:"tags"`
 	// An identifier for the tenant for which the resource is being created
@@ -110,8 +109,8 @@ func (o LookupGuestUsageResultOutput) Name() pulumi.StringOutput {
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupGuestUsageResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupGuestUsageResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o LookupGuestUsageResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupGuestUsageResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Key-value pairs of additional resource provisioning properties.

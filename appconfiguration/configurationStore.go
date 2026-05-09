@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -52,7 +51,7 @@ type ConfigurationStore struct {
 	// The amount of time in days that the configuration store will be retained when it is soft deleted.
 	SoftDeleteRetentionInDays pulumi.IntPtrOutput `pulumi:"softDeleteRetentionInDays"`
 	// Resource system metadata.
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -341,8 +340,8 @@ func (o ConfigurationStoreOutput) SoftDeleteRetentionInDays() pulumi.IntPtrOutpu
 }
 
 // Resource system metadata.
-func (o ConfigurationStoreOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *ConfigurationStore) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o ConfigurationStoreOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ConfigurationStore) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

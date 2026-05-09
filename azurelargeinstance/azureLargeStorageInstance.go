@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -25,7 +24,7 @@ type AzureLargeStorageInstance struct {
 	// Specifies the AzureLargeStorageInstance unique ID.
 	AzureLargeStorageInstanceUniqueIdentifier pulumi.StringPtrOutput `pulumi:"azureLargeStorageInstanceUniqueIdentifier"`
 	// The managed service identities assigned to this resource.
-	Identity commontypesv5.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -33,7 +32,7 @@ type AzureLargeStorageInstance struct {
 	// Specifies the storage properties for the AzureLargeStorage instance.
 	StorageProperties StoragePropertiesResponsePtrOutput `pulumi:"storageProperties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -94,7 +93,7 @@ type azureLargeStorageInstanceArgs struct {
 	// Specifies the AzureLargeStorageInstance unique ID.
 	AzureLargeStorageInstanceUniqueIdentifier *string `pulumi:"azureLargeStorageInstanceUniqueIdentifier"`
 	// The managed service identities assigned to this resource.
-	Identity *commontypesv5.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the resource group. The name is case insensitive.
@@ -112,7 +111,7 @@ type AzureLargeStorageInstanceArgs struct {
 	// Specifies the AzureLargeStorageInstance unique ID.
 	AzureLargeStorageInstanceUniqueIdentifier pulumi.StringPtrInput
 	// The managed service identities assigned to this resource.
-	Identity commontypesv5.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -173,10 +172,8 @@ func (o AzureLargeStorageInstanceOutput) AzureLargeStorageInstanceUniqueIdentifi
 }
 
 // The managed service identities assigned to this resource.
-func (o AzureLargeStorageInstanceOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *AzureLargeStorageInstance) commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-		return v.Identity
-	}).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+func (o AzureLargeStorageInstanceOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *AzureLargeStorageInstance) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -195,8 +192,8 @@ func (o AzureLargeStorageInstanceOutput) StorageProperties() StoragePropertiesRe
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o AzureLargeStorageInstanceOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *AzureLargeStorageInstance) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o AzureLargeStorageInstanceOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *AzureLargeStorageInstance) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -49,8 +48,8 @@ type LookupWorkspaceResult struct {
 	// Friendly name of Workspace.
 	FriendlyName *string `pulumi:"friendlyName"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-	Id       string                                                             `pulumi:"id"`
-	Identity *commontypesv5.ResourceModelWithAllowedPropertySetResponseIdentity `pulumi:"identity"`
+	Id       string                                               `pulumi:"id"`
+	Identity *ResourceModelWithAllowedPropertySetResponseIdentity `pulumi:"identity"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
@@ -60,15 +59,15 @@ type LookupWorkspaceResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// ObjectId of Workspace. (internal use)
-	ObjectId string                                                         `pulumi:"objectId"`
-	Plan     *commontypesv5.ResourceModelWithAllowedPropertySetResponsePlan `pulumi:"plan"`
+	ObjectId string                                           `pulumi:"objectId"`
+	Plan     *ResourceModelWithAllowedPropertySetResponsePlan `pulumi:"plan"`
 	// List of private endpoint connection associated with the specified resource
-	PrivateEndpointConnections []commontypesv5.PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints
-	PublicNetworkAccess *string                                                       `pulumi:"publicNetworkAccess"`
-	Sku                 *commontypesv5.ResourceModelWithAllowedPropertySetResponseSku `pulumi:"sku"`
+	PublicNetworkAccess *string                                         `pulumi:"publicNetworkAccess"`
+	Sku                 *ResourceModelWithAllowedPropertySetResponseSku `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -145,10 +144,8 @@ func (o LookupWorkspaceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o LookupWorkspaceResultOutput) Identity() commontypesv5.ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput {
-	return o.ApplyT(func(v LookupWorkspaceResult) *commontypesv5.ResourceModelWithAllowedPropertySetResponseIdentity {
-		return v.Identity
-	}).(commontypesv5.ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput)
+func (o LookupWorkspaceResultOutput) Identity() ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) *ResourceModelWithAllowedPropertySetResponseIdentity { return v.Identity }).(ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput)
 }
 
 // Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
@@ -176,17 +173,13 @@ func (o LookupWorkspaceResultOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceResult) string { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-func (o LookupWorkspaceResultOutput) Plan() commontypesv5.ResourceModelWithAllowedPropertySetResponsePlanPtrOutput {
-	return o.ApplyT(func(v LookupWorkspaceResult) *commontypesv5.ResourceModelWithAllowedPropertySetResponsePlan {
-		return v.Plan
-	}).(commontypesv5.ResourceModelWithAllowedPropertySetResponsePlanPtrOutput)
+func (o LookupWorkspaceResultOutput) Plan() ResourceModelWithAllowedPropertySetResponsePlanPtrOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) *ResourceModelWithAllowedPropertySetResponsePlan { return v.Plan }).(ResourceModelWithAllowedPropertySetResponsePlanPtrOutput)
 }
 
 // List of private endpoint connection associated with the specified resource
-func (o LookupWorkspaceResultOutput) PrivateEndpointConnections() commontypesv5.PrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v LookupWorkspaceResult) []commontypesv5.PrivateEndpointConnectionResponse {
-		return v.PrivateEndpointConnections
-	}).(commontypesv5.PrivateEndpointConnectionResponseArrayOutput)
+func (o LookupWorkspaceResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) []PrivateEndpointConnectionResponse { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints
@@ -194,15 +187,13 @@ func (o LookupWorkspaceResultOutput) PublicNetworkAccess() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v LookupWorkspaceResult) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
-func (o LookupWorkspaceResultOutput) Sku() commontypesv5.ResourceModelWithAllowedPropertySetResponseSkuPtrOutput {
-	return o.ApplyT(func(v LookupWorkspaceResult) *commontypesv5.ResourceModelWithAllowedPropertySetResponseSku {
-		return v.Sku
-	}).(commontypesv5.ResourceModelWithAllowedPropertySetResponseSkuPtrOutput)
+func (o LookupWorkspaceResultOutput) Sku() ResourceModelWithAllowedPropertySetResponseSkuPtrOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) *ResourceModelWithAllowedPropertySetResponseSku { return v.Sku }).(ResourceModelWithAllowedPropertySetResponseSkuPtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupWorkspaceResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupWorkspaceResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupWorkspaceResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupWorkspaceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -22,7 +21,7 @@ type SecurityOperator struct {
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Identity for the resource.
-	Identity commontypesv2.IdentityResponsePtrOutput `pulumi:"identity"`
+	Identity IdentityResponsePtrOutput `pulumi:"identity"`
 	// Resource name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Resource type
@@ -135,8 +134,8 @@ func (o SecurityOperatorOutput) AzureApiVersion() pulumi.StringOutput {
 }
 
 // Identity for the resource.
-func (o SecurityOperatorOutput) Identity() commontypesv2.IdentityResponsePtrOutput {
-	return o.ApplyT(func(v *SecurityOperator) commontypesv2.IdentityResponsePtrOutput { return v.Identity }).(commontypesv2.IdentityResponsePtrOutput)
+func (o SecurityOperatorOutput) Identity() IdentityResponsePtrOutput {
+	return o.ApplyT(func(v *SecurityOperator) IdentityResponsePtrOutput { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
 // Resource name

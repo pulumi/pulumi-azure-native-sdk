@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -77,7 +76,7 @@ type LookupRecordSetResult struct {
 	// The list of SRV records in the record set.
 	SrvRecords []SrvRecordResponse `pulumi:"srvRecords"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// A reference to an azure resource from where the dns resource value is taken.
 	TargetResource *SubResourceResponse `pulumi:"targetResource"`
 	// The list of TLSA records in the record set.
@@ -222,8 +221,8 @@ func (o LookupRecordSetResultOutput) SrvRecords() SrvRecordResponseArrayOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupRecordSetResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupRecordSetResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o LookupRecordSetResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupRecordSetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // A reference to an azure resource from where the dns resource value is taken.

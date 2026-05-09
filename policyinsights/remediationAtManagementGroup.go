@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv1"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -52,7 +51,7 @@ type RemediationAtManagementGroup struct {
 	// The remediation status message. Provides additional details regarding the state of the remediation.
 	StatusMessage pulumi.StringOutput `pulumi:"statusMessage"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv1.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the remediation.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -281,8 +280,8 @@ func (o RemediationAtManagementGroupOutput) StatusMessage() pulumi.StringOutput 
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o RemediationAtManagementGroupOutput) SystemData() commontypesv1.SystemDataResponseOutput {
-	return o.ApplyT(func(v *RemediationAtManagementGroup) commontypesv1.SystemDataResponseOutput { return v.SystemData }).(commontypesv1.SystemDataResponseOutput)
+func (o RemediationAtManagementGroupOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *RemediationAtManagementGroup) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the remediation.

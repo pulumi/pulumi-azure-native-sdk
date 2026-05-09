@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -41,15 +40,15 @@ type LookupBulkActionResult struct {
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The managed service identities assigned to this resource.
-	Identity *commontypesv6.ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Details of the resource plan.
-	Plan *commontypesv6.PlanResponse `pulumi:"plan"`
+	Plan *PlanResponse `pulumi:"plan"`
 	// The resource-specific properties for this resource.
 	Properties LaunchBulkInstancesOperationPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv6.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -106,8 +105,8 @@ func (o LookupBulkActionResultOutput) Id() pulumi.StringOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o LookupBulkActionResultOutput) Identity() commontypesv6.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupBulkActionResult) *commontypesv6.ManagedServiceIdentityResponse { return v.Identity }).(commontypesv6.ManagedServiceIdentityResponsePtrOutput)
+func (o LookupBulkActionResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupBulkActionResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The name of the resource
@@ -116,8 +115,8 @@ func (o LookupBulkActionResultOutput) Name() pulumi.StringOutput {
 }
 
 // Details of the resource plan.
-func (o LookupBulkActionResultOutput) Plan() commontypesv6.PlanResponsePtrOutput {
-	return o.ApplyT(func(v LookupBulkActionResult) *commontypesv6.PlanResponse { return v.Plan }).(commontypesv6.PlanResponsePtrOutput)
+func (o LookupBulkActionResultOutput) Plan() PlanResponsePtrOutput {
+	return o.ApplyT(func(v LookupBulkActionResult) *PlanResponse { return v.Plan }).(PlanResponsePtrOutput)
 }
 
 // The resource-specific properties for this resource.
@@ -126,8 +125,8 @@ func (o LookupBulkActionResultOutput) Properties() LaunchBulkInstancesOperationP
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupBulkActionResultOutput) SystemData() commontypesv6.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupBulkActionResult) commontypesv6.SystemDataResponse { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
+func (o LookupBulkActionResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupBulkActionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

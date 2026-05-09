@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -28,7 +27,7 @@ type Profile struct {
 	// The Id of the frontdoor.
 	FrontDoorId pulumi.StringOutput `pulumi:"frontDoorId"`
 	// The managed service identities assigned to this resource.
-	Identity commontypesv6.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Kind of the profile. Used by portal to differentiate traditional CDN profile and new AFD profile.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The geo-location where the resource lives
@@ -46,7 +45,7 @@ type Profile struct {
 	// The pricing tier (defines Azure Front Door Standard or Premium or a CDN provider, feature list and rate) of the profile.
 	Sku SkuResponseOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv6.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -181,7 +180,7 @@ func (ProfileState) ElementType() reflect.Type {
 
 type profileArgs struct {
 	// The managed service identities assigned to this resource.
-	Identity *commontypesv6.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Defines rules that scrub sensitive fields in the Azure Front Door profile logs.
@@ -201,7 +200,7 @@ type profileArgs struct {
 // The set of arguments for constructing a Profile resource.
 type ProfileArgs struct {
 	// The managed service identities assigned to this resource.
-	Identity commontypesv6.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Defines rules that scrub sensitive fields in the Azure Front Door profile logs.
@@ -271,8 +270,8 @@ func (o ProfileOutput) FrontDoorId() pulumi.StringOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o ProfileOutput) Identity() commontypesv6.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *Profile) commontypesv6.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv6.ManagedServiceIdentityResponsePtrOutput)
+func (o ProfileOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Profile) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Kind of the profile. Used by portal to differentiate traditional CDN profile and new AFD profile.
@@ -316,8 +315,8 @@ func (o ProfileOutput) Sku() SkuResponseOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ProfileOutput) SystemData() commontypesv6.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Profile) commontypesv6.SystemDataResponseOutput { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
+func (o ProfileOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Profile) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -28,13 +27,13 @@ type Fleet struct {
 	// Compute Profile to use for running user's workloads.
 	ComputeProfile ComputeProfileResponseOutput `pulumi:"computeProfile"`
 	// The managed service identities assigned to this resource.
-	Identity commontypesv5.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Details of the resource plan.
-	Plan commontypesv5.PlanResponsePtrOutput `pulumi:"plan"`
+	Plan PlanResponsePtrOutput `pulumi:"plan"`
 	// The status of the last operation.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Configuration Options for Regular instances in Compute Fleet.
@@ -42,7 +41,7 @@ type Fleet struct {
 	// Configuration Options for Spot instances in Compute Fleet.
 	SpotPriorityProfile SpotPriorityProfileResponsePtrOutput `pulumi:"spotPriorityProfile"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Specifies the time at which the Compute Fleet is created.
@@ -130,11 +129,11 @@ type fleetArgs struct {
 	// The name of the Compute Fleet
 	FleetName *string `pulumi:"fleetName"`
 	// The managed service identities assigned to this resource.
-	Identity *commontypesv5.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Details of the resource plan.
-	Plan *commontypesv5.Plan `pulumi:"plan"`
+	Plan *Plan `pulumi:"plan"`
 	// Configuration Options for Regular instances in Compute Fleet.
 	RegularPriorityProfile *RegularPriorityProfile `pulumi:"regularPriorityProfile"`
 	// The name of the resource group. The name is case insensitive.
@@ -160,11 +159,11 @@ type FleetArgs struct {
 	// The name of the Compute Fleet
 	FleetName pulumi.StringPtrInput
 	// The managed service identities assigned to this resource.
-	Identity commontypesv5.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Details of the resource plan.
-	Plan commontypesv5.PlanPtrInput
+	Plan PlanPtrInput
 	// Configuration Options for Regular instances in Compute Fleet.
 	RegularPriorityProfile RegularPriorityProfilePtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -234,8 +233,8 @@ func (o FleetOutput) ComputeProfile() ComputeProfileResponseOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o FleetOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *Fleet) commontypesv5.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+func (o FleetOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Fleet) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -249,8 +248,8 @@ func (o FleetOutput) Name() pulumi.StringOutput {
 }
 
 // Details of the resource plan.
-func (o FleetOutput) Plan() commontypesv5.PlanResponsePtrOutput {
-	return o.ApplyT(func(v *Fleet) commontypesv5.PlanResponsePtrOutput { return v.Plan }).(commontypesv5.PlanResponsePtrOutput)
+func (o FleetOutput) Plan() PlanResponsePtrOutput {
+	return o.ApplyT(func(v *Fleet) PlanResponsePtrOutput { return v.Plan }).(PlanResponsePtrOutput)
 }
 
 // The status of the last operation.
@@ -269,8 +268,8 @@ func (o FleetOutput) SpotPriorityProfile() SpotPriorityProfileResponsePtrOutput 
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o FleetOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Fleet) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o FleetOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Fleet) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

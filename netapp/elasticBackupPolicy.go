@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -32,7 +31,7 @@ type ElasticBackupPolicy struct {
 	// The resource-specific properties for this resource.
 	Properties ElasticBackupPolicyPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv6.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -187,8 +186,8 @@ func (o ElasticBackupPolicyOutput) Properties() ElasticBackupPolicyPropertiesRes
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ElasticBackupPolicyOutput) SystemData() commontypesv6.SystemDataResponseOutput {
-	return o.ApplyT(func(v *ElasticBackupPolicy) commontypesv6.SystemDataResponseOutput { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
+func (o ElasticBackupPolicyOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ElasticBackupPolicy) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

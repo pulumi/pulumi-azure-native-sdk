@@ -8,8 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -43,9 +41,9 @@ type DevBoxDefinition struct {
 	// The provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The SKU for Dev Boxes created using this definition.
-	Sku commontypesv3.SkuResponseOutput `pulumi:"sku"`
+	Sku SkuResponseOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -181,7 +179,7 @@ type devBoxDefinitionArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The SKU for Dev Boxes created using this definition.
-	Sku commontypesv3.Sku `pulumi:"sku"`
+	Sku Sku `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -203,7 +201,7 @@ type DevBoxDefinitionArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The SKU for Dev Boxes created using this definition.
-	Sku commontypesv3.SkuInput
+	Sku SkuInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 }
@@ -298,13 +296,13 @@ func (o DevBoxDefinitionOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // The SKU for Dev Boxes created using this definition.
-func (o DevBoxDefinitionOutput) Sku() commontypesv3.SkuResponseOutput {
-	return o.ApplyT(func(v *DevBoxDefinition) commontypesv3.SkuResponseOutput { return v.Sku }).(commontypesv3.SkuResponseOutput)
+func (o DevBoxDefinitionOutput) Sku() SkuResponseOutput {
+	return o.ApplyT(func(v *DevBoxDefinition) SkuResponseOutput { return v.Sku }).(SkuResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o DevBoxDefinitionOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *DevBoxDefinition) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o DevBoxDefinitionOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *DevBoxDefinition) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

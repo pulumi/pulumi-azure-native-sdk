@@ -7,8 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -52,7 +50,7 @@ type LookupProjectEnvironmentTypeResult struct {
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Managed identity properties
-	Identity *commontypesv4.ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The geo-location for the environment type
 	Location *string `pulumi:"location"`
 	// The name of the resource
@@ -62,7 +60,7 @@ type LookupProjectEnvironmentTypeResult struct {
 	// Defines whether this Environment Type can be used in this Project.
 	Status *string `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -141,10 +139,8 @@ func (o LookupProjectEnvironmentTypeResultOutput) Id() pulumi.StringOutput {
 }
 
 // Managed identity properties
-func (o LookupProjectEnvironmentTypeResultOutput) Identity() commontypesv4.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupProjectEnvironmentTypeResult) *commontypesv4.ManagedServiceIdentityResponse {
-		return v.Identity
-	}).(commontypesv4.ManagedServiceIdentityResponsePtrOutput)
+func (o LookupProjectEnvironmentTypeResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupProjectEnvironmentTypeResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location for the environment type
@@ -168,8 +164,8 @@ func (o LookupProjectEnvironmentTypeResultOutput) Status() pulumi.StringPtrOutpu
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupProjectEnvironmentTypeResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupProjectEnvironmentTypeResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupProjectEnvironmentTypeResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupProjectEnvironmentTypeResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv1"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -61,7 +60,7 @@ type LookupDicomServiceResult struct {
 	// The resource name.
 	Name string `pulumi:"name"`
 	// The list of private endpoint connections that are set up for this resource.
-	PrivateEndpointConnections []commontypesv1.PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// The provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Control permission for data plane traffic coming from public networks while private endpoint is enabled.
@@ -173,10 +172,10 @@ func (o LookupDicomServiceResultOutput) Name() pulumi.StringOutput {
 }
 
 // The list of private endpoint connections that are set up for this resource.
-func (o LookupDicomServiceResultOutput) PrivateEndpointConnections() commontypesv1.PrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v LookupDicomServiceResult) []commontypesv1.PrivateEndpointConnectionResponse {
+func (o LookupDicomServiceResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v LookupDicomServiceResult) []PrivateEndpointConnectionResponse {
 		return v.PrivateEndpointConnections
-	}).(commontypesv1.PrivateEndpointConnectionResponseArrayOutput)
+	}).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // The provisioning state.

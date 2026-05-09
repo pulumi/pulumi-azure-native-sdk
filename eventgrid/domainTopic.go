@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -28,7 +27,7 @@ type DomainTopic struct {
 	// Provisioning state of the domain topic.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The system metadata relating to the Event Grid resource.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -204,8 +203,8 @@ func (o DomainTopicOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // The system metadata relating to the Event Grid resource.
-func (o DomainTopicOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *DomainTopic) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o DomainTopicOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *DomainTopic) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Type of the resource.

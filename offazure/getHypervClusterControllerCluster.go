@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -61,7 +60,7 @@ type LookupHypervClusterControllerClusterResult struct {
 	// Gets the status of the Hyper-V cluster.
 	Status string `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Gets the timestamp marking last updated on the Hyper-V cluster.
@@ -161,10 +160,8 @@ func (o LookupHypervClusterControllerClusterResultOutput) Status() pulumi.String
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupHypervClusterControllerClusterResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupHypervClusterControllerClusterResult) commontypesv3.SystemDataResponse {
-		return v.SystemData
-	}).(commontypesv3.SystemDataResponseOutput)
+func (o LookupHypervClusterControllerClusterResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupHypervClusterControllerClusterResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

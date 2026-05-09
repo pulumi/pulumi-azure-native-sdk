@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -36,11 +35,11 @@ type Extension struct {
 	// Custom Location settings properties.
 	CustomLocationSettings pulumi.StringMapOutput `pulumi:"customLocationSettings"`
 	// Error information from the Agent - e.g. errors during installation.
-	ErrorInfo commontypesv2.ErrorDetailResponseOutput `pulumi:"errorInfo"`
+	ErrorInfo ErrorDetailResponseOutput `pulumi:"errorInfo"`
 	// Type of the Extension, of which this resource is an instance of.  It must be one of the Extension Types registered with Microsoft.KubernetesConfiguration by the Extension publisher.
 	ExtensionType pulumi.StringPtrOutput `pulumi:"extensionType"`
 	// Identity of the Extension resource
-	Identity commontypesv2.IdentityResponsePtrOutput `pulumi:"identity"`
+	Identity IdentityResponsePtrOutput `pulumi:"identity"`
 	// Flag to note if this extension is a system extension
 	IsSystemExtension pulumi.BoolOutput `pulumi:"isSystemExtension"`
 	// The name of the resource
@@ -48,7 +47,7 @@ type Extension struct {
 	// Uri of the Helm package
 	PackageUri pulumi.StringOutput `pulumi:"packageUri"`
 	// The plan information.
-	Plan commontypesv2.PlanResponsePtrOutput `pulumi:"plan"`
+	Plan PlanResponsePtrOutput `pulumi:"plan"`
 	// Status of installation of this extension.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// ReleaseTrain this extension participates in for auto-upgrade (e.g. Stable, Preview, etc.) - only if autoUpgradeMinorVersion is 'true'.
@@ -58,7 +57,7 @@ type Extension struct {
 	// Status from this extension.
 	Statuses ExtensionStatusResponseArrayOutput `pulumi:"statuses"`
 	// Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// User-specified version of the extension for this extension to 'pin'. To use 'version', autoUpgradeMinorVersion must be 'false'.
@@ -178,9 +177,9 @@ type extensionArgs struct {
 	// Type of the Extension, of which this resource is an instance of.  It must be one of the Extension Types registered with Microsoft.KubernetesConfiguration by the Extension publisher.
 	ExtensionType *string `pulumi:"extensionType"`
 	// Identity of the Extension resource
-	Identity *commontypesv2.Identity `pulumi:"identity"`
+	Identity *Identity `pulumi:"identity"`
 	// The plan information.
-	Plan *commontypesv2.Plan `pulumi:"plan"`
+	Plan *Plan `pulumi:"plan"`
 	// ReleaseTrain this extension participates in for auto-upgrade (e.g. Stable, Preview, etc.) - only if autoUpgradeMinorVersion is 'true'.
 	ReleaseTrain *string `pulumi:"releaseTrain"`
 	// The name of the resource group. The name is case insensitive.
@@ -214,9 +213,9 @@ type ExtensionArgs struct {
 	// Type of the Extension, of which this resource is an instance of.  It must be one of the Extension Types registered with Microsoft.KubernetesConfiguration by the Extension publisher.
 	ExtensionType pulumi.StringPtrInput
 	// Identity of the Extension resource
-	Identity commontypesv2.IdentityPtrInput
+	Identity IdentityPtrInput
 	// The plan information.
-	Plan commontypesv2.PlanPtrInput
+	Plan PlanPtrInput
 	// ReleaseTrain this extension participates in for auto-upgrade (e.g. Stable, Preview, etc.) - only if autoUpgradeMinorVersion is 'true'.
 	ReleaseTrain pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -302,8 +301,8 @@ func (o ExtensionOutput) CustomLocationSettings() pulumi.StringMapOutput {
 }
 
 // Error information from the Agent - e.g. errors during installation.
-func (o ExtensionOutput) ErrorInfo() commontypesv2.ErrorDetailResponseOutput {
-	return o.ApplyT(func(v *Extension) commontypesv2.ErrorDetailResponseOutput { return v.ErrorInfo }).(commontypesv2.ErrorDetailResponseOutput)
+func (o ExtensionOutput) ErrorInfo() ErrorDetailResponseOutput {
+	return o.ApplyT(func(v *Extension) ErrorDetailResponseOutput { return v.ErrorInfo }).(ErrorDetailResponseOutput)
 }
 
 // Type of the Extension, of which this resource is an instance of.  It must be one of the Extension Types registered with Microsoft.KubernetesConfiguration by the Extension publisher.
@@ -312,8 +311,8 @@ func (o ExtensionOutput) ExtensionType() pulumi.StringPtrOutput {
 }
 
 // Identity of the Extension resource
-func (o ExtensionOutput) Identity() commontypesv2.IdentityResponsePtrOutput {
-	return o.ApplyT(func(v *Extension) commontypesv2.IdentityResponsePtrOutput { return v.Identity }).(commontypesv2.IdentityResponsePtrOutput)
+func (o ExtensionOutput) Identity() IdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Extension) IdentityResponsePtrOutput { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
 // Flag to note if this extension is a system extension
@@ -332,8 +331,8 @@ func (o ExtensionOutput) PackageUri() pulumi.StringOutput {
 }
 
 // The plan information.
-func (o ExtensionOutput) Plan() commontypesv2.PlanResponsePtrOutput {
-	return o.ApplyT(func(v *Extension) commontypesv2.PlanResponsePtrOutput { return v.Plan }).(commontypesv2.PlanResponsePtrOutput)
+func (o ExtensionOutput) Plan() PlanResponsePtrOutput {
+	return o.ApplyT(func(v *Extension) PlanResponsePtrOutput { return v.Plan }).(PlanResponsePtrOutput)
 }
 
 // Status of installation of this extension.
@@ -357,8 +356,8 @@ func (o ExtensionOutput) Statuses() ExtensionStatusResponseArrayOutput {
 }
 
 // Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
-func (o ExtensionOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Extension) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o ExtensionOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Extension) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

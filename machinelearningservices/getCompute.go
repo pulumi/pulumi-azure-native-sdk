@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -43,7 +42,7 @@ type LookupComputeResult struct {
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The identity of the resource.
-	Identity *commontypesv3.ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// Specifies the location of the resource.
 	Location *string `pulumi:"location"`
 	// The name of the resource
@@ -51,9 +50,9 @@ type LookupComputeResult struct {
 	// The resource-specific properties for this resource.
 	Properties interface{} `pulumi:"properties"`
 	// The sku of the workspace.
-	Sku *commontypesv3.SkuResponse `pulumi:"sku"`
+	Sku *SkuResponse `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Contains resource tags defined as key/value pairs.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -108,8 +107,8 @@ func (o LookupComputeResultOutput) Id() pulumi.StringOutput {
 }
 
 // The identity of the resource.
-func (o LookupComputeResultOutput) Identity() commontypesv3.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupComputeResult) *commontypesv3.ManagedServiceIdentityResponse { return v.Identity }).(commontypesv3.ManagedServiceIdentityResponsePtrOutput)
+func (o LookupComputeResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupComputeResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Specifies the location of the resource.
@@ -128,13 +127,13 @@ func (o LookupComputeResultOutput) Properties() pulumi.AnyOutput {
 }
 
 // The sku of the workspace.
-func (o LookupComputeResultOutput) Sku() commontypesv3.SkuResponsePtrOutput {
-	return o.ApplyT(func(v LookupComputeResult) *commontypesv3.SkuResponse { return v.Sku }).(commontypesv3.SkuResponsePtrOutput)
+func (o LookupComputeResultOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v LookupComputeResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupComputeResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupComputeResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o LookupComputeResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupComputeResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Contains resource tags defined as key/value pairs.

@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -70,7 +69,7 @@ type Device struct {
 	// The SKU type.
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// DataBoxEdge Resource
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The list of tags that describe the device. These tags can be used to view and group this device (across resource groups).
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The Data Box Edge/Gateway device timezone.
@@ -368,8 +367,8 @@ func (o DeviceOutput) Sku() SkuResponsePtrOutput {
 }
 
 // DataBoxEdge Resource
-func (o DeviceOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Device) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o DeviceOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Device) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The list of tags that describe the device. These tags can be used to view and group this device (across resource groups).

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -49,7 +48,7 @@ type LookupSuppressionResult struct {
 	// The GUID of the suppression.
 	SuppressionId *string `pulumi:"suppressionId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv4.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The duration for which the suppression is valid.
 	Ttl *string `pulumi:"ttl"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -119,8 +118,8 @@ func (o LookupSuppressionResultOutput) SuppressionId() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupSuppressionResultOutput) SystemData() commontypesv4.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupSuppressionResult) commontypesv4.SystemDataResponse { return v.SystemData }).(commontypesv4.SystemDataResponseOutput)
+func (o LookupSuppressionResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSuppressionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The duration for which the suppression is valid.

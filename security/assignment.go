@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -48,7 +47,7 @@ type Assignment struct {
 	// Scope to which the standardAssignment applies - can be a subscription path or a resource group under that subscription
 	Scope pulumi.StringPtrOutput `pulumi:"scope"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// A list of key value pairs that describe the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Resource type
@@ -274,8 +273,8 @@ func (o AssignmentOutput) Scope() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o AssignmentOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Assignment) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o AssignmentOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Assignment) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // A list of key value pairs that describe the resource.

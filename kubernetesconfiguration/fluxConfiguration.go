@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -62,7 +61,7 @@ type FluxConfiguration struct {
 	// Whether this configuration should suspend its reconciliation of its kustomizations and sources.
 	Suspend pulumi.BoolPtrOutput `pulumi:"suspend"`
 	// Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Whether flux configuration deployment should wait for cluster to reconcile the kustomizations.
@@ -377,8 +376,8 @@ func (o FluxConfigurationOutput) Suspend() pulumi.BoolPtrOutput {
 }
 
 // Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
-func (o FluxConfigurationOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *FluxConfiguration) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o FluxConfigurationOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *FluxConfiguration) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

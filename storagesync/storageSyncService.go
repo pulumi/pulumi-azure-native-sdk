@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -24,7 +23,7 @@ type StorageSyncService struct {
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The managed service identities assigned to this resource.
-	Identity commontypesv5.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Incoming Traffic Policy
 	IncomingTrafficPolicy pulumi.StringPtrOutput `pulumi:"incomingTrafficPolicy"`
 	// Resource Last Operation Name
@@ -36,7 +35,7 @@ type StorageSyncService struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of private endpoint connection associated with the specified storage sync service
-	PrivateEndpointConnections commontypesv5.PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// StorageSyncService Provisioning State
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Storage Sync service status.
@@ -44,7 +43,7 @@ type StorageSyncService struct {
 	// Storage Sync service Uid
 	StorageSyncServiceUid pulumi.StringOutput `pulumi:"storageSyncServiceUid"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -136,7 +135,7 @@ func (StorageSyncServiceState) ElementType() reflect.Type {
 
 type storageSyncServiceArgs struct {
 	// managed identities for the Storage Sync to interact with other Azure services without maintaining any secrets or credentials in code.
-	Identity *commontypesv5.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// Incoming Traffic Policy
 	IncomingTrafficPolicy *string `pulumi:"incomingTrafficPolicy"`
 	// The geo-location where the resource lives
@@ -154,7 +153,7 @@ type storageSyncServiceArgs struct {
 // The set of arguments for constructing a StorageSyncService resource.
 type StorageSyncServiceArgs struct {
 	// managed identities for the Storage Sync to interact with other Azure services without maintaining any secrets or credentials in code.
-	Identity commontypesv5.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// Incoming Traffic Policy
 	IncomingTrafficPolicy pulumi.StringPtrInput
 	// The geo-location where the resource lives
@@ -212,8 +211,8 @@ func (o StorageSyncServiceOutput) AzureApiVersion() pulumi.StringOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o StorageSyncServiceOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *StorageSyncService) commontypesv5.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+func (o StorageSyncServiceOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *StorageSyncService) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Incoming Traffic Policy
@@ -242,10 +241,10 @@ func (o StorageSyncServiceOutput) Name() pulumi.StringOutput {
 }
 
 // List of private endpoint connection associated with the specified storage sync service
-func (o StorageSyncServiceOutput) PrivateEndpointConnections() commontypesv5.PrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v *StorageSyncService) commontypesv5.PrivateEndpointConnectionResponseArrayOutput {
+func (o StorageSyncServiceOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v *StorageSyncService) PrivateEndpointConnectionResponseArrayOutput {
 		return v.PrivateEndpointConnections
-	}).(commontypesv5.PrivateEndpointConnectionResponseArrayOutput)
+	}).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // StorageSyncService Provisioning State
@@ -264,8 +263,8 @@ func (o StorageSyncServiceOutput) StorageSyncServiceUid() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o StorageSyncServiceOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *StorageSyncService) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o StorageSyncServiceOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *StorageSyncService) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

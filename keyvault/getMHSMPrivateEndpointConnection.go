@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -45,7 +44,7 @@ type LookupMHSMPrivateEndpointConnectionResult struct {
 	// The Azure Resource Manager resource ID for the managed HSM Pool.
 	Id string `pulumi:"id"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity *commontypesv5.ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The supported Azure location where the managed HSM Pool should be created.
 	Location *string `pulumi:"location"`
 	// The name of the managed HSM Pool.
@@ -119,10 +118,8 @@ func (o LookupMHSMPrivateEndpointConnectionResultOutput) Id() pulumi.StringOutpu
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
-func (o LookupMHSMPrivateEndpointConnectionResultOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupMHSMPrivateEndpointConnectionResult) *commontypesv5.ManagedServiceIdentityResponse {
-		return v.Identity
-	}).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+func (o LookupMHSMPrivateEndpointConnectionResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupMHSMPrivateEndpointConnectionResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The supported Azure location where the managed HSM Pool should be created.

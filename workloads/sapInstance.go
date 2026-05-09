@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -36,7 +35,7 @@ type SapInstance struct {
 	// Defines the provisioning states.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// This is the SID of SAP System. Keeping this not equal to ID as different landscapes can have repeated System SID IDs.
 	SystemSid pulumi.StringOutput `pulumi:"systemSid"`
 	// Resource tags.
@@ -201,8 +200,8 @@ func (o SapInstanceOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o SapInstanceOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v *SapInstance) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o SapInstanceOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *SapInstance) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // This is the SID of SAP System. Keeping this not equal to ID as different landscapes can have repeated System SID IDs.

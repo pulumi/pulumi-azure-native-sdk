@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -47,9 +46,9 @@ type LookupPlanResult struct {
 	// The provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The SKU for DevCenters created using this definition.
-	Sku *commontypesv5.SkuResponse `pulumi:"sku"`
+	Sku *SkuResponse `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -117,13 +116,13 @@ func (o LookupPlanResultOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // The SKU for DevCenters created using this definition.
-func (o LookupPlanResultOutput) Sku() commontypesv5.SkuResponsePtrOutput {
-	return o.ApplyT(func(v LookupPlanResult) *commontypesv5.SkuResponse { return v.Sku }).(commontypesv5.SkuResponsePtrOutput)
+func (o LookupPlanResultOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v LookupPlanResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupPlanResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupPlanResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupPlanResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPlanResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

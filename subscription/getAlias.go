@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -43,7 +42,7 @@ type LookupAliasResult struct {
 	// Subscription Alias response properties.
 	Properties SubscriptionAliasResponsePropertiesResponse `pulumi:"properties"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource type, Microsoft.Subscription/aliases.
 	Type string `pulumi:"type"`
 }
@@ -102,8 +101,8 @@ func (o LookupAliasResultOutput) Properties() SubscriptionAliasResponsePropertie
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupAliasResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAliasResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o LookupAliasResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAliasResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource type, Microsoft.Subscription/aliases.

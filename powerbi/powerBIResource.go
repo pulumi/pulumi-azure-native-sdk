@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -26,7 +25,7 @@ type PowerBIResource struct {
 	// Specifies the private endpoint connections of the resource.
 	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// The system metadata relating to this resource.
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Specifies the tags of the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Specifies the tenant id of the resource.
@@ -176,8 +175,8 @@ func (o PowerBIResourceOutput) PrivateEndpointConnections() PrivateEndpointConne
 }
 
 // The system metadata relating to this resource.
-func (o PowerBIResourceOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *PowerBIResource) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o PowerBIResourceOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *PowerBIResource) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Specifies the tags of the resource.

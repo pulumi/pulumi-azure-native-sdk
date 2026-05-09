@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -26,7 +25,7 @@ type Registry struct {
 	// Discovery URL for the Registry
 	DiscoveryUrl pulumi.StringPtrOutput `pulumi:"discoveryUrl"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity commontypesv3.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// IntellectualPropertyPublisher for the registry
 	IntellectualPropertyPublisher pulumi.StringPtrOutput `pulumi:"intellectualPropertyPublisher"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
@@ -49,9 +48,9 @@ type Registry struct {
 	// Private endpoint connections info used for pending connections in private link portal
 	RegistryPrivateEndpointConnections RegistryPrivateEndpointConnectionResponseArrayOutput `pulumi:"registryPrivateEndpointConnections"`
 	// Sku details required for ARM contract for Autoscaling.
-	Sku commontypesv3.SkuResponsePtrOutput `pulumi:"sku"`
+	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -173,7 +172,7 @@ type registryArgs struct {
 	// Discovery URL for the Registry
 	DiscoveryUrl *string `pulumi:"discoveryUrl"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity *commontypesv3.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// IntellectualPropertyPublisher for the registry
 	IntellectualPropertyPublisher *string `pulumi:"intellectualPropertyPublisher"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
@@ -198,7 +197,7 @@ type registryArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Sku details required for ARM contract for Autoscaling.
-	Sku *commontypesv3.Sku `pulumi:"sku"`
+	Sku *Sku `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -208,7 +207,7 @@ type RegistryArgs struct {
 	// Discovery URL for the Registry
 	DiscoveryUrl pulumi.StringPtrInput
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity commontypesv3.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// IntellectualPropertyPublisher for the registry
 	IntellectualPropertyPublisher pulumi.StringPtrInput
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
@@ -233,7 +232,7 @@ type RegistryArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Sku details required for ARM contract for Autoscaling.
-	Sku commontypesv3.SkuPtrInput
+	Sku SkuPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 }
@@ -286,8 +285,8 @@ func (o RegistryOutput) DiscoveryUrl() pulumi.StringPtrOutput {
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
-func (o RegistryOutput) Identity() commontypesv3.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *Registry) commontypesv3.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv3.ManagedServiceIdentityResponsePtrOutput)
+func (o RegistryOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Registry) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // IntellectualPropertyPublisher for the registry
@@ -344,13 +343,13 @@ func (o RegistryOutput) RegistryPrivateEndpointConnections() RegistryPrivateEndp
 }
 
 // Sku details required for ARM contract for Autoscaling.
-func (o RegistryOutput) Sku() commontypesv3.SkuResponsePtrOutput {
-	return o.ApplyT(func(v *Registry) commontypesv3.SkuResponsePtrOutput { return v.Sku }).(commontypesv3.SkuResponsePtrOutput)
+func (o RegistryOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v *Registry) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o RegistryOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Registry) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o RegistryOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Registry) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

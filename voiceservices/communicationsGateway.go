@@ -8,8 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -47,7 +45,7 @@ type CommunicationsGateway struct {
 	// A list of dial strings used for emergency calling.
 	EmergencyDialStrings pulumi.StringArrayOutput `pulumi:"emergencyDialStrings"`
 	// The managed service identities assigned to this resource.
-	Identity commontypesv4.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Whether an integrated Mobile Control Point is in use.
 	IntegratedMcpEnabled pulumi.BoolPtrOutput `pulumi:"integratedMcpEnabled"`
 	// The geo-location where the resource lives
@@ -63,11 +61,11 @@ type CommunicationsGateway struct {
 	// The regions in which to deploy the resources needed for Teams Calling
 	ServiceLocations ServiceRegionPropertiesResponseArrayOutput `pulumi:"serviceLocations"`
 	// The SKU (Stock Keeping Unit) assigned to this resource.
-	Sku commontypesv3.SkuResponsePtrOutput `pulumi:"sku"`
+	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// The current status of the deployment.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// This number is used in Teams Phone Mobile scenarios for access to the voicemail IVR from the native dialer.
@@ -180,7 +178,7 @@ type communicationsGatewayArgs struct {
 	// A list of dial strings used for emergency calling.
 	EmergencyDialStrings []string `pulumi:"emergencyDialStrings"`
 	// The managed service identities assigned to this resource.
-	Identity *commontypesv4.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// Whether an integrated Mobile Control Point is in use.
 	IntegratedMcpEnabled *bool `pulumi:"integratedMcpEnabled"`
 	// The geo-location where the resource lives
@@ -194,7 +192,7 @@ type communicationsGatewayArgs struct {
 	// The regions in which to deploy the resources needed for Teams Calling
 	ServiceLocations []ServiceRegionProperties `pulumi:"serviceLocations"`
 	// The SKU (Stock Keeping Unit) assigned to this resource.
-	Sku *commontypesv3.Sku `pulumi:"sku"`
+	Sku *Sku `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// This number is used in Teams Phone Mobile scenarios for access to the voicemail IVR from the native dialer.
@@ -222,7 +220,7 @@ type CommunicationsGatewayArgs struct {
 	// A list of dial strings used for emergency calling.
 	EmergencyDialStrings pulumi.StringArrayInput
 	// The managed service identities assigned to this resource.
-	Identity commontypesv4.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// Whether an integrated Mobile Control Point is in use.
 	IntegratedMcpEnabled pulumi.BoolPtrInput
 	// The geo-location where the resource lives
@@ -236,7 +234,7 @@ type CommunicationsGatewayArgs struct {
 	// The regions in which to deploy the resources needed for Teams Calling
 	ServiceLocations ServiceRegionPropertiesArrayInput
 	// The SKU (Stock Keeping Unit) assigned to this resource.
-	Sku commontypesv3.SkuPtrInput
+	Sku SkuPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 	// This number is used in Teams Phone Mobile scenarios for access to the voicemail IVR from the native dialer.
@@ -341,10 +339,8 @@ func (o CommunicationsGatewayOutput) EmergencyDialStrings() pulumi.StringArrayOu
 }
 
 // The managed service identities assigned to this resource.
-func (o CommunicationsGatewayOutput) Identity() commontypesv4.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *CommunicationsGateway) commontypesv4.ManagedServiceIdentityResponsePtrOutput {
-		return v.Identity
-	}).(commontypesv4.ManagedServiceIdentityResponsePtrOutput)
+func (o CommunicationsGatewayOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *CommunicationsGateway) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Whether an integrated Mobile Control Point is in use.
@@ -383,8 +379,8 @@ func (o CommunicationsGatewayOutput) ServiceLocations() ServiceRegionPropertiesR
 }
 
 // The SKU (Stock Keeping Unit) assigned to this resource.
-func (o CommunicationsGatewayOutput) Sku() commontypesv3.SkuResponsePtrOutput {
-	return o.ApplyT(func(v *CommunicationsGateway) commontypesv3.SkuResponsePtrOutput { return v.Sku }).(commontypesv3.SkuResponsePtrOutput)
+func (o CommunicationsGatewayOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v *CommunicationsGateway) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
 }
 
 // The current status of the deployment.
@@ -393,8 +389,8 @@ func (o CommunicationsGatewayOutput) Status() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o CommunicationsGatewayOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v *CommunicationsGateway) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o CommunicationsGatewayOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *CommunicationsGateway) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

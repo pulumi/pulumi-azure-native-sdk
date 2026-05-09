@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -51,7 +50,7 @@ type LookupPrivateLinkServicesForSCCPowershellResult struct {
 	// The common properties of a service.
 	Properties ServicesPropertiesResponse `pulumi:"properties"`
 	// Required property for system data
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The resource type.
@@ -138,10 +137,8 @@ func (o LookupPrivateLinkServicesForSCCPowershellResultOutput) Properties() Serv
 }
 
 // Required property for system data
-func (o LookupPrivateLinkServicesForSCCPowershellResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupPrivateLinkServicesForSCCPowershellResult) commontypesv2.SystemDataResponse {
-		return v.SystemData
-	}).(commontypesv2.SystemDataResponseOutput)
+func (o LookupPrivateLinkServicesForSCCPowershellResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPrivateLinkServicesForSCCPowershellResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The resource tags.

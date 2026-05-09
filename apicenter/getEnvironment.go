@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -57,7 +56,7 @@ type LookupEnvironmentResult struct {
 	// Server information of the environment.
 	Server *EnvironmentServerResponse `pulumi:"server"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Environment title.
 	Title string `pulumi:"title"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -144,8 +143,8 @@ func (o LookupEnvironmentResultOutput) Server() EnvironmentServerResponsePtrOutp
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupEnvironmentResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupEnvironmentResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupEnvironmentResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Environment title.

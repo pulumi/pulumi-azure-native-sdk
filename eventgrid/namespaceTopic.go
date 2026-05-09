@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -35,7 +34,7 @@ type NamespaceTopic struct {
 	// Publisher type of the namespace topic.
 	PublisherType pulumi.StringPtrOutput `pulumi:"publisherType"`
 	// The system metadata relating to the Event Grid resource.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -214,8 +213,8 @@ func (o NamespaceTopicOutput) PublisherType() pulumi.StringPtrOutput {
 }
 
 // The system metadata relating to the Event Grid resource.
-func (o NamespaceTopicOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *NamespaceTopic) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o NamespaceTopicOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *NamespaceTopic) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Type of the resource.

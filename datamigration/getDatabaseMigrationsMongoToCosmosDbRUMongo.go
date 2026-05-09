@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -69,7 +68,7 @@ type LookupDatabaseMigrationsMongoToCosmosDbRUMongoResult struct {
 	// Database migration start time.
 	StartedOn string `pulumi:"startedOn"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Target Cosmos DB Mongo connection details.
 	TargetMongoConnection *MongoConnectionInformationResponse `pulumi:"targetMongoConnection"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -195,10 +194,8 @@ func (o LookupDatabaseMigrationsMongoToCosmosDbRUMongoResultOutput) StartedOn() 
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupDatabaseMigrationsMongoToCosmosDbRUMongoResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupDatabaseMigrationsMongoToCosmosDbRUMongoResult) commontypesv5.SystemDataResponse {
-		return v.SystemData
-	}).(commontypesv5.SystemDataResponseOutput)
+func (o LookupDatabaseMigrationsMongoToCosmosDbRUMongoResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupDatabaseMigrationsMongoToCosmosDbRUMongoResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Target Cosmos DB Mongo connection details.

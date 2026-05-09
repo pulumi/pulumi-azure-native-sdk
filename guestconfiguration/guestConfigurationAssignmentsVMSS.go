@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -30,7 +29,7 @@ type GuestConfigurationAssignmentsVMSS struct {
 	// Properties of the Guest configuration assignment.
 	Properties GuestConfigurationAssignmentPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -176,8 +175,8 @@ func (o GuestConfigurationAssignmentsVMSSOutput) Properties() GuestConfiguration
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o GuestConfigurationAssignmentsVMSSOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v *GuestConfigurationAssignmentsVMSS) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o GuestConfigurationAssignmentsVMSSOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *GuestConfigurationAssignmentsVMSS) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource.

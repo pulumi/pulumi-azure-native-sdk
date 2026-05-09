@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -36,7 +35,7 @@ type ConditionalCredit struct {
 	// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity commontypesv6.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// The geo-location where the resource lives
@@ -46,7 +45,7 @@ type ConditionalCredit struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Plan for the resource.
-	Plan commontypesv6.PlanResponsePtrOutput `pulumi:"plan"`
+	Plan PlanResponsePtrOutput `pulumi:"plan"`
 	// Product code for the conditional credit
 	ProductCode pulumi.StringPtrOutput `pulumi:"productCode"`
 	// The provisioning state of the resource
@@ -54,13 +53,13 @@ type ConditionalCredit struct {
 	// Fully-qualified resource identifier of the resource. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/{benefitType}/{benefitName}.
 	ResourceId pulumi.StringPtrOutput `pulumi:"resourceId"`
 	// The resource model definition representing SKU
-	Sku commontypesv6.SkuResponsePtrOutput `pulumi:"sku"`
+	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// Start date of the conditional credit
 	StartAt pulumi.StringPtrOutput `pulumi:"startAt"`
 	// The status of the conditional credit
 	Status pulumi.StringPtrOutput `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv6.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -133,7 +132,7 @@ type conditionalCreditArgs struct {
 	// Type of conditional credit entity
 	EntityType string `pulumi:"entityType"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity *commontypesv6.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
@@ -141,7 +140,7 @@ type conditionalCreditArgs struct {
 	// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
 	ManagedBy *string `pulumi:"managedBy"`
 	// Plan for the resource.
-	Plan *commontypesv6.Plan `pulumi:"plan"`
+	Plan *Plan `pulumi:"plan"`
 	// Product code for the conditional credit
 	ProductCode *string `pulumi:"productCode"`
 	// The name of the resource group. The name is case insensitive.
@@ -149,7 +148,7 @@ type conditionalCreditArgs struct {
 	// Fully-qualified resource identifier of the resource. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/{benefitType}/{benefitName}.
 	ResourceId *string `pulumi:"resourceId"`
 	// The resource model definition representing SKU
-	Sku *commontypesv6.Sku `pulumi:"sku"`
+	Sku *Sku `pulumi:"sku"`
 	// Start date of the conditional credit
 	StartAt *string `pulumi:"startAt"`
 	// The status of the conditional credit
@@ -171,7 +170,7 @@ type ConditionalCreditArgs struct {
 	// Type of conditional credit entity
 	EntityType pulumi.StringInput
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity commontypesv6.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind pulumi.StringPtrInput
 	// The geo-location where the resource lives
@@ -179,7 +178,7 @@ type ConditionalCreditArgs struct {
 	// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
 	ManagedBy pulumi.StringPtrInput
 	// Plan for the resource.
-	Plan commontypesv6.PlanPtrInput
+	Plan PlanPtrInput
 	// Product code for the conditional credit
 	ProductCode pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -187,7 +186,7 @@ type ConditionalCreditArgs struct {
 	// Fully-qualified resource identifier of the resource. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/{benefitType}/{benefitName}.
 	ResourceId pulumi.StringPtrInput
 	// The resource model definition representing SKU
-	Sku commontypesv6.SkuPtrInput
+	Sku SkuPtrInput
 	// Start date of the conditional credit
 	StartAt pulumi.StringPtrInput
 	// The status of the conditional credit
@@ -269,8 +268,8 @@ func (o ConditionalCreditOutput) Etag() pulumi.StringOutput {
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
-func (o ConditionalCreditOutput) Identity() commontypesv6.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *ConditionalCredit) commontypesv6.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv6.ManagedServiceIdentityResponsePtrOutput)
+func (o ConditionalCreditOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *ConditionalCredit) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
@@ -294,8 +293,8 @@ func (o ConditionalCreditOutput) Name() pulumi.StringOutput {
 }
 
 // Plan for the resource.
-func (o ConditionalCreditOutput) Plan() commontypesv6.PlanResponsePtrOutput {
-	return o.ApplyT(func(v *ConditionalCredit) commontypesv6.PlanResponsePtrOutput { return v.Plan }).(commontypesv6.PlanResponsePtrOutput)
+func (o ConditionalCreditOutput) Plan() PlanResponsePtrOutput {
+	return o.ApplyT(func(v *ConditionalCredit) PlanResponsePtrOutput { return v.Plan }).(PlanResponsePtrOutput)
 }
 
 // Product code for the conditional credit
@@ -314,8 +313,8 @@ func (o ConditionalCreditOutput) ResourceId() pulumi.StringPtrOutput {
 }
 
 // The resource model definition representing SKU
-func (o ConditionalCreditOutput) Sku() commontypesv6.SkuResponsePtrOutput {
-	return o.ApplyT(func(v *ConditionalCredit) commontypesv6.SkuResponsePtrOutput { return v.Sku }).(commontypesv6.SkuResponsePtrOutput)
+func (o ConditionalCreditOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v *ConditionalCredit) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
 }
 
 // Start date of the conditional credit
@@ -329,8 +328,8 @@ func (o ConditionalCreditOutput) Status() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ConditionalCreditOutput) SystemData() commontypesv6.SystemDataResponseOutput {
-	return o.ApplyT(func(v *ConditionalCredit) commontypesv6.SystemDataResponseOutput { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
+func (o ConditionalCreditOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ConditionalCredit) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

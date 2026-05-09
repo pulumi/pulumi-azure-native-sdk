@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -30,7 +29,7 @@ type ServiceEndpoint struct {
 	// ServiceEndpoint resource properties.
 	Properties ServiceEndpointResourceResponsePropertiesOutput `pulumi:"properties"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -180,8 +179,8 @@ func (o ServiceEndpointOutput) Properties() ServiceEndpointResourceResponsePrope
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o ServiceEndpointOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *ServiceEndpoint) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o ServiceEndpointOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ServiceEndpoint) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

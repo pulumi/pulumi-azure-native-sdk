@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -57,7 +56,7 @@ type LookupBudgetResult struct {
 	// Dictionary of notifications associated with the budget. Budget can have up to five notifications.
 	Notifications map[string]NotificationResponse `pulumi:"notifications"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The time covered by a budget. Tracking of the amount will be reset based on the time grain. BillingMonth, BillingQuarter, and BillingAnnual are only supported by WD customers
 	TimeGrain string `pulumi:"timeGrain"`
 	// Has start and end date of the budget. The start date must be first of the month and should be less than the end date. Budget start date must be on or after June 1, 2017. Future start date should not be more than twelve months. Past start date should  be selected within the timegrain period. There are no restrictions on the end date.
@@ -152,8 +151,8 @@ func (o LookupBudgetResultOutput) Notifications() NotificationResponseMapOutput 
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupBudgetResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupBudgetResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o LookupBudgetResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupBudgetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The time covered by a budget. Tracking of the amount will be reset based on the time grain. BillingMonth, BillingQuarter, and BillingAnnual are only supported by WD customers

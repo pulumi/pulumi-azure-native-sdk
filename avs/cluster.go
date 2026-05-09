@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -34,9 +33,9 @@ type Cluster struct {
 	// The state of the cluster provisioning
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The SKU (Stock Keeping Unit) assigned to this resource.
-	Sku commontypesv5.SkuResponseOutput `pulumi:"sku"`
+	Sku SkuResponseOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Name of the vsan datastore associated with the cluster
@@ -136,7 +135,7 @@ type clusterArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The SKU (Stock Keeping Unit) assigned to this resource.
-	Sku commontypesv5.Sku `pulumi:"sku"`
+	Sku Sku `pulumi:"sku"`
 	// Name of the vsan datastore associated with the cluster
 	VsanDatastoreName *string `pulumi:"vsanDatastoreName"`
 }
@@ -154,7 +153,7 @@ type ClusterArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The SKU (Stock Keeping Unit) assigned to this resource.
-	Sku commontypesv5.SkuInput
+	Sku SkuInput
 	// Name of the vsan datastore associated with the cluster
 	VsanDatastoreName pulumi.StringPtrInput
 }
@@ -227,13 +226,13 @@ func (o ClusterOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // The SKU (Stock Keeping Unit) assigned to this resource.
-func (o ClusterOutput) Sku() commontypesv5.SkuResponseOutput {
-	return o.ApplyT(func(v *Cluster) commontypesv5.SkuResponseOutput { return v.Sku }).(commontypesv5.SkuResponseOutput)
+func (o ClusterOutput) Sku() SkuResponseOutput {
+	return o.ApplyT(func(v *Cluster) SkuResponseOutput { return v.Sku }).(SkuResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ClusterOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Cluster) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o ClusterOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Cluster) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

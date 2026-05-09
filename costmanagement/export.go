@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -32,7 +31,7 @@ type Export struct {
 	// The format of the export being delivered. Currently only 'Csv' is supported.
 	Format pulumi.StringPtrOutput `pulumi:"format"`
 	// The managed identity associated with Export
-	Identity commontypesv5.SystemAssignedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity SystemAssignedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The location of the Export's managed identity. Only required when utilizing managed identity.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Resource name.
@@ -166,7 +165,7 @@ type exportArgs struct {
 	// The format of the export being delivered. Currently only 'Csv' is supported.
 	Format *string `pulumi:"format"`
 	// The managed identity associated with Export
-	Identity *commontypesv5.SystemAssignedServiceIdentity `pulumi:"identity"`
+	Identity *SystemAssignedServiceIdentity `pulumi:"identity"`
 	// The location of the Export's managed identity. Only required when utilizing managed identity.
 	Location *string `pulumi:"location"`
 	// If set to true, exported data will be partitioned by size and placed in a blob directory together with a manifest file. Note: this option is currently available only for Microsoft Customer Agreement commerce scopes.
@@ -190,7 +189,7 @@ type ExportArgs struct {
 	// The format of the export being delivered. Currently only 'Csv' is supported.
 	Format pulumi.StringPtrInput
 	// The managed identity associated with Export
-	Identity commontypesv5.SystemAssignedServiceIdentityPtrInput
+	Identity SystemAssignedServiceIdentityPtrInput
 	// The location of the Export's managed identity. Only required when utilizing managed identity.
 	Location pulumi.StringPtrInput
 	// If set to true, exported data will be partitioned by size and placed in a blob directory together with a manifest file. Note: this option is currently available only for Microsoft Customer Agreement commerce scopes.
@@ -264,8 +263,8 @@ func (o ExportOutput) Format() pulumi.StringPtrOutput {
 }
 
 // The managed identity associated with Export
-func (o ExportOutput) Identity() commontypesv5.SystemAssignedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *Export) commontypesv5.SystemAssignedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv5.SystemAssignedServiceIdentityResponsePtrOutput)
+func (o ExportOutput) Identity() SystemAssignedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Export) SystemAssignedServiceIdentityResponsePtrOutput { return v.Identity }).(SystemAssignedServiceIdentityResponsePtrOutput)
 }
 
 // The location of the Export's managed identity. Only required when utilizing managed identity.

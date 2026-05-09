@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -36,7 +35,7 @@ type CaCertificate struct {
 	// Provisioning state of the CA Certificate resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The system metadata relating to the Event Grid resource.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -210,8 +209,8 @@ func (o CaCertificateOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // The system metadata relating to the Event Grid resource.
-func (o CaCertificateOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *CaCertificate) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o CaCertificateOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *CaCertificate) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Type of the resource.

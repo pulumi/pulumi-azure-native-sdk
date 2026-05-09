@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -49,7 +48,7 @@ type LookupFreeServiceResult struct {
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity *commontypesv6.ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
@@ -59,19 +58,19 @@ type LookupFreeServiceResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Plan for the resource.
-	Plan *commontypesv6.PlanResponse `pulumi:"plan"`
+	Plan *PlanResponse `pulumi:"plan"`
 	// This is the catalog UPN for the product.
 	ProductCode *string `pulumi:"productCode"`
 	// Provisioning state of Free Services as assigned by RPaaS. This indicates the last operation's status. For all practical purposes, this can be ignored. For current status of Free Services resource, refer to FreeServicesStatus.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The resource model definition representing SKU
-	Sku *commontypesv6.SkuResponse `pulumi:"sku"`
+	Sku *SkuResponse `pulumi:"sku"`
 	// Date and time when the free services become active
 	StartAt *string `pulumi:"startAt"`
 	// Current status of the free services
 	Status *string `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv6.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// This is the globally unique identifier of the free services which will not change for its lifetime.
 	SystemId *string `pulumi:"systemId"`
 	// Resource tags.
@@ -151,8 +150,8 @@ func (o LookupFreeServiceResultOutput) Id() pulumi.StringOutput {
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
-func (o LookupFreeServiceResultOutput) Identity() commontypesv6.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupFreeServiceResult) *commontypesv6.ManagedServiceIdentityResponse { return v.Identity }).(commontypesv6.ManagedServiceIdentityResponsePtrOutput)
+func (o LookupFreeServiceResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupFreeServiceResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
@@ -176,8 +175,8 @@ func (o LookupFreeServiceResultOutput) Name() pulumi.StringOutput {
 }
 
 // Plan for the resource.
-func (o LookupFreeServiceResultOutput) Plan() commontypesv6.PlanResponsePtrOutput {
-	return o.ApplyT(func(v LookupFreeServiceResult) *commontypesv6.PlanResponse { return v.Plan }).(commontypesv6.PlanResponsePtrOutput)
+func (o LookupFreeServiceResultOutput) Plan() PlanResponsePtrOutput {
+	return o.ApplyT(func(v LookupFreeServiceResult) *PlanResponse { return v.Plan }).(PlanResponsePtrOutput)
 }
 
 // This is the catalog UPN for the product.
@@ -191,8 +190,8 @@ func (o LookupFreeServiceResultOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // The resource model definition representing SKU
-func (o LookupFreeServiceResultOutput) Sku() commontypesv6.SkuResponsePtrOutput {
-	return o.ApplyT(func(v LookupFreeServiceResult) *commontypesv6.SkuResponse { return v.Sku }).(commontypesv6.SkuResponsePtrOutput)
+func (o LookupFreeServiceResultOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v LookupFreeServiceResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
 // Date and time when the free services become active
@@ -206,8 +205,8 @@ func (o LookupFreeServiceResultOutput) Status() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupFreeServiceResultOutput) SystemData() commontypesv6.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupFreeServiceResult) commontypesv6.SystemDataResponse { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
+func (o LookupFreeServiceResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupFreeServiceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // This is the globally unique identifier of the free services which will not change for its lifetime.

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -41,7 +40,7 @@ type LookupStorageSyncServiceResult struct {
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The managed service identities assigned to this resource.
-	Identity *commontypesv5.ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// Incoming Traffic Policy
 	IncomingTrafficPolicy *string `pulumi:"incomingTrafficPolicy"`
 	// Resource Last Operation Name
@@ -53,7 +52,7 @@ type LookupStorageSyncServiceResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// List of private endpoint connection associated with the specified storage sync service
-	PrivateEndpointConnections []commontypesv5.PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// StorageSyncService Provisioning State
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Storage Sync service status.
@@ -61,7 +60,7 @@ type LookupStorageSyncServiceResult struct {
 	// Storage Sync service Uid
 	StorageSyncServiceUid string `pulumi:"storageSyncServiceUid"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -116,10 +115,8 @@ func (o LookupStorageSyncServiceResultOutput) Id() pulumi.StringOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o LookupStorageSyncServiceResultOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupStorageSyncServiceResult) *commontypesv5.ManagedServiceIdentityResponse {
-		return v.Identity
-	}).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+func (o LookupStorageSyncServiceResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupStorageSyncServiceResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Incoming Traffic Policy
@@ -148,10 +145,10 @@ func (o LookupStorageSyncServiceResultOutput) Name() pulumi.StringOutput {
 }
 
 // List of private endpoint connection associated with the specified storage sync service
-func (o LookupStorageSyncServiceResultOutput) PrivateEndpointConnections() commontypesv5.PrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v LookupStorageSyncServiceResult) []commontypesv5.PrivateEndpointConnectionResponse {
+func (o LookupStorageSyncServiceResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v LookupStorageSyncServiceResult) []PrivateEndpointConnectionResponse {
 		return v.PrivateEndpointConnections
-	}).(commontypesv5.PrivateEndpointConnectionResponseArrayOutput)
+	}).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // StorageSyncService Provisioning State
@@ -170,8 +167,8 @@ func (o LookupStorageSyncServiceResultOutput) StorageSyncServiceUid() pulumi.Str
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupStorageSyncServiceResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupStorageSyncServiceResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupStorageSyncServiceResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupStorageSyncServiceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

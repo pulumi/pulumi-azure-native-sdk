@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -51,8 +50,8 @@ type LookupApplicationGroupResult struct {
 	// HostPool arm path of ApplicationGroup.
 	HostPoolArmPath string `pulumi:"hostPoolArmPath"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-	Id       string                                                             `pulumi:"id"`
-	Identity *commontypesv5.ResourceModelWithAllowedPropertySetResponseIdentity `pulumi:"identity"`
+	Id       string                                               `pulumi:"id"`
+	Identity *ResourceModelWithAllowedPropertySetResponseIdentity `pulumi:"identity"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
@@ -62,13 +61,13 @@ type LookupApplicationGroupResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// ObjectId of ApplicationGroup. (internal use)
-	ObjectId string                                                         `pulumi:"objectId"`
-	Plan     *commontypesv5.ResourceModelWithAllowedPropertySetResponsePlan `pulumi:"plan"`
+	ObjectId string                                           `pulumi:"objectId"`
+	Plan     *ResourceModelWithAllowedPropertySetResponsePlan `pulumi:"plan"`
 	// Boolean representing whether the applicationGroup is show in the feed.
-	ShowInFeed *bool                                                         `pulumi:"showInFeed"`
-	Sku        *commontypesv5.ResourceModelWithAllowedPropertySetResponseSku `pulumi:"sku"`
+	ShowInFeed *bool                                           `pulumi:"showInFeed"`
+	Sku        *ResourceModelWithAllowedPropertySetResponseSku `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -152,10 +151,10 @@ func (o LookupApplicationGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-func (o LookupApplicationGroupResultOutput) Identity() commontypesv5.ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput {
-	return o.ApplyT(func(v LookupApplicationGroupResult) *commontypesv5.ResourceModelWithAllowedPropertySetResponseIdentity {
+func (o LookupApplicationGroupResultOutput) Identity() ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput {
+	return o.ApplyT(func(v LookupApplicationGroupResult) *ResourceModelWithAllowedPropertySetResponseIdentity {
 		return v.Identity
-	}).(commontypesv5.ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput)
+	}).(ResourceModelWithAllowedPropertySetResponseIdentityPtrOutput)
 }
 
 // Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
@@ -183,10 +182,8 @@ func (o LookupApplicationGroupResultOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationGroupResult) string { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-func (o LookupApplicationGroupResultOutput) Plan() commontypesv5.ResourceModelWithAllowedPropertySetResponsePlanPtrOutput {
-	return o.ApplyT(func(v LookupApplicationGroupResult) *commontypesv5.ResourceModelWithAllowedPropertySetResponsePlan {
-		return v.Plan
-	}).(commontypesv5.ResourceModelWithAllowedPropertySetResponsePlanPtrOutput)
+func (o LookupApplicationGroupResultOutput) Plan() ResourceModelWithAllowedPropertySetResponsePlanPtrOutput {
+	return o.ApplyT(func(v LookupApplicationGroupResult) *ResourceModelWithAllowedPropertySetResponsePlan { return v.Plan }).(ResourceModelWithAllowedPropertySetResponsePlanPtrOutput)
 }
 
 // Boolean representing whether the applicationGroup is show in the feed.
@@ -194,15 +191,13 @@ func (o LookupApplicationGroupResultOutput) ShowInFeed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupApplicationGroupResult) *bool { return v.ShowInFeed }).(pulumi.BoolPtrOutput)
 }
 
-func (o LookupApplicationGroupResultOutput) Sku() commontypesv5.ResourceModelWithAllowedPropertySetResponseSkuPtrOutput {
-	return o.ApplyT(func(v LookupApplicationGroupResult) *commontypesv5.ResourceModelWithAllowedPropertySetResponseSku {
-		return v.Sku
-	}).(commontypesv5.ResourceModelWithAllowedPropertySetResponseSkuPtrOutput)
+func (o LookupApplicationGroupResultOutput) Sku() ResourceModelWithAllowedPropertySetResponseSkuPtrOutput {
+	return o.ApplyT(func(v LookupApplicationGroupResult) *ResourceModelWithAllowedPropertySetResponseSku { return v.Sku }).(ResourceModelWithAllowedPropertySetResponseSkuPtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupApplicationGroupResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupApplicationGroupResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupApplicationGroupResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupApplicationGroupResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

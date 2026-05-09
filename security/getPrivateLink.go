@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -45,13 +44,13 @@ type LookupPrivateLinkResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// List of private endpoint connections associated with this private link. Each connection represents a private endpoint from a customer's virtual network.
-	PrivateEndpointConnections []commontypesv6.PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// List of private link resources available for connection. For Defender services, this typically includes the 'containers' group with 'api' and regional data endpoints.
-	PrivateLinkResources []commontypesv6.PrivateLinkResourceResponse `pulumi:"privateLinkResources"`
+	PrivateLinkResources []PrivateLinkResourceResponse `pulumi:"privateLinkResources"`
 	// The current provisioning state of the private link resource. Indicates whether the resource is being created, updated, deleted, or has completed successfully.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv6.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -114,17 +113,15 @@ func (o LookupPrivateLinkResultOutput) Name() pulumi.StringOutput {
 }
 
 // List of private endpoint connections associated with this private link. Each connection represents a private endpoint from a customer's virtual network.
-func (o LookupPrivateLinkResultOutput) PrivateEndpointConnections() commontypesv6.PrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v LookupPrivateLinkResult) []commontypesv6.PrivateEndpointConnectionResponse {
+func (o LookupPrivateLinkResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v LookupPrivateLinkResult) []PrivateEndpointConnectionResponse {
 		return v.PrivateEndpointConnections
-	}).(commontypesv6.PrivateEndpointConnectionResponseArrayOutput)
+	}).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // List of private link resources available for connection. For Defender services, this typically includes the 'containers' group with 'api' and regional data endpoints.
-func (o LookupPrivateLinkResultOutput) PrivateLinkResources() commontypesv6.PrivateLinkResourceResponseArrayOutput {
-	return o.ApplyT(func(v LookupPrivateLinkResult) []commontypesv6.PrivateLinkResourceResponse {
-		return v.PrivateLinkResources
-	}).(commontypesv6.PrivateLinkResourceResponseArrayOutput)
+func (o LookupPrivateLinkResultOutput) PrivateLinkResources() PrivateLinkResourceResponseArrayOutput {
+	return o.ApplyT(func(v LookupPrivateLinkResult) []PrivateLinkResourceResponse { return v.PrivateLinkResources }).(PrivateLinkResourceResponseArrayOutput)
 }
 
 // The current provisioning state of the private link resource. Indicates whether the resource is being created, updated, deleted, or has completed successfully.
@@ -133,8 +130,8 @@ func (o LookupPrivateLinkResultOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupPrivateLinkResultOutput) SystemData() commontypesv6.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupPrivateLinkResult) commontypesv6.SystemDataResponse { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
+func (o LookupPrivateLinkResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPrivateLinkResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

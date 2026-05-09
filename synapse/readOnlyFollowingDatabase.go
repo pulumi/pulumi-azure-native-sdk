@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv1"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -43,7 +42,7 @@ type ReadOnlyFollowingDatabase struct {
 	// The statistics of the database.
 	Statistics DatabaseStatisticsResponseOutput `pulumi:"statistics"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv1.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -246,8 +245,8 @@ func (o ReadOnlyFollowingDatabaseOutput) Statistics() DatabaseStatisticsResponse
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ReadOnlyFollowingDatabaseOutput) SystemData() commontypesv1.SystemDataResponseOutput {
-	return o.ApplyT(func(v *ReadOnlyFollowingDatabase) commontypesv1.SystemDataResponseOutput { return v.SystemData }).(commontypesv1.SystemDataResponseOutput)
+func (o ReadOnlyFollowingDatabaseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ReadOnlyFollowingDatabase) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

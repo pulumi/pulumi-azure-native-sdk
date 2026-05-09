@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -59,7 +58,7 @@ type LookupFirmwareResult struct {
 	// A list of errors or other messages generated during firmware analysis
 	StatusMessages []StatusMessageResponse `pulumi:"statusMessages"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Firmware vendor.
@@ -168,8 +167,8 @@ func (o LookupFirmwareResultOutput) StatusMessages() StatusMessageResponseArrayO
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupFirmwareResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupFirmwareResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupFirmwareResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupFirmwareResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

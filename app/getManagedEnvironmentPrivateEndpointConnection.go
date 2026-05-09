@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -53,7 +52,7 @@ type LookupManagedEnvironmentPrivateEndpointConnectionResult struct {
 	// The provisioning state of the private endpoint connection resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -135,10 +134,10 @@ func (o LookupManagedEnvironmentPrivateEndpointConnectionResultOutput) Provision
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupManagedEnvironmentPrivateEndpointConnectionResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupManagedEnvironmentPrivateEndpointConnectionResult) commontypesv5.SystemDataResponse {
+func (o LookupManagedEnvironmentPrivateEndpointConnectionResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupManagedEnvironmentPrivateEndpointConnectionResult) SystemDataResponse {
 		return v.SystemData
-	}).(commontypesv5.SystemDataResponseOutput)
+	}).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -66,7 +65,7 @@ type LookupActivityCustomEntityQueryResult struct {
 	// List of the fields of the source entity that are required to run the query
 	RequiredInputFieldsSets [][]string `pulumi:"requiredInputFieldsSets"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The template id this activity was created from
 	TemplateName *string `pulumi:"templateName"`
 	// The entity query title
@@ -186,8 +185,8 @@ func (o LookupActivityCustomEntityQueryResultOutput) RequiredInputFieldsSets() p
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupActivityCustomEntityQueryResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupActivityCustomEntityQueryResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The template id this activity was created from

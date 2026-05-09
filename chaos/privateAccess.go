@@ -8,8 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -29,13 +27,13 @@ type PrivateAccess struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A readonly collection of private endpoint connection. Currently only one endpoint connection is supported.
-	PrivateEndpointConnections commontypesv6.PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// Most recent provisioning state for the given privateAccess resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Public Network Access Control for PrivateAccess resource.
 	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -176,10 +174,10 @@ func (o PrivateAccessOutput) Name() pulumi.StringOutput {
 }
 
 // A readonly collection of private endpoint connection. Currently only one endpoint connection is supported.
-func (o PrivateAccessOutput) PrivateEndpointConnections() commontypesv6.PrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v *PrivateAccess) commontypesv6.PrivateEndpointConnectionResponseArrayOutput {
+func (o PrivateAccessOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v *PrivateAccess) PrivateEndpointConnectionResponseArrayOutput {
 		return v.PrivateEndpointConnections
-	}).(commontypesv6.PrivateEndpointConnectionResponseArrayOutput)
+	}).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // Most recent provisioning state for the given privateAccess resource.
@@ -193,8 +191,8 @@ func (o PrivateAccessOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o PrivateAccessOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *PrivateAccess) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o PrivateAccessOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *PrivateAccess) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

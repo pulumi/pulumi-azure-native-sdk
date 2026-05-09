@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -63,7 +62,7 @@ type LookupOrderResult struct {
 	// The shipping address.
 	ShippingAddress *AddressResponse `pulumi:"shippingAddress"`
 	// Metadata pertaining to creation and last modification of Order
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type string `pulumi:"type"`
 }
@@ -169,8 +168,8 @@ func (o LookupOrderResultOutput) ShippingAddress() AddressResponsePtrOutput {
 }
 
 // Metadata pertaining to creation and last modification of Order
-func (o LookupOrderResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupOrderResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o LookupOrderResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupOrderResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.

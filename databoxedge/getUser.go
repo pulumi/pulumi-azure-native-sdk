@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -49,7 +48,7 @@ type LookupUserResult struct {
 	// List of shares that the user has rights on. This field should not be specified during user creation.
 	ShareAccessRights []ShareAccessRightResponse `pulumi:"shareAccessRights"`
 	// Metadata pertaining to creation and last modification of User
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The hierarchical type of the object.
 	Type string `pulumi:"type"`
 	// Type of the user.
@@ -119,8 +118,8 @@ func (o LookupUserResultOutput) ShareAccessRights() ShareAccessRightResponseArra
 }
 
 // Metadata pertaining to creation and last modification of User
-func (o LookupUserResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupUserResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o LookupUserResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupUserResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The hierarchical type of the object.

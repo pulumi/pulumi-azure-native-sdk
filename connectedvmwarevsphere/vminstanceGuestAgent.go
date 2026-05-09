@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -42,7 +41,7 @@ type VMInstanceGuestAgent struct {
 	// The resource status information.
 	Statuses ResourceStatusResponseArrayOutput `pulumi:"statuses"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Gets or sets a unique identifier for this resource.
@@ -218,8 +217,8 @@ func (o VMInstanceGuestAgentOutput) Statuses() ResourceStatusResponseArrayOutput
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o VMInstanceGuestAgentOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *VMInstanceGuestAgent) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o VMInstanceGuestAgentOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *VMInstanceGuestAgent) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

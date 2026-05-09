@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv1"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -114,7 +113,7 @@ type DatabaseAccount struct {
 	// Parameters to indicate the information about the restore.
 	RestoreParameters RestoreParametersResponsePtrOutput `pulumi:"restoreParameters"`
 	// The system meta data relating to this resource.
-	SystemData commontypesv1.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of Azure resource.
@@ -810,8 +809,8 @@ func (o DatabaseAccountOutput) RestoreParameters() RestoreParametersResponsePtrO
 }
 
 // The system meta data relating to this resource.
-func (o DatabaseAccountOutput) SystemData() commontypesv1.SystemDataResponseOutput {
-	return o.ApplyT(func(v *DatabaseAccount) commontypesv1.SystemDataResponseOutput { return v.SystemData }).(commontypesv1.SystemDataResponseOutput)
+func (o DatabaseAccountOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *DatabaseAccount) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".

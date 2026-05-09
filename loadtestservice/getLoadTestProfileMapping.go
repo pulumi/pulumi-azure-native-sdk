@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -47,7 +46,7 @@ type LookupLoadTestProfileMappingResult struct {
 	// Mapped source resource Id.
 	SourceResourceId *string `pulumi:"sourceResourceId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Mapped Azure Load Test resource test-profile-id.
 	TestProfileId *string `pulumi:"testProfileId"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -115,8 +114,8 @@ func (o LookupLoadTestProfileMappingResultOutput) SourceResourceId() pulumi.Stri
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupLoadTestProfileMappingResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupLoadTestProfileMappingResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupLoadTestProfileMappingResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupLoadTestProfileMappingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Mapped Azure Load Test resource test-profile-id.

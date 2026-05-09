@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -45,13 +44,13 @@ type LookupAttestationProviderResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// List of private endpoint connections associated with the attestation provider.
-	PrivateEndpointConnections []commontypesv3.PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// Controls whether traffic from the public network is allowed to access the Attestation Provider APIs.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Status of attestation service.
 	Status *string `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The setting that controls whether authentication is enabled or disabled for TPM Attestation REST APIs.
@@ -139,10 +138,10 @@ func (o LookupAttestationProviderResultOutput) Name() pulumi.StringOutput {
 }
 
 // List of private endpoint connections associated with the attestation provider.
-func (o LookupAttestationProviderResultOutput) PrivateEndpointConnections() commontypesv3.PrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v LookupAttestationProviderResult) []commontypesv3.PrivateEndpointConnectionResponse {
+func (o LookupAttestationProviderResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v LookupAttestationProviderResult) []PrivateEndpointConnectionResponse {
 		return v.PrivateEndpointConnections
-	}).(commontypesv3.PrivateEndpointConnectionResponseArrayOutput)
+	}).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // Controls whether traffic from the public network is allowed to access the Attestation Provider APIs.
@@ -156,8 +155,8 @@ func (o LookupAttestationProviderResultOutput) Status() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupAttestationProviderResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupAttestationProviderResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o LookupAttestationProviderResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAttestationProviderResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

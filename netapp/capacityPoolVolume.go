@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -131,7 +130,7 @@ type CapacityPoolVolume struct {
 	// The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/volumes
 	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// T2 network information
 	T2Network pulumi.StringOutput `pulumi:"t2Network"`
 	// Resource tags.
@@ -976,8 +975,8 @@ func (o CapacityPoolVolumeOutput) SubnetId() pulumi.StringOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o CapacityPoolVolumeOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *CapacityPoolVolume) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o CapacityPoolVolumeOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *CapacityPoolVolume) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // T2 network information

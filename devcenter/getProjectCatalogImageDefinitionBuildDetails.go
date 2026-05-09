@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -57,7 +56,7 @@ type GetProjectCatalogImageDefinitionBuildDetailsResult struct {
 	// The status of the build.
 	Status string `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The list of task groups executed during the image definition build.
 	TaskGroups []ImageDefinitionBuildTaskGroupResponse `pulumi:"taskGroups"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -145,10 +144,8 @@ func (o GetProjectCatalogImageDefinitionBuildDetailsResultOutput) Status() pulum
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o GetProjectCatalogImageDefinitionBuildDetailsResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v GetProjectCatalogImageDefinitionBuildDetailsResult) commontypesv5.SystemDataResponse {
-		return v.SystemData
-	}).(commontypesv5.SystemDataResponseOutput)
+func (o GetProjectCatalogImageDefinitionBuildDetailsResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v GetProjectCatalogImageDefinitionBuildDetailsResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The list of task groups executed during the image definition build.

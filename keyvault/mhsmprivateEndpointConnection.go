@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -26,7 +25,7 @@ type MHSMPrivateEndpointConnection struct {
 	// Modified whenever there is a change in the state of private endpoint connection.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity commontypesv5.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The supported Azure location where the managed HSM Pool should be created.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The name of the managed HSM Pool.
@@ -142,7 +141,7 @@ func (MHSMPrivateEndpointConnectionState) ElementType() reflect.Type {
 
 type mhsmprivateEndpointConnectionArgs struct {
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity *commontypesv5.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The supported Azure location where the managed HSM Pool should be created.
 	Location *string `pulumi:"location"`
 	// Name of the managed HSM Pool
@@ -162,7 +161,7 @@ type mhsmprivateEndpointConnectionArgs struct {
 // The set of arguments for constructing a MHSMPrivateEndpointConnection resource.
 type MHSMPrivateEndpointConnectionArgs struct {
 	// Managed service identity (system assigned and/or user assigned identities)
-	Identity commontypesv5.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// The supported Azure location where the managed HSM Pool should be created.
 	Location pulumi.StringPtrInput
 	// Name of the managed HSM Pool
@@ -227,10 +226,8 @@ func (o MHSMPrivateEndpointConnectionOutput) Etag() pulumi.StringPtrOutput {
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
-func (o MHSMPrivateEndpointConnectionOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *MHSMPrivateEndpointConnection) commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-		return v.Identity
-	}).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+func (o MHSMPrivateEndpointConnectionOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *MHSMPrivateEndpointConnection) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The supported Azure location where the managed HSM Pool should be created.

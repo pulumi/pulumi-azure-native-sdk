@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -119,7 +118,7 @@ type AvsAssessmentsOperation struct {
 	// Cloud suitability summary for all the machines in the assessment.
 	SuitabilitySummary pulumi.IntMapOutput `pulumi:"suitabilitySummary"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Time Range for which the historic utilization data should be considered for
 	// assessment.
 	TimeRange pulumi.StringPtrOutput `pulumi:"timeRange"`
@@ -610,8 +609,8 @@ func (o AvsAssessmentsOperationOutput) SuitabilitySummary() pulumi.IntMapOutput 
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o AvsAssessmentsOperationOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *AvsAssessmentsOperation) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o AvsAssessmentsOperationOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *AvsAssessmentsOperation) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Time Range for which the historic utilization data should be considered for

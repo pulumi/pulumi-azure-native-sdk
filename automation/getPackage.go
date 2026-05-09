@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -41,7 +40,7 @@ type LookupPackageArgs struct {
 // Definition of the Package type.
 type LookupPackageResult struct {
 	// Metadata pertaining to creation and last modification of the resource.
-	AllOf commontypesv5.SystemDataResponse `pulumi:"allOf"`
+	AllOf SystemDataResponse `pulumi:"allOf"`
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the contentLink of the Package.
@@ -61,7 +60,7 @@ type LookupPackageResult struct {
 	// Gets or sets the size in bytes of the Package.
 	SizeInBytes *float64 `pulumi:"sizeInBytes"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -110,8 +109,8 @@ func (o LookupPackageResultOutput) ToLookupPackageResultOutputWithContext(ctx co
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o LookupPackageResultOutput) AllOf() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupPackageResult) commontypesv5.SystemDataResponse { return v.AllOf }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupPackageResultOutput) AllOf() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPackageResult) SystemDataResponse { return v.AllOf }).(SystemDataResponseOutput)
 }
 
 // The Azure API version of the resource.
@@ -160,8 +159,8 @@ func (o LookupPackageResultOutput) SizeInBytes() pulumi.Float64PtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupPackageResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupPackageResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupPackageResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPackageResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

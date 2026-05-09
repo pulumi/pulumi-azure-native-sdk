@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -36,13 +35,13 @@ type Community struct {
 	// List of services governed by a community.
 	GovernedServiceList GovernedServiceItemResponseArrayOutput `pulumi:"governedServiceList"`
 	// The managed service identities assigned to this resource.
-	Identity commontypesv5.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Maintenance Mode configuration.
 	MaintenanceModeConfiguration MaintenanceModeConfigurationModelResponsePtrOutput `pulumi:"maintenanceModeConfiguration"`
 	// Managed On Behalf Of Configuration.
-	ManagedOnBehalfOfConfiguration commontypesv5.ManagedOnBehalfOfConfigurationResponseOutput `pulumi:"managedOnBehalfOfConfiguration"`
+	ManagedOnBehalfOfConfiguration ManagedOnBehalfOfConfigurationResponseOutput `pulumi:"managedOnBehalfOfConfiguration"`
 	// Managed resource group name.
 	ManagedResourceGroupName pulumi.StringOutput `pulumi:"managedResourceGroupName"`
 	// The name of the resource
@@ -54,7 +53,7 @@ type Community struct {
 	// List of resource ids created by communities.
 	ResourceCollection pulumi.StringArrayOutput `pulumi:"resourceCollection"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -137,7 +136,7 @@ type communityArgs struct {
 	// List of services governed by a community.
 	GovernedServiceList []GovernedServiceItem `pulumi:"governedServiceList"`
 	// The managed service identities assigned to this resource.
-	Identity *commontypesv5.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Maintenance Mode configuration.
@@ -167,7 +166,7 @@ type CommunityArgs struct {
 	// List of services governed by a community.
 	GovernedServiceList GovernedServiceItemArrayInput
 	// The managed service identities assigned to this resource.
-	Identity commontypesv5.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Maintenance Mode configuration.
@@ -253,8 +252,8 @@ func (o CommunityOutput) GovernedServiceList() GovernedServiceItemResponseArrayO
 }
 
 // The managed service identities assigned to this resource.
-func (o CommunityOutput) Identity() commontypesv5.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *Community) commontypesv5.ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(commontypesv5.ManagedServiceIdentityResponsePtrOutput)
+func (o CommunityOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *Community) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -270,10 +269,10 @@ func (o CommunityOutput) MaintenanceModeConfiguration() MaintenanceModeConfigura
 }
 
 // Managed On Behalf Of Configuration.
-func (o CommunityOutput) ManagedOnBehalfOfConfiguration() commontypesv5.ManagedOnBehalfOfConfigurationResponseOutput {
-	return o.ApplyT(func(v *Community) commontypesv5.ManagedOnBehalfOfConfigurationResponseOutput {
+func (o CommunityOutput) ManagedOnBehalfOfConfiguration() ManagedOnBehalfOfConfigurationResponseOutput {
+	return o.ApplyT(func(v *Community) ManagedOnBehalfOfConfigurationResponseOutput {
 		return v.ManagedOnBehalfOfConfiguration
-	}).(commontypesv5.ManagedOnBehalfOfConfigurationResponseOutput)
+	}).(ManagedOnBehalfOfConfigurationResponseOutput)
 }
 
 // Managed resource group name.
@@ -302,8 +301,8 @@ func (o CommunityOutput) ResourceCollection() pulumi.StringArrayOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o CommunityOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Community) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o CommunityOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Community) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

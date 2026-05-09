@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -28,7 +27,7 @@ type BackupInstance struct {
 	// BackupInstanceResource properties
 	Properties BackupInstanceResponseOutput `pulumi:"properties"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData commontypesv4.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Proxy Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Proxy Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
@@ -253,8 +252,8 @@ func (o BackupInstanceOutput) Properties() BackupInstanceResponseOutput {
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o BackupInstanceOutput) SystemData() commontypesv4.SystemDataResponseOutput {
-	return o.ApplyT(func(v *BackupInstance) commontypesv4.SystemDataResponseOutput { return v.SystemData }).(commontypesv4.SystemDataResponseOutput)
+func (o BackupInstanceOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *BackupInstance) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Proxy Resource tags.

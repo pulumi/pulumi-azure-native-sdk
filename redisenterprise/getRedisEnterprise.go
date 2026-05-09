@@ -7,8 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv4"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -48,7 +46,7 @@ type LookupRedisEnterpriseResult struct {
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The identity of the resource.
-	Identity *commontypesv4.ManagedServiceIdentityResponse `pulumi:"identity"`
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// Distinguishes the kind of cluster. Read-only.
 	Kind string `pulumi:"kind"`
 	// The geo-location where the resource lives
@@ -58,7 +56,7 @@ type LookupRedisEnterpriseResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// List of private endpoint connections associated with the specified Redis Enterprise cluster
-	PrivateEndpointConnections []commontypesv2.PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// Current provisioning status of the cluster
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Version of redis the cluster supports, e.g. '6'
@@ -138,8 +136,8 @@ func (o LookupRedisEnterpriseResultOutput) Id() pulumi.StringOutput {
 }
 
 // The identity of the resource.
-func (o LookupRedisEnterpriseResultOutput) Identity() commontypesv4.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupRedisEnterpriseResult) *commontypesv4.ManagedServiceIdentityResponse { return v.Identity }).(commontypesv4.ManagedServiceIdentityResponsePtrOutput)
+func (o LookupRedisEnterpriseResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupRedisEnterpriseResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // Distinguishes the kind of cluster. Read-only.
@@ -163,10 +161,10 @@ func (o LookupRedisEnterpriseResultOutput) Name() pulumi.StringOutput {
 }
 
 // List of private endpoint connections associated with the specified Redis Enterprise cluster
-func (o LookupRedisEnterpriseResultOutput) PrivateEndpointConnections() commontypesv2.PrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v LookupRedisEnterpriseResult) []commontypesv2.PrivateEndpointConnectionResponse {
+func (o LookupRedisEnterpriseResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v LookupRedisEnterpriseResult) []PrivateEndpointConnectionResponse {
 		return v.PrivateEndpointConnections
-	}).(commontypesv2.PrivateEndpointConnectionResponseArrayOutput)
+	}).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // Current provisioning status of the cluster

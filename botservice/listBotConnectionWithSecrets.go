@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -53,7 +52,7 @@ type ListBotConnectionWithSecretsResult struct {
 	// Gets or sets the SKU of the resource.
 	Sku *SkuResponse `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Contains resource tags defined as key/value pairs.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -145,8 +144,8 @@ func (o ListBotConnectionWithSecretsResultOutput) Sku() SkuResponsePtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ListBotConnectionWithSecretsResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v ListBotConnectionWithSecretsResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o ListBotConnectionWithSecretsResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v ListBotConnectionWithSecretsResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Contains resource tags defined as key/value pairs.

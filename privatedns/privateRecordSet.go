@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -48,7 +47,7 @@ type PrivateRecordSet struct {
 	// The list of SRV records in the record set.
 	SrvRecords SrvRecordResponseArrayOutput `pulumi:"srvRecords"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The TTL (time-to-live) of the records in the record set.
 	Ttl pulumi.Float64PtrOutput `pulumi:"ttl"`
 	// The list of TXT records in the record set.
@@ -295,8 +294,8 @@ func (o PrivateRecordSetOutput) SrvRecords() SrvRecordResponseArrayOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o PrivateRecordSetOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v *PrivateRecordSet) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o PrivateRecordSetOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *PrivateRecordSet) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The TTL (time-to-live) of the records in the record set.

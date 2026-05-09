@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -87,7 +86,7 @@ type LookupMigrationResult struct {
 	// Indicates if data migration must start right away.
 	StartDataMigration *string `pulumi:"startDataMigration"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv6.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Fully qualified domain name (FQDN) or IP address of the target server. This property is optional. When provided, the migration service will always use it to connect to the target server.
@@ -260,8 +259,8 @@ func (o LookupMigrationResultOutput) StartDataMigration() pulumi.StringPtrOutput
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupMigrationResultOutput) SystemData() commontypesv6.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupMigrationResult) commontypesv6.SystemDataResponse { return v.SystemData }).(commontypesv6.SystemDataResponseOutput)
+func (o LookupMigrationResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupMigrationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -63,7 +62,7 @@ type LookupApiResult struct {
 	// Short description of the API.
 	Summary *string `pulumi:"summary"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Terms of service for the API.
 	TermsOfService *TermsOfServiceResponse `pulumi:"termsOfService"`
 	// API title.
@@ -167,8 +166,8 @@ func (o LookupApiResultOutput) Summary() pulumi.StringPtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupApiResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupApiResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupApiResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupApiResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Terms of service for the API.

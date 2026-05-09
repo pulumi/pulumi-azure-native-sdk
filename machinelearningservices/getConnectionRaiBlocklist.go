@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -46,7 +45,7 @@ type LookupConnectionRaiBlocklistResult struct {
 	// RAI Custom Blocklist properties.
 	Properties RaiBlocklistPropertiesResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -110,8 +109,8 @@ func (o LookupConnectionRaiBlocklistResultOutput) Properties() RaiBlocklistPrope
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupConnectionRaiBlocklistResultOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupConnectionRaiBlocklistResult) commontypesv3.SystemDataResponse { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o LookupConnectionRaiBlocklistResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupConnectionRaiBlocklistResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

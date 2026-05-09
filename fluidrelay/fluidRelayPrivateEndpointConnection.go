@@ -8,8 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv6"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -27,13 +25,13 @@ type FluidRelayPrivateEndpointConnection struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The private endpoint resource.
-	PrivateEndpoint commontypesv6.PrivateEndpointResponsePtrOutput `pulumi:"privateEndpoint"`
+	PrivateEndpoint PrivateEndpointResponsePtrOutput `pulumi:"privateEndpoint"`
 	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState commontypesv6.PrivateLinkServiceConnectionStateResponseOutput `pulumi:"privateLinkServiceConnectionState"`
+	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponseOutput `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state of the private endpoint connection resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -98,7 +96,7 @@ type fluidRelayPrivateEndpointConnectionArgs struct {
 	// The name of the private endpoint connection associated with the Azure resource.
 	PrivateEndpointConnectionName *string `pulumi:"privateEndpointConnectionName"`
 	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState commontypesv6.PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
+	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
 	// The resource group containing the resource.
 	ResourceGroup string `pulumi:"resourceGroup"`
 }
@@ -110,7 +108,7 @@ type FluidRelayPrivateEndpointConnectionArgs struct {
 	// The name of the private endpoint connection associated with the Azure resource.
 	PrivateEndpointConnectionName pulumi.StringPtrInput
 	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState commontypesv6.PrivateLinkServiceConnectionStateInput
+	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateInput
 	// The resource group containing the resource.
 	ResourceGroup pulumi.StringInput
 }
@@ -168,17 +166,17 @@ func (o FluidRelayPrivateEndpointConnectionOutput) Name() pulumi.StringOutput {
 }
 
 // The private endpoint resource.
-func (o FluidRelayPrivateEndpointConnectionOutput) PrivateEndpoint() commontypesv6.PrivateEndpointResponsePtrOutput {
-	return o.ApplyT(func(v *FluidRelayPrivateEndpointConnection) commontypesv6.PrivateEndpointResponsePtrOutput {
+func (o FluidRelayPrivateEndpointConnectionOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
+	return o.ApplyT(func(v *FluidRelayPrivateEndpointConnection) PrivateEndpointResponsePtrOutput {
 		return v.PrivateEndpoint
-	}).(commontypesv6.PrivateEndpointResponsePtrOutput)
+	}).(PrivateEndpointResponsePtrOutput)
 }
 
 // A collection of information about the state of the connection between service consumer and provider.
-func (o FluidRelayPrivateEndpointConnectionOutput) PrivateLinkServiceConnectionState() commontypesv6.PrivateLinkServiceConnectionStateResponseOutput {
-	return o.ApplyT(func(v *FluidRelayPrivateEndpointConnection) commontypesv6.PrivateLinkServiceConnectionStateResponseOutput {
+func (o FluidRelayPrivateEndpointConnectionOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponseOutput {
+	return o.ApplyT(func(v *FluidRelayPrivateEndpointConnection) PrivateLinkServiceConnectionStateResponseOutput {
 		return v.PrivateLinkServiceConnectionState
-	}).(commontypesv6.PrivateLinkServiceConnectionStateResponseOutput)
+	}).(PrivateLinkServiceConnectionStateResponseOutput)
 }
 
 // The provisioning state of the private endpoint connection resource.
@@ -187,10 +185,8 @@ func (o FluidRelayPrivateEndpointConnectionOutput) ProvisioningState() pulumi.St
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o FluidRelayPrivateEndpointConnectionOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *FluidRelayPrivateEndpointConnection) commontypesv5.SystemDataResponseOutput {
-		return v.SystemData
-	}).(commontypesv5.SystemDataResponseOutput)
+func (o FluidRelayPrivateEndpointConnectionOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *FluidRelayPrivateEndpointConnection) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -79,7 +78,7 @@ type LookupMetadataResult struct {
 	// Support information for the metadata - type, name, contact information
 	Support *MetadataSupportResponse `pulumi:"support"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// the tactics the resource covers
 	ThreatAnalysisTactics []string `pulumi:"threatAnalysisTactics"`
 	// the techniques the resource covers, these have to be aligned with the tactics being used
@@ -228,8 +227,8 @@ func (o LookupMetadataResultOutput) Support() MetadataSupportResponsePtrOutput {
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupMetadataResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupMetadataResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupMetadataResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupMetadataResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // the tactics the resource covers

@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -47,11 +46,11 @@ type LookupPrivateLinkScopeResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// List of private endpoint connections.
-	PrivateEndpointConnections []commontypesv2.PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// Current state of this PrivateLinkScope: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// System data
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -119,10 +118,10 @@ func (o LookupPrivateLinkScopeResultOutput) Name() pulumi.StringOutput {
 }
 
 // List of private endpoint connections.
-func (o LookupPrivateLinkScopeResultOutput) PrivateEndpointConnections() commontypesv2.PrivateEndpointConnectionResponseArrayOutput {
-	return o.ApplyT(func(v LookupPrivateLinkScopeResult) []commontypesv2.PrivateEndpointConnectionResponse {
+func (o LookupPrivateLinkScopeResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v LookupPrivateLinkScopeResult) []PrivateEndpointConnectionResponse {
 		return v.PrivateEndpointConnections
-	}).(commontypesv2.PrivateEndpointConnectionResponseArrayOutput)
+	}).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // Current state of this PrivateLinkScope: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it.
@@ -131,8 +130,8 @@ func (o LookupPrivateLinkScopeResultOutput) ProvisioningState() pulumi.StringOut
 }
 
 // System data
-func (o LookupPrivateLinkScopeResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupPrivateLinkScopeResult) commontypesv2.SystemDataResponse { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o LookupPrivateLinkScopeResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPrivateLinkScopeResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.

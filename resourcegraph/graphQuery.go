@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -36,7 +35,7 @@ type GraphQuery struct {
 	// Enum indicating a type of graph query.
 	ResultKind pulumi.StringOutput `pulumi:"resultKind"`
 	// The system metadata relating to this resource.
-	SystemData commontypesv5.SystemDataResponseOutput `pulumi:"systemData"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Date and time in UTC of the last modification that was made to this graph query definition.
@@ -215,8 +214,8 @@ func (o GraphQueryOutput) ResultKind() pulumi.StringOutput {
 }
 
 // The system metadata relating to this resource.
-func (o GraphQueryOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v *GraphQuery) commontypesv5.SystemDataResponseOutput { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o GraphQueryOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *GraphQuery) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags

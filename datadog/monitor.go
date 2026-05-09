@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -29,8 +28,8 @@ type Monitor struct {
 	Properties MonitorPropertiesResponseOutput `pulumi:"properties"`
 	Sku        ResourceSkuResponsePtrOutput    `pulumi:"sku"`
 	// Metadata pertaining to creation and last modification of the resource.
-	SystemData commontypesv2.SystemDataResponseOutput `pulumi:"systemData"`
-	Tags       pulumi.StringMapOutput                 `pulumi:"tags"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	Tags       pulumi.StringMapOutput   `pulumi:"tags"`
 	// The type of the monitor resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -208,8 +207,8 @@ func (o MonitorOutput) Sku() ResourceSkuResponsePtrOutput {
 }
 
 // Metadata pertaining to creation and last modification of the resource.
-func (o MonitorOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v *Monitor) commontypesv2.SystemDataResponseOutput { return v.SystemData }).(commontypesv2.SystemDataResponseOutput)
+func (o MonitorOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Monitor) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 func (o MonitorOutput) Tags() pulumi.StringMapOutput {

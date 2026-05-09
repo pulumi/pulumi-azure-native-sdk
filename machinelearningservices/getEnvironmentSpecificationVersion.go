@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv2"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -47,7 +46,7 @@ type LookupEnvironmentSpecificationVersionResult struct {
 	// [Required] Additional attributes of the entity.
 	Properties EnvironmentSpecificationVersionResponse `pulumi:"properties"`
 	// System data associated with resource provider
-	SystemData commontypesv2.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
@@ -114,10 +113,8 @@ func (o LookupEnvironmentSpecificationVersionResultOutput) Properties() Environm
 }
 
 // System data associated with resource provider
-func (o LookupEnvironmentSpecificationVersionResultOutput) SystemData() commontypesv2.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupEnvironmentSpecificationVersionResult) commontypesv2.SystemDataResponse {
-		return v.SystemData
-	}).(commontypesv2.SystemDataResponseOutput)
+func (o LookupEnvironmentSpecificationVersionResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupEnvironmentSpecificationVersionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

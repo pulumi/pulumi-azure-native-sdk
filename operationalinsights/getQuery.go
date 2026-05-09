@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv5"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -57,7 +56,7 @@ type LookupQueryResult struct {
 	// The related metadata items for the function.
 	Related *LogAnalyticsQueryPackQueryPropertiesResponseRelated `pulumi:"related"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv5.SystemDataResponse `pulumi:"systemData"`
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Tags associated with the query.
 	Tags map[string][]string `pulumi:"tags"`
 	// Creation Date for the Log Analytics Query, in ISO 8601 format.
@@ -151,8 +150,8 @@ func (o LookupQueryResultOutput) Related() LogAnalyticsQueryPackQueryPropertiesR
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupQueryResultOutput) SystemData() commontypesv5.SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupQueryResult) commontypesv5.SystemDataResponse { return v.SystemData }).(commontypesv5.SystemDataResponseOutput)
+func (o LookupQueryResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupQueryResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Tags associated with the query.

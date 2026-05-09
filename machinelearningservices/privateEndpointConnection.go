@@ -8,7 +8,6 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/commontypesv3"
 	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -24,7 +23,7 @@ type PrivateEndpointConnection struct {
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The managed service identities assigned to this resource.
-	Identity commontypesv3.ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// *Same as workspace location.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The name of the resource
@@ -36,10 +35,10 @@ type PrivateEndpointConnection struct {
 	// The current provisioning state.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
-	Sku commontypesv3.SkuResponsePtrOutput `pulumi:"sku"`
+	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData commontypesv3.SystemDataResponseOutput `pulumi:"systemData"`
-	Tags       pulumi.StringMapOutput                 `pulumi:"tags"`
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	Tags       pulumi.StringMapOutput   `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -214,7 +213,7 @@ func (PrivateEndpointConnectionState) ElementType() reflect.Type {
 
 type privateEndpointConnectionArgs struct {
 	// The managed service identities assigned to this resource.
-	Identity *commontypesv3.ManagedServiceIdentity `pulumi:"identity"`
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// *Same as workspace location.
 	Location *string `pulumi:"location"`
 	// NRP Private Endpoint Connection Name
@@ -224,8 +223,8 @@ type privateEndpointConnectionArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
-	Sku  *commontypesv3.Sku `pulumi:"sku"`
-	Tags map[string]string  `pulumi:"tags"`
+	Sku  *Sku              `pulumi:"sku"`
+	Tags map[string]string `pulumi:"tags"`
 	// Azure Machine Learning Workspace Name
 	WorkspaceName string `pulumi:"workspaceName"`
 }
@@ -233,7 +232,7 @@ type privateEndpointConnectionArgs struct {
 // The set of arguments for constructing a PrivateEndpointConnection resource.
 type PrivateEndpointConnectionArgs struct {
 	// The managed service identities assigned to this resource.
-	Identity commontypesv3.ManagedServiceIdentityPtrInput
+	Identity ManagedServiceIdentityPtrInput
 	// *Same as workspace location.
 	Location pulumi.StringPtrInput
 	// NRP Private Endpoint Connection Name
@@ -243,7 +242,7 @@ type PrivateEndpointConnectionArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
-	Sku  commontypesv3.SkuPtrInput
+	Sku  SkuPtrInput
 	Tags pulumi.StringMapInput
 	// Azure Machine Learning Workspace Name
 	WorkspaceName pulumi.StringInput
@@ -292,10 +291,8 @@ func (o PrivateEndpointConnectionOutput) AzureApiVersion() pulumi.StringOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o PrivateEndpointConnectionOutput) Identity() commontypesv3.ManagedServiceIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointConnection) commontypesv3.ManagedServiceIdentityResponsePtrOutput {
-		return v.Identity
-	}).(commontypesv3.ManagedServiceIdentityResponsePtrOutput)
+func (o PrivateEndpointConnectionOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnection) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
 
 // *Same as workspace location.
@@ -328,13 +325,13 @@ func (o PrivateEndpointConnectionOutput) ProvisioningState() pulumi.StringOutput
 }
 
 // Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
-func (o PrivateEndpointConnectionOutput) Sku() commontypesv3.SkuResponsePtrOutput {
-	return o.ApplyT(func(v *PrivateEndpointConnection) commontypesv3.SkuResponsePtrOutput { return v.Sku }).(commontypesv3.SkuResponsePtrOutput)
+func (o PrivateEndpointConnectionOutput) Sku() SkuResponsePtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnection) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o PrivateEndpointConnectionOutput) SystemData() commontypesv3.SystemDataResponseOutput {
-	return o.ApplyT(func(v *PrivateEndpointConnection) commontypesv3.SystemDataResponseOutput { return v.SystemData }).(commontypesv3.SystemDataResponseOutput)
+func (o PrivateEndpointConnectionOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnection) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 func (o PrivateEndpointConnectionOutput) Tags() pulumi.StringMapOutput {
