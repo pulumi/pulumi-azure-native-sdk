@@ -8,18 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents Activity entity query.
 //
-// Uses Azure REST API version 2025-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
+// Uses Azure REST API version 2023-06-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-03-01-preview.
 type ActivityCustomEntityQuery struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The entity query content to display in timeline
 	Content pulumi.StringPtrOutput `pulumi:"content"`
 	// The time the activity was created
@@ -154,12 +152,6 @@ func NewActivityCustomEntityQuery(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250101preview:ActivityCustomEntityQuery"),
 		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20250401preview:ActivityCustomEntityQuery"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20250701preview:ActivityCustomEntityQuery"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -290,11 +282,6 @@ func (o ActivityCustomEntityQueryOutput) ToActivityCustomEntityQueryOutput() Act
 
 func (o ActivityCustomEntityQueryOutput) ToActivityCustomEntityQueryOutputWithContext(ctx context.Context) ActivityCustomEntityQueryOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o ActivityCustomEntityQueryOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ActivityCustomEntityQuery) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The entity query content to display in timeline

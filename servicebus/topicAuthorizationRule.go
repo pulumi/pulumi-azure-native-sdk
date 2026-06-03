@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description of a namespace authorization rule.
 //
-// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
+// Uses Azure REST API version 2022-01-01-preview. In version 1.x of the Azure Native provider, it used API version 2017-04-01.
 //
-// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
 type TopicAuthorizationRule struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -87,9 +85,6 @@ func NewTopicAuthorizationRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:servicebus/v20240101:TopicAuthorizationRule"),
 		},
-		{
-			Type: pulumi.String("azure-native:servicebus/v20250501preview:TopicAuthorizationRule"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -129,10 +124,10 @@ type topicAuthorizationRuleArgs struct {
 	AuthorizationRuleName *string `pulumi:"authorizationRuleName"`
 	// The namespace name
 	NamespaceName string `pulumi:"namespaceName"`
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The rights associated with the rule.
-	Rights []AccessRights `pulumi:"rights"`
+	Rights []string `pulumi:"rights"`
 	// The topic name.
 	TopicName string `pulumi:"topicName"`
 }
@@ -143,10 +138,10 @@ type TopicAuthorizationRuleArgs struct {
 	AuthorizationRuleName pulumi.StringPtrInput
 	// The namespace name
 	NamespaceName pulumi.StringInput
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput
 	// The rights associated with the rule.
-	Rights AccessRightsArrayInput
+	Rights pulumi.StringArrayInput
 	// The topic name.
 	TopicName pulumi.StringInput
 }
@@ -186,11 +181,6 @@ func (o TopicAuthorizationRuleOutput) ToTopicAuthorizationRuleOutput() TopicAuth
 
 func (o TopicAuthorizationRuleOutput) ToTopicAuthorizationRuleOutputWithContext(ctx context.Context) TopicAuthorizationRuleOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o TopicAuthorizationRuleOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *TopicAuthorizationRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

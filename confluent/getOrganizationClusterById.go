@@ -7,15 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get cluster by Id
+// Details of cluster record
 //
 // Uses Azure REST API version 2024-07-01.
-//
-// Other available API versions: 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupOrganizationClusterById(ctx *pulumi.Context, args *LookupOrganizationClusterByIdArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationClusterByIdResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationClusterByIdResult
@@ -39,24 +37,20 @@ type LookupOrganizationClusterByIdArgs struct {
 
 // Details of cluster record
 type LookupOrganizationClusterByIdResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-	Id string `pulumi:"id"`
+	// Id of the cluster
+	Id *string `pulumi:"id"`
 	// Type of cluster
 	Kind *string `pulumi:"kind"`
 	// Metadata of the record
 	Metadata *SCMetadataEntityResponse `pulumi:"metadata"`
-	// The name of the resource
-	Name string `pulumi:"name"`
+	// Display name of the cluster
+	Name *string `pulumi:"name"`
 	// Specification of the cluster
 	Spec *SCClusterSpecEntityResponse `pulumi:"spec"`
 	// Specification of the cluster status
 	Status *ClusterStatusEntityResponse `pulumi:"status"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-	Type string `pulumi:"type"`
+	// Type of the resource
+	Type *string `pulumi:"type"`
 }
 
 func LookupOrganizationClusterByIdOutput(ctx *pulumi.Context, args LookupOrganizationClusterByIdOutputArgs, opts ...pulumi.InvokeOption) LookupOrganizationClusterByIdResultOutput {
@@ -98,14 +92,9 @@ func (o LookupOrganizationClusterByIdResultOutput) ToLookupOrganizationClusterBy
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupOrganizationClusterByIdResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOrganizationClusterByIdResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-func (o LookupOrganizationClusterByIdResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOrganizationClusterByIdResult) string { return v.Id }).(pulumi.StringOutput)
+// Id of the cluster
+func (o LookupOrganizationClusterByIdResultOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupOrganizationClusterByIdResult) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // Type of cluster
@@ -118,9 +107,9 @@ func (o LookupOrganizationClusterByIdResultOutput) Metadata() SCMetadataEntityRe
 	return o.ApplyT(func(v LookupOrganizationClusterByIdResult) *SCMetadataEntityResponse { return v.Metadata }).(SCMetadataEntityResponsePtrOutput)
 }
 
-// The name of the resource
-func (o LookupOrganizationClusterByIdResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOrganizationClusterByIdResult) string { return v.Name }).(pulumi.StringOutput)
+// Display name of the cluster
+func (o LookupOrganizationClusterByIdResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupOrganizationClusterByIdResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Specification of the cluster
@@ -133,14 +122,9 @@ func (o LookupOrganizationClusterByIdResultOutput) Status() ClusterStatusEntityR
 	return o.ApplyT(func(v LookupOrganizationClusterByIdResult) *ClusterStatusEntityResponse { return v.Status }).(ClusterStatusEntityResponsePtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupOrganizationClusterByIdResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupOrganizationClusterByIdResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o LookupOrganizationClusterByIdResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOrganizationClusterByIdResult) string { return v.Type }).(pulumi.StringOutput)
+// Type of the resource
+func (o LookupOrganizationClusterByIdResultOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupOrganizationClusterByIdResult) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 func init() {

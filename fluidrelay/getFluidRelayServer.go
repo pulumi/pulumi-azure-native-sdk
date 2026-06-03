@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2022-06-01.
 //
-// Other available API versions: 2025-06-20-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native fluidrelay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-06-15-preview.
 func LookupFluidRelayServer(ctx *pulumi.Context, args *LookupFluidRelayServerArgs, opts ...pulumi.InvokeOption) (*LookupFluidRelayServerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFluidRelayServerResult
@@ -35,8 +35,6 @@ type LookupFluidRelayServerArgs struct {
 
 // A FluidRelay Server.
 type LookupFluidRelayServerResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// All encryption configuration for a resource.
 	Encryption *EncryptionPropertiesResponse `pulumi:"encryption"`
 	// The Fluid Relay Service endpoints for this server.
@@ -96,11 +94,6 @@ func (o LookupFluidRelayServerResultOutput) ToLookupFluidRelayServerResultOutput
 
 func (o LookupFluidRelayServerResultOutput) ToLookupFluidRelayServerResultOutputWithContext(ctx context.Context) LookupFluidRelayServerResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupFluidRelayServerResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupFluidRelayServerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // All encryption configuration for a resource.

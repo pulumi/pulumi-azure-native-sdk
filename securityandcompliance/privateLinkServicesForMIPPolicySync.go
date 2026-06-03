@@ -8,18 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The description of the service.
 //
-// Uses Azure REST API version 2021-03-08.
+// Uses Azure REST API version 2021-03-08. In version 1.x of the Azure Native provider, it used API version 2021-03-08.
 type PrivateLinkServicesForMIPPolicySync struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// An etag associated with the resource, used for optimistic concurrency when editing it.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Setting indicating whether the service has a managed identity associated with it.
@@ -56,6 +54,12 @@ func NewPrivateLinkServicesForMIPPolicySync(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:securityandcompliance/v20210308:PrivateLinkServicesForMIPPolicySync"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityandcompliance/v20210308:privateLinkServicesForMIPPolicySync"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityandcompliance:privateLinkServicesForMIPPolicySync"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -161,11 +165,6 @@ func (o PrivateLinkServicesForMIPPolicySyncOutput) ToPrivateLinkServicesForMIPPo
 
 func (o PrivateLinkServicesForMIPPolicySyncOutput) ToPrivateLinkServicesForMIPPolicySyncOutputWithContext(ctx context.Context) PrivateLinkServicesForMIPPolicySyncOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o PrivateLinkServicesForMIPPolicySyncOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *PrivateLinkServicesForMIPPolicySync) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An etag associated with the resource, used for optimistic concurrency when editing it.

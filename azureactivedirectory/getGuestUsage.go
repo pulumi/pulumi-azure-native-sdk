@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Guest Usages resource for the Microsoft.AzureActiveDirectory resource provider
 //
-// Uses Azure REST API version 2023-05-17-preview.
+// Uses Azure REST API version 2021-04-01.
 //
-// Other available API versions: 2021-04-01, 2023-01-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azureactivedirectory [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-01-18-preview, 2023-05-17-preview.
 func LookupGuestUsage(ctx *pulumi.Context, args *LookupGuestUsageArgs, opts ...pulumi.InvokeOption) (*LookupGuestUsageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGuestUsageResult
@@ -35,8 +35,6 @@ type LookupGuestUsageArgs struct {
 
 // Guest Usages Resource
 type LookupGuestUsageResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// An identifier that represents the Guest Usages resource.
 	Id string `pulumi:"id"`
 	// Location of the Guest Usages resource.
@@ -86,11 +84,6 @@ func (o LookupGuestUsageResultOutput) ToLookupGuestUsageResultOutput() LookupGue
 
 func (o LookupGuestUsageResultOutput) ToLookupGuestUsageResultOutputWithContext(ctx context.Context) LookupGuestUsageResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupGuestUsageResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGuestUsageResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // An identifier that represents the Guest Usages resource.

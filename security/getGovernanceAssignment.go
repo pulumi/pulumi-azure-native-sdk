@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,8 +37,6 @@ type LookupGovernanceAssignmentArgs struct {
 type LookupGovernanceAssignmentResult struct {
 	// The additional data for the governance assignment - e.g. links to ticket (optional), see example
 	AdditionalData *GovernanceAssignmentAdditionalDataResponse `pulumi:"additionalData"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
 	GovernanceEmailNotification *GovernanceEmailNotificationResponse `pulumi:"governanceEmailNotification"`
 	// Resource Id
@@ -99,11 +97,6 @@ func (o LookupGovernanceAssignmentResultOutput) AdditionalData() GovernanceAssig
 	return o.ApplyT(func(v LookupGovernanceAssignmentResult) *GovernanceAssignmentAdditionalDataResponse {
 		return v.AdditionalData
 	}).(GovernanceAssignmentAdditionalDataResponsePtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupGovernanceAssignmentResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGovernanceAssignmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners

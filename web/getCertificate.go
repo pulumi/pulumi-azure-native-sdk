@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description for Get a certificate.
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2022-09-01.
 //
-// Other available API versions: 2016-03-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-03-01, 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
 func LookupCertificate(ctx *pulumi.Context, args *LookupCertificateArgs, opts ...pulumi.InvokeOption) (*LookupCertificateResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCertificateResult
@@ -35,8 +35,6 @@ type LookupCertificateArgs struct {
 
 // SSL certificate for an app.
 type LookupCertificateResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// CNAME of the certificate to be issued via free certificate
 	CanonicalName *string `pulumi:"canonicalName"`
 	// Raw bytes of .cer file
@@ -57,27 +55,25 @@ type LookupCertificateResult struct {
 	IssueDate string `pulumi:"issueDate"`
 	// Certificate issuer.
 	Issuer string `pulumi:"issuer"`
-	// Azure Key Vault Csm resource Id.
+	// Key Vault Csm resource Id.
 	KeyVaultId *string `pulumi:"keyVaultId"`
-	// Azure Key Vault secret name.
+	// Key Vault secret name.
 	KeyVaultSecretName *string `pulumi:"keyVaultSecretName"`
 	// Status of the Key Vault secret.
 	KeyVaultSecretStatus string `pulumi:"keyVaultSecretStatus"`
-	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+	// Kind of resource.
 	Kind *string `pulumi:"kind"`
 	// Resource Location.
 	Location string `pulumi:"location"`
 	// Resource Name.
 	Name string `pulumi:"name"`
-	// Certificate password.
-	Password *string `pulumi:"password"`
 	// Pfx blob.
 	PfxBlob *string `pulumi:"pfxBlob"`
 	// Public key hash.
 	PublicKeyHash string `pulumi:"publicKeyHash"`
 	// Self link.
 	SelfLink string `pulumi:"selfLink"`
-	// Resource ID of the associated App Service plan.
+	// Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
 	ServerFarmId *string `pulumi:"serverFarmId"`
 	// App name.
 	SiteName string `pulumi:"siteName"`
@@ -126,11 +122,6 @@ func (o LookupCertificateResultOutput) ToLookupCertificateResultOutput() LookupC
 
 func (o LookupCertificateResultOutput) ToLookupCertificateResultOutputWithContext(ctx context.Context) LookupCertificateResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupCertificateResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCertificateResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // CNAME of the certificate to be issued via free certificate
@@ -183,12 +174,12 @@ func (o LookupCertificateResultOutput) Issuer() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.Issuer }).(pulumi.StringOutput)
 }
 
-// Azure Key Vault Csm resource Id.
+// Key Vault Csm resource Id.
 func (o LookupCertificateResultOutput) KeyVaultId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCertificateResult) *string { return v.KeyVaultId }).(pulumi.StringPtrOutput)
 }
 
-// Azure Key Vault secret name.
+// Key Vault secret name.
 func (o LookupCertificateResultOutput) KeyVaultSecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCertificateResult) *string { return v.KeyVaultSecretName }).(pulumi.StringPtrOutput)
 }
@@ -198,7 +189,7 @@ func (o LookupCertificateResultOutput) KeyVaultSecretStatus() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.KeyVaultSecretStatus }).(pulumi.StringOutput)
 }
 
-// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+// Kind of resource.
 func (o LookupCertificateResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCertificateResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -211,11 +202,6 @@ func (o LookupCertificateResultOutput) Location() pulumi.StringOutput {
 // Resource Name.
 func (o LookupCertificateResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Certificate password.
-func (o LookupCertificateResultOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupCertificateResult) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 // Pfx blob.
@@ -233,7 +219,7 @@ func (o LookupCertificateResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCertificateResult) string { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// Resource ID of the associated App Service plan.
+// Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
 func (o LookupCertificateResultOutput) ServerFarmId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupCertificateResult) *string { return v.ServerFarmId }).(pulumi.StringPtrOutput)
 }

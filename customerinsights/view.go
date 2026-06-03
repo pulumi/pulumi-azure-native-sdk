@@ -8,18 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The view resource format.
 //
-// Uses Azure REST API version 2017-04-26. In version 2.x of the Azure Native provider, it used API version 2017-04-26.
+// Uses Azure REST API version 2017-04-26. In version 1.x of the Azure Native provider, it used API version 2017-04-26.
 type View struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Date time when view was last modified.
 	Changed pulumi.StringOutput `pulumi:"changed"`
 	// Date time when view was created.
@@ -163,11 +161,6 @@ func (o ViewOutput) ToViewOutput() ViewOutput {
 
 func (o ViewOutput) ToViewOutputWithContext(ctx context.Context) ViewOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o ViewOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *View) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Date time when view was last modified.

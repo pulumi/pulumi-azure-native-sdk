@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get the properties of the specified NGroups resource.
+// Get the properties of the specified n group.
 //
-// Uses Azure REST API version 2025-09-01.
+// Uses Azure REST API version 2024-09-01-preview.
 //
-// Other available API versions: 2024-09-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerinstance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-11-01-preview.
 func LookupNGroup(ctx *pulumi.Context, args *LookupNGroupArgs, opts ...pulumi.InvokeOption) (*LookupNGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNGroupResult
@@ -27,30 +27,26 @@ func LookupNGroup(ctx *pulumi.Context, args *LookupNGroupArgs, opts ...pulumi.In
 }
 
 type LookupNGroupArgs struct {
-	// The NGroups name.
+	// The N Groups name.
 	NgroupsName string `pulumi:"ngroupsName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// Describes the NGroups resource.
+// Describes a nGroup.
 type LookupNGroupResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// The Container Group Profiles that could be used in the NGroups resource.
+	// The Container Group Profiles that could be used in a nGroup.
 	ContainerGroupProfiles []ContainerGroupProfileStubResponse `pulumi:"containerGroupProfiles"`
 	// The elastic profile.
 	ElasticProfile *ElasticProfileResponse `pulumi:"elasticProfile"`
 	// The resource id.
 	Id string `pulumi:"id"`
-	// The identity of the NGroup, if configured.
+	// The identity of the nGroup, if configured.
 	Identity *NGroupIdentityResponse `pulumi:"identity"`
 	// The resource location.
 	Location *string `pulumi:"location"`
 	// The resource name.
 	Name string `pulumi:"name"`
-	// Provides options w.r.t allocation and management w.r.t certain placement policies. These utilize capabilities provided by the underlying Azure infrastructure. They are typically used for high availability scenarios. E.g., distributing CGs across fault domains.
-	PlacementProfile *PlacementProfileResponse `pulumi:"placementProfile"`
 	// The provisioning state, which only appears in the response.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Metadata pertaining to creation and last modification of the resource.
@@ -59,8 +55,6 @@ type LookupNGroupResult struct {
 	Tags map[string]string `pulumi:"tags"`
 	// The resource type.
 	Type string `pulumi:"type"`
-	// Used by the customer to specify the way to update the Container Groups in NGroup.
-	UpdateProfile *UpdateProfileResponse `pulumi:"updateProfile"`
 	// The zones for the container group.
 	Zones []string `pulumi:"zones"`
 }
@@ -75,9 +69,9 @@ func LookupNGroupOutput(ctx *pulumi.Context, args LookupNGroupOutputArgs, opts .
 }
 
 type LookupNGroupOutputArgs struct {
-	// The NGroups name.
+	// The N Groups name.
 	NgroupsName pulumi.StringInput `pulumi:"ngroupsName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -85,7 +79,7 @@ func (LookupNGroupOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupNGroupArgs)(nil)).Elem()
 }
 
-// Describes the NGroups resource.
+// Describes a nGroup.
 type LookupNGroupResultOutput struct{ *pulumi.OutputState }
 
 func (LookupNGroupResultOutput) ElementType() reflect.Type {
@@ -100,12 +94,7 @@ func (o LookupNGroupResultOutput) ToLookupNGroupResultOutputWithContext(ctx cont
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupNGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// The Container Group Profiles that could be used in the NGroups resource.
+// The Container Group Profiles that could be used in a nGroup.
 func (o LookupNGroupResultOutput) ContainerGroupProfiles() ContainerGroupProfileStubResponseArrayOutput {
 	return o.ApplyT(func(v LookupNGroupResult) []ContainerGroupProfileStubResponse { return v.ContainerGroupProfiles }).(ContainerGroupProfileStubResponseArrayOutput)
 }
@@ -120,7 +109,7 @@ func (o LookupNGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The identity of the NGroup, if configured.
+// The identity of the nGroup, if configured.
 func (o LookupNGroupResultOutput) Identity() NGroupIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupNGroupResult) *NGroupIdentityResponse { return v.Identity }).(NGroupIdentityResponsePtrOutput)
 }
@@ -133,11 +122,6 @@ func (o LookupNGroupResultOutput) Location() pulumi.StringPtrOutput {
 // The resource name.
 func (o LookupNGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNGroupResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Provides options w.r.t allocation and management w.r.t certain placement policies. These utilize capabilities provided by the underlying Azure infrastructure. They are typically used for high availability scenarios. E.g., distributing CGs across fault domains.
-func (o LookupNGroupResultOutput) PlacementProfile() PlacementProfileResponsePtrOutput {
-	return o.ApplyT(func(v LookupNGroupResult) *PlacementProfileResponse { return v.PlacementProfile }).(PlacementProfileResponsePtrOutput)
 }
 
 // The provisioning state, which only appears in the response.
@@ -158,11 +142,6 @@ func (o LookupNGroupResultOutput) Tags() pulumi.StringMapOutput {
 // The resource type.
 func (o LookupNGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNGroupResult) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Used by the customer to specify the way to update the Container Groups in NGroup.
-func (o LookupNGroupResultOutput) UpdateProfile() UpdateProfileResponsePtrOutput {
-	return o.ApplyT(func(v LookupNGroupResult) *UpdateProfileResponse { return v.UpdateProfile }).(UpdateProfileResponsePtrOutput)
 }
 
 // The zones for the container group.

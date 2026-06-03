@@ -8,16 +8,14 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2015-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2015-02-01-preview.
+// Uses Azure REST API version 2015-02-01-preview. In version 1.x of the Azure Native provider, it used API version 2015-02-01-preview.
 type WorkflowAccessKey struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets the workflow access key name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Gets or sets the not-after time.
@@ -145,11 +143,6 @@ func (o WorkflowAccessKeyOutput) ToWorkflowAccessKeyOutput() WorkflowAccessKeyOu
 
 func (o WorkflowAccessKeyOutput) ToWorkflowAccessKeyOutputWithContext(ctx context.Context) WorkflowAccessKeyOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o WorkflowAccessKeyOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *WorkflowAccessKey) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the workflow access key name.

@@ -8,20 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Peering is a logical representation of a set of connections to the Microsoft Cloud Edge at a location.
 //
-// Uses Azure REST API version 2022-10-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01.
-//
-// Other available API versions: 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native peering [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Uses Azure REST API version 2022-10-01. In version 1.x of the Azure Native provider, it used API version 2021-01-01.
 type Peering struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The properties that define a direct peering.
 	Direct PeeringPropertiesDirectResponsePtrOutput `pulumi:"direct"`
 	// The properties that define an exchange peering.
@@ -90,9 +86,6 @@ func NewPeering(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:peering/v20221001:Peering"),
-		},
-		{
-			Type: pulumi.String("azure-native:peering/v20250501:Peering"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -206,11 +199,6 @@ func (o PeeringOutput) ToPeeringOutput() PeeringOutput {
 
 func (o PeeringOutput) ToPeeringOutputWithContext(ctx context.Context) PeeringOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o PeeringOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Peering) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The properties that define a direct peering.

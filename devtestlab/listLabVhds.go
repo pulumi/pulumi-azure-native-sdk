@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,15 +27,15 @@ func ListLabVhds(ctx *pulumi.Context, args *ListLabVhdsArgs, opts ...pulumi.Invo
 type ListLabVhdsArgs struct {
 	// The name of the lab.
 	Name string `pulumi:"name"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The response of a list operation.
 type ListLabVhdsResult struct {
-	// The link to the next page of items
+	// Link for next set of results.
 	NextLink *string `pulumi:"nextLink"`
-	// The LabVhd items on this page
+	// Results of the list operation.
 	Value []LabVhdResponse `pulumi:"value"`
 }
 
@@ -51,7 +51,7 @@ func ListLabVhdsOutput(ctx *pulumi.Context, args ListLabVhdsOutputArgs, opts ...
 type ListLabVhdsOutputArgs struct {
 	// The name of the lab.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -74,12 +74,12 @@ func (o ListLabVhdsResultOutput) ToListLabVhdsResultOutputWithContext(ctx contex
 	return o
 }
 
-// The link to the next page of items
+// Link for next set of results.
 func (o ListLabVhdsResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListLabVhdsResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
-// The LabVhd items on this page
+// Results of the list operation.
 func (o ListLabVhdsResultOutput) Value() LabVhdResponseArrayOutput {
 	return o.ApplyT(func(v ListLabVhdsResult) []LabVhdResponse { return v.Value }).(LabVhdResponseArrayOutput)
 }

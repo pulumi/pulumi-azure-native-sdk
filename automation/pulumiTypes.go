@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -982,7 +982,7 @@ func (o ContentHashResponsePtrOutput) Value() pulumi.StringPtrOutput {
 type ContentLink struct {
 	// Gets or sets the hash.
 	ContentHash *ContentHash `pulumi:"contentHash"`
-	// Gets or sets the uri of content.
+	// Gets or sets the uri of the runbook content.
 	Uri *string `pulumi:"uri"`
 	// Gets or sets the version of the content.
 	Version *string `pulumi:"version"`
@@ -1003,7 +1003,7 @@ type ContentLinkInput interface {
 type ContentLinkArgs struct {
 	// Gets or sets the hash.
 	ContentHash ContentHashPtrInput `pulumi:"contentHash"`
-	// Gets or sets the uri of content.
+	// Gets or sets the uri of the runbook content.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
 	// Gets or sets the version of the content.
 	Version pulumi.StringPtrInput `pulumi:"version"`
@@ -1092,7 +1092,7 @@ func (o ContentLinkOutput) ContentHash() ContentHashPtrOutput {
 	return o.ApplyT(func(v ContentLink) *ContentHash { return v.ContentHash }).(ContentHashPtrOutput)
 }
 
-// Gets or sets the uri of content.
+// Gets or sets the uri of the runbook content.
 func (o ContentLinkOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContentLink) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
@@ -1136,7 +1136,7 @@ func (o ContentLinkPtrOutput) ContentHash() ContentHashPtrOutput {
 	}).(ContentHashPtrOutput)
 }
 
-// Gets or sets the uri of content.
+// Gets or sets the uri of the runbook content.
 func (o ContentLinkPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContentLink) *string {
 		if v == nil {
@@ -1160,7 +1160,7 @@ func (o ContentLinkPtrOutput) Version() pulumi.StringPtrOutput {
 type ContentLinkResponse struct {
 	// Gets or sets the hash.
 	ContentHash *ContentHashResponse `pulumi:"contentHash"`
-	// Gets or sets the uri of content.
+	// Gets or sets the uri of the runbook content.
 	Uri *string `pulumi:"uri"`
 	// Gets or sets the version of the content.
 	Version *string `pulumi:"version"`
@@ -1186,7 +1186,7 @@ func (o ContentLinkResponseOutput) ContentHash() ContentHashResponsePtrOutput {
 	return o.ApplyT(func(v ContentLinkResponse) *ContentHashResponse { return v.ContentHash }).(ContentHashResponsePtrOutput)
 }
 
-// Gets or sets the uri of content.
+// Gets or sets the uri of the runbook content.
 func (o ContentLinkResponseOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContentLinkResponse) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
@@ -1230,7 +1230,7 @@ func (o ContentLinkResponsePtrOutput) ContentHash() ContentHashResponsePtrOutput
 	}).(ContentHashResponsePtrOutput)
 }
 
-// Gets or sets the uri of content.
+// Gets or sets the uri of the runbook content.
 func (o ContentLinkResponsePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContentLinkResponse) *string {
 		if v == nil {
@@ -2901,7 +2901,7 @@ func (o IdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
 
 // Identity for the resource.
 type IdentityResponse struct {
-	// The principal ID of resource identity. The value must be an UUID.
+	// The principal ID of resource identity.
 	PrincipalId string `pulumi:"principalId"`
 	// The tenant ID of resource.
 	TenantId string `pulumi:"tenantId"`
@@ -2926,7 +2926,7 @@ func (o IdentityResponseOutput) ToIdentityResponseOutputWithContext(ctx context.
 	return o
 }
 
-// The principal ID of resource identity. The value must be an UUID.
+// The principal ID of resource identity.
 func (o IdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
 }
@@ -2972,7 +2972,7 @@ func (o IdentityResponsePtrOutput) Elem() IdentityResponseOutput {
 	}).(IdentityResponseOutput)
 }
 
-// The principal ID of resource identity. The value must be an UUID.
+// The principal ID of resource identity.
 func (o IdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IdentityResponse) *string {
 		if v == nil {
@@ -3972,7 +3972,7 @@ func (o PackageErrorInfoResponsePtrOutput) Message() pulumi.StringPtrOutput {
 type PrivateEndpointConnectionResponse struct {
 	// Gets the groupIds.
 	GroupIds []string `pulumi:"groupIds"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource Id for the resource
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
@@ -3980,9 +3980,7 @@ type PrivateEndpointConnectionResponse struct {
 	PrivateEndpoint *PrivateEndpointPropertyResponse `pulumi:"privateEndpoint"`
 	// Connection State of the Private Endpoint Connection.
 	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionStatePropertyResponse `pulumi:"privateLinkServiceConnectionState"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// The type of the resource.
 	Type string `pulumi:"type"`
 }
 
@@ -4006,7 +4004,7 @@ func (o PrivateEndpointConnectionResponseOutput) GroupIds() pulumi.StringArrayOu
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
 }
 
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource Id for the resource
 func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -4028,12 +4026,7 @@ func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionSta
 	}).(PrivateLinkServiceConnectionStatePropertyResponsePtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o PrivateEndpointConnectionResponseOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// The type of the resource.
 func (o PrivateEndpointConnectionResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Type }).(pulumi.StringOutput)
 }

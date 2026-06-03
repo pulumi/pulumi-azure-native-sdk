@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the properties of a Lab Plan.
 //
-// Uses Azure REST API version 2023-06-07.
+// Uses Azure REST API version 2022-08-01.
 //
-// Other available API versions: 2021-10-01-preview, 2021-11-15-preview, 2022-08-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native labservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-06-07.
 func LookupLabPlan(ctx *pulumi.Context, args *LookupLabPlanArgs, opts ...pulumi.InvokeOption) (*LookupLabPlanResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLabPlanResult
@@ -37,8 +37,6 @@ type LookupLabPlanArgs struct {
 type LookupLabPlanResult struct {
 	// The allowed regions for the lab creator to use when creating labs using this lab plan.
 	AllowedRegions []string `pulumi:"allowedRegions"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The default lab shutdown profile. This can be changed on a lab resource and only provides a default profile.
 	DefaultAutoShutdownProfile *AutoShutdownProfileResponse `pulumi:"defaultAutoShutdownProfile"`
 	// The default lab connection profile. This can be changed on a lab resource and only provides a default profile.
@@ -57,8 +55,6 @@ type LookupLabPlanResult struct {
 	Name string `pulumi:"name"`
 	// Current provisioning state of the lab plan.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Error details of last operation done on lab plan.
-	ResourceOperationError ResourceOperationErrorResponse `pulumi:"resourceOperationError"`
 	// Resource ID of the Shared Image Gallery attached to this lab plan. When saving a lab template virtual machine image it will be persisted in this gallery. Shared images from the gallery can be made available to use when creating new labs.
 	SharedGalleryId *string `pulumi:"sharedGalleryId"`
 	// Support contact information and instructions for users of the lab plan. This information is displayed to lab owners and virtual machine users for all labs in the lab plan.
@@ -123,11 +119,6 @@ func (o LookupLabPlanResultOutput) AllowedRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupLabPlanResult) []string { return v.AllowedRegions }).(pulumi.StringArrayOutput)
 }
 
-// The Azure API version of the resource.
-func (o LookupLabPlanResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupLabPlanResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The default lab shutdown profile. This can be changed on a lab resource and only provides a default profile.
 func (o LookupLabPlanResultOutput) DefaultAutoShutdownProfile() AutoShutdownProfileResponsePtrOutput {
 	return o.ApplyT(func(v LookupLabPlanResult) *AutoShutdownProfileResponse { return v.DefaultAutoShutdownProfile }).(AutoShutdownProfileResponsePtrOutput)
@@ -171,11 +162,6 @@ func (o LookupLabPlanResultOutput) Name() pulumi.StringOutput {
 // Current provisioning state of the lab plan.
 func (o LookupLabPlanResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLabPlanResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Error details of last operation done on lab plan.
-func (o LookupLabPlanResultOutput) ResourceOperationError() ResourceOperationErrorResponseOutput {
-	return o.ApplyT(func(v LookupLabPlanResult) ResourceOperationErrorResponse { return v.ResourceOperationError }).(ResourceOperationErrorResponseOutput)
 }
 
 // Resource ID of the Shared Image Gallery attached to this lab plan. When saving a lab template virtual machine image it will be persisted in this gallery. Shared images from the gallery can be made available to use when creating new labs.

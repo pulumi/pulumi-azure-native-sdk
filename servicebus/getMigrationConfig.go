@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves Migration Config
 //
-// Uses Azure REST API version 2024-01-01.
+// Uses Azure REST API version 2022-01-01-preview.
 //
-// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
 func LookupMigrationConfig(ctx *pulumi.Context, args *LookupMigrationConfigArgs, opts ...pulumi.InvokeOption) (*LookupMigrationConfigResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupMigrationConfigResult
@@ -31,14 +31,12 @@ type LookupMigrationConfigArgs struct {
 	ConfigName string `pulumi:"configName"`
 	// The namespace name
 	NamespaceName string `pulumi:"namespaceName"`
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Single item in List or Get Migration Config operation
 type LookupMigrationConfigResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -75,7 +73,7 @@ type LookupMigrationConfigOutputArgs struct {
 	ConfigName pulumi.StringInput `pulumi:"configName"`
 	// The namespace name
 	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -96,11 +94,6 @@ func (o LookupMigrationConfigResultOutput) ToLookupMigrationConfigResultOutput()
 
 func (o LookupMigrationConfigResultOutput) ToLookupMigrationConfigResultOutputWithContext(ctx context.Context) LookupMigrationConfigResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupMigrationConfigResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMigrationConfigResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

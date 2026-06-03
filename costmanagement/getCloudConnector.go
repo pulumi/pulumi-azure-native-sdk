@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,8 +33,6 @@ type LookupCloudConnectorArgs struct {
 
 // The Connector model definition
 type LookupCloudConnectorResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Connector billing model
 	BillingModel *string `pulumi:"billingModel"`
 	// Collection information
@@ -106,11 +104,6 @@ func (o LookupCloudConnectorResultOutput) ToLookupCloudConnectorResultOutput() L
 
 func (o LookupCloudConnectorResultOutput) ToLookupCloudConnectorResultOutputWithContext(ctx context.Context) LookupCloudConnectorResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupCloudConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupCloudConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Connector billing model

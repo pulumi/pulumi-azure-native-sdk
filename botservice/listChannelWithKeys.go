@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lists a Channel registration for a Bot Service including secrets
 //
-// Uses Azure REST API version 2023-09-15-preview.
+// Uses Azure REST API version 2022-09-15.
 //
-// Other available API versions: 2022-09-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native botservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-09-15-preview.
 func ListChannelWithKeys(ctx *pulumi.Context, args *ListChannelWithKeysArgs, opts ...pulumi.InvokeOption) (*ListChannelWithKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListChannelWithKeysResult
@@ -29,7 +29,7 @@ func ListChannelWithKeys(ctx *pulumi.Context, args *ListChannelWithKeysArgs, opt
 type ListChannelWithKeysArgs struct {
 	// The name of the Channel resource.
 	ChannelName string `pulumi:"channelName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the Bot resource group in the user subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the Bot resource.
 	ResourceName string `pulumi:"resourceName"`
@@ -43,13 +43,13 @@ type ListChannelWithKeysResult struct {
 	EntityTag *string `pulumi:"entityTag"`
 	// Entity Tag.
 	Etag *string `pulumi:"etag"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Specifies the resource ID.
 	Id string `pulumi:"id"`
 	// Required. Gets or sets the Kind of the resource.
 	Kind *string `pulumi:"kind"`
 	// Specifies the location of the resource.
 	Location *string `pulumi:"location"`
-	// The name of the resource
+	// Specifies the name of the resource.
 	Name string `pulumi:"name"`
 	// The set of properties specific to bot channel resource
 	Properties interface{} `pulumi:"properties"`
@@ -61,11 +61,9 @@ type ListChannelWithKeysResult struct {
 	Setting *ChannelSettingsResponse `pulumi:"setting"`
 	// Gets or sets the SKU of the resource.
 	Sku *SkuResponse `pulumi:"sku"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Contains resource tags defined as key/value pairs.
 	Tags map[string]string `pulumi:"tags"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Specifies the type of the resource.
 	Type string `pulumi:"type"`
 	// Entity zones
 	Zones []string `pulumi:"zones"`
@@ -93,7 +91,7 @@ func ListChannelWithKeysOutput(ctx *pulumi.Context, args ListChannelWithKeysOutp
 type ListChannelWithKeysOutputArgs struct {
 	// The name of the Channel resource.
 	ChannelName pulumi.StringInput `pulumi:"channelName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the Bot resource group in the user subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the Bot resource.
 	ResourceName pulumi.StringInput `pulumi:"resourceName"`
@@ -133,7 +131,7 @@ func (o ListChannelWithKeysResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListChannelWithKeysResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Specifies the resource ID.
 func (o ListChannelWithKeysResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ListChannelWithKeysResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -148,7 +146,7 @@ func (o ListChannelWithKeysResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListChannelWithKeysResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource
+// Specifies the name of the resource.
 func (o ListChannelWithKeysResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListChannelWithKeysResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -178,17 +176,12 @@ func (o ListChannelWithKeysResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v ListChannelWithKeysResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ListChannelWithKeysResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v ListChannelWithKeysResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
 // Contains resource tags defined as key/value pairs.
 func (o ListChannelWithKeysResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ListChannelWithKeysResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Specifies the type of the resource.
 func (o ListChannelWithKeysResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListChannelWithKeysResult) string { return v.Type }).(pulumi.StringOutput)
 }

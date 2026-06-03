@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a managed instance.
 //
-// Uses Azure REST API version 2023-08-01.
+// Uses Azure REST API version 2021-11-01.
 //
-// Other available API versions: 2015-05-01-preview, 2018-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-02-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
 func LookupManagedInstance(ctx *pulumi.Context, args *LookupManagedInstanceArgs, opts ...pulumi.InvokeOption) (*LookupManagedInstanceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupManagedInstanceResult
@@ -39,38 +39,22 @@ type LookupManagedInstanceArgs struct {
 type LookupManagedInstanceResult struct {
 	// Administrator username for the managed instance. Can only be specified when the managed instance is being created (and is required for creation).
 	AdministratorLogin *string `pulumi:"administratorLogin"`
-	// The Azure Active Directory administrator of the instance. This can only be used at instance create time. If used for instance update, it will be ignored or it will result in an error. For updates individual APIs will need to be used.
+	// The Azure Active Directory administrator of the server.
 	Administrators *ManagedInstanceExternalAdministratorResponse `pulumi:"administrators"`
-	// The managed instance's authentication metadata lookup mode.
-	AuthenticationMetadata *string `pulumi:"authenticationMetadata"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Collation of the managed instance.
 	Collation *string `pulumi:"collation"`
-	// Specifies the point in time (ISO8601 format) of the Managed Instance creation.
-	CreateTime string `pulumi:"createTime"`
 	// The storage account type used to store backups for this instance. The options are Local (LocallyRedundantStorage), Zone (ZoneRedundantStorage), Geo (GeoRedundantStorage) and GeoZone(GeoZoneRedundantStorage)
 	CurrentBackupStorageRedundancy string `pulumi:"currentBackupStorageRedundancy"`
-	// Specifies the internal format of instance databases specific to the SQL engine version.
-	DatabaseFormat *string `pulumi:"databaseFormat"`
 	// The Dns Zone that the managed instance is in.
 	DnsZone string `pulumi:"dnsZone"`
-	// Status of external governance.
-	ExternalGovernanceStatus string `pulumi:"externalGovernanceStatus"`
 	// The fully qualified domain name of the managed instance.
 	FullyQualifiedDomainName string `pulumi:"fullyQualifiedDomainName"`
-	// Hybrid secondary usage. Possible values are 'Active' (default value) and 'Passive' (customer uses the secondary as Passive DR).
-	HybridSecondaryUsage *string `pulumi:"hybridSecondaryUsage"`
-	// Hybrid secondary usage detected. Possible values are 'Active' (customer does not meet the requirements to use the secondary as Passive DR) and 'Passive' (customer meets the requirements to use the secondary as Passive DR).
-	HybridSecondaryUsageDetected string `pulumi:"hybridSecondaryUsageDetected"`
 	// Resource ID.
 	Id string `pulumi:"id"`
 	// The Azure Active Directory identity of the managed instance.
 	Identity *ResourceIdentityResponse `pulumi:"identity"`
 	// The Id of the instance pool this managed server belongs to.
 	InstancePoolId *string `pulumi:"instancePoolId"`
-	// Whether or not this is a GPv2 variant of General Purpose edition.
-	IsGeneralPurposeV2 *bool `pulumi:"isGeneralPurposeV2"`
 	// A CMK URI of the key to use for encryption.
 	KeyId *string `pulumi:"keyId"`
 	// The license type. Possible values are 'LicenseIncluded' (regular price inclusive of a new SQL license) and 'BasePrice' (discounted AHB price for bringing your own SQL licenses).
@@ -83,14 +67,11 @@ type LookupManagedInstanceResult struct {
 	MinimalTlsVersion *string `pulumi:"minimalTlsVersion"`
 	// Resource name.
 	Name string `pulumi:"name"`
-	// Pricing model of Managed Instance.
-	PricingModel *string `pulumi:"pricingModel"`
 	// The resource id of a user assigned identity to be used by default.
 	PrimaryUserAssignedIdentityId *string `pulumi:"primaryUserAssignedIdentityId"`
 	// List of private endpoint connections on a managed instance.
 	PrivateEndpointConnections []ManagedInstancePecPropertyResponse `pulumi:"privateEndpointConnections"`
-	// Provisioning state of managed instance.
-	ProvisioningState string `pulumi:"provisioningState"`
+	ProvisioningState          string                               `pulumi:"provisioningState"`
 	// Connection type used for connecting to the instance.
 	ProxyOverride *string `pulumi:"proxyOverride"`
 	// Whether or not the public data endpoint is enabled.
@@ -103,12 +84,8 @@ type LookupManagedInstanceResult struct {
 	Sku *SkuResponse `pulumi:"sku"`
 	// The state of the managed instance.
 	State string `pulumi:"state"`
-	// Storage IOps. Minimum value: 300. Maximum value: 80000. Increments of 1 IOps allowed only. Maximum value depends on the selected hardware family and number of vCores.
-	StorageIOps *int `pulumi:"storageIOps"`
 	// Storage size in GB. Minimum value: 32. Maximum value: 16384. Increments of 32 GB allowed only. Maximum value depends on the selected hardware family and number of vCores.
 	StorageSizeInGB *int `pulumi:"storageSizeInGB"`
-	// Storage throughput MBps parameter is not supported in the instance create/update operation.
-	StorageThroughputMBps *int `pulumi:"storageThroughputMBps"`
 	// Subnet resource ID for the managed instance.
 	SubnetId *string `pulumi:"subnetId"`
 	// Resource tags.
@@ -124,8 +101,6 @@ type LookupManagedInstanceResult struct {
 	Type string `pulumi:"type"`
 	// The number of vCores. Allowed values: 8, 16, 24, 32, 40, 64, 80.
 	VCores *int `pulumi:"vCores"`
-	// Virtual cluster resource id for the Managed Instance.
-	VirtualClusterId string `pulumi:"virtualClusterId"`
 	// Whether or not the multi-az is enabled.
 	ZoneRedundant *bool `pulumi:"zoneRedundant"`
 }
@@ -172,21 +147,11 @@ func (o LookupManagedInstanceResultOutput) AdministratorLogin() pulumi.StringPtr
 	return o.ApplyT(func(v LookupManagedInstanceResult) *string { return v.AdministratorLogin }).(pulumi.StringPtrOutput)
 }
 
-// The Azure Active Directory administrator of the instance. This can only be used at instance create time. If used for instance update, it will be ignored or it will result in an error. For updates individual APIs will need to be used.
+// The Azure Active Directory administrator of the server.
 func (o LookupManagedInstanceResultOutput) Administrators() ManagedInstanceExternalAdministratorResponsePtrOutput {
 	return o.ApplyT(func(v LookupManagedInstanceResult) *ManagedInstanceExternalAdministratorResponse {
 		return v.Administrators
 	}).(ManagedInstanceExternalAdministratorResponsePtrOutput)
-}
-
-// The managed instance's authentication metadata lookup mode.
-func (o LookupManagedInstanceResultOutput) AuthenticationMetadata() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupManagedInstanceResult) *string { return v.AuthenticationMetadata }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupManagedInstanceResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupManagedInstanceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Collation of the managed instance.
@@ -194,19 +159,9 @@ func (o LookupManagedInstanceResultOutput) Collation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagedInstanceResult) *string { return v.Collation }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the point in time (ISO8601 format) of the Managed Instance creation.
-func (o LookupManagedInstanceResultOutput) CreateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupManagedInstanceResult) string { return v.CreateTime }).(pulumi.StringOutput)
-}
-
 // The storage account type used to store backups for this instance. The options are Local (LocallyRedundantStorage), Zone (ZoneRedundantStorage), Geo (GeoRedundantStorage) and GeoZone(GeoZoneRedundantStorage)
 func (o LookupManagedInstanceResultOutput) CurrentBackupStorageRedundancy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedInstanceResult) string { return v.CurrentBackupStorageRedundancy }).(pulumi.StringOutput)
-}
-
-// Specifies the internal format of instance databases specific to the SQL engine version.
-func (o LookupManagedInstanceResultOutput) DatabaseFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupManagedInstanceResult) *string { return v.DatabaseFormat }).(pulumi.StringPtrOutput)
 }
 
 // The Dns Zone that the managed instance is in.
@@ -214,24 +169,9 @@ func (o LookupManagedInstanceResultOutput) DnsZone() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedInstanceResult) string { return v.DnsZone }).(pulumi.StringOutput)
 }
 
-// Status of external governance.
-func (o LookupManagedInstanceResultOutput) ExternalGovernanceStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupManagedInstanceResult) string { return v.ExternalGovernanceStatus }).(pulumi.StringOutput)
-}
-
 // The fully qualified domain name of the managed instance.
 func (o LookupManagedInstanceResultOutput) FullyQualifiedDomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedInstanceResult) string { return v.FullyQualifiedDomainName }).(pulumi.StringOutput)
-}
-
-// Hybrid secondary usage. Possible values are 'Active' (default value) and 'Passive' (customer uses the secondary as Passive DR).
-func (o LookupManagedInstanceResultOutput) HybridSecondaryUsage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupManagedInstanceResult) *string { return v.HybridSecondaryUsage }).(pulumi.StringPtrOutput)
-}
-
-// Hybrid secondary usage detected. Possible values are 'Active' (customer does not meet the requirements to use the secondary as Passive DR) and 'Passive' (customer meets the requirements to use the secondary as Passive DR).
-func (o LookupManagedInstanceResultOutput) HybridSecondaryUsageDetected() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupManagedInstanceResult) string { return v.HybridSecondaryUsageDetected }).(pulumi.StringOutput)
 }
 
 // Resource ID.
@@ -247,11 +187,6 @@ func (o LookupManagedInstanceResultOutput) Identity() ResourceIdentityResponsePt
 // The Id of the instance pool this managed server belongs to.
 func (o LookupManagedInstanceResultOutput) InstancePoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagedInstanceResult) *string { return v.InstancePoolId }).(pulumi.StringPtrOutput)
-}
-
-// Whether or not this is a GPv2 variant of General Purpose edition.
-func (o LookupManagedInstanceResultOutput) IsGeneralPurposeV2() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupManagedInstanceResult) *bool { return v.IsGeneralPurposeV2 }).(pulumi.BoolPtrOutput)
 }
 
 // A CMK URI of the key to use for encryption.
@@ -284,11 +219,6 @@ func (o LookupManagedInstanceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedInstanceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Pricing model of Managed Instance.
-func (o LookupManagedInstanceResultOutput) PricingModel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupManagedInstanceResult) *string { return v.PricingModel }).(pulumi.StringPtrOutput)
-}
-
 // The resource id of a user assigned identity to be used by default.
 func (o LookupManagedInstanceResultOutput) PrimaryUserAssignedIdentityId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupManagedInstanceResult) *string { return v.PrimaryUserAssignedIdentityId }).(pulumi.StringPtrOutput)
@@ -301,7 +231,6 @@ func (o LookupManagedInstanceResultOutput) PrivateEndpointConnections() ManagedI
 	}).(ManagedInstancePecPropertyResponseArrayOutput)
 }
 
-// Provisioning state of managed instance.
 func (o LookupManagedInstanceResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedInstanceResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
@@ -336,19 +265,9 @@ func (o LookupManagedInstanceResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupManagedInstanceResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Storage IOps. Minimum value: 300. Maximum value: 80000. Increments of 1 IOps allowed only. Maximum value depends on the selected hardware family and number of vCores.
-func (o LookupManagedInstanceResultOutput) StorageIOps() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LookupManagedInstanceResult) *int { return v.StorageIOps }).(pulumi.IntPtrOutput)
-}
-
 // Storage size in GB. Minimum value: 32. Maximum value: 16384. Increments of 32 GB allowed only. Maximum value depends on the selected hardware family and number of vCores.
 func (o LookupManagedInstanceResultOutput) StorageSizeInGB() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupManagedInstanceResult) *int { return v.StorageSizeInGB }).(pulumi.IntPtrOutput)
-}
-
-// Storage throughput MBps parameter is not supported in the instance create/update operation.
-func (o LookupManagedInstanceResultOutput) StorageThroughputMBps() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LookupManagedInstanceResult) *int { return v.StorageThroughputMBps }).(pulumi.IntPtrOutput)
 }
 
 // Subnet resource ID for the managed instance.
@@ -379,11 +298,6 @@ func (o LookupManagedInstanceResultOutput) Type() pulumi.StringOutput {
 // The number of vCores. Allowed values: 8, 16, 24, 32, 40, 64, 80.
 func (o LookupManagedInstanceResultOutput) VCores() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupManagedInstanceResult) *int { return v.VCores }).(pulumi.IntPtrOutput)
-}
-
-// Virtual cluster resource id for the Managed Instance.
-func (o LookupManagedInstanceResultOutput) VirtualClusterId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupManagedInstanceResult) string { return v.VirtualClusterId }).(pulumi.StringOutput)
 }
 
 // Whether or not the multi-az is enabled.

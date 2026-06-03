@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get an existing assessment with the specified name. Returns a json object of type 'assessment' as specified in Models section.
 //
 // Uses Azure REST API version 2019-10-01.
+//
+// Other available API versions: 2018-02-02.
 func LookupAssessment(ctx *pulumi.Context, args *LookupAssessmentArgs, opts ...pulumi.InvokeOption) (*LookupAssessmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAssessmentResult
@@ -37,8 +39,6 @@ type LookupAssessmentArgs struct {
 
 // An assessment created for a group in the Migration project.
 type LookupAssessmentResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// For optimistic concurrency control.
 	ETag *string `pulumi:"eTag"`
 	// Path reference to this assessment. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/groups/{groupName}/assessment/{assessmentName}
@@ -88,11 +88,6 @@ func (o LookupAssessmentResultOutput) ToLookupAssessmentResultOutput() LookupAss
 
 func (o LookupAssessmentResultOutput) ToLookupAssessmentResultOutputWithContext(ctx context.Context) LookupAssessmentResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupAssessmentResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAssessmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // For optimistic concurrency control.

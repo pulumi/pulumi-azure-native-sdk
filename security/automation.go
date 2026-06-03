@@ -8,22 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The security automation resource.
 //
-// Uses Azure REST API version 2023-12-01-preview. In version 2.x of the Azure Native provider, it used API version 2019-01-01-preview.
+// Uses Azure REST API version 2019-01-01-preview. In version 1.x of the Azure Native provider, it used API version 2019-01-01-preview.
 //
-// Other available API versions: 2019-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-12-01-preview.
 type Automation struct {
 	pulumi.CustomResourceState
 
 	// A collection of the actions which are triggered if all the configured rules evaluations, within at least one rule set, are true.
 	Actions pulumi.ArrayOutput `pulumi:"actions"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The security automation description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Entity tag is used for comparing two or more entities from the same requested resource.
@@ -184,11 +182,6 @@ func (o AutomationOutput) ToAutomationOutputWithContext(ctx context.Context) Aut
 // A collection of the actions which are triggered if all the configured rules evaluations, within at least one rule set, are true.
 func (o AutomationOutput) Actions() pulumi.ArrayOutput {
 	return o.ApplyT(func(v *Automation) pulumi.ArrayOutput { return v.Actions }).(pulumi.ArrayOutput)
-}
-
-// The Azure API version of the resource.
-func (o AutomationOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Automation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The security automation description.

@@ -8,24 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Resource Manager resource envelope.
 //
-// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2024-10-01-preview.
+// Uses Azure REST API version 2024-10-01-preview.
 //
-// Other available API versions: 2024-10-01-preview, 2025-01-01-preview, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2025-01-01-preview.
 type CapabilityHost struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// [Required] Additional attributes of the entity.
+	CapabilityHostProperties CapabilityHostResponseOutput `pulumi:"capabilityHostProperties"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// [Required] Additional attributes of the entity.
-	Properties CapabilityHostPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -39,8 +37,8 @@ func NewCapabilityHost(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Properties == nil {
-		return nil, errors.New("invalid value for required argument 'Properties'")
+	if args.CapabilityHostProperties == nil {
+		return nil, errors.New("invalid value for required argument 'CapabilityHostProperties'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
@@ -48,31 +46,13 @@ func NewCapabilityHost(ctx *pulumi.Context,
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
-	args.Properties = args.Properties.ToCapabilityHostPropertiesOutput().ApplyT(func(v CapabilityHostProperties) CapabilityHostProperties { return *v.Defaults() }).(CapabilityHostPropertiesOutput)
+	args.CapabilityHostProperties = args.CapabilityHostProperties.ToCapabilityHostTypeOutput().ApplyT(func(v CapabilityHostType) CapabilityHostType { return *v.Defaults() }).(CapabilityHostTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20241001preview:CapabilityHost"),
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:CapabilityHost"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250401preview:CapabilityHost"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250601:CapabilityHost"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250701preview:CapabilityHost"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250901:CapabilityHost"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20251001preview:CapabilityHost"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20251201:CapabilityHost"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -109,25 +89,25 @@ func (CapabilityHostState) ElementType() reflect.Type {
 }
 
 type capabilityHostArgs struct {
+	// [Required] Additional attributes of the entity.
+	CapabilityHostProperties CapabilityHostType `pulumi:"capabilityHostProperties"`
 	// CapabilityHost name.
 	Name *string `pulumi:"name"`
-	// [Required] Additional attributes of the entity.
-	Properties CapabilityHostProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // The set of arguments for constructing a CapabilityHost resource.
 type CapabilityHostArgs struct {
+	// [Required] Additional attributes of the entity.
+	CapabilityHostProperties CapabilityHostTypeInput
 	// CapabilityHost name.
 	Name pulumi.StringPtrInput
-	// [Required] Additional attributes of the entity.
-	Properties CapabilityHostPropertiesInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName pulumi.StringInput
 }
 
@@ -168,19 +148,14 @@ func (o CapabilityHostOutput) ToCapabilityHostOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The Azure API version of the resource.
-func (o CapabilityHostOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *CapabilityHost) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+// [Required] Additional attributes of the entity.
+func (o CapabilityHostOutput) CapabilityHostProperties() CapabilityHostResponseOutput {
+	return o.ApplyT(func(v *CapabilityHost) CapabilityHostResponseOutput { return v.CapabilityHostProperties }).(CapabilityHostResponseOutput)
 }
 
 // The name of the resource
 func (o CapabilityHostOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CapabilityHost) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
-}
-
-// [Required] Additional attributes of the entity.
-func (o CapabilityHostOutput) Properties() CapabilityHostPropertiesResponseOutput {
-	return o.ApplyT(func(v *CapabilityHost) CapabilityHostPropertiesResponseOutput { return v.Properties }).(CapabilityHostPropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

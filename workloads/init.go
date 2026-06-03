@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,20 +31,20 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Monitor{}
 	case "azure-native:workloads:ProviderInstance":
 		r = &ProviderInstance{}
-	case "azure-native:workloads:SapApplicationServerInstance":
-		r = &SapApplicationServerInstance{}
-	case "azure-native:workloads:SapCentralServerInstance":
-		r = &SapCentralServerInstance{}
-	case "azure-native:workloads:SapDatabaseInstance":
-		r = &SapDatabaseInstance{}
+	case "azure-native:workloads:SAPApplicationServerInstance":
+		r = &SAPApplicationServerInstance{}
+	case "azure-native:workloads:SAPCentralInstance":
+		r = &SAPCentralInstance{}
+	case "azure-native:workloads:SAPDatabaseInstance":
+		r = &SAPDatabaseInstance{}
+	case "azure-native:workloads:SAPVirtualInstance":
+		r = &SAPVirtualInstance{}
 	case "azure-native:workloads:SapDiscoverySite":
 		r = &SapDiscoverySite{}
 	case "azure-native:workloads:SapInstance":
 		r = &SapInstance{}
 	case "azure-native:workloads:SapLandscapeMonitor":
 		r = &SapLandscapeMonitor{}
-	case "azure-native:workloads:SapVirtualInstance":
-		r = &SapVirtualInstance{}
 	case "azure-native:workloads:ServerInstance":
 		r = &ServerInstance{}
 	default:

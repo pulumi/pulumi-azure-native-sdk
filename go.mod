@@ -1,10 +1,10 @@
-module github.com/pulumi/pulumi-azure-native-sdk/v3
+module github.com/pulumi/pulumi-azure-native-sdk/v2
 
 go 1.25.8
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
-	github.com/pulumi/pulumi/sdk/v3 v3.243.0
+	github.com/pulumi/pulumi/sdk/v3 v3.244.0
 )
 
 require (

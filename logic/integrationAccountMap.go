@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The integration account map.
 //
-// Uses Azure REST API version 2019-05-01. In version 2.x of the Azure Native provider, it used API version 2019-05-01.
+// Uses Azure REST API version 2019-05-01. In version 1.x of the Azure Native provider, it used API version 2019-05-01.
 //
-// Other available API versions: 2015-08-01-preview, 2018-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native logic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2015-08-01-preview.
 type IntegrationAccountMap struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The changed time.
 	ChangedTime pulumi.StringOutput `pulumi:"changedTime"`
 	// The content.
@@ -70,9 +68,6 @@ func NewIntegrationAccountMap(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:logic/v20160601:IntegrationAccountMap"),
-		},
-		{
-			Type: pulumi.String("azure-native:logic/v20160601:Map"),
 		},
 		{
 			Type: pulumi.String("azure-native:logic/v20180701preview:IntegrationAccountMap"),
@@ -196,11 +191,6 @@ func (o IntegrationAccountMapOutput) ToIntegrationAccountMapOutput() Integration
 
 func (o IntegrationAccountMapOutput) ToIntegrationAccountMapOutputWithContext(ctx context.Context) IntegrationAccountMapOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o IntegrationAccountMapOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *IntegrationAccountMap) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The changed time.

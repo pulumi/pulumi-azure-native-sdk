@@ -8,18 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The resource definition of this association.
 //
-// Uses Azure REST API version 2018-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2018-09-01-preview.
+// Uses Azure REST API version 2018-09-01-preview. In version 1.x of the Azure Native provider, it used API version 2018-09-01-preview.
 type Association struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The association name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the association.
@@ -132,11 +130,6 @@ func (o AssociationOutput) ToAssociationOutput() AssociationOutput {
 
 func (o AssociationOutput) ToAssociationOutputWithContext(ctx context.Context) AssociationOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o AssociationOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Association) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The association name.

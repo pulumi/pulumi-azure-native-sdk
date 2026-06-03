@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an incident task.
 //
-// Uses Azure REST API version 2024-09-01.
+// Uses Azure REST API version 2023-06-01-preview.
 //
-// Other available API versions: 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-09-01, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01.
 func LookupIncidentTask(ctx *pulumi.Context, args *LookupIncidentTaskArgs, opts ...pulumi.InvokeOption) (*LookupIncidentTaskResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIncidentTaskResult
@@ -37,10 +37,7 @@ type LookupIncidentTaskArgs struct {
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
-// Describes incident task properties
 type LookupIncidentTaskResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Information on the client (user or application) that made some action
 	CreatedBy *ClientInfoResponse `pulumi:"createdBy"`
 	// The time the task was created
@@ -56,8 +53,7 @@ type LookupIncidentTaskResult struct {
 	// The last time the task was updated
 	LastModifiedTimeUtc string `pulumi:"lastModifiedTimeUtc"`
 	// The name of the resource
-	Name string `pulumi:"name"`
-	// The status of the task
+	Name   string `pulumi:"name"`
 	Status string `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
@@ -91,7 +87,6 @@ func (LookupIncidentTaskOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupIncidentTaskArgs)(nil)).Elem()
 }
 
-// Describes incident task properties
 type LookupIncidentTaskResultOutput struct{ *pulumi.OutputState }
 
 func (LookupIncidentTaskResultOutput) ElementType() reflect.Type {
@@ -104,11 +99,6 @@ func (o LookupIncidentTaskResultOutput) ToLookupIncidentTaskResultOutput() Looku
 
 func (o LookupIncidentTaskResultOutput) ToLookupIncidentTaskResultOutputWithContext(ctx context.Context) LookupIncidentTaskResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupIncidentTaskResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIncidentTaskResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Information on the client (user or application) that made some action
@@ -151,7 +141,6 @@ func (o LookupIncidentTaskResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIncidentTaskResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The status of the task
 func (o LookupIncidentTaskResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIncidentTaskResult) string { return v.Status }).(pulumi.StringOutput)
 }

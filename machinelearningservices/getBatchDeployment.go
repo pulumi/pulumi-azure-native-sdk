@@ -7,15 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets a batch inference deployment by id.
+// Uses Azure REST API version 2023-04-01.
 //
-// Uses Azure REST API version 2025-12-01.
-//
-// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
 func LookupBatchDeployment(ctx *pulumi.Context, args *LookupBatchDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupBatchDeploymentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBatchDeploymentResult
@@ -29,18 +27,17 @@ func LookupBatchDeployment(ctx *pulumi.Context, args *LookupBatchDeploymentArgs,
 type LookupBatchDeploymentArgs struct {
 	// The identifier for the Batch deployments.
 	DeploymentName string `pulumi:"deploymentName"`
-	// Name for the Batch Endpoint.
+	// Endpoint name
 	EndpointName string `pulumi:"endpointName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
-// Concrete tracked resource types can be created by aliasing this type using a specific property type.
 type LookupBatchDeploymentResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// [Required] Additional attributes of the entity.
+	BatchDeploymentProperties BatchDeploymentResponse `pulumi:"batchDeploymentProperties"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Managed service identity (system assigned and/or user assigned identities)
@@ -51,8 +48,6 @@ type LookupBatchDeploymentResult struct {
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// [Required] Additional attributes of the entity.
-	Properties BatchDeploymentPropertiesResponse `pulumi:"properties"`
 	// Sku details required for ARM contract for Autoscaling.
 	Sku *SkuResponse `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -69,7 +64,7 @@ func (val *LookupBatchDeploymentResult) Defaults() *LookupBatchDeploymentResult 
 		return nil
 	}
 	tmp := *val
-	tmp.Properties = *tmp.Properties.Defaults()
+	tmp.BatchDeploymentProperties = *tmp.BatchDeploymentProperties.Defaults()
 
 	return &tmp
 }
@@ -85,11 +80,11 @@ func LookupBatchDeploymentOutput(ctx *pulumi.Context, args LookupBatchDeployment
 type LookupBatchDeploymentOutputArgs struct {
 	// The identifier for the Batch deployments.
 	DeploymentName pulumi.StringInput `pulumi:"deploymentName"`
-	// Name for the Batch Endpoint.
+	// Endpoint name
 	EndpointName pulumi.StringInput `pulumi:"endpointName"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
@@ -97,7 +92,6 @@ func (LookupBatchDeploymentOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupBatchDeploymentArgs)(nil)).Elem()
 }
 
-// Concrete tracked resource types can be created by aliasing this type using a specific property type.
 type LookupBatchDeploymentResultOutput struct{ *pulumi.OutputState }
 
 func (LookupBatchDeploymentResultOutput) ElementType() reflect.Type {
@@ -112,9 +106,9 @@ func (o LookupBatchDeploymentResultOutput) ToLookupBatchDeploymentResultOutputWi
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupBatchDeploymentResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBatchDeploymentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+// [Required] Additional attributes of the entity.
+func (o LookupBatchDeploymentResultOutput) BatchDeploymentProperties() BatchDeploymentResponseOutput {
+	return o.ApplyT(func(v LookupBatchDeploymentResult) BatchDeploymentResponse { return v.BatchDeploymentProperties }).(BatchDeploymentResponseOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -140,11 +134,6 @@ func (o LookupBatchDeploymentResultOutput) Location() pulumi.StringOutput {
 // The name of the resource
 func (o LookupBatchDeploymentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBatchDeploymentResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// [Required] Additional attributes of the entity.
-func (o LookupBatchDeploymentResultOutput) Properties() BatchDeploymentPropertiesResponseOutput {
-	return o.ApplyT(func(v LookupBatchDeploymentResult) BatchDeploymentPropertiesResponse { return v.Properties }).(BatchDeploymentPropertiesResponseOutput)
 }
 
 // Sku details required for ARM contract for Autoscaling.

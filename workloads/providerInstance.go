@@ -8,24 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A provider instance associated with SAP monitor.
 //
-// Uses Azure REST API version 2024-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+// Uses Azure REST API version 2023-04-01. In version 1.x of the Azure Native provider, it used API version 2021-12-01-preview.
 //
-// Other available API versions: 2023-04-01, 2023-10-01-preview, 2023-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native workloads [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-10-01-preview, 2023-12-01-preview, 2024-02-01-preview.
 type ProviderInstance struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Defines the provider instance errors.
-	Errors ErrorDetailResponseOutput `pulumi:"errors"`
-	// Resource health details
-	Health HealthResponseOutput `pulumi:"health"`
+	Errors ProviderInstancePropertiesResponseErrorsOutput `pulumi:"errors"`
+	// [currently not in use] Managed service identity(user assigned identities)
+	Identity UserAssignedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Defines the provider specific properties.
@@ -105,6 +103,8 @@ func (ProviderInstanceState) ElementType() reflect.Type {
 }
 
 type providerInstanceArgs struct {
+	// [currently not in use] Managed service identity(user assigned identities)
+	Identity *UserAssignedServiceIdentity `pulumi:"identity"`
 	// Name of the SAP monitor resource.
 	MonitorName string `pulumi:"monitorName"`
 	// Name of the provider instance.
@@ -117,6 +117,8 @@ type providerInstanceArgs struct {
 
 // The set of arguments for constructing a ProviderInstance resource.
 type ProviderInstanceArgs struct {
+	// [currently not in use] Managed service identity(user assigned identities)
+	Identity UserAssignedServiceIdentityPtrInput
 	// Name of the SAP monitor resource.
 	MonitorName pulumi.StringInput
 	// Name of the provider instance.
@@ -164,19 +166,14 @@ func (o ProviderInstanceOutput) ToProviderInstanceOutputWithContext(ctx context.
 	return o
 }
 
-// The Azure API version of the resource.
-func (o ProviderInstanceOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ProviderInstance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Defines the provider instance errors.
-func (o ProviderInstanceOutput) Errors() ErrorDetailResponseOutput {
-	return o.ApplyT(func(v *ProviderInstance) ErrorDetailResponseOutput { return v.Errors }).(ErrorDetailResponseOutput)
+func (o ProviderInstanceOutput) Errors() ProviderInstancePropertiesResponseErrorsOutput {
+	return o.ApplyT(func(v *ProviderInstance) ProviderInstancePropertiesResponseErrorsOutput { return v.Errors }).(ProviderInstancePropertiesResponseErrorsOutput)
 }
 
-// Resource health details
-func (o ProviderInstanceOutput) Health() HealthResponseOutput {
-	return o.ApplyT(func(v *ProviderInstance) HealthResponseOutput { return v.Health }).(HealthResponseOutput)
+// [currently not in use] Managed service identity(user assigned identities)
+func (o ProviderInstanceOutput) Identity() UserAssignedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *ProviderInstance) UserAssignedServiceIdentityResponsePtrOutput { return v.Identity }).(UserAssignedServiceIdentityResponsePtrOutput)
 }
 
 // The name of the resource

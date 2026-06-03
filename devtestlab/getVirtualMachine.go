@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,7 +31,7 @@ type LookupVirtualMachineArgs struct {
 	LabName string `pulumi:"labName"`
 	// The name of the virtual machine.
 	Name string `pulumi:"name"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -45,8 +45,6 @@ type LookupVirtualMachineResult struct {
 	ArtifactDeploymentStatus ArtifactDeploymentStatusPropertiesResponse `pulumi:"artifactDeploymentStatus"`
 	// The artifacts to be installed on the virtual machine.
 	Artifacts []ArtifactInstallPropertiesResponse `pulumi:"artifacts"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource identifier (Microsoft.Compute) of the virtual machine.
 	ComputeId string `pulumi:"computeId"`
 	// The compute virtual machine properties.
@@ -71,7 +69,7 @@ type LookupVirtualMachineResult struct {
 	Fqdn string `pulumi:"fqdn"`
 	// The Microsoft Azure Marketplace image reference of the virtual machine.
 	GalleryImageReference *GalleryImageReferenceResponse `pulumi:"galleryImageReference"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// The identifier of the resource.
 	Id string `pulumi:"id"`
 	// Indicates whether this virtual machine uses an SSH key for authentication.
 	IsAuthenticationWithSshKey *bool `pulumi:"isAuthenticationWithSshKey"`
@@ -81,9 +79,9 @@ type LookupVirtualMachineResult struct {
 	LabVirtualNetworkId *string `pulumi:"labVirtualNetworkId"`
 	// Last known compute power state captured in DTL
 	LastKnownPowerState string `pulumi:"lastKnownPowerState"`
-	// The geo-location where the resource lives
+	// The location of the resource.
 	Location *string `pulumi:"location"`
-	// The name of the resource
+	// The name of the resource.
 	Name string `pulumi:"name"`
 	// The network interface properties.
 	NetworkInterface *NetworkInterfacePropertiesResponse `pulumi:"networkInterface"`
@@ -109,11 +107,9 @@ type LookupVirtualMachineResult struct {
 	SshKey *string `pulumi:"sshKey"`
 	// Storage type to use for virtual machine (i.e. Standard, Premium).
 	StorageType *string `pulumi:"storageType"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Resource tags.
+	// The tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// The type of the resource.
 	Type string `pulumi:"type"`
 	// The unique immutable identifier of a resource (Guid).
 	UniqueIdentifier string `pulumi:"uniqueIdentifier"`
@@ -165,7 +161,7 @@ type LookupVirtualMachineOutputArgs struct {
 	LabName pulumi.StringInput `pulumi:"labName"`
 	// The name of the virtual machine.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -208,11 +204,6 @@ func (o LookupVirtualMachineResultOutput) ArtifactDeploymentStatus() ArtifactDep
 // The artifacts to be installed on the virtual machine.
 func (o LookupVirtualMachineResultOutput) Artifacts() ArtifactInstallPropertiesResponseArrayOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) []ArtifactInstallPropertiesResponse { return v.Artifacts }).(ArtifactInstallPropertiesResponseArrayOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupVirtualMachineResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource identifier (Microsoft.Compute) of the virtual machine.
@@ -275,7 +266,7 @@ func (o LookupVirtualMachineResultOutput) GalleryImageReference() GalleryImageRe
 	return o.ApplyT(func(v LookupVirtualMachineResult) *GalleryImageReferenceResponse { return v.GalleryImageReference }).(GalleryImageReferenceResponsePtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// The identifier of the resource.
 func (o LookupVirtualMachineResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -300,12 +291,12 @@ func (o LookupVirtualMachineResultOutput) LastKnownPowerState() pulumi.StringOut
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.LastKnownPowerState }).(pulumi.StringOutput)
 }
 
-// The geo-location where the resource lives
+// The location of the resource.
 func (o LookupVirtualMachineResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource
+// The name of the resource.
 func (o LookupVirtualMachineResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -370,17 +361,12 @@ func (o LookupVirtualMachineResultOutput) StorageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) *string { return v.StorageType }).(pulumi.StringPtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupVirtualMachineResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupVirtualMachineResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// Resource tags.
+// The tags of the resource.
 func (o LookupVirtualMachineResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// The type of the resource.
 func (o LookupVirtualMachineResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVirtualMachineResult) string { return v.Type }).(pulumi.StringOutput)
 }

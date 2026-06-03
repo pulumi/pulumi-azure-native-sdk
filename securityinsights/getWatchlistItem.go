@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a watchlist item.
 //
-// Uses Azure REST API version 2024-09-01.
+// Uses Azure REST API version 2023-02-01.
 //
-// Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-04-01, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-11-01, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-09-01, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01.
 func LookupWatchlistItem(ctx *pulumi.Context, args *LookupWatchlistItemArgs, opts ...pulumi.InvokeOption) (*LookupWatchlistItemResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWatchlistItemResult
@@ -39,8 +39,6 @@ type LookupWatchlistItemArgs struct {
 
 // Represents a Watchlist Item in Azure Security Insights.
 type LookupWatchlistItemResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The time the watchlist item was created
 	Created *string `pulumi:"created"`
 	// Describes a user that created the watchlist item
@@ -110,11 +108,6 @@ func (o LookupWatchlistItemResultOutput) ToLookupWatchlistItemResultOutput() Loo
 
 func (o LookupWatchlistItemResultOutput) ToLookupWatchlistItemResultOutputWithContext(ctx context.Context) LookupWatchlistItemResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupWatchlistItemResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWatchlistItemResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The time the watchlist item was created

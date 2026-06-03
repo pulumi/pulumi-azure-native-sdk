@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -788,406 +788,150 @@ func (o DicomServiceAuthenticationConfigurationResponsePtrOutput) Authority() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Settings to encrypt a service
-type Encryption struct {
-	// The encryption settings for the customer-managed key
-	CustomerManagedKeyEncryption *EncryptionCustomerManagedKeyEncryption `pulumi:"customerManagedKeyEncryption"`
+// An access policy entry.
+type FhirServiceAccessPolicyEntry struct {
+	// An Azure AD object ID (User or Apps) that is allowed access to the FHIR service.
+	ObjectId string `pulumi:"objectId"`
 }
 
-// EncryptionInput is an input type that accepts EncryptionArgs and EncryptionOutput values.
-// You can construct a concrete instance of `EncryptionInput` via:
+// FhirServiceAccessPolicyEntryInput is an input type that accepts FhirServiceAccessPolicyEntryArgs and FhirServiceAccessPolicyEntryOutput values.
+// You can construct a concrete instance of `FhirServiceAccessPolicyEntryInput` via:
 //
-//	EncryptionArgs{...}
-type EncryptionInput interface {
+//	FhirServiceAccessPolicyEntryArgs{...}
+type FhirServiceAccessPolicyEntryInput interface {
 	pulumi.Input
 
-	ToEncryptionOutput() EncryptionOutput
-	ToEncryptionOutputWithContext(context.Context) EncryptionOutput
+	ToFhirServiceAccessPolicyEntryOutput() FhirServiceAccessPolicyEntryOutput
+	ToFhirServiceAccessPolicyEntryOutputWithContext(context.Context) FhirServiceAccessPolicyEntryOutput
 }
 
-// Settings to encrypt a service
-type EncryptionArgs struct {
-	// The encryption settings for the customer-managed key
-	CustomerManagedKeyEncryption EncryptionCustomerManagedKeyEncryptionPtrInput `pulumi:"customerManagedKeyEncryption"`
+// An access policy entry.
+type FhirServiceAccessPolicyEntryArgs struct {
+	// An Azure AD object ID (User or Apps) that is allowed access to the FHIR service.
+	ObjectId pulumi.StringInput `pulumi:"objectId"`
 }
 
-func (EncryptionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Encryption)(nil)).Elem()
+func (FhirServiceAccessPolicyEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirServiceAccessPolicyEntry)(nil)).Elem()
 }
 
-func (i EncryptionArgs) ToEncryptionOutput() EncryptionOutput {
-	return i.ToEncryptionOutputWithContext(context.Background())
+func (i FhirServiceAccessPolicyEntryArgs) ToFhirServiceAccessPolicyEntryOutput() FhirServiceAccessPolicyEntryOutput {
+	return i.ToFhirServiceAccessPolicyEntryOutputWithContext(context.Background())
 }
 
-func (i EncryptionArgs) ToEncryptionOutputWithContext(ctx context.Context) EncryptionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionOutput)
+func (i FhirServiceAccessPolicyEntryArgs) ToFhirServiceAccessPolicyEntryOutputWithContext(ctx context.Context) FhirServiceAccessPolicyEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirServiceAccessPolicyEntryOutput)
 }
 
-func (i EncryptionArgs) ToEncryptionPtrOutput() EncryptionPtrOutput {
-	return i.ToEncryptionPtrOutputWithContext(context.Background())
-}
-
-func (i EncryptionArgs) ToEncryptionPtrOutputWithContext(ctx context.Context) EncryptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionOutput).ToEncryptionPtrOutputWithContext(ctx)
-}
-
-// EncryptionPtrInput is an input type that accepts EncryptionArgs, EncryptionPtr and EncryptionPtrOutput values.
-// You can construct a concrete instance of `EncryptionPtrInput` via:
+// FhirServiceAccessPolicyEntryArrayInput is an input type that accepts FhirServiceAccessPolicyEntryArray and FhirServiceAccessPolicyEntryArrayOutput values.
+// You can construct a concrete instance of `FhirServiceAccessPolicyEntryArrayInput` via:
 //
-//	        EncryptionArgs{...}
-//
-//	or:
-//
-//	        nil
-type EncryptionPtrInput interface {
+//	FhirServiceAccessPolicyEntryArray{ FhirServiceAccessPolicyEntryArgs{...} }
+type FhirServiceAccessPolicyEntryArrayInput interface {
 	pulumi.Input
 
-	ToEncryptionPtrOutput() EncryptionPtrOutput
-	ToEncryptionPtrOutputWithContext(context.Context) EncryptionPtrOutput
+	ToFhirServiceAccessPolicyEntryArrayOutput() FhirServiceAccessPolicyEntryArrayOutput
+	ToFhirServiceAccessPolicyEntryArrayOutputWithContext(context.Context) FhirServiceAccessPolicyEntryArrayOutput
 }
 
-type encryptionPtrType EncryptionArgs
+type FhirServiceAccessPolicyEntryArray []FhirServiceAccessPolicyEntryInput
 
-func EncryptionPtr(v *EncryptionArgs) EncryptionPtrInput {
-	return (*encryptionPtrType)(v)
+func (FhirServiceAccessPolicyEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FhirServiceAccessPolicyEntry)(nil)).Elem()
 }
 
-func (*encryptionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Encryption)(nil)).Elem()
+func (i FhirServiceAccessPolicyEntryArray) ToFhirServiceAccessPolicyEntryArrayOutput() FhirServiceAccessPolicyEntryArrayOutput {
+	return i.ToFhirServiceAccessPolicyEntryArrayOutputWithContext(context.Background())
 }
 
-func (i *encryptionPtrType) ToEncryptionPtrOutput() EncryptionPtrOutput {
-	return i.ToEncryptionPtrOutputWithContext(context.Background())
+func (i FhirServiceAccessPolicyEntryArray) ToFhirServiceAccessPolicyEntryArrayOutputWithContext(ctx context.Context) FhirServiceAccessPolicyEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirServiceAccessPolicyEntryArrayOutput)
 }
 
-func (i *encryptionPtrType) ToEncryptionPtrOutputWithContext(ctx context.Context) EncryptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionPtrOutput)
+// An access policy entry.
+type FhirServiceAccessPolicyEntryOutput struct{ *pulumi.OutputState }
+
+func (FhirServiceAccessPolicyEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirServiceAccessPolicyEntry)(nil)).Elem()
 }
 
-// Settings to encrypt a service
-type EncryptionOutput struct{ *pulumi.OutputState }
-
-func (EncryptionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Encryption)(nil)).Elem()
-}
-
-func (o EncryptionOutput) ToEncryptionOutput() EncryptionOutput {
+func (o FhirServiceAccessPolicyEntryOutput) ToFhirServiceAccessPolicyEntryOutput() FhirServiceAccessPolicyEntryOutput {
 	return o
 }
 
-func (o EncryptionOutput) ToEncryptionOutputWithContext(ctx context.Context) EncryptionOutput {
+func (o FhirServiceAccessPolicyEntryOutput) ToFhirServiceAccessPolicyEntryOutputWithContext(ctx context.Context) FhirServiceAccessPolicyEntryOutput {
 	return o
 }
 
-func (o EncryptionOutput) ToEncryptionPtrOutput() EncryptionPtrOutput {
-	return o.ToEncryptionPtrOutputWithContext(context.Background())
+// An Azure AD object ID (User or Apps) that is allowed access to the FHIR service.
+func (o FhirServiceAccessPolicyEntryOutput) ObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v FhirServiceAccessPolicyEntry) string { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-func (o EncryptionOutput) ToEncryptionPtrOutputWithContext(ctx context.Context) EncryptionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Encryption) *Encryption {
-		return &v
-	}).(EncryptionPtrOutput)
+type FhirServiceAccessPolicyEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (FhirServiceAccessPolicyEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FhirServiceAccessPolicyEntry)(nil)).Elem()
 }
 
-// The encryption settings for the customer-managed key
-func (o EncryptionOutput) CustomerManagedKeyEncryption() EncryptionCustomerManagedKeyEncryptionPtrOutput {
-	return o.ApplyT(func(v Encryption) *EncryptionCustomerManagedKeyEncryption { return v.CustomerManagedKeyEncryption }).(EncryptionCustomerManagedKeyEncryptionPtrOutput)
-}
-
-type EncryptionPtrOutput struct{ *pulumi.OutputState }
-
-func (EncryptionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Encryption)(nil)).Elem()
-}
-
-func (o EncryptionPtrOutput) ToEncryptionPtrOutput() EncryptionPtrOutput {
+func (o FhirServiceAccessPolicyEntryArrayOutput) ToFhirServiceAccessPolicyEntryArrayOutput() FhirServiceAccessPolicyEntryArrayOutput {
 	return o
 }
 
-func (o EncryptionPtrOutput) ToEncryptionPtrOutputWithContext(ctx context.Context) EncryptionPtrOutput {
+func (o FhirServiceAccessPolicyEntryArrayOutput) ToFhirServiceAccessPolicyEntryArrayOutputWithContext(ctx context.Context) FhirServiceAccessPolicyEntryArrayOutput {
 	return o
 }
 
-func (o EncryptionPtrOutput) Elem() EncryptionOutput {
-	return o.ApplyT(func(v *Encryption) Encryption {
-		if v != nil {
-			return *v
-		}
-		var ret Encryption
-		return ret
-	}).(EncryptionOutput)
+func (o FhirServiceAccessPolicyEntryArrayOutput) Index(i pulumi.IntInput) FhirServiceAccessPolicyEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FhirServiceAccessPolicyEntry {
+		return vs[0].([]FhirServiceAccessPolicyEntry)[vs[1].(int)]
+	}).(FhirServiceAccessPolicyEntryOutput)
 }
 
-// The encryption settings for the customer-managed key
-func (o EncryptionPtrOutput) CustomerManagedKeyEncryption() EncryptionCustomerManagedKeyEncryptionPtrOutput {
-	return o.ApplyT(func(v *Encryption) *EncryptionCustomerManagedKeyEncryption {
-		if v == nil {
-			return nil
-		}
-		return v.CustomerManagedKeyEncryption
-	}).(EncryptionCustomerManagedKeyEncryptionPtrOutput)
+// An access policy entry.
+type FhirServiceAccessPolicyEntryResponse struct {
+	// An Azure AD object ID (User or Apps) that is allowed access to the FHIR service.
+	ObjectId string `pulumi:"objectId"`
 }
 
-// The encryption settings for the customer-managed key
-type EncryptionCustomerManagedKeyEncryption struct {
-	// The URL of the key to use for encryption
-	KeyEncryptionKeyUrl *string `pulumi:"keyEncryptionKeyUrl"`
+// An access policy entry.
+type FhirServiceAccessPolicyEntryResponseOutput struct{ *pulumi.OutputState }
+
+func (FhirServiceAccessPolicyEntryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirServiceAccessPolicyEntryResponse)(nil)).Elem()
 }
 
-// EncryptionCustomerManagedKeyEncryptionInput is an input type that accepts EncryptionCustomerManagedKeyEncryptionArgs and EncryptionCustomerManagedKeyEncryptionOutput values.
-// You can construct a concrete instance of `EncryptionCustomerManagedKeyEncryptionInput` via:
-//
-//	EncryptionCustomerManagedKeyEncryptionArgs{...}
-type EncryptionCustomerManagedKeyEncryptionInput interface {
-	pulumi.Input
-
-	ToEncryptionCustomerManagedKeyEncryptionOutput() EncryptionCustomerManagedKeyEncryptionOutput
-	ToEncryptionCustomerManagedKeyEncryptionOutputWithContext(context.Context) EncryptionCustomerManagedKeyEncryptionOutput
-}
-
-// The encryption settings for the customer-managed key
-type EncryptionCustomerManagedKeyEncryptionArgs struct {
-	// The URL of the key to use for encryption
-	KeyEncryptionKeyUrl pulumi.StringPtrInput `pulumi:"keyEncryptionKeyUrl"`
-}
-
-func (EncryptionCustomerManagedKeyEncryptionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EncryptionCustomerManagedKeyEncryption)(nil)).Elem()
-}
-
-func (i EncryptionCustomerManagedKeyEncryptionArgs) ToEncryptionCustomerManagedKeyEncryptionOutput() EncryptionCustomerManagedKeyEncryptionOutput {
-	return i.ToEncryptionCustomerManagedKeyEncryptionOutputWithContext(context.Background())
-}
-
-func (i EncryptionCustomerManagedKeyEncryptionArgs) ToEncryptionCustomerManagedKeyEncryptionOutputWithContext(ctx context.Context) EncryptionCustomerManagedKeyEncryptionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionCustomerManagedKeyEncryptionOutput)
-}
-
-func (i EncryptionCustomerManagedKeyEncryptionArgs) ToEncryptionCustomerManagedKeyEncryptionPtrOutput() EncryptionCustomerManagedKeyEncryptionPtrOutput {
-	return i.ToEncryptionCustomerManagedKeyEncryptionPtrOutputWithContext(context.Background())
-}
-
-func (i EncryptionCustomerManagedKeyEncryptionArgs) ToEncryptionCustomerManagedKeyEncryptionPtrOutputWithContext(ctx context.Context) EncryptionCustomerManagedKeyEncryptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionCustomerManagedKeyEncryptionOutput).ToEncryptionCustomerManagedKeyEncryptionPtrOutputWithContext(ctx)
-}
-
-// EncryptionCustomerManagedKeyEncryptionPtrInput is an input type that accepts EncryptionCustomerManagedKeyEncryptionArgs, EncryptionCustomerManagedKeyEncryptionPtr and EncryptionCustomerManagedKeyEncryptionPtrOutput values.
-// You can construct a concrete instance of `EncryptionCustomerManagedKeyEncryptionPtrInput` via:
-//
-//	        EncryptionCustomerManagedKeyEncryptionArgs{...}
-//
-//	or:
-//
-//	        nil
-type EncryptionCustomerManagedKeyEncryptionPtrInput interface {
-	pulumi.Input
-
-	ToEncryptionCustomerManagedKeyEncryptionPtrOutput() EncryptionCustomerManagedKeyEncryptionPtrOutput
-	ToEncryptionCustomerManagedKeyEncryptionPtrOutputWithContext(context.Context) EncryptionCustomerManagedKeyEncryptionPtrOutput
-}
-
-type encryptionCustomerManagedKeyEncryptionPtrType EncryptionCustomerManagedKeyEncryptionArgs
-
-func EncryptionCustomerManagedKeyEncryptionPtr(v *EncryptionCustomerManagedKeyEncryptionArgs) EncryptionCustomerManagedKeyEncryptionPtrInput {
-	return (*encryptionCustomerManagedKeyEncryptionPtrType)(v)
-}
-
-func (*encryptionCustomerManagedKeyEncryptionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**EncryptionCustomerManagedKeyEncryption)(nil)).Elem()
-}
-
-func (i *encryptionCustomerManagedKeyEncryptionPtrType) ToEncryptionCustomerManagedKeyEncryptionPtrOutput() EncryptionCustomerManagedKeyEncryptionPtrOutput {
-	return i.ToEncryptionCustomerManagedKeyEncryptionPtrOutputWithContext(context.Background())
-}
-
-func (i *encryptionCustomerManagedKeyEncryptionPtrType) ToEncryptionCustomerManagedKeyEncryptionPtrOutputWithContext(ctx context.Context) EncryptionCustomerManagedKeyEncryptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EncryptionCustomerManagedKeyEncryptionPtrOutput)
-}
-
-// The encryption settings for the customer-managed key
-type EncryptionCustomerManagedKeyEncryptionOutput struct{ *pulumi.OutputState }
-
-func (EncryptionCustomerManagedKeyEncryptionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EncryptionCustomerManagedKeyEncryption)(nil)).Elem()
-}
-
-func (o EncryptionCustomerManagedKeyEncryptionOutput) ToEncryptionCustomerManagedKeyEncryptionOutput() EncryptionCustomerManagedKeyEncryptionOutput {
+func (o FhirServiceAccessPolicyEntryResponseOutput) ToFhirServiceAccessPolicyEntryResponseOutput() FhirServiceAccessPolicyEntryResponseOutput {
 	return o
 }
 
-func (o EncryptionCustomerManagedKeyEncryptionOutput) ToEncryptionCustomerManagedKeyEncryptionOutputWithContext(ctx context.Context) EncryptionCustomerManagedKeyEncryptionOutput {
+func (o FhirServiceAccessPolicyEntryResponseOutput) ToFhirServiceAccessPolicyEntryResponseOutputWithContext(ctx context.Context) FhirServiceAccessPolicyEntryResponseOutput {
 	return o
 }
 
-func (o EncryptionCustomerManagedKeyEncryptionOutput) ToEncryptionCustomerManagedKeyEncryptionPtrOutput() EncryptionCustomerManagedKeyEncryptionPtrOutput {
-	return o.ToEncryptionCustomerManagedKeyEncryptionPtrOutputWithContext(context.Background())
+// An Azure AD object ID (User or Apps) that is allowed access to the FHIR service.
+func (o FhirServiceAccessPolicyEntryResponseOutput) ObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v FhirServiceAccessPolicyEntryResponse) string { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-func (o EncryptionCustomerManagedKeyEncryptionOutput) ToEncryptionCustomerManagedKeyEncryptionPtrOutputWithContext(ctx context.Context) EncryptionCustomerManagedKeyEncryptionPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionCustomerManagedKeyEncryption) *EncryptionCustomerManagedKeyEncryption {
-		return &v
-	}).(EncryptionCustomerManagedKeyEncryptionPtrOutput)
+type FhirServiceAccessPolicyEntryResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (FhirServiceAccessPolicyEntryResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FhirServiceAccessPolicyEntryResponse)(nil)).Elem()
 }
 
-// The URL of the key to use for encryption
-func (o EncryptionCustomerManagedKeyEncryptionOutput) KeyEncryptionKeyUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EncryptionCustomerManagedKeyEncryption) *string { return v.KeyEncryptionKeyUrl }).(pulumi.StringPtrOutput)
-}
-
-type EncryptionCustomerManagedKeyEncryptionPtrOutput struct{ *pulumi.OutputState }
-
-func (EncryptionCustomerManagedKeyEncryptionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EncryptionCustomerManagedKeyEncryption)(nil)).Elem()
-}
-
-func (o EncryptionCustomerManagedKeyEncryptionPtrOutput) ToEncryptionCustomerManagedKeyEncryptionPtrOutput() EncryptionCustomerManagedKeyEncryptionPtrOutput {
+func (o FhirServiceAccessPolicyEntryResponseArrayOutput) ToFhirServiceAccessPolicyEntryResponseArrayOutput() FhirServiceAccessPolicyEntryResponseArrayOutput {
 	return o
 }
 
-func (o EncryptionCustomerManagedKeyEncryptionPtrOutput) ToEncryptionCustomerManagedKeyEncryptionPtrOutputWithContext(ctx context.Context) EncryptionCustomerManagedKeyEncryptionPtrOutput {
+func (o FhirServiceAccessPolicyEntryResponseArrayOutput) ToFhirServiceAccessPolicyEntryResponseArrayOutputWithContext(ctx context.Context) FhirServiceAccessPolicyEntryResponseArrayOutput {
 	return o
 }
 
-func (o EncryptionCustomerManagedKeyEncryptionPtrOutput) Elem() EncryptionCustomerManagedKeyEncryptionOutput {
-	return o.ApplyT(func(v *EncryptionCustomerManagedKeyEncryption) EncryptionCustomerManagedKeyEncryption {
-		if v != nil {
-			return *v
-		}
-		var ret EncryptionCustomerManagedKeyEncryption
-		return ret
-	}).(EncryptionCustomerManagedKeyEncryptionOutput)
-}
-
-// The URL of the key to use for encryption
-func (o EncryptionCustomerManagedKeyEncryptionPtrOutput) KeyEncryptionKeyUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EncryptionCustomerManagedKeyEncryption) *string {
-		if v == nil {
-			return nil
-		}
-		return v.KeyEncryptionKeyUrl
-	}).(pulumi.StringPtrOutput)
-}
-
-// Settings to encrypt a service
-type EncryptionResponse struct {
-	// The encryption settings for the customer-managed key
-	CustomerManagedKeyEncryption *EncryptionResponseCustomerManagedKeyEncryption `pulumi:"customerManagedKeyEncryption"`
-}
-
-// Settings to encrypt a service
-type EncryptionResponseOutput struct{ *pulumi.OutputState }
-
-func (EncryptionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EncryptionResponse)(nil)).Elem()
-}
-
-func (o EncryptionResponseOutput) ToEncryptionResponseOutput() EncryptionResponseOutput {
-	return o
-}
-
-func (o EncryptionResponseOutput) ToEncryptionResponseOutputWithContext(ctx context.Context) EncryptionResponseOutput {
-	return o
-}
-
-// The encryption settings for the customer-managed key
-func (o EncryptionResponseOutput) CustomerManagedKeyEncryption() EncryptionResponseCustomerManagedKeyEncryptionPtrOutput {
-	return o.ApplyT(func(v EncryptionResponse) *EncryptionResponseCustomerManagedKeyEncryption {
-		return v.CustomerManagedKeyEncryption
-	}).(EncryptionResponseCustomerManagedKeyEncryptionPtrOutput)
-}
-
-type EncryptionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (EncryptionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EncryptionResponse)(nil)).Elem()
-}
-
-func (o EncryptionResponsePtrOutput) ToEncryptionResponsePtrOutput() EncryptionResponsePtrOutput {
-	return o
-}
-
-func (o EncryptionResponsePtrOutput) ToEncryptionResponsePtrOutputWithContext(ctx context.Context) EncryptionResponsePtrOutput {
-	return o
-}
-
-func (o EncryptionResponsePtrOutput) Elem() EncryptionResponseOutput {
-	return o.ApplyT(func(v *EncryptionResponse) EncryptionResponse {
-		if v != nil {
-			return *v
-		}
-		var ret EncryptionResponse
-		return ret
-	}).(EncryptionResponseOutput)
-}
-
-// The encryption settings for the customer-managed key
-func (o EncryptionResponsePtrOutput) CustomerManagedKeyEncryption() EncryptionResponseCustomerManagedKeyEncryptionPtrOutput {
-	return o.ApplyT(func(v *EncryptionResponse) *EncryptionResponseCustomerManagedKeyEncryption {
-		if v == nil {
-			return nil
-		}
-		return v.CustomerManagedKeyEncryption
-	}).(EncryptionResponseCustomerManagedKeyEncryptionPtrOutput)
-}
-
-// The encryption settings for the customer-managed key
-type EncryptionResponseCustomerManagedKeyEncryption struct {
-	// The URL of the key to use for encryption
-	KeyEncryptionKeyUrl *string `pulumi:"keyEncryptionKeyUrl"`
-}
-
-// The encryption settings for the customer-managed key
-type EncryptionResponseCustomerManagedKeyEncryptionOutput struct{ *pulumi.OutputState }
-
-func (EncryptionResponseCustomerManagedKeyEncryptionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EncryptionResponseCustomerManagedKeyEncryption)(nil)).Elem()
-}
-
-func (o EncryptionResponseCustomerManagedKeyEncryptionOutput) ToEncryptionResponseCustomerManagedKeyEncryptionOutput() EncryptionResponseCustomerManagedKeyEncryptionOutput {
-	return o
-}
-
-func (o EncryptionResponseCustomerManagedKeyEncryptionOutput) ToEncryptionResponseCustomerManagedKeyEncryptionOutputWithContext(ctx context.Context) EncryptionResponseCustomerManagedKeyEncryptionOutput {
-	return o
-}
-
-// The URL of the key to use for encryption
-func (o EncryptionResponseCustomerManagedKeyEncryptionOutput) KeyEncryptionKeyUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EncryptionResponseCustomerManagedKeyEncryption) *string { return v.KeyEncryptionKeyUrl }).(pulumi.StringPtrOutput)
-}
-
-type EncryptionResponseCustomerManagedKeyEncryptionPtrOutput struct{ *pulumi.OutputState }
-
-func (EncryptionResponseCustomerManagedKeyEncryptionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EncryptionResponseCustomerManagedKeyEncryption)(nil)).Elem()
-}
-
-func (o EncryptionResponseCustomerManagedKeyEncryptionPtrOutput) ToEncryptionResponseCustomerManagedKeyEncryptionPtrOutput() EncryptionResponseCustomerManagedKeyEncryptionPtrOutput {
-	return o
-}
-
-func (o EncryptionResponseCustomerManagedKeyEncryptionPtrOutput) ToEncryptionResponseCustomerManagedKeyEncryptionPtrOutputWithContext(ctx context.Context) EncryptionResponseCustomerManagedKeyEncryptionPtrOutput {
-	return o
-}
-
-func (o EncryptionResponseCustomerManagedKeyEncryptionPtrOutput) Elem() EncryptionResponseCustomerManagedKeyEncryptionOutput {
-	return o.ApplyT(func(v *EncryptionResponseCustomerManagedKeyEncryption) EncryptionResponseCustomerManagedKeyEncryption {
-		if v != nil {
-			return *v
-		}
-		var ret EncryptionResponseCustomerManagedKeyEncryption
-		return ret
-	}).(EncryptionResponseCustomerManagedKeyEncryptionOutput)
-}
-
-// The URL of the key to use for encryption
-func (o EncryptionResponseCustomerManagedKeyEncryptionPtrOutput) KeyEncryptionKeyUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EncryptionResponseCustomerManagedKeyEncryption) *string {
-		if v == nil {
-			return nil
-		}
-		return v.KeyEncryptionKeyUrl
-	}).(pulumi.StringPtrOutput)
+func (o FhirServiceAccessPolicyEntryResponseArrayOutput) Index(i pulumi.IntInput) FhirServiceAccessPolicyEntryResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FhirServiceAccessPolicyEntryResponse {
+		return vs[0].([]FhirServiceAccessPolicyEntryResponse)[vs[1].(int)]
+	}).(FhirServiceAccessPolicyEntryResponseOutput)
 }
 
 // Azure container registry configuration information
@@ -1432,8 +1176,6 @@ type FhirServiceAuthenticationConfiguration struct {
 	Audience *string `pulumi:"audience"`
 	// The authority url for the service
 	Authority *string `pulumi:"authority"`
-	// The array of identity provider configurations for SMART on FHIR authentication.
-	SmartIdentityProviders []SmartIdentityProviderConfiguration `pulumi:"smartIdentityProviders"`
 	// If the SMART on FHIR proxy is enabled
 	SmartProxyEnabled *bool `pulumi:"smartProxyEnabled"`
 }
@@ -1455,8 +1197,6 @@ type FhirServiceAuthenticationConfigurationArgs struct {
 	Audience pulumi.StringPtrInput `pulumi:"audience"`
 	// The authority url for the service
 	Authority pulumi.StringPtrInput `pulumi:"authority"`
-	// The array of identity provider configurations for SMART on FHIR authentication.
-	SmartIdentityProviders SmartIdentityProviderConfigurationArrayInput `pulumi:"smartIdentityProviders"`
 	// If the SMART on FHIR proxy is enabled
 	SmartProxyEnabled pulumi.BoolPtrInput `pulumi:"smartProxyEnabled"`
 }
@@ -1549,13 +1289,6 @@ func (o FhirServiceAuthenticationConfigurationOutput) Authority() pulumi.StringP
 	return o.ApplyT(func(v FhirServiceAuthenticationConfiguration) *string { return v.Authority }).(pulumi.StringPtrOutput)
 }
 
-// The array of identity provider configurations for SMART on FHIR authentication.
-func (o FhirServiceAuthenticationConfigurationOutput) SmartIdentityProviders() SmartIdentityProviderConfigurationArrayOutput {
-	return o.ApplyT(func(v FhirServiceAuthenticationConfiguration) []SmartIdentityProviderConfiguration {
-		return v.SmartIdentityProviders
-	}).(SmartIdentityProviderConfigurationArrayOutput)
-}
-
 // If the SMART on FHIR proxy is enabled
 func (o FhirServiceAuthenticationConfigurationOutput) SmartProxyEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FhirServiceAuthenticationConfiguration) *bool { return v.SmartProxyEnabled }).(pulumi.BoolPtrOutput)
@@ -1605,16 +1338,6 @@ func (o FhirServiceAuthenticationConfigurationPtrOutput) Authority() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// The array of identity provider configurations for SMART on FHIR authentication.
-func (o FhirServiceAuthenticationConfigurationPtrOutput) SmartIdentityProviders() SmartIdentityProviderConfigurationArrayOutput {
-	return o.ApplyT(func(v *FhirServiceAuthenticationConfiguration) []SmartIdentityProviderConfiguration {
-		if v == nil {
-			return nil
-		}
-		return v.SmartIdentityProviders
-	}).(SmartIdentityProviderConfigurationArrayOutput)
-}
-
 // If the SMART on FHIR proxy is enabled
 func (o FhirServiceAuthenticationConfigurationPtrOutput) SmartProxyEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FhirServiceAuthenticationConfiguration) *bool {
@@ -1631,8 +1354,6 @@ type FhirServiceAuthenticationConfigurationResponse struct {
 	Audience *string `pulumi:"audience"`
 	// The authority url for the service
 	Authority *string `pulumi:"authority"`
-	// The array of identity provider configurations for SMART on FHIR authentication.
-	SmartIdentityProviders []SmartIdentityProviderConfigurationResponse `pulumi:"smartIdentityProviders"`
 	// If the SMART on FHIR proxy is enabled
 	SmartProxyEnabled *bool `pulumi:"smartProxyEnabled"`
 }
@@ -1660,13 +1381,6 @@ func (o FhirServiceAuthenticationConfigurationResponseOutput) Audience() pulumi.
 // The authority url for the service
 func (o FhirServiceAuthenticationConfigurationResponseOutput) Authority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FhirServiceAuthenticationConfigurationResponse) *string { return v.Authority }).(pulumi.StringPtrOutput)
-}
-
-// The array of identity provider configurations for SMART on FHIR authentication.
-func (o FhirServiceAuthenticationConfigurationResponseOutput) SmartIdentityProviders() SmartIdentityProviderConfigurationResponseArrayOutput {
-	return o.ApplyT(func(v FhirServiceAuthenticationConfigurationResponse) []SmartIdentityProviderConfigurationResponse {
-		return v.SmartIdentityProviders
-	}).(SmartIdentityProviderConfigurationResponseArrayOutput)
 }
 
 // If the SMART on FHIR proxy is enabled
@@ -1716,16 +1430,6 @@ func (o FhirServiceAuthenticationConfigurationResponsePtrOutput) Authority() pul
 		}
 		return v.Authority
 	}).(pulumi.StringPtrOutput)
-}
-
-// The array of identity provider configurations for SMART on FHIR authentication.
-func (o FhirServiceAuthenticationConfigurationResponsePtrOutput) SmartIdentityProviders() SmartIdentityProviderConfigurationResponseArrayOutput {
-	return o.ApplyT(func(v *FhirServiceAuthenticationConfigurationResponse) []SmartIdentityProviderConfigurationResponse {
-		if v == nil {
-			return nil
-		}
-		return v.SmartIdentityProviders
-	}).(SmartIdentityProviderConfigurationResponseArrayOutput)
 }
 
 // If the SMART on FHIR proxy is enabled
@@ -6641,584 +6345,6 @@ func (o ServicesResourceResponseIdentityPtrOutput) Type() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// An Application configured in the Identity Provider used to access FHIR resources.
-type SmartIdentityProviderApplication struct {
-	// The actions that are permitted to be performed on FHIR resources for the application.
-	AllowedDataActions []string `pulumi:"allowedDataActions"`
-	// The audience that will be used to validate bearer tokens against the given authority.
-	Audience *string `pulumi:"audience"`
-	// The application client id defined in the identity provider. This value will be used to validate bearer tokens against the given authority.
-	ClientId *string `pulumi:"clientId"`
-}
-
-// SmartIdentityProviderApplicationInput is an input type that accepts SmartIdentityProviderApplicationArgs and SmartIdentityProviderApplicationOutput values.
-// You can construct a concrete instance of `SmartIdentityProviderApplicationInput` via:
-//
-//	SmartIdentityProviderApplicationArgs{...}
-type SmartIdentityProviderApplicationInput interface {
-	pulumi.Input
-
-	ToSmartIdentityProviderApplicationOutput() SmartIdentityProviderApplicationOutput
-	ToSmartIdentityProviderApplicationOutputWithContext(context.Context) SmartIdentityProviderApplicationOutput
-}
-
-// An Application configured in the Identity Provider used to access FHIR resources.
-type SmartIdentityProviderApplicationArgs struct {
-	// The actions that are permitted to be performed on FHIR resources for the application.
-	AllowedDataActions pulumi.StringArrayInput `pulumi:"allowedDataActions"`
-	// The audience that will be used to validate bearer tokens against the given authority.
-	Audience pulumi.StringPtrInput `pulumi:"audience"`
-	// The application client id defined in the identity provider. This value will be used to validate bearer tokens against the given authority.
-	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
-}
-
-func (SmartIdentityProviderApplicationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SmartIdentityProviderApplication)(nil)).Elem()
-}
-
-func (i SmartIdentityProviderApplicationArgs) ToSmartIdentityProviderApplicationOutput() SmartIdentityProviderApplicationOutput {
-	return i.ToSmartIdentityProviderApplicationOutputWithContext(context.Background())
-}
-
-func (i SmartIdentityProviderApplicationArgs) ToSmartIdentityProviderApplicationOutputWithContext(ctx context.Context) SmartIdentityProviderApplicationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SmartIdentityProviderApplicationOutput)
-}
-
-// SmartIdentityProviderApplicationArrayInput is an input type that accepts SmartIdentityProviderApplicationArray and SmartIdentityProviderApplicationArrayOutput values.
-// You can construct a concrete instance of `SmartIdentityProviderApplicationArrayInput` via:
-//
-//	SmartIdentityProviderApplicationArray{ SmartIdentityProviderApplicationArgs{...} }
-type SmartIdentityProviderApplicationArrayInput interface {
-	pulumi.Input
-
-	ToSmartIdentityProviderApplicationArrayOutput() SmartIdentityProviderApplicationArrayOutput
-	ToSmartIdentityProviderApplicationArrayOutputWithContext(context.Context) SmartIdentityProviderApplicationArrayOutput
-}
-
-type SmartIdentityProviderApplicationArray []SmartIdentityProviderApplicationInput
-
-func (SmartIdentityProviderApplicationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SmartIdentityProviderApplication)(nil)).Elem()
-}
-
-func (i SmartIdentityProviderApplicationArray) ToSmartIdentityProviderApplicationArrayOutput() SmartIdentityProviderApplicationArrayOutput {
-	return i.ToSmartIdentityProviderApplicationArrayOutputWithContext(context.Background())
-}
-
-func (i SmartIdentityProviderApplicationArray) ToSmartIdentityProviderApplicationArrayOutputWithContext(ctx context.Context) SmartIdentityProviderApplicationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SmartIdentityProviderApplicationArrayOutput)
-}
-
-// An Application configured in the Identity Provider used to access FHIR resources.
-type SmartIdentityProviderApplicationOutput struct{ *pulumi.OutputState }
-
-func (SmartIdentityProviderApplicationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SmartIdentityProviderApplication)(nil)).Elem()
-}
-
-func (o SmartIdentityProviderApplicationOutput) ToSmartIdentityProviderApplicationOutput() SmartIdentityProviderApplicationOutput {
-	return o
-}
-
-func (o SmartIdentityProviderApplicationOutput) ToSmartIdentityProviderApplicationOutputWithContext(ctx context.Context) SmartIdentityProviderApplicationOutput {
-	return o
-}
-
-// The actions that are permitted to be performed on FHIR resources for the application.
-func (o SmartIdentityProviderApplicationOutput) AllowedDataActions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SmartIdentityProviderApplication) []string { return v.AllowedDataActions }).(pulumi.StringArrayOutput)
-}
-
-// The audience that will be used to validate bearer tokens against the given authority.
-func (o SmartIdentityProviderApplicationOutput) Audience() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SmartIdentityProviderApplication) *string { return v.Audience }).(pulumi.StringPtrOutput)
-}
-
-// The application client id defined in the identity provider. This value will be used to validate bearer tokens against the given authority.
-func (o SmartIdentityProviderApplicationOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SmartIdentityProviderApplication) *string { return v.ClientId }).(pulumi.StringPtrOutput)
-}
-
-type SmartIdentityProviderApplicationArrayOutput struct{ *pulumi.OutputState }
-
-func (SmartIdentityProviderApplicationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SmartIdentityProviderApplication)(nil)).Elem()
-}
-
-func (o SmartIdentityProviderApplicationArrayOutput) ToSmartIdentityProviderApplicationArrayOutput() SmartIdentityProviderApplicationArrayOutput {
-	return o
-}
-
-func (o SmartIdentityProviderApplicationArrayOutput) ToSmartIdentityProviderApplicationArrayOutputWithContext(ctx context.Context) SmartIdentityProviderApplicationArrayOutput {
-	return o
-}
-
-func (o SmartIdentityProviderApplicationArrayOutput) Index(i pulumi.IntInput) SmartIdentityProviderApplicationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SmartIdentityProviderApplication {
-		return vs[0].([]SmartIdentityProviderApplication)[vs[1].(int)]
-	}).(SmartIdentityProviderApplicationOutput)
-}
-
-// An Application configured in the Identity Provider used to access FHIR resources.
-type SmartIdentityProviderApplicationResponse struct {
-	// The actions that are permitted to be performed on FHIR resources for the application.
-	AllowedDataActions []string `pulumi:"allowedDataActions"`
-	// The audience that will be used to validate bearer tokens against the given authority.
-	Audience *string `pulumi:"audience"`
-	// The application client id defined in the identity provider. This value will be used to validate bearer tokens against the given authority.
-	ClientId *string `pulumi:"clientId"`
-}
-
-// An Application configured in the Identity Provider used to access FHIR resources.
-type SmartIdentityProviderApplicationResponseOutput struct{ *pulumi.OutputState }
-
-func (SmartIdentityProviderApplicationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SmartIdentityProviderApplicationResponse)(nil)).Elem()
-}
-
-func (o SmartIdentityProviderApplicationResponseOutput) ToSmartIdentityProviderApplicationResponseOutput() SmartIdentityProviderApplicationResponseOutput {
-	return o
-}
-
-func (o SmartIdentityProviderApplicationResponseOutput) ToSmartIdentityProviderApplicationResponseOutputWithContext(ctx context.Context) SmartIdentityProviderApplicationResponseOutput {
-	return o
-}
-
-// The actions that are permitted to be performed on FHIR resources for the application.
-func (o SmartIdentityProviderApplicationResponseOutput) AllowedDataActions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v SmartIdentityProviderApplicationResponse) []string { return v.AllowedDataActions }).(pulumi.StringArrayOutput)
-}
-
-// The audience that will be used to validate bearer tokens against the given authority.
-func (o SmartIdentityProviderApplicationResponseOutput) Audience() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SmartIdentityProviderApplicationResponse) *string { return v.Audience }).(pulumi.StringPtrOutput)
-}
-
-// The application client id defined in the identity provider. This value will be used to validate bearer tokens against the given authority.
-func (o SmartIdentityProviderApplicationResponseOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SmartIdentityProviderApplicationResponse) *string { return v.ClientId }).(pulumi.StringPtrOutput)
-}
-
-type SmartIdentityProviderApplicationResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (SmartIdentityProviderApplicationResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SmartIdentityProviderApplicationResponse)(nil)).Elem()
-}
-
-func (o SmartIdentityProviderApplicationResponseArrayOutput) ToSmartIdentityProviderApplicationResponseArrayOutput() SmartIdentityProviderApplicationResponseArrayOutput {
-	return o
-}
-
-func (o SmartIdentityProviderApplicationResponseArrayOutput) ToSmartIdentityProviderApplicationResponseArrayOutputWithContext(ctx context.Context) SmartIdentityProviderApplicationResponseArrayOutput {
-	return o
-}
-
-func (o SmartIdentityProviderApplicationResponseArrayOutput) Index(i pulumi.IntInput) SmartIdentityProviderApplicationResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SmartIdentityProviderApplicationResponse {
-		return vs[0].([]SmartIdentityProviderApplicationResponse)[vs[1].(int)]
-	}).(SmartIdentityProviderApplicationResponseOutput)
-}
-
-// An object to configure an identity provider for use with SMART on FHIR authentication.
-type SmartIdentityProviderConfiguration struct {
-	// The array of identity provider applications for SMART on FHIR authentication.
-	Applications []SmartIdentityProviderApplication `pulumi:"applications"`
-	// The identity provider token authority also known as the token issuing authority.
-	Authority *string `pulumi:"authority"`
-}
-
-// SmartIdentityProviderConfigurationInput is an input type that accepts SmartIdentityProviderConfigurationArgs and SmartIdentityProviderConfigurationOutput values.
-// You can construct a concrete instance of `SmartIdentityProviderConfigurationInput` via:
-//
-//	SmartIdentityProviderConfigurationArgs{...}
-type SmartIdentityProviderConfigurationInput interface {
-	pulumi.Input
-
-	ToSmartIdentityProviderConfigurationOutput() SmartIdentityProviderConfigurationOutput
-	ToSmartIdentityProviderConfigurationOutputWithContext(context.Context) SmartIdentityProviderConfigurationOutput
-}
-
-// An object to configure an identity provider for use with SMART on FHIR authentication.
-type SmartIdentityProviderConfigurationArgs struct {
-	// The array of identity provider applications for SMART on FHIR authentication.
-	Applications SmartIdentityProviderApplicationArrayInput `pulumi:"applications"`
-	// The identity provider token authority also known as the token issuing authority.
-	Authority pulumi.StringPtrInput `pulumi:"authority"`
-}
-
-func (SmartIdentityProviderConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SmartIdentityProviderConfiguration)(nil)).Elem()
-}
-
-func (i SmartIdentityProviderConfigurationArgs) ToSmartIdentityProviderConfigurationOutput() SmartIdentityProviderConfigurationOutput {
-	return i.ToSmartIdentityProviderConfigurationOutputWithContext(context.Background())
-}
-
-func (i SmartIdentityProviderConfigurationArgs) ToSmartIdentityProviderConfigurationOutputWithContext(ctx context.Context) SmartIdentityProviderConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SmartIdentityProviderConfigurationOutput)
-}
-
-// SmartIdentityProviderConfigurationArrayInput is an input type that accepts SmartIdentityProviderConfigurationArray and SmartIdentityProviderConfigurationArrayOutput values.
-// You can construct a concrete instance of `SmartIdentityProviderConfigurationArrayInput` via:
-//
-//	SmartIdentityProviderConfigurationArray{ SmartIdentityProviderConfigurationArgs{...} }
-type SmartIdentityProviderConfigurationArrayInput interface {
-	pulumi.Input
-
-	ToSmartIdentityProviderConfigurationArrayOutput() SmartIdentityProviderConfigurationArrayOutput
-	ToSmartIdentityProviderConfigurationArrayOutputWithContext(context.Context) SmartIdentityProviderConfigurationArrayOutput
-}
-
-type SmartIdentityProviderConfigurationArray []SmartIdentityProviderConfigurationInput
-
-func (SmartIdentityProviderConfigurationArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SmartIdentityProviderConfiguration)(nil)).Elem()
-}
-
-func (i SmartIdentityProviderConfigurationArray) ToSmartIdentityProviderConfigurationArrayOutput() SmartIdentityProviderConfigurationArrayOutput {
-	return i.ToSmartIdentityProviderConfigurationArrayOutputWithContext(context.Background())
-}
-
-func (i SmartIdentityProviderConfigurationArray) ToSmartIdentityProviderConfigurationArrayOutputWithContext(ctx context.Context) SmartIdentityProviderConfigurationArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SmartIdentityProviderConfigurationArrayOutput)
-}
-
-// An object to configure an identity provider for use with SMART on FHIR authentication.
-type SmartIdentityProviderConfigurationOutput struct{ *pulumi.OutputState }
-
-func (SmartIdentityProviderConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SmartIdentityProviderConfiguration)(nil)).Elem()
-}
-
-func (o SmartIdentityProviderConfigurationOutput) ToSmartIdentityProviderConfigurationOutput() SmartIdentityProviderConfigurationOutput {
-	return o
-}
-
-func (o SmartIdentityProviderConfigurationOutput) ToSmartIdentityProviderConfigurationOutputWithContext(ctx context.Context) SmartIdentityProviderConfigurationOutput {
-	return o
-}
-
-// The array of identity provider applications for SMART on FHIR authentication.
-func (o SmartIdentityProviderConfigurationOutput) Applications() SmartIdentityProviderApplicationArrayOutput {
-	return o.ApplyT(func(v SmartIdentityProviderConfiguration) []SmartIdentityProviderApplication { return v.Applications }).(SmartIdentityProviderApplicationArrayOutput)
-}
-
-// The identity provider token authority also known as the token issuing authority.
-func (o SmartIdentityProviderConfigurationOutput) Authority() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SmartIdentityProviderConfiguration) *string { return v.Authority }).(pulumi.StringPtrOutput)
-}
-
-type SmartIdentityProviderConfigurationArrayOutput struct{ *pulumi.OutputState }
-
-func (SmartIdentityProviderConfigurationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SmartIdentityProviderConfiguration)(nil)).Elem()
-}
-
-func (o SmartIdentityProviderConfigurationArrayOutput) ToSmartIdentityProviderConfigurationArrayOutput() SmartIdentityProviderConfigurationArrayOutput {
-	return o
-}
-
-func (o SmartIdentityProviderConfigurationArrayOutput) ToSmartIdentityProviderConfigurationArrayOutputWithContext(ctx context.Context) SmartIdentityProviderConfigurationArrayOutput {
-	return o
-}
-
-func (o SmartIdentityProviderConfigurationArrayOutput) Index(i pulumi.IntInput) SmartIdentityProviderConfigurationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SmartIdentityProviderConfiguration {
-		return vs[0].([]SmartIdentityProviderConfiguration)[vs[1].(int)]
-	}).(SmartIdentityProviderConfigurationOutput)
-}
-
-// An object to configure an identity provider for use with SMART on FHIR authentication.
-type SmartIdentityProviderConfigurationResponse struct {
-	// The array of identity provider applications for SMART on FHIR authentication.
-	Applications []SmartIdentityProviderApplicationResponse `pulumi:"applications"`
-	// The identity provider token authority also known as the token issuing authority.
-	Authority *string `pulumi:"authority"`
-}
-
-// An object to configure an identity provider for use with SMART on FHIR authentication.
-type SmartIdentityProviderConfigurationResponseOutput struct{ *pulumi.OutputState }
-
-func (SmartIdentityProviderConfigurationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SmartIdentityProviderConfigurationResponse)(nil)).Elem()
-}
-
-func (o SmartIdentityProviderConfigurationResponseOutput) ToSmartIdentityProviderConfigurationResponseOutput() SmartIdentityProviderConfigurationResponseOutput {
-	return o
-}
-
-func (o SmartIdentityProviderConfigurationResponseOutput) ToSmartIdentityProviderConfigurationResponseOutputWithContext(ctx context.Context) SmartIdentityProviderConfigurationResponseOutput {
-	return o
-}
-
-// The array of identity provider applications for SMART on FHIR authentication.
-func (o SmartIdentityProviderConfigurationResponseOutput) Applications() SmartIdentityProviderApplicationResponseArrayOutput {
-	return o.ApplyT(func(v SmartIdentityProviderConfigurationResponse) []SmartIdentityProviderApplicationResponse {
-		return v.Applications
-	}).(SmartIdentityProviderApplicationResponseArrayOutput)
-}
-
-// The identity provider token authority also known as the token issuing authority.
-func (o SmartIdentityProviderConfigurationResponseOutput) Authority() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SmartIdentityProviderConfigurationResponse) *string { return v.Authority }).(pulumi.StringPtrOutput)
-}
-
-type SmartIdentityProviderConfigurationResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (SmartIdentityProviderConfigurationResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SmartIdentityProviderConfigurationResponse)(nil)).Elem()
-}
-
-func (o SmartIdentityProviderConfigurationResponseArrayOutput) ToSmartIdentityProviderConfigurationResponseArrayOutput() SmartIdentityProviderConfigurationResponseArrayOutput {
-	return o
-}
-
-func (o SmartIdentityProviderConfigurationResponseArrayOutput) ToSmartIdentityProviderConfigurationResponseArrayOutputWithContext(ctx context.Context) SmartIdentityProviderConfigurationResponseArrayOutput {
-	return o
-}
-
-func (o SmartIdentityProviderConfigurationResponseArrayOutput) Index(i pulumi.IntInput) SmartIdentityProviderConfigurationResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SmartIdentityProviderConfigurationResponse {
-		return vs[0].([]SmartIdentityProviderConfigurationResponse)[vs[1].(int)]
-	}).(SmartIdentityProviderConfigurationResponseOutput)
-}
-
-// The configuration of connected storage
-type StorageConfiguration struct {
-	// The filesystem name of connected storage account.
-	FileSystemName *string `pulumi:"fileSystemName"`
-	// The resource id of connected storage account.
-	StorageResourceId *string `pulumi:"storageResourceId"`
-}
-
-// StorageConfigurationInput is an input type that accepts StorageConfigurationArgs and StorageConfigurationOutput values.
-// You can construct a concrete instance of `StorageConfigurationInput` via:
-//
-//	StorageConfigurationArgs{...}
-type StorageConfigurationInput interface {
-	pulumi.Input
-
-	ToStorageConfigurationOutput() StorageConfigurationOutput
-	ToStorageConfigurationOutputWithContext(context.Context) StorageConfigurationOutput
-}
-
-// The configuration of connected storage
-type StorageConfigurationArgs struct {
-	// The filesystem name of connected storage account.
-	FileSystemName pulumi.StringPtrInput `pulumi:"fileSystemName"`
-	// The resource id of connected storage account.
-	StorageResourceId pulumi.StringPtrInput `pulumi:"storageResourceId"`
-}
-
-func (StorageConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageConfiguration)(nil)).Elem()
-}
-
-func (i StorageConfigurationArgs) ToStorageConfigurationOutput() StorageConfigurationOutput {
-	return i.ToStorageConfigurationOutputWithContext(context.Background())
-}
-
-func (i StorageConfigurationArgs) ToStorageConfigurationOutputWithContext(ctx context.Context) StorageConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageConfigurationOutput)
-}
-
-func (i StorageConfigurationArgs) ToStorageConfigurationPtrOutput() StorageConfigurationPtrOutput {
-	return i.ToStorageConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i StorageConfigurationArgs) ToStorageConfigurationPtrOutputWithContext(ctx context.Context) StorageConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageConfigurationOutput).ToStorageConfigurationPtrOutputWithContext(ctx)
-}
-
-// StorageConfigurationPtrInput is an input type that accepts StorageConfigurationArgs, StorageConfigurationPtr and StorageConfigurationPtrOutput values.
-// You can construct a concrete instance of `StorageConfigurationPtrInput` via:
-//
-//	        StorageConfigurationArgs{...}
-//
-//	or:
-//
-//	        nil
-type StorageConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToStorageConfigurationPtrOutput() StorageConfigurationPtrOutput
-	ToStorageConfigurationPtrOutputWithContext(context.Context) StorageConfigurationPtrOutput
-}
-
-type storageConfigurationPtrType StorageConfigurationArgs
-
-func StorageConfigurationPtr(v *StorageConfigurationArgs) StorageConfigurationPtrInput {
-	return (*storageConfigurationPtrType)(v)
-}
-
-func (*storageConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageConfiguration)(nil)).Elem()
-}
-
-func (i *storageConfigurationPtrType) ToStorageConfigurationPtrOutput() StorageConfigurationPtrOutput {
-	return i.ToStorageConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *storageConfigurationPtrType) ToStorageConfigurationPtrOutputWithContext(ctx context.Context) StorageConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(StorageConfigurationPtrOutput)
-}
-
-// The configuration of connected storage
-type StorageConfigurationOutput struct{ *pulumi.OutputState }
-
-func (StorageConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageConfiguration)(nil)).Elem()
-}
-
-func (o StorageConfigurationOutput) ToStorageConfigurationOutput() StorageConfigurationOutput {
-	return o
-}
-
-func (o StorageConfigurationOutput) ToStorageConfigurationOutputWithContext(ctx context.Context) StorageConfigurationOutput {
-	return o
-}
-
-func (o StorageConfigurationOutput) ToStorageConfigurationPtrOutput() StorageConfigurationPtrOutput {
-	return o.ToStorageConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o StorageConfigurationOutput) ToStorageConfigurationPtrOutputWithContext(ctx context.Context) StorageConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageConfiguration) *StorageConfiguration {
-		return &v
-	}).(StorageConfigurationPtrOutput)
-}
-
-// The filesystem name of connected storage account.
-func (o StorageConfigurationOutput) FileSystemName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StorageConfiguration) *string { return v.FileSystemName }).(pulumi.StringPtrOutput)
-}
-
-// The resource id of connected storage account.
-func (o StorageConfigurationOutput) StorageResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StorageConfiguration) *string { return v.StorageResourceId }).(pulumi.StringPtrOutput)
-}
-
-type StorageConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (StorageConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageConfiguration)(nil)).Elem()
-}
-
-func (o StorageConfigurationPtrOutput) ToStorageConfigurationPtrOutput() StorageConfigurationPtrOutput {
-	return o
-}
-
-func (o StorageConfigurationPtrOutput) ToStorageConfigurationPtrOutputWithContext(ctx context.Context) StorageConfigurationPtrOutput {
-	return o
-}
-
-func (o StorageConfigurationPtrOutput) Elem() StorageConfigurationOutput {
-	return o.ApplyT(func(v *StorageConfiguration) StorageConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret StorageConfiguration
-		return ret
-	}).(StorageConfigurationOutput)
-}
-
-// The filesystem name of connected storage account.
-func (o StorageConfigurationPtrOutput) FileSystemName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.FileSystemName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The resource id of connected storage account.
-func (o StorageConfigurationPtrOutput) StorageResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StorageResourceId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The configuration of connected storage
-type StorageConfigurationResponse struct {
-	// The filesystem name of connected storage account.
-	FileSystemName *string `pulumi:"fileSystemName"`
-	// The resource id of connected storage account.
-	StorageResourceId *string `pulumi:"storageResourceId"`
-}
-
-// The configuration of connected storage
-type StorageConfigurationResponseOutput struct{ *pulumi.OutputState }
-
-func (StorageConfigurationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageConfigurationResponse)(nil)).Elem()
-}
-
-func (o StorageConfigurationResponseOutput) ToStorageConfigurationResponseOutput() StorageConfigurationResponseOutput {
-	return o
-}
-
-func (o StorageConfigurationResponseOutput) ToStorageConfigurationResponseOutputWithContext(ctx context.Context) StorageConfigurationResponseOutput {
-	return o
-}
-
-// The filesystem name of connected storage account.
-func (o StorageConfigurationResponseOutput) FileSystemName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StorageConfigurationResponse) *string { return v.FileSystemName }).(pulumi.StringPtrOutput)
-}
-
-// The resource id of connected storage account.
-func (o StorageConfigurationResponseOutput) StorageResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StorageConfigurationResponse) *string { return v.StorageResourceId }).(pulumi.StringPtrOutput)
-}
-
-type StorageConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (StorageConfigurationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**StorageConfigurationResponse)(nil)).Elem()
-}
-
-func (o StorageConfigurationResponsePtrOutput) ToStorageConfigurationResponsePtrOutput() StorageConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o StorageConfigurationResponsePtrOutput) ToStorageConfigurationResponsePtrOutputWithContext(ctx context.Context) StorageConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o StorageConfigurationResponsePtrOutput) Elem() StorageConfigurationResponseOutput {
-	return o.ApplyT(func(v *StorageConfigurationResponse) StorageConfigurationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret StorageConfigurationResponse
-		return ret
-	}).(StorageConfigurationResponseOutput)
-}
-
-// The filesystem name of connected storage account.
-func (o StorageConfigurationResponsePtrOutput) FileSystemName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.FileSystemName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The resource id of connected storage account.
-func (o StorageConfigurationResponsePtrOutput) StorageResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StorageConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StorageResourceId
-	}).(pulumi.StringPtrOutput)
-}
-
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -7388,14 +6514,10 @@ func init() {
 	pulumi.RegisterOutputType(CorsConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(DicomServiceAuthenticationConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(DicomServiceAuthenticationConfigurationResponsePtrOutput{})
-	pulumi.RegisterOutputType(EncryptionOutput{})
-	pulumi.RegisterOutputType(EncryptionPtrOutput{})
-	pulumi.RegisterOutputType(EncryptionCustomerManagedKeyEncryptionOutput{})
-	pulumi.RegisterOutputType(EncryptionCustomerManagedKeyEncryptionPtrOutput{})
-	pulumi.RegisterOutputType(EncryptionResponseOutput{})
-	pulumi.RegisterOutputType(EncryptionResponsePtrOutput{})
-	pulumi.RegisterOutputType(EncryptionResponseCustomerManagedKeyEncryptionOutput{})
-	pulumi.RegisterOutputType(EncryptionResponseCustomerManagedKeyEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(FhirServiceAccessPolicyEntryOutput{})
+	pulumi.RegisterOutputType(FhirServiceAccessPolicyEntryArrayOutput{})
+	pulumi.RegisterOutputType(FhirServiceAccessPolicyEntryResponseOutput{})
+	pulumi.RegisterOutputType(FhirServiceAccessPolicyEntryResponseArrayOutput{})
 	pulumi.RegisterOutputType(FhirServiceAcrConfigurationOutput{})
 	pulumi.RegisterOutputType(FhirServiceAcrConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(FhirServiceAcrConfigurationResponseOutput{})
@@ -7483,18 +6605,6 @@ func init() {
 	pulumi.RegisterOutputType(ServicesResourceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ServicesResourceResponseIdentityOutput{})
 	pulumi.RegisterOutputType(ServicesResourceResponseIdentityPtrOutput{})
-	pulumi.RegisterOutputType(SmartIdentityProviderApplicationOutput{})
-	pulumi.RegisterOutputType(SmartIdentityProviderApplicationArrayOutput{})
-	pulumi.RegisterOutputType(SmartIdentityProviderApplicationResponseOutput{})
-	pulumi.RegisterOutputType(SmartIdentityProviderApplicationResponseArrayOutput{})
-	pulumi.RegisterOutputType(SmartIdentityProviderConfigurationOutput{})
-	pulumi.RegisterOutputType(SmartIdentityProviderConfigurationArrayOutput{})
-	pulumi.RegisterOutputType(SmartIdentityProviderConfigurationResponseOutput{})
-	pulumi.RegisterOutputType(SmartIdentityProviderConfigurationResponseArrayOutput{})
-	pulumi.RegisterOutputType(StorageConfigurationOutput{})
-	pulumi.RegisterOutputType(StorageConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(StorageConfigurationResponseOutput{})
-	pulumi.RegisterOutputType(StorageConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})

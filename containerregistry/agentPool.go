@@ -8,21 +8,17 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The agentpool that has the ARM resource and properties.
 // The agentpool will have all information to create an agent pool.
 //
-// Uses Azure REST API version 2019-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2019-06-01-preview.
-//
-// Other available API versions: 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerregistry [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Uses Azure REST API version 2019-06-01-preview. In version 1.x of the Azure Native provider, it used API version 2019-06-01-preview.
 type AgentPool struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The count of agent machine
 	Count pulumi.IntPtrOutput `pulumi:"count"`
 	// The location of the resource. This cannot be changed after the resource is created.
@@ -61,9 +57,6 @@ func NewAgentPool(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:containerregistry/v20190601preview:AgentPool"),
-		},
-		{
-			Type: pulumi.String("azure-native:containerregistry/v20250301preview:AgentPool"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -177,11 +170,6 @@ func (o AgentPoolOutput) ToAgentPoolOutput() AgentPoolOutput {
 
 func (o AgentPoolOutput) ToAgentPoolOutputWithContext(ctx context.Context) AgentPoolOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o AgentPoolOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *AgentPool) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The count of agent machine

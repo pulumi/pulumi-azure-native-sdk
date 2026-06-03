@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Friendly domain name mapping to the endpoint hostname that the customer provides for branding purposes, e.g. www.contoso.com.
 //
-// Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
+// Uses Azure REST API version 2023-05-01. In version 1.x of the Azure Native provider, it used API version 2020-09-01.
 //
-// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
 type AFDCustomDomain struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource reference to the Azure DNS zone
 	AzureDnsZone     ResourceReferenceResponsePtrOutput `pulumi:"azureDnsZone"`
 	DeploymentStatus pulumi.StringOutput                `pulumi:"deploymentStatus"`
@@ -31,7 +29,7 @@ type AFDCustomDomain struct {
 	ExtendedProperties pulumi.StringMapOutput `pulumi:"extendedProperties"`
 	// The host name of the domain. Must be a domain name.
 	HostName pulumi.StringOutput `pulumi:"hostName"`
-	// The name of the resource
+	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Resource reference to the Azure resource where custom domain ownership was prevalidated
 	PreValidatedCustomDomainResourceId ResourceReferenceResponsePtrOutput `pulumi:"preValidatedCustomDomainResourceId"`
@@ -39,11 +37,11 @@ type AFDCustomDomain struct {
 	ProfileName pulumi.StringOutput `pulumi:"profileName"`
 	// Provisioning status
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// Read only system data
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
 	TlsSettings AFDDomainHttpsParametersResponsePtrOutput `pulumi:"tlsSettings"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Values the customer needs to validate domain ownership
 	ValidationProperties DomainValidationPropertiesResponseOutput `pulumi:"validationProperties"`
@@ -96,21 +94,6 @@ func NewAFDCustomDomain(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cdn/v20240901:AFDCustomDomain"),
 		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250101preview:AFDCustomDomain"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250415:AFDCustomDomain"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250601:AFDCustomDomain"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250701preview:AFDCustomDomain"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250901preview:AFDCustomDomain"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -148,7 +131,7 @@ func (AFDCustomDomainState) ElementType() reflect.Type {
 type afdcustomDomainArgs struct {
 	// Resource reference to the Azure DNS zone
 	AzureDnsZone *ResourceReference `pulumi:"azureDnsZone"`
-	// Name of the domain under the profile which is unique globally.
+	// Name of the domain under the profile which is unique globally
 	CustomDomainName *string `pulumi:"customDomainName"`
 	// Key-Value pair representing migration properties for domains.
 	ExtendedProperties map[string]string `pulumi:"extendedProperties"`
@@ -156,9 +139,9 @@ type afdcustomDomainArgs struct {
 	HostName string `pulumi:"hostName"`
 	// Resource reference to the Azure resource where custom domain ownership was prevalidated
 	PreValidatedCustomDomainResourceId *ResourceReference `pulumi:"preValidatedCustomDomainResourceId"`
-	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
 	ProfileName string `pulumi:"profileName"`
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
 	TlsSettings *AFDDomainHttpsParameters `pulumi:"tlsSettings"`
@@ -168,7 +151,7 @@ type afdcustomDomainArgs struct {
 type AFDCustomDomainArgs struct {
 	// Resource reference to the Azure DNS zone
 	AzureDnsZone ResourceReferencePtrInput
-	// Name of the domain under the profile which is unique globally.
+	// Name of the domain under the profile which is unique globally
 	CustomDomainName pulumi.StringPtrInput
 	// Key-Value pair representing migration properties for domains.
 	ExtendedProperties pulumi.StringMapInput
@@ -176,9 +159,9 @@ type AFDCustomDomainArgs struct {
 	HostName pulumi.StringInput
 	// Resource reference to the Azure resource where custom domain ownership was prevalidated
 	PreValidatedCustomDomainResourceId ResourceReferencePtrInput
-	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
 	ProfileName pulumi.StringInput
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput
 	// The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
 	TlsSettings AFDDomainHttpsParametersPtrInput
@@ -221,11 +204,6 @@ func (o AFDCustomDomainOutput) ToAFDCustomDomainOutputWithContext(ctx context.Co
 	return o
 }
 
-// The Azure API version of the resource.
-func (o AFDCustomDomainOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *AFDCustomDomain) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Resource reference to the Azure DNS zone
 func (o AFDCustomDomainOutput) AzureDnsZone() ResourceReferenceResponsePtrOutput {
 	return o.ApplyT(func(v *AFDCustomDomain) ResourceReferenceResponsePtrOutput { return v.AzureDnsZone }).(ResourceReferenceResponsePtrOutput)
@@ -250,7 +228,7 @@ func (o AFDCustomDomainOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AFDCustomDomain) pulumi.StringOutput { return v.HostName }).(pulumi.StringOutput)
 }
 
-// The name of the resource
+// Resource name.
 func (o AFDCustomDomainOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AFDCustomDomain) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -272,7 +250,7 @@ func (o AFDCustomDomainOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *AFDCustomDomain) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// Read only system data
 func (o AFDCustomDomainOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *AFDCustomDomain) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -282,7 +260,7 @@ func (o AFDCustomDomainOutput) TlsSettings() AFDDomainHttpsParametersResponsePtr
 	return o.ApplyT(func(v *AFDCustomDomain) AFDDomainHttpsParametersResponsePtrOutput { return v.TlsSettings }).(AFDDomainHttpsParametersResponsePtrOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type.
 func (o AFDCustomDomainOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *AFDCustomDomain) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

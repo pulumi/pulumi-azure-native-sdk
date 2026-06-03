@@ -8,18 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Class representing an event hub data connection.
 //
-// Uses Azure REST API version 2024-04-13. In version 2.x of the Azure Native provider, it used API version 2022-12-29.
+// Uses Azure REST API version 2022-12-29. In version 1.x of the Azure Native provider, it used API version 2021-01-01.
 type EventHubDataConnection struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The event hub messages compression type
 	Compression pulumi.StringPtrOutput `pulumi:"compression"`
 	// The event hub consumer group.
@@ -98,9 +96,6 @@ func NewEventHubDataConnection(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:kusto/v20191109:EventHubDataConnection"),
 		},
 		{
-			Type: pulumi.String("azure-native:kusto/v20200215:EventGridDataConnection"),
-		},
-		{
 			Type: pulumi.String("azure-native:kusto/v20200215:EventHubDataConnection"),
 		},
 		{
@@ -125,61 +120,16 @@ func NewEventHubDataConnection(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:kusto/v20221111:EventHubDataConnection"),
 		},
 		{
-			Type: pulumi.String("azure-native:kusto/v20221229:CosmosDbDataConnection"),
-		},
-		{
-			Type: pulumi.String("azure-native:kusto/v20221229:EventGridDataConnection"),
-		},
-		{
 			Type: pulumi.String("azure-native:kusto/v20221229:EventHubDataConnection"),
-		},
-		{
-			Type: pulumi.String("azure-native:kusto/v20221229:IotHubDataConnection"),
-		},
-		{
-			Type: pulumi.String("azure-native:kusto/v20230502:CosmosDbDataConnection"),
-		},
-		{
-			Type: pulumi.String("azure-native:kusto/v20230502:EventGridDataConnection"),
 		},
 		{
 			Type: pulumi.String("azure-native:kusto/v20230502:EventHubDataConnection"),
 		},
 		{
-			Type: pulumi.String("azure-native:kusto/v20230502:IotHubDataConnection"),
-		},
-		{
-			Type: pulumi.String("azure-native:kusto/v20230815:CosmosDbDataConnection"),
-		},
-		{
-			Type: pulumi.String("azure-native:kusto/v20230815:EventGridDataConnection"),
-		},
-		{
 			Type: pulumi.String("azure-native:kusto/v20230815:EventHubDataConnection"),
 		},
 		{
-			Type: pulumi.String("azure-native:kusto/v20230815:IotHubDataConnection"),
-		},
-		{
-			Type: pulumi.String("azure-native:kusto/v20240413:CosmosDbDataConnection"),
-		},
-		{
-			Type: pulumi.String("azure-native:kusto/v20240413:EventGridDataConnection"),
-		},
-		{
 			Type: pulumi.String("azure-native:kusto/v20240413:EventHubDataConnection"),
-		},
-		{
-			Type: pulumi.String("azure-native:kusto/v20240413:IotHubDataConnection"),
-		},
-		{
-			Type: pulumi.String("azure-native:kusto:CosmosDbDataConnection"),
-		},
-		{
-			Type: pulumi.String("azure-native:kusto:EventGridDataConnection"),
-		},
-		{
-			Type: pulumi.String("azure-native:kusto:IotHubDataConnection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -243,7 +193,7 @@ type eventHubDataConnectionArgs struct {
 	ManagedIdentityResourceId *string `pulumi:"managedIdentityResourceId"`
 	// The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.
 	MappingRuleName *string `pulumi:"mappingRuleName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group containing the Kusto cluster.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// When defined, the data connection retrieves existing Event hub events created since the Retrieval start date. It can only retrieve events retained by the Event hub, based on its retention period.
 	RetrievalStartDate *string `pulumi:"retrievalStartDate"`
@@ -280,7 +230,7 @@ type EventHubDataConnectionArgs struct {
 	ManagedIdentityResourceId pulumi.StringPtrInput
 	// The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.
 	MappingRuleName pulumi.StringPtrInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group containing the Kusto cluster.
 	ResourceGroupName pulumi.StringInput
 	// When defined, the data connection retrieves existing Event hub events created since the Retrieval start date. It can only retrieve events retained by the Event hub, based on its retention period.
 	RetrievalStartDate pulumi.StringPtrInput
@@ -323,11 +273,6 @@ func (o EventHubDataConnectionOutput) ToEventHubDataConnectionOutput() EventHubD
 
 func (o EventHubDataConnectionOutput) ToEventHubDataConnectionOutputWithContext(ctx context.Context) EventHubDataConnectionOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o EventHubDataConnectionOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *EventHubDataConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The event hub messages compression type

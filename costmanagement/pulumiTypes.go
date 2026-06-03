@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -1153,13 +1153,13 @@ func (o CommonExportPropertiesResponsePtrOutput) RunHistory() ExportExecutionLis
 
 // Details of any error encountered on last collection attempt
 type ConnectorCollectionErrorInfoResponse struct {
-	// Short error code
+	// Short error message
 	ErrorCode string `pulumi:"errorCode"`
 	// External Provider error message
-	ErrorInnerMessage string `pulumi:"errorInnerMessage"`
+	ErrorInnerMessage *string `pulumi:"errorInnerMessage"`
 	// Detailed error message
 	ErrorMessage string `pulumi:"errorMessage"`
-	// Time the error started occurring (Last time error occurred in lastChecked)
+	// Time the error started occurring (Last time error occurred in lastRun)
 	ErrorStartTime string `pulumi:"errorStartTime"`
 }
 
@@ -1178,14 +1178,14 @@ func (o ConnectorCollectionErrorInfoResponseOutput) ToConnectorCollectionErrorIn
 	return o
 }
 
-// Short error code
+// Short error message
 func (o ConnectorCollectionErrorInfoResponseOutput) ErrorCode() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectorCollectionErrorInfoResponse) string { return v.ErrorCode }).(pulumi.StringOutput)
 }
 
 // External Provider error message
-func (o ConnectorCollectionErrorInfoResponseOutput) ErrorInnerMessage() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectorCollectionErrorInfoResponse) string { return v.ErrorInnerMessage }).(pulumi.StringOutput)
+func (o ConnectorCollectionErrorInfoResponseOutput) ErrorInnerMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorCollectionErrorInfoResponse) *string { return v.ErrorInnerMessage }).(pulumi.StringPtrOutput)
 }
 
 // Detailed error message
@@ -1193,7 +1193,7 @@ func (o ConnectorCollectionErrorInfoResponseOutput) ErrorMessage() pulumi.String
 	return o.ApplyT(func(v ConnectorCollectionErrorInfoResponse) string { return v.ErrorMessage }).(pulumi.StringOutput)
 }
 
-// Time the error started occurring (Last time error occurred in lastChecked)
+// Time the error started occurring (Last time error occurred in lastRun)
 func (o ConnectorCollectionErrorInfoResponseOutput) ErrorStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectorCollectionErrorInfoResponse) string { return v.ErrorStartTime }).(pulumi.StringOutput)
 }
@@ -1222,7 +1222,7 @@ func (o ConnectorCollectionErrorInfoResponsePtrOutput) Elem() ConnectorCollectio
 	}).(ConnectorCollectionErrorInfoResponseOutput)
 }
 
-// Short error code
+// Short error message
 func (o ConnectorCollectionErrorInfoResponsePtrOutput) ErrorCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorCollectionErrorInfoResponse) *string {
 		if v == nil {
@@ -1238,7 +1238,7 @@ func (o ConnectorCollectionErrorInfoResponsePtrOutput) ErrorInnerMessage() pulum
 		if v == nil {
 			return nil
 		}
-		return &v.ErrorInnerMessage
+		return v.ErrorInnerMessage
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1252,103 +1252,9 @@ func (o ConnectorCollectionErrorInfoResponsePtrOutput) ErrorMessage() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// Time the error started occurring (Last time error occurred in lastChecked)
+// Time the error started occurring (Last time error occurred in lastRun)
 func (o ConnectorCollectionErrorInfoResponsePtrOutput) ErrorStartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectorCollectionErrorInfoResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ErrorStartTime
-	}).(pulumi.StringPtrOutput)
-}
-
-// Details of any error encountered on last collection attempt
-type ConnectorCollectionErrorInfoResponseV1 struct {
-	// Short error message
-	ErrorCode string `pulumi:"errorCode"`
-	// Detailed error message
-	ErrorMessage string `pulumi:"errorMessage"`
-	// Time the error started occurring (Last time error occurred in lastRun)
-	ErrorStartTime string `pulumi:"errorStartTime"`
-}
-
-// Details of any error encountered on last collection attempt
-type ConnectorCollectionErrorInfoResponseV1Output struct{ *pulumi.OutputState }
-
-func (ConnectorCollectionErrorInfoResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectorCollectionErrorInfoResponseV1)(nil)).Elem()
-}
-
-func (o ConnectorCollectionErrorInfoResponseV1Output) ToConnectorCollectionErrorInfoResponseV1Output() ConnectorCollectionErrorInfoResponseV1Output {
-	return o
-}
-
-func (o ConnectorCollectionErrorInfoResponseV1Output) ToConnectorCollectionErrorInfoResponseV1OutputWithContext(ctx context.Context) ConnectorCollectionErrorInfoResponseV1Output {
-	return o
-}
-
-// Short error message
-func (o ConnectorCollectionErrorInfoResponseV1Output) ErrorCode() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectorCollectionErrorInfoResponseV1) string { return v.ErrorCode }).(pulumi.StringOutput)
-}
-
-// Detailed error message
-func (o ConnectorCollectionErrorInfoResponseV1Output) ErrorMessage() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectorCollectionErrorInfoResponseV1) string { return v.ErrorMessage }).(pulumi.StringOutput)
-}
-
-// Time the error started occurring (Last time error occurred in lastRun)
-func (o ConnectorCollectionErrorInfoResponseV1Output) ErrorStartTime() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectorCollectionErrorInfoResponseV1) string { return v.ErrorStartTime }).(pulumi.StringOutput)
-}
-
-type ConnectorCollectionErrorInfoResponseV1PtrOutput struct{ *pulumi.OutputState }
-
-func (ConnectorCollectionErrorInfoResponseV1PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConnectorCollectionErrorInfoResponseV1)(nil)).Elem()
-}
-
-func (o ConnectorCollectionErrorInfoResponseV1PtrOutput) ToConnectorCollectionErrorInfoResponseV1PtrOutput() ConnectorCollectionErrorInfoResponseV1PtrOutput {
-	return o
-}
-
-func (o ConnectorCollectionErrorInfoResponseV1PtrOutput) ToConnectorCollectionErrorInfoResponseV1PtrOutputWithContext(ctx context.Context) ConnectorCollectionErrorInfoResponseV1PtrOutput {
-	return o
-}
-
-func (o ConnectorCollectionErrorInfoResponseV1PtrOutput) Elem() ConnectorCollectionErrorInfoResponseV1Output {
-	return o.ApplyT(func(v *ConnectorCollectionErrorInfoResponseV1) ConnectorCollectionErrorInfoResponseV1 {
-		if v != nil {
-			return *v
-		}
-		var ret ConnectorCollectionErrorInfoResponseV1
-		return ret
-	}).(ConnectorCollectionErrorInfoResponseV1Output)
-}
-
-// Short error message
-func (o ConnectorCollectionErrorInfoResponseV1PtrOutput) ErrorCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectorCollectionErrorInfoResponseV1) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ErrorCode
-	}).(pulumi.StringPtrOutput)
-}
-
-// Detailed error message
-func (o ConnectorCollectionErrorInfoResponseV1PtrOutput) ErrorMessage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectorCollectionErrorInfoResponseV1) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ErrorMessage
-	}).(pulumi.StringPtrOutput)
-}
-
-// Time the error started occurring (Last time error occurred in lastRun)
-func (o ConnectorCollectionErrorInfoResponseV1PtrOutput) ErrorStartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectorCollectionErrorInfoResponseV1) *string {
 		if v == nil {
 			return nil
 		}
@@ -1361,7 +1267,9 @@ type ConnectorCollectionInfoResponse struct {
 	// Error information of last collection
 	Error *ConnectorCollectionErrorInfoResponse `pulumi:"error"`
 	// Last time the data acquisition process initiated connecting to the external provider
-	LastChecked string `pulumi:"lastChecked"`
+	LastChecked *string `pulumi:"lastChecked"`
+	// Last time the data acquisition process completed (even if no new data was found)
+	LastRun string `pulumi:"lastRun"`
 	// Last time the external data was updated into Azure
 	LastUpdated string `pulumi:"lastUpdated"`
 	// Source timestamp of external data currently available in Azure (eg AWS last processed CUR file timestamp)
@@ -1389,8 +1297,13 @@ func (o ConnectorCollectionInfoResponseOutput) Error() ConnectorCollectionErrorI
 }
 
 // Last time the data acquisition process initiated connecting to the external provider
-func (o ConnectorCollectionInfoResponseOutput) LastChecked() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectorCollectionInfoResponse) string { return v.LastChecked }).(pulumi.StringOutput)
+func (o ConnectorCollectionInfoResponseOutput) LastChecked() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectorCollectionInfoResponse) *string { return v.LastChecked }).(pulumi.StringPtrOutput)
+}
+
+// Last time the data acquisition process completed (even if no new data was found)
+func (o ConnectorCollectionInfoResponseOutput) LastRun() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectorCollectionInfoResponse) string { return v.LastRun }).(pulumi.StringOutput)
 }
 
 // Last time the external data was updated into Azure
@@ -1401,53 +1314,6 @@ func (o ConnectorCollectionInfoResponseOutput) LastUpdated() pulumi.StringOutput
 // Source timestamp of external data currently available in Azure (eg AWS last processed CUR file timestamp)
 func (o ConnectorCollectionInfoResponseOutput) SourceLastUpdated() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectorCollectionInfoResponse) string { return v.SourceLastUpdated }).(pulumi.StringOutput)
-}
-
-// Collection and ingestion information
-type ConnectorCollectionInfoResponseV1 struct {
-	// Error information of last collection
-	Error *ConnectorCollectionErrorInfoResponseV1 `pulumi:"error"`
-	// Last time the data acquisition process completed (even if no new data was found)
-	LastRun string `pulumi:"lastRun"`
-	// Last time the external data was updated into Azure
-	LastUpdated string `pulumi:"lastUpdated"`
-	// Source timestamp of external data currently available in Azure (eg AWS last processed CUR file timestamp)
-	SourceLastUpdated string `pulumi:"sourceLastUpdated"`
-}
-
-// Collection and ingestion information
-type ConnectorCollectionInfoResponseV1Output struct{ *pulumi.OutputState }
-
-func (ConnectorCollectionInfoResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConnectorCollectionInfoResponseV1)(nil)).Elem()
-}
-
-func (o ConnectorCollectionInfoResponseV1Output) ToConnectorCollectionInfoResponseV1Output() ConnectorCollectionInfoResponseV1Output {
-	return o
-}
-
-func (o ConnectorCollectionInfoResponseV1Output) ToConnectorCollectionInfoResponseV1OutputWithContext(ctx context.Context) ConnectorCollectionInfoResponseV1Output {
-	return o
-}
-
-// Error information of last collection
-func (o ConnectorCollectionInfoResponseV1Output) Error() ConnectorCollectionErrorInfoResponseV1PtrOutput {
-	return o.ApplyT(func(v ConnectorCollectionInfoResponseV1) *ConnectorCollectionErrorInfoResponseV1 { return v.Error }).(ConnectorCollectionErrorInfoResponseV1PtrOutput)
-}
-
-// Last time the data acquisition process completed (even if no new data was found)
-func (o ConnectorCollectionInfoResponseV1Output) LastRun() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectorCollectionInfoResponseV1) string { return v.LastRun }).(pulumi.StringOutput)
-}
-
-// Last time the external data was updated into Azure
-func (o ConnectorCollectionInfoResponseV1Output) LastUpdated() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectorCollectionInfoResponseV1) string { return v.LastUpdated }).(pulumi.StringOutput)
-}
-
-// Source timestamp of external data currently available in Azure (eg AWS last processed CUR file timestamp)
-func (o ConnectorCollectionInfoResponseV1Output) SourceLastUpdated() pulumi.StringOutput {
-	return o.ApplyT(func(v ConnectorCollectionInfoResponseV1) string { return v.SourceLastUpdated }).(pulumi.StringOutput)
 }
 
 // Target resources and allocation
@@ -10479,240 +10345,6 @@ func (o SourceCostAllocationResourceResponseArrayOutput) Index(i pulumi.IntInput
 	}).(SourceCostAllocationResourceResponseOutput)
 }
 
-// Managed service identity (either system assigned, or none)
-type SystemAssignedServiceIdentity struct {
-	// Type of managed service identity (either system assigned, or none).
-	Type string `pulumi:"type"`
-}
-
-// SystemAssignedServiceIdentityInput is an input type that accepts SystemAssignedServiceIdentityArgs and SystemAssignedServiceIdentityOutput values.
-// You can construct a concrete instance of `SystemAssignedServiceIdentityInput` via:
-//
-//	SystemAssignedServiceIdentityArgs{...}
-type SystemAssignedServiceIdentityInput interface {
-	pulumi.Input
-
-	ToSystemAssignedServiceIdentityOutput() SystemAssignedServiceIdentityOutput
-	ToSystemAssignedServiceIdentityOutputWithContext(context.Context) SystemAssignedServiceIdentityOutput
-}
-
-// Managed service identity (either system assigned, or none)
-type SystemAssignedServiceIdentityArgs struct {
-	// Type of managed service identity (either system assigned, or none).
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (SystemAssignedServiceIdentityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemAssignedServiceIdentity)(nil)).Elem()
-}
-
-func (i SystemAssignedServiceIdentityArgs) ToSystemAssignedServiceIdentityOutput() SystemAssignedServiceIdentityOutput {
-	return i.ToSystemAssignedServiceIdentityOutputWithContext(context.Background())
-}
-
-func (i SystemAssignedServiceIdentityArgs) ToSystemAssignedServiceIdentityOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SystemAssignedServiceIdentityOutput)
-}
-
-func (i SystemAssignedServiceIdentityArgs) ToSystemAssignedServiceIdentityPtrOutput() SystemAssignedServiceIdentityPtrOutput {
-	return i.ToSystemAssignedServiceIdentityPtrOutputWithContext(context.Background())
-}
-
-func (i SystemAssignedServiceIdentityArgs) ToSystemAssignedServiceIdentityPtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SystemAssignedServiceIdentityOutput).ToSystemAssignedServiceIdentityPtrOutputWithContext(ctx)
-}
-
-// SystemAssignedServiceIdentityPtrInput is an input type that accepts SystemAssignedServiceIdentityArgs, SystemAssignedServiceIdentityPtr and SystemAssignedServiceIdentityPtrOutput values.
-// You can construct a concrete instance of `SystemAssignedServiceIdentityPtrInput` via:
-//
-//	        SystemAssignedServiceIdentityArgs{...}
-//
-//	or:
-//
-//	        nil
-type SystemAssignedServiceIdentityPtrInput interface {
-	pulumi.Input
-
-	ToSystemAssignedServiceIdentityPtrOutput() SystemAssignedServiceIdentityPtrOutput
-	ToSystemAssignedServiceIdentityPtrOutputWithContext(context.Context) SystemAssignedServiceIdentityPtrOutput
-}
-
-type systemAssignedServiceIdentityPtrType SystemAssignedServiceIdentityArgs
-
-func SystemAssignedServiceIdentityPtr(v *SystemAssignedServiceIdentityArgs) SystemAssignedServiceIdentityPtrInput {
-	return (*systemAssignedServiceIdentityPtrType)(v)
-}
-
-func (*systemAssignedServiceIdentityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SystemAssignedServiceIdentity)(nil)).Elem()
-}
-
-func (i *systemAssignedServiceIdentityPtrType) ToSystemAssignedServiceIdentityPtrOutput() SystemAssignedServiceIdentityPtrOutput {
-	return i.ToSystemAssignedServiceIdentityPtrOutputWithContext(context.Background())
-}
-
-func (i *systemAssignedServiceIdentityPtrType) ToSystemAssignedServiceIdentityPtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SystemAssignedServiceIdentityPtrOutput)
-}
-
-// Managed service identity (either system assigned, or none)
-type SystemAssignedServiceIdentityOutput struct{ *pulumi.OutputState }
-
-func (SystemAssignedServiceIdentityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemAssignedServiceIdentity)(nil)).Elem()
-}
-
-func (o SystemAssignedServiceIdentityOutput) ToSystemAssignedServiceIdentityOutput() SystemAssignedServiceIdentityOutput {
-	return o
-}
-
-func (o SystemAssignedServiceIdentityOutput) ToSystemAssignedServiceIdentityOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityOutput {
-	return o
-}
-
-func (o SystemAssignedServiceIdentityOutput) ToSystemAssignedServiceIdentityPtrOutput() SystemAssignedServiceIdentityPtrOutput {
-	return o.ToSystemAssignedServiceIdentityPtrOutputWithContext(context.Background())
-}
-
-func (o SystemAssignedServiceIdentityOutput) ToSystemAssignedServiceIdentityPtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SystemAssignedServiceIdentity) *SystemAssignedServiceIdentity {
-		return &v
-	}).(SystemAssignedServiceIdentityPtrOutput)
-}
-
-// Type of managed service identity (either system assigned, or none).
-func (o SystemAssignedServiceIdentityOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v SystemAssignedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type SystemAssignedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
-
-func (SystemAssignedServiceIdentityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SystemAssignedServiceIdentity)(nil)).Elem()
-}
-
-func (o SystemAssignedServiceIdentityPtrOutput) ToSystemAssignedServiceIdentityPtrOutput() SystemAssignedServiceIdentityPtrOutput {
-	return o
-}
-
-func (o SystemAssignedServiceIdentityPtrOutput) ToSystemAssignedServiceIdentityPtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityPtrOutput {
-	return o
-}
-
-func (o SystemAssignedServiceIdentityPtrOutput) Elem() SystemAssignedServiceIdentityOutput {
-	return o.ApplyT(func(v *SystemAssignedServiceIdentity) SystemAssignedServiceIdentity {
-		if v != nil {
-			return *v
-		}
-		var ret SystemAssignedServiceIdentity
-		return ret
-	}).(SystemAssignedServiceIdentityOutput)
-}
-
-// Type of managed service identity (either system assigned, or none).
-func (o SystemAssignedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemAssignedServiceIdentity) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// Managed service identity (either system assigned, or none)
-type SystemAssignedServiceIdentityResponse struct {
-	// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-	PrincipalId string `pulumi:"principalId"`
-	// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-	TenantId string `pulumi:"tenantId"`
-	// Type of managed service identity (either system assigned, or none).
-	Type string `pulumi:"type"`
-}
-
-// Managed service identity (either system assigned, or none)
-type SystemAssignedServiceIdentityResponseOutput struct{ *pulumi.OutputState }
-
-func (SystemAssignedServiceIdentityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SystemAssignedServiceIdentityResponse)(nil)).Elem()
-}
-
-func (o SystemAssignedServiceIdentityResponseOutput) ToSystemAssignedServiceIdentityResponseOutput() SystemAssignedServiceIdentityResponseOutput {
-	return o
-}
-
-func (o SystemAssignedServiceIdentityResponseOutput) ToSystemAssignedServiceIdentityResponseOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityResponseOutput {
-	return o
-}
-
-// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o SystemAssignedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v SystemAssignedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
-}
-
-// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o SystemAssignedServiceIdentityResponseOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v SystemAssignedServiceIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
-}
-
-// Type of managed service identity (either system assigned, or none).
-func (o SystemAssignedServiceIdentityResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v SystemAssignedServiceIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type SystemAssignedServiceIdentityResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SystemAssignedServiceIdentityResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SystemAssignedServiceIdentityResponse)(nil)).Elem()
-}
-
-func (o SystemAssignedServiceIdentityResponsePtrOutput) ToSystemAssignedServiceIdentityResponsePtrOutput() SystemAssignedServiceIdentityResponsePtrOutput {
-	return o
-}
-
-func (o SystemAssignedServiceIdentityResponsePtrOutput) ToSystemAssignedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityResponsePtrOutput {
-	return o
-}
-
-func (o SystemAssignedServiceIdentityResponsePtrOutput) Elem() SystemAssignedServiceIdentityResponseOutput {
-	return o.ApplyT(func(v *SystemAssignedServiceIdentityResponse) SystemAssignedServiceIdentityResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SystemAssignedServiceIdentityResponse
-		return ret
-	}).(SystemAssignedServiceIdentityResponseOutput)
-}
-
-// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o SystemAssignedServiceIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemAssignedServiceIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrincipalId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o SystemAssignedServiceIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemAssignedServiceIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TenantId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type of managed service identity (either system assigned, or none).
-func (o SystemAssignedServiceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemAssignedServiceIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -10776,7 +10408,7 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 
 // The properties of the tag inheritance setting.
 type TagInheritanceProperties struct {
-	// This property defines the behavior when an inherited tag being applied matches a lower scope tag (Eg. Subscription tag matches the resource tag). If set to true - when tags match, the highest scope tags will be applied. Billing profile is the highest scope,  followed by invoice sections, subscriptions and resource groups (allows overriding of lower scope tag values). If set to false - when tags match, the lowest scope tags will be applied. So, if a resource has the same tag as a subscription tag, the resource tag will be applied (does not allow overriding of lower scope tag values).
+	// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
 	PreferContainerTags bool `pulumi:"preferContainerTags"`
 }
 
@@ -10793,7 +10425,7 @@ type TagInheritancePropertiesInput interface {
 
 // The properties of the tag inheritance setting.
 type TagInheritancePropertiesArgs struct {
-	// This property defines the behavior when an inherited tag being applied matches a lower scope tag (Eg. Subscription tag matches the resource tag). If set to true - when tags match, the highest scope tags will be applied. Billing profile is the highest scope,  followed by invoice sections, subscriptions and resource groups (allows overriding of lower scope tag values). If set to false - when tags match, the lowest scope tags will be applied. So, if a resource has the same tag as a subscription tag, the resource tag will be applied (does not allow overriding of lower scope tag values).
+	// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
 	PreferContainerTags pulumi.BoolInput `pulumi:"preferContainerTags"`
 }
 
@@ -10875,7 +10507,7 @@ func (o TagInheritancePropertiesOutput) ToTagInheritancePropertiesPtrOutputWithC
 	}).(TagInheritancePropertiesPtrOutput)
 }
 
-// This property defines the behavior when an inherited tag being applied matches a lower scope tag (Eg. Subscription tag matches the resource tag). If set to true - when tags match, the highest scope tags will be applied. Billing profile is the highest scope,  followed by invoice sections, subscriptions and resource groups (allows overriding of lower scope tag values). If set to false - when tags match, the lowest scope tags will be applied. So, if a resource has the same tag as a subscription tag, the resource tag will be applied (does not allow overriding of lower scope tag values).
+// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
 func (o TagInheritancePropertiesOutput) PreferContainerTags() pulumi.BoolOutput {
 	return o.ApplyT(func(v TagInheritanceProperties) bool { return v.PreferContainerTags }).(pulumi.BoolOutput)
 }
@@ -10904,7 +10536,7 @@ func (o TagInheritancePropertiesPtrOutput) Elem() TagInheritancePropertiesOutput
 	}).(TagInheritancePropertiesOutput)
 }
 
-// This property defines the behavior when an inherited tag being applied matches a lower scope tag (Eg. Subscription tag matches the resource tag). If set to true - when tags match, the highest scope tags will be applied. Billing profile is the highest scope,  followed by invoice sections, subscriptions and resource groups (allows overriding of lower scope tag values). If set to false - when tags match, the lowest scope tags will be applied. So, if a resource has the same tag as a subscription tag, the resource tag will be applied (does not allow overriding of lower scope tag values).
+// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
 func (o TagInheritancePropertiesPtrOutput) PreferContainerTags() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TagInheritanceProperties) *bool {
 		if v == nil {
@@ -10916,7 +10548,7 @@ func (o TagInheritancePropertiesPtrOutput) PreferContainerTags() pulumi.BoolPtrO
 
 // The properties of the tag inheritance setting.
 type TagInheritancePropertiesResponse struct {
-	// This property defines the behavior when an inherited tag being applied matches a lower scope tag (Eg. Subscription tag matches the resource tag). If set to true - when tags match, the highest scope tags will be applied. Billing profile is the highest scope,  followed by invoice sections, subscriptions and resource groups (allows overriding of lower scope tag values). If set to false - when tags match, the lowest scope tags will be applied. So, if a resource has the same tag as a subscription tag, the resource tag will be applied (does not allow overriding of lower scope tag values).
+	// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
 	PreferContainerTags bool `pulumi:"preferContainerTags"`
 }
 
@@ -10935,7 +10567,7 @@ func (o TagInheritancePropertiesResponseOutput) ToTagInheritancePropertiesRespon
 	return o
 }
 
-// This property defines the behavior when an inherited tag being applied matches a lower scope tag (Eg. Subscription tag matches the resource tag). If set to true - when tags match, the highest scope tags will be applied. Billing profile is the highest scope,  followed by invoice sections, subscriptions and resource groups (allows overriding of lower scope tag values). If set to false - when tags match, the lowest scope tags will be applied. So, if a resource has the same tag as a subscription tag, the resource tag will be applied (does not allow overriding of lower scope tag values).
+// When resource has the same tag as subscription or resource group and this property is set to true - the subscription or resource group tag will be applied. If subscription and resource group tags are also the same, subscription tag will be applied.
 func (o TagInheritancePropertiesResponseOutput) PreferContainerTags() pulumi.BoolOutput {
 	return o.ApplyT(func(v TagInheritancePropertiesResponse) bool { return v.PreferContainerTags }).(pulumi.BoolOutput)
 }
@@ -11153,10 +10785,7 @@ func init() {
 	pulumi.RegisterOutputType(CommonExportPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(ConnectorCollectionErrorInfoResponseOutput{})
 	pulumi.RegisterOutputType(ConnectorCollectionErrorInfoResponsePtrOutput{})
-	pulumi.RegisterOutputType(ConnectorCollectionErrorInfoResponseV1Output{})
-	pulumi.RegisterOutputType(ConnectorCollectionErrorInfoResponseV1PtrOutput{})
 	pulumi.RegisterOutputType(ConnectorCollectionInfoResponseOutput{})
-	pulumi.RegisterOutputType(ConnectorCollectionInfoResponseV1Output{})
 	pulumi.RegisterOutputType(CostAllocationProportionOutput{})
 	pulumi.RegisterOutputType(CostAllocationProportionArrayOutput{})
 	pulumi.RegisterOutputType(CostAllocationProportionResponseOutput{})
@@ -11312,10 +10941,6 @@ func init() {
 	pulumi.RegisterOutputType(SourceCostAllocationResourceArrayOutput{})
 	pulumi.RegisterOutputType(SourceCostAllocationResourceResponseOutput{})
 	pulumi.RegisterOutputType(SourceCostAllocationResourceResponseArrayOutput{})
-	pulumi.RegisterOutputType(SystemAssignedServiceIdentityOutput{})
-	pulumi.RegisterOutputType(SystemAssignedServiceIdentityPtrOutput{})
-	pulumi.RegisterOutputType(SystemAssignedServiceIdentityResponseOutput{})
-	pulumi.RegisterOutputType(SystemAssignedServiceIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(TagInheritancePropertiesOutput{})
 	pulumi.RegisterOutputType(TagInheritancePropertiesPtrOutput{})

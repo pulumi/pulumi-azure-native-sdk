@@ -8,13 +8,13 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents Anomaly Security ML Analytics Settings
 //
-// Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
+// Uses Azure REST API version 2023-02-01. In version 1.x of the Azure Native provider, it used API version 2022-05-01-preview.
 type AnomalySecurityMLAnalyticsSettings struct {
 	pulumi.CustomResourceState
 
@@ -22,8 +22,6 @@ type AnomalySecurityMLAnalyticsSettings struct {
 	AnomalySettingsVersion pulumi.IntPtrOutput `pulumi:"anomalySettingsVersion"`
 	// The anomaly version of the AnomalySecurityMLAnalyticsSettings.
 	AnomalyVersion pulumi.StringOutput `pulumi:"anomalyVersion"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The customizable observations of the AnomalySecurityMLAnalyticsSettings.
 	CustomizableObservations pulumi.AnyOutput `pulumi:"customizableObservations"`
 	// The description of the SecurityMLAnalyticsSettings.
@@ -181,18 +179,6 @@ func NewAnomalySecurityMLAnalyticsSettings(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250301:AnomalySecurityMLAnalyticsSettings"),
 		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20250401preview:AnomalySecurityMLAnalyticsSettings"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20250601:AnomalySecurityMLAnalyticsSettings"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20250701preview:AnomalySecurityMLAnalyticsSettings"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20250901:AnomalySecurityMLAnalyticsSettings"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -349,11 +335,6 @@ func (o AnomalySecurityMLAnalyticsSettingsOutput) AnomalySettingsVersion() pulum
 // The anomaly version of the AnomalySecurityMLAnalyticsSettings.
 func (o AnomalySecurityMLAnalyticsSettingsOutput) AnomalyVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *AnomalySecurityMLAnalyticsSettings) pulumi.StringOutput { return v.AnomalyVersion }).(pulumi.StringOutput)
-}
-
-// The Azure API version of the resource.
-func (o AnomalySecurityMLAnalyticsSettingsOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *AnomalySecurityMLAnalyticsSettings) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The customizable observations of the AnomalySecurityMLAnalyticsSettings.

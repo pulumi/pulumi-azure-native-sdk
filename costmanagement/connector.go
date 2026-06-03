@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Connector model definition
 //
-// Uses Azure REST API version 2018-08-01-preview. In version 2.x of the Azure Native provider, it used API version 2018-08-01-preview.
+// Uses Azure REST API version 2018-08-01-preview.
 type Connector struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Collection information
-	Collection ConnectorCollectionInfoResponseV1Output `pulumi:"collection"`
+	Collection ConnectorCollectionInfoResponseOutput `pulumi:"collection"`
 	// Connector definition creation datetime
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// Credentials authentication key (eg AWS ARN)
@@ -63,13 +61,7 @@ func NewConnector(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:costmanagement/v20180801preview:Connector"),
 		},
 		{
-			Type: pulumi.String("azure-native:costmanagement/v20190301preview:CloudConnector"),
-		},
-		{
 			Type: pulumi.String("azure-native:costmanagement/v20190301preview:Connector"),
-		},
-		{
-			Type: pulumi.String("azure-native:costmanagement:CloudConnector"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -189,14 +181,9 @@ func (o ConnectorOutput) ToConnectorOutputWithContext(ctx context.Context) Conne
 	return o
 }
 
-// The Azure API version of the resource.
-func (o ConnectorOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Collection information
-func (o ConnectorOutput) Collection() ConnectorCollectionInfoResponseV1Output {
-	return o.ApplyT(func(v *Connector) ConnectorCollectionInfoResponseV1Output { return v.Collection }).(ConnectorCollectionInfoResponseV1Output)
+func (o ConnectorOutput) Collection() ConnectorCollectionInfoResponseOutput {
+	return o.ApplyT(func(v *Connector) ConnectorCollectionInfoResponseOutput { return v.Collection }).(ConnectorCollectionInfoResponseOutput)
 }
 
 // Connector definition creation datetime

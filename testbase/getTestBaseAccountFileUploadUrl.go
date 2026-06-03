@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the file upload URL of a Test Base Account.
 //
-// Uses Azure REST API version 2023-11-01-preview.
+// Uses Azure REST API version 2022-04-01-preview.
 //
-// Other available API versions: 2022-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native testbase [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-11-01-preview.
 func GetTestBaseAccountFileUploadUrl(ctx *pulumi.Context, args *GetTestBaseAccountFileUploadUrlArgs, opts ...pulumi.InvokeOption) (*GetTestBaseAccountFileUploadUrlResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetTestBaseAccountFileUploadUrlResult
@@ -29,10 +29,8 @@ func GetTestBaseAccountFileUploadUrl(ctx *pulumi.Context, args *GetTestBaseAccou
 type GetTestBaseAccountFileUploadUrlArgs struct {
 	// The custom file name of the uploaded blob.
 	BlobName *string `pulumi:"blobName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the resource.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Resource type for file uploading.
-	ResourceType *string `pulumi:"resourceType"`
 	// The resource name of the Test Base Account.
 	TestBaseAccountName string `pulumi:"testBaseAccountName"`
 }
@@ -57,10 +55,8 @@ func GetTestBaseAccountFileUploadUrlOutput(ctx *pulumi.Context, args GetTestBase
 type GetTestBaseAccountFileUploadUrlOutputArgs struct {
 	// The custom file name of the uploaded blob.
 	BlobName pulumi.StringPtrInput `pulumi:"blobName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group that contains the resource.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// Resource type for file uploading.
-	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
 	// The resource name of the Test Base Account.
 	TestBaseAccountName pulumi.StringInput `pulumi:"testBaseAccountName"`
 }

@@ -8,30 +8,26 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The service entity.
 //
-// Uses Azure REST API version 2024-03-15-preview. In version 2.x of the Azure Native provider, it used API version 2023-07-01-preview.
+// Uses Azure REST API version 2023-07-01-preview.
 //
-// Other available API versions: 2023-07-01-preview, 2024-03-01, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apicenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-03-01, 2024-03-15-preview, 2024-06-01-preview.
 type Service struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// The managed service identities assigned to this resource.
+	// The identity of the service.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Provisioning state of the service.
+	// The status of the last operation.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Flag used to restore soft-deleted API Center service. If specified and set to 'true' all other properties will be ignored.
-	Restore pulumi.BoolPtrOutput `pulumi:"restore"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -49,9 +45,6 @@ func NewService(ctx *pulumi.Context,
 
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
-	}
-	if args.Restore == nil {
-		args.Restore = pulumi.BoolPtr(false)
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -101,15 +94,13 @@ func (ServiceState) ElementType() reflect.Type {
 }
 
 type serviceArgs struct {
-	// The managed service identities assigned to this resource.
+	// The identity of the service.
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Flag used to restore soft-deleted API Center service. If specified and set to 'true' all other properties will be ignored.
-	Restore *bool `pulumi:"restore"`
-	// The name of Azure API Center service.
+	// Service name
 	ServiceName *string `pulumi:"serviceName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -117,15 +108,13 @@ type serviceArgs struct {
 
 // The set of arguments for constructing a Service resource.
 type ServiceArgs struct {
-	// The managed service identities assigned to this resource.
+	// The identity of the service.
 	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Flag used to restore soft-deleted API Center service. If specified and set to 'true' all other properties will be ignored.
-	Restore pulumi.BoolPtrInput
-	// The name of Azure API Center service.
+	// Service name
 	ServiceName pulumi.StringPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
@@ -168,12 +157,7 @@ func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOu
 	return o
 }
 
-// The Azure API version of the resource.
-func (o ServiceOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// The managed service identities assigned to this resource.
+// The identity of the service.
 func (o ServiceOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *Service) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
@@ -188,14 +172,9 @@ func (o ServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Provisioning state of the service.
+// The status of the last operation.
 func (o ServiceOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Flag used to restore soft-deleted API Center service. If specified and set to 'true' all other properties will be ignored.
-func (o ServiceOutput) Restore() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Service) pulumi.BoolPtrOutput { return v.Restore }).(pulumi.BoolPtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

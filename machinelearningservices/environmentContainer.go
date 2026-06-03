@@ -8,24 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Resource Manager resource envelope.
 //
-// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+// Uses Azure REST API version 2023-04-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01-preview.
 //
-// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
 type EnvironmentContainer struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// [Required] Additional attributes of the entity.
+	EnvironmentContainerProperties EnvironmentContainerResponseOutput `pulumi:"environmentContainerProperties"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// [Required] Additional attributes of the entity.
-	Properties EnvironmentContainerPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -39,8 +37,8 @@ func NewEnvironmentContainer(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Properties == nil {
-		return nil, errors.New("invalid value for required argument 'Properties'")
+	if args.EnvironmentContainerProperties == nil {
+		return nil, errors.New("invalid value for required argument 'EnvironmentContainerProperties'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
@@ -48,7 +46,7 @@ func NewEnvironmentContainer(ctx *pulumi.Context,
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
-	args.Properties = args.Properties.ToEnvironmentContainerPropertiesOutput().ApplyT(func(v EnvironmentContainerProperties) EnvironmentContainerProperties { return *v.Defaults() }).(EnvironmentContainerPropertiesOutput)
+	args.EnvironmentContainerProperties = args.EnvironmentContainerProperties.ToEnvironmentContainerTypeOutput().ApplyT(func(v EnvironmentContainerType) EnvironmentContainerType { return *v.Defaults() }).(EnvironmentContainerTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20210301preview:EnvironmentContainer"),
@@ -110,27 +108,6 @@ func NewEnvironmentContainer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:EnvironmentContainer"),
 		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250401:EnvironmentContainer"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250401preview:EnvironmentContainer"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250601:EnvironmentContainer"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250701preview:EnvironmentContainer"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250901:EnvironmentContainer"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20251001preview:EnvironmentContainer"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20251201:EnvironmentContainer"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -166,10 +143,10 @@ func (EnvironmentContainerState) ElementType() reflect.Type {
 }
 
 type environmentContainerArgs struct {
+	// [Required] Additional attributes of the entity.
+	EnvironmentContainerProperties EnvironmentContainerType `pulumi:"environmentContainerProperties"`
 	// Container name. This is case-sensitive.
 	Name *string `pulumi:"name"`
-	// [Required] Additional attributes of the entity.
-	Properties EnvironmentContainerProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of Azure Machine Learning workspace.
@@ -178,10 +155,10 @@ type environmentContainerArgs struct {
 
 // The set of arguments for constructing a EnvironmentContainer resource.
 type EnvironmentContainerArgs struct {
+	// [Required] Additional attributes of the entity.
+	EnvironmentContainerProperties EnvironmentContainerTypeInput
 	// Container name. This is case-sensitive.
 	Name pulumi.StringPtrInput
-	// [Required] Additional attributes of the entity.
-	Properties EnvironmentContainerPropertiesInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Name of Azure Machine Learning workspace.
@@ -225,19 +202,16 @@ func (o EnvironmentContainerOutput) ToEnvironmentContainerOutputWithContext(ctx 
 	return o
 }
 
-// The Azure API version of the resource.
-func (o EnvironmentContainerOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *EnvironmentContainer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+// [Required] Additional attributes of the entity.
+func (o EnvironmentContainerOutput) EnvironmentContainerProperties() EnvironmentContainerResponseOutput {
+	return o.ApplyT(func(v *EnvironmentContainer) EnvironmentContainerResponseOutput {
+		return v.EnvironmentContainerProperties
+	}).(EnvironmentContainerResponseOutput)
 }
 
 // The name of the resource
 func (o EnvironmentContainerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnvironmentContainer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
-}
-
-// [Required] Additional attributes of the entity.
-func (o EnvironmentContainerOutput) Properties() EnvironmentContainerPropertiesResponseOutput {
-	return o.ApplyT(func(v *EnvironmentContainer) EnvironmentContainerPropertiesResponseOutput { return v.Properties }).(EnvironmentContainerPropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

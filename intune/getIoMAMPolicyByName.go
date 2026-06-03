@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns Intune iOS policies.
 //
 // Uses Azure REST API version 2015-01-14-preview.
+//
+// Other available API versions: 2015-01-14-privatepreview.
 func LookupIoMAMPolicyByName(ctx *pulumi.Context, args *LookupIoMAMPolicyByNameArgs, opts ...pulumi.InvokeOption) (*LookupIoMAMPolicyByNameResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIoMAMPolicyByNameResult
@@ -40,16 +42,14 @@ type LookupIoMAMPolicyByNameResult struct {
 	AppSharingFromLevel         *string `pulumi:"appSharingFromLevel"`
 	AppSharingToLevel           *string `pulumi:"appSharingToLevel"`
 	Authentication              *string `pulumi:"authentication"`
-	// The Azure API version of the resource.
-	AzureApiVersion       string  `pulumi:"azureApiVersion"`
-	ClipboardSharingLevel *string `pulumi:"clipboardSharingLevel"`
-	DataBackup            *string `pulumi:"dataBackup"`
-	Description           *string `pulumi:"description"`
-	DeviceCompliance      *string `pulumi:"deviceCompliance"`
-	FileEncryptionLevel   *string `pulumi:"fileEncryptionLevel"`
-	FileSharingSaveAs     *string `pulumi:"fileSharingSaveAs"`
-	FriendlyName          string  `pulumi:"friendlyName"`
-	GroupStatus           string  `pulumi:"groupStatus"`
+	ClipboardSharingLevel       *string `pulumi:"clipboardSharingLevel"`
+	DataBackup                  *string `pulumi:"dataBackup"`
+	Description                 *string `pulumi:"description"`
+	DeviceCompliance            *string `pulumi:"deviceCompliance"`
+	FileEncryptionLevel         *string `pulumi:"fileEncryptionLevel"`
+	FileSharingSaveAs           *string `pulumi:"fileSharingSaveAs"`
+	FriendlyName                string  `pulumi:"friendlyName"`
+	GroupStatus                 string  `pulumi:"groupStatus"`
 	// Resource Id
 	Id               string `pulumi:"id"`
 	LastModifiedTime string `pulumi:"lastModifiedTime"`
@@ -179,11 +179,6 @@ func (o LookupIoMAMPolicyByNameResultOutput) AppSharingToLevel() pulumi.StringPt
 
 func (o LookupIoMAMPolicyByNameResultOutput) Authentication() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupIoMAMPolicyByNameResult) *string { return v.Authentication }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupIoMAMPolicyByNameResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIoMAMPolicyByNameResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupIoMAMPolicyByNameResultOutput) ClipboardSharingLevel() pulumi.StringPtrOutput {

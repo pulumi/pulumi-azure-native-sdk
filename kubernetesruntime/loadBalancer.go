@@ -8,13 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A LoadBalancer resource for an Arc connected cluster (Microsoft.Kubernetes/connectedClusters)
 //
-// Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2024-03-01.
+// Uses Azure REST API version 2024-03-01.
+//
+// Other available API versions: 2023-10-01-preview.
 type LoadBalancer struct {
 	pulumi.CustomResourceState
 
@@ -22,8 +24,6 @@ type LoadBalancer struct {
 	Addresses pulumi.StringArrayOutput `pulumi:"addresses"`
 	// Advertise Mode
 	AdvertiseMode pulumi.StringOutput `pulumi:"advertiseMode"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The list of BGP peers it should advertise to. Null or empty means to advertise to all peers.
 	BgpPeers pulumi.StringArrayOutput `pulumi:"bgpPeers"`
 	// The name of the resource
@@ -171,11 +171,6 @@ func (o LoadBalancerOutput) Addresses() pulumi.StringArrayOutput {
 // Advertise Mode
 func (o LoadBalancerOutput) AdvertiseMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.AdvertiseMode }).(pulumi.StringOutput)
-}
-
-// The Azure API version of the resource.
-func (o LoadBalancerOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The list of BGP peers it should advertise to. Null or empty means to advertise to all peers.

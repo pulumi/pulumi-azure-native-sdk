@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'.
+// Identity type
 type ManagedIdentityTypes string
 
 const (

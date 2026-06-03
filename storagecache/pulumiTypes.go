@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -622,10 +622,8 @@ func (o AmlFilesystemHsmPtrOutput) Settings() AmlFilesystemHsmSettingsPtrOutput 
 type AmlFilesystemHsmSettings struct {
 	// Resource ID of storage container used for hydrating the namespace and archiving from the namespace. The resource provider must have permission to create SAS tokens on the storage account.
 	Container string `pulumi:"container"`
-	// Only blobs in the non-logging container that start with this path/prefix get imported into the cluster namespace. This is only used during initial creation of the AML file system. It automatically creates an import job resource that can be deleted.
+	// Only blobs in the non-logging container that start with this path/prefix get hydrated into the cluster namespace.
 	ImportPrefix *string `pulumi:"importPrefix"`
-	// Only blobs in the non-logging container that start with one of the paths/prefixes in this array get imported into the cluster namespace. This is only used during initial creation of the AML file system and has '/' as the default value. It automatically creates an import job resource that can be deleted.
-	ImportPrefixesInitial []string `pulumi:"importPrefixesInitial"`
 	// Resource ID of storage container used for logging events and errors.  Must be a separate container in the same storage account as the hydration and archive container. The resource provider must have permission to create SAS tokens on the storage account.
 	LoggingContainer string `pulumi:"loggingContainer"`
 }
@@ -658,10 +656,8 @@ type AmlFilesystemHsmSettingsInput interface {
 type AmlFilesystemHsmSettingsArgs struct {
 	// Resource ID of storage container used for hydrating the namespace and archiving from the namespace. The resource provider must have permission to create SAS tokens on the storage account.
 	Container pulumi.StringInput `pulumi:"container"`
-	// Only blobs in the non-logging container that start with this path/prefix get imported into the cluster namespace. This is only used during initial creation of the AML file system. It automatically creates an import job resource that can be deleted.
+	// Only blobs in the non-logging container that start with this path/prefix get hydrated into the cluster namespace.
 	ImportPrefix pulumi.StringPtrInput `pulumi:"importPrefix"`
-	// Only blobs in the non-logging container that start with one of the paths/prefixes in this array get imported into the cluster namespace. This is only used during initial creation of the AML file system and has '/' as the default value. It automatically creates an import job resource that can be deleted.
-	ImportPrefixesInitial pulumi.StringArrayInput `pulumi:"importPrefixesInitial"`
 	// Resource ID of storage container used for logging events and errors.  Must be a separate container in the same storage account as the hydration and archive container. The resource provider must have permission to create SAS tokens on the storage account.
 	LoggingContainer pulumi.StringInput `pulumi:"loggingContainer"`
 }
@@ -760,14 +756,9 @@ func (o AmlFilesystemHsmSettingsOutput) Container() pulumi.StringOutput {
 	return o.ApplyT(func(v AmlFilesystemHsmSettings) string { return v.Container }).(pulumi.StringOutput)
 }
 
-// Only blobs in the non-logging container that start with this path/prefix get imported into the cluster namespace. This is only used during initial creation of the AML file system. It automatically creates an import job resource that can be deleted.
+// Only blobs in the non-logging container that start with this path/prefix get hydrated into the cluster namespace.
 func (o AmlFilesystemHsmSettingsOutput) ImportPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AmlFilesystemHsmSettings) *string { return v.ImportPrefix }).(pulumi.StringPtrOutput)
-}
-
-// Only blobs in the non-logging container that start with one of the paths/prefixes in this array get imported into the cluster namespace. This is only used during initial creation of the AML file system and has '/' as the default value. It automatically creates an import job resource that can be deleted.
-func (o AmlFilesystemHsmSettingsOutput) ImportPrefixesInitial() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AmlFilesystemHsmSettings) []string { return v.ImportPrefixesInitial }).(pulumi.StringArrayOutput)
 }
 
 // Resource ID of storage container used for logging events and errors.  Must be a separate container in the same storage account as the hydration and archive container. The resource provider must have permission to create SAS tokens on the storage account.
@@ -809,7 +800,7 @@ func (o AmlFilesystemHsmSettingsPtrOutput) Container() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Only blobs in the non-logging container that start with this path/prefix get imported into the cluster namespace. This is only used during initial creation of the AML file system. It automatically creates an import job resource that can be deleted.
+// Only blobs in the non-logging container that start with this path/prefix get hydrated into the cluster namespace.
 func (o AmlFilesystemHsmSettingsPtrOutput) ImportPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AmlFilesystemHsmSettings) *string {
 		if v == nil {
@@ -817,16 +808,6 @@ func (o AmlFilesystemHsmSettingsPtrOutput) ImportPrefix() pulumi.StringPtrOutput
 		}
 		return v.ImportPrefix
 	}).(pulumi.StringPtrOutput)
-}
-
-// Only blobs in the non-logging container that start with one of the paths/prefixes in this array get imported into the cluster namespace. This is only used during initial creation of the AML file system and has '/' as the default value. It automatically creates an import job resource that can be deleted.
-func (o AmlFilesystemHsmSettingsPtrOutput) ImportPrefixesInitial() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *AmlFilesystemHsmSettings) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ImportPrefixesInitial
-	}).(pulumi.StringArrayOutput)
 }
 
 // Resource ID of storage container used for logging events and errors.  Must be a separate container in the same storage account as the hydration and archive container. The resource provider must have permission to create SAS tokens on the storage account.
@@ -843,10 +824,8 @@ func (o AmlFilesystemHsmSettingsPtrOutput) LoggingContainer() pulumi.StringPtrOu
 type AmlFilesystemHsmSettingsResponse struct {
 	// Resource ID of storage container used for hydrating the namespace and archiving from the namespace. The resource provider must have permission to create SAS tokens on the storage account.
 	Container string `pulumi:"container"`
-	// Only blobs in the non-logging container that start with this path/prefix get imported into the cluster namespace. This is only used during initial creation of the AML file system. It automatically creates an import job resource that can be deleted.
+	// Only blobs in the non-logging container that start with this path/prefix get hydrated into the cluster namespace.
 	ImportPrefix *string `pulumi:"importPrefix"`
-	// Only blobs in the non-logging container that start with one of the paths/prefixes in this array get imported into the cluster namespace. This is only used during initial creation of the AML file system and has '/' as the default value. It automatically creates an import job resource that can be deleted.
-	ImportPrefixesInitial []string `pulumi:"importPrefixesInitial"`
 	// Resource ID of storage container used for logging events and errors.  Must be a separate container in the same storage account as the hydration and archive container. The resource provider must have permission to create SAS tokens on the storage account.
 	LoggingContainer string `pulumi:"loggingContainer"`
 }
@@ -884,14 +863,9 @@ func (o AmlFilesystemHsmSettingsResponseOutput) Container() pulumi.StringOutput 
 	return o.ApplyT(func(v AmlFilesystemHsmSettingsResponse) string { return v.Container }).(pulumi.StringOutput)
 }
 
-// Only blobs in the non-logging container that start with this path/prefix get imported into the cluster namespace. This is only used during initial creation of the AML file system. It automatically creates an import job resource that can be deleted.
+// Only blobs in the non-logging container that start with this path/prefix get hydrated into the cluster namespace.
 func (o AmlFilesystemHsmSettingsResponseOutput) ImportPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AmlFilesystemHsmSettingsResponse) *string { return v.ImportPrefix }).(pulumi.StringPtrOutput)
-}
-
-// Only blobs in the non-logging container that start with one of the paths/prefixes in this array get imported into the cluster namespace. This is only used during initial creation of the AML file system and has '/' as the default value. It automatically creates an import job resource that can be deleted.
-func (o AmlFilesystemHsmSettingsResponseOutput) ImportPrefixesInitial() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AmlFilesystemHsmSettingsResponse) []string { return v.ImportPrefixesInitial }).(pulumi.StringArrayOutput)
 }
 
 // Resource ID of storage container used for logging events and errors.  Must be a separate container in the same storage account as the hydration and archive container. The resource provider must have permission to create SAS tokens on the storage account.
@@ -933,7 +907,7 @@ func (o AmlFilesystemHsmSettingsResponsePtrOutput) Container() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Only blobs in the non-logging container that start with this path/prefix get imported into the cluster namespace. This is only used during initial creation of the AML file system. It automatically creates an import job resource that can be deleted.
+// Only blobs in the non-logging container that start with this path/prefix get hydrated into the cluster namespace.
 func (o AmlFilesystemHsmSettingsResponsePtrOutput) ImportPrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AmlFilesystemHsmSettingsResponse) *string {
 		if v == nil {
@@ -941,16 +915,6 @@ func (o AmlFilesystemHsmSettingsResponsePtrOutput) ImportPrefix() pulumi.StringP
 		}
 		return v.ImportPrefix
 	}).(pulumi.StringPtrOutput)
-}
-
-// Only blobs in the non-logging container that start with one of the paths/prefixes in this array get imported into the cluster namespace. This is only used during initial creation of the AML file system and has '/' as the default value. It automatically creates an import job resource that can be deleted.
-func (o AmlFilesystemHsmSettingsResponsePtrOutput) ImportPrefixesInitial() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *AmlFilesystemHsmSettingsResponse) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ImportPrefixesInitial
-	}).(pulumi.StringArrayOutput)
 }
 
 // Resource ID of storage container used for logging events and errors.  Must be a separate container in the same storage account as the hydration and archive container. The resource provider must have permission to create SAS tokens on the storage account.
@@ -1418,441 +1382,6 @@ func (o AmlFilesystemResponseMaintenanceWindowOutput) DayOfWeek() pulumi.StringP
 // The time of day (in UTC) to start the maintenance window.
 func (o AmlFilesystemResponseMaintenanceWindowOutput) TimeOfDayUTC() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AmlFilesystemResponseMaintenanceWindow) *string { return v.TimeOfDayUTC }).(pulumi.StringPtrOutput)
-}
-
-// AML file system squash settings.
-type AmlFilesystemRootSquashSettings struct {
-	// Squash mode of the AML file system. 'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems. 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems. 'None': No squashing of User and Group IDs is performed for any users on any systems.
-	Mode *string `pulumi:"mode"`
-	// Semicolon separated NID IP Address list(s) to be added to the TrustedSystems.
-	NoSquashNidLists *string `pulumi:"noSquashNidLists"`
-	// Group ID to squash to.
-	SquashGID *float64 `pulumi:"squashGID"`
-	// User ID to squash to.
-	SquashUID *float64 `pulumi:"squashUID"`
-}
-
-// AmlFilesystemRootSquashSettingsInput is an input type that accepts AmlFilesystemRootSquashSettingsArgs and AmlFilesystemRootSquashSettingsOutput values.
-// You can construct a concrete instance of `AmlFilesystemRootSquashSettingsInput` via:
-//
-//	AmlFilesystemRootSquashSettingsArgs{...}
-type AmlFilesystemRootSquashSettingsInput interface {
-	pulumi.Input
-
-	ToAmlFilesystemRootSquashSettingsOutput() AmlFilesystemRootSquashSettingsOutput
-	ToAmlFilesystemRootSquashSettingsOutputWithContext(context.Context) AmlFilesystemRootSquashSettingsOutput
-}
-
-// AML file system squash settings.
-type AmlFilesystemRootSquashSettingsArgs struct {
-	// Squash mode of the AML file system. 'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems. 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems. 'None': No squashing of User and Group IDs is performed for any users on any systems.
-	Mode pulumi.StringPtrInput `pulumi:"mode"`
-	// Semicolon separated NID IP Address list(s) to be added to the TrustedSystems.
-	NoSquashNidLists pulumi.StringPtrInput `pulumi:"noSquashNidLists"`
-	// Group ID to squash to.
-	SquashGID pulumi.Float64PtrInput `pulumi:"squashGID"`
-	// User ID to squash to.
-	SquashUID pulumi.Float64PtrInput `pulumi:"squashUID"`
-}
-
-func (AmlFilesystemRootSquashSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AmlFilesystemRootSquashSettings)(nil)).Elem()
-}
-
-func (i AmlFilesystemRootSquashSettingsArgs) ToAmlFilesystemRootSquashSettingsOutput() AmlFilesystemRootSquashSettingsOutput {
-	return i.ToAmlFilesystemRootSquashSettingsOutputWithContext(context.Background())
-}
-
-func (i AmlFilesystemRootSquashSettingsArgs) ToAmlFilesystemRootSquashSettingsOutputWithContext(ctx context.Context) AmlFilesystemRootSquashSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AmlFilesystemRootSquashSettingsOutput)
-}
-
-func (i AmlFilesystemRootSquashSettingsArgs) ToAmlFilesystemRootSquashSettingsPtrOutput() AmlFilesystemRootSquashSettingsPtrOutput {
-	return i.ToAmlFilesystemRootSquashSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i AmlFilesystemRootSquashSettingsArgs) ToAmlFilesystemRootSquashSettingsPtrOutputWithContext(ctx context.Context) AmlFilesystemRootSquashSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AmlFilesystemRootSquashSettingsOutput).ToAmlFilesystemRootSquashSettingsPtrOutputWithContext(ctx)
-}
-
-// AmlFilesystemRootSquashSettingsPtrInput is an input type that accepts AmlFilesystemRootSquashSettingsArgs, AmlFilesystemRootSquashSettingsPtr and AmlFilesystemRootSquashSettingsPtrOutput values.
-// You can construct a concrete instance of `AmlFilesystemRootSquashSettingsPtrInput` via:
-//
-//	        AmlFilesystemRootSquashSettingsArgs{...}
-//
-//	or:
-//
-//	        nil
-type AmlFilesystemRootSquashSettingsPtrInput interface {
-	pulumi.Input
-
-	ToAmlFilesystemRootSquashSettingsPtrOutput() AmlFilesystemRootSquashSettingsPtrOutput
-	ToAmlFilesystemRootSquashSettingsPtrOutputWithContext(context.Context) AmlFilesystemRootSquashSettingsPtrOutput
-}
-
-type amlFilesystemRootSquashSettingsPtrType AmlFilesystemRootSquashSettingsArgs
-
-func AmlFilesystemRootSquashSettingsPtr(v *AmlFilesystemRootSquashSettingsArgs) AmlFilesystemRootSquashSettingsPtrInput {
-	return (*amlFilesystemRootSquashSettingsPtrType)(v)
-}
-
-func (*amlFilesystemRootSquashSettingsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AmlFilesystemRootSquashSettings)(nil)).Elem()
-}
-
-func (i *amlFilesystemRootSquashSettingsPtrType) ToAmlFilesystemRootSquashSettingsPtrOutput() AmlFilesystemRootSquashSettingsPtrOutput {
-	return i.ToAmlFilesystemRootSquashSettingsPtrOutputWithContext(context.Background())
-}
-
-func (i *amlFilesystemRootSquashSettingsPtrType) ToAmlFilesystemRootSquashSettingsPtrOutputWithContext(ctx context.Context) AmlFilesystemRootSquashSettingsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AmlFilesystemRootSquashSettingsPtrOutput)
-}
-
-// AML file system squash settings.
-type AmlFilesystemRootSquashSettingsOutput struct{ *pulumi.OutputState }
-
-func (AmlFilesystemRootSquashSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AmlFilesystemRootSquashSettings)(nil)).Elem()
-}
-
-func (o AmlFilesystemRootSquashSettingsOutput) ToAmlFilesystemRootSquashSettingsOutput() AmlFilesystemRootSquashSettingsOutput {
-	return o
-}
-
-func (o AmlFilesystemRootSquashSettingsOutput) ToAmlFilesystemRootSquashSettingsOutputWithContext(ctx context.Context) AmlFilesystemRootSquashSettingsOutput {
-	return o
-}
-
-func (o AmlFilesystemRootSquashSettingsOutput) ToAmlFilesystemRootSquashSettingsPtrOutput() AmlFilesystemRootSquashSettingsPtrOutput {
-	return o.ToAmlFilesystemRootSquashSettingsPtrOutputWithContext(context.Background())
-}
-
-func (o AmlFilesystemRootSquashSettingsOutput) ToAmlFilesystemRootSquashSettingsPtrOutputWithContext(ctx context.Context) AmlFilesystemRootSquashSettingsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AmlFilesystemRootSquashSettings) *AmlFilesystemRootSquashSettings {
-		return &v
-	}).(AmlFilesystemRootSquashSettingsPtrOutput)
-}
-
-// Squash mode of the AML file system. 'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems. 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems. 'None': No squashing of User and Group IDs is performed for any users on any systems.
-func (o AmlFilesystemRootSquashSettingsOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AmlFilesystemRootSquashSettings) *string { return v.Mode }).(pulumi.StringPtrOutput)
-}
-
-// Semicolon separated NID IP Address list(s) to be added to the TrustedSystems.
-func (o AmlFilesystemRootSquashSettingsOutput) NoSquashNidLists() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AmlFilesystemRootSquashSettings) *string { return v.NoSquashNidLists }).(pulumi.StringPtrOutput)
-}
-
-// Group ID to squash to.
-func (o AmlFilesystemRootSquashSettingsOutput) SquashGID() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v AmlFilesystemRootSquashSettings) *float64 { return v.SquashGID }).(pulumi.Float64PtrOutput)
-}
-
-// User ID to squash to.
-func (o AmlFilesystemRootSquashSettingsOutput) SquashUID() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v AmlFilesystemRootSquashSettings) *float64 { return v.SquashUID }).(pulumi.Float64PtrOutput)
-}
-
-type AmlFilesystemRootSquashSettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (AmlFilesystemRootSquashSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AmlFilesystemRootSquashSettings)(nil)).Elem()
-}
-
-func (o AmlFilesystemRootSquashSettingsPtrOutput) ToAmlFilesystemRootSquashSettingsPtrOutput() AmlFilesystemRootSquashSettingsPtrOutput {
-	return o
-}
-
-func (o AmlFilesystemRootSquashSettingsPtrOutput) ToAmlFilesystemRootSquashSettingsPtrOutputWithContext(ctx context.Context) AmlFilesystemRootSquashSettingsPtrOutput {
-	return o
-}
-
-func (o AmlFilesystemRootSquashSettingsPtrOutput) Elem() AmlFilesystemRootSquashSettingsOutput {
-	return o.ApplyT(func(v *AmlFilesystemRootSquashSettings) AmlFilesystemRootSquashSettings {
-		if v != nil {
-			return *v
-		}
-		var ret AmlFilesystemRootSquashSettings
-		return ret
-	}).(AmlFilesystemRootSquashSettingsOutput)
-}
-
-// Squash mode of the AML file system. 'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems. 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems. 'None': No squashing of User and Group IDs is performed for any users on any systems.
-func (o AmlFilesystemRootSquashSettingsPtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AmlFilesystemRootSquashSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Mode
-	}).(pulumi.StringPtrOutput)
-}
-
-// Semicolon separated NID IP Address list(s) to be added to the TrustedSystems.
-func (o AmlFilesystemRootSquashSettingsPtrOutput) NoSquashNidLists() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AmlFilesystemRootSquashSettings) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NoSquashNidLists
-	}).(pulumi.StringPtrOutput)
-}
-
-// Group ID to squash to.
-func (o AmlFilesystemRootSquashSettingsPtrOutput) SquashGID() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *AmlFilesystemRootSquashSettings) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.SquashGID
-	}).(pulumi.Float64PtrOutput)
-}
-
-// User ID to squash to.
-func (o AmlFilesystemRootSquashSettingsPtrOutput) SquashUID() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *AmlFilesystemRootSquashSettings) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.SquashUID
-	}).(pulumi.Float64PtrOutput)
-}
-
-// AML file system squash settings.
-type AmlFilesystemRootSquashSettingsResponse struct {
-	// Squash mode of the AML file system. 'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems. 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems. 'None': No squashing of User and Group IDs is performed for any users on any systems.
-	Mode *string `pulumi:"mode"`
-	// Semicolon separated NID IP Address list(s) to be added to the TrustedSystems.
-	NoSquashNidLists *string `pulumi:"noSquashNidLists"`
-	// Group ID to squash to.
-	SquashGID *float64 `pulumi:"squashGID"`
-	// User ID to squash to.
-	SquashUID *float64 `pulumi:"squashUID"`
-	// AML file system squash status.
-	Status string `pulumi:"status"`
-}
-
-// AML file system squash settings.
-type AmlFilesystemRootSquashSettingsResponseOutput struct{ *pulumi.OutputState }
-
-func (AmlFilesystemRootSquashSettingsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AmlFilesystemRootSquashSettingsResponse)(nil)).Elem()
-}
-
-func (o AmlFilesystemRootSquashSettingsResponseOutput) ToAmlFilesystemRootSquashSettingsResponseOutput() AmlFilesystemRootSquashSettingsResponseOutput {
-	return o
-}
-
-func (o AmlFilesystemRootSquashSettingsResponseOutput) ToAmlFilesystemRootSquashSettingsResponseOutputWithContext(ctx context.Context) AmlFilesystemRootSquashSettingsResponseOutput {
-	return o
-}
-
-// Squash mode of the AML file system. 'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems. 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems. 'None': No squashing of User and Group IDs is performed for any users on any systems.
-func (o AmlFilesystemRootSquashSettingsResponseOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AmlFilesystemRootSquashSettingsResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
-}
-
-// Semicolon separated NID IP Address list(s) to be added to the TrustedSystems.
-func (o AmlFilesystemRootSquashSettingsResponseOutput) NoSquashNidLists() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AmlFilesystemRootSquashSettingsResponse) *string { return v.NoSquashNidLists }).(pulumi.StringPtrOutput)
-}
-
-// Group ID to squash to.
-func (o AmlFilesystemRootSquashSettingsResponseOutput) SquashGID() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v AmlFilesystemRootSquashSettingsResponse) *float64 { return v.SquashGID }).(pulumi.Float64PtrOutput)
-}
-
-// User ID to squash to.
-func (o AmlFilesystemRootSquashSettingsResponseOutput) SquashUID() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v AmlFilesystemRootSquashSettingsResponse) *float64 { return v.SquashUID }).(pulumi.Float64PtrOutput)
-}
-
-// AML file system squash status.
-func (o AmlFilesystemRootSquashSettingsResponseOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v AmlFilesystemRootSquashSettingsResponse) string { return v.Status }).(pulumi.StringOutput)
-}
-
-type AmlFilesystemRootSquashSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AmlFilesystemRootSquashSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AmlFilesystemRootSquashSettingsResponse)(nil)).Elem()
-}
-
-func (o AmlFilesystemRootSquashSettingsResponsePtrOutput) ToAmlFilesystemRootSquashSettingsResponsePtrOutput() AmlFilesystemRootSquashSettingsResponsePtrOutput {
-	return o
-}
-
-func (o AmlFilesystemRootSquashSettingsResponsePtrOutput) ToAmlFilesystemRootSquashSettingsResponsePtrOutputWithContext(ctx context.Context) AmlFilesystemRootSquashSettingsResponsePtrOutput {
-	return o
-}
-
-func (o AmlFilesystemRootSquashSettingsResponsePtrOutput) Elem() AmlFilesystemRootSquashSettingsResponseOutput {
-	return o.ApplyT(func(v *AmlFilesystemRootSquashSettingsResponse) AmlFilesystemRootSquashSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AmlFilesystemRootSquashSettingsResponse
-		return ret
-	}).(AmlFilesystemRootSquashSettingsResponseOutput)
-}
-
-// Squash mode of the AML file system. 'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems. 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems. 'None': No squashing of User and Group IDs is performed for any users on any systems.
-func (o AmlFilesystemRootSquashSettingsResponsePtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AmlFilesystemRootSquashSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Mode
-	}).(pulumi.StringPtrOutput)
-}
-
-// Semicolon separated NID IP Address list(s) to be added to the TrustedSystems.
-func (o AmlFilesystemRootSquashSettingsResponsePtrOutput) NoSquashNidLists() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AmlFilesystemRootSquashSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.NoSquashNidLists
-	}).(pulumi.StringPtrOutput)
-}
-
-// Group ID to squash to.
-func (o AmlFilesystemRootSquashSettingsResponsePtrOutput) SquashGID() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *AmlFilesystemRootSquashSettingsResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.SquashGID
-	}).(pulumi.Float64PtrOutput)
-}
-
-// User ID to squash to.
-func (o AmlFilesystemRootSquashSettingsResponsePtrOutput) SquashUID() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *AmlFilesystemRootSquashSettingsResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.SquashUID
-	}).(pulumi.Float64PtrOutput)
-}
-
-// AML file system squash status.
-func (o AmlFilesystemRootSquashSettingsResponsePtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AmlFilesystemRootSquashSettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Status
-	}).(pulumi.StringPtrOutput)
-}
-
-// The storage account blob change feed status of the auto import job.
-type AutoImportJobResponseBlobSyncEvents struct {
-	// Number of deletions during auto import.
-	Deletions float64 `pulumi:"deletions"`
-	// Number of directories imported during auto import.
-	ImportedDirectories float64 `pulumi:"importedDirectories"`
-	// Number of files imported during auto import.
-	ImportedFiles float64 `pulumi:"importedFiles"`
-	// Number of symlinks imported during auto import.
-	ImportedSymlinks float64 `pulumi:"importedSymlinks"`
-	// Date and time of the last Change Feed event consumed.
-	LastChangeFeedEventConsumedTime string `pulumi:"lastChangeFeedEventConsumedTime"`
-	// Date and time when last fully synchronized.
-	LastTimeFullySynchronized string `pulumi:"lastTimeFullySynchronized"`
-	// Number of preexisting directories during auto import.
-	PreexistingDirectories float64 `pulumi:"preexistingDirectories"`
-	// Number of preexisting files during auto import.
-	PreexistingFiles float64 `pulumi:"preexistingFiles"`
-	// Number of preexisting symlinks during auto import.
-	PreexistingSymlinks float64 `pulumi:"preexistingSymlinks"`
-	// Rate of blob import per second during auto import.
-	RateOfBlobImport float64 `pulumi:"rateOfBlobImport"`
-	// Total number of blobs imported during auto import.
-	TotalBlobsImported float64 `pulumi:"totalBlobsImported"`
-	// Total conflicts encountered during auto import.
-	TotalConflicts float64 `pulumi:"totalConflicts"`
-	// Total errors encountered during auto import.
-	TotalErrors float64 `pulumi:"totalErrors"`
-}
-
-// The storage account blob change feed status of the auto import job.
-type AutoImportJobResponseBlobSyncEventsOutput struct{ *pulumi.OutputState }
-
-func (AutoImportJobResponseBlobSyncEventsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutoImportJobResponseBlobSyncEvents)(nil)).Elem()
-}
-
-func (o AutoImportJobResponseBlobSyncEventsOutput) ToAutoImportJobResponseBlobSyncEventsOutput() AutoImportJobResponseBlobSyncEventsOutput {
-	return o
-}
-
-func (o AutoImportJobResponseBlobSyncEventsOutput) ToAutoImportJobResponseBlobSyncEventsOutputWithContext(ctx context.Context) AutoImportJobResponseBlobSyncEventsOutput {
-	return o
-}
-
-// Number of deletions during auto import.
-func (o AutoImportJobResponseBlobSyncEventsOutput) Deletions() pulumi.Float64Output {
-	return o.ApplyT(func(v AutoImportJobResponseBlobSyncEvents) float64 { return v.Deletions }).(pulumi.Float64Output)
-}
-
-// Number of directories imported during auto import.
-func (o AutoImportJobResponseBlobSyncEventsOutput) ImportedDirectories() pulumi.Float64Output {
-	return o.ApplyT(func(v AutoImportJobResponseBlobSyncEvents) float64 { return v.ImportedDirectories }).(pulumi.Float64Output)
-}
-
-// Number of files imported during auto import.
-func (o AutoImportJobResponseBlobSyncEventsOutput) ImportedFiles() pulumi.Float64Output {
-	return o.ApplyT(func(v AutoImportJobResponseBlobSyncEvents) float64 { return v.ImportedFiles }).(pulumi.Float64Output)
-}
-
-// Number of symlinks imported during auto import.
-func (o AutoImportJobResponseBlobSyncEventsOutput) ImportedSymlinks() pulumi.Float64Output {
-	return o.ApplyT(func(v AutoImportJobResponseBlobSyncEvents) float64 { return v.ImportedSymlinks }).(pulumi.Float64Output)
-}
-
-// Date and time of the last Change Feed event consumed.
-func (o AutoImportJobResponseBlobSyncEventsOutput) LastChangeFeedEventConsumedTime() pulumi.StringOutput {
-	return o.ApplyT(func(v AutoImportJobResponseBlobSyncEvents) string { return v.LastChangeFeedEventConsumedTime }).(pulumi.StringOutput)
-}
-
-// Date and time when last fully synchronized.
-func (o AutoImportJobResponseBlobSyncEventsOutput) LastTimeFullySynchronized() pulumi.StringOutput {
-	return o.ApplyT(func(v AutoImportJobResponseBlobSyncEvents) string { return v.LastTimeFullySynchronized }).(pulumi.StringOutput)
-}
-
-// Number of preexisting directories during auto import.
-func (o AutoImportJobResponseBlobSyncEventsOutput) PreexistingDirectories() pulumi.Float64Output {
-	return o.ApplyT(func(v AutoImportJobResponseBlobSyncEvents) float64 { return v.PreexistingDirectories }).(pulumi.Float64Output)
-}
-
-// Number of preexisting files during auto import.
-func (o AutoImportJobResponseBlobSyncEventsOutput) PreexistingFiles() pulumi.Float64Output {
-	return o.ApplyT(func(v AutoImportJobResponseBlobSyncEvents) float64 { return v.PreexistingFiles }).(pulumi.Float64Output)
-}
-
-// Number of preexisting symlinks during auto import.
-func (o AutoImportJobResponseBlobSyncEventsOutput) PreexistingSymlinks() pulumi.Float64Output {
-	return o.ApplyT(func(v AutoImportJobResponseBlobSyncEvents) float64 { return v.PreexistingSymlinks }).(pulumi.Float64Output)
-}
-
-// Rate of blob import per second during auto import.
-func (o AutoImportJobResponseBlobSyncEventsOutput) RateOfBlobImport() pulumi.Float64Output {
-	return o.ApplyT(func(v AutoImportJobResponseBlobSyncEvents) float64 { return v.RateOfBlobImport }).(pulumi.Float64Output)
-}
-
-// Total number of blobs imported during auto import.
-func (o AutoImportJobResponseBlobSyncEventsOutput) TotalBlobsImported() pulumi.Float64Output {
-	return o.ApplyT(func(v AutoImportJobResponseBlobSyncEvents) float64 { return v.TotalBlobsImported }).(pulumi.Float64Output)
-}
-
-// Total conflicts encountered during auto import.
-func (o AutoImportJobResponseBlobSyncEventsOutput) TotalConflicts() pulumi.Float64Output {
-	return o.ApplyT(func(v AutoImportJobResponseBlobSyncEvents) float64 { return v.TotalConflicts }).(pulumi.Float64Output)
-}
-
-// Total errors encountered during auto import.
-func (o AutoImportJobResponseBlobSyncEventsOutput) TotalErrors() pulumi.Float64Output {
-	return o.ApplyT(func(v AutoImportJobResponseBlobSyncEvents) float64 { return v.TotalErrors }).(pulumi.Float64Output)
 }
 
 // Properties pertaining to the BlobNfsTarget.
@@ -7933,11 +7462,6 @@ func init() {
 	pulumi.RegisterOutputType(AmlFilesystemResponseHsmOutput{})
 	pulumi.RegisterOutputType(AmlFilesystemResponseHsmPtrOutput{})
 	pulumi.RegisterOutputType(AmlFilesystemResponseMaintenanceWindowOutput{})
-	pulumi.RegisterOutputType(AmlFilesystemRootSquashSettingsOutput{})
-	pulumi.RegisterOutputType(AmlFilesystemRootSquashSettingsPtrOutput{})
-	pulumi.RegisterOutputType(AmlFilesystemRootSquashSettingsResponseOutput{})
-	pulumi.RegisterOutputType(AmlFilesystemRootSquashSettingsResponsePtrOutput{})
-	pulumi.RegisterOutputType(AutoImportJobResponseBlobSyncEventsOutput{})
 	pulumi.RegisterOutputType(BlobNfsTargetOutput{})
 	pulumi.RegisterOutputType(BlobNfsTargetPtrOutput{})
 	pulumi.RegisterOutputType(BlobNfsTargetResponseOutput{})

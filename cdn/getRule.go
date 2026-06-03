@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an existing delivery rule within a rule set.
 //
-// Uses Azure REST API version 2025-06-01.
+// Uses Azure REST API version 2023-05-01.
 //
-// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
 func LookupRule(ctx *pulumi.Context, args *LookupRuleArgs, opts ...pulumi.InvokeOption) (*LookupRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRuleResult
@@ -27,13 +27,13 @@ func LookupRule(ctx *pulumi.Context, args *LookupRuleArgs, opts ...pulumi.Invoke
 }
 
 type LookupRuleArgs struct {
-	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
 	ProfileName string `pulumi:"profileName"`
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of the delivery rule which is unique within the endpoint.
 	RuleName string `pulumi:"ruleName"`
-	// Name of the rule set under the profile which is unique globally.
+	// Name of the rule set under the profile.
 	RuleSetName string `pulumi:"ruleSetName"`
 }
 
@@ -41,26 +41,24 @@ type LookupRuleArgs struct {
 type LookupRuleResult struct {
 	// A list of actions that are executed when all the conditions of a rule are satisfied.
 	Actions []interface{} `pulumi:"actions"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A list of conditions that must be matched for the actions to be executed
 	Conditions       []interface{} `pulumi:"conditions"`
 	DeploymentStatus string        `pulumi:"deploymentStatus"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Resource ID.
 	Id string `pulumi:"id"`
 	// If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.
 	MatchProcessingBehavior *string `pulumi:"matchProcessingBehavior"`
-	// The name of the resource
+	// Resource name.
 	Name string `pulumi:"name"`
 	// The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied.
-	Order *int `pulumi:"order"`
+	Order int `pulumi:"order"`
 	// Provisioning status
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The name of the rule set containing the rule.
 	RuleSetName string `pulumi:"ruleSetName"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// Read only system data
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type.
 	Type string `pulumi:"type"`
 }
 
@@ -86,13 +84,13 @@ func LookupRuleOutput(ctx *pulumi.Context, args LookupRuleOutputArgs, opts ...pu
 }
 
 type LookupRuleOutputArgs struct {
-	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
 	ProfileName pulumi.StringInput `pulumi:"profileName"`
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Name of the delivery rule which is unique within the endpoint.
 	RuleName pulumi.StringInput `pulumi:"ruleName"`
-	// Name of the rule set under the profile which is unique globally.
+	// Name of the rule set under the profile.
 	RuleSetName pulumi.StringInput `pulumi:"ruleSetName"`
 }
 
@@ -120,11 +118,6 @@ func (o LookupRuleResultOutput) Actions() pulumi.ArrayOutput {
 	return o.ApplyT(func(v LookupRuleResult) []interface{} { return v.Actions }).(pulumi.ArrayOutput)
 }
 
-// The Azure API version of the resource.
-func (o LookupRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // A list of conditions that must be matched for the actions to be executed
 func (o LookupRuleResultOutput) Conditions() pulumi.ArrayOutput {
 	return o.ApplyT(func(v LookupRuleResult) []interface{} { return v.Conditions }).(pulumi.ArrayOutput)
@@ -134,7 +127,7 @@ func (o LookupRuleResultOutput) DeploymentStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleResult) string { return v.DeploymentStatus }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Resource ID.
 func (o LookupRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -144,14 +137,14 @@ func (o LookupRuleResultOutput) MatchProcessingBehavior() pulumi.StringPtrOutput
 	return o.ApplyT(func(v LookupRuleResult) *string { return v.MatchProcessingBehavior }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource
+// Resource name.
 func (o LookupRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied.
-func (o LookupRuleResultOutput) Order() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LookupRuleResult) *int { return v.Order }).(pulumi.IntPtrOutput)
+func (o LookupRuleResultOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupRuleResult) int { return v.Order }).(pulumi.IntOutput)
 }
 
 // Provisioning status
@@ -164,12 +157,12 @@ func (o LookupRuleResultOutput) RuleSetName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleResult) string { return v.RuleSetName }).(pulumi.StringOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// Read only system data
 func (o LookupRuleResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type.
 func (o LookupRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

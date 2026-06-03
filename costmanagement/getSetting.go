@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,8 +31,6 @@ type LookupSettingArgs struct {
 
 // State of the myscope setting.
 type LookupSettingResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Array of scopes with additional details used by Cost Management in the Azure portal.
 	Cache []SettingsPropertiesResponseCache `pulumi:"cache"`
 	// Resource Id.
@@ -80,11 +78,6 @@ func (o LookupSettingResultOutput) ToLookupSettingResultOutput() LookupSettingRe
 
 func (o LookupSettingResultOutput) ToLookupSettingResultOutputWithContext(ctx context.Context) LookupSettingResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupSettingResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSettingResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Array of scopes with additional details used by Cost Management in the Azure portal.

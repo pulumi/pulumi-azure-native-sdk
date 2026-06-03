@@ -8,28 +8,24 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Policy fragment contract details.
 //
-// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
+// Uses Azure REST API version 2022-08-01. In version 1.x of the Azure Native provider, it used API version 2021-12-01-preview.
 //
-// Other available API versions: 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
 type PolicyFragment struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Policy fragment description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Format of the policy fragment content.
 	Format pulumi.StringPtrOutput `pulumi:"format"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The provisioning state
-	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Contents of the policy fragment.
@@ -82,12 +78,6 @@ func NewPolicyFragment(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:PolicyFragment"),
-		},
-		{
-			Type: pulumi.String("azure-native:apimanagement/v20241001preview:PolicyFragment"),
-		},
-		{
-			Type: pulumi.String("azure-native:apimanagement/v20250301preview:PolicyFragment"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -191,11 +181,6 @@ func (o PolicyFragmentOutput) ToPolicyFragmentOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The Azure API version of the resource.
-func (o PolicyFragmentOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *PolicyFragment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Policy fragment description.
 func (o PolicyFragmentOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PolicyFragment) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -209,11 +194,6 @@ func (o PolicyFragmentOutput) Format() pulumi.StringPtrOutput {
 // The name of the resource
 func (o PolicyFragmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PolicyFragment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
-}
-
-// The provisioning state
-func (o PolicyFragmentOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v *PolicyFragment) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

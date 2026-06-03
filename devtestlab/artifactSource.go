@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Properties of an artifact source.
 //
-// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
+// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
 type ArtifactSource struct {
 	pulumi.CustomResourceState
 
 	// The folder containing Azure Resource Manager templates.
 	ArmTemplateFolderPath pulumi.StringPtrOutput `pulumi:"armTemplateFolderPath"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The artifact source's branch reference.
 	BranchRef pulumi.StringPtrOutput `pulumi:"branchRef"`
 	// The artifact source's creation date.
@@ -30,9 +28,9 @@ type ArtifactSource struct {
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// The folder containing artifacts.
 	FolderPath pulumi.StringPtrOutput `pulumi:"folderPath"`
-	// The geo-location where the resource lives
+	// The location of the resource.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// The name of the resource
+	// The name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning status of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
@@ -42,11 +40,9 @@ type ArtifactSource struct {
 	SourceType pulumi.StringPtrOutput `pulumi:"sourceType"`
 	// Indicates if the artifact source is enabled (values: Enabled, Disabled).
 	Status pulumi.StringPtrOutput `pulumi:"status"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource tags.
+	// The tags of the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// The type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The unique immutable identifier of a resource (Guid).
 	UniqueIdentifier pulumi.StringOutput `pulumi:"uniqueIdentifier"`
@@ -122,11 +118,11 @@ type artifactSourceArgs struct {
 	FolderPath *string `pulumi:"folderPath"`
 	// The name of the lab.
 	LabName string `pulumi:"labName"`
-	// The geo-location where the resource lives
+	// The location of the resource.
 	Location *string `pulumi:"location"`
 	// The name of the artifact source.
 	Name *string `pulumi:"name"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The security token to authenticate to the artifact source.
 	SecurityToken *string `pulumi:"securityToken"`
@@ -134,7 +130,7 @@ type artifactSourceArgs struct {
 	SourceType *string `pulumi:"sourceType"`
 	// Indicates if the artifact source is enabled (values: Enabled, Disabled).
 	Status *string `pulumi:"status"`
-	// Resource tags.
+	// The tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The artifact source's URI.
 	Uri *string `pulumi:"uri"`
@@ -152,11 +148,11 @@ type ArtifactSourceArgs struct {
 	FolderPath pulumi.StringPtrInput
 	// The name of the lab.
 	LabName pulumi.StringInput
-	// The geo-location where the resource lives
+	// The location of the resource.
 	Location pulumi.StringPtrInput
 	// The name of the artifact source.
 	Name pulumi.StringPtrInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// The security token to authenticate to the artifact source.
 	SecurityToken pulumi.StringPtrInput
@@ -164,7 +160,7 @@ type ArtifactSourceArgs struct {
 	SourceType pulumi.StringPtrInput
 	// Indicates if the artifact source is enabled (values: Enabled, Disabled).
 	Status pulumi.StringPtrInput
-	// Resource tags.
+	// The tags of the resource.
 	Tags pulumi.StringMapInput
 	// The artifact source's URI.
 	Uri pulumi.StringPtrInput
@@ -212,11 +208,6 @@ func (o ArtifactSourceOutput) ArmTemplateFolderPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ArtifactSource) pulumi.StringPtrOutput { return v.ArmTemplateFolderPath }).(pulumi.StringPtrOutput)
 }
 
-// The Azure API version of the resource.
-func (o ArtifactSourceOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ArtifactSource) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The artifact source's branch reference.
 func (o ArtifactSourceOutput) BranchRef() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ArtifactSource) pulumi.StringPtrOutput { return v.BranchRef }).(pulumi.StringPtrOutput)
@@ -237,12 +228,12 @@ func (o ArtifactSourceOutput) FolderPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ArtifactSource) pulumi.StringPtrOutput { return v.FolderPath }).(pulumi.StringPtrOutput)
 }
 
-// The geo-location where the resource lives
+// The location of the resource.
 func (o ArtifactSourceOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ArtifactSource) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource
+// The name of the resource.
 func (o ArtifactSourceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ArtifactSource) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -267,17 +258,12 @@ func (o ArtifactSourceOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ArtifactSource) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ArtifactSourceOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *ArtifactSource) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// Resource tags.
+// The tags of the resource.
 func (o ArtifactSourceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ArtifactSource) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// The type of the resource.
 func (o ArtifactSourceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ArtifactSource) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

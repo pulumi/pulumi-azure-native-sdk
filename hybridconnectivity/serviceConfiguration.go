@@ -8,20 +8,30 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The service configuration details associated with the target resource.
 //
-// Uses Azure REST API version 2024-12-01. In version 2.x of the Azure Native provider, it used API version 2023-03-15.
+// Uses Azure REST API version 2023-03-15.
 //
-// Other available API versions: 2023-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridconnectivity [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-12-01.
 type ServiceConfiguration struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The timestamp of resource creation (UTC).
+	CreatedAt pulumi.StringPtrOutput `pulumi:"createdAt"`
+	// The identity that created the resource.
+	CreatedBy pulumi.StringPtrOutput `pulumi:"createdBy"`
+	// The type of identity that created the resource.
+	CreatedByType pulumi.StringPtrOutput `pulumi:"createdByType"`
+	// The timestamp of resource last modification (UTC)
+	LastModifiedAt pulumi.StringPtrOutput `pulumi:"lastModifiedAt"`
+	// The identity that last modified the resource.
+	LastModifiedBy pulumi.StringPtrOutput `pulumi:"lastModifiedBy"`
+	// The type of identity that last modified the resource.
+	LastModifiedByType pulumi.StringPtrOutput `pulumi:"lastModifiedByType"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The port on which service is enabled.
@@ -96,13 +106,25 @@ func (ServiceConfigurationState) ElementType() reflect.Type {
 }
 
 type serviceConfigurationArgs struct {
+	// The timestamp of resource creation (UTC).
+	CreatedAt *string `pulumi:"createdAt"`
+	// The identity that created the resource.
+	CreatedBy *string `pulumi:"createdBy"`
+	// The type of identity that created the resource.
+	CreatedByType *string `pulumi:"createdByType"`
 	// The endpoint name.
 	EndpointName string `pulumi:"endpointName"`
+	// The timestamp of resource last modification (UTC)
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// The identity that last modified the resource.
+	LastModifiedBy *string `pulumi:"lastModifiedBy"`
+	// The type of identity that last modified the resource.
+	LastModifiedByType *string `pulumi:"lastModifiedByType"`
 	// The port on which service is enabled.
 	Port *float64 `pulumi:"port"`
 	// The resource Id of the connectivity endpoint (optional).
 	ResourceId *string `pulumi:"resourceId"`
-	// The fully qualified Azure Resource manager identifier of the resource.
+	// The fully qualified Azure Resource manager identifier of the resource to be connected.
 	ResourceUri string `pulumi:"resourceUri"`
 	// The service name.
 	ServiceConfigurationName *string `pulumi:"serviceConfigurationName"`
@@ -112,13 +134,25 @@ type serviceConfigurationArgs struct {
 
 // The set of arguments for constructing a ServiceConfiguration resource.
 type ServiceConfigurationArgs struct {
+	// The timestamp of resource creation (UTC).
+	CreatedAt pulumi.StringPtrInput
+	// The identity that created the resource.
+	CreatedBy pulumi.StringPtrInput
+	// The type of identity that created the resource.
+	CreatedByType pulumi.StringPtrInput
 	// The endpoint name.
 	EndpointName pulumi.StringInput
+	// The timestamp of resource last modification (UTC)
+	LastModifiedAt pulumi.StringPtrInput
+	// The identity that last modified the resource.
+	LastModifiedBy pulumi.StringPtrInput
+	// The type of identity that last modified the resource.
+	LastModifiedByType pulumi.StringPtrInput
 	// The port on which service is enabled.
 	Port pulumi.Float64PtrInput
 	// The resource Id of the connectivity endpoint (optional).
 	ResourceId pulumi.StringPtrInput
-	// The fully qualified Azure Resource manager identifier of the resource.
+	// The fully qualified Azure Resource manager identifier of the resource to be connected.
 	ResourceUri pulumi.StringInput
 	// The service name.
 	ServiceConfigurationName pulumi.StringPtrInput
@@ -163,9 +197,34 @@ func (o ServiceConfigurationOutput) ToServiceConfigurationOutputWithContext(ctx 
 	return o
 }
 
-// The Azure API version of the resource.
-func (o ServiceConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ServiceConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+// The timestamp of resource creation (UTC).
+func (o ServiceConfigurationOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceConfiguration) pulumi.StringPtrOutput { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that created the resource.
+func (o ServiceConfigurationOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceConfiguration) pulumi.StringPtrOutput { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that created the resource.
+func (o ServiceConfigurationOutput) CreatedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceConfiguration) pulumi.StringPtrOutput { return v.CreatedByType }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of resource last modification (UTC)
+func (o ServiceConfigurationOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceConfiguration) pulumi.StringPtrOutput { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that last modified the resource.
+func (o ServiceConfigurationOutput) LastModifiedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceConfiguration) pulumi.StringPtrOutput { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that last modified the resource.
+func (o ServiceConfigurationOutput) LastModifiedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceConfiguration) pulumi.StringPtrOutput { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
 // The name of the resource

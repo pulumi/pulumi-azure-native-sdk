@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Maintenance configuration record type
 //
-// Uses Azure REST API version 2023-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-11-01-preview.
+// Uses Azure REST API version 2022-11-01-preview. In version 1.x of the Azure Native provider, it used API version 2020-04-01.
 //
-// Other available API versions: 2022-11-01-preview, 2023-04-01, 2023-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native maintenance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-04-01, 2023-09-01-preview, 2023-10-01-preview.
 type MaintenanceConfiguration struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Duration of the maintenance window in HH:mm format. If not provided, default value will be used based on maintenance scope provided. Example: 05:00.
 	Duration pulumi.StringPtrOutput `pulumi:"duration"`
 	// Effective expiration date of the maintenance window in YYYY-MM-DD hh:mm format. The window will be created in the time zone provided and adjusted to daylight savings according to that time zone. Expiration date must be set to a future date. If not provided, it will be set to the maximum datetime 9999-12-31 23:59:59.
@@ -34,10 +32,12 @@ type MaintenanceConfiguration struct {
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Gets or sets maintenanceScope of the configuration
 	MaintenanceScope pulumi.StringPtrOutput `pulumi:"maintenanceScope"`
-	// The name of the resource
+	// Name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Gets or sets namespace of the resource
 	Namespace pulumi.StringPtrOutput `pulumi:"namespace"`
+	// Override Properties for the maintenance Configuration.
+	Overrides MaintenanceOverridePropertiesResponseArrayOutput `pulumi:"overrides"`
 	// Rate at which a Maintenance window is expected to recur. The rate can be expressed as daily, weekly, or monthly schedules. Daily schedule are formatted as recurEvery: [Frequency as integer]['Day(s)']. If no frequency is provided, the default frequency is 1. Daily schedule examples are recurEvery: Day, recurEvery: 3Days.  Weekly schedule are formatted as recurEvery: [Frequency as integer]['Week(s)'] [Optional comma separated list of weekdays Monday-Sunday]. Weekly schedule examples are recurEvery: 3Weeks, recurEvery: Week Saturday,Sunday. Monthly schedules are formatted as [Frequency as integer]['Month(s)'] [Comma separated list of month days] or [Frequency as integer]['Month(s)'] [Week of Month (First, Second, Third, Fourth, Last)] [Weekday Monday-Sunday] [Optional Offset(No. of days)]. Offset value must be between -6 to 6 inclusive. Monthly schedule examples are recurEvery: Month, recurEvery: 2Months, recurEvery: Month day23,day24, recurEvery: Month Last Sunday, recurEvery: Month Fourth Monday, recurEvery: Month Last Sunday Offset-3, recurEvery: Month Third Sunday Offset6.
 	RecurEvery pulumi.StringPtrOutput `pulumi:"recurEvery"`
 	// Effective start date of the maintenance window in YYYY-MM-DD hh:mm format. The start date can be set to either the current date or future date. The window will be created in the time zone provided and adjusted to daylight savings according to that time zone.
@@ -48,7 +48,7 @@ type MaintenanceConfiguration struct {
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Name of the timezone. List of timezones can be obtained by executing [System.TimeZoneInfo]::GetSystemTimeZones() in PowerShell. Example: Pacific Standard Time, UTC, W. Europe Standard Time, Korea Standard Time, Cen. Australia Standard Time.
 	TimeZone pulumi.StringPtrOutput `pulumi:"timeZone"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Type of the resource
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Gets or sets the visibility of the configuration. The default value is 'Custom'
 	Visibility pulumi.StringPtrOutput `pulumi:"visibility"`
@@ -150,11 +150,13 @@ type maintenanceConfigurationArgs struct {
 	MaintenanceScope *string `pulumi:"maintenanceScope"`
 	// Gets or sets namespace of the resource
 	Namespace *string `pulumi:"namespace"`
+	// Override Properties for the maintenance Configuration.
+	Overrides []MaintenanceOverrideProperties `pulumi:"overrides"`
 	// Rate at which a Maintenance window is expected to recur. The rate can be expressed as daily, weekly, or monthly schedules. Daily schedule are formatted as recurEvery: [Frequency as integer]['Day(s)']. If no frequency is provided, the default frequency is 1. Daily schedule examples are recurEvery: Day, recurEvery: 3Days.  Weekly schedule are formatted as recurEvery: [Frequency as integer]['Week(s)'] [Optional comma separated list of weekdays Monday-Sunday]. Weekly schedule examples are recurEvery: 3Weeks, recurEvery: Week Saturday,Sunday. Monthly schedules are formatted as [Frequency as integer]['Month(s)'] [Comma separated list of month days] or [Frequency as integer]['Month(s)'] [Week of Month (First, Second, Third, Fourth, Last)] [Weekday Monday-Sunday] [Optional Offset(No. of days)]. Offset value must be between -6 to 6 inclusive. Monthly schedule examples are recurEvery: Month, recurEvery: 2Months, recurEvery: Month day23,day24, recurEvery: Month Last Sunday, recurEvery: Month Fourth Monday, recurEvery: Month Last Sunday Offset-3, recurEvery: Month Third Sunday Offset6.
 	RecurEvery *string `pulumi:"recurEvery"`
-	// The name of the resource group. The name is case insensitive.
+	// Resource Group Name
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The name of the MaintenanceConfiguration
+	// Maintenance Configuration Name
 	ResourceName *string `pulumi:"resourceName"`
 	// Effective start date of the maintenance window in YYYY-MM-DD hh:mm format. The start date can be set to either the current date or future date. The window will be created in the time zone provided and adjusted to daylight savings according to that time zone.
 	StartDateTime *string `pulumi:"startDateTime"`
@@ -182,11 +184,13 @@ type MaintenanceConfigurationArgs struct {
 	MaintenanceScope pulumi.StringPtrInput
 	// Gets or sets namespace of the resource
 	Namespace pulumi.StringPtrInput
+	// Override Properties for the maintenance Configuration.
+	Overrides MaintenanceOverridePropertiesArrayInput
 	// Rate at which a Maintenance window is expected to recur. The rate can be expressed as daily, weekly, or monthly schedules. Daily schedule are formatted as recurEvery: [Frequency as integer]['Day(s)']. If no frequency is provided, the default frequency is 1. Daily schedule examples are recurEvery: Day, recurEvery: 3Days.  Weekly schedule are formatted as recurEvery: [Frequency as integer]['Week(s)'] [Optional comma separated list of weekdays Monday-Sunday]. Weekly schedule examples are recurEvery: 3Weeks, recurEvery: Week Saturday,Sunday. Monthly schedules are formatted as [Frequency as integer]['Month(s)'] [Comma separated list of month days] or [Frequency as integer]['Month(s)'] [Week of Month (First, Second, Third, Fourth, Last)] [Weekday Monday-Sunday] [Optional Offset(No. of days)]. Offset value must be between -6 to 6 inclusive. Monthly schedule examples are recurEvery: Month, recurEvery: 2Months, recurEvery: Month day23,day24, recurEvery: Month Last Sunday, recurEvery: Month Fourth Monday, recurEvery: Month Last Sunday Offset-3, recurEvery: Month Third Sunday Offset6.
 	RecurEvery pulumi.StringPtrInput
-	// The name of the resource group. The name is case insensitive.
+	// Resource Group Name
 	ResourceGroupName pulumi.StringInput
-	// The name of the MaintenanceConfiguration
+	// Maintenance Configuration Name
 	ResourceName pulumi.StringPtrInput
 	// Effective start date of the maintenance window in YYYY-MM-DD hh:mm format. The start date can be set to either the current date or future date. The window will be created in the time zone provided and adjusted to daylight savings according to that time zone.
 	StartDateTime pulumi.StringPtrInput
@@ -235,11 +239,6 @@ func (o MaintenanceConfigurationOutput) ToMaintenanceConfigurationOutputWithCont
 	return o
 }
 
-// The Azure API version of the resource.
-func (o MaintenanceConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *MaintenanceConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Duration of the maintenance window in HH:mm format. If not provided, default value will be used based on maintenance scope provided. Example: 05:00.
 func (o MaintenanceConfigurationOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MaintenanceConfiguration) pulumi.StringPtrOutput { return v.Duration }).(pulumi.StringPtrOutput)
@@ -270,7 +269,7 @@ func (o MaintenanceConfigurationOutput) MaintenanceScope() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v *MaintenanceConfiguration) pulumi.StringPtrOutput { return v.MaintenanceScope }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource
+// Name of the resource
 func (o MaintenanceConfigurationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MaintenanceConfiguration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -278,6 +277,11 @@ func (o MaintenanceConfigurationOutput) Name() pulumi.StringOutput {
 // Gets or sets namespace of the resource
 func (o MaintenanceConfigurationOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MaintenanceConfiguration) pulumi.StringPtrOutput { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// Override Properties for the maintenance Configuration.
+func (o MaintenanceConfigurationOutput) Overrides() MaintenanceOverridePropertiesResponseArrayOutput {
+	return o.ApplyT(func(v *MaintenanceConfiguration) MaintenanceOverridePropertiesResponseArrayOutput { return v.Overrides }).(MaintenanceOverridePropertiesResponseArrayOutput)
 }
 
 // Rate at which a Maintenance window is expected to recur. The rate can be expressed as daily, weekly, or monthly schedules. Daily schedule are formatted as recurEvery: [Frequency as integer]['Day(s)']. If no frequency is provided, the default frequency is 1. Daily schedule examples are recurEvery: Day, recurEvery: 3Days.  Weekly schedule are formatted as recurEvery: [Frequency as integer]['Week(s)'] [Optional comma separated list of weekdays Monday-Sunday]. Weekly schedule examples are recurEvery: 3Weeks, recurEvery: Week Saturday,Sunday. Monthly schedules are formatted as [Frequency as integer]['Month(s)'] [Comma separated list of month days] or [Frequency as integer]['Month(s)'] [Week of Month (First, Second, Third, Fourth, Last)] [Weekday Monday-Sunday] [Optional Offset(No. of days)]. Offset value must be between -6 to 6 inclusive. Monthly schedule examples are recurEvery: Month, recurEvery: 2Months, recurEvery: Month day23,day24, recurEvery: Month Last Sunday, recurEvery: Month Fourth Monday, recurEvery: Month Last Sunday Offset-3, recurEvery: Month Third Sunday Offset6.
@@ -305,7 +309,7 @@ func (o MaintenanceConfigurationOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MaintenanceConfiguration) pulumi.StringPtrOutput { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Type of the resource
 func (o MaintenanceConfigurationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *MaintenanceConfiguration) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

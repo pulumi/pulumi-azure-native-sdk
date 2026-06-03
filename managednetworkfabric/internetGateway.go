@@ -8,22 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Internet Gateway resource definition.
 //
-// Uses Azure REST API version 2023-06-15. In version 2.x of the Azure Native provider, it used API version 2023-06-15.
-//
-// Other available API versions: 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Uses Azure REST API version 2023-06-15.
 type InternetGateway struct {
 	pulumi.CustomResourceState
 
 	// Switch configuration description.
 	Annotation pulumi.StringPtrOutput `pulumi:"annotation"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// ARM Resource ID of the Internet Gateway Rule.
 	InternetGatewayRuleId pulumi.StringPtrOutput `pulumi:"internetGatewayRuleId"`
 	// IPv4 Address of Internet Gateway.
@@ -65,12 +61,6 @@ func NewInternetGateway(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:managednetworkfabric/v20230615:InternetGateway"),
-		},
-		{
-			Type: pulumi.String("azure-native:managednetworkfabric/v20240215preview:InternetGateway"),
-		},
-		{
-			Type: pulumi.String("azure-native:managednetworkfabric/v20240615preview:InternetGateway"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -185,11 +175,6 @@ func (o InternetGatewayOutput) ToInternetGatewayOutputWithContext(ctx context.Co
 // Switch configuration description.
 func (o InternetGatewayOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InternetGateway) pulumi.StringPtrOutput { return v.Annotation }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o InternetGatewayOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *InternetGateway) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // ARM Resource ID of the Internet Gateway Rule.

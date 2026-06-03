@@ -8,24 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Resource Manager resource envelope.
 //
-// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+// Uses Azure REST API version 2023-04-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01-preview.
 //
-// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
 type Job struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// [Required] Additional attributes of the entity.
+	JobBaseProperties pulumi.AnyOutput `pulumi:"jobBaseProperties"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// [Required] Additional attributes of the entity.
-	Properties pulumi.AnyOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -39,8 +37,8 @@ func NewJob(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Properties == nil {
-		return nil, errors.New("invalid value for required argument 'Properties'")
+	if args.JobBaseProperties == nil {
+		return nil, errors.New("invalid value for required argument 'JobBaseProperties'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
@@ -109,27 +107,6 @@ func NewJob(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:Job"),
 		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250401:Job"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250401preview:Job"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250601:Job"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250701preview:Job"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250901:Job"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20251001preview:Job"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20251201:Job"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -168,10 +145,10 @@ type jobArgs struct {
 	// The name and identifier for the Job. This is case-sensitive.
 	Id *string `pulumi:"id"`
 	// [Required] Additional attributes of the entity.
-	Properties interface{} `pulumi:"properties"`
+	JobBaseProperties interface{} `pulumi:"jobBaseProperties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
@@ -180,10 +157,10 @@ type JobArgs struct {
 	// The name and identifier for the Job. This is case-sensitive.
 	Id pulumi.StringPtrInput
 	// [Required] Additional attributes of the entity.
-	Properties pulumi.Input
+	JobBaseProperties pulumi.Input
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName pulumi.StringInput
 }
 
@@ -224,19 +201,14 @@ func (o JobOutput) ToJobOutputWithContext(ctx context.Context) JobOutput {
 	return o
 }
 
-// The Azure API version of the resource.
-func (o JobOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+// [Required] Additional attributes of the entity.
+func (o JobOutput) JobBaseProperties() pulumi.AnyOutput {
+	return o.ApplyT(func(v *Job) pulumi.AnyOutput { return v.JobBaseProperties }).(pulumi.AnyOutput)
 }
 
 // The name of the resource
 func (o JobOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
-}
-
-// [Required] Additional attributes of the entity.
-func (o JobOutput) Properties() pulumi.AnyOutput {
-	return o.ApplyT(func(v *Job) pulumi.AnyOutput { return v.Properties }).(pulumi.AnyOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a Storage Account on the  Data Box Edge/Gateway device.
 //
-// Uses Azure REST API version 2023-07-01. In version 2.x of the Azure Native provider, it used API version 2022-03-01.
+// Uses Azure REST API version 2022-03-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
 //
-// Other available API versions: 2022-03-01, 2022-04-01-preview, 2022-12-01-preview, 2023-01-01-preview, 2023-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databoxedge [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-01-01-preview, 2023-07-01, 2023-12-01.
 type StorageAccount struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// BlobEndpoint of Storage Account
 	BlobEndpoint pulumi.StringOutput `pulumi:"blobEndpoint"`
 	// The Container Count. Present only for Storage Accounts with DataPolicy set to Cloud.
@@ -208,11 +206,6 @@ func (o StorageAccountOutput) ToStorageAccountOutput() StorageAccountOutput {
 
 func (o StorageAccountOutput) ToStorageAccountOutputWithContext(ctx context.Context) StorageAccountOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o StorageAccountOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *StorageAccount) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // BlobEndpoint of Storage Account

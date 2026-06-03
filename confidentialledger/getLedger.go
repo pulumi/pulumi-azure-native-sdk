@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the properties of a Confidential Ledger.
 //
-// Uses Azure REST API version 2023-06-28-preview.
+// Uses Azure REST API version 2022-05-13.
 //
-// Other available API versions: 2022-05-13, 2022-09-08-preview, 2023-01-26-preview, 2024-07-09-preview, 2024-09-19-preview, 2025-06-10-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confidentialledger [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-01-26-preview, 2023-06-28-preview, 2024-07-09-preview, 2024-09-19-preview.
 func LookupLedger(ctx *pulumi.Context, args *LookupLedgerArgs, opts ...pulumi.InvokeOption) (*LookupLedgerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupLedgerResult
@@ -29,27 +29,25 @@ func LookupLedger(ctx *pulumi.Context, args *LookupLedgerArgs, opts ...pulumi.In
 type LookupLedgerArgs struct {
 	// Name of the Confidential Ledger
 	LedgerName string `pulumi:"ledgerName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Confidential Ledger. Contains the properties of Confidential Ledger Resource.
 type LookupLedgerResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource Id for the resource.
 	Id string `pulumi:"id"`
-	// The geo-location where the resource lives
-	Location string `pulumi:"location"`
-	// The name of the resource
+	// The Azure location where the Confidential Ledger is running.
+	Location *string `pulumi:"location"`
+	// Name of the Resource.
 	Name string `pulumi:"name"`
 	// Properties of Confidential Ledger Resource.
 	Properties LedgerPropertiesResponse `pulumi:"properties"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// Metadata pertaining to creation and last modification of the resource
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Resource tags.
+	// Additional tags for Confidential Ledger
 	Tags map[string]string `pulumi:"tags"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// The type of the resource.
 	Type string `pulumi:"type"`
 }
 
@@ -65,7 +63,7 @@ func LookupLedgerOutput(ctx *pulumi.Context, args LookupLedgerOutputArgs, opts .
 type LookupLedgerOutputArgs struct {
 	// Name of the Confidential Ledger
 	LedgerName pulumi.StringInput `pulumi:"ledgerName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -88,22 +86,17 @@ func (o LookupLedgerResultOutput) ToLookupLedgerResultOutputWithContext(ctx cont
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupLedgerResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupLedgerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource Id for the resource.
 func (o LookupLedgerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLedgerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The geo-location where the resource lives
-func (o LookupLedgerResultOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupLedgerResult) string { return v.Location }).(pulumi.StringOutput)
+// The Azure location where the Confidential Ledger is running.
+func (o LookupLedgerResultOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupLedgerResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource
+// Name of the Resource.
 func (o LookupLedgerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLedgerResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -113,17 +106,17 @@ func (o LookupLedgerResultOutput) Properties() LedgerPropertiesResponseOutput {
 	return o.ApplyT(func(v LookupLedgerResult) LedgerPropertiesResponse { return v.Properties }).(LedgerPropertiesResponseOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// Metadata pertaining to creation and last modification of the resource
 func (o LookupLedgerResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupLedgerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Resource tags.
+// Additional tags for Confidential Ledger
 func (o LookupLedgerResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupLedgerResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// The type of the resource.
 func (o LookupLedgerResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLedgerResult) string { return v.Type }).(pulumi.StringOutput)
 }

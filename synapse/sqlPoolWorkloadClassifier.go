@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Workload classifier operations for a data warehouse
 //
-// Uses Azure REST API version 2021-06-01. In version 2.x of the Azure Native provider, it used API version 2021-06-01.
+// Uses Azure REST API version 2021-06-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01.
 //
-// Other available API versions: 2021-04-01-preview, 2021-05-01, 2021-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native synapse [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-06-01-preview.
 type SqlPoolWorkloadClassifier struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The workload classifier context.
 	Context pulumi.StringPtrOutput `pulumi:"context"`
 	// The workload classifier end time for classification.
@@ -204,11 +202,6 @@ func (o SqlPoolWorkloadClassifierOutput) ToSqlPoolWorkloadClassifierOutput() Sql
 
 func (o SqlPoolWorkloadClassifierOutput) ToSqlPoolWorkloadClassifierOutputWithContext(ctx context.Context) SqlPoolWorkloadClassifierOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o SqlPoolWorkloadClassifierOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *SqlPoolWorkloadClassifier) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The workload classifier context.

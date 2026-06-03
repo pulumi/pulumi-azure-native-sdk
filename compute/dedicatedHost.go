@@ -8,31 +8,29 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Specifies information about the Dedicated host.
 //
-// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
+// Uses Azure REST API version 2023-03-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
 //
-// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2024-11-01.
 type DedicatedHost struct {
 	pulumi.CustomResourceState
 
 	// Specifies whether the dedicated host should be replaced automatically in case of a failure. The value is defaulted to 'true' when not provided.
 	AutoReplaceOnFailure pulumi.BoolPtrOutput `pulumi:"autoReplaceOnFailure"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A unique id generated and assigned to the dedicated host by the platform. Does not change throughout the lifetime of the host.
 	HostId pulumi.StringOutput `pulumi:"hostId"`
 	// The dedicated host instance view.
 	InstanceView DedicatedHostInstanceViewResponseOutput `pulumi:"instanceView"`
 	// Specifies the software license type that will be applied to the VMs deployed on the dedicated host. Possible values are: **None,** **Windows_Server_Hybrid,** **Windows_Server_Perpetual.** The default value is: **None.**
 	LicenseType pulumi.StringPtrOutput `pulumi:"licenseType"`
-	// The geo-location where the resource lives
+	// Resource location
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The name of the resource
+	// Resource name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Fault domain of the dedicated host within a dedicated host group.
 	PlatformFaultDomain pulumi.IntPtrOutput `pulumi:"platformFaultDomain"`
@@ -42,13 +40,11 @@ type DedicatedHost struct {
 	ProvisioningTime pulumi.StringOutput `pulumi:"provisioningTime"`
 	// SKU of the dedicated host for Hardware Generation and VM family. Only name is required to be set. List Microsoft.Compute SKUs for a list of possible values.
 	Sku SkuResponseOutput `pulumi:"sku"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource tags.
+	// Resource tags
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Specifies the time at which the Dedicated Host resource was created. Minimum api-version: 2021-11-01.
 	TimeCreated pulumi.StringOutput `pulumi:"timeCreated"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type
 	Type pulumi.StringOutput `pulumi:"type"`
 	// A list of references to all virtual machines in the Dedicated Host.
 	VirtualMachines SubResourceReadOnlyResponseArrayOutput `pulumi:"virtualMachines"`
@@ -125,9 +121,6 @@ func NewDedicatedHost(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:compute/v20241101:DedicatedHost"),
 		},
-		{
-			Type: pulumi.String("azure-native:compute/v20250401:DedicatedHost"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -167,19 +160,19 @@ type dedicatedHostArgs struct {
 	AutoReplaceOnFailure *bool `pulumi:"autoReplaceOnFailure"`
 	// The name of the dedicated host group.
 	HostGroupName string `pulumi:"hostGroupName"`
-	// The name of the dedicated host.
+	// The name of the dedicated host .
 	HostName *string `pulumi:"hostName"`
 	// Specifies the software license type that will be applied to the VMs deployed on the dedicated host. Possible values are: **None,** **Windows_Server_Hybrid,** **Windows_Server_Perpetual.** The default value is: **None.**
 	LicenseType *DedicatedHostLicenseTypes `pulumi:"licenseType"`
-	// The geo-location where the resource lives
+	// Resource location
 	Location *string `pulumi:"location"`
 	// Fault domain of the dedicated host within a dedicated host group.
 	PlatformFaultDomain *int `pulumi:"platformFaultDomain"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// SKU of the dedicated host for Hardware Generation and VM family. Only name is required to be set. List Microsoft.Compute SKUs for a list of possible values.
 	Sku Sku `pulumi:"sku"`
-	// Resource tags.
+	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -189,19 +182,19 @@ type DedicatedHostArgs struct {
 	AutoReplaceOnFailure pulumi.BoolPtrInput
 	// The name of the dedicated host group.
 	HostGroupName pulumi.StringInput
-	// The name of the dedicated host.
+	// The name of the dedicated host .
 	HostName pulumi.StringPtrInput
 	// Specifies the software license type that will be applied to the VMs deployed on the dedicated host. Possible values are: **None,** **Windows_Server_Hybrid,** **Windows_Server_Perpetual.** The default value is: **None.**
 	LicenseType DedicatedHostLicenseTypesPtrInput
-	// The geo-location where the resource lives
+	// Resource location
 	Location pulumi.StringPtrInput
 	// Fault domain of the dedicated host within a dedicated host group.
 	PlatformFaultDomain pulumi.IntPtrInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// SKU of the dedicated host for Hardware Generation and VM family. Only name is required to be set. List Microsoft.Compute SKUs for a list of possible values.
 	Sku SkuInput
-	// Resource tags.
+	// Resource tags
 	Tags pulumi.StringMapInput
 }
 
@@ -247,11 +240,6 @@ func (o DedicatedHostOutput) AutoReplaceOnFailure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DedicatedHost) pulumi.BoolPtrOutput { return v.AutoReplaceOnFailure }).(pulumi.BoolPtrOutput)
 }
 
-// The Azure API version of the resource.
-func (o DedicatedHostOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *DedicatedHost) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // A unique id generated and assigned to the dedicated host by the platform. Does not change throughout the lifetime of the host.
 func (o DedicatedHostOutput) HostId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DedicatedHost) pulumi.StringOutput { return v.HostId }).(pulumi.StringOutput)
@@ -267,12 +255,12 @@ func (o DedicatedHostOutput) LicenseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DedicatedHost) pulumi.StringPtrOutput { return v.LicenseType }).(pulumi.StringPtrOutput)
 }
 
-// The geo-location where the resource lives
+// Resource location
 func (o DedicatedHostOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *DedicatedHost) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The name of the resource
+// Resource name
 func (o DedicatedHostOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DedicatedHost) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -297,12 +285,7 @@ func (o DedicatedHostOutput) Sku() SkuResponseOutput {
 	return o.ApplyT(func(v *DedicatedHost) SkuResponseOutput { return v.Sku }).(SkuResponseOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o DedicatedHostOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *DedicatedHost) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// Resource tags.
+// Resource tags
 func (o DedicatedHostOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DedicatedHost) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -312,7 +295,7 @@ func (o DedicatedHostOutput) TimeCreated() pulumi.StringOutput {
 	return o.ApplyT(func(v *DedicatedHost) pulumi.StringOutput { return v.TimeCreated }).(pulumi.StringOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type
 func (o DedicatedHostOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *DedicatedHost) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

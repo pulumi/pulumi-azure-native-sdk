@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // SSL certificate for an app.
 //
-// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+// Uses Azure REST API version 2022-09-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
 //
-// Other available API versions: 2016-03-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-03-01, 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
 type Certificate struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// CNAME of the certificate to be issued via free certificate
 	CanonicalName pulumi.StringPtrOutput `pulumi:"canonicalName"`
 	// Raw bytes of .cer file
@@ -40,27 +38,25 @@ type Certificate struct {
 	IssueDate pulumi.StringOutput `pulumi:"issueDate"`
 	// Certificate issuer.
 	Issuer pulumi.StringOutput `pulumi:"issuer"`
-	// Azure Key Vault Csm resource Id.
+	// Key Vault Csm resource Id.
 	KeyVaultId pulumi.StringPtrOutput `pulumi:"keyVaultId"`
-	// Azure Key Vault secret name.
+	// Key Vault secret name.
 	KeyVaultSecretName pulumi.StringPtrOutput `pulumi:"keyVaultSecretName"`
 	// Status of the Key Vault secret.
 	KeyVaultSecretStatus pulumi.StringOutput `pulumi:"keyVaultSecretStatus"`
-	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+	// Kind of resource.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Resource Location.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Resource Name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Certificate password.
-	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// Pfx blob.
 	PfxBlob pulumi.StringPtrOutput `pulumi:"pfxBlob"`
 	// Public key hash.
 	PublicKeyHash pulumi.StringOutput `pulumi:"publicKeyHash"`
 	// Self link.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// Resource ID of the associated App Service plan.
+	// Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
 	ServerFarmId pulumi.StringPtrOutput `pulumi:"serverFarmId"`
 	// App name.
 	SiteName pulumi.StringOutput `pulumi:"siteName"`
@@ -141,15 +137,6 @@ func NewCertificate(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20240401:Certificate"),
 		},
-		{
-			Type: pulumi.String("azure-native:web/v20241101:Certificate"),
-		},
-		{
-			Type: pulumi.String("azure-native:web/v20250301:Certificate"),
-		},
-		{
-			Type: pulumi.String("azure-native:web/v20250501:Certificate"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -191,11 +178,11 @@ type certificateArgs struct {
 	DomainValidationMethod *string `pulumi:"domainValidationMethod"`
 	// Host names the certificate applies to.
 	HostNames []string `pulumi:"hostNames"`
-	// Azure Key Vault Csm resource Id.
+	// Key Vault Csm resource Id.
 	KeyVaultId *string `pulumi:"keyVaultId"`
-	// Azure Key Vault secret name.
+	// Key Vault secret name.
 	KeyVaultSecretName *string `pulumi:"keyVaultSecretName"`
-	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+	// Kind of resource.
 	Kind *string `pulumi:"kind"`
 	// Resource Location.
 	Location *string `pulumi:"location"`
@@ -207,7 +194,7 @@ type certificateArgs struct {
 	PfxBlob *string `pulumi:"pfxBlob"`
 	// Name of the resource group to which the resource belongs.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Resource ID of the associated App Service plan.
+	// Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
 	ServerFarmId *string `pulumi:"serverFarmId"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -221,11 +208,11 @@ type CertificateArgs struct {
 	DomainValidationMethod pulumi.StringPtrInput
 	// Host names the certificate applies to.
 	HostNames pulumi.StringArrayInput
-	// Azure Key Vault Csm resource Id.
+	// Key Vault Csm resource Id.
 	KeyVaultId pulumi.StringPtrInput
-	// Azure Key Vault secret name.
+	// Key Vault secret name.
 	KeyVaultSecretName pulumi.StringPtrInput
-	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+	// Kind of resource.
 	Kind pulumi.StringPtrInput
 	// Resource Location.
 	Location pulumi.StringPtrInput
@@ -237,7 +224,7 @@ type CertificateArgs struct {
 	PfxBlob pulumi.StringPtrInput
 	// Name of the resource group to which the resource belongs.
 	ResourceGroupName pulumi.StringInput
-	// Resource ID of the associated App Service plan.
+	// Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
 	ServerFarmId pulumi.StringPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
@@ -278,11 +265,6 @@ func (o CertificateOutput) ToCertificateOutput() CertificateOutput {
 
 func (o CertificateOutput) ToCertificateOutputWithContext(ctx context.Context) CertificateOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o CertificateOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // CNAME of the certificate to be issued via free certificate
@@ -330,12 +312,12 @@ func (o CertificateOutput) Issuer() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Issuer }).(pulumi.StringOutput)
 }
 
-// Azure Key Vault Csm resource Id.
+// Key Vault Csm resource Id.
 func (o CertificateOutput) KeyVaultId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.KeyVaultId }).(pulumi.StringPtrOutput)
 }
 
-// Azure Key Vault secret name.
+// Key Vault secret name.
 func (o CertificateOutput) KeyVaultSecretName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.KeyVaultSecretName }).(pulumi.StringPtrOutput)
 }
@@ -345,7 +327,7 @@ func (o CertificateOutput) KeyVaultSecretStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.KeyVaultSecretStatus }).(pulumi.StringOutput)
 }
 
-// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+// Kind of resource.
 func (o CertificateOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -358,11 +340,6 @@ func (o CertificateOutput) Location() pulumi.StringOutput {
 // Resource Name.
 func (o CertificateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
-}
-
-// Certificate password.
-func (o CertificateOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 // Pfx blob.
@@ -380,7 +357,7 @@ func (o CertificateOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// Resource ID of the associated App Service plan.
+// Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
 func (o CertificateOutput) ServerFarmId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringPtrOutput { return v.ServerFarmId }).(pulumi.StringPtrOutput)
 }

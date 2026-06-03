@@ -8,15 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Database, Server or Elastic Pool Advisor.
 //
-// Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
+// Uses Azure REST API version 2021-11-01. In version 1.x of the Azure Native provider, it used API version 2020-11-01-preview.
 //
-// Other available API versions: 2014-04-01, 2015-05-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2014-04-01, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
 type DatabaseAdvisor struct {
 	pulumi.CustomResourceState
 
@@ -26,8 +26,6 @@ type DatabaseAdvisor struct {
 	AutoExecuteStatus pulumi.StringOutput `pulumi:"autoExecuteStatus"`
 	// Gets the resource from which current value of auto-execute status is inherited. Auto-execute status can be set on (and inherited from) different levels in the resource hierarchy. Possible values are 'Subscription', 'Server', 'ElasticPool', 'Database' and 'Default' (when status is not explicitly set on any level).
 	AutoExecuteStatusInheritedFrom pulumi.StringOutput `pulumi:"autoExecuteStatusInheritedFrom"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource kind.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Gets the time when the current resource was analyzed for recommendations by this advisor.
@@ -120,9 +118,6 @@ func NewDatabaseAdvisor(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:DatabaseAdvisor"),
-		},
-		{
-			Type: pulumi.String("azure-native:sql/v20241101preview:DatabaseAdvisor"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -235,11 +230,6 @@ func (o DatabaseAdvisorOutput) AutoExecuteStatus() pulumi.StringOutput {
 // Gets the resource from which current value of auto-execute status is inherited. Auto-execute status can be set on (and inherited from) different levels in the resource hierarchy. Possible values are 'Subscription', 'Server', 'ElasticPool', 'Database' and 'Default' (when status is not explicitly set on any level).
 func (o DatabaseAdvisorOutput) AutoExecuteStatusInheritedFrom() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseAdvisor) pulumi.StringOutput { return v.AutoExecuteStatusInheritedFrom }).(pulumi.StringOutput)
-}
-
-// The Azure API version of the resource.
-func (o DatabaseAdvisorOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *DatabaseAdvisor) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource kind.

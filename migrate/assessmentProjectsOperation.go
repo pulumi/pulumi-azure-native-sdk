@@ -8,22 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An Assessment project site resource.
 //
-// Uses Azure REST API version 2024-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-03-15.
+// Uses Azure REST API version 2023-03-15.
 //
-// Other available API versions: 2023-03-15, 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview, 2024-01-15, 2024-03-03-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview, 2024-01-01-preview.
 type AssessmentProjectsOperation struct {
 	pulumi.CustomResourceState
 
 	// Assessment solution ARM id tracked by Microsoft.Migrate/migrateProjects.
 	AssessmentSolutionId pulumi.StringPtrOutput `pulumi:"assessmentSolutionId"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Time when this project was created. Date-Time represented in ISO-8601 format.
 	CreatedTimestamp pulumi.StringOutput `pulumi:"createdTimestamp"`
 	// The ARM id of the storage account used for interactions when public access is
@@ -76,9 +74,6 @@ func NewAssessmentProjectsOperation(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:migrate/v20191001:AssessmentProjectsOperation"),
 		},
 		{
-			Type: pulumi.String("azure-native:migrate/v20191001:Project"),
-		},
-		{
 			Type: pulumi.String("azure-native:migrate/v20230315:AssessmentProjectsOperation"),
 		},
 		{
@@ -92,15 +87,6 @@ func NewAssessmentProjectsOperation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20240101preview:AssessmentProjectsOperation"),
-		},
-		{
-			Type: pulumi.String("azure-native:migrate/v20240115:AssessmentProjectsOperation"),
-		},
-		{
-			Type: pulumi.String("azure-native:migrate/v20240303preview:AssessmentProjectsOperation"),
-		},
-		{
-			Type: pulumi.String("azure-native:migrate:Project"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -235,11 +221,6 @@ func (o AssessmentProjectsOperationOutput) ToAssessmentProjectsOperationOutputWi
 // Assessment solution ARM id tracked by Microsoft.Migrate/migrateProjects.
 func (o AssessmentProjectsOperationOutput) AssessmentSolutionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AssessmentProjectsOperation) pulumi.StringPtrOutput { return v.AssessmentSolutionId }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o AssessmentProjectsOperationOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *AssessmentProjectsOperation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Time when this project was created. Date-Time represented in ISO-8601 format.

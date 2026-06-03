@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the description for the specified hybrid connection.
 //
-// Uses Azure REST API version 2024-01-01.
+// Uses Azure REST API version 2021-11-01.
 //
-// Other available API versions: 2021-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-01-01.
 func LookupHybridConnection(ctx *pulumi.Context, args *LookupHybridConnectionArgs, opts ...pulumi.InvokeOption) (*LookupHybridConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHybridConnectionResult
@@ -31,14 +31,12 @@ type LookupHybridConnectionArgs struct {
 	HybridConnectionName string `pulumi:"hybridConnectionName"`
 	// The namespace name
 	NamespaceName string `pulumi:"namespaceName"`
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Description of hybrid connection resource.
 type LookupHybridConnectionResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The time the hybrid connection was created.
 	CreatedAt string `pulumi:"createdAt"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -51,9 +49,9 @@ type LookupHybridConnectionResult struct {
 	Name string `pulumi:"name"`
 	// Returns true if client authorization is needed for this hybrid connection; otherwise, false.
 	RequiresClientAuthorization *bool `pulumi:"requiresClientAuthorization"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// The system meta data relating to this resource.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
 	Type string `pulumi:"type"`
 	// The time the namespace was updated.
 	UpdatedAt string `pulumi:"updatedAt"`
@@ -75,7 +73,7 @@ type LookupHybridConnectionOutputArgs struct {
 	HybridConnectionName pulumi.StringInput `pulumi:"hybridConnectionName"`
 	// The namespace name
 	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -96,11 +94,6 @@ func (o LookupHybridConnectionResultOutput) ToLookupHybridConnectionResultOutput
 
 func (o LookupHybridConnectionResultOutput) ToLookupHybridConnectionResultOutputWithContext(ctx context.Context) LookupHybridConnectionResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupHybridConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupHybridConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The time the hybrid connection was created.
@@ -133,12 +126,12 @@ func (o LookupHybridConnectionResultOutput) RequiresClientAuthorization() pulumi
 	return o.ApplyT(func(v LookupHybridConnectionResult) *bool { return v.RequiresClientAuthorization }).(pulumi.BoolPtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// The system meta data relating to this resource.
 func (o LookupHybridConnectionResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupHybridConnectionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
 func (o LookupHybridConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHybridConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -8,26 +8,26 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A Discovery Source resource
 //
-// Uses Azure REST API version 2025-01-31-preview. In version 2.x of the Azure Native provider, it used API version 2025-01-31-preview.
-//
-// Other available API versions: 2025-05-01-preview, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dependencymap [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Uses Azure REST API version 2025-01-31-preview.
 type DiscoverySource struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The resource-specific properties for this resource.
-	Properties OffAzureDiscoverySourceResourcePropertiesResponseOutput `pulumi:"properties"`
+	// Provisioning state of Discovery Source resource.
+	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Source ArmId of Discovery Source resource
+	SourceId pulumi.StringOutput `pulumi:"sourceId"`
+	// Source type of Discovery Source resource.
+	SourceType pulumi.StringOutput `pulumi:"sourceType"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -49,15 +49,15 @@ func NewDiscoverySource(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
+	if args.SourceId == nil {
+		return nil, errors.New("invalid value for required argument 'SourceId'")
+	}
+	if args.SourceType == nil {
+		return nil, errors.New("invalid value for required argument 'SourceType'")
+	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:dependencymap/v20250131preview:DiscoverySource"),
-		},
-		{
-			Type: pulumi.String("azure-native:dependencymap/v20250501preview:DiscoverySource"),
-		},
-		{
-			Type: pulumi.String("azure-native:dependencymap/v20250701preview:DiscoverySource"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -98,12 +98,14 @@ type discoverySourceArgs struct {
 	Location *string `pulumi:"location"`
 	// Maps resource name
 	MapName string `pulumi:"mapName"`
-	// The resource-specific properties for this resource.
-	Properties *OffAzureDiscoverySourceResourceProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Source ArmId of Discovery Source resource
+	SourceId string `pulumi:"sourceId"`
 	// discovery source resource
 	SourceName *string `pulumi:"sourceName"`
+	// Source type of Discovery Source resource.
+	SourceType string `pulumi:"sourceType"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
@@ -114,12 +116,14 @@ type DiscoverySourceArgs struct {
 	Location pulumi.StringPtrInput
 	// Maps resource name
 	MapName pulumi.StringInput
-	// The resource-specific properties for this resource.
-	Properties OffAzureDiscoverySourceResourcePropertiesPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// Source ArmId of Discovery Source resource
+	SourceId pulumi.StringInput
 	// discovery source resource
 	SourceName pulumi.StringPtrInput
+	// Source type of Discovery Source resource.
+	SourceType pulumi.StringInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 }
@@ -161,11 +165,6 @@ func (o DiscoverySourceOutput) ToDiscoverySourceOutputWithContext(ctx context.Co
 	return o
 }
 
-// The Azure API version of the resource.
-func (o DiscoverySourceOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *DiscoverySource) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The geo-location where the resource lives
 func (o DiscoverySourceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *DiscoverySource) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -176,9 +175,19 @@ func (o DiscoverySourceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DiscoverySource) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The resource-specific properties for this resource.
-func (o DiscoverySourceOutput) Properties() OffAzureDiscoverySourceResourcePropertiesResponseOutput {
-	return o.ApplyT(func(v *DiscoverySource) OffAzureDiscoverySourceResourcePropertiesResponseOutput { return v.Properties }).(OffAzureDiscoverySourceResourcePropertiesResponseOutput)
+// Provisioning state of Discovery Source resource.
+func (o DiscoverySourceOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *DiscoverySource) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Source ArmId of Discovery Source resource
+func (o DiscoverySourceOutput) SourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DiscoverySource) pulumi.StringOutput { return v.SourceId }).(pulumi.StringOutput)
+}
+
+// Source type of Discovery Source resource.
+func (o DiscoverySourceOutput) SourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *DiscoverySource) pulumi.StringOutput { return v.SourceType }).(pulumi.StringOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

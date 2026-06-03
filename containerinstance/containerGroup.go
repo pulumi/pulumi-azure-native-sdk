@@ -8,26 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A container group.
 //
-// Uses Azure REST API version 2024-05-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
+// Uses Azure REST API version 2023-05-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01.
 //
-// Other available API versions: 2023-05-01, 2024-09-01-preview, 2024-10-01-preview, 2024-11-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerinstance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-03-01, 2021-07-01, 2023-02-01-preview, 2024-05-01-preview, 2024-09-01-preview, 2024-10-01-preview, 2024-11-01-preview.
 type ContainerGroup struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The properties for confidential container group
 	ConfidentialComputeProperties ConfidentialComputePropertiesResponsePtrOutput `pulumi:"confidentialComputeProperties"`
-	// The reference container group profile properties.
-	ContainerGroupProfile ContainerGroupProfileReferenceDefinitionResponsePtrOutput `pulumi:"containerGroupProfile"`
 	// The containers within the container group.
-	Containers ContainerResponseV1ArrayOutput `pulumi:"containers"`
+	Containers ContainerResponseArrayOutput `pulumi:"containers"`
 	// The diagnostic information for a container group.
 	Diagnostics ContainerGroupDiagnosticsResponsePtrOutput `pulumi:"diagnostics"`
 	// The DNS config information for a container group.
@@ -39,21 +35,19 @@ type ContainerGroup struct {
 	// The identity of the container group, if configured.
 	Identity ContainerGroupIdentityResponsePtrOutput `pulumi:"identity"`
 	// The image registry credentials by which the container group is created from.
-	ImageRegistryCredentials ImageRegistryCredentialResponseV1ArrayOutput `pulumi:"imageRegistryCredentials"`
+	ImageRegistryCredentials ImageRegistryCredentialResponseArrayOutput `pulumi:"imageRegistryCredentials"`
 	// The init containers for a container group.
 	InitContainers InitContainerDefinitionResponseArrayOutput `pulumi:"initContainers"`
 	// The instance view of the container group. Only valid in response.
 	InstanceView ContainerGroupPropertiesResponseInstanceViewOutput `pulumi:"instanceView"`
 	// The IP address type of the container group.
 	IpAddress IpAddressResponsePtrOutput `pulumi:"ipAddress"`
-	// The flag indicating whether the container group is created by standby pool.
-	IsCreatedFromStandbyPool pulumi.BoolOutput `pulumi:"isCreatedFromStandbyPool"`
 	// The resource location.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The operating system type required by the containers in the container group.
-	OsType pulumi.StringPtrOutput `pulumi:"osType"`
+	OsType pulumi.StringOutput `pulumi:"osType"`
 	// The priority of the container group.
 	Priority pulumi.StringPtrOutput `pulumi:"priority"`
 	// The provisioning state of the container group. This only appears in the response.
@@ -65,8 +59,6 @@ type ContainerGroup struct {
 	RestartPolicy pulumi.StringPtrOutput `pulumi:"restartPolicy"`
 	// The SKU for a container group.
 	Sku pulumi.StringPtrOutput `pulumi:"sku"`
-	// The reference standby pool profile properties.
-	StandbyPoolProfile StandbyPoolProfileDefinitionResponsePtrOutput `pulumi:"standbyPoolProfile"`
 	// The subnet resource IDs for a container group.
 	SubnetIds ContainerGroupSubnetIdResponseArrayOutput `pulumi:"subnetIds"`
 	// The resource tags.
@@ -74,7 +66,7 @@ type ContainerGroup struct {
 	// The resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The list of volumes that can be mounted by containers in this container group.
-	Volumes VolumeResponseV1ArrayOutput `pulumi:"volumes"`
+	Volumes VolumeResponseArrayOutput `pulumi:"volumes"`
 	// The zones for the container group.
 	Zones pulumi.StringArrayOutput `pulumi:"zones"`
 }
@@ -88,6 +80,9 @@ func NewContainerGroup(ctx *pulumi.Context,
 
 	if args.Containers == nil {
 		return nil, errors.New("invalid value for required argument 'Containers'")
+	}
+	if args.OsType == nil {
+		return nil, errors.New("invalid value for required argument 'OsType'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
@@ -162,9 +157,6 @@ func NewContainerGroup(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:containerinstance/v20241101preview:ContainerGroup"),
 		},
-		{
-			Type: pulumi.String("azure-native:containerinstance/v20250901:ContainerGroup"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -204,8 +196,6 @@ type containerGroupArgs struct {
 	ConfidentialComputeProperties *ConfidentialComputeProperties `pulumi:"confidentialComputeProperties"`
 	// The name of the container group.
 	ContainerGroupName *string `pulumi:"containerGroupName"`
-	// The reference container group profile properties.
-	ContainerGroupProfile *ContainerGroupProfileReferenceDefinition `pulumi:"containerGroupProfile"`
 	// The containers within the container group.
 	Containers []Container `pulumi:"containers"`
 	// The diagnostic information for a container group.
@@ -227,10 +217,10 @@ type containerGroupArgs struct {
 	// The resource location.
 	Location *string `pulumi:"location"`
 	// The operating system type required by the containers in the container group.
-	OsType *string `pulumi:"osType"`
+	OsType string `pulumi:"osType"`
 	// The priority of the container group.
 	Priority *string `pulumi:"priority"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Restart policy for all containers within the container group.
 	// - `Always` Always restart
@@ -239,8 +229,6 @@ type containerGroupArgs struct {
 	RestartPolicy *string `pulumi:"restartPolicy"`
 	// The SKU for a container group.
 	Sku *string `pulumi:"sku"`
-	// The reference standby pool profile properties.
-	StandbyPoolProfile *StandbyPoolProfileDefinition `pulumi:"standbyPoolProfile"`
 	// The subnet resource IDs for a container group.
 	SubnetIds []ContainerGroupSubnetId `pulumi:"subnetIds"`
 	// The resource tags.
@@ -257,8 +245,6 @@ type ContainerGroupArgs struct {
 	ConfidentialComputeProperties ConfidentialComputePropertiesPtrInput
 	// The name of the container group.
 	ContainerGroupName pulumi.StringPtrInput
-	// The reference container group profile properties.
-	ContainerGroupProfile ContainerGroupProfileReferenceDefinitionPtrInput
 	// The containers within the container group.
 	Containers ContainerArrayInput
 	// The diagnostic information for a container group.
@@ -280,10 +266,10 @@ type ContainerGroupArgs struct {
 	// The resource location.
 	Location pulumi.StringPtrInput
 	// The operating system type required by the containers in the container group.
-	OsType pulumi.StringPtrInput
+	OsType pulumi.StringInput
 	// The priority of the container group.
 	Priority pulumi.StringPtrInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 	// Restart policy for all containers within the container group.
 	// - `Always` Always restart
@@ -292,8 +278,6 @@ type ContainerGroupArgs struct {
 	RestartPolicy pulumi.StringPtrInput
 	// The SKU for a container group.
 	Sku pulumi.StringPtrInput
-	// The reference standby pool profile properties.
-	StandbyPoolProfile StandbyPoolProfileDefinitionPtrInput
 	// The subnet resource IDs for a container group.
 	SubnetIds ContainerGroupSubnetIdArrayInput
 	// The resource tags.
@@ -341,11 +325,6 @@ func (o ContainerGroupOutput) ToContainerGroupOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The Azure API version of the resource.
-func (o ContainerGroupOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ContainerGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The properties for confidential container group
 func (o ContainerGroupOutput) ConfidentialComputeProperties() ConfidentialComputePropertiesResponsePtrOutput {
 	return o.ApplyT(func(v *ContainerGroup) ConfidentialComputePropertiesResponsePtrOutput {
@@ -353,16 +332,9 @@ func (o ContainerGroupOutput) ConfidentialComputeProperties() ConfidentialComput
 	}).(ConfidentialComputePropertiesResponsePtrOutput)
 }
 
-// The reference container group profile properties.
-func (o ContainerGroupOutput) ContainerGroupProfile() ContainerGroupProfileReferenceDefinitionResponsePtrOutput {
-	return o.ApplyT(func(v *ContainerGroup) ContainerGroupProfileReferenceDefinitionResponsePtrOutput {
-		return v.ContainerGroupProfile
-	}).(ContainerGroupProfileReferenceDefinitionResponsePtrOutput)
-}
-
 // The containers within the container group.
-func (o ContainerGroupOutput) Containers() ContainerResponseV1ArrayOutput {
-	return o.ApplyT(func(v *ContainerGroup) ContainerResponseV1ArrayOutput { return v.Containers }).(ContainerResponseV1ArrayOutput)
+func (o ContainerGroupOutput) Containers() ContainerResponseArrayOutput {
+	return o.ApplyT(func(v *ContainerGroup) ContainerResponseArrayOutput { return v.Containers }).(ContainerResponseArrayOutput)
 }
 
 // The diagnostic information for a container group.
@@ -391,10 +363,8 @@ func (o ContainerGroupOutput) Identity() ContainerGroupIdentityResponsePtrOutput
 }
 
 // The image registry credentials by which the container group is created from.
-func (o ContainerGroupOutput) ImageRegistryCredentials() ImageRegistryCredentialResponseV1ArrayOutput {
-	return o.ApplyT(func(v *ContainerGroup) ImageRegistryCredentialResponseV1ArrayOutput {
-		return v.ImageRegistryCredentials
-	}).(ImageRegistryCredentialResponseV1ArrayOutput)
+func (o ContainerGroupOutput) ImageRegistryCredentials() ImageRegistryCredentialResponseArrayOutput {
+	return o.ApplyT(func(v *ContainerGroup) ImageRegistryCredentialResponseArrayOutput { return v.ImageRegistryCredentials }).(ImageRegistryCredentialResponseArrayOutput)
 }
 
 // The init containers for a container group.
@@ -412,11 +382,6 @@ func (o ContainerGroupOutput) IpAddress() IpAddressResponsePtrOutput {
 	return o.ApplyT(func(v *ContainerGroup) IpAddressResponsePtrOutput { return v.IpAddress }).(IpAddressResponsePtrOutput)
 }
 
-// The flag indicating whether the container group is created by standby pool.
-func (o ContainerGroupOutput) IsCreatedFromStandbyPool() pulumi.BoolOutput {
-	return o.ApplyT(func(v *ContainerGroup) pulumi.BoolOutput { return v.IsCreatedFromStandbyPool }).(pulumi.BoolOutput)
-}
-
 // The resource location.
 func (o ContainerGroupOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerGroup) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
@@ -428,8 +393,8 @@ func (o ContainerGroupOutput) Name() pulumi.StringOutput {
 }
 
 // The operating system type required by the containers in the container group.
-func (o ContainerGroupOutput) OsType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ContainerGroup) pulumi.StringPtrOutput { return v.OsType }).(pulumi.StringPtrOutput)
+func (o ContainerGroupOutput) OsType() pulumi.StringOutput {
+	return o.ApplyT(func(v *ContainerGroup) pulumi.StringOutput { return v.OsType }).(pulumi.StringOutput)
 }
 
 // The priority of the container group.
@@ -455,11 +420,6 @@ func (o ContainerGroupOutput) Sku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerGroup) pulumi.StringPtrOutput { return v.Sku }).(pulumi.StringPtrOutput)
 }
 
-// The reference standby pool profile properties.
-func (o ContainerGroupOutput) StandbyPoolProfile() StandbyPoolProfileDefinitionResponsePtrOutput {
-	return o.ApplyT(func(v *ContainerGroup) StandbyPoolProfileDefinitionResponsePtrOutput { return v.StandbyPoolProfile }).(StandbyPoolProfileDefinitionResponsePtrOutput)
-}
-
 // The subnet resource IDs for a container group.
 func (o ContainerGroupOutput) SubnetIds() ContainerGroupSubnetIdResponseArrayOutput {
 	return o.ApplyT(func(v *ContainerGroup) ContainerGroupSubnetIdResponseArrayOutput { return v.SubnetIds }).(ContainerGroupSubnetIdResponseArrayOutput)
@@ -476,8 +436,8 @@ func (o ContainerGroupOutput) Type() pulumi.StringOutput {
 }
 
 // The list of volumes that can be mounted by containers in this container group.
-func (o ContainerGroupOutput) Volumes() VolumeResponseV1ArrayOutput {
-	return o.ApplyT(func(v *ContainerGroup) VolumeResponseV1ArrayOutput { return v.Volumes }).(VolumeResponseV1ArrayOutput)
+func (o ContainerGroupOutput) Volumes() VolumeResponseArrayOutput {
+	return o.ApplyT(func(v *ContainerGroup) VolumeResponseArrayOutput { return v.Volumes }).(VolumeResponseArrayOutput)
 }
 
 // The zones for the container group.

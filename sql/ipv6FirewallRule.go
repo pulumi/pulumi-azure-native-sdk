@@ -8,21 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An IPv6 server firewall rule.
 //
-// Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
+// Uses Azure REST API version 2021-11-01. In version 1.x of the Azure Native provider, it used API version 2021-08-01-preview.
 //
-// Other available API versions: 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
 type IPv6FirewallRule struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// The end IP address of the firewall rule. Must be IPv6 format. Must be greater than or equal to startIpv6Address.
+	// The end IP address of the firewall rule. Must be IPv6 format. Must be greater than or equal to startIpAddress.
 	EndIPv6Address pulumi.StringPtrOutput `pulumi:"endIPv6Address"`
 	// Resource name.
 	Name pulumi.StringPtrOutput `pulumi:"name"`
@@ -82,9 +80,6 @@ func NewIPv6FirewallRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:sql/v20240501preview:IPv6FirewallRule"),
 		},
-		{
-			Type: pulumi.String("azure-native:sql/v20241101preview:IPv6FirewallRule"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -120,7 +115,7 @@ func (IPv6FirewallRuleState) ElementType() reflect.Type {
 }
 
 type ipv6FirewallRuleArgs struct {
-	// The end IP address of the firewall rule. Must be IPv6 format. Must be greater than or equal to startIpv6Address.
+	// The end IP address of the firewall rule. Must be IPv6 format. Must be greater than or equal to startIpAddress.
 	EndIPv6Address *string `pulumi:"endIPv6Address"`
 	// The name of the firewall rule.
 	FirewallRuleName *string `pulumi:"firewallRuleName"`
@@ -136,7 +131,7 @@ type ipv6FirewallRuleArgs struct {
 
 // The set of arguments for constructing a IPv6FirewallRule resource.
 type IPv6FirewallRuleArgs struct {
-	// The end IP address of the firewall rule. Must be IPv6 format. Must be greater than or equal to startIpv6Address.
+	// The end IP address of the firewall rule. Must be IPv6 format. Must be greater than or equal to startIpAddress.
 	EndIPv6Address pulumi.StringPtrInput
 	// The name of the firewall rule.
 	FirewallRuleName pulumi.StringPtrInput
@@ -187,12 +182,7 @@ func (o IPv6FirewallRuleOutput) ToIPv6FirewallRuleOutputWithContext(ctx context.
 	return o
 }
 
-// The Azure API version of the resource.
-func (o IPv6FirewallRuleOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *IPv6FirewallRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// The end IP address of the firewall rule. Must be IPv6 format. Must be greater than or equal to startIpv6Address.
+// The end IP address of the firewall rule. Must be IPv6 format. Must be greater than or equal to startIpAddress.
 func (o IPv6FirewallRuleOutput) EndIPv6Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IPv6FirewallRule) pulumi.StringPtrOutput { return v.EndIPv6Address }).(pulumi.StringPtrOutput)
 }

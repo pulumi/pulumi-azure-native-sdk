@@ -8,20 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An product resource belonging to a catalog resource.
 //
-// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01-preview.
+// Uses Azure REST API version 2022-09-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-09-01-preview.
+//
+// Other available API versions: 2024-04-01.
 type Product struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Description of the product
-	Description pulumi.StringPtrOutput `pulumi:"description"`
+	Description pulumi.StringOutput `pulumi:"description"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The status of the last operation.
@@ -41,6 +41,9 @@ func NewProduct(ctx *pulumi.Context,
 
 	if args.CatalogName == nil {
 		return nil, errors.New("invalid value for required argument 'CatalogName'")
+	}
+	if args.Description == nil {
+		return nil, errors.New("invalid value for required argument 'Description'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
@@ -90,7 +93,7 @@ type productArgs struct {
 	// Name of catalog
 	CatalogName string `pulumi:"catalogName"`
 	// Description of the product
-	Description *string `pulumi:"description"`
+	Description string `pulumi:"description"`
 	// Name of product.
 	ProductName *string `pulumi:"productName"`
 	// The name of the resource group. The name is case insensitive.
@@ -102,7 +105,7 @@ type ProductArgs struct {
 	// Name of catalog
 	CatalogName pulumi.StringInput
 	// Description of the product
-	Description pulumi.StringPtrInput
+	Description pulumi.StringInput
 	// Name of product.
 	ProductName pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
@@ -146,14 +149,9 @@ func (o ProductOutput) ToProductOutputWithContext(ctx context.Context) ProductOu
 	return o
 }
 
-// The Azure API version of the resource.
-func (o ProductOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Product) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Description of the product
-func (o ProductOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Product) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+func (o ProductOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *Product) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
 // The name of the resource

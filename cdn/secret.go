@@ -8,22 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Friendly Secret name mapping to the any Secret or secret related information.
 //
-// Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
+// Uses Azure REST API version 2023-05-01. In version 1.x of the Azure Native provider, it used API version 2020-09-01.
 //
-// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
 type Secret struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion  pulumi.StringOutput `pulumi:"azureApiVersion"`
 	DeploymentStatus pulumi.StringOutput `pulumi:"deploymentStatus"`
-	// The name of the resource
+	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// object which contains secret parameters
 	Parameters pulumi.AnyOutput `pulumi:"parameters"`
@@ -31,9 +29,9 @@ type Secret struct {
 	ProfileName pulumi.StringOutput `pulumi:"profileName"`
 	// Provisioning status
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// Read only system data
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -81,21 +79,6 @@ func NewSecret(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cdn/v20240901:Secret"),
 		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250101preview:Secret"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250415:Secret"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250601:Secret"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250701preview:Secret"),
-		},
-		{
-			Type: pulumi.String("azure-native:cdn/v20250901preview:Secret"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -133,9 +116,9 @@ func (SecretState) ElementType() reflect.Type {
 type secretArgs struct {
 	// object which contains secret parameters
 	Parameters interface{} `pulumi:"parameters"`
-	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
 	ProfileName string `pulumi:"profileName"`
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of the Secret under the profile.
 	SecretName *string `pulumi:"secretName"`
@@ -145,9 +128,9 @@ type secretArgs struct {
 type SecretArgs struct {
 	// object which contains secret parameters
 	Parameters pulumi.Input
-	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
 	ProfileName pulumi.StringInput
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput
 	// Name of the Secret under the profile.
 	SecretName pulumi.StringPtrInput
@@ -190,16 +173,11 @@ func (o SecretOutput) ToSecretOutputWithContext(ctx context.Context) SecretOutpu
 	return o
 }
 
-// The Azure API version of the resource.
-func (o SecretOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 func (o SecretOutput) DeploymentStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.DeploymentStatus }).(pulumi.StringOutput)
 }
 
-// The name of the resource
+// Resource name.
 func (o SecretOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -219,12 +197,12 @@ func (o SecretOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// Read only system data
 func (o SecretOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Secret) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type.
 func (o SecretOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

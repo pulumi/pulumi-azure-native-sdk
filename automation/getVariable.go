@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve the variable identified by variable name.
 //
-// Uses Azure REST API version 2024-10-23.
+// Uses Azure REST API version 2022-08-08.
 //
-// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
 func LookupVariable(ctx *pulumi.Context, args *LookupVariableArgs, opts ...pulumi.InvokeOption) (*LookupVariableResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVariableResult
@@ -37,13 +37,11 @@ type LookupVariableArgs struct {
 
 // Definition of the variable.
 type LookupVariableResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the creation time.
 	CreationTime *string `pulumi:"creationTime"`
 	// Gets or sets the description.
 	Description *string `pulumi:"description"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource Id for the resource
 	Id string `pulumi:"id"`
 	// Gets or sets the encrypted flag of the variable.
 	IsEncrypted *bool `pulumi:"isEncrypted"`
@@ -51,9 +49,7 @@ type LookupVariableResult struct {
 	LastModifiedTime *string `pulumi:"lastModifiedTime"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// The type of the resource.
 	Type string `pulumi:"type"`
 	// Gets or sets the value of the variable.
 	Value *string `pulumi:"value"`
@@ -96,11 +92,6 @@ func (o LookupVariableResultOutput) ToLookupVariableResultOutputWithContext(ctx 
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupVariableResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupVariableResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Gets or sets the creation time.
 func (o LookupVariableResultOutput) CreationTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVariableResult) *string { return v.CreationTime }).(pulumi.StringPtrOutput)
@@ -111,7 +102,7 @@ func (o LookupVariableResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVariableResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource Id for the resource
 func (o LookupVariableResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVariableResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -131,12 +122,7 @@ func (o LookupVariableResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVariableResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupVariableResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupVariableResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// The type of the resource.
 func (o LookupVariableResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVariableResult) string { return v.Type }).(pulumi.StringOutput)
 }

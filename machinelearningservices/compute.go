@@ -8,27 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Machine Learning compute object wrapped into ARM resource envelope.
 //
-// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
+// Uses Azure REST API version 2023-04-01.
 //
-// Other available API versions: 2021-03-01-preview, 2021-07-01, 2022-01-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-01-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
 type Compute struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The identity of the resource.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Specifies the location of the resource.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The resource-specific properties for this resource.
+	// Compute properties
 	Properties pulumi.AnyOutput `pulumi:"properties"`
 	// The sku of the workspace.
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
@@ -106,9 +104,6 @@ func NewCompute(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20210401:Compute"),
 		},
 		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20210401:MachineLearningCompute"),
-		},
-		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20210701:Compute"),
 		},
 		{
@@ -171,27 +166,6 @@ func NewCompute(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:Compute"),
 		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250401:Compute"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250401preview:Compute"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250601:Compute"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250701preview:Compute"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250901:Compute"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20251001preview:Compute"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20251201:Compute"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -233,7 +207,7 @@ type computeArgs struct {
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// Specifies the location of the resource.
 	Location *string `pulumi:"location"`
-	// The resource-specific properties for this resource.
+	// Compute properties
 	Properties interface{} `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -241,7 +215,7 @@ type computeArgs struct {
 	Sku *Sku `pulumi:"sku"`
 	// Contains resource tags defined as key/value pairs.
 	Tags map[string]string `pulumi:"tags"`
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
@@ -253,7 +227,7 @@ type ComputeArgs struct {
 	Identity ManagedServiceIdentityPtrInput
 	// Specifies the location of the resource.
 	Location pulumi.StringPtrInput
-	// The resource-specific properties for this resource.
+	// Compute properties
 	Properties pulumi.Input
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -261,7 +235,7 @@ type ComputeArgs struct {
 	Sku SkuPtrInput
 	// Contains resource tags defined as key/value pairs.
 	Tags pulumi.StringMapInput
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName pulumi.StringInput
 }
 
@@ -302,11 +276,6 @@ func (o ComputeOutput) ToComputeOutputWithContext(ctx context.Context) ComputeOu
 	return o
 }
 
-// The Azure API version of the resource.
-func (o ComputeOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Compute) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The identity of the resource.
 func (o ComputeOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *Compute) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
@@ -322,7 +291,7 @@ func (o ComputeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Compute) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The resource-specific properties for this resource.
+// Compute properties
 func (o ComputeOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v *Compute) pulumi.AnyOutput { return v.Properties }).(pulumi.AnyOutput)
 }

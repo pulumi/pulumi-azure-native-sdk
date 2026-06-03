@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Connection Setting registration for a Bot Service
 //
-// Uses Azure REST API version 2023-09-15-preview.
+// Uses Azure REST API version 2022-09-15.
 //
-// Other available API versions: 2022-09-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native botservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-09-15-preview.
 func ListBotConnectionWithSecrets(ctx *pulumi.Context, args *ListBotConnectionWithSecretsArgs, opts ...pulumi.InvokeOption) (*ListBotConnectionWithSecretsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListBotConnectionWithSecretsResult
@@ -29,7 +29,7 @@ func ListBotConnectionWithSecrets(ctx *pulumi.Context, args *ListBotConnectionWi
 type ListBotConnectionWithSecretsArgs struct {
 	// The name of the Bot Service Connection Setting resource.
 	ConnectionName string `pulumi:"connectionName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the Bot resource group in the user subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the Bot resource.
 	ResourceName string `pulumi:"resourceName"`
@@ -39,23 +39,21 @@ type ListBotConnectionWithSecretsArgs struct {
 type ListBotConnectionWithSecretsResult struct {
 	// Entity Tag.
 	Etag *string `pulumi:"etag"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Specifies the resource ID.
 	Id string `pulumi:"id"`
 	// Required. Gets or sets the Kind of the resource.
 	Kind *string `pulumi:"kind"`
 	// Specifies the location of the resource.
 	Location *string `pulumi:"location"`
-	// The name of the resource
+	// Specifies the name of the resource.
 	Name string `pulumi:"name"`
 	// The set of properties specific to bot channel resource
 	Properties ConnectionSettingPropertiesResponse `pulumi:"properties"`
 	// Gets or sets the SKU of the resource.
 	Sku *SkuResponse `pulumi:"sku"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Contains resource tags defined as key/value pairs.
 	Tags map[string]string `pulumi:"tags"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Specifies the type of the resource.
 	Type string `pulumi:"type"`
 	// Entity zones
 	Zones []string `pulumi:"zones"`
@@ -83,7 +81,7 @@ func ListBotConnectionWithSecretsOutput(ctx *pulumi.Context, args ListBotConnect
 type ListBotConnectionWithSecretsOutputArgs struct {
 	// The name of the Bot Service Connection Setting resource.
 	ConnectionName pulumi.StringInput `pulumi:"connectionName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the Bot resource group in the user subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the Bot resource.
 	ResourceName pulumi.StringInput `pulumi:"resourceName"`
@@ -113,7 +111,7 @@ func (o ListBotConnectionWithSecretsResultOutput) Etag() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v ListBotConnectionWithSecretsResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Specifies the resource ID.
 func (o ListBotConnectionWithSecretsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ListBotConnectionWithSecretsResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -128,7 +126,7 @@ func (o ListBotConnectionWithSecretsResultOutput) Location() pulumi.StringPtrOut
 	return o.ApplyT(func(v ListBotConnectionWithSecretsResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource
+// Specifies the name of the resource.
 func (o ListBotConnectionWithSecretsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListBotConnectionWithSecretsResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -143,17 +141,12 @@ func (o ListBotConnectionWithSecretsResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v ListBotConnectionWithSecretsResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ListBotConnectionWithSecretsResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v ListBotConnectionWithSecretsResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
 // Contains resource tags defined as key/value pairs.
 func (o ListBotConnectionWithSecretsResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ListBotConnectionWithSecretsResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Specifies the type of the resource.
 func (o ListBotConnectionWithSecretsResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListBotConnectionWithSecretsResult) string { return v.Type }).(pulumi.StringOutput)
 }

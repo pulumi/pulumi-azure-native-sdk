@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns Connector resource for a given name.
 //
-// Uses Azure REST API version 2024-04-01.
+// Uses Azure REST API version 2022-11-01-preview.
 //
-// Other available API versions: 2022-11-01-preview, 2023-04-01-preview, 2024-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicelinker [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-04-01-preview, 2024-04-01, 2024-07-01-preview.
 func LookupConnector(ctx *pulumi.Context, args *LookupConnectorArgs, opts ...pulumi.InvokeOption) (*LookupConnectorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectorResult
@@ -41,8 +41,6 @@ type LookupConnectorArgs struct {
 type LookupConnectorResult struct {
 	// The authentication type.
 	AuthInfo interface{} `pulumi:"authInfo"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The application client type
 	ClientType *string `pulumi:"clientType"`
 	// The connection information consumed by applications, including secrets, connection strings.
@@ -111,11 +109,6 @@ func (o LookupConnectorResultOutput) ToLookupConnectorResultOutputWithContext(ct
 // The authentication type.
 func (o LookupConnectorResultOutput) AuthInfo() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupConnectorResult) interface{} { return v.AuthInfo }).(pulumi.AnyOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The application client type

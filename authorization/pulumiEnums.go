@@ -18,164 +18,6 @@ const (
 	AccessReviewRecurrencePatternTypeAbsoluteMonthly = AccessReviewRecurrencePatternType("absoluteMonthly")
 )
 
-func (AccessReviewRecurrencePatternType) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessReviewRecurrencePatternType)(nil)).Elem()
-}
-
-func (e AccessReviewRecurrencePatternType) ToAccessReviewRecurrencePatternTypeOutput() AccessReviewRecurrencePatternTypeOutput {
-	return pulumi.ToOutput(e).(AccessReviewRecurrencePatternTypeOutput)
-}
-
-func (e AccessReviewRecurrencePatternType) ToAccessReviewRecurrencePatternTypeOutputWithContext(ctx context.Context) AccessReviewRecurrencePatternTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(AccessReviewRecurrencePatternTypeOutput)
-}
-
-func (e AccessReviewRecurrencePatternType) ToAccessReviewRecurrencePatternTypePtrOutput() AccessReviewRecurrencePatternTypePtrOutput {
-	return e.ToAccessReviewRecurrencePatternTypePtrOutputWithContext(context.Background())
-}
-
-func (e AccessReviewRecurrencePatternType) ToAccessReviewRecurrencePatternTypePtrOutputWithContext(ctx context.Context) AccessReviewRecurrencePatternTypePtrOutput {
-	return AccessReviewRecurrencePatternType(e).ToAccessReviewRecurrencePatternTypeOutputWithContext(ctx).ToAccessReviewRecurrencePatternTypePtrOutputWithContext(ctx)
-}
-
-func (e AccessReviewRecurrencePatternType) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e AccessReviewRecurrencePatternType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e AccessReviewRecurrencePatternType) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e AccessReviewRecurrencePatternType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type AccessReviewRecurrencePatternTypeOutput struct{ *pulumi.OutputState }
-
-func (AccessReviewRecurrencePatternTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessReviewRecurrencePatternType)(nil)).Elem()
-}
-
-func (o AccessReviewRecurrencePatternTypeOutput) ToAccessReviewRecurrencePatternTypeOutput() AccessReviewRecurrencePatternTypeOutput {
-	return o
-}
-
-func (o AccessReviewRecurrencePatternTypeOutput) ToAccessReviewRecurrencePatternTypeOutputWithContext(ctx context.Context) AccessReviewRecurrencePatternTypeOutput {
-	return o
-}
-
-func (o AccessReviewRecurrencePatternTypeOutput) ToAccessReviewRecurrencePatternTypePtrOutput() AccessReviewRecurrencePatternTypePtrOutput {
-	return o.ToAccessReviewRecurrencePatternTypePtrOutputWithContext(context.Background())
-}
-
-func (o AccessReviewRecurrencePatternTypeOutput) ToAccessReviewRecurrencePatternTypePtrOutputWithContext(ctx context.Context) AccessReviewRecurrencePatternTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessReviewRecurrencePatternType) *AccessReviewRecurrencePatternType {
-		return &v
-	}).(AccessReviewRecurrencePatternTypePtrOutput)
-}
-
-func (o AccessReviewRecurrencePatternTypeOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o AccessReviewRecurrencePatternTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e AccessReviewRecurrencePatternType) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o AccessReviewRecurrencePatternTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o AccessReviewRecurrencePatternTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e AccessReviewRecurrencePatternType) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type AccessReviewRecurrencePatternTypePtrOutput struct{ *pulumi.OutputState }
-
-func (AccessReviewRecurrencePatternTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AccessReviewRecurrencePatternType)(nil)).Elem()
-}
-
-func (o AccessReviewRecurrencePatternTypePtrOutput) ToAccessReviewRecurrencePatternTypePtrOutput() AccessReviewRecurrencePatternTypePtrOutput {
-	return o
-}
-
-func (o AccessReviewRecurrencePatternTypePtrOutput) ToAccessReviewRecurrencePatternTypePtrOutputWithContext(ctx context.Context) AccessReviewRecurrencePatternTypePtrOutput {
-	return o
-}
-
-func (o AccessReviewRecurrencePatternTypePtrOutput) Elem() AccessReviewRecurrencePatternTypeOutput {
-	return o.ApplyT(func(v *AccessReviewRecurrencePatternType) AccessReviewRecurrencePatternType {
-		if v != nil {
-			return *v
-		}
-		var ret AccessReviewRecurrencePatternType
-		return ret
-	}).(AccessReviewRecurrencePatternTypeOutput)
-}
-
-func (o AccessReviewRecurrencePatternTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o AccessReviewRecurrencePatternTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AccessReviewRecurrencePatternType) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// AccessReviewRecurrencePatternTypeInput is an input type that accepts values of the AccessReviewRecurrencePatternType enum
-// A concrete instance of `AccessReviewRecurrencePatternTypeInput` can be one of the following:
-//
-//	AccessReviewRecurrencePatternTypeWeekly
-//	AccessReviewRecurrencePatternTypeAbsoluteMonthly
-type AccessReviewRecurrencePatternTypeInput interface {
-	pulumi.Input
-
-	ToAccessReviewRecurrencePatternTypeOutput() AccessReviewRecurrencePatternTypeOutput
-	ToAccessReviewRecurrencePatternTypeOutputWithContext(context.Context) AccessReviewRecurrencePatternTypeOutput
-}
-
-var accessReviewRecurrencePatternTypePtrType = reflect.TypeOf((**AccessReviewRecurrencePatternType)(nil)).Elem()
-
-type AccessReviewRecurrencePatternTypePtrInput interface {
-	pulumi.Input
-
-	ToAccessReviewRecurrencePatternTypePtrOutput() AccessReviewRecurrencePatternTypePtrOutput
-	ToAccessReviewRecurrencePatternTypePtrOutputWithContext(context.Context) AccessReviewRecurrencePatternTypePtrOutput
-}
-
-type accessReviewRecurrencePatternTypePtr string
-
-func AccessReviewRecurrencePatternTypePtr(v string) AccessReviewRecurrencePatternTypePtrInput {
-	return (*accessReviewRecurrencePatternTypePtr)(&v)
-}
-
-func (*accessReviewRecurrencePatternTypePtr) ElementType() reflect.Type {
-	return accessReviewRecurrencePatternTypePtrType
-}
-
-func (in *accessReviewRecurrencePatternTypePtr) ToAccessReviewRecurrencePatternTypePtrOutput() AccessReviewRecurrencePatternTypePtrOutput {
-	return pulumi.ToOutput(in).(AccessReviewRecurrencePatternTypePtrOutput)
-}
-
-func (in *accessReviewRecurrencePatternTypePtr) ToAccessReviewRecurrencePatternTypePtrOutputWithContext(ctx context.Context) AccessReviewRecurrencePatternTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(AccessReviewRecurrencePatternTypePtrOutput)
-}
-
 // The recurrence range type. The possible values are: endDate, noEnd, numbered.
 type AccessReviewRecurrenceRangeType string
 
@@ -854,176 +696,6 @@ func (in *assignmentScopeValidationPtr) ToAssignmentScopeValidationPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(AssignmentScopeValidationPtrOutput)
 }
 
-// The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
-type AssignmentType string
-
-const (
-	AssignmentTypeNotSpecified = AssignmentType("NotSpecified")
-	AssignmentTypeSystem       = AssignmentType("System")
-	AssignmentTypeSystemHidden = AssignmentType("SystemHidden")
-	AssignmentTypeCustom       = AssignmentType("Custom")
-)
-
-func (AssignmentType) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssignmentType)(nil)).Elem()
-}
-
-func (e AssignmentType) ToAssignmentTypeOutput() AssignmentTypeOutput {
-	return pulumi.ToOutput(e).(AssignmentTypeOutput)
-}
-
-func (e AssignmentType) ToAssignmentTypeOutputWithContext(ctx context.Context) AssignmentTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(AssignmentTypeOutput)
-}
-
-func (e AssignmentType) ToAssignmentTypePtrOutput() AssignmentTypePtrOutput {
-	return e.ToAssignmentTypePtrOutputWithContext(context.Background())
-}
-
-func (e AssignmentType) ToAssignmentTypePtrOutputWithContext(ctx context.Context) AssignmentTypePtrOutput {
-	return AssignmentType(e).ToAssignmentTypeOutputWithContext(ctx).ToAssignmentTypePtrOutputWithContext(ctx)
-}
-
-func (e AssignmentType) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e AssignmentType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e AssignmentType) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e AssignmentType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type AssignmentTypeOutput struct{ *pulumi.OutputState }
-
-func (AssignmentTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AssignmentType)(nil)).Elem()
-}
-
-func (o AssignmentTypeOutput) ToAssignmentTypeOutput() AssignmentTypeOutput {
-	return o
-}
-
-func (o AssignmentTypeOutput) ToAssignmentTypeOutputWithContext(ctx context.Context) AssignmentTypeOutput {
-	return o
-}
-
-func (o AssignmentTypeOutput) ToAssignmentTypePtrOutput() AssignmentTypePtrOutput {
-	return o.ToAssignmentTypePtrOutputWithContext(context.Background())
-}
-
-func (o AssignmentTypeOutput) ToAssignmentTypePtrOutputWithContext(ctx context.Context) AssignmentTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssignmentType) *AssignmentType {
-		return &v
-	}).(AssignmentTypePtrOutput)
-}
-
-func (o AssignmentTypeOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o AssignmentTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e AssignmentType) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o AssignmentTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o AssignmentTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e AssignmentType) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type AssignmentTypePtrOutput struct{ *pulumi.OutputState }
-
-func (AssignmentTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AssignmentType)(nil)).Elem()
-}
-
-func (o AssignmentTypePtrOutput) ToAssignmentTypePtrOutput() AssignmentTypePtrOutput {
-	return o
-}
-
-func (o AssignmentTypePtrOutput) ToAssignmentTypePtrOutputWithContext(ctx context.Context) AssignmentTypePtrOutput {
-	return o
-}
-
-func (o AssignmentTypePtrOutput) Elem() AssignmentTypeOutput {
-	return o.ApplyT(func(v *AssignmentType) AssignmentType {
-		if v != nil {
-			return *v
-		}
-		var ret AssignmentType
-		return ret
-	}).(AssignmentTypeOutput)
-}
-
-func (o AssignmentTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o AssignmentTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AssignmentType) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// AssignmentTypeInput is an input type that accepts values of the AssignmentType enum
-// A concrete instance of `AssignmentTypeInput` can be one of the following:
-//
-//	AssignmentTypeNotSpecified
-//	AssignmentTypeSystem
-//	AssignmentTypeSystemHidden
-//	AssignmentTypeCustom
-type AssignmentTypeInput interface {
-	pulumi.Input
-
-	ToAssignmentTypeOutput() AssignmentTypeOutput
-	ToAssignmentTypeOutputWithContext(context.Context) AssignmentTypeOutput
-}
-
-var assignmentTypePtrType = reflect.TypeOf((**AssignmentType)(nil)).Elem()
-
-type AssignmentTypePtrInput interface {
-	pulumi.Input
-
-	ToAssignmentTypePtrOutput() AssignmentTypePtrOutput
-	ToAssignmentTypePtrOutputWithContext(context.Context) AssignmentTypePtrOutput
-}
-
-type assignmentTypePtr string
-
-func AssignmentTypePtr(v string) AssignmentTypePtrInput {
-	return (*assignmentTypePtr)(&v)
-}
-
-func (*assignmentTypePtr) ElementType() reflect.Type {
-	return assignmentTypePtrType
-}
-
-func (in *assignmentTypePtr) ToAssignmentTypePtrOutput() AssignmentTypePtrOutput {
-	return pulumi.ToOutput(in).(AssignmentTypePtrOutput)
-}
-
-func (in *assignmentTypePtr) ToAssignmentTypePtrOutputWithContext(ctx context.Context) AssignmentTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(AssignmentTypePtrOutput)
-}
-
 // This specifies the behavior for the autoReview feature when an access review completes.
 type DefaultDecisionType string
 
@@ -1360,7 +1032,7 @@ func (in *enablementRulesPtr) ToEnablementRulesPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(EnablementRulesPtrOutput)
 }
 
-// The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll
+// The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
 type EnforcementMode string
 
 const (
@@ -1368,8 +1040,6 @@ const (
 	EnforcementModeDefault = EnforcementMode("Default")
 	// The policy effect is not enforced during resource creation or update.
 	EnforcementModeDoNotEnforce = EnforcementMode("DoNotEnforce")
-	// The policy effect is not enforced during resource creation or update until the resource or scope of the resource is enrolled to the assignment instance. Enrollment occurs upon deployment of the policy enrollment resource.
-	EnforcementModeEnroll = EnforcementMode("Enroll")
 )
 
 func (EnforcementMode) ElementType() reflect.Type {
@@ -1496,7 +1166,6 @@ func (o EnforcementModePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 //
 //	EnforcementModeDefault
 //	EnforcementModeDoNotEnforce
-//	EnforcementModeEnroll
 type EnforcementModeInput interface {
 	pulumi.Input
 
@@ -2370,8 +2039,6 @@ type OverrideKind string
 const (
 	// It will override the policy effect type.
 	OverrideKindPolicyEffect = OverrideKind("policyEffect")
-	// It will override the definition version property value of the policy assignment.
-	OverrideKindDefinitionVersion = OverrideKind("definitionVersion")
 )
 
 func (OverrideKind) ElementType() reflect.Type {
@@ -2497,7 +2164,6 @@ func (o OverrideKindPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 // A concrete instance of `OverrideKindInput` can be one of the following:
 //
 //	OverrideKindPolicyEffect
-//	OverrideKindDefinitionVersion
 type OverrideKindInput interface {
 	pulumi.Input
 
@@ -4260,8 +3926,6 @@ func (in *userTypePtr) ToUserTypePtrOutputWithContext(ctx context.Context) UserT
 }
 
 func init() {
-	pulumi.RegisterOutputType(AccessReviewRecurrencePatternTypeOutput{})
-	pulumi.RegisterOutputType(AccessReviewRecurrencePatternTypePtrOutput{})
 	pulumi.RegisterOutputType(AccessReviewRecurrenceRangeTypeOutput{})
 	pulumi.RegisterOutputType(AccessReviewRecurrenceRangeTypePtrOutput{})
 	pulumi.RegisterOutputType(AccessReviewResultOutput{})
@@ -4270,8 +3934,6 @@ func init() {
 	pulumi.RegisterOutputType(ApprovalModePtrOutput{})
 	pulumi.RegisterOutputType(AssignmentScopeValidationOutput{})
 	pulumi.RegisterOutputType(AssignmentScopeValidationPtrOutput{})
-	pulumi.RegisterOutputType(AssignmentTypeOutput{})
-	pulumi.RegisterOutputType(AssignmentTypePtrOutput{})
 	pulumi.RegisterOutputType(DefaultDecisionTypeOutput{})
 	pulumi.RegisterOutputType(DefaultDecisionTypePtrOutput{})
 	pulumi.RegisterOutputType(EnablementRulesOutput{})

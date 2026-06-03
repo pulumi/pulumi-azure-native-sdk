@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,8 +33,6 @@ type LookupContainerGroupProfileArgs struct {
 
 // A container group profile.
 type LookupContainerGroupProfileResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The properties for confidential container group
 	ConfidentialComputeProperties *ConfidentialComputePropertiesResponse `pulumi:"confidentialComputeProperties"`
 	// The containers within the container group.
@@ -123,11 +121,6 @@ func (o LookupContainerGroupProfileResultOutput) ToLookupContainerGroupProfileRe
 
 func (o LookupContainerGroupProfileResultOutput) ToLookupContainerGroupProfileResultOutputWithContext(ctx context.Context) LookupContainerGroupProfileResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupContainerGroupProfileResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupContainerGroupProfileResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The properties for confidential container group

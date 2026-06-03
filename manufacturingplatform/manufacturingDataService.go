@@ -8,18 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A ManufacturingPlatformProviderHub resource
 //
-// Uses Azure REST API version 2025-03-01. In version 2.x of the Azure Native provider, it used API version 2025-03-01.
+// Uses Azure REST API version 2025-03-01.
 type ManufacturingDataService struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The managed service identities assigned to this resource.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
@@ -159,11 +157,6 @@ func (o ManufacturingDataServiceOutput) ToManufacturingDataServiceOutput() Manuf
 
 func (o ManufacturingDataServiceOutput) ToManufacturingDataServiceOutputWithContext(ctx context.Context) ManufacturingDataServiceOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o ManufacturingDataServiceOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ManufacturingDataService) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The managed service identities assigned to this resource.

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets information about a disk.
 //
-// Uses Azure REST API version 2024-03-02.
+// Uses Azure REST API version 2022-07-02.
 //
-// Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02, 2025-01-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-01-02, 2023-04-02, 2023-10-02, 2024-03-02.
 func LookupDisk(ctx *pulumi.Context, args *LookupDiskArgs, opts ...pulumi.InvokeOption) (*LookupDiskResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDiskResult
@@ -29,14 +29,12 @@ func LookupDisk(ctx *pulumi.Context, args *LookupDiskArgs, opts ...pulumi.Invoke
 type LookupDiskArgs struct {
 	// The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
 	DiskName string `pulumi:"diskName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Disk resource.
 type LookupDiskResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Set to true to enable bursting beyond the provisioned performance target of the disk. Bursting is disabled by default. Does not apply to Ultra disks.
 	BurstingEnabled *bool `pulumi:"burstingEnabled"`
 	// Latest time when bursting was last enabled on a disk.
@@ -71,11 +69,9 @@ type LookupDiskResult struct {
 	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
 	HyperVGeneration *string `pulumi:"hyperVGeneration"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Resource Id
 	Id string `pulumi:"id"`
-	// The UTC time when the ownership state of the disk was last changed i.e., the time the disk was last attached or detached from a VM or the time when the VM to which the disk was attached was deallocated or started.
-	LastOwnershipUpdateTime string `pulumi:"lastOwnershipUpdateTime"`
-	// The geo-location where the resource lives
+	// Resource location
 	Location string `pulumi:"location"`
 	// A relative URI containing the ID of the VM that has the disk attached.
 	ManagedBy string `pulumi:"managedBy"`
@@ -83,7 +79,7 @@ type LookupDiskResult struct {
 	ManagedByExtended []string `pulumi:"managedByExtended"`
 	// The maximum number of VMs that can attach to the disk at the same time. Value greater than one indicates a disk that can be mounted on multiple VMs at the same time.
 	MaxShares *int `pulumi:"maxShares"`
-	// The name of the resource
+	// Resource name
 	Name string `pulumi:"name"`
 	// Policy for accessing the disk via network.
 	NetworkAccessPolicy *string `pulumi:"networkAccessPolicy"`
@@ -98,7 +94,7 @@ type LookupDiskResult struct {
 	// Policy for controlling export on the disk.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Purchase plan information for the the image from which the OS disk was created. E.g. - {name: 2019-Datacenter, publisher: MicrosoftWindowsServer, product: WindowsServer}
-	PurchasePlan *DiskPurchasePlanResponse `pulumi:"purchasePlan"`
+	PurchasePlan *PurchasePlanResponse `pulumi:"purchasePlan"`
 	// Contains the security related information for the resource.
 	SecurityProfile *DiskSecurityProfileResponse `pulumi:"securityProfile"`
 	// Details of the list of all VMs that have the disk attached. maxShares should be set to a value greater than one for disks to allow attaching them to multiple VMs.
@@ -109,15 +105,13 @@ type LookupDiskResult struct {
 	SupportedCapabilities *SupportedCapabilitiesResponse `pulumi:"supportedCapabilities"`
 	// Indicates the OS on a disk supports hibernation.
 	SupportsHibernation *bool `pulumi:"supportsHibernation"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Resource tags.
+	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
 	// Performance tier of the disk (e.g, P4, S10) as described here: https://azure.microsoft.com/en-us/pricing/details/managed-disks/. Does not apply to Ultra disks.
 	Tier *string `pulumi:"tier"`
 	// The time when the disk was created.
 	TimeCreated string `pulumi:"timeCreated"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type
 	Type string `pulumi:"type"`
 	// Unique Guid identifying the resource.
 	UniqueId string `pulumi:"uniqueId"`
@@ -137,7 +131,7 @@ func LookupDiskOutput(ctx *pulumi.Context, args LookupDiskOutputArgs, opts ...pu
 type LookupDiskOutputArgs struct {
 	// The name of the managed disk that is being created. The name can't be changed after the disk is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
 	DiskName pulumi.StringInput `pulumi:"diskName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -158,11 +152,6 @@ func (o LookupDiskResultOutput) ToLookupDiskResultOutput() LookupDiskResultOutpu
 
 func (o LookupDiskResultOutput) ToLookupDiskResultOutputWithContext(ctx context.Context) LookupDiskResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupDiskResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDiskResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Set to true to enable bursting beyond the provisioned performance target of the disk. Bursting is disabled by default. Does not apply to Ultra disks.
@@ -250,17 +239,12 @@ func (o LookupDiskResultOutput) HyperVGeneration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDiskResult) *string { return v.HyperVGeneration }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Resource Id
 func (o LookupDiskResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The UTC time when the ownership state of the disk was last changed i.e., the time the disk was last attached or detached from a VM or the time when the VM to which the disk was attached was deallocated or started.
-func (o LookupDiskResultOutput) LastOwnershipUpdateTime() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDiskResult) string { return v.LastOwnershipUpdateTime }).(pulumi.StringOutput)
-}
-
-// The geo-location where the resource lives
+// Resource location
 func (o LookupDiskResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.Location }).(pulumi.StringOutput)
 }
@@ -280,7 +264,7 @@ func (o LookupDiskResultOutput) MaxShares() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupDiskResult) *int { return v.MaxShares }).(pulumi.IntPtrOutput)
 }
 
-// The name of the resource
+// Resource name
 func (o LookupDiskResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -316,8 +300,8 @@ func (o LookupDiskResultOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 }
 
 // Purchase plan information for the the image from which the OS disk was created. E.g. - {name: 2019-Datacenter, publisher: MicrosoftWindowsServer, product: WindowsServer}
-func (o LookupDiskResultOutput) PurchasePlan() DiskPurchasePlanResponsePtrOutput {
-	return o.ApplyT(func(v LookupDiskResult) *DiskPurchasePlanResponse { return v.PurchasePlan }).(DiskPurchasePlanResponsePtrOutput)
+func (o LookupDiskResultOutput) PurchasePlan() PurchasePlanResponsePtrOutput {
+	return o.ApplyT(func(v LookupDiskResult) *PurchasePlanResponse { return v.PurchasePlan }).(PurchasePlanResponsePtrOutput)
 }
 
 // Contains the security related information for the resource.
@@ -345,12 +329,7 @@ func (o LookupDiskResultOutput) SupportsHibernation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupDiskResult) *bool { return v.SupportsHibernation }).(pulumi.BoolPtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupDiskResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupDiskResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// Resource tags.
+// Resource tags
 func (o LookupDiskResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDiskResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -365,7 +344,7 @@ func (o LookupDiskResultOutput) TimeCreated() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.TimeCreated }).(pulumi.StringOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type
 func (o LookupDiskResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.Type }).(pulumi.StringOutput)
 }

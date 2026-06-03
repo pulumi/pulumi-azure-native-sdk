@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List configurations for the given product family, product line and product for the given subscription.
 //
-// Uses Azure REST API version 2024-02-01.
+// Uses Azure REST API version 2022-05-01-preview.
 //
-// Other available API versions: 2022-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edgeorder [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-02-01.
 func ListProductsAndConfigurations(ctx *pulumi.Context, args *ListProductsAndConfigurationsArgs, opts ...pulumi.InvokeOption) (*ListProductsAndConfigurationsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListProductsAndConfigurationsResult
@@ -37,9 +37,9 @@ type ListProductsAndConfigurationsArgs struct {
 
 // The list of configurations.
 type ListProductsAndConfigurationsResult struct {
-	// The link to the next page of items
+	// Link for the next set of configurations.
 	NextLink *string `pulumi:"nextLink"`
-	// The Configuration items on this page
+	// List of configurations.
 	Value []ConfigurationResponse `pulumi:"value"`
 }
 
@@ -80,12 +80,12 @@ func (o ListProductsAndConfigurationsResultOutput) ToListProductsAndConfiguratio
 	return o
 }
 
-// The link to the next page of items
+// Link for the next set of configurations.
 func (o ListProductsAndConfigurationsResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListProductsAndConfigurationsResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
-// The Configuration items on this page
+// List of configurations.
 func (o ListProductsAndConfigurationsResultOutput) Value() ConfigurationResponseArrayOutput {
 	return o.ApplyT(func(v ListProductsAndConfigurationsResult) []ConfigurationResponse { return v.Value }).(ConfigurationResponseArrayOutput)
 }

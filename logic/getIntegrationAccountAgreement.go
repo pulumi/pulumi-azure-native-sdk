@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2019-05-01.
 //
-// Other available API versions: 2015-08-01-preview, 2018-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native logic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2015-08-01-preview.
 func LookupIntegrationAccountAgreement(ctx *pulumi.Context, args *LookupIntegrationAccountAgreementArgs, opts ...pulumi.InvokeOption) (*LookupIntegrationAccountAgreementResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIntegrationAccountAgreementResult
@@ -39,8 +39,6 @@ type LookupIntegrationAccountAgreementArgs struct {
 type LookupIntegrationAccountAgreementResult struct {
 	// The agreement type.
 	AgreementType string `pulumi:"agreementType"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The changed time.
 	ChangedTime string `pulumi:"changedTime"`
 	// The agreement content.
@@ -109,11 +107,6 @@ func (o LookupIntegrationAccountAgreementResultOutput) ToLookupIntegrationAccoun
 // The agreement type.
 func (o LookupIntegrationAccountAgreementResultOutput) AgreementType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntegrationAccountAgreementResult) string { return v.AgreementType }).(pulumi.StringOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupIntegrationAccountAgreementResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupIntegrationAccountAgreementResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The changed time.

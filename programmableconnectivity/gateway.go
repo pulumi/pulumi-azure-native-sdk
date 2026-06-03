@@ -8,27 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Programmable Connectivity Gateway resource.
+// A Programmable Connectivity Gateway resource
 //
-// Uses Azure REST API version 2024-01-15-preview. In version 2.x of the Azure Native provider, it used API version 2024-01-15-preview.
-//
-// Other available API versions: 2025-03-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native programmableconnectivity [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Uses Azure REST API version 2024-01-15-preview.
 type Gateway struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// Base URL of the Gateway resource. This is the URL that the users would use to make Network API requests to the Operators via Azure.
+	// Base URL of the Gateway resource. This is the URL that the users would use to make Open API Gateway requests to the Operators via Azure.
 	GatewayBaseUrl pulumi.StringOutput `pulumi:"gatewayBaseUrl"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// List of Operator API Connections selected by the user.
+	// List of Operator API Connections selected by the user
 	OperatorApiConnections pulumi.StringArrayOutput `pulumi:"operatorApiConnections"`
 	// The status of the last operation on the Gateway resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
@@ -53,9 +49,6 @@ func NewGateway(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:programmableconnectivity/v20240115preview:Gateway"),
-		},
-		{
-			Type: pulumi.String("azure-native:programmableconnectivity/v20250330preview:Gateway"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -92,7 +85,7 @@ func (GatewayState) ElementType() reflect.Type {
 }
 
 type gatewayArgs struct {
-	// Azure Programmable Connectivity Gateway Name.
+	// Azure Programmable Connectivity Gateway Name
 	GatewayName *string `pulumi:"gatewayName"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
@@ -104,7 +97,7 @@ type gatewayArgs struct {
 
 // The set of arguments for constructing a Gateway resource.
 type GatewayArgs struct {
-	// Azure Programmable Connectivity Gateway Name.
+	// Azure Programmable Connectivity Gateway Name
 	GatewayName pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
@@ -151,12 +144,7 @@ func (o GatewayOutput) ToGatewayOutputWithContext(ctx context.Context) GatewayOu
 	return o
 }
 
-// The Azure API version of the resource.
-func (o GatewayOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Base URL of the Gateway resource. This is the URL that the users would use to make Network API requests to the Operators via Azure.
+// Base URL of the Gateway resource. This is the URL that the users would use to make Open API Gateway requests to the Operators via Azure.
 func (o GatewayOutput) GatewayBaseUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.GatewayBaseUrl }).(pulumi.StringOutput)
 }
@@ -171,7 +159,7 @@ func (o GatewayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// List of Operator API Connections selected by the user.
+// List of Operator API Connections selected by the user
 func (o GatewayOutput) OperatorApiConnections() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringArrayOutput { return v.OperatorApiConnections }).(pulumi.StringArrayOutput)
 }

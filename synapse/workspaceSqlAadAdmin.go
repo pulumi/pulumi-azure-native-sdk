@@ -8,15 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Workspace active directory administrator
 //
-// Uses Azure REST API version 2021-06-01. In version 2.x of the Azure Native provider, it used API version 2021-06-01.
+// Uses Azure REST API version 2021-06-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01.
 //
-// Other available API versions: 2021-04-01-preview, 2021-05-01, 2021-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native synapse [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-06-01-preview.
 //
 // Note: SQL AAD Admin is configured automatically during workspace creation and assigned to the current user. One can't add more admins with this resource unless you manually delete the current SQL AAD Admin.
 type WorkspaceSqlAadAdmin struct {
@@ -24,8 +24,6 @@ type WorkspaceSqlAadAdmin struct {
 
 	// Workspace active directory administrator type
 	AdministratorType pulumi.StringPtrOutput `pulumi:"administratorType"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Login of the workspace active directory administrator
 	Login pulumi.StringPtrOutput `pulumi:"login"`
 	// The name of the resource
@@ -178,11 +176,6 @@ func (o WorkspaceSqlAadAdminOutput) ToWorkspaceSqlAadAdminOutputWithContext(ctx 
 // Workspace active directory administrator type
 func (o WorkspaceSqlAadAdminOutput) AdministratorType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkspaceSqlAadAdmin) pulumi.StringPtrOutput { return v.AdministratorType }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o WorkspaceSqlAadAdminOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *WorkspaceSqlAadAdmin) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Login of the workspace active directory administrator

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a policy fragment.
 //
-// Uses Azure REST API version 2024-05-01.
+// Uses Azure REST API version 2022-09-01-preview.
 //
-// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
 func LookupWorkspacePolicyFragment(ctx *pulumi.Context, args *LookupWorkspacePolicyFragmentArgs, opts ...pulumi.InvokeOption) (*LookupWorkspacePolicyFragmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkspacePolicyFragmentResult
@@ -41,8 +41,6 @@ type LookupWorkspacePolicyFragmentArgs struct {
 
 // Policy fragment contract details.
 type LookupWorkspacePolicyFragmentResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Policy fragment description.
 	Description *string `pulumi:"description"`
 	// Format of the policy fragment content.
@@ -51,8 +49,6 @@ type LookupWorkspacePolicyFragmentResult struct {
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// The provisioning state
-	ProvisioningState string `pulumi:"provisioningState"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Contents of the policy fragment.
@@ -112,11 +108,6 @@ func (o LookupWorkspacePolicyFragmentResultOutput) ToLookupWorkspacePolicyFragme
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupWorkspacePolicyFragmentResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkspacePolicyFragmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Policy fragment description.
 func (o LookupWorkspacePolicyFragmentResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkspacePolicyFragmentResult) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -135,11 +126,6 @@ func (o LookupWorkspacePolicyFragmentResultOutput) Id() pulumi.StringOutput {
 // The name of the resource
 func (o LookupWorkspacePolicyFragmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspacePolicyFragmentResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The provisioning state
-func (o LookupWorkspacePolicyFragmentResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkspacePolicyFragmentResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

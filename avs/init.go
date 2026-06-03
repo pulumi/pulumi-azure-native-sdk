@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,14 +37,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HcxEnterpriseSite{}
 	case "azure-native:avs:IscsiPath":
 		r = &IscsiPath{}
-	case "azure-native:avs:License":
-		r = &License{}
 	case "azure-native:avs:PlacementPolicy":
 		r = &PlacementPolicy{}
 	case "azure-native:avs:PrivateCloud":
 		r = &PrivateCloud{}
-	case "azure-native:avs:PureStoragePolicy":
-		r = &PureStoragePolicy{}
 	case "azure-native:avs:ScriptExecution":
 		r = &ScriptExecution{}
 	case "azure-native:avs:WorkloadNetworkDhcp":

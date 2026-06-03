@@ -7,13 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a EdgeDeviceJob
 //
-// Uses Azure REST API version 2024-12-01-preview.
+// Uses Azure REST API version 2024-09-01-preview.
 func LookupHciEdgeDeviceJob(ctx *pulumi.Context, args *LookupHciEdgeDeviceJobArgs, opts ...pulumi.InvokeOption) (*LookupHciEdgeDeviceJobResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupHciEdgeDeviceJobResult
@@ -35,8 +35,6 @@ type LookupHciEdgeDeviceJobArgs struct {
 
 // Edge device job for Azure Stack HCI solution.
 type LookupHciEdgeDeviceJobResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Edge device kind.
@@ -87,11 +85,6 @@ func (o LookupHciEdgeDeviceJobResultOutput) ToLookupHciEdgeDeviceJobResultOutput
 
 func (o LookupHciEdgeDeviceJobResultOutput) ToLookupHciEdgeDeviceJobResultOutputWithContext(ctx context.Context) LookupHciEdgeDeviceJobResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupHciEdgeDeviceJobResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupHciEdgeDeviceJobResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

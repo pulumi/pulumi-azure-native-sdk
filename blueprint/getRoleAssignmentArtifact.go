@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,8 +35,6 @@ type LookupRoleAssignmentArtifactArgs struct {
 
 // Blueprint artifact that applies a Role assignment.
 type LookupRoleAssignmentArtifactResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Artifacts which need to be deployed before the specified artifact.
 	DependsOn []string `pulumi:"dependsOn"`
 	// Multi-line explain this resource.
@@ -95,11 +93,6 @@ func (o LookupRoleAssignmentArtifactResultOutput) ToLookupRoleAssignmentArtifact
 
 func (o LookupRoleAssignmentArtifactResultOutput) ToLookupRoleAssignmentArtifactResultOutputWithContext(ctx context.Context) LookupRoleAssignmentArtifactResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupRoleAssignmentArtifactResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRoleAssignmentArtifactResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Artifacts which need to be deployed before the specified artifact.

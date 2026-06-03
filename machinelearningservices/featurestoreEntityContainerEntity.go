@@ -8,24 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Resource Manager resource envelope.
 //
-// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
+// Uses Azure REST API version 2023-04-01-preview.
 //
-// Other available API versions: 2023-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
 type FeaturestoreEntityContainerEntity struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// [Required] Additional attributes of the entity.
+	FeaturestoreEntityContainerProperties FeaturestoreEntityContainerResponseOutput `pulumi:"featurestoreEntityContainerProperties"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// [Required] Additional attributes of the entity.
-	Properties FeaturestoreEntityContainerPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -39,8 +37,8 @@ func NewFeaturestoreEntityContainerEntity(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Properties == nil {
-		return nil, errors.New("invalid value for required argument 'Properties'")
+	if args.FeaturestoreEntityContainerProperties == nil {
+		return nil, errors.New("invalid value for required argument 'FeaturestoreEntityContainerProperties'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
@@ -48,9 +46,7 @@ func NewFeaturestoreEntityContainerEntity(ctx *pulumi.Context,
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
-	args.Properties = args.Properties.ToFeaturestoreEntityContainerPropertiesOutput().ApplyT(func(v FeaturestoreEntityContainerProperties) FeaturestoreEntityContainerProperties {
-		return *v.Defaults()
-	}).(FeaturestoreEntityContainerPropertiesOutput)
+	args.FeaturestoreEntityContainerProperties = args.FeaturestoreEntityContainerProperties.ToFeaturestoreEntityContainerOutput().ApplyT(func(v FeaturestoreEntityContainer) FeaturestoreEntityContainer { return *v.Defaults() }).(FeaturestoreEntityContainerOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20230201preview:FeaturestoreEntityContainerEntity"),
@@ -88,27 +84,6 @@ func NewFeaturestoreEntityContainerEntity(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:FeaturestoreEntityContainerEntity"),
 		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250401:FeaturestoreEntityContainerEntity"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250401preview:FeaturestoreEntityContainerEntity"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250601:FeaturestoreEntityContainerEntity"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250701preview:FeaturestoreEntityContainerEntity"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250901:FeaturestoreEntityContainerEntity"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20251001preview:FeaturestoreEntityContainerEntity"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20251201:FeaturestoreEntityContainerEntity"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -144,25 +119,25 @@ func (FeaturestoreEntityContainerEntityState) ElementType() reflect.Type {
 }
 
 type featurestoreEntityContainerEntityArgs struct {
+	// [Required] Additional attributes of the entity.
+	FeaturestoreEntityContainerProperties FeaturestoreEntityContainer `pulumi:"featurestoreEntityContainerProperties"`
 	// Container name. This is case-sensitive.
 	Name *string `pulumi:"name"`
-	// [Required] Additional attributes of the entity.
-	Properties FeaturestoreEntityContainerProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // The set of arguments for constructing a FeaturestoreEntityContainerEntity resource.
 type FeaturestoreEntityContainerEntityArgs struct {
+	// [Required] Additional attributes of the entity.
+	FeaturestoreEntityContainerProperties FeaturestoreEntityContainerInput
 	// Container name. This is case-sensitive.
 	Name pulumi.StringPtrInput
-	// [Required] Additional attributes of the entity.
-	Properties FeaturestoreEntityContainerPropertiesInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName pulumi.StringInput
 }
 
@@ -203,21 +178,16 @@ func (o FeaturestoreEntityContainerEntityOutput) ToFeaturestoreEntityContainerEn
 	return o
 }
 
-// The Azure API version of the resource.
-func (o FeaturestoreEntityContainerEntityOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *FeaturestoreEntityContainerEntity) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+// [Required] Additional attributes of the entity.
+func (o FeaturestoreEntityContainerEntityOutput) FeaturestoreEntityContainerProperties() FeaturestoreEntityContainerResponseOutput {
+	return o.ApplyT(func(v *FeaturestoreEntityContainerEntity) FeaturestoreEntityContainerResponseOutput {
+		return v.FeaturestoreEntityContainerProperties
+	}).(FeaturestoreEntityContainerResponseOutput)
 }
 
 // The name of the resource
 func (o FeaturestoreEntityContainerEntityOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeaturestoreEntityContainerEntity) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
-}
-
-// [Required] Additional attributes of the entity.
-func (o FeaturestoreEntityContainerEntityOutput) Properties() FeaturestoreEntityContainerPropertiesResponseOutput {
-	return o.ApplyT(func(v *FeaturestoreEntityContainerEntity) FeaturestoreEntityContainerPropertiesResponseOutput {
-		return v.Properties
-	}).(FeaturestoreEntityContainerPropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

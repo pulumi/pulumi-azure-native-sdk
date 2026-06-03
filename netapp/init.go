@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,50 +23,26 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:netapp:Account":
 		r = &Account{}
-	case "azure-native:netapp:ActiveDirectoryConfig":
-		r = &ActiveDirectoryConfig{}
 	case "azure-native:netapp:Backup":
 		r = &Backup{}
 	case "azure-native:netapp:BackupPolicy":
 		r = &BackupPolicy{}
 	case "azure-native:netapp:BackupVault":
 		r = &BackupVault{}
-	case "azure-native:netapp:CapacityPool":
-		r = &CapacityPool{}
-	case "azure-native:netapp:CapacityPoolBackup":
-		r = &CapacityPoolBackup{}
-	case "azure-native:netapp:CapacityPoolBucket":
-		r = &CapacityPoolBucket{}
-	case "azure-native:netapp:CapacityPoolCache":
-		r = &CapacityPoolCache{}
-	case "azure-native:netapp:CapacityPoolSnapshot":
-		r = &CapacityPoolSnapshot{}
-	case "azure-native:netapp:CapacityPoolSubvolume":
-		r = &CapacityPoolSubvolume{}
-	case "azure-native:netapp:CapacityPoolVolume":
-		r = &CapacityPoolVolume{}
-	case "azure-native:netapp:CapacityPoolVolumeQuotaRule":
-		r = &CapacityPoolVolumeQuotaRule{}
-	case "azure-native:netapp:ElasticAccount":
-		r = &ElasticAccount{}
-	case "azure-native:netapp:ElasticBackup":
-		r = &ElasticBackup{}
-	case "azure-native:netapp:ElasticBackupPolicy":
-		r = &ElasticBackupPolicy{}
-	case "azure-native:netapp:ElasticBackupVault":
-		r = &ElasticBackupVault{}
-	case "azure-native:netapp:ElasticCapacityPool":
-		r = &ElasticCapacityPool{}
-	case "azure-native:netapp:ElasticSnapshot":
-		r = &ElasticSnapshot{}
-	case "azure-native:netapp:ElasticSnapshotPolicy":
-		r = &ElasticSnapshotPolicy{}
-	case "azure-native:netapp:ElasticVolume":
-		r = &ElasticVolume{}
+	case "azure-native:netapp:Pool":
+		r = &Pool{}
+	case "azure-native:netapp:Snapshot":
+		r = &Snapshot{}
 	case "azure-native:netapp:SnapshotPolicy":
 		r = &SnapshotPolicy{}
+	case "azure-native:netapp:Subvolume":
+		r = &Subvolume{}
+	case "azure-native:netapp:Volume":
+		r = &Volume{}
 	case "azure-native:netapp:VolumeGroup":
 		r = &VolumeGroup{}
+	case "azure-native:netapp:VolumeQuotaRule":
+		r = &VolumeQuotaRule{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

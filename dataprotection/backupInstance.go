@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // BackupInstance Resource
 //
-// Uses Azure REST API version 2025-01-01. In version 2.x of the Azure Native provider, it used API version 2023-01-01.
+// Uses Azure REST API version 2023-01-01. In version 1.x of the Azure Native provider, it used API version 2021-01-01.
 //
-// Other available API versions: 2023-01-01, 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01, 2023-12-01, 2024-02-01-preview, 2024-03-01, 2024-04-01, 2025-02-01, 2025-07-01, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native dataprotection [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-04-01-preview, 2023-05-01, 2023-06-01-preview, 2023-08-01-preview, 2023-11-01, 2023-12-01, 2024-02-01-preview, 2024-03-01, 2024-04-01, 2025-01-01, 2025-02-01.
 type BackupInstance struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Proxy Resource name associated with the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// BackupInstanceResource properties
@@ -132,12 +130,6 @@ func NewBackupInstance(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:dataprotection/v20250201:BackupInstance"),
 		},
-		{
-			Type: pulumi.String("azure-native:dataprotection/v20250701:BackupInstance"),
-		},
-		{
-			Type: pulumi.String("azure-native:dataprotection/v20250901:BackupInstance"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -234,11 +226,6 @@ func (o BackupInstanceOutput) ToBackupInstanceOutput() BackupInstanceOutput {
 
 func (o BackupInstanceOutput) ToBackupInstanceOutputWithContext(ctx context.Context) BackupInstanceOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o BackupInstanceOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *BackupInstance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Proxy Resource name associated with the resource.

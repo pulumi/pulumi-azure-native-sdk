@@ -8,46 +8,28 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Response for POST requests that return single SharedAccessAuthorizationRule.
 //
-// Uses Azure REST API version 2023-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-01-01-preview.
+// Uses Azure REST API version 2023-01-01-preview. In version 1.x of the Azure Native provider, it used API version 2017-04-01.
 //
-// Other available API versions: 2023-01-01-preview, 2023-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native notificationhubs [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2017-04-01, 2023-09-01, 2023-10-01-preview.
 type NamespaceAuthorizationRule struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// Gets a string that describes the claim type
-	ClaimType pulumi.StringOutput `pulumi:"claimType"`
-	// Gets a string that describes the claim value
-	ClaimValue pulumi.StringOutput `pulumi:"claimValue"`
-	// Gets the created time for this rule
-	CreatedTime pulumi.StringOutput `pulumi:"createdTime"`
-	// Gets a string that describes the authorization rule.
-	KeyName  pulumi.StringOutput    `pulumi:"keyName"`
+	// Deprecated - only for compatibility.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// Gets the last modified time for this rule
-	ModifiedTime pulumi.StringOutput `pulumi:"modifiedTime"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Gets a base64-encoded 256-bit primary key for signing and
-	// validating the SAS token.
-	PrimaryKey pulumi.StringPtrOutput `pulumi:"primaryKey"`
-	// Gets the revision number for the rule
-	Revision pulumi.IntOutput `pulumi:"revision"`
-	// Gets or sets the rights associated with the rule.
-	Rights pulumi.StringArrayOutput `pulumi:"rights"`
-	// Gets a base64-encoded 256-bit primary key for signing and
-	// validating the SAS token.
-	SecondaryKey pulumi.StringPtrOutput `pulumi:"secondaryKey"`
+	// SharedAccessAuthorizationRule properties.
+	Properties SharedAccessAuthorizationRulePropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	Tags       pulumi.StringMapOutput   `pulumi:"tags"`
+	// Deprecated - only for compatibility.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -64,9 +46,6 @@ func NewNamespaceAuthorizationRule(ctx *pulumi.Context,
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
-	}
-	if args.Rights == nil {
-		return nil, errors.New("invalid value for required argument 'Rights'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -121,40 +100,32 @@ func (NamespaceAuthorizationRuleState) ElementType() reflect.Type {
 type namespaceAuthorizationRuleArgs struct {
 	// Authorization Rule Name
 	AuthorizationRuleName *string `pulumi:"authorizationRuleName"`
-	Location              *string `pulumi:"location"`
+	// Deprecated - only for compatibility.
+	Location *string `pulumi:"location"`
 	// Namespace name
 	NamespaceName string `pulumi:"namespaceName"`
-	// Gets a base64-encoded 256-bit primary key for signing and
-	// validating the SAS token.
-	PrimaryKey *string `pulumi:"primaryKey"`
+	// SharedAccessAuthorizationRule properties.
+	Properties *SharedAccessAuthorizationRuleProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Gets or sets the rights associated with the rule.
-	Rights []string `pulumi:"rights"`
-	// Gets a base64-encoded 256-bit primary key for signing and
-	// validating the SAS token.
-	SecondaryKey *string           `pulumi:"secondaryKey"`
-	Tags         map[string]string `pulumi:"tags"`
+	// Deprecated - only for compatibility.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a NamespaceAuthorizationRule resource.
 type NamespaceAuthorizationRuleArgs struct {
 	// Authorization Rule Name
 	AuthorizationRuleName pulumi.StringPtrInput
-	Location              pulumi.StringPtrInput
+	// Deprecated - only for compatibility.
+	Location pulumi.StringPtrInput
 	// Namespace name
 	NamespaceName pulumi.StringInput
-	// Gets a base64-encoded 256-bit primary key for signing and
-	// validating the SAS token.
-	PrimaryKey pulumi.StringPtrInput
+	// SharedAccessAuthorizationRule properties.
+	Properties SharedAccessAuthorizationRulePropertiesPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Gets or sets the rights associated with the rule.
-	Rights pulumi.StringArrayInput
-	// Gets a base64-encoded 256-bit primary key for signing and
-	// validating the SAS token.
-	SecondaryKey pulumi.StringPtrInput
-	Tags         pulumi.StringMapInput
+	// Deprecated - only for compatibility.
+	Tags pulumi.StringMapInput
 }
 
 func (NamespaceAuthorizationRuleArgs) ElementType() reflect.Type {
@@ -194,38 +165,9 @@ func (o NamespaceAuthorizationRuleOutput) ToNamespaceAuthorizationRuleOutputWith
 	return o
 }
 
-// The Azure API version of the resource.
-func (o NamespaceAuthorizationRuleOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Gets a string that describes the claim type
-func (o NamespaceAuthorizationRuleOutput) ClaimType() pulumi.StringOutput {
-	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.StringOutput { return v.ClaimType }).(pulumi.StringOutput)
-}
-
-// Gets a string that describes the claim value
-func (o NamespaceAuthorizationRuleOutput) ClaimValue() pulumi.StringOutput {
-	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.StringOutput { return v.ClaimValue }).(pulumi.StringOutput)
-}
-
-// Gets the created time for this rule
-func (o NamespaceAuthorizationRuleOutput) CreatedTime() pulumi.StringOutput {
-	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.StringOutput { return v.CreatedTime }).(pulumi.StringOutput)
-}
-
-// Gets a string that describes the authorization rule.
-func (o NamespaceAuthorizationRuleOutput) KeyName() pulumi.StringOutput {
-	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.StringOutput { return v.KeyName }).(pulumi.StringOutput)
-}
-
+// Deprecated - only for compatibility.
 func (o NamespaceAuthorizationRuleOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
-}
-
-// Gets the last modified time for this rule
-func (o NamespaceAuthorizationRuleOutput) ModifiedTime() pulumi.StringOutput {
-	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.StringOutput { return v.ModifiedTime }).(pulumi.StringOutput)
 }
 
 // The name of the resource
@@ -233,26 +175,11 @@ func (o NamespaceAuthorizationRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Gets a base64-encoded 256-bit primary key for signing and
-// validating the SAS token.
-func (o NamespaceAuthorizationRuleOutput) PrimaryKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.StringPtrOutput { return v.PrimaryKey }).(pulumi.StringPtrOutput)
-}
-
-// Gets the revision number for the rule
-func (o NamespaceAuthorizationRuleOutput) Revision() pulumi.IntOutput {
-	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.IntOutput { return v.Revision }).(pulumi.IntOutput)
-}
-
-// Gets or sets the rights associated with the rule.
-func (o NamespaceAuthorizationRuleOutput) Rights() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.StringArrayOutput { return v.Rights }).(pulumi.StringArrayOutput)
-}
-
-// Gets a base64-encoded 256-bit primary key for signing and
-// validating the SAS token.
-func (o NamespaceAuthorizationRuleOutput) SecondaryKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.StringPtrOutput { return v.SecondaryKey }).(pulumi.StringPtrOutput)
+// SharedAccessAuthorizationRule properties.
+func (o NamespaceAuthorizationRuleOutput) Properties() SharedAccessAuthorizationRulePropertiesResponseOutput {
+	return o.ApplyT(func(v *NamespaceAuthorizationRule) SharedAccessAuthorizationRulePropertiesResponseOutput {
+		return v.Properties
+	}).(SharedAccessAuthorizationRulePropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -260,6 +187,7 @@ func (o NamespaceAuthorizationRuleOutput) SystemData() SystemDataResponseOutput 
 	return o.ApplyT(func(v *NamespaceAuthorizationRule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
+// Deprecated - only for compatibility.
 func (o NamespaceAuthorizationRuleOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *NamespaceAuthorizationRule) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }

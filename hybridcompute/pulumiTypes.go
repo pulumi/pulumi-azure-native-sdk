@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -274,8 +274,6 @@ type AgentUpgradeResponse struct {
 	DesiredVersion *string `pulumi:"desiredVersion"`
 	// Specifies if RSM should try to upgrade this machine
 	EnableAutomaticUpgrade *bool `pulumi:"enableAutomaticUpgrade"`
-	// Specifies the version of the last attempt
-	LastAttemptDesiredVersion string `pulumi:"lastAttemptDesiredVersion"`
 	// Failure message of last upgrade attempt if any.
 	LastAttemptMessage string `pulumi:"lastAttemptMessage"`
 	// Specifies the status of Agent Upgrade.
@@ -312,11 +310,6 @@ func (o AgentUpgradeResponseOutput) DesiredVersion() pulumi.StringPtrOutput {
 // Specifies if RSM should try to upgrade this machine
 func (o AgentUpgradeResponseOutput) EnableAutomaticUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AgentUpgradeResponse) *bool { return v.EnableAutomaticUpgrade }).(pulumi.BoolPtrOutput)
-}
-
-// Specifies the version of the last attempt
-func (o AgentUpgradeResponseOutput) LastAttemptDesiredVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v AgentUpgradeResponse) string { return v.LastAttemptDesiredVersion }).(pulumi.StringOutput)
 }
 
 // Failure message of last upgrade attempt if any.
@@ -386,16 +379,6 @@ func (o AgentUpgradeResponsePtrOutput) EnableAutomaticUpgrade() pulumi.BoolPtrOu
 		}
 		return v.EnableAutomaticUpgrade
 	}).(pulumi.BoolPtrOutput)
-}
-
-// Specifies the version of the last attempt
-func (o AgentUpgradeResponsePtrOutput) LastAttemptDesiredVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AgentUpgradeResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LastAttemptDesiredVersion
-	}).(pulumi.StringPtrOutput)
 }
 
 // Failure message of last upgrade attempt if any.
@@ -648,80 +631,6 @@ func (o ErrorDetailResponseOutput) Target() pulumi.StringOutput {
 	return o.ApplyT(func(v ErrorDetailResponse) string { return v.Target }).(pulumi.StringOutput)
 }
 
-type ErrorDetailResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ErrorDetailResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ErrorDetailResponse)(nil)).Elem()
-}
-
-func (o ErrorDetailResponsePtrOutput) ToErrorDetailResponsePtrOutput() ErrorDetailResponsePtrOutput {
-	return o
-}
-
-func (o ErrorDetailResponsePtrOutput) ToErrorDetailResponsePtrOutputWithContext(ctx context.Context) ErrorDetailResponsePtrOutput {
-	return o
-}
-
-func (o ErrorDetailResponsePtrOutput) Elem() ErrorDetailResponseOutput {
-	return o.ApplyT(func(v *ErrorDetailResponse) ErrorDetailResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ErrorDetailResponse
-		return ret
-	}).(ErrorDetailResponseOutput)
-}
-
-// The error additional info.
-func (o ErrorDetailResponsePtrOutput) AdditionalInfo() ErrorAdditionalInfoResponseArrayOutput {
-	return o.ApplyT(func(v *ErrorDetailResponse) []ErrorAdditionalInfoResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AdditionalInfo
-	}).(ErrorAdditionalInfoResponseArrayOutput)
-}
-
-// The error code.
-func (o ErrorDetailResponsePtrOutput) Code() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorDetailResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Code
-	}).(pulumi.StringPtrOutput)
-}
-
-// The error details.
-func (o ErrorDetailResponsePtrOutput) Details() ErrorDetailResponseArrayOutput {
-	return o.ApplyT(func(v *ErrorDetailResponse) []ErrorDetailResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Details
-	}).(ErrorDetailResponseArrayOutput)
-}
-
-// The error message.
-func (o ErrorDetailResponsePtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorDetailResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Message
-	}).(pulumi.StringPtrOutput)
-}
-
-// The error target.
-func (o ErrorDetailResponsePtrOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorDetailResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Target
-	}).(pulumi.StringPtrOutput)
-}
-
 type ErrorDetailResponseArrayOutput struct{ *pulumi.OutputState }
 
 func (ErrorDetailResponseArrayOutput) ElementType() reflect.Type {
@@ -744,8 +653,8 @@ func (o ErrorDetailResponseArrayOutput) Index(i pulumi.IntInput) ErrorDetailResp
 
 // ESU key
 type EsuKeyResponse struct {
-	// The current status of the license profile key. Represented by the same integer value that is presented on the machine itself when querying the license key status.
-	LicenseStatus *int `pulumi:"licenseStatus"`
+	// The current status of the license profile key.
+	LicenseStatus *string `pulumi:"licenseStatus"`
 	// SKU number.
 	Sku *string `pulumi:"sku"`
 }
@@ -765,9 +674,9 @@ func (o EsuKeyResponseOutput) ToEsuKeyResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The current status of the license profile key. Represented by the same integer value that is presented on the machine itself when querying the license key status.
-func (o EsuKeyResponseOutput) LicenseStatus() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v EsuKeyResponse) *int { return v.LicenseStatus }).(pulumi.IntPtrOutput)
+// The current status of the license profile key.
+func (o EsuKeyResponseOutput) LicenseStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EsuKeyResponse) *string { return v.LicenseStatus }).(pulumi.StringPtrOutput)
 }
 
 // SKU number.
@@ -1292,282 +1201,6 @@ func (o IdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Describes properties of the IP address.
-type IpAddressResponse struct {
-	// Represents the IP Address.
-	Address *string `pulumi:"address"`
-	// Represents the Ip Address Version.
-	IpAddressVersion *string `pulumi:"ipAddressVersion"`
-	// The subnet to which this IP address belongs.
-	Subnet SubnetResponse `pulumi:"subnet"`
-}
-
-// Describes properties of the IP address.
-type IpAddressResponseOutput struct{ *pulumi.OutputState }
-
-func (IpAddressResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IpAddressResponse)(nil)).Elem()
-}
-
-func (o IpAddressResponseOutput) ToIpAddressResponseOutput() IpAddressResponseOutput {
-	return o
-}
-
-func (o IpAddressResponseOutput) ToIpAddressResponseOutputWithContext(ctx context.Context) IpAddressResponseOutput {
-	return o
-}
-
-// Represents the IP Address.
-func (o IpAddressResponseOutput) Address() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IpAddressResponse) *string { return v.Address }).(pulumi.StringPtrOutput)
-}
-
-// Represents the Ip Address Version.
-func (o IpAddressResponseOutput) IpAddressVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IpAddressResponse) *string { return v.IpAddressVersion }).(pulumi.StringPtrOutput)
-}
-
-// The subnet to which this IP address belongs.
-func (o IpAddressResponseOutput) Subnet() SubnetResponseOutput {
-	return o.ApplyT(func(v IpAddressResponse) SubnetResponse { return v.Subnet }).(SubnetResponseOutput)
-}
-
-type IpAddressResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (IpAddressResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IpAddressResponse)(nil)).Elem()
-}
-
-func (o IpAddressResponseArrayOutput) ToIpAddressResponseArrayOutput() IpAddressResponseArrayOutput {
-	return o
-}
-
-func (o IpAddressResponseArrayOutput) ToIpAddressResponseArrayOutputWithContext(ctx context.Context) IpAddressResponseArrayOutput {
-	return o
-}
-
-func (o IpAddressResponseArrayOutput) Index(i pulumi.IntInput) IpAddressResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IpAddressResponse {
-		return vs[0].([]IpAddressResponse)[vs[1].(int)]
-	}).(IpAddressResponseOutput)
-}
-
-// Describes a license in a hybrid machine.
-type LicenseType struct {
-	// Describes the properties of a License.
-	LicenseDetails *LicenseDetails `pulumi:"licenseDetails"`
-	// The type of the license resource.
-	LicenseType *string `pulumi:"licenseType"`
-	// The geo-location where the resource lives
-	Location string `pulumi:"location"`
-	// Resource tags.
-	Tags map[string]string `pulumi:"tags"`
-	// Describes the tenant id.
-	TenantId *string `pulumi:"tenantId"`
-}
-
-// LicenseTypeInput is an input type that accepts LicenseTypeArgs and LicenseTypeOutput values.
-// You can construct a concrete instance of `LicenseTypeInput` via:
-//
-//	LicenseTypeArgs{...}
-type LicenseTypeInput interface {
-	pulumi.Input
-
-	ToLicenseTypeOutput() LicenseTypeOutput
-	ToLicenseTypeOutputWithContext(context.Context) LicenseTypeOutput
-}
-
-// Describes a license in a hybrid machine.
-type LicenseTypeArgs struct {
-	// Describes the properties of a License.
-	LicenseDetails LicenseDetailsPtrInput `pulumi:"licenseDetails"`
-	// The type of the license resource.
-	LicenseType pulumi.StringPtrInput `pulumi:"licenseType"`
-	// The geo-location where the resource lives
-	Location pulumi.StringInput `pulumi:"location"`
-	// Resource tags.
-	Tags pulumi.StringMapInput `pulumi:"tags"`
-	// Describes the tenant id.
-	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
-}
-
-func (LicenseTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LicenseType)(nil)).Elem()
-}
-
-func (i LicenseTypeArgs) ToLicenseTypeOutput() LicenseTypeOutput {
-	return i.ToLicenseTypeOutputWithContext(context.Background())
-}
-
-func (i LicenseTypeArgs) ToLicenseTypeOutputWithContext(ctx context.Context) LicenseTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LicenseTypeOutput)
-}
-
-func (i LicenseTypeArgs) ToLicenseTypePtrOutput() LicenseTypePtrOutput {
-	return i.ToLicenseTypePtrOutputWithContext(context.Background())
-}
-
-func (i LicenseTypeArgs) ToLicenseTypePtrOutputWithContext(ctx context.Context) LicenseTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LicenseTypeOutput).ToLicenseTypePtrOutputWithContext(ctx)
-}
-
-// LicenseTypePtrInput is an input type that accepts LicenseTypeArgs, LicenseTypePtr and LicenseTypePtrOutput values.
-// You can construct a concrete instance of `LicenseTypePtrInput` via:
-//
-//	        LicenseTypeArgs{...}
-//
-//	or:
-//
-//	        nil
-type LicenseTypePtrInput interface {
-	pulumi.Input
-
-	ToLicenseTypePtrOutput() LicenseTypePtrOutput
-	ToLicenseTypePtrOutputWithContext(context.Context) LicenseTypePtrOutput
-}
-
-type licenseTypePtrType LicenseTypeArgs
-
-func LicenseTypePtr(v *LicenseTypeArgs) LicenseTypePtrInput {
-	return (*licenseTypePtrType)(v)
-}
-
-func (*licenseTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LicenseType)(nil)).Elem()
-}
-
-func (i *licenseTypePtrType) ToLicenseTypePtrOutput() LicenseTypePtrOutput {
-	return i.ToLicenseTypePtrOutputWithContext(context.Background())
-}
-
-func (i *licenseTypePtrType) ToLicenseTypePtrOutputWithContext(ctx context.Context) LicenseTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LicenseTypePtrOutput)
-}
-
-// Describes a license in a hybrid machine.
-type LicenseTypeOutput struct{ *pulumi.OutputState }
-
-func (LicenseTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LicenseType)(nil)).Elem()
-}
-
-func (o LicenseTypeOutput) ToLicenseTypeOutput() LicenseTypeOutput {
-	return o
-}
-
-func (o LicenseTypeOutput) ToLicenseTypeOutputWithContext(ctx context.Context) LicenseTypeOutput {
-	return o
-}
-
-func (o LicenseTypeOutput) ToLicenseTypePtrOutput() LicenseTypePtrOutput {
-	return o.ToLicenseTypePtrOutputWithContext(context.Background())
-}
-
-func (o LicenseTypeOutput) ToLicenseTypePtrOutputWithContext(ctx context.Context) LicenseTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LicenseType) *LicenseType {
-		return &v
-	}).(LicenseTypePtrOutput)
-}
-
-// Describes the properties of a License.
-func (o LicenseTypeOutput) LicenseDetails() LicenseDetailsPtrOutput {
-	return o.ApplyT(func(v LicenseType) *LicenseDetails { return v.LicenseDetails }).(LicenseDetailsPtrOutput)
-}
-
-// The type of the license resource.
-func (o LicenseTypeOutput) LicenseType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LicenseType) *string { return v.LicenseType }).(pulumi.StringPtrOutput)
-}
-
-// The geo-location where the resource lives
-func (o LicenseTypeOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v LicenseType) string { return v.Location }).(pulumi.StringOutput)
-}
-
-// Resource tags.
-func (o LicenseTypeOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LicenseType) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// Describes the tenant id.
-func (o LicenseTypeOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LicenseType) *string { return v.TenantId }).(pulumi.StringPtrOutput)
-}
-
-type LicenseTypePtrOutput struct{ *pulumi.OutputState }
-
-func (LicenseTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LicenseType)(nil)).Elem()
-}
-
-func (o LicenseTypePtrOutput) ToLicenseTypePtrOutput() LicenseTypePtrOutput {
-	return o
-}
-
-func (o LicenseTypePtrOutput) ToLicenseTypePtrOutputWithContext(ctx context.Context) LicenseTypePtrOutput {
-	return o
-}
-
-func (o LicenseTypePtrOutput) Elem() LicenseTypeOutput {
-	return o.ApplyT(func(v *LicenseType) LicenseType {
-		if v != nil {
-			return *v
-		}
-		var ret LicenseType
-		return ret
-	}).(LicenseTypeOutput)
-}
-
-// Describes the properties of a License.
-func (o LicenseTypePtrOutput) LicenseDetails() LicenseDetailsPtrOutput {
-	return o.ApplyT(func(v *LicenseType) *LicenseDetails {
-		if v == nil {
-			return nil
-		}
-		return v.LicenseDetails
-	}).(LicenseDetailsPtrOutput)
-}
-
-// The type of the license resource.
-func (o LicenseTypePtrOutput) LicenseType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LicenseType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LicenseType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The geo-location where the resource lives
-func (o LicenseTypePtrOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LicenseType) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Location
-	}).(pulumi.StringPtrOutput)
-}
-
-// Resource tags.
-func (o LicenseTypePtrOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *LicenseType) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Tags
-	}).(pulumi.StringMapOutput)
-}
-
-// Describes the tenant id.
-func (o LicenseTypePtrOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LicenseType) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TenantId
-	}).(pulumi.StringPtrOutput)
-}
-
 // Describes the properties of a License.
 type LicenseDetails struct {
 	// Describes the edition of the license. The values are either Standard or Datacenter.
@@ -1580,8 +1213,6 @@ type LicenseDetails struct {
 	Target *string `pulumi:"target"`
 	// Describes the license core type (pCore or vCore).
 	Type *string `pulumi:"type"`
-	// A list of volume license details.
-	VolumeLicenseDetails []VolumeLicenseDetails `pulumi:"volumeLicenseDetails"`
 }
 
 // LicenseDetailsInput is an input type that accepts LicenseDetailsArgs and LicenseDetailsOutput values.
@@ -1607,8 +1238,6 @@ type LicenseDetailsArgs struct {
 	Target pulumi.StringPtrInput `pulumi:"target"`
 	// Describes the license core type (pCore or vCore).
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// A list of volume license details.
-	VolumeLicenseDetails VolumeLicenseDetailsArrayInput `pulumi:"volumeLicenseDetails"`
 }
 
 func (LicenseDetailsArgs) ElementType() reflect.Type {
@@ -1714,11 +1343,6 @@ func (o LicenseDetailsOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LicenseDetails) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// A list of volume license details.
-func (o LicenseDetailsOutput) VolumeLicenseDetails() VolumeLicenseDetailsArrayOutput {
-	return o.ApplyT(func(v LicenseDetails) []VolumeLicenseDetails { return v.VolumeLicenseDetails }).(VolumeLicenseDetailsArrayOutput)
-}
-
 type LicenseDetailsPtrOutput struct{ *pulumi.OutputState }
 
 func (LicenseDetailsPtrOutput) ElementType() reflect.Type {
@@ -1793,16 +1417,6 @@ func (o LicenseDetailsPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A list of volume license details.
-func (o LicenseDetailsPtrOutput) VolumeLicenseDetails() VolumeLicenseDetailsArrayOutput {
-	return o.ApplyT(func(v *LicenseDetails) []VolumeLicenseDetails {
-		if v == nil {
-			return nil
-		}
-		return v.VolumeLicenseDetails
-	}).(VolumeLicenseDetailsArrayOutput)
-}
-
 // Describes the properties of a License.
 type LicenseDetailsResponse struct {
 	// Describes the number of assigned licenses.
@@ -1819,8 +1433,6 @@ type LicenseDetailsResponse struct {
 	Target *string `pulumi:"target"`
 	// Describes the license core type (pCore or vCore).
 	Type *string `pulumi:"type"`
-	// A list of volume license details.
-	VolumeLicenseDetails []VolumeLicenseDetailsResponse `pulumi:"volumeLicenseDetails"`
 }
 
 // Describes the properties of a License.
@@ -1871,11 +1483,6 @@ func (o LicenseDetailsResponseOutput) Target() pulumi.StringPtrOutput {
 // Describes the license core type (pCore or vCore).
 func (o LicenseDetailsResponseOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LicenseDetailsResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-// A list of volume license details.
-func (o LicenseDetailsResponseOutput) VolumeLicenseDetails() VolumeLicenseDetailsResponseArrayOutput {
-	return o.ApplyT(func(v LicenseDetailsResponse) []VolumeLicenseDetailsResponse { return v.VolumeLicenseDetails }).(VolumeLicenseDetailsResponseArrayOutput)
 }
 
 type LicenseDetailsResponsePtrOutput struct{ *pulumi.OutputState }
@@ -1969,1023 +1576,6 @@ func (o LicenseDetailsResponsePtrOutput) Type() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// A list of volume license details.
-func (o LicenseDetailsResponsePtrOutput) VolumeLicenseDetails() VolumeLicenseDetailsResponseArrayOutput {
-	return o.ApplyT(func(v *LicenseDetailsResponse) []VolumeLicenseDetailsResponse {
-		if v == nil {
-			return nil
-		}
-		return v.VolumeLicenseDetails
-	}).(VolumeLicenseDetailsResponseArrayOutput)
-}
-
-// License Profile Instance View in Machine Properties.
-type LicenseProfileMachineInstanceView struct {
-	// Properties for the Machine ESU profile.
-	EsuProfile *LicenseProfileMachineInstanceViewEsuProperties `pulumi:"esuProfile"`
-	// The list of product features.
-	ProductFeatures []ProductFeature `pulumi:"productFeatures"`
-	// Indicates the product type of the license.
-	ProductType *string `pulumi:"productType"`
-	// Specifies if this machine is licensed as part of a Software Assurance agreement.
-	SoftwareAssuranceCustomer *bool `pulumi:"softwareAssuranceCustomer"`
-	// Indicates the subscription status of the product.
-	SubscriptionStatus *string `pulumi:"subscriptionStatus"`
-}
-
-// LicenseProfileMachineInstanceViewInput is an input type that accepts LicenseProfileMachineInstanceViewArgs and LicenseProfileMachineInstanceViewOutput values.
-// You can construct a concrete instance of `LicenseProfileMachineInstanceViewInput` via:
-//
-//	LicenseProfileMachineInstanceViewArgs{...}
-type LicenseProfileMachineInstanceViewInput interface {
-	pulumi.Input
-
-	ToLicenseProfileMachineInstanceViewOutput() LicenseProfileMachineInstanceViewOutput
-	ToLicenseProfileMachineInstanceViewOutputWithContext(context.Context) LicenseProfileMachineInstanceViewOutput
-}
-
-// License Profile Instance View in Machine Properties.
-type LicenseProfileMachineInstanceViewArgs struct {
-	// Properties for the Machine ESU profile.
-	EsuProfile LicenseProfileMachineInstanceViewEsuPropertiesPtrInput `pulumi:"esuProfile"`
-	// The list of product features.
-	ProductFeatures ProductFeatureArrayInput `pulumi:"productFeatures"`
-	// Indicates the product type of the license.
-	ProductType pulumi.StringPtrInput `pulumi:"productType"`
-	// Specifies if this machine is licensed as part of a Software Assurance agreement.
-	SoftwareAssuranceCustomer pulumi.BoolPtrInput `pulumi:"softwareAssuranceCustomer"`
-	// Indicates the subscription status of the product.
-	SubscriptionStatus pulumi.StringPtrInput `pulumi:"subscriptionStatus"`
-}
-
-func (LicenseProfileMachineInstanceViewArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LicenseProfileMachineInstanceView)(nil)).Elem()
-}
-
-func (i LicenseProfileMachineInstanceViewArgs) ToLicenseProfileMachineInstanceViewOutput() LicenseProfileMachineInstanceViewOutput {
-	return i.ToLicenseProfileMachineInstanceViewOutputWithContext(context.Background())
-}
-
-func (i LicenseProfileMachineInstanceViewArgs) ToLicenseProfileMachineInstanceViewOutputWithContext(ctx context.Context) LicenseProfileMachineInstanceViewOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LicenseProfileMachineInstanceViewOutput)
-}
-
-func (i LicenseProfileMachineInstanceViewArgs) ToLicenseProfileMachineInstanceViewPtrOutput() LicenseProfileMachineInstanceViewPtrOutput {
-	return i.ToLicenseProfileMachineInstanceViewPtrOutputWithContext(context.Background())
-}
-
-func (i LicenseProfileMachineInstanceViewArgs) ToLicenseProfileMachineInstanceViewPtrOutputWithContext(ctx context.Context) LicenseProfileMachineInstanceViewPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LicenseProfileMachineInstanceViewOutput).ToLicenseProfileMachineInstanceViewPtrOutputWithContext(ctx)
-}
-
-// LicenseProfileMachineInstanceViewPtrInput is an input type that accepts LicenseProfileMachineInstanceViewArgs, LicenseProfileMachineInstanceViewPtr and LicenseProfileMachineInstanceViewPtrOutput values.
-// You can construct a concrete instance of `LicenseProfileMachineInstanceViewPtrInput` via:
-//
-//	        LicenseProfileMachineInstanceViewArgs{...}
-//
-//	or:
-//
-//	        nil
-type LicenseProfileMachineInstanceViewPtrInput interface {
-	pulumi.Input
-
-	ToLicenseProfileMachineInstanceViewPtrOutput() LicenseProfileMachineInstanceViewPtrOutput
-	ToLicenseProfileMachineInstanceViewPtrOutputWithContext(context.Context) LicenseProfileMachineInstanceViewPtrOutput
-}
-
-type licenseProfileMachineInstanceViewPtrType LicenseProfileMachineInstanceViewArgs
-
-func LicenseProfileMachineInstanceViewPtr(v *LicenseProfileMachineInstanceViewArgs) LicenseProfileMachineInstanceViewPtrInput {
-	return (*licenseProfileMachineInstanceViewPtrType)(v)
-}
-
-func (*licenseProfileMachineInstanceViewPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LicenseProfileMachineInstanceView)(nil)).Elem()
-}
-
-func (i *licenseProfileMachineInstanceViewPtrType) ToLicenseProfileMachineInstanceViewPtrOutput() LicenseProfileMachineInstanceViewPtrOutput {
-	return i.ToLicenseProfileMachineInstanceViewPtrOutputWithContext(context.Background())
-}
-
-func (i *licenseProfileMachineInstanceViewPtrType) ToLicenseProfileMachineInstanceViewPtrOutputWithContext(ctx context.Context) LicenseProfileMachineInstanceViewPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LicenseProfileMachineInstanceViewPtrOutput)
-}
-
-// License Profile Instance View in Machine Properties.
-type LicenseProfileMachineInstanceViewOutput struct{ *pulumi.OutputState }
-
-func (LicenseProfileMachineInstanceViewOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LicenseProfileMachineInstanceView)(nil)).Elem()
-}
-
-func (o LicenseProfileMachineInstanceViewOutput) ToLicenseProfileMachineInstanceViewOutput() LicenseProfileMachineInstanceViewOutput {
-	return o
-}
-
-func (o LicenseProfileMachineInstanceViewOutput) ToLicenseProfileMachineInstanceViewOutputWithContext(ctx context.Context) LicenseProfileMachineInstanceViewOutput {
-	return o
-}
-
-func (o LicenseProfileMachineInstanceViewOutput) ToLicenseProfileMachineInstanceViewPtrOutput() LicenseProfileMachineInstanceViewPtrOutput {
-	return o.ToLicenseProfileMachineInstanceViewPtrOutputWithContext(context.Background())
-}
-
-func (o LicenseProfileMachineInstanceViewOutput) ToLicenseProfileMachineInstanceViewPtrOutputWithContext(ctx context.Context) LicenseProfileMachineInstanceViewPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LicenseProfileMachineInstanceView) *LicenseProfileMachineInstanceView {
-		return &v
-	}).(LicenseProfileMachineInstanceViewPtrOutput)
-}
-
-// Properties for the Machine ESU profile.
-func (o LicenseProfileMachineInstanceViewOutput) EsuProfile() LicenseProfileMachineInstanceViewEsuPropertiesPtrOutput {
-	return o.ApplyT(func(v LicenseProfileMachineInstanceView) *LicenseProfileMachineInstanceViewEsuProperties {
-		return v.EsuProfile
-	}).(LicenseProfileMachineInstanceViewEsuPropertiesPtrOutput)
-}
-
-// The list of product features.
-func (o LicenseProfileMachineInstanceViewOutput) ProductFeatures() ProductFeatureArrayOutput {
-	return o.ApplyT(func(v LicenseProfileMachineInstanceView) []ProductFeature { return v.ProductFeatures }).(ProductFeatureArrayOutput)
-}
-
-// Indicates the product type of the license.
-func (o LicenseProfileMachineInstanceViewOutput) ProductType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LicenseProfileMachineInstanceView) *string { return v.ProductType }).(pulumi.StringPtrOutput)
-}
-
-// Specifies if this machine is licensed as part of a Software Assurance agreement.
-func (o LicenseProfileMachineInstanceViewOutput) SoftwareAssuranceCustomer() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LicenseProfileMachineInstanceView) *bool { return v.SoftwareAssuranceCustomer }).(pulumi.BoolPtrOutput)
-}
-
-// Indicates the subscription status of the product.
-func (o LicenseProfileMachineInstanceViewOutput) SubscriptionStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LicenseProfileMachineInstanceView) *string { return v.SubscriptionStatus }).(pulumi.StringPtrOutput)
-}
-
-type LicenseProfileMachineInstanceViewPtrOutput struct{ *pulumi.OutputState }
-
-func (LicenseProfileMachineInstanceViewPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LicenseProfileMachineInstanceView)(nil)).Elem()
-}
-
-func (o LicenseProfileMachineInstanceViewPtrOutput) ToLicenseProfileMachineInstanceViewPtrOutput() LicenseProfileMachineInstanceViewPtrOutput {
-	return o
-}
-
-func (o LicenseProfileMachineInstanceViewPtrOutput) ToLicenseProfileMachineInstanceViewPtrOutputWithContext(ctx context.Context) LicenseProfileMachineInstanceViewPtrOutput {
-	return o
-}
-
-func (o LicenseProfileMachineInstanceViewPtrOutput) Elem() LicenseProfileMachineInstanceViewOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceView) LicenseProfileMachineInstanceView {
-		if v != nil {
-			return *v
-		}
-		var ret LicenseProfileMachineInstanceView
-		return ret
-	}).(LicenseProfileMachineInstanceViewOutput)
-}
-
-// Properties for the Machine ESU profile.
-func (o LicenseProfileMachineInstanceViewPtrOutput) EsuProfile() LicenseProfileMachineInstanceViewEsuPropertiesPtrOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceView) *LicenseProfileMachineInstanceViewEsuProperties {
-		if v == nil {
-			return nil
-		}
-		return v.EsuProfile
-	}).(LicenseProfileMachineInstanceViewEsuPropertiesPtrOutput)
-}
-
-// The list of product features.
-func (o LicenseProfileMachineInstanceViewPtrOutput) ProductFeatures() ProductFeatureArrayOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceView) []ProductFeature {
-		if v == nil {
-			return nil
-		}
-		return v.ProductFeatures
-	}).(ProductFeatureArrayOutput)
-}
-
-// Indicates the product type of the license.
-func (o LicenseProfileMachineInstanceViewPtrOutput) ProductType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceView) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ProductType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specifies if this machine is licensed as part of a Software Assurance agreement.
-func (o LicenseProfileMachineInstanceViewPtrOutput) SoftwareAssuranceCustomer() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceView) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.SoftwareAssuranceCustomer
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Indicates the subscription status of the product.
-func (o LicenseProfileMachineInstanceViewPtrOutput) SubscriptionStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceView) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SubscriptionStatus
-	}).(pulumi.StringPtrOutput)
-}
-
-// Properties for the Machine ESU profile.
-type LicenseProfileMachineInstanceViewEsuProperties struct {
-	// The assigned license resource.
-	AssignedLicense *LicenseType `pulumi:"assignedLicense"`
-	// Describes the license assignment state (Assigned or NotAssigned).
-	LicenseAssignmentState *string `pulumi:"licenseAssignmentState"`
-}
-
-// LicenseProfileMachineInstanceViewEsuPropertiesInput is an input type that accepts LicenseProfileMachineInstanceViewEsuPropertiesArgs and LicenseProfileMachineInstanceViewEsuPropertiesOutput values.
-// You can construct a concrete instance of `LicenseProfileMachineInstanceViewEsuPropertiesInput` via:
-//
-//	LicenseProfileMachineInstanceViewEsuPropertiesArgs{...}
-type LicenseProfileMachineInstanceViewEsuPropertiesInput interface {
-	pulumi.Input
-
-	ToLicenseProfileMachineInstanceViewEsuPropertiesOutput() LicenseProfileMachineInstanceViewEsuPropertiesOutput
-	ToLicenseProfileMachineInstanceViewEsuPropertiesOutputWithContext(context.Context) LicenseProfileMachineInstanceViewEsuPropertiesOutput
-}
-
-// Properties for the Machine ESU profile.
-type LicenseProfileMachineInstanceViewEsuPropertiesArgs struct {
-	// The assigned license resource.
-	AssignedLicense LicenseTypePtrInput `pulumi:"assignedLicense"`
-	// Describes the license assignment state (Assigned or NotAssigned).
-	LicenseAssignmentState pulumi.StringPtrInput `pulumi:"licenseAssignmentState"`
-}
-
-func (LicenseProfileMachineInstanceViewEsuPropertiesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LicenseProfileMachineInstanceViewEsuProperties)(nil)).Elem()
-}
-
-func (i LicenseProfileMachineInstanceViewEsuPropertiesArgs) ToLicenseProfileMachineInstanceViewEsuPropertiesOutput() LicenseProfileMachineInstanceViewEsuPropertiesOutput {
-	return i.ToLicenseProfileMachineInstanceViewEsuPropertiesOutputWithContext(context.Background())
-}
-
-func (i LicenseProfileMachineInstanceViewEsuPropertiesArgs) ToLicenseProfileMachineInstanceViewEsuPropertiesOutputWithContext(ctx context.Context) LicenseProfileMachineInstanceViewEsuPropertiesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LicenseProfileMachineInstanceViewEsuPropertiesOutput)
-}
-
-func (i LicenseProfileMachineInstanceViewEsuPropertiesArgs) ToLicenseProfileMachineInstanceViewEsuPropertiesPtrOutput() LicenseProfileMachineInstanceViewEsuPropertiesPtrOutput {
-	return i.ToLicenseProfileMachineInstanceViewEsuPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i LicenseProfileMachineInstanceViewEsuPropertiesArgs) ToLicenseProfileMachineInstanceViewEsuPropertiesPtrOutputWithContext(ctx context.Context) LicenseProfileMachineInstanceViewEsuPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LicenseProfileMachineInstanceViewEsuPropertiesOutput).ToLicenseProfileMachineInstanceViewEsuPropertiesPtrOutputWithContext(ctx)
-}
-
-// LicenseProfileMachineInstanceViewEsuPropertiesPtrInput is an input type that accepts LicenseProfileMachineInstanceViewEsuPropertiesArgs, LicenseProfileMachineInstanceViewEsuPropertiesPtr and LicenseProfileMachineInstanceViewEsuPropertiesPtrOutput values.
-// You can construct a concrete instance of `LicenseProfileMachineInstanceViewEsuPropertiesPtrInput` via:
-//
-//	        LicenseProfileMachineInstanceViewEsuPropertiesArgs{...}
-//
-//	or:
-//
-//	        nil
-type LicenseProfileMachineInstanceViewEsuPropertiesPtrInput interface {
-	pulumi.Input
-
-	ToLicenseProfileMachineInstanceViewEsuPropertiesPtrOutput() LicenseProfileMachineInstanceViewEsuPropertiesPtrOutput
-	ToLicenseProfileMachineInstanceViewEsuPropertiesPtrOutputWithContext(context.Context) LicenseProfileMachineInstanceViewEsuPropertiesPtrOutput
-}
-
-type licenseProfileMachineInstanceViewEsuPropertiesPtrType LicenseProfileMachineInstanceViewEsuPropertiesArgs
-
-func LicenseProfileMachineInstanceViewEsuPropertiesPtr(v *LicenseProfileMachineInstanceViewEsuPropertiesArgs) LicenseProfileMachineInstanceViewEsuPropertiesPtrInput {
-	return (*licenseProfileMachineInstanceViewEsuPropertiesPtrType)(v)
-}
-
-func (*licenseProfileMachineInstanceViewEsuPropertiesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LicenseProfileMachineInstanceViewEsuProperties)(nil)).Elem()
-}
-
-func (i *licenseProfileMachineInstanceViewEsuPropertiesPtrType) ToLicenseProfileMachineInstanceViewEsuPropertiesPtrOutput() LicenseProfileMachineInstanceViewEsuPropertiesPtrOutput {
-	return i.ToLicenseProfileMachineInstanceViewEsuPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (i *licenseProfileMachineInstanceViewEsuPropertiesPtrType) ToLicenseProfileMachineInstanceViewEsuPropertiesPtrOutputWithContext(ctx context.Context) LicenseProfileMachineInstanceViewEsuPropertiesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LicenseProfileMachineInstanceViewEsuPropertiesPtrOutput)
-}
-
-// Properties for the Machine ESU profile.
-type LicenseProfileMachineInstanceViewEsuPropertiesOutput struct{ *pulumi.OutputState }
-
-func (LicenseProfileMachineInstanceViewEsuPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LicenseProfileMachineInstanceViewEsuProperties)(nil)).Elem()
-}
-
-func (o LicenseProfileMachineInstanceViewEsuPropertiesOutput) ToLicenseProfileMachineInstanceViewEsuPropertiesOutput() LicenseProfileMachineInstanceViewEsuPropertiesOutput {
-	return o
-}
-
-func (o LicenseProfileMachineInstanceViewEsuPropertiesOutput) ToLicenseProfileMachineInstanceViewEsuPropertiesOutputWithContext(ctx context.Context) LicenseProfileMachineInstanceViewEsuPropertiesOutput {
-	return o
-}
-
-func (o LicenseProfileMachineInstanceViewEsuPropertiesOutput) ToLicenseProfileMachineInstanceViewEsuPropertiesPtrOutput() LicenseProfileMachineInstanceViewEsuPropertiesPtrOutput {
-	return o.ToLicenseProfileMachineInstanceViewEsuPropertiesPtrOutputWithContext(context.Background())
-}
-
-func (o LicenseProfileMachineInstanceViewEsuPropertiesOutput) ToLicenseProfileMachineInstanceViewEsuPropertiesPtrOutputWithContext(ctx context.Context) LicenseProfileMachineInstanceViewEsuPropertiesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LicenseProfileMachineInstanceViewEsuProperties) *LicenseProfileMachineInstanceViewEsuProperties {
-		return &v
-	}).(LicenseProfileMachineInstanceViewEsuPropertiesPtrOutput)
-}
-
-// The assigned license resource.
-func (o LicenseProfileMachineInstanceViewEsuPropertiesOutput) AssignedLicense() LicenseTypePtrOutput {
-	return o.ApplyT(func(v LicenseProfileMachineInstanceViewEsuProperties) *LicenseType { return v.AssignedLicense }).(LicenseTypePtrOutput)
-}
-
-// Describes the license assignment state (Assigned or NotAssigned).
-func (o LicenseProfileMachineInstanceViewEsuPropertiesOutput) LicenseAssignmentState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LicenseProfileMachineInstanceViewEsuProperties) *string { return v.LicenseAssignmentState }).(pulumi.StringPtrOutput)
-}
-
-type LicenseProfileMachineInstanceViewEsuPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (LicenseProfileMachineInstanceViewEsuPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LicenseProfileMachineInstanceViewEsuProperties)(nil)).Elem()
-}
-
-func (o LicenseProfileMachineInstanceViewEsuPropertiesPtrOutput) ToLicenseProfileMachineInstanceViewEsuPropertiesPtrOutput() LicenseProfileMachineInstanceViewEsuPropertiesPtrOutput {
-	return o
-}
-
-func (o LicenseProfileMachineInstanceViewEsuPropertiesPtrOutput) ToLicenseProfileMachineInstanceViewEsuPropertiesPtrOutputWithContext(ctx context.Context) LicenseProfileMachineInstanceViewEsuPropertiesPtrOutput {
-	return o
-}
-
-func (o LicenseProfileMachineInstanceViewEsuPropertiesPtrOutput) Elem() LicenseProfileMachineInstanceViewEsuPropertiesOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceViewEsuProperties) LicenseProfileMachineInstanceViewEsuProperties {
-		if v != nil {
-			return *v
-		}
-		var ret LicenseProfileMachineInstanceViewEsuProperties
-		return ret
-	}).(LicenseProfileMachineInstanceViewEsuPropertiesOutput)
-}
-
-// The assigned license resource.
-func (o LicenseProfileMachineInstanceViewEsuPropertiesPtrOutput) AssignedLicense() LicenseTypePtrOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceViewEsuProperties) *LicenseType {
-		if v == nil {
-			return nil
-		}
-		return v.AssignedLicense
-	}).(LicenseTypePtrOutput)
-}
-
-// Describes the license assignment state (Assigned or NotAssigned).
-func (o LicenseProfileMachineInstanceViewEsuPropertiesPtrOutput) LicenseAssignmentState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceViewEsuProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LicenseAssignmentState
-	}).(pulumi.StringPtrOutput)
-}
-
-// Properties for the Machine ESU profile.
-type LicenseProfileMachineInstanceViewEsuPropertiesResponse struct {
-	// The assigned license resource.
-	AssignedLicense *LicenseResponse `pulumi:"assignedLicense"`
-	// The guid id of the license.
-	AssignedLicenseImmutableId string `pulumi:"assignedLicenseImmutableId"`
-	// Indicates the eligibility state of Esu.
-	EsuEligibility string `pulumi:"esuEligibility"`
-	// Indicates whether there is an ESU Key currently active for the machine.
-	EsuKeyState string `pulumi:"esuKeyState"`
-	// The list of ESU keys.
-	EsuKeys []EsuKeyResponse `pulumi:"esuKeys"`
-	// Describes the license assignment state (Assigned or NotAssigned).
-	LicenseAssignmentState *string `pulumi:"licenseAssignmentState"`
-	// The type of the Esu servers.
-	ServerType string `pulumi:"serverType"`
-}
-
-// Properties for the Machine ESU profile.
-type LicenseProfileMachineInstanceViewEsuPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (LicenseProfileMachineInstanceViewEsuPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LicenseProfileMachineInstanceViewEsuPropertiesResponse)(nil)).Elem()
-}
-
-func (o LicenseProfileMachineInstanceViewEsuPropertiesResponseOutput) ToLicenseProfileMachineInstanceViewEsuPropertiesResponseOutput() LicenseProfileMachineInstanceViewEsuPropertiesResponseOutput {
-	return o
-}
-
-func (o LicenseProfileMachineInstanceViewEsuPropertiesResponseOutput) ToLicenseProfileMachineInstanceViewEsuPropertiesResponseOutputWithContext(ctx context.Context) LicenseProfileMachineInstanceViewEsuPropertiesResponseOutput {
-	return o
-}
-
-// The assigned license resource.
-func (o LicenseProfileMachineInstanceViewEsuPropertiesResponseOutput) AssignedLicense() LicenseResponsePtrOutput {
-	return o.ApplyT(func(v LicenseProfileMachineInstanceViewEsuPropertiesResponse) *LicenseResponse {
-		return v.AssignedLicense
-	}).(LicenseResponsePtrOutput)
-}
-
-// The guid id of the license.
-func (o LicenseProfileMachineInstanceViewEsuPropertiesResponseOutput) AssignedLicenseImmutableId() pulumi.StringOutput {
-	return o.ApplyT(func(v LicenseProfileMachineInstanceViewEsuPropertiesResponse) string {
-		return v.AssignedLicenseImmutableId
-	}).(pulumi.StringOutput)
-}
-
-// Indicates the eligibility state of Esu.
-func (o LicenseProfileMachineInstanceViewEsuPropertiesResponseOutput) EsuEligibility() pulumi.StringOutput {
-	return o.ApplyT(func(v LicenseProfileMachineInstanceViewEsuPropertiesResponse) string { return v.EsuEligibility }).(pulumi.StringOutput)
-}
-
-// Indicates whether there is an ESU Key currently active for the machine.
-func (o LicenseProfileMachineInstanceViewEsuPropertiesResponseOutput) EsuKeyState() pulumi.StringOutput {
-	return o.ApplyT(func(v LicenseProfileMachineInstanceViewEsuPropertiesResponse) string { return v.EsuKeyState }).(pulumi.StringOutput)
-}
-
-// The list of ESU keys.
-func (o LicenseProfileMachineInstanceViewEsuPropertiesResponseOutput) EsuKeys() EsuKeyResponseArrayOutput {
-	return o.ApplyT(func(v LicenseProfileMachineInstanceViewEsuPropertiesResponse) []EsuKeyResponse { return v.EsuKeys }).(EsuKeyResponseArrayOutput)
-}
-
-// Describes the license assignment state (Assigned or NotAssigned).
-func (o LicenseProfileMachineInstanceViewEsuPropertiesResponseOutput) LicenseAssignmentState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LicenseProfileMachineInstanceViewEsuPropertiesResponse) *string {
-		return v.LicenseAssignmentState
-	}).(pulumi.StringPtrOutput)
-}
-
-// The type of the Esu servers.
-func (o LicenseProfileMachineInstanceViewEsuPropertiesResponseOutput) ServerType() pulumi.StringOutput {
-	return o.ApplyT(func(v LicenseProfileMachineInstanceViewEsuPropertiesResponse) string { return v.ServerType }).(pulumi.StringOutput)
-}
-
-type LicenseProfileMachineInstanceViewEsuPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (LicenseProfileMachineInstanceViewEsuPropertiesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LicenseProfileMachineInstanceViewEsuPropertiesResponse)(nil)).Elem()
-}
-
-func (o LicenseProfileMachineInstanceViewEsuPropertiesResponsePtrOutput) ToLicenseProfileMachineInstanceViewEsuPropertiesResponsePtrOutput() LicenseProfileMachineInstanceViewEsuPropertiesResponsePtrOutput {
-	return o
-}
-
-func (o LicenseProfileMachineInstanceViewEsuPropertiesResponsePtrOutput) ToLicenseProfileMachineInstanceViewEsuPropertiesResponsePtrOutputWithContext(ctx context.Context) LicenseProfileMachineInstanceViewEsuPropertiesResponsePtrOutput {
-	return o
-}
-
-func (o LicenseProfileMachineInstanceViewEsuPropertiesResponsePtrOutput) Elem() LicenseProfileMachineInstanceViewEsuPropertiesResponseOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceViewEsuPropertiesResponse) LicenseProfileMachineInstanceViewEsuPropertiesResponse {
-		if v != nil {
-			return *v
-		}
-		var ret LicenseProfileMachineInstanceViewEsuPropertiesResponse
-		return ret
-	}).(LicenseProfileMachineInstanceViewEsuPropertiesResponseOutput)
-}
-
-// The assigned license resource.
-func (o LicenseProfileMachineInstanceViewEsuPropertiesResponsePtrOutput) AssignedLicense() LicenseResponsePtrOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceViewEsuPropertiesResponse) *LicenseResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AssignedLicense
-	}).(LicenseResponsePtrOutput)
-}
-
-// The guid id of the license.
-func (o LicenseProfileMachineInstanceViewEsuPropertiesResponsePtrOutput) AssignedLicenseImmutableId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceViewEsuPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.AssignedLicenseImmutableId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicates the eligibility state of Esu.
-func (o LicenseProfileMachineInstanceViewEsuPropertiesResponsePtrOutput) EsuEligibility() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceViewEsuPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EsuEligibility
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicates whether there is an ESU Key currently active for the machine.
-func (o LicenseProfileMachineInstanceViewEsuPropertiesResponsePtrOutput) EsuKeyState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceViewEsuPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EsuKeyState
-	}).(pulumi.StringPtrOutput)
-}
-
-// The list of ESU keys.
-func (o LicenseProfileMachineInstanceViewEsuPropertiesResponsePtrOutput) EsuKeys() EsuKeyResponseArrayOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceViewEsuPropertiesResponse) []EsuKeyResponse {
-		if v == nil {
-			return nil
-		}
-		return v.EsuKeys
-	}).(EsuKeyResponseArrayOutput)
-}
-
-// Describes the license assignment state (Assigned or NotAssigned).
-func (o LicenseProfileMachineInstanceViewEsuPropertiesResponsePtrOutput) LicenseAssignmentState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceViewEsuPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LicenseAssignmentState
-	}).(pulumi.StringPtrOutput)
-}
-
-// The type of the Esu servers.
-func (o LicenseProfileMachineInstanceViewEsuPropertiesResponsePtrOutput) ServerType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceViewEsuPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ServerType
-	}).(pulumi.StringPtrOutput)
-}
-
-// License Profile Instance View in Machine Properties.
-type LicenseProfileMachineInstanceViewResponse struct {
-	// The timestamp in UTC when the billing ends.
-	BillingEndDate string `pulumi:"billingEndDate"`
-	// The timestamp in UTC when the billing starts.
-	BillingStartDate string `pulumi:"billingStartDate"`
-	// The timestamp in UTC when the user disenrolled the feature.
-	DisenrollmentDate string `pulumi:"disenrollmentDate"`
-	// The timestamp in UTC when the user enrolls the feature.
-	EnrollmentDate string `pulumi:"enrollmentDate"`
-	// The errors that were encountered during the feature enrollment or disenrollment.
-	Error ErrorDetailResponse `pulumi:"error"`
-	// Properties for the Machine ESU profile.
-	EsuProfile *LicenseProfileMachineInstanceViewEsuPropertiesResponse `pulumi:"esuProfile"`
-	// Indicates the license channel.
-	LicenseChannel string `pulumi:"licenseChannel"`
-	// Indicates the license status of the OS.
-	LicenseStatus string `pulumi:"licenseStatus"`
-	// The list of product features.
-	ProductFeatures []ProductFeatureResponse `pulumi:"productFeatures"`
-	// Indicates the product type of the license.
-	ProductType *string `pulumi:"productType"`
-	// Specifies if this machine is licensed as part of a Software Assurance agreement.
-	SoftwareAssuranceCustomer *bool `pulumi:"softwareAssuranceCustomer"`
-	// Indicates the subscription status of the product.
-	SubscriptionStatus *string `pulumi:"subscriptionStatus"`
-}
-
-// License Profile Instance View in Machine Properties.
-type LicenseProfileMachineInstanceViewResponseOutput struct{ *pulumi.OutputState }
-
-func (LicenseProfileMachineInstanceViewResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LicenseProfileMachineInstanceViewResponse)(nil)).Elem()
-}
-
-func (o LicenseProfileMachineInstanceViewResponseOutput) ToLicenseProfileMachineInstanceViewResponseOutput() LicenseProfileMachineInstanceViewResponseOutput {
-	return o
-}
-
-func (o LicenseProfileMachineInstanceViewResponseOutput) ToLicenseProfileMachineInstanceViewResponseOutputWithContext(ctx context.Context) LicenseProfileMachineInstanceViewResponseOutput {
-	return o
-}
-
-// The timestamp in UTC when the billing ends.
-func (o LicenseProfileMachineInstanceViewResponseOutput) BillingEndDate() pulumi.StringOutput {
-	return o.ApplyT(func(v LicenseProfileMachineInstanceViewResponse) string { return v.BillingEndDate }).(pulumi.StringOutput)
-}
-
-// The timestamp in UTC when the billing starts.
-func (o LicenseProfileMachineInstanceViewResponseOutput) BillingStartDate() pulumi.StringOutput {
-	return o.ApplyT(func(v LicenseProfileMachineInstanceViewResponse) string { return v.BillingStartDate }).(pulumi.StringOutput)
-}
-
-// The timestamp in UTC when the user disenrolled the feature.
-func (o LicenseProfileMachineInstanceViewResponseOutput) DisenrollmentDate() pulumi.StringOutput {
-	return o.ApplyT(func(v LicenseProfileMachineInstanceViewResponse) string { return v.DisenrollmentDate }).(pulumi.StringOutput)
-}
-
-// The timestamp in UTC when the user enrolls the feature.
-func (o LicenseProfileMachineInstanceViewResponseOutput) EnrollmentDate() pulumi.StringOutput {
-	return o.ApplyT(func(v LicenseProfileMachineInstanceViewResponse) string { return v.EnrollmentDate }).(pulumi.StringOutput)
-}
-
-// The errors that were encountered during the feature enrollment or disenrollment.
-func (o LicenseProfileMachineInstanceViewResponseOutput) Error() ErrorDetailResponseOutput {
-	return o.ApplyT(func(v LicenseProfileMachineInstanceViewResponse) ErrorDetailResponse { return v.Error }).(ErrorDetailResponseOutput)
-}
-
-// Properties for the Machine ESU profile.
-func (o LicenseProfileMachineInstanceViewResponseOutput) EsuProfile() LicenseProfileMachineInstanceViewEsuPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v LicenseProfileMachineInstanceViewResponse) *LicenseProfileMachineInstanceViewEsuPropertiesResponse {
-		return v.EsuProfile
-	}).(LicenseProfileMachineInstanceViewEsuPropertiesResponsePtrOutput)
-}
-
-// Indicates the license channel.
-func (o LicenseProfileMachineInstanceViewResponseOutput) LicenseChannel() pulumi.StringOutput {
-	return o.ApplyT(func(v LicenseProfileMachineInstanceViewResponse) string { return v.LicenseChannel }).(pulumi.StringOutput)
-}
-
-// Indicates the license status of the OS.
-func (o LicenseProfileMachineInstanceViewResponseOutput) LicenseStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v LicenseProfileMachineInstanceViewResponse) string { return v.LicenseStatus }).(pulumi.StringOutput)
-}
-
-// The list of product features.
-func (o LicenseProfileMachineInstanceViewResponseOutput) ProductFeatures() ProductFeatureResponseArrayOutput {
-	return o.ApplyT(func(v LicenseProfileMachineInstanceViewResponse) []ProductFeatureResponse { return v.ProductFeatures }).(ProductFeatureResponseArrayOutput)
-}
-
-// Indicates the product type of the license.
-func (o LicenseProfileMachineInstanceViewResponseOutput) ProductType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LicenseProfileMachineInstanceViewResponse) *string { return v.ProductType }).(pulumi.StringPtrOutput)
-}
-
-// Specifies if this machine is licensed as part of a Software Assurance agreement.
-func (o LicenseProfileMachineInstanceViewResponseOutput) SoftwareAssuranceCustomer() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LicenseProfileMachineInstanceViewResponse) *bool { return v.SoftwareAssuranceCustomer }).(pulumi.BoolPtrOutput)
-}
-
-// Indicates the subscription status of the product.
-func (o LicenseProfileMachineInstanceViewResponseOutput) SubscriptionStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LicenseProfileMachineInstanceViewResponse) *string { return v.SubscriptionStatus }).(pulumi.StringPtrOutput)
-}
-
-type LicenseProfileMachineInstanceViewResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (LicenseProfileMachineInstanceViewResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LicenseProfileMachineInstanceViewResponse)(nil)).Elem()
-}
-
-func (o LicenseProfileMachineInstanceViewResponsePtrOutput) ToLicenseProfileMachineInstanceViewResponsePtrOutput() LicenseProfileMachineInstanceViewResponsePtrOutput {
-	return o
-}
-
-func (o LicenseProfileMachineInstanceViewResponsePtrOutput) ToLicenseProfileMachineInstanceViewResponsePtrOutputWithContext(ctx context.Context) LicenseProfileMachineInstanceViewResponsePtrOutput {
-	return o
-}
-
-func (o LicenseProfileMachineInstanceViewResponsePtrOutput) Elem() LicenseProfileMachineInstanceViewResponseOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceViewResponse) LicenseProfileMachineInstanceViewResponse {
-		if v != nil {
-			return *v
-		}
-		var ret LicenseProfileMachineInstanceViewResponse
-		return ret
-	}).(LicenseProfileMachineInstanceViewResponseOutput)
-}
-
-// The timestamp in UTC when the billing ends.
-func (o LicenseProfileMachineInstanceViewResponsePtrOutput) BillingEndDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceViewResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.BillingEndDate
-	}).(pulumi.StringPtrOutput)
-}
-
-// The timestamp in UTC when the billing starts.
-func (o LicenseProfileMachineInstanceViewResponsePtrOutput) BillingStartDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceViewResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.BillingStartDate
-	}).(pulumi.StringPtrOutput)
-}
-
-// The timestamp in UTC when the user disenrolled the feature.
-func (o LicenseProfileMachineInstanceViewResponsePtrOutput) DisenrollmentDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceViewResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.DisenrollmentDate
-	}).(pulumi.StringPtrOutput)
-}
-
-// The timestamp in UTC when the user enrolls the feature.
-func (o LicenseProfileMachineInstanceViewResponsePtrOutput) EnrollmentDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceViewResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EnrollmentDate
-	}).(pulumi.StringPtrOutput)
-}
-
-// The errors that were encountered during the feature enrollment or disenrollment.
-func (o LicenseProfileMachineInstanceViewResponsePtrOutput) Error() ErrorDetailResponsePtrOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceViewResponse) *ErrorDetailResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Error
-	}).(ErrorDetailResponsePtrOutput)
-}
-
-// Properties for the Machine ESU profile.
-func (o LicenseProfileMachineInstanceViewResponsePtrOutput) EsuProfile() LicenseProfileMachineInstanceViewEsuPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceViewResponse) *LicenseProfileMachineInstanceViewEsuPropertiesResponse {
-		if v == nil {
-			return nil
-		}
-		return v.EsuProfile
-	}).(LicenseProfileMachineInstanceViewEsuPropertiesResponsePtrOutput)
-}
-
-// Indicates the license channel.
-func (o LicenseProfileMachineInstanceViewResponsePtrOutput) LicenseChannel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceViewResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LicenseChannel
-	}).(pulumi.StringPtrOutput)
-}
-
-// Indicates the license status of the OS.
-func (o LicenseProfileMachineInstanceViewResponsePtrOutput) LicenseStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceViewResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.LicenseStatus
-	}).(pulumi.StringPtrOutput)
-}
-
-// The list of product features.
-func (o LicenseProfileMachineInstanceViewResponsePtrOutput) ProductFeatures() ProductFeatureResponseArrayOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceViewResponse) []ProductFeatureResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ProductFeatures
-	}).(ProductFeatureResponseArrayOutput)
-}
-
-// Indicates the product type of the license.
-func (o LicenseProfileMachineInstanceViewResponsePtrOutput) ProductType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceViewResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ProductType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specifies if this machine is licensed as part of a Software Assurance agreement.
-func (o LicenseProfileMachineInstanceViewResponsePtrOutput) SoftwareAssuranceCustomer() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceViewResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.SoftwareAssuranceCustomer
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Indicates the subscription status of the product.
-func (o LicenseProfileMachineInstanceViewResponsePtrOutput) SubscriptionStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LicenseProfileMachineInstanceViewResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.SubscriptionStatus
-	}).(pulumi.StringPtrOutput)
-}
-
-// Describes a license in a hybrid machine.
-type LicenseResponse struct {
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-	Id string `pulumi:"id"`
-	// Describes the properties of a License.
-	LicenseDetails *LicenseDetailsResponse `pulumi:"licenseDetails"`
-	// The type of the license resource.
-	LicenseType *string `pulumi:"licenseType"`
-	// The geo-location where the resource lives
-	Location string `pulumi:"location"`
-	// The name of the resource
-	Name string `pulumi:"name"`
-	// The provisioning state, which only appears in the response.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Resource tags.
-	Tags map[string]string `pulumi:"tags"`
-	// Describes the tenant id.
-	TenantId *string `pulumi:"tenantId"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-	Type string `pulumi:"type"`
-}
-
-// Describes a license in a hybrid machine.
-type LicenseResponseOutput struct{ *pulumi.OutputState }
-
-func (LicenseResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LicenseResponse)(nil)).Elem()
-}
-
-func (o LicenseResponseOutput) ToLicenseResponseOutput() LicenseResponseOutput {
-	return o
-}
-
-func (o LicenseResponseOutput) ToLicenseResponseOutputWithContext(ctx context.Context) LicenseResponseOutput {
-	return o
-}
-
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o LicenseResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LicenseResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Describes the properties of a License.
-func (o LicenseResponseOutput) LicenseDetails() LicenseDetailsResponsePtrOutput {
-	return o.ApplyT(func(v LicenseResponse) *LicenseDetailsResponse { return v.LicenseDetails }).(LicenseDetailsResponsePtrOutput)
-}
-
-// The type of the license resource.
-func (o LicenseResponseOutput) LicenseType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LicenseResponse) *string { return v.LicenseType }).(pulumi.StringPtrOutput)
-}
-
-// The geo-location where the resource lives
-func (o LicenseResponseOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v LicenseResponse) string { return v.Location }).(pulumi.StringOutput)
-}
-
-// The name of the resource
-func (o LicenseResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v LicenseResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The provisioning state, which only appears in the response.
-func (o LicenseResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LicenseResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LicenseResponseOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LicenseResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// Resource tags.
-func (o LicenseResponseOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v LicenseResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// Describes the tenant id.
-func (o LicenseResponseOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LicenseResponse) *string { return v.TenantId }).(pulumi.StringPtrOutput)
-}
-
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o LicenseResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LicenseResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type LicenseResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (LicenseResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LicenseResponse)(nil)).Elem()
-}
-
-func (o LicenseResponsePtrOutput) ToLicenseResponsePtrOutput() LicenseResponsePtrOutput {
-	return o
-}
-
-func (o LicenseResponsePtrOutput) ToLicenseResponsePtrOutputWithContext(ctx context.Context) LicenseResponsePtrOutput {
-	return o
-}
-
-func (o LicenseResponsePtrOutput) Elem() LicenseResponseOutput {
-	return o.ApplyT(func(v *LicenseResponse) LicenseResponse {
-		if v != nil {
-			return *v
-		}
-		var ret LicenseResponse
-		return ret
-	}).(LicenseResponseOutput)
-}
-
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o LicenseResponsePtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LicenseResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// Describes the properties of a License.
-func (o LicenseResponsePtrOutput) LicenseDetails() LicenseDetailsResponsePtrOutput {
-	return o.ApplyT(func(v *LicenseResponse) *LicenseDetailsResponse {
-		if v == nil {
-			return nil
-		}
-		return v.LicenseDetails
-	}).(LicenseDetailsResponsePtrOutput)
-}
-
-// The type of the license resource.
-func (o LicenseResponsePtrOutput) LicenseType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LicenseResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LicenseType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The geo-location where the resource lives
-func (o LicenseResponsePtrOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LicenseResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Location
-	}).(pulumi.StringPtrOutput)
-}
-
-// The name of the resource
-func (o LicenseResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LicenseResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The provisioning state, which only appears in the response.
-func (o LicenseResponsePtrOutput) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LicenseResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ProvisioningState
-	}).(pulumi.StringPtrOutput)
-}
-
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LicenseResponsePtrOutput) SystemData() SystemDataResponsePtrOutput {
-	return o.ApplyT(func(v *LicenseResponse) *SystemDataResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.SystemData
-	}).(SystemDataResponsePtrOutput)
-}
-
-// Resource tags.
-func (o LicenseResponsePtrOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *LicenseResponse) map[string]string {
-		if v == nil {
-			return nil
-		}
-		return v.Tags
-	}).(pulumi.StringMapOutput)
-}
-
-// Describes the tenant id.
-func (o LicenseResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LicenseResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.TenantId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o LicenseResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LicenseResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4996,78 +3586,6 @@ func (o MachineRunCommandScriptSourceResponsePtrOutput) ScriptUriManagedIdentity
 	}).(RunCommandManagedIdentityResponsePtrOutput)
 }
 
-// Describes a network interface.
-type NetworkInterfaceResponse struct {
-	// The list of IP addresses in this interface.
-	IpAddresses []IpAddressResponse `pulumi:"ipAddresses"`
-}
-
-// Describes a network interface.
-type NetworkInterfaceResponseOutput struct{ *pulumi.OutputState }
-
-func (NetworkInterfaceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkInterfaceResponse)(nil)).Elem()
-}
-
-func (o NetworkInterfaceResponseOutput) ToNetworkInterfaceResponseOutput() NetworkInterfaceResponseOutput {
-	return o
-}
-
-func (o NetworkInterfaceResponseOutput) ToNetworkInterfaceResponseOutputWithContext(ctx context.Context) NetworkInterfaceResponseOutput {
-	return o
-}
-
-// The list of IP addresses in this interface.
-func (o NetworkInterfaceResponseOutput) IpAddresses() IpAddressResponseArrayOutput {
-	return o.ApplyT(func(v NetworkInterfaceResponse) []IpAddressResponse { return v.IpAddresses }).(IpAddressResponseArrayOutput)
-}
-
-type NetworkInterfaceResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (NetworkInterfaceResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NetworkInterfaceResponse)(nil)).Elem()
-}
-
-func (o NetworkInterfaceResponseArrayOutput) ToNetworkInterfaceResponseArrayOutput() NetworkInterfaceResponseArrayOutput {
-	return o
-}
-
-func (o NetworkInterfaceResponseArrayOutput) ToNetworkInterfaceResponseArrayOutputWithContext(ctx context.Context) NetworkInterfaceResponseArrayOutput {
-	return o
-}
-
-func (o NetworkInterfaceResponseArrayOutput) Index(i pulumi.IntInput) NetworkInterfaceResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkInterfaceResponse {
-		return vs[0].([]NetworkInterfaceResponse)[vs[1].(int)]
-	}).(NetworkInterfaceResponseOutput)
-}
-
-// Describes the network information on this machine.
-type NetworkProfileResponse struct {
-	// The list of network interfaces.
-	NetworkInterfaces []NetworkInterfaceResponse `pulumi:"networkInterfaces"`
-}
-
-// Describes the network information on this machine.
-type NetworkProfileResponseOutput struct{ *pulumi.OutputState }
-
-func (NetworkProfileResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkProfileResponse)(nil)).Elem()
-}
-
-func (o NetworkProfileResponseOutput) ToNetworkProfileResponseOutput() NetworkProfileResponseOutput {
-	return o
-}
-
-func (o NetworkProfileResponseOutput) ToNetworkProfileResponseOutputWithContext(ctx context.Context) NetworkProfileResponseOutput {
-	return o
-}
-
-// The list of network interfaces.
-func (o NetworkProfileResponseOutput) NetworkInterfaces() NetworkInterfaceResponseArrayOutput {
-	return o.ApplyT(func(v NetworkProfileResponse) []NetworkInterfaceResponse { return v.NetworkInterfaces }).(NetworkInterfaceResponseArrayOutput)
-}
-
 // Specifies the operating system settings for the hybrid machine.
 type OSProfile struct {
 	// Specifies the linux configuration for update management.
@@ -5231,8 +3749,6 @@ func (o OSProfilePtrOutput) WindowsConfiguration() OSProfileWindowsConfiguration
 type OSProfileLinuxConfiguration struct {
 	// Specifies the assessment mode.
 	AssessmentMode *string `pulumi:"assessmentMode"`
-	// Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
-	EnableHotpatching *bool `pulumi:"enableHotpatching"`
 	// Specifies the patch mode.
 	PatchMode *string `pulumi:"patchMode"`
 }
@@ -5252,8 +3768,6 @@ type OSProfileLinuxConfigurationInput interface {
 type OSProfileLinuxConfigurationArgs struct {
 	// Specifies the assessment mode.
 	AssessmentMode pulumi.StringPtrInput `pulumi:"assessmentMode"`
-	// Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
-	EnableHotpatching pulumi.BoolPtrInput `pulumi:"enableHotpatching"`
 	// Specifies the patch mode.
 	PatchMode pulumi.StringPtrInput `pulumi:"patchMode"`
 }
@@ -5341,11 +3855,6 @@ func (o OSProfileLinuxConfigurationOutput) AssessmentMode() pulumi.StringPtrOutp
 	return o.ApplyT(func(v OSProfileLinuxConfiguration) *string { return v.AssessmentMode }).(pulumi.StringPtrOutput)
 }
 
-// Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
-func (o OSProfileLinuxConfigurationOutput) EnableHotpatching() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OSProfileLinuxConfiguration) *bool { return v.EnableHotpatching }).(pulumi.BoolPtrOutput)
-}
-
 // Specifies the patch mode.
 func (o OSProfileLinuxConfigurationOutput) PatchMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OSProfileLinuxConfiguration) *string { return v.PatchMode }).(pulumi.StringPtrOutput)
@@ -5383,16 +3892,6 @@ func (o OSProfileLinuxConfigurationPtrOutput) AssessmentMode() pulumi.StringPtrO
 		}
 		return v.AssessmentMode
 	}).(pulumi.StringPtrOutput)
-}
-
-// Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
-func (o OSProfileLinuxConfigurationPtrOutput) EnableHotpatching() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *OSProfileLinuxConfiguration) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableHotpatching
-	}).(pulumi.BoolPtrOutput)
 }
 
 // Specifies the patch mode.
@@ -5503,12 +4002,8 @@ func (o OSProfileResponsePtrOutput) WindowsConfiguration() OSProfileResponseWind
 type OSProfileResponseLinuxConfiguration struct {
 	// Specifies the assessment mode.
 	AssessmentMode *string `pulumi:"assessmentMode"`
-	// Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
-	EnableHotpatching *bool `pulumi:"enableHotpatching"`
 	// Specifies the patch mode.
 	PatchMode *string `pulumi:"patchMode"`
-	// Status of the hotpatch capability enrollment or disenrollment.
-	Status PatchSettingsResponseStatus `pulumi:"status"`
 }
 
 // Specifies the linux configuration for update management.
@@ -5531,19 +4026,9 @@ func (o OSProfileResponseLinuxConfigurationOutput) AssessmentMode() pulumi.Strin
 	return o.ApplyT(func(v OSProfileResponseLinuxConfiguration) *string { return v.AssessmentMode }).(pulumi.StringPtrOutput)
 }
 
-// Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
-func (o OSProfileResponseLinuxConfigurationOutput) EnableHotpatching() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OSProfileResponseLinuxConfiguration) *bool { return v.EnableHotpatching }).(pulumi.BoolPtrOutput)
-}
-
 // Specifies the patch mode.
 func (o OSProfileResponseLinuxConfigurationOutput) PatchMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OSProfileResponseLinuxConfiguration) *string { return v.PatchMode }).(pulumi.StringPtrOutput)
-}
-
-// Status of the hotpatch capability enrollment or disenrollment.
-func (o OSProfileResponseLinuxConfigurationOutput) Status() PatchSettingsResponseStatusOutput {
-	return o.ApplyT(func(v OSProfileResponseLinuxConfiguration) PatchSettingsResponseStatus { return v.Status }).(PatchSettingsResponseStatusOutput)
 }
 
 type OSProfileResponseLinuxConfigurationPtrOutput struct{ *pulumi.OutputState }
@@ -5580,16 +4065,6 @@ func (o OSProfileResponseLinuxConfigurationPtrOutput) AssessmentMode() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
-func (o OSProfileResponseLinuxConfigurationPtrOutput) EnableHotpatching() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *OSProfileResponseLinuxConfiguration) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableHotpatching
-	}).(pulumi.BoolPtrOutput)
-}
-
 // Specifies the patch mode.
 func (o OSProfileResponseLinuxConfigurationPtrOutput) PatchMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OSProfileResponseLinuxConfiguration) *string {
@@ -5600,26 +4075,12 @@ func (o OSProfileResponseLinuxConfigurationPtrOutput) PatchMode() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Status of the hotpatch capability enrollment or disenrollment.
-func (o OSProfileResponseLinuxConfigurationPtrOutput) Status() PatchSettingsResponseStatusPtrOutput {
-	return o.ApplyT(func(v *OSProfileResponseLinuxConfiguration) *PatchSettingsResponseStatus {
-		if v == nil {
-			return nil
-		}
-		return &v.Status
-	}).(PatchSettingsResponseStatusPtrOutput)
-}
-
 // Specifies the windows configuration for update management.
 type OSProfileResponseWindowsConfiguration struct {
 	// Specifies the assessment mode.
 	AssessmentMode *string `pulumi:"assessmentMode"`
-	// Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
-	EnableHotpatching *bool `pulumi:"enableHotpatching"`
 	// Specifies the patch mode.
 	PatchMode *string `pulumi:"patchMode"`
-	// Status of the hotpatch capability enrollment or disenrollment.
-	Status PatchSettingsResponseStatus `pulumi:"status"`
 }
 
 // Specifies the windows configuration for update management.
@@ -5642,19 +4103,9 @@ func (o OSProfileResponseWindowsConfigurationOutput) AssessmentMode() pulumi.Str
 	return o.ApplyT(func(v OSProfileResponseWindowsConfiguration) *string { return v.AssessmentMode }).(pulumi.StringPtrOutput)
 }
 
-// Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
-func (o OSProfileResponseWindowsConfigurationOutput) EnableHotpatching() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OSProfileResponseWindowsConfiguration) *bool { return v.EnableHotpatching }).(pulumi.BoolPtrOutput)
-}
-
 // Specifies the patch mode.
 func (o OSProfileResponseWindowsConfigurationOutput) PatchMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OSProfileResponseWindowsConfiguration) *string { return v.PatchMode }).(pulumi.StringPtrOutput)
-}
-
-// Status of the hotpatch capability enrollment or disenrollment.
-func (o OSProfileResponseWindowsConfigurationOutput) Status() PatchSettingsResponseStatusOutput {
-	return o.ApplyT(func(v OSProfileResponseWindowsConfiguration) PatchSettingsResponseStatus { return v.Status }).(PatchSettingsResponseStatusOutput)
 }
 
 type OSProfileResponseWindowsConfigurationPtrOutput struct{ *pulumi.OutputState }
@@ -5691,16 +4142,6 @@ func (o OSProfileResponseWindowsConfigurationPtrOutput) AssessmentMode() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
-func (o OSProfileResponseWindowsConfigurationPtrOutput) EnableHotpatching() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *OSProfileResponseWindowsConfiguration) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableHotpatching
-	}).(pulumi.BoolPtrOutput)
-}
-
 // Specifies the patch mode.
 func (o OSProfileResponseWindowsConfigurationPtrOutput) PatchMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OSProfileResponseWindowsConfiguration) *string {
@@ -5711,22 +4152,10 @@ func (o OSProfileResponseWindowsConfigurationPtrOutput) PatchMode() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// Status of the hotpatch capability enrollment or disenrollment.
-func (o OSProfileResponseWindowsConfigurationPtrOutput) Status() PatchSettingsResponseStatusPtrOutput {
-	return o.ApplyT(func(v *OSProfileResponseWindowsConfiguration) *PatchSettingsResponseStatus {
-		if v == nil {
-			return nil
-		}
-		return &v.Status
-	}).(PatchSettingsResponseStatusPtrOutput)
-}
-
 // Specifies the windows configuration for update management.
 type OSProfileWindowsConfiguration struct {
 	// Specifies the assessment mode.
 	AssessmentMode *string `pulumi:"assessmentMode"`
-	// Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
-	EnableHotpatching *bool `pulumi:"enableHotpatching"`
 	// Specifies the patch mode.
 	PatchMode *string `pulumi:"patchMode"`
 }
@@ -5746,8 +4175,6 @@ type OSProfileWindowsConfigurationInput interface {
 type OSProfileWindowsConfigurationArgs struct {
 	// Specifies the assessment mode.
 	AssessmentMode pulumi.StringPtrInput `pulumi:"assessmentMode"`
-	// Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
-	EnableHotpatching pulumi.BoolPtrInput `pulumi:"enableHotpatching"`
 	// Specifies the patch mode.
 	PatchMode pulumi.StringPtrInput `pulumi:"patchMode"`
 }
@@ -5835,11 +4262,6 @@ func (o OSProfileWindowsConfigurationOutput) AssessmentMode() pulumi.StringPtrOu
 	return o.ApplyT(func(v OSProfileWindowsConfiguration) *string { return v.AssessmentMode }).(pulumi.StringPtrOutput)
 }
 
-// Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
-func (o OSProfileWindowsConfigurationOutput) EnableHotpatching() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OSProfileWindowsConfiguration) *bool { return v.EnableHotpatching }).(pulumi.BoolPtrOutput)
-}
-
 // Specifies the patch mode.
 func (o OSProfileWindowsConfigurationOutput) PatchMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OSProfileWindowsConfiguration) *string { return v.PatchMode }).(pulumi.StringPtrOutput)
@@ -5879,16 +4301,6 @@ func (o OSProfileWindowsConfigurationPtrOutput) AssessmentMode() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
-func (o OSProfileWindowsConfigurationPtrOutput) EnableHotpatching() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *OSProfileWindowsConfiguration) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.EnableHotpatching
-	}).(pulumi.BoolPtrOutput)
-}
-
 // Specifies the patch mode.
 func (o OSProfileWindowsConfigurationPtrOutput) PatchMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OSProfileWindowsConfiguration) *string {
@@ -5896,83 +4308,6 @@ func (o OSProfileWindowsConfigurationPtrOutput) PatchMode() pulumi.StringPtrOutp
 			return nil
 		}
 		return v.PatchMode
-	}).(pulumi.StringPtrOutput)
-}
-
-// Status of the hotpatch capability enrollment or disenrollment.
-type PatchSettingsResponseStatus struct {
-	// The errors that were encountered during the hotpatch capability enrollment or disenrollment.
-	Error ErrorDetailResponse `pulumi:"error"`
-	// Indicates the current status of the hotpatch being enabled or disabled.
-	HotpatchEnablementStatus *string `pulumi:"hotpatchEnablementStatus"`
-}
-
-// Status of the hotpatch capability enrollment or disenrollment.
-type PatchSettingsResponseStatusOutput struct{ *pulumi.OutputState }
-
-func (PatchSettingsResponseStatusOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PatchSettingsResponseStatus)(nil)).Elem()
-}
-
-func (o PatchSettingsResponseStatusOutput) ToPatchSettingsResponseStatusOutput() PatchSettingsResponseStatusOutput {
-	return o
-}
-
-func (o PatchSettingsResponseStatusOutput) ToPatchSettingsResponseStatusOutputWithContext(ctx context.Context) PatchSettingsResponseStatusOutput {
-	return o
-}
-
-// The errors that were encountered during the hotpatch capability enrollment or disenrollment.
-func (o PatchSettingsResponseStatusOutput) Error() ErrorDetailResponseOutput {
-	return o.ApplyT(func(v PatchSettingsResponseStatus) ErrorDetailResponse { return v.Error }).(ErrorDetailResponseOutput)
-}
-
-// Indicates the current status of the hotpatch being enabled or disabled.
-func (o PatchSettingsResponseStatusOutput) HotpatchEnablementStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PatchSettingsResponseStatus) *string { return v.HotpatchEnablementStatus }).(pulumi.StringPtrOutput)
-}
-
-type PatchSettingsResponseStatusPtrOutput struct{ *pulumi.OutputState }
-
-func (PatchSettingsResponseStatusPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PatchSettingsResponseStatus)(nil)).Elem()
-}
-
-func (o PatchSettingsResponseStatusPtrOutput) ToPatchSettingsResponseStatusPtrOutput() PatchSettingsResponseStatusPtrOutput {
-	return o
-}
-
-func (o PatchSettingsResponseStatusPtrOutput) ToPatchSettingsResponseStatusPtrOutputWithContext(ctx context.Context) PatchSettingsResponseStatusPtrOutput {
-	return o
-}
-
-func (o PatchSettingsResponseStatusPtrOutput) Elem() PatchSettingsResponseStatusOutput {
-	return o.ApplyT(func(v *PatchSettingsResponseStatus) PatchSettingsResponseStatus {
-		if v != nil {
-			return *v
-		}
-		var ret PatchSettingsResponseStatus
-		return ret
-	}).(PatchSettingsResponseStatusOutput)
-}
-
-// The errors that were encountered during the hotpatch capability enrollment or disenrollment.
-func (o PatchSettingsResponseStatusPtrOutput) Error() ErrorDetailResponsePtrOutput {
-	return o.ApplyT(func(v *PatchSettingsResponseStatus) *ErrorDetailResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.Error
-	}).(ErrorDetailResponsePtrOutput)
-}
-
-// Indicates the current status of the hotpatch being enabled or disabled.
-func (o PatchSettingsResponseStatusPtrOutput) HotpatchEnablementStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PatchSettingsResponseStatus) *string {
-		if v == nil {
-			return nil
-		}
-		return v.HotpatchEnablementStatus
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6772,203 +5107,6 @@ func (o PrivateLinkServiceConnectionStatePropertyResponsePtrOutput) Status() pul
 		}
 		return &v.Status
 	}).(pulumi.StringPtrOutput)
-}
-
-// Product Feature
-type ProductFeature struct {
-	// Product feature name.
-	Name *string `pulumi:"name"`
-	// Indicates the current status of the product features.
-	SubscriptionStatus *string `pulumi:"subscriptionStatus"`
-}
-
-// ProductFeatureInput is an input type that accepts ProductFeatureArgs and ProductFeatureOutput values.
-// You can construct a concrete instance of `ProductFeatureInput` via:
-//
-//	ProductFeatureArgs{...}
-type ProductFeatureInput interface {
-	pulumi.Input
-
-	ToProductFeatureOutput() ProductFeatureOutput
-	ToProductFeatureOutputWithContext(context.Context) ProductFeatureOutput
-}
-
-// Product Feature
-type ProductFeatureArgs struct {
-	// Product feature name.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Indicates the current status of the product features.
-	SubscriptionStatus pulumi.StringPtrInput `pulumi:"subscriptionStatus"`
-}
-
-func (ProductFeatureArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProductFeature)(nil)).Elem()
-}
-
-func (i ProductFeatureArgs) ToProductFeatureOutput() ProductFeatureOutput {
-	return i.ToProductFeatureOutputWithContext(context.Background())
-}
-
-func (i ProductFeatureArgs) ToProductFeatureOutputWithContext(ctx context.Context) ProductFeatureOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProductFeatureOutput)
-}
-
-// ProductFeatureArrayInput is an input type that accepts ProductFeatureArray and ProductFeatureArrayOutput values.
-// You can construct a concrete instance of `ProductFeatureArrayInput` via:
-//
-//	ProductFeatureArray{ ProductFeatureArgs{...} }
-type ProductFeatureArrayInput interface {
-	pulumi.Input
-
-	ToProductFeatureArrayOutput() ProductFeatureArrayOutput
-	ToProductFeatureArrayOutputWithContext(context.Context) ProductFeatureArrayOutput
-}
-
-type ProductFeatureArray []ProductFeatureInput
-
-func (ProductFeatureArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProductFeature)(nil)).Elem()
-}
-
-func (i ProductFeatureArray) ToProductFeatureArrayOutput() ProductFeatureArrayOutput {
-	return i.ToProductFeatureArrayOutputWithContext(context.Background())
-}
-
-func (i ProductFeatureArray) ToProductFeatureArrayOutputWithContext(ctx context.Context) ProductFeatureArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProductFeatureArrayOutput)
-}
-
-// Product Feature
-type ProductFeatureOutput struct{ *pulumi.OutputState }
-
-func (ProductFeatureOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProductFeature)(nil)).Elem()
-}
-
-func (o ProductFeatureOutput) ToProductFeatureOutput() ProductFeatureOutput {
-	return o
-}
-
-func (o ProductFeatureOutput) ToProductFeatureOutputWithContext(ctx context.Context) ProductFeatureOutput {
-	return o
-}
-
-// Product feature name.
-func (o ProductFeatureOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProductFeature) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Indicates the current status of the product features.
-func (o ProductFeatureOutput) SubscriptionStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProductFeature) *string { return v.SubscriptionStatus }).(pulumi.StringPtrOutput)
-}
-
-type ProductFeatureArrayOutput struct{ *pulumi.OutputState }
-
-func (ProductFeatureArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProductFeature)(nil)).Elem()
-}
-
-func (o ProductFeatureArrayOutput) ToProductFeatureArrayOutput() ProductFeatureArrayOutput {
-	return o
-}
-
-func (o ProductFeatureArrayOutput) ToProductFeatureArrayOutputWithContext(ctx context.Context) ProductFeatureArrayOutput {
-	return o
-}
-
-func (o ProductFeatureArrayOutput) Index(i pulumi.IntInput) ProductFeatureOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProductFeature {
-		return vs[0].([]ProductFeature)[vs[1].(int)]
-	}).(ProductFeatureOutput)
-}
-
-// Product Feature
-type ProductFeatureResponse struct {
-	// The timestamp in UTC when the billing ends.
-	BillingEndDate string `pulumi:"billingEndDate"`
-	// The timestamp in UTC when the billing starts.
-	BillingStartDate string `pulumi:"billingStartDate"`
-	// The timestamp in UTC when the user disenrolled the feature.
-	DisenrollmentDate string `pulumi:"disenrollmentDate"`
-	// The timestamp in UTC when the user enrolls the feature.
-	EnrollmentDate string `pulumi:"enrollmentDate"`
-	// The errors that were encountered during the feature enrollment or disenrollment.
-	Error ErrorDetailResponse `pulumi:"error"`
-	// Product feature name.
-	Name *string `pulumi:"name"`
-	// Indicates the current status of the product features.
-	SubscriptionStatus *string `pulumi:"subscriptionStatus"`
-}
-
-// Product Feature
-type ProductFeatureResponseOutput struct{ *pulumi.OutputState }
-
-func (ProductFeatureResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProductFeatureResponse)(nil)).Elem()
-}
-
-func (o ProductFeatureResponseOutput) ToProductFeatureResponseOutput() ProductFeatureResponseOutput {
-	return o
-}
-
-func (o ProductFeatureResponseOutput) ToProductFeatureResponseOutputWithContext(ctx context.Context) ProductFeatureResponseOutput {
-	return o
-}
-
-// The timestamp in UTC when the billing ends.
-func (o ProductFeatureResponseOutput) BillingEndDate() pulumi.StringOutput {
-	return o.ApplyT(func(v ProductFeatureResponse) string { return v.BillingEndDate }).(pulumi.StringOutput)
-}
-
-// The timestamp in UTC when the billing starts.
-func (o ProductFeatureResponseOutput) BillingStartDate() pulumi.StringOutput {
-	return o.ApplyT(func(v ProductFeatureResponse) string { return v.BillingStartDate }).(pulumi.StringOutput)
-}
-
-// The timestamp in UTC when the user disenrolled the feature.
-func (o ProductFeatureResponseOutput) DisenrollmentDate() pulumi.StringOutput {
-	return o.ApplyT(func(v ProductFeatureResponse) string { return v.DisenrollmentDate }).(pulumi.StringOutput)
-}
-
-// The timestamp in UTC when the user enrolls the feature.
-func (o ProductFeatureResponseOutput) EnrollmentDate() pulumi.StringOutput {
-	return o.ApplyT(func(v ProductFeatureResponse) string { return v.EnrollmentDate }).(pulumi.StringOutput)
-}
-
-// The errors that were encountered during the feature enrollment or disenrollment.
-func (o ProductFeatureResponseOutput) Error() ErrorDetailResponseOutput {
-	return o.ApplyT(func(v ProductFeatureResponse) ErrorDetailResponse { return v.Error }).(ErrorDetailResponseOutput)
-}
-
-// Product feature name.
-func (o ProductFeatureResponseOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProductFeatureResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Indicates the current status of the product features.
-func (o ProductFeatureResponseOutput) SubscriptionStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProductFeatureResponse) *string { return v.SubscriptionStatus }).(pulumi.StringPtrOutput)
-}
-
-type ProductFeatureResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (ProductFeatureResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ProductFeatureResponse)(nil)).Elem()
-}
-
-func (o ProductFeatureResponseArrayOutput) ToProductFeatureResponseArrayOutput() ProductFeatureResponseArrayOutput {
-	return o
-}
-
-func (o ProductFeatureResponseArrayOutput) ToProductFeatureResponseArrayOutputWithContext(ctx context.Context) ProductFeatureResponseArrayOutput {
-	return o
-}
-
-func (o ProductFeatureResponseArrayOutput) Index(i pulumi.IntInput) ProductFeatureResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProductFeatureResponse {
-		return vs[0].([]ProductFeatureResponse)[vs[1].(int)]
-	}).(ProductFeatureResponseOutput)
 }
 
 // Describes the properties of a run command parameter.
@@ -7841,32 +5979,6 @@ func (o ServiceStatusesResponsePtrOutput) GuestConfigurationService() ServiceSta
 	}).(ServiceStatusResponsePtrOutput)
 }
 
-// Describes the subnet.
-type SubnetResponse struct {
-	// Represents address prefix.
-	AddressPrefix *string `pulumi:"addressPrefix"`
-}
-
-// Describes the subnet.
-type SubnetResponseOutput struct{ *pulumi.OutputState }
-
-func (SubnetResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubnetResponse)(nil)).Elem()
-}
-
-func (o SubnetResponseOutput) ToSubnetResponseOutput() SubnetResponseOutput {
-	return o
-}
-
-func (o SubnetResponseOutput) ToSubnetResponseOutputWithContext(ctx context.Context) SubnetResponseOutput {
-	return o
-}
-
-// Represents address prefix.
-func (o SubnetResponseOutput) AddressPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SubnetResponse) *string { return v.AddressPrefix }).(pulumi.StringPtrOutput)
-}
-
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -7928,247 +6040,6 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
-type SystemDataResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SystemDataResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SystemDataResponse)(nil)).Elem()
-}
-
-func (o SystemDataResponsePtrOutput) ToSystemDataResponsePtrOutput() SystemDataResponsePtrOutput {
-	return o
-}
-
-func (o SystemDataResponsePtrOutput) ToSystemDataResponsePtrOutputWithContext(ctx context.Context) SystemDataResponsePtrOutput {
-	return o
-}
-
-func (o SystemDataResponsePtrOutput) Elem() SystemDataResponseOutput {
-	return o.ApplyT(func(v *SystemDataResponse) SystemDataResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SystemDataResponse
-		return ret
-	}).(SystemDataResponseOutput)
-}
-
-// The timestamp of resource creation (UTC).
-func (o SystemDataResponsePtrOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreatedAt
-	}).(pulumi.StringPtrOutput)
-}
-
-// The identity that created the resource.
-func (o SystemDataResponsePtrOutput) CreatedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreatedBy
-	}).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that created the resource.
-func (o SystemDataResponsePtrOutput) CreatedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CreatedByType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The timestamp of resource last modification (UTC)
-func (o SystemDataResponsePtrOutput) LastModifiedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LastModifiedAt
-	}).(pulumi.StringPtrOutput)
-}
-
-// The identity that last modified the resource.
-func (o SystemDataResponsePtrOutput) LastModifiedBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LastModifiedBy
-	}).(pulumi.StringPtrOutput)
-}
-
-// The type of identity that last modified the resource.
-func (o SystemDataResponsePtrOutput) LastModifiedByType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SystemDataResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LastModifiedByType
-	}).(pulumi.StringPtrOutput)
-}
-
-type VolumeLicenseDetails struct {
-	// The invoice id for the volume license.
-	InvoiceId *string `pulumi:"invoiceId"`
-	// Describes the program year the volume license is for.
-	ProgramYear *string `pulumi:"programYear"`
-}
-
-// VolumeLicenseDetailsInput is an input type that accepts VolumeLicenseDetailsArgs and VolumeLicenseDetailsOutput values.
-// You can construct a concrete instance of `VolumeLicenseDetailsInput` via:
-//
-//	VolumeLicenseDetailsArgs{...}
-type VolumeLicenseDetailsInput interface {
-	pulumi.Input
-
-	ToVolumeLicenseDetailsOutput() VolumeLicenseDetailsOutput
-	ToVolumeLicenseDetailsOutputWithContext(context.Context) VolumeLicenseDetailsOutput
-}
-
-type VolumeLicenseDetailsArgs struct {
-	// The invoice id for the volume license.
-	InvoiceId pulumi.StringPtrInput `pulumi:"invoiceId"`
-	// Describes the program year the volume license is for.
-	ProgramYear pulumi.StringPtrInput `pulumi:"programYear"`
-}
-
-func (VolumeLicenseDetailsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VolumeLicenseDetails)(nil)).Elem()
-}
-
-func (i VolumeLicenseDetailsArgs) ToVolumeLicenseDetailsOutput() VolumeLicenseDetailsOutput {
-	return i.ToVolumeLicenseDetailsOutputWithContext(context.Background())
-}
-
-func (i VolumeLicenseDetailsArgs) ToVolumeLicenseDetailsOutputWithContext(ctx context.Context) VolumeLicenseDetailsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VolumeLicenseDetailsOutput)
-}
-
-// VolumeLicenseDetailsArrayInput is an input type that accepts VolumeLicenseDetailsArray and VolumeLicenseDetailsArrayOutput values.
-// You can construct a concrete instance of `VolumeLicenseDetailsArrayInput` via:
-//
-//	VolumeLicenseDetailsArray{ VolumeLicenseDetailsArgs{...} }
-type VolumeLicenseDetailsArrayInput interface {
-	pulumi.Input
-
-	ToVolumeLicenseDetailsArrayOutput() VolumeLicenseDetailsArrayOutput
-	ToVolumeLicenseDetailsArrayOutputWithContext(context.Context) VolumeLicenseDetailsArrayOutput
-}
-
-type VolumeLicenseDetailsArray []VolumeLicenseDetailsInput
-
-func (VolumeLicenseDetailsArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VolumeLicenseDetails)(nil)).Elem()
-}
-
-func (i VolumeLicenseDetailsArray) ToVolumeLicenseDetailsArrayOutput() VolumeLicenseDetailsArrayOutput {
-	return i.ToVolumeLicenseDetailsArrayOutputWithContext(context.Background())
-}
-
-func (i VolumeLicenseDetailsArray) ToVolumeLicenseDetailsArrayOutputWithContext(ctx context.Context) VolumeLicenseDetailsArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VolumeLicenseDetailsArrayOutput)
-}
-
-type VolumeLicenseDetailsOutput struct{ *pulumi.OutputState }
-
-func (VolumeLicenseDetailsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VolumeLicenseDetails)(nil)).Elem()
-}
-
-func (o VolumeLicenseDetailsOutput) ToVolumeLicenseDetailsOutput() VolumeLicenseDetailsOutput {
-	return o
-}
-
-func (o VolumeLicenseDetailsOutput) ToVolumeLicenseDetailsOutputWithContext(ctx context.Context) VolumeLicenseDetailsOutput {
-	return o
-}
-
-// The invoice id for the volume license.
-func (o VolumeLicenseDetailsOutput) InvoiceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeLicenseDetails) *string { return v.InvoiceId }).(pulumi.StringPtrOutput)
-}
-
-// Describes the program year the volume license is for.
-func (o VolumeLicenseDetailsOutput) ProgramYear() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeLicenseDetails) *string { return v.ProgramYear }).(pulumi.StringPtrOutput)
-}
-
-type VolumeLicenseDetailsArrayOutput struct{ *pulumi.OutputState }
-
-func (VolumeLicenseDetailsArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VolumeLicenseDetails)(nil)).Elem()
-}
-
-func (o VolumeLicenseDetailsArrayOutput) ToVolumeLicenseDetailsArrayOutput() VolumeLicenseDetailsArrayOutput {
-	return o
-}
-
-func (o VolumeLicenseDetailsArrayOutput) ToVolumeLicenseDetailsArrayOutputWithContext(ctx context.Context) VolumeLicenseDetailsArrayOutput {
-	return o
-}
-
-func (o VolumeLicenseDetailsArrayOutput) Index(i pulumi.IntInput) VolumeLicenseDetailsOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeLicenseDetails {
-		return vs[0].([]VolumeLicenseDetails)[vs[1].(int)]
-	}).(VolumeLicenseDetailsOutput)
-}
-
-type VolumeLicenseDetailsResponse struct {
-	// The invoice id for the volume license.
-	InvoiceId *string `pulumi:"invoiceId"`
-	// Describes the program year the volume license is for.
-	ProgramYear *string `pulumi:"programYear"`
-}
-
-type VolumeLicenseDetailsResponseOutput struct{ *pulumi.OutputState }
-
-func (VolumeLicenseDetailsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VolumeLicenseDetailsResponse)(nil)).Elem()
-}
-
-func (o VolumeLicenseDetailsResponseOutput) ToVolumeLicenseDetailsResponseOutput() VolumeLicenseDetailsResponseOutput {
-	return o
-}
-
-func (o VolumeLicenseDetailsResponseOutput) ToVolumeLicenseDetailsResponseOutputWithContext(ctx context.Context) VolumeLicenseDetailsResponseOutput {
-	return o
-}
-
-// The invoice id for the volume license.
-func (o VolumeLicenseDetailsResponseOutput) InvoiceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeLicenseDetailsResponse) *string { return v.InvoiceId }).(pulumi.StringPtrOutput)
-}
-
-// Describes the program year the volume license is for.
-func (o VolumeLicenseDetailsResponseOutput) ProgramYear() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VolumeLicenseDetailsResponse) *string { return v.ProgramYear }).(pulumi.StringPtrOutput)
-}
-
-type VolumeLicenseDetailsResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (VolumeLicenseDetailsResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VolumeLicenseDetailsResponse)(nil)).Elem()
-}
-
-func (o VolumeLicenseDetailsResponseArrayOutput) ToVolumeLicenseDetailsResponseArrayOutput() VolumeLicenseDetailsResponseArrayOutput {
-	return o
-}
-
-func (o VolumeLicenseDetailsResponseArrayOutput) ToVolumeLicenseDetailsResponseArrayOutputWithContext(ctx context.Context) VolumeLicenseDetailsResponseArrayOutput {
-	return o
-}
-
-func (o VolumeLicenseDetailsResponseArrayOutput) Index(i pulumi.IntInput) VolumeLicenseDetailsResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VolumeLicenseDetailsResponse {
-		return vs[0].([]VolumeLicenseDetailsResponse)[vs[1].(int)]
-	}).(VolumeLicenseDetailsResponseOutput)
-}
-
 func init() {
 	pulumi.RegisterOutputType(AgentConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(AgentUpgradeOutput{})
@@ -8182,7 +6053,6 @@ func init() {
 	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseOutput{})
 	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseArrayOutput{})
 	pulumi.RegisterOutputType(ErrorDetailResponseOutput{})
-	pulumi.RegisterOutputType(ErrorDetailResponsePtrOutput{})
 	pulumi.RegisterOutputType(ErrorDetailResponseArrayOutput{})
 	pulumi.RegisterOutputType(EsuKeyResponseOutput{})
 	pulumi.RegisterOutputType(EsuKeyResponseArrayOutput{})
@@ -8195,24 +6065,10 @@ func init() {
 	pulumi.RegisterOutputType(IdentityPtrOutput{})
 	pulumi.RegisterOutputType(IdentityResponseOutput{})
 	pulumi.RegisterOutputType(IdentityResponsePtrOutput{})
-	pulumi.RegisterOutputType(IpAddressResponseOutput{})
-	pulumi.RegisterOutputType(IpAddressResponseArrayOutput{})
-	pulumi.RegisterOutputType(LicenseTypeOutput{})
-	pulumi.RegisterOutputType(LicenseTypePtrOutput{})
 	pulumi.RegisterOutputType(LicenseDetailsOutput{})
 	pulumi.RegisterOutputType(LicenseDetailsPtrOutput{})
 	pulumi.RegisterOutputType(LicenseDetailsResponseOutput{})
 	pulumi.RegisterOutputType(LicenseDetailsResponsePtrOutput{})
-	pulumi.RegisterOutputType(LicenseProfileMachineInstanceViewOutput{})
-	pulumi.RegisterOutputType(LicenseProfileMachineInstanceViewPtrOutput{})
-	pulumi.RegisterOutputType(LicenseProfileMachineInstanceViewEsuPropertiesOutput{})
-	pulumi.RegisterOutputType(LicenseProfileMachineInstanceViewEsuPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(LicenseProfileMachineInstanceViewEsuPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(LicenseProfileMachineInstanceViewEsuPropertiesResponsePtrOutput{})
-	pulumi.RegisterOutputType(LicenseProfileMachineInstanceViewResponseOutput{})
-	pulumi.RegisterOutputType(LicenseProfileMachineInstanceViewResponsePtrOutput{})
-	pulumi.RegisterOutputType(LicenseResponseOutput{})
-	pulumi.RegisterOutputType(LicenseResponsePtrOutput{})
 	pulumi.RegisterOutputType(LocationDataOutput{})
 	pulumi.RegisterOutputType(LocationDataPtrOutput{})
 	pulumi.RegisterOutputType(LocationDataResponseOutput{})
@@ -8238,9 +6094,6 @@ func init() {
 	pulumi.RegisterOutputType(MachineRunCommandScriptSourcePtrOutput{})
 	pulumi.RegisterOutputType(MachineRunCommandScriptSourceResponseOutput{})
 	pulumi.RegisterOutputType(MachineRunCommandScriptSourceResponsePtrOutput{})
-	pulumi.RegisterOutputType(NetworkInterfaceResponseOutput{})
-	pulumi.RegisterOutputType(NetworkInterfaceResponseArrayOutput{})
-	pulumi.RegisterOutputType(NetworkProfileResponseOutput{})
 	pulumi.RegisterOutputType(OSProfileOutput{})
 	pulumi.RegisterOutputType(OSProfilePtrOutput{})
 	pulumi.RegisterOutputType(OSProfileLinuxConfigurationOutput{})
@@ -8253,8 +6106,6 @@ func init() {
 	pulumi.RegisterOutputType(OSProfileResponseWindowsConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(OSProfileWindowsConfigurationOutput{})
 	pulumi.RegisterOutputType(OSProfileWindowsConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(PatchSettingsResponseStatusOutput{})
-	pulumi.RegisterOutputType(PatchSettingsResponseStatusPtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionDataModelResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionDataModelResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesOutput{})
@@ -8269,10 +6120,6 @@ func init() {
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatePropertyPtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatePropertyResponseOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatePropertyResponsePtrOutput{})
-	pulumi.RegisterOutputType(ProductFeatureOutput{})
-	pulumi.RegisterOutputType(ProductFeatureArrayOutput{})
-	pulumi.RegisterOutputType(ProductFeatureResponseOutput{})
-	pulumi.RegisterOutputType(ProductFeatureResponseArrayOutput{})
 	pulumi.RegisterOutputType(RunCommandInputParameterOutput{})
 	pulumi.RegisterOutputType(RunCommandInputParameterArrayOutput{})
 	pulumi.RegisterOutputType(RunCommandInputParameterResponseOutput{})
@@ -8289,11 +6136,5 @@ func init() {
 	pulumi.RegisterOutputType(ServiceStatusesPtrOutput{})
 	pulumi.RegisterOutputType(ServiceStatusesResponseOutput{})
 	pulumi.RegisterOutputType(ServiceStatusesResponsePtrOutput{})
-	pulumi.RegisterOutputType(SubnetResponseOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
-	pulumi.RegisterOutputType(SystemDataResponsePtrOutput{})
-	pulumi.RegisterOutputType(VolumeLicenseDetailsOutput{})
-	pulumi.RegisterOutputType(VolumeLicenseDetailsArrayOutput{})
-	pulumi.RegisterOutputType(VolumeLicenseDetailsResponseOutput{})
-	pulumi.RegisterOutputType(VolumeLicenseDetailsResponseArrayOutput{})
 }

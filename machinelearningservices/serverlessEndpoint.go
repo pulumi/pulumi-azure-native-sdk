@@ -8,22 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Concrete tracked resource types can be created by aliasing this type using a specific property type.
+// Uses Azure REST API version 2023-08-01-preview.
 //
-// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-08-01-preview.
-//
-// Other available API versions: 2023-08-01-preview, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
 //
 // A Serverless Endpoint requires a Marketplace subscription. You can create one via the [MarketplaceSubscription resource](https://www.pulumi.com/registry/packages/azure-native/api-docs/machinelearningservices/marketplacesubscription/) and then making your endpoint [depend](https://www.pulumi.com/docs/iac/concepts/options/dependson/) on it.
 type ServerlessEndpoint struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Managed service identity (system assigned and/or user assigned identities)
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
@@ -33,7 +29,7 @@ type ServerlessEndpoint struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// [Required] Additional attributes of the entity.
-	Properties ServerlessEndpointPropertiesResponseOutput `pulumi:"properties"`
+	ServerlessEndpointProperties ServerlessEndpointResponseOutput `pulumi:"serverlessEndpointProperties"`
 	// Sku details required for ARM contract for Autoscaling.
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -51,11 +47,11 @@ func NewServerlessEndpoint(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Properties == nil {
-		return nil, errors.New("invalid value for required argument 'Properties'")
-	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.ServerlessEndpointProperties == nil {
+		return nil, errors.New("invalid value for required argument 'ServerlessEndpointProperties'")
 	}
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
@@ -84,27 +80,6 @@ func NewServerlessEndpoint(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:ServerlessEndpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250401:ServerlessEndpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250401preview:ServerlessEndpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250601:ServerlessEndpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250701preview:ServerlessEndpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250901:ServerlessEndpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20251001preview:ServerlessEndpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20251201:ServerlessEndpoint"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -149,15 +124,15 @@ type serverlessEndpointArgs struct {
 	Location *string `pulumi:"location"`
 	// Serverless Endpoint name.
 	Name *string `pulumi:"name"`
-	// [Required] Additional attributes of the entity.
-	Properties ServerlessEndpointProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// [Required] Additional attributes of the entity.
+	ServerlessEndpointProperties ServerlessEndpointType `pulumi:"serverlessEndpointProperties"`
 	// Sku details required for ARM contract for Autoscaling.
 	Sku *Sku `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
@@ -171,15 +146,15 @@ type ServerlessEndpointArgs struct {
 	Location pulumi.StringPtrInput
 	// Serverless Endpoint name.
 	Name pulumi.StringPtrInput
-	// [Required] Additional attributes of the entity.
-	Properties ServerlessEndpointPropertiesInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// [Required] Additional attributes of the entity.
+	ServerlessEndpointProperties ServerlessEndpointTypeInput
 	// Sku details required for ARM contract for Autoscaling.
 	Sku SkuPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName pulumi.StringInput
 }
 
@@ -220,11 +195,6 @@ func (o ServerlessEndpointOutput) ToServerlessEndpointOutputWithContext(ctx cont
 	return o
 }
 
-// The Azure API version of the resource.
-func (o ServerlessEndpointOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ServerlessEndpoint) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Managed service identity (system assigned and/or user assigned identities)
 func (o ServerlessEndpointOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *ServerlessEndpoint) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
@@ -246,8 +216,8 @@ func (o ServerlessEndpointOutput) Name() pulumi.StringOutput {
 }
 
 // [Required] Additional attributes of the entity.
-func (o ServerlessEndpointOutput) Properties() ServerlessEndpointPropertiesResponseOutput {
-	return o.ApplyT(func(v *ServerlessEndpoint) ServerlessEndpointPropertiesResponseOutput { return v.Properties }).(ServerlessEndpointPropertiesResponseOutput)
+func (o ServerlessEndpointOutput) ServerlessEndpointProperties() ServerlessEndpointResponseOutput {
+	return o.ApplyT(func(v *ServerlessEndpoint) ServerlessEndpointResponseOutput { return v.ServerlessEndpointProperties }).(ServerlessEndpointResponseOutput)
 }
 
 // Sku details required for ARM contract for Autoscaling.

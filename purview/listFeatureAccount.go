@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets details from a list of feature names.
 //
-// Uses Azure REST API version 2024-04-01-preview.
+// Uses Azure REST API version 2021-12-01.
 //
-// Other available API versions: 2021-12-01, 2023-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native purview [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-05-01-preview, 2024-04-01-preview.
 func ListFeatureAccount(ctx *pulumi.Context, args *ListFeatureAccountArgs, opts ...pulumi.InvokeOption) (*ListFeatureAccountResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListFeatureAccountResult
@@ -31,7 +31,7 @@ type ListFeatureAccountArgs struct {
 	AccountName string `pulumi:"accountName"`
 	// Set of features
 	Features []string `pulumi:"features"`
-	// The name of the resource group. The name is case insensitive.
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -55,7 +55,7 @@ type ListFeatureAccountOutputArgs struct {
 	AccountName pulumi.StringInput `pulumi:"accountName"`
 	// Set of features
 	Features pulumi.StringArrayInput `pulumi:"features"`
-	// The name of the resource group. The name is case insensitive.
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 

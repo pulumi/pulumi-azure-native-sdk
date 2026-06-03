@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Concrete tracked resource types can be created by aliasing this type using a specific property type.
+// Uses Azure REST API version 2023-04-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01-preview.
 //
-// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
-//
-// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
 type BatchEndpoint struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// [Required] Additional attributes of the entity.
+	BatchEndpointProperties BatchEndpointResponseOutput `pulumi:"batchEndpointProperties"`
 	// Managed service identity (system assigned and/or user assigned identities)
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
@@ -30,8 +28,6 @@ type BatchEndpoint struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// [Required] Additional attributes of the entity.
-	Properties BatchEndpointPropertiesResponseOutput `pulumi:"properties"`
 	// Sku details required for ARM contract for Autoscaling.
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -49,8 +45,8 @@ func NewBatchEndpoint(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Properties == nil {
-		return nil, errors.New("invalid value for required argument 'Properties'")
+	if args.BatchEndpointProperties == nil {
+		return nil, errors.New("invalid value for required argument 'BatchEndpointProperties'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
@@ -119,27 +115,6 @@ func NewBatchEndpoint(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:BatchEndpoint"),
 		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250401:BatchEndpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250401preview:BatchEndpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250601:BatchEndpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250701preview:BatchEndpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250901:BatchEndpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20251001preview:BatchEndpoint"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20251201:BatchEndpoint"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -175,7 +150,9 @@ func (BatchEndpointState) ElementType() reflect.Type {
 }
 
 type batchEndpointArgs struct {
-	// Name for the Batch Endpoint.
+	// [Required] Additional attributes of the entity.
+	BatchEndpointProperties BatchEndpointType `pulumi:"batchEndpointProperties"`
+	// Name for the Batch inference endpoint.
 	EndpointName *string `pulumi:"endpointName"`
 	// Managed service identity (system assigned and/or user assigned identities)
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
@@ -183,21 +160,21 @@ type batchEndpointArgs struct {
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// [Required] Additional attributes of the entity.
-	Properties BatchEndpointProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Sku details required for ARM contract for Autoscaling.
 	Sku *Sku `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // The set of arguments for constructing a BatchEndpoint resource.
 type BatchEndpointArgs struct {
-	// Name for the Batch Endpoint.
+	// [Required] Additional attributes of the entity.
+	BatchEndpointProperties BatchEndpointTypeInput
+	// Name for the Batch inference endpoint.
 	EndpointName pulumi.StringPtrInput
 	// Managed service identity (system assigned and/or user assigned identities)
 	Identity ManagedServiceIdentityPtrInput
@@ -205,15 +182,13 @@ type BatchEndpointArgs struct {
 	Kind pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// [Required] Additional attributes of the entity.
-	Properties BatchEndpointPropertiesInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Sku details required for ARM contract for Autoscaling.
 	Sku SkuPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName pulumi.StringInput
 }
 
@@ -254,9 +229,9 @@ func (o BatchEndpointOutput) ToBatchEndpointOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The Azure API version of the resource.
-func (o BatchEndpointOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *BatchEndpoint) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+// [Required] Additional attributes of the entity.
+func (o BatchEndpointOutput) BatchEndpointProperties() BatchEndpointResponseOutput {
+	return o.ApplyT(func(v *BatchEndpoint) BatchEndpointResponseOutput { return v.BatchEndpointProperties }).(BatchEndpointResponseOutput)
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
@@ -277,11 +252,6 @@ func (o BatchEndpointOutput) Location() pulumi.StringOutput {
 // The name of the resource
 func (o BatchEndpointOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BatchEndpoint) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
-}
-
-// [Required] Additional attributes of the entity.
-func (o BatchEndpointOutput) Properties() BatchEndpointPropertiesResponseOutput {
-	return o.ApplyT(func(v *BatchEndpoint) BatchEndpointPropertiesResponseOutput { return v.Properties }).(BatchEndpointPropertiesResponseOutput)
 }
 
 // Sku details required for ARM contract for Autoscaling.

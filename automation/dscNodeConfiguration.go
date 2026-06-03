@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Definition of the dsc node configuration.
 //
-// Uses Azure REST API version 2024-10-23. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
+// Uses Azure REST API version 2022-08-08. In version 1.x of the Azure Native provider, it used API version 2019-06-01.
 //
-// Other available API versions: 2015-10-31, 2018-01-15, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
 type DscNodeConfiguration struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the configuration of the node.
 	Configuration DscConfigurationAssociationPropertyResponsePtrOutput `pulumi:"configuration"`
 	// Gets or sets creation time.
@@ -36,9 +34,7 @@ type DscNodeConfiguration struct {
 	NodeCount pulumi.Float64PtrOutput `pulumi:"nodeCount"`
 	// Source of node configuration.
 	Source pulumi.StringPtrOutput `pulumi:"source"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// The type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -196,11 +192,6 @@ func (o DscNodeConfigurationOutput) ToDscNodeConfigurationOutputWithContext(ctx 
 	return o
 }
 
-// The Azure API version of the resource.
-func (o DscNodeConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *DscNodeConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Gets or sets the configuration of the node.
 func (o DscNodeConfigurationOutput) Configuration() DscConfigurationAssociationPropertyResponsePtrOutput {
 	return o.ApplyT(func(v *DscNodeConfiguration) DscConfigurationAssociationPropertyResponsePtrOutput {
@@ -238,12 +229,7 @@ func (o DscNodeConfigurationOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DscNodeConfiguration) pulumi.StringPtrOutput { return v.Source }).(pulumi.StringPtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o DscNodeConfigurationOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *DscNodeConfiguration) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// The type of the resource.
 func (o DscNodeConfigurationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *DscNodeConfiguration) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

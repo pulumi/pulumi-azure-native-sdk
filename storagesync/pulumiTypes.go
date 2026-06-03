@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -535,287 +535,13 @@ func (o FilesNotTieringErrorResponseArrayOutput) Index(i pulumi.IntInput) FilesN
 	}).(FilesNotTieringErrorResponseOutput)
 }
 
-// Managed service identity (system assigned and/or user assigned identities)
-type ManagedServiceIdentity struct {
-	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-	Type string `pulumi:"type"`
-	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
-}
-
-// ManagedServiceIdentityInput is an input type that accepts ManagedServiceIdentityArgs and ManagedServiceIdentityOutput values.
-// You can construct a concrete instance of `ManagedServiceIdentityInput` via:
-//
-//	ManagedServiceIdentityArgs{...}
-type ManagedServiceIdentityInput interface {
-	pulumi.Input
-
-	ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput
-	ToManagedServiceIdentityOutputWithContext(context.Context) ManagedServiceIdentityOutput
-}
-
-// Managed service identity (system assigned and/or user assigned identities)
-type ManagedServiceIdentityArgs struct {
-	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-	Type pulumi.StringInput `pulumi:"type"`
-	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
-}
-
-func (ManagedServiceIdentityArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
-}
-
-func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
-	return i.ToManagedServiceIdentityOutputWithContext(context.Background())
-}
-
-func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput)
-}
-
-func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
-	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
-}
-
-func (i ManagedServiceIdentityArgs) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityOutput).ToManagedServiceIdentityPtrOutputWithContext(ctx)
-}
-
-// ManagedServiceIdentityPtrInput is an input type that accepts ManagedServiceIdentityArgs, ManagedServiceIdentityPtr and ManagedServiceIdentityPtrOutput values.
-// You can construct a concrete instance of `ManagedServiceIdentityPtrInput` via:
-//
-//	        ManagedServiceIdentityArgs{...}
-//
-//	or:
-//
-//	        nil
-type ManagedServiceIdentityPtrInput interface {
-	pulumi.Input
-
-	ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput
-	ToManagedServiceIdentityPtrOutputWithContext(context.Context) ManagedServiceIdentityPtrOutput
-}
-
-type managedServiceIdentityPtrType ManagedServiceIdentityArgs
-
-func ManagedServiceIdentityPtr(v *ManagedServiceIdentityArgs) ManagedServiceIdentityPtrInput {
-	return (*managedServiceIdentityPtrType)(v)
-}
-
-func (*managedServiceIdentityPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
-}
-
-func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
-	return i.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
-}
-
-func (i *managedServiceIdentityPtrType) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ManagedServiceIdentityPtrOutput)
-}
-
-// Managed service identity (system assigned and/or user assigned identities)
-type ManagedServiceIdentityOutput struct{ *pulumi.OutputState }
-
-func (ManagedServiceIdentityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedServiceIdentity)(nil)).Elem()
-}
-
-func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutput() ManagedServiceIdentityOutput {
-	return o
-}
-
-func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityOutputWithContext(ctx context.Context) ManagedServiceIdentityOutput {
-	return o
-}
-
-func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
-	return o.ToManagedServiceIdentityPtrOutputWithContext(context.Background())
-}
-
-func (o ManagedServiceIdentityOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedServiceIdentity) *ManagedServiceIdentity {
-		return &v
-	}).(ManagedServiceIdentityPtrOutput)
-}
-
-// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-func (o ManagedServiceIdentityOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedServiceIdentity) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ManagedServiceIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
-}
-
-type ManagedServiceIdentityPtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedServiceIdentityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedServiceIdentity)(nil)).Elem()
-}
-
-func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutput() ManagedServiceIdentityPtrOutput {
-	return o
-}
-
-func (o ManagedServiceIdentityPtrOutput) ToManagedServiceIdentityPtrOutputWithContext(ctx context.Context) ManagedServiceIdentityPtrOutput {
-	return o
-}
-
-func (o ManagedServiceIdentityPtrOutput) Elem() ManagedServiceIdentityOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentity) ManagedServiceIdentity {
-		if v != nil {
-			return *v
-		}
-		var ret ManagedServiceIdentity
-		return ret
-	}).(ManagedServiceIdentityOutput)
-}
-
-// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-func (o ManagedServiceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentity) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentity) []string {
-		if v == nil {
-			return nil
-		}
-		return v.UserAssignedIdentities
-	}).(pulumi.StringArrayOutput)
-}
-
-// Managed service identity (system assigned and/or user assigned identities)
-type ManagedServiceIdentityResponse struct {
-	// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-	PrincipalId string `pulumi:"principalId"`
-	// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-	TenantId string `pulumi:"tenantId"`
-	// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-	Type string `pulumi:"type"`
-	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
-}
-
-// Managed service identity (system assigned and/or user assigned identities)
-type ManagedServiceIdentityResponseOutput struct{ *pulumi.OutputState }
-
-func (ManagedServiceIdentityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedServiceIdentityResponse)(nil)).Elem()
-}
-
-func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutput() ManagedServiceIdentityResponseOutput {
-	return o
-}
-
-func (o ManagedServiceIdentityResponseOutput) ToManagedServiceIdentityResponseOutputWithContext(ctx context.Context) ManagedServiceIdentityResponseOutput {
-	return o
-}
-
-// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o ManagedServiceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
-}
-
-// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o ManagedServiceIdentityResponseOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
-}
-
-// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-func (o ManagedServiceIdentityResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedServiceIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
-	return o.ApplyT(func(v ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
-		return v.UserAssignedIdentities
-	}).(UserAssignedIdentityResponseMapOutput)
-}
-
-type ManagedServiceIdentityResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedServiceIdentityResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedServiceIdentityResponse)(nil)).Elem()
-}
-
-func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutput() ManagedServiceIdentityResponsePtrOutput {
-	return o
-}
-
-func (o ManagedServiceIdentityResponsePtrOutput) ToManagedServiceIdentityResponsePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityResponsePtrOutput {
-	return o
-}
-
-func (o ManagedServiceIdentityResponsePtrOutput) Elem() ManagedServiceIdentityResponseOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) ManagedServiceIdentityResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ManagedServiceIdentityResponse
-		return ret
-	}).(ManagedServiceIdentityResponseOutput)
-}
-
-// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o ManagedServiceIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrincipalId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-func (o ManagedServiceIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TenantId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-func (o ManagedServiceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
-	return o.ApplyT(func(v *ManagedServiceIdentityResponse) map[string]UserAssignedIdentityResponse {
-		if v == nil {
-			return nil
-		}
-		return v.UserAssignedIdentities
-	}).(UserAssignedIdentityResponseMapOutput)
-}
-
-// The private endpoint connection resource.
+// The Private Endpoint Connection resource.
 type PrivateEndpointConnectionResponse struct {
-	// The group ids for the private endpoint resource.
-	GroupIds []string `pulumi:"groupIds"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// The private endpoint resource.
+	// The resource of private end point.
 	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
 	// A collection of information about the state of the connection between service consumer and provider.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
@@ -827,7 +553,7 @@ type PrivateEndpointConnectionResponse struct {
 	Type string `pulumi:"type"`
 }
 
-// The private endpoint connection resource.
+// The Private Endpoint Connection resource.
 type PrivateEndpointConnectionResponseOutput struct{ *pulumi.OutputState }
 
 func (PrivateEndpointConnectionResponseOutput) ElementType() reflect.Type {
@@ -842,12 +568,7 @@ func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResp
 	return o
 }
 
-// The group ids for the private endpoint resource.
-func (o PrivateEndpointConnectionResponseOutput) GroupIds() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
-}
-
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -857,7 +578,7 @@ func (o PrivateEndpointConnectionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The private endpoint resource.
+// The resource of private end point.
 func (o PrivateEndpointConnectionResponseOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *PrivateEndpointResponse { return v.PrivateEndpoint }).(PrivateEndpointResponsePtrOutput)
 }
@@ -904,13 +625,13 @@ func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) P
 	}).(PrivateEndpointConnectionResponseOutput)
 }
 
-// The private endpoint resource.
+// The Private Endpoint resource.
 type PrivateEndpointResponse struct {
-	// The ARM identifier for private endpoint.
+	// The ARM identifier for Private Endpoint
 	Id string `pulumi:"id"`
 }
 
-// The private endpoint resource.
+// The Private Endpoint resource.
 type PrivateEndpointResponseOutput struct{ *pulumi.OutputState }
 
 func (PrivateEndpointResponseOutput) ElementType() reflect.Type {
@@ -925,7 +646,7 @@ func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContex
 	return o
 }
 
-// The ARM identifier for private endpoint.
+// The ARM identifier for Private Endpoint
 func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -954,7 +675,7 @@ func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
 	}).(PrivateEndpointResponseOutput)
 }
 
-// The ARM identifier for private endpoint.
+// The ARM identifier for Private Endpoint
 func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateEndpointResponse) *string {
 		if v == nil {
@@ -1288,197 +1009,6 @@ func (o ServerEndpointFilesNotSyncingErrorResponseArrayOutput) Index(i pulumi.In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerEndpointFilesNotSyncingErrorResponse {
 		return vs[0].([]ServerEndpointFilesNotSyncingErrorResponse)[vs[1].(int)]
 	}).(ServerEndpointFilesNotSyncingErrorResponseOutput)
-}
-
-// Server endpoint provisioning status information
-type ServerEndpointProvisioningStatusResponse struct {
-	// Server Endpoint provisioning status
-	ProvisioningStatus string `pulumi:"provisioningStatus"`
-	// Provisioning Step status information for each step in the provisioning process
-	ProvisioningStepStatuses []ServerEndpointProvisioningStepStatusResponse `pulumi:"provisioningStepStatuses"`
-	// Server Endpoint provisioning type
-	ProvisioningType string `pulumi:"provisioningType"`
-}
-
-// Server endpoint provisioning status information
-type ServerEndpointProvisioningStatusResponseOutput struct{ *pulumi.OutputState }
-
-func (ServerEndpointProvisioningStatusResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerEndpointProvisioningStatusResponse)(nil)).Elem()
-}
-
-func (o ServerEndpointProvisioningStatusResponseOutput) ToServerEndpointProvisioningStatusResponseOutput() ServerEndpointProvisioningStatusResponseOutput {
-	return o
-}
-
-func (o ServerEndpointProvisioningStatusResponseOutput) ToServerEndpointProvisioningStatusResponseOutputWithContext(ctx context.Context) ServerEndpointProvisioningStatusResponseOutput {
-	return o
-}
-
-// Server Endpoint provisioning status
-func (o ServerEndpointProvisioningStatusResponseOutput) ProvisioningStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v ServerEndpointProvisioningStatusResponse) string { return v.ProvisioningStatus }).(pulumi.StringOutput)
-}
-
-// Provisioning Step status information for each step in the provisioning process
-func (o ServerEndpointProvisioningStatusResponseOutput) ProvisioningStepStatuses() ServerEndpointProvisioningStepStatusResponseArrayOutput {
-	return o.ApplyT(func(v ServerEndpointProvisioningStatusResponse) []ServerEndpointProvisioningStepStatusResponse {
-		return v.ProvisioningStepStatuses
-	}).(ServerEndpointProvisioningStepStatusResponseArrayOutput)
-}
-
-// Server Endpoint provisioning type
-func (o ServerEndpointProvisioningStatusResponseOutput) ProvisioningType() pulumi.StringOutput {
-	return o.ApplyT(func(v ServerEndpointProvisioningStatusResponse) string { return v.ProvisioningType }).(pulumi.StringOutput)
-}
-
-type ServerEndpointProvisioningStatusResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ServerEndpointProvisioningStatusResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServerEndpointProvisioningStatusResponse)(nil)).Elem()
-}
-
-func (o ServerEndpointProvisioningStatusResponsePtrOutput) ToServerEndpointProvisioningStatusResponsePtrOutput() ServerEndpointProvisioningStatusResponsePtrOutput {
-	return o
-}
-
-func (o ServerEndpointProvisioningStatusResponsePtrOutput) ToServerEndpointProvisioningStatusResponsePtrOutputWithContext(ctx context.Context) ServerEndpointProvisioningStatusResponsePtrOutput {
-	return o
-}
-
-func (o ServerEndpointProvisioningStatusResponsePtrOutput) Elem() ServerEndpointProvisioningStatusResponseOutput {
-	return o.ApplyT(func(v *ServerEndpointProvisioningStatusResponse) ServerEndpointProvisioningStatusResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ServerEndpointProvisioningStatusResponse
-		return ret
-	}).(ServerEndpointProvisioningStatusResponseOutput)
-}
-
-// Server Endpoint provisioning status
-func (o ServerEndpointProvisioningStatusResponsePtrOutput) ProvisioningStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServerEndpointProvisioningStatusResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ProvisioningStatus
-	}).(pulumi.StringPtrOutput)
-}
-
-// Provisioning Step status information for each step in the provisioning process
-func (o ServerEndpointProvisioningStatusResponsePtrOutput) ProvisioningStepStatuses() ServerEndpointProvisioningStepStatusResponseArrayOutput {
-	return o.ApplyT(func(v *ServerEndpointProvisioningStatusResponse) []ServerEndpointProvisioningStepStatusResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ProvisioningStepStatuses
-	}).(ServerEndpointProvisioningStepStatusResponseArrayOutput)
-}
-
-// Server Endpoint provisioning type
-func (o ServerEndpointProvisioningStatusResponsePtrOutput) ProvisioningType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ServerEndpointProvisioningStatusResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.ProvisioningType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Server endpoint provisioning step status object.
-type ServerEndpointProvisioningStepStatusResponse struct {
-	// Additional information for the provisioning step
-	AdditionalInformation map[string]string `pulumi:"additionalInformation"`
-	// End time of the provisioning step
-	EndTime string `pulumi:"endTime"`
-	// Error code (HResult) for the provisioning step
-	ErrorCode int `pulumi:"errorCode"`
-	// Estimated completion time of the provisioning step in minutes
-	MinutesLeft int `pulumi:"minutesLeft"`
-	// Name of the provisioning step
-	Name string `pulumi:"name"`
-	// Estimated progress percentage
-	ProgressPercentage int `pulumi:"progressPercentage"`
-	// Start time of the provisioning step
-	StartTime string `pulumi:"startTime"`
-	// Status of the provisioning step
-	Status string `pulumi:"status"`
-}
-
-// Server endpoint provisioning step status object.
-type ServerEndpointProvisioningStepStatusResponseOutput struct{ *pulumi.OutputState }
-
-func (ServerEndpointProvisioningStepStatusResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServerEndpointProvisioningStepStatusResponse)(nil)).Elem()
-}
-
-func (o ServerEndpointProvisioningStepStatusResponseOutput) ToServerEndpointProvisioningStepStatusResponseOutput() ServerEndpointProvisioningStepStatusResponseOutput {
-	return o
-}
-
-func (o ServerEndpointProvisioningStepStatusResponseOutput) ToServerEndpointProvisioningStepStatusResponseOutputWithContext(ctx context.Context) ServerEndpointProvisioningStepStatusResponseOutput {
-	return o
-}
-
-// Additional information for the provisioning step
-func (o ServerEndpointProvisioningStepStatusResponseOutput) AdditionalInformation() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ServerEndpointProvisioningStepStatusResponse) map[string]string { return v.AdditionalInformation }).(pulumi.StringMapOutput)
-}
-
-// End time of the provisioning step
-func (o ServerEndpointProvisioningStepStatusResponseOutput) EndTime() pulumi.StringOutput {
-	return o.ApplyT(func(v ServerEndpointProvisioningStepStatusResponse) string { return v.EndTime }).(pulumi.StringOutput)
-}
-
-// Error code (HResult) for the provisioning step
-func (o ServerEndpointProvisioningStepStatusResponseOutput) ErrorCode() pulumi.IntOutput {
-	return o.ApplyT(func(v ServerEndpointProvisioningStepStatusResponse) int { return v.ErrorCode }).(pulumi.IntOutput)
-}
-
-// Estimated completion time of the provisioning step in minutes
-func (o ServerEndpointProvisioningStepStatusResponseOutput) MinutesLeft() pulumi.IntOutput {
-	return o.ApplyT(func(v ServerEndpointProvisioningStepStatusResponse) int { return v.MinutesLeft }).(pulumi.IntOutput)
-}
-
-// Name of the provisioning step
-func (o ServerEndpointProvisioningStepStatusResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v ServerEndpointProvisioningStepStatusResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Estimated progress percentage
-func (o ServerEndpointProvisioningStepStatusResponseOutput) ProgressPercentage() pulumi.IntOutput {
-	return o.ApplyT(func(v ServerEndpointProvisioningStepStatusResponse) int { return v.ProgressPercentage }).(pulumi.IntOutput)
-}
-
-// Start time of the provisioning step
-func (o ServerEndpointProvisioningStepStatusResponseOutput) StartTime() pulumi.StringOutput {
-	return o.ApplyT(func(v ServerEndpointProvisioningStepStatusResponse) string { return v.StartTime }).(pulumi.StringOutput)
-}
-
-// Status of the provisioning step
-func (o ServerEndpointProvisioningStepStatusResponseOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v ServerEndpointProvisioningStepStatusResponse) string { return v.Status }).(pulumi.StringOutput)
-}
-
-type ServerEndpointProvisioningStepStatusResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (ServerEndpointProvisioningStepStatusResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServerEndpointProvisioningStepStatusResponse)(nil)).Elem()
-}
-
-func (o ServerEndpointProvisioningStepStatusResponseArrayOutput) ToServerEndpointProvisioningStepStatusResponseArrayOutput() ServerEndpointProvisioningStepStatusResponseArrayOutput {
-	return o
-}
-
-func (o ServerEndpointProvisioningStepStatusResponseArrayOutput) ToServerEndpointProvisioningStepStatusResponseArrayOutputWithContext(ctx context.Context) ServerEndpointProvisioningStepStatusResponseArrayOutput {
-	return o
-}
-
-func (o ServerEndpointProvisioningStepStatusResponseArrayOutput) Index(i pulumi.IntInput) ServerEndpointProvisioningStepStatusResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerEndpointProvisioningStepStatusResponse {
-		return vs[0].([]ServerEndpointProvisioningStepStatusResponse)[vs[1].(int)]
-	}).(ServerEndpointProvisioningStepStatusResponseOutput)
 }
 
 // Server endpoint recall error object
@@ -1900,59 +1430,6 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
 }
 
-// User assigned identity properties
-type UserAssignedIdentityResponse struct {
-	// The client ID of the assigned identity.
-	ClientId string `pulumi:"clientId"`
-	// The principal ID of the assigned identity.
-	PrincipalId string `pulumi:"principalId"`
-}
-
-// User assigned identity properties
-type UserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
-
-func (UserAssignedIdentityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserAssignedIdentityResponse)(nil)).Elem()
-}
-
-func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput() UserAssignedIdentityResponseOutput {
-	return o
-}
-
-func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutputWithContext(ctx context.Context) UserAssignedIdentityResponseOutput {
-	return o
-}
-
-// The client ID of the assigned identity.
-func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
-}
-
-// The principal ID of the assigned identity.
-func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
-}
-
-type UserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
-
-func (UserAssignedIdentityResponseMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]UserAssignedIdentityResponse)(nil)).Elem()
-}
-
-func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutput() UserAssignedIdentityResponseMapOutput {
-	return o
-}
-
-func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
-	return o
-}
-
-func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
-		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
-	}).(UserAssignedIdentityResponseOutput)
-}
-
 func init() {
 	pulumi.RegisterOutputType(CloudEndpointChangeEnumerationActivityResponseOutput{})
 	pulumi.RegisterOutputType(CloudEndpointChangeEnumerationStatusResponseOutput{})
@@ -1965,10 +1442,6 @@ func init() {
 	pulumi.RegisterOutputType(CloudTieringVolumeFreeSpacePolicyStatusResponseOutput{})
 	pulumi.RegisterOutputType(FilesNotTieringErrorResponseOutput{})
 	pulumi.RegisterOutputType(FilesNotTieringErrorResponseArrayOutput{})
-	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
-	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
-	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
-	pulumi.RegisterOutputType(ManagedServiceIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
@@ -1979,10 +1452,6 @@ func init() {
 	pulumi.RegisterOutputType(ServerEndpointCloudTieringStatusResponseOutput{})
 	pulumi.RegisterOutputType(ServerEndpointFilesNotSyncingErrorResponseOutput{})
 	pulumi.RegisterOutputType(ServerEndpointFilesNotSyncingErrorResponseArrayOutput{})
-	pulumi.RegisterOutputType(ServerEndpointProvisioningStatusResponseOutput{})
-	pulumi.RegisterOutputType(ServerEndpointProvisioningStatusResponsePtrOutput{})
-	pulumi.RegisterOutputType(ServerEndpointProvisioningStepStatusResponseOutput{})
-	pulumi.RegisterOutputType(ServerEndpointProvisioningStepStatusResponseArrayOutput{})
 	pulumi.RegisterOutputType(ServerEndpointRecallErrorResponseOutput{})
 	pulumi.RegisterOutputType(ServerEndpointRecallErrorResponseArrayOutput{})
 	pulumi.RegisterOutputType(ServerEndpointRecallStatusResponseOutput{})
@@ -1990,6 +1459,4 @@ func init() {
 	pulumi.RegisterOutputType(ServerEndpointSyncSessionStatusResponseOutput{})
 	pulumi.RegisterOutputType(ServerEndpointSyncStatusResponseOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
-	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
-	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 }

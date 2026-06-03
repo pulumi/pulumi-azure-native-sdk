@@ -8,18 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The SecretSync resource.
 //
-// Uses Azure REST API version 2024-08-21-preview. In version 2.x of the Azure Native provider, it used API version 2024-08-21-preview.
+// Uses Azure REST API version 2024-08-21-preview.
 type SecretSync struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The complex type of the extended location.
 	ExtendedLocation AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// ForceSynchronization can be used to force the secret synchronization. The secret synchronization is triggered by changing the value in this field. This field is not used to resolve synchronization conflicts.
@@ -190,11 +188,6 @@ func (o SecretSyncOutput) ToSecretSyncOutput() SecretSyncOutput {
 
 func (o SecretSyncOutput) ToSecretSyncOutputWithContext(ctx context.Context) SecretSyncOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o SecretSyncOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *SecretSync) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The complex type of the extended location.

@@ -8,18 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Label details
 //
-// Uses Azure REST API version 2023-04-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
+// Uses Azure REST API version 2023-04-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-04-01-preview.
 type LabelByWorkspace struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Label color.
 	Color pulumi.StringPtrOutput `pulumi:"color"`
 	// Label display name.
@@ -150,11 +148,6 @@ func (o LabelByWorkspaceOutput) ToLabelByWorkspaceOutput() LabelByWorkspaceOutpu
 
 func (o LabelByWorkspaceOutput) ToLabelByWorkspaceOutputWithContext(ctx context.Context) LabelByWorkspaceOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LabelByWorkspaceOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *LabelByWorkspace) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Label color.

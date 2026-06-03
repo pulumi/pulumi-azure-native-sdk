@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,8 +35,6 @@ type LookupAPICollectionByAzureApiManagementServiceArgs struct {
 
 // An API collection as represented by Microsoft Defender for APIs.
 type LookupAPICollectionByAzureApiManagementServiceResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The base URI for this API collection. All endpoints of this API collection extend this base URI.
 	BaseUrl string `pulumi:"baseUrl"`
 	// The resource Id of the resource from where this API collection was discovered.
@@ -100,11 +98,6 @@ func (o LookupAPICollectionByAzureApiManagementServiceResultOutput) ToLookupAPIC
 
 func (o LookupAPICollectionByAzureApiManagementServiceResultOutput) ToLookupAPICollectionByAzureApiManagementServiceResultOutputWithContext(ctx context.Context) LookupAPICollectionByAzureApiManagementServiceResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupAPICollectionByAzureApiManagementServiceResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAPICollectionByAzureApiManagementServiceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The base URI for this API collection. All endpoints of this API collection extend this base URI.

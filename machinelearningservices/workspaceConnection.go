@@ -8,20 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Concrete proxy resource types can be created by aliasing this type using a specific property type.
+// Uses Azure REST API version 2023-04-01. In version 1.x of the Azure Native provider, it used API version 2021-01-01.
 //
-// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
-//
-// Other available API versions: 2020-06-01, 2020-08-01, 2020-09-01-preview, 2021-01-01, 2021-03-01-preview, 2021-04-01, 2021-07-01, 2022-01-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-04-01, 2022-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
 type WorkspaceConnection struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name       pulumi.StringOutput `pulumi:"name"`
 	Properties pulumi.AnyOutput    `pulumi:"properties"`
@@ -129,27 +125,6 @@ func NewWorkspaceConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:WorkspaceConnection"),
 		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250401:WorkspaceConnection"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250401preview:WorkspaceConnection"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250601:WorkspaceConnection"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250701preview:WorkspaceConnection"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250901:WorkspaceConnection"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20251001preview:WorkspaceConnection"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20251201:WorkspaceConnection"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -190,7 +165,7 @@ type workspaceConnectionArgs struct {
 	Properties     interface{} `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
@@ -201,7 +176,7 @@ type WorkspaceConnectionArgs struct {
 	Properties     pulumi.Input
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName pulumi.StringInput
 }
 
@@ -240,11 +215,6 @@ func (o WorkspaceConnectionOutput) ToWorkspaceConnectionOutput() WorkspaceConnec
 
 func (o WorkspaceConnectionOutput) ToWorkspaceConnectionOutputWithContext(ctx context.Context) WorkspaceConnectionOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o WorkspaceConnectionOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *WorkspaceConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,8 +37,6 @@ type LookupAgentPoolArgs struct {
 type LookupAgentPoolResult struct {
 	// AvailabilityZones - The list of Availability zones to use for nodes. Datacenter racks modelled as zones
 	AvailabilityZones []string `pulumi:"availabilityZones"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The underlying cloud infra provider properties.
 	CloudProviderProfile *CloudProviderProfileResponse `pulumi:"cloudProviderProfile"`
 	// Count - Number of agents to host docker containers. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1.
@@ -135,11 +133,6 @@ func (o LookupAgentPoolResultOutput) ToLookupAgentPoolResultOutputWithContext(ct
 // AvailabilityZones - The list of Availability zones to use for nodes. Datacenter racks modelled as zones
 func (o LookupAgentPoolResultOutput) AvailabilityZones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupAgentPoolResult) []string { return v.AvailabilityZones }).(pulumi.StringArrayOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupAgentPoolResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAgentPoolResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The underlying cloud infra provider properties.

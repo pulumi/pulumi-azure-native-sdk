@@ -522,9 +522,8 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 type PublicNetworkAccess string
 
 const (
-	PublicNetworkAccessEnabled            = PublicNetworkAccess("Enabled")
-	PublicNetworkAccessDisabled           = PublicNetworkAccess("Disabled")
-	PublicNetworkAccessSecuredByPerimeter = PublicNetworkAccess("SecuredByPerimeter")
+	PublicNetworkAccessEnabled  = PublicNetworkAccess("Enabled")
+	PublicNetworkAccessDisabled = PublicNetworkAccess("Disabled")
 )
 
 func (PublicNetworkAccess) ElementType() reflect.Type {
@@ -651,7 +650,6 @@ func (o PublicNetworkAccessPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 //
 //	PublicNetworkAccessEnabled
 //	PublicNetworkAccessDisabled
-//	PublicNetworkAccessSecuredByPerimeter
 type PublicNetworkAccessInput interface {
 	pulumi.Input
 

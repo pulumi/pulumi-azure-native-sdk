@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Concrete tracked resource types can be created by aliasing this type using a specific property type.
+// Uses Azure REST API version 2023-04-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01-preview.
 //
-// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
-//
-// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2022-05-01, 2022-06-01-preview, 2022-10-01, 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-03-01-preview, 2022-02-01-preview, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
 type BatchDeployment struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// [Required] Additional attributes of the entity.
+	BatchDeploymentProperties BatchDeploymentResponseOutput `pulumi:"batchDeploymentProperties"`
 	// Managed service identity (system assigned and/or user assigned identities)
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
@@ -30,8 +28,6 @@ type BatchDeployment struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// [Required] Additional attributes of the entity.
-	Properties BatchDeploymentPropertiesResponseOutput `pulumi:"properties"`
 	// Sku details required for ARM contract for Autoscaling.
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -49,11 +45,11 @@ func NewBatchDeployment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.BatchDeploymentProperties == nil {
+		return nil, errors.New("invalid value for required argument 'BatchDeploymentProperties'")
+	}
 	if args.EndpointName == nil {
 		return nil, errors.New("invalid value for required argument 'EndpointName'")
-	}
-	if args.Properties == nil {
-		return nil, errors.New("invalid value for required argument 'Properties'")
 	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
@@ -61,7 +57,7 @@ func NewBatchDeployment(ctx *pulumi.Context,
 	if args.WorkspaceName == nil {
 		return nil, errors.New("invalid value for required argument 'WorkspaceName'")
 	}
-	args.Properties = args.Properties.ToBatchDeploymentPropertiesOutput().ApplyT(func(v BatchDeploymentProperties) BatchDeploymentProperties { return *v.Defaults() }).(BatchDeploymentPropertiesOutput)
+	args.BatchDeploymentProperties = args.BatchDeploymentProperties.ToBatchDeploymentTypeOutput().ApplyT(func(v BatchDeploymentType) BatchDeploymentType { return *v.Defaults() }).(BatchDeploymentTypeOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20210301preview:BatchDeployment"),
@@ -123,27 +119,6 @@ func NewBatchDeployment(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:BatchDeployment"),
 		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250401:BatchDeployment"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250401preview:BatchDeployment"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250601:BatchDeployment"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250701preview:BatchDeployment"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20250901:BatchDeployment"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20251001preview:BatchDeployment"),
-		},
-		{
-			Type: pulumi.String("azure-native:machinelearningservices/v20251201:BatchDeployment"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -179,9 +154,11 @@ func (BatchDeploymentState) ElementType() reflect.Type {
 }
 
 type batchDeploymentArgs struct {
-	// The identifier for the Batch deployments.
+	// [Required] Additional attributes of the entity.
+	BatchDeploymentProperties BatchDeploymentType `pulumi:"batchDeploymentProperties"`
+	// The identifier for the Batch inference deployment.
 	DeploymentName *string `pulumi:"deploymentName"`
-	// Name for the Batch Endpoint.
+	// Inference endpoint name
 	EndpointName string `pulumi:"endpointName"`
 	// Managed service identity (system assigned and/or user assigned identities)
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
@@ -189,23 +166,23 @@ type batchDeploymentArgs struct {
 	Kind *string `pulumi:"kind"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// [Required] Additional attributes of the entity.
-	Properties BatchDeploymentProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Sku details required for ARM contract for Autoscaling.
 	Sku *Sku `pulumi:"sku"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
 // The set of arguments for constructing a BatchDeployment resource.
 type BatchDeploymentArgs struct {
-	// The identifier for the Batch deployments.
+	// [Required] Additional attributes of the entity.
+	BatchDeploymentProperties BatchDeploymentTypeInput
+	// The identifier for the Batch inference deployment.
 	DeploymentName pulumi.StringPtrInput
-	// Name for the Batch Endpoint.
+	// Inference endpoint name
 	EndpointName pulumi.StringInput
 	// Managed service identity (system assigned and/or user assigned identities)
 	Identity ManagedServiceIdentityPtrInput
@@ -213,15 +190,13 @@ type BatchDeploymentArgs struct {
 	Kind pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// [Required] Additional attributes of the entity.
-	Properties BatchDeploymentPropertiesInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Sku details required for ARM contract for Autoscaling.
 	Sku SkuPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
-	// Azure Machine Learning Workspace Name
+	// Name of Azure Machine Learning workspace.
 	WorkspaceName pulumi.StringInput
 }
 
@@ -262,9 +237,9 @@ func (o BatchDeploymentOutput) ToBatchDeploymentOutputWithContext(ctx context.Co
 	return o
 }
 
-// The Azure API version of the resource.
-func (o BatchDeploymentOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *BatchDeployment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+// [Required] Additional attributes of the entity.
+func (o BatchDeploymentOutput) BatchDeploymentProperties() BatchDeploymentResponseOutput {
+	return o.ApplyT(func(v *BatchDeployment) BatchDeploymentResponseOutput { return v.BatchDeploymentProperties }).(BatchDeploymentResponseOutput)
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
@@ -285,11 +260,6 @@ func (o BatchDeploymentOutput) Location() pulumi.StringOutput {
 // The name of the resource
 func (o BatchDeploymentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BatchDeployment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
-}
-
-// [Required] Additional attributes of the entity.
-func (o BatchDeploymentOutput) Properties() BatchDeploymentPropertiesResponseOutput {
-	return o.ApplyT(func(v *BatchDeployment) BatchDeploymentPropertiesResponseOutput { return v.Properties }).(BatchDeploymentPropertiesResponseOutput)
 }
 
 // Sku details required for ARM contract for Autoscaling.

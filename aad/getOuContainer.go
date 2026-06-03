@@ -7,15 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get OuContainer in DomainService instance.
 //
 // Uses Azure REST API version 2022-12-01.
-//
-// Other available API versions: 2025-05-01, 2025-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native aad [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupOuContainer(ctx *pulumi.Context, args *LookupOuContainerArgs, opts ...pulumi.InvokeOption) (*LookupOuContainerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOuContainerResult
@@ -39,8 +37,6 @@ type LookupOuContainerArgs struct {
 type LookupOuContainerResult struct {
 	// The list of container accounts
 	Accounts []ContainerAccountResponse `pulumi:"accounts"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The OuContainer name
 	ContainerId string `pulumi:"containerId"`
 	// The Deployment id
@@ -111,11 +107,6 @@ func (o LookupOuContainerResultOutput) ToLookupOuContainerResultOutputWithContex
 // The list of container accounts
 func (o LookupOuContainerResultOutput) Accounts() ContainerAccountResponseArrayOutput {
 	return o.ApplyT(func(v LookupOuContainerResult) []ContainerAccountResponse { return v.Accounts }).(ContainerAccountResponseArrayOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupOuContainerResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupOuContainerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The OuContainer name

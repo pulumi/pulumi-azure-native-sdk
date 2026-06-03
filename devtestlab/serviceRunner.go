@@ -8,29 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A container for a managed identity to execute DevTest lab services.
 //
-// Uses Azure REST API version 2018-09-15. In version 2.x of the Azure Native provider, it used API version 2018-09-15.
+// Uses Azure REST API version 2018-09-15. In version 1.x of the Azure Native provider, it used API version 2018-09-15.
 type ServiceRunner struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The identity of the resource.
 	Identity IdentityPropertiesResponsePtrOutput `pulumi:"identity"`
-	// The geo-location where the resource lives
+	// The location of the resource.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// The name of the resource
+	// The name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource tags.
+	// The tags of the resource.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// The type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -93,13 +89,13 @@ type serviceRunnerArgs struct {
 	Identity *IdentityProperties `pulumi:"identity"`
 	// The name of the lab.
 	LabName string `pulumi:"labName"`
-	// The geo-location where the resource lives
+	// The location of the resource.
 	Location *string `pulumi:"location"`
 	// The name of the service runner.
 	Name *string `pulumi:"name"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Resource tags.
+	// The tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -109,13 +105,13 @@ type ServiceRunnerArgs struct {
 	Identity IdentityPropertiesPtrInput
 	// The name of the lab.
 	LabName pulumi.StringInput
-	// The geo-location where the resource lives
+	// The location of the resource.
 	Location pulumi.StringPtrInput
 	// The name of the service runner.
 	Name pulumi.StringPtrInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
-	// Resource tags.
+	// The tags of the resource.
 	Tags pulumi.StringMapInput
 }
 
@@ -156,37 +152,27 @@ func (o ServiceRunnerOutput) ToServiceRunnerOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The Azure API version of the resource.
-func (o ServiceRunnerOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ServiceRunner) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The identity of the resource.
 func (o ServiceRunnerOutput) Identity() IdentityPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v *ServiceRunner) IdentityPropertiesResponsePtrOutput { return v.Identity }).(IdentityPropertiesResponsePtrOutput)
 }
 
-// The geo-location where the resource lives
+// The location of the resource.
 func (o ServiceRunnerOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceRunner) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource
+// The name of the resource.
 func (o ServiceRunnerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceRunner) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ServiceRunnerOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *ServiceRunner) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// Resource tags.
+// The tags of the resource.
 func (o ServiceRunnerOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceRunner) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// The type of the resource.
 func (o ServiceRunnerOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceRunner) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

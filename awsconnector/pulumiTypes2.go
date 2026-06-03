@@ -7,1372 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = utilities.GetEnvOrDefault
-
-// Definition of LocalSecondaryIndex
-type LocalSecondaryIndexResponse struct {
-	// The name of the local secondary index. The name must be unique among all other indexes on this table.
-	IndexName *string `pulumi:"indexName"`
-	// The complete key schema for the local secondary index, consisting of one or more pairs of attribute names and key types:  +   ``HASH`` - partition key  +   ``RANGE`` - sort key    The partition key of an item is also known as its *hash attribute*. The term 'hash attribute' derives from DynamoDB's usage of an internal hash function to evenly distribute data items across partitions, based on their partition key values. The sort key of an item is also known as its *range attribute*. The term 'range attribute' derives from the way DynamoDB stores items with the same partition key physically close together, in sorted order by the sort key value.
-	KeySchema []KeySchemaResponse `pulumi:"keySchema"`
-	// Represents attributes that are copied (projected) from the table into the local secondary index. These are in addition to the primary key attributes and index key attributes, which are automatically projected. Represents attributes that are copied (projected) from the table into an index. These are in addition to the primary key attributes and index key attributes, which are automatically projected.
-	Projection *ProjectionResponse `pulumi:"projection"`
-}
-
-// Definition of LocalSecondaryIndex
-type LocalSecondaryIndexResponseOutput struct{ *pulumi.OutputState }
-
-func (LocalSecondaryIndexResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LocalSecondaryIndexResponse)(nil)).Elem()
-}
-
-func (o LocalSecondaryIndexResponseOutput) ToLocalSecondaryIndexResponseOutput() LocalSecondaryIndexResponseOutput {
-	return o
-}
-
-func (o LocalSecondaryIndexResponseOutput) ToLocalSecondaryIndexResponseOutputWithContext(ctx context.Context) LocalSecondaryIndexResponseOutput {
-	return o
-}
-
-// The name of the local secondary index. The name must be unique among all other indexes on this table.
-func (o LocalSecondaryIndexResponseOutput) IndexName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LocalSecondaryIndexResponse) *string { return v.IndexName }).(pulumi.StringPtrOutput)
-}
-
-// The complete key schema for the local secondary index, consisting of one or more pairs of attribute names and key types:  +   “HASH“ - partition key  +   “RANGE“ - sort key    The partition key of an item is also known as its *hash attribute*. The term 'hash attribute' derives from DynamoDB's usage of an internal hash function to evenly distribute data items across partitions, based on their partition key values. The sort key of an item is also known as its *range attribute*. The term 'range attribute' derives from the way DynamoDB stores items with the same partition key physically close together, in sorted order by the sort key value.
-func (o LocalSecondaryIndexResponseOutput) KeySchema() KeySchemaResponseArrayOutput {
-	return o.ApplyT(func(v LocalSecondaryIndexResponse) []KeySchemaResponse { return v.KeySchema }).(KeySchemaResponseArrayOutput)
-}
-
-// Represents attributes that are copied (projected) from the table into the local secondary index. These are in addition to the primary key attributes and index key attributes, which are automatically projected. Represents attributes that are copied (projected) from the table into an index. These are in addition to the primary key attributes and index key attributes, which are automatically projected.
-func (o LocalSecondaryIndexResponseOutput) Projection() ProjectionResponsePtrOutput {
-	return o.ApplyT(func(v LocalSecondaryIndexResponse) *ProjectionResponse { return v.Projection }).(ProjectionResponsePtrOutput)
-}
-
-type LocalSecondaryIndexResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (LocalSecondaryIndexResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LocalSecondaryIndexResponse)(nil)).Elem()
-}
-
-func (o LocalSecondaryIndexResponseArrayOutput) ToLocalSecondaryIndexResponseArrayOutput() LocalSecondaryIndexResponseArrayOutput {
-	return o
-}
-
-func (o LocalSecondaryIndexResponseArrayOutput) ToLocalSecondaryIndexResponseArrayOutputWithContext(ctx context.Context) LocalSecondaryIndexResponseArrayOutput {
-	return o
-}
-
-func (o LocalSecondaryIndexResponseArrayOutput) Index(i pulumi.IntInput) LocalSecondaryIndexResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LocalSecondaryIndexResponse {
-		return vs[0].([]LocalSecondaryIndexResponse)[vs[1].(int)]
-	}).(LocalSecondaryIndexResponseOutput)
-}
-
-// Definition of Location
-type Location struct {
-	// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// The Region Name in which to create your instance.
-	RegionName *string `pulumi:"regionName"`
-}
-
-// LocationInput is an input type that accepts LocationArgs and LocationOutput values.
-// You can construct a concrete instance of `LocationInput` via:
-//
-//	LocationArgs{...}
-type LocationInput interface {
-	pulumi.Input
-
-	ToLocationOutput() LocationOutput
-	ToLocationOutputWithContext(context.Context) LocationOutput
-}
-
-// Definition of Location
-type LocationArgs struct {
-	// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
-	// The Region Name in which to create your instance.
-	RegionName pulumi.StringPtrInput `pulumi:"regionName"`
-}
-
-func (LocationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Location)(nil)).Elem()
-}
-
-func (i LocationArgs) ToLocationOutput() LocationOutput {
-	return i.ToLocationOutputWithContext(context.Background())
-}
-
-func (i LocationArgs) ToLocationOutputWithContext(ctx context.Context) LocationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LocationOutput)
-}
-
-func (i LocationArgs) ToLocationPtrOutput() LocationPtrOutput {
-	return i.ToLocationPtrOutputWithContext(context.Background())
-}
-
-func (i LocationArgs) ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LocationOutput).ToLocationPtrOutputWithContext(ctx)
-}
-
-// LocationPtrInput is an input type that accepts LocationArgs, LocationPtr and LocationPtrOutput values.
-// You can construct a concrete instance of `LocationPtrInput` via:
-//
-//	        LocationArgs{...}
-//
-//	or:
-//
-//	        nil
-type LocationPtrInput interface {
-	pulumi.Input
-
-	ToLocationPtrOutput() LocationPtrOutput
-	ToLocationPtrOutputWithContext(context.Context) LocationPtrOutput
-}
-
-type locationPtrType LocationArgs
-
-func LocationPtr(v *LocationArgs) LocationPtrInput {
-	return (*locationPtrType)(v)
-}
-
-func (*locationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Location)(nil)).Elem()
-}
-
-func (i *locationPtrType) ToLocationPtrOutput() LocationPtrOutput {
-	return i.ToLocationPtrOutputWithContext(context.Background())
-}
-
-func (i *locationPtrType) ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LocationPtrOutput)
-}
-
-// Definition of Location
-type LocationOutput struct{ *pulumi.OutputState }
-
-func (LocationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Location)(nil)).Elem()
-}
-
-func (o LocationOutput) ToLocationOutput() LocationOutput {
-	return o
-}
-
-func (o LocationOutput) ToLocationOutputWithContext(ctx context.Context) LocationOutput {
-	return o
-}
-
-func (o LocationOutput) ToLocationPtrOutput() LocationPtrOutput {
-	return o.ToLocationPtrOutputWithContext(context.Background())
-}
-
-func (o LocationOutput) ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Location) *Location {
-		return &v
-	}).(LocationPtrOutput)
-}
-
-// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-func (o LocationOutput) AvailabilityZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Location) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
-}
-
-// The Region Name in which to create your instance.
-func (o LocationOutput) RegionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Location) *string { return v.RegionName }).(pulumi.StringPtrOutput)
-}
-
-type LocationPtrOutput struct{ *pulumi.OutputState }
-
-func (LocationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Location)(nil)).Elem()
-}
-
-func (o LocationPtrOutput) ToLocationPtrOutput() LocationPtrOutput {
-	return o
-}
-
-func (o LocationPtrOutput) ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput {
-	return o
-}
-
-func (o LocationPtrOutput) Elem() LocationOutput {
-	return o.ApplyT(func(v *Location) Location {
-		if v != nil {
-			return *v
-		}
-		var ret Location
-		return ret
-	}).(LocationOutput)
-}
-
-// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-func (o LocationPtrOutput) AvailabilityZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Location) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AvailabilityZone
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Region Name in which to create your instance.
-func (o LocationPtrOutput) RegionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Location) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RegionName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Definition of Location
-type LocationResponse struct {
-	// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// The Region Name in which to create your instance.
-	RegionName *string `pulumi:"regionName"`
-}
-
-// Definition of Location
-type LocationResponseOutput struct{ *pulumi.OutputState }
-
-func (LocationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LocationResponse)(nil)).Elem()
-}
-
-func (o LocationResponseOutput) ToLocationResponseOutput() LocationResponseOutput {
-	return o
-}
-
-func (o LocationResponseOutput) ToLocationResponseOutputWithContext(ctx context.Context) LocationResponseOutput {
-	return o
-}
-
-// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-func (o LocationResponseOutput) AvailabilityZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LocationResponse) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
-}
-
-// The Region Name in which to create your instance.
-func (o LocationResponseOutput) RegionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LocationResponse) *string { return v.RegionName }).(pulumi.StringPtrOutput)
-}
-
-type LocationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (LocationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LocationResponse)(nil)).Elem()
-}
-
-func (o LocationResponsePtrOutput) ToLocationResponsePtrOutput() LocationResponsePtrOutput {
-	return o
-}
-
-func (o LocationResponsePtrOutput) ToLocationResponsePtrOutputWithContext(ctx context.Context) LocationResponsePtrOutput {
-	return o
-}
-
-func (o LocationResponsePtrOutput) Elem() LocationResponseOutput {
-	return o.ApplyT(func(v *LocationResponse) LocationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret LocationResponse
-		return ret
-	}).(LocationResponseOutput)
-}
-
-// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-func (o LocationResponsePtrOutput) AvailabilityZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LocationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AvailabilityZone
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Region Name in which to create your instance.
-func (o LocationResponsePtrOutput) RegionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LocationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RegionName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Definition of LogConfig
-type LogConfig struct {
-	// <p>The service role that AppSync assumes to publish to CloudWatch logs in your account.</p>
-	CloudWatchLogsRoleArn *string `pulumi:"cloudWatchLogsRoleArn"`
-	// <p>Set to TRUE to exclude sections that contain information such as headers, context, and evaluated mapping templates, regardless of logging level.</p>
-	ExcludeVerboseContent *bool `pulumi:"excludeVerboseContent"`
-	// <p>The field logging level. Values can be NONE, ERROR, or ALL.</p> <ul> <li> <p> <b>NONE</b>: No field-level logs are captured.</p> </li> <li> <p> <b>ERROR</b>: Logs the following information only for the fields that are in error:</p> <ul> <li> <p>The error section in the server response.</p> </li> <li> <p>Field-level errors.</p> </li> <li> <p>The generated request/response functions that got resolved for error fields.</p> </li> </ul> </li> <li> <p> <b>ALL</b>: The following information is logged for all fields in the query:</p> <ul> <li> <p>Field-level tracing information.</p> </li> <li> <p>The generated request/response functions that got resolved for each field.</p> </li> </ul> </li> </ul>
-	FieldLogLevel *FieldLogLevelEnumValue `pulumi:"fieldLogLevel"`
-}
-
-// LogConfigInput is an input type that accepts LogConfigArgs and LogConfigOutput values.
-// You can construct a concrete instance of `LogConfigInput` via:
-//
-//	LogConfigArgs{...}
-type LogConfigInput interface {
-	pulumi.Input
-
-	ToLogConfigOutput() LogConfigOutput
-	ToLogConfigOutputWithContext(context.Context) LogConfigOutput
-}
-
-// Definition of LogConfig
-type LogConfigArgs struct {
-	// <p>The service role that AppSync assumes to publish to CloudWatch logs in your account.</p>
-	CloudWatchLogsRoleArn pulumi.StringPtrInput `pulumi:"cloudWatchLogsRoleArn"`
-	// <p>Set to TRUE to exclude sections that contain information such as headers, context, and evaluated mapping templates, regardless of logging level.</p>
-	ExcludeVerboseContent pulumi.BoolPtrInput `pulumi:"excludeVerboseContent"`
-	// <p>The field logging level. Values can be NONE, ERROR, or ALL.</p> <ul> <li> <p> <b>NONE</b>: No field-level logs are captured.</p> </li> <li> <p> <b>ERROR</b>: Logs the following information only for the fields that are in error:</p> <ul> <li> <p>The error section in the server response.</p> </li> <li> <p>Field-level errors.</p> </li> <li> <p>The generated request/response functions that got resolved for error fields.</p> </li> </ul> </li> <li> <p> <b>ALL</b>: The following information is logged for all fields in the query:</p> <ul> <li> <p>Field-level tracing information.</p> </li> <li> <p>The generated request/response functions that got resolved for each field.</p> </li> </ul> </li> </ul>
-	FieldLogLevel FieldLogLevelEnumValuePtrInput `pulumi:"fieldLogLevel"`
-}
-
-func (LogConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogConfig)(nil)).Elem()
-}
-
-func (i LogConfigArgs) ToLogConfigOutput() LogConfigOutput {
-	return i.ToLogConfigOutputWithContext(context.Background())
-}
-
-func (i LogConfigArgs) ToLogConfigOutputWithContext(ctx context.Context) LogConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogConfigOutput)
-}
-
-func (i LogConfigArgs) ToLogConfigPtrOutput() LogConfigPtrOutput {
-	return i.ToLogConfigPtrOutputWithContext(context.Background())
-}
-
-func (i LogConfigArgs) ToLogConfigPtrOutputWithContext(ctx context.Context) LogConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogConfigOutput).ToLogConfigPtrOutputWithContext(ctx)
-}
-
-// LogConfigPtrInput is an input type that accepts LogConfigArgs, LogConfigPtr and LogConfigPtrOutput values.
-// You can construct a concrete instance of `LogConfigPtrInput` via:
-//
-//	        LogConfigArgs{...}
-//
-//	or:
-//
-//	        nil
-type LogConfigPtrInput interface {
-	pulumi.Input
-
-	ToLogConfigPtrOutput() LogConfigPtrOutput
-	ToLogConfigPtrOutputWithContext(context.Context) LogConfigPtrOutput
-}
-
-type logConfigPtrType LogConfigArgs
-
-func LogConfigPtr(v *LogConfigArgs) LogConfigPtrInput {
-	return (*logConfigPtrType)(v)
-}
-
-func (*logConfigPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LogConfig)(nil)).Elem()
-}
-
-func (i *logConfigPtrType) ToLogConfigPtrOutput() LogConfigPtrOutput {
-	return i.ToLogConfigPtrOutputWithContext(context.Background())
-}
-
-func (i *logConfigPtrType) ToLogConfigPtrOutputWithContext(ctx context.Context) LogConfigPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogConfigPtrOutput)
-}
-
-// Definition of LogConfig
-type LogConfigOutput struct{ *pulumi.OutputState }
-
-func (LogConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogConfig)(nil)).Elem()
-}
-
-func (o LogConfigOutput) ToLogConfigOutput() LogConfigOutput {
-	return o
-}
-
-func (o LogConfigOutput) ToLogConfigOutputWithContext(ctx context.Context) LogConfigOutput {
-	return o
-}
-
-func (o LogConfigOutput) ToLogConfigPtrOutput() LogConfigPtrOutput {
-	return o.ToLogConfigPtrOutputWithContext(context.Background())
-}
-
-func (o LogConfigOutput) ToLogConfigPtrOutputWithContext(ctx context.Context) LogConfigPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogConfig) *LogConfig {
-		return &v
-	}).(LogConfigPtrOutput)
-}
-
-// <p>The service role that AppSync assumes to publish to CloudWatch logs in your account.</p>
-func (o LogConfigOutput) CloudWatchLogsRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LogConfig) *string { return v.CloudWatchLogsRoleArn }).(pulumi.StringPtrOutput)
-}
-
-// <p>Set to TRUE to exclude sections that contain information such as headers, context, and evaluated mapping templates, regardless of logging level.</p>
-func (o LogConfigOutput) ExcludeVerboseContent() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LogConfig) *bool { return v.ExcludeVerboseContent }).(pulumi.BoolPtrOutput)
-}
-
-// <p>The field logging level. Values can be NONE, ERROR, or ALL.</p> <ul> <li> <p> <b>NONE</b>: No field-level logs are captured.</p> </li> <li> <p> <b>ERROR</b>: Logs the following information only for the fields that are in error:</p> <ul> <li> <p>The error section in the server response.</p> </li> <li> <p>Field-level errors.</p> </li> <li> <p>The generated request/response functions that got resolved for error fields.</p> </li> </ul> </li> <li> <p> <b>ALL</b>: The following information is logged for all fields in the query:</p> <ul> <li> <p>Field-level tracing information.</p> </li> <li> <p>The generated request/response functions that got resolved for each field.</p> </li> </ul> </li> </ul>
-func (o LogConfigOutput) FieldLogLevel() FieldLogLevelEnumValuePtrOutput {
-	return o.ApplyT(func(v LogConfig) *FieldLogLevelEnumValue { return v.FieldLogLevel }).(FieldLogLevelEnumValuePtrOutput)
-}
-
-type LogConfigPtrOutput struct{ *pulumi.OutputState }
-
-func (LogConfigPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LogConfig)(nil)).Elem()
-}
-
-func (o LogConfigPtrOutput) ToLogConfigPtrOutput() LogConfigPtrOutput {
-	return o
-}
-
-func (o LogConfigPtrOutput) ToLogConfigPtrOutputWithContext(ctx context.Context) LogConfigPtrOutput {
-	return o
-}
-
-func (o LogConfigPtrOutput) Elem() LogConfigOutput {
-	return o.ApplyT(func(v *LogConfig) LogConfig {
-		if v != nil {
-			return *v
-		}
-		var ret LogConfig
-		return ret
-	}).(LogConfigOutput)
-}
-
-// <p>The service role that AppSync assumes to publish to CloudWatch logs in your account.</p>
-func (o LogConfigPtrOutput) CloudWatchLogsRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LogConfig) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CloudWatchLogsRoleArn
-	}).(pulumi.StringPtrOutput)
-}
-
-// <p>Set to TRUE to exclude sections that contain information such as headers, context, and evaluated mapping templates, regardless of logging level.</p>
-func (o LogConfigPtrOutput) ExcludeVerboseContent() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *LogConfig) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ExcludeVerboseContent
-	}).(pulumi.BoolPtrOutput)
-}
-
-// <p>The field logging level. Values can be NONE, ERROR, or ALL.</p> <ul> <li> <p> <b>NONE</b>: No field-level logs are captured.</p> </li> <li> <p> <b>ERROR</b>: Logs the following information only for the fields that are in error:</p> <ul> <li> <p>The error section in the server response.</p> </li> <li> <p>Field-level errors.</p> </li> <li> <p>The generated request/response functions that got resolved for error fields.</p> </li> </ul> </li> <li> <p> <b>ALL</b>: The following information is logged for all fields in the query:</p> <ul> <li> <p>Field-level tracing information.</p> </li> <li> <p>The generated request/response functions that got resolved for each field.</p> </li> </ul> </li> </ul>
-func (o LogConfigPtrOutput) FieldLogLevel() FieldLogLevelEnumValuePtrOutput {
-	return o.ApplyT(func(v *LogConfig) *FieldLogLevelEnumValue {
-		if v == nil {
-			return nil
-		}
-		return v.FieldLogLevel
-	}).(FieldLogLevelEnumValuePtrOutput)
-}
-
-// Definition of LogConfig
-type LogConfigResponse struct {
-	// <p>The service role that AppSync assumes to publish to CloudWatch logs in your account.</p>
-	CloudWatchLogsRoleArn *string `pulumi:"cloudWatchLogsRoleArn"`
-	// <p>Set to TRUE to exclude sections that contain information such as headers, context, and evaluated mapping templates, regardless of logging level.</p>
-	ExcludeVerboseContent *bool `pulumi:"excludeVerboseContent"`
-	// <p>The field logging level. Values can be NONE, ERROR, or ALL.</p> <ul> <li> <p> <b>NONE</b>: No field-level logs are captured.</p> </li> <li> <p> <b>ERROR</b>: Logs the following information only for the fields that are in error:</p> <ul> <li> <p>The error section in the server response.</p> </li> <li> <p>Field-level errors.</p> </li> <li> <p>The generated request/response functions that got resolved for error fields.</p> </li> </ul> </li> <li> <p> <b>ALL</b>: The following information is logged for all fields in the query:</p> <ul> <li> <p>Field-level tracing information.</p> </li> <li> <p>The generated request/response functions that got resolved for each field.</p> </li> </ul> </li> </ul>
-	FieldLogLevel *FieldLogLevelEnumValueResponse `pulumi:"fieldLogLevel"`
-}
-
-// Definition of LogConfig
-type LogConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (LogConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogConfigResponse)(nil)).Elem()
-}
-
-func (o LogConfigResponseOutput) ToLogConfigResponseOutput() LogConfigResponseOutput {
-	return o
-}
-
-func (o LogConfigResponseOutput) ToLogConfigResponseOutputWithContext(ctx context.Context) LogConfigResponseOutput {
-	return o
-}
-
-// <p>The service role that AppSync assumes to publish to CloudWatch logs in your account.</p>
-func (o LogConfigResponseOutput) CloudWatchLogsRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LogConfigResponse) *string { return v.CloudWatchLogsRoleArn }).(pulumi.StringPtrOutput)
-}
-
-// <p>Set to TRUE to exclude sections that contain information such as headers, context, and evaluated mapping templates, regardless of logging level.</p>
-func (o LogConfigResponseOutput) ExcludeVerboseContent() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LogConfigResponse) *bool { return v.ExcludeVerboseContent }).(pulumi.BoolPtrOutput)
-}
-
-// <p>The field logging level. Values can be NONE, ERROR, or ALL.</p> <ul> <li> <p> <b>NONE</b>: No field-level logs are captured.</p> </li> <li> <p> <b>ERROR</b>: Logs the following information only for the fields that are in error:</p> <ul> <li> <p>The error section in the server response.</p> </li> <li> <p>Field-level errors.</p> </li> <li> <p>The generated request/response functions that got resolved for error fields.</p> </li> </ul> </li> <li> <p> <b>ALL</b>: The following information is logged for all fields in the query:</p> <ul> <li> <p>Field-level tracing information.</p> </li> <li> <p>The generated request/response functions that got resolved for each field.</p> </li> </ul> </li> </ul>
-func (o LogConfigResponseOutput) FieldLogLevel() FieldLogLevelEnumValueResponsePtrOutput {
-	return o.ApplyT(func(v LogConfigResponse) *FieldLogLevelEnumValueResponse { return v.FieldLogLevel }).(FieldLogLevelEnumValueResponsePtrOutput)
-}
-
-type LogConfigResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (LogConfigResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LogConfigResponse)(nil)).Elem()
-}
-
-func (o LogConfigResponsePtrOutput) ToLogConfigResponsePtrOutput() LogConfigResponsePtrOutput {
-	return o
-}
-
-func (o LogConfigResponsePtrOutput) ToLogConfigResponsePtrOutputWithContext(ctx context.Context) LogConfigResponsePtrOutput {
-	return o
-}
-
-func (o LogConfigResponsePtrOutput) Elem() LogConfigResponseOutput {
-	return o.ApplyT(func(v *LogConfigResponse) LogConfigResponse {
-		if v != nil {
-			return *v
-		}
-		var ret LogConfigResponse
-		return ret
-	}).(LogConfigResponseOutput)
-}
-
-// <p>The service role that AppSync assumes to publish to CloudWatch logs in your account.</p>
-func (o LogConfigResponsePtrOutput) CloudWatchLogsRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LogConfigResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CloudWatchLogsRoleArn
-	}).(pulumi.StringPtrOutput)
-}
-
-// <p>Set to TRUE to exclude sections that contain information such as headers, context, and evaluated mapping templates, regardless of logging level.</p>
-func (o LogConfigResponsePtrOutput) ExcludeVerboseContent() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *LogConfigResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.ExcludeVerboseContent
-	}).(pulumi.BoolPtrOutput)
-}
-
-// <p>The field logging level. Values can be NONE, ERROR, or ALL.</p> <ul> <li> <p> <b>NONE</b>: No field-level logs are captured.</p> </li> <li> <p> <b>ERROR</b>: Logs the following information only for the fields that are in error:</p> <ul> <li> <p>The error section in the server response.</p> </li> <li> <p>Field-level errors.</p> </li> <li> <p>The generated request/response functions that got resolved for error fields.</p> </li> </ul> </li> <li> <p> <b>ALL</b>: The following information is logged for all fields in the query:</p> <ul> <li> <p>Field-level tracing information.</p> </li> <li> <p>The generated request/response functions that got resolved for each field.</p> </li> </ul> </li> </ul>
-func (o LogConfigResponsePtrOutput) FieldLogLevel() FieldLogLevelEnumValueResponsePtrOutput {
-	return o.ApplyT(func(v *LogConfigResponse) *FieldLogLevelEnumValueResponse {
-		if v == nil {
-			return nil
-		}
-		return v.FieldLogLevel
-	}).(FieldLogLevelEnumValueResponsePtrOutput)
-}
-
-// Definition of LogConfiguration
-type LogConfiguration struct {
-	// The log driver to use for the container. For tasks on FARGATElong, the supported log drivers are ``awslogs``, ``splunk``, and ``awsfirelens``. For tasks hosted on Amazon EC2 instances, the supported log drivers are ``awslogs``, ``fluentd``, ``gelf``, ``json-file``, ``journald``, ``logentries``,``syslog``, ``splunk``, and ``awsfirelens``. For more information about using the ``awslogs`` log driver, see [Using the awslogs log driver](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html) in the *Amazon Elastic Container Service Developer Guide*. For more information about using the ``awsfirelens`` log driver, see [Custom log routing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html) in the *Amazon Elastic Container Service Developer Guide*.  If you have a custom driver that isn't listed, you can fork the Amazon ECS container agent project that's [available on GitHub](https://github.com/aws/amazon-ecs-agent) and customize it to work with that driver. We encourage you to submit pull requests for changes that you would like to have included. However, we don't currently provide support for running modified copies of this software.
-	LogDriver *string `pulumi:"logDriver"`
-	// The configuration options to send to the log driver. This parameter requires version 1.19 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log in to your container instance and run the following command: ``sudo docker version --format '{{.Server.APIVersion}}'``
-	Options interface{} `pulumi:"options"`
-	// The secrets to pass to the log configuration. For more information, see [Specifying sensitive data](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html) in the *Amazon Elastic Container Service Developer Guide*.
-	SecretOptions []Secret `pulumi:"secretOptions"`
-}
-
-// LogConfigurationInput is an input type that accepts LogConfigurationArgs and LogConfigurationOutput values.
-// You can construct a concrete instance of `LogConfigurationInput` via:
-//
-//	LogConfigurationArgs{...}
-type LogConfigurationInput interface {
-	pulumi.Input
-
-	ToLogConfigurationOutput() LogConfigurationOutput
-	ToLogConfigurationOutputWithContext(context.Context) LogConfigurationOutput
-}
-
-// Definition of LogConfiguration
-type LogConfigurationArgs struct {
-	// The log driver to use for the container. For tasks on FARGATElong, the supported log drivers are ``awslogs``, ``splunk``, and ``awsfirelens``. For tasks hosted on Amazon EC2 instances, the supported log drivers are ``awslogs``, ``fluentd``, ``gelf``, ``json-file``, ``journald``, ``logentries``,``syslog``, ``splunk``, and ``awsfirelens``. For more information about using the ``awslogs`` log driver, see [Using the awslogs log driver](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html) in the *Amazon Elastic Container Service Developer Guide*. For more information about using the ``awsfirelens`` log driver, see [Custom log routing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html) in the *Amazon Elastic Container Service Developer Guide*.  If you have a custom driver that isn't listed, you can fork the Amazon ECS container agent project that's [available on GitHub](https://github.com/aws/amazon-ecs-agent) and customize it to work with that driver. We encourage you to submit pull requests for changes that you would like to have included. However, we don't currently provide support for running modified copies of this software.
-	LogDriver pulumi.StringPtrInput `pulumi:"logDriver"`
-	// The configuration options to send to the log driver. This parameter requires version 1.19 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log in to your container instance and run the following command: ``sudo docker version --format '{{.Server.APIVersion}}'``
-	Options pulumi.Input `pulumi:"options"`
-	// The secrets to pass to the log configuration. For more information, see [Specifying sensitive data](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html) in the *Amazon Elastic Container Service Developer Guide*.
-	SecretOptions SecretArrayInput `pulumi:"secretOptions"`
-}
-
-func (LogConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogConfiguration)(nil)).Elem()
-}
-
-func (i LogConfigurationArgs) ToLogConfigurationOutput() LogConfigurationOutput {
-	return i.ToLogConfigurationOutputWithContext(context.Background())
-}
-
-func (i LogConfigurationArgs) ToLogConfigurationOutputWithContext(ctx context.Context) LogConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogConfigurationOutput)
-}
-
-func (i LogConfigurationArgs) ToLogConfigurationPtrOutput() LogConfigurationPtrOutput {
-	return i.ToLogConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i LogConfigurationArgs) ToLogConfigurationPtrOutputWithContext(ctx context.Context) LogConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogConfigurationOutput).ToLogConfigurationPtrOutputWithContext(ctx)
-}
-
-// LogConfigurationPtrInput is an input type that accepts LogConfigurationArgs, LogConfigurationPtr and LogConfigurationPtrOutput values.
-// You can construct a concrete instance of `LogConfigurationPtrInput` via:
-//
-//	        LogConfigurationArgs{...}
-//
-//	or:
-//
-//	        nil
-type LogConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToLogConfigurationPtrOutput() LogConfigurationPtrOutput
-	ToLogConfigurationPtrOutputWithContext(context.Context) LogConfigurationPtrOutput
-}
-
-type logConfigurationPtrType LogConfigurationArgs
-
-func LogConfigurationPtr(v *LogConfigurationArgs) LogConfigurationPtrInput {
-	return (*logConfigurationPtrType)(v)
-}
-
-func (*logConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**LogConfiguration)(nil)).Elem()
-}
-
-func (i *logConfigurationPtrType) ToLogConfigurationPtrOutput() LogConfigurationPtrOutput {
-	return i.ToLogConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *logConfigurationPtrType) ToLogConfigurationPtrOutputWithContext(ctx context.Context) LogConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogConfigurationPtrOutput)
-}
-
-// Definition of LogConfiguration
-type LogConfigurationOutput struct{ *pulumi.OutputState }
-
-func (LogConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogConfiguration)(nil)).Elem()
-}
-
-func (o LogConfigurationOutput) ToLogConfigurationOutput() LogConfigurationOutput {
-	return o
-}
-
-func (o LogConfigurationOutput) ToLogConfigurationOutputWithContext(ctx context.Context) LogConfigurationOutput {
-	return o
-}
-
-func (o LogConfigurationOutput) ToLogConfigurationPtrOutput() LogConfigurationPtrOutput {
-	return o.ToLogConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o LogConfigurationOutput) ToLogConfigurationPtrOutputWithContext(ctx context.Context) LogConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v LogConfiguration) *LogConfiguration {
-		return &v
-	}).(LogConfigurationPtrOutput)
-}
-
-// The log driver to use for the container. For tasks on FARGATElong, the supported log drivers are “awslogs“, “splunk“, and “awsfirelens“. For tasks hosted on Amazon EC2 instances, the supported log drivers are “awslogs“, “fluentd“, “gelf“, “json-file“, “journald“, “logentries“,“syslog“, “splunk“, and “awsfirelens“. For more information about using the “awslogs“ log driver, see [Using the awslogs log driver](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html) in the *Amazon Elastic Container Service Developer Guide*. For more information about using the “awsfirelens“ log driver, see [Custom log routing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html) in the *Amazon Elastic Container Service Developer Guide*.  If you have a custom driver that isn't listed, you can fork the Amazon ECS container agent project that's [available on GitHub](https://github.com/aws/amazon-ecs-agent) and customize it to work with that driver. We encourage you to submit pull requests for changes that you would like to have included. However, we don't currently provide support for running modified copies of this software.
-func (o LogConfigurationOutput) LogDriver() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LogConfiguration) *string { return v.LogDriver }).(pulumi.StringPtrOutput)
-}
-
-// The configuration options to send to the log driver. This parameter requires version 1.19 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log in to your container instance and run the following command: “sudo docker version --format '{{.Server.APIVersion}}'“
-func (o LogConfigurationOutput) Options() pulumi.AnyOutput {
-	return o.ApplyT(func(v LogConfiguration) interface{} { return v.Options }).(pulumi.AnyOutput)
-}
-
-// The secrets to pass to the log configuration. For more information, see [Specifying sensitive data](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html) in the *Amazon Elastic Container Service Developer Guide*.
-func (o LogConfigurationOutput) SecretOptions() SecretArrayOutput {
-	return o.ApplyT(func(v LogConfiguration) []Secret { return v.SecretOptions }).(SecretArrayOutput)
-}
-
-type LogConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (LogConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LogConfiguration)(nil)).Elem()
-}
-
-func (o LogConfigurationPtrOutput) ToLogConfigurationPtrOutput() LogConfigurationPtrOutput {
-	return o
-}
-
-func (o LogConfigurationPtrOutput) ToLogConfigurationPtrOutputWithContext(ctx context.Context) LogConfigurationPtrOutput {
-	return o
-}
-
-func (o LogConfigurationPtrOutput) Elem() LogConfigurationOutput {
-	return o.ApplyT(func(v *LogConfiguration) LogConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret LogConfiguration
-		return ret
-	}).(LogConfigurationOutput)
-}
-
-// The log driver to use for the container. For tasks on FARGATElong, the supported log drivers are “awslogs“, “splunk“, and “awsfirelens“. For tasks hosted on Amazon EC2 instances, the supported log drivers are “awslogs“, “fluentd“, “gelf“, “json-file“, “journald“, “logentries“,“syslog“, “splunk“, and “awsfirelens“. For more information about using the “awslogs“ log driver, see [Using the awslogs log driver](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html) in the *Amazon Elastic Container Service Developer Guide*. For more information about using the “awsfirelens“ log driver, see [Custom log routing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html) in the *Amazon Elastic Container Service Developer Guide*.  If you have a custom driver that isn't listed, you can fork the Amazon ECS container agent project that's [available on GitHub](https://github.com/aws/amazon-ecs-agent) and customize it to work with that driver. We encourage you to submit pull requests for changes that you would like to have included. However, we don't currently provide support for running modified copies of this software.
-func (o LogConfigurationPtrOutput) LogDriver() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LogConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LogDriver
-	}).(pulumi.StringPtrOutput)
-}
-
-// The configuration options to send to the log driver. This parameter requires version 1.19 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log in to your container instance and run the following command: “sudo docker version --format '{{.Server.APIVersion}}'“
-func (o LogConfigurationPtrOutput) Options() pulumi.AnyOutput {
-	return o.ApplyT(func(v *LogConfiguration) interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Options
-	}).(pulumi.AnyOutput)
-}
-
-// The secrets to pass to the log configuration. For more information, see [Specifying sensitive data](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html) in the *Amazon Elastic Container Service Developer Guide*.
-func (o LogConfigurationPtrOutput) SecretOptions() SecretArrayOutput {
-	return o.ApplyT(func(v *LogConfiguration) []Secret {
-		if v == nil {
-			return nil
-		}
-		return v.SecretOptions
-	}).(SecretArrayOutput)
-}
-
-// Definition of LogConfiguration
-type LogConfigurationResponse struct {
-	// The log driver to use for the container. For tasks on FARGATElong, the supported log drivers are ``awslogs``, ``splunk``, and ``awsfirelens``. For tasks hosted on Amazon EC2 instances, the supported log drivers are ``awslogs``, ``fluentd``, ``gelf``, ``json-file``, ``journald``, ``logentries``,``syslog``, ``splunk``, and ``awsfirelens``. For more information about using the ``awslogs`` log driver, see [Using the awslogs log driver](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html) in the *Amazon Elastic Container Service Developer Guide*. For more information about using the ``awsfirelens`` log driver, see [Custom log routing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html) in the *Amazon Elastic Container Service Developer Guide*.  If you have a custom driver that isn't listed, you can fork the Amazon ECS container agent project that's [available on GitHub](https://github.com/aws/amazon-ecs-agent) and customize it to work with that driver. We encourage you to submit pull requests for changes that you would like to have included. However, we don't currently provide support for running modified copies of this software.
-	LogDriver *string `pulumi:"logDriver"`
-	// The configuration options to send to the log driver. This parameter requires version 1.19 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log in to your container instance and run the following command: ``sudo docker version --format '{{.Server.APIVersion}}'``
-	Options interface{} `pulumi:"options"`
-	// The secrets to pass to the log configuration. For more information, see [Specifying sensitive data](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html) in the *Amazon Elastic Container Service Developer Guide*.
-	SecretOptions []SecretResponse `pulumi:"secretOptions"`
-}
-
-// Definition of LogConfiguration
-type LogConfigurationResponseOutput struct{ *pulumi.OutputState }
-
-func (LogConfigurationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogConfigurationResponse)(nil)).Elem()
-}
-
-func (o LogConfigurationResponseOutput) ToLogConfigurationResponseOutput() LogConfigurationResponseOutput {
-	return o
-}
-
-func (o LogConfigurationResponseOutput) ToLogConfigurationResponseOutputWithContext(ctx context.Context) LogConfigurationResponseOutput {
-	return o
-}
-
-// The log driver to use for the container. For tasks on FARGATElong, the supported log drivers are “awslogs“, “splunk“, and “awsfirelens“. For tasks hosted on Amazon EC2 instances, the supported log drivers are “awslogs“, “fluentd“, “gelf“, “json-file“, “journald“, “logentries“,“syslog“, “splunk“, and “awsfirelens“. For more information about using the “awslogs“ log driver, see [Using the awslogs log driver](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html) in the *Amazon Elastic Container Service Developer Guide*. For more information about using the “awsfirelens“ log driver, see [Custom log routing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html) in the *Amazon Elastic Container Service Developer Guide*.  If you have a custom driver that isn't listed, you can fork the Amazon ECS container agent project that's [available on GitHub](https://github.com/aws/amazon-ecs-agent) and customize it to work with that driver. We encourage you to submit pull requests for changes that you would like to have included. However, we don't currently provide support for running modified copies of this software.
-func (o LogConfigurationResponseOutput) LogDriver() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LogConfigurationResponse) *string { return v.LogDriver }).(pulumi.StringPtrOutput)
-}
-
-// The configuration options to send to the log driver. This parameter requires version 1.19 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log in to your container instance and run the following command: “sudo docker version --format '{{.Server.APIVersion}}'“
-func (o LogConfigurationResponseOutput) Options() pulumi.AnyOutput {
-	return o.ApplyT(func(v LogConfigurationResponse) interface{} { return v.Options }).(pulumi.AnyOutput)
-}
-
-// The secrets to pass to the log configuration. For more information, see [Specifying sensitive data](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html) in the *Amazon Elastic Container Service Developer Guide*.
-func (o LogConfigurationResponseOutput) SecretOptions() SecretResponseArrayOutput {
-	return o.ApplyT(func(v LogConfigurationResponse) []SecretResponse { return v.SecretOptions }).(SecretResponseArrayOutput)
-}
-
-type LogConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (LogConfigurationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LogConfigurationResponse)(nil)).Elem()
-}
-
-func (o LogConfigurationResponsePtrOutput) ToLogConfigurationResponsePtrOutput() LogConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o LogConfigurationResponsePtrOutput) ToLogConfigurationResponsePtrOutputWithContext(ctx context.Context) LogConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o LogConfigurationResponsePtrOutput) Elem() LogConfigurationResponseOutput {
-	return o.ApplyT(func(v *LogConfigurationResponse) LogConfigurationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret LogConfigurationResponse
-		return ret
-	}).(LogConfigurationResponseOutput)
-}
-
-// The log driver to use for the container. For tasks on FARGATElong, the supported log drivers are “awslogs“, “splunk“, and “awsfirelens“. For tasks hosted on Amazon EC2 instances, the supported log drivers are “awslogs“, “fluentd“, “gelf“, “json-file“, “journald“, “logentries“,“syslog“, “splunk“, and “awsfirelens“. For more information about using the “awslogs“ log driver, see [Using the awslogs log driver](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_awslogs.html) in the *Amazon Elastic Container Service Developer Guide*. For more information about using the “awsfirelens“ log driver, see [Custom log routing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html) in the *Amazon Elastic Container Service Developer Guide*.  If you have a custom driver that isn't listed, you can fork the Amazon ECS container agent project that's [available on GitHub](https://github.com/aws/amazon-ecs-agent) and customize it to work with that driver. We encourage you to submit pull requests for changes that you would like to have included. However, we don't currently provide support for running modified copies of this software.
-func (o LogConfigurationResponsePtrOutput) LogDriver() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LogConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LogDriver
-	}).(pulumi.StringPtrOutput)
-}
-
-// The configuration options to send to the log driver. This parameter requires version 1.19 of the Docker Remote API or greater on your container instance. To check the Docker Remote API version on your container instance, log in to your container instance and run the following command: “sudo docker version --format '{{.Server.APIVersion}}'“
-func (o LogConfigurationResponsePtrOutput) Options() pulumi.AnyOutput {
-	return o.ApplyT(func(v *LogConfigurationResponse) interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Options
-	}).(pulumi.AnyOutput)
-}
-
-// The secrets to pass to the log configuration. For more information, see [Specifying sensitive data](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html) in the *Amazon Elastic Container Service Developer Guide*.
-func (o LogConfigurationResponsePtrOutput) SecretOptions() SecretResponseArrayOutput {
-	return o.ApplyT(func(v *LogConfigurationResponse) []SecretResponse {
-		if v == nil {
-			return nil
-		}
-		return v.SecretOptions
-	}).(SecretResponseArrayOutput)
-}
-
-// Definition of LogPublishingOption
-type LogPublishingOption struct {
-	// <p>The Amazon Resource Name (ARN) of the CloudWatch Logs group to publish logs to.</p>
-	CloudWatchLogsLogGroupArn *string `pulumi:"cloudWatchLogsLogGroupArn"`
-	// <p>Whether the log should be published.</p>
-	Enabled *bool `pulumi:"enabled"`
-}
-
-// LogPublishingOptionInput is an input type that accepts LogPublishingOptionArgs and LogPublishingOptionOutput values.
-// You can construct a concrete instance of `LogPublishingOptionInput` via:
-//
-//	LogPublishingOptionArgs{...}
-type LogPublishingOptionInput interface {
-	pulumi.Input
-
-	ToLogPublishingOptionOutput() LogPublishingOptionOutput
-	ToLogPublishingOptionOutputWithContext(context.Context) LogPublishingOptionOutput
-}
-
-// Definition of LogPublishingOption
-type LogPublishingOptionArgs struct {
-	// <p>The Amazon Resource Name (ARN) of the CloudWatch Logs group to publish logs to.</p>
-	CloudWatchLogsLogGroupArn pulumi.StringPtrInput `pulumi:"cloudWatchLogsLogGroupArn"`
-	// <p>Whether the log should be published.</p>
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-}
-
-func (LogPublishingOptionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogPublishingOption)(nil)).Elem()
-}
-
-func (i LogPublishingOptionArgs) ToLogPublishingOptionOutput() LogPublishingOptionOutput {
-	return i.ToLogPublishingOptionOutputWithContext(context.Background())
-}
-
-func (i LogPublishingOptionArgs) ToLogPublishingOptionOutputWithContext(ctx context.Context) LogPublishingOptionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogPublishingOptionOutput)
-}
-
-// LogPublishingOptionMapInput is an input type that accepts LogPublishingOptionMap and LogPublishingOptionMapOutput values.
-// You can construct a concrete instance of `LogPublishingOptionMapInput` via:
-//
-//	LogPublishingOptionMap{ "key": LogPublishingOptionArgs{...} }
-type LogPublishingOptionMapInput interface {
-	pulumi.Input
-
-	ToLogPublishingOptionMapOutput() LogPublishingOptionMapOutput
-	ToLogPublishingOptionMapOutputWithContext(context.Context) LogPublishingOptionMapOutput
-}
-
-type LogPublishingOptionMap map[string]LogPublishingOptionInput
-
-func (LogPublishingOptionMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]LogPublishingOption)(nil)).Elem()
-}
-
-func (i LogPublishingOptionMap) ToLogPublishingOptionMapOutput() LogPublishingOptionMapOutput {
-	return i.ToLogPublishingOptionMapOutputWithContext(context.Background())
-}
-
-func (i LogPublishingOptionMap) ToLogPublishingOptionMapOutputWithContext(ctx context.Context) LogPublishingOptionMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogPublishingOptionMapOutput)
-}
-
-// Definition of LogPublishingOption
-type LogPublishingOptionOutput struct{ *pulumi.OutputState }
-
-func (LogPublishingOptionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogPublishingOption)(nil)).Elem()
-}
-
-func (o LogPublishingOptionOutput) ToLogPublishingOptionOutput() LogPublishingOptionOutput {
-	return o
-}
-
-func (o LogPublishingOptionOutput) ToLogPublishingOptionOutputWithContext(ctx context.Context) LogPublishingOptionOutput {
-	return o
-}
-
-// <p>The Amazon Resource Name (ARN) of the CloudWatch Logs group to publish logs to.</p>
-func (o LogPublishingOptionOutput) CloudWatchLogsLogGroupArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LogPublishingOption) *string { return v.CloudWatchLogsLogGroupArn }).(pulumi.StringPtrOutput)
-}
-
-// <p>Whether the log should be published.</p>
-func (o LogPublishingOptionOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LogPublishingOption) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-type LogPublishingOptionMapOutput struct{ *pulumi.OutputState }
-
-func (LogPublishingOptionMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]LogPublishingOption)(nil)).Elem()
-}
-
-func (o LogPublishingOptionMapOutput) ToLogPublishingOptionMapOutput() LogPublishingOptionMapOutput {
-	return o
-}
-
-func (o LogPublishingOptionMapOutput) ToLogPublishingOptionMapOutputWithContext(ctx context.Context) LogPublishingOptionMapOutput {
-	return o
-}
-
-func (o LogPublishingOptionMapOutput) MapIndex(k pulumi.StringInput) LogPublishingOptionOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) LogPublishingOption {
-		return vs[0].(map[string]LogPublishingOption)[vs[1].(string)]
-	}).(LogPublishingOptionOutput)
-}
-
-// Definition of LogPublishingOption
-type LogPublishingOptionResponse struct {
-	// <p>The Amazon Resource Name (ARN) of the CloudWatch Logs group to publish logs to.</p>
-	CloudWatchLogsLogGroupArn *string `pulumi:"cloudWatchLogsLogGroupArn"`
-	// <p>Whether the log should be published.</p>
-	Enabled *bool `pulumi:"enabled"`
-}
-
-// Definition of LogPublishingOption
-type LogPublishingOptionResponseOutput struct{ *pulumi.OutputState }
-
-func (LogPublishingOptionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogPublishingOptionResponse)(nil)).Elem()
-}
-
-func (o LogPublishingOptionResponseOutput) ToLogPublishingOptionResponseOutput() LogPublishingOptionResponseOutput {
-	return o
-}
-
-func (o LogPublishingOptionResponseOutput) ToLogPublishingOptionResponseOutputWithContext(ctx context.Context) LogPublishingOptionResponseOutput {
-	return o
-}
-
-// <p>The Amazon Resource Name (ARN) of the CloudWatch Logs group to publish logs to.</p>
-func (o LogPublishingOptionResponseOutput) CloudWatchLogsLogGroupArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LogPublishingOptionResponse) *string { return v.CloudWatchLogsLogGroupArn }).(pulumi.StringPtrOutput)
-}
-
-// <p>Whether the log should be published.</p>
-func (o LogPublishingOptionResponseOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LogPublishingOptionResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-type LogPublishingOptionResponseMapOutput struct{ *pulumi.OutputState }
-
-func (LogPublishingOptionResponseMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]LogPublishingOptionResponse)(nil)).Elem()
-}
-
-func (o LogPublishingOptionResponseMapOutput) ToLogPublishingOptionResponseMapOutput() LogPublishingOptionResponseMapOutput {
-	return o
-}
-
-func (o LogPublishingOptionResponseMapOutput) ToLogPublishingOptionResponseMapOutputWithContext(ctx context.Context) LogPublishingOptionResponseMapOutput {
-	return o
-}
-
-func (o LogPublishingOptionResponseMapOutput) MapIndex(k pulumi.StringInput) LogPublishingOptionResponseOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) LogPublishingOptionResponse {
-		return vs[0].(map[string]LogPublishingOptionResponse)[vs[1].(string)]
-	}).(LogPublishingOptionResponseOutput)
-}
-
-// Definition of LogSetup
-type LogSetup struct {
-	// <p>If a log type is enabled, that log type exports its control plane logs to CloudWatch Logs. If a log type isn't enabled, that log type doesn't export its control plane logs. Each individual log type can be enabled or disabled independently.</p>
-	Enabled *bool `pulumi:"enabled"`
-	// <p>The available cluster control plane log types.</p>
-	Types []string `pulumi:"types"`
-}
-
-// LogSetupInput is an input type that accepts LogSetupArgs and LogSetupOutput values.
-// You can construct a concrete instance of `LogSetupInput` via:
-//
-//	LogSetupArgs{...}
-type LogSetupInput interface {
-	pulumi.Input
-
-	ToLogSetupOutput() LogSetupOutput
-	ToLogSetupOutputWithContext(context.Context) LogSetupOutput
-}
-
-// Definition of LogSetup
-type LogSetupArgs struct {
-	// <p>If a log type is enabled, that log type exports its control plane logs to CloudWatch Logs. If a log type isn't enabled, that log type doesn't export its control plane logs. Each individual log type can be enabled or disabled independently.</p>
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// <p>The available cluster control plane log types.</p>
-	Types pulumi.StringArrayInput `pulumi:"types"`
-}
-
-func (LogSetupArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogSetup)(nil)).Elem()
-}
-
-func (i LogSetupArgs) ToLogSetupOutput() LogSetupOutput {
-	return i.ToLogSetupOutputWithContext(context.Background())
-}
-
-func (i LogSetupArgs) ToLogSetupOutputWithContext(ctx context.Context) LogSetupOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogSetupOutput)
-}
-
-// LogSetupArrayInput is an input type that accepts LogSetupArray and LogSetupArrayOutput values.
-// You can construct a concrete instance of `LogSetupArrayInput` via:
-//
-//	LogSetupArray{ LogSetupArgs{...} }
-type LogSetupArrayInput interface {
-	pulumi.Input
-
-	ToLogSetupArrayOutput() LogSetupArrayOutput
-	ToLogSetupArrayOutputWithContext(context.Context) LogSetupArrayOutput
-}
-
-type LogSetupArray []LogSetupInput
-
-func (LogSetupArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LogSetup)(nil)).Elem()
-}
-
-func (i LogSetupArray) ToLogSetupArrayOutput() LogSetupArrayOutput {
-	return i.ToLogSetupArrayOutputWithContext(context.Background())
-}
-
-func (i LogSetupArray) ToLogSetupArrayOutputWithContext(ctx context.Context) LogSetupArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogSetupArrayOutput)
-}
-
-// Definition of LogSetup
-type LogSetupOutput struct{ *pulumi.OutputState }
-
-func (LogSetupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogSetup)(nil)).Elem()
-}
-
-func (o LogSetupOutput) ToLogSetupOutput() LogSetupOutput {
-	return o
-}
-
-func (o LogSetupOutput) ToLogSetupOutputWithContext(ctx context.Context) LogSetupOutput {
-	return o
-}
-
-// <p>If a log type is enabled, that log type exports its control plane logs to CloudWatch Logs. If a log type isn't enabled, that log type doesn't export its control plane logs. Each individual log type can be enabled or disabled independently.</p>
-func (o LogSetupOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LogSetup) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-// <p>The available cluster control plane log types.</p>
-func (o LogSetupOutput) Types() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LogSetup) []string { return v.Types }).(pulumi.StringArrayOutput)
-}
-
-type LogSetupArrayOutput struct{ *pulumi.OutputState }
-
-func (LogSetupArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LogSetup)(nil)).Elem()
-}
-
-func (o LogSetupArrayOutput) ToLogSetupArrayOutput() LogSetupArrayOutput {
-	return o
-}
-
-func (o LogSetupArrayOutput) ToLogSetupArrayOutputWithContext(ctx context.Context) LogSetupArrayOutput {
-	return o
-}
-
-func (o LogSetupArrayOutput) Index(i pulumi.IntInput) LogSetupOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogSetup {
-		return vs[0].([]LogSetup)[vs[1].(int)]
-	}).(LogSetupOutput)
-}
-
-// Definition of LogSetup
-type LogSetupResponse struct {
-	// <p>If a log type is enabled, that log type exports its control plane logs to CloudWatch Logs. If a log type isn't enabled, that log type doesn't export its control plane logs. Each individual log type can be enabled or disabled independently.</p>
-	Enabled *bool `pulumi:"enabled"`
-	// <p>The available cluster control plane log types.</p>
-	Types []string `pulumi:"types"`
-}
-
-// Definition of LogSetup
-type LogSetupResponseOutput struct{ *pulumi.OutputState }
-
-func (LogSetupResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogSetupResponse)(nil)).Elem()
-}
-
-func (o LogSetupResponseOutput) ToLogSetupResponseOutput() LogSetupResponseOutput {
-	return o
-}
-
-func (o LogSetupResponseOutput) ToLogSetupResponseOutputWithContext(ctx context.Context) LogSetupResponseOutput {
-	return o
-}
-
-// <p>If a log type is enabled, that log type exports its control plane logs to CloudWatch Logs. If a log type isn't enabled, that log type doesn't export its control plane logs. Each individual log type can be enabled or disabled independently.</p>
-func (o LogSetupResponseOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LogSetupResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-// <p>The available cluster control plane log types.</p>
-func (o LogSetupResponseOutput) Types() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LogSetupResponse) []string { return v.Types }).(pulumi.StringArrayOutput)
-}
-
-type LogSetupResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (LogSetupResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LogSetupResponse)(nil)).Elem()
-}
-
-func (o LogSetupResponseArrayOutput) ToLogSetupResponseArrayOutput() LogSetupResponseArrayOutput {
-	return o
-}
-
-func (o LogSetupResponseArrayOutput) ToLogSetupResponseArrayOutputWithContext(ctx context.Context) LogSetupResponseArrayOutput {
-	return o
-}
-
-func (o LogSetupResponseArrayOutput) Index(i pulumi.IntInput) LogSetupResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogSetupResponse {
-		return vs[0].([]LogSetupResponse)[vs[1].(int)]
-	}).(LogSetupResponseOutput)
-}
-
-// Definition of Logging
-type Logging struct {
-	// The Amazon S3 bucket to store the access logs in, for example, ``myawslogbucket.s3.amazonaws.com``.
-	Bucket *string `pulumi:"bucket"`
-	// <p>The cluster control plane logging configuration for your cluster.</p>
-	ClusterLogging []LogSetup `pulumi:"clusterLogging"`
-	// Specifies whether you want CloudFront to include cookies in access logs, specify ``true`` for ``IncludeCookies``. If you choose to include cookies in logs, CloudFront logs all cookies regardless of how you configure the cache behaviors for this distribution. If you don't want to include cookies when you create a distribution or if you want to disable include cookies for an existing distribution, specify ``false`` for ``IncludeCookies``.
-	IncludeCookies *bool `pulumi:"includeCookies"`
-	// An optional string that you want CloudFront to prefix to the access log ``filenames`` for this distribution, for example, ``myprefix/``. If you want to enable logging, but you don't want to specify a prefix, you still must include an empty ``Prefix`` element in the ``Logging`` element.
-	Prefix *string `pulumi:"prefix"`
-}
-
-// LoggingInput is an input type that accepts LoggingArgs and LoggingOutput values.
-// You can construct a concrete instance of `LoggingInput` via:
-//
-//	LoggingArgs{...}
-type LoggingInput interface {
-	pulumi.Input
-
-	ToLoggingOutput() LoggingOutput
-	ToLoggingOutputWithContext(context.Context) LoggingOutput
-}
-
-// Definition of Logging
-type LoggingArgs struct {
-	// The Amazon S3 bucket to store the access logs in, for example, ``myawslogbucket.s3.amazonaws.com``.
-	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
-	// <p>The cluster control plane logging configuration for your cluster.</p>
-	ClusterLogging LogSetupArrayInput `pulumi:"clusterLogging"`
-	// Specifies whether you want CloudFront to include cookies in access logs, specify ``true`` for ``IncludeCookies``. If you choose to include cookies in logs, CloudFront logs all cookies regardless of how you configure the cache behaviors for this distribution. If you don't want to include cookies when you create a distribution or if you want to disable include cookies for an existing distribution, specify ``false`` for ``IncludeCookies``.
-	IncludeCookies pulumi.BoolPtrInput `pulumi:"includeCookies"`
-	// An optional string that you want CloudFront to prefix to the access log ``filenames`` for this distribution, for example, ``myprefix/``. If you want to enable logging, but you don't want to specify a prefix, you still must include an empty ``Prefix`` element in the ``Logging`` element.
-	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-}
-
-func (LoggingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Logging)(nil)).Elem()
-}
-
-func (i LoggingArgs) ToLoggingOutput() LoggingOutput {
-	return i.ToLoggingOutputWithContext(context.Background())
-}
-
-func (i LoggingArgs) ToLoggingOutputWithContext(ctx context.Context) LoggingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoggingOutput)
-}
-
-func (i LoggingArgs) ToLoggingPtrOutput() LoggingPtrOutput {
-	return i.ToLoggingPtrOutputWithContext(context.Background())
-}
-
-func (i LoggingArgs) ToLoggingPtrOutputWithContext(ctx context.Context) LoggingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoggingOutput).ToLoggingPtrOutputWithContext(ctx)
-}
-
-// LoggingPtrInput is an input type that accepts LoggingArgs, LoggingPtr and LoggingPtrOutput values.
-// You can construct a concrete instance of `LoggingPtrInput` via:
-//
-//	        LoggingArgs{...}
-//
-//	or:
-//
-//	        nil
-type LoggingPtrInput interface {
-	pulumi.Input
-
-	ToLoggingPtrOutput() LoggingPtrOutput
-	ToLoggingPtrOutputWithContext(context.Context) LoggingPtrOutput
-}
-
-type loggingPtrType LoggingArgs
-
-func LoggingPtr(v *LoggingArgs) LoggingPtrInput {
-	return (*loggingPtrType)(v)
-}
-
-func (*loggingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Logging)(nil)).Elem()
-}
-
-func (i *loggingPtrType) ToLoggingPtrOutput() LoggingPtrOutput {
-	return i.ToLoggingPtrOutputWithContext(context.Background())
-}
-
-func (i *loggingPtrType) ToLoggingPtrOutputWithContext(ctx context.Context) LoggingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LoggingPtrOutput)
-}
-
-// Definition of Logging
-type LoggingOutput struct{ *pulumi.OutputState }
-
-func (LoggingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Logging)(nil)).Elem()
-}
-
-func (o LoggingOutput) ToLoggingOutput() LoggingOutput {
-	return o
-}
-
-func (o LoggingOutput) ToLoggingOutputWithContext(ctx context.Context) LoggingOutput {
-	return o
-}
-
-func (o LoggingOutput) ToLoggingPtrOutput() LoggingPtrOutput {
-	return o.ToLoggingPtrOutputWithContext(context.Background())
-}
-
-func (o LoggingOutput) ToLoggingPtrOutputWithContext(ctx context.Context) LoggingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Logging) *Logging {
-		return &v
-	}).(LoggingPtrOutput)
-}
-
-// The Amazon S3 bucket to store the access logs in, for example, “myawslogbucket.s3.amazonaws.com“.
-func (o LoggingOutput) Bucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Logging) *string { return v.Bucket }).(pulumi.StringPtrOutput)
-}
-
-// <p>The cluster control plane logging configuration for your cluster.</p>
-func (o LoggingOutput) ClusterLogging() LogSetupArrayOutput {
-	return o.ApplyT(func(v Logging) []LogSetup { return v.ClusterLogging }).(LogSetupArrayOutput)
-}
-
-// Specifies whether you want CloudFront to include cookies in access logs, specify “true“ for “IncludeCookies“. If you choose to include cookies in logs, CloudFront logs all cookies regardless of how you configure the cache behaviors for this distribution. If you don't want to include cookies when you create a distribution or if you want to disable include cookies for an existing distribution, specify “false“ for “IncludeCookies“.
-func (o LoggingOutput) IncludeCookies() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v Logging) *bool { return v.IncludeCookies }).(pulumi.BoolPtrOutput)
-}
-
-// An optional string that you want CloudFront to prefix to the access log “filenames“ for this distribution, for example, “myprefix/“. If you want to enable logging, but you don't want to specify a prefix, you still must include an empty “Prefix“ element in the “Logging“ element.
-func (o LoggingOutput) Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Logging) *string { return v.Prefix }).(pulumi.StringPtrOutput)
-}
-
-type LoggingPtrOutput struct{ *pulumi.OutputState }
-
-func (LoggingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Logging)(nil)).Elem()
-}
-
-func (o LoggingPtrOutput) ToLoggingPtrOutput() LoggingPtrOutput {
-	return o
-}
-
-func (o LoggingPtrOutput) ToLoggingPtrOutputWithContext(ctx context.Context) LoggingPtrOutput {
-	return o
-}
-
-func (o LoggingPtrOutput) Elem() LoggingOutput {
-	return o.ApplyT(func(v *Logging) Logging {
-		if v != nil {
-			return *v
-		}
-		var ret Logging
-		return ret
-	}).(LoggingOutput)
-}
-
-// The Amazon S3 bucket to store the access logs in, for example, “myawslogbucket.s3.amazonaws.com“.
-func (o LoggingPtrOutput) Bucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Logging) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Bucket
-	}).(pulumi.StringPtrOutput)
-}
-
-// <p>The cluster control plane logging configuration for your cluster.</p>
-func (o LoggingPtrOutput) ClusterLogging() LogSetupArrayOutput {
-	return o.ApplyT(func(v *Logging) []LogSetup {
-		if v == nil {
-			return nil
-		}
-		return v.ClusterLogging
-	}).(LogSetupArrayOutput)
-}
-
-// Specifies whether you want CloudFront to include cookies in access logs, specify “true“ for “IncludeCookies“. If you choose to include cookies in logs, CloudFront logs all cookies regardless of how you configure the cache behaviors for this distribution. If you don't want to include cookies when you create a distribution or if you want to disable include cookies for an existing distribution, specify “false“ for “IncludeCookies“.
-func (o LoggingPtrOutput) IncludeCookies() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Logging) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.IncludeCookies
-	}).(pulumi.BoolPtrOutput)
-}
-
-// An optional string that you want CloudFront to prefix to the access log “filenames“ for this distribution, for example, “myprefix/“. If you want to enable logging, but you don't want to specify a prefix, you still must include an empty “Prefix“ element in the “Logging“ element.
-func (o LoggingPtrOutput) Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Logging) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Prefix
-	}).(pulumi.StringPtrOutput)
-}
 
 // Definition of LoggingConfig
 type LoggingConfig struct {
@@ -1696,10 +335,18 @@ func (o LoggingConfigArrayOutput) Index(i pulumi.IntInput) LoggingConfigOutput {
 type LoggingConfigResponse struct {
 	// Set this property to filter the application logs for your function that Lambda sends to CloudWatch. Lambda only sends application logs at the selected level of detail and lower, where ``TRACE`` is the highest level and ``FATAL`` is the lowest.
 	ApplicationLogLevel *string `pulumi:"applicationLogLevel"`
+	// Property failureFeedbackRoleArn
+	FailureFeedbackRoleArn *string `pulumi:"failureFeedbackRoleArn"`
 	// The format in which Lambda sends your function's application and system logs to CloudWatch. Select between plain text and structured JSON.
 	LogFormat *string `pulumi:"logFormat"`
 	// The name of the Amazon CloudWatch log group the function sends logs to. By default, Lambda functions send logs to a default log group named ``/aws/lambda/<function name>``. To use a different log group, enter an existing log group or enter a new log group name.
 	LogGroup *string `pulumi:"logGroup"`
+	// Property protocol
+	Protocol *string `pulumi:"protocol"`
+	// Property successFeedbackRoleArn
+	SuccessFeedbackRoleArn *string `pulumi:"successFeedbackRoleArn"`
+	// Property successFeedbackSampleRate
+	SuccessFeedbackSampleRate *string `pulumi:"successFeedbackSampleRate"`
 	// Set this property to filter the system logs for your function that Lambda sends to CloudWatch. Lambda only sends system logs at the selected level of detail and lower, where ``DEBUG`` is the highest level and ``WARN`` is the lowest.
 	SystemLogLevel *string `pulumi:"systemLogLevel"`
 }
@@ -1724,6 +371,11 @@ func (o LoggingConfigResponseOutput) ApplicationLogLevel() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v LoggingConfigResponse) *string { return v.ApplicationLogLevel }).(pulumi.StringPtrOutput)
 }
 
+// Property failureFeedbackRoleArn
+func (o LoggingConfigResponseOutput) FailureFeedbackRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoggingConfigResponse) *string { return v.FailureFeedbackRoleArn }).(pulumi.StringPtrOutput)
+}
+
 // The format in which Lambda sends your function's application and system logs to CloudWatch. Select between plain text and structured JSON.
 func (o LoggingConfigResponseOutput) LogFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoggingConfigResponse) *string { return v.LogFormat }).(pulumi.StringPtrOutput)
@@ -1732,6 +384,21 @@ func (o LoggingConfigResponseOutput) LogFormat() pulumi.StringPtrOutput {
 // The name of the Amazon CloudWatch log group the function sends logs to. By default, Lambda functions send logs to a default log group named “/aws/lambda/<function name>“. To use a different log group, enter an existing log group or enter a new log group name.
 func (o LoggingConfigResponseOutput) LogGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoggingConfigResponse) *string { return v.LogGroup }).(pulumi.StringPtrOutput)
+}
+
+// Property protocol
+func (o LoggingConfigResponseOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoggingConfigResponse) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+}
+
+// Property successFeedbackRoleArn
+func (o LoggingConfigResponseOutput) SuccessFeedbackRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoggingConfigResponse) *string { return v.SuccessFeedbackRoleArn }).(pulumi.StringPtrOutput)
+}
+
+// Property successFeedbackSampleRate
+func (o LoggingConfigResponseOutput) SuccessFeedbackSampleRate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoggingConfigResponse) *string { return v.SuccessFeedbackSampleRate }).(pulumi.StringPtrOutput)
 }
 
 // Set this property to filter the system logs for your function that Lambda sends to CloudWatch. Lambda only sends system logs at the selected level of detail and lower, where “DEBUG“ is the highest level and “WARN“ is the lowest.
@@ -1773,6 +440,16 @@ func (o LoggingConfigResponsePtrOutput) ApplicationLogLevel() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Property failureFeedbackRoleArn
+func (o LoggingConfigResponsePtrOutput) FailureFeedbackRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoggingConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FailureFeedbackRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
 // The format in which Lambda sends your function's application and system logs to CloudWatch. Select between plain text and structured JSON.
 func (o LoggingConfigResponsePtrOutput) LogFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoggingConfigResponse) *string {
@@ -1793,6 +470,36 @@ func (o LoggingConfigResponsePtrOutput) LogGroup() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Property protocol
+func (o LoggingConfigResponsePtrOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoggingConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Protocol
+	}).(pulumi.StringPtrOutput)
+}
+
+// Property successFeedbackRoleArn
+func (o LoggingConfigResponsePtrOutput) SuccessFeedbackRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoggingConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SuccessFeedbackRoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Property successFeedbackSampleRate
+func (o LoggingConfigResponsePtrOutput) SuccessFeedbackSampleRate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoggingConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SuccessFeedbackSampleRate
+	}).(pulumi.StringPtrOutput)
+}
+
 // Set this property to filter the system logs for your function that Lambda sends to CloudWatch. Lambda only sends system logs at the selected level of detail and lower, where “DEBUG“ is the highest level and “WARN“ is the lowest.
 func (o LoggingConfigResponsePtrOutput) SystemLogLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoggingConfigResponse) *string {
@@ -1803,71 +510,24 @@ func (o LoggingConfigResponsePtrOutput) SystemLogLevel() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Definition of LoggingConfig
-type LoggingConfigResponseV1 struct {
-	// Property failureFeedbackRoleArn
-	FailureFeedbackRoleArn *string `pulumi:"failureFeedbackRoleArn"`
-	// Property protocol
-	Protocol *string `pulumi:"protocol"`
-	// Property successFeedbackRoleArn
-	SuccessFeedbackRoleArn *string `pulumi:"successFeedbackRoleArn"`
-	// Property successFeedbackSampleRate
-	SuccessFeedbackSampleRate *string `pulumi:"successFeedbackSampleRate"`
+type LoggingConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LoggingConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoggingConfigResponse)(nil)).Elem()
 }
 
-// Definition of LoggingConfig
-type LoggingConfigResponseV1Output struct{ *pulumi.OutputState }
-
-func (LoggingConfigResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoggingConfigResponseV1)(nil)).Elem()
-}
-
-func (o LoggingConfigResponseV1Output) ToLoggingConfigResponseV1Output() LoggingConfigResponseV1Output {
+func (o LoggingConfigResponseArrayOutput) ToLoggingConfigResponseArrayOutput() LoggingConfigResponseArrayOutput {
 	return o
 }
 
-func (o LoggingConfigResponseV1Output) ToLoggingConfigResponseV1OutputWithContext(ctx context.Context) LoggingConfigResponseV1Output {
+func (o LoggingConfigResponseArrayOutput) ToLoggingConfigResponseArrayOutputWithContext(ctx context.Context) LoggingConfigResponseArrayOutput {
 	return o
 }
 
-// Property failureFeedbackRoleArn
-func (o LoggingConfigResponseV1Output) FailureFeedbackRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoggingConfigResponseV1) *string { return v.FailureFeedbackRoleArn }).(pulumi.StringPtrOutput)
-}
-
-// Property protocol
-func (o LoggingConfigResponseV1Output) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoggingConfigResponseV1) *string { return v.Protocol }).(pulumi.StringPtrOutput)
-}
-
-// Property successFeedbackRoleArn
-func (o LoggingConfigResponseV1Output) SuccessFeedbackRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoggingConfigResponseV1) *string { return v.SuccessFeedbackRoleArn }).(pulumi.StringPtrOutput)
-}
-
-// Property successFeedbackSampleRate
-func (o LoggingConfigResponseV1Output) SuccessFeedbackSampleRate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoggingConfigResponseV1) *string { return v.SuccessFeedbackSampleRate }).(pulumi.StringPtrOutput)
-}
-
-type LoggingConfigResponseV1ArrayOutput struct{ *pulumi.OutputState }
-
-func (LoggingConfigResponseV1ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LoggingConfigResponseV1)(nil)).Elem()
-}
-
-func (o LoggingConfigResponseV1ArrayOutput) ToLoggingConfigResponseV1ArrayOutput() LoggingConfigResponseV1ArrayOutput {
-	return o
-}
-
-func (o LoggingConfigResponseV1ArrayOutput) ToLoggingConfigResponseV1ArrayOutputWithContext(ctx context.Context) LoggingConfigResponseV1ArrayOutput {
-	return o
-}
-
-func (o LoggingConfigResponseV1ArrayOutput) Index(i pulumi.IntInput) LoggingConfigResponseV1Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoggingConfigResponseV1 {
-		return vs[0].([]LoggingConfigResponseV1)[vs[1].(int)]
-	}).(LoggingConfigResponseV1Output)
+func (o LoggingConfigResponseArrayOutput) Index(i pulumi.IntInput) LoggingConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoggingConfigResponse {
+		return vs[0].([]LoggingConfigResponse)[vs[1].(int)]
+	}).(LoggingConfigResponseOutput)
 }
 
 // Definition of LoggingConfiguration
@@ -2306,7 +966,7 @@ type LoggingFilterModelPropertiesResponse struct {
 	// Default handling for logs that don't match any of the specified filtering conditions.
 	DefaultBehavior *string `pulumi:"defaultBehavior"`
 	// The filters that you want to apply to the logs.
-	Filters []FilterResponseV1 `pulumi:"filters"`
+	Filters []FilterResponse `pulumi:"filters"`
 }
 
 // Definition of LoggingFilterModelProperties
@@ -2330,8 +990,8 @@ func (o LoggingFilterModelPropertiesResponseOutput) DefaultBehavior() pulumi.Str
 }
 
 // The filters that you want to apply to the logs.
-func (o LoggingFilterModelPropertiesResponseOutput) Filters() FilterResponseV1ArrayOutput {
-	return o.ApplyT(func(v LoggingFilterModelPropertiesResponse) []FilterResponseV1 { return v.Filters }).(FilterResponseV1ArrayOutput)
+func (o LoggingFilterModelPropertiesResponseOutput) Filters() FilterResponseArrayOutput {
+	return o.ApplyT(func(v LoggingFilterModelPropertiesResponse) []FilterResponse { return v.Filters }).(FilterResponseArrayOutput)
 }
 
 type LoggingFilterModelPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
@@ -2369,13 +1029,13 @@ func (o LoggingFilterModelPropertiesResponsePtrOutput) DefaultBehavior() pulumi.
 }
 
 // The filters that you want to apply to the logs.
-func (o LoggingFilterModelPropertiesResponsePtrOutput) Filters() FilterResponseV1ArrayOutput {
-	return o.ApplyT(func(v *LoggingFilterModelPropertiesResponse) []FilterResponseV1 {
+func (o LoggingFilterModelPropertiesResponsePtrOutput) Filters() FilterResponseArrayOutput {
+	return o.ApplyT(func(v *LoggingFilterModelPropertiesResponse) []FilterResponse {
 		if v == nil {
 			return nil
 		}
 		return v.Filters
-	}).(FilterResponseV1ArrayOutput)
+	}).(FilterResponseArrayOutput)
 }
 
 // Definition of LoggingProperties
@@ -2618,6 +1278,8 @@ func (o LoggingPropertiesResponsePtrOutput) S3KeyPrefix() pulumi.StringPtrOutput
 type LoggingResponse struct {
 	// The Amazon S3 bucket to store the access logs in, for example, ``myawslogbucket.s3.amazonaws.com``.
 	Bucket *string `pulumi:"bucket"`
+	// <p>The cluster control plane logging configuration for your cluster.</p>
+	ClusterLogging []LogSetupResponse `pulumi:"clusterLogging"`
 	// Specifies whether you want CloudFront to include cookies in access logs, specify ``true`` for ``IncludeCookies``. If you choose to include cookies in logs, CloudFront logs all cookies regardless of how you configure the cache behaviors for this distribution. If you don't want to include cookies when you create a distribution or if you want to disable include cookies for an existing distribution, specify ``false`` for ``IncludeCookies``.
 	IncludeCookies *bool `pulumi:"includeCookies"`
 	// An optional string that you want CloudFront to prefix to the access log ``filenames`` for this distribution, for example, ``myprefix/``. If you want to enable logging, but you don't want to specify a prefix, you still must include an empty ``Prefix`` element in the ``Logging`` element.
@@ -2642,6 +1304,11 @@ func (o LoggingResponseOutput) ToLoggingResponseOutputWithContext(ctx context.Co
 // The Amazon S3 bucket to store the access logs in, for example, “myawslogbucket.s3.amazonaws.com“.
 func (o LoggingResponseOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoggingResponse) *string { return v.Bucket }).(pulumi.StringPtrOutput)
+}
+
+// <p>The cluster control plane logging configuration for your cluster.</p>
+func (o LoggingResponseOutput) ClusterLogging() LogSetupResponseArrayOutput {
+	return o.ApplyT(func(v LoggingResponse) []LogSetupResponse { return v.ClusterLogging }).(LogSetupResponseArrayOutput)
 }
 
 // Specifies whether you want CloudFront to include cookies in access logs, specify “true“ for “IncludeCookies“. If you choose to include cookies in logs, CloudFront logs all cookies regardless of how you configure the cache behaviors for this distribution. If you don't want to include cookies when you create a distribution or if you want to disable include cookies for an existing distribution, specify “false“ for “IncludeCookies“.
@@ -2688,6 +1355,16 @@ func (o LoggingResponsePtrOutput) Bucket() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// <p>The cluster control plane logging configuration for your cluster.</p>
+func (o LoggingResponsePtrOutput) ClusterLogging() LogSetupResponseArrayOutput {
+	return o.ApplyT(func(v *LoggingResponse) []LogSetupResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterLogging
+	}).(LogSetupResponseArrayOutput)
+}
+
 // Specifies whether you want CloudFront to include cookies in access logs, specify “true“ for “IncludeCookies“. If you choose to include cookies in logs, CloudFront logs all cookies regardless of how you configure the cache behaviors for this distribution. If you don't want to include cookies when you create a distribution or if you want to disable include cookies for an existing distribution, specify “false“ for “IncludeCookies“.
 func (o LoggingResponsePtrOutput) IncludeCookies() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *LoggingResponse) *bool {
@@ -2706,66 +1383,6 @@ func (o LoggingResponsePtrOutput) Prefix() pulumi.StringPtrOutput {
 		}
 		return v.Prefix
 	}).(pulumi.StringPtrOutput)
-}
-
-// Definition of Logging
-type LoggingResponseV1 struct {
-	// <p>The cluster control plane logging configuration for your cluster.</p>
-	ClusterLogging []LogSetupResponse `pulumi:"clusterLogging"`
-}
-
-// Definition of Logging
-type LoggingResponseV1Output struct{ *pulumi.OutputState }
-
-func (LoggingResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoggingResponseV1)(nil)).Elem()
-}
-
-func (o LoggingResponseV1Output) ToLoggingResponseV1Output() LoggingResponseV1Output {
-	return o
-}
-
-func (o LoggingResponseV1Output) ToLoggingResponseV1OutputWithContext(ctx context.Context) LoggingResponseV1Output {
-	return o
-}
-
-// <p>The cluster control plane logging configuration for your cluster.</p>
-func (o LoggingResponseV1Output) ClusterLogging() LogSetupResponseArrayOutput {
-	return o.ApplyT(func(v LoggingResponseV1) []LogSetupResponse { return v.ClusterLogging }).(LogSetupResponseArrayOutput)
-}
-
-type LoggingResponseV1PtrOutput struct{ *pulumi.OutputState }
-
-func (LoggingResponseV1PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoggingResponseV1)(nil)).Elem()
-}
-
-func (o LoggingResponseV1PtrOutput) ToLoggingResponseV1PtrOutput() LoggingResponseV1PtrOutput {
-	return o
-}
-
-func (o LoggingResponseV1PtrOutput) ToLoggingResponseV1PtrOutputWithContext(ctx context.Context) LoggingResponseV1PtrOutput {
-	return o
-}
-
-func (o LoggingResponseV1PtrOutput) Elem() LoggingResponseV1Output {
-	return o.ApplyT(func(v *LoggingResponseV1) LoggingResponseV1 {
-		if v != nil {
-			return *v
-		}
-		var ret LoggingResponseV1
-		return ret
-	}).(LoggingResponseV1Output)
-}
-
-// <p>The cluster control plane logging configuration for your cluster.</p>
-func (o LoggingResponseV1PtrOutput) ClusterLogging() LogSetupResponseArrayOutput {
-	return o.ApplyT(func(v *LoggingResponseV1) []LogSetupResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ClusterLogging
-	}).(LogSetupResponseArrayOutput)
 }
 
 // Definition of LogsConfig
@@ -8701,7 +7318,7 @@ type MetricTransformationResponse struct {
 	// (Optional) The value to emit when a filter pattern does not match a log event. This value can be null.
 	DefaultValue *int `pulumi:"defaultValue"`
 	// The fields to use as dimensions for the metric. One metric filter can include as many as three dimensions.  Metrics extracted from log events are charged as custom metrics. To prevent unexpected high charges, do not specify high-cardinality fields such as ``IPAddress`` or ``requestID`` as dimensions. Each different value found for a dimension is treated as a separate metric and accrues charges as a separate custom metric.  CloudWatch Logs disables a metric filter if it generates 1000 different name/value pairs for your specified dimensions within a certain amount of time. This helps to prevent accidental high charges. You can also set up a billing alarm to alert you if your charges are higher than expected. For more information, see [Creating a Billing Alarm to Monitor Your Estimated Charges](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html).
-	Dimensions []DimensionResponseV1 `pulumi:"dimensions"`
+	Dimensions []DimensionResponse `pulumi:"dimensions"`
 	// The name of the CloudWatch metric.
 	MetricName *string `pulumi:"metricName"`
 	// A custom namespace to contain your metric in CloudWatch. Use namespaces to group together metrics that are similar. For more information, see [Namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Namespace).
@@ -8733,8 +7350,8 @@ func (o MetricTransformationResponseOutput) DefaultValue() pulumi.IntPtrOutput {
 }
 
 // The fields to use as dimensions for the metric. One metric filter can include as many as three dimensions.  Metrics extracted from log events are charged as custom metrics. To prevent unexpected high charges, do not specify high-cardinality fields such as “IPAddress“ or “requestID“ as dimensions. Each different value found for a dimension is treated as a separate metric and accrues charges as a separate custom metric.  CloudWatch Logs disables a metric filter if it generates 1000 different name/value pairs for your specified dimensions within a certain amount of time. This helps to prevent accidental high charges. You can also set up a billing alarm to alert you if your charges are higher than expected. For more information, see [Creating a Billing Alarm to Monitor Your Estimated Charges](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html).
-func (o MetricTransformationResponseOutput) Dimensions() DimensionResponseV1ArrayOutput {
-	return o.ApplyT(func(v MetricTransformationResponse) []DimensionResponseV1 { return v.Dimensions }).(DimensionResponseV1ArrayOutput)
+func (o MetricTransformationResponseOutput) Dimensions() DimensionResponseArrayOutput {
+	return o.ApplyT(func(v MetricTransformationResponse) []DimensionResponse { return v.Dimensions }).(DimensionResponseArrayOutput)
 }
 
 // The name of the CloudWatch metric.
@@ -21591,7 +20208,9 @@ func (o ParameterGroupStatusResponsePtrOutput) ParameterGroupName() pulumi.Strin
 type ParameterResponse struct {
 	// The key associated with the parameter. If you don't specify a key and value for a particular parameter, AWS CloudFormation uses the default value that is specified in your template.
 	ParameterKey *string `pulumi:"parameterKey"`
-	// The input value associated with the parameter.
+	// The name of the parameter.
+	ParameterName *string `pulumi:"parameterName"`
+	// The value of the parameter. If `ParameterName` is `wlm_json_configuration`, then the maximum size of `ParameterValue` is 8000 characters.
 	ParameterValue *string `pulumi:"parameterValue"`
 }
 
@@ -21615,7 +20234,12 @@ func (o ParameterResponseOutput) ParameterKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ParameterResponse) *string { return v.ParameterKey }).(pulumi.StringPtrOutput)
 }
 
-// The input value associated with the parameter.
+// The name of the parameter.
+func (o ParameterResponseOutput) ParameterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParameterResponse) *string { return v.ParameterName }).(pulumi.StringPtrOutput)
+}
+
+// The value of the parameter. If `ParameterName` is `wlm_json_configuration`, then the maximum size of `ParameterValue` is 8000 characters.
 func (o ParameterResponseOutput) ParameterValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ParameterResponse) *string { return v.ParameterValue }).(pulumi.StringPtrOutput)
 }
@@ -21638,59 +20262,6 @@ func (o ParameterResponseArrayOutput) Index(i pulumi.IntInput) ParameterResponse
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ParameterResponse {
 		return vs[0].([]ParameterResponse)[vs[1].(int)]
 	}).(ParameterResponseOutput)
-}
-
-// Definition of Parameter
-type ParameterResponseV1 struct {
-	// The name of the parameter.
-	ParameterName *string `pulumi:"parameterName"`
-	// The value of the parameter. If `ParameterName` is `wlm_json_configuration`, then the maximum size of `ParameterValue` is 8000 characters.
-	ParameterValue *string `pulumi:"parameterValue"`
-}
-
-// Definition of Parameter
-type ParameterResponseV1Output struct{ *pulumi.OutputState }
-
-func (ParameterResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*ParameterResponseV1)(nil)).Elem()
-}
-
-func (o ParameterResponseV1Output) ToParameterResponseV1Output() ParameterResponseV1Output {
-	return o
-}
-
-func (o ParameterResponseV1Output) ToParameterResponseV1OutputWithContext(ctx context.Context) ParameterResponseV1Output {
-	return o
-}
-
-// The name of the parameter.
-func (o ParameterResponseV1Output) ParameterName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ParameterResponseV1) *string { return v.ParameterName }).(pulumi.StringPtrOutput)
-}
-
-// The value of the parameter. If `ParameterName` is `wlm_json_configuration`, then the maximum size of `ParameterValue` is 8000 characters.
-func (o ParameterResponseV1Output) ParameterValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ParameterResponseV1) *string { return v.ParameterValue }).(pulumi.StringPtrOutput)
-}
-
-type ParameterResponseV1ArrayOutput struct{ *pulumi.OutputState }
-
-func (ParameterResponseV1ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ParameterResponseV1)(nil)).Elem()
-}
-
-func (o ParameterResponseV1ArrayOutput) ToParameterResponseV1ArrayOutput() ParameterResponseV1ArrayOutput {
-	return o
-}
-
-func (o ParameterResponseV1ArrayOutput) ToParameterResponseV1ArrayOutputWithContext(ctx context.Context) ParameterResponseV1ArrayOutput {
-	return o
-}
-
-func (o ParameterResponseV1ArrayOutput) Index(i pulumi.IntInput) ParameterResponseV1Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ParameterResponseV1 {
-		return vs[0].([]ParameterResponseV1)[vs[1].(int)]
-	}).(ParameterResponseV1Output)
 }
 
 // Definition of PartitionedPrefix
@@ -24894,7 +23465,7 @@ type PortMapping struct {
 	AppProtocol *string `pulumi:"appProtocol"`
 	// The port number on the container that's bound to the user-specified or automatically assigned host port. If you use containers in a task with the ``awsvpc`` or ``host`` network mode, specify the exposed ports using ``containerPort``. If you use containers in a task with the ``bridge`` network mode and you specify a container port and not a host port, your container automatically receives a host port in the ephemeral port range. For more information, see ``hostPort``. Port mappings that are automatically assigned in this way do not count toward the 100 reserved ports limit of a container instance.
 	ContainerPort *int `pulumi:"containerPort"`
-	// The port number range on the container that's bound to the dynamically mapped host port range.  The following rules apply when you specify a ``containerPortRange``:  +  You must use either the ``bridge`` network mode or the ``awsvpc`` network mode.  +  This parameter is available for both the EC2 and FARGATElong launch types.  +  This parameter is available for both the Linux and Windows operating systems.  +  The container instance must have at least version 1.67.0 of the container agent and at least version 1.67.0-1 of the ``ecs-init`` package   +  You can specify a maximum of 100 port ranges per container.  +  You do not specify a ``hostPortRange``. The value of the ``hostPortRange`` is set as follows:  +  For containers in a task with the ``awsvpc`` network mode, the ``hostPortRange`` is set to the same value as the ``containerPortRange``. This is a static mapping strategy.  +  For containers in a task with the ``bridge`` network mode, the Amazon ECS agent finds open host ports from the default ephemeral range and passes it to docker to bind them to the container ports.    +  The ``containerPortRange`` valid values are between 1 and 65535.  +  A port can only be included in one port mapping per container.  +  You cannot specify overlapping port ranges.  +  The first port in the range must be less than last port in the range.  +  Docker recommends that you turn off the docker-proxy in the Docker daemon config file when you have a large number of ports. For more information, see [Issue #11185](https://github.com/moby/moby/issues/11185) on the Github website. For information about how to turn off the docker-proxy in the Docker daemon config file, see [Docker daemon](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/bootstrap_container_instance.html#bootstrap_docker_daemon) in the *Amazon ECS Developer Guide*.   You can call [DescribeTasks](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeTasks.html) to view the ``hostPortRange`` which are the host ports that are bound to the container ports.
+	// The port number range on the container that's bound to the dynamically mapped host port range.  The following rules apply when you specify a ``containerPortRange``:  +  You must use either the ``bridge`` network mode or the ``awsvpc`` network mode.  +  This parameter is available for both the EC2 and FARGATElong launch types.  +  This parameter is available for both the Linux and Windows operating systems.  +  The container instance must have at least version 1.67.0 of the container agent and at least version 1.67.0-1 of the ``ecs-init`` package   +  You can specify a maximum of 100 port ranges per container.  +  You do not specify a ``hostPortRange``. The value of the ``hostPortRange`` is set as follows:  +  For containers in a task with the ``awsvpc`` network mode, the ``hostPortRange`` is set to the same value as the ``containerPortRange``. This is a static mapping strategy.  +  For containers in a task with the ``bridge`` network mode, the Amazon ECS agent finds open host ports from the default ephemeral range and passes it to docker to bind them to the container ports.    +  The ``containerPortRange`` valid values are between 1 and 65535.  +  A port can only be included in one port mapping per container.  +  You cannot specify overlapping port ranges.  +  The first port in the range must be less than last port in the range.  +  Docker recommends that you turn off the docker-proxy in the Docker daemon config file when you have a large number of ports. For more information, see [Issue #11185](https://docs.aws.amazon.com/https://github.com/moby/moby/issues/11185) on the Github website. For information about how to turn off the docker-proxy in the Docker daemon config file, see [Docker daemon](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/bootstrap_container_instance.html#bootstrap_docker_daemon) in the *Amazon ECS Developer Guide*.   You can call [DescribeTasks](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeTasks.html) to view the ``hostPortRange`` which are the host ports that are bound to the container ports.
 	ContainerPortRange *string `pulumi:"containerPortRange"`
 	// The port number on the container instance to reserve for your container. If you specify a ``containerPortRange``, leave this field empty and the value of the ``hostPort`` is set as follows:  +  For containers in a task with the ``awsvpc`` network mode, the ``hostPort`` is set to the same value as the ``containerPort``. This is a static mapping strategy.  +  For containers in a task with the ``bridge`` network mode, the Amazon ECS agent finds open ports on the host and automatically binds them to the container ports. This is a dynamic mapping strategy.   If you use containers in a task with the ``awsvpc`` or ``host`` network mode, the ``hostPort`` can either be left blank or set to the same value as the ``containerPort``. If you use containers in a task with the ``bridge`` network mode, you can specify a non-reserved host port for your container port mapping, or you can omit the ``hostPort`` (or set it to ``0``) while specifying a ``containerPort`` and your container automatically receives a port in the ephemeral port range for your container instance operating system and Docker version. The default ephemeral port range for Docker version 1.6.0 and later is listed on the instance under ``/proc/sys/net/ipv4/ip_local_port_range``. If this kernel parameter is unavailable, the default ephemeral port range from 49153 through 65535 (Linux) or 49152 through 65535 (Windows) is used. Do not attempt to specify a host port in the ephemeral port range as these are reserved for automatic assignment. In general, ports below 32768 are outside of the ephemeral port range. The default reserved ports are 22 for SSH, the Docker ports 2375 and 2376, and the Amazon ECS container agent ports 51678-51680. Any host port that was previously specified in a running task is also reserved while the task is running. That is, after a task stops, the host port is released. The current reserved ports are displayed in the ``remainingResources`` of [DescribeContainerInstances](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeContainerInstances.html) output. A container instance can have up to 100 reserved ports at a time. This number includes the default reserved ports. Automatically assigned ports aren't included in the 100 reserved ports quota.
 	HostPort *int `pulumi:"hostPort"`
@@ -24921,7 +23492,7 @@ type PortMappingArgs struct {
 	AppProtocol pulumi.StringPtrInput `pulumi:"appProtocol"`
 	// The port number on the container that's bound to the user-specified or automatically assigned host port. If you use containers in a task with the ``awsvpc`` or ``host`` network mode, specify the exposed ports using ``containerPort``. If you use containers in a task with the ``bridge`` network mode and you specify a container port and not a host port, your container automatically receives a host port in the ephemeral port range. For more information, see ``hostPort``. Port mappings that are automatically assigned in this way do not count toward the 100 reserved ports limit of a container instance.
 	ContainerPort pulumi.IntPtrInput `pulumi:"containerPort"`
-	// The port number range on the container that's bound to the dynamically mapped host port range.  The following rules apply when you specify a ``containerPortRange``:  +  You must use either the ``bridge`` network mode or the ``awsvpc`` network mode.  +  This parameter is available for both the EC2 and FARGATElong launch types.  +  This parameter is available for both the Linux and Windows operating systems.  +  The container instance must have at least version 1.67.0 of the container agent and at least version 1.67.0-1 of the ``ecs-init`` package   +  You can specify a maximum of 100 port ranges per container.  +  You do not specify a ``hostPortRange``. The value of the ``hostPortRange`` is set as follows:  +  For containers in a task with the ``awsvpc`` network mode, the ``hostPortRange`` is set to the same value as the ``containerPortRange``. This is a static mapping strategy.  +  For containers in a task with the ``bridge`` network mode, the Amazon ECS agent finds open host ports from the default ephemeral range and passes it to docker to bind them to the container ports.    +  The ``containerPortRange`` valid values are between 1 and 65535.  +  A port can only be included in one port mapping per container.  +  You cannot specify overlapping port ranges.  +  The first port in the range must be less than last port in the range.  +  Docker recommends that you turn off the docker-proxy in the Docker daemon config file when you have a large number of ports. For more information, see [Issue #11185](https://github.com/moby/moby/issues/11185) on the Github website. For information about how to turn off the docker-proxy in the Docker daemon config file, see [Docker daemon](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/bootstrap_container_instance.html#bootstrap_docker_daemon) in the *Amazon ECS Developer Guide*.   You can call [DescribeTasks](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeTasks.html) to view the ``hostPortRange`` which are the host ports that are bound to the container ports.
+	// The port number range on the container that's bound to the dynamically mapped host port range.  The following rules apply when you specify a ``containerPortRange``:  +  You must use either the ``bridge`` network mode or the ``awsvpc`` network mode.  +  This parameter is available for both the EC2 and FARGATElong launch types.  +  This parameter is available for both the Linux and Windows operating systems.  +  The container instance must have at least version 1.67.0 of the container agent and at least version 1.67.0-1 of the ``ecs-init`` package   +  You can specify a maximum of 100 port ranges per container.  +  You do not specify a ``hostPortRange``. The value of the ``hostPortRange`` is set as follows:  +  For containers in a task with the ``awsvpc`` network mode, the ``hostPortRange`` is set to the same value as the ``containerPortRange``. This is a static mapping strategy.  +  For containers in a task with the ``bridge`` network mode, the Amazon ECS agent finds open host ports from the default ephemeral range and passes it to docker to bind them to the container ports.    +  The ``containerPortRange`` valid values are between 1 and 65535.  +  A port can only be included in one port mapping per container.  +  You cannot specify overlapping port ranges.  +  The first port in the range must be less than last port in the range.  +  Docker recommends that you turn off the docker-proxy in the Docker daemon config file when you have a large number of ports. For more information, see [Issue #11185](https://docs.aws.amazon.com/https://github.com/moby/moby/issues/11185) on the Github website. For information about how to turn off the docker-proxy in the Docker daemon config file, see [Docker daemon](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/bootstrap_container_instance.html#bootstrap_docker_daemon) in the *Amazon ECS Developer Guide*.   You can call [DescribeTasks](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeTasks.html) to view the ``hostPortRange`` which are the host ports that are bound to the container ports.
 	ContainerPortRange pulumi.StringPtrInput `pulumi:"containerPortRange"`
 	// The port number on the container instance to reserve for your container. If you specify a ``containerPortRange``, leave this field empty and the value of the ``hostPort`` is set as follows:  +  For containers in a task with the ``awsvpc`` network mode, the ``hostPort`` is set to the same value as the ``containerPort``. This is a static mapping strategy.  +  For containers in a task with the ``bridge`` network mode, the Amazon ECS agent finds open ports on the host and automatically binds them to the container ports. This is a dynamic mapping strategy.   If you use containers in a task with the ``awsvpc`` or ``host`` network mode, the ``hostPort`` can either be left blank or set to the same value as the ``containerPort``. If you use containers in a task with the ``bridge`` network mode, you can specify a non-reserved host port for your container port mapping, or you can omit the ``hostPort`` (or set it to ``0``) while specifying a ``containerPort`` and your container automatically receives a port in the ephemeral port range for your container instance operating system and Docker version. The default ephemeral port range for Docker version 1.6.0 and later is listed on the instance under ``/proc/sys/net/ipv4/ip_local_port_range``. If this kernel parameter is unavailable, the default ephemeral port range from 49153 through 65535 (Linux) or 49152 through 65535 (Windows) is used. Do not attempt to specify a host port in the ephemeral port range as these are reserved for automatic assignment. In general, ports below 32768 are outside of the ephemeral port range. The default reserved ports are 22 for SSH, the Docker ports 2375 and 2376, and the Amazon ECS container agent ports 51678-51680. Any host port that was previously specified in a running task is also reserved while the task is running. That is, after a task stops, the host port is released. The current reserved ports are displayed in the ``remainingResources`` of [DescribeContainerInstances](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeContainerInstances.html) output. A container instance can have up to 100 reserved ports at a time. This number includes the default reserved ports. Automatically assigned ports aren't included in the 100 reserved ports quota.
 	HostPort pulumi.IntPtrInput `pulumi:"hostPort"`
@@ -24993,7 +23564,7 @@ func (o PortMappingOutput) ContainerPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PortMapping) *int { return v.ContainerPort }).(pulumi.IntPtrOutput)
 }
 
-// The port number range on the container that's bound to the dynamically mapped host port range.  The following rules apply when you specify a “containerPortRange“:  +  You must use either the “bridge“ network mode or the “awsvpc“ network mode.  +  This parameter is available for both the EC2 and FARGATElong launch types.  +  This parameter is available for both the Linux and Windows operating systems.  +  The container instance must have at least version 1.67.0 of the container agent and at least version 1.67.0-1 of the “ecs-init“ package   +  You can specify a maximum of 100 port ranges per container.  +  You do not specify a “hostPortRange“. The value of the “hostPortRange“ is set as follows:  +  For containers in a task with the “awsvpc“ network mode, the “hostPortRange“ is set to the same value as the “containerPortRange“. This is a static mapping strategy.  +  For containers in a task with the “bridge“ network mode, the Amazon ECS agent finds open host ports from the default ephemeral range and passes it to docker to bind them to the container ports.    +  The “containerPortRange“ valid values are between 1 and 65535.  +  A port can only be included in one port mapping per container.  +  You cannot specify overlapping port ranges.  +  The first port in the range must be less than last port in the range.  +  Docker recommends that you turn off the docker-proxy in the Docker daemon config file when you have a large number of ports. For more information, see [Issue #11185](https://github.com/moby/moby/issues/11185) on the Github website. For information about how to turn off the docker-proxy in the Docker daemon config file, see [Docker daemon](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/bootstrap_container_instance.html#bootstrap_docker_daemon) in the *Amazon ECS Developer Guide*.   You can call [DescribeTasks](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeTasks.html) to view the “hostPortRange“ which are the host ports that are bound to the container ports.
+// The port number range on the container that's bound to the dynamically mapped host port range.  The following rules apply when you specify a “containerPortRange“:  +  You must use either the “bridge“ network mode or the “awsvpc“ network mode.  +  This parameter is available for both the EC2 and FARGATElong launch types.  +  This parameter is available for both the Linux and Windows operating systems.  +  The container instance must have at least version 1.67.0 of the container agent and at least version 1.67.0-1 of the “ecs-init“ package   +  You can specify a maximum of 100 port ranges per container.  +  You do not specify a “hostPortRange“. The value of the “hostPortRange“ is set as follows:  +  For containers in a task with the “awsvpc“ network mode, the “hostPortRange“ is set to the same value as the “containerPortRange“. This is a static mapping strategy.  +  For containers in a task with the “bridge“ network mode, the Amazon ECS agent finds open host ports from the default ephemeral range and passes it to docker to bind them to the container ports.    +  The “containerPortRange“ valid values are between 1 and 65535.  +  A port can only be included in one port mapping per container.  +  You cannot specify overlapping port ranges.  +  The first port in the range must be less than last port in the range.  +  Docker recommends that you turn off the docker-proxy in the Docker daemon config file when you have a large number of ports. For more information, see [Issue #11185](https://docs.aws.amazon.com/https://github.com/moby/moby/issues/11185) on the Github website. For information about how to turn off the docker-proxy in the Docker daemon config file, see [Docker daemon](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/bootstrap_container_instance.html#bootstrap_docker_daemon) in the *Amazon ECS Developer Guide*.   You can call [DescribeTasks](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeTasks.html) to view the “hostPortRange“ which are the host ports that are bound to the container ports.
 func (o PortMappingOutput) ContainerPortRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PortMapping) *string { return v.ContainerPortRange }).(pulumi.StringPtrOutput)
 }
@@ -25039,7 +23610,7 @@ type PortMappingResponse struct {
 	AppProtocol *string `pulumi:"appProtocol"`
 	// The port number on the container that's bound to the user-specified or automatically assigned host port. If you use containers in a task with the ``awsvpc`` or ``host`` network mode, specify the exposed ports using ``containerPort``. If you use containers in a task with the ``bridge`` network mode and you specify a container port and not a host port, your container automatically receives a host port in the ephemeral port range. For more information, see ``hostPort``. Port mappings that are automatically assigned in this way do not count toward the 100 reserved ports limit of a container instance.
 	ContainerPort *int `pulumi:"containerPort"`
-	// The port number range on the container that's bound to the dynamically mapped host port range.  The following rules apply when you specify a ``containerPortRange``:  +  You must use either the ``bridge`` network mode or the ``awsvpc`` network mode.  +  This parameter is available for both the EC2 and FARGATElong launch types.  +  This parameter is available for both the Linux and Windows operating systems.  +  The container instance must have at least version 1.67.0 of the container agent and at least version 1.67.0-1 of the ``ecs-init`` package   +  You can specify a maximum of 100 port ranges per container.  +  You do not specify a ``hostPortRange``. The value of the ``hostPortRange`` is set as follows:  +  For containers in a task with the ``awsvpc`` network mode, the ``hostPortRange`` is set to the same value as the ``containerPortRange``. This is a static mapping strategy.  +  For containers in a task with the ``bridge`` network mode, the Amazon ECS agent finds open host ports from the default ephemeral range and passes it to docker to bind them to the container ports.    +  The ``containerPortRange`` valid values are between 1 and 65535.  +  A port can only be included in one port mapping per container.  +  You cannot specify overlapping port ranges.  +  The first port in the range must be less than last port in the range.  +  Docker recommends that you turn off the docker-proxy in the Docker daemon config file when you have a large number of ports. For more information, see [Issue #11185](https://github.com/moby/moby/issues/11185) on the Github website. For information about how to turn off the docker-proxy in the Docker daemon config file, see [Docker daemon](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/bootstrap_container_instance.html#bootstrap_docker_daemon) in the *Amazon ECS Developer Guide*.   You can call [DescribeTasks](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeTasks.html) to view the ``hostPortRange`` which are the host ports that are bound to the container ports.
+	// The port number range on the container that's bound to the dynamically mapped host port range.  The following rules apply when you specify a ``containerPortRange``:  +  You must use either the ``bridge`` network mode or the ``awsvpc`` network mode.  +  This parameter is available for both the EC2 and FARGATElong launch types.  +  This parameter is available for both the Linux and Windows operating systems.  +  The container instance must have at least version 1.67.0 of the container agent and at least version 1.67.0-1 of the ``ecs-init`` package   +  You can specify a maximum of 100 port ranges per container.  +  You do not specify a ``hostPortRange``. The value of the ``hostPortRange`` is set as follows:  +  For containers in a task with the ``awsvpc`` network mode, the ``hostPortRange`` is set to the same value as the ``containerPortRange``. This is a static mapping strategy.  +  For containers in a task with the ``bridge`` network mode, the Amazon ECS agent finds open host ports from the default ephemeral range and passes it to docker to bind them to the container ports.    +  The ``containerPortRange`` valid values are between 1 and 65535.  +  A port can only be included in one port mapping per container.  +  You cannot specify overlapping port ranges.  +  The first port in the range must be less than last port in the range.  +  Docker recommends that you turn off the docker-proxy in the Docker daemon config file when you have a large number of ports. For more information, see [Issue #11185](https://docs.aws.amazon.com/https://github.com/moby/moby/issues/11185) on the Github website. For information about how to turn off the docker-proxy in the Docker daemon config file, see [Docker daemon](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/bootstrap_container_instance.html#bootstrap_docker_daemon) in the *Amazon ECS Developer Guide*.   You can call [DescribeTasks](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeTasks.html) to view the ``hostPortRange`` which are the host ports that are bound to the container ports.
 	ContainerPortRange *string `pulumi:"containerPortRange"`
 	// The port number on the container instance to reserve for your container. If you specify a ``containerPortRange``, leave this field empty and the value of the ``hostPort`` is set as follows:  +  For containers in a task with the ``awsvpc`` network mode, the ``hostPort`` is set to the same value as the ``containerPort``. This is a static mapping strategy.  +  For containers in a task with the ``bridge`` network mode, the Amazon ECS agent finds open ports on the host and automatically binds them to the container ports. This is a dynamic mapping strategy.   If you use containers in a task with the ``awsvpc`` or ``host`` network mode, the ``hostPort`` can either be left blank or set to the same value as the ``containerPort``. If you use containers in a task with the ``bridge`` network mode, you can specify a non-reserved host port for your container port mapping, or you can omit the ``hostPort`` (or set it to ``0``) while specifying a ``containerPort`` and your container automatically receives a port in the ephemeral port range for your container instance operating system and Docker version. The default ephemeral port range for Docker version 1.6.0 and later is listed on the instance under ``/proc/sys/net/ipv4/ip_local_port_range``. If this kernel parameter is unavailable, the default ephemeral port range from 49153 through 65535 (Linux) or 49152 through 65535 (Windows) is used. Do not attempt to specify a host port in the ephemeral port range as these are reserved for automatic assignment. In general, ports below 32768 are outside of the ephemeral port range. The default reserved ports are 22 for SSH, the Docker ports 2375 and 2376, and the Amazon ECS container agent ports 51678-51680. Any host port that was previously specified in a running task is also reserved while the task is running. That is, after a task stops, the host port is released. The current reserved ports are displayed in the ``remainingResources`` of [DescribeContainerInstances](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeContainerInstances.html) output. A container instance can have up to 100 reserved ports at a time. This number includes the default reserved ports. Automatically assigned ports aren't included in the 100 reserved ports quota.
 	HostPort *int `pulumi:"hostPort"`
@@ -25074,7 +23645,7 @@ func (o PortMappingResponseOutput) ContainerPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PortMappingResponse) *int { return v.ContainerPort }).(pulumi.IntPtrOutput)
 }
 
-// The port number range on the container that's bound to the dynamically mapped host port range.  The following rules apply when you specify a “containerPortRange“:  +  You must use either the “bridge“ network mode or the “awsvpc“ network mode.  +  This parameter is available for both the EC2 and FARGATElong launch types.  +  This parameter is available for both the Linux and Windows operating systems.  +  The container instance must have at least version 1.67.0 of the container agent and at least version 1.67.0-1 of the “ecs-init“ package   +  You can specify a maximum of 100 port ranges per container.  +  You do not specify a “hostPortRange“. The value of the “hostPortRange“ is set as follows:  +  For containers in a task with the “awsvpc“ network mode, the “hostPortRange“ is set to the same value as the “containerPortRange“. This is a static mapping strategy.  +  For containers in a task with the “bridge“ network mode, the Amazon ECS agent finds open host ports from the default ephemeral range and passes it to docker to bind them to the container ports.    +  The “containerPortRange“ valid values are between 1 and 65535.  +  A port can only be included in one port mapping per container.  +  You cannot specify overlapping port ranges.  +  The first port in the range must be less than last port in the range.  +  Docker recommends that you turn off the docker-proxy in the Docker daemon config file when you have a large number of ports. For more information, see [Issue #11185](https://github.com/moby/moby/issues/11185) on the Github website. For information about how to turn off the docker-proxy in the Docker daemon config file, see [Docker daemon](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/bootstrap_container_instance.html#bootstrap_docker_daemon) in the *Amazon ECS Developer Guide*.   You can call [DescribeTasks](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeTasks.html) to view the “hostPortRange“ which are the host ports that are bound to the container ports.
+// The port number range on the container that's bound to the dynamically mapped host port range.  The following rules apply when you specify a “containerPortRange“:  +  You must use either the “bridge“ network mode or the “awsvpc“ network mode.  +  This parameter is available for both the EC2 and FARGATElong launch types.  +  This parameter is available for both the Linux and Windows operating systems.  +  The container instance must have at least version 1.67.0 of the container agent and at least version 1.67.0-1 of the “ecs-init“ package   +  You can specify a maximum of 100 port ranges per container.  +  You do not specify a “hostPortRange“. The value of the “hostPortRange“ is set as follows:  +  For containers in a task with the “awsvpc“ network mode, the “hostPortRange“ is set to the same value as the “containerPortRange“. This is a static mapping strategy.  +  For containers in a task with the “bridge“ network mode, the Amazon ECS agent finds open host ports from the default ephemeral range and passes it to docker to bind them to the container ports.    +  The “containerPortRange“ valid values are between 1 and 65535.  +  A port can only be included in one port mapping per container.  +  You cannot specify overlapping port ranges.  +  The first port in the range must be less than last port in the range.  +  Docker recommends that you turn off the docker-proxy in the Docker daemon config file when you have a large number of ports. For more information, see [Issue #11185](https://docs.aws.amazon.com/https://github.com/moby/moby/issues/11185) on the Github website. For information about how to turn off the docker-proxy in the Docker daemon config file, see [Docker daemon](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/bootstrap_container_instance.html#bootstrap_docker_daemon) in the *Amazon ECS Developer Guide*.   You can call [DescribeTasks](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeTasks.html) to view the “hostPortRange“ which are the host ports that are bound to the container ports.
 func (o PortMappingResponseOutput) ContainerPortRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PortMappingResponse) *string { return v.ContainerPortRange }).(pulumi.StringPtrOutput)
 }
@@ -32016,7 +30587,7 @@ func (o PublishMetricActionPtrOutput) Dimensions() DimensionArrayOutput {
 // Definition of PublishMetricAction
 type PublishMetricActionResponse struct {
 	// Property dimensions
-	Dimensions []DimensionResponseV2 `pulumi:"dimensions"`
+	Dimensions []DimensionResponse `pulumi:"dimensions"`
 }
 
 // Definition of PublishMetricAction
@@ -32035,8 +30606,8 @@ func (o PublishMetricActionResponseOutput) ToPublishMetricActionResponseOutputWi
 }
 
 // Property dimensions
-func (o PublishMetricActionResponseOutput) Dimensions() DimensionResponseV2ArrayOutput {
-	return o.ApplyT(func(v PublishMetricActionResponse) []DimensionResponseV2 { return v.Dimensions }).(DimensionResponseV2ArrayOutput)
+func (o PublishMetricActionResponseOutput) Dimensions() DimensionResponseArrayOutput {
+	return o.ApplyT(func(v PublishMetricActionResponse) []DimensionResponse { return v.Dimensions }).(DimensionResponseArrayOutput)
 }
 
 type PublishMetricActionResponsePtrOutput struct{ *pulumi.OutputState }
@@ -32064,73 +30635,13 @@ func (o PublishMetricActionResponsePtrOutput) Elem() PublishMetricActionResponse
 }
 
 // Property dimensions
-func (o PublishMetricActionResponsePtrOutput) Dimensions() DimensionResponseV2ArrayOutput {
-	return o.ApplyT(func(v *PublishMetricActionResponse) []DimensionResponseV2 {
+func (o PublishMetricActionResponsePtrOutput) Dimensions() DimensionResponseArrayOutput {
+	return o.ApplyT(func(v *PublishMetricActionResponse) []DimensionResponse {
 		if v == nil {
 			return nil
 		}
 		return v.Dimensions
-	}).(DimensionResponseV2ArrayOutput)
-}
-
-// Definition of PublishMetricAction
-type PublishMetricActionResponseV1 struct {
-	// Property dimensions
-	Dimensions []DimensionResponseV3 `pulumi:"dimensions"`
-}
-
-// Definition of PublishMetricAction
-type PublishMetricActionResponseV1Output struct{ *pulumi.OutputState }
-
-func (PublishMetricActionResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*PublishMetricActionResponseV1)(nil)).Elem()
-}
-
-func (o PublishMetricActionResponseV1Output) ToPublishMetricActionResponseV1Output() PublishMetricActionResponseV1Output {
-	return o
-}
-
-func (o PublishMetricActionResponseV1Output) ToPublishMetricActionResponseV1OutputWithContext(ctx context.Context) PublishMetricActionResponseV1Output {
-	return o
-}
-
-// Property dimensions
-func (o PublishMetricActionResponseV1Output) Dimensions() DimensionResponseV3ArrayOutput {
-	return o.ApplyT(func(v PublishMetricActionResponseV1) []DimensionResponseV3 { return v.Dimensions }).(DimensionResponseV3ArrayOutput)
-}
-
-type PublishMetricActionResponseV1PtrOutput struct{ *pulumi.OutputState }
-
-func (PublishMetricActionResponseV1PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PublishMetricActionResponseV1)(nil)).Elem()
-}
-
-func (o PublishMetricActionResponseV1PtrOutput) ToPublishMetricActionResponseV1PtrOutput() PublishMetricActionResponseV1PtrOutput {
-	return o
-}
-
-func (o PublishMetricActionResponseV1PtrOutput) ToPublishMetricActionResponseV1PtrOutputWithContext(ctx context.Context) PublishMetricActionResponseV1PtrOutput {
-	return o
-}
-
-func (o PublishMetricActionResponseV1PtrOutput) Elem() PublishMetricActionResponseV1Output {
-	return o.ApplyT(func(v *PublishMetricActionResponseV1) PublishMetricActionResponseV1 {
-		if v != nil {
-			return *v
-		}
-		var ret PublishMetricActionResponseV1
-		return ret
-	}).(PublishMetricActionResponseV1Output)
-}
-
-// Property dimensions
-func (o PublishMetricActionResponseV1PtrOutput) Dimensions() DimensionResponseV3ArrayOutput {
-	return o.ApplyT(func(v *PublishMetricActionResponseV1) []DimensionResponseV3 {
-		if v == nil {
-			return nil
-		}
-		return v.Dimensions
-	}).(DimensionResponseV3ArrayOutput)
+	}).(DimensionResponseArrayOutput)
 }
 
 // Definition of QueryLoggingConfig
@@ -40307,6 +38818,10 @@ func (o ReplicationConfigurationPtrOutput) Rules() ReplicationRuleArrayOutput {
 type ReplicationConfigurationResponse struct {
 	// An array of destination objects. Only one destination object is supported.
 	Destinations []ReplicationDestinationResponse `pulumi:"destinations"`
+	// The Amazon Resource Name (ARN) of the IAMlong (IAM) role that Amazon S3 assumes when replicating objects. For more information, see [How to Set Up Replication](https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-how-setup.html) in the *Amazon S3 User Guide*.
+	Role *string `pulumi:"role"`
+	// A container for one or more replication rules. A replication configuration must have at least one rule and can contain a maximum of 1,000 rules.
+	Rules []ReplicationRuleResponse `pulumi:"rules"`
 }
 
 // Definition of ReplicationConfiguration
@@ -40327,6 +38842,16 @@ func (o ReplicationConfigurationResponseOutput) ToReplicationConfigurationRespon
 // An array of destination objects. Only one destination object is supported.
 func (o ReplicationConfigurationResponseOutput) Destinations() ReplicationDestinationResponseArrayOutput {
 	return o.ApplyT(func(v ReplicationConfigurationResponse) []ReplicationDestinationResponse { return v.Destinations }).(ReplicationDestinationResponseArrayOutput)
+}
+
+// The Amazon Resource Name (ARN) of the IAMlong (IAM) role that Amazon S3 assumes when replicating objects. For more information, see [How to Set Up Replication](https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-how-setup.html) in the *Amazon S3 User Guide*.
+func (o ReplicationConfigurationResponseOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationConfigurationResponse) *string { return v.Role }).(pulumi.StringPtrOutput)
+}
+
+// A container for one or more replication rules. A replication configuration must have at least one rule and can contain a maximum of 1,000 rules.
+func (o ReplicationConfigurationResponseOutput) Rules() ReplicationRuleResponseArrayOutput {
+	return o.ApplyT(func(v ReplicationConfigurationResponse) []ReplicationRuleResponse { return v.Rules }).(ReplicationRuleResponseArrayOutput)
 }
 
 type ReplicationConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
@@ -40363,66 +38888,9 @@ func (o ReplicationConfigurationResponsePtrOutput) Destinations() ReplicationDes
 	}).(ReplicationDestinationResponseArrayOutput)
 }
 
-// Definition of ReplicationConfiguration
-type ReplicationConfigurationResponseV1 struct {
-	// The Amazon Resource Name (ARN) of the IAMlong (IAM) role that Amazon S3 assumes when replicating objects. For more information, see [How to Set Up Replication](https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-how-setup.html) in the *Amazon S3 User Guide*.
-	Role *string `pulumi:"role"`
-	// A container for one or more replication rules. A replication configuration must have at least one rule and can contain a maximum of 1,000 rules.
-	Rules []ReplicationRuleResponse `pulumi:"rules"`
-}
-
-// Definition of ReplicationConfiguration
-type ReplicationConfigurationResponseV1Output struct{ *pulumi.OutputState }
-
-func (ReplicationConfigurationResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReplicationConfigurationResponseV1)(nil)).Elem()
-}
-
-func (o ReplicationConfigurationResponseV1Output) ToReplicationConfigurationResponseV1Output() ReplicationConfigurationResponseV1Output {
-	return o
-}
-
-func (o ReplicationConfigurationResponseV1Output) ToReplicationConfigurationResponseV1OutputWithContext(ctx context.Context) ReplicationConfigurationResponseV1Output {
-	return o
-}
-
 // The Amazon Resource Name (ARN) of the IAMlong (IAM) role that Amazon S3 assumes when replicating objects. For more information, see [How to Set Up Replication](https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-how-setup.html) in the *Amazon S3 User Guide*.
-func (o ReplicationConfigurationResponseV1Output) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ReplicationConfigurationResponseV1) *string { return v.Role }).(pulumi.StringPtrOutput)
-}
-
-// A container for one or more replication rules. A replication configuration must have at least one rule and can contain a maximum of 1,000 rules.
-func (o ReplicationConfigurationResponseV1Output) Rules() ReplicationRuleResponseArrayOutput {
-	return o.ApplyT(func(v ReplicationConfigurationResponseV1) []ReplicationRuleResponse { return v.Rules }).(ReplicationRuleResponseArrayOutput)
-}
-
-type ReplicationConfigurationResponseV1PtrOutput struct{ *pulumi.OutputState }
-
-func (ReplicationConfigurationResponseV1PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ReplicationConfigurationResponseV1)(nil)).Elem()
-}
-
-func (o ReplicationConfigurationResponseV1PtrOutput) ToReplicationConfigurationResponseV1PtrOutput() ReplicationConfigurationResponseV1PtrOutput {
-	return o
-}
-
-func (o ReplicationConfigurationResponseV1PtrOutput) ToReplicationConfigurationResponseV1PtrOutputWithContext(ctx context.Context) ReplicationConfigurationResponseV1PtrOutput {
-	return o
-}
-
-func (o ReplicationConfigurationResponseV1PtrOutput) Elem() ReplicationConfigurationResponseV1Output {
-	return o.ApplyT(func(v *ReplicationConfigurationResponseV1) ReplicationConfigurationResponseV1 {
-		if v != nil {
-			return *v
-		}
-		var ret ReplicationConfigurationResponseV1
-		return ret
-	}).(ReplicationConfigurationResponseV1Output)
-}
-
-// The Amazon Resource Name (ARN) of the IAMlong (IAM) role that Amazon S3 assumes when replicating objects. For more information, see [How to Set Up Replication](https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-how-setup.html) in the *Amazon S3 User Guide*.
-func (o ReplicationConfigurationResponseV1PtrOutput) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ReplicationConfigurationResponseV1) *string {
+func (o ReplicationConfigurationResponsePtrOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationConfigurationResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -40431,8 +38899,8 @@ func (o ReplicationConfigurationResponseV1PtrOutput) Role() pulumi.StringPtrOutp
 }
 
 // A container for one or more replication rules. A replication configuration must have at least one rule and can contain a maximum of 1,000 rules.
-func (o ReplicationConfigurationResponseV1PtrOutput) Rules() ReplicationRuleResponseArrayOutput {
-	return o.ApplyT(func(v *ReplicationConfigurationResponseV1) []ReplicationRuleResponse {
+func (o ReplicationConfigurationResponsePtrOutput) Rules() ReplicationRuleResponseArrayOutput {
+	return o.ApplyT(func(v *ReplicationConfigurationResponse) []ReplicationRuleResponse {
 		if v == nil {
 			return nil
 		}
@@ -40817,14 +39285,28 @@ func (o ReplicationDestinationArrayOutput) Index(i pulumi.IntInput) ReplicationD
 
 // Definition of ReplicationDestination
 type ReplicationDestinationResponse struct {
+	// Specify this only in a cross-account scenario (where source and destination bucket owners are not the same), and you want to change replica ownership to the AWS-account that owns the destination bucket. If this is not specified in the replication configuration, the replicas are owned by same AWS-account that owns the source object. Specify this only in a cross-account scenario (where source and destination bucket owners are not the same), and you want to change replica ownership to the AWS-account that owns the destination bucket. If this is not specified in the replication configuration, the replicas are owned by same AWS-account that owns the source object.
+	AccessControlTranslation *AccessControlTranslationResponse `pulumi:"accessControlTranslation"`
+	// Destination bucket owner account ID. In a cross-account scenario, if you direct Amazon S3 to change replica ownership to the AWS-account that owns the destination bucket by specifying the ``AccessControlTranslation`` property, this is the account ID of the destination bucket owner. For more information, see [Cross-Region Replication Additional Configuration: Change Replica Owner](https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html) in the *Amazon S3 User Guide*. If you specify the ``AccessControlTranslation`` property, the ``Account`` property is required.
+	Account *string `pulumi:"account"`
 	// The AWS For One Zone file systems, the replication configuration must specify the Availability Zone in which the destination file system is located.  Use the format ``us-east-1a`` to specify the Availability Zone. For more information about One Zone file systems, see [EFS file system types](https://docs.aws.amazon.com/efs/latest/ug/storage-classes.html) in the *Amazon EFS User Guide*.  One Zone file system type is not available in all Availability Zones in AWS-Regions where Amazon EFS is available.
 	AvailabilityZoneName *string `pulumi:"availabilityZoneName"`
+	// The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store the results.
+	Bucket *string `pulumi:"bucket"`
+	// Specifies encryption-related information. Specifies encryption-related information for an Amazon S3 bucket that is a destination for replicated objects.
+	EncryptionConfiguration *EncryptionConfigurationResponse `pulumi:"encryptionConfiguration"`
 	// The ID of the destination Amazon EFS file system.
 	FileSystemId *string `pulumi:"fileSystemId"`
 	// The ID of an kms-key-long used to protect the encrypted file system.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
+	// A container specifying replication metrics-related settings enabling replication metrics and events. A container specifying replication metrics-related settings enabling replication metrics and events.
+	Metrics *MetricsResponse `pulumi:"metrics"`
 	// The AWS-Region in which the destination file system is located.  For One Zone file systems, the replication configuration must specify the AWS-Region in which the destination file system is located.
 	Region *string `pulumi:"region"`
+	// A container specifying S3 Replication Time Control (S3 RTC), including whether S3 RTC is enabled and the time when all objects and operations on objects must be replicated. Must be specified together with a ``Metrics`` block. A container specifying S3 Replication Time Control (S3 RTC) related information, including whether S3 RTC is enabled and the time when all objects and operations on objects must be replicated. Must be specified together with a ``Metrics`` block.
+	ReplicationTime *ReplicationTimeResponse `pulumi:"replicationTime"`
+	// The storage class to use when replicating objects, such as S3 Standard or reduced redundancy. By default, Amazon S3 uses the storage class of the source object to create the object replica.  For valid values, see the ``StorageClass`` element of the [PUT Bucket replication](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTreplication.html) action in the *Amazon S3 API Reference*.
+	StorageClass *string `pulumi:"storageClass"`
 }
 
 // Definition of ReplicationDestination
@@ -40842,9 +39324,33 @@ func (o ReplicationDestinationResponseOutput) ToReplicationDestinationResponseOu
 	return o
 }
 
+// Specify this only in a cross-account scenario (where source and destination bucket owners are not the same), and you want to change replica ownership to the AWS-account that owns the destination bucket. If this is not specified in the replication configuration, the replicas are owned by same AWS-account that owns the source object. Specify this only in a cross-account scenario (where source and destination bucket owners are not the same), and you want to change replica ownership to the AWS-account that owns the destination bucket. If this is not specified in the replication configuration, the replicas are owned by same AWS-account that owns the source object.
+func (o ReplicationDestinationResponseOutput) AccessControlTranslation() AccessControlTranslationResponsePtrOutput {
+	return o.ApplyT(func(v ReplicationDestinationResponse) *AccessControlTranslationResponse {
+		return v.AccessControlTranslation
+	}).(AccessControlTranslationResponsePtrOutput)
+}
+
+// Destination bucket owner account ID. In a cross-account scenario, if you direct Amazon S3 to change replica ownership to the AWS-account that owns the destination bucket by specifying the “AccessControlTranslation“ property, this is the account ID of the destination bucket owner. For more information, see [Cross-Region Replication Additional Configuration: Change Replica Owner](https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html) in the *Amazon S3 User Guide*. If you specify the “AccessControlTranslation“ property, the “Account“ property is required.
+func (o ReplicationDestinationResponseOutput) Account() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationDestinationResponse) *string { return v.Account }).(pulumi.StringPtrOutput)
+}
+
 // The AWS For One Zone file systems, the replication configuration must specify the Availability Zone in which the destination file system is located.  Use the format “us-east-1a“ to specify the Availability Zone. For more information about One Zone file systems, see [EFS file system types](https://docs.aws.amazon.com/efs/latest/ug/storage-classes.html) in the *Amazon EFS User Guide*.  One Zone file system type is not available in all Availability Zones in AWS-Regions where Amazon EFS is available.
 func (o ReplicationDestinationResponseOutput) AvailabilityZoneName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReplicationDestinationResponse) *string { return v.AvailabilityZoneName }).(pulumi.StringPtrOutput)
+}
+
+// The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store the results.
+func (o ReplicationDestinationResponseOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationDestinationResponse) *string { return v.Bucket }).(pulumi.StringPtrOutput)
+}
+
+// Specifies encryption-related information. Specifies encryption-related information for an Amazon S3 bucket that is a destination for replicated objects.
+func (o ReplicationDestinationResponseOutput) EncryptionConfiguration() EncryptionConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v ReplicationDestinationResponse) *EncryptionConfigurationResponse {
+		return v.EncryptionConfiguration
+	}).(EncryptionConfigurationResponsePtrOutput)
 }
 
 // The ID of the destination Amazon EFS file system.
@@ -40857,9 +39363,158 @@ func (o ReplicationDestinationResponseOutput) KmsKeyId() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v ReplicationDestinationResponse) *string { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
+// A container specifying replication metrics-related settings enabling replication metrics and events. A container specifying replication metrics-related settings enabling replication metrics and events.
+func (o ReplicationDestinationResponseOutput) Metrics() MetricsResponsePtrOutput {
+	return o.ApplyT(func(v ReplicationDestinationResponse) *MetricsResponse { return v.Metrics }).(MetricsResponsePtrOutput)
+}
+
 // The AWS-Region in which the destination file system is located.  For One Zone file systems, the replication configuration must specify the AWS-Region in which the destination file system is located.
 func (o ReplicationDestinationResponseOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReplicationDestinationResponse) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// A container specifying S3 Replication Time Control (S3 RTC), including whether S3 RTC is enabled and the time when all objects and operations on objects must be replicated. Must be specified together with a “Metrics“ block. A container specifying S3 Replication Time Control (S3 RTC) related information, including whether S3 RTC is enabled and the time when all objects and operations on objects must be replicated. Must be specified together with a “Metrics“ block.
+func (o ReplicationDestinationResponseOutput) ReplicationTime() ReplicationTimeResponsePtrOutput {
+	return o.ApplyT(func(v ReplicationDestinationResponse) *ReplicationTimeResponse { return v.ReplicationTime }).(ReplicationTimeResponsePtrOutput)
+}
+
+// The storage class to use when replicating objects, such as S3 Standard or reduced redundancy. By default, Amazon S3 uses the storage class of the source object to create the object replica.  For valid values, see the “StorageClass“ element of the [PUT Bucket replication](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTreplication.html) action in the *Amazon S3 API Reference*.
+func (o ReplicationDestinationResponseOutput) StorageClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationDestinationResponse) *string { return v.StorageClass }).(pulumi.StringPtrOutput)
+}
+
+type ReplicationDestinationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ReplicationDestinationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReplicationDestinationResponse)(nil)).Elem()
+}
+
+func (o ReplicationDestinationResponsePtrOutput) ToReplicationDestinationResponsePtrOutput() ReplicationDestinationResponsePtrOutput {
+	return o
+}
+
+func (o ReplicationDestinationResponsePtrOutput) ToReplicationDestinationResponsePtrOutputWithContext(ctx context.Context) ReplicationDestinationResponsePtrOutput {
+	return o
+}
+
+func (o ReplicationDestinationResponsePtrOutput) Elem() ReplicationDestinationResponseOutput {
+	return o.ApplyT(func(v *ReplicationDestinationResponse) ReplicationDestinationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ReplicationDestinationResponse
+		return ret
+	}).(ReplicationDestinationResponseOutput)
+}
+
+// Specify this only in a cross-account scenario (where source and destination bucket owners are not the same), and you want to change replica ownership to the AWS-account that owns the destination bucket. If this is not specified in the replication configuration, the replicas are owned by same AWS-account that owns the source object. Specify this only in a cross-account scenario (where source and destination bucket owners are not the same), and you want to change replica ownership to the AWS-account that owns the destination bucket. If this is not specified in the replication configuration, the replicas are owned by same AWS-account that owns the source object.
+func (o ReplicationDestinationResponsePtrOutput) AccessControlTranslation() AccessControlTranslationResponsePtrOutput {
+	return o.ApplyT(func(v *ReplicationDestinationResponse) *AccessControlTranslationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AccessControlTranslation
+	}).(AccessControlTranslationResponsePtrOutput)
+}
+
+// Destination bucket owner account ID. In a cross-account scenario, if you direct Amazon S3 to change replica ownership to the AWS-account that owns the destination bucket by specifying the “AccessControlTranslation“ property, this is the account ID of the destination bucket owner. For more information, see [Cross-Region Replication Additional Configuration: Change Replica Owner](https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html) in the *Amazon S3 User Guide*. If you specify the “AccessControlTranslation“ property, the “Account“ property is required.
+func (o ReplicationDestinationResponsePtrOutput) Account() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Account
+	}).(pulumi.StringPtrOutput)
+}
+
+// The AWS For One Zone file systems, the replication configuration must specify the Availability Zone in which the destination file system is located.  Use the format “us-east-1a“ to specify the Availability Zone. For more information about One Zone file systems, see [EFS file system types](https://docs.aws.amazon.com/efs/latest/ug/storage-classes.html) in the *Amazon EFS User Guide*.  One Zone file system type is not available in all Availability Zones in AWS-Regions where Amazon EFS is available.
+func (o ReplicationDestinationResponsePtrOutput) AvailabilityZoneName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityZoneName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store the results.
+func (o ReplicationDestinationResponsePtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies encryption-related information. Specifies encryption-related information for an Amazon S3 bucket that is a destination for replicated objects.
+func (o ReplicationDestinationResponsePtrOutput) EncryptionConfiguration() EncryptionConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *ReplicationDestinationResponse) *EncryptionConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionConfiguration
+	}).(EncryptionConfigurationResponsePtrOutput)
+}
+
+// The ID of the destination Amazon EFS file system.
+func (o ReplicationDestinationResponsePtrOutput) FileSystemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FileSystemId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of an kms-key-long used to protect the encrypted file system.
+func (o ReplicationDestinationResponsePtrOutput) KmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// A container specifying replication metrics-related settings enabling replication metrics and events. A container specifying replication metrics-related settings enabling replication metrics and events.
+func (o ReplicationDestinationResponsePtrOutput) Metrics() MetricsResponsePtrOutput {
+	return o.ApplyT(func(v *ReplicationDestinationResponse) *MetricsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Metrics
+	}).(MetricsResponsePtrOutput)
+}
+
+// The AWS-Region in which the destination file system is located.  For One Zone file systems, the replication configuration must specify the AWS-Region in which the destination file system is located.
+func (o ReplicationDestinationResponsePtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// A container specifying S3 Replication Time Control (S3 RTC), including whether S3 RTC is enabled and the time when all objects and operations on objects must be replicated. Must be specified together with a “Metrics“ block. A container specifying S3 Replication Time Control (S3 RTC) related information, including whether S3 RTC is enabled and the time when all objects and operations on objects must be replicated. Must be specified together with a “Metrics“ block.
+func (o ReplicationDestinationResponsePtrOutput) ReplicationTime() ReplicationTimeResponsePtrOutput {
+	return o.ApplyT(func(v *ReplicationDestinationResponse) *ReplicationTimeResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicationTime
+	}).(ReplicationTimeResponsePtrOutput)
+}
+
+// The storage class to use when replicating objects, such as S3 Standard or reduced redundancy. By default, Amazon S3 uses the storage class of the source object to create the object replica.  For valid values, see the “StorageClass“ element of the [PUT Bucket replication](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTreplication.html) action in the *Amazon S3 API Reference*.
+func (o ReplicationDestinationResponsePtrOutput) StorageClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationDestinationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StorageClass
+	}).(pulumi.StringPtrOutput)
 }
 
 type ReplicationDestinationResponseArrayOutput struct{ *pulumi.OutputState }
@@ -40880,172 +39535,6 @@ func (o ReplicationDestinationResponseArrayOutput) Index(i pulumi.IntInput) Repl
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReplicationDestinationResponse {
 		return vs[0].([]ReplicationDestinationResponse)[vs[1].(int)]
 	}).(ReplicationDestinationResponseOutput)
-}
-
-// Definition of ReplicationDestination
-type ReplicationDestinationResponseV1 struct {
-	// Specify this only in a cross-account scenario (where source and destination bucket owners are not the same), and you want to change replica ownership to the AWS-account that owns the destination bucket. If this is not specified in the replication configuration, the replicas are owned by same AWS-account that owns the source object. Specify this only in a cross-account scenario (where source and destination bucket owners are not the same), and you want to change replica ownership to the AWS-account that owns the destination bucket. If this is not specified in the replication configuration, the replicas are owned by same AWS-account that owns the source object.
-	AccessControlTranslation *AccessControlTranslationResponse `pulumi:"accessControlTranslation"`
-	// Destination bucket owner account ID. In a cross-account scenario, if you direct Amazon S3 to change replica ownership to the AWS-account that owns the destination bucket by specifying the ``AccessControlTranslation`` property, this is the account ID of the destination bucket owner. For more information, see [Cross-Region Replication Additional Configuration: Change Replica Owner](https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html) in the *Amazon S3 User Guide*. If you specify the ``AccessControlTranslation`` property, the ``Account`` property is required.
-	Account *string `pulumi:"account"`
-	// The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store the results.
-	Bucket *string `pulumi:"bucket"`
-	// Specifies encryption-related information. Specifies encryption-related information for an Amazon S3 bucket that is a destination for replicated objects.
-	EncryptionConfiguration *EncryptionConfigurationResponseV1 `pulumi:"encryptionConfiguration"`
-	// A container specifying replication metrics-related settings enabling replication metrics and events. A container specifying replication metrics-related settings enabling replication metrics and events.
-	Metrics *MetricsResponse `pulumi:"metrics"`
-	// A container specifying S3 Replication Time Control (S3 RTC), including whether S3 RTC is enabled and the time when all objects and operations on objects must be replicated. Must be specified together with a ``Metrics`` block. A container specifying S3 Replication Time Control (S3 RTC) related information, including whether S3 RTC is enabled and the time when all objects and operations on objects must be replicated. Must be specified together with a ``Metrics`` block.
-	ReplicationTime *ReplicationTimeResponse `pulumi:"replicationTime"`
-	// The storage class to use when replicating objects, such as S3 Standard or reduced redundancy. By default, Amazon S3 uses the storage class of the source object to create the object replica.  For valid values, see the ``StorageClass`` element of the [PUT Bucket replication](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTreplication.html) action in the *Amazon S3 API Reference*.
-	StorageClass *string `pulumi:"storageClass"`
-}
-
-// Definition of ReplicationDestination
-type ReplicationDestinationResponseV1Output struct{ *pulumi.OutputState }
-
-func (ReplicationDestinationResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReplicationDestinationResponseV1)(nil)).Elem()
-}
-
-func (o ReplicationDestinationResponseV1Output) ToReplicationDestinationResponseV1Output() ReplicationDestinationResponseV1Output {
-	return o
-}
-
-func (o ReplicationDestinationResponseV1Output) ToReplicationDestinationResponseV1OutputWithContext(ctx context.Context) ReplicationDestinationResponseV1Output {
-	return o
-}
-
-// Specify this only in a cross-account scenario (where source and destination bucket owners are not the same), and you want to change replica ownership to the AWS-account that owns the destination bucket. If this is not specified in the replication configuration, the replicas are owned by same AWS-account that owns the source object. Specify this only in a cross-account scenario (where source and destination bucket owners are not the same), and you want to change replica ownership to the AWS-account that owns the destination bucket. If this is not specified in the replication configuration, the replicas are owned by same AWS-account that owns the source object.
-func (o ReplicationDestinationResponseV1Output) AccessControlTranslation() AccessControlTranslationResponsePtrOutput {
-	return o.ApplyT(func(v ReplicationDestinationResponseV1) *AccessControlTranslationResponse {
-		return v.AccessControlTranslation
-	}).(AccessControlTranslationResponsePtrOutput)
-}
-
-// Destination bucket owner account ID. In a cross-account scenario, if you direct Amazon S3 to change replica ownership to the AWS-account that owns the destination bucket by specifying the “AccessControlTranslation“ property, this is the account ID of the destination bucket owner. For more information, see [Cross-Region Replication Additional Configuration: Change Replica Owner](https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html) in the *Amazon S3 User Guide*. If you specify the “AccessControlTranslation“ property, the “Account“ property is required.
-func (o ReplicationDestinationResponseV1Output) Account() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ReplicationDestinationResponseV1) *string { return v.Account }).(pulumi.StringPtrOutput)
-}
-
-// The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store the results.
-func (o ReplicationDestinationResponseV1Output) Bucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ReplicationDestinationResponseV1) *string { return v.Bucket }).(pulumi.StringPtrOutput)
-}
-
-// Specifies encryption-related information. Specifies encryption-related information for an Amazon S3 bucket that is a destination for replicated objects.
-func (o ReplicationDestinationResponseV1Output) EncryptionConfiguration() EncryptionConfigurationResponseV1PtrOutput {
-	return o.ApplyT(func(v ReplicationDestinationResponseV1) *EncryptionConfigurationResponseV1 {
-		return v.EncryptionConfiguration
-	}).(EncryptionConfigurationResponseV1PtrOutput)
-}
-
-// A container specifying replication metrics-related settings enabling replication metrics and events. A container specifying replication metrics-related settings enabling replication metrics and events.
-func (o ReplicationDestinationResponseV1Output) Metrics() MetricsResponsePtrOutput {
-	return o.ApplyT(func(v ReplicationDestinationResponseV1) *MetricsResponse { return v.Metrics }).(MetricsResponsePtrOutput)
-}
-
-// A container specifying S3 Replication Time Control (S3 RTC), including whether S3 RTC is enabled and the time when all objects and operations on objects must be replicated. Must be specified together with a “Metrics“ block. A container specifying S3 Replication Time Control (S3 RTC) related information, including whether S3 RTC is enabled and the time when all objects and operations on objects must be replicated. Must be specified together with a “Metrics“ block.
-func (o ReplicationDestinationResponseV1Output) ReplicationTime() ReplicationTimeResponsePtrOutput {
-	return o.ApplyT(func(v ReplicationDestinationResponseV1) *ReplicationTimeResponse { return v.ReplicationTime }).(ReplicationTimeResponsePtrOutput)
-}
-
-// The storage class to use when replicating objects, such as S3 Standard or reduced redundancy. By default, Amazon S3 uses the storage class of the source object to create the object replica.  For valid values, see the “StorageClass“ element of the [PUT Bucket replication](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTreplication.html) action in the *Amazon S3 API Reference*.
-func (o ReplicationDestinationResponseV1Output) StorageClass() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ReplicationDestinationResponseV1) *string { return v.StorageClass }).(pulumi.StringPtrOutput)
-}
-
-type ReplicationDestinationResponseV1PtrOutput struct{ *pulumi.OutputState }
-
-func (ReplicationDestinationResponseV1PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ReplicationDestinationResponseV1)(nil)).Elem()
-}
-
-func (o ReplicationDestinationResponseV1PtrOutput) ToReplicationDestinationResponseV1PtrOutput() ReplicationDestinationResponseV1PtrOutput {
-	return o
-}
-
-func (o ReplicationDestinationResponseV1PtrOutput) ToReplicationDestinationResponseV1PtrOutputWithContext(ctx context.Context) ReplicationDestinationResponseV1PtrOutput {
-	return o
-}
-
-func (o ReplicationDestinationResponseV1PtrOutput) Elem() ReplicationDestinationResponseV1Output {
-	return o.ApplyT(func(v *ReplicationDestinationResponseV1) ReplicationDestinationResponseV1 {
-		if v != nil {
-			return *v
-		}
-		var ret ReplicationDestinationResponseV1
-		return ret
-	}).(ReplicationDestinationResponseV1Output)
-}
-
-// Specify this only in a cross-account scenario (where source and destination bucket owners are not the same), and you want to change replica ownership to the AWS-account that owns the destination bucket. If this is not specified in the replication configuration, the replicas are owned by same AWS-account that owns the source object. Specify this only in a cross-account scenario (where source and destination bucket owners are not the same), and you want to change replica ownership to the AWS-account that owns the destination bucket. If this is not specified in the replication configuration, the replicas are owned by same AWS-account that owns the source object.
-func (o ReplicationDestinationResponseV1PtrOutput) AccessControlTranslation() AccessControlTranslationResponsePtrOutput {
-	return o.ApplyT(func(v *ReplicationDestinationResponseV1) *AccessControlTranslationResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AccessControlTranslation
-	}).(AccessControlTranslationResponsePtrOutput)
-}
-
-// Destination bucket owner account ID. In a cross-account scenario, if you direct Amazon S3 to change replica ownership to the AWS-account that owns the destination bucket by specifying the “AccessControlTranslation“ property, this is the account ID of the destination bucket owner. For more information, see [Cross-Region Replication Additional Configuration: Change Replica Owner](https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html) in the *Amazon S3 User Guide*. If you specify the “AccessControlTranslation“ property, the “Account“ property is required.
-func (o ReplicationDestinationResponseV1PtrOutput) Account() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ReplicationDestinationResponseV1) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Account
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store the results.
-func (o ReplicationDestinationResponseV1PtrOutput) Bucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ReplicationDestinationResponseV1) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Bucket
-	}).(pulumi.StringPtrOutput)
-}
-
-// Specifies encryption-related information. Specifies encryption-related information for an Amazon S3 bucket that is a destination for replicated objects.
-func (o ReplicationDestinationResponseV1PtrOutput) EncryptionConfiguration() EncryptionConfigurationResponseV1PtrOutput {
-	return o.ApplyT(func(v *ReplicationDestinationResponseV1) *EncryptionConfigurationResponseV1 {
-		if v == nil {
-			return nil
-		}
-		return v.EncryptionConfiguration
-	}).(EncryptionConfigurationResponseV1PtrOutput)
-}
-
-// A container specifying replication metrics-related settings enabling replication metrics and events. A container specifying replication metrics-related settings enabling replication metrics and events.
-func (o ReplicationDestinationResponseV1PtrOutput) Metrics() MetricsResponsePtrOutput {
-	return o.ApplyT(func(v *ReplicationDestinationResponseV1) *MetricsResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Metrics
-	}).(MetricsResponsePtrOutput)
-}
-
-// A container specifying S3 Replication Time Control (S3 RTC), including whether S3 RTC is enabled and the time when all objects and operations on objects must be replicated. Must be specified together with a “Metrics“ block. A container specifying S3 Replication Time Control (S3 RTC) related information, including whether S3 RTC is enabled and the time when all objects and operations on objects must be replicated. Must be specified together with a “Metrics“ block.
-func (o ReplicationDestinationResponseV1PtrOutput) ReplicationTime() ReplicationTimeResponsePtrOutput {
-	return o.ApplyT(func(v *ReplicationDestinationResponseV1) *ReplicationTimeResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ReplicationTime
-	}).(ReplicationTimeResponsePtrOutput)
-}
-
-// The storage class to use when replicating objects, such as S3 Standard or reduced redundancy. By default, Amazon S3 uses the storage class of the source object to create the object replica.  For valid values, see the “StorageClass“ element of the [PUT Bucket replication](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTreplication.html) action in the *Amazon S3 API Reference*.
-func (o ReplicationDestinationResponseV1PtrOutput) StorageClass() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ReplicationDestinationResponseV1) *string {
-		if v == nil {
-			return nil
-		}
-		return v.StorageClass
-	}).(pulumi.StringPtrOutput)
 }
 
 // Definition of ReplicationPendingModifiedValues
@@ -42068,7 +40557,7 @@ type ReplicationRuleResponse struct {
 	// Specifies whether Amazon S3 replicates delete markers. If you specify a ``Filter`` in your replication configuration, you must also include a ``DeleteMarkerReplication`` element. If your ``Filter`` includes a ``Tag`` element, the ``DeleteMarkerReplication`` ``Status`` must be set to Disabled, because Amazon S3 does not support replicating delete markers for tag-based rules. For an example configuration, see [Basic Rule Configuration](https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-config-min-rule-config).  For more information about delete marker replication, see [Basic Rule Configuration](https://docs.aws.amazon.com/AmazonS3/latest/dev/delete-marker-replication.html).   If you are using an earlier version of the replication configuration, Amazon S3 handles replication of delete markers differently. For more information, see [Backward Compatibility](https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-backward-compat-considerations). Specifies whether Amazon S3 replicates delete markers. If you specify a ``Filter`` in your replication configuration, you must also include a ``DeleteMarkerReplication`` element. If your ``Filter`` includes a ``Tag`` element, the ``DeleteMarkerReplication`` ``Status`` must be set to Disabled, because Amazon S3 does not support replicating delete markers for tag-based rules. For an example configuration, see [Basic Rule Configuration](https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-config-min-rule-config).  For more information about delete marker replication, see [Basic Rule Configuration](https://docs.aws.amazon.com/AmazonS3/latest/dev/delete-marker-replication.html).   If you are using an earlier version of the replication configuration, Amazon S3 handles replication of delete markers differently. For more information, see [Backward Compatibility](https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-backward-compat-considerations).
 	DeleteMarkerReplication *DeleteMarkerReplicationResponse `pulumi:"deleteMarkerReplication"`
 	// A container for information about the replication destination and its configurations including enabling the S3 Replication Time Control (S3 RTC). A container for information about the replication destination and its configurations including enabling the S3 Replication Time Control (S3 RTC).
-	Destination *ReplicationDestinationResponseV1 `pulumi:"destination"`
+	Destination *ReplicationDestinationResponse `pulumi:"destination"`
 	// A filter that identifies the subset of objects to which the replication rule applies. A ``Filter`` must specify exactly one ``Prefix``, ``TagFilter``, or an ``And`` child element. The use of the filter field indicates that this is a V2 replication configuration. This field isn't supported in a V1 replication configuration.  V1 replication configuration only supports filtering by key prefix. To filter using a V1 replication configuration, add the ``Prefix`` directly as a child element of the ``Rule`` element. A filter that identifies the subset of objects to which the replication rule applies. A ``Filter`` must specify exactly one ``Prefix``, ``TagFilter``, or an ``And`` child element.
 	Filter *ReplicationRuleFilterResponse `pulumi:"filter"`
 	// A unique identifier for the rule. The maximum value is 255 characters. If you don't specify a value, AWS CloudFormation generates a random ID. When using a V2 replication configuration this property is capitalized as 'ID'.
@@ -42104,8 +40593,8 @@ func (o ReplicationRuleResponseOutput) DeleteMarkerReplication() DeleteMarkerRep
 }
 
 // A container for information about the replication destination and its configurations including enabling the S3 Replication Time Control (S3 RTC). A container for information about the replication destination and its configurations including enabling the S3 Replication Time Control (S3 RTC).
-func (o ReplicationRuleResponseOutput) Destination() ReplicationDestinationResponseV1PtrOutput {
-	return o.ApplyT(func(v ReplicationRuleResponse) *ReplicationDestinationResponseV1 { return v.Destination }).(ReplicationDestinationResponseV1PtrOutput)
+func (o ReplicationRuleResponseOutput) Destination() ReplicationDestinationResponsePtrOutput {
+	return o.ApplyT(func(v ReplicationRuleResponse) *ReplicationDestinationResponse { return v.Destination }).(ReplicationDestinationResponsePtrOutput)
 }
 
 // A filter that identifies the subset of objects to which the replication rule applies. A “Filter“ must specify exactly one “Prefix“, “TagFilter“, or an “And“ child element. The use of the filter field indicates that this is a V2 replication configuration. This field isn't supported in a V1 replication configuration.  V1 replication configuration only supports filtering by key prefix. To filter using a V1 replication configuration, add the “Prefix“ directly as a child element of the “Rule“ element. A filter that identifies the subset of objects to which the replication rule applies. A “Filter“ must specify exactly one “Prefix“, “TagFilter“, or an “And“ child element.
@@ -58085,7 +56574,7 @@ func (o ServiceConnectClientAliasResponseArrayOutput) Index(i pulumi.IntInput) S
 type ServiceConnectConfiguration struct {
 	// Specifies whether to use Service Connect with this service.
 	Enabled *bool `pulumi:"enabled"`
-	// The log configuration for the container. This parameter maps to ``LogConfig`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--log-driver`` option to [docker run](https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are ``awslogs``, ``splunk``, and ``awsfirelens``. For tasks hosted on Amazon EC2 instances, the supported log drivers are ``awslogs``, ``fluentd``, ``gelf``, ``json-file``, ``journald``, ``logentries``,``syslog``, ``splunk``, and ``awsfirelens``.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the ``ECS_AVAILABLE_LOGGING_DRIVERS`` environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to. The log configuration for the container. This parameter maps to ``LogConfig`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--log-driver`` option to [docker run](https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are ``awslogs``, ``splunk``, and ``awsfirelens``. For tasks hosted on Amazon EC2 instances, the supported log drivers are ``awslogs``, ``fluentd``, ``gelf``, ``json-file``, ``journald``, ``logentries``,``syslog``, ``splunk``, and ``awsfirelens``.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the ``ECS_AVAILABLE_LOGGING_DRIVERS`` environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to.
+	// The log configuration for the container. This parameter maps to ``LogConfig`` in the [Create a container](https://docs.aws.amazon.com/https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate) section of the [Docker Remote API](https://docs.aws.amazon.com/https://docs.docker.com/engine/api/v1.35/) and the ``--log-driver`` option to [docker run](https://docs.aws.amazon.com/https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.aws.amazon.com/https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are ``awslogs``, ``splunk``, and ``awsfirelens``. For tasks hosted on Amazon EC2 instances, the supported log drivers are ``awslogs``, ``fluentd``, ``gelf``, ``json-file``, ``journald``, ``logentries``,``syslog``, ``splunk``, and ``awsfirelens``.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the ``ECS_AVAILABLE_LOGGING_DRIVERS`` environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to. The log configuration for the container. This parameter maps to ``LogConfig`` in the [Create a container](https://docs.aws.amazon.com/https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate) section of the [Docker Remote API](https://docs.aws.amazon.com/https://docs.docker.com/engine/api/v1.35/) and the ``--log-driver`` option to [docker run](https://docs.aws.amazon.com/https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.aws.amazon.com/https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are ``awslogs``, ``splunk``, and ``awsfirelens``. For tasks hosted on Amazon EC2 instances, the supported log drivers are ``awslogs``, ``fluentd``, ``gelf``, ``json-file``, ``journald``, ``logentries``,``syslog``, ``splunk``, and ``awsfirelens``.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the ``ECS_AVAILABLE_LOGGING_DRIVERS`` environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to.
 	LogConfiguration *LogConfiguration `pulumi:"logConfiguration"`
 	// The namespace name or full Amazon Resource Name (ARN) of the CMAPlong namespace for use with Service Connect. The namespace must be in the same AWS Region as the Amazon ECS service and cluster. The type of namespace doesn't affect Service Connect. For more information about CMAPlong, see [Working with Services](https://docs.aws.amazon.com/cloud-map/latest/dg/working-with-services.html) in the *Developer Guide*.
 	Namespace *string `pulumi:"namespace"`
@@ -58108,7 +56597,7 @@ type ServiceConnectConfigurationInput interface {
 type ServiceConnectConfigurationArgs struct {
 	// Specifies whether to use Service Connect with this service.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// The log configuration for the container. This parameter maps to ``LogConfig`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--log-driver`` option to [docker run](https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are ``awslogs``, ``splunk``, and ``awsfirelens``. For tasks hosted on Amazon EC2 instances, the supported log drivers are ``awslogs``, ``fluentd``, ``gelf``, ``json-file``, ``journald``, ``logentries``,``syslog``, ``splunk``, and ``awsfirelens``.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the ``ECS_AVAILABLE_LOGGING_DRIVERS`` environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to. The log configuration for the container. This parameter maps to ``LogConfig`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--log-driver`` option to [docker run](https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are ``awslogs``, ``splunk``, and ``awsfirelens``. For tasks hosted on Amazon EC2 instances, the supported log drivers are ``awslogs``, ``fluentd``, ``gelf``, ``json-file``, ``journald``, ``logentries``,``syslog``, ``splunk``, and ``awsfirelens``.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the ``ECS_AVAILABLE_LOGGING_DRIVERS`` environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to.
+	// The log configuration for the container. This parameter maps to ``LogConfig`` in the [Create a container](https://docs.aws.amazon.com/https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate) section of the [Docker Remote API](https://docs.aws.amazon.com/https://docs.docker.com/engine/api/v1.35/) and the ``--log-driver`` option to [docker run](https://docs.aws.amazon.com/https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.aws.amazon.com/https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are ``awslogs``, ``splunk``, and ``awsfirelens``. For tasks hosted on Amazon EC2 instances, the supported log drivers are ``awslogs``, ``fluentd``, ``gelf``, ``json-file``, ``journald``, ``logentries``,``syslog``, ``splunk``, and ``awsfirelens``.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the ``ECS_AVAILABLE_LOGGING_DRIVERS`` environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to. The log configuration for the container. This parameter maps to ``LogConfig`` in the [Create a container](https://docs.aws.amazon.com/https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate) section of the [Docker Remote API](https://docs.aws.amazon.com/https://docs.docker.com/engine/api/v1.35/) and the ``--log-driver`` option to [docker run](https://docs.aws.amazon.com/https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.aws.amazon.com/https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are ``awslogs``, ``splunk``, and ``awsfirelens``. For tasks hosted on Amazon EC2 instances, the supported log drivers are ``awslogs``, ``fluentd``, ``gelf``, ``json-file``, ``journald``, ``logentries``,``syslog``, ``splunk``, and ``awsfirelens``.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the ``ECS_AVAILABLE_LOGGING_DRIVERS`` environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to.
 	LogConfiguration LogConfigurationPtrInput `pulumi:"logConfiguration"`
 	// The namespace name or full Amazon Resource Name (ARN) of the CMAPlong namespace for use with Service Connect. The namespace must be in the same AWS Region as the Amazon ECS service and cluster. The type of namespace doesn't affect Service Connect. For more information about CMAPlong, see [Working with Services](https://docs.aws.amazon.com/cloud-map/latest/dg/working-with-services.html) in the *Developer Guide*.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
@@ -58199,7 +56688,7 @@ func (o ServiceConnectConfigurationOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceConnectConfiguration) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The log configuration for the container. This parameter maps to “LogConfig“ in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the “--log-driver“ option to [docker run](https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are “awslogs“, “splunk“, and “awsfirelens“. For tasks hosted on Amazon EC2 instances, the supported log drivers are “awslogs“, “fluentd“, “gelf“, “json-file“, “journald“, “logentries“,“syslog“, “splunk“, and “awsfirelens“.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the “ECS_AVAILABLE_LOGGING_DRIVERS“ environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to. The log configuration for the container. This parameter maps to “LogConfig“ in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the “--log-driver“ option to [docker run](https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are “awslogs“, “splunk“, and “awsfirelens“. For tasks hosted on Amazon EC2 instances, the supported log drivers are “awslogs“, “fluentd“, “gelf“, “json-file“, “journald“, “logentries“,“syslog“, “splunk“, and “awsfirelens“.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the “ECS_AVAILABLE_LOGGING_DRIVERS“ environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to.
+// The log configuration for the container. This parameter maps to “LogConfig“ in the [Create a container](https://docs.aws.amazon.com/https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate) section of the [Docker Remote API](https://docs.aws.amazon.com/https://docs.docker.com/engine/api/v1.35/) and the “--log-driver“ option to [docker run](https://docs.aws.amazon.com/https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.aws.amazon.com/https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are “awslogs“, “splunk“, and “awsfirelens“. For tasks hosted on Amazon EC2 instances, the supported log drivers are “awslogs“, “fluentd“, “gelf“, “json-file“, “journald“, “logentries“,“syslog“, “splunk“, and “awsfirelens“.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the “ECS_AVAILABLE_LOGGING_DRIVERS“ environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to. The log configuration for the container. This parameter maps to “LogConfig“ in the [Create a container](https://docs.aws.amazon.com/https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate) section of the [Docker Remote API](https://docs.aws.amazon.com/https://docs.docker.com/engine/api/v1.35/) and the “--log-driver“ option to [docker run](https://docs.aws.amazon.com/https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.aws.amazon.com/https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are “awslogs“, “splunk“, and “awsfirelens“. For tasks hosted on Amazon EC2 instances, the supported log drivers are “awslogs“, “fluentd“, “gelf“, “json-file“, “journald“, “logentries“,“syslog“, “splunk“, and “awsfirelens“.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the “ECS_AVAILABLE_LOGGING_DRIVERS“ environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to.
 func (o ServiceConnectConfigurationOutput) LogConfiguration() LogConfigurationPtrOutput {
 	return o.ApplyT(func(v ServiceConnectConfiguration) *LogConfiguration { return v.LogConfiguration }).(LogConfigurationPtrOutput)
 }
@@ -58248,7 +56737,7 @@ func (o ServiceConnectConfigurationPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The log configuration for the container. This parameter maps to “LogConfig“ in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the “--log-driver“ option to [docker run](https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are “awslogs“, “splunk“, and “awsfirelens“. For tasks hosted on Amazon EC2 instances, the supported log drivers are “awslogs“, “fluentd“, “gelf“, “json-file“, “journald“, “logentries“,“syslog“, “splunk“, and “awsfirelens“.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the “ECS_AVAILABLE_LOGGING_DRIVERS“ environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to. The log configuration for the container. This parameter maps to “LogConfig“ in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the “--log-driver“ option to [docker run](https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are “awslogs“, “splunk“, and “awsfirelens“. For tasks hosted on Amazon EC2 instances, the supported log drivers are “awslogs“, “fluentd“, “gelf“, “json-file“, “journald“, “logentries“,“syslog“, “splunk“, and “awsfirelens“.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the “ECS_AVAILABLE_LOGGING_DRIVERS“ environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to.
+// The log configuration for the container. This parameter maps to “LogConfig“ in the [Create a container](https://docs.aws.amazon.com/https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate) section of the [Docker Remote API](https://docs.aws.amazon.com/https://docs.docker.com/engine/api/v1.35/) and the “--log-driver“ option to [docker run](https://docs.aws.amazon.com/https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.aws.amazon.com/https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are “awslogs“, “splunk“, and “awsfirelens“. For tasks hosted on Amazon EC2 instances, the supported log drivers are “awslogs“, “fluentd“, “gelf“, “json-file“, “journald“, “logentries“,“syslog“, “splunk“, and “awsfirelens“.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the “ECS_AVAILABLE_LOGGING_DRIVERS“ environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to. The log configuration for the container. This parameter maps to “LogConfig“ in the [Create a container](https://docs.aws.amazon.com/https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate) section of the [Docker Remote API](https://docs.aws.amazon.com/https://docs.docker.com/engine/api/v1.35/) and the “--log-driver“ option to [docker run](https://docs.aws.amazon.com/https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.aws.amazon.com/https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are “awslogs“, “splunk“, and “awsfirelens“. For tasks hosted on Amazon EC2 instances, the supported log drivers are “awslogs“, “fluentd“, “gelf“, “json-file“, “journald“, “logentries“,“syslog“, “splunk“, and “awsfirelens“.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the “ECS_AVAILABLE_LOGGING_DRIVERS“ environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to.
 func (o ServiceConnectConfigurationPtrOutput) LogConfiguration() LogConfigurationPtrOutput {
 	return o.ApplyT(func(v *ServiceConnectConfiguration) *LogConfiguration {
 		if v == nil {
@@ -58282,7 +56771,7 @@ func (o ServiceConnectConfigurationPtrOutput) Services() ServiceConnectServiceAr
 type ServiceConnectConfigurationResponse struct {
 	// Specifies whether to use Service Connect with this service.
 	Enabled *bool `pulumi:"enabled"`
-	// The log configuration for the container. This parameter maps to ``LogConfig`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--log-driver`` option to [docker run](https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are ``awslogs``, ``splunk``, and ``awsfirelens``. For tasks hosted on Amazon EC2 instances, the supported log drivers are ``awslogs``, ``fluentd``, ``gelf``, ``json-file``, ``journald``, ``logentries``,``syslog``, ``splunk``, and ``awsfirelens``.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the ``ECS_AVAILABLE_LOGGING_DRIVERS`` environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to. The log configuration for the container. This parameter maps to ``LogConfig`` in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the ``--log-driver`` option to [docker run](https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are ``awslogs``, ``splunk``, and ``awsfirelens``. For tasks hosted on Amazon EC2 instances, the supported log drivers are ``awslogs``, ``fluentd``, ``gelf``, ``json-file``, ``journald``, ``logentries``,``syslog``, ``splunk``, and ``awsfirelens``.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the ``ECS_AVAILABLE_LOGGING_DRIVERS`` environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to.
+	// The log configuration for the container. This parameter maps to ``LogConfig`` in the [Create a container](https://docs.aws.amazon.com/https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate) section of the [Docker Remote API](https://docs.aws.amazon.com/https://docs.docker.com/engine/api/v1.35/) and the ``--log-driver`` option to [docker run](https://docs.aws.amazon.com/https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.aws.amazon.com/https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are ``awslogs``, ``splunk``, and ``awsfirelens``. For tasks hosted on Amazon EC2 instances, the supported log drivers are ``awslogs``, ``fluentd``, ``gelf``, ``json-file``, ``journald``, ``logentries``,``syslog``, ``splunk``, and ``awsfirelens``.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the ``ECS_AVAILABLE_LOGGING_DRIVERS`` environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to. The log configuration for the container. This parameter maps to ``LogConfig`` in the [Create a container](https://docs.aws.amazon.com/https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate) section of the [Docker Remote API](https://docs.aws.amazon.com/https://docs.docker.com/engine/api/v1.35/) and the ``--log-driver`` option to [docker run](https://docs.aws.amazon.com/https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.aws.amazon.com/https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are ``awslogs``, ``splunk``, and ``awsfirelens``. For tasks hosted on Amazon EC2 instances, the supported log drivers are ``awslogs``, ``fluentd``, ``gelf``, ``json-file``, ``journald``, ``logentries``,``syslog``, ``splunk``, and ``awsfirelens``.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the ``ECS_AVAILABLE_LOGGING_DRIVERS`` environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to.
 	LogConfiguration *LogConfigurationResponse `pulumi:"logConfiguration"`
 	// The namespace name or full Amazon Resource Name (ARN) of the CMAPlong namespace for use with Service Connect. The namespace must be in the same AWS Region as the Amazon ECS service and cluster. The type of namespace doesn't affect Service Connect. For more information about CMAPlong, see [Working with Services](https://docs.aws.amazon.com/cloud-map/latest/dg/working-with-services.html) in the *Developer Guide*.
 	Namespace *string `pulumi:"namespace"`
@@ -58310,7 +56799,7 @@ func (o ServiceConnectConfigurationResponseOutput) Enabled() pulumi.BoolPtrOutpu
 	return o.ApplyT(func(v ServiceConnectConfigurationResponse) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The log configuration for the container. This parameter maps to “LogConfig“ in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the “--log-driver“ option to [docker run](https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are “awslogs“, “splunk“, and “awsfirelens“. For tasks hosted on Amazon EC2 instances, the supported log drivers are “awslogs“, “fluentd“, “gelf“, “json-file“, “journald“, “logentries“,“syslog“, “splunk“, and “awsfirelens“.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the “ECS_AVAILABLE_LOGGING_DRIVERS“ environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to. The log configuration for the container. This parameter maps to “LogConfig“ in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the “--log-driver“ option to [docker run](https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are “awslogs“, “splunk“, and “awsfirelens“. For tasks hosted on Amazon EC2 instances, the supported log drivers are “awslogs“, “fluentd“, “gelf“, “json-file“, “journald“, “logentries“,“syslog“, “splunk“, and “awsfirelens“.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the “ECS_AVAILABLE_LOGGING_DRIVERS“ environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to.
+// The log configuration for the container. This parameter maps to “LogConfig“ in the [Create a container](https://docs.aws.amazon.com/https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate) section of the [Docker Remote API](https://docs.aws.amazon.com/https://docs.docker.com/engine/api/v1.35/) and the “--log-driver“ option to [docker run](https://docs.aws.amazon.com/https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.aws.amazon.com/https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are “awslogs“, “splunk“, and “awsfirelens“. For tasks hosted on Amazon EC2 instances, the supported log drivers are “awslogs“, “fluentd“, “gelf“, “json-file“, “journald“, “logentries“,“syslog“, “splunk“, and “awsfirelens“.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the “ECS_AVAILABLE_LOGGING_DRIVERS“ environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to. The log configuration for the container. This parameter maps to “LogConfig“ in the [Create a container](https://docs.aws.amazon.com/https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate) section of the [Docker Remote API](https://docs.aws.amazon.com/https://docs.docker.com/engine/api/v1.35/) and the “--log-driver“ option to [docker run](https://docs.aws.amazon.com/https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.aws.amazon.com/https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are “awslogs“, “splunk“, and “awsfirelens“. For tasks hosted on Amazon EC2 instances, the supported log drivers are “awslogs“, “fluentd“, “gelf“, “json-file“, “journald“, “logentries“,“syslog“, “splunk“, and “awsfirelens“.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the “ECS_AVAILABLE_LOGGING_DRIVERS“ environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to.
 func (o ServiceConnectConfigurationResponseOutput) LogConfiguration() LogConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v ServiceConnectConfigurationResponse) *LogConfigurationResponse { return v.LogConfiguration }).(LogConfigurationResponsePtrOutput)
 }
@@ -58359,7 +56848,7 @@ func (o ServiceConnectConfigurationResponsePtrOutput) Enabled() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The log configuration for the container. This parameter maps to “LogConfig“ in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the “--log-driver“ option to [docker run](https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are “awslogs“, “splunk“, and “awsfirelens“. For tasks hosted on Amazon EC2 instances, the supported log drivers are “awslogs“, “fluentd“, “gelf“, “json-file“, “journald“, “logentries“,“syslog“, “splunk“, and “awsfirelens“.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the “ECS_AVAILABLE_LOGGING_DRIVERS“ environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to. The log configuration for the container. This parameter maps to “LogConfig“ in the [Create a container](https://docs.docker.com/reference/cli/docker/container/create/) section of the [Docker Remote API](https://docs.docker.com/engine/api/) and the “--log-driver“ option to [docker run](https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are “awslogs“, “splunk“, and “awsfirelens“. For tasks hosted on Amazon EC2 instances, the supported log drivers are “awslogs“, “fluentd“, “gelf“, “json-file“, “journald“, “logentries“,“syslog“, “splunk“, and “awsfirelens“.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the “ECS_AVAILABLE_LOGGING_DRIVERS“ environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to.
+// The log configuration for the container. This parameter maps to “LogConfig“ in the [Create a container](https://docs.aws.amazon.com/https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate) section of the [Docker Remote API](https://docs.aws.amazon.com/https://docs.docker.com/engine/api/v1.35/) and the “--log-driver“ option to [docker run](https://docs.aws.amazon.com/https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.aws.amazon.com/https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are “awslogs“, “splunk“, and “awsfirelens“. For tasks hosted on Amazon EC2 instances, the supported log drivers are “awslogs“, “fluentd“, “gelf“, “json-file“, “journald“, “logentries“,“syslog“, “splunk“, and “awsfirelens“.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the “ECS_AVAILABLE_LOGGING_DRIVERS“ environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to. The log configuration for the container. This parameter maps to “LogConfig“ in the [Create a container](https://docs.aws.amazon.com/https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate) section of the [Docker Remote API](https://docs.aws.amazon.com/https://docs.docker.com/engine/api/v1.35/) and the “--log-driver“ option to [docker run](https://docs.aws.amazon.com/https://docs.docker.com/engine/reference/commandline/run/). By default, containers use the same logging driver that the Docker daemon uses. However, the container might use a different logging driver than the Docker daemon by specifying a log driver configuration in the container definition. For more information about the options for different supported log drivers, see [Configure logging drivers](https://docs.aws.amazon.com/https://docs.docker.com/engine/admin/logging/overview/) in the Docker documentation. Understand the following when specifying a log configuration for your containers.  +  Amazon ECS currently supports a subset of the logging drivers available to the Docker daemon. Additional log drivers may be available in future releases of the Amazon ECS container agent. For tasks on FARGATElong, the supported log drivers are “awslogs“, “splunk“, and “awsfirelens“. For tasks hosted on Amazon EC2 instances, the supported log drivers are “awslogs“, “fluentd“, “gelf“, “json-file“, “journald“, “logentries“,“syslog“, “splunk“, and “awsfirelens“.  +  This parameter requires version 1.18 of the Docker Remote API or greater on your container instance.  +  For tasks that are hosted on Amazon EC2 instances, the Amazon ECS container agent must register the available logging drivers with the “ECS_AVAILABLE_LOGGING_DRIVERS“ environment variable before containers placed on that instance can use these log configuration options. For more information, see [Amazon ECS container agent configuration](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html) in the *Amazon Elastic Container Service Developer Guide*.  +  For tasks that are on FARGATElong, because you don't have access to the underlying infrastructure your tasks are hosted on, any additional software needed must be installed outside of the task. For example, the Fluentd output aggregators or a remote host running Logstash to send Gelf logs to.
 func (o ServiceConnectConfigurationResponsePtrOutput) LogConfiguration() LogConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *ServiceConnectConfigurationResponse) *LogConfigurationResponse {
 		if v == nil {
@@ -63288,38 +61777,2368 @@ func (o SoftwareUpdateOptionsPtrOutput) AutoSoftwareUpdateEnabled() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Definition of SoftwareUpdateOptions
+type SoftwareUpdateOptionsResponse struct {
+	// <p>Whether automatic service software updates are enabled for the domain.</p>
+	AutoSoftwareUpdateEnabled *bool `pulumi:"autoSoftwareUpdateEnabled"`
+}
+
+// Definition of SoftwareUpdateOptions
+type SoftwareUpdateOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (SoftwareUpdateOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareUpdateOptionsResponse)(nil)).Elem()
+}
+
+func (o SoftwareUpdateOptionsResponseOutput) ToSoftwareUpdateOptionsResponseOutput() SoftwareUpdateOptionsResponseOutput {
+	return o
+}
+
+func (o SoftwareUpdateOptionsResponseOutput) ToSoftwareUpdateOptionsResponseOutputWithContext(ctx context.Context) SoftwareUpdateOptionsResponseOutput {
+	return o
+}
+
+// <p>Whether automatic service software updates are enabled for the domain.</p>
+func (o SoftwareUpdateOptionsResponseOutput) AutoSoftwareUpdateEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SoftwareUpdateOptionsResponse) *bool { return v.AutoSoftwareUpdateEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type SoftwareUpdateOptionsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SoftwareUpdateOptionsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SoftwareUpdateOptionsResponse)(nil)).Elem()
+}
+
+func (o SoftwareUpdateOptionsResponsePtrOutput) ToSoftwareUpdateOptionsResponsePtrOutput() SoftwareUpdateOptionsResponsePtrOutput {
+	return o
+}
+
+func (o SoftwareUpdateOptionsResponsePtrOutput) ToSoftwareUpdateOptionsResponsePtrOutputWithContext(ctx context.Context) SoftwareUpdateOptionsResponsePtrOutput {
+	return o
+}
+
+func (o SoftwareUpdateOptionsResponsePtrOutput) Elem() SoftwareUpdateOptionsResponseOutput {
+	return o.ApplyT(func(v *SoftwareUpdateOptionsResponse) SoftwareUpdateOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SoftwareUpdateOptionsResponse
+		return ret
+	}).(SoftwareUpdateOptionsResponseOutput)
+}
+
+// <p>Whether automatic service software updates are enabled for the domain.</p>
+func (o SoftwareUpdateOptionsResponsePtrOutput) AutoSoftwareUpdateEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SoftwareUpdateOptionsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoSoftwareUpdateEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Definition of SourceAuth
+type SourceAuth struct {
+	// <p>The resource value that applies to the specified authorization type.</p>
+	Resource *string `pulumi:"resource"`
+	// <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
+	Type *SourceAuthTypeEnumValue `pulumi:"type"`
+}
+
+// SourceAuthInput is an input type that accepts SourceAuthArgs and SourceAuthOutput values.
+// You can construct a concrete instance of `SourceAuthInput` via:
+//
+//	SourceAuthArgs{...}
+type SourceAuthInput interface {
+	pulumi.Input
+
+	ToSourceAuthOutput() SourceAuthOutput
+	ToSourceAuthOutputWithContext(context.Context) SourceAuthOutput
+}
+
+// Definition of SourceAuth
+type SourceAuthArgs struct {
+	// <p>The resource value that applies to the specified authorization type.</p>
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
+	// <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
+	Type SourceAuthTypeEnumValuePtrInput `pulumi:"type"`
+}
+
+func (SourceAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceAuth)(nil)).Elem()
+}
+
+func (i SourceAuthArgs) ToSourceAuthOutput() SourceAuthOutput {
+	return i.ToSourceAuthOutputWithContext(context.Background())
+}
+
+func (i SourceAuthArgs) ToSourceAuthOutputWithContext(ctx context.Context) SourceAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceAuthOutput)
+}
+
+func (i SourceAuthArgs) ToSourceAuthPtrOutput() SourceAuthPtrOutput {
+	return i.ToSourceAuthPtrOutputWithContext(context.Background())
+}
+
+func (i SourceAuthArgs) ToSourceAuthPtrOutputWithContext(ctx context.Context) SourceAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceAuthOutput).ToSourceAuthPtrOutputWithContext(ctx)
+}
+
+// SourceAuthPtrInput is an input type that accepts SourceAuthArgs, SourceAuthPtr and SourceAuthPtrOutput values.
+// You can construct a concrete instance of `SourceAuthPtrInput` via:
+//
+//	        SourceAuthArgs{...}
+//
+//	or:
+//
+//	        nil
+type SourceAuthPtrInput interface {
+	pulumi.Input
+
+	ToSourceAuthPtrOutput() SourceAuthPtrOutput
+	ToSourceAuthPtrOutputWithContext(context.Context) SourceAuthPtrOutput
+}
+
+type sourceAuthPtrType SourceAuthArgs
+
+func SourceAuthPtr(v *SourceAuthArgs) SourceAuthPtrInput {
+	return (*sourceAuthPtrType)(v)
+}
+
+func (*sourceAuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceAuth)(nil)).Elem()
+}
+
+func (i *sourceAuthPtrType) ToSourceAuthPtrOutput() SourceAuthPtrOutput {
+	return i.ToSourceAuthPtrOutputWithContext(context.Background())
+}
+
+func (i *sourceAuthPtrType) ToSourceAuthPtrOutputWithContext(ctx context.Context) SourceAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceAuthPtrOutput)
+}
+
+// Definition of SourceAuth
+type SourceAuthOutput struct{ *pulumi.OutputState }
+
+func (SourceAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceAuth)(nil)).Elem()
+}
+
+func (o SourceAuthOutput) ToSourceAuthOutput() SourceAuthOutput {
+	return o
+}
+
+func (o SourceAuthOutput) ToSourceAuthOutputWithContext(ctx context.Context) SourceAuthOutput {
+	return o
+}
+
+func (o SourceAuthOutput) ToSourceAuthPtrOutput() SourceAuthPtrOutput {
+	return o.ToSourceAuthPtrOutputWithContext(context.Background())
+}
+
+func (o SourceAuthOutput) ToSourceAuthPtrOutputWithContext(ctx context.Context) SourceAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceAuth) *SourceAuth {
+		return &v
+	}).(SourceAuthPtrOutput)
+}
+
+// <p>The resource value that applies to the specified authorization type.</p>
+func (o SourceAuthOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceAuth) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+// <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
+func (o SourceAuthOutput) Type() SourceAuthTypeEnumValuePtrOutput {
+	return o.ApplyT(func(v SourceAuth) *SourceAuthTypeEnumValue { return v.Type }).(SourceAuthTypeEnumValuePtrOutput)
+}
+
+type SourceAuthPtrOutput struct{ *pulumi.OutputState }
+
+func (SourceAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceAuth)(nil)).Elem()
+}
+
+func (o SourceAuthPtrOutput) ToSourceAuthPtrOutput() SourceAuthPtrOutput {
+	return o
+}
+
+func (o SourceAuthPtrOutput) ToSourceAuthPtrOutputWithContext(ctx context.Context) SourceAuthPtrOutput {
+	return o
+}
+
+func (o SourceAuthPtrOutput) Elem() SourceAuthOutput {
+	return o.ApplyT(func(v *SourceAuth) SourceAuth {
+		if v != nil {
+			return *v
+		}
+		var ret SourceAuth
+		return ret
+	}).(SourceAuthOutput)
+}
+
+// <p>The resource value that applies to the specified authorization type.</p>
+func (o SourceAuthPtrOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Resource
+	}).(pulumi.StringPtrOutput)
+}
+
+// <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
+func (o SourceAuthPtrOutput) Type() SourceAuthTypeEnumValuePtrOutput {
+	return o.ApplyT(func(v *SourceAuth) *SourceAuthTypeEnumValue {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(SourceAuthTypeEnumValuePtrOutput)
+}
+
+// Definition of SourceAuth
+type SourceAuthResponse struct {
+	// <p>The resource value that applies to the specified authorization type.</p>
+	Resource *string `pulumi:"resource"`
+	// <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
+	Type *SourceAuthTypeEnumValueResponse `pulumi:"type"`
+}
+
+// Definition of SourceAuth
+type SourceAuthResponseOutput struct{ *pulumi.OutputState }
+
+func (SourceAuthResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceAuthResponse)(nil)).Elem()
+}
+
+func (o SourceAuthResponseOutput) ToSourceAuthResponseOutput() SourceAuthResponseOutput {
+	return o
+}
+
+func (o SourceAuthResponseOutput) ToSourceAuthResponseOutputWithContext(ctx context.Context) SourceAuthResponseOutput {
+	return o
+}
+
+// <p>The resource value that applies to the specified authorization type.</p>
+func (o SourceAuthResponseOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceAuthResponse) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+// <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
+func (o SourceAuthResponseOutput) Type() SourceAuthTypeEnumValueResponsePtrOutput {
+	return o.ApplyT(func(v SourceAuthResponse) *SourceAuthTypeEnumValueResponse { return v.Type }).(SourceAuthTypeEnumValueResponsePtrOutput)
+}
+
+type SourceAuthResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SourceAuthResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceAuthResponse)(nil)).Elem()
+}
+
+func (o SourceAuthResponsePtrOutput) ToSourceAuthResponsePtrOutput() SourceAuthResponsePtrOutput {
+	return o
+}
+
+func (o SourceAuthResponsePtrOutput) ToSourceAuthResponsePtrOutputWithContext(ctx context.Context) SourceAuthResponsePtrOutput {
+	return o
+}
+
+func (o SourceAuthResponsePtrOutput) Elem() SourceAuthResponseOutput {
+	return o.ApplyT(func(v *SourceAuthResponse) SourceAuthResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SourceAuthResponse
+		return ret
+	}).(SourceAuthResponseOutput)
+}
+
+// <p>The resource value that applies to the specified authorization type.</p>
+func (o SourceAuthResponsePtrOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceAuthResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Resource
+	}).(pulumi.StringPtrOutput)
+}
+
+// <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
+func (o SourceAuthResponsePtrOutput) Type() SourceAuthTypeEnumValueResponsePtrOutput {
+	return o.ApplyT(func(v *SourceAuthResponse) *SourceAuthTypeEnumValueResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(SourceAuthTypeEnumValueResponsePtrOutput)
+}
+
+// Definition of SourceAuthTypeEnumValue
+type SourceAuthTypeEnumValue struct {
+	// Property value
+	Value *string `pulumi:"value"`
+}
+
+// SourceAuthTypeEnumValueInput is an input type that accepts SourceAuthTypeEnumValueArgs and SourceAuthTypeEnumValueOutput values.
+// You can construct a concrete instance of `SourceAuthTypeEnumValueInput` via:
+//
+//	SourceAuthTypeEnumValueArgs{...}
+type SourceAuthTypeEnumValueInput interface {
+	pulumi.Input
+
+	ToSourceAuthTypeEnumValueOutput() SourceAuthTypeEnumValueOutput
+	ToSourceAuthTypeEnumValueOutputWithContext(context.Context) SourceAuthTypeEnumValueOutput
+}
+
+// Definition of SourceAuthTypeEnumValue
+type SourceAuthTypeEnumValueArgs struct {
+	// Property value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (SourceAuthTypeEnumValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceAuthTypeEnumValue)(nil)).Elem()
+}
+
+func (i SourceAuthTypeEnumValueArgs) ToSourceAuthTypeEnumValueOutput() SourceAuthTypeEnumValueOutput {
+	return i.ToSourceAuthTypeEnumValueOutputWithContext(context.Background())
+}
+
+func (i SourceAuthTypeEnumValueArgs) ToSourceAuthTypeEnumValueOutputWithContext(ctx context.Context) SourceAuthTypeEnumValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceAuthTypeEnumValueOutput)
+}
+
+func (i SourceAuthTypeEnumValueArgs) ToSourceAuthTypeEnumValuePtrOutput() SourceAuthTypeEnumValuePtrOutput {
+	return i.ToSourceAuthTypeEnumValuePtrOutputWithContext(context.Background())
+}
+
+func (i SourceAuthTypeEnumValueArgs) ToSourceAuthTypeEnumValuePtrOutputWithContext(ctx context.Context) SourceAuthTypeEnumValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceAuthTypeEnumValueOutput).ToSourceAuthTypeEnumValuePtrOutputWithContext(ctx)
+}
+
+// SourceAuthTypeEnumValuePtrInput is an input type that accepts SourceAuthTypeEnumValueArgs, SourceAuthTypeEnumValuePtr and SourceAuthTypeEnumValuePtrOutput values.
+// You can construct a concrete instance of `SourceAuthTypeEnumValuePtrInput` via:
+//
+//	        SourceAuthTypeEnumValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type SourceAuthTypeEnumValuePtrInput interface {
+	pulumi.Input
+
+	ToSourceAuthTypeEnumValuePtrOutput() SourceAuthTypeEnumValuePtrOutput
+	ToSourceAuthTypeEnumValuePtrOutputWithContext(context.Context) SourceAuthTypeEnumValuePtrOutput
+}
+
+type sourceAuthTypeEnumValuePtrType SourceAuthTypeEnumValueArgs
+
+func SourceAuthTypeEnumValuePtr(v *SourceAuthTypeEnumValueArgs) SourceAuthTypeEnumValuePtrInput {
+	return (*sourceAuthTypeEnumValuePtrType)(v)
+}
+
+func (*sourceAuthTypeEnumValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceAuthTypeEnumValue)(nil)).Elem()
+}
+
+func (i *sourceAuthTypeEnumValuePtrType) ToSourceAuthTypeEnumValuePtrOutput() SourceAuthTypeEnumValuePtrOutput {
+	return i.ToSourceAuthTypeEnumValuePtrOutputWithContext(context.Background())
+}
+
+func (i *sourceAuthTypeEnumValuePtrType) ToSourceAuthTypeEnumValuePtrOutputWithContext(ctx context.Context) SourceAuthTypeEnumValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceAuthTypeEnumValuePtrOutput)
+}
+
+// Definition of SourceAuthTypeEnumValue
+type SourceAuthTypeEnumValueOutput struct{ *pulumi.OutputState }
+
+func (SourceAuthTypeEnumValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceAuthTypeEnumValue)(nil)).Elem()
+}
+
+func (o SourceAuthTypeEnumValueOutput) ToSourceAuthTypeEnumValueOutput() SourceAuthTypeEnumValueOutput {
+	return o
+}
+
+func (o SourceAuthTypeEnumValueOutput) ToSourceAuthTypeEnumValueOutputWithContext(ctx context.Context) SourceAuthTypeEnumValueOutput {
+	return o
+}
+
+func (o SourceAuthTypeEnumValueOutput) ToSourceAuthTypeEnumValuePtrOutput() SourceAuthTypeEnumValuePtrOutput {
+	return o.ToSourceAuthTypeEnumValuePtrOutputWithContext(context.Background())
+}
+
+func (o SourceAuthTypeEnumValueOutput) ToSourceAuthTypeEnumValuePtrOutputWithContext(ctx context.Context) SourceAuthTypeEnumValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceAuthTypeEnumValue) *SourceAuthTypeEnumValue {
+		return &v
+	}).(SourceAuthTypeEnumValuePtrOutput)
+}
+
+// Property value
+func (o SourceAuthTypeEnumValueOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceAuthTypeEnumValue) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type SourceAuthTypeEnumValuePtrOutput struct{ *pulumi.OutputState }
+
+func (SourceAuthTypeEnumValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceAuthTypeEnumValue)(nil)).Elem()
+}
+
+func (o SourceAuthTypeEnumValuePtrOutput) ToSourceAuthTypeEnumValuePtrOutput() SourceAuthTypeEnumValuePtrOutput {
+	return o
+}
+
+func (o SourceAuthTypeEnumValuePtrOutput) ToSourceAuthTypeEnumValuePtrOutputWithContext(ctx context.Context) SourceAuthTypeEnumValuePtrOutput {
+	return o
+}
+
+func (o SourceAuthTypeEnumValuePtrOutput) Elem() SourceAuthTypeEnumValueOutput {
+	return o.ApplyT(func(v *SourceAuthTypeEnumValue) SourceAuthTypeEnumValue {
+		if v != nil {
+			return *v
+		}
+		var ret SourceAuthTypeEnumValue
+		return ret
+	}).(SourceAuthTypeEnumValueOutput)
+}
+
+// Property value
+func (o SourceAuthTypeEnumValuePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceAuthTypeEnumValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+// Definition of SourceAuthTypeEnumValue
+type SourceAuthTypeEnumValueResponse struct {
+	// Property value
+	Value *string `pulumi:"value"`
+}
+
+// Definition of SourceAuthTypeEnumValue
+type SourceAuthTypeEnumValueResponseOutput struct{ *pulumi.OutputState }
+
+func (SourceAuthTypeEnumValueResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceAuthTypeEnumValueResponse)(nil)).Elem()
+}
+
+func (o SourceAuthTypeEnumValueResponseOutput) ToSourceAuthTypeEnumValueResponseOutput() SourceAuthTypeEnumValueResponseOutput {
+	return o
+}
+
+func (o SourceAuthTypeEnumValueResponseOutput) ToSourceAuthTypeEnumValueResponseOutputWithContext(ctx context.Context) SourceAuthTypeEnumValueResponseOutput {
+	return o
+}
+
+// Property value
+func (o SourceAuthTypeEnumValueResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceAuthTypeEnumValueResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type SourceAuthTypeEnumValueResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SourceAuthTypeEnumValueResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceAuthTypeEnumValueResponse)(nil)).Elem()
+}
+
+func (o SourceAuthTypeEnumValueResponsePtrOutput) ToSourceAuthTypeEnumValueResponsePtrOutput() SourceAuthTypeEnumValueResponsePtrOutput {
+	return o
+}
+
+func (o SourceAuthTypeEnumValueResponsePtrOutput) ToSourceAuthTypeEnumValueResponsePtrOutputWithContext(ctx context.Context) SourceAuthTypeEnumValueResponsePtrOutput {
+	return o
+}
+
+func (o SourceAuthTypeEnumValueResponsePtrOutput) Elem() SourceAuthTypeEnumValueResponseOutput {
+	return o.ApplyT(func(v *SourceAuthTypeEnumValueResponse) SourceAuthTypeEnumValueResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SourceAuthTypeEnumValueResponse
+		return ret
+	}).(SourceAuthTypeEnumValueResponseOutput)
+}
+
+// Property value
+func (o SourceAuthTypeEnumValueResponsePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceAuthTypeEnumValueResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+// Definition of SourceConfiguration
+type SourceConfiguration struct {
+	// The name of the application associated with the configuration.
+	ApplicationName *string `pulumi:"applicationName"`
+	// The name of the configuration template.
+	TemplateName *string `pulumi:"templateName"`
+}
+
+// SourceConfigurationInput is an input type that accepts SourceConfigurationArgs and SourceConfigurationOutput values.
+// You can construct a concrete instance of `SourceConfigurationInput` via:
+//
+//	SourceConfigurationArgs{...}
+type SourceConfigurationInput interface {
+	pulumi.Input
+
+	ToSourceConfigurationOutput() SourceConfigurationOutput
+	ToSourceConfigurationOutputWithContext(context.Context) SourceConfigurationOutput
+}
+
+// Definition of SourceConfiguration
+type SourceConfigurationArgs struct {
+	// The name of the application associated with the configuration.
+	ApplicationName pulumi.StringPtrInput `pulumi:"applicationName"`
+	// The name of the configuration template.
+	TemplateName pulumi.StringPtrInput `pulumi:"templateName"`
+}
+
+func (SourceConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceConfiguration)(nil)).Elem()
+}
+
+func (i SourceConfigurationArgs) ToSourceConfigurationOutput() SourceConfigurationOutput {
+	return i.ToSourceConfigurationOutputWithContext(context.Background())
+}
+
+func (i SourceConfigurationArgs) ToSourceConfigurationOutputWithContext(ctx context.Context) SourceConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceConfigurationOutput)
+}
+
+func (i SourceConfigurationArgs) ToSourceConfigurationPtrOutput() SourceConfigurationPtrOutput {
+	return i.ToSourceConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i SourceConfigurationArgs) ToSourceConfigurationPtrOutputWithContext(ctx context.Context) SourceConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceConfigurationOutput).ToSourceConfigurationPtrOutputWithContext(ctx)
+}
+
+// SourceConfigurationPtrInput is an input type that accepts SourceConfigurationArgs, SourceConfigurationPtr and SourceConfigurationPtrOutput values.
+// You can construct a concrete instance of `SourceConfigurationPtrInput` via:
+//
+//	        SourceConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type SourceConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToSourceConfigurationPtrOutput() SourceConfigurationPtrOutput
+	ToSourceConfigurationPtrOutputWithContext(context.Context) SourceConfigurationPtrOutput
+}
+
+type sourceConfigurationPtrType SourceConfigurationArgs
+
+func SourceConfigurationPtr(v *SourceConfigurationArgs) SourceConfigurationPtrInput {
+	return (*sourceConfigurationPtrType)(v)
+}
+
+func (*sourceConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceConfiguration)(nil)).Elem()
+}
+
+func (i *sourceConfigurationPtrType) ToSourceConfigurationPtrOutput() SourceConfigurationPtrOutput {
+	return i.ToSourceConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *sourceConfigurationPtrType) ToSourceConfigurationPtrOutputWithContext(ctx context.Context) SourceConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceConfigurationPtrOutput)
+}
+
+// Definition of SourceConfiguration
+type SourceConfigurationOutput struct{ *pulumi.OutputState }
+
+func (SourceConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceConfiguration)(nil)).Elem()
+}
+
+func (o SourceConfigurationOutput) ToSourceConfigurationOutput() SourceConfigurationOutput {
+	return o
+}
+
+func (o SourceConfigurationOutput) ToSourceConfigurationOutputWithContext(ctx context.Context) SourceConfigurationOutput {
+	return o
+}
+
+func (o SourceConfigurationOutput) ToSourceConfigurationPtrOutput() SourceConfigurationPtrOutput {
+	return o.ToSourceConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o SourceConfigurationOutput) ToSourceConfigurationPtrOutputWithContext(ctx context.Context) SourceConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceConfiguration) *SourceConfiguration {
+		return &v
+	}).(SourceConfigurationPtrOutput)
+}
+
+// The name of the application associated with the configuration.
+func (o SourceConfigurationOutput) ApplicationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceConfiguration) *string { return v.ApplicationName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the configuration template.
+func (o SourceConfigurationOutput) TemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceConfiguration) *string { return v.TemplateName }).(pulumi.StringPtrOutput)
+}
+
+type SourceConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (SourceConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceConfiguration)(nil)).Elem()
+}
+
+func (o SourceConfigurationPtrOutput) ToSourceConfigurationPtrOutput() SourceConfigurationPtrOutput {
+	return o
+}
+
+func (o SourceConfigurationPtrOutput) ToSourceConfigurationPtrOutputWithContext(ctx context.Context) SourceConfigurationPtrOutput {
+	return o
+}
+
+func (o SourceConfigurationPtrOutput) Elem() SourceConfigurationOutput {
+	return o.ApplyT(func(v *SourceConfiguration) SourceConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret SourceConfiguration
+		return ret
+	}).(SourceConfigurationOutput)
+}
+
+// The name of the application associated with the configuration.
+func (o SourceConfigurationPtrOutput) ApplicationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the configuration template.
+func (o SourceConfigurationPtrOutput) TemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TemplateName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Definition of SourceConfiguration
+type SourceConfigurationResponse struct {
+	// The name of the application associated with the configuration.
+	ApplicationName *string `pulumi:"applicationName"`
+	// The name of the configuration template.
+	TemplateName *string `pulumi:"templateName"`
+}
+
+// Definition of SourceConfiguration
+type SourceConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (SourceConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceConfigurationResponse)(nil)).Elem()
+}
+
+func (o SourceConfigurationResponseOutput) ToSourceConfigurationResponseOutput() SourceConfigurationResponseOutput {
+	return o
+}
+
+func (o SourceConfigurationResponseOutput) ToSourceConfigurationResponseOutputWithContext(ctx context.Context) SourceConfigurationResponseOutput {
+	return o
+}
+
+// The name of the application associated with the configuration.
+func (o SourceConfigurationResponseOutput) ApplicationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceConfigurationResponse) *string { return v.ApplicationName }).(pulumi.StringPtrOutput)
+}
+
+// The name of the configuration template.
+func (o SourceConfigurationResponseOutput) TemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceConfigurationResponse) *string { return v.TemplateName }).(pulumi.StringPtrOutput)
+}
+
+type SourceConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SourceConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceConfigurationResponse)(nil)).Elem()
+}
+
+func (o SourceConfigurationResponsePtrOutput) ToSourceConfigurationResponsePtrOutput() SourceConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o SourceConfigurationResponsePtrOutput) ToSourceConfigurationResponsePtrOutputWithContext(ctx context.Context) SourceConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o SourceConfigurationResponsePtrOutput) Elem() SourceConfigurationResponseOutput {
+	return o.ApplyT(func(v *SourceConfigurationResponse) SourceConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SourceConfigurationResponse
+		return ret
+	}).(SourceConfigurationResponseOutput)
+}
+
+// The name of the application associated with the configuration.
+func (o SourceConfigurationResponsePtrOutput) ApplicationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the configuration template.
+func (o SourceConfigurationResponsePtrOutput) TemplateName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TemplateName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Definition of SourceSelectionCriteria
+type SourceSelectionCriteria struct {
+	// A filter that you can specify for selection for modifications on replicas. A filter that you can specify for selection for modifications on replicas.
+	ReplicaModifications *ReplicaModifications `pulumi:"replicaModifications"`
+	// A container for filter information for the selection of Amazon S3 objects encrypted with AWS KMS. A container for filter information for the selection of S3 objects encrypted with AWS KMS.
+	SseKmsEncryptedObjects *SseKmsEncryptedObjects `pulumi:"sseKmsEncryptedObjects"`
+}
+
+// SourceSelectionCriteriaInput is an input type that accepts SourceSelectionCriteriaArgs and SourceSelectionCriteriaOutput values.
+// You can construct a concrete instance of `SourceSelectionCriteriaInput` via:
+//
+//	SourceSelectionCriteriaArgs{...}
+type SourceSelectionCriteriaInput interface {
+	pulumi.Input
+
+	ToSourceSelectionCriteriaOutput() SourceSelectionCriteriaOutput
+	ToSourceSelectionCriteriaOutputWithContext(context.Context) SourceSelectionCriteriaOutput
+}
+
+// Definition of SourceSelectionCriteria
+type SourceSelectionCriteriaArgs struct {
+	// A filter that you can specify for selection for modifications on replicas. A filter that you can specify for selection for modifications on replicas.
+	ReplicaModifications ReplicaModificationsPtrInput `pulumi:"replicaModifications"`
+	// A container for filter information for the selection of Amazon S3 objects encrypted with AWS KMS. A container for filter information for the selection of S3 objects encrypted with AWS KMS.
+	SseKmsEncryptedObjects SseKmsEncryptedObjectsPtrInput `pulumi:"sseKmsEncryptedObjects"`
+}
+
+func (SourceSelectionCriteriaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceSelectionCriteria)(nil)).Elem()
+}
+
+func (i SourceSelectionCriteriaArgs) ToSourceSelectionCriteriaOutput() SourceSelectionCriteriaOutput {
+	return i.ToSourceSelectionCriteriaOutputWithContext(context.Background())
+}
+
+func (i SourceSelectionCriteriaArgs) ToSourceSelectionCriteriaOutputWithContext(ctx context.Context) SourceSelectionCriteriaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceSelectionCriteriaOutput)
+}
+
+func (i SourceSelectionCriteriaArgs) ToSourceSelectionCriteriaPtrOutput() SourceSelectionCriteriaPtrOutput {
+	return i.ToSourceSelectionCriteriaPtrOutputWithContext(context.Background())
+}
+
+func (i SourceSelectionCriteriaArgs) ToSourceSelectionCriteriaPtrOutputWithContext(ctx context.Context) SourceSelectionCriteriaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceSelectionCriteriaOutput).ToSourceSelectionCriteriaPtrOutputWithContext(ctx)
+}
+
+// SourceSelectionCriteriaPtrInput is an input type that accepts SourceSelectionCriteriaArgs, SourceSelectionCriteriaPtr and SourceSelectionCriteriaPtrOutput values.
+// You can construct a concrete instance of `SourceSelectionCriteriaPtrInput` via:
+//
+//	        SourceSelectionCriteriaArgs{...}
+//
+//	or:
+//
+//	        nil
+type SourceSelectionCriteriaPtrInput interface {
+	pulumi.Input
+
+	ToSourceSelectionCriteriaPtrOutput() SourceSelectionCriteriaPtrOutput
+	ToSourceSelectionCriteriaPtrOutputWithContext(context.Context) SourceSelectionCriteriaPtrOutput
+}
+
+type sourceSelectionCriteriaPtrType SourceSelectionCriteriaArgs
+
+func SourceSelectionCriteriaPtr(v *SourceSelectionCriteriaArgs) SourceSelectionCriteriaPtrInput {
+	return (*sourceSelectionCriteriaPtrType)(v)
+}
+
+func (*sourceSelectionCriteriaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceSelectionCriteria)(nil)).Elem()
+}
+
+func (i *sourceSelectionCriteriaPtrType) ToSourceSelectionCriteriaPtrOutput() SourceSelectionCriteriaPtrOutput {
+	return i.ToSourceSelectionCriteriaPtrOutputWithContext(context.Background())
+}
+
+func (i *sourceSelectionCriteriaPtrType) ToSourceSelectionCriteriaPtrOutputWithContext(ctx context.Context) SourceSelectionCriteriaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceSelectionCriteriaPtrOutput)
+}
+
+// Definition of SourceSelectionCriteria
+type SourceSelectionCriteriaOutput struct{ *pulumi.OutputState }
+
+func (SourceSelectionCriteriaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceSelectionCriteria)(nil)).Elem()
+}
+
+func (o SourceSelectionCriteriaOutput) ToSourceSelectionCriteriaOutput() SourceSelectionCriteriaOutput {
+	return o
+}
+
+func (o SourceSelectionCriteriaOutput) ToSourceSelectionCriteriaOutputWithContext(ctx context.Context) SourceSelectionCriteriaOutput {
+	return o
+}
+
+func (o SourceSelectionCriteriaOutput) ToSourceSelectionCriteriaPtrOutput() SourceSelectionCriteriaPtrOutput {
+	return o.ToSourceSelectionCriteriaPtrOutputWithContext(context.Background())
+}
+
+func (o SourceSelectionCriteriaOutput) ToSourceSelectionCriteriaPtrOutputWithContext(ctx context.Context) SourceSelectionCriteriaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceSelectionCriteria) *SourceSelectionCriteria {
+		return &v
+	}).(SourceSelectionCriteriaPtrOutput)
+}
+
+// A filter that you can specify for selection for modifications on replicas. A filter that you can specify for selection for modifications on replicas.
+func (o SourceSelectionCriteriaOutput) ReplicaModifications() ReplicaModificationsPtrOutput {
+	return o.ApplyT(func(v SourceSelectionCriteria) *ReplicaModifications { return v.ReplicaModifications }).(ReplicaModificationsPtrOutput)
+}
+
+// A container for filter information for the selection of Amazon S3 objects encrypted with AWS KMS. A container for filter information for the selection of S3 objects encrypted with AWS KMS.
+func (o SourceSelectionCriteriaOutput) SseKmsEncryptedObjects() SseKmsEncryptedObjectsPtrOutput {
+	return o.ApplyT(func(v SourceSelectionCriteria) *SseKmsEncryptedObjects { return v.SseKmsEncryptedObjects }).(SseKmsEncryptedObjectsPtrOutput)
+}
+
+type SourceSelectionCriteriaPtrOutput struct{ *pulumi.OutputState }
+
+func (SourceSelectionCriteriaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceSelectionCriteria)(nil)).Elem()
+}
+
+func (o SourceSelectionCriteriaPtrOutput) ToSourceSelectionCriteriaPtrOutput() SourceSelectionCriteriaPtrOutput {
+	return o
+}
+
+func (o SourceSelectionCriteriaPtrOutput) ToSourceSelectionCriteriaPtrOutputWithContext(ctx context.Context) SourceSelectionCriteriaPtrOutput {
+	return o
+}
+
+func (o SourceSelectionCriteriaPtrOutput) Elem() SourceSelectionCriteriaOutput {
+	return o.ApplyT(func(v *SourceSelectionCriteria) SourceSelectionCriteria {
+		if v != nil {
+			return *v
+		}
+		var ret SourceSelectionCriteria
+		return ret
+	}).(SourceSelectionCriteriaOutput)
+}
+
+// A filter that you can specify for selection for modifications on replicas. A filter that you can specify for selection for modifications on replicas.
+func (o SourceSelectionCriteriaPtrOutput) ReplicaModifications() ReplicaModificationsPtrOutput {
+	return o.ApplyT(func(v *SourceSelectionCriteria) *ReplicaModifications {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicaModifications
+	}).(ReplicaModificationsPtrOutput)
+}
+
+// A container for filter information for the selection of Amazon S3 objects encrypted with AWS KMS. A container for filter information for the selection of S3 objects encrypted with AWS KMS.
+func (o SourceSelectionCriteriaPtrOutput) SseKmsEncryptedObjects() SseKmsEncryptedObjectsPtrOutput {
+	return o.ApplyT(func(v *SourceSelectionCriteria) *SseKmsEncryptedObjects {
+		if v == nil {
+			return nil
+		}
+		return v.SseKmsEncryptedObjects
+	}).(SseKmsEncryptedObjectsPtrOutput)
+}
+
+// Definition of SourceSelectionCriteria
+type SourceSelectionCriteriaResponse struct {
+	// A filter that you can specify for selection for modifications on replicas. A filter that you can specify for selection for modifications on replicas.
+	ReplicaModifications *ReplicaModificationsResponse `pulumi:"replicaModifications"`
+	// A container for filter information for the selection of Amazon S3 objects encrypted with AWS KMS. A container for filter information for the selection of S3 objects encrypted with AWS KMS.
+	SseKmsEncryptedObjects *SseKmsEncryptedObjectsResponse `pulumi:"sseKmsEncryptedObjects"`
+}
+
+// Definition of SourceSelectionCriteria
+type SourceSelectionCriteriaResponseOutput struct{ *pulumi.OutputState }
+
+func (SourceSelectionCriteriaResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceSelectionCriteriaResponse)(nil)).Elem()
+}
+
+func (o SourceSelectionCriteriaResponseOutput) ToSourceSelectionCriteriaResponseOutput() SourceSelectionCriteriaResponseOutput {
+	return o
+}
+
+func (o SourceSelectionCriteriaResponseOutput) ToSourceSelectionCriteriaResponseOutputWithContext(ctx context.Context) SourceSelectionCriteriaResponseOutput {
+	return o
+}
+
+// A filter that you can specify for selection for modifications on replicas. A filter that you can specify for selection for modifications on replicas.
+func (o SourceSelectionCriteriaResponseOutput) ReplicaModifications() ReplicaModificationsResponsePtrOutput {
+	return o.ApplyT(func(v SourceSelectionCriteriaResponse) *ReplicaModificationsResponse { return v.ReplicaModifications }).(ReplicaModificationsResponsePtrOutput)
+}
+
+// A container for filter information for the selection of Amazon S3 objects encrypted with AWS KMS. A container for filter information for the selection of S3 objects encrypted with AWS KMS.
+func (o SourceSelectionCriteriaResponseOutput) SseKmsEncryptedObjects() SseKmsEncryptedObjectsResponsePtrOutput {
+	return o.ApplyT(func(v SourceSelectionCriteriaResponse) *SseKmsEncryptedObjectsResponse {
+		return v.SseKmsEncryptedObjects
+	}).(SseKmsEncryptedObjectsResponsePtrOutput)
+}
+
+type SourceSelectionCriteriaResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SourceSelectionCriteriaResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceSelectionCriteriaResponse)(nil)).Elem()
+}
+
+func (o SourceSelectionCriteriaResponsePtrOutput) ToSourceSelectionCriteriaResponsePtrOutput() SourceSelectionCriteriaResponsePtrOutput {
+	return o
+}
+
+func (o SourceSelectionCriteriaResponsePtrOutput) ToSourceSelectionCriteriaResponsePtrOutputWithContext(ctx context.Context) SourceSelectionCriteriaResponsePtrOutput {
+	return o
+}
+
+func (o SourceSelectionCriteriaResponsePtrOutput) Elem() SourceSelectionCriteriaResponseOutput {
+	return o.ApplyT(func(v *SourceSelectionCriteriaResponse) SourceSelectionCriteriaResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SourceSelectionCriteriaResponse
+		return ret
+	}).(SourceSelectionCriteriaResponseOutput)
+}
+
+// A filter that you can specify for selection for modifications on replicas. A filter that you can specify for selection for modifications on replicas.
+func (o SourceSelectionCriteriaResponsePtrOutput) ReplicaModifications() ReplicaModificationsResponsePtrOutput {
+	return o.ApplyT(func(v *SourceSelectionCriteriaResponse) *ReplicaModificationsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicaModifications
+	}).(ReplicaModificationsResponsePtrOutput)
+}
+
+// A container for filter information for the selection of Amazon S3 objects encrypted with AWS KMS. A container for filter information for the selection of S3 objects encrypted with AWS KMS.
+func (o SourceSelectionCriteriaResponsePtrOutput) SseKmsEncryptedObjects() SseKmsEncryptedObjectsResponsePtrOutput {
+	return o.ApplyT(func(v *SourceSelectionCriteriaResponse) *SseKmsEncryptedObjectsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SseKmsEncryptedObjects
+	}).(SseKmsEncryptedObjectsResponsePtrOutput)
+}
+
+// Definition of SourceTypeEnumValue
+type SourceTypeEnumValue struct {
+	// Property value
+	Value *string `pulumi:"value"`
+}
+
+// SourceTypeEnumValueInput is an input type that accepts SourceTypeEnumValueArgs and SourceTypeEnumValueOutput values.
+// You can construct a concrete instance of `SourceTypeEnumValueInput` via:
+//
+//	SourceTypeEnumValueArgs{...}
+type SourceTypeEnumValueInput interface {
+	pulumi.Input
+
+	ToSourceTypeEnumValueOutput() SourceTypeEnumValueOutput
+	ToSourceTypeEnumValueOutputWithContext(context.Context) SourceTypeEnumValueOutput
+}
+
+// Definition of SourceTypeEnumValue
+type SourceTypeEnumValueArgs struct {
+	// Property value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (SourceTypeEnumValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceTypeEnumValue)(nil)).Elem()
+}
+
+func (i SourceTypeEnumValueArgs) ToSourceTypeEnumValueOutput() SourceTypeEnumValueOutput {
+	return i.ToSourceTypeEnumValueOutputWithContext(context.Background())
+}
+
+func (i SourceTypeEnumValueArgs) ToSourceTypeEnumValueOutputWithContext(ctx context.Context) SourceTypeEnumValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceTypeEnumValueOutput)
+}
+
+func (i SourceTypeEnumValueArgs) ToSourceTypeEnumValuePtrOutput() SourceTypeEnumValuePtrOutput {
+	return i.ToSourceTypeEnumValuePtrOutputWithContext(context.Background())
+}
+
+func (i SourceTypeEnumValueArgs) ToSourceTypeEnumValuePtrOutputWithContext(ctx context.Context) SourceTypeEnumValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceTypeEnumValueOutput).ToSourceTypeEnumValuePtrOutputWithContext(ctx)
+}
+
+// SourceTypeEnumValuePtrInput is an input type that accepts SourceTypeEnumValueArgs, SourceTypeEnumValuePtr and SourceTypeEnumValuePtrOutput values.
+// You can construct a concrete instance of `SourceTypeEnumValuePtrInput` via:
+//
+//	        SourceTypeEnumValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type SourceTypeEnumValuePtrInput interface {
+	pulumi.Input
+
+	ToSourceTypeEnumValuePtrOutput() SourceTypeEnumValuePtrOutput
+	ToSourceTypeEnumValuePtrOutputWithContext(context.Context) SourceTypeEnumValuePtrOutput
+}
+
+type sourceTypeEnumValuePtrType SourceTypeEnumValueArgs
+
+func SourceTypeEnumValuePtr(v *SourceTypeEnumValueArgs) SourceTypeEnumValuePtrInput {
+	return (*sourceTypeEnumValuePtrType)(v)
+}
+
+func (*sourceTypeEnumValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceTypeEnumValue)(nil)).Elem()
+}
+
+func (i *sourceTypeEnumValuePtrType) ToSourceTypeEnumValuePtrOutput() SourceTypeEnumValuePtrOutput {
+	return i.ToSourceTypeEnumValuePtrOutputWithContext(context.Background())
+}
+
+func (i *sourceTypeEnumValuePtrType) ToSourceTypeEnumValuePtrOutputWithContext(ctx context.Context) SourceTypeEnumValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceTypeEnumValuePtrOutput)
+}
+
+// Definition of SourceTypeEnumValue
+type SourceTypeEnumValueOutput struct{ *pulumi.OutputState }
+
+func (SourceTypeEnumValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceTypeEnumValue)(nil)).Elem()
+}
+
+func (o SourceTypeEnumValueOutput) ToSourceTypeEnumValueOutput() SourceTypeEnumValueOutput {
+	return o
+}
+
+func (o SourceTypeEnumValueOutput) ToSourceTypeEnumValueOutputWithContext(ctx context.Context) SourceTypeEnumValueOutput {
+	return o
+}
+
+func (o SourceTypeEnumValueOutput) ToSourceTypeEnumValuePtrOutput() SourceTypeEnumValuePtrOutput {
+	return o.ToSourceTypeEnumValuePtrOutputWithContext(context.Background())
+}
+
+func (o SourceTypeEnumValueOutput) ToSourceTypeEnumValuePtrOutputWithContext(ctx context.Context) SourceTypeEnumValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceTypeEnumValue) *SourceTypeEnumValue {
+		return &v
+	}).(SourceTypeEnumValuePtrOutput)
+}
+
+// Property value
+func (o SourceTypeEnumValueOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceTypeEnumValue) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type SourceTypeEnumValuePtrOutput struct{ *pulumi.OutputState }
+
+func (SourceTypeEnumValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceTypeEnumValue)(nil)).Elem()
+}
+
+func (o SourceTypeEnumValuePtrOutput) ToSourceTypeEnumValuePtrOutput() SourceTypeEnumValuePtrOutput {
+	return o
+}
+
+func (o SourceTypeEnumValuePtrOutput) ToSourceTypeEnumValuePtrOutputWithContext(ctx context.Context) SourceTypeEnumValuePtrOutput {
+	return o
+}
+
+func (o SourceTypeEnumValuePtrOutput) Elem() SourceTypeEnumValueOutput {
+	return o.ApplyT(func(v *SourceTypeEnumValue) SourceTypeEnumValue {
+		if v != nil {
+			return *v
+		}
+		var ret SourceTypeEnumValue
+		return ret
+	}).(SourceTypeEnumValueOutput)
+}
+
+// Property value
+func (o SourceTypeEnumValuePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceTypeEnumValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+// Definition of SourceTypeEnumValue
+type SourceTypeEnumValueResponse struct {
+	// Property value
+	Value *string `pulumi:"value"`
+}
+
+// Definition of SourceTypeEnumValue
+type SourceTypeEnumValueResponseOutput struct{ *pulumi.OutputState }
+
+func (SourceTypeEnumValueResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceTypeEnumValueResponse)(nil)).Elem()
+}
+
+func (o SourceTypeEnumValueResponseOutput) ToSourceTypeEnumValueResponseOutput() SourceTypeEnumValueResponseOutput {
+	return o
+}
+
+func (o SourceTypeEnumValueResponseOutput) ToSourceTypeEnumValueResponseOutputWithContext(ctx context.Context) SourceTypeEnumValueResponseOutput {
+	return o
+}
+
+// Property value
+func (o SourceTypeEnumValueResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceTypeEnumValueResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type SourceTypeEnumValueResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SourceTypeEnumValueResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceTypeEnumValueResponse)(nil)).Elem()
+}
+
+func (o SourceTypeEnumValueResponsePtrOutput) ToSourceTypeEnumValueResponsePtrOutput() SourceTypeEnumValueResponsePtrOutput {
+	return o
+}
+
+func (o SourceTypeEnumValueResponsePtrOutput) ToSourceTypeEnumValueResponsePtrOutputWithContext(ctx context.Context) SourceTypeEnumValueResponsePtrOutput {
+	return o
+}
+
+func (o SourceTypeEnumValueResponsePtrOutput) Elem() SourceTypeEnumValueResponseOutput {
+	return o.ApplyT(func(v *SourceTypeEnumValueResponse) SourceTypeEnumValueResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SourceTypeEnumValueResponse
+		return ret
+	}).(SourceTypeEnumValueResponseOutput)
+}
+
+// Property value
+func (o SourceTypeEnumValueResponsePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceTypeEnumValueResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+// Definition of SqsQueue
+type SqsQueueProperties struct {
+	// Amazon Resource Name (ARN)
+	Arn *string `pulumi:"arn"`
+	// AWS Account ID
+	AwsAccountId *string `pulumi:"awsAccountId"`
+	// AWS Properties
+	AwsProperties *AwsSqsQueueProperties `pulumi:"awsProperties"`
+	// AWS Region
+	AwsRegion *string `pulumi:"awsRegion"`
+	// AWS Source Schema
+	AwsSourceSchema *string `pulumi:"awsSourceSchema"`
+	// AWS Tags
+	AwsTags map[string]string `pulumi:"awsTags"`
+	// Public Cloud Connectors Resource ID
+	PublicCloudConnectorsResourceId *string `pulumi:"publicCloudConnectorsResourceId"`
+	// Public Cloud Resource Name
+	PublicCloudResourceName *string `pulumi:"publicCloudResourceName"`
+}
+
+// SqsQueuePropertiesInput is an input type that accepts SqsQueuePropertiesArgs and SqsQueuePropertiesOutput values.
+// You can construct a concrete instance of `SqsQueuePropertiesInput` via:
+//
+//	SqsQueuePropertiesArgs{...}
+type SqsQueuePropertiesInput interface {
+	pulumi.Input
+
+	ToSqsQueuePropertiesOutput() SqsQueuePropertiesOutput
+	ToSqsQueuePropertiesOutputWithContext(context.Context) SqsQueuePropertiesOutput
+}
+
+// Definition of SqsQueue
+type SqsQueuePropertiesArgs struct {
+	// Amazon Resource Name (ARN)
+	Arn pulumi.StringPtrInput `pulumi:"arn"`
+	// AWS Account ID
+	AwsAccountId pulumi.StringPtrInput `pulumi:"awsAccountId"`
+	// AWS Properties
+	AwsProperties AwsSqsQueuePropertiesPtrInput `pulumi:"awsProperties"`
+	// AWS Region
+	AwsRegion pulumi.StringPtrInput `pulumi:"awsRegion"`
+	// AWS Source Schema
+	AwsSourceSchema pulumi.StringPtrInput `pulumi:"awsSourceSchema"`
+	// AWS Tags
+	AwsTags pulumi.StringMapInput `pulumi:"awsTags"`
+	// Public Cloud Connectors Resource ID
+	PublicCloudConnectorsResourceId pulumi.StringPtrInput `pulumi:"publicCloudConnectorsResourceId"`
+	// Public Cloud Resource Name
+	PublicCloudResourceName pulumi.StringPtrInput `pulumi:"publicCloudResourceName"`
+}
+
+func (SqsQueuePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqsQueueProperties)(nil)).Elem()
+}
+
+func (i SqsQueuePropertiesArgs) ToSqsQueuePropertiesOutput() SqsQueuePropertiesOutput {
+	return i.ToSqsQueuePropertiesOutputWithContext(context.Background())
+}
+
+func (i SqsQueuePropertiesArgs) ToSqsQueuePropertiesOutputWithContext(ctx context.Context) SqsQueuePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqsQueuePropertiesOutput)
+}
+
+func (i SqsQueuePropertiesArgs) ToSqsQueuePropertiesPtrOutput() SqsQueuePropertiesPtrOutput {
+	return i.ToSqsQueuePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i SqsQueuePropertiesArgs) ToSqsQueuePropertiesPtrOutputWithContext(ctx context.Context) SqsQueuePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqsQueuePropertiesOutput).ToSqsQueuePropertiesPtrOutputWithContext(ctx)
+}
+
+// SqsQueuePropertiesPtrInput is an input type that accepts SqsQueuePropertiesArgs, SqsQueuePropertiesPtr and SqsQueuePropertiesPtrOutput values.
+// You can construct a concrete instance of `SqsQueuePropertiesPtrInput` via:
+//
+//	        SqsQueuePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqsQueuePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToSqsQueuePropertiesPtrOutput() SqsQueuePropertiesPtrOutput
+	ToSqsQueuePropertiesPtrOutputWithContext(context.Context) SqsQueuePropertiesPtrOutput
+}
+
+type sqsQueuePropertiesPtrType SqsQueuePropertiesArgs
+
+func SqsQueuePropertiesPtr(v *SqsQueuePropertiesArgs) SqsQueuePropertiesPtrInput {
+	return (*sqsQueuePropertiesPtrType)(v)
+}
+
+func (*sqsQueuePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqsQueueProperties)(nil)).Elem()
+}
+
+func (i *sqsQueuePropertiesPtrType) ToSqsQueuePropertiesPtrOutput() SqsQueuePropertiesPtrOutput {
+	return i.ToSqsQueuePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *sqsQueuePropertiesPtrType) ToSqsQueuePropertiesPtrOutputWithContext(ctx context.Context) SqsQueuePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqsQueuePropertiesPtrOutput)
+}
+
+// Definition of SqsQueue
+type SqsQueuePropertiesOutput struct{ *pulumi.OutputState }
+
+func (SqsQueuePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqsQueueProperties)(nil)).Elem()
+}
+
+func (o SqsQueuePropertiesOutput) ToSqsQueuePropertiesOutput() SqsQueuePropertiesOutput {
+	return o
+}
+
+func (o SqsQueuePropertiesOutput) ToSqsQueuePropertiesOutputWithContext(ctx context.Context) SqsQueuePropertiesOutput {
+	return o
+}
+
+func (o SqsQueuePropertiesOutput) ToSqsQueuePropertiesPtrOutput() SqsQueuePropertiesPtrOutput {
+	return o.ToSqsQueuePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o SqsQueuePropertiesOutput) ToSqsQueuePropertiesPtrOutputWithContext(ctx context.Context) SqsQueuePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqsQueueProperties) *SqsQueueProperties {
+		return &v
+	}).(SqsQueuePropertiesPtrOutput)
+}
+
+// Amazon Resource Name (ARN)
+func (o SqsQueuePropertiesOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqsQueueProperties) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+// AWS Account ID
+func (o SqsQueuePropertiesOutput) AwsAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqsQueueProperties) *string { return v.AwsAccountId }).(pulumi.StringPtrOutput)
+}
+
+// AWS Properties
+func (o SqsQueuePropertiesOutput) AwsProperties() AwsSqsQueuePropertiesPtrOutput {
+	return o.ApplyT(func(v SqsQueueProperties) *AwsSqsQueueProperties { return v.AwsProperties }).(AwsSqsQueuePropertiesPtrOutput)
+}
+
+// AWS Region
+func (o SqsQueuePropertiesOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqsQueueProperties) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
+}
+
+// AWS Source Schema
+func (o SqsQueuePropertiesOutput) AwsSourceSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqsQueueProperties) *string { return v.AwsSourceSchema }).(pulumi.StringPtrOutput)
+}
+
+// AWS Tags
+func (o SqsQueuePropertiesOutput) AwsTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SqsQueueProperties) map[string]string { return v.AwsTags }).(pulumi.StringMapOutput)
+}
+
+// Public Cloud Connectors Resource ID
+func (o SqsQueuePropertiesOutput) PublicCloudConnectorsResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqsQueueProperties) *string { return v.PublicCloudConnectorsResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Public Cloud Resource Name
+func (o SqsQueuePropertiesOutput) PublicCloudResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqsQueueProperties) *string { return v.PublicCloudResourceName }).(pulumi.StringPtrOutput)
+}
+
+type SqsQueuePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (SqsQueuePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqsQueueProperties)(nil)).Elem()
+}
+
+func (o SqsQueuePropertiesPtrOutput) ToSqsQueuePropertiesPtrOutput() SqsQueuePropertiesPtrOutput {
+	return o
+}
+
+func (o SqsQueuePropertiesPtrOutput) ToSqsQueuePropertiesPtrOutputWithContext(ctx context.Context) SqsQueuePropertiesPtrOutput {
+	return o
+}
+
+func (o SqsQueuePropertiesPtrOutput) Elem() SqsQueuePropertiesOutput {
+	return o.ApplyT(func(v *SqsQueueProperties) SqsQueueProperties {
+		if v != nil {
+			return *v
+		}
+		var ret SqsQueueProperties
+		return ret
+	}).(SqsQueuePropertiesOutput)
+}
+
+// Amazon Resource Name (ARN)
+func (o SqsQueuePropertiesPtrOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqsQueueProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Arn
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS Account ID
+func (o SqsQueuePropertiesPtrOutput) AwsAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqsQueueProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS Properties
+func (o SqsQueuePropertiesPtrOutput) AwsProperties() AwsSqsQueuePropertiesPtrOutput {
+	return o.ApplyT(func(v *SqsQueueProperties) *AwsSqsQueueProperties {
+		if v == nil {
+			return nil
+		}
+		return v.AwsProperties
+	}).(AwsSqsQueuePropertiesPtrOutput)
+}
+
+// AWS Region
+func (o SqsQueuePropertiesPtrOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqsQueueProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS Source Schema
+func (o SqsQueuePropertiesPtrOutput) AwsSourceSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqsQueueProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsSourceSchema
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS Tags
+func (o SqsQueuePropertiesPtrOutput) AwsTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SqsQueueProperties) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsTags
+	}).(pulumi.StringMapOutput)
+}
+
+// Public Cloud Connectors Resource ID
+func (o SqsQueuePropertiesPtrOutput) PublicCloudConnectorsResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqsQueueProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicCloudConnectorsResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Public Cloud Resource Name
+func (o SqsQueuePropertiesPtrOutput) PublicCloudResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqsQueueProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicCloudResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Definition of SqsQueue
+type SqsQueuePropertiesResponse struct {
+	// Amazon Resource Name (ARN)
+	Arn *string `pulumi:"arn"`
+	// AWS Account ID
+	AwsAccountId *string `pulumi:"awsAccountId"`
+	// AWS Properties
+	AwsProperties *AwsSqsQueuePropertiesResponse `pulumi:"awsProperties"`
+	// AWS Region
+	AwsRegion *string `pulumi:"awsRegion"`
+	// AWS Source Schema
+	AwsSourceSchema *string `pulumi:"awsSourceSchema"`
+	// AWS Tags
+	AwsTags map[string]string `pulumi:"awsTags"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Public Cloud Connectors Resource ID
+	PublicCloudConnectorsResourceId *string `pulumi:"publicCloudConnectorsResourceId"`
+	// Public Cloud Resource Name
+	PublicCloudResourceName *string `pulumi:"publicCloudResourceName"`
+}
+
+// Definition of SqsQueue
+type SqsQueuePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SqsQueuePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqsQueuePropertiesResponse)(nil)).Elem()
+}
+
+func (o SqsQueuePropertiesResponseOutput) ToSqsQueuePropertiesResponseOutput() SqsQueuePropertiesResponseOutput {
+	return o
+}
+
+func (o SqsQueuePropertiesResponseOutput) ToSqsQueuePropertiesResponseOutputWithContext(ctx context.Context) SqsQueuePropertiesResponseOutput {
+	return o
+}
+
+// Amazon Resource Name (ARN)
+func (o SqsQueuePropertiesResponseOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqsQueuePropertiesResponse) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+// AWS Account ID
+func (o SqsQueuePropertiesResponseOutput) AwsAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqsQueuePropertiesResponse) *string { return v.AwsAccountId }).(pulumi.StringPtrOutput)
+}
+
+// AWS Properties
+func (o SqsQueuePropertiesResponseOutput) AwsProperties() AwsSqsQueuePropertiesResponsePtrOutput {
+	return o.ApplyT(func(v SqsQueuePropertiesResponse) *AwsSqsQueuePropertiesResponse { return v.AwsProperties }).(AwsSqsQueuePropertiesResponsePtrOutput)
+}
+
+// AWS Region
+func (o SqsQueuePropertiesResponseOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqsQueuePropertiesResponse) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
+}
+
+// AWS Source Schema
+func (o SqsQueuePropertiesResponseOutput) AwsSourceSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqsQueuePropertiesResponse) *string { return v.AwsSourceSchema }).(pulumi.StringPtrOutput)
+}
+
+// AWS Tags
+func (o SqsQueuePropertiesResponseOutput) AwsTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SqsQueuePropertiesResponse) map[string]string { return v.AwsTags }).(pulumi.StringMapOutput)
+}
+
+// The status of the last operation.
+func (o SqsQueuePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SqsQueuePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Public Cloud Connectors Resource ID
+func (o SqsQueuePropertiesResponseOutput) PublicCloudConnectorsResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqsQueuePropertiesResponse) *string { return v.PublicCloudConnectorsResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Public Cloud Resource Name
+func (o SqsQueuePropertiesResponseOutput) PublicCloudResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqsQueuePropertiesResponse) *string { return v.PublicCloudResourceName }).(pulumi.StringPtrOutput)
+}
+
+// Definition of SseKmsEncryptedObjects
+type SseKmsEncryptedObjects struct {
+	// Specifies whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service.
+	Status *string `pulumi:"status"`
+}
+
+// SseKmsEncryptedObjectsInput is an input type that accepts SseKmsEncryptedObjectsArgs and SseKmsEncryptedObjectsOutput values.
+// You can construct a concrete instance of `SseKmsEncryptedObjectsInput` via:
+//
+//	SseKmsEncryptedObjectsArgs{...}
+type SseKmsEncryptedObjectsInput interface {
+	pulumi.Input
+
+	ToSseKmsEncryptedObjectsOutput() SseKmsEncryptedObjectsOutput
+	ToSseKmsEncryptedObjectsOutputWithContext(context.Context) SseKmsEncryptedObjectsOutput
+}
+
+// Definition of SseKmsEncryptedObjects
+type SseKmsEncryptedObjectsArgs struct {
+	// Specifies whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (SseKmsEncryptedObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SseKmsEncryptedObjects)(nil)).Elem()
+}
+
+func (i SseKmsEncryptedObjectsArgs) ToSseKmsEncryptedObjectsOutput() SseKmsEncryptedObjectsOutput {
+	return i.ToSseKmsEncryptedObjectsOutputWithContext(context.Background())
+}
+
+func (i SseKmsEncryptedObjectsArgs) ToSseKmsEncryptedObjectsOutputWithContext(ctx context.Context) SseKmsEncryptedObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SseKmsEncryptedObjectsOutput)
+}
+
+func (i SseKmsEncryptedObjectsArgs) ToSseKmsEncryptedObjectsPtrOutput() SseKmsEncryptedObjectsPtrOutput {
+	return i.ToSseKmsEncryptedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i SseKmsEncryptedObjectsArgs) ToSseKmsEncryptedObjectsPtrOutputWithContext(ctx context.Context) SseKmsEncryptedObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SseKmsEncryptedObjectsOutput).ToSseKmsEncryptedObjectsPtrOutputWithContext(ctx)
+}
+
+// SseKmsEncryptedObjectsPtrInput is an input type that accepts SseKmsEncryptedObjectsArgs, SseKmsEncryptedObjectsPtr and SseKmsEncryptedObjectsPtrOutput values.
+// You can construct a concrete instance of `SseKmsEncryptedObjectsPtrInput` via:
+//
+//	        SseKmsEncryptedObjectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SseKmsEncryptedObjectsPtrInput interface {
+	pulumi.Input
+
+	ToSseKmsEncryptedObjectsPtrOutput() SseKmsEncryptedObjectsPtrOutput
+	ToSseKmsEncryptedObjectsPtrOutputWithContext(context.Context) SseKmsEncryptedObjectsPtrOutput
+}
+
+type sseKmsEncryptedObjectsPtrType SseKmsEncryptedObjectsArgs
+
+func SseKmsEncryptedObjectsPtr(v *SseKmsEncryptedObjectsArgs) SseKmsEncryptedObjectsPtrInput {
+	return (*sseKmsEncryptedObjectsPtrType)(v)
+}
+
+func (*sseKmsEncryptedObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SseKmsEncryptedObjects)(nil)).Elem()
+}
+
+func (i *sseKmsEncryptedObjectsPtrType) ToSseKmsEncryptedObjectsPtrOutput() SseKmsEncryptedObjectsPtrOutput {
+	return i.ToSseKmsEncryptedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *sseKmsEncryptedObjectsPtrType) ToSseKmsEncryptedObjectsPtrOutputWithContext(ctx context.Context) SseKmsEncryptedObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SseKmsEncryptedObjectsPtrOutput)
+}
+
+// Definition of SseKmsEncryptedObjects
+type SseKmsEncryptedObjectsOutput struct{ *pulumi.OutputState }
+
+func (SseKmsEncryptedObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SseKmsEncryptedObjects)(nil)).Elem()
+}
+
+func (o SseKmsEncryptedObjectsOutput) ToSseKmsEncryptedObjectsOutput() SseKmsEncryptedObjectsOutput {
+	return o
+}
+
+func (o SseKmsEncryptedObjectsOutput) ToSseKmsEncryptedObjectsOutputWithContext(ctx context.Context) SseKmsEncryptedObjectsOutput {
+	return o
+}
+
+func (o SseKmsEncryptedObjectsOutput) ToSseKmsEncryptedObjectsPtrOutput() SseKmsEncryptedObjectsPtrOutput {
+	return o.ToSseKmsEncryptedObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o SseKmsEncryptedObjectsOutput) ToSseKmsEncryptedObjectsPtrOutputWithContext(ctx context.Context) SseKmsEncryptedObjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SseKmsEncryptedObjects) *SseKmsEncryptedObjects {
+		return &v
+	}).(SseKmsEncryptedObjectsPtrOutput)
+}
+
+// Specifies whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service.
+func (o SseKmsEncryptedObjectsOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SseKmsEncryptedObjects) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type SseKmsEncryptedObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (SseKmsEncryptedObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SseKmsEncryptedObjects)(nil)).Elem()
+}
+
+func (o SseKmsEncryptedObjectsPtrOutput) ToSseKmsEncryptedObjectsPtrOutput() SseKmsEncryptedObjectsPtrOutput {
+	return o
+}
+
+func (o SseKmsEncryptedObjectsPtrOutput) ToSseKmsEncryptedObjectsPtrOutputWithContext(ctx context.Context) SseKmsEncryptedObjectsPtrOutput {
+	return o
+}
+
+func (o SseKmsEncryptedObjectsPtrOutput) Elem() SseKmsEncryptedObjectsOutput {
+	return o.ApplyT(func(v *SseKmsEncryptedObjects) SseKmsEncryptedObjects {
+		if v != nil {
+			return *v
+		}
+		var ret SseKmsEncryptedObjects
+		return ret
+	}).(SseKmsEncryptedObjectsOutput)
+}
+
+// Specifies whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service.
+func (o SseKmsEncryptedObjectsPtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SseKmsEncryptedObjects) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// Definition of SseKmsEncryptedObjects
+type SseKmsEncryptedObjectsResponse struct {
+	// Specifies whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service.
+	Status *string `pulumi:"status"`
+}
+
+// Definition of SseKmsEncryptedObjects
+type SseKmsEncryptedObjectsResponseOutput struct{ *pulumi.OutputState }
+
+func (SseKmsEncryptedObjectsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SseKmsEncryptedObjectsResponse)(nil)).Elem()
+}
+
+func (o SseKmsEncryptedObjectsResponseOutput) ToSseKmsEncryptedObjectsResponseOutput() SseKmsEncryptedObjectsResponseOutput {
+	return o
+}
+
+func (o SseKmsEncryptedObjectsResponseOutput) ToSseKmsEncryptedObjectsResponseOutputWithContext(ctx context.Context) SseKmsEncryptedObjectsResponseOutput {
+	return o
+}
+
+// Specifies whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service.
+func (o SseKmsEncryptedObjectsResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SseKmsEncryptedObjectsResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type SseKmsEncryptedObjectsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SseKmsEncryptedObjectsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SseKmsEncryptedObjectsResponse)(nil)).Elem()
+}
+
+func (o SseKmsEncryptedObjectsResponsePtrOutput) ToSseKmsEncryptedObjectsResponsePtrOutput() SseKmsEncryptedObjectsResponsePtrOutput {
+	return o
+}
+
+func (o SseKmsEncryptedObjectsResponsePtrOutput) ToSseKmsEncryptedObjectsResponsePtrOutputWithContext(ctx context.Context) SseKmsEncryptedObjectsResponsePtrOutput {
+	return o
+}
+
+func (o SseKmsEncryptedObjectsResponsePtrOutput) Elem() SseKmsEncryptedObjectsResponseOutput {
+	return o.ApplyT(func(v *SseKmsEncryptedObjectsResponse) SseKmsEncryptedObjectsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SseKmsEncryptedObjectsResponse
+		return ret
+	}).(SseKmsEncryptedObjectsResponseOutput)
+}
+
+// Specifies whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service.
+func (o SseKmsEncryptedObjectsResponsePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SseKmsEncryptedObjectsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// Definition of SsmInstanceInformation
+type SsmInstanceInformationProperties struct {
+	// Amazon Resource Name (ARN)
+	Arn *string `pulumi:"arn"`
+	// AWS Account ID
+	AwsAccountId *string `pulumi:"awsAccountId"`
+	// AWS Properties
+	AwsProperties *AwsSsmInstanceInformationProperties `pulumi:"awsProperties"`
+	// AWS Region
+	AwsRegion *string `pulumi:"awsRegion"`
+	// AWS Source Schema
+	AwsSourceSchema *string `pulumi:"awsSourceSchema"`
+	// AWS Tags
+	AwsTags map[string]string `pulumi:"awsTags"`
+	// Public Cloud Connectors Resource ID
+	PublicCloudConnectorsResourceId *string `pulumi:"publicCloudConnectorsResourceId"`
+	// Public Cloud Resource Name
+	PublicCloudResourceName *string `pulumi:"publicCloudResourceName"`
+}
+
+// SsmInstanceInformationPropertiesInput is an input type that accepts SsmInstanceInformationPropertiesArgs and SsmInstanceInformationPropertiesOutput values.
+// You can construct a concrete instance of `SsmInstanceInformationPropertiesInput` via:
+//
+//	SsmInstanceInformationPropertiesArgs{...}
+type SsmInstanceInformationPropertiesInput interface {
+	pulumi.Input
+
+	ToSsmInstanceInformationPropertiesOutput() SsmInstanceInformationPropertiesOutput
+	ToSsmInstanceInformationPropertiesOutputWithContext(context.Context) SsmInstanceInformationPropertiesOutput
+}
+
+// Definition of SsmInstanceInformation
+type SsmInstanceInformationPropertiesArgs struct {
+	// Amazon Resource Name (ARN)
+	Arn pulumi.StringPtrInput `pulumi:"arn"`
+	// AWS Account ID
+	AwsAccountId pulumi.StringPtrInput `pulumi:"awsAccountId"`
+	// AWS Properties
+	AwsProperties AwsSsmInstanceInformationPropertiesPtrInput `pulumi:"awsProperties"`
+	// AWS Region
+	AwsRegion pulumi.StringPtrInput `pulumi:"awsRegion"`
+	// AWS Source Schema
+	AwsSourceSchema pulumi.StringPtrInput `pulumi:"awsSourceSchema"`
+	// AWS Tags
+	AwsTags pulumi.StringMapInput `pulumi:"awsTags"`
+	// Public Cloud Connectors Resource ID
+	PublicCloudConnectorsResourceId pulumi.StringPtrInput `pulumi:"publicCloudConnectorsResourceId"`
+	// Public Cloud Resource Name
+	PublicCloudResourceName pulumi.StringPtrInput `pulumi:"publicCloudResourceName"`
+}
+
+func (SsmInstanceInformationPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SsmInstanceInformationProperties)(nil)).Elem()
+}
+
+func (i SsmInstanceInformationPropertiesArgs) ToSsmInstanceInformationPropertiesOutput() SsmInstanceInformationPropertiesOutput {
+	return i.ToSsmInstanceInformationPropertiesOutputWithContext(context.Background())
+}
+
+func (i SsmInstanceInformationPropertiesArgs) ToSsmInstanceInformationPropertiesOutputWithContext(ctx context.Context) SsmInstanceInformationPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SsmInstanceInformationPropertiesOutput)
+}
+
+func (i SsmInstanceInformationPropertiesArgs) ToSsmInstanceInformationPropertiesPtrOutput() SsmInstanceInformationPropertiesPtrOutput {
+	return i.ToSsmInstanceInformationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i SsmInstanceInformationPropertiesArgs) ToSsmInstanceInformationPropertiesPtrOutputWithContext(ctx context.Context) SsmInstanceInformationPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SsmInstanceInformationPropertiesOutput).ToSsmInstanceInformationPropertiesPtrOutputWithContext(ctx)
+}
+
+// SsmInstanceInformationPropertiesPtrInput is an input type that accepts SsmInstanceInformationPropertiesArgs, SsmInstanceInformationPropertiesPtr and SsmInstanceInformationPropertiesPtrOutput values.
+// You can construct a concrete instance of `SsmInstanceInformationPropertiesPtrInput` via:
+//
+//	        SsmInstanceInformationPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SsmInstanceInformationPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToSsmInstanceInformationPropertiesPtrOutput() SsmInstanceInformationPropertiesPtrOutput
+	ToSsmInstanceInformationPropertiesPtrOutputWithContext(context.Context) SsmInstanceInformationPropertiesPtrOutput
+}
+
+type ssmInstanceInformationPropertiesPtrType SsmInstanceInformationPropertiesArgs
+
+func SsmInstanceInformationPropertiesPtr(v *SsmInstanceInformationPropertiesArgs) SsmInstanceInformationPropertiesPtrInput {
+	return (*ssmInstanceInformationPropertiesPtrType)(v)
+}
+
+func (*ssmInstanceInformationPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SsmInstanceInformationProperties)(nil)).Elem()
+}
+
+func (i *ssmInstanceInformationPropertiesPtrType) ToSsmInstanceInformationPropertiesPtrOutput() SsmInstanceInformationPropertiesPtrOutput {
+	return i.ToSsmInstanceInformationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *ssmInstanceInformationPropertiesPtrType) ToSsmInstanceInformationPropertiesPtrOutputWithContext(ctx context.Context) SsmInstanceInformationPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SsmInstanceInformationPropertiesPtrOutput)
+}
+
+// Definition of SsmInstanceInformation
+type SsmInstanceInformationPropertiesOutput struct{ *pulumi.OutputState }
+
+func (SsmInstanceInformationPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SsmInstanceInformationProperties)(nil)).Elem()
+}
+
+func (o SsmInstanceInformationPropertiesOutput) ToSsmInstanceInformationPropertiesOutput() SsmInstanceInformationPropertiesOutput {
+	return o
+}
+
+func (o SsmInstanceInformationPropertiesOutput) ToSsmInstanceInformationPropertiesOutputWithContext(ctx context.Context) SsmInstanceInformationPropertiesOutput {
+	return o
+}
+
+func (o SsmInstanceInformationPropertiesOutput) ToSsmInstanceInformationPropertiesPtrOutput() SsmInstanceInformationPropertiesPtrOutput {
+	return o.ToSsmInstanceInformationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o SsmInstanceInformationPropertiesOutput) ToSsmInstanceInformationPropertiesPtrOutputWithContext(ctx context.Context) SsmInstanceInformationPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SsmInstanceInformationProperties) *SsmInstanceInformationProperties {
+		return &v
+	}).(SsmInstanceInformationPropertiesPtrOutput)
+}
+
+// Amazon Resource Name (ARN)
+func (o SsmInstanceInformationPropertiesOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmInstanceInformationProperties) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+// AWS Account ID
+func (o SsmInstanceInformationPropertiesOutput) AwsAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmInstanceInformationProperties) *string { return v.AwsAccountId }).(pulumi.StringPtrOutput)
+}
+
+// AWS Properties
+func (o SsmInstanceInformationPropertiesOutput) AwsProperties() AwsSsmInstanceInformationPropertiesPtrOutput {
+	return o.ApplyT(func(v SsmInstanceInformationProperties) *AwsSsmInstanceInformationProperties { return v.AwsProperties }).(AwsSsmInstanceInformationPropertiesPtrOutput)
+}
+
+// AWS Region
+func (o SsmInstanceInformationPropertiesOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmInstanceInformationProperties) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
+}
+
+// AWS Source Schema
+func (o SsmInstanceInformationPropertiesOutput) AwsSourceSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmInstanceInformationProperties) *string { return v.AwsSourceSchema }).(pulumi.StringPtrOutput)
+}
+
+// AWS Tags
+func (o SsmInstanceInformationPropertiesOutput) AwsTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SsmInstanceInformationProperties) map[string]string { return v.AwsTags }).(pulumi.StringMapOutput)
+}
+
+// Public Cloud Connectors Resource ID
+func (o SsmInstanceInformationPropertiesOutput) PublicCloudConnectorsResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmInstanceInformationProperties) *string { return v.PublicCloudConnectorsResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Public Cloud Resource Name
+func (o SsmInstanceInformationPropertiesOutput) PublicCloudResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmInstanceInformationProperties) *string { return v.PublicCloudResourceName }).(pulumi.StringPtrOutput)
+}
+
+type SsmInstanceInformationPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (SsmInstanceInformationPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SsmInstanceInformationProperties)(nil)).Elem()
+}
+
+func (o SsmInstanceInformationPropertiesPtrOutput) ToSsmInstanceInformationPropertiesPtrOutput() SsmInstanceInformationPropertiesPtrOutput {
+	return o
+}
+
+func (o SsmInstanceInformationPropertiesPtrOutput) ToSsmInstanceInformationPropertiesPtrOutputWithContext(ctx context.Context) SsmInstanceInformationPropertiesPtrOutput {
+	return o
+}
+
+func (o SsmInstanceInformationPropertiesPtrOutput) Elem() SsmInstanceInformationPropertiesOutput {
+	return o.ApplyT(func(v *SsmInstanceInformationProperties) SsmInstanceInformationProperties {
+		if v != nil {
+			return *v
+		}
+		var ret SsmInstanceInformationProperties
+		return ret
+	}).(SsmInstanceInformationPropertiesOutput)
+}
+
+// Amazon Resource Name (ARN)
+func (o SsmInstanceInformationPropertiesPtrOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmInstanceInformationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Arn
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS Account ID
+func (o SsmInstanceInformationPropertiesPtrOutput) AwsAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmInstanceInformationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS Properties
+func (o SsmInstanceInformationPropertiesPtrOutput) AwsProperties() AwsSsmInstanceInformationPropertiesPtrOutput {
+	return o.ApplyT(func(v *SsmInstanceInformationProperties) *AwsSsmInstanceInformationProperties {
+		if v == nil {
+			return nil
+		}
+		return v.AwsProperties
+	}).(AwsSsmInstanceInformationPropertiesPtrOutput)
+}
+
+// AWS Region
+func (o SsmInstanceInformationPropertiesPtrOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmInstanceInformationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS Source Schema
+func (o SsmInstanceInformationPropertiesPtrOutput) AwsSourceSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmInstanceInformationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsSourceSchema
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS Tags
+func (o SsmInstanceInformationPropertiesPtrOutput) AwsTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SsmInstanceInformationProperties) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsTags
+	}).(pulumi.StringMapOutput)
+}
+
+// Public Cloud Connectors Resource ID
+func (o SsmInstanceInformationPropertiesPtrOutput) PublicCloudConnectorsResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmInstanceInformationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicCloudConnectorsResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Public Cloud Resource Name
+func (o SsmInstanceInformationPropertiesPtrOutput) PublicCloudResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmInstanceInformationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicCloudResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Definition of SsmInstanceInformation
+type SsmInstanceInformationPropertiesResponse struct {
+	// Amazon Resource Name (ARN)
+	Arn *string `pulumi:"arn"`
+	// AWS Account ID
+	AwsAccountId *string `pulumi:"awsAccountId"`
+	// AWS Properties
+	AwsProperties *AwsSsmInstanceInformationPropertiesResponse `pulumi:"awsProperties"`
+	// AWS Region
+	AwsRegion *string `pulumi:"awsRegion"`
+	// AWS Source Schema
+	AwsSourceSchema *string `pulumi:"awsSourceSchema"`
+	// AWS Tags
+	AwsTags map[string]string `pulumi:"awsTags"`
+	// The status of the last operation.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Public Cloud Connectors Resource ID
+	PublicCloudConnectorsResourceId *string `pulumi:"publicCloudConnectorsResourceId"`
+	// Public Cloud Resource Name
+	PublicCloudResourceName *string `pulumi:"publicCloudResourceName"`
+}
+
+// Definition of SsmInstanceInformation
+type SsmInstanceInformationPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (SsmInstanceInformationPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SsmInstanceInformationPropertiesResponse)(nil)).Elem()
+}
+
+func (o SsmInstanceInformationPropertiesResponseOutput) ToSsmInstanceInformationPropertiesResponseOutput() SsmInstanceInformationPropertiesResponseOutput {
+	return o
+}
+
+func (o SsmInstanceInformationPropertiesResponseOutput) ToSsmInstanceInformationPropertiesResponseOutputWithContext(ctx context.Context) SsmInstanceInformationPropertiesResponseOutput {
+	return o
+}
+
+// Amazon Resource Name (ARN)
+func (o SsmInstanceInformationPropertiesResponseOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmInstanceInformationPropertiesResponse) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+// AWS Account ID
+func (o SsmInstanceInformationPropertiesResponseOutput) AwsAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmInstanceInformationPropertiesResponse) *string { return v.AwsAccountId }).(pulumi.StringPtrOutput)
+}
+
+// AWS Properties
+func (o SsmInstanceInformationPropertiesResponseOutput) AwsProperties() AwsSsmInstanceInformationPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v SsmInstanceInformationPropertiesResponse) *AwsSsmInstanceInformationPropertiesResponse {
+		return v.AwsProperties
+	}).(AwsSsmInstanceInformationPropertiesResponsePtrOutput)
+}
+
+// AWS Region
+func (o SsmInstanceInformationPropertiesResponseOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmInstanceInformationPropertiesResponse) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
+}
+
+// AWS Source Schema
+func (o SsmInstanceInformationPropertiesResponseOutput) AwsSourceSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmInstanceInformationPropertiesResponse) *string { return v.AwsSourceSchema }).(pulumi.StringPtrOutput)
+}
+
+// AWS Tags
+func (o SsmInstanceInformationPropertiesResponseOutput) AwsTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SsmInstanceInformationPropertiesResponse) map[string]string { return v.AwsTags }).(pulumi.StringMapOutput)
+}
+
+// The status of the last operation.
+func (o SsmInstanceInformationPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SsmInstanceInformationPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Public Cloud Connectors Resource ID
+func (o SsmInstanceInformationPropertiesResponseOutput) PublicCloudConnectorsResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmInstanceInformationPropertiesResponse) *string { return v.PublicCloudConnectorsResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Public Cloud Resource Name
+func (o SsmInstanceInformationPropertiesResponseOutput) PublicCloudResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmInstanceInformationPropertiesResponse) *string { return v.PublicCloudResourceName }).(pulumi.StringPtrOutput)
+}
+
+// Definition of SsmParameter
+type SsmParameterProperties struct {
+	// Amazon Resource Name (ARN)
+	Arn *string `pulumi:"arn"`
+	// AWS Account ID
+	AwsAccountId *string `pulumi:"awsAccountId"`
+	// AWS Properties
+	AwsProperties *AwsSsmParameterProperties `pulumi:"awsProperties"`
+	// AWS Region
+	AwsRegion *string `pulumi:"awsRegion"`
+	// AWS Source Schema
+	AwsSourceSchema *string `pulumi:"awsSourceSchema"`
+	// AWS Tags
+	AwsTags map[string]string `pulumi:"awsTags"`
+	// Public Cloud Connectors Resource ID
+	PublicCloudConnectorsResourceId *string `pulumi:"publicCloudConnectorsResourceId"`
+	// Public Cloud Resource Name
+	PublicCloudResourceName *string `pulumi:"publicCloudResourceName"`
+}
+
+// SsmParameterPropertiesInput is an input type that accepts SsmParameterPropertiesArgs and SsmParameterPropertiesOutput values.
+// You can construct a concrete instance of `SsmParameterPropertiesInput` via:
+//
+//	SsmParameterPropertiesArgs{...}
+type SsmParameterPropertiesInput interface {
+	pulumi.Input
+
+	ToSsmParameterPropertiesOutput() SsmParameterPropertiesOutput
+	ToSsmParameterPropertiesOutputWithContext(context.Context) SsmParameterPropertiesOutput
+}
+
+// Definition of SsmParameter
+type SsmParameterPropertiesArgs struct {
+	// Amazon Resource Name (ARN)
+	Arn pulumi.StringPtrInput `pulumi:"arn"`
+	// AWS Account ID
+	AwsAccountId pulumi.StringPtrInput `pulumi:"awsAccountId"`
+	// AWS Properties
+	AwsProperties AwsSsmParameterPropertiesPtrInput `pulumi:"awsProperties"`
+	// AWS Region
+	AwsRegion pulumi.StringPtrInput `pulumi:"awsRegion"`
+	// AWS Source Schema
+	AwsSourceSchema pulumi.StringPtrInput `pulumi:"awsSourceSchema"`
+	// AWS Tags
+	AwsTags pulumi.StringMapInput `pulumi:"awsTags"`
+	// Public Cloud Connectors Resource ID
+	PublicCloudConnectorsResourceId pulumi.StringPtrInput `pulumi:"publicCloudConnectorsResourceId"`
+	// Public Cloud Resource Name
+	PublicCloudResourceName pulumi.StringPtrInput `pulumi:"publicCloudResourceName"`
+}
+
+func (SsmParameterPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SsmParameterProperties)(nil)).Elem()
+}
+
+func (i SsmParameterPropertiesArgs) ToSsmParameterPropertiesOutput() SsmParameterPropertiesOutput {
+	return i.ToSsmParameterPropertiesOutputWithContext(context.Background())
+}
+
+func (i SsmParameterPropertiesArgs) ToSsmParameterPropertiesOutputWithContext(ctx context.Context) SsmParameterPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SsmParameterPropertiesOutput)
+}
+
+func (i SsmParameterPropertiesArgs) ToSsmParameterPropertiesPtrOutput() SsmParameterPropertiesPtrOutput {
+	return i.ToSsmParameterPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i SsmParameterPropertiesArgs) ToSsmParameterPropertiesPtrOutputWithContext(ctx context.Context) SsmParameterPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SsmParameterPropertiesOutput).ToSsmParameterPropertiesPtrOutputWithContext(ctx)
+}
+
+// SsmParameterPropertiesPtrInput is an input type that accepts SsmParameterPropertiesArgs, SsmParameterPropertiesPtr and SsmParameterPropertiesPtrOutput values.
+// You can construct a concrete instance of `SsmParameterPropertiesPtrInput` via:
+//
+//	        SsmParameterPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type SsmParameterPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToSsmParameterPropertiesPtrOutput() SsmParameterPropertiesPtrOutput
+	ToSsmParameterPropertiesPtrOutputWithContext(context.Context) SsmParameterPropertiesPtrOutput
+}
+
+type ssmParameterPropertiesPtrType SsmParameterPropertiesArgs
+
+func SsmParameterPropertiesPtr(v *SsmParameterPropertiesArgs) SsmParameterPropertiesPtrInput {
+	return (*ssmParameterPropertiesPtrType)(v)
+}
+
+func (*ssmParameterPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SsmParameterProperties)(nil)).Elem()
+}
+
+func (i *ssmParameterPropertiesPtrType) ToSsmParameterPropertiesPtrOutput() SsmParameterPropertiesPtrOutput {
+	return i.ToSsmParameterPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *ssmParameterPropertiesPtrType) ToSsmParameterPropertiesPtrOutputWithContext(ctx context.Context) SsmParameterPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SsmParameterPropertiesPtrOutput)
+}
+
+// Definition of SsmParameter
+type SsmParameterPropertiesOutput struct{ *pulumi.OutputState }
+
+func (SsmParameterPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SsmParameterProperties)(nil)).Elem()
+}
+
+func (o SsmParameterPropertiesOutput) ToSsmParameterPropertiesOutput() SsmParameterPropertiesOutput {
+	return o
+}
+
+func (o SsmParameterPropertiesOutput) ToSsmParameterPropertiesOutputWithContext(ctx context.Context) SsmParameterPropertiesOutput {
+	return o
+}
+
+func (o SsmParameterPropertiesOutput) ToSsmParameterPropertiesPtrOutput() SsmParameterPropertiesPtrOutput {
+	return o.ToSsmParameterPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o SsmParameterPropertiesOutput) ToSsmParameterPropertiesPtrOutputWithContext(ctx context.Context) SsmParameterPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SsmParameterProperties) *SsmParameterProperties {
+		return &v
+	}).(SsmParameterPropertiesPtrOutput)
+}
+
+// Amazon Resource Name (ARN)
+func (o SsmParameterPropertiesOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmParameterProperties) *string { return v.Arn }).(pulumi.StringPtrOutput)
+}
+
+// AWS Account ID
+func (o SsmParameterPropertiesOutput) AwsAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmParameterProperties) *string { return v.AwsAccountId }).(pulumi.StringPtrOutput)
+}
+
+// AWS Properties
+func (o SsmParameterPropertiesOutput) AwsProperties() AwsSsmParameterPropertiesPtrOutput {
+	return o.ApplyT(func(v SsmParameterProperties) *AwsSsmParameterProperties { return v.AwsProperties }).(AwsSsmParameterPropertiesPtrOutput)
+}
+
+// AWS Region
+func (o SsmParameterPropertiesOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmParameterProperties) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
+}
+
+// AWS Source Schema
+func (o SsmParameterPropertiesOutput) AwsSourceSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmParameterProperties) *string { return v.AwsSourceSchema }).(pulumi.StringPtrOutput)
+}
+
+// AWS Tags
+func (o SsmParameterPropertiesOutput) AwsTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SsmParameterProperties) map[string]string { return v.AwsTags }).(pulumi.StringMapOutput)
+}
+
+// Public Cloud Connectors Resource ID
+func (o SsmParameterPropertiesOutput) PublicCloudConnectorsResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmParameterProperties) *string { return v.PublicCloudConnectorsResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Public Cloud Resource Name
+func (o SsmParameterPropertiesOutput) PublicCloudResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SsmParameterProperties) *string { return v.PublicCloudResourceName }).(pulumi.StringPtrOutput)
+}
+
+type SsmParameterPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (SsmParameterPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SsmParameterProperties)(nil)).Elem()
+}
+
+func (o SsmParameterPropertiesPtrOutput) ToSsmParameterPropertiesPtrOutput() SsmParameterPropertiesPtrOutput {
+	return o
+}
+
+func (o SsmParameterPropertiesPtrOutput) ToSsmParameterPropertiesPtrOutputWithContext(ctx context.Context) SsmParameterPropertiesPtrOutput {
+	return o
+}
+
+func (o SsmParameterPropertiesPtrOutput) Elem() SsmParameterPropertiesOutput {
+	return o.ApplyT(func(v *SsmParameterProperties) SsmParameterProperties {
+		if v != nil {
+			return *v
+		}
+		var ret SsmParameterProperties
+		return ret
+	}).(SsmParameterPropertiesOutput)
+}
+
+// Amazon Resource Name (ARN)
+func (o SsmParameterPropertiesPtrOutput) Arn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmParameterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Arn
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS Account ID
+func (o SsmParameterPropertiesPtrOutput) AwsAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmParameterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS Properties
+func (o SsmParameterPropertiesPtrOutput) AwsProperties() AwsSsmParameterPropertiesPtrOutput {
+	return o.ApplyT(func(v *SsmParameterProperties) *AwsSsmParameterProperties {
+		if v == nil {
+			return nil
+		}
+		return v.AwsProperties
+	}).(AwsSsmParameterPropertiesPtrOutput)
+}
+
+// AWS Region
+func (o SsmParameterPropertiesPtrOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmParameterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS Source Schema
+func (o SsmParameterPropertiesPtrOutput) AwsSourceSchema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmParameterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsSourceSchema
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS Tags
+func (o SsmParameterPropertiesPtrOutput) AwsTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SsmParameterProperties) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsTags
+	}).(pulumi.StringMapOutput)
+}
+
+// Public Cloud Connectors Resource ID
+func (o SsmParameterPropertiesPtrOutput) PublicCloudConnectorsResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmParameterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicCloudConnectorsResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Public Cloud Resource Name
+func (o SsmParameterPropertiesPtrOutput) PublicCloudResourceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SsmParameterProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicCloudResourceName
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
-	pulumi.RegisterOutputType(LocalSecondaryIndexResponseOutput{})
-	pulumi.RegisterOutputType(LocalSecondaryIndexResponseArrayOutput{})
-	pulumi.RegisterOutputType(LocationOutput{})
-	pulumi.RegisterOutputType(LocationPtrOutput{})
-	pulumi.RegisterOutputType(LocationResponseOutput{})
-	pulumi.RegisterOutputType(LocationResponsePtrOutput{})
-	pulumi.RegisterOutputType(LogConfigOutput{})
-	pulumi.RegisterOutputType(LogConfigPtrOutput{})
-	pulumi.RegisterOutputType(LogConfigResponseOutput{})
-	pulumi.RegisterOutputType(LogConfigResponsePtrOutput{})
-	pulumi.RegisterOutputType(LogConfigurationOutput{})
-	pulumi.RegisterOutputType(LogConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(LogConfigurationResponseOutput{})
-	pulumi.RegisterOutputType(LogConfigurationResponsePtrOutput{})
-	pulumi.RegisterOutputType(LogPublishingOptionOutput{})
-	pulumi.RegisterOutputType(LogPublishingOptionMapOutput{})
-	pulumi.RegisterOutputType(LogPublishingOptionResponseOutput{})
-	pulumi.RegisterOutputType(LogPublishingOptionResponseMapOutput{})
-	pulumi.RegisterOutputType(LogSetupOutput{})
-	pulumi.RegisterOutputType(LogSetupArrayOutput{})
-	pulumi.RegisterOutputType(LogSetupResponseOutput{})
-	pulumi.RegisterOutputType(LogSetupResponseArrayOutput{})
-	pulumi.RegisterOutputType(LoggingOutput{})
-	pulumi.RegisterOutputType(LoggingPtrOutput{})
 	pulumi.RegisterOutputType(LoggingConfigOutput{})
 	pulumi.RegisterOutputType(LoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(LoggingConfigArrayOutput{})
 	pulumi.RegisterOutputType(LoggingConfigResponseOutput{})
 	pulumi.RegisterOutputType(LoggingConfigResponsePtrOutput{})
-	pulumi.RegisterOutputType(LoggingConfigResponseV1Output{})
-	pulumi.RegisterOutputType(LoggingConfigResponseV1ArrayOutput{})
+	pulumi.RegisterOutputType(LoggingConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(LoggingConfigurationOutput{})
 	pulumi.RegisterOutputType(LoggingConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(LoggingConfigurationResponseOutput{})
@@ -63334,8 +64153,6 @@ func init() {
 	pulumi.RegisterOutputType(LoggingPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(LoggingResponseOutput{})
 	pulumi.RegisterOutputType(LoggingResponsePtrOutput{})
-	pulumi.RegisterOutputType(LoggingResponseV1Output{})
-	pulumi.RegisterOutputType(LoggingResponseV1PtrOutput{})
 	pulumi.RegisterOutputType(LogsConfigOutput{})
 	pulumi.RegisterOutputType(LogsConfigPtrOutput{})
 	pulumi.RegisterOutputType(LogsConfigResponseOutput{})
@@ -63628,8 +64445,6 @@ func init() {
 	pulumi.RegisterOutputType(ParameterGroupStatusResponsePtrOutput{})
 	pulumi.RegisterOutputType(ParameterResponseOutput{})
 	pulumi.RegisterOutputType(ParameterResponseArrayOutput{})
-	pulumi.RegisterOutputType(ParameterResponseV1Output{})
-	pulumi.RegisterOutputType(ParameterResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(PartitionedPrefixOutput{})
 	pulumi.RegisterOutputType(PartitionedPrefixPtrOutput{})
 	pulumi.RegisterOutputType(PartitionedPrefixResponseOutput{})
@@ -63806,8 +64621,6 @@ func init() {
 	pulumi.RegisterOutputType(PublishMetricActionPtrOutput{})
 	pulumi.RegisterOutputType(PublishMetricActionResponseOutput{})
 	pulumi.RegisterOutputType(PublishMetricActionResponsePtrOutput{})
-	pulumi.RegisterOutputType(PublishMetricActionResponseV1Output{})
-	pulumi.RegisterOutputType(PublishMetricActionResponseV1PtrOutput{})
 	pulumi.RegisterOutputType(QueryLoggingConfigOutput{})
 	pulumi.RegisterOutputType(QueryLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(QueryLoggingConfigResponseOutput{})
@@ -63926,15 +64739,12 @@ func init() {
 	pulumi.RegisterOutputType(ReplicationConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ReplicationConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(ReplicationConfigurationResponsePtrOutput{})
-	pulumi.RegisterOutputType(ReplicationConfigurationResponseV1Output{})
-	pulumi.RegisterOutputType(ReplicationConfigurationResponseV1PtrOutput{})
 	pulumi.RegisterOutputType(ReplicationDestinationOutput{})
 	pulumi.RegisterOutputType(ReplicationDestinationPtrOutput{})
 	pulumi.RegisterOutputType(ReplicationDestinationArrayOutput{})
 	pulumi.RegisterOutputType(ReplicationDestinationResponseOutput{})
+	pulumi.RegisterOutputType(ReplicationDestinationResponsePtrOutput{})
 	pulumi.RegisterOutputType(ReplicationDestinationResponseArrayOutput{})
-	pulumi.RegisterOutputType(ReplicationDestinationResponseV1Output{})
-	pulumi.RegisterOutputType(ReplicationDestinationResponseV1PtrOutput{})
 	pulumi.RegisterOutputType(ReplicationPendingModifiedValuesOutput{})
 	pulumi.RegisterOutputType(ReplicationPendingModifiedValuesPtrOutput{})
 	pulumi.RegisterOutputType(ReplicationPendingModifiedValuesResponseOutput{})
@@ -64263,4 +65073,38 @@ func init() {
 	pulumi.RegisterOutputType(SnsTopicPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SoftwareUpdateOptionsOutput{})
 	pulumi.RegisterOutputType(SoftwareUpdateOptionsPtrOutput{})
+	pulumi.RegisterOutputType(SoftwareUpdateOptionsResponseOutput{})
+	pulumi.RegisterOutputType(SoftwareUpdateOptionsResponsePtrOutput{})
+	pulumi.RegisterOutputType(SourceAuthOutput{})
+	pulumi.RegisterOutputType(SourceAuthPtrOutput{})
+	pulumi.RegisterOutputType(SourceAuthResponseOutput{})
+	pulumi.RegisterOutputType(SourceAuthResponsePtrOutput{})
+	pulumi.RegisterOutputType(SourceAuthTypeEnumValueOutput{})
+	pulumi.RegisterOutputType(SourceAuthTypeEnumValuePtrOutput{})
+	pulumi.RegisterOutputType(SourceAuthTypeEnumValueResponseOutput{})
+	pulumi.RegisterOutputType(SourceAuthTypeEnumValueResponsePtrOutput{})
+	pulumi.RegisterOutputType(SourceConfigurationOutput{})
+	pulumi.RegisterOutputType(SourceConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(SourceConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(SourceConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(SourceSelectionCriteriaOutput{})
+	pulumi.RegisterOutputType(SourceSelectionCriteriaPtrOutput{})
+	pulumi.RegisterOutputType(SourceSelectionCriteriaResponseOutput{})
+	pulumi.RegisterOutputType(SourceSelectionCriteriaResponsePtrOutput{})
+	pulumi.RegisterOutputType(SourceTypeEnumValueOutput{})
+	pulumi.RegisterOutputType(SourceTypeEnumValuePtrOutput{})
+	pulumi.RegisterOutputType(SourceTypeEnumValueResponseOutput{})
+	pulumi.RegisterOutputType(SourceTypeEnumValueResponsePtrOutput{})
+	pulumi.RegisterOutputType(SqsQueuePropertiesOutput{})
+	pulumi.RegisterOutputType(SqsQueuePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(SqsQueuePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SseKmsEncryptedObjectsOutput{})
+	pulumi.RegisterOutputType(SseKmsEncryptedObjectsPtrOutput{})
+	pulumi.RegisterOutputType(SseKmsEncryptedObjectsResponseOutput{})
+	pulumi.RegisterOutputType(SseKmsEncryptedObjectsResponsePtrOutput{})
+	pulumi.RegisterOutputType(SsmInstanceInformationPropertiesOutput{})
+	pulumi.RegisterOutputType(SsmInstanceInformationPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(SsmInstanceInformationPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(SsmParameterPropertiesOutput{})
+	pulumi.RegisterOutputType(SsmParameterPropertiesPtrOutput{})
 }

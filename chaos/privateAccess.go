@@ -8,30 +8,24 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // PrivateAccesses tracked resource.
 //
-// Uses Azure REST API version 2024-03-22-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-27-preview.
+// Uses Azure REST API version 2023-10-27-preview.
 //
-// Other available API versions: 2023-10-27-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native chaos [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-03-22-preview, 2024-11-01-preview.
 type PrivateAccess struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A readonly collection of private endpoint connection. Currently only one endpoint connection is supported.
 	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
-	// Most recent provisioning state for the given privateAccess resource.
-	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Public Network Access Control for PrivateAccess resource.
-	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -99,8 +93,6 @@ type privateAccessArgs struct {
 	Location *string `pulumi:"location"`
 	// The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
 	PrivateAccessName *string `pulumi:"privateAccessName"`
-	// Public Network Access Control for PrivateAccess resource.
-	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// String that represents an Azure resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
@@ -113,8 +105,6 @@ type PrivateAccessArgs struct {
 	Location pulumi.StringPtrInput
 	// The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
 	PrivateAccessName pulumi.StringPtrInput
-	// Public Network Access Control for PrivateAccess resource.
-	PublicNetworkAccess pulumi.StringPtrInput
 	// String that represents an Azure resource group.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
@@ -158,11 +148,6 @@ func (o PrivateAccessOutput) ToPrivateAccessOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The Azure API version of the resource.
-func (o PrivateAccessOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *PrivateAccess) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The geo-location where the resource lives
 func (o PrivateAccessOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateAccess) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
@@ -178,16 +163,6 @@ func (o PrivateAccessOutput) PrivateEndpointConnections() PrivateEndpointConnect
 	return o.ApplyT(func(v *PrivateAccess) PrivateEndpointConnectionResponseArrayOutput {
 		return v.PrivateEndpointConnections
 	}).(PrivateEndpointConnectionResponseArrayOutput)
-}
-
-// Most recent provisioning state for the given privateAccess resource.
-func (o PrivateAccessOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v *PrivateAccess) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Public Network Access Control for PrivateAccess resource.
-func (o PrivateAccessOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrivateAccess) pulumi.StringPtrOutput { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

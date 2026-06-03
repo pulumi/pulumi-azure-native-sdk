@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve the Database Migration resource.
 //
-// Uses Azure REST API version 2023-07-15-preview.
+// Uses Azure REST API version 2022-03-30-preview.
 //
-// Other available API versions: 2022-03-30-preview, 2025-03-15-preview, 2025-06-30, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-15-preview.
 func LookupDatabaseMigrationsSqlDb(ctx *pulumi.Context, args *LookupDatabaseMigrationsSqlDbArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseMigrationsSqlDbResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabaseMigrationsSqlDbResult
@@ -40,10 +40,8 @@ type LookupDatabaseMigrationsSqlDbArgs struct {
 
 // Database Migration Resource for SQL Database.
 type LookupDatabaseMigrationsSqlDbResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	Id              string `pulumi:"id"`
-	Name            string `pulumi:"name"`
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
 	// Database Migration Resource properties for SQL database.
 	Properties DatabaseMigrationPropertiesSqlDbResponse `pulumi:"properties"`
 	// Metadata pertaining to creation and last modification of the resource.
@@ -89,11 +87,6 @@ func (o LookupDatabaseMigrationsSqlDbResultOutput) ToLookupDatabaseMigrationsSql
 
 func (o LookupDatabaseMigrationsSqlDbResultOutput) ToLookupDatabaseMigrationsSqlDbResultOutputWithContext(ctx context.Context) LookupDatabaseMigrationsSqlDbResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupDatabaseMigrationsSqlDbResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDatabaseMigrationsSqlDbResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupDatabaseMigrationsSqlDbResultOutput) Id() pulumi.StringOutput {

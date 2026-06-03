@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,18 +33,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AFDTargetGroup{}
 	case "azure-native:cdn:CustomDomain":
 		r = &CustomDomain{}
-	case "azure-native:cdn:EdgeAction":
-		r = &EdgeAction{}
-	case "azure-native:cdn:EdgeActionExecutionFilter":
-		r = &EdgeActionExecutionFilter{}
-	case "azure-native:cdn:EdgeActionVersion":
-		r = &EdgeActionVersion{}
 	case "azure-native:cdn:Endpoint":
 		r = &Endpoint{}
 	case "azure-native:cdn:KeyGroup":
 		r = &KeyGroup{}
-	case "azure-native:cdn:KnowledgeSource":
-		r = &KnowledgeSource{}
 	case "azure-native:cdn:Origin":
 		r = &Origin{}
 	case "azure-native:cdn:OriginGroup":
@@ -53,8 +45,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Policy{}
 	case "azure-native:cdn:Profile":
 		r = &Profile{}
-	case "azure-native:cdn:ProfileAgent":
-		r = &ProfileAgent{}
 	case "azure-native:cdn:Route":
 		r = &Route{}
 	case "azure-native:cdn:Rule":
@@ -67,8 +57,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SecurityPolicy{}
 	case "azure-native:cdn:TunnelPolicy":
 		r = &TunnelPolicy{}
-	case "azure-native:cdn:WebAgent":
-		r = &WebAgent{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

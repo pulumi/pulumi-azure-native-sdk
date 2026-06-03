@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +43,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Bookmark{}
 	case "azure-native:securityinsights:BookmarkRelation":
 		r = &BookmarkRelation{}
+	case "azure-native:securityinsights:BusinessApplicationAgent":
+		r = &BusinessApplicationAgent{}
 	case "azure-native:securityinsights:ContentPackage":
 		r = &ContentPackage{}
 	case "azure-native:securityinsights:ContentTemplate":
@@ -75,24 +77,20 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MCASDataConnector{}
 	case "azure-native:securityinsights:MDATPDataConnector":
 		r = &MDATPDataConnector{}
-	case "azure-native:securityinsights:MSTIDataConnector":
-		r = &MSTIDataConnector{}
 	case "azure-native:securityinsights:Metadata":
 		r = &Metadata{}
 	case "azure-native:securityinsights:MicrosoftSecurityIncidentCreationAlertRule":
 		r = &MicrosoftSecurityIncidentCreationAlertRule{}
 	case "azure-native:securityinsights:OfficeDataConnector":
 		r = &OfficeDataConnector{}
-	case "azure-native:securityinsights:PremiumMicrosoftDefenderForThreatIntelligence":
-		r = &PremiumMicrosoftDefenderForThreatIntelligence{}
-	case "azure-native:securityinsights:RestApiPollerDataConnector":
-		r = &RestApiPollerDataConnector{}
 	case "azure-native:securityinsights:ScheduledAlertRule":
 		r = &ScheduledAlertRule{}
 	case "azure-native:securityinsights:SentinelOnboardingState":
 		r = &SentinelOnboardingState{}
 	case "azure-native:securityinsights:SourceControl":
 		r = &SourceControl{}
+	case "azure-native:securityinsights:System":
+		r = &System{}
 	case "azure-native:securityinsights:TIDataConnector":
 		r = &TIDataConnector{}
 	case "azure-native:securityinsights:ThreatIntelligenceIndicator":

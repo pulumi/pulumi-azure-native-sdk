@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,8 +39,6 @@ type LookupMachineGroupArgs struct {
 
 // A user-defined logical grouping of machines.
 type LookupMachineGroupResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Count of machines in this group. The value of count may be bigger than the number of machines in case of the group has been truncated due to exceeding the max number of machines a group can handle.
 	Count *int `pulumi:"count"`
 	// User defined name for the group
@@ -101,11 +99,6 @@ func (o LookupMachineGroupResultOutput) ToLookupMachineGroupResultOutput() Looku
 
 func (o LookupMachineGroupResultOutput) ToLookupMachineGroupResultOutputWithContext(ctx context.Context) LookupMachineGroupResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupMachineGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMachineGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Count of machines in this group. The value of count may be bigger than the number of machines in case of the group has been truncated due to exceeding the max number of machines a group can handle.

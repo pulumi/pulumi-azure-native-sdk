@@ -8,15 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // API details.
 //
-// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2022-08-01.
+// Uses Azure REST API version 2022-08-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
 //
-// Other available API versions: 2021-04-01-preview, 2021-08-01, 2021-12-01-preview, 2022-04-01-preview, 2022-08-01, 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-06-01-preview, 2024-10-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apimanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-09-01-preview, 2023-03-01-preview, 2023-05-01-preview, 2023-09-01-preview, 2024-05-01, 2024-06-01-preview.
 type GatewayApiEntityTag struct {
 	pulumi.CustomResourceState
 
@@ -36,8 +36,6 @@ type GatewayApiEntityTag struct {
 	ApiVersionSetId pulumi.StringPtrOutput `pulumi:"apiVersionSetId"`
 	// Collection of authentication settings included into this API.
 	AuthenticationSettings AuthenticationSettingsContractResponsePtrOutput `pulumi:"authenticationSettings"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Contact information for the API.
 	Contact ApiContactInformationResponsePtrOutput `pulumi:"contact"`
 	// Description of the API. May include HTML formatting tags.
@@ -56,8 +54,6 @@ type GatewayApiEntityTag struct {
 	Path pulumi.StringOutput `pulumi:"path"`
 	// Describes on which protocols the operations in this API can be invoked.
 	Protocols pulumi.StringArrayOutput `pulumi:"protocols"`
-	// The provisioning state
-	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Absolute URL of the backend service implementing this API. Cannot be more than 2000 characters long.
 	ServiceUrl pulumi.StringPtrOutput `pulumi:"serviceUrl"`
 	// API identifier of the source API.
@@ -136,12 +132,6 @@ func NewGatewayApiEntityTag(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:apimanagement/v20240601preview:GatewayApiEntityTag"),
-		},
-		{
-			Type: pulumi.String("azure-native:apimanagement/v20241001preview:GatewayApiEntityTag"),
-		},
-		{
-			Type: pulumi.String("azure-native:apimanagement/v20250301preview:GatewayApiEntityTag"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -283,11 +273,6 @@ func (o GatewayApiEntityTagOutput) AuthenticationSettings() AuthenticationSettin
 	}).(AuthenticationSettingsContractResponsePtrOutput)
 }
 
-// The Azure API version of the resource.
-func (o GatewayApiEntityTagOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *GatewayApiEntityTag) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Contact information for the API.
 func (o GatewayApiEntityTagOutput) Contact() ApiContactInformationResponsePtrOutput {
 	return o.ApplyT(func(v *GatewayApiEntityTag) ApiContactInformationResponsePtrOutput { return v.Contact }).(ApiContactInformationResponsePtrOutput)
@@ -331,11 +316,6 @@ func (o GatewayApiEntityTagOutput) Path() pulumi.StringOutput {
 // Describes on which protocols the operations in this API can be invoked.
 func (o GatewayApiEntityTagOutput) Protocols() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GatewayApiEntityTag) pulumi.StringArrayOutput { return v.Protocols }).(pulumi.StringArrayOutput)
-}
-
-// The provisioning state
-func (o GatewayApiEntityTagOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v *GatewayApiEntityTag) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Absolute URL of the backend service implementing this API. Cannot be more than 2000 characters long.

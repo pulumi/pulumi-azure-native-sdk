@@ -7,15 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get Network Tap Rule resource details.
 //
 // Uses Azure REST API version 2023-06-15.
-//
-// Other available API versions: 2024-02-15-preview, 2024-06-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managednetworkfabric [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupNetworkTapRule(ctx *pulumi.Context, args *LookupNetworkTapRuleArgs, opts ...pulumi.InvokeOption) (*LookupNetworkTapRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkTapRuleResult
@@ -39,8 +37,6 @@ type LookupNetworkTapRuleResult struct {
 	AdministrativeState string `pulumi:"administrativeState"`
 	// Switch configuration description.
 	Annotation *string `pulumi:"annotation"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Configuration state of the resource.
 	ConfigurationState string `pulumi:"configurationState"`
 	// Input method to configure Network Tap Rule.
@@ -128,11 +124,6 @@ func (o LookupNetworkTapRuleResultOutput) AdministrativeState() pulumi.StringOut
 // Switch configuration description.
 func (o LookupNetworkTapRuleResultOutput) Annotation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNetworkTapRuleResult) *string { return v.Annotation }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupNetworkTapRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNetworkTapRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Configuration state of the resource.

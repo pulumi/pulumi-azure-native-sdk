@@ -8,39 +8,36 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The configuration of the event streaming service resource attached to the Purview account for kafka notifications.
 //
-// Uses Azure REST API version 2024-04-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-12-01.
+// Uses Azure REST API version 2021-12-01.
 //
-// Other available API versions: 2021-12-01, 2023-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native purview [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-05-01-preview, 2024-04-01-preview.
 type KafkaConfiguration struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Consumer group for hook event hub.
 	ConsumerGroup pulumi.StringPtrOutput `pulumi:"consumerGroup"`
-	// Credentials to access the event streaming service attached to the purview account.
+	// Credentials to access event hub.
 	Credentials CredentialsResponsePtrOutput `pulumi:"credentials"`
 	// Optional partition Id for notification event hub. If not set, all partitions will be leveraged.
 	EventHubPartitionId pulumi.StringPtrOutput `pulumi:"eventHubPartitionId"`
-	// A type definition that refers the id to an Azure Resource Manager resource.
-	EventHubResourceId pulumi.StringPtrOutput `pulumi:"eventHubResourceId"`
+	EventHubResourceId  pulumi.StringPtrOutput `pulumi:"eventHubResourceId"`
 	// The event hub type.
 	EventHubType pulumi.StringPtrOutput `pulumi:"eventHubType"`
 	// The state of the event streaming service
 	EventStreamingState pulumi.StringPtrOutput `pulumi:"eventStreamingState"`
 	// The event streaming service type
 	EventStreamingType pulumi.StringPtrOutput `pulumi:"eventStreamingType"`
-	// The name of the resource
+	// Gets or sets the name.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData ProxyResourceResponseSystemDataOutput `pulumi:"systemData"`
+	// Gets or sets the type.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -112,21 +109,20 @@ type kafkaConfigurationArgs struct {
 	AccountName string `pulumi:"accountName"`
 	// Consumer group for hook event hub.
 	ConsumerGroup *string `pulumi:"consumerGroup"`
-	// Credentials to access the event streaming service attached to the purview account.
+	// Credentials to access event hub.
 	Credentials *Credentials `pulumi:"credentials"`
 	// Optional partition Id for notification event hub. If not set, all partitions will be leveraged.
 	EventHubPartitionId *string `pulumi:"eventHubPartitionId"`
-	// A type definition that refers the id to an Azure Resource Manager resource.
-	EventHubResourceId *string `pulumi:"eventHubResourceId"`
+	EventHubResourceId  *string `pulumi:"eventHubResourceId"`
 	// The event hub type.
 	EventHubType *string `pulumi:"eventHubType"`
 	// The state of the event streaming service
 	EventStreamingState *string `pulumi:"eventStreamingState"`
 	// The event streaming service type
 	EventStreamingType *string `pulumi:"eventStreamingType"`
-	// Name of kafka configuration.
+	// The kafka configuration name.
 	KafkaConfigurationName *string `pulumi:"kafkaConfigurationName"`
-	// The name of the resource group. The name is case insensitive.
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -136,21 +132,20 @@ type KafkaConfigurationArgs struct {
 	AccountName pulumi.StringInput
 	// Consumer group for hook event hub.
 	ConsumerGroup pulumi.StringPtrInput
-	// Credentials to access the event streaming service attached to the purview account.
+	// Credentials to access event hub.
 	Credentials CredentialsPtrInput
 	// Optional partition Id for notification event hub. If not set, all partitions will be leveraged.
 	EventHubPartitionId pulumi.StringPtrInput
-	// A type definition that refers the id to an Azure Resource Manager resource.
-	EventHubResourceId pulumi.StringPtrInput
+	EventHubResourceId  pulumi.StringPtrInput
 	// The event hub type.
 	EventHubType pulumi.StringPtrInput
 	// The state of the event streaming service
 	EventStreamingState pulumi.StringPtrInput
 	// The event streaming service type
 	EventStreamingType pulumi.StringPtrInput
-	// Name of kafka configuration.
+	// The kafka configuration name.
 	KafkaConfigurationName pulumi.StringPtrInput
-	// The name of the resource group. The name is case insensitive.
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput
 }
 
@@ -191,17 +186,12 @@ func (o KafkaConfigurationOutput) ToKafkaConfigurationOutputWithContext(ctx cont
 	return o
 }
 
-// The Azure API version of the resource.
-func (o KafkaConfigurationOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *KafkaConfiguration) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Consumer group for hook event hub.
 func (o KafkaConfigurationOutput) ConsumerGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaConfiguration) pulumi.StringPtrOutput { return v.ConsumerGroup }).(pulumi.StringPtrOutput)
 }
 
-// Credentials to access the event streaming service attached to the purview account.
+// Credentials to access event hub.
 func (o KafkaConfigurationOutput) Credentials() CredentialsResponsePtrOutput {
 	return o.ApplyT(func(v *KafkaConfiguration) CredentialsResponsePtrOutput { return v.Credentials }).(CredentialsResponsePtrOutput)
 }
@@ -211,7 +201,6 @@ func (o KafkaConfigurationOutput) EventHubPartitionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaConfiguration) pulumi.StringPtrOutput { return v.EventHubPartitionId }).(pulumi.StringPtrOutput)
 }
 
-// A type definition that refers the id to an Azure Resource Manager resource.
 func (o KafkaConfigurationOutput) EventHubResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaConfiguration) pulumi.StringPtrOutput { return v.EventHubResourceId }).(pulumi.StringPtrOutput)
 }
@@ -231,17 +220,17 @@ func (o KafkaConfigurationOutput) EventStreamingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KafkaConfiguration) pulumi.StringPtrOutput { return v.EventStreamingType }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource
+// Gets or sets the name.
 func (o KafkaConfigurationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaConfiguration) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o KafkaConfigurationOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *KafkaConfiguration) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+// Metadata pertaining to creation and last modification of the resource.
+func (o KafkaConfigurationOutput) SystemData() ProxyResourceResponseSystemDataOutput {
+	return o.ApplyT(func(v *KafkaConfiguration) ProxyResourceResponseSystemDataOutput { return v.SystemData }).(ProxyResourceResponseSystemDataOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Gets or sets the type.
 func (o KafkaConfigurationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *KafkaConfiguration) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

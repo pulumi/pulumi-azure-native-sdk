@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2020-03-01.
 //
-// Other available API versions: 2021-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native streamanalytics [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-10-01-preview.
 func LookupInput(ctx *pulumi.Context, args *LookupInputArgs, opts ...pulumi.InvokeOption) (*LookupInputResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupInputResult
@@ -37,8 +37,6 @@ type LookupInputArgs struct {
 
 // An input object, containing all information associated with the named input. All inputs are contained under a streaming job.
 type LookupInputResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource Id
 	Id string `pulumi:"id"`
 	// Resource name
@@ -84,11 +82,6 @@ func (o LookupInputResultOutput) ToLookupInputResultOutput() LookupInputResultOu
 
 func (o LookupInputResultOutput) ToLookupInputResultOutputWithContext(ctx context.Context) LookupInputResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupInputResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupInputResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource Id

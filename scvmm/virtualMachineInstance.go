@@ -8,22 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Define the virtualMachineInstance.
 //
-// Uses Azure REST API version 2023-04-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
+// Uses Azure REST API version 2023-04-01-preview.
 //
-// Other available API versions: 2023-10-07, 2024-06-01, 2025-03-13. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native scvmm [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-10-07, 2024-06-01.
 type VirtualMachineInstance struct {
 	pulumi.CustomResourceState
 
 	// Availability Sets in vm.
 	AvailabilitySets VirtualMachineInstancePropertiesResponseAvailabilitySetsArrayOutput `pulumi:"availabilitySets"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the extended location.
 	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
 	// Hardware properties.
@@ -70,9 +68,6 @@ func NewVirtualMachineInstance(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:scvmm/v20240601:VirtualMachineInstance"),
-		},
-		{
-			Type: pulumi.String("azure-native:scvmm/v20250313:VirtualMachineInstance"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -189,11 +184,6 @@ func (o VirtualMachineInstanceOutput) AvailabilitySets() VirtualMachineInstanceP
 	return o.ApplyT(func(v *VirtualMachineInstance) VirtualMachineInstancePropertiesResponseAvailabilitySetsArrayOutput {
 		return v.AvailabilitySets
 	}).(VirtualMachineInstancePropertiesResponseAvailabilitySetsArrayOutput)
-}
-
-// The Azure API version of the resource.
-func (o VirtualMachineInstanceOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *VirtualMachineInstance) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the extended location.

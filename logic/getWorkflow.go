@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2019-05-01.
 //
-// Other available API versions: 2015-02-01-preview, 2016-06-01, 2018-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native logic [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2015-02-01-preview, 2016-06-01, 2018-07-01-preview.
 func LookupWorkflow(ctx *pulumi.Context, args *LookupWorkflowArgs, opts ...pulumi.InvokeOption) (*LookupWorkflowResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkflowResult
@@ -39,8 +39,6 @@ type LookupWorkflowResult struct {
 	AccessControl *FlowAccessControlConfigurationResponse `pulumi:"accessControl"`
 	// Gets the access endpoint.
 	AccessEndpoint string `pulumi:"accessEndpoint"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets the changed time.
 	ChangedTime string `pulumi:"changedTime"`
 	// Gets the created time.
@@ -120,11 +118,6 @@ func (o LookupWorkflowResultOutput) AccessControl() FlowAccessControlConfigurati
 // Gets the access endpoint.
 func (o LookupWorkflowResultOutput) AccessEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.AccessEndpoint }).(pulumi.StringOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupWorkflowResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupWorkflowResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets the changed time.

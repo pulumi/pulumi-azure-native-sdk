@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Kusto cluster.
 //
-// Uses Azure REST API version 2024-04-13.
+// Uses Azure REST API version 2022-12-29.
 //
-// Other available API versions: 2018-09-07-preview, 2019-01-21, 2019-05-15, 2019-09-07, 2019-11-09, 2020-02-15, 2020-06-14, 2020-09-18, 2021-01-01, 2021-08-27, 2022-02-01, 2022-07-07, 2022-11-11, 2022-12-29, 2023-05-02, 2023-08-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kusto [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-07-07, 2023-05-02, 2023-08-15, 2024-04-13.
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterResult
@@ -29,7 +29,7 @@ func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.
 type LookupClusterArgs struct {
 	// The name of the Kusto cluster.
 	ClusterName string `pulumi:"clusterName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group containing the Kusto cluster.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -41,10 +41,6 @@ type LookupClusterResult struct {
 	AllowedFqdnList []string `pulumi:"allowedFqdnList"`
 	// The list of ips in the format of CIDR allowed to connect to the cluster.
 	AllowedIpRangeList []string `pulumi:"allowedIpRangeList"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// List of callout policies for egress from Cluster.
-	CalloutPolicies []CalloutPolicyResponse `pulumi:"calloutPolicies"`
 	// The cluster data ingestion URI.
 	DataIngestionUri string `pulumi:"dataIngestionUri"`
 	// A boolean value that indicates if the cluster could be automatically stopped (due to lack of data or no activity for many days).
@@ -71,8 +67,6 @@ type LookupClusterResult struct {
 	LanguageExtensions *LanguageExtensionsListResponse `pulumi:"languageExtensions"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
-	// Properties of the peer cluster involved in a migration to/from this cluster.
-	MigrationCluster MigrationClusterPropertiesResponse `pulumi:"migrationCluster"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Optimized auto scale definition.
@@ -105,8 +99,6 @@ type LookupClusterResult struct {
 	Uri string `pulumi:"uri"`
 	// Virtual network definition.
 	VirtualNetworkConfiguration *VirtualNetworkConfigurationResponse `pulumi:"virtualNetworkConfiguration"`
-	// Indicates whether the cluster is zonal or non-zonal.
-	ZoneStatus string `pulumi:"zoneStatus"`
 	// The availability zones of the cluster.
 	Zones []string `pulumi:"zones"`
 }
@@ -153,8 +145,6 @@ func (val *LookupClusterResult) Defaults() *LookupClusterResult {
 		restrictOutboundNetworkAccess_ := "Disabled"
 		tmp.RestrictOutboundNetworkAccess = &restrictOutboundNetworkAccess_
 	}
-	tmp.VirtualNetworkConfiguration = tmp.VirtualNetworkConfiguration.Defaults()
-
 	return &tmp
 }
 func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts ...pulumi.InvokeOption) LookupClusterResultOutput {
@@ -169,7 +159,7 @@ func LookupClusterOutput(ctx *pulumi.Context, args LookupClusterOutputArgs, opts
 type LookupClusterOutputArgs struct {
 	// The name of the Kusto cluster.
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group containing the Kusto cluster.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -205,16 +195,6 @@ func (o LookupClusterResultOutput) AllowedFqdnList() pulumi.StringArrayOutput {
 // The list of ips in the format of CIDR allowed to connect to the cluster.
 func (o LookupClusterResultOutput) AllowedIpRangeList() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []string { return v.AllowedIpRangeList }).(pulumi.StringArrayOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupClusterResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupClusterResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// List of callout policies for egress from Cluster.
-func (o LookupClusterResultOutput) CalloutPolicies() CalloutPolicyResponseArrayOutput {
-	return o.ApplyT(func(v LookupClusterResult) []CalloutPolicyResponse { return v.CalloutPolicies }).(CalloutPolicyResponseArrayOutput)
 }
 
 // The cluster data ingestion URI.
@@ -280,11 +260,6 @@ func (o LookupClusterResultOutput) LanguageExtensions() LanguageExtensionsListRe
 // The geo-location where the resource lives
 func (o LookupClusterResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Location }).(pulumi.StringOutput)
-}
-
-// Properties of the peer cluster involved in a migration to/from this cluster.
-func (o LookupClusterResultOutput) MigrationCluster() MigrationClusterPropertiesResponseOutput {
-	return o.ApplyT(func(v LookupClusterResult) MigrationClusterPropertiesResponse { return v.MigrationCluster }).(MigrationClusterPropertiesResponseOutput)
 }
 
 // The name of the resource
@@ -365,11 +340,6 @@ func (o LookupClusterResultOutput) Uri() pulumi.StringOutput {
 // Virtual network definition.
 func (o LookupClusterResultOutput) VirtualNetworkConfiguration() VirtualNetworkConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v LookupClusterResult) *VirtualNetworkConfigurationResponse { return v.VirtualNetworkConfiguration }).(VirtualNetworkConfigurationResponsePtrOutput)
-}
-
-// Indicates whether the cluster is zonal or non-zonal.
-func (o LookupClusterResultOutput) ZoneStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupClusterResult) string { return v.ZoneStatus }).(pulumi.StringOutput)
 }
 
 // The availability zones of the cluster.

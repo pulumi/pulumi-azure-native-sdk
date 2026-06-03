@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List all entities (Management Groups, Subscriptions, etc.) for the authenticated user.
 //
-// Uses Azure REST API version 2023-04-01.
+// Uses Azure REST API version 2021-04-01.
 //
-// Other available API versions: 2021-04-01, 2024-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native management [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2020-05-01, 2020-10-01, 2023-04-01.
 func GetEntity(ctx *pulumi.Context, args *GetEntityArgs, opts ...pulumi.InvokeOption) (*GetEntityResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetEntityResult
@@ -53,11 +53,11 @@ type GetEntityArgs struct {
 
 // Describes the result of the request to view entities.
 type GetEntityResult struct {
-	// Total count of records that match the filter.
-	Count *int `pulumi:"count"`
-	// The link to the next page of items
-	NextLink *string `pulumi:"nextLink"`
-	// The EntityInfo items on this page
+	// Total count of records that match the filter
+	Count int `pulumi:"count"`
+	// The URL to use for getting the next set of results.
+	NextLink string `pulumi:"nextLink"`
+	// The list of entities.
 	Value []EntityInfoResponse `pulumi:"value"`
 }
 
@@ -114,17 +114,17 @@ func (o GetEntityResultOutput) ToGetEntityResultOutputWithContext(ctx context.Co
 	return o
 }
 
-// Total count of records that match the filter.
-func (o GetEntityResultOutput) Count() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetEntityResult) *int { return v.Count }).(pulumi.IntPtrOutput)
+// Total count of records that match the filter
+func (o GetEntityResultOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEntityResult) int { return v.Count }).(pulumi.IntOutput)
 }
 
-// The link to the next page of items
-func (o GetEntityResultOutput) NextLink() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetEntityResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
+// The URL to use for getting the next set of results.
+func (o GetEntityResultOutput) NextLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEntityResult) string { return v.NextLink }).(pulumi.StringOutput)
 }
 
-// The EntityInfo items on this page
+// The list of entities.
 func (o GetEntityResultOutput) Value() EntityInfoResponseArrayOutput {
 	return o.ApplyT(func(v GetEntityResult) []EntityInfoResponse { return v.Value }).(EntityInfoResponseArrayOutput)
 }

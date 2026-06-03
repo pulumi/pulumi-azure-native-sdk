@@ -8,18 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A custom API
 //
-// Uses Azure REST API version 2016-06-01. In version 2.x of the Azure Native provider, it used API version 2016-06-01.
+// Uses Azure REST API version 2016-06-01. In version 1.x of the Azure Native provider, it used API version 2016-06-01.
 type CustomApi struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Resource ETag
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Resource location
@@ -148,11 +146,6 @@ func (o CustomApiOutput) ToCustomApiOutput() CustomApiOutput {
 
 func (o CustomApiOutput) ToCustomApiOutputWithContext(ctx context.Context) CustomApiOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o CustomApiOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *CustomApi) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource ETag

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,8 +39,6 @@ type LookupEventHubDataConnectionArgs struct {
 
 // Class representing an event hub data connection.
 type LookupEventHubDataConnectionResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The event hub messages compression type
 	Compression *string `pulumi:"compression"`
 	// The event hub consumer group.
@@ -113,11 +111,6 @@ func (o LookupEventHubDataConnectionResultOutput) ToLookupEventHubDataConnection
 
 func (o LookupEventHubDataConnectionResultOutput) ToLookupEventHubDataConnectionResultOutputWithContext(ctx context.Context) LookupEventHubDataConnectionResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupEventHubDataConnectionResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupEventHubDataConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The event hub messages compression type

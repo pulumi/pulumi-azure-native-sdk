@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,8 +31,6 @@ type LookupManagementLockAtSubscriptionLevelArgs struct {
 
 // The lock information.
 type LookupManagementLockAtSubscriptionLevelResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The resource ID of the lock.
 	Id string `pulumi:"id"`
 	// The level of the lock. Possible values are: NotSpecified, CanNotDelete, ReadOnly. CanNotDelete means authorized users are able to read and modify the resources, but not delete. ReadOnly means authorized users can only read from a resource, but they can't modify or delete it.
@@ -80,11 +78,6 @@ func (o LookupManagementLockAtSubscriptionLevelResultOutput) ToLookupManagementL
 
 func (o LookupManagementLockAtSubscriptionLevelResultOutput) ToLookupManagementLockAtSubscriptionLevelResultOutputWithContext(ctx context.Context) LookupManagementLockAtSubscriptionLevelResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupManagementLockAtSubscriptionLevelResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupManagementLockAtSubscriptionLevelResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource ID of the lock.

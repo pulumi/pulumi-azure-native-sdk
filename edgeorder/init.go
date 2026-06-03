@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,8 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:edgeorder:Address":
 		r = &Address{}
+	case "azure-native:edgeorder:AddressByName":
+		r = &AddressByName{}
 	case "azure-native:edgeorder:OrderItem":
 		r = &OrderItem{}
+	case "azure-native:edgeorder:OrderItemByName":
+		r = &OrderItemByName{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

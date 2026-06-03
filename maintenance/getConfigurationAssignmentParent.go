@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get configuration assignment for resource..
+// Get configuration for resource.
 //
-// Uses Azure REST API version 2023-10-01-preview.
+// Uses Azure REST API version 2022-11-01-preview.
 //
-// Other available API versions: 2022-11-01-preview, 2023-04-01, 2023-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native maintenance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-04-01, 2023-09-01-preview, 2023-10-01-preview.
 func LookupConfigurationAssignmentParent(ctx *pulumi.Context, args *LookupConfigurationAssignmentParentArgs, opts ...pulumi.InvokeOption) (*LookupConfigurationAssignmentParentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConfigurationAssignmentParentResult
@@ -27,15 +27,15 @@ func LookupConfigurationAssignmentParent(ctx *pulumi.Context, args *LookupConfig
 }
 
 type LookupConfigurationAssignmentParentArgs struct {
-	// The name of the ConfigurationAssignment
+	// Configuration assignment name
 	ConfigurationAssignmentName string `pulumi:"configurationAssignmentName"`
 	// Resource provider name
 	ProviderName string `pulumi:"providerName"`
-	// The name of the resource group. The name is case insensitive.
+	// Resource group name
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Resource name
+	// Resource identifier
 	ResourceName string `pulumi:"resourceName"`
-	// Resource parent name
+	// Resource parent identifier
 	ResourceParentName string `pulumi:"resourceParentName"`
 	// Resource parent type
 	ResourceParentType string `pulumi:"resourceParentType"`
@@ -45,23 +45,19 @@ type LookupConfigurationAssignmentParentArgs struct {
 
 // Configuration Assignment
 type LookupConfigurationAssignmentParentResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Properties of the configuration assignment
-	Filter *ConfigurationAssignmentFilterPropertiesResponse `pulumi:"filter"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Fully qualified identifier of the resource
 	Id string `pulumi:"id"`
 	// Location of the resource
 	Location *string `pulumi:"location"`
 	// The maintenance configuration Id
 	MaintenanceConfigurationId *string `pulumi:"maintenanceConfigurationId"`
-	// The name of the resource
+	// Name of the resource
 	Name string `pulumi:"name"`
 	// The unique resourceId
 	ResourceId *string `pulumi:"resourceId"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Type of the resource
 	Type string `pulumi:"type"`
 }
 
@@ -75,15 +71,15 @@ func LookupConfigurationAssignmentParentOutput(ctx *pulumi.Context, args LookupC
 }
 
 type LookupConfigurationAssignmentParentOutputArgs struct {
-	// The name of the ConfigurationAssignment
+	// Configuration assignment name
 	ConfigurationAssignmentName pulumi.StringInput `pulumi:"configurationAssignmentName"`
 	// Resource provider name
 	ProviderName pulumi.StringInput `pulumi:"providerName"`
-	// The name of the resource group. The name is case insensitive.
+	// Resource group name
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// Resource name
+	// Resource identifier
 	ResourceName pulumi.StringInput `pulumi:"resourceName"`
-	// Resource parent name
+	// Resource parent identifier
 	ResourceParentName pulumi.StringInput `pulumi:"resourceParentName"`
 	// Resource parent type
 	ResourceParentType pulumi.StringInput `pulumi:"resourceParentType"`
@@ -110,19 +106,7 @@ func (o LookupConfigurationAssignmentParentResultOutput) ToLookupConfigurationAs
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupConfigurationAssignmentParentResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupConfigurationAssignmentParentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// Properties of the configuration assignment
-func (o LookupConfigurationAssignmentParentResultOutput) Filter() ConfigurationAssignmentFilterPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v LookupConfigurationAssignmentParentResult) *ConfigurationAssignmentFilterPropertiesResponse {
-		return v.Filter
-	}).(ConfigurationAssignmentFilterPropertiesResponsePtrOutput)
-}
-
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Fully qualified identifier of the resource
 func (o LookupConfigurationAssignmentParentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationAssignmentParentResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -137,7 +121,7 @@ func (o LookupConfigurationAssignmentParentResultOutput) MaintenanceConfiguratio
 	return o.ApplyT(func(v LookupConfigurationAssignmentParentResult) *string { return v.MaintenanceConfigurationId }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource
+// Name of the resource
 func (o LookupConfigurationAssignmentParentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationAssignmentParentResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -152,7 +136,7 @@ func (o LookupConfigurationAssignmentParentResultOutput) SystemData() SystemData
 	return o.ApplyT(func(v LookupConfigurationAssignmentParentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Type of the resource
 func (o LookupConfigurationAssignmentParentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigurationAssignmentParentResult) string { return v.Type }).(pulumi.StringOutput)
 }

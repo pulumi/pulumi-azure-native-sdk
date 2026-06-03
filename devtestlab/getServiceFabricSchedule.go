@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,33 +27,31 @@ func LookupServiceFabricSchedule(ctx *pulumi.Context, args *LookupServiceFabricS
 type LookupServiceFabricScheduleArgs struct {
 	// Specify the $expand query. Example: 'properties($select=status)'
 	Expand *string `pulumi:"expand"`
-	// labs
+	// The name of the lab.
 	LabName string `pulumi:"labName"`
-	// The name of the Schedule
+	// The name of the schedule.
 	Name string `pulumi:"name"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// servicefabrics
+	// The name of the service fabric.
 	ServiceFabricName string `pulumi:"serviceFabricName"`
-	// users
+	// The name of the user profile.
 	UserName string `pulumi:"userName"`
 }
 
 // A schedule.
 type LookupServiceFabricScheduleResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date of the schedule.
 	CreatedDate string `pulumi:"createdDate"`
 	// If the schedule will occur once each day of the week, specify the daily recurrence.
 	DailyRecurrence *DayDetailsResponse `pulumi:"dailyRecurrence"`
 	// If the schedule will occur multiple times a day, specify the hourly recurrence.
 	HourlyRecurrence *HourDetailsResponse `pulumi:"hourlyRecurrence"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// The identifier of the resource.
 	Id string `pulumi:"id"`
-	// The geo-location where the resource lives
+	// The location of the resource.
 	Location *string `pulumi:"location"`
-	// The name of the resource
+	// The name of the resource.
 	Name string `pulumi:"name"`
 	// Notification settings.
 	NotificationSettings *NotificationSettingsResponse `pulumi:"notificationSettings"`
@@ -61,9 +59,7 @@ type LookupServiceFabricScheduleResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The status of the schedule (i.e. Enabled, Disabled)
 	Status *string `pulumi:"status"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Resource tags.
+	// The tags of the resource.
 	Tags map[string]string `pulumi:"tags"`
 	// The resource ID to which the schedule belongs
 	TargetResourceId *string `pulumi:"targetResourceId"`
@@ -71,7 +67,7 @@ type LookupServiceFabricScheduleResult struct {
 	TaskType *string `pulumi:"taskType"`
 	// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection<string> TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
 	TimeZoneId *string `pulumi:"timeZoneId"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// The type of the resource.
 	Type string `pulumi:"type"`
 	// The unique immutable identifier of a resource (Guid).
 	UniqueIdentifier string `pulumi:"uniqueIdentifier"`
@@ -105,15 +101,15 @@ func LookupServiceFabricScheduleOutput(ctx *pulumi.Context, args LookupServiceFa
 type LookupServiceFabricScheduleOutputArgs struct {
 	// Specify the $expand query. Example: 'properties($select=status)'
 	Expand pulumi.StringPtrInput `pulumi:"expand"`
-	// labs
+	// The name of the lab.
 	LabName pulumi.StringInput `pulumi:"labName"`
-	// The name of the Schedule
+	// The name of the schedule.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// servicefabrics
+	// The name of the service fabric.
 	ServiceFabricName pulumi.StringInput `pulumi:"serviceFabricName"`
-	// users
+	// The name of the user profile.
 	UserName pulumi.StringInput `pulumi:"userName"`
 }
 
@@ -136,11 +132,6 @@ func (o LookupServiceFabricScheduleResultOutput) ToLookupServiceFabricScheduleRe
 	return o
 }
 
-// The Azure API version of the resource.
-func (o LookupServiceFabricScheduleResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupServiceFabricScheduleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The creation date of the schedule.
 func (o LookupServiceFabricScheduleResultOutput) CreatedDate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceFabricScheduleResult) string { return v.CreatedDate }).(pulumi.StringOutput)
@@ -156,17 +147,17 @@ func (o LookupServiceFabricScheduleResultOutput) HourlyRecurrence() HourDetailsR
 	return o.ApplyT(func(v LookupServiceFabricScheduleResult) *HourDetailsResponse { return v.HourlyRecurrence }).(HourDetailsResponsePtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// The identifier of the resource.
 func (o LookupServiceFabricScheduleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceFabricScheduleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The geo-location where the resource lives
+// The location of the resource.
 func (o LookupServiceFabricScheduleResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServiceFabricScheduleResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource
+// The name of the resource.
 func (o LookupServiceFabricScheduleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceFabricScheduleResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -186,12 +177,7 @@ func (o LookupServiceFabricScheduleResultOutput) Status() pulumi.StringPtrOutput
 	return o.ApplyT(func(v LookupServiceFabricScheduleResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupServiceFabricScheduleResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupServiceFabricScheduleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// Resource tags.
+// The tags of the resource.
 func (o LookupServiceFabricScheduleResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupServiceFabricScheduleResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -211,7 +197,7 @@ func (o LookupServiceFabricScheduleResultOutput) TimeZoneId() pulumi.StringPtrOu
 	return o.ApplyT(func(v LookupServiceFabricScheduleResult) *string { return v.TimeZoneId }).(pulumi.StringPtrOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// The type of the resource.
 func (o LookupServiceFabricScheduleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceFabricScheduleResult) string { return v.Type }).(pulumi.StringOutput)
 }

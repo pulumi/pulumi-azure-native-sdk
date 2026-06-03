@@ -8,22 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Definition of the automation account type.
 //
-// Uses Azure REST API version 2024-10-23. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
+// Uses Azure REST API version 2022-08-08. In version 1.x of the Azure Native provider, it used API version 2021-06-22.
 //
-// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2021-06-22, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
 type AutomationAccount struct {
 	pulumi.CustomResourceState
 
 	// URL of automation hybrid service which is used for hybrid worker on-boarding.
 	AutomationHybridServiceUrl pulumi.StringPtrOutput `pulumi:"automationHybridServiceUrl"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets the creation time.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
 	// Gets or sets the description.
@@ -40,8 +38,8 @@ type AutomationAccount struct {
 	LastModifiedBy pulumi.StringPtrOutput `pulumi:"lastModifiedBy"`
 	// Gets the last modified time.
 	LastModifiedTime pulumi.StringOutput `pulumi:"lastModifiedTime"`
-	// The geo-location where the resource lives
-	Location pulumi.StringOutput `pulumi:"location"`
+	// The Azure Region where the resource lives
+	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of Automation operations supported by the Automation resource provider.
@@ -52,11 +50,11 @@ type AutomationAccount struct {
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
 	// Gets status of account.
 	State pulumi.StringOutput `pulumi:"state"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// Resource system metadata.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// The type of the resource.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -218,11 +216,6 @@ func (o AutomationAccountOutput) AutomationHybridServiceUrl() pulumi.StringPtrOu
 	return o.ApplyT(func(v *AutomationAccount) pulumi.StringPtrOutput { return v.AutomationHybridServiceUrl }).(pulumi.StringPtrOutput)
 }
 
-// The Azure API version of the resource.
-func (o AutomationAccountOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *AutomationAccount) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Gets the creation time.
 func (o AutomationAccountOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AutomationAccount) pulumi.StringOutput { return v.CreationTime }).(pulumi.StringOutput)
@@ -263,9 +256,9 @@ func (o AutomationAccountOutput) LastModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AutomationAccount) pulumi.StringOutput { return v.LastModifiedTime }).(pulumi.StringOutput)
 }
 
-// The geo-location where the resource lives
-func (o AutomationAccountOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v *AutomationAccount) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+// The Azure Region where the resource lives
+func (o AutomationAccountOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomationAccount) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
 // The name of the resource
@@ -295,7 +288,7 @@ func (o AutomationAccountOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *AutomationAccount) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// Resource system metadata.
 func (o AutomationAccountOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *AutomationAccount) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -305,7 +298,7 @@ func (o AutomationAccountOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AutomationAccount) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// The type of the resource.
 func (o AutomationAccountOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *AutomationAccount) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

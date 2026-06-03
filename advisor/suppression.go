@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The details of the snoozed or dismissed rule; for example, the duration, name, and GUID associated with the rule.
 //
-// Uses Azure REST API version 2023-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-01-01.
+// Uses Azure REST API version 2023-01-01. In version 1.x of the Azure Native provider, it used API version 2020-01-01.
 //
-// Other available API versions: 2023-01-01, 2024-11-18-preview, 2025-01-01, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native advisor [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-09-01-preview, 2025-01-01.
 type Suppression struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the expiration time stamp.
 	ExpirationTimeStamp pulumi.StringOutput `pulumi:"expirationTimeStamp"`
 	// The name of the resource
@@ -75,13 +73,7 @@ func NewSuppression(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:advisor/v20230901preview:Suppression"),
 		},
 		{
-			Type: pulumi.String("azure-native:advisor/v20241118preview:Suppression"),
-		},
-		{
 			Type: pulumi.String("azure-native:advisor/v20250101:Suppression"),
-		},
-		{
-			Type: pulumi.String("azure-native:advisor/v20250501preview:Suppression"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -179,11 +171,6 @@ func (o SuppressionOutput) ToSuppressionOutput() SuppressionOutput {
 
 func (o SuppressionOutput) ToSuppressionOutputWithContext(ctx context.Context) SuppressionOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o SuppressionOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Suppression) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the expiration time stamp.

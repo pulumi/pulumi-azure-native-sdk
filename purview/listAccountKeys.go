@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List the authorization keys associated with this account.
 //
-// Uses Azure REST API version 2024-04-01-preview.
+// Uses Azure REST API version 2021-12-01.
 //
-// Other available API versions: 2021-12-01, 2023-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native purview [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2020-12-01-preview, 2021-07-01, 2023-05-01-preview, 2024-04-01-preview.
 func ListAccountKeys(ctx *pulumi.Context, args *ListAccountKeysArgs, opts ...pulumi.InvokeOption) (*ListAccountKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAccountKeysResult
@@ -29,11 +29,11 @@ func ListAccountKeys(ctx *pulumi.Context, args *ListAccountKeysArgs, opts ...pul
 type ListAccountKeysArgs struct {
 	// The name of the account.
 	AccountName string `pulumi:"accountName"`
-	// The name of the resource group. The name is case insensitive.
+	// The resource group name.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// The Purview Account access keys.
+// The Account access keys.
 type ListAccountKeysResult struct {
 	// Gets or sets the primary connection string.
 	AtlasKafkaPrimaryEndpoint *string `pulumi:"atlasKafkaPrimaryEndpoint"`
@@ -53,7 +53,7 @@ func ListAccountKeysOutput(ctx *pulumi.Context, args ListAccountKeysOutputArgs, 
 type ListAccountKeysOutputArgs struct {
 	// The name of the account.
 	AccountName pulumi.StringInput `pulumi:"accountName"`
-	// The name of the resource group. The name is case insensitive.
+	// The resource group name.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -61,7 +61,7 @@ func (ListAccountKeysOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ListAccountKeysArgs)(nil)).Elem()
 }
 
-// The Purview Account access keys.
+// The Account access keys.
 type ListAccountKeysResultOutput struct{ *pulumi.OutputState }
 
 func (ListAccountKeysResultOutput) ElementType() reflect.Type {

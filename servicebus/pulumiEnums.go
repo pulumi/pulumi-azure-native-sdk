@@ -177,51 +177,6 @@ func (in *accessRightsPtr) ToAccessRightsPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(AccessRightsPtrOutput)
 }
 
-// AccessRightsArrayInput is an input type that accepts AccessRightsArray and AccessRightsArrayOutput values.
-// You can construct a concrete instance of `AccessRightsArrayInput` via:
-//
-//	AccessRightsArray{ AccessRightsArgs{...} }
-type AccessRightsArrayInput interface {
-	pulumi.Input
-
-	ToAccessRightsArrayOutput() AccessRightsArrayOutput
-	ToAccessRightsArrayOutputWithContext(context.Context) AccessRightsArrayOutput
-}
-
-type AccessRightsArray []AccessRights
-
-func (AccessRightsArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AccessRights)(nil)).Elem()
-}
-
-func (i AccessRightsArray) ToAccessRightsArrayOutput() AccessRightsArrayOutput {
-	return i.ToAccessRightsArrayOutputWithContext(context.Background())
-}
-
-func (i AccessRightsArray) ToAccessRightsArrayOutputWithContext(ctx context.Context) AccessRightsArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AccessRightsArrayOutput)
-}
-
-type AccessRightsArrayOutput struct{ *pulumi.OutputState }
-
-func (AccessRightsArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AccessRights)(nil)).Elem()
-}
-
-func (o AccessRightsArrayOutput) ToAccessRightsArrayOutput() AccessRightsArrayOutput {
-	return o
-}
-
-func (o AccessRightsArrayOutput) ToAccessRightsArrayOutputWithContext(ctx context.Context) AccessRightsArrayOutput {
-	return o
-}
-
-func (o AccessRightsArrayOutput) Index(i pulumi.IntInput) AccessRightsOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessRights {
-		return vs[0].([]AccessRights)[vs[1].(int)]
-	}).(AccessRightsOutput)
-}
-
 // Default Action for Network Rule Set
 type DefaultAction string
 
@@ -2583,7 +2538,6 @@ func (in *tlsVersionPtr) ToTlsVersionPtrOutputWithContext(ctx context.Context) T
 func init() {
 	pulumi.RegisterOutputType(AccessRightsOutput{})
 	pulumi.RegisterOutputType(AccessRightsPtrOutput{})
-	pulumi.RegisterOutputType(AccessRightsArrayOutput{})
 	pulumi.RegisterOutputType(DefaultActionOutput{})
 	pulumi.RegisterOutputType(DefaultActionPtrOutput{})
 	pulumi.RegisterOutputType(EndPointProvisioningStateOutput{})

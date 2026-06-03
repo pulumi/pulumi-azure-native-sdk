@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves information about a proximity placement group .
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2023-03-01.
 //
-// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2024-11-01.
 func LookupProximityPlacementGroup(ctx *pulumi.Context, args *LookupProximityPlacementGroupArgs, opts ...pulumi.InvokeOption) (*LookupProximityPlacementGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupProximityPlacementGroupResult
@@ -31,7 +31,7 @@ type LookupProximityPlacementGroupArgs struct {
 	IncludeColocationStatus *string `pulumi:"includeColocationStatus"`
 	// The name of the proximity placement group.
 	ProximityPlacementGroupName string `pulumi:"proximityPlacementGroupName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -39,31 +39,27 @@ type LookupProximityPlacementGroupArgs struct {
 type LookupProximityPlacementGroupResult struct {
 	// A list of references to all availability sets in the proximity placement group.
 	AvailabilitySets []SubResourceWithColocationStatusResponse `pulumi:"availabilitySets"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Describes colocation status of the Proximity Placement Group.
 	ColocationStatus *InstanceViewStatusResponse `pulumi:"colocationStatus"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Resource Id
 	Id string `pulumi:"id"`
 	// Specifies the user intent of the proximity placement group.
-	Intent *ProximityPlacementGroupPropertiesIntentResponse `pulumi:"intent"`
-	// The geo-location where the resource lives
+	Intent *ProximityPlacementGroupPropertiesResponseIntent `pulumi:"intent"`
+	// Resource location
 	Location string `pulumi:"location"`
-	// The name of the resource
+	// Resource name
 	Name string `pulumi:"name"`
 	// Specifies the type of the proximity placement group. Possible values are: **Standard** : Co-locate resources within an Azure region or Availability Zone. **Ultra** : For future use.
 	ProximityPlacementGroupType *string `pulumi:"proximityPlacementGroupType"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Resource tags.
+	// Resource tags
 	Tags map[string]string `pulumi:"tags"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type
 	Type string `pulumi:"type"`
 	// A list of references to all virtual machine scale sets in the proximity placement group.
 	VirtualMachineScaleSets []SubResourceWithColocationStatusResponse `pulumi:"virtualMachineScaleSets"`
 	// A list of references to all virtual machines in the proximity placement group.
 	VirtualMachines []SubResourceWithColocationStatusResponse `pulumi:"virtualMachines"`
-	// The availability zones.
+	// Specifies the Availability Zone where virtual machine, virtual machine scale set or availability set associated with the  proximity placement group can be created.
 	Zones []string `pulumi:"zones"`
 }
 
@@ -81,7 +77,7 @@ type LookupProximityPlacementGroupOutputArgs struct {
 	IncludeColocationStatus pulumi.StringPtrInput `pulumi:"includeColocationStatus"`
 	// The name of the proximity placement group.
 	ProximityPlacementGroupName pulumi.StringInput `pulumi:"proximityPlacementGroupName"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -111,34 +107,29 @@ func (o LookupProximityPlacementGroupResultOutput) AvailabilitySets() SubResourc
 	}).(SubResourceWithColocationStatusResponseArrayOutput)
 }
 
-// The Azure API version of the resource.
-func (o LookupProximityPlacementGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupProximityPlacementGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // Describes colocation status of the Proximity Placement Group.
 func (o LookupProximityPlacementGroupResultOutput) ColocationStatus() InstanceViewStatusResponsePtrOutput {
 	return o.ApplyT(func(v LookupProximityPlacementGroupResult) *InstanceViewStatusResponse { return v.ColocationStatus }).(InstanceViewStatusResponsePtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Resource Id
 func (o LookupProximityPlacementGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProximityPlacementGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Specifies the user intent of the proximity placement group.
-func (o LookupProximityPlacementGroupResultOutput) Intent() ProximityPlacementGroupPropertiesIntentResponsePtrOutput {
-	return o.ApplyT(func(v LookupProximityPlacementGroupResult) *ProximityPlacementGroupPropertiesIntentResponse {
+func (o LookupProximityPlacementGroupResultOutput) Intent() ProximityPlacementGroupPropertiesResponseIntentPtrOutput {
+	return o.ApplyT(func(v LookupProximityPlacementGroupResult) *ProximityPlacementGroupPropertiesResponseIntent {
 		return v.Intent
-	}).(ProximityPlacementGroupPropertiesIntentResponsePtrOutput)
+	}).(ProximityPlacementGroupPropertiesResponseIntentPtrOutput)
 }
 
-// The geo-location where the resource lives
+// Resource location
 func (o LookupProximityPlacementGroupResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProximityPlacementGroupResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// The name of the resource
+// Resource name
 func (o LookupProximityPlacementGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProximityPlacementGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -148,17 +139,12 @@ func (o LookupProximityPlacementGroupResultOutput) ProximityPlacementGroupType()
 	return o.ApplyT(func(v LookupProximityPlacementGroupResult) *string { return v.ProximityPlacementGroupType }).(pulumi.StringPtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupProximityPlacementGroupResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupProximityPlacementGroupResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// Resource tags.
+// Resource tags
 func (o LookupProximityPlacementGroupResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupProximityPlacementGroupResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type
 func (o LookupProximityPlacementGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProximityPlacementGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -177,7 +163,7 @@ func (o LookupProximityPlacementGroupResultOutput) VirtualMachines() SubResource
 	}).(SubResourceWithColocationStatusResponseArrayOutput)
 }
 
-// The availability zones.
+// Specifies the Availability Zone where virtual machine, virtual machine scale set or availability set associated with the  proximity placement group can be created.
 func (o LookupProximityPlacementGroupResultOutput) Zones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupProximityPlacementGroupResult) []string { return v.Zones }).(pulumi.StringArrayOutput)
 }

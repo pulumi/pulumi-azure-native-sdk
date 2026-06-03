@@ -8,21 +8,19 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Private Endpoint Connection resource.
 //
-// Uses Azure REST API version 2024-03-02. In version 2.x of the Azure Native provider, it used API version 2022-07-02.
+// Uses Azure REST API version 2022-07-02. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
 //
-// Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02, 2025-01-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-01-02, 2023-04-02, 2023-10-02, 2024-03-02.
 type DiskAccessAPrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// The name of the resource
+	// private endpoint connection name
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource of private end point.
 	PrivateEndpoint PrivateEndpointResponseOutput `pulumi:"privateEndpoint"`
@@ -30,9 +28,7 @@ type DiskAccessAPrivateEndpointConnection struct {
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponseOutput `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state of the private endpoint connection resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// private endpoint connection type
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -86,9 +82,6 @@ func NewDiskAccessAPrivateEndpointConnection(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:compute/v20240302:DiskAccessAPrivateEndpointConnection"),
 		},
-		{
-			Type: pulumi.String("azure-native:compute/v20250102:DiskAccessAPrivateEndpointConnection"),
-		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -130,7 +123,7 @@ type diskAccessAPrivateEndpointConnectionArgs struct {
 	PrivateEndpointConnectionName *string `pulumi:"privateEndpointConnectionName"`
 	// A collection of information about the state of the connection between DiskAccess and Virtual Network.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -142,7 +135,7 @@ type DiskAccessAPrivateEndpointConnectionArgs struct {
 	PrivateEndpointConnectionName pulumi.StringPtrInput
 	// A collection of information about the state of the connection between DiskAccess and Virtual Network.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateInput
-	// The name of the resource group. The name is case insensitive.
+	// The name of the resource group.
 	ResourceGroupName pulumi.StringInput
 }
 
@@ -183,12 +176,7 @@ func (o DiskAccessAPrivateEndpointConnectionOutput) ToDiskAccessAPrivateEndpoint
 	return o
 }
 
-// The Azure API version of the resource.
-func (o DiskAccessAPrivateEndpointConnectionOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *DiskAccessAPrivateEndpointConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
-// The name of the resource
+// private endpoint connection name
 func (o DiskAccessAPrivateEndpointConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DiskAccessAPrivateEndpointConnection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -210,12 +198,7 @@ func (o DiskAccessAPrivateEndpointConnectionOutput) ProvisioningState() pulumi.S
 	return o.ApplyT(func(v *DiskAccessAPrivateEndpointConnection) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o DiskAccessAPrivateEndpointConnectionOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *DiskAccessAPrivateEndpointConnection) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// private endpoint connection type
 func (o DiskAccessAPrivateEndpointConnectionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *DiskAccessAPrivateEndpointConnection) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

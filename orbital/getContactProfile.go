@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the specified contact Profile in a specified resource group.
 //
 // Uses Azure REST API version 2022-11-01.
+//
+// Other available API versions: 2022-03-01.
 func LookupContactProfile(ctx *pulumi.Context, args *LookupContactProfileArgs, opts ...pulumi.InvokeOption) (*LookupContactProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupContactProfileResult
@@ -35,8 +37,6 @@ type LookupContactProfileArgs struct {
 type LookupContactProfileResult struct {
 	// Auto-tracking configuration.
 	AutoTrackingConfiguration *string `pulumi:"autoTrackingConfiguration"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// ARM resource identifier of the Event Hub used for telemetry. Requires granting Orbital Resource Provider the rights to send telemetry into the hub.
 	EventHubUri *string `pulumi:"eventHubUri"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -101,11 +101,6 @@ func (o LookupContactProfileResultOutput) ToLookupContactProfileResultOutputWith
 // Auto-tracking configuration.
 func (o LookupContactProfileResultOutput) AutoTrackingConfiguration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupContactProfileResult) *string { return v.AutoTrackingConfiguration }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupContactProfileResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupContactProfileResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // ARM resource identifier of the Event Hub used for telemetry. Requires granting Orbital Resource Provider the rights to send telemetry into the hub.

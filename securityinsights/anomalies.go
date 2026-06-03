@@ -8,18 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Settings with single toggle.
 //
-// Uses Azure REST API version 2025-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
+// Uses Azure REST API version 2023-06-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-03-01-preview.
 type Anomalies struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Etag of the azure resource
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Determines whether the setting is enable or disabled.
@@ -57,19 +55,7 @@ func NewAnomalies(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20190101preview:Anomalies"),
 		},
 		{
-			Type: pulumi.String("azure-native:securityinsights/v20190101preview:IPSyncer"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20210301preview:Anomalies"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20210301preview:EntityAnalytics"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20210301preview:EyesOn"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20210301preview:Ueba"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20210901preview:Anomalies"),
@@ -79,9 +65,6 @@ func NewAnomalies(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20220101preview:Anomalies"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20220101preview:EntityAnalytics"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20220401preview:Anomalies"),
@@ -126,127 +109,31 @@ func NewAnomalies(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20230601preview:Anomalies"),
 		},
 		{
-			Type: pulumi.String("azure-native:securityinsights/v20230601preview:EntityAnalytics"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230601preview:EyesOn"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230601preview:Ueba"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20230701preview:Anomalies"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230701preview:EntityAnalytics"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230701preview:EyesOn"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230701preview:Ueba"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20230801preview:Anomalies"),
 		},
 		{
-			Type: pulumi.String("azure-native:securityinsights/v20230801preview:EntityAnalytics"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230801preview:EyesOn"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230801preview:Ueba"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20230901preview:Anomalies"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230901preview:EntityAnalytics"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230901preview:EyesOn"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230901preview:Ueba"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20231001preview:Anomalies"),
 		},
 		{
-			Type: pulumi.String("azure-native:securityinsights/v20231001preview:EntityAnalytics"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20231001preview:EyesOn"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20231001preview:Ueba"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20231201preview:Anomalies"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20231201preview:EntityAnalytics"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20231201preview:EyesOn"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20231201preview:Ueba"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20240101preview:Anomalies"),
 		},
 		{
-			Type: pulumi.String("azure-native:securityinsights/v20240101preview:EntityAnalytics"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20240101preview:EyesOn"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20240101preview:Ueba"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20240401preview:Anomalies"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20240401preview:EntityAnalytics"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20240401preview:EyesOn"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20240401preview:Ueba"),
 		},
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20241001preview:Anomalies"),
 		},
 		{
-			Type: pulumi.String("azure-native:securityinsights/v20241001preview:EntityAnalytics"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20241001preview:EyesOn"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20241001preview:Ueba"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20250101preview:Anomalies"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20250401preview:Anomalies"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20250701preview:Anomalies"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights:EntityAnalytics"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights:EyesOn"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights:Ueba"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -342,11 +229,6 @@ func (o AnomaliesOutput) ToAnomaliesOutput() AnomaliesOutput {
 
 func (o AnomaliesOutput) ToAnomaliesOutputWithContext(ctx context.Context) AnomaliesOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o AnomaliesOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Anomalies) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Etag of the azure resource

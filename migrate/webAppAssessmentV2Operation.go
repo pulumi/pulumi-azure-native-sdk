@@ -8,15 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Web app Assessment REST resource.
 //
-// Uses Azure REST API version 2024-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
+// Uses Azure REST API version 2023-04-01-preview.
 //
-// Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview, 2024-01-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-05-01-preview, 2023-09-09-preview, 2024-01-01-preview.
 type WebAppAssessmentV2Operation struct {
 	pulumi.CustomResourceState
 
@@ -26,8 +26,6 @@ type WebAppAssessmentV2Operation struct {
 	AppSvcNativeSettings AppSvcNativeSettingsResponsePtrOutput `pulumi:"appSvcNativeSettings"`
 	// Assessment type of the assessment.
 	AssessmentType pulumi.StringPtrOutput `pulumi:"assessmentType"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Azure Location or Azure region where to which the machines will be migrated.
 	AzureLocation pulumi.StringPtrOutput `pulumi:"azureLocation"`
 	// Azure Offer Code.
@@ -118,9 +116,6 @@ func NewWebAppAssessmentV2Operation(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20240101preview:WebAppAssessmentV2Operation"),
-		},
-		{
-			Type: pulumi.String("azure-native:migrate/v20240115:WebAppAssessmentV2Operation"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -325,11 +320,6 @@ func (o WebAppAssessmentV2OperationOutput) AppSvcNativeSettings() AppSvcNativeSe
 // Assessment type of the assessment.
 func (o WebAppAssessmentV2OperationOutput) AssessmentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebAppAssessmentV2Operation) pulumi.StringPtrOutput { return v.AssessmentType }).(pulumi.StringPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o WebAppAssessmentV2OperationOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *WebAppAssessmentV2Operation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Azure Location or Azure region where to which the machines will be migrated.

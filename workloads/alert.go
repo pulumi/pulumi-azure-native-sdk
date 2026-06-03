@@ -8,13 +8,13 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A alert associated with SAP monitor.
 //
-// Uses Azure REST API version 2024-02-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-02-01-preview.
+// Uses Azure REST API version 2024-02-01-preview.
 type Alert struct {
 	pulumi.CustomResourceState
 
@@ -22,8 +22,6 @@ type Alert struct {
 	AlertRuleProperties AlertRulePropertiesResponsePtrOutput `pulumi:"alertRuleProperties"`
 	// ID of the alert rule resource created.
 	AlertRuleResourceId pulumi.StringOutput `pulumi:"alertRuleResourceId"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Defines the alert instance errors.
 	Errors ErrorDetailResponseOutput `pulumi:"errors"`
 	// The name of the resource
@@ -173,11 +171,6 @@ func (o AlertOutput) AlertRuleProperties() AlertRulePropertiesResponsePtrOutput 
 // ID of the alert rule resource created.
 func (o AlertOutput) AlertRuleResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alert) pulumi.StringOutput { return v.AlertRuleResourceId }).(pulumi.StringOutput)
-}
-
-// The Azure API version of the resource.
-func (o AlertOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Alert) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Defines the alert instance errors.

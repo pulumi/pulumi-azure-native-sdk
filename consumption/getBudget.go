@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the budget for the scope by budget name.
 //
-// Uses Azure REST API version 2024-08-01.
+// Uses Azure REST API version 2023-05-01.
 //
-// Other available API versions: 2023-05-01, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native consumption [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-11-01, 2024-08-01.
 func LookupBudget(ctx *pulumi.Context, args *LookupBudgetArgs, opts ...pulumi.InvokeOption) (*LookupBudgetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupBudgetResult
@@ -29,7 +29,7 @@ func LookupBudget(ctx *pulumi.Context, args *LookupBudgetArgs, opts ...pulumi.In
 type LookupBudgetArgs struct {
 	// Budget Name.
 	BudgetName string `pulumi:"budgetName"`
-	// The fully qualified Azure Resource manager identifier of the resource.
+	// The scope associated with budget operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope.
 	Scope string `pulumi:"scope"`
 }
 
@@ -37,8 +37,6 @@ type LookupBudgetArgs struct {
 type LookupBudgetResult struct {
 	// The total amount of cost to track with the budget
 	Amount float64 `pulumi:"amount"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The category of the budget, whether the budget tracks cost or usage.
 	Category string `pulumi:"category"`
 	// The current amount of cost which is being tracked for a budget.
@@ -49,19 +47,17 @@ type LookupBudgetResult struct {
 	Filter *BudgetFilterResponse `pulumi:"filter"`
 	// The forecasted cost which is being tracked for a budget.
 	ForecastSpend ForecastSpendResponse `pulumi:"forecastSpend"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Resource Id.
 	Id string `pulumi:"id"`
-	// The name of the resource
+	// Resource name.
 	Name string `pulumi:"name"`
 	// Dictionary of notifications associated with the budget. Budget can have up to five notifications.
 	Notifications map[string]NotificationResponse `pulumi:"notifications"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The time covered by a budget. Tracking of the amount will be reset based on the time grain. BillingMonth, BillingQuarter, and BillingAnnual are only supported by WD customers
 	TimeGrain string `pulumi:"timeGrain"`
 	// Has start and end date of the budget. The start date must be first of the month and should be less than the end date. Budget start date must be on or after June 1, 2017. Future start date should not be more than twelve months. Past start date should  be selected within the timegrain period. There are no restrictions on the end date.
 	TimePeriod BudgetTimePeriodResponse `pulumi:"timePeriod"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type.
 	Type string `pulumi:"type"`
 }
 
@@ -77,7 +73,7 @@ func LookupBudgetOutput(ctx *pulumi.Context, args LookupBudgetOutputArgs, opts .
 type LookupBudgetOutputArgs struct {
 	// Budget Name.
 	BudgetName pulumi.StringInput `pulumi:"budgetName"`
-	// The fully qualified Azure Resource manager identifier of the resource.
+	// The scope associated with budget operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, '/providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope.
 	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
@@ -105,11 +101,6 @@ func (o LookupBudgetResultOutput) Amount() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupBudgetResult) float64 { return v.Amount }).(pulumi.Float64Output)
 }
 
-// The Azure API version of the resource.
-func (o LookupBudgetResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupBudgetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The category of the budget, whether the budget tracks cost or usage.
 func (o LookupBudgetResultOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBudgetResult) string { return v.Category }).(pulumi.StringOutput)
@@ -135,12 +126,12 @@ func (o LookupBudgetResultOutput) ForecastSpend() ForecastSpendResponseOutput {
 	return o.ApplyT(func(v LookupBudgetResult) ForecastSpendResponse { return v.ForecastSpend }).(ForecastSpendResponseOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Resource Id.
 func (o LookupBudgetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBudgetResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the resource
+// Resource name.
 func (o LookupBudgetResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBudgetResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -148,11 +139,6 @@ func (o LookupBudgetResultOutput) Name() pulumi.StringOutput {
 // Dictionary of notifications associated with the budget. Budget can have up to five notifications.
 func (o LookupBudgetResultOutput) Notifications() NotificationResponseMapOutput {
 	return o.ApplyT(func(v LookupBudgetResult) map[string]NotificationResponse { return v.Notifications }).(NotificationResponseMapOutput)
-}
-
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o LookupBudgetResultOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v LookupBudgetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The time covered by a budget. Tracking of the amount will be reset based on the time grain. BillingMonth, BillingQuarter, and BillingAnnual are only supported by WD customers
@@ -165,7 +151,7 @@ func (o LookupBudgetResultOutput) TimePeriod() BudgetTimePeriodResponseOutput {
 	return o.ApplyT(func(v LookupBudgetResult) BudgetTimePeriodResponse { return v.TimePeriod }).(BudgetTimePeriodResponseOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type.
 func (o LookupBudgetResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBudgetResult) string { return v.Type }).(pulumi.StringOutput)
 }

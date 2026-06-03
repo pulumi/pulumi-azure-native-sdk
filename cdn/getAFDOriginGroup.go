@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an existing origin group within a profile.
 //
-// Uses Azure REST API version 2025-06-01.
+// Uses Azure REST API version 2023-05-01.
 //
-// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2020-09-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
 func LookupAFDOriginGroup(ctx *pulumi.Context, args *LookupAFDOriginGroupArgs, opts ...pulumi.InvokeOption) (*LookupAFDOriginGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAFDOriginGroupResult
@@ -29,26 +29,22 @@ func LookupAFDOriginGroup(ctx *pulumi.Context, args *LookupAFDOriginGroupArgs, o
 type LookupAFDOriginGroupArgs struct {
 	// Name of the origin group which is unique within the endpoint.
 	OriginGroupName string `pulumi:"originGroupName"`
-	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
 	ProfileName string `pulumi:"profileName"`
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // AFDOrigin group comprising of origins is used for load balancing to origins when the content cannot be served from Azure Front Door.
 type LookupAFDOriginGroupResult struct {
-	// Authentication settings for origin in origin group.
-	Authentication *OriginAuthenticationPropertiesResponse `pulumi:"authentication"`
-	// The Azure API version of the resource.
-	AzureApiVersion  string `pulumi:"azureApiVersion"`
 	DeploymentStatus string `pulumi:"deploymentStatus"`
 	// Health probe settings to the origin that is used to determine the health of the origin.
 	HealthProbeSettings *HealthProbeParametersResponse `pulumi:"healthProbeSettings"`
-	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+	// Resource ID.
 	Id string `pulumi:"id"`
 	// Load balancing settings for a backend pool
 	LoadBalancingSettings *LoadBalancingSettingsParametersResponse `pulumi:"loadBalancingSettings"`
-	// The name of the resource
+	// Resource name.
 	Name string `pulumi:"name"`
 	// The name of the profile which holds the origin group.
 	ProfileName string `pulumi:"profileName"`
@@ -56,11 +52,11 @@ type LookupAFDOriginGroupResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
 	SessionAffinityState *string `pulumi:"sessionAffinityState"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	// Read only system data
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported.
 	TrafficRestorationTimeToHealedOrNewEndpointsInMinutes *int `pulumi:"trafficRestorationTimeToHealedOrNewEndpointsInMinutes"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type.
 	Type string `pulumi:"type"`
 }
 
@@ -76,9 +72,9 @@ func LookupAFDOriginGroupOutput(ctx *pulumi.Context, args LookupAFDOriginGroupOu
 type LookupAFDOriginGroupOutputArgs struct {
 	// Name of the origin group which is unique within the endpoint.
 	OriginGroupName pulumi.StringInput `pulumi:"originGroupName"`
-	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
 	ProfileName pulumi.StringInput `pulumi:"profileName"`
-	// The name of the resource group. The name is case insensitive.
+	// Name of the Resource group within the Azure subscription.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -101,16 +97,6 @@ func (o LookupAFDOriginGroupResultOutput) ToLookupAFDOriginGroupResultOutputWith
 	return o
 }
 
-// Authentication settings for origin in origin group.
-func (o LookupAFDOriginGroupResultOutput) Authentication() OriginAuthenticationPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v LookupAFDOriginGroupResult) *OriginAuthenticationPropertiesResponse { return v.Authentication }).(OriginAuthenticationPropertiesResponsePtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupAFDOriginGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAFDOriginGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 func (o LookupAFDOriginGroupResultOutput) DeploymentStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAFDOriginGroupResult) string { return v.DeploymentStatus }).(pulumi.StringOutput)
 }
@@ -120,7 +106,7 @@ func (o LookupAFDOriginGroupResultOutput) HealthProbeSettings() HealthProbeParam
 	return o.ApplyT(func(v LookupAFDOriginGroupResult) *HealthProbeParametersResponse { return v.HealthProbeSettings }).(HealthProbeParametersResponsePtrOutput)
 }
 
-// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+// Resource ID.
 func (o LookupAFDOriginGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAFDOriginGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -132,7 +118,7 @@ func (o LookupAFDOriginGroupResultOutput) LoadBalancingSettings() LoadBalancingS
 	}).(LoadBalancingSettingsParametersResponsePtrOutput)
 }
 
-// The name of the resource
+// Resource name.
 func (o LookupAFDOriginGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAFDOriginGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -152,7 +138,7 @@ func (o LookupAFDOriginGroupResultOutput) SessionAffinityState() pulumi.StringPt
 	return o.ApplyT(func(v LookupAFDOriginGroupResult) *string { return v.SessionAffinityState }).(pulumi.StringPtrOutput)
 }
 
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+// Read only system data
 func (o LookupAFDOriginGroupResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAFDOriginGroupResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -164,7 +150,7 @@ func (o LookupAFDOriginGroupResultOutput) TrafficRestorationTimeToHealedOrNewEnd
 	}).(pulumi.IntPtrOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type.
 func (o LookupAFDOriginGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAFDOriginGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

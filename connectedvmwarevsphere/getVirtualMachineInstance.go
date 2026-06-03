@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves information about a virtual machine instance.
 //
-// Uses Azure REST API version 2023-12-01.
+// Uses Azure REST API version 2023-03-01-preview.
 //
-// Other available API versions: 2023-03-01-preview, 2023-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedvmwarevsphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-10-01, 2023-12-01.
 func LookupVirtualMachineInstance(ctx *pulumi.Context, args *LookupVirtualMachineInstanceArgs, opts ...pulumi.InvokeOption) (*LookupVirtualMachineInstanceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualMachineInstanceResult
@@ -33,8 +33,6 @@ type LookupVirtualMachineInstanceArgs struct {
 
 // Define the virtualMachineInstance.
 type LookupVirtualMachineInstanceResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the extended location.
 	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Hardware properties.
@@ -100,11 +98,6 @@ func (o LookupVirtualMachineInstanceResultOutput) ToLookupVirtualMachineInstance
 
 func (o LookupVirtualMachineInstanceResultOutput) ToLookupVirtualMachineInstanceResultOutputWithContext(ctx context.Context) LookupVirtualMachineInstanceResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupVirtualMachineInstanceResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupVirtualMachineInstanceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the extended location.

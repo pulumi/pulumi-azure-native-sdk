@@ -7,15 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get role definition by ID (GUID).
 //
 // Uses Azure REST API version 2022-05-01-preview.
-//
-// Other available API versions: 2022-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupRoleDefinition(ctx *pulumi.Context, args *LookupRoleDefinitionArgs, opts ...pulumi.InvokeOption) (*LookupRoleDefinitionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoleDefinitionResult
@@ -37,8 +35,6 @@ type LookupRoleDefinitionArgs struct {
 type LookupRoleDefinitionResult struct {
 	// Role definition assignable scopes.
 	AssignableScopes []string `pulumi:"assignableScopes"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Id of the user who created the assignment
 	CreatedBy string `pulumi:"createdBy"`
 	// Time it was created
@@ -101,11 +97,6 @@ func (o LookupRoleDefinitionResultOutput) ToLookupRoleDefinitionResultOutputWith
 // Role definition assignable scopes.
 func (o LookupRoleDefinitionResultOutput) AssignableScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupRoleDefinitionResult) []string { return v.AssignableScopes }).(pulumi.StringArrayOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupRoleDefinitionResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupRoleDefinitionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Id of the user who created the assignment

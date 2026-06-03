@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Description for Get an App Service plan.
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2022-09-01.
 //
-// Other available API versions: 2016-09-01, 2018-02-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-09-01, 2020-10-01, 2023-01-01, 2023-12-01, 2024-04-01.
 func LookupAppServicePlan(ctx *pulumi.Context, args *LookupAppServicePlanArgs, opts ...pulumi.InvokeOption) (*LookupAppServicePlanResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAppServicePlanResult
@@ -35,11 +35,6 @@ type LookupAppServicePlanArgs struct {
 
 // App Service plan.
 type LookupAppServicePlanResult struct {
-	// If <code>true</code>, this App Service Plan will attempt to scale asynchronously if there are insufficient workers to scale synchronously.
-	// If <code>false</code>, this App Service Plan will only attempt sync scaling.
-	AsyncScalingEnabled *bool `pulumi:"asyncScalingEnabled"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// ServerFarm supports ElasticScale. Apps in this plan will scale as if the ServerFarm was ElasticPremium sku
 	ElasticScaleEnabled *bool `pulumi:"elasticScaleEnabled"`
 	// Extended Location.
@@ -58,7 +53,7 @@ type LookupAppServicePlanResult struct {
 	IsSpot *bool `pulumi:"isSpot"`
 	// Obsolete: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
 	IsXenon *bool `pulumi:"isXenon"`
-	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+	// Kind of resource.
 	Kind *string `pulumi:"kind"`
 	// Specification for the Kubernetes Environment to use for the App Service plan.
 	KubeEnvironmentProfile *KubeEnvironmentProfileResponse `pulumi:"kubeEnvironmentProfile"`
@@ -169,17 +164,6 @@ func (o LookupAppServicePlanResultOutput) ToLookupAppServicePlanResultOutputWith
 	return o
 }
 
-// If <code>true</code>, this App Service Plan will attempt to scale asynchronously if there are insufficient workers to scale synchronously.
-// If <code>false</code>, this App Service Plan will only attempt sync scaling.
-func (o LookupAppServicePlanResultOutput) AsyncScalingEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupAppServicePlanResult) *bool { return v.AsyncScalingEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupAppServicePlanResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAppServicePlanResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // ServerFarm supports ElasticScale. Apps in this plan will scale as if the ServerFarm was ElasticPremium sku
 func (o LookupAppServicePlanResultOutput) ElasticScaleEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupAppServicePlanResult) *bool { return v.ElasticScaleEnabled }).(pulumi.BoolPtrOutput)
@@ -227,7 +211,7 @@ func (o LookupAppServicePlanResultOutput) IsXenon() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupAppServicePlanResult) *bool { return v.IsXenon }).(pulumi.BoolPtrOutput)
 }
 
-// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+// Kind of resource.
 func (o LookupAppServicePlanResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAppServicePlanResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,8 +33,6 @@ type LookupMqArgs struct {
 
 // MQ resource
 type LookupMqResult struct {
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Extended Location
 	ExtendedLocation ExtendedLocationPropertyResponse `pulumi:"extendedLocation"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -86,11 +84,6 @@ func (o LookupMqResultOutput) ToLookupMqResultOutput() LookupMqResultOutput {
 
 func (o LookupMqResultOutput) ToLookupMqResultOutputWithContext(ctx context.Context) LookupMqResultOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o LookupMqResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupMqResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Extended Location

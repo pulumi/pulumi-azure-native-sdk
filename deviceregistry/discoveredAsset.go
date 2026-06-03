@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Discovered Asset definition.
 //
-// Uses Azure REST API version 2024-09-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-09-01-preview.
+// Uses Azure REST API version 2024-09-01-preview.
 type DiscoveredAsset struct {
 	pulumi.CustomResourceState
 
 	// A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must provide asset endpoint profile name.
 	AssetEndpointProfileRef pulumi.StringOutput `pulumi:"assetEndpointProfileRef"`
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Array of datasets that are part of the asset. Each dataset spec describes the data points that make up the set.
 	Datasets DiscoveredDatasetResponseArrayOutput `pulumi:"datasets"`
 	// Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here.
@@ -262,11 +260,6 @@ func (o DiscoveredAssetOutput) ToDiscoveredAssetOutputWithContext(ctx context.Co
 // A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must provide asset endpoint profile name.
 func (o DiscoveredAssetOutput) AssetEndpointProfileRef() pulumi.StringOutput {
 	return o.ApplyT(func(v *DiscoveredAsset) pulumi.StringOutput { return v.AssetEndpointProfileRef }).(pulumi.StringOutput)
-}
-
-// The Azure API version of the resource.
-func (o DiscoveredAssetOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *DiscoveredAsset) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Array of datasets that are part of the asset. Each dataset spec describes the data points that make up the set.

@@ -7,15 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a specific Smart Detector alert rule.
 //
 // Uses Azure REST API version 2021-04-01.
-//
-// Other available API versions: 2019-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native alertsmanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSmartDetectorAlertRule(ctx *pulumi.Context, args *LookupSmartDetectorAlertRuleArgs, opts ...pulumi.InvokeOption) (*LookupSmartDetectorAlertRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSmartDetectorAlertRuleResult
@@ -39,8 +37,6 @@ type LookupSmartDetectorAlertRuleArgs struct {
 type LookupSmartDetectorAlertRuleResult struct {
 	// The alert rule actions.
 	ActionGroups ActionGroupsInformationResponse `pulumi:"actionGroups"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The alert rule description.
 	Description *string `pulumi:"description"`
 	// The alert rule's detector.
@@ -119,11 +115,6 @@ func (o LookupSmartDetectorAlertRuleResultOutput) ToLookupSmartDetectorAlertRule
 // The alert rule actions.
 func (o LookupSmartDetectorAlertRuleResultOutput) ActionGroups() ActionGroupsInformationResponseOutput {
 	return o.ApplyT(func(v LookupSmartDetectorAlertRuleResult) ActionGroupsInformationResponse { return v.ActionGroups }).(ActionGroupsInformationResponseOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupSmartDetectorAlertRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSmartDetectorAlertRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The alert rule description.

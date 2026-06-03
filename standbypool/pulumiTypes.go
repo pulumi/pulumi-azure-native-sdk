@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -308,8 +308,6 @@ func (o StandbyContainerGroupPoolElasticityProfileResponseOutput) RefillPolicy()
 type StandbyVirtualMachinePoolElasticityProfile struct {
 	// Specifies the maximum number of virtual machines in the standby virtual machine pool.
 	MaxReadyCapacity float64 `pulumi:"maxReadyCapacity"`
-	// Specifies the desired minimum number of virtual machines in the standby virtual machine pool. MinReadyCapacity cannot exceed MaxReadyCapacity.
-	MinReadyCapacity *float64 `pulumi:"minReadyCapacity"`
 }
 
 // StandbyVirtualMachinePoolElasticityProfileInput is an input type that accepts StandbyVirtualMachinePoolElasticityProfileArgs and StandbyVirtualMachinePoolElasticityProfileOutput values.
@@ -327,8 +325,6 @@ type StandbyVirtualMachinePoolElasticityProfileInput interface {
 type StandbyVirtualMachinePoolElasticityProfileArgs struct {
 	// Specifies the maximum number of virtual machines in the standby virtual machine pool.
 	MaxReadyCapacity pulumi.Float64Input `pulumi:"maxReadyCapacity"`
-	// Specifies the desired minimum number of virtual machines in the standby virtual machine pool. MinReadyCapacity cannot exceed MaxReadyCapacity.
-	MinReadyCapacity pulumi.Float64PtrInput `pulumi:"minReadyCapacity"`
 }
 
 func (StandbyVirtualMachinePoolElasticityProfileArgs) ElementType() reflect.Type {
@@ -414,11 +410,6 @@ func (o StandbyVirtualMachinePoolElasticityProfileOutput) MaxReadyCapacity() pul
 	return o.ApplyT(func(v StandbyVirtualMachinePoolElasticityProfile) float64 { return v.MaxReadyCapacity }).(pulumi.Float64Output)
 }
 
-// Specifies the desired minimum number of virtual machines in the standby virtual machine pool. MinReadyCapacity cannot exceed MaxReadyCapacity.
-func (o StandbyVirtualMachinePoolElasticityProfileOutput) MinReadyCapacity() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v StandbyVirtualMachinePoolElasticityProfile) *float64 { return v.MinReadyCapacity }).(pulumi.Float64PtrOutput)
-}
-
 type StandbyVirtualMachinePoolElasticityProfilePtrOutput struct{ *pulumi.OutputState }
 
 func (StandbyVirtualMachinePoolElasticityProfilePtrOutput) ElementType() reflect.Type {
@@ -453,22 +444,10 @@ func (o StandbyVirtualMachinePoolElasticityProfilePtrOutput) MaxReadyCapacity() 
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Specifies the desired minimum number of virtual machines in the standby virtual machine pool. MinReadyCapacity cannot exceed MaxReadyCapacity.
-func (o StandbyVirtualMachinePoolElasticityProfilePtrOutput) MinReadyCapacity() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *StandbyVirtualMachinePoolElasticityProfile) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.MinReadyCapacity
-	}).(pulumi.Float64PtrOutput)
-}
-
 // Details of the elasticity profile.
 type StandbyVirtualMachinePoolElasticityProfileResponse struct {
 	// Specifies the maximum number of virtual machines in the standby virtual machine pool.
 	MaxReadyCapacity float64 `pulumi:"maxReadyCapacity"`
-	// Specifies the desired minimum number of virtual machines in the standby virtual machine pool. MinReadyCapacity cannot exceed MaxReadyCapacity.
-	MinReadyCapacity *float64 `pulumi:"minReadyCapacity"`
 }
 
 // Details of the elasticity profile.
@@ -489,11 +468,6 @@ func (o StandbyVirtualMachinePoolElasticityProfileResponseOutput) ToStandbyVirtu
 // Specifies the maximum number of virtual machines in the standby virtual machine pool.
 func (o StandbyVirtualMachinePoolElasticityProfileResponseOutput) MaxReadyCapacity() pulumi.Float64Output {
 	return o.ApplyT(func(v StandbyVirtualMachinePoolElasticityProfileResponse) float64 { return v.MaxReadyCapacity }).(pulumi.Float64Output)
-}
-
-// Specifies the desired minimum number of virtual machines in the standby virtual machine pool. MinReadyCapacity cannot exceed MaxReadyCapacity.
-func (o StandbyVirtualMachinePoolElasticityProfileResponseOutput) MinReadyCapacity() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v StandbyVirtualMachinePoolElasticityProfileResponse) *float64 { return v.MinReadyCapacity }).(pulumi.Float64PtrOutput)
 }
 
 type StandbyVirtualMachinePoolElasticityProfileResponsePtrOutput struct{ *pulumi.OutputState }
@@ -527,16 +501,6 @@ func (o StandbyVirtualMachinePoolElasticityProfileResponsePtrOutput) MaxReadyCap
 			return nil
 		}
 		return &v.MaxReadyCapacity
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Specifies the desired minimum number of virtual machines in the standby virtual machine pool. MinReadyCapacity cannot exceed MaxReadyCapacity.
-func (o StandbyVirtualMachinePoolElasticityProfileResponsePtrOutput) MinReadyCapacity() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *StandbyVirtualMachinePoolElasticityProfileResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.MinReadyCapacity
 	}).(pulumi.Float64PtrOutput)
 }
 

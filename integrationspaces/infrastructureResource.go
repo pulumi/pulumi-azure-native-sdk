@@ -8,18 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An infrastructure resource under Space.
 //
-// Uses Azure REST API version 2023-11-14-preview. In version 2.x of the Azure Native provider, it used API version 2023-11-14-preview.
+// Uses Azure REST API version 2023-11-14-preview.
 type InfrastructureResource struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The status of the last operation.
@@ -153,11 +151,6 @@ func (o InfrastructureResourceOutput) ToInfrastructureResourceOutput() Infrastru
 
 func (o InfrastructureResourceOutput) ToInfrastructureResourceOutputWithContext(ctx context.Context) InfrastructureResourceOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o InfrastructureResourceOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *InfrastructureResource) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,8 +37,6 @@ type LookupAPICollectionArgs struct {
 type LookupAPICollectionResult struct {
 	// Additional data regarding the API collection.
 	AdditionalData map[string]string `pulumi:"additionalData"`
-	// The Azure API version of the resource.
-	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The display name of the Azure API Management API.
 	DisplayName *string `pulumi:"displayName"`
 	// Resource Id
@@ -89,11 +87,6 @@ func (o LookupAPICollectionResultOutput) ToLookupAPICollectionResultOutputWithCo
 // Additional data regarding the API collection.
 func (o LookupAPICollectionResultOutput) AdditionalData() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAPICollectionResult) map[string]string { return v.AdditionalData }).(pulumi.StringMapOutput)
-}
-
-// The Azure API version of the resource.
-func (o LookupAPICollectionResultOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAPICollectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The display name of the Azure API Management API.

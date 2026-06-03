@@ -8,20 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An output object, containing all information associated with the named output. All outputs are contained under a streaming job.
 //
-// Uses Azure REST API version 2020-03-01. In version 2.x of the Azure Native provider, it used API version 2020-03-01.
+// Uses Azure REST API version 2020-03-01. In version 1.x of the Azure Native provider, it used API version 2016-03-01.
 //
-// Other available API versions: 2021-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native streamanalytics [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-10-01-preview.
 type Output struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Describes the data source that output will be written to. Required on PUT (CreateOrReplace) requests.
 	Datasource pulumi.AnyOutput `pulumi:"datasource"`
 	// Describes conditions applicable to the Input, Output, or the job overall, that warrant customer attention.
@@ -174,11 +172,6 @@ func (o OutputOutput) ToOutputOutput() OutputOutput {
 
 func (o OutputOutput) ToOutputOutputWithContext(ctx context.Context) OutputOutput {
 	return o
-}
-
-// The Azure API version of the resource.
-func (o OutputOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *Output) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Describes the data source that output will be written to. Required on PUT (CreateOrReplace) requests.

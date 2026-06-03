@@ -7,33 +7,29 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The management group details.
 //
-// Uses Azure REST API version 2023-04-01. In version 2.x of the Azure Native provider, it used API version 2021-04-01.
+// Uses Azure REST API version 2021-04-01. In version 1.x of the Azure Native provider, it used API version 2020-05-01.
 //
-// Other available API versions: 2021-04-01, 2024-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native management [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-04-01.
 type ManagementGroup struct {
 	pulumi.CustomResourceState
 
-	// The Azure API version of the resource.
-	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The list of children.
 	Children ManagementGroupChildInfoResponseArrayOutput `pulumi:"children"`
 	// The details of a management group.
 	Details ManagementGroupDetailsResponsePtrOutput `pulumi:"details"`
 	// The friendly name of the management group.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// The name of the resource
+	// The name of the management group. For example, 00000000-0000-0000-0000-000000000000
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The AAD Tenant ID associated with the management group. For example, 00000000-0000-0000-0000-000000000000
 	TenantId pulumi.StringPtrOutput `pulumi:"tenantId"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// The type of the resource.  For example, Microsoft.Management/managementGroups
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -71,9 +67,6 @@ func NewManagementGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:management/v20230401:ManagementGroup"),
-		},
-		{
-			Type: pulumi.String("azure-native:management/v20240201preview:ManagementGroup"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -169,11 +162,6 @@ func (o ManagementGroupOutput) ToManagementGroupOutputWithContext(ctx context.Co
 	return o
 }
 
-// The Azure API version of the resource.
-func (o ManagementGroupOutput) AzureApiVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v *ManagementGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
-}
-
 // The list of children.
 func (o ManagementGroupOutput) Children() ManagementGroupChildInfoResponseArrayOutput {
 	return o.ApplyT(func(v *ManagementGroup) ManagementGroupChildInfoResponseArrayOutput { return v.Children }).(ManagementGroupChildInfoResponseArrayOutput)
@@ -189,14 +177,9 @@ func (o ManagementGroupOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagementGroup) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// The name of the resource
+// The name of the management group. For example, 00000000-0000-0000-0000-000000000000
 func (o ManagementGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagementGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
-}
-
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o ManagementGroupOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v *ManagementGroup) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The AAD Tenant ID associated with the management group. For example, 00000000-0000-0000-0000-000000000000
@@ -204,7 +187,7 @@ func (o ManagementGroupOutput) TenantId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagementGroup) pulumi.StringPtrOutput { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// The type of the resource.  For example, Microsoft.Management/managementGroups
 func (o ManagementGroupOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagementGroup) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
