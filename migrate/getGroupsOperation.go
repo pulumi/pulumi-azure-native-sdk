@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a Group
 //
-// Uses Azure REST API version 2023-03-15.
+// Uses Azure REST API version 2024-01-01-preview.
 //
-// Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview, 2024-01-01-preview.
+// Other available API versions: 2023-03-15, 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview, 2024-01-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupGroupsOperation(ctx *pulumi.Context, args *LookupGroupsOperationArgs, opts ...pulumi.InvokeOption) (*LookupGroupsOperationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupGroupsOperationResult
@@ -41,13 +41,15 @@ type LookupGroupsOperationResult struct {
 	AreAssessmentsRunning bool `pulumi:"areAssessmentsRunning"`
 	// List of References to Assessments created on this group.
 	Assessments []string `pulumi:"assessments"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Time when this group was created. Date-Time represented in ISO-8601 format.
 	CreatedTimestamp string `pulumi:"createdTimestamp"`
 	// Whether the group has been created and is valid.
 	GroupStatus string `pulumi:"groupStatus"`
 	// The type of group.
 	GroupType *string `pulumi:"groupType"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Number of machines part of this group.
 	MachineCount int `pulumi:"machineCount"`
@@ -112,6 +114,11 @@ func (o LookupGroupsOperationResultOutput) Assessments() pulumi.StringArrayOutpu
 	return o.ApplyT(func(v LookupGroupsOperationResult) []string { return v.Assessments }).(pulumi.StringArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupGroupsOperationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupsOperationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Time when this group was created. Date-Time represented in ISO-8601 format.
 func (o LookupGroupsOperationResultOutput) CreatedTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupsOperationResult) string { return v.CreatedTimestamp }).(pulumi.StringOutput)
@@ -127,7 +134,7 @@ func (o LookupGroupsOperationResultOutput) GroupType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupGroupsOperationResult) *string { return v.GroupType }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupGroupsOperationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupsOperationResult) string { return v.Id }).(pulumi.StringOutput)
 }

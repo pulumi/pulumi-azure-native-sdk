@@ -683,6 +683,172 @@ func (in *ostypePtr) ToOSTypePtrOutputWithContext(ctx context.Context) OSTypePtr
 	return pulumi.ToOutputWithContext(ctx, in).(OSTypePtrOutput)
 }
 
+// A value to describe how the outbound dependencies of a HDInsight cluster are managed. 'Managed' means that the outbound dependencies are managed by the HDInsight service. 'External' means that the outbound dependencies are managed by a customer specific solution.
+type OutboundDependenciesManagedType string
+
+const (
+	OutboundDependenciesManagedTypeManaged  = OutboundDependenciesManagedType("Managed")
+	OutboundDependenciesManagedTypeExternal = OutboundDependenciesManagedType("External")
+)
+
+func (OutboundDependenciesManagedType) ElementType() reflect.Type {
+	return reflect.TypeOf((*OutboundDependenciesManagedType)(nil)).Elem()
+}
+
+func (e OutboundDependenciesManagedType) ToOutboundDependenciesManagedTypeOutput() OutboundDependenciesManagedTypeOutput {
+	return pulumi.ToOutput(e).(OutboundDependenciesManagedTypeOutput)
+}
+
+func (e OutboundDependenciesManagedType) ToOutboundDependenciesManagedTypeOutputWithContext(ctx context.Context) OutboundDependenciesManagedTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(OutboundDependenciesManagedTypeOutput)
+}
+
+func (e OutboundDependenciesManagedType) ToOutboundDependenciesManagedTypePtrOutput() OutboundDependenciesManagedTypePtrOutput {
+	return e.ToOutboundDependenciesManagedTypePtrOutputWithContext(context.Background())
+}
+
+func (e OutboundDependenciesManagedType) ToOutboundDependenciesManagedTypePtrOutputWithContext(ctx context.Context) OutboundDependenciesManagedTypePtrOutput {
+	return OutboundDependenciesManagedType(e).ToOutboundDependenciesManagedTypeOutputWithContext(ctx).ToOutboundDependenciesManagedTypePtrOutputWithContext(ctx)
+}
+
+func (e OutboundDependenciesManagedType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OutboundDependenciesManagedType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OutboundDependenciesManagedType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e OutboundDependenciesManagedType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type OutboundDependenciesManagedTypeOutput struct{ *pulumi.OutputState }
+
+func (OutboundDependenciesManagedTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OutboundDependenciesManagedType)(nil)).Elem()
+}
+
+func (o OutboundDependenciesManagedTypeOutput) ToOutboundDependenciesManagedTypeOutput() OutboundDependenciesManagedTypeOutput {
+	return o
+}
+
+func (o OutboundDependenciesManagedTypeOutput) ToOutboundDependenciesManagedTypeOutputWithContext(ctx context.Context) OutboundDependenciesManagedTypeOutput {
+	return o
+}
+
+func (o OutboundDependenciesManagedTypeOutput) ToOutboundDependenciesManagedTypePtrOutput() OutboundDependenciesManagedTypePtrOutput {
+	return o.ToOutboundDependenciesManagedTypePtrOutputWithContext(context.Background())
+}
+
+func (o OutboundDependenciesManagedTypeOutput) ToOutboundDependenciesManagedTypePtrOutputWithContext(ctx context.Context) OutboundDependenciesManagedTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OutboundDependenciesManagedType) *OutboundDependenciesManagedType {
+		return &v
+	}).(OutboundDependenciesManagedTypePtrOutput)
+}
+
+func (o OutboundDependenciesManagedTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o OutboundDependenciesManagedTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OutboundDependenciesManagedType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o OutboundDependenciesManagedTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OutboundDependenciesManagedTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OutboundDependenciesManagedType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type OutboundDependenciesManagedTypePtrOutput struct{ *pulumi.OutputState }
+
+func (OutboundDependenciesManagedTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OutboundDependenciesManagedType)(nil)).Elem()
+}
+
+func (o OutboundDependenciesManagedTypePtrOutput) ToOutboundDependenciesManagedTypePtrOutput() OutboundDependenciesManagedTypePtrOutput {
+	return o
+}
+
+func (o OutboundDependenciesManagedTypePtrOutput) ToOutboundDependenciesManagedTypePtrOutputWithContext(ctx context.Context) OutboundDependenciesManagedTypePtrOutput {
+	return o
+}
+
+func (o OutboundDependenciesManagedTypePtrOutput) Elem() OutboundDependenciesManagedTypeOutput {
+	return o.ApplyT(func(v *OutboundDependenciesManagedType) OutboundDependenciesManagedType {
+		if v != nil {
+			return *v
+		}
+		var ret OutboundDependenciesManagedType
+		return ret
+	}).(OutboundDependenciesManagedTypeOutput)
+}
+
+func (o OutboundDependenciesManagedTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OutboundDependenciesManagedTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *OutboundDependenciesManagedType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// OutboundDependenciesManagedTypeInput is an input type that accepts values of the OutboundDependenciesManagedType enum
+// A concrete instance of `OutboundDependenciesManagedTypeInput` can be one of the following:
+//
+//	OutboundDependenciesManagedTypeManaged
+//	OutboundDependenciesManagedTypeExternal
+type OutboundDependenciesManagedTypeInput interface {
+	pulumi.Input
+
+	ToOutboundDependenciesManagedTypeOutput() OutboundDependenciesManagedTypeOutput
+	ToOutboundDependenciesManagedTypeOutputWithContext(context.Context) OutboundDependenciesManagedTypeOutput
+}
+
+var outboundDependenciesManagedTypePtrType = reflect.TypeOf((**OutboundDependenciesManagedType)(nil)).Elem()
+
+type OutboundDependenciesManagedTypePtrInput interface {
+	pulumi.Input
+
+	ToOutboundDependenciesManagedTypePtrOutput() OutboundDependenciesManagedTypePtrOutput
+	ToOutboundDependenciesManagedTypePtrOutputWithContext(context.Context) OutboundDependenciesManagedTypePtrOutput
+}
+
+type outboundDependenciesManagedTypePtr string
+
+func OutboundDependenciesManagedTypePtr(v string) OutboundDependenciesManagedTypePtrInput {
+	return (*outboundDependenciesManagedTypePtr)(&v)
+}
+
+func (*outboundDependenciesManagedTypePtr) ElementType() reflect.Type {
+	return outboundDependenciesManagedTypePtrType
+}
+
+func (in *outboundDependenciesManagedTypePtr) ToOutboundDependenciesManagedTypePtrOutput() OutboundDependenciesManagedTypePtrOutput {
+	return pulumi.ToOutput(in).(OutboundDependenciesManagedTypePtrOutput)
+}
+
+func (in *outboundDependenciesManagedTypePtr) ToOutboundDependenciesManagedTypePtrOutputWithContext(ctx context.Context) OutboundDependenciesManagedTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(OutboundDependenciesManagedTypePtrOutput)
+}
+
 // The method that private IP address is allocated.
 type PrivateIPAllocationMethod string
 
@@ -1696,6 +1862,8 @@ func init() {
 	pulumi.RegisterOutputType(JsonWebKeyEncryptionAlgorithmPtrOutput{})
 	pulumi.RegisterOutputType(OSTypeOutput{})
 	pulumi.RegisterOutputType(OSTypePtrOutput{})
+	pulumi.RegisterOutputType(OutboundDependenciesManagedTypeOutput{})
+	pulumi.RegisterOutputType(OutboundDependenciesManagedTypePtrOutput{})
 	pulumi.RegisterOutputType(PrivateIPAllocationMethodOutput{})
 	pulumi.RegisterOutputType(PrivateIPAllocationMethodPtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkOutput{})

@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The operation to view Initiator Subscription Changed Request
 //
 // Uses Azure REST API version 2024-08-01-preview.
+//
+// Other available API versions: 2025-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native subscription [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSubscriptionTarDirectory(ctx *pulumi.Context, args *LookupSubscriptionTarDirectoryArgs, opts ...pulumi.InvokeOption) (*LookupSubscriptionTarDirectoryResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSubscriptionTarDirectoryResult
@@ -31,6 +33,8 @@ type LookupSubscriptionTarDirectoryArgs struct {
 
 // Subscription Response for Changed Target Directory.
 type LookupSubscriptionTarDirectoryResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified ID for the Subscription Changed Directory resource.
 	Id string `pulumi:"id"`
 	// Subscription Name.
@@ -72,6 +76,11 @@ func (o LookupSubscriptionTarDirectoryResultOutput) ToLookupSubscriptionTarDirec
 
 func (o LookupSubscriptionTarDirectoryResultOutput) ToLookupSubscriptionTarDirectoryResultOutputWithContext(ctx context.Context) LookupSubscriptionTarDirectoryResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSubscriptionTarDirectoryResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSubscriptionTarDirectoryResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified ID for the Subscription Changed Directory resource.

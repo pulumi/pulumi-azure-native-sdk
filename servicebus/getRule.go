@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the description for the specified rule.
 //
-// Uses Azure REST API version 2022-01-01-preview.
+// Uses Azure REST API version 2024-01-01.
 //
-// Other available API versions: 2022-10-01-preview, 2023-01-01-preview, 2024-01-01.
+// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupRule(ctx *pulumi.Context, args *LookupRuleArgs, opts ...pulumi.InvokeOption) (*LookupRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRuleResult
@@ -29,7 +29,7 @@ func LookupRule(ctx *pulumi.Context, args *LookupRuleArgs, opts ...pulumi.Invoke
 type LookupRuleArgs struct {
 	// The namespace name
 	NamespaceName string `pulumi:"namespaceName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The rule name.
 	RuleName string `pulumi:"ruleName"`
@@ -43,6 +43,8 @@ type LookupRuleArgs struct {
 type LookupRuleResult struct {
 	// Represents the filter actions which are allowed for the transformation of a message that have been matched by a filter expression.
 	Action *ActionResponse `pulumi:"action"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Properties of correlationFilter
 	CorrelationFilter *CorrelationFilterResponse `pulumi:"correlationFilter"`
 	// Filter type that is evaluated against a BrokeredMessage.
@@ -87,7 +89,7 @@ func LookupRuleOutput(ctx *pulumi.Context, args LookupRuleOutputArgs, opts ...pu
 type LookupRuleOutputArgs struct {
 	// The namespace name
 	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The rule name.
 	RuleName pulumi.StringInput `pulumi:"ruleName"`
@@ -119,6 +121,11 @@ func (o LookupRuleResultOutput) ToLookupRuleResultOutputWithContext(ctx context.
 // Represents the filter actions which are allowed for the transformation of a message that have been matched by a filter expression.
 func (o LookupRuleResultOutput) Action() ActionResponsePtrOutput {
 	return o.ApplyT(func(v LookupRuleResult) *ActionResponse { return v.Action }).(ActionResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Properties of correlationFilter

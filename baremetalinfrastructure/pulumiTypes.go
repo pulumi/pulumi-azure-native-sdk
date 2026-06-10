@@ -7,11 +7,245 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = utilities.GetEnvOrDefault
+
+// Identity for Azure Bare Metal Storage Instance.
+type AzureBareMetalStorageInstanceIdentity struct {
+	// The type of identity used for the Azure Bare Metal Storage Instance. The type 'SystemAssigned' refers to an implicitly created identity. The type 'None' will remove any identities from the Azure Bare Metal Storage Instance.
+	Type *string `pulumi:"type"`
+}
+
+// AzureBareMetalStorageInstanceIdentityInput is an input type that accepts AzureBareMetalStorageInstanceIdentityArgs and AzureBareMetalStorageInstanceIdentityOutput values.
+// You can construct a concrete instance of `AzureBareMetalStorageInstanceIdentityInput` via:
+//
+//	AzureBareMetalStorageInstanceIdentityArgs{...}
+type AzureBareMetalStorageInstanceIdentityInput interface {
+	pulumi.Input
+
+	ToAzureBareMetalStorageInstanceIdentityOutput() AzureBareMetalStorageInstanceIdentityOutput
+	ToAzureBareMetalStorageInstanceIdentityOutputWithContext(context.Context) AzureBareMetalStorageInstanceIdentityOutput
+}
+
+// Identity for Azure Bare Metal Storage Instance.
+type AzureBareMetalStorageInstanceIdentityArgs struct {
+	// The type of identity used for the Azure Bare Metal Storage Instance. The type 'SystemAssigned' refers to an implicitly created identity. The type 'None' will remove any identities from the Azure Bare Metal Storage Instance.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (AzureBareMetalStorageInstanceIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureBareMetalStorageInstanceIdentity)(nil)).Elem()
+}
+
+func (i AzureBareMetalStorageInstanceIdentityArgs) ToAzureBareMetalStorageInstanceIdentityOutput() AzureBareMetalStorageInstanceIdentityOutput {
+	return i.ToAzureBareMetalStorageInstanceIdentityOutputWithContext(context.Background())
+}
+
+func (i AzureBareMetalStorageInstanceIdentityArgs) ToAzureBareMetalStorageInstanceIdentityOutputWithContext(ctx context.Context) AzureBareMetalStorageInstanceIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureBareMetalStorageInstanceIdentityOutput)
+}
+
+func (i AzureBareMetalStorageInstanceIdentityArgs) ToAzureBareMetalStorageInstanceIdentityPtrOutput() AzureBareMetalStorageInstanceIdentityPtrOutput {
+	return i.ToAzureBareMetalStorageInstanceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i AzureBareMetalStorageInstanceIdentityArgs) ToAzureBareMetalStorageInstanceIdentityPtrOutputWithContext(ctx context.Context) AzureBareMetalStorageInstanceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureBareMetalStorageInstanceIdentityOutput).ToAzureBareMetalStorageInstanceIdentityPtrOutputWithContext(ctx)
+}
+
+// AzureBareMetalStorageInstanceIdentityPtrInput is an input type that accepts AzureBareMetalStorageInstanceIdentityArgs, AzureBareMetalStorageInstanceIdentityPtr and AzureBareMetalStorageInstanceIdentityPtrOutput values.
+// You can construct a concrete instance of `AzureBareMetalStorageInstanceIdentityPtrInput` via:
+//
+//	        AzureBareMetalStorageInstanceIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type AzureBareMetalStorageInstanceIdentityPtrInput interface {
+	pulumi.Input
+
+	ToAzureBareMetalStorageInstanceIdentityPtrOutput() AzureBareMetalStorageInstanceIdentityPtrOutput
+	ToAzureBareMetalStorageInstanceIdentityPtrOutputWithContext(context.Context) AzureBareMetalStorageInstanceIdentityPtrOutput
+}
+
+type azureBareMetalStorageInstanceIdentityPtrType AzureBareMetalStorageInstanceIdentityArgs
+
+func AzureBareMetalStorageInstanceIdentityPtr(v *AzureBareMetalStorageInstanceIdentityArgs) AzureBareMetalStorageInstanceIdentityPtrInput {
+	return (*azureBareMetalStorageInstanceIdentityPtrType)(v)
+}
+
+func (*azureBareMetalStorageInstanceIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureBareMetalStorageInstanceIdentity)(nil)).Elem()
+}
+
+func (i *azureBareMetalStorageInstanceIdentityPtrType) ToAzureBareMetalStorageInstanceIdentityPtrOutput() AzureBareMetalStorageInstanceIdentityPtrOutput {
+	return i.ToAzureBareMetalStorageInstanceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *azureBareMetalStorageInstanceIdentityPtrType) ToAzureBareMetalStorageInstanceIdentityPtrOutputWithContext(ctx context.Context) AzureBareMetalStorageInstanceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AzureBareMetalStorageInstanceIdentityPtrOutput)
+}
+
+// Identity for Azure Bare Metal Storage Instance.
+type AzureBareMetalStorageInstanceIdentityOutput struct{ *pulumi.OutputState }
+
+func (AzureBareMetalStorageInstanceIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureBareMetalStorageInstanceIdentity)(nil)).Elem()
+}
+
+func (o AzureBareMetalStorageInstanceIdentityOutput) ToAzureBareMetalStorageInstanceIdentityOutput() AzureBareMetalStorageInstanceIdentityOutput {
+	return o
+}
+
+func (o AzureBareMetalStorageInstanceIdentityOutput) ToAzureBareMetalStorageInstanceIdentityOutputWithContext(ctx context.Context) AzureBareMetalStorageInstanceIdentityOutput {
+	return o
+}
+
+func (o AzureBareMetalStorageInstanceIdentityOutput) ToAzureBareMetalStorageInstanceIdentityPtrOutput() AzureBareMetalStorageInstanceIdentityPtrOutput {
+	return o.ToAzureBareMetalStorageInstanceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o AzureBareMetalStorageInstanceIdentityOutput) ToAzureBareMetalStorageInstanceIdentityPtrOutputWithContext(ctx context.Context) AzureBareMetalStorageInstanceIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AzureBareMetalStorageInstanceIdentity) *AzureBareMetalStorageInstanceIdentity {
+		return &v
+	}).(AzureBareMetalStorageInstanceIdentityPtrOutput)
+}
+
+// The type of identity used for the Azure Bare Metal Storage Instance. The type 'SystemAssigned' refers to an implicitly created identity. The type 'None' will remove any identities from the Azure Bare Metal Storage Instance.
+func (o AzureBareMetalStorageInstanceIdentityOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBareMetalStorageInstanceIdentity) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type AzureBareMetalStorageInstanceIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (AzureBareMetalStorageInstanceIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureBareMetalStorageInstanceIdentity)(nil)).Elem()
+}
+
+func (o AzureBareMetalStorageInstanceIdentityPtrOutput) ToAzureBareMetalStorageInstanceIdentityPtrOutput() AzureBareMetalStorageInstanceIdentityPtrOutput {
+	return o
+}
+
+func (o AzureBareMetalStorageInstanceIdentityPtrOutput) ToAzureBareMetalStorageInstanceIdentityPtrOutputWithContext(ctx context.Context) AzureBareMetalStorageInstanceIdentityPtrOutput {
+	return o
+}
+
+func (o AzureBareMetalStorageInstanceIdentityPtrOutput) Elem() AzureBareMetalStorageInstanceIdentityOutput {
+	return o.ApplyT(func(v *AzureBareMetalStorageInstanceIdentity) AzureBareMetalStorageInstanceIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret AzureBareMetalStorageInstanceIdentity
+		return ret
+	}).(AzureBareMetalStorageInstanceIdentityOutput)
+}
+
+// The type of identity used for the Azure Bare Metal Storage Instance. The type 'SystemAssigned' refers to an implicitly created identity. The type 'None' will remove any identities from the Azure Bare Metal Storage Instance.
+func (o AzureBareMetalStorageInstanceIdentityPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBareMetalStorageInstanceIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identity for Azure Bare Metal Storage Instance.
+type AzureBareMetalStorageInstanceIdentityResponse struct {
+	// The principal ID of Azure Bare Metal Storage Instance identity. This property will only be provided for a system assigned identity.
+	PrincipalId string `pulumi:"principalId"`
+	// The tenant ID associated with the Azure Bare Metal Storage Instance. This property will only be provided for a system assigned identity.
+	TenantId string `pulumi:"tenantId"`
+	// The type of identity used for the Azure Bare Metal Storage Instance. The type 'SystemAssigned' refers to an implicitly created identity. The type 'None' will remove any identities from the Azure Bare Metal Storage Instance.
+	Type *string `pulumi:"type"`
+}
+
+// Identity for Azure Bare Metal Storage Instance.
+type AzureBareMetalStorageInstanceIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (AzureBareMetalStorageInstanceIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzureBareMetalStorageInstanceIdentityResponse)(nil)).Elem()
+}
+
+func (o AzureBareMetalStorageInstanceIdentityResponseOutput) ToAzureBareMetalStorageInstanceIdentityResponseOutput() AzureBareMetalStorageInstanceIdentityResponseOutput {
+	return o
+}
+
+func (o AzureBareMetalStorageInstanceIdentityResponseOutput) ToAzureBareMetalStorageInstanceIdentityResponseOutputWithContext(ctx context.Context) AzureBareMetalStorageInstanceIdentityResponseOutput {
+	return o
+}
+
+// The principal ID of Azure Bare Metal Storage Instance identity. This property will only be provided for a system assigned identity.
+func (o AzureBareMetalStorageInstanceIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureBareMetalStorageInstanceIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The tenant ID associated with the Azure Bare Metal Storage Instance. This property will only be provided for a system assigned identity.
+func (o AzureBareMetalStorageInstanceIdentityResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v AzureBareMetalStorageInstanceIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// The type of identity used for the Azure Bare Metal Storage Instance. The type 'SystemAssigned' refers to an implicitly created identity. The type 'None' will remove any identities from the Azure Bare Metal Storage Instance.
+func (o AzureBareMetalStorageInstanceIdentityResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AzureBareMetalStorageInstanceIdentityResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type AzureBareMetalStorageInstanceIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AzureBareMetalStorageInstanceIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzureBareMetalStorageInstanceIdentityResponse)(nil)).Elem()
+}
+
+func (o AzureBareMetalStorageInstanceIdentityResponsePtrOutput) ToAzureBareMetalStorageInstanceIdentityResponsePtrOutput() AzureBareMetalStorageInstanceIdentityResponsePtrOutput {
+	return o
+}
+
+func (o AzureBareMetalStorageInstanceIdentityResponsePtrOutput) ToAzureBareMetalStorageInstanceIdentityResponsePtrOutputWithContext(ctx context.Context) AzureBareMetalStorageInstanceIdentityResponsePtrOutput {
+	return o
+}
+
+func (o AzureBareMetalStorageInstanceIdentityResponsePtrOutput) Elem() AzureBareMetalStorageInstanceIdentityResponseOutput {
+	return o.ApplyT(func(v *AzureBareMetalStorageInstanceIdentityResponse) AzureBareMetalStorageInstanceIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AzureBareMetalStorageInstanceIdentityResponse
+		return ret
+	}).(AzureBareMetalStorageInstanceIdentityResponseOutput)
+}
+
+// The principal ID of Azure Bare Metal Storage Instance identity. This property will only be provided for a system assigned identity.
+func (o AzureBareMetalStorageInstanceIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBareMetalStorageInstanceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tenant ID associated with the Azure Bare Metal Storage Instance. This property will only be provided for a system assigned identity.
+func (o AzureBareMetalStorageInstanceIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBareMetalStorageInstanceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of identity used for the Azure Bare Metal Storage Instance. The type 'SystemAssigned' refers to an implicitly created identity. The type 'None' will remove any identities from the Azure Bare Metal Storage Instance.
+func (o AzureBareMetalStorageInstanceIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AzureBareMetalStorageInstanceIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
 
 // Specifies the disk information fo the Azure Bare Metal Instance
 type Disk struct {
@@ -1580,7 +1814,7 @@ func (o StorageProfileResponsePtrOutput) OsDisks() DiskResponseArrayOutput {
 	}).(DiskResponseArrayOutput)
 }
 
-// described the storage properties of the azure baremetalstorage instance
+// described the storage properties of the azure bare metal storage instance
 type StorageProperties struct {
 	// the kind of storage instance
 	Generation *string `pulumi:"generation"`
@@ -1609,7 +1843,7 @@ type StoragePropertiesInput interface {
 	ToStoragePropertiesOutputWithContext(context.Context) StoragePropertiesOutput
 }
 
-// described the storage properties of the azure baremetalstorage instance
+// described the storage properties of the azure bare metal storage instance
 type StoragePropertiesArgs struct {
 	// the kind of storage instance
 	Generation pulumi.StringPtrInput `pulumi:"generation"`
@@ -1680,7 +1914,7 @@ func (i *storagePropertiesPtrType) ToStoragePropertiesPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(StoragePropertiesPtrOutput)
 }
 
-// described the storage properties of the azure baremetalstorage instance
+// described the storage properties of the azure bare metal storage instance
 type StoragePropertiesOutput struct{ *pulumi.OutputState }
 
 func (StoragePropertiesOutput) ElementType() reflect.Type {
@@ -1834,7 +2068,7 @@ func (o StoragePropertiesPtrOutput) WorkloadType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// described the storage properties of the azure baremetalstorage instance
+// described the storage properties of the azure bare metal storage instance
 type StoragePropertiesResponse struct {
 	// the kind of storage instance
 	Generation *string `pulumi:"generation"`
@@ -1852,7 +2086,7 @@ type StoragePropertiesResponse struct {
 	WorkloadType *string `pulumi:"workloadType"`
 }
 
-// described the storage properties of the azure baremetalstorage instance
+// described the storage properties of the azure bare metal storage instance
 type StoragePropertiesResponseOutput struct{ *pulumi.OutputState }
 
 func (StoragePropertiesResponseOutput) ElementType() reflect.Type {
@@ -2058,6 +2292,10 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(AzureBareMetalStorageInstanceIdentityOutput{})
+	pulumi.RegisterOutputType(AzureBareMetalStorageInstanceIdentityPtrOutput{})
+	pulumi.RegisterOutputType(AzureBareMetalStorageInstanceIdentityResponseOutput{})
+	pulumi.RegisterOutputType(AzureBareMetalStorageInstanceIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(DiskOutput{})
 	pulumi.RegisterOutputType(DiskArrayOutput{})
 	pulumi.RegisterOutputType(DiskResponseOutput{})

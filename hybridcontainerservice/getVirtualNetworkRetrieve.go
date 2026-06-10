@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the Hybrid AKS virtual network
 //
 // Uses Azure REST API version 2022-09-01-preview.
+//
+// Other available API versions: 2023-11-15-preview, 2024-01-01, 2025-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridcontainerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupVirtualNetworkRetrieve(ctx *pulumi.Context, args *LookupVirtualNetworkRetrieveArgs, opts ...pulumi.InvokeOption) (*LookupVirtualNetworkRetrieveResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupVirtualNetworkRetrieveResult
@@ -33,6 +35,8 @@ type LookupVirtualNetworkRetrieveArgs struct {
 
 // The virtualNetworks resource definition.
 type LookupVirtualNetworkRetrieveResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion  string                                   `pulumi:"azureApiVersion"`
 	ExtendedLocation *VirtualNetworksResponseExtendedLocation `pulumi:"extendedLocation"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
@@ -83,6 +87,11 @@ func (o LookupVirtualNetworkRetrieveResultOutput) ToLookupVirtualNetworkRetrieve
 
 func (o LookupVirtualNetworkRetrieveResultOutput) ToLookupVirtualNetworkRetrieveResultOutputWithContext(ctx context.Context) LookupVirtualNetworkRetrieveResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupVirtualNetworkRetrieveResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVirtualNetworkRetrieveResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupVirtualNetworkRetrieveResultOutput) ExtendedLocation() VirtualNetworksResponseExtendedLocationPtrOutput {

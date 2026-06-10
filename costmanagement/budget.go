@@ -8,15 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A budget resource.
 //
-// Uses Azure REST API version 2023-04-01-preview.
+// Uses Azure REST API version 2024-08-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
 //
-// Other available API versions: 2019-04-01-preview, 2023-08-01, 2023-09-01, 2023-11-01, 2024-08-01, 2024-10-01-preview.
+// Other available API versions: 2019-04-01-preview, 2023-04-01-preview, 2023-08-01, 2023-09-01, 2023-11-01, 2024-10-01-preview, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native costmanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Budget struct {
 	pulumi.CustomResourceState
 
@@ -26,6 +26,8 @@ type Budget struct {
 	//
 	//  Required for CategoryType(s): Cost.
 	Amount pulumi.Float64PtrOutput `pulumi:"amount"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The category of the budget.
 	// - 'Cost' defines a Budget.
 	// - 'ReservationUtilization' defines a Reservation Utilization Alert Rule.
@@ -44,7 +46,7 @@ type Budget struct {
 	//
 	//  Supported for CategoryType(s): Cost.
 	ForecastSpend ForecastSpendResponseOutput `pulumi:"forecastSpend"`
-	// The name of the resource
+	// Resource name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Dictionary of notifications associated with the budget.
 	//
@@ -80,7 +82,7 @@ type Budget struct {
 	//
 	//  Required for CategoryType(s): Cost, ReservationUtilization.
 	TimePeriod BudgetTimePeriodResponseOutput `pulumi:"timePeriod"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	// Resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -124,6 +126,9 @@ func NewBudget(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:costmanagement/v20241001preview:Budget"),
+		},
+		{
+			Type: pulumi.String("azure-native:costmanagement/v20250301:Budget"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -376,6 +381,11 @@ func (o BudgetOutput) Amount() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *Budget) pulumi.Float64PtrOutput { return v.Amount }).(pulumi.Float64PtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o BudgetOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Budget) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The category of the budget.
 // - 'Cost' defines a Budget.
 // - 'ReservationUtilization' defines a Reservation Utilization Alert Rule.
@@ -409,7 +419,7 @@ func (o BudgetOutput) ForecastSpend() ForecastSpendResponseOutput {
 	return o.ApplyT(func(v *Budget) ForecastSpendResponseOutput { return v.ForecastSpend }).(ForecastSpendResponseOutput)
 }
 
-// The name of the resource
+// Resource name.
 func (o BudgetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Budget) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -458,7 +468,7 @@ func (o BudgetOutput) TimePeriod() BudgetTimePeriodResponseOutput {
 	return o.ApplyT(func(v *Budget) BudgetTimePeriodResponseOutput { return v.TimePeriod }).(BudgetTimePeriodResponseOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+// Resource type.
 func (o BudgetOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Budget) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

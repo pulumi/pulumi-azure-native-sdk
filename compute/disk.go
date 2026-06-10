@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Disk resource.
 //
-// Uses Azure REST API version 2022-07-02. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
+// Uses Azure REST API version 2024-03-02. In version 2.x of the Azure Native provider, it used API version 2022-07-02.
 //
-// Other available API versions: 2023-01-02, 2023-04-02, 2023-10-02, 2024-03-02.
+// Other available API versions: 2022-07-02, 2023-01-02, 2023-04-02, 2023-10-02, 2025-01-02. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Disk struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Set to true to enable bursting beyond the provisioned performance target of the disk. Bursting is disabled by default. Does not apply to Ultra disks.
 	BurstingEnabled pulumi.BoolPtrOutput `pulumi:"burstingEnabled"`
 	// Latest time when bursting was last enabled on a disk.
@@ -54,7 +56,9 @@ type Disk struct {
 	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
 	HyperVGeneration pulumi.StringPtrOutput `pulumi:"hyperVGeneration"`
-	// Resource location
+	// The UTC time when the ownership state of the disk was last changed i.e., the time the disk was last attached or detached from a VM or the time when the VM to which the disk was attached was deallocated or started.
+	LastOwnershipUpdateTime pulumi.StringOutput `pulumi:"lastOwnershipUpdateTime"`
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// A relative URI containing the ID of the VM that has the disk attached.
 	ManagedBy pulumi.StringOutput `pulumi:"managedBy"`
@@ -62,7 +66,7 @@ type Disk struct {
 	ManagedByExtended pulumi.StringArrayOutput `pulumi:"managedByExtended"`
 	// The maximum number of VMs that can attach to the disk at the same time. Value greater than one indicates a disk that can be mounted on multiple VMs at the same time.
 	MaxShares pulumi.IntPtrOutput `pulumi:"maxShares"`
-	// Resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Policy for accessing the disk via network.
 	NetworkAccessPolicy pulumi.StringPtrOutput `pulumi:"networkAccessPolicy"`
@@ -77,7 +81,7 @@ type Disk struct {
 	// Policy for controlling export on the disk.
 	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
 	// Purchase plan information for the the image from which the OS disk was created. E.g. - {name: 2019-Datacenter, publisher: MicrosoftWindowsServer, product: WindowsServer}
-	PurchasePlan PurchasePlanResponsePtrOutput `pulumi:"purchasePlan"`
+	PurchasePlan DiskPurchasePlanResponsePtrOutput `pulumi:"purchasePlan"`
 	// Contains the security related information for the resource.
 	SecurityProfile DiskSecurityProfileResponsePtrOutput `pulumi:"securityProfile"`
 	// Details of the list of all VMs that have the disk attached. maxShares should be set to a value greater than one for disks to allow attaching them to multiple VMs.
@@ -88,13 +92,15 @@ type Disk struct {
 	SupportedCapabilities SupportedCapabilitiesResponsePtrOutput `pulumi:"supportedCapabilities"`
 	// Indicates the OS on a disk supports hibernation.
 	SupportsHibernation pulumi.BoolPtrOutput `pulumi:"supportsHibernation"`
-	// Resource tags
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Performance tier of the disk (e.g, P4, S10) as described here: https://azure.microsoft.com/en-us/pricing/details/managed-disks/. Does not apply to Ultra disks.
 	Tier pulumi.StringPtrOutput `pulumi:"tier"`
 	// The time when the disk was created.
 	TimeCreated pulumi.StringOutput `pulumi:"timeCreated"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Unique Guid identifying the resource.
 	UniqueId pulumi.StringOutput `pulumi:"uniqueId"`
@@ -179,6 +185,9 @@ func NewDisk(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:compute/v20240302:Disk"),
 		},
+		{
+			Type: pulumi.String("azure-native:compute/v20250102:Disk"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -244,7 +253,7 @@ type diskArgs struct {
 	ExtendedLocation *ExtendedLocation `pulumi:"extendedLocation"`
 	// The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
 	HyperVGeneration *string `pulumi:"hyperVGeneration"`
-	// Resource location
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The maximum number of VMs that can attach to the disk at the same time. Value greater than one indicates a disk that can be mounted on multiple VMs at the same time.
 	MaxShares *int `pulumi:"maxShares"`
@@ -257,8 +266,8 @@ type diskArgs struct {
 	// Policy for controlling export on the disk.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Purchase plan information for the the image from which the OS disk was created. E.g. - {name: 2019-Datacenter, publisher: MicrosoftWindowsServer, product: WindowsServer}
-	PurchasePlan *PurchasePlan `pulumi:"purchasePlan"`
-	// The name of the resource group.
+	PurchasePlan *DiskPurchasePlan `pulumi:"purchasePlan"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Contains the security related information for the resource.
 	SecurityProfile *DiskSecurityProfile `pulumi:"securityProfile"`
@@ -268,7 +277,7 @@ type diskArgs struct {
 	SupportedCapabilities *SupportedCapabilities `pulumi:"supportedCapabilities"`
 	// Indicates the OS on a disk supports hibernation.
 	SupportsHibernation *bool `pulumi:"supportsHibernation"`
-	// Resource tags
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Performance tier of the disk (e.g, P4, S10) as described here: https://azure.microsoft.com/en-us/pricing/details/managed-disks/. Does not apply to Ultra disks.
 	Tier *string `pulumi:"tier"`
@@ -308,7 +317,7 @@ type DiskArgs struct {
 	ExtendedLocation ExtendedLocationPtrInput
 	// The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
 	HyperVGeneration pulumi.StringPtrInput
-	// Resource location
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The maximum number of VMs that can attach to the disk at the same time. Value greater than one indicates a disk that can be mounted on multiple VMs at the same time.
 	MaxShares pulumi.IntPtrInput
@@ -321,8 +330,8 @@ type DiskArgs struct {
 	// Policy for controlling export on the disk.
 	PublicNetworkAccess pulumi.StringPtrInput
 	// Purchase plan information for the the image from which the OS disk was created. E.g. - {name: 2019-Datacenter, publisher: MicrosoftWindowsServer, product: WindowsServer}
-	PurchasePlan PurchasePlanPtrInput
-	// The name of the resource group.
+	PurchasePlan DiskPurchasePlanPtrInput
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Contains the security related information for the resource.
 	SecurityProfile DiskSecurityProfilePtrInput
@@ -332,7 +341,7 @@ type DiskArgs struct {
 	SupportedCapabilities SupportedCapabilitiesPtrInput
 	// Indicates the OS on a disk supports hibernation.
 	SupportsHibernation pulumi.BoolPtrInput
-	// Resource tags
+	// Resource tags.
 	Tags pulumi.StringMapInput
 	// Performance tier of the disk (e.g, P4, S10) as described here: https://azure.microsoft.com/en-us/pricing/details/managed-disks/. Does not apply to Ultra disks.
 	Tier pulumi.StringPtrInput
@@ -375,6 +384,11 @@ func (o DiskOutput) ToDiskOutput() DiskOutput {
 
 func (o DiskOutput) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DiskOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Set to true to enable bursting beyond the provisioned performance target of the disk. Bursting is disabled by default. Does not apply to Ultra disks.
@@ -462,7 +476,12 @@ func (o DiskOutput) HyperVGeneration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringPtrOutput { return v.HyperVGeneration }).(pulumi.StringPtrOutput)
 }
 
-// Resource location
+// The UTC time when the ownership state of the disk was last changed i.e., the time the disk was last attached or detached from a VM or the time when the VM to which the disk was attached was deallocated or started.
+func (o DiskOutput) LastOwnershipUpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.LastOwnershipUpdateTime }).(pulumi.StringOutput)
+}
+
+// The geo-location where the resource lives
 func (o DiskOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -482,7 +501,7 @@ func (o DiskOutput) MaxShares() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.IntPtrOutput { return v.MaxShares }).(pulumi.IntPtrOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o DiskOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -518,8 +537,8 @@ func (o DiskOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 }
 
 // Purchase plan information for the the image from which the OS disk was created. E.g. - {name: 2019-Datacenter, publisher: MicrosoftWindowsServer, product: WindowsServer}
-func (o DiskOutput) PurchasePlan() PurchasePlanResponsePtrOutput {
-	return o.ApplyT(func(v *Disk) PurchasePlanResponsePtrOutput { return v.PurchasePlan }).(PurchasePlanResponsePtrOutput)
+func (o DiskOutput) PurchasePlan() DiskPurchasePlanResponsePtrOutput {
+	return o.ApplyT(func(v *Disk) DiskPurchasePlanResponsePtrOutput { return v.PurchasePlan }).(DiskPurchasePlanResponsePtrOutput)
 }
 
 // Contains the security related information for the resource.
@@ -547,7 +566,12 @@ func (o DiskOutput) SupportsHibernation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Disk) pulumi.BoolPtrOutput { return v.SupportsHibernation }).(pulumi.BoolPtrOutput)
 }
 
-// Resource tags
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o DiskOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Disk) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o DiskOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -562,7 +586,7 @@ func (o DiskOutput) TimeCreated() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.TimeCreated }).(pulumi.StringOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o DiskOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

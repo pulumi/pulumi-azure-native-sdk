@@ -8,20 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Single Namespace item in List or Get Operation
 //
-// Uses Azure REST API version 2022-10-01-preview. In version 1.x of the Azure Native provider, it used API version 2017-04-01.
+// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01-preview.
 //
-// Other available API versions: 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
+// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-05-01-preview, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Namespace struct {
 	pulumi.CustomResourceState
 
 	// Alternate name specified when alias and namespace names are same.
 	AlternateName pulumi.StringPtrOutput `pulumi:"alternateName"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Cluster ARM ID of the Namespace.
 	ClusterArmId pulumi.StringPtrOutput `pulumi:"clusterArmId"`
 	// The time the Namespace was created.
@@ -122,6 +124,9 @@ func NewNamespace(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventhub/v20240501preview:Namespace"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventhub/v20250501preview:Namespace"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -274,6 +279,11 @@ func (o NamespaceOutput) ToNamespaceOutputWithContext(ctx context.Context) Names
 // Alternate name specified when alias and namespace names are same.
 func (o NamespaceOutput) AlternateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringPtrOutput { return v.AlternateName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o NamespaceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Cluster ARM ID of the Namespace.

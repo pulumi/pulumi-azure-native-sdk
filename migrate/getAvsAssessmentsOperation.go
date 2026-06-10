@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a AvsAssessment
 //
-// Uses Azure REST API version 2023-03-15.
+// Uses Azure REST API version 2024-01-01-preview.
 //
-// Other available API versions: 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview, 2024-01-01-preview.
+// Other available API versions: 2023-03-15, 2023-04-01-preview, 2023-05-01-preview, 2023-09-09-preview, 2024-01-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native migrate [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAvsAssessmentsOperation(ctx *pulumi.Context, args *LookupAvsAssessmentsOperationArgs, opts ...pulumi.InvokeOption) (*LookupAvsAssessmentsOperationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAvsAssessmentsOperationResult
@@ -45,12 +45,26 @@ type LookupAvsAssessmentsOperationResult struct {
 	AssessmentErrorSummary map[string]int `pulumi:"assessmentErrorSummary"`
 	// Assessment type of the assessment.
 	AssessmentType string `pulumi:"assessmentType"`
+	// AVS Assessment Scenario.
+	AvsAssessmentScenario *string `pulumi:"avsAssessmentScenario"`
+	// Estimated External Storage for Assessment.
+	AvsEstimatedExternalStorages []AvsEstimatedExternalStorageResponse `pulumi:"avsEstimatedExternalStorages"`
+	// Estimated External Storage for Assessment.
+	AvsEstimatedNetworks []AvsEstimatedNetworkResponse `pulumi:"avsEstimatedNetworks"`
+	// Estimated AVS SKU for Assessment.
+	AvsEstimatedNodes []AvsEstimatedNodeResponse `pulumi:"avsEstimatedNodes"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Azure Location or Azure region where to which the machines will be migrated.
 	AzureLocation *string `pulumi:"azureLocation"`
 	// Azure Offer code according to which cost estimation is done.
 	AzureOfferCode *string `pulumi:"azureOfferCode"`
 	// Confidence Rating in Percentage.
 	ConfidenceRatingInPercentage float64 `pulumi:"confidenceRatingInPercentage"`
+	// collection of cost components.
+	CostComponents []CostComponentResponse `pulumi:"costComponents"`
+	// Percentage of CPU capacity reserved for processing additional workloads.
+	CpuHeadroom *float64 `pulumi:"cpuHeadroom"`
 	// Predicted CPU utilization.
 	CpuUtilization float64 `pulumi:"cpuUtilization"`
 	// Date and Time when assessment was created.
@@ -61,14 +75,20 @@ type LookupAvsAssessmentsOperationResult struct {
 	DedupeCompression *float64 `pulumi:"dedupeCompression"`
 	// Custom discount percentage.
 	DiscountPercentage *float64 `pulumi:"discountPercentage"`
+	// List of AVS external storage types.
+	ExternalStorageTypes []string `pulumi:"externalStorageTypes"`
 	// Failures to tolerate and RAID level in a common property.
 	FailuresToTolerateAndRaidLevel *string `pulumi:"failuresToTolerateAndRaidLevel"`
+	// List of Failures to tolerate and RAID levels in a common property.
+	FailuresToTolerateAndRaidLevelList []string `pulumi:"failuresToTolerateAndRaidLevelList"`
 	// Gets the group type for the assessment.
 	GroupType string `pulumi:"groupType"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Is Stretch Cluster Enabled.
 	IsStretchClusterEnabled *bool `pulumi:"isStretchClusterEnabled"`
+	// Is VCF license applied
+	IsVcfByolEnabled *bool `pulumi:"isVcfByolEnabled"`
 	// Limiting factor.
 	LimitingFactor string `pulumi:"limitingFactor"`
 	// Memory overcommit.
@@ -77,6 +97,8 @@ type LookupAvsAssessmentsOperationResult struct {
 	Name string `pulumi:"name"`
 	// AVS node type.
 	NodeType *string `pulumi:"nodeType"`
+	// AVS node types.
+	NodeTypes []string `pulumi:"nodeTypes"`
 	// Number of machines part of the assessment.
 	NumberOfMachines int `pulumi:"numberOfMachines"`
 	// Recommended number of nodes.
@@ -190,6 +212,35 @@ func (o LookupAvsAssessmentsOperationResultOutput) AssessmentType() pulumi.Strin
 	return o.ApplyT(func(v LookupAvsAssessmentsOperationResult) string { return v.AssessmentType }).(pulumi.StringOutput)
 }
 
+// AVS Assessment Scenario.
+func (o LookupAvsAssessmentsOperationResultOutput) AvsAssessmentScenario() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAvsAssessmentsOperationResult) *string { return v.AvsAssessmentScenario }).(pulumi.StringPtrOutput)
+}
+
+// Estimated External Storage for Assessment.
+func (o LookupAvsAssessmentsOperationResultOutput) AvsEstimatedExternalStorages() AvsEstimatedExternalStorageResponseArrayOutput {
+	return o.ApplyT(func(v LookupAvsAssessmentsOperationResult) []AvsEstimatedExternalStorageResponse {
+		return v.AvsEstimatedExternalStorages
+	}).(AvsEstimatedExternalStorageResponseArrayOutput)
+}
+
+// Estimated External Storage for Assessment.
+func (o LookupAvsAssessmentsOperationResultOutput) AvsEstimatedNetworks() AvsEstimatedNetworkResponseArrayOutput {
+	return o.ApplyT(func(v LookupAvsAssessmentsOperationResult) []AvsEstimatedNetworkResponse {
+		return v.AvsEstimatedNetworks
+	}).(AvsEstimatedNetworkResponseArrayOutput)
+}
+
+// Estimated AVS SKU for Assessment.
+func (o LookupAvsAssessmentsOperationResultOutput) AvsEstimatedNodes() AvsEstimatedNodeResponseArrayOutput {
+	return o.ApplyT(func(v LookupAvsAssessmentsOperationResult) []AvsEstimatedNodeResponse { return v.AvsEstimatedNodes }).(AvsEstimatedNodeResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAvsAssessmentsOperationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAvsAssessmentsOperationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Azure Location or Azure region where to which the machines will be migrated.
 func (o LookupAvsAssessmentsOperationResultOutput) AzureLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAvsAssessmentsOperationResult) *string { return v.AzureLocation }).(pulumi.StringPtrOutput)
@@ -203,6 +254,16 @@ func (o LookupAvsAssessmentsOperationResultOutput) AzureOfferCode() pulumi.Strin
 // Confidence Rating in Percentage.
 func (o LookupAvsAssessmentsOperationResultOutput) ConfidenceRatingInPercentage() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupAvsAssessmentsOperationResult) float64 { return v.ConfidenceRatingInPercentage }).(pulumi.Float64Output)
+}
+
+// collection of cost components.
+func (o LookupAvsAssessmentsOperationResultOutput) CostComponents() CostComponentResponseArrayOutput {
+	return o.ApplyT(func(v LookupAvsAssessmentsOperationResult) []CostComponentResponse { return v.CostComponents }).(CostComponentResponseArrayOutput)
+}
+
+// Percentage of CPU capacity reserved for processing additional workloads.
+func (o LookupAvsAssessmentsOperationResultOutput) CpuHeadroom() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v LookupAvsAssessmentsOperationResult) *float64 { return v.CpuHeadroom }).(pulumi.Float64PtrOutput)
 }
 
 // Predicted CPU utilization.
@@ -230,9 +291,19 @@ func (o LookupAvsAssessmentsOperationResultOutput) DiscountPercentage() pulumi.F
 	return o.ApplyT(func(v LookupAvsAssessmentsOperationResult) *float64 { return v.DiscountPercentage }).(pulumi.Float64PtrOutput)
 }
 
+// List of AVS external storage types.
+func (o LookupAvsAssessmentsOperationResultOutput) ExternalStorageTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupAvsAssessmentsOperationResult) []string { return v.ExternalStorageTypes }).(pulumi.StringArrayOutput)
+}
+
 // Failures to tolerate and RAID level in a common property.
 func (o LookupAvsAssessmentsOperationResultOutput) FailuresToTolerateAndRaidLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAvsAssessmentsOperationResult) *string { return v.FailuresToTolerateAndRaidLevel }).(pulumi.StringPtrOutput)
+}
+
+// List of Failures to tolerate and RAID levels in a common property.
+func (o LookupAvsAssessmentsOperationResultOutput) FailuresToTolerateAndRaidLevelList() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupAvsAssessmentsOperationResult) []string { return v.FailuresToTolerateAndRaidLevelList }).(pulumi.StringArrayOutput)
 }
 
 // Gets the group type for the assessment.
@@ -240,7 +311,7 @@ func (o LookupAvsAssessmentsOperationResultOutput) GroupType() pulumi.StringOutp
 	return o.ApplyT(func(v LookupAvsAssessmentsOperationResult) string { return v.GroupType }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupAvsAssessmentsOperationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAvsAssessmentsOperationResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -248,6 +319,11 @@ func (o LookupAvsAssessmentsOperationResultOutput) Id() pulumi.StringOutput {
 // Is Stretch Cluster Enabled.
 func (o LookupAvsAssessmentsOperationResultOutput) IsStretchClusterEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupAvsAssessmentsOperationResult) *bool { return v.IsStretchClusterEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Is VCF license applied
+func (o LookupAvsAssessmentsOperationResultOutput) IsVcfByolEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupAvsAssessmentsOperationResult) *bool { return v.IsVcfByolEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Limiting factor.
@@ -268,6 +344,11 @@ func (o LookupAvsAssessmentsOperationResultOutput) Name() pulumi.StringOutput {
 // AVS node type.
 func (o LookupAvsAssessmentsOperationResultOutput) NodeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAvsAssessmentsOperationResult) *string { return v.NodeType }).(pulumi.StringPtrOutput)
+}
+
+// AVS node types.
+func (o LookupAvsAssessmentsOperationResultOutput) NodeTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupAvsAssessmentsOperationResult) []string { return v.NodeTypes }).(pulumi.StringArrayOutput)
 }
 
 // Number of machines part of the assessment.

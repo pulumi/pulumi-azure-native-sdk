@@ -7,765 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = utilities.GetEnvOrDefault
-
-// To scrub sensitive log fields
-type PolicySettingsLogScrubbing struct {
-	// The rules that are applied to the logs for scrubbing.
-	ScrubbingRules []WebApplicationFirewallScrubbingRules `pulumi:"scrubbingRules"`
-	// State of the log scrubbing config. Default value is Enabled.
-	State *string `pulumi:"state"`
-}
-
-// PolicySettingsLogScrubbingInput is an input type that accepts PolicySettingsLogScrubbingArgs and PolicySettingsLogScrubbingOutput values.
-// You can construct a concrete instance of `PolicySettingsLogScrubbingInput` via:
-//
-//	PolicySettingsLogScrubbingArgs{...}
-type PolicySettingsLogScrubbingInput interface {
-	pulumi.Input
-
-	ToPolicySettingsLogScrubbingOutput() PolicySettingsLogScrubbingOutput
-	ToPolicySettingsLogScrubbingOutputWithContext(context.Context) PolicySettingsLogScrubbingOutput
-}
-
-// To scrub sensitive log fields
-type PolicySettingsLogScrubbingArgs struct {
-	// The rules that are applied to the logs for scrubbing.
-	ScrubbingRules WebApplicationFirewallScrubbingRulesArrayInput `pulumi:"scrubbingRules"`
-	// State of the log scrubbing config. Default value is Enabled.
-	State pulumi.StringPtrInput `pulumi:"state"`
-}
-
-func (PolicySettingsLogScrubbingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicySettingsLogScrubbing)(nil)).Elem()
-}
-
-func (i PolicySettingsLogScrubbingArgs) ToPolicySettingsLogScrubbingOutput() PolicySettingsLogScrubbingOutput {
-	return i.ToPolicySettingsLogScrubbingOutputWithContext(context.Background())
-}
-
-func (i PolicySettingsLogScrubbingArgs) ToPolicySettingsLogScrubbingOutputWithContext(ctx context.Context) PolicySettingsLogScrubbingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicySettingsLogScrubbingOutput)
-}
-
-func (i PolicySettingsLogScrubbingArgs) ToPolicySettingsLogScrubbingPtrOutput() PolicySettingsLogScrubbingPtrOutput {
-	return i.ToPolicySettingsLogScrubbingPtrOutputWithContext(context.Background())
-}
-
-func (i PolicySettingsLogScrubbingArgs) ToPolicySettingsLogScrubbingPtrOutputWithContext(ctx context.Context) PolicySettingsLogScrubbingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicySettingsLogScrubbingOutput).ToPolicySettingsLogScrubbingPtrOutputWithContext(ctx)
-}
-
-// PolicySettingsLogScrubbingPtrInput is an input type that accepts PolicySettingsLogScrubbingArgs, PolicySettingsLogScrubbingPtr and PolicySettingsLogScrubbingPtrOutput values.
-// You can construct a concrete instance of `PolicySettingsLogScrubbingPtrInput` via:
-//
-//	        PolicySettingsLogScrubbingArgs{...}
-//
-//	or:
-//
-//	        nil
-type PolicySettingsLogScrubbingPtrInput interface {
-	pulumi.Input
-
-	ToPolicySettingsLogScrubbingPtrOutput() PolicySettingsLogScrubbingPtrOutput
-	ToPolicySettingsLogScrubbingPtrOutputWithContext(context.Context) PolicySettingsLogScrubbingPtrOutput
-}
-
-type policySettingsLogScrubbingPtrType PolicySettingsLogScrubbingArgs
-
-func PolicySettingsLogScrubbingPtr(v *PolicySettingsLogScrubbingArgs) PolicySettingsLogScrubbingPtrInput {
-	return (*policySettingsLogScrubbingPtrType)(v)
-}
-
-func (*policySettingsLogScrubbingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicySettingsLogScrubbing)(nil)).Elem()
-}
-
-func (i *policySettingsLogScrubbingPtrType) ToPolicySettingsLogScrubbingPtrOutput() PolicySettingsLogScrubbingPtrOutput {
-	return i.ToPolicySettingsLogScrubbingPtrOutputWithContext(context.Background())
-}
-
-func (i *policySettingsLogScrubbingPtrType) ToPolicySettingsLogScrubbingPtrOutputWithContext(ctx context.Context) PolicySettingsLogScrubbingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PolicySettingsLogScrubbingPtrOutput)
-}
-
-// To scrub sensitive log fields
-type PolicySettingsLogScrubbingOutput struct{ *pulumi.OutputState }
-
-func (PolicySettingsLogScrubbingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicySettingsLogScrubbing)(nil)).Elem()
-}
-
-func (o PolicySettingsLogScrubbingOutput) ToPolicySettingsLogScrubbingOutput() PolicySettingsLogScrubbingOutput {
-	return o
-}
-
-func (o PolicySettingsLogScrubbingOutput) ToPolicySettingsLogScrubbingOutputWithContext(ctx context.Context) PolicySettingsLogScrubbingOutput {
-	return o
-}
-
-func (o PolicySettingsLogScrubbingOutput) ToPolicySettingsLogScrubbingPtrOutput() PolicySettingsLogScrubbingPtrOutput {
-	return o.ToPolicySettingsLogScrubbingPtrOutputWithContext(context.Background())
-}
-
-func (o PolicySettingsLogScrubbingOutput) ToPolicySettingsLogScrubbingPtrOutputWithContext(ctx context.Context) PolicySettingsLogScrubbingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicySettingsLogScrubbing) *PolicySettingsLogScrubbing {
-		return &v
-	}).(PolicySettingsLogScrubbingPtrOutput)
-}
-
-// The rules that are applied to the logs for scrubbing.
-func (o PolicySettingsLogScrubbingOutput) ScrubbingRules() WebApplicationFirewallScrubbingRulesArrayOutput {
-	return o.ApplyT(func(v PolicySettingsLogScrubbing) []WebApplicationFirewallScrubbingRules { return v.ScrubbingRules }).(WebApplicationFirewallScrubbingRulesArrayOutput)
-}
-
-// State of the log scrubbing config. Default value is Enabled.
-func (o PolicySettingsLogScrubbingOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicySettingsLogScrubbing) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-type PolicySettingsLogScrubbingPtrOutput struct{ *pulumi.OutputState }
-
-func (PolicySettingsLogScrubbingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicySettingsLogScrubbing)(nil)).Elem()
-}
-
-func (o PolicySettingsLogScrubbingPtrOutput) ToPolicySettingsLogScrubbingPtrOutput() PolicySettingsLogScrubbingPtrOutput {
-	return o
-}
-
-func (o PolicySettingsLogScrubbingPtrOutput) ToPolicySettingsLogScrubbingPtrOutputWithContext(ctx context.Context) PolicySettingsLogScrubbingPtrOutput {
-	return o
-}
-
-func (o PolicySettingsLogScrubbingPtrOutput) Elem() PolicySettingsLogScrubbingOutput {
-	return o.ApplyT(func(v *PolicySettingsLogScrubbing) PolicySettingsLogScrubbing {
-		if v != nil {
-			return *v
-		}
-		var ret PolicySettingsLogScrubbing
-		return ret
-	}).(PolicySettingsLogScrubbingOutput)
-}
-
-// The rules that are applied to the logs for scrubbing.
-func (o PolicySettingsLogScrubbingPtrOutput) ScrubbingRules() WebApplicationFirewallScrubbingRulesArrayOutput {
-	return o.ApplyT(func(v *PolicySettingsLogScrubbing) []WebApplicationFirewallScrubbingRules {
-		if v == nil {
-			return nil
-		}
-		return v.ScrubbingRules
-	}).(WebApplicationFirewallScrubbingRulesArrayOutput)
-}
-
-// State of the log scrubbing config. Default value is Enabled.
-func (o PolicySettingsLogScrubbingPtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicySettingsLogScrubbing) *string {
-		if v == nil {
-			return nil
-		}
-		return v.State
-	}).(pulumi.StringPtrOutput)
-}
-
-// Defines contents of a web application firewall global configuration.
-type PolicySettingsResponse struct {
-	// If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
-	CustomBlockResponseBody *string `pulumi:"customBlockResponseBody"`
-	// If the action type is block, customer can override the response status code.
-	CustomBlockResponseStatusCode *int `pulumi:"customBlockResponseStatusCode"`
-	// Whether allow WAF to enforce file upload limits.
-	FileUploadEnforcement *bool `pulumi:"fileUploadEnforcement"`
-	// Maximum file upload size in Mb for WAF.
-	FileUploadLimitInMb *int `pulumi:"fileUploadLimitInMb"`
-	// To scrub sensitive log fields
-	LogScrubbing *PolicySettingsResponseLogScrubbing `pulumi:"logScrubbing"`
-	// Maximum request body size in Kb for WAF.
-	MaxRequestBodySizeInKb *int `pulumi:"maxRequestBodySizeInKb"`
-	// The mode of the policy.
-	Mode *string `pulumi:"mode"`
-	// Whether to allow WAF to check request Body.
-	RequestBodyCheck *bool `pulumi:"requestBodyCheck"`
-	// Whether allow WAF to enforce request body limits.
-	RequestBodyEnforcement *bool `pulumi:"requestBodyEnforcement"`
-	// Max inspection limit in KB for request body inspection for WAF.
-	RequestBodyInspectLimitInKB *int `pulumi:"requestBodyInspectLimitInKB"`
-	// The state of the policy.
-	State *string `pulumi:"state"`
-}
-
-// Defaults sets the appropriate defaults for PolicySettingsResponse
-func (val *PolicySettingsResponse) Defaults() *PolicySettingsResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.FileUploadEnforcement == nil {
-		fileUploadEnforcement_ := true
-		tmp.FileUploadEnforcement = &fileUploadEnforcement_
-	}
-	if tmp.RequestBodyEnforcement == nil {
-		requestBodyEnforcement_ := true
-		tmp.RequestBodyEnforcement = &requestBodyEnforcement_
-	}
-	return &tmp
-}
-
-// Defines contents of a web application firewall global configuration.
-type PolicySettingsResponseOutput struct{ *pulumi.OutputState }
-
-func (PolicySettingsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicySettingsResponse)(nil)).Elem()
-}
-
-func (o PolicySettingsResponseOutput) ToPolicySettingsResponseOutput() PolicySettingsResponseOutput {
-	return o
-}
-
-func (o PolicySettingsResponseOutput) ToPolicySettingsResponseOutputWithContext(ctx context.Context) PolicySettingsResponseOutput {
-	return o
-}
-
-// If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
-func (o PolicySettingsResponseOutput) CustomBlockResponseBody() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicySettingsResponse) *string { return v.CustomBlockResponseBody }).(pulumi.StringPtrOutput)
-}
-
-// If the action type is block, customer can override the response status code.
-func (o PolicySettingsResponseOutput) CustomBlockResponseStatusCode() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v PolicySettingsResponse) *int { return v.CustomBlockResponseStatusCode }).(pulumi.IntPtrOutput)
-}
-
-// Whether allow WAF to enforce file upload limits.
-func (o PolicySettingsResponseOutput) FileUploadEnforcement() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PolicySettingsResponse) *bool { return v.FileUploadEnforcement }).(pulumi.BoolPtrOutput)
-}
-
-// Maximum file upload size in Mb for WAF.
-func (o PolicySettingsResponseOutput) FileUploadLimitInMb() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v PolicySettingsResponse) *int { return v.FileUploadLimitInMb }).(pulumi.IntPtrOutput)
-}
-
-// To scrub sensitive log fields
-func (o PolicySettingsResponseOutput) LogScrubbing() PolicySettingsResponseLogScrubbingPtrOutput {
-	return o.ApplyT(func(v PolicySettingsResponse) *PolicySettingsResponseLogScrubbing { return v.LogScrubbing }).(PolicySettingsResponseLogScrubbingPtrOutput)
-}
-
-// Maximum request body size in Kb for WAF.
-func (o PolicySettingsResponseOutput) MaxRequestBodySizeInKb() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v PolicySettingsResponse) *int { return v.MaxRequestBodySizeInKb }).(pulumi.IntPtrOutput)
-}
-
-// The mode of the policy.
-func (o PolicySettingsResponseOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicySettingsResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
-}
-
-// Whether to allow WAF to check request Body.
-func (o PolicySettingsResponseOutput) RequestBodyCheck() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PolicySettingsResponse) *bool { return v.RequestBodyCheck }).(pulumi.BoolPtrOutput)
-}
-
-// Whether allow WAF to enforce request body limits.
-func (o PolicySettingsResponseOutput) RequestBodyEnforcement() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PolicySettingsResponse) *bool { return v.RequestBodyEnforcement }).(pulumi.BoolPtrOutput)
-}
-
-// Max inspection limit in KB for request body inspection for WAF.
-func (o PolicySettingsResponseOutput) RequestBodyInspectLimitInKB() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v PolicySettingsResponse) *int { return v.RequestBodyInspectLimitInKB }).(pulumi.IntPtrOutput)
-}
-
-// The state of the policy.
-func (o PolicySettingsResponseOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicySettingsResponse) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-type PolicySettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PolicySettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicySettingsResponse)(nil)).Elem()
-}
-
-func (o PolicySettingsResponsePtrOutput) ToPolicySettingsResponsePtrOutput() PolicySettingsResponsePtrOutput {
-	return o
-}
-
-func (o PolicySettingsResponsePtrOutput) ToPolicySettingsResponsePtrOutputWithContext(ctx context.Context) PolicySettingsResponsePtrOutput {
-	return o
-}
-
-func (o PolicySettingsResponsePtrOutput) Elem() PolicySettingsResponseOutput {
-	return o.ApplyT(func(v *PolicySettingsResponse) PolicySettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PolicySettingsResponse
-		return ret
-	}).(PolicySettingsResponseOutput)
-}
-
-// If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
-func (o PolicySettingsResponsePtrOutput) CustomBlockResponseBody() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicySettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CustomBlockResponseBody
-	}).(pulumi.StringPtrOutput)
-}
-
-// If the action type is block, customer can override the response status code.
-func (o PolicySettingsResponsePtrOutput) CustomBlockResponseStatusCode() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PolicySettingsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.CustomBlockResponseStatusCode
-	}).(pulumi.IntPtrOutput)
-}
-
-// Whether allow WAF to enforce file upload limits.
-func (o PolicySettingsResponsePtrOutput) FileUploadEnforcement() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PolicySettingsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.FileUploadEnforcement
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Maximum file upload size in Mb for WAF.
-func (o PolicySettingsResponsePtrOutput) FileUploadLimitInMb() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PolicySettingsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.FileUploadLimitInMb
-	}).(pulumi.IntPtrOutput)
-}
-
-// To scrub sensitive log fields
-func (o PolicySettingsResponsePtrOutput) LogScrubbing() PolicySettingsResponseLogScrubbingPtrOutput {
-	return o.ApplyT(func(v *PolicySettingsResponse) *PolicySettingsResponseLogScrubbing {
-		if v == nil {
-			return nil
-		}
-		return v.LogScrubbing
-	}).(PolicySettingsResponseLogScrubbingPtrOutput)
-}
-
-// Maximum request body size in Kb for WAF.
-func (o PolicySettingsResponsePtrOutput) MaxRequestBodySizeInKb() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PolicySettingsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.MaxRequestBodySizeInKb
-	}).(pulumi.IntPtrOutput)
-}
-
-// The mode of the policy.
-func (o PolicySettingsResponsePtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicySettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Mode
-	}).(pulumi.StringPtrOutput)
-}
-
-// Whether to allow WAF to check request Body.
-func (o PolicySettingsResponsePtrOutput) RequestBodyCheck() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PolicySettingsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.RequestBodyCheck
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Whether allow WAF to enforce request body limits.
-func (o PolicySettingsResponsePtrOutput) RequestBodyEnforcement() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PolicySettingsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.RequestBodyEnforcement
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Max inspection limit in KB for request body inspection for WAF.
-func (o PolicySettingsResponsePtrOutput) RequestBodyInspectLimitInKB() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PolicySettingsResponse) *int {
-		if v == nil {
-			return nil
-		}
-		return v.RequestBodyInspectLimitInKB
-	}).(pulumi.IntPtrOutput)
-}
-
-// The state of the policy.
-func (o PolicySettingsResponsePtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicySettingsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.State
-	}).(pulumi.StringPtrOutput)
-}
-
-// To scrub sensitive log fields
-type PolicySettingsResponseLogScrubbing struct {
-	// The rules that are applied to the logs for scrubbing.
-	ScrubbingRules []WebApplicationFirewallScrubbingRulesResponse `pulumi:"scrubbingRules"`
-	// State of the log scrubbing config. Default value is Enabled.
-	State *string `pulumi:"state"`
-}
-
-// To scrub sensitive log fields
-type PolicySettingsResponseLogScrubbingOutput struct{ *pulumi.OutputState }
-
-func (PolicySettingsResponseLogScrubbingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicySettingsResponseLogScrubbing)(nil)).Elem()
-}
-
-func (o PolicySettingsResponseLogScrubbingOutput) ToPolicySettingsResponseLogScrubbingOutput() PolicySettingsResponseLogScrubbingOutput {
-	return o
-}
-
-func (o PolicySettingsResponseLogScrubbingOutput) ToPolicySettingsResponseLogScrubbingOutputWithContext(ctx context.Context) PolicySettingsResponseLogScrubbingOutput {
-	return o
-}
-
-// The rules that are applied to the logs for scrubbing.
-func (o PolicySettingsResponseLogScrubbingOutput) ScrubbingRules() WebApplicationFirewallScrubbingRulesResponseArrayOutput {
-	return o.ApplyT(func(v PolicySettingsResponseLogScrubbing) []WebApplicationFirewallScrubbingRulesResponse {
-		return v.ScrubbingRules
-	}).(WebApplicationFirewallScrubbingRulesResponseArrayOutput)
-}
-
-// State of the log scrubbing config. Default value is Enabled.
-func (o PolicySettingsResponseLogScrubbingOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicySettingsResponseLogScrubbing) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-type PolicySettingsResponseLogScrubbingPtrOutput struct{ *pulumi.OutputState }
-
-func (PolicySettingsResponseLogScrubbingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PolicySettingsResponseLogScrubbing)(nil)).Elem()
-}
-
-func (o PolicySettingsResponseLogScrubbingPtrOutput) ToPolicySettingsResponseLogScrubbingPtrOutput() PolicySettingsResponseLogScrubbingPtrOutput {
-	return o
-}
-
-func (o PolicySettingsResponseLogScrubbingPtrOutput) ToPolicySettingsResponseLogScrubbingPtrOutputWithContext(ctx context.Context) PolicySettingsResponseLogScrubbingPtrOutput {
-	return o
-}
-
-func (o PolicySettingsResponseLogScrubbingPtrOutput) Elem() PolicySettingsResponseLogScrubbingOutput {
-	return o.ApplyT(func(v *PolicySettingsResponseLogScrubbing) PolicySettingsResponseLogScrubbing {
-		if v != nil {
-			return *v
-		}
-		var ret PolicySettingsResponseLogScrubbing
-		return ret
-	}).(PolicySettingsResponseLogScrubbingOutput)
-}
-
-// The rules that are applied to the logs for scrubbing.
-func (o PolicySettingsResponseLogScrubbingPtrOutput) ScrubbingRules() WebApplicationFirewallScrubbingRulesResponseArrayOutput {
-	return o.ApplyT(func(v *PolicySettingsResponseLogScrubbing) []WebApplicationFirewallScrubbingRulesResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ScrubbingRules
-	}).(WebApplicationFirewallScrubbingRulesResponseArrayOutput)
-}
-
-// State of the log scrubbing config. Default value is Enabled.
-func (o PolicySettingsResponseLogScrubbingPtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PolicySettingsResponseLogScrubbing) *string {
-		if v == nil {
-			return nil
-		}
-		return v.State
-	}).(pulumi.StringPtrOutput)
-}
-
-// IpamPool association information.
-type PoolAssociationResponse struct {
-	// List of assigned IP address prefixes in the IpamPool of the associated resource.
-	AddressPrefixes []string `pulumi:"addressPrefixes"`
-	// Creation time of the association.
-	CreatedAt   string  `pulumi:"createdAt"`
-	Description *string `pulumi:"description"`
-	// Total number of reserved IP addresses of the association.
-	NumberOfReservedIPAddresses string `pulumi:"numberOfReservedIPAddresses"`
-	// IpamPool id for which the resource is associated to.
-	PoolId *string `pulumi:"poolId"`
-	// Expire time for IP addresses reserved.
-	ReservationExpiresAt string `pulumi:"reservationExpiresAt"`
-	// List of reserved IP address prefixes in the IpamPool of the associated resource.
-	ReservedPrefixes []string `pulumi:"reservedPrefixes"`
-	// Resource id of the associated Azure resource.
-	ResourceId string `pulumi:"resourceId"`
-	// Total number of assigned IP addresses of the association.
-	TotalNumberOfIPAddresses string `pulumi:"totalNumberOfIPAddresses"`
-}
-
-// IpamPool association information.
-type PoolAssociationResponseOutput struct{ *pulumi.OutputState }
-
-func (PoolAssociationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PoolAssociationResponse)(nil)).Elem()
-}
-
-func (o PoolAssociationResponseOutput) ToPoolAssociationResponseOutput() PoolAssociationResponseOutput {
-	return o
-}
-
-func (o PoolAssociationResponseOutput) ToPoolAssociationResponseOutputWithContext(ctx context.Context) PoolAssociationResponseOutput {
-	return o
-}
-
-// List of assigned IP address prefixes in the IpamPool of the associated resource.
-func (o PoolAssociationResponseOutput) AddressPrefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PoolAssociationResponse) []string { return v.AddressPrefixes }).(pulumi.StringArrayOutput)
-}
-
-// Creation time of the association.
-func (o PoolAssociationResponseOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v PoolAssociationResponse) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
-func (o PoolAssociationResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PoolAssociationResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Total number of reserved IP addresses of the association.
-func (o PoolAssociationResponseOutput) NumberOfReservedIPAddresses() pulumi.StringOutput {
-	return o.ApplyT(func(v PoolAssociationResponse) string { return v.NumberOfReservedIPAddresses }).(pulumi.StringOutput)
-}
-
-// IpamPool id for which the resource is associated to.
-func (o PoolAssociationResponseOutput) PoolId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PoolAssociationResponse) *string { return v.PoolId }).(pulumi.StringPtrOutput)
-}
-
-// Expire time for IP addresses reserved.
-func (o PoolAssociationResponseOutput) ReservationExpiresAt() pulumi.StringOutput {
-	return o.ApplyT(func(v PoolAssociationResponse) string { return v.ReservationExpiresAt }).(pulumi.StringOutput)
-}
-
-// List of reserved IP address prefixes in the IpamPool of the associated resource.
-func (o PoolAssociationResponseOutput) ReservedPrefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PoolAssociationResponse) []string { return v.ReservedPrefixes }).(pulumi.StringArrayOutput)
-}
-
-// Resource id of the associated Azure resource.
-func (o PoolAssociationResponseOutput) ResourceId() pulumi.StringOutput {
-	return o.ApplyT(func(v PoolAssociationResponse) string { return v.ResourceId }).(pulumi.StringOutput)
-}
-
-// Total number of assigned IP addresses of the association.
-func (o PoolAssociationResponseOutput) TotalNumberOfIPAddresses() pulumi.StringOutput {
-	return o.ApplyT(func(v PoolAssociationResponse) string { return v.TotalNumberOfIPAddresses }).(pulumi.StringOutput)
-}
-
-type PoolAssociationResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (PoolAssociationResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PoolAssociationResponse)(nil)).Elem()
-}
-
-func (o PoolAssociationResponseArrayOutput) ToPoolAssociationResponseArrayOutput() PoolAssociationResponseArrayOutput {
-	return o
-}
-
-func (o PoolAssociationResponseArrayOutput) ToPoolAssociationResponseArrayOutputWithContext(ctx context.Context) PoolAssociationResponseArrayOutput {
-	return o
-}
-
-func (o PoolAssociationResponseArrayOutput) Index(i pulumi.IntInput) PoolAssociationResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PoolAssociationResponse {
-		return vs[0].([]PoolAssociationResponse)[vs[1].(int)]
-	}).(PoolAssociationResponseOutput)
-}
-
-// PrivateDnsZoneConfig resource.
-type PrivateDnsZoneConfig struct {
-	// Name of the resource that is unique within a resource group. This name can be used to access the resource.
-	Name *string `pulumi:"name"`
-	// The resource id of the private dns zone.
-	PrivateDnsZoneId *string `pulumi:"privateDnsZoneId"`
-}
-
-// PrivateDnsZoneConfigInput is an input type that accepts PrivateDnsZoneConfigArgs and PrivateDnsZoneConfigOutput values.
-// You can construct a concrete instance of `PrivateDnsZoneConfigInput` via:
-//
-//	PrivateDnsZoneConfigArgs{...}
-type PrivateDnsZoneConfigInput interface {
-	pulumi.Input
-
-	ToPrivateDnsZoneConfigOutput() PrivateDnsZoneConfigOutput
-	ToPrivateDnsZoneConfigOutputWithContext(context.Context) PrivateDnsZoneConfigOutput
-}
-
-// PrivateDnsZoneConfig resource.
-type PrivateDnsZoneConfigArgs struct {
-	// Name of the resource that is unique within a resource group. This name can be used to access the resource.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The resource id of the private dns zone.
-	PrivateDnsZoneId pulumi.StringPtrInput `pulumi:"privateDnsZoneId"`
-}
-
-func (PrivateDnsZoneConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateDnsZoneConfig)(nil)).Elem()
-}
-
-func (i PrivateDnsZoneConfigArgs) ToPrivateDnsZoneConfigOutput() PrivateDnsZoneConfigOutput {
-	return i.ToPrivateDnsZoneConfigOutputWithContext(context.Background())
-}
-
-func (i PrivateDnsZoneConfigArgs) ToPrivateDnsZoneConfigOutputWithContext(ctx context.Context) PrivateDnsZoneConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateDnsZoneConfigOutput)
-}
-
-// PrivateDnsZoneConfigArrayInput is an input type that accepts PrivateDnsZoneConfigArray and PrivateDnsZoneConfigArrayOutput values.
-// You can construct a concrete instance of `PrivateDnsZoneConfigArrayInput` via:
-//
-//	PrivateDnsZoneConfigArray{ PrivateDnsZoneConfigArgs{...} }
-type PrivateDnsZoneConfigArrayInput interface {
-	pulumi.Input
-
-	ToPrivateDnsZoneConfigArrayOutput() PrivateDnsZoneConfigArrayOutput
-	ToPrivateDnsZoneConfigArrayOutputWithContext(context.Context) PrivateDnsZoneConfigArrayOutput
-}
-
-type PrivateDnsZoneConfigArray []PrivateDnsZoneConfigInput
-
-func (PrivateDnsZoneConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivateDnsZoneConfig)(nil)).Elem()
-}
-
-func (i PrivateDnsZoneConfigArray) ToPrivateDnsZoneConfigArrayOutput() PrivateDnsZoneConfigArrayOutput {
-	return i.ToPrivateDnsZoneConfigArrayOutputWithContext(context.Background())
-}
-
-func (i PrivateDnsZoneConfigArray) ToPrivateDnsZoneConfigArrayOutputWithContext(ctx context.Context) PrivateDnsZoneConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PrivateDnsZoneConfigArrayOutput)
-}
-
-// PrivateDnsZoneConfig resource.
-type PrivateDnsZoneConfigOutput struct{ *pulumi.OutputState }
-
-func (PrivateDnsZoneConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateDnsZoneConfig)(nil)).Elem()
-}
-
-func (o PrivateDnsZoneConfigOutput) ToPrivateDnsZoneConfigOutput() PrivateDnsZoneConfigOutput {
-	return o
-}
-
-func (o PrivateDnsZoneConfigOutput) ToPrivateDnsZoneConfigOutputWithContext(ctx context.Context) PrivateDnsZoneConfigOutput {
-	return o
-}
-
-// Name of the resource that is unique within a resource group. This name can be used to access the resource.
-func (o PrivateDnsZoneConfigOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateDnsZoneConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The resource id of the private dns zone.
-func (o PrivateDnsZoneConfigOutput) PrivateDnsZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateDnsZoneConfig) *string { return v.PrivateDnsZoneId }).(pulumi.StringPtrOutput)
-}
-
-type PrivateDnsZoneConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (PrivateDnsZoneConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivateDnsZoneConfig)(nil)).Elem()
-}
-
-func (o PrivateDnsZoneConfigArrayOutput) ToPrivateDnsZoneConfigArrayOutput() PrivateDnsZoneConfigArrayOutput {
-	return o
-}
-
-func (o PrivateDnsZoneConfigArrayOutput) ToPrivateDnsZoneConfigArrayOutputWithContext(ctx context.Context) PrivateDnsZoneConfigArrayOutput {
-	return o
-}
-
-func (o PrivateDnsZoneConfigArrayOutput) Index(i pulumi.IntInput) PrivateDnsZoneConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateDnsZoneConfig {
-		return vs[0].([]PrivateDnsZoneConfig)[vs[1].(int)]
-	}).(PrivateDnsZoneConfigOutput)
-}
-
-// PrivateDnsZoneConfig resource.
-type PrivateDnsZoneConfigResponse struct {
-	// Name of the resource that is unique within a resource group. This name can be used to access the resource.
-	Name *string `pulumi:"name"`
-	// The resource id of the private dns zone.
-	PrivateDnsZoneId *string `pulumi:"privateDnsZoneId"`
-	// A collection of information regarding a recordSet, holding information to identify private resources.
-	RecordSets []RecordSetResponse `pulumi:"recordSets"`
-}
-
-// PrivateDnsZoneConfig resource.
-type PrivateDnsZoneConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateDnsZoneConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateDnsZoneConfigResponse)(nil)).Elem()
-}
-
-func (o PrivateDnsZoneConfigResponseOutput) ToPrivateDnsZoneConfigResponseOutput() PrivateDnsZoneConfigResponseOutput {
-	return o
-}
-
-func (o PrivateDnsZoneConfigResponseOutput) ToPrivateDnsZoneConfigResponseOutputWithContext(ctx context.Context) PrivateDnsZoneConfigResponseOutput {
-	return o
-}
-
-// Name of the resource that is unique within a resource group. This name can be used to access the resource.
-func (o PrivateDnsZoneConfigResponseOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateDnsZoneConfigResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The resource id of the private dns zone.
-func (o PrivateDnsZoneConfigResponseOutput) PrivateDnsZoneId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateDnsZoneConfigResponse) *string { return v.PrivateDnsZoneId }).(pulumi.StringPtrOutput)
-}
-
-// A collection of information regarding a recordSet, holding information to identify private resources.
-func (o PrivateDnsZoneConfigResponseOutput) RecordSets() RecordSetResponseArrayOutput {
-	return o.ApplyT(func(v PrivateDnsZoneConfigResponse) []RecordSetResponse { return v.RecordSets }).(RecordSetResponseArrayOutput)
-}
-
-type PrivateDnsZoneConfigResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (PrivateDnsZoneConfigResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivateDnsZoneConfigResponse)(nil)).Elem()
-}
-
-func (o PrivateDnsZoneConfigResponseArrayOutput) ToPrivateDnsZoneConfigResponseArrayOutput() PrivateDnsZoneConfigResponseArrayOutput {
-	return o
-}
-
-func (o PrivateDnsZoneConfigResponseArrayOutput) ToPrivateDnsZoneConfigResponseArrayOutputWithContext(ctx context.Context) PrivateDnsZoneConfigResponseArrayOutput {
-	return o
-}
-
-func (o PrivateDnsZoneConfigResponseArrayOutput) Index(i pulumi.IntInput) PrivateDnsZoneConfigResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateDnsZoneConfigResponse {
-		return vs[0].([]PrivateDnsZoneConfigResponse)[vs[1].(int)]
-	}).(PrivateDnsZoneConfigResponseOutput)
-}
 
 // PrivateEndpointConnection resource.
 type PrivateEndpointConnectionResponse struct {
@@ -1256,10 +502,330 @@ func (o PrivateEndpointResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndp
 	}).(PrivateEndpointResponseOutput)
 }
 
+// Private endpoint resource.
+type PrivateEndpointResponseV1 struct {
+	// Application security groups in which the private endpoint IP configuration is included.
+	ApplicationSecurityGroups []ApplicationSecurityGroupResponse `pulumi:"applicationSecurityGroups"`
+	// An array of custom dns configurations.
+	CustomDnsConfigs []CustomDnsConfigPropertiesFormatResponse `pulumi:"customDnsConfigs"`
+	// The custom name of the network interface attached to the private endpoint.
+	CustomNetworkInterfaceName *string `pulumi:"customNetworkInterfaceName"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// The extended location of the load balancer.
+	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// A list of IP configurations of the private endpoint. This will be used to map to the First Party Service's endpoints.
+	IpConfigurations []PrivateEndpointIPConfigurationResponse `pulumi:"ipConfigurations"`
+	// Specifies the IP version type for the private IPs of the private endpoint. If not defined, this defaults to IPv4.
+	IpVersionType *string `pulumi:"ipVersionType"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// A grouping of information about the connection to the remote resource. Used when the network admin does not have access to approve connections to the remote resource.
+	ManualPrivateLinkServiceConnections []PrivateLinkServiceConnectionResponse `pulumi:"manualPrivateLinkServiceConnections"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// An array of references to the network interfaces created for this private endpoint.
+	NetworkInterfaces []NetworkInterfaceResponse `pulumi:"networkInterfaces"`
+	// A grouping of information about the connection to the remote resource.
+	PrivateLinkServiceConnections []PrivateLinkServiceConnectionResponse `pulumi:"privateLinkServiceConnections"`
+	// The provisioning state of the private endpoint resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The ID of the subnet from which the private IP will be allocated.
+	Subnet *SubnetResponse `pulumi:"subnet"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for PrivateEndpointResponseV1
+func (val *PrivateEndpointResponseV1) Defaults() *PrivateEndpointResponseV1 {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IpVersionType == nil {
+		ipVersionType_ := "IPv4"
+		tmp.IpVersionType = &ipVersionType_
+	}
+	tmp.Subnet = tmp.Subnet.Defaults()
+
+	return &tmp
+}
+
+// Private endpoint resource.
+type PrivateEndpointResponseV1Output struct{ *pulumi.OutputState }
+
+func (PrivateEndpointResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointResponseV1)(nil)).Elem()
+}
+
+func (o PrivateEndpointResponseV1Output) ToPrivateEndpointResponseV1Output() PrivateEndpointResponseV1Output {
+	return o
+}
+
+func (o PrivateEndpointResponseV1Output) ToPrivateEndpointResponseV1OutputWithContext(ctx context.Context) PrivateEndpointResponseV1Output {
+	return o
+}
+
+// Application security groups in which the private endpoint IP configuration is included.
+func (o PrivateEndpointResponseV1Output) ApplicationSecurityGroups() ApplicationSecurityGroupResponseArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV1) []ApplicationSecurityGroupResponse {
+		return v.ApplicationSecurityGroups
+	}).(ApplicationSecurityGroupResponseArrayOutput)
+}
+
+// An array of custom dns configurations.
+func (o PrivateEndpointResponseV1Output) CustomDnsConfigs() CustomDnsConfigPropertiesFormatResponseArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV1) []CustomDnsConfigPropertiesFormatResponse { return v.CustomDnsConfigs }).(CustomDnsConfigPropertiesFormatResponseArrayOutput)
+}
+
+// The custom name of the network interface attached to the private endpoint.
+func (o PrivateEndpointResponseV1Output) CustomNetworkInterfaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV1) *string { return v.CustomNetworkInterfaceName }).(pulumi.StringPtrOutput)
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o PrivateEndpointResponseV1Output) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV1) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The extended location of the load balancer.
+func (o PrivateEndpointResponseV1Output) ExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV1) *ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
+}
+
+// Resource ID.
+func (o PrivateEndpointResponseV1Output) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV1) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// A list of IP configurations of the private endpoint. This will be used to map to the First Party Service's endpoints.
+func (o PrivateEndpointResponseV1Output) IpConfigurations() PrivateEndpointIPConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV1) []PrivateEndpointIPConfigurationResponse { return v.IpConfigurations }).(PrivateEndpointIPConfigurationResponseArrayOutput)
+}
+
+// Specifies the IP version type for the private IPs of the private endpoint. If not defined, this defaults to IPv4.
+func (o PrivateEndpointResponseV1Output) IpVersionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV1) *string { return v.IpVersionType }).(pulumi.StringPtrOutput)
+}
+
+// Resource location.
+func (o PrivateEndpointResponseV1Output) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV1) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// A grouping of information about the connection to the remote resource. Used when the network admin does not have access to approve connections to the remote resource.
+func (o PrivateEndpointResponseV1Output) ManualPrivateLinkServiceConnections() PrivateLinkServiceConnectionResponseArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV1) []PrivateLinkServiceConnectionResponse {
+		return v.ManualPrivateLinkServiceConnections
+	}).(PrivateLinkServiceConnectionResponseArrayOutput)
+}
+
+// Resource name.
+func (o PrivateEndpointResponseV1Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV1) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// An array of references to the network interfaces created for this private endpoint.
+func (o PrivateEndpointResponseV1Output) NetworkInterfaces() NetworkInterfaceResponseArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV1) []NetworkInterfaceResponse { return v.NetworkInterfaces }).(NetworkInterfaceResponseArrayOutput)
+}
+
+// A grouping of information about the connection to the remote resource.
+func (o PrivateEndpointResponseV1Output) PrivateLinkServiceConnections() PrivateLinkServiceConnectionResponseArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV1) []PrivateLinkServiceConnectionResponse {
+		return v.PrivateLinkServiceConnections
+	}).(PrivateLinkServiceConnectionResponseArrayOutput)
+}
+
+// The provisioning state of the private endpoint resource.
+func (o PrivateEndpointResponseV1Output) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV1) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The ID of the subnet from which the private IP will be allocated.
+func (o PrivateEndpointResponseV1Output) Subnet() SubnetResponsePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV1) *SubnetResponse { return v.Subnet }).(SubnetResponsePtrOutput)
+}
+
+// Resource tags.
+func (o PrivateEndpointResponseV1Output) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV1) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Resource type.
+func (o PrivateEndpointResponseV1Output) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV1) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Private endpoint resource.
+type PrivateEndpointResponseV2 struct {
+	// Application security groups in which the private endpoint IP configuration is included.
+	ApplicationSecurityGroups []ApplicationSecurityGroupResponse `pulumi:"applicationSecurityGroups"`
+	// An array of custom dns configurations.
+	CustomDnsConfigs []CustomDnsConfigPropertiesFormatResponse `pulumi:"customDnsConfigs"`
+	// The custom name of the network interface attached to the private endpoint.
+	CustomNetworkInterfaceName *string `pulumi:"customNetworkInterfaceName"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// The extended location of the load balancer.
+	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// A list of IP configurations of the private endpoint. This will be used to map to the First Party Service's endpoints.
+	IpConfigurations []PrivateEndpointIPConfigurationResponse `pulumi:"ipConfigurations"`
+	// Specifies the IP version type for the private IPs of the private endpoint. If not defined, this defaults to IPv4.
+	IpVersionType *string `pulumi:"ipVersionType"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// A grouping of information about the connection to the remote resource. Used when the network admin does not have access to approve connections to the remote resource.
+	ManualPrivateLinkServiceConnections []PrivateLinkServiceConnectionResponse `pulumi:"manualPrivateLinkServiceConnections"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// An array of references to the network interfaces created for this private endpoint.
+	NetworkInterfaces []NetworkInterfaceResponse `pulumi:"networkInterfaces"`
+	// A grouping of information about the connection to the remote resource.
+	PrivateLinkServiceConnections []PrivateLinkServiceConnectionResponse `pulumi:"privateLinkServiceConnections"`
+	// The provisioning state of the private endpoint resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The ID of the subnet from which the private IP will be allocated.
+	Subnet *SubnetResponse `pulumi:"subnet"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for PrivateEndpointResponseV2
+func (val *PrivateEndpointResponseV2) Defaults() *PrivateEndpointResponseV2 {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.IpVersionType == nil {
+		ipVersionType_ := "IPv4"
+		tmp.IpVersionType = &ipVersionType_
+	}
+	tmp.Subnet = tmp.Subnet.Defaults()
+
+	return &tmp
+}
+
+// Private endpoint resource.
+type PrivateEndpointResponseV2Output struct{ *pulumi.OutputState }
+
+func (PrivateEndpointResponseV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointResponseV2)(nil)).Elem()
+}
+
+func (o PrivateEndpointResponseV2Output) ToPrivateEndpointResponseV2Output() PrivateEndpointResponseV2Output {
+	return o
+}
+
+func (o PrivateEndpointResponseV2Output) ToPrivateEndpointResponseV2OutputWithContext(ctx context.Context) PrivateEndpointResponseV2Output {
+	return o
+}
+
+// Application security groups in which the private endpoint IP configuration is included.
+func (o PrivateEndpointResponseV2Output) ApplicationSecurityGroups() ApplicationSecurityGroupResponseArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV2) []ApplicationSecurityGroupResponse {
+		return v.ApplicationSecurityGroups
+	}).(ApplicationSecurityGroupResponseArrayOutput)
+}
+
+// An array of custom dns configurations.
+func (o PrivateEndpointResponseV2Output) CustomDnsConfigs() CustomDnsConfigPropertiesFormatResponseArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV2) []CustomDnsConfigPropertiesFormatResponse { return v.CustomDnsConfigs }).(CustomDnsConfigPropertiesFormatResponseArrayOutput)
+}
+
+// The custom name of the network interface attached to the private endpoint.
+func (o PrivateEndpointResponseV2Output) CustomNetworkInterfaceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV2) *string { return v.CustomNetworkInterfaceName }).(pulumi.StringPtrOutput)
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o PrivateEndpointResponseV2Output) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV2) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The extended location of the load balancer.
+func (o PrivateEndpointResponseV2Output) ExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV2) *ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
+}
+
+// Resource ID.
+func (o PrivateEndpointResponseV2Output) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV2) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// A list of IP configurations of the private endpoint. This will be used to map to the First Party Service's endpoints.
+func (o PrivateEndpointResponseV2Output) IpConfigurations() PrivateEndpointIPConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV2) []PrivateEndpointIPConfigurationResponse { return v.IpConfigurations }).(PrivateEndpointIPConfigurationResponseArrayOutput)
+}
+
+// Specifies the IP version type for the private IPs of the private endpoint. If not defined, this defaults to IPv4.
+func (o PrivateEndpointResponseV2Output) IpVersionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV2) *string { return v.IpVersionType }).(pulumi.StringPtrOutput)
+}
+
+// Resource location.
+func (o PrivateEndpointResponseV2Output) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV2) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// A grouping of information about the connection to the remote resource. Used when the network admin does not have access to approve connections to the remote resource.
+func (o PrivateEndpointResponseV2Output) ManualPrivateLinkServiceConnections() PrivateLinkServiceConnectionResponseArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV2) []PrivateLinkServiceConnectionResponse {
+		return v.ManualPrivateLinkServiceConnections
+	}).(PrivateLinkServiceConnectionResponseArrayOutput)
+}
+
+// Resource name.
+func (o PrivateEndpointResponseV2Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV2) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// An array of references to the network interfaces created for this private endpoint.
+func (o PrivateEndpointResponseV2Output) NetworkInterfaces() NetworkInterfaceResponseArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV2) []NetworkInterfaceResponse { return v.NetworkInterfaces }).(NetworkInterfaceResponseArrayOutput)
+}
+
+// A grouping of information about the connection to the remote resource.
+func (o PrivateEndpointResponseV2Output) PrivateLinkServiceConnections() PrivateLinkServiceConnectionResponseArrayOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV2) []PrivateLinkServiceConnectionResponse {
+		return v.PrivateLinkServiceConnections
+	}).(PrivateLinkServiceConnectionResponseArrayOutput)
+}
+
+// The provisioning state of the private endpoint resource.
+func (o PrivateEndpointResponseV2Output) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV2) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The ID of the subnet from which the private IP will be allocated.
+func (o PrivateEndpointResponseV2Output) Subnet() SubnetResponsePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV2) *SubnetResponse { return v.Subnet }).(SubnetResponsePtrOutput)
+}
+
+// Resource tags.
+func (o PrivateEndpointResponseV2Output) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV2) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Resource type.
+func (o PrivateEndpointResponseV2Output) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointResponseV2) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // Private link service resource.
 type PrivateLinkServiceType struct {
 	// The auto-approval list of the private link service.
 	AutoApproval *PrivateLinkServicePropertiesAutoApproval `pulumi:"autoApproval"`
+	// The destination IP address of the private link service.
+	DestinationIPAddress *string `pulumi:"destinationIPAddress"`
 	// Whether the private link service is enabled for proxy protocol or not.
 	EnableProxyProtocol *bool `pulumi:"enableProxyProtocol"`
 	// The extended location of the load balancer.
@@ -1295,6 +861,8 @@ type PrivateLinkServiceTypeInput interface {
 type PrivateLinkServiceTypeArgs struct {
 	// The auto-approval list of the private link service.
 	AutoApproval PrivateLinkServicePropertiesAutoApprovalPtrInput `pulumi:"autoApproval"`
+	// The destination IP address of the private link service.
+	DestinationIPAddress pulumi.StringPtrInput `pulumi:"destinationIPAddress"`
 	// Whether the private link service is enabled for proxy protocol or not.
 	EnableProxyProtocol pulumi.BoolPtrInput `pulumi:"enableProxyProtocol"`
 	// The extended location of the load balancer.
@@ -1398,6 +966,11 @@ func (o PrivateLinkServiceTypeOutput) AutoApproval() PrivateLinkServicePropertie
 	return o.ApplyT(func(v PrivateLinkServiceType) *PrivateLinkServicePropertiesAutoApproval { return v.AutoApproval }).(PrivateLinkServicePropertiesAutoApprovalPtrOutput)
 }
 
+// The destination IP address of the private link service.
+func (o PrivateLinkServiceTypeOutput) DestinationIPAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceType) *string { return v.DestinationIPAddress }).(pulumi.StringPtrOutput)
+}
+
 // Whether the private link service is enabled for proxy protocol or not.
 func (o PrivateLinkServiceTypeOutput) EnableProxyProtocol() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PrivateLinkServiceType) *bool { return v.EnableProxyProtocol }).(pulumi.BoolPtrOutput)
@@ -1477,6 +1050,16 @@ func (o PrivateLinkServiceTypePtrOutput) AutoApproval() PrivateLinkServiceProper
 		}
 		return v.AutoApproval
 	}).(PrivateLinkServicePropertiesAutoApprovalPtrOutput)
+}
+
+// The destination IP address of the private link service.
+func (o PrivateLinkServiceTypePtrOutput) DestinationIPAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationIPAddress
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether the private link service is enabled for proxy protocol or not.
@@ -2792,6 +2375,8 @@ type PrivateLinkServiceResponse struct {
 	Alias string `pulumi:"alias"`
 	// The auto-approval list of the private link service.
 	AutoApproval *PrivateLinkServicePropertiesResponseAutoApproval `pulumi:"autoApproval"`
+	// The destination IP address of the private link service.
+	DestinationIPAddress *string `pulumi:"destinationIPAddress"`
 	// Whether the private link service is enabled for proxy protocol or not.
 	EnableProxyProtocol *bool `pulumi:"enableProxyProtocol"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -2849,6 +2434,11 @@ func (o PrivateLinkServiceResponseOutput) AutoApproval() PrivateLinkServicePrope
 	return o.ApplyT(func(v PrivateLinkServiceResponse) *PrivateLinkServicePropertiesResponseAutoApproval {
 		return v.AutoApproval
 	}).(PrivateLinkServicePropertiesResponseAutoApprovalPtrOutput)
+}
+
+// The destination IP address of the private link service.
+func (o PrivateLinkServiceResponseOutput) DestinationIPAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponse) *string { return v.DestinationIPAddress }).(pulumi.StringPtrOutput)
 }
 
 // Whether the private link service is enabled for proxy protocol or not.
@@ -2976,6 +2566,16 @@ func (o PrivateLinkServiceResponsePtrOutput) AutoApproval() PrivateLinkServicePr
 		}
 		return v.AutoApproval
 	}).(PrivateLinkServicePropertiesResponseAutoApprovalPtrOutput)
+}
+
+// The destination IP address of the private link service.
+func (o PrivateLinkServiceResponsePtrOutput) DestinationIPAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationIPAddress
+	}).(pulumi.StringPtrOutput)
 }
 
 // Whether the private link service is enabled for proxy protocol or not.
@@ -3128,6 +2728,758 @@ func (o PrivateLinkServiceResponsePtrOutput) Visibility() PrivateLinkServiceProp
 	}).(PrivateLinkServicePropertiesResponseVisibilityPtrOutput)
 }
 
+// Private link service resource.
+type PrivateLinkServiceResponseV1 struct {
+	// The access mode of the private link service.
+	AccessMode *string `pulumi:"accessMode"`
+	// The alias of the private link service.
+	Alias string `pulumi:"alias"`
+	// The auto-approval list of the private link service.
+	AutoApproval *PrivateLinkServicePropertiesResponseAutoApproval `pulumi:"autoApproval"`
+	// The destination IP address of the private link service.
+	DestinationIPAddress *string `pulumi:"destinationIPAddress"`
+	// Whether the private link service is enabled for proxy protocol or not.
+	EnableProxyProtocol *bool `pulumi:"enableProxyProtocol"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// The extended location of the load balancer.
+	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
+	// The list of Fqdn.
+	Fqdns []string `pulumi:"fqdns"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// An array of private link service IP configurations.
+	IpConfigurations []PrivateLinkServiceIpConfigurationResponse `pulumi:"ipConfigurations"`
+	// An array of references to the load balancer IP configurations.
+	LoadBalancerFrontendIpConfigurations []FrontendIPConfigurationResponse `pulumi:"loadBalancerFrontendIpConfigurations"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// An array of references to the network interfaces created for this private link service.
+	NetworkInterfaces []NetworkInterfaceResponse `pulumi:"networkInterfaces"`
+	// An array of list about connections to the private endpoint.
+	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
+	// The provisioning state of the private link service resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
+	// The visibility list of the private link service.
+	Visibility *PrivateLinkServicePropertiesResponseVisibility `pulumi:"visibility"`
+}
+
+// Private link service resource.
+type PrivateLinkServiceResponseV1Output struct{ *pulumi.OutputState }
+
+func (PrivateLinkServiceResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateLinkServiceResponseV1)(nil)).Elem()
+}
+
+func (o PrivateLinkServiceResponseV1Output) ToPrivateLinkServiceResponseV1Output() PrivateLinkServiceResponseV1Output {
+	return o
+}
+
+func (o PrivateLinkServiceResponseV1Output) ToPrivateLinkServiceResponseV1OutputWithContext(ctx context.Context) PrivateLinkServiceResponseV1Output {
+	return o
+}
+
+// The access mode of the private link service.
+func (o PrivateLinkServiceResponseV1Output) AccessMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV1) *string { return v.AccessMode }).(pulumi.StringPtrOutput)
+}
+
+// The alias of the private link service.
+func (o PrivateLinkServiceResponseV1Output) Alias() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV1) string { return v.Alias }).(pulumi.StringOutput)
+}
+
+// The auto-approval list of the private link service.
+func (o PrivateLinkServiceResponseV1Output) AutoApproval() PrivateLinkServicePropertiesResponseAutoApprovalPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV1) *PrivateLinkServicePropertiesResponseAutoApproval {
+		return v.AutoApproval
+	}).(PrivateLinkServicePropertiesResponseAutoApprovalPtrOutput)
+}
+
+// The destination IP address of the private link service.
+func (o PrivateLinkServiceResponseV1Output) DestinationIPAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV1) *string { return v.DestinationIPAddress }).(pulumi.StringPtrOutput)
+}
+
+// Whether the private link service is enabled for proxy protocol or not.
+func (o PrivateLinkServiceResponseV1Output) EnableProxyProtocol() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV1) *bool { return v.EnableProxyProtocol }).(pulumi.BoolPtrOutput)
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o PrivateLinkServiceResponseV1Output) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV1) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The extended location of the load balancer.
+func (o PrivateLinkServiceResponseV1Output) ExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV1) *ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
+}
+
+// The list of Fqdn.
+func (o PrivateLinkServiceResponseV1Output) Fqdns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV1) []string { return v.Fqdns }).(pulumi.StringArrayOutput)
+}
+
+// Resource ID.
+func (o PrivateLinkServiceResponseV1Output) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV1) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// An array of private link service IP configurations.
+func (o PrivateLinkServiceResponseV1Output) IpConfigurations() PrivateLinkServiceIpConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV1) []PrivateLinkServiceIpConfigurationResponse {
+		return v.IpConfigurations
+	}).(PrivateLinkServiceIpConfigurationResponseArrayOutput)
+}
+
+// An array of references to the load balancer IP configurations.
+func (o PrivateLinkServiceResponseV1Output) LoadBalancerFrontendIpConfigurations() FrontendIPConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV1) []FrontendIPConfigurationResponse {
+		return v.LoadBalancerFrontendIpConfigurations
+	}).(FrontendIPConfigurationResponseArrayOutput)
+}
+
+// Resource location.
+func (o PrivateLinkServiceResponseV1Output) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV1) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Resource name.
+func (o PrivateLinkServiceResponseV1Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV1) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// An array of references to the network interfaces created for this private link service.
+func (o PrivateLinkServiceResponseV1Output) NetworkInterfaces() NetworkInterfaceResponseArrayOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV1) []NetworkInterfaceResponse { return v.NetworkInterfaces }).(NetworkInterfaceResponseArrayOutput)
+}
+
+// An array of list about connections to the private endpoint.
+func (o PrivateLinkServiceResponseV1Output) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV1) []PrivateEndpointConnectionResponse {
+		return v.PrivateEndpointConnections
+	}).(PrivateEndpointConnectionResponseArrayOutput)
+}
+
+// The provisioning state of the private link service resource.
+func (o PrivateLinkServiceResponseV1Output) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV1) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Resource tags.
+func (o PrivateLinkServiceResponseV1Output) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV1) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Resource type.
+func (o PrivateLinkServiceResponseV1Output) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV1) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The visibility list of the private link service.
+func (o PrivateLinkServiceResponseV1Output) Visibility() PrivateLinkServicePropertiesResponseVisibilityPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV1) *PrivateLinkServicePropertiesResponseVisibility {
+		return v.Visibility
+	}).(PrivateLinkServicePropertiesResponseVisibilityPtrOutput)
+}
+
+type PrivateLinkServiceResponseV1PtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkServiceResponseV1PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateLinkServiceResponseV1)(nil)).Elem()
+}
+
+func (o PrivateLinkServiceResponseV1PtrOutput) ToPrivateLinkServiceResponseV1PtrOutput() PrivateLinkServiceResponseV1PtrOutput {
+	return o
+}
+
+func (o PrivateLinkServiceResponseV1PtrOutput) ToPrivateLinkServiceResponseV1PtrOutputWithContext(ctx context.Context) PrivateLinkServiceResponseV1PtrOutput {
+	return o
+}
+
+func (o PrivateLinkServiceResponseV1PtrOutput) Elem() PrivateLinkServiceResponseV1Output {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV1) PrivateLinkServiceResponseV1 {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateLinkServiceResponseV1
+		return ret
+	}).(PrivateLinkServiceResponseV1Output)
+}
+
+// The access mode of the private link service.
+func (o PrivateLinkServiceResponseV1PtrOutput) AccessMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The alias of the private link service.
+func (o PrivateLinkServiceResponseV1PtrOutput) Alias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Alias
+	}).(pulumi.StringPtrOutput)
+}
+
+// The auto-approval list of the private link service.
+func (o PrivateLinkServiceResponseV1PtrOutput) AutoApproval() PrivateLinkServicePropertiesResponseAutoApprovalPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV1) *PrivateLinkServicePropertiesResponseAutoApproval {
+		if v == nil {
+			return nil
+		}
+		return v.AutoApproval
+	}).(PrivateLinkServicePropertiesResponseAutoApprovalPtrOutput)
+}
+
+// The destination IP address of the private link service.
+func (o PrivateLinkServiceResponseV1PtrOutput) DestinationIPAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationIPAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the private link service is enabled for proxy protocol or not.
+func (o PrivateLinkServiceResponseV1PtrOutput) EnableProxyProtocol() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV1) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableProxyProtocol
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o PrivateLinkServiceResponseV1PtrOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Etag
+	}).(pulumi.StringPtrOutput)
+}
+
+// The extended location of the load balancer.
+func (o PrivateLinkServiceResponseV1PtrOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV1) *ExtendedLocationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ExtendedLocation
+	}).(ExtendedLocationResponsePtrOutput)
+}
+
+// The list of Fqdn.
+func (o PrivateLinkServiceResponseV1PtrOutput) Fqdns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV1) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Fqdns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Resource ID.
+func (o PrivateLinkServiceResponseV1PtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// An array of private link service IP configurations.
+func (o PrivateLinkServiceResponseV1PtrOutput) IpConfigurations() PrivateLinkServiceIpConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV1) []PrivateLinkServiceIpConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.IpConfigurations
+	}).(PrivateLinkServiceIpConfigurationResponseArrayOutput)
+}
+
+// An array of references to the load balancer IP configurations.
+func (o PrivateLinkServiceResponseV1PtrOutput) LoadBalancerFrontendIpConfigurations() FrontendIPConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV1) []FrontendIPConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancerFrontendIpConfigurations
+	}).(FrontendIPConfigurationResponseArrayOutput)
+}
+
+// Resource location.
+func (o PrivateLinkServiceResponseV1PtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource name.
+func (o PrivateLinkServiceResponseV1PtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// An array of references to the network interfaces created for this private link service.
+func (o PrivateLinkServiceResponseV1PtrOutput) NetworkInterfaces() NetworkInterfaceResponseArrayOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV1) []NetworkInterfaceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkInterfaces
+	}).(NetworkInterfaceResponseArrayOutput)
+}
+
+// An array of list about connections to the private endpoint.
+func (o PrivateLinkServiceResponseV1PtrOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV1) []PrivateEndpointConnectionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateEndpointConnections
+	}).(PrivateEndpointConnectionResponseArrayOutput)
+}
+
+// The provisioning state of the private link service resource.
+func (o PrivateLinkServiceResponseV1PtrOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProvisioningState
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource tags.
+func (o PrivateLinkServiceResponseV1PtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV1) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Resource type.
+func (o PrivateLinkServiceResponseV1PtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The visibility list of the private link service.
+func (o PrivateLinkServiceResponseV1PtrOutput) Visibility() PrivateLinkServicePropertiesResponseVisibilityPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV1) *PrivateLinkServicePropertiesResponseVisibility {
+		if v == nil {
+			return nil
+		}
+		return v.Visibility
+	}).(PrivateLinkServicePropertiesResponseVisibilityPtrOutput)
+}
+
+// Private link service resource.
+type PrivateLinkServiceResponseV2 struct {
+	// The access mode of the private link service.
+	AccessMode *string `pulumi:"accessMode"`
+	// The alias of the private link service.
+	Alias string `pulumi:"alias"`
+	// The auto-approval list of the private link service.
+	AutoApproval *PrivateLinkServicePropertiesResponseAutoApproval `pulumi:"autoApproval"`
+	// The destination IP address of the private link service.
+	DestinationIPAddress *string `pulumi:"destinationIPAddress"`
+	// Whether the private link service is enabled for proxy protocol or not.
+	EnableProxyProtocol *bool `pulumi:"enableProxyProtocol"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// The extended location of the load balancer.
+	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
+	// The list of Fqdn.
+	Fqdns []string `pulumi:"fqdns"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// An array of private link service IP configurations.
+	IpConfigurations []PrivateLinkServiceIpConfigurationResponse `pulumi:"ipConfigurations"`
+	// An array of references to the load balancer IP configurations.
+	LoadBalancerFrontendIpConfigurations []FrontendIPConfigurationResponse `pulumi:"loadBalancerFrontendIpConfigurations"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// An array of references to the network interfaces created for this private link service.
+	NetworkInterfaces []NetworkInterfaceResponse `pulumi:"networkInterfaces"`
+	// An array of list about connections to the private endpoint.
+	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
+	// The provisioning state of the private link service resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
+	// The visibility list of the private link service.
+	Visibility *PrivateLinkServicePropertiesResponseVisibility `pulumi:"visibility"`
+}
+
+// Private link service resource.
+type PrivateLinkServiceResponseV2Output struct{ *pulumi.OutputState }
+
+func (PrivateLinkServiceResponseV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateLinkServiceResponseV2)(nil)).Elem()
+}
+
+func (o PrivateLinkServiceResponseV2Output) ToPrivateLinkServiceResponseV2Output() PrivateLinkServiceResponseV2Output {
+	return o
+}
+
+func (o PrivateLinkServiceResponseV2Output) ToPrivateLinkServiceResponseV2OutputWithContext(ctx context.Context) PrivateLinkServiceResponseV2Output {
+	return o
+}
+
+// The access mode of the private link service.
+func (o PrivateLinkServiceResponseV2Output) AccessMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV2) *string { return v.AccessMode }).(pulumi.StringPtrOutput)
+}
+
+// The alias of the private link service.
+func (o PrivateLinkServiceResponseV2Output) Alias() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV2) string { return v.Alias }).(pulumi.StringOutput)
+}
+
+// The auto-approval list of the private link service.
+func (o PrivateLinkServiceResponseV2Output) AutoApproval() PrivateLinkServicePropertiesResponseAutoApprovalPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV2) *PrivateLinkServicePropertiesResponseAutoApproval {
+		return v.AutoApproval
+	}).(PrivateLinkServicePropertiesResponseAutoApprovalPtrOutput)
+}
+
+// The destination IP address of the private link service.
+func (o PrivateLinkServiceResponseV2Output) DestinationIPAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV2) *string { return v.DestinationIPAddress }).(pulumi.StringPtrOutput)
+}
+
+// Whether the private link service is enabled for proxy protocol or not.
+func (o PrivateLinkServiceResponseV2Output) EnableProxyProtocol() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV2) *bool { return v.EnableProxyProtocol }).(pulumi.BoolPtrOutput)
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o PrivateLinkServiceResponseV2Output) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV2) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The extended location of the load balancer.
+func (o PrivateLinkServiceResponseV2Output) ExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV2) *ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
+}
+
+// The list of Fqdn.
+func (o PrivateLinkServiceResponseV2Output) Fqdns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV2) []string { return v.Fqdns }).(pulumi.StringArrayOutput)
+}
+
+// Resource ID.
+func (o PrivateLinkServiceResponseV2Output) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV2) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// An array of private link service IP configurations.
+func (o PrivateLinkServiceResponseV2Output) IpConfigurations() PrivateLinkServiceIpConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV2) []PrivateLinkServiceIpConfigurationResponse {
+		return v.IpConfigurations
+	}).(PrivateLinkServiceIpConfigurationResponseArrayOutput)
+}
+
+// An array of references to the load balancer IP configurations.
+func (o PrivateLinkServiceResponseV2Output) LoadBalancerFrontendIpConfigurations() FrontendIPConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV2) []FrontendIPConfigurationResponse {
+		return v.LoadBalancerFrontendIpConfigurations
+	}).(FrontendIPConfigurationResponseArrayOutput)
+}
+
+// Resource location.
+func (o PrivateLinkServiceResponseV2Output) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV2) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Resource name.
+func (o PrivateLinkServiceResponseV2Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV2) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// An array of references to the network interfaces created for this private link service.
+func (o PrivateLinkServiceResponseV2Output) NetworkInterfaces() NetworkInterfaceResponseArrayOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV2) []NetworkInterfaceResponse { return v.NetworkInterfaces }).(NetworkInterfaceResponseArrayOutput)
+}
+
+// An array of list about connections to the private endpoint.
+func (o PrivateLinkServiceResponseV2Output) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV2) []PrivateEndpointConnectionResponse {
+		return v.PrivateEndpointConnections
+	}).(PrivateEndpointConnectionResponseArrayOutput)
+}
+
+// The provisioning state of the private link service resource.
+func (o PrivateLinkServiceResponseV2Output) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV2) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Resource tags.
+func (o PrivateLinkServiceResponseV2Output) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV2) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Resource type.
+func (o PrivateLinkServiceResponseV2Output) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV2) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The visibility list of the private link service.
+func (o PrivateLinkServiceResponseV2Output) Visibility() PrivateLinkServicePropertiesResponseVisibilityPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceResponseV2) *PrivateLinkServicePropertiesResponseVisibility {
+		return v.Visibility
+	}).(PrivateLinkServicePropertiesResponseVisibilityPtrOutput)
+}
+
+type PrivateLinkServiceResponseV2PtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkServiceResponseV2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateLinkServiceResponseV2)(nil)).Elem()
+}
+
+func (o PrivateLinkServiceResponseV2PtrOutput) ToPrivateLinkServiceResponseV2PtrOutput() PrivateLinkServiceResponseV2PtrOutput {
+	return o
+}
+
+func (o PrivateLinkServiceResponseV2PtrOutput) ToPrivateLinkServiceResponseV2PtrOutputWithContext(ctx context.Context) PrivateLinkServiceResponseV2PtrOutput {
+	return o
+}
+
+func (o PrivateLinkServiceResponseV2PtrOutput) Elem() PrivateLinkServiceResponseV2Output {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV2) PrivateLinkServiceResponseV2 {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateLinkServiceResponseV2
+		return ret
+	}).(PrivateLinkServiceResponseV2Output)
+}
+
+// The access mode of the private link service.
+func (o PrivateLinkServiceResponseV2PtrOutput) AccessMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The alias of the private link service.
+func (o PrivateLinkServiceResponseV2PtrOutput) Alias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Alias
+	}).(pulumi.StringPtrOutput)
+}
+
+// The auto-approval list of the private link service.
+func (o PrivateLinkServiceResponseV2PtrOutput) AutoApproval() PrivateLinkServicePropertiesResponseAutoApprovalPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV2) *PrivateLinkServicePropertiesResponseAutoApproval {
+		if v == nil {
+			return nil
+		}
+		return v.AutoApproval
+	}).(PrivateLinkServicePropertiesResponseAutoApprovalPtrOutput)
+}
+
+// The destination IP address of the private link service.
+func (o PrivateLinkServiceResponseV2PtrOutput) DestinationIPAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationIPAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the private link service is enabled for proxy protocol or not.
+func (o PrivateLinkServiceResponseV2PtrOutput) EnableProxyProtocol() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV2) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableProxyProtocol
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o PrivateLinkServiceResponseV2PtrOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Etag
+	}).(pulumi.StringPtrOutput)
+}
+
+// The extended location of the load balancer.
+func (o PrivateLinkServiceResponseV2PtrOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV2) *ExtendedLocationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ExtendedLocation
+	}).(ExtendedLocationResponsePtrOutput)
+}
+
+// The list of Fqdn.
+func (o PrivateLinkServiceResponseV2PtrOutput) Fqdns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV2) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Fqdns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Resource ID.
+func (o PrivateLinkServiceResponseV2PtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// An array of private link service IP configurations.
+func (o PrivateLinkServiceResponseV2PtrOutput) IpConfigurations() PrivateLinkServiceIpConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV2) []PrivateLinkServiceIpConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.IpConfigurations
+	}).(PrivateLinkServiceIpConfigurationResponseArrayOutput)
+}
+
+// An array of references to the load balancer IP configurations.
+func (o PrivateLinkServiceResponseV2PtrOutput) LoadBalancerFrontendIpConfigurations() FrontendIPConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV2) []FrontendIPConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.LoadBalancerFrontendIpConfigurations
+	}).(FrontendIPConfigurationResponseArrayOutput)
+}
+
+// Resource location.
+func (o PrivateLinkServiceResponseV2PtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource name.
+func (o PrivateLinkServiceResponseV2PtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// An array of references to the network interfaces created for this private link service.
+func (o PrivateLinkServiceResponseV2PtrOutput) NetworkInterfaces() NetworkInterfaceResponseArrayOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV2) []NetworkInterfaceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkInterfaces
+	}).(NetworkInterfaceResponseArrayOutput)
+}
+
+// An array of list about connections to the private endpoint.
+func (o PrivateLinkServiceResponseV2PtrOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV2) []PrivateEndpointConnectionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateEndpointConnections
+	}).(PrivateEndpointConnectionResponseArrayOutput)
+}
+
+// The provisioning state of the private link service resource.
+func (o PrivateLinkServiceResponseV2PtrOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProvisioningState
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource tags.
+func (o PrivateLinkServiceResponseV2PtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV2) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Resource type.
+func (o PrivateLinkServiceResponseV2PtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The visibility list of the private link service.
+func (o PrivateLinkServiceResponseV2PtrOutput) Visibility() PrivateLinkServicePropertiesResponseVisibilityPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceResponseV2) *PrivateLinkServicePropertiesResponseVisibility {
+		if v == nil {
+			return nil
+		}
+		return v.Visibility
+	}).(PrivateLinkServicePropertiesResponseVisibilityPtrOutput)
+}
+
 // A load balancer probe.
 type Probe struct {
 	// Resource ID.
@@ -3136,6 +3488,8 @@ type Probe struct {
 	IntervalInSeconds *int `pulumi:"intervalInSeconds"`
 	// The name of the resource that is unique within the set of probes used by the load balancer. This name can be used to access the resource.
 	Name *string `pulumi:"name"`
+	// Determines how new connections are handled by the load balancer when all backend instances are probed down.
+	NoHealthyBackendsBehavior *string `pulumi:"noHealthyBackendsBehavior"`
 	// The number of probes where if no response, will result in stopping further traffic from being delivered to the endpoint. This values allows endpoints to be taken out of rotation faster or slower than the typical times used in Azure.
 	NumberOfProbes *int `pulumi:"numberOfProbes"`
 	// The port for communicating the probe. Possible values range from 1 to 65535, inclusive.
@@ -3167,6 +3521,8 @@ type ProbeArgs struct {
 	IntervalInSeconds pulumi.IntPtrInput `pulumi:"intervalInSeconds"`
 	// The name of the resource that is unique within the set of probes used by the load balancer. This name can be used to access the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Determines how new connections are handled by the load balancer when all backend instances are probed down.
+	NoHealthyBackendsBehavior pulumi.StringPtrInput `pulumi:"noHealthyBackendsBehavior"`
 	// The number of probes where if no response, will result in stopping further traffic from being delivered to the endpoint. This values allows endpoints to be taken out of rotation faster or slower than the typical times used in Azure.
 	NumberOfProbes pulumi.IntPtrInput `pulumi:"numberOfProbes"`
 	// The port for communicating the probe. Possible values range from 1 to 65535, inclusive.
@@ -3246,6 +3602,11 @@ func (o ProbeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Probe) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Determines how new connections are handled by the load balancer when all backend instances are probed down.
+func (o ProbeOutput) NoHealthyBackendsBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Probe) *string { return v.NoHealthyBackendsBehavior }).(pulumi.StringPtrOutput)
+}
+
 // The number of probes where if no response, will result in stopping further traffic from being delivered to the endpoint. This values allows endpoints to be taken out of rotation faster or slower than the typical times used in Azure.
 func (o ProbeOutput) NumberOfProbes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Probe) *int { return v.NumberOfProbes }).(pulumi.IntPtrOutput)
@@ -3303,6 +3664,8 @@ type ProbeResponse struct {
 	LoadBalancingRules []SubResourceResponse `pulumi:"loadBalancingRules"`
 	// The name of the resource that is unique within the set of probes used by the load balancer. This name can be used to access the resource.
 	Name *string `pulumi:"name"`
+	// Determines how new connections are handled by the load balancer when all backend instances are probed down.
+	NoHealthyBackendsBehavior *string `pulumi:"noHealthyBackendsBehavior"`
 	// The number of probes where if no response, will result in stopping further traffic from being delivered to the endpoint. This values allows endpoints to be taken out of rotation faster or slower than the typical times used in Azure.
 	NumberOfProbes *int `pulumi:"numberOfProbes"`
 	// The port for communicating the probe. Possible values range from 1 to 65535, inclusive.
@@ -3357,6 +3720,11 @@ func (o ProbeResponseOutput) LoadBalancingRules() SubResourceResponseArrayOutput
 // The name of the resource that is unique within the set of probes used by the load balancer. This name can be used to access the resource.
 func (o ProbeResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProbeResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Determines how new connections are handled by the load balancer when all backend instances are probed down.
+func (o ProbeResponseOutput) NoHealthyBackendsBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProbeResponse) *string { return v.NoHealthyBackendsBehavior }).(pulumi.StringPtrOutput)
 }
 
 // The number of probes where if no response, will result in stopping further traffic from being delivered to the endpoint. This values allows endpoints to be taken out of rotation faster or slower than the typical times used in Azure.
@@ -3648,152 +4016,6 @@ func (o PropagatedRouteTableResponsePtrOutput) Labels() pulumi.StringArrayOutput
 		}
 		return v.Labels
 	}).(pulumi.StringArrayOutput)
-}
-
-// A PTR record.
-type PtrRecord struct {
-	// The PTR target domain name for this PTR record.
-	Ptrdname *string `pulumi:"ptrdname"`
-}
-
-// PtrRecordInput is an input type that accepts PtrRecordArgs and PtrRecordOutput values.
-// You can construct a concrete instance of `PtrRecordInput` via:
-//
-//	PtrRecordArgs{...}
-type PtrRecordInput interface {
-	pulumi.Input
-
-	ToPtrRecordOutput() PtrRecordOutput
-	ToPtrRecordOutputWithContext(context.Context) PtrRecordOutput
-}
-
-// A PTR record.
-type PtrRecordArgs struct {
-	// The PTR target domain name for this PTR record.
-	Ptrdname pulumi.StringPtrInput `pulumi:"ptrdname"`
-}
-
-func (PtrRecordArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PtrRecord)(nil)).Elem()
-}
-
-func (i PtrRecordArgs) ToPtrRecordOutput() PtrRecordOutput {
-	return i.ToPtrRecordOutputWithContext(context.Background())
-}
-
-func (i PtrRecordArgs) ToPtrRecordOutputWithContext(ctx context.Context) PtrRecordOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PtrRecordOutput)
-}
-
-// PtrRecordArrayInput is an input type that accepts PtrRecordArray and PtrRecordArrayOutput values.
-// You can construct a concrete instance of `PtrRecordArrayInput` via:
-//
-//	PtrRecordArray{ PtrRecordArgs{...} }
-type PtrRecordArrayInput interface {
-	pulumi.Input
-
-	ToPtrRecordArrayOutput() PtrRecordArrayOutput
-	ToPtrRecordArrayOutputWithContext(context.Context) PtrRecordArrayOutput
-}
-
-type PtrRecordArray []PtrRecordInput
-
-func (PtrRecordArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PtrRecord)(nil)).Elem()
-}
-
-func (i PtrRecordArray) ToPtrRecordArrayOutput() PtrRecordArrayOutput {
-	return i.ToPtrRecordArrayOutputWithContext(context.Background())
-}
-
-func (i PtrRecordArray) ToPtrRecordArrayOutputWithContext(ctx context.Context) PtrRecordArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PtrRecordArrayOutput)
-}
-
-// A PTR record.
-type PtrRecordOutput struct{ *pulumi.OutputState }
-
-func (PtrRecordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PtrRecord)(nil)).Elem()
-}
-
-func (o PtrRecordOutput) ToPtrRecordOutput() PtrRecordOutput {
-	return o
-}
-
-func (o PtrRecordOutput) ToPtrRecordOutputWithContext(ctx context.Context) PtrRecordOutput {
-	return o
-}
-
-// The PTR target domain name for this PTR record.
-func (o PtrRecordOutput) Ptrdname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PtrRecord) *string { return v.Ptrdname }).(pulumi.StringPtrOutput)
-}
-
-type PtrRecordArrayOutput struct{ *pulumi.OutputState }
-
-func (PtrRecordArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PtrRecord)(nil)).Elem()
-}
-
-func (o PtrRecordArrayOutput) ToPtrRecordArrayOutput() PtrRecordArrayOutput {
-	return o
-}
-
-func (o PtrRecordArrayOutput) ToPtrRecordArrayOutputWithContext(ctx context.Context) PtrRecordArrayOutput {
-	return o
-}
-
-func (o PtrRecordArrayOutput) Index(i pulumi.IntInput) PtrRecordOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PtrRecord {
-		return vs[0].([]PtrRecord)[vs[1].(int)]
-	}).(PtrRecordOutput)
-}
-
-// A PTR record.
-type PtrRecordResponse struct {
-	// The PTR target domain name for this PTR record.
-	Ptrdname *string `pulumi:"ptrdname"`
-}
-
-// A PTR record.
-type PtrRecordResponseOutput struct{ *pulumi.OutputState }
-
-func (PtrRecordResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PtrRecordResponse)(nil)).Elem()
-}
-
-func (o PtrRecordResponseOutput) ToPtrRecordResponseOutput() PtrRecordResponseOutput {
-	return o
-}
-
-func (o PtrRecordResponseOutput) ToPtrRecordResponseOutputWithContext(ctx context.Context) PtrRecordResponseOutput {
-	return o
-}
-
-// The PTR target domain name for this PTR record.
-func (o PtrRecordResponseOutput) Ptrdname() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PtrRecordResponse) *string { return v.Ptrdname }).(pulumi.StringPtrOutput)
-}
-
-type PtrRecordResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (PtrRecordResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PtrRecordResponse)(nil)).Elem()
-}
-
-func (o PtrRecordResponseArrayOutput) ToPtrRecordResponseArrayOutput() PtrRecordResponseArrayOutput {
-	return o
-}
-
-func (o PtrRecordResponseArrayOutput) ToPtrRecordResponseArrayOutputWithContext(ctx context.Context) PtrRecordResponseArrayOutput {
-	return o
-}
-
-func (o PtrRecordResponseArrayOutput) Index(i pulumi.IntInput) PtrRecordResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PtrRecordResponse {
-		return vs[0].([]PtrRecordResponse)[vs[1].(int)]
-	}).(PtrRecordResponseOutput)
 }
 
 // Public IP address resource.
@@ -4588,6 +4810,100 @@ func (o PublicIPAddressDnsSettingsResponsePtrOutput) ReverseFqdn() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Contains FQDN of the DNS record associated with the public IP address
+type PublicIPAddressDnsSettingsResponseV1 struct {
+	// Gets or sets the Domain name label.The concatenation of the domain name label and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
+	DomainNameLabel *string `pulumi:"domainNameLabel"`
+	// Gets the FQDN, Fully qualified domain name of the A DNS record associated with the public IP. This is the concatenation of the domainNameLabel and the regionalized DNS zone.
+	Fqdn *string `pulumi:"fqdn"`
+	// Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
+	ReverseFqdn *string `pulumi:"reverseFqdn"`
+}
+
+// Contains FQDN of the DNS record associated with the public IP address
+type PublicIPAddressDnsSettingsResponseV1Output struct{ *pulumi.OutputState }
+
+func (PublicIPAddressDnsSettingsResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicIPAddressDnsSettingsResponseV1)(nil)).Elem()
+}
+
+func (o PublicIPAddressDnsSettingsResponseV1Output) ToPublicIPAddressDnsSettingsResponseV1Output() PublicIPAddressDnsSettingsResponseV1Output {
+	return o
+}
+
+func (o PublicIPAddressDnsSettingsResponseV1Output) ToPublicIPAddressDnsSettingsResponseV1OutputWithContext(ctx context.Context) PublicIPAddressDnsSettingsResponseV1Output {
+	return o
+}
+
+// Gets or sets the Domain name label.The concatenation of the domain name label and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
+func (o PublicIPAddressDnsSettingsResponseV1Output) DomainNameLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressDnsSettingsResponseV1) *string { return v.DomainNameLabel }).(pulumi.StringPtrOutput)
+}
+
+// Gets the FQDN, Fully qualified domain name of the A DNS record associated with the public IP. This is the concatenation of the domainNameLabel and the regionalized DNS zone.
+func (o PublicIPAddressDnsSettingsResponseV1Output) Fqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressDnsSettingsResponseV1) *string { return v.Fqdn }).(pulumi.StringPtrOutput)
+}
+
+// Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
+func (o PublicIPAddressDnsSettingsResponseV1Output) ReverseFqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressDnsSettingsResponseV1) *string { return v.ReverseFqdn }).(pulumi.StringPtrOutput)
+}
+
+type PublicIPAddressDnsSettingsResponseV1PtrOutput struct{ *pulumi.OutputState }
+
+func (PublicIPAddressDnsSettingsResponseV1PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicIPAddressDnsSettingsResponseV1)(nil)).Elem()
+}
+
+func (o PublicIPAddressDnsSettingsResponseV1PtrOutput) ToPublicIPAddressDnsSettingsResponseV1PtrOutput() PublicIPAddressDnsSettingsResponseV1PtrOutput {
+	return o
+}
+
+func (o PublicIPAddressDnsSettingsResponseV1PtrOutput) ToPublicIPAddressDnsSettingsResponseV1PtrOutputWithContext(ctx context.Context) PublicIPAddressDnsSettingsResponseV1PtrOutput {
+	return o
+}
+
+func (o PublicIPAddressDnsSettingsResponseV1PtrOutput) Elem() PublicIPAddressDnsSettingsResponseV1Output {
+	return o.ApplyT(func(v *PublicIPAddressDnsSettingsResponseV1) PublicIPAddressDnsSettingsResponseV1 {
+		if v != nil {
+			return *v
+		}
+		var ret PublicIPAddressDnsSettingsResponseV1
+		return ret
+	}).(PublicIPAddressDnsSettingsResponseV1Output)
+}
+
+// Gets or sets the Domain name label.The concatenation of the domain name label and the regionalized DNS zone make up the fully qualified domain name associated with the public IP address. If a domain name label is specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system.
+func (o PublicIPAddressDnsSettingsResponseV1PtrOutput) DomainNameLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressDnsSettingsResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DomainNameLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets the FQDN, Fully qualified domain name of the A DNS record associated with the public IP. This is the concatenation of the domainNameLabel and the regionalized DNS zone.
+func (o PublicIPAddressDnsSettingsResponseV1PtrOutput) Fqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressDnsSettingsResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Fqdn
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or Sets the Reverse FQDN. A user-visible, fully qualified domain name that resolves to this public IP address. If the reverseFqdn is specified, then a PTR DNS record is created pointing from the IP address in the in-addr.arpa domain to the reverse FQDN.
+func (o PublicIPAddressDnsSettingsResponseV1PtrOutput) ReverseFqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressDnsSettingsResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReverseFqdn
+	}).(pulumi.StringPtrOutput)
+}
+
 // Public IP address resource.
 type PublicIPAddressResponse struct {
 	// The DDoS protection custom policy associated with the public IP address.
@@ -5071,6 +5387,1349 @@ func (o PublicIPAddressResponsePtrOutput) Zones() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Public IP address resource.
+type PublicIPAddressResponseV1 struct {
+	// The DDoS protection custom policy associated with the public IP address.
+	DdosSettings *DdosSettingsResponseV1 `pulumi:"ddosSettings"`
+	// The FQDN of the DNS record associated with the public IP address.
+	DnsSettings *PublicIPAddressDnsSettingsResponseV1 `pulumi:"dnsSettings"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag *string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// The idle timeout of the public IP address.
+	IdleTimeoutInMinutes *int `pulumi:"idleTimeoutInMinutes"`
+	// The IP address associated with the public IP address resource.
+	IpAddress *string `pulumi:"ipAddress"`
+	// The IP configuration associated with the public IP address.
+	IpConfiguration IPConfigurationResponse `pulumi:"ipConfiguration"`
+	// The list of tags associated with the public IP address.
+	IpTags []IpTagResponse `pulumi:"ipTags"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The provisioning state of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+	ProvisioningState *string `pulumi:"provisioningState"`
+	// The public IP address version.
+	PublicIPAddressVersion *string `pulumi:"publicIPAddressVersion"`
+	// The public IP address allocation method.
+	PublicIPAllocationMethod *string `pulumi:"publicIPAllocationMethod"`
+	// The Public IP Prefix this Public IP Address should be allocated from.
+	PublicIPPrefix *SubResourceResponse `pulumi:"publicIPPrefix"`
+	// The resource GUID property of the public IP resource.
+	ResourceGuid *string `pulumi:"resourceGuid"`
+	// The public IP address SKU.
+	Sku *PublicIPAddressSkuResponseV1 `pulumi:"sku"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
+	// A list of availability zones denoting the IP allocated for the resource needs to come from.
+	Zones []string `pulumi:"zones"`
+}
+
+// Defaults sets the appropriate defaults for PublicIPAddressResponseV1
+func (val *PublicIPAddressResponseV1) Defaults() *PublicIPAddressResponseV1 {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.IpConfiguration = *tmp.IpConfiguration.Defaults()
+
+	return &tmp
+}
+
+// Public IP address resource.
+type PublicIPAddressResponseV1Output struct{ *pulumi.OutputState }
+
+func (PublicIPAddressResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicIPAddressResponseV1)(nil)).Elem()
+}
+
+func (o PublicIPAddressResponseV1Output) ToPublicIPAddressResponseV1Output() PublicIPAddressResponseV1Output {
+	return o
+}
+
+func (o PublicIPAddressResponseV1Output) ToPublicIPAddressResponseV1OutputWithContext(ctx context.Context) PublicIPAddressResponseV1Output {
+	return o
+}
+
+// The DDoS protection custom policy associated with the public IP address.
+func (o PublicIPAddressResponseV1Output) DdosSettings() DdosSettingsResponseV1PtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV1) *DdosSettingsResponseV1 { return v.DdosSettings }).(DdosSettingsResponseV1PtrOutput)
+}
+
+// The FQDN of the DNS record associated with the public IP address.
+func (o PublicIPAddressResponseV1Output) DnsSettings() PublicIPAddressDnsSettingsResponseV1PtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV1) *PublicIPAddressDnsSettingsResponseV1 { return v.DnsSettings }).(PublicIPAddressDnsSettingsResponseV1PtrOutput)
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o PublicIPAddressResponseV1Output) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV1) *string { return v.Etag }).(pulumi.StringPtrOutput)
+}
+
+// Resource ID.
+func (o PublicIPAddressResponseV1Output) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV1) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The idle timeout of the public IP address.
+func (o PublicIPAddressResponseV1Output) IdleTimeoutInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV1) *int { return v.IdleTimeoutInMinutes }).(pulumi.IntPtrOutput)
+}
+
+// The IP address associated with the public IP address resource.
+func (o PublicIPAddressResponseV1Output) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV1) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// The IP configuration associated with the public IP address.
+func (o PublicIPAddressResponseV1Output) IpConfiguration() IPConfigurationResponseOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV1) IPConfigurationResponse { return v.IpConfiguration }).(IPConfigurationResponseOutput)
+}
+
+// The list of tags associated with the public IP address.
+func (o PublicIPAddressResponseV1Output) IpTags() IpTagResponseArrayOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV1) []IpTagResponse { return v.IpTags }).(IpTagResponseArrayOutput)
+}
+
+// Resource location.
+func (o PublicIPAddressResponseV1Output) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV1) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Resource name.
+func (o PublicIPAddressResponseV1Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV1) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The provisioning state of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+func (o PublicIPAddressResponseV1Output) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV1) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+}
+
+// The public IP address version.
+func (o PublicIPAddressResponseV1Output) PublicIPAddressVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV1) *string { return v.PublicIPAddressVersion }).(pulumi.StringPtrOutput)
+}
+
+// The public IP address allocation method.
+func (o PublicIPAddressResponseV1Output) PublicIPAllocationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV1) *string { return v.PublicIPAllocationMethod }).(pulumi.StringPtrOutput)
+}
+
+// The Public IP Prefix this Public IP Address should be allocated from.
+func (o PublicIPAddressResponseV1Output) PublicIPPrefix() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV1) *SubResourceResponse { return v.PublicIPPrefix }).(SubResourceResponsePtrOutput)
+}
+
+// The resource GUID property of the public IP resource.
+func (o PublicIPAddressResponseV1Output) ResourceGuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV1) *string { return v.ResourceGuid }).(pulumi.StringPtrOutput)
+}
+
+// The public IP address SKU.
+func (o PublicIPAddressResponseV1Output) Sku() PublicIPAddressSkuResponseV1PtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV1) *PublicIPAddressSkuResponseV1 { return v.Sku }).(PublicIPAddressSkuResponseV1PtrOutput)
+}
+
+// Resource tags.
+func (o PublicIPAddressResponseV1Output) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV1) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Resource type.
+func (o PublicIPAddressResponseV1Output) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV1) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// A list of availability zones denoting the IP allocated for the resource needs to come from.
+func (o PublicIPAddressResponseV1Output) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV1) []string { return v.Zones }).(pulumi.StringArrayOutput)
+}
+
+type PublicIPAddressResponseV1PtrOutput struct{ *pulumi.OutputState }
+
+func (PublicIPAddressResponseV1PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicIPAddressResponseV1)(nil)).Elem()
+}
+
+func (o PublicIPAddressResponseV1PtrOutput) ToPublicIPAddressResponseV1PtrOutput() PublicIPAddressResponseV1PtrOutput {
+	return o
+}
+
+func (o PublicIPAddressResponseV1PtrOutput) ToPublicIPAddressResponseV1PtrOutputWithContext(ctx context.Context) PublicIPAddressResponseV1PtrOutput {
+	return o
+}
+
+func (o PublicIPAddressResponseV1PtrOutput) Elem() PublicIPAddressResponseV1Output {
+	return o.ApplyT(func(v *PublicIPAddressResponseV1) PublicIPAddressResponseV1 {
+		if v != nil {
+			return *v
+		}
+		var ret PublicIPAddressResponseV1
+		return ret
+	}).(PublicIPAddressResponseV1Output)
+}
+
+// The DDoS protection custom policy associated with the public IP address.
+func (o PublicIPAddressResponseV1PtrOutput) DdosSettings() DdosSettingsResponseV1PtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV1) *DdosSettingsResponseV1 {
+		if v == nil {
+			return nil
+		}
+		return v.DdosSettings
+	}).(DdosSettingsResponseV1PtrOutput)
+}
+
+// The FQDN of the DNS record associated with the public IP address.
+func (o PublicIPAddressResponseV1PtrOutput) DnsSettings() PublicIPAddressDnsSettingsResponseV1PtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV1) *PublicIPAddressDnsSettingsResponseV1 {
+		if v == nil {
+			return nil
+		}
+		return v.DnsSettings
+	}).(PublicIPAddressDnsSettingsResponseV1PtrOutput)
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o PublicIPAddressResponseV1PtrOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Etag
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource ID.
+func (o PublicIPAddressResponseV1PtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The idle timeout of the public IP address.
+func (o PublicIPAddressResponseV1PtrOutput) IdleTimeoutInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV1) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IdleTimeoutInMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// The IP address associated with the public IP address resource.
+func (o PublicIPAddressResponseV1PtrOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IP configuration associated with the public IP address.
+func (o PublicIPAddressResponseV1PtrOutput) IpConfiguration() IPConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV1) *IPConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.IpConfiguration
+	}).(IPConfigurationResponsePtrOutput)
+}
+
+// The list of tags associated with the public IP address.
+func (o PublicIPAddressResponseV1PtrOutput) IpTags() IpTagResponseArrayOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV1) []IpTagResponse {
+		if v == nil {
+			return nil
+		}
+		return v.IpTags
+	}).(IpTagResponseArrayOutput)
+}
+
+// Resource location.
+func (o PublicIPAddressResponseV1PtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource name.
+func (o PublicIPAddressResponseV1PtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The provisioning state of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+func (o PublicIPAddressResponseV1PtrOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisioningState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The public IP address version.
+func (o PublicIPAddressResponseV1PtrOutput) PublicIPAddressVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicIPAddressVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The public IP address allocation method.
+func (o PublicIPAddressResponseV1PtrOutput) PublicIPAllocationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicIPAllocationMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Public IP Prefix this Public IP Address should be allocated from.
+func (o PublicIPAddressResponseV1PtrOutput) PublicIPPrefix() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV1) *SubResourceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PublicIPPrefix
+	}).(SubResourceResponsePtrOutput)
+}
+
+// The resource GUID property of the public IP resource.
+func (o PublicIPAddressResponseV1PtrOutput) ResourceGuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceGuid
+	}).(pulumi.StringPtrOutput)
+}
+
+// The public IP address SKU.
+func (o PublicIPAddressResponseV1PtrOutput) Sku() PublicIPAddressSkuResponseV1PtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV1) *PublicIPAddressSkuResponseV1 {
+		if v == nil {
+			return nil
+		}
+		return v.Sku
+	}).(PublicIPAddressSkuResponseV1PtrOutput)
+}
+
+// Resource tags.
+func (o PublicIPAddressResponseV1PtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV1) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Resource type.
+func (o PublicIPAddressResponseV1PtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of availability zones denoting the IP allocated for the resource needs to come from.
+func (o PublicIPAddressResponseV1PtrOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV1) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Zones
+	}).(pulumi.StringArrayOutput)
+}
+
+// Public IP address resource.
+type PublicIPAddressResponseV2 struct {
+	// The DDoS protection custom policy associated with the public IP address.
+	DdosSettings *DdosSettingsResponse `pulumi:"ddosSettings"`
+	// Specify what happens to the public IP address when the VM using it is deleted
+	DeleteOption *string `pulumi:"deleteOption"`
+	// The FQDN of the DNS record associated with the public IP address.
+	DnsSettings *PublicIPAddressDnsSettingsResponse `pulumi:"dnsSettings"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// The extended location of the public ip address.
+	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// The idle timeout of the public IP address.
+	IdleTimeoutInMinutes *int `pulumi:"idleTimeoutInMinutes"`
+	// The IP address associated with the public IP address resource.
+	IpAddress *string `pulumi:"ipAddress"`
+	// The IP configuration associated with the public IP address.
+	IpConfiguration IPConfigurationResponse `pulumi:"ipConfiguration"`
+	// The list of tags associated with the public IP address.
+	IpTags []IpTagResponse `pulumi:"ipTags"`
+	// The linked public IP address of the public IP address resource.
+	LinkedPublicIPAddress *PublicIPAddressResponse `pulumi:"linkedPublicIPAddress"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Migration phase of Public IP Address.
+	MigrationPhase *string `pulumi:"migrationPhase"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The NatGateway for the Public IP address.
+	NatGateway *NatGatewayResponseV1 `pulumi:"natGateway"`
+	// The provisioning state of the public IP address resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The public IP address version.
+	PublicIPAddressVersion *string `pulumi:"publicIPAddressVersion"`
+	// The public IP address allocation method.
+	PublicIPAllocationMethod *string `pulumi:"publicIPAllocationMethod"`
+	// The Public IP Prefix this Public IP Address should be allocated from.
+	PublicIPPrefix *SubResourceResponse `pulumi:"publicIPPrefix"`
+	// The resource GUID property of the public IP address resource.
+	ResourceGuid string `pulumi:"resourceGuid"`
+	// The service public IP address of the public IP address resource.
+	ServicePublicIPAddress *PublicIPAddressResponse `pulumi:"servicePublicIPAddress"`
+	// The public IP address SKU.
+	Sku *PublicIPAddressSkuResponse `pulumi:"sku"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
+	// A list of availability zones denoting the IP allocated for the resource needs to come from.
+	Zones []string `pulumi:"zones"`
+}
+
+// Defaults sets the appropriate defaults for PublicIPAddressResponseV2
+func (val *PublicIPAddressResponseV2) Defaults() *PublicIPAddressResponseV2 {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.IpConfiguration = *tmp.IpConfiguration.Defaults()
+
+	tmp.LinkedPublicIPAddress = tmp.LinkedPublicIPAddress.Defaults()
+
+	tmp.ServicePublicIPAddress = tmp.ServicePublicIPAddress.Defaults()
+
+	return &tmp
+}
+
+// Public IP address resource.
+type PublicIPAddressResponseV2Output struct{ *pulumi.OutputState }
+
+func (PublicIPAddressResponseV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicIPAddressResponseV2)(nil)).Elem()
+}
+
+func (o PublicIPAddressResponseV2Output) ToPublicIPAddressResponseV2Output() PublicIPAddressResponseV2Output {
+	return o
+}
+
+func (o PublicIPAddressResponseV2Output) ToPublicIPAddressResponseV2OutputWithContext(ctx context.Context) PublicIPAddressResponseV2Output {
+	return o
+}
+
+// The DDoS protection custom policy associated with the public IP address.
+func (o PublicIPAddressResponseV2Output) DdosSettings() DdosSettingsResponsePtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV2) *DdosSettingsResponse { return v.DdosSettings }).(DdosSettingsResponsePtrOutput)
+}
+
+// Specify what happens to the public IP address when the VM using it is deleted
+func (o PublicIPAddressResponseV2Output) DeleteOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV2) *string { return v.DeleteOption }).(pulumi.StringPtrOutput)
+}
+
+// The FQDN of the DNS record associated with the public IP address.
+func (o PublicIPAddressResponseV2Output) DnsSettings() PublicIPAddressDnsSettingsResponsePtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV2) *PublicIPAddressDnsSettingsResponse { return v.DnsSettings }).(PublicIPAddressDnsSettingsResponsePtrOutput)
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o PublicIPAddressResponseV2Output) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV2) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The extended location of the public ip address.
+func (o PublicIPAddressResponseV2Output) ExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV2) *ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
+}
+
+// Resource ID.
+func (o PublicIPAddressResponseV2Output) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV2) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The idle timeout of the public IP address.
+func (o PublicIPAddressResponseV2Output) IdleTimeoutInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV2) *int { return v.IdleTimeoutInMinutes }).(pulumi.IntPtrOutput)
+}
+
+// The IP address associated with the public IP address resource.
+func (o PublicIPAddressResponseV2Output) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV2) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// The IP configuration associated with the public IP address.
+func (o PublicIPAddressResponseV2Output) IpConfiguration() IPConfigurationResponseOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV2) IPConfigurationResponse { return v.IpConfiguration }).(IPConfigurationResponseOutput)
+}
+
+// The list of tags associated with the public IP address.
+func (o PublicIPAddressResponseV2Output) IpTags() IpTagResponseArrayOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV2) []IpTagResponse { return v.IpTags }).(IpTagResponseArrayOutput)
+}
+
+// The linked public IP address of the public IP address resource.
+func (o PublicIPAddressResponseV2Output) LinkedPublicIPAddress() PublicIPAddressResponsePtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV2) *PublicIPAddressResponse { return v.LinkedPublicIPAddress }).(PublicIPAddressResponsePtrOutput)
+}
+
+// Resource location.
+func (o PublicIPAddressResponseV2Output) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV2) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Migration phase of Public IP Address.
+func (o PublicIPAddressResponseV2Output) MigrationPhase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV2) *string { return v.MigrationPhase }).(pulumi.StringPtrOutput)
+}
+
+// Resource name.
+func (o PublicIPAddressResponseV2Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV2) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The NatGateway for the Public IP address.
+func (o PublicIPAddressResponseV2Output) NatGateway() NatGatewayResponseV1PtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV2) *NatGatewayResponseV1 { return v.NatGateway }).(NatGatewayResponseV1PtrOutput)
+}
+
+// The provisioning state of the public IP address resource.
+func (o PublicIPAddressResponseV2Output) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV2) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The public IP address version.
+func (o PublicIPAddressResponseV2Output) PublicIPAddressVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV2) *string { return v.PublicIPAddressVersion }).(pulumi.StringPtrOutput)
+}
+
+// The public IP address allocation method.
+func (o PublicIPAddressResponseV2Output) PublicIPAllocationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV2) *string { return v.PublicIPAllocationMethod }).(pulumi.StringPtrOutput)
+}
+
+// The Public IP Prefix this Public IP Address should be allocated from.
+func (o PublicIPAddressResponseV2Output) PublicIPPrefix() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV2) *SubResourceResponse { return v.PublicIPPrefix }).(SubResourceResponsePtrOutput)
+}
+
+// The resource GUID property of the public IP address resource.
+func (o PublicIPAddressResponseV2Output) ResourceGuid() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV2) string { return v.ResourceGuid }).(pulumi.StringOutput)
+}
+
+// The service public IP address of the public IP address resource.
+func (o PublicIPAddressResponseV2Output) ServicePublicIPAddress() PublicIPAddressResponsePtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV2) *PublicIPAddressResponse { return v.ServicePublicIPAddress }).(PublicIPAddressResponsePtrOutput)
+}
+
+// The public IP address SKU.
+func (o PublicIPAddressResponseV2Output) Sku() PublicIPAddressSkuResponsePtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV2) *PublicIPAddressSkuResponse { return v.Sku }).(PublicIPAddressSkuResponsePtrOutput)
+}
+
+// Resource tags.
+func (o PublicIPAddressResponseV2Output) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV2) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Resource type.
+func (o PublicIPAddressResponseV2Output) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV2) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// A list of availability zones denoting the IP allocated for the resource needs to come from.
+func (o PublicIPAddressResponseV2Output) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV2) []string { return v.Zones }).(pulumi.StringArrayOutput)
+}
+
+type PublicIPAddressResponseV2PtrOutput struct{ *pulumi.OutputState }
+
+func (PublicIPAddressResponseV2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicIPAddressResponseV2)(nil)).Elem()
+}
+
+func (o PublicIPAddressResponseV2PtrOutput) ToPublicIPAddressResponseV2PtrOutput() PublicIPAddressResponseV2PtrOutput {
+	return o
+}
+
+func (o PublicIPAddressResponseV2PtrOutput) ToPublicIPAddressResponseV2PtrOutputWithContext(ctx context.Context) PublicIPAddressResponseV2PtrOutput {
+	return o
+}
+
+func (o PublicIPAddressResponseV2PtrOutput) Elem() PublicIPAddressResponseV2Output {
+	return o.ApplyT(func(v *PublicIPAddressResponseV2) PublicIPAddressResponseV2 {
+		if v != nil {
+			return *v
+		}
+		var ret PublicIPAddressResponseV2
+		return ret
+	}).(PublicIPAddressResponseV2Output)
+}
+
+// The DDoS protection custom policy associated with the public IP address.
+func (o PublicIPAddressResponseV2PtrOutput) DdosSettings() DdosSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV2) *DdosSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DdosSettings
+	}).(DdosSettingsResponsePtrOutput)
+}
+
+// Specify what happens to the public IP address when the VM using it is deleted
+func (o PublicIPAddressResponseV2PtrOutput) DeleteOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteOption
+	}).(pulumi.StringPtrOutput)
+}
+
+// The FQDN of the DNS record associated with the public IP address.
+func (o PublicIPAddressResponseV2PtrOutput) DnsSettings() PublicIPAddressDnsSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV2) *PublicIPAddressDnsSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DnsSettings
+	}).(PublicIPAddressDnsSettingsResponsePtrOutput)
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o PublicIPAddressResponseV2PtrOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Etag
+	}).(pulumi.StringPtrOutput)
+}
+
+// The extended location of the public ip address.
+func (o PublicIPAddressResponseV2PtrOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV2) *ExtendedLocationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ExtendedLocation
+	}).(ExtendedLocationResponsePtrOutput)
+}
+
+// Resource ID.
+func (o PublicIPAddressResponseV2PtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The idle timeout of the public IP address.
+func (o PublicIPAddressResponseV2PtrOutput) IdleTimeoutInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV2) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IdleTimeoutInMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// The IP address associated with the public IP address resource.
+func (o PublicIPAddressResponseV2PtrOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IP configuration associated with the public IP address.
+func (o PublicIPAddressResponseV2PtrOutput) IpConfiguration() IPConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV2) *IPConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.IpConfiguration
+	}).(IPConfigurationResponsePtrOutput)
+}
+
+// The list of tags associated with the public IP address.
+func (o PublicIPAddressResponseV2PtrOutput) IpTags() IpTagResponseArrayOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV2) []IpTagResponse {
+		if v == nil {
+			return nil
+		}
+		return v.IpTags
+	}).(IpTagResponseArrayOutput)
+}
+
+// The linked public IP address of the public IP address resource.
+func (o PublicIPAddressResponseV2PtrOutput) LinkedPublicIPAddress() PublicIPAddressResponsePtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV2) *PublicIPAddressResponse {
+		if v == nil {
+			return nil
+		}
+		return v.LinkedPublicIPAddress
+	}).(PublicIPAddressResponsePtrOutput)
+}
+
+// Resource location.
+func (o PublicIPAddressResponseV2PtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Migration phase of Public IP Address.
+func (o PublicIPAddressResponseV2PtrOutput) MigrationPhase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MigrationPhase
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource name.
+func (o PublicIPAddressResponseV2PtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The NatGateway for the Public IP address.
+func (o PublicIPAddressResponseV2PtrOutput) NatGateway() NatGatewayResponseV1PtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV2) *NatGatewayResponseV1 {
+		if v == nil {
+			return nil
+		}
+		return v.NatGateway
+	}).(NatGatewayResponseV1PtrOutput)
+}
+
+// The provisioning state of the public IP address resource.
+func (o PublicIPAddressResponseV2PtrOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProvisioningState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The public IP address version.
+func (o PublicIPAddressResponseV2PtrOutput) PublicIPAddressVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicIPAddressVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The public IP address allocation method.
+func (o PublicIPAddressResponseV2PtrOutput) PublicIPAllocationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicIPAllocationMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Public IP Prefix this Public IP Address should be allocated from.
+func (o PublicIPAddressResponseV2PtrOutput) PublicIPPrefix() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV2) *SubResourceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PublicIPPrefix
+	}).(SubResourceResponsePtrOutput)
+}
+
+// The resource GUID property of the public IP address resource.
+func (o PublicIPAddressResponseV2PtrOutput) ResourceGuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceGuid
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service public IP address of the public IP address resource.
+func (o PublicIPAddressResponseV2PtrOutput) ServicePublicIPAddress() PublicIPAddressResponsePtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV2) *PublicIPAddressResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ServicePublicIPAddress
+	}).(PublicIPAddressResponsePtrOutput)
+}
+
+// The public IP address SKU.
+func (o PublicIPAddressResponseV2PtrOutput) Sku() PublicIPAddressSkuResponsePtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV2) *PublicIPAddressSkuResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Sku
+	}).(PublicIPAddressSkuResponsePtrOutput)
+}
+
+// Resource tags.
+func (o PublicIPAddressResponseV2PtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV2) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Resource type.
+func (o PublicIPAddressResponseV2PtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of availability zones denoting the IP allocated for the resource needs to come from.
+func (o PublicIPAddressResponseV2PtrOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV2) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Zones
+	}).(pulumi.StringArrayOutput)
+}
+
+// Public IP address resource.
+type PublicIPAddressResponseV3 struct {
+	// The DDoS protection custom policy associated with the public IP address.
+	DdosSettings *DdosSettingsResponse `pulumi:"ddosSettings"`
+	// Specify what happens to the public IP address when the VM using it is deleted
+	DeleteOption *string `pulumi:"deleteOption"`
+	// The FQDN of the DNS record associated with the public IP address.
+	DnsSettings *PublicIPAddressDnsSettingsResponse `pulumi:"dnsSettings"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// The extended location of the public ip address.
+	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// The idle timeout of the public IP address.
+	IdleTimeoutInMinutes *int `pulumi:"idleTimeoutInMinutes"`
+	// The IP address associated with the public IP address resource.
+	IpAddress *string `pulumi:"ipAddress"`
+	// The IP configuration associated with the public IP address.
+	IpConfiguration IPConfigurationResponse `pulumi:"ipConfiguration"`
+	// The list of tags associated with the public IP address.
+	IpTags []IpTagResponse `pulumi:"ipTags"`
+	// The linked public IP address of the public IP address resource.
+	LinkedPublicIPAddress *PublicIPAddressResponse `pulumi:"linkedPublicIPAddress"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Migration phase of Public IP Address.
+	MigrationPhase *string `pulumi:"migrationPhase"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The NatGateway for the Public IP address.
+	NatGateway *NatGatewayResponseV2 `pulumi:"natGateway"`
+	// The provisioning state of the public IP address resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The public IP address version.
+	PublicIPAddressVersion *string `pulumi:"publicIPAddressVersion"`
+	// The public IP address allocation method.
+	PublicIPAllocationMethod *string `pulumi:"publicIPAllocationMethod"`
+	// The Public IP Prefix this Public IP Address should be allocated from.
+	PublicIPPrefix *SubResourceResponse `pulumi:"publicIPPrefix"`
+	// The resource GUID property of the public IP address resource.
+	ResourceGuid string `pulumi:"resourceGuid"`
+	// The service public IP address of the public IP address resource.
+	ServicePublicIPAddress *PublicIPAddressResponse `pulumi:"servicePublicIPAddress"`
+	// The public IP address SKU.
+	Sku *PublicIPAddressSkuResponse `pulumi:"sku"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
+	// A list of availability zones denoting the IP allocated for the resource needs to come from.
+	Zones []string `pulumi:"zones"`
+}
+
+// Defaults sets the appropriate defaults for PublicIPAddressResponseV3
+func (val *PublicIPAddressResponseV3) Defaults() *PublicIPAddressResponseV3 {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.IpConfiguration = *tmp.IpConfiguration.Defaults()
+
+	tmp.LinkedPublicIPAddress = tmp.LinkedPublicIPAddress.Defaults()
+
+	tmp.ServicePublicIPAddress = tmp.ServicePublicIPAddress.Defaults()
+
+	return &tmp
+}
+
+// Public IP address resource.
+type PublicIPAddressResponseV3Output struct{ *pulumi.OutputState }
+
+func (PublicIPAddressResponseV3Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicIPAddressResponseV3)(nil)).Elem()
+}
+
+func (o PublicIPAddressResponseV3Output) ToPublicIPAddressResponseV3Output() PublicIPAddressResponseV3Output {
+	return o
+}
+
+func (o PublicIPAddressResponseV3Output) ToPublicIPAddressResponseV3OutputWithContext(ctx context.Context) PublicIPAddressResponseV3Output {
+	return o
+}
+
+// The DDoS protection custom policy associated with the public IP address.
+func (o PublicIPAddressResponseV3Output) DdosSettings() DdosSettingsResponsePtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV3) *DdosSettingsResponse { return v.DdosSettings }).(DdosSettingsResponsePtrOutput)
+}
+
+// Specify what happens to the public IP address when the VM using it is deleted
+func (o PublicIPAddressResponseV3Output) DeleteOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV3) *string { return v.DeleteOption }).(pulumi.StringPtrOutput)
+}
+
+// The FQDN of the DNS record associated with the public IP address.
+func (o PublicIPAddressResponseV3Output) DnsSettings() PublicIPAddressDnsSettingsResponsePtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV3) *PublicIPAddressDnsSettingsResponse { return v.DnsSettings }).(PublicIPAddressDnsSettingsResponsePtrOutput)
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o PublicIPAddressResponseV3Output) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV3) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The extended location of the public ip address.
+func (o PublicIPAddressResponseV3Output) ExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV3) *ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
+}
+
+// Resource ID.
+func (o PublicIPAddressResponseV3Output) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV3) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The idle timeout of the public IP address.
+func (o PublicIPAddressResponseV3Output) IdleTimeoutInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV3) *int { return v.IdleTimeoutInMinutes }).(pulumi.IntPtrOutput)
+}
+
+// The IP address associated with the public IP address resource.
+func (o PublicIPAddressResponseV3Output) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV3) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// The IP configuration associated with the public IP address.
+func (o PublicIPAddressResponseV3Output) IpConfiguration() IPConfigurationResponseOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV3) IPConfigurationResponse { return v.IpConfiguration }).(IPConfigurationResponseOutput)
+}
+
+// The list of tags associated with the public IP address.
+func (o PublicIPAddressResponseV3Output) IpTags() IpTagResponseArrayOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV3) []IpTagResponse { return v.IpTags }).(IpTagResponseArrayOutput)
+}
+
+// The linked public IP address of the public IP address resource.
+func (o PublicIPAddressResponseV3Output) LinkedPublicIPAddress() PublicIPAddressResponsePtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV3) *PublicIPAddressResponse { return v.LinkedPublicIPAddress }).(PublicIPAddressResponsePtrOutput)
+}
+
+// Resource location.
+func (o PublicIPAddressResponseV3Output) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV3) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Migration phase of Public IP Address.
+func (o PublicIPAddressResponseV3Output) MigrationPhase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV3) *string { return v.MigrationPhase }).(pulumi.StringPtrOutput)
+}
+
+// Resource name.
+func (o PublicIPAddressResponseV3Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV3) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The NatGateway for the Public IP address.
+func (o PublicIPAddressResponseV3Output) NatGateway() NatGatewayResponseV2PtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV3) *NatGatewayResponseV2 { return v.NatGateway }).(NatGatewayResponseV2PtrOutput)
+}
+
+// The provisioning state of the public IP address resource.
+func (o PublicIPAddressResponseV3Output) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV3) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The public IP address version.
+func (o PublicIPAddressResponseV3Output) PublicIPAddressVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV3) *string { return v.PublicIPAddressVersion }).(pulumi.StringPtrOutput)
+}
+
+// The public IP address allocation method.
+func (o PublicIPAddressResponseV3Output) PublicIPAllocationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV3) *string { return v.PublicIPAllocationMethod }).(pulumi.StringPtrOutput)
+}
+
+// The Public IP Prefix this Public IP Address should be allocated from.
+func (o PublicIPAddressResponseV3Output) PublicIPPrefix() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV3) *SubResourceResponse { return v.PublicIPPrefix }).(SubResourceResponsePtrOutput)
+}
+
+// The resource GUID property of the public IP address resource.
+func (o PublicIPAddressResponseV3Output) ResourceGuid() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV3) string { return v.ResourceGuid }).(pulumi.StringOutput)
+}
+
+// The service public IP address of the public IP address resource.
+func (o PublicIPAddressResponseV3Output) ServicePublicIPAddress() PublicIPAddressResponsePtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV3) *PublicIPAddressResponse { return v.ServicePublicIPAddress }).(PublicIPAddressResponsePtrOutput)
+}
+
+// The public IP address SKU.
+func (o PublicIPAddressResponseV3Output) Sku() PublicIPAddressSkuResponsePtrOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV3) *PublicIPAddressSkuResponse { return v.Sku }).(PublicIPAddressSkuResponsePtrOutput)
+}
+
+// Resource tags.
+func (o PublicIPAddressResponseV3Output) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV3) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Resource type.
+func (o PublicIPAddressResponseV3Output) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV3) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// A list of availability zones denoting the IP allocated for the resource needs to come from.
+func (o PublicIPAddressResponseV3Output) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PublicIPAddressResponseV3) []string { return v.Zones }).(pulumi.StringArrayOutput)
+}
+
+type PublicIPAddressResponseV3PtrOutput struct{ *pulumi.OutputState }
+
+func (PublicIPAddressResponseV3PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicIPAddressResponseV3)(nil)).Elem()
+}
+
+func (o PublicIPAddressResponseV3PtrOutput) ToPublicIPAddressResponseV3PtrOutput() PublicIPAddressResponseV3PtrOutput {
+	return o
+}
+
+func (o PublicIPAddressResponseV3PtrOutput) ToPublicIPAddressResponseV3PtrOutputWithContext(ctx context.Context) PublicIPAddressResponseV3PtrOutput {
+	return o
+}
+
+func (o PublicIPAddressResponseV3PtrOutput) Elem() PublicIPAddressResponseV3Output {
+	return o.ApplyT(func(v *PublicIPAddressResponseV3) PublicIPAddressResponseV3 {
+		if v != nil {
+			return *v
+		}
+		var ret PublicIPAddressResponseV3
+		return ret
+	}).(PublicIPAddressResponseV3Output)
+}
+
+// The DDoS protection custom policy associated with the public IP address.
+func (o PublicIPAddressResponseV3PtrOutput) DdosSettings() DdosSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV3) *DdosSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DdosSettings
+	}).(DdosSettingsResponsePtrOutput)
+}
+
+// Specify what happens to the public IP address when the VM using it is deleted
+func (o PublicIPAddressResponseV3PtrOutput) DeleteOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteOption
+	}).(pulumi.StringPtrOutput)
+}
+
+// The FQDN of the DNS record associated with the public IP address.
+func (o PublicIPAddressResponseV3PtrOutput) DnsSettings() PublicIPAddressDnsSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV3) *PublicIPAddressDnsSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DnsSettings
+	}).(PublicIPAddressDnsSettingsResponsePtrOutput)
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o PublicIPAddressResponseV3PtrOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV3) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Etag
+	}).(pulumi.StringPtrOutput)
+}
+
+// The extended location of the public ip address.
+func (o PublicIPAddressResponseV3PtrOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV3) *ExtendedLocationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ExtendedLocation
+	}).(ExtendedLocationResponsePtrOutput)
+}
+
+// Resource ID.
+func (o PublicIPAddressResponseV3PtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The idle timeout of the public IP address.
+func (o PublicIPAddressResponseV3PtrOutput) IdleTimeoutInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV3) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IdleTimeoutInMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// The IP address associated with the public IP address resource.
+func (o PublicIPAddressResponseV3PtrOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IpAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IP configuration associated with the public IP address.
+func (o PublicIPAddressResponseV3PtrOutput) IpConfiguration() IPConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV3) *IPConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.IpConfiguration
+	}).(IPConfigurationResponsePtrOutput)
+}
+
+// The list of tags associated with the public IP address.
+func (o PublicIPAddressResponseV3PtrOutput) IpTags() IpTagResponseArrayOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV3) []IpTagResponse {
+		if v == nil {
+			return nil
+		}
+		return v.IpTags
+	}).(IpTagResponseArrayOutput)
+}
+
+// The linked public IP address of the public IP address resource.
+func (o PublicIPAddressResponseV3PtrOutput) LinkedPublicIPAddress() PublicIPAddressResponsePtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV3) *PublicIPAddressResponse {
+		if v == nil {
+			return nil
+		}
+		return v.LinkedPublicIPAddress
+	}).(PublicIPAddressResponsePtrOutput)
+}
+
+// Resource location.
+func (o PublicIPAddressResponseV3PtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Migration phase of Public IP Address.
+func (o PublicIPAddressResponseV3PtrOutput) MigrationPhase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MigrationPhase
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource name.
+func (o PublicIPAddressResponseV3PtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV3) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The NatGateway for the Public IP address.
+func (o PublicIPAddressResponseV3PtrOutput) NatGateway() NatGatewayResponseV2PtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV3) *NatGatewayResponseV2 {
+		if v == nil {
+			return nil
+		}
+		return v.NatGateway
+	}).(NatGatewayResponseV2PtrOutput)
+}
+
+// The provisioning state of the public IP address resource.
+func (o PublicIPAddressResponseV3PtrOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV3) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProvisioningState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The public IP address version.
+func (o PublicIPAddressResponseV3PtrOutput) PublicIPAddressVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicIPAddressVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The public IP address allocation method.
+func (o PublicIPAddressResponseV3PtrOutput) PublicIPAllocationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicIPAllocationMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Public IP Prefix this Public IP Address should be allocated from.
+func (o PublicIPAddressResponseV3PtrOutput) PublicIPPrefix() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV3) *SubResourceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PublicIPPrefix
+	}).(SubResourceResponsePtrOutput)
+}
+
+// The resource GUID property of the public IP address resource.
+func (o PublicIPAddressResponseV3PtrOutput) ResourceGuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV3) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceGuid
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service public IP address of the public IP address resource.
+func (o PublicIPAddressResponseV3PtrOutput) ServicePublicIPAddress() PublicIPAddressResponsePtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV3) *PublicIPAddressResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ServicePublicIPAddress
+	}).(PublicIPAddressResponsePtrOutput)
+}
+
+// The public IP address SKU.
+func (o PublicIPAddressResponseV3PtrOutput) Sku() PublicIPAddressSkuResponsePtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV3) *PublicIPAddressSkuResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Sku
+	}).(PublicIPAddressSkuResponsePtrOutput)
+}
+
+// Resource tags.
+func (o PublicIPAddressResponseV3PtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV3) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Resource type.
+func (o PublicIPAddressResponseV3PtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV3) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of availability zones denoting the IP allocated for the resource needs to come from.
+func (o PublicIPAddressResponseV3PtrOutput) Zones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PublicIPAddressResponseV3) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Zones
+	}).(pulumi.StringArrayOutput)
+}
+
 // SKU of a public IP address.
 type PublicIPAddressSku struct {
 	// Name of a public IP address SKU.
@@ -5304,6 +6963,66 @@ func (o PublicIPAddressSkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Tier
+	}).(pulumi.StringPtrOutput)
+}
+
+// SKU of a public IP address
+type PublicIPAddressSkuResponseV1 struct {
+	// Name of a public IP address SKU.
+	Name *string `pulumi:"name"`
+}
+
+// SKU of a public IP address
+type PublicIPAddressSkuResponseV1Output struct{ *pulumi.OutputState }
+
+func (PublicIPAddressSkuResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicIPAddressSkuResponseV1)(nil)).Elem()
+}
+
+func (o PublicIPAddressSkuResponseV1Output) ToPublicIPAddressSkuResponseV1Output() PublicIPAddressSkuResponseV1Output {
+	return o
+}
+
+func (o PublicIPAddressSkuResponseV1Output) ToPublicIPAddressSkuResponseV1OutputWithContext(ctx context.Context) PublicIPAddressSkuResponseV1Output {
+	return o
+}
+
+// Name of a public IP address SKU.
+func (o PublicIPAddressSkuResponseV1Output) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PublicIPAddressSkuResponseV1) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type PublicIPAddressSkuResponseV1PtrOutput struct{ *pulumi.OutputState }
+
+func (PublicIPAddressSkuResponseV1PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublicIPAddressSkuResponseV1)(nil)).Elem()
+}
+
+func (o PublicIPAddressSkuResponseV1PtrOutput) ToPublicIPAddressSkuResponseV1PtrOutput() PublicIPAddressSkuResponseV1PtrOutput {
+	return o
+}
+
+func (o PublicIPAddressSkuResponseV1PtrOutput) ToPublicIPAddressSkuResponseV1PtrOutputWithContext(ctx context.Context) PublicIPAddressSkuResponseV1PtrOutput {
+	return o
+}
+
+func (o PublicIPAddressSkuResponseV1PtrOutput) Elem() PublicIPAddressSkuResponseV1Output {
+	return o.ApplyT(func(v *PublicIPAddressSkuResponseV1) PublicIPAddressSkuResponseV1 {
+		if v != nil {
+			return *v
+		}
+		var ret PublicIPAddressSkuResponseV1
+		return ret
+	}).(PublicIPAddressSkuResponseV1Output)
+}
+
+// Name of a public IP address SKU.
+func (o PublicIPAddressSkuResponseV1PtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicIPAddressSkuResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6093,6 +7812,59 @@ func (o QosPortRangeResponseArrayOutput) Index(i pulumi.IntInput) QosPortRangeRe
 	}).(QosPortRangeResponseOutput)
 }
 
+// Gateway or VpnServerConfiguration Radius server with radius secret details
+type RadiusAuthServerResponse struct {
+	// Radius server IPAddress
+	RadiusServerAddress *string `pulumi:"radiusServerAddress"`
+	// Radius server secret
+	RadiusServerSecret *string `pulumi:"radiusServerSecret"`
+}
+
+// Gateway or VpnServerConfiguration Radius server with radius secret details
+type RadiusAuthServerResponseOutput struct{ *pulumi.OutputState }
+
+func (RadiusAuthServerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RadiusAuthServerResponse)(nil)).Elem()
+}
+
+func (o RadiusAuthServerResponseOutput) ToRadiusAuthServerResponseOutput() RadiusAuthServerResponseOutput {
+	return o
+}
+
+func (o RadiusAuthServerResponseOutput) ToRadiusAuthServerResponseOutputWithContext(ctx context.Context) RadiusAuthServerResponseOutput {
+	return o
+}
+
+// Radius server IPAddress
+func (o RadiusAuthServerResponseOutput) RadiusServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RadiusAuthServerResponse) *string { return v.RadiusServerAddress }).(pulumi.StringPtrOutput)
+}
+
+// Radius server secret
+func (o RadiusAuthServerResponseOutput) RadiusServerSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RadiusAuthServerResponse) *string { return v.RadiusServerSecret }).(pulumi.StringPtrOutput)
+}
+
+type RadiusAuthServerResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RadiusAuthServerResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RadiusAuthServerResponse)(nil)).Elem()
+}
+
+func (o RadiusAuthServerResponseArrayOutput) ToRadiusAuthServerResponseArrayOutput() RadiusAuthServerResponseArrayOutput {
+	return o
+}
+
+func (o RadiusAuthServerResponseArrayOutput) ToRadiusAuthServerResponseArrayOutputWithContext(ctx context.Context) RadiusAuthServerResponseArrayOutput {
+	return o
+}
+
+func (o RadiusAuthServerResponseArrayOutput) Index(i pulumi.IntInput) RadiusAuthServerResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RadiusAuthServerResponse {
+		return vs[0].([]RadiusAuthServerResponse)[vs[1].(int)]
+	}).(RadiusAuthServerResponseOutput)
+}
+
 // Radius Server Settings.
 type RadiusServer struct {
 	// The address of this radius server.
@@ -6599,422 +8371,6 @@ func (o RecordSetResponseArrayOutput) Index(i pulumi.IntInput) RecordSetResponse
 	}).(RecordSetResponseOutput)
 }
 
-// Describes Redirect Route.
-type RedirectConfiguration struct {
-	// Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.
-	CustomFragment *string `pulumi:"customFragment"`
-	// Host to redirect. Leave empty to use the incoming host as the destination host.
-	CustomHost *string `pulumi:"customHost"`
-	// The full path to redirect. Path cannot be empty and must start with /. Leave empty to use the incoming path as destination path.
-	CustomPath *string `pulumi:"customPath"`
-	// The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in <key>=<value> format. The first ? and & will be added automatically so do not include them in the front, but do separate multiple query strings with &.
-	CustomQueryString *string `pulumi:"customQueryString"`
-	// Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration'.
-	OdataType string `pulumi:"odataType"`
-	// The protocol of the destination to where the traffic is redirected
-	RedirectProtocol *string `pulumi:"redirectProtocol"`
-	// The redirect type the rule will use when redirecting traffic.
-	RedirectType *string `pulumi:"redirectType"`
-}
-
-// RedirectConfigurationInput is an input type that accepts RedirectConfigurationArgs and RedirectConfigurationOutput values.
-// You can construct a concrete instance of `RedirectConfigurationInput` via:
-//
-//	RedirectConfigurationArgs{...}
-type RedirectConfigurationInput interface {
-	pulumi.Input
-
-	ToRedirectConfigurationOutput() RedirectConfigurationOutput
-	ToRedirectConfigurationOutputWithContext(context.Context) RedirectConfigurationOutput
-}
-
-// Describes Redirect Route.
-type RedirectConfigurationArgs struct {
-	// Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.
-	CustomFragment pulumi.StringPtrInput `pulumi:"customFragment"`
-	// Host to redirect. Leave empty to use the incoming host as the destination host.
-	CustomHost pulumi.StringPtrInput `pulumi:"customHost"`
-	// The full path to redirect. Path cannot be empty and must start with /. Leave empty to use the incoming path as destination path.
-	CustomPath pulumi.StringPtrInput `pulumi:"customPath"`
-	// The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in <key>=<value> format. The first ? and & will be added automatically so do not include them in the front, but do separate multiple query strings with &.
-	CustomQueryString pulumi.StringPtrInput `pulumi:"customQueryString"`
-	// Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration'.
-	OdataType pulumi.StringInput `pulumi:"odataType"`
-	// The protocol of the destination to where the traffic is redirected
-	RedirectProtocol pulumi.StringPtrInput `pulumi:"redirectProtocol"`
-	// The redirect type the rule will use when redirecting traffic.
-	RedirectType pulumi.StringPtrInput `pulumi:"redirectType"`
-}
-
-func (RedirectConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RedirectConfiguration)(nil)).Elem()
-}
-
-func (i RedirectConfigurationArgs) ToRedirectConfigurationOutput() RedirectConfigurationOutput {
-	return i.ToRedirectConfigurationOutputWithContext(context.Background())
-}
-
-func (i RedirectConfigurationArgs) ToRedirectConfigurationOutputWithContext(ctx context.Context) RedirectConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RedirectConfigurationOutput)
-}
-
-func (i RedirectConfigurationArgs) ToRedirectConfigurationPtrOutput() RedirectConfigurationPtrOutput {
-	return i.ToRedirectConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i RedirectConfigurationArgs) ToRedirectConfigurationPtrOutputWithContext(ctx context.Context) RedirectConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RedirectConfigurationOutput).ToRedirectConfigurationPtrOutputWithContext(ctx)
-}
-
-// RedirectConfigurationPtrInput is an input type that accepts RedirectConfigurationArgs, RedirectConfigurationPtr and RedirectConfigurationPtrOutput values.
-// You can construct a concrete instance of `RedirectConfigurationPtrInput` via:
-//
-//	        RedirectConfigurationArgs{...}
-//
-//	or:
-//
-//	        nil
-type RedirectConfigurationPtrInput interface {
-	pulumi.Input
-
-	ToRedirectConfigurationPtrOutput() RedirectConfigurationPtrOutput
-	ToRedirectConfigurationPtrOutputWithContext(context.Context) RedirectConfigurationPtrOutput
-}
-
-type redirectConfigurationPtrType RedirectConfigurationArgs
-
-func RedirectConfigurationPtr(v *RedirectConfigurationArgs) RedirectConfigurationPtrInput {
-	return (*redirectConfigurationPtrType)(v)
-}
-
-func (*redirectConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RedirectConfiguration)(nil)).Elem()
-}
-
-func (i *redirectConfigurationPtrType) ToRedirectConfigurationPtrOutput() RedirectConfigurationPtrOutput {
-	return i.ToRedirectConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (i *redirectConfigurationPtrType) ToRedirectConfigurationPtrOutputWithContext(ctx context.Context) RedirectConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RedirectConfigurationPtrOutput)
-}
-
-// Describes Redirect Route.
-type RedirectConfigurationOutput struct{ *pulumi.OutputState }
-
-func (RedirectConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RedirectConfiguration)(nil)).Elem()
-}
-
-func (o RedirectConfigurationOutput) ToRedirectConfigurationOutput() RedirectConfigurationOutput {
-	return o
-}
-
-func (o RedirectConfigurationOutput) ToRedirectConfigurationOutputWithContext(ctx context.Context) RedirectConfigurationOutput {
-	return o
-}
-
-func (o RedirectConfigurationOutput) ToRedirectConfigurationPtrOutput() RedirectConfigurationPtrOutput {
-	return o.ToRedirectConfigurationPtrOutputWithContext(context.Background())
-}
-
-func (o RedirectConfigurationOutput) ToRedirectConfigurationPtrOutputWithContext(ctx context.Context) RedirectConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RedirectConfiguration) *RedirectConfiguration {
-		return &v
-	}).(RedirectConfigurationPtrOutput)
-}
-
-// Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.
-func (o RedirectConfigurationOutput) CustomFragment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RedirectConfiguration) *string { return v.CustomFragment }).(pulumi.StringPtrOutput)
-}
-
-// Host to redirect. Leave empty to use the incoming host as the destination host.
-func (o RedirectConfigurationOutput) CustomHost() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RedirectConfiguration) *string { return v.CustomHost }).(pulumi.StringPtrOutput)
-}
-
-// The full path to redirect. Path cannot be empty and must start with /. Leave empty to use the incoming path as destination path.
-func (o RedirectConfigurationOutput) CustomPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RedirectConfiguration) *string { return v.CustomPath }).(pulumi.StringPtrOutput)
-}
-
-// The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in <key>=<value> format. The first ? and & will be added automatically so do not include them in the front, but do separate multiple query strings with &.
-func (o RedirectConfigurationOutput) CustomQueryString() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RedirectConfiguration) *string { return v.CustomQueryString }).(pulumi.StringPtrOutput)
-}
-
-// Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration'.
-func (o RedirectConfigurationOutput) OdataType() pulumi.StringOutput {
-	return o.ApplyT(func(v RedirectConfiguration) string { return v.OdataType }).(pulumi.StringOutput)
-}
-
-// The protocol of the destination to where the traffic is redirected
-func (o RedirectConfigurationOutput) RedirectProtocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RedirectConfiguration) *string { return v.RedirectProtocol }).(pulumi.StringPtrOutput)
-}
-
-// The redirect type the rule will use when redirecting traffic.
-func (o RedirectConfigurationOutput) RedirectType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RedirectConfiguration) *string { return v.RedirectType }).(pulumi.StringPtrOutput)
-}
-
-type RedirectConfigurationPtrOutput struct{ *pulumi.OutputState }
-
-func (RedirectConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RedirectConfiguration)(nil)).Elem()
-}
-
-func (o RedirectConfigurationPtrOutput) ToRedirectConfigurationPtrOutput() RedirectConfigurationPtrOutput {
-	return o
-}
-
-func (o RedirectConfigurationPtrOutput) ToRedirectConfigurationPtrOutputWithContext(ctx context.Context) RedirectConfigurationPtrOutput {
-	return o
-}
-
-func (o RedirectConfigurationPtrOutput) Elem() RedirectConfigurationOutput {
-	return o.ApplyT(func(v *RedirectConfiguration) RedirectConfiguration {
-		if v != nil {
-			return *v
-		}
-		var ret RedirectConfiguration
-		return ret
-	}).(RedirectConfigurationOutput)
-}
-
-// Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.
-func (o RedirectConfigurationPtrOutput) CustomFragment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedirectConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CustomFragment
-	}).(pulumi.StringPtrOutput)
-}
-
-// Host to redirect. Leave empty to use the incoming host as the destination host.
-func (o RedirectConfigurationPtrOutput) CustomHost() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedirectConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CustomHost
-	}).(pulumi.StringPtrOutput)
-}
-
-// The full path to redirect. Path cannot be empty and must start with /. Leave empty to use the incoming path as destination path.
-func (o RedirectConfigurationPtrOutput) CustomPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedirectConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CustomPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in <key>=<value> format. The first ? and & will be added automatically so do not include them in the front, but do separate multiple query strings with &.
-func (o RedirectConfigurationPtrOutput) CustomQueryString() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedirectConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CustomQueryString
-	}).(pulumi.StringPtrOutput)
-}
-
-// Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration'.
-func (o RedirectConfigurationPtrOutput) OdataType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedirectConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OdataType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The protocol of the destination to where the traffic is redirected
-func (o RedirectConfigurationPtrOutput) RedirectProtocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedirectConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RedirectProtocol
-	}).(pulumi.StringPtrOutput)
-}
-
-// The redirect type the rule will use when redirecting traffic.
-func (o RedirectConfigurationPtrOutput) RedirectType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedirectConfiguration) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RedirectType
-	}).(pulumi.StringPtrOutput)
-}
-
-// Describes Redirect Route.
-type RedirectConfigurationResponse struct {
-	// Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.
-	CustomFragment *string `pulumi:"customFragment"`
-	// Host to redirect. Leave empty to use the incoming host as the destination host.
-	CustomHost *string `pulumi:"customHost"`
-	// The full path to redirect. Path cannot be empty and must start with /. Leave empty to use the incoming path as destination path.
-	CustomPath *string `pulumi:"customPath"`
-	// The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in <key>=<value> format. The first ? and & will be added automatically so do not include them in the front, but do separate multiple query strings with &.
-	CustomQueryString *string `pulumi:"customQueryString"`
-	// Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration'.
-	OdataType string `pulumi:"odataType"`
-	// The protocol of the destination to where the traffic is redirected
-	RedirectProtocol *string `pulumi:"redirectProtocol"`
-	// The redirect type the rule will use when redirecting traffic.
-	RedirectType *string `pulumi:"redirectType"`
-}
-
-// Describes Redirect Route.
-type RedirectConfigurationResponseOutput struct{ *pulumi.OutputState }
-
-func (RedirectConfigurationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RedirectConfigurationResponse)(nil)).Elem()
-}
-
-func (o RedirectConfigurationResponseOutput) ToRedirectConfigurationResponseOutput() RedirectConfigurationResponseOutput {
-	return o
-}
-
-func (o RedirectConfigurationResponseOutput) ToRedirectConfigurationResponseOutputWithContext(ctx context.Context) RedirectConfigurationResponseOutput {
-	return o
-}
-
-// Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.
-func (o RedirectConfigurationResponseOutput) CustomFragment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RedirectConfigurationResponse) *string { return v.CustomFragment }).(pulumi.StringPtrOutput)
-}
-
-// Host to redirect. Leave empty to use the incoming host as the destination host.
-func (o RedirectConfigurationResponseOutput) CustomHost() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RedirectConfigurationResponse) *string { return v.CustomHost }).(pulumi.StringPtrOutput)
-}
-
-// The full path to redirect. Path cannot be empty and must start with /. Leave empty to use the incoming path as destination path.
-func (o RedirectConfigurationResponseOutput) CustomPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RedirectConfigurationResponse) *string { return v.CustomPath }).(pulumi.StringPtrOutput)
-}
-
-// The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in <key>=<value> format. The first ? and & will be added automatically so do not include them in the front, but do separate multiple query strings with &.
-func (o RedirectConfigurationResponseOutput) CustomQueryString() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RedirectConfigurationResponse) *string { return v.CustomQueryString }).(pulumi.StringPtrOutput)
-}
-
-// Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration'.
-func (o RedirectConfigurationResponseOutput) OdataType() pulumi.StringOutput {
-	return o.ApplyT(func(v RedirectConfigurationResponse) string { return v.OdataType }).(pulumi.StringOutput)
-}
-
-// The protocol of the destination to where the traffic is redirected
-func (o RedirectConfigurationResponseOutput) RedirectProtocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RedirectConfigurationResponse) *string { return v.RedirectProtocol }).(pulumi.StringPtrOutput)
-}
-
-// The redirect type the rule will use when redirecting traffic.
-func (o RedirectConfigurationResponseOutput) RedirectType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RedirectConfigurationResponse) *string { return v.RedirectType }).(pulumi.StringPtrOutput)
-}
-
-type RedirectConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (RedirectConfigurationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RedirectConfigurationResponse)(nil)).Elem()
-}
-
-func (o RedirectConfigurationResponsePtrOutput) ToRedirectConfigurationResponsePtrOutput() RedirectConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o RedirectConfigurationResponsePtrOutput) ToRedirectConfigurationResponsePtrOutputWithContext(ctx context.Context) RedirectConfigurationResponsePtrOutput {
-	return o
-}
-
-func (o RedirectConfigurationResponsePtrOutput) Elem() RedirectConfigurationResponseOutput {
-	return o.ApplyT(func(v *RedirectConfigurationResponse) RedirectConfigurationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret RedirectConfigurationResponse
-		return ret
-	}).(RedirectConfigurationResponseOutput)
-}
-
-// Fragment to add to the redirect URL. Fragment is the part of the URL that comes after #. Do not include the #.
-func (o RedirectConfigurationResponsePtrOutput) CustomFragment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedirectConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CustomFragment
-	}).(pulumi.StringPtrOutput)
-}
-
-// Host to redirect. Leave empty to use the incoming host as the destination host.
-func (o RedirectConfigurationResponsePtrOutput) CustomHost() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedirectConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CustomHost
-	}).(pulumi.StringPtrOutput)
-}
-
-// The full path to redirect. Path cannot be empty and must start with /. Leave empty to use the incoming path as destination path.
-func (o RedirectConfigurationResponsePtrOutput) CustomPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedirectConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CustomPath
-	}).(pulumi.StringPtrOutput)
-}
-
-// The set of query strings to be placed in the redirect URL. Setting this value would replace any existing query string; leave empty to preserve the incoming query string. Query string must be in <key>=<value> format. The first ? and & will be added automatically so do not include them in the front, but do separate multiple query strings with &.
-func (o RedirectConfigurationResponsePtrOutput) CustomQueryString() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedirectConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.CustomQueryString
-	}).(pulumi.StringPtrOutput)
-}
-
-// Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration'.
-func (o RedirectConfigurationResponsePtrOutput) OdataType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedirectConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.OdataType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The protocol of the destination to where the traffic is redirected
-func (o RedirectConfigurationResponsePtrOutput) RedirectProtocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedirectConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RedirectProtocol
-	}).(pulumi.StringPtrOutput)
-}
-
-// The redirect type the rule will use when redirecting traffic.
-func (o RedirectConfigurationResponsePtrOutput) RedirectType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RedirectConfigurationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RedirectType
-	}).(pulumi.StringPtrOutput)
-}
-
 // Reference to a public IP address.
 type ReferencedPublicIpAddressResponse struct {
 	// The PublicIPAddress Reference.
@@ -7059,6 +8415,75 @@ func (o ReferencedPublicIpAddressResponseArrayOutput) Index(i pulumi.IntInput) R
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReferencedPublicIpAddressResponse {
 		return vs[0].([]ReferencedPublicIpAddressResponse)[vs[1].(int)]
 	}).(ReferencedPublicIpAddressResponseOutput)
+}
+
+// Gateway Resiliency based Recommendations
+type ResiliencyRecommendationComponentsResponse struct {
+	// Current Score of the gateway
+	CurrentScore *string `pulumi:"currentScore"`
+	// Max score that the gateway can achieve if the specified recommendation is applied
+	MaxScore *string `pulumi:"maxScore"`
+	// Name of the Resiliency based Recommendation Component
+	Name *string `pulumi:"name"`
+	// List of Gateway Resiliency based Recommendations
+	Recommendations []GatewayResiliencyRecommendationResponse `pulumi:"recommendations"`
+}
+
+// Gateway Resiliency based Recommendations
+type ResiliencyRecommendationComponentsResponseOutput struct{ *pulumi.OutputState }
+
+func (ResiliencyRecommendationComponentsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResiliencyRecommendationComponentsResponse)(nil)).Elem()
+}
+
+func (o ResiliencyRecommendationComponentsResponseOutput) ToResiliencyRecommendationComponentsResponseOutput() ResiliencyRecommendationComponentsResponseOutput {
+	return o
+}
+
+func (o ResiliencyRecommendationComponentsResponseOutput) ToResiliencyRecommendationComponentsResponseOutputWithContext(ctx context.Context) ResiliencyRecommendationComponentsResponseOutput {
+	return o
+}
+
+// Current Score of the gateway
+func (o ResiliencyRecommendationComponentsResponseOutput) CurrentScore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResiliencyRecommendationComponentsResponse) *string { return v.CurrentScore }).(pulumi.StringPtrOutput)
+}
+
+// Max score that the gateway can achieve if the specified recommendation is applied
+func (o ResiliencyRecommendationComponentsResponseOutput) MaxScore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResiliencyRecommendationComponentsResponse) *string { return v.MaxScore }).(pulumi.StringPtrOutput)
+}
+
+// Name of the Resiliency based Recommendation Component
+func (o ResiliencyRecommendationComponentsResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResiliencyRecommendationComponentsResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// List of Gateway Resiliency based Recommendations
+func (o ResiliencyRecommendationComponentsResponseOutput) Recommendations() GatewayResiliencyRecommendationResponseArrayOutput {
+	return o.ApplyT(func(v ResiliencyRecommendationComponentsResponse) []GatewayResiliencyRecommendationResponse {
+		return v.Recommendations
+	}).(GatewayResiliencyRecommendationResponseArrayOutput)
+}
+
+type ResiliencyRecommendationComponentsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ResiliencyRecommendationComponentsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResiliencyRecommendationComponentsResponse)(nil)).Elem()
+}
+
+func (o ResiliencyRecommendationComponentsResponseArrayOutput) ToResiliencyRecommendationComponentsResponseArrayOutput() ResiliencyRecommendationComponentsResponseArrayOutput {
+	return o
+}
+
+func (o ResiliencyRecommendationComponentsResponseArrayOutput) ToResiliencyRecommendationComponentsResponseArrayOutputWithContext(ctx context.Context) ResiliencyRecommendationComponentsResponseArrayOutput {
+	return o
+}
+
+func (o ResiliencyRecommendationComponentsResponseArrayOutput) Index(i pulumi.IntInput) ResiliencyRecommendationComponentsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResiliencyRecommendationComponentsResponse {
+		return vs[0].([]ResiliencyRecommendationComponentsResponse)[vs[1].(int)]
+	}).(ResiliencyRecommendationComponentsResponseOutput)
 }
 
 // Representation of basic resource information.
@@ -7327,6 +8752,87 @@ func (o ResourceNavigationLinkResponseArrayOutput) Index(i pulumi.IntInput) Reso
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceNavigationLinkResponse {
 		return vs[0].([]ResourceNavigationLinkResponse)[vs[1].(int)]
 	}).(ResourceNavigationLinkResponseOutput)
+}
+
+// ResourceNavigationLink resource.
+type ResourceNavigationLinkResponseV1 struct {
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Link to the external resource
+	Link *string `pulumi:"link"`
+	// Resource type of the linked resource.
+	LinkedResourceType *string `pulumi:"linkedResourceType"`
+	// Name of the resource that is unique within a resource group. This name can be used to access the resource.
+	Name *string `pulumi:"name"`
+	// Provisioning state of the ResourceNavigationLink resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// ResourceNavigationLink resource.
+type ResourceNavigationLinkResponseV1Output struct{ *pulumi.OutputState }
+
+func (ResourceNavigationLinkResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceNavigationLinkResponseV1)(nil)).Elem()
+}
+
+func (o ResourceNavigationLinkResponseV1Output) ToResourceNavigationLinkResponseV1Output() ResourceNavigationLinkResponseV1Output {
+	return o
+}
+
+func (o ResourceNavigationLinkResponseV1Output) ToResourceNavigationLinkResponseV1OutputWithContext(ctx context.Context) ResourceNavigationLinkResponseV1Output {
+	return o
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o ResourceNavigationLinkResponseV1Output) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceNavigationLinkResponseV1) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Resource ID.
+func (o ResourceNavigationLinkResponseV1Output) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceNavigationLinkResponseV1) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Link to the external resource
+func (o ResourceNavigationLinkResponseV1Output) Link() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceNavigationLinkResponseV1) *string { return v.Link }).(pulumi.StringPtrOutput)
+}
+
+// Resource type of the linked resource.
+func (o ResourceNavigationLinkResponseV1Output) LinkedResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceNavigationLinkResponseV1) *string { return v.LinkedResourceType }).(pulumi.StringPtrOutput)
+}
+
+// Name of the resource that is unique within a resource group. This name can be used to access the resource.
+func (o ResourceNavigationLinkResponseV1Output) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResourceNavigationLinkResponseV1) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Provisioning state of the ResourceNavigationLink resource.
+func (o ResourceNavigationLinkResponseV1Output) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ResourceNavigationLinkResponseV1) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+type ResourceNavigationLinkResponseV1ArrayOutput struct{ *pulumi.OutputState }
+
+func (ResourceNavigationLinkResponseV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResourceNavigationLinkResponseV1)(nil)).Elem()
+}
+
+func (o ResourceNavigationLinkResponseV1ArrayOutput) ToResourceNavigationLinkResponseV1ArrayOutput() ResourceNavigationLinkResponseV1ArrayOutput {
+	return o
+}
+
+func (o ResourceNavigationLinkResponseV1ArrayOutput) ToResourceNavigationLinkResponseV1ArrayOutputWithContext(ctx context.Context) ResourceNavigationLinkResponseV1ArrayOutput {
+	return o
+}
+
+func (o ResourceNavigationLinkResponseV1ArrayOutput) Index(i pulumi.IntInput) ResourceNavigationLinkResponseV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResourceNavigationLinkResponseV1 {
+		return vs[0].([]ResourceNavigationLinkResponseV1)[vs[1].(int)]
+	}).(ResourceNavigationLinkResponseV1Output)
 }
 
 // Parameters that define the retention policy for flow log.
@@ -8312,6 +9818,152 @@ func (o RouteResponseArrayOutput) Index(i pulumi.IntInput) RouteResponseOutput {
 	}).(RouteResponseOutput)
 }
 
+// Route resource
+type RouteResponseV1 struct {
+	// The destination CIDR to which the route applies.
+	AddressPrefix *string `pulumi:"addressPrefix"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag *string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+	Name *string `pulumi:"name"`
+	// The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
+	NextHopIpAddress *string `pulumi:"nextHopIpAddress"`
+	// The type of Azure hop the packet should be sent to.
+	NextHopType string `pulumi:"nextHopType"`
+	// The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+	ProvisioningState *string `pulumi:"provisioningState"`
+}
+
+// Route resource
+type RouteResponseV1Output struct{ *pulumi.OutputState }
+
+func (RouteResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteResponseV1)(nil)).Elem()
+}
+
+func (o RouteResponseV1Output) ToRouteResponseV1Output() RouteResponseV1Output {
+	return o
+}
+
+func (o RouteResponseV1Output) ToRouteResponseV1OutputWithContext(ctx context.Context) RouteResponseV1Output {
+	return o
+}
+
+// The destination CIDR to which the route applies.
+func (o RouteResponseV1Output) AddressPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteResponseV1) *string { return v.AddressPrefix }).(pulumi.StringPtrOutput)
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o RouteResponseV1Output) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteResponseV1) *string { return v.Etag }).(pulumi.StringPtrOutput)
+}
+
+// Resource ID.
+func (o RouteResponseV1Output) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteResponseV1) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+func (o RouteResponseV1Output) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteResponseV1) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
+func (o RouteResponseV1Output) NextHopIpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteResponseV1) *string { return v.NextHopIpAddress }).(pulumi.StringPtrOutput)
+}
+
+// The type of Azure hop the packet should be sent to.
+func (o RouteResponseV1Output) NextHopType() pulumi.StringOutput {
+	return o.ApplyT(func(v RouteResponseV1) string { return v.NextHopType }).(pulumi.StringOutput)
+}
+
+// The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+func (o RouteResponseV1Output) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteResponseV1) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+}
+
+type RouteResponseV1ArrayOutput struct{ *pulumi.OutputState }
+
+func (RouteResponseV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteResponseV1)(nil)).Elem()
+}
+
+func (o RouteResponseV1ArrayOutput) ToRouteResponseV1ArrayOutput() RouteResponseV1ArrayOutput {
+	return o
+}
+
+func (o RouteResponseV1ArrayOutput) ToRouteResponseV1ArrayOutputWithContext(ctx context.Context) RouteResponseV1ArrayOutput {
+	return o
+}
+
+func (o RouteResponseV1ArrayOutput) Index(i pulumi.IntInput) RouteResponseV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouteResponseV1 {
+		return vs[0].([]RouteResponseV1)[vs[1].(int)]
+	}).(RouteResponseV1Output)
+}
+
+type RouteSourceDetailsResponse struct {
+	// Express Route Circuit identifier
+	Circuit *string `pulumi:"circuit"`
+	// Flag to indicate if the route learned from the primary device is active or passive
+	Pri *string `pulumi:"pri"`
+	// Flag to indicate if the route learned from the secondary device is active or passive
+	Sec *string `pulumi:"sec"`
+}
+
+type RouteSourceDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (RouteSourceDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteSourceDetailsResponse)(nil)).Elem()
+}
+
+func (o RouteSourceDetailsResponseOutput) ToRouteSourceDetailsResponseOutput() RouteSourceDetailsResponseOutput {
+	return o
+}
+
+func (o RouteSourceDetailsResponseOutput) ToRouteSourceDetailsResponseOutputWithContext(ctx context.Context) RouteSourceDetailsResponseOutput {
+	return o
+}
+
+// Express Route Circuit identifier
+func (o RouteSourceDetailsResponseOutput) Circuit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteSourceDetailsResponse) *string { return v.Circuit }).(pulumi.StringPtrOutput)
+}
+
+// Flag to indicate if the route learned from the primary device is active or passive
+func (o RouteSourceDetailsResponseOutput) Pri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteSourceDetailsResponse) *string { return v.Pri }).(pulumi.StringPtrOutput)
+}
+
+// Flag to indicate if the route learned from the secondary device is active or passive
+func (o RouteSourceDetailsResponseOutput) Sec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteSourceDetailsResponse) *string { return v.Sec }).(pulumi.StringPtrOutput)
+}
+
+type RouteSourceDetailsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RouteSourceDetailsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouteSourceDetailsResponse)(nil)).Elem()
+}
+
+func (o RouteSourceDetailsResponseArrayOutput) ToRouteSourceDetailsResponseArrayOutput() RouteSourceDetailsResponseArrayOutput {
+	return o
+}
+
+func (o RouteSourceDetailsResponseArrayOutput) ToRouteSourceDetailsResponseArrayOutputWithContext(ctx context.Context) RouteSourceDetailsResponseArrayOutput {
+	return o
+}
+
+func (o RouteSourceDetailsResponseArrayOutput) Index(i pulumi.IntInput) RouteSourceDetailsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouteSourceDetailsResponse {
+		return vs[0].([]RouteSourceDetailsResponse)[vs[1].(int)]
+	}).(RouteSourceDetailsResponseOutput)
+}
+
 // Route table resource.
 type RouteTableType struct {
 	// Whether to disable the routes learned by BGP on that route table. True means disable.
@@ -8796,8 +10448,524 @@ func (o RouteTableResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Route table resource.
+type RouteTableResponseV1 struct {
+	// Gets or sets whether to disable the routes learned by BGP on that route table. True means disable.
+	DisableBgpRoutePropagation *bool `pulumi:"disableBgpRoutePropagation"`
+	// Gets a unique read-only string that changes whenever the resource is updated.
+	Etag *string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+	ProvisioningState *string `pulumi:"provisioningState"`
+	// Collection of routes contained within a route table.
+	Routes []RouteResponseV1 `pulumi:"routes"`
+	// A collection of references to subnets.
+	Subnets []SubnetResponse `pulumi:"subnets"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
+}
+
+// Route table resource.
+type RouteTableResponseV1Output struct{ *pulumi.OutputState }
+
+func (RouteTableResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteTableResponseV1)(nil)).Elem()
+}
+
+func (o RouteTableResponseV1Output) ToRouteTableResponseV1Output() RouteTableResponseV1Output {
+	return o
+}
+
+func (o RouteTableResponseV1Output) ToRouteTableResponseV1OutputWithContext(ctx context.Context) RouteTableResponseV1Output {
+	return o
+}
+
+// Gets or sets whether to disable the routes learned by BGP on that route table. True means disable.
+func (o RouteTableResponseV1Output) DisableBgpRoutePropagation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RouteTableResponseV1) *bool { return v.DisableBgpRoutePropagation }).(pulumi.BoolPtrOutput)
+}
+
+// Gets a unique read-only string that changes whenever the resource is updated.
+func (o RouteTableResponseV1Output) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteTableResponseV1) *string { return v.Etag }).(pulumi.StringPtrOutput)
+}
+
+// Resource ID.
+func (o RouteTableResponseV1Output) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteTableResponseV1) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Resource location.
+func (o RouteTableResponseV1Output) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteTableResponseV1) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Resource name.
+func (o RouteTableResponseV1Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RouteTableResponseV1) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+func (o RouteTableResponseV1Output) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteTableResponseV1) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+}
+
+// Collection of routes contained within a route table.
+func (o RouteTableResponseV1Output) Routes() RouteResponseV1ArrayOutput {
+	return o.ApplyT(func(v RouteTableResponseV1) []RouteResponseV1 { return v.Routes }).(RouteResponseV1ArrayOutput)
+}
+
+// A collection of references to subnets.
+func (o RouteTableResponseV1Output) Subnets() SubnetResponseArrayOutput {
+	return o.ApplyT(func(v RouteTableResponseV1) []SubnetResponse { return v.Subnets }).(SubnetResponseArrayOutput)
+}
+
+// Resource tags.
+func (o RouteTableResponseV1Output) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RouteTableResponseV1) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Resource type.
+func (o RouteTableResponseV1Output) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v RouteTableResponseV1) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type RouteTableResponseV1PtrOutput struct{ *pulumi.OutputState }
+
+func (RouteTableResponseV1PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteTableResponseV1)(nil)).Elem()
+}
+
+func (o RouteTableResponseV1PtrOutput) ToRouteTableResponseV1PtrOutput() RouteTableResponseV1PtrOutput {
+	return o
+}
+
+func (o RouteTableResponseV1PtrOutput) ToRouteTableResponseV1PtrOutputWithContext(ctx context.Context) RouteTableResponseV1PtrOutput {
+	return o
+}
+
+func (o RouteTableResponseV1PtrOutput) Elem() RouteTableResponseV1Output {
+	return o.ApplyT(func(v *RouteTableResponseV1) RouteTableResponseV1 {
+		if v != nil {
+			return *v
+		}
+		var ret RouteTableResponseV1
+		return ret
+	}).(RouteTableResponseV1Output)
+}
+
+// Gets or sets whether to disable the routes learned by BGP on that route table. True means disable.
+func (o RouteTableResponseV1PtrOutput) DisableBgpRoutePropagation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RouteTableResponseV1) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableBgpRoutePropagation
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Gets a unique read-only string that changes whenever the resource is updated.
+func (o RouteTableResponseV1PtrOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteTableResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Etag
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource ID.
+func (o RouteTableResponseV1PtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteTableResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource location.
+func (o RouteTableResponseV1PtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteTableResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource name.
+func (o RouteTableResponseV1PtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteTableResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+func (o RouteTableResponseV1PtrOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteTableResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisioningState
+	}).(pulumi.StringPtrOutput)
+}
+
+// Collection of routes contained within a route table.
+func (o RouteTableResponseV1PtrOutput) Routes() RouteResponseV1ArrayOutput {
+	return o.ApplyT(func(v *RouteTableResponseV1) []RouteResponseV1 {
+		if v == nil {
+			return nil
+		}
+		return v.Routes
+	}).(RouteResponseV1ArrayOutput)
+}
+
+// A collection of references to subnets.
+func (o RouteTableResponseV1PtrOutput) Subnets() SubnetResponseArrayOutput {
+	return o.ApplyT(func(v *RouteTableResponseV1) []SubnetResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Subnets
+	}).(SubnetResponseArrayOutput)
+}
+
+// Resource tags.
+func (o RouteTableResponseV1PtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RouteTableResponseV1) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Resource type.
+func (o RouteTableResponseV1PtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteTableResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Properties of route target address
+type RouteTargetAddressPropertiesFormat struct {
+	// The private IPv4 or IPv6 address of the service gateway route target address.
+	PrivateIPAddress *string `pulumi:"privateIPAddress"`
+	// The Private IP allocation method.
+	PrivateIPAllocationMethod *string `pulumi:"privateIPAllocationMethod"`
+	// The reference to the subnet resource.
+	Subnet *SubnetType `pulumi:"subnet"`
+}
+
+// Defaults sets the appropriate defaults for RouteTargetAddressPropertiesFormat
+func (val *RouteTargetAddressPropertiesFormat) Defaults() *RouteTargetAddressPropertiesFormat {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Subnet = tmp.Subnet.Defaults()
+
+	return &tmp
+}
+
+// RouteTargetAddressPropertiesFormatInput is an input type that accepts RouteTargetAddressPropertiesFormatArgs and RouteTargetAddressPropertiesFormatOutput values.
+// You can construct a concrete instance of `RouteTargetAddressPropertiesFormatInput` via:
+//
+//	RouteTargetAddressPropertiesFormatArgs{...}
+type RouteTargetAddressPropertiesFormatInput interface {
+	pulumi.Input
+
+	ToRouteTargetAddressPropertiesFormatOutput() RouteTargetAddressPropertiesFormatOutput
+	ToRouteTargetAddressPropertiesFormatOutputWithContext(context.Context) RouteTargetAddressPropertiesFormatOutput
+}
+
+// Properties of route target address
+type RouteTargetAddressPropertiesFormatArgs struct {
+	// The private IPv4 or IPv6 address of the service gateway route target address.
+	PrivateIPAddress pulumi.StringPtrInput `pulumi:"privateIPAddress"`
+	// The Private IP allocation method.
+	PrivateIPAllocationMethod pulumi.StringPtrInput `pulumi:"privateIPAllocationMethod"`
+	// The reference to the subnet resource.
+	Subnet SubnetTypePtrInput `pulumi:"subnet"`
+}
+
+// Defaults sets the appropriate defaults for RouteTargetAddressPropertiesFormatArgs
+func (val *RouteTargetAddressPropertiesFormatArgs) Defaults() *RouteTargetAddressPropertiesFormatArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+
+	return &tmp
+}
+func (RouteTargetAddressPropertiesFormatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteTargetAddressPropertiesFormat)(nil)).Elem()
+}
+
+func (i RouteTargetAddressPropertiesFormatArgs) ToRouteTargetAddressPropertiesFormatOutput() RouteTargetAddressPropertiesFormatOutput {
+	return i.ToRouteTargetAddressPropertiesFormatOutputWithContext(context.Background())
+}
+
+func (i RouteTargetAddressPropertiesFormatArgs) ToRouteTargetAddressPropertiesFormatOutputWithContext(ctx context.Context) RouteTargetAddressPropertiesFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteTargetAddressPropertiesFormatOutput)
+}
+
+func (i RouteTargetAddressPropertiesFormatArgs) ToRouteTargetAddressPropertiesFormatPtrOutput() RouteTargetAddressPropertiesFormatPtrOutput {
+	return i.ToRouteTargetAddressPropertiesFormatPtrOutputWithContext(context.Background())
+}
+
+func (i RouteTargetAddressPropertiesFormatArgs) ToRouteTargetAddressPropertiesFormatPtrOutputWithContext(ctx context.Context) RouteTargetAddressPropertiesFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteTargetAddressPropertiesFormatOutput).ToRouteTargetAddressPropertiesFormatPtrOutputWithContext(ctx)
+}
+
+// RouteTargetAddressPropertiesFormatPtrInput is an input type that accepts RouteTargetAddressPropertiesFormatArgs, RouteTargetAddressPropertiesFormatPtr and RouteTargetAddressPropertiesFormatPtrOutput values.
+// You can construct a concrete instance of `RouteTargetAddressPropertiesFormatPtrInput` via:
+//
+//	        RouteTargetAddressPropertiesFormatArgs{...}
+//
+//	or:
+//
+//	        nil
+type RouteTargetAddressPropertiesFormatPtrInput interface {
+	pulumi.Input
+
+	ToRouteTargetAddressPropertiesFormatPtrOutput() RouteTargetAddressPropertiesFormatPtrOutput
+	ToRouteTargetAddressPropertiesFormatPtrOutputWithContext(context.Context) RouteTargetAddressPropertiesFormatPtrOutput
+}
+
+type routeTargetAddressPropertiesFormatPtrType RouteTargetAddressPropertiesFormatArgs
+
+func RouteTargetAddressPropertiesFormatPtr(v *RouteTargetAddressPropertiesFormatArgs) RouteTargetAddressPropertiesFormatPtrInput {
+	return (*routeTargetAddressPropertiesFormatPtrType)(v)
+}
+
+func (*routeTargetAddressPropertiesFormatPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteTargetAddressPropertiesFormat)(nil)).Elem()
+}
+
+func (i *routeTargetAddressPropertiesFormatPtrType) ToRouteTargetAddressPropertiesFormatPtrOutput() RouteTargetAddressPropertiesFormatPtrOutput {
+	return i.ToRouteTargetAddressPropertiesFormatPtrOutputWithContext(context.Background())
+}
+
+func (i *routeTargetAddressPropertiesFormatPtrType) ToRouteTargetAddressPropertiesFormatPtrOutputWithContext(ctx context.Context) RouteTargetAddressPropertiesFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouteTargetAddressPropertiesFormatPtrOutput)
+}
+
+// Properties of route target address
+type RouteTargetAddressPropertiesFormatOutput struct{ *pulumi.OutputState }
+
+func (RouteTargetAddressPropertiesFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteTargetAddressPropertiesFormat)(nil)).Elem()
+}
+
+func (o RouteTargetAddressPropertiesFormatOutput) ToRouteTargetAddressPropertiesFormatOutput() RouteTargetAddressPropertiesFormatOutput {
+	return o
+}
+
+func (o RouteTargetAddressPropertiesFormatOutput) ToRouteTargetAddressPropertiesFormatOutputWithContext(ctx context.Context) RouteTargetAddressPropertiesFormatOutput {
+	return o
+}
+
+func (o RouteTargetAddressPropertiesFormatOutput) ToRouteTargetAddressPropertiesFormatPtrOutput() RouteTargetAddressPropertiesFormatPtrOutput {
+	return o.ToRouteTargetAddressPropertiesFormatPtrOutputWithContext(context.Background())
+}
+
+func (o RouteTargetAddressPropertiesFormatOutput) ToRouteTargetAddressPropertiesFormatPtrOutputWithContext(ctx context.Context) RouteTargetAddressPropertiesFormatPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RouteTargetAddressPropertiesFormat) *RouteTargetAddressPropertiesFormat {
+		return &v
+	}).(RouteTargetAddressPropertiesFormatPtrOutput)
+}
+
+// The private IPv4 or IPv6 address of the service gateway route target address.
+func (o RouteTargetAddressPropertiesFormatOutput) PrivateIPAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteTargetAddressPropertiesFormat) *string { return v.PrivateIPAddress }).(pulumi.StringPtrOutput)
+}
+
+// The Private IP allocation method.
+func (o RouteTargetAddressPropertiesFormatOutput) PrivateIPAllocationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteTargetAddressPropertiesFormat) *string { return v.PrivateIPAllocationMethod }).(pulumi.StringPtrOutput)
+}
+
+// The reference to the subnet resource.
+func (o RouteTargetAddressPropertiesFormatOutput) Subnet() SubnetTypePtrOutput {
+	return o.ApplyT(func(v RouteTargetAddressPropertiesFormat) *SubnetType { return v.Subnet }).(SubnetTypePtrOutput)
+}
+
+type RouteTargetAddressPropertiesFormatPtrOutput struct{ *pulumi.OutputState }
+
+func (RouteTargetAddressPropertiesFormatPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteTargetAddressPropertiesFormat)(nil)).Elem()
+}
+
+func (o RouteTargetAddressPropertiesFormatPtrOutput) ToRouteTargetAddressPropertiesFormatPtrOutput() RouteTargetAddressPropertiesFormatPtrOutput {
+	return o
+}
+
+func (o RouteTargetAddressPropertiesFormatPtrOutput) ToRouteTargetAddressPropertiesFormatPtrOutputWithContext(ctx context.Context) RouteTargetAddressPropertiesFormatPtrOutput {
+	return o
+}
+
+func (o RouteTargetAddressPropertiesFormatPtrOutput) Elem() RouteTargetAddressPropertiesFormatOutput {
+	return o.ApplyT(func(v *RouteTargetAddressPropertiesFormat) RouteTargetAddressPropertiesFormat {
+		if v != nil {
+			return *v
+		}
+		var ret RouteTargetAddressPropertiesFormat
+		return ret
+	}).(RouteTargetAddressPropertiesFormatOutput)
+}
+
+// The private IPv4 or IPv6 address of the service gateway route target address.
+func (o RouteTargetAddressPropertiesFormatPtrOutput) PrivateIPAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteTargetAddressPropertiesFormat) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateIPAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Private IP allocation method.
+func (o RouteTargetAddressPropertiesFormatPtrOutput) PrivateIPAllocationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteTargetAddressPropertiesFormat) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateIPAllocationMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// The reference to the subnet resource.
+func (o RouteTargetAddressPropertiesFormatPtrOutput) Subnet() SubnetTypePtrOutput {
+	return o.ApplyT(func(v *RouteTargetAddressPropertiesFormat) *SubnetType {
+		if v == nil {
+			return nil
+		}
+		return v.Subnet
+	}).(SubnetTypePtrOutput)
+}
+
+// Properties of route target address
+type RouteTargetAddressPropertiesFormatResponse struct {
+	// The private IPv4 or IPv6 address of the service gateway route target address.
+	PrivateIPAddress *string `pulumi:"privateIPAddress"`
+	// The Private IP allocation method.
+	PrivateIPAllocationMethod *string `pulumi:"privateIPAllocationMethod"`
+	// The reference to the subnet resource.
+	Subnet *SubnetResponseV2 `pulumi:"subnet"`
+}
+
+// Defaults sets the appropriate defaults for RouteTargetAddressPropertiesFormatResponse
+func (val *RouteTargetAddressPropertiesFormatResponse) Defaults() *RouteTargetAddressPropertiesFormatResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.Subnet = tmp.Subnet.Defaults()
+
+	return &tmp
+}
+
+// Properties of route target address
+type RouteTargetAddressPropertiesFormatResponseOutput struct{ *pulumi.OutputState }
+
+func (RouteTargetAddressPropertiesFormatResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouteTargetAddressPropertiesFormatResponse)(nil)).Elem()
+}
+
+func (o RouteTargetAddressPropertiesFormatResponseOutput) ToRouteTargetAddressPropertiesFormatResponseOutput() RouteTargetAddressPropertiesFormatResponseOutput {
+	return o
+}
+
+func (o RouteTargetAddressPropertiesFormatResponseOutput) ToRouteTargetAddressPropertiesFormatResponseOutputWithContext(ctx context.Context) RouteTargetAddressPropertiesFormatResponseOutput {
+	return o
+}
+
+// The private IPv4 or IPv6 address of the service gateway route target address.
+func (o RouteTargetAddressPropertiesFormatResponseOutput) PrivateIPAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteTargetAddressPropertiesFormatResponse) *string { return v.PrivateIPAddress }).(pulumi.StringPtrOutput)
+}
+
+// The Private IP allocation method.
+func (o RouteTargetAddressPropertiesFormatResponseOutput) PrivateIPAllocationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouteTargetAddressPropertiesFormatResponse) *string { return v.PrivateIPAllocationMethod }).(pulumi.StringPtrOutput)
+}
+
+// The reference to the subnet resource.
+func (o RouteTargetAddressPropertiesFormatResponseOutput) Subnet() SubnetResponseV2PtrOutput {
+	return o.ApplyT(func(v RouteTargetAddressPropertiesFormatResponse) *SubnetResponseV2 { return v.Subnet }).(SubnetResponseV2PtrOutput)
+}
+
+type RouteTargetAddressPropertiesFormatResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (RouteTargetAddressPropertiesFormatResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouteTargetAddressPropertiesFormatResponse)(nil)).Elem()
+}
+
+func (o RouteTargetAddressPropertiesFormatResponsePtrOutput) ToRouteTargetAddressPropertiesFormatResponsePtrOutput() RouteTargetAddressPropertiesFormatResponsePtrOutput {
+	return o
+}
+
+func (o RouteTargetAddressPropertiesFormatResponsePtrOutput) ToRouteTargetAddressPropertiesFormatResponsePtrOutputWithContext(ctx context.Context) RouteTargetAddressPropertiesFormatResponsePtrOutput {
+	return o
+}
+
+func (o RouteTargetAddressPropertiesFormatResponsePtrOutput) Elem() RouteTargetAddressPropertiesFormatResponseOutput {
+	return o.ApplyT(func(v *RouteTargetAddressPropertiesFormatResponse) RouteTargetAddressPropertiesFormatResponse {
+		if v != nil {
+			return *v
+		}
+		var ret RouteTargetAddressPropertiesFormatResponse
+		return ret
+	}).(RouteTargetAddressPropertiesFormatResponseOutput)
+}
+
+// The private IPv4 or IPv6 address of the service gateway route target address.
+func (o RouteTargetAddressPropertiesFormatResponsePtrOutput) PrivateIPAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteTargetAddressPropertiesFormatResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateIPAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Private IP allocation method.
+func (o RouteTargetAddressPropertiesFormatResponsePtrOutput) PrivateIPAllocationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RouteTargetAddressPropertiesFormatResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateIPAllocationMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// The reference to the subnet resource.
+func (o RouteTargetAddressPropertiesFormatResponsePtrOutput) Subnet() SubnetResponseV2PtrOutput {
+	return o.ApplyT(func(v *RouteTargetAddressPropertiesFormatResponse) *SubnetResponseV2 {
+		if v == nil {
+			return nil
+		}
+		return v.Subnet
+	}).(SubnetResponseV2PtrOutput)
+}
+
 // Routing Configuration indicating the associated and propagated route tables for this connection.
-type RoutingConfiguration struct {
+type RoutingConfigurationType struct {
 	// The resource id RouteTable associated with this RoutingConfiguration.
 	AssociatedRouteTable *SubResource `pulumi:"associatedRouteTable"`
 	// The resource id of the RouteMap associated with this RoutingConfiguration for inbound learned routes.
@@ -8810,19 +10978,19 @@ type RoutingConfiguration struct {
 	VnetRoutes *VnetRoute `pulumi:"vnetRoutes"`
 }
 
-// RoutingConfigurationInput is an input type that accepts RoutingConfigurationArgs and RoutingConfigurationOutput values.
-// You can construct a concrete instance of `RoutingConfigurationInput` via:
+// RoutingConfigurationTypeInput is an input type that accepts RoutingConfigurationTypeArgs and RoutingConfigurationTypeOutput values.
+// You can construct a concrete instance of `RoutingConfigurationTypeInput` via:
 //
-//	RoutingConfigurationArgs{...}
-type RoutingConfigurationInput interface {
+//	RoutingConfigurationTypeArgs{...}
+type RoutingConfigurationTypeInput interface {
 	pulumi.Input
 
-	ToRoutingConfigurationOutput() RoutingConfigurationOutput
-	ToRoutingConfigurationOutputWithContext(context.Context) RoutingConfigurationOutput
+	ToRoutingConfigurationTypeOutput() RoutingConfigurationTypeOutput
+	ToRoutingConfigurationTypeOutputWithContext(context.Context) RoutingConfigurationTypeOutput
 }
 
 // Routing Configuration indicating the associated and propagated route tables for this connection.
-type RoutingConfigurationArgs struct {
+type RoutingConfigurationTypeArgs struct {
 	// The resource id RouteTable associated with this RoutingConfiguration.
 	AssociatedRouteTable SubResourcePtrInput `pulumi:"associatedRouteTable"`
 	// The resource id of the RouteMap associated with this RoutingConfiguration for inbound learned routes.
@@ -8835,136 +11003,136 @@ type RoutingConfigurationArgs struct {
 	VnetRoutes VnetRoutePtrInput `pulumi:"vnetRoutes"`
 }
 
-func (RoutingConfigurationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoutingConfiguration)(nil)).Elem()
+func (RoutingConfigurationTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutingConfigurationType)(nil)).Elem()
 }
 
-func (i RoutingConfigurationArgs) ToRoutingConfigurationOutput() RoutingConfigurationOutput {
-	return i.ToRoutingConfigurationOutputWithContext(context.Background())
+func (i RoutingConfigurationTypeArgs) ToRoutingConfigurationTypeOutput() RoutingConfigurationTypeOutput {
+	return i.ToRoutingConfigurationTypeOutputWithContext(context.Background())
 }
 
-func (i RoutingConfigurationArgs) ToRoutingConfigurationOutputWithContext(ctx context.Context) RoutingConfigurationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoutingConfigurationOutput)
+func (i RoutingConfigurationTypeArgs) ToRoutingConfigurationTypeOutputWithContext(ctx context.Context) RoutingConfigurationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutingConfigurationTypeOutput)
 }
 
-func (i RoutingConfigurationArgs) ToRoutingConfigurationPtrOutput() RoutingConfigurationPtrOutput {
-	return i.ToRoutingConfigurationPtrOutputWithContext(context.Background())
+func (i RoutingConfigurationTypeArgs) ToRoutingConfigurationTypePtrOutput() RoutingConfigurationTypePtrOutput {
+	return i.ToRoutingConfigurationTypePtrOutputWithContext(context.Background())
 }
 
-func (i RoutingConfigurationArgs) ToRoutingConfigurationPtrOutputWithContext(ctx context.Context) RoutingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoutingConfigurationOutput).ToRoutingConfigurationPtrOutputWithContext(ctx)
+func (i RoutingConfigurationTypeArgs) ToRoutingConfigurationTypePtrOutputWithContext(ctx context.Context) RoutingConfigurationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutingConfigurationTypeOutput).ToRoutingConfigurationTypePtrOutputWithContext(ctx)
 }
 
-// RoutingConfigurationPtrInput is an input type that accepts RoutingConfigurationArgs, RoutingConfigurationPtr and RoutingConfigurationPtrOutput values.
-// You can construct a concrete instance of `RoutingConfigurationPtrInput` via:
+// RoutingConfigurationTypePtrInput is an input type that accepts RoutingConfigurationTypeArgs, RoutingConfigurationTypePtr and RoutingConfigurationTypePtrOutput values.
+// You can construct a concrete instance of `RoutingConfigurationTypePtrInput` via:
 //
-//	        RoutingConfigurationArgs{...}
+//	        RoutingConfigurationTypeArgs{...}
 //
 //	or:
 //
 //	        nil
-type RoutingConfigurationPtrInput interface {
+type RoutingConfigurationTypePtrInput interface {
 	pulumi.Input
 
-	ToRoutingConfigurationPtrOutput() RoutingConfigurationPtrOutput
-	ToRoutingConfigurationPtrOutputWithContext(context.Context) RoutingConfigurationPtrOutput
+	ToRoutingConfigurationTypePtrOutput() RoutingConfigurationTypePtrOutput
+	ToRoutingConfigurationTypePtrOutputWithContext(context.Context) RoutingConfigurationTypePtrOutput
 }
 
-type routingConfigurationPtrType RoutingConfigurationArgs
+type routingConfigurationTypePtrType RoutingConfigurationTypeArgs
 
-func RoutingConfigurationPtr(v *RoutingConfigurationArgs) RoutingConfigurationPtrInput {
-	return (*routingConfigurationPtrType)(v)
+func RoutingConfigurationTypePtr(v *RoutingConfigurationTypeArgs) RoutingConfigurationTypePtrInput {
+	return (*routingConfigurationTypePtrType)(v)
 }
 
-func (*routingConfigurationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RoutingConfiguration)(nil)).Elem()
+func (*routingConfigurationTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoutingConfigurationType)(nil)).Elem()
 }
 
-func (i *routingConfigurationPtrType) ToRoutingConfigurationPtrOutput() RoutingConfigurationPtrOutput {
-	return i.ToRoutingConfigurationPtrOutputWithContext(context.Background())
+func (i *routingConfigurationTypePtrType) ToRoutingConfigurationTypePtrOutput() RoutingConfigurationTypePtrOutput {
+	return i.ToRoutingConfigurationTypePtrOutputWithContext(context.Background())
 }
 
-func (i *routingConfigurationPtrType) ToRoutingConfigurationPtrOutputWithContext(ctx context.Context) RoutingConfigurationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoutingConfigurationPtrOutput)
+func (i *routingConfigurationTypePtrType) ToRoutingConfigurationTypePtrOutputWithContext(ctx context.Context) RoutingConfigurationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutingConfigurationTypePtrOutput)
 }
 
 // Routing Configuration indicating the associated and propagated route tables for this connection.
-type RoutingConfigurationOutput struct{ *pulumi.OutputState }
+type RoutingConfigurationTypeOutput struct{ *pulumi.OutputState }
 
-func (RoutingConfigurationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoutingConfiguration)(nil)).Elem()
+func (RoutingConfigurationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutingConfigurationType)(nil)).Elem()
 }
 
-func (o RoutingConfigurationOutput) ToRoutingConfigurationOutput() RoutingConfigurationOutput {
+func (o RoutingConfigurationTypeOutput) ToRoutingConfigurationTypeOutput() RoutingConfigurationTypeOutput {
 	return o
 }
 
-func (o RoutingConfigurationOutput) ToRoutingConfigurationOutputWithContext(ctx context.Context) RoutingConfigurationOutput {
+func (o RoutingConfigurationTypeOutput) ToRoutingConfigurationTypeOutputWithContext(ctx context.Context) RoutingConfigurationTypeOutput {
 	return o
 }
 
-func (o RoutingConfigurationOutput) ToRoutingConfigurationPtrOutput() RoutingConfigurationPtrOutput {
-	return o.ToRoutingConfigurationPtrOutputWithContext(context.Background())
+func (o RoutingConfigurationTypeOutput) ToRoutingConfigurationTypePtrOutput() RoutingConfigurationTypePtrOutput {
+	return o.ToRoutingConfigurationTypePtrOutputWithContext(context.Background())
 }
 
-func (o RoutingConfigurationOutput) ToRoutingConfigurationPtrOutputWithContext(ctx context.Context) RoutingConfigurationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoutingConfiguration) *RoutingConfiguration {
+func (o RoutingConfigurationTypeOutput) ToRoutingConfigurationTypePtrOutputWithContext(ctx context.Context) RoutingConfigurationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoutingConfigurationType) *RoutingConfigurationType {
 		return &v
-	}).(RoutingConfigurationPtrOutput)
+	}).(RoutingConfigurationTypePtrOutput)
 }
 
 // The resource id RouteTable associated with this RoutingConfiguration.
-func (o RoutingConfigurationOutput) AssociatedRouteTable() SubResourcePtrOutput {
-	return o.ApplyT(func(v RoutingConfiguration) *SubResource { return v.AssociatedRouteTable }).(SubResourcePtrOutput)
+func (o RoutingConfigurationTypeOutput) AssociatedRouteTable() SubResourcePtrOutput {
+	return o.ApplyT(func(v RoutingConfigurationType) *SubResource { return v.AssociatedRouteTable }).(SubResourcePtrOutput)
 }
 
 // The resource id of the RouteMap associated with this RoutingConfiguration for inbound learned routes.
-func (o RoutingConfigurationOutput) InboundRouteMap() SubResourcePtrOutput {
-	return o.ApplyT(func(v RoutingConfiguration) *SubResource { return v.InboundRouteMap }).(SubResourcePtrOutput)
+func (o RoutingConfigurationTypeOutput) InboundRouteMap() SubResourcePtrOutput {
+	return o.ApplyT(func(v RoutingConfigurationType) *SubResource { return v.InboundRouteMap }).(SubResourcePtrOutput)
 }
 
 // The resource id of theRouteMap associated with this RoutingConfiguration for outbound advertised routes.
-func (o RoutingConfigurationOutput) OutboundRouteMap() SubResourcePtrOutput {
-	return o.ApplyT(func(v RoutingConfiguration) *SubResource { return v.OutboundRouteMap }).(SubResourcePtrOutput)
+func (o RoutingConfigurationTypeOutput) OutboundRouteMap() SubResourcePtrOutput {
+	return o.ApplyT(func(v RoutingConfigurationType) *SubResource { return v.OutboundRouteMap }).(SubResourcePtrOutput)
 }
 
 // The list of RouteTables to advertise the routes to.
-func (o RoutingConfigurationOutput) PropagatedRouteTables() PropagatedRouteTablePtrOutput {
-	return o.ApplyT(func(v RoutingConfiguration) *PropagatedRouteTable { return v.PropagatedRouteTables }).(PropagatedRouteTablePtrOutput)
+func (o RoutingConfigurationTypeOutput) PropagatedRouteTables() PropagatedRouteTablePtrOutput {
+	return o.ApplyT(func(v RoutingConfigurationType) *PropagatedRouteTable { return v.PropagatedRouteTables }).(PropagatedRouteTablePtrOutput)
 }
 
 // List of routes that control routing from VirtualHub into a virtual network connection.
-func (o RoutingConfigurationOutput) VnetRoutes() VnetRoutePtrOutput {
-	return o.ApplyT(func(v RoutingConfiguration) *VnetRoute { return v.VnetRoutes }).(VnetRoutePtrOutput)
+func (o RoutingConfigurationTypeOutput) VnetRoutes() VnetRoutePtrOutput {
+	return o.ApplyT(func(v RoutingConfigurationType) *VnetRoute { return v.VnetRoutes }).(VnetRoutePtrOutput)
 }
 
-type RoutingConfigurationPtrOutput struct{ *pulumi.OutputState }
+type RoutingConfigurationTypePtrOutput struct{ *pulumi.OutputState }
 
-func (RoutingConfigurationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RoutingConfiguration)(nil)).Elem()
+func (RoutingConfigurationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoutingConfigurationType)(nil)).Elem()
 }
 
-func (o RoutingConfigurationPtrOutput) ToRoutingConfigurationPtrOutput() RoutingConfigurationPtrOutput {
+func (o RoutingConfigurationTypePtrOutput) ToRoutingConfigurationTypePtrOutput() RoutingConfigurationTypePtrOutput {
 	return o
 }
 
-func (o RoutingConfigurationPtrOutput) ToRoutingConfigurationPtrOutputWithContext(ctx context.Context) RoutingConfigurationPtrOutput {
+func (o RoutingConfigurationTypePtrOutput) ToRoutingConfigurationTypePtrOutputWithContext(ctx context.Context) RoutingConfigurationTypePtrOutput {
 	return o
 }
 
-func (o RoutingConfigurationPtrOutput) Elem() RoutingConfigurationOutput {
-	return o.ApplyT(func(v *RoutingConfiguration) RoutingConfiguration {
+func (o RoutingConfigurationTypePtrOutput) Elem() RoutingConfigurationTypeOutput {
+	return o.ApplyT(func(v *RoutingConfigurationType) RoutingConfigurationType {
 		if v != nil {
 			return *v
 		}
-		var ret RoutingConfiguration
+		var ret RoutingConfigurationType
 		return ret
-	}).(RoutingConfigurationOutput)
+	}).(RoutingConfigurationTypeOutput)
 }
 
 // The resource id RouteTable associated with this RoutingConfiguration.
-func (o RoutingConfigurationPtrOutput) AssociatedRouteTable() SubResourcePtrOutput {
-	return o.ApplyT(func(v *RoutingConfiguration) *SubResource {
+func (o RoutingConfigurationTypePtrOutput) AssociatedRouteTable() SubResourcePtrOutput {
+	return o.ApplyT(func(v *RoutingConfigurationType) *SubResource {
 		if v == nil {
 			return nil
 		}
@@ -8973,8 +11141,8 @@ func (o RoutingConfigurationPtrOutput) AssociatedRouteTable() SubResourcePtrOutp
 }
 
 // The resource id of the RouteMap associated with this RoutingConfiguration for inbound learned routes.
-func (o RoutingConfigurationPtrOutput) InboundRouteMap() SubResourcePtrOutput {
-	return o.ApplyT(func(v *RoutingConfiguration) *SubResource {
+func (o RoutingConfigurationTypePtrOutput) InboundRouteMap() SubResourcePtrOutput {
+	return o.ApplyT(func(v *RoutingConfigurationType) *SubResource {
 		if v == nil {
 			return nil
 		}
@@ -8983,8 +11151,8 @@ func (o RoutingConfigurationPtrOutput) InboundRouteMap() SubResourcePtrOutput {
 }
 
 // The resource id of theRouteMap associated with this RoutingConfiguration for outbound advertised routes.
-func (o RoutingConfigurationPtrOutput) OutboundRouteMap() SubResourcePtrOutput {
-	return o.ApplyT(func(v *RoutingConfiguration) *SubResource {
+func (o RoutingConfigurationTypePtrOutput) OutboundRouteMap() SubResourcePtrOutput {
+	return o.ApplyT(func(v *RoutingConfigurationType) *SubResource {
 		if v == nil {
 			return nil
 		}
@@ -8993,8 +11161,8 @@ func (o RoutingConfigurationPtrOutput) OutboundRouteMap() SubResourcePtrOutput {
 }
 
 // The list of RouteTables to advertise the routes to.
-func (o RoutingConfigurationPtrOutput) PropagatedRouteTables() PropagatedRouteTablePtrOutput {
-	return o.ApplyT(func(v *RoutingConfiguration) *PropagatedRouteTable {
+func (o RoutingConfigurationTypePtrOutput) PropagatedRouteTables() PropagatedRouteTablePtrOutput {
+	return o.ApplyT(func(v *RoutingConfigurationType) *PropagatedRouteTable {
 		if v == nil {
 			return nil
 		}
@@ -9003,8 +11171,8 @@ func (o RoutingConfigurationPtrOutput) PropagatedRouteTables() PropagatedRouteTa
 }
 
 // List of routes that control routing from VirtualHub into a virtual network connection.
-func (o RoutingConfigurationPtrOutput) VnetRoutes() VnetRoutePtrOutput {
-	return o.ApplyT(func(v *RoutingConfiguration) *VnetRoute {
+func (o RoutingConfigurationTypePtrOutput) VnetRoutes() VnetRoutePtrOutput {
+	return o.ApplyT(func(v *RoutingConfigurationType) *VnetRoute {
 		if v == nil {
 			return nil
 		}
@@ -9318,226 +11486,6 @@ func (o RoutingPolicyResponseArrayOutput) Index(i pulumi.IntInput) RoutingPolicy
 	}).(RoutingPolicyResponseOutput)
 }
 
-// A routing rule represents a specification for traffic to treat and where to send it, along with health probe information.
-type RoutingRuleType struct {
-	// Protocol schemes to match for this rule
-	AcceptedProtocols []string `pulumi:"acceptedProtocols"`
-	// Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
-	EnabledState *string `pulumi:"enabledState"`
-	// Frontend endpoints associated with this rule
-	FrontendEndpoints []SubResource `pulumi:"frontendEndpoints"`
-	// Resource ID.
-	Id *string `pulumi:"id"`
-	// Resource name.
-	Name *string `pulumi:"name"`
-	// The route patterns of the rule.
-	PatternsToMatch []string `pulumi:"patternsToMatch"`
-	// A reference to the routing configuration.
-	RouteConfiguration interface{} `pulumi:"routeConfiguration"`
-	// A reference to a specific Rules Engine Configuration to apply to this route.
-	RulesEngine *SubResource `pulumi:"rulesEngine"`
-	// Defines the Web Application Firewall policy for each routing rule (if applicable)
-	WebApplicationFirewallPolicyLink *RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink `pulumi:"webApplicationFirewallPolicyLink"`
-}
-
-// RoutingRuleTypeInput is an input type that accepts RoutingRuleTypeArgs and RoutingRuleTypeOutput values.
-// You can construct a concrete instance of `RoutingRuleTypeInput` via:
-//
-//	RoutingRuleTypeArgs{...}
-type RoutingRuleTypeInput interface {
-	pulumi.Input
-
-	ToRoutingRuleTypeOutput() RoutingRuleTypeOutput
-	ToRoutingRuleTypeOutputWithContext(context.Context) RoutingRuleTypeOutput
-}
-
-// A routing rule represents a specification for traffic to treat and where to send it, along with health probe information.
-type RoutingRuleTypeArgs struct {
-	// Protocol schemes to match for this rule
-	AcceptedProtocols pulumi.StringArrayInput `pulumi:"acceptedProtocols"`
-	// Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
-	EnabledState pulumi.StringPtrInput `pulumi:"enabledState"`
-	// Frontend endpoints associated with this rule
-	FrontendEndpoints SubResourceArrayInput `pulumi:"frontendEndpoints"`
-	// Resource ID.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Resource name.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The route patterns of the rule.
-	PatternsToMatch pulumi.StringArrayInput `pulumi:"patternsToMatch"`
-	// A reference to the routing configuration.
-	RouteConfiguration pulumi.Input `pulumi:"routeConfiguration"`
-	// A reference to a specific Rules Engine Configuration to apply to this route.
-	RulesEngine SubResourcePtrInput `pulumi:"rulesEngine"`
-	// Defines the Web Application Firewall policy for each routing rule (if applicable)
-	WebApplicationFirewallPolicyLink RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrInput `pulumi:"webApplicationFirewallPolicyLink"`
-}
-
-func (RoutingRuleTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoutingRuleType)(nil)).Elem()
-}
-
-func (i RoutingRuleTypeArgs) ToRoutingRuleTypeOutput() RoutingRuleTypeOutput {
-	return i.ToRoutingRuleTypeOutputWithContext(context.Background())
-}
-
-func (i RoutingRuleTypeArgs) ToRoutingRuleTypeOutputWithContext(ctx context.Context) RoutingRuleTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoutingRuleTypeOutput)
-}
-
-// RoutingRuleTypeArrayInput is an input type that accepts RoutingRuleTypeArray and RoutingRuleTypeArrayOutput values.
-// You can construct a concrete instance of `RoutingRuleTypeArrayInput` via:
-//
-//	RoutingRuleTypeArray{ RoutingRuleTypeArgs{...} }
-type RoutingRuleTypeArrayInput interface {
-	pulumi.Input
-
-	ToRoutingRuleTypeArrayOutput() RoutingRuleTypeArrayOutput
-	ToRoutingRuleTypeArrayOutputWithContext(context.Context) RoutingRuleTypeArrayOutput
-}
-
-type RoutingRuleTypeArray []RoutingRuleTypeInput
-
-func (RoutingRuleTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RoutingRuleType)(nil)).Elem()
-}
-
-func (i RoutingRuleTypeArray) ToRoutingRuleTypeArrayOutput() RoutingRuleTypeArrayOutput {
-	return i.ToRoutingRuleTypeArrayOutputWithContext(context.Background())
-}
-
-func (i RoutingRuleTypeArray) ToRoutingRuleTypeArrayOutputWithContext(ctx context.Context) RoutingRuleTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoutingRuleTypeArrayOutput)
-}
-
-// A routing rule represents a specification for traffic to treat and where to send it, along with health probe information.
-type RoutingRuleTypeOutput struct{ *pulumi.OutputState }
-
-func (RoutingRuleTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoutingRuleType)(nil)).Elem()
-}
-
-func (o RoutingRuleTypeOutput) ToRoutingRuleTypeOutput() RoutingRuleTypeOutput {
-	return o
-}
-
-func (o RoutingRuleTypeOutput) ToRoutingRuleTypeOutputWithContext(ctx context.Context) RoutingRuleTypeOutput {
-	return o
-}
-
-// Protocol schemes to match for this rule
-func (o RoutingRuleTypeOutput) AcceptedProtocols() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RoutingRuleType) []string { return v.AcceptedProtocols }).(pulumi.StringArrayOutput)
-}
-
-// Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
-func (o RoutingRuleTypeOutput) EnabledState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RoutingRuleType) *string { return v.EnabledState }).(pulumi.StringPtrOutput)
-}
-
-// Frontend endpoints associated with this rule
-func (o RoutingRuleTypeOutput) FrontendEndpoints() SubResourceArrayOutput {
-	return o.ApplyT(func(v RoutingRuleType) []SubResource { return v.FrontendEndpoints }).(SubResourceArrayOutput)
-}
-
-// Resource ID.
-func (o RoutingRuleTypeOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RoutingRuleType) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// Resource name.
-func (o RoutingRuleTypeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RoutingRuleType) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The route patterns of the rule.
-func (o RoutingRuleTypeOutput) PatternsToMatch() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RoutingRuleType) []string { return v.PatternsToMatch }).(pulumi.StringArrayOutput)
-}
-
-// A reference to the routing configuration.
-func (o RoutingRuleTypeOutput) RouteConfiguration() pulumi.AnyOutput {
-	return o.ApplyT(func(v RoutingRuleType) interface{} { return v.RouteConfiguration }).(pulumi.AnyOutput)
-}
-
-// A reference to a specific Rules Engine Configuration to apply to this route.
-func (o RoutingRuleTypeOutput) RulesEngine() SubResourcePtrOutput {
-	return o.ApplyT(func(v RoutingRuleType) *SubResource { return v.RulesEngine }).(SubResourcePtrOutput)
-}
-
-// Defines the Web Application Firewall policy for each routing rule (if applicable)
-func (o RoutingRuleTypeOutput) WebApplicationFirewallPolicyLink() RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutput {
-	return o.ApplyT(func(v RoutingRuleType) *RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink {
-		return v.WebApplicationFirewallPolicyLink
-	}).(RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutput)
-}
-
-type RoutingRuleTypeArrayOutput struct{ *pulumi.OutputState }
-
-func (RoutingRuleTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RoutingRuleType)(nil)).Elem()
-}
-
-func (o RoutingRuleTypeArrayOutput) ToRoutingRuleTypeArrayOutput() RoutingRuleTypeArrayOutput {
-	return o
-}
-
-func (o RoutingRuleTypeArrayOutput) ToRoutingRuleTypeArrayOutputWithContext(ctx context.Context) RoutingRuleTypeArrayOutput {
-	return o
-}
-
-func (o RoutingRuleTypeArrayOutput) Index(i pulumi.IntInput) RoutingRuleTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RoutingRuleType {
-		return vs[0].([]RoutingRuleType)[vs[1].(int)]
-	}).(RoutingRuleTypeOutput)
-}
-
-// Defines the Resource ID for a Routing Rule.
-type RoutingRuleLinkResponse struct {
-	// Resource ID.
-	Id *string `pulumi:"id"`
-}
-
-// Defines the Resource ID for a Routing Rule.
-type RoutingRuleLinkResponseOutput struct{ *pulumi.OutputState }
-
-func (RoutingRuleLinkResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoutingRuleLinkResponse)(nil)).Elem()
-}
-
-func (o RoutingRuleLinkResponseOutput) ToRoutingRuleLinkResponseOutput() RoutingRuleLinkResponseOutput {
-	return o
-}
-
-func (o RoutingRuleLinkResponseOutput) ToRoutingRuleLinkResponseOutputWithContext(ctx context.Context) RoutingRuleLinkResponseOutput {
-	return o
-}
-
-// Resource ID.
-func (o RoutingRuleLinkResponseOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RoutingRuleLinkResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-type RoutingRuleLinkResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (RoutingRuleLinkResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RoutingRuleLinkResponse)(nil)).Elem()
-}
-
-func (o RoutingRuleLinkResponseArrayOutput) ToRoutingRuleLinkResponseArrayOutput() RoutingRuleLinkResponseArrayOutput {
-	return o
-}
-
-func (o RoutingRuleLinkResponseArrayOutput) ToRoutingRuleLinkResponseArrayOutputWithContext(ctx context.Context) RoutingRuleLinkResponseArrayOutput {
-	return o
-}
-
-func (o RoutingRuleLinkResponseArrayOutput) Index(i pulumi.IntInput) RoutingRuleLinkResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RoutingRuleLinkResponse {
-		return vs[0].([]RoutingRuleLinkResponse)[vs[1].(int)]
-	}).(RoutingRuleLinkResponseOutput)
-}
-
 // Next hop.
 type RoutingRuleNextHop struct {
 	// Next hop address. Only required if the next hop type is VirtualAppliance.
@@ -9635,124 +11583,6 @@ func (o RoutingRuleNextHopResponseOutput) NextHopType() pulumi.StringOutput {
 	return o.ApplyT(func(v RoutingRuleNextHopResponse) string { return v.NextHopType }).(pulumi.StringOutput)
 }
 
-// A routing rule represents a specification for traffic to treat and where to send it, along with health probe information.
-type RoutingRuleResponse struct {
-	// Protocol schemes to match for this rule
-	AcceptedProtocols []string `pulumi:"acceptedProtocols"`
-	// Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
-	EnabledState *string `pulumi:"enabledState"`
-	// Frontend endpoints associated with this rule
-	FrontendEndpoints []SubResourceResponse `pulumi:"frontendEndpoints"`
-	// Resource ID.
-	Id *string `pulumi:"id"`
-	// Resource name.
-	Name *string `pulumi:"name"`
-	// The route patterns of the rule.
-	PatternsToMatch []string `pulumi:"patternsToMatch"`
-	// Resource status.
-	ResourceState string `pulumi:"resourceState"`
-	// A reference to the routing configuration.
-	RouteConfiguration interface{} `pulumi:"routeConfiguration"`
-	// A reference to a specific Rules Engine Configuration to apply to this route.
-	RulesEngine *SubResourceResponse `pulumi:"rulesEngine"`
-	// Resource type.
-	Type string `pulumi:"type"`
-	// Defines the Web Application Firewall policy for each routing rule (if applicable)
-	WebApplicationFirewallPolicyLink *RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLink `pulumi:"webApplicationFirewallPolicyLink"`
-}
-
-// A routing rule represents a specification for traffic to treat and where to send it, along with health probe information.
-type RoutingRuleResponseOutput struct{ *pulumi.OutputState }
-
-func (RoutingRuleResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoutingRuleResponse)(nil)).Elem()
-}
-
-func (o RoutingRuleResponseOutput) ToRoutingRuleResponseOutput() RoutingRuleResponseOutput {
-	return o
-}
-
-func (o RoutingRuleResponseOutput) ToRoutingRuleResponseOutputWithContext(ctx context.Context) RoutingRuleResponseOutput {
-	return o
-}
-
-// Protocol schemes to match for this rule
-func (o RoutingRuleResponseOutput) AcceptedProtocols() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RoutingRuleResponse) []string { return v.AcceptedProtocols }).(pulumi.StringArrayOutput)
-}
-
-// Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
-func (o RoutingRuleResponseOutput) EnabledState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RoutingRuleResponse) *string { return v.EnabledState }).(pulumi.StringPtrOutput)
-}
-
-// Frontend endpoints associated with this rule
-func (o RoutingRuleResponseOutput) FrontendEndpoints() SubResourceResponseArrayOutput {
-	return o.ApplyT(func(v RoutingRuleResponse) []SubResourceResponse { return v.FrontendEndpoints }).(SubResourceResponseArrayOutput)
-}
-
-// Resource ID.
-func (o RoutingRuleResponseOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RoutingRuleResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// Resource name.
-func (o RoutingRuleResponseOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RoutingRuleResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// The route patterns of the rule.
-func (o RoutingRuleResponseOutput) PatternsToMatch() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RoutingRuleResponse) []string { return v.PatternsToMatch }).(pulumi.StringArrayOutput)
-}
-
-// Resource status.
-func (o RoutingRuleResponseOutput) ResourceState() pulumi.StringOutput {
-	return o.ApplyT(func(v RoutingRuleResponse) string { return v.ResourceState }).(pulumi.StringOutput)
-}
-
-// A reference to the routing configuration.
-func (o RoutingRuleResponseOutput) RouteConfiguration() pulumi.AnyOutput {
-	return o.ApplyT(func(v RoutingRuleResponse) interface{} { return v.RouteConfiguration }).(pulumi.AnyOutput)
-}
-
-// A reference to a specific Rules Engine Configuration to apply to this route.
-func (o RoutingRuleResponseOutput) RulesEngine() SubResourceResponsePtrOutput {
-	return o.ApplyT(func(v RoutingRuleResponse) *SubResourceResponse { return v.RulesEngine }).(SubResourceResponsePtrOutput)
-}
-
-// Resource type.
-func (o RoutingRuleResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v RoutingRuleResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Defines the Web Application Firewall policy for each routing rule (if applicable)
-func (o RoutingRuleResponseOutput) WebApplicationFirewallPolicyLink() RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutput {
-	return o.ApplyT(func(v RoutingRuleResponse) *RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLink {
-		return v.WebApplicationFirewallPolicyLink
-	}).(RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutput)
-}
-
-type RoutingRuleResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (RoutingRuleResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RoutingRuleResponse)(nil)).Elem()
-}
-
-func (o RoutingRuleResponseArrayOutput) ToRoutingRuleResponseArrayOutput() RoutingRuleResponseArrayOutput {
-	return o
-}
-
-func (o RoutingRuleResponseArrayOutput) ToRoutingRuleResponseArrayOutputWithContext(ctx context.Context) RoutingRuleResponseArrayOutput {
-	return o
-}
-
-func (o RoutingRuleResponseArrayOutput) Index(i pulumi.IntInput) RoutingRuleResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RoutingRuleResponse {
-		return vs[0].([]RoutingRuleResponse)[vs[1].(int)]
-	}).(RoutingRuleResponseOutput)
-}
-
 // Route destination.
 type RoutingRuleRouteDestination struct {
 	// Destination address.
@@ -9848,875 +11678,6 @@ func (o RoutingRuleRouteDestinationResponseOutput) DestinationAddress() pulumi.S
 // Destination type.
 func (o RoutingRuleRouteDestinationResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v RoutingRuleRouteDestinationResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Defines the Web Application Firewall policy for each routing rule (if applicable)
-type RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLink struct {
-	// Resource ID.
-	Id *string `pulumi:"id"`
-}
-
-// Defines the Web Application Firewall policy for each routing rule (if applicable)
-type RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLinkOutput struct{ *pulumi.OutputState }
-
-func (RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLinkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLink)(nil)).Elem()
-}
-
-func (o RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLinkOutput) ToRoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLinkOutput() RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLinkOutput {
-	return o
-}
-
-func (o RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLinkOutput) ToRoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLinkOutputWithContext(ctx context.Context) RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLinkOutput {
-	return o
-}
-
-// Resource ID.
-func (o RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLinkOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLink) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-type RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutput struct{ *pulumi.OutputState }
-
-func (RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLink)(nil)).Elem()
-}
-
-func (o RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutput) ToRoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutput() RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutput {
-	return o
-}
-
-func (o RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutput) ToRoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutputWithContext(ctx context.Context) RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutput {
-	return o
-}
-
-func (o RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutput) Elem() RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLinkOutput {
-	return o.ApplyT(func(v *RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLink) RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLink {
-		if v != nil {
-			return *v
-		}
-		var ret RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLink
-		return ret
-	}).(RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLinkOutput)
-}
-
-// Resource ID.
-func (o RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLink) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// Defines the Web Application Firewall policy for each routing rule (if applicable)
-type RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink struct {
-	// Resource ID.
-	Id *string `pulumi:"id"`
-}
-
-// RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkInput is an input type that accepts RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkArgs and RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkOutput values.
-// You can construct a concrete instance of `RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkInput` via:
-//
-//	RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkArgs{...}
-type RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkInput interface {
-	pulumi.Input
-
-	ToRoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkOutput() RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkOutput
-	ToRoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkOutputWithContext(context.Context) RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkOutput
-}
-
-// Defines the Web Application Firewall policy for each routing rule (if applicable)
-type RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkArgs struct {
-	// Resource ID.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-}
-
-func (RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink)(nil)).Elem()
-}
-
-func (i RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkArgs) ToRoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkOutput() RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkOutput {
-	return i.ToRoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkOutputWithContext(context.Background())
-}
-
-func (i RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkArgs) ToRoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkOutputWithContext(ctx context.Context) RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkOutput)
-}
-
-func (i RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkArgs) ToRoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutput() RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutput {
-	return i.ToRoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutputWithContext(context.Background())
-}
-
-func (i RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkArgs) ToRoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutputWithContext(ctx context.Context) RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkOutput).ToRoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutputWithContext(ctx)
-}
-
-// RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrInput is an input type that accepts RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkArgs, RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtr and RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutput values.
-// You can construct a concrete instance of `RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrInput` via:
-//
-//	        RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkArgs{...}
-//
-//	or:
-//
-//	        nil
-type RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrInput interface {
-	pulumi.Input
-
-	ToRoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutput() RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutput
-	ToRoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutputWithContext(context.Context) RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutput
-}
-
-type routingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrType RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkArgs
-
-func RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtr(v *RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkArgs) RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrInput {
-	return (*routingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrType)(v)
-}
-
-func (*routingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink)(nil)).Elem()
-}
-
-func (i *routingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrType) ToRoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutput() RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutput {
-	return i.ToRoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutputWithContext(context.Background())
-}
-
-func (i *routingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrType) ToRoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutputWithContext(ctx context.Context) RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutput)
-}
-
-// Defines the Web Application Firewall policy for each routing rule (if applicable)
-type RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkOutput struct{ *pulumi.OutputState }
-
-func (RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink)(nil)).Elem()
-}
-
-func (o RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkOutput) ToRoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkOutput() RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkOutput {
-	return o
-}
-
-func (o RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkOutput) ToRoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkOutputWithContext(ctx context.Context) RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkOutput {
-	return o
-}
-
-func (o RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkOutput) ToRoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutput() RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutput {
-	return o.ToRoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutputWithContext(context.Background())
-}
-
-func (o RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkOutput) ToRoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutputWithContext(ctx context.Context) RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink) *RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink {
-		return &v
-	}).(RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutput)
-}
-
-// Resource ID.
-func (o RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-type RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutput struct{ *pulumi.OutputState }
-
-func (RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink)(nil)).Elem()
-}
-
-func (o RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutput) ToRoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutput() RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutput {
-	return o
-}
-
-func (o RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutput) ToRoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutputWithContext(ctx context.Context) RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutput {
-	return o
-}
-
-func (o RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutput) Elem() RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkOutput {
-	return o.ApplyT(func(v *RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink) RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink {
-		if v != nil {
-			return *v
-		}
-		var ret RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink
-		return ret
-	}).(RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkOutput)
-}
-
-// Resource ID.
-func (o RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// One or more actions that will execute, modifying the request and/or response.
-type RulesEngineAction struct {
-	// A list of header actions to apply from the request from AFD to the origin.
-	RequestHeaderActions []HeaderAction `pulumi:"requestHeaderActions"`
-	// A list of header actions to apply from the response from AFD to the client.
-	ResponseHeaderActions []HeaderAction `pulumi:"responseHeaderActions"`
-	// Override the route configuration.
-	RouteConfigurationOverride interface{} `pulumi:"routeConfigurationOverride"`
-}
-
-// RulesEngineActionInput is an input type that accepts RulesEngineActionArgs and RulesEngineActionOutput values.
-// You can construct a concrete instance of `RulesEngineActionInput` via:
-//
-//	RulesEngineActionArgs{...}
-type RulesEngineActionInput interface {
-	pulumi.Input
-
-	ToRulesEngineActionOutput() RulesEngineActionOutput
-	ToRulesEngineActionOutputWithContext(context.Context) RulesEngineActionOutput
-}
-
-// One or more actions that will execute, modifying the request and/or response.
-type RulesEngineActionArgs struct {
-	// A list of header actions to apply from the request from AFD to the origin.
-	RequestHeaderActions HeaderActionArrayInput `pulumi:"requestHeaderActions"`
-	// A list of header actions to apply from the response from AFD to the client.
-	ResponseHeaderActions HeaderActionArrayInput `pulumi:"responseHeaderActions"`
-	// Override the route configuration.
-	RouteConfigurationOverride pulumi.Input `pulumi:"routeConfigurationOverride"`
-}
-
-func (RulesEngineActionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesEngineAction)(nil)).Elem()
-}
-
-func (i RulesEngineActionArgs) ToRulesEngineActionOutput() RulesEngineActionOutput {
-	return i.ToRulesEngineActionOutputWithContext(context.Background())
-}
-
-func (i RulesEngineActionArgs) ToRulesEngineActionOutputWithContext(ctx context.Context) RulesEngineActionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesEngineActionOutput)
-}
-
-// One or more actions that will execute, modifying the request and/or response.
-type RulesEngineActionOutput struct{ *pulumi.OutputState }
-
-func (RulesEngineActionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesEngineAction)(nil)).Elem()
-}
-
-func (o RulesEngineActionOutput) ToRulesEngineActionOutput() RulesEngineActionOutput {
-	return o
-}
-
-func (o RulesEngineActionOutput) ToRulesEngineActionOutputWithContext(ctx context.Context) RulesEngineActionOutput {
-	return o
-}
-
-// A list of header actions to apply from the request from AFD to the origin.
-func (o RulesEngineActionOutput) RequestHeaderActions() HeaderActionArrayOutput {
-	return o.ApplyT(func(v RulesEngineAction) []HeaderAction { return v.RequestHeaderActions }).(HeaderActionArrayOutput)
-}
-
-// A list of header actions to apply from the response from AFD to the client.
-func (o RulesEngineActionOutput) ResponseHeaderActions() HeaderActionArrayOutput {
-	return o.ApplyT(func(v RulesEngineAction) []HeaderAction { return v.ResponseHeaderActions }).(HeaderActionArrayOutput)
-}
-
-// Override the route configuration.
-func (o RulesEngineActionOutput) RouteConfigurationOverride() pulumi.AnyOutput {
-	return o.ApplyT(func(v RulesEngineAction) interface{} { return v.RouteConfigurationOverride }).(pulumi.AnyOutput)
-}
-
-// One or more actions that will execute, modifying the request and/or response.
-type RulesEngineActionResponse struct {
-	// A list of header actions to apply from the request from AFD to the origin.
-	RequestHeaderActions []HeaderActionResponse `pulumi:"requestHeaderActions"`
-	// A list of header actions to apply from the response from AFD to the client.
-	ResponseHeaderActions []HeaderActionResponse `pulumi:"responseHeaderActions"`
-	// Override the route configuration.
-	RouteConfigurationOverride interface{} `pulumi:"routeConfigurationOverride"`
-}
-
-// One or more actions that will execute, modifying the request and/or response.
-type RulesEngineActionResponseOutput struct{ *pulumi.OutputState }
-
-func (RulesEngineActionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesEngineActionResponse)(nil)).Elem()
-}
-
-func (o RulesEngineActionResponseOutput) ToRulesEngineActionResponseOutput() RulesEngineActionResponseOutput {
-	return o
-}
-
-func (o RulesEngineActionResponseOutput) ToRulesEngineActionResponseOutputWithContext(ctx context.Context) RulesEngineActionResponseOutput {
-	return o
-}
-
-// A list of header actions to apply from the request from AFD to the origin.
-func (o RulesEngineActionResponseOutput) RequestHeaderActions() HeaderActionResponseArrayOutput {
-	return o.ApplyT(func(v RulesEngineActionResponse) []HeaderActionResponse { return v.RequestHeaderActions }).(HeaderActionResponseArrayOutput)
-}
-
-// A list of header actions to apply from the response from AFD to the client.
-func (o RulesEngineActionResponseOutput) ResponseHeaderActions() HeaderActionResponseArrayOutput {
-	return o.ApplyT(func(v RulesEngineActionResponse) []HeaderActionResponse { return v.ResponseHeaderActions }).(HeaderActionResponseArrayOutput)
-}
-
-// Override the route configuration.
-func (o RulesEngineActionResponseOutput) RouteConfigurationOverride() pulumi.AnyOutput {
-	return o.ApplyT(func(v RulesEngineActionResponse) interface{} { return v.RouteConfigurationOverride }).(pulumi.AnyOutput)
-}
-
-// Define a match condition
-type RulesEngineMatchCondition struct {
-	// Describes if this is negate condition or not
-	NegateCondition *bool `pulumi:"negateCondition"`
-	// Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
-	RulesEngineMatchValue []string `pulumi:"rulesEngineMatchValue"`
-	// Match Variable
-	RulesEngineMatchVariable string `pulumi:"rulesEngineMatchVariable"`
-	// Describes operator to apply to the match condition.
-	RulesEngineOperator string `pulumi:"rulesEngineOperator"`
-	// Name of selector in RequestHeader or RequestBody to be matched
-	Selector *string `pulumi:"selector"`
-	// List of transforms
-	Transforms []string `pulumi:"transforms"`
-}
-
-// RulesEngineMatchConditionInput is an input type that accepts RulesEngineMatchConditionArgs and RulesEngineMatchConditionOutput values.
-// You can construct a concrete instance of `RulesEngineMatchConditionInput` via:
-//
-//	RulesEngineMatchConditionArgs{...}
-type RulesEngineMatchConditionInput interface {
-	pulumi.Input
-
-	ToRulesEngineMatchConditionOutput() RulesEngineMatchConditionOutput
-	ToRulesEngineMatchConditionOutputWithContext(context.Context) RulesEngineMatchConditionOutput
-}
-
-// Define a match condition
-type RulesEngineMatchConditionArgs struct {
-	// Describes if this is negate condition or not
-	NegateCondition pulumi.BoolPtrInput `pulumi:"negateCondition"`
-	// Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
-	RulesEngineMatchValue pulumi.StringArrayInput `pulumi:"rulesEngineMatchValue"`
-	// Match Variable
-	RulesEngineMatchVariable pulumi.StringInput `pulumi:"rulesEngineMatchVariable"`
-	// Describes operator to apply to the match condition.
-	RulesEngineOperator pulumi.StringInput `pulumi:"rulesEngineOperator"`
-	// Name of selector in RequestHeader or RequestBody to be matched
-	Selector pulumi.StringPtrInput `pulumi:"selector"`
-	// List of transforms
-	Transforms pulumi.StringArrayInput `pulumi:"transforms"`
-}
-
-func (RulesEngineMatchConditionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesEngineMatchCondition)(nil)).Elem()
-}
-
-func (i RulesEngineMatchConditionArgs) ToRulesEngineMatchConditionOutput() RulesEngineMatchConditionOutput {
-	return i.ToRulesEngineMatchConditionOutputWithContext(context.Background())
-}
-
-func (i RulesEngineMatchConditionArgs) ToRulesEngineMatchConditionOutputWithContext(ctx context.Context) RulesEngineMatchConditionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesEngineMatchConditionOutput)
-}
-
-// RulesEngineMatchConditionArrayInput is an input type that accepts RulesEngineMatchConditionArray and RulesEngineMatchConditionArrayOutput values.
-// You can construct a concrete instance of `RulesEngineMatchConditionArrayInput` via:
-//
-//	RulesEngineMatchConditionArray{ RulesEngineMatchConditionArgs{...} }
-type RulesEngineMatchConditionArrayInput interface {
-	pulumi.Input
-
-	ToRulesEngineMatchConditionArrayOutput() RulesEngineMatchConditionArrayOutput
-	ToRulesEngineMatchConditionArrayOutputWithContext(context.Context) RulesEngineMatchConditionArrayOutput
-}
-
-type RulesEngineMatchConditionArray []RulesEngineMatchConditionInput
-
-func (RulesEngineMatchConditionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesEngineMatchCondition)(nil)).Elem()
-}
-
-func (i RulesEngineMatchConditionArray) ToRulesEngineMatchConditionArrayOutput() RulesEngineMatchConditionArrayOutput {
-	return i.ToRulesEngineMatchConditionArrayOutputWithContext(context.Background())
-}
-
-func (i RulesEngineMatchConditionArray) ToRulesEngineMatchConditionArrayOutputWithContext(ctx context.Context) RulesEngineMatchConditionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesEngineMatchConditionArrayOutput)
-}
-
-// Define a match condition
-type RulesEngineMatchConditionOutput struct{ *pulumi.OutputState }
-
-func (RulesEngineMatchConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesEngineMatchCondition)(nil)).Elem()
-}
-
-func (o RulesEngineMatchConditionOutput) ToRulesEngineMatchConditionOutput() RulesEngineMatchConditionOutput {
-	return o
-}
-
-func (o RulesEngineMatchConditionOutput) ToRulesEngineMatchConditionOutputWithContext(ctx context.Context) RulesEngineMatchConditionOutput {
-	return o
-}
-
-// Describes if this is negate condition or not
-func (o RulesEngineMatchConditionOutput) NegateCondition() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesEngineMatchCondition) *bool { return v.NegateCondition }).(pulumi.BoolPtrOutput)
-}
-
-// Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
-func (o RulesEngineMatchConditionOutput) RulesEngineMatchValue() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RulesEngineMatchCondition) []string { return v.RulesEngineMatchValue }).(pulumi.StringArrayOutput)
-}
-
-// Match Variable
-func (o RulesEngineMatchConditionOutput) RulesEngineMatchVariable() pulumi.StringOutput {
-	return o.ApplyT(func(v RulesEngineMatchCondition) string { return v.RulesEngineMatchVariable }).(pulumi.StringOutput)
-}
-
-// Describes operator to apply to the match condition.
-func (o RulesEngineMatchConditionOutput) RulesEngineOperator() pulumi.StringOutput {
-	return o.ApplyT(func(v RulesEngineMatchCondition) string { return v.RulesEngineOperator }).(pulumi.StringOutput)
-}
-
-// Name of selector in RequestHeader or RequestBody to be matched
-func (o RulesEngineMatchConditionOutput) Selector() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesEngineMatchCondition) *string { return v.Selector }).(pulumi.StringPtrOutput)
-}
-
-// List of transforms
-func (o RulesEngineMatchConditionOutput) Transforms() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RulesEngineMatchCondition) []string { return v.Transforms }).(pulumi.StringArrayOutput)
-}
-
-type RulesEngineMatchConditionArrayOutput struct{ *pulumi.OutputState }
-
-func (RulesEngineMatchConditionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesEngineMatchCondition)(nil)).Elem()
-}
-
-func (o RulesEngineMatchConditionArrayOutput) ToRulesEngineMatchConditionArrayOutput() RulesEngineMatchConditionArrayOutput {
-	return o
-}
-
-func (o RulesEngineMatchConditionArrayOutput) ToRulesEngineMatchConditionArrayOutputWithContext(ctx context.Context) RulesEngineMatchConditionArrayOutput {
-	return o
-}
-
-func (o RulesEngineMatchConditionArrayOutput) Index(i pulumi.IntInput) RulesEngineMatchConditionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesEngineMatchCondition {
-		return vs[0].([]RulesEngineMatchCondition)[vs[1].(int)]
-	}).(RulesEngineMatchConditionOutput)
-}
-
-// Define a match condition
-type RulesEngineMatchConditionResponse struct {
-	// Describes if this is negate condition or not
-	NegateCondition *bool `pulumi:"negateCondition"`
-	// Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
-	RulesEngineMatchValue []string `pulumi:"rulesEngineMatchValue"`
-	// Match Variable
-	RulesEngineMatchVariable string `pulumi:"rulesEngineMatchVariable"`
-	// Describes operator to apply to the match condition.
-	RulesEngineOperator string `pulumi:"rulesEngineOperator"`
-	// Name of selector in RequestHeader or RequestBody to be matched
-	Selector *string `pulumi:"selector"`
-	// List of transforms
-	Transforms []string `pulumi:"transforms"`
-}
-
-// Define a match condition
-type RulesEngineMatchConditionResponseOutput struct{ *pulumi.OutputState }
-
-func (RulesEngineMatchConditionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesEngineMatchConditionResponse)(nil)).Elem()
-}
-
-func (o RulesEngineMatchConditionResponseOutput) ToRulesEngineMatchConditionResponseOutput() RulesEngineMatchConditionResponseOutput {
-	return o
-}
-
-func (o RulesEngineMatchConditionResponseOutput) ToRulesEngineMatchConditionResponseOutputWithContext(ctx context.Context) RulesEngineMatchConditionResponseOutput {
-	return o
-}
-
-// Describes if this is negate condition or not
-func (o RulesEngineMatchConditionResponseOutput) NegateCondition() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RulesEngineMatchConditionResponse) *bool { return v.NegateCondition }).(pulumi.BoolPtrOutput)
-}
-
-// Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
-func (o RulesEngineMatchConditionResponseOutput) RulesEngineMatchValue() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RulesEngineMatchConditionResponse) []string { return v.RulesEngineMatchValue }).(pulumi.StringArrayOutput)
-}
-
-// Match Variable
-func (o RulesEngineMatchConditionResponseOutput) RulesEngineMatchVariable() pulumi.StringOutput {
-	return o.ApplyT(func(v RulesEngineMatchConditionResponse) string { return v.RulesEngineMatchVariable }).(pulumi.StringOutput)
-}
-
-// Describes operator to apply to the match condition.
-func (o RulesEngineMatchConditionResponseOutput) RulesEngineOperator() pulumi.StringOutput {
-	return o.ApplyT(func(v RulesEngineMatchConditionResponse) string { return v.RulesEngineOperator }).(pulumi.StringOutput)
-}
-
-// Name of selector in RequestHeader or RequestBody to be matched
-func (o RulesEngineMatchConditionResponseOutput) Selector() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesEngineMatchConditionResponse) *string { return v.Selector }).(pulumi.StringPtrOutput)
-}
-
-// List of transforms
-func (o RulesEngineMatchConditionResponseOutput) Transforms() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v RulesEngineMatchConditionResponse) []string { return v.Transforms }).(pulumi.StringArrayOutput)
-}
-
-type RulesEngineMatchConditionResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (RulesEngineMatchConditionResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesEngineMatchConditionResponse)(nil)).Elem()
-}
-
-func (o RulesEngineMatchConditionResponseArrayOutput) ToRulesEngineMatchConditionResponseArrayOutput() RulesEngineMatchConditionResponseArrayOutput {
-	return o
-}
-
-func (o RulesEngineMatchConditionResponseArrayOutput) ToRulesEngineMatchConditionResponseArrayOutputWithContext(ctx context.Context) RulesEngineMatchConditionResponseArrayOutput {
-	return o
-}
-
-func (o RulesEngineMatchConditionResponseArrayOutput) Index(i pulumi.IntInput) RulesEngineMatchConditionResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesEngineMatchConditionResponse {
-		return vs[0].([]RulesEngineMatchConditionResponse)[vs[1].(int)]
-	}).(RulesEngineMatchConditionResponseOutput)
-}
-
-// A rules engine configuration containing a list of rules that will run to modify the runtime behavior of the request and response.
-type RulesEngineResponse struct {
-	// Resource ID.
-	Id string `pulumi:"id"`
-	// Resource name.
-	Name string `pulumi:"name"`
-	// Resource status.
-	ResourceState string `pulumi:"resourceState"`
-	// A list of rules that define a particular Rules Engine Configuration.
-	Rules []RulesEngineRuleResponse `pulumi:"rules"`
-	// Resource type.
-	Type string `pulumi:"type"`
-}
-
-// A rules engine configuration containing a list of rules that will run to modify the runtime behavior of the request and response.
-type RulesEngineResponseOutput struct{ *pulumi.OutputState }
-
-func (RulesEngineResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesEngineResponse)(nil)).Elem()
-}
-
-func (o RulesEngineResponseOutput) ToRulesEngineResponseOutput() RulesEngineResponseOutput {
-	return o
-}
-
-func (o RulesEngineResponseOutput) ToRulesEngineResponseOutputWithContext(ctx context.Context) RulesEngineResponseOutput {
-	return o
-}
-
-// Resource ID.
-func (o RulesEngineResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v RulesEngineResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Resource name.
-func (o RulesEngineResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v RulesEngineResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Resource status.
-func (o RulesEngineResponseOutput) ResourceState() pulumi.StringOutput {
-	return o.ApplyT(func(v RulesEngineResponse) string { return v.ResourceState }).(pulumi.StringOutput)
-}
-
-// A list of rules that define a particular Rules Engine Configuration.
-func (o RulesEngineResponseOutput) Rules() RulesEngineRuleResponseArrayOutput {
-	return o.ApplyT(func(v RulesEngineResponse) []RulesEngineRuleResponse { return v.Rules }).(RulesEngineRuleResponseArrayOutput)
-}
-
-// Resource type.
-func (o RulesEngineResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v RulesEngineResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type RulesEngineResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (RulesEngineResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesEngineResponse)(nil)).Elem()
-}
-
-func (o RulesEngineResponseArrayOutput) ToRulesEngineResponseArrayOutput() RulesEngineResponseArrayOutput {
-	return o
-}
-
-func (o RulesEngineResponseArrayOutput) ToRulesEngineResponseArrayOutputWithContext(ctx context.Context) RulesEngineResponseArrayOutput {
-	return o
-}
-
-func (o RulesEngineResponseArrayOutput) Index(i pulumi.IntInput) RulesEngineResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesEngineResponse {
-		return vs[0].([]RulesEngineResponse)[vs[1].(int)]
-	}).(RulesEngineResponseOutput)
-}
-
-// Contains a list of match conditions, and an action on how to modify the request/response. If multiple rules match, the actions from one rule that conflict with a previous rule overwrite for a singular action, or append in the case of headers manipulation.
-type RulesEngineRule struct {
-	// Actions to perform on the request and response if all of the match conditions are met.
-	Action RulesEngineAction `pulumi:"action"`
-	// A list of match conditions that must meet in order for the actions of this rule to run. Having no match conditions means the actions will always run.
-	MatchConditions []RulesEngineMatchCondition `pulumi:"matchConditions"`
-	// If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.
-	MatchProcessingBehavior *string `pulumi:"matchProcessingBehavior"`
-	// A name to refer to this specific rule.
-	Name string `pulumi:"name"`
-	// A priority assigned to this rule.
-	Priority int `pulumi:"priority"`
-}
-
-// RulesEngineRuleInput is an input type that accepts RulesEngineRuleArgs and RulesEngineRuleOutput values.
-// You can construct a concrete instance of `RulesEngineRuleInput` via:
-//
-//	RulesEngineRuleArgs{...}
-type RulesEngineRuleInput interface {
-	pulumi.Input
-
-	ToRulesEngineRuleOutput() RulesEngineRuleOutput
-	ToRulesEngineRuleOutputWithContext(context.Context) RulesEngineRuleOutput
-}
-
-// Contains a list of match conditions, and an action on how to modify the request/response. If multiple rules match, the actions from one rule that conflict with a previous rule overwrite for a singular action, or append in the case of headers manipulation.
-type RulesEngineRuleArgs struct {
-	// Actions to perform on the request and response if all of the match conditions are met.
-	Action RulesEngineActionInput `pulumi:"action"`
-	// A list of match conditions that must meet in order for the actions of this rule to run. Having no match conditions means the actions will always run.
-	MatchConditions RulesEngineMatchConditionArrayInput `pulumi:"matchConditions"`
-	// If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.
-	MatchProcessingBehavior pulumi.StringPtrInput `pulumi:"matchProcessingBehavior"`
-	// A name to refer to this specific rule.
-	Name pulumi.StringInput `pulumi:"name"`
-	// A priority assigned to this rule.
-	Priority pulumi.IntInput `pulumi:"priority"`
-}
-
-func (RulesEngineRuleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesEngineRule)(nil)).Elem()
-}
-
-func (i RulesEngineRuleArgs) ToRulesEngineRuleOutput() RulesEngineRuleOutput {
-	return i.ToRulesEngineRuleOutputWithContext(context.Background())
-}
-
-func (i RulesEngineRuleArgs) ToRulesEngineRuleOutputWithContext(ctx context.Context) RulesEngineRuleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesEngineRuleOutput)
-}
-
-// RulesEngineRuleArrayInput is an input type that accepts RulesEngineRuleArray and RulesEngineRuleArrayOutput values.
-// You can construct a concrete instance of `RulesEngineRuleArrayInput` via:
-//
-//	RulesEngineRuleArray{ RulesEngineRuleArgs{...} }
-type RulesEngineRuleArrayInput interface {
-	pulumi.Input
-
-	ToRulesEngineRuleArrayOutput() RulesEngineRuleArrayOutput
-	ToRulesEngineRuleArrayOutputWithContext(context.Context) RulesEngineRuleArrayOutput
-}
-
-type RulesEngineRuleArray []RulesEngineRuleInput
-
-func (RulesEngineRuleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesEngineRule)(nil)).Elem()
-}
-
-func (i RulesEngineRuleArray) ToRulesEngineRuleArrayOutput() RulesEngineRuleArrayOutput {
-	return i.ToRulesEngineRuleArrayOutputWithContext(context.Background())
-}
-
-func (i RulesEngineRuleArray) ToRulesEngineRuleArrayOutputWithContext(ctx context.Context) RulesEngineRuleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RulesEngineRuleArrayOutput)
-}
-
-// Contains a list of match conditions, and an action on how to modify the request/response. If multiple rules match, the actions from one rule that conflict with a previous rule overwrite for a singular action, or append in the case of headers manipulation.
-type RulesEngineRuleOutput struct{ *pulumi.OutputState }
-
-func (RulesEngineRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesEngineRule)(nil)).Elem()
-}
-
-func (o RulesEngineRuleOutput) ToRulesEngineRuleOutput() RulesEngineRuleOutput {
-	return o
-}
-
-func (o RulesEngineRuleOutput) ToRulesEngineRuleOutputWithContext(ctx context.Context) RulesEngineRuleOutput {
-	return o
-}
-
-// Actions to perform on the request and response if all of the match conditions are met.
-func (o RulesEngineRuleOutput) Action() RulesEngineActionOutput {
-	return o.ApplyT(func(v RulesEngineRule) RulesEngineAction { return v.Action }).(RulesEngineActionOutput)
-}
-
-// A list of match conditions that must meet in order for the actions of this rule to run. Having no match conditions means the actions will always run.
-func (o RulesEngineRuleOutput) MatchConditions() RulesEngineMatchConditionArrayOutput {
-	return o.ApplyT(func(v RulesEngineRule) []RulesEngineMatchCondition { return v.MatchConditions }).(RulesEngineMatchConditionArrayOutput)
-}
-
-// If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.
-func (o RulesEngineRuleOutput) MatchProcessingBehavior() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesEngineRule) *string { return v.MatchProcessingBehavior }).(pulumi.StringPtrOutput)
-}
-
-// A name to refer to this specific rule.
-func (o RulesEngineRuleOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v RulesEngineRule) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// A priority assigned to this rule.
-func (o RulesEngineRuleOutput) Priority() pulumi.IntOutput {
-	return o.ApplyT(func(v RulesEngineRule) int { return v.Priority }).(pulumi.IntOutput)
-}
-
-type RulesEngineRuleArrayOutput struct{ *pulumi.OutputState }
-
-func (RulesEngineRuleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesEngineRule)(nil)).Elem()
-}
-
-func (o RulesEngineRuleArrayOutput) ToRulesEngineRuleArrayOutput() RulesEngineRuleArrayOutput {
-	return o
-}
-
-func (o RulesEngineRuleArrayOutput) ToRulesEngineRuleArrayOutputWithContext(ctx context.Context) RulesEngineRuleArrayOutput {
-	return o
-}
-
-func (o RulesEngineRuleArrayOutput) Index(i pulumi.IntInput) RulesEngineRuleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesEngineRule {
-		return vs[0].([]RulesEngineRule)[vs[1].(int)]
-	}).(RulesEngineRuleOutput)
-}
-
-// Contains a list of match conditions, and an action on how to modify the request/response. If multiple rules match, the actions from one rule that conflict with a previous rule overwrite for a singular action, or append in the case of headers manipulation.
-type RulesEngineRuleResponse struct {
-	// Actions to perform on the request and response if all of the match conditions are met.
-	Action RulesEngineActionResponse `pulumi:"action"`
-	// A list of match conditions that must meet in order for the actions of this rule to run. Having no match conditions means the actions will always run.
-	MatchConditions []RulesEngineMatchConditionResponse `pulumi:"matchConditions"`
-	// If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.
-	MatchProcessingBehavior *string `pulumi:"matchProcessingBehavior"`
-	// A name to refer to this specific rule.
-	Name string `pulumi:"name"`
-	// A priority assigned to this rule.
-	Priority int `pulumi:"priority"`
-}
-
-// Contains a list of match conditions, and an action on how to modify the request/response. If multiple rules match, the actions from one rule that conflict with a previous rule overwrite for a singular action, or append in the case of headers manipulation.
-type RulesEngineRuleResponseOutput struct{ *pulumi.OutputState }
-
-func (RulesEngineRuleResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RulesEngineRuleResponse)(nil)).Elem()
-}
-
-func (o RulesEngineRuleResponseOutput) ToRulesEngineRuleResponseOutput() RulesEngineRuleResponseOutput {
-	return o
-}
-
-func (o RulesEngineRuleResponseOutput) ToRulesEngineRuleResponseOutputWithContext(ctx context.Context) RulesEngineRuleResponseOutput {
-	return o
-}
-
-// Actions to perform on the request and response if all of the match conditions are met.
-func (o RulesEngineRuleResponseOutput) Action() RulesEngineActionResponseOutput {
-	return o.ApplyT(func(v RulesEngineRuleResponse) RulesEngineActionResponse { return v.Action }).(RulesEngineActionResponseOutput)
-}
-
-// A list of match conditions that must meet in order for the actions of this rule to run. Having no match conditions means the actions will always run.
-func (o RulesEngineRuleResponseOutput) MatchConditions() RulesEngineMatchConditionResponseArrayOutput {
-	return o.ApplyT(func(v RulesEngineRuleResponse) []RulesEngineMatchConditionResponse { return v.MatchConditions }).(RulesEngineMatchConditionResponseArrayOutput)
-}
-
-// If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.
-func (o RulesEngineRuleResponseOutput) MatchProcessingBehavior() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RulesEngineRuleResponse) *string { return v.MatchProcessingBehavior }).(pulumi.StringPtrOutput)
-}
-
-// A name to refer to this specific rule.
-func (o RulesEngineRuleResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v RulesEngineRuleResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// A priority assigned to this rule.
-func (o RulesEngineRuleResponseOutput) Priority() pulumi.IntOutput {
-	return o.ApplyT(func(v RulesEngineRuleResponse) int { return v.Priority }).(pulumi.IntOutput)
-}
-
-type RulesEngineRuleResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (RulesEngineRuleResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]RulesEngineRuleResponse)(nil)).Elem()
-}
-
-func (o RulesEngineRuleResponseArrayOutput) ToRulesEngineRuleResponseArrayOutput() RulesEngineRuleResponseArrayOutput {
-	return o
-}
-
-func (o RulesEngineRuleResponseArrayOutput) ToRulesEngineRuleResponseArrayOutputWithContext(ctx context.Context) RulesEngineRuleResponseArrayOutput {
-	return o
-}
-
-func (o RulesEngineRuleResponseArrayOutput) Index(i pulumi.IntInput) RulesEngineRuleResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RulesEngineRuleResponse {
-		return vs[0].([]RulesEngineRuleResponse)[vs[1].(int)]
-	}).(RulesEngineRuleResponseOutput)
-}
-
-// Defines the Resource ID for a Security Policy.
-type SecurityPolicyLinkResponse struct {
-	// Resource ID.
-	Id *string `pulumi:"id"`
-}
-
-// Defines the Resource ID for a Security Policy.
-type SecurityPolicyLinkResponseOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyLinkResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyLinkResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyLinkResponseOutput) ToSecurityPolicyLinkResponseOutput() SecurityPolicyLinkResponseOutput {
-	return o
-}
-
-func (o SecurityPolicyLinkResponseOutput) ToSecurityPolicyLinkResponseOutputWithContext(ctx context.Context) SecurityPolicyLinkResponseOutput {
-	return o
-}
-
-// Resource ID.
-func (o SecurityPolicyLinkResponseOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SecurityPolicyLinkResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-type SecurityPolicyLinkResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyLinkResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityPolicyLinkResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyLinkResponseArrayOutput) ToSecurityPolicyLinkResponseArrayOutput() SecurityPolicyLinkResponseArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyLinkResponseArrayOutput) ToSecurityPolicyLinkResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyLinkResponseArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyLinkResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyLinkResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyLinkResponse {
-		return vs[0].([]SecurityPolicyLinkResponse)[vs[1].(int)]
-	}).(SecurityPolicyLinkResponseOutput)
 }
 
 // Network security rule.
@@ -11173,6 +12134,182 @@ func (o SecurityRuleResponseArrayOutput) Index(i pulumi.IntInput) SecurityRuleRe
 	}).(SecurityRuleResponseOutput)
 }
 
+// Network security rule.
+type SecurityRuleResponseV1 struct {
+	// The network traffic is allowed or denied.
+	Access string `pulumi:"access"`
+	// A description for this rule. Restricted to 140 chars.
+	Description *string `pulumi:"description"`
+	// The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
+	DestinationAddressPrefix *string `pulumi:"destinationAddressPrefix"`
+	// The destination address prefixes. CIDR or destination IP ranges.
+	DestinationAddressPrefixes []string `pulumi:"destinationAddressPrefixes"`
+	// The application security group specified as destination.
+	DestinationApplicationSecurityGroups []ApplicationSecurityGroupResponse `pulumi:"destinationApplicationSecurityGroups"`
+	// The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
+	DestinationPortRange *string `pulumi:"destinationPortRange"`
+	// The destination port ranges.
+	DestinationPortRanges []string `pulumi:"destinationPortRanges"`
+	// The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
+	Direction string `pulumi:"direction"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag *string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+	Name *string `pulumi:"name"`
+	// The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
+	Priority *int `pulumi:"priority"`
+	// Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', 'Icmp', 'Esp', and '*'.
+	Protocol string `pulumi:"protocol"`
+	// The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+	ProvisioningState *string `pulumi:"provisioningState"`
+	// The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from.
+	SourceAddressPrefix *string `pulumi:"sourceAddressPrefix"`
+	// The CIDR or source IP ranges.
+	SourceAddressPrefixes []string `pulumi:"sourceAddressPrefixes"`
+	// The application security group specified as source.
+	SourceApplicationSecurityGroups []ApplicationSecurityGroupResponse `pulumi:"sourceApplicationSecurityGroups"`
+	// The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
+	SourcePortRange *string `pulumi:"sourcePortRange"`
+	// The source port ranges.
+	SourcePortRanges []string `pulumi:"sourcePortRanges"`
+}
+
+// Network security rule.
+type SecurityRuleResponseV1Output struct{ *pulumi.OutputState }
+
+func (SecurityRuleResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityRuleResponseV1)(nil)).Elem()
+}
+
+func (o SecurityRuleResponseV1Output) ToSecurityRuleResponseV1Output() SecurityRuleResponseV1Output {
+	return o
+}
+
+func (o SecurityRuleResponseV1Output) ToSecurityRuleResponseV1OutputWithContext(ctx context.Context) SecurityRuleResponseV1Output {
+	return o
+}
+
+// The network traffic is allowed or denied.
+func (o SecurityRuleResponseV1Output) Access() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityRuleResponseV1) string { return v.Access }).(pulumi.StringOutput)
+}
+
+// A description for this rule. Restricted to 140 chars.
+func (o SecurityRuleResponseV1Output) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityRuleResponseV1) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
+func (o SecurityRuleResponseV1Output) DestinationAddressPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityRuleResponseV1) *string { return v.DestinationAddressPrefix }).(pulumi.StringPtrOutput)
+}
+
+// The destination address prefixes. CIDR or destination IP ranges.
+func (o SecurityRuleResponseV1Output) DestinationAddressPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityRuleResponseV1) []string { return v.DestinationAddressPrefixes }).(pulumi.StringArrayOutput)
+}
+
+// The application security group specified as destination.
+func (o SecurityRuleResponseV1Output) DestinationApplicationSecurityGroups() ApplicationSecurityGroupResponseArrayOutput {
+	return o.ApplyT(func(v SecurityRuleResponseV1) []ApplicationSecurityGroupResponse {
+		return v.DestinationApplicationSecurityGroups
+	}).(ApplicationSecurityGroupResponseArrayOutput)
+}
+
+// The destination port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
+func (o SecurityRuleResponseV1Output) DestinationPortRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityRuleResponseV1) *string { return v.DestinationPortRange }).(pulumi.StringPtrOutput)
+}
+
+// The destination port ranges.
+func (o SecurityRuleResponseV1Output) DestinationPortRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityRuleResponseV1) []string { return v.DestinationPortRanges }).(pulumi.StringArrayOutput)
+}
+
+// The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
+func (o SecurityRuleResponseV1Output) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityRuleResponseV1) string { return v.Direction }).(pulumi.StringOutput)
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o SecurityRuleResponseV1Output) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityRuleResponseV1) *string { return v.Etag }).(pulumi.StringPtrOutput)
+}
+
+// Resource ID.
+func (o SecurityRuleResponseV1Output) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityRuleResponseV1) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+func (o SecurityRuleResponseV1Output) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityRuleResponseV1) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
+func (o SecurityRuleResponseV1Output) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecurityRuleResponseV1) *int { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// Network protocol this rule applies to. Possible values are 'Tcp', 'Udp', 'Icmp', 'Esp', and '*'.
+func (o SecurityRuleResponseV1Output) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityRuleResponseV1) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+func (o SecurityRuleResponseV1Output) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityRuleResponseV1) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+}
+
+// The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from.
+func (o SecurityRuleResponseV1Output) SourceAddressPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityRuleResponseV1) *string { return v.SourceAddressPrefix }).(pulumi.StringPtrOutput)
+}
+
+// The CIDR or source IP ranges.
+func (o SecurityRuleResponseV1Output) SourceAddressPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityRuleResponseV1) []string { return v.SourceAddressPrefixes }).(pulumi.StringArrayOutput)
+}
+
+// The application security group specified as source.
+func (o SecurityRuleResponseV1Output) SourceApplicationSecurityGroups() ApplicationSecurityGroupResponseArrayOutput {
+	return o.ApplyT(func(v SecurityRuleResponseV1) []ApplicationSecurityGroupResponse {
+		return v.SourceApplicationSecurityGroups
+	}).(ApplicationSecurityGroupResponseArrayOutput)
+}
+
+// The source port or range. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
+func (o SecurityRuleResponseV1Output) SourcePortRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityRuleResponseV1) *string { return v.SourcePortRange }).(pulumi.StringPtrOutput)
+}
+
+// The source port ranges.
+func (o SecurityRuleResponseV1Output) SourcePortRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityRuleResponseV1) []string { return v.SourcePortRanges }).(pulumi.StringArrayOutput)
+}
+
+type SecurityRuleResponseV1ArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityRuleResponseV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityRuleResponseV1)(nil)).Elem()
+}
+
+func (o SecurityRuleResponseV1ArrayOutput) ToSecurityRuleResponseV1ArrayOutput() SecurityRuleResponseV1ArrayOutput {
+	return o
+}
+
+func (o SecurityRuleResponseV1ArrayOutput) ToSecurityRuleResponseV1ArrayOutputWithContext(ctx context.Context) SecurityRuleResponseV1ArrayOutput {
+	return o
+}
+
+func (o SecurityRuleResponseV1ArrayOutput) Index(i pulumi.IntInput) SecurityRuleResponseV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityRuleResponseV1 {
+		return vs[0].([]SecurityRuleResponseV1)[vs[1].(int)]
+	}).(SecurityRuleResponseV1Output)
+}
+
 // Network manager security user group item.
 type SecurityUserGroupItem struct {
 	// Network manager group Id.
@@ -11546,6 +12683,87 @@ func (o ServiceAssociationLinkResponseArrayOutput) Index(i pulumi.IntInput) Serv
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceAssociationLinkResponse {
 		return vs[0].([]ServiceAssociationLinkResponse)[vs[1].(int)]
 	}).(ServiceAssociationLinkResponseOutput)
+}
+
+// ServiceAssociationLink resource.
+type ServiceAssociationLinkResponseV1 struct {
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Link to the external resource.
+	Link *string `pulumi:"link"`
+	// Resource type of the linked resource.
+	LinkedResourceType *string `pulumi:"linkedResourceType"`
+	// Name of the resource that is unique within a resource group. This name can be used to access the resource.
+	Name *string `pulumi:"name"`
+	// Provisioning state of the ServiceAssociationLink resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// ServiceAssociationLink resource.
+type ServiceAssociationLinkResponseV1Output struct{ *pulumi.OutputState }
+
+func (ServiceAssociationLinkResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceAssociationLinkResponseV1)(nil)).Elem()
+}
+
+func (o ServiceAssociationLinkResponseV1Output) ToServiceAssociationLinkResponseV1Output() ServiceAssociationLinkResponseV1Output {
+	return o
+}
+
+func (o ServiceAssociationLinkResponseV1Output) ToServiceAssociationLinkResponseV1OutputWithContext(ctx context.Context) ServiceAssociationLinkResponseV1Output {
+	return o
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o ServiceAssociationLinkResponseV1Output) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceAssociationLinkResponseV1) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Resource ID.
+func (o ServiceAssociationLinkResponseV1Output) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceAssociationLinkResponseV1) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Link to the external resource.
+func (o ServiceAssociationLinkResponseV1Output) Link() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceAssociationLinkResponseV1) *string { return v.Link }).(pulumi.StringPtrOutput)
+}
+
+// Resource type of the linked resource.
+func (o ServiceAssociationLinkResponseV1Output) LinkedResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceAssociationLinkResponseV1) *string { return v.LinkedResourceType }).(pulumi.StringPtrOutput)
+}
+
+// Name of the resource that is unique within a resource group. This name can be used to access the resource.
+func (o ServiceAssociationLinkResponseV1Output) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceAssociationLinkResponseV1) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Provisioning state of the ServiceAssociationLink resource.
+func (o ServiceAssociationLinkResponseV1Output) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceAssociationLinkResponseV1) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+type ServiceAssociationLinkResponseV1ArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceAssociationLinkResponseV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceAssociationLinkResponseV1)(nil)).Elem()
+}
+
+func (o ServiceAssociationLinkResponseV1ArrayOutput) ToServiceAssociationLinkResponseV1ArrayOutput() ServiceAssociationLinkResponseV1ArrayOutput {
+	return o
+}
+
+func (o ServiceAssociationLinkResponseV1ArrayOutput) ToServiceAssociationLinkResponseV1ArrayOutputWithContext(ctx context.Context) ServiceAssociationLinkResponseV1ArrayOutput {
+	return o
+}
+
+func (o ServiceAssociationLinkResponseV1ArrayOutput) Index(i pulumi.IntInput) ServiceAssociationLinkResponseV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceAssociationLinkResponseV1 {
+		return vs[0].([]ServiceAssociationLinkResponseV1)[vs[1].(int)]
+	}).(ServiceAssociationLinkResponseV1Output)
 }
 
 // Service End point policy resource.
@@ -11953,6 +13171,94 @@ func (o ServiceEndpointPolicyDefinitionResponseArrayOutput) Index(i pulumi.IntIn
 	}).(ServiceEndpointPolicyDefinitionResponseOutput)
 }
 
+// Service Endpoint policy definitions.
+type ServiceEndpointPolicyDefinitionResponseV1 struct {
+	// A description for this rule. Restricted to 140 chars.
+	Description *string `pulumi:"description"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag *string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+	Name *string `pulumi:"name"`
+	// The provisioning state of the service end point policy definition. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Service endpoint name.
+	Service *string `pulumi:"service"`
+	// A list of service resources.
+	ServiceResources []string `pulumi:"serviceResources"`
+}
+
+// Service Endpoint policy definitions.
+type ServiceEndpointPolicyDefinitionResponseV1Output struct{ *pulumi.OutputState }
+
+func (ServiceEndpointPolicyDefinitionResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceEndpointPolicyDefinitionResponseV1)(nil)).Elem()
+}
+
+func (o ServiceEndpointPolicyDefinitionResponseV1Output) ToServiceEndpointPolicyDefinitionResponseV1Output() ServiceEndpointPolicyDefinitionResponseV1Output {
+	return o
+}
+
+func (o ServiceEndpointPolicyDefinitionResponseV1Output) ToServiceEndpointPolicyDefinitionResponseV1OutputWithContext(ctx context.Context) ServiceEndpointPolicyDefinitionResponseV1Output {
+	return o
+}
+
+// A description for this rule. Restricted to 140 chars.
+func (o ServiceEndpointPolicyDefinitionResponseV1Output) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceEndpointPolicyDefinitionResponseV1) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o ServiceEndpointPolicyDefinitionResponseV1Output) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceEndpointPolicyDefinitionResponseV1) *string { return v.Etag }).(pulumi.StringPtrOutput)
+}
+
+// Resource ID.
+func (o ServiceEndpointPolicyDefinitionResponseV1Output) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceEndpointPolicyDefinitionResponseV1) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+func (o ServiceEndpointPolicyDefinitionResponseV1Output) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceEndpointPolicyDefinitionResponseV1) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The provisioning state of the service end point policy definition. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+func (o ServiceEndpointPolicyDefinitionResponseV1Output) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceEndpointPolicyDefinitionResponseV1) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Service endpoint name.
+func (o ServiceEndpointPolicyDefinitionResponseV1Output) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceEndpointPolicyDefinitionResponseV1) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+// A list of service resources.
+func (o ServiceEndpointPolicyDefinitionResponseV1Output) ServiceResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceEndpointPolicyDefinitionResponseV1) []string { return v.ServiceResources }).(pulumi.StringArrayOutput)
+}
+
+type ServiceEndpointPolicyDefinitionResponseV1ArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceEndpointPolicyDefinitionResponseV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceEndpointPolicyDefinitionResponseV1)(nil)).Elem()
+}
+
+func (o ServiceEndpointPolicyDefinitionResponseV1ArrayOutput) ToServiceEndpointPolicyDefinitionResponseV1ArrayOutput() ServiceEndpointPolicyDefinitionResponseV1ArrayOutput {
+	return o
+}
+
+func (o ServiceEndpointPolicyDefinitionResponseV1ArrayOutput) ToServiceEndpointPolicyDefinitionResponseV1ArrayOutputWithContext(ctx context.Context) ServiceEndpointPolicyDefinitionResponseV1ArrayOutput {
+	return o
+}
+
+func (o ServiceEndpointPolicyDefinitionResponseV1ArrayOutput) Index(i pulumi.IntInput) ServiceEndpointPolicyDefinitionResponseV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceEndpointPolicyDefinitionResponseV1 {
+		return vs[0].([]ServiceEndpointPolicyDefinitionResponseV1)[vs[1].(int)]
+	}).(ServiceEndpointPolicyDefinitionResponseV1Output)
+}
+
 // Service End point policy resource.
 type ServiceEndpointPolicyResponse struct {
 	// A collection of contextual service endpoint policy.
@@ -12085,10 +13391,123 @@ func (o ServiceEndpointPolicyResponseArrayOutput) Index(i pulumi.IntInput) Servi
 	}).(ServiceEndpointPolicyResponseOutput)
 }
 
+// Service End point policy resource.
+type ServiceEndpointPolicyResponseV1 struct {
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag *string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// The provisioning state of the service endpoint policy. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The resource GUID property of the service endpoint policy resource.
+	ResourceGuid string `pulumi:"resourceGuid"`
+	// A collection of service endpoint policy definitions of the service endpoint policy.
+	ServiceEndpointPolicyDefinitions []ServiceEndpointPolicyDefinitionResponseV1 `pulumi:"serviceEndpointPolicyDefinitions"`
+	// A collection of references to subnets.
+	Subnets []SubnetResponse `pulumi:"subnets"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
+}
+
+// Service End point policy resource.
+type ServiceEndpointPolicyResponseV1Output struct{ *pulumi.OutputState }
+
+func (ServiceEndpointPolicyResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceEndpointPolicyResponseV1)(nil)).Elem()
+}
+
+func (o ServiceEndpointPolicyResponseV1Output) ToServiceEndpointPolicyResponseV1Output() ServiceEndpointPolicyResponseV1Output {
+	return o
+}
+
+func (o ServiceEndpointPolicyResponseV1Output) ToServiceEndpointPolicyResponseV1OutputWithContext(ctx context.Context) ServiceEndpointPolicyResponseV1Output {
+	return o
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o ServiceEndpointPolicyResponseV1Output) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceEndpointPolicyResponseV1) *string { return v.Etag }).(pulumi.StringPtrOutput)
+}
+
+// Resource ID.
+func (o ServiceEndpointPolicyResponseV1Output) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceEndpointPolicyResponseV1) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Resource location.
+func (o ServiceEndpointPolicyResponseV1Output) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceEndpointPolicyResponseV1) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Resource name.
+func (o ServiceEndpointPolicyResponseV1Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceEndpointPolicyResponseV1) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The provisioning state of the service endpoint policy. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+func (o ServiceEndpointPolicyResponseV1Output) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceEndpointPolicyResponseV1) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The resource GUID property of the service endpoint policy resource.
+func (o ServiceEndpointPolicyResponseV1Output) ResourceGuid() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceEndpointPolicyResponseV1) string { return v.ResourceGuid }).(pulumi.StringOutput)
+}
+
+// A collection of service endpoint policy definitions of the service endpoint policy.
+func (o ServiceEndpointPolicyResponseV1Output) ServiceEndpointPolicyDefinitions() ServiceEndpointPolicyDefinitionResponseV1ArrayOutput {
+	return o.ApplyT(func(v ServiceEndpointPolicyResponseV1) []ServiceEndpointPolicyDefinitionResponseV1 {
+		return v.ServiceEndpointPolicyDefinitions
+	}).(ServiceEndpointPolicyDefinitionResponseV1ArrayOutput)
+}
+
+// A collection of references to subnets.
+func (o ServiceEndpointPolicyResponseV1Output) Subnets() SubnetResponseArrayOutput {
+	return o.ApplyT(func(v ServiceEndpointPolicyResponseV1) []SubnetResponse { return v.Subnets }).(SubnetResponseArrayOutput)
+}
+
+// Resource tags.
+func (o ServiceEndpointPolicyResponseV1Output) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ServiceEndpointPolicyResponseV1) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Resource type.
+func (o ServiceEndpointPolicyResponseV1Output) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceEndpointPolicyResponseV1) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ServiceEndpointPolicyResponseV1ArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceEndpointPolicyResponseV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceEndpointPolicyResponseV1)(nil)).Elem()
+}
+
+func (o ServiceEndpointPolicyResponseV1ArrayOutput) ToServiceEndpointPolicyResponseV1ArrayOutput() ServiceEndpointPolicyResponseV1ArrayOutput {
+	return o
+}
+
+func (o ServiceEndpointPolicyResponseV1ArrayOutput) ToServiceEndpointPolicyResponseV1ArrayOutputWithContext(ctx context.Context) ServiceEndpointPolicyResponseV1ArrayOutput {
+	return o
+}
+
+func (o ServiceEndpointPolicyResponseV1ArrayOutput) Index(i pulumi.IntInput) ServiceEndpointPolicyResponseV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceEndpointPolicyResponseV1 {
+		return vs[0].([]ServiceEndpointPolicyResponseV1)[vs[1].(int)]
+	}).(ServiceEndpointPolicyResponseV1Output)
+}
+
 // The service endpoint properties.
 type ServiceEndpointPropertiesFormat struct {
 	// A list of locations.
 	Locations []string `pulumi:"locations"`
+	// SubResource as network identifier.
+	NetworkIdentifier *SubResource `pulumi:"networkIdentifier"`
 	// The provisioning state of the resource.
 	ProvisioningState *string `pulumi:"provisioningState"`
 	// The type of the endpoint service.
@@ -12110,6 +13529,8 @@ type ServiceEndpointPropertiesFormatInput interface {
 type ServiceEndpointPropertiesFormatArgs struct {
 	// A list of locations.
 	Locations pulumi.StringArrayInput `pulumi:"locations"`
+	// SubResource as network identifier.
+	NetworkIdentifier SubResourcePtrInput `pulumi:"networkIdentifier"`
 	// The provisioning state of the resource.
 	ProvisioningState pulumi.StringPtrInput `pulumi:"provisioningState"`
 	// The type of the endpoint service.
@@ -12173,6 +13594,11 @@ func (o ServiceEndpointPropertiesFormatOutput) Locations() pulumi.StringArrayOut
 	return o.ApplyT(func(v ServiceEndpointPropertiesFormat) []string { return v.Locations }).(pulumi.StringArrayOutput)
 }
 
+// SubResource as network identifier.
+func (o ServiceEndpointPropertiesFormatOutput) NetworkIdentifier() SubResourcePtrOutput {
+	return o.ApplyT(func(v ServiceEndpointPropertiesFormat) *SubResource { return v.NetworkIdentifier }).(SubResourcePtrOutput)
+}
+
 // The provisioning state of the resource.
 func (o ServiceEndpointPropertiesFormatOutput) ProvisioningState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceEndpointPropertiesFormat) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
@@ -12207,6 +13633,8 @@ func (o ServiceEndpointPropertiesFormatArrayOutput) Index(i pulumi.IntInput) Ser
 type ServiceEndpointPropertiesFormatResponse struct {
 	// A list of locations.
 	Locations []string `pulumi:"locations"`
+	// SubResource as network identifier.
+	NetworkIdentifier *SubResourceResponse `pulumi:"networkIdentifier"`
 	// The provisioning state of the service endpoint resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The type of the endpoint service.
@@ -12231,6 +13659,11 @@ func (o ServiceEndpointPropertiesFormatResponseOutput) ToServiceEndpointProperti
 // A list of locations.
 func (o ServiceEndpointPropertiesFormatResponseOutput) Locations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceEndpointPropertiesFormatResponse) []string { return v.Locations }).(pulumi.StringArrayOutput)
+}
+
+// SubResource as network identifier.
+func (o ServiceEndpointPropertiesFormatResponseOutput) NetworkIdentifier() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v ServiceEndpointPropertiesFormatResponse) *SubResourceResponse { return v.NetworkIdentifier }).(SubResourceResponsePtrOutput)
 }
 
 // The provisioning state of the service endpoint resource.
@@ -12261,6 +13694,302 @@ func (o ServiceEndpointPropertiesFormatResponseArrayOutput) Index(i pulumi.IntIn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceEndpointPropertiesFormatResponse {
 		return vs[0].([]ServiceEndpointPropertiesFormatResponse)[vs[1].(int)]
 	}).(ServiceEndpointPropertiesFormatResponseOutput)
+}
+
+// The service endpoint properties.
+type ServiceEndpointPropertiesFormatResponseV1 struct {
+	// A list of locations.
+	Locations []string `pulumi:"locations"`
+	// The provisioning state of the resource.
+	ProvisioningState *string `pulumi:"provisioningState"`
+	// The type of the endpoint service.
+	Service *string `pulumi:"service"`
+}
+
+// The service endpoint properties.
+type ServiceEndpointPropertiesFormatResponseV1Output struct{ *pulumi.OutputState }
+
+func (ServiceEndpointPropertiesFormatResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceEndpointPropertiesFormatResponseV1)(nil)).Elem()
+}
+
+func (o ServiceEndpointPropertiesFormatResponseV1Output) ToServiceEndpointPropertiesFormatResponseV1Output() ServiceEndpointPropertiesFormatResponseV1Output {
+	return o
+}
+
+func (o ServiceEndpointPropertiesFormatResponseV1Output) ToServiceEndpointPropertiesFormatResponseV1OutputWithContext(ctx context.Context) ServiceEndpointPropertiesFormatResponseV1Output {
+	return o
+}
+
+// A list of locations.
+func (o ServiceEndpointPropertiesFormatResponseV1Output) Locations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceEndpointPropertiesFormatResponseV1) []string { return v.Locations }).(pulumi.StringArrayOutput)
+}
+
+// The provisioning state of the resource.
+func (o ServiceEndpointPropertiesFormatResponseV1Output) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceEndpointPropertiesFormatResponseV1) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+}
+
+// The type of the endpoint service.
+func (o ServiceEndpointPropertiesFormatResponseV1Output) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceEndpointPropertiesFormatResponseV1) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+type ServiceEndpointPropertiesFormatResponseV1ArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceEndpointPropertiesFormatResponseV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceEndpointPropertiesFormatResponseV1)(nil)).Elem()
+}
+
+func (o ServiceEndpointPropertiesFormatResponseV1ArrayOutput) ToServiceEndpointPropertiesFormatResponseV1ArrayOutput() ServiceEndpointPropertiesFormatResponseV1ArrayOutput {
+	return o
+}
+
+func (o ServiceEndpointPropertiesFormatResponseV1ArrayOutput) ToServiceEndpointPropertiesFormatResponseV1ArrayOutputWithContext(ctx context.Context) ServiceEndpointPropertiesFormatResponseV1ArrayOutput {
+	return o
+}
+
+func (o ServiceEndpointPropertiesFormatResponseV1ArrayOutput) Index(i pulumi.IntInput) ServiceEndpointPropertiesFormatResponseV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceEndpointPropertiesFormatResponseV1 {
+		return vs[0].([]ServiceEndpointPropertiesFormatResponseV1)[vs[1].(int)]
+	}).(ServiceEndpointPropertiesFormatResponseV1Output)
+}
+
+// SKU of a service gateway.
+type ServiceGatewaySku struct {
+	// Name of a service gateway SKU.
+	Name *string `pulumi:"name"`
+	// Tier of a service gateway SKU.
+	Tier *string `pulumi:"tier"`
+}
+
+// ServiceGatewaySkuInput is an input type that accepts ServiceGatewaySkuArgs and ServiceGatewaySkuOutput values.
+// You can construct a concrete instance of `ServiceGatewaySkuInput` via:
+//
+//	ServiceGatewaySkuArgs{...}
+type ServiceGatewaySkuInput interface {
+	pulumi.Input
+
+	ToServiceGatewaySkuOutput() ServiceGatewaySkuOutput
+	ToServiceGatewaySkuOutputWithContext(context.Context) ServiceGatewaySkuOutput
+}
+
+// SKU of a service gateway.
+type ServiceGatewaySkuArgs struct {
+	// Name of a service gateway SKU.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Tier of a service gateway SKU.
+	Tier pulumi.StringPtrInput `pulumi:"tier"`
+}
+
+func (ServiceGatewaySkuArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceGatewaySku)(nil)).Elem()
+}
+
+func (i ServiceGatewaySkuArgs) ToServiceGatewaySkuOutput() ServiceGatewaySkuOutput {
+	return i.ToServiceGatewaySkuOutputWithContext(context.Background())
+}
+
+func (i ServiceGatewaySkuArgs) ToServiceGatewaySkuOutputWithContext(ctx context.Context) ServiceGatewaySkuOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceGatewaySkuOutput)
+}
+
+func (i ServiceGatewaySkuArgs) ToServiceGatewaySkuPtrOutput() ServiceGatewaySkuPtrOutput {
+	return i.ToServiceGatewaySkuPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceGatewaySkuArgs) ToServiceGatewaySkuPtrOutputWithContext(ctx context.Context) ServiceGatewaySkuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceGatewaySkuOutput).ToServiceGatewaySkuPtrOutputWithContext(ctx)
+}
+
+// ServiceGatewaySkuPtrInput is an input type that accepts ServiceGatewaySkuArgs, ServiceGatewaySkuPtr and ServiceGatewaySkuPtrOutput values.
+// You can construct a concrete instance of `ServiceGatewaySkuPtrInput` via:
+//
+//	        ServiceGatewaySkuArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceGatewaySkuPtrInput interface {
+	pulumi.Input
+
+	ToServiceGatewaySkuPtrOutput() ServiceGatewaySkuPtrOutput
+	ToServiceGatewaySkuPtrOutputWithContext(context.Context) ServiceGatewaySkuPtrOutput
+}
+
+type serviceGatewaySkuPtrType ServiceGatewaySkuArgs
+
+func ServiceGatewaySkuPtr(v *ServiceGatewaySkuArgs) ServiceGatewaySkuPtrInput {
+	return (*serviceGatewaySkuPtrType)(v)
+}
+
+func (*serviceGatewaySkuPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceGatewaySku)(nil)).Elem()
+}
+
+func (i *serviceGatewaySkuPtrType) ToServiceGatewaySkuPtrOutput() ServiceGatewaySkuPtrOutput {
+	return i.ToServiceGatewaySkuPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceGatewaySkuPtrType) ToServiceGatewaySkuPtrOutputWithContext(ctx context.Context) ServiceGatewaySkuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceGatewaySkuPtrOutput)
+}
+
+// SKU of a service gateway.
+type ServiceGatewaySkuOutput struct{ *pulumi.OutputState }
+
+func (ServiceGatewaySkuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceGatewaySku)(nil)).Elem()
+}
+
+func (o ServiceGatewaySkuOutput) ToServiceGatewaySkuOutput() ServiceGatewaySkuOutput {
+	return o
+}
+
+func (o ServiceGatewaySkuOutput) ToServiceGatewaySkuOutputWithContext(ctx context.Context) ServiceGatewaySkuOutput {
+	return o
+}
+
+func (o ServiceGatewaySkuOutput) ToServiceGatewaySkuPtrOutput() ServiceGatewaySkuPtrOutput {
+	return o.ToServiceGatewaySkuPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceGatewaySkuOutput) ToServiceGatewaySkuPtrOutputWithContext(ctx context.Context) ServiceGatewaySkuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceGatewaySku) *ServiceGatewaySku {
+		return &v
+	}).(ServiceGatewaySkuPtrOutput)
+}
+
+// Name of a service gateway SKU.
+func (o ServiceGatewaySkuOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceGatewaySku) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Tier of a service gateway SKU.
+func (o ServiceGatewaySkuOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceGatewaySku) *string { return v.Tier }).(pulumi.StringPtrOutput)
+}
+
+type ServiceGatewaySkuPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceGatewaySkuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceGatewaySku)(nil)).Elem()
+}
+
+func (o ServiceGatewaySkuPtrOutput) ToServiceGatewaySkuPtrOutput() ServiceGatewaySkuPtrOutput {
+	return o
+}
+
+func (o ServiceGatewaySkuPtrOutput) ToServiceGatewaySkuPtrOutputWithContext(ctx context.Context) ServiceGatewaySkuPtrOutput {
+	return o
+}
+
+func (o ServiceGatewaySkuPtrOutput) Elem() ServiceGatewaySkuOutput {
+	return o.ApplyT(func(v *ServiceGatewaySku) ServiceGatewaySku {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceGatewaySku
+		return ret
+	}).(ServiceGatewaySkuOutput)
+}
+
+// Name of a service gateway SKU.
+func (o ServiceGatewaySkuPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceGatewaySku) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tier of a service gateway SKU.
+func (o ServiceGatewaySkuPtrOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceGatewaySku) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tier
+	}).(pulumi.StringPtrOutput)
+}
+
+// SKU of a service gateway.
+type ServiceGatewaySkuResponse struct {
+	// Name of a service gateway SKU.
+	Name *string `pulumi:"name"`
+	// Tier of a service gateway SKU.
+	Tier *string `pulumi:"tier"`
+}
+
+// SKU of a service gateway.
+type ServiceGatewaySkuResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceGatewaySkuResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceGatewaySkuResponse)(nil)).Elem()
+}
+
+func (o ServiceGatewaySkuResponseOutput) ToServiceGatewaySkuResponseOutput() ServiceGatewaySkuResponseOutput {
+	return o
+}
+
+func (o ServiceGatewaySkuResponseOutput) ToServiceGatewaySkuResponseOutputWithContext(ctx context.Context) ServiceGatewaySkuResponseOutput {
+	return o
+}
+
+// Name of a service gateway SKU.
+func (o ServiceGatewaySkuResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceGatewaySkuResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Tier of a service gateway SKU.
+func (o ServiceGatewaySkuResponseOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceGatewaySkuResponse) *string { return v.Tier }).(pulumi.StringPtrOutput)
+}
+
+type ServiceGatewaySkuResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceGatewaySkuResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceGatewaySkuResponse)(nil)).Elem()
+}
+
+func (o ServiceGatewaySkuResponsePtrOutput) ToServiceGatewaySkuResponsePtrOutput() ServiceGatewaySkuResponsePtrOutput {
+	return o
+}
+
+func (o ServiceGatewaySkuResponsePtrOutput) ToServiceGatewaySkuResponsePtrOutputWithContext(ctx context.Context) ServiceGatewaySkuResponsePtrOutput {
+	return o
+}
+
+func (o ServiceGatewaySkuResponsePtrOutput) Elem() ServiceGatewaySkuResponseOutput {
+	return o.ApplyT(func(v *ServiceGatewaySkuResponse) ServiceGatewaySkuResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceGatewaySkuResponse
+		return ret
+	}).(ServiceGatewaySkuResponseOutput)
+}
+
+// Name of a service gateway SKU.
+func (o ServiceGatewaySkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceGatewaySkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Tier of a service gateway SKU.
+func (o ServiceGatewaySkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceGatewaySkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tier
+	}).(pulumi.StringPtrOutput)
 }
 
 // Parameters for SharedKey.
@@ -12303,93 +14032,12 @@ func (o SharedKeyPropertiesResponseOutput) SharedKeyLength() pulumi.IntPtrOutput
 	return o.ApplyT(func(v SharedKeyPropertiesResponse) *int { return v.SharedKeyLength }).(pulumi.IntPtrOutput)
 }
 
-// Represents the signing key.
-type SigningKeyResponse struct {
-	// The delegation signer information.
-	DelegationSignerInfo []DelegationSignerInfoResponse `pulumi:"delegationSignerInfo"`
-	// The flags specifies how the key is used.
-	Flags int `pulumi:"flags"`
-	// The key tag value of the DNSKEY Resource Record.
-	KeyTag int `pulumi:"keyTag"`
-	// The protocol value. The value is always 3.
-	Protocol int `pulumi:"protocol"`
-	// The public key, represented as a Base64 encoding.
-	PublicKey string `pulumi:"publicKey"`
-	// The security algorithm type represents the standard security algorithm number of the DNSKEY Resource Record. See: https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xhtml
-	SecurityAlgorithmType int `pulumi:"securityAlgorithmType"`
-}
-
-// Represents the signing key.
-type SigningKeyResponseOutput struct{ *pulumi.OutputState }
-
-func (SigningKeyResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SigningKeyResponse)(nil)).Elem()
-}
-
-func (o SigningKeyResponseOutput) ToSigningKeyResponseOutput() SigningKeyResponseOutput {
-	return o
-}
-
-func (o SigningKeyResponseOutput) ToSigningKeyResponseOutputWithContext(ctx context.Context) SigningKeyResponseOutput {
-	return o
-}
-
-// The delegation signer information.
-func (o SigningKeyResponseOutput) DelegationSignerInfo() DelegationSignerInfoResponseArrayOutput {
-	return o.ApplyT(func(v SigningKeyResponse) []DelegationSignerInfoResponse { return v.DelegationSignerInfo }).(DelegationSignerInfoResponseArrayOutput)
-}
-
-// The flags specifies how the key is used.
-func (o SigningKeyResponseOutput) Flags() pulumi.IntOutput {
-	return o.ApplyT(func(v SigningKeyResponse) int { return v.Flags }).(pulumi.IntOutput)
-}
-
-// The key tag value of the DNSKEY Resource Record.
-func (o SigningKeyResponseOutput) KeyTag() pulumi.IntOutput {
-	return o.ApplyT(func(v SigningKeyResponse) int { return v.KeyTag }).(pulumi.IntOutput)
-}
-
-// The protocol value. The value is always 3.
-func (o SigningKeyResponseOutput) Protocol() pulumi.IntOutput {
-	return o.ApplyT(func(v SigningKeyResponse) int { return v.Protocol }).(pulumi.IntOutput)
-}
-
-// The public key, represented as a Base64 encoding.
-func (o SigningKeyResponseOutput) PublicKey() pulumi.StringOutput {
-	return o.ApplyT(func(v SigningKeyResponse) string { return v.PublicKey }).(pulumi.StringOutput)
-}
-
-// The security algorithm type represents the standard security algorithm number of the DNSKEY Resource Record. See: https://www.iana.org/assignments/dns-sec-alg-numbers/dns-sec-alg-numbers.xhtml
-func (o SigningKeyResponseOutput) SecurityAlgorithmType() pulumi.IntOutput {
-	return o.ApplyT(func(v SigningKeyResponse) int { return v.SecurityAlgorithmType }).(pulumi.IntOutput)
-}
-
-type SigningKeyResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (SigningKeyResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SigningKeyResponse)(nil)).Elem()
-}
-
-func (o SigningKeyResponseArrayOutput) ToSigningKeyResponseArrayOutput() SigningKeyResponseArrayOutput {
-	return o
-}
-
-func (o SigningKeyResponseArrayOutput) ToSigningKeyResponseArrayOutputWithContext(ctx context.Context) SigningKeyResponseArrayOutput {
-	return o
-}
-
-func (o SigningKeyResponseArrayOutput) Index(i pulumi.IntInput) SigningKeyResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SigningKeyResponse {
-		return vs[0].([]SigningKeyResponse)[vs[1].(int)]
-	}).(SigningKeyResponseOutput)
-}
-
 type SingleQueryResultResponse struct {
 	// Describes what is the signature enforces
 	Description *string `pulumi:"description"`
 	// Describes the list of destination ports related to this signature
 	DestinationPorts []string `pulumi:"destinationPorts"`
-	// Describes in which direction signature is being enforced: 0 - Inbound, 1 - OutBound, 2 - Bidirectional
+	// Describes in which direction signature is being enforced: 0 - OutBound, 1 - InBound, 2 - Any, 3 - Internal, 4 - InternalOutbound, 5 - InternalInbound
 	Direction *int `pulumi:"direction"`
 	// Describes the groups the signature belongs to
 	Group *string `pulumi:"group"`
@@ -12401,7 +14049,7 @@ type SingleQueryResultResponse struct {
 	Mode *int `pulumi:"mode"`
 	// Describes the protocol the signatures is being enforced in
 	Protocol *string `pulumi:"protocol"`
-	// Describes the severity of signature: 1 - Low, 2 - Medium, 3 - High
+	// Describes the severity of signature: 1 - High, 2 - Medium, 3 - Low
 	Severity *int `pulumi:"severity"`
 	// The ID of the signature
 	SignatureId *int `pulumi:"signatureId"`
@@ -12433,7 +14081,7 @@ func (o SingleQueryResultResponseOutput) DestinationPorts() pulumi.StringArrayOu
 	return o.ApplyT(func(v SingleQueryResultResponse) []string { return v.DestinationPorts }).(pulumi.StringArrayOutput)
 }
 
-// Describes in which direction signature is being enforced: 0 - Inbound, 1 - OutBound, 2 - Bidirectional
+// Describes in which direction signature is being enforced: 0 - OutBound, 1 - InBound, 2 - Any, 3 - Internal, 4 - InternalOutbound, 5 - InternalInbound
 func (o SingleQueryResultResponseOutput) Direction() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SingleQueryResultResponse) *int { return v.Direction }).(pulumi.IntPtrOutput)
 }
@@ -12463,7 +14111,7 @@ func (o SingleQueryResultResponseOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SingleQueryResultResponse) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
-// Describes the severity of signature: 1 - Low, 2 - Medium, 3 - High
+// Describes the severity of signature: 1 - High, 2 - Medium, 3 - Low
 func (o SingleQueryResultResponseOutput) Severity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SingleQueryResultResponse) *int { return v.Severity }).(pulumi.IntPtrOutput)
 }
@@ -12498,10 +14146,23 @@ func (o SingleQueryResultResponseArrayOutput) Index(i pulumi.IntInput) SingleQue
 	}).(SingleQueryResultResponseOutput)
 }
 
-// The pricing tier of the web application firewall policy.
+// The sku of this Bastion Host.
 type Sku struct {
-	// Name of the pricing tier.
+	// The name of the sku of this Bastion Host.
 	Name *string `pulumi:"name"`
+}
+
+// Defaults sets the appropriate defaults for Sku
+func (val *Sku) Defaults() *Sku {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Name == nil {
+		name_ := "Standard"
+		tmp.Name = &name_
+	}
+	return &tmp
 }
 
 // SkuInput is an input type that accepts SkuArgs and SkuOutput values.
@@ -12515,12 +14176,23 @@ type SkuInput interface {
 	ToSkuOutputWithContext(context.Context) SkuOutput
 }
 
-// The pricing tier of the web application firewall policy.
+// The sku of this Bastion Host.
 type SkuArgs struct {
-	// Name of the pricing tier.
+	// The name of the sku of this Bastion Host.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
+// Defaults sets the appropriate defaults for SkuArgs
+func (val *SkuArgs) Defaults() *SkuArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Name == nil {
+		tmp.Name = pulumi.StringPtr("Standard")
+	}
+	return &tmp
+}
 func (SkuArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*Sku)(nil)).Elem()
 }
@@ -12574,7 +14246,7 @@ func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput
 	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
 }
 
-// The pricing tier of the web application firewall policy.
+// The sku of this Bastion Host.
 type SkuOutput struct{ *pulumi.OutputState }
 
 func (SkuOutput) ElementType() reflect.Type {
@@ -12599,7 +14271,7 @@ func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
 	}).(SkuPtrOutput)
 }
 
-// Name of the pricing tier.
+// The name of the sku of this Bastion Host.
 func (o SkuOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Sku) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -12628,7 +14300,7 @@ func (o SkuPtrOutput) Elem() SkuOutput {
 	}).(SkuOutput)
 }
 
-// Name of the pricing tier.
+// The name of the sku of this Bastion Host.
 func (o SkuPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Sku) *string {
 		if v == nil {
@@ -12638,13 +14310,26 @@ func (o SkuPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The pricing tier of the web application firewall policy.
+// The sku of this Bastion Host.
 type SkuResponse struct {
-	// Name of the pricing tier.
+	// The name of the sku of this Bastion Host.
 	Name *string `pulumi:"name"`
 }
 
-// The pricing tier of the web application firewall policy.
+// Defaults sets the appropriate defaults for SkuResponse
+func (val *SkuResponse) Defaults() *SkuResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.Name == nil {
+		name_ := "Standard"
+		tmp.Name = &name_
+	}
+	return &tmp
+}
+
+// The sku of this Bastion Host.
 type SkuResponseOutput struct{ *pulumi.OutputState }
 
 func (SkuResponseOutput) ElementType() reflect.Type {
@@ -12659,7 +14344,7 @@ func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) S
 	return o
 }
 
-// Name of the pricing tier.
+// The name of the sku of this Bastion Host.
 func (o SkuResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SkuResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -12688,7 +14373,7 @@ func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {
 	}).(SkuResponseOutput)
 }
 
-// Name of the pricing tier.
+// The name of the sku of this Bastion Host.
 func (o SkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SkuResponse) *string {
 		if v == nil {
@@ -12696,616 +14381,6 @@ func (o SkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
 		}
 		return v.Name
 	}).(pulumi.StringPtrOutput)
-}
-
-// An SOA record.
-type SoaRecord struct {
-	// The email contact for this SOA record.
-	Email *string `pulumi:"email"`
-	// The expire time for this SOA record.
-	ExpireTime *float64 `pulumi:"expireTime"`
-	// The domain name of the authoritative name server for this SOA record.
-	Host *string `pulumi:"host"`
-	// The minimum value for this SOA record. By convention this is used to determine the negative caching duration.
-	MinimumTtl *float64 `pulumi:"minimumTtl"`
-	// The refresh value for this SOA record.
-	RefreshTime *float64 `pulumi:"refreshTime"`
-	// The retry time for this SOA record.
-	RetryTime *float64 `pulumi:"retryTime"`
-	// The serial number for this SOA record.
-	SerialNumber *float64 `pulumi:"serialNumber"`
-}
-
-// SoaRecordInput is an input type that accepts SoaRecordArgs and SoaRecordOutput values.
-// You can construct a concrete instance of `SoaRecordInput` via:
-//
-//	SoaRecordArgs{...}
-type SoaRecordInput interface {
-	pulumi.Input
-
-	ToSoaRecordOutput() SoaRecordOutput
-	ToSoaRecordOutputWithContext(context.Context) SoaRecordOutput
-}
-
-// An SOA record.
-type SoaRecordArgs struct {
-	// The email contact for this SOA record.
-	Email pulumi.StringPtrInput `pulumi:"email"`
-	// The expire time for this SOA record.
-	ExpireTime pulumi.Float64PtrInput `pulumi:"expireTime"`
-	// The domain name of the authoritative name server for this SOA record.
-	Host pulumi.StringPtrInput `pulumi:"host"`
-	// The minimum value for this SOA record. By convention this is used to determine the negative caching duration.
-	MinimumTtl pulumi.Float64PtrInput `pulumi:"minimumTtl"`
-	// The refresh value for this SOA record.
-	RefreshTime pulumi.Float64PtrInput `pulumi:"refreshTime"`
-	// The retry time for this SOA record.
-	RetryTime pulumi.Float64PtrInput `pulumi:"retryTime"`
-	// The serial number for this SOA record.
-	SerialNumber pulumi.Float64PtrInput `pulumi:"serialNumber"`
-}
-
-func (SoaRecordArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SoaRecord)(nil)).Elem()
-}
-
-func (i SoaRecordArgs) ToSoaRecordOutput() SoaRecordOutput {
-	return i.ToSoaRecordOutputWithContext(context.Background())
-}
-
-func (i SoaRecordArgs) ToSoaRecordOutputWithContext(ctx context.Context) SoaRecordOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SoaRecordOutput)
-}
-
-func (i SoaRecordArgs) ToSoaRecordPtrOutput() SoaRecordPtrOutput {
-	return i.ToSoaRecordPtrOutputWithContext(context.Background())
-}
-
-func (i SoaRecordArgs) ToSoaRecordPtrOutputWithContext(ctx context.Context) SoaRecordPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SoaRecordOutput).ToSoaRecordPtrOutputWithContext(ctx)
-}
-
-// SoaRecordPtrInput is an input type that accepts SoaRecordArgs, SoaRecordPtr and SoaRecordPtrOutput values.
-// You can construct a concrete instance of `SoaRecordPtrInput` via:
-//
-//	        SoaRecordArgs{...}
-//
-//	or:
-//
-//	        nil
-type SoaRecordPtrInput interface {
-	pulumi.Input
-
-	ToSoaRecordPtrOutput() SoaRecordPtrOutput
-	ToSoaRecordPtrOutputWithContext(context.Context) SoaRecordPtrOutput
-}
-
-type soaRecordPtrType SoaRecordArgs
-
-func SoaRecordPtr(v *SoaRecordArgs) SoaRecordPtrInput {
-	return (*soaRecordPtrType)(v)
-}
-
-func (*soaRecordPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SoaRecord)(nil)).Elem()
-}
-
-func (i *soaRecordPtrType) ToSoaRecordPtrOutput() SoaRecordPtrOutput {
-	return i.ToSoaRecordPtrOutputWithContext(context.Background())
-}
-
-func (i *soaRecordPtrType) ToSoaRecordPtrOutputWithContext(ctx context.Context) SoaRecordPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SoaRecordPtrOutput)
-}
-
-// An SOA record.
-type SoaRecordOutput struct{ *pulumi.OutputState }
-
-func (SoaRecordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SoaRecord)(nil)).Elem()
-}
-
-func (o SoaRecordOutput) ToSoaRecordOutput() SoaRecordOutput {
-	return o
-}
-
-func (o SoaRecordOutput) ToSoaRecordOutputWithContext(ctx context.Context) SoaRecordOutput {
-	return o
-}
-
-func (o SoaRecordOutput) ToSoaRecordPtrOutput() SoaRecordPtrOutput {
-	return o.ToSoaRecordPtrOutputWithContext(context.Background())
-}
-
-func (o SoaRecordOutput) ToSoaRecordPtrOutputWithContext(ctx context.Context) SoaRecordPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoaRecord) *SoaRecord {
-		return &v
-	}).(SoaRecordPtrOutput)
-}
-
-// The email contact for this SOA record.
-func (o SoaRecordOutput) Email() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SoaRecord) *string { return v.Email }).(pulumi.StringPtrOutput)
-}
-
-// The expire time for this SOA record.
-func (o SoaRecordOutput) ExpireTime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v SoaRecord) *float64 { return v.ExpireTime }).(pulumi.Float64PtrOutput)
-}
-
-// The domain name of the authoritative name server for this SOA record.
-func (o SoaRecordOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SoaRecord) *string { return v.Host }).(pulumi.StringPtrOutput)
-}
-
-// The minimum value for this SOA record. By convention this is used to determine the negative caching duration.
-func (o SoaRecordOutput) MinimumTtl() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v SoaRecord) *float64 { return v.MinimumTtl }).(pulumi.Float64PtrOutput)
-}
-
-// The refresh value for this SOA record.
-func (o SoaRecordOutput) RefreshTime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v SoaRecord) *float64 { return v.RefreshTime }).(pulumi.Float64PtrOutput)
-}
-
-// The retry time for this SOA record.
-func (o SoaRecordOutput) RetryTime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v SoaRecord) *float64 { return v.RetryTime }).(pulumi.Float64PtrOutput)
-}
-
-// The serial number for this SOA record.
-func (o SoaRecordOutput) SerialNumber() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v SoaRecord) *float64 { return v.SerialNumber }).(pulumi.Float64PtrOutput)
-}
-
-type SoaRecordPtrOutput struct{ *pulumi.OutputState }
-
-func (SoaRecordPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SoaRecord)(nil)).Elem()
-}
-
-func (o SoaRecordPtrOutput) ToSoaRecordPtrOutput() SoaRecordPtrOutput {
-	return o
-}
-
-func (o SoaRecordPtrOutput) ToSoaRecordPtrOutputWithContext(ctx context.Context) SoaRecordPtrOutput {
-	return o
-}
-
-func (o SoaRecordPtrOutput) Elem() SoaRecordOutput {
-	return o.ApplyT(func(v *SoaRecord) SoaRecord {
-		if v != nil {
-			return *v
-		}
-		var ret SoaRecord
-		return ret
-	}).(SoaRecordOutput)
-}
-
-// The email contact for this SOA record.
-func (o SoaRecordPtrOutput) Email() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SoaRecord) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Email
-	}).(pulumi.StringPtrOutput)
-}
-
-// The expire time for this SOA record.
-func (o SoaRecordPtrOutput) ExpireTime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *SoaRecord) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.ExpireTime
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The domain name of the authoritative name server for this SOA record.
-func (o SoaRecordPtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SoaRecord) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Host
-	}).(pulumi.StringPtrOutput)
-}
-
-// The minimum value for this SOA record. By convention this is used to determine the negative caching duration.
-func (o SoaRecordPtrOutput) MinimumTtl() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *SoaRecord) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.MinimumTtl
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The refresh value for this SOA record.
-func (o SoaRecordPtrOutput) RefreshTime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *SoaRecord) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.RefreshTime
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The retry time for this SOA record.
-func (o SoaRecordPtrOutput) RetryTime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *SoaRecord) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.RetryTime
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The serial number for this SOA record.
-func (o SoaRecordPtrOutput) SerialNumber() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *SoaRecord) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.SerialNumber
-	}).(pulumi.Float64PtrOutput)
-}
-
-// An SOA record.
-type SoaRecordResponse struct {
-	// The email contact for this SOA record.
-	Email *string `pulumi:"email"`
-	// The expire time for this SOA record.
-	ExpireTime *float64 `pulumi:"expireTime"`
-	// The domain name of the authoritative name server for this SOA record.
-	Host *string `pulumi:"host"`
-	// The minimum value for this SOA record. By convention this is used to determine the negative caching duration.
-	MinimumTtl *float64 `pulumi:"minimumTtl"`
-	// The refresh value for this SOA record.
-	RefreshTime *float64 `pulumi:"refreshTime"`
-	// The retry time for this SOA record.
-	RetryTime *float64 `pulumi:"retryTime"`
-	// The serial number for this SOA record.
-	SerialNumber *float64 `pulumi:"serialNumber"`
-}
-
-// An SOA record.
-type SoaRecordResponseOutput struct{ *pulumi.OutputState }
-
-func (SoaRecordResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SoaRecordResponse)(nil)).Elem()
-}
-
-func (o SoaRecordResponseOutput) ToSoaRecordResponseOutput() SoaRecordResponseOutput {
-	return o
-}
-
-func (o SoaRecordResponseOutput) ToSoaRecordResponseOutputWithContext(ctx context.Context) SoaRecordResponseOutput {
-	return o
-}
-
-// The email contact for this SOA record.
-func (o SoaRecordResponseOutput) Email() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SoaRecordResponse) *string { return v.Email }).(pulumi.StringPtrOutput)
-}
-
-// The expire time for this SOA record.
-func (o SoaRecordResponseOutput) ExpireTime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v SoaRecordResponse) *float64 { return v.ExpireTime }).(pulumi.Float64PtrOutput)
-}
-
-// The domain name of the authoritative name server for this SOA record.
-func (o SoaRecordResponseOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SoaRecordResponse) *string { return v.Host }).(pulumi.StringPtrOutput)
-}
-
-// The minimum value for this SOA record. By convention this is used to determine the negative caching duration.
-func (o SoaRecordResponseOutput) MinimumTtl() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v SoaRecordResponse) *float64 { return v.MinimumTtl }).(pulumi.Float64PtrOutput)
-}
-
-// The refresh value for this SOA record.
-func (o SoaRecordResponseOutput) RefreshTime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v SoaRecordResponse) *float64 { return v.RefreshTime }).(pulumi.Float64PtrOutput)
-}
-
-// The retry time for this SOA record.
-func (o SoaRecordResponseOutput) RetryTime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v SoaRecordResponse) *float64 { return v.RetryTime }).(pulumi.Float64PtrOutput)
-}
-
-// The serial number for this SOA record.
-func (o SoaRecordResponseOutput) SerialNumber() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v SoaRecordResponse) *float64 { return v.SerialNumber }).(pulumi.Float64PtrOutput)
-}
-
-type SoaRecordResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SoaRecordResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SoaRecordResponse)(nil)).Elem()
-}
-
-func (o SoaRecordResponsePtrOutput) ToSoaRecordResponsePtrOutput() SoaRecordResponsePtrOutput {
-	return o
-}
-
-func (o SoaRecordResponsePtrOutput) ToSoaRecordResponsePtrOutputWithContext(ctx context.Context) SoaRecordResponsePtrOutput {
-	return o
-}
-
-func (o SoaRecordResponsePtrOutput) Elem() SoaRecordResponseOutput {
-	return o.ApplyT(func(v *SoaRecordResponse) SoaRecordResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SoaRecordResponse
-		return ret
-	}).(SoaRecordResponseOutput)
-}
-
-// The email contact for this SOA record.
-func (o SoaRecordResponsePtrOutput) Email() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SoaRecordResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Email
-	}).(pulumi.StringPtrOutput)
-}
-
-// The expire time for this SOA record.
-func (o SoaRecordResponsePtrOutput) ExpireTime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *SoaRecordResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.ExpireTime
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The domain name of the authoritative name server for this SOA record.
-func (o SoaRecordResponsePtrOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SoaRecordResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Host
-	}).(pulumi.StringPtrOutput)
-}
-
-// The minimum value for this SOA record. By convention this is used to determine the negative caching duration.
-func (o SoaRecordResponsePtrOutput) MinimumTtl() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *SoaRecordResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.MinimumTtl
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The refresh value for this SOA record.
-func (o SoaRecordResponsePtrOutput) RefreshTime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *SoaRecordResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.RefreshTime
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The retry time for this SOA record.
-func (o SoaRecordResponsePtrOutput) RetryTime() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *SoaRecordResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.RetryTime
-	}).(pulumi.Float64PtrOutput)
-}
-
-// The serial number for this SOA record.
-func (o SoaRecordResponsePtrOutput) SerialNumber() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *SoaRecordResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.SerialNumber
-	}).(pulumi.Float64PtrOutput)
-}
-
-// An SRV record.
-type SrvRecord struct {
-	// The port value for this SRV record.
-	Port *int `pulumi:"port"`
-	// The priority value for this SRV record.
-	Priority *int `pulumi:"priority"`
-	// The target domain name for this SRV record.
-	Target *string `pulumi:"target"`
-	// The weight value for this SRV record.
-	Weight *int `pulumi:"weight"`
-}
-
-// SrvRecordInput is an input type that accepts SrvRecordArgs and SrvRecordOutput values.
-// You can construct a concrete instance of `SrvRecordInput` via:
-//
-//	SrvRecordArgs{...}
-type SrvRecordInput interface {
-	pulumi.Input
-
-	ToSrvRecordOutput() SrvRecordOutput
-	ToSrvRecordOutputWithContext(context.Context) SrvRecordOutput
-}
-
-// An SRV record.
-type SrvRecordArgs struct {
-	// The port value for this SRV record.
-	Port pulumi.IntPtrInput `pulumi:"port"`
-	// The priority value for this SRV record.
-	Priority pulumi.IntPtrInput `pulumi:"priority"`
-	// The target domain name for this SRV record.
-	Target pulumi.StringPtrInput `pulumi:"target"`
-	// The weight value for this SRV record.
-	Weight pulumi.IntPtrInput `pulumi:"weight"`
-}
-
-func (SrvRecordArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SrvRecord)(nil)).Elem()
-}
-
-func (i SrvRecordArgs) ToSrvRecordOutput() SrvRecordOutput {
-	return i.ToSrvRecordOutputWithContext(context.Background())
-}
-
-func (i SrvRecordArgs) ToSrvRecordOutputWithContext(ctx context.Context) SrvRecordOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SrvRecordOutput)
-}
-
-// SrvRecordArrayInput is an input type that accepts SrvRecordArray and SrvRecordArrayOutput values.
-// You can construct a concrete instance of `SrvRecordArrayInput` via:
-//
-//	SrvRecordArray{ SrvRecordArgs{...} }
-type SrvRecordArrayInput interface {
-	pulumi.Input
-
-	ToSrvRecordArrayOutput() SrvRecordArrayOutput
-	ToSrvRecordArrayOutputWithContext(context.Context) SrvRecordArrayOutput
-}
-
-type SrvRecordArray []SrvRecordInput
-
-func (SrvRecordArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SrvRecord)(nil)).Elem()
-}
-
-func (i SrvRecordArray) ToSrvRecordArrayOutput() SrvRecordArrayOutput {
-	return i.ToSrvRecordArrayOutputWithContext(context.Background())
-}
-
-func (i SrvRecordArray) ToSrvRecordArrayOutputWithContext(ctx context.Context) SrvRecordArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SrvRecordArrayOutput)
-}
-
-// An SRV record.
-type SrvRecordOutput struct{ *pulumi.OutputState }
-
-func (SrvRecordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SrvRecord)(nil)).Elem()
-}
-
-func (o SrvRecordOutput) ToSrvRecordOutput() SrvRecordOutput {
-	return o
-}
-
-func (o SrvRecordOutput) ToSrvRecordOutputWithContext(ctx context.Context) SrvRecordOutput {
-	return o
-}
-
-// The port value for this SRV record.
-func (o SrvRecordOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SrvRecord) *int { return v.Port }).(pulumi.IntPtrOutput)
-}
-
-// The priority value for this SRV record.
-func (o SrvRecordOutput) Priority() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SrvRecord) *int { return v.Priority }).(pulumi.IntPtrOutput)
-}
-
-// The target domain name for this SRV record.
-func (o SrvRecordOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SrvRecord) *string { return v.Target }).(pulumi.StringPtrOutput)
-}
-
-// The weight value for this SRV record.
-func (o SrvRecordOutput) Weight() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SrvRecord) *int { return v.Weight }).(pulumi.IntPtrOutput)
-}
-
-type SrvRecordArrayOutput struct{ *pulumi.OutputState }
-
-func (SrvRecordArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SrvRecord)(nil)).Elem()
-}
-
-func (o SrvRecordArrayOutput) ToSrvRecordArrayOutput() SrvRecordArrayOutput {
-	return o
-}
-
-func (o SrvRecordArrayOutput) ToSrvRecordArrayOutputWithContext(ctx context.Context) SrvRecordArrayOutput {
-	return o
-}
-
-func (o SrvRecordArrayOutput) Index(i pulumi.IntInput) SrvRecordOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SrvRecord {
-		return vs[0].([]SrvRecord)[vs[1].(int)]
-	}).(SrvRecordOutput)
-}
-
-// An SRV record.
-type SrvRecordResponse struct {
-	// The port value for this SRV record.
-	Port *int `pulumi:"port"`
-	// The priority value for this SRV record.
-	Priority *int `pulumi:"priority"`
-	// The target domain name for this SRV record.
-	Target *string `pulumi:"target"`
-	// The weight value for this SRV record.
-	Weight *int `pulumi:"weight"`
-}
-
-// An SRV record.
-type SrvRecordResponseOutput struct{ *pulumi.OutputState }
-
-func (SrvRecordResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SrvRecordResponse)(nil)).Elem()
-}
-
-func (o SrvRecordResponseOutput) ToSrvRecordResponseOutput() SrvRecordResponseOutput {
-	return o
-}
-
-func (o SrvRecordResponseOutput) ToSrvRecordResponseOutputWithContext(ctx context.Context) SrvRecordResponseOutput {
-	return o
-}
-
-// The port value for this SRV record.
-func (o SrvRecordResponseOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SrvRecordResponse) *int { return v.Port }).(pulumi.IntPtrOutput)
-}
-
-// The priority value for this SRV record.
-func (o SrvRecordResponseOutput) Priority() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SrvRecordResponse) *int { return v.Priority }).(pulumi.IntPtrOutput)
-}
-
-// The target domain name for this SRV record.
-func (o SrvRecordResponseOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SrvRecordResponse) *string { return v.Target }).(pulumi.StringPtrOutput)
-}
-
-// The weight value for this SRV record.
-func (o SrvRecordResponseOutput) Weight() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SrvRecordResponse) *int { return v.Weight }).(pulumi.IntPtrOutput)
-}
-
-type SrvRecordResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (SrvRecordResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SrvRecordResponse)(nil)).Elem()
-}
-
-func (o SrvRecordResponseArrayOutput) ToSrvRecordResponseArrayOutput() SrvRecordResponseArrayOutput {
-	return o
-}
-
-func (o SrvRecordResponseArrayOutput) ToSrvRecordResponseArrayOutputWithContext(ctx context.Context) SrvRecordResponseArrayOutput {
-	return o
-}
-
-func (o SrvRecordResponseArrayOutput) Index(i pulumi.IntInput) SrvRecordResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SrvRecordResponse {
-		return vs[0].([]SrvRecordResponse)[vs[1].(int)]
-	}).(SrvRecordResponseOutput)
 }
 
 // Properties of static CIDR resource.
@@ -13929,7 +15004,7 @@ func (o StaticRoutesConfigResponsePtrOutput) VnetLocalRouteOverrideCriteria() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// A reference to a another resource
+// Reference to another subresource.
 type SubResource struct {
 	// Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
 	// An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
@@ -13949,7 +15024,7 @@ type SubResourceInput interface {
 	ToSubResourceOutputWithContext(context.Context) SubResourceOutput
 }
 
-// A reference to a another resource
+// Reference to another subresource.
 type SubResourceArgs struct {
 	// Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
 	// An absolute ID starts with /subscriptions/ and contains the entire ID of the parent resource and the ID of the sub-resource in the end.
@@ -14036,7 +15111,7 @@ func (i SubResourceArray) ToSubResourceArrayOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(SubResourceArrayOutput)
 }
 
-// A reference to a another resource
+// Reference to another subresource.
 type SubResourceOutput struct{ *pulumi.OutputState }
 
 func (SubResourceOutput) ElementType() reflect.Type {
@@ -14126,13 +15201,13 @@ func (o SubResourceArrayOutput) Index(i pulumi.IntInput) SubResourceOutput {
 	}).(SubResourceOutput)
 }
 
-// Reference to another ARM resource.
+// Reference to another subresource.
 type SubResourceResponse struct {
 	// Resource ID.
-	Id string `pulumi:"id"`
+	Id *string `pulumi:"id"`
 }
 
-// Reference to another ARM resource.
+// Reference to another subresource.
 type SubResourceResponseOutput struct{ *pulumi.OutputState }
 
 func (SubResourceResponseOutput) ElementType() reflect.Type {
@@ -14148,8 +15223,8 @@ func (o SubResourceResponseOutput) ToSubResourceResponseOutputWithContext(ctx co
 }
 
 // Resource ID.
-func (o SubResourceResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v SubResourceResponse) string { return v.Id }).(pulumi.StringOutput)
+func (o SubResourceResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubResourceResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 type SubResourceResponsePtrOutput struct{ *pulumi.OutputState }
@@ -14182,7 +15257,7 @@ func (o SubResourceResponsePtrOutput) Id() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Id
+		return v.Id
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -14214,6 +15289,8 @@ type SubnetType struct {
 	AddressPrefixes []string `pulumi:"addressPrefixes"`
 	// Application gateway IP configurations of virtual network resource.
 	ApplicationGatewayIPConfigurations []ApplicationGatewayIPConfiguration `pulumi:"applicationGatewayIPConfigurations"`
+	// Set this property to false to disable default outbound connectivity for all VMs in the subnet. This property can only be set at the time of subnet creation and cannot be updated for an existing subnet.
+	DefaultOutboundAccess *bool `pulumi:"defaultOutboundAccess"`
 	// An array of references to the delegations on the subnet.
 	Delegations []Delegation `pulumi:"delegations"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -14222,6 +15299,8 @@ type SubnetType struct {
 	Id *string `pulumi:"id"`
 	// Array of IpAllocation which reference this subnet.
 	IpAllocations []SubResource `pulumi:"ipAllocations"`
+	// A list of IPAM Pools for allocating IP address prefixes.
+	IpamPoolPrefixAllocations []IpamPoolPrefixAllocation `pulumi:"ipamPoolPrefixAllocations"`
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 	Name *string `pulumi:"name"`
 	// Nat gateway associated with this subnet.
@@ -14244,6 +15323,10 @@ type SubnetType struct {
 	ServiceEndpointPolicies []ServiceEndpointPolicyType `pulumi:"serviceEndpointPolicies"`
 	// An array of service endpoints.
 	ServiceEndpoints []ServiceEndpointPropertiesFormat `pulumi:"serviceEndpoints"`
+	// Reference to an existing service gateway.
+	ServiceGateway *SubResource `pulumi:"serviceGateway"`
+	// Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
+	SharingScope *string `pulumi:"sharingScope"`
 	// Resource type.
 	Type *string `pulumi:"type"`
 }
@@ -14284,6 +15367,8 @@ type SubnetTypeArgs struct {
 	AddressPrefixes pulumi.StringArrayInput `pulumi:"addressPrefixes"`
 	// Application gateway IP configurations of virtual network resource.
 	ApplicationGatewayIPConfigurations ApplicationGatewayIPConfigurationArrayInput `pulumi:"applicationGatewayIPConfigurations"`
+	// Set this property to false to disable default outbound connectivity for all VMs in the subnet. This property can only be set at the time of subnet creation and cannot be updated for an existing subnet.
+	DefaultOutboundAccess pulumi.BoolPtrInput `pulumi:"defaultOutboundAccess"`
 	// An array of references to the delegations on the subnet.
 	Delegations DelegationArrayInput `pulumi:"delegations"`
 	// A unique read-only string that changes whenever the resource is updated.
@@ -14292,6 +15377,8 @@ type SubnetTypeArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Array of IpAllocation which reference this subnet.
 	IpAllocations SubResourceArrayInput `pulumi:"ipAllocations"`
+	// A list of IPAM Pools for allocating IP address prefixes.
+	IpamPoolPrefixAllocations IpamPoolPrefixAllocationArrayInput `pulumi:"ipamPoolPrefixAllocations"`
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Nat gateway associated with this subnet.
@@ -14314,6 +15401,10 @@ type SubnetTypeArgs struct {
 	ServiceEndpointPolicies ServiceEndpointPolicyTypeArrayInput `pulumi:"serviceEndpointPolicies"`
 	// An array of service endpoints.
 	ServiceEndpoints ServiceEndpointPropertiesFormatArrayInput `pulumi:"serviceEndpoints"`
+	// Reference to an existing service gateway.
+	ServiceGateway SubResourcePtrInput `pulumi:"serviceGateway"`
+	// Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
+	SharingScope pulumi.StringPtrInput `pulumi:"sharingScope"`
 	// Resource type.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
@@ -14450,6 +15541,11 @@ func (o SubnetTypeOutput) ApplicationGatewayIPConfigurations() ApplicationGatewa
 	return o.ApplyT(func(v SubnetType) []ApplicationGatewayIPConfiguration { return v.ApplicationGatewayIPConfigurations }).(ApplicationGatewayIPConfigurationArrayOutput)
 }
 
+// Set this property to false to disable default outbound connectivity for all VMs in the subnet. This property can only be set at the time of subnet creation and cannot be updated for an existing subnet.
+func (o SubnetTypeOutput) DefaultOutboundAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SubnetType) *bool { return v.DefaultOutboundAccess }).(pulumi.BoolPtrOutput)
+}
+
 // An array of references to the delegations on the subnet.
 func (o SubnetTypeOutput) Delegations() DelegationArrayOutput {
 	return o.ApplyT(func(v SubnetType) []Delegation { return v.Delegations }).(DelegationArrayOutput)
@@ -14468,6 +15564,11 @@ func (o SubnetTypeOutput) Id() pulumi.StringPtrOutput {
 // Array of IpAllocation which reference this subnet.
 func (o SubnetTypeOutput) IpAllocations() SubResourceArrayOutput {
 	return o.ApplyT(func(v SubnetType) []SubResource { return v.IpAllocations }).(SubResourceArrayOutput)
+}
+
+// A list of IPAM Pools for allocating IP address prefixes.
+func (o SubnetTypeOutput) IpamPoolPrefixAllocations() IpamPoolPrefixAllocationArrayOutput {
+	return o.ApplyT(func(v SubnetType) []IpamPoolPrefixAllocation { return v.IpamPoolPrefixAllocations }).(IpamPoolPrefixAllocationArrayOutput)
 }
 
 // The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -14523,6 +15624,16 @@ func (o SubnetTypeOutput) ServiceEndpointPolicies() ServiceEndpointPolicyTypeArr
 // An array of service endpoints.
 func (o SubnetTypeOutput) ServiceEndpoints() ServiceEndpointPropertiesFormatArrayOutput {
 	return o.ApplyT(func(v SubnetType) []ServiceEndpointPropertiesFormat { return v.ServiceEndpoints }).(ServiceEndpointPropertiesFormatArrayOutput)
+}
+
+// Reference to an existing service gateway.
+func (o SubnetTypeOutput) ServiceGateway() SubResourcePtrOutput {
+	return o.ApplyT(func(v SubnetType) *SubResource { return v.ServiceGateway }).(SubResourcePtrOutput)
+}
+
+// Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
+func (o SubnetTypeOutput) SharingScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetType) *string { return v.SharingScope }).(pulumi.StringPtrOutput)
 }
 
 // Resource type.
@@ -14584,6 +15695,16 @@ func (o SubnetTypePtrOutput) ApplicationGatewayIPConfigurations() ApplicationGat
 	}).(ApplicationGatewayIPConfigurationArrayOutput)
 }
 
+// Set this property to false to disable default outbound connectivity for all VMs in the subnet. This property can only be set at the time of subnet creation and cannot be updated for an existing subnet.
+func (o SubnetTypePtrOutput) DefaultOutboundAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SubnetType) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultOutboundAccess
+	}).(pulumi.BoolPtrOutput)
+}
+
 // An array of references to the delegations on the subnet.
 func (o SubnetTypePtrOutput) Delegations() DelegationArrayOutput {
 	return o.ApplyT(func(v *SubnetType) []Delegation {
@@ -14622,6 +15743,16 @@ func (o SubnetTypePtrOutput) IpAllocations() SubResourceArrayOutput {
 		}
 		return v.IpAllocations
 	}).(SubResourceArrayOutput)
+}
+
+// A list of IPAM Pools for allocating IP address prefixes.
+func (o SubnetTypePtrOutput) IpamPoolPrefixAllocations() IpamPoolPrefixAllocationArrayOutput {
+	return o.ApplyT(func(v *SubnetType) []IpamPoolPrefixAllocation {
+		if v == nil {
+			return nil
+		}
+		return v.IpamPoolPrefixAllocations
+	}).(IpamPoolPrefixAllocationArrayOutput)
 }
 
 // The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -14734,6 +15865,26 @@ func (o SubnetTypePtrOutput) ServiceEndpoints() ServiceEndpointPropertiesFormatA
 	}).(ServiceEndpointPropertiesFormatArrayOutput)
 }
 
+// Reference to an existing service gateway.
+func (o SubnetTypePtrOutput) ServiceGateway() SubResourcePtrOutput {
+	return o.ApplyT(func(v *SubnetType) *SubResource {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceGateway
+	}).(SubResourcePtrOutput)
+}
+
+// Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
+func (o SubnetTypePtrOutput) SharingScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SharingScope
+	}).(pulumi.StringPtrOutput)
+}
+
 // Resource type.
 func (o SubnetTypePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SubnetType) *string {
@@ -14772,20 +15923,22 @@ type SubnetResponse struct {
 	AddressPrefixes []string `pulumi:"addressPrefixes"`
 	// Application gateway IP configurations of virtual network resource.
 	ApplicationGatewayIPConfigurations []ApplicationGatewayIPConfigurationResponse `pulumi:"applicationGatewayIPConfigurations"`
+	// Set this property to false to disable default outbound connectivity for all VMs in the subnet. This property can only be set at the time of subnet creation and cannot be updated for an existing subnet.
+	DefaultOutboundAccess *bool `pulumi:"defaultOutboundAccess"`
 	// An array of references to the delegations on the subnet.
 	Delegations []DelegationResponse `pulumi:"delegations"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
-	// An array of references to interface endpoints
-	InterfaceEndpoints []InterfaceEndpointResponse `pulumi:"interfaceEndpoints"`
 	// Array of IpAllocation which reference this subnet.
 	IpAllocations []SubResourceResponse `pulumi:"ipAllocations"`
 	// Array of IP configuration profiles which reference this subnet.
 	IpConfigurationProfiles []IPConfigurationProfileResponse `pulumi:"ipConfigurationProfiles"`
 	// An array of references to the network interface IP configurations using subnet.
 	IpConfigurations []IPConfigurationResponse `pulumi:"ipConfigurations"`
+	// A list of IPAM Pools for allocating IP address prefixes.
+	IpamPoolPrefixAllocations []IpamPoolPrefixAllocationResponse `pulumi:"ipamPoolPrefixAllocations"`
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 	Name *string `pulumi:"name"`
 	// Nat gateway associated with this subnet.
@@ -14812,6 +15965,8 @@ type SubnetResponse struct {
 	ServiceEndpointPolicies []ServiceEndpointPolicyResponse `pulumi:"serviceEndpointPolicies"`
 	// An array of service endpoints.
 	ServiceEndpoints []ServiceEndpointPropertiesFormatResponse `pulumi:"serviceEndpoints"`
+	// Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
+	SharingScope *string `pulumi:"sharingScope"`
 	// Resource type.
 	Type *string `pulumi:"type"`
 }
@@ -14865,6 +16020,11 @@ func (o SubnetResponseOutput) ApplicationGatewayIPConfigurations() ApplicationGa
 	}).(ApplicationGatewayIPConfigurationResponseArrayOutput)
 }
 
+// Set this property to false to disable default outbound connectivity for all VMs in the subnet. This property can only be set at the time of subnet creation and cannot be updated for an existing subnet.
+func (o SubnetResponseOutput) DefaultOutboundAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SubnetResponse) *bool { return v.DefaultOutboundAccess }).(pulumi.BoolPtrOutput)
+}
+
 // An array of references to the delegations on the subnet.
 func (o SubnetResponseOutput) Delegations() DelegationResponseArrayOutput {
 	return o.ApplyT(func(v SubnetResponse) []DelegationResponse { return v.Delegations }).(DelegationResponseArrayOutput)
@@ -14880,11 +16040,6 @@ func (o SubnetResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubnetResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// An array of references to interface endpoints
-func (o SubnetResponseOutput) InterfaceEndpoints() InterfaceEndpointResponseArrayOutput {
-	return o.ApplyT(func(v SubnetResponse) []InterfaceEndpointResponse { return v.InterfaceEndpoints }).(InterfaceEndpointResponseArrayOutput)
-}
-
 // Array of IpAllocation which reference this subnet.
 func (o SubnetResponseOutput) IpAllocations() SubResourceResponseArrayOutput {
 	return o.ApplyT(func(v SubnetResponse) []SubResourceResponse { return v.IpAllocations }).(SubResourceResponseArrayOutput)
@@ -14898,6 +16053,11 @@ func (o SubnetResponseOutput) IpConfigurationProfiles() IPConfigurationProfileRe
 // An array of references to the network interface IP configurations using subnet.
 func (o SubnetResponseOutput) IpConfigurations() IPConfigurationResponseArrayOutput {
 	return o.ApplyT(func(v SubnetResponse) []IPConfigurationResponse { return v.IpConfigurations }).(IPConfigurationResponseArrayOutput)
+}
+
+// A list of IPAM Pools for allocating IP address prefixes.
+func (o SubnetResponseOutput) IpamPoolPrefixAllocations() IpamPoolPrefixAllocationResponseArrayOutput {
+	return o.ApplyT(func(v SubnetResponse) []IpamPoolPrefixAllocationResponse { return v.IpamPoolPrefixAllocations }).(IpamPoolPrefixAllocationResponseArrayOutput)
 }
 
 // The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -14965,6 +16125,11 @@ func (o SubnetResponseOutput) ServiceEndpoints() ServiceEndpointPropertiesFormat
 	return o.ApplyT(func(v SubnetResponse) []ServiceEndpointPropertiesFormatResponse { return v.ServiceEndpoints }).(ServiceEndpointPropertiesFormatResponseArrayOutput)
 }
 
+// Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
+func (o SubnetResponseOutput) SharingScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetResponse) *string { return v.SharingScope }).(pulumi.StringPtrOutput)
+}
+
 // Resource type.
 func (o SubnetResponseOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubnetResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
@@ -15024,6 +16189,16 @@ func (o SubnetResponsePtrOutput) ApplicationGatewayIPConfigurations() Applicatio
 	}).(ApplicationGatewayIPConfigurationResponseArrayOutput)
 }
 
+// Set this property to false to disable default outbound connectivity for all VMs in the subnet. This property can only be set at the time of subnet creation and cannot be updated for an existing subnet.
+func (o SubnetResponsePtrOutput) DefaultOutboundAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SubnetResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultOutboundAccess
+	}).(pulumi.BoolPtrOutput)
+}
+
 // An array of references to the delegations on the subnet.
 func (o SubnetResponsePtrOutput) Delegations() DelegationResponseArrayOutput {
 	return o.ApplyT(func(v *SubnetResponse) []DelegationResponse {
@@ -15054,16 +16229,6 @@ func (o SubnetResponsePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// An array of references to interface endpoints
-func (o SubnetResponsePtrOutput) InterfaceEndpoints() InterfaceEndpointResponseArrayOutput {
-	return o.ApplyT(func(v *SubnetResponse) []InterfaceEndpointResponse {
-		if v == nil {
-			return nil
-		}
-		return v.InterfaceEndpoints
-	}).(InterfaceEndpointResponseArrayOutput)
-}
-
 // Array of IpAllocation which reference this subnet.
 func (o SubnetResponsePtrOutput) IpAllocations() SubResourceResponseArrayOutput {
 	return o.ApplyT(func(v *SubnetResponse) []SubResourceResponse {
@@ -15092,6 +16257,16 @@ func (o SubnetResponsePtrOutput) IpConfigurations() IPConfigurationResponseArray
 		}
 		return v.IpConfigurations
 	}).(IPConfigurationResponseArrayOutput)
+}
+
+// A list of IPAM Pools for allocating IP address prefixes.
+func (o SubnetResponsePtrOutput) IpamPoolPrefixAllocations() IpamPoolPrefixAllocationResponseArrayOutput {
+	return o.ApplyT(func(v *SubnetResponse) []IpamPoolPrefixAllocationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.IpamPoolPrefixAllocations
+	}).(IpamPoolPrefixAllocationResponseArrayOutput)
 }
 
 // The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -15224,6 +16399,16 @@ func (o SubnetResponsePtrOutput) ServiceEndpoints() ServiceEndpointPropertiesFor
 	}).(ServiceEndpointPropertiesFormatResponseArrayOutput)
 }
 
+// Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
+func (o SubnetResponsePtrOutput) SharingScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SharingScope
+	}).(pulumi.StringPtrOutput)
+}
+
 // Resource type.
 func (o SubnetResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SubnetResponse) *string {
@@ -15252,6 +16437,1397 @@ func (o SubnetResponseArrayOutput) Index(i pulumi.IntInput) SubnetResponseOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubnetResponse {
 		return vs[0].([]SubnetResponse)[vs[1].(int)]
 	}).(SubnetResponseOutput)
+}
+
+// Subnet in a virtual network resource.
+type SubnetResponseV1 struct {
+	// The address prefix for the subnet.
+	AddressPrefix *string `pulumi:"addressPrefix"`
+	// List of  address prefixes for the subnet.
+	AddressPrefixes []string `pulumi:"addressPrefixes"`
+	// Gets an array of references to the delegations on the subnet.
+	Delegations []DelegationResponseV1 `pulumi:"delegations"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag *string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// An array of references to interface endpoints
+	InterfaceEndpoints []InterfaceEndpointResponse `pulumi:"interfaceEndpoints"`
+	// Array of IP configuration profiles which reference this subnet.
+	IpConfigurationProfiles []IPConfigurationProfileResponseV1 `pulumi:"ipConfigurationProfiles"`
+	// Gets an array of references to the network interface IP configurations using subnet.
+	IpConfigurations []IPConfigurationResponseV1 `pulumi:"ipConfigurations"`
+	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+	Name *string `pulumi:"name"`
+	// Nat gateway associated with this subnet.
+	NatGateway *SubResourceResponse `pulumi:"natGateway"`
+	// The reference of the NetworkSecurityGroup resource.
+	NetworkSecurityGroup *NetworkSecurityGroupResponseV1 `pulumi:"networkSecurityGroup"`
+	// The provisioning state of the resource.
+	ProvisioningState *string `pulumi:"provisioningState"`
+	// A read-only string identifying the intention of use for this subnet based on delegations and other user-defined properties.
+	Purpose string `pulumi:"purpose"`
+	// Gets an array of references to the external resources using subnet.
+	ResourceNavigationLinks []ResourceNavigationLinkResponseV1 `pulumi:"resourceNavigationLinks"`
+	// The reference of the RouteTable resource.
+	RouteTable *RouteTableResponseV1 `pulumi:"routeTable"`
+	// Gets an array of references to services injecting into this subnet.
+	ServiceAssociationLinks []ServiceAssociationLinkResponseV1 `pulumi:"serviceAssociationLinks"`
+	// An array of service endpoint policies.
+	ServiceEndpointPolicies []ServiceEndpointPolicyResponseV1 `pulumi:"serviceEndpointPolicies"`
+	// An array of service endpoints.
+	ServiceEndpoints []ServiceEndpointPropertiesFormatResponseV1 `pulumi:"serviceEndpoints"`
+}
+
+// Subnet in a virtual network resource.
+type SubnetResponseV1Output struct{ *pulumi.OutputState }
+
+func (SubnetResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetResponseV1)(nil)).Elem()
+}
+
+func (o SubnetResponseV1Output) ToSubnetResponseV1Output() SubnetResponseV1Output {
+	return o
+}
+
+func (o SubnetResponseV1Output) ToSubnetResponseV1OutputWithContext(ctx context.Context) SubnetResponseV1Output {
+	return o
+}
+
+// The address prefix for the subnet.
+func (o SubnetResponseV1Output) AddressPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetResponseV1) *string { return v.AddressPrefix }).(pulumi.StringPtrOutput)
+}
+
+// List of  address prefixes for the subnet.
+func (o SubnetResponseV1Output) AddressPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV1) []string { return v.AddressPrefixes }).(pulumi.StringArrayOutput)
+}
+
+// Gets an array of references to the delegations on the subnet.
+func (o SubnetResponseV1Output) Delegations() DelegationResponseV1ArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV1) []DelegationResponseV1 { return v.Delegations }).(DelegationResponseV1ArrayOutput)
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o SubnetResponseV1Output) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetResponseV1) *string { return v.Etag }).(pulumi.StringPtrOutput)
+}
+
+// Resource ID.
+func (o SubnetResponseV1Output) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetResponseV1) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// An array of references to interface endpoints
+func (o SubnetResponseV1Output) InterfaceEndpoints() InterfaceEndpointResponseArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV1) []InterfaceEndpointResponse { return v.InterfaceEndpoints }).(InterfaceEndpointResponseArrayOutput)
+}
+
+// Array of IP configuration profiles which reference this subnet.
+func (o SubnetResponseV1Output) IpConfigurationProfiles() IPConfigurationProfileResponseV1ArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV1) []IPConfigurationProfileResponseV1 { return v.IpConfigurationProfiles }).(IPConfigurationProfileResponseV1ArrayOutput)
+}
+
+// Gets an array of references to the network interface IP configurations using subnet.
+func (o SubnetResponseV1Output) IpConfigurations() IPConfigurationResponseV1ArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV1) []IPConfigurationResponseV1 { return v.IpConfigurations }).(IPConfigurationResponseV1ArrayOutput)
+}
+
+// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+func (o SubnetResponseV1Output) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetResponseV1) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Nat gateway associated with this subnet.
+func (o SubnetResponseV1Output) NatGateway() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v SubnetResponseV1) *SubResourceResponse { return v.NatGateway }).(SubResourceResponsePtrOutput)
+}
+
+// The reference of the NetworkSecurityGroup resource.
+func (o SubnetResponseV1Output) NetworkSecurityGroup() NetworkSecurityGroupResponseV1PtrOutput {
+	return o.ApplyT(func(v SubnetResponseV1) *NetworkSecurityGroupResponseV1 { return v.NetworkSecurityGroup }).(NetworkSecurityGroupResponseV1PtrOutput)
+}
+
+// The provisioning state of the resource.
+func (o SubnetResponseV1Output) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetResponseV1) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+}
+
+// A read-only string identifying the intention of use for this subnet based on delegations and other user-defined properties.
+func (o SubnetResponseV1Output) Purpose() pulumi.StringOutput {
+	return o.ApplyT(func(v SubnetResponseV1) string { return v.Purpose }).(pulumi.StringOutput)
+}
+
+// Gets an array of references to the external resources using subnet.
+func (o SubnetResponseV1Output) ResourceNavigationLinks() ResourceNavigationLinkResponseV1ArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV1) []ResourceNavigationLinkResponseV1 { return v.ResourceNavigationLinks }).(ResourceNavigationLinkResponseV1ArrayOutput)
+}
+
+// The reference of the RouteTable resource.
+func (o SubnetResponseV1Output) RouteTable() RouteTableResponseV1PtrOutput {
+	return o.ApplyT(func(v SubnetResponseV1) *RouteTableResponseV1 { return v.RouteTable }).(RouteTableResponseV1PtrOutput)
+}
+
+// Gets an array of references to services injecting into this subnet.
+func (o SubnetResponseV1Output) ServiceAssociationLinks() ServiceAssociationLinkResponseV1ArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV1) []ServiceAssociationLinkResponseV1 { return v.ServiceAssociationLinks }).(ServiceAssociationLinkResponseV1ArrayOutput)
+}
+
+// An array of service endpoint policies.
+func (o SubnetResponseV1Output) ServiceEndpointPolicies() ServiceEndpointPolicyResponseV1ArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV1) []ServiceEndpointPolicyResponseV1 { return v.ServiceEndpointPolicies }).(ServiceEndpointPolicyResponseV1ArrayOutput)
+}
+
+// An array of service endpoints.
+func (o SubnetResponseV1Output) ServiceEndpoints() ServiceEndpointPropertiesFormatResponseV1ArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV1) []ServiceEndpointPropertiesFormatResponseV1 { return v.ServiceEndpoints }).(ServiceEndpointPropertiesFormatResponseV1ArrayOutput)
+}
+
+type SubnetResponseV1PtrOutput struct{ *pulumi.OutputState }
+
+func (SubnetResponseV1PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubnetResponseV1)(nil)).Elem()
+}
+
+func (o SubnetResponseV1PtrOutput) ToSubnetResponseV1PtrOutput() SubnetResponseV1PtrOutput {
+	return o
+}
+
+func (o SubnetResponseV1PtrOutput) ToSubnetResponseV1PtrOutputWithContext(ctx context.Context) SubnetResponseV1PtrOutput {
+	return o
+}
+
+func (o SubnetResponseV1PtrOutput) Elem() SubnetResponseV1Output {
+	return o.ApplyT(func(v *SubnetResponseV1) SubnetResponseV1 {
+		if v != nil {
+			return *v
+		}
+		var ret SubnetResponseV1
+		return ret
+	}).(SubnetResponseV1Output)
+}
+
+// The address prefix for the subnet.
+func (o SubnetResponseV1PtrOutput) AddressPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AddressPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of  address prefixes for the subnet.
+func (o SubnetResponseV1PtrOutput) AddressPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV1) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AddressPrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Gets an array of references to the delegations on the subnet.
+func (o SubnetResponseV1PtrOutput) Delegations() DelegationResponseV1ArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV1) []DelegationResponseV1 {
+		if v == nil {
+			return nil
+		}
+		return v.Delegations
+	}).(DelegationResponseV1ArrayOutput)
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o SubnetResponseV1PtrOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Etag
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource ID.
+func (o SubnetResponseV1PtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// An array of references to interface endpoints
+func (o SubnetResponseV1PtrOutput) InterfaceEndpoints() InterfaceEndpointResponseArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV1) []InterfaceEndpointResponse {
+		if v == nil {
+			return nil
+		}
+		return v.InterfaceEndpoints
+	}).(InterfaceEndpointResponseArrayOutput)
+}
+
+// Array of IP configuration profiles which reference this subnet.
+func (o SubnetResponseV1PtrOutput) IpConfigurationProfiles() IPConfigurationProfileResponseV1ArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV1) []IPConfigurationProfileResponseV1 {
+		if v == nil {
+			return nil
+		}
+		return v.IpConfigurationProfiles
+	}).(IPConfigurationProfileResponseV1ArrayOutput)
+}
+
+// Gets an array of references to the network interface IP configurations using subnet.
+func (o SubnetResponseV1PtrOutput) IpConfigurations() IPConfigurationResponseV1ArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV1) []IPConfigurationResponseV1 {
+		if v == nil {
+			return nil
+		}
+		return v.IpConfigurations
+	}).(IPConfigurationResponseV1ArrayOutput)
+}
+
+// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+func (o SubnetResponseV1PtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Nat gateway associated with this subnet.
+func (o SubnetResponseV1PtrOutput) NatGateway() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV1) *SubResourceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.NatGateway
+	}).(SubResourceResponsePtrOutput)
+}
+
+// The reference of the NetworkSecurityGroup resource.
+func (o SubnetResponseV1PtrOutput) NetworkSecurityGroup() NetworkSecurityGroupResponseV1PtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV1) *NetworkSecurityGroupResponseV1 {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkSecurityGroup
+	}).(NetworkSecurityGroupResponseV1PtrOutput)
+}
+
+// The provisioning state of the resource.
+func (o SubnetResponseV1PtrOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisioningState
+	}).(pulumi.StringPtrOutput)
+}
+
+// A read-only string identifying the intention of use for this subnet based on delegations and other user-defined properties.
+func (o SubnetResponseV1PtrOutput) Purpose() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV1) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Purpose
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets an array of references to the external resources using subnet.
+func (o SubnetResponseV1PtrOutput) ResourceNavigationLinks() ResourceNavigationLinkResponseV1ArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV1) []ResourceNavigationLinkResponseV1 {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceNavigationLinks
+	}).(ResourceNavigationLinkResponseV1ArrayOutput)
+}
+
+// The reference of the RouteTable resource.
+func (o SubnetResponseV1PtrOutput) RouteTable() RouteTableResponseV1PtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV1) *RouteTableResponseV1 {
+		if v == nil {
+			return nil
+		}
+		return v.RouteTable
+	}).(RouteTableResponseV1PtrOutput)
+}
+
+// Gets an array of references to services injecting into this subnet.
+func (o SubnetResponseV1PtrOutput) ServiceAssociationLinks() ServiceAssociationLinkResponseV1ArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV1) []ServiceAssociationLinkResponseV1 {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAssociationLinks
+	}).(ServiceAssociationLinkResponseV1ArrayOutput)
+}
+
+// An array of service endpoint policies.
+func (o SubnetResponseV1PtrOutput) ServiceEndpointPolicies() ServiceEndpointPolicyResponseV1ArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV1) []ServiceEndpointPolicyResponseV1 {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceEndpointPolicies
+	}).(ServiceEndpointPolicyResponseV1ArrayOutput)
+}
+
+// An array of service endpoints.
+func (o SubnetResponseV1PtrOutput) ServiceEndpoints() ServiceEndpointPropertiesFormatResponseV1ArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV1) []ServiceEndpointPropertiesFormatResponseV1 {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceEndpoints
+	}).(ServiceEndpointPropertiesFormatResponseV1ArrayOutput)
+}
+
+// Subnet in a virtual network resource.
+type SubnetResponseV2 struct {
+	// The address prefix for the subnet.
+	AddressPrefix *string `pulumi:"addressPrefix"`
+	// List of address prefixes for the subnet.
+	AddressPrefixes []string `pulumi:"addressPrefixes"`
+	// Application gateway IP configurations of virtual network resource.
+	ApplicationGatewayIPConfigurations []ApplicationGatewayIPConfigurationResponse `pulumi:"applicationGatewayIPConfigurations"`
+	// Set this property to false to disable default outbound connectivity for all VMs in the subnet.
+	DefaultOutboundAccess *bool `pulumi:"defaultOutboundAccess"`
+	// An array of references to the delegations on the subnet.
+	Delegations []DelegationResponse `pulumi:"delegations"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Array of IpAllocation which reference this subnet.
+	IpAllocations []SubResourceResponse `pulumi:"ipAllocations"`
+	// Array of IP configuration profiles which reference this subnet.
+	IpConfigurationProfiles []IPConfigurationProfileResponse `pulumi:"ipConfigurationProfiles"`
+	// An array of references to the network interface IP configurations using subnet.
+	IpConfigurations []IPConfigurationResponseV2 `pulumi:"ipConfigurations"`
+	// A list of IPAM Pools for allocating IP address prefixes.
+	IpamPoolPrefixAllocations []IpamPoolPrefixAllocationResponse `pulumi:"ipamPoolPrefixAllocations"`
+	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+	Name *string `pulumi:"name"`
+	// Nat gateway associated with this subnet.
+	NatGateway *SubResourceResponse `pulumi:"natGateway"`
+	// The reference to the NetworkSecurityGroup resource.
+	NetworkSecurityGroup *NetworkSecurityGroupResponseV2 `pulumi:"networkSecurityGroup"`
+	// Enable or Disable apply network policies on private end point in the subnet.
+	PrivateEndpointNetworkPolicies *string `pulumi:"privateEndpointNetworkPolicies"`
+	// An array of references to private endpoints.
+	PrivateEndpoints []PrivateEndpointResponse `pulumi:"privateEndpoints"`
+	// Enable or Disable apply network policies on private link service in the subnet.
+	PrivateLinkServiceNetworkPolicies *string `pulumi:"privateLinkServiceNetworkPolicies"`
+	// The provisioning state of the subnet resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// A read-only string identifying the intention of use for this subnet based on delegations and other user-defined properties.
+	Purpose string `pulumi:"purpose"`
+	// An array of references to the external resources using subnet.
+	ResourceNavigationLinks []ResourceNavigationLinkResponse `pulumi:"resourceNavigationLinks"`
+	// The reference to the RouteTable resource.
+	RouteTable *RouteTableResponse `pulumi:"routeTable"`
+	// An array of references to services injecting into this subnet.
+	ServiceAssociationLinks []ServiceAssociationLinkResponse `pulumi:"serviceAssociationLinks"`
+	// An array of service endpoint policies.
+	ServiceEndpointPolicies []ServiceEndpointPolicyResponse `pulumi:"serviceEndpointPolicies"`
+	// An array of service endpoints.
+	ServiceEndpoints []ServiceEndpointPropertiesFormatResponse `pulumi:"serviceEndpoints"`
+	// Reference to an existing service gateway.
+	ServiceGateway *SubResourceResponse `pulumi:"serviceGateway"`
+	// Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
+	SharingScope *string `pulumi:"sharingScope"`
+	// Resource type.
+	Type *string `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for SubnetResponseV2
+func (val *SubnetResponseV2) Defaults() *SubnetResponseV2 {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.PrivateEndpointNetworkPolicies == nil {
+		privateEndpointNetworkPolicies_ := "Disabled"
+		tmp.PrivateEndpointNetworkPolicies = &privateEndpointNetworkPolicies_
+	}
+	if tmp.PrivateLinkServiceNetworkPolicies == nil {
+		privateLinkServiceNetworkPolicies_ := "Enabled"
+		tmp.PrivateLinkServiceNetworkPolicies = &privateLinkServiceNetworkPolicies_
+	}
+	return &tmp
+}
+
+// Subnet in a virtual network resource.
+type SubnetResponseV2Output struct{ *pulumi.OutputState }
+
+func (SubnetResponseV2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetResponseV2)(nil)).Elem()
+}
+
+func (o SubnetResponseV2Output) ToSubnetResponseV2Output() SubnetResponseV2Output {
+	return o
+}
+
+func (o SubnetResponseV2Output) ToSubnetResponseV2OutputWithContext(ctx context.Context) SubnetResponseV2Output {
+	return o
+}
+
+// The address prefix for the subnet.
+func (o SubnetResponseV2Output) AddressPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetResponseV2) *string { return v.AddressPrefix }).(pulumi.StringPtrOutput)
+}
+
+// List of address prefixes for the subnet.
+func (o SubnetResponseV2Output) AddressPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV2) []string { return v.AddressPrefixes }).(pulumi.StringArrayOutput)
+}
+
+// Application gateway IP configurations of virtual network resource.
+func (o SubnetResponseV2Output) ApplicationGatewayIPConfigurations() ApplicationGatewayIPConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV2) []ApplicationGatewayIPConfigurationResponse {
+		return v.ApplicationGatewayIPConfigurations
+	}).(ApplicationGatewayIPConfigurationResponseArrayOutput)
+}
+
+// Set this property to false to disable default outbound connectivity for all VMs in the subnet.
+func (o SubnetResponseV2Output) DefaultOutboundAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SubnetResponseV2) *bool { return v.DefaultOutboundAccess }).(pulumi.BoolPtrOutput)
+}
+
+// An array of references to the delegations on the subnet.
+func (o SubnetResponseV2Output) Delegations() DelegationResponseArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV2) []DelegationResponse { return v.Delegations }).(DelegationResponseArrayOutput)
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o SubnetResponseV2Output) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v SubnetResponseV2) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Resource ID.
+func (o SubnetResponseV2Output) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetResponseV2) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Array of IpAllocation which reference this subnet.
+func (o SubnetResponseV2Output) IpAllocations() SubResourceResponseArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV2) []SubResourceResponse { return v.IpAllocations }).(SubResourceResponseArrayOutput)
+}
+
+// Array of IP configuration profiles which reference this subnet.
+func (o SubnetResponseV2Output) IpConfigurationProfiles() IPConfigurationProfileResponseArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV2) []IPConfigurationProfileResponse { return v.IpConfigurationProfiles }).(IPConfigurationProfileResponseArrayOutput)
+}
+
+// An array of references to the network interface IP configurations using subnet.
+func (o SubnetResponseV2Output) IpConfigurations() IPConfigurationResponseV2ArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV2) []IPConfigurationResponseV2 { return v.IpConfigurations }).(IPConfigurationResponseV2ArrayOutput)
+}
+
+// A list of IPAM Pools for allocating IP address prefixes.
+func (o SubnetResponseV2Output) IpamPoolPrefixAllocations() IpamPoolPrefixAllocationResponseArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV2) []IpamPoolPrefixAllocationResponse { return v.IpamPoolPrefixAllocations }).(IpamPoolPrefixAllocationResponseArrayOutput)
+}
+
+// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+func (o SubnetResponseV2Output) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetResponseV2) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Nat gateway associated with this subnet.
+func (o SubnetResponseV2Output) NatGateway() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v SubnetResponseV2) *SubResourceResponse { return v.NatGateway }).(SubResourceResponsePtrOutput)
+}
+
+// The reference to the NetworkSecurityGroup resource.
+func (o SubnetResponseV2Output) NetworkSecurityGroup() NetworkSecurityGroupResponseV2PtrOutput {
+	return o.ApplyT(func(v SubnetResponseV2) *NetworkSecurityGroupResponseV2 { return v.NetworkSecurityGroup }).(NetworkSecurityGroupResponseV2PtrOutput)
+}
+
+// Enable or Disable apply network policies on private end point in the subnet.
+func (o SubnetResponseV2Output) PrivateEndpointNetworkPolicies() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetResponseV2) *string { return v.PrivateEndpointNetworkPolicies }).(pulumi.StringPtrOutput)
+}
+
+// An array of references to private endpoints.
+func (o SubnetResponseV2Output) PrivateEndpoints() PrivateEndpointResponseArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV2) []PrivateEndpointResponse { return v.PrivateEndpoints }).(PrivateEndpointResponseArrayOutput)
+}
+
+// Enable or Disable apply network policies on private link service in the subnet.
+func (o SubnetResponseV2Output) PrivateLinkServiceNetworkPolicies() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetResponseV2) *string { return v.PrivateLinkServiceNetworkPolicies }).(pulumi.StringPtrOutput)
+}
+
+// The provisioning state of the subnet resource.
+func (o SubnetResponseV2Output) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SubnetResponseV2) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// A read-only string identifying the intention of use for this subnet based on delegations and other user-defined properties.
+func (o SubnetResponseV2Output) Purpose() pulumi.StringOutput {
+	return o.ApplyT(func(v SubnetResponseV2) string { return v.Purpose }).(pulumi.StringOutput)
+}
+
+// An array of references to the external resources using subnet.
+func (o SubnetResponseV2Output) ResourceNavigationLinks() ResourceNavigationLinkResponseArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV2) []ResourceNavigationLinkResponse { return v.ResourceNavigationLinks }).(ResourceNavigationLinkResponseArrayOutput)
+}
+
+// The reference to the RouteTable resource.
+func (o SubnetResponseV2Output) RouteTable() RouteTableResponsePtrOutput {
+	return o.ApplyT(func(v SubnetResponseV2) *RouteTableResponse { return v.RouteTable }).(RouteTableResponsePtrOutput)
+}
+
+// An array of references to services injecting into this subnet.
+func (o SubnetResponseV2Output) ServiceAssociationLinks() ServiceAssociationLinkResponseArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV2) []ServiceAssociationLinkResponse { return v.ServiceAssociationLinks }).(ServiceAssociationLinkResponseArrayOutput)
+}
+
+// An array of service endpoint policies.
+func (o SubnetResponseV2Output) ServiceEndpointPolicies() ServiceEndpointPolicyResponseArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV2) []ServiceEndpointPolicyResponse { return v.ServiceEndpointPolicies }).(ServiceEndpointPolicyResponseArrayOutput)
+}
+
+// An array of service endpoints.
+func (o SubnetResponseV2Output) ServiceEndpoints() ServiceEndpointPropertiesFormatResponseArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV2) []ServiceEndpointPropertiesFormatResponse { return v.ServiceEndpoints }).(ServiceEndpointPropertiesFormatResponseArrayOutput)
+}
+
+// Reference to an existing service gateway.
+func (o SubnetResponseV2Output) ServiceGateway() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v SubnetResponseV2) *SubResourceResponse { return v.ServiceGateway }).(SubResourceResponsePtrOutput)
+}
+
+// Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
+func (o SubnetResponseV2Output) SharingScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetResponseV2) *string { return v.SharingScope }).(pulumi.StringPtrOutput)
+}
+
+// Resource type.
+func (o SubnetResponseV2Output) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetResponseV2) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type SubnetResponseV2PtrOutput struct{ *pulumi.OutputState }
+
+func (SubnetResponseV2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubnetResponseV2)(nil)).Elem()
+}
+
+func (o SubnetResponseV2PtrOutput) ToSubnetResponseV2PtrOutput() SubnetResponseV2PtrOutput {
+	return o
+}
+
+func (o SubnetResponseV2PtrOutput) ToSubnetResponseV2PtrOutputWithContext(ctx context.Context) SubnetResponseV2PtrOutput {
+	return o
+}
+
+func (o SubnetResponseV2PtrOutput) Elem() SubnetResponseV2Output {
+	return o.ApplyT(func(v *SubnetResponseV2) SubnetResponseV2 {
+		if v != nil {
+			return *v
+		}
+		var ret SubnetResponseV2
+		return ret
+	}).(SubnetResponseV2Output)
+}
+
+// The address prefix for the subnet.
+func (o SubnetResponseV2PtrOutput) AddressPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AddressPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of address prefixes for the subnet.
+func (o SubnetResponseV2PtrOutput) AddressPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV2) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AddressPrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Application gateway IP configurations of virtual network resource.
+func (o SubnetResponseV2PtrOutput) ApplicationGatewayIPConfigurations() ApplicationGatewayIPConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV2) []ApplicationGatewayIPConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationGatewayIPConfigurations
+	}).(ApplicationGatewayIPConfigurationResponseArrayOutput)
+}
+
+// Set this property to false to disable default outbound connectivity for all VMs in the subnet.
+func (o SubnetResponseV2PtrOutput) DefaultOutboundAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV2) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultOutboundAccess
+	}).(pulumi.BoolPtrOutput)
+}
+
+// An array of references to the delegations on the subnet.
+func (o SubnetResponseV2PtrOutput) Delegations() DelegationResponseArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV2) []DelegationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Delegations
+	}).(DelegationResponseArrayOutput)
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o SubnetResponseV2PtrOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Etag
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource ID.
+func (o SubnetResponseV2PtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Array of IpAllocation which reference this subnet.
+func (o SubnetResponseV2PtrOutput) IpAllocations() SubResourceResponseArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV2) []SubResourceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.IpAllocations
+	}).(SubResourceResponseArrayOutput)
+}
+
+// Array of IP configuration profiles which reference this subnet.
+func (o SubnetResponseV2PtrOutput) IpConfigurationProfiles() IPConfigurationProfileResponseArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV2) []IPConfigurationProfileResponse {
+		if v == nil {
+			return nil
+		}
+		return v.IpConfigurationProfiles
+	}).(IPConfigurationProfileResponseArrayOutput)
+}
+
+// An array of references to the network interface IP configurations using subnet.
+func (o SubnetResponseV2PtrOutput) IpConfigurations() IPConfigurationResponseV2ArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV2) []IPConfigurationResponseV2 {
+		if v == nil {
+			return nil
+		}
+		return v.IpConfigurations
+	}).(IPConfigurationResponseV2ArrayOutput)
+}
+
+// A list of IPAM Pools for allocating IP address prefixes.
+func (o SubnetResponseV2PtrOutput) IpamPoolPrefixAllocations() IpamPoolPrefixAllocationResponseArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV2) []IpamPoolPrefixAllocationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.IpamPoolPrefixAllocations
+	}).(IpamPoolPrefixAllocationResponseArrayOutput)
+}
+
+// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+func (o SubnetResponseV2PtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Nat gateway associated with this subnet.
+func (o SubnetResponseV2PtrOutput) NatGateway() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV2) *SubResourceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.NatGateway
+	}).(SubResourceResponsePtrOutput)
+}
+
+// The reference to the NetworkSecurityGroup resource.
+func (o SubnetResponseV2PtrOutput) NetworkSecurityGroup() NetworkSecurityGroupResponseV2PtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV2) *NetworkSecurityGroupResponseV2 {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkSecurityGroup
+	}).(NetworkSecurityGroupResponseV2PtrOutput)
+}
+
+// Enable or Disable apply network policies on private end point in the subnet.
+func (o SubnetResponseV2PtrOutput) PrivateEndpointNetworkPolicies() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateEndpointNetworkPolicies
+	}).(pulumi.StringPtrOutput)
+}
+
+// An array of references to private endpoints.
+func (o SubnetResponseV2PtrOutput) PrivateEndpoints() PrivateEndpointResponseArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV2) []PrivateEndpointResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateEndpoints
+	}).(PrivateEndpointResponseArrayOutput)
+}
+
+// Enable or Disable apply network policies on private link service in the subnet.
+func (o SubnetResponseV2PtrOutput) PrivateLinkServiceNetworkPolicies() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateLinkServiceNetworkPolicies
+	}).(pulumi.StringPtrOutput)
+}
+
+// The provisioning state of the subnet resource.
+func (o SubnetResponseV2PtrOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProvisioningState
+	}).(pulumi.StringPtrOutput)
+}
+
+// A read-only string identifying the intention of use for this subnet based on delegations and other user-defined properties.
+func (o SubnetResponseV2PtrOutput) Purpose() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Purpose
+	}).(pulumi.StringPtrOutput)
+}
+
+// An array of references to the external resources using subnet.
+func (o SubnetResponseV2PtrOutput) ResourceNavigationLinks() ResourceNavigationLinkResponseArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV2) []ResourceNavigationLinkResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceNavigationLinks
+	}).(ResourceNavigationLinkResponseArrayOutput)
+}
+
+// The reference to the RouteTable resource.
+func (o SubnetResponseV2PtrOutput) RouteTable() RouteTableResponsePtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV2) *RouteTableResponse {
+		if v == nil {
+			return nil
+		}
+		return v.RouteTable
+	}).(RouteTableResponsePtrOutput)
+}
+
+// An array of references to services injecting into this subnet.
+func (o SubnetResponseV2PtrOutput) ServiceAssociationLinks() ServiceAssociationLinkResponseArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV2) []ServiceAssociationLinkResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAssociationLinks
+	}).(ServiceAssociationLinkResponseArrayOutput)
+}
+
+// An array of service endpoint policies.
+func (o SubnetResponseV2PtrOutput) ServiceEndpointPolicies() ServiceEndpointPolicyResponseArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV2) []ServiceEndpointPolicyResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceEndpointPolicies
+	}).(ServiceEndpointPolicyResponseArrayOutput)
+}
+
+// An array of service endpoints.
+func (o SubnetResponseV2PtrOutput) ServiceEndpoints() ServiceEndpointPropertiesFormatResponseArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV2) []ServiceEndpointPropertiesFormatResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceEndpoints
+	}).(ServiceEndpointPropertiesFormatResponseArrayOutput)
+}
+
+// Reference to an existing service gateway.
+func (o SubnetResponseV2PtrOutput) ServiceGateway() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV2) *SubResourceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceGateway
+	}).(SubResourceResponsePtrOutput)
+}
+
+// Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
+func (o SubnetResponseV2PtrOutput) SharingScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SharingScope
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource type.
+func (o SubnetResponseV2PtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Subnet in a virtual network resource.
+type SubnetResponseV3 struct {
+	// The address prefix for the subnet.
+	AddressPrefix *string `pulumi:"addressPrefix"`
+	// List of address prefixes for the subnet.
+	AddressPrefixes []string `pulumi:"addressPrefixes"`
+	// Application gateway IP configurations of virtual network resource.
+	ApplicationGatewayIPConfigurations []ApplicationGatewayIPConfigurationResponse `pulumi:"applicationGatewayIPConfigurations"`
+	// Set this property to false to disable default outbound connectivity for all VMs in the subnet.
+	DefaultOutboundAccess *bool `pulumi:"defaultOutboundAccess"`
+	// An array of references to the delegations on the subnet.
+	Delegations []DelegationResponse `pulumi:"delegations"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Array of IpAllocation which reference this subnet.
+	IpAllocations []SubResourceResponse `pulumi:"ipAllocations"`
+	// Array of IP configuration profiles which reference this subnet.
+	IpConfigurationProfiles []IPConfigurationProfileResponse `pulumi:"ipConfigurationProfiles"`
+	// An array of references to the network interface IP configurations using subnet.
+	IpConfigurations []IPConfigurationResponseV3 `pulumi:"ipConfigurations"`
+	// A list of IPAM Pools for allocating IP address prefixes.
+	IpamPoolPrefixAllocations []IpamPoolPrefixAllocationResponse `pulumi:"ipamPoolPrefixAllocations"`
+	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+	Name *string `pulumi:"name"`
+	// Nat gateway associated with this subnet.
+	NatGateway *SubResourceResponse `pulumi:"natGateway"`
+	// The reference to the NetworkSecurityGroup resource.
+	NetworkSecurityGroup *NetworkSecurityGroupResponseV3 `pulumi:"networkSecurityGroup"`
+	// Enable or Disable apply network policies on private end point in the subnet.
+	PrivateEndpointNetworkPolicies *string `pulumi:"privateEndpointNetworkPolicies"`
+	// An array of references to private endpoints.
+	PrivateEndpoints []PrivateEndpointResponse `pulumi:"privateEndpoints"`
+	// Enable or Disable apply network policies on private link service in the subnet.
+	PrivateLinkServiceNetworkPolicies *string `pulumi:"privateLinkServiceNetworkPolicies"`
+	// The provisioning state of the subnet resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// A read-only string identifying the intention of use for this subnet based on delegations and other user-defined properties.
+	Purpose string `pulumi:"purpose"`
+	// An array of references to the external resources using subnet.
+	ResourceNavigationLinks []ResourceNavigationLinkResponse `pulumi:"resourceNavigationLinks"`
+	// The reference to the RouteTable resource.
+	RouteTable *RouteTableResponse `pulumi:"routeTable"`
+	// An array of references to services injecting into this subnet.
+	ServiceAssociationLinks []ServiceAssociationLinkResponse `pulumi:"serviceAssociationLinks"`
+	// An array of service endpoint policies.
+	ServiceEndpointPolicies []ServiceEndpointPolicyResponse `pulumi:"serviceEndpointPolicies"`
+	// An array of service endpoints.
+	ServiceEndpoints []ServiceEndpointPropertiesFormatResponse `pulumi:"serviceEndpoints"`
+	// Reference to an existing service gateway.
+	ServiceGateway *SubResourceResponse `pulumi:"serviceGateway"`
+	// Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
+	SharingScope *string `pulumi:"sharingScope"`
+	// Resource type.
+	Type *string `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for SubnetResponseV3
+func (val *SubnetResponseV3) Defaults() *SubnetResponseV3 {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.PrivateEndpointNetworkPolicies == nil {
+		privateEndpointNetworkPolicies_ := "Disabled"
+		tmp.PrivateEndpointNetworkPolicies = &privateEndpointNetworkPolicies_
+	}
+	if tmp.PrivateLinkServiceNetworkPolicies == nil {
+		privateLinkServiceNetworkPolicies_ := "Enabled"
+		tmp.PrivateLinkServiceNetworkPolicies = &privateLinkServiceNetworkPolicies_
+	}
+	return &tmp
+}
+
+// Subnet in a virtual network resource.
+type SubnetResponseV3Output struct{ *pulumi.OutputState }
+
+func (SubnetResponseV3Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetResponseV3)(nil)).Elem()
+}
+
+func (o SubnetResponseV3Output) ToSubnetResponseV3Output() SubnetResponseV3Output {
+	return o
+}
+
+func (o SubnetResponseV3Output) ToSubnetResponseV3OutputWithContext(ctx context.Context) SubnetResponseV3Output {
+	return o
+}
+
+// The address prefix for the subnet.
+func (o SubnetResponseV3Output) AddressPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetResponseV3) *string { return v.AddressPrefix }).(pulumi.StringPtrOutput)
+}
+
+// List of address prefixes for the subnet.
+func (o SubnetResponseV3Output) AddressPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV3) []string { return v.AddressPrefixes }).(pulumi.StringArrayOutput)
+}
+
+// Application gateway IP configurations of virtual network resource.
+func (o SubnetResponseV3Output) ApplicationGatewayIPConfigurations() ApplicationGatewayIPConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV3) []ApplicationGatewayIPConfigurationResponse {
+		return v.ApplicationGatewayIPConfigurations
+	}).(ApplicationGatewayIPConfigurationResponseArrayOutput)
+}
+
+// Set this property to false to disable default outbound connectivity for all VMs in the subnet.
+func (o SubnetResponseV3Output) DefaultOutboundAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SubnetResponseV3) *bool { return v.DefaultOutboundAccess }).(pulumi.BoolPtrOutput)
+}
+
+// An array of references to the delegations on the subnet.
+func (o SubnetResponseV3Output) Delegations() DelegationResponseArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV3) []DelegationResponse { return v.Delegations }).(DelegationResponseArrayOutput)
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o SubnetResponseV3Output) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v SubnetResponseV3) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Resource ID.
+func (o SubnetResponseV3Output) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetResponseV3) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Array of IpAllocation which reference this subnet.
+func (o SubnetResponseV3Output) IpAllocations() SubResourceResponseArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV3) []SubResourceResponse { return v.IpAllocations }).(SubResourceResponseArrayOutput)
+}
+
+// Array of IP configuration profiles which reference this subnet.
+func (o SubnetResponseV3Output) IpConfigurationProfiles() IPConfigurationProfileResponseArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV3) []IPConfigurationProfileResponse { return v.IpConfigurationProfiles }).(IPConfigurationProfileResponseArrayOutput)
+}
+
+// An array of references to the network interface IP configurations using subnet.
+func (o SubnetResponseV3Output) IpConfigurations() IPConfigurationResponseV3ArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV3) []IPConfigurationResponseV3 { return v.IpConfigurations }).(IPConfigurationResponseV3ArrayOutput)
+}
+
+// A list of IPAM Pools for allocating IP address prefixes.
+func (o SubnetResponseV3Output) IpamPoolPrefixAllocations() IpamPoolPrefixAllocationResponseArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV3) []IpamPoolPrefixAllocationResponse { return v.IpamPoolPrefixAllocations }).(IpamPoolPrefixAllocationResponseArrayOutput)
+}
+
+// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+func (o SubnetResponseV3Output) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetResponseV3) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Nat gateway associated with this subnet.
+func (o SubnetResponseV3Output) NatGateway() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v SubnetResponseV3) *SubResourceResponse { return v.NatGateway }).(SubResourceResponsePtrOutput)
+}
+
+// The reference to the NetworkSecurityGroup resource.
+func (o SubnetResponseV3Output) NetworkSecurityGroup() NetworkSecurityGroupResponseV3PtrOutput {
+	return o.ApplyT(func(v SubnetResponseV3) *NetworkSecurityGroupResponseV3 { return v.NetworkSecurityGroup }).(NetworkSecurityGroupResponseV3PtrOutput)
+}
+
+// Enable or Disable apply network policies on private end point in the subnet.
+func (o SubnetResponseV3Output) PrivateEndpointNetworkPolicies() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetResponseV3) *string { return v.PrivateEndpointNetworkPolicies }).(pulumi.StringPtrOutput)
+}
+
+// An array of references to private endpoints.
+func (o SubnetResponseV3Output) PrivateEndpoints() PrivateEndpointResponseArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV3) []PrivateEndpointResponse { return v.PrivateEndpoints }).(PrivateEndpointResponseArrayOutput)
+}
+
+// Enable or Disable apply network policies on private link service in the subnet.
+func (o SubnetResponseV3Output) PrivateLinkServiceNetworkPolicies() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetResponseV3) *string { return v.PrivateLinkServiceNetworkPolicies }).(pulumi.StringPtrOutput)
+}
+
+// The provisioning state of the subnet resource.
+func (o SubnetResponseV3Output) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SubnetResponseV3) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// A read-only string identifying the intention of use for this subnet based on delegations and other user-defined properties.
+func (o SubnetResponseV3Output) Purpose() pulumi.StringOutput {
+	return o.ApplyT(func(v SubnetResponseV3) string { return v.Purpose }).(pulumi.StringOutput)
+}
+
+// An array of references to the external resources using subnet.
+func (o SubnetResponseV3Output) ResourceNavigationLinks() ResourceNavigationLinkResponseArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV3) []ResourceNavigationLinkResponse { return v.ResourceNavigationLinks }).(ResourceNavigationLinkResponseArrayOutput)
+}
+
+// The reference to the RouteTable resource.
+func (o SubnetResponseV3Output) RouteTable() RouteTableResponsePtrOutput {
+	return o.ApplyT(func(v SubnetResponseV3) *RouteTableResponse { return v.RouteTable }).(RouteTableResponsePtrOutput)
+}
+
+// An array of references to services injecting into this subnet.
+func (o SubnetResponseV3Output) ServiceAssociationLinks() ServiceAssociationLinkResponseArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV3) []ServiceAssociationLinkResponse { return v.ServiceAssociationLinks }).(ServiceAssociationLinkResponseArrayOutput)
+}
+
+// An array of service endpoint policies.
+func (o SubnetResponseV3Output) ServiceEndpointPolicies() ServiceEndpointPolicyResponseArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV3) []ServiceEndpointPolicyResponse { return v.ServiceEndpointPolicies }).(ServiceEndpointPolicyResponseArrayOutput)
+}
+
+// An array of service endpoints.
+func (o SubnetResponseV3Output) ServiceEndpoints() ServiceEndpointPropertiesFormatResponseArrayOutput {
+	return o.ApplyT(func(v SubnetResponseV3) []ServiceEndpointPropertiesFormatResponse { return v.ServiceEndpoints }).(ServiceEndpointPropertiesFormatResponseArrayOutput)
+}
+
+// Reference to an existing service gateway.
+func (o SubnetResponseV3Output) ServiceGateway() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v SubnetResponseV3) *SubResourceResponse { return v.ServiceGateway }).(SubResourceResponsePtrOutput)
+}
+
+// Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
+func (o SubnetResponseV3Output) SharingScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetResponseV3) *string { return v.SharingScope }).(pulumi.StringPtrOutput)
+}
+
+// Resource type.
+func (o SubnetResponseV3Output) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetResponseV3) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type SubnetResponseV3PtrOutput struct{ *pulumi.OutputState }
+
+func (SubnetResponseV3PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubnetResponseV3)(nil)).Elem()
+}
+
+func (o SubnetResponseV3PtrOutput) ToSubnetResponseV3PtrOutput() SubnetResponseV3PtrOutput {
+	return o
+}
+
+func (o SubnetResponseV3PtrOutput) ToSubnetResponseV3PtrOutputWithContext(ctx context.Context) SubnetResponseV3PtrOutput {
+	return o
+}
+
+func (o SubnetResponseV3PtrOutput) Elem() SubnetResponseV3Output {
+	return o.ApplyT(func(v *SubnetResponseV3) SubnetResponseV3 {
+		if v != nil {
+			return *v
+		}
+		var ret SubnetResponseV3
+		return ret
+	}).(SubnetResponseV3Output)
+}
+
+// The address prefix for the subnet.
+func (o SubnetResponseV3PtrOutput) AddressPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AddressPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of address prefixes for the subnet.
+func (o SubnetResponseV3PtrOutput) AddressPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV3) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AddressPrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Application gateway IP configurations of virtual network resource.
+func (o SubnetResponseV3PtrOutput) ApplicationGatewayIPConfigurations() ApplicationGatewayIPConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV3) []ApplicationGatewayIPConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationGatewayIPConfigurations
+	}).(ApplicationGatewayIPConfigurationResponseArrayOutput)
+}
+
+// Set this property to false to disable default outbound connectivity for all VMs in the subnet.
+func (o SubnetResponseV3PtrOutput) DefaultOutboundAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV3) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultOutboundAccess
+	}).(pulumi.BoolPtrOutput)
+}
+
+// An array of references to the delegations on the subnet.
+func (o SubnetResponseV3PtrOutput) Delegations() DelegationResponseArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV3) []DelegationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Delegations
+	}).(DelegationResponseArrayOutput)
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o SubnetResponseV3PtrOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV3) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Etag
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource ID.
+func (o SubnetResponseV3PtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Array of IpAllocation which reference this subnet.
+func (o SubnetResponseV3PtrOutput) IpAllocations() SubResourceResponseArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV3) []SubResourceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.IpAllocations
+	}).(SubResourceResponseArrayOutput)
+}
+
+// Array of IP configuration profiles which reference this subnet.
+func (o SubnetResponseV3PtrOutput) IpConfigurationProfiles() IPConfigurationProfileResponseArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV3) []IPConfigurationProfileResponse {
+		if v == nil {
+			return nil
+		}
+		return v.IpConfigurationProfiles
+	}).(IPConfigurationProfileResponseArrayOutput)
+}
+
+// An array of references to the network interface IP configurations using subnet.
+func (o SubnetResponseV3PtrOutput) IpConfigurations() IPConfigurationResponseV3ArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV3) []IPConfigurationResponseV3 {
+		if v == nil {
+			return nil
+		}
+		return v.IpConfigurations
+	}).(IPConfigurationResponseV3ArrayOutput)
+}
+
+// A list of IPAM Pools for allocating IP address prefixes.
+func (o SubnetResponseV3PtrOutput) IpamPoolPrefixAllocations() IpamPoolPrefixAllocationResponseArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV3) []IpamPoolPrefixAllocationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.IpamPoolPrefixAllocations
+	}).(IpamPoolPrefixAllocationResponseArrayOutput)
+}
+
+// The name of the resource that is unique within a resource group. This name can be used to access the resource.
+func (o SubnetResponseV3PtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Nat gateway associated with this subnet.
+func (o SubnetResponseV3PtrOutput) NatGateway() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV3) *SubResourceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.NatGateway
+	}).(SubResourceResponsePtrOutput)
+}
+
+// The reference to the NetworkSecurityGroup resource.
+func (o SubnetResponseV3PtrOutput) NetworkSecurityGroup() NetworkSecurityGroupResponseV3PtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV3) *NetworkSecurityGroupResponseV3 {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkSecurityGroup
+	}).(NetworkSecurityGroupResponseV3PtrOutput)
+}
+
+// Enable or Disable apply network policies on private end point in the subnet.
+func (o SubnetResponseV3PtrOutput) PrivateEndpointNetworkPolicies() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateEndpointNetworkPolicies
+	}).(pulumi.StringPtrOutput)
+}
+
+// An array of references to private endpoints.
+func (o SubnetResponseV3PtrOutput) PrivateEndpoints() PrivateEndpointResponseArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV3) []PrivateEndpointResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateEndpoints
+	}).(PrivateEndpointResponseArrayOutput)
+}
+
+// Enable or Disable apply network policies on private link service in the subnet.
+func (o SubnetResponseV3PtrOutput) PrivateLinkServiceNetworkPolicies() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateLinkServiceNetworkPolicies
+	}).(pulumi.StringPtrOutput)
+}
+
+// The provisioning state of the subnet resource.
+func (o SubnetResponseV3PtrOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV3) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProvisioningState
+	}).(pulumi.StringPtrOutput)
+}
+
+// A read-only string identifying the intention of use for this subnet based on delegations and other user-defined properties.
+func (o SubnetResponseV3PtrOutput) Purpose() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV3) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Purpose
+	}).(pulumi.StringPtrOutput)
+}
+
+// An array of references to the external resources using subnet.
+func (o SubnetResponseV3PtrOutput) ResourceNavigationLinks() ResourceNavigationLinkResponseArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV3) []ResourceNavigationLinkResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceNavigationLinks
+	}).(ResourceNavigationLinkResponseArrayOutput)
+}
+
+// The reference to the RouteTable resource.
+func (o SubnetResponseV3PtrOutput) RouteTable() RouteTableResponsePtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV3) *RouteTableResponse {
+		if v == nil {
+			return nil
+		}
+		return v.RouteTable
+	}).(RouteTableResponsePtrOutput)
+}
+
+// An array of references to services injecting into this subnet.
+func (o SubnetResponseV3PtrOutput) ServiceAssociationLinks() ServiceAssociationLinkResponseArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV3) []ServiceAssociationLinkResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAssociationLinks
+	}).(ServiceAssociationLinkResponseArrayOutput)
+}
+
+// An array of service endpoint policies.
+func (o SubnetResponseV3PtrOutput) ServiceEndpointPolicies() ServiceEndpointPolicyResponseArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV3) []ServiceEndpointPolicyResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceEndpointPolicies
+	}).(ServiceEndpointPolicyResponseArrayOutput)
+}
+
+// An array of service endpoints.
+func (o SubnetResponseV3PtrOutput) ServiceEndpoints() ServiceEndpointPropertiesFormatResponseArrayOutput {
+	return o.ApplyT(func(v *SubnetResponseV3) []ServiceEndpointPropertiesFormatResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceEndpoints
+	}).(ServiceEndpointPropertiesFormatResponseArrayOutput)
+}
+
+// Reference to an existing service gateway.
+func (o SubnetResponseV3PtrOutput) ServiceGateway() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV3) *SubResourceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceGateway
+	}).(SubResourceResponsePtrOutput)
+}
+
+// Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
+func (o SubnetResponseV3PtrOutput) SharingScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SharingScope
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource type.
+func (o SubnetResponseV3PtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetResponseV3) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type SubscriptionId struct {
@@ -15454,205 +18030,6 @@ func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
 // The type of identity that last modified the resource.
 func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
-}
-
-// Describes a server to forward the DNS queries to.
-type TargetDnsServer struct {
-	// DNS server IP address.
-	IpAddress string `pulumi:"ipAddress"`
-	// DNS server port.
-	Port *int `pulumi:"port"`
-}
-
-// Defaults sets the appropriate defaults for TargetDnsServer
-func (val *TargetDnsServer) Defaults() *TargetDnsServer {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Port == nil {
-		port_ := 53
-		tmp.Port = &port_
-	}
-	return &tmp
-}
-
-// TargetDnsServerInput is an input type that accepts TargetDnsServerArgs and TargetDnsServerOutput values.
-// You can construct a concrete instance of `TargetDnsServerInput` via:
-//
-//	TargetDnsServerArgs{...}
-type TargetDnsServerInput interface {
-	pulumi.Input
-
-	ToTargetDnsServerOutput() TargetDnsServerOutput
-	ToTargetDnsServerOutputWithContext(context.Context) TargetDnsServerOutput
-}
-
-// Describes a server to forward the DNS queries to.
-type TargetDnsServerArgs struct {
-	// DNS server IP address.
-	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
-	// DNS server port.
-	Port pulumi.IntPtrInput `pulumi:"port"`
-}
-
-// Defaults sets the appropriate defaults for TargetDnsServerArgs
-func (val *TargetDnsServerArgs) Defaults() *TargetDnsServerArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Port == nil {
-		tmp.Port = pulumi.IntPtr(53)
-	}
-	return &tmp
-}
-func (TargetDnsServerArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetDnsServer)(nil)).Elem()
-}
-
-func (i TargetDnsServerArgs) ToTargetDnsServerOutput() TargetDnsServerOutput {
-	return i.ToTargetDnsServerOutputWithContext(context.Background())
-}
-
-func (i TargetDnsServerArgs) ToTargetDnsServerOutputWithContext(ctx context.Context) TargetDnsServerOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TargetDnsServerOutput)
-}
-
-// TargetDnsServerArrayInput is an input type that accepts TargetDnsServerArray and TargetDnsServerArrayOutput values.
-// You can construct a concrete instance of `TargetDnsServerArrayInput` via:
-//
-//	TargetDnsServerArray{ TargetDnsServerArgs{...} }
-type TargetDnsServerArrayInput interface {
-	pulumi.Input
-
-	ToTargetDnsServerArrayOutput() TargetDnsServerArrayOutput
-	ToTargetDnsServerArrayOutputWithContext(context.Context) TargetDnsServerArrayOutput
-}
-
-type TargetDnsServerArray []TargetDnsServerInput
-
-func (TargetDnsServerArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TargetDnsServer)(nil)).Elem()
-}
-
-func (i TargetDnsServerArray) ToTargetDnsServerArrayOutput() TargetDnsServerArrayOutput {
-	return i.ToTargetDnsServerArrayOutputWithContext(context.Background())
-}
-
-func (i TargetDnsServerArray) ToTargetDnsServerArrayOutputWithContext(ctx context.Context) TargetDnsServerArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TargetDnsServerArrayOutput)
-}
-
-// Describes a server to forward the DNS queries to.
-type TargetDnsServerOutput struct{ *pulumi.OutputState }
-
-func (TargetDnsServerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetDnsServer)(nil)).Elem()
-}
-
-func (o TargetDnsServerOutput) ToTargetDnsServerOutput() TargetDnsServerOutput {
-	return o
-}
-
-func (o TargetDnsServerOutput) ToTargetDnsServerOutputWithContext(ctx context.Context) TargetDnsServerOutput {
-	return o
-}
-
-// DNS server IP address.
-func (o TargetDnsServerOutput) IpAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v TargetDnsServer) string { return v.IpAddress }).(pulumi.StringOutput)
-}
-
-// DNS server port.
-func (o TargetDnsServerOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v TargetDnsServer) *int { return v.Port }).(pulumi.IntPtrOutput)
-}
-
-type TargetDnsServerArrayOutput struct{ *pulumi.OutputState }
-
-func (TargetDnsServerArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TargetDnsServer)(nil)).Elem()
-}
-
-func (o TargetDnsServerArrayOutput) ToTargetDnsServerArrayOutput() TargetDnsServerArrayOutput {
-	return o
-}
-
-func (o TargetDnsServerArrayOutput) ToTargetDnsServerArrayOutputWithContext(ctx context.Context) TargetDnsServerArrayOutput {
-	return o
-}
-
-func (o TargetDnsServerArrayOutput) Index(i pulumi.IntInput) TargetDnsServerOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetDnsServer {
-		return vs[0].([]TargetDnsServer)[vs[1].(int)]
-	}).(TargetDnsServerOutput)
-}
-
-// Describes a server to forward the DNS queries to.
-type TargetDnsServerResponse struct {
-	// DNS server IP address.
-	IpAddress string `pulumi:"ipAddress"`
-	// DNS server port.
-	Port *int `pulumi:"port"`
-}
-
-// Defaults sets the appropriate defaults for TargetDnsServerResponse
-func (val *TargetDnsServerResponse) Defaults() *TargetDnsServerResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.Port == nil {
-		port_ := 53
-		tmp.Port = &port_
-	}
-	return &tmp
-}
-
-// Describes a server to forward the DNS queries to.
-type TargetDnsServerResponseOutput struct{ *pulumi.OutputState }
-
-func (TargetDnsServerResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetDnsServerResponse)(nil)).Elem()
-}
-
-func (o TargetDnsServerResponseOutput) ToTargetDnsServerResponseOutput() TargetDnsServerResponseOutput {
-	return o
-}
-
-func (o TargetDnsServerResponseOutput) ToTargetDnsServerResponseOutputWithContext(ctx context.Context) TargetDnsServerResponseOutput {
-	return o
-}
-
-// DNS server IP address.
-func (o TargetDnsServerResponseOutput) IpAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v TargetDnsServerResponse) string { return v.IpAddress }).(pulumi.StringOutput)
-}
-
-// DNS server port.
-func (o TargetDnsServerResponseOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v TargetDnsServerResponse) *int { return v.Port }).(pulumi.IntPtrOutput)
-}
-
-type TargetDnsServerResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (TargetDnsServerResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TargetDnsServerResponse)(nil)).Elem()
-}
-
-func (o TargetDnsServerResponseArrayOutput) ToTargetDnsServerResponseArrayOutput() TargetDnsServerResponseArrayOutput {
-	return o
-}
-
-func (o TargetDnsServerResponseArrayOutput) ToTargetDnsServerResponseArrayOutputWithContext(ctx context.Context) TargetDnsServerResponseArrayOutput {
-	return o
-}
-
-func (o TargetDnsServerResponseArrayOutput) Index(i pulumi.IntInput) TargetDnsServerResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetDnsServerResponse {
-		return vs[0].([]TargetDnsServerResponse)[vs[1].(int)]
-	}).(TargetDnsServerResponseOutput)
 }
 
 // Parameters that define the configuration of traffic analytics.
@@ -16439,152 +18816,6 @@ func (o TunnelConnectionHealthResponseArrayOutput) Index(i pulumi.IntInput) Tunn
 	}).(TunnelConnectionHealthResponseOutput)
 }
 
-// A TXT record.
-type TxtRecord struct {
-	// The text value of this TXT record.
-	Value []string `pulumi:"value"`
-}
-
-// TxtRecordInput is an input type that accepts TxtRecordArgs and TxtRecordOutput values.
-// You can construct a concrete instance of `TxtRecordInput` via:
-//
-//	TxtRecordArgs{...}
-type TxtRecordInput interface {
-	pulumi.Input
-
-	ToTxtRecordOutput() TxtRecordOutput
-	ToTxtRecordOutputWithContext(context.Context) TxtRecordOutput
-}
-
-// A TXT record.
-type TxtRecordArgs struct {
-	// The text value of this TXT record.
-	Value pulumi.StringArrayInput `pulumi:"value"`
-}
-
-func (TxtRecordArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TxtRecord)(nil)).Elem()
-}
-
-func (i TxtRecordArgs) ToTxtRecordOutput() TxtRecordOutput {
-	return i.ToTxtRecordOutputWithContext(context.Background())
-}
-
-func (i TxtRecordArgs) ToTxtRecordOutputWithContext(ctx context.Context) TxtRecordOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TxtRecordOutput)
-}
-
-// TxtRecordArrayInput is an input type that accepts TxtRecordArray and TxtRecordArrayOutput values.
-// You can construct a concrete instance of `TxtRecordArrayInput` via:
-//
-//	TxtRecordArray{ TxtRecordArgs{...} }
-type TxtRecordArrayInput interface {
-	pulumi.Input
-
-	ToTxtRecordArrayOutput() TxtRecordArrayOutput
-	ToTxtRecordArrayOutputWithContext(context.Context) TxtRecordArrayOutput
-}
-
-type TxtRecordArray []TxtRecordInput
-
-func (TxtRecordArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TxtRecord)(nil)).Elem()
-}
-
-func (i TxtRecordArray) ToTxtRecordArrayOutput() TxtRecordArrayOutput {
-	return i.ToTxtRecordArrayOutputWithContext(context.Background())
-}
-
-func (i TxtRecordArray) ToTxtRecordArrayOutputWithContext(ctx context.Context) TxtRecordArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TxtRecordArrayOutput)
-}
-
-// A TXT record.
-type TxtRecordOutput struct{ *pulumi.OutputState }
-
-func (TxtRecordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TxtRecord)(nil)).Elem()
-}
-
-func (o TxtRecordOutput) ToTxtRecordOutput() TxtRecordOutput {
-	return o
-}
-
-func (o TxtRecordOutput) ToTxtRecordOutputWithContext(ctx context.Context) TxtRecordOutput {
-	return o
-}
-
-// The text value of this TXT record.
-func (o TxtRecordOutput) Value() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TxtRecord) []string { return v.Value }).(pulumi.StringArrayOutput)
-}
-
-type TxtRecordArrayOutput struct{ *pulumi.OutputState }
-
-func (TxtRecordArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TxtRecord)(nil)).Elem()
-}
-
-func (o TxtRecordArrayOutput) ToTxtRecordArrayOutput() TxtRecordArrayOutput {
-	return o
-}
-
-func (o TxtRecordArrayOutput) ToTxtRecordArrayOutputWithContext(ctx context.Context) TxtRecordArrayOutput {
-	return o
-}
-
-func (o TxtRecordArrayOutput) Index(i pulumi.IntInput) TxtRecordOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TxtRecord {
-		return vs[0].([]TxtRecord)[vs[1].(int)]
-	}).(TxtRecordOutput)
-}
-
-// A TXT record.
-type TxtRecordResponse struct {
-	// The text value of this TXT record.
-	Value []string `pulumi:"value"`
-}
-
-// A TXT record.
-type TxtRecordResponseOutput struct{ *pulumi.OutputState }
-
-func (TxtRecordResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TxtRecordResponse)(nil)).Elem()
-}
-
-func (o TxtRecordResponseOutput) ToTxtRecordResponseOutput() TxtRecordResponseOutput {
-	return o
-}
-
-func (o TxtRecordResponseOutput) ToTxtRecordResponseOutputWithContext(ctx context.Context) TxtRecordResponseOutput {
-	return o
-}
-
-// The text value of this TXT record.
-func (o TxtRecordResponseOutput) Value() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v TxtRecordResponse) []string { return v.Value }).(pulumi.StringArrayOutput)
-}
-
-type TxtRecordResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (TxtRecordResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]TxtRecordResponse)(nil)).Elem()
-}
-
-func (o TxtRecordResponseArrayOutput) ToTxtRecordResponseArrayOutput() TxtRecordResponseArrayOutput {
-	return o
-}
-
-func (o TxtRecordResponseArrayOutput) ToTxtRecordResponseArrayOutputWithContext(ctx context.Context) TxtRecordResponseArrayOutput {
-	return o
-}
-
-func (o TxtRecordResponseArrayOutput) Index(i pulumi.IntInput) TxtRecordResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TxtRecordResponse {
-		return vs[0].([]TxtRecordResponse)[vs[1].(int)]
-	}).(TxtRecordResponseOutput)
-}
-
 // Describes a Virtual Machine.
 type VM struct {
 	// Resource ID.
@@ -17041,12 +19272,743 @@ func (o VirtualApplianceAdditionalNicPropertiesResponseArrayOutput) Index(i pulu
 	}).(VirtualApplianceAdditionalNicPropertiesResponseOutput)
 }
 
+// Represents a single IP configuration.
+type VirtualApplianceIPConfiguration struct {
+	// Name of the IP configuration.
+	Name *string `pulumi:"name"`
+	// Represents a single IP configuration properties.
+	Properties *VirtualApplianceIPConfigurationProperties `pulumi:"properties"`
+}
+
+// VirtualApplianceIPConfigurationInput is an input type that accepts VirtualApplianceIPConfigurationArgs and VirtualApplianceIPConfigurationOutput values.
+// You can construct a concrete instance of `VirtualApplianceIPConfigurationInput` via:
+//
+//	VirtualApplianceIPConfigurationArgs{...}
+type VirtualApplianceIPConfigurationInput interface {
+	pulumi.Input
+
+	ToVirtualApplianceIPConfigurationOutput() VirtualApplianceIPConfigurationOutput
+	ToVirtualApplianceIPConfigurationOutputWithContext(context.Context) VirtualApplianceIPConfigurationOutput
+}
+
+// Represents a single IP configuration.
+type VirtualApplianceIPConfigurationArgs struct {
+	// Name of the IP configuration.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Represents a single IP configuration properties.
+	Properties VirtualApplianceIPConfigurationPropertiesPtrInput `pulumi:"properties"`
+}
+
+func (VirtualApplianceIPConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualApplianceIPConfiguration)(nil)).Elem()
+}
+
+func (i VirtualApplianceIPConfigurationArgs) ToVirtualApplianceIPConfigurationOutput() VirtualApplianceIPConfigurationOutput {
+	return i.ToVirtualApplianceIPConfigurationOutputWithContext(context.Background())
+}
+
+func (i VirtualApplianceIPConfigurationArgs) ToVirtualApplianceIPConfigurationOutputWithContext(ctx context.Context) VirtualApplianceIPConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualApplianceIPConfigurationOutput)
+}
+
+// VirtualApplianceIPConfigurationArrayInput is an input type that accepts VirtualApplianceIPConfigurationArray and VirtualApplianceIPConfigurationArrayOutput values.
+// You can construct a concrete instance of `VirtualApplianceIPConfigurationArrayInput` via:
+//
+//	VirtualApplianceIPConfigurationArray{ VirtualApplianceIPConfigurationArgs{...} }
+type VirtualApplianceIPConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToVirtualApplianceIPConfigurationArrayOutput() VirtualApplianceIPConfigurationArrayOutput
+	ToVirtualApplianceIPConfigurationArrayOutputWithContext(context.Context) VirtualApplianceIPConfigurationArrayOutput
+}
+
+type VirtualApplianceIPConfigurationArray []VirtualApplianceIPConfigurationInput
+
+func (VirtualApplianceIPConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualApplianceIPConfiguration)(nil)).Elem()
+}
+
+func (i VirtualApplianceIPConfigurationArray) ToVirtualApplianceIPConfigurationArrayOutput() VirtualApplianceIPConfigurationArrayOutput {
+	return i.ToVirtualApplianceIPConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i VirtualApplianceIPConfigurationArray) ToVirtualApplianceIPConfigurationArrayOutputWithContext(ctx context.Context) VirtualApplianceIPConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualApplianceIPConfigurationArrayOutput)
+}
+
+// Represents a single IP configuration.
+type VirtualApplianceIPConfigurationOutput struct{ *pulumi.OutputState }
+
+func (VirtualApplianceIPConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualApplianceIPConfiguration)(nil)).Elem()
+}
+
+func (o VirtualApplianceIPConfigurationOutput) ToVirtualApplianceIPConfigurationOutput() VirtualApplianceIPConfigurationOutput {
+	return o
+}
+
+func (o VirtualApplianceIPConfigurationOutput) ToVirtualApplianceIPConfigurationOutputWithContext(ctx context.Context) VirtualApplianceIPConfigurationOutput {
+	return o
+}
+
+// Name of the IP configuration.
+func (o VirtualApplianceIPConfigurationOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualApplianceIPConfiguration) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Represents a single IP configuration properties.
+func (o VirtualApplianceIPConfigurationOutput) Properties() VirtualApplianceIPConfigurationPropertiesPtrOutput {
+	return o.ApplyT(func(v VirtualApplianceIPConfiguration) *VirtualApplianceIPConfigurationProperties {
+		return v.Properties
+	}).(VirtualApplianceIPConfigurationPropertiesPtrOutput)
+}
+
+type VirtualApplianceIPConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (VirtualApplianceIPConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualApplianceIPConfiguration)(nil)).Elem()
+}
+
+func (o VirtualApplianceIPConfigurationArrayOutput) ToVirtualApplianceIPConfigurationArrayOutput() VirtualApplianceIPConfigurationArrayOutput {
+	return o
+}
+
+func (o VirtualApplianceIPConfigurationArrayOutput) ToVirtualApplianceIPConfigurationArrayOutputWithContext(ctx context.Context) VirtualApplianceIPConfigurationArrayOutput {
+	return o
+}
+
+func (o VirtualApplianceIPConfigurationArrayOutput) Index(i pulumi.IntInput) VirtualApplianceIPConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualApplianceIPConfiguration {
+		return vs[0].([]VirtualApplianceIPConfiguration)[vs[1].(int)]
+	}).(VirtualApplianceIPConfigurationOutput)
+}
+
+// Represents a single IP configuration properties.
+type VirtualApplianceIPConfigurationProperties struct {
+	// Whether or not this is primary IP configuration of the NIC.
+	Primary *bool `pulumi:"primary"`
+}
+
+// VirtualApplianceIPConfigurationPropertiesInput is an input type that accepts VirtualApplianceIPConfigurationPropertiesArgs and VirtualApplianceIPConfigurationPropertiesOutput values.
+// You can construct a concrete instance of `VirtualApplianceIPConfigurationPropertiesInput` via:
+//
+//	VirtualApplianceIPConfigurationPropertiesArgs{...}
+type VirtualApplianceIPConfigurationPropertiesInput interface {
+	pulumi.Input
+
+	ToVirtualApplianceIPConfigurationPropertiesOutput() VirtualApplianceIPConfigurationPropertiesOutput
+	ToVirtualApplianceIPConfigurationPropertiesOutputWithContext(context.Context) VirtualApplianceIPConfigurationPropertiesOutput
+}
+
+// Represents a single IP configuration properties.
+type VirtualApplianceIPConfigurationPropertiesArgs struct {
+	// Whether or not this is primary IP configuration of the NIC.
+	Primary pulumi.BoolPtrInput `pulumi:"primary"`
+}
+
+func (VirtualApplianceIPConfigurationPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualApplianceIPConfigurationProperties)(nil)).Elem()
+}
+
+func (i VirtualApplianceIPConfigurationPropertiesArgs) ToVirtualApplianceIPConfigurationPropertiesOutput() VirtualApplianceIPConfigurationPropertiesOutput {
+	return i.ToVirtualApplianceIPConfigurationPropertiesOutputWithContext(context.Background())
+}
+
+func (i VirtualApplianceIPConfigurationPropertiesArgs) ToVirtualApplianceIPConfigurationPropertiesOutputWithContext(ctx context.Context) VirtualApplianceIPConfigurationPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualApplianceIPConfigurationPropertiesOutput)
+}
+
+func (i VirtualApplianceIPConfigurationPropertiesArgs) ToVirtualApplianceIPConfigurationPropertiesPtrOutput() VirtualApplianceIPConfigurationPropertiesPtrOutput {
+	return i.ToVirtualApplianceIPConfigurationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualApplianceIPConfigurationPropertiesArgs) ToVirtualApplianceIPConfigurationPropertiesPtrOutputWithContext(ctx context.Context) VirtualApplianceIPConfigurationPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualApplianceIPConfigurationPropertiesOutput).ToVirtualApplianceIPConfigurationPropertiesPtrOutputWithContext(ctx)
+}
+
+// VirtualApplianceIPConfigurationPropertiesPtrInput is an input type that accepts VirtualApplianceIPConfigurationPropertiesArgs, VirtualApplianceIPConfigurationPropertiesPtr and VirtualApplianceIPConfigurationPropertiesPtrOutput values.
+// You can construct a concrete instance of `VirtualApplianceIPConfigurationPropertiesPtrInput` via:
+//
+//	        VirtualApplianceIPConfigurationPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualApplianceIPConfigurationPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToVirtualApplianceIPConfigurationPropertiesPtrOutput() VirtualApplianceIPConfigurationPropertiesPtrOutput
+	ToVirtualApplianceIPConfigurationPropertiesPtrOutputWithContext(context.Context) VirtualApplianceIPConfigurationPropertiesPtrOutput
+}
+
+type virtualApplianceIPConfigurationPropertiesPtrType VirtualApplianceIPConfigurationPropertiesArgs
+
+func VirtualApplianceIPConfigurationPropertiesPtr(v *VirtualApplianceIPConfigurationPropertiesArgs) VirtualApplianceIPConfigurationPropertiesPtrInput {
+	return (*virtualApplianceIPConfigurationPropertiesPtrType)(v)
+}
+
+func (*virtualApplianceIPConfigurationPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualApplianceIPConfigurationProperties)(nil)).Elem()
+}
+
+func (i *virtualApplianceIPConfigurationPropertiesPtrType) ToVirtualApplianceIPConfigurationPropertiesPtrOutput() VirtualApplianceIPConfigurationPropertiesPtrOutput {
+	return i.ToVirtualApplianceIPConfigurationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualApplianceIPConfigurationPropertiesPtrType) ToVirtualApplianceIPConfigurationPropertiesPtrOutputWithContext(ctx context.Context) VirtualApplianceIPConfigurationPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualApplianceIPConfigurationPropertiesPtrOutput)
+}
+
+// Represents a single IP configuration properties.
+type VirtualApplianceIPConfigurationPropertiesOutput struct{ *pulumi.OutputState }
+
+func (VirtualApplianceIPConfigurationPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualApplianceIPConfigurationProperties)(nil)).Elem()
+}
+
+func (o VirtualApplianceIPConfigurationPropertiesOutput) ToVirtualApplianceIPConfigurationPropertiesOutput() VirtualApplianceIPConfigurationPropertiesOutput {
+	return o
+}
+
+func (o VirtualApplianceIPConfigurationPropertiesOutput) ToVirtualApplianceIPConfigurationPropertiesOutputWithContext(ctx context.Context) VirtualApplianceIPConfigurationPropertiesOutput {
+	return o
+}
+
+func (o VirtualApplianceIPConfigurationPropertiesOutput) ToVirtualApplianceIPConfigurationPropertiesPtrOutput() VirtualApplianceIPConfigurationPropertiesPtrOutput {
+	return o.ToVirtualApplianceIPConfigurationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualApplianceIPConfigurationPropertiesOutput) ToVirtualApplianceIPConfigurationPropertiesPtrOutputWithContext(ctx context.Context) VirtualApplianceIPConfigurationPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualApplianceIPConfigurationProperties) *VirtualApplianceIPConfigurationProperties {
+		return &v
+	}).(VirtualApplianceIPConfigurationPropertiesPtrOutput)
+}
+
+// Whether or not this is primary IP configuration of the NIC.
+func (o VirtualApplianceIPConfigurationPropertiesOutput) Primary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualApplianceIPConfigurationProperties) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
+}
+
+type VirtualApplianceIPConfigurationPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualApplianceIPConfigurationPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualApplianceIPConfigurationProperties)(nil)).Elem()
+}
+
+func (o VirtualApplianceIPConfigurationPropertiesPtrOutput) ToVirtualApplianceIPConfigurationPropertiesPtrOutput() VirtualApplianceIPConfigurationPropertiesPtrOutput {
+	return o
+}
+
+func (o VirtualApplianceIPConfigurationPropertiesPtrOutput) ToVirtualApplianceIPConfigurationPropertiesPtrOutputWithContext(ctx context.Context) VirtualApplianceIPConfigurationPropertiesPtrOutput {
+	return o
+}
+
+func (o VirtualApplianceIPConfigurationPropertiesPtrOutput) Elem() VirtualApplianceIPConfigurationPropertiesOutput {
+	return o.ApplyT(func(v *VirtualApplianceIPConfigurationProperties) VirtualApplianceIPConfigurationProperties {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualApplianceIPConfigurationProperties
+		return ret
+	}).(VirtualApplianceIPConfigurationPropertiesOutput)
+}
+
+// Whether or not this is primary IP configuration of the NIC.
+func (o VirtualApplianceIPConfigurationPropertiesPtrOutput) Primary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualApplianceIPConfigurationProperties) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Primary
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Represents a single IP configuration properties.
+type VirtualApplianceIPConfigurationPropertiesResponse struct {
+	// Whether or not this is primary IP configuration of the NIC.
+	Primary *bool `pulumi:"primary"`
+}
+
+// Represents a single IP configuration properties.
+type VirtualApplianceIPConfigurationPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualApplianceIPConfigurationPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualApplianceIPConfigurationPropertiesResponse)(nil)).Elem()
+}
+
+func (o VirtualApplianceIPConfigurationPropertiesResponseOutput) ToVirtualApplianceIPConfigurationPropertiesResponseOutput() VirtualApplianceIPConfigurationPropertiesResponseOutput {
+	return o
+}
+
+func (o VirtualApplianceIPConfigurationPropertiesResponseOutput) ToVirtualApplianceIPConfigurationPropertiesResponseOutputWithContext(ctx context.Context) VirtualApplianceIPConfigurationPropertiesResponseOutput {
+	return o
+}
+
+// Whether or not this is primary IP configuration of the NIC.
+func (o VirtualApplianceIPConfigurationPropertiesResponseOutput) Primary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualApplianceIPConfigurationPropertiesResponse) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
+}
+
+type VirtualApplianceIPConfigurationPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualApplianceIPConfigurationPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualApplianceIPConfigurationPropertiesResponse)(nil)).Elem()
+}
+
+func (o VirtualApplianceIPConfigurationPropertiesResponsePtrOutput) ToVirtualApplianceIPConfigurationPropertiesResponsePtrOutput() VirtualApplianceIPConfigurationPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o VirtualApplianceIPConfigurationPropertiesResponsePtrOutput) ToVirtualApplianceIPConfigurationPropertiesResponsePtrOutputWithContext(ctx context.Context) VirtualApplianceIPConfigurationPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o VirtualApplianceIPConfigurationPropertiesResponsePtrOutput) Elem() VirtualApplianceIPConfigurationPropertiesResponseOutput {
+	return o.ApplyT(func(v *VirtualApplianceIPConfigurationPropertiesResponse) VirtualApplianceIPConfigurationPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualApplianceIPConfigurationPropertiesResponse
+		return ret
+	}).(VirtualApplianceIPConfigurationPropertiesResponseOutput)
+}
+
+// Whether or not this is primary IP configuration of the NIC.
+func (o VirtualApplianceIPConfigurationPropertiesResponsePtrOutput) Primary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualApplianceIPConfigurationPropertiesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Primary
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Represents a single IP configuration.
+type VirtualApplianceIPConfigurationResponse struct {
+	// Name of the IP configuration.
+	Name *string `pulumi:"name"`
+	// Represents a single IP configuration properties.
+	Properties *VirtualApplianceIPConfigurationPropertiesResponse `pulumi:"properties"`
+}
+
+// Represents a single IP configuration.
+type VirtualApplianceIPConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualApplianceIPConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualApplianceIPConfigurationResponse)(nil)).Elem()
+}
+
+func (o VirtualApplianceIPConfigurationResponseOutput) ToVirtualApplianceIPConfigurationResponseOutput() VirtualApplianceIPConfigurationResponseOutput {
+	return o
+}
+
+func (o VirtualApplianceIPConfigurationResponseOutput) ToVirtualApplianceIPConfigurationResponseOutputWithContext(ctx context.Context) VirtualApplianceIPConfigurationResponseOutput {
+	return o
+}
+
+// Name of the IP configuration.
+func (o VirtualApplianceIPConfigurationResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualApplianceIPConfigurationResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Represents a single IP configuration properties.
+func (o VirtualApplianceIPConfigurationResponseOutput) Properties() VirtualApplianceIPConfigurationPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v VirtualApplianceIPConfigurationResponse) *VirtualApplianceIPConfigurationPropertiesResponse {
+		return v.Properties
+	}).(VirtualApplianceIPConfigurationPropertiesResponsePtrOutput)
+}
+
+type VirtualApplianceIPConfigurationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (VirtualApplianceIPConfigurationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualApplianceIPConfigurationResponse)(nil)).Elem()
+}
+
+func (o VirtualApplianceIPConfigurationResponseArrayOutput) ToVirtualApplianceIPConfigurationResponseArrayOutput() VirtualApplianceIPConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o VirtualApplianceIPConfigurationResponseArrayOutput) ToVirtualApplianceIPConfigurationResponseArrayOutputWithContext(ctx context.Context) VirtualApplianceIPConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o VirtualApplianceIPConfigurationResponseArrayOutput) Index(i pulumi.IntInput) VirtualApplianceIPConfigurationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualApplianceIPConfigurationResponse {
+		return vs[0].([]VirtualApplianceIPConfigurationResponse)[vs[1].(int)]
+	}).(VirtualApplianceIPConfigurationResponseOutput)
+}
+
+// Represents a single NIC configuration.
+type VirtualApplianceNetworkInterfaceConfiguration struct {
+	// NIC type. This should be either PublicNic or PrivateNic.
+	NicType *string `pulumi:"nicType"`
+	// Represents a single NIC configuration properties.
+	Properties *VirtualApplianceNetworkInterfaceConfigurationProperties `pulumi:"properties"`
+}
+
+// VirtualApplianceNetworkInterfaceConfigurationInput is an input type that accepts VirtualApplianceNetworkInterfaceConfigurationArgs and VirtualApplianceNetworkInterfaceConfigurationOutput values.
+// You can construct a concrete instance of `VirtualApplianceNetworkInterfaceConfigurationInput` via:
+//
+//	VirtualApplianceNetworkInterfaceConfigurationArgs{...}
+type VirtualApplianceNetworkInterfaceConfigurationInput interface {
+	pulumi.Input
+
+	ToVirtualApplianceNetworkInterfaceConfigurationOutput() VirtualApplianceNetworkInterfaceConfigurationOutput
+	ToVirtualApplianceNetworkInterfaceConfigurationOutputWithContext(context.Context) VirtualApplianceNetworkInterfaceConfigurationOutput
+}
+
+// Represents a single NIC configuration.
+type VirtualApplianceNetworkInterfaceConfigurationArgs struct {
+	// NIC type. This should be either PublicNic or PrivateNic.
+	NicType pulumi.StringPtrInput `pulumi:"nicType"`
+	// Represents a single NIC configuration properties.
+	Properties VirtualApplianceNetworkInterfaceConfigurationPropertiesPtrInput `pulumi:"properties"`
+}
+
+func (VirtualApplianceNetworkInterfaceConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualApplianceNetworkInterfaceConfiguration)(nil)).Elem()
+}
+
+func (i VirtualApplianceNetworkInterfaceConfigurationArgs) ToVirtualApplianceNetworkInterfaceConfigurationOutput() VirtualApplianceNetworkInterfaceConfigurationOutput {
+	return i.ToVirtualApplianceNetworkInterfaceConfigurationOutputWithContext(context.Background())
+}
+
+func (i VirtualApplianceNetworkInterfaceConfigurationArgs) ToVirtualApplianceNetworkInterfaceConfigurationOutputWithContext(ctx context.Context) VirtualApplianceNetworkInterfaceConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualApplianceNetworkInterfaceConfigurationOutput)
+}
+
+// VirtualApplianceNetworkInterfaceConfigurationArrayInput is an input type that accepts VirtualApplianceNetworkInterfaceConfigurationArray and VirtualApplianceNetworkInterfaceConfigurationArrayOutput values.
+// You can construct a concrete instance of `VirtualApplianceNetworkInterfaceConfigurationArrayInput` via:
+//
+//	VirtualApplianceNetworkInterfaceConfigurationArray{ VirtualApplianceNetworkInterfaceConfigurationArgs{...} }
+type VirtualApplianceNetworkInterfaceConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToVirtualApplianceNetworkInterfaceConfigurationArrayOutput() VirtualApplianceNetworkInterfaceConfigurationArrayOutput
+	ToVirtualApplianceNetworkInterfaceConfigurationArrayOutputWithContext(context.Context) VirtualApplianceNetworkInterfaceConfigurationArrayOutput
+}
+
+type VirtualApplianceNetworkInterfaceConfigurationArray []VirtualApplianceNetworkInterfaceConfigurationInput
+
+func (VirtualApplianceNetworkInterfaceConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualApplianceNetworkInterfaceConfiguration)(nil)).Elem()
+}
+
+func (i VirtualApplianceNetworkInterfaceConfigurationArray) ToVirtualApplianceNetworkInterfaceConfigurationArrayOutput() VirtualApplianceNetworkInterfaceConfigurationArrayOutput {
+	return i.ToVirtualApplianceNetworkInterfaceConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i VirtualApplianceNetworkInterfaceConfigurationArray) ToVirtualApplianceNetworkInterfaceConfigurationArrayOutputWithContext(ctx context.Context) VirtualApplianceNetworkInterfaceConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualApplianceNetworkInterfaceConfigurationArrayOutput)
+}
+
+// Represents a single NIC configuration.
+type VirtualApplianceNetworkInterfaceConfigurationOutput struct{ *pulumi.OutputState }
+
+func (VirtualApplianceNetworkInterfaceConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualApplianceNetworkInterfaceConfiguration)(nil)).Elem()
+}
+
+func (o VirtualApplianceNetworkInterfaceConfigurationOutput) ToVirtualApplianceNetworkInterfaceConfigurationOutput() VirtualApplianceNetworkInterfaceConfigurationOutput {
+	return o
+}
+
+func (o VirtualApplianceNetworkInterfaceConfigurationOutput) ToVirtualApplianceNetworkInterfaceConfigurationOutputWithContext(ctx context.Context) VirtualApplianceNetworkInterfaceConfigurationOutput {
+	return o
+}
+
+// NIC type. This should be either PublicNic or PrivateNic.
+func (o VirtualApplianceNetworkInterfaceConfigurationOutput) NicType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualApplianceNetworkInterfaceConfiguration) *string { return v.NicType }).(pulumi.StringPtrOutput)
+}
+
+// Represents a single NIC configuration properties.
+func (o VirtualApplianceNetworkInterfaceConfigurationOutput) Properties() VirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutput {
+	return o.ApplyT(func(v VirtualApplianceNetworkInterfaceConfiguration) *VirtualApplianceNetworkInterfaceConfigurationProperties {
+		return v.Properties
+	}).(VirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutput)
+}
+
+type VirtualApplianceNetworkInterfaceConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (VirtualApplianceNetworkInterfaceConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualApplianceNetworkInterfaceConfiguration)(nil)).Elem()
+}
+
+func (o VirtualApplianceNetworkInterfaceConfigurationArrayOutput) ToVirtualApplianceNetworkInterfaceConfigurationArrayOutput() VirtualApplianceNetworkInterfaceConfigurationArrayOutput {
+	return o
+}
+
+func (o VirtualApplianceNetworkInterfaceConfigurationArrayOutput) ToVirtualApplianceNetworkInterfaceConfigurationArrayOutputWithContext(ctx context.Context) VirtualApplianceNetworkInterfaceConfigurationArrayOutput {
+	return o
+}
+
+func (o VirtualApplianceNetworkInterfaceConfigurationArrayOutput) Index(i pulumi.IntInput) VirtualApplianceNetworkInterfaceConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualApplianceNetworkInterfaceConfiguration {
+		return vs[0].([]VirtualApplianceNetworkInterfaceConfiguration)[vs[1].(int)]
+	}).(VirtualApplianceNetworkInterfaceConfigurationOutput)
+}
+
+// Represents a single NIC configuration properties.
+type VirtualApplianceNetworkInterfaceConfigurationProperties struct {
+	IpConfigurations []VirtualApplianceIPConfiguration `pulumi:"ipConfigurations"`
+}
+
+// VirtualApplianceNetworkInterfaceConfigurationPropertiesInput is an input type that accepts VirtualApplianceNetworkInterfaceConfigurationPropertiesArgs and VirtualApplianceNetworkInterfaceConfigurationPropertiesOutput values.
+// You can construct a concrete instance of `VirtualApplianceNetworkInterfaceConfigurationPropertiesInput` via:
+//
+//	VirtualApplianceNetworkInterfaceConfigurationPropertiesArgs{...}
+type VirtualApplianceNetworkInterfaceConfigurationPropertiesInput interface {
+	pulumi.Input
+
+	ToVirtualApplianceNetworkInterfaceConfigurationPropertiesOutput() VirtualApplianceNetworkInterfaceConfigurationPropertiesOutput
+	ToVirtualApplianceNetworkInterfaceConfigurationPropertiesOutputWithContext(context.Context) VirtualApplianceNetworkInterfaceConfigurationPropertiesOutput
+}
+
+// Represents a single NIC configuration properties.
+type VirtualApplianceNetworkInterfaceConfigurationPropertiesArgs struct {
+	IpConfigurations VirtualApplianceIPConfigurationArrayInput `pulumi:"ipConfigurations"`
+}
+
+func (VirtualApplianceNetworkInterfaceConfigurationPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualApplianceNetworkInterfaceConfigurationProperties)(nil)).Elem()
+}
+
+func (i VirtualApplianceNetworkInterfaceConfigurationPropertiesArgs) ToVirtualApplianceNetworkInterfaceConfigurationPropertiesOutput() VirtualApplianceNetworkInterfaceConfigurationPropertiesOutput {
+	return i.ToVirtualApplianceNetworkInterfaceConfigurationPropertiesOutputWithContext(context.Background())
+}
+
+func (i VirtualApplianceNetworkInterfaceConfigurationPropertiesArgs) ToVirtualApplianceNetworkInterfaceConfigurationPropertiesOutputWithContext(ctx context.Context) VirtualApplianceNetworkInterfaceConfigurationPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualApplianceNetworkInterfaceConfigurationPropertiesOutput)
+}
+
+func (i VirtualApplianceNetworkInterfaceConfigurationPropertiesArgs) ToVirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutput() VirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutput {
+	return i.ToVirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualApplianceNetworkInterfaceConfigurationPropertiesArgs) ToVirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutputWithContext(ctx context.Context) VirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualApplianceNetworkInterfaceConfigurationPropertiesOutput).ToVirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutputWithContext(ctx)
+}
+
+// VirtualApplianceNetworkInterfaceConfigurationPropertiesPtrInput is an input type that accepts VirtualApplianceNetworkInterfaceConfigurationPropertiesArgs, VirtualApplianceNetworkInterfaceConfigurationPropertiesPtr and VirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutput values.
+// You can construct a concrete instance of `VirtualApplianceNetworkInterfaceConfigurationPropertiesPtrInput` via:
+//
+//	        VirtualApplianceNetworkInterfaceConfigurationPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualApplianceNetworkInterfaceConfigurationPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToVirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutput() VirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutput
+	ToVirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutputWithContext(context.Context) VirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutput
+}
+
+type virtualApplianceNetworkInterfaceConfigurationPropertiesPtrType VirtualApplianceNetworkInterfaceConfigurationPropertiesArgs
+
+func VirtualApplianceNetworkInterfaceConfigurationPropertiesPtr(v *VirtualApplianceNetworkInterfaceConfigurationPropertiesArgs) VirtualApplianceNetworkInterfaceConfigurationPropertiesPtrInput {
+	return (*virtualApplianceNetworkInterfaceConfigurationPropertiesPtrType)(v)
+}
+
+func (*virtualApplianceNetworkInterfaceConfigurationPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualApplianceNetworkInterfaceConfigurationProperties)(nil)).Elem()
+}
+
+func (i *virtualApplianceNetworkInterfaceConfigurationPropertiesPtrType) ToVirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutput() VirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutput {
+	return i.ToVirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualApplianceNetworkInterfaceConfigurationPropertiesPtrType) ToVirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutputWithContext(ctx context.Context) VirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutput)
+}
+
+// Represents a single NIC configuration properties.
+type VirtualApplianceNetworkInterfaceConfigurationPropertiesOutput struct{ *pulumi.OutputState }
+
+func (VirtualApplianceNetworkInterfaceConfigurationPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualApplianceNetworkInterfaceConfigurationProperties)(nil)).Elem()
+}
+
+func (o VirtualApplianceNetworkInterfaceConfigurationPropertiesOutput) ToVirtualApplianceNetworkInterfaceConfigurationPropertiesOutput() VirtualApplianceNetworkInterfaceConfigurationPropertiesOutput {
+	return o
+}
+
+func (o VirtualApplianceNetworkInterfaceConfigurationPropertiesOutput) ToVirtualApplianceNetworkInterfaceConfigurationPropertiesOutputWithContext(ctx context.Context) VirtualApplianceNetworkInterfaceConfigurationPropertiesOutput {
+	return o
+}
+
+func (o VirtualApplianceNetworkInterfaceConfigurationPropertiesOutput) ToVirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutput() VirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutput {
+	return o.ToVirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualApplianceNetworkInterfaceConfigurationPropertiesOutput) ToVirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutputWithContext(ctx context.Context) VirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualApplianceNetworkInterfaceConfigurationProperties) *VirtualApplianceNetworkInterfaceConfigurationProperties {
+		return &v
+	}).(VirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutput)
+}
+
+func (o VirtualApplianceNetworkInterfaceConfigurationPropertiesOutput) IpConfigurations() VirtualApplianceIPConfigurationArrayOutput {
+	return o.ApplyT(func(v VirtualApplianceNetworkInterfaceConfigurationProperties) []VirtualApplianceIPConfiguration {
+		return v.IpConfigurations
+	}).(VirtualApplianceIPConfigurationArrayOutput)
+}
+
+type VirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualApplianceNetworkInterfaceConfigurationProperties)(nil)).Elem()
+}
+
+func (o VirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutput) ToVirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutput() VirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutput {
+	return o
+}
+
+func (o VirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutput) ToVirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutputWithContext(ctx context.Context) VirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutput {
+	return o
+}
+
+func (o VirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutput) Elem() VirtualApplianceNetworkInterfaceConfigurationPropertiesOutput {
+	return o.ApplyT(func(v *VirtualApplianceNetworkInterfaceConfigurationProperties) VirtualApplianceNetworkInterfaceConfigurationProperties {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualApplianceNetworkInterfaceConfigurationProperties
+		return ret
+	}).(VirtualApplianceNetworkInterfaceConfigurationPropertiesOutput)
+}
+
+func (o VirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutput) IpConfigurations() VirtualApplianceIPConfigurationArrayOutput {
+	return o.ApplyT(func(v *VirtualApplianceNetworkInterfaceConfigurationProperties) []VirtualApplianceIPConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.IpConfigurations
+	}).(VirtualApplianceIPConfigurationArrayOutput)
+}
+
+// Represents a single NIC configuration properties.
+type VirtualApplianceNetworkInterfaceConfigurationPropertiesResponse struct {
+	IpConfigurations []VirtualApplianceIPConfigurationResponse `pulumi:"ipConfigurations"`
+}
+
+// Represents a single NIC configuration properties.
+type VirtualApplianceNetworkInterfaceConfigurationPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualApplianceNetworkInterfaceConfigurationPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualApplianceNetworkInterfaceConfigurationPropertiesResponse)(nil)).Elem()
+}
+
+func (o VirtualApplianceNetworkInterfaceConfigurationPropertiesResponseOutput) ToVirtualApplianceNetworkInterfaceConfigurationPropertiesResponseOutput() VirtualApplianceNetworkInterfaceConfigurationPropertiesResponseOutput {
+	return o
+}
+
+func (o VirtualApplianceNetworkInterfaceConfigurationPropertiesResponseOutput) ToVirtualApplianceNetworkInterfaceConfigurationPropertiesResponseOutputWithContext(ctx context.Context) VirtualApplianceNetworkInterfaceConfigurationPropertiesResponseOutput {
+	return o
+}
+
+func (o VirtualApplianceNetworkInterfaceConfigurationPropertiesResponseOutput) IpConfigurations() VirtualApplianceIPConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v VirtualApplianceNetworkInterfaceConfigurationPropertiesResponse) []VirtualApplianceIPConfigurationResponse {
+		return v.IpConfigurations
+	}).(VirtualApplianceIPConfigurationResponseArrayOutput)
+}
+
+type VirtualApplianceNetworkInterfaceConfigurationPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualApplianceNetworkInterfaceConfigurationPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualApplianceNetworkInterfaceConfigurationPropertiesResponse)(nil)).Elem()
+}
+
+func (o VirtualApplianceNetworkInterfaceConfigurationPropertiesResponsePtrOutput) ToVirtualApplianceNetworkInterfaceConfigurationPropertiesResponsePtrOutput() VirtualApplianceNetworkInterfaceConfigurationPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o VirtualApplianceNetworkInterfaceConfigurationPropertiesResponsePtrOutput) ToVirtualApplianceNetworkInterfaceConfigurationPropertiesResponsePtrOutputWithContext(ctx context.Context) VirtualApplianceNetworkInterfaceConfigurationPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o VirtualApplianceNetworkInterfaceConfigurationPropertiesResponsePtrOutput) Elem() VirtualApplianceNetworkInterfaceConfigurationPropertiesResponseOutput {
+	return o.ApplyT(func(v *VirtualApplianceNetworkInterfaceConfigurationPropertiesResponse) VirtualApplianceNetworkInterfaceConfigurationPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualApplianceNetworkInterfaceConfigurationPropertiesResponse
+		return ret
+	}).(VirtualApplianceNetworkInterfaceConfigurationPropertiesResponseOutput)
+}
+
+func (o VirtualApplianceNetworkInterfaceConfigurationPropertiesResponsePtrOutput) IpConfigurations() VirtualApplianceIPConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v *VirtualApplianceNetworkInterfaceConfigurationPropertiesResponse) []VirtualApplianceIPConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.IpConfigurations
+	}).(VirtualApplianceIPConfigurationResponseArrayOutput)
+}
+
+// Represents a single NIC configuration.
+type VirtualApplianceNetworkInterfaceConfigurationResponse struct {
+	// NIC type. This should be either PublicNic or PrivateNic.
+	NicType *string `pulumi:"nicType"`
+	// Represents a single NIC configuration properties.
+	Properties *VirtualApplianceNetworkInterfaceConfigurationPropertiesResponse `pulumi:"properties"`
+}
+
+// Represents a single NIC configuration.
+type VirtualApplianceNetworkInterfaceConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualApplianceNetworkInterfaceConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualApplianceNetworkInterfaceConfigurationResponse)(nil)).Elem()
+}
+
+func (o VirtualApplianceNetworkInterfaceConfigurationResponseOutput) ToVirtualApplianceNetworkInterfaceConfigurationResponseOutput() VirtualApplianceNetworkInterfaceConfigurationResponseOutput {
+	return o
+}
+
+func (o VirtualApplianceNetworkInterfaceConfigurationResponseOutput) ToVirtualApplianceNetworkInterfaceConfigurationResponseOutputWithContext(ctx context.Context) VirtualApplianceNetworkInterfaceConfigurationResponseOutput {
+	return o
+}
+
+// NIC type. This should be either PublicNic or PrivateNic.
+func (o VirtualApplianceNetworkInterfaceConfigurationResponseOutput) NicType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualApplianceNetworkInterfaceConfigurationResponse) *string { return v.NicType }).(pulumi.StringPtrOutput)
+}
+
+// Represents a single NIC configuration properties.
+func (o VirtualApplianceNetworkInterfaceConfigurationResponseOutput) Properties() VirtualApplianceNetworkInterfaceConfigurationPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v VirtualApplianceNetworkInterfaceConfigurationResponse) *VirtualApplianceNetworkInterfaceConfigurationPropertiesResponse {
+		return v.Properties
+	}).(VirtualApplianceNetworkInterfaceConfigurationPropertiesResponsePtrOutput)
+}
+
+type VirtualApplianceNetworkInterfaceConfigurationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (VirtualApplianceNetworkInterfaceConfigurationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualApplianceNetworkInterfaceConfigurationResponse)(nil)).Elem()
+}
+
+func (o VirtualApplianceNetworkInterfaceConfigurationResponseArrayOutput) ToVirtualApplianceNetworkInterfaceConfigurationResponseArrayOutput() VirtualApplianceNetworkInterfaceConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o VirtualApplianceNetworkInterfaceConfigurationResponseArrayOutput) ToVirtualApplianceNetworkInterfaceConfigurationResponseArrayOutputWithContext(ctx context.Context) VirtualApplianceNetworkInterfaceConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o VirtualApplianceNetworkInterfaceConfigurationResponseArrayOutput) Index(i pulumi.IntInput) VirtualApplianceNetworkInterfaceConfigurationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualApplianceNetworkInterfaceConfigurationResponse {
+		return vs[0].([]VirtualApplianceNetworkInterfaceConfigurationResponse)[vs[1].(int)]
+	}).(VirtualApplianceNetworkInterfaceConfigurationResponseOutput)
+}
+
 // Network Virtual Appliance NIC properties.
 type VirtualApplianceNicPropertiesResponse struct {
 	// Instance on which nic is attached.
 	InstanceName string `pulumi:"instanceName"`
 	// NIC name.
 	Name string `pulumi:"name"`
+	// NIC type - PublicNic, PrivateNic, or AdditionalNic.
+	NicType string `pulumi:"nicType"`
 	// Private IP address.
 	PrivateIpAddress string `pulumi:"privateIpAddress"`
 	// Public IP address.
@@ -17076,6 +20038,11 @@ func (o VirtualApplianceNicPropertiesResponseOutput) InstanceName() pulumi.Strin
 // NIC name.
 func (o VirtualApplianceNicPropertiesResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualApplianceNicPropertiesResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// NIC type - PublicNic, PrivateNic, or AdditionalNic.
+func (o VirtualApplianceNicPropertiesResponseOutput) NicType() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualApplianceNicPropertiesResponse) string { return v.NicType }).(pulumi.StringOutput)
 }
 
 // Private IP address.
@@ -18225,6 +21192,564 @@ func (o VirtualHubRouteV2ResponseArrayOutput) Index(i pulumi.IntInput) VirtualHu
 	}).(VirtualHubRouteV2ResponseOutput)
 }
 
+// Virtual Network resource.
+type VirtualNetworkType struct {
+	// The AddressSpace that contains an array of IP address ranges that can be used by subnets.
+	AddressSpace *AddressSpace `pulumi:"addressSpace"`
+	// Bgp Communities sent over ExpressRoute with each route corresponding to a prefix in this VNET.
+	BgpCommunities *VirtualNetworkBgpCommunities `pulumi:"bgpCommunities"`
+	// The DDoS protection plan associated with the virtual network.
+	DdosProtectionPlan *SubResource `pulumi:"ddosProtectionPlan"`
+	// The dhcpOptions that contains an array of DNS servers available to VMs deployed in the virtual network.
+	DhcpOptions *DhcpOptions `pulumi:"dhcpOptions"`
+	// Indicates if DDoS protection is enabled for all the protected resources in the virtual network. It requires a DDoS protection plan associated with the resource.
+	EnableDdosProtection *bool `pulumi:"enableDdosProtection"`
+	// Indicates if VM protection is enabled for all the subnets in the virtual network.
+	EnableVmProtection *bool `pulumi:"enableVmProtection"`
+	// Indicates if encryption is enabled on virtual network and if VM without encryption is allowed in encrypted VNet.
+	Encryption *VirtualNetworkEncryption `pulumi:"encryption"`
+	// The extended location of the virtual network.
+	ExtendedLocation *ExtendedLocation `pulumi:"extendedLocation"`
+	// The FlowTimeout value (in minutes) for the Virtual Network
+	FlowTimeoutInMinutes *int `pulumi:"flowTimeoutInMinutes"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Array of IpAllocation which reference this VNET.
+	IpAllocations []SubResource `pulumi:"ipAllocations"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Private Endpoint VNet Policies.
+	PrivateEndpointVNetPolicies *string `pulumi:"privateEndpointVNetPolicies"`
+	// A list of subnets in a Virtual Network.
+	Subnets []SubnetType `pulumi:"subnets"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// A list of peerings in a Virtual Network.
+	VirtualNetworkPeerings []VirtualNetworkPeeringType `pulumi:"virtualNetworkPeerings"`
+}
+
+// Defaults sets the appropriate defaults for VirtualNetworkType
+func (val *VirtualNetworkType) Defaults() *VirtualNetworkType {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.EnableDdosProtection == nil {
+		enableDdosProtection_ := false
+		tmp.EnableDdosProtection = &enableDdosProtection_
+	}
+	if tmp.EnableVmProtection == nil {
+		enableVmProtection_ := false
+		tmp.EnableVmProtection = &enableVmProtection_
+	}
+	return &tmp
+}
+
+// VirtualNetworkTypeInput is an input type that accepts VirtualNetworkTypeArgs and VirtualNetworkTypeOutput values.
+// You can construct a concrete instance of `VirtualNetworkTypeInput` via:
+//
+//	VirtualNetworkTypeArgs{...}
+type VirtualNetworkTypeInput interface {
+	pulumi.Input
+
+	ToVirtualNetworkTypeOutput() VirtualNetworkTypeOutput
+	ToVirtualNetworkTypeOutputWithContext(context.Context) VirtualNetworkTypeOutput
+}
+
+// Virtual Network resource.
+type VirtualNetworkTypeArgs struct {
+	// The AddressSpace that contains an array of IP address ranges that can be used by subnets.
+	AddressSpace AddressSpacePtrInput `pulumi:"addressSpace"`
+	// Bgp Communities sent over ExpressRoute with each route corresponding to a prefix in this VNET.
+	BgpCommunities VirtualNetworkBgpCommunitiesPtrInput `pulumi:"bgpCommunities"`
+	// The DDoS protection plan associated with the virtual network.
+	DdosProtectionPlan SubResourcePtrInput `pulumi:"ddosProtectionPlan"`
+	// The dhcpOptions that contains an array of DNS servers available to VMs deployed in the virtual network.
+	DhcpOptions DhcpOptionsPtrInput `pulumi:"dhcpOptions"`
+	// Indicates if DDoS protection is enabled for all the protected resources in the virtual network. It requires a DDoS protection plan associated with the resource.
+	EnableDdosProtection pulumi.BoolPtrInput `pulumi:"enableDdosProtection"`
+	// Indicates if VM protection is enabled for all the subnets in the virtual network.
+	EnableVmProtection pulumi.BoolPtrInput `pulumi:"enableVmProtection"`
+	// Indicates if encryption is enabled on virtual network and if VM without encryption is allowed in encrypted VNet.
+	Encryption VirtualNetworkEncryptionPtrInput `pulumi:"encryption"`
+	// The extended location of the virtual network.
+	ExtendedLocation ExtendedLocationPtrInput `pulumi:"extendedLocation"`
+	// The FlowTimeout value (in minutes) for the Virtual Network
+	FlowTimeoutInMinutes pulumi.IntPtrInput `pulumi:"flowTimeoutInMinutes"`
+	// Resource ID.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Array of IpAllocation which reference this VNET.
+	IpAllocations SubResourceArrayInput `pulumi:"ipAllocations"`
+	// Resource location.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Private Endpoint VNet Policies.
+	PrivateEndpointVNetPolicies pulumi.StringPtrInput `pulumi:"privateEndpointVNetPolicies"`
+	// A list of subnets in a Virtual Network.
+	Subnets SubnetTypeArrayInput `pulumi:"subnets"`
+	// Resource tags.
+	Tags pulumi.StringMapInput `pulumi:"tags"`
+	// A list of peerings in a Virtual Network.
+	VirtualNetworkPeerings VirtualNetworkPeeringTypeArrayInput `pulumi:"virtualNetworkPeerings"`
+}
+
+// Defaults sets the appropriate defaults for VirtualNetworkTypeArgs
+func (val *VirtualNetworkTypeArgs) Defaults() *VirtualNetworkTypeArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.EnableDdosProtection == nil {
+		tmp.EnableDdosProtection = pulumi.BoolPtr(false)
+	}
+	if tmp.EnableVmProtection == nil {
+		tmp.EnableVmProtection = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
+func (VirtualNetworkTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkType)(nil)).Elem()
+}
+
+func (i VirtualNetworkTypeArgs) ToVirtualNetworkTypeOutput() VirtualNetworkTypeOutput {
+	return i.ToVirtualNetworkTypeOutputWithContext(context.Background())
+}
+
+func (i VirtualNetworkTypeArgs) ToVirtualNetworkTypeOutputWithContext(ctx context.Context) VirtualNetworkTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkTypeOutput)
+}
+
+func (i VirtualNetworkTypeArgs) ToVirtualNetworkTypePtrOutput() VirtualNetworkTypePtrOutput {
+	return i.ToVirtualNetworkTypePtrOutputWithContext(context.Background())
+}
+
+func (i VirtualNetworkTypeArgs) ToVirtualNetworkTypePtrOutputWithContext(ctx context.Context) VirtualNetworkTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkTypeOutput).ToVirtualNetworkTypePtrOutputWithContext(ctx)
+}
+
+// VirtualNetworkTypePtrInput is an input type that accepts VirtualNetworkTypeArgs, VirtualNetworkTypePtr and VirtualNetworkTypePtrOutput values.
+// You can construct a concrete instance of `VirtualNetworkTypePtrInput` via:
+//
+//	        VirtualNetworkTypeArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualNetworkTypePtrInput interface {
+	pulumi.Input
+
+	ToVirtualNetworkTypePtrOutput() VirtualNetworkTypePtrOutput
+	ToVirtualNetworkTypePtrOutputWithContext(context.Context) VirtualNetworkTypePtrOutput
+}
+
+type virtualNetworkTypePtrType VirtualNetworkTypeArgs
+
+func VirtualNetworkTypePtr(v *VirtualNetworkTypeArgs) VirtualNetworkTypePtrInput {
+	return (*virtualNetworkTypePtrType)(v)
+}
+
+func (*virtualNetworkTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualNetworkType)(nil)).Elem()
+}
+
+func (i *virtualNetworkTypePtrType) ToVirtualNetworkTypePtrOutput() VirtualNetworkTypePtrOutput {
+	return i.ToVirtualNetworkTypePtrOutputWithContext(context.Background())
+}
+
+func (i *virtualNetworkTypePtrType) ToVirtualNetworkTypePtrOutputWithContext(ctx context.Context) VirtualNetworkTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkTypePtrOutput)
+}
+
+// Virtual Network resource.
+type VirtualNetworkTypeOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkType)(nil)).Elem()
+}
+
+func (o VirtualNetworkTypeOutput) ToVirtualNetworkTypeOutput() VirtualNetworkTypeOutput {
+	return o
+}
+
+func (o VirtualNetworkTypeOutput) ToVirtualNetworkTypeOutputWithContext(ctx context.Context) VirtualNetworkTypeOutput {
+	return o
+}
+
+func (o VirtualNetworkTypeOutput) ToVirtualNetworkTypePtrOutput() VirtualNetworkTypePtrOutput {
+	return o.ToVirtualNetworkTypePtrOutputWithContext(context.Background())
+}
+
+func (o VirtualNetworkTypeOutput) ToVirtualNetworkTypePtrOutputWithContext(ctx context.Context) VirtualNetworkTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualNetworkType) *VirtualNetworkType {
+		return &v
+	}).(VirtualNetworkTypePtrOutput)
+}
+
+// The AddressSpace that contains an array of IP address ranges that can be used by subnets.
+func (o VirtualNetworkTypeOutput) AddressSpace() AddressSpacePtrOutput {
+	return o.ApplyT(func(v VirtualNetworkType) *AddressSpace { return v.AddressSpace }).(AddressSpacePtrOutput)
+}
+
+// Bgp Communities sent over ExpressRoute with each route corresponding to a prefix in this VNET.
+func (o VirtualNetworkTypeOutput) BgpCommunities() VirtualNetworkBgpCommunitiesPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkType) *VirtualNetworkBgpCommunities { return v.BgpCommunities }).(VirtualNetworkBgpCommunitiesPtrOutput)
+}
+
+// The DDoS protection plan associated with the virtual network.
+func (o VirtualNetworkTypeOutput) DdosProtectionPlan() SubResourcePtrOutput {
+	return o.ApplyT(func(v VirtualNetworkType) *SubResource { return v.DdosProtectionPlan }).(SubResourcePtrOutput)
+}
+
+// The dhcpOptions that contains an array of DNS servers available to VMs deployed in the virtual network.
+func (o VirtualNetworkTypeOutput) DhcpOptions() DhcpOptionsPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkType) *DhcpOptions { return v.DhcpOptions }).(DhcpOptionsPtrOutput)
+}
+
+// Indicates if DDoS protection is enabled for all the protected resources in the virtual network. It requires a DDoS protection plan associated with the resource.
+func (o VirtualNetworkTypeOutput) EnableDdosProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkType) *bool { return v.EnableDdosProtection }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if VM protection is enabled for all the subnets in the virtual network.
+func (o VirtualNetworkTypeOutput) EnableVmProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkType) *bool { return v.EnableVmProtection }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if encryption is enabled on virtual network and if VM without encryption is allowed in encrypted VNet.
+func (o VirtualNetworkTypeOutput) Encryption() VirtualNetworkEncryptionPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkType) *VirtualNetworkEncryption { return v.Encryption }).(VirtualNetworkEncryptionPtrOutput)
+}
+
+// The extended location of the virtual network.
+func (o VirtualNetworkTypeOutput) ExtendedLocation() ExtendedLocationPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkType) *ExtendedLocation { return v.ExtendedLocation }).(ExtendedLocationPtrOutput)
+}
+
+// The FlowTimeout value (in minutes) for the Virtual Network
+func (o VirtualNetworkTypeOutput) FlowTimeoutInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkType) *int { return v.FlowTimeoutInMinutes }).(pulumi.IntPtrOutput)
+}
+
+// Resource ID.
+func (o VirtualNetworkTypeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkType) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Array of IpAllocation which reference this VNET.
+func (o VirtualNetworkTypeOutput) IpAllocations() SubResourceArrayOutput {
+	return o.ApplyT(func(v VirtualNetworkType) []SubResource { return v.IpAllocations }).(SubResourceArrayOutput)
+}
+
+// Resource location.
+func (o VirtualNetworkTypeOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkType) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Private Endpoint VNet Policies.
+func (o VirtualNetworkTypeOutput) PrivateEndpointVNetPolicies() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkType) *string { return v.PrivateEndpointVNetPolicies }).(pulumi.StringPtrOutput)
+}
+
+// A list of subnets in a Virtual Network.
+func (o VirtualNetworkTypeOutput) Subnets() SubnetTypeArrayOutput {
+	return o.ApplyT(func(v VirtualNetworkType) []SubnetType { return v.Subnets }).(SubnetTypeArrayOutput)
+}
+
+// Resource tags.
+func (o VirtualNetworkTypeOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v VirtualNetworkType) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// A list of peerings in a Virtual Network.
+func (o VirtualNetworkTypeOutput) VirtualNetworkPeerings() VirtualNetworkPeeringTypeArrayOutput {
+	return o.ApplyT(func(v VirtualNetworkType) []VirtualNetworkPeeringType { return v.VirtualNetworkPeerings }).(VirtualNetworkPeeringTypeArrayOutput)
+}
+
+type VirtualNetworkTypePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualNetworkType)(nil)).Elem()
+}
+
+func (o VirtualNetworkTypePtrOutput) ToVirtualNetworkTypePtrOutput() VirtualNetworkTypePtrOutput {
+	return o
+}
+
+func (o VirtualNetworkTypePtrOutput) ToVirtualNetworkTypePtrOutputWithContext(ctx context.Context) VirtualNetworkTypePtrOutput {
+	return o
+}
+
+func (o VirtualNetworkTypePtrOutput) Elem() VirtualNetworkTypeOutput {
+	return o.ApplyT(func(v *VirtualNetworkType) VirtualNetworkType {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualNetworkType
+		return ret
+	}).(VirtualNetworkTypeOutput)
+}
+
+// The AddressSpace that contains an array of IP address ranges that can be used by subnets.
+func (o VirtualNetworkTypePtrOutput) AddressSpace() AddressSpacePtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkType) *AddressSpace {
+		if v == nil {
+			return nil
+		}
+		return v.AddressSpace
+	}).(AddressSpacePtrOutput)
+}
+
+// Bgp Communities sent over ExpressRoute with each route corresponding to a prefix in this VNET.
+func (o VirtualNetworkTypePtrOutput) BgpCommunities() VirtualNetworkBgpCommunitiesPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkType) *VirtualNetworkBgpCommunities {
+		if v == nil {
+			return nil
+		}
+		return v.BgpCommunities
+	}).(VirtualNetworkBgpCommunitiesPtrOutput)
+}
+
+// The DDoS protection plan associated with the virtual network.
+func (o VirtualNetworkTypePtrOutput) DdosProtectionPlan() SubResourcePtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkType) *SubResource {
+		if v == nil {
+			return nil
+		}
+		return v.DdosProtectionPlan
+	}).(SubResourcePtrOutput)
+}
+
+// The dhcpOptions that contains an array of DNS servers available to VMs deployed in the virtual network.
+func (o VirtualNetworkTypePtrOutput) DhcpOptions() DhcpOptionsPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkType) *DhcpOptions {
+		if v == nil {
+			return nil
+		}
+		return v.DhcpOptions
+	}).(DhcpOptionsPtrOutput)
+}
+
+// Indicates if DDoS protection is enabled for all the protected resources in the virtual network. It requires a DDoS protection plan associated with the resource.
+func (o VirtualNetworkTypePtrOutput) EnableDdosProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkType) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableDdosProtection
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if VM protection is enabled for all the subnets in the virtual network.
+func (o VirtualNetworkTypePtrOutput) EnableVmProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkType) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableVmProtection
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if encryption is enabled on virtual network and if VM without encryption is allowed in encrypted VNet.
+func (o VirtualNetworkTypePtrOutput) Encryption() VirtualNetworkEncryptionPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkType) *VirtualNetworkEncryption {
+		if v == nil {
+			return nil
+		}
+		return v.Encryption
+	}).(VirtualNetworkEncryptionPtrOutput)
+}
+
+// The extended location of the virtual network.
+func (o VirtualNetworkTypePtrOutput) ExtendedLocation() ExtendedLocationPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkType) *ExtendedLocation {
+		if v == nil {
+			return nil
+		}
+		return v.ExtendedLocation
+	}).(ExtendedLocationPtrOutput)
+}
+
+// The FlowTimeout value (in minutes) for the Virtual Network
+func (o VirtualNetworkTypePtrOutput) FlowTimeoutInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkType) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FlowTimeoutInMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Resource ID.
+func (o VirtualNetworkTypePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Array of IpAllocation which reference this VNET.
+func (o VirtualNetworkTypePtrOutput) IpAllocations() SubResourceArrayOutput {
+	return o.ApplyT(func(v *VirtualNetworkType) []SubResource {
+		if v == nil {
+			return nil
+		}
+		return v.IpAllocations
+	}).(SubResourceArrayOutput)
+}
+
+// Resource location.
+func (o VirtualNetworkTypePtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Private Endpoint VNet Policies.
+func (o VirtualNetworkTypePtrOutput) PrivateEndpointVNetPolicies() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateEndpointVNetPolicies
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of subnets in a Virtual Network.
+func (o VirtualNetworkTypePtrOutput) Subnets() SubnetTypeArrayOutput {
+	return o.ApplyT(func(v *VirtualNetworkType) []SubnetType {
+		if v == nil {
+			return nil
+		}
+		return v.Subnets
+	}).(SubnetTypeArrayOutput)
+}
+
+// Resource tags.
+func (o VirtualNetworkTypePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *VirtualNetworkType) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// A list of peerings in a Virtual Network.
+func (o VirtualNetworkTypePtrOutput) VirtualNetworkPeerings() VirtualNetworkPeeringTypeArrayOutput {
+	return o.ApplyT(func(v *VirtualNetworkType) []VirtualNetworkPeeringType {
+		if v == nil {
+			return nil
+		}
+		return v.VirtualNetworkPeerings
+	}).(VirtualNetworkPeeringTypeArrayOutput)
+}
+
+// The virtual network appliance ip configuration.
+type VirtualNetworkApplianceIpConfigurationResponse struct {
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// The name of virtual network appliance ip configuration.
+	Name *string `pulumi:"name"`
+	// Whether the ip configuration is primary or not.
+	Primary *bool `pulumi:"primary"`
+	// The private IP address of the IP configuration.
+	PrivateIPAddress *string `pulumi:"privateIPAddress"`
+	// Whether the specific IP configuration is IPv4 or IPv6. Default is IPv4.
+	PrivateIPAddressVersion *string `pulumi:"privateIPAddressVersion"`
+	// The private IP address allocation method.
+	PrivateIPAllocationMethod *string `pulumi:"privateIPAllocationMethod"`
+	// The provisioning state of the private link service IP configuration resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The resource type.
+	Type string `pulumi:"type"`
+}
+
+// The virtual network appliance ip configuration.
+type VirtualNetworkApplianceIpConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkApplianceIpConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkApplianceIpConfigurationResponse)(nil)).Elem()
+}
+
+func (o VirtualNetworkApplianceIpConfigurationResponseOutput) ToVirtualNetworkApplianceIpConfigurationResponseOutput() VirtualNetworkApplianceIpConfigurationResponseOutput {
+	return o
+}
+
+func (o VirtualNetworkApplianceIpConfigurationResponseOutput) ToVirtualNetworkApplianceIpConfigurationResponseOutputWithContext(ctx context.Context) VirtualNetworkApplianceIpConfigurationResponseOutput {
+	return o
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o VirtualNetworkApplianceIpConfigurationResponseOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualNetworkApplianceIpConfigurationResponse) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Resource ID.
+func (o VirtualNetworkApplianceIpConfigurationResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkApplianceIpConfigurationResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The name of virtual network appliance ip configuration.
+func (o VirtualNetworkApplianceIpConfigurationResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkApplianceIpConfigurationResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Whether the ip configuration is primary or not.
+func (o VirtualNetworkApplianceIpConfigurationResponseOutput) Primary() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkApplianceIpConfigurationResponse) *bool { return v.Primary }).(pulumi.BoolPtrOutput)
+}
+
+// The private IP address of the IP configuration.
+func (o VirtualNetworkApplianceIpConfigurationResponseOutput) PrivateIPAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkApplianceIpConfigurationResponse) *string { return v.PrivateIPAddress }).(pulumi.StringPtrOutput)
+}
+
+// Whether the specific IP configuration is IPv4 or IPv6. Default is IPv4.
+func (o VirtualNetworkApplianceIpConfigurationResponseOutput) PrivateIPAddressVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkApplianceIpConfigurationResponse) *string { return v.PrivateIPAddressVersion }).(pulumi.StringPtrOutput)
+}
+
+// The private IP address allocation method.
+func (o VirtualNetworkApplianceIpConfigurationResponseOutput) PrivateIPAllocationMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkApplianceIpConfigurationResponse) *string { return v.PrivateIPAllocationMethod }).(pulumi.StringPtrOutput)
+}
+
+// The provisioning state of the private link service IP configuration resource.
+func (o VirtualNetworkApplianceIpConfigurationResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualNetworkApplianceIpConfigurationResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The resource type.
+func (o VirtualNetworkApplianceIpConfigurationResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualNetworkApplianceIpConfigurationResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type VirtualNetworkApplianceIpConfigurationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkApplianceIpConfigurationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualNetworkApplianceIpConfigurationResponse)(nil)).Elem()
+}
+
+func (o VirtualNetworkApplianceIpConfigurationResponseArrayOutput) ToVirtualNetworkApplianceIpConfigurationResponseArrayOutput() VirtualNetworkApplianceIpConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o VirtualNetworkApplianceIpConfigurationResponseArrayOutput) ToVirtualNetworkApplianceIpConfigurationResponseArrayOutputWithContext(ctx context.Context) VirtualNetworkApplianceIpConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o VirtualNetworkApplianceIpConfigurationResponseArrayOutput) Index(i pulumi.IntInput) VirtualNetworkApplianceIpConfigurationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualNetworkApplianceIpConfigurationResponse {
+		return vs[0].([]VirtualNetworkApplianceIpConfigurationResponse)[vs[1].(int)]
+	}).(VirtualNetworkApplianceIpConfigurationResponseOutput)
+}
+
 // Bgp Communities sent over ExpressRoute with each route corresponding to a prefix in this VNET.
 type VirtualNetworkBgpCommunities struct {
 	// The BGP community associated with the virtual network.
@@ -18442,64 +21967,11 @@ func (o VirtualNetworkBgpCommunitiesResponsePtrOutput) VirtualNetworkCommunity()
 	}).(pulumi.StringPtrOutput)
 }
 
-// Reference to DNS forwarding ruleset and associated virtual network link.
-type VirtualNetworkDnsForwardingRulesetResponse struct {
-	// DNS Forwarding Ruleset Resource ID.
-	Id *string `pulumi:"id"`
-	// The reference to the virtual network link.
-	VirtualNetworkLink *SubResourceResponse `pulumi:"virtualNetworkLink"`
-}
-
-// Reference to DNS forwarding ruleset and associated virtual network link.
-type VirtualNetworkDnsForwardingRulesetResponseOutput struct{ *pulumi.OutputState }
-
-func (VirtualNetworkDnsForwardingRulesetResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualNetworkDnsForwardingRulesetResponse)(nil)).Elem()
-}
-
-func (o VirtualNetworkDnsForwardingRulesetResponseOutput) ToVirtualNetworkDnsForwardingRulesetResponseOutput() VirtualNetworkDnsForwardingRulesetResponseOutput {
-	return o
-}
-
-func (o VirtualNetworkDnsForwardingRulesetResponseOutput) ToVirtualNetworkDnsForwardingRulesetResponseOutputWithContext(ctx context.Context) VirtualNetworkDnsForwardingRulesetResponseOutput {
-	return o
-}
-
-// DNS Forwarding Ruleset Resource ID.
-func (o VirtualNetworkDnsForwardingRulesetResponseOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualNetworkDnsForwardingRulesetResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// The reference to the virtual network link.
-func (o VirtualNetworkDnsForwardingRulesetResponseOutput) VirtualNetworkLink() SubResourceResponsePtrOutput {
-	return o.ApplyT(func(v VirtualNetworkDnsForwardingRulesetResponse) *SubResourceResponse { return v.VirtualNetworkLink }).(SubResourceResponsePtrOutput)
-}
-
-type VirtualNetworkDnsForwardingRulesetResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (VirtualNetworkDnsForwardingRulesetResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VirtualNetworkDnsForwardingRulesetResponse)(nil)).Elem()
-}
-
-func (o VirtualNetworkDnsForwardingRulesetResponseArrayOutput) ToVirtualNetworkDnsForwardingRulesetResponseArrayOutput() VirtualNetworkDnsForwardingRulesetResponseArrayOutput {
-	return o
-}
-
-func (o VirtualNetworkDnsForwardingRulesetResponseArrayOutput) ToVirtualNetworkDnsForwardingRulesetResponseArrayOutputWithContext(ctx context.Context) VirtualNetworkDnsForwardingRulesetResponseArrayOutput {
-	return o
-}
-
-func (o VirtualNetworkDnsForwardingRulesetResponseArrayOutput) Index(i pulumi.IntInput) VirtualNetworkDnsForwardingRulesetResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualNetworkDnsForwardingRulesetResponse {
-		return vs[0].([]VirtualNetworkDnsForwardingRulesetResponse)[vs[1].(int)]
-	}).(VirtualNetworkDnsForwardingRulesetResponseOutput)
-}
-
 // Indicates if encryption is enabled on virtual network and if VM without encryption is allowed in encrypted VNet.
 type VirtualNetworkEncryption struct {
 	// Indicates if encryption is enabled on the virtual network.
 	Enabled bool `pulumi:"enabled"`
-	// If the encrypted VNet allows VM that does not support encryption
+	// If the encrypted VNet allows VM that does not support encryption. This field is for future support, AllowUnencrypted is the only supported value at general availability.
 	Enforcement *string `pulumi:"enforcement"`
 }
 
@@ -18518,7 +21990,7 @@ type VirtualNetworkEncryptionInput interface {
 type VirtualNetworkEncryptionArgs struct {
 	// Indicates if encryption is enabled on the virtual network.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// If the encrypted VNet allows VM that does not support encryption
+	// If the encrypted VNet allows VM that does not support encryption. This field is for future support, AllowUnencrypted is the only supported value at general availability.
 	Enforcement pulumi.StringPtrInput `pulumi:"enforcement"`
 }
 
@@ -18605,7 +22077,7 @@ func (o VirtualNetworkEncryptionOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v VirtualNetworkEncryption) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// If the encrypted VNet allows VM that does not support encryption
+// If the encrypted VNet allows VM that does not support encryption. This field is for future support, AllowUnencrypted is the only supported value at general availability.
 func (o VirtualNetworkEncryptionOutput) Enforcement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualNetworkEncryption) *string { return v.Enforcement }).(pulumi.StringPtrOutput)
 }
@@ -18644,7 +22116,7 @@ func (o VirtualNetworkEncryptionPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// If the encrypted VNet allows VM that does not support encryption
+// If the encrypted VNet allows VM that does not support encryption. This field is for future support, AllowUnencrypted is the only supported value at general availability.
 func (o VirtualNetworkEncryptionPtrOutput) Enforcement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualNetworkEncryption) *string {
 		if v == nil {
@@ -18658,7 +22130,7 @@ func (o VirtualNetworkEncryptionPtrOutput) Enforcement() pulumi.StringPtrOutput 
 type VirtualNetworkEncryptionResponse struct {
 	// Indicates if encryption is enabled on the virtual network.
 	Enabled bool `pulumi:"enabled"`
-	// If the encrypted VNet allows VM that does not support encryption
+	// If the encrypted VNet allows VM that does not support encryption. This field is for future support, AllowUnencrypted is the only supported value at general availability.
 	Enforcement *string `pulumi:"enforcement"`
 }
 
@@ -18682,7 +22154,7 @@ func (o VirtualNetworkEncryptionResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v VirtualNetworkEncryptionResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// If the encrypted VNet allows VM that does not support encryption
+// If the encrypted VNet allows VM that does not support encryption. This field is for future support, AllowUnencrypted is the only supported value at general availability.
 func (o VirtualNetworkEncryptionResponseOutput) Enforcement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualNetworkEncryptionResponse) *string { return v.Enforcement }).(pulumi.StringPtrOutput)
 }
@@ -18721,7 +22193,7 @@ func (o VirtualNetworkEncryptionResponsePtrOutput) Enabled() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// If the encrypted VNet allows VM that does not support encryption
+// If the encrypted VNet allows VM that does not support encryption. This field is for future support, AllowUnencrypted is the only supported value at general availability.
 func (o VirtualNetworkEncryptionResponsePtrOutput) Enforcement() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualNetworkEncryptionResponse) *string {
 		if v == nil {
@@ -18741,6 +22213,8 @@ type VirtualNetworkGatewayType struct {
 	AllowRemoteVnetTraffic *bool `pulumi:"allowRemoteVnetTraffic"`
 	// Configures this gateway to accept traffic from remote Virtual WAN networks.
 	AllowVirtualWanTraffic *bool `pulumi:"allowVirtualWanTraffic"`
+	// Autoscale configuration for virutal network gateway
+	AutoScaleConfiguration *VirtualNetworkGatewayAutoScaleConfiguration `pulumi:"autoScaleConfiguration"`
 	// Virtual network gateway's BGP speaker settings.
 	BgpSettings *BgpSettings `pulumi:"bgpSettings"`
 	// The reference to the address space resource which represents the custom routes address space specified by the customer for virtual network gateway and VpnClient.
@@ -18763,12 +22237,16 @@ type VirtualNetworkGatewayType struct {
 	GatewayType *string `pulumi:"gatewayType"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
+	// The identity of the virtual network gateway, if configured.
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// IP configurations for virtual network gateway.
 	IpConfigurations []VirtualNetworkGatewayIPConfiguration `pulumi:"ipConfigurations"`
 	// Resource location.
 	Location *string `pulumi:"location"`
 	// NatRules for virtual network gateway.
 	NatRules []VirtualNetworkGatewayNatRuleType `pulumi:"natRules"`
+	// Property to indicate if the Express Route Gateway has resiliency model of MultiHomed or SingleHomed
+	ResiliencyModel *string `pulumi:"resiliencyModel"`
 	// The reference to the VirtualNetworkGatewaySku resource which represents the SKU selected for Virtual network gateway.
 	Sku *VirtualNetworkGatewaySku `pulumi:"sku"`
 	// Resource tags.
@@ -18806,6 +22284,8 @@ type VirtualNetworkGatewayTypeArgs struct {
 	AllowRemoteVnetTraffic pulumi.BoolPtrInput `pulumi:"allowRemoteVnetTraffic"`
 	// Configures this gateway to accept traffic from remote Virtual WAN networks.
 	AllowVirtualWanTraffic pulumi.BoolPtrInput `pulumi:"allowVirtualWanTraffic"`
+	// Autoscale configuration for virutal network gateway
+	AutoScaleConfiguration VirtualNetworkGatewayAutoScaleConfigurationPtrInput `pulumi:"autoScaleConfiguration"`
 	// Virtual network gateway's BGP speaker settings.
 	BgpSettings BgpSettingsPtrInput `pulumi:"bgpSettings"`
 	// The reference to the address space resource which represents the custom routes address space specified by the customer for virtual network gateway and VpnClient.
@@ -18828,12 +22308,16 @@ type VirtualNetworkGatewayTypeArgs struct {
 	GatewayType pulumi.StringPtrInput `pulumi:"gatewayType"`
 	// Resource ID.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The identity of the virtual network gateway, if configured.
+	Identity ManagedServiceIdentityPtrInput `pulumi:"identity"`
 	// IP configurations for virtual network gateway.
 	IpConfigurations VirtualNetworkGatewayIPConfigurationArrayInput `pulumi:"ipConfigurations"`
 	// Resource location.
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// NatRules for virtual network gateway.
 	NatRules VirtualNetworkGatewayNatRuleTypeArrayInput `pulumi:"natRules"`
+	// Property to indicate if the Express Route Gateway has resiliency model of MultiHomed or SingleHomed
+	ResiliencyModel pulumi.StringPtrInput `pulumi:"resiliencyModel"`
 	// The reference to the VirtualNetworkGatewaySku resource which represents the SKU selected for Virtual network gateway.
 	Sku VirtualNetworkGatewaySkuPtrInput `pulumi:"sku"`
 	// Resource tags.
@@ -18948,6 +22432,13 @@ func (o VirtualNetworkGatewayTypeOutput) AllowVirtualWanTraffic() pulumi.BoolPtr
 	return o.ApplyT(func(v VirtualNetworkGatewayType) *bool { return v.AllowVirtualWanTraffic }).(pulumi.BoolPtrOutput)
 }
 
+// Autoscale configuration for virutal network gateway
+func (o VirtualNetworkGatewayTypeOutput) AutoScaleConfiguration() VirtualNetworkGatewayAutoScaleConfigurationPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayType) *VirtualNetworkGatewayAutoScaleConfiguration {
+		return v.AutoScaleConfiguration
+	}).(VirtualNetworkGatewayAutoScaleConfigurationPtrOutput)
+}
+
 // Virtual network gateway's BGP speaker settings.
 func (o VirtualNetworkGatewayTypeOutput) BgpSettings() BgpSettingsPtrOutput {
 	return o.ApplyT(func(v VirtualNetworkGatewayType) *BgpSettings { return v.BgpSettings }).(BgpSettingsPtrOutput)
@@ -19003,6 +22494,11 @@ func (o VirtualNetworkGatewayTypeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualNetworkGatewayType) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The identity of the virtual network gateway, if configured.
+func (o VirtualNetworkGatewayTypeOutput) Identity() ManagedServiceIdentityPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayType) *ManagedServiceIdentity { return v.Identity }).(ManagedServiceIdentityPtrOutput)
+}
+
 // IP configurations for virtual network gateway.
 func (o VirtualNetworkGatewayTypeOutput) IpConfigurations() VirtualNetworkGatewayIPConfigurationArrayOutput {
 	return o.ApplyT(func(v VirtualNetworkGatewayType) []VirtualNetworkGatewayIPConfiguration { return v.IpConfigurations }).(VirtualNetworkGatewayIPConfigurationArrayOutput)
@@ -19016,6 +22512,11 @@ func (o VirtualNetworkGatewayTypeOutput) Location() pulumi.StringPtrOutput {
 // NatRules for virtual network gateway.
 func (o VirtualNetworkGatewayTypeOutput) NatRules() VirtualNetworkGatewayNatRuleTypeArrayOutput {
 	return o.ApplyT(func(v VirtualNetworkGatewayType) []VirtualNetworkGatewayNatRuleType { return v.NatRules }).(VirtualNetworkGatewayNatRuleTypeArrayOutput)
+}
+
+// Property to indicate if the Express Route Gateway has resiliency model of MultiHomed or SingleHomed
+func (o VirtualNetworkGatewayTypeOutput) ResiliencyModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayType) *string { return v.ResiliencyModel }).(pulumi.StringPtrOutput)
 }
 
 // The reference to the VirtualNetworkGatewaySku resource which represents the SKU selected for Virtual network gateway.
@@ -19117,6 +22618,16 @@ func (o VirtualNetworkGatewayTypePtrOutput) AllowVirtualWanTraffic() pulumi.Bool
 		}
 		return v.AllowVirtualWanTraffic
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Autoscale configuration for virutal network gateway
+func (o VirtualNetworkGatewayTypePtrOutput) AutoScaleConfiguration() VirtualNetworkGatewayAutoScaleConfigurationPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkGatewayType) *VirtualNetworkGatewayAutoScaleConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.AutoScaleConfiguration
+	}).(VirtualNetworkGatewayAutoScaleConfigurationPtrOutput)
 }
 
 // Virtual network gateway's BGP speaker settings.
@@ -19229,6 +22740,16 @@ func (o VirtualNetworkGatewayTypePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The identity of the virtual network gateway, if configured.
+func (o VirtualNetworkGatewayTypePtrOutput) Identity() ManagedServiceIdentityPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkGatewayType) *ManagedServiceIdentity {
+		if v == nil {
+			return nil
+		}
+		return v.Identity
+	}).(ManagedServiceIdentityPtrOutput)
+}
+
 // IP configurations for virtual network gateway.
 func (o VirtualNetworkGatewayTypePtrOutput) IpConfigurations() VirtualNetworkGatewayIPConfigurationArrayOutput {
 	return o.ApplyT(func(v *VirtualNetworkGatewayType) []VirtualNetworkGatewayIPConfiguration {
@@ -19257,6 +22778,16 @@ func (o VirtualNetworkGatewayTypePtrOutput) NatRules() VirtualNetworkGatewayNatR
 		}
 		return v.NatRules
 	}).(VirtualNetworkGatewayNatRuleTypeArrayOutput)
+}
+
+// Property to indicate if the Express Route Gateway has resiliency model of MultiHomed or SingleHomed
+func (o VirtualNetworkGatewayTypePtrOutput) ResiliencyModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkGatewayType) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResiliencyModel
+	}).(pulumi.StringPtrOutput)
 }
 
 // The reference to the VirtualNetworkGatewaySku resource which represents the SKU selected for Virtual network gateway.
@@ -19327,6 +22858,441 @@ func (o VirtualNetworkGatewayTypePtrOutput) VpnType() pulumi.StringPtrOutput {
 		}
 		return v.VpnType
 	}).(pulumi.StringPtrOutput)
+}
+
+type VirtualNetworkGatewayAutoScaleBounds struct {
+	// Maximum Scale Units for Autoscale configuration
+	Max *int `pulumi:"max"`
+	// Minimum scale Units for Autoscale configuration
+	Min *int `pulumi:"min"`
+}
+
+// VirtualNetworkGatewayAutoScaleBoundsInput is an input type that accepts VirtualNetworkGatewayAutoScaleBoundsArgs and VirtualNetworkGatewayAutoScaleBoundsOutput values.
+// You can construct a concrete instance of `VirtualNetworkGatewayAutoScaleBoundsInput` via:
+//
+//	VirtualNetworkGatewayAutoScaleBoundsArgs{...}
+type VirtualNetworkGatewayAutoScaleBoundsInput interface {
+	pulumi.Input
+
+	ToVirtualNetworkGatewayAutoScaleBoundsOutput() VirtualNetworkGatewayAutoScaleBoundsOutput
+	ToVirtualNetworkGatewayAutoScaleBoundsOutputWithContext(context.Context) VirtualNetworkGatewayAutoScaleBoundsOutput
+}
+
+type VirtualNetworkGatewayAutoScaleBoundsArgs struct {
+	// Maximum Scale Units for Autoscale configuration
+	Max pulumi.IntPtrInput `pulumi:"max"`
+	// Minimum scale Units for Autoscale configuration
+	Min pulumi.IntPtrInput `pulumi:"min"`
+}
+
+func (VirtualNetworkGatewayAutoScaleBoundsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkGatewayAutoScaleBounds)(nil)).Elem()
+}
+
+func (i VirtualNetworkGatewayAutoScaleBoundsArgs) ToVirtualNetworkGatewayAutoScaleBoundsOutput() VirtualNetworkGatewayAutoScaleBoundsOutput {
+	return i.ToVirtualNetworkGatewayAutoScaleBoundsOutputWithContext(context.Background())
+}
+
+func (i VirtualNetworkGatewayAutoScaleBoundsArgs) ToVirtualNetworkGatewayAutoScaleBoundsOutputWithContext(ctx context.Context) VirtualNetworkGatewayAutoScaleBoundsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayAutoScaleBoundsOutput)
+}
+
+func (i VirtualNetworkGatewayAutoScaleBoundsArgs) ToVirtualNetworkGatewayAutoScaleBoundsPtrOutput() VirtualNetworkGatewayAutoScaleBoundsPtrOutput {
+	return i.ToVirtualNetworkGatewayAutoScaleBoundsPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualNetworkGatewayAutoScaleBoundsArgs) ToVirtualNetworkGatewayAutoScaleBoundsPtrOutputWithContext(ctx context.Context) VirtualNetworkGatewayAutoScaleBoundsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayAutoScaleBoundsOutput).ToVirtualNetworkGatewayAutoScaleBoundsPtrOutputWithContext(ctx)
+}
+
+// VirtualNetworkGatewayAutoScaleBoundsPtrInput is an input type that accepts VirtualNetworkGatewayAutoScaleBoundsArgs, VirtualNetworkGatewayAutoScaleBoundsPtr and VirtualNetworkGatewayAutoScaleBoundsPtrOutput values.
+// You can construct a concrete instance of `VirtualNetworkGatewayAutoScaleBoundsPtrInput` via:
+//
+//	        VirtualNetworkGatewayAutoScaleBoundsArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualNetworkGatewayAutoScaleBoundsPtrInput interface {
+	pulumi.Input
+
+	ToVirtualNetworkGatewayAutoScaleBoundsPtrOutput() VirtualNetworkGatewayAutoScaleBoundsPtrOutput
+	ToVirtualNetworkGatewayAutoScaleBoundsPtrOutputWithContext(context.Context) VirtualNetworkGatewayAutoScaleBoundsPtrOutput
+}
+
+type virtualNetworkGatewayAutoScaleBoundsPtrType VirtualNetworkGatewayAutoScaleBoundsArgs
+
+func VirtualNetworkGatewayAutoScaleBoundsPtr(v *VirtualNetworkGatewayAutoScaleBoundsArgs) VirtualNetworkGatewayAutoScaleBoundsPtrInput {
+	return (*virtualNetworkGatewayAutoScaleBoundsPtrType)(v)
+}
+
+func (*virtualNetworkGatewayAutoScaleBoundsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualNetworkGatewayAutoScaleBounds)(nil)).Elem()
+}
+
+func (i *virtualNetworkGatewayAutoScaleBoundsPtrType) ToVirtualNetworkGatewayAutoScaleBoundsPtrOutput() VirtualNetworkGatewayAutoScaleBoundsPtrOutput {
+	return i.ToVirtualNetworkGatewayAutoScaleBoundsPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualNetworkGatewayAutoScaleBoundsPtrType) ToVirtualNetworkGatewayAutoScaleBoundsPtrOutputWithContext(ctx context.Context) VirtualNetworkGatewayAutoScaleBoundsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayAutoScaleBoundsPtrOutput)
+}
+
+type VirtualNetworkGatewayAutoScaleBoundsOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkGatewayAutoScaleBoundsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkGatewayAutoScaleBounds)(nil)).Elem()
+}
+
+func (o VirtualNetworkGatewayAutoScaleBoundsOutput) ToVirtualNetworkGatewayAutoScaleBoundsOutput() VirtualNetworkGatewayAutoScaleBoundsOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayAutoScaleBoundsOutput) ToVirtualNetworkGatewayAutoScaleBoundsOutputWithContext(ctx context.Context) VirtualNetworkGatewayAutoScaleBoundsOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayAutoScaleBoundsOutput) ToVirtualNetworkGatewayAutoScaleBoundsPtrOutput() VirtualNetworkGatewayAutoScaleBoundsPtrOutput {
+	return o.ToVirtualNetworkGatewayAutoScaleBoundsPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualNetworkGatewayAutoScaleBoundsOutput) ToVirtualNetworkGatewayAutoScaleBoundsPtrOutputWithContext(ctx context.Context) VirtualNetworkGatewayAutoScaleBoundsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualNetworkGatewayAutoScaleBounds) *VirtualNetworkGatewayAutoScaleBounds {
+		return &v
+	}).(VirtualNetworkGatewayAutoScaleBoundsPtrOutput)
+}
+
+// Maximum Scale Units for Autoscale configuration
+func (o VirtualNetworkGatewayAutoScaleBoundsOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayAutoScaleBounds) *int { return v.Max }).(pulumi.IntPtrOutput)
+}
+
+// Minimum scale Units for Autoscale configuration
+func (o VirtualNetworkGatewayAutoScaleBoundsOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayAutoScaleBounds) *int { return v.Min }).(pulumi.IntPtrOutput)
+}
+
+type VirtualNetworkGatewayAutoScaleBoundsPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkGatewayAutoScaleBoundsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualNetworkGatewayAutoScaleBounds)(nil)).Elem()
+}
+
+func (o VirtualNetworkGatewayAutoScaleBoundsPtrOutput) ToVirtualNetworkGatewayAutoScaleBoundsPtrOutput() VirtualNetworkGatewayAutoScaleBoundsPtrOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayAutoScaleBoundsPtrOutput) ToVirtualNetworkGatewayAutoScaleBoundsPtrOutputWithContext(ctx context.Context) VirtualNetworkGatewayAutoScaleBoundsPtrOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayAutoScaleBoundsPtrOutput) Elem() VirtualNetworkGatewayAutoScaleBoundsOutput {
+	return o.ApplyT(func(v *VirtualNetworkGatewayAutoScaleBounds) VirtualNetworkGatewayAutoScaleBounds {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualNetworkGatewayAutoScaleBounds
+		return ret
+	}).(VirtualNetworkGatewayAutoScaleBoundsOutput)
+}
+
+// Maximum Scale Units for Autoscale configuration
+func (o VirtualNetworkGatewayAutoScaleBoundsPtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkGatewayAutoScaleBounds) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum scale Units for Autoscale configuration
+func (o VirtualNetworkGatewayAutoScaleBoundsPtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkGatewayAutoScaleBounds) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Min
+	}).(pulumi.IntPtrOutput)
+}
+
+type VirtualNetworkGatewayAutoScaleBoundsResponse struct {
+	// Maximum Scale Units for Autoscale configuration
+	Max *int `pulumi:"max"`
+	// Minimum scale Units for Autoscale configuration
+	Min *int `pulumi:"min"`
+}
+
+type VirtualNetworkGatewayAutoScaleBoundsResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkGatewayAutoScaleBoundsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkGatewayAutoScaleBoundsResponse)(nil)).Elem()
+}
+
+func (o VirtualNetworkGatewayAutoScaleBoundsResponseOutput) ToVirtualNetworkGatewayAutoScaleBoundsResponseOutput() VirtualNetworkGatewayAutoScaleBoundsResponseOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayAutoScaleBoundsResponseOutput) ToVirtualNetworkGatewayAutoScaleBoundsResponseOutputWithContext(ctx context.Context) VirtualNetworkGatewayAutoScaleBoundsResponseOutput {
+	return o
+}
+
+// Maximum Scale Units for Autoscale configuration
+func (o VirtualNetworkGatewayAutoScaleBoundsResponseOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayAutoScaleBoundsResponse) *int { return v.Max }).(pulumi.IntPtrOutput)
+}
+
+// Minimum scale Units for Autoscale configuration
+func (o VirtualNetworkGatewayAutoScaleBoundsResponseOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayAutoScaleBoundsResponse) *int { return v.Min }).(pulumi.IntPtrOutput)
+}
+
+type VirtualNetworkGatewayAutoScaleBoundsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkGatewayAutoScaleBoundsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualNetworkGatewayAutoScaleBoundsResponse)(nil)).Elem()
+}
+
+func (o VirtualNetworkGatewayAutoScaleBoundsResponsePtrOutput) ToVirtualNetworkGatewayAutoScaleBoundsResponsePtrOutput() VirtualNetworkGatewayAutoScaleBoundsResponsePtrOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayAutoScaleBoundsResponsePtrOutput) ToVirtualNetworkGatewayAutoScaleBoundsResponsePtrOutputWithContext(ctx context.Context) VirtualNetworkGatewayAutoScaleBoundsResponsePtrOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayAutoScaleBoundsResponsePtrOutput) Elem() VirtualNetworkGatewayAutoScaleBoundsResponseOutput {
+	return o.ApplyT(func(v *VirtualNetworkGatewayAutoScaleBoundsResponse) VirtualNetworkGatewayAutoScaleBoundsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualNetworkGatewayAutoScaleBoundsResponse
+		return ret
+	}).(VirtualNetworkGatewayAutoScaleBoundsResponseOutput)
+}
+
+// Maximum Scale Units for Autoscale configuration
+func (o VirtualNetworkGatewayAutoScaleBoundsResponsePtrOutput) Max() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkGatewayAutoScaleBoundsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Max
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum scale Units for Autoscale configuration
+func (o VirtualNetworkGatewayAutoScaleBoundsResponsePtrOutput) Min() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkGatewayAutoScaleBoundsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Min
+	}).(pulumi.IntPtrOutput)
+}
+
+// Virtual Network Gateway Autoscale Configuration details
+type VirtualNetworkGatewayAutoScaleConfiguration struct {
+	// The bounds of the autoscale configuration
+	Bounds *VirtualNetworkGatewayAutoScaleBounds `pulumi:"bounds"`
+}
+
+// VirtualNetworkGatewayAutoScaleConfigurationInput is an input type that accepts VirtualNetworkGatewayAutoScaleConfigurationArgs and VirtualNetworkGatewayAutoScaleConfigurationOutput values.
+// You can construct a concrete instance of `VirtualNetworkGatewayAutoScaleConfigurationInput` via:
+//
+//	VirtualNetworkGatewayAutoScaleConfigurationArgs{...}
+type VirtualNetworkGatewayAutoScaleConfigurationInput interface {
+	pulumi.Input
+
+	ToVirtualNetworkGatewayAutoScaleConfigurationOutput() VirtualNetworkGatewayAutoScaleConfigurationOutput
+	ToVirtualNetworkGatewayAutoScaleConfigurationOutputWithContext(context.Context) VirtualNetworkGatewayAutoScaleConfigurationOutput
+}
+
+// Virtual Network Gateway Autoscale Configuration details
+type VirtualNetworkGatewayAutoScaleConfigurationArgs struct {
+	// The bounds of the autoscale configuration
+	Bounds VirtualNetworkGatewayAutoScaleBoundsPtrInput `pulumi:"bounds"`
+}
+
+func (VirtualNetworkGatewayAutoScaleConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkGatewayAutoScaleConfiguration)(nil)).Elem()
+}
+
+func (i VirtualNetworkGatewayAutoScaleConfigurationArgs) ToVirtualNetworkGatewayAutoScaleConfigurationOutput() VirtualNetworkGatewayAutoScaleConfigurationOutput {
+	return i.ToVirtualNetworkGatewayAutoScaleConfigurationOutputWithContext(context.Background())
+}
+
+func (i VirtualNetworkGatewayAutoScaleConfigurationArgs) ToVirtualNetworkGatewayAutoScaleConfigurationOutputWithContext(ctx context.Context) VirtualNetworkGatewayAutoScaleConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayAutoScaleConfigurationOutput)
+}
+
+func (i VirtualNetworkGatewayAutoScaleConfigurationArgs) ToVirtualNetworkGatewayAutoScaleConfigurationPtrOutput() VirtualNetworkGatewayAutoScaleConfigurationPtrOutput {
+	return i.ToVirtualNetworkGatewayAutoScaleConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualNetworkGatewayAutoScaleConfigurationArgs) ToVirtualNetworkGatewayAutoScaleConfigurationPtrOutputWithContext(ctx context.Context) VirtualNetworkGatewayAutoScaleConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayAutoScaleConfigurationOutput).ToVirtualNetworkGatewayAutoScaleConfigurationPtrOutputWithContext(ctx)
+}
+
+// VirtualNetworkGatewayAutoScaleConfigurationPtrInput is an input type that accepts VirtualNetworkGatewayAutoScaleConfigurationArgs, VirtualNetworkGatewayAutoScaleConfigurationPtr and VirtualNetworkGatewayAutoScaleConfigurationPtrOutput values.
+// You can construct a concrete instance of `VirtualNetworkGatewayAutoScaleConfigurationPtrInput` via:
+//
+//	        VirtualNetworkGatewayAutoScaleConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualNetworkGatewayAutoScaleConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToVirtualNetworkGatewayAutoScaleConfigurationPtrOutput() VirtualNetworkGatewayAutoScaleConfigurationPtrOutput
+	ToVirtualNetworkGatewayAutoScaleConfigurationPtrOutputWithContext(context.Context) VirtualNetworkGatewayAutoScaleConfigurationPtrOutput
+}
+
+type virtualNetworkGatewayAutoScaleConfigurationPtrType VirtualNetworkGatewayAutoScaleConfigurationArgs
+
+func VirtualNetworkGatewayAutoScaleConfigurationPtr(v *VirtualNetworkGatewayAutoScaleConfigurationArgs) VirtualNetworkGatewayAutoScaleConfigurationPtrInput {
+	return (*virtualNetworkGatewayAutoScaleConfigurationPtrType)(v)
+}
+
+func (*virtualNetworkGatewayAutoScaleConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualNetworkGatewayAutoScaleConfiguration)(nil)).Elem()
+}
+
+func (i *virtualNetworkGatewayAutoScaleConfigurationPtrType) ToVirtualNetworkGatewayAutoScaleConfigurationPtrOutput() VirtualNetworkGatewayAutoScaleConfigurationPtrOutput {
+	return i.ToVirtualNetworkGatewayAutoScaleConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualNetworkGatewayAutoScaleConfigurationPtrType) ToVirtualNetworkGatewayAutoScaleConfigurationPtrOutputWithContext(ctx context.Context) VirtualNetworkGatewayAutoScaleConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualNetworkGatewayAutoScaleConfigurationPtrOutput)
+}
+
+// Virtual Network Gateway Autoscale Configuration details
+type VirtualNetworkGatewayAutoScaleConfigurationOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkGatewayAutoScaleConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkGatewayAutoScaleConfiguration)(nil)).Elem()
+}
+
+func (o VirtualNetworkGatewayAutoScaleConfigurationOutput) ToVirtualNetworkGatewayAutoScaleConfigurationOutput() VirtualNetworkGatewayAutoScaleConfigurationOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayAutoScaleConfigurationOutput) ToVirtualNetworkGatewayAutoScaleConfigurationOutputWithContext(ctx context.Context) VirtualNetworkGatewayAutoScaleConfigurationOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayAutoScaleConfigurationOutput) ToVirtualNetworkGatewayAutoScaleConfigurationPtrOutput() VirtualNetworkGatewayAutoScaleConfigurationPtrOutput {
+	return o.ToVirtualNetworkGatewayAutoScaleConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualNetworkGatewayAutoScaleConfigurationOutput) ToVirtualNetworkGatewayAutoScaleConfigurationPtrOutputWithContext(ctx context.Context) VirtualNetworkGatewayAutoScaleConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualNetworkGatewayAutoScaleConfiguration) *VirtualNetworkGatewayAutoScaleConfiguration {
+		return &v
+	}).(VirtualNetworkGatewayAutoScaleConfigurationPtrOutput)
+}
+
+// The bounds of the autoscale configuration
+func (o VirtualNetworkGatewayAutoScaleConfigurationOutput) Bounds() VirtualNetworkGatewayAutoScaleBoundsPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayAutoScaleConfiguration) *VirtualNetworkGatewayAutoScaleBounds {
+		return v.Bounds
+	}).(VirtualNetworkGatewayAutoScaleBoundsPtrOutput)
+}
+
+type VirtualNetworkGatewayAutoScaleConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkGatewayAutoScaleConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualNetworkGatewayAutoScaleConfiguration)(nil)).Elem()
+}
+
+func (o VirtualNetworkGatewayAutoScaleConfigurationPtrOutput) ToVirtualNetworkGatewayAutoScaleConfigurationPtrOutput() VirtualNetworkGatewayAutoScaleConfigurationPtrOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayAutoScaleConfigurationPtrOutput) ToVirtualNetworkGatewayAutoScaleConfigurationPtrOutputWithContext(ctx context.Context) VirtualNetworkGatewayAutoScaleConfigurationPtrOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayAutoScaleConfigurationPtrOutput) Elem() VirtualNetworkGatewayAutoScaleConfigurationOutput {
+	return o.ApplyT(func(v *VirtualNetworkGatewayAutoScaleConfiguration) VirtualNetworkGatewayAutoScaleConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualNetworkGatewayAutoScaleConfiguration
+		return ret
+	}).(VirtualNetworkGatewayAutoScaleConfigurationOutput)
+}
+
+// The bounds of the autoscale configuration
+func (o VirtualNetworkGatewayAutoScaleConfigurationPtrOutput) Bounds() VirtualNetworkGatewayAutoScaleBoundsPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkGatewayAutoScaleConfiguration) *VirtualNetworkGatewayAutoScaleBounds {
+		if v == nil {
+			return nil
+		}
+		return v.Bounds
+	}).(VirtualNetworkGatewayAutoScaleBoundsPtrOutput)
+}
+
+// Virtual Network Gateway Autoscale Configuration details
+type VirtualNetworkGatewayAutoScaleConfigurationResponse struct {
+	// The bounds of the autoscale configuration
+	Bounds *VirtualNetworkGatewayAutoScaleBoundsResponse `pulumi:"bounds"`
+}
+
+// Virtual Network Gateway Autoscale Configuration details
+type VirtualNetworkGatewayAutoScaleConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkGatewayAutoScaleConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkGatewayAutoScaleConfigurationResponse)(nil)).Elem()
+}
+
+func (o VirtualNetworkGatewayAutoScaleConfigurationResponseOutput) ToVirtualNetworkGatewayAutoScaleConfigurationResponseOutput() VirtualNetworkGatewayAutoScaleConfigurationResponseOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayAutoScaleConfigurationResponseOutput) ToVirtualNetworkGatewayAutoScaleConfigurationResponseOutputWithContext(ctx context.Context) VirtualNetworkGatewayAutoScaleConfigurationResponseOutput {
+	return o
+}
+
+// The bounds of the autoscale configuration
+func (o VirtualNetworkGatewayAutoScaleConfigurationResponseOutput) Bounds() VirtualNetworkGatewayAutoScaleBoundsResponsePtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayAutoScaleConfigurationResponse) *VirtualNetworkGatewayAutoScaleBoundsResponse {
+		return v.Bounds
+	}).(VirtualNetworkGatewayAutoScaleBoundsResponsePtrOutput)
+}
+
+type VirtualNetworkGatewayAutoScaleConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkGatewayAutoScaleConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualNetworkGatewayAutoScaleConfigurationResponse)(nil)).Elem()
+}
+
+func (o VirtualNetworkGatewayAutoScaleConfigurationResponsePtrOutput) ToVirtualNetworkGatewayAutoScaleConfigurationResponsePtrOutput() VirtualNetworkGatewayAutoScaleConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayAutoScaleConfigurationResponsePtrOutput) ToVirtualNetworkGatewayAutoScaleConfigurationResponsePtrOutputWithContext(ctx context.Context) VirtualNetworkGatewayAutoScaleConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o VirtualNetworkGatewayAutoScaleConfigurationResponsePtrOutput) Elem() VirtualNetworkGatewayAutoScaleConfigurationResponseOutput {
+	return o.ApplyT(func(v *VirtualNetworkGatewayAutoScaleConfigurationResponse) VirtualNetworkGatewayAutoScaleConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualNetworkGatewayAutoScaleConfigurationResponse
+		return ret
+	}).(VirtualNetworkGatewayAutoScaleConfigurationResponseOutput)
+}
+
+// The bounds of the autoscale configuration
+func (o VirtualNetworkGatewayAutoScaleConfigurationResponsePtrOutput) Bounds() VirtualNetworkGatewayAutoScaleBoundsResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkGatewayAutoScaleConfigurationResponse) *VirtualNetworkGatewayAutoScaleBoundsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Bounds
+	}).(VirtualNetworkGatewayAutoScaleBoundsResponsePtrOutput)
 }
 
 // IP configuration for virtual network gateway.
@@ -20241,6 +24207,8 @@ type VirtualNetworkGatewayResponse struct {
 	AllowRemoteVnetTraffic *bool `pulumi:"allowRemoteVnetTraffic"`
 	// Configures this gateway to accept traffic from remote Virtual WAN networks.
 	AllowVirtualWanTraffic *bool `pulumi:"allowVirtualWanTraffic"`
+	// Autoscale configuration for virutal network gateway
+	AutoScaleConfiguration *VirtualNetworkGatewayAutoScaleConfigurationResponse `pulumi:"autoScaleConfiguration"`
 	// Virtual network gateway's BGP speaker settings.
 	BgpSettings *BgpSettingsResponse `pulumi:"bgpSettings"`
 	// The reference to the address space resource which represents the custom routes address space specified by the customer for virtual network gateway and VpnClient.
@@ -20265,6 +24233,8 @@ type VirtualNetworkGatewayResponse struct {
 	GatewayType *string `pulumi:"gatewayType"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
+	// The identity of the virtual network gateway, if configured.
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// The IP address allocated by the gateway to which dns requests can be sent.
 	InboundDnsForwardingEndpoint string `pulumi:"inboundDnsForwardingEndpoint"`
 	// IP configurations for virtual network gateway.
@@ -20277,6 +24247,8 @@ type VirtualNetworkGatewayResponse struct {
 	NatRules []VirtualNetworkGatewayNatRuleResponse `pulumi:"natRules"`
 	// The provisioning state of the virtual network gateway resource.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// Property to indicate if the Express Route Gateway has resiliency model of MultiHomed or SingleHomed
+	ResiliencyModel *string `pulumi:"resiliencyModel"`
 	// The resource GUID property of the virtual network gateway resource.
 	ResourceGuid string `pulumi:"resourceGuid"`
 	// The reference to the VirtualNetworkGatewaySku resource which represents the SKU selected for Virtual network gateway.
@@ -20330,6 +24302,13 @@ func (o VirtualNetworkGatewayResponseOutput) AllowRemoteVnetTraffic() pulumi.Boo
 // Configures this gateway to accept traffic from remote Virtual WAN networks.
 func (o VirtualNetworkGatewayResponseOutput) AllowVirtualWanTraffic() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VirtualNetworkGatewayResponse) *bool { return v.AllowVirtualWanTraffic }).(pulumi.BoolPtrOutput)
+}
+
+// Autoscale configuration for virutal network gateway
+func (o VirtualNetworkGatewayResponseOutput) AutoScaleConfiguration() VirtualNetworkGatewayAutoScaleConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayResponse) *VirtualNetworkGatewayAutoScaleConfigurationResponse {
+		return v.AutoScaleConfiguration
+	}).(VirtualNetworkGatewayAutoScaleConfigurationResponsePtrOutput)
 }
 
 // Virtual network gateway's BGP speaker settings.
@@ -20392,6 +24371,11 @@ func (o VirtualNetworkGatewayResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualNetworkGatewayResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The identity of the virtual network gateway, if configured.
+func (o VirtualNetworkGatewayResponseOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayResponse) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+}
+
 // The IP address allocated by the gateway to which dns requests can be sent.
 func (o VirtualNetworkGatewayResponseOutput) InboundDnsForwardingEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualNetworkGatewayResponse) string { return v.InboundDnsForwardingEndpoint }).(pulumi.StringOutput)
@@ -20422,6 +24406,11 @@ func (o VirtualNetworkGatewayResponseOutput) NatRules() VirtualNetworkGatewayNat
 // The provisioning state of the virtual network gateway resource.
 func (o VirtualNetworkGatewayResponseOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualNetworkGatewayResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Property to indicate if the Express Route Gateway has resiliency model of MultiHomed or SingleHomed
+func (o VirtualNetworkGatewayResponseOutput) ResiliencyModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkGatewayResponse) *string { return v.ResiliencyModel }).(pulumi.StringPtrOutput)
 }
 
 // The resource GUID property of the virtual network gateway resource.
@@ -20533,6 +24522,16 @@ func (o VirtualNetworkGatewayResponsePtrOutput) AllowVirtualWanTraffic() pulumi.
 		}
 		return v.AllowVirtualWanTraffic
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Autoscale configuration for virutal network gateway
+func (o VirtualNetworkGatewayResponsePtrOutput) AutoScaleConfiguration() VirtualNetworkGatewayAutoScaleConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkGatewayResponse) *VirtualNetworkGatewayAutoScaleConfigurationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AutoScaleConfiguration
+	}).(VirtualNetworkGatewayAutoScaleConfigurationResponsePtrOutput)
 }
 
 // Virtual network gateway's BGP speaker settings.
@@ -20655,6 +24654,16 @@ func (o VirtualNetworkGatewayResponsePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The identity of the virtual network gateway, if configured.
+func (o VirtualNetworkGatewayResponsePtrOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkGatewayResponse) *ManagedServiceIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Identity
+	}).(ManagedServiceIdentityResponsePtrOutput)
+}
+
 // The IP address allocated by the gateway to which dns requests can be sent.
 func (o VirtualNetworkGatewayResponsePtrOutput) InboundDnsForwardingEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualNetworkGatewayResponse) *string {
@@ -20712,6 +24721,16 @@ func (o VirtualNetworkGatewayResponsePtrOutput) ProvisioningState() pulumi.Strin
 			return nil
 		}
 		return &v.ProvisioningState
+	}).(pulumi.StringPtrOutput)
+}
+
+// Property to indicate if the Express Route Gateway has resiliency model of MultiHomed or SingleHomed
+func (o VirtualNetworkGatewayResponsePtrOutput) ResiliencyModel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkGatewayResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResiliencyModel
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -21068,10 +25087,20 @@ type VirtualNetworkPeeringType struct {
 	AllowVirtualNetworkAccess *bool `pulumi:"allowVirtualNetworkAccess"`
 	// If we need to verify the provisioning state of the remote gateway.
 	DoNotVerifyRemoteGateways *bool `pulumi:"doNotVerifyRemoteGateways"`
+	// Whether only Ipv6 address space is peered for subnet peering.
+	EnableOnlyIPv6Peering *bool `pulumi:"enableOnlyIPv6Peering"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
+	// The local address space of the local virtual network that is peered.
+	LocalAddressSpace *AddressSpace `pulumi:"localAddressSpace"`
+	// List of local subnet names that are subnet peered with remote virtual network.
+	LocalSubnetNames []string `pulumi:"localSubnetNames"`
+	// The current local address space of the local virtual network that is peered.
+	LocalVirtualNetworkAddressSpace *AddressSpace `pulumi:"localVirtualNetworkAddressSpace"`
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 	Name *string `pulumi:"name"`
+	// Whether complete virtual network address space is peered.
+	PeerCompleteVnets *bool `pulumi:"peerCompleteVnets"`
 	// The status of the virtual network peering.
 	PeeringState *string `pulumi:"peeringState"`
 	// The peering sync status of the virtual network peering.
@@ -21080,6 +25109,8 @@ type VirtualNetworkPeeringType struct {
 	RemoteAddressSpace *AddressSpace `pulumi:"remoteAddressSpace"`
 	// The reference to the remote virtual network's Bgp Communities.
 	RemoteBgpCommunities *VirtualNetworkBgpCommunities `pulumi:"remoteBgpCommunities"`
+	// List of remote subnet names from remote virtual network that are subnet peered.
+	RemoteSubnetNames []string `pulumi:"remoteSubnetNames"`
 	// The reference to the remote virtual network. The remote virtual network can be in the same or different region (preview). See here to register for the preview and learn more (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
 	RemoteVirtualNetwork *SubResource `pulumi:"remoteVirtualNetwork"`
 	// The reference to the current address space of the remote virtual network.
@@ -21111,10 +25142,20 @@ type VirtualNetworkPeeringTypeArgs struct {
 	AllowVirtualNetworkAccess pulumi.BoolPtrInput `pulumi:"allowVirtualNetworkAccess"`
 	// If we need to verify the provisioning state of the remote gateway.
 	DoNotVerifyRemoteGateways pulumi.BoolPtrInput `pulumi:"doNotVerifyRemoteGateways"`
+	// Whether only Ipv6 address space is peered for subnet peering.
+	EnableOnlyIPv6Peering pulumi.BoolPtrInput `pulumi:"enableOnlyIPv6Peering"`
 	// Resource ID.
 	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The local address space of the local virtual network that is peered.
+	LocalAddressSpace AddressSpacePtrInput `pulumi:"localAddressSpace"`
+	// List of local subnet names that are subnet peered with remote virtual network.
+	LocalSubnetNames pulumi.StringArrayInput `pulumi:"localSubnetNames"`
+	// The current local address space of the local virtual network that is peered.
+	LocalVirtualNetworkAddressSpace AddressSpacePtrInput `pulumi:"localVirtualNetworkAddressSpace"`
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Whether complete virtual network address space is peered.
+	PeerCompleteVnets pulumi.BoolPtrInput `pulumi:"peerCompleteVnets"`
 	// The status of the virtual network peering.
 	PeeringState pulumi.StringPtrInput `pulumi:"peeringState"`
 	// The peering sync status of the virtual network peering.
@@ -21123,6 +25164,8 @@ type VirtualNetworkPeeringTypeArgs struct {
 	RemoteAddressSpace AddressSpacePtrInput `pulumi:"remoteAddressSpace"`
 	// The reference to the remote virtual network's Bgp Communities.
 	RemoteBgpCommunities VirtualNetworkBgpCommunitiesPtrInput `pulumi:"remoteBgpCommunities"`
+	// List of remote subnet names from remote virtual network that are subnet peered.
+	RemoteSubnetNames pulumi.StringArrayInput `pulumi:"remoteSubnetNames"`
 	// The reference to the remote virtual network. The remote virtual network can be in the same or different region (preview). See here to register for the preview and learn more (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
 	RemoteVirtualNetwork SubResourcePtrInput `pulumi:"remoteVirtualNetwork"`
 	// The reference to the current address space of the remote virtual network.
@@ -21205,14 +25248,39 @@ func (o VirtualNetworkPeeringTypeOutput) DoNotVerifyRemoteGateways() pulumi.Bool
 	return o.ApplyT(func(v VirtualNetworkPeeringType) *bool { return v.DoNotVerifyRemoteGateways }).(pulumi.BoolPtrOutput)
 }
 
+// Whether only Ipv6 address space is peered for subnet peering.
+func (o VirtualNetworkPeeringTypeOutput) EnableOnlyIPv6Peering() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkPeeringType) *bool { return v.EnableOnlyIPv6Peering }).(pulumi.BoolPtrOutput)
+}
+
 // Resource ID.
 func (o VirtualNetworkPeeringTypeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualNetworkPeeringType) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The local address space of the local virtual network that is peered.
+func (o VirtualNetworkPeeringTypeOutput) LocalAddressSpace() AddressSpacePtrOutput {
+	return o.ApplyT(func(v VirtualNetworkPeeringType) *AddressSpace { return v.LocalAddressSpace }).(AddressSpacePtrOutput)
+}
+
+// List of local subnet names that are subnet peered with remote virtual network.
+func (o VirtualNetworkPeeringTypeOutput) LocalSubnetNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VirtualNetworkPeeringType) []string { return v.LocalSubnetNames }).(pulumi.StringArrayOutput)
+}
+
+// The current local address space of the local virtual network that is peered.
+func (o VirtualNetworkPeeringTypeOutput) LocalVirtualNetworkAddressSpace() AddressSpacePtrOutput {
+	return o.ApplyT(func(v VirtualNetworkPeeringType) *AddressSpace { return v.LocalVirtualNetworkAddressSpace }).(AddressSpacePtrOutput)
+}
+
 // The name of the resource that is unique within a resource group. This name can be used to access the resource.
 func (o VirtualNetworkPeeringTypeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualNetworkPeeringType) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Whether complete virtual network address space is peered.
+func (o VirtualNetworkPeeringTypeOutput) PeerCompleteVnets() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkPeeringType) *bool { return v.PeerCompleteVnets }).(pulumi.BoolPtrOutput)
 }
 
 // The status of the virtual network peering.
@@ -21233,6 +25301,11 @@ func (o VirtualNetworkPeeringTypeOutput) RemoteAddressSpace() AddressSpacePtrOut
 // The reference to the remote virtual network's Bgp Communities.
 func (o VirtualNetworkPeeringTypeOutput) RemoteBgpCommunities() VirtualNetworkBgpCommunitiesPtrOutput {
 	return o.ApplyT(func(v VirtualNetworkPeeringType) *VirtualNetworkBgpCommunities { return v.RemoteBgpCommunities }).(VirtualNetworkBgpCommunitiesPtrOutput)
+}
+
+// List of remote subnet names from remote virtual network that are subnet peered.
+func (o VirtualNetworkPeeringTypeOutput) RemoteSubnetNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VirtualNetworkPeeringType) []string { return v.RemoteSubnetNames }).(pulumi.StringArrayOutput)
 }
 
 // The reference to the remote virtual network. The remote virtual network can be in the same or different region (preview). See here to register for the preview and learn more (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
@@ -21285,12 +25358,22 @@ type VirtualNetworkPeeringResponse struct {
 	AllowVirtualNetworkAccess *bool `pulumi:"allowVirtualNetworkAccess"`
 	// If we need to verify the provisioning state of the remote gateway.
 	DoNotVerifyRemoteGateways *bool `pulumi:"doNotVerifyRemoteGateways"`
+	// Whether only Ipv6 address space is peered for subnet peering.
+	EnableOnlyIPv6Peering *bool `pulumi:"enableOnlyIPv6Peering"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Resource ID.
 	Id *string `pulumi:"id"`
+	// The local address space of the local virtual network that is peered.
+	LocalAddressSpace *AddressSpaceResponse `pulumi:"localAddressSpace"`
+	// List of local subnet names that are subnet peered with remote virtual network.
+	LocalSubnetNames []string `pulumi:"localSubnetNames"`
+	// The current local address space of the local virtual network that is peered.
+	LocalVirtualNetworkAddressSpace *AddressSpaceResponse `pulumi:"localVirtualNetworkAddressSpace"`
 	// The name of the resource that is unique within a resource group. This name can be used to access the resource.
 	Name *string `pulumi:"name"`
+	// Whether complete virtual network address space is peered.
+	PeerCompleteVnets *bool `pulumi:"peerCompleteVnets"`
 	// The status of the virtual network peering.
 	PeeringState *string `pulumi:"peeringState"`
 	// The peering sync status of the virtual network peering.
@@ -21301,6 +25384,8 @@ type VirtualNetworkPeeringResponse struct {
 	RemoteAddressSpace *AddressSpaceResponse `pulumi:"remoteAddressSpace"`
 	// The reference to the remote virtual network's Bgp Communities.
 	RemoteBgpCommunities *VirtualNetworkBgpCommunitiesResponse `pulumi:"remoteBgpCommunities"`
+	// List of remote subnet names from remote virtual network that are subnet peered.
+	RemoteSubnetNames []string `pulumi:"remoteSubnetNames"`
 	// The reference to the remote virtual network. The remote virtual network can be in the same or different region (preview). See here to register for the preview and learn more (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
 	RemoteVirtualNetwork *SubResourceResponse `pulumi:"remoteVirtualNetwork"`
 	// The reference to the current address space of the remote virtual network.
@@ -21350,6 +25435,11 @@ func (o VirtualNetworkPeeringResponseOutput) DoNotVerifyRemoteGateways() pulumi.
 	return o.ApplyT(func(v VirtualNetworkPeeringResponse) *bool { return v.DoNotVerifyRemoteGateways }).(pulumi.BoolPtrOutput)
 }
 
+// Whether only Ipv6 address space is peered for subnet peering.
+func (o VirtualNetworkPeeringResponseOutput) EnableOnlyIPv6Peering() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkPeeringResponse) *bool { return v.EnableOnlyIPv6Peering }).(pulumi.BoolPtrOutput)
+}
+
 // A unique read-only string that changes whenever the resource is updated.
 func (o VirtualNetworkPeeringResponseOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualNetworkPeeringResponse) string { return v.Etag }).(pulumi.StringOutput)
@@ -21360,9 +25450,29 @@ func (o VirtualNetworkPeeringResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualNetworkPeeringResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The local address space of the local virtual network that is peered.
+func (o VirtualNetworkPeeringResponseOutput) LocalAddressSpace() AddressSpaceResponsePtrOutput {
+	return o.ApplyT(func(v VirtualNetworkPeeringResponse) *AddressSpaceResponse { return v.LocalAddressSpace }).(AddressSpaceResponsePtrOutput)
+}
+
+// List of local subnet names that are subnet peered with remote virtual network.
+func (o VirtualNetworkPeeringResponseOutput) LocalSubnetNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VirtualNetworkPeeringResponse) []string { return v.LocalSubnetNames }).(pulumi.StringArrayOutput)
+}
+
+// The current local address space of the local virtual network that is peered.
+func (o VirtualNetworkPeeringResponseOutput) LocalVirtualNetworkAddressSpace() AddressSpaceResponsePtrOutput {
+	return o.ApplyT(func(v VirtualNetworkPeeringResponse) *AddressSpaceResponse { return v.LocalVirtualNetworkAddressSpace }).(AddressSpaceResponsePtrOutput)
+}
+
 // The name of the resource that is unique within a resource group. This name can be used to access the resource.
 func (o VirtualNetworkPeeringResponseOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualNetworkPeeringResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Whether complete virtual network address space is peered.
+func (o VirtualNetworkPeeringResponseOutput) PeerCompleteVnets() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkPeeringResponse) *bool { return v.PeerCompleteVnets }).(pulumi.BoolPtrOutput)
 }
 
 // The status of the virtual network peering.
@@ -21390,6 +25500,11 @@ func (o VirtualNetworkPeeringResponseOutput) RemoteBgpCommunities() VirtualNetwo
 	return o.ApplyT(func(v VirtualNetworkPeeringResponse) *VirtualNetworkBgpCommunitiesResponse {
 		return v.RemoteBgpCommunities
 	}).(VirtualNetworkBgpCommunitiesResponsePtrOutput)
+}
+
+// List of remote subnet names from remote virtual network that are subnet peered.
+func (o VirtualNetworkPeeringResponseOutput) RemoteSubnetNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VirtualNetworkPeeringResponse) []string { return v.RemoteSubnetNames }).(pulumi.StringArrayOutput)
 }
 
 // The reference to the remote virtual network. The remote virtual network can be in the same or different region (preview). See here to register for the preview and learn more (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
@@ -21442,6 +25557,457 @@ func (o VirtualNetworkPeeringResponseArrayOutput) Index(i pulumi.IntInput) Virtu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualNetworkPeeringResponse {
 		return vs[0].([]VirtualNetworkPeeringResponse)[vs[1].(int)]
 	}).(VirtualNetworkPeeringResponseOutput)
+}
+
+// Virtual Network resource.
+type VirtualNetworkResponse struct {
+	// The AddressSpace that contains an array of IP address ranges that can be used by subnets.
+	AddressSpace *AddressSpaceResponse `pulumi:"addressSpace"`
+	// Bgp Communities sent over ExpressRoute with each route corresponding to a prefix in this VNET.
+	BgpCommunities *VirtualNetworkBgpCommunitiesResponse `pulumi:"bgpCommunities"`
+	// The DDoS protection plan associated with the virtual network.
+	DdosProtectionPlan *SubResourceResponse `pulumi:"ddosProtectionPlan"`
+	// A reference to the default public nat gateway being used by this virtual network resource.
+	DefaultPublicNatGateway SubResourceResponse `pulumi:"defaultPublicNatGateway"`
+	// The dhcpOptions that contains an array of DNS servers available to VMs deployed in the virtual network.
+	DhcpOptions *DhcpOptionsResponse `pulumi:"dhcpOptions"`
+	// Indicates if DDoS protection is enabled for all the protected resources in the virtual network. It requires a DDoS protection plan associated with the resource.
+	EnableDdosProtection *bool `pulumi:"enableDdosProtection"`
+	// Indicates if VM protection is enabled for all the subnets in the virtual network.
+	EnableVmProtection *bool `pulumi:"enableVmProtection"`
+	// Indicates if encryption is enabled on virtual network and if VM without encryption is allowed in encrypted VNet.
+	Encryption *VirtualNetworkEncryptionResponse `pulumi:"encryption"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// The extended location of the virtual network.
+	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
+	// A collection of references to flow log resources.
+	FlowLogs []FlowLogResponse `pulumi:"flowLogs"`
+	// The FlowTimeout value (in minutes) for the Virtual Network
+	FlowTimeoutInMinutes *int `pulumi:"flowTimeoutInMinutes"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Array of IpAllocation which reference this VNET.
+	IpAllocations []SubResourceResponse `pulumi:"ipAllocations"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Private Endpoint VNet Policies.
+	PrivateEndpointVNetPolicies *string `pulumi:"privateEndpointVNetPolicies"`
+	// The provisioning state of the virtual network resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The resourceGuid property of the Virtual Network resource.
+	ResourceGuid string `pulumi:"resourceGuid"`
+	// A list of subnets in a Virtual Network.
+	Subnets []SubnetResponse `pulumi:"subnets"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
+	// A list of peerings in a Virtual Network.
+	VirtualNetworkPeerings []VirtualNetworkPeeringResponse `pulumi:"virtualNetworkPeerings"`
+}
+
+// Defaults sets the appropriate defaults for VirtualNetworkResponse
+func (val *VirtualNetworkResponse) Defaults() *VirtualNetworkResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.EnableDdosProtection == nil {
+		enableDdosProtection_ := false
+		tmp.EnableDdosProtection = &enableDdosProtection_
+	}
+	if tmp.EnableVmProtection == nil {
+		enableVmProtection_ := false
+		tmp.EnableVmProtection = &enableVmProtection_
+	}
+	return &tmp
+}
+
+// Virtual Network resource.
+type VirtualNetworkResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkResponse)(nil)).Elem()
+}
+
+func (o VirtualNetworkResponseOutput) ToVirtualNetworkResponseOutput() VirtualNetworkResponseOutput {
+	return o
+}
+
+func (o VirtualNetworkResponseOutput) ToVirtualNetworkResponseOutputWithContext(ctx context.Context) VirtualNetworkResponseOutput {
+	return o
+}
+
+// The AddressSpace that contains an array of IP address ranges that can be used by subnets.
+func (o VirtualNetworkResponseOutput) AddressSpace() AddressSpaceResponsePtrOutput {
+	return o.ApplyT(func(v VirtualNetworkResponse) *AddressSpaceResponse { return v.AddressSpace }).(AddressSpaceResponsePtrOutput)
+}
+
+// Bgp Communities sent over ExpressRoute with each route corresponding to a prefix in this VNET.
+func (o VirtualNetworkResponseOutput) BgpCommunities() VirtualNetworkBgpCommunitiesResponsePtrOutput {
+	return o.ApplyT(func(v VirtualNetworkResponse) *VirtualNetworkBgpCommunitiesResponse { return v.BgpCommunities }).(VirtualNetworkBgpCommunitiesResponsePtrOutput)
+}
+
+// The DDoS protection plan associated with the virtual network.
+func (o VirtualNetworkResponseOutput) DdosProtectionPlan() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v VirtualNetworkResponse) *SubResourceResponse { return v.DdosProtectionPlan }).(SubResourceResponsePtrOutput)
+}
+
+// A reference to the default public nat gateway being used by this virtual network resource.
+func (o VirtualNetworkResponseOutput) DefaultPublicNatGateway() SubResourceResponseOutput {
+	return o.ApplyT(func(v VirtualNetworkResponse) SubResourceResponse { return v.DefaultPublicNatGateway }).(SubResourceResponseOutput)
+}
+
+// The dhcpOptions that contains an array of DNS servers available to VMs deployed in the virtual network.
+func (o VirtualNetworkResponseOutput) DhcpOptions() DhcpOptionsResponsePtrOutput {
+	return o.ApplyT(func(v VirtualNetworkResponse) *DhcpOptionsResponse { return v.DhcpOptions }).(DhcpOptionsResponsePtrOutput)
+}
+
+// Indicates if DDoS protection is enabled for all the protected resources in the virtual network. It requires a DDoS protection plan associated with the resource.
+func (o VirtualNetworkResponseOutput) EnableDdosProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkResponse) *bool { return v.EnableDdosProtection }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if VM protection is enabled for all the subnets in the virtual network.
+func (o VirtualNetworkResponseOutput) EnableVmProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkResponse) *bool { return v.EnableVmProtection }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if encryption is enabled on virtual network and if VM without encryption is allowed in encrypted VNet.
+func (o VirtualNetworkResponseOutput) Encryption() VirtualNetworkEncryptionResponsePtrOutput {
+	return o.ApplyT(func(v VirtualNetworkResponse) *VirtualNetworkEncryptionResponse { return v.Encryption }).(VirtualNetworkEncryptionResponsePtrOutput)
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o VirtualNetworkResponseOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualNetworkResponse) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The extended location of the virtual network.
+func (o VirtualNetworkResponseOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v VirtualNetworkResponse) *ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
+}
+
+// A collection of references to flow log resources.
+func (o VirtualNetworkResponseOutput) FlowLogs() FlowLogResponseArrayOutput {
+	return o.ApplyT(func(v VirtualNetworkResponse) []FlowLogResponse { return v.FlowLogs }).(FlowLogResponseArrayOutput)
+}
+
+// The FlowTimeout value (in minutes) for the Virtual Network
+func (o VirtualNetworkResponseOutput) FlowTimeoutInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkResponse) *int { return v.FlowTimeoutInMinutes }).(pulumi.IntPtrOutput)
+}
+
+// Resource ID.
+func (o VirtualNetworkResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Array of IpAllocation which reference this VNET.
+func (o VirtualNetworkResponseOutput) IpAllocations() SubResourceResponseArrayOutput {
+	return o.ApplyT(func(v VirtualNetworkResponse) []SubResourceResponse { return v.IpAllocations }).(SubResourceResponseArrayOutput)
+}
+
+// Resource location.
+func (o VirtualNetworkResponseOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkResponse) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Resource name.
+func (o VirtualNetworkResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualNetworkResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Private Endpoint VNet Policies.
+func (o VirtualNetworkResponseOutput) PrivateEndpointVNetPolicies() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkResponse) *string { return v.PrivateEndpointVNetPolicies }).(pulumi.StringPtrOutput)
+}
+
+// The provisioning state of the virtual network resource.
+func (o VirtualNetworkResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualNetworkResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The resourceGuid property of the Virtual Network resource.
+func (o VirtualNetworkResponseOutput) ResourceGuid() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualNetworkResponse) string { return v.ResourceGuid }).(pulumi.StringOutput)
+}
+
+// A list of subnets in a Virtual Network.
+func (o VirtualNetworkResponseOutput) Subnets() SubnetResponseArrayOutput {
+	return o.ApplyT(func(v VirtualNetworkResponse) []SubnetResponse { return v.Subnets }).(SubnetResponseArrayOutput)
+}
+
+// Resource tags.
+func (o VirtualNetworkResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v VirtualNetworkResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Resource type.
+func (o VirtualNetworkResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualNetworkResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// A list of peerings in a Virtual Network.
+func (o VirtualNetworkResponseOutput) VirtualNetworkPeerings() VirtualNetworkPeeringResponseArrayOutput {
+	return o.ApplyT(func(v VirtualNetworkResponse) []VirtualNetworkPeeringResponse { return v.VirtualNetworkPeerings }).(VirtualNetworkPeeringResponseArrayOutput)
+}
+
+type VirtualNetworkResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualNetworkResponse)(nil)).Elem()
+}
+
+func (o VirtualNetworkResponsePtrOutput) ToVirtualNetworkResponsePtrOutput() VirtualNetworkResponsePtrOutput {
+	return o
+}
+
+func (o VirtualNetworkResponsePtrOutput) ToVirtualNetworkResponsePtrOutputWithContext(ctx context.Context) VirtualNetworkResponsePtrOutput {
+	return o
+}
+
+func (o VirtualNetworkResponsePtrOutput) Elem() VirtualNetworkResponseOutput {
+	return o.ApplyT(func(v *VirtualNetworkResponse) VirtualNetworkResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualNetworkResponse
+		return ret
+	}).(VirtualNetworkResponseOutput)
+}
+
+// The AddressSpace that contains an array of IP address ranges that can be used by subnets.
+func (o VirtualNetworkResponsePtrOutput) AddressSpace() AddressSpaceResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkResponse) *AddressSpaceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AddressSpace
+	}).(AddressSpaceResponsePtrOutput)
+}
+
+// Bgp Communities sent over ExpressRoute with each route corresponding to a prefix in this VNET.
+func (o VirtualNetworkResponsePtrOutput) BgpCommunities() VirtualNetworkBgpCommunitiesResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkResponse) *VirtualNetworkBgpCommunitiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.BgpCommunities
+	}).(VirtualNetworkBgpCommunitiesResponsePtrOutput)
+}
+
+// The DDoS protection plan associated with the virtual network.
+func (o VirtualNetworkResponsePtrOutput) DdosProtectionPlan() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkResponse) *SubResourceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DdosProtectionPlan
+	}).(SubResourceResponsePtrOutput)
+}
+
+// A reference to the default public nat gateway being used by this virtual network resource.
+func (o VirtualNetworkResponsePtrOutput) DefaultPublicNatGateway() SubResourceResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkResponse) *SubResourceResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.DefaultPublicNatGateway
+	}).(SubResourceResponsePtrOutput)
+}
+
+// The dhcpOptions that contains an array of DNS servers available to VMs deployed in the virtual network.
+func (o VirtualNetworkResponsePtrOutput) DhcpOptions() DhcpOptionsResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkResponse) *DhcpOptionsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DhcpOptions
+	}).(DhcpOptionsResponsePtrOutput)
+}
+
+// Indicates if DDoS protection is enabled for all the protected resources in the virtual network. It requires a DDoS protection plan associated with the resource.
+func (o VirtualNetworkResponsePtrOutput) EnableDdosProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableDdosProtection
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if VM protection is enabled for all the subnets in the virtual network.
+func (o VirtualNetworkResponsePtrOutput) EnableVmProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableVmProtection
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates if encryption is enabled on virtual network and if VM without encryption is allowed in encrypted VNet.
+func (o VirtualNetworkResponsePtrOutput) Encryption() VirtualNetworkEncryptionResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkResponse) *VirtualNetworkEncryptionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Encryption
+	}).(VirtualNetworkEncryptionResponsePtrOutput)
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o VirtualNetworkResponsePtrOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Etag
+	}).(pulumi.StringPtrOutput)
+}
+
+// The extended location of the virtual network.
+func (o VirtualNetworkResponsePtrOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkResponse) *ExtendedLocationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ExtendedLocation
+	}).(ExtendedLocationResponsePtrOutput)
+}
+
+// A collection of references to flow log resources.
+func (o VirtualNetworkResponsePtrOutput) FlowLogs() FlowLogResponseArrayOutput {
+	return o.ApplyT(func(v *VirtualNetworkResponse) []FlowLogResponse {
+		if v == nil {
+			return nil
+		}
+		return v.FlowLogs
+	}).(FlowLogResponseArrayOutput)
+}
+
+// The FlowTimeout value (in minutes) for the Virtual Network
+func (o VirtualNetworkResponsePtrOutput) FlowTimeoutInMinutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FlowTimeoutInMinutes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Resource ID.
+func (o VirtualNetworkResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Array of IpAllocation which reference this VNET.
+func (o VirtualNetworkResponsePtrOutput) IpAllocations() SubResourceResponseArrayOutput {
+	return o.ApplyT(func(v *VirtualNetworkResponse) []SubResourceResponse {
+		if v == nil {
+			return nil
+		}
+		return v.IpAllocations
+	}).(SubResourceResponseArrayOutput)
+}
+
+// Resource location.
+func (o VirtualNetworkResponsePtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource name.
+func (o VirtualNetworkResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Private Endpoint VNet Policies.
+func (o VirtualNetworkResponsePtrOutput) PrivateEndpointVNetPolicies() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateEndpointVNetPolicies
+	}).(pulumi.StringPtrOutput)
+}
+
+// The provisioning state of the virtual network resource.
+func (o VirtualNetworkResponsePtrOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProvisioningState
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resourceGuid property of the Virtual Network resource.
+func (o VirtualNetworkResponsePtrOutput) ResourceGuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceGuid
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of subnets in a Virtual Network.
+func (o VirtualNetworkResponsePtrOutput) Subnets() SubnetResponseArrayOutput {
+	return o.ApplyT(func(v *VirtualNetworkResponse) []SubnetResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Subnets
+	}).(SubnetResponseArrayOutput)
+}
+
+// Resource tags.
+func (o VirtualNetworkResponsePtrOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *VirtualNetworkResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Resource type.
+func (o VirtualNetworkResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of peerings in a Virtual Network.
+func (o VirtualNetworkResponsePtrOutput) VirtualNetworkPeerings() VirtualNetworkPeeringResponseArrayOutput {
+	return o.ApplyT(func(v *VirtualNetworkResponse) []VirtualNetworkPeeringResponse {
+		if v == nil {
+			return nil
+		}
+		return v.VirtualNetworkPeerings
+	}).(VirtualNetworkPeeringResponseArrayOutput)
 }
 
 // Virtual Network Tap resource.
@@ -22034,6 +26600,148 @@ func (o VirtualNetworkTapResponseArrayOutput) Index(i pulumi.IntInput) VirtualNe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualNetworkTapResponse {
 		return vs[0].([]VirtualNetworkTapResponse)[vs[1].(int)]
 	}).(VirtualNetworkTapResponseOutput)
+}
+
+// Virtual Network Tap resource
+type VirtualNetworkTapResponseV1 struct {
+	// The reference to the private IP address on the internal Load Balancer that will receive the tap
+	DestinationLoadBalancerFrontEndIPConfiguration *FrontendIPConfigurationResponseV1 `pulumi:"destinationLoadBalancerFrontEndIPConfiguration"`
+	// The reference to the private IP Address of the collector nic that will receive the tap
+	DestinationNetworkInterfaceIPConfiguration *NetworkInterfaceIPConfigurationResponse `pulumi:"destinationNetworkInterfaceIPConfiguration"`
+	// The VXLAN destination port that will receive the tapped traffic.
+	DestinationPort *int `pulumi:"destinationPort"`
+	// Gets a unique read-only string that changes whenever the resource is updated.
+	Etag *string `pulumi:"etag"`
+	// Resource ID.
+	Id *string `pulumi:"id"`
+	// Resource location.
+	Location *string `pulumi:"location"`
+	// Resource name.
+	Name string `pulumi:"name"`
+	// Specifies the list of resource IDs for the network interface IP configuration that needs to be tapped.
+	NetworkInterfaceTapConfigurations []NetworkInterfaceTapConfigurationResponseV1 `pulumi:"networkInterfaceTapConfigurations"`
+	// The provisioning state of the virtual network tap. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// The resourceGuid property of the virtual network tap.
+	ResourceGuid string `pulumi:"resourceGuid"`
+	// Resource tags.
+	Tags map[string]string `pulumi:"tags"`
+	// Resource type.
+	Type string `pulumi:"type"`
+}
+
+// Defaults sets the appropriate defaults for VirtualNetworkTapResponseV1
+func (val *VirtualNetworkTapResponseV1) Defaults() *VirtualNetworkTapResponseV1 {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	tmp.DestinationLoadBalancerFrontEndIPConfiguration = tmp.DestinationLoadBalancerFrontEndIPConfiguration.Defaults()
+
+	tmp.DestinationNetworkInterfaceIPConfiguration = tmp.DestinationNetworkInterfaceIPConfiguration.Defaults()
+
+	return &tmp
+}
+
+// Virtual Network Tap resource
+type VirtualNetworkTapResponseV1Output struct{ *pulumi.OutputState }
+
+func (VirtualNetworkTapResponseV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkTapResponseV1)(nil)).Elem()
+}
+
+func (o VirtualNetworkTapResponseV1Output) ToVirtualNetworkTapResponseV1Output() VirtualNetworkTapResponseV1Output {
+	return o
+}
+
+func (o VirtualNetworkTapResponseV1Output) ToVirtualNetworkTapResponseV1OutputWithContext(ctx context.Context) VirtualNetworkTapResponseV1Output {
+	return o
+}
+
+// The reference to the private IP address on the internal Load Balancer that will receive the tap
+func (o VirtualNetworkTapResponseV1Output) DestinationLoadBalancerFrontEndIPConfiguration() FrontendIPConfigurationResponseV1PtrOutput {
+	return o.ApplyT(func(v VirtualNetworkTapResponseV1) *FrontendIPConfigurationResponseV1 {
+		return v.DestinationLoadBalancerFrontEndIPConfiguration
+	}).(FrontendIPConfigurationResponseV1PtrOutput)
+}
+
+// The reference to the private IP Address of the collector nic that will receive the tap
+func (o VirtualNetworkTapResponseV1Output) DestinationNetworkInterfaceIPConfiguration() NetworkInterfaceIPConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v VirtualNetworkTapResponseV1) *NetworkInterfaceIPConfigurationResponse {
+		return v.DestinationNetworkInterfaceIPConfiguration
+	}).(NetworkInterfaceIPConfigurationResponsePtrOutput)
+}
+
+// The VXLAN destination port that will receive the tapped traffic.
+func (o VirtualNetworkTapResponseV1Output) DestinationPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkTapResponseV1) *int { return v.DestinationPort }).(pulumi.IntPtrOutput)
+}
+
+// Gets a unique read-only string that changes whenever the resource is updated.
+func (o VirtualNetworkTapResponseV1Output) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkTapResponseV1) *string { return v.Etag }).(pulumi.StringPtrOutput)
+}
+
+// Resource ID.
+func (o VirtualNetworkTapResponseV1Output) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkTapResponseV1) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Resource location.
+func (o VirtualNetworkTapResponseV1Output) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkTapResponseV1) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Resource name.
+func (o VirtualNetworkTapResponseV1Output) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualNetworkTapResponseV1) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies the list of resource IDs for the network interface IP configuration that needs to be tapped.
+func (o VirtualNetworkTapResponseV1Output) NetworkInterfaceTapConfigurations() NetworkInterfaceTapConfigurationResponseV1ArrayOutput {
+	return o.ApplyT(func(v VirtualNetworkTapResponseV1) []NetworkInterfaceTapConfigurationResponseV1 {
+		return v.NetworkInterfaceTapConfigurations
+	}).(NetworkInterfaceTapConfigurationResponseV1ArrayOutput)
+}
+
+// The provisioning state of the virtual network tap. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+func (o VirtualNetworkTapResponseV1Output) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualNetworkTapResponseV1) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// The resourceGuid property of the virtual network tap.
+func (o VirtualNetworkTapResponseV1Output) ResourceGuid() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualNetworkTapResponseV1) string { return v.ResourceGuid }).(pulumi.StringOutput)
+}
+
+// Resource tags.
+func (o VirtualNetworkTapResponseV1Output) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v VirtualNetworkTapResponseV1) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// Resource type.
+func (o VirtualNetworkTapResponseV1Output) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualNetworkTapResponseV1) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type VirtualNetworkTapResponseV1ArrayOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkTapResponseV1ArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VirtualNetworkTapResponseV1)(nil)).Elem()
+}
+
+func (o VirtualNetworkTapResponseV1ArrayOutput) ToVirtualNetworkTapResponseV1ArrayOutput() VirtualNetworkTapResponseV1ArrayOutput {
+	return o
+}
+
+func (o VirtualNetworkTapResponseV1ArrayOutput) ToVirtualNetworkTapResponseV1ArrayOutputWithContext(ctx context.Context) VirtualNetworkTapResponseV1ArrayOutput {
+	return o
+}
+
+func (o VirtualNetworkTapResponseV1ArrayOutput) Index(i pulumi.IntInput) VirtualNetworkTapResponseV1Output {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualNetworkTapResponseV1 {
+		return vs[0].([]VirtualNetworkTapResponseV1)[vs[1].(int)]
+	}).(VirtualNetworkTapResponseV1Output)
 }
 
 // The VirtualHub Router autoscale configuration.
@@ -23914,7 +28622,7 @@ type VpnConnectionType struct {
 	// Id of the connected vpn site.
 	RemoteVpnSite *SubResource `pulumi:"remoteVpnSite"`
 	// The Routing Configuration indicating the associated and propagated route tables on this connection.
-	RoutingConfiguration *RoutingConfiguration `pulumi:"routingConfiguration"`
+	RoutingConfiguration *RoutingConfigurationType `pulumi:"routingConfiguration"`
 	// Routing weight for vpn connection.
 	RoutingWeight *int `pulumi:"routingWeight"`
 	// SharedKey for the vpn connection.
@@ -23963,7 +28671,7 @@ type VpnConnectionTypeArgs struct {
 	// Id of the connected vpn site.
 	RemoteVpnSite SubResourcePtrInput `pulumi:"remoteVpnSite"`
 	// The Routing Configuration indicating the associated and propagated route tables on this connection.
-	RoutingConfiguration RoutingConfigurationPtrInput `pulumi:"routingConfiguration"`
+	RoutingConfiguration RoutingConfigurationTypePtrInput `pulumi:"routingConfiguration"`
 	// Routing weight for vpn connection.
 	RoutingWeight pulumi.IntPtrInput `pulumi:"routingWeight"`
 	// SharedKey for the vpn connection.
@@ -24078,8 +28786,8 @@ func (o VpnConnectionTypeOutput) RemoteVpnSite() SubResourcePtrOutput {
 }
 
 // The Routing Configuration indicating the associated and propagated route tables on this connection.
-func (o VpnConnectionTypeOutput) RoutingConfiguration() RoutingConfigurationPtrOutput {
-	return o.ApplyT(func(v VpnConnectionType) *RoutingConfiguration { return v.RoutingConfiguration }).(RoutingConfigurationPtrOutput)
+func (o VpnConnectionTypeOutput) RoutingConfiguration() RoutingConfigurationTypePtrOutput {
+	return o.ApplyT(func(v VpnConnectionType) *RoutingConfigurationType { return v.RoutingConfiguration }).(RoutingConfigurationTypePtrOutput)
 }
 
 // Routing weight for vpn connection.
@@ -26364,6 +31072,531 @@ func (o VpnServerConfigurationPolicyGroupResponseArrayOutput) Index(i pulumi.Int
 	}).(VpnServerConfigurationPolicyGroupResponseOutput)
 }
 
+// Parameters for VpnServerConfiguration.
+type VpnServerConfigurationProperties struct {
+	// The set of aad vpn authentication parameters.
+	AadAuthenticationParameters *AadAuthenticationParameters `pulumi:"aadAuthenticationParameters"`
+	// List of all VpnServerConfigurationPolicyGroups.
+	ConfigurationPolicyGroups []VpnServerConfigurationPolicyGroup `pulumi:"configurationPolicyGroups"`
+	// The name of the VpnServerConfiguration that is unique within a resource group.
+	Name *string `pulumi:"name"`
+	// Radius client root certificate of VpnServerConfiguration.
+	RadiusClientRootCertificates []VpnServerConfigRadiusClientRootCertificate `pulumi:"radiusClientRootCertificates"`
+	// The radius server address property of the VpnServerConfiguration resource for point to site client connection.
+	RadiusServerAddress *string `pulumi:"radiusServerAddress"`
+	// Radius Server root certificate of VpnServerConfiguration.
+	RadiusServerRootCertificates []VpnServerConfigRadiusServerRootCertificate `pulumi:"radiusServerRootCertificates"`
+	// The radius secret property of the VpnServerConfiguration resource for point to site client connection.
+	RadiusServerSecret *string `pulumi:"radiusServerSecret"`
+	// Multiple Radius Server configuration for VpnServerConfiguration.
+	RadiusServers []RadiusServer `pulumi:"radiusServers"`
+	// VPN authentication types for the VpnServerConfiguration.
+	VpnAuthenticationTypes []string `pulumi:"vpnAuthenticationTypes"`
+	// VpnClientIpsecPolicies for VpnServerConfiguration.
+	VpnClientIpsecPolicies []IpsecPolicy `pulumi:"vpnClientIpsecPolicies"`
+	// VPN client revoked certificate of VpnServerConfiguration.
+	VpnClientRevokedCertificates []VpnServerConfigVpnClientRevokedCertificate `pulumi:"vpnClientRevokedCertificates"`
+	// VPN client root certificate of VpnServerConfiguration.
+	VpnClientRootCertificates []VpnServerConfigVpnClientRootCertificate `pulumi:"vpnClientRootCertificates"`
+	// VPN protocols for the VpnServerConfiguration.
+	VpnProtocols []string `pulumi:"vpnProtocols"`
+}
+
+// VpnServerConfigurationPropertiesInput is an input type that accepts VpnServerConfigurationPropertiesArgs and VpnServerConfigurationPropertiesOutput values.
+// You can construct a concrete instance of `VpnServerConfigurationPropertiesInput` via:
+//
+//	VpnServerConfigurationPropertiesArgs{...}
+type VpnServerConfigurationPropertiesInput interface {
+	pulumi.Input
+
+	ToVpnServerConfigurationPropertiesOutput() VpnServerConfigurationPropertiesOutput
+	ToVpnServerConfigurationPropertiesOutputWithContext(context.Context) VpnServerConfigurationPropertiesOutput
+}
+
+// Parameters for VpnServerConfiguration.
+type VpnServerConfigurationPropertiesArgs struct {
+	// The set of aad vpn authentication parameters.
+	AadAuthenticationParameters AadAuthenticationParametersPtrInput `pulumi:"aadAuthenticationParameters"`
+	// List of all VpnServerConfigurationPolicyGroups.
+	ConfigurationPolicyGroups VpnServerConfigurationPolicyGroupArrayInput `pulumi:"configurationPolicyGroups"`
+	// The name of the VpnServerConfiguration that is unique within a resource group.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Radius client root certificate of VpnServerConfiguration.
+	RadiusClientRootCertificates VpnServerConfigRadiusClientRootCertificateArrayInput `pulumi:"radiusClientRootCertificates"`
+	// The radius server address property of the VpnServerConfiguration resource for point to site client connection.
+	RadiusServerAddress pulumi.StringPtrInput `pulumi:"radiusServerAddress"`
+	// Radius Server root certificate of VpnServerConfiguration.
+	RadiusServerRootCertificates VpnServerConfigRadiusServerRootCertificateArrayInput `pulumi:"radiusServerRootCertificates"`
+	// The radius secret property of the VpnServerConfiguration resource for point to site client connection.
+	RadiusServerSecret pulumi.StringPtrInput `pulumi:"radiusServerSecret"`
+	// Multiple Radius Server configuration for VpnServerConfiguration.
+	RadiusServers RadiusServerArrayInput `pulumi:"radiusServers"`
+	// VPN authentication types for the VpnServerConfiguration.
+	VpnAuthenticationTypes pulumi.StringArrayInput `pulumi:"vpnAuthenticationTypes"`
+	// VpnClientIpsecPolicies for VpnServerConfiguration.
+	VpnClientIpsecPolicies IpsecPolicyArrayInput `pulumi:"vpnClientIpsecPolicies"`
+	// VPN client revoked certificate of VpnServerConfiguration.
+	VpnClientRevokedCertificates VpnServerConfigVpnClientRevokedCertificateArrayInput `pulumi:"vpnClientRevokedCertificates"`
+	// VPN client root certificate of VpnServerConfiguration.
+	VpnClientRootCertificates VpnServerConfigVpnClientRootCertificateArrayInput `pulumi:"vpnClientRootCertificates"`
+	// VPN protocols for the VpnServerConfiguration.
+	VpnProtocols pulumi.StringArrayInput `pulumi:"vpnProtocols"`
+}
+
+func (VpnServerConfigurationPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnServerConfigurationProperties)(nil)).Elem()
+}
+
+func (i VpnServerConfigurationPropertiesArgs) ToVpnServerConfigurationPropertiesOutput() VpnServerConfigurationPropertiesOutput {
+	return i.ToVpnServerConfigurationPropertiesOutputWithContext(context.Background())
+}
+
+func (i VpnServerConfigurationPropertiesArgs) ToVpnServerConfigurationPropertiesOutputWithContext(ctx context.Context) VpnServerConfigurationPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnServerConfigurationPropertiesOutput)
+}
+
+func (i VpnServerConfigurationPropertiesArgs) ToVpnServerConfigurationPropertiesPtrOutput() VpnServerConfigurationPropertiesPtrOutput {
+	return i.ToVpnServerConfigurationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i VpnServerConfigurationPropertiesArgs) ToVpnServerConfigurationPropertiesPtrOutputWithContext(ctx context.Context) VpnServerConfigurationPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnServerConfigurationPropertiesOutput).ToVpnServerConfigurationPropertiesPtrOutputWithContext(ctx)
+}
+
+// VpnServerConfigurationPropertiesPtrInput is an input type that accepts VpnServerConfigurationPropertiesArgs, VpnServerConfigurationPropertiesPtr and VpnServerConfigurationPropertiesPtrOutput values.
+// You can construct a concrete instance of `VpnServerConfigurationPropertiesPtrInput` via:
+//
+//	        VpnServerConfigurationPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type VpnServerConfigurationPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToVpnServerConfigurationPropertiesPtrOutput() VpnServerConfigurationPropertiesPtrOutput
+	ToVpnServerConfigurationPropertiesPtrOutputWithContext(context.Context) VpnServerConfigurationPropertiesPtrOutput
+}
+
+type vpnServerConfigurationPropertiesPtrType VpnServerConfigurationPropertiesArgs
+
+func VpnServerConfigurationPropertiesPtr(v *VpnServerConfigurationPropertiesArgs) VpnServerConfigurationPropertiesPtrInput {
+	return (*vpnServerConfigurationPropertiesPtrType)(v)
+}
+
+func (*vpnServerConfigurationPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnServerConfigurationProperties)(nil)).Elem()
+}
+
+func (i *vpnServerConfigurationPropertiesPtrType) ToVpnServerConfigurationPropertiesPtrOutput() VpnServerConfigurationPropertiesPtrOutput {
+	return i.ToVpnServerConfigurationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *vpnServerConfigurationPropertiesPtrType) ToVpnServerConfigurationPropertiesPtrOutputWithContext(ctx context.Context) VpnServerConfigurationPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnServerConfigurationPropertiesPtrOutput)
+}
+
+// Parameters for VpnServerConfiguration.
+type VpnServerConfigurationPropertiesOutput struct{ *pulumi.OutputState }
+
+func (VpnServerConfigurationPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnServerConfigurationProperties)(nil)).Elem()
+}
+
+func (o VpnServerConfigurationPropertiesOutput) ToVpnServerConfigurationPropertiesOutput() VpnServerConfigurationPropertiesOutput {
+	return o
+}
+
+func (o VpnServerConfigurationPropertiesOutput) ToVpnServerConfigurationPropertiesOutputWithContext(ctx context.Context) VpnServerConfigurationPropertiesOutput {
+	return o
+}
+
+func (o VpnServerConfigurationPropertiesOutput) ToVpnServerConfigurationPropertiesPtrOutput() VpnServerConfigurationPropertiesPtrOutput {
+	return o.ToVpnServerConfigurationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o VpnServerConfigurationPropertiesOutput) ToVpnServerConfigurationPropertiesPtrOutputWithContext(ctx context.Context) VpnServerConfigurationPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpnServerConfigurationProperties) *VpnServerConfigurationProperties {
+		return &v
+	}).(VpnServerConfigurationPropertiesPtrOutput)
+}
+
+// The set of aad vpn authentication parameters.
+func (o VpnServerConfigurationPropertiesOutput) AadAuthenticationParameters() AadAuthenticationParametersPtrOutput {
+	return o.ApplyT(func(v VpnServerConfigurationProperties) *AadAuthenticationParameters {
+		return v.AadAuthenticationParameters
+	}).(AadAuthenticationParametersPtrOutput)
+}
+
+// List of all VpnServerConfigurationPolicyGroups.
+func (o VpnServerConfigurationPropertiesOutput) ConfigurationPolicyGroups() VpnServerConfigurationPolicyGroupArrayOutput {
+	return o.ApplyT(func(v VpnServerConfigurationProperties) []VpnServerConfigurationPolicyGroup {
+		return v.ConfigurationPolicyGroups
+	}).(VpnServerConfigurationPolicyGroupArrayOutput)
+}
+
+// The name of the VpnServerConfiguration that is unique within a resource group.
+func (o VpnServerConfigurationPropertiesOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnServerConfigurationProperties) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Radius client root certificate of VpnServerConfiguration.
+func (o VpnServerConfigurationPropertiesOutput) RadiusClientRootCertificates() VpnServerConfigRadiusClientRootCertificateArrayOutput {
+	return o.ApplyT(func(v VpnServerConfigurationProperties) []VpnServerConfigRadiusClientRootCertificate {
+		return v.RadiusClientRootCertificates
+	}).(VpnServerConfigRadiusClientRootCertificateArrayOutput)
+}
+
+// The radius server address property of the VpnServerConfiguration resource for point to site client connection.
+func (o VpnServerConfigurationPropertiesOutput) RadiusServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnServerConfigurationProperties) *string { return v.RadiusServerAddress }).(pulumi.StringPtrOutput)
+}
+
+// Radius Server root certificate of VpnServerConfiguration.
+func (o VpnServerConfigurationPropertiesOutput) RadiusServerRootCertificates() VpnServerConfigRadiusServerRootCertificateArrayOutput {
+	return o.ApplyT(func(v VpnServerConfigurationProperties) []VpnServerConfigRadiusServerRootCertificate {
+		return v.RadiusServerRootCertificates
+	}).(VpnServerConfigRadiusServerRootCertificateArrayOutput)
+}
+
+// The radius secret property of the VpnServerConfiguration resource for point to site client connection.
+func (o VpnServerConfigurationPropertiesOutput) RadiusServerSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnServerConfigurationProperties) *string { return v.RadiusServerSecret }).(pulumi.StringPtrOutput)
+}
+
+// Multiple Radius Server configuration for VpnServerConfiguration.
+func (o VpnServerConfigurationPropertiesOutput) RadiusServers() RadiusServerArrayOutput {
+	return o.ApplyT(func(v VpnServerConfigurationProperties) []RadiusServer { return v.RadiusServers }).(RadiusServerArrayOutput)
+}
+
+// VPN authentication types for the VpnServerConfiguration.
+func (o VpnServerConfigurationPropertiesOutput) VpnAuthenticationTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VpnServerConfigurationProperties) []string { return v.VpnAuthenticationTypes }).(pulumi.StringArrayOutput)
+}
+
+// VpnClientIpsecPolicies for VpnServerConfiguration.
+func (o VpnServerConfigurationPropertiesOutput) VpnClientIpsecPolicies() IpsecPolicyArrayOutput {
+	return o.ApplyT(func(v VpnServerConfigurationProperties) []IpsecPolicy { return v.VpnClientIpsecPolicies }).(IpsecPolicyArrayOutput)
+}
+
+// VPN client revoked certificate of VpnServerConfiguration.
+func (o VpnServerConfigurationPropertiesOutput) VpnClientRevokedCertificates() VpnServerConfigVpnClientRevokedCertificateArrayOutput {
+	return o.ApplyT(func(v VpnServerConfigurationProperties) []VpnServerConfigVpnClientRevokedCertificate {
+		return v.VpnClientRevokedCertificates
+	}).(VpnServerConfigVpnClientRevokedCertificateArrayOutput)
+}
+
+// VPN client root certificate of VpnServerConfiguration.
+func (o VpnServerConfigurationPropertiesOutput) VpnClientRootCertificates() VpnServerConfigVpnClientRootCertificateArrayOutput {
+	return o.ApplyT(func(v VpnServerConfigurationProperties) []VpnServerConfigVpnClientRootCertificate {
+		return v.VpnClientRootCertificates
+	}).(VpnServerConfigVpnClientRootCertificateArrayOutput)
+}
+
+// VPN protocols for the VpnServerConfiguration.
+func (o VpnServerConfigurationPropertiesOutput) VpnProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VpnServerConfigurationProperties) []string { return v.VpnProtocols }).(pulumi.StringArrayOutput)
+}
+
+type VpnServerConfigurationPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (VpnServerConfigurationPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnServerConfigurationProperties)(nil)).Elem()
+}
+
+func (o VpnServerConfigurationPropertiesPtrOutput) ToVpnServerConfigurationPropertiesPtrOutput() VpnServerConfigurationPropertiesPtrOutput {
+	return o
+}
+
+func (o VpnServerConfigurationPropertiesPtrOutput) ToVpnServerConfigurationPropertiesPtrOutputWithContext(ctx context.Context) VpnServerConfigurationPropertiesPtrOutput {
+	return o
+}
+
+func (o VpnServerConfigurationPropertiesPtrOutput) Elem() VpnServerConfigurationPropertiesOutput {
+	return o.ApplyT(func(v *VpnServerConfigurationProperties) VpnServerConfigurationProperties {
+		if v != nil {
+			return *v
+		}
+		var ret VpnServerConfigurationProperties
+		return ret
+	}).(VpnServerConfigurationPropertiesOutput)
+}
+
+// The set of aad vpn authentication parameters.
+func (o VpnServerConfigurationPropertiesPtrOutput) AadAuthenticationParameters() AadAuthenticationParametersPtrOutput {
+	return o.ApplyT(func(v *VpnServerConfigurationProperties) *AadAuthenticationParameters {
+		if v == nil {
+			return nil
+		}
+		return v.AadAuthenticationParameters
+	}).(AadAuthenticationParametersPtrOutput)
+}
+
+// List of all VpnServerConfigurationPolicyGroups.
+func (o VpnServerConfigurationPropertiesPtrOutput) ConfigurationPolicyGroups() VpnServerConfigurationPolicyGroupArrayOutput {
+	return o.ApplyT(func(v *VpnServerConfigurationProperties) []VpnServerConfigurationPolicyGroup {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigurationPolicyGroups
+	}).(VpnServerConfigurationPolicyGroupArrayOutput)
+}
+
+// The name of the VpnServerConfiguration that is unique within a resource group.
+func (o VpnServerConfigurationPropertiesPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnServerConfigurationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Radius client root certificate of VpnServerConfiguration.
+func (o VpnServerConfigurationPropertiesPtrOutput) RadiusClientRootCertificates() VpnServerConfigRadiusClientRootCertificateArrayOutput {
+	return o.ApplyT(func(v *VpnServerConfigurationProperties) []VpnServerConfigRadiusClientRootCertificate {
+		if v == nil {
+			return nil
+		}
+		return v.RadiusClientRootCertificates
+	}).(VpnServerConfigRadiusClientRootCertificateArrayOutput)
+}
+
+// The radius server address property of the VpnServerConfiguration resource for point to site client connection.
+func (o VpnServerConfigurationPropertiesPtrOutput) RadiusServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnServerConfigurationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RadiusServerAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Radius Server root certificate of VpnServerConfiguration.
+func (o VpnServerConfigurationPropertiesPtrOutput) RadiusServerRootCertificates() VpnServerConfigRadiusServerRootCertificateArrayOutput {
+	return o.ApplyT(func(v *VpnServerConfigurationProperties) []VpnServerConfigRadiusServerRootCertificate {
+		if v == nil {
+			return nil
+		}
+		return v.RadiusServerRootCertificates
+	}).(VpnServerConfigRadiusServerRootCertificateArrayOutput)
+}
+
+// The radius secret property of the VpnServerConfiguration resource for point to site client connection.
+func (o VpnServerConfigurationPropertiesPtrOutput) RadiusServerSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnServerConfigurationProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RadiusServerSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Multiple Radius Server configuration for VpnServerConfiguration.
+func (o VpnServerConfigurationPropertiesPtrOutput) RadiusServers() RadiusServerArrayOutput {
+	return o.ApplyT(func(v *VpnServerConfigurationProperties) []RadiusServer {
+		if v == nil {
+			return nil
+		}
+		return v.RadiusServers
+	}).(RadiusServerArrayOutput)
+}
+
+// VPN authentication types for the VpnServerConfiguration.
+func (o VpnServerConfigurationPropertiesPtrOutput) VpnAuthenticationTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VpnServerConfigurationProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VpnAuthenticationTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// VpnClientIpsecPolicies for VpnServerConfiguration.
+func (o VpnServerConfigurationPropertiesPtrOutput) VpnClientIpsecPolicies() IpsecPolicyArrayOutput {
+	return o.ApplyT(func(v *VpnServerConfigurationProperties) []IpsecPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.VpnClientIpsecPolicies
+	}).(IpsecPolicyArrayOutput)
+}
+
+// VPN client revoked certificate of VpnServerConfiguration.
+func (o VpnServerConfigurationPropertiesPtrOutput) VpnClientRevokedCertificates() VpnServerConfigVpnClientRevokedCertificateArrayOutput {
+	return o.ApplyT(func(v *VpnServerConfigurationProperties) []VpnServerConfigVpnClientRevokedCertificate {
+		if v == nil {
+			return nil
+		}
+		return v.VpnClientRevokedCertificates
+	}).(VpnServerConfigVpnClientRevokedCertificateArrayOutput)
+}
+
+// VPN client root certificate of VpnServerConfiguration.
+func (o VpnServerConfigurationPropertiesPtrOutput) VpnClientRootCertificates() VpnServerConfigVpnClientRootCertificateArrayOutput {
+	return o.ApplyT(func(v *VpnServerConfigurationProperties) []VpnServerConfigVpnClientRootCertificate {
+		if v == nil {
+			return nil
+		}
+		return v.VpnClientRootCertificates
+	}).(VpnServerConfigVpnClientRootCertificateArrayOutput)
+}
+
+// VPN protocols for the VpnServerConfiguration.
+func (o VpnServerConfigurationPropertiesPtrOutput) VpnProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VpnServerConfigurationProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.VpnProtocols
+	}).(pulumi.StringArrayOutput)
+}
+
+// Parameters for VpnServerConfiguration.
+type VpnServerConfigurationPropertiesResponse struct {
+	// The set of aad vpn authentication parameters.
+	AadAuthenticationParameters *AadAuthenticationParametersResponse `pulumi:"aadAuthenticationParameters"`
+	// List of all VpnServerConfigurationPolicyGroups.
+	ConfigurationPolicyGroups []VpnServerConfigurationPolicyGroupResponse `pulumi:"configurationPolicyGroups"`
+	// A unique read-only string that changes whenever the resource is updated.
+	Etag string `pulumi:"etag"`
+	// The name of the VpnServerConfiguration that is unique within a resource group.
+	Name *string `pulumi:"name"`
+	// List of references to P2SVpnGateways.
+	P2SVpnGateways []P2SVpnGatewayResponse `pulumi:"p2SVpnGateways"`
+	// The provisioning state of the VpnServerConfiguration resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Radius client root certificate of VpnServerConfiguration.
+	RadiusClientRootCertificates []VpnServerConfigRadiusClientRootCertificateResponse `pulumi:"radiusClientRootCertificates"`
+	// The radius server address property of the VpnServerConfiguration resource for point to site client connection.
+	RadiusServerAddress *string `pulumi:"radiusServerAddress"`
+	// Radius Server root certificate of VpnServerConfiguration.
+	RadiusServerRootCertificates []VpnServerConfigRadiusServerRootCertificateResponse `pulumi:"radiusServerRootCertificates"`
+	// The radius secret property of the VpnServerConfiguration resource for point to site client connection.
+	RadiusServerSecret *string `pulumi:"radiusServerSecret"`
+	// Multiple Radius Server configuration for VpnServerConfiguration.
+	RadiusServers []RadiusServerResponse `pulumi:"radiusServers"`
+	// VPN authentication types for the VpnServerConfiguration.
+	VpnAuthenticationTypes []string `pulumi:"vpnAuthenticationTypes"`
+	// VpnClientIpsecPolicies for VpnServerConfiguration.
+	VpnClientIpsecPolicies []IpsecPolicyResponse `pulumi:"vpnClientIpsecPolicies"`
+	// VPN client revoked certificate of VpnServerConfiguration.
+	VpnClientRevokedCertificates []VpnServerConfigVpnClientRevokedCertificateResponse `pulumi:"vpnClientRevokedCertificates"`
+	// VPN client root certificate of VpnServerConfiguration.
+	VpnClientRootCertificates []VpnServerConfigVpnClientRootCertificateResponse `pulumi:"vpnClientRootCertificates"`
+	// VPN protocols for the VpnServerConfiguration.
+	VpnProtocols []string `pulumi:"vpnProtocols"`
+}
+
+// Parameters for VpnServerConfiguration.
+type VpnServerConfigurationPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (VpnServerConfigurationPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnServerConfigurationPropertiesResponse)(nil)).Elem()
+}
+
+func (o VpnServerConfigurationPropertiesResponseOutput) ToVpnServerConfigurationPropertiesResponseOutput() VpnServerConfigurationPropertiesResponseOutput {
+	return o
+}
+
+func (o VpnServerConfigurationPropertiesResponseOutput) ToVpnServerConfigurationPropertiesResponseOutputWithContext(ctx context.Context) VpnServerConfigurationPropertiesResponseOutput {
+	return o
+}
+
+// The set of aad vpn authentication parameters.
+func (o VpnServerConfigurationPropertiesResponseOutput) AadAuthenticationParameters() AadAuthenticationParametersResponsePtrOutput {
+	return o.ApplyT(func(v VpnServerConfigurationPropertiesResponse) *AadAuthenticationParametersResponse {
+		return v.AadAuthenticationParameters
+	}).(AadAuthenticationParametersResponsePtrOutput)
+}
+
+// List of all VpnServerConfigurationPolicyGroups.
+func (o VpnServerConfigurationPropertiesResponseOutput) ConfigurationPolicyGroups() VpnServerConfigurationPolicyGroupResponseArrayOutput {
+	return o.ApplyT(func(v VpnServerConfigurationPropertiesResponse) []VpnServerConfigurationPolicyGroupResponse {
+		return v.ConfigurationPolicyGroups
+	}).(VpnServerConfigurationPolicyGroupResponseArrayOutput)
+}
+
+// A unique read-only string that changes whenever the resource is updated.
+func (o VpnServerConfigurationPropertiesResponseOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v VpnServerConfigurationPropertiesResponse) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// The name of the VpnServerConfiguration that is unique within a resource group.
+func (o VpnServerConfigurationPropertiesResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnServerConfigurationPropertiesResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// List of references to P2SVpnGateways.
+func (o VpnServerConfigurationPropertiesResponseOutput) P2SVpnGateways() P2SVpnGatewayResponseArrayOutput {
+	return o.ApplyT(func(v VpnServerConfigurationPropertiesResponse) []P2SVpnGatewayResponse { return v.P2SVpnGateways }).(P2SVpnGatewayResponseArrayOutput)
+}
+
+// The provisioning state of the VpnServerConfiguration resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
+func (o VpnServerConfigurationPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v VpnServerConfigurationPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Radius client root certificate of VpnServerConfiguration.
+func (o VpnServerConfigurationPropertiesResponseOutput) RadiusClientRootCertificates() VpnServerConfigRadiusClientRootCertificateResponseArrayOutput {
+	return o.ApplyT(func(v VpnServerConfigurationPropertiesResponse) []VpnServerConfigRadiusClientRootCertificateResponse {
+		return v.RadiusClientRootCertificates
+	}).(VpnServerConfigRadiusClientRootCertificateResponseArrayOutput)
+}
+
+// The radius server address property of the VpnServerConfiguration resource for point to site client connection.
+func (o VpnServerConfigurationPropertiesResponseOutput) RadiusServerAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnServerConfigurationPropertiesResponse) *string { return v.RadiusServerAddress }).(pulumi.StringPtrOutput)
+}
+
+// Radius Server root certificate of VpnServerConfiguration.
+func (o VpnServerConfigurationPropertiesResponseOutput) RadiusServerRootCertificates() VpnServerConfigRadiusServerRootCertificateResponseArrayOutput {
+	return o.ApplyT(func(v VpnServerConfigurationPropertiesResponse) []VpnServerConfigRadiusServerRootCertificateResponse {
+		return v.RadiusServerRootCertificates
+	}).(VpnServerConfigRadiusServerRootCertificateResponseArrayOutput)
+}
+
+// The radius secret property of the VpnServerConfiguration resource for point to site client connection.
+func (o VpnServerConfigurationPropertiesResponseOutput) RadiusServerSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnServerConfigurationPropertiesResponse) *string { return v.RadiusServerSecret }).(pulumi.StringPtrOutput)
+}
+
+// Multiple Radius Server configuration for VpnServerConfiguration.
+func (o VpnServerConfigurationPropertiesResponseOutput) RadiusServers() RadiusServerResponseArrayOutput {
+	return o.ApplyT(func(v VpnServerConfigurationPropertiesResponse) []RadiusServerResponse { return v.RadiusServers }).(RadiusServerResponseArrayOutput)
+}
+
+// VPN authentication types for the VpnServerConfiguration.
+func (o VpnServerConfigurationPropertiesResponseOutput) VpnAuthenticationTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VpnServerConfigurationPropertiesResponse) []string { return v.VpnAuthenticationTypes }).(pulumi.StringArrayOutput)
+}
+
+// VpnClientIpsecPolicies for VpnServerConfiguration.
+func (o VpnServerConfigurationPropertiesResponseOutput) VpnClientIpsecPolicies() IpsecPolicyResponseArrayOutput {
+	return o.ApplyT(func(v VpnServerConfigurationPropertiesResponse) []IpsecPolicyResponse {
+		return v.VpnClientIpsecPolicies
+	}).(IpsecPolicyResponseArrayOutput)
+}
+
+// VPN client revoked certificate of VpnServerConfiguration.
+func (o VpnServerConfigurationPropertiesResponseOutput) VpnClientRevokedCertificates() VpnServerConfigVpnClientRevokedCertificateResponseArrayOutput {
+	return o.ApplyT(func(v VpnServerConfigurationPropertiesResponse) []VpnServerConfigVpnClientRevokedCertificateResponse {
+		return v.VpnClientRevokedCertificates
+	}).(VpnServerConfigVpnClientRevokedCertificateResponseArrayOutput)
+}
+
+// VPN client root certificate of VpnServerConfiguration.
+func (o VpnServerConfigurationPropertiesResponseOutput) VpnClientRootCertificates() VpnServerConfigVpnClientRootCertificateResponseArrayOutput {
+	return o.ApplyT(func(v VpnServerConfigurationPropertiesResponse) []VpnServerConfigVpnClientRootCertificateResponse {
+		return v.VpnClientRootCertificates
+	}).(VpnServerConfigVpnClientRootCertificateResponseArrayOutput)
+}
+
+// VPN protocols for the VpnServerConfiguration.
+func (o VpnServerConfigurationPropertiesResponseOutput) VpnProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VpnServerConfigurationPropertiesResponse) []string { return v.VpnProtocols }).(pulumi.StringArrayOutput)
+}
+
 // VpnSiteLink Resource.
 type VpnSiteLink struct {
 	// The set of bgp properties.
@@ -26513,6 +31746,8 @@ func (o VpnSiteLinkArrayOutput) Index(i pulumi.IntInput) VpnSiteLinkOutput {
 type VpnSiteLinkConnection struct {
 	// Expected bandwidth in MBPS.
 	ConnectionBandwidth *int `pulumi:"connectionBandwidth"`
+	// Dead Peer Detection timeout in seconds for VpnLink connection.
+	DpdTimeoutSeconds *int `pulumi:"dpdTimeoutSeconds"`
 	// List of egress NatRules.
 	EgressNatRules []SubResource `pulumi:"egressNatRules"`
 	// EnableBgp flag.
@@ -26560,6 +31795,8 @@ type VpnSiteLinkConnectionInput interface {
 type VpnSiteLinkConnectionArgs struct {
 	// Expected bandwidth in MBPS.
 	ConnectionBandwidth pulumi.IntPtrInput `pulumi:"connectionBandwidth"`
+	// Dead Peer Detection timeout in seconds for VpnLink connection.
+	DpdTimeoutSeconds pulumi.IntPtrInput `pulumi:"dpdTimeoutSeconds"`
 	// List of egress NatRules.
 	EgressNatRules SubResourceArrayInput `pulumi:"egressNatRules"`
 	// EnableBgp flag.
@@ -26647,6 +31884,11 @@ func (o VpnSiteLinkConnectionOutput) ToVpnSiteLinkConnectionOutputWithContext(ct
 // Expected bandwidth in MBPS.
 func (o VpnSiteLinkConnectionOutput) ConnectionBandwidth() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VpnSiteLinkConnection) *int { return v.ConnectionBandwidth }).(pulumi.IntPtrOutput)
+}
+
+// Dead Peer Detection timeout in seconds for VpnLink connection.
+func (o VpnSiteLinkConnectionOutput) DpdTimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VpnSiteLinkConnection) *int { return v.DpdTimeoutSeconds }).(pulumi.IntPtrOutput)
 }
 
 // List of egress NatRules.
@@ -26752,6 +31994,8 @@ type VpnSiteLinkConnectionResponse struct {
 	ConnectionBandwidth *int `pulumi:"connectionBandwidth"`
 	// The connection status.
 	ConnectionStatus string `pulumi:"connectionStatus"`
+	// Dead Peer Detection timeout in seconds for VpnLink connection.
+	DpdTimeoutSeconds *int `pulumi:"dpdTimeoutSeconds"`
 	// Egress bytes transferred.
 	EgressBytesTransferred float64 `pulumi:"egressBytesTransferred"`
 	// List of egress NatRules.
@@ -26817,6 +32061,11 @@ func (o VpnSiteLinkConnectionResponseOutput) ConnectionBandwidth() pulumi.IntPtr
 // The connection status.
 func (o VpnSiteLinkConnectionResponseOutput) ConnectionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v VpnSiteLinkConnectionResponse) string { return v.ConnectionStatus }).(pulumi.StringOutput)
+}
+
+// Dead Peer Detection timeout in seconds for VpnLink connection.
+func (o VpnSiteLinkConnectionResponseOutput) DpdTimeoutSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VpnSiteLinkConnectionResponse) *int { return v.DpdTimeoutSeconds }).(pulumi.IntPtrOutput)
 }
 
 // Egress bytes transferred.
@@ -27521,18 +32770,6 @@ func (o WebApplicationFirewallScrubbingRulesResponseArrayOutput) Index(i pulumi.
 }
 
 func init() {
-	pulumi.RegisterOutputType(PolicySettingsLogScrubbingOutput{})
-	pulumi.RegisterOutputType(PolicySettingsLogScrubbingPtrOutput{})
-	pulumi.RegisterOutputType(PolicySettingsResponseOutput{})
-	pulumi.RegisterOutputType(PolicySettingsResponsePtrOutput{})
-	pulumi.RegisterOutputType(PolicySettingsResponseLogScrubbingOutput{})
-	pulumi.RegisterOutputType(PolicySettingsResponseLogScrubbingPtrOutput{})
-	pulumi.RegisterOutputType(PoolAssociationResponseOutput{})
-	pulumi.RegisterOutputType(PoolAssociationResponseArrayOutput{})
-	pulumi.RegisterOutputType(PrivateDnsZoneConfigOutput{})
-	pulumi.RegisterOutputType(PrivateDnsZoneConfigArrayOutput{})
-	pulumi.RegisterOutputType(PrivateDnsZoneConfigResponseOutput{})
-	pulumi.RegisterOutputType(PrivateDnsZoneConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointIPConfigurationOutput{})
@@ -27541,6 +32778,8 @@ func init() {
 	pulumi.RegisterOutputType(PrivateEndpointIPConfigurationResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponseArrayOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointResponseV1Output{})
+	pulumi.RegisterOutputType(PrivateEndpointResponseV2Output{})
 	pulumi.RegisterOutputType(PrivateLinkServiceTypeOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceTypePtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionOutput{})
@@ -27565,6 +32804,10 @@ func init() {
 	pulumi.RegisterOutputType(PrivateLinkServicePropertiesVisibilityPtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceResponseOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceResponsePtrOutput{})
+	pulumi.RegisterOutputType(PrivateLinkServiceResponseV1Output{})
+	pulumi.RegisterOutputType(PrivateLinkServiceResponseV1PtrOutput{})
+	pulumi.RegisterOutputType(PrivateLinkServiceResponseV2Output{})
+	pulumi.RegisterOutputType(PrivateLinkServiceResponseV2PtrOutput{})
 	pulumi.RegisterOutputType(ProbeOutput{})
 	pulumi.RegisterOutputType(ProbeArrayOutput{})
 	pulumi.RegisterOutputType(ProbeResponseOutput{})
@@ -27573,22 +32816,28 @@ func init() {
 	pulumi.RegisterOutputType(PropagatedRouteTablePtrOutput{})
 	pulumi.RegisterOutputType(PropagatedRouteTableResponseOutput{})
 	pulumi.RegisterOutputType(PropagatedRouteTableResponsePtrOutput{})
-	pulumi.RegisterOutputType(PtrRecordOutput{})
-	pulumi.RegisterOutputType(PtrRecordArrayOutput{})
-	pulumi.RegisterOutputType(PtrRecordResponseOutput{})
-	pulumi.RegisterOutputType(PtrRecordResponseArrayOutput{})
 	pulumi.RegisterOutputType(PublicIPAddressTypeOutput{})
 	pulumi.RegisterOutputType(PublicIPAddressTypePtrOutput{})
 	pulumi.RegisterOutputType(PublicIPAddressDnsSettingsOutput{})
 	pulumi.RegisterOutputType(PublicIPAddressDnsSettingsPtrOutput{})
 	pulumi.RegisterOutputType(PublicIPAddressDnsSettingsResponseOutput{})
 	pulumi.RegisterOutputType(PublicIPAddressDnsSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(PublicIPAddressDnsSettingsResponseV1Output{})
+	pulumi.RegisterOutputType(PublicIPAddressDnsSettingsResponseV1PtrOutput{})
 	pulumi.RegisterOutputType(PublicIPAddressResponseOutput{})
 	pulumi.RegisterOutputType(PublicIPAddressResponsePtrOutput{})
+	pulumi.RegisterOutputType(PublicIPAddressResponseV1Output{})
+	pulumi.RegisterOutputType(PublicIPAddressResponseV1PtrOutput{})
+	pulumi.RegisterOutputType(PublicIPAddressResponseV2Output{})
+	pulumi.RegisterOutputType(PublicIPAddressResponseV2PtrOutput{})
+	pulumi.RegisterOutputType(PublicIPAddressResponseV3Output{})
+	pulumi.RegisterOutputType(PublicIPAddressResponseV3PtrOutput{})
 	pulumi.RegisterOutputType(PublicIPAddressSkuOutput{})
 	pulumi.RegisterOutputType(PublicIPAddressSkuPtrOutput{})
 	pulumi.RegisterOutputType(PublicIPAddressSkuResponseOutput{})
 	pulumi.RegisterOutputType(PublicIPAddressSkuResponsePtrOutput{})
+	pulumi.RegisterOutputType(PublicIPAddressSkuResponseV1Output{})
+	pulumi.RegisterOutputType(PublicIPAddressSkuResponseV1PtrOutput{})
 	pulumi.RegisterOutputType(PublicIPPrefixSkuOutput{})
 	pulumi.RegisterOutputType(PublicIPPrefixSkuPtrOutput{})
 	pulumi.RegisterOutputType(PublicIPPrefixSkuResponseOutput{})
@@ -27605,6 +32854,8 @@ func init() {
 	pulumi.RegisterOutputType(QosPortRangeArrayOutput{})
 	pulumi.RegisterOutputType(QosPortRangeResponseOutput{})
 	pulumi.RegisterOutputType(QosPortRangeResponseArrayOutput{})
+	pulumi.RegisterOutputType(RadiusAuthServerResponseOutput{})
+	pulumi.RegisterOutputType(RadiusAuthServerResponseArrayOutput{})
 	pulumi.RegisterOutputType(RadiusServerOutput{})
 	pulumi.RegisterOutputType(RadiusServerArrayOutput{})
 	pulumi.RegisterOutputType(RadiusServerResponseOutput{})
@@ -27615,18 +32866,18 @@ func init() {
 	pulumi.RegisterOutputType(ReachabilityAnalysisRunPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(RecordSetResponseOutput{})
 	pulumi.RegisterOutputType(RecordSetResponseArrayOutput{})
-	pulumi.RegisterOutputType(RedirectConfigurationOutput{})
-	pulumi.RegisterOutputType(RedirectConfigurationPtrOutput{})
-	pulumi.RegisterOutputType(RedirectConfigurationResponseOutput{})
-	pulumi.RegisterOutputType(RedirectConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(ReferencedPublicIpAddressResponseOutput{})
 	pulumi.RegisterOutputType(ReferencedPublicIpAddressResponseArrayOutput{})
+	pulumi.RegisterOutputType(ResiliencyRecommendationComponentsResponseOutput{})
+	pulumi.RegisterOutputType(ResiliencyRecommendationComponentsResponseArrayOutput{})
 	pulumi.RegisterOutputType(ResourceBasicsResponseOutput{})
 	pulumi.RegisterOutputType(ResourceBasicsResponseArrayOutput{})
 	pulumi.RegisterOutputType(ResourceNavigationLinkOutput{})
 	pulumi.RegisterOutputType(ResourceNavigationLinkArrayOutput{})
 	pulumi.RegisterOutputType(ResourceNavigationLinkResponseOutput{})
 	pulumi.RegisterOutputType(ResourceNavigationLinkResponseArrayOutput{})
+	pulumi.RegisterOutputType(ResourceNavigationLinkResponseV1Output{})
+	pulumi.RegisterOutputType(ResourceNavigationLinkResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(RetentionPolicyParametersOutput{})
 	pulumi.RegisterOutputType(RetentionPolicyParametersPtrOutput{})
 	pulumi.RegisterOutputType(RetentionPolicyParametersResponseOutput{})
@@ -27643,50 +32894,38 @@ func init() {
 	pulumi.RegisterOutputType(RouteMapRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(RouteResponseOutput{})
 	pulumi.RegisterOutputType(RouteResponseArrayOutput{})
+	pulumi.RegisterOutputType(RouteResponseV1Output{})
+	pulumi.RegisterOutputType(RouteResponseV1ArrayOutput{})
+	pulumi.RegisterOutputType(RouteSourceDetailsResponseOutput{})
+	pulumi.RegisterOutputType(RouteSourceDetailsResponseArrayOutput{})
 	pulumi.RegisterOutputType(RouteTableTypeOutput{})
 	pulumi.RegisterOutputType(RouteTableTypePtrOutput{})
 	pulumi.RegisterOutputType(RouteTableResponseOutput{})
 	pulumi.RegisterOutputType(RouteTableResponsePtrOutput{})
-	pulumi.RegisterOutputType(RoutingConfigurationOutput{})
-	pulumi.RegisterOutputType(RoutingConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(RouteTableResponseV1Output{})
+	pulumi.RegisterOutputType(RouteTableResponseV1PtrOutput{})
+	pulumi.RegisterOutputType(RouteTargetAddressPropertiesFormatOutput{})
+	pulumi.RegisterOutputType(RouteTargetAddressPropertiesFormatPtrOutput{})
+	pulumi.RegisterOutputType(RouteTargetAddressPropertiesFormatResponseOutput{})
+	pulumi.RegisterOutputType(RouteTargetAddressPropertiesFormatResponsePtrOutput{})
+	pulumi.RegisterOutputType(RoutingConfigurationTypeOutput{})
+	pulumi.RegisterOutputType(RoutingConfigurationTypePtrOutput{})
 	pulumi.RegisterOutputType(RoutingConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(RoutingConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(RoutingPolicyOutput{})
 	pulumi.RegisterOutputType(RoutingPolicyArrayOutput{})
 	pulumi.RegisterOutputType(RoutingPolicyResponseOutput{})
 	pulumi.RegisterOutputType(RoutingPolicyResponseArrayOutput{})
-	pulumi.RegisterOutputType(RoutingRuleTypeOutput{})
-	pulumi.RegisterOutputType(RoutingRuleTypeArrayOutput{})
-	pulumi.RegisterOutputType(RoutingRuleLinkResponseOutput{})
-	pulumi.RegisterOutputType(RoutingRuleLinkResponseArrayOutput{})
 	pulumi.RegisterOutputType(RoutingRuleNextHopOutput{})
 	pulumi.RegisterOutputType(RoutingRuleNextHopResponseOutput{})
-	pulumi.RegisterOutputType(RoutingRuleResponseOutput{})
-	pulumi.RegisterOutputType(RoutingRuleResponseArrayOutput{})
 	pulumi.RegisterOutputType(RoutingRuleRouteDestinationOutput{})
 	pulumi.RegisterOutputType(RoutingRuleRouteDestinationResponseOutput{})
-	pulumi.RegisterOutputType(RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLinkOutput{})
-	pulumi.RegisterOutputType(RoutingRuleUpdateParametersResponseWebApplicationFirewallPolicyLinkPtrOutput{})
-	pulumi.RegisterOutputType(RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkOutput{})
-	pulumi.RegisterOutputType(RoutingRuleUpdateParametersWebApplicationFirewallPolicyLinkPtrOutput{})
-	pulumi.RegisterOutputType(RulesEngineActionOutput{})
-	pulumi.RegisterOutputType(RulesEngineActionResponseOutput{})
-	pulumi.RegisterOutputType(RulesEngineMatchConditionOutput{})
-	pulumi.RegisterOutputType(RulesEngineMatchConditionArrayOutput{})
-	pulumi.RegisterOutputType(RulesEngineMatchConditionResponseOutput{})
-	pulumi.RegisterOutputType(RulesEngineMatchConditionResponseArrayOutput{})
-	pulumi.RegisterOutputType(RulesEngineResponseOutput{})
-	pulumi.RegisterOutputType(RulesEngineResponseArrayOutput{})
-	pulumi.RegisterOutputType(RulesEngineRuleOutput{})
-	pulumi.RegisterOutputType(RulesEngineRuleArrayOutput{})
-	pulumi.RegisterOutputType(RulesEngineRuleResponseOutput{})
-	pulumi.RegisterOutputType(RulesEngineRuleResponseArrayOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyLinkResponseOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyLinkResponseArrayOutput{})
 	pulumi.RegisterOutputType(SecurityRuleTypeOutput{})
 	pulumi.RegisterOutputType(SecurityRuleTypeArrayOutput{})
 	pulumi.RegisterOutputType(SecurityRuleResponseOutput{})
 	pulumi.RegisterOutputType(SecurityRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecurityRuleResponseV1Output{})
+	pulumi.RegisterOutputType(SecurityRuleResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(SecurityUserGroupItemOutput{})
 	pulumi.RegisterOutputType(SecurityUserGroupItemArrayOutput{})
 	pulumi.RegisterOutputType(SecurityUserGroupItemResponseOutput{})
@@ -27695,35 +32934,37 @@ func init() {
 	pulumi.RegisterOutputType(ServiceAssociationLinkArrayOutput{})
 	pulumi.RegisterOutputType(ServiceAssociationLinkResponseOutput{})
 	pulumi.RegisterOutputType(ServiceAssociationLinkResponseArrayOutput{})
+	pulumi.RegisterOutputType(ServiceAssociationLinkResponseV1Output{})
+	pulumi.RegisterOutputType(ServiceAssociationLinkResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(ServiceEndpointPolicyTypeOutput{})
 	pulumi.RegisterOutputType(ServiceEndpointPolicyTypeArrayOutput{})
 	pulumi.RegisterOutputType(ServiceEndpointPolicyDefinitionTypeOutput{})
 	pulumi.RegisterOutputType(ServiceEndpointPolicyDefinitionTypeArrayOutput{})
 	pulumi.RegisterOutputType(ServiceEndpointPolicyDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(ServiceEndpointPolicyDefinitionResponseArrayOutput{})
+	pulumi.RegisterOutputType(ServiceEndpointPolicyDefinitionResponseV1Output{})
+	pulumi.RegisterOutputType(ServiceEndpointPolicyDefinitionResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(ServiceEndpointPolicyResponseOutput{})
 	pulumi.RegisterOutputType(ServiceEndpointPolicyResponseArrayOutput{})
+	pulumi.RegisterOutputType(ServiceEndpointPolicyResponseV1Output{})
+	pulumi.RegisterOutputType(ServiceEndpointPolicyResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(ServiceEndpointPropertiesFormatOutput{})
 	pulumi.RegisterOutputType(ServiceEndpointPropertiesFormatArrayOutput{})
 	pulumi.RegisterOutputType(ServiceEndpointPropertiesFormatResponseOutput{})
 	pulumi.RegisterOutputType(ServiceEndpointPropertiesFormatResponseArrayOutput{})
+	pulumi.RegisterOutputType(ServiceEndpointPropertiesFormatResponseV1Output{})
+	pulumi.RegisterOutputType(ServiceEndpointPropertiesFormatResponseV1ArrayOutput{})
+	pulumi.RegisterOutputType(ServiceGatewaySkuOutput{})
+	pulumi.RegisterOutputType(ServiceGatewaySkuPtrOutput{})
+	pulumi.RegisterOutputType(ServiceGatewaySkuResponseOutput{})
+	pulumi.RegisterOutputType(ServiceGatewaySkuResponsePtrOutput{})
 	pulumi.RegisterOutputType(SharedKeyPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(SigningKeyResponseOutput{})
-	pulumi.RegisterOutputType(SigningKeyResponseArrayOutput{})
 	pulumi.RegisterOutputType(SingleQueryResultResponseOutput{})
 	pulumi.RegisterOutputType(SingleQueryResultResponseArrayOutput{})
 	pulumi.RegisterOutputType(SkuOutput{})
 	pulumi.RegisterOutputType(SkuPtrOutput{})
 	pulumi.RegisterOutputType(SkuResponseOutput{})
 	pulumi.RegisterOutputType(SkuResponsePtrOutput{})
-	pulumi.RegisterOutputType(SoaRecordOutput{})
-	pulumi.RegisterOutputType(SoaRecordPtrOutput{})
-	pulumi.RegisterOutputType(SoaRecordResponseOutput{})
-	pulumi.RegisterOutputType(SoaRecordResponsePtrOutput{})
-	pulumi.RegisterOutputType(SrvRecordOutput{})
-	pulumi.RegisterOutputType(SrvRecordArrayOutput{})
-	pulumi.RegisterOutputType(SrvRecordResponseOutput{})
-	pulumi.RegisterOutputType(SrvRecordResponseArrayOutput{})
 	pulumi.RegisterOutputType(StaticCidrPropertiesOutput{})
 	pulumi.RegisterOutputType(StaticCidrPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(StaticCidrPropertiesResponseOutput{})
@@ -27747,15 +32988,17 @@ func init() {
 	pulumi.RegisterOutputType(SubnetResponseOutput{})
 	pulumi.RegisterOutputType(SubnetResponsePtrOutput{})
 	pulumi.RegisterOutputType(SubnetResponseArrayOutput{})
+	pulumi.RegisterOutputType(SubnetResponseV1Output{})
+	pulumi.RegisterOutputType(SubnetResponseV1PtrOutput{})
+	pulumi.RegisterOutputType(SubnetResponseV2Output{})
+	pulumi.RegisterOutputType(SubnetResponseV2PtrOutput{})
+	pulumi.RegisterOutputType(SubnetResponseV3Output{})
+	pulumi.RegisterOutputType(SubnetResponseV3PtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionIdOutput{})
 	pulumi.RegisterOutputType(SubscriptionIdArrayOutput{})
 	pulumi.RegisterOutputType(SubscriptionIdResponseOutput{})
 	pulumi.RegisterOutputType(SubscriptionIdResponseArrayOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
-	pulumi.RegisterOutputType(TargetDnsServerOutput{})
-	pulumi.RegisterOutputType(TargetDnsServerArrayOutput{})
-	pulumi.RegisterOutputType(TargetDnsServerResponseOutput{})
-	pulumi.RegisterOutputType(TargetDnsServerResponseArrayOutput{})
 	pulumi.RegisterOutputType(TrafficAnalyticsConfigurationPropertiesOutput{})
 	pulumi.RegisterOutputType(TrafficAnalyticsConfigurationPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(TrafficAnalyticsConfigurationPropertiesResponseOutput{})
@@ -27770,10 +33013,6 @@ func init() {
 	pulumi.RegisterOutputType(TrafficSelectorPolicyResponseArrayOutput{})
 	pulumi.RegisterOutputType(TunnelConnectionHealthResponseOutput{})
 	pulumi.RegisterOutputType(TunnelConnectionHealthResponseArrayOutput{})
-	pulumi.RegisterOutputType(TxtRecordOutput{})
-	pulumi.RegisterOutputType(TxtRecordArrayOutput{})
-	pulumi.RegisterOutputType(TxtRecordResponseOutput{})
-	pulumi.RegisterOutputType(TxtRecordResponseArrayOutput{})
 	pulumi.RegisterOutputType(VMOutput{})
 	pulumi.RegisterOutputType(VMResponseOutput{})
 	pulumi.RegisterOutputType(VerifierWorkspacePropertiesOutput{})
@@ -27783,6 +33022,22 @@ func init() {
 	pulumi.RegisterOutputType(VirtualApplianceAdditionalNicPropertiesArrayOutput{})
 	pulumi.RegisterOutputType(VirtualApplianceAdditionalNicPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(VirtualApplianceAdditionalNicPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(VirtualApplianceIPConfigurationOutput{})
+	pulumi.RegisterOutputType(VirtualApplianceIPConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(VirtualApplianceIPConfigurationPropertiesOutput{})
+	pulumi.RegisterOutputType(VirtualApplianceIPConfigurationPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(VirtualApplianceIPConfigurationPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(VirtualApplianceIPConfigurationPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(VirtualApplianceIPConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(VirtualApplianceIPConfigurationResponseArrayOutput{})
+	pulumi.RegisterOutputType(VirtualApplianceNetworkInterfaceConfigurationOutput{})
+	pulumi.RegisterOutputType(VirtualApplianceNetworkInterfaceConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(VirtualApplianceNetworkInterfaceConfigurationPropertiesOutput{})
+	pulumi.RegisterOutputType(VirtualApplianceNetworkInterfaceConfigurationPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(VirtualApplianceNetworkInterfaceConfigurationPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(VirtualApplianceNetworkInterfaceConfigurationPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(VirtualApplianceNetworkInterfaceConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(VirtualApplianceNetworkInterfaceConfigurationResponseArrayOutput{})
 	pulumi.RegisterOutputType(VirtualApplianceNicPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(VirtualApplianceNicPropertiesResponseArrayOutput{})
 	pulumi.RegisterOutputType(VirtualApplianceSkuPropertiesOutput{})
@@ -27807,18 +33062,28 @@ func init() {
 	pulumi.RegisterOutputType(VirtualHubRouteV2ArrayOutput{})
 	pulumi.RegisterOutputType(VirtualHubRouteV2ResponseOutput{})
 	pulumi.RegisterOutputType(VirtualHubRouteV2ResponseArrayOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkTypeOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkTypePtrOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkApplianceIpConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkApplianceIpConfigurationResponseArrayOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkBgpCommunitiesOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkBgpCommunitiesPtrOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkBgpCommunitiesResponseOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkBgpCommunitiesResponsePtrOutput{})
-	pulumi.RegisterOutputType(VirtualNetworkDnsForwardingRulesetResponseOutput{})
-	pulumi.RegisterOutputType(VirtualNetworkDnsForwardingRulesetResponseArrayOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkEncryptionOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkEncryptionResponseOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkEncryptionResponsePtrOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkGatewayTypeOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkGatewayTypePtrOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkGatewayAutoScaleBoundsOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkGatewayAutoScaleBoundsPtrOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkGatewayAutoScaleBoundsResponseOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkGatewayAutoScaleBoundsResponsePtrOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkGatewayAutoScaleConfigurationOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkGatewayAutoScaleConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkGatewayAutoScaleConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkGatewayAutoScaleConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkGatewayIPConfigurationOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkGatewayIPConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkGatewayIPConfigurationResponseOutput{})
@@ -27845,12 +33110,16 @@ func init() {
 	pulumi.RegisterOutputType(VirtualNetworkPeeringTypeArrayOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkPeeringResponseOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkPeeringResponseArrayOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkResponseOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkResponsePtrOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkTapTypeOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkTapTypePtrOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkTapTypeArrayOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkTapResponseOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkTapResponsePtrOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkTapResponseArrayOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkTapResponseV1Output{})
+	pulumi.RegisterOutputType(VirtualNetworkTapResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(VirtualRouterAutoScaleConfigurationOutput{})
 	pulumi.RegisterOutputType(VirtualRouterAutoScaleConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(VirtualRouterAutoScaleConfigurationResponseOutput{})
@@ -27924,6 +33193,9 @@ func init() {
 	pulumi.RegisterOutputType(VpnServerConfigurationPolicyGroupMemberResponseArrayOutput{})
 	pulumi.RegisterOutputType(VpnServerConfigurationPolicyGroupResponseOutput{})
 	pulumi.RegisterOutputType(VpnServerConfigurationPolicyGroupResponseArrayOutput{})
+	pulumi.RegisterOutputType(VpnServerConfigurationPropertiesOutput{})
+	pulumi.RegisterOutputType(VpnServerConfigurationPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(VpnServerConfigurationPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(VpnSiteLinkOutput{})
 	pulumi.RegisterOutputType(VpnSiteLinkArrayOutput{})
 	pulumi.RegisterOutputType(VpnSiteLinkConnectionOutput{})

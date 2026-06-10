@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // List product families for the given subscription.
 //
-// Uses Azure REST API version 2022-05-01-preview.
+// Uses Azure REST API version 2024-02-01.
 //
-// Other available API versions: 2024-02-01.
+// Other available API versions: 2022-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native edgeorder [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListProductsAndConfigurationProductFamilies(ctx *pulumi.Context, args *ListProductsAndConfigurationProductFamiliesArgs, opts ...pulumi.InvokeOption) (*ListProductsAndConfigurationProductFamiliesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListProductsAndConfigurationProductFamiliesResult
@@ -39,9 +39,9 @@ type ListProductsAndConfigurationProductFamiliesArgs struct {
 
 // The list of product families.
 type ListProductsAndConfigurationProductFamiliesResult struct {
-	// Link for the next set of product families.
+	// The link to the next page of items
 	NextLink *string `pulumi:"nextLink"`
-	// List of product families.
+	// The ProductFamily items on this page
 	Value []ProductFamilyResponse `pulumi:"value"`
 }
 
@@ -84,12 +84,12 @@ func (o ListProductsAndConfigurationProductFamiliesResultOutput) ToListProductsA
 	return o
 }
 
-// Link for the next set of product families.
+// The link to the next page of items
 func (o ListProductsAndConfigurationProductFamiliesResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListProductsAndConfigurationProductFamiliesResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
-// List of product families.
+// The ProductFamily items on this page
 func (o ListProductsAndConfigurationProductFamiliesResultOutput) Value() ProductFamilyResponseArrayOutput {
 	return o.ApplyT(func(v ListProductsAndConfigurationProductFamiliesResult) []ProductFamilyResponse { return v.Value }).(ProductFamilyResponseArrayOutput)
 }

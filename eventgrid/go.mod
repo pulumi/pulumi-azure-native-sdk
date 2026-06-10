@@ -1,11 +1,11 @@
-module github.com/pulumi/pulumi-azure-native-sdk/eventgrid/v2
+module github.com/pulumi/pulumi-azure-native-sdk/eventgrid/v3
 
 go 1.25.8
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
-	github.com/pulumi/pulumi-azure-native-sdk/v2 v2.92.3
-	github.com/pulumi/pulumi/sdk/v3 v3.244.0
+	github.com/pulumi/pulumi-azure-native-sdk/v3 v3.20.0-alpha.1781098088
+	github.com/pulumi/pulumi/sdk/v3 v3.245.0
 )
 
 require (

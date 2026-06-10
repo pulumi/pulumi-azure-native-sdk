@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,6 +23,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azure-native:cognitiveservices:Account":
 		r = &Account{}
+	case "azure-native:cognitiveservices:AccountCapabilityHost":
+		r = &AccountCapabilityHost{}
+	case "azure-native:cognitiveservices:AccountConnection":
+		r = &AccountConnection{}
+	case "azure-native:cognitiveservices:AgentApplication":
+		r = &AgentApplication{}
+	case "azure-native:cognitiveservices:AgentDeployment":
+		r = &AgentDeployment{}
 	case "azure-native:cognitiveservices:CommitmentPlan":
 		r = &CommitmentPlan{}
 	case "azure-native:cognitiveservices:CommitmentPlanAssociation":
@@ -31,16 +39,32 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Deployment{}
 	case "azure-native:cognitiveservices:EncryptionScope":
 		r = &EncryptionScope{}
+	case "azure-native:cognitiveservices:OutboundRule":
+		r = &OutboundRule{}
 	case "azure-native:cognitiveservices:PrivateEndpointConnection":
 		r = &PrivateEndpointConnection{}
+	case "azure-native:cognitiveservices:Project":
+		r = &Project{}
+	case "azure-native:cognitiveservices:ProjectCapabilityHost":
+		r = &ProjectCapabilityHost{}
+	case "azure-native:cognitiveservices:ProjectConnection":
+		r = &ProjectConnection{}
 	case "azure-native:cognitiveservices:RaiBlocklist":
 		r = &RaiBlocklist{}
 	case "azure-native:cognitiveservices:RaiBlocklistItem":
 		r = &RaiBlocklistItem{}
+	case "azure-native:cognitiveservices:RaiExternalSafetyProvider":
+		r = &RaiExternalSafetyProvider{}
 	case "azure-native:cognitiveservices:RaiPolicy":
 		r = &RaiPolicy{}
+	case "azure-native:cognitiveservices:RaiToolLabel":
+		r = &RaiToolLabel{}
+	case "azure-native:cognitiveservices:RaiTopic":
+		r = &RaiTopic{}
 	case "azure-native:cognitiveservices:SharedCommitmentPlan":
 		r = &SharedCommitmentPlan{}
+	case "azure-native:cognitiveservices:SubscriptionRaiPolicy":
+		r = &SubscriptionRaiPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

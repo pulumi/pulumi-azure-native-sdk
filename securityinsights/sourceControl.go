@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a SourceControl in Azure Security Insights.
 //
-// Uses Azure REST API version 2023-05-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-03-01-preview.
+// Uses Azure REST API version 2023-05-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-05-01-preview.
 //
-// Other available API versions: 2021-03-01-preview.
+// Other available API versions: 2023-03-01-preview, 2023-04-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SourceControl struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Array of source control content types.
 	ContentTypes pulumi.StringArrayOutput `pulumi:"contentTypes"`
 	// A description of the source control
@@ -247,6 +249,11 @@ func (o SourceControlOutput) ToSourceControlOutput() SourceControlOutput {
 
 func (o SourceControlOutput) ToSourceControlOutputWithContext(ctx context.Context) SourceControlOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SourceControlOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SourceControl) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Array of source control content types.

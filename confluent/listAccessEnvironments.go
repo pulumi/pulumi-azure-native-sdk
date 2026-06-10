@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// List environments success response
+// Environment list of an organization
 //
-// Uses Azure REST API version 2023-08-22.
+// Uses Azure REST API version 2024-07-01.
 //
-// Other available API versions: 2024-02-13, 2024-07-01.
+// Other available API versions: 2023-08-22, 2024-02-13, 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListAccessEnvironments(ctx *pulumi.Context, args *ListAccessEnvironmentsArgs, opts ...pulumi.InvokeOption) (*ListAccessEnvironmentsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAccessEnvironmentsResult
@@ -35,13 +35,13 @@ type ListAccessEnvironmentsArgs struct {
 	SearchFilters map[string]string `pulumi:"searchFilters"`
 }
 
-// List environments success response
+// Details of the environments returned on successful response
 type ListAccessEnvironmentsResult struct {
-	// Data of the environments list
+	// Environment list data
 	Data []EnvironmentRecordResponse `pulumi:"data"`
 	// Type of response
 	Kind *string `pulumi:"kind"`
-	// Metadata of the list
+	// Metadata of the  environment list
 	Metadata *ConfluentListMetadataResponse `pulumi:"metadata"`
 }
 
@@ -67,7 +67,7 @@ func (ListAccessEnvironmentsOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*ListAccessEnvironmentsArgs)(nil)).Elem()
 }
 
-// List environments success response
+// Details of the environments returned on successful response
 type ListAccessEnvironmentsResultOutput struct{ *pulumi.OutputState }
 
 func (ListAccessEnvironmentsResultOutput) ElementType() reflect.Type {
@@ -82,7 +82,7 @@ func (o ListAccessEnvironmentsResultOutput) ToListAccessEnvironmentsResultOutput
 	return o
 }
 
-// Data of the environments list
+// Environment list data
 func (o ListAccessEnvironmentsResultOutput) Data() EnvironmentRecordResponseArrayOutput {
 	return o.ApplyT(func(v ListAccessEnvironmentsResult) []EnvironmentRecordResponse { return v.Data }).(EnvironmentRecordResponseArrayOutput)
 }
@@ -92,7 +92,7 @@ func (o ListAccessEnvironmentsResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListAccessEnvironmentsResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Metadata of the list
+// Metadata of the  environment list
 func (o ListAccessEnvironmentsResultOutput) Metadata() ConfluentListMetadataResponsePtrOutput {
 	return o.ApplyT(func(v ListAccessEnvironmentsResult) *ConfluentListMetadataResponse { return v.Metadata }).(ConfluentListMetadataResponsePtrOutput)
 }

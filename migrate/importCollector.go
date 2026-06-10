@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2019-10-01. In version 1.x of the Azure Native provider, it used API version 2019-10-01.
+// Uses Azure REST API version 2019-10-01. In version 2.x of the Azure Native provider, it used API version 2019-10-01.
 type ImportCollector struct {
 	pulumi.CustomResourceState
 
-	ETag       pulumi.StringPtrOutput                  `pulumi:"eTag"`
-	Name       pulumi.StringOutput                     `pulumi:"name"`
-	Properties ImportCollectorPropertiesResponseOutput `pulumi:"properties"`
-	Type       pulumi.StringOutput                     `pulumi:"type"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput                     `pulumi:"azureApiVersion"`
+	ETag            pulumi.StringPtrOutput                  `pulumi:"eTag"`
+	Name            pulumi.StringOutput                     `pulumi:"name"`
+	Properties      ImportCollectorPropertiesResponseOutput `pulumi:"properties"`
+	Type            pulumi.StringOutput                     `pulumi:"type"`
 }
 
 // NewImportCollector registers a new resource with the given unique name, arguments, and options.
@@ -43,16 +45,40 @@ func NewImportCollector(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:migrate/v20230315:ImportCollector"),
 		},
 		{
+			Type: pulumi.String("azure-native:migrate/v20230315:ImportCollectorsOperation"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20230401preview:ImportCollector"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20230401preview:ImportCollectorsOperation"),
 		},
 		{
 			Type: pulumi.String("azure-native:migrate/v20230501preview:ImportCollector"),
 		},
 		{
+			Type: pulumi.String("azure-native:migrate/v20230501preview:ImportCollectorsOperation"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20230909preview:ImportCollector"),
 		},
 		{
+			Type: pulumi.String("azure-native:migrate/v20230909preview:ImportCollectorsOperation"),
+		},
+		{
 			Type: pulumi.String("azure-native:migrate/v20240101preview:ImportCollector"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240101preview:ImportCollectorsOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240115:ImportCollector"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate/v20240303preview:ImportCollector"),
+		},
+		{
+			Type: pulumi.String("azure-native:migrate:ImportCollectorsOperation"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -146,6 +172,11 @@ func (o ImportCollectorOutput) ToImportCollectorOutput() ImportCollectorOutput {
 
 func (o ImportCollectorOutput) ToImportCollectorOutputWithContext(ctx context.Context) ImportCollectorOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ImportCollectorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ImportCollector) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o ImportCollectorOutput) ETag() pulumi.StringPtrOutput {

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,7 +25,7 @@ func LookupAutoScaleVCore(ctx *pulumi.Context, args *LookupAutoScaleVCoreArgs, o
 }
 
 type LookupAutoScaleVCoreArgs struct {
-	// The name of the Azure Resource group of which a given PowerBIDedicated capacity is part. This name must be at least 1 character in length, and no more than 90.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the auto scale v-core. It must be a minimum of 3 characters, and a maximum of 63.
 	VcoreName string `pulumi:"vcoreName"`
@@ -33,25 +33,27 @@ type LookupAutoScaleVCoreArgs struct {
 
 // Represents an instance of an auto scale v-core resource.
 type LookupAutoScaleVCoreResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The maximum capacity of an auto scale v-core resource.
 	CapacityLimit *int `pulumi:"capacityLimit"`
 	// The object ID of the capacity resource associated with the auto scale v-core resource.
 	CapacityObjectId *string `pulumi:"capacityObjectId"`
-	// An identifier that represents the PowerBI Dedicated resource.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// Location of the PowerBI Dedicated resource.
+	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
-	// The name of the PowerBI Dedicated resource.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The current deployment state of an auto scale v-core resource. The provisioningState is to indicate states for resource provisioning.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The SKU of the auto scale v-core resource.
 	Sku AutoScaleVCoreSkuResponse `pulumi:"sku"`
-	// Metadata pertaining to creation and last modification of the resource.
-	SystemData *SystemDataResponse `pulumi:"systemData"`
-	// Key-value pairs of additional resource provisioning properties.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// The type of the PowerBI Dedicated resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -65,7 +67,7 @@ func LookupAutoScaleVCoreOutput(ctx *pulumi.Context, args LookupAutoScaleVCoreOu
 }
 
 type LookupAutoScaleVCoreOutputArgs struct {
-	// The name of the Azure Resource group of which a given PowerBIDedicated capacity is part. This name must be at least 1 character in length, and no more than 90.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the auto scale v-core. It must be a minimum of 3 characters, and a maximum of 63.
 	VcoreName pulumi.StringInput `pulumi:"vcoreName"`
@@ -90,6 +92,11 @@ func (o LookupAutoScaleVCoreResultOutput) ToLookupAutoScaleVCoreResultOutputWith
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupAutoScaleVCoreResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAutoScaleVCoreResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The maximum capacity of an auto scale v-core resource.
 func (o LookupAutoScaleVCoreResultOutput) CapacityLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupAutoScaleVCoreResult) *int { return v.CapacityLimit }).(pulumi.IntPtrOutput)
@@ -100,17 +107,17 @@ func (o LookupAutoScaleVCoreResultOutput) CapacityObjectId() pulumi.StringPtrOut
 	return o.ApplyT(func(v LookupAutoScaleVCoreResult) *string { return v.CapacityObjectId }).(pulumi.StringPtrOutput)
 }
 
-// An identifier that represents the PowerBI Dedicated resource.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupAutoScaleVCoreResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAutoScaleVCoreResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Location of the PowerBI Dedicated resource.
+// The geo-location where the resource lives
 func (o LookupAutoScaleVCoreResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAutoScaleVCoreResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// The name of the PowerBI Dedicated resource.
+// The name of the resource
 func (o LookupAutoScaleVCoreResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAutoScaleVCoreResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -125,17 +132,17 @@ func (o LookupAutoScaleVCoreResultOutput) Sku() AutoScaleVCoreSkuResponseOutput 
 	return o.ApplyT(func(v LookupAutoScaleVCoreResult) AutoScaleVCoreSkuResponse { return v.Sku }).(AutoScaleVCoreSkuResponseOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-func (o LookupAutoScaleVCoreResultOutput) SystemData() SystemDataResponsePtrOutput {
-	return o.ApplyT(func(v LookupAutoScaleVCoreResult) *SystemDataResponse { return v.SystemData }).(SystemDataResponsePtrOutput)
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupAutoScaleVCoreResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAutoScaleVCoreResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Key-value pairs of additional resource provisioning properties.
+// Resource tags.
 func (o LookupAutoScaleVCoreResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAutoScaleVCoreResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the PowerBI Dedicated resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupAutoScaleVCoreResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAutoScaleVCoreResult) string { return v.Type }).(pulumi.StringOutput)
 }

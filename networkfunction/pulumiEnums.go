@@ -14,6 +14,7 @@ import (
 type DestinationType string
 
 const (
+	// AzureMonitor
 	DestinationTypeAzureMonitor = DestinationType("AzureMonitor")
 )
 
@@ -178,6 +179,7 @@ func (in *destinationTypePtr) ToDestinationTypePtrOutputWithContext(ctx context.
 type EmissionType string
 
 const (
+	// IPFIX
 	EmissionTypeIPFIX = EmissionType("IPFIX")
 )
 
@@ -342,6 +344,7 @@ func (in *emissionTypePtr) ToEmissionTypePtrOutputWithContext(ctx context.Contex
 type IngestionType string
 
 const (
+	// IPFIX
 	IngestionTypeIPFIX = IngestionType("IPFIX")
 )
 
@@ -506,6 +509,7 @@ func (in *ingestionTypePtr) ToIngestionTypePtrOutputWithContext(ctx context.Cont
 type SourceType string
 
 const (
+	// Resource
 	SourceTypeResource = SourceType("Resource")
 )
 

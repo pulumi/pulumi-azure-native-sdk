@@ -7,13 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an entity query.
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2025-01-01-preview.
 func LookupActivityCustomEntityQuery(ctx *pulumi.Context, args *LookupActivityCustomEntityQueryArgs, opts ...pulumi.InvokeOption) (*LookupActivityCustomEntityQueryResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupActivityCustomEntityQueryResult
@@ -35,6 +35,8 @@ type LookupActivityCustomEntityQueryArgs struct {
 
 // Represents Activity entity query.
 type LookupActivityCustomEntityQueryResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The entity query content to display in timeline
 	Content *string `pulumi:"content"`
 	// The time the activity was created
@@ -107,6 +109,11 @@ func (o LookupActivityCustomEntityQueryResultOutput) ToLookupActivityCustomEntit
 
 func (o LookupActivityCustomEntityQueryResultOutput) ToLookupActivityCustomEntityQueryResultOutputWithContext(ctx context.Context) LookupActivityCustomEntityQueryResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupActivityCustomEntityQueryResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupActivityCustomEntityQueryResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The entity query content to display in timeline

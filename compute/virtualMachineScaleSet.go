@@ -8,15 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Describes a Virtual Machine Scale Set.
 //
-// Uses Azure REST API version 2023-03-01. In version 1.x of the Azure Native provider, it used API version 2021-03-01.
+// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
 //
-// Other available API versions: 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2024-11-01.
+// Other available API versions: 2022-08-01, 2022-11-01, 2023-03-01, 2023-07-01, 2023-09-01, 2024-03-01, 2024-07-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native compute [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type VirtualMachineScaleSet struct {
 	pulumi.CustomResourceState
 
@@ -24,19 +24,23 @@ type VirtualMachineScaleSet struct {
 	AdditionalCapabilities AdditionalCapabilitiesResponsePtrOutput `pulumi:"additionalCapabilities"`
 	// Policy for automatic repairs.
 	AutomaticRepairsPolicy AutomaticRepairsPolicyResponsePtrOutput `pulumi:"automaticRepairsPolicy"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Optional property which must either be set to True or omitted.
 	ConstrainedMaximumCapacity pulumi.BoolPtrOutput `pulumi:"constrainedMaximumCapacity"`
 	// When Overprovision is enabled, extensions are launched only on the requested number of VMs which are finally kept. This property will hence ensure that the extensions do not run on the extra overprovisioned VMs.
 	DoNotRunExtensionsOnOverprovisionedVMs pulumi.BoolPtrOutput `pulumi:"doNotRunExtensionsOnOverprovisionedVMs"`
+	// Etag is property returned in Create/Update/Get response of the VMSS, so that customer can supply it in the header to ensure optimistic updates
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The extended location of the Virtual Machine Scale Set.
 	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// Specifies information about the dedicated host group that the virtual machine scale set resides in. Minimum api-version: 2020-06-01.
 	HostGroup SubResourceResponsePtrOutput `pulumi:"hostGroup"`
 	// The identity of the virtual machine scale set, if configured.
 	Identity VirtualMachineScaleSetIdentityResponsePtrOutput `pulumi:"identity"`
-	// Resource location
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specifies the orchestration mode for the virtual machine scale set.
 	OrchestrationMode pulumi.StringPtrOutput `pulumi:"orchestrationMode"`
@@ -52,19 +56,27 @@ type VirtualMachineScaleSet struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Specifies information about the proximity placement group that the virtual machine scale set should be assigned to. Minimum api-version: 2018-04-01.
 	ProximityPlacementGroup SubResourceResponsePtrOutput `pulumi:"proximityPlacementGroup"`
+	// Policy for Resiliency
+	ResiliencyPolicy ResiliencyPolicyResponsePtrOutput `pulumi:"resiliencyPolicy"`
 	// Specifies the policies applied when scaling in Virtual Machines in the Virtual Machine Scale Set.
 	ScaleInPolicy ScaleInPolicyResponsePtrOutput `pulumi:"scaleInPolicy"`
+	// The ScheduledEventsPolicy.
+	ScheduledEventsPolicy ScheduledEventsPolicyResponsePtrOutput `pulumi:"scheduledEventsPolicy"`
 	// When true this limits the scale set to a single placement group, of max size 100 virtual machines. NOTE: If singlePlacementGroup is true, it may be modified to false. However, if singlePlacementGroup is false, it may not be modified to true.
 	SinglePlacementGroup pulumi.BoolPtrOutput `pulumi:"singlePlacementGroup"`
 	// The virtual machine scale set sku.
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
+	// Specifies the sku profile for the virtual machine scale set.
+	SkuProfile SkuProfileResponsePtrOutput `pulumi:"skuProfile"`
 	// Specifies the Spot Restore properties for the virtual machine scale set.
 	SpotRestorePolicy SpotRestorePolicyResponsePtrOutput `pulumi:"spotRestorePolicy"`
-	// Resource tags
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Specifies the time at which the Virtual Machine Scale Set resource was created. Minimum api-version: 2021-11-01.
 	TimeCreated pulumi.StringOutput `pulumi:"timeCreated"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Specifies the ID which uniquely identifies a Virtual Machine Scale Set.
 	UniqueId pulumi.StringOutput `pulumi:"uniqueId"`
@@ -72,9 +84,11 @@ type VirtualMachineScaleSet struct {
 	UpgradePolicy UpgradePolicyResponsePtrOutput `pulumi:"upgradePolicy"`
 	// The virtual machine profile.
 	VirtualMachineProfile VirtualMachineScaleSetVMProfileResponsePtrOutput `pulumi:"virtualMachineProfile"`
+	// Specifies the align mode between Virtual Machine Scale Set compute and storage Fault Domain count.
+	ZonalPlatformFaultDomainAlignMode pulumi.StringPtrOutput `pulumi:"zonalPlatformFaultDomainAlignMode"`
 	// Whether to force strictly even Virtual Machine distribution cross x-zones in case there is zone outage. zoneBalance property can only be set if the zones property of the scale set contains more than one zone. If there are no zones or only one zone specified, then zoneBalance property should not be set.
 	ZoneBalance pulumi.BoolPtrOutput `pulumi:"zoneBalance"`
-	// The virtual machine scale set zones. NOTE: Availability zones can only be set when you create the scale set
+	// The availability zones.
 	Zones pulumi.StringArrayOutput `pulumi:"zones"`
 }
 
@@ -167,6 +181,9 @@ func NewVirtualMachineScaleSet(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:compute/v20241101:VirtualMachineScaleSet"),
 		},
+		{
+			Type: pulumi.String("azure-native:compute/v20250401:VirtualMachineScaleSet"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -216,7 +233,7 @@ type virtualMachineScaleSetArgs struct {
 	HostGroup *SubResource `pulumi:"hostGroup"`
 	// The identity of the virtual machine scale set, if configured.
 	Identity *VirtualMachineScaleSetIdentity `pulumi:"identity"`
-	// Resource location
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Specifies the orchestration mode for the virtual machine scale set.
 	OrchestrationMode *string `pulumi:"orchestrationMode"`
@@ -230,27 +247,35 @@ type virtualMachineScaleSetArgs struct {
 	PriorityMixPolicy *PriorityMixPolicy `pulumi:"priorityMixPolicy"`
 	// Specifies information about the proximity placement group that the virtual machine scale set should be assigned to. Minimum api-version: 2018-04-01.
 	ProximityPlacementGroup *SubResource `pulumi:"proximityPlacementGroup"`
-	// The name of the resource group.
+	// Policy for Resiliency
+	ResiliencyPolicy *ResiliencyPolicy `pulumi:"resiliencyPolicy"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Specifies the policies applied when scaling in Virtual Machines in the Virtual Machine Scale Set.
 	ScaleInPolicy *ScaleInPolicy `pulumi:"scaleInPolicy"`
+	// The ScheduledEventsPolicy.
+	ScheduledEventsPolicy *ScheduledEventsPolicy `pulumi:"scheduledEventsPolicy"`
 	// When true this limits the scale set to a single placement group, of max size 100 virtual machines. NOTE: If singlePlacementGroup is true, it may be modified to false. However, if singlePlacementGroup is false, it may not be modified to true.
 	SinglePlacementGroup *bool `pulumi:"singlePlacementGroup"`
 	// The virtual machine scale set sku.
 	Sku *Sku `pulumi:"sku"`
+	// Specifies the sku profile for the virtual machine scale set.
+	SkuProfile *SkuProfile `pulumi:"skuProfile"`
 	// Specifies the Spot Restore properties for the virtual machine scale set.
 	SpotRestorePolicy *SpotRestorePolicy `pulumi:"spotRestorePolicy"`
-	// Resource tags
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The upgrade policy.
 	UpgradePolicy *UpgradePolicy `pulumi:"upgradePolicy"`
 	// The virtual machine profile.
 	VirtualMachineProfile *VirtualMachineScaleSetVMProfile `pulumi:"virtualMachineProfile"`
-	// The name of the VM scale set to create or update.
+	// The name of the VM scale set.
 	VmScaleSetName *string `pulumi:"vmScaleSetName"`
+	// Specifies the align mode between Virtual Machine Scale Set compute and storage Fault Domain count.
+	ZonalPlatformFaultDomainAlignMode *string `pulumi:"zonalPlatformFaultDomainAlignMode"`
 	// Whether to force strictly even Virtual Machine distribution cross x-zones in case there is zone outage. zoneBalance property can only be set if the zones property of the scale set contains more than one zone. If there are no zones or only one zone specified, then zoneBalance property should not be set.
 	ZoneBalance *bool `pulumi:"zoneBalance"`
-	// The virtual machine scale set zones. NOTE: Availability zones can only be set when you create the scale set
+	// The availability zones.
 	Zones []string `pulumi:"zones"`
 }
 
@@ -270,7 +295,7 @@ type VirtualMachineScaleSetArgs struct {
 	HostGroup SubResourcePtrInput
 	// The identity of the virtual machine scale set, if configured.
 	Identity VirtualMachineScaleSetIdentityPtrInput
-	// Resource location
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Specifies the orchestration mode for the virtual machine scale set.
 	OrchestrationMode pulumi.StringPtrInput
@@ -284,27 +309,35 @@ type VirtualMachineScaleSetArgs struct {
 	PriorityMixPolicy PriorityMixPolicyPtrInput
 	// Specifies information about the proximity placement group that the virtual machine scale set should be assigned to. Minimum api-version: 2018-04-01.
 	ProximityPlacementGroup SubResourcePtrInput
-	// The name of the resource group.
+	// Policy for Resiliency
+	ResiliencyPolicy ResiliencyPolicyPtrInput
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Specifies the policies applied when scaling in Virtual Machines in the Virtual Machine Scale Set.
 	ScaleInPolicy ScaleInPolicyPtrInput
+	// The ScheduledEventsPolicy.
+	ScheduledEventsPolicy ScheduledEventsPolicyPtrInput
 	// When true this limits the scale set to a single placement group, of max size 100 virtual machines. NOTE: If singlePlacementGroup is true, it may be modified to false. However, if singlePlacementGroup is false, it may not be modified to true.
 	SinglePlacementGroup pulumi.BoolPtrInput
 	// The virtual machine scale set sku.
 	Sku SkuPtrInput
+	// Specifies the sku profile for the virtual machine scale set.
+	SkuProfile SkuProfilePtrInput
 	// Specifies the Spot Restore properties for the virtual machine scale set.
 	SpotRestorePolicy SpotRestorePolicyPtrInput
-	// Resource tags
+	// Resource tags.
 	Tags pulumi.StringMapInput
 	// The upgrade policy.
 	UpgradePolicy UpgradePolicyPtrInput
 	// The virtual machine profile.
 	VirtualMachineProfile VirtualMachineScaleSetVMProfilePtrInput
-	// The name of the VM scale set to create or update.
+	// The name of the VM scale set.
 	VmScaleSetName pulumi.StringPtrInput
+	// Specifies the align mode between Virtual Machine Scale Set compute and storage Fault Domain count.
+	ZonalPlatformFaultDomainAlignMode pulumi.StringPtrInput
 	// Whether to force strictly even Virtual Machine distribution cross x-zones in case there is zone outage. zoneBalance property can only be set if the zones property of the scale set contains more than one zone. If there are no zones or only one zone specified, then zoneBalance property should not be set.
 	ZoneBalance pulumi.BoolPtrInput
-	// The virtual machine scale set zones. NOTE: Availability zones can only be set when you create the scale set
+	// The availability zones.
 	Zones pulumi.StringArrayInput
 }
 
@@ -359,6 +392,11 @@ func (o VirtualMachineScaleSetOutput) AutomaticRepairsPolicy() AutomaticRepairsP
 	}).(AutomaticRepairsPolicyResponsePtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o VirtualMachineScaleSetOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSet) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Optional property which must either be set to True or omitted.
 func (o VirtualMachineScaleSetOutput) ConstrainedMaximumCapacity() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSet) pulumi.BoolPtrOutput { return v.ConstrainedMaximumCapacity }).(pulumi.BoolPtrOutput)
@@ -367,6 +405,11 @@ func (o VirtualMachineScaleSetOutput) ConstrainedMaximumCapacity() pulumi.BoolPt
 // When Overprovision is enabled, extensions are launched only on the requested number of VMs which are finally kept. This property will hence ensure that the extensions do not run on the extra overprovisioned VMs.
 func (o VirtualMachineScaleSetOutput) DoNotRunExtensionsOnOverprovisionedVMs() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSet) pulumi.BoolPtrOutput { return v.DoNotRunExtensionsOnOverprovisionedVMs }).(pulumi.BoolPtrOutput)
+}
+
+// Etag is property returned in Create/Update/Get response of the VMSS, so that customer can supply it in the header to ensure optimistic updates
+func (o VirtualMachineScaleSetOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSet) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The extended location of the Virtual Machine Scale Set.
@@ -384,12 +427,12 @@ func (o VirtualMachineScaleSetOutput) Identity() VirtualMachineScaleSetIdentityR
 	return o.ApplyT(func(v *VirtualMachineScaleSet) VirtualMachineScaleSetIdentityResponsePtrOutput { return v.Identity }).(VirtualMachineScaleSetIdentityResponsePtrOutput)
 }
 
-// Resource location
+// The geo-location where the resource lives
 func (o VirtualMachineScaleSetOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSet) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o VirtualMachineScaleSetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSet) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -429,9 +472,19 @@ func (o VirtualMachineScaleSetOutput) ProximityPlacementGroup() SubResourceRespo
 	return o.ApplyT(func(v *VirtualMachineScaleSet) SubResourceResponsePtrOutput { return v.ProximityPlacementGroup }).(SubResourceResponsePtrOutput)
 }
 
+// Policy for Resiliency
+func (o VirtualMachineScaleSetOutput) ResiliencyPolicy() ResiliencyPolicyResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSet) ResiliencyPolicyResponsePtrOutput { return v.ResiliencyPolicy }).(ResiliencyPolicyResponsePtrOutput)
+}
+
 // Specifies the policies applied when scaling in Virtual Machines in the Virtual Machine Scale Set.
 func (o VirtualMachineScaleSetOutput) ScaleInPolicy() ScaleInPolicyResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSet) ScaleInPolicyResponsePtrOutput { return v.ScaleInPolicy }).(ScaleInPolicyResponsePtrOutput)
+}
+
+// The ScheduledEventsPolicy.
+func (o VirtualMachineScaleSetOutput) ScheduledEventsPolicy() ScheduledEventsPolicyResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSet) ScheduledEventsPolicyResponsePtrOutput { return v.ScheduledEventsPolicy }).(ScheduledEventsPolicyResponsePtrOutput)
 }
 
 // When true this limits the scale set to a single placement group, of max size 100 virtual machines. NOTE: If singlePlacementGroup is true, it may be modified to false. However, if singlePlacementGroup is false, it may not be modified to true.
@@ -444,12 +497,22 @@ func (o VirtualMachineScaleSetOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSet) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
 }
 
+// Specifies the sku profile for the virtual machine scale set.
+func (o VirtualMachineScaleSetOutput) SkuProfile() SkuProfileResponsePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSet) SkuProfileResponsePtrOutput { return v.SkuProfile }).(SkuProfileResponsePtrOutput)
+}
+
 // Specifies the Spot Restore properties for the virtual machine scale set.
 func (o VirtualMachineScaleSetOutput) SpotRestorePolicy() SpotRestorePolicyResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSet) SpotRestorePolicyResponsePtrOutput { return v.SpotRestorePolicy }).(SpotRestorePolicyResponsePtrOutput)
 }
 
-// Resource tags
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o VirtualMachineScaleSetOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSet) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o VirtualMachineScaleSetOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSet) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -459,7 +522,7 @@ func (o VirtualMachineScaleSetOutput) TimeCreated() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSet) pulumi.StringOutput { return v.TimeCreated }).(pulumi.StringOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o VirtualMachineScaleSetOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSet) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
@@ -481,12 +544,17 @@ func (o VirtualMachineScaleSetOutput) VirtualMachineProfile() VirtualMachineScal
 	}).(VirtualMachineScaleSetVMProfileResponsePtrOutput)
 }
 
+// Specifies the align mode between Virtual Machine Scale Set compute and storage Fault Domain count.
+func (o VirtualMachineScaleSetOutput) ZonalPlatformFaultDomainAlignMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineScaleSet) pulumi.StringPtrOutput { return v.ZonalPlatformFaultDomainAlignMode }).(pulumi.StringPtrOutput)
+}
+
 // Whether to force strictly even Virtual Machine distribution cross x-zones in case there is zone outage. zoneBalance property can only be set if the zones property of the scale set contains more than one zone. If there are no zones or only one zone specified, then zoneBalance property should not be set.
 func (o VirtualMachineScaleSetOutput) ZoneBalance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSet) pulumi.BoolPtrOutput { return v.ZoneBalance }).(pulumi.BoolPtrOutput)
 }
 
-// The virtual machine scale set zones. NOTE: Availability zones can only be set when you create the scale set
+// The availability zones.
 func (o VirtualMachineScaleSetOutput) Zones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VirtualMachineScaleSet) pulumi.StringArrayOutput { return v.Zones }).(pulumi.StringArrayOutput)
 }

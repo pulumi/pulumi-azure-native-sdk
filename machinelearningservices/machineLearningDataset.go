@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Machine Learning dataset object wrapped into ARM resource envelope.
 //
-// Uses Azure REST API version 2020-05-01-preview. In version 1.x of the Azure Native provider, it used API version 2020-05-01-preview.
+// Uses Azure REST API version 2020-05-01-preview. In version 2.x of the Azure Native provider, it used API version 2020-05-01-preview.
 type MachineLearningDataset struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The identity of the resource.
-	Identity IdentityResponsePtrOutput `pulumi:"identity"`
+	Identity IdentityResponseV1PtrOutput `pulumi:"identity"`
 	// Specifies the location of the resource.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Specifies the name of the resource.
@@ -27,7 +29,7 @@ type MachineLearningDataset struct {
 	// Dataset properties
 	Properties DatasetResponseOutput `pulumi:"properties"`
 	// The sku of the workspace.
-	Sku SkuResponsePtrOutput `pulumi:"sku"`
+	Sku SkuResponseV1PtrOutput `pulumi:"sku"`
 	// Contains resource tags defined as key/value pairs.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Specifies the type of the resource.
@@ -168,9 +170,14 @@ func (o MachineLearningDatasetOutput) ToMachineLearningDatasetOutputWithContext(
 	return o
 }
 
+// The Azure API version of the resource.
+func (o MachineLearningDatasetOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MachineLearningDataset) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The identity of the resource.
-func (o MachineLearningDatasetOutput) Identity() IdentityResponsePtrOutput {
-	return o.ApplyT(func(v *MachineLearningDataset) IdentityResponsePtrOutput { return v.Identity }).(IdentityResponsePtrOutput)
+func (o MachineLearningDatasetOutput) Identity() IdentityResponseV1PtrOutput {
+	return o.ApplyT(func(v *MachineLearningDataset) IdentityResponseV1PtrOutput { return v.Identity }).(IdentityResponseV1PtrOutput)
 }
 
 // Specifies the location of the resource.
@@ -189,8 +196,8 @@ func (o MachineLearningDatasetOutput) Properties() DatasetResponseOutput {
 }
 
 // The sku of the workspace.
-func (o MachineLearningDatasetOutput) Sku() SkuResponsePtrOutput {
-	return o.ApplyT(func(v *MachineLearningDataset) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
+func (o MachineLearningDatasetOutput) Sku() SkuResponseV1PtrOutput {
+	return o.ApplyT(func(v *MachineLearningDataset) SkuResponseV1PtrOutput { return v.Sku }).(SkuResponseV1PtrOutput)
 }
 
 // Contains resource tags defined as key/value pairs.

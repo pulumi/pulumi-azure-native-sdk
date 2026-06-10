@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +35,8 @@ type LookupScopeAssignmentArgs struct {
 type LookupScopeAssignmentResult struct {
 	// The managed network ID with scope will be assigned to.
 	AssignedManagedNetwork *string `pulumi:"assignedManagedNetwork"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag string `pulumi:"etag"`
 	// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -87,6 +89,11 @@ func (o LookupScopeAssignmentResultOutput) ToLookupScopeAssignmentResultOutputWi
 // The managed network ID with scope will be assigned to.
 func (o LookupScopeAssignmentResultOutput) AssignedManagedNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupScopeAssignmentResult) *string { return v.AssignedManagedNetwork }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupScopeAssignmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupScopeAssignmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.

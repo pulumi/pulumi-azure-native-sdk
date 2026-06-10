@@ -8,23 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Organization resource.
 //
-// Uses Azure REST API version 2021-12-01. In version 1.x of the Azure Native provider, it used API version 2020-03-01.
+// Uses Azure REST API version 2024-07-01. In version 2.x of the Azure Native provider, it used API version 2021-12-01.
 //
-// Other available API versions: 2020-03-01-preview, 2023-08-22, 2024-02-13, 2024-07-01.
+// Other available API versions: 2021-12-01, 2023-08-22, 2024-02-13, 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Organization struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The creation time of the resource.
 	CreatedTime pulumi.StringOutput `pulumi:"createdTime"`
-	// Location of Organization resource
-	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// The name of the resource.
+	// The geo-location where the resource lives
+	Location pulumi.StringOutput `pulumi:"location"`
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Confluent offer detail
 	OfferDetail OfferDetailResponseOutput `pulumi:"offerDetail"`
@@ -34,11 +36,11 @@ type Organization struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// SSO url for the Confluent organization.
 	SsoUrl pulumi.StringOutput `pulumi:"ssoUrl"`
-	// Metadata pertaining to creation and last modification of the resource
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Organization resource tags
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Subscriber detail
 	UserDetail UserDetailResponseOutput `pulumi:"userDetail"`
@@ -85,6 +87,12 @@ func NewOrganization(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:confluent/v20240701:Organization"),
 		},
+		{
+			Type: pulumi.String("azure-native:confluent/v20250717preview:Organization"),
+		},
+		{
+			Type: pulumi.String("azure-native:confluent/v20250818preview:Organization"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -120,15 +128,17 @@ func (OrganizationState) ElementType() reflect.Type {
 }
 
 type organizationArgs struct {
-	// Location of Organization resource
+	// Link an existing Confluent organization
+	LinkOrganization *LinkOrganization `pulumi:"linkOrganization"`
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Confluent offer detail
 	OfferDetail OfferDetail `pulumi:"offerDetail"`
 	// Organization resource name
 	OrganizationName *string `pulumi:"organizationName"`
-	// Resource group name
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Organization resource tags
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Subscriber detail
 	UserDetail UserDetail `pulumi:"userDetail"`
@@ -136,15 +146,17 @@ type organizationArgs struct {
 
 // The set of arguments for constructing a Organization resource.
 type OrganizationArgs struct {
-	// Location of Organization resource
+	// Link an existing Confluent organization
+	LinkOrganization LinkOrganizationPtrInput
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Confluent offer detail
 	OfferDetail OfferDetailInput
 	// Organization resource name
 	OrganizationName pulumi.StringPtrInput
-	// Resource group name
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Organization resource tags
+	// Resource tags.
 	Tags pulumi.StringMapInput
 	// Subscriber detail
 	UserDetail UserDetailInput
@@ -187,17 +199,22 @@ func (o OrganizationOutput) ToOrganizationOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The Azure API version of the resource.
+func (o OrganizationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The creation time of the resource.
 func (o OrganizationOutput) CreatedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.CreatedTime }).(pulumi.StringOutput)
 }
 
-// Location of Organization resource
-func (o OrganizationOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Organization) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
+// The geo-location where the resource lives
+func (o OrganizationOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o OrganizationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -222,17 +239,17 @@ func (o OrganizationOutput) SsoUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.SsoUrl }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o OrganizationOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Organization) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Organization resource tags
+// Resource tags.
 func (o OrganizationOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o OrganizationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Guest Usages Resource
 //
-// Uses Azure REST API version 2021-04-01. In version 1.x of the Azure Native provider, it used API version 2020-05-01-preview.
+// Uses Azure REST API version 2023-05-17-preview. In version 2.x of the Azure Native provider, it used API version 2021-04-01.
 //
-// Other available API versions: 2023-01-18-preview, 2023-05-17-preview.
+// Other available API versions: 2021-04-01, 2023-01-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native azureactivedirectory [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type GuestUsage struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Location of the Guest Usages resource.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The name of the Guest Usages resource.
@@ -153,6 +155,11 @@ func (o GuestUsageOutput) ToGuestUsageOutput() GuestUsageOutput {
 
 func (o GuestUsageOutput) ToGuestUsageOutputWithContext(ctx context.Context) GuestUsageOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o GuestUsageOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *GuestUsage) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Location of the Guest Usages resource.

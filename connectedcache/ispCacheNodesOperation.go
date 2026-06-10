@@ -8,16 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents the high level Nodes needed to provision cache node resources
 //
-// Uses Azure REST API version 2023-05-01-preview.
+// Uses Azure REST API version 2023-05-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-05-01-preview.
+//
+// Other available API versions: 2024-11-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedcache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type IspCacheNodesOperation struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -48,6 +52,9 @@ func NewIspCacheNodesOperation(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:connectedcache/v20230501preview:IspCacheNodesOperation"),
+		},
+		{
+			Type: pulumi.String("azure-native:connectedcache/v20241130preview:IspCacheNodesOperation"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -149,6 +156,11 @@ func (o IspCacheNodesOperationOutput) ToIspCacheNodesOperationOutput() IspCacheN
 
 func (o IspCacheNodesOperationOutput) ToIspCacheNodesOperationOutputWithContext(ctx context.Context) IspCacheNodesOperationOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o IspCacheNodesOperationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *IspCacheNodesOperation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

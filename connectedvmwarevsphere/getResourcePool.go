@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Implements resourcePool GET method.
 //
-// Uses Azure REST API version 2022-07-15-preview.
+// Uses Azure REST API version 2023-12-01.
 //
-// Other available API versions: 2023-03-01-preview, 2023-10-01, 2023-12-01.
+// Other available API versions: 2022-07-15-preview, 2023-03-01-preview, 2023-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedvmwarevsphere [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupResourcePool(ctx *pulumi.Context, args *LookupResourcePoolArgs, opts ...pulumi.InvokeOption) (*LookupResourcePoolResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupResourcePoolResult
@@ -35,9 +35,15 @@ type LookupResourcePoolArgs struct {
 
 // Define the resourcePool.
 type LookupResourcePoolResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Gets the max CPU usage across all cores on the pool in MHz.
+	CpuCapacityMHz float64 `pulumi:"cpuCapacityMHz"`
 	// Gets or sets CPULimitMHz which specifies a CPU usage limit in MHz.
 	// Utilization will not exceed this limit even if there are available resources.
 	CpuLimitMHz float64 `pulumi:"cpuLimitMHz"`
+	// Gets the used CPU usage across all cores on the pool in MHz.
+	CpuOverallUsageMHz float64 `pulumi:"cpuOverallUsageMHz"`
 	// Gets or sets CPUReservationMHz which specifies the CPU size in MHz that is guaranteed
 	// to be available.
 	CpuReservationMHz float64 `pulumi:"cpuReservationMHz"`
@@ -46,7 +52,7 @@ type LookupResourcePoolResult struct {
 	CpuSharesLevel string `pulumi:"cpuSharesLevel"`
 	// Gets the name of the corresponding resource in Kubernetes.
 	CustomResourceName string `pulumi:"customResourceName"`
-	// Gets or sets the datastore ARM ids.
+	// Gets the datastore ARM ids.
 	DatastoreIds []string `pulumi:"datastoreIds"`
 	// Gets or sets the extended location.
 	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
@@ -58,9 +64,13 @@ type LookupResourcePoolResult struct {
 	Kind *string `pulumi:"kind"`
 	// Gets or sets the location.
 	Location string `pulumi:"location"`
+	// Gets the total amount of physical memory on the pool in GB.
+	MemCapacityGB float64 `pulumi:"memCapacityGB"`
 	// Gets or sets MemLimitMB specifies a memory usage limit in megabytes.
 	// Utilization will not exceed the specified limit even if there are available resources.
 	MemLimitMB float64 `pulumi:"memLimitMB"`
+	// Gets the used physical memory on the pool in GB.
+	MemOverallUsageGB float64 `pulumi:"memOverallUsageGB"`
 	// Gets or sets MemReservationMB which specifies the guaranteed available memory in
 	// megabytes.
 	MemReservationMB float64 `pulumi:"memReservationMB"`
@@ -73,9 +83,9 @@ type LookupResourcePoolResult struct {
 	MoRefId *string `pulumi:"moRefId"`
 	// Gets or sets the name.
 	Name string `pulumi:"name"`
-	// Gets or sets the network ARM ids.
+	// Gets the network ARM ids.
 	NetworkIds []string `pulumi:"networkIds"`
-	// Gets or sets the provisioning state.
+	// Gets the provisioning state.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The resource status information.
 	Statuses []ResourceStatusResponse `pulumi:"statuses"`
@@ -126,10 +136,25 @@ func (o LookupResourcePoolResultOutput) ToLookupResourcePoolResultOutputWithCont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupResourcePoolResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourcePoolResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Gets the max CPU usage across all cores on the pool in MHz.
+func (o LookupResourcePoolResultOutput) CpuCapacityMHz() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupResourcePoolResult) float64 { return v.CpuCapacityMHz }).(pulumi.Float64Output)
+}
+
 // Gets or sets CPULimitMHz which specifies a CPU usage limit in MHz.
 // Utilization will not exceed this limit even if there are available resources.
 func (o LookupResourcePoolResultOutput) CpuLimitMHz() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupResourcePoolResult) float64 { return v.CpuLimitMHz }).(pulumi.Float64Output)
+}
+
+// Gets the used CPU usage across all cores on the pool in MHz.
+func (o LookupResourcePoolResultOutput) CpuOverallUsageMHz() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupResourcePoolResult) float64 { return v.CpuOverallUsageMHz }).(pulumi.Float64Output)
 }
 
 // Gets or sets CPUReservationMHz which specifies the CPU size in MHz that is guaranteed
@@ -149,7 +174,7 @@ func (o LookupResourcePoolResultOutput) CustomResourceName() pulumi.StringOutput
 	return o.ApplyT(func(v LookupResourcePoolResult) string { return v.CustomResourceName }).(pulumi.StringOutput)
 }
 
-// Gets or sets the datastore ARM ids.
+// Gets the datastore ARM ids.
 func (o LookupResourcePoolResultOutput) DatastoreIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupResourcePoolResult) []string { return v.DatastoreIds }).(pulumi.StringArrayOutput)
 }
@@ -179,10 +204,20 @@ func (o LookupResourcePoolResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupResourcePoolResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
+// Gets the total amount of physical memory on the pool in GB.
+func (o LookupResourcePoolResultOutput) MemCapacityGB() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupResourcePoolResult) float64 { return v.MemCapacityGB }).(pulumi.Float64Output)
+}
+
 // Gets or sets MemLimitMB specifies a memory usage limit in megabytes.
 // Utilization will not exceed the specified limit even if there are available resources.
 func (o LookupResourcePoolResultOutput) MemLimitMB() pulumi.Float64Output {
 	return o.ApplyT(func(v LookupResourcePoolResult) float64 { return v.MemLimitMB }).(pulumi.Float64Output)
+}
+
+// Gets the used physical memory on the pool in GB.
+func (o LookupResourcePoolResultOutput) MemOverallUsageGB() pulumi.Float64Output {
+	return o.ApplyT(func(v LookupResourcePoolResult) float64 { return v.MemOverallUsageGB }).(pulumi.Float64Output)
 }
 
 // Gets or sets MemReservationMB which specifies the guaranteed available memory in
@@ -212,12 +247,12 @@ func (o LookupResourcePoolResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupResourcePoolResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Gets or sets the network ARM ids.
+// Gets the network ARM ids.
 func (o LookupResourcePoolResultOutput) NetworkIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupResourcePoolResult) []string { return v.NetworkIds }).(pulumi.StringArrayOutput)
 }
 
-// Gets or sets the provisioning state.
+// Gets the provisioning state.
 func (o LookupResourcePoolResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupResourcePoolResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }

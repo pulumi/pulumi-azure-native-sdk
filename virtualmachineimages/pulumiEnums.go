@@ -10,6 +10,340 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Enabling this field will trigger an automatic build on image template creation or update.
+type AutoRunState string
+
+const (
+	// Autorun is enabled
+	AutoRunStateAutoRunEnabled = AutoRunState("Enabled")
+	// Autorun is disabled
+	AutoRunStateAutoRunDisabled = AutoRunState("Disabled")
+)
+
+func (AutoRunState) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoRunState)(nil)).Elem()
+}
+
+func (e AutoRunState) ToAutoRunStateOutput() AutoRunStateOutput {
+	return pulumi.ToOutput(e).(AutoRunStateOutput)
+}
+
+func (e AutoRunState) ToAutoRunStateOutputWithContext(ctx context.Context) AutoRunStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AutoRunStateOutput)
+}
+
+func (e AutoRunState) ToAutoRunStatePtrOutput() AutoRunStatePtrOutput {
+	return e.ToAutoRunStatePtrOutputWithContext(context.Background())
+}
+
+func (e AutoRunState) ToAutoRunStatePtrOutputWithContext(ctx context.Context) AutoRunStatePtrOutput {
+	return AutoRunState(e).ToAutoRunStateOutputWithContext(ctx).ToAutoRunStatePtrOutputWithContext(ctx)
+}
+
+func (e AutoRunState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AutoRunState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AutoRunState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AutoRunState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AutoRunStateOutput struct{ *pulumi.OutputState }
+
+func (AutoRunStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoRunState)(nil)).Elem()
+}
+
+func (o AutoRunStateOutput) ToAutoRunStateOutput() AutoRunStateOutput {
+	return o
+}
+
+func (o AutoRunStateOutput) ToAutoRunStateOutputWithContext(ctx context.Context) AutoRunStateOutput {
+	return o
+}
+
+func (o AutoRunStateOutput) ToAutoRunStatePtrOutput() AutoRunStatePtrOutput {
+	return o.ToAutoRunStatePtrOutputWithContext(context.Background())
+}
+
+func (o AutoRunStateOutput) ToAutoRunStatePtrOutputWithContext(ctx context.Context) AutoRunStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutoRunState) *AutoRunState {
+		return &v
+	}).(AutoRunStatePtrOutput)
+}
+
+func (o AutoRunStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AutoRunStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AutoRunState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AutoRunStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AutoRunStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AutoRunState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AutoRunStatePtrOutput struct{ *pulumi.OutputState }
+
+func (AutoRunStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutoRunState)(nil)).Elem()
+}
+
+func (o AutoRunStatePtrOutput) ToAutoRunStatePtrOutput() AutoRunStatePtrOutput {
+	return o
+}
+
+func (o AutoRunStatePtrOutput) ToAutoRunStatePtrOutputWithContext(ctx context.Context) AutoRunStatePtrOutput {
+	return o
+}
+
+func (o AutoRunStatePtrOutput) Elem() AutoRunStateOutput {
+	return o.ApplyT(func(v *AutoRunState) AutoRunState {
+		if v != nil {
+			return *v
+		}
+		var ret AutoRunState
+		return ret
+	}).(AutoRunStateOutput)
+}
+
+func (o AutoRunStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AutoRunStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AutoRunState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AutoRunStateInput is an input type that accepts values of the AutoRunState enum
+// A concrete instance of `AutoRunStateInput` can be one of the following:
+//
+//	AutoRunStateAutoRunEnabled
+//	AutoRunStateAutoRunDisabled
+type AutoRunStateInput interface {
+	pulumi.Input
+
+	ToAutoRunStateOutput() AutoRunStateOutput
+	ToAutoRunStateOutputWithContext(context.Context) AutoRunStateOutput
+}
+
+var autoRunStatePtrType = reflect.TypeOf((**AutoRunState)(nil)).Elem()
+
+type AutoRunStatePtrInput interface {
+	pulumi.Input
+
+	ToAutoRunStatePtrOutput() AutoRunStatePtrOutput
+	ToAutoRunStatePtrOutputWithContext(context.Context) AutoRunStatePtrOutput
+}
+
+type autoRunStatePtr string
+
+func AutoRunStatePtr(v string) AutoRunStatePtrInput {
+	return (*autoRunStatePtr)(&v)
+}
+
+func (*autoRunStatePtr) ElementType() reflect.Type {
+	return autoRunStatePtrType
+}
+
+func (in *autoRunStatePtr) ToAutoRunStatePtrOutput() AutoRunStatePtrOutput {
+	return pulumi.ToOutput(in).(AutoRunStatePtrOutput)
+}
+
+func (in *autoRunStatePtr) ToAutoRunStatePtrOutputWithContext(ctx context.Context) AutoRunStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AutoRunStatePtrOutput)
+}
+
+// If there is a validation error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a validation error and this field is set to 'abort', the build VM will be preserved.
+type OnBuildError string
+
+const (
+	OnBuildErrorCleanup = OnBuildError("cleanup")
+	OnBuildErrorAbort   = OnBuildError("abort")
+)
+
+func (OnBuildError) ElementType() reflect.Type {
+	return reflect.TypeOf((*OnBuildError)(nil)).Elem()
+}
+
+func (e OnBuildError) ToOnBuildErrorOutput() OnBuildErrorOutput {
+	return pulumi.ToOutput(e).(OnBuildErrorOutput)
+}
+
+func (e OnBuildError) ToOnBuildErrorOutputWithContext(ctx context.Context) OnBuildErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(OnBuildErrorOutput)
+}
+
+func (e OnBuildError) ToOnBuildErrorPtrOutput() OnBuildErrorPtrOutput {
+	return e.ToOnBuildErrorPtrOutputWithContext(context.Background())
+}
+
+func (e OnBuildError) ToOnBuildErrorPtrOutputWithContext(ctx context.Context) OnBuildErrorPtrOutput {
+	return OnBuildError(e).ToOnBuildErrorOutputWithContext(ctx).ToOnBuildErrorPtrOutputWithContext(ctx)
+}
+
+func (e OnBuildError) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OnBuildError) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OnBuildError) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e OnBuildError) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type OnBuildErrorOutput struct{ *pulumi.OutputState }
+
+func (OnBuildErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OnBuildError)(nil)).Elem()
+}
+
+func (o OnBuildErrorOutput) ToOnBuildErrorOutput() OnBuildErrorOutput {
+	return o
+}
+
+func (o OnBuildErrorOutput) ToOnBuildErrorOutputWithContext(ctx context.Context) OnBuildErrorOutput {
+	return o
+}
+
+func (o OnBuildErrorOutput) ToOnBuildErrorPtrOutput() OnBuildErrorPtrOutput {
+	return o.ToOnBuildErrorPtrOutputWithContext(context.Background())
+}
+
+func (o OnBuildErrorOutput) ToOnBuildErrorPtrOutputWithContext(ctx context.Context) OnBuildErrorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OnBuildError) *OnBuildError {
+		return &v
+	}).(OnBuildErrorPtrOutput)
+}
+
+func (o OnBuildErrorOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o OnBuildErrorOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OnBuildError) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o OnBuildErrorOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OnBuildErrorOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OnBuildError) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type OnBuildErrorPtrOutput struct{ *pulumi.OutputState }
+
+func (OnBuildErrorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OnBuildError)(nil)).Elem()
+}
+
+func (o OnBuildErrorPtrOutput) ToOnBuildErrorPtrOutput() OnBuildErrorPtrOutput {
+	return o
+}
+
+func (o OnBuildErrorPtrOutput) ToOnBuildErrorPtrOutputWithContext(ctx context.Context) OnBuildErrorPtrOutput {
+	return o
+}
+
+func (o OnBuildErrorPtrOutput) Elem() OnBuildErrorOutput {
+	return o.ApplyT(func(v *OnBuildError) OnBuildError {
+		if v != nil {
+			return *v
+		}
+		var ret OnBuildError
+		return ret
+	}).(OnBuildErrorOutput)
+}
+
+func (o OnBuildErrorPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OnBuildErrorPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *OnBuildError) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// OnBuildErrorInput is an input type that accepts values of the OnBuildError enum
+// A concrete instance of `OnBuildErrorInput` can be one of the following:
+//
+//	OnBuildErrorCleanup
+//	OnBuildErrorAbort
+type OnBuildErrorInput interface {
+	pulumi.Input
+
+	ToOnBuildErrorOutput() OnBuildErrorOutput
+	ToOnBuildErrorOutputWithContext(context.Context) OnBuildErrorOutput
+}
+
+var onBuildErrorPtrType = reflect.TypeOf((**OnBuildError)(nil)).Elem()
+
+type OnBuildErrorPtrInput interface {
+	pulumi.Input
+
+	ToOnBuildErrorPtrOutput() OnBuildErrorPtrOutput
+	ToOnBuildErrorPtrOutputWithContext(context.Context) OnBuildErrorPtrOutput
+}
+
+type onBuildErrorPtr string
+
+func OnBuildErrorPtr(v string) OnBuildErrorPtrInput {
+	return (*onBuildErrorPtr)(&v)
+}
+
+func (*onBuildErrorPtr) ElementType() reflect.Type {
+	return onBuildErrorPtrType
+}
+
+func (in *onBuildErrorPtr) ToOnBuildErrorPtrOutput() OnBuildErrorPtrOutput {
+	return pulumi.ToOutput(in).(OnBuildErrorPtrOutput)
+}
+
+func (in *onBuildErrorPtr) ToOnBuildErrorPtrOutputWithContext(ctx context.Context) OnBuildErrorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(OnBuildErrorPtrOutput)
+}
+
 // The type of identity used for the image template. The type 'None' will remove any identities from the image template.
 type ResourceIdentityType string
 
@@ -511,6 +845,10 @@ func (in *vmbootOptimizationStatePtr) ToVMBootOptimizationStatePtrOutputWithCont
 }
 
 func init() {
+	pulumi.RegisterOutputType(AutoRunStateOutput{})
+	pulumi.RegisterOutputType(AutoRunStatePtrOutput{})
+	pulumi.RegisterOutputType(OnBuildErrorOutput{})
+	pulumi.RegisterOutputType(OnBuildErrorPtrOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ResourceIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(SharedImageStorageAccountTypeOutput{})

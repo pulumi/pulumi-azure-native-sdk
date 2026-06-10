@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +35,8 @@ type LookupCustomImageArgs struct {
 
 // The test base custom image resource.
 type LookupCustomImageResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The UTC timestamp when the custom image was published.
 	CreationTime string `pulumi:"creationTime"`
 	// Image definition name.
@@ -117,6 +119,11 @@ func (o LookupCustomImageResultOutput) ToLookupCustomImageResultOutput() LookupC
 
 func (o LookupCustomImageResultOutput) ToLookupCustomImageResultOutputWithContext(ctx context.Context) LookupCustomImageResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupCustomImageResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCustomImageResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The UTC timestamp when the custom image was published.

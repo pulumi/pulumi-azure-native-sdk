@@ -8,33 +8,35 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents an instance of an auto scale v-core resource.
 //
-// Uses Azure REST API version 2021-01-01. In version 1.x of the Azure Native provider, it used API version 2021-01-01.
+// Uses Azure REST API version 2021-01-01. In version 2.x of the Azure Native provider, it used API version 2021-01-01.
 type AutoScaleVCore struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The maximum capacity of an auto scale v-core resource.
 	CapacityLimit pulumi.IntPtrOutput `pulumi:"capacityLimit"`
 	// The object ID of the capacity resource associated with the auto scale v-core resource.
 	CapacityObjectId pulumi.StringPtrOutput `pulumi:"capacityObjectId"`
-	// Location of the PowerBI Dedicated resource.
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The name of the PowerBI Dedicated resource.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The current deployment state of an auto scale v-core resource. The provisioningState is to indicate states for resource provisioning.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The SKU of the auto scale v-core resource.
 	Sku AutoScaleVCoreSkuResponseOutput `pulumi:"sku"`
-	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponsePtrOutput `pulumi:"systemData"`
-	// Key-value pairs of additional resource provisioning properties.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the PowerBI Dedicated resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -94,15 +96,13 @@ type autoScaleVCoreArgs struct {
 	CapacityLimit *int `pulumi:"capacityLimit"`
 	// The object ID of the capacity resource associated with the auto scale v-core resource.
 	CapacityObjectId *string `pulumi:"capacityObjectId"`
-	// Location of the PowerBI Dedicated resource.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// The name of the Azure Resource group of which a given PowerBIDedicated capacity is part. This name must be at least 1 character in length, and no more than 90.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The SKU of the auto scale v-core resource.
 	Sku AutoScaleVCoreSku `pulumi:"sku"`
-	// Metadata pertaining to creation and last modification of the resource.
-	SystemData *SystemData `pulumi:"systemData"`
-	// Key-value pairs of additional resource provisioning properties.
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The name of the auto scale v-core. It must be a minimum of 3 characters, and a maximum of 63.
 	VcoreName *string `pulumi:"vcoreName"`
@@ -114,15 +114,13 @@ type AutoScaleVCoreArgs struct {
 	CapacityLimit pulumi.IntPtrInput
 	// The object ID of the capacity resource associated with the auto scale v-core resource.
 	CapacityObjectId pulumi.StringPtrInput
-	// Location of the PowerBI Dedicated resource.
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// The name of the Azure Resource group of which a given PowerBIDedicated capacity is part. This name must be at least 1 character in length, and no more than 90.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The SKU of the auto scale v-core resource.
 	Sku AutoScaleVCoreSkuInput
-	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataPtrInput
-	// Key-value pairs of additional resource provisioning properties.
+	// Resource tags.
 	Tags pulumi.StringMapInput
 	// The name of the auto scale v-core. It must be a minimum of 3 characters, and a maximum of 63.
 	VcoreName pulumi.StringPtrInput
@@ -165,6 +163,11 @@ func (o AutoScaleVCoreOutput) ToAutoScaleVCoreOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o AutoScaleVCoreOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AutoScaleVCore) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The maximum capacity of an auto scale v-core resource.
 func (o AutoScaleVCoreOutput) CapacityLimit() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AutoScaleVCore) pulumi.IntPtrOutput { return v.CapacityLimit }).(pulumi.IntPtrOutput)
@@ -175,12 +178,12 @@ func (o AutoScaleVCoreOutput) CapacityObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AutoScaleVCore) pulumi.StringPtrOutput { return v.CapacityObjectId }).(pulumi.StringPtrOutput)
 }
 
-// Location of the PowerBI Dedicated resource.
+// The geo-location where the resource lives
 func (o AutoScaleVCoreOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *AutoScaleVCore) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The name of the PowerBI Dedicated resource.
+// The name of the resource
 func (o AutoScaleVCoreOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AutoScaleVCore) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -195,17 +198,17 @@ func (o AutoScaleVCoreOutput) Sku() AutoScaleVCoreSkuResponseOutput {
 	return o.ApplyT(func(v *AutoScaleVCore) AutoScaleVCoreSkuResponseOutput { return v.Sku }).(AutoScaleVCoreSkuResponseOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
-func (o AutoScaleVCoreOutput) SystemData() SystemDataResponsePtrOutput {
-	return o.ApplyT(func(v *AutoScaleVCore) SystemDataResponsePtrOutput { return v.SystemData }).(SystemDataResponsePtrOutput)
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o AutoScaleVCoreOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *AutoScaleVCore) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Key-value pairs of additional resource provisioning properties.
+// Resource tags.
 func (o AutoScaleVCoreOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AutoScaleVCore) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the PowerBI Dedicated resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o AutoScaleVCoreOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *AutoScaleVCore) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +33,8 @@ type LookupStorageSpaceRetrieveArgs struct {
 
 // The storageSpaces resource definition.
 type LookupStorageSpaceRetrieveResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion  string                                 `pulumi:"azureApiVersion"`
 	ExtendedLocation *StorageSpacesResponseExtendedLocation `pulumi:"extendedLocation"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
@@ -83,6 +85,11 @@ func (o LookupStorageSpaceRetrieveResultOutput) ToLookupStorageSpaceRetrieveResu
 
 func (o LookupStorageSpaceRetrieveResultOutput) ToLookupStorageSpaceRetrieveResultOutputWithContext(ctx context.Context) LookupStorageSpaceRetrieveResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupStorageSpaceRetrieveResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageSpaceRetrieveResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupStorageSpaceRetrieveResultOutput) ExtendedLocation() StorageSpacesResponseExtendedLocationPtrOutput {

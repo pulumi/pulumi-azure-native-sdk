@@ -14,11 +14,12 @@ import (
 type Action string
 
 const (
-	ActionInstall   = Action("Install")
-	ActionLaunch    = Action("Launch")
-	ActionClose     = Action("Close")
-	ActionUninstall = Action("Uninstall")
-	ActionCustom    = Action("Custom")
+	ActionInstall          = Action("Install")
+	ActionLaunch           = Action("Launch")
+	ActionClose            = Action("Close")
+	ActionUninstall        = Action("Uninstall")
+	ActionCustom           = Action("Custom")
+	ActionFlowDrivenCustom = Action("FlowDrivenCustom")
 )
 
 func (Action) ElementType() reflect.Type {
@@ -148,6 +149,7 @@ func (o ActionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulum
 //	ActionClose
 //	ActionUninstall
 //	ActionCustom
+//	ActionFlowDrivenCustom
 type ActionInput interface {
 	pulumi.Input
 
@@ -1024,6 +1026,174 @@ func (in *engagementsPtr) ToEngagementsPtrOutput() EngagementsPtrOutput {
 
 func (in *engagementsPtr) ToEngagementsPtrOutputWithContext(ctx context.Context) EngagementsPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EngagementsPtrOutput)
+}
+
+// Resource type for file uploading.
+type FileUploadResourceType string
+
+const (
+	// Upload file for package onboarding.
+	FileUploadResourceTypePackage = FileUploadResourceType("Package")
+	// Upload VHD file for image onboarding.
+	FileUploadResourceTypeVHD = FileUploadResourceType("VHD")
+)
+
+func (FileUploadResourceType) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileUploadResourceType)(nil)).Elem()
+}
+
+func (e FileUploadResourceType) ToFileUploadResourceTypeOutput() FileUploadResourceTypeOutput {
+	return pulumi.ToOutput(e).(FileUploadResourceTypeOutput)
+}
+
+func (e FileUploadResourceType) ToFileUploadResourceTypeOutputWithContext(ctx context.Context) FileUploadResourceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(FileUploadResourceTypeOutput)
+}
+
+func (e FileUploadResourceType) ToFileUploadResourceTypePtrOutput() FileUploadResourceTypePtrOutput {
+	return e.ToFileUploadResourceTypePtrOutputWithContext(context.Background())
+}
+
+func (e FileUploadResourceType) ToFileUploadResourceTypePtrOutputWithContext(ctx context.Context) FileUploadResourceTypePtrOutput {
+	return FileUploadResourceType(e).ToFileUploadResourceTypeOutputWithContext(ctx).ToFileUploadResourceTypePtrOutputWithContext(ctx)
+}
+
+func (e FileUploadResourceType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FileUploadResourceType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FileUploadResourceType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e FileUploadResourceType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type FileUploadResourceTypeOutput struct{ *pulumi.OutputState }
+
+func (FileUploadResourceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileUploadResourceType)(nil)).Elem()
+}
+
+func (o FileUploadResourceTypeOutput) ToFileUploadResourceTypeOutput() FileUploadResourceTypeOutput {
+	return o
+}
+
+func (o FileUploadResourceTypeOutput) ToFileUploadResourceTypeOutputWithContext(ctx context.Context) FileUploadResourceTypeOutput {
+	return o
+}
+
+func (o FileUploadResourceTypeOutput) ToFileUploadResourceTypePtrOutput() FileUploadResourceTypePtrOutput {
+	return o.ToFileUploadResourceTypePtrOutputWithContext(context.Background())
+}
+
+func (o FileUploadResourceTypeOutput) ToFileUploadResourceTypePtrOutputWithContext(ctx context.Context) FileUploadResourceTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileUploadResourceType) *FileUploadResourceType {
+		return &v
+	}).(FileUploadResourceTypePtrOutput)
+}
+
+func (o FileUploadResourceTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o FileUploadResourceTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FileUploadResourceType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o FileUploadResourceTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FileUploadResourceTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FileUploadResourceType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type FileUploadResourceTypePtrOutput struct{ *pulumi.OutputState }
+
+func (FileUploadResourceTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileUploadResourceType)(nil)).Elem()
+}
+
+func (o FileUploadResourceTypePtrOutput) ToFileUploadResourceTypePtrOutput() FileUploadResourceTypePtrOutput {
+	return o
+}
+
+func (o FileUploadResourceTypePtrOutput) ToFileUploadResourceTypePtrOutputWithContext(ctx context.Context) FileUploadResourceTypePtrOutput {
+	return o
+}
+
+func (o FileUploadResourceTypePtrOutput) Elem() FileUploadResourceTypeOutput {
+	return o.ApplyT(func(v *FileUploadResourceType) FileUploadResourceType {
+		if v != nil {
+			return *v
+		}
+		var ret FileUploadResourceType
+		return ret
+	}).(FileUploadResourceTypeOutput)
+}
+
+func (o FileUploadResourceTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FileUploadResourceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *FileUploadResourceType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// FileUploadResourceTypeInput is an input type that accepts values of the FileUploadResourceType enum
+// A concrete instance of `FileUploadResourceTypeInput` can be one of the following:
+//
+//	FileUploadResourceTypePackage
+//	FileUploadResourceTypeVHD
+type FileUploadResourceTypeInput interface {
+	pulumi.Input
+
+	ToFileUploadResourceTypeOutput() FileUploadResourceTypeOutput
+	ToFileUploadResourceTypeOutputWithContext(context.Context) FileUploadResourceTypeOutput
+}
+
+var fileUploadResourceTypePtrType = reflect.TypeOf((**FileUploadResourceType)(nil)).Elem()
+
+type FileUploadResourceTypePtrInput interface {
+	pulumi.Input
+
+	ToFileUploadResourceTypePtrOutput() FileUploadResourceTypePtrOutput
+	ToFileUploadResourceTypePtrOutputWithContext(context.Context) FileUploadResourceTypePtrOutput
+}
+
+type fileUploadResourceTypePtr string
+
+func FileUploadResourceTypePtr(v string) FileUploadResourceTypePtrInput {
+	return (*fileUploadResourceTypePtr)(&v)
+}
+
+func (*fileUploadResourceTypePtr) ElementType() reflect.Type {
+	return fileUploadResourceTypePtrType
+}
+
+func (in *fileUploadResourceTypePtr) ToFileUploadResourceTypePtrOutput() FileUploadResourceTypePtrOutput {
+	return pulumi.ToOutput(in).(FileUploadResourceTypePtrOutput)
+}
+
+func (in *fileUploadResourceTypePtr) ToFileUploadResourceTypePtrOutputWithContext(ctx context.Context) FileUploadResourceTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(FileUploadResourceTypePtrOutput)
 }
 
 // Custom image architecture.
@@ -2374,12 +2544,179 @@ func (in *requestTypesPtr) ToRequestTypesPtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(RequestTypesPtrOutput)
 }
 
+// Type of managed service identity (either system assigned, or none).
+type SystemAssignedServiceIdentityType string
+
+const (
+	SystemAssignedServiceIdentityTypeNone           = SystemAssignedServiceIdentityType("None")
+	SystemAssignedServiceIdentityTypeSystemAssigned = SystemAssignedServiceIdentityType("SystemAssigned")
+)
+
+func (SystemAssignedServiceIdentityType) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemAssignedServiceIdentityType)(nil)).Elem()
+}
+
+func (e SystemAssignedServiceIdentityType) ToSystemAssignedServiceIdentityTypeOutput() SystemAssignedServiceIdentityTypeOutput {
+	return pulumi.ToOutput(e).(SystemAssignedServiceIdentityTypeOutput)
+}
+
+func (e SystemAssignedServiceIdentityType) ToSystemAssignedServiceIdentityTypeOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SystemAssignedServiceIdentityTypeOutput)
+}
+
+func (e SystemAssignedServiceIdentityType) ToSystemAssignedServiceIdentityTypePtrOutput() SystemAssignedServiceIdentityTypePtrOutput {
+	return e.ToSystemAssignedServiceIdentityTypePtrOutputWithContext(context.Background())
+}
+
+func (e SystemAssignedServiceIdentityType) ToSystemAssignedServiceIdentityTypePtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityTypePtrOutput {
+	return SystemAssignedServiceIdentityType(e).ToSystemAssignedServiceIdentityTypeOutputWithContext(ctx).ToSystemAssignedServiceIdentityTypePtrOutputWithContext(ctx)
+}
+
+func (e SystemAssignedServiceIdentityType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SystemAssignedServiceIdentityType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SystemAssignedServiceIdentityType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SystemAssignedServiceIdentityType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SystemAssignedServiceIdentityTypeOutput struct{ *pulumi.OutputState }
+
+func (SystemAssignedServiceIdentityTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemAssignedServiceIdentityType)(nil)).Elem()
+}
+
+func (o SystemAssignedServiceIdentityTypeOutput) ToSystemAssignedServiceIdentityTypeOutput() SystemAssignedServiceIdentityTypeOutput {
+	return o
+}
+
+func (o SystemAssignedServiceIdentityTypeOutput) ToSystemAssignedServiceIdentityTypeOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityTypeOutput {
+	return o
+}
+
+func (o SystemAssignedServiceIdentityTypeOutput) ToSystemAssignedServiceIdentityTypePtrOutput() SystemAssignedServiceIdentityTypePtrOutput {
+	return o.ToSystemAssignedServiceIdentityTypePtrOutputWithContext(context.Background())
+}
+
+func (o SystemAssignedServiceIdentityTypeOutput) ToSystemAssignedServiceIdentityTypePtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SystemAssignedServiceIdentityType) *SystemAssignedServiceIdentityType {
+		return &v
+	}).(SystemAssignedServiceIdentityTypePtrOutput)
+}
+
+func (o SystemAssignedServiceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SystemAssignedServiceIdentityTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SystemAssignedServiceIdentityType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SystemAssignedServiceIdentityTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SystemAssignedServiceIdentityTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SystemAssignedServiceIdentityType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SystemAssignedServiceIdentityTypePtrOutput struct{ *pulumi.OutputState }
+
+func (SystemAssignedServiceIdentityTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SystemAssignedServiceIdentityType)(nil)).Elem()
+}
+
+func (o SystemAssignedServiceIdentityTypePtrOutput) ToSystemAssignedServiceIdentityTypePtrOutput() SystemAssignedServiceIdentityTypePtrOutput {
+	return o
+}
+
+func (o SystemAssignedServiceIdentityTypePtrOutput) ToSystemAssignedServiceIdentityTypePtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityTypePtrOutput {
+	return o
+}
+
+func (o SystemAssignedServiceIdentityTypePtrOutput) Elem() SystemAssignedServiceIdentityTypeOutput {
+	return o.ApplyT(func(v *SystemAssignedServiceIdentityType) SystemAssignedServiceIdentityType {
+		if v != nil {
+			return *v
+		}
+		var ret SystemAssignedServiceIdentityType
+		return ret
+	}).(SystemAssignedServiceIdentityTypeOutput)
+}
+
+func (o SystemAssignedServiceIdentityTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SystemAssignedServiceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SystemAssignedServiceIdentityType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SystemAssignedServiceIdentityTypeInput is an input type that accepts values of the SystemAssignedServiceIdentityType enum
+// A concrete instance of `SystemAssignedServiceIdentityTypeInput` can be one of the following:
+//
+//	SystemAssignedServiceIdentityTypeNone
+//	SystemAssignedServiceIdentityTypeSystemAssigned
+type SystemAssignedServiceIdentityTypeInput interface {
+	pulumi.Input
+
+	ToSystemAssignedServiceIdentityTypeOutput() SystemAssignedServiceIdentityTypeOutput
+	ToSystemAssignedServiceIdentityTypeOutputWithContext(context.Context) SystemAssignedServiceIdentityTypeOutput
+}
+
+var systemAssignedServiceIdentityTypePtrType = reflect.TypeOf((**SystemAssignedServiceIdentityType)(nil)).Elem()
+
+type SystemAssignedServiceIdentityTypePtrInput interface {
+	pulumi.Input
+
+	ToSystemAssignedServiceIdentityTypePtrOutput() SystemAssignedServiceIdentityTypePtrOutput
+	ToSystemAssignedServiceIdentityTypePtrOutputWithContext(context.Context) SystemAssignedServiceIdentityTypePtrOutput
+}
+
+type systemAssignedServiceIdentityTypePtr string
+
+func SystemAssignedServiceIdentityTypePtr(v string) SystemAssignedServiceIdentityTypePtrInput {
+	return (*systemAssignedServiceIdentityTypePtr)(&v)
+}
+
+func (*systemAssignedServiceIdentityTypePtr) ElementType() reflect.Type {
+	return systemAssignedServiceIdentityTypePtrType
+}
+
+func (in *systemAssignedServiceIdentityTypePtr) ToSystemAssignedServiceIdentityTypePtrOutput() SystemAssignedServiceIdentityTypePtrOutput {
+	return pulumi.ToOutput(in).(SystemAssignedServiceIdentityTypePtrOutput)
+}
+
+func (in *systemAssignedServiceIdentityTypePtr) ToSystemAssignedServiceIdentityTypePtrOutputWithContext(ctx context.Context) SystemAssignedServiceIdentityTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SystemAssignedServiceIdentityTypePtrOutput)
+}
+
 // The type of the test.
 type TestType string
 
 const (
 	TestTypeOutOfBoxTest   = TestType("OutOfBoxTest")
 	TestTypeFunctionalTest = TestType("FunctionalTest")
+	TestTypeFlowDrivenTest = TestType("FlowDrivenTest")
 )
 
 func (TestType) ElementType() reflect.Type {
@@ -2506,6 +2843,7 @@ func (o TestTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pul
 //
 //	TestTypeOutOfBoxTest
 //	TestTypeFunctionalTest
+//	TestTypeFlowDrivenTest
 type TestTypeInput interface {
 	pulumi.Input
 
@@ -2717,6 +3055,8 @@ func init() {
 	pulumi.RegisterOutputType(DraftPackageSourceTypePtrOutput{})
 	pulumi.RegisterOutputType(EngagementsOutput{})
 	pulumi.RegisterOutputType(EngagementsPtrOutput{})
+	pulumi.RegisterOutputType(FileUploadResourceTypeOutput{})
+	pulumi.RegisterOutputType(FileUploadResourceTypePtrOutput{})
 	pulumi.RegisterOutputType(ImageArchitectureOutput{})
 	pulumi.RegisterOutputType(ImageArchitecturePtrOutput{})
 	pulumi.RegisterOutputType(ImageOSStateOutput{})
@@ -2733,6 +3073,8 @@ func init() {
 	pulumi.RegisterOutputType(PackageStudioTabsPtrOutput{})
 	pulumi.RegisterOutputType(RequestTypesOutput{})
 	pulumi.RegisterOutputType(RequestTypesPtrOutput{})
+	pulumi.RegisterOutputType(SystemAssignedServiceIdentityTypeOutput{})
+	pulumi.RegisterOutputType(SystemAssignedServiceIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(TestTypeOutput{})
 	pulumi.RegisterOutputType(TestTypePtrOutput{})
 	pulumi.RegisterOutputType(TierOutput{})

@@ -7,11 +7,1000 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = utilities.GetEnvOrDefault
+
+// Configuration of the API Bridge.
+type ApiBridgeProperties struct {
+	// The allowed source IP addresses or CIDR ranges for accessing the API Bridge
+	AllowedAddressPrefixes []string `pulumi:"allowedAddressPrefixes"`
+	// The activation state of the API Bridge for this Communications Gateway
+	ConfigureApiBridge *string `pulumi:"configureApiBridge"`
+}
+
+// Defaults sets the appropriate defaults for ApiBridgeProperties
+func (val *ApiBridgeProperties) Defaults() *ApiBridgeProperties {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ConfigureApiBridge == nil {
+		configureApiBridge_ := "disabled"
+		tmp.ConfigureApiBridge = &configureApiBridge_
+	}
+	return &tmp
+}
+
+// ApiBridgePropertiesInput is an input type that accepts ApiBridgePropertiesArgs and ApiBridgePropertiesOutput values.
+// You can construct a concrete instance of `ApiBridgePropertiesInput` via:
+//
+//	ApiBridgePropertiesArgs{...}
+type ApiBridgePropertiesInput interface {
+	pulumi.Input
+
+	ToApiBridgePropertiesOutput() ApiBridgePropertiesOutput
+	ToApiBridgePropertiesOutputWithContext(context.Context) ApiBridgePropertiesOutput
+}
+
+// Configuration of the API Bridge.
+type ApiBridgePropertiesArgs struct {
+	// The allowed source IP addresses or CIDR ranges for accessing the API Bridge
+	AllowedAddressPrefixes pulumi.StringArrayInput `pulumi:"allowedAddressPrefixes"`
+	// The activation state of the API Bridge for this Communications Gateway
+	ConfigureApiBridge pulumi.StringPtrInput `pulumi:"configureApiBridge"`
+}
+
+// Defaults sets the appropriate defaults for ApiBridgePropertiesArgs
+func (val *ApiBridgePropertiesArgs) Defaults() *ApiBridgePropertiesArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ConfigureApiBridge == nil {
+		tmp.ConfigureApiBridge = pulumi.StringPtr("disabled")
+	}
+	return &tmp
+}
+func (ApiBridgePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiBridgeProperties)(nil)).Elem()
+}
+
+func (i ApiBridgePropertiesArgs) ToApiBridgePropertiesOutput() ApiBridgePropertiesOutput {
+	return i.ToApiBridgePropertiesOutputWithContext(context.Background())
+}
+
+func (i ApiBridgePropertiesArgs) ToApiBridgePropertiesOutputWithContext(ctx context.Context) ApiBridgePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiBridgePropertiesOutput)
+}
+
+func (i ApiBridgePropertiesArgs) ToApiBridgePropertiesPtrOutput() ApiBridgePropertiesPtrOutput {
+	return i.ToApiBridgePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i ApiBridgePropertiesArgs) ToApiBridgePropertiesPtrOutputWithContext(ctx context.Context) ApiBridgePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiBridgePropertiesOutput).ToApiBridgePropertiesPtrOutputWithContext(ctx)
+}
+
+// ApiBridgePropertiesPtrInput is an input type that accepts ApiBridgePropertiesArgs, ApiBridgePropertiesPtr and ApiBridgePropertiesPtrOutput values.
+// You can construct a concrete instance of `ApiBridgePropertiesPtrInput` via:
+//
+//	        ApiBridgePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApiBridgePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToApiBridgePropertiesPtrOutput() ApiBridgePropertiesPtrOutput
+	ToApiBridgePropertiesPtrOutputWithContext(context.Context) ApiBridgePropertiesPtrOutput
+}
+
+type apiBridgePropertiesPtrType ApiBridgePropertiesArgs
+
+func ApiBridgePropertiesPtr(v *ApiBridgePropertiesArgs) ApiBridgePropertiesPtrInput {
+	return (*apiBridgePropertiesPtrType)(v)
+}
+
+func (*apiBridgePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiBridgeProperties)(nil)).Elem()
+}
+
+func (i *apiBridgePropertiesPtrType) ToApiBridgePropertiesPtrOutput() ApiBridgePropertiesPtrOutput {
+	return i.ToApiBridgePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *apiBridgePropertiesPtrType) ToApiBridgePropertiesPtrOutputWithContext(ctx context.Context) ApiBridgePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiBridgePropertiesPtrOutput)
+}
+
+// Configuration of the API Bridge.
+type ApiBridgePropertiesOutput struct{ *pulumi.OutputState }
+
+func (ApiBridgePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiBridgeProperties)(nil)).Elem()
+}
+
+func (o ApiBridgePropertiesOutput) ToApiBridgePropertiesOutput() ApiBridgePropertiesOutput {
+	return o
+}
+
+func (o ApiBridgePropertiesOutput) ToApiBridgePropertiesOutputWithContext(ctx context.Context) ApiBridgePropertiesOutput {
+	return o
+}
+
+func (o ApiBridgePropertiesOutput) ToApiBridgePropertiesPtrOutput() ApiBridgePropertiesPtrOutput {
+	return o.ToApiBridgePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o ApiBridgePropertiesOutput) ToApiBridgePropertiesPtrOutputWithContext(ctx context.Context) ApiBridgePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiBridgeProperties) *ApiBridgeProperties {
+		return &v
+	}).(ApiBridgePropertiesPtrOutput)
+}
+
+// The allowed source IP addresses or CIDR ranges for accessing the API Bridge
+func (o ApiBridgePropertiesOutput) AllowedAddressPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApiBridgeProperties) []string { return v.AllowedAddressPrefixes }).(pulumi.StringArrayOutput)
+}
+
+// The activation state of the API Bridge for this Communications Gateway
+func (o ApiBridgePropertiesOutput) ConfigureApiBridge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiBridgeProperties) *string { return v.ConfigureApiBridge }).(pulumi.StringPtrOutput)
+}
+
+type ApiBridgePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (ApiBridgePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiBridgeProperties)(nil)).Elem()
+}
+
+func (o ApiBridgePropertiesPtrOutput) ToApiBridgePropertiesPtrOutput() ApiBridgePropertiesPtrOutput {
+	return o
+}
+
+func (o ApiBridgePropertiesPtrOutput) ToApiBridgePropertiesPtrOutputWithContext(ctx context.Context) ApiBridgePropertiesPtrOutput {
+	return o
+}
+
+func (o ApiBridgePropertiesPtrOutput) Elem() ApiBridgePropertiesOutput {
+	return o.ApplyT(func(v *ApiBridgeProperties) ApiBridgeProperties {
+		if v != nil {
+			return *v
+		}
+		var ret ApiBridgeProperties
+		return ret
+	}).(ApiBridgePropertiesOutput)
+}
+
+// The allowed source IP addresses or CIDR ranges for accessing the API Bridge
+func (o ApiBridgePropertiesPtrOutput) AllowedAddressPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApiBridgeProperties) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedAddressPrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The activation state of the API Bridge for this Communications Gateway
+func (o ApiBridgePropertiesPtrOutput) ConfigureApiBridge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiBridgeProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigureApiBridge
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration of the API Bridge.
+type ApiBridgePropertiesResponse struct {
+	// The allowed source IP addresses or CIDR ranges for accessing the API Bridge
+	AllowedAddressPrefixes []string `pulumi:"allowedAddressPrefixes"`
+	// The activation state of the API Bridge for this Communications Gateway
+	ConfigureApiBridge *string `pulumi:"configureApiBridge"`
+	// FQDNs for sending requests to the API Bridge endpoint
+	EndpointFqdns []string `pulumi:"endpointFqdns"`
+}
+
+// Defaults sets the appropriate defaults for ApiBridgePropertiesResponse
+func (val *ApiBridgePropertiesResponse) Defaults() *ApiBridgePropertiesResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ConfigureApiBridge == nil {
+		configureApiBridge_ := "disabled"
+		tmp.ConfigureApiBridge = &configureApiBridge_
+	}
+	return &tmp
+}
+
+// Configuration of the API Bridge.
+type ApiBridgePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ApiBridgePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiBridgePropertiesResponse)(nil)).Elem()
+}
+
+func (o ApiBridgePropertiesResponseOutput) ToApiBridgePropertiesResponseOutput() ApiBridgePropertiesResponseOutput {
+	return o
+}
+
+func (o ApiBridgePropertiesResponseOutput) ToApiBridgePropertiesResponseOutputWithContext(ctx context.Context) ApiBridgePropertiesResponseOutput {
+	return o
+}
+
+// The allowed source IP addresses or CIDR ranges for accessing the API Bridge
+func (o ApiBridgePropertiesResponseOutput) AllowedAddressPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApiBridgePropertiesResponse) []string { return v.AllowedAddressPrefixes }).(pulumi.StringArrayOutput)
+}
+
+// The activation state of the API Bridge for this Communications Gateway
+func (o ApiBridgePropertiesResponseOutput) ConfigureApiBridge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiBridgePropertiesResponse) *string { return v.ConfigureApiBridge }).(pulumi.StringPtrOutput)
+}
+
+// FQDNs for sending requests to the API Bridge endpoint
+func (o ApiBridgePropertiesResponseOutput) EndpointFqdns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApiBridgePropertiesResponse) []string { return v.EndpointFqdns }).(pulumi.StringArrayOutput)
+}
+
+type ApiBridgePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ApiBridgePropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiBridgePropertiesResponse)(nil)).Elem()
+}
+
+func (o ApiBridgePropertiesResponsePtrOutput) ToApiBridgePropertiesResponsePtrOutput() ApiBridgePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ApiBridgePropertiesResponsePtrOutput) ToApiBridgePropertiesResponsePtrOutputWithContext(ctx context.Context) ApiBridgePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ApiBridgePropertiesResponsePtrOutput) Elem() ApiBridgePropertiesResponseOutput {
+	return o.ApplyT(func(v *ApiBridgePropertiesResponse) ApiBridgePropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ApiBridgePropertiesResponse
+		return ret
+	}).(ApiBridgePropertiesResponseOutput)
+}
+
+// The allowed source IP addresses or CIDR ranges for accessing the API Bridge
+func (o ApiBridgePropertiesResponsePtrOutput) AllowedAddressPrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApiBridgePropertiesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedAddressPrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+// The activation state of the API Bridge for this Communications Gateway
+func (o ApiBridgePropertiesResponsePtrOutput) ConfigureApiBridge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiBridgePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigureApiBridge
+	}).(pulumi.StringPtrOutput)
+}
+
+// FQDNs for sending requests to the API Bridge endpoint
+func (o ApiBridgePropertiesResponsePtrOutput) EndpointFqdns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApiBridgePropertiesResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EndpointFqdns
+	}).(pulumi.StringArrayOutput)
+}
+
+// Details of a Custom SIP Header.
+type CustomSipHeader struct {
+	// The name of the Custom SIP Header
+	Name *string `pulumi:"name"`
+}
+
+// CustomSipHeaderInput is an input type that accepts CustomSipHeaderArgs and CustomSipHeaderOutput values.
+// You can construct a concrete instance of `CustomSipHeaderInput` via:
+//
+//	CustomSipHeaderArgs{...}
+type CustomSipHeaderInput interface {
+	pulumi.Input
+
+	ToCustomSipHeaderOutput() CustomSipHeaderOutput
+	ToCustomSipHeaderOutputWithContext(context.Context) CustomSipHeaderOutput
+}
+
+// Details of a Custom SIP Header.
+type CustomSipHeaderArgs struct {
+	// The name of the Custom SIP Header
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (CustomSipHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomSipHeader)(nil)).Elem()
+}
+
+func (i CustomSipHeaderArgs) ToCustomSipHeaderOutput() CustomSipHeaderOutput {
+	return i.ToCustomSipHeaderOutputWithContext(context.Background())
+}
+
+func (i CustomSipHeaderArgs) ToCustomSipHeaderOutputWithContext(ctx context.Context) CustomSipHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomSipHeaderOutput)
+}
+
+// CustomSipHeaderArrayInput is an input type that accepts CustomSipHeaderArray and CustomSipHeaderArrayOutput values.
+// You can construct a concrete instance of `CustomSipHeaderArrayInput` via:
+//
+//	CustomSipHeaderArray{ CustomSipHeaderArgs{...} }
+type CustomSipHeaderArrayInput interface {
+	pulumi.Input
+
+	ToCustomSipHeaderArrayOutput() CustomSipHeaderArrayOutput
+	ToCustomSipHeaderArrayOutputWithContext(context.Context) CustomSipHeaderArrayOutput
+}
+
+type CustomSipHeaderArray []CustomSipHeaderInput
+
+func (CustomSipHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomSipHeader)(nil)).Elem()
+}
+
+func (i CustomSipHeaderArray) ToCustomSipHeaderArrayOutput() CustomSipHeaderArrayOutput {
+	return i.ToCustomSipHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i CustomSipHeaderArray) ToCustomSipHeaderArrayOutputWithContext(ctx context.Context) CustomSipHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomSipHeaderArrayOutput)
+}
+
+// Details of a Custom SIP Header.
+type CustomSipHeaderOutput struct{ *pulumi.OutputState }
+
+func (CustomSipHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomSipHeader)(nil)).Elem()
+}
+
+func (o CustomSipHeaderOutput) ToCustomSipHeaderOutput() CustomSipHeaderOutput {
+	return o
+}
+
+func (o CustomSipHeaderOutput) ToCustomSipHeaderOutputWithContext(ctx context.Context) CustomSipHeaderOutput {
+	return o
+}
+
+// The name of the Custom SIP Header
+func (o CustomSipHeaderOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomSipHeader) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type CustomSipHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomSipHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomSipHeader)(nil)).Elem()
+}
+
+func (o CustomSipHeaderArrayOutput) ToCustomSipHeaderArrayOutput() CustomSipHeaderArrayOutput {
+	return o
+}
+
+func (o CustomSipHeaderArrayOutput) ToCustomSipHeaderArrayOutputWithContext(ctx context.Context) CustomSipHeaderArrayOutput {
+	return o
+}
+
+func (o CustomSipHeaderArrayOutput) Index(i pulumi.IntInput) CustomSipHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomSipHeader {
+		return vs[0].([]CustomSipHeader)[vs[1].(int)]
+	}).(CustomSipHeaderOutput)
+}
+
+// Details of a Custom SIP Header.
+type CustomSipHeaderResponse struct {
+	// The name of the Custom SIP Header
+	Name *string `pulumi:"name"`
+}
+
+// Details of a Custom SIP Header.
+type CustomSipHeaderResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomSipHeaderResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomSipHeaderResponse)(nil)).Elem()
+}
+
+func (o CustomSipHeaderResponseOutput) ToCustomSipHeaderResponseOutput() CustomSipHeaderResponseOutput {
+	return o
+}
+
+func (o CustomSipHeaderResponseOutput) ToCustomSipHeaderResponseOutputWithContext(ctx context.Context) CustomSipHeaderResponseOutput {
+	return o
+}
+
+// The name of the Custom SIP Header
+func (o CustomSipHeaderResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomSipHeaderResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type CustomSipHeaderResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomSipHeaderResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomSipHeaderResponse)(nil)).Elem()
+}
+
+func (o CustomSipHeaderResponseArrayOutput) ToCustomSipHeaderResponseArrayOutput() CustomSipHeaderResponseArrayOutput {
+	return o
+}
+
+func (o CustomSipHeaderResponseArrayOutput) ToCustomSipHeaderResponseArrayOutputWithContext(ctx context.Context) CustomSipHeaderResponseArrayOutput {
+	return o
+}
+
+func (o CustomSipHeaderResponseArrayOutput) Index(i pulumi.IntInput) CustomSipHeaderResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomSipHeaderResponse {
+		return vs[0].([]CustomSipHeaderResponse)[vs[1].(int)]
+	}).(CustomSipHeaderResponseOutput)
+}
+
+// Properties of Custom SIP Headers.
+type CustomSipHeadersProperties struct {
+	// The Custom SIP Headers to apply to the calls which traverse the Communications Gateway
+	Headers []CustomSipHeader `pulumi:"headers"`
+}
+
+// CustomSipHeadersPropertiesInput is an input type that accepts CustomSipHeadersPropertiesArgs and CustomSipHeadersPropertiesOutput values.
+// You can construct a concrete instance of `CustomSipHeadersPropertiesInput` via:
+//
+//	CustomSipHeadersPropertiesArgs{...}
+type CustomSipHeadersPropertiesInput interface {
+	pulumi.Input
+
+	ToCustomSipHeadersPropertiesOutput() CustomSipHeadersPropertiesOutput
+	ToCustomSipHeadersPropertiesOutputWithContext(context.Context) CustomSipHeadersPropertiesOutput
+}
+
+// Properties of Custom SIP Headers.
+type CustomSipHeadersPropertiesArgs struct {
+	// The Custom SIP Headers to apply to the calls which traverse the Communications Gateway
+	Headers CustomSipHeaderArrayInput `pulumi:"headers"`
+}
+
+func (CustomSipHeadersPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomSipHeadersProperties)(nil)).Elem()
+}
+
+func (i CustomSipHeadersPropertiesArgs) ToCustomSipHeadersPropertiesOutput() CustomSipHeadersPropertiesOutput {
+	return i.ToCustomSipHeadersPropertiesOutputWithContext(context.Background())
+}
+
+func (i CustomSipHeadersPropertiesArgs) ToCustomSipHeadersPropertiesOutputWithContext(ctx context.Context) CustomSipHeadersPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomSipHeadersPropertiesOutput)
+}
+
+func (i CustomSipHeadersPropertiesArgs) ToCustomSipHeadersPropertiesPtrOutput() CustomSipHeadersPropertiesPtrOutput {
+	return i.ToCustomSipHeadersPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i CustomSipHeadersPropertiesArgs) ToCustomSipHeadersPropertiesPtrOutputWithContext(ctx context.Context) CustomSipHeadersPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomSipHeadersPropertiesOutput).ToCustomSipHeadersPropertiesPtrOutputWithContext(ctx)
+}
+
+// CustomSipHeadersPropertiesPtrInput is an input type that accepts CustomSipHeadersPropertiesArgs, CustomSipHeadersPropertiesPtr and CustomSipHeadersPropertiesPtrOutput values.
+// You can construct a concrete instance of `CustomSipHeadersPropertiesPtrInput` via:
+//
+//	        CustomSipHeadersPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type CustomSipHeadersPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToCustomSipHeadersPropertiesPtrOutput() CustomSipHeadersPropertiesPtrOutput
+	ToCustomSipHeadersPropertiesPtrOutputWithContext(context.Context) CustomSipHeadersPropertiesPtrOutput
+}
+
+type customSipHeadersPropertiesPtrType CustomSipHeadersPropertiesArgs
+
+func CustomSipHeadersPropertiesPtr(v *CustomSipHeadersPropertiesArgs) CustomSipHeadersPropertiesPtrInput {
+	return (*customSipHeadersPropertiesPtrType)(v)
+}
+
+func (*customSipHeadersPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomSipHeadersProperties)(nil)).Elem()
+}
+
+func (i *customSipHeadersPropertiesPtrType) ToCustomSipHeadersPropertiesPtrOutput() CustomSipHeadersPropertiesPtrOutput {
+	return i.ToCustomSipHeadersPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *customSipHeadersPropertiesPtrType) ToCustomSipHeadersPropertiesPtrOutputWithContext(ctx context.Context) CustomSipHeadersPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomSipHeadersPropertiesPtrOutput)
+}
+
+// Properties of Custom SIP Headers.
+type CustomSipHeadersPropertiesOutput struct{ *pulumi.OutputState }
+
+func (CustomSipHeadersPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomSipHeadersProperties)(nil)).Elem()
+}
+
+func (o CustomSipHeadersPropertiesOutput) ToCustomSipHeadersPropertiesOutput() CustomSipHeadersPropertiesOutput {
+	return o
+}
+
+func (o CustomSipHeadersPropertiesOutput) ToCustomSipHeadersPropertiesOutputWithContext(ctx context.Context) CustomSipHeadersPropertiesOutput {
+	return o
+}
+
+func (o CustomSipHeadersPropertiesOutput) ToCustomSipHeadersPropertiesPtrOutput() CustomSipHeadersPropertiesPtrOutput {
+	return o.ToCustomSipHeadersPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o CustomSipHeadersPropertiesOutput) ToCustomSipHeadersPropertiesPtrOutputWithContext(ctx context.Context) CustomSipHeadersPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomSipHeadersProperties) *CustomSipHeadersProperties {
+		return &v
+	}).(CustomSipHeadersPropertiesPtrOutput)
+}
+
+// The Custom SIP Headers to apply to the calls which traverse the Communications Gateway
+func (o CustomSipHeadersPropertiesOutput) Headers() CustomSipHeaderArrayOutput {
+	return o.ApplyT(func(v CustomSipHeadersProperties) []CustomSipHeader { return v.Headers }).(CustomSipHeaderArrayOutput)
+}
+
+type CustomSipHeadersPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomSipHeadersPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomSipHeadersProperties)(nil)).Elem()
+}
+
+func (o CustomSipHeadersPropertiesPtrOutput) ToCustomSipHeadersPropertiesPtrOutput() CustomSipHeadersPropertiesPtrOutput {
+	return o
+}
+
+func (o CustomSipHeadersPropertiesPtrOutput) ToCustomSipHeadersPropertiesPtrOutputWithContext(ctx context.Context) CustomSipHeadersPropertiesPtrOutput {
+	return o
+}
+
+func (o CustomSipHeadersPropertiesPtrOutput) Elem() CustomSipHeadersPropertiesOutput {
+	return o.ApplyT(func(v *CustomSipHeadersProperties) CustomSipHeadersProperties {
+		if v != nil {
+			return *v
+		}
+		var ret CustomSipHeadersProperties
+		return ret
+	}).(CustomSipHeadersPropertiesOutput)
+}
+
+// The Custom SIP Headers to apply to the calls which traverse the Communications Gateway
+func (o CustomSipHeadersPropertiesPtrOutput) Headers() CustomSipHeaderArrayOutput {
+	return o.ApplyT(func(v *CustomSipHeadersProperties) []CustomSipHeader {
+		if v == nil {
+			return nil
+		}
+		return v.Headers
+	}).(CustomSipHeaderArrayOutput)
+}
+
+// Properties of Custom SIP Headers.
+type CustomSipHeadersPropertiesResponse struct {
+	// The Custom SIP Headers to apply to the calls which traverse the Communications Gateway
+	Headers []CustomSipHeaderResponse `pulumi:"headers"`
+}
+
+// Properties of Custom SIP Headers.
+type CustomSipHeadersPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomSipHeadersPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomSipHeadersPropertiesResponse)(nil)).Elem()
+}
+
+func (o CustomSipHeadersPropertiesResponseOutput) ToCustomSipHeadersPropertiesResponseOutput() CustomSipHeadersPropertiesResponseOutput {
+	return o
+}
+
+func (o CustomSipHeadersPropertiesResponseOutput) ToCustomSipHeadersPropertiesResponseOutputWithContext(ctx context.Context) CustomSipHeadersPropertiesResponseOutput {
+	return o
+}
+
+// The Custom SIP Headers to apply to the calls which traverse the Communications Gateway
+func (o CustomSipHeadersPropertiesResponseOutput) Headers() CustomSipHeaderResponseArrayOutput {
+	return o.ApplyT(func(v CustomSipHeadersPropertiesResponse) []CustomSipHeaderResponse { return v.Headers }).(CustomSipHeaderResponseArrayOutput)
+}
+
+type CustomSipHeadersPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CustomSipHeadersPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomSipHeadersPropertiesResponse)(nil)).Elem()
+}
+
+func (o CustomSipHeadersPropertiesResponsePtrOutput) ToCustomSipHeadersPropertiesResponsePtrOutput() CustomSipHeadersPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o CustomSipHeadersPropertiesResponsePtrOutput) ToCustomSipHeadersPropertiesResponsePtrOutputWithContext(ctx context.Context) CustomSipHeadersPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o CustomSipHeadersPropertiesResponsePtrOutput) Elem() CustomSipHeadersPropertiesResponseOutput {
+	return o.ApplyT(func(v *CustomSipHeadersPropertiesResponse) CustomSipHeadersPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret CustomSipHeadersPropertiesResponse
+		return ret
+	}).(CustomSipHeadersPropertiesResponseOutput)
+}
+
+// The Custom SIP Headers to apply to the calls which traverse the Communications Gateway
+func (o CustomSipHeadersPropertiesResponsePtrOutput) Headers() CustomSipHeaderResponseArrayOutput {
+	return o.ApplyT(func(v *CustomSipHeadersPropertiesResponse) []CustomSipHeaderResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Headers
+	}).(CustomSipHeaderResponseArrayOutput)
+}
+
+// Details of a DNS Domain delegated to the Communications Gateway.
+type DnsDelegationProperties struct {
+	// Domain name to delegate
+	Domain *string `pulumi:"domain"`
+}
+
+// DnsDelegationPropertiesInput is an input type that accepts DnsDelegationPropertiesArgs and DnsDelegationPropertiesOutput values.
+// You can construct a concrete instance of `DnsDelegationPropertiesInput` via:
+//
+//	DnsDelegationPropertiesArgs{...}
+type DnsDelegationPropertiesInput interface {
+	pulumi.Input
+
+	ToDnsDelegationPropertiesOutput() DnsDelegationPropertiesOutput
+	ToDnsDelegationPropertiesOutputWithContext(context.Context) DnsDelegationPropertiesOutput
+}
+
+// Details of a DNS Domain delegated to the Communications Gateway.
+type DnsDelegationPropertiesArgs struct {
+	// Domain name to delegate
+	Domain pulumi.StringPtrInput `pulumi:"domain"`
+}
+
+func (DnsDelegationPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsDelegationProperties)(nil)).Elem()
+}
+
+func (i DnsDelegationPropertiesArgs) ToDnsDelegationPropertiesOutput() DnsDelegationPropertiesOutput {
+	return i.ToDnsDelegationPropertiesOutputWithContext(context.Background())
+}
+
+func (i DnsDelegationPropertiesArgs) ToDnsDelegationPropertiesOutputWithContext(ctx context.Context) DnsDelegationPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsDelegationPropertiesOutput)
+}
+
+// DnsDelegationPropertiesArrayInput is an input type that accepts DnsDelegationPropertiesArray and DnsDelegationPropertiesArrayOutput values.
+// You can construct a concrete instance of `DnsDelegationPropertiesArrayInput` via:
+//
+//	DnsDelegationPropertiesArray{ DnsDelegationPropertiesArgs{...} }
+type DnsDelegationPropertiesArrayInput interface {
+	pulumi.Input
+
+	ToDnsDelegationPropertiesArrayOutput() DnsDelegationPropertiesArrayOutput
+	ToDnsDelegationPropertiesArrayOutputWithContext(context.Context) DnsDelegationPropertiesArrayOutput
+}
+
+type DnsDelegationPropertiesArray []DnsDelegationPropertiesInput
+
+func (DnsDelegationPropertiesArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DnsDelegationProperties)(nil)).Elem()
+}
+
+func (i DnsDelegationPropertiesArray) ToDnsDelegationPropertiesArrayOutput() DnsDelegationPropertiesArrayOutput {
+	return i.ToDnsDelegationPropertiesArrayOutputWithContext(context.Background())
+}
+
+func (i DnsDelegationPropertiesArray) ToDnsDelegationPropertiesArrayOutputWithContext(ctx context.Context) DnsDelegationPropertiesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsDelegationPropertiesArrayOutput)
+}
+
+// Details of a DNS Domain delegated to the Communications Gateway.
+type DnsDelegationPropertiesOutput struct{ *pulumi.OutputState }
+
+func (DnsDelegationPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsDelegationProperties)(nil)).Elem()
+}
+
+func (o DnsDelegationPropertiesOutput) ToDnsDelegationPropertiesOutput() DnsDelegationPropertiesOutput {
+	return o
+}
+
+func (o DnsDelegationPropertiesOutput) ToDnsDelegationPropertiesOutputWithContext(ctx context.Context) DnsDelegationPropertiesOutput {
+	return o
+}
+
+// Domain name to delegate
+func (o DnsDelegationPropertiesOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DnsDelegationProperties) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+type DnsDelegationPropertiesArrayOutput struct{ *pulumi.OutputState }
+
+func (DnsDelegationPropertiesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DnsDelegationProperties)(nil)).Elem()
+}
+
+func (o DnsDelegationPropertiesArrayOutput) ToDnsDelegationPropertiesArrayOutput() DnsDelegationPropertiesArrayOutput {
+	return o
+}
+
+func (o DnsDelegationPropertiesArrayOutput) ToDnsDelegationPropertiesArrayOutputWithContext(ctx context.Context) DnsDelegationPropertiesArrayOutput {
+	return o
+}
+
+func (o DnsDelegationPropertiesArrayOutput) Index(i pulumi.IntInput) DnsDelegationPropertiesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DnsDelegationProperties {
+		return vs[0].([]DnsDelegationProperties)[vs[1].(int)]
+	}).(DnsDelegationPropertiesOutput)
+}
+
+// Details of a DNS Domain delegated to the Communications Gateway.
+type DnsDelegationPropertiesResponse struct {
+	// Domain name to delegate
+	Domain *string `pulumi:"domain"`
+	// The Azure-hosted DNS Name Servers for the delegated DNS Zones
+	NameServers []string `pulumi:"nameServers"`
+}
+
+// Details of a DNS Domain delegated to the Communications Gateway.
+type DnsDelegationPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (DnsDelegationPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsDelegationPropertiesResponse)(nil)).Elem()
+}
+
+func (o DnsDelegationPropertiesResponseOutput) ToDnsDelegationPropertiesResponseOutput() DnsDelegationPropertiesResponseOutput {
+	return o
+}
+
+func (o DnsDelegationPropertiesResponseOutput) ToDnsDelegationPropertiesResponseOutputWithContext(ctx context.Context) DnsDelegationPropertiesResponseOutput {
+	return o
+}
+
+// Domain name to delegate
+func (o DnsDelegationPropertiesResponseOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DnsDelegationPropertiesResponse) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+// The Azure-hosted DNS Name Servers for the delegated DNS Zones
+func (o DnsDelegationPropertiesResponseOutput) NameServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DnsDelegationPropertiesResponse) []string { return v.NameServers }).(pulumi.StringArrayOutput)
+}
+
+type DnsDelegationPropertiesResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DnsDelegationPropertiesResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DnsDelegationPropertiesResponse)(nil)).Elem()
+}
+
+func (o DnsDelegationPropertiesResponseArrayOutput) ToDnsDelegationPropertiesResponseArrayOutput() DnsDelegationPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o DnsDelegationPropertiesResponseArrayOutput) ToDnsDelegationPropertiesResponseArrayOutputWithContext(ctx context.Context) DnsDelegationPropertiesResponseArrayOutput {
+	return o
+}
+
+func (o DnsDelegationPropertiesResponseArrayOutput) Index(i pulumi.IntInput) DnsDelegationPropertiesResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DnsDelegationPropertiesResponse {
+		return vs[0].([]DnsDelegationPropertiesResponse)[vs[1].(int)]
+	}).(DnsDelegationPropertiesResponseOutput)
+}
+
+// Details of DNS Domains delegated to the Communications Gateway.
+type DnsDelegationsProperties struct {
+	// DNS Domains to delegate for the creation of DNS Zones by the Azure Communications Gateway
+	Delegations []DnsDelegationProperties `pulumi:"delegations"`
+}
+
+// DnsDelegationsPropertiesInput is an input type that accepts DnsDelegationsPropertiesArgs and DnsDelegationsPropertiesOutput values.
+// You can construct a concrete instance of `DnsDelegationsPropertiesInput` via:
+//
+//	DnsDelegationsPropertiesArgs{...}
+type DnsDelegationsPropertiesInput interface {
+	pulumi.Input
+
+	ToDnsDelegationsPropertiesOutput() DnsDelegationsPropertiesOutput
+	ToDnsDelegationsPropertiesOutputWithContext(context.Context) DnsDelegationsPropertiesOutput
+}
+
+// Details of DNS Domains delegated to the Communications Gateway.
+type DnsDelegationsPropertiesArgs struct {
+	// DNS Domains to delegate for the creation of DNS Zones by the Azure Communications Gateway
+	Delegations DnsDelegationPropertiesArrayInput `pulumi:"delegations"`
+}
+
+func (DnsDelegationsPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsDelegationsProperties)(nil)).Elem()
+}
+
+func (i DnsDelegationsPropertiesArgs) ToDnsDelegationsPropertiesOutput() DnsDelegationsPropertiesOutput {
+	return i.ToDnsDelegationsPropertiesOutputWithContext(context.Background())
+}
+
+func (i DnsDelegationsPropertiesArgs) ToDnsDelegationsPropertiesOutputWithContext(ctx context.Context) DnsDelegationsPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsDelegationsPropertiesOutput)
+}
+
+func (i DnsDelegationsPropertiesArgs) ToDnsDelegationsPropertiesPtrOutput() DnsDelegationsPropertiesPtrOutput {
+	return i.ToDnsDelegationsPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i DnsDelegationsPropertiesArgs) ToDnsDelegationsPropertiesPtrOutputWithContext(ctx context.Context) DnsDelegationsPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsDelegationsPropertiesOutput).ToDnsDelegationsPropertiesPtrOutputWithContext(ctx)
+}
+
+// DnsDelegationsPropertiesPtrInput is an input type that accepts DnsDelegationsPropertiesArgs, DnsDelegationsPropertiesPtr and DnsDelegationsPropertiesPtrOutput values.
+// You can construct a concrete instance of `DnsDelegationsPropertiesPtrInput` via:
+//
+//	        DnsDelegationsPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DnsDelegationsPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToDnsDelegationsPropertiesPtrOutput() DnsDelegationsPropertiesPtrOutput
+	ToDnsDelegationsPropertiesPtrOutputWithContext(context.Context) DnsDelegationsPropertiesPtrOutput
+}
+
+type dnsDelegationsPropertiesPtrType DnsDelegationsPropertiesArgs
+
+func DnsDelegationsPropertiesPtr(v *DnsDelegationsPropertiesArgs) DnsDelegationsPropertiesPtrInput {
+	return (*dnsDelegationsPropertiesPtrType)(v)
+}
+
+func (*dnsDelegationsPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DnsDelegationsProperties)(nil)).Elem()
+}
+
+func (i *dnsDelegationsPropertiesPtrType) ToDnsDelegationsPropertiesPtrOutput() DnsDelegationsPropertiesPtrOutput {
+	return i.ToDnsDelegationsPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *dnsDelegationsPropertiesPtrType) ToDnsDelegationsPropertiesPtrOutputWithContext(ctx context.Context) DnsDelegationsPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsDelegationsPropertiesPtrOutput)
+}
+
+// Details of DNS Domains delegated to the Communications Gateway.
+type DnsDelegationsPropertiesOutput struct{ *pulumi.OutputState }
+
+func (DnsDelegationsPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsDelegationsProperties)(nil)).Elem()
+}
+
+func (o DnsDelegationsPropertiesOutput) ToDnsDelegationsPropertiesOutput() DnsDelegationsPropertiesOutput {
+	return o
+}
+
+func (o DnsDelegationsPropertiesOutput) ToDnsDelegationsPropertiesOutputWithContext(ctx context.Context) DnsDelegationsPropertiesOutput {
+	return o
+}
+
+func (o DnsDelegationsPropertiesOutput) ToDnsDelegationsPropertiesPtrOutput() DnsDelegationsPropertiesPtrOutput {
+	return o.ToDnsDelegationsPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o DnsDelegationsPropertiesOutput) ToDnsDelegationsPropertiesPtrOutputWithContext(ctx context.Context) DnsDelegationsPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DnsDelegationsProperties) *DnsDelegationsProperties {
+		return &v
+	}).(DnsDelegationsPropertiesPtrOutput)
+}
+
+// DNS Domains to delegate for the creation of DNS Zones by the Azure Communications Gateway
+func (o DnsDelegationsPropertiesOutput) Delegations() DnsDelegationPropertiesArrayOutput {
+	return o.ApplyT(func(v DnsDelegationsProperties) []DnsDelegationProperties { return v.Delegations }).(DnsDelegationPropertiesArrayOutput)
+}
+
+type DnsDelegationsPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (DnsDelegationsPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DnsDelegationsProperties)(nil)).Elem()
+}
+
+func (o DnsDelegationsPropertiesPtrOutput) ToDnsDelegationsPropertiesPtrOutput() DnsDelegationsPropertiesPtrOutput {
+	return o
+}
+
+func (o DnsDelegationsPropertiesPtrOutput) ToDnsDelegationsPropertiesPtrOutputWithContext(ctx context.Context) DnsDelegationsPropertiesPtrOutput {
+	return o
+}
+
+func (o DnsDelegationsPropertiesPtrOutput) Elem() DnsDelegationsPropertiesOutput {
+	return o.ApplyT(func(v *DnsDelegationsProperties) DnsDelegationsProperties {
+		if v != nil {
+			return *v
+		}
+		var ret DnsDelegationsProperties
+		return ret
+	}).(DnsDelegationsPropertiesOutput)
+}
+
+// DNS Domains to delegate for the creation of DNS Zones by the Azure Communications Gateway
+func (o DnsDelegationsPropertiesPtrOutput) Delegations() DnsDelegationPropertiesArrayOutput {
+	return o.ApplyT(func(v *DnsDelegationsProperties) []DnsDelegationProperties {
+		if v == nil {
+			return nil
+		}
+		return v.Delegations
+	}).(DnsDelegationPropertiesArrayOutput)
+}
+
+// Details of DNS Domains delegated to the Communications Gateway.
+type DnsDelegationsPropertiesResponse struct {
+	// DNS Domains to delegate for the creation of DNS Zones by the Azure Communications Gateway
+	Delegations []DnsDelegationPropertiesResponse `pulumi:"delegations"`
+}
+
+// Details of DNS Domains delegated to the Communications Gateway.
+type DnsDelegationsPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (DnsDelegationsPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsDelegationsPropertiesResponse)(nil)).Elem()
+}
+
+func (o DnsDelegationsPropertiesResponseOutput) ToDnsDelegationsPropertiesResponseOutput() DnsDelegationsPropertiesResponseOutput {
+	return o
+}
+
+func (o DnsDelegationsPropertiesResponseOutput) ToDnsDelegationsPropertiesResponseOutputWithContext(ctx context.Context) DnsDelegationsPropertiesResponseOutput {
+	return o
+}
+
+// DNS Domains to delegate for the creation of DNS Zones by the Azure Communications Gateway
+func (o DnsDelegationsPropertiesResponseOutput) Delegations() DnsDelegationPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v DnsDelegationsPropertiesResponse) []DnsDelegationPropertiesResponse { return v.Delegations }).(DnsDelegationPropertiesResponseArrayOutput)
+}
+
+type DnsDelegationsPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DnsDelegationsPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DnsDelegationsPropertiesResponse)(nil)).Elem()
+}
+
+func (o DnsDelegationsPropertiesResponsePtrOutput) ToDnsDelegationsPropertiesResponsePtrOutput() DnsDelegationsPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o DnsDelegationsPropertiesResponsePtrOutput) ToDnsDelegationsPropertiesResponsePtrOutputWithContext(ctx context.Context) DnsDelegationsPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o DnsDelegationsPropertiesResponsePtrOutput) Elem() DnsDelegationsPropertiesResponseOutput {
+	return o.ApplyT(func(v *DnsDelegationsPropertiesResponse) DnsDelegationsPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DnsDelegationsPropertiesResponse
+		return ret
+	}).(DnsDelegationsPropertiesResponseOutput)
+}
+
+// DNS Domains to delegate for the creation of DNS Zones by the Azure Communications Gateway
+func (o DnsDelegationsPropertiesResponsePtrOutput) Delegations() DnsDelegationPropertiesResponseArrayOutput {
+	return o.ApplyT(func(v *DnsDelegationsPropertiesResponse) []DnsDelegationPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Delegations
+	}).(DnsDelegationPropertiesResponseArrayOutput)
+}
 
 // Managed service identity (system assigned and/or user assigned identities)
 type ManagedServiceIdentity struct {
@@ -287,9 +1276,9 @@ func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAs
 
 // The configuration used in this region as primary, and other regions as backup.
 type PrimaryRegionProperties struct {
-	// The allowed source IP address or CIDR ranges for media
+	// The allowed source IP addresses or CIDR ranges for media
 	AllowedMediaSourceAddressPrefixes []string `pulumi:"allowedMediaSourceAddressPrefixes"`
-	// The allowed source IP address or CIDR ranges for signaling
+	// The allowed source IP addresses or CIDR ranges for signaling
 	AllowedSignalingSourceAddressPrefixes []string `pulumi:"allowedSignalingSourceAddressPrefixes"`
 	// IP address to use to contact the ESRP from this region
 	EsrpAddresses []string `pulumi:"esrpAddresses"`
@@ -310,9 +1299,9 @@ type PrimaryRegionPropertiesInput interface {
 
 // The configuration used in this region as primary, and other regions as backup.
 type PrimaryRegionPropertiesArgs struct {
-	// The allowed source IP address or CIDR ranges for media
+	// The allowed source IP addresses or CIDR ranges for media
 	AllowedMediaSourceAddressPrefixes pulumi.StringArrayInput `pulumi:"allowedMediaSourceAddressPrefixes"`
-	// The allowed source IP address or CIDR ranges for signaling
+	// The allowed source IP addresses or CIDR ranges for signaling
 	AllowedSignalingSourceAddressPrefixes pulumi.StringArrayInput `pulumi:"allowedSignalingSourceAddressPrefixes"`
 	// IP address to use to contact the ESRP from this region
 	EsrpAddresses pulumi.StringArrayInput `pulumi:"esrpAddresses"`
@@ -347,12 +1336,12 @@ func (o PrimaryRegionPropertiesOutput) ToPrimaryRegionPropertiesOutputWithContex
 	return o
 }
 
-// The allowed source IP address or CIDR ranges for media
+// The allowed source IP addresses or CIDR ranges for media
 func (o PrimaryRegionPropertiesOutput) AllowedMediaSourceAddressPrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PrimaryRegionProperties) []string { return v.AllowedMediaSourceAddressPrefixes }).(pulumi.StringArrayOutput)
 }
 
-// The allowed source IP address or CIDR ranges for signaling
+// The allowed source IP addresses or CIDR ranges for signaling
 func (o PrimaryRegionPropertiesOutput) AllowedSignalingSourceAddressPrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PrimaryRegionProperties) []string { return v.AllowedSignalingSourceAddressPrefixes }).(pulumi.StringArrayOutput)
 }
@@ -369,9 +1358,9 @@ func (o PrimaryRegionPropertiesOutput) OperatorAddresses() pulumi.StringArrayOut
 
 // The configuration used in this region as primary, and other regions as backup.
 type PrimaryRegionPropertiesResponse struct {
-	// The allowed source IP address or CIDR ranges for media
+	// The allowed source IP addresses or CIDR ranges for media
 	AllowedMediaSourceAddressPrefixes []string `pulumi:"allowedMediaSourceAddressPrefixes"`
-	// The allowed source IP address or CIDR ranges for signaling
+	// The allowed source IP addresses or CIDR ranges for signaling
 	AllowedSignalingSourceAddressPrefixes []string `pulumi:"allowedSignalingSourceAddressPrefixes"`
 	// IP address to use to contact the ESRP from this region
 	EsrpAddresses []string `pulumi:"esrpAddresses"`
@@ -394,12 +1383,12 @@ func (o PrimaryRegionPropertiesResponseOutput) ToPrimaryRegionPropertiesResponse
 	return o
 }
 
-// The allowed source IP address or CIDR ranges for media
+// The allowed source IP addresses or CIDR ranges for media
 func (o PrimaryRegionPropertiesResponseOutput) AllowedMediaSourceAddressPrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PrimaryRegionPropertiesResponse) []string { return v.AllowedMediaSourceAddressPrefixes }).(pulumi.StringArrayOutput)
 }
 
-// The allowed source IP address or CIDR ranges for signaling
+// The allowed source IP addresses or CIDR ranges for signaling
 func (o PrimaryRegionPropertiesResponseOutput) AllowedSignalingSourceAddressPrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PrimaryRegionPropertiesResponse) []string { return v.AllowedSignalingSourceAddressPrefixes }).(pulumi.StringArrayOutput)
 }
@@ -578,6 +1567,350 @@ func (o ServiceRegionPropertiesResponseArrayOutput) Index(i pulumi.IntInput) Ser
 	}).(ServiceRegionPropertiesResponseOutput)
 }
 
+// The resource model definition representing SKU
+type Sku struct {
+	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+	Capacity *int `pulumi:"capacity"`
+	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+	Family *string `pulumi:"family"`
+	// The name of the SKU. Ex - P3. It is typically a letter+number code
+	Name string `pulumi:"name"`
+	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+	Size *string `pulumi:"size"`
+	// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+	Tier *SkuTier `pulumi:"tier"`
+}
+
+// SkuInput is an input type that accepts SkuArgs and SkuOutput values.
+// You can construct a concrete instance of `SkuInput` via:
+//
+//	SkuArgs{...}
+type SkuInput interface {
+	pulumi.Input
+
+	ToSkuOutput() SkuOutput
+	ToSkuOutputWithContext(context.Context) SkuOutput
+}
+
+// The resource model definition representing SKU
+type SkuArgs struct {
+	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+	Capacity pulumi.IntPtrInput `pulumi:"capacity"`
+	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+	Family pulumi.StringPtrInput `pulumi:"family"`
+	// The name of the SKU. Ex - P3. It is typically a letter+number code
+	Name pulumi.StringInput `pulumi:"name"`
+	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+	Size pulumi.StringPtrInput `pulumi:"size"`
+	// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+	Tier SkuTierPtrInput `pulumi:"tier"`
+}
+
+func (SkuArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Sku)(nil)).Elem()
+}
+
+func (i SkuArgs) ToSkuOutput() SkuOutput {
+	return i.ToSkuOutputWithContext(context.Background())
+}
+
+func (i SkuArgs) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput)
+}
+
+func (i SkuArgs) ToSkuPtrOutput() SkuPtrOutput {
+	return i.ToSkuPtrOutputWithContext(context.Background())
+}
+
+func (i SkuArgs) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkuOutput).ToSkuPtrOutputWithContext(ctx)
+}
+
+// SkuPtrInput is an input type that accepts SkuArgs, SkuPtr and SkuPtrOutput values.
+// You can construct a concrete instance of `SkuPtrInput` via:
+//
+//	        SkuArgs{...}
+//
+//	or:
+//
+//	        nil
+type SkuPtrInput interface {
+	pulumi.Input
+
+	ToSkuPtrOutput() SkuPtrOutput
+	ToSkuPtrOutputWithContext(context.Context) SkuPtrOutput
+}
+
+type skuPtrType SkuArgs
+
+func SkuPtr(v *SkuArgs) SkuPtrInput {
+	return (*skuPtrType)(v)
+}
+
+func (*skuPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Sku)(nil)).Elem()
+}
+
+func (i *skuPtrType) ToSkuPtrOutput() SkuPtrOutput {
+	return i.ToSkuPtrOutputWithContext(context.Background())
+}
+
+func (i *skuPtrType) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkuPtrOutput)
+}
+
+// The resource model definition representing SKU
+type SkuOutput struct{ *pulumi.OutputState }
+
+func (SkuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Sku)(nil)).Elem()
+}
+
+func (o SkuOutput) ToSkuOutput() SkuOutput {
+	return o
+}
+
+func (o SkuOutput) ToSkuOutputWithContext(ctx context.Context) SkuOutput {
+	return o
+}
+
+func (o SkuOutput) ToSkuPtrOutput() SkuPtrOutput {
+	return o.ToSkuPtrOutputWithContext(context.Background())
+}
+
+func (o SkuOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Sku) *Sku {
+		return &v
+	}).(SkuPtrOutput)
+}
+
+// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+func (o SkuOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Sku) *int { return v.Capacity }).(pulumi.IntPtrOutput)
+}
+
+// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+func (o SkuOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Sku) *string { return v.Family }).(pulumi.StringPtrOutput)
+}
+
+// The name of the SKU. Ex - P3. It is typically a letter+number code
+func (o SkuOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v Sku) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+func (o SkuOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Sku) *string { return v.Size }).(pulumi.StringPtrOutput)
+}
+
+// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+func (o SkuOutput) Tier() SkuTierPtrOutput {
+	return o.ApplyT(func(v Sku) *SkuTier { return v.Tier }).(SkuTierPtrOutput)
+}
+
+type SkuPtrOutput struct{ *pulumi.OutputState }
+
+func (SkuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Sku)(nil)).Elem()
+}
+
+func (o SkuPtrOutput) ToSkuPtrOutput() SkuPtrOutput {
+	return o
+}
+
+func (o SkuPtrOutput) ToSkuPtrOutputWithContext(ctx context.Context) SkuPtrOutput {
+	return o
+}
+
+func (o SkuPtrOutput) Elem() SkuOutput {
+	return o.ApplyT(func(v *Sku) Sku {
+		if v != nil {
+			return *v
+		}
+		var ret Sku
+		return ret
+	}).(SkuOutput)
+}
+
+// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+func (o SkuPtrOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Sku) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Capacity
+	}).(pulumi.IntPtrOutput)
+}
+
+// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+func (o SkuPtrOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Sku) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Family
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the SKU. Ex - P3. It is typically a letter+number code
+func (o SkuPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Sku) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+func (o SkuPtrOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Sku) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.StringPtrOutput)
+}
+
+// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+func (o SkuPtrOutput) Tier() SkuTierPtrOutput {
+	return o.ApplyT(func(v *Sku) *SkuTier {
+		if v == nil {
+			return nil
+		}
+		return v.Tier
+	}).(SkuTierPtrOutput)
+}
+
+// The resource model definition representing SKU
+type SkuResponse struct {
+	// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+	Capacity *int `pulumi:"capacity"`
+	// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+	Family *string `pulumi:"family"`
+	// The name of the SKU. Ex - P3. It is typically a letter+number code
+	Name string `pulumi:"name"`
+	// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+	Size *string `pulumi:"size"`
+	// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+	Tier *string `pulumi:"tier"`
+}
+
+// The resource model definition representing SKU
+type SkuResponseOutput struct{ *pulumi.OutputState }
+
+func (SkuResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkuResponse)(nil)).Elem()
+}
+
+func (o SkuResponseOutput) ToSkuResponseOutput() SkuResponseOutput {
+	return o
+}
+
+func (o SkuResponseOutput) ToSkuResponseOutputWithContext(ctx context.Context) SkuResponseOutput {
+	return o
+}
+
+// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+func (o SkuResponseOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SkuResponse) *int { return v.Capacity }).(pulumi.IntPtrOutput)
+}
+
+// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+func (o SkuResponseOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuResponse) *string { return v.Family }).(pulumi.StringPtrOutput)
+}
+
+// The name of the SKU. Ex - P3. It is typically a letter+number code
+func (o SkuResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SkuResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+func (o SkuResponseOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuResponse) *string { return v.Size }).(pulumi.StringPtrOutput)
+}
+
+// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+func (o SkuResponseOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkuResponse) *string { return v.Tier }).(pulumi.StringPtrOutput)
+}
+
+type SkuResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SkuResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkuResponse)(nil)).Elem()
+}
+
+func (o SkuResponsePtrOutput) ToSkuResponsePtrOutput() SkuResponsePtrOutput {
+	return o
+}
+
+func (o SkuResponsePtrOutput) ToSkuResponsePtrOutputWithContext(ctx context.Context) SkuResponsePtrOutput {
+	return o
+}
+
+func (o SkuResponsePtrOutput) Elem() SkuResponseOutput {
+	return o.ApplyT(func(v *SkuResponse) SkuResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SkuResponse
+		return ret
+	}).(SkuResponseOutput)
+}
+
+// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
+func (o SkuResponsePtrOutput) Capacity() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SkuResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Capacity
+	}).(pulumi.IntPtrOutput)
+}
+
+// If the service has different generations of hardware, for the same SKU, then that can be captured here.
+func (o SkuResponsePtrOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Family
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the SKU. Ex - P3. It is typically a letter+number code
+func (o SkuResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
+func (o SkuResponsePtrOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.StringPtrOutput)
+}
+
+// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
+func (o SkuResponsePtrOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkuResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tier
+	}).(pulumi.StringPtrOutput)
+}
+
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -693,6 +2026,26 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 }
 
 func init() {
+	pulumi.RegisterOutputType(ApiBridgePropertiesOutput{})
+	pulumi.RegisterOutputType(ApiBridgePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ApiBridgePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ApiBridgePropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(CustomSipHeaderOutput{})
+	pulumi.RegisterOutputType(CustomSipHeaderArrayOutput{})
+	pulumi.RegisterOutputType(CustomSipHeaderResponseOutput{})
+	pulumi.RegisterOutputType(CustomSipHeaderResponseArrayOutput{})
+	pulumi.RegisterOutputType(CustomSipHeadersPropertiesOutput{})
+	pulumi.RegisterOutputType(CustomSipHeadersPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(CustomSipHeadersPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(CustomSipHeadersPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(DnsDelegationPropertiesOutput{})
+	pulumi.RegisterOutputType(DnsDelegationPropertiesArrayOutput{})
+	pulumi.RegisterOutputType(DnsDelegationPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(DnsDelegationPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(DnsDelegationsPropertiesOutput{})
+	pulumi.RegisterOutputType(DnsDelegationsPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(DnsDelegationsPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(DnsDelegationsPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
@@ -703,6 +2056,10 @@ func init() {
 	pulumi.RegisterOutputType(ServiceRegionPropertiesArrayOutput{})
 	pulumi.RegisterOutputType(ServiceRegionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ServiceRegionPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(SkuOutput{})
+	pulumi.RegisterOutputType(SkuPtrOutput{})
+	pulumi.RegisterOutputType(SkuResponseOutput{})
+	pulumi.RegisterOutputType(SkuResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})

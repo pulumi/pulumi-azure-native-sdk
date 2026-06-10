@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Student details.
 //
-// Uses Azure REST API version 2021-12-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-12-01-preview.
+// Uses Azure REST API version 2021-12-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-12-01-preview.
 type Student struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Student Budget
 	Budget AmountResponseOutput `pulumi:"budget"`
 	// Date student was added to the lab
@@ -210,6 +212,11 @@ func (o StudentOutput) ToStudentOutput() StudentOutput {
 
 func (o StudentOutput) ToStudentOutputWithContext(ctx context.Context) StudentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o StudentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Student) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Student Budget

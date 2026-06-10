@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A Microsoft.AwsConnector resource
 //
-// Uses Azure REST API version 2024-12-01.
+// Uses Azure REST API version 2024-12-01. In version 2.x of the Azure Native provider, it used API version 2024-12-01.
 type WafWebAclSummary struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -142,6 +144,11 @@ func (o WafWebAclSummaryOutput) ToWafWebAclSummaryOutput() WafWebAclSummaryOutpu
 
 func (o WafWebAclSummaryOutput) ToWafWebAclSummaryOutputWithContext(ctx context.Context) WafWebAclSummaryOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o WafWebAclSummaryOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WafWebAclSummary) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives
