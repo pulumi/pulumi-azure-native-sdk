@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the properties of the specified connected cluster, including name, identity, properties, and additional cluster details.
 //
-// Uses Azure REST API version 2022-05-01-preview.
+// Uses Azure REST API version 2024-02-01-preview.
 //
-// Other available API versions: 2022-10-01-preview, 2023-11-01-preview, 2024-01-01, 2024-02-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-07-15-preview, 2024-12-01-preview.
+// Other available API versions: 2021-04-01-preview, 2021-10-01, 2022-05-01-preview, 2022-10-01-preview, 2023-11-01-preview, 2024-01-01, 2024-06-01-preview, 2024-07-01-preview, 2024-07-15-preview, 2024-12-01-preview, 2025-08-01-preview, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kubernetes [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupConnectedCluster(ctx *pulumi.Context, args *LookupConnectedClusterArgs, opts ...pulumi.InvokeOption) (*LookupConnectedClusterResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupConnectedClusterResult
@@ -35,20 +35,32 @@ type LookupConnectedClusterArgs struct {
 
 // Represents a connected cluster.
 type LookupConnectedClusterResult struct {
+	// AAD profile for the connected cluster.
+	AadProfile *AadProfileResponse `pulumi:"aadProfile"`
 	// Base64 encoded public certificate used by the agent to do the initial handshake to the backend services in Azure.
 	AgentPublicKeyCertificate string `pulumi:"agentPublicKeyCertificate"`
 	// Version of the agent running on the connected cluster resource
 	AgentVersion string `pulumi:"agentVersion"`
+	// Arc agentry configuration for the provisioned cluster.
+	ArcAgentProfile *ArcAgentProfileResponse `pulumi:"arcAgentProfile"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Indicates whether Azure Hybrid Benefit is opted in
+	AzureHybridBenefit *string `pulumi:"azureHybridBenefit"`
 	// Represents the connectivity status of the connected cluster.
 	ConnectivityStatus string `pulumi:"connectivityStatus"`
 	// The Kubernetes distribution running on this connected cluster.
 	Distribution *string `pulumi:"distribution"`
+	// The Kubernetes distribution version on this connected cluster.
+	DistributionVersion *string `pulumi:"distributionVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The identity of the connected cluster.
 	Identity ConnectedClusterIdentityResponse `pulumi:"identity"`
 	// The infrastructure on which the Kubernetes cluster represented by this connected cluster is running on.
 	Infrastructure *string `pulumi:"infrastructure"`
+	// The kind of connected cluster.
+	Kind *string `pulumi:"kind"`
 	// The Kubernetes version of the connected cluster resource
 	KubernetesVersion string `pulumi:"kubernetesVersion"`
 	// Time representing the last instance when heart beat was received from the cluster
@@ -57,6 +69,8 @@ type LookupConnectedClusterResult struct {
 	Location string `pulumi:"location"`
 	// Expiration time of the managed identity certificate
 	ManagedIdentityCertificateExpirationTime string `pulumi:"managedIdentityCertificateExpirationTime"`
+	// More properties related to the Connected Cluster
+	MiscellaneousProperties map[string]string `pulumi:"miscellaneousProperties"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Connected cluster offering
@@ -85,6 +99,12 @@ func (val *LookupConnectedClusterResult) Defaults() *LookupConnectedClusterResul
 		return nil
 	}
 	tmp := *val
+	tmp.ArcAgentProfile = tmp.ArcAgentProfile.Defaults()
+
+	if tmp.AzureHybridBenefit == nil {
+		azureHybridBenefit_ := "NotApplicable"
+		tmp.AzureHybridBenefit = &azureHybridBenefit_
+	}
 	tmp.Identity = *tmp.Identity.Defaults()
 
 	if tmp.PrivateLinkState == nil {
@@ -128,6 +148,11 @@ func (o LookupConnectedClusterResultOutput) ToLookupConnectedClusterResultOutput
 	return o
 }
 
+// AAD profile for the connected cluster.
+func (o LookupConnectedClusterResultOutput) AadProfile() AadProfileResponsePtrOutput {
+	return o.ApplyT(func(v LookupConnectedClusterResult) *AadProfileResponse { return v.AadProfile }).(AadProfileResponsePtrOutput)
+}
+
 // Base64 encoded public certificate used by the agent to do the initial handshake to the backend services in Azure.
 func (o LookupConnectedClusterResultOutput) AgentPublicKeyCertificate() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectedClusterResult) string { return v.AgentPublicKeyCertificate }).(pulumi.StringOutput)
@@ -138,6 +163,21 @@ func (o LookupConnectedClusterResultOutput) AgentVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectedClusterResult) string { return v.AgentVersion }).(pulumi.StringOutput)
 }
 
+// Arc agentry configuration for the provisioned cluster.
+func (o LookupConnectedClusterResultOutput) ArcAgentProfile() ArcAgentProfileResponsePtrOutput {
+	return o.ApplyT(func(v LookupConnectedClusterResult) *ArcAgentProfileResponse { return v.ArcAgentProfile }).(ArcAgentProfileResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupConnectedClusterResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectedClusterResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Indicates whether Azure Hybrid Benefit is opted in
+func (o LookupConnectedClusterResultOutput) AzureHybridBenefit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupConnectedClusterResult) *string { return v.AzureHybridBenefit }).(pulumi.StringPtrOutput)
+}
+
 // Represents the connectivity status of the connected cluster.
 func (o LookupConnectedClusterResultOutput) ConnectivityStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectedClusterResult) string { return v.ConnectivityStatus }).(pulumi.StringOutput)
@@ -146,6 +186,11 @@ func (o LookupConnectedClusterResultOutput) ConnectivityStatus() pulumi.StringOu
 // The Kubernetes distribution running on this connected cluster.
 func (o LookupConnectedClusterResultOutput) Distribution() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConnectedClusterResult) *string { return v.Distribution }).(pulumi.StringPtrOutput)
+}
+
+// The Kubernetes distribution version on this connected cluster.
+func (o LookupConnectedClusterResultOutput) DistributionVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupConnectedClusterResult) *string { return v.DistributionVersion }).(pulumi.StringPtrOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -161,6 +206,11 @@ func (o LookupConnectedClusterResultOutput) Identity() ConnectedClusterIdentityR
 // The infrastructure on which the Kubernetes cluster represented by this connected cluster is running on.
 func (o LookupConnectedClusterResultOutput) Infrastructure() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupConnectedClusterResult) *string { return v.Infrastructure }).(pulumi.StringPtrOutput)
+}
+
+// The kind of connected cluster.
+func (o LookupConnectedClusterResultOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupConnectedClusterResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
 // The Kubernetes version of the connected cluster resource
@@ -181,6 +231,11 @@ func (o LookupConnectedClusterResultOutput) Location() pulumi.StringOutput {
 // Expiration time of the managed identity certificate
 func (o LookupConnectedClusterResultOutput) ManagedIdentityCertificateExpirationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectedClusterResult) string { return v.ManagedIdentityCertificateExpirationTime }).(pulumi.StringOutput)
+}
+
+// More properties related to the Connected Cluster
+func (o LookupConnectedClusterResultOutput) MiscellaneousProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupConnectedClusterResult) map[string]string { return v.MiscellaneousProperties }).(pulumi.StringMapOutput)
 }
 
 // The name of the resource

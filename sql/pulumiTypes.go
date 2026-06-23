@@ -7,11 +7,44 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = utilities.GetEnvOrDefault
+
+// Certificate information
+type CertificateInfoResponse struct {
+	// The certificate name
+	CertificateName string `pulumi:"certificateName"`
+	// The certificate expiry date
+	ExpiryDate string `pulumi:"expiryDate"`
+}
+
+// Certificate information
+type CertificateInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (CertificateInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateInfoResponse)(nil)).Elem()
+}
+
+func (o CertificateInfoResponseOutput) ToCertificateInfoResponseOutput() CertificateInfoResponseOutput {
+	return o
+}
+
+func (o CertificateInfoResponseOutput) ToCertificateInfoResponseOutputWithContext(ctx context.Context) CertificateInfoResponseOutput {
+	return o
+}
+
+// The certificate name
+func (o CertificateInfoResponseOutput) CertificateName() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateInfoResponse) string { return v.CertificateName }).(pulumi.StringOutput)
+}
+
+// The certificate expiry date
+func (o CertificateInfoResponseOutput) ExpiryDate() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateInfoResponse) string { return v.ExpiryDate }).(pulumi.StringOutput)
+}
 
 // Azure Active Directory identity configuration for a resource.
 type DatabaseIdentity struct {
@@ -268,6 +301,73 @@ func (o DatabaseIdentityResponsePtrOutput) UserAssignedIdentities() DatabaseUser
 	}).(DatabaseUserIdentityResponseMapOutput)
 }
 
+// Database level key used for encryption at rest.
+type DatabaseKeyResponse struct {
+	// The database key creation date.
+	CreationDate string `pulumi:"creationDate"`
+	// Subregion of the server key.
+	Subregion string `pulumi:"subregion"`
+	// Thumbprint of the database key.
+	Thumbprint string `pulumi:"thumbprint"`
+	// The database key type. Only supported value is 'AzureKeyVault'.
+	Type string `pulumi:"type"`
+}
+
+// Database level key used for encryption at rest.
+type DatabaseKeyResponseOutput struct{ *pulumi.OutputState }
+
+func (DatabaseKeyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseKeyResponse)(nil)).Elem()
+}
+
+func (o DatabaseKeyResponseOutput) ToDatabaseKeyResponseOutput() DatabaseKeyResponseOutput {
+	return o
+}
+
+func (o DatabaseKeyResponseOutput) ToDatabaseKeyResponseOutputWithContext(ctx context.Context) DatabaseKeyResponseOutput {
+	return o
+}
+
+// The database key creation date.
+func (o DatabaseKeyResponseOutput) CreationDate() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseKeyResponse) string { return v.CreationDate }).(pulumi.StringOutput)
+}
+
+// Subregion of the server key.
+func (o DatabaseKeyResponseOutput) Subregion() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseKeyResponse) string { return v.Subregion }).(pulumi.StringOutput)
+}
+
+// Thumbprint of the database key.
+func (o DatabaseKeyResponseOutput) Thumbprint() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseKeyResponse) string { return v.Thumbprint }).(pulumi.StringOutput)
+}
+
+// The database key type. Only supported value is 'AzureKeyVault'.
+func (o DatabaseKeyResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseKeyResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DatabaseKeyResponseMapOutput struct{ *pulumi.OutputState }
+
+func (DatabaseKeyResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DatabaseKeyResponse)(nil)).Elem()
+}
+
+func (o DatabaseKeyResponseMapOutput) ToDatabaseKeyResponseMapOutput() DatabaseKeyResponseMapOutput {
+	return o
+}
+
+func (o DatabaseKeyResponseMapOutput) ToDatabaseKeyResponseMapOutputWithContext(ctx context.Context) DatabaseKeyResponseMapOutput {
+	return o
+}
+
+func (o DatabaseKeyResponseMapOutput) MapIndex(k pulumi.StringInput) DatabaseKeyResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DatabaseKeyResponse {
+		return vs[0].(map[string]DatabaseKeyResponse)[vs[1].(string)]
+	}).(DatabaseKeyResponseOutput)
+}
+
 // Azure Active Directory identity configuration for a resource.
 type DatabaseUserIdentityResponse struct {
 	// The Azure Active Directory client id.
@@ -467,8 +567,298 @@ func (o DatabaseVulnerabilityAssessmentRuleBaselineItemResponseArrayOutput) Inde
 	}).(DatabaseVulnerabilityAssessmentRuleBaselineItemResponseOutput)
 }
 
+// Database specific information
+type DistributedAvailabilityGroupDatabase struct {
+	// The name of the database in link
+	DatabaseName *string `pulumi:"databaseName"`
+}
+
+// DistributedAvailabilityGroupDatabaseInput is an input type that accepts DistributedAvailabilityGroupDatabaseArgs and DistributedAvailabilityGroupDatabaseOutput values.
+// You can construct a concrete instance of `DistributedAvailabilityGroupDatabaseInput` via:
+//
+//	DistributedAvailabilityGroupDatabaseArgs{...}
+type DistributedAvailabilityGroupDatabaseInput interface {
+	pulumi.Input
+
+	ToDistributedAvailabilityGroupDatabaseOutput() DistributedAvailabilityGroupDatabaseOutput
+	ToDistributedAvailabilityGroupDatabaseOutputWithContext(context.Context) DistributedAvailabilityGroupDatabaseOutput
+}
+
+// Database specific information
+type DistributedAvailabilityGroupDatabaseArgs struct {
+	// The name of the database in link
+	DatabaseName pulumi.StringPtrInput `pulumi:"databaseName"`
+}
+
+func (DistributedAvailabilityGroupDatabaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DistributedAvailabilityGroupDatabase)(nil)).Elem()
+}
+
+func (i DistributedAvailabilityGroupDatabaseArgs) ToDistributedAvailabilityGroupDatabaseOutput() DistributedAvailabilityGroupDatabaseOutput {
+	return i.ToDistributedAvailabilityGroupDatabaseOutputWithContext(context.Background())
+}
+
+func (i DistributedAvailabilityGroupDatabaseArgs) ToDistributedAvailabilityGroupDatabaseOutputWithContext(ctx context.Context) DistributedAvailabilityGroupDatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DistributedAvailabilityGroupDatabaseOutput)
+}
+
+// DistributedAvailabilityGroupDatabaseArrayInput is an input type that accepts DistributedAvailabilityGroupDatabaseArray and DistributedAvailabilityGroupDatabaseArrayOutput values.
+// You can construct a concrete instance of `DistributedAvailabilityGroupDatabaseArrayInput` via:
+//
+//	DistributedAvailabilityGroupDatabaseArray{ DistributedAvailabilityGroupDatabaseArgs{...} }
+type DistributedAvailabilityGroupDatabaseArrayInput interface {
+	pulumi.Input
+
+	ToDistributedAvailabilityGroupDatabaseArrayOutput() DistributedAvailabilityGroupDatabaseArrayOutput
+	ToDistributedAvailabilityGroupDatabaseArrayOutputWithContext(context.Context) DistributedAvailabilityGroupDatabaseArrayOutput
+}
+
+type DistributedAvailabilityGroupDatabaseArray []DistributedAvailabilityGroupDatabaseInput
+
+func (DistributedAvailabilityGroupDatabaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DistributedAvailabilityGroupDatabase)(nil)).Elem()
+}
+
+func (i DistributedAvailabilityGroupDatabaseArray) ToDistributedAvailabilityGroupDatabaseArrayOutput() DistributedAvailabilityGroupDatabaseArrayOutput {
+	return i.ToDistributedAvailabilityGroupDatabaseArrayOutputWithContext(context.Background())
+}
+
+func (i DistributedAvailabilityGroupDatabaseArray) ToDistributedAvailabilityGroupDatabaseArrayOutputWithContext(ctx context.Context) DistributedAvailabilityGroupDatabaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DistributedAvailabilityGroupDatabaseArrayOutput)
+}
+
+// Database specific information
+type DistributedAvailabilityGroupDatabaseOutput struct{ *pulumi.OutputState }
+
+func (DistributedAvailabilityGroupDatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DistributedAvailabilityGroupDatabase)(nil)).Elem()
+}
+
+func (o DistributedAvailabilityGroupDatabaseOutput) ToDistributedAvailabilityGroupDatabaseOutput() DistributedAvailabilityGroupDatabaseOutput {
+	return o
+}
+
+func (o DistributedAvailabilityGroupDatabaseOutput) ToDistributedAvailabilityGroupDatabaseOutputWithContext(ctx context.Context) DistributedAvailabilityGroupDatabaseOutput {
+	return o
+}
+
+// The name of the database in link
+func (o DistributedAvailabilityGroupDatabaseOutput) DatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DistributedAvailabilityGroupDatabase) *string { return v.DatabaseName }).(pulumi.StringPtrOutput)
+}
+
+type DistributedAvailabilityGroupDatabaseArrayOutput struct{ *pulumi.OutputState }
+
+func (DistributedAvailabilityGroupDatabaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DistributedAvailabilityGroupDatabase)(nil)).Elem()
+}
+
+func (o DistributedAvailabilityGroupDatabaseArrayOutput) ToDistributedAvailabilityGroupDatabaseArrayOutput() DistributedAvailabilityGroupDatabaseArrayOutput {
+	return o
+}
+
+func (o DistributedAvailabilityGroupDatabaseArrayOutput) ToDistributedAvailabilityGroupDatabaseArrayOutputWithContext(ctx context.Context) DistributedAvailabilityGroupDatabaseArrayOutput {
+	return o
+}
+
+func (o DistributedAvailabilityGroupDatabaseArrayOutput) Index(i pulumi.IntInput) DistributedAvailabilityGroupDatabaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DistributedAvailabilityGroupDatabase {
+		return vs[0].([]DistributedAvailabilityGroupDatabase)[vs[1].(int)]
+	}).(DistributedAvailabilityGroupDatabaseOutput)
+}
+
+// Database specific information
+type DistributedAvailabilityGroupDatabaseResponse struct {
+	// Link connected state
+	ConnectedState string `pulumi:"connectedState"`
+	// The name of the database in link
+	DatabaseName *string `pulumi:"databaseName"`
+	// Redo lag when Managed Instance link side is primary
+	InstanceRedoReplicationLagSeconds int `pulumi:"instanceRedoReplicationLagSeconds"`
+	// Managed instance replica id
+	InstanceReplicaId string `pulumi:"instanceReplicaId"`
+	// Replication lag when Managed Instance link side is primary
+	InstanceSendReplicationLagSeconds int `pulumi:"instanceSendReplicationLagSeconds"`
+	// Last backup LSN
+	LastBackupLsn string `pulumi:"lastBackupLsn"`
+	// Last backup LSN time
+	LastBackupTime string `pulumi:"lastBackupTime"`
+	// Last commit LSN
+	LastCommitLsn string `pulumi:"lastCommitLsn"`
+	// Last commit LSN time
+	LastCommitTime string `pulumi:"lastCommitTime"`
+	// Last hardened LSN
+	LastHardenedLsn string `pulumi:"lastHardenedLsn"`
+	// Last hardened LSN time
+	LastHardenedTime string `pulumi:"lastHardenedTime"`
+	// Last received LSN
+	LastReceivedLsn string `pulumi:"lastReceivedLsn"`
+	// Last received LSN time
+	LastReceivedTime string `pulumi:"lastReceivedTime"`
+	// Last sent LSN
+	LastSentLsn string `pulumi:"lastSentLsn"`
+	// Last sent LSN time
+	LastSentTime string `pulumi:"lastSentTime"`
+	// The most recent link connection error description
+	MostRecentLinkError string `pulumi:"mostRecentLinkError"`
+	// SQL server certificate validity
+	PartnerAuthCertValidity CertificateInfoResponse `pulumi:"partnerAuthCertValidity"`
+	// SQL server replica id
+	PartnerReplicaId string `pulumi:"partnerReplicaId"`
+	// Current link state
+	ReplicaState string `pulumi:"replicaState"`
+	// Seeding progress
+	SeedingProgress string `pulumi:"seedingProgress"`
+	// Link health state
+	SynchronizationHealth string `pulumi:"synchronizationHealth"`
+}
+
+// Database specific information
+type DistributedAvailabilityGroupDatabaseResponseOutput struct{ *pulumi.OutputState }
+
+func (DistributedAvailabilityGroupDatabaseResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DistributedAvailabilityGroupDatabaseResponse)(nil)).Elem()
+}
+
+func (o DistributedAvailabilityGroupDatabaseResponseOutput) ToDistributedAvailabilityGroupDatabaseResponseOutput() DistributedAvailabilityGroupDatabaseResponseOutput {
+	return o
+}
+
+func (o DistributedAvailabilityGroupDatabaseResponseOutput) ToDistributedAvailabilityGroupDatabaseResponseOutputWithContext(ctx context.Context) DistributedAvailabilityGroupDatabaseResponseOutput {
+	return o
+}
+
+// Link connected state
+func (o DistributedAvailabilityGroupDatabaseResponseOutput) ConnectedState() pulumi.StringOutput {
+	return o.ApplyT(func(v DistributedAvailabilityGroupDatabaseResponse) string { return v.ConnectedState }).(pulumi.StringOutput)
+}
+
+// The name of the database in link
+func (o DistributedAvailabilityGroupDatabaseResponseOutput) DatabaseName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DistributedAvailabilityGroupDatabaseResponse) *string { return v.DatabaseName }).(pulumi.StringPtrOutput)
+}
+
+// Redo lag when Managed Instance link side is primary
+func (o DistributedAvailabilityGroupDatabaseResponseOutput) InstanceRedoReplicationLagSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v DistributedAvailabilityGroupDatabaseResponse) int { return v.InstanceRedoReplicationLagSeconds }).(pulumi.IntOutput)
+}
+
+// Managed instance replica id
+func (o DistributedAvailabilityGroupDatabaseResponseOutput) InstanceReplicaId() pulumi.StringOutput {
+	return o.ApplyT(func(v DistributedAvailabilityGroupDatabaseResponse) string { return v.InstanceReplicaId }).(pulumi.StringOutput)
+}
+
+// Replication lag when Managed Instance link side is primary
+func (o DistributedAvailabilityGroupDatabaseResponseOutput) InstanceSendReplicationLagSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v DistributedAvailabilityGroupDatabaseResponse) int { return v.InstanceSendReplicationLagSeconds }).(pulumi.IntOutput)
+}
+
+// Last backup LSN
+func (o DistributedAvailabilityGroupDatabaseResponseOutput) LastBackupLsn() pulumi.StringOutput {
+	return o.ApplyT(func(v DistributedAvailabilityGroupDatabaseResponse) string { return v.LastBackupLsn }).(pulumi.StringOutput)
+}
+
+// Last backup LSN time
+func (o DistributedAvailabilityGroupDatabaseResponseOutput) LastBackupTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DistributedAvailabilityGroupDatabaseResponse) string { return v.LastBackupTime }).(pulumi.StringOutput)
+}
+
+// Last commit LSN
+func (o DistributedAvailabilityGroupDatabaseResponseOutput) LastCommitLsn() pulumi.StringOutput {
+	return o.ApplyT(func(v DistributedAvailabilityGroupDatabaseResponse) string { return v.LastCommitLsn }).(pulumi.StringOutput)
+}
+
+// Last commit LSN time
+func (o DistributedAvailabilityGroupDatabaseResponseOutput) LastCommitTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DistributedAvailabilityGroupDatabaseResponse) string { return v.LastCommitTime }).(pulumi.StringOutput)
+}
+
+// Last hardened LSN
+func (o DistributedAvailabilityGroupDatabaseResponseOutput) LastHardenedLsn() pulumi.StringOutput {
+	return o.ApplyT(func(v DistributedAvailabilityGroupDatabaseResponse) string { return v.LastHardenedLsn }).(pulumi.StringOutput)
+}
+
+// Last hardened LSN time
+func (o DistributedAvailabilityGroupDatabaseResponseOutput) LastHardenedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DistributedAvailabilityGroupDatabaseResponse) string { return v.LastHardenedTime }).(pulumi.StringOutput)
+}
+
+// Last received LSN
+func (o DistributedAvailabilityGroupDatabaseResponseOutput) LastReceivedLsn() pulumi.StringOutput {
+	return o.ApplyT(func(v DistributedAvailabilityGroupDatabaseResponse) string { return v.LastReceivedLsn }).(pulumi.StringOutput)
+}
+
+// Last received LSN time
+func (o DistributedAvailabilityGroupDatabaseResponseOutput) LastReceivedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DistributedAvailabilityGroupDatabaseResponse) string { return v.LastReceivedTime }).(pulumi.StringOutput)
+}
+
+// Last sent LSN
+func (o DistributedAvailabilityGroupDatabaseResponseOutput) LastSentLsn() pulumi.StringOutput {
+	return o.ApplyT(func(v DistributedAvailabilityGroupDatabaseResponse) string { return v.LastSentLsn }).(pulumi.StringOutput)
+}
+
+// Last sent LSN time
+func (o DistributedAvailabilityGroupDatabaseResponseOutput) LastSentTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DistributedAvailabilityGroupDatabaseResponse) string { return v.LastSentTime }).(pulumi.StringOutput)
+}
+
+// The most recent link connection error description
+func (o DistributedAvailabilityGroupDatabaseResponseOutput) MostRecentLinkError() pulumi.StringOutput {
+	return o.ApplyT(func(v DistributedAvailabilityGroupDatabaseResponse) string { return v.MostRecentLinkError }).(pulumi.StringOutput)
+}
+
+// SQL server certificate validity
+func (o DistributedAvailabilityGroupDatabaseResponseOutput) PartnerAuthCertValidity() CertificateInfoResponseOutput {
+	return o.ApplyT(func(v DistributedAvailabilityGroupDatabaseResponse) CertificateInfoResponse {
+		return v.PartnerAuthCertValidity
+	}).(CertificateInfoResponseOutput)
+}
+
+// SQL server replica id
+func (o DistributedAvailabilityGroupDatabaseResponseOutput) PartnerReplicaId() pulumi.StringOutput {
+	return o.ApplyT(func(v DistributedAvailabilityGroupDatabaseResponse) string { return v.PartnerReplicaId }).(pulumi.StringOutput)
+}
+
+// Current link state
+func (o DistributedAvailabilityGroupDatabaseResponseOutput) ReplicaState() pulumi.StringOutput {
+	return o.ApplyT(func(v DistributedAvailabilityGroupDatabaseResponse) string { return v.ReplicaState }).(pulumi.StringOutput)
+}
+
+// Seeding progress
+func (o DistributedAvailabilityGroupDatabaseResponseOutput) SeedingProgress() pulumi.StringOutput {
+	return o.ApplyT(func(v DistributedAvailabilityGroupDatabaseResponse) string { return v.SeedingProgress }).(pulumi.StringOutput)
+}
+
+// Link health state
+func (o DistributedAvailabilityGroupDatabaseResponseOutput) SynchronizationHealth() pulumi.StringOutput {
+	return o.ApplyT(func(v DistributedAvailabilityGroupDatabaseResponse) string { return v.SynchronizationHealth }).(pulumi.StringOutput)
+}
+
+type DistributedAvailabilityGroupDatabaseResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DistributedAvailabilityGroupDatabaseResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DistributedAvailabilityGroupDatabaseResponse)(nil)).Elem()
+}
+
+func (o DistributedAvailabilityGroupDatabaseResponseArrayOutput) ToDistributedAvailabilityGroupDatabaseResponseArrayOutput() DistributedAvailabilityGroupDatabaseResponseArrayOutput {
+	return o
+}
+
+func (o DistributedAvailabilityGroupDatabaseResponseArrayOutput) ToDistributedAvailabilityGroupDatabaseResponseArrayOutputWithContext(ctx context.Context) DistributedAvailabilityGroupDatabaseResponseArrayOutput {
+	return o
+}
+
+func (o DistributedAvailabilityGroupDatabaseResponseArrayOutput) Index(i pulumi.IntInput) DistributedAvailabilityGroupDatabaseResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DistributedAvailabilityGroupDatabaseResponse {
+		return vs[0].([]DistributedAvailabilityGroupDatabaseResponse)[vs[1].(int)]
+	}).(DistributedAvailabilityGroupDatabaseResponseOutput)
+}
+
 // Per database settings of an elastic pool.
 type ElasticPoolPerDatabaseSettings struct {
+	// Auto Pause Delay for per database within pool
+	AutoPauseDelay *int `pulumi:"autoPauseDelay"`
 	// The maximum capacity any one database can consume.
 	MaxCapacity *float64 `pulumi:"maxCapacity"`
 	// The minimum capacity all databases are guaranteed.
@@ -488,6 +878,8 @@ type ElasticPoolPerDatabaseSettingsInput interface {
 
 // Per database settings of an elastic pool.
 type ElasticPoolPerDatabaseSettingsArgs struct {
+	// Auto Pause Delay for per database within pool
+	AutoPauseDelay pulumi.IntPtrInput `pulumi:"autoPauseDelay"`
 	// The maximum capacity any one database can consume.
 	MaxCapacity pulumi.Float64PtrInput `pulumi:"maxCapacity"`
 	// The minimum capacity all databases are guaranteed.
@@ -572,6 +964,11 @@ func (o ElasticPoolPerDatabaseSettingsOutput) ToElasticPoolPerDatabaseSettingsPt
 	}).(ElasticPoolPerDatabaseSettingsPtrOutput)
 }
 
+// Auto Pause Delay for per database within pool
+func (o ElasticPoolPerDatabaseSettingsOutput) AutoPauseDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticPoolPerDatabaseSettings) *int { return v.AutoPauseDelay }).(pulumi.IntPtrOutput)
+}
+
 // The maximum capacity any one database can consume.
 func (o ElasticPoolPerDatabaseSettingsOutput) MaxCapacity() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v ElasticPoolPerDatabaseSettings) *float64 { return v.MaxCapacity }).(pulumi.Float64PtrOutput)
@@ -606,6 +1003,16 @@ func (o ElasticPoolPerDatabaseSettingsPtrOutput) Elem() ElasticPoolPerDatabaseSe
 	}).(ElasticPoolPerDatabaseSettingsOutput)
 }
 
+// Auto Pause Delay for per database within pool
+func (o ElasticPoolPerDatabaseSettingsPtrOutput) AutoPauseDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticPoolPerDatabaseSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutoPauseDelay
+	}).(pulumi.IntPtrOutput)
+}
+
 // The maximum capacity any one database can consume.
 func (o ElasticPoolPerDatabaseSettingsPtrOutput) MaxCapacity() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *ElasticPoolPerDatabaseSettings) *float64 {
@@ -628,6 +1035,8 @@ func (o ElasticPoolPerDatabaseSettingsPtrOutput) MinCapacity() pulumi.Float64Ptr
 
 // Per database settings of an elastic pool.
 type ElasticPoolPerDatabaseSettingsResponse struct {
+	// Auto Pause Delay for per database within pool
+	AutoPauseDelay *int `pulumi:"autoPauseDelay"`
 	// The maximum capacity any one database can consume.
 	MaxCapacity *float64 `pulumi:"maxCapacity"`
 	// The minimum capacity all databases are guaranteed.
@@ -647,6 +1056,11 @@ func (o ElasticPoolPerDatabaseSettingsResponseOutput) ToElasticPoolPerDatabaseSe
 
 func (o ElasticPoolPerDatabaseSettingsResponseOutput) ToElasticPoolPerDatabaseSettingsResponseOutputWithContext(ctx context.Context) ElasticPoolPerDatabaseSettingsResponseOutput {
 	return o
+}
+
+// Auto Pause Delay for per database within pool
+func (o ElasticPoolPerDatabaseSettingsResponseOutput) AutoPauseDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ElasticPoolPerDatabaseSettingsResponse) *int { return v.AutoPauseDelay }).(pulumi.IntPtrOutput)
 }
 
 // The maximum capacity any one database can consume.
@@ -683,6 +1097,16 @@ func (o ElasticPoolPerDatabaseSettingsResponsePtrOutput) Elem() ElasticPoolPerDa
 	}).(ElasticPoolPerDatabaseSettingsResponseOutput)
 }
 
+// Auto Pause Delay for per database within pool
+func (o ElasticPoolPerDatabaseSettingsResponsePtrOutput) AutoPauseDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ElasticPoolPerDatabaseSettingsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AutoPauseDelay
+	}).(pulumi.IntPtrOutput)
+}
+
 // The maximum capacity any one database can consume.
 func (o ElasticPoolPerDatabaseSettingsResponsePtrOutput) MaxCapacity() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *ElasticPoolPerDatabaseSettingsResponse) *float64 {
@@ -707,6 +1131,8 @@ func (o ElasticPoolPerDatabaseSettingsResponsePtrOutput) MinCapacity() pulumi.Fl
 type FailoverGroupReadOnlyEndpoint struct {
 	// Failover policy of the read-only endpoint for the failover group.
 	FailoverPolicy *string `pulumi:"failoverPolicy"`
+	// The target partner server where the read-only endpoint points to.
+	TargetServer *string `pulumi:"targetServer"`
 }
 
 // FailoverGroupReadOnlyEndpointInput is an input type that accepts FailoverGroupReadOnlyEndpointArgs and FailoverGroupReadOnlyEndpointOutput values.
@@ -724,6 +1150,8 @@ type FailoverGroupReadOnlyEndpointInput interface {
 type FailoverGroupReadOnlyEndpointArgs struct {
 	// Failover policy of the read-only endpoint for the failover group.
 	FailoverPolicy pulumi.StringPtrInput `pulumi:"failoverPolicy"`
+	// The target partner server where the read-only endpoint points to.
+	TargetServer pulumi.StringPtrInput `pulumi:"targetServer"`
 }
 
 func (FailoverGroupReadOnlyEndpointArgs) ElementType() reflect.Type {
@@ -809,6 +1237,11 @@ func (o FailoverGroupReadOnlyEndpointOutput) FailoverPolicy() pulumi.StringPtrOu
 	return o.ApplyT(func(v FailoverGroupReadOnlyEndpoint) *string { return v.FailoverPolicy }).(pulumi.StringPtrOutput)
 }
 
+// The target partner server where the read-only endpoint points to.
+func (o FailoverGroupReadOnlyEndpointOutput) TargetServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FailoverGroupReadOnlyEndpoint) *string { return v.TargetServer }).(pulumi.StringPtrOutput)
+}
+
 type FailoverGroupReadOnlyEndpointPtrOutput struct{ *pulumi.OutputState }
 
 func (FailoverGroupReadOnlyEndpointPtrOutput) ElementType() reflect.Type {
@@ -843,10 +1276,22 @@ func (o FailoverGroupReadOnlyEndpointPtrOutput) FailoverPolicy() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// The target partner server where the read-only endpoint points to.
+func (o FailoverGroupReadOnlyEndpointPtrOutput) TargetServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FailoverGroupReadOnlyEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetServer
+	}).(pulumi.StringPtrOutput)
+}
+
 // Read-only endpoint of the failover group instance.
 type FailoverGroupReadOnlyEndpointResponse struct {
 	// Failover policy of the read-only endpoint for the failover group.
 	FailoverPolicy *string `pulumi:"failoverPolicy"`
+	// The target partner server where the read-only endpoint points to.
+	TargetServer *string `pulumi:"targetServer"`
 }
 
 // Read-only endpoint of the failover group instance.
@@ -867,6 +1312,11 @@ func (o FailoverGroupReadOnlyEndpointResponseOutput) ToFailoverGroupReadOnlyEndp
 // Failover policy of the read-only endpoint for the failover group.
 func (o FailoverGroupReadOnlyEndpointResponseOutput) FailoverPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FailoverGroupReadOnlyEndpointResponse) *string { return v.FailoverPolicy }).(pulumi.StringPtrOutput)
+}
+
+// The target partner server where the read-only endpoint points to.
+func (o FailoverGroupReadOnlyEndpointResponseOutput) TargetServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FailoverGroupReadOnlyEndpointResponse) *string { return v.TargetServer }).(pulumi.StringPtrOutput)
 }
 
 type FailoverGroupReadOnlyEndpointResponsePtrOutput struct{ *pulumi.OutputState }
@@ -900,6 +1350,16 @@ func (o FailoverGroupReadOnlyEndpointResponsePtrOutput) FailoverPolicy() pulumi.
 			return nil
 		}
 		return v.FailoverPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The target partner server where the read-only endpoint points to.
+func (o FailoverGroupReadOnlyEndpointResponsePtrOutput) TargetServer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FailoverGroupReadOnlyEndpointResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetServer
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1299,6 +1759,333 @@ func (o InstanceFailoverGroupReadWriteEndpointResponseOutput) FailoverWithDataLo
 	}).(pulumi.IntPtrOutput)
 }
 
+// Azure Active Directory identity configuration for a resource.
+type JobAgentIdentity struct {
+	// The job agent identity tenant id
+	TenantId *string `pulumi:"tenantId"`
+	// The job agent identity type
+	Type string `pulumi:"type"`
+	// The resource ids of the user assigned identities to use
+	UserAssignedIdentities []string `pulumi:"userAssignedIdentities"`
+}
+
+// JobAgentIdentityInput is an input type that accepts JobAgentIdentityArgs and JobAgentIdentityOutput values.
+// You can construct a concrete instance of `JobAgentIdentityInput` via:
+//
+//	JobAgentIdentityArgs{...}
+type JobAgentIdentityInput interface {
+	pulumi.Input
+
+	ToJobAgentIdentityOutput() JobAgentIdentityOutput
+	ToJobAgentIdentityOutputWithContext(context.Context) JobAgentIdentityOutput
+}
+
+// Azure Active Directory identity configuration for a resource.
+type JobAgentIdentityArgs struct {
+	// The job agent identity tenant id
+	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
+	// The job agent identity type
+	Type pulumi.StringInput `pulumi:"type"`
+	// The resource ids of the user assigned identities to use
+	UserAssignedIdentities pulumi.StringArrayInput `pulumi:"userAssignedIdentities"`
+}
+
+func (JobAgentIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobAgentIdentity)(nil)).Elem()
+}
+
+func (i JobAgentIdentityArgs) ToJobAgentIdentityOutput() JobAgentIdentityOutput {
+	return i.ToJobAgentIdentityOutputWithContext(context.Background())
+}
+
+func (i JobAgentIdentityArgs) ToJobAgentIdentityOutputWithContext(ctx context.Context) JobAgentIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobAgentIdentityOutput)
+}
+
+func (i JobAgentIdentityArgs) ToJobAgentIdentityPtrOutput() JobAgentIdentityPtrOutput {
+	return i.ToJobAgentIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i JobAgentIdentityArgs) ToJobAgentIdentityPtrOutputWithContext(ctx context.Context) JobAgentIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobAgentIdentityOutput).ToJobAgentIdentityPtrOutputWithContext(ctx)
+}
+
+// JobAgentIdentityPtrInput is an input type that accepts JobAgentIdentityArgs, JobAgentIdentityPtr and JobAgentIdentityPtrOutput values.
+// You can construct a concrete instance of `JobAgentIdentityPtrInput` via:
+//
+//	        JobAgentIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type JobAgentIdentityPtrInput interface {
+	pulumi.Input
+
+	ToJobAgentIdentityPtrOutput() JobAgentIdentityPtrOutput
+	ToJobAgentIdentityPtrOutputWithContext(context.Context) JobAgentIdentityPtrOutput
+}
+
+type jobAgentIdentityPtrType JobAgentIdentityArgs
+
+func JobAgentIdentityPtr(v *JobAgentIdentityArgs) JobAgentIdentityPtrInput {
+	return (*jobAgentIdentityPtrType)(v)
+}
+
+func (*jobAgentIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobAgentIdentity)(nil)).Elem()
+}
+
+func (i *jobAgentIdentityPtrType) ToJobAgentIdentityPtrOutput() JobAgentIdentityPtrOutput {
+	return i.ToJobAgentIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *jobAgentIdentityPtrType) ToJobAgentIdentityPtrOutputWithContext(ctx context.Context) JobAgentIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobAgentIdentityPtrOutput)
+}
+
+// Azure Active Directory identity configuration for a resource.
+type JobAgentIdentityOutput struct{ *pulumi.OutputState }
+
+func (JobAgentIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobAgentIdentity)(nil)).Elem()
+}
+
+func (o JobAgentIdentityOutput) ToJobAgentIdentityOutput() JobAgentIdentityOutput {
+	return o
+}
+
+func (o JobAgentIdentityOutput) ToJobAgentIdentityOutputWithContext(ctx context.Context) JobAgentIdentityOutput {
+	return o
+}
+
+func (o JobAgentIdentityOutput) ToJobAgentIdentityPtrOutput() JobAgentIdentityPtrOutput {
+	return o.ToJobAgentIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o JobAgentIdentityOutput) ToJobAgentIdentityPtrOutputWithContext(ctx context.Context) JobAgentIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobAgentIdentity) *JobAgentIdentity {
+		return &v
+	}).(JobAgentIdentityPtrOutput)
+}
+
+// The job agent identity tenant id
+func (o JobAgentIdentityOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobAgentIdentity) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+// The job agent identity type
+func (o JobAgentIdentityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v JobAgentIdentity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The resource ids of the user assigned identities to use
+func (o JobAgentIdentityOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v JobAgentIdentity) []string { return v.UserAssignedIdentities }).(pulumi.StringArrayOutput)
+}
+
+type JobAgentIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (JobAgentIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobAgentIdentity)(nil)).Elem()
+}
+
+func (o JobAgentIdentityPtrOutput) ToJobAgentIdentityPtrOutput() JobAgentIdentityPtrOutput {
+	return o
+}
+
+func (o JobAgentIdentityPtrOutput) ToJobAgentIdentityPtrOutputWithContext(ctx context.Context) JobAgentIdentityPtrOutput {
+	return o
+}
+
+func (o JobAgentIdentityPtrOutput) Elem() JobAgentIdentityOutput {
+	return o.ApplyT(func(v *JobAgentIdentity) JobAgentIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret JobAgentIdentity
+		return ret
+	}).(JobAgentIdentityOutput)
+}
+
+// The job agent identity tenant id
+func (o JobAgentIdentityPtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobAgentIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The job agent identity type
+func (o JobAgentIdentityPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobAgentIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource ids of the user assigned identities to use
+func (o JobAgentIdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *JobAgentIdentity) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(pulumi.StringArrayOutput)
+}
+
+// Azure Active Directory identity configuration for a resource.
+type JobAgentIdentityResponse struct {
+	// The job agent identity tenant id
+	TenantId *string `pulumi:"tenantId"`
+	// The job agent identity type
+	Type string `pulumi:"type"`
+	// The resource ids of the user assigned identities to use
+	UserAssignedIdentities map[string]JobAgentUserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
+}
+
+// Azure Active Directory identity configuration for a resource.
+type JobAgentIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (JobAgentIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobAgentIdentityResponse)(nil)).Elem()
+}
+
+func (o JobAgentIdentityResponseOutput) ToJobAgentIdentityResponseOutput() JobAgentIdentityResponseOutput {
+	return o
+}
+
+func (o JobAgentIdentityResponseOutput) ToJobAgentIdentityResponseOutputWithContext(ctx context.Context) JobAgentIdentityResponseOutput {
+	return o
+}
+
+// The job agent identity tenant id
+func (o JobAgentIdentityResponseOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobAgentIdentityResponse) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+// The job agent identity type
+func (o JobAgentIdentityResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v JobAgentIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The resource ids of the user assigned identities to use
+func (o JobAgentIdentityResponseOutput) UserAssignedIdentities() JobAgentUserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v JobAgentIdentityResponse) map[string]JobAgentUserAssignedIdentityResponse {
+		return v.UserAssignedIdentities
+	}).(JobAgentUserAssignedIdentityResponseMapOutput)
+}
+
+type JobAgentIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (JobAgentIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobAgentIdentityResponse)(nil)).Elem()
+}
+
+func (o JobAgentIdentityResponsePtrOutput) ToJobAgentIdentityResponsePtrOutput() JobAgentIdentityResponsePtrOutput {
+	return o
+}
+
+func (o JobAgentIdentityResponsePtrOutput) ToJobAgentIdentityResponsePtrOutputWithContext(ctx context.Context) JobAgentIdentityResponsePtrOutput {
+	return o
+}
+
+func (o JobAgentIdentityResponsePtrOutput) Elem() JobAgentIdentityResponseOutput {
+	return o.ApplyT(func(v *JobAgentIdentityResponse) JobAgentIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret JobAgentIdentityResponse
+		return ret
+	}).(JobAgentIdentityResponseOutput)
+}
+
+// The job agent identity tenant id
+func (o JobAgentIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobAgentIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The job agent identity type
+func (o JobAgentIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobAgentIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource ids of the user assigned identities to use
+func (o JobAgentIdentityResponsePtrOutput) UserAssignedIdentities() JobAgentUserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v *JobAgentIdentityResponse) map[string]JobAgentUserAssignedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(JobAgentUserAssignedIdentityResponseMapOutput)
+}
+
+// Azure Active Directory identity configuration for a resource.
+type JobAgentUserAssignedIdentityResponse struct {
+	// The Azure Active Directory client id.
+	ClientId string `pulumi:"clientId"`
+	// The Azure Active Directory principal id.
+	PrincipalId string `pulumi:"principalId"`
+}
+
+// Azure Active Directory identity configuration for a resource.
+type JobAgentUserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (JobAgentUserAssignedIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobAgentUserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o JobAgentUserAssignedIdentityResponseOutput) ToJobAgentUserAssignedIdentityResponseOutput() JobAgentUserAssignedIdentityResponseOutput {
+	return o
+}
+
+func (o JobAgentUserAssignedIdentityResponseOutput) ToJobAgentUserAssignedIdentityResponseOutputWithContext(ctx context.Context) JobAgentUserAssignedIdentityResponseOutput {
+	return o
+}
+
+// The Azure Active Directory client id.
+func (o JobAgentUserAssignedIdentityResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobAgentUserAssignedIdentityResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The Azure Active Directory principal id.
+func (o JobAgentUserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobAgentUserAssignedIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+type JobAgentUserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
+
+func (JobAgentUserAssignedIdentityResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]JobAgentUserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o JobAgentUserAssignedIdentityResponseMapOutput) ToJobAgentUserAssignedIdentityResponseMapOutput() JobAgentUserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o JobAgentUserAssignedIdentityResponseMapOutput) ToJobAgentUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) JobAgentUserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o JobAgentUserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) JobAgentUserAssignedIdentityResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) JobAgentUserAssignedIdentityResponse {
+		return vs[0].(map[string]JobAgentUserAssignedIdentityResponse)[vs[1].(string)]
+	}).(JobAgentUserAssignedIdentityResponseOutput)
+}
+
 // Scheduling properties of a job.
 type JobSchedule struct {
 	// Whether or not the schedule is enabled.
@@ -1320,11 +2107,11 @@ func (val *JobSchedule) Defaults() *JobSchedule {
 	}
 	tmp := *val
 	if tmp.EndTime == nil {
-		endTime_ := "9999-12-31T11:59:59+00:00"
+		endTime_ := "9999-12-31T17:29:59+05:30"
 		tmp.EndTime = &endTime_
 	}
 	if tmp.StartTime == nil {
-		startTime_ := "0001-01-01T00:00:00+00:00"
+		startTime_ := "0001-01-01T05:30:00+05:30"
 		tmp.StartTime = &startTime_
 	}
 	if tmp.Type == nil {
@@ -1366,10 +2153,10 @@ func (val *JobScheduleArgs) Defaults() *JobScheduleArgs {
 	}
 	tmp := *val
 	if tmp.EndTime == nil {
-		tmp.EndTime = pulumi.StringPtr("9999-12-31T11:59:59+00:00")
+		tmp.EndTime = pulumi.StringPtr("9999-12-31T17:29:59+05:30")
 	}
 	if tmp.StartTime == nil {
-		tmp.StartTime = pulumi.StringPtr("0001-01-01T00:00:00+00:00")
+		tmp.StartTime = pulumi.StringPtr("0001-01-01T05:30:00+05:30")
 	}
 	if tmp.Type == nil {
 		tmp.Type = JobScheduleType("Once")
@@ -1574,11 +2361,11 @@ func (val *JobScheduleResponse) Defaults() *JobScheduleResponse {
 	}
 	tmp := *val
 	if tmp.EndTime == nil {
-		endTime_ := "9999-12-31T11:59:59+00:00"
+		endTime_ := "9999-12-31T17:29:59+05:30"
 		tmp.EndTime = &endTime_
 	}
 	if tmp.StartTime == nil {
-		startTime_ := "0001-01-01T00:00:00+00:00"
+		startTime_ := "0001-01-01T05:30:00+05:30"
 		tmp.StartTime = &startTime_
 	}
 	if tmp.Type == nil {
@@ -2291,7 +3078,7 @@ func (o JobStepExecutionOptionsResponsePtrOutput) TimeoutSeconds() pulumi.IntPtr
 // The output configuration of a job step.
 type JobStepOutputType struct {
 	// The resource ID of the credential to use to connect to the output destination.
-	Credential string `pulumi:"credential"`
+	Credential *string `pulumi:"credential"`
 	// The output destination database.
 	DatabaseName string `pulumi:"databaseName"`
 	// The output destination resource group.
@@ -2339,7 +3126,7 @@ type JobStepOutputTypeInput interface {
 // The output configuration of a job step.
 type JobStepOutputTypeArgs struct {
 	// The resource ID of the credential to use to connect to the output destination.
-	Credential pulumi.StringInput `pulumi:"credential"`
+	Credential pulumi.StringPtrInput `pulumi:"credential"`
 	// The output destination database.
 	DatabaseName pulumi.StringInput `pulumi:"databaseName"`
 	// The output destination resource group.
@@ -2449,8 +3236,8 @@ func (o JobStepOutputTypeOutput) ToJobStepOutputTypePtrOutputWithContext(ctx con
 }
 
 // The resource ID of the credential to use to connect to the output destination.
-func (o JobStepOutputTypeOutput) Credential() pulumi.StringOutput {
-	return o.ApplyT(func(v JobStepOutputType) string { return v.Credential }).(pulumi.StringOutput)
+func (o JobStepOutputTypeOutput) Credential() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobStepOutputType) *string { return v.Credential }).(pulumi.StringPtrOutput)
 }
 
 // The output destination database.
@@ -2518,7 +3305,7 @@ func (o JobStepOutputTypePtrOutput) Credential() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Credential
+		return v.Credential
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2595,7 +3382,7 @@ func (o JobStepOutputTypePtrOutput) Type() pulumi.StringPtrOutput {
 // The output configuration of a job step.
 type JobStepOutputResponse struct {
 	// The resource ID of the credential to use to connect to the output destination.
-	Credential string `pulumi:"credential"`
+	Credential *string `pulumi:"credential"`
 	// The output destination database.
 	DatabaseName string `pulumi:"databaseName"`
 	// The output destination resource group.
@@ -2645,8 +3432,8 @@ func (o JobStepOutputResponseOutput) ToJobStepOutputResponseOutputWithContext(ct
 }
 
 // The resource ID of the credential to use to connect to the output destination.
-func (o JobStepOutputResponseOutput) Credential() pulumi.StringOutput {
-	return o.ApplyT(func(v JobStepOutputResponse) string { return v.Credential }).(pulumi.StringOutput)
+func (o JobStepOutputResponseOutput) Credential() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobStepOutputResponse) *string { return v.Credential }).(pulumi.StringPtrOutput)
 }
 
 // The output destination database.
@@ -2714,7 +3501,7 @@ func (o JobStepOutputResponsePtrOutput) Credential() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Credential
+		return v.Credential
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5177,7 +5964,7 @@ func (o RecommendedActionMetricInfoResponseArrayOutput) Index(i pulumi.IntInput)
 // Database, Server or Elastic Pool Recommended Action.
 type RecommendedActionResponse struct {
 	// Gets additional details specific to this recommended action.
-	Details map[string]interface{} `pulumi:"details"`
+	Details map[string]string `pulumi:"details"`
 	// Gets the error details if and why this recommended action is put to error state.
 	ErrorDetails RecommendedActionErrorInfoResponse `pulumi:"errorDetails"`
 	// Gets the estimated impact info for this recommended action e.g., Estimated CPU gain, Estimated Disk Space change
@@ -5250,8 +6037,8 @@ func (o RecommendedActionResponseOutput) ToRecommendedActionResponseOutputWithCo
 }
 
 // Gets additional details specific to this recommended action.
-func (o RecommendedActionResponseOutput) Details() pulumi.MapOutput {
-	return o.ApplyT(func(v RecommendedActionResponse) map[string]interface{} { return v.Details }).(pulumi.MapOutput)
+func (o RecommendedActionResponseOutput) Details() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RecommendedActionResponse) map[string]string { return v.Details }).(pulumi.StringMapOutput)
 }
 
 // Gets the error details if and why this recommended action is put to error state.
@@ -8093,16 +8880,23 @@ func (o VulnerabilityAssessmentRecurringScansPropertiesResponsePtrOutput) IsEnab
 }
 
 func init() {
+	pulumi.RegisterOutputType(CertificateInfoResponseOutput{})
 	pulumi.RegisterOutputType(DatabaseIdentityOutput{})
 	pulumi.RegisterOutputType(DatabaseIdentityPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseIdentityResponseOutput{})
 	pulumi.RegisterOutputType(DatabaseIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(DatabaseKeyResponseOutput{})
+	pulumi.RegisterOutputType(DatabaseKeyResponseMapOutput{})
 	pulumi.RegisterOutputType(DatabaseUserIdentityResponseOutput{})
 	pulumi.RegisterOutputType(DatabaseUserIdentityResponseMapOutput{})
 	pulumi.RegisterOutputType(DatabaseVulnerabilityAssessmentRuleBaselineItemOutput{})
 	pulumi.RegisterOutputType(DatabaseVulnerabilityAssessmentRuleBaselineItemArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseVulnerabilityAssessmentRuleBaselineItemResponseOutput{})
 	pulumi.RegisterOutputType(DatabaseVulnerabilityAssessmentRuleBaselineItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(DistributedAvailabilityGroupDatabaseOutput{})
+	pulumi.RegisterOutputType(DistributedAvailabilityGroupDatabaseArrayOutput{})
+	pulumi.RegisterOutputType(DistributedAvailabilityGroupDatabaseResponseOutput{})
+	pulumi.RegisterOutputType(DistributedAvailabilityGroupDatabaseResponseArrayOutput{})
 	pulumi.RegisterOutputType(ElasticPoolPerDatabaseSettingsOutput{})
 	pulumi.RegisterOutputType(ElasticPoolPerDatabaseSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ElasticPoolPerDatabaseSettingsResponseOutput{})
@@ -8119,6 +8913,12 @@ func init() {
 	pulumi.RegisterOutputType(InstanceFailoverGroupReadOnlyEndpointResponsePtrOutput{})
 	pulumi.RegisterOutputType(InstanceFailoverGroupReadWriteEndpointOutput{})
 	pulumi.RegisterOutputType(InstanceFailoverGroupReadWriteEndpointResponseOutput{})
+	pulumi.RegisterOutputType(JobAgentIdentityOutput{})
+	pulumi.RegisterOutputType(JobAgentIdentityPtrOutput{})
+	pulumi.RegisterOutputType(JobAgentIdentityResponseOutput{})
+	pulumi.RegisterOutputType(JobAgentIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(JobAgentUserAssignedIdentityResponseOutput{})
+	pulumi.RegisterOutputType(JobAgentUserAssignedIdentityResponseMapOutput{})
 	pulumi.RegisterOutputType(JobScheduleOutput{})
 	pulumi.RegisterOutputType(JobSchedulePtrOutput{})
 	pulumi.RegisterOutputType(JobScheduleResponseOutput{})

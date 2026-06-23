@@ -632,6 +632,190 @@ func (in *blobStorageEventTypePtr) ToBlobStorageEventTypePtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(BlobStorageEventTypePtrOutput)
 }
 
+// Type of the callout service, specifying the kind of external resource or service being accessed.
+type CalloutType string
+
+const (
+	CalloutTypeKusto                = CalloutType("kusto")
+	CalloutTypeSql                  = CalloutType("sql")
+	CalloutTypeCosmosdb             = CalloutType("cosmosdb")
+	CalloutType_External_data       = CalloutType("external_data")
+	CalloutType_Azure_digital_twins = CalloutType("azure_digital_twins")
+	CalloutType_Sandbox_artifacts   = CalloutType("sandbox_artifacts")
+	CalloutTypeWebapi               = CalloutType("webapi")
+	CalloutTypeMysql                = CalloutType("mysql")
+	CalloutTypePostgresql           = CalloutType("postgresql")
+	CalloutTypeGenevametrics        = CalloutType("genevametrics")
+	CalloutType_Azure_openai        = CalloutType("azure_openai")
+)
+
+func (CalloutType) ElementType() reflect.Type {
+	return reflect.TypeOf((*CalloutType)(nil)).Elem()
+}
+
+func (e CalloutType) ToCalloutTypeOutput() CalloutTypeOutput {
+	return pulumi.ToOutput(e).(CalloutTypeOutput)
+}
+
+func (e CalloutType) ToCalloutTypeOutputWithContext(ctx context.Context) CalloutTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CalloutTypeOutput)
+}
+
+func (e CalloutType) ToCalloutTypePtrOutput() CalloutTypePtrOutput {
+	return e.ToCalloutTypePtrOutputWithContext(context.Background())
+}
+
+func (e CalloutType) ToCalloutTypePtrOutputWithContext(ctx context.Context) CalloutTypePtrOutput {
+	return CalloutType(e).ToCalloutTypeOutputWithContext(ctx).ToCalloutTypePtrOutputWithContext(ctx)
+}
+
+func (e CalloutType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CalloutType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CalloutType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CalloutType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CalloutTypeOutput struct{ *pulumi.OutputState }
+
+func (CalloutTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CalloutType)(nil)).Elem()
+}
+
+func (o CalloutTypeOutput) ToCalloutTypeOutput() CalloutTypeOutput {
+	return o
+}
+
+func (o CalloutTypeOutput) ToCalloutTypeOutputWithContext(ctx context.Context) CalloutTypeOutput {
+	return o
+}
+
+func (o CalloutTypeOutput) ToCalloutTypePtrOutput() CalloutTypePtrOutput {
+	return o.ToCalloutTypePtrOutputWithContext(context.Background())
+}
+
+func (o CalloutTypeOutput) ToCalloutTypePtrOutputWithContext(ctx context.Context) CalloutTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CalloutType) *CalloutType {
+		return &v
+	}).(CalloutTypePtrOutput)
+}
+
+func (o CalloutTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CalloutTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CalloutType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CalloutTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CalloutTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CalloutType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CalloutTypePtrOutput struct{ *pulumi.OutputState }
+
+func (CalloutTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CalloutType)(nil)).Elem()
+}
+
+func (o CalloutTypePtrOutput) ToCalloutTypePtrOutput() CalloutTypePtrOutput {
+	return o
+}
+
+func (o CalloutTypePtrOutput) ToCalloutTypePtrOutputWithContext(ctx context.Context) CalloutTypePtrOutput {
+	return o
+}
+
+func (o CalloutTypePtrOutput) Elem() CalloutTypeOutput {
+	return o.ApplyT(func(v *CalloutType) CalloutType {
+		if v != nil {
+			return *v
+		}
+		var ret CalloutType
+		return ret
+	}).(CalloutTypeOutput)
+}
+
+func (o CalloutTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CalloutTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CalloutType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CalloutTypeInput is an input type that accepts values of the CalloutType enum
+// A concrete instance of `CalloutTypeInput` can be one of the following:
+//
+//	CalloutTypeKusto
+//	CalloutTypeSql
+//	CalloutTypeCosmosdb
+//	CalloutType_External_data
+//	CalloutType_Azure_digital_twins
+//	CalloutType_Sandbox_artifacts
+//	CalloutTypeWebapi
+//	CalloutTypeMysql
+//	CalloutTypePostgresql
+//	CalloutTypeGenevametrics
+//	CalloutType_Azure_openai
+type CalloutTypeInput interface {
+	pulumi.Input
+
+	ToCalloutTypeOutput() CalloutTypeOutput
+	ToCalloutTypeOutputWithContext(context.Context) CalloutTypeOutput
+}
+
+var calloutTypePtrType = reflect.TypeOf((**CalloutType)(nil)).Elem()
+
+type CalloutTypePtrInput interface {
+	pulumi.Input
+
+	ToCalloutTypePtrOutput() CalloutTypePtrOutput
+	ToCalloutTypePtrOutputWithContext(context.Context) CalloutTypePtrOutput
+}
+
+type calloutTypePtr string
+
+func CalloutTypePtr(v string) CalloutTypePtrInput {
+	return (*calloutTypePtr)(&v)
+}
+
+func (*calloutTypePtr) ElementType() reflect.Type {
+	return calloutTypePtrType
+}
+
+func (in *calloutTypePtr) ToCalloutTypePtrOutput() CalloutTypePtrOutput {
+	return pulumi.ToOutput(in).(CalloutTypePtrOutput)
+}
+
+func (in *calloutTypePtr) ToCalloutTypePtrOutputWithContext(ctx context.Context) CalloutTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CalloutTypePtrOutput)
+}
+
 // Whether or not to restrict outbound network access.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
 type ClusterNetworkAccessFlag string
 
@@ -802,8 +986,9 @@ func (in *clusterNetworkAccessFlagPtr) ToClusterNetworkAccessFlagPtrOutputWithCo
 type ClusterPrincipalRole string
 
 const (
-	ClusterPrincipalRoleAllDatabasesAdmin  = ClusterPrincipalRole("AllDatabasesAdmin")
-	ClusterPrincipalRoleAllDatabasesViewer = ClusterPrincipalRole("AllDatabasesViewer")
+	ClusterPrincipalRoleAllDatabasesAdmin   = ClusterPrincipalRole("AllDatabasesAdmin")
+	ClusterPrincipalRoleAllDatabasesViewer  = ClusterPrincipalRole("AllDatabasesViewer")
+	ClusterPrincipalRoleAllDatabasesMonitor = ClusterPrincipalRole("AllDatabasesMonitor")
 )
 
 func (ClusterPrincipalRole) ElementType() reflect.Type {
@@ -930,6 +1115,7 @@ func (o ClusterPrincipalRolePtrOutput) ToStringPtrOutputWithContext(ctx context.
 //
 //	ClusterPrincipalRoleAllDatabasesAdmin
 //	ClusterPrincipalRoleAllDatabasesViewer
+//	ClusterPrincipalRoleAllDatabasesMonitor
 type ClusterPrincipalRoleInput interface {
 	pulumi.Input
 
@@ -2910,9 +3096,13 @@ func (in *languagePtr) ToLanguagePtrOutputWithContext(ctx context.Context) Langu
 type LanguageExtensionImageName string
 
 const (
-	LanguageExtensionImageNameR             = LanguageExtensionImageName("R")
-	LanguageExtensionImageName_Python3_6_5  = LanguageExtensionImageName("Python3_6_5")
-	LanguageExtensionImageName_Python3_10_8 = LanguageExtensionImageName("Python3_10_8")
+	LanguageExtensionImageNameR                 = LanguageExtensionImageName("R")
+	LanguageExtensionImageName_Python3_6_5      = LanguageExtensionImageName("Python3_6_5")
+	LanguageExtensionImageName_Python3_10_8     = LanguageExtensionImageName("Python3_10_8")
+	LanguageExtensionImageName_Python3_10_8_DL  = LanguageExtensionImageName("Python3_10_8_DL")
+	LanguageExtensionImageNamePythonCustomImage = LanguageExtensionImageName("PythonCustomImage")
+	LanguageExtensionImageName_Python3_11_7     = LanguageExtensionImageName("Python3_11_7")
+	LanguageExtensionImageName_Python3_11_7_DL  = LanguageExtensionImageName("Python3_11_7_DL")
 )
 
 func (LanguageExtensionImageName) ElementType() reflect.Type {
@@ -3040,6 +3230,10 @@ func (o LanguageExtensionImageNamePtrOutput) ToStringPtrOutputWithContext(ctx co
 //	LanguageExtensionImageNameR
 //	LanguageExtensionImageName_Python3_6_5
 //	LanguageExtensionImageName_Python3_10_8
+//	LanguageExtensionImageName_Python3_10_8_DL
+//	LanguageExtensionImageNamePythonCustomImage
+//	LanguageExtensionImageName_Python3_11_7
+//	LanguageExtensionImageName_Python3_11_7_DL
 type LanguageExtensionImageNameInput interface {
 	pulumi.Input
 
@@ -3238,6 +3432,338 @@ func (in *languageExtensionNamePtr) ToLanguageExtensionNamePtrOutput() LanguageE
 
 func (in *languageExtensionNamePtr) ToLanguageExtensionNamePtrOutputWithContext(ctx context.Context) LanguageExtensionNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LanguageExtensionNamePtrOutput)
+}
+
+// Indicates whether outbound access is permitted for the specified URI pattern.
+type OutboundAccess string
+
+const (
+	OutboundAccessAllow = OutboundAccess("Allow")
+	OutboundAccessDeny  = OutboundAccess("Deny")
+)
+
+func (OutboundAccess) ElementType() reflect.Type {
+	return reflect.TypeOf((*OutboundAccess)(nil)).Elem()
+}
+
+func (e OutboundAccess) ToOutboundAccessOutput() OutboundAccessOutput {
+	return pulumi.ToOutput(e).(OutboundAccessOutput)
+}
+
+func (e OutboundAccess) ToOutboundAccessOutputWithContext(ctx context.Context) OutboundAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(OutboundAccessOutput)
+}
+
+func (e OutboundAccess) ToOutboundAccessPtrOutput() OutboundAccessPtrOutput {
+	return e.ToOutboundAccessPtrOutputWithContext(context.Background())
+}
+
+func (e OutboundAccess) ToOutboundAccessPtrOutputWithContext(ctx context.Context) OutboundAccessPtrOutput {
+	return OutboundAccess(e).ToOutboundAccessOutputWithContext(ctx).ToOutboundAccessPtrOutputWithContext(ctx)
+}
+
+func (e OutboundAccess) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OutboundAccess) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OutboundAccess) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e OutboundAccess) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type OutboundAccessOutput struct{ *pulumi.OutputState }
+
+func (OutboundAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OutboundAccess)(nil)).Elem()
+}
+
+func (o OutboundAccessOutput) ToOutboundAccessOutput() OutboundAccessOutput {
+	return o
+}
+
+func (o OutboundAccessOutput) ToOutboundAccessOutputWithContext(ctx context.Context) OutboundAccessOutput {
+	return o
+}
+
+func (o OutboundAccessOutput) ToOutboundAccessPtrOutput() OutboundAccessPtrOutput {
+	return o.ToOutboundAccessPtrOutputWithContext(context.Background())
+}
+
+func (o OutboundAccessOutput) ToOutboundAccessPtrOutputWithContext(ctx context.Context) OutboundAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OutboundAccess) *OutboundAccess {
+		return &v
+	}).(OutboundAccessPtrOutput)
+}
+
+func (o OutboundAccessOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o OutboundAccessOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OutboundAccess) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o OutboundAccessOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OutboundAccessOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OutboundAccess) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type OutboundAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (OutboundAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OutboundAccess)(nil)).Elem()
+}
+
+func (o OutboundAccessPtrOutput) ToOutboundAccessPtrOutput() OutboundAccessPtrOutput {
+	return o
+}
+
+func (o OutboundAccessPtrOutput) ToOutboundAccessPtrOutputWithContext(ctx context.Context) OutboundAccessPtrOutput {
+	return o
+}
+
+func (o OutboundAccessPtrOutput) Elem() OutboundAccessOutput {
+	return o.ApplyT(func(v *OutboundAccess) OutboundAccess {
+		if v != nil {
+			return *v
+		}
+		var ret OutboundAccess
+		return ret
+	}).(OutboundAccessOutput)
+}
+
+func (o OutboundAccessPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OutboundAccessPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *OutboundAccess) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// OutboundAccessInput is an input type that accepts values of the OutboundAccess enum
+// A concrete instance of `OutboundAccessInput` can be one of the following:
+//
+//	OutboundAccessAllow
+//	OutboundAccessDeny
+type OutboundAccessInput interface {
+	pulumi.Input
+
+	ToOutboundAccessOutput() OutboundAccessOutput
+	ToOutboundAccessOutputWithContext(context.Context) OutboundAccessOutput
+}
+
+var outboundAccessPtrType = reflect.TypeOf((**OutboundAccess)(nil)).Elem()
+
+type OutboundAccessPtrInput interface {
+	pulumi.Input
+
+	ToOutboundAccessPtrOutput() OutboundAccessPtrOutput
+	ToOutboundAccessPtrOutputWithContext(context.Context) OutboundAccessPtrOutput
+}
+
+type outboundAccessPtr string
+
+func OutboundAccessPtr(v string) OutboundAccessPtrInput {
+	return (*outboundAccessPtr)(&v)
+}
+
+func (*outboundAccessPtr) ElementType() reflect.Type {
+	return outboundAccessPtrType
+}
+
+func (in *outboundAccessPtr) ToOutboundAccessPtrOutput() OutboundAccessPtrOutput {
+	return pulumi.ToOutput(in).(OutboundAccessPtrOutput)
+}
+
+func (in *outboundAccessPtr) ToOutboundAccessPtrOutputWithContext(ctx context.Context) OutboundAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(OutboundAccessPtrOutput)
+}
+
+// Indicates if the permissions for the script caller are kept following completion of the script.
+type PrincipalPermissionsAction string
+
+const (
+	PrincipalPermissionsActionRetainPermissionOnScriptCompletion = PrincipalPermissionsAction("RetainPermissionOnScriptCompletion")
+	PrincipalPermissionsActionRemovePermissionOnScriptCompletion = PrincipalPermissionsAction("RemovePermissionOnScriptCompletion")
+)
+
+func (PrincipalPermissionsAction) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrincipalPermissionsAction)(nil)).Elem()
+}
+
+func (e PrincipalPermissionsAction) ToPrincipalPermissionsActionOutput() PrincipalPermissionsActionOutput {
+	return pulumi.ToOutput(e).(PrincipalPermissionsActionOutput)
+}
+
+func (e PrincipalPermissionsAction) ToPrincipalPermissionsActionOutputWithContext(ctx context.Context) PrincipalPermissionsActionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PrincipalPermissionsActionOutput)
+}
+
+func (e PrincipalPermissionsAction) ToPrincipalPermissionsActionPtrOutput() PrincipalPermissionsActionPtrOutput {
+	return e.ToPrincipalPermissionsActionPtrOutputWithContext(context.Background())
+}
+
+func (e PrincipalPermissionsAction) ToPrincipalPermissionsActionPtrOutputWithContext(ctx context.Context) PrincipalPermissionsActionPtrOutput {
+	return PrincipalPermissionsAction(e).ToPrincipalPermissionsActionOutputWithContext(ctx).ToPrincipalPermissionsActionPtrOutputWithContext(ctx)
+}
+
+func (e PrincipalPermissionsAction) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PrincipalPermissionsAction) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PrincipalPermissionsAction) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PrincipalPermissionsAction) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PrincipalPermissionsActionOutput struct{ *pulumi.OutputState }
+
+func (PrincipalPermissionsActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrincipalPermissionsAction)(nil)).Elem()
+}
+
+func (o PrincipalPermissionsActionOutput) ToPrincipalPermissionsActionOutput() PrincipalPermissionsActionOutput {
+	return o
+}
+
+func (o PrincipalPermissionsActionOutput) ToPrincipalPermissionsActionOutputWithContext(ctx context.Context) PrincipalPermissionsActionOutput {
+	return o
+}
+
+func (o PrincipalPermissionsActionOutput) ToPrincipalPermissionsActionPtrOutput() PrincipalPermissionsActionPtrOutput {
+	return o.ToPrincipalPermissionsActionPtrOutputWithContext(context.Background())
+}
+
+func (o PrincipalPermissionsActionOutput) ToPrincipalPermissionsActionPtrOutputWithContext(ctx context.Context) PrincipalPermissionsActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrincipalPermissionsAction) *PrincipalPermissionsAction {
+		return &v
+	}).(PrincipalPermissionsActionPtrOutput)
+}
+
+func (o PrincipalPermissionsActionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PrincipalPermissionsActionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PrincipalPermissionsAction) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PrincipalPermissionsActionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PrincipalPermissionsActionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PrincipalPermissionsAction) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PrincipalPermissionsActionPtrOutput struct{ *pulumi.OutputState }
+
+func (PrincipalPermissionsActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrincipalPermissionsAction)(nil)).Elem()
+}
+
+func (o PrincipalPermissionsActionPtrOutput) ToPrincipalPermissionsActionPtrOutput() PrincipalPermissionsActionPtrOutput {
+	return o
+}
+
+func (o PrincipalPermissionsActionPtrOutput) ToPrincipalPermissionsActionPtrOutputWithContext(ctx context.Context) PrincipalPermissionsActionPtrOutput {
+	return o
+}
+
+func (o PrincipalPermissionsActionPtrOutput) Elem() PrincipalPermissionsActionOutput {
+	return o.ApplyT(func(v *PrincipalPermissionsAction) PrincipalPermissionsAction {
+		if v != nil {
+			return *v
+		}
+		var ret PrincipalPermissionsAction
+		return ret
+	}).(PrincipalPermissionsActionOutput)
+}
+
+func (o PrincipalPermissionsActionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PrincipalPermissionsActionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PrincipalPermissionsAction) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PrincipalPermissionsActionInput is an input type that accepts values of the PrincipalPermissionsAction enum
+// A concrete instance of `PrincipalPermissionsActionInput` can be one of the following:
+//
+//	PrincipalPermissionsActionRetainPermissionOnScriptCompletion
+//	PrincipalPermissionsActionRemovePermissionOnScriptCompletion
+type PrincipalPermissionsActionInput interface {
+	pulumi.Input
+
+	ToPrincipalPermissionsActionOutput() PrincipalPermissionsActionOutput
+	ToPrincipalPermissionsActionOutputWithContext(context.Context) PrincipalPermissionsActionOutput
+}
+
+var principalPermissionsActionPtrType = reflect.TypeOf((**PrincipalPermissionsAction)(nil)).Elem()
+
+type PrincipalPermissionsActionPtrInput interface {
+	pulumi.Input
+
+	ToPrincipalPermissionsActionPtrOutput() PrincipalPermissionsActionPtrOutput
+	ToPrincipalPermissionsActionPtrOutputWithContext(context.Context) PrincipalPermissionsActionPtrOutput
+}
+
+type principalPermissionsActionPtr string
+
+func PrincipalPermissionsActionPtr(v string) PrincipalPermissionsActionPtrInput {
+	return (*principalPermissionsActionPtr)(&v)
+}
+
+func (*principalPermissionsActionPtr) ElementType() reflect.Type {
+	return principalPermissionsActionPtrType
+}
+
+func (in *principalPermissionsActionPtr) ToPrincipalPermissionsActionPtrOutput() PrincipalPermissionsActionPtrOutput {
+	return pulumi.ToOutput(in).(PrincipalPermissionsActionPtrOutput)
+}
+
+func (in *principalPermissionsActionPtr) ToPrincipalPermissionsActionPtrOutputWithContext(ctx context.Context) PrincipalPermissionsActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PrincipalPermissionsActionPtrOutput)
 }
 
 // Principal type.
@@ -3740,6 +4266,338 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
 }
 
+// Differentiates between the type of script commands included - Database or Cluster. The default is Database.
+type ScriptLevel string
+
+const (
+	ScriptLevelDatabase = ScriptLevel("Database")
+	ScriptLevelCluster  = ScriptLevel("Cluster")
+)
+
+func (ScriptLevel) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScriptLevel)(nil)).Elem()
+}
+
+func (e ScriptLevel) ToScriptLevelOutput() ScriptLevelOutput {
+	return pulumi.ToOutput(e).(ScriptLevelOutput)
+}
+
+func (e ScriptLevel) ToScriptLevelOutputWithContext(ctx context.Context) ScriptLevelOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ScriptLevelOutput)
+}
+
+func (e ScriptLevel) ToScriptLevelPtrOutput() ScriptLevelPtrOutput {
+	return e.ToScriptLevelPtrOutputWithContext(context.Background())
+}
+
+func (e ScriptLevel) ToScriptLevelPtrOutputWithContext(ctx context.Context) ScriptLevelPtrOutput {
+	return ScriptLevel(e).ToScriptLevelOutputWithContext(ctx).ToScriptLevelPtrOutputWithContext(ctx)
+}
+
+func (e ScriptLevel) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ScriptLevel) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ScriptLevel) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ScriptLevel) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ScriptLevelOutput struct{ *pulumi.OutputState }
+
+func (ScriptLevelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScriptLevel)(nil)).Elem()
+}
+
+func (o ScriptLevelOutput) ToScriptLevelOutput() ScriptLevelOutput {
+	return o
+}
+
+func (o ScriptLevelOutput) ToScriptLevelOutputWithContext(ctx context.Context) ScriptLevelOutput {
+	return o
+}
+
+func (o ScriptLevelOutput) ToScriptLevelPtrOutput() ScriptLevelPtrOutput {
+	return o.ToScriptLevelPtrOutputWithContext(context.Background())
+}
+
+func (o ScriptLevelOutput) ToScriptLevelPtrOutputWithContext(ctx context.Context) ScriptLevelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScriptLevel) *ScriptLevel {
+		return &v
+	}).(ScriptLevelPtrOutput)
+}
+
+func (o ScriptLevelOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ScriptLevelOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ScriptLevel) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ScriptLevelOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ScriptLevelOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ScriptLevel) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ScriptLevelPtrOutput struct{ *pulumi.OutputState }
+
+func (ScriptLevelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScriptLevel)(nil)).Elem()
+}
+
+func (o ScriptLevelPtrOutput) ToScriptLevelPtrOutput() ScriptLevelPtrOutput {
+	return o
+}
+
+func (o ScriptLevelPtrOutput) ToScriptLevelPtrOutputWithContext(ctx context.Context) ScriptLevelPtrOutput {
+	return o
+}
+
+func (o ScriptLevelPtrOutput) Elem() ScriptLevelOutput {
+	return o.ApplyT(func(v *ScriptLevel) ScriptLevel {
+		if v != nil {
+			return *v
+		}
+		var ret ScriptLevel
+		return ret
+	}).(ScriptLevelOutput)
+}
+
+func (o ScriptLevelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ScriptLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ScriptLevel) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ScriptLevelInput is an input type that accepts values of the ScriptLevel enum
+// A concrete instance of `ScriptLevelInput` can be one of the following:
+//
+//	ScriptLevelDatabase
+//	ScriptLevelCluster
+type ScriptLevelInput interface {
+	pulumi.Input
+
+	ToScriptLevelOutput() ScriptLevelOutput
+	ToScriptLevelOutputWithContext(context.Context) ScriptLevelOutput
+}
+
+var scriptLevelPtrType = reflect.TypeOf((**ScriptLevel)(nil)).Elem()
+
+type ScriptLevelPtrInput interface {
+	pulumi.Input
+
+	ToScriptLevelPtrOutput() ScriptLevelPtrOutput
+	ToScriptLevelPtrOutputWithContext(context.Context) ScriptLevelPtrOutput
+}
+
+type scriptLevelPtr string
+
+func ScriptLevelPtr(v string) ScriptLevelPtrInput {
+	return (*scriptLevelPtr)(&v)
+}
+
+func (*scriptLevelPtr) ElementType() reflect.Type {
+	return scriptLevelPtrType
+}
+
+func (in *scriptLevelPtr) ToScriptLevelPtrOutput() ScriptLevelPtrOutput {
+	return pulumi.ToOutput(in).(ScriptLevelPtrOutput)
+}
+
+func (in *scriptLevelPtr) ToScriptLevelPtrOutputWithContext(ctx context.Context) ScriptLevelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ScriptLevelPtrOutput)
+}
+
+// When enabled, the cluster is deployed into the configured subnet, when disabled it will be removed from the subnet.
+type VnetState string
+
+const (
+	VnetStateEnabled  = VnetState("Enabled")
+	VnetStateDisabled = VnetState("Disabled")
+)
+
+func (VnetState) ElementType() reflect.Type {
+	return reflect.TypeOf((*VnetState)(nil)).Elem()
+}
+
+func (e VnetState) ToVnetStateOutput() VnetStateOutput {
+	return pulumi.ToOutput(e).(VnetStateOutput)
+}
+
+func (e VnetState) ToVnetStateOutputWithContext(ctx context.Context) VnetStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(VnetStateOutput)
+}
+
+func (e VnetState) ToVnetStatePtrOutput() VnetStatePtrOutput {
+	return e.ToVnetStatePtrOutputWithContext(context.Background())
+}
+
+func (e VnetState) ToVnetStatePtrOutputWithContext(ctx context.Context) VnetStatePtrOutput {
+	return VnetState(e).ToVnetStateOutputWithContext(ctx).ToVnetStatePtrOutputWithContext(ctx)
+}
+
+func (e VnetState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VnetState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VnetState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e VnetState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type VnetStateOutput struct{ *pulumi.OutputState }
+
+func (VnetStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VnetState)(nil)).Elem()
+}
+
+func (o VnetStateOutput) ToVnetStateOutput() VnetStateOutput {
+	return o
+}
+
+func (o VnetStateOutput) ToVnetStateOutputWithContext(ctx context.Context) VnetStateOutput {
+	return o
+}
+
+func (o VnetStateOutput) ToVnetStatePtrOutput() VnetStatePtrOutput {
+	return o.ToVnetStatePtrOutputWithContext(context.Background())
+}
+
+func (o VnetStateOutput) ToVnetStatePtrOutputWithContext(ctx context.Context) VnetStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VnetState) *VnetState {
+		return &v
+	}).(VnetStatePtrOutput)
+}
+
+func (o VnetStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o VnetStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VnetState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o VnetStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VnetStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VnetState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type VnetStatePtrOutput struct{ *pulumi.OutputState }
+
+func (VnetStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VnetState)(nil)).Elem()
+}
+
+func (o VnetStatePtrOutput) ToVnetStatePtrOutput() VnetStatePtrOutput {
+	return o
+}
+
+func (o VnetStatePtrOutput) ToVnetStatePtrOutputWithContext(ctx context.Context) VnetStatePtrOutput {
+	return o
+}
+
+func (o VnetStatePtrOutput) Elem() VnetStateOutput {
+	return o.ApplyT(func(v *VnetState) VnetState {
+		if v != nil {
+			return *v
+		}
+		var ret VnetState
+		return ret
+	}).(VnetStateOutput)
+}
+
+func (o VnetStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VnetStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *VnetState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// VnetStateInput is an input type that accepts values of the VnetState enum
+// A concrete instance of `VnetStateInput` can be one of the following:
+//
+//	VnetStateEnabled
+//	VnetStateDisabled
+type VnetStateInput interface {
+	pulumi.Input
+
+	ToVnetStateOutput() VnetStateOutput
+	ToVnetStateOutputWithContext(context.Context) VnetStateOutput
+}
+
+var vnetStatePtrType = reflect.TypeOf((**VnetState)(nil)).Elem()
+
+type VnetStatePtrInput interface {
+	pulumi.Input
+
+	ToVnetStatePtrOutput() VnetStatePtrOutput
+	ToVnetStatePtrOutputWithContext(context.Context) VnetStatePtrOutput
+}
+
+type vnetStatePtr string
+
+func VnetStatePtr(v string) VnetStatePtrInput {
+	return (*vnetStatePtr)(&v)
+}
+
+func (*vnetStatePtr) ElementType() reflect.Type {
+	return vnetStatePtrType
+}
+
+func (in *vnetStatePtr) ToVnetStatePtrOutput() VnetStatePtrOutput {
+	return pulumi.ToOutput(in).(VnetStatePtrOutput)
+}
+
+func (in *vnetStatePtr) ToVnetStatePtrOutputWithContext(ctx context.Context) VnetStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(VnetStatePtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AzureSkuNameOutput{})
 	pulumi.RegisterOutputType(AzureSkuNamePtrOutput{})
@@ -3747,6 +4605,8 @@ func init() {
 	pulumi.RegisterOutputType(AzureSkuTierPtrOutput{})
 	pulumi.RegisterOutputType(BlobStorageEventTypeOutput{})
 	pulumi.RegisterOutputType(BlobStorageEventTypePtrOutput{})
+	pulumi.RegisterOutputType(CalloutTypeOutput{})
+	pulumi.RegisterOutputType(CalloutTypePtrOutput{})
 	pulumi.RegisterOutputType(ClusterNetworkAccessFlagOutput{})
 	pulumi.RegisterOutputType(ClusterNetworkAccessFlagPtrOutput{})
 	pulumi.RegisterOutputType(ClusterPrincipalRoleOutput{})
@@ -3777,10 +4637,18 @@ func init() {
 	pulumi.RegisterOutputType(LanguageExtensionImageNamePtrOutput{})
 	pulumi.RegisterOutputType(LanguageExtensionNameOutput{})
 	pulumi.RegisterOutputType(LanguageExtensionNamePtrOutput{})
+	pulumi.RegisterOutputType(OutboundAccessOutput{})
+	pulumi.RegisterOutputType(OutboundAccessPtrOutput{})
+	pulumi.RegisterOutputType(PrincipalPermissionsActionOutput{})
+	pulumi.RegisterOutputType(PrincipalPermissionsActionPtrOutput{})
 	pulumi.RegisterOutputType(PrincipalTypeOutput{})
 	pulumi.RegisterOutputType(PrincipalTypePtrOutput{})
 	pulumi.RegisterOutputType(PublicIPTypeOutput{})
 	pulumi.RegisterOutputType(PublicIPTypePtrOutput{})
 	pulumi.RegisterOutputType(PublicNetworkAccessOutput{})
 	pulumi.RegisterOutputType(PublicNetworkAccessPtrOutput{})
+	pulumi.RegisterOutputType(ScriptLevelOutput{})
+	pulumi.RegisterOutputType(ScriptLevelPtrOutput{})
+	pulumi.RegisterOutputType(VnetStateOutput{})
+	pulumi.RegisterOutputType(VnetStatePtrOutput{})
 }

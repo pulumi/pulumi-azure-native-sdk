@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a server.
 //
-// Uses Azure REST API version 2021-11-01.
+// Uses Azure REST API version 2023-08-01.
 //
-// Other available API versions: 2014-04-01, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
+// Other available API versions: 2014-04-01, 2015-05-01-preview, 2019-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupServer(ctx *pulumi.Context, args *LookupServerArgs, opts ...pulumi.InvokeOption) (*LookupServerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerResult
@@ -39,8 +39,12 @@ type LookupServerArgs struct {
 type LookupServerResult struct {
 	// Administrator username for the server. Once created it cannot be changed.
 	AdministratorLogin *string `pulumi:"administratorLogin"`
-	// The Azure Active Directory administrator of the server.
+	// The Azure Active Directory administrator of the server. This can only be used at server create time. If used for server update, it will be ignored or it will result in an error. For updates individual APIs will need to be used.
 	Administrators *ServerExternalAdministratorResponse `pulumi:"administrators"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Status of external governance.
+	ExternalGovernanceStatus string `pulumi:"externalGovernanceStatus"`
 	// The Client id used for cross tenant CMK scenario
 	FederatedClientId *string `pulumi:"federatedClientId"`
 	// The fully qualified domain name of the server.
@@ -49,13 +53,15 @@ type LookupServerResult struct {
 	Id string `pulumi:"id"`
 	// The Azure Active Directory identity of the server.
 	Identity *ResourceIdentityResponse `pulumi:"identity"`
+	// Whether or not to enable IPv6 support for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
+	IsIPv6Enabled *string `pulumi:"isIPv6Enabled"`
 	// A CMK URI of the key to use for encryption.
 	KeyId *string `pulumi:"keyId"`
 	// Kind of sql server. This is metadata used for the Azure portal experience.
 	Kind string `pulumi:"kind"`
 	// Resource location.
 	Location string `pulumi:"location"`
-	// Minimal TLS version. Allowed values: '1.0', '1.1', '1.2'
+	// Minimal TLS version. Allowed values: 'None', 1.0', '1.1', '1.2', '1.3'
 	MinimalTlsVersion *string `pulumi:"minimalTlsVersion"`
 	// Resource name.
 	Name string `pulumi:"name"`
@@ -63,7 +69,7 @@ type LookupServerResult struct {
 	PrimaryUserAssignedIdentityId *string `pulumi:"primaryUserAssignedIdentityId"`
 	// List of private endpoint connections on a server
 	PrivateEndpointConnections []ServerPrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
-	// Whether or not public endpoint access is allowed for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
+	// Whether or not public endpoint access is allowed for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled' or 'SecuredByPerimeter'
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
 	// Whether or not to restrict outbound network access for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
 	RestrictOutboundNetworkAccess *string `pulumi:"restrictOutboundNetworkAccess"`
@@ -121,9 +127,19 @@ func (o LookupServerResultOutput) AdministratorLogin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *string { return v.AdministratorLogin }).(pulumi.StringPtrOutput)
 }
 
-// The Azure Active Directory administrator of the server.
+// The Azure Active Directory administrator of the server. This can only be used at server create time. If used for server update, it will be ignored or it will result in an error. For updates individual APIs will need to be used.
 func (o LookupServerResultOutput) Administrators() ServerExternalAdministratorResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *ServerExternalAdministratorResponse { return v.Administrators }).(ServerExternalAdministratorResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupServerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Status of external governance.
+func (o LookupServerResultOutput) ExternalGovernanceStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerResult) string { return v.ExternalGovernanceStatus }).(pulumi.StringOutput)
 }
 
 // The Client id used for cross tenant CMK scenario
@@ -146,6 +162,11 @@ func (o LookupServerResultOutput) Identity() ResourceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *ResourceIdentityResponse { return v.Identity }).(ResourceIdentityResponsePtrOutput)
 }
 
+// Whether or not to enable IPv6 support for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
+func (o LookupServerResultOutput) IsIPv6Enabled() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupServerResult) *string { return v.IsIPv6Enabled }).(pulumi.StringPtrOutput)
+}
+
 // A CMK URI of the key to use for encryption.
 func (o LookupServerResultOutput) KeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *string { return v.KeyId }).(pulumi.StringPtrOutput)
@@ -161,7 +182,7 @@ func (o LookupServerResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Minimal TLS version. Allowed values: '1.0', '1.1', '1.2'
+// Minimal TLS version. Allowed values: 'None', 1.0', '1.1', '1.2', '1.3'
 func (o LookupServerResultOutput) MinimalTlsVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *string { return v.MinimalTlsVersion }).(pulumi.StringPtrOutput)
 }
@@ -183,7 +204,7 @@ func (o LookupServerResultOutput) PrivateEndpointConnections() ServerPrivateEndp
 	}).(ServerPrivateEndpointConnectionResponseArrayOutput)
 }
 
-// Whether or not public endpoint access is allowed for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'
+// Whether or not public endpoint access is allowed for this server.  Value is optional but if passed in, must be 'Enabled' or 'Disabled' or 'SecuredByPerimeter'
 func (o LookupServerResultOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerResult) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }

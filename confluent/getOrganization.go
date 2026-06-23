@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Organization resource.
+// Get the properties of a specific Organization resource.
 //
-// Uses Azure REST API version 2021-12-01.
+// Uses Azure REST API version 2024-07-01.
 //
-// Other available API versions: 2020-03-01-preview, 2023-08-22, 2024-02-13, 2024-07-01.
+// Other available API versions: 2021-12-01, 2023-08-22, 2024-02-13, 2025-07-17-preview, 2025-08-18-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native confluent [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupOrganization(ctx *pulumi.Context, args *LookupOrganizationArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupOrganizationResult
@@ -29,19 +29,21 @@ func LookupOrganization(ctx *pulumi.Context, args *LookupOrganizationArgs, opts 
 type LookupOrganizationArgs struct {
 	// Organization resource name
 	OrganizationName string `pulumi:"organizationName"`
-	// Resource group name
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Organization resource.
 type LookupOrganizationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation time of the resource.
 	CreatedTime string `pulumi:"createdTime"`
-	// The ARM id of the resource.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// Location of Organization resource
-	Location *string `pulumi:"location"`
-	// The name of the resource.
+	// The geo-location where the resource lives
+	Location string `pulumi:"location"`
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Confluent offer detail
 	OfferDetail OfferDetailResponse `pulumi:"offerDetail"`
@@ -51,11 +53,11 @@ type LookupOrganizationResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// SSO url for the Confluent organization.
 	SsoUrl string `pulumi:"ssoUrl"`
-	// Metadata pertaining to creation and last modification of the resource
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Organization resource tags
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Subscriber detail
 	UserDetail UserDetailResponse `pulumi:"userDetail"`
@@ -73,7 +75,7 @@ func LookupOrganizationOutput(ctx *pulumi.Context, args LookupOrganizationOutput
 type LookupOrganizationOutputArgs struct {
 	// Organization resource name
 	OrganizationName pulumi.StringInput `pulumi:"organizationName"`
-	// Resource group name
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -96,22 +98,27 @@ func (o LookupOrganizationResultOutput) ToLookupOrganizationResultOutputWithCont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupOrganizationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The creation time of the resource.
 func (o LookupOrganizationResultOutput) CreatedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) string { return v.CreatedTime }).(pulumi.StringOutput)
 }
 
-// The ARM id of the resource.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupOrganizationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Location of Organization resource
-func (o LookupOrganizationResultOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupOrganizationResult) *string { return v.Location }).(pulumi.StringPtrOutput)
+// The geo-location where the resource lives
+func (o LookupOrganizationResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o LookupOrganizationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -136,17 +143,17 @@ func (o LookupOrganizationResultOutput) SsoUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) string { return v.SsoUrl }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupOrganizationResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Organization resource tags
+// Resource tags.
 func (o LookupOrganizationResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupOrganizationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) string { return v.Type }).(pulumi.StringOutput)
 }

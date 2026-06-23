@@ -8,36 +8,38 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Friendly Rules name mapping to the any Rules or secret related information.
 //
-// Uses Azure REST API version 2023-05-01. In version 1.x of the Azure Native provider, it used API version 2020-09-01.
+// Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
 //
-// Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
+// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Rule struct {
 	pulumi.CustomResourceState
 
 	// A list of actions that are executed when all the conditions of a rule are satisfied.
 	Actions pulumi.ArrayOutput `pulumi:"actions"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A list of conditions that must be matched for the actions to be executed
 	Conditions       pulumi.ArrayOutput  `pulumi:"conditions"`
 	DeploymentStatus pulumi.StringOutput `pulumi:"deploymentStatus"`
 	// If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.
 	MatchProcessingBehavior pulumi.StringPtrOutput `pulumi:"matchProcessingBehavior"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied.
-	Order pulumi.IntOutput `pulumi:"order"`
+	Order pulumi.IntPtrOutput `pulumi:"order"`
 	// Provisioning status
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The name of the rule set containing the rule.
 	RuleSetName pulumi.StringOutput `pulumi:"ruleSetName"`
-	// Read only system data
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -48,12 +50,6 @@ func NewRule(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Actions == nil {
-		return nil, errors.New("invalid value for required argument 'Actions'")
-	}
-	if args.Order == nil {
-		return nil, errors.New("invalid value for required argument 'Order'")
-	}
 	if args.ProfileName == nil {
 		return nil, errors.New("invalid value for required argument 'ProfileName'")
 	}
@@ -97,6 +93,21 @@ func NewRule(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cdn/v20240901:Rule"),
 		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20250101preview:Rule"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20250415:Rule"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20250601:Rule"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20250701preview:Rule"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20250901preview:Rule"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -139,14 +150,14 @@ type ruleArgs struct {
 	// If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.
 	MatchProcessingBehavior *string `pulumi:"matchProcessingBehavior"`
 	// The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied.
-	Order int `pulumi:"order"`
-	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+	Order *int `pulumi:"order"`
+	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
 	ProfileName string `pulumi:"profileName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of the delivery rule which is unique within the endpoint.
 	RuleName *string `pulumi:"ruleName"`
-	// Name of the rule set under the profile.
+	// Name of the rule set under the profile which is unique globally.
 	RuleSetName string `pulumi:"ruleSetName"`
 }
 
@@ -159,14 +170,14 @@ type RuleArgs struct {
 	// If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.
 	MatchProcessingBehavior pulumi.StringPtrInput
 	// The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied.
-	Order pulumi.IntInput
-	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+	Order pulumi.IntPtrInput
+	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
 	ProfileName pulumi.StringInput
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Name of the delivery rule which is unique within the endpoint.
 	RuleName pulumi.StringPtrInput
-	// Name of the rule set under the profile.
+	// Name of the rule set under the profile which is unique globally.
 	RuleSetName pulumi.StringInput
 }
 
@@ -212,6 +223,11 @@ func (o RuleOutput) Actions() pulumi.ArrayOutput {
 	return o.ApplyT(func(v *Rule) pulumi.ArrayOutput { return v.Actions }).(pulumi.ArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o RuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // A list of conditions that must be matched for the actions to be executed
 func (o RuleOutput) Conditions() pulumi.ArrayOutput {
 	return o.ApplyT(func(v *Rule) pulumi.ArrayOutput { return v.Conditions }).(pulumi.ArrayOutput)
@@ -226,14 +242,14 @@ func (o RuleOutput) MatchProcessingBehavior() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringPtrOutput { return v.MatchProcessingBehavior }).(pulumi.StringPtrOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o RuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied.
-func (o RuleOutput) Order() pulumi.IntOutput {
-	return o.ApplyT(func(v *Rule) pulumi.IntOutput { return v.Order }).(pulumi.IntOutput)
+func (o RuleOutput) Order() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Rule) pulumi.IntPtrOutput { return v.Order }).(pulumi.IntPtrOutput)
 }
 
 // Provisioning status
@@ -246,12 +262,12 @@ func (o RuleOutput) RuleSetName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.RuleSetName }).(pulumi.StringOutput)
 }
 
-// Read only system data
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o RuleOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Rule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o RuleOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

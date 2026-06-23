@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +33,8 @@ type LookupMigrateProjectArgs struct {
 
 // Migrate Project REST Resource.
 type LookupMigrateProjectResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the eTag for concurrency control.
 	ETag *string `pulumi:"eTag"`
 	// Gets the relative URL to get this migrate project.
@@ -82,6 +84,11 @@ func (o LookupMigrateProjectResultOutput) ToLookupMigrateProjectResultOutput() L
 
 func (o LookupMigrateProjectResultOutput) ToLookupMigrateProjectResultOutputWithContext(ctx context.Context) LookupMigrateProjectResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupMigrateProjectResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMigrateProjectResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the eTag for concurrency control.

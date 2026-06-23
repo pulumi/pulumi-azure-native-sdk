@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,6 +37,8 @@ type LookupSynapseWorkspaceSqlPoolTableDataSetArgs struct {
 
 // A Synapse Workspace Sql Pool Table data set.
 type LookupSynapseWorkspaceSqlPoolTableDataSetResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Unique id for identifying a data set resource
 	DataSetId string `pulumi:"dataSetId"`
 	// The resource id of the azure resource
@@ -91,6 +93,11 @@ func (o LookupSynapseWorkspaceSqlPoolTableDataSetResultOutput) ToLookupSynapseWo
 
 func (o LookupSynapseWorkspaceSqlPoolTableDataSetResultOutput) ToLookupSynapseWorkspaceSqlPoolTableDataSetResultOutputWithContext(ctx context.Context) LookupSynapseWorkspaceSqlPoolTableDataSetResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupSynapseWorkspaceSqlPoolTableDataSetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSynapseWorkspaceSqlPoolTableDataSetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Unique id for identifying a data set resource

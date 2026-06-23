@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2021-07-01.
 //
-// Other available API versions: 2023-12-01-preview.
+// Other available API versions: 2023-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native solutions [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupApplicationResult
@@ -41,6 +41,8 @@ type LookupApplicationResult struct {
 	Artifacts []ApplicationArtifactResponse `pulumi:"artifacts"`
 	// The  read-only authorizations property that is retrieved from the application package.
 	Authorizations []ApplicationAuthorizationResponse `pulumi:"authorizations"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The managed application billing details.
 	BillingDetails ApplicationBillingDetailsDefinitionResponse `pulumi:"billingDetails"`
 	// The client entity that created the JIT request.
@@ -137,6 +139,11 @@ func (o LookupApplicationResultOutput) Artifacts() ApplicationArtifactResponseAr
 // The  read-only authorizations property that is retrieved from the application package.
 func (o LookupApplicationResultOutput) Authorizations() ApplicationAuthorizationResponseArrayOutput {
 	return o.ApplyT(func(v LookupApplicationResult) []ApplicationAuthorizationResponse { return v.Authorizations }).(ApplicationAuthorizationResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupApplicationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApplicationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The managed application billing details.

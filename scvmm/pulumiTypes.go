@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -962,9 +962,9 @@ func (o GuestAgentProfileResponsePtrOutput) VmUuid() pulumi.StringPtrOutput {
 // Username / Password Credentials to connect to guest.
 type GuestCredential struct {
 	// Gets or sets the password to connect with the guest.
-	Password *string `pulumi:"password"`
+	Password string `pulumi:"password"`
 	// Gets or sets username to connect with the guest.
-	Username *string `pulumi:"username"`
+	Username string `pulumi:"username"`
 }
 
 // GuestCredentialInput is an input type that accepts GuestCredentialArgs and GuestCredentialOutput values.
@@ -981,9 +981,9 @@ type GuestCredentialInput interface {
 // Username / Password Credentials to connect to guest.
 type GuestCredentialArgs struct {
 	// Gets or sets the password to connect with the guest.
-	Password pulumi.StringPtrInput `pulumi:"password"`
+	Password pulumi.StringInput `pulumi:"password"`
 	// Gets or sets username to connect with the guest.
-	Username pulumi.StringPtrInput `pulumi:"username"`
+	Username pulumi.StringInput `pulumi:"username"`
 }
 
 func (GuestCredentialArgs) ElementType() reflect.Type {
@@ -1065,13 +1065,13 @@ func (o GuestCredentialOutput) ToGuestCredentialPtrOutputWithContext(ctx context
 }
 
 // Gets or sets the password to connect with the guest.
-func (o GuestCredentialOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GuestCredential) *string { return v.Password }).(pulumi.StringPtrOutput)
+func (o GuestCredentialOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestCredential) string { return v.Password }).(pulumi.StringOutput)
 }
 
 // Gets or sets username to connect with the guest.
-func (o GuestCredentialOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GuestCredential) *string { return v.Username }).(pulumi.StringPtrOutput)
+func (o GuestCredentialOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GuestCredential) string { return v.Username }).(pulumi.StringOutput)
 }
 
 type GuestCredentialPtrOutput struct{ *pulumi.OutputState }
@@ -1104,7 +1104,7 @@ func (o GuestCredentialPtrOutput) Password() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return v.Password
+		return &v.Password
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1114,7 +1114,7 @@ func (o GuestCredentialPtrOutput) Username() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return v.Username
+		return &v.Username
 	}).(pulumi.StringPtrOutput)
 }
 

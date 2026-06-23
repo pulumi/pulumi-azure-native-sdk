@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2021-06-01.
 //
-// Other available API versions: 2021-06-01-preview.
+// Other available API versions: 2021-04-01-preview, 2021-05-01, 2021-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native synapse [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupIpFirewallRule(ctx *pulumi.Context, args *LookupIpFirewallRuleArgs, opts ...pulumi.InvokeOption) (*LookupIpFirewallRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupIpFirewallRuleResult
@@ -37,6 +37,8 @@ type LookupIpFirewallRuleArgs struct {
 
 // IP firewall rule
 type LookupIpFirewallRuleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The end IP address of the firewall rule. Must be IPv4 format. Must be greater than or equal to startIpAddress
 	EndIpAddress *string `pulumi:"endIpAddress"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -86,6 +88,11 @@ func (o LookupIpFirewallRuleResultOutput) ToLookupIpFirewallRuleResultOutput() L
 
 func (o LookupIpFirewallRuleResultOutput) ToLookupIpFirewallRuleResultOutputWithContext(ctx context.Context) LookupIpFirewallRuleResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupIpFirewallRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIpFirewallRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The end IP address of the firewall rule. Must be IPv4 format. Must be greater than or equal to startIpAddress

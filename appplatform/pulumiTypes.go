@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -267,6 +267,8 @@ type AcceleratorGitRepository struct {
 	GitTag *string `pulumi:"gitTag"`
 	// Interval for checking for updates to Git or image repository.
 	IntervalInSeconds *int `pulumi:"intervalInSeconds"`
+	// Folder path inside the git repository to consider as the root of the accelerator or fragment.
+	SubPath *string `pulumi:"subPath"`
 	// Git repository URL for the accelerator.
 	Url string `pulumi:"url"`
 }
@@ -293,6 +295,8 @@ type AcceleratorGitRepositoryArgs struct {
 	GitTag pulumi.StringPtrInput `pulumi:"gitTag"`
 	// Interval for checking for updates to Git or image repository.
 	IntervalInSeconds pulumi.IntPtrInput `pulumi:"intervalInSeconds"`
+	// Folder path inside the git repository to consider as the root of the accelerator or fragment.
+	SubPath pulumi.StringPtrInput `pulumi:"subPath"`
 	// Git repository URL for the accelerator.
 	Url pulumi.StringInput `pulumi:"url"`
 }
@@ -399,6 +403,11 @@ func (o AcceleratorGitRepositoryOutput) IntervalInSeconds() pulumi.IntPtrOutput 
 	return o.ApplyT(func(v AcceleratorGitRepository) *int { return v.IntervalInSeconds }).(pulumi.IntPtrOutput)
 }
 
+// Folder path inside the git repository to consider as the root of the accelerator or fragment.
+func (o AcceleratorGitRepositoryOutput) SubPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcceleratorGitRepository) *string { return v.SubPath }).(pulumi.StringPtrOutput)
+}
+
 // Git repository URL for the accelerator.
 func (o AcceleratorGitRepositoryOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v AcceleratorGitRepository) string { return v.Url }).(pulumi.StringOutput)
@@ -478,6 +487,16 @@ func (o AcceleratorGitRepositoryPtrOutput) IntervalInSeconds() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
+// Folder path inside the git repository to consider as the root of the accelerator or fragment.
+func (o AcceleratorGitRepositoryPtrOutput) SubPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AcceleratorGitRepository) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubPath
+	}).(pulumi.StringPtrOutput)
+}
+
 // Git repository URL for the accelerator.
 func (o AcceleratorGitRepositoryPtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AcceleratorGitRepository) *string {
@@ -499,6 +518,8 @@ type AcceleratorGitRepositoryResponse struct {
 	GitTag *string `pulumi:"gitTag"`
 	// Interval for checking for updates to Git or image repository.
 	IntervalInSeconds *int `pulumi:"intervalInSeconds"`
+	// Folder path inside the git repository to consider as the root of the accelerator or fragment.
+	SubPath *string `pulumi:"subPath"`
 	// Git repository URL for the accelerator.
 	Url string `pulumi:"url"`
 }
@@ -540,6 +561,11 @@ func (o AcceleratorGitRepositoryResponseOutput) GitTag() pulumi.StringPtrOutput 
 // Interval for checking for updates to Git or image repository.
 func (o AcceleratorGitRepositoryResponseOutput) IntervalInSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AcceleratorGitRepositoryResponse) *int { return v.IntervalInSeconds }).(pulumi.IntPtrOutput)
+}
+
+// Folder path inside the git repository to consider as the root of the accelerator or fragment.
+func (o AcceleratorGitRepositoryResponseOutput) SubPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcceleratorGitRepositoryResponse) *string { return v.SubPath }).(pulumi.StringPtrOutput)
 }
 
 // Git repository URL for the accelerator.
@@ -1195,6 +1221,8 @@ func (o ApiPortalInstanceResponseArrayOutput) Index(i pulumi.IntInput) ApiPortal
 
 // API portal properties payload
 type ApiPortalProperties struct {
+	// Indicates whether the API try-out feature is enabled or disabled. When enabled, users can try out the API by sending requests and viewing responses in API portal. When disabled, users cannot try out the API.
+	ApiTryOutEnabledState *string `pulumi:"apiTryOutEnabledState"`
 	// The array of resource Ids of gateway to integrate with API portal.
 	GatewayIds []string `pulumi:"gatewayIds"`
 	// Indicate if only https is allowed.
@@ -1213,6 +1241,10 @@ func (val *ApiPortalProperties) Defaults() *ApiPortalProperties {
 		return nil
 	}
 	tmp := *val
+	if tmp.ApiTryOutEnabledState == nil {
+		apiTryOutEnabledState_ := "Enabled"
+		tmp.ApiTryOutEnabledState = &apiTryOutEnabledState_
+	}
 	if tmp.HttpsOnly == nil {
 		httpsOnly_ := false
 		tmp.HttpsOnly = &httpsOnly_
@@ -1237,6 +1269,8 @@ type ApiPortalPropertiesInput interface {
 
 // API portal properties payload
 type ApiPortalPropertiesArgs struct {
+	// Indicates whether the API try-out feature is enabled or disabled. When enabled, users can try out the API by sending requests and viewing responses in API portal. When disabled, users cannot try out the API.
+	ApiTryOutEnabledState pulumi.StringPtrInput `pulumi:"apiTryOutEnabledState"`
 	// The array of resource Ids of gateway to integrate with API portal.
 	GatewayIds pulumi.StringArrayInput `pulumi:"gatewayIds"`
 	// Indicate if only https is allowed.
@@ -1255,6 +1289,9 @@ func (val *ApiPortalPropertiesArgs) Defaults() *ApiPortalPropertiesArgs {
 		return nil
 	}
 	tmp := *val
+	if tmp.ApiTryOutEnabledState == nil {
+		tmp.ApiTryOutEnabledState = pulumi.StringPtr("Enabled")
+	}
 	if tmp.HttpsOnly == nil {
 		tmp.HttpsOnly = pulumi.BoolPtr(false)
 	}
@@ -1341,6 +1378,11 @@ func (o ApiPortalPropertiesOutput) ToApiPortalPropertiesPtrOutputWithContext(ctx
 	}).(ApiPortalPropertiesPtrOutput)
 }
 
+// Indicates whether the API try-out feature is enabled or disabled. When enabled, users can try out the API by sending requests and viewing responses in API portal. When disabled, users cannot try out the API.
+func (o ApiPortalPropertiesOutput) ApiTryOutEnabledState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiPortalProperties) *string { return v.ApiTryOutEnabledState }).(pulumi.StringPtrOutput)
+}
+
 // The array of resource Ids of gateway to integrate with API portal.
 func (o ApiPortalPropertiesOutput) GatewayIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ApiPortalProperties) []string { return v.GatewayIds }).(pulumi.StringArrayOutput)
@@ -1388,6 +1430,16 @@ func (o ApiPortalPropertiesPtrOutput) Elem() ApiPortalPropertiesOutput {
 		var ret ApiPortalProperties
 		return ret
 	}).(ApiPortalPropertiesOutput)
+}
+
+// Indicates whether the API try-out feature is enabled or disabled. When enabled, users can try out the API by sending requests and viewing responses in API portal. When disabled, users cannot try out the API.
+func (o ApiPortalPropertiesPtrOutput) ApiTryOutEnabledState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApiPortalProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiTryOutEnabledState
+	}).(pulumi.StringPtrOutput)
 }
 
 // The array of resource Ids of gateway to integrate with API portal.
@@ -1442,6 +1494,8 @@ func (o ApiPortalPropertiesPtrOutput) SsoProperties() SsoPropertiesPtrOutput {
 
 // API portal properties payload
 type ApiPortalPropertiesResponse struct {
+	// Indicates whether the API try-out feature is enabled or disabled. When enabled, users can try out the API by sending requests and viewing responses in API portal. When disabled, users cannot try out the API.
+	ApiTryOutEnabledState *string `pulumi:"apiTryOutEnabledState"`
 	// The array of resource Ids of gateway to integrate with API portal.
 	GatewayIds []string `pulumi:"gatewayIds"`
 	// Indicate if only https is allowed.
@@ -1468,6 +1522,10 @@ func (val *ApiPortalPropertiesResponse) Defaults() *ApiPortalPropertiesResponse 
 		return nil
 	}
 	tmp := *val
+	if tmp.ApiTryOutEnabledState == nil {
+		apiTryOutEnabledState_ := "Enabled"
+		tmp.ApiTryOutEnabledState = &apiTryOutEnabledState_
+	}
 	if tmp.HttpsOnly == nil {
 		httpsOnly_ := false
 		tmp.HttpsOnly = &httpsOnly_
@@ -1492,6 +1550,11 @@ func (o ApiPortalPropertiesResponseOutput) ToApiPortalPropertiesResponseOutput()
 
 func (o ApiPortalPropertiesResponseOutput) ToApiPortalPropertiesResponseOutputWithContext(ctx context.Context) ApiPortalPropertiesResponseOutput {
 	return o
+}
+
+// Indicates whether the API try-out feature is enabled or disabled. When enabled, users can try out the API by sending requests and viewing responses in API portal. When disabled, users cannot try out the API.
+func (o ApiPortalPropertiesResponseOutput) ApiTryOutEnabledState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApiPortalPropertiesResponse) *string { return v.ApiTryOutEnabledState }).(pulumi.StringPtrOutput)
 }
 
 // The array of resource Ids of gateway to integrate with API portal.
@@ -1958,6 +2021,8 @@ type AppResourceProperties struct {
 	Secrets []Secret `pulumi:"secrets"`
 	// Temporary disk settings
 	TemporaryDisk *TemporaryDisk `pulumi:"temporaryDisk"`
+	// State of test endpoint auth.
+	TestEndpointAuthState *string `pulumi:"testEndpointAuthState"`
 	// Additional App settings in vnet injection instance
 	VnetAddons *AppVNetAddons `pulumi:"vnetAddons"`
 	// The workload profile used for this app. Supported for Consumption + Dedicated plan.
@@ -1980,6 +2045,10 @@ func (val *AppResourceProperties) Defaults() *AppResourceProperties {
 	}
 	tmp.TemporaryDisk = tmp.TemporaryDisk.Defaults()
 
+	if tmp.TestEndpointAuthState == nil {
+		testEndpointAuthState_ := "Enabled"
+		tmp.TestEndpointAuthState = &testEndpointAuthState_
+	}
 	tmp.VnetAddons = tmp.VnetAddons.Defaults()
 
 	return &tmp
@@ -2018,6 +2087,8 @@ type AppResourcePropertiesArgs struct {
 	Secrets SecretArrayInput `pulumi:"secrets"`
 	// Temporary disk settings
 	TemporaryDisk TemporaryDiskPtrInput `pulumi:"temporaryDisk"`
+	// State of test endpoint auth.
+	TestEndpointAuthState pulumi.StringPtrInput `pulumi:"testEndpointAuthState"`
 	// Additional App settings in vnet injection instance
 	VnetAddons AppVNetAddonsPtrInput `pulumi:"vnetAddons"`
 	// The workload profile used for this app. Supported for Consumption + Dedicated plan.
@@ -2035,6 +2106,10 @@ func (val *AppResourcePropertiesArgs) Defaults() *AppResourcePropertiesArgs {
 	}
 	if tmp.HttpsOnly == nil {
 		tmp.HttpsOnly = pulumi.BoolPtr(false)
+	}
+
+	if tmp.TestEndpointAuthState == nil {
+		tmp.TestEndpointAuthState = pulumi.StringPtr("Enabled")
 	}
 
 	return &tmp
@@ -2165,6 +2240,11 @@ func (o AppResourcePropertiesOutput) Secrets() SecretArrayOutput {
 // Temporary disk settings
 func (o AppResourcePropertiesOutput) TemporaryDisk() TemporaryDiskPtrOutput {
 	return o.ApplyT(func(v AppResourceProperties) *TemporaryDisk { return v.TemporaryDisk }).(TemporaryDiskPtrOutput)
+}
+
+// State of test endpoint auth.
+func (o AppResourcePropertiesOutput) TestEndpointAuthState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppResourceProperties) *string { return v.TestEndpointAuthState }).(pulumi.StringPtrOutput)
 }
 
 // Additional App settings in vnet injection instance
@@ -2301,6 +2381,16 @@ func (o AppResourcePropertiesPtrOutput) TemporaryDisk() TemporaryDiskPtrOutput {
 	}).(TemporaryDiskPtrOutput)
 }
 
+// State of test endpoint auth.
+func (o AppResourcePropertiesPtrOutput) TestEndpointAuthState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppResourceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TestEndpointAuthState
+	}).(pulumi.StringPtrOutput)
+}
+
 // Additional App settings in vnet injection instance
 func (o AppResourcePropertiesPtrOutput) VnetAddons() AppVNetAddonsPtrOutput {
 	return o.ApplyT(func(v *AppResourceProperties) *AppVNetAddons {
@@ -2347,6 +2437,8 @@ type AppResourcePropertiesResponse struct {
 	Secrets []SecretResponse `pulumi:"secrets"`
 	// Temporary disk settings
 	TemporaryDisk *TemporaryDiskResponse `pulumi:"temporaryDisk"`
+	// State of test endpoint auth.
+	TestEndpointAuthState *string `pulumi:"testEndpointAuthState"`
 	// URL of the App
 	Url string `pulumi:"url"`
 	// Additional App settings in vnet injection instance
@@ -2371,6 +2463,10 @@ func (val *AppResourcePropertiesResponse) Defaults() *AppResourcePropertiesRespo
 	}
 	tmp.TemporaryDisk = tmp.TemporaryDisk.Defaults()
 
+	if tmp.TestEndpointAuthState == nil {
+		testEndpointAuthState_ := "Enabled"
+		tmp.TestEndpointAuthState = &testEndpointAuthState_
+	}
 	tmp.VnetAddons = tmp.VnetAddons.Defaults()
 
 	return &tmp
@@ -2451,6 +2547,11 @@ func (o AppResourcePropertiesResponseOutput) Secrets() SecretResponseArrayOutput
 // Temporary disk settings
 func (o AppResourcePropertiesResponseOutput) TemporaryDisk() TemporaryDiskResponsePtrOutput {
 	return o.ApplyT(func(v AppResourcePropertiesResponse) *TemporaryDiskResponse { return v.TemporaryDisk }).(TemporaryDiskResponsePtrOutput)
+}
+
+// State of test endpoint auth.
+func (o AppResourcePropertiesResponseOutput) TestEndpointAuthState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppResourcePropertiesResponse) *string { return v.TestEndpointAuthState }).(pulumi.StringPtrOutput)
 }
 
 // URL of the App
@@ -5976,6 +6077,8 @@ func (o BuildpackPropertiesArrayOutput) Index(i pulumi.IntInput) BuildpackProper
 type BuildpackPropertiesResponse struct {
 	// Id of the buildpack
 	Id *string `pulumi:"id"`
+	// Version of the buildpack
+	Version string `pulumi:"version"`
 }
 
 // Buildpack properties payload
@@ -5996,6 +6099,11 @@ func (o BuildpackPropertiesResponseOutput) ToBuildpackPropertiesResponseOutputWi
 // Id of the buildpack
 func (o BuildpackPropertiesResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuildpackPropertiesResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Version of the buildpack
+func (o BuildpackPropertiesResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildpackPropertiesResponse) string { return v.Version }).(pulumi.StringOutput)
 }
 
 type BuildpackPropertiesResponseArrayOutput struct{ *pulumi.OutputState }
@@ -6330,6 +6438,8 @@ func (o CertificateReferenceResponseArrayOutput) Index(i pulumi.IntInput) Certif
 type ClusterResourceProperties struct {
 	// The name of the resource group that contains the infrastructure resources
 	InfraResourceGroup *string `pulumi:"infraResourceGroup"`
+	// Additional Service settings for planned maintenance
+	MaintenanceScheduleConfiguration *WeeklyMaintenanceScheduleConfiguration `pulumi:"maintenanceScheduleConfiguration"`
 	// The resource Id of the Managed Environment that the Spring Apps instance builds on
 	ManagedEnvironmentId *string `pulumi:"managedEnvironmentId"`
 	// Purchasing 3rd party product of the Service resource.
@@ -6371,6 +6481,8 @@ type ClusterResourcePropertiesInput interface {
 type ClusterResourcePropertiesArgs struct {
 	// The name of the resource group that contains the infrastructure resources
 	InfraResourceGroup pulumi.StringPtrInput `pulumi:"infraResourceGroup"`
+	// Additional Service settings for planned maintenance
+	MaintenanceScheduleConfiguration WeeklyMaintenanceScheduleConfigurationPtrInput `pulumi:"maintenanceScheduleConfiguration"`
 	// The resource Id of the Managed Environment that the Spring Apps instance builds on
 	ManagedEnvironmentId pulumi.StringPtrInput `pulumi:"managedEnvironmentId"`
 	// Purchasing 3rd party product of the Service resource.
@@ -6477,6 +6589,13 @@ func (o ClusterResourcePropertiesOutput) InfraResourceGroup() pulumi.StringPtrOu
 	return o.ApplyT(func(v ClusterResourceProperties) *string { return v.InfraResourceGroup }).(pulumi.StringPtrOutput)
 }
 
+// Additional Service settings for planned maintenance
+func (o ClusterResourcePropertiesOutput) MaintenanceScheduleConfiguration() WeeklyMaintenanceScheduleConfigurationPtrOutput {
+	return o.ApplyT(func(v ClusterResourceProperties) *WeeklyMaintenanceScheduleConfiguration {
+		return v.MaintenanceScheduleConfiguration
+	}).(WeeklyMaintenanceScheduleConfigurationPtrOutput)
+}
+
 // The resource Id of the Managed Environment that the Spring Apps instance builds on
 func (o ClusterResourcePropertiesOutput) ManagedEnvironmentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterResourceProperties) *string { return v.ManagedEnvironmentId }).(pulumi.StringPtrOutput)
@@ -6535,6 +6654,16 @@ func (o ClusterResourcePropertiesPtrOutput) InfraResourceGroup() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Additional Service settings for planned maintenance
+func (o ClusterResourcePropertiesPtrOutput) MaintenanceScheduleConfiguration() WeeklyMaintenanceScheduleConfigurationPtrOutput {
+	return o.ApplyT(func(v *ClusterResourceProperties) *WeeklyMaintenanceScheduleConfiguration {
+		if v == nil {
+			return nil
+		}
+		return v.MaintenanceScheduleConfiguration
+	}).(WeeklyMaintenanceScheduleConfigurationPtrOutput)
+}
+
 // The resource Id of the Managed Environment that the Spring Apps instance builds on
 func (o ClusterResourcePropertiesPtrOutput) ManagedEnvironmentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterResourceProperties) *string {
@@ -6590,6 +6719,8 @@ type ClusterResourcePropertiesResponse struct {
 	Fqdn string `pulumi:"fqdn"`
 	// The name of the resource group that contains the infrastructure resources
 	InfraResourceGroup *string `pulumi:"infraResourceGroup"`
+	// Additional Service settings for planned maintenance
+	MaintenanceScheduleConfiguration *WeeklyMaintenanceScheduleConfigurationResponse `pulumi:"maintenanceScheduleConfiguration"`
 	// The resource Id of the Managed Environment that the Spring Apps instance builds on
 	ManagedEnvironmentId *string `pulumi:"managedEnvironmentId"`
 	// Purchasing 3rd party product of the Service resource.
@@ -6647,6 +6778,13 @@ func (o ClusterResourcePropertiesResponseOutput) Fqdn() pulumi.StringOutput {
 // The name of the resource group that contains the infrastructure resources
 func (o ClusterResourcePropertiesResponseOutput) InfraResourceGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterResourcePropertiesResponse) *string { return v.InfraResourceGroup }).(pulumi.StringPtrOutput)
+}
+
+// Additional Service settings for planned maintenance
+func (o ClusterResourcePropertiesResponseOutput) MaintenanceScheduleConfiguration() WeeklyMaintenanceScheduleConfigurationResponsePtrOutput {
+	return o.ApplyT(func(v ClusterResourcePropertiesResponse) *WeeklyMaintenanceScheduleConfigurationResponse {
+		return v.MaintenanceScheduleConfiguration
+	}).(WeeklyMaintenanceScheduleConfigurationResponsePtrOutput)
 }
 
 // The resource Id of the Managed Environment that the Spring Apps instance builds on
@@ -8535,6 +8673,8 @@ func (o ConfigurationServiceResourceRequestsResponseOutput) Memory() pulumi.Stri
 type ConfigurationServiceSettings struct {
 	// Property of git environment.
 	GitProperty *ConfigurationServiceGitProperty `pulumi:"gitProperty"`
+	// How often (in seconds) to check repository updates. Minimum value is 0.
+	RefreshIntervalInSeconds *int `pulumi:"refreshIntervalInSeconds"`
 }
 
 // ConfigurationServiceSettingsInput is an input type that accepts ConfigurationServiceSettingsArgs and ConfigurationServiceSettingsOutput values.
@@ -8552,6 +8692,8 @@ type ConfigurationServiceSettingsInput interface {
 type ConfigurationServiceSettingsArgs struct {
 	// Property of git environment.
 	GitProperty ConfigurationServiceGitPropertyPtrInput `pulumi:"gitProperty"`
+	// How often (in seconds) to check repository updates. Minimum value is 0.
+	RefreshIntervalInSeconds pulumi.IntPtrInput `pulumi:"refreshIntervalInSeconds"`
 }
 
 func (ConfigurationServiceSettingsArgs) ElementType() reflect.Type {
@@ -8637,6 +8779,11 @@ func (o ConfigurationServiceSettingsOutput) GitProperty() ConfigurationServiceGi
 	return o.ApplyT(func(v ConfigurationServiceSettings) *ConfigurationServiceGitProperty { return v.GitProperty }).(ConfigurationServiceGitPropertyPtrOutput)
 }
 
+// How often (in seconds) to check repository updates. Minimum value is 0.
+func (o ConfigurationServiceSettingsOutput) RefreshIntervalInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConfigurationServiceSettings) *int { return v.RefreshIntervalInSeconds }).(pulumi.IntPtrOutput)
+}
+
 type ConfigurationServiceSettingsPtrOutput struct{ *pulumi.OutputState }
 
 func (ConfigurationServiceSettingsPtrOutput) ElementType() reflect.Type {
@@ -8671,10 +8818,22 @@ func (o ConfigurationServiceSettingsPtrOutput) GitProperty() ConfigurationServic
 	}).(ConfigurationServiceGitPropertyPtrOutput)
 }
 
+// How often (in seconds) to check repository updates. Minimum value is 0.
+func (o ConfigurationServiceSettingsPtrOutput) RefreshIntervalInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConfigurationServiceSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshIntervalInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
 // The settings of Application Configuration Service.
 type ConfigurationServiceSettingsResponse struct {
 	// Property of git environment.
 	GitProperty *ConfigurationServiceGitPropertyResponse `pulumi:"gitProperty"`
+	// How often (in seconds) to check repository updates. Minimum value is 0.
+	RefreshIntervalInSeconds *int `pulumi:"refreshIntervalInSeconds"`
 }
 
 // The settings of Application Configuration Service.
@@ -8697,6 +8856,11 @@ func (o ConfigurationServiceSettingsResponseOutput) GitProperty() ConfigurationS
 	return o.ApplyT(func(v ConfigurationServiceSettingsResponse) *ConfigurationServiceGitPropertyResponse {
 		return v.GitProperty
 	}).(ConfigurationServiceGitPropertyResponsePtrOutput)
+}
+
+// How often (in seconds) to check repository updates. Minimum value is 0.
+func (o ConfigurationServiceSettingsResponseOutput) RefreshIntervalInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConfigurationServiceSettingsResponse) *int { return v.RefreshIntervalInSeconds }).(pulumi.IntPtrOutput)
 }
 
 type ConfigurationServiceSettingsResponsePtrOutput struct{ *pulumi.OutputState }
@@ -8731,6 +8895,16 @@ func (o ConfigurationServiceSettingsResponsePtrOutput) GitProperty() Configurati
 		}
 		return v.GitProperty
 	}).(ConfigurationServiceGitPropertyResponsePtrOutput)
+}
+
+// How often (in seconds) to check repository updates. Minimum value is 0.
+func (o ConfigurationServiceSettingsResponsePtrOutput) RefreshIntervalInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConfigurationServiceSettingsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RefreshIntervalInSeconds
+	}).(pulumi.IntPtrOutput)
 }
 
 // Container liveness and readiness probe settings
@@ -10939,7 +11113,9 @@ func (o CustomScaleRuleResponsePtrOutput) Type() pulumi.StringPtrOutput {
 
 // Customized accelerator properties payload
 type CustomizedAcceleratorProperties struct {
-	AcceleratorTags []string                 `pulumi:"acceleratorTags"`
+	AcceleratorTags []string `pulumi:"acceleratorTags"`
+	// Type of the customized accelerator.
+	AcceleratorType *string                  `pulumi:"acceleratorType"`
 	Description     *string                  `pulumi:"description"`
 	DisplayName     *string                  `pulumi:"displayName"`
 	GitRepository   AcceleratorGitRepository `pulumi:"gitRepository"`
@@ -10959,7 +11135,9 @@ type CustomizedAcceleratorPropertiesInput interface {
 
 // Customized accelerator properties payload
 type CustomizedAcceleratorPropertiesArgs struct {
-	AcceleratorTags pulumi.StringArrayInput       `pulumi:"acceleratorTags"`
+	AcceleratorTags pulumi.StringArrayInput `pulumi:"acceleratorTags"`
+	// Type of the customized accelerator.
+	AcceleratorType pulumi.StringPtrInput         `pulumi:"acceleratorType"`
 	Description     pulumi.StringPtrInput         `pulumi:"description"`
 	DisplayName     pulumi.StringPtrInput         `pulumi:"displayName"`
 	GitRepository   AcceleratorGitRepositoryInput `pulumi:"gitRepository"`
@@ -11048,6 +11226,11 @@ func (o CustomizedAcceleratorPropertiesOutput) AcceleratorTags() pulumi.StringAr
 	return o.ApplyT(func(v CustomizedAcceleratorProperties) []string { return v.AcceleratorTags }).(pulumi.StringArrayOutput)
 }
 
+// Type of the customized accelerator.
+func (o CustomizedAcceleratorPropertiesOutput) AcceleratorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomizedAcceleratorProperties) *string { return v.AcceleratorType }).(pulumi.StringPtrOutput)
+}
+
 func (o CustomizedAcceleratorPropertiesOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomizedAcceleratorProperties) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -11097,6 +11280,16 @@ func (o CustomizedAcceleratorPropertiesPtrOutput) AcceleratorTags() pulumi.Strin
 	}).(pulumi.StringArrayOutput)
 }
 
+// Type of the customized accelerator.
+func (o CustomizedAcceleratorPropertiesPtrOutput) AcceleratorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomizedAcceleratorProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AcceleratorType
+	}).(pulumi.StringPtrOutput)
+}
+
 func (o CustomizedAcceleratorPropertiesPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomizedAcceleratorProperties) *string {
 		if v == nil {
@@ -11135,11 +11328,15 @@ func (o CustomizedAcceleratorPropertiesPtrOutput) IconUrl() pulumi.StringPtrOutp
 
 // Customized accelerator properties payload
 type CustomizedAcceleratorPropertiesResponse struct {
-	AcceleratorTags []string                         `pulumi:"acceleratorTags"`
+	AcceleratorTags []string `pulumi:"acceleratorTags"`
+	// Type of the customized accelerator.
+	AcceleratorType *string                          `pulumi:"acceleratorType"`
 	Description     *string                          `pulumi:"description"`
 	DisplayName     *string                          `pulumi:"displayName"`
 	GitRepository   AcceleratorGitRepositoryResponse `pulumi:"gitRepository"`
 	IconUrl         *string                          `pulumi:"iconUrl"`
+	// Imports references all imports that this accelerator/fragment depends upon.
+	Imports []string `pulumi:"imports"`
 	// State of the customized accelerator.
 	ProvisioningState string `pulumi:"provisioningState"`
 }
@@ -11163,6 +11360,11 @@ func (o CustomizedAcceleratorPropertiesResponseOutput) AcceleratorTags() pulumi.
 	return o.ApplyT(func(v CustomizedAcceleratorPropertiesResponse) []string { return v.AcceleratorTags }).(pulumi.StringArrayOutput)
 }
 
+// Type of the customized accelerator.
+func (o CustomizedAcceleratorPropertiesResponseOutput) AcceleratorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomizedAcceleratorPropertiesResponse) *string { return v.AcceleratorType }).(pulumi.StringPtrOutput)
+}
+
 func (o CustomizedAcceleratorPropertiesResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomizedAcceleratorPropertiesResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -11179,6 +11381,11 @@ func (o CustomizedAcceleratorPropertiesResponseOutput) GitRepository() Accelerat
 
 func (o CustomizedAcceleratorPropertiesResponseOutput) IconUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomizedAcceleratorPropertiesResponse) *string { return v.IconUrl }).(pulumi.StringPtrOutput)
+}
+
+// Imports references all imports that this accelerator/fragment depends upon.
+func (o CustomizedAcceleratorPropertiesResponseOutput) Imports() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CustomizedAcceleratorPropertiesResponse) []string { return v.Imports }).(pulumi.StringArrayOutput)
 }
 
 // State of the customized accelerator.
@@ -15294,6 +15501,564 @@ func (o GatewayInstanceResponseArrayOutput) Index(i pulumi.IntInput) GatewayInst
 	}).(GatewayInstanceResponseOutput)
 }
 
+// Spring Cloud Gateway local response cache per instance properties.
+type GatewayLocalResponseCachePerInstanceProperties struct {
+	// The type of the response cache.
+	// Expected value is 'LocalCachePerInstance'.
+	ResponseCacheType string `pulumi:"responseCacheType"`
+	// Maximum size of cache (10MB, 900KB, 1GB...) to determine if the cache needs to evict some entries
+	Size *string `pulumi:"size"`
+	// Time before a cached entry is expired (300s, 5m, 1h...)
+	TimeToLive *string `pulumi:"timeToLive"`
+}
+
+// GatewayLocalResponseCachePerInstancePropertiesInput is an input type that accepts GatewayLocalResponseCachePerInstancePropertiesArgs and GatewayLocalResponseCachePerInstancePropertiesOutput values.
+// You can construct a concrete instance of `GatewayLocalResponseCachePerInstancePropertiesInput` via:
+//
+//	GatewayLocalResponseCachePerInstancePropertiesArgs{...}
+type GatewayLocalResponseCachePerInstancePropertiesInput interface {
+	pulumi.Input
+
+	ToGatewayLocalResponseCachePerInstancePropertiesOutput() GatewayLocalResponseCachePerInstancePropertiesOutput
+	ToGatewayLocalResponseCachePerInstancePropertiesOutputWithContext(context.Context) GatewayLocalResponseCachePerInstancePropertiesOutput
+}
+
+// Spring Cloud Gateway local response cache per instance properties.
+type GatewayLocalResponseCachePerInstancePropertiesArgs struct {
+	// The type of the response cache.
+	// Expected value is 'LocalCachePerInstance'.
+	ResponseCacheType pulumi.StringInput `pulumi:"responseCacheType"`
+	// Maximum size of cache (10MB, 900KB, 1GB...) to determine if the cache needs to evict some entries
+	Size pulumi.StringPtrInput `pulumi:"size"`
+	// Time before a cached entry is expired (300s, 5m, 1h...)
+	TimeToLive pulumi.StringPtrInput `pulumi:"timeToLive"`
+}
+
+func (GatewayLocalResponseCachePerInstancePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayLocalResponseCachePerInstanceProperties)(nil)).Elem()
+}
+
+func (i GatewayLocalResponseCachePerInstancePropertiesArgs) ToGatewayLocalResponseCachePerInstancePropertiesOutput() GatewayLocalResponseCachePerInstancePropertiesOutput {
+	return i.ToGatewayLocalResponseCachePerInstancePropertiesOutputWithContext(context.Background())
+}
+
+func (i GatewayLocalResponseCachePerInstancePropertiesArgs) ToGatewayLocalResponseCachePerInstancePropertiesOutputWithContext(ctx context.Context) GatewayLocalResponseCachePerInstancePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayLocalResponseCachePerInstancePropertiesOutput)
+}
+
+func (i GatewayLocalResponseCachePerInstancePropertiesArgs) ToGatewayLocalResponseCachePerInstancePropertiesPtrOutput() GatewayLocalResponseCachePerInstancePropertiesPtrOutput {
+	return i.ToGatewayLocalResponseCachePerInstancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GatewayLocalResponseCachePerInstancePropertiesArgs) ToGatewayLocalResponseCachePerInstancePropertiesPtrOutputWithContext(ctx context.Context) GatewayLocalResponseCachePerInstancePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayLocalResponseCachePerInstancePropertiesOutput).ToGatewayLocalResponseCachePerInstancePropertiesPtrOutputWithContext(ctx)
+}
+
+// GatewayLocalResponseCachePerInstancePropertiesPtrInput is an input type that accepts GatewayLocalResponseCachePerInstancePropertiesArgs, GatewayLocalResponseCachePerInstancePropertiesPtr and GatewayLocalResponseCachePerInstancePropertiesPtrOutput values.
+// You can construct a concrete instance of `GatewayLocalResponseCachePerInstancePropertiesPtrInput` via:
+//
+//	        GatewayLocalResponseCachePerInstancePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GatewayLocalResponseCachePerInstancePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGatewayLocalResponseCachePerInstancePropertiesPtrOutput() GatewayLocalResponseCachePerInstancePropertiesPtrOutput
+	ToGatewayLocalResponseCachePerInstancePropertiesPtrOutputWithContext(context.Context) GatewayLocalResponseCachePerInstancePropertiesPtrOutput
+}
+
+type gatewayLocalResponseCachePerInstancePropertiesPtrType GatewayLocalResponseCachePerInstancePropertiesArgs
+
+func GatewayLocalResponseCachePerInstancePropertiesPtr(v *GatewayLocalResponseCachePerInstancePropertiesArgs) GatewayLocalResponseCachePerInstancePropertiesPtrInput {
+	return (*gatewayLocalResponseCachePerInstancePropertiesPtrType)(v)
+}
+
+func (*gatewayLocalResponseCachePerInstancePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayLocalResponseCachePerInstanceProperties)(nil)).Elem()
+}
+
+func (i *gatewayLocalResponseCachePerInstancePropertiesPtrType) ToGatewayLocalResponseCachePerInstancePropertiesPtrOutput() GatewayLocalResponseCachePerInstancePropertiesPtrOutput {
+	return i.ToGatewayLocalResponseCachePerInstancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *gatewayLocalResponseCachePerInstancePropertiesPtrType) ToGatewayLocalResponseCachePerInstancePropertiesPtrOutputWithContext(ctx context.Context) GatewayLocalResponseCachePerInstancePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayLocalResponseCachePerInstancePropertiesPtrOutput)
+}
+
+// Spring Cloud Gateway local response cache per instance properties.
+type GatewayLocalResponseCachePerInstancePropertiesOutput struct{ *pulumi.OutputState }
+
+func (GatewayLocalResponseCachePerInstancePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayLocalResponseCachePerInstanceProperties)(nil)).Elem()
+}
+
+func (o GatewayLocalResponseCachePerInstancePropertiesOutput) ToGatewayLocalResponseCachePerInstancePropertiesOutput() GatewayLocalResponseCachePerInstancePropertiesOutput {
+	return o
+}
+
+func (o GatewayLocalResponseCachePerInstancePropertiesOutput) ToGatewayLocalResponseCachePerInstancePropertiesOutputWithContext(ctx context.Context) GatewayLocalResponseCachePerInstancePropertiesOutput {
+	return o
+}
+
+func (o GatewayLocalResponseCachePerInstancePropertiesOutput) ToGatewayLocalResponseCachePerInstancePropertiesPtrOutput() GatewayLocalResponseCachePerInstancePropertiesPtrOutput {
+	return o.ToGatewayLocalResponseCachePerInstancePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayLocalResponseCachePerInstancePropertiesOutput) ToGatewayLocalResponseCachePerInstancePropertiesPtrOutputWithContext(ctx context.Context) GatewayLocalResponseCachePerInstancePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayLocalResponseCachePerInstanceProperties) *GatewayLocalResponseCachePerInstanceProperties {
+		return &v
+	}).(GatewayLocalResponseCachePerInstancePropertiesPtrOutput)
+}
+
+// The type of the response cache.
+// Expected value is 'LocalCachePerInstance'.
+func (o GatewayLocalResponseCachePerInstancePropertiesOutput) ResponseCacheType() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayLocalResponseCachePerInstanceProperties) string { return v.ResponseCacheType }).(pulumi.StringOutput)
+}
+
+// Maximum size of cache (10MB, 900KB, 1GB...) to determine if the cache needs to evict some entries
+func (o GatewayLocalResponseCachePerInstancePropertiesOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayLocalResponseCachePerInstanceProperties) *string { return v.Size }).(pulumi.StringPtrOutput)
+}
+
+// Time before a cached entry is expired (300s, 5m, 1h...)
+func (o GatewayLocalResponseCachePerInstancePropertiesOutput) TimeToLive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayLocalResponseCachePerInstanceProperties) *string { return v.TimeToLive }).(pulumi.StringPtrOutput)
+}
+
+type GatewayLocalResponseCachePerInstancePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayLocalResponseCachePerInstancePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayLocalResponseCachePerInstanceProperties)(nil)).Elem()
+}
+
+func (o GatewayLocalResponseCachePerInstancePropertiesPtrOutput) ToGatewayLocalResponseCachePerInstancePropertiesPtrOutput() GatewayLocalResponseCachePerInstancePropertiesPtrOutput {
+	return o
+}
+
+func (o GatewayLocalResponseCachePerInstancePropertiesPtrOutput) ToGatewayLocalResponseCachePerInstancePropertiesPtrOutputWithContext(ctx context.Context) GatewayLocalResponseCachePerInstancePropertiesPtrOutput {
+	return o
+}
+
+func (o GatewayLocalResponseCachePerInstancePropertiesPtrOutput) Elem() GatewayLocalResponseCachePerInstancePropertiesOutput {
+	return o.ApplyT(func(v *GatewayLocalResponseCachePerInstanceProperties) GatewayLocalResponseCachePerInstanceProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayLocalResponseCachePerInstanceProperties
+		return ret
+	}).(GatewayLocalResponseCachePerInstancePropertiesOutput)
+}
+
+// The type of the response cache.
+// Expected value is 'LocalCachePerInstance'.
+func (o GatewayLocalResponseCachePerInstancePropertiesPtrOutput) ResponseCacheType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayLocalResponseCachePerInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResponseCacheType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum size of cache (10MB, 900KB, 1GB...) to determine if the cache needs to evict some entries
+func (o GatewayLocalResponseCachePerInstancePropertiesPtrOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayLocalResponseCachePerInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time before a cached entry is expired (300s, 5m, 1h...)
+func (o GatewayLocalResponseCachePerInstancePropertiesPtrOutput) TimeToLive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayLocalResponseCachePerInstanceProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeToLive
+	}).(pulumi.StringPtrOutput)
+}
+
+// Spring Cloud Gateway local response cache per instance properties.
+type GatewayLocalResponseCachePerInstancePropertiesResponse struct {
+	// The type of the response cache.
+	// Expected value is 'LocalCachePerInstance'.
+	ResponseCacheType string `pulumi:"responseCacheType"`
+	// Maximum size of cache (10MB, 900KB, 1GB...) to determine if the cache needs to evict some entries
+	Size *string `pulumi:"size"`
+	// Time before a cached entry is expired (300s, 5m, 1h...)
+	TimeToLive *string `pulumi:"timeToLive"`
+}
+
+// Spring Cloud Gateway local response cache per instance properties.
+type GatewayLocalResponseCachePerInstancePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (GatewayLocalResponseCachePerInstancePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayLocalResponseCachePerInstancePropertiesResponse)(nil)).Elem()
+}
+
+func (o GatewayLocalResponseCachePerInstancePropertiesResponseOutput) ToGatewayLocalResponseCachePerInstancePropertiesResponseOutput() GatewayLocalResponseCachePerInstancePropertiesResponseOutput {
+	return o
+}
+
+func (o GatewayLocalResponseCachePerInstancePropertiesResponseOutput) ToGatewayLocalResponseCachePerInstancePropertiesResponseOutputWithContext(ctx context.Context) GatewayLocalResponseCachePerInstancePropertiesResponseOutput {
+	return o
+}
+
+// The type of the response cache.
+// Expected value is 'LocalCachePerInstance'.
+func (o GatewayLocalResponseCachePerInstancePropertiesResponseOutput) ResponseCacheType() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayLocalResponseCachePerInstancePropertiesResponse) string { return v.ResponseCacheType }).(pulumi.StringOutput)
+}
+
+// Maximum size of cache (10MB, 900KB, 1GB...) to determine if the cache needs to evict some entries
+func (o GatewayLocalResponseCachePerInstancePropertiesResponseOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayLocalResponseCachePerInstancePropertiesResponse) *string { return v.Size }).(pulumi.StringPtrOutput)
+}
+
+// Time before a cached entry is expired (300s, 5m, 1h...)
+func (o GatewayLocalResponseCachePerInstancePropertiesResponseOutput) TimeToLive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayLocalResponseCachePerInstancePropertiesResponse) *string { return v.TimeToLive }).(pulumi.StringPtrOutput)
+}
+
+type GatewayLocalResponseCachePerInstancePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayLocalResponseCachePerInstancePropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayLocalResponseCachePerInstancePropertiesResponse)(nil)).Elem()
+}
+
+func (o GatewayLocalResponseCachePerInstancePropertiesResponsePtrOutput) ToGatewayLocalResponseCachePerInstancePropertiesResponsePtrOutput() GatewayLocalResponseCachePerInstancePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o GatewayLocalResponseCachePerInstancePropertiesResponsePtrOutput) ToGatewayLocalResponseCachePerInstancePropertiesResponsePtrOutputWithContext(ctx context.Context) GatewayLocalResponseCachePerInstancePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o GatewayLocalResponseCachePerInstancePropertiesResponsePtrOutput) Elem() GatewayLocalResponseCachePerInstancePropertiesResponseOutput {
+	return o.ApplyT(func(v *GatewayLocalResponseCachePerInstancePropertiesResponse) GatewayLocalResponseCachePerInstancePropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayLocalResponseCachePerInstancePropertiesResponse
+		return ret
+	}).(GatewayLocalResponseCachePerInstancePropertiesResponseOutput)
+}
+
+// The type of the response cache.
+// Expected value is 'LocalCachePerInstance'.
+func (o GatewayLocalResponseCachePerInstancePropertiesResponsePtrOutput) ResponseCacheType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayLocalResponseCachePerInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResponseCacheType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum size of cache (10MB, 900KB, 1GB...) to determine if the cache needs to evict some entries
+func (o GatewayLocalResponseCachePerInstancePropertiesResponsePtrOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayLocalResponseCachePerInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time before a cached entry is expired (300s, 5m, 1h...)
+func (o GatewayLocalResponseCachePerInstancePropertiesResponsePtrOutput) TimeToLive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayLocalResponseCachePerInstancePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeToLive
+	}).(pulumi.StringPtrOutput)
+}
+
+// Spring Cloud Gateway local response cache per route properties.
+type GatewayLocalResponseCachePerRouteProperties struct {
+	// The type of the response cache.
+	// Expected value is 'LocalCachePerRoute'.
+	ResponseCacheType string `pulumi:"responseCacheType"`
+	// Maximum size of cache (10MB, 900KB, 1GB...) to determine if the cache needs to evict some entries.
+	Size *string `pulumi:"size"`
+	// Time before a cached entry is expired (300s, 5m, 1h...)
+	TimeToLive *string `pulumi:"timeToLive"`
+}
+
+// GatewayLocalResponseCachePerRoutePropertiesInput is an input type that accepts GatewayLocalResponseCachePerRoutePropertiesArgs and GatewayLocalResponseCachePerRoutePropertiesOutput values.
+// You can construct a concrete instance of `GatewayLocalResponseCachePerRoutePropertiesInput` via:
+//
+//	GatewayLocalResponseCachePerRoutePropertiesArgs{...}
+type GatewayLocalResponseCachePerRoutePropertiesInput interface {
+	pulumi.Input
+
+	ToGatewayLocalResponseCachePerRoutePropertiesOutput() GatewayLocalResponseCachePerRoutePropertiesOutput
+	ToGatewayLocalResponseCachePerRoutePropertiesOutputWithContext(context.Context) GatewayLocalResponseCachePerRoutePropertiesOutput
+}
+
+// Spring Cloud Gateway local response cache per route properties.
+type GatewayLocalResponseCachePerRoutePropertiesArgs struct {
+	// The type of the response cache.
+	// Expected value is 'LocalCachePerRoute'.
+	ResponseCacheType pulumi.StringInput `pulumi:"responseCacheType"`
+	// Maximum size of cache (10MB, 900KB, 1GB...) to determine if the cache needs to evict some entries.
+	Size pulumi.StringPtrInput `pulumi:"size"`
+	// Time before a cached entry is expired (300s, 5m, 1h...)
+	TimeToLive pulumi.StringPtrInput `pulumi:"timeToLive"`
+}
+
+func (GatewayLocalResponseCachePerRoutePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayLocalResponseCachePerRouteProperties)(nil)).Elem()
+}
+
+func (i GatewayLocalResponseCachePerRoutePropertiesArgs) ToGatewayLocalResponseCachePerRoutePropertiesOutput() GatewayLocalResponseCachePerRoutePropertiesOutput {
+	return i.ToGatewayLocalResponseCachePerRoutePropertiesOutputWithContext(context.Background())
+}
+
+func (i GatewayLocalResponseCachePerRoutePropertiesArgs) ToGatewayLocalResponseCachePerRoutePropertiesOutputWithContext(ctx context.Context) GatewayLocalResponseCachePerRoutePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayLocalResponseCachePerRoutePropertiesOutput)
+}
+
+func (i GatewayLocalResponseCachePerRoutePropertiesArgs) ToGatewayLocalResponseCachePerRoutePropertiesPtrOutput() GatewayLocalResponseCachePerRoutePropertiesPtrOutput {
+	return i.ToGatewayLocalResponseCachePerRoutePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GatewayLocalResponseCachePerRoutePropertiesArgs) ToGatewayLocalResponseCachePerRoutePropertiesPtrOutputWithContext(ctx context.Context) GatewayLocalResponseCachePerRoutePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayLocalResponseCachePerRoutePropertiesOutput).ToGatewayLocalResponseCachePerRoutePropertiesPtrOutputWithContext(ctx)
+}
+
+// GatewayLocalResponseCachePerRoutePropertiesPtrInput is an input type that accepts GatewayLocalResponseCachePerRoutePropertiesArgs, GatewayLocalResponseCachePerRoutePropertiesPtr and GatewayLocalResponseCachePerRoutePropertiesPtrOutput values.
+// You can construct a concrete instance of `GatewayLocalResponseCachePerRoutePropertiesPtrInput` via:
+//
+//	        GatewayLocalResponseCachePerRoutePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GatewayLocalResponseCachePerRoutePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGatewayLocalResponseCachePerRoutePropertiesPtrOutput() GatewayLocalResponseCachePerRoutePropertiesPtrOutput
+	ToGatewayLocalResponseCachePerRoutePropertiesPtrOutputWithContext(context.Context) GatewayLocalResponseCachePerRoutePropertiesPtrOutput
+}
+
+type gatewayLocalResponseCachePerRoutePropertiesPtrType GatewayLocalResponseCachePerRoutePropertiesArgs
+
+func GatewayLocalResponseCachePerRoutePropertiesPtr(v *GatewayLocalResponseCachePerRoutePropertiesArgs) GatewayLocalResponseCachePerRoutePropertiesPtrInput {
+	return (*gatewayLocalResponseCachePerRoutePropertiesPtrType)(v)
+}
+
+func (*gatewayLocalResponseCachePerRoutePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayLocalResponseCachePerRouteProperties)(nil)).Elem()
+}
+
+func (i *gatewayLocalResponseCachePerRoutePropertiesPtrType) ToGatewayLocalResponseCachePerRoutePropertiesPtrOutput() GatewayLocalResponseCachePerRoutePropertiesPtrOutput {
+	return i.ToGatewayLocalResponseCachePerRoutePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *gatewayLocalResponseCachePerRoutePropertiesPtrType) ToGatewayLocalResponseCachePerRoutePropertiesPtrOutputWithContext(ctx context.Context) GatewayLocalResponseCachePerRoutePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayLocalResponseCachePerRoutePropertiesPtrOutput)
+}
+
+// Spring Cloud Gateway local response cache per route properties.
+type GatewayLocalResponseCachePerRoutePropertiesOutput struct{ *pulumi.OutputState }
+
+func (GatewayLocalResponseCachePerRoutePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayLocalResponseCachePerRouteProperties)(nil)).Elem()
+}
+
+func (o GatewayLocalResponseCachePerRoutePropertiesOutput) ToGatewayLocalResponseCachePerRoutePropertiesOutput() GatewayLocalResponseCachePerRoutePropertiesOutput {
+	return o
+}
+
+func (o GatewayLocalResponseCachePerRoutePropertiesOutput) ToGatewayLocalResponseCachePerRoutePropertiesOutputWithContext(ctx context.Context) GatewayLocalResponseCachePerRoutePropertiesOutput {
+	return o
+}
+
+func (o GatewayLocalResponseCachePerRoutePropertiesOutput) ToGatewayLocalResponseCachePerRoutePropertiesPtrOutput() GatewayLocalResponseCachePerRoutePropertiesPtrOutput {
+	return o.ToGatewayLocalResponseCachePerRoutePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayLocalResponseCachePerRoutePropertiesOutput) ToGatewayLocalResponseCachePerRoutePropertiesPtrOutputWithContext(ctx context.Context) GatewayLocalResponseCachePerRoutePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayLocalResponseCachePerRouteProperties) *GatewayLocalResponseCachePerRouteProperties {
+		return &v
+	}).(GatewayLocalResponseCachePerRoutePropertiesPtrOutput)
+}
+
+// The type of the response cache.
+// Expected value is 'LocalCachePerRoute'.
+func (o GatewayLocalResponseCachePerRoutePropertiesOutput) ResponseCacheType() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayLocalResponseCachePerRouteProperties) string { return v.ResponseCacheType }).(pulumi.StringOutput)
+}
+
+// Maximum size of cache (10MB, 900KB, 1GB...) to determine if the cache needs to evict some entries.
+func (o GatewayLocalResponseCachePerRoutePropertiesOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayLocalResponseCachePerRouteProperties) *string { return v.Size }).(pulumi.StringPtrOutput)
+}
+
+// Time before a cached entry is expired (300s, 5m, 1h...)
+func (o GatewayLocalResponseCachePerRoutePropertiesOutput) TimeToLive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayLocalResponseCachePerRouteProperties) *string { return v.TimeToLive }).(pulumi.StringPtrOutput)
+}
+
+type GatewayLocalResponseCachePerRoutePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayLocalResponseCachePerRoutePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayLocalResponseCachePerRouteProperties)(nil)).Elem()
+}
+
+func (o GatewayLocalResponseCachePerRoutePropertiesPtrOutput) ToGatewayLocalResponseCachePerRoutePropertiesPtrOutput() GatewayLocalResponseCachePerRoutePropertiesPtrOutput {
+	return o
+}
+
+func (o GatewayLocalResponseCachePerRoutePropertiesPtrOutput) ToGatewayLocalResponseCachePerRoutePropertiesPtrOutputWithContext(ctx context.Context) GatewayLocalResponseCachePerRoutePropertiesPtrOutput {
+	return o
+}
+
+func (o GatewayLocalResponseCachePerRoutePropertiesPtrOutput) Elem() GatewayLocalResponseCachePerRoutePropertiesOutput {
+	return o.ApplyT(func(v *GatewayLocalResponseCachePerRouteProperties) GatewayLocalResponseCachePerRouteProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayLocalResponseCachePerRouteProperties
+		return ret
+	}).(GatewayLocalResponseCachePerRoutePropertiesOutput)
+}
+
+// The type of the response cache.
+// Expected value is 'LocalCachePerRoute'.
+func (o GatewayLocalResponseCachePerRoutePropertiesPtrOutput) ResponseCacheType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayLocalResponseCachePerRouteProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResponseCacheType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum size of cache (10MB, 900KB, 1GB...) to determine if the cache needs to evict some entries.
+func (o GatewayLocalResponseCachePerRoutePropertiesPtrOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayLocalResponseCachePerRouteProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time before a cached entry is expired (300s, 5m, 1h...)
+func (o GatewayLocalResponseCachePerRoutePropertiesPtrOutput) TimeToLive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayLocalResponseCachePerRouteProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeToLive
+	}).(pulumi.StringPtrOutput)
+}
+
+// Spring Cloud Gateway local response cache per route properties.
+type GatewayLocalResponseCachePerRoutePropertiesResponse struct {
+	// The type of the response cache.
+	// Expected value is 'LocalCachePerRoute'.
+	ResponseCacheType string `pulumi:"responseCacheType"`
+	// Maximum size of cache (10MB, 900KB, 1GB...) to determine if the cache needs to evict some entries.
+	Size *string `pulumi:"size"`
+	// Time before a cached entry is expired (300s, 5m, 1h...)
+	TimeToLive *string `pulumi:"timeToLive"`
+}
+
+// Spring Cloud Gateway local response cache per route properties.
+type GatewayLocalResponseCachePerRoutePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (GatewayLocalResponseCachePerRoutePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayLocalResponseCachePerRoutePropertiesResponse)(nil)).Elem()
+}
+
+func (o GatewayLocalResponseCachePerRoutePropertiesResponseOutput) ToGatewayLocalResponseCachePerRoutePropertiesResponseOutput() GatewayLocalResponseCachePerRoutePropertiesResponseOutput {
+	return o
+}
+
+func (o GatewayLocalResponseCachePerRoutePropertiesResponseOutput) ToGatewayLocalResponseCachePerRoutePropertiesResponseOutputWithContext(ctx context.Context) GatewayLocalResponseCachePerRoutePropertiesResponseOutput {
+	return o
+}
+
+// The type of the response cache.
+// Expected value is 'LocalCachePerRoute'.
+func (o GatewayLocalResponseCachePerRoutePropertiesResponseOutput) ResponseCacheType() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayLocalResponseCachePerRoutePropertiesResponse) string { return v.ResponseCacheType }).(pulumi.StringOutput)
+}
+
+// Maximum size of cache (10MB, 900KB, 1GB...) to determine if the cache needs to evict some entries.
+func (o GatewayLocalResponseCachePerRoutePropertiesResponseOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayLocalResponseCachePerRoutePropertiesResponse) *string { return v.Size }).(pulumi.StringPtrOutput)
+}
+
+// Time before a cached entry is expired (300s, 5m, 1h...)
+func (o GatewayLocalResponseCachePerRoutePropertiesResponseOutput) TimeToLive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GatewayLocalResponseCachePerRoutePropertiesResponse) *string { return v.TimeToLive }).(pulumi.StringPtrOutput)
+}
+
+type GatewayLocalResponseCachePerRoutePropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayLocalResponseCachePerRoutePropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayLocalResponseCachePerRoutePropertiesResponse)(nil)).Elem()
+}
+
+func (o GatewayLocalResponseCachePerRoutePropertiesResponsePtrOutput) ToGatewayLocalResponseCachePerRoutePropertiesResponsePtrOutput() GatewayLocalResponseCachePerRoutePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o GatewayLocalResponseCachePerRoutePropertiesResponsePtrOutput) ToGatewayLocalResponseCachePerRoutePropertiesResponsePtrOutputWithContext(ctx context.Context) GatewayLocalResponseCachePerRoutePropertiesResponsePtrOutput {
+	return o
+}
+
+func (o GatewayLocalResponseCachePerRoutePropertiesResponsePtrOutput) Elem() GatewayLocalResponseCachePerRoutePropertiesResponseOutput {
+	return o.ApplyT(func(v *GatewayLocalResponseCachePerRoutePropertiesResponse) GatewayLocalResponseCachePerRoutePropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayLocalResponseCachePerRoutePropertiesResponse
+		return ret
+	}).(GatewayLocalResponseCachePerRoutePropertiesResponseOutput)
+}
+
+// The type of the response cache.
+// Expected value is 'LocalCachePerRoute'.
+func (o GatewayLocalResponseCachePerRoutePropertiesResponsePtrOutput) ResponseCacheType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayLocalResponseCachePerRoutePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ResponseCacheType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum size of cache (10MB, 900KB, 1GB...) to determine if the cache needs to evict some entries.
+func (o GatewayLocalResponseCachePerRoutePropertiesResponsePtrOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayLocalResponseCachePerRoutePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.StringPtrOutput)
+}
+
+// Time before a cached entry is expired (300s, 5m, 1h...)
+func (o GatewayLocalResponseCachePerRoutePropertiesResponsePtrOutput) TimeToLive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayLocalResponseCachePerRoutePropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeToLive
+	}).(pulumi.StringPtrOutput)
+}
+
 // Properties of the Spring Cloud Gateway Operator.
 type GatewayOperatorPropertiesResponse struct {
 	// Collection of instances belong to Spring Cloud Gateway operator.
@@ -15377,6 +16142,8 @@ type GatewayProperties struct {
 	ApiMetadataProperties *GatewayApiMetadataProperties `pulumi:"apiMetadataProperties"`
 	// Collection of APM type used in Spring Cloud Gateway
 	ApmTypes []string `pulumi:"apmTypes"`
+	// Collection of ApmReferences in service level
+	Apms []ApmReference `pulumi:"apms"`
 	// Client-Certification Authentication.
 	ClientAuth *GatewayPropertiesClientAuth `pulumi:"clientAuth"`
 	// Cross-Origin Resource Sharing property
@@ -15389,6 +16156,8 @@ type GatewayProperties struct {
 	Public *bool `pulumi:"public"`
 	// The requested resource quantity for required CPU and Memory.
 	ResourceRequests *GatewayResourceRequests `pulumi:"resourceRequests"`
+	// The properties to configure different types of response cache for Spring Cloud Gateway.
+	ResponseCacheProperties interface{} `pulumi:"responseCacheProperties"`
 	// Single sign-on related configuration
 	SsoProperties *SsoProperties `pulumi:"ssoProperties"`
 }
@@ -15433,6 +16202,8 @@ type GatewayPropertiesArgs struct {
 	ApiMetadataProperties GatewayApiMetadataPropertiesPtrInput `pulumi:"apiMetadataProperties"`
 	// Collection of APM type used in Spring Cloud Gateway
 	ApmTypes pulumi.StringArrayInput `pulumi:"apmTypes"`
+	// Collection of ApmReferences in service level
+	Apms ApmReferenceArrayInput `pulumi:"apms"`
 	// Client-Certification Authentication.
 	ClientAuth GatewayPropertiesClientAuthPtrInput `pulumi:"clientAuth"`
 	// Cross-Origin Resource Sharing property
@@ -15445,6 +16216,8 @@ type GatewayPropertiesArgs struct {
 	Public pulumi.BoolPtrInput `pulumi:"public"`
 	// The requested resource quantity for required CPU and Memory.
 	ResourceRequests GatewayResourceRequestsPtrInput `pulumi:"resourceRequests"`
+	// The properties to configure different types of response cache for Spring Cloud Gateway.
+	ResponseCacheProperties pulumi.Input `pulumi:"responseCacheProperties"`
 	// Single sign-on related configuration
 	SsoProperties SsoPropertiesPtrInput `pulumi:"ssoProperties"`
 }
@@ -15558,6 +16331,11 @@ func (o GatewayPropertiesOutput) ApmTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayProperties) []string { return v.ApmTypes }).(pulumi.StringArrayOutput)
 }
 
+// Collection of ApmReferences in service level
+func (o GatewayPropertiesOutput) Apms() ApmReferenceArrayOutput {
+	return o.ApplyT(func(v GatewayProperties) []ApmReference { return v.Apms }).(ApmReferenceArrayOutput)
+}
+
 // Client-Certification Authentication.
 func (o GatewayPropertiesOutput) ClientAuth() GatewayPropertiesClientAuthPtrOutput {
 	return o.ApplyT(func(v GatewayProperties) *GatewayPropertiesClientAuth { return v.ClientAuth }).(GatewayPropertiesClientAuthPtrOutput)
@@ -15586,6 +16364,11 @@ func (o GatewayPropertiesOutput) Public() pulumi.BoolPtrOutput {
 // The requested resource quantity for required CPU and Memory.
 func (o GatewayPropertiesOutput) ResourceRequests() GatewayResourceRequestsPtrOutput {
 	return o.ApplyT(func(v GatewayProperties) *GatewayResourceRequests { return v.ResourceRequests }).(GatewayResourceRequestsPtrOutput)
+}
+
+// The properties to configure different types of response cache for Spring Cloud Gateway.
+func (o GatewayPropertiesOutput) ResponseCacheProperties() pulumi.AnyOutput {
+	return o.ApplyT(func(v GatewayProperties) interface{} { return v.ResponseCacheProperties }).(pulumi.AnyOutput)
 }
 
 // Single sign-on related configuration
@@ -15647,6 +16430,16 @@ func (o GatewayPropertiesPtrOutput) ApmTypes() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Collection of ApmReferences in service level
+func (o GatewayPropertiesPtrOutput) Apms() ApmReferenceArrayOutput {
+	return o.ApplyT(func(v *GatewayProperties) []ApmReference {
+		if v == nil {
+			return nil
+		}
+		return v.Apms
+	}).(ApmReferenceArrayOutput)
+}
+
 // Client-Certification Authentication.
 func (o GatewayPropertiesPtrOutput) ClientAuth() GatewayPropertiesClientAuthPtrOutput {
 	return o.ApplyT(func(v *GatewayProperties) *GatewayPropertiesClientAuth {
@@ -15705,6 +16498,16 @@ func (o GatewayPropertiesPtrOutput) ResourceRequests() GatewayResourceRequestsPt
 		}
 		return v.ResourceRequests
 	}).(GatewayResourceRequestsPtrOutput)
+}
+
+// The properties to configure different types of response cache for Spring Cloud Gateway.
+func (o GatewayPropertiesPtrOutput) ResponseCacheProperties() pulumi.AnyOutput {
+	return o.ApplyT(func(v *GatewayProperties) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseCacheProperties
+	}).(pulumi.AnyOutput)
 }
 
 // Single sign-on related configuration
@@ -16067,6 +16870,8 @@ type GatewayPropertiesResponse struct {
 	ApiMetadataProperties *GatewayApiMetadataPropertiesResponse `pulumi:"apiMetadataProperties"`
 	// Collection of APM type used in Spring Cloud Gateway
 	ApmTypes []string `pulumi:"apmTypes"`
+	// Collection of ApmReferences in service level
+	Apms []ApmReferenceResponse `pulumi:"apms"`
 	// Client-Certification Authentication.
 	ClientAuth *GatewayPropertiesResponseClientAuth `pulumi:"clientAuth"`
 	// Cross-Origin Resource Sharing property
@@ -16085,6 +16890,8 @@ type GatewayPropertiesResponse struct {
 	Public *bool `pulumi:"public"`
 	// The requested resource quantity for required CPU and Memory.
 	ResourceRequests *GatewayResourceRequestsResponse `pulumi:"resourceRequests"`
+	// The properties to configure different types of response cache for Spring Cloud Gateway.
+	ResponseCacheProperties interface{} `pulumi:"responseCacheProperties"`
 	// Single sign-on related configuration
 	SsoProperties *SsoPropertiesResponse `pulumi:"ssoProperties"`
 	// URL of the Spring Cloud Gateway, exposed when 'public' is true.
@@ -16144,6 +16951,11 @@ func (o GatewayPropertiesResponseOutput) ApmTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GatewayPropertiesResponse) []string { return v.ApmTypes }).(pulumi.StringArrayOutput)
 }
 
+// Collection of ApmReferences in service level
+func (o GatewayPropertiesResponseOutput) Apms() ApmReferenceResponseArrayOutput {
+	return o.ApplyT(func(v GatewayPropertiesResponse) []ApmReferenceResponse { return v.Apms }).(ApmReferenceResponseArrayOutput)
+}
+
 // Client-Certification Authentication.
 func (o GatewayPropertiesResponseOutput) ClientAuth() GatewayPropertiesResponseClientAuthPtrOutput {
 	return o.ApplyT(func(v GatewayPropertiesResponse) *GatewayPropertiesResponseClientAuth { return v.ClientAuth }).(GatewayPropertiesResponseClientAuthPtrOutput)
@@ -16189,6 +17001,11 @@ func (o GatewayPropertiesResponseOutput) Public() pulumi.BoolPtrOutput {
 // The requested resource quantity for required CPU and Memory.
 func (o GatewayPropertiesResponseOutput) ResourceRequests() GatewayResourceRequestsResponsePtrOutput {
 	return o.ApplyT(func(v GatewayPropertiesResponse) *GatewayResourceRequestsResponse { return v.ResourceRequests }).(GatewayResourceRequestsResponsePtrOutput)
+}
+
+// The properties to configure different types of response cache for Spring Cloud Gateway.
+func (o GatewayPropertiesResponseOutput) ResponseCacheProperties() pulumi.AnyOutput {
+	return o.ApplyT(func(v GatewayPropertiesResponse) interface{} { return v.ResponseCacheProperties }).(pulumi.AnyOutput)
 }
 
 // Single sign-on related configuration
@@ -20313,6 +21130,8 @@ func (o JobResourceRequestsResponsePtrOutput) Memory() pulumi.StringPtrOutput {
 
 // Properties of certificate imported from key vault.
 type KeyVaultCertificateProperties struct {
+	// Indicates whether to automatically synchronize certificate from key vault or not.
+	AutoSync *string `pulumi:"autoSync"`
 	// The certificate version of key vault.
 	CertVersion *string `pulumi:"certVersion"`
 	// Optional. If set to true, it will not import private key from key vault.
@@ -20332,6 +21151,10 @@ func (val *KeyVaultCertificateProperties) Defaults() *KeyVaultCertificatePropert
 		return nil
 	}
 	tmp := *val
+	if tmp.AutoSync == nil {
+		autoSync_ := "Disabled"
+		tmp.AutoSync = &autoSync_
+	}
 	if tmp.ExcludePrivateKey == nil {
 		excludePrivateKey_ := false
 		tmp.ExcludePrivateKey = &excludePrivateKey_
@@ -20352,6 +21175,8 @@ type KeyVaultCertificatePropertiesInput interface {
 
 // Properties of certificate imported from key vault.
 type KeyVaultCertificatePropertiesArgs struct {
+	// Indicates whether to automatically synchronize certificate from key vault or not.
+	AutoSync pulumi.StringPtrInput `pulumi:"autoSync"`
 	// The certificate version of key vault.
 	CertVersion pulumi.StringPtrInput `pulumi:"certVersion"`
 	// Optional. If set to true, it will not import private key from key vault.
@@ -20371,6 +21196,9 @@ func (val *KeyVaultCertificatePropertiesArgs) Defaults() *KeyVaultCertificatePro
 		return nil
 	}
 	tmp := *val
+	if tmp.AutoSync == nil {
+		tmp.AutoSync = pulumi.StringPtr("Disabled")
+	}
 	if tmp.ExcludePrivateKey == nil {
 		tmp.ExcludePrivateKey = pulumi.BoolPtr(false)
 	}
@@ -20454,6 +21282,11 @@ func (o KeyVaultCertificatePropertiesOutput) ToKeyVaultCertificatePropertiesPtrO
 	}).(KeyVaultCertificatePropertiesPtrOutput)
 }
 
+// Indicates whether to automatically synchronize certificate from key vault or not.
+func (o KeyVaultCertificatePropertiesOutput) AutoSync() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyVaultCertificateProperties) *string { return v.AutoSync }).(pulumi.StringPtrOutput)
+}
+
 // The certificate version of key vault.
 func (o KeyVaultCertificatePropertiesOutput) CertVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyVaultCertificateProperties) *string { return v.CertVersion }).(pulumi.StringPtrOutput)
@@ -20502,6 +21335,16 @@ func (o KeyVaultCertificatePropertiesPtrOutput) Elem() KeyVaultCertificateProper
 		var ret KeyVaultCertificateProperties
 		return ret
 	}).(KeyVaultCertificatePropertiesOutput)
+}
+
+// Indicates whether to automatically synchronize certificate from key vault or not.
+func (o KeyVaultCertificatePropertiesPtrOutput) AutoSync() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KeyVaultCertificateProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AutoSync
+	}).(pulumi.StringPtrOutput)
 }
 
 // The certificate version of key vault.
@@ -20559,6 +21402,8 @@ func (o KeyVaultCertificatePropertiesPtrOutput) VaultUri() pulumi.StringPtrOutpu
 type KeyVaultCertificatePropertiesResponse struct {
 	// The activate date of certificate.
 	ActivateDate string `pulumi:"activateDate"`
+	// Indicates whether to automatically synchronize certificate from key vault or not.
+	AutoSync *string `pulumi:"autoSync"`
 	// The certificate version of key vault.
 	CertVersion *string `pulumi:"certVersion"`
 	// The domain list of certificate.
@@ -20592,6 +21437,10 @@ func (val *KeyVaultCertificatePropertiesResponse) Defaults() *KeyVaultCertificat
 		return nil
 	}
 	tmp := *val
+	if tmp.AutoSync == nil {
+		autoSync_ := "Disabled"
+		tmp.AutoSync = &autoSync_
+	}
 	if tmp.ExcludePrivateKey == nil {
 		excludePrivateKey_ := false
 		tmp.ExcludePrivateKey = &excludePrivateKey_
@@ -20617,6 +21466,11 @@ func (o KeyVaultCertificatePropertiesResponseOutput) ToKeyVaultCertificateProper
 // The activate date of certificate.
 func (o KeyVaultCertificatePropertiesResponseOutput) ActivateDate() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVaultCertificatePropertiesResponse) string { return v.ActivateDate }).(pulumi.StringOutput)
+}
+
+// Indicates whether to automatically synchronize certificate from key vault or not.
+func (o KeyVaultCertificatePropertiesResponseOutput) AutoSync() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KeyVaultCertificatePropertiesResponse) *string { return v.AutoSync }).(pulumi.StringPtrOutput)
 }
 
 // The certificate version of key vault.
@@ -27839,6 +28693,16 @@ func (o TemporaryDiskResponsePtrOutput) SizeInGB() pulumi.IntPtrOutput {
 type TriggeredBuildResultResponse struct {
 	// The unique build id of this build result
 	Id *string `pulumi:"id"`
+	// The container image of this build result
+	Image *string `pulumi:"image"`
+	// The last transition reason of this build result
+	LastTransitionReason *string `pulumi:"lastTransitionReason"`
+	// The last transition status of this build result
+	LastTransitionStatus *string `pulumi:"lastTransitionStatus"`
+	// The last transition time of this build result
+	LastTransitionTime *string `pulumi:"lastTransitionTime"`
+	// The provisioning state of this build result
+	ProvisioningState string `pulumi:"provisioningState"`
 }
 
 // The build result triggered by a build
@@ -27859,6 +28723,31 @@ func (o TriggeredBuildResultResponseOutput) ToTriggeredBuildResultResponseOutput
 // The unique build id of this build result
 func (o TriggeredBuildResultResponseOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TriggeredBuildResultResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The container image of this build result
+func (o TriggeredBuildResultResponseOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggeredBuildResultResponse) *string { return v.Image }).(pulumi.StringPtrOutput)
+}
+
+// The last transition reason of this build result
+func (o TriggeredBuildResultResponseOutput) LastTransitionReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggeredBuildResultResponse) *string { return v.LastTransitionReason }).(pulumi.StringPtrOutput)
+}
+
+// The last transition status of this build result
+func (o TriggeredBuildResultResponseOutput) LastTransitionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggeredBuildResultResponse) *string { return v.LastTransitionStatus }).(pulumi.StringPtrOutput)
+}
+
+// The last transition time of this build result
+func (o TriggeredBuildResultResponseOutput) LastTransitionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TriggeredBuildResultResponse) *string { return v.LastTransitionTime }).(pulumi.StringPtrOutput)
+}
+
+// The provisioning state of this build result
+func (o TriggeredBuildResultResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v TriggeredBuildResultResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Source with uploaded location
@@ -28580,6 +29469,302 @@ func (o WarUploadedUserSourceInfoResponsePtrOutput) Version() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Weekly planned maintenance
+type WeeklyMaintenanceScheduleConfiguration struct {
+	// The day to run the maintenance job
+	Day string `pulumi:"day"`
+	// The frequency to run the maintenance job
+	// Expected value is 'Weekly'.
+	Frequency string `pulumi:"frequency"`
+	// The hour to run the maintenance job
+	Hour int `pulumi:"hour"`
+}
+
+// WeeklyMaintenanceScheduleConfigurationInput is an input type that accepts WeeklyMaintenanceScheduleConfigurationArgs and WeeklyMaintenanceScheduleConfigurationOutput values.
+// You can construct a concrete instance of `WeeklyMaintenanceScheduleConfigurationInput` via:
+//
+//	WeeklyMaintenanceScheduleConfigurationArgs{...}
+type WeeklyMaintenanceScheduleConfigurationInput interface {
+	pulumi.Input
+
+	ToWeeklyMaintenanceScheduleConfigurationOutput() WeeklyMaintenanceScheduleConfigurationOutput
+	ToWeeklyMaintenanceScheduleConfigurationOutputWithContext(context.Context) WeeklyMaintenanceScheduleConfigurationOutput
+}
+
+// Weekly planned maintenance
+type WeeklyMaintenanceScheduleConfigurationArgs struct {
+	// The day to run the maintenance job
+	Day pulumi.StringInput `pulumi:"day"`
+	// The frequency to run the maintenance job
+	// Expected value is 'Weekly'.
+	Frequency pulumi.StringInput `pulumi:"frequency"`
+	// The hour to run the maintenance job
+	Hour pulumi.IntInput `pulumi:"hour"`
+}
+
+func (WeeklyMaintenanceScheduleConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WeeklyMaintenanceScheduleConfiguration)(nil)).Elem()
+}
+
+func (i WeeklyMaintenanceScheduleConfigurationArgs) ToWeeklyMaintenanceScheduleConfigurationOutput() WeeklyMaintenanceScheduleConfigurationOutput {
+	return i.ToWeeklyMaintenanceScheduleConfigurationOutputWithContext(context.Background())
+}
+
+func (i WeeklyMaintenanceScheduleConfigurationArgs) ToWeeklyMaintenanceScheduleConfigurationOutputWithContext(ctx context.Context) WeeklyMaintenanceScheduleConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WeeklyMaintenanceScheduleConfigurationOutput)
+}
+
+func (i WeeklyMaintenanceScheduleConfigurationArgs) ToWeeklyMaintenanceScheduleConfigurationPtrOutput() WeeklyMaintenanceScheduleConfigurationPtrOutput {
+	return i.ToWeeklyMaintenanceScheduleConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i WeeklyMaintenanceScheduleConfigurationArgs) ToWeeklyMaintenanceScheduleConfigurationPtrOutputWithContext(ctx context.Context) WeeklyMaintenanceScheduleConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WeeklyMaintenanceScheduleConfigurationOutput).ToWeeklyMaintenanceScheduleConfigurationPtrOutputWithContext(ctx)
+}
+
+// WeeklyMaintenanceScheduleConfigurationPtrInput is an input type that accepts WeeklyMaintenanceScheduleConfigurationArgs, WeeklyMaintenanceScheduleConfigurationPtr and WeeklyMaintenanceScheduleConfigurationPtrOutput values.
+// You can construct a concrete instance of `WeeklyMaintenanceScheduleConfigurationPtrInput` via:
+//
+//	        WeeklyMaintenanceScheduleConfigurationArgs{...}
+//
+//	or:
+//
+//	        nil
+type WeeklyMaintenanceScheduleConfigurationPtrInput interface {
+	pulumi.Input
+
+	ToWeeklyMaintenanceScheduleConfigurationPtrOutput() WeeklyMaintenanceScheduleConfigurationPtrOutput
+	ToWeeklyMaintenanceScheduleConfigurationPtrOutputWithContext(context.Context) WeeklyMaintenanceScheduleConfigurationPtrOutput
+}
+
+type weeklyMaintenanceScheduleConfigurationPtrType WeeklyMaintenanceScheduleConfigurationArgs
+
+func WeeklyMaintenanceScheduleConfigurationPtr(v *WeeklyMaintenanceScheduleConfigurationArgs) WeeklyMaintenanceScheduleConfigurationPtrInput {
+	return (*weeklyMaintenanceScheduleConfigurationPtrType)(v)
+}
+
+func (*weeklyMaintenanceScheduleConfigurationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WeeklyMaintenanceScheduleConfiguration)(nil)).Elem()
+}
+
+func (i *weeklyMaintenanceScheduleConfigurationPtrType) ToWeeklyMaintenanceScheduleConfigurationPtrOutput() WeeklyMaintenanceScheduleConfigurationPtrOutput {
+	return i.ToWeeklyMaintenanceScheduleConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (i *weeklyMaintenanceScheduleConfigurationPtrType) ToWeeklyMaintenanceScheduleConfigurationPtrOutputWithContext(ctx context.Context) WeeklyMaintenanceScheduleConfigurationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WeeklyMaintenanceScheduleConfigurationPtrOutput)
+}
+
+// Weekly planned maintenance
+type WeeklyMaintenanceScheduleConfigurationOutput struct{ *pulumi.OutputState }
+
+func (WeeklyMaintenanceScheduleConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WeeklyMaintenanceScheduleConfiguration)(nil)).Elem()
+}
+
+func (o WeeklyMaintenanceScheduleConfigurationOutput) ToWeeklyMaintenanceScheduleConfigurationOutput() WeeklyMaintenanceScheduleConfigurationOutput {
+	return o
+}
+
+func (o WeeklyMaintenanceScheduleConfigurationOutput) ToWeeklyMaintenanceScheduleConfigurationOutputWithContext(ctx context.Context) WeeklyMaintenanceScheduleConfigurationOutput {
+	return o
+}
+
+func (o WeeklyMaintenanceScheduleConfigurationOutput) ToWeeklyMaintenanceScheduleConfigurationPtrOutput() WeeklyMaintenanceScheduleConfigurationPtrOutput {
+	return o.ToWeeklyMaintenanceScheduleConfigurationPtrOutputWithContext(context.Background())
+}
+
+func (o WeeklyMaintenanceScheduleConfigurationOutput) ToWeeklyMaintenanceScheduleConfigurationPtrOutputWithContext(ctx context.Context) WeeklyMaintenanceScheduleConfigurationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WeeklyMaintenanceScheduleConfiguration) *WeeklyMaintenanceScheduleConfiguration {
+		return &v
+	}).(WeeklyMaintenanceScheduleConfigurationPtrOutput)
+}
+
+// The day to run the maintenance job
+func (o WeeklyMaintenanceScheduleConfigurationOutput) Day() pulumi.StringOutput {
+	return o.ApplyT(func(v WeeklyMaintenanceScheduleConfiguration) string { return v.Day }).(pulumi.StringOutput)
+}
+
+// The frequency to run the maintenance job
+// Expected value is 'Weekly'.
+func (o WeeklyMaintenanceScheduleConfigurationOutput) Frequency() pulumi.StringOutput {
+	return o.ApplyT(func(v WeeklyMaintenanceScheduleConfiguration) string { return v.Frequency }).(pulumi.StringOutput)
+}
+
+// The hour to run the maintenance job
+func (o WeeklyMaintenanceScheduleConfigurationOutput) Hour() pulumi.IntOutput {
+	return o.ApplyT(func(v WeeklyMaintenanceScheduleConfiguration) int { return v.Hour }).(pulumi.IntOutput)
+}
+
+type WeeklyMaintenanceScheduleConfigurationPtrOutput struct{ *pulumi.OutputState }
+
+func (WeeklyMaintenanceScheduleConfigurationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WeeklyMaintenanceScheduleConfiguration)(nil)).Elem()
+}
+
+func (o WeeklyMaintenanceScheduleConfigurationPtrOutput) ToWeeklyMaintenanceScheduleConfigurationPtrOutput() WeeklyMaintenanceScheduleConfigurationPtrOutput {
+	return o
+}
+
+func (o WeeklyMaintenanceScheduleConfigurationPtrOutput) ToWeeklyMaintenanceScheduleConfigurationPtrOutputWithContext(ctx context.Context) WeeklyMaintenanceScheduleConfigurationPtrOutput {
+	return o
+}
+
+func (o WeeklyMaintenanceScheduleConfigurationPtrOutput) Elem() WeeklyMaintenanceScheduleConfigurationOutput {
+	return o.ApplyT(func(v *WeeklyMaintenanceScheduleConfiguration) WeeklyMaintenanceScheduleConfiguration {
+		if v != nil {
+			return *v
+		}
+		var ret WeeklyMaintenanceScheduleConfiguration
+		return ret
+	}).(WeeklyMaintenanceScheduleConfigurationOutput)
+}
+
+// The day to run the maintenance job
+func (o WeeklyMaintenanceScheduleConfigurationPtrOutput) Day() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WeeklyMaintenanceScheduleConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Day
+	}).(pulumi.StringPtrOutput)
+}
+
+// The frequency to run the maintenance job
+// Expected value is 'Weekly'.
+func (o WeeklyMaintenanceScheduleConfigurationPtrOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WeeklyMaintenanceScheduleConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Frequency
+	}).(pulumi.StringPtrOutput)
+}
+
+// The hour to run the maintenance job
+func (o WeeklyMaintenanceScheduleConfigurationPtrOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WeeklyMaintenanceScheduleConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Hour
+	}).(pulumi.IntPtrOutput)
+}
+
+// Weekly planned maintenance
+type WeeklyMaintenanceScheduleConfigurationResponse struct {
+	// The day to run the maintenance job
+	Day string `pulumi:"day"`
+	// The duration time to run the maintenance job, specified in ISO8601 format, e.g. PT8H
+	Duration string `pulumi:"duration"`
+	// The frequency to run the maintenance job
+	// Expected value is 'Weekly'.
+	Frequency string `pulumi:"frequency"`
+	// The hour to run the maintenance job
+	Hour int `pulumi:"hour"`
+}
+
+// Weekly planned maintenance
+type WeeklyMaintenanceScheduleConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (WeeklyMaintenanceScheduleConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WeeklyMaintenanceScheduleConfigurationResponse)(nil)).Elem()
+}
+
+func (o WeeklyMaintenanceScheduleConfigurationResponseOutput) ToWeeklyMaintenanceScheduleConfigurationResponseOutput() WeeklyMaintenanceScheduleConfigurationResponseOutput {
+	return o
+}
+
+func (o WeeklyMaintenanceScheduleConfigurationResponseOutput) ToWeeklyMaintenanceScheduleConfigurationResponseOutputWithContext(ctx context.Context) WeeklyMaintenanceScheduleConfigurationResponseOutput {
+	return o
+}
+
+// The day to run the maintenance job
+func (o WeeklyMaintenanceScheduleConfigurationResponseOutput) Day() pulumi.StringOutput {
+	return o.ApplyT(func(v WeeklyMaintenanceScheduleConfigurationResponse) string { return v.Day }).(pulumi.StringOutput)
+}
+
+// The duration time to run the maintenance job, specified in ISO8601 format, e.g. PT8H
+func (o WeeklyMaintenanceScheduleConfigurationResponseOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v WeeklyMaintenanceScheduleConfigurationResponse) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// The frequency to run the maintenance job
+// Expected value is 'Weekly'.
+func (o WeeklyMaintenanceScheduleConfigurationResponseOutput) Frequency() pulumi.StringOutput {
+	return o.ApplyT(func(v WeeklyMaintenanceScheduleConfigurationResponse) string { return v.Frequency }).(pulumi.StringOutput)
+}
+
+// The hour to run the maintenance job
+func (o WeeklyMaintenanceScheduleConfigurationResponseOutput) Hour() pulumi.IntOutput {
+	return o.ApplyT(func(v WeeklyMaintenanceScheduleConfigurationResponse) int { return v.Hour }).(pulumi.IntOutput)
+}
+
+type WeeklyMaintenanceScheduleConfigurationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WeeklyMaintenanceScheduleConfigurationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WeeklyMaintenanceScheduleConfigurationResponse)(nil)).Elem()
+}
+
+func (o WeeklyMaintenanceScheduleConfigurationResponsePtrOutput) ToWeeklyMaintenanceScheduleConfigurationResponsePtrOutput() WeeklyMaintenanceScheduleConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o WeeklyMaintenanceScheduleConfigurationResponsePtrOutput) ToWeeklyMaintenanceScheduleConfigurationResponsePtrOutputWithContext(ctx context.Context) WeeklyMaintenanceScheduleConfigurationResponsePtrOutput {
+	return o
+}
+
+func (o WeeklyMaintenanceScheduleConfigurationResponsePtrOutput) Elem() WeeklyMaintenanceScheduleConfigurationResponseOutput {
+	return o.ApplyT(func(v *WeeklyMaintenanceScheduleConfigurationResponse) WeeklyMaintenanceScheduleConfigurationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WeeklyMaintenanceScheduleConfigurationResponse
+		return ret
+	}).(WeeklyMaintenanceScheduleConfigurationResponseOutput)
+}
+
+// The day to run the maintenance job
+func (o WeeklyMaintenanceScheduleConfigurationResponsePtrOutput) Day() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WeeklyMaintenanceScheduleConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Day
+	}).(pulumi.StringPtrOutput)
+}
+
+// The duration time to run the maintenance job, specified in ISO8601 format, e.g. PT8H
+func (o WeeklyMaintenanceScheduleConfigurationResponsePtrOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WeeklyMaintenanceScheduleConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Duration
+	}).(pulumi.StringPtrOutput)
+}
+
+// The frequency to run the maintenance job
+// Expected value is 'Weekly'.
+func (o WeeklyMaintenanceScheduleConfigurationResponsePtrOutput) Frequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WeeklyMaintenanceScheduleConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Frequency
+	}).(pulumi.StringPtrOutput)
+}
+
+// The hour to run the maintenance job
+func (o WeeklyMaintenanceScheduleConfigurationResponsePtrOutput) Hour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *WeeklyMaintenanceScheduleConfigurationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Hour
+	}).(pulumi.IntPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AcceleratorBasicAuthSettingOutput{})
 	pulumi.RegisterOutputType(AcceleratorBasicAuthSettingPtrOutput{})
@@ -28803,6 +29988,14 @@ func init() {
 	pulumi.RegisterOutputType(GatewayCustomDomainPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(GatewayInstanceResponseOutput{})
 	pulumi.RegisterOutputType(GatewayInstanceResponseArrayOutput{})
+	pulumi.RegisterOutputType(GatewayLocalResponseCachePerInstancePropertiesOutput{})
+	pulumi.RegisterOutputType(GatewayLocalResponseCachePerInstancePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GatewayLocalResponseCachePerInstancePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(GatewayLocalResponseCachePerInstancePropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(GatewayLocalResponseCachePerRoutePropertiesOutput{})
+	pulumi.RegisterOutputType(GatewayLocalResponseCachePerRoutePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GatewayLocalResponseCachePerRoutePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(GatewayLocalResponseCachePerRoutePropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(GatewayOperatorPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(GatewayOperatorResourceRequestsResponseOutput{})
 	pulumi.RegisterOutputType(GatewayPropertiesOutput{})
@@ -28991,4 +30184,8 @@ func init() {
 	pulumi.RegisterOutputType(WarUploadedUserSourceInfoPtrOutput{})
 	pulumi.RegisterOutputType(WarUploadedUserSourceInfoResponseOutput{})
 	pulumi.RegisterOutputType(WarUploadedUserSourceInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(WeeklyMaintenanceScheduleConfigurationOutput{})
+	pulumi.RegisterOutputType(WeeklyMaintenanceScheduleConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(WeeklyMaintenanceScheduleConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(WeeklyMaintenanceScheduleConfigurationResponsePtrOutput{})
 }

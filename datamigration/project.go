@@ -8,42 +8,43 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A project resource
 //
-// Uses Azure REST API version 2021-06-30. In version 1.x of the Azure Native provider, it used API version 2018-04-19.
+// Uses Azure REST API version 2023-07-15-preview. In version 2.x of the Azure Native provider, it used API version 2021-06-30.
 //
-// Other available API versions: 2021-10-30-preview, 2022-03-30-preview, 2023-07-15-preview.
+// Other available API versions: 2021-06-30, 2021-10-30-preview, 2022-01-30-preview, 2022-03-30-preview, 2025-03-15-preview, 2025-06-30, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Project struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Field that defines the Azure active directory application info, used to connect to the target Azure resource
+	AzureAuthenticationInfo AzureActiveDirectoryAppResponsePtrOutput `pulumi:"azureAuthenticationInfo"`
 	// UTC Date and time when project was created
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
 	// List of DatabaseInfo
 	DatabasesInfo DatabaseInfoResponseArrayOutput `pulumi:"databasesInfo"`
-	// Resource location.
-	Location pulumi.StringOutput `pulumi:"location"`
-	// Resource name.
-	Name pulumi.StringOutput `pulumi:"name"`
+	// HTTP strong entity tag value. This is ignored if submitted.
+	Etag     pulumi.StringPtrOutput `pulumi:"etag"`
+	Location pulumi.StringPtrOutput `pulumi:"location"`
+	Name     pulumi.StringOutput    `pulumi:"name"`
 	// The project's provisioning state
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Information for connecting to source
 	SourceConnectionInfo pulumi.AnyOutput `pulumi:"sourceConnectionInfo"`
 	// Source platform for the project
-	SourcePlatform pulumi.StringOutput `pulumi:"sourcePlatform"`
-	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource tags.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	SourcePlatform pulumi.StringOutput      `pulumi:"sourcePlatform"`
+	SystemData     SystemDataResponseOutput `pulumi:"systemData"`
+	Tags           pulumi.StringMapOutput   `pulumi:"tags"`
 	// Information for connecting to target
 	TargetConnectionInfo pulumi.AnyOutput `pulumi:"targetConnectionInfo"`
 	// Target platform for the project
 	TargetPlatform pulumi.StringOutput `pulumi:"targetPlatform"`
-	// Resource type.
-	Type pulumi.StringOutput `pulumi:"type"`
+	Type           pulumi.StringOutput `pulumi:"type"`
 }
 
 // NewProject registers a new resource with the given unique name, arguments, and options.
@@ -96,6 +97,15 @@ func NewProject(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:datamigration/v20230715preview:Project"),
 		},
+		{
+			Type: pulumi.String("azure-native:datamigration/v20250315preview:Project"),
+		},
+		{
+			Type: pulumi.String("azure-native:datamigration/v20250630:Project"),
+		},
+		{
+			Type: pulumi.String("azure-native:datamigration/v20250901preview:Project"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -131,12 +141,13 @@ func (ProjectState) ElementType() reflect.Type {
 }
 
 type projectArgs struct {
+	// Field that defines the Azure active directory application info, used to connect to the target Azure resource
+	AzureAuthenticationInfo *AzureActiveDirectoryApp `pulumi:"azureAuthenticationInfo"`
 	// List of DatabaseInfo
 	DatabasesInfo []DatabaseInfo `pulumi:"databasesInfo"`
 	// Name of the resource group
-	GroupName string `pulumi:"groupName"`
-	// Resource location.
-	Location *string `pulumi:"location"`
+	GroupName string  `pulumi:"groupName"`
+	Location  *string `pulumi:"location"`
 	// Name of the project
 	ProjectName *string `pulumi:"projectName"`
 	// Name of the service
@@ -144,9 +155,8 @@ type projectArgs struct {
 	// Information for connecting to source
 	SourceConnectionInfo interface{} `pulumi:"sourceConnectionInfo"`
 	// Source platform for the project
-	SourcePlatform string `pulumi:"sourcePlatform"`
-	// Resource tags.
-	Tags map[string]string `pulumi:"tags"`
+	SourcePlatform string            `pulumi:"sourcePlatform"`
+	Tags           map[string]string `pulumi:"tags"`
 	// Information for connecting to target
 	TargetConnectionInfo interface{} `pulumi:"targetConnectionInfo"`
 	// Target platform for the project
@@ -155,12 +165,13 @@ type projectArgs struct {
 
 // The set of arguments for constructing a Project resource.
 type ProjectArgs struct {
+	// Field that defines the Azure active directory application info, used to connect to the target Azure resource
+	AzureAuthenticationInfo AzureActiveDirectoryAppPtrInput
 	// List of DatabaseInfo
 	DatabasesInfo DatabaseInfoArrayInput
 	// Name of the resource group
 	GroupName pulumi.StringInput
-	// Resource location.
-	Location pulumi.StringPtrInput
+	Location  pulumi.StringPtrInput
 	// Name of the project
 	ProjectName pulumi.StringPtrInput
 	// Name of the service
@@ -169,8 +180,7 @@ type ProjectArgs struct {
 	SourceConnectionInfo pulumi.Input
 	// Source platform for the project
 	SourcePlatform pulumi.StringInput
-	// Resource tags.
-	Tags pulumi.StringMapInput
+	Tags           pulumi.StringMapInput
 	// Information for connecting to target
 	TargetConnectionInfo pulumi.Input
 	// Target platform for the project
@@ -214,6 +224,16 @@ func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ProjectOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Field that defines the Azure active directory application info, used to connect to the target Azure resource
+func (o ProjectOutput) AzureAuthenticationInfo() AzureActiveDirectoryAppResponsePtrOutput {
+	return o.ApplyT(func(v *Project) AzureActiveDirectoryAppResponsePtrOutput { return v.AzureAuthenticationInfo }).(AzureActiveDirectoryAppResponsePtrOutput)
+}
+
 // UTC Date and time when project was created
 func (o ProjectOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.CreationTime }).(pulumi.StringOutput)
@@ -224,12 +244,15 @@ func (o ProjectOutput) DatabasesInfo() DatabaseInfoResponseArrayOutput {
 	return o.ApplyT(func(v *Project) DatabaseInfoResponseArrayOutput { return v.DatabasesInfo }).(DatabaseInfoResponseArrayOutput)
 }
 
-// Resource location.
-func (o ProjectOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+// HTTP strong entity tag value. This is ignored if submitted.
+func (o ProjectOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Resource name.
+func (o ProjectOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
+}
+
 func (o ProjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -249,12 +272,10 @@ func (o ProjectOutput) SourcePlatform() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.SourcePlatform }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
 func (o ProjectOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Project) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Resource tags.
 func (o ProjectOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -269,7 +290,6 @@ func (o ProjectOutput) TargetPlatform() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.TargetPlatform }).(pulumi.StringOutput)
 }
 
-// Resource type.
 func (o ProjectOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -8,52 +8,36 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Network function resource response.
 //
-// Uses Azure REST API version 2022-01-01-preview. In version 1.x of the Azure Native provider, it used API version 2020-01-01-preview.
+// Uses Azure REST API version 2024-04-15. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
 //
-// Other available API versions: 2023-09-01, 2024-04-15.
+// Other available API versions: 2022-01-01-preview, 2023-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridnetwork [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type NetworkFunction struct {
 	pulumi.CustomResourceState
 
-	// The reference to the device resource. Once set, it cannot be updated.
-	Device SubResourceResponsePtrOutput `pulumi:"device"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A unique read-only string that changes whenever the resource is updated.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
+	// The managed identity of the network function.
+	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The resource URI of the managed application.
-	ManagedApplication SubResourceResponseOutput `pulumi:"managedApplication"`
-	// The parameters for the managed application.
-	ManagedApplicationParameters pulumi.AnyOutput `pulumi:"managedApplicationParameters"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The network function container configurations from the user.
-	NetworkFunctionContainerConfigurations pulumi.AnyOutput `pulumi:"networkFunctionContainerConfigurations"`
-	// The network function configurations from the user.
-	NetworkFunctionUserConfigurations NetworkFunctionUserConfigurationResponseArrayOutput `pulumi:"networkFunctionUserConfigurations"`
-	// The provisioning state of the network function resource.
-	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// The service key for the network function resource.
-	ServiceKey pulumi.StringOutput `pulumi:"serviceKey"`
-	// The sku name for the network function. Once set, it cannot be updated.
-	SkuName pulumi.StringPtrOutput `pulumi:"skuName"`
-	// The sku type for the network function.
-	SkuType pulumi.StringOutput `pulumi:"skuType"`
-	// The system meta data relating to this resource.
+	// Network function properties.
+	Properties pulumi.AnyOutput `pulumi:"properties"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The vendor name for the network function. Once set, it cannot be updated.
-	VendorName pulumi.StringPtrOutput `pulumi:"vendorName"`
-	// The vendor provisioning state for the network function resource.
-	VendorProvisioningState pulumi.StringOutput `pulumi:"vendorProvisioningState"`
 }
 
 // NewNetworkFunction registers a new resource with the given unique name, arguments, and options.
@@ -117,50 +101,34 @@ func (NetworkFunctionState) ElementType() reflect.Type {
 }
 
 type networkFunctionArgs struct {
-	// The reference to the device resource. Once set, it cannot be updated.
-	Device *SubResource `pulumi:"device"`
+	// The managed identity of the network function.
+	Identity *ManagedServiceIdentity `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// The parameters for the managed application.
-	ManagedApplicationParameters interface{} `pulumi:"managedApplicationParameters"`
-	// The network function container configurations from the user.
-	NetworkFunctionContainerConfigurations interface{} `pulumi:"networkFunctionContainerConfigurations"`
 	// Resource name for the network function resource.
 	NetworkFunctionName *string `pulumi:"networkFunctionName"`
-	// The network function configurations from the user.
-	NetworkFunctionUserConfigurations []NetworkFunctionUserConfiguration `pulumi:"networkFunctionUserConfigurations"`
+	// Network function properties.
+	Properties interface{} `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// The sku name for the network function. Once set, it cannot be updated.
-	SkuName *string `pulumi:"skuName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// The vendor name for the network function. Once set, it cannot be updated.
-	VendorName *string `pulumi:"vendorName"`
 }
 
 // The set of arguments for constructing a NetworkFunction resource.
 type NetworkFunctionArgs struct {
-	// The reference to the device resource. Once set, it cannot be updated.
-	Device SubResourcePtrInput
+	// The managed identity of the network function.
+	Identity ManagedServiceIdentityPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// The parameters for the managed application.
-	ManagedApplicationParameters pulumi.Input
-	// The network function container configurations from the user.
-	NetworkFunctionContainerConfigurations pulumi.Input
 	// Resource name for the network function resource.
 	NetworkFunctionName pulumi.StringPtrInput
-	// The network function configurations from the user.
-	NetworkFunctionUserConfigurations NetworkFunctionUserConfigurationArrayInput
+	// Network function properties.
+	Properties pulumi.Input
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// The sku name for the network function. Once set, it cannot be updated.
-	SkuName pulumi.StringPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
-	// The vendor name for the network function. Once set, it cannot be updated.
-	VendorName pulumi.StringPtrInput
 }
 
 func (NetworkFunctionArgs) ElementType() reflect.Type {
@@ -200,9 +168,9 @@ func (o NetworkFunctionOutput) ToNetworkFunctionOutputWithContext(ctx context.Co
 	return o
 }
 
-// The reference to the device resource. Once set, it cannot be updated.
-func (o NetworkFunctionOutput) Device() SubResourceResponsePtrOutput {
-	return o.ApplyT(func(v *NetworkFunction) SubResourceResponsePtrOutput { return v.Device }).(SubResourceResponsePtrOutput)
+// The Azure API version of the resource.
+func (o NetworkFunctionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkFunction) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A unique read-only string that changes whenever the resource is updated.
@@ -210,19 +178,14 @@ func (o NetworkFunctionOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkFunction) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
+// The managed identity of the network function.
+func (o NetworkFunctionOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *NetworkFunction) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+}
+
 // The geo-location where the resource lives
 func (o NetworkFunctionOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkFunction) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
-}
-
-// The resource URI of the managed application.
-func (o NetworkFunctionOutput) ManagedApplication() SubResourceResponseOutput {
-	return o.ApplyT(func(v *NetworkFunction) SubResourceResponseOutput { return v.ManagedApplication }).(SubResourceResponseOutput)
-}
-
-// The parameters for the managed application.
-func (o NetworkFunctionOutput) ManagedApplicationParameters() pulumi.AnyOutput {
-	return o.ApplyT(func(v *NetworkFunction) pulumi.AnyOutput { return v.ManagedApplicationParameters }).(pulumi.AnyOutput)
 }
 
 // The name of the resource
@@ -230,39 +193,12 @@ func (o NetworkFunctionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkFunction) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The network function container configurations from the user.
-func (o NetworkFunctionOutput) NetworkFunctionContainerConfigurations() pulumi.AnyOutput {
-	return o.ApplyT(func(v *NetworkFunction) pulumi.AnyOutput { return v.NetworkFunctionContainerConfigurations }).(pulumi.AnyOutput)
+// Network function properties.
+func (o NetworkFunctionOutput) Properties() pulumi.AnyOutput {
+	return o.ApplyT(func(v *NetworkFunction) pulumi.AnyOutput { return v.Properties }).(pulumi.AnyOutput)
 }
 
-// The network function configurations from the user.
-func (o NetworkFunctionOutput) NetworkFunctionUserConfigurations() NetworkFunctionUserConfigurationResponseArrayOutput {
-	return o.ApplyT(func(v *NetworkFunction) NetworkFunctionUserConfigurationResponseArrayOutput {
-		return v.NetworkFunctionUserConfigurations
-	}).(NetworkFunctionUserConfigurationResponseArrayOutput)
-}
-
-// The provisioning state of the network function resource.
-func (o NetworkFunctionOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v *NetworkFunction) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The service key for the network function resource.
-func (o NetworkFunctionOutput) ServiceKey() pulumi.StringOutput {
-	return o.ApplyT(func(v *NetworkFunction) pulumi.StringOutput { return v.ServiceKey }).(pulumi.StringOutput)
-}
-
-// The sku name for the network function. Once set, it cannot be updated.
-func (o NetworkFunctionOutput) SkuName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkFunction) pulumi.StringPtrOutput { return v.SkuName }).(pulumi.StringPtrOutput)
-}
-
-// The sku type for the network function.
-func (o NetworkFunctionOutput) SkuType() pulumi.StringOutput {
-	return o.ApplyT(func(v *NetworkFunction) pulumi.StringOutput { return v.SkuType }).(pulumi.StringOutput)
-}
-
-// The system meta data relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o NetworkFunctionOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *NetworkFunction) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -275,16 +211,6 @@ func (o NetworkFunctionOutput) Tags() pulumi.StringMapOutput {
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o NetworkFunctionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkFunction) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
-}
-
-// The vendor name for the network function. Once set, it cannot be updated.
-func (o NetworkFunctionOutput) VendorName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkFunction) pulumi.StringPtrOutput { return v.VendorName }).(pulumi.StringPtrOutput)
-}
-
-// The vendor provisioning state for the network function resource.
-func (o NetworkFunctionOutput) VendorProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v *NetworkFunction) pulumi.StringOutput { return v.VendorProvisioningState }).(pulumi.StringOutput)
 }
 
 func init() {

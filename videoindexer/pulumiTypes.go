@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -285,242 +285,6 @@ func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAs
 	}).(UserAssignedIdentityResponseMapOutput)
 }
 
-// The media services details
-type MediaServicesForPutRequest struct {
-	// The media services resource id
-	ResourceId *string `pulumi:"resourceId"`
-	// The user assigned identity to be used to grant permissions
-	UserAssignedIdentity *string `pulumi:"userAssignedIdentity"`
-}
-
-// MediaServicesForPutRequestInput is an input type that accepts MediaServicesForPutRequestArgs and MediaServicesForPutRequestOutput values.
-// You can construct a concrete instance of `MediaServicesForPutRequestInput` via:
-//
-//	MediaServicesForPutRequestArgs{...}
-type MediaServicesForPutRequestInput interface {
-	pulumi.Input
-
-	ToMediaServicesForPutRequestOutput() MediaServicesForPutRequestOutput
-	ToMediaServicesForPutRequestOutputWithContext(context.Context) MediaServicesForPutRequestOutput
-}
-
-// The media services details
-type MediaServicesForPutRequestArgs struct {
-	// The media services resource id
-	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
-	// The user assigned identity to be used to grant permissions
-	UserAssignedIdentity pulumi.StringPtrInput `pulumi:"userAssignedIdentity"`
-}
-
-func (MediaServicesForPutRequestArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MediaServicesForPutRequest)(nil)).Elem()
-}
-
-func (i MediaServicesForPutRequestArgs) ToMediaServicesForPutRequestOutput() MediaServicesForPutRequestOutput {
-	return i.ToMediaServicesForPutRequestOutputWithContext(context.Background())
-}
-
-func (i MediaServicesForPutRequestArgs) ToMediaServicesForPutRequestOutputWithContext(ctx context.Context) MediaServicesForPutRequestOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MediaServicesForPutRequestOutput)
-}
-
-func (i MediaServicesForPutRequestArgs) ToMediaServicesForPutRequestPtrOutput() MediaServicesForPutRequestPtrOutput {
-	return i.ToMediaServicesForPutRequestPtrOutputWithContext(context.Background())
-}
-
-func (i MediaServicesForPutRequestArgs) ToMediaServicesForPutRequestPtrOutputWithContext(ctx context.Context) MediaServicesForPutRequestPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MediaServicesForPutRequestOutput).ToMediaServicesForPutRequestPtrOutputWithContext(ctx)
-}
-
-// MediaServicesForPutRequestPtrInput is an input type that accepts MediaServicesForPutRequestArgs, MediaServicesForPutRequestPtr and MediaServicesForPutRequestPtrOutput values.
-// You can construct a concrete instance of `MediaServicesForPutRequestPtrInput` via:
-//
-//	        MediaServicesForPutRequestArgs{...}
-//
-//	or:
-//
-//	        nil
-type MediaServicesForPutRequestPtrInput interface {
-	pulumi.Input
-
-	ToMediaServicesForPutRequestPtrOutput() MediaServicesForPutRequestPtrOutput
-	ToMediaServicesForPutRequestPtrOutputWithContext(context.Context) MediaServicesForPutRequestPtrOutput
-}
-
-type mediaServicesForPutRequestPtrType MediaServicesForPutRequestArgs
-
-func MediaServicesForPutRequestPtr(v *MediaServicesForPutRequestArgs) MediaServicesForPutRequestPtrInput {
-	return (*mediaServicesForPutRequestPtrType)(v)
-}
-
-func (*mediaServicesForPutRequestPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**MediaServicesForPutRequest)(nil)).Elem()
-}
-
-func (i *mediaServicesForPutRequestPtrType) ToMediaServicesForPutRequestPtrOutput() MediaServicesForPutRequestPtrOutput {
-	return i.ToMediaServicesForPutRequestPtrOutputWithContext(context.Background())
-}
-
-func (i *mediaServicesForPutRequestPtrType) ToMediaServicesForPutRequestPtrOutputWithContext(ctx context.Context) MediaServicesForPutRequestPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MediaServicesForPutRequestPtrOutput)
-}
-
-// The media services details
-type MediaServicesForPutRequestOutput struct{ *pulumi.OutputState }
-
-func (MediaServicesForPutRequestOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MediaServicesForPutRequest)(nil)).Elem()
-}
-
-func (o MediaServicesForPutRequestOutput) ToMediaServicesForPutRequestOutput() MediaServicesForPutRequestOutput {
-	return o
-}
-
-func (o MediaServicesForPutRequestOutput) ToMediaServicesForPutRequestOutputWithContext(ctx context.Context) MediaServicesForPutRequestOutput {
-	return o
-}
-
-func (o MediaServicesForPutRequestOutput) ToMediaServicesForPutRequestPtrOutput() MediaServicesForPutRequestPtrOutput {
-	return o.ToMediaServicesForPutRequestPtrOutputWithContext(context.Background())
-}
-
-func (o MediaServicesForPutRequestOutput) ToMediaServicesForPutRequestPtrOutputWithContext(ctx context.Context) MediaServicesForPutRequestPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v MediaServicesForPutRequest) *MediaServicesForPutRequest {
-		return &v
-	}).(MediaServicesForPutRequestPtrOutput)
-}
-
-// The media services resource id
-func (o MediaServicesForPutRequestOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MediaServicesForPutRequest) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
-}
-
-// The user assigned identity to be used to grant permissions
-func (o MediaServicesForPutRequestOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MediaServicesForPutRequest) *string { return v.UserAssignedIdentity }).(pulumi.StringPtrOutput)
-}
-
-type MediaServicesForPutRequestPtrOutput struct{ *pulumi.OutputState }
-
-func (MediaServicesForPutRequestPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MediaServicesForPutRequest)(nil)).Elem()
-}
-
-func (o MediaServicesForPutRequestPtrOutput) ToMediaServicesForPutRequestPtrOutput() MediaServicesForPutRequestPtrOutput {
-	return o
-}
-
-func (o MediaServicesForPutRequestPtrOutput) ToMediaServicesForPutRequestPtrOutputWithContext(ctx context.Context) MediaServicesForPutRequestPtrOutput {
-	return o
-}
-
-func (o MediaServicesForPutRequestPtrOutput) Elem() MediaServicesForPutRequestOutput {
-	return o.ApplyT(func(v *MediaServicesForPutRequest) MediaServicesForPutRequest {
-		if v != nil {
-			return *v
-		}
-		var ret MediaServicesForPutRequest
-		return ret
-	}).(MediaServicesForPutRequestOutput)
-}
-
-// The media services resource id
-func (o MediaServicesForPutRequestPtrOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MediaServicesForPutRequest) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ResourceId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The user assigned identity to be used to grant permissions
-func (o MediaServicesForPutRequestPtrOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MediaServicesForPutRequest) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UserAssignedIdentity
-	}).(pulumi.StringPtrOutput)
-}
-
-// The media services details
-type MediaServicesForPutRequestResponse struct {
-	// The media services resource id
-	ResourceId *string `pulumi:"resourceId"`
-	// The user assigned identity to be used to grant permissions
-	UserAssignedIdentity *string `pulumi:"userAssignedIdentity"`
-}
-
-// The media services details
-type MediaServicesForPutRequestResponseOutput struct{ *pulumi.OutputState }
-
-func (MediaServicesForPutRequestResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MediaServicesForPutRequestResponse)(nil)).Elem()
-}
-
-func (o MediaServicesForPutRequestResponseOutput) ToMediaServicesForPutRequestResponseOutput() MediaServicesForPutRequestResponseOutput {
-	return o
-}
-
-func (o MediaServicesForPutRequestResponseOutput) ToMediaServicesForPutRequestResponseOutputWithContext(ctx context.Context) MediaServicesForPutRequestResponseOutput {
-	return o
-}
-
-// The media services resource id
-func (o MediaServicesForPutRequestResponseOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MediaServicesForPutRequestResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
-}
-
-// The user assigned identity to be used to grant permissions
-func (o MediaServicesForPutRequestResponseOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MediaServicesForPutRequestResponse) *string { return v.UserAssignedIdentity }).(pulumi.StringPtrOutput)
-}
-
-type MediaServicesForPutRequestResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (MediaServicesForPutRequestResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MediaServicesForPutRequestResponse)(nil)).Elem()
-}
-
-func (o MediaServicesForPutRequestResponsePtrOutput) ToMediaServicesForPutRequestResponsePtrOutput() MediaServicesForPutRequestResponsePtrOutput {
-	return o
-}
-
-func (o MediaServicesForPutRequestResponsePtrOutput) ToMediaServicesForPutRequestResponsePtrOutputWithContext(ctx context.Context) MediaServicesForPutRequestResponsePtrOutput {
-	return o
-}
-
-func (o MediaServicesForPutRequestResponsePtrOutput) Elem() MediaServicesForPutRequestResponseOutput {
-	return o.ApplyT(func(v *MediaServicesForPutRequestResponse) MediaServicesForPutRequestResponse {
-		if v != nil {
-			return *v
-		}
-		var ret MediaServicesForPutRequestResponse
-		return ret
-	}).(MediaServicesForPutRequestResponseOutput)
-}
-
-// The media services resource id
-func (o MediaServicesForPutRequestResponsePtrOutput) ResourceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MediaServicesForPutRequestResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.ResourceId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The user assigned identity to be used to grant permissions
-func (o MediaServicesForPutRequestResponsePtrOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MediaServicesForPutRequestResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UserAssignedIdentity
-	}).(pulumi.StringPtrOutput)
-}
-
 // The private endpoint resource.
 type PrivateEndpointResponse struct {
 	// The ARM identifier for private endpoint.
@@ -694,6 +458,242 @@ func (o PrivateLinkServiceConnectionStateResponseOutput) Status() pulumi.StringP
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// The storage services details
+type StorageServicesForPutRequest struct {
+	// The storage services resource id
+	ResourceId *string `pulumi:"resourceId"`
+	// The user assigned identity to be used to grant permissions
+	UserAssignedIdentity *string `pulumi:"userAssignedIdentity"`
+}
+
+// StorageServicesForPutRequestInput is an input type that accepts StorageServicesForPutRequestArgs and StorageServicesForPutRequestOutput values.
+// You can construct a concrete instance of `StorageServicesForPutRequestInput` via:
+//
+//	StorageServicesForPutRequestArgs{...}
+type StorageServicesForPutRequestInput interface {
+	pulumi.Input
+
+	ToStorageServicesForPutRequestOutput() StorageServicesForPutRequestOutput
+	ToStorageServicesForPutRequestOutputWithContext(context.Context) StorageServicesForPutRequestOutput
+}
+
+// The storage services details
+type StorageServicesForPutRequestArgs struct {
+	// The storage services resource id
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+	// The user assigned identity to be used to grant permissions
+	UserAssignedIdentity pulumi.StringPtrInput `pulumi:"userAssignedIdentity"`
+}
+
+func (StorageServicesForPutRequestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageServicesForPutRequest)(nil)).Elem()
+}
+
+func (i StorageServicesForPutRequestArgs) ToStorageServicesForPutRequestOutput() StorageServicesForPutRequestOutput {
+	return i.ToStorageServicesForPutRequestOutputWithContext(context.Background())
+}
+
+func (i StorageServicesForPutRequestArgs) ToStorageServicesForPutRequestOutputWithContext(ctx context.Context) StorageServicesForPutRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageServicesForPutRequestOutput)
+}
+
+func (i StorageServicesForPutRequestArgs) ToStorageServicesForPutRequestPtrOutput() StorageServicesForPutRequestPtrOutput {
+	return i.ToStorageServicesForPutRequestPtrOutputWithContext(context.Background())
+}
+
+func (i StorageServicesForPutRequestArgs) ToStorageServicesForPutRequestPtrOutputWithContext(ctx context.Context) StorageServicesForPutRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageServicesForPutRequestOutput).ToStorageServicesForPutRequestPtrOutputWithContext(ctx)
+}
+
+// StorageServicesForPutRequestPtrInput is an input type that accepts StorageServicesForPutRequestArgs, StorageServicesForPutRequestPtr and StorageServicesForPutRequestPtrOutput values.
+// You can construct a concrete instance of `StorageServicesForPutRequestPtrInput` via:
+//
+//	        StorageServicesForPutRequestArgs{...}
+//
+//	or:
+//
+//	        nil
+type StorageServicesForPutRequestPtrInput interface {
+	pulumi.Input
+
+	ToStorageServicesForPutRequestPtrOutput() StorageServicesForPutRequestPtrOutput
+	ToStorageServicesForPutRequestPtrOutputWithContext(context.Context) StorageServicesForPutRequestPtrOutput
+}
+
+type storageServicesForPutRequestPtrType StorageServicesForPutRequestArgs
+
+func StorageServicesForPutRequestPtr(v *StorageServicesForPutRequestArgs) StorageServicesForPutRequestPtrInput {
+	return (*storageServicesForPutRequestPtrType)(v)
+}
+
+func (*storageServicesForPutRequestPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageServicesForPutRequest)(nil)).Elem()
+}
+
+func (i *storageServicesForPutRequestPtrType) ToStorageServicesForPutRequestPtrOutput() StorageServicesForPutRequestPtrOutput {
+	return i.ToStorageServicesForPutRequestPtrOutputWithContext(context.Background())
+}
+
+func (i *storageServicesForPutRequestPtrType) ToStorageServicesForPutRequestPtrOutputWithContext(ctx context.Context) StorageServicesForPutRequestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StorageServicesForPutRequestPtrOutput)
+}
+
+// The storage services details
+type StorageServicesForPutRequestOutput struct{ *pulumi.OutputState }
+
+func (StorageServicesForPutRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageServicesForPutRequest)(nil)).Elem()
+}
+
+func (o StorageServicesForPutRequestOutput) ToStorageServicesForPutRequestOutput() StorageServicesForPutRequestOutput {
+	return o
+}
+
+func (o StorageServicesForPutRequestOutput) ToStorageServicesForPutRequestOutputWithContext(ctx context.Context) StorageServicesForPutRequestOutput {
+	return o
+}
+
+func (o StorageServicesForPutRequestOutput) ToStorageServicesForPutRequestPtrOutput() StorageServicesForPutRequestPtrOutput {
+	return o.ToStorageServicesForPutRequestPtrOutputWithContext(context.Background())
+}
+
+func (o StorageServicesForPutRequestOutput) ToStorageServicesForPutRequestPtrOutputWithContext(ctx context.Context) StorageServicesForPutRequestPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageServicesForPutRequest) *StorageServicesForPutRequest {
+		return &v
+	}).(StorageServicesForPutRequestPtrOutput)
+}
+
+// The storage services resource id
+func (o StorageServicesForPutRequestOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageServicesForPutRequest) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+// The user assigned identity to be used to grant permissions
+func (o StorageServicesForPutRequestOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageServicesForPutRequest) *string { return v.UserAssignedIdentity }).(pulumi.StringPtrOutput)
+}
+
+type StorageServicesForPutRequestPtrOutput struct{ *pulumi.OutputState }
+
+func (StorageServicesForPutRequestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageServicesForPutRequest)(nil)).Elem()
+}
+
+func (o StorageServicesForPutRequestPtrOutput) ToStorageServicesForPutRequestPtrOutput() StorageServicesForPutRequestPtrOutput {
+	return o
+}
+
+func (o StorageServicesForPutRequestPtrOutput) ToStorageServicesForPutRequestPtrOutputWithContext(ctx context.Context) StorageServicesForPutRequestPtrOutput {
+	return o
+}
+
+func (o StorageServicesForPutRequestPtrOutput) Elem() StorageServicesForPutRequestOutput {
+	return o.ApplyT(func(v *StorageServicesForPutRequest) StorageServicesForPutRequest {
+		if v != nil {
+			return *v
+		}
+		var ret StorageServicesForPutRequest
+		return ret
+	}).(StorageServicesForPutRequestOutput)
+}
+
+// The storage services resource id
+func (o StorageServicesForPutRequestPtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageServicesForPutRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user assigned identity to be used to grant permissions
+func (o StorageServicesForPutRequestPtrOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageServicesForPutRequest) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The storage services details
+type StorageServicesForPutRequestResponse struct {
+	// The storage services resource id
+	ResourceId *string `pulumi:"resourceId"`
+	// The user assigned identity to be used to grant permissions
+	UserAssignedIdentity *string `pulumi:"userAssignedIdentity"`
+}
+
+// The storage services details
+type StorageServicesForPutRequestResponseOutput struct{ *pulumi.OutputState }
+
+func (StorageServicesForPutRequestResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageServicesForPutRequestResponse)(nil)).Elem()
+}
+
+func (o StorageServicesForPutRequestResponseOutput) ToStorageServicesForPutRequestResponseOutput() StorageServicesForPutRequestResponseOutput {
+	return o
+}
+
+func (o StorageServicesForPutRequestResponseOutput) ToStorageServicesForPutRequestResponseOutputWithContext(ctx context.Context) StorageServicesForPutRequestResponseOutput {
+	return o
+}
+
+// The storage services resource id
+func (o StorageServicesForPutRequestResponseOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageServicesForPutRequestResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+// The user assigned identity to be used to grant permissions
+func (o StorageServicesForPutRequestResponseOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageServicesForPutRequestResponse) *string { return v.UserAssignedIdentity }).(pulumi.StringPtrOutput)
+}
+
+type StorageServicesForPutRequestResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (StorageServicesForPutRequestResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageServicesForPutRequestResponse)(nil)).Elem()
+}
+
+func (o StorageServicesForPutRequestResponsePtrOutput) ToStorageServicesForPutRequestResponsePtrOutput() StorageServicesForPutRequestResponsePtrOutput {
+	return o
+}
+
+func (o StorageServicesForPutRequestResponsePtrOutput) ToStorageServicesForPutRequestResponsePtrOutputWithContext(ctx context.Context) StorageServicesForPutRequestResponsePtrOutput {
+	return o
+}
+
+func (o StorageServicesForPutRequestResponsePtrOutput) Elem() StorageServicesForPutRequestResponseOutput {
+	return o.ApplyT(func(v *StorageServicesForPutRequestResponse) StorageServicesForPutRequestResponse {
+		if v != nil {
+			return *v
+		}
+		var ret StorageServicesForPutRequestResponse
+		return ret
+	}).(StorageServicesForPutRequestResponseOutput)
+}
+
+// The storage services resource id
+func (o StorageServicesForPutRequestResponsePtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageServicesForPutRequestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user assigned identity to be used to grant permissions
+func (o StorageServicesForPutRequestResponsePtrOutput) UserAssignedIdentity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *StorageServicesForPutRequestResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentity
+	}).(pulumi.StringPtrOutput)
+}
+
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -813,14 +813,14 @@ func init() {
 	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponsePtrOutput{})
-	pulumi.RegisterOutputType(MediaServicesForPutRequestOutput{})
-	pulumi.RegisterOutputType(MediaServicesForPutRequestPtrOutput{})
-	pulumi.RegisterOutputType(MediaServicesForPutRequestResponseOutput{})
-	pulumi.RegisterOutputType(MediaServicesForPutRequestResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
+	pulumi.RegisterOutputType(StorageServicesForPutRequestOutput{})
+	pulumi.RegisterOutputType(StorageServicesForPutRequestPtrOutput{})
+	pulumi.RegisterOutputType(StorageServicesForPutRequestResponseOutput{})
+	pulumi.RegisterOutputType(StorageServicesForPutRequestResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})

@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Class representing a CosmosDb data connection.
 //
-// Uses Azure REST API version 2022-12-29. In version 1.x of the Azure Native provider, it used API version 2021-01-01.
+// Uses Azure REST API version 2024-04-13. In version 2.x of the Azure Native provider, it used API version 2022-12-29.
 type CosmosDbDataConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The resource ID of the Cosmos DB account used to create the data connection.
 	CosmosDbAccountResourceId pulumi.StringOutput `pulumi:"cosmosDbAccountResourceId"`
 	// The name of an existing container in the Cosmos DB database.
@@ -99,6 +101,9 @@ func NewCosmosDbDataConnection(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:kusto/v20200215:CosmosDbDataConnection"),
 		},
 		{
+			Type: pulumi.String("azure-native:kusto/v20200215:EventGridDataConnection"),
+		},
+		{
 			Type: pulumi.String("azure-native:kusto/v20200614:CosmosDbDataConnection"),
 		},
 		{
@@ -123,13 +128,58 @@ func NewCosmosDbDataConnection(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:kusto/v20221229:CosmosDbDataConnection"),
 		},
 		{
+			Type: pulumi.String("azure-native:kusto/v20221229:EventGridDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20221229:EventHubDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20221229:IotHubDataConnection"),
+		},
+		{
 			Type: pulumi.String("azure-native:kusto/v20230502:CosmosDbDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20230502:EventGridDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20230502:EventHubDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20230502:IotHubDataConnection"),
 		},
 		{
 			Type: pulumi.String("azure-native:kusto/v20230815:CosmosDbDataConnection"),
 		},
 		{
+			Type: pulumi.String("azure-native:kusto/v20230815:EventGridDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20230815:EventHubDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20230815:IotHubDataConnection"),
+		},
+		{
 			Type: pulumi.String("azure-native:kusto/v20240413:CosmosDbDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20240413:EventGridDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20240413:EventHubDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto/v20240413:IotHubDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto:EventGridDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto:EventHubDataConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:kusto:IotHubDataConnection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -187,7 +237,7 @@ type cosmosDbDataConnectionArgs struct {
 	ManagedIdentityResourceId string `pulumi:"managedIdentityResourceId"`
 	// The name of an existing mapping rule to use when ingesting the retrieved data.
 	MappingRuleName *string `pulumi:"mappingRuleName"`
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Optional. If defined, the data connection retrieves Cosmos DB documents created or updated after the specified retrieval start date.
 	RetrievalStartDate *string `pulumi:"retrievalStartDate"`
@@ -218,7 +268,7 @@ type CosmosDbDataConnectionArgs struct {
 	ManagedIdentityResourceId pulumi.StringInput
 	// The name of an existing mapping rule to use when ingesting the retrieved data.
 	MappingRuleName pulumi.StringPtrInput
-	// The name of the resource group containing the Kusto cluster.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Optional. If defined, the data connection retrieves Cosmos DB documents created or updated after the specified retrieval start date.
 	RetrievalStartDate pulumi.StringPtrInput
@@ -261,6 +311,11 @@ func (o CosmosDbDataConnectionOutput) ToCosmosDbDataConnectionOutput() CosmosDbD
 
 func (o CosmosDbDataConnectionOutput) ToCosmosDbDataConnectionOutputWithContext(ctx context.Context) CosmosDbDataConnectionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o CosmosDbDataConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *CosmosDbDataConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The resource ID of the Cosmos DB account used to create the data connection.

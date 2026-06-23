@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Arc Addon.
 //
-// Uses Azure REST API version 2022-03-01. In version 1.x of the Azure Native provider, it used API version 2020-12-01.
+// Uses Azure REST API version 2023-07-01. In version 2.x of the Azure Native provider, it used API version 2022-03-01.
 type ArcAddon struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Host OS supported by the Arc addon.
 	HostPlatform pulumi.StringOutput `pulumi:"hostPlatform"`
 	// Platform where the runtime is hosted.
@@ -100,6 +102,9 @@ func NewArcAddon(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:databoxedge/v20220301:ArcAddon"),
 		},
 		{
+			Type: pulumi.String("azure-native:databoxedge/v20220301:IoTAddon"),
+		},
+		{
 			Type: pulumi.String("azure-native:databoxedge/v20220401preview:ArcAddon"),
 		},
 		{
@@ -112,7 +117,16 @@ func NewArcAddon(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:databoxedge/v20230701:ArcAddon"),
 		},
 		{
+			Type: pulumi.String("azure-native:databoxedge/v20230701:IoTAddon"),
+		},
+		{
 			Type: pulumi.String("azure-native:databoxedge/v20231201:ArcAddon"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge/v20231201:IoTAddon"),
+		},
+		{
+			Type: pulumi.String("azure-native:databoxedge:IoTAddon"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -224,6 +238,11 @@ func (o ArcAddonOutput) ToArcAddonOutput() ArcAddonOutput {
 
 func (o ArcAddonOutput) ToArcAddonOutputWithContext(ctx context.Context) ArcAddonOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ArcAddonOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ArcAddon) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Host OS supported by the Arc addon.

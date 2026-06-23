@@ -356,6 +356,164 @@ const (
 	AppServicePlanTierPremiumV3 = AppServicePlanTier("PremiumV3")
 )
 
+func (AppServicePlanTier) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppServicePlanTier)(nil)).Elem()
+}
+
+func (e AppServicePlanTier) ToAppServicePlanTierOutput() AppServicePlanTierOutput {
+	return pulumi.ToOutput(e).(AppServicePlanTierOutput)
+}
+
+func (e AppServicePlanTier) ToAppServicePlanTierOutputWithContext(ctx context.Context) AppServicePlanTierOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AppServicePlanTierOutput)
+}
+
+func (e AppServicePlanTier) ToAppServicePlanTierPtrOutput() AppServicePlanTierPtrOutput {
+	return e.ToAppServicePlanTierPtrOutputWithContext(context.Background())
+}
+
+func (e AppServicePlanTier) ToAppServicePlanTierPtrOutputWithContext(ctx context.Context) AppServicePlanTierPtrOutput {
+	return AppServicePlanTier(e).ToAppServicePlanTierOutputWithContext(ctx).ToAppServicePlanTierPtrOutputWithContext(ctx)
+}
+
+func (e AppServicePlanTier) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AppServicePlanTier) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AppServicePlanTier) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AppServicePlanTier) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AppServicePlanTierOutput struct{ *pulumi.OutputState }
+
+func (AppServicePlanTierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppServicePlanTier)(nil)).Elem()
+}
+
+func (o AppServicePlanTierOutput) ToAppServicePlanTierOutput() AppServicePlanTierOutput {
+	return o
+}
+
+func (o AppServicePlanTierOutput) ToAppServicePlanTierOutputWithContext(ctx context.Context) AppServicePlanTierOutput {
+	return o
+}
+
+func (o AppServicePlanTierOutput) ToAppServicePlanTierPtrOutput() AppServicePlanTierPtrOutput {
+	return o.ToAppServicePlanTierPtrOutputWithContext(context.Background())
+}
+
+func (o AppServicePlanTierOutput) ToAppServicePlanTierPtrOutputWithContext(ctx context.Context) AppServicePlanTierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppServicePlanTier) *AppServicePlanTier {
+		return &v
+	}).(AppServicePlanTierPtrOutput)
+}
+
+func (o AppServicePlanTierOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AppServicePlanTierOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AppServicePlanTier) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AppServicePlanTierOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AppServicePlanTierOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AppServicePlanTier) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppServicePlanTierPtrOutput struct{ *pulumi.OutputState }
+
+func (AppServicePlanTierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppServicePlanTier)(nil)).Elem()
+}
+
+func (o AppServicePlanTierPtrOutput) ToAppServicePlanTierPtrOutput() AppServicePlanTierPtrOutput {
+	return o
+}
+
+func (o AppServicePlanTierPtrOutput) ToAppServicePlanTierPtrOutputWithContext(ctx context.Context) AppServicePlanTierPtrOutput {
+	return o
+}
+
+func (o AppServicePlanTierPtrOutput) Elem() AppServicePlanTierOutput {
+	return o.ApplyT(func(v *AppServicePlanTier) AppServicePlanTier {
+		if v != nil {
+			return *v
+		}
+		var ret AppServicePlanTier
+		return ret
+	}).(AppServicePlanTierOutput)
+}
+
+func (o AppServicePlanTierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AppServicePlanTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AppServicePlanTier) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AppServicePlanTierInput is an input type that accepts values of the AppServicePlanTier enum
+// A concrete instance of `AppServicePlanTierInput` can be one of the following:
+//
+//	AppServicePlanTierElasticPremium
+//	AppServicePlanTierPremiumV3
+type AppServicePlanTierInput interface {
+	pulumi.Input
+
+	ToAppServicePlanTierOutput() AppServicePlanTierOutput
+	ToAppServicePlanTierOutputWithContext(context.Context) AppServicePlanTierOutput
+}
+
+var appServicePlanTierPtrType = reflect.TypeOf((**AppServicePlanTier)(nil)).Elem()
+
+type AppServicePlanTierPtrInput interface {
+	pulumi.Input
+
+	ToAppServicePlanTierPtrOutput() AppServicePlanTierPtrOutput
+	ToAppServicePlanTierPtrOutputWithContext(context.Context) AppServicePlanTierPtrOutput
+}
+
+type appServicePlanTierPtr string
+
+func AppServicePlanTierPtr(v string) AppServicePlanTierPtrInput {
+	return (*appServicePlanTierPtr)(&v)
+}
+
+func (*appServicePlanTierPtr) ElementType() reflect.Type {
+	return appServicePlanTierPtrType
+}
+
+func (in *appServicePlanTierPtr) ToAppServicePlanTierPtrOutput() AppServicePlanTierPtrOutput {
+	return pulumi.ToOutput(in).(AppServicePlanTierPtrOutput)
+}
+
+func (in *appServicePlanTierPtr) ToAppServicePlanTierPtrOutputWithContext(ctx context.Context) AppServicePlanTierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AppServicePlanTierPtrOutput)
+}
+
 // The type of backup, VM, SQL or HANA.
 type BackupType string
 
@@ -541,15 +699,6 @@ func (in *conditionalOperatorPtr) ToConditionalOperatorPtrOutput() ConditionalOp
 func (in *conditionalOperatorPtr) ToConditionalOperatorPtrOutputWithContext(ctx context.Context) ConditionalOperatorPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ConditionalOperatorPtrOutput)
 }
-
-// The type of file share config.
-type ConfigurationType string
-
-const (
-	ConfigurationTypeSkip           = ConfigurationType("Skip")
-	ConfigurationTypeCreateAndMount = ConfigurationType("CreateAndMount")
-	ConfigurationTypeMount          = ConfigurationType("Mount")
-)
 
 type DayOfWeek string
 
@@ -775,13 +924,20 @@ func (o DayOfWeekArrayOutput) Index(i pulumi.IntInput) DayOfWeekOutput {
 type DiskSkuName string
 
 const (
-	DiskSkuName_Standard_LRS    = DiskSkuName("Standard_LRS")
-	DiskSkuName_Premium_LRS     = DiskSkuName("Premium_LRS")
+	// Standard LRS Disk SKU.
+	DiskSkuName_Standard_LRS = DiskSkuName("Standard_LRS")
+	// Premium_LRS Disk SKU.
+	DiskSkuName_Premium_LRS = DiskSkuName("Premium_LRS")
+	// StandardSSD_LRS Disk SKU.
 	DiskSkuName_StandardSSD_LRS = DiskSkuName("StandardSSD_LRS")
-	DiskSkuName_UltraSSD_LRS    = DiskSkuName("UltraSSD_LRS")
-	DiskSkuName_Premium_ZRS     = DiskSkuName("Premium_ZRS")
+	// UltraSSD_LRS Disk SKU.
+	DiskSkuName_UltraSSD_LRS = DiskSkuName("UltraSSD_LRS")
+	// Premium_ZRS Disk SKU.
+	DiskSkuName_Premium_ZRS = DiskSkuName("Premium_ZRS")
+	// StandardSSD_ZRS Disk SKU.
 	DiskSkuName_StandardSSD_ZRS = DiskSkuName("StandardSSD_ZRS")
-	DiskSkuName_PremiumV2_LRS   = DiskSkuName("PremiumV2_LRS")
+	// PremiumV2_LRS Disk SKU.
+	DiskSkuName_PremiumV2_LRS = DiskSkuName("PremiumV2_LRS")
 )
 
 func (DiskSkuName) ElementType() reflect.Type {
@@ -946,6 +1102,18 @@ func (in *diskSkuNamePtr) ToDiskSkuNamePtrOutput() DiskSkuNamePtrOutput {
 func (in *diskSkuNamePtr) ToDiskSkuNamePtrOutputWithContext(ctx context.Context) DiskSkuNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(DiskSkuNamePtrOutput)
 }
+
+// The type of file share config, eg: Mount/CreateAndMount/Skip.
+type FileShareConfigurationType string
+
+const (
+	// Skip creating the file share.
+	FileShareConfigurationTypeSkip = FileShareConfigurationType("Skip")
+	// Fileshare will be created and mounted by service.
+	FileShareConfigurationTypeCreateAndMount = FileShareConfigurationType("CreateAndMount")
+	// Existing fileshare provided will be mounted by service.
+	FileShareConfigurationTypeMount = FileShareConfigurationType("Mount")
+)
 
 // The policy type.
 type IAASVMPolicyType string
@@ -1115,12 +1283,182 @@ func (in *iaasvmpolicyTypePtr) ToIAASVMPolicyTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(IAASVMPolicyTypePtrOutput)
 }
 
-// Type of manage identity
+// Specifies the network access configuration for the resources that will be deployed in the Managed Resource Group. The options to choose from are Public and Private. If 'Private' is chosen, the Storage Account service tag should be enabled on the subnets in which the SAP VMs exist. This is required for establishing connectivity between VM extensions and the managed resource group storage account. This setting is currently applicable only to Storage Account. Learn more here https://go.microsoft.com/fwlink/?linkid=2247228
+type ManagedResourcesNetworkAccessType string
+
+const (
+	// Managed resources will be deployed with public network access enabled.
+	ManagedResourcesNetworkAccessTypePublic = ManagedResourcesNetworkAccessType("Public")
+	// Managed resources will be deployed with public network access disabled.
+	ManagedResourcesNetworkAccessTypePrivate = ManagedResourcesNetworkAccessType("Private")
+)
+
+func (ManagedResourcesNetworkAccessType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedResourcesNetworkAccessType)(nil)).Elem()
+}
+
+func (e ManagedResourcesNetworkAccessType) ToManagedResourcesNetworkAccessTypeOutput() ManagedResourcesNetworkAccessTypeOutput {
+	return pulumi.ToOutput(e).(ManagedResourcesNetworkAccessTypeOutput)
+}
+
+func (e ManagedResourcesNetworkAccessType) ToManagedResourcesNetworkAccessTypeOutputWithContext(ctx context.Context) ManagedResourcesNetworkAccessTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ManagedResourcesNetworkAccessTypeOutput)
+}
+
+func (e ManagedResourcesNetworkAccessType) ToManagedResourcesNetworkAccessTypePtrOutput() ManagedResourcesNetworkAccessTypePtrOutput {
+	return e.ToManagedResourcesNetworkAccessTypePtrOutputWithContext(context.Background())
+}
+
+func (e ManagedResourcesNetworkAccessType) ToManagedResourcesNetworkAccessTypePtrOutputWithContext(ctx context.Context) ManagedResourcesNetworkAccessTypePtrOutput {
+	return ManagedResourcesNetworkAccessType(e).ToManagedResourcesNetworkAccessTypeOutputWithContext(ctx).ToManagedResourcesNetworkAccessTypePtrOutputWithContext(ctx)
+}
+
+func (e ManagedResourcesNetworkAccessType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ManagedResourcesNetworkAccessType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ManagedResourcesNetworkAccessType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ManagedResourcesNetworkAccessType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ManagedResourcesNetworkAccessTypeOutput struct{ *pulumi.OutputState }
+
+func (ManagedResourcesNetworkAccessTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedResourcesNetworkAccessType)(nil)).Elem()
+}
+
+func (o ManagedResourcesNetworkAccessTypeOutput) ToManagedResourcesNetworkAccessTypeOutput() ManagedResourcesNetworkAccessTypeOutput {
+	return o
+}
+
+func (o ManagedResourcesNetworkAccessTypeOutput) ToManagedResourcesNetworkAccessTypeOutputWithContext(ctx context.Context) ManagedResourcesNetworkAccessTypeOutput {
+	return o
+}
+
+func (o ManagedResourcesNetworkAccessTypeOutput) ToManagedResourcesNetworkAccessTypePtrOutput() ManagedResourcesNetworkAccessTypePtrOutput {
+	return o.ToManagedResourcesNetworkAccessTypePtrOutputWithContext(context.Background())
+}
+
+func (o ManagedResourcesNetworkAccessTypeOutput) ToManagedResourcesNetworkAccessTypePtrOutputWithContext(ctx context.Context) ManagedResourcesNetworkAccessTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagedResourcesNetworkAccessType) *ManagedResourcesNetworkAccessType {
+		return &v
+	}).(ManagedResourcesNetworkAccessTypePtrOutput)
+}
+
+func (o ManagedResourcesNetworkAccessTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ManagedResourcesNetworkAccessTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ManagedResourcesNetworkAccessType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ManagedResourcesNetworkAccessTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedResourcesNetworkAccessTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ManagedResourcesNetworkAccessType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ManagedResourcesNetworkAccessTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedResourcesNetworkAccessTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedResourcesNetworkAccessType)(nil)).Elem()
+}
+
+func (o ManagedResourcesNetworkAccessTypePtrOutput) ToManagedResourcesNetworkAccessTypePtrOutput() ManagedResourcesNetworkAccessTypePtrOutput {
+	return o
+}
+
+func (o ManagedResourcesNetworkAccessTypePtrOutput) ToManagedResourcesNetworkAccessTypePtrOutputWithContext(ctx context.Context) ManagedResourcesNetworkAccessTypePtrOutput {
+	return o
+}
+
+func (o ManagedResourcesNetworkAccessTypePtrOutput) Elem() ManagedResourcesNetworkAccessTypeOutput {
+	return o.ApplyT(func(v *ManagedResourcesNetworkAccessType) ManagedResourcesNetworkAccessType {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedResourcesNetworkAccessType
+		return ret
+	}).(ManagedResourcesNetworkAccessTypeOutput)
+}
+
+func (o ManagedResourcesNetworkAccessTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ManagedResourcesNetworkAccessTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ManagedResourcesNetworkAccessType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ManagedResourcesNetworkAccessTypeInput is an input type that accepts values of the ManagedResourcesNetworkAccessType enum
+// A concrete instance of `ManagedResourcesNetworkAccessTypeInput` can be one of the following:
+//
+//	ManagedResourcesNetworkAccessTypePublic
+//	ManagedResourcesNetworkAccessTypePrivate
+type ManagedResourcesNetworkAccessTypeInput interface {
+	pulumi.Input
+
+	ToManagedResourcesNetworkAccessTypeOutput() ManagedResourcesNetworkAccessTypeOutput
+	ToManagedResourcesNetworkAccessTypeOutputWithContext(context.Context) ManagedResourcesNetworkAccessTypeOutput
+}
+
+var managedResourcesNetworkAccessTypePtrType = reflect.TypeOf((**ManagedResourcesNetworkAccessType)(nil)).Elem()
+
+type ManagedResourcesNetworkAccessTypePtrInput interface {
+	pulumi.Input
+
+	ToManagedResourcesNetworkAccessTypePtrOutput() ManagedResourcesNetworkAccessTypePtrOutput
+	ToManagedResourcesNetworkAccessTypePtrOutputWithContext(context.Context) ManagedResourcesNetworkAccessTypePtrOutput
+}
+
+type managedResourcesNetworkAccessTypePtr string
+
+func ManagedResourcesNetworkAccessTypePtr(v string) ManagedResourcesNetworkAccessTypePtrInput {
+	return (*managedResourcesNetworkAccessTypePtr)(&v)
+}
+
+func (*managedResourcesNetworkAccessTypePtr) ElementType() reflect.Type {
+	return managedResourcesNetworkAccessTypePtrType
+}
+
+func (in *managedResourcesNetworkAccessTypePtr) ToManagedResourcesNetworkAccessTypePtrOutput() ManagedResourcesNetworkAccessTypePtrOutput {
+	return pulumi.ToOutput(in).(ManagedResourcesNetworkAccessTypePtrOutput)
+}
+
+func (in *managedResourcesNetworkAccessTypePtr) ToManagedResourcesNetworkAccessTypePtrOutputWithContext(ctx context.Context) ManagedResourcesNetworkAccessTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ManagedResourcesNetworkAccessTypePtrOutput)
+}
+
+// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 type ManagedServiceIdentityType string
 
 const (
-	ManagedServiceIdentityTypeNone         = ManagedServiceIdentityType("None")
-	ManagedServiceIdentityTypeUserAssigned = ManagedServiceIdentityType("UserAssigned")
+	ManagedServiceIdentityTypeNone                         = ManagedServiceIdentityType("None")
+	ManagedServiceIdentityTypeSystemAssigned               = ManagedServiceIdentityType("SystemAssigned")
+	ManagedServiceIdentityTypeUserAssigned                 = ManagedServiceIdentityType("UserAssigned")
+	ManagedServiceIdentityType_SystemAssigned_UserAssigned = ManagedServiceIdentityType("SystemAssigned,UserAssigned")
 )
 
 func (ManagedServiceIdentityType) ElementType() reflect.Type {
@@ -1246,7 +1584,9 @@ func (o ManagedServiceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx co
 // A concrete instance of `ManagedServiceIdentityTypeInput` can be one of the following:
 //
 //	ManagedServiceIdentityTypeNone
+//	ManagedServiceIdentityTypeSystemAssigned
 //	ManagedServiceIdentityTypeUserAssigned
+//	ManagedServiceIdentityType_SystemAssigned_UserAssigned
 type ManagedServiceIdentityTypeInput interface {
 	pulumi.Input
 
@@ -1517,6 +1857,7 @@ func (o MonthOfYearArrayOutput) Index(i pulumi.IntInput) MonthOfYearOutput {
 type NamingPatternType string
 
 const (
+	// Full resource names that will be created by service.
 	NamingPatternTypeFullResourceName = NamingPatternType("FullResourceName")
 )
 
@@ -1524,7 +1865,9 @@ const (
 type OSType string
 
 const (
-	OSTypeLinux   = OSType("Linux")
+	// Linux OS Type.
+	OSTypeLinux = OSType("Linux")
+	// Windows OS Type.
 	OSTypeWindows = OSType("Windows")
 )
 
@@ -2051,7 +2394,9 @@ func (in *retentionScheduleFormatPtr) ToRetentionScheduleFormatPtrOutputWithCont
 type RoutingPreference string
 
 const (
-	RoutingPreferenceDefault  = RoutingPreference("Default")
+	// Default routing preference. Only RFC1918 traffic is routed to the customer VNET.
+	RoutingPreferenceDefault = RoutingPreference("Default")
+	// Route all traffic to the customer VNET.
 	RoutingPreferenceRouteAll = RoutingPreference("RouteAll")
 )
 
@@ -2213,12 +2558,15 @@ func (in *routingPreferencePtr) ToRoutingPreferencePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(RoutingPreferencePtrOutput)
 }
 
-// The configuration Type.
+// The configuration type. Eg: Deployment/Discovery
 type SAPConfigurationType string
 
 const (
-	SAPConfigurationTypeDeployment             = SAPConfigurationType("Deployment")
-	SAPConfigurationTypeDiscovery              = SAPConfigurationType("Discovery")
+	// SAP system will be deployed by service. No OS configurations will be done.
+	SAPConfigurationTypeDeployment = SAPConfigurationType("Deployment")
+	// Existing SAP system will be registered.
+	SAPConfigurationTypeDiscovery = SAPConfigurationType("Discovery")
+	// SAP system will be deployed by service. OS configurations will be done.
 	SAPConfigurationTypeDeploymentWithOSConfig = SAPConfigurationType("DeploymentWithOSConfig")
 )
 
@@ -3230,14 +3578,185 @@ func (in *sapproductTypePtr) ToSAPProductTypePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(SAPProductTypePtrOutput)
 }
 
-// The SAP software installation Type.
+// The SAP software installation type.
 type SAPSoftwareInstallationType string
 
 const (
-	SAPSoftwareInstallationTypeServiceInitiated          = SAPSoftwareInstallationType("ServiceInitiated")
+	// SAP Install managed by service.
+	SAPSoftwareInstallationTypeServiceInitiated = SAPSoftwareInstallationType("ServiceInitiated")
+	// SAP Install without OS Config.
 	SAPSoftwareInstallationTypeSAPInstallWithoutOSConfig = SAPSoftwareInstallationType("SAPInstallWithoutOSConfig")
-	SAPSoftwareInstallationTypeExternal                  = SAPSoftwareInstallationType("External")
+	// External software installation type.
+	SAPSoftwareInstallationTypeExternal = SAPSoftwareInstallationType("External")
 )
+
+// The type of managed identity assigned to this resource.
+type SAPVirtualInstanceIdentityType string
+
+const (
+	// No managed identity.
+	SAPVirtualInstanceIdentityTypeNone = SAPVirtualInstanceIdentityType("None")
+	// User assigned managed identity.
+	SAPVirtualInstanceIdentityTypeUserAssigned = SAPVirtualInstanceIdentityType("UserAssigned")
+)
+
+func (SAPVirtualInstanceIdentityType) ElementType() reflect.Type {
+	return reflect.TypeOf((*SAPVirtualInstanceIdentityType)(nil)).Elem()
+}
+
+func (e SAPVirtualInstanceIdentityType) ToSAPVirtualInstanceIdentityTypeOutput() SAPVirtualInstanceIdentityTypeOutput {
+	return pulumi.ToOutput(e).(SAPVirtualInstanceIdentityTypeOutput)
+}
+
+func (e SAPVirtualInstanceIdentityType) ToSAPVirtualInstanceIdentityTypeOutputWithContext(ctx context.Context) SAPVirtualInstanceIdentityTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SAPVirtualInstanceIdentityTypeOutput)
+}
+
+func (e SAPVirtualInstanceIdentityType) ToSAPVirtualInstanceIdentityTypePtrOutput() SAPVirtualInstanceIdentityTypePtrOutput {
+	return e.ToSAPVirtualInstanceIdentityTypePtrOutputWithContext(context.Background())
+}
+
+func (e SAPVirtualInstanceIdentityType) ToSAPVirtualInstanceIdentityTypePtrOutputWithContext(ctx context.Context) SAPVirtualInstanceIdentityTypePtrOutput {
+	return SAPVirtualInstanceIdentityType(e).ToSAPVirtualInstanceIdentityTypeOutputWithContext(ctx).ToSAPVirtualInstanceIdentityTypePtrOutputWithContext(ctx)
+}
+
+func (e SAPVirtualInstanceIdentityType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SAPVirtualInstanceIdentityType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SAPVirtualInstanceIdentityType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SAPVirtualInstanceIdentityType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SAPVirtualInstanceIdentityTypeOutput struct{ *pulumi.OutputState }
+
+func (SAPVirtualInstanceIdentityTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SAPVirtualInstanceIdentityType)(nil)).Elem()
+}
+
+func (o SAPVirtualInstanceIdentityTypeOutput) ToSAPVirtualInstanceIdentityTypeOutput() SAPVirtualInstanceIdentityTypeOutput {
+	return o
+}
+
+func (o SAPVirtualInstanceIdentityTypeOutput) ToSAPVirtualInstanceIdentityTypeOutputWithContext(ctx context.Context) SAPVirtualInstanceIdentityTypeOutput {
+	return o
+}
+
+func (o SAPVirtualInstanceIdentityTypeOutput) ToSAPVirtualInstanceIdentityTypePtrOutput() SAPVirtualInstanceIdentityTypePtrOutput {
+	return o.ToSAPVirtualInstanceIdentityTypePtrOutputWithContext(context.Background())
+}
+
+func (o SAPVirtualInstanceIdentityTypeOutput) ToSAPVirtualInstanceIdentityTypePtrOutputWithContext(ctx context.Context) SAPVirtualInstanceIdentityTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SAPVirtualInstanceIdentityType) *SAPVirtualInstanceIdentityType {
+		return &v
+	}).(SAPVirtualInstanceIdentityTypePtrOutput)
+}
+
+func (o SAPVirtualInstanceIdentityTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SAPVirtualInstanceIdentityTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SAPVirtualInstanceIdentityType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SAPVirtualInstanceIdentityTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SAPVirtualInstanceIdentityTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SAPVirtualInstanceIdentityType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SAPVirtualInstanceIdentityTypePtrOutput struct{ *pulumi.OutputState }
+
+func (SAPVirtualInstanceIdentityTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SAPVirtualInstanceIdentityType)(nil)).Elem()
+}
+
+func (o SAPVirtualInstanceIdentityTypePtrOutput) ToSAPVirtualInstanceIdentityTypePtrOutput() SAPVirtualInstanceIdentityTypePtrOutput {
+	return o
+}
+
+func (o SAPVirtualInstanceIdentityTypePtrOutput) ToSAPVirtualInstanceIdentityTypePtrOutputWithContext(ctx context.Context) SAPVirtualInstanceIdentityTypePtrOutput {
+	return o
+}
+
+func (o SAPVirtualInstanceIdentityTypePtrOutput) Elem() SAPVirtualInstanceIdentityTypeOutput {
+	return o.ApplyT(func(v *SAPVirtualInstanceIdentityType) SAPVirtualInstanceIdentityType {
+		if v != nil {
+			return *v
+		}
+		var ret SAPVirtualInstanceIdentityType
+		return ret
+	}).(SAPVirtualInstanceIdentityTypeOutput)
+}
+
+func (o SAPVirtualInstanceIdentityTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SAPVirtualInstanceIdentityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SAPVirtualInstanceIdentityType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SAPVirtualInstanceIdentityTypeInput is an input type that accepts values of the SAPVirtualInstanceIdentityType enum
+// A concrete instance of `SAPVirtualInstanceIdentityTypeInput` can be one of the following:
+//
+//	SAPVirtualInstanceIdentityTypeNone
+//	SAPVirtualInstanceIdentityTypeUserAssigned
+type SAPVirtualInstanceIdentityTypeInput interface {
+	pulumi.Input
+
+	ToSAPVirtualInstanceIdentityTypeOutput() SAPVirtualInstanceIdentityTypeOutput
+	ToSAPVirtualInstanceIdentityTypeOutputWithContext(context.Context) SAPVirtualInstanceIdentityTypeOutput
+}
+
+var sapvirtualInstanceIdentityTypePtrType = reflect.TypeOf((**SAPVirtualInstanceIdentityType)(nil)).Elem()
+
+type SAPVirtualInstanceIdentityTypePtrInput interface {
+	pulumi.Input
+
+	ToSAPVirtualInstanceIdentityTypePtrOutput() SAPVirtualInstanceIdentityTypePtrOutput
+	ToSAPVirtualInstanceIdentityTypePtrOutputWithContext(context.Context) SAPVirtualInstanceIdentityTypePtrOutput
+}
+
+type sapvirtualInstanceIdentityTypePtr string
+
+func SAPVirtualInstanceIdentityTypePtr(v string) SAPVirtualInstanceIdentityTypePtrInput {
+	return (*sapvirtualInstanceIdentityTypePtr)(&v)
+}
+
+func (*sapvirtualInstanceIdentityTypePtr) ElementType() reflect.Type {
+	return sapvirtualInstanceIdentityTypePtrType
+}
+
+func (in *sapvirtualInstanceIdentityTypePtr) ToSAPVirtualInstanceIdentityTypePtrOutput() SAPVirtualInstanceIdentityTypePtrOutput {
+	return pulumi.ToOutput(in).(SAPVirtualInstanceIdentityTypePtrOutput)
+}
+
+func (in *sapvirtualInstanceIdentityTypePtr) ToSAPVirtualInstanceIdentityTypePtrOutputWithContext(ctx context.Context) SAPVirtualInstanceIdentityTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SAPVirtualInstanceIdentityTypePtrOutput)
+}
 
 // Frequency of the schedule operation of this policy.
 type ScheduleRunType string
@@ -3579,8 +4098,11 @@ func (in *sslCryptoProviderPtr) ToSslCryptoProviderPtrOutputWithContext(ctx cont
 type SslPreference string
 
 const (
-	SslPreferenceDisabled          = SslPreference("Disabled")
-	SslPreferenceRootCertificate   = SslPreference("RootCertificate")
+	// Secure communication is disabled.
+	SslPreferenceDisabled = SslPreference("Disabled")
+	// Secure communication is enabled with root certificate.
+	SslPreferenceRootCertificate = SslPreference("RootCertificate")
+	// Secure communication is enabled with server certificate.
 	SslPreferenceServerCertificate = SslPreference("ServerCertificate")
 )
 
@@ -4341,6 +4863,8 @@ func init() {
 	pulumi.RegisterOutputType(AlertAutoMitigatePtrOutput{})
 	pulumi.RegisterOutputType(AlertRuleStatusOutput{})
 	pulumi.RegisterOutputType(AlertRuleStatusPtrOutput{})
+	pulumi.RegisterOutputType(AppServicePlanTierOutput{})
+	pulumi.RegisterOutputType(AppServicePlanTierPtrOutput{})
 	pulumi.RegisterOutputType(ConditionalOperatorOutput{})
 	pulumi.RegisterOutputType(ConditionalOperatorPtrOutput{})
 	pulumi.RegisterOutputType(DayOfWeekOutput{})
@@ -4350,6 +4874,8 @@ func init() {
 	pulumi.RegisterOutputType(DiskSkuNamePtrOutput{})
 	pulumi.RegisterOutputType(IAASVMPolicyTypeOutput{})
 	pulumi.RegisterOutputType(IAASVMPolicyTypePtrOutput{})
+	pulumi.RegisterOutputType(ManagedResourcesNetworkAccessTypeOutput{})
+	pulumi.RegisterOutputType(ManagedResourcesNetworkAccessTypePtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(MonthOfYearOutput{})
@@ -4375,6 +4901,8 @@ func init() {
 	pulumi.RegisterOutputType(SAPHighAvailabilityTypePtrOutput{})
 	pulumi.RegisterOutputType(SAPProductTypeOutput{})
 	pulumi.RegisterOutputType(SAPProductTypePtrOutput{})
+	pulumi.RegisterOutputType(SAPVirtualInstanceIdentityTypeOutput{})
+	pulumi.RegisterOutputType(SAPVirtualInstanceIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(ScheduleRunTypeOutput{})
 	pulumi.RegisterOutputType(ScheduleRunTypePtrOutput{})
 	pulumi.RegisterOutputType(SslCryptoProviderOutput{})

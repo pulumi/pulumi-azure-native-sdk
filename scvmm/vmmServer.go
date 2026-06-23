@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The VmmServers resource definition.
 //
-// Uses Azure REST API version 2022-05-21-preview. In version 1.x of the Azure Native provider, it used API version 2020-06-05-preview.
+// Uses Azure REST API version 2023-04-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-05-21-preview.
 //
-// Other available API versions: 2023-04-01-preview, 2023-10-07, 2024-06-01.
+// Other available API versions: 2022-05-21-preview, 2023-10-07, 2024-06-01, 2025-03-13. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native scvmm [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type VmmServer struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the connection status to the vmmServer.
 	ConnectionStatus pulumi.StringOutput `pulumi:"connectionStatus"`
 	// Credentials to connect to VMMServer.
@@ -81,6 +83,9 @@ func NewVmmServer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:scvmm/v20240601:VmmServer"),
+		},
+		{
+			Type: pulumi.String("azure-native:scvmm/v20250313:VmmServer"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -190,6 +195,11 @@ func (o VmmServerOutput) ToVmmServerOutput() VmmServerOutput {
 
 func (o VmmServerOutput) ToVmmServerOutputWithContext(ctx context.Context) VmmServerOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o VmmServerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VmmServer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the connection status to the vmmServer.

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2023-01-31.
 //
-// Other available API versions: 2023-07-31-preview, 2024-11-30, 2025-01-31-preview.
+// Other available API versions: 2022-01-31-preview, 2023-07-31-preview, 2024-11-30, 2025-01-31-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native managedidentity [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupUserAssignedIdentity(ctx *pulumi.Context, args *LookupUserAssignedIdentityArgs, opts ...pulumi.InvokeOption) (*LookupUserAssignedIdentityResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupUserAssignedIdentityResult
@@ -35,6 +35,8 @@ type LookupUserAssignedIdentityArgs struct {
 
 // Describes an identity resource.
 type LookupUserAssignedIdentityResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The id of the app associated with the identity. This is a random generated UUID by MSI.
 	ClientId string `pulumi:"clientId"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -88,6 +90,11 @@ func (o LookupUserAssignedIdentityResultOutput) ToLookupUserAssignedIdentityResu
 
 func (o LookupUserAssignedIdentityResultOutput) ToLookupUserAssignedIdentityResultOutputWithContext(ctx context.Context) LookupUserAssignedIdentityResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupUserAssignedIdentityResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserAssignedIdentityResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The id of the app associated with the identity. This is a random generated UUID by MSI.
