@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,6 +37,8 @@ type LookupLabArgs struct {
 
 // Lab details.
 type LookupLabResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Default monetary cap for each student in this lab
 	BudgetPerStudent AmountResponse `pulumi:"budgetPerStudent"`
 	// The type of currency being used for the value.
@@ -61,6 +63,8 @@ type LookupLabResult struct {
 	Status string `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Total budget
+	TotalBudget AmountResponse `pulumi:"totalBudget"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Amount value.
@@ -104,6 +108,11 @@ func (o LookupLabResultOutput) ToLookupLabResultOutput() LookupLabResultOutput {
 
 func (o LookupLabResultOutput) ToLookupLabResultOutputWithContext(ctx context.Context) LookupLabResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupLabResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLabResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Default monetary cap for each student in this lab
@@ -164,6 +173,11 @@ func (o LookupLabResultOutput) Status() pulumi.StringOutput {
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupLabResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupLabResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Total budget
+func (o LookupLabResultOutput) TotalBudget() AmountResponseOutput {
+	return o.ApplyT(func(v LookupLabResult) AmountResponse { return v.TotalBudget }).(AmountResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

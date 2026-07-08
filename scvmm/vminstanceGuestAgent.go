@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Defines the GuestAgent.
 //
-// Uses Azure REST API version 2023-04-01-preview.
+// Uses Azure REST API version 2023-04-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-04-01-preview.
 type VMInstanceGuestAgent struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Username / Password Credentials to provision guest agent.
 	Credentials GuestCredentialResponsePtrOutput `pulumi:"credentials"`
 	// Gets the name of the corresponding resource in Kubernetes.
@@ -55,10 +57,19 @@ func NewVMInstanceGuestAgent(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:scvmm/v20230401preview:VMInstanceGuestAgent"),
 		},
 		{
+			Type: pulumi.String("azure-native:scvmm/v20231007:GuestAgent"),
+		},
+		{
 			Type: pulumi.String("azure-native:scvmm/v20231007:VMInstanceGuestAgent"),
 		},
 		{
+			Type: pulumi.String("azure-native:scvmm/v20240601:GuestAgent"),
+		},
+		{
 			Type: pulumi.String("azure-native:scvmm/v20240601:VMInstanceGuestAgent"),
+		},
+		{
+			Type: pulumi.String("azure-native:scvmm/v20250313:VMInstanceGuestAgent"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -152,6 +163,11 @@ func (o VMInstanceGuestAgentOutput) ToVMInstanceGuestAgentOutput() VMInstanceGue
 
 func (o VMInstanceGuestAgentOutput) ToVMInstanceGuestAgentOutputWithContext(ctx context.Context) VMInstanceGuestAgentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o VMInstanceGuestAgentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VMInstanceGuestAgent) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Username / Password Credentials to provision guest agent.

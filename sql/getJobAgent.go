@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a job agent.
 //
-// Uses Azure REST API version 2021-11-01.
+// Uses Azure REST API version 2023-08-01.
 //
-// Other available API versions: 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
+// Other available API versions: 2017-03-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupJobAgent(ctx *pulumi.Context, args *LookupJobAgentArgs, opts ...pulumi.InvokeOption) (*LookupJobAgentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupJobAgentResult
@@ -37,10 +37,14 @@ type LookupJobAgentArgs struct {
 
 // An Azure SQL job agent.
 type LookupJobAgentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource ID of the database to store job metadata in.
 	DatabaseId string `pulumi:"databaseId"`
 	// Resource ID.
 	Id string `pulumi:"id"`
+	// The identity of the job agent.
+	Identity *JobAgentIdentityResponse `pulumi:"identity"`
 	// Resource location.
 	Location string `pulumi:"location"`
 	// Resource name.
@@ -92,6 +96,11 @@ func (o LookupJobAgentResultOutput) ToLookupJobAgentResultOutputWithContext(ctx 
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupJobAgentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobAgentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Resource ID of the database to store job metadata in.
 func (o LookupJobAgentResultOutput) DatabaseId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobAgentResult) string { return v.DatabaseId }).(pulumi.StringOutput)
@@ -100,6 +109,11 @@ func (o LookupJobAgentResultOutput) DatabaseId() pulumi.StringOutput {
 // Resource ID.
 func (o LookupJobAgentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobAgentResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The identity of the job agent.
+func (o LookupJobAgentResultOutput) Identity() JobAgentIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupJobAgentResult) *JobAgentIdentityResponse { return v.Identity }).(JobAgentIdentityResponsePtrOutput)
 }
 
 // Resource location.

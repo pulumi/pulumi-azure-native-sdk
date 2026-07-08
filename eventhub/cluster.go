@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Single Event Hubs Cluster resource in List or Get operations.
 //
-// Uses Azure REST API version 2022-10-01-preview. In version 1.x of the Azure Native provider, it used API version 2018-01-01-preview.
+// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-10-01-preview.
 //
-// Other available API versions: 2023-01-01-preview, 2024-01-01, 2024-05-01-preview.
+// Other available API versions: 2018-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-05-01-preview, 2025-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native eventhub [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Cluster struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The UTC time when the Event Hubs Cluster was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Resource location.
@@ -28,6 +30,8 @@ type Cluster struct {
 	MetricId pulumi.StringOutput `pulumi:"metricId"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Provisioning state of the Cluster.
+	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Properties of the cluster SKU.
 	Sku ClusterSkuResponsePtrOutput `pulumi:"sku"`
 	// Status of the Cluster resource
@@ -78,6 +82,9 @@ func NewCluster(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:eventhub/v20240501preview:Cluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:eventhub/v20250501preview:Cluster"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -181,6 +188,11 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ClusterOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The UTC time when the Event Hubs Cluster was created.
 func (o ClusterOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
@@ -199,6 +211,11 @@ func (o ClusterOutput) MetricId() pulumi.StringOutput {
 // The name of the resource
 func (o ClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Provisioning state of the Cluster.
+func (o ClusterOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Properties of the cluster SKU.

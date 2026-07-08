@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Cloud shell console
 //
-// Uses Azure REST API version 2018-10-01. In version 1.x of the Azure Native provider, it used API version 2018-10-01.
+// Uses Azure REST API version 2018-10-01. In version 2.x of the Azure Native provider, it used API version 2018-10-01.
 type Console struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Cloud shell console properties.
 	Properties ConsolePropertiesResponseOutput `pulumi:"properties"`
 }
@@ -120,6 +122,11 @@ func (o ConsoleOutput) ToConsoleOutput() ConsoleOutput {
 
 func (o ConsoleOutput) ToConsoleOutputWithContext(ctx context.Context) ConsoleOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ConsoleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Console) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Cloud shell console properties.

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a ServerEndpoint.
 //
-// Uses Azure REST API version 2022-06-01.
+// Uses Azure REST API version 2022-09-01.
 //
-// Other available API versions: 2022-09-01.
+// Other available API versions: 2022-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagesync [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupServerEndpoint(ctx *pulumi.Context, args *LookupServerEndpointArgs, opts ...pulumi.InvokeOption) (*LookupServerEndpointResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerEndpointResult
@@ -23,7 +23,7 @@ func LookupServerEndpoint(ctx *pulumi.Context, args *LookupServerEndpointArgs, o
 	if err != nil {
 		return nil, err
 	}
-	return &rv, nil
+	return rv.Defaults(), nil
 }
 
 type LookupServerEndpointArgs struct {
@@ -39,13 +39,15 @@ type LookupServerEndpointArgs struct {
 
 // Server Endpoint object.
 type LookupServerEndpointResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Cloud Tiering.
 	CloudTiering *string `pulumi:"cloudTiering"`
 	// Cloud tiering status. Only populated if cloud tiering is enabled.
 	CloudTieringStatus ServerEndpointCloudTieringStatusResponse `pulumi:"cloudTieringStatus"`
 	// Friendly Name
 	FriendlyName *string `pulumi:"friendlyName"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Policy for how namespace and files are recalled during FastDr.
 	InitialDownloadPolicy *string `pulumi:"initialDownloadPolicy"`
@@ -71,6 +73,8 @@ type LookupServerEndpointResult struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Recall status. Only populated if cloud tiering is enabled.
 	RecallStatus ServerEndpointRecallStatusResponse `pulumi:"recallStatus"`
+	// Server Endpoint provisioning status
+	ServerEndpointProvisioningStatus *ServerEndpointProvisioningStatusResponse `pulumi:"serverEndpointProvisioningStatus"`
 	// Server Local path.
 	ServerLocalPath *string `pulumi:"serverLocalPath"`
 	// Server name
@@ -89,6 +93,26 @@ type LookupServerEndpointResult struct {
 	VolumeFreeSpacePercent *int `pulumi:"volumeFreeSpacePercent"`
 }
 
+// Defaults sets the appropriate defaults for LookupServerEndpointResult
+func (val *LookupServerEndpointResult) Defaults() *LookupServerEndpointResult {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.InitialDownloadPolicy == nil {
+		initialDownloadPolicy_ := "NamespaceThenModifiedFiles"
+		tmp.InitialDownloadPolicy = &initialDownloadPolicy_
+	}
+	if tmp.InitialUploadPolicy == nil {
+		initialUploadPolicy_ := "Merge"
+		tmp.InitialUploadPolicy = &initialUploadPolicy_
+	}
+	if tmp.LocalCacheMode == nil {
+		localCacheMode_ := "UpdateLocallyCachedFiles"
+		tmp.LocalCacheMode = &localCacheMode_
+	}
+	return &tmp
+}
 func LookupServerEndpointOutput(ctx *pulumi.Context, args LookupServerEndpointOutputArgs, opts ...pulumi.InvokeOption) LookupServerEndpointResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupServerEndpointResultOutput, error) {
@@ -128,6 +152,11 @@ func (o LookupServerEndpointResultOutput) ToLookupServerEndpointResultOutputWith
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupServerEndpointResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerEndpointResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Cloud Tiering.
 func (o LookupServerEndpointResultOutput) CloudTiering() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupServerEndpointResult) *string { return v.CloudTiering }).(pulumi.StringPtrOutput)
@@ -145,7 +174,7 @@ func (o LookupServerEndpointResultOutput) FriendlyName() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v LookupServerEndpointResult) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupServerEndpointResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerEndpointResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -208,6 +237,13 @@ func (o LookupServerEndpointResultOutput) ProvisioningState() pulumi.StringOutpu
 // Recall status. Only populated if cloud tiering is enabled.
 func (o LookupServerEndpointResultOutput) RecallStatus() ServerEndpointRecallStatusResponseOutput {
 	return o.ApplyT(func(v LookupServerEndpointResult) ServerEndpointRecallStatusResponse { return v.RecallStatus }).(ServerEndpointRecallStatusResponseOutput)
+}
+
+// Server Endpoint provisioning status
+func (o LookupServerEndpointResultOutput) ServerEndpointProvisioningStatus() ServerEndpointProvisioningStatusResponsePtrOutput {
+	return o.ApplyT(func(v LookupServerEndpointResult) *ServerEndpointProvisioningStatusResponse {
+		return v.ServerEndpointProvisioningStatus
+	}).(ServerEndpointProvisioningStatusResponsePtrOutput)
 }
 
 // Server Local path.

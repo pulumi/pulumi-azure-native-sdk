@@ -7,13 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a setting.
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2025-01-01-preview.
 func LookupAnomalies(ctx *pulumi.Context, args *LookupAnomaliesArgs, opts ...pulumi.InvokeOption) (*LookupAnomaliesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAnomaliesResult
@@ -35,6 +35,8 @@ type LookupAnomaliesArgs struct {
 
 // Settings with single toggle.
 type LookupAnomaliesResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Etag of the azure resource
 	Etag *string `pulumi:"etag"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -87,6 +89,11 @@ func (o LookupAnomaliesResultOutput) ToLookupAnomaliesResultOutput() LookupAnoma
 
 func (o LookupAnomaliesResultOutput) ToLookupAnomaliesResultOutputWithContext(ctx context.Context) LookupAnomaliesResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupAnomaliesResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAnomaliesResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Etag of the azure resource

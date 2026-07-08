@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The request to update subscriptions needed to be monitored by the Datadog monitor resource.
 //
-// Uses Azure REST API version 2023-01-01.
+// Uses Azure REST API version 2023-10-20. In version 2.x of the Azure Native provider, it used API version 2023-01-01.
 //
-// Other available API versions: 2023-07-07, 2023-10-20.
+// Other available API versions: 2023-01-01, 2023-07-07, 2024-03-01, 2025-01-07, 2025-06-11, 2025-11-03-preview, 2025-12-26-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type MonitoredSubscription struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Name of the monitored subscription resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The request to update subscriptions needed to be monitored by the Datadog monitor resource.
@@ -50,6 +52,21 @@ func NewMonitoredSubscription(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:datadog/v20231020:MonitoredSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:datadog/v20240301:MonitoredSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:datadog/v20250107:MonitoredSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:datadog/v20250611:MonitoredSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:datadog/v20251103preview:MonitoredSubscription"),
+		},
+		{
+			Type: pulumi.String("azure-native:datadog/v20251226preview:MonitoredSubscription"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -143,6 +160,11 @@ func (o MonitoredSubscriptionOutput) ToMonitoredSubscriptionOutput() MonitoredSu
 
 func (o MonitoredSubscriptionOutput) ToMonitoredSubscriptionOutputWithContext(ctx context.Context) MonitoredSubscriptionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o MonitoredSubscriptionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MonitoredSubscription) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Name of the monitored subscription resource.

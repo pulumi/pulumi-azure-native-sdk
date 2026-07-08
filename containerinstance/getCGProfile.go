@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the properties of the specified container group profile.
 //
 // Uses Azure REST API version 2024-11-01-preview.
+//
+// Other available API versions: 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native containerinstance [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupCGProfile(ctx *pulumi.Context, args *LookupCGProfileArgs, opts ...pulumi.InvokeOption) (*LookupCGProfileResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupCGProfileResult
@@ -31,8 +33,10 @@ type LookupCGProfileArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// container group profile object
+// A container group profile object
 type LookupCGProfileResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The properties for confidential container group
 	ConfidentialComputeProperties *ConfidentialComputePropertiesResponse `pulumi:"confidentialComputeProperties"`
 	// The containers within the container group.
@@ -56,18 +60,18 @@ type LookupCGProfileResult struct {
 	// The resource name.
 	Name string `pulumi:"name"`
 	// The operating system type required by the containers in the container group.
-	OsType *string `pulumi:"osType"`
+	OsType string `pulumi:"osType"`
 	// The priority of the container group.
 	Priority *string `pulumi:"priority"`
 	// Registered revisions are calculated at request time based off the records in the table logs.
-	RegisteredRevisions []float64 `pulumi:"registeredRevisions"`
+	RegisteredRevisions []int `pulumi:"registeredRevisions"`
 	// Restart policy for all containers within the container group.
 	// - `Always` Always restart
 	// - `OnFailure` Restart on failure
 	// - `Never` Never restart
 	RestartPolicy *string `pulumi:"restartPolicy"`
 	// Container group profile current revision number
-	Revision *float64 `pulumi:"revision"`
+	Revision int `pulumi:"revision"`
 	// The container security properties.
 	SecurityContext *SecurityContextDefinitionResponse `pulumi:"securityContext"`
 	// Shutdown grace period for containers in a container group.
@@ -120,7 +124,7 @@ func (LookupCGProfileOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupCGProfileArgs)(nil)).Elem()
 }
 
-// container group profile object
+// A container group profile object
 type LookupCGProfileResultOutput struct{ *pulumi.OutputState }
 
 func (LookupCGProfileResultOutput) ElementType() reflect.Type {
@@ -133,6 +137,11 @@ func (o LookupCGProfileResultOutput) ToLookupCGProfileResultOutput() LookupCGPro
 
 func (o LookupCGProfileResultOutput) ToLookupCGProfileResultOutputWithContext(ctx context.Context) LookupCGProfileResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupCGProfileResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCGProfileResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The properties for confidential container group
@@ -193,8 +202,8 @@ func (o LookupCGProfileResultOutput) Name() pulumi.StringOutput {
 }
 
 // The operating system type required by the containers in the container group.
-func (o LookupCGProfileResultOutput) OsType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupCGProfileResult) *string { return v.OsType }).(pulumi.StringPtrOutput)
+func (o LookupCGProfileResultOutput) OsType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCGProfileResult) string { return v.OsType }).(pulumi.StringOutput)
 }
 
 // The priority of the container group.
@@ -203,8 +212,8 @@ func (o LookupCGProfileResultOutput) Priority() pulumi.StringPtrOutput {
 }
 
 // Registered revisions are calculated at request time based off the records in the table logs.
-func (o LookupCGProfileResultOutput) RegisteredRevisions() pulumi.Float64ArrayOutput {
-	return o.ApplyT(func(v LookupCGProfileResult) []float64 { return v.RegisteredRevisions }).(pulumi.Float64ArrayOutput)
+func (o LookupCGProfileResultOutput) RegisteredRevisions() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v LookupCGProfileResult) []int { return v.RegisteredRevisions }).(pulumi.IntArrayOutput)
 }
 
 // Restart policy for all containers within the container group.
@@ -216,8 +225,8 @@ func (o LookupCGProfileResultOutput) RestartPolicy() pulumi.StringPtrOutput {
 }
 
 // Container group profile current revision number
-func (o LookupCGProfileResultOutput) Revision() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v LookupCGProfileResult) *float64 { return v.Revision }).(pulumi.Float64PtrOutput)
+func (o LookupCGProfileResultOutput) Revision() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupCGProfileResult) int { return v.Revision }).(pulumi.IntOutput)
 }
 
 // The container security properties.

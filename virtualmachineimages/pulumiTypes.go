@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -497,6 +497,206 @@ func (o DistributeVersionerSourceResponsePtrOutput) Scheme() pulumi.StringPtrOut
 			return nil
 		}
 		return &v.Scheme
+	}).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the image template needs to be built on create/update
+type ImageTemplateAutoRun struct {
+	// Enabling this field will trigger an automatic build on image template creation or update.
+	State *AutoRunState `pulumi:"state"`
+}
+
+// ImageTemplateAutoRunInput is an input type that accepts ImageTemplateAutoRunArgs and ImageTemplateAutoRunOutput values.
+// You can construct a concrete instance of `ImageTemplateAutoRunInput` via:
+//
+//	ImageTemplateAutoRunArgs{...}
+type ImageTemplateAutoRunInput interface {
+	pulumi.Input
+
+	ToImageTemplateAutoRunOutput() ImageTemplateAutoRunOutput
+	ToImageTemplateAutoRunOutputWithContext(context.Context) ImageTemplateAutoRunOutput
+}
+
+// Indicates if the image template needs to be built on create/update
+type ImageTemplateAutoRunArgs struct {
+	// Enabling this field will trigger an automatic build on image template creation or update.
+	State AutoRunStatePtrInput `pulumi:"state"`
+}
+
+func (ImageTemplateAutoRunArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageTemplateAutoRun)(nil)).Elem()
+}
+
+func (i ImageTemplateAutoRunArgs) ToImageTemplateAutoRunOutput() ImageTemplateAutoRunOutput {
+	return i.ToImageTemplateAutoRunOutputWithContext(context.Background())
+}
+
+func (i ImageTemplateAutoRunArgs) ToImageTemplateAutoRunOutputWithContext(ctx context.Context) ImageTemplateAutoRunOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageTemplateAutoRunOutput)
+}
+
+func (i ImageTemplateAutoRunArgs) ToImageTemplateAutoRunPtrOutput() ImageTemplateAutoRunPtrOutput {
+	return i.ToImageTemplateAutoRunPtrOutputWithContext(context.Background())
+}
+
+func (i ImageTemplateAutoRunArgs) ToImageTemplateAutoRunPtrOutputWithContext(ctx context.Context) ImageTemplateAutoRunPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageTemplateAutoRunOutput).ToImageTemplateAutoRunPtrOutputWithContext(ctx)
+}
+
+// ImageTemplateAutoRunPtrInput is an input type that accepts ImageTemplateAutoRunArgs, ImageTemplateAutoRunPtr and ImageTemplateAutoRunPtrOutput values.
+// You can construct a concrete instance of `ImageTemplateAutoRunPtrInput` via:
+//
+//	        ImageTemplateAutoRunArgs{...}
+//
+//	or:
+//
+//	        nil
+type ImageTemplateAutoRunPtrInput interface {
+	pulumi.Input
+
+	ToImageTemplateAutoRunPtrOutput() ImageTemplateAutoRunPtrOutput
+	ToImageTemplateAutoRunPtrOutputWithContext(context.Context) ImageTemplateAutoRunPtrOutput
+}
+
+type imageTemplateAutoRunPtrType ImageTemplateAutoRunArgs
+
+func ImageTemplateAutoRunPtr(v *ImageTemplateAutoRunArgs) ImageTemplateAutoRunPtrInput {
+	return (*imageTemplateAutoRunPtrType)(v)
+}
+
+func (*imageTemplateAutoRunPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageTemplateAutoRun)(nil)).Elem()
+}
+
+func (i *imageTemplateAutoRunPtrType) ToImageTemplateAutoRunPtrOutput() ImageTemplateAutoRunPtrOutput {
+	return i.ToImageTemplateAutoRunPtrOutputWithContext(context.Background())
+}
+
+func (i *imageTemplateAutoRunPtrType) ToImageTemplateAutoRunPtrOutputWithContext(ctx context.Context) ImageTemplateAutoRunPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageTemplateAutoRunPtrOutput)
+}
+
+// Indicates if the image template needs to be built on create/update
+type ImageTemplateAutoRunOutput struct{ *pulumi.OutputState }
+
+func (ImageTemplateAutoRunOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageTemplateAutoRun)(nil)).Elem()
+}
+
+func (o ImageTemplateAutoRunOutput) ToImageTemplateAutoRunOutput() ImageTemplateAutoRunOutput {
+	return o
+}
+
+func (o ImageTemplateAutoRunOutput) ToImageTemplateAutoRunOutputWithContext(ctx context.Context) ImageTemplateAutoRunOutput {
+	return o
+}
+
+func (o ImageTemplateAutoRunOutput) ToImageTemplateAutoRunPtrOutput() ImageTemplateAutoRunPtrOutput {
+	return o.ToImageTemplateAutoRunPtrOutputWithContext(context.Background())
+}
+
+func (o ImageTemplateAutoRunOutput) ToImageTemplateAutoRunPtrOutputWithContext(ctx context.Context) ImageTemplateAutoRunPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageTemplateAutoRun) *ImageTemplateAutoRun {
+		return &v
+	}).(ImageTemplateAutoRunPtrOutput)
+}
+
+// Enabling this field will trigger an automatic build on image template creation or update.
+func (o ImageTemplateAutoRunOutput) State() AutoRunStatePtrOutput {
+	return o.ApplyT(func(v ImageTemplateAutoRun) *AutoRunState { return v.State }).(AutoRunStatePtrOutput)
+}
+
+type ImageTemplateAutoRunPtrOutput struct{ *pulumi.OutputState }
+
+func (ImageTemplateAutoRunPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageTemplateAutoRun)(nil)).Elem()
+}
+
+func (o ImageTemplateAutoRunPtrOutput) ToImageTemplateAutoRunPtrOutput() ImageTemplateAutoRunPtrOutput {
+	return o
+}
+
+func (o ImageTemplateAutoRunPtrOutput) ToImageTemplateAutoRunPtrOutputWithContext(ctx context.Context) ImageTemplateAutoRunPtrOutput {
+	return o
+}
+
+func (o ImageTemplateAutoRunPtrOutput) Elem() ImageTemplateAutoRunOutput {
+	return o.ApplyT(func(v *ImageTemplateAutoRun) ImageTemplateAutoRun {
+		if v != nil {
+			return *v
+		}
+		var ret ImageTemplateAutoRun
+		return ret
+	}).(ImageTemplateAutoRunOutput)
+}
+
+// Enabling this field will trigger an automatic build on image template creation or update.
+func (o ImageTemplateAutoRunPtrOutput) State() AutoRunStatePtrOutput {
+	return o.ApplyT(func(v *ImageTemplateAutoRun) *AutoRunState {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(AutoRunStatePtrOutput)
+}
+
+// Indicates if the image template needs to be built on create/update
+type ImageTemplateAutoRunResponse struct {
+	// Enabling this field will trigger an automatic build on image template creation or update.
+	State *string `pulumi:"state"`
+}
+
+// Indicates if the image template needs to be built on create/update
+type ImageTemplateAutoRunResponseOutput struct{ *pulumi.OutputState }
+
+func (ImageTemplateAutoRunResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageTemplateAutoRunResponse)(nil)).Elem()
+}
+
+func (o ImageTemplateAutoRunResponseOutput) ToImageTemplateAutoRunResponseOutput() ImageTemplateAutoRunResponseOutput {
+	return o
+}
+
+func (o ImageTemplateAutoRunResponseOutput) ToImageTemplateAutoRunResponseOutputWithContext(ctx context.Context) ImageTemplateAutoRunResponseOutput {
+	return o
+}
+
+// Enabling this field will trigger an automatic build on image template creation or update.
+func (o ImageTemplateAutoRunResponseOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageTemplateAutoRunResponse) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type ImageTemplateAutoRunResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ImageTemplateAutoRunResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageTemplateAutoRunResponse)(nil)).Elem()
+}
+
+func (o ImageTemplateAutoRunResponsePtrOutput) ToImageTemplateAutoRunResponsePtrOutput() ImageTemplateAutoRunResponsePtrOutput {
+	return o
+}
+
+func (o ImageTemplateAutoRunResponsePtrOutput) ToImageTemplateAutoRunResponsePtrOutputWithContext(ctx context.Context) ImageTemplateAutoRunResponsePtrOutput {
+	return o
+}
+
+func (o ImageTemplateAutoRunResponsePtrOutput) Elem() ImageTemplateAutoRunResponseOutput {
+	return o.ApplyT(func(v *ImageTemplateAutoRunResponse) ImageTemplateAutoRunResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ImageTemplateAutoRunResponse
+		return ret
+	}).(ImageTemplateAutoRunResponseOutput)
+}
+
+// Enabling this field will trigger an automatic build on image template creation or update.
+func (o ImageTemplateAutoRunResponsePtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageTemplateAutoRunResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1966,6 +2166,196 @@ func (o ImageTemplatePowerShellValidatorResponseOutput) ValidExitCodes() pulumi.
 	return o.ApplyT(func(v ImageTemplatePowerShellValidatorResponse) []int { return v.ValidExitCodes }).(pulumi.IntArrayOutput)
 }
 
+// Error handling options upon a build failure
+type ImageTemplatePropertiesErrorHandling struct {
+	// If there is a customizer error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a customizer error and this field is set to 'abort', the build VM will be preserved.
+	OnCustomizerError *string `pulumi:"onCustomizerError"`
+	// If there is a validation error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a validation error and this field is set to 'abort', the build VM will be preserved.
+	OnValidationError *string `pulumi:"onValidationError"`
+}
+
+// Defaults sets the appropriate defaults for ImageTemplatePropertiesErrorHandling
+func (val *ImageTemplatePropertiesErrorHandling) Defaults() *ImageTemplatePropertiesErrorHandling {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.OnCustomizerError == nil {
+		onCustomizerError_ := "cleanup"
+		tmp.OnCustomizerError = &onCustomizerError_
+	}
+	if tmp.OnValidationError == nil {
+		onValidationError_ := "cleanup"
+		tmp.OnValidationError = &onValidationError_
+	}
+	return &tmp
+}
+
+// ImageTemplatePropertiesErrorHandlingInput is an input type that accepts ImageTemplatePropertiesErrorHandlingArgs and ImageTemplatePropertiesErrorHandlingOutput values.
+// You can construct a concrete instance of `ImageTemplatePropertiesErrorHandlingInput` via:
+//
+//	ImageTemplatePropertiesErrorHandlingArgs{...}
+type ImageTemplatePropertiesErrorHandlingInput interface {
+	pulumi.Input
+
+	ToImageTemplatePropertiesErrorHandlingOutput() ImageTemplatePropertiesErrorHandlingOutput
+	ToImageTemplatePropertiesErrorHandlingOutputWithContext(context.Context) ImageTemplatePropertiesErrorHandlingOutput
+}
+
+// Error handling options upon a build failure
+type ImageTemplatePropertiesErrorHandlingArgs struct {
+	// If there is a customizer error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a customizer error and this field is set to 'abort', the build VM will be preserved.
+	OnCustomizerError pulumi.StringPtrInput `pulumi:"onCustomizerError"`
+	// If there is a validation error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a validation error and this field is set to 'abort', the build VM will be preserved.
+	OnValidationError pulumi.StringPtrInput `pulumi:"onValidationError"`
+}
+
+// Defaults sets the appropriate defaults for ImageTemplatePropertiesErrorHandlingArgs
+func (val *ImageTemplatePropertiesErrorHandlingArgs) Defaults() *ImageTemplatePropertiesErrorHandlingArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.OnCustomizerError == nil {
+		tmp.OnCustomizerError = pulumi.StringPtr("cleanup")
+	}
+	if tmp.OnValidationError == nil {
+		tmp.OnValidationError = pulumi.StringPtr("cleanup")
+	}
+	return &tmp
+}
+func (ImageTemplatePropertiesErrorHandlingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageTemplatePropertiesErrorHandling)(nil)).Elem()
+}
+
+func (i ImageTemplatePropertiesErrorHandlingArgs) ToImageTemplatePropertiesErrorHandlingOutput() ImageTemplatePropertiesErrorHandlingOutput {
+	return i.ToImageTemplatePropertiesErrorHandlingOutputWithContext(context.Background())
+}
+
+func (i ImageTemplatePropertiesErrorHandlingArgs) ToImageTemplatePropertiesErrorHandlingOutputWithContext(ctx context.Context) ImageTemplatePropertiesErrorHandlingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageTemplatePropertiesErrorHandlingOutput)
+}
+
+func (i ImageTemplatePropertiesErrorHandlingArgs) ToImageTemplatePropertiesErrorHandlingPtrOutput() ImageTemplatePropertiesErrorHandlingPtrOutput {
+	return i.ToImageTemplatePropertiesErrorHandlingPtrOutputWithContext(context.Background())
+}
+
+func (i ImageTemplatePropertiesErrorHandlingArgs) ToImageTemplatePropertiesErrorHandlingPtrOutputWithContext(ctx context.Context) ImageTemplatePropertiesErrorHandlingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageTemplatePropertiesErrorHandlingOutput).ToImageTemplatePropertiesErrorHandlingPtrOutputWithContext(ctx)
+}
+
+// ImageTemplatePropertiesErrorHandlingPtrInput is an input type that accepts ImageTemplatePropertiesErrorHandlingArgs, ImageTemplatePropertiesErrorHandlingPtr and ImageTemplatePropertiesErrorHandlingPtrOutput values.
+// You can construct a concrete instance of `ImageTemplatePropertiesErrorHandlingPtrInput` via:
+//
+//	        ImageTemplatePropertiesErrorHandlingArgs{...}
+//
+//	or:
+//
+//	        nil
+type ImageTemplatePropertiesErrorHandlingPtrInput interface {
+	pulumi.Input
+
+	ToImageTemplatePropertiesErrorHandlingPtrOutput() ImageTemplatePropertiesErrorHandlingPtrOutput
+	ToImageTemplatePropertiesErrorHandlingPtrOutputWithContext(context.Context) ImageTemplatePropertiesErrorHandlingPtrOutput
+}
+
+type imageTemplatePropertiesErrorHandlingPtrType ImageTemplatePropertiesErrorHandlingArgs
+
+func ImageTemplatePropertiesErrorHandlingPtr(v *ImageTemplatePropertiesErrorHandlingArgs) ImageTemplatePropertiesErrorHandlingPtrInput {
+	return (*imageTemplatePropertiesErrorHandlingPtrType)(v)
+}
+
+func (*imageTemplatePropertiesErrorHandlingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageTemplatePropertiesErrorHandling)(nil)).Elem()
+}
+
+func (i *imageTemplatePropertiesErrorHandlingPtrType) ToImageTemplatePropertiesErrorHandlingPtrOutput() ImageTemplatePropertiesErrorHandlingPtrOutput {
+	return i.ToImageTemplatePropertiesErrorHandlingPtrOutputWithContext(context.Background())
+}
+
+func (i *imageTemplatePropertiesErrorHandlingPtrType) ToImageTemplatePropertiesErrorHandlingPtrOutputWithContext(ctx context.Context) ImageTemplatePropertiesErrorHandlingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageTemplatePropertiesErrorHandlingPtrOutput)
+}
+
+// Error handling options upon a build failure
+type ImageTemplatePropertiesErrorHandlingOutput struct{ *pulumi.OutputState }
+
+func (ImageTemplatePropertiesErrorHandlingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageTemplatePropertiesErrorHandling)(nil)).Elem()
+}
+
+func (o ImageTemplatePropertiesErrorHandlingOutput) ToImageTemplatePropertiesErrorHandlingOutput() ImageTemplatePropertiesErrorHandlingOutput {
+	return o
+}
+
+func (o ImageTemplatePropertiesErrorHandlingOutput) ToImageTemplatePropertiesErrorHandlingOutputWithContext(ctx context.Context) ImageTemplatePropertiesErrorHandlingOutput {
+	return o
+}
+
+func (o ImageTemplatePropertiesErrorHandlingOutput) ToImageTemplatePropertiesErrorHandlingPtrOutput() ImageTemplatePropertiesErrorHandlingPtrOutput {
+	return o.ToImageTemplatePropertiesErrorHandlingPtrOutputWithContext(context.Background())
+}
+
+func (o ImageTemplatePropertiesErrorHandlingOutput) ToImageTemplatePropertiesErrorHandlingPtrOutputWithContext(ctx context.Context) ImageTemplatePropertiesErrorHandlingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImageTemplatePropertiesErrorHandling) *ImageTemplatePropertiesErrorHandling {
+		return &v
+	}).(ImageTemplatePropertiesErrorHandlingPtrOutput)
+}
+
+// If there is a customizer error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a customizer error and this field is set to 'abort', the build VM will be preserved.
+func (o ImageTemplatePropertiesErrorHandlingOutput) OnCustomizerError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageTemplatePropertiesErrorHandling) *string { return v.OnCustomizerError }).(pulumi.StringPtrOutput)
+}
+
+// If there is a validation error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a validation error and this field is set to 'abort', the build VM will be preserved.
+func (o ImageTemplatePropertiesErrorHandlingOutput) OnValidationError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageTemplatePropertiesErrorHandling) *string { return v.OnValidationError }).(pulumi.StringPtrOutput)
+}
+
+type ImageTemplatePropertiesErrorHandlingPtrOutput struct{ *pulumi.OutputState }
+
+func (ImageTemplatePropertiesErrorHandlingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageTemplatePropertiesErrorHandling)(nil)).Elem()
+}
+
+func (o ImageTemplatePropertiesErrorHandlingPtrOutput) ToImageTemplatePropertiesErrorHandlingPtrOutput() ImageTemplatePropertiesErrorHandlingPtrOutput {
+	return o
+}
+
+func (o ImageTemplatePropertiesErrorHandlingPtrOutput) ToImageTemplatePropertiesErrorHandlingPtrOutputWithContext(ctx context.Context) ImageTemplatePropertiesErrorHandlingPtrOutput {
+	return o
+}
+
+func (o ImageTemplatePropertiesErrorHandlingPtrOutput) Elem() ImageTemplatePropertiesErrorHandlingOutput {
+	return o.ApplyT(func(v *ImageTemplatePropertiesErrorHandling) ImageTemplatePropertiesErrorHandling {
+		if v != nil {
+			return *v
+		}
+		var ret ImageTemplatePropertiesErrorHandling
+		return ret
+	}).(ImageTemplatePropertiesErrorHandlingOutput)
+}
+
+// If there is a customizer error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a customizer error and this field is set to 'abort', the build VM will be preserved.
+func (o ImageTemplatePropertiesErrorHandlingPtrOutput) OnCustomizerError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageTemplatePropertiesErrorHandling) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OnCustomizerError
+	}).(pulumi.StringPtrOutput)
+}
+
+// If there is a validation error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a validation error and this field is set to 'abort', the build VM will be preserved.
+func (o ImageTemplatePropertiesErrorHandlingPtrOutput) OnValidationError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageTemplatePropertiesErrorHandling) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OnValidationError
+	}).(pulumi.StringPtrOutput)
+}
+
 // Specifies optimization to be performed on image.
 type ImageTemplatePropertiesOptimize struct {
 	// Optimization is applied on the image for a faster VM boot.
@@ -2104,6 +2494,100 @@ func (o ImageTemplatePropertiesOptimizePtrOutput) VmBoot() ImageTemplateProperti
 		}
 		return v.VmBoot
 	}).(ImageTemplatePropertiesVmBootPtrOutput)
+}
+
+// Error handling options upon a build failure
+type ImageTemplatePropertiesResponseErrorHandling struct {
+	// If there is a customizer error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a customizer error and this field is set to 'abort', the build VM will be preserved.
+	OnCustomizerError *string `pulumi:"onCustomizerError"`
+	// If there is a validation error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a validation error and this field is set to 'abort', the build VM will be preserved.
+	OnValidationError *string `pulumi:"onValidationError"`
+}
+
+// Defaults sets the appropriate defaults for ImageTemplatePropertiesResponseErrorHandling
+func (val *ImageTemplatePropertiesResponseErrorHandling) Defaults() *ImageTemplatePropertiesResponseErrorHandling {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.OnCustomizerError == nil {
+		onCustomizerError_ := "cleanup"
+		tmp.OnCustomizerError = &onCustomizerError_
+	}
+	if tmp.OnValidationError == nil {
+		onValidationError_ := "cleanup"
+		tmp.OnValidationError = &onValidationError_
+	}
+	return &tmp
+}
+
+// Error handling options upon a build failure
+type ImageTemplatePropertiesResponseErrorHandlingOutput struct{ *pulumi.OutputState }
+
+func (ImageTemplatePropertiesResponseErrorHandlingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageTemplatePropertiesResponseErrorHandling)(nil)).Elem()
+}
+
+func (o ImageTemplatePropertiesResponseErrorHandlingOutput) ToImageTemplatePropertiesResponseErrorHandlingOutput() ImageTemplatePropertiesResponseErrorHandlingOutput {
+	return o
+}
+
+func (o ImageTemplatePropertiesResponseErrorHandlingOutput) ToImageTemplatePropertiesResponseErrorHandlingOutputWithContext(ctx context.Context) ImageTemplatePropertiesResponseErrorHandlingOutput {
+	return o
+}
+
+// If there is a customizer error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a customizer error and this field is set to 'abort', the build VM will be preserved.
+func (o ImageTemplatePropertiesResponseErrorHandlingOutput) OnCustomizerError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageTemplatePropertiesResponseErrorHandling) *string { return v.OnCustomizerError }).(pulumi.StringPtrOutput)
+}
+
+// If there is a validation error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a validation error and this field is set to 'abort', the build VM will be preserved.
+func (o ImageTemplatePropertiesResponseErrorHandlingOutput) OnValidationError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ImageTemplatePropertiesResponseErrorHandling) *string { return v.OnValidationError }).(pulumi.StringPtrOutput)
+}
+
+type ImageTemplatePropertiesResponseErrorHandlingPtrOutput struct{ *pulumi.OutputState }
+
+func (ImageTemplatePropertiesResponseErrorHandlingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageTemplatePropertiesResponseErrorHandling)(nil)).Elem()
+}
+
+func (o ImageTemplatePropertiesResponseErrorHandlingPtrOutput) ToImageTemplatePropertiesResponseErrorHandlingPtrOutput() ImageTemplatePropertiesResponseErrorHandlingPtrOutput {
+	return o
+}
+
+func (o ImageTemplatePropertiesResponseErrorHandlingPtrOutput) ToImageTemplatePropertiesResponseErrorHandlingPtrOutputWithContext(ctx context.Context) ImageTemplatePropertiesResponseErrorHandlingPtrOutput {
+	return o
+}
+
+func (o ImageTemplatePropertiesResponseErrorHandlingPtrOutput) Elem() ImageTemplatePropertiesResponseErrorHandlingOutput {
+	return o.ApplyT(func(v *ImageTemplatePropertiesResponseErrorHandling) ImageTemplatePropertiesResponseErrorHandling {
+		if v != nil {
+			return *v
+		}
+		var ret ImageTemplatePropertiesResponseErrorHandling
+		return ret
+	}).(ImageTemplatePropertiesResponseErrorHandlingOutput)
+}
+
+// If there is a customizer error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a customizer error and this field is set to 'abort', the build VM will be preserved.
+func (o ImageTemplatePropertiesResponseErrorHandlingPtrOutput) OnCustomizerError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageTemplatePropertiesResponseErrorHandling) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OnCustomizerError
+	}).(pulumi.StringPtrOutput)
+}
+
+// If there is a validation error and this field is set to 'cleanup', the build VM and associated network resources will be cleaned up. This is the default behavior. If there is a validation error and this field is set to 'abort', the build VM will be preserved.
+func (o ImageTemplatePropertiesResponseErrorHandlingPtrOutput) OnValidationError() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ImageTemplatePropertiesResponseErrorHandling) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OnValidationError
+	}).(pulumi.StringPtrOutput)
 }
 
 // Specifies optimization to be performed on image.
@@ -4930,9 +5414,11 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 
 // Virtual Network configuration.
 type VirtualNetworkConfig struct {
-	// Size of the proxy virtual machine used to pass traffic to the build VM and validation VM. Omit or specify empty string to use the default (Standard_A1_v2).
+	// Resource id of a pre-existing subnet on which Azure Container Instance will be deployed for Isolated Builds. This field may be specified only if `subnetId` is also specified and must be on the same Virtual Network as the subnet specified in `subnetId`.
+	ContainerInstanceSubnetId *string `pulumi:"containerInstanceSubnetId"`
+	// Size of the proxy virtual machine used to pass traffic to the build VM and validation VM. This must not be specified if `containerInstanceSubnetId` is specified because no proxy virtual machine is deployed in that case. Omit or specify empty string to use the default (Standard_A1_v2).
 	ProxyVmSize *string `pulumi:"proxyVmSize"`
-	// Resource id of a pre-existing subnet.
+	// Resource id of a pre-existing subnet on which the build VM and validation VM will be deployed
 	SubnetId *string `pulumi:"subnetId"`
 }
 
@@ -4962,9 +5448,11 @@ type VirtualNetworkConfigInput interface {
 
 // Virtual Network configuration.
 type VirtualNetworkConfigArgs struct {
-	// Size of the proxy virtual machine used to pass traffic to the build VM and validation VM. Omit or specify empty string to use the default (Standard_A1_v2).
+	// Resource id of a pre-existing subnet on which Azure Container Instance will be deployed for Isolated Builds. This field may be specified only if `subnetId` is also specified and must be on the same Virtual Network as the subnet specified in `subnetId`.
+	ContainerInstanceSubnetId pulumi.StringPtrInput `pulumi:"containerInstanceSubnetId"`
+	// Size of the proxy virtual machine used to pass traffic to the build VM and validation VM. This must not be specified if `containerInstanceSubnetId` is specified because no proxy virtual machine is deployed in that case. Omit or specify empty string to use the default (Standard_A1_v2).
 	ProxyVmSize pulumi.StringPtrInput `pulumi:"proxyVmSize"`
-	// Resource id of a pre-existing subnet.
+	// Resource id of a pre-existing subnet on which the build VM and validation VM will be deployed
 	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
 }
 
@@ -5057,12 +5545,17 @@ func (o VirtualNetworkConfigOutput) ToVirtualNetworkConfigPtrOutputWithContext(c
 	}).(VirtualNetworkConfigPtrOutput)
 }
 
-// Size of the proxy virtual machine used to pass traffic to the build VM and validation VM. Omit or specify empty string to use the default (Standard_A1_v2).
+// Resource id of a pre-existing subnet on which Azure Container Instance will be deployed for Isolated Builds. This field may be specified only if `subnetId` is also specified and must be on the same Virtual Network as the subnet specified in `subnetId`.
+func (o VirtualNetworkConfigOutput) ContainerInstanceSubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkConfig) *string { return v.ContainerInstanceSubnetId }).(pulumi.StringPtrOutput)
+}
+
+// Size of the proxy virtual machine used to pass traffic to the build VM and validation VM. This must not be specified if `containerInstanceSubnetId` is specified because no proxy virtual machine is deployed in that case. Omit or specify empty string to use the default (Standard_A1_v2).
 func (o VirtualNetworkConfigOutput) ProxyVmSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualNetworkConfig) *string { return v.ProxyVmSize }).(pulumi.StringPtrOutput)
 }
 
-// Resource id of a pre-existing subnet.
+// Resource id of a pre-existing subnet on which the build VM and validation VM will be deployed
 func (o VirtualNetworkConfigOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualNetworkConfig) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
@@ -5091,7 +5584,17 @@ func (o VirtualNetworkConfigPtrOutput) Elem() VirtualNetworkConfigOutput {
 	}).(VirtualNetworkConfigOutput)
 }
 
-// Size of the proxy virtual machine used to pass traffic to the build VM and validation VM. Omit or specify empty string to use the default (Standard_A1_v2).
+// Resource id of a pre-existing subnet on which Azure Container Instance will be deployed for Isolated Builds. This field may be specified only if `subnetId` is also specified and must be on the same Virtual Network as the subnet specified in `subnetId`.
+func (o VirtualNetworkConfigPtrOutput) ContainerInstanceSubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerInstanceSubnetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Size of the proxy virtual machine used to pass traffic to the build VM and validation VM. This must not be specified if `containerInstanceSubnetId` is specified because no proxy virtual machine is deployed in that case. Omit or specify empty string to use the default (Standard_A1_v2).
 func (o VirtualNetworkConfigPtrOutput) ProxyVmSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualNetworkConfig) *string {
 		if v == nil {
@@ -5101,7 +5604,7 @@ func (o VirtualNetworkConfigPtrOutput) ProxyVmSize() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Resource id of a pre-existing subnet.
+// Resource id of a pre-existing subnet on which the build VM and validation VM will be deployed
 func (o VirtualNetworkConfigPtrOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualNetworkConfig) *string {
 		if v == nil {
@@ -5113,9 +5616,11 @@ func (o VirtualNetworkConfigPtrOutput) SubnetId() pulumi.StringPtrOutput {
 
 // Virtual Network configuration.
 type VirtualNetworkConfigResponse struct {
-	// Size of the proxy virtual machine used to pass traffic to the build VM and validation VM. Omit or specify empty string to use the default (Standard_A1_v2).
+	// Resource id of a pre-existing subnet on which Azure Container Instance will be deployed for Isolated Builds. This field may be specified only if `subnetId` is also specified and must be on the same Virtual Network as the subnet specified in `subnetId`.
+	ContainerInstanceSubnetId *string `pulumi:"containerInstanceSubnetId"`
+	// Size of the proxy virtual machine used to pass traffic to the build VM and validation VM. This must not be specified if `containerInstanceSubnetId` is specified because no proxy virtual machine is deployed in that case. Omit or specify empty string to use the default (Standard_A1_v2).
 	ProxyVmSize *string `pulumi:"proxyVmSize"`
-	// Resource id of a pre-existing subnet.
+	// Resource id of a pre-existing subnet on which the build VM and validation VM will be deployed
 	SubnetId *string `pulumi:"subnetId"`
 }
 
@@ -5147,12 +5652,17 @@ func (o VirtualNetworkConfigResponseOutput) ToVirtualNetworkConfigResponseOutput
 	return o
 }
 
-// Size of the proxy virtual machine used to pass traffic to the build VM and validation VM. Omit or specify empty string to use the default (Standard_A1_v2).
+// Resource id of a pre-existing subnet on which Azure Container Instance will be deployed for Isolated Builds. This field may be specified only if `subnetId` is also specified and must be on the same Virtual Network as the subnet specified in `subnetId`.
+func (o VirtualNetworkConfigResponseOutput) ContainerInstanceSubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkConfigResponse) *string { return v.ContainerInstanceSubnetId }).(pulumi.StringPtrOutput)
+}
+
+// Size of the proxy virtual machine used to pass traffic to the build VM and validation VM. This must not be specified if `containerInstanceSubnetId` is specified because no proxy virtual machine is deployed in that case. Omit or specify empty string to use the default (Standard_A1_v2).
 func (o VirtualNetworkConfigResponseOutput) ProxyVmSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualNetworkConfigResponse) *string { return v.ProxyVmSize }).(pulumi.StringPtrOutput)
 }
 
-// Resource id of a pre-existing subnet.
+// Resource id of a pre-existing subnet on which the build VM and validation VM will be deployed
 func (o VirtualNetworkConfigResponseOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualNetworkConfigResponse) *string { return v.SubnetId }).(pulumi.StringPtrOutput)
 }
@@ -5181,7 +5691,17 @@ func (o VirtualNetworkConfigResponsePtrOutput) Elem() VirtualNetworkConfigRespon
 	}).(VirtualNetworkConfigResponseOutput)
 }
 
-// Size of the proxy virtual machine used to pass traffic to the build VM and validation VM. Omit or specify empty string to use the default (Standard_A1_v2).
+// Resource id of a pre-existing subnet on which Azure Container Instance will be deployed for Isolated Builds. This field may be specified only if `subnetId` is also specified and must be on the same Virtual Network as the subnet specified in `subnetId`.
+func (o VirtualNetworkConfigResponsePtrOutput) ContainerInstanceSubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerInstanceSubnetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Size of the proxy virtual machine used to pass traffic to the build VM and validation VM. This must not be specified if `containerInstanceSubnetId` is specified because no proxy virtual machine is deployed in that case. Omit or specify empty string to use the default (Standard_A1_v2).
 func (o VirtualNetworkConfigResponsePtrOutput) ProxyVmSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualNetworkConfigResponse) *string {
 		if v == nil {
@@ -5191,7 +5711,7 @@ func (o VirtualNetworkConfigResponsePtrOutput) ProxyVmSize() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Resource id of a pre-existing subnet.
+// Resource id of a pre-existing subnet on which the build VM and validation VM will be deployed
 func (o VirtualNetworkConfigResponsePtrOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualNetworkConfigResponse) *string {
 		if v == nil {
@@ -5210,6 +5730,10 @@ func init() {
 	pulumi.RegisterOutputType(DistributeVersionerSourcePtrOutput{})
 	pulumi.RegisterOutputType(DistributeVersionerSourceResponseOutput{})
 	pulumi.RegisterOutputType(DistributeVersionerSourceResponsePtrOutput{})
+	pulumi.RegisterOutputType(ImageTemplateAutoRunOutput{})
+	pulumi.RegisterOutputType(ImageTemplateAutoRunPtrOutput{})
+	pulumi.RegisterOutputType(ImageTemplateAutoRunResponseOutput{})
+	pulumi.RegisterOutputType(ImageTemplateAutoRunResponsePtrOutput{})
 	pulumi.RegisterOutputType(ImageTemplateFileCustomizerOutput{})
 	pulumi.RegisterOutputType(ImageTemplateFileCustomizerResponseOutput{})
 	pulumi.RegisterOutputType(ImageTemplateFileValidatorOutput{})
@@ -5227,8 +5751,12 @@ func init() {
 	pulumi.RegisterOutputType(ImageTemplatePowerShellCustomizerResponseOutput{})
 	pulumi.RegisterOutputType(ImageTemplatePowerShellValidatorOutput{})
 	pulumi.RegisterOutputType(ImageTemplatePowerShellValidatorResponseOutput{})
+	pulumi.RegisterOutputType(ImageTemplatePropertiesErrorHandlingOutput{})
+	pulumi.RegisterOutputType(ImageTemplatePropertiesErrorHandlingPtrOutput{})
 	pulumi.RegisterOutputType(ImageTemplatePropertiesOptimizeOutput{})
 	pulumi.RegisterOutputType(ImageTemplatePropertiesOptimizePtrOutput{})
+	pulumi.RegisterOutputType(ImageTemplatePropertiesResponseErrorHandlingOutput{})
+	pulumi.RegisterOutputType(ImageTemplatePropertiesResponseErrorHandlingPtrOutput{})
 	pulumi.RegisterOutputType(ImageTemplatePropertiesResponseOptimizeOutput{})
 	pulumi.RegisterOutputType(ImageTemplatePropertiesResponseOptimizePtrOutput{})
 	pulumi.RegisterOutputType(ImageTemplatePropertiesResponseValidateOutput{})

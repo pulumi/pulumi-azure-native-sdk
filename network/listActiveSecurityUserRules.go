@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2022-04-01-preview.
 //
-// Other available API versions: 2021-05-01-preview.
+// Other available API versions: 2022-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native network [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListActiveSecurityUserRules(ctx *pulumi.Context, args *ListActiveSecurityUserRulesArgs, opts ...pulumi.InvokeOption) (*ListActiveSecurityUserRulesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListActiveSecurityUserRulesResult

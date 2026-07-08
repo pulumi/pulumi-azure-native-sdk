@@ -8,29 +8,33 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A profile is a logical grouping of endpoints that share the same settings.
 //
-// Uses Azure REST API version 2023-05-01. In version 1.x of the Azure Native provider, it used API version 2020-09-01.
+// Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
 //
-// Other available API versions: 2020-09-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
+// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Profile struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Key-Value pair representing additional properties for profiles.
 	ExtendedProperties pulumi.StringMapOutput `pulumi:"extendedProperties"`
 	// The Id of the frontdoor.
 	FrontDoorId pulumi.StringOutput `pulumi:"frontDoorId"`
-	// Managed service identity (system assigned and/or user assigned identities).
+	// The managed service identities assigned to this resource.
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Kind of the profile. Used by portal to differentiate traditional CDN profile and new AFD profile.
 	Kind pulumi.StringOutput `pulumi:"kind"`
-	// Resource location.
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Resource name.
+	// Defines rules that scrub sensitive fields in the Azure Front Door profile logs.
+	LogScrubbing ProfileLogScrubbingResponsePtrOutput `pulumi:"logScrubbing"`
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Send and receive timeout on forwarding request to the origin. When timeout is reached, the request fails and returns.
 	OriginResponseTimeoutSeconds pulumi.IntPtrOutput `pulumi:"originResponseTimeoutSeconds"`
@@ -40,11 +44,11 @@ type Profile struct {
 	ResourceState pulumi.StringOutput `pulumi:"resourceState"`
 	// The pricing tier (defines Azure Front Door Standard or Premium or a CDN provider, feature list and rate) of the profile.
 	Sku SkuResponseOutput `pulumi:"sku"`
-	// Read only system data
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -125,6 +129,21 @@ func NewProfile(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cdn/v20240901:Profile"),
 		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20250101preview:Profile"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20250415:Profile"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20250601:Profile"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20250701preview:Profile"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20250901preview:Profile"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -160,15 +179,17 @@ func (ProfileState) ElementType() reflect.Type {
 }
 
 type profileArgs struct {
-	// Managed service identity (system assigned and/or user assigned identities).
+	// The managed service identities assigned to this resource.
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
-	// Resource location.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
+	// Defines rules that scrub sensitive fields in the Azure Front Door profile logs.
+	LogScrubbing *ProfileLogScrubbing `pulumi:"logScrubbing"`
 	// Send and receive timeout on forwarding request to the origin. When timeout is reached, the request fails and returns.
 	OriginResponseTimeoutSeconds *int `pulumi:"originResponseTimeoutSeconds"`
 	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
 	ProfileName *string `pulumi:"profileName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The pricing tier (defines Azure Front Door Standard or Premium or a CDN provider, feature list and rate) of the profile.
 	Sku Sku `pulumi:"sku"`
@@ -178,15 +199,17 @@ type profileArgs struct {
 
 // The set of arguments for constructing a Profile resource.
 type ProfileArgs struct {
-	// Managed service identity (system assigned and/or user assigned identities).
+	// The managed service identities assigned to this resource.
 	Identity ManagedServiceIdentityPtrInput
-	// Resource location.
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
+	// Defines rules that scrub sensitive fields in the Azure Front Door profile logs.
+	LogScrubbing ProfileLogScrubbingPtrInput
 	// Send and receive timeout on forwarding request to the origin. When timeout is reached, the request fails and returns.
 	OriginResponseTimeoutSeconds pulumi.IntPtrInput
 	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
 	ProfileName pulumi.StringPtrInput
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The pricing tier (defines Azure Front Door Standard or Premium or a CDN provider, feature list and rate) of the profile.
 	Sku SkuInput
@@ -231,6 +254,11 @@ func (o ProfileOutput) ToProfileOutputWithContext(ctx context.Context) ProfileOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ProfileOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Profile) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Key-Value pair representing additional properties for profiles.
 func (o ProfileOutput) ExtendedProperties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Profile) pulumi.StringMapOutput { return v.ExtendedProperties }).(pulumi.StringMapOutput)
@@ -241,7 +269,7 @@ func (o ProfileOutput) FrontDoorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Profile) pulumi.StringOutput { return v.FrontDoorId }).(pulumi.StringOutput)
 }
 
-// Managed service identity (system assigned and/or user assigned identities).
+// The managed service identities assigned to this resource.
 func (o ProfileOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
 	return o.ApplyT(func(v *Profile) ManagedServiceIdentityResponsePtrOutput { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
 }
@@ -251,12 +279,17 @@ func (o ProfileOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *Profile) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
-// Resource location.
+// The geo-location where the resource lives
 func (o ProfileOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Profile) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// Defines rules that scrub sensitive fields in the Azure Front Door profile logs.
+func (o ProfileOutput) LogScrubbing() ProfileLogScrubbingResponsePtrOutput {
+	return o.ApplyT(func(v *Profile) ProfileLogScrubbingResponsePtrOutput { return v.LogScrubbing }).(ProfileLogScrubbingResponsePtrOutput)
+}
+
+// The name of the resource
 func (o ProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Profile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -281,7 +314,7 @@ func (o ProfileOutput) Sku() SkuResponseOutput {
 	return o.ApplyT(func(v *Profile) SkuResponseOutput { return v.Sku }).(SkuResponseOutput)
 }
 
-// Read only system data
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o ProfileOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Profile) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -291,7 +324,7 @@ func (o ProfileOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Profile) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ProfileOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Profile) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

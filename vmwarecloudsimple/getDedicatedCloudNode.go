@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,44 +33,22 @@ type LookupDedicatedCloudNodeArgs struct {
 
 // Dedicated cloud node model
 type LookupDedicatedCloudNodeResult struct {
-	// Availability Zone id, e.g. "az1"
-	AvailabilityZoneId string `pulumi:"availabilityZoneId"`
-	// Availability Zone name, e.g. "Availability Zone 1"
-	AvailabilityZoneName string `pulumi:"availabilityZoneName"`
-	// VMWare Cloud Rack Name
-	CloudRackName string `pulumi:"cloudRackName"`
-	// date time the resource was created
-	Created string `pulumi:"created"`
-	// SKU's id
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/dedicatedCloudNodes/{dedicatedCloudNodeName}
 	Id string `pulumi:"id"`
 	// Azure region
 	Location string `pulumi:"location"`
-	// SKU's name
+	// {dedicatedCloudNodeName}
 	Name string `pulumi:"name"`
-	// count of nodes to create
-	NodesCount int `pulumi:"nodesCount"`
-	// Placement Group id, e.g. "n1"
-	PlacementGroupId string `pulumi:"placementGroupId"`
-	// Placement Name, e.g. "Placement Group 1"
-	PlacementGroupName string `pulumi:"placementGroupName"`
-	// Private Cloud Id
-	PrivateCloudId string `pulumi:"privateCloudId"`
-	// Resource Pool Name
-	PrivateCloudName string `pulumi:"privateCloudName"`
-	// The provisioning status of the resource
-	ProvisioningState string `pulumi:"provisioningState"`
-	// purchase id
-	PurchaseId string `pulumi:"purchaseId"`
+	// Dedicated Cloud Nodes properties
+	Properties DedicatedCloudNodePropertiesResponse `pulumi:"properties"`
 	// Dedicated Cloud Nodes SKU
 	Sku *SkuResponse `pulumi:"sku"`
-	// Node status, indicates is private cloud set up on this node or not
-	Status string `pulumi:"status"`
 	// Dedicated Cloud Nodes tags
 	Tags map[string]string `pulumi:"tags"`
 	// {resourceProviderNamespace}/{resourceType}
 	Type string `pulumi:"type"`
-	// VMWare Cluster Name
-	VmwareClusterName string `pulumi:"vmwareClusterName"`
 }
 
 func LookupDedicatedCloudNodeOutput(ctx *pulumi.Context, args LookupDedicatedCloudNodeOutputArgs, opts ...pulumi.InvokeOption) LookupDedicatedCloudNodeResultOutput {
@@ -108,27 +86,12 @@ func (o LookupDedicatedCloudNodeResultOutput) ToLookupDedicatedCloudNodeResultOu
 	return o
 }
 
-// Availability Zone id, e.g. "az1"
-func (o LookupDedicatedCloudNodeResultOutput) AvailabilityZoneId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDedicatedCloudNodeResult) string { return v.AvailabilityZoneId }).(pulumi.StringOutput)
+// The Azure API version of the resource.
+func (o LookupDedicatedCloudNodeResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDedicatedCloudNodeResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// Availability Zone name, e.g. "Availability Zone 1"
-func (o LookupDedicatedCloudNodeResultOutput) AvailabilityZoneName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDedicatedCloudNodeResult) string { return v.AvailabilityZoneName }).(pulumi.StringOutput)
-}
-
-// VMWare Cloud Rack Name
-func (o LookupDedicatedCloudNodeResultOutput) CloudRackName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDedicatedCloudNodeResult) string { return v.CloudRackName }).(pulumi.StringOutput)
-}
-
-// date time the resource was created
-func (o LookupDedicatedCloudNodeResultOutput) Created() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDedicatedCloudNodeResult) string { return v.Created }).(pulumi.StringOutput)
-}
-
-// SKU's id
+// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/dedicatedCloudNodes/{dedicatedCloudNodeName}
 func (o LookupDedicatedCloudNodeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDedicatedCloudNodeResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -138,54 +101,19 @@ func (o LookupDedicatedCloudNodeResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDedicatedCloudNodeResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// SKU's name
+// {dedicatedCloudNodeName}
 func (o LookupDedicatedCloudNodeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDedicatedCloudNodeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// count of nodes to create
-func (o LookupDedicatedCloudNodeResultOutput) NodesCount() pulumi.IntOutput {
-	return o.ApplyT(func(v LookupDedicatedCloudNodeResult) int { return v.NodesCount }).(pulumi.IntOutput)
-}
-
-// Placement Group id, e.g. "n1"
-func (o LookupDedicatedCloudNodeResultOutput) PlacementGroupId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDedicatedCloudNodeResult) string { return v.PlacementGroupId }).(pulumi.StringOutput)
-}
-
-// Placement Name, e.g. "Placement Group 1"
-func (o LookupDedicatedCloudNodeResultOutput) PlacementGroupName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDedicatedCloudNodeResult) string { return v.PlacementGroupName }).(pulumi.StringOutput)
-}
-
-// Private Cloud Id
-func (o LookupDedicatedCloudNodeResultOutput) PrivateCloudId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDedicatedCloudNodeResult) string { return v.PrivateCloudId }).(pulumi.StringOutput)
-}
-
-// Resource Pool Name
-func (o LookupDedicatedCloudNodeResultOutput) PrivateCloudName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDedicatedCloudNodeResult) string { return v.PrivateCloudName }).(pulumi.StringOutput)
-}
-
-// The provisioning status of the resource
-func (o LookupDedicatedCloudNodeResultOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDedicatedCloudNodeResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// purchase id
-func (o LookupDedicatedCloudNodeResultOutput) PurchaseId() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDedicatedCloudNodeResult) string { return v.PurchaseId }).(pulumi.StringOutput)
+// Dedicated Cloud Nodes properties
+func (o LookupDedicatedCloudNodeResultOutput) Properties() DedicatedCloudNodePropertiesResponseOutput {
+	return o.ApplyT(func(v LookupDedicatedCloudNodeResult) DedicatedCloudNodePropertiesResponse { return v.Properties }).(DedicatedCloudNodePropertiesResponseOutput)
 }
 
 // Dedicated Cloud Nodes SKU
 func (o LookupDedicatedCloudNodeResultOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v LookupDedicatedCloudNodeResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
-}
-
-// Node status, indicates is private cloud set up on this node or not
-func (o LookupDedicatedCloudNodeResultOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDedicatedCloudNodeResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // Dedicated Cloud Nodes tags
@@ -196,11 +124,6 @@ func (o LookupDedicatedCloudNodeResultOutput) Tags() pulumi.StringMapOutput {
 // {resourceProviderNamespace}/{resourceType}
 func (o LookupDedicatedCloudNodeResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDedicatedCloudNodeResult) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// VMWare Cluster Name
-func (o LookupDedicatedCloudNodeResultOutput) VmwareClusterName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDedicatedCloudNodeResult) string { return v.VmwareClusterName }).(pulumi.StringOutput)
 }
 
 func init() {

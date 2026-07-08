@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A Contact resource
 //
-// Uses Azure REST API version 2022-12-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-12-01-preview.
+// Uses Azure REST API version 2022-12-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-12-01-preview.
 type Contact struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Full name of contact
 	ContactName pulumi.StringOutput `pulumi:"contactName"`
 	// Email address of contact
@@ -174,6 +176,11 @@ func (o ContactOutput) ToContactOutput() ContactOutput {
 
 func (o ContactOutput) ToContactOutputWithContext(ctx context.Context) ContactOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ContactOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Contact) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Full name of contact

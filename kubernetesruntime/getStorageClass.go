@@ -7,15 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a StorageClassResource
 //
 // Uses Azure REST API version 2024-03-01.
-//
-// Other available API versions: 2023-10-01-preview.
 func LookupStorageClass(ctx *pulumi.Context, args *LookupStorageClassArgs, opts ...pulumi.InvokeOption) (*LookupStorageClassResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageClassResult
@@ -39,6 +37,8 @@ type LookupStorageClassResult struct {
 	AccessModes []string `pulumi:"accessModes"`
 	// Volume can be expanded or not
 	AllowVolumeExpansion *string `pulumi:"allowVolumeExpansion"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Allow single data node failure
 	DataResilience *string `pulumi:"dataResilience"`
 	// Failover speed: NA, Slow, Fast
@@ -112,6 +112,11 @@ func (o LookupStorageClassResultOutput) AccessModes() pulumi.StringArrayOutput {
 // Volume can be expanded or not
 func (o LookupStorageClassResultOutput) AllowVolumeExpansion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStorageClassResult) *string { return v.AllowVolumeExpansion }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupStorageClassResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageClassResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Allow single data node failure

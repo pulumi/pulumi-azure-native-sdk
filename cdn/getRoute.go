@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint.
 //
-// Uses Azure REST API version 2023-05-01.
+// Uses Azure REST API version 2025-06-01.
 //
-// Other available API versions: 2020-09-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
+// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupRoute(ctx *pulumi.Context, args *LookupRouteArgs, opts ...pulumi.InvokeOption) (*LookupRouteResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRouteResult
@@ -29,9 +29,9 @@ func LookupRoute(ctx *pulumi.Context, args *LookupRouteArgs, opts ...pulumi.Invo
 type LookupRouteArgs struct {
 	// Name of the endpoint under the profile which is unique globally.
 	EndpointName string `pulumi:"endpointName"`
-	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
 	ProfileName string `pulumi:"profileName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of the routing rule.
 	RouteName string `pulumi:"routeName"`
@@ -39,6 +39,8 @@ type LookupRouteArgs struct {
 
 // Friendly Routes name mapping to the any Routes or secret related information.
 type LookupRouteResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The caching configuration for this route. To disable caching, do not provide a cacheConfiguration object.
 	CacheConfiguration *AfdRouteCacheConfigurationResponse `pulumi:"cacheConfiguration"`
 	// Domains referenced by this endpoint.
@@ -52,14 +54,14 @@ type LookupRouteResult struct {
 	ForwardingProtocol *string `pulumi:"forwardingProtocol"`
 	// Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed.
 	HttpsRedirect *string `pulumi:"httpsRedirect"`
-	// Resource ID.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// whether this route will be linked to the default endpoint domain.
 	LinkToDefaultDomain *string `pulumi:"linkToDefaultDomain"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// A reference to the origin group.
-	OriginGroup ResourceReferenceResponse `pulumi:"originGroup"`
+	OriginGroup *ResourceReferenceResponse `pulumi:"originGroup"`
 	// A directory path on the origin that AzureFrontDoor can use to retrieve content from, e.g. contoso.cloudapp.net/originpath.
 	OriginPath *string `pulumi:"originPath"`
 	// The route patterns of the rule.
@@ -70,9 +72,9 @@ type LookupRouteResult struct {
 	RuleSets []ResourceReferenceResponse `pulumi:"ruleSets"`
 	// List of supported protocols for this route.
 	SupportedProtocols []string `pulumi:"supportedProtocols"`
-	// Read only system data
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -108,9 +110,9 @@ func LookupRouteOutput(ctx *pulumi.Context, args LookupRouteOutputArgs, opts ...
 type LookupRouteOutputArgs struct {
 	// Name of the endpoint under the profile which is unique globally.
 	EndpointName pulumi.StringInput `pulumi:"endpointName"`
-	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
 	ProfileName pulumi.StringInput `pulumi:"profileName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Name of the routing rule.
 	RouteName pulumi.StringInput `pulumi:"routeName"`
@@ -133,6 +135,11 @@ func (o LookupRouteResultOutput) ToLookupRouteResultOutput() LookupRouteResultOu
 
 func (o LookupRouteResultOutput) ToLookupRouteResultOutputWithContext(ctx context.Context) LookupRouteResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupRouteResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRouteResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The caching configuration for this route. To disable caching, do not provide a cacheConfiguration object.
@@ -169,7 +176,7 @@ func (o LookupRouteResultOutput) HttpsRedirect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRouteResult) *string { return v.HttpsRedirect }).(pulumi.StringPtrOutput)
 }
 
-// Resource ID.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupRouteResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -179,14 +186,14 @@ func (o LookupRouteResultOutput) LinkToDefaultDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRouteResult) *string { return v.LinkToDefaultDomain }).(pulumi.StringPtrOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupRouteResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // A reference to the origin group.
-func (o LookupRouteResultOutput) OriginGroup() ResourceReferenceResponseOutput {
-	return o.ApplyT(func(v LookupRouteResult) ResourceReferenceResponse { return v.OriginGroup }).(ResourceReferenceResponseOutput)
+func (o LookupRouteResultOutput) OriginGroup() ResourceReferenceResponsePtrOutput {
+	return o.ApplyT(func(v LookupRouteResult) *ResourceReferenceResponse { return v.OriginGroup }).(ResourceReferenceResponsePtrOutput)
 }
 
 // A directory path on the origin that AzureFrontDoor can use to retrieve content from, e.g. contoso.cloudapp.net/originpath.
@@ -214,12 +221,12 @@ func (o LookupRouteResultOutput) SupportedProtocols() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupRouteResult) []string { return v.SupportedProtocols }).(pulumi.StringArrayOutput)
 }
 
-// Read only system data
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupRouteResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupRouteResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupRouteResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouteResult) string { return v.Type }).(pulumi.StringOutput)
 }

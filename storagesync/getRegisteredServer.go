@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a given registered server.
 //
-// Uses Azure REST API version 2022-06-01.
+// Uses Azure REST API version 2022-09-01.
 //
-// Other available API versions: 2022-09-01.
+// Other available API versions: 2022-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagesync [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupRegisteredServer(ctx *pulumi.Context, args *LookupRegisteredServerArgs, opts ...pulumi.InvokeOption) (*LookupRegisteredServerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegisteredServerResult
@@ -37,12 +37,18 @@ type LookupRegisteredServerArgs struct {
 
 // Registered Server resource.
 type LookupRegisteredServerResult struct {
+	// Server auth type.
+	ActiveAuthType string `pulumi:"activeAuthType"`
 	// Registered Server Agent Version
 	AgentVersion *string `pulumi:"agentVersion"`
 	// Registered Server Agent Version Expiration Date
 	AgentVersionExpirationDate string `pulumi:"agentVersionExpirationDate"`
 	// Registered Server Agent Version Status
 	AgentVersionStatus string `pulumi:"agentVersionStatus"`
+	// Server Application Id
+	ApplicationId *string `pulumi:"applicationId"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Registered Server clusterId
 	ClusterId *string `pulumi:"clusterId"`
 	// Registered Server clusterName
@@ -51,14 +57,18 @@ type LookupRegisteredServerResult struct {
 	DiscoveryEndpointUri *string `pulumi:"discoveryEndpointUri"`
 	// Friendly Name
 	FriendlyName *string `pulumi:"friendlyName"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
+	// Apply server with newly discovered ApplicationId if available.
+	Identity bool `pulumi:"identity"`
 	// Registered Server last heart beat
 	LastHeartBeat *string `pulumi:"lastHeartBeat"`
 	// Resource Last Operation Name
 	LastOperationName *string `pulumi:"lastOperationName"`
 	// Registered Server lastWorkflowId
 	LastWorkflowId *string `pulumi:"lastWorkflowId"`
+	// Latest Server Application Id discovered from the server. It is not yet applied.
+	LatestApplicationId *string `pulumi:"latestApplicationId"`
 	// Management Endpoint Uri
 	ManagementEndpointUri *string `pulumi:"managementEndpointUri"`
 	// Monitoring Configuration
@@ -130,6 +140,11 @@ func (o LookupRegisteredServerResultOutput) ToLookupRegisteredServerResultOutput
 	return o
 }
 
+// Server auth type.
+func (o LookupRegisteredServerResultOutput) ActiveAuthType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegisteredServerResult) string { return v.ActiveAuthType }).(pulumi.StringOutput)
+}
+
 // Registered Server Agent Version
 func (o LookupRegisteredServerResultOutput) AgentVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRegisteredServerResult) *string { return v.AgentVersion }).(pulumi.StringPtrOutput)
@@ -143,6 +158,16 @@ func (o LookupRegisteredServerResultOutput) AgentVersionExpirationDate() pulumi.
 // Registered Server Agent Version Status
 func (o LookupRegisteredServerResultOutput) AgentVersionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegisteredServerResult) string { return v.AgentVersionStatus }).(pulumi.StringOutput)
+}
+
+// Server Application Id
+func (o LookupRegisteredServerResultOutput) ApplicationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRegisteredServerResult) *string { return v.ApplicationId }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupRegisteredServerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegisteredServerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Registered Server clusterId
@@ -165,9 +190,14 @@ func (o LookupRegisteredServerResultOutput) FriendlyName() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v LookupRegisteredServerResult) *string { return v.FriendlyName }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupRegisteredServerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegisteredServerResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Apply server with newly discovered ApplicationId if available.
+func (o LookupRegisteredServerResultOutput) Identity() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupRegisteredServerResult) bool { return v.Identity }).(pulumi.BoolOutput)
 }
 
 // Registered Server last heart beat
@@ -183,6 +213,11 @@ func (o LookupRegisteredServerResultOutput) LastOperationName() pulumi.StringPtr
 // Registered Server lastWorkflowId
 func (o LookupRegisteredServerResultOutput) LastWorkflowId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRegisteredServerResult) *string { return v.LastWorkflowId }).(pulumi.StringPtrOutput)
+}
+
+// Latest Server Application Id discovered from the server. It is not yet applied.
+func (o LookupRegisteredServerResultOutput) LatestApplicationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupRegisteredServerResult) *string { return v.LatestApplicationId }).(pulumi.StringPtrOutput)
 }
 
 // Management Endpoint Uri

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a Azure Active Directory administrator.
 //
-// Uses Azure REST API version 2021-11-01.
+// Uses Azure REST API version 2023-08-01.
 //
-// Other available API versions: 2014-04-01, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01, 2023-08-01-preview, 2024-05-01-preview.
+// Other available API versions: 2014-04-01, 2018-06-01-preview, 2019-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview, 2021-02-01-preview, 2021-05-01-preview, 2021-08-01-preview, 2021-11-01, 2021-11-01-preview, 2022-02-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2022-11-01-preview, 2023-02-01-preview, 2023-05-01-preview, 2023-08-01-preview, 2024-05-01-preview, 2024-11-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sql [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupServerAzureADAdministrator(ctx *pulumi.Context, args *LookupServerAzureADAdministratorArgs, opts ...pulumi.InvokeOption) (*LookupServerAzureADAdministratorResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerAzureADAdministratorResult
@@ -38,9 +38,11 @@ type LookupServerAzureADAdministratorArgs struct {
 // Azure Active Directory administrator.
 type LookupServerAzureADAdministratorResult struct {
 	// Type of the sever administrator.
-	AdministratorType string `pulumi:"administratorType"`
+	AdministratorType *string `pulumi:"administratorType"`
 	// Azure Active Directory only Authentication enabled.
 	AzureADOnlyAuthentication bool `pulumi:"azureADOnlyAuthentication"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Resource ID.
 	Id string `pulumi:"id"`
 	// Login name of the server administrator.
@@ -93,13 +95,18 @@ func (o LookupServerAzureADAdministratorResultOutput) ToLookupServerAzureADAdmin
 }
 
 // Type of the sever administrator.
-func (o LookupServerAzureADAdministratorResultOutput) AdministratorType() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupServerAzureADAdministratorResult) string { return v.AdministratorType }).(pulumi.StringOutput)
+func (o LookupServerAzureADAdministratorResultOutput) AdministratorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupServerAzureADAdministratorResult) *string { return v.AdministratorType }).(pulumi.StringPtrOutput)
 }
 
 // Azure Active Directory only Authentication enabled.
 func (o LookupServerAzureADAdministratorResultOutput) AzureADOnlyAuthentication() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupServerAzureADAdministratorResult) bool { return v.AzureADOnlyAuthentication }).(pulumi.BoolOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupServerAzureADAdministratorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerAzureADAdministratorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Resource ID.

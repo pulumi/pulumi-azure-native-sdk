@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An event source that receives its data from an Azure IoTHub.
 //
-// Uses Azure REST API version 2020-05-15. In version 1.x of the Azure Native provider, it used API version 2020-05-15.
+// Uses Azure REST API version 2020-05-15. In version 2.x of the Azure Native provider, it used API version 2020-05-15.
 type IoTHubEventSource struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the iot hub's consumer group that holds the partitions from which events will be read.
 	ConsumerGroupName pulumi.StringOutput `pulumi:"consumerGroupName"`
 	// The time the resource was created.
@@ -98,7 +100,13 @@ func NewIoTHubEventSource(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:timeseriesinsights/v20210331preview:IoTHubEventSource"),
 		},
 		{
+			Type: pulumi.String("azure-native:timeseriesinsights/v20210630preview:EventHubEventSource"),
+		},
+		{
 			Type: pulumi.String("azure-native:timeseriesinsights/v20210630preview:IoTHubEventSource"),
+		},
+		{
+			Type: pulumi.String("azure-native:timeseriesinsights:EventHubEventSource"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -238,6 +246,11 @@ func (o IoTHubEventSourceOutput) ToIoTHubEventSourceOutput() IoTHubEventSourceOu
 
 func (o IoTHubEventSourceOutput) ToIoTHubEventSourceOutputWithContext(ctx context.Context) IoTHubEventSourceOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o IoTHubEventSourceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *IoTHubEventSource) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the iot hub's consumer group that holds the partitions from which events will be read.

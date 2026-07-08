@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Document processor details
 //
-// Uses Azure REST API version 2022-09-15-preview. In version 1.x of the Azure Native provider, it used API version 2022-09-15-preview.
+// Uses Azure REST API version 2022-09-15-preview. In version 2.x of the Azure Native provider, it used API version 2022-09-15-preview.
 type DocumentProcessor struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
@@ -142,6 +144,11 @@ func (o DocumentProcessorOutput) ToDocumentProcessorOutput() DocumentProcessorOu
 
 func (o DocumentProcessorOutput) ToDocumentProcessorOutputWithContext(ctx context.Context) DocumentProcessorOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DocumentProcessorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DocumentProcessor) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The geo-location where the resource lives

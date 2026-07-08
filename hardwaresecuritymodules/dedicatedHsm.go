@@ -8,23 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource information with extended details.
 //
-// Uses Azure REST API version 2021-11-30. In version 1.x of the Azure Native provider, it used API version 2018-10-31-preview.
+// Uses Azure REST API version 2024-06-30-preview. In version 2.x of the Azure Native provider, it used API version 2021-11-30.
 //
-// Other available API versions: 2024-06-30-preview.
+// Other available API versions: 2021-11-30, 2025-03-31. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hardwaresecuritymodules [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type DedicatedHsm struct {
 	pulumi.CustomResourceState
 
-	// The supported Azure location where the dedicated HSM should be created.
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Specifies the management network interfaces of the dedicated hsm.
 	ManagementNetworkProfile NetworkProfileResponsePtrOutput `pulumi:"managementNetworkProfile"`
-	// The name of the dedicated HSM.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specifies the network interfaces of the dedicated hsm.
 	NetworkProfile NetworkProfileResponsePtrOutput `pulumi:"networkProfile"`
@@ -36,11 +38,11 @@ type DedicatedHsm struct {
 	StampId pulumi.StringPtrOutput `pulumi:"stampId"`
 	// Resource Status Message.
 	StatusMessage pulumi.StringOutput `pulumi:"statusMessage"`
-	// Metadata pertaining to creation and last modification of the resource
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource tags
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The resource type of the dedicated HSM.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The Dedicated Hsm zones.
 	Zones pulumi.StringArrayOutput `pulumi:"zones"`
@@ -68,6 +70,9 @@ func NewDedicatedHsm(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hardwaresecuritymodules/v20240630preview:DedicatedHsm"),
+		},
+		{
+			Type: pulumi.String("azure-native:hardwaresecuritymodules/v20250331:DedicatedHsm"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -104,7 +109,7 @@ func (DedicatedHsmState) ElementType() reflect.Type {
 }
 
 type dedicatedHsmArgs struct {
-	// The supported Azure location where the dedicated HSM should be created.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Specifies the management network interfaces of the dedicated hsm.
 	ManagementNetworkProfile *NetworkProfile `pulumi:"managementNetworkProfile"`
@@ -112,13 +117,13 @@ type dedicatedHsmArgs struct {
 	Name *string `pulumi:"name"`
 	// Specifies the network interfaces of the dedicated hsm.
 	NetworkProfile *NetworkProfile `pulumi:"networkProfile"`
-	// The name of the Resource Group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// SKU details
 	Sku Sku `pulumi:"sku"`
 	// This field will be used when RP does not support Availability zones.
 	StampId *string `pulumi:"stampId"`
-	// Resource tags
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The Dedicated Hsm zones.
 	Zones []string `pulumi:"zones"`
@@ -126,7 +131,7 @@ type dedicatedHsmArgs struct {
 
 // The set of arguments for constructing a DedicatedHsm resource.
 type DedicatedHsmArgs struct {
-	// The supported Azure location where the dedicated HSM should be created.
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Specifies the management network interfaces of the dedicated hsm.
 	ManagementNetworkProfile NetworkProfilePtrInput
@@ -134,13 +139,13 @@ type DedicatedHsmArgs struct {
 	Name pulumi.StringPtrInput
 	// Specifies the network interfaces of the dedicated hsm.
 	NetworkProfile NetworkProfilePtrInput
-	// The name of the Resource Group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// SKU details
 	Sku SkuInput
 	// This field will be used when RP does not support Availability zones.
 	StampId pulumi.StringPtrInput
-	// Resource tags
+	// Resource tags.
 	Tags pulumi.StringMapInput
 	// The Dedicated Hsm zones.
 	Zones pulumi.StringArrayInput
@@ -183,7 +188,12 @@ func (o DedicatedHsmOutput) ToDedicatedHsmOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The supported Azure location where the dedicated HSM should be created.
+// The Azure API version of the resource.
+func (o DedicatedHsmOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DedicatedHsm) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The geo-location where the resource lives
 func (o DedicatedHsmOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *DedicatedHsm) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -193,7 +203,7 @@ func (o DedicatedHsmOutput) ManagementNetworkProfile() NetworkProfileResponsePtr
 	return o.ApplyT(func(v *DedicatedHsm) NetworkProfileResponsePtrOutput { return v.ManagementNetworkProfile }).(NetworkProfileResponsePtrOutput)
 }
 
-// The name of the dedicated HSM.
+// The name of the resource
 func (o DedicatedHsmOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DedicatedHsm) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -223,17 +233,17 @@ func (o DedicatedHsmOutput) StatusMessage() pulumi.StringOutput {
 	return o.ApplyT(func(v *DedicatedHsm) pulumi.StringOutput { return v.StatusMessage }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o DedicatedHsmOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *DedicatedHsm) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Resource tags
+// Resource tags.
 func (o DedicatedHsmOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DedicatedHsm) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The resource type of the dedicated HSM.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o DedicatedHsmOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *DedicatedHsm) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -8,26 +8,30 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Container of a site
 //
-// Uses Azure REST API version 2023-12-01.
+// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-12-01.
 //
-// Other available API versions: 2024-04-01.
+// Other available API versions: 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type WebAppSiteContainer struct {
 	pulumi.CustomResourceState
 
 	// Auth Type
 	AuthType pulumi.StringPtrOutput `pulumi:"authType"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Created Time
 	CreatedTime pulumi.StringOutput `pulumi:"createdTime"`
 	// List of environment variables
 	EnvironmentVariables EnvironmentVariableResponseArrayOutput `pulumi:"environmentVariables"`
 	// Image Name
 	Image pulumi.StringOutput `pulumi:"image"`
+	// <code>true</code> if all AppSettings and ConnectionStrings have to be passed to the container as environment variables; <code>false</code> otherwise.
+	InheritAppSettingsAndConnectionStrings pulumi.BoolPtrOutput `pulumi:"inheritAppSettingsAndConnectionStrings"`
 	// <code>true</code> if the container is the main site container; <code>false</code> otherwise.
 	IsMain pulumi.BoolOutput `pulumi:"isMain"`
 	// Kind of resource.
@@ -78,6 +82,15 @@ func NewWebAppSiteContainer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20240401:WebAppSiteContainer"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20241101:WebAppSiteContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:web/v20250301:WebAppSiteContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:web/v20250501:WebAppSiteContainer"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -121,6 +134,8 @@ type webAppSiteContainerArgs struct {
 	EnvironmentVariables []EnvironmentVariable `pulumi:"environmentVariables"`
 	// Image Name
 	Image string `pulumi:"image"`
+	// <code>true</code> if all AppSettings and ConnectionStrings have to be passed to the container as environment variables; <code>false</code> otherwise.
+	InheritAppSettingsAndConnectionStrings *bool `pulumi:"inheritAppSettingsAndConnectionStrings"`
 	// <code>true</code> if the container is the main site container; <code>false</code> otherwise.
 	IsMain bool `pulumi:"isMain"`
 	// Kind of resource.
@@ -153,6 +168,8 @@ type WebAppSiteContainerArgs struct {
 	EnvironmentVariables EnvironmentVariableArrayInput
 	// Image Name
 	Image pulumi.StringInput
+	// <code>true</code> if all AppSettings and ConnectionStrings have to be passed to the container as environment variables; <code>false</code> otherwise.
+	InheritAppSettingsAndConnectionStrings pulumi.BoolPtrInput
 	// <code>true</code> if the container is the main site container; <code>false</code> otherwise.
 	IsMain pulumi.BoolInput
 	// Kind of resource.
@@ -217,6 +234,11 @@ func (o WebAppSiteContainerOutput) AuthType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebAppSiteContainer) pulumi.StringPtrOutput { return v.AuthType }).(pulumi.StringPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o WebAppSiteContainerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *WebAppSiteContainer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Created Time
 func (o WebAppSiteContainerOutput) CreatedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAppSiteContainer) pulumi.StringOutput { return v.CreatedTime }).(pulumi.StringOutput)
@@ -230,6 +252,11 @@ func (o WebAppSiteContainerOutput) EnvironmentVariables() EnvironmentVariableRes
 // Image Name
 func (o WebAppSiteContainerOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAppSiteContainer) pulumi.StringOutput { return v.Image }).(pulumi.StringOutput)
+}
+
+// <code>true</code> if all AppSettings and ConnectionStrings have to be passed to the container as environment variables; <code>false</code> otherwise.
+func (o WebAppSiteContainerOutput) InheritAppSettingsAndConnectionStrings() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WebAppSiteContainer) pulumi.BoolPtrOutput { return v.InheritAppSettingsAndConnectionStrings }).(pulumi.BoolPtrOutput)
 }
 
 // <code>true</code> if the container is the main site container; <code>false</code> otherwise.

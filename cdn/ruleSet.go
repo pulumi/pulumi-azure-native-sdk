@@ -8,28 +8,30 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Friendly RuleSet name mapping to the any RuleSet or secret related information.
 //
-// Uses Azure REST API version 2023-05-01. In version 1.x of the Azure Native provider, it used API version 2020-09-01.
+// Uses Azure REST API version 2025-06-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01.
 //
-// Other available API versions: 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01.
+// Other available API versions: 2023-05-01, 2023-07-01-preview, 2024-02-01, 2024-05-01-preview, 2024-06-01-preview, 2024-09-01, 2025-01-01-preview, 2025-04-15, 2025-07-01-preview, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native cdn [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type RuleSet struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion  pulumi.StringOutput `pulumi:"azureApiVersion"`
 	DeploymentStatus pulumi.StringOutput `pulumi:"deploymentStatus"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the profile which holds the rule set.
 	ProfileName pulumi.StringOutput `pulumi:"profileName"`
 	// Provisioning status
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Read only system data
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -77,6 +79,21 @@ func NewRuleSet(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:cdn/v20240901:RuleSet"),
 		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20250101preview:RuleSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20250415:RuleSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20250601:RuleSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20250701preview:RuleSet"),
+		},
+		{
+			Type: pulumi.String("azure-native:cdn/v20250901preview:RuleSet"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -112,21 +129,21 @@ func (RuleSetState) ElementType() reflect.Type {
 }
 
 type ruleSetArgs struct {
-	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
 	ProfileName string `pulumi:"profileName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Name of the rule set under the profile which is unique globally
+	// Name of the rule set under the profile which is unique globally.
 	RuleSetName *string `pulumi:"ruleSetName"`
 }
 
 // The set of arguments for constructing a RuleSet resource.
 type RuleSetArgs struct {
-	// Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
+	// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
 	ProfileName pulumi.StringInput
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Name of the rule set under the profile which is unique globally
+	// Name of the rule set under the profile which is unique globally.
 	RuleSetName pulumi.StringPtrInput
 }
 
@@ -167,11 +184,16 @@ func (o RuleSetOutput) ToRuleSetOutputWithContext(ctx context.Context) RuleSetOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o RuleSetOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RuleSet) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 func (o RuleSetOutput) DeploymentStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *RuleSet) pulumi.StringOutput { return v.DeploymentStatus }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o RuleSetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RuleSet) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -186,12 +208,12 @@ func (o RuleSetOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *RuleSet) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Read only system data
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o RuleSetOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *RuleSet) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o RuleSetOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *RuleSet) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

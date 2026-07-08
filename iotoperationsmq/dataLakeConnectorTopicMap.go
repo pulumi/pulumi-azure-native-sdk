@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // MQ dataLakeConnector/topicMap resource
 //
-// Uses Azure REST API version 2023-10-04-preview.
+// Uses Azure REST API version 2023-10-04-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-04-preview.
 type DataLakeConnectorTopicMap struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// DataLake Connector CRD to use.
 	DataLakeConnectorRef pulumi.StringOutput `pulumi:"dataLakeConnectorRef"`
 	// Extended Location
@@ -180,6 +182,11 @@ func (o DataLakeConnectorTopicMapOutput) ToDataLakeConnectorTopicMapOutput() Dat
 
 func (o DataLakeConnectorTopicMapOutput) ToDataLakeConnectorTopicMapOutputWithContext(ctx context.Context) DataLakeConnectorTopicMapOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o DataLakeConnectorTopicMapOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DataLakeConnectorTopicMap) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // DataLake Connector CRD to use.
