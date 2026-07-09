@@ -7,16 +7,20 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A connector is a resource that can be used to proactively report impacts against workloads in Azure to Microsoft.
 //
-// Uses Azure REST API version 2024-05-01-preview.
+// Uses Azure REST API version 2024-05-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-05-01-preview.
+//
+// Other available API versions: 2025-01-01-preview, 2026-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native impact [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Connector struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource-specific properties for this resource.
@@ -37,6 +41,12 @@ func NewConnector(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:impact/v20240501preview:Connector"),
+		},
+		{
+			Type: pulumi.String("azure-native:impact/v20250101preview:Connector"),
+		},
+		{
+			Type: pulumi.String("azure-native:impact/v20260101preview:Connector"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -122,6 +132,11 @@ func (o ConnectorOutput) ToConnectorOutput() ConnectorOutput {
 
 func (o ConnectorOutput) ToConnectorOutputWithContext(ctx context.Context) ConnectorOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ConnectorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connector) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

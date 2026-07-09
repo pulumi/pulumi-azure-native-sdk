@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,13 +31,17 @@ type LookupWorkspaceSettingArgs struct {
 
 // Configures where to store the OMS agent data for workspaces under a scope
 type LookupWorkspaceSettingResult struct {
-	// Resource Id
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// Resource name
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// All the VMs in this scope will send their security data to the mentioned workspace unless overridden by a setting with more specific scope
 	Scope string `pulumi:"scope"`
-	// Resource type
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The full Azure ID of the workspace to save the data in
 	WorkspaceId string `pulumi:"workspaceId"`
@@ -76,12 +80,17 @@ func (o LookupWorkspaceSettingResultOutput) ToLookupWorkspaceSettingResultOutput
 	return o
 }
 
-// Resource Id
+// The Azure API version of the resource.
+func (o LookupWorkspaceSettingResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkspaceSettingResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupWorkspaceSettingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o LookupWorkspaceSettingResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -91,7 +100,12 @@ func (o LookupWorkspaceSettingResultOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingResult) string { return v.Scope }).(pulumi.StringOutput)
 }
 
-// Resource type
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupWorkspaceSettingResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupWorkspaceSettingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupWorkspaceSettingResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingResult) string { return v.Type }).(pulumi.StringOutput)
 }

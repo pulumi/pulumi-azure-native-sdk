@@ -8,24 +8,29 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The virtualNetworks resource definition.
+// The Virtual Network resource definition.
 //
-// Uses Azure REST API version 2022-09-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-05-01-preview.
+// Uses Azure REST API version 2024-01-01.
+//
+// Other available API versions: 2023-11-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridcontainerservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type VirtualNetworkRetrieve struct {
 	pulumi.CustomResourceState
 
-	ExtendedLocation VirtualNetworksResponseExtendedLocationPtrOutput `pulumi:"extendedLocation"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Extended location pointing to the underlying infrastructure
+	ExtendedLocation VirtualNetworkResponseExtendedLocationPtrOutput `pulumi:"extendedLocation"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// HybridAKSNetworkSpec defines the desired state of HybridAKSNetwork
-	Properties VirtualNetworksPropertiesResponseOutput `pulumi:"properties"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Properties of the virtual network resource
+	Properties VirtualNetworkPropertiesResponseOutput `pulumi:"properties"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
@@ -45,31 +50,16 @@ func NewVirtualNetworkRetrieve(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
-			Type: pulumi.String("azure-native:hybridcontainerservice/v20220501preview:VirtualNetworkRetrieve"),
-		},
-		{
-			Type: pulumi.String("azure-native:hybridcontainerservice/v20220501preview:virtualNetworkRetrieve"),
-		},
-		{
 			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:VirtualNetworkRetrieve"),
-		},
-		{
-			Type: pulumi.String("azure-native:hybridcontainerservice/v20220901preview:virtualNetworkRetrieve"),
 		},
 		{
 			Type: pulumi.String("azure-native:hybridcontainerservice/v20231115preview:VirtualNetworkRetrieve"),
 		},
 		{
-			Type: pulumi.String("azure-native:hybridcontainerservice/v20231115preview:virtualNetworkRetrieve"),
-		},
-		{
 			Type: pulumi.String("azure-native:hybridcontainerservice/v20240101:VirtualNetworkRetrieve"),
 		},
 		{
-			Type: pulumi.String("azure-native:hybridcontainerservice/v20240101:virtualNetworkRetrieve"),
-		},
-		{
-			Type: pulumi.String("azure-native:hybridcontainerservice:virtualNetworkRetrieve"),
+			Type: pulumi.String("azure-native:hybridcontainerservice/v20260401preview:VirtualNetworkRetrieve"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -106,32 +96,34 @@ func (VirtualNetworkRetrieveState) ElementType() reflect.Type {
 }
 
 type virtualNetworkRetrieveArgs struct {
-	ExtendedLocation *VirtualNetworksExtendedLocation `pulumi:"extendedLocation"`
+	// Extended location pointing to the underlying infrastructure
+	ExtendedLocation *VirtualNetworkExtendedLocation `pulumi:"extendedLocation"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// HybridAKSNetworkSpec defines the desired state of HybridAKSNetwork
-	Properties *VirtualNetworksProperties `pulumi:"properties"`
+	// Properties of the virtual network resource
+	Properties *VirtualNetworkProperties `pulumi:"properties"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Parameter for the name of the virtual network
-	VirtualNetworksName *string `pulumi:"virtualNetworksName"`
+	VirtualNetworkName *string `pulumi:"virtualNetworkName"`
 }
 
 // The set of arguments for constructing a VirtualNetworkRetrieve resource.
 type VirtualNetworkRetrieveArgs struct {
-	ExtendedLocation VirtualNetworksExtendedLocationPtrInput
+	// Extended location pointing to the underlying infrastructure
+	ExtendedLocation VirtualNetworkExtendedLocationPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// HybridAKSNetworkSpec defines the desired state of HybridAKSNetwork
-	Properties VirtualNetworksPropertiesPtrInput
+	// Properties of the virtual network resource
+	Properties VirtualNetworkPropertiesPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 	// Parameter for the name of the virtual network
-	VirtualNetworksName pulumi.StringPtrInput
+	VirtualNetworkName pulumi.StringPtrInput
 }
 
 func (VirtualNetworkRetrieveArgs) ElementType() reflect.Type {
@@ -171,10 +163,16 @@ func (o VirtualNetworkRetrieveOutput) ToVirtualNetworkRetrieveOutputWithContext(
 	return o
 }
 
-func (o VirtualNetworkRetrieveOutput) ExtendedLocation() VirtualNetworksResponseExtendedLocationPtrOutput {
-	return o.ApplyT(func(v *VirtualNetworkRetrieve) VirtualNetworksResponseExtendedLocationPtrOutput {
+// The Azure API version of the resource.
+func (o VirtualNetworkRetrieveOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualNetworkRetrieve) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Extended location pointing to the underlying infrastructure
+func (o VirtualNetworkRetrieveOutput) ExtendedLocation() VirtualNetworkResponseExtendedLocationPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkRetrieve) VirtualNetworkResponseExtendedLocationPtrOutput {
 		return v.ExtendedLocation
-	}).(VirtualNetworksResponseExtendedLocationPtrOutput)
+	}).(VirtualNetworkResponseExtendedLocationPtrOutput)
 }
 
 // The geo-location where the resource lives
@@ -187,12 +185,12 @@ func (o VirtualNetworkRetrieveOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualNetworkRetrieve) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// HybridAKSNetworkSpec defines the desired state of HybridAKSNetwork
-func (o VirtualNetworkRetrieveOutput) Properties() VirtualNetworksPropertiesResponseOutput {
-	return o.ApplyT(func(v *VirtualNetworkRetrieve) VirtualNetworksPropertiesResponseOutput { return v.Properties }).(VirtualNetworksPropertiesResponseOutput)
+// Properties of the virtual network resource
+func (o VirtualNetworkRetrieveOutput) Properties() VirtualNetworkPropertiesResponseOutput {
+	return o.ApplyT(func(v *VirtualNetworkRetrieve) VirtualNetworkPropertiesResponseOutput { return v.Properties }).(VirtualNetworkPropertiesResponseOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o VirtualNetworkRetrieveOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *VirtualNetworkRetrieve) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,7 +25,7 @@ func LookupSecurityStandard(ctx *pulumi.Context, args *LookupSecurityStandardArg
 }
 
 type LookupSecurityStandardArgs struct {
-	// The scope of the security standard. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+	// The fully qualified Azure Resource manager identifier of the resource.
 	Scope string `pulumi:"scope"`
 	// The Security Standard key - unique key for the standard type
 	StandardId string `pulumi:"standardId"`
@@ -35,23 +35,27 @@ type LookupSecurityStandardArgs struct {
 type LookupSecurityStandardResult struct {
 	// List of assessment keys to apply to standard scope.
 	Assessments []PartialAssessmentPropertiesResponse `pulumi:"assessments"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// List of all standard supported clouds.
 	CloudProviders []string `pulumi:"cloudProviders"`
 	// Description of the standard
 	Description *string `pulumi:"description"`
 	// Display name of the standard, equivalent to the standardId
 	DisplayName *string `pulumi:"displayName"`
-	// Resource Id
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The security standard metadata.
 	Metadata *StandardMetadataResponse `pulumi:"metadata"`
-	// Resource name
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The policy set definition id associated with the standard.
 	PolicySetDefinitionId *string `pulumi:"policySetDefinitionId"`
 	// Standard type (Custom or Default or Compliance only currently)
 	StandardType string `pulumi:"standardType"`
-	// Resource type
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -65,7 +69,7 @@ func LookupSecurityStandardOutput(ctx *pulumi.Context, args LookupSecurityStanda
 }
 
 type LookupSecurityStandardOutputArgs struct {
-	// The scope of the security standard. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+	// The fully qualified Azure Resource manager identifier of the resource.
 	Scope pulumi.StringInput `pulumi:"scope"`
 	// The Security Standard key - unique key for the standard type
 	StandardId pulumi.StringInput `pulumi:"standardId"`
@@ -95,6 +99,11 @@ func (o LookupSecurityStandardResultOutput) Assessments() PartialAssessmentPrope
 	return o.ApplyT(func(v LookupSecurityStandardResult) []PartialAssessmentPropertiesResponse { return v.Assessments }).(PartialAssessmentPropertiesResponseArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupSecurityStandardResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecurityStandardResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // List of all standard supported clouds.
 func (o LookupSecurityStandardResultOutput) CloudProviders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSecurityStandardResult) []string { return v.CloudProviders }).(pulumi.StringArrayOutput)
@@ -110,7 +119,7 @@ func (o LookupSecurityStandardResultOutput) DisplayName() pulumi.StringPtrOutput
 	return o.ApplyT(func(v LookupSecurityStandardResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Resource Id
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupSecurityStandardResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityStandardResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -120,7 +129,7 @@ func (o LookupSecurityStandardResultOutput) Metadata() StandardMetadataResponseP
 	return o.ApplyT(func(v LookupSecurityStandardResult) *StandardMetadataResponse { return v.Metadata }).(StandardMetadataResponsePtrOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o LookupSecurityStandardResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityStandardResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -135,7 +144,12 @@ func (o LookupSecurityStandardResultOutput) StandardType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityStandardResult) string { return v.StandardType }).(pulumi.StringOutput)
 }
 
-// Resource type
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupSecurityStandardResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSecurityStandardResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSecurityStandardResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityStandardResult) string { return v.Type }).(pulumi.StringOutput)
 }

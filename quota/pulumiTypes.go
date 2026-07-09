@@ -7,246 +7,17 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = utilities.GetEnvOrDefault
 
-// Additional attribute or filter to allow subscriptions meeting the requirements to be part of the GroupQuota.
-type AdditionalAttributes struct {
-	Environment interface{} `pulumi:"environment"`
-	// The grouping Id for the group quota. It can be Billing Id or ServiceTreeId if applicable.
-	GroupId GroupingId `pulumi:"groupId"`
-}
-
-// AdditionalAttributesInput is an input type that accepts AdditionalAttributesArgs and AdditionalAttributesOutput values.
-// You can construct a concrete instance of `AdditionalAttributesInput` via:
-//
-//	AdditionalAttributesArgs{...}
-type AdditionalAttributesInput interface {
-	pulumi.Input
-
-	ToAdditionalAttributesOutput() AdditionalAttributesOutput
-	ToAdditionalAttributesOutputWithContext(context.Context) AdditionalAttributesOutput
-}
-
-// Additional attribute or filter to allow subscriptions meeting the requirements to be part of the GroupQuota.
-type AdditionalAttributesArgs struct {
-	Environment pulumi.Input `pulumi:"environment"`
-	// The grouping Id for the group quota. It can be Billing Id or ServiceTreeId if applicable.
-	GroupId GroupingIdInput `pulumi:"groupId"`
-}
-
-func (AdditionalAttributesArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AdditionalAttributes)(nil)).Elem()
-}
-
-func (i AdditionalAttributesArgs) ToAdditionalAttributesOutput() AdditionalAttributesOutput {
-	return i.ToAdditionalAttributesOutputWithContext(context.Background())
-}
-
-func (i AdditionalAttributesArgs) ToAdditionalAttributesOutputWithContext(ctx context.Context) AdditionalAttributesOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AdditionalAttributesOutput)
-}
-
-func (i AdditionalAttributesArgs) ToAdditionalAttributesPtrOutput() AdditionalAttributesPtrOutput {
-	return i.ToAdditionalAttributesPtrOutputWithContext(context.Background())
-}
-
-func (i AdditionalAttributesArgs) ToAdditionalAttributesPtrOutputWithContext(ctx context.Context) AdditionalAttributesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AdditionalAttributesOutput).ToAdditionalAttributesPtrOutputWithContext(ctx)
-}
-
-// AdditionalAttributesPtrInput is an input type that accepts AdditionalAttributesArgs, AdditionalAttributesPtr and AdditionalAttributesPtrOutput values.
-// You can construct a concrete instance of `AdditionalAttributesPtrInput` via:
-//
-//	        AdditionalAttributesArgs{...}
-//
-//	or:
-//
-//	        nil
-type AdditionalAttributesPtrInput interface {
-	pulumi.Input
-
-	ToAdditionalAttributesPtrOutput() AdditionalAttributesPtrOutput
-	ToAdditionalAttributesPtrOutputWithContext(context.Context) AdditionalAttributesPtrOutput
-}
-
-type additionalAttributesPtrType AdditionalAttributesArgs
-
-func AdditionalAttributesPtr(v *AdditionalAttributesArgs) AdditionalAttributesPtrInput {
-	return (*additionalAttributesPtrType)(v)
-}
-
-func (*additionalAttributesPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AdditionalAttributes)(nil)).Elem()
-}
-
-func (i *additionalAttributesPtrType) ToAdditionalAttributesPtrOutput() AdditionalAttributesPtrOutput {
-	return i.ToAdditionalAttributesPtrOutputWithContext(context.Background())
-}
-
-func (i *additionalAttributesPtrType) ToAdditionalAttributesPtrOutputWithContext(ctx context.Context) AdditionalAttributesPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AdditionalAttributesPtrOutput)
-}
-
-// Additional attribute or filter to allow subscriptions meeting the requirements to be part of the GroupQuota.
-type AdditionalAttributesOutput struct{ *pulumi.OutputState }
-
-func (AdditionalAttributesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AdditionalAttributes)(nil)).Elem()
-}
-
-func (o AdditionalAttributesOutput) ToAdditionalAttributesOutput() AdditionalAttributesOutput {
-	return o
-}
-
-func (o AdditionalAttributesOutput) ToAdditionalAttributesOutputWithContext(ctx context.Context) AdditionalAttributesOutput {
-	return o
-}
-
-func (o AdditionalAttributesOutput) ToAdditionalAttributesPtrOutput() AdditionalAttributesPtrOutput {
-	return o.ToAdditionalAttributesPtrOutputWithContext(context.Background())
-}
-
-func (o AdditionalAttributesOutput) ToAdditionalAttributesPtrOutputWithContext(ctx context.Context) AdditionalAttributesPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AdditionalAttributes) *AdditionalAttributes {
-		return &v
-	}).(AdditionalAttributesPtrOutput)
-}
-
-func (o AdditionalAttributesOutput) Environment() pulumi.AnyOutput {
-	return o.ApplyT(func(v AdditionalAttributes) interface{} { return v.Environment }).(pulumi.AnyOutput)
-}
-
-// The grouping Id for the group quota. It can be Billing Id or ServiceTreeId if applicable.
-func (o AdditionalAttributesOutput) GroupId() GroupingIdOutput {
-	return o.ApplyT(func(v AdditionalAttributes) GroupingId { return v.GroupId }).(GroupingIdOutput)
-}
-
-type AdditionalAttributesPtrOutput struct{ *pulumi.OutputState }
-
-func (AdditionalAttributesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AdditionalAttributes)(nil)).Elem()
-}
-
-func (o AdditionalAttributesPtrOutput) ToAdditionalAttributesPtrOutput() AdditionalAttributesPtrOutput {
-	return o
-}
-
-func (o AdditionalAttributesPtrOutput) ToAdditionalAttributesPtrOutputWithContext(ctx context.Context) AdditionalAttributesPtrOutput {
-	return o
-}
-
-func (o AdditionalAttributesPtrOutput) Elem() AdditionalAttributesOutput {
-	return o.ApplyT(func(v *AdditionalAttributes) AdditionalAttributes {
-		if v != nil {
-			return *v
-		}
-		var ret AdditionalAttributes
-		return ret
-	}).(AdditionalAttributesOutput)
-}
-
-func (o AdditionalAttributesPtrOutput) Environment() pulumi.AnyOutput {
-	return o.ApplyT(func(v *AdditionalAttributes) interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Environment
-	}).(pulumi.AnyOutput)
-}
-
-// The grouping Id for the group quota. It can be Billing Id or ServiceTreeId if applicable.
-func (o AdditionalAttributesPtrOutput) GroupId() GroupingIdPtrOutput {
-	return o.ApplyT(func(v *AdditionalAttributes) *GroupingId {
-		if v == nil {
-			return nil
-		}
-		return &v.GroupId
-	}).(GroupingIdPtrOutput)
-}
-
-// Additional attribute or filter to allow subscriptions meeting the requirements to be part of the GroupQuota.
-type AdditionalAttributesResponse struct {
-	Environment interface{} `pulumi:"environment"`
-	// The grouping Id for the group quota. It can be Billing Id or ServiceTreeId if applicable.
-	GroupId GroupingIdResponse `pulumi:"groupId"`
-}
-
-// Additional attribute or filter to allow subscriptions meeting the requirements to be part of the GroupQuota.
-type AdditionalAttributesResponseOutput struct{ *pulumi.OutputState }
-
-func (AdditionalAttributesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AdditionalAttributesResponse)(nil)).Elem()
-}
-
-func (o AdditionalAttributesResponseOutput) ToAdditionalAttributesResponseOutput() AdditionalAttributesResponseOutput {
-	return o
-}
-
-func (o AdditionalAttributesResponseOutput) ToAdditionalAttributesResponseOutputWithContext(ctx context.Context) AdditionalAttributesResponseOutput {
-	return o
-}
-
-func (o AdditionalAttributesResponseOutput) Environment() pulumi.AnyOutput {
-	return o.ApplyT(func(v AdditionalAttributesResponse) interface{} { return v.Environment }).(pulumi.AnyOutput)
-}
-
-// The grouping Id for the group quota. It can be Billing Id or ServiceTreeId if applicable.
-func (o AdditionalAttributesResponseOutput) GroupId() GroupingIdResponseOutput {
-	return o.ApplyT(func(v AdditionalAttributesResponse) GroupingIdResponse { return v.GroupId }).(GroupingIdResponseOutput)
-}
-
-type AdditionalAttributesResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AdditionalAttributesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AdditionalAttributesResponse)(nil)).Elem()
-}
-
-func (o AdditionalAttributesResponsePtrOutput) ToAdditionalAttributesResponsePtrOutput() AdditionalAttributesResponsePtrOutput {
-	return o
-}
-
-func (o AdditionalAttributesResponsePtrOutput) ToAdditionalAttributesResponsePtrOutputWithContext(ctx context.Context) AdditionalAttributesResponsePtrOutput {
-	return o
-}
-
-func (o AdditionalAttributesResponsePtrOutput) Elem() AdditionalAttributesResponseOutput {
-	return o.ApplyT(func(v *AdditionalAttributesResponse) AdditionalAttributesResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AdditionalAttributesResponse
-		return ret
-	}).(AdditionalAttributesResponseOutput)
-}
-
-func (o AdditionalAttributesResponsePtrOutput) Environment() pulumi.AnyOutput {
-	return o.ApplyT(func(v *AdditionalAttributesResponse) interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Environment
-	}).(pulumi.AnyOutput)
-}
-
-// The grouping Id for the group quota. It can be Billing Id or ServiceTreeId if applicable.
-func (o AdditionalAttributesResponsePtrOutput) GroupId() GroupingIdResponsePtrOutput {
-	return o.ApplyT(func(v *AdditionalAttributesResponse) *GroupingIdResponse {
-		if v == nil {
-			return nil
-		}
-		return &v.GroupId
-	}).(GroupingIdResponsePtrOutput)
-}
-
 type GroupQuotaSubscriptionIdResponseProperties struct {
 	// Status of this subscriptionId being associated with the GroupQuotasEntity.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// An Azure subscriptionId.
-	SubscriptionId string `pulumi:"subscriptionId"`
+	SubscriptionId *string `pulumi:"subscriptionId"`
 }
 
 type GroupQuotaSubscriptionIdResponsePropertiesOutput struct{ *pulumi.OutputState }
@@ -269,162 +40,140 @@ func (o GroupQuotaSubscriptionIdResponsePropertiesOutput) ProvisioningState() pu
 }
 
 // An Azure subscriptionId.
-func (o GroupQuotaSubscriptionIdResponsePropertiesOutput) SubscriptionId() pulumi.StringOutput {
-	return o.ApplyT(func(v GroupQuotaSubscriptionIdResponseProperties) string { return v.SubscriptionId }).(pulumi.StringOutput)
+func (o GroupQuotaSubscriptionIdResponsePropertiesOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupQuotaSubscriptionIdResponseProperties) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
 }
 
-// Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified.
-type GroupQuotasEntityBase struct {
-	// Additional attributes to filter/restrict the subscriptions, which can be added to the subscriptionIds.
-	AdditionalAttributes *AdditionalAttributes `pulumi:"additionalAttributes"`
+type GroupQuotasEntityProperties struct {
 	// Display name of the GroupQuota entity.
 	DisplayName *string `pulumi:"displayName"`
 }
 
-// GroupQuotasEntityBaseInput is an input type that accepts GroupQuotasEntityBaseArgs and GroupQuotasEntityBaseOutput values.
-// You can construct a concrete instance of `GroupQuotasEntityBaseInput` via:
+// GroupQuotasEntityPropertiesInput is an input type that accepts GroupQuotasEntityPropertiesArgs and GroupQuotasEntityPropertiesOutput values.
+// You can construct a concrete instance of `GroupQuotasEntityPropertiesInput` via:
 //
-//	GroupQuotasEntityBaseArgs{...}
-type GroupQuotasEntityBaseInput interface {
+//	GroupQuotasEntityPropertiesArgs{...}
+type GroupQuotasEntityPropertiesInput interface {
 	pulumi.Input
 
-	ToGroupQuotasEntityBaseOutput() GroupQuotasEntityBaseOutput
-	ToGroupQuotasEntityBaseOutputWithContext(context.Context) GroupQuotasEntityBaseOutput
+	ToGroupQuotasEntityPropertiesOutput() GroupQuotasEntityPropertiesOutput
+	ToGroupQuotasEntityPropertiesOutputWithContext(context.Context) GroupQuotasEntityPropertiesOutput
 }
 
-// Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified.
-type GroupQuotasEntityBaseArgs struct {
-	// Additional attributes to filter/restrict the subscriptions, which can be added to the subscriptionIds.
-	AdditionalAttributes AdditionalAttributesPtrInput `pulumi:"additionalAttributes"`
+type GroupQuotasEntityPropertiesArgs struct {
 	// Display name of the GroupQuota entity.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 }
 
-func (GroupQuotasEntityBaseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupQuotasEntityBase)(nil)).Elem()
+func (GroupQuotasEntityPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupQuotasEntityProperties)(nil)).Elem()
 }
 
-func (i GroupQuotasEntityBaseArgs) ToGroupQuotasEntityBaseOutput() GroupQuotasEntityBaseOutput {
-	return i.ToGroupQuotasEntityBaseOutputWithContext(context.Background())
+func (i GroupQuotasEntityPropertiesArgs) ToGroupQuotasEntityPropertiesOutput() GroupQuotasEntityPropertiesOutput {
+	return i.ToGroupQuotasEntityPropertiesOutputWithContext(context.Background())
 }
 
-func (i GroupQuotasEntityBaseArgs) ToGroupQuotasEntityBaseOutputWithContext(ctx context.Context) GroupQuotasEntityBaseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupQuotasEntityBaseOutput)
+func (i GroupQuotasEntityPropertiesArgs) ToGroupQuotasEntityPropertiesOutputWithContext(ctx context.Context) GroupQuotasEntityPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupQuotasEntityPropertiesOutput)
 }
 
-func (i GroupQuotasEntityBaseArgs) ToGroupQuotasEntityBasePtrOutput() GroupQuotasEntityBasePtrOutput {
-	return i.ToGroupQuotasEntityBasePtrOutputWithContext(context.Background())
+func (i GroupQuotasEntityPropertiesArgs) ToGroupQuotasEntityPropertiesPtrOutput() GroupQuotasEntityPropertiesPtrOutput {
+	return i.ToGroupQuotasEntityPropertiesPtrOutputWithContext(context.Background())
 }
 
-func (i GroupQuotasEntityBaseArgs) ToGroupQuotasEntityBasePtrOutputWithContext(ctx context.Context) GroupQuotasEntityBasePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupQuotasEntityBaseOutput).ToGroupQuotasEntityBasePtrOutputWithContext(ctx)
+func (i GroupQuotasEntityPropertiesArgs) ToGroupQuotasEntityPropertiesPtrOutputWithContext(ctx context.Context) GroupQuotasEntityPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupQuotasEntityPropertiesOutput).ToGroupQuotasEntityPropertiesPtrOutputWithContext(ctx)
 }
 
-// GroupQuotasEntityBasePtrInput is an input type that accepts GroupQuotasEntityBaseArgs, GroupQuotasEntityBasePtr and GroupQuotasEntityBasePtrOutput values.
-// You can construct a concrete instance of `GroupQuotasEntityBasePtrInput` via:
+// GroupQuotasEntityPropertiesPtrInput is an input type that accepts GroupQuotasEntityPropertiesArgs, GroupQuotasEntityPropertiesPtr and GroupQuotasEntityPropertiesPtrOutput values.
+// You can construct a concrete instance of `GroupQuotasEntityPropertiesPtrInput` via:
 //
-//	        GroupQuotasEntityBaseArgs{...}
+//	        GroupQuotasEntityPropertiesArgs{...}
 //
 //	or:
 //
 //	        nil
-type GroupQuotasEntityBasePtrInput interface {
+type GroupQuotasEntityPropertiesPtrInput interface {
 	pulumi.Input
 
-	ToGroupQuotasEntityBasePtrOutput() GroupQuotasEntityBasePtrOutput
-	ToGroupQuotasEntityBasePtrOutputWithContext(context.Context) GroupQuotasEntityBasePtrOutput
+	ToGroupQuotasEntityPropertiesPtrOutput() GroupQuotasEntityPropertiesPtrOutput
+	ToGroupQuotasEntityPropertiesPtrOutputWithContext(context.Context) GroupQuotasEntityPropertiesPtrOutput
 }
 
-type groupQuotasEntityBasePtrType GroupQuotasEntityBaseArgs
+type groupQuotasEntityPropertiesPtrType GroupQuotasEntityPropertiesArgs
 
-func GroupQuotasEntityBasePtr(v *GroupQuotasEntityBaseArgs) GroupQuotasEntityBasePtrInput {
-	return (*groupQuotasEntityBasePtrType)(v)
+func GroupQuotasEntityPropertiesPtr(v *GroupQuotasEntityPropertiesArgs) GroupQuotasEntityPropertiesPtrInput {
+	return (*groupQuotasEntityPropertiesPtrType)(v)
 }
 
-func (*groupQuotasEntityBasePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GroupQuotasEntityBase)(nil)).Elem()
+func (*groupQuotasEntityPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupQuotasEntityProperties)(nil)).Elem()
 }
 
-func (i *groupQuotasEntityBasePtrType) ToGroupQuotasEntityBasePtrOutput() GroupQuotasEntityBasePtrOutput {
-	return i.ToGroupQuotasEntityBasePtrOutputWithContext(context.Background())
+func (i *groupQuotasEntityPropertiesPtrType) ToGroupQuotasEntityPropertiesPtrOutput() GroupQuotasEntityPropertiesPtrOutput {
+	return i.ToGroupQuotasEntityPropertiesPtrOutputWithContext(context.Background())
 }
 
-func (i *groupQuotasEntityBasePtrType) ToGroupQuotasEntityBasePtrOutputWithContext(ctx context.Context) GroupQuotasEntityBasePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupQuotasEntityBasePtrOutput)
+func (i *groupQuotasEntityPropertiesPtrType) ToGroupQuotasEntityPropertiesPtrOutputWithContext(ctx context.Context) GroupQuotasEntityPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupQuotasEntityPropertiesPtrOutput)
 }
 
-// Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified.
-type GroupQuotasEntityBaseOutput struct{ *pulumi.OutputState }
+type GroupQuotasEntityPropertiesOutput struct{ *pulumi.OutputState }
 
-func (GroupQuotasEntityBaseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupQuotasEntityBase)(nil)).Elem()
+func (GroupQuotasEntityPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupQuotasEntityProperties)(nil)).Elem()
 }
 
-func (o GroupQuotasEntityBaseOutput) ToGroupQuotasEntityBaseOutput() GroupQuotasEntityBaseOutput {
+func (o GroupQuotasEntityPropertiesOutput) ToGroupQuotasEntityPropertiesOutput() GroupQuotasEntityPropertiesOutput {
 	return o
 }
 
-func (o GroupQuotasEntityBaseOutput) ToGroupQuotasEntityBaseOutputWithContext(ctx context.Context) GroupQuotasEntityBaseOutput {
+func (o GroupQuotasEntityPropertiesOutput) ToGroupQuotasEntityPropertiesOutputWithContext(ctx context.Context) GroupQuotasEntityPropertiesOutput {
 	return o
 }
 
-func (o GroupQuotasEntityBaseOutput) ToGroupQuotasEntityBasePtrOutput() GroupQuotasEntityBasePtrOutput {
-	return o.ToGroupQuotasEntityBasePtrOutputWithContext(context.Background())
+func (o GroupQuotasEntityPropertiesOutput) ToGroupQuotasEntityPropertiesPtrOutput() GroupQuotasEntityPropertiesPtrOutput {
+	return o.ToGroupQuotasEntityPropertiesPtrOutputWithContext(context.Background())
 }
 
-func (o GroupQuotasEntityBaseOutput) ToGroupQuotasEntityBasePtrOutputWithContext(ctx context.Context) GroupQuotasEntityBasePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupQuotasEntityBase) *GroupQuotasEntityBase {
+func (o GroupQuotasEntityPropertiesOutput) ToGroupQuotasEntityPropertiesPtrOutputWithContext(ctx context.Context) GroupQuotasEntityPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupQuotasEntityProperties) *GroupQuotasEntityProperties {
 		return &v
-	}).(GroupQuotasEntityBasePtrOutput)
-}
-
-// Additional attributes to filter/restrict the subscriptions, which can be added to the subscriptionIds.
-func (o GroupQuotasEntityBaseOutput) AdditionalAttributes() AdditionalAttributesPtrOutput {
-	return o.ApplyT(func(v GroupQuotasEntityBase) *AdditionalAttributes { return v.AdditionalAttributes }).(AdditionalAttributesPtrOutput)
+	}).(GroupQuotasEntityPropertiesPtrOutput)
 }
 
 // Display name of the GroupQuota entity.
-func (o GroupQuotasEntityBaseOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GroupQuotasEntityBase) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+func (o GroupQuotasEntityPropertiesOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupQuotasEntityProperties) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-type GroupQuotasEntityBasePtrOutput struct{ *pulumi.OutputState }
+type GroupQuotasEntityPropertiesPtrOutput struct{ *pulumi.OutputState }
 
-func (GroupQuotasEntityBasePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GroupQuotasEntityBase)(nil)).Elem()
+func (GroupQuotasEntityPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupQuotasEntityProperties)(nil)).Elem()
 }
 
-func (o GroupQuotasEntityBasePtrOutput) ToGroupQuotasEntityBasePtrOutput() GroupQuotasEntityBasePtrOutput {
+func (o GroupQuotasEntityPropertiesPtrOutput) ToGroupQuotasEntityPropertiesPtrOutput() GroupQuotasEntityPropertiesPtrOutput {
 	return o
 }
 
-func (o GroupQuotasEntityBasePtrOutput) ToGroupQuotasEntityBasePtrOutputWithContext(ctx context.Context) GroupQuotasEntityBasePtrOutput {
+func (o GroupQuotasEntityPropertiesPtrOutput) ToGroupQuotasEntityPropertiesPtrOutputWithContext(ctx context.Context) GroupQuotasEntityPropertiesPtrOutput {
 	return o
 }
 
-func (o GroupQuotasEntityBasePtrOutput) Elem() GroupQuotasEntityBaseOutput {
-	return o.ApplyT(func(v *GroupQuotasEntityBase) GroupQuotasEntityBase {
+func (o GroupQuotasEntityPropertiesPtrOutput) Elem() GroupQuotasEntityPropertiesOutput {
+	return o.ApplyT(func(v *GroupQuotasEntityProperties) GroupQuotasEntityProperties {
 		if v != nil {
 			return *v
 		}
-		var ret GroupQuotasEntityBase
+		var ret GroupQuotasEntityProperties
 		return ret
-	}).(GroupQuotasEntityBaseOutput)
-}
-
-// Additional attributes to filter/restrict the subscriptions, which can be added to the subscriptionIds.
-func (o GroupQuotasEntityBasePtrOutput) AdditionalAttributes() AdditionalAttributesPtrOutput {
-	return o.ApplyT(func(v *GroupQuotasEntityBase) *AdditionalAttributes {
-		if v == nil {
-			return nil
-		}
-		return v.AdditionalAttributes
-	}).(AdditionalAttributesPtrOutput)
+	}).(GroupQuotasEntityPropertiesOutput)
 }
 
 // Display name of the GroupQuota entity.
-func (o GroupQuotasEntityBasePtrOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GroupQuotasEntityBase) *string {
+func (o GroupQuotasEntityPropertiesPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupQuotasEntityProperties) *string {
 		if v == nil {
 			return nil
 		}
@@ -432,280 +181,35 @@ func (o GroupQuotasEntityBasePtrOutput) DisplayName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified.
-type GroupQuotasEntityBaseResponse struct {
-	// Additional attributes to filter/restrict the subscriptions, which can be added to the subscriptionIds.
-	AdditionalAttributes *AdditionalAttributesResponse `pulumi:"additionalAttributes"`
+type GroupQuotasEntityResponseProperties struct {
 	// Display name of the GroupQuota entity.
 	DisplayName *string `pulumi:"displayName"`
 	// Provisioning state of the operation.
 	ProvisioningState string `pulumi:"provisioningState"`
 }
 
-// Properties and filters for ShareQuota. The request parameter is optional, if there are no filters specified.
-type GroupQuotasEntityBaseResponseOutput struct{ *pulumi.OutputState }
+type GroupQuotasEntityResponsePropertiesOutput struct{ *pulumi.OutputState }
 
-func (GroupQuotasEntityBaseResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupQuotasEntityBaseResponse)(nil)).Elem()
+func (GroupQuotasEntityResponsePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupQuotasEntityResponseProperties)(nil)).Elem()
 }
 
-func (o GroupQuotasEntityBaseResponseOutput) ToGroupQuotasEntityBaseResponseOutput() GroupQuotasEntityBaseResponseOutput {
+func (o GroupQuotasEntityResponsePropertiesOutput) ToGroupQuotasEntityResponsePropertiesOutput() GroupQuotasEntityResponsePropertiesOutput {
 	return o
 }
 
-func (o GroupQuotasEntityBaseResponseOutput) ToGroupQuotasEntityBaseResponseOutputWithContext(ctx context.Context) GroupQuotasEntityBaseResponseOutput {
+func (o GroupQuotasEntityResponsePropertiesOutput) ToGroupQuotasEntityResponsePropertiesOutputWithContext(ctx context.Context) GroupQuotasEntityResponsePropertiesOutput {
 	return o
-}
-
-// Additional attributes to filter/restrict the subscriptions, which can be added to the subscriptionIds.
-func (o GroupQuotasEntityBaseResponseOutput) AdditionalAttributes() AdditionalAttributesResponsePtrOutput {
-	return o.ApplyT(func(v GroupQuotasEntityBaseResponse) *AdditionalAttributesResponse { return v.AdditionalAttributes }).(AdditionalAttributesResponsePtrOutput)
 }
 
 // Display name of the GroupQuota entity.
-func (o GroupQuotasEntityBaseResponseOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GroupQuotasEntityBaseResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+func (o GroupQuotasEntityResponsePropertiesOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GroupQuotasEntityResponseProperties) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // Provisioning state of the operation.
-func (o GroupQuotasEntityBaseResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v GroupQuotasEntityBaseResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// The grouping Id for the group quota. It can be Billing Id or ServiceTreeId if applicable.
-type GroupingId struct {
-	// GroupingId type. It is a required property. More types of groupIds can be supported in future.
-	GroupingIdType *string `pulumi:"groupingIdType"`
-	// GroupId value based on the groupingType selected - Billing Id or ServiceTreeId.
-	Value *string `pulumi:"value"`
-}
-
-// GroupingIdInput is an input type that accepts GroupingIdArgs and GroupingIdOutput values.
-// You can construct a concrete instance of `GroupingIdInput` via:
-//
-//	GroupingIdArgs{...}
-type GroupingIdInput interface {
-	pulumi.Input
-
-	ToGroupingIdOutput() GroupingIdOutput
-	ToGroupingIdOutputWithContext(context.Context) GroupingIdOutput
-}
-
-// The grouping Id for the group quota. It can be Billing Id or ServiceTreeId if applicable.
-type GroupingIdArgs struct {
-	// GroupingId type. It is a required property. More types of groupIds can be supported in future.
-	GroupingIdType pulumi.StringPtrInput `pulumi:"groupingIdType"`
-	// GroupId value based on the groupingType selected - Billing Id or ServiceTreeId.
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (GroupingIdArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupingId)(nil)).Elem()
-}
-
-func (i GroupingIdArgs) ToGroupingIdOutput() GroupingIdOutput {
-	return i.ToGroupingIdOutputWithContext(context.Background())
-}
-
-func (i GroupingIdArgs) ToGroupingIdOutputWithContext(ctx context.Context) GroupingIdOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupingIdOutput)
-}
-
-func (i GroupingIdArgs) ToGroupingIdPtrOutput() GroupingIdPtrOutput {
-	return i.ToGroupingIdPtrOutputWithContext(context.Background())
-}
-
-func (i GroupingIdArgs) ToGroupingIdPtrOutputWithContext(ctx context.Context) GroupingIdPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupingIdOutput).ToGroupingIdPtrOutputWithContext(ctx)
-}
-
-// GroupingIdPtrInput is an input type that accepts GroupingIdArgs, GroupingIdPtr and GroupingIdPtrOutput values.
-// You can construct a concrete instance of `GroupingIdPtrInput` via:
-//
-//	        GroupingIdArgs{...}
-//
-//	or:
-//
-//	        nil
-type GroupingIdPtrInput interface {
-	pulumi.Input
-
-	ToGroupingIdPtrOutput() GroupingIdPtrOutput
-	ToGroupingIdPtrOutputWithContext(context.Context) GroupingIdPtrOutput
-}
-
-type groupingIdPtrType GroupingIdArgs
-
-func GroupingIdPtr(v *GroupingIdArgs) GroupingIdPtrInput {
-	return (*groupingIdPtrType)(v)
-}
-
-func (*groupingIdPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GroupingId)(nil)).Elem()
-}
-
-func (i *groupingIdPtrType) ToGroupingIdPtrOutput() GroupingIdPtrOutput {
-	return i.ToGroupingIdPtrOutputWithContext(context.Background())
-}
-
-func (i *groupingIdPtrType) ToGroupingIdPtrOutputWithContext(ctx context.Context) GroupingIdPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GroupingIdPtrOutput)
-}
-
-// The grouping Id for the group quota. It can be Billing Id or ServiceTreeId if applicable.
-type GroupingIdOutput struct{ *pulumi.OutputState }
-
-func (GroupingIdOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupingId)(nil)).Elem()
-}
-
-func (o GroupingIdOutput) ToGroupingIdOutput() GroupingIdOutput {
-	return o
-}
-
-func (o GroupingIdOutput) ToGroupingIdOutputWithContext(ctx context.Context) GroupingIdOutput {
-	return o
-}
-
-func (o GroupingIdOutput) ToGroupingIdPtrOutput() GroupingIdPtrOutput {
-	return o.ToGroupingIdPtrOutputWithContext(context.Background())
-}
-
-func (o GroupingIdOutput) ToGroupingIdPtrOutputWithContext(ctx context.Context) GroupingIdPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupingId) *GroupingId {
-		return &v
-	}).(GroupingIdPtrOutput)
-}
-
-// GroupingId type. It is a required property. More types of groupIds can be supported in future.
-func (o GroupingIdOutput) GroupingIdType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GroupingId) *string { return v.GroupingIdType }).(pulumi.StringPtrOutput)
-}
-
-// GroupId value based on the groupingType selected - Billing Id or ServiceTreeId.
-func (o GroupingIdOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GroupingId) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type GroupingIdPtrOutput struct{ *pulumi.OutputState }
-
-func (GroupingIdPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GroupingId)(nil)).Elem()
-}
-
-func (o GroupingIdPtrOutput) ToGroupingIdPtrOutput() GroupingIdPtrOutput {
-	return o
-}
-
-func (o GroupingIdPtrOutput) ToGroupingIdPtrOutputWithContext(ctx context.Context) GroupingIdPtrOutput {
-	return o
-}
-
-func (o GroupingIdPtrOutput) Elem() GroupingIdOutput {
-	return o.ApplyT(func(v *GroupingId) GroupingId {
-		if v != nil {
-			return *v
-		}
-		var ret GroupingId
-		return ret
-	}).(GroupingIdOutput)
-}
-
-// GroupingId type. It is a required property. More types of groupIds can be supported in future.
-func (o GroupingIdPtrOutput) GroupingIdType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GroupingId) *string {
-		if v == nil {
-			return nil
-		}
-		return v.GroupingIdType
-	}).(pulumi.StringPtrOutput)
-}
-
-// GroupId value based on the groupingType selected - Billing Id or ServiceTreeId.
-func (o GroupingIdPtrOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GroupingId) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Value
-	}).(pulumi.StringPtrOutput)
-}
-
-// The grouping Id for the group quota. It can be Billing Id or ServiceTreeId if applicable.
-type GroupingIdResponse struct {
-	// GroupingId type. It is a required property. More types of groupIds can be supported in future.
-	GroupingIdType *string `pulumi:"groupingIdType"`
-	// GroupId value based on the groupingType selected - Billing Id or ServiceTreeId.
-	Value *string `pulumi:"value"`
-}
-
-// The grouping Id for the group quota. It can be Billing Id or ServiceTreeId if applicable.
-type GroupingIdResponseOutput struct{ *pulumi.OutputState }
-
-func (GroupingIdResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupingIdResponse)(nil)).Elem()
-}
-
-func (o GroupingIdResponseOutput) ToGroupingIdResponseOutput() GroupingIdResponseOutput {
-	return o
-}
-
-func (o GroupingIdResponseOutput) ToGroupingIdResponseOutputWithContext(ctx context.Context) GroupingIdResponseOutput {
-	return o
-}
-
-// GroupingId type. It is a required property. More types of groupIds can be supported in future.
-func (o GroupingIdResponseOutput) GroupingIdType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GroupingIdResponse) *string { return v.GroupingIdType }).(pulumi.StringPtrOutput)
-}
-
-// GroupId value based on the groupingType selected - Billing Id or ServiceTreeId.
-func (o GroupingIdResponseOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GroupingIdResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type GroupingIdResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (GroupingIdResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GroupingIdResponse)(nil)).Elem()
-}
-
-func (o GroupingIdResponsePtrOutput) ToGroupingIdResponsePtrOutput() GroupingIdResponsePtrOutput {
-	return o
-}
-
-func (o GroupingIdResponsePtrOutput) ToGroupingIdResponsePtrOutputWithContext(ctx context.Context) GroupingIdResponsePtrOutput {
-	return o
-}
-
-func (o GroupingIdResponsePtrOutput) Elem() GroupingIdResponseOutput {
-	return o.ApplyT(func(v *GroupingIdResponse) GroupingIdResponse {
-		if v != nil {
-			return *v
-		}
-		var ret GroupingIdResponse
-		return ret
-	}).(GroupingIdResponseOutput)
-}
-
-// GroupingId type. It is a required property. More types of groupIds can be supported in future.
-func (o GroupingIdResponsePtrOutput) GroupingIdType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GroupingIdResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.GroupingIdType
-	}).(pulumi.StringPtrOutput)
-}
-
-// GroupId value based on the groupingType selected - Billing Id or ServiceTreeId.
-func (o GroupingIdResponsePtrOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GroupingIdResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Value
-	}).(pulumi.StringPtrOutput)
+func (o GroupQuotasEntityResponsePropertiesOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v GroupQuotasEntityResponseProperties) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -770,17 +274,9 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 }
 
 func init() {
-	pulumi.RegisterOutputType(AdditionalAttributesOutput{})
-	pulumi.RegisterOutputType(AdditionalAttributesPtrOutput{})
-	pulumi.RegisterOutputType(AdditionalAttributesResponseOutput{})
-	pulumi.RegisterOutputType(AdditionalAttributesResponsePtrOutput{})
 	pulumi.RegisterOutputType(GroupQuotaSubscriptionIdResponsePropertiesOutput{})
-	pulumi.RegisterOutputType(GroupQuotasEntityBaseOutput{})
-	pulumi.RegisterOutputType(GroupQuotasEntityBasePtrOutput{})
-	pulumi.RegisterOutputType(GroupQuotasEntityBaseResponseOutput{})
-	pulumi.RegisterOutputType(GroupingIdOutput{})
-	pulumi.RegisterOutputType(GroupingIdPtrOutput{})
-	pulumi.RegisterOutputType(GroupingIdResponseOutput{})
-	pulumi.RegisterOutputType(GroupingIdResponsePtrOutput{})
+	pulumi.RegisterOutputType(GroupQuotasEntityPropertiesOutput{})
+	pulumi.RegisterOutputType(GroupQuotasEntityPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GroupQuotasEntityResponsePropertiesOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 }

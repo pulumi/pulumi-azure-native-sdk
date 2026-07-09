@@ -8,19 +8,21 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Factory resource type.
 //
-// Uses Azure REST API version 2018-06-01. In version 1.x of the Azure Native provider, it used API version 2018-06-01.
+// Uses Azure REST API version 2018-06-01. In version 2.x of the Azure Native provider, it used API version 2018-06-01.
 type Factory struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Time the factory was created in ISO8601 format.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Etag identifies change in the resource.
+	// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 	ETag pulumi.StringOutput `pulumi:"eTag"`
 	// Properties to enable Customer Managed Key for the factory.
 	Encryption EncryptionConfigurationResponsePtrOutput `pulumi:"encryption"`
@@ -30,7 +32,7 @@ type Factory struct {
 	Identity FactoryIdentityResponsePtrOutput `pulumi:"identity"`
 	// The resource location.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// The resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Factory provisioning state, example Succeeded.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
@@ -40,9 +42,11 @@ type Factory struct {
 	PurviewConfiguration PurviewConfigurationResponsePtrOutput `pulumi:"purviewConfiguration"`
 	// Git repo information of the factory.
 	RepoConfiguration pulumi.AnyOutput `pulumi:"repoConfiguration"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Version of the factory.
 	Version pulumi.StringOutput `pulumi:"version"`
@@ -116,7 +120,7 @@ type factoryArgs struct {
 	PurviewConfiguration *PurviewConfiguration `pulumi:"purviewConfiguration"`
 	// Git repo information of the factory.
 	RepoConfiguration interface{} `pulumi:"repoConfiguration"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -140,7 +144,7 @@ type FactoryArgs struct {
 	PurviewConfiguration PurviewConfigurationPtrInput
 	// Git repo information of the factory.
 	RepoConfiguration pulumi.Input
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The resource tags.
 	Tags pulumi.StringMapInput
@@ -183,12 +187,17 @@ func (o FactoryOutput) ToFactoryOutputWithContext(ctx context.Context) FactoryOu
 	return o
 }
 
+// The Azure API version of the resource.
+func (o FactoryOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Factory) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Time the factory was created in ISO8601 format.
 func (o FactoryOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Factory) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Etag identifies change in the resource.
+// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 func (o FactoryOutput) ETag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Factory) pulumi.StringOutput { return v.ETag }).(pulumi.StringOutput)
 }
@@ -213,7 +222,7 @@ func (o FactoryOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Factory) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The resource name.
+// The name of the resource
 func (o FactoryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Factory) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -238,12 +247,17 @@ func (o FactoryOutput) RepoConfiguration() pulumi.AnyOutput {
 	return o.ApplyT(func(v *Factory) pulumi.AnyOutput { return v.RepoConfiguration }).(pulumi.AnyOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o FactoryOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Factory) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // The resource tags.
 func (o FactoryOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Factory) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o FactoryOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Factory) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

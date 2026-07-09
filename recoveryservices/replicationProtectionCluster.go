@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Replication protection Cluster.
 //
-// Uses Azure REST API version 2024-02-01.
+// Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2024-02-01.
 //
-// Other available API versions: 2024-04-01, 2024-10-01.
+// Other available API versions: 2024-02-01, 2024-04-01, 2025-01-01, 2025-02-01, 2025-08-01, 2026-01-01, 2026-02-01, 2026-03-31-preview, 2026-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native recoveryservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ReplicationProtectionCluster struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the protection cluster.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The custom data.
@@ -56,6 +58,27 @@ func NewReplicationProtectionCluster(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:recoveryservices/v20241001:ReplicationProtectionCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20250101:ReplicationProtectionCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20250201:ReplicationProtectionCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20250801:ReplicationProtectionCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20260101:ReplicationProtectionCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20260201:ReplicationProtectionCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20260331preview:ReplicationProtectionCluster"),
+		},
+		{
+			Type: pulumi.String("azure-native:recoveryservices/v20260501:ReplicationProtectionCluster"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -157,6 +180,11 @@ func (o ReplicationProtectionClusterOutput) ToReplicationProtectionClusterOutput
 
 func (o ReplicationProtectionClusterOutput) ToReplicationProtectionClusterOutputWithContext(ctx context.Context) ReplicationProtectionClusterOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ReplicationProtectionClusterOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReplicationProtectionCluster) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the protection cluster.

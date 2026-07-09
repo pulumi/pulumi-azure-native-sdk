@@ -10,6 +10,180 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Gets or sets the status.
+type PrivateEndpointConnectionStatus string
+
+const (
+	// Approved Status.
+	PrivateEndpointConnectionStatusApproved = PrivateEndpointConnectionStatus("Approved")
+	// Disconnected Status.
+	PrivateEndpointConnectionStatusDisconnected = PrivateEndpointConnectionStatus("Disconnected")
+	// Pending Status.
+	PrivateEndpointConnectionStatusPending = PrivateEndpointConnectionStatus("Pending")
+	// Rejected Status.
+	PrivateEndpointConnectionStatusRejected = PrivateEndpointConnectionStatus("Rejected")
+)
+
+func (PrivateEndpointConnectionStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnectionStatus)(nil)).Elem()
+}
+
+func (e PrivateEndpointConnectionStatus) ToPrivateEndpointConnectionStatusOutput() PrivateEndpointConnectionStatusOutput {
+	return pulumi.ToOutput(e).(PrivateEndpointConnectionStatusOutput)
+}
+
+func (e PrivateEndpointConnectionStatus) ToPrivateEndpointConnectionStatusOutputWithContext(ctx context.Context) PrivateEndpointConnectionStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PrivateEndpointConnectionStatusOutput)
+}
+
+func (e PrivateEndpointConnectionStatus) ToPrivateEndpointConnectionStatusPtrOutput() PrivateEndpointConnectionStatusPtrOutput {
+	return e.ToPrivateEndpointConnectionStatusPtrOutputWithContext(context.Background())
+}
+
+func (e PrivateEndpointConnectionStatus) ToPrivateEndpointConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointConnectionStatusPtrOutput {
+	return PrivateEndpointConnectionStatus(e).ToPrivateEndpointConnectionStatusOutputWithContext(ctx).ToPrivateEndpointConnectionStatusPtrOutputWithContext(ctx)
+}
+
+func (e PrivateEndpointConnectionStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PrivateEndpointConnectionStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PrivateEndpointConnectionStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PrivateEndpointConnectionStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PrivateEndpointConnectionStatusOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnectionStatus)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionStatusOutput) ToPrivateEndpointConnectionStatusOutput() PrivateEndpointConnectionStatusOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionStatusOutput) ToPrivateEndpointConnectionStatusOutputWithContext(ctx context.Context) PrivateEndpointConnectionStatusOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionStatusOutput) ToPrivateEndpointConnectionStatusPtrOutput() PrivateEndpointConnectionStatusPtrOutput {
+	return o.ToPrivateEndpointConnectionStatusPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateEndpointConnectionStatusOutput) ToPrivateEndpointConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointConnectionStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateEndpointConnectionStatus) *PrivateEndpointConnectionStatus {
+		return &v
+	}).(PrivateEndpointConnectionStatusPtrOutput)
+}
+
+func (o PrivateEndpointConnectionStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PrivateEndpointConnectionStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PrivateEndpointConnectionStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PrivateEndpointConnectionStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateEndpointConnectionStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PrivateEndpointConnectionStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PrivateEndpointConnectionStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateEndpointConnectionStatus)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionStatusPtrOutput) ToPrivateEndpointConnectionStatusPtrOutput() PrivateEndpointConnectionStatusPtrOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionStatusPtrOutput) ToPrivateEndpointConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointConnectionStatusPtrOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionStatusPtrOutput) Elem() PrivateEndpointConnectionStatusOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionStatus) PrivateEndpointConnectionStatus {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateEndpointConnectionStatus
+		return ret
+	}).(PrivateEndpointConnectionStatusOutput)
+}
+
+func (o PrivateEndpointConnectionStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateEndpointConnectionStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PrivateEndpointConnectionStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PrivateEndpointConnectionStatusInput is an input type that accepts values of the PrivateEndpointConnectionStatus enum
+// A concrete instance of `PrivateEndpointConnectionStatusInput` can be one of the following:
+//
+//	PrivateEndpointConnectionStatusApproved
+//	PrivateEndpointConnectionStatusDisconnected
+//	PrivateEndpointConnectionStatusPending
+//	PrivateEndpointConnectionStatusRejected
+type PrivateEndpointConnectionStatusInput interface {
+	pulumi.Input
+
+	ToPrivateEndpointConnectionStatusOutput() PrivateEndpointConnectionStatusOutput
+	ToPrivateEndpointConnectionStatusOutputWithContext(context.Context) PrivateEndpointConnectionStatusOutput
+}
+
+var privateEndpointConnectionStatusPtrType = reflect.TypeOf((**PrivateEndpointConnectionStatus)(nil)).Elem()
+
+type PrivateEndpointConnectionStatusPtrInput interface {
+	pulumi.Input
+
+	ToPrivateEndpointConnectionStatusPtrOutput() PrivateEndpointConnectionStatusPtrOutput
+	ToPrivateEndpointConnectionStatusPtrOutputWithContext(context.Context) PrivateEndpointConnectionStatusPtrOutput
+}
+
+type privateEndpointConnectionStatusPtr string
+
+func PrivateEndpointConnectionStatusPtr(v string) PrivateEndpointConnectionStatusPtrInput {
+	return (*privateEndpointConnectionStatusPtr)(&v)
+}
+
+func (*privateEndpointConnectionStatusPtr) ElementType() reflect.Type {
+	return privateEndpointConnectionStatusPtrType
+}
+
+func (in *privateEndpointConnectionStatusPtr) ToPrivateEndpointConnectionStatusPtrOutput() PrivateEndpointConnectionStatusPtrOutput {
+	return pulumi.ToOutput(in).(PrivateEndpointConnectionStatusPtrOutput)
+}
+
+func (in *privateEndpointConnectionStatusPtr) ToPrivateEndpointConnectionStatusPtrOutputWithContext(ctx context.Context) PrivateEndpointConnectionStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PrivateEndpointConnectionStatusPtrOutput)
+}
+
 // Gets or sets the type of vault.
 type ReplicationVaultType string
 
@@ -347,6 +521,8 @@ func (in *vmnicSelectionPtr) ToVMNicSelectionPtrOutputWithContext(ctx context.Co
 }
 
 func init() {
+	pulumi.RegisterOutputType(PrivateEndpointConnectionStatusOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionStatusPtrOutput{})
 	pulumi.RegisterOutputType(ReplicationVaultTypeOutput{})
 	pulumi.RegisterOutputType(ReplicationVaultTypePtrOutput{})
 	pulumi.RegisterOutputType(VMNicSelectionOutput{})

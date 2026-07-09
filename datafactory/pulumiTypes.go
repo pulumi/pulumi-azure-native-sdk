@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -982,7 +982,7 @@ type AmazonMWSObjectDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for dataset.
@@ -1024,8 +1024,8 @@ func (o AmazonMWSObjectDatasetResponseOutput) Description() pulumi.StringPtrOutp
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o AmazonMWSObjectDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v AmazonMWSObjectDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o AmazonMWSObjectDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v AmazonMWSObjectDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -1257,25 +1257,53 @@ func (o AmazonMWSSourceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AmazonMWSSourceResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// AmazonRdsForOracle database.
+// AmazonRdsForOracle database. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
 type AmazonRdsForOracleLinkedService struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// Authentication type for connecting to the AmazonRdsForOracle database. Only used for Version 2.0.
+	AuthenticationType *string `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
-	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
+	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only used for Version 1.0.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// Specifies the desired data integrity behavior when this client connects to a server. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+	CryptoChecksumClient interface{} `pulumi:"cryptoChecksumClient"`
+	// Specifies the crypto-checksum algorithms that client can use. Supported values are SHA1, SHA256, SHA384, SHA512, default value is (SHA512). Type: string. Only used for Version 2.0.
+	CryptoChecksumTypesClient interface{} `pulumi:"cryptoChecksumTypesClient"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// Specifies whether to use bulk copy or batch insert when loading data into the database, default value is true. Type: boolean. Only used for Version 2.0.
+	EnableBulkLoad interface{} `pulumi:"enableBulkLoad"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// Specifies the encryption client behavior. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+	EncryptionClient interface{} `pulumi:"encryptionClient"`
+	// Specifies the encryption algorithms that client can use. Supported values are AES128, AES192, AES256, 3DES112, 3DES168, default value is (AES256). Type: string. Only used for Version 2.0.
+	EncryptionTypesClient interface{} `pulumi:"encryptionTypesClient"`
+	// Specifies the number of bytes that the driver allocates to fetch the data in one database round-trip, default value is 10485760. Type: integer. Only used for Version 2.0.
+	FetchSize interface{} `pulumi:"fetchSize"`
+	// Specifies whether the driver returns column value with the TIMESTAMP WITH TIME ZONE data type as DateTime or string. This setting is ignored if supportV1DataTypes is not true, default value is true. Type: boolean. Only used for Version 2.0.
+	FetchTswtzAsTimestamp interface{} `pulumi:"fetchTswtzAsTimestamp"`
+	// Specifies the amount that the source initially fetches for LOB columns, default value is 0. Type: integer. Only used for Version 2.0.
+	InitialLobFetchSize interface{} `pulumi:"initialLobFetchSize"`
+	// Specifies a command that is issued immediately after connecting to the database to manage session settings. Type: string. Only used for Version 2.0.
+	InitializationString interface{} `pulumi:"initializationString"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecification `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
 	Password interface{} `pulumi:"password"`
+	// The location of AmazonRdsForOracle database you want to connect to, the supported forms include connector descriptor, Easy Connect (Plus) Naming and Oracle Net Services Name (Only self-hosted IR). Type: string. Only used for Version 2.0.
+	Server interface{} `pulumi:"server"`
+	// Specifies the number of cursors or statements to be cached for each database connection, default value is 0. Type: integer. Only used for Version 2.0.
+	StatementCacheSize interface{} `pulumi:"statementCacheSize"`
+	// Specifies whether to use the Version 1.0 data type mappings. Do not set this to true unless you want to keep backward compatibility with Version 1.0's data type mappings, default value is false. Type: boolean. Only used for Version 2.0.
+	SupportV1DataTypes interface{} `pulumi:"supportV1DataTypes"`
 	// Type of linked service.
 	// Expected value is 'AmazonRdsForOracle'.
 	Type string `pulumi:"type"`
+	// The AmazonRdsForOracle database username. Type: string. Only used for Version 2.0.
+	Username interface{} `pulumi:"username"`
 	// Version of the linked service.
 	Version *string `pulumi:"version"`
 }
@@ -1291,25 +1319,53 @@ type AmazonRdsForOracleLinkedServiceInput interface {
 	ToAmazonRdsForOracleLinkedServiceOutputWithContext(context.Context) AmazonRdsForOracleLinkedServiceOutput
 }
 
-// AmazonRdsForOracle database.
+// AmazonRdsForOracle database. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
 type AmazonRdsForOracleLinkedServiceArgs struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations pulumi.ArrayInput `pulumi:"annotations"`
+	// Authentication type for connecting to the AmazonRdsForOracle database. Only used for Version 2.0.
+	AuthenticationType pulumi.StringPtrInput `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
-	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
+	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only used for Version 1.0.
 	ConnectionString pulumi.Input `pulumi:"connectionString"`
+	// Specifies the desired data integrity behavior when this client connects to a server. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+	CryptoChecksumClient pulumi.Input `pulumi:"cryptoChecksumClient"`
+	// Specifies the crypto-checksum algorithms that client can use. Supported values are SHA1, SHA256, SHA384, SHA512, default value is (SHA512). Type: string. Only used for Version 2.0.
+	CryptoChecksumTypesClient pulumi.Input `pulumi:"cryptoChecksumTypesClient"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Specifies whether to use bulk copy or batch insert when loading data into the database, default value is true. Type: boolean. Only used for Version 2.0.
+	EnableBulkLoad pulumi.Input `pulumi:"enableBulkLoad"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential pulumi.StringPtrInput `pulumi:"encryptedCredential"`
+	// Specifies the encryption client behavior. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+	EncryptionClient pulumi.Input `pulumi:"encryptionClient"`
+	// Specifies the encryption algorithms that client can use. Supported values are AES128, AES192, AES256, 3DES112, 3DES168, default value is (AES256). Type: string. Only used for Version 2.0.
+	EncryptionTypesClient pulumi.Input `pulumi:"encryptionTypesClient"`
+	// Specifies the number of bytes that the driver allocates to fetch the data in one database round-trip, default value is 10485760. Type: integer. Only used for Version 2.0.
+	FetchSize pulumi.Input `pulumi:"fetchSize"`
+	// Specifies whether the driver returns column value with the TIMESTAMP WITH TIME ZONE data type as DateTime or string. This setting is ignored if supportV1DataTypes is not true, default value is true. Type: boolean. Only used for Version 2.0.
+	FetchTswtzAsTimestamp pulumi.Input `pulumi:"fetchTswtzAsTimestamp"`
+	// Specifies the amount that the source initially fetches for LOB columns, default value is 0. Type: integer. Only used for Version 2.0.
+	InitialLobFetchSize pulumi.Input `pulumi:"initialLobFetchSize"`
+	// Specifies a command that is issued immediately after connecting to the database to manage session settings. Type: string. Only used for Version 2.0.
+	InitializationString pulumi.Input `pulumi:"initializationString"`
 	// Parameters for linked service.
 	Parameters ParameterSpecificationMapInput `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
 	Password pulumi.Input `pulumi:"password"`
+	// The location of AmazonRdsForOracle database you want to connect to, the supported forms include connector descriptor, Easy Connect (Plus) Naming and Oracle Net Services Name (Only self-hosted IR). Type: string. Only used for Version 2.0.
+	Server pulumi.Input `pulumi:"server"`
+	// Specifies the number of cursors or statements to be cached for each database connection, default value is 0. Type: integer. Only used for Version 2.0.
+	StatementCacheSize pulumi.Input `pulumi:"statementCacheSize"`
+	// Specifies whether to use the Version 1.0 data type mappings. Do not set this to true unless you want to keep backward compatibility with Version 1.0's data type mappings, default value is false. Type: boolean. Only used for Version 2.0.
+	SupportV1DataTypes pulumi.Input `pulumi:"supportV1DataTypes"`
 	// Type of linked service.
 	// Expected value is 'AmazonRdsForOracle'.
 	Type pulumi.StringInput `pulumi:"type"`
+	// The AmazonRdsForOracle database username. Type: string. Only used for Version 2.0.
+	Username pulumi.Input `pulumi:"username"`
 	// Version of the linked service.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
@@ -1326,7 +1382,7 @@ func (i AmazonRdsForOracleLinkedServiceArgs) ToAmazonRdsForOracleLinkedServiceOu
 	return pulumi.ToOutputWithContext(ctx, i).(AmazonRdsForOracleLinkedServiceOutput)
 }
 
-// AmazonRdsForOracle database.
+// AmazonRdsForOracle database. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
 type AmazonRdsForOracleLinkedServiceOutput struct{ *pulumi.OutputState }
 
 func (AmazonRdsForOracleLinkedServiceOutput) ElementType() reflect.Type {
@@ -1346,14 +1402,29 @@ func (o AmazonRdsForOracleLinkedServiceOutput) Annotations() pulumi.ArrayOutput 
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
+// Authentication type for connecting to the AmazonRdsForOracle database. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
+}
+
 // The integration runtime reference.
 func (o AmazonRdsForOracleLinkedServiceOutput) ConnectVia() IntegrationRuntimeReferencePtrOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) *IntegrationRuntimeReference { return v.ConnectVia }).(IntegrationRuntimeReferencePtrOutput)
 }
 
-// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
+// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only used for Version 1.0.
 func (o AmazonRdsForOracleLinkedServiceOutput) ConnectionString() pulumi.AnyOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
+}
+
+// Specifies the desired data integrity behavior when this client connects to a server. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceOutput) CryptoChecksumClient() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.CryptoChecksumClient }).(pulumi.AnyOutput)
+}
+
+// Specifies the crypto-checksum algorithms that client can use. Supported values are SHA1, SHA256, SHA384, SHA512, default value is (SHA512). Type: string. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceOutput) CryptoChecksumTypesClient() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.CryptoChecksumTypesClient }).(pulumi.AnyOutput)
 }
 
 // Linked service description.
@@ -1361,9 +1432,44 @@ func (o AmazonRdsForOracleLinkedServiceOutput) Description() pulumi.StringPtrOut
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether to use bulk copy or batch insert when loading data into the database, default value is true. Type: boolean. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceOutput) EnableBulkLoad() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.EnableBulkLoad }).(pulumi.AnyOutput)
+}
+
 // The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 func (o AmazonRdsForOracleLinkedServiceOutput) EncryptedCredential() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the encryption client behavior. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceOutput) EncryptionClient() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.EncryptionClient }).(pulumi.AnyOutput)
+}
+
+// Specifies the encryption algorithms that client can use. Supported values are AES128, AES192, AES256, 3DES112, 3DES168, default value is (AES256). Type: string. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceOutput) EncryptionTypesClient() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.EncryptionTypesClient }).(pulumi.AnyOutput)
+}
+
+// Specifies the number of bytes that the driver allocates to fetch the data in one database round-trip, default value is 10485760. Type: integer. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceOutput) FetchSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.FetchSize }).(pulumi.AnyOutput)
+}
+
+// Specifies whether the driver returns column value with the TIMESTAMP WITH TIME ZONE data type as DateTime or string. This setting is ignored if supportV1DataTypes is not true, default value is true. Type: boolean. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceOutput) FetchTswtzAsTimestamp() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.FetchTswtzAsTimestamp }).(pulumi.AnyOutput)
+}
+
+// Specifies the amount that the source initially fetches for LOB columns, default value is 0. Type: integer. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceOutput) InitialLobFetchSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.InitialLobFetchSize }).(pulumi.AnyOutput)
+}
+
+// Specifies a command that is issued immediately after connecting to the database to manage session settings. Type: string. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceOutput) InitializationString() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.InitializationString }).(pulumi.AnyOutput)
 }
 
 // Parameters for linked service.
@@ -1376,10 +1482,30 @@ func (o AmazonRdsForOracleLinkedServiceOutput) Password() pulumi.AnyOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.Password }).(pulumi.AnyOutput)
 }
 
+// The location of AmazonRdsForOracle database you want to connect to, the supported forms include connector descriptor, Easy Connect (Plus) Naming and Oracle Net Services Name (Only self-hosted IR). Type: string. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceOutput) Server() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.Server }).(pulumi.AnyOutput)
+}
+
+// Specifies the number of cursors or statements to be cached for each database connection, default value is 0. Type: integer. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceOutput) StatementCacheSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.StatementCacheSize }).(pulumi.AnyOutput)
+}
+
+// Specifies whether to use the Version 1.0 data type mappings. Do not set this to true unless you want to keep backward compatibility with Version 1.0's data type mappings, default value is false. Type: boolean. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceOutput) SupportV1DataTypes() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.SupportV1DataTypes }).(pulumi.AnyOutput)
+}
+
 // Type of linked service.
 // Expected value is 'AmazonRdsForOracle'.
 func (o AmazonRdsForOracleLinkedServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The AmazonRdsForOracle database username. Type: string. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceOutput) Username() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) interface{} { return v.Username }).(pulumi.AnyOutput)
 }
 
 // Version of the linked service.
@@ -1387,30 +1513,58 @@ func (o AmazonRdsForOracleLinkedServiceOutput) Version() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedService) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-// AmazonRdsForOracle database.
+// AmazonRdsForOracle database. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
 type AmazonRdsForOracleLinkedServiceResponse struct {
 	// List of tags that can be used for describing the linked service.
 	Annotations []interface{} `pulumi:"annotations"`
+	// Authentication type for connecting to the AmazonRdsForOracle database. Only used for Version 2.0.
+	AuthenticationType *string `pulumi:"authenticationType"`
 	// The integration runtime reference.
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
-	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
+	// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only used for Version 1.0.
 	ConnectionString interface{} `pulumi:"connectionString"`
+	// Specifies the desired data integrity behavior when this client connects to a server. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+	CryptoChecksumClient interface{} `pulumi:"cryptoChecksumClient"`
+	// Specifies the crypto-checksum algorithms that client can use. Supported values are SHA1, SHA256, SHA384, SHA512, default value is (SHA512). Type: string. Only used for Version 2.0.
+	CryptoChecksumTypesClient interface{} `pulumi:"cryptoChecksumTypesClient"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
+	// Specifies whether to use bulk copy or batch insert when loading data into the database, default value is true. Type: boolean. Only used for Version 2.0.
+	EnableBulkLoad interface{} `pulumi:"enableBulkLoad"`
 	// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 	EncryptedCredential *string `pulumi:"encryptedCredential"`
+	// Specifies the encryption client behavior. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+	EncryptionClient interface{} `pulumi:"encryptionClient"`
+	// Specifies the encryption algorithms that client can use. Supported values are AES128, AES192, AES256, 3DES112, 3DES168, default value is (AES256). Type: string. Only used for Version 2.0.
+	EncryptionTypesClient interface{} `pulumi:"encryptionTypesClient"`
+	// Specifies the number of bytes that the driver allocates to fetch the data in one database round-trip, default value is 10485760. Type: integer. Only used for Version 2.0.
+	FetchSize interface{} `pulumi:"fetchSize"`
+	// Specifies whether the driver returns column value with the TIMESTAMP WITH TIME ZONE data type as DateTime or string. This setting is ignored if supportV1DataTypes is not true, default value is true. Type: boolean. Only used for Version 2.0.
+	FetchTswtzAsTimestamp interface{} `pulumi:"fetchTswtzAsTimestamp"`
+	// Specifies the amount that the source initially fetches for LOB columns, default value is 0. Type: integer. Only used for Version 2.0.
+	InitialLobFetchSize interface{} `pulumi:"initialLobFetchSize"`
+	// Specifies a command that is issued immediately after connecting to the database to manage session settings. Type: string. Only used for Version 2.0.
+	InitializationString interface{} `pulumi:"initializationString"`
 	// Parameters for linked service.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// The Azure key vault secret reference of password in connection string.
 	Password interface{} `pulumi:"password"`
+	// The location of AmazonRdsForOracle database you want to connect to, the supported forms include connector descriptor, Easy Connect (Plus) Naming and Oracle Net Services Name (Only self-hosted IR). Type: string. Only used for Version 2.0.
+	Server interface{} `pulumi:"server"`
+	// Specifies the number of cursors or statements to be cached for each database connection, default value is 0. Type: integer. Only used for Version 2.0.
+	StatementCacheSize interface{} `pulumi:"statementCacheSize"`
+	// Specifies whether to use the Version 1.0 data type mappings. Do not set this to true unless you want to keep backward compatibility with Version 1.0's data type mappings, default value is false. Type: boolean. Only used for Version 2.0.
+	SupportV1DataTypes interface{} `pulumi:"supportV1DataTypes"`
 	// Type of linked service.
 	// Expected value is 'AmazonRdsForOracle'.
 	Type string `pulumi:"type"`
+	// The AmazonRdsForOracle database username. Type: string. Only used for Version 2.0.
+	Username interface{} `pulumi:"username"`
 	// Version of the linked service.
 	Version *string `pulumi:"version"`
 }
 
-// AmazonRdsForOracle database.
+// AmazonRdsForOracle database. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
 type AmazonRdsForOracleLinkedServiceResponseOutput struct{ *pulumi.OutputState }
 
 func (AmazonRdsForOracleLinkedServiceResponseOutput) ElementType() reflect.Type {
@@ -1430,6 +1584,11 @@ func (o AmazonRdsForOracleLinkedServiceResponseOutput) Annotations() pulumi.Arra
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
+// Authentication type for connecting to the AmazonRdsForOracle database. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceResponseOutput) AuthenticationType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) *string { return v.AuthenticationType }).(pulumi.StringPtrOutput)
+}
+
 // The integration runtime reference.
 func (o AmazonRdsForOracleLinkedServiceResponseOutput) ConnectVia() IntegrationRuntimeReferenceResponsePtrOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) *IntegrationRuntimeReferenceResponse {
@@ -1437,9 +1596,19 @@ func (o AmazonRdsForOracleLinkedServiceResponseOutput) ConnectVia() IntegrationR
 	}).(IntegrationRuntimeReferenceResponsePtrOutput)
 }
 
-// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
+// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only used for Version 1.0.
 func (o AmazonRdsForOracleLinkedServiceResponseOutput) ConnectionString() pulumi.AnyOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.ConnectionString }).(pulumi.AnyOutput)
+}
+
+// Specifies the desired data integrity behavior when this client connects to a server. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceResponseOutput) CryptoChecksumClient() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.CryptoChecksumClient }).(pulumi.AnyOutput)
+}
+
+// Specifies the crypto-checksum algorithms that client can use. Supported values are SHA1, SHA256, SHA384, SHA512, default value is (SHA512). Type: string. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceResponseOutput) CryptoChecksumTypesClient() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.CryptoChecksumTypesClient }).(pulumi.AnyOutput)
 }
 
 // Linked service description.
@@ -1447,9 +1616,44 @@ func (o AmazonRdsForOracleLinkedServiceResponseOutput) Description() pulumi.Stri
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether to use bulk copy or batch insert when loading data into the database, default value is true. Type: boolean. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceResponseOutput) EnableBulkLoad() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.EnableBulkLoad }).(pulumi.AnyOutput)
+}
+
 // The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
 func (o AmazonRdsForOracleLinkedServiceResponseOutput) EncryptedCredential() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) *string { return v.EncryptedCredential }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the encryption client behavior. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceResponseOutput) EncryptionClient() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.EncryptionClient }).(pulumi.AnyOutput)
+}
+
+// Specifies the encryption algorithms that client can use. Supported values are AES128, AES192, AES256, 3DES112, 3DES168, default value is (AES256). Type: string. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceResponseOutput) EncryptionTypesClient() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.EncryptionTypesClient }).(pulumi.AnyOutput)
+}
+
+// Specifies the number of bytes that the driver allocates to fetch the data in one database round-trip, default value is 10485760. Type: integer. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceResponseOutput) FetchSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.FetchSize }).(pulumi.AnyOutput)
+}
+
+// Specifies whether the driver returns column value with the TIMESTAMP WITH TIME ZONE data type as DateTime or string. This setting is ignored if supportV1DataTypes is not true, default value is true. Type: boolean. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceResponseOutput) FetchTswtzAsTimestamp() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.FetchTswtzAsTimestamp }).(pulumi.AnyOutput)
+}
+
+// Specifies the amount that the source initially fetches for LOB columns, default value is 0. Type: integer. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceResponseOutput) InitialLobFetchSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.InitialLobFetchSize }).(pulumi.AnyOutput)
+}
+
+// Specifies a command that is issued immediately after connecting to the database to manage session settings. Type: string. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceResponseOutput) InitializationString() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.InitializationString }).(pulumi.AnyOutput)
 }
 
 // Parameters for linked service.
@@ -1464,10 +1668,30 @@ func (o AmazonRdsForOracleLinkedServiceResponseOutput) Password() pulumi.AnyOutp
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.Password }).(pulumi.AnyOutput)
 }
 
+// The location of AmazonRdsForOracle database you want to connect to, the supported forms include connector descriptor, Easy Connect (Plus) Naming and Oracle Net Services Name (Only self-hosted IR). Type: string. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceResponseOutput) Server() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.Server }).(pulumi.AnyOutput)
+}
+
+// Specifies the number of cursors or statements to be cached for each database connection, default value is 0. Type: integer. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceResponseOutput) StatementCacheSize() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.StatementCacheSize }).(pulumi.AnyOutput)
+}
+
+// Specifies whether to use the Version 1.0 data type mappings. Do not set this to true unless you want to keep backward compatibility with Version 1.0's data type mappings, default value is false. Type: boolean. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceResponseOutput) SupportV1DataTypes() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.SupportV1DataTypes }).(pulumi.AnyOutput)
+}
+
 // Type of linked service.
 // Expected value is 'AmazonRdsForOracle'.
 func (o AmazonRdsForOracleLinkedServiceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The AmazonRdsForOracle database username. Type: string. Only used for Version 2.0.
+func (o AmazonRdsForOracleLinkedServiceResponseOutput) Username() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleLinkedServiceResponse) interface{} { return v.Username }).(pulumi.AnyOutput)
 }
 
 // Version of the linked service.
@@ -1482,7 +1706,7 @@ type AmazonRdsForOraclePartitionSettings struct {
 	// The minimum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
 	PartitionLowerBound interface{} `pulumi:"partitionLowerBound"`
 	// Names of the physical partitions of AmazonRdsForOracle table.
-	PartitionNames []interface{} `pulumi:"partitionNames"`
+	PartitionNames interface{} `pulumi:"partitionNames"`
 	// The maximum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
 	PartitionUpperBound interface{} `pulumi:"partitionUpperBound"`
 }
@@ -1505,7 +1729,7 @@ type AmazonRdsForOraclePartitionSettingsArgs struct {
 	// The minimum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
 	PartitionLowerBound pulumi.Input `pulumi:"partitionLowerBound"`
 	// Names of the physical partitions of AmazonRdsForOracle table.
-	PartitionNames pulumi.ArrayInput `pulumi:"partitionNames"`
+	PartitionNames pulumi.Input `pulumi:"partitionNames"`
 	// The maximum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
 	PartitionUpperBound pulumi.Input `pulumi:"partitionUpperBound"`
 }
@@ -1599,8 +1823,8 @@ func (o AmazonRdsForOraclePartitionSettingsOutput) PartitionLowerBound() pulumi.
 }
 
 // Names of the physical partitions of AmazonRdsForOracle table.
-func (o AmazonRdsForOraclePartitionSettingsOutput) PartitionNames() pulumi.ArrayOutput {
-	return o.ApplyT(func(v AmazonRdsForOraclePartitionSettings) []interface{} { return v.PartitionNames }).(pulumi.ArrayOutput)
+func (o AmazonRdsForOraclePartitionSettingsOutput) PartitionNames() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOraclePartitionSettings) interface{} { return v.PartitionNames }).(pulumi.AnyOutput)
 }
 
 // The maximum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
@@ -1653,13 +1877,13 @@ func (o AmazonRdsForOraclePartitionSettingsPtrOutput) PartitionLowerBound() pulu
 }
 
 // Names of the physical partitions of AmazonRdsForOracle table.
-func (o AmazonRdsForOraclePartitionSettingsPtrOutput) PartitionNames() pulumi.ArrayOutput {
-	return o.ApplyT(func(v *AmazonRdsForOraclePartitionSettings) []interface{} {
+func (o AmazonRdsForOraclePartitionSettingsPtrOutput) PartitionNames() pulumi.AnyOutput {
+	return o.ApplyT(func(v *AmazonRdsForOraclePartitionSettings) interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.PartitionNames
-	}).(pulumi.ArrayOutput)
+	}).(pulumi.AnyOutput)
 }
 
 // The maximum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
@@ -1679,7 +1903,7 @@ type AmazonRdsForOraclePartitionSettingsResponse struct {
 	// The minimum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
 	PartitionLowerBound interface{} `pulumi:"partitionLowerBound"`
 	// Names of the physical partitions of AmazonRdsForOracle table.
-	PartitionNames []interface{} `pulumi:"partitionNames"`
+	PartitionNames interface{} `pulumi:"partitionNames"`
 	// The maximum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
 	PartitionUpperBound interface{} `pulumi:"partitionUpperBound"`
 }
@@ -1710,8 +1934,8 @@ func (o AmazonRdsForOraclePartitionSettingsResponseOutput) PartitionLowerBound()
 }
 
 // Names of the physical partitions of AmazonRdsForOracle table.
-func (o AmazonRdsForOraclePartitionSettingsResponseOutput) PartitionNames() pulumi.ArrayOutput {
-	return o.ApplyT(func(v AmazonRdsForOraclePartitionSettingsResponse) []interface{} { return v.PartitionNames }).(pulumi.ArrayOutput)
+func (o AmazonRdsForOraclePartitionSettingsResponseOutput) PartitionNames() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOraclePartitionSettingsResponse) interface{} { return v.PartitionNames }).(pulumi.AnyOutput)
 }
 
 // The maximum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
@@ -1764,13 +1988,13 @@ func (o AmazonRdsForOraclePartitionSettingsResponsePtrOutput) PartitionLowerBoun
 }
 
 // Names of the physical partitions of AmazonRdsForOracle table.
-func (o AmazonRdsForOraclePartitionSettingsResponsePtrOutput) PartitionNames() pulumi.ArrayOutput {
-	return o.ApplyT(func(v *AmazonRdsForOraclePartitionSettingsResponse) []interface{} {
+func (o AmazonRdsForOraclePartitionSettingsResponsePtrOutput) PartitionNames() pulumi.AnyOutput {
+	return o.ApplyT(func(v *AmazonRdsForOraclePartitionSettingsResponse) interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.PartitionNames
-	}).(pulumi.ArrayOutput)
+	}).(pulumi.AnyOutput)
 }
 
 // The maximum value of column specified in partitionColumnName that will be used for proceeding range partitioning. Type: string (or Expression with resultType string).
@@ -1791,6 +2015,10 @@ type AmazonRdsForOracleSource struct {
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// The decimal precision used to represent Oracle NUMBER type without precision and scale. The range is 1 to 256 and default value is 256 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
+	NumberPrecision interface{} `pulumi:"numberPrecision"`
+	// The decimal scale used to represent Oracle NUMBER type without precision and scale. The range is 0 to 130 and default value is 130 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
+	NumberScale interface{} `pulumi:"numberScale"`
 	// AmazonRdsForOracle reader query. Type: string (or Expression with resultType string).
 	OracleReaderQuery interface{} `pulumi:"oracleReaderQuery"`
 	// The partition mechanism that will be used for AmazonRdsForOracle read in parallel. Type: string (or Expression with resultType string).
@@ -1827,6 +2055,10 @@ type AmazonRdsForOracleSourceArgs struct {
 	DisableMetricsCollection pulumi.Input `pulumi:"disableMetricsCollection"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections pulumi.Input `pulumi:"maxConcurrentConnections"`
+	// The decimal precision used to represent Oracle NUMBER type without precision and scale. The range is 1 to 256 and default value is 256 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
+	NumberPrecision pulumi.Input `pulumi:"numberPrecision"`
+	// The decimal scale used to represent Oracle NUMBER type without precision and scale. The range is 0 to 130 and default value is 130 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
+	NumberScale pulumi.Input `pulumi:"numberScale"`
 	// AmazonRdsForOracle reader query. Type: string (or Expression with resultType string).
 	OracleReaderQuery pulumi.Input `pulumi:"oracleReaderQuery"`
 	// The partition mechanism that will be used for AmazonRdsForOracle read in parallel. Type: string (or Expression with resultType string).
@@ -1886,6 +2118,16 @@ func (o AmazonRdsForOracleSourceOutput) MaxConcurrentConnections() pulumi.AnyOut
 	return o.ApplyT(func(v AmazonRdsForOracleSource) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
 }
 
+// The decimal precision used to represent Oracle NUMBER type without precision and scale. The range is 1 to 256 and default value is 256 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
+func (o AmazonRdsForOracleSourceOutput) NumberPrecision() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleSource) interface{} { return v.NumberPrecision }).(pulumi.AnyOutput)
+}
+
+// The decimal scale used to represent Oracle NUMBER type without precision and scale. The range is 0 to 130 and default value is 130 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
+func (o AmazonRdsForOracleSourceOutput) NumberScale() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleSource) interface{} { return v.NumberScale }).(pulumi.AnyOutput)
+}
+
 // AmazonRdsForOracle reader query. Type: string (or Expression with resultType string).
 func (o AmazonRdsForOracleSourceOutput) OracleReaderQuery() pulumi.AnyOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleSource) interface{} { return v.OracleReaderQuery }).(pulumi.AnyOutput)
@@ -1930,6 +2172,10 @@ type AmazonRdsForOracleSourceResponse struct {
 	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
 	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
+	// The decimal precision used to represent Oracle NUMBER type without precision and scale. The range is 1 to 256 and default value is 256 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
+	NumberPrecision interface{} `pulumi:"numberPrecision"`
+	// The decimal scale used to represent Oracle NUMBER type without precision and scale. The range is 0 to 130 and default value is 130 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
+	NumberScale interface{} `pulumi:"numberScale"`
 	// AmazonRdsForOracle reader query. Type: string (or Expression with resultType string).
 	OracleReaderQuery interface{} `pulumi:"oracleReaderQuery"`
 	// The partition mechanism that will be used for AmazonRdsForOracle read in parallel. Type: string (or Expression with resultType string).
@@ -1975,6 +2221,16 @@ func (o AmazonRdsForOracleSourceResponseOutput) DisableMetricsCollection() pulum
 // The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
 func (o AmazonRdsForOracleSourceResponseOutput) MaxConcurrentConnections() pulumi.AnyOutput {
 	return o.ApplyT(func(v AmazonRdsForOracleSourceResponse) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
+}
+
+// The decimal precision used to represent Oracle NUMBER type without precision and scale. The range is 1 to 256 and default value is 256 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
+func (o AmazonRdsForOracleSourceResponseOutput) NumberPrecision() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleSourceResponse) interface{} { return v.NumberPrecision }).(pulumi.AnyOutput)
+}
+
+// The decimal scale used to represent Oracle NUMBER type without precision and scale. The range is 0 to 130 and default value is 130 if not specified. Type: integer (or Expression with resultType integer). Only used for Version 2.0.
+func (o AmazonRdsForOracleSourceResponseOutput) NumberScale() pulumi.AnyOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleSourceResponse) interface{} { return v.NumberScale }).(pulumi.AnyOutput)
 }
 
 // AmazonRdsForOracle reader query. Type: string (or Expression with resultType string).
@@ -2152,7 +2408,7 @@ type AmazonRdsForOracleTableDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for dataset.
@@ -2194,8 +2450,8 @@ func (o AmazonRdsForOracleTableDatasetResponseOutput) Description() pulumi.Strin
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o AmazonRdsForOracleTableDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v AmazonRdsForOracleTableDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o AmazonRdsForOracleTableDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v AmazonRdsForOracleTableDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -3238,7 +3494,7 @@ type AmazonRdsForSqlServerTableDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for dataset.
@@ -3280,8 +3536,8 @@ func (o AmazonRdsForSqlServerTableDatasetResponseOutput) Description() pulumi.St
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o AmazonRdsForSqlServerTableDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v AmazonRdsForSqlServerTableDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o AmazonRdsForSqlServerTableDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v AmazonRdsForSqlServerTableDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -3943,7 +4199,7 @@ type AmazonRedshiftTableDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for dataset.
@@ -3987,8 +4243,8 @@ func (o AmazonRedshiftTableDatasetResponseOutput) Description() pulumi.StringPtr
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o AmazonRedshiftTableDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v AmazonRedshiftTableDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o AmazonRedshiftTableDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v AmazonRedshiftTableDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -5272,7 +5528,7 @@ type AmazonS3DatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// The format of files.
 	Format interface{} `pulumi:"format"`
 	// The key of the Amazon S3 object. Type: string (or Expression with resultType string).
@@ -5334,8 +5590,8 @@ func (o AmazonS3DatasetResponseOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o AmazonS3DatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v AmazonS3DatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o AmazonS3DatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v AmazonS3DatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // The format of files.
@@ -7283,7 +7539,7 @@ type AvroDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// The location of the avro storage.
@@ -7334,8 +7590,8 @@ func (o AvroDatasetResponseOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o AvroDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v AvroDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o AvroDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v AvroDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -8970,7 +9226,7 @@ type AzureBlobDatasetResponse struct {
 	// The name of the Azure Blob. Type: string (or Expression with resultType string).
 	FileName interface{} `pulumi:"fileName"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// The path of the Azure Blob storage. Type: string (or Expression with resultType string).
 	FolderPath interface{} `pulumi:"folderPath"`
 	// The format of the Azure Blob storage.
@@ -9030,8 +9286,8 @@ func (o AzureBlobDatasetResponseOutput) FileName() pulumi.AnyOutput {
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o AzureBlobDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v AzureBlobDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o AzureBlobDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v AzureBlobDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // The path of the Azure Blob storage. Type: string (or Expression with resultType string).
@@ -9253,7 +9509,7 @@ type AzureBlobFSDatasetResponse struct {
 	// The name of the Azure Data Lake Storage Gen2. Type: string (or Expression with resultType string).
 	FileName interface{} `pulumi:"fileName"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// The path of the Azure Data Lake Storage Gen2 storage. Type: string (or Expression with resultType string).
 	FolderPath interface{} `pulumi:"folderPath"`
 	// The format of the Azure Data Lake Storage Gen2 storage.
@@ -9307,8 +9563,8 @@ func (o AzureBlobFSDatasetResponseOutput) FileName() pulumi.AnyOutput {
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o AzureBlobFSDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v AzureBlobFSDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o AzureBlobFSDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v AzureBlobFSDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // The path of the Azure Data Lake Storage Gen2 storage. Type: string (or Expression with resultType string).
@@ -13894,7 +14150,7 @@ type AzureDataExplorerTableDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for dataset.
@@ -13936,8 +14192,8 @@ func (o AzureDataExplorerTableDatasetResponseOutput) Description() pulumi.String
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o AzureDataExplorerTableDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v AzureDataExplorerTableDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o AzureDataExplorerTableDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v AzureDataExplorerTableDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -14441,7 +14697,7 @@ type AzureDataLakeStoreDatasetResponse struct {
 	// The name of the file in the Azure Data Lake Store. Type: string (or Expression with resultType string).
 	FileName interface{} `pulumi:"fileName"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Path to the folder in the Azure Data Lake Store. Type: string (or Expression with resultType string).
 	FolderPath interface{} `pulumi:"folderPath"`
 	// The format of the Data Lake Store.
@@ -14495,8 +14751,8 @@ func (o AzureDataLakeStoreDatasetResponseOutput) FileName() pulumi.AnyOutput {
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o AzureDataLakeStoreDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v AzureDataLakeStoreDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o AzureDataLakeStoreDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v AzureDataLakeStoreDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Path to the folder in the Azure Data Lake Store. Type: string (or Expression with resultType string).
@@ -16575,7 +16831,7 @@ type AzureDatabricksDeltaLakeDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for dataset.
@@ -16622,8 +16878,8 @@ func (o AzureDatabricksDeltaLakeDatasetResponseOutput) Description() pulumi.Stri
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o AzureDatabricksDeltaLakeDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v AzureDatabricksDeltaLakeDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o AzureDatabricksDeltaLakeDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v AzureDatabricksDeltaLakeDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -17899,6 +18155,8 @@ type AzureDatabricksLinkedService struct {
 	ConnectVia *IntegrationRuntimeReference `pulumi:"connectVia"`
 	// The credential reference containing authentication information.
 	Credential *CredentialReference `pulumi:"credential"`
+	// The data security mode for the Databricks Cluster. Type: string (or Expression with resultType string).
+	DataSecurityMode interface{} `pulumi:"dataSecurityMode"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
 	// <REGION>.azuredatabricks.net, domain name of your Databricks deployment. Type: string (or Expression with resultType string).
@@ -17910,7 +18168,7 @@ type AzureDatabricksLinkedService struct {
 	// The id of an existing instance pool that will be used for all runs of this activity. Type: string (or Expression with resultType string).
 	InstancePoolId interface{} `pulumi:"instancePoolId"`
 	// Additional tags for cluster resources. This property is ignored in instance pool configurations.
-	NewClusterCustomTags map[string]interface{} `pulumi:"newClusterCustomTags"`
+	NewClusterCustomTags interface{} `pulumi:"newClusterCustomTags"`
 	// The driver node type for the new job cluster. This property is ignored in instance pool configurations. Type: string (or Expression with resultType string).
 	NewClusterDriverNodeType interface{} `pulumi:"newClusterDriverNodeType"`
 	// Enable the elastic disk on the new cluster. This property is now ignored, and takes the default elastic disk behavior in Databricks (elastic disks are always enabled). Type: boolean (or Expression with resultType boolean).
@@ -17924,9 +18182,9 @@ type AzureDatabricksLinkedService struct {
 	// If not using an existing interactive cluster, this specifies the number of worker nodes to use for the new job cluster or instance pool. For new job clusters, this a string-formatted Int32, like '1' means numOfWorker is 1 or '1:10' means auto-scale from 1 (min) to 10 (max). For instance pools, this is a string-formatted Int32, and can only specify a fixed number of worker nodes, such as '2'. Required if newClusterVersion is specified. Type: string (or Expression with resultType string).
 	NewClusterNumOfWorker interface{} `pulumi:"newClusterNumOfWorker"`
 	// A set of optional, user-specified Spark configuration key-value pairs.
-	NewClusterSparkConf map[string]interface{} `pulumi:"newClusterSparkConf"`
+	NewClusterSparkConf interface{} `pulumi:"newClusterSparkConf"`
 	// A set of optional, user-specified Spark environment variables key-value pairs.
-	NewClusterSparkEnvVars map[string]interface{} `pulumi:"newClusterSparkEnvVars"`
+	NewClusterSparkEnvVars interface{} `pulumi:"newClusterSparkEnvVars"`
 	// If not using an existing interactive cluster, this specifies the Spark version of a new job cluster or instance pool nodes created for each run of this activity. Required if instancePoolId is specified. Type: string (or Expression with resultType string).
 	NewClusterVersion interface{} `pulumi:"newClusterVersion"`
 	// Parameters for linked service.
@@ -17965,6 +18223,8 @@ type AzureDatabricksLinkedServiceArgs struct {
 	ConnectVia IntegrationRuntimeReferencePtrInput `pulumi:"connectVia"`
 	// The credential reference containing authentication information.
 	Credential CredentialReferencePtrInput `pulumi:"credential"`
+	// The data security mode for the Databricks Cluster. Type: string (or Expression with resultType string).
+	DataSecurityMode pulumi.Input `pulumi:"dataSecurityMode"`
 	// Linked service description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// <REGION>.azuredatabricks.net, domain name of your Databricks deployment. Type: string (or Expression with resultType string).
@@ -17976,7 +18236,7 @@ type AzureDatabricksLinkedServiceArgs struct {
 	// The id of an existing instance pool that will be used for all runs of this activity. Type: string (or Expression with resultType string).
 	InstancePoolId pulumi.Input `pulumi:"instancePoolId"`
 	// Additional tags for cluster resources. This property is ignored in instance pool configurations.
-	NewClusterCustomTags pulumi.MapInput `pulumi:"newClusterCustomTags"`
+	NewClusterCustomTags pulumi.Input `pulumi:"newClusterCustomTags"`
 	// The driver node type for the new job cluster. This property is ignored in instance pool configurations. Type: string (or Expression with resultType string).
 	NewClusterDriverNodeType pulumi.Input `pulumi:"newClusterDriverNodeType"`
 	// Enable the elastic disk on the new cluster. This property is now ignored, and takes the default elastic disk behavior in Databricks (elastic disks are always enabled). Type: boolean (or Expression with resultType boolean).
@@ -17990,9 +18250,9 @@ type AzureDatabricksLinkedServiceArgs struct {
 	// If not using an existing interactive cluster, this specifies the number of worker nodes to use for the new job cluster or instance pool. For new job clusters, this a string-formatted Int32, like '1' means numOfWorker is 1 or '1:10' means auto-scale from 1 (min) to 10 (max). For instance pools, this is a string-formatted Int32, and can only specify a fixed number of worker nodes, such as '2'. Required if newClusterVersion is specified. Type: string (or Expression with resultType string).
 	NewClusterNumOfWorker pulumi.Input `pulumi:"newClusterNumOfWorker"`
 	// A set of optional, user-specified Spark configuration key-value pairs.
-	NewClusterSparkConf pulumi.MapInput `pulumi:"newClusterSparkConf"`
+	NewClusterSparkConf pulumi.Input `pulumi:"newClusterSparkConf"`
 	// A set of optional, user-specified Spark environment variables key-value pairs.
-	NewClusterSparkEnvVars pulumi.MapInput `pulumi:"newClusterSparkEnvVars"`
+	NewClusterSparkEnvVars pulumi.Input `pulumi:"newClusterSparkEnvVars"`
 	// If not using an existing interactive cluster, this specifies the Spark version of a new job cluster or instance pool nodes created for each run of this activity. Required if instancePoolId is specified. Type: string (or Expression with resultType string).
 	NewClusterVersion pulumi.Input `pulumi:"newClusterVersion"`
 	// Parameters for linked service.
@@ -18060,6 +18320,11 @@ func (o AzureDatabricksLinkedServiceOutput) Credential() CredentialReferencePtrO
 	return o.ApplyT(func(v AzureDatabricksLinkedService) *CredentialReference { return v.Credential }).(CredentialReferencePtrOutput)
 }
 
+// The data security mode for the Databricks Cluster. Type: string (or Expression with resultType string).
+func (o AzureDatabricksLinkedServiceOutput) DataSecurityMode() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureDatabricksLinkedService) interface{} { return v.DataSecurityMode }).(pulumi.AnyOutput)
+}
+
 // Linked service description.
 func (o AzureDatabricksLinkedServiceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureDatabricksLinkedService) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -18086,8 +18351,8 @@ func (o AzureDatabricksLinkedServiceOutput) InstancePoolId() pulumi.AnyOutput {
 }
 
 // Additional tags for cluster resources. This property is ignored in instance pool configurations.
-func (o AzureDatabricksLinkedServiceOutput) NewClusterCustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v AzureDatabricksLinkedService) map[string]interface{} { return v.NewClusterCustomTags }).(pulumi.MapOutput)
+func (o AzureDatabricksLinkedServiceOutput) NewClusterCustomTags() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureDatabricksLinkedService) interface{} { return v.NewClusterCustomTags }).(pulumi.AnyOutput)
 }
 
 // The driver node type for the new job cluster. This property is ignored in instance pool configurations. Type: string (or Expression with resultType string).
@@ -18121,13 +18386,13 @@ func (o AzureDatabricksLinkedServiceOutput) NewClusterNumOfWorker() pulumi.AnyOu
 }
 
 // A set of optional, user-specified Spark configuration key-value pairs.
-func (o AzureDatabricksLinkedServiceOutput) NewClusterSparkConf() pulumi.MapOutput {
-	return o.ApplyT(func(v AzureDatabricksLinkedService) map[string]interface{} { return v.NewClusterSparkConf }).(pulumi.MapOutput)
+func (o AzureDatabricksLinkedServiceOutput) NewClusterSparkConf() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureDatabricksLinkedService) interface{} { return v.NewClusterSparkConf }).(pulumi.AnyOutput)
 }
 
 // A set of optional, user-specified Spark environment variables key-value pairs.
-func (o AzureDatabricksLinkedServiceOutput) NewClusterSparkEnvVars() pulumi.MapOutput {
-	return o.ApplyT(func(v AzureDatabricksLinkedService) map[string]interface{} { return v.NewClusterSparkEnvVars }).(pulumi.MapOutput)
+func (o AzureDatabricksLinkedServiceOutput) NewClusterSparkEnvVars() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureDatabricksLinkedService) interface{} { return v.NewClusterSparkEnvVars }).(pulumi.AnyOutput)
 }
 
 // If not using an existing interactive cluster, this specifies the Spark version of a new job cluster or instance pool nodes created for each run of this activity. Required if instancePoolId is specified. Type: string (or Expression with resultType string).
@@ -18173,6 +18438,8 @@ type AzureDatabricksLinkedServiceResponse struct {
 	ConnectVia *IntegrationRuntimeReferenceResponse `pulumi:"connectVia"`
 	// The credential reference containing authentication information.
 	Credential *CredentialReferenceResponse `pulumi:"credential"`
+	// The data security mode for the Databricks Cluster. Type: string (or Expression with resultType string).
+	DataSecurityMode interface{} `pulumi:"dataSecurityMode"`
 	// Linked service description.
 	Description *string `pulumi:"description"`
 	// <REGION>.azuredatabricks.net, domain name of your Databricks deployment. Type: string (or Expression with resultType string).
@@ -18184,7 +18451,7 @@ type AzureDatabricksLinkedServiceResponse struct {
 	// The id of an existing instance pool that will be used for all runs of this activity. Type: string (or Expression with resultType string).
 	InstancePoolId interface{} `pulumi:"instancePoolId"`
 	// Additional tags for cluster resources. This property is ignored in instance pool configurations.
-	NewClusterCustomTags map[string]interface{} `pulumi:"newClusterCustomTags"`
+	NewClusterCustomTags interface{} `pulumi:"newClusterCustomTags"`
 	// The driver node type for the new job cluster. This property is ignored in instance pool configurations. Type: string (or Expression with resultType string).
 	NewClusterDriverNodeType interface{} `pulumi:"newClusterDriverNodeType"`
 	// Enable the elastic disk on the new cluster. This property is now ignored, and takes the default elastic disk behavior in Databricks (elastic disks are always enabled). Type: boolean (or Expression with resultType boolean).
@@ -18198,9 +18465,9 @@ type AzureDatabricksLinkedServiceResponse struct {
 	// If not using an existing interactive cluster, this specifies the number of worker nodes to use for the new job cluster or instance pool. For new job clusters, this a string-formatted Int32, like '1' means numOfWorker is 1 or '1:10' means auto-scale from 1 (min) to 10 (max). For instance pools, this is a string-formatted Int32, and can only specify a fixed number of worker nodes, such as '2'. Required if newClusterVersion is specified. Type: string (or Expression with resultType string).
 	NewClusterNumOfWorker interface{} `pulumi:"newClusterNumOfWorker"`
 	// A set of optional, user-specified Spark configuration key-value pairs.
-	NewClusterSparkConf map[string]interface{} `pulumi:"newClusterSparkConf"`
+	NewClusterSparkConf interface{} `pulumi:"newClusterSparkConf"`
 	// A set of optional, user-specified Spark environment variables key-value pairs.
-	NewClusterSparkEnvVars map[string]interface{} `pulumi:"newClusterSparkEnvVars"`
+	NewClusterSparkEnvVars interface{} `pulumi:"newClusterSparkEnvVars"`
 	// If not using an existing interactive cluster, this specifies the Spark version of a new job cluster or instance pool nodes created for each run of this activity. Required if instancePoolId is specified. Type: string (or Expression with resultType string).
 	NewClusterVersion interface{} `pulumi:"newClusterVersion"`
 	// Parameters for linked service.
@@ -18256,6 +18523,11 @@ func (o AzureDatabricksLinkedServiceResponseOutput) Credential() CredentialRefer
 	return o.ApplyT(func(v AzureDatabricksLinkedServiceResponse) *CredentialReferenceResponse { return v.Credential }).(CredentialReferenceResponsePtrOutput)
 }
 
+// The data security mode for the Databricks Cluster. Type: string (or Expression with resultType string).
+func (o AzureDatabricksLinkedServiceResponseOutput) DataSecurityMode() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureDatabricksLinkedServiceResponse) interface{} { return v.DataSecurityMode }).(pulumi.AnyOutput)
+}
+
 // Linked service description.
 func (o AzureDatabricksLinkedServiceResponseOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureDatabricksLinkedServiceResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -18282,8 +18554,8 @@ func (o AzureDatabricksLinkedServiceResponseOutput) InstancePoolId() pulumi.AnyO
 }
 
 // Additional tags for cluster resources. This property is ignored in instance pool configurations.
-func (o AzureDatabricksLinkedServiceResponseOutput) NewClusterCustomTags() pulumi.MapOutput {
-	return o.ApplyT(func(v AzureDatabricksLinkedServiceResponse) map[string]interface{} { return v.NewClusterCustomTags }).(pulumi.MapOutput)
+func (o AzureDatabricksLinkedServiceResponseOutput) NewClusterCustomTags() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureDatabricksLinkedServiceResponse) interface{} { return v.NewClusterCustomTags }).(pulumi.AnyOutput)
 }
 
 // The driver node type for the new job cluster. This property is ignored in instance pool configurations. Type: string (or Expression with resultType string).
@@ -18317,13 +18589,13 @@ func (o AzureDatabricksLinkedServiceResponseOutput) NewClusterNumOfWorker() pulu
 }
 
 // A set of optional, user-specified Spark configuration key-value pairs.
-func (o AzureDatabricksLinkedServiceResponseOutput) NewClusterSparkConf() pulumi.MapOutput {
-	return o.ApplyT(func(v AzureDatabricksLinkedServiceResponse) map[string]interface{} { return v.NewClusterSparkConf }).(pulumi.MapOutput)
+func (o AzureDatabricksLinkedServiceResponseOutput) NewClusterSparkConf() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureDatabricksLinkedServiceResponse) interface{} { return v.NewClusterSparkConf }).(pulumi.AnyOutput)
 }
 
 // A set of optional, user-specified Spark environment variables key-value pairs.
-func (o AzureDatabricksLinkedServiceResponseOutput) NewClusterSparkEnvVars() pulumi.MapOutput {
-	return o.ApplyT(func(v AzureDatabricksLinkedServiceResponse) map[string]interface{} { return v.NewClusterSparkEnvVars }).(pulumi.MapOutput)
+func (o AzureDatabricksLinkedServiceResponseOutput) NewClusterSparkEnvVars() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureDatabricksLinkedServiceResponse) interface{} { return v.NewClusterSparkEnvVars }).(pulumi.AnyOutput)
 }
 
 // If not using an existing interactive cluster, this specifies the Spark version of a new job cluster or instance pool nodes created for each run of this activity. Required if instancePoolId is specified. Type: string (or Expression with resultType string).
@@ -19842,7 +20114,7 @@ type AzureFunctionActivity struct {
 	// Name of the Function that the Azure Function Activity will call. Type: string (or Expression with resultType string)
 	FunctionName interface{} `pulumi:"functionName"`
 	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
-	Headers map[string]interface{} `pulumi:"headers"`
+	Headers interface{} `pulumi:"headers"`
 	// Linked service reference.
 	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
 	// Rest API method for target endpoint.
@@ -19884,7 +20156,7 @@ type AzureFunctionActivityArgs struct {
 	// Name of the Function that the Azure Function Activity will call. Type: string (or Expression with resultType string)
 	FunctionName pulumi.Input `pulumi:"functionName"`
 	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
-	Headers pulumi.MapInput `pulumi:"headers"`
+	Headers pulumi.Input `pulumi:"headers"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferencePtrInput `pulumi:"linkedServiceName"`
 	// Rest API method for target endpoint.
@@ -19952,8 +20224,8 @@ func (o AzureFunctionActivityOutput) FunctionName() pulumi.AnyOutput {
 }
 
 // Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
-func (o AzureFunctionActivityOutput) Headers() pulumi.MapOutput {
-	return o.ApplyT(func(v AzureFunctionActivity) map[string]interface{} { return v.Headers }).(pulumi.MapOutput)
+func (o AzureFunctionActivityOutput) Headers() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureFunctionActivity) interface{} { return v.Headers }).(pulumi.AnyOutput)
 }
 
 // Linked service reference.
@@ -20008,7 +20280,7 @@ type AzureFunctionActivityResponse struct {
 	// Name of the Function that the Azure Function Activity will call. Type: string (or Expression with resultType string)
 	FunctionName interface{} `pulumi:"functionName"`
 	// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
-	Headers map[string]interface{} `pulumi:"headers"`
+	Headers interface{} `pulumi:"headers"`
 	// Linked service reference.
 	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Rest API method for target endpoint.
@@ -20064,8 +20336,8 @@ func (o AzureFunctionActivityResponseOutput) FunctionName() pulumi.AnyOutput {
 }
 
 // Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
-func (o AzureFunctionActivityResponseOutput) Headers() pulumi.MapOutput {
-	return o.ApplyT(func(v AzureFunctionActivityResponse) map[string]interface{} { return v.Headers }).(pulumi.MapOutput)
+func (o AzureFunctionActivityResponseOutput) Headers() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureFunctionActivityResponse) interface{} { return v.Headers }).(pulumi.AnyOutput)
 }
 
 // Linked service reference.
@@ -20895,7 +21167,7 @@ type AzureMLBatchExecutionActivity struct {
 	// Activity description.
 	Description *string `pulumi:"description"`
 	// Key,Value pairs to be passed to the Azure ML Batch Execution Service endpoint. Keys must match the names of web service parameters defined in the published Azure ML web service. Values will be passed in the GlobalParameters property of the Azure ML batch execution request.
-	GlobalParameters map[string]interface{} `pulumi:"globalParameters"`
+	GlobalParameters interface{} `pulumi:"globalParameters"`
 	// Linked service reference.
 	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
 	// Activity name.
@@ -20935,7 +21207,7 @@ type AzureMLBatchExecutionActivityArgs struct {
 	// Activity description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Key,Value pairs to be passed to the Azure ML Batch Execution Service endpoint. Keys must match the names of web service parameters defined in the published Azure ML web service. Values will be passed in the GlobalParameters property of the Azure ML batch execution request.
-	GlobalParameters pulumi.MapInput `pulumi:"globalParameters"`
+	GlobalParameters pulumi.Input `pulumi:"globalParameters"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferencePtrInput `pulumi:"linkedServiceName"`
 	// Activity name.
@@ -20995,8 +21267,8 @@ func (o AzureMLBatchExecutionActivityOutput) Description() pulumi.StringPtrOutpu
 }
 
 // Key,Value pairs to be passed to the Azure ML Batch Execution Service endpoint. Keys must match the names of web service parameters defined in the published Azure ML web service. Values will be passed in the GlobalParameters property of the Azure ML batch execution request.
-func (o AzureMLBatchExecutionActivityOutput) GlobalParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v AzureMLBatchExecutionActivity) map[string]interface{} { return v.GlobalParameters }).(pulumi.MapOutput)
+func (o AzureMLBatchExecutionActivityOutput) GlobalParameters() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureMLBatchExecutionActivity) interface{} { return v.GlobalParameters }).(pulumi.AnyOutput)
 }
 
 // Linked service reference.
@@ -21052,7 +21324,7 @@ type AzureMLBatchExecutionActivityResponse struct {
 	// Activity description.
 	Description *string `pulumi:"description"`
 	// Key,Value pairs to be passed to the Azure ML Batch Execution Service endpoint. Keys must match the names of web service parameters defined in the published Azure ML web service. Values will be passed in the GlobalParameters property of the Azure ML batch execution request.
-	GlobalParameters map[string]interface{} `pulumi:"globalParameters"`
+	GlobalParameters interface{} `pulumi:"globalParameters"`
 	// Linked service reference.
 	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Activity name.
@@ -21100,8 +21372,8 @@ func (o AzureMLBatchExecutionActivityResponseOutput) Description() pulumi.String
 }
 
 // Key,Value pairs to be passed to the Azure ML Batch Execution Service endpoint. Keys must match the names of web service parameters defined in the published Azure ML web service. Values will be passed in the GlobalParameters property of the Azure ML batch execution request.
-func (o AzureMLBatchExecutionActivityResponseOutput) GlobalParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v AzureMLBatchExecutionActivityResponse) map[string]interface{} { return v.GlobalParameters }).(pulumi.MapOutput)
+func (o AzureMLBatchExecutionActivityResponseOutput) GlobalParameters() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzureMLBatchExecutionActivityResponse) interface{} { return v.GlobalParameters }).(pulumi.AnyOutput)
 }
 
 // Linked service reference.
@@ -23069,7 +23341,7 @@ type AzureMariaDBTableDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for dataset.
@@ -23111,8 +23383,8 @@ func (o AzureMariaDBTableDatasetResponseOutput) Description() pulumi.StringPtrOu
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o AzureMariaDBTableDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v AzureMariaDBTableDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o AzureMariaDBTableDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v AzureMariaDBTableDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -23904,7 +24176,7 @@ type AzureMySqlTableDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for dataset.
@@ -23948,8 +24220,8 @@ func (o AzureMySqlTableDatasetResponseOutput) Description() pulumi.StringPtrOutp
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o AzureMySqlTableDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v AzureMySqlTableDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o AzureMySqlTableDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v AzureMySqlTableDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -24665,7 +24937,7 @@ type AzurePostgreSqlSinkResponse struct {
 	// Expected value is 'AzurePostgreSqlSink'.
 	Type string `pulumi:"type"`
 	// Azure Database for PostgreSQL upsert option settings
-	UpsertSettings *AzurePostgreSqlSinkResponseUpsertSettings `pulumi:"upsertSettings"`
+	UpsertSettings *AzurePostgreSqlSinkUpsertSettingsResponse `pulumi:"upsertSettings"`
 	// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
 	WriteBatchSize interface{} `pulumi:"writeBatchSize"`
 	// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
@@ -24721,10 +24993,10 @@ func (o AzurePostgreSqlSinkResponseOutput) Type() pulumi.StringOutput {
 }
 
 // Azure Database for PostgreSQL upsert option settings
-func (o AzurePostgreSqlSinkResponseOutput) UpsertSettings() AzurePostgreSqlSinkResponseUpsertSettingsPtrOutput {
-	return o.ApplyT(func(v AzurePostgreSqlSinkResponse) *AzurePostgreSqlSinkResponseUpsertSettings {
+func (o AzurePostgreSqlSinkResponseOutput) UpsertSettings() AzurePostgreSqlSinkUpsertSettingsResponsePtrOutput {
+	return o.ApplyT(func(v AzurePostgreSqlSinkResponse) *AzurePostgreSqlSinkUpsertSettingsResponse {
 		return v.UpsertSettings
-	}).(AzurePostgreSqlSinkResponseUpsertSettingsPtrOutput)
+	}).(AzurePostgreSqlSinkUpsertSettingsResponsePtrOutput)
 }
 
 // Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
@@ -24740,66 +25012,6 @@ func (o AzurePostgreSqlSinkResponseOutput) WriteBatchTimeout() pulumi.AnyOutput 
 // The write behavior for the operation. Default is Bulk Insert.
 func (o AzurePostgreSqlSinkResponseOutput) WriteMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzurePostgreSqlSinkResponse) *string { return v.WriteMethod }).(pulumi.StringPtrOutput)
-}
-
-// Azure Database for PostgreSQL upsert option settings
-type AzurePostgreSqlSinkResponseUpsertSettings struct {
-	// Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
-	Keys interface{} `pulumi:"keys"`
-}
-
-// Azure Database for PostgreSQL upsert option settings
-type AzurePostgreSqlSinkResponseUpsertSettingsOutput struct{ *pulumi.OutputState }
-
-func (AzurePostgreSqlSinkResponseUpsertSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AzurePostgreSqlSinkResponseUpsertSettings)(nil)).Elem()
-}
-
-func (o AzurePostgreSqlSinkResponseUpsertSettingsOutput) ToAzurePostgreSqlSinkResponseUpsertSettingsOutput() AzurePostgreSqlSinkResponseUpsertSettingsOutput {
-	return o
-}
-
-func (o AzurePostgreSqlSinkResponseUpsertSettingsOutput) ToAzurePostgreSqlSinkResponseUpsertSettingsOutputWithContext(ctx context.Context) AzurePostgreSqlSinkResponseUpsertSettingsOutput {
-	return o
-}
-
-// Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
-func (o AzurePostgreSqlSinkResponseUpsertSettingsOutput) Keys() pulumi.AnyOutput {
-	return o.ApplyT(func(v AzurePostgreSqlSinkResponseUpsertSettings) interface{} { return v.Keys }).(pulumi.AnyOutput)
-}
-
-type AzurePostgreSqlSinkResponseUpsertSettingsPtrOutput struct{ *pulumi.OutputState }
-
-func (AzurePostgreSqlSinkResponseUpsertSettingsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AzurePostgreSqlSinkResponseUpsertSettings)(nil)).Elem()
-}
-
-func (o AzurePostgreSqlSinkResponseUpsertSettingsPtrOutput) ToAzurePostgreSqlSinkResponseUpsertSettingsPtrOutput() AzurePostgreSqlSinkResponseUpsertSettingsPtrOutput {
-	return o
-}
-
-func (o AzurePostgreSqlSinkResponseUpsertSettingsPtrOutput) ToAzurePostgreSqlSinkResponseUpsertSettingsPtrOutputWithContext(ctx context.Context) AzurePostgreSqlSinkResponseUpsertSettingsPtrOutput {
-	return o
-}
-
-func (o AzurePostgreSqlSinkResponseUpsertSettingsPtrOutput) Elem() AzurePostgreSqlSinkResponseUpsertSettingsOutput {
-	return o.ApplyT(func(v *AzurePostgreSqlSinkResponseUpsertSettings) AzurePostgreSqlSinkResponseUpsertSettings {
-		if v != nil {
-			return *v
-		}
-		var ret AzurePostgreSqlSinkResponseUpsertSettings
-		return ret
-	}).(AzurePostgreSqlSinkResponseUpsertSettingsOutput)
-}
-
-// Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
-func (o AzurePostgreSqlSinkResponseUpsertSettingsPtrOutput) Keys() pulumi.AnyOutput {
-	return o.ApplyT(func(v *AzurePostgreSqlSinkResponseUpsertSettings) interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.Keys
-	}).(pulumi.AnyOutput)
 }
 
 // Azure Database for PostgreSQL upsert option settings
@@ -24935,6 +25147,66 @@ func (o AzurePostgreSqlSinkUpsertSettingsPtrOutput) Elem() AzurePostgreSqlSinkUp
 // Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
 func (o AzurePostgreSqlSinkUpsertSettingsPtrOutput) Keys() pulumi.AnyOutput {
 	return o.ApplyT(func(v *AzurePostgreSqlSinkUpsertSettings) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.Keys
+	}).(pulumi.AnyOutput)
+}
+
+// Azure Database for PostgreSQL upsert option settings
+type AzurePostgreSqlSinkUpsertSettingsResponse struct {
+	// Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
+	Keys interface{} `pulumi:"keys"`
+}
+
+// Azure Database for PostgreSQL upsert option settings
+type AzurePostgreSqlSinkUpsertSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (AzurePostgreSqlSinkUpsertSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AzurePostgreSqlSinkUpsertSettingsResponse)(nil)).Elem()
+}
+
+func (o AzurePostgreSqlSinkUpsertSettingsResponseOutput) ToAzurePostgreSqlSinkUpsertSettingsResponseOutput() AzurePostgreSqlSinkUpsertSettingsResponseOutput {
+	return o
+}
+
+func (o AzurePostgreSqlSinkUpsertSettingsResponseOutput) ToAzurePostgreSqlSinkUpsertSettingsResponseOutputWithContext(ctx context.Context) AzurePostgreSqlSinkUpsertSettingsResponseOutput {
+	return o
+}
+
+// Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
+func (o AzurePostgreSqlSinkUpsertSettingsResponseOutput) Keys() pulumi.AnyOutput {
+	return o.ApplyT(func(v AzurePostgreSqlSinkUpsertSettingsResponse) interface{} { return v.Keys }).(pulumi.AnyOutput)
+}
+
+type AzurePostgreSqlSinkUpsertSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AzurePostgreSqlSinkUpsertSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AzurePostgreSqlSinkUpsertSettingsResponse)(nil)).Elem()
+}
+
+func (o AzurePostgreSqlSinkUpsertSettingsResponsePtrOutput) ToAzurePostgreSqlSinkUpsertSettingsResponsePtrOutput() AzurePostgreSqlSinkUpsertSettingsResponsePtrOutput {
+	return o
+}
+
+func (o AzurePostgreSqlSinkUpsertSettingsResponsePtrOutput) ToAzurePostgreSqlSinkUpsertSettingsResponsePtrOutputWithContext(ctx context.Context) AzurePostgreSqlSinkUpsertSettingsResponsePtrOutput {
+	return o
+}
+
+func (o AzurePostgreSqlSinkUpsertSettingsResponsePtrOutput) Elem() AzurePostgreSqlSinkUpsertSettingsResponseOutput {
+	return o.ApplyT(func(v *AzurePostgreSqlSinkUpsertSettingsResponse) AzurePostgreSqlSinkUpsertSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AzurePostgreSqlSinkUpsertSettingsResponse
+		return ret
+	}).(AzurePostgreSqlSinkUpsertSettingsResponseOutput)
+}
+
+// Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
+func (o AzurePostgreSqlSinkUpsertSettingsResponsePtrOutput) Keys() pulumi.AnyOutput {
+	return o.ApplyT(func(v *AzurePostgreSqlSinkUpsertSettingsResponse) interface{} {
 		if v == nil {
 			return nil
 		}
@@ -25286,7 +25558,7 @@ type AzurePostgreSqlTableDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for dataset.
@@ -25330,8 +25602,8 @@ func (o AzurePostgreSqlTableDatasetResponseOutput) Description() pulumi.StringPt
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o AzurePostgreSqlTableDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v AzurePostgreSqlTableDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o AzurePostgreSqlTableDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v AzurePostgreSqlTableDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -25691,7 +25963,7 @@ type AzureSearchIndexDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// The name of the Azure Search Index. Type: string (or Expression with resultType string).
 	IndexName interface{} `pulumi:"indexName"`
 	// Linked service reference.
@@ -25733,8 +26005,8 @@ func (o AzureSearchIndexDatasetResponseOutput) Description() pulumi.StringPtrOut
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o AzureSearchIndexDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v AzureSearchIndexDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o AzureSearchIndexDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v AzureSearchIndexDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // The name of the Azure Search Index. Type: string (or Expression with resultType string).
@@ -26990,7 +27262,7 @@ type AzureSqlDWTableDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for dataset.
@@ -27034,8 +27306,8 @@ func (o AzureSqlDWTableDatasetResponseOutput) Description() pulumi.StringPtrOutp
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o AzureSqlDWTableDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v AzureSqlDWTableDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o AzureSqlDWTableDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v AzureSqlDWTableDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -28584,7 +28856,7 @@ type AzureSqlMITableDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for dataset.
@@ -28628,8 +28900,8 @@ func (o AzureSqlMITableDatasetResponseOutput) Description() pulumi.StringPtrOutp
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o AzureSqlMITableDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v AzureSqlMITableDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o AzureSqlMITableDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v AzureSqlMITableDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -29434,7 +29706,7 @@ type AzureSqlTableDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for dataset.
@@ -29478,8 +29750,8 @@ func (o AzureSqlTableDatasetResponseOutput) Description() pulumi.StringPtrOutput
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o AzureSqlTableDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v AzureSqlTableDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o AzureSqlTableDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v AzureSqlTableDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -30121,7 +30393,7 @@ type AzureTableDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for dataset.
@@ -30163,8 +30435,8 @@ func (o AzureTableDatasetResponseOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o AzureTableDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v AzureTableDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o AzureTableDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v AzureTableDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -31328,7 +31600,7 @@ type BinaryDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// The location of the Binary storage.
@@ -31375,8 +31647,8 @@ func (o BinaryDatasetResponseOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o BinaryDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v BinaryDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o BinaryDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v BinaryDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -33725,7 +33997,7 @@ type CassandraTableDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// The keyspace of the Cassandra database. Type: string (or Expression with resultType string).
 	Keyspace interface{} `pulumi:"keyspace"`
 	// Linked service reference.
@@ -33769,8 +34041,8 @@ func (o CassandraTableDatasetResponseOutput) Description() pulumi.StringPtrOutpu
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o CassandraTableDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v CassandraTableDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o CassandraTableDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v CassandraTableDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // The keyspace of the Cassandra database. Type: string (or Expression with resultType string).
@@ -34123,58 +34395,58 @@ func (o ChangeDataCaptureFolderPtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 // The folder that this CDC is in. If not specified, CDC will appear at the root level.
-type ChangeDataCaptureResponseFolder struct {
+type ChangeDataCaptureFolderResponse struct {
 	// The name of the folder that this CDC is in.
 	Name *string `pulumi:"name"`
 }
 
 // The folder that this CDC is in. If not specified, CDC will appear at the root level.
-type ChangeDataCaptureResponseFolderOutput struct{ *pulumi.OutputState }
+type ChangeDataCaptureFolderResponseOutput struct{ *pulumi.OutputState }
 
-func (ChangeDataCaptureResponseFolderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ChangeDataCaptureResponseFolder)(nil)).Elem()
+func (ChangeDataCaptureFolderResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChangeDataCaptureFolderResponse)(nil)).Elem()
 }
 
-func (o ChangeDataCaptureResponseFolderOutput) ToChangeDataCaptureResponseFolderOutput() ChangeDataCaptureResponseFolderOutput {
+func (o ChangeDataCaptureFolderResponseOutput) ToChangeDataCaptureFolderResponseOutput() ChangeDataCaptureFolderResponseOutput {
 	return o
 }
 
-func (o ChangeDataCaptureResponseFolderOutput) ToChangeDataCaptureResponseFolderOutputWithContext(ctx context.Context) ChangeDataCaptureResponseFolderOutput {
+func (o ChangeDataCaptureFolderResponseOutput) ToChangeDataCaptureFolderResponseOutputWithContext(ctx context.Context) ChangeDataCaptureFolderResponseOutput {
 	return o
 }
 
 // The name of the folder that this CDC is in.
-func (o ChangeDataCaptureResponseFolderOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ChangeDataCaptureResponseFolder) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o ChangeDataCaptureFolderResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ChangeDataCaptureFolderResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-type ChangeDataCaptureResponseFolderPtrOutput struct{ *pulumi.OutputState }
+type ChangeDataCaptureFolderResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (ChangeDataCaptureResponseFolderPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ChangeDataCaptureResponseFolder)(nil)).Elem()
+func (ChangeDataCaptureFolderResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ChangeDataCaptureFolderResponse)(nil)).Elem()
 }
 
-func (o ChangeDataCaptureResponseFolderPtrOutput) ToChangeDataCaptureResponseFolderPtrOutput() ChangeDataCaptureResponseFolderPtrOutput {
+func (o ChangeDataCaptureFolderResponsePtrOutput) ToChangeDataCaptureFolderResponsePtrOutput() ChangeDataCaptureFolderResponsePtrOutput {
 	return o
 }
 
-func (o ChangeDataCaptureResponseFolderPtrOutput) ToChangeDataCaptureResponseFolderPtrOutputWithContext(ctx context.Context) ChangeDataCaptureResponseFolderPtrOutput {
+func (o ChangeDataCaptureFolderResponsePtrOutput) ToChangeDataCaptureFolderResponsePtrOutputWithContext(ctx context.Context) ChangeDataCaptureFolderResponsePtrOutput {
 	return o
 }
 
-func (o ChangeDataCaptureResponseFolderPtrOutput) Elem() ChangeDataCaptureResponseFolderOutput {
-	return o.ApplyT(func(v *ChangeDataCaptureResponseFolder) ChangeDataCaptureResponseFolder {
+func (o ChangeDataCaptureFolderResponsePtrOutput) Elem() ChangeDataCaptureFolderResponseOutput {
+	return o.ApplyT(func(v *ChangeDataCaptureFolderResponse) ChangeDataCaptureFolderResponse {
 		if v != nil {
 			return *v
 		}
-		var ret ChangeDataCaptureResponseFolder
+		var ret ChangeDataCaptureFolderResponse
 		return ret
-	}).(ChangeDataCaptureResponseFolderOutput)
+	}).(ChangeDataCaptureFolderResponseOutput)
 }
 
 // The name of the folder that this CDC is in.
-func (o ChangeDataCaptureResponseFolderPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ChangeDataCaptureResponseFolder) *string {
+func (o ChangeDataCaptureFolderResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ChangeDataCaptureFolderResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -34455,7 +34727,7 @@ type CommonDataServiceForAppsEntityDatasetResponse struct {
 	// The logical name of the entity. Type: string (or Expression with resultType string).
 	EntityName interface{} `pulumi:"entityName"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for dataset.
@@ -34500,8 +34772,8 @@ func (o CommonDataServiceForAppsEntityDatasetResponseOutput) EntityName() pulumi
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o CommonDataServiceForAppsEntityDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v CommonDataServiceForAppsEntityDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o CommonDataServiceForAppsEntityDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v CommonDataServiceForAppsEntityDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -35907,7 +36179,7 @@ type ConcurObjectDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for dataset.
@@ -35949,8 +36221,8 @@ func (o ConcurObjectDatasetResponseOutput) Description() pulumi.StringPtrOutput 
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o ConcurObjectDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v ConcurObjectDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o ConcurObjectDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v ConcurObjectDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -38187,7 +38459,7 @@ type CosmosDbMongoDbApiCollectionDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for dataset.
@@ -38232,8 +38504,8 @@ func (o CosmosDbMongoDbApiCollectionDatasetResponseOutput) Description() pulumi.
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o CosmosDbMongoDbApiCollectionDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v CosmosDbMongoDbApiCollectionDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o CosmosDbMongoDbApiCollectionDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v CosmosDbMongoDbApiCollectionDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -39053,7 +39325,7 @@ type CosmosDbSqlApiCollectionDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for dataset.
@@ -39098,8 +39370,8 @@ func (o CosmosDbSqlApiCollectionDatasetResponseOutput) Description() pulumi.Stri
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o CosmosDbSqlApiCollectionDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v CosmosDbSqlApiCollectionDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o CosmosDbSqlApiCollectionDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v CosmosDbSqlApiCollectionDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -40109,7 +40381,7 @@ type CouchbaseTableDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for dataset.
@@ -40151,8 +40423,8 @@ func (o CouchbaseTableDatasetResponseOutput) Description() pulumi.StringPtrOutpu
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o CouchbaseTableDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v CouchbaseTableDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o CouchbaseTableDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v CouchbaseTableDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -40433,7 +40705,7 @@ type CustomActivity struct {
 	// Activity description.
 	Description *string `pulumi:"description"`
 	// User defined property bag. There is no restriction on the keys or values that can be used. The user specified custom activity has the full responsibility to consume and interpret the content defined.
-	ExtendedProperties map[string]interface{} `pulumi:"extendedProperties"`
+	ExtendedProperties interface{} `pulumi:"extendedProperties"`
 	// Folder path for resource files Type: string (or Expression with resultType string).
 	FolderPath interface{} `pulumi:"folderPath"`
 	// Linked service reference.
@@ -40481,7 +40753,7 @@ type CustomActivityArgs struct {
 	// Activity description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// User defined property bag. There is no restriction on the keys or values that can be used. The user specified custom activity has the full responsibility to consume and interpret the content defined.
-	ExtendedProperties pulumi.MapInput `pulumi:"extendedProperties"`
+	ExtendedProperties pulumi.Input `pulumi:"extendedProperties"`
 	// Folder path for resource files Type: string (or Expression with resultType string).
 	FolderPath pulumi.Input `pulumi:"folderPath"`
 	// Linked service reference.
@@ -40555,8 +40827,8 @@ func (o CustomActivityOutput) Description() pulumi.StringPtrOutput {
 }
 
 // User defined property bag. There is no restriction on the keys or values that can be used. The user specified custom activity has the full responsibility to consume and interpret the content defined.
-func (o CustomActivityOutput) ExtendedProperties() pulumi.MapOutput {
-	return o.ApplyT(func(v CustomActivity) map[string]interface{} { return v.ExtendedProperties }).(pulumi.MapOutput)
+func (o CustomActivityOutput) ExtendedProperties() pulumi.AnyOutput {
+	return o.ApplyT(func(v CustomActivity) interface{} { return v.ExtendedProperties }).(pulumi.AnyOutput)
 }
 
 // Folder path for resource files Type: string (or Expression with resultType string).
@@ -40864,7 +41136,7 @@ type CustomActivityResponse struct {
 	// Activity description.
 	Description *string `pulumi:"description"`
 	// User defined property bag. There is no restriction on the keys or values that can be used. The user specified custom activity has the full responsibility to consume and interpret the content defined.
-	ExtendedProperties map[string]interface{} `pulumi:"extendedProperties"`
+	ExtendedProperties interface{} `pulumi:"extendedProperties"`
 	// Folder path for resource files Type: string (or Expression with resultType string).
 	FolderPath interface{} `pulumi:"folderPath"`
 	// Linked service reference.
@@ -40926,8 +41198,8 @@ func (o CustomActivityResponseOutput) Description() pulumi.StringPtrOutput {
 }
 
 // User defined property bag. There is no restriction on the keys or values that can be used. The user specified custom activity has the full responsibility to consume and interpret the content defined.
-func (o CustomActivityResponseOutput) ExtendedProperties() pulumi.MapOutput {
-	return o.ApplyT(func(v CustomActivityResponse) map[string]interface{} { return v.ExtendedProperties }).(pulumi.MapOutput)
+func (o CustomActivityResponseOutput) ExtendedProperties() pulumi.AnyOutput {
+	return o.ApplyT(func(v CustomActivityResponse) interface{} { return v.ExtendedProperties }).(pulumi.AnyOutput)
 }
 
 // Folder path for resource files Type: string (or Expression with resultType string).
@@ -41284,7 +41556,7 @@ type CustomDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for dataset.
@@ -41324,8 +41596,8 @@ func (o CustomDatasetResponseOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o CustomDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v CustomDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o CustomDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v CustomDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -42097,12 +42369,72 @@ func (o DataFlowFolderPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The folder that this data flow is in. If not specified, Data flow will appear at the root level.
+type DataFlowFolderResponse struct {
+	// The name of the folder that this data flow is in.
+	Name *string `pulumi:"name"`
+}
+
+// The folder that this data flow is in. If not specified, Data flow will appear at the root level.
+type DataFlowFolderResponseOutput struct{ *pulumi.OutputState }
+
+func (DataFlowFolderResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataFlowFolderResponse)(nil)).Elem()
+}
+
+func (o DataFlowFolderResponseOutput) ToDataFlowFolderResponseOutput() DataFlowFolderResponseOutput {
+	return o
+}
+
+func (o DataFlowFolderResponseOutput) ToDataFlowFolderResponseOutputWithContext(ctx context.Context) DataFlowFolderResponseOutput {
+	return o
+}
+
+// The name of the folder that this data flow is in.
+func (o DataFlowFolderResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataFlowFolderResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DataFlowFolderResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DataFlowFolderResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataFlowFolderResponse)(nil)).Elem()
+}
+
+func (o DataFlowFolderResponsePtrOutput) ToDataFlowFolderResponsePtrOutput() DataFlowFolderResponsePtrOutput {
+	return o
+}
+
+func (o DataFlowFolderResponsePtrOutput) ToDataFlowFolderResponsePtrOutputWithContext(ctx context.Context) DataFlowFolderResponsePtrOutput {
+	return o
+}
+
+func (o DataFlowFolderResponsePtrOutput) Elem() DataFlowFolderResponseOutput {
+	return o.ApplyT(func(v *DataFlowFolderResponse) DataFlowFolderResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DataFlowFolderResponse
+		return ret
+	}).(DataFlowFolderResponseOutput)
+}
+
+// The name of the folder that this data flow is in.
+func (o DataFlowFolderResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataFlowFolderResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 // Data flow reference type.
 type DataFlowReference struct {
 	// Reference data flow parameters from dataset.
 	DatasetParameters interface{} `pulumi:"datasetParameters"`
 	// Data flow parameters
-	Parameters map[string]interface{} `pulumi:"parameters"`
+	Parameters interface{} `pulumi:"parameters"`
 	// Reference data flow name.
 	ReferenceName string `pulumi:"referenceName"`
 	// Data flow reference type.
@@ -42125,7 +42457,7 @@ type DataFlowReferenceArgs struct {
 	// Reference data flow parameters from dataset.
 	DatasetParameters pulumi.Input `pulumi:"datasetParameters"`
 	// Data flow parameters
-	Parameters pulumi.MapInput `pulumi:"parameters"`
+	Parameters pulumi.Input `pulumi:"parameters"`
 	// Reference data flow name.
 	ReferenceName pulumi.StringInput `pulumi:"referenceName"`
 	// Data flow reference type.
@@ -42216,8 +42548,8 @@ func (o DataFlowReferenceOutput) DatasetParameters() pulumi.AnyOutput {
 }
 
 // Data flow parameters
-func (o DataFlowReferenceOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v DataFlowReference) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
+func (o DataFlowReferenceOutput) Parameters() pulumi.AnyOutput {
+	return o.ApplyT(func(v DataFlowReference) interface{} { return v.Parameters }).(pulumi.AnyOutput)
 }
 
 // Reference data flow name.
@@ -42265,13 +42597,13 @@ func (o DataFlowReferencePtrOutput) DatasetParameters() pulumi.AnyOutput {
 }
 
 // Data flow parameters
-func (o DataFlowReferencePtrOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *DataFlowReference) map[string]interface{} {
+func (o DataFlowReferencePtrOutput) Parameters() pulumi.AnyOutput {
+	return o.ApplyT(func(v *DataFlowReference) interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.Parameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.AnyOutput)
 }
 
 // Reference data flow name.
@@ -42299,7 +42631,7 @@ type DataFlowReferenceResponse struct {
 	// Reference data flow parameters from dataset.
 	DatasetParameters interface{} `pulumi:"datasetParameters"`
 	// Data flow parameters
-	Parameters map[string]interface{} `pulumi:"parameters"`
+	Parameters interface{} `pulumi:"parameters"`
 	// Reference data flow name.
 	ReferenceName string `pulumi:"referenceName"`
 	// Data flow reference type.
@@ -42327,8 +42659,8 @@ func (o DataFlowReferenceResponseOutput) DatasetParameters() pulumi.AnyOutput {
 }
 
 // Data flow parameters
-func (o DataFlowReferenceResponseOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v DataFlowReferenceResponse) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
+func (o DataFlowReferenceResponseOutput) Parameters() pulumi.AnyOutput {
+	return o.ApplyT(func(v DataFlowReferenceResponse) interface{} { return v.Parameters }).(pulumi.AnyOutput)
 }
 
 // Reference data flow name.
@@ -42376,13 +42708,13 @@ func (o DataFlowReferenceResponsePtrOutput) DatasetParameters() pulumi.AnyOutput
 }
 
 // Data flow parameters
-func (o DataFlowReferenceResponsePtrOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *DataFlowReferenceResponse) map[string]interface{} {
+func (o DataFlowReferenceResponsePtrOutput) Parameters() pulumi.AnyOutput {
+	return o.ApplyT(func(v *DataFlowReferenceResponse) interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.Parameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.AnyOutput)
 }
 
 // Reference data flow name.
@@ -42402,66 +42734,6 @@ func (o DataFlowReferenceResponsePtrOutput) Type() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// The folder that this data flow is in. If not specified, Data flow will appear at the root level.
-type DataFlowResponseFolder struct {
-	// The name of the folder that this data flow is in.
-	Name *string `pulumi:"name"`
-}
-
-// The folder that this data flow is in. If not specified, Data flow will appear at the root level.
-type DataFlowResponseFolderOutput struct{ *pulumi.OutputState }
-
-func (DataFlowResponseFolderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataFlowResponseFolder)(nil)).Elem()
-}
-
-func (o DataFlowResponseFolderOutput) ToDataFlowResponseFolderOutput() DataFlowResponseFolderOutput {
-	return o
-}
-
-func (o DataFlowResponseFolderOutput) ToDataFlowResponseFolderOutputWithContext(ctx context.Context) DataFlowResponseFolderOutput {
-	return o
-}
-
-// The name of the folder that this data flow is in.
-func (o DataFlowResponseFolderOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataFlowResponseFolder) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-type DataFlowResponseFolderPtrOutput struct{ *pulumi.OutputState }
-
-func (DataFlowResponseFolderPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DataFlowResponseFolder)(nil)).Elem()
-}
-
-func (o DataFlowResponseFolderPtrOutput) ToDataFlowResponseFolderPtrOutput() DataFlowResponseFolderPtrOutput {
-	return o
-}
-
-func (o DataFlowResponseFolderPtrOutput) ToDataFlowResponseFolderPtrOutputWithContext(ctx context.Context) DataFlowResponseFolderPtrOutput {
-	return o
-}
-
-func (o DataFlowResponseFolderPtrOutput) Elem() DataFlowResponseFolderOutput {
-	return o.ApplyT(func(v *DataFlowResponseFolder) DataFlowResponseFolder {
-		if v != nil {
-			return *v
-		}
-		var ret DataFlowResponseFolder
-		return ret
-	}).(DataFlowResponseFolderOutput)
-}
-
-// The name of the folder that this data flow is in.
-func (o DataFlowResponseFolderPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataFlowResponseFolder) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -43186,7 +43458,7 @@ type DataLakeAnalyticsUSQLActivity struct {
 	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
 	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Parameters for U-SQL job request.
-	Parameters map[string]interface{} `pulumi:"parameters"`
+	Parameters interface{} `pulumi:"parameters"`
 	// Activity policy.
 	Policy *ActivityPolicy `pulumi:"policy"`
 	// Determines which jobs out of all that are queued should be selected to run first. The lower the number, the higher the priority. Default value is 1000. Type: integer (or Expression with resultType integer), minimum: 1.
@@ -43234,7 +43506,7 @@ type DataLakeAnalyticsUSQLActivityArgs struct {
 	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
 	OnInactiveMarkAs pulumi.StringPtrInput `pulumi:"onInactiveMarkAs"`
 	// Parameters for U-SQL job request.
-	Parameters pulumi.MapInput `pulumi:"parameters"`
+	Parameters pulumi.Input `pulumi:"parameters"`
 	// Activity policy.
 	Policy ActivityPolicyPtrInput `pulumi:"policy"`
 	// Determines which jobs out of all that are queued should be selected to run first. The lower the number, the higher the priority. Default value is 1000. Type: integer (or Expression with resultType integer), minimum: 1.
@@ -43317,8 +43589,8 @@ func (o DataLakeAnalyticsUSQLActivityOutput) OnInactiveMarkAs() pulumi.StringPtr
 }
 
 // Parameters for U-SQL job request.
-func (o DataLakeAnalyticsUSQLActivityOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v DataLakeAnalyticsUSQLActivity) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
+func (o DataLakeAnalyticsUSQLActivityOutput) Parameters() pulumi.AnyOutput {
+	return o.ApplyT(func(v DataLakeAnalyticsUSQLActivity) interface{} { return v.Parameters }).(pulumi.AnyOutput)
 }
 
 // Activity policy.
@@ -43379,7 +43651,7 @@ type DataLakeAnalyticsUSQLActivityResponse struct {
 	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
 	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Parameters for U-SQL job request.
-	Parameters map[string]interface{} `pulumi:"parameters"`
+	Parameters interface{} `pulumi:"parameters"`
 	// Activity policy.
 	Policy *ActivityPolicyResponse `pulumi:"policy"`
 	// Determines which jobs out of all that are queued should be selected to run first. The lower the number, the higher the priority. Default value is 1000. Type: integer (or Expression with resultType integer), minimum: 1.
@@ -43452,8 +43724,8 @@ func (o DataLakeAnalyticsUSQLActivityResponseOutput) OnInactiveMarkAs() pulumi.S
 }
 
 // Parameters for U-SQL job request.
-func (o DataLakeAnalyticsUSQLActivityResponseOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v DataLakeAnalyticsUSQLActivityResponse) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
+func (o DataLakeAnalyticsUSQLActivityResponseOutput) Parameters() pulumi.AnyOutput {
+	return o.ApplyT(func(v DataLakeAnalyticsUSQLActivityResponse) interface{} { return v.Parameters }).(pulumi.AnyOutput)
 }
 
 // Activity policy.
@@ -43711,16 +43983,262 @@ func (o DataMapperMappingResponseArrayOutput) Index(i pulumi.IntInput) DataMappe
 	}).(DataMapperMappingResponseOutput)
 }
 
+// Databricks Job activity.
+type DatabricksJobActivity struct {
+	// Activity depends on condition.
+	DependsOn []ActivityDependency `pulumi:"dependsOn"`
+	// Activity description.
+	Description *string `pulumi:"description"`
+	// The Id of the Databricks Job to be executed. Type: string (or Expression with resultType string).
+	JobId interface{} `pulumi:"jobId"`
+	// Job parameters to be used for each run of this job. If the job takes a parameter that is not specified, the default value from the job will be used.
+	JobParameters interface{} `pulumi:"jobParameters"`
+	// Linked service reference.
+	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
+	// Activity name.
+	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
+	// Activity policy.
+	Policy *ActivityPolicy `pulumi:"policy"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
+	// Type of activity.
+	// Expected value is 'DatabricksJob'.
+	Type string `pulumi:"type"`
+	// Activity user properties.
+	UserProperties []UserProperty `pulumi:"userProperties"`
+}
+
+// DatabricksJobActivityInput is an input type that accepts DatabricksJobActivityArgs and DatabricksJobActivityOutput values.
+// You can construct a concrete instance of `DatabricksJobActivityInput` via:
+//
+//	DatabricksJobActivityArgs{...}
+type DatabricksJobActivityInput interface {
+	pulumi.Input
+
+	ToDatabricksJobActivityOutput() DatabricksJobActivityOutput
+	ToDatabricksJobActivityOutputWithContext(context.Context) DatabricksJobActivityOutput
+}
+
+// Databricks Job activity.
+type DatabricksJobActivityArgs struct {
+	// Activity depends on condition.
+	DependsOn ActivityDependencyArrayInput `pulumi:"dependsOn"`
+	// Activity description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The Id of the Databricks Job to be executed. Type: string (or Expression with resultType string).
+	JobId pulumi.Input `pulumi:"jobId"`
+	// Job parameters to be used for each run of this job. If the job takes a parameter that is not specified, the default value from the job will be used.
+	JobParameters pulumi.Input `pulumi:"jobParameters"`
+	// Linked service reference.
+	LinkedServiceName LinkedServiceReferencePtrInput `pulumi:"linkedServiceName"`
+	// Activity name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs pulumi.StringPtrInput `pulumi:"onInactiveMarkAs"`
+	// Activity policy.
+	Policy ActivityPolicyPtrInput `pulumi:"policy"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// Type of activity.
+	// Expected value is 'DatabricksJob'.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Activity user properties.
+	UserProperties UserPropertyArrayInput `pulumi:"userProperties"`
+}
+
+func (DatabricksJobActivityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabricksJobActivity)(nil)).Elem()
+}
+
+func (i DatabricksJobActivityArgs) ToDatabricksJobActivityOutput() DatabricksJobActivityOutput {
+	return i.ToDatabricksJobActivityOutputWithContext(context.Background())
+}
+
+func (i DatabricksJobActivityArgs) ToDatabricksJobActivityOutputWithContext(ctx context.Context) DatabricksJobActivityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabricksJobActivityOutput)
+}
+
+// Databricks Job activity.
+type DatabricksJobActivityOutput struct{ *pulumi.OutputState }
+
+func (DatabricksJobActivityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabricksJobActivity)(nil)).Elem()
+}
+
+func (o DatabricksJobActivityOutput) ToDatabricksJobActivityOutput() DatabricksJobActivityOutput {
+	return o
+}
+
+func (o DatabricksJobActivityOutput) ToDatabricksJobActivityOutputWithContext(ctx context.Context) DatabricksJobActivityOutput {
+	return o
+}
+
+// Activity depends on condition.
+func (o DatabricksJobActivityOutput) DependsOn() ActivityDependencyArrayOutput {
+	return o.ApplyT(func(v DatabricksJobActivity) []ActivityDependency { return v.DependsOn }).(ActivityDependencyArrayOutput)
+}
+
+// Activity description.
+func (o DatabricksJobActivityOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabricksJobActivity) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Id of the Databricks Job to be executed. Type: string (or Expression with resultType string).
+func (o DatabricksJobActivityOutput) JobId() pulumi.AnyOutput {
+	return o.ApplyT(func(v DatabricksJobActivity) interface{} { return v.JobId }).(pulumi.AnyOutput)
+}
+
+// Job parameters to be used for each run of this job. If the job takes a parameter that is not specified, the default value from the job will be used.
+func (o DatabricksJobActivityOutput) JobParameters() pulumi.AnyOutput {
+	return o.ApplyT(func(v DatabricksJobActivity) interface{} { return v.JobParameters }).(pulumi.AnyOutput)
+}
+
+// Linked service reference.
+func (o DatabricksJobActivityOutput) LinkedServiceName() LinkedServiceReferencePtrOutput {
+	return o.ApplyT(func(v DatabricksJobActivity) *LinkedServiceReference { return v.LinkedServiceName }).(LinkedServiceReferencePtrOutput)
+}
+
+// Activity name.
+func (o DatabricksJobActivityOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabricksJobActivity) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+func (o DatabricksJobActivityOutput) OnInactiveMarkAs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabricksJobActivity) *string { return v.OnInactiveMarkAs }).(pulumi.StringPtrOutput)
+}
+
+// Activity policy.
+func (o DatabricksJobActivityOutput) Policy() ActivityPolicyPtrOutput {
+	return o.ApplyT(func(v DatabricksJobActivity) *ActivityPolicy { return v.Policy }).(ActivityPolicyPtrOutput)
+}
+
+// Activity state. This is an optional property and if not provided, the state will be Active by default.
+func (o DatabricksJobActivityOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabricksJobActivity) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// Type of activity.
+// Expected value is 'DatabricksJob'.
+func (o DatabricksJobActivityOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabricksJobActivity) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Activity user properties.
+func (o DatabricksJobActivityOutput) UserProperties() UserPropertyArrayOutput {
+	return o.ApplyT(func(v DatabricksJobActivity) []UserProperty { return v.UserProperties }).(UserPropertyArrayOutput)
+}
+
+// Databricks Job activity.
+type DatabricksJobActivityResponse struct {
+	// Activity depends on condition.
+	DependsOn []ActivityDependencyResponse `pulumi:"dependsOn"`
+	// Activity description.
+	Description *string `pulumi:"description"`
+	// The Id of the Databricks Job to be executed. Type: string (or Expression with resultType string).
+	JobId interface{} `pulumi:"jobId"`
+	// Job parameters to be used for each run of this job. If the job takes a parameter that is not specified, the default value from the job will be used.
+	JobParameters interface{} `pulumi:"jobParameters"`
+	// Linked service reference.
+	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
+	// Activity name.
+	Name string `pulumi:"name"`
+	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
+	// Activity policy.
+	Policy *ActivityPolicyResponse `pulumi:"policy"`
+	// Activity state. This is an optional property and if not provided, the state will be Active by default.
+	State *string `pulumi:"state"`
+	// Type of activity.
+	// Expected value is 'DatabricksJob'.
+	Type string `pulumi:"type"`
+	// Activity user properties.
+	UserProperties []UserPropertyResponse `pulumi:"userProperties"`
+}
+
+// Databricks Job activity.
+type DatabricksJobActivityResponseOutput struct{ *pulumi.OutputState }
+
+func (DatabricksJobActivityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabricksJobActivityResponse)(nil)).Elem()
+}
+
+func (o DatabricksJobActivityResponseOutput) ToDatabricksJobActivityResponseOutput() DatabricksJobActivityResponseOutput {
+	return o
+}
+
+func (o DatabricksJobActivityResponseOutput) ToDatabricksJobActivityResponseOutputWithContext(ctx context.Context) DatabricksJobActivityResponseOutput {
+	return o
+}
+
+// Activity depends on condition.
+func (o DatabricksJobActivityResponseOutput) DependsOn() ActivityDependencyResponseArrayOutput {
+	return o.ApplyT(func(v DatabricksJobActivityResponse) []ActivityDependencyResponse { return v.DependsOn }).(ActivityDependencyResponseArrayOutput)
+}
+
+// Activity description.
+func (o DatabricksJobActivityResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabricksJobActivityResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Id of the Databricks Job to be executed. Type: string (or Expression with resultType string).
+func (o DatabricksJobActivityResponseOutput) JobId() pulumi.AnyOutput {
+	return o.ApplyT(func(v DatabricksJobActivityResponse) interface{} { return v.JobId }).(pulumi.AnyOutput)
+}
+
+// Job parameters to be used for each run of this job. If the job takes a parameter that is not specified, the default value from the job will be used.
+func (o DatabricksJobActivityResponseOutput) JobParameters() pulumi.AnyOutput {
+	return o.ApplyT(func(v DatabricksJobActivityResponse) interface{} { return v.JobParameters }).(pulumi.AnyOutput)
+}
+
+// Linked service reference.
+func (o DatabricksJobActivityResponseOutput) LinkedServiceName() LinkedServiceReferenceResponsePtrOutput {
+	return o.ApplyT(func(v DatabricksJobActivityResponse) *LinkedServiceReferenceResponse { return v.LinkedServiceName }).(LinkedServiceReferenceResponsePtrOutput)
+}
+
+// Activity name.
+func (o DatabricksJobActivityResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabricksJobActivityResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
+func (o DatabricksJobActivityResponseOutput) OnInactiveMarkAs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabricksJobActivityResponse) *string { return v.OnInactiveMarkAs }).(pulumi.StringPtrOutput)
+}
+
+// Activity policy.
+func (o DatabricksJobActivityResponseOutput) Policy() ActivityPolicyResponsePtrOutput {
+	return o.ApplyT(func(v DatabricksJobActivityResponse) *ActivityPolicyResponse { return v.Policy }).(ActivityPolicyResponsePtrOutput)
+}
+
+// Activity state. This is an optional property and if not provided, the state will be Active by default.
+func (o DatabricksJobActivityResponseOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabricksJobActivityResponse) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// Type of activity.
+// Expected value is 'DatabricksJob'.
+func (o DatabricksJobActivityResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabricksJobActivityResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Activity user properties.
+func (o DatabricksJobActivityResponseOutput) UserProperties() UserPropertyResponseArrayOutput {
+	return o.ApplyT(func(v DatabricksJobActivityResponse) []UserPropertyResponse { return v.UserProperties }).(UserPropertyResponseArrayOutput)
+}
+
 // DatabricksNotebook activity.
 type DatabricksNotebookActivity struct {
 	// Base parameters to be used for each run of this job.If the notebook takes a parameter that is not specified, the default value from the notebook will be used.
-	BaseParameters map[string]interface{} `pulumi:"baseParameters"`
+	BaseParameters interface{} `pulumi:"baseParameters"`
 	// Activity depends on condition.
 	DependsOn []ActivityDependency `pulumi:"dependsOn"`
 	// Activity description.
 	Description *string `pulumi:"description"`
 	// A list of libraries to be installed on the cluster that will execute the job.
-	Libraries []map[string]interface{} `pulumi:"libraries"`
+	Libraries []interface{} `pulumi:"libraries"`
 	// Linked service reference.
 	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
 	// Activity name.
@@ -43754,13 +44272,13 @@ type DatabricksNotebookActivityInput interface {
 // DatabricksNotebook activity.
 type DatabricksNotebookActivityArgs struct {
 	// Base parameters to be used for each run of this job.If the notebook takes a parameter that is not specified, the default value from the notebook will be used.
-	BaseParameters pulumi.MapInput `pulumi:"baseParameters"`
+	BaseParameters pulumi.Input `pulumi:"baseParameters"`
 	// Activity depends on condition.
 	DependsOn ActivityDependencyArrayInput `pulumi:"dependsOn"`
 	// Activity description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// A list of libraries to be installed on the cluster that will execute the job.
-	Libraries pulumi.MapArrayInput `pulumi:"libraries"`
+	Libraries pulumi.ArrayInput `pulumi:"libraries"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferencePtrInput `pulumi:"linkedServiceName"`
 	// Activity name.
@@ -43808,8 +44326,8 @@ func (o DatabricksNotebookActivityOutput) ToDatabricksNotebookActivityOutputWith
 }
 
 // Base parameters to be used for each run of this job.If the notebook takes a parameter that is not specified, the default value from the notebook will be used.
-func (o DatabricksNotebookActivityOutput) BaseParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v DatabricksNotebookActivity) map[string]interface{} { return v.BaseParameters }).(pulumi.MapOutput)
+func (o DatabricksNotebookActivityOutput) BaseParameters() pulumi.AnyOutput {
+	return o.ApplyT(func(v DatabricksNotebookActivity) interface{} { return v.BaseParameters }).(pulumi.AnyOutput)
 }
 
 // Activity depends on condition.
@@ -43823,8 +44341,8 @@ func (o DatabricksNotebookActivityOutput) Description() pulumi.StringPtrOutput {
 }
 
 // A list of libraries to be installed on the cluster that will execute the job.
-func (o DatabricksNotebookActivityOutput) Libraries() pulumi.MapArrayOutput {
-	return o.ApplyT(func(v DatabricksNotebookActivity) []map[string]interface{} { return v.Libraries }).(pulumi.MapArrayOutput)
+func (o DatabricksNotebookActivityOutput) Libraries() pulumi.ArrayOutput {
+	return o.ApplyT(func(v DatabricksNotebookActivity) []interface{} { return v.Libraries }).(pulumi.ArrayOutput)
 }
 
 // Linked service reference.
@@ -43871,13 +44389,13 @@ func (o DatabricksNotebookActivityOutput) UserProperties() UserPropertyArrayOutp
 // DatabricksNotebook activity.
 type DatabricksNotebookActivityResponse struct {
 	// Base parameters to be used for each run of this job.If the notebook takes a parameter that is not specified, the default value from the notebook will be used.
-	BaseParameters map[string]interface{} `pulumi:"baseParameters"`
+	BaseParameters interface{} `pulumi:"baseParameters"`
 	// Activity depends on condition.
 	DependsOn []ActivityDependencyResponse `pulumi:"dependsOn"`
 	// Activity description.
 	Description *string `pulumi:"description"`
 	// A list of libraries to be installed on the cluster that will execute the job.
-	Libraries []map[string]interface{} `pulumi:"libraries"`
+	Libraries []interface{} `pulumi:"libraries"`
 	// Linked service reference.
 	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Activity name.
@@ -43913,8 +44431,8 @@ func (o DatabricksNotebookActivityResponseOutput) ToDatabricksNotebookActivityRe
 }
 
 // Base parameters to be used for each run of this job.If the notebook takes a parameter that is not specified, the default value from the notebook will be used.
-func (o DatabricksNotebookActivityResponseOutput) BaseParameters() pulumi.MapOutput {
-	return o.ApplyT(func(v DatabricksNotebookActivityResponse) map[string]interface{} { return v.BaseParameters }).(pulumi.MapOutput)
+func (o DatabricksNotebookActivityResponseOutput) BaseParameters() pulumi.AnyOutput {
+	return o.ApplyT(func(v DatabricksNotebookActivityResponse) interface{} { return v.BaseParameters }).(pulumi.AnyOutput)
 }
 
 // Activity depends on condition.
@@ -43928,8 +44446,8 @@ func (o DatabricksNotebookActivityResponseOutput) Description() pulumi.StringPtr
 }
 
 // A list of libraries to be installed on the cluster that will execute the job.
-func (o DatabricksNotebookActivityResponseOutput) Libraries() pulumi.MapArrayOutput {
-	return o.ApplyT(func(v DatabricksNotebookActivityResponse) []map[string]interface{} { return v.Libraries }).(pulumi.MapArrayOutput)
+func (o DatabricksNotebookActivityResponseOutput) Libraries() pulumi.ArrayOutput {
+	return o.ApplyT(func(v DatabricksNotebookActivityResponse) []interface{} { return v.Libraries }).(pulumi.ArrayOutput)
 }
 
 // Linked service reference.
@@ -43980,7 +44498,7 @@ type DatabricksSparkJarActivity struct {
 	// Activity description.
 	Description *string `pulumi:"description"`
 	// A list of libraries to be installed on the cluster that will execute the job.
-	Libraries []map[string]interface{} `pulumi:"libraries"`
+	Libraries []interface{} `pulumi:"libraries"`
 	// Linked service reference.
 	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
 	// The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. Type: string (or Expression with resultType string).
@@ -44020,7 +44538,7 @@ type DatabricksSparkJarActivityArgs struct {
 	// Activity description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// A list of libraries to be installed on the cluster that will execute the job.
-	Libraries pulumi.MapArrayInput `pulumi:"libraries"`
+	Libraries pulumi.ArrayInput `pulumi:"libraries"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferencePtrInput `pulumi:"linkedServiceName"`
 	// The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. Type: string (or Expression with resultType string).
@@ -44080,8 +44598,8 @@ func (o DatabricksSparkJarActivityOutput) Description() pulumi.StringPtrOutput {
 }
 
 // A list of libraries to be installed on the cluster that will execute the job.
-func (o DatabricksSparkJarActivityOutput) Libraries() pulumi.MapArrayOutput {
-	return o.ApplyT(func(v DatabricksSparkJarActivity) []map[string]interface{} { return v.Libraries }).(pulumi.MapArrayOutput)
+func (o DatabricksSparkJarActivityOutput) Libraries() pulumi.ArrayOutput {
+	return o.ApplyT(func(v DatabricksSparkJarActivity) []interface{} { return v.Libraries }).(pulumi.ArrayOutput)
 }
 
 // Linked service reference.
@@ -44137,7 +44655,7 @@ type DatabricksSparkJarActivityResponse struct {
 	// Activity description.
 	Description *string `pulumi:"description"`
 	// A list of libraries to be installed on the cluster that will execute the job.
-	Libraries []map[string]interface{} `pulumi:"libraries"`
+	Libraries []interface{} `pulumi:"libraries"`
 	// Linked service reference.
 	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// The full name of the class containing the main method to be executed. This class must be contained in a JAR provided as a library. Type: string (or Expression with resultType string).
@@ -44185,8 +44703,8 @@ func (o DatabricksSparkJarActivityResponseOutput) Description() pulumi.StringPtr
 }
 
 // A list of libraries to be installed on the cluster that will execute the job.
-func (o DatabricksSparkJarActivityResponseOutput) Libraries() pulumi.MapArrayOutput {
-	return o.ApplyT(func(v DatabricksSparkJarActivityResponse) []map[string]interface{} { return v.Libraries }).(pulumi.MapArrayOutput)
+func (o DatabricksSparkJarActivityResponseOutput) Libraries() pulumi.ArrayOutput {
+	return o.ApplyT(func(v DatabricksSparkJarActivityResponse) []interface{} { return v.Libraries }).(pulumi.ArrayOutput)
 }
 
 // Linked service reference.
@@ -44242,7 +44760,7 @@ type DatabricksSparkPythonActivity struct {
 	// Activity description.
 	Description *string `pulumi:"description"`
 	// A list of libraries to be installed on the cluster that will execute the job.
-	Libraries []map[string]interface{} `pulumi:"libraries"`
+	Libraries []interface{} `pulumi:"libraries"`
 	// Linked service reference.
 	LinkedServiceName *LinkedServiceReference `pulumi:"linkedServiceName"`
 	// Activity name.
@@ -44282,7 +44800,7 @@ type DatabricksSparkPythonActivityArgs struct {
 	// Activity description.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// A list of libraries to be installed on the cluster that will execute the job.
-	Libraries pulumi.MapArrayInput `pulumi:"libraries"`
+	Libraries pulumi.ArrayInput `pulumi:"libraries"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferencePtrInput `pulumi:"linkedServiceName"`
 	// Activity name.
@@ -44342,8 +44860,8 @@ func (o DatabricksSparkPythonActivityOutput) Description() pulumi.StringPtrOutpu
 }
 
 // A list of libraries to be installed on the cluster that will execute the job.
-func (o DatabricksSparkPythonActivityOutput) Libraries() pulumi.MapArrayOutput {
-	return o.ApplyT(func(v DatabricksSparkPythonActivity) []map[string]interface{} { return v.Libraries }).(pulumi.MapArrayOutput)
+func (o DatabricksSparkPythonActivityOutput) Libraries() pulumi.ArrayOutput {
+	return o.ApplyT(func(v DatabricksSparkPythonActivity) []interface{} { return v.Libraries }).(pulumi.ArrayOutput)
 }
 
 // Linked service reference.
@@ -44399,7 +44917,7 @@ type DatabricksSparkPythonActivityResponse struct {
 	// Activity description.
 	Description *string `pulumi:"description"`
 	// A list of libraries to be installed on the cluster that will execute the job.
-	Libraries []map[string]interface{} `pulumi:"libraries"`
+	Libraries []interface{} `pulumi:"libraries"`
 	// Linked service reference.
 	LinkedServiceName *LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Activity name.
@@ -44447,8 +44965,8 @@ func (o DatabricksSparkPythonActivityResponseOutput) Description() pulumi.String
 }
 
 // A list of libraries to be installed on the cluster that will execute the job.
-func (o DatabricksSparkPythonActivityResponseOutput) Libraries() pulumi.MapArrayOutput {
-	return o.ApplyT(func(v DatabricksSparkPythonActivityResponse) []map[string]interface{} { return v.Libraries }).(pulumi.MapArrayOutput)
+func (o DatabricksSparkPythonActivityResponseOutput) Libraries() pulumi.ArrayOutput {
+	return o.ApplyT(func(v DatabricksSparkPythonActivityResponse) []interface{} { return v.Libraries }).(pulumi.ArrayOutput)
 }
 
 // Linked service reference.
@@ -44875,10 +45393,70 @@ func (o DatasetFolderPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+type DatasetFolderResponse struct {
+	// The name of the folder that this Dataset is in.
+	Name *string `pulumi:"name"`
+}
+
+// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
+type DatasetFolderResponseOutput struct{ *pulumi.OutputState }
+
+func (DatasetFolderResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetFolderResponse)(nil)).Elem()
+}
+
+func (o DatasetFolderResponseOutput) ToDatasetFolderResponseOutput() DatasetFolderResponseOutput {
+	return o
+}
+
+func (o DatasetFolderResponseOutput) ToDatasetFolderResponseOutputWithContext(ctx context.Context) DatasetFolderResponseOutput {
+	return o
+}
+
+// The name of the folder that this Dataset is in.
+func (o DatasetFolderResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatasetFolderResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type DatasetFolderResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DatasetFolderResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetFolderResponse)(nil)).Elem()
+}
+
+func (o DatasetFolderResponsePtrOutput) ToDatasetFolderResponsePtrOutput() DatasetFolderResponsePtrOutput {
+	return o
+}
+
+func (o DatasetFolderResponsePtrOutput) ToDatasetFolderResponsePtrOutputWithContext(ctx context.Context) DatasetFolderResponsePtrOutput {
+	return o
+}
+
+func (o DatasetFolderResponsePtrOutput) Elem() DatasetFolderResponseOutput {
+	return o.ApplyT(func(v *DatasetFolderResponse) DatasetFolderResponse {
+		if v != nil {
+			return *v
+		}
+		var ret DatasetFolderResponse
+		return ret
+	}).(DatasetFolderResponseOutput)
+}
+
+// The name of the folder that this Dataset is in.
+func (o DatasetFolderResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatasetFolderResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 // Dataset reference type.
 type DatasetReference struct {
 	// Arguments for dataset.
-	Parameters map[string]interface{} `pulumi:"parameters"`
+	Parameters interface{} `pulumi:"parameters"`
 	// Reference dataset name.
 	ReferenceName string `pulumi:"referenceName"`
 	// Dataset reference type.
@@ -44899,7 +45477,7 @@ type DatasetReferenceInput interface {
 // Dataset reference type.
 type DatasetReferenceArgs struct {
 	// Arguments for dataset.
-	Parameters pulumi.MapInput `pulumi:"parameters"`
+	Parameters pulumi.Input `pulumi:"parameters"`
 	// Reference dataset name.
 	ReferenceName pulumi.StringInput `pulumi:"referenceName"`
 	// Dataset reference type.
@@ -45010,8 +45588,8 @@ func (o DatasetReferenceOutput) ToDatasetReferencePtrOutputWithContext(ctx conte
 }
 
 // Arguments for dataset.
-func (o DatasetReferenceOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v DatasetReference) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
+func (o DatasetReferenceOutput) Parameters() pulumi.AnyOutput {
+	return o.ApplyT(func(v DatasetReference) interface{} { return v.Parameters }).(pulumi.AnyOutput)
 }
 
 // Reference dataset name.
@@ -45049,13 +45627,13 @@ func (o DatasetReferencePtrOutput) Elem() DatasetReferenceOutput {
 }
 
 // Arguments for dataset.
-func (o DatasetReferencePtrOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *DatasetReference) map[string]interface{} {
+func (o DatasetReferencePtrOutput) Parameters() pulumi.AnyOutput {
+	return o.ApplyT(func(v *DatasetReference) interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.Parameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.AnyOutput)
 }
 
 // Reference dataset name.
@@ -45101,7 +45679,7 @@ func (o DatasetReferenceArrayOutput) Index(i pulumi.IntInput) DatasetReferenceOu
 // Dataset reference type.
 type DatasetReferenceResponse struct {
 	// Arguments for dataset.
-	Parameters map[string]interface{} `pulumi:"parameters"`
+	Parameters interface{} `pulumi:"parameters"`
 	// Reference dataset name.
 	ReferenceName string `pulumi:"referenceName"`
 	// Dataset reference type.
@@ -45124,8 +45702,8 @@ func (o DatasetReferenceResponseOutput) ToDatasetReferenceResponseOutputWithCont
 }
 
 // Arguments for dataset.
-func (o DatasetReferenceResponseOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v DatasetReferenceResponse) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
+func (o DatasetReferenceResponseOutput) Parameters() pulumi.AnyOutput {
+	return o.ApplyT(func(v DatasetReferenceResponse) interface{} { return v.Parameters }).(pulumi.AnyOutput)
 }
 
 // Reference dataset name.
@@ -45163,13 +45741,13 @@ func (o DatasetReferenceResponsePtrOutput) Elem() DatasetReferenceResponseOutput
 }
 
 // Arguments for dataset.
-func (o DatasetReferenceResponsePtrOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v *DatasetReferenceResponse) map[string]interface{} {
+func (o DatasetReferenceResponsePtrOutput) Parameters() pulumi.AnyOutput {
+	return o.ApplyT(func(v *DatasetReferenceResponse) interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.Parameters
-	}).(pulumi.MapOutput)
+	}).(pulumi.AnyOutput)
 }
 
 // Reference dataset name.
@@ -45210,66 +45788,6 @@ func (o DatasetReferenceResponseArrayOutput) Index(i pulumi.IntInput) DatasetRef
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetReferenceResponse {
 		return vs[0].([]DatasetReferenceResponse)[vs[1].(int)]
 	}).(DatasetReferenceResponseOutput)
-}
-
-// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-type DatasetResponseFolder struct {
-	// The name of the folder that this Dataset is in.
-	Name *string `pulumi:"name"`
-}
-
-// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-type DatasetResponseFolderOutput struct{ *pulumi.OutputState }
-
-func (DatasetResponseFolderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetResponseFolder)(nil)).Elem()
-}
-
-func (o DatasetResponseFolderOutput) ToDatasetResponseFolderOutput() DatasetResponseFolderOutput {
-	return o
-}
-
-func (o DatasetResponseFolderOutput) ToDatasetResponseFolderOutputWithContext(ctx context.Context) DatasetResponseFolderOutput {
-	return o
-}
-
-// The name of the folder that this Dataset is in.
-func (o DatasetResponseFolderOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatasetResponseFolder) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-type DatasetResponseFolderPtrOutput struct{ *pulumi.OutputState }
-
-func (DatasetResponseFolderPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DatasetResponseFolder)(nil)).Elem()
-}
-
-func (o DatasetResponseFolderPtrOutput) ToDatasetResponseFolderPtrOutput() DatasetResponseFolderPtrOutput {
-	return o
-}
-
-func (o DatasetResponseFolderPtrOutput) ToDatasetResponseFolderPtrOutputWithContext(ctx context.Context) DatasetResponseFolderPtrOutput {
-	return o
-}
-
-func (o DatasetResponseFolderPtrOutput) Elem() DatasetResponseFolderOutput {
-	return o.ApplyT(func(v *DatasetResponseFolder) DatasetResponseFolder {
-		if v != nil {
-			return *v
-		}
-		var ret DatasetResponseFolder
-		return ret
-	}).(DatasetResponseFolderOutput)
-}
-
-// The name of the folder that this Dataset is in.
-func (o DatasetResponseFolderPtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatasetResponseFolder) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
 }
 
 // Linked service for Dataworld.
@@ -46124,7 +46642,7 @@ type Db2TableDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for dataset.
@@ -46168,8 +46686,8 @@ func (o Db2TableDatasetResponseOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o Db2TableDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v Db2TableDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o Db2TableDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v Db2TableDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -46748,7 +47266,7 @@ type DelimitedTextDatasetResponse struct {
 	// When used as input, treat the first row of data as headers. When used as output,write the headers into the output as the first row of data. The default value is false. Type: boolean (or Expression with resultType boolean).
 	FirstRowAsHeader interface{} `pulumi:"firstRowAsHeader"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// The location of the delimited text storage.
@@ -46826,8 +47344,8 @@ func (o DelimitedTextDatasetResponseOutput) FirstRowAsHeader() pulumi.AnyOutput 
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o DelimitedTextDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v DelimitedTextDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o DelimitedTextDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v DelimitedTextDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -48329,7 +48847,7 @@ type DocumentDbCollectionDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for dataset.
@@ -48374,8 +48892,8 @@ func (o DocumentDbCollectionDatasetResponseOutput) Description() pulumi.StringPt
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o DocumentDbCollectionDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v DocumentDbCollectionDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o DocumentDbCollectionDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v DocumentDbCollectionDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -49392,7 +49910,7 @@ type DrillTableDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for dataset.
@@ -49436,8 +49954,8 @@ func (o DrillTableDatasetResponseOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o DrillTableDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v DrillTableDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o DrillTableDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v DrillTableDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -49875,7 +50393,7 @@ type DynamicsAXResourceDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for dataset.
@@ -49917,8 +50435,8 @@ func (o DynamicsAXResourceDatasetResponseOutput) Description() pulumi.StringPtrO
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o DynamicsAXResourceDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v DynamicsAXResourceDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o DynamicsAXResourceDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v DynamicsAXResourceDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -50307,7 +50825,7 @@ type DynamicsCrmEntityDatasetResponse struct {
 	// The logical name of the entity. Type: string (or Expression with resultType string).
 	EntityName interface{} `pulumi:"entityName"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for dataset.
@@ -50352,8 +50870,8 @@ func (o DynamicsCrmEntityDatasetResponseOutput) EntityName() pulumi.AnyOutput {
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o DynamicsCrmEntityDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v DynamicsCrmEntityDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o DynamicsCrmEntityDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v DynamicsCrmEntityDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -51359,7 +51877,7 @@ type DynamicsEntityDatasetResponse struct {
 	// The logical name of the entity. Type: string (or Expression with resultType string).
 	EntityName interface{} `pulumi:"entityName"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for dataset.
@@ -51404,8 +51922,8 @@ func (o DynamicsEntityDatasetResponseOutput) EntityName() pulumi.AnyOutput {
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o DynamicsEntityDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v DynamicsEntityDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o DynamicsEntityDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v DynamicsEntityDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -52683,7 +53201,7 @@ type EloquaObjectDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for dataset.
@@ -52725,8 +53243,8 @@ func (o EloquaObjectDatasetResponseOutput) Description() pulumi.StringPtrOutput 
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o EloquaObjectDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v EloquaObjectDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o EloquaObjectDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v EloquaObjectDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -53815,7 +54333,7 @@ type ExcelDatasetResponse struct {
 	// When used as input, treat the first row of data as headers. When used as output,write the headers into the output as the first row of data. The default value is false. Type: boolean (or Expression with resultType boolean).
 	FirstRowAsHeader interface{} `pulumi:"firstRowAsHeader"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// The location of the excel storage.
@@ -53875,8 +54393,8 @@ func (o ExcelDatasetResponseOutput) FirstRowAsHeader() pulumi.AnyOutput {
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o ExcelDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v ExcelDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o ExcelDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v ExcelDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -54326,7 +54844,7 @@ func (o ExecuteDataFlowActivityOutput) UserProperties() UserPropertyArrayOutput 
 // Execute data flow activity.
 type ExecuteDataFlowActivityResponse struct {
 	// Compute properties for data flow activity.
-	Compute *ExecuteDataFlowActivityTypePropertiesResponseCompute `pulumi:"compute"`
+	Compute *ExecuteDataFlowActivityTypePropertiesComputeResponse `pulumi:"compute"`
 	// Continuation settings for execute data flow activity.
 	ContinuationSettings *ContinuationSettingsReferenceResponse `pulumi:"continuationSettings"`
 	// Continue on error setting used for data flow execution. Enables processing to continue if a sink fails. Type: boolean (or Expression with resultType boolean)
@@ -54380,10 +54898,10 @@ func (o ExecuteDataFlowActivityResponseOutput) ToExecuteDataFlowActivityResponse
 }
 
 // Compute properties for data flow activity.
-func (o ExecuteDataFlowActivityResponseOutput) Compute() ExecuteDataFlowActivityTypePropertiesResponseComputePtrOutput {
-	return o.ApplyT(func(v ExecuteDataFlowActivityResponse) *ExecuteDataFlowActivityTypePropertiesResponseCompute {
+func (o ExecuteDataFlowActivityResponseOutput) Compute() ExecuteDataFlowActivityTypePropertiesComputeResponsePtrOutput {
+	return o.ApplyT(func(v ExecuteDataFlowActivityResponse) *ExecuteDataFlowActivityTypePropertiesComputeResponse {
 		return v.Compute
-	}).(ExecuteDataFlowActivityTypePropertiesResponseComputePtrOutput)
+	}).(ExecuteDataFlowActivityTypePropertiesComputeResponsePtrOutput)
 }
 
 // Continuation settings for execute data flow activity.
@@ -54636,7 +55154,7 @@ func (o ExecuteDataFlowActivityTypePropertiesComputePtrOutput) CoreCount() pulum
 }
 
 // Compute properties for data flow activity.
-type ExecuteDataFlowActivityTypePropertiesResponseCompute struct {
+type ExecuteDataFlowActivityTypePropertiesComputeResponse struct {
 	// Compute type of the cluster which will execute data flow job. Possible values include: 'General', 'MemoryOptimized', 'ComputeOptimized'. Type: string (or Expression with resultType string)
 	ComputeType interface{} `pulumi:"computeType"`
 	// Core count of the cluster which will execute data flow job. Supported values are: 8, 16, 32, 48, 80, 144 and 272. Type: integer (or Expression with resultType integer)
@@ -54644,57 +55162,57 @@ type ExecuteDataFlowActivityTypePropertiesResponseCompute struct {
 }
 
 // Compute properties for data flow activity.
-type ExecuteDataFlowActivityTypePropertiesResponseComputeOutput struct{ *pulumi.OutputState }
+type ExecuteDataFlowActivityTypePropertiesComputeResponseOutput struct{ *pulumi.OutputState }
 
-func (ExecuteDataFlowActivityTypePropertiesResponseComputeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExecuteDataFlowActivityTypePropertiesResponseCompute)(nil)).Elem()
+func (ExecuteDataFlowActivityTypePropertiesComputeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExecuteDataFlowActivityTypePropertiesComputeResponse)(nil)).Elem()
 }
 
-func (o ExecuteDataFlowActivityTypePropertiesResponseComputeOutput) ToExecuteDataFlowActivityTypePropertiesResponseComputeOutput() ExecuteDataFlowActivityTypePropertiesResponseComputeOutput {
+func (o ExecuteDataFlowActivityTypePropertiesComputeResponseOutput) ToExecuteDataFlowActivityTypePropertiesComputeResponseOutput() ExecuteDataFlowActivityTypePropertiesComputeResponseOutput {
 	return o
 }
 
-func (o ExecuteDataFlowActivityTypePropertiesResponseComputeOutput) ToExecuteDataFlowActivityTypePropertiesResponseComputeOutputWithContext(ctx context.Context) ExecuteDataFlowActivityTypePropertiesResponseComputeOutput {
+func (o ExecuteDataFlowActivityTypePropertiesComputeResponseOutput) ToExecuteDataFlowActivityTypePropertiesComputeResponseOutputWithContext(ctx context.Context) ExecuteDataFlowActivityTypePropertiesComputeResponseOutput {
 	return o
 }
 
 // Compute type of the cluster which will execute data flow job. Possible values include: 'General', 'MemoryOptimized', 'ComputeOptimized'. Type: string (or Expression with resultType string)
-func (o ExecuteDataFlowActivityTypePropertiesResponseComputeOutput) ComputeType() pulumi.AnyOutput {
-	return o.ApplyT(func(v ExecuteDataFlowActivityTypePropertiesResponseCompute) interface{} { return v.ComputeType }).(pulumi.AnyOutput)
+func (o ExecuteDataFlowActivityTypePropertiesComputeResponseOutput) ComputeType() pulumi.AnyOutput {
+	return o.ApplyT(func(v ExecuteDataFlowActivityTypePropertiesComputeResponse) interface{} { return v.ComputeType }).(pulumi.AnyOutput)
 }
 
 // Core count of the cluster which will execute data flow job. Supported values are: 8, 16, 32, 48, 80, 144 and 272. Type: integer (or Expression with resultType integer)
-func (o ExecuteDataFlowActivityTypePropertiesResponseComputeOutput) CoreCount() pulumi.AnyOutput {
-	return o.ApplyT(func(v ExecuteDataFlowActivityTypePropertiesResponseCompute) interface{} { return v.CoreCount }).(pulumi.AnyOutput)
+func (o ExecuteDataFlowActivityTypePropertiesComputeResponseOutput) CoreCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v ExecuteDataFlowActivityTypePropertiesComputeResponse) interface{} { return v.CoreCount }).(pulumi.AnyOutput)
 }
 
-type ExecuteDataFlowActivityTypePropertiesResponseComputePtrOutput struct{ *pulumi.OutputState }
+type ExecuteDataFlowActivityTypePropertiesComputeResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (ExecuteDataFlowActivityTypePropertiesResponseComputePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ExecuteDataFlowActivityTypePropertiesResponseCompute)(nil)).Elem()
+func (ExecuteDataFlowActivityTypePropertiesComputeResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExecuteDataFlowActivityTypePropertiesComputeResponse)(nil)).Elem()
 }
 
-func (o ExecuteDataFlowActivityTypePropertiesResponseComputePtrOutput) ToExecuteDataFlowActivityTypePropertiesResponseComputePtrOutput() ExecuteDataFlowActivityTypePropertiesResponseComputePtrOutput {
+func (o ExecuteDataFlowActivityTypePropertiesComputeResponsePtrOutput) ToExecuteDataFlowActivityTypePropertiesComputeResponsePtrOutput() ExecuteDataFlowActivityTypePropertiesComputeResponsePtrOutput {
 	return o
 }
 
-func (o ExecuteDataFlowActivityTypePropertiesResponseComputePtrOutput) ToExecuteDataFlowActivityTypePropertiesResponseComputePtrOutputWithContext(ctx context.Context) ExecuteDataFlowActivityTypePropertiesResponseComputePtrOutput {
+func (o ExecuteDataFlowActivityTypePropertiesComputeResponsePtrOutput) ToExecuteDataFlowActivityTypePropertiesComputeResponsePtrOutputWithContext(ctx context.Context) ExecuteDataFlowActivityTypePropertiesComputeResponsePtrOutput {
 	return o
 }
 
-func (o ExecuteDataFlowActivityTypePropertiesResponseComputePtrOutput) Elem() ExecuteDataFlowActivityTypePropertiesResponseComputeOutput {
-	return o.ApplyT(func(v *ExecuteDataFlowActivityTypePropertiesResponseCompute) ExecuteDataFlowActivityTypePropertiesResponseCompute {
+func (o ExecuteDataFlowActivityTypePropertiesComputeResponsePtrOutput) Elem() ExecuteDataFlowActivityTypePropertiesComputeResponseOutput {
+	return o.ApplyT(func(v *ExecuteDataFlowActivityTypePropertiesComputeResponse) ExecuteDataFlowActivityTypePropertiesComputeResponse {
 		if v != nil {
 			return *v
 		}
-		var ret ExecuteDataFlowActivityTypePropertiesResponseCompute
+		var ret ExecuteDataFlowActivityTypePropertiesComputeResponse
 		return ret
-	}).(ExecuteDataFlowActivityTypePropertiesResponseComputeOutput)
+	}).(ExecuteDataFlowActivityTypePropertiesComputeResponseOutput)
 }
 
 // Compute type of the cluster which will execute data flow job. Possible values include: 'General', 'MemoryOptimized', 'ComputeOptimized'. Type: string (or Expression with resultType string)
-func (o ExecuteDataFlowActivityTypePropertiesResponseComputePtrOutput) ComputeType() pulumi.AnyOutput {
-	return o.ApplyT(func(v *ExecuteDataFlowActivityTypePropertiesResponseCompute) interface{} {
+func (o ExecuteDataFlowActivityTypePropertiesComputeResponsePtrOutput) ComputeType() pulumi.AnyOutput {
+	return o.ApplyT(func(v *ExecuteDataFlowActivityTypePropertiesComputeResponse) interface{} {
 		if v == nil {
 			return nil
 		}
@@ -54703,8 +55221,8 @@ func (o ExecuteDataFlowActivityTypePropertiesResponseComputePtrOutput) ComputeTy
 }
 
 // Core count of the cluster which will execute data flow job. Supported values are: 8, 16, 32, 48, 80, 144 and 272. Type: integer (or Expression with resultType integer)
-func (o ExecuteDataFlowActivityTypePropertiesResponseComputePtrOutput) CoreCount() pulumi.AnyOutput {
-	return o.ApplyT(func(v *ExecuteDataFlowActivityTypePropertiesResponseCompute) interface{} {
+func (o ExecuteDataFlowActivityTypePropertiesComputeResponsePtrOutput) CoreCount() pulumi.AnyOutput {
+	return o.ApplyT(func(v *ExecuteDataFlowActivityTypePropertiesComputeResponse) interface{} {
 		if v == nil {
 			return nil
 		}
@@ -54723,7 +55241,7 @@ type ExecutePipelineActivity struct {
 	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
 	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Pipeline parameters.
-	Parameters map[string]interface{} `pulumi:"parameters"`
+	Parameters interface{} `pulumi:"parameters"`
 	// Pipeline reference.
 	Pipeline PipelineReference `pulumi:"pipeline"`
 	// Execute pipeline activity policy.
@@ -54761,7 +55279,7 @@ type ExecutePipelineActivityArgs struct {
 	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
 	OnInactiveMarkAs pulumi.StringPtrInput `pulumi:"onInactiveMarkAs"`
 	// Pipeline parameters.
-	Parameters pulumi.MapInput `pulumi:"parameters"`
+	Parameters pulumi.Input `pulumi:"parameters"`
 	// Pipeline reference.
 	Pipeline PipelineReferenceInput `pulumi:"pipeline"`
 	// Execute pipeline activity policy.
@@ -54825,8 +55343,8 @@ func (o ExecutePipelineActivityOutput) OnInactiveMarkAs() pulumi.StringPtrOutput
 }
 
 // Pipeline parameters.
-func (o ExecutePipelineActivityOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v ExecutePipelineActivity) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
+func (o ExecutePipelineActivityOutput) Parameters() pulumi.AnyOutput {
+	return o.ApplyT(func(v ExecutePipelineActivity) interface{} { return v.Parameters }).(pulumi.AnyOutput)
 }
 
 // Pipeline reference.
@@ -55071,7 +55589,7 @@ type ExecutePipelineActivityResponse struct {
 	// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
 	OnInactiveMarkAs *string `pulumi:"onInactiveMarkAs"`
 	// Pipeline parameters.
-	Parameters map[string]interface{} `pulumi:"parameters"`
+	Parameters interface{} `pulumi:"parameters"`
 	// Pipeline reference.
 	Pipeline PipelineReferenceResponse `pulumi:"pipeline"`
 	// Execute pipeline activity policy.
@@ -55123,8 +55641,8 @@ func (o ExecutePipelineActivityResponseOutput) OnInactiveMarkAs() pulumi.StringP
 }
 
 // Pipeline parameters.
-func (o ExecutePipelineActivityResponseOutput) Parameters() pulumi.MapOutput {
-	return o.ApplyT(func(v ExecutePipelineActivityResponse) map[string]interface{} { return v.Parameters }).(pulumi.MapOutput)
+func (o ExecutePipelineActivityResponseOutput) Parameters() pulumi.AnyOutput {
+	return o.ApplyT(func(v ExecutePipelineActivityResponse) interface{} { return v.Parameters }).(pulumi.AnyOutput)
 }
 
 // Pipeline reference.
@@ -55805,7 +56323,7 @@ func (o ExecuteWranglingDataflowActivityOutput) UserProperties() UserPropertyArr
 // Execute power query activity.
 type ExecuteWranglingDataflowActivityResponse struct {
 	// Compute properties for data flow activity.
-	Compute *ExecuteDataFlowActivityTypePropertiesResponseCompute `pulumi:"compute"`
+	Compute *ExecuteDataFlowActivityTypePropertiesComputeResponse `pulumi:"compute"`
 	// Continuation settings for execute data flow activity.
 	ContinuationSettings *ContinuationSettingsReferenceResponse `pulumi:"continuationSettings"`
 	// Continue on error setting used for data flow execution. Enables processing to continue if a sink fails. Type: boolean (or Expression with resultType boolean)
@@ -55861,10 +56379,10 @@ func (o ExecuteWranglingDataflowActivityResponseOutput) ToExecuteWranglingDatafl
 }
 
 // Compute properties for data flow activity.
-func (o ExecuteWranglingDataflowActivityResponseOutput) Compute() ExecuteDataFlowActivityTypePropertiesResponseComputePtrOutput {
-	return o.ApplyT(func(v ExecuteWranglingDataflowActivityResponse) *ExecuteDataFlowActivityTypePropertiesResponseCompute {
+func (o ExecuteWranglingDataflowActivityResponseOutput) Compute() ExecuteDataFlowActivityTypePropertiesComputeResponsePtrOutput {
+	return o.ApplyT(func(v ExecuteWranglingDataflowActivityResponse) *ExecuteDataFlowActivityTypePropertiesComputeResponse {
 		return v.Compute
-	}).(ExecuteDataFlowActivityTypePropertiesResponseComputePtrOutput)
+	}).(ExecuteDataFlowActivityTypePropertiesComputeResponsePtrOutput)
 }
 
 // Continuation settings for execute data flow activity.
@@ -56281,8 +56799,8 @@ type ExpressionV2 struct {
 	Operators []string `pulumi:"operators"`
 	// Type of expressions supported by the system. Type: string.
 	Type *string `pulumi:"type"`
-	// Value for Constant/Field Type: string.
-	Value *string `pulumi:"value"`
+	// Value for Constant/Field Type: object.
+	Value interface{} `pulumi:"value"`
 }
 
 // ExpressionV2Input is an input type that accepts ExpressionV2Args and ExpressionV2Output values.
@@ -56304,8 +56822,8 @@ type ExpressionV2Args struct {
 	Operators pulumi.StringArrayInput `pulumi:"operators"`
 	// Type of expressions supported by the system. Type: string.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Value for Constant/Field Type: string.
-	Value pulumi.StringPtrInput `pulumi:"value"`
+	// Value for Constant/Field Type: object.
+	Value pulumi.Input `pulumi:"value"`
 }
 
 func (ExpressionV2Args) ElementType() reflect.Type {
@@ -56426,9 +56944,9 @@ func (o ExpressionV2Output) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExpressionV2) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// Value for Constant/Field Type: string.
-func (o ExpressionV2Output) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExpressionV2) *string { return v.Value }).(pulumi.StringPtrOutput)
+// Value for Constant/Field Type: object.
+func (o ExpressionV2Output) Value() pulumi.AnyOutput {
+	return o.ApplyT(func(v ExpressionV2) interface{} { return v.Value }).(pulumi.AnyOutput)
 }
 
 type ExpressionV2PtrOutput struct{ *pulumi.OutputState }
@@ -56485,14 +57003,14 @@ func (o ExpressionV2PtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value for Constant/Field Type: string.
-func (o ExpressionV2PtrOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExpressionV2) *string {
+// Value for Constant/Field Type: object.
+func (o ExpressionV2PtrOutput) Value() pulumi.AnyOutput {
+	return o.ApplyT(func(v *ExpressionV2) interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.Value
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.AnyOutput)
 }
 
 type ExpressionV2ArrayOutput struct{ *pulumi.OutputState }
@@ -56523,8 +57041,8 @@ type ExpressionV2Response struct {
 	Operators []string `pulumi:"operators"`
 	// Type of expressions supported by the system. Type: string.
 	Type *string `pulumi:"type"`
-	// Value for Constant/Field Type: string.
-	Value *string `pulumi:"value"`
+	// Value for Constant/Field Type: object.
+	Value interface{} `pulumi:"value"`
 }
 
 // Nested representation of a complex expression.
@@ -56557,9 +57075,9 @@ func (o ExpressionV2ResponseOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExpressionV2Response) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// Value for Constant/Field Type: string.
-func (o ExpressionV2ResponseOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExpressionV2Response) *string { return v.Value }).(pulumi.StringPtrOutput)
+// Value for Constant/Field Type: object.
+func (o ExpressionV2ResponseOutput) Value() pulumi.AnyOutput {
+	return o.ApplyT(func(v ExpressionV2Response) interface{} { return v.Value }).(pulumi.AnyOutput)
 }
 
 type ExpressionV2ResponsePtrOutput struct{ *pulumi.OutputState }
@@ -56616,14 +57134,14 @@ func (o ExpressionV2ResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value for Constant/Field Type: string.
-func (o ExpressionV2ResponsePtrOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExpressionV2Response) *string {
+// Value for Constant/Field Type: object.
+func (o ExpressionV2ResponsePtrOutput) Value() pulumi.AnyOutput {
+	return o.ApplyT(func(v *ExpressionV2Response) interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.Value
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.AnyOutput)
 }
 
 type ExpressionV2ResponseArrayOutput struct{ *pulumi.OutputState }
@@ -57182,7 +57700,7 @@ type FactoryIdentity struct {
 	// The identity type.
 	Type string `pulumi:"type"`
 	// List of user assigned identities for the factory.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities interface{} `pulumi:"userAssignedIdentities"`
 }
 
 // FactoryIdentityInput is an input type that accepts FactoryIdentityArgs and FactoryIdentityOutput values.
@@ -57201,7 +57719,7 @@ type FactoryIdentityArgs struct {
 	// The identity type.
 	Type pulumi.StringInput `pulumi:"type"`
 	// List of user assigned identities for the factory.
-	UserAssignedIdentities pulumi.MapInput `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities pulumi.Input `pulumi:"userAssignedIdentities"`
 }
 
 func (FactoryIdentityArgs) ElementType() reflect.Type {
@@ -57288,8 +57806,8 @@ func (o FactoryIdentityOutput) Type() pulumi.StringOutput {
 }
 
 // List of user assigned identities for the factory.
-func (o FactoryIdentityOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v FactoryIdentity) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o FactoryIdentityOutput) UserAssignedIdentities() pulumi.AnyOutput {
+	return o.ApplyT(func(v FactoryIdentity) interface{} { return v.UserAssignedIdentities }).(pulumi.AnyOutput)
 }
 
 type FactoryIdentityPtrOutput struct{ *pulumi.OutputState }
@@ -57327,13 +57845,13 @@ func (o FactoryIdentityPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // List of user assigned identities for the factory.
-func (o FactoryIdentityPtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *FactoryIdentity) map[string]interface{} {
+func (o FactoryIdentityPtrOutput) UserAssignedIdentities() pulumi.AnyOutput {
+	return o.ApplyT(func(v *FactoryIdentity) interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.AnyOutput)
 }
 
 // Identity properties of the factory resource.
@@ -57345,7 +57863,7 @@ type FactoryIdentityResponse struct {
 	// The identity type.
 	Type string `pulumi:"type"`
 	// List of user assigned identities for the factory.
-	UserAssignedIdentities map[string]interface{} `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities interface{} `pulumi:"userAssignedIdentities"`
 }
 
 // Identity properties of the factory resource.
@@ -57379,8 +57897,8 @@ func (o FactoryIdentityResponseOutput) Type() pulumi.StringOutput {
 }
 
 // List of user assigned identities for the factory.
-func (o FactoryIdentityResponseOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v FactoryIdentityResponse) map[string]interface{} { return v.UserAssignedIdentities }).(pulumi.MapOutput)
+func (o FactoryIdentityResponseOutput) UserAssignedIdentities() pulumi.AnyOutput {
+	return o.ApplyT(func(v FactoryIdentityResponse) interface{} { return v.UserAssignedIdentities }).(pulumi.AnyOutput)
 }
 
 type FactoryIdentityResponsePtrOutput struct{ *pulumi.OutputState }
@@ -57438,13 +57956,13 @@ func (o FactoryIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // List of user assigned identities for the factory.
-func (o FactoryIdentityResponsePtrOutput) UserAssignedIdentities() pulumi.MapOutput {
-	return o.ApplyT(func(v *FactoryIdentityResponse) map[string]interface{} {
+func (o FactoryIdentityResponsePtrOutput) UserAssignedIdentities() pulumi.AnyOutput {
+	return o.ApplyT(func(v *FactoryIdentityResponse) interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(pulumi.MapOutput)
+	}).(pulumi.AnyOutput)
 }
 
 // Factory's VSTS repo information.
@@ -59691,7 +60209,7 @@ type FileShareDatasetResponse struct {
 	// The name of the on-premises file system. Type: string (or Expression with resultType string).
 	FileName interface{} `pulumi:"fileName"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// The path of the on-premises file system. Type: string (or Expression with resultType string).
 	FolderPath interface{} `pulumi:"folderPath"`
 	// The format of the files.
@@ -59754,8 +60272,8 @@ func (o FileShareDatasetResponseOutput) FileName() pulumi.AnyOutput {
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o FileShareDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v FileShareDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o FileShareDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v FileShareDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // The path of the on-premises file system. Type: string (or Expression with resultType string).
@@ -60535,7 +61053,7 @@ type FlowletResponse struct {
 	// The description of the data flow.
 	Description *string `pulumi:"description"`
 	// The folder that this data flow is in. If not specified, Data flow will appear at the root level.
-	Folder *DataFlowResponseFolder `pulumi:"folder"`
+	Folder *DataFlowFolderResponse `pulumi:"folder"`
 	// Flowlet script.
 	Script *string `pulumi:"script"`
 	// Flowlet script lines.
@@ -60577,8 +61095,8 @@ func (o FlowletResponseOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The folder that this data flow is in. If not specified, Data flow will appear at the root level.
-func (o FlowletResponseOutput) Folder() DataFlowResponseFolderPtrOutput {
-	return o.ApplyT(func(v FlowletResponse) *DataFlowResponseFolder { return v.Folder }).(DataFlowResponseFolderPtrOutput)
+func (o FlowletResponseOutput) Folder() DataFlowFolderResponsePtrOutput {
+	return o.ApplyT(func(v FlowletResponse) *DataFlowFolderResponse { return v.Folder }).(DataFlowFolderResponsePtrOutput)
 }
 
 // Flowlet script.
@@ -63110,7 +63628,7 @@ type GoogleAdWordsObjectDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for dataset.
@@ -63152,8 +63670,8 @@ func (o GoogleAdWordsObjectDatasetResponseOutput) Description() pulumi.StringPtr
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o GoogleAdWordsObjectDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v GoogleAdWordsObjectDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o GoogleAdWordsObjectDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v GoogleAdWordsObjectDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -63904,7 +64422,7 @@ type GoogleBigQueryObjectDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for dataset.
@@ -63953,8 +64471,8 @@ func (o GoogleBigQueryObjectDatasetResponseOutput) Description() pulumi.StringPt
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o GoogleBigQueryObjectDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v GoogleBigQueryObjectDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o GoogleBigQueryObjectDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v GoogleBigQueryObjectDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -64623,7 +65141,7 @@ type GoogleBigQueryV2ObjectDatasetResponse struct {
 	// Dataset description.
 	Description *string `pulumi:"description"`
 	// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-	Folder *DatasetResponseFolder `pulumi:"folder"`
+	Folder *DatasetFolderResponse `pulumi:"folder"`
 	// Linked service reference.
 	LinkedServiceName LinkedServiceReferenceResponse `pulumi:"linkedServiceName"`
 	// Parameters for dataset.
@@ -64670,8 +65188,8 @@ func (o GoogleBigQueryV2ObjectDatasetResponseOutput) Description() pulumi.String
 }
 
 // The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-func (o GoogleBigQueryV2ObjectDatasetResponseOutput) Folder() DatasetResponseFolderPtrOutput {
-	return o.ApplyT(func(v GoogleBigQueryV2ObjectDatasetResponse) *DatasetResponseFolder { return v.Folder }).(DatasetResponseFolderPtrOutput)
+func (o GoogleBigQueryV2ObjectDatasetResponseOutput) Folder() DatasetFolderResponsePtrOutput {
+	return o.ApplyT(func(v GoogleBigQueryV2ObjectDatasetResponse) *DatasetFolderResponse { return v.Folder }).(DatasetFolderResponsePtrOutput)
 }
 
 // Linked service reference.
@@ -66472,204 +66990,6 @@ func (o GreenplumLinkedServiceResponseOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GreenplumLinkedServiceResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
 
-// A copy activity Greenplum Database source.
-type GreenplumSource struct {
-	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-	AdditionalColumns interface{} `pulumi:"additionalColumns"`
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// A query to retrieve data from source. Type: string (or Expression with resultType string).
-	Query interface{} `pulumi:"query"`
-	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	QueryTimeout interface{} `pulumi:"queryTimeout"`
-	// Source retry count. Type: integer (or Expression with resultType integer).
-	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
-	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
-	// Copy source type.
-	// Expected value is 'GreenplumSource'.
-	Type string `pulumi:"type"`
-}
-
-// GreenplumSourceInput is an input type that accepts GreenplumSourceArgs and GreenplumSourceOutput values.
-// You can construct a concrete instance of `GreenplumSourceInput` via:
-//
-//	GreenplumSourceArgs{...}
-type GreenplumSourceInput interface {
-	pulumi.Input
-
-	ToGreenplumSourceOutput() GreenplumSourceOutput
-	ToGreenplumSourceOutputWithContext(context.Context) GreenplumSourceOutput
-}
-
-// A copy activity Greenplum Database source.
-type GreenplumSourceArgs struct {
-	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-	AdditionalColumns pulumi.Input `pulumi:"additionalColumns"`
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection pulumi.Input `pulumi:"disableMetricsCollection"`
-	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections pulumi.Input `pulumi:"maxConcurrentConnections"`
-	// A query to retrieve data from source. Type: string (or Expression with resultType string).
-	Query pulumi.Input `pulumi:"query"`
-	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	QueryTimeout pulumi.Input `pulumi:"queryTimeout"`
-	// Source retry count. Type: integer (or Expression with resultType integer).
-	SourceRetryCount pulumi.Input `pulumi:"sourceRetryCount"`
-	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	SourceRetryWait pulumi.Input `pulumi:"sourceRetryWait"`
-	// Copy source type.
-	// Expected value is 'GreenplumSource'.
-	Type pulumi.StringInput `pulumi:"type"`
-}
-
-func (GreenplumSourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GreenplumSource)(nil)).Elem()
-}
-
-func (i GreenplumSourceArgs) ToGreenplumSourceOutput() GreenplumSourceOutput {
-	return i.ToGreenplumSourceOutputWithContext(context.Background())
-}
-
-func (i GreenplumSourceArgs) ToGreenplumSourceOutputWithContext(ctx context.Context) GreenplumSourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GreenplumSourceOutput)
-}
-
-// A copy activity Greenplum Database source.
-type GreenplumSourceOutput struct{ *pulumi.OutputState }
-
-func (GreenplumSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GreenplumSource)(nil)).Elem()
-}
-
-func (o GreenplumSourceOutput) ToGreenplumSourceOutput() GreenplumSourceOutput {
-	return o
-}
-
-func (o GreenplumSourceOutput) ToGreenplumSourceOutputWithContext(ctx context.Context) GreenplumSourceOutput {
-	return o
-}
-
-// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-func (o GreenplumSourceOutput) AdditionalColumns() pulumi.AnyOutput {
-	return o.ApplyT(func(v GreenplumSource) interface{} { return v.AdditionalColumns }).(pulumi.AnyOutput)
-}
-
-// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-func (o GreenplumSourceOutput) DisableMetricsCollection() pulumi.AnyOutput {
-	return o.ApplyT(func(v GreenplumSource) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
-}
-
-// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-func (o GreenplumSourceOutput) MaxConcurrentConnections() pulumi.AnyOutput {
-	return o.ApplyT(func(v GreenplumSource) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
-}
-
-// A query to retrieve data from source. Type: string (or Expression with resultType string).
-func (o GreenplumSourceOutput) Query() pulumi.AnyOutput {
-	return o.ApplyT(func(v GreenplumSource) interface{} { return v.Query }).(pulumi.AnyOutput)
-}
-
-// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-func (o GreenplumSourceOutput) QueryTimeout() pulumi.AnyOutput {
-	return o.ApplyT(func(v GreenplumSource) interface{} { return v.QueryTimeout }).(pulumi.AnyOutput)
-}
-
-// Source retry count. Type: integer (or Expression with resultType integer).
-func (o GreenplumSourceOutput) SourceRetryCount() pulumi.AnyOutput {
-	return o.ApplyT(func(v GreenplumSource) interface{} { return v.SourceRetryCount }).(pulumi.AnyOutput)
-}
-
-// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-func (o GreenplumSourceOutput) SourceRetryWait() pulumi.AnyOutput {
-	return o.ApplyT(func(v GreenplumSource) interface{} { return v.SourceRetryWait }).(pulumi.AnyOutput)
-}
-
-// Copy source type.
-// Expected value is 'GreenplumSource'.
-func (o GreenplumSourceOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GreenplumSource) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// A copy activity Greenplum Database source.
-type GreenplumSourceResponse struct {
-	// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-	AdditionalColumns interface{} `pulumi:"additionalColumns"`
-	// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-	DisableMetricsCollection interface{} `pulumi:"disableMetricsCollection"`
-	// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-	MaxConcurrentConnections interface{} `pulumi:"maxConcurrentConnections"`
-	// A query to retrieve data from source. Type: string (or Expression with resultType string).
-	Query interface{} `pulumi:"query"`
-	// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	QueryTimeout interface{} `pulumi:"queryTimeout"`
-	// Source retry count. Type: integer (or Expression with resultType integer).
-	SourceRetryCount interface{} `pulumi:"sourceRetryCount"`
-	// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-	SourceRetryWait interface{} `pulumi:"sourceRetryWait"`
-	// Copy source type.
-	// Expected value is 'GreenplumSource'.
-	Type string `pulumi:"type"`
-}
-
-// A copy activity Greenplum Database source.
-type GreenplumSourceResponseOutput struct{ *pulumi.OutputState }
-
-func (GreenplumSourceResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GreenplumSourceResponse)(nil)).Elem()
-}
-
-func (o GreenplumSourceResponseOutput) ToGreenplumSourceResponseOutput() GreenplumSourceResponseOutput {
-	return o
-}
-
-func (o GreenplumSourceResponseOutput) ToGreenplumSourceResponseOutputWithContext(ctx context.Context) GreenplumSourceResponseOutput {
-	return o
-}
-
-// Specifies the additional columns to be added to source data. Type: array of objects(AdditionalColumns) (or Expression with resultType array of objects).
-func (o GreenplumSourceResponseOutput) AdditionalColumns() pulumi.AnyOutput {
-	return o.ApplyT(func(v GreenplumSourceResponse) interface{} { return v.AdditionalColumns }).(pulumi.AnyOutput)
-}
-
-// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
-func (o GreenplumSourceResponseOutput) DisableMetricsCollection() pulumi.AnyOutput {
-	return o.ApplyT(func(v GreenplumSourceResponse) interface{} { return v.DisableMetricsCollection }).(pulumi.AnyOutput)
-}
-
-// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
-func (o GreenplumSourceResponseOutput) MaxConcurrentConnections() pulumi.AnyOutput {
-	return o.ApplyT(func(v GreenplumSourceResponse) interface{} { return v.MaxConcurrentConnections }).(pulumi.AnyOutput)
-}
-
-// A query to retrieve data from source. Type: string (or Expression with resultType string).
-func (o GreenplumSourceResponseOutput) Query() pulumi.AnyOutput {
-	return o.ApplyT(func(v GreenplumSourceResponse) interface{} { return v.Query }).(pulumi.AnyOutput)
-}
-
-// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-func (o GreenplumSourceResponseOutput) QueryTimeout() pulumi.AnyOutput {
-	return o.ApplyT(func(v GreenplumSourceResponse) interface{} { return v.QueryTimeout }).(pulumi.AnyOutput)
-}
-
-// Source retry count. Type: integer (or Expression with resultType integer).
-func (o GreenplumSourceResponseOutput) SourceRetryCount() pulumi.AnyOutput {
-	return o.ApplyT(func(v GreenplumSourceResponse) interface{} { return v.SourceRetryCount }).(pulumi.AnyOutput)
-}
-
-// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-func (o GreenplumSourceResponseOutput) SourceRetryWait() pulumi.AnyOutput {
-	return o.ApplyT(func(v GreenplumSourceResponse) interface{} { return v.SourceRetryWait }).(pulumi.AnyOutput)
-}
-
-// Copy source type.
-// Expected value is 'GreenplumSource'.
-func (o GreenplumSourceResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GreenplumSourceResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
 type SSISExecutionParameterMapMap map[string]SSISExecutionParameterMapInput
 
 func (SSISExecutionParameterMapMap) ElementType() reflect.Type {
@@ -66950,10 +67270,10 @@ func init() {
 	pulumi.RegisterOutputType(AzurePostgreSqlLinkedServiceResponseOutput{})
 	pulumi.RegisterOutputType(AzurePostgreSqlSinkOutput{})
 	pulumi.RegisterOutputType(AzurePostgreSqlSinkResponseOutput{})
-	pulumi.RegisterOutputType(AzurePostgreSqlSinkResponseUpsertSettingsOutput{})
-	pulumi.RegisterOutputType(AzurePostgreSqlSinkResponseUpsertSettingsPtrOutput{})
 	pulumi.RegisterOutputType(AzurePostgreSqlSinkUpsertSettingsOutput{})
 	pulumi.RegisterOutputType(AzurePostgreSqlSinkUpsertSettingsPtrOutput{})
+	pulumi.RegisterOutputType(AzurePostgreSqlSinkUpsertSettingsResponseOutput{})
+	pulumi.RegisterOutputType(AzurePostgreSqlSinkUpsertSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(AzurePostgreSqlSourceOutput{})
 	pulumi.RegisterOutputType(AzurePostgreSqlSourceResponseOutput{})
 	pulumi.RegisterOutputType(AzurePostgreSqlTableDatasetOutput{})
@@ -67030,8 +67350,8 @@ func init() {
 	pulumi.RegisterOutputType(ChainingTriggerResponseOutput{})
 	pulumi.RegisterOutputType(ChangeDataCaptureFolderOutput{})
 	pulumi.RegisterOutputType(ChangeDataCaptureFolderPtrOutput{})
-	pulumi.RegisterOutputType(ChangeDataCaptureResponseFolderOutput{})
-	pulumi.RegisterOutputType(ChangeDataCaptureResponseFolderPtrOutput{})
+	pulumi.RegisterOutputType(ChangeDataCaptureFolderResponseOutput{})
+	pulumi.RegisterOutputType(ChangeDataCaptureFolderResponsePtrOutput{})
 	pulumi.RegisterOutputType(CmdkeySetupOutput{})
 	pulumi.RegisterOutputType(CmdkeySetupResponseOutput{})
 	pulumi.RegisterOutputType(CommonDataServiceForAppsEntityDatasetOutput{})
@@ -67116,12 +67436,12 @@ func init() {
 	pulumi.RegisterOutputType(DWCopyCommandSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(DataFlowFolderOutput{})
 	pulumi.RegisterOutputType(DataFlowFolderPtrOutput{})
+	pulumi.RegisterOutputType(DataFlowFolderResponseOutput{})
+	pulumi.RegisterOutputType(DataFlowFolderResponsePtrOutput{})
 	pulumi.RegisterOutputType(DataFlowReferenceOutput{})
 	pulumi.RegisterOutputType(DataFlowReferencePtrOutput{})
 	pulumi.RegisterOutputType(DataFlowReferenceResponseOutput{})
 	pulumi.RegisterOutputType(DataFlowReferenceResponsePtrOutput{})
-	pulumi.RegisterOutputType(DataFlowResponseFolderOutput{})
-	pulumi.RegisterOutputType(DataFlowResponseFolderPtrOutput{})
 	pulumi.RegisterOutputType(DataFlowSinkOutput{})
 	pulumi.RegisterOutputType(DataFlowSinkArrayOutput{})
 	pulumi.RegisterOutputType(DataFlowSinkResponseOutput{})
@@ -67140,6 +67460,8 @@ func init() {
 	pulumi.RegisterOutputType(DataMapperMappingArrayOutput{})
 	pulumi.RegisterOutputType(DataMapperMappingResponseOutput{})
 	pulumi.RegisterOutputType(DataMapperMappingResponseArrayOutput{})
+	pulumi.RegisterOutputType(DatabricksJobActivityOutput{})
+	pulumi.RegisterOutputType(DatabricksJobActivityResponseOutput{})
 	pulumi.RegisterOutputType(DatabricksNotebookActivityOutput{})
 	pulumi.RegisterOutputType(DatabricksNotebookActivityResponseOutput{})
 	pulumi.RegisterOutputType(DatabricksSparkJarActivityOutput{})
@@ -67152,14 +67474,14 @@ func init() {
 	pulumi.RegisterOutputType(DatasetCompressionResponsePtrOutput{})
 	pulumi.RegisterOutputType(DatasetFolderOutput{})
 	pulumi.RegisterOutputType(DatasetFolderPtrOutput{})
+	pulumi.RegisterOutputType(DatasetFolderResponseOutput{})
+	pulumi.RegisterOutputType(DatasetFolderResponsePtrOutput{})
 	pulumi.RegisterOutputType(DatasetReferenceOutput{})
 	pulumi.RegisterOutputType(DatasetReferencePtrOutput{})
 	pulumi.RegisterOutputType(DatasetReferenceArrayOutput{})
 	pulumi.RegisterOutputType(DatasetReferenceResponseOutput{})
 	pulumi.RegisterOutputType(DatasetReferenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(DatasetReferenceResponseArrayOutput{})
-	pulumi.RegisterOutputType(DatasetResponseFolderOutput{})
-	pulumi.RegisterOutputType(DatasetResponseFolderPtrOutput{})
 	pulumi.RegisterOutputType(DataworldLinkedServiceOutput{})
 	pulumi.RegisterOutputType(DataworldLinkedServiceResponseOutput{})
 	pulumi.RegisterOutputType(Db2LinkedServiceOutput{})
@@ -67246,8 +67568,8 @@ func init() {
 	pulumi.RegisterOutputType(ExecuteDataFlowActivityResponseOutput{})
 	pulumi.RegisterOutputType(ExecuteDataFlowActivityTypePropertiesComputeOutput{})
 	pulumi.RegisterOutputType(ExecuteDataFlowActivityTypePropertiesComputePtrOutput{})
-	pulumi.RegisterOutputType(ExecuteDataFlowActivityTypePropertiesResponseComputeOutput{})
-	pulumi.RegisterOutputType(ExecuteDataFlowActivityTypePropertiesResponseComputePtrOutput{})
+	pulumi.RegisterOutputType(ExecuteDataFlowActivityTypePropertiesComputeResponseOutput{})
+	pulumi.RegisterOutputType(ExecuteDataFlowActivityTypePropertiesComputeResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExecutePipelineActivityOutput{})
 	pulumi.RegisterOutputType(ExecutePipelineActivityPolicyOutput{})
 	pulumi.RegisterOutputType(ExecutePipelineActivityPolicyPtrOutput{})
@@ -67354,8 +67676,6 @@ func init() {
 	pulumi.RegisterOutputType(GoogleSheetsLinkedServiceResponseOutput{})
 	pulumi.RegisterOutputType(GreenplumLinkedServiceOutput{})
 	pulumi.RegisterOutputType(GreenplumLinkedServiceResponseOutput{})
-	pulumi.RegisterOutputType(GreenplumSourceOutput{})
-	pulumi.RegisterOutputType(GreenplumSourceResponseOutput{})
 	pulumi.RegisterOutputType(SSISExecutionParameterMapMapOutput{})
 	pulumi.RegisterOutputType(SSISExecutionParameterResponseMapMapOutput{})
 }

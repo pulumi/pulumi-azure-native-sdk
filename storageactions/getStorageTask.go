@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the storage task properties
 //
 // Uses Azure REST API version 2023-01-01.
+//
+// Other available API versions: 2026-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storageactions [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupStorageTask(ctx *pulumi.Context, args *LookupStorageTaskArgs, opts ...pulumi.InvokeOption) (*LookupStorageTaskResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStorageTaskResult
@@ -35,6 +37,8 @@ type LookupStorageTaskArgs struct {
 type LookupStorageTaskResult struct {
 	// The storage task action that is executed
 	Action StorageTaskActionResponse `pulumi:"action"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The creation date and time of the storage task in UTC.
 	CreationTimeInUtc string `pulumi:"creationTimeInUtc"`
 	// Text that describes the purpose of the storage task
@@ -99,6 +103,11 @@ func (o LookupStorageTaskResultOutput) ToLookupStorageTaskResultOutputWithContex
 // The storage task action that is executed
 func (o LookupStorageTaskResultOutput) Action() StorageTaskActionResponseOutput {
 	return o.ApplyT(func(v LookupStorageTaskResult) StorageTaskActionResponse { return v.Action }).(StorageTaskActionResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupStorageTaskResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStorageTaskResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The creation date and time of the storage task in UTC.

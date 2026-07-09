@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,18 +27,20 @@ func LookupAssignment(ctx *pulumi.Context, args *LookupAssignmentArgs, opts ...p
 type LookupAssignmentArgs struct {
 	// The security assignment key - unique key for the standard assignment
 	AssignmentId string `pulumi:"assignmentId"`
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Security Assignment on a resource group over a given scope
 type LookupAssignmentResult struct {
 	// Additional data about the assignment
-	AdditionalData *AssignmentPropertiesResponseAdditionalData `pulumi:"additionalData"`
+	AdditionalData *AssignmentPropertiesAdditionalDataResponse `pulumi:"additionalData"`
 	// Component item with key as applied to this standard assignment over the given scope
 	AssignedComponent *AssignedComponentItemResponse `pulumi:"assignedComponent"`
 	// Standard item with key as applied to this standard assignment over the given scope
-	AssignedStandard *AssignedStandardItemResponse `pulumi:"assignedStandard"`
+	AssignedStandard *CommonAssignedStandardItemResponse `pulumi:"assignedStandard"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// description of the standardAssignment
 	Description *string `pulumi:"description"`
 	// display name of the standardAssignment
@@ -49,23 +51,23 @@ type LookupAssignmentResult struct {
 	Etag *string `pulumi:"etag"`
 	// Expiration date of this assignment as a full ISO date
 	ExpiresOn *string `pulumi:"expiresOn"`
-	// Resource Id
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Kind of the resource
 	Kind *string `pulumi:"kind"`
-	// Location where the resource is stored
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
 	Metadata interface{} `pulumi:"metadata"`
-	// Resource name
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Scope to which the standardAssignment applies - can be a subscription path or a resource group under that subscription
 	Scope *string `pulumi:"scope"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// A list of key value pairs that describe the resource.
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -81,7 +83,7 @@ func LookupAssignmentOutput(ctx *pulumi.Context, args LookupAssignmentOutputArgs
 type LookupAssignmentOutputArgs struct {
 	// The security assignment key - unique key for the standard assignment
 	AssignmentId pulumi.StringInput `pulumi:"assignmentId"`
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -105,8 +107,8 @@ func (o LookupAssignmentResultOutput) ToLookupAssignmentResultOutputWithContext(
 }
 
 // Additional data about the assignment
-func (o LookupAssignmentResultOutput) AdditionalData() AssignmentPropertiesResponseAdditionalDataPtrOutput {
-	return o.ApplyT(func(v LookupAssignmentResult) *AssignmentPropertiesResponseAdditionalData { return v.AdditionalData }).(AssignmentPropertiesResponseAdditionalDataPtrOutput)
+func (o LookupAssignmentResultOutput) AdditionalData() AssignmentPropertiesAdditionalDataResponsePtrOutput {
+	return o.ApplyT(func(v LookupAssignmentResult) *AssignmentPropertiesAdditionalDataResponse { return v.AdditionalData }).(AssignmentPropertiesAdditionalDataResponsePtrOutput)
 }
 
 // Component item with key as applied to this standard assignment over the given scope
@@ -115,8 +117,13 @@ func (o LookupAssignmentResultOutput) AssignedComponent() AssignedComponentItemR
 }
 
 // Standard item with key as applied to this standard assignment over the given scope
-func (o LookupAssignmentResultOutput) AssignedStandard() AssignedStandardItemResponsePtrOutput {
-	return o.ApplyT(func(v LookupAssignmentResult) *AssignedStandardItemResponse { return v.AssignedStandard }).(AssignedStandardItemResponsePtrOutput)
+func (o LookupAssignmentResultOutput) AssignedStandard() CommonAssignedStandardItemResponsePtrOutput {
+	return o.ApplyT(func(v LookupAssignmentResult) *CommonAssignedStandardItemResponse { return v.AssignedStandard }).(CommonAssignedStandardItemResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupAssignmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAssignmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // description of the standardAssignment
@@ -144,7 +151,7 @@ func (o LookupAssignmentResultOutput) ExpiresOn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) *string { return v.ExpiresOn }).(pulumi.StringPtrOutput)
 }
 
-// Resource Id
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupAssignmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -154,7 +161,7 @@ func (o LookupAssignmentResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Location where the resource is stored
+// The geo-location where the resource lives
 func (o LookupAssignmentResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -164,7 +171,7 @@ func (o LookupAssignmentResultOutput) Metadata() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) interface{} { return v.Metadata }).(pulumi.AnyOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o LookupAssignmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -179,12 +186,12 @@ func (o LookupAssignmentResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// A list of key value pairs that describe the resource.
+// Resource tags.
 func (o LookupAssignmentResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupAssignmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAssignmentResult) string { return v.Type }).(pulumi.StringOutput)
 }

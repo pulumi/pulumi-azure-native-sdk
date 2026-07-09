@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,7 +35,7 @@ type GetFactoryGitHubAccessTokenArgs struct {
 	GitHubClientId *string `pulumi:"gitHubClientId"`
 	// GitHub bring your own app client secret information.
 	GitHubClientSecret *GitHubClientSecret `pulumi:"gitHubClientSecret"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -65,7 +65,7 @@ type GetFactoryGitHubAccessTokenOutputArgs struct {
 	GitHubClientId pulumi.StringPtrInput `pulumi:"gitHubClientId"`
 	// GitHub bring your own app client secret information.
 	GitHubClientSecret GitHubClientSecretPtrInput `pulumi:"gitHubClientSecret"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 

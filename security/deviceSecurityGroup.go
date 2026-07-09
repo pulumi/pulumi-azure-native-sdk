@@ -8,27 +8,33 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The device security group resource
 //
-// Uses Azure REST API version 2019-08-01. In version 1.x of the Azure Native provider, it used API version 2019-08-01.
+// Uses Azure REST API version 2019-08-01. In version 2.x of the Azure Native provider, it used API version 2019-08-01.
+//
+// Other available API versions: 2017-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type DeviceSecurityGroup struct {
 	pulumi.CustomResourceState
 
 	// The allow-list custom alert rules.
 	AllowlistRules AllowlistCustomAlertRuleResponseArrayOutput `pulumi:"allowlistRules"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The deny-list custom alert rules.
 	DenylistRules DenylistCustomAlertRuleResponseArrayOutput `pulumi:"denylistRules"`
-	// Resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The list of custom alert threshold rules.
 	ThresholdRules ThresholdCustomAlertRuleResponseArrayOutput `pulumi:"thresholdRules"`
 	// The list of custom alert time-window rules.
 	TimeWindowRules TimeWindowCustomAlertRuleResponseArrayOutput `pulumi:"timeWindowRules"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -90,7 +96,7 @@ type deviceSecurityGroupArgs struct {
 	DenylistRules []DenylistCustomAlertRule `pulumi:"denylistRules"`
 	// The name of the device security group. Note that the name of the device security group is case insensitive.
 	DeviceSecurityGroupName *string `pulumi:"deviceSecurityGroupName"`
-	// The identifier of the resource.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceId string `pulumi:"resourceId"`
 	// The list of custom alert threshold rules.
 	ThresholdRules []ThresholdCustomAlertRule `pulumi:"thresholdRules"`
@@ -106,7 +112,7 @@ type DeviceSecurityGroupArgs struct {
 	DenylistRules DenylistCustomAlertRuleArrayInput
 	// The name of the device security group. Note that the name of the device security group is case insensitive.
 	DeviceSecurityGroupName pulumi.StringPtrInput
-	// The identifier of the resource.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceId pulumi.StringInput
 	// The list of custom alert threshold rules.
 	ThresholdRules ThresholdCustomAlertRuleArrayInput
@@ -156,14 +162,24 @@ func (o DeviceSecurityGroupOutput) AllowlistRules() AllowlistCustomAlertRuleResp
 	return o.ApplyT(func(v *DeviceSecurityGroup) AllowlistCustomAlertRuleResponseArrayOutput { return v.AllowlistRules }).(AllowlistCustomAlertRuleResponseArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o DeviceSecurityGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *DeviceSecurityGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The deny-list custom alert rules.
 func (o DeviceSecurityGroupOutput) DenylistRules() DenylistCustomAlertRuleResponseArrayOutput {
 	return o.ApplyT(func(v *DeviceSecurityGroup) DenylistCustomAlertRuleResponseArrayOutput { return v.DenylistRules }).(DenylistCustomAlertRuleResponseArrayOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o DeviceSecurityGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeviceSecurityGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o DeviceSecurityGroupOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *DeviceSecurityGroup) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The list of custom alert threshold rules.
@@ -176,7 +192,7 @@ func (o DeviceSecurityGroupOutput) TimeWindowRules() TimeWindowCustomAlertRuleRe
 	return o.ApplyT(func(v *DeviceSecurityGroup) TimeWindowCustomAlertRuleResponseArrayOutput { return v.TimeWindowRules }).(TimeWindowCustomAlertRuleResponseArrayOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o DeviceSecurityGroupOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeviceSecurityGroup) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

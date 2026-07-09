@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -556,6 +556,320 @@ func (o DraModelResponseSystemDataOutput) LastModifiedBy() pulumi.StringPtrOutpu
 // managedIdentity.
 func (o DraModelResponseSystemDataOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DraModelResponseSystemData) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+}
+
+// Fabric agent model properties.
+type FabricAgentModelProperties struct {
+	// Identity model.
+	AuthenticationIdentity IdentityModel `pulumi:"authenticationIdentity"`
+	// Fabric agent model custom properties.
+	CustomProperties VMwareFabricAgentModelCustomProperties `pulumi:"customProperties"`
+	// Gets or sets the machine Id where fabric agent is running.
+	MachineId string `pulumi:"machineId"`
+	// Gets or sets the machine name where fabric agent is running.
+	MachineName string `pulumi:"machineName"`
+	// Identity model.
+	ResourceAccessIdentity IdentityModel `pulumi:"resourceAccessIdentity"`
+}
+
+// FabricAgentModelPropertiesInput is an input type that accepts FabricAgentModelPropertiesArgs and FabricAgentModelPropertiesOutput values.
+// You can construct a concrete instance of `FabricAgentModelPropertiesInput` via:
+//
+//	FabricAgentModelPropertiesArgs{...}
+type FabricAgentModelPropertiesInput interface {
+	pulumi.Input
+
+	ToFabricAgentModelPropertiesOutput() FabricAgentModelPropertiesOutput
+	ToFabricAgentModelPropertiesOutputWithContext(context.Context) FabricAgentModelPropertiesOutput
+}
+
+// Fabric agent model properties.
+type FabricAgentModelPropertiesArgs struct {
+	// Identity model.
+	AuthenticationIdentity IdentityModelInput `pulumi:"authenticationIdentity"`
+	// Fabric agent model custom properties.
+	CustomProperties VMwareFabricAgentModelCustomPropertiesInput `pulumi:"customProperties"`
+	// Gets or sets the machine Id where fabric agent is running.
+	MachineId pulumi.StringInput `pulumi:"machineId"`
+	// Gets or sets the machine name where fabric agent is running.
+	MachineName pulumi.StringInput `pulumi:"machineName"`
+	// Identity model.
+	ResourceAccessIdentity IdentityModelInput `pulumi:"resourceAccessIdentity"`
+}
+
+func (FabricAgentModelPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FabricAgentModelProperties)(nil)).Elem()
+}
+
+func (i FabricAgentModelPropertiesArgs) ToFabricAgentModelPropertiesOutput() FabricAgentModelPropertiesOutput {
+	return i.ToFabricAgentModelPropertiesOutputWithContext(context.Background())
+}
+
+func (i FabricAgentModelPropertiesArgs) ToFabricAgentModelPropertiesOutputWithContext(ctx context.Context) FabricAgentModelPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FabricAgentModelPropertiesOutput)
+}
+
+func (i FabricAgentModelPropertiesArgs) ToFabricAgentModelPropertiesPtrOutput() FabricAgentModelPropertiesPtrOutput {
+	return i.ToFabricAgentModelPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i FabricAgentModelPropertiesArgs) ToFabricAgentModelPropertiesPtrOutputWithContext(ctx context.Context) FabricAgentModelPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FabricAgentModelPropertiesOutput).ToFabricAgentModelPropertiesPtrOutputWithContext(ctx)
+}
+
+// FabricAgentModelPropertiesPtrInput is an input type that accepts FabricAgentModelPropertiesArgs, FabricAgentModelPropertiesPtr and FabricAgentModelPropertiesPtrOutput values.
+// You can construct a concrete instance of `FabricAgentModelPropertiesPtrInput` via:
+//
+//	        FabricAgentModelPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type FabricAgentModelPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToFabricAgentModelPropertiesPtrOutput() FabricAgentModelPropertiesPtrOutput
+	ToFabricAgentModelPropertiesPtrOutputWithContext(context.Context) FabricAgentModelPropertiesPtrOutput
+}
+
+type fabricAgentModelPropertiesPtrType FabricAgentModelPropertiesArgs
+
+func FabricAgentModelPropertiesPtr(v *FabricAgentModelPropertiesArgs) FabricAgentModelPropertiesPtrInput {
+	return (*fabricAgentModelPropertiesPtrType)(v)
+}
+
+func (*fabricAgentModelPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FabricAgentModelProperties)(nil)).Elem()
+}
+
+func (i *fabricAgentModelPropertiesPtrType) ToFabricAgentModelPropertiesPtrOutput() FabricAgentModelPropertiesPtrOutput {
+	return i.ToFabricAgentModelPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *fabricAgentModelPropertiesPtrType) ToFabricAgentModelPropertiesPtrOutputWithContext(ctx context.Context) FabricAgentModelPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FabricAgentModelPropertiesPtrOutput)
+}
+
+// Fabric agent model properties.
+type FabricAgentModelPropertiesOutput struct{ *pulumi.OutputState }
+
+func (FabricAgentModelPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FabricAgentModelProperties)(nil)).Elem()
+}
+
+func (o FabricAgentModelPropertiesOutput) ToFabricAgentModelPropertiesOutput() FabricAgentModelPropertiesOutput {
+	return o
+}
+
+func (o FabricAgentModelPropertiesOutput) ToFabricAgentModelPropertiesOutputWithContext(ctx context.Context) FabricAgentModelPropertiesOutput {
+	return o
+}
+
+func (o FabricAgentModelPropertiesOutput) ToFabricAgentModelPropertiesPtrOutput() FabricAgentModelPropertiesPtrOutput {
+	return o.ToFabricAgentModelPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o FabricAgentModelPropertiesOutput) ToFabricAgentModelPropertiesPtrOutputWithContext(ctx context.Context) FabricAgentModelPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FabricAgentModelProperties) *FabricAgentModelProperties {
+		return &v
+	}).(FabricAgentModelPropertiesPtrOutput)
+}
+
+// Identity model.
+func (o FabricAgentModelPropertiesOutput) AuthenticationIdentity() IdentityModelOutput {
+	return o.ApplyT(func(v FabricAgentModelProperties) IdentityModel { return v.AuthenticationIdentity }).(IdentityModelOutput)
+}
+
+// Fabric agent model custom properties.
+func (o FabricAgentModelPropertiesOutput) CustomProperties() VMwareFabricAgentModelCustomPropertiesOutput {
+	return o.ApplyT(func(v FabricAgentModelProperties) VMwareFabricAgentModelCustomProperties { return v.CustomProperties }).(VMwareFabricAgentModelCustomPropertiesOutput)
+}
+
+// Gets or sets the machine Id where fabric agent is running.
+func (o FabricAgentModelPropertiesOutput) MachineId() pulumi.StringOutput {
+	return o.ApplyT(func(v FabricAgentModelProperties) string { return v.MachineId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the machine name where fabric agent is running.
+func (o FabricAgentModelPropertiesOutput) MachineName() pulumi.StringOutput {
+	return o.ApplyT(func(v FabricAgentModelProperties) string { return v.MachineName }).(pulumi.StringOutput)
+}
+
+// Identity model.
+func (o FabricAgentModelPropertiesOutput) ResourceAccessIdentity() IdentityModelOutput {
+	return o.ApplyT(func(v FabricAgentModelProperties) IdentityModel { return v.ResourceAccessIdentity }).(IdentityModelOutput)
+}
+
+type FabricAgentModelPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (FabricAgentModelPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FabricAgentModelProperties)(nil)).Elem()
+}
+
+func (o FabricAgentModelPropertiesPtrOutput) ToFabricAgentModelPropertiesPtrOutput() FabricAgentModelPropertiesPtrOutput {
+	return o
+}
+
+func (o FabricAgentModelPropertiesPtrOutput) ToFabricAgentModelPropertiesPtrOutputWithContext(ctx context.Context) FabricAgentModelPropertiesPtrOutput {
+	return o
+}
+
+func (o FabricAgentModelPropertiesPtrOutput) Elem() FabricAgentModelPropertiesOutput {
+	return o.ApplyT(func(v *FabricAgentModelProperties) FabricAgentModelProperties {
+		if v != nil {
+			return *v
+		}
+		var ret FabricAgentModelProperties
+		return ret
+	}).(FabricAgentModelPropertiesOutput)
+}
+
+// Identity model.
+func (o FabricAgentModelPropertiesPtrOutput) AuthenticationIdentity() IdentityModelPtrOutput {
+	return o.ApplyT(func(v *FabricAgentModelProperties) *IdentityModel {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthenticationIdentity
+	}).(IdentityModelPtrOutput)
+}
+
+// Fabric agent model custom properties.
+func (o FabricAgentModelPropertiesPtrOutput) CustomProperties() VMwareFabricAgentModelCustomPropertiesPtrOutput {
+	return o.ApplyT(func(v *FabricAgentModelProperties) *VMwareFabricAgentModelCustomProperties {
+		if v == nil {
+			return nil
+		}
+		return &v.CustomProperties
+	}).(VMwareFabricAgentModelCustomPropertiesPtrOutput)
+}
+
+// Gets or sets the machine Id where fabric agent is running.
+func (o FabricAgentModelPropertiesPtrOutput) MachineId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FabricAgentModelProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MachineId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the machine name where fabric agent is running.
+func (o FabricAgentModelPropertiesPtrOutput) MachineName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FabricAgentModelProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MachineName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identity model.
+func (o FabricAgentModelPropertiesPtrOutput) ResourceAccessIdentity() IdentityModelPtrOutput {
+	return o.ApplyT(func(v *FabricAgentModelProperties) *IdentityModel {
+		if v == nil {
+			return nil
+		}
+		return &v.ResourceAccessIdentity
+	}).(IdentityModelPtrOutput)
+}
+
+// Fabric agent model properties.
+type FabricAgentModelPropertiesResponse struct {
+	// Identity model.
+	AuthenticationIdentity IdentityModelResponse `pulumi:"authenticationIdentity"`
+	// Gets or sets the fabric agent correlation Id.
+	CorrelationId string `pulumi:"correlationId"`
+	// Fabric agent model custom properties.
+	CustomProperties VMwareFabricAgentModelCustomPropertiesResponse `pulumi:"customProperties"`
+	// Gets or sets the list of health errors.
+	HealthErrors []HealthErrorModelResponse `pulumi:"healthErrors"`
+	// Gets or sets a value indicating whether the fabric agent is responsive.
+	IsResponsive bool `pulumi:"isResponsive"`
+	// Gets or sets the time when last heartbeat was sent by the fabric agent.
+	LastHeartbeat string `pulumi:"lastHeartbeat"`
+	// Gets or sets the machine Id where fabric agent is running.
+	MachineId string `pulumi:"machineId"`
+	// Gets or sets the machine name where fabric agent is running.
+	MachineName string `pulumi:"machineName"`
+	// Gets or sets the provisioning state of the fabric agent.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Identity model.
+	ResourceAccessIdentity IdentityModelResponse `pulumi:"resourceAccessIdentity"`
+	// Gets or sets the fabric agent version.
+	VersionNumber string `pulumi:"versionNumber"`
+}
+
+// Fabric agent model properties.
+type FabricAgentModelPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (FabricAgentModelPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FabricAgentModelPropertiesResponse)(nil)).Elem()
+}
+
+func (o FabricAgentModelPropertiesResponseOutput) ToFabricAgentModelPropertiesResponseOutput() FabricAgentModelPropertiesResponseOutput {
+	return o
+}
+
+func (o FabricAgentModelPropertiesResponseOutput) ToFabricAgentModelPropertiesResponseOutputWithContext(ctx context.Context) FabricAgentModelPropertiesResponseOutput {
+	return o
+}
+
+// Identity model.
+func (o FabricAgentModelPropertiesResponseOutput) AuthenticationIdentity() IdentityModelResponseOutput {
+	return o.ApplyT(func(v FabricAgentModelPropertiesResponse) IdentityModelResponse { return v.AuthenticationIdentity }).(IdentityModelResponseOutput)
+}
+
+// Gets or sets the fabric agent correlation Id.
+func (o FabricAgentModelPropertiesResponseOutput) CorrelationId() pulumi.StringOutput {
+	return o.ApplyT(func(v FabricAgentModelPropertiesResponse) string { return v.CorrelationId }).(pulumi.StringOutput)
+}
+
+// Fabric agent model custom properties.
+func (o FabricAgentModelPropertiesResponseOutput) CustomProperties() VMwareFabricAgentModelCustomPropertiesResponseOutput {
+	return o.ApplyT(func(v FabricAgentModelPropertiesResponse) VMwareFabricAgentModelCustomPropertiesResponse {
+		return v.CustomProperties
+	}).(VMwareFabricAgentModelCustomPropertiesResponseOutput)
+}
+
+// Gets or sets the list of health errors.
+func (o FabricAgentModelPropertiesResponseOutput) HealthErrors() HealthErrorModelResponseArrayOutput {
+	return o.ApplyT(func(v FabricAgentModelPropertiesResponse) []HealthErrorModelResponse { return v.HealthErrors }).(HealthErrorModelResponseArrayOutput)
+}
+
+// Gets or sets a value indicating whether the fabric agent is responsive.
+func (o FabricAgentModelPropertiesResponseOutput) IsResponsive() pulumi.BoolOutput {
+	return o.ApplyT(func(v FabricAgentModelPropertiesResponse) bool { return v.IsResponsive }).(pulumi.BoolOutput)
+}
+
+// Gets or sets the time when last heartbeat was sent by the fabric agent.
+func (o FabricAgentModelPropertiesResponseOutput) LastHeartbeat() pulumi.StringOutput {
+	return o.ApplyT(func(v FabricAgentModelPropertiesResponse) string { return v.LastHeartbeat }).(pulumi.StringOutput)
+}
+
+// Gets or sets the machine Id where fabric agent is running.
+func (o FabricAgentModelPropertiesResponseOutput) MachineId() pulumi.StringOutput {
+	return o.ApplyT(func(v FabricAgentModelPropertiesResponse) string { return v.MachineId }).(pulumi.StringOutput)
+}
+
+// Gets or sets the machine name where fabric agent is running.
+func (o FabricAgentModelPropertiesResponseOutput) MachineName() pulumi.StringOutput {
+	return o.ApplyT(func(v FabricAgentModelPropertiesResponse) string { return v.MachineName }).(pulumi.StringOutput)
+}
+
+// Gets or sets the provisioning state of the fabric agent.
+func (o FabricAgentModelPropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v FabricAgentModelPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Identity model.
+func (o FabricAgentModelPropertiesResponseOutput) ResourceAccessIdentity() IdentityModelResponseOutput {
+	return o.ApplyT(func(v FabricAgentModelPropertiesResponse) IdentityModelResponse { return v.ResourceAccessIdentity }).(IdentityModelResponseOutput)
+}
+
+// Gets or sets the fabric agent version.
+func (o FabricAgentModelPropertiesResponseOutput) VersionNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v FabricAgentModelPropertiesResponse) string { return v.VersionNumber }).(pulumi.StringOutput)
 }
 
 // Fabric model properties.
@@ -2653,16 +2967,15 @@ func (o HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutpu
 
 // Identity model.
 type IdentityModel struct {
-	// Gets or sets the authority of the SPN with which Dra communicates to service.
+	// Gets or sets the authority of the SPN with which fabric agent communicates to service.
 	AadAuthority string `pulumi:"aadAuthority"`
-	// Gets or sets the client/application Id of the SPN with which Dra communicates to
-	// service.
+	// Gets or sets the client/application Id of the SPN with which fabric agent communicates to service.
 	ApplicationId string `pulumi:"applicationId"`
-	// Gets or sets the audience of the SPN with which Dra communicates to service.
+	// Gets or sets the audience of the SPN with which fabric agent communicates to service.
 	Audience string `pulumi:"audience"`
-	// Gets or sets the object Id of the SPN with which Dra communicates to service.
+	// Gets or sets the object Id of the SPN with which fabric agent communicates to service.
 	ObjectId string `pulumi:"objectId"`
-	// Gets or sets the tenant Id of the SPN with which Dra communicates to service.
+	// Gets or sets the tenant Id of the SPN with which fabric agent communicates to service.
 	TenantId string `pulumi:"tenantId"`
 }
 
@@ -2679,16 +2992,15 @@ type IdentityModelInput interface {
 
 // Identity model.
 type IdentityModelArgs struct {
-	// Gets or sets the authority of the SPN with which Dra communicates to service.
+	// Gets or sets the authority of the SPN with which fabric agent communicates to service.
 	AadAuthority pulumi.StringInput `pulumi:"aadAuthority"`
-	// Gets or sets the client/application Id of the SPN with which Dra communicates to
-	// service.
+	// Gets or sets the client/application Id of the SPN with which fabric agent communicates to service.
 	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
-	// Gets or sets the audience of the SPN with which Dra communicates to service.
+	// Gets or sets the audience of the SPN with which fabric agent communicates to service.
 	Audience pulumi.StringInput `pulumi:"audience"`
-	// Gets or sets the object Id of the SPN with which Dra communicates to service.
+	// Gets or sets the object Id of the SPN with which fabric agent communicates to service.
 	ObjectId pulumi.StringInput `pulumi:"objectId"`
-	// Gets or sets the tenant Id of the SPN with which Dra communicates to service.
+	// Gets or sets the tenant Id of the SPN with which fabric agent communicates to service.
 	TenantId pulumi.StringInput `pulumi:"tenantId"`
 }
 
@@ -2702,6 +3014,47 @@ func (i IdentityModelArgs) ToIdentityModelOutput() IdentityModelOutput {
 
 func (i IdentityModelArgs) ToIdentityModelOutputWithContext(ctx context.Context) IdentityModelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IdentityModelOutput)
+}
+
+func (i IdentityModelArgs) ToIdentityModelPtrOutput() IdentityModelPtrOutput {
+	return i.ToIdentityModelPtrOutputWithContext(context.Background())
+}
+
+func (i IdentityModelArgs) ToIdentityModelPtrOutputWithContext(ctx context.Context) IdentityModelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityModelOutput).ToIdentityModelPtrOutputWithContext(ctx)
+}
+
+// IdentityModelPtrInput is an input type that accepts IdentityModelArgs, IdentityModelPtr and IdentityModelPtrOutput values.
+// You can construct a concrete instance of `IdentityModelPtrInput` via:
+//
+//	        IdentityModelArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdentityModelPtrInput interface {
+	pulumi.Input
+
+	ToIdentityModelPtrOutput() IdentityModelPtrOutput
+	ToIdentityModelPtrOutputWithContext(context.Context) IdentityModelPtrOutput
+}
+
+type identityModelPtrType IdentityModelArgs
+
+func IdentityModelPtr(v *IdentityModelArgs) IdentityModelPtrInput {
+	return (*identityModelPtrType)(v)
+}
+
+func (*identityModelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityModel)(nil)).Elem()
+}
+
+func (i *identityModelPtrType) ToIdentityModelPtrOutput() IdentityModelPtrOutput {
+	return i.ToIdentityModelPtrOutputWithContext(context.Background())
+}
+
+func (i *identityModelPtrType) ToIdentityModelPtrOutputWithContext(ctx context.Context) IdentityModelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityModelPtrOutput)
 }
 
 // Identity model.
@@ -2719,44 +3072,126 @@ func (o IdentityModelOutput) ToIdentityModelOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Gets or sets the authority of the SPN with which Dra communicates to service.
+func (o IdentityModelOutput) ToIdentityModelPtrOutput() IdentityModelPtrOutput {
+	return o.ToIdentityModelPtrOutputWithContext(context.Background())
+}
+
+func (o IdentityModelOutput) ToIdentityModelPtrOutputWithContext(ctx context.Context) IdentityModelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentityModel) *IdentityModel {
+		return &v
+	}).(IdentityModelPtrOutput)
+}
+
+// Gets or sets the authority of the SPN with which fabric agent communicates to service.
 func (o IdentityModelOutput) AadAuthority() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityModel) string { return v.AadAuthority }).(pulumi.StringOutput)
 }
 
-// Gets or sets the client/application Id of the SPN with which Dra communicates to
-// service.
+// Gets or sets the client/application Id of the SPN with which fabric agent communicates to service.
 func (o IdentityModelOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityModel) string { return v.ApplicationId }).(pulumi.StringOutput)
 }
 
-// Gets or sets the audience of the SPN with which Dra communicates to service.
+// Gets or sets the audience of the SPN with which fabric agent communicates to service.
 func (o IdentityModelOutput) Audience() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityModel) string { return v.Audience }).(pulumi.StringOutput)
 }
 
-// Gets or sets the object Id of the SPN with which Dra communicates to service.
+// Gets or sets the object Id of the SPN with which fabric agent communicates to service.
 func (o IdentityModelOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityModel) string { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-// Gets or sets the tenant Id of the SPN with which Dra communicates to service.
+// Gets or sets the tenant Id of the SPN with which fabric agent communicates to service.
 func (o IdentityModelOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityModel) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
+type IdentityModelPtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityModelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityModel)(nil)).Elem()
+}
+
+func (o IdentityModelPtrOutput) ToIdentityModelPtrOutput() IdentityModelPtrOutput {
+	return o
+}
+
+func (o IdentityModelPtrOutput) ToIdentityModelPtrOutputWithContext(ctx context.Context) IdentityModelPtrOutput {
+	return o
+}
+
+func (o IdentityModelPtrOutput) Elem() IdentityModelOutput {
+	return o.ApplyT(func(v *IdentityModel) IdentityModel {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityModel
+		return ret
+	}).(IdentityModelOutput)
+}
+
+// Gets or sets the authority of the SPN with which fabric agent communicates to service.
+func (o IdentityModelPtrOutput) AadAuthority() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityModel) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AadAuthority
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the client/application Id of the SPN with which fabric agent communicates to service.
+func (o IdentityModelPtrOutput) ApplicationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityModel) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ApplicationId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the audience of the SPN with which fabric agent communicates to service.
+func (o IdentityModelPtrOutput) Audience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityModel) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Audience
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the object Id of the SPN with which fabric agent communicates to service.
+func (o IdentityModelPtrOutput) ObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityModel) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ObjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the tenant Id of the SPN with which fabric agent communicates to service.
+func (o IdentityModelPtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityModel) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Identity model.
 type IdentityModelResponse struct {
-	// Gets or sets the authority of the SPN with which Dra communicates to service.
+	// Gets or sets the authority of the SPN with which fabric agent communicates to service.
 	AadAuthority string `pulumi:"aadAuthority"`
-	// Gets or sets the client/application Id of the SPN with which Dra communicates to
-	// service.
+	// Gets or sets the client/application Id of the SPN with which fabric agent communicates to service.
 	ApplicationId string `pulumi:"applicationId"`
-	// Gets or sets the audience of the SPN with which Dra communicates to service.
+	// Gets or sets the audience of the SPN with which fabric agent communicates to service.
 	Audience string `pulumi:"audience"`
-	// Gets or sets the object Id of the SPN with which Dra communicates to service.
+	// Gets or sets the object Id of the SPN with which fabric agent communicates to service.
 	ObjectId string `pulumi:"objectId"`
-	// Gets or sets the tenant Id of the SPN with which Dra communicates to service.
+	// Gets or sets the tenant Id of the SPN with which fabric agent communicates to service.
 	TenantId string `pulumi:"tenantId"`
 }
 
@@ -2775,28 +3210,27 @@ func (o IdentityModelResponseOutput) ToIdentityModelResponseOutputWithContext(ct
 	return o
 }
 
-// Gets or sets the authority of the SPN with which Dra communicates to service.
+// Gets or sets the authority of the SPN with which fabric agent communicates to service.
 func (o IdentityModelResponseOutput) AadAuthority() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityModelResponse) string { return v.AadAuthority }).(pulumi.StringOutput)
 }
 
-// Gets or sets the client/application Id of the SPN with which Dra communicates to
-// service.
+// Gets or sets the client/application Id of the SPN with which fabric agent communicates to service.
 func (o IdentityModelResponseOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityModelResponse) string { return v.ApplicationId }).(pulumi.StringOutput)
 }
 
-// Gets or sets the audience of the SPN with which Dra communicates to service.
+// Gets or sets the audience of the SPN with which fabric agent communicates to service.
 func (o IdentityModelResponseOutput) Audience() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityModelResponse) string { return v.Audience }).(pulumi.StringOutput)
 }
 
-// Gets or sets the object Id of the SPN with which Dra communicates to service.
+// Gets or sets the object Id of the SPN with which fabric agent communicates to service.
 func (o IdentityModelResponseOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityModelResponse) string { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-// Gets or sets the tenant Id of the SPN with which Dra communicates to service.
+// Gets or sets the tenant Id of the SPN with which fabric agent communicates to service.
 func (o IdentityModelResponseOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityModelResponse) string { return v.TenantId }).(pulumi.StringOutput)
 }
@@ -3066,6 +3500,683 @@ func (o PolicyModelResponseSystemDataOutput) LastModifiedBy() pulumi.StringPtrOu
 // managedIdentity.
 func (o PolicyModelResponseSystemDataOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyModelResponseSystemData) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+}
+
+// Represent private Endpoint network resource that is linked to the Private Endpoint connection.
+type PrivateEndpoint struct {
+	// Gets or sets the id.
+	Id *string `pulumi:"id"`
+}
+
+// PrivateEndpointInput is an input type that accepts PrivateEndpointArgs and PrivateEndpointOutput values.
+// You can construct a concrete instance of `PrivateEndpointInput` via:
+//
+//	PrivateEndpointArgs{...}
+type PrivateEndpointInput interface {
+	pulumi.Input
+
+	ToPrivateEndpointOutput() PrivateEndpointOutput
+	ToPrivateEndpointOutputWithContext(context.Context) PrivateEndpointOutput
+}
+
+// Represent private Endpoint network resource that is linked to the Private Endpoint connection.
+type PrivateEndpointArgs struct {
+	// Gets or sets the id.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+}
+
+func (PrivateEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpoint)(nil)).Elem()
+}
+
+func (i PrivateEndpointArgs) ToPrivateEndpointOutput() PrivateEndpointOutput {
+	return i.ToPrivateEndpointOutputWithContext(context.Background())
+}
+
+func (i PrivateEndpointArgs) ToPrivateEndpointOutputWithContext(ctx context.Context) PrivateEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointOutput)
+}
+
+func (i PrivateEndpointArgs) ToPrivateEndpointPtrOutput() PrivateEndpointPtrOutput {
+	return i.ToPrivateEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i PrivateEndpointArgs) ToPrivateEndpointPtrOutputWithContext(ctx context.Context) PrivateEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointOutput).ToPrivateEndpointPtrOutputWithContext(ctx)
+}
+
+// PrivateEndpointPtrInput is an input type that accepts PrivateEndpointArgs, PrivateEndpointPtr and PrivateEndpointPtrOutput values.
+// You can construct a concrete instance of `PrivateEndpointPtrInput` via:
+//
+//	        PrivateEndpointArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrivateEndpointPtrInput interface {
+	pulumi.Input
+
+	ToPrivateEndpointPtrOutput() PrivateEndpointPtrOutput
+	ToPrivateEndpointPtrOutputWithContext(context.Context) PrivateEndpointPtrOutput
+}
+
+type privateEndpointPtrType PrivateEndpointArgs
+
+func PrivateEndpointPtr(v *PrivateEndpointArgs) PrivateEndpointPtrInput {
+	return (*privateEndpointPtrType)(v)
+}
+
+func (*privateEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateEndpoint)(nil)).Elem()
+}
+
+func (i *privateEndpointPtrType) ToPrivateEndpointPtrOutput() PrivateEndpointPtrOutput {
+	return i.ToPrivateEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *privateEndpointPtrType) ToPrivateEndpointPtrOutputWithContext(ctx context.Context) PrivateEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointPtrOutput)
+}
+
+// Represent private Endpoint network resource that is linked to the Private Endpoint connection.
+type PrivateEndpointOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpoint)(nil)).Elem()
+}
+
+func (o PrivateEndpointOutput) ToPrivateEndpointOutput() PrivateEndpointOutput {
+	return o
+}
+
+func (o PrivateEndpointOutput) ToPrivateEndpointOutputWithContext(ctx context.Context) PrivateEndpointOutput {
+	return o
+}
+
+func (o PrivateEndpointOutput) ToPrivateEndpointPtrOutput() PrivateEndpointPtrOutput {
+	return o.ToPrivateEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateEndpointOutput) ToPrivateEndpointPtrOutputWithContext(ctx context.Context) PrivateEndpointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateEndpoint) *PrivateEndpoint {
+		return &v
+	}).(PrivateEndpointPtrOutput)
+}
+
+// Gets or sets the id.
+func (o PrivateEndpointOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpoint) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type PrivateEndpointPtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateEndpoint)(nil)).Elem()
+}
+
+func (o PrivateEndpointPtrOutput) ToPrivateEndpointPtrOutput() PrivateEndpointPtrOutput {
+	return o
+}
+
+func (o PrivateEndpointPtrOutput) ToPrivateEndpointPtrOutputWithContext(ctx context.Context) PrivateEndpointPtrOutput {
+	return o
+}
+
+func (o PrivateEndpointPtrOutput) Elem() PrivateEndpointOutput {
+	return o.ApplyT(func(v *PrivateEndpoint) PrivateEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateEndpoint
+		return ret
+	}).(PrivateEndpointOutput)
+}
+
+// Gets or sets the id.
+func (o PrivateEndpointPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents Private endpoint connection response properties.
+type PrivateEndpointConnectionResponseProperties struct {
+	// Represent private Endpoint network resource that is linked to the Private Endpoint connection.
+	PrivateEndpoint *PrivateEndpoint `pulumi:"privateEndpoint"`
+	// Represents Private link service connection state.
+	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
+}
+
+// PrivateEndpointConnectionResponsePropertiesInput is an input type that accepts PrivateEndpointConnectionResponsePropertiesArgs and PrivateEndpointConnectionResponsePropertiesOutput values.
+// You can construct a concrete instance of `PrivateEndpointConnectionResponsePropertiesInput` via:
+//
+//	PrivateEndpointConnectionResponsePropertiesArgs{...}
+type PrivateEndpointConnectionResponsePropertiesInput interface {
+	pulumi.Input
+
+	ToPrivateEndpointConnectionResponsePropertiesOutput() PrivateEndpointConnectionResponsePropertiesOutput
+	ToPrivateEndpointConnectionResponsePropertiesOutputWithContext(context.Context) PrivateEndpointConnectionResponsePropertiesOutput
+}
+
+// Represents Private endpoint connection response properties.
+type PrivateEndpointConnectionResponsePropertiesArgs struct {
+	// Represent private Endpoint network resource that is linked to the Private Endpoint connection.
+	PrivateEndpoint PrivateEndpointPtrInput `pulumi:"privateEndpoint"`
+	// Represents Private link service connection state.
+	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStatePtrInput `pulumi:"privateLinkServiceConnectionState"`
+}
+
+func (PrivateEndpointConnectionResponsePropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnectionResponseProperties)(nil)).Elem()
+}
+
+func (i PrivateEndpointConnectionResponsePropertiesArgs) ToPrivateEndpointConnectionResponsePropertiesOutput() PrivateEndpointConnectionResponsePropertiesOutput {
+	return i.ToPrivateEndpointConnectionResponsePropertiesOutputWithContext(context.Background())
+}
+
+func (i PrivateEndpointConnectionResponsePropertiesArgs) ToPrivateEndpointConnectionResponsePropertiesOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponsePropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionResponsePropertiesOutput)
+}
+
+func (i PrivateEndpointConnectionResponsePropertiesArgs) ToPrivateEndpointConnectionResponsePropertiesPtrOutput() PrivateEndpointConnectionResponsePropertiesPtrOutput {
+	return i.ToPrivateEndpointConnectionResponsePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i PrivateEndpointConnectionResponsePropertiesArgs) ToPrivateEndpointConnectionResponsePropertiesPtrOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponsePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionResponsePropertiesOutput).ToPrivateEndpointConnectionResponsePropertiesPtrOutputWithContext(ctx)
+}
+
+// PrivateEndpointConnectionResponsePropertiesPtrInput is an input type that accepts PrivateEndpointConnectionResponsePropertiesArgs, PrivateEndpointConnectionResponsePropertiesPtr and PrivateEndpointConnectionResponsePropertiesPtrOutput values.
+// You can construct a concrete instance of `PrivateEndpointConnectionResponsePropertiesPtrInput` via:
+//
+//	        PrivateEndpointConnectionResponsePropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrivateEndpointConnectionResponsePropertiesPtrInput interface {
+	pulumi.Input
+
+	ToPrivateEndpointConnectionResponsePropertiesPtrOutput() PrivateEndpointConnectionResponsePropertiesPtrOutput
+	ToPrivateEndpointConnectionResponsePropertiesPtrOutputWithContext(context.Context) PrivateEndpointConnectionResponsePropertiesPtrOutput
+}
+
+type privateEndpointConnectionResponsePropertiesPtrType PrivateEndpointConnectionResponsePropertiesArgs
+
+func PrivateEndpointConnectionResponsePropertiesPtr(v *PrivateEndpointConnectionResponsePropertiesArgs) PrivateEndpointConnectionResponsePropertiesPtrInput {
+	return (*privateEndpointConnectionResponsePropertiesPtrType)(v)
+}
+
+func (*privateEndpointConnectionResponsePropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateEndpointConnectionResponseProperties)(nil)).Elem()
+}
+
+func (i *privateEndpointConnectionResponsePropertiesPtrType) ToPrivateEndpointConnectionResponsePropertiesPtrOutput() PrivateEndpointConnectionResponsePropertiesPtrOutput {
+	return i.ToPrivateEndpointConnectionResponsePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *privateEndpointConnectionResponsePropertiesPtrType) ToPrivateEndpointConnectionResponsePropertiesPtrOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponsePropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionResponsePropertiesPtrOutput)
+}
+
+// Represents Private endpoint connection response properties.
+type PrivateEndpointConnectionResponsePropertiesOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionResponsePropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnectionResponseProperties)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionResponsePropertiesOutput) ToPrivateEndpointConnectionResponsePropertiesOutput() PrivateEndpointConnectionResponsePropertiesOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionResponsePropertiesOutput) ToPrivateEndpointConnectionResponsePropertiesOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponsePropertiesOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionResponsePropertiesOutput) ToPrivateEndpointConnectionResponsePropertiesPtrOutput() PrivateEndpointConnectionResponsePropertiesPtrOutput {
+	return o.ToPrivateEndpointConnectionResponsePropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateEndpointConnectionResponsePropertiesOutput) ToPrivateEndpointConnectionResponsePropertiesPtrOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponsePropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateEndpointConnectionResponseProperties) *PrivateEndpointConnectionResponseProperties {
+		return &v
+	}).(PrivateEndpointConnectionResponsePropertiesPtrOutput)
+}
+
+// Represent private Endpoint network resource that is linked to the Private Endpoint connection.
+func (o PrivateEndpointConnectionResponsePropertiesOutput) PrivateEndpoint() PrivateEndpointPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponseProperties) *PrivateEndpoint { return v.PrivateEndpoint }).(PrivateEndpointPtrOutput)
+}
+
+// Represents Private link service connection state.
+func (o PrivateEndpointConnectionResponsePropertiesOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStatePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponseProperties) *PrivateLinkServiceConnectionState {
+		return v.PrivateLinkServiceConnectionState
+	}).(PrivateLinkServiceConnectionStatePtrOutput)
+}
+
+type PrivateEndpointConnectionResponsePropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionResponsePropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateEndpointConnectionResponseProperties)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionResponsePropertiesPtrOutput) ToPrivateEndpointConnectionResponsePropertiesPtrOutput() PrivateEndpointConnectionResponsePropertiesPtrOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionResponsePropertiesPtrOutput) ToPrivateEndpointConnectionResponsePropertiesPtrOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponsePropertiesPtrOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionResponsePropertiesPtrOutput) Elem() PrivateEndpointConnectionResponsePropertiesOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionResponseProperties) PrivateEndpointConnectionResponseProperties {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateEndpointConnectionResponseProperties
+		return ret
+	}).(PrivateEndpointConnectionResponsePropertiesOutput)
+}
+
+// Represent private Endpoint network resource that is linked to the Private Endpoint connection.
+func (o PrivateEndpointConnectionResponsePropertiesPtrOutput) PrivateEndpoint() PrivateEndpointPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionResponseProperties) *PrivateEndpoint {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateEndpoint
+	}).(PrivateEndpointPtrOutput)
+}
+
+// Represents Private link service connection state.
+func (o PrivateEndpointConnectionResponsePropertiesPtrOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStatePtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnectionResponseProperties) *PrivateLinkServiceConnectionState {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateLinkServiceConnectionState
+	}).(PrivateLinkServiceConnectionStatePtrOutput)
+}
+
+// Represents Private endpoint connection response properties.
+type PrivateEndpointConnectionResponsePropertiesResponse struct {
+	// Represent private Endpoint network resource that is linked to the Private Endpoint connection.
+	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
+	// Represents Private link service connection state.
+	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
+	// Gets or sets provisioning state of the private endpoint connection.
+	ProvisioningState string `pulumi:"provisioningState"`
+}
+
+// Represents Private endpoint connection response properties.
+type PrivateEndpointConnectionResponsePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionResponsePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnectionResponsePropertiesResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionResponsePropertiesResponseOutput) ToPrivateEndpointConnectionResponsePropertiesResponseOutput() PrivateEndpointConnectionResponsePropertiesResponseOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionResponsePropertiesResponseOutput) ToPrivateEndpointConnectionResponsePropertiesResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponsePropertiesResponseOutput {
+	return o
+}
+
+// Represent private Endpoint network resource that is linked to the Private Endpoint connection.
+func (o PrivateEndpointConnectionResponsePropertiesResponseOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponsePropertiesResponse) *PrivateEndpointResponse {
+		return v.PrivateEndpoint
+	}).(PrivateEndpointResponsePtrOutput)
+}
+
+// Represents Private link service connection state.
+func (o PrivateEndpointConnectionResponsePropertiesResponseOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponsePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponsePropertiesResponse) *PrivateLinkServiceConnectionStateResponse {
+		return v.PrivateLinkServiceConnectionState
+	}).(PrivateLinkServiceConnectionStateResponsePtrOutput)
+}
+
+// Gets or sets provisioning state of the private endpoint connection.
+func (o PrivateEndpointConnectionResponsePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponsePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Represent private Endpoint network resource that is linked to the Private Endpoint connection.
+type PrivateEndpointResponse struct {
+	// Gets or sets the id.
+	Id *string `pulumi:"id"`
+}
+
+// Represent private Endpoint network resource that is linked to the Private Endpoint connection.
+type PrivateEndpointResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutput() PrivateEndpointResponseOutput {
+	return o
+}
+
+func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContext(ctx context.Context) PrivateEndpointResponseOutput {
+	return o
+}
+
+// Gets or sets the id.
+func (o PrivateEndpointResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type PrivateEndpointResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateEndpointResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutput() PrivateEndpointResponsePtrOutput {
+	return o
+}
+
+func (o PrivateEndpointResponsePtrOutput) ToPrivateEndpointResponsePtrOutputWithContext(ctx context.Context) PrivateEndpointResponsePtrOutput {
+	return o
+}
+
+func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
+	return o.ApplyT(func(v *PrivateEndpointResponse) PrivateEndpointResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateEndpointResponse
+		return ret
+	}).(PrivateEndpointResponseOutput)
+}
+
+// Gets or sets the id.
+func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateEndpointResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents Private link service connection state.
+type PrivateLinkServiceConnectionState struct {
+	// Gets or sets actions required.
+	ActionsRequired *string `pulumi:"actionsRequired"`
+	// Gets or sets description.
+	Description *string `pulumi:"description"`
+	// Gets or sets the status.
+	Status *string `pulumi:"status"`
+}
+
+// PrivateLinkServiceConnectionStateInput is an input type that accepts PrivateLinkServiceConnectionStateArgs and PrivateLinkServiceConnectionStateOutput values.
+// You can construct a concrete instance of `PrivateLinkServiceConnectionStateInput` via:
+//
+//	PrivateLinkServiceConnectionStateArgs{...}
+type PrivateLinkServiceConnectionStateInput interface {
+	pulumi.Input
+
+	ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput
+	ToPrivateLinkServiceConnectionStateOutputWithContext(context.Context) PrivateLinkServiceConnectionStateOutput
+}
+
+// Represents Private link service connection state.
+type PrivateLinkServiceConnectionStateArgs struct {
+	// Gets or sets actions required.
+	ActionsRequired pulumi.StringPtrInput `pulumi:"actionsRequired"`
+	// Gets or sets description.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Gets or sets the status.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (PrivateLinkServiceConnectionStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
+}
+
+func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
+	return i.ToPrivateLinkServiceConnectionStateOutputWithContext(context.Background())
+}
+
+func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
+}
+
+func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput {
+	return i.ToPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Background())
+}
+
+func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput).ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx)
+}
+
+// PrivateLinkServiceConnectionStatePtrInput is an input type that accepts PrivateLinkServiceConnectionStateArgs, PrivateLinkServiceConnectionStatePtr and PrivateLinkServiceConnectionStatePtrOutput values.
+// You can construct a concrete instance of `PrivateLinkServiceConnectionStatePtrInput` via:
+//
+//	        PrivateLinkServiceConnectionStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrivateLinkServiceConnectionStatePtrInput interface {
+	pulumi.Input
+
+	ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput
+	ToPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Context) PrivateLinkServiceConnectionStatePtrOutput
+}
+
+type privateLinkServiceConnectionStatePtrType PrivateLinkServiceConnectionStateArgs
+
+func PrivateLinkServiceConnectionStatePtr(v *PrivateLinkServiceConnectionStateArgs) PrivateLinkServiceConnectionStatePtrInput {
+	return (*privateLinkServiceConnectionStatePtrType)(v)
+}
+
+func (*privateLinkServiceConnectionStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateLinkServiceConnectionState)(nil)).Elem()
+}
+
+func (i *privateLinkServiceConnectionStatePtrType) ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput {
+	return i.ToPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Background())
+}
+
+func (i *privateLinkServiceConnectionStatePtrType) ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStatePtrOutput)
+}
+
+// Represents Private link service connection state.
+type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkServiceConnectionStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateLinkServiceConnectionState)(nil)).Elem()
+}
+
+func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutput() PrivateLinkServiceConnectionStateOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStateOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput {
+	return o.ToPrivateLinkServiceConnectionStatePtrOutputWithContext(context.Background())
+}
+
+func (o PrivateLinkServiceConnectionStateOutput) ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateLinkServiceConnectionState) *PrivateLinkServiceConnectionState {
+		return &v
+	}).(PrivateLinkServiceConnectionStatePtrOutput)
+}
+
+// Gets or sets actions required.
+func (o PrivateLinkServiceConnectionStateOutput) ActionsRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets description.
+func (o PrivateLinkServiceConnectionStateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the status.
+func (o PrivateLinkServiceConnectionStateOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionState) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type PrivateLinkServiceConnectionStatePtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkServiceConnectionStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateLinkServiceConnectionState)(nil)).Elem()
+}
+
+func (o PrivateLinkServiceConnectionStatePtrOutput) ToPrivateLinkServiceConnectionStatePtrOutput() PrivateLinkServiceConnectionStatePtrOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionStatePtrOutput) ToPrivateLinkServiceConnectionStatePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStatePtrOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionStatePtrOutput) Elem() PrivateLinkServiceConnectionStateOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceConnectionState) PrivateLinkServiceConnectionState {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateLinkServiceConnectionState
+		return ret
+	}).(PrivateLinkServiceConnectionStateOutput)
+}
+
+// Gets or sets actions required.
+func (o PrivateLinkServiceConnectionStatePtrOutput) ActionsRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceConnectionState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActionsRequired
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets description.
+func (o PrivateLinkServiceConnectionStatePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceConnectionState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the status.
+func (o PrivateLinkServiceConnectionStatePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceConnectionState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents Private link service connection state.
+type PrivateLinkServiceConnectionStateResponse struct {
+	// Gets or sets actions required.
+	ActionsRequired *string `pulumi:"actionsRequired"`
+	// Gets or sets description.
+	Description *string `pulumi:"description"`
+	// Gets or sets the status.
+	Status *string `pulumi:"status"`
+}
+
+// Represents Private link service connection state.
+type PrivateLinkServiceConnectionStateResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkServiceConnectionStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateLinkServiceConnectionStateResponse)(nil)).Elem()
+}
+
+func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutput() PrivateLinkServiceConnectionStateResponseOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionStateResponseOutput) ToPrivateLinkServiceConnectionStateResponseOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponseOutput {
+	return o
+}
+
+// Gets or sets actions required.
+func (o PrivateLinkServiceConnectionStateResponseOutput) ActionsRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.ActionsRequired }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets description.
+func (o PrivateLinkServiceConnectionStateResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the status.
+func (o PrivateLinkServiceConnectionStateResponseOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateLinkServiceConnectionStateResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type PrivateLinkServiceConnectionStateResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateLinkServiceConnectionStateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateLinkServiceConnectionStateResponse)(nil)).Elem()
+}
+
+func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ToPrivateLinkServiceConnectionStateResponsePtrOutput() PrivateLinkServiceConnectionStateResponsePtrOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ToPrivateLinkServiceConnectionStateResponsePtrOutputWithContext(ctx context.Context) PrivateLinkServiceConnectionStateResponsePtrOutput {
+	return o
+}
+
+func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Elem() PrivateLinkServiceConnectionStateResponseOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceConnectionStateResponse) PrivateLinkServiceConnectionStateResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateLinkServiceConnectionStateResponse
+		return ret
+	}).(PrivateLinkServiceConnectionStateResponseOutput)
+}
+
+// Gets or sets actions required.
+func (o PrivateLinkServiceConnectionStateResponsePtrOutput) ActionsRequired() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceConnectionStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ActionsRequired
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets description.
+func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceConnectionStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Gets or sets the status.
+func (o PrivateLinkServiceConnectionStateResponsePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateLinkServiceConnectionStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Status
+	}).(pulumi.StringPtrOutput)
 }
 
 // Protected item dynamic memory config.
@@ -4277,6 +5388,67 @@ func (o StorageContainerPropertiesResponseArrayOutput) Index(i pulumi.IntInput) 
 	}).(StorageContainerPropertiesResponseOutput)
 }
 
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponse struct {
+	// The timestamp of resource creation (UTC).
+	CreatedAt *string `pulumi:"createdAt"`
+	// The identity that created the resource.
+	CreatedBy *string `pulumi:"createdBy"`
+	// The type of identity that created the resource.
+	CreatedByType *string `pulumi:"createdByType"`
+	// The timestamp of resource last modification (UTC)
+	LastModifiedAt *string `pulumi:"lastModifiedAt"`
+	// The identity that last modified the resource.
+	LastModifiedBy *string `pulumi:"lastModifiedBy"`
+	// The type of identity that last modified the resource.
+	LastModifiedByType *string `pulumi:"lastModifiedByType"`
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+type SystemDataResponseOutput struct{ *pulumi.OutputState }
+
+func (SystemDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SystemDataResponse)(nil)).Elem()
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutput() SystemDataResponseOutput {
+	return o
+}
+
+func (o SystemDataResponseOutput) ToSystemDataResponseOutputWithContext(ctx context.Context) SystemDataResponseOutput {
+	return o
+}
+
+// The timestamp of resource creation (UTC).
+func (o SystemDataResponseOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that created the resource.
+func (o SystemDataResponseOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that created the resource.
+func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of resource last modification (UTC)
+func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
+}
+
+// The identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedBy }).(pulumi.StringPtrOutput)
+}
+
+// The type of identity that last modified the resource.
+func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+}
+
 // VMware DRA model custom properties.
 type VMwareDraModelCustomProperties struct {
 	// Gets or sets the BIOS Id of the DRA machine.
@@ -4393,6 +5565,232 @@ func (o VMwareDraModelCustomPropertiesResponseOutput) InstanceType() pulumi.Stri
 // Identity model.
 func (o VMwareDraModelCustomPropertiesResponseOutput) MarsAuthenticationIdentity() IdentityModelResponseOutput {
 	return o.ApplyT(func(v VMwareDraModelCustomPropertiesResponse) IdentityModelResponse {
+		return v.MarsAuthenticationIdentity
+	}).(IdentityModelResponseOutput)
+}
+
+// VMware fabric agent model custom properties.
+type VMwareFabricAgentModelCustomProperties struct {
+	// Gets or sets the BIOS Id of the fabric agent machine.
+	BiosId string `pulumi:"biosId"`
+	// Discriminator property for FabricAgentModelCustomProperties.
+	// Expected value is 'VMware'.
+	InstanceType string `pulumi:"instanceType"`
+	// Identity model.
+	MarsAuthenticationIdentity IdentityModel `pulumi:"marsAuthenticationIdentity"`
+}
+
+// VMwareFabricAgentModelCustomPropertiesInput is an input type that accepts VMwareFabricAgentModelCustomPropertiesArgs and VMwareFabricAgentModelCustomPropertiesOutput values.
+// You can construct a concrete instance of `VMwareFabricAgentModelCustomPropertiesInput` via:
+//
+//	VMwareFabricAgentModelCustomPropertiesArgs{...}
+type VMwareFabricAgentModelCustomPropertiesInput interface {
+	pulumi.Input
+
+	ToVMwareFabricAgentModelCustomPropertiesOutput() VMwareFabricAgentModelCustomPropertiesOutput
+	ToVMwareFabricAgentModelCustomPropertiesOutputWithContext(context.Context) VMwareFabricAgentModelCustomPropertiesOutput
+}
+
+// VMware fabric agent model custom properties.
+type VMwareFabricAgentModelCustomPropertiesArgs struct {
+	// Gets or sets the BIOS Id of the fabric agent machine.
+	BiosId pulumi.StringInput `pulumi:"biosId"`
+	// Discriminator property for FabricAgentModelCustomProperties.
+	// Expected value is 'VMware'.
+	InstanceType pulumi.StringInput `pulumi:"instanceType"`
+	// Identity model.
+	MarsAuthenticationIdentity IdentityModelInput `pulumi:"marsAuthenticationIdentity"`
+}
+
+func (VMwareFabricAgentModelCustomPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMwareFabricAgentModelCustomProperties)(nil)).Elem()
+}
+
+func (i VMwareFabricAgentModelCustomPropertiesArgs) ToVMwareFabricAgentModelCustomPropertiesOutput() VMwareFabricAgentModelCustomPropertiesOutput {
+	return i.ToVMwareFabricAgentModelCustomPropertiesOutputWithContext(context.Background())
+}
+
+func (i VMwareFabricAgentModelCustomPropertiesArgs) ToVMwareFabricAgentModelCustomPropertiesOutputWithContext(ctx context.Context) VMwareFabricAgentModelCustomPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMwareFabricAgentModelCustomPropertiesOutput)
+}
+
+func (i VMwareFabricAgentModelCustomPropertiesArgs) ToVMwareFabricAgentModelCustomPropertiesPtrOutput() VMwareFabricAgentModelCustomPropertiesPtrOutput {
+	return i.ToVMwareFabricAgentModelCustomPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i VMwareFabricAgentModelCustomPropertiesArgs) ToVMwareFabricAgentModelCustomPropertiesPtrOutputWithContext(ctx context.Context) VMwareFabricAgentModelCustomPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMwareFabricAgentModelCustomPropertiesOutput).ToVMwareFabricAgentModelCustomPropertiesPtrOutputWithContext(ctx)
+}
+
+// VMwareFabricAgentModelCustomPropertiesPtrInput is an input type that accepts VMwareFabricAgentModelCustomPropertiesArgs, VMwareFabricAgentModelCustomPropertiesPtr and VMwareFabricAgentModelCustomPropertiesPtrOutput values.
+// You can construct a concrete instance of `VMwareFabricAgentModelCustomPropertiesPtrInput` via:
+//
+//	        VMwareFabricAgentModelCustomPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type VMwareFabricAgentModelCustomPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToVMwareFabricAgentModelCustomPropertiesPtrOutput() VMwareFabricAgentModelCustomPropertiesPtrOutput
+	ToVMwareFabricAgentModelCustomPropertiesPtrOutputWithContext(context.Context) VMwareFabricAgentModelCustomPropertiesPtrOutput
+}
+
+type vmwareFabricAgentModelCustomPropertiesPtrType VMwareFabricAgentModelCustomPropertiesArgs
+
+func VMwareFabricAgentModelCustomPropertiesPtr(v *VMwareFabricAgentModelCustomPropertiesArgs) VMwareFabricAgentModelCustomPropertiesPtrInput {
+	return (*vmwareFabricAgentModelCustomPropertiesPtrType)(v)
+}
+
+func (*vmwareFabricAgentModelCustomPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VMwareFabricAgentModelCustomProperties)(nil)).Elem()
+}
+
+func (i *vmwareFabricAgentModelCustomPropertiesPtrType) ToVMwareFabricAgentModelCustomPropertiesPtrOutput() VMwareFabricAgentModelCustomPropertiesPtrOutput {
+	return i.ToVMwareFabricAgentModelCustomPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *vmwareFabricAgentModelCustomPropertiesPtrType) ToVMwareFabricAgentModelCustomPropertiesPtrOutputWithContext(ctx context.Context) VMwareFabricAgentModelCustomPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VMwareFabricAgentModelCustomPropertiesPtrOutput)
+}
+
+// VMware fabric agent model custom properties.
+type VMwareFabricAgentModelCustomPropertiesOutput struct{ *pulumi.OutputState }
+
+func (VMwareFabricAgentModelCustomPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMwareFabricAgentModelCustomProperties)(nil)).Elem()
+}
+
+func (o VMwareFabricAgentModelCustomPropertiesOutput) ToVMwareFabricAgentModelCustomPropertiesOutput() VMwareFabricAgentModelCustomPropertiesOutput {
+	return o
+}
+
+func (o VMwareFabricAgentModelCustomPropertiesOutput) ToVMwareFabricAgentModelCustomPropertiesOutputWithContext(ctx context.Context) VMwareFabricAgentModelCustomPropertiesOutput {
+	return o
+}
+
+func (o VMwareFabricAgentModelCustomPropertiesOutput) ToVMwareFabricAgentModelCustomPropertiesPtrOutput() VMwareFabricAgentModelCustomPropertiesPtrOutput {
+	return o.ToVMwareFabricAgentModelCustomPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o VMwareFabricAgentModelCustomPropertiesOutput) ToVMwareFabricAgentModelCustomPropertiesPtrOutputWithContext(ctx context.Context) VMwareFabricAgentModelCustomPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VMwareFabricAgentModelCustomProperties) *VMwareFabricAgentModelCustomProperties {
+		return &v
+	}).(VMwareFabricAgentModelCustomPropertiesPtrOutput)
+}
+
+// Gets or sets the BIOS Id of the fabric agent machine.
+func (o VMwareFabricAgentModelCustomPropertiesOutput) BiosId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareFabricAgentModelCustomProperties) string { return v.BiosId }).(pulumi.StringOutput)
+}
+
+// Discriminator property for FabricAgentModelCustomProperties.
+// Expected value is 'VMware'.
+func (o VMwareFabricAgentModelCustomPropertiesOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareFabricAgentModelCustomProperties) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Identity model.
+func (o VMwareFabricAgentModelCustomPropertiesOutput) MarsAuthenticationIdentity() IdentityModelOutput {
+	return o.ApplyT(func(v VMwareFabricAgentModelCustomProperties) IdentityModel { return v.MarsAuthenticationIdentity }).(IdentityModelOutput)
+}
+
+type VMwareFabricAgentModelCustomPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (VMwareFabricAgentModelCustomPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VMwareFabricAgentModelCustomProperties)(nil)).Elem()
+}
+
+func (o VMwareFabricAgentModelCustomPropertiesPtrOutput) ToVMwareFabricAgentModelCustomPropertiesPtrOutput() VMwareFabricAgentModelCustomPropertiesPtrOutput {
+	return o
+}
+
+func (o VMwareFabricAgentModelCustomPropertiesPtrOutput) ToVMwareFabricAgentModelCustomPropertiesPtrOutputWithContext(ctx context.Context) VMwareFabricAgentModelCustomPropertiesPtrOutput {
+	return o
+}
+
+func (o VMwareFabricAgentModelCustomPropertiesPtrOutput) Elem() VMwareFabricAgentModelCustomPropertiesOutput {
+	return o.ApplyT(func(v *VMwareFabricAgentModelCustomProperties) VMwareFabricAgentModelCustomProperties {
+		if v != nil {
+			return *v
+		}
+		var ret VMwareFabricAgentModelCustomProperties
+		return ret
+	}).(VMwareFabricAgentModelCustomPropertiesOutput)
+}
+
+// Gets or sets the BIOS Id of the fabric agent machine.
+func (o VMwareFabricAgentModelCustomPropertiesPtrOutput) BiosId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VMwareFabricAgentModelCustomProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BiosId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Discriminator property for FabricAgentModelCustomProperties.
+// Expected value is 'VMware'.
+func (o VMwareFabricAgentModelCustomPropertiesPtrOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VMwareFabricAgentModelCustomProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identity model.
+func (o VMwareFabricAgentModelCustomPropertiesPtrOutput) MarsAuthenticationIdentity() IdentityModelPtrOutput {
+	return o.ApplyT(func(v *VMwareFabricAgentModelCustomProperties) *IdentityModel {
+		if v == nil {
+			return nil
+		}
+		return &v.MarsAuthenticationIdentity
+	}).(IdentityModelPtrOutput)
+}
+
+// VMware fabric agent model custom properties.
+type VMwareFabricAgentModelCustomPropertiesResponse struct {
+	// Gets or sets the BIOS Id of the fabric agent machine.
+	BiosId string `pulumi:"biosId"`
+	// Discriminator property for FabricAgentModelCustomProperties.
+	// Expected value is 'VMware'.
+	InstanceType string `pulumi:"instanceType"`
+	// Identity model.
+	MarsAuthenticationIdentity IdentityModelResponse `pulumi:"marsAuthenticationIdentity"`
+}
+
+// VMware fabric agent model custom properties.
+type VMwareFabricAgentModelCustomPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (VMwareFabricAgentModelCustomPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMwareFabricAgentModelCustomPropertiesResponse)(nil)).Elem()
+}
+
+func (o VMwareFabricAgentModelCustomPropertiesResponseOutput) ToVMwareFabricAgentModelCustomPropertiesResponseOutput() VMwareFabricAgentModelCustomPropertiesResponseOutput {
+	return o
+}
+
+func (o VMwareFabricAgentModelCustomPropertiesResponseOutput) ToVMwareFabricAgentModelCustomPropertiesResponseOutputWithContext(ctx context.Context) VMwareFabricAgentModelCustomPropertiesResponseOutput {
+	return o
+}
+
+// Gets or sets the BIOS Id of the fabric agent machine.
+func (o VMwareFabricAgentModelCustomPropertiesResponseOutput) BiosId() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareFabricAgentModelCustomPropertiesResponse) string { return v.BiosId }).(pulumi.StringOutput)
+}
+
+// Discriminator property for FabricAgentModelCustomProperties.
+// Expected value is 'VMware'.
+func (o VMwareFabricAgentModelCustomPropertiesResponseOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v VMwareFabricAgentModelCustomPropertiesResponse) string { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// Identity model.
+func (o VMwareFabricAgentModelCustomPropertiesResponseOutput) MarsAuthenticationIdentity() IdentityModelResponseOutput {
+	return o.ApplyT(func(v VMwareFabricAgentModelCustomPropertiesResponse) IdentityModelResponse {
 		return v.MarsAuthenticationIdentity
 	}).(IdentityModelResponseOutput)
 }
@@ -6496,6 +7894,9 @@ func init() {
 	pulumi.RegisterOutputType(DraModelPropertiesOutput{})
 	pulumi.RegisterOutputType(DraModelPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(DraModelResponseSystemDataOutput{})
+	pulumi.RegisterOutputType(FabricAgentModelPropertiesOutput{})
+	pulumi.RegisterOutputType(FabricAgentModelPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(FabricAgentModelPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(FabricModelPropertiesOutput{})
 	pulumi.RegisterOutputType(FabricModelPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(FabricModelResponseSystemDataOutput{})
@@ -6522,12 +7923,24 @@ func init() {
 	pulumi.RegisterOutputType(HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesOutput{})
 	pulumi.RegisterOutputType(HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(IdentityModelOutput{})
+	pulumi.RegisterOutputType(IdentityModelPtrOutput{})
 	pulumi.RegisterOutputType(IdentityModelResponseOutput{})
 	pulumi.RegisterOutputType(InnerHealthErrorModelResponseOutput{})
 	pulumi.RegisterOutputType(InnerHealthErrorModelResponseArrayOutput{})
 	pulumi.RegisterOutputType(PolicyModelPropertiesOutput{})
 	pulumi.RegisterOutputType(PolicyModelPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(PolicyModelResponseSystemDataOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointPtrOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionResponsePropertiesOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionResponsePropertiesPtrOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionResponsePropertiesResponseOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
+	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
+	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatePtrOutput{})
+	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponseOutput{})
+	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateResponsePtrOutput{})
 	pulumi.RegisterOutputType(ProtectedItemDynamicMemoryConfigOutput{})
 	pulumi.RegisterOutputType(ProtectedItemDynamicMemoryConfigPtrOutput{})
 	pulumi.RegisterOutputType(ProtectedItemDynamicMemoryConfigResponseOutput{})
@@ -6546,8 +7959,12 @@ func init() {
 	pulumi.RegisterOutputType(StorageContainerPropertiesArrayOutput{})
 	pulumi.RegisterOutputType(StorageContainerPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(StorageContainerPropertiesResponseArrayOutput{})
+	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(VMwareDraModelCustomPropertiesOutput{})
 	pulumi.RegisterOutputType(VMwareDraModelCustomPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(VMwareFabricAgentModelCustomPropertiesOutput{})
+	pulumi.RegisterOutputType(VMwareFabricAgentModelCustomPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(VMwareFabricAgentModelCustomPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(VMwareMigrateFabricModelCustomPropertiesOutput{})
 	pulumi.RegisterOutputType(VMwareMigrateFabricModelCustomPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(VMwareToAzStackHCIDiskInputOutput{})

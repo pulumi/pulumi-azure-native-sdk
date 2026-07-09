@@ -8,23 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Trigger resource type.
 //
-// Uses Azure REST API version 2018-06-01. In version 1.x of the Azure Native provider, it used API version 2018-06-01.
+// Uses Azure REST API version 2018-06-01. In version 2.x of the Azure Native provider, it used API version 2018-06-01.
 type Trigger struct {
 	pulumi.CustomResourceState
 
-	// Etag identifies change in the resource.
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Properties of the trigger.
 	Properties pulumi.AnyOutput `pulumi:"properties"`
-	// The resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -90,7 +94,7 @@ type triggerArgs struct {
 	FactoryName string `pulumi:"factoryName"`
 	// Properties of the trigger.
 	Properties interface{} `pulumi:"properties"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The trigger name.
 	TriggerName *string `pulumi:"triggerName"`
@@ -102,7 +106,7 @@ type TriggerArgs struct {
 	FactoryName pulumi.StringInput
 	// Properties of the trigger.
 	Properties pulumi.Input
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The trigger name.
 	TriggerName pulumi.StringPtrInput
@@ -145,12 +149,17 @@ func (o TriggerOutput) ToTriggerOutputWithContext(ctx context.Context) TriggerOu
 	return o
 }
 
-// Etag identifies change in the resource.
+// The Azure API version of the resource.
+func (o TriggerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
 func (o TriggerOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// The resource name.
+// The name of the resource
 func (o TriggerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -160,7 +169,12 @@ func (o TriggerOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.AnyOutput { return v.Properties }).(pulumi.AnyOutput)
 }
 
-// The resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o TriggerOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Trigger) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o TriggerOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

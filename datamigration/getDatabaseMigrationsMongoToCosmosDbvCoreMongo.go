@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get Database Migration resource.
 //
 // Uses Azure REST API version 2023-07-15-preview.
+//
+// Other available API versions: 2025-03-15-preview, 2025-06-30, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupDatabaseMigrationsMongoToCosmosDbvCoreMongo(ctx *pulumi.Context, args *LookupDatabaseMigrationsMongoToCosmosDbvCoreMongoArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseMigrationsMongoToCosmosDbvCoreMongoResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabaseMigrationsMongoToCosmosDbvCoreMongoResult
@@ -35,6 +37,8 @@ type LookupDatabaseMigrationsMongoToCosmosDbvCoreMongoArgs struct {
 
 // Database Migration Resource for Mongo to CosmosDb.
 type LookupDatabaseMigrationsMongoToCosmosDbvCoreMongoResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// List of Mongo Collections to be migrated.
 	CollectionList []MongoMigrationCollectionResponse `pulumi:"collectionList"`
 	// Database migration end time.
@@ -106,6 +110,11 @@ func (o LookupDatabaseMigrationsMongoToCosmosDbvCoreMongoResultOutput) ToLookupD
 
 func (o LookupDatabaseMigrationsMongoToCosmosDbvCoreMongoResultOutput) ToLookupDatabaseMigrationsMongoToCosmosDbvCoreMongoResultOutputWithContext(ctx context.Context) LookupDatabaseMigrationsMongoToCosmosDbvCoreMongoResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDatabaseMigrationsMongoToCosmosDbvCoreMongoResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseMigrationsMongoToCosmosDbvCoreMongoResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of Mongo Collections to be migrated.

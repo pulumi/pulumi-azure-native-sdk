@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The remediation definition.
 //
-// Uses Azure REST API version 2021-10-01. In version 1.x of the Azure Native provider, it used API version 2019-07-01.
+// Uses Azure REST API version 2024-10-01. In version 2.x of the Azure Native provider, it used API version 2021-10-01.
 //
-// Other available API versions: 2024-10-01.
+// Other available API versions: 2021-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native policyinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type RemediationAtResource struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The remediation correlation Id. Can be used to find events related to the remediation in the activity log.
 	CorrelationId pulumi.StringOutput `pulumi:"correlationId"`
 	// The time at which the remediation was created.
@@ -27,12 +29,12 @@ type RemediationAtResource struct {
 	// The deployment status summary for all deployments created by the remediation.
 	DeploymentStatus RemediationDeploymentSummaryResponseOutput `pulumi:"deploymentStatus"`
 	// The remediation failure threshold settings
-	FailureThreshold RemediationPropertiesResponseFailureThresholdPtrOutput `pulumi:"failureThreshold"`
+	FailureThreshold RemediationPropertiesFailureThresholdResponsePtrOutput `pulumi:"failureThreshold"`
 	// The filters that will be applied to determine which resources to remediate.
 	Filters RemediationFiltersResponsePtrOutput `pulumi:"filters"`
 	// The time at which the remediation was last updated.
 	LastUpdatedOn pulumi.StringOutput `pulumi:"lastUpdatedOn"`
-	// The name of the remediation.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Determines how many resources to remediate at any given time. Can be used to increase or reduce the pace of the remediation. If not provided, the default parallel deployments value is used.
 	ParallelDeployments pulumi.IntPtrOutput `pulumi:"parallelDeployments"`
@@ -50,7 +52,7 @@ type RemediationAtResource struct {
 	StatusMessage pulumi.StringOutput `pulumi:"statusMessage"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The type of the remediation.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -191,6 +193,11 @@ func (o RemediationAtResourceOutput) ToRemediationAtResourceOutputWithContext(ct
 	return o
 }
 
+// The Azure API version of the resource.
+func (o RemediationAtResourceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RemediationAtResource) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The remediation correlation Id. Can be used to find events related to the remediation in the activity log.
 func (o RemediationAtResourceOutput) CorrelationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RemediationAtResource) pulumi.StringOutput { return v.CorrelationId }).(pulumi.StringOutput)
@@ -207,10 +214,10 @@ func (o RemediationAtResourceOutput) DeploymentStatus() RemediationDeploymentSum
 }
 
 // The remediation failure threshold settings
-func (o RemediationAtResourceOutput) FailureThreshold() RemediationPropertiesResponseFailureThresholdPtrOutput {
-	return o.ApplyT(func(v *RemediationAtResource) RemediationPropertiesResponseFailureThresholdPtrOutput {
+func (o RemediationAtResourceOutput) FailureThreshold() RemediationPropertiesFailureThresholdResponsePtrOutput {
+	return o.ApplyT(func(v *RemediationAtResource) RemediationPropertiesFailureThresholdResponsePtrOutput {
 		return v.FailureThreshold
-	}).(RemediationPropertiesResponseFailureThresholdPtrOutput)
+	}).(RemediationPropertiesFailureThresholdResponsePtrOutput)
 }
 
 // The filters that will be applied to determine which resources to remediate.
@@ -223,7 +230,7 @@ func (o RemediationAtResourceOutput) LastUpdatedOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *RemediationAtResource) pulumi.StringOutput { return v.LastUpdatedOn }).(pulumi.StringOutput)
 }
 
-// The name of the remediation.
+// The name of the resource
 func (o RemediationAtResourceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RemediationAtResource) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -268,7 +275,7 @@ func (o RemediationAtResourceOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *RemediationAtResource) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the remediation.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o RemediationAtResourceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *RemediationAtResource) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

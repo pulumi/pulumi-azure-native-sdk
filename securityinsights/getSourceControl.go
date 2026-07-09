@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a source control byt its identifier.
 //
-// Uses Azure REST API version 2023-05-01-preview.
+// Uses Azure REST API version 2025-09-01.
 //
-// Other available API versions: 2021-03-01-preview.
+// Other available API versions: 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSourceControl(ctx *pulumi.Context, args *LookupSourceControlArgs, opts ...pulumi.InvokeOption) (*LookupSourceControlResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSourceControlResult
@@ -37,6 +37,8 @@ type LookupSourceControlArgs struct {
 
 // Represents a SourceControl in Azure Security Insights.
 type LookupSourceControlResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Array of source control content types.
 	ContentTypes []string `pulumi:"contentTypes"`
 	// A description of the source control
@@ -48,21 +50,27 @@ type LookupSourceControlResult struct {
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Information regarding the latest deployment for the source control.
-	LastDeploymentInfo *DeploymentInfoResponse `pulumi:"lastDeploymentInfo"`
+	LastDeploymentInfo DeploymentInfoResponse `pulumi:"lastDeploymentInfo"`
 	// The name of the resource
 	Name string `pulumi:"name"`
+	// Information regarding the pull request of the source control.
+	PullRequest PullRequestResponse `pulumi:"pullRequest"`
 	// The repository type of the source control
 	RepoType string `pulumi:"repoType"`
 	// Repository metadata.
 	Repository RepositoryResponse `pulumi:"repository"`
 	// Information regarding the resources created in user's repository.
 	RepositoryResourceInfo *RepositoryResourceInfoResponse `pulumi:"repositoryResourceInfo"`
+	// Service principal metadata.
+	ServicePrincipal *ServicePrincipalResponse `pulumi:"servicePrincipal"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The version number associated with the source control
-	Version *string `pulumi:"version"`
+	Version string `pulumi:"version"`
+	// Workload Identity metadata.
+	WorkloadIdentityFederation WorkloadIdentityFederationResponse `pulumi:"workloadIdentityFederation"`
 }
 
 func LookupSourceControlOutput(ctx *pulumi.Context, args LookupSourceControlOutputArgs, opts ...pulumi.InvokeOption) LookupSourceControlResultOutput {
@@ -102,6 +110,11 @@ func (o LookupSourceControlResultOutput) ToLookupSourceControlResultOutputWithCo
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupSourceControlResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSourceControlResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Array of source control content types.
 func (o LookupSourceControlResultOutput) ContentTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSourceControlResult) []string { return v.ContentTypes }).(pulumi.StringArrayOutput)
@@ -128,13 +141,18 @@ func (o LookupSourceControlResultOutput) Id() pulumi.StringOutput {
 }
 
 // Information regarding the latest deployment for the source control.
-func (o LookupSourceControlResultOutput) LastDeploymentInfo() DeploymentInfoResponsePtrOutput {
-	return o.ApplyT(func(v LookupSourceControlResult) *DeploymentInfoResponse { return v.LastDeploymentInfo }).(DeploymentInfoResponsePtrOutput)
+func (o LookupSourceControlResultOutput) LastDeploymentInfo() DeploymentInfoResponseOutput {
+	return o.ApplyT(func(v LookupSourceControlResult) DeploymentInfoResponse { return v.LastDeploymentInfo }).(DeploymentInfoResponseOutput)
 }
 
 // The name of the resource
 func (o LookupSourceControlResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSourceControlResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Information regarding the pull request of the source control.
+func (o LookupSourceControlResultOutput) PullRequest() PullRequestResponseOutput {
+	return o.ApplyT(func(v LookupSourceControlResult) PullRequestResponse { return v.PullRequest }).(PullRequestResponseOutput)
 }
 
 // The repository type of the source control
@@ -152,6 +170,11 @@ func (o LookupSourceControlResultOutput) RepositoryResourceInfo() RepositoryReso
 	return o.ApplyT(func(v LookupSourceControlResult) *RepositoryResourceInfoResponse { return v.RepositoryResourceInfo }).(RepositoryResourceInfoResponsePtrOutput)
 }
 
+// Service principal metadata.
+func (o LookupSourceControlResultOutput) ServicePrincipal() ServicePrincipalResponsePtrOutput {
+	return o.ApplyT(func(v LookupSourceControlResult) *ServicePrincipalResponse { return v.ServicePrincipal }).(ServicePrincipalResponsePtrOutput)
+}
+
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupSourceControlResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSourceControlResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
@@ -163,8 +186,15 @@ func (o LookupSourceControlResultOutput) Type() pulumi.StringOutput {
 }
 
 // The version number associated with the source control
-func (o LookupSourceControlResultOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupSourceControlResult) *string { return v.Version }).(pulumi.StringPtrOutput)
+func (o LookupSourceControlResultOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSourceControlResult) string { return v.Version }).(pulumi.StringOutput)
+}
+
+// Workload Identity metadata.
+func (o LookupSourceControlResultOutput) WorkloadIdentityFederation() WorkloadIdentityFederationResponseOutput {
+	return o.ApplyT(func(v LookupSourceControlResult) WorkloadIdentityFederationResponse {
+		return v.WorkloadIdentityFederation
+	}).(WorkloadIdentityFederationResponseOutput)
 }
 
 func init() {

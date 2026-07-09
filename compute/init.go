@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,8 +27,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CapacityReservation{}
 	case "azure-native:compute:CapacityReservationGroup":
 		r = &CapacityReservationGroup{}
-	case "azure-native:compute:CloudService":
-		r = &CloudService{}
 	case "azure-native:compute:DedicatedHost":
 		r = &DedicatedHost{}
 	case "azure-native:compute:DedicatedHostGroup":
@@ -55,6 +53,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GalleryInVMAccessControlProfile{}
 	case "azure-native:compute:GalleryInVMAccessControlProfileVersion":
 		r = &GalleryInVMAccessControlProfileVersion{}
+	case "azure-native:compute:GalleryScript":
+		r = &GalleryScript{}
+	case "azure-native:compute:GalleryScriptVersion":
+		r = &GalleryScriptVersion{}
 	case "azure-native:compute:Image":
 		r = &Image{}
 	case "azure-native:compute:ProximityPlacementGroup":

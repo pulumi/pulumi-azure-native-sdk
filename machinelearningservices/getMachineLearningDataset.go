@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +35,8 @@ type LookupMachineLearningDatasetArgs struct {
 
 // Machine Learning dataset object wrapped into ARM resource envelope.
 type LookupMachineLearningDatasetResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Specifies the resource ID.
 	Id string `pulumi:"id"`
 	// The identity of the resource.
@@ -88,6 +90,11 @@ func (o LookupMachineLearningDatasetResultOutput) ToLookupMachineLearningDataset
 
 func (o LookupMachineLearningDatasetResultOutput) ToLookupMachineLearningDatasetResultOutputWithContext(ctx context.Context) LookupMachineLearningDatasetResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupMachineLearningDatasetResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMachineLearningDatasetResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Specifies the resource ID.

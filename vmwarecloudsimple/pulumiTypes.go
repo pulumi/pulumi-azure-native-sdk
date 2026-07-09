@@ -7,11 +7,135 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = utilities.GetEnvOrDefault
+
+// Properties of dedicated cloud node
+type DedicatedCloudNodePropertiesResponse struct {
+	// Availability Zone id, e.g. "az1"
+	AvailabilityZoneId string `pulumi:"availabilityZoneId"`
+	// Availability Zone name, e.g. "Availability Zone 1"
+	AvailabilityZoneName string `pulumi:"availabilityZoneName"`
+	// VMWare Cloud Rack Name
+	CloudRackName string `pulumi:"cloudRackName"`
+	// date time the resource was created
+	Created string `pulumi:"created"`
+	// SKU's id
+	Id string `pulumi:"id"`
+	// SKU's name
+	Name string `pulumi:"name"`
+	// count of nodes to create
+	NodesCount int `pulumi:"nodesCount"`
+	// Placement Group id, e.g. "n1"
+	PlacementGroupId string `pulumi:"placementGroupId"`
+	// Placement Name, e.g. "Placement Group 1"
+	PlacementGroupName string `pulumi:"placementGroupName"`
+	// Private Cloud Id
+	PrivateCloudId string `pulumi:"privateCloudId"`
+	// Resource Pool Name
+	PrivateCloudName string `pulumi:"privateCloudName"`
+	// The provisioning status of the resource
+	ProvisioningState string `pulumi:"provisioningState"`
+	// purchase id
+	PurchaseId string `pulumi:"purchaseId"`
+	// Node status, indicates is private cloud set up on this node or not
+	Status string `pulumi:"status"`
+	// VMWare Cluster Name
+	VmwareClusterName string `pulumi:"vmwareClusterName"`
+}
+
+// Properties of dedicated cloud node
+type DedicatedCloudNodePropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (DedicatedCloudNodePropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DedicatedCloudNodePropertiesResponse)(nil)).Elem()
+}
+
+func (o DedicatedCloudNodePropertiesResponseOutput) ToDedicatedCloudNodePropertiesResponseOutput() DedicatedCloudNodePropertiesResponseOutput {
+	return o
+}
+
+func (o DedicatedCloudNodePropertiesResponseOutput) ToDedicatedCloudNodePropertiesResponseOutputWithContext(ctx context.Context) DedicatedCloudNodePropertiesResponseOutput {
+	return o
+}
+
+// Availability Zone id, e.g. "az1"
+func (o DedicatedCloudNodePropertiesResponseOutput) AvailabilityZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v DedicatedCloudNodePropertiesResponse) string { return v.AvailabilityZoneId }).(pulumi.StringOutput)
+}
+
+// Availability Zone name, e.g. "Availability Zone 1"
+func (o DedicatedCloudNodePropertiesResponseOutput) AvailabilityZoneName() pulumi.StringOutput {
+	return o.ApplyT(func(v DedicatedCloudNodePropertiesResponse) string { return v.AvailabilityZoneName }).(pulumi.StringOutput)
+}
+
+// VMWare Cloud Rack Name
+func (o DedicatedCloudNodePropertiesResponseOutput) CloudRackName() pulumi.StringOutput {
+	return o.ApplyT(func(v DedicatedCloudNodePropertiesResponse) string { return v.CloudRackName }).(pulumi.StringOutput)
+}
+
+// date time the resource was created
+func (o DedicatedCloudNodePropertiesResponseOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v DedicatedCloudNodePropertiesResponse) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// SKU's id
+func (o DedicatedCloudNodePropertiesResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v DedicatedCloudNodePropertiesResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// SKU's name
+func (o DedicatedCloudNodePropertiesResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DedicatedCloudNodePropertiesResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// count of nodes to create
+func (o DedicatedCloudNodePropertiesResponseOutput) NodesCount() pulumi.IntOutput {
+	return o.ApplyT(func(v DedicatedCloudNodePropertiesResponse) int { return v.NodesCount }).(pulumi.IntOutput)
+}
+
+// Placement Group id, e.g. "n1"
+func (o DedicatedCloudNodePropertiesResponseOutput) PlacementGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v DedicatedCloudNodePropertiesResponse) string { return v.PlacementGroupId }).(pulumi.StringOutput)
+}
+
+// Placement Name, e.g. "Placement Group 1"
+func (o DedicatedCloudNodePropertiesResponseOutput) PlacementGroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v DedicatedCloudNodePropertiesResponse) string { return v.PlacementGroupName }).(pulumi.StringOutput)
+}
+
+// Private Cloud Id
+func (o DedicatedCloudNodePropertiesResponseOutput) PrivateCloudId() pulumi.StringOutput {
+	return o.ApplyT(func(v DedicatedCloudNodePropertiesResponse) string { return v.PrivateCloudId }).(pulumi.StringOutput)
+}
+
+// Resource Pool Name
+func (o DedicatedCloudNodePropertiesResponseOutput) PrivateCloudName() pulumi.StringOutput {
+	return o.ApplyT(func(v DedicatedCloudNodePropertiesResponse) string { return v.PrivateCloudName }).(pulumi.StringOutput)
+}
+
+// The provisioning status of the resource
+func (o DedicatedCloudNodePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v DedicatedCloudNodePropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// purchase id
+func (o DedicatedCloudNodePropertiesResponseOutput) PurchaseId() pulumi.StringOutput {
+	return o.ApplyT(func(v DedicatedCloudNodePropertiesResponse) string { return v.PurchaseId }).(pulumi.StringOutput)
+}
+
+// Node status, indicates is private cloud set up on this node or not
+func (o DedicatedCloudNodePropertiesResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v DedicatedCloudNodePropertiesResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// VMWare Cluster Name
+func (o DedicatedCloudNodePropertiesResponseOutput) VmwareClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v DedicatedCloudNodePropertiesResponse) string { return v.VmwareClusterName }).(pulumi.StringOutput)
+}
 
 // Guest OS Customization properties
 type GuestOSCustomization struct {
@@ -2036,6 +2160,7 @@ func (o VirtualNicResponseArrayOutput) Index(i pulumi.IntInput) VirtualNicRespon
 }
 
 func init() {
+	pulumi.RegisterOutputType(DedicatedCloudNodePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(GuestOSCustomizationOutput{})
 	pulumi.RegisterOutputType(GuestOSCustomizationPtrOutput{})
 	pulumi.RegisterOutputType(GuestOSCustomizationResponseOutput{})

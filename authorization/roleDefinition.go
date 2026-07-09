@@ -8,25 +8,29 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Role definition.
 //
-// Uses Azure REST API version 2022-05-01-preview. In version 1.x of the Azure Native provider, it used API version 2018-01-01-preview.
+// Uses Azure REST API version 2022-05-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-05-01-preview.
+//
+// Other available API versions: 2022-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type RoleDefinition struct {
 	pulumi.CustomResourceState
 
 	// Role definition assignable scopes.
 	AssignableScopes pulumi.StringArrayOutput `pulumi:"assignableScopes"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Id of the user who created the assignment
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
 	// Time it was created
 	CreatedOn pulumi.StringOutput `pulumi:"createdOn"`
 	// The role definition description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The role definition name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Role definition permissions.
 	Permissions PermissionResponseArrayOutput `pulumi:"permissions"`
@@ -34,7 +38,9 @@ type RoleDefinition struct {
 	RoleName pulumi.StringPtrOutput `pulumi:"roleName"`
 	// The role type.
 	RoleType pulumi.StringPtrOutput `pulumi:"roleType"`
-	// The role definition type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Id of the user who updated the assignment
 	UpdatedBy pulumi.StringOutput `pulumi:"updatedBy"`
@@ -112,7 +118,7 @@ type roleDefinitionArgs struct {
 	RoleName *string `pulumi:"roleName"`
 	// The role type.
 	RoleType *string `pulumi:"roleType"`
-	// The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+	// The fully qualified Azure Resource manager identifier of the resource.
 	Scope string `pulumi:"scope"`
 }
 
@@ -130,7 +136,7 @@ type RoleDefinitionArgs struct {
 	RoleName pulumi.StringPtrInput
 	// The role type.
 	RoleType pulumi.StringPtrInput
-	// The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+	// The fully qualified Azure Resource manager identifier of the resource.
 	Scope pulumi.StringInput
 }
 
@@ -176,6 +182,11 @@ func (o RoleDefinitionOutput) AssignableScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RoleDefinition) pulumi.StringArrayOutput { return v.AssignableScopes }).(pulumi.StringArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o RoleDefinitionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoleDefinition) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Id of the user who created the assignment
 func (o RoleDefinitionOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *RoleDefinition) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
@@ -191,7 +202,7 @@ func (o RoleDefinitionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RoleDefinition) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The role definition name.
+// The name of the resource
 func (o RoleDefinitionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RoleDefinition) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -211,7 +222,12 @@ func (o RoleDefinitionOutput) RoleType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RoleDefinition) pulumi.StringPtrOutput { return v.RoleType }).(pulumi.StringPtrOutput)
 }
 
-// The role definition type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o RoleDefinitionOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *RoleDefinition) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o RoleDefinitionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *RoleDefinition) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

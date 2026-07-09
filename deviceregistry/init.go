@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,10 +25,24 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Asset{}
 	case "azure-native:deviceregistry:AssetEndpointProfile":
 		r = &AssetEndpointProfile{}
+	case "azure-native:deviceregistry:Credential":
+		r = &Credential{}
 	case "azure-native:deviceregistry:DiscoveredAsset":
 		r = &DiscoveredAsset{}
 	case "azure-native:deviceregistry:DiscoveredAssetEndpointProfile":
 		r = &DiscoveredAssetEndpointProfile{}
+	case "azure-native:deviceregistry:Namespace":
+		r = &Namespace{}
+	case "azure-native:deviceregistry:NamespaceAsset":
+		r = &NamespaceAsset{}
+	case "azure-native:deviceregistry:NamespaceDevice":
+		r = &NamespaceDevice{}
+	case "azure-native:deviceregistry:NamespaceDiscoveredAsset":
+		r = &NamespaceDiscoveredAsset{}
+	case "azure-native:deviceregistry:NamespaceDiscoveredDevice":
+		r = &NamespaceDiscoveredDevice{}
+	case "azure-native:deviceregistry:Policy":
+		r = &Policy{}
 	case "azure-native:deviceregistry:Schema":
 		r = &Schema{}
 	case "azure-native:deviceregistry:SchemaRegistry":

@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Definition of the connection.
 //
-// Uses Azure REST API version 2022-08-08. In version 1.x of the Azure Native provider, it used API version 2019-06-01.
+// Uses Azure REST API version 2024-10-23. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
 //
-// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
+// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Connection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the connectionType of the connection.
 	ConnectionType ConnectionTypeAssociationPropertyResponsePtrOutput `pulumi:"connectionType"`
 	// Gets the creation time.
@@ -32,7 +34,9 @@ type Connection struct {
 	LastModifiedTime pulumi.StringOutput `pulumi:"lastModifiedTime"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The type of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -114,7 +118,7 @@ func (ConnectionState) ElementType() reflect.Type {
 type connectionArgs struct {
 	// The name of the automation account.
 	AutomationAccountName string `pulumi:"automationAccountName"`
-	// The parameters supplied to the create or update connection operation.
+	// The name of connection.
 	ConnectionName *string `pulumi:"connectionName"`
 	// Gets or sets the connectionType of the connection.
 	ConnectionType ConnectionTypeAssociationProperty `pulumi:"connectionType"`
@@ -124,7 +128,7 @@ type connectionArgs struct {
 	FieldDefinitionValues map[string]string `pulumi:"fieldDefinitionValues"`
 	// Gets or sets the name of the connection.
 	Name string `pulumi:"name"`
-	// Name of an Azure Resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -132,7 +136,7 @@ type connectionArgs struct {
 type ConnectionArgs struct {
 	// The name of the automation account.
 	AutomationAccountName pulumi.StringInput
-	// The parameters supplied to the create or update connection operation.
+	// The name of connection.
 	ConnectionName pulumi.StringPtrInput
 	// Gets or sets the connectionType of the connection.
 	ConnectionType ConnectionTypeAssociationPropertyInput
@@ -142,7 +146,7 @@ type ConnectionArgs struct {
 	FieldDefinitionValues pulumi.StringMapInput
 	// Gets or sets the name of the connection.
 	Name pulumi.StringInput
-	// Name of an Azure Resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 }
 
@@ -183,6 +187,11 @@ func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) Con
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Gets or sets the connectionType of the connection.
 func (o ConnectionOutput) ConnectionType() ConnectionTypeAssociationPropertyResponsePtrOutput {
 	return o.ApplyT(func(v *Connection) ConnectionTypeAssociationPropertyResponsePtrOutput { return v.ConnectionType }).(ConnectionTypeAssociationPropertyResponsePtrOutput)
@@ -213,7 +222,12 @@ func (o ConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The type of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o ConnectionOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Connection) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ConnectionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

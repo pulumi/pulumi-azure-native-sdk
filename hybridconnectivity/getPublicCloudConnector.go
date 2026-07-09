@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +35,8 @@ type LookupPublicCloudConnectorArgs struct {
 type LookupPublicCloudConnectorResult struct {
 	// Cloud profile for AWS.
 	AwsCloudProfile AwsCloudProfileResponse `pulumi:"awsCloudProfile"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Connector primary identifier.
 	ConnectorPrimaryIdentifier string `pulumi:"connectorPrimaryIdentifier"`
 	// Host cloud the public cloud connector.
@@ -103,6 +105,11 @@ func (o LookupPublicCloudConnectorResultOutput) ToLookupPublicCloudConnectorResu
 // Cloud profile for AWS.
 func (o LookupPublicCloudConnectorResultOutput) AwsCloudProfile() AwsCloudProfileResponseOutput {
 	return o.ApplyT(func(v LookupPublicCloudConnectorResult) AwsCloudProfileResponse { return v.AwsCloudProfile }).(AwsCloudProfileResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupPublicCloudConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPublicCloudConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Connector primary identifier.

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,15 +31,15 @@ type GetIntegrationRuntimeObjectMetadatumArgs struct {
 	IntegrationRuntimeName string `pulumi:"integrationRuntimeName"`
 	// Metadata path.
 	MetadataPath *string `pulumi:"metadataPath"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // A list of SSIS object metadata.
 type GetIntegrationRuntimeObjectMetadatumResult struct {
-	// The link to the next page of results, if any remaining results exist.
+	// The link to the next page of items
 	NextLink *string `pulumi:"nextLink"`
-	// List of SSIS object metadata.
+	// The SsisObjectMetadata items on this page
 	Value []interface{} `pulumi:"value"`
 }
 
@@ -59,7 +59,7 @@ type GetIntegrationRuntimeObjectMetadatumOutputArgs struct {
 	IntegrationRuntimeName pulumi.StringInput `pulumi:"integrationRuntimeName"`
 	// Metadata path.
 	MetadataPath pulumi.StringPtrInput `pulumi:"metadataPath"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -82,12 +82,12 @@ func (o GetIntegrationRuntimeObjectMetadatumResultOutput) ToGetIntegrationRuntim
 	return o
 }
 
-// The link to the next page of results, if any remaining results exist.
+// The link to the next page of items
 func (o GetIntegrationRuntimeObjectMetadatumResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetIntegrationRuntimeObjectMetadatumResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
-// List of SSIS object metadata.
+// The SsisObjectMetadata items on this page
 func (o GetIntegrationRuntimeObjectMetadatumResultOutput) Value() pulumi.ArrayOutput {
 	return o.ApplyT(func(v GetIntegrationRuntimeObjectMetadatumResult) []interface{} { return v.Value }).(pulumi.ArrayOutput)
 }

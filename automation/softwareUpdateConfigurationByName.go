@@ -8,37 +8,41 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Software update configuration properties.
 //
-// Uses Azure REST API version 2019-06-01. In version 1.x of the Azure Native provider, it used API version 2019-06-01.
+// Uses Azure REST API version 2024-10-23. In version 2.x of the Azure Native provider, it used API version 2019-06-01.
 //
-// Other available API versions: 2017-05-15-preview, 2023-05-15-preview, 2024-10-23.
+// Other available API versions: 2017-05-15-preview, 2019-06-01, 2023-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SoftwareUpdateConfigurationByName struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// CreatedBy property, which only appears in the response.
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
 	// Creation time of the resource, which only appears in the response.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
 	// Details of provisioning error
-	Error ErrorResponseResponsePtrOutput `pulumi:"error"`
+	Error AutomationErrorResponseResponsePtrOutput `pulumi:"error"`
 	// LastModifiedBy property, which only appears in the response.
 	LastModifiedBy pulumi.StringOutput `pulumi:"lastModifiedBy"`
 	// Last time resource was modified, which only appears in the response.
 	LastModifiedTime pulumi.StringOutput `pulumi:"lastModifiedTime"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Provisioning state for the software update configuration, which only appears in the response.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Schedule information for the Software update configuration
 	ScheduleInfo SUCSchedulePropertiesResponseOutput `pulumi:"scheduleInfo"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Tasks information for the Software update configuration.
 	Tasks SoftwareUpdateConfigurationTasksResponsePtrOutput `pulumi:"tasks"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// update specific properties for the Software update configuration
 	UpdateConfiguration UpdateConfigurationResponseOutput `pulumi:"updateConfiguration"`
@@ -63,7 +67,6 @@ func NewSoftwareUpdateConfigurationByName(ctx *pulumi.Context,
 	if args.UpdateConfiguration == nil {
 		return nil, errors.New("invalid value for required argument 'UpdateConfiguration'")
 	}
-	args.ScheduleInfo = args.ScheduleInfo.ToSUCSchedulePropertiesOutput().ApplyT(func(v SUCScheduleProperties) SUCScheduleProperties { return *v.Defaults() }).(SUCSchedulePropertiesOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:automation/v20170515preview:SoftwareUpdateConfigurationByName"),
@@ -115,8 +118,8 @@ type softwareUpdateConfigurationByNameArgs struct {
 	// The name of the automation account.
 	AutomationAccountName string `pulumi:"automationAccountName"`
 	// Details of provisioning error
-	Error *ErrorResponse `pulumi:"error"`
-	// Name of an Azure Resource group.
+	Error *AutomationErrorResponse `pulumi:"error"`
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Schedule information for the Software update configuration
 	ScheduleInfo SUCScheduleProperties `pulumi:"scheduleInfo"`
@@ -133,8 +136,8 @@ type SoftwareUpdateConfigurationByNameArgs struct {
 	// The name of the automation account.
 	AutomationAccountName pulumi.StringInput
 	// Details of provisioning error
-	Error ErrorResponsePtrInput
-	// Name of an Azure Resource group.
+	Error AutomationErrorResponsePtrInput
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Schedule information for the Software update configuration
 	ScheduleInfo SUCSchedulePropertiesInput
@@ -183,6 +186,11 @@ func (o SoftwareUpdateConfigurationByNameOutput) ToSoftwareUpdateConfigurationBy
 	return o
 }
 
+// The Azure API version of the resource.
+func (o SoftwareUpdateConfigurationByNameOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SoftwareUpdateConfigurationByName) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // CreatedBy property, which only appears in the response.
 func (o SoftwareUpdateConfigurationByNameOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *SoftwareUpdateConfigurationByName) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
@@ -194,8 +202,8 @@ func (o SoftwareUpdateConfigurationByNameOutput) CreationTime() pulumi.StringOut
 }
 
 // Details of provisioning error
-func (o SoftwareUpdateConfigurationByNameOutput) Error() ErrorResponseResponsePtrOutput {
-	return o.ApplyT(func(v *SoftwareUpdateConfigurationByName) ErrorResponseResponsePtrOutput { return v.Error }).(ErrorResponseResponsePtrOutput)
+func (o SoftwareUpdateConfigurationByNameOutput) Error() AutomationErrorResponseResponsePtrOutput {
+	return o.ApplyT(func(v *SoftwareUpdateConfigurationByName) AutomationErrorResponseResponsePtrOutput { return v.Error }).(AutomationErrorResponseResponsePtrOutput)
 }
 
 // LastModifiedBy property, which only appears in the response.
@@ -208,7 +216,7 @@ func (o SoftwareUpdateConfigurationByNameOutput) LastModifiedTime() pulumi.Strin
 	return o.ApplyT(func(v *SoftwareUpdateConfigurationByName) pulumi.StringOutput { return v.LastModifiedTime }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o SoftwareUpdateConfigurationByNameOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SoftwareUpdateConfigurationByName) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -223,6 +231,11 @@ func (o SoftwareUpdateConfigurationByNameOutput) ScheduleInfo() SUCSchedulePrope
 	return o.ApplyT(func(v *SoftwareUpdateConfigurationByName) SUCSchedulePropertiesResponseOutput { return v.ScheduleInfo }).(SUCSchedulePropertiesResponseOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o SoftwareUpdateConfigurationByNameOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *SoftwareUpdateConfigurationByName) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Tasks information for the Software update configuration.
 func (o SoftwareUpdateConfigurationByNameOutput) Tasks() SoftwareUpdateConfigurationTasksResponsePtrOutput {
 	return o.ApplyT(func(v *SoftwareUpdateConfigurationByName) SoftwareUpdateConfigurationTasksResponsePtrOutput {
@@ -230,7 +243,7 @@ func (o SoftwareUpdateConfigurationByNameOutput) Tasks() SoftwareUpdateConfigura
 	}).(SoftwareUpdateConfigurationTasksResponsePtrOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o SoftwareUpdateConfigurationByNameOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *SoftwareUpdateConfigurationByName) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

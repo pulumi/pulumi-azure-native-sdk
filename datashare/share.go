@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A share data transfer object.
 //
-// Uses Azure REST API version 2021-08-01. In version 1.x of the Azure Native provider, it used API version 2020-09-01.
+// Uses Azure REST API version 2021-08-01. In version 2.x of the Azure Native provider, it used API version 2021-08-01.
 type Share struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Time at which the share was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Share description.
@@ -169,6 +171,11 @@ func (o ShareOutput) ToShareOutput() ShareOutput {
 
 func (o ShareOutput) ToShareOutputWithContext(ctx context.Context) ShareOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ShareOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Time at which the share was created.

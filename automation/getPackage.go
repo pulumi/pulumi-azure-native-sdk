@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve the Package identified by Package name.
 //
-// Uses Azure REST API version 2023-05-15-preview.
+// Uses Azure REST API version 2024-10-23.
 //
-// Other available API versions: 2024-10-23.
+// Other available API versions: 2023-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupPackage(ctx *pulumi.Context, args *LookupPackageArgs, opts ...pulumi.InvokeOption) (*LookupPackageResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPackageResult
@@ -31,7 +31,7 @@ type LookupPackageArgs struct {
 	AutomationAccountName string `pulumi:"automationAccountName"`
 	// The Package name.
 	PackageName string `pulumi:"packageName"`
-	// Name of an Azure Resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the Runtime Environment.
 	RuntimeEnvironmentName string `pulumi:"runtimeEnvironmentName"`
@@ -41,6 +41,8 @@ type LookupPackageArgs struct {
 type LookupPackageResult struct {
 	// Metadata pertaining to creation and last modification of the resource.
 	AllOf SystemDataResponse `pulumi:"allOf"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the contentLink of the Package.
 	ContentLink *ContentLinkResponse `pulumi:"contentLink"`
 	// Gets or sets the isGlobal flag of the package.
@@ -81,7 +83,7 @@ type LookupPackageOutputArgs struct {
 	AutomationAccountName pulumi.StringInput `pulumi:"automationAccountName"`
 	// The Package name.
 	PackageName pulumi.StringInput `pulumi:"packageName"`
-	// Name of an Azure Resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the Runtime Environment.
 	RuntimeEnvironmentName pulumi.StringInput `pulumi:"runtimeEnvironmentName"`
@@ -109,6 +111,11 @@ func (o LookupPackageResultOutput) ToLookupPackageResultOutputWithContext(ctx co
 // Metadata pertaining to creation and last modification of the resource.
 func (o LookupPackageResultOutput) AllOf() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupPackageResult) SystemDataResponse { return v.AllOf }).(SystemDataResponseOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupPackageResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPackageResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the contentLink of the Package.

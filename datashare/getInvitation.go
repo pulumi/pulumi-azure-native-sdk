@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,6 +37,8 @@ type LookupInvitationArgs struct {
 
 // A Invitation data transfer object.
 type LookupInvitationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The expiration date for the invitation and share subscription.
 	ExpirationDate *string `pulumi:"expirationDate"`
 	// The resource id of the azure resource
@@ -106,6 +108,11 @@ func (o LookupInvitationResultOutput) ToLookupInvitationResultOutput() LookupInv
 
 func (o LookupInvitationResultOutput) ToLookupInvitationResultOutputWithContext(ctx context.Context) LookupInvitationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupInvitationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInvitationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The expiration date for the invitation and share subscription.

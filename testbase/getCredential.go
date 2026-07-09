@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +35,8 @@ type LookupCredentialArgs struct {
 
 // The test base credential resource.
 type LookupCredentialResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Credential type.
 	CredentialType string `pulumi:"credentialType"`
 	// Credential display name.
@@ -84,6 +86,11 @@ func (o LookupCredentialResultOutput) ToLookupCredentialResultOutput() LookupCre
 
 func (o LookupCredentialResultOutput) ToLookupCredentialResultOutputWithContext(ctx context.Context) LookupCredentialResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupCredentialResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCredentialResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Credential type.

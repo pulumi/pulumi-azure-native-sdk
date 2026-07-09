@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,6 +33,8 @@ type LookupActionRuleByNameArgs struct {
 
 // Action rule object containing target scope, conditions and suppression logic
 type LookupActionRuleByNameResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Azure resource Id
 	Id string `pulumi:"id"`
 	// Resource location
@@ -80,6 +82,11 @@ func (o LookupActionRuleByNameResultOutput) ToLookupActionRuleByNameResultOutput
 
 func (o LookupActionRuleByNameResultOutput) ToLookupActionRuleByNameResultOutputWithContext(ctx context.Context) LookupActionRuleByNameResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupActionRuleByNameResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupActionRuleByNameResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Azure resource Id

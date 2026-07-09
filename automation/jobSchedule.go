@@ -8,21 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Definition of the job schedule.
 //
-// Uses Azure REST API version 2022-08-08. In version 1.x of the Azure Native provider, it used API version 2019-06-01.
+// Uses Azure REST API version 2024-10-23. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
 //
-// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
+// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type JobSchedule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets or sets the id of job schedule.
 	JobScheduleId pulumi.StringPtrOutput `pulumi:"jobScheduleId"`
-	// Gets the name of the variable.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Gets or sets the parameters of the job schedule.
 	Parameters pulumi.StringMapOutput `pulumi:"parameters"`
@@ -32,7 +34,9 @@ type JobSchedule struct {
 	Runbook RunbookAssociationPropertyResponsePtrOutput `pulumi:"runbook"`
 	// Gets or sets the schedule.
 	Schedule ScheduleAssociationPropertyResponsePtrOutput `pulumi:"schedule"`
-	// Resource type
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -118,7 +122,7 @@ type jobScheduleArgs struct {
 	JobScheduleId *string `pulumi:"jobScheduleId"`
 	// Gets or sets a list of job properties.
 	Parameters map[string]string `pulumi:"parameters"`
-	// Name of an Azure Resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Gets or sets the hybrid worker group that the scheduled job should run on.
 	RunOn *string `pulumi:"runOn"`
@@ -136,7 +140,7 @@ type JobScheduleArgs struct {
 	JobScheduleId pulumi.StringPtrInput
 	// Gets or sets a list of job properties.
 	Parameters pulumi.StringMapInput
-	// Name of an Azure Resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Gets or sets the hybrid worker group that the scheduled job should run on.
 	RunOn pulumi.StringPtrInput
@@ -183,12 +187,17 @@ func (o JobScheduleOutput) ToJobScheduleOutputWithContext(ctx context.Context) J
 	return o
 }
 
+// The Azure API version of the resource.
+func (o JobScheduleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *JobSchedule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Gets or sets the id of job schedule.
 func (o JobScheduleOutput) JobScheduleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobSchedule) pulumi.StringPtrOutput { return v.JobScheduleId }).(pulumi.StringPtrOutput)
 }
 
-// Gets the name of the variable.
+// The name of the resource
 func (o JobScheduleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *JobSchedule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -213,7 +222,12 @@ func (o JobScheduleOutput) Schedule() ScheduleAssociationPropertyResponsePtrOutp
 	return o.ApplyT(func(v *JobSchedule) ScheduleAssociationPropertyResponsePtrOutput { return v.Schedule }).(ScheduleAssociationPropertyResponsePtrOutput)
 }
 
-// Resource type
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o JobScheduleOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *JobSchedule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o JobScheduleOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *JobSchedule) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

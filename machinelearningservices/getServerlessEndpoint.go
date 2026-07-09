@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2023-08-01-preview.
+// Get Serverless Endpoint.
 //
-// Other available API versions: 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
+// Uses Azure REST API version 2025-12-01.
+//
+// Other available API versions: 2023-08-01-preview, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupServerlessEndpoint(ctx *pulumi.Context, args *LookupServerlessEndpointArgs, opts ...pulumi.InvokeOption) (*LookupServerlessEndpointResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerlessEndpointResult
@@ -29,11 +31,14 @@ type LookupServerlessEndpointArgs struct {
 	Name string `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
+// Concrete tracked resource types can be created by aliasing this type using a specific property type.
 type LookupServerlessEndpointResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Managed service identity (system assigned and/or user assigned identities)
@@ -45,7 +50,7 @@ type LookupServerlessEndpointResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// [Required] Additional attributes of the entity.
-	ServerlessEndpointProperties ServerlessEndpointResponse `pulumi:"serverlessEndpointProperties"`
+	Properties ServerlessEndpointPropertiesResponse `pulumi:"properties"`
 	// Sku details required for ARM contract for Autoscaling.
 	Sku *SkuResponse `pulumi:"sku"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -70,7 +75,7 @@ type LookupServerlessEndpointOutputArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
-	// Name of Azure Machine Learning workspace.
+	// Azure Machine Learning Workspace Name
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 
@@ -78,6 +83,7 @@ func (LookupServerlessEndpointOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupServerlessEndpointArgs)(nil)).Elem()
 }
 
+// Concrete tracked resource types can be created by aliasing this type using a specific property type.
 type LookupServerlessEndpointResultOutput struct{ *pulumi.OutputState }
 
 func (LookupServerlessEndpointResultOutput) ElementType() reflect.Type {
@@ -90,6 +96,11 @@ func (o LookupServerlessEndpointResultOutput) ToLookupServerlessEndpointResultOu
 
 func (o LookupServerlessEndpointResultOutput) ToLookupServerlessEndpointResultOutputWithContext(ctx context.Context) LookupServerlessEndpointResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupServerlessEndpointResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerlessEndpointResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -118,10 +129,8 @@ func (o LookupServerlessEndpointResultOutput) Name() pulumi.StringOutput {
 }
 
 // [Required] Additional attributes of the entity.
-func (o LookupServerlessEndpointResultOutput) ServerlessEndpointProperties() ServerlessEndpointResponseOutput {
-	return o.ApplyT(func(v LookupServerlessEndpointResult) ServerlessEndpointResponse {
-		return v.ServerlessEndpointProperties
-	}).(ServerlessEndpointResponseOutput)
+func (o LookupServerlessEndpointResultOutput) Properties() ServerlessEndpointPropertiesResponseOutput {
+	return o.ApplyT(func(v LookupServerlessEndpointResult) ServerlessEndpointPropertiesResponse { return v.Properties }).(ServerlessEndpointPropertiesResponseOutput)
 }
 
 // Sku details required for ARM contract for Autoscaling.

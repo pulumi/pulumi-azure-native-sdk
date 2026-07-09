@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a SourceControl in Azure Security Insights.
 //
-// Uses Azure REST API version 2023-05-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-03-01-preview.
+// Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01-preview.
 //
-// Other available API versions: 2021-03-01-preview.
+// Other available API versions: 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SourceControl struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Array of source control content types.
 	ContentTypes pulumi.StringArrayOutput `pulumi:"contentTypes"`
 	// A description of the source control
@@ -29,21 +31,27 @@ type SourceControl struct {
 	// Etag of the azure resource
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// Information regarding the latest deployment for the source control.
-	LastDeploymentInfo DeploymentInfoResponsePtrOutput `pulumi:"lastDeploymentInfo"`
+	LastDeploymentInfo DeploymentInfoResponseOutput `pulumi:"lastDeploymentInfo"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Information regarding the pull request of the source control.
+	PullRequest PullRequestResponseOutput `pulumi:"pullRequest"`
 	// The repository type of the source control
 	RepoType pulumi.StringOutput `pulumi:"repoType"`
 	// Repository metadata.
 	Repository RepositoryResponseOutput `pulumi:"repository"`
 	// Information regarding the resources created in user's repository.
 	RepositoryResourceInfo RepositoryResourceInfoResponsePtrOutput `pulumi:"repositoryResourceInfo"`
+	// Service principal metadata.
+	ServicePrincipal ServicePrincipalResponsePtrOutput `pulumi:"servicePrincipal"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The version number associated with the source control
-	Version pulumi.StringPtrOutput `pulumi:"version"`
+	Version pulumi.StringOutput `pulumi:"version"`
+	// Workload Identity metadata.
+	WorkloadIdentityFederation WorkloadIdentityFederationResponseOutput `pulumi:"workloadIdentityFederation"`
 }
 
 // NewSourceControl registers a new resource with the given unique name, arguments, and options.
@@ -76,52 +84,16 @@ func NewSourceControl(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20210301preview:SourceControl"),
 		},
 		{
-			Type: pulumi.String("azure-native:securityinsights/v20210901preview:SourceControl"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20211001preview:SourceControl"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20220101preview:SourceControl"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20220401preview:SourceControl"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20220501preview:SourceControl"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20220601preview:SourceControl"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20220701preview:SourceControl"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20220801preview:SourceControl"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20220901preview:SourceControl"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20221001preview:SourceControl"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20221101preview:SourceControl"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20221201preview:SourceControl"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230201preview:SourceControl"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230301preview:SourceControl"),
-		},
-		{
-			Type: pulumi.String("azure-native:securityinsights/v20230401preview:SourceControl"),
-		},
-		{
 			Type: pulumi.String("azure-native:securityinsights/v20230501preview:SourceControl"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250601:SourceControl"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250701preview:SourceControl"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250901:SourceControl"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -164,22 +136,20 @@ type sourceControlArgs struct {
 	Description *string `pulumi:"description"`
 	// The display name of the source control
 	DisplayName string `pulumi:"displayName"`
-	// The id (a Guid) of the source control
-	Id *string `pulumi:"id"`
-	// Information regarding the latest deployment for the source control.
-	LastDeploymentInfo *DeploymentInfo `pulumi:"lastDeploymentInfo"`
 	// The repository type of the source control
 	RepoType string `pulumi:"repoType"`
 	// Repository metadata.
 	Repository Repository `pulumi:"repository"`
+	// Repository access credentials. This is write-only object and it never returns back to a user.
+	RepositoryAccess *RepositoryAccess `pulumi:"repositoryAccess"`
 	// Information regarding the resources created in user's repository.
 	RepositoryResourceInfo *RepositoryResourceInfo `pulumi:"repositoryResourceInfo"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Service principal metadata.
+	ServicePrincipal *ServicePrincipal `pulumi:"servicePrincipal"`
 	// Source control Id
 	SourceControlId *string `pulumi:"sourceControlId"`
-	// The version number associated with the source control
-	Version *string `pulumi:"version"`
 	// The name of the workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
@@ -192,22 +162,20 @@ type SourceControlArgs struct {
 	Description pulumi.StringPtrInput
 	// The display name of the source control
 	DisplayName pulumi.StringInput
-	// The id (a Guid) of the source control
-	Id pulumi.StringPtrInput
-	// Information regarding the latest deployment for the source control.
-	LastDeploymentInfo DeploymentInfoPtrInput
 	// The repository type of the source control
 	RepoType pulumi.StringInput
 	// Repository metadata.
 	Repository RepositoryInput
+	// Repository access credentials. This is write-only object and it never returns back to a user.
+	RepositoryAccess RepositoryAccessPtrInput
 	// Information regarding the resources created in user's repository.
 	RepositoryResourceInfo RepositoryResourceInfoPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// Service principal metadata.
+	ServicePrincipal ServicePrincipalPtrInput
 	// Source control Id
 	SourceControlId pulumi.StringPtrInput
-	// The version number associated with the source control
-	Version pulumi.StringPtrInput
 	// The name of the workspace.
 	WorkspaceName pulumi.StringInput
 }
@@ -249,6 +217,11 @@ func (o SourceControlOutput) ToSourceControlOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o SourceControlOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SourceControl) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Array of source control content types.
 func (o SourceControlOutput) ContentTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SourceControl) pulumi.StringArrayOutput { return v.ContentTypes }).(pulumi.StringArrayOutput)
@@ -270,13 +243,18 @@ func (o SourceControlOutput) Etag() pulumi.StringPtrOutput {
 }
 
 // Information regarding the latest deployment for the source control.
-func (o SourceControlOutput) LastDeploymentInfo() DeploymentInfoResponsePtrOutput {
-	return o.ApplyT(func(v *SourceControl) DeploymentInfoResponsePtrOutput { return v.LastDeploymentInfo }).(DeploymentInfoResponsePtrOutput)
+func (o SourceControlOutput) LastDeploymentInfo() DeploymentInfoResponseOutput {
+	return o.ApplyT(func(v *SourceControl) DeploymentInfoResponseOutput { return v.LastDeploymentInfo }).(DeploymentInfoResponseOutput)
 }
 
 // The name of the resource
 func (o SourceControlOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SourceControl) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Information regarding the pull request of the source control.
+func (o SourceControlOutput) PullRequest() PullRequestResponseOutput {
+	return o.ApplyT(func(v *SourceControl) PullRequestResponseOutput { return v.PullRequest }).(PullRequestResponseOutput)
 }
 
 // The repository type of the source control
@@ -294,6 +272,11 @@ func (o SourceControlOutput) RepositoryResourceInfo() RepositoryResourceInfoResp
 	return o.ApplyT(func(v *SourceControl) RepositoryResourceInfoResponsePtrOutput { return v.RepositoryResourceInfo }).(RepositoryResourceInfoResponsePtrOutput)
 }
 
+// Service principal metadata.
+func (o SourceControlOutput) ServicePrincipal() ServicePrincipalResponsePtrOutput {
+	return o.ApplyT(func(v *SourceControl) ServicePrincipalResponsePtrOutput { return v.ServicePrincipal }).(ServicePrincipalResponsePtrOutput)
+}
+
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o SourceControlOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *SourceControl) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
@@ -305,8 +288,13 @@ func (o SourceControlOutput) Type() pulumi.StringOutput {
 }
 
 // The version number associated with the source control
-func (o SourceControlOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SourceControl) pulumi.StringPtrOutput { return v.Version }).(pulumi.StringPtrOutput)
+func (o SourceControlOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v *SourceControl) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
+}
+
+// Workload Identity metadata.
+func (o SourceControlOutput) WorkloadIdentityFederation() WorkloadIdentityFederationResponseOutput {
+	return o.ApplyT(func(v *SourceControl) WorkloadIdentityFederationResponseOutput { return v.WorkloadIdentityFederation }).(WorkloadIdentityFederationResponseOutput)
 }
 
 func init() {

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,12 +27,16 @@ func LookupGovernanceRule(ctx *pulumi.Context, args *LookupGovernanceRuleArgs, o
 type LookupGovernanceRuleArgs struct {
 	// The governance rule key - unique key for the standard governance rule (GUID)
 	RuleId string `pulumi:"ruleId"`
-	// The scope of the Governance rules. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+	// The fully qualified Azure Resource manager identifier of the resource.
 	Scope string `pulumi:"scope"`
 }
 
 // Governance rule over a given scope
 type LookupGovernanceRuleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// The governance rule conditionSets - see examples
+	ConditionSets []interface{} `pulumi:"conditionSets"`
 	// Description of the governance rule
 	Description *string `pulumi:"description"`
 	// Display name of the governance rule
@@ -41,7 +45,7 @@ type LookupGovernanceRuleResult struct {
 	ExcludedScopes []string `pulumi:"excludedScopes"`
 	// The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
 	GovernanceEmailNotification *GovernanceRuleEmailNotificationResponse `pulumi:"governanceEmailNotification"`
-	// Resource Id
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Defines whether the rule is management scope rule (master connector as a single scope or management scope)
 	IncludeMemberScopes *bool `pulumi:"includeMemberScopes"`
@@ -51,7 +55,7 @@ type LookupGovernanceRuleResult struct {
 	IsGracePeriod *bool `pulumi:"isGracePeriod"`
 	// The governance rule metadata
 	Metadata *GovernanceRuleMetadataResponse `pulumi:"metadata"`
-	// Resource name
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The owner source for the governance rule - e.g. Manually by user@contoso.com - see example
 	OwnerSource GovernanceRuleOwnerSourceResponse `pulumi:"ownerSource"`
@@ -63,9 +67,11 @@ type LookupGovernanceRuleResult struct {
 	RuleType string `pulumi:"ruleType"`
 	// The governance rule source, what the rule affects, e.g. Assessments
 	SourceResourceType string `pulumi:"sourceResourceType"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The tenantId (GUID)
 	TenantId string `pulumi:"tenantId"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -81,7 +87,7 @@ func LookupGovernanceRuleOutput(ctx *pulumi.Context, args LookupGovernanceRuleOu
 type LookupGovernanceRuleOutputArgs struct {
 	// The governance rule key - unique key for the standard governance rule (GUID)
 	RuleId pulumi.StringInput `pulumi:"ruleId"`
-	// The scope of the Governance rules. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+	// The fully qualified Azure Resource manager identifier of the resource.
 	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
@@ -102,6 +108,16 @@ func (o LookupGovernanceRuleResultOutput) ToLookupGovernanceRuleResultOutput() L
 
 func (o LookupGovernanceRuleResultOutput) ToLookupGovernanceRuleResultOutputWithContext(ctx context.Context) LookupGovernanceRuleResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupGovernanceRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGovernanceRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The governance rule conditionSets - see examples
+func (o LookupGovernanceRuleResultOutput) ConditionSets() pulumi.ArrayOutput {
+	return o.ApplyT(func(v LookupGovernanceRuleResult) []interface{} { return v.ConditionSets }).(pulumi.ArrayOutput)
 }
 
 // Description of the governance rule
@@ -126,7 +142,7 @@ func (o LookupGovernanceRuleResultOutput) GovernanceEmailNotification() Governan
 	}).(GovernanceRuleEmailNotificationResponsePtrOutput)
 }
 
-// Resource Id
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupGovernanceRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGovernanceRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -151,7 +167,7 @@ func (o LookupGovernanceRuleResultOutput) Metadata() GovernanceRuleMetadataRespo
 	return o.ApplyT(func(v LookupGovernanceRuleResult) *GovernanceRuleMetadataResponse { return v.Metadata }).(GovernanceRuleMetadataResponsePtrOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o LookupGovernanceRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGovernanceRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -181,12 +197,17 @@ func (o LookupGovernanceRuleResultOutput) SourceResourceType() pulumi.StringOutp
 	return o.ApplyT(func(v LookupGovernanceRuleResult) string { return v.SourceResourceType }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupGovernanceRuleResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupGovernanceRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // The tenantId (GUID)
 func (o LookupGovernanceRuleResultOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGovernanceRuleResult) string { return v.TenantId }).(pulumi.StringOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupGovernanceRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGovernanceRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

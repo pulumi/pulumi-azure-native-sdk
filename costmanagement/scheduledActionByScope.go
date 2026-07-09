@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Scheduled action definition.
 //
-// Uses Azure REST API version 2023-03-01. In version 1.x of the Azure Native provider, it used API version 2022-04-01-preview.
+// Uses Azure REST API version 2024-08-01. In version 2.x of the Azure Native provider, it used API version 2023-03-01.
 //
-// Other available API versions: 2023-04-01-preview, 2023-07-01-preview, 2023-08-01, 2023-09-01, 2023-11-01, 2024-08-01, 2024-10-01-preview.
+// Other available API versions: 2022-04-01-preview, 2022-06-01-preview, 2022-10-01, 2023-03-01, 2023-04-01-preview, 2023-07-01-preview, 2023-08-01, 2023-09-01, 2023-11-01, 2024-10-01-preview, 2025-03-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native costmanagement [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ScheduledActionByScope struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Scheduled action name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Resource Etag. For update calls, eTag is optional and can be specified to achieve optimistic concurrency. Fetch the resource's eTag by doing a 'GET' call first and then including the latest eTag as part of the request body or 'If-Match' header while performing the update. For create calls, eTag is not required.
@@ -106,6 +108,9 @@ func NewScheduledActionByScope(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:costmanagement/v20241001preview:ScheduledActionByScope"),
+		},
+		{
+			Type: pulumi.String("azure-native:costmanagement/v20250301:ScheduledActionByScope"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -223,6 +228,11 @@ func (o ScheduledActionByScopeOutput) ToScheduledActionByScopeOutput() Scheduled
 
 func (o ScheduledActionByScopeOutput) ToScheduledActionByScopeOutputWithContext(ctx context.Context) ScheduledActionByScopeOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ScheduledActionByScopeOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScheduledActionByScope) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Scheduled action name.

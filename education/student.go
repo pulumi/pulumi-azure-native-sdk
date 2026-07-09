@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Student details.
 //
-// Uses Azure REST API version 2021-12-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-12-01-preview.
+// Uses Azure REST API version 2021-12-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-12-01-preview.
 type Student struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Student Budget
 	Budget AmountResponseOutput `pulumi:"budget"`
 	// Date student was added to the lab
@@ -121,9 +123,9 @@ func (StudentState) ElementType() reflect.Type {
 }
 
 type studentArgs struct {
-	// The ID that uniquely identifies a billing account.
+	// The name of the billing account.
 	BillingAccountName string `pulumi:"billingAccountName"`
-	// The ID that uniquely identifies a billing profile.
+	// The name of the billing profile.
 	BillingProfileName string `pulumi:"billingProfileName"`
 	// Student Budget
 	Budget Amount `pulumi:"budget"`
@@ -133,13 +135,13 @@ type studentArgs struct {
 	ExpirationDate string `pulumi:"expirationDate"`
 	// First Name
 	FirstName string `pulumi:"firstName"`
-	// The ID that uniquely identifies an invoice section.
+	// The name of the invoice section.
 	InvoiceSectionName string `pulumi:"invoiceSectionName"`
 	// Last Name
 	LastName string `pulumi:"lastName"`
 	// Student Role
 	Role string `pulumi:"role"`
-	// Student alias.
+	// The student alias.
 	StudentAlias *string `pulumi:"studentAlias"`
 	// Subscription alias
 	SubscriptionAlias *string `pulumi:"subscriptionAlias"`
@@ -149,9 +151,9 @@ type studentArgs struct {
 
 // The set of arguments for constructing a Student resource.
 type StudentArgs struct {
-	// The ID that uniquely identifies a billing account.
+	// The name of the billing account.
 	BillingAccountName pulumi.StringInput
-	// The ID that uniquely identifies a billing profile.
+	// The name of the billing profile.
 	BillingProfileName pulumi.StringInput
 	// Student Budget
 	Budget AmountInput
@@ -161,13 +163,13 @@ type StudentArgs struct {
 	ExpirationDate pulumi.StringInput
 	// First Name
 	FirstName pulumi.StringInput
-	// The ID that uniquely identifies an invoice section.
+	// The name of the invoice section.
 	InvoiceSectionName pulumi.StringInput
 	// Last Name
 	LastName pulumi.StringInput
 	// Student Role
 	Role pulumi.StringInput
-	// Student alias.
+	// The student alias.
 	StudentAlias pulumi.StringPtrInput
 	// Subscription alias
 	SubscriptionAlias pulumi.StringPtrInput
@@ -210,6 +212,11 @@ func (o StudentOutput) ToStudentOutput() StudentOutput {
 
 func (o StudentOutput) ToStudentOutputWithContext(ctx context.Context) StudentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o StudentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Student) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Student Budget

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets all deployments for a remediation at subscription scope.
 //
-// Uses Azure REST API version 2021-10-01.
+// Uses Azure REST API version 2024-10-01.
 //
-// Other available API versions: 2024-10-01.
+// Other available API versions: 2021-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native policyinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListRemediationDeploymentsAtSubscription(ctx *pulumi.Context, args *ListRemediationDeploymentsAtSubscriptionArgs, opts ...pulumi.InvokeOption) (*ListRemediationDeploymentsAtSubscriptionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListRemediationDeploymentsAtSubscriptionResult
@@ -35,9 +35,9 @@ type ListRemediationDeploymentsAtSubscriptionArgs struct {
 
 // List of deployments for a remediation.
 type ListRemediationDeploymentsAtSubscriptionResult struct {
-	// The URL to get the next set of results.
-	NextLink string `pulumi:"nextLink"`
-	// Array of deployments for the remediation.
+	// The link to the next page of items
+	NextLink *string `pulumi:"nextLink"`
+	// The RemediationDeployment items on this page
 	Value []RemediationDeploymentResponse `pulumi:"value"`
 }
 
@@ -76,12 +76,12 @@ func (o ListRemediationDeploymentsAtSubscriptionResultOutput) ToListRemediationD
 	return o
 }
 
-// The URL to get the next set of results.
-func (o ListRemediationDeploymentsAtSubscriptionResultOutput) NextLink() pulumi.StringOutput {
-	return o.ApplyT(func(v ListRemediationDeploymentsAtSubscriptionResult) string { return v.NextLink }).(pulumi.StringOutput)
+// The link to the next page of items
+func (o ListRemediationDeploymentsAtSubscriptionResultOutput) NextLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListRemediationDeploymentsAtSubscriptionResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
-// Array of deployments for the remediation.
+// The RemediationDeployment items on this page
 func (o ListRemediationDeploymentsAtSubscriptionResultOutput) Value() RemediationDeploymentResponseArrayOutput {
 	return o.ApplyT(func(v ListRemediationDeploymentsAtSubscriptionResult) []RemediationDeploymentResponse { return v.Value }).(RemediationDeploymentResponseArrayOutput)
 }

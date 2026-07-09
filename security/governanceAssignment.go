@@ -8,23 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Governance assignment over a given scope
 //
-// Uses Azure REST API version 2022-01-01-preview.
+// Uses Azure REST API version 2022-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
 type GovernanceAssignment struct {
 	pulumi.CustomResourceState
 
 	// The additional data for the governance assignment - e.g. links to ticket (optional), see example
 	AdditionalData GovernanceAssignmentAdditionalDataResponsePtrOutput `pulumi:"additionalData"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
 	GovernanceEmailNotification GovernanceEmailNotificationResponsePtrOutput `pulumi:"governanceEmailNotification"`
 	// Defines whether there is a grace period on the governance assignment
 	IsGracePeriod pulumi.BoolPtrOutput `pulumi:"isGracePeriod"`
-	// Resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Owner for the governance assignment - e.g. user@contoso.com - see example
 	Owner pulumi.StringPtrOutput `pulumi:"owner"`
@@ -32,7 +34,9 @@ type GovernanceAssignment struct {
 	RemediationDueDate pulumi.StringOutput `pulumi:"remediationDueDate"`
 	// The ETA (estimated time of arrival) for remediation (optional), see example
 	RemediationEta RemediationEtaResponsePtrOutput `pulumi:"remediationEta"`
-	// Resource type
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -93,9 +97,9 @@ func (GovernanceAssignmentState) ElementType() reflect.Type {
 type governanceAssignmentArgs struct {
 	// The additional data for the governance assignment - e.g. links to ticket (optional), see example
 	AdditionalData *GovernanceAssignmentAdditionalData `pulumi:"additionalData"`
-	// The Assessment Key - A unique key for the assessment type
+	// The assessment key of the governance assignment.
 	AssessmentName string `pulumi:"assessmentName"`
-	// The governance assignment key - the assessment key of the required governance assignment
+	// The governance assignment key.
 	AssignmentKey *string `pulumi:"assignmentKey"`
 	// The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
 	GovernanceEmailNotification *GovernanceEmailNotification `pulumi:"governanceEmailNotification"`
@@ -107,7 +111,7 @@ type governanceAssignmentArgs struct {
 	RemediationDueDate string `pulumi:"remediationDueDate"`
 	// The ETA (estimated time of arrival) for remediation (optional), see example
 	RemediationEta *RemediationEta `pulumi:"remediationEta"`
-	// The scope of the Governance assignments. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+	// The scope of the governance assignment.
 	Scope string `pulumi:"scope"`
 }
 
@@ -115,9 +119,9 @@ type governanceAssignmentArgs struct {
 type GovernanceAssignmentArgs struct {
 	// The additional data for the governance assignment - e.g. links to ticket (optional), see example
 	AdditionalData GovernanceAssignmentAdditionalDataPtrInput
-	// The Assessment Key - A unique key for the assessment type
+	// The assessment key of the governance assignment.
 	AssessmentName pulumi.StringInput
-	// The governance assignment key - the assessment key of the required governance assignment
+	// The governance assignment key.
 	AssignmentKey pulumi.StringPtrInput
 	// The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
 	GovernanceEmailNotification GovernanceEmailNotificationPtrInput
@@ -129,7 +133,7 @@ type GovernanceAssignmentArgs struct {
 	RemediationDueDate pulumi.StringInput
 	// The ETA (estimated time of arrival) for remediation (optional), see example
 	RemediationEta RemediationEtaPtrInput
-	// The scope of the Governance assignments. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+	// The scope of the governance assignment.
 	Scope pulumi.StringInput
 }
 
@@ -177,6 +181,11 @@ func (o GovernanceAssignmentOutput) AdditionalData() GovernanceAssignmentAdditio
 	}).(GovernanceAssignmentAdditionalDataResponsePtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o GovernanceAssignmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *GovernanceAssignment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
 func (o GovernanceAssignmentOutput) GovernanceEmailNotification() GovernanceEmailNotificationResponsePtrOutput {
 	return o.ApplyT(func(v *GovernanceAssignment) GovernanceEmailNotificationResponsePtrOutput {
@@ -189,7 +198,7 @@ func (o GovernanceAssignmentOutput) IsGracePeriod() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GovernanceAssignment) pulumi.BoolPtrOutput { return v.IsGracePeriod }).(pulumi.BoolPtrOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o GovernanceAssignmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GovernanceAssignment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -209,7 +218,12 @@ func (o GovernanceAssignmentOutput) RemediationEta() RemediationEtaResponsePtrOu
 	return o.ApplyT(func(v *GovernanceAssignment) RemediationEtaResponsePtrOutput { return v.RemediationEta }).(RemediationEtaResponsePtrOutput)
 }
 
-// Resource type
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o GovernanceAssignmentOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *GovernanceAssignment) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o GovernanceAssignmentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *GovernanceAssignment) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

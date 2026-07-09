@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the details of the resourceSyncRule with a specified resource group, subscription id Custom Location resource name and Resource Sync Rule name.
 //
 // Uses Azure REST API version 2021-08-31-preview.
+//
+// Other available API versions: 2024-09-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native extendedlocation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupResourceSyncRule(ctx *pulumi.Context, args *LookupResourceSyncRuleArgs, opts ...pulumi.InvokeOption) (*LookupResourceSyncRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupResourceSyncRuleResult
@@ -35,6 +37,8 @@ type LookupResourceSyncRuleArgs struct {
 
 // Resource Sync Rules definition.
 type LookupResourceSyncRuleResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -46,8 +50,8 @@ type LookupResourceSyncRuleResult struct {
 	// Provisioning State for the Resource Sync Rule.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// A label selector is composed of two parts, matchLabels and matchExpressions. The first part, matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is 'key', the operator is 'In', and the values array contains only 'value'. The second part, matchExpressions is a list of resource selector requirements. Valid operators include In, NotIn, Exists, and DoesNotExist. The values set must be non-empty in the case of In and NotIn. The values set must be empty in the case of Exists and DoesNotExist. All of the requirements, from both matchLabels and matchExpressions must all be satisfied in order to match.
-	Selector *ResourceSyncRulePropertiesResponseSelector `pulumi:"selector"`
-	// Metadata pertaining to creation and last modification of the resource
+	Selector *ResourceSyncRulePropertiesSelectorResponse `pulumi:"selector"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -94,6 +98,11 @@ func (o LookupResourceSyncRuleResultOutput) ToLookupResourceSyncRuleResultOutput
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupResourceSyncRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourceSyncRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupResourceSyncRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupResourceSyncRuleResult) string { return v.Id }).(pulumi.StringOutput)
@@ -120,11 +129,11 @@ func (o LookupResourceSyncRuleResultOutput) ProvisioningState() pulumi.StringOut
 }
 
 // A label selector is composed of two parts, matchLabels and matchExpressions. The first part, matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is 'key', the operator is 'In', and the values array contains only 'value'. The second part, matchExpressions is a list of resource selector requirements. Valid operators include In, NotIn, Exists, and DoesNotExist. The values set must be non-empty in the case of In and NotIn. The values set must be empty in the case of Exists and DoesNotExist. All of the requirements, from both matchLabels and matchExpressions must all be satisfied in order to match.
-func (o LookupResourceSyncRuleResultOutput) Selector() ResourceSyncRulePropertiesResponseSelectorPtrOutput {
-	return o.ApplyT(func(v LookupResourceSyncRuleResult) *ResourceSyncRulePropertiesResponseSelector { return v.Selector }).(ResourceSyncRulePropertiesResponseSelectorPtrOutput)
+func (o LookupResourceSyncRuleResultOutput) Selector() ResourceSyncRulePropertiesSelectorResponsePtrOutput {
+	return o.ApplyT(func(v LookupResourceSyncRuleResult) *ResourceSyncRulePropertiesSelectorResponse { return v.Selector }).(ResourceSyncRulePropertiesSelectorResponsePtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupResourceSyncRuleResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupResourceSyncRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

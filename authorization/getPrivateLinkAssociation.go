@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -32,6 +32,8 @@ type LookupPrivateLinkAssociationArgs struct {
 }
 
 type LookupPrivateLinkAssociationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The plaResourceID.
 	Id string `pulumi:"id"`
 	// The pla name.
@@ -74,6 +76,11 @@ func (o LookupPrivateLinkAssociationResultOutput) ToLookupPrivateLinkAssociation
 
 func (o LookupPrivateLinkAssociationResultOutput) ToLookupPrivateLinkAssociationResultOutputWithContext(ctx context.Context) LookupPrivateLinkAssociationResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPrivateLinkAssociationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateLinkAssociationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The plaResourceID.

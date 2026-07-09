@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -31,7 +31,7 @@ type GetExposureControlFeatureValueByFactoryArgs struct {
 	FeatureName *string `pulumi:"featureName"`
 	// The feature type.
 	FeatureType *string `pulumi:"featureType"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -59,7 +59,7 @@ type GetExposureControlFeatureValueByFactoryOutputArgs struct {
 	FeatureName pulumi.StringPtrInput `pulumi:"featureName"`
 	// The feature type.
 	FeatureType pulumi.StringPtrInput `pulumi:"featureType"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 

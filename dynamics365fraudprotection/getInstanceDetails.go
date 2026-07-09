@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +35,8 @@ type LookupInstanceDetailsArgs struct {
 type LookupInstanceDetailsResult struct {
 	// A collection of DFP instance administrators
 	Administration *DFPInstanceAdministratorsResponse `pulumi:"administration"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Location of the DFP resource.
@@ -89,6 +91,11 @@ func (o LookupInstanceDetailsResultOutput) ToLookupInstanceDetailsResultOutputWi
 // A collection of DFP instance administrators
 func (o LookupInstanceDetailsResultOutput) Administration() DFPInstanceAdministratorsResponsePtrOutput {
 	return o.ApplyT(func(v LookupInstanceDetailsResult) *DFPInstanceAdministratorsResponse { return v.Administration }).(DFPInstanceAdministratorsResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupInstanceDetailsResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceDetailsResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

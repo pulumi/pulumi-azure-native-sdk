@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +35,8 @@ type LookupPrivateEndpointConnectionsAdtAPIArgs struct {
 
 // The Private Endpoint Connection resource.
 type LookupPrivateEndpointConnectionsAdtAPIResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The name of the resource
@@ -86,6 +88,11 @@ func (o LookupPrivateEndpointConnectionsAdtAPIResultOutput) ToLookupPrivateEndpo
 
 func (o LookupPrivateEndpointConnectionsAdtAPIResultOutput) ToLookupPrivateEndpointConnectionsAdtAPIResultOutputWithContext(ctx context.Context) LookupPrivateEndpointConnectionsAdtAPIResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPrivateEndpointConnectionsAdtAPIResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateEndpointConnectionsAdtAPIResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

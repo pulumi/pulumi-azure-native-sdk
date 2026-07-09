@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,41 +33,41 @@ type LookupScopeAccessReviewHistoryDefinitionByIdArgs struct {
 
 // Access Review History Definition.
 type LookupScopeAccessReviewHistoryDefinitionByIdResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Date time when history definition was created
 	CreatedDateTime string `pulumi:"createdDateTime"`
 	// Collection of review decisions which the history data should be filtered on. For example if Approve and Deny are supplied the data will only contain review results in which the decision maker approved or denied a review request.
 	Decisions []string `pulumi:"decisions"`
 	// The display name for the history definition.
 	DisplayName *string `pulumi:"displayName"`
-	// The DateTime when the review is scheduled to end. Required if type is endDate
-	EndDate *string `pulumi:"endDate"`
-	// The access review history definition id.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Set of access review history instances for this history definition.
 	Instances []AccessReviewHistoryInstanceResponse `pulumi:"instances"`
 	// The interval for recurrence. For a quarterly review, the interval is 3 for type : absoluteMonthly.
 	Interval *int `pulumi:"interval"`
-	// The access review history definition unique id.
+	// The name of the resource
 	Name string `pulumi:"name"`
-	// The number of times to repeat the access review. Required and must be positive if type is numbered.
-	NumberOfOccurrences *int `pulumi:"numberOfOccurrences"`
 	// The identity id
 	PrincipalId string `pulumi:"principalId"`
 	// The identity display name
 	PrincipalName string `pulumi:"principalName"`
 	// The identity type : user/servicePrincipal
 	PrincipalType string `pulumi:"principalType"`
+	// Access Review History Definition recurrence settings.
+	Range *AccessReviewRecurrenceRangeResponse `pulumi:"range"`
 	// Date time used when selecting review data, all reviews included in data end on or before this date. For use only with one-time/non-recurring reports.
 	ReviewHistoryPeriodEndDateTime string `pulumi:"reviewHistoryPeriodEndDateTime"`
 	// Date time used when selecting review data, all reviews included in data start on or after this date. For use only with one-time/non-recurring reports.
 	ReviewHistoryPeriodStartDateTime string `pulumi:"reviewHistoryPeriodStartDateTime"`
 	// A collection of scopes used when selecting review history data
 	Scopes []AccessReviewScopeResponse `pulumi:"scopes"`
-	// The DateTime when the review is scheduled to be start. This could be a date in the future. Required on create.
-	StartDate *string `pulumi:"startDate"`
 	// This read-only field specifies the of the requested review history data. This is either requested, in-progress, done or error.
 	Status string `pulumi:"status"`
-	// The resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The user principal name(if valid)
 	UserPrincipalName string `pulumi:"userPrincipalName"`
@@ -108,6 +108,11 @@ func (o LookupScopeAccessReviewHistoryDefinitionByIdResultOutput) ToLookupScopeA
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupScopeAccessReviewHistoryDefinitionByIdResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupScopeAccessReviewHistoryDefinitionByIdResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Date time when history definition was created
 func (o LookupScopeAccessReviewHistoryDefinitionByIdResultOutput) CreatedDateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScopeAccessReviewHistoryDefinitionByIdResult) string { return v.CreatedDateTime }).(pulumi.StringOutput)
@@ -123,12 +128,7 @@ func (o LookupScopeAccessReviewHistoryDefinitionByIdResultOutput) DisplayName() 
 	return o.ApplyT(func(v LookupScopeAccessReviewHistoryDefinitionByIdResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// The DateTime when the review is scheduled to end. Required if type is endDate
-func (o LookupScopeAccessReviewHistoryDefinitionByIdResultOutput) EndDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupScopeAccessReviewHistoryDefinitionByIdResult) *string { return v.EndDate }).(pulumi.StringPtrOutput)
-}
-
-// The access review history definition id.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupScopeAccessReviewHistoryDefinitionByIdResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScopeAccessReviewHistoryDefinitionByIdResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -145,14 +145,9 @@ func (o LookupScopeAccessReviewHistoryDefinitionByIdResultOutput) Interval() pul
 	return o.ApplyT(func(v LookupScopeAccessReviewHistoryDefinitionByIdResult) *int { return v.Interval }).(pulumi.IntPtrOutput)
 }
 
-// The access review history definition unique id.
+// The name of the resource
 func (o LookupScopeAccessReviewHistoryDefinitionByIdResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScopeAccessReviewHistoryDefinitionByIdResult) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The number of times to repeat the access review. Required and must be positive if type is numbered.
-func (o LookupScopeAccessReviewHistoryDefinitionByIdResultOutput) NumberOfOccurrences() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v LookupScopeAccessReviewHistoryDefinitionByIdResult) *int { return v.NumberOfOccurrences }).(pulumi.IntPtrOutput)
 }
 
 // The identity id
@@ -168,6 +163,13 @@ func (o LookupScopeAccessReviewHistoryDefinitionByIdResultOutput) PrincipalName(
 // The identity type : user/servicePrincipal
 func (o LookupScopeAccessReviewHistoryDefinitionByIdResultOutput) PrincipalType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScopeAccessReviewHistoryDefinitionByIdResult) string { return v.PrincipalType }).(pulumi.StringOutput)
+}
+
+// Access Review History Definition recurrence settings.
+func (o LookupScopeAccessReviewHistoryDefinitionByIdResultOutput) Range() AccessReviewRecurrenceRangeResponsePtrOutput {
+	return o.ApplyT(func(v LookupScopeAccessReviewHistoryDefinitionByIdResult) *AccessReviewRecurrenceRangeResponse {
+		return v.Range
+	}).(AccessReviewRecurrenceRangeResponsePtrOutput)
 }
 
 // Date time used when selecting review data, all reviews included in data end on or before this date. For use only with one-time/non-recurring reports.
@@ -191,17 +193,17 @@ func (o LookupScopeAccessReviewHistoryDefinitionByIdResultOutput) Scopes() Acces
 	}).(AccessReviewScopeResponseArrayOutput)
 }
 
-// The DateTime when the review is scheduled to be start. This could be a date in the future. Required on create.
-func (o LookupScopeAccessReviewHistoryDefinitionByIdResultOutput) StartDate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupScopeAccessReviewHistoryDefinitionByIdResult) *string { return v.StartDate }).(pulumi.StringPtrOutput)
-}
-
 // This read-only field specifies the of the requested review history data. This is either requested, in-progress, done or error.
 func (o LookupScopeAccessReviewHistoryDefinitionByIdResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScopeAccessReviewHistoryDefinitionByIdResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupScopeAccessReviewHistoryDefinitionByIdResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupScopeAccessReviewHistoryDefinitionByIdResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupScopeAccessReviewHistoryDefinitionByIdResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScopeAccessReviewHistoryDefinitionByIdResult) string { return v.Type }).(pulumi.StringOutput)
 }

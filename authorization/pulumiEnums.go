@@ -14,16 +14,179 @@ import (
 type AccessReviewRecurrencePatternType string
 
 const (
-	AccessReviewRecurrencePatternTypeWeekly          = AccessReviewRecurrencePatternType("weekly")
+	// weekly
+	AccessReviewRecurrencePatternTypeWeekly = AccessReviewRecurrencePatternType("weekly")
+	// absoluteMonthly
 	AccessReviewRecurrencePatternTypeAbsoluteMonthly = AccessReviewRecurrencePatternType("absoluteMonthly")
 )
+
+func (AccessReviewRecurrencePatternType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessReviewRecurrencePatternType)(nil)).Elem()
+}
+
+func (e AccessReviewRecurrencePatternType) ToAccessReviewRecurrencePatternTypeOutput() AccessReviewRecurrencePatternTypeOutput {
+	return pulumi.ToOutput(e).(AccessReviewRecurrencePatternTypeOutput)
+}
+
+func (e AccessReviewRecurrencePatternType) ToAccessReviewRecurrencePatternTypeOutputWithContext(ctx context.Context) AccessReviewRecurrencePatternTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AccessReviewRecurrencePatternTypeOutput)
+}
+
+func (e AccessReviewRecurrencePatternType) ToAccessReviewRecurrencePatternTypePtrOutput() AccessReviewRecurrencePatternTypePtrOutput {
+	return e.ToAccessReviewRecurrencePatternTypePtrOutputWithContext(context.Background())
+}
+
+func (e AccessReviewRecurrencePatternType) ToAccessReviewRecurrencePatternTypePtrOutputWithContext(ctx context.Context) AccessReviewRecurrencePatternTypePtrOutput {
+	return AccessReviewRecurrencePatternType(e).ToAccessReviewRecurrencePatternTypeOutputWithContext(ctx).ToAccessReviewRecurrencePatternTypePtrOutputWithContext(ctx)
+}
+
+func (e AccessReviewRecurrencePatternType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AccessReviewRecurrencePatternType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AccessReviewRecurrencePatternType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AccessReviewRecurrencePatternType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AccessReviewRecurrencePatternTypeOutput struct{ *pulumi.OutputState }
+
+func (AccessReviewRecurrencePatternTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessReviewRecurrencePatternType)(nil)).Elem()
+}
+
+func (o AccessReviewRecurrencePatternTypeOutput) ToAccessReviewRecurrencePatternTypeOutput() AccessReviewRecurrencePatternTypeOutput {
+	return o
+}
+
+func (o AccessReviewRecurrencePatternTypeOutput) ToAccessReviewRecurrencePatternTypeOutputWithContext(ctx context.Context) AccessReviewRecurrencePatternTypeOutput {
+	return o
+}
+
+func (o AccessReviewRecurrencePatternTypeOutput) ToAccessReviewRecurrencePatternTypePtrOutput() AccessReviewRecurrencePatternTypePtrOutput {
+	return o.ToAccessReviewRecurrencePatternTypePtrOutputWithContext(context.Background())
+}
+
+func (o AccessReviewRecurrencePatternTypeOutput) ToAccessReviewRecurrencePatternTypePtrOutputWithContext(ctx context.Context) AccessReviewRecurrencePatternTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessReviewRecurrencePatternType) *AccessReviewRecurrencePatternType {
+		return &v
+	}).(AccessReviewRecurrencePatternTypePtrOutput)
+}
+
+func (o AccessReviewRecurrencePatternTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AccessReviewRecurrencePatternTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AccessReviewRecurrencePatternType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AccessReviewRecurrencePatternTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AccessReviewRecurrencePatternTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AccessReviewRecurrencePatternType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AccessReviewRecurrencePatternTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AccessReviewRecurrencePatternTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessReviewRecurrencePatternType)(nil)).Elem()
+}
+
+func (o AccessReviewRecurrencePatternTypePtrOutput) ToAccessReviewRecurrencePatternTypePtrOutput() AccessReviewRecurrencePatternTypePtrOutput {
+	return o
+}
+
+func (o AccessReviewRecurrencePatternTypePtrOutput) ToAccessReviewRecurrencePatternTypePtrOutputWithContext(ctx context.Context) AccessReviewRecurrencePatternTypePtrOutput {
+	return o
+}
+
+func (o AccessReviewRecurrencePatternTypePtrOutput) Elem() AccessReviewRecurrencePatternTypeOutput {
+	return o.ApplyT(func(v *AccessReviewRecurrencePatternType) AccessReviewRecurrencePatternType {
+		if v != nil {
+			return *v
+		}
+		var ret AccessReviewRecurrencePatternType
+		return ret
+	}).(AccessReviewRecurrencePatternTypeOutput)
+}
+
+func (o AccessReviewRecurrencePatternTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AccessReviewRecurrencePatternTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AccessReviewRecurrencePatternType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AccessReviewRecurrencePatternTypeInput is an input type that accepts values of the AccessReviewRecurrencePatternType enum
+// A concrete instance of `AccessReviewRecurrencePatternTypeInput` can be one of the following:
+//
+//	AccessReviewRecurrencePatternTypeWeekly
+//	AccessReviewRecurrencePatternTypeAbsoluteMonthly
+type AccessReviewRecurrencePatternTypeInput interface {
+	pulumi.Input
+
+	ToAccessReviewRecurrencePatternTypeOutput() AccessReviewRecurrencePatternTypeOutput
+	ToAccessReviewRecurrencePatternTypeOutputWithContext(context.Context) AccessReviewRecurrencePatternTypeOutput
+}
+
+var accessReviewRecurrencePatternTypePtrType = reflect.TypeOf((**AccessReviewRecurrencePatternType)(nil)).Elem()
+
+type AccessReviewRecurrencePatternTypePtrInput interface {
+	pulumi.Input
+
+	ToAccessReviewRecurrencePatternTypePtrOutput() AccessReviewRecurrencePatternTypePtrOutput
+	ToAccessReviewRecurrencePatternTypePtrOutputWithContext(context.Context) AccessReviewRecurrencePatternTypePtrOutput
+}
+
+type accessReviewRecurrencePatternTypePtr string
+
+func AccessReviewRecurrencePatternTypePtr(v string) AccessReviewRecurrencePatternTypePtrInput {
+	return (*accessReviewRecurrencePatternTypePtr)(&v)
+}
+
+func (*accessReviewRecurrencePatternTypePtr) ElementType() reflect.Type {
+	return accessReviewRecurrencePatternTypePtrType
+}
+
+func (in *accessReviewRecurrencePatternTypePtr) ToAccessReviewRecurrencePatternTypePtrOutput() AccessReviewRecurrencePatternTypePtrOutput {
+	return pulumi.ToOutput(in).(AccessReviewRecurrencePatternTypePtrOutput)
+}
+
+func (in *accessReviewRecurrencePatternTypePtr) ToAccessReviewRecurrencePatternTypePtrOutputWithContext(ctx context.Context) AccessReviewRecurrencePatternTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AccessReviewRecurrencePatternTypePtrOutput)
+}
 
 // The recurrence range type. The possible values are: endDate, noEnd, numbered.
 type AccessReviewRecurrenceRangeType string
 
 const (
-	AccessReviewRecurrenceRangeTypeEndDate  = AccessReviewRecurrenceRangeType("endDate")
-	AccessReviewRecurrenceRangeTypeNoEnd    = AccessReviewRecurrenceRangeType("noEnd")
+	// endDate
+	AccessReviewRecurrenceRangeTypeEndDate = AccessReviewRecurrenceRangeType("endDate")
+	// noEnd
+	AccessReviewRecurrenceRangeTypeNoEnd = AccessReviewRecurrenceRangeType("noEnd")
+	// numbered
 	AccessReviewRecurrenceRangeTypeNumbered = AccessReviewRecurrenceRangeType("numbered")
 )
 
@@ -190,10 +353,15 @@ func (in *accessReviewRecurrenceRangeTypePtr) ToAccessReviewRecurrenceRangeTypeP
 type AccessReviewResult string
 
 const (
-	AccessReviewResultApprove     = AccessReviewResult("Approve")
-	AccessReviewResultDeny        = AccessReviewResult("Deny")
+	// Approve
+	AccessReviewResultApprove = AccessReviewResult("Approve")
+	// Deny
+	AccessReviewResultDeny = AccessReviewResult("Deny")
+	// NotReviewed
 	AccessReviewResultNotReviewed = AccessReviewResult("NotReviewed")
-	AccessReviewResultDontKnow    = AccessReviewResult("DontKnow")
+	// DontKnow
+	AccessReviewResultDontKnow = AccessReviewResult("DontKnow")
+	// NotNotified
 	AccessReviewResultNotNotified = AccessReviewResult("NotNotified")
 )
 
@@ -362,10 +530,14 @@ func (in *accessReviewResultPtr) ToAccessReviewResultPtrOutputWithContext(ctx co
 type ApprovalMode string
 
 const (
+	// SingleStage
 	ApprovalModeSingleStage = ApprovalMode("SingleStage")
-	ApprovalModeSerial      = ApprovalMode("Serial")
-	ApprovalModeParallel    = ApprovalMode("Parallel")
-	ApprovalModeNoApproval  = ApprovalMode("NoApproval")
+	// Serial
+	ApprovalModeSerial = ApprovalMode("Serial")
+	// Parallel
+	ApprovalModeParallel = ApprovalMode("Parallel")
+	// NoApproval
+	ApprovalModeNoApproval = ApprovalMode("NoApproval")
 )
 
 func (ApprovalMode) ElementType() reflect.Type {
@@ -696,12 +868,185 @@ func (in *assignmentScopeValidationPtr) ToAssignmentScopeValidationPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(AssignmentScopeValidationPtrOutput)
 }
 
+// The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
+type AssignmentType string
+
+const (
+	AssignmentTypeNotSpecified = AssignmentType("NotSpecified")
+	AssignmentTypeSystem       = AssignmentType("System")
+	AssignmentTypeSystemHidden = AssignmentType("SystemHidden")
+	AssignmentTypeCustom       = AssignmentType("Custom")
+)
+
+func (AssignmentType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssignmentType)(nil)).Elem()
+}
+
+func (e AssignmentType) ToAssignmentTypeOutput() AssignmentTypeOutput {
+	return pulumi.ToOutput(e).(AssignmentTypeOutput)
+}
+
+func (e AssignmentType) ToAssignmentTypeOutputWithContext(ctx context.Context) AssignmentTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AssignmentTypeOutput)
+}
+
+func (e AssignmentType) ToAssignmentTypePtrOutput() AssignmentTypePtrOutput {
+	return e.ToAssignmentTypePtrOutputWithContext(context.Background())
+}
+
+func (e AssignmentType) ToAssignmentTypePtrOutputWithContext(ctx context.Context) AssignmentTypePtrOutput {
+	return AssignmentType(e).ToAssignmentTypeOutputWithContext(ctx).ToAssignmentTypePtrOutputWithContext(ctx)
+}
+
+func (e AssignmentType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AssignmentType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AssignmentType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AssignmentType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AssignmentTypeOutput struct{ *pulumi.OutputState }
+
+func (AssignmentTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssignmentType)(nil)).Elem()
+}
+
+func (o AssignmentTypeOutput) ToAssignmentTypeOutput() AssignmentTypeOutput {
+	return o
+}
+
+func (o AssignmentTypeOutput) ToAssignmentTypeOutputWithContext(ctx context.Context) AssignmentTypeOutput {
+	return o
+}
+
+func (o AssignmentTypeOutput) ToAssignmentTypePtrOutput() AssignmentTypePtrOutput {
+	return o.ToAssignmentTypePtrOutputWithContext(context.Background())
+}
+
+func (o AssignmentTypeOutput) ToAssignmentTypePtrOutputWithContext(ctx context.Context) AssignmentTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssignmentType) *AssignmentType {
+		return &v
+	}).(AssignmentTypePtrOutput)
+}
+
+func (o AssignmentTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AssignmentTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AssignmentType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AssignmentTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AssignmentTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AssignmentType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AssignmentTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AssignmentTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssignmentType)(nil)).Elem()
+}
+
+func (o AssignmentTypePtrOutput) ToAssignmentTypePtrOutput() AssignmentTypePtrOutput {
+	return o
+}
+
+func (o AssignmentTypePtrOutput) ToAssignmentTypePtrOutputWithContext(ctx context.Context) AssignmentTypePtrOutput {
+	return o
+}
+
+func (o AssignmentTypePtrOutput) Elem() AssignmentTypeOutput {
+	return o.ApplyT(func(v *AssignmentType) AssignmentType {
+		if v != nil {
+			return *v
+		}
+		var ret AssignmentType
+		return ret
+	}).(AssignmentTypeOutput)
+}
+
+func (o AssignmentTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AssignmentTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AssignmentType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AssignmentTypeInput is an input type that accepts values of the AssignmentType enum
+// A concrete instance of `AssignmentTypeInput` can be one of the following:
+//
+//	AssignmentTypeNotSpecified
+//	AssignmentTypeSystem
+//	AssignmentTypeSystemHidden
+//	AssignmentTypeCustom
+type AssignmentTypeInput interface {
+	pulumi.Input
+
+	ToAssignmentTypeOutput() AssignmentTypeOutput
+	ToAssignmentTypeOutputWithContext(context.Context) AssignmentTypeOutput
+}
+
+var assignmentTypePtrType = reflect.TypeOf((**AssignmentType)(nil)).Elem()
+
+type AssignmentTypePtrInput interface {
+	pulumi.Input
+
+	ToAssignmentTypePtrOutput() AssignmentTypePtrOutput
+	ToAssignmentTypePtrOutputWithContext(context.Context) AssignmentTypePtrOutput
+}
+
+type assignmentTypePtr string
+
+func AssignmentTypePtr(v string) AssignmentTypePtrInput {
+	return (*assignmentTypePtr)(&v)
+}
+
+func (*assignmentTypePtr) ElementType() reflect.Type {
+	return assignmentTypePtrType
+}
+
+func (in *assignmentTypePtr) ToAssignmentTypePtrOutput() AssignmentTypePtrOutput {
+	return pulumi.ToOutput(in).(AssignmentTypePtrOutput)
+}
+
+func (in *assignmentTypePtr) ToAssignmentTypePtrOutputWithContext(ctx context.Context) AssignmentTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AssignmentTypePtrOutput)
+}
+
 // This specifies the behavior for the autoReview feature when an access review completes.
 type DefaultDecisionType string
 
 const (
-	DefaultDecisionTypeApprove        = DefaultDecisionType("Approve")
-	DefaultDecisionTypeDeny           = DefaultDecisionType("Deny")
+	// Approve
+	DefaultDecisionTypeApprove = DefaultDecisionType("Approve")
+	// Deny
+	DefaultDecisionTypeDeny = DefaultDecisionType("Deny")
+	// Recommendation
 	DefaultDecisionTypeRecommendation = DefaultDecisionType("Recommendation")
 )
 
@@ -864,13 +1209,184 @@ func (in *defaultDecisionTypePtr) ToDefaultDecisionTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(DefaultDecisionTypePtrOutput)
 }
 
+// The effect of the deny assignment. 'enforced' blocks access, 'audit' logs without blocking.
+type DenyAssignmentEffect string
+
+const (
+	// enforced
+	DenyAssignmentEffectEnforced = DenyAssignmentEffect("enforced")
+	// audit
+	DenyAssignmentEffectAudit = DenyAssignmentEffect("audit")
+)
+
+func (DenyAssignmentEffect) ElementType() reflect.Type {
+	return reflect.TypeOf((*DenyAssignmentEffect)(nil)).Elem()
+}
+
+func (e DenyAssignmentEffect) ToDenyAssignmentEffectOutput() DenyAssignmentEffectOutput {
+	return pulumi.ToOutput(e).(DenyAssignmentEffectOutput)
+}
+
+func (e DenyAssignmentEffect) ToDenyAssignmentEffectOutputWithContext(ctx context.Context) DenyAssignmentEffectOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DenyAssignmentEffectOutput)
+}
+
+func (e DenyAssignmentEffect) ToDenyAssignmentEffectPtrOutput() DenyAssignmentEffectPtrOutput {
+	return e.ToDenyAssignmentEffectPtrOutputWithContext(context.Background())
+}
+
+func (e DenyAssignmentEffect) ToDenyAssignmentEffectPtrOutputWithContext(ctx context.Context) DenyAssignmentEffectPtrOutput {
+	return DenyAssignmentEffect(e).ToDenyAssignmentEffectOutputWithContext(ctx).ToDenyAssignmentEffectPtrOutputWithContext(ctx)
+}
+
+func (e DenyAssignmentEffect) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DenyAssignmentEffect) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DenyAssignmentEffect) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DenyAssignmentEffect) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DenyAssignmentEffectOutput struct{ *pulumi.OutputState }
+
+func (DenyAssignmentEffectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DenyAssignmentEffect)(nil)).Elem()
+}
+
+func (o DenyAssignmentEffectOutput) ToDenyAssignmentEffectOutput() DenyAssignmentEffectOutput {
+	return o
+}
+
+func (o DenyAssignmentEffectOutput) ToDenyAssignmentEffectOutputWithContext(ctx context.Context) DenyAssignmentEffectOutput {
+	return o
+}
+
+func (o DenyAssignmentEffectOutput) ToDenyAssignmentEffectPtrOutput() DenyAssignmentEffectPtrOutput {
+	return o.ToDenyAssignmentEffectPtrOutputWithContext(context.Background())
+}
+
+func (o DenyAssignmentEffectOutput) ToDenyAssignmentEffectPtrOutputWithContext(ctx context.Context) DenyAssignmentEffectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DenyAssignmentEffect) *DenyAssignmentEffect {
+		return &v
+	}).(DenyAssignmentEffectPtrOutput)
+}
+
+func (o DenyAssignmentEffectOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DenyAssignmentEffectOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DenyAssignmentEffect) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DenyAssignmentEffectOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DenyAssignmentEffectOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DenyAssignmentEffect) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DenyAssignmentEffectPtrOutput struct{ *pulumi.OutputState }
+
+func (DenyAssignmentEffectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DenyAssignmentEffect)(nil)).Elem()
+}
+
+func (o DenyAssignmentEffectPtrOutput) ToDenyAssignmentEffectPtrOutput() DenyAssignmentEffectPtrOutput {
+	return o
+}
+
+func (o DenyAssignmentEffectPtrOutput) ToDenyAssignmentEffectPtrOutputWithContext(ctx context.Context) DenyAssignmentEffectPtrOutput {
+	return o
+}
+
+func (o DenyAssignmentEffectPtrOutput) Elem() DenyAssignmentEffectOutput {
+	return o.ApplyT(func(v *DenyAssignmentEffect) DenyAssignmentEffect {
+		if v != nil {
+			return *v
+		}
+		var ret DenyAssignmentEffect
+		return ret
+	}).(DenyAssignmentEffectOutput)
+}
+
+func (o DenyAssignmentEffectPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DenyAssignmentEffectPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DenyAssignmentEffect) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DenyAssignmentEffectInput is an input type that accepts values of the DenyAssignmentEffect enum
+// A concrete instance of `DenyAssignmentEffectInput` can be one of the following:
+//
+//	DenyAssignmentEffectEnforced
+//	DenyAssignmentEffectAudit
+type DenyAssignmentEffectInput interface {
+	pulumi.Input
+
+	ToDenyAssignmentEffectOutput() DenyAssignmentEffectOutput
+	ToDenyAssignmentEffectOutputWithContext(context.Context) DenyAssignmentEffectOutput
+}
+
+var denyAssignmentEffectPtrType = reflect.TypeOf((**DenyAssignmentEffect)(nil)).Elem()
+
+type DenyAssignmentEffectPtrInput interface {
+	pulumi.Input
+
+	ToDenyAssignmentEffectPtrOutput() DenyAssignmentEffectPtrOutput
+	ToDenyAssignmentEffectPtrOutputWithContext(context.Context) DenyAssignmentEffectPtrOutput
+}
+
+type denyAssignmentEffectPtr string
+
+func DenyAssignmentEffectPtr(v string) DenyAssignmentEffectPtrInput {
+	return (*denyAssignmentEffectPtr)(&v)
+}
+
+func (*denyAssignmentEffectPtr) ElementType() reflect.Type {
+	return denyAssignmentEffectPtrType
+}
+
+func (in *denyAssignmentEffectPtr) ToDenyAssignmentEffectPtrOutput() DenyAssignmentEffectPtrOutput {
+	return pulumi.ToOutput(in).(DenyAssignmentEffectPtrOutput)
+}
+
+func (in *denyAssignmentEffectPtr) ToDenyAssignmentEffectPtrOutputWithContext(ctx context.Context) DenyAssignmentEffectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DenyAssignmentEffectPtrOutput)
+}
+
 // The type of enablement rule
 type EnablementRules string
 
 const (
+	// MultiFactorAuthentication
 	EnablementRulesMultiFactorAuthentication = EnablementRules("MultiFactorAuthentication")
-	EnablementRulesJustification             = EnablementRules("Justification")
-	EnablementRulesTicketing                 = EnablementRules("Ticketing")
+	// Justification
+	EnablementRulesJustification = EnablementRules("Justification")
+	// Ticketing
+	EnablementRulesTicketing = EnablementRules("Ticketing")
 )
 
 func (EnablementRules) ElementType() reflect.Type {
@@ -1032,7 +1548,7 @@ func (in *enablementRulesPtr) ToEnablementRulesPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(EnablementRulesPtrOutput)
 }
 
-// The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
+// The policy assignment enforcement mode. Possible values are Default, DoNotEnforce, and Enroll
 type EnforcementMode string
 
 const (
@@ -1040,6 +1556,8 @@ const (
 	EnforcementModeDefault = EnforcementMode("Default")
 	// The policy effect is not enforced during resource creation or update.
 	EnforcementModeDoNotEnforce = EnforcementMode("DoNotEnforce")
+	// The policy effect is not enforced during resource creation or update until the resource or scope of the resource is enrolled to the assignment instance. Enrollment occurs upon deployment of the policy enrollment resource.
+	EnforcementModeEnroll = EnforcementMode("Enroll")
 )
 
 func (EnforcementMode) ElementType() reflect.Type {
@@ -1166,6 +1684,7 @@ func (o EnforcementModePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 //
 //	EnforcementModeDefault
 //	EnforcementModeDoNotEnforce
+//	EnforcementModeEnroll
 type EnforcementModeInput interface {
 	pulumi.Input
 
@@ -1203,7 +1722,9 @@ func (in *enforcementModePtr) ToEnforcementModePtrOutputWithContext(ctx context.
 type ExcludedPrincipalTypes string
 
 const (
-	ExcludedPrincipalTypesServicePrincipalsAsTarget    = ExcludedPrincipalTypes("ServicePrincipalsAsTarget")
+	// ServicePrincipalsAsTarget
+	ExcludedPrincipalTypesServicePrincipalsAsTarget = ExcludedPrincipalTypes("ServicePrincipalsAsTarget")
+	// ServicePrincipalsAsRequestor
 	ExcludedPrincipalTypesServicePrincipalsAsRequestor = ExcludedPrincipalTypes("ServicePrincipalsAsRequestor")
 )
 
@@ -1705,6 +2226,7 @@ func (in *lockLevelPtr) ToLockLevelPtrOutputWithContext(ctx context.Context) Loc
 type NotificationDeliveryMechanism string
 
 const (
+	// Email
 	NotificationDeliveryMechanismEmail = NotificationDeliveryMechanism("Email")
 )
 
@@ -1869,9 +2391,12 @@ func (in *notificationDeliveryMechanismPtr) ToNotificationDeliveryMechanismPtrOu
 type NotificationLevel string
 
 const (
-	NotificationLevelNone     = NotificationLevel("None")
+	// None
+	NotificationLevelNone = NotificationLevel("None")
+	// Critical
 	NotificationLevelCritical = NotificationLevel("Critical")
-	NotificationLevelAll      = NotificationLevel("All")
+	// All
+	NotificationLevelAll = NotificationLevel("All")
 )
 
 func (NotificationLevel) ElementType() reflect.Type {
@@ -2039,6 +2564,8 @@ type OverrideKind string
 const (
 	// It will override the policy effect type.
 	OverrideKindPolicyEffect = OverrideKind("policyEffect")
+	// It will override the definition version property value of the policy assignment.
+	OverrideKindDefinitionVersion = OverrideKind("definitionVersion")
 )
 
 func (OverrideKind) ElementType() reflect.Type {
@@ -2164,6 +2691,7 @@ func (o OverrideKindPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 // A concrete instance of `OverrideKindInput` can be one of the following:
 //
 //	OverrideKindPolicyEffect
+//	OverrideKindDefinitionVersion
 type OverrideKindInput interface {
 	pulumi.Input
 
@@ -2202,8 +2730,11 @@ func (in *overrideKindPtr) ToOverrideKindPtrOutputWithContext(ctx context.Contex
 type PIMOnlyMode string
 
 const (
-	PIMOnlyModeDisabled   = PIMOnlyMode("Disabled")
-	PIMOnlyModeEnabled    = PIMOnlyMode("Enabled")
+	// Disabled
+	PIMOnlyModeDisabled = PIMOnlyMode("Disabled")
+	// Enabled
+	PIMOnlyModeEnabled = PIMOnlyMode("Enabled")
+	// ReportOnly
 	PIMOnlyModeReportOnly = PIMOnlyMode("ReportOnly")
 )
 
@@ -2716,11 +3247,16 @@ func (in *policyTypePtr) ToPolicyTypePtrOutputWithContext(ctx context.Context) P
 type PrincipalType string
 
 const (
-	PrincipalTypeUser             = PrincipalType("User")
-	PrincipalTypeGroup            = PrincipalType("Group")
+	// User
+	PrincipalTypeUser = PrincipalType("User")
+	// Group
+	PrincipalTypeGroup = PrincipalType("Group")
+	// ServicePrincipal
 	PrincipalTypeServicePrincipal = PrincipalType("ServicePrincipal")
-	PrincipalTypeForeignGroup     = PrincipalType("ForeignGroup")
-	PrincipalTypeDevice           = PrincipalType("Device")
+	// ForeignGroup
+	PrincipalTypeForeignGroup = PrincipalType("ForeignGroup")
+	// Device
+	PrincipalTypeDevice = PrincipalType("Device")
 )
 
 func (PrincipalType) ElementType() reflect.Type {
@@ -3053,9 +3589,12 @@ func (in *publicNetworkAccessOptionsPtr) ToPublicNetworkAccessOptionsPtrOutputWi
 type RecipientType string
 
 const (
+	// Requestor
 	RecipientTypeRequestor = RecipientType("Requestor")
-	RecipientTypeApprover  = RecipientType("Approver")
-	RecipientTypeAdmin     = RecipientType("Admin")
+	// Approver
+	RecipientTypeApprover = RecipientType("Approver")
+	// Admin
+	RecipientTypeAdmin = RecipientType("Admin")
 )
 
 func (RecipientType) ElementType() reflect.Type {
@@ -3407,12 +3946,18 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 type RoleManagementPolicyRuleType string
 
 const (
-	RoleManagementPolicyRuleTypeRoleManagementPolicyApprovalRule              = RoleManagementPolicyRuleType("RoleManagementPolicyApprovalRule")
+	// RoleManagementPolicyApprovalRule
+	RoleManagementPolicyRuleTypeRoleManagementPolicyApprovalRule = RoleManagementPolicyRuleType("RoleManagementPolicyApprovalRule")
+	// RoleManagementPolicyAuthenticationContextRule
 	RoleManagementPolicyRuleTypeRoleManagementPolicyAuthenticationContextRule = RoleManagementPolicyRuleType("RoleManagementPolicyAuthenticationContextRule")
-	RoleManagementPolicyRuleTypeRoleManagementPolicyEnablementRule            = RoleManagementPolicyRuleType("RoleManagementPolicyEnablementRule")
-	RoleManagementPolicyRuleTypeRoleManagementPolicyExpirationRule            = RoleManagementPolicyRuleType("RoleManagementPolicyExpirationRule")
-	RoleManagementPolicyRuleTypeRoleManagementPolicyNotificationRule          = RoleManagementPolicyRuleType("RoleManagementPolicyNotificationRule")
-	RoleManagementPolicyRuleTypeRoleManagementPolicyPimOnlyModeRule           = RoleManagementPolicyRuleType("RoleManagementPolicyPimOnlyModeRule")
+	// RoleManagementPolicyEnablementRule
+	RoleManagementPolicyRuleTypeRoleManagementPolicyEnablementRule = RoleManagementPolicyRuleType("RoleManagementPolicyEnablementRule")
+	// RoleManagementPolicyExpirationRule
+	RoleManagementPolicyRuleTypeRoleManagementPolicyExpirationRule = RoleManagementPolicyRuleType("RoleManagementPolicyExpirationRule")
+	// RoleManagementPolicyNotificationRule
+	RoleManagementPolicyRuleTypeRoleManagementPolicyNotificationRule = RoleManagementPolicyRuleType("RoleManagementPolicyNotificationRule")
+	// RoleManagementPolicyPimOnlyModeRule
+	RoleManagementPolicyRuleTypeRoleManagementPolicyPimOnlyModeRule = RoleManagementPolicyRuleType("RoleManagementPolicyPimOnlyModeRule")
 )
 
 // The selector kind.
@@ -3761,9 +4306,10 @@ func (in *typePtr) ToTypePtrOutputWithContext(ctx context.Context) TypePtrOutput
 type UserType string
 
 const (
-	UserTypeUser             = UserType("User")
-	UserTypeGroup            = UserType("Group")
-	UserTypeServicePrincipal = UserType("ServicePrincipal")
+	// User
+	UserTypeUser = UserType("User")
+	// Group
+	UserTypeGroup = UserType("Group")
 )
 
 func (UserType) ElementType() reflect.Type {
@@ -3890,7 +4436,6 @@ func (o UserTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pul
 //
 //	UserTypeUser
 //	UserTypeGroup
-//	UserTypeServicePrincipal
 type UserTypeInput interface {
 	pulumi.Input
 
@@ -3925,7 +4470,180 @@ func (in *userTypePtr) ToUserTypePtrOutputWithContext(ctx context.Context) UserT
 	return pulumi.ToOutputWithContext(ctx, in).(UserTypePtrOutput)
 }
 
+// The type of user.
+type UsersOrServicePrincipalSetUserType string
+
+const (
+	// User
+	UsersOrServicePrincipalSetUserTypeUser = UsersOrServicePrincipalSetUserType("User")
+	// Group
+	UsersOrServicePrincipalSetUserTypeGroup = UsersOrServicePrincipalSetUserType("Group")
+	// ServicePrincipal
+	UsersOrServicePrincipalSetUserTypeServicePrincipal = UsersOrServicePrincipalSetUserType("ServicePrincipal")
+)
+
+func (UsersOrServicePrincipalSetUserType) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsersOrServicePrincipalSetUserType)(nil)).Elem()
+}
+
+func (e UsersOrServicePrincipalSetUserType) ToUsersOrServicePrincipalSetUserTypeOutput() UsersOrServicePrincipalSetUserTypeOutput {
+	return pulumi.ToOutput(e).(UsersOrServicePrincipalSetUserTypeOutput)
+}
+
+func (e UsersOrServicePrincipalSetUserType) ToUsersOrServicePrincipalSetUserTypeOutputWithContext(ctx context.Context) UsersOrServicePrincipalSetUserTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(UsersOrServicePrincipalSetUserTypeOutput)
+}
+
+func (e UsersOrServicePrincipalSetUserType) ToUsersOrServicePrincipalSetUserTypePtrOutput() UsersOrServicePrincipalSetUserTypePtrOutput {
+	return e.ToUsersOrServicePrincipalSetUserTypePtrOutputWithContext(context.Background())
+}
+
+func (e UsersOrServicePrincipalSetUserType) ToUsersOrServicePrincipalSetUserTypePtrOutputWithContext(ctx context.Context) UsersOrServicePrincipalSetUserTypePtrOutput {
+	return UsersOrServicePrincipalSetUserType(e).ToUsersOrServicePrincipalSetUserTypeOutputWithContext(ctx).ToUsersOrServicePrincipalSetUserTypePtrOutputWithContext(ctx)
+}
+
+func (e UsersOrServicePrincipalSetUserType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e UsersOrServicePrincipalSetUserType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e UsersOrServicePrincipalSetUserType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e UsersOrServicePrincipalSetUserType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type UsersOrServicePrincipalSetUserTypeOutput struct{ *pulumi.OutputState }
+
+func (UsersOrServicePrincipalSetUserTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsersOrServicePrincipalSetUserType)(nil)).Elem()
+}
+
+func (o UsersOrServicePrincipalSetUserTypeOutput) ToUsersOrServicePrincipalSetUserTypeOutput() UsersOrServicePrincipalSetUserTypeOutput {
+	return o
+}
+
+func (o UsersOrServicePrincipalSetUserTypeOutput) ToUsersOrServicePrincipalSetUserTypeOutputWithContext(ctx context.Context) UsersOrServicePrincipalSetUserTypeOutput {
+	return o
+}
+
+func (o UsersOrServicePrincipalSetUserTypeOutput) ToUsersOrServicePrincipalSetUserTypePtrOutput() UsersOrServicePrincipalSetUserTypePtrOutput {
+	return o.ToUsersOrServicePrincipalSetUserTypePtrOutputWithContext(context.Background())
+}
+
+func (o UsersOrServicePrincipalSetUserTypeOutput) ToUsersOrServicePrincipalSetUserTypePtrOutputWithContext(ctx context.Context) UsersOrServicePrincipalSetUserTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UsersOrServicePrincipalSetUserType) *UsersOrServicePrincipalSetUserType {
+		return &v
+	}).(UsersOrServicePrincipalSetUserTypePtrOutput)
+}
+
+func (o UsersOrServicePrincipalSetUserTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o UsersOrServicePrincipalSetUserTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e UsersOrServicePrincipalSetUserType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o UsersOrServicePrincipalSetUserTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o UsersOrServicePrincipalSetUserTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e UsersOrServicePrincipalSetUserType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type UsersOrServicePrincipalSetUserTypePtrOutput struct{ *pulumi.OutputState }
+
+func (UsersOrServicePrincipalSetUserTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UsersOrServicePrincipalSetUserType)(nil)).Elem()
+}
+
+func (o UsersOrServicePrincipalSetUserTypePtrOutput) ToUsersOrServicePrincipalSetUserTypePtrOutput() UsersOrServicePrincipalSetUserTypePtrOutput {
+	return o
+}
+
+func (o UsersOrServicePrincipalSetUserTypePtrOutput) ToUsersOrServicePrincipalSetUserTypePtrOutputWithContext(ctx context.Context) UsersOrServicePrincipalSetUserTypePtrOutput {
+	return o
+}
+
+func (o UsersOrServicePrincipalSetUserTypePtrOutput) Elem() UsersOrServicePrincipalSetUserTypeOutput {
+	return o.ApplyT(func(v *UsersOrServicePrincipalSetUserType) UsersOrServicePrincipalSetUserType {
+		if v != nil {
+			return *v
+		}
+		var ret UsersOrServicePrincipalSetUserType
+		return ret
+	}).(UsersOrServicePrincipalSetUserTypeOutput)
+}
+
+func (o UsersOrServicePrincipalSetUserTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o UsersOrServicePrincipalSetUserTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *UsersOrServicePrincipalSetUserType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// UsersOrServicePrincipalSetUserTypeInput is an input type that accepts values of the UsersOrServicePrincipalSetUserType enum
+// A concrete instance of `UsersOrServicePrincipalSetUserTypeInput` can be one of the following:
+//
+//	UsersOrServicePrincipalSetUserTypeUser
+//	UsersOrServicePrincipalSetUserTypeGroup
+//	UsersOrServicePrincipalSetUserTypeServicePrincipal
+type UsersOrServicePrincipalSetUserTypeInput interface {
+	pulumi.Input
+
+	ToUsersOrServicePrincipalSetUserTypeOutput() UsersOrServicePrincipalSetUserTypeOutput
+	ToUsersOrServicePrincipalSetUserTypeOutputWithContext(context.Context) UsersOrServicePrincipalSetUserTypeOutput
+}
+
+var usersOrServicePrincipalSetUserTypePtrType = reflect.TypeOf((**UsersOrServicePrincipalSetUserType)(nil)).Elem()
+
+type UsersOrServicePrincipalSetUserTypePtrInput interface {
+	pulumi.Input
+
+	ToUsersOrServicePrincipalSetUserTypePtrOutput() UsersOrServicePrincipalSetUserTypePtrOutput
+	ToUsersOrServicePrincipalSetUserTypePtrOutputWithContext(context.Context) UsersOrServicePrincipalSetUserTypePtrOutput
+}
+
+type usersOrServicePrincipalSetUserTypePtr string
+
+func UsersOrServicePrincipalSetUserTypePtr(v string) UsersOrServicePrincipalSetUserTypePtrInput {
+	return (*usersOrServicePrincipalSetUserTypePtr)(&v)
+}
+
+func (*usersOrServicePrincipalSetUserTypePtr) ElementType() reflect.Type {
+	return usersOrServicePrincipalSetUserTypePtrType
+}
+
+func (in *usersOrServicePrincipalSetUserTypePtr) ToUsersOrServicePrincipalSetUserTypePtrOutput() UsersOrServicePrincipalSetUserTypePtrOutput {
+	return pulumi.ToOutput(in).(UsersOrServicePrincipalSetUserTypePtrOutput)
+}
+
+func (in *usersOrServicePrincipalSetUserTypePtr) ToUsersOrServicePrincipalSetUserTypePtrOutputWithContext(ctx context.Context) UsersOrServicePrincipalSetUserTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(UsersOrServicePrincipalSetUserTypePtrOutput)
+}
+
 func init() {
+	pulumi.RegisterOutputType(AccessReviewRecurrencePatternTypeOutput{})
+	pulumi.RegisterOutputType(AccessReviewRecurrencePatternTypePtrOutput{})
 	pulumi.RegisterOutputType(AccessReviewRecurrenceRangeTypeOutput{})
 	pulumi.RegisterOutputType(AccessReviewRecurrenceRangeTypePtrOutput{})
 	pulumi.RegisterOutputType(AccessReviewResultOutput{})
@@ -3934,8 +4652,12 @@ func init() {
 	pulumi.RegisterOutputType(ApprovalModePtrOutput{})
 	pulumi.RegisterOutputType(AssignmentScopeValidationOutput{})
 	pulumi.RegisterOutputType(AssignmentScopeValidationPtrOutput{})
+	pulumi.RegisterOutputType(AssignmentTypeOutput{})
+	pulumi.RegisterOutputType(AssignmentTypePtrOutput{})
 	pulumi.RegisterOutputType(DefaultDecisionTypeOutput{})
 	pulumi.RegisterOutputType(DefaultDecisionTypePtrOutput{})
+	pulumi.RegisterOutputType(DenyAssignmentEffectOutput{})
+	pulumi.RegisterOutputType(DenyAssignmentEffectPtrOutput{})
 	pulumi.RegisterOutputType(EnablementRulesOutput{})
 	pulumi.RegisterOutputType(EnablementRulesPtrOutput{})
 	pulumi.RegisterOutputType(EnforcementModeOutput{})
@@ -3972,4 +4694,6 @@ func init() {
 	pulumi.RegisterOutputType(TypePtrOutput{})
 	pulumi.RegisterOutputType(UserTypeOutput{})
 	pulumi.RegisterOutputType(UserTypePtrOutput{})
+	pulumi.RegisterOutputType(UsersOrServicePrincipalSetUserTypeOutput{})
+	pulumi.RegisterOutputType(UsersOrServicePrincipalSetUserTypePtrOutput{})
 }

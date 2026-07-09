@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Fetches the managed proxy details
 //
-// Uses Azure REST API version 2023-03-15.
+// Uses Azure REST API version 2024-12-01.
 //
-// Other available API versions: 2022-05-01-preview, 2024-12-01.
+// Other available API versions: 2023-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hybridconnectivity [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListEndpointManagedProxyDetails(ctx *pulumi.Context, args *ListEndpointManagedProxyDetailsArgs, opts ...pulumi.InvokeOption) (*ListEndpointManagedProxyDetailsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListEndpointManagedProxyDetailsResult
@@ -31,7 +31,7 @@ type ListEndpointManagedProxyDetailsArgs struct {
 	EndpointName string `pulumi:"endpointName"`
 	// The target host name.
 	Hostname *string `pulumi:"hostname"`
-	// The fully qualified Azure Resource manager identifier of the resource to be connected.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceUri string `pulumi:"resourceUri"`
 	// The name of the service.
 	Service string `pulumi:"service"`
@@ -61,7 +61,7 @@ type ListEndpointManagedProxyDetailsOutputArgs struct {
 	EndpointName pulumi.StringInput `pulumi:"endpointName"`
 	// The target host name.
 	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
-	// The fully qualified Azure Resource manager identifier of the resource to be connected.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceUri pulumi.StringInput `pulumi:"resourceUri"`
 	// The name of the service.
 	Service pulumi.StringInput `pulumi:"service"`

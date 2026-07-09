@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -447,6 +447,242 @@ func (o AdvancedScheduleResponsePtrOutput) WeekDays() pulumi.StringArrayOutput {
 		}
 		return v.WeekDays
 	}).(pulumi.StringArrayOutput)
+}
+
+// Error response of an operation failure
+type AutomationErrorResponse struct {
+	// Error code
+	Code *string `pulumi:"code"`
+	// Error message indicating why the operation failed.
+	Message *string `pulumi:"message"`
+}
+
+// AutomationErrorResponseInput is an input type that accepts AutomationErrorResponseArgs and AutomationErrorResponseOutput values.
+// You can construct a concrete instance of `AutomationErrorResponseInput` via:
+//
+//	AutomationErrorResponseArgs{...}
+type AutomationErrorResponseInput interface {
+	pulumi.Input
+
+	ToAutomationErrorResponseOutput() AutomationErrorResponseOutput
+	ToAutomationErrorResponseOutputWithContext(context.Context) AutomationErrorResponseOutput
+}
+
+// Error response of an operation failure
+type AutomationErrorResponseArgs struct {
+	// Error code
+	Code pulumi.StringPtrInput `pulumi:"code"`
+	// Error message indicating why the operation failed.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (AutomationErrorResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationErrorResponse)(nil)).Elem()
+}
+
+func (i AutomationErrorResponseArgs) ToAutomationErrorResponseOutput() AutomationErrorResponseOutput {
+	return i.ToAutomationErrorResponseOutputWithContext(context.Background())
+}
+
+func (i AutomationErrorResponseArgs) ToAutomationErrorResponseOutputWithContext(ctx context.Context) AutomationErrorResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationErrorResponseOutput)
+}
+
+func (i AutomationErrorResponseArgs) ToAutomationErrorResponsePtrOutput() AutomationErrorResponsePtrOutput {
+	return i.ToAutomationErrorResponsePtrOutputWithContext(context.Background())
+}
+
+func (i AutomationErrorResponseArgs) ToAutomationErrorResponsePtrOutputWithContext(ctx context.Context) AutomationErrorResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationErrorResponseOutput).ToAutomationErrorResponsePtrOutputWithContext(ctx)
+}
+
+// AutomationErrorResponsePtrInput is an input type that accepts AutomationErrorResponseArgs, AutomationErrorResponsePtr and AutomationErrorResponsePtrOutput values.
+// You can construct a concrete instance of `AutomationErrorResponsePtrInput` via:
+//
+//	        AutomationErrorResponseArgs{...}
+//
+//	or:
+//
+//	        nil
+type AutomationErrorResponsePtrInput interface {
+	pulumi.Input
+
+	ToAutomationErrorResponsePtrOutput() AutomationErrorResponsePtrOutput
+	ToAutomationErrorResponsePtrOutputWithContext(context.Context) AutomationErrorResponsePtrOutput
+}
+
+type automationErrorResponsePtrType AutomationErrorResponseArgs
+
+func AutomationErrorResponsePtr(v *AutomationErrorResponseArgs) AutomationErrorResponsePtrInput {
+	return (*automationErrorResponsePtrType)(v)
+}
+
+func (*automationErrorResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomationErrorResponse)(nil)).Elem()
+}
+
+func (i *automationErrorResponsePtrType) ToAutomationErrorResponsePtrOutput() AutomationErrorResponsePtrOutput {
+	return i.ToAutomationErrorResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *automationErrorResponsePtrType) ToAutomationErrorResponsePtrOutputWithContext(ctx context.Context) AutomationErrorResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationErrorResponsePtrOutput)
+}
+
+// Error response of an operation failure
+type AutomationErrorResponseOutput struct{ *pulumi.OutputState }
+
+func (AutomationErrorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationErrorResponse)(nil)).Elem()
+}
+
+func (o AutomationErrorResponseOutput) ToAutomationErrorResponseOutput() AutomationErrorResponseOutput {
+	return o
+}
+
+func (o AutomationErrorResponseOutput) ToAutomationErrorResponseOutputWithContext(ctx context.Context) AutomationErrorResponseOutput {
+	return o
+}
+
+func (o AutomationErrorResponseOutput) ToAutomationErrorResponsePtrOutput() AutomationErrorResponsePtrOutput {
+	return o.ToAutomationErrorResponsePtrOutputWithContext(context.Background())
+}
+
+func (o AutomationErrorResponseOutput) ToAutomationErrorResponsePtrOutputWithContext(ctx context.Context) AutomationErrorResponsePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutomationErrorResponse) *AutomationErrorResponse {
+		return &v
+	}).(AutomationErrorResponsePtrOutput)
+}
+
+// Error code
+func (o AutomationErrorResponseOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationErrorResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// Error message indicating why the operation failed.
+func (o AutomationErrorResponseOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationErrorResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type AutomationErrorResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AutomationErrorResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomationErrorResponse)(nil)).Elem()
+}
+
+func (o AutomationErrorResponsePtrOutput) ToAutomationErrorResponsePtrOutput() AutomationErrorResponsePtrOutput {
+	return o
+}
+
+func (o AutomationErrorResponsePtrOutput) ToAutomationErrorResponsePtrOutputWithContext(ctx context.Context) AutomationErrorResponsePtrOutput {
+	return o
+}
+
+func (o AutomationErrorResponsePtrOutput) Elem() AutomationErrorResponseOutput {
+	return o.ApplyT(func(v *AutomationErrorResponse) AutomationErrorResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AutomationErrorResponse
+		return ret
+	}).(AutomationErrorResponseOutput)
+}
+
+// Error code
+func (o AutomationErrorResponsePtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomationErrorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// Error message indicating why the operation failed.
+func (o AutomationErrorResponsePtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomationErrorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// Error response of an operation failure
+type AutomationErrorResponseResponse struct {
+	// Error code
+	Code *string `pulumi:"code"`
+	// Error message indicating why the operation failed.
+	Message *string `pulumi:"message"`
+}
+
+// Error response of an operation failure
+type AutomationErrorResponseResponseOutput struct{ *pulumi.OutputState }
+
+func (AutomationErrorResponseResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationErrorResponseResponse)(nil)).Elem()
+}
+
+func (o AutomationErrorResponseResponseOutput) ToAutomationErrorResponseResponseOutput() AutomationErrorResponseResponseOutput {
+	return o
+}
+
+func (o AutomationErrorResponseResponseOutput) ToAutomationErrorResponseResponseOutputWithContext(ctx context.Context) AutomationErrorResponseResponseOutput {
+	return o
+}
+
+// Error code
+func (o AutomationErrorResponseResponseOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationErrorResponseResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// Error message indicating why the operation failed.
+func (o AutomationErrorResponseResponseOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationErrorResponseResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type AutomationErrorResponseResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AutomationErrorResponseResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomationErrorResponseResponse)(nil)).Elem()
+}
+
+func (o AutomationErrorResponseResponsePtrOutput) ToAutomationErrorResponseResponsePtrOutput() AutomationErrorResponseResponsePtrOutput {
+	return o
+}
+
+func (o AutomationErrorResponseResponsePtrOutput) ToAutomationErrorResponseResponsePtrOutputWithContext(ctx context.Context) AutomationErrorResponseResponsePtrOutput {
+	return o
+}
+
+func (o AutomationErrorResponseResponsePtrOutput) Elem() AutomationErrorResponseResponseOutput {
+	return o.ApplyT(func(v *AutomationErrorResponseResponse) AutomationErrorResponseResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AutomationErrorResponseResponse
+		return ret
+	}).(AutomationErrorResponseResponseOutput)
+}
+
+// Error code
+func (o AutomationErrorResponseResponsePtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomationErrorResponseResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// Error message indicating why the operation failed.
+func (o AutomationErrorResponseResponsePtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomationErrorResponseResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
 }
 
 // Azure query for the update configuration.
@@ -982,7 +1218,7 @@ func (o ContentHashResponsePtrOutput) Value() pulumi.StringPtrOutput {
 type ContentLink struct {
 	// Gets or sets the hash.
 	ContentHash *ContentHash `pulumi:"contentHash"`
-	// Gets or sets the uri of the runbook content.
+	// Gets or sets the uri of content.
 	Uri *string `pulumi:"uri"`
 	// Gets or sets the version of the content.
 	Version *string `pulumi:"version"`
@@ -1003,7 +1239,7 @@ type ContentLinkInput interface {
 type ContentLinkArgs struct {
 	// Gets or sets the hash.
 	ContentHash ContentHashPtrInput `pulumi:"contentHash"`
-	// Gets or sets the uri of the runbook content.
+	// Gets or sets the uri of content.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
 	// Gets or sets the version of the content.
 	Version pulumi.StringPtrInput `pulumi:"version"`
@@ -1092,7 +1328,7 @@ func (o ContentLinkOutput) ContentHash() ContentHashPtrOutput {
 	return o.ApplyT(func(v ContentLink) *ContentHash { return v.ContentHash }).(ContentHashPtrOutput)
 }
 
-// Gets or sets the uri of the runbook content.
+// Gets or sets the uri of content.
 func (o ContentLinkOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContentLink) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
@@ -1136,7 +1372,7 @@ func (o ContentLinkPtrOutput) ContentHash() ContentHashPtrOutput {
 	}).(ContentHashPtrOutput)
 }
 
-// Gets or sets the uri of the runbook content.
+// Gets or sets the uri of content.
 func (o ContentLinkPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContentLink) *string {
 		if v == nil {
@@ -1160,7 +1396,7 @@ func (o ContentLinkPtrOutput) Version() pulumi.StringPtrOutput {
 type ContentLinkResponse struct {
 	// Gets or sets the hash.
 	ContentHash *ContentHashResponse `pulumi:"contentHash"`
-	// Gets or sets the uri of the runbook content.
+	// Gets or sets the uri of content.
 	Uri *string `pulumi:"uri"`
 	// Gets or sets the version of the content.
 	Version *string `pulumi:"version"`
@@ -1186,7 +1422,7 @@ func (o ContentLinkResponseOutput) ContentHash() ContentHashResponsePtrOutput {
 	return o.ApplyT(func(v ContentLinkResponse) *ContentHashResponse { return v.ContentHash }).(ContentHashResponsePtrOutput)
 }
 
-// Gets or sets the uri of the runbook content.
+// Gets or sets the uri of content.
 func (o ContentLinkResponseOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContentLinkResponse) *string { return v.Uri }).(pulumi.StringPtrOutput)
 }
@@ -1230,7 +1466,7 @@ func (o ContentLinkResponsePtrOutput) ContentHash() ContentHashResponsePtrOutput
 	}).(ContentHashResponsePtrOutput)
 }
 
-// Gets or sets the uri of the runbook content.
+// Gets or sets the uri of content.
 func (o ContentLinkResponsePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContentLinkResponse) *string {
 		if v == nil {
@@ -2172,10 +2408,70 @@ func (o EncryptionPropertiesIdentityPtrOutput) UserAssignedIdentity() pulumi.Any
 	}).(pulumi.AnyOutput)
 }
 
+// User identity used for CMK.
+type EncryptionPropertiesIdentityResponse struct {
+	// The user identity used for CMK. It will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+	UserAssignedIdentity interface{} `pulumi:"userAssignedIdentity"`
+}
+
+// User identity used for CMK.
+type EncryptionPropertiesIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (EncryptionPropertiesIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionPropertiesIdentityResponse)(nil)).Elem()
+}
+
+func (o EncryptionPropertiesIdentityResponseOutput) ToEncryptionPropertiesIdentityResponseOutput() EncryptionPropertiesIdentityResponseOutput {
+	return o
+}
+
+func (o EncryptionPropertiesIdentityResponseOutput) ToEncryptionPropertiesIdentityResponseOutputWithContext(ctx context.Context) EncryptionPropertiesIdentityResponseOutput {
+	return o
+}
+
+// The user identity used for CMK. It will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+func (o EncryptionPropertiesIdentityResponseOutput) UserAssignedIdentity() pulumi.AnyOutput {
+	return o.ApplyT(func(v EncryptionPropertiesIdentityResponse) interface{} { return v.UserAssignedIdentity }).(pulumi.AnyOutput)
+}
+
+type EncryptionPropertiesIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionPropertiesIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionPropertiesIdentityResponse)(nil)).Elem()
+}
+
+func (o EncryptionPropertiesIdentityResponsePtrOutput) ToEncryptionPropertiesIdentityResponsePtrOutput() EncryptionPropertiesIdentityResponsePtrOutput {
+	return o
+}
+
+func (o EncryptionPropertiesIdentityResponsePtrOutput) ToEncryptionPropertiesIdentityResponsePtrOutputWithContext(ctx context.Context) EncryptionPropertiesIdentityResponsePtrOutput {
+	return o
+}
+
+func (o EncryptionPropertiesIdentityResponsePtrOutput) Elem() EncryptionPropertiesIdentityResponseOutput {
+	return o.ApplyT(func(v *EncryptionPropertiesIdentityResponse) EncryptionPropertiesIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionPropertiesIdentityResponse
+		return ret
+	}).(EncryptionPropertiesIdentityResponseOutput)
+}
+
+// The user identity used for CMK. It will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+func (o EncryptionPropertiesIdentityResponsePtrOutput) UserAssignedIdentity() pulumi.AnyOutput {
+	return o.ApplyT(func(v *EncryptionPropertiesIdentityResponse) interface{} {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentity
+	}).(pulumi.AnyOutput)
+}
+
 // The encryption settings for automation account
 type EncryptionPropertiesResponse struct {
 	// User identity used for CMK.
-	Identity *EncryptionPropertiesResponseIdentity `pulumi:"identity"`
+	Identity *EncryptionPropertiesIdentityResponse `pulumi:"identity"`
 	// Encryption Key Source
 	KeySource *string `pulumi:"keySource"`
 	// Key vault properties.
@@ -2198,8 +2494,8 @@ func (o EncryptionPropertiesResponseOutput) ToEncryptionPropertiesResponseOutput
 }
 
 // User identity used for CMK.
-func (o EncryptionPropertiesResponseOutput) Identity() EncryptionPropertiesResponseIdentityPtrOutput {
-	return o.ApplyT(func(v EncryptionPropertiesResponse) *EncryptionPropertiesResponseIdentity { return v.Identity }).(EncryptionPropertiesResponseIdentityPtrOutput)
+func (o EncryptionPropertiesResponseOutput) Identity() EncryptionPropertiesIdentityResponsePtrOutput {
+	return o.ApplyT(func(v EncryptionPropertiesResponse) *EncryptionPropertiesIdentityResponse { return v.Identity }).(EncryptionPropertiesIdentityResponsePtrOutput)
 }
 
 // Encryption Key Source
@@ -2237,13 +2533,13 @@ func (o EncryptionPropertiesResponsePtrOutput) Elem() EncryptionPropertiesRespon
 }
 
 // User identity used for CMK.
-func (o EncryptionPropertiesResponsePtrOutput) Identity() EncryptionPropertiesResponseIdentityPtrOutput {
-	return o.ApplyT(func(v *EncryptionPropertiesResponse) *EncryptionPropertiesResponseIdentity {
+func (o EncryptionPropertiesResponsePtrOutput) Identity() EncryptionPropertiesIdentityResponsePtrOutput {
+	return o.ApplyT(func(v *EncryptionPropertiesResponse) *EncryptionPropertiesIdentityResponse {
 		if v == nil {
 			return nil
 		}
 		return v.Identity
-	}).(EncryptionPropertiesResponseIdentityPtrOutput)
+	}).(EncryptionPropertiesIdentityResponsePtrOutput)
 }
 
 // Encryption Key Source
@@ -2264,302 +2560,6 @@ func (o EncryptionPropertiesResponsePtrOutput) KeyVaultProperties() KeyVaultProp
 		}
 		return v.KeyVaultProperties
 	}).(KeyVaultPropertiesResponsePtrOutput)
-}
-
-// User identity used for CMK.
-type EncryptionPropertiesResponseIdentity struct {
-	// The user identity used for CMK. It will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentity interface{} `pulumi:"userAssignedIdentity"`
-}
-
-// User identity used for CMK.
-type EncryptionPropertiesResponseIdentityOutput struct{ *pulumi.OutputState }
-
-func (EncryptionPropertiesResponseIdentityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EncryptionPropertiesResponseIdentity)(nil)).Elem()
-}
-
-func (o EncryptionPropertiesResponseIdentityOutput) ToEncryptionPropertiesResponseIdentityOutput() EncryptionPropertiesResponseIdentityOutput {
-	return o
-}
-
-func (o EncryptionPropertiesResponseIdentityOutput) ToEncryptionPropertiesResponseIdentityOutputWithContext(ctx context.Context) EncryptionPropertiesResponseIdentityOutput {
-	return o
-}
-
-// The user identity used for CMK. It will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o EncryptionPropertiesResponseIdentityOutput) UserAssignedIdentity() pulumi.AnyOutput {
-	return o.ApplyT(func(v EncryptionPropertiesResponseIdentity) interface{} { return v.UserAssignedIdentity }).(pulumi.AnyOutput)
-}
-
-type EncryptionPropertiesResponseIdentityPtrOutput struct{ *pulumi.OutputState }
-
-func (EncryptionPropertiesResponseIdentityPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EncryptionPropertiesResponseIdentity)(nil)).Elem()
-}
-
-func (o EncryptionPropertiesResponseIdentityPtrOutput) ToEncryptionPropertiesResponseIdentityPtrOutput() EncryptionPropertiesResponseIdentityPtrOutput {
-	return o
-}
-
-func (o EncryptionPropertiesResponseIdentityPtrOutput) ToEncryptionPropertiesResponseIdentityPtrOutputWithContext(ctx context.Context) EncryptionPropertiesResponseIdentityPtrOutput {
-	return o
-}
-
-func (o EncryptionPropertiesResponseIdentityPtrOutput) Elem() EncryptionPropertiesResponseIdentityOutput {
-	return o.ApplyT(func(v *EncryptionPropertiesResponseIdentity) EncryptionPropertiesResponseIdentity {
-		if v != nil {
-			return *v
-		}
-		var ret EncryptionPropertiesResponseIdentity
-		return ret
-	}).(EncryptionPropertiesResponseIdentityOutput)
-}
-
-// The user identity used for CMK. It will be an ARM resource id in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o EncryptionPropertiesResponseIdentityPtrOutput) UserAssignedIdentity() pulumi.AnyOutput {
-	return o.ApplyT(func(v *EncryptionPropertiesResponseIdentity) interface{} {
-		if v == nil {
-			return nil
-		}
-		return v.UserAssignedIdentity
-	}).(pulumi.AnyOutput)
-}
-
-// Error response of an operation failure
-type ErrorResponse struct {
-	// Error code
-	Code *string `pulumi:"code"`
-	// Error message indicating why the operation failed.
-	Message *string `pulumi:"message"`
-}
-
-// ErrorResponseInput is an input type that accepts ErrorResponseArgs and ErrorResponseOutput values.
-// You can construct a concrete instance of `ErrorResponseInput` via:
-//
-//	ErrorResponseArgs{...}
-type ErrorResponseInput interface {
-	pulumi.Input
-
-	ToErrorResponseOutput() ErrorResponseOutput
-	ToErrorResponseOutputWithContext(context.Context) ErrorResponseOutput
-}
-
-// Error response of an operation failure
-type ErrorResponseArgs struct {
-	// Error code
-	Code pulumi.StringPtrInput `pulumi:"code"`
-	// Error message indicating why the operation failed.
-	Message pulumi.StringPtrInput `pulumi:"message"`
-}
-
-func (ErrorResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ErrorResponse)(nil)).Elem()
-}
-
-func (i ErrorResponseArgs) ToErrorResponseOutput() ErrorResponseOutput {
-	return i.ToErrorResponseOutputWithContext(context.Background())
-}
-
-func (i ErrorResponseArgs) ToErrorResponseOutputWithContext(ctx context.Context) ErrorResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ErrorResponseOutput)
-}
-
-func (i ErrorResponseArgs) ToErrorResponsePtrOutput() ErrorResponsePtrOutput {
-	return i.ToErrorResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ErrorResponseArgs) ToErrorResponsePtrOutputWithContext(ctx context.Context) ErrorResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ErrorResponseOutput).ToErrorResponsePtrOutputWithContext(ctx)
-}
-
-// ErrorResponsePtrInput is an input type that accepts ErrorResponseArgs, ErrorResponsePtr and ErrorResponsePtrOutput values.
-// You can construct a concrete instance of `ErrorResponsePtrInput` via:
-//
-//	        ErrorResponseArgs{...}
-//
-//	or:
-//
-//	        nil
-type ErrorResponsePtrInput interface {
-	pulumi.Input
-
-	ToErrorResponsePtrOutput() ErrorResponsePtrOutput
-	ToErrorResponsePtrOutputWithContext(context.Context) ErrorResponsePtrOutput
-}
-
-type errorResponsePtrType ErrorResponseArgs
-
-func ErrorResponsePtr(v *ErrorResponseArgs) ErrorResponsePtrInput {
-	return (*errorResponsePtrType)(v)
-}
-
-func (*errorResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ErrorResponse)(nil)).Elem()
-}
-
-func (i *errorResponsePtrType) ToErrorResponsePtrOutput() ErrorResponsePtrOutput {
-	return i.ToErrorResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *errorResponsePtrType) ToErrorResponsePtrOutputWithContext(ctx context.Context) ErrorResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ErrorResponsePtrOutput)
-}
-
-// Error response of an operation failure
-type ErrorResponseOutput struct{ *pulumi.OutputState }
-
-func (ErrorResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ErrorResponse)(nil)).Elem()
-}
-
-func (o ErrorResponseOutput) ToErrorResponseOutput() ErrorResponseOutput {
-	return o
-}
-
-func (o ErrorResponseOutput) ToErrorResponseOutputWithContext(ctx context.Context) ErrorResponseOutput {
-	return o
-}
-
-func (o ErrorResponseOutput) ToErrorResponsePtrOutput() ErrorResponsePtrOutput {
-	return o.ToErrorResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ErrorResponseOutput) ToErrorResponsePtrOutputWithContext(ctx context.Context) ErrorResponsePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ErrorResponse) *ErrorResponse {
-		return &v
-	}).(ErrorResponsePtrOutput)
-}
-
-// Error code
-func (o ErrorResponseOutput) Code() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ErrorResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
-}
-
-// Error message indicating why the operation failed.
-func (o ErrorResponseOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ErrorResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
-}
-
-type ErrorResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ErrorResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ErrorResponse)(nil)).Elem()
-}
-
-func (o ErrorResponsePtrOutput) ToErrorResponsePtrOutput() ErrorResponsePtrOutput {
-	return o
-}
-
-func (o ErrorResponsePtrOutput) ToErrorResponsePtrOutputWithContext(ctx context.Context) ErrorResponsePtrOutput {
-	return o
-}
-
-func (o ErrorResponsePtrOutput) Elem() ErrorResponseOutput {
-	return o.ApplyT(func(v *ErrorResponse) ErrorResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ErrorResponse
-		return ret
-	}).(ErrorResponseOutput)
-}
-
-// Error code
-func (o ErrorResponsePtrOutput) Code() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Code
-	}).(pulumi.StringPtrOutput)
-}
-
-// Error message indicating why the operation failed.
-func (o ErrorResponsePtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Message
-	}).(pulumi.StringPtrOutput)
-}
-
-// Error response of an operation failure
-type ErrorResponseResponse struct {
-	// Error code
-	Code *string `pulumi:"code"`
-	// Error message indicating why the operation failed.
-	Message *string `pulumi:"message"`
-}
-
-// Error response of an operation failure
-type ErrorResponseResponseOutput struct{ *pulumi.OutputState }
-
-func (ErrorResponseResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ErrorResponseResponse)(nil)).Elem()
-}
-
-func (o ErrorResponseResponseOutput) ToErrorResponseResponseOutput() ErrorResponseResponseOutput {
-	return o
-}
-
-func (o ErrorResponseResponseOutput) ToErrorResponseResponseOutputWithContext(ctx context.Context) ErrorResponseResponseOutput {
-	return o
-}
-
-// Error code
-func (o ErrorResponseResponseOutput) Code() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ErrorResponseResponse) *string { return v.Code }).(pulumi.StringPtrOutput)
-}
-
-// Error message indicating why the operation failed.
-func (o ErrorResponseResponseOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ErrorResponseResponse) *string { return v.Message }).(pulumi.StringPtrOutput)
-}
-
-type ErrorResponseResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ErrorResponseResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ErrorResponseResponse)(nil)).Elem()
-}
-
-func (o ErrorResponseResponsePtrOutput) ToErrorResponseResponsePtrOutput() ErrorResponseResponsePtrOutput {
-	return o
-}
-
-func (o ErrorResponseResponsePtrOutput) ToErrorResponseResponsePtrOutputWithContext(ctx context.Context) ErrorResponseResponsePtrOutput {
-	return o
-}
-
-func (o ErrorResponseResponsePtrOutput) Elem() ErrorResponseResponseOutput {
-	return o.ApplyT(func(v *ErrorResponseResponse) ErrorResponseResponse {
-		if v != nil {
-			return *v
-		}
-		var ret ErrorResponseResponse
-		return ret
-	}).(ErrorResponseResponseOutput)
-}
-
-// Error code
-func (o ErrorResponseResponsePtrOutput) Code() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorResponseResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Code
-	}).(pulumi.StringPtrOutput)
-}
-
-// Error message indicating why the operation failed.
-func (o ErrorResponseResponsePtrOutput) Message() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ErrorResponseResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Message
-	}).(pulumi.StringPtrOutput)
 }
 
 // Definition of the connection fields.
@@ -2901,7 +2901,7 @@ func (o IdentityPtrOutput) UserAssignedIdentities() pulumi.StringArrayOutput {
 
 // Identity for the resource.
 type IdentityResponse struct {
-	// The principal ID of resource identity.
+	// The principal ID of resource identity. The value must be an UUID.
 	PrincipalId string `pulumi:"principalId"`
 	// The tenant ID of resource.
 	TenantId string `pulumi:"tenantId"`
@@ -2926,7 +2926,7 @@ func (o IdentityResponseOutput) ToIdentityResponseOutputWithContext(ctx context.
 	return o
 }
 
-// The principal ID of resource identity.
+// The principal ID of resource identity. The value must be an UUID.
 func (o IdentityResponseOutput) PrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v IdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
 }
@@ -2972,7 +2972,7 @@ func (o IdentityResponsePtrOutput) Elem() IdentityResponseOutput {
 	}).(IdentityResponseOutput)
 }
 
-// The principal ID of resource identity.
+// The principal ID of resource identity. The value must be an UUID.
 func (o IdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IdentityResponse) *string {
 		if v == nil {
@@ -3972,7 +3972,7 @@ func (o PackageErrorInfoResponsePtrOutput) Message() pulumi.StringPtrOutput {
 type PrivateEndpointConnectionResponse struct {
 	// Gets the groupIds.
 	GroupIds []string `pulumi:"groupIds"`
-	// Fully qualified resource Id for the resource
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
@@ -3980,7 +3980,9 @@ type PrivateEndpointConnectionResponse struct {
 	PrivateEndpoint *PrivateEndpointPropertyResponse `pulumi:"privateEndpoint"`
 	// Connection State of the Private Endpoint Connection.
 	PrivateLinkServiceConnectionState *PrivateLinkServiceConnectionStatePropertyResponse `pulumi:"privateLinkServiceConnectionState"`
-	// The type of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -4004,7 +4006,7 @@ func (o PrivateEndpointConnectionResponseOutput) GroupIds() pulumi.StringArrayOu
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) []string { return v.GroupIds }).(pulumi.StringArrayOutput)
 }
 
-// Fully qualified resource Id for the resource
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -4026,7 +4028,12 @@ func (o PrivateEndpointConnectionResponseOutput) PrivateLinkServiceConnectionSta
 	}).(PrivateLinkServiceConnectionStatePropertyResponsePtrOutput)
 }
 
-// The type of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o PrivateEndpointConnectionResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o PrivateEndpointConnectionResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -5503,19 +5510,6 @@ type SUCScheduleProperties struct {
 	TimeZone *string `pulumi:"timeZone"`
 }
 
-// Defaults sets the appropriate defaults for SUCScheduleProperties
-func (val *SUCScheduleProperties) Defaults() *SUCScheduleProperties {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.IsEnabled == nil {
-		isEnabled_ := false
-		tmp.IsEnabled = &isEnabled_
-	}
-	return &tmp
-}
-
 // SUCSchedulePropertiesInput is an input type that accepts SUCSchedulePropertiesArgs and SUCSchedulePropertiesOutput values.
 // You can construct a concrete instance of `SUCSchedulePropertiesInput` via:
 //
@@ -5557,17 +5551,6 @@ type SUCSchedulePropertiesArgs struct {
 	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
 }
 
-// Defaults sets the appropriate defaults for SUCSchedulePropertiesArgs
-func (val *SUCSchedulePropertiesArgs) Defaults() *SUCSchedulePropertiesArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.IsEnabled == nil {
-		tmp.IsEnabled = pulumi.BoolPtr(false)
-	}
-	return &tmp
-}
 func (SUCSchedulePropertiesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*SUCScheduleProperties)(nil)).Elem()
 }
@@ -5690,19 +5673,6 @@ type SUCSchedulePropertiesResponse struct {
 	StartTimeOffsetMinutes float64 `pulumi:"startTimeOffsetMinutes"`
 	// Gets or sets the time zone of the schedule.
 	TimeZone *string `pulumi:"timeZone"`
-}
-
-// Defaults sets the appropriate defaults for SUCSchedulePropertiesResponse
-func (val *SUCSchedulePropertiesResponse) Defaults() *SUCSchedulePropertiesResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.IsEnabled == nil {
-		isEnabled_ := false
-		tmp.IsEnabled = &isEnabled_
-	}
-	return &tmp
 }
 
 // Definition of schedule parameters.
@@ -8061,6 +8031,10 @@ func init() {
 	pulumi.RegisterOutputType(AdvancedScheduleMonthlyOccurrenceResponseArrayOutput{})
 	pulumi.RegisterOutputType(AdvancedScheduleResponseOutput{})
 	pulumi.RegisterOutputType(AdvancedScheduleResponsePtrOutput{})
+	pulumi.RegisterOutputType(AutomationErrorResponseOutput{})
+	pulumi.RegisterOutputType(AutomationErrorResponsePtrOutput{})
+	pulumi.RegisterOutputType(AutomationErrorResponseResponseOutput{})
+	pulumi.RegisterOutputType(AutomationErrorResponseResponsePtrOutput{})
 	pulumi.RegisterOutputType(AzureQueryPropertiesOutput{})
 	pulumi.RegisterOutputType(AzureQueryPropertiesArrayOutput{})
 	pulumi.RegisterOutputType(AzureQueryPropertiesResponseOutput{})
@@ -8092,14 +8066,10 @@ func init() {
 	pulumi.RegisterOutputType(EncryptionPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionPropertiesIdentityOutput{})
 	pulumi.RegisterOutputType(EncryptionPropertiesIdentityPtrOutput{})
+	pulumi.RegisterOutputType(EncryptionPropertiesIdentityResponseOutput{})
+	pulumi.RegisterOutputType(EncryptionPropertiesIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(EncryptionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(EncryptionPropertiesResponsePtrOutput{})
-	pulumi.RegisterOutputType(EncryptionPropertiesResponseIdentityOutput{})
-	pulumi.RegisterOutputType(EncryptionPropertiesResponseIdentityPtrOutput{})
-	pulumi.RegisterOutputType(ErrorResponseOutput{})
-	pulumi.RegisterOutputType(ErrorResponsePtrOutput{})
-	pulumi.RegisterOutputType(ErrorResponseResponseOutput{})
-	pulumi.RegisterOutputType(ErrorResponseResponsePtrOutput{})
 	pulumi.RegisterOutputType(FieldDefinitionOutput{})
 	pulumi.RegisterOutputType(FieldDefinitionMapOutput{})
 	pulumi.RegisterOutputType(FieldDefinitionResponseOutput{})

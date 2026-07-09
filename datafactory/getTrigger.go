@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,7 +27,7 @@ func LookupTrigger(ctx *pulumi.Context, args *LookupTriggerArgs, opts ...pulumi.
 type LookupTriggerArgs struct {
 	// The factory name.
 	FactoryName string `pulumi:"factoryName"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The trigger name.
 	TriggerName string `pulumi:"triggerName"`
@@ -35,15 +35,19 @@ type LookupTriggerArgs struct {
 
 // Trigger resource type.
 type LookupTriggerResult struct {
-	// Etag identifies change in the resource.
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
 	Etag string `pulumi:"etag"`
-	// The resource identifier.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// The resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Properties of the trigger.
 	Properties interface{} `pulumi:"properties"`
-	// The resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -59,7 +63,7 @@ func LookupTriggerOutput(ctx *pulumi.Context, args LookupTriggerOutputArgs, opts
 type LookupTriggerOutputArgs struct {
 	// The factory name.
 	FactoryName pulumi.StringInput `pulumi:"factoryName"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The trigger name.
 	TriggerName pulumi.StringInput `pulumi:"triggerName"`
@@ -84,17 +88,22 @@ func (o LookupTriggerResultOutput) ToLookupTriggerResultOutputWithContext(ctx co
 	return o
 }
 
-// Etag identifies change in the resource.
+// The Azure API version of the resource.
+func (o LookupTriggerResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTriggerResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
 func (o LookupTriggerResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTriggerResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
-// The resource identifier.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupTriggerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTriggerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The resource name.
+// The name of the resource
 func (o LookupTriggerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTriggerResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -104,7 +113,12 @@ func (o LookupTriggerResultOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupTriggerResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
-// The resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupTriggerResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupTriggerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupTriggerResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTriggerResult) string { return v.Type }).(pulumi.StringOutput)
 }

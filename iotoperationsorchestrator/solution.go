@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A Solution resource belonging to an Instance resource.
 //
-// Uses Azure REST API version 2023-10-04-preview.
+// Uses Azure REST API version 2023-10-04-preview. In version 2.x of the Azure Native provider, it used API version 2023-10-04-preview.
 type Solution struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// A list of components
 	Components ComponentPropertiesResponseArrayOutput `pulumi:"components"`
 	// Edge location of the resource.
@@ -159,6 +161,11 @@ func (o SolutionOutput) ToSolutionOutput() SolutionOutput {
 
 func (o SolutionOutput) ToSolutionOutputWithContext(ctx context.Context) SolutionOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o SolutionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Solution) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // A list of components

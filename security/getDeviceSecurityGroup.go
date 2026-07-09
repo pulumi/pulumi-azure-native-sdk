@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Use this method to get the device security group for the specified IoT Hub resource.
 //
 // Uses Azure REST API version 2019-08-01.
+//
+// Other available API versions: 2017-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupDeviceSecurityGroup(ctx *pulumi.Context, args *LookupDeviceSecurityGroupArgs, opts ...pulumi.InvokeOption) (*LookupDeviceSecurityGroupResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDeviceSecurityGroupResult
@@ -27,7 +29,7 @@ func LookupDeviceSecurityGroup(ctx *pulumi.Context, args *LookupDeviceSecurityGr
 type LookupDeviceSecurityGroupArgs struct {
 	// The name of the device security group. Note that the name of the device security group is case insensitive.
 	DeviceSecurityGroupName string `pulumi:"deviceSecurityGroupName"`
-	// The identifier of the resource.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceId string `pulumi:"resourceId"`
 }
 
@@ -35,17 +37,21 @@ type LookupDeviceSecurityGroupArgs struct {
 type LookupDeviceSecurityGroupResult struct {
 	// The allow-list custom alert rules.
 	AllowlistRules []AllowlistCustomAlertRuleResponse `pulumi:"allowlistRules"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The deny-list custom alert rules.
 	DenylistRules []DenylistCustomAlertRuleResponse `pulumi:"denylistRules"`
-	// Resource Id
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// Resource name
+	// The name of the resource
 	Name string `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The list of custom alert threshold rules.
 	ThresholdRules []ThresholdCustomAlertRuleResponse `pulumi:"thresholdRules"`
 	// The list of custom alert time-window rules.
 	TimeWindowRules []TimeWindowCustomAlertRuleResponse `pulumi:"timeWindowRules"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -61,7 +67,7 @@ func LookupDeviceSecurityGroupOutput(ctx *pulumi.Context, args LookupDeviceSecur
 type LookupDeviceSecurityGroupOutputArgs struct {
 	// The name of the device security group. Note that the name of the device security group is case insensitive.
 	DeviceSecurityGroupName pulumi.StringInput `pulumi:"deviceSecurityGroupName"`
-	// The identifier of the resource.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceId pulumi.StringInput `pulumi:"resourceId"`
 }
 
@@ -89,19 +95,29 @@ func (o LookupDeviceSecurityGroupResultOutput) AllowlistRules() AllowlistCustomA
 	return o.ApplyT(func(v LookupDeviceSecurityGroupResult) []AllowlistCustomAlertRuleResponse { return v.AllowlistRules }).(AllowlistCustomAlertRuleResponseArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupDeviceSecurityGroupResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceSecurityGroupResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The deny-list custom alert rules.
 func (o LookupDeviceSecurityGroupResultOutput) DenylistRules() DenylistCustomAlertRuleResponseArrayOutput {
 	return o.ApplyT(func(v LookupDeviceSecurityGroupResult) []DenylistCustomAlertRuleResponse { return v.DenylistRules }).(DenylistCustomAlertRuleResponseArrayOutput)
 }
 
-// Resource Id
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupDeviceSecurityGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceSecurityGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o LookupDeviceSecurityGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceSecurityGroupResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupDeviceSecurityGroupResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupDeviceSecurityGroupResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // The list of custom alert threshold rules.
@@ -114,7 +130,7 @@ func (o LookupDeviceSecurityGroupResultOutput) TimeWindowRules() TimeWindowCusto
 	return o.ApplyT(func(v LookupDeviceSecurityGroupResult) []TimeWindowCustomAlertRuleResponse { return v.TimeWindowRules }).(TimeWindowCustomAlertRuleResponseArrayOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupDeviceSecurityGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceSecurityGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

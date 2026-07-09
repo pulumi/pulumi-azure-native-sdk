@@ -8,24 +8,30 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2020-01-01. In version 1.x of the Azure Native provider, it used API version 2020-01-01.
+// Concrete proxy resource types can be created by aliasing this type using a specific property type.
+//
+// Uses Azure REST API version 2020-01-01. In version 2.x of the Azure Native provider, it used API version 2020-01-01.
 type JitNetworkAccessPolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Kind of the resource
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Location where the resource is stored
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Gets the provisioning state of the Just-in-Time policy.
 	ProvisioningState pulumi.StringOutput                        `pulumi:"provisioningState"`
 	Requests          JitNetworkAccessRequestResponseArrayOutput `pulumi:"requests"`
-	// Resource type
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Configurations for Microsoft.Compute/virtualMachines resource type.
 	VirtualMachines JitNetworkAccessPolicyVirtualMachineResponseArrayOutput `pulumi:"virtualMachines"`
@@ -96,7 +102,7 @@ type jitNetworkAccessPolicyArgs struct {
 	// Kind of the resource
 	Kind     *string                   `pulumi:"kind"`
 	Requests []JitNetworkAccessRequest `pulumi:"requests"`
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Configurations for Microsoft.Compute/virtualMachines resource type.
 	VirtualMachines []JitNetworkAccessPolicyVirtualMachine `pulumi:"virtualMachines"`
@@ -111,7 +117,7 @@ type JitNetworkAccessPolicyArgs struct {
 	// Kind of the resource
 	Kind     pulumi.StringPtrInput
 	Requests JitNetworkAccessRequestArrayInput
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Configurations for Microsoft.Compute/virtualMachines resource type.
 	VirtualMachines JitNetworkAccessPolicyVirtualMachineArrayInput
@@ -154,6 +160,11 @@ func (o JitNetworkAccessPolicyOutput) ToJitNetworkAccessPolicyOutputWithContext(
 	return o
 }
 
+// The Azure API version of the resource.
+func (o JitNetworkAccessPolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *JitNetworkAccessPolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Kind of the resource
 func (o JitNetworkAccessPolicyOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JitNetworkAccessPolicy) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
@@ -164,7 +175,7 @@ func (o JitNetworkAccessPolicyOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *JitNetworkAccessPolicy) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o JitNetworkAccessPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *JitNetworkAccessPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -178,7 +189,12 @@ func (o JitNetworkAccessPolicyOutput) Requests() JitNetworkAccessRequestResponse
 	return o.ApplyT(func(v *JitNetworkAccessPolicy) JitNetworkAccessRequestResponseArrayOutput { return v.Requests }).(JitNetworkAccessRequestResponseArrayOutput)
 }
 
-// Resource type
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o JitNetworkAccessPolicyOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *JitNetworkAccessPolicy) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o JitNetworkAccessPolicyOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *JitNetworkAccessPolicy) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

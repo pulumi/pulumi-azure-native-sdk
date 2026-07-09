@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ type LookupPipelineArgs struct {
 	FactoryName string `pulumi:"factoryName"`
 	// The pipeline name.
 	PipelineName string `pulumi:"pipelineName"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -39,25 +39,29 @@ type LookupPipelineResult struct {
 	Activities []interface{} `pulumi:"activities"`
 	// List of tags that can be used for describing the Pipeline.
 	Annotations []interface{} `pulumi:"annotations"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The max number of concurrent runs for the pipeline.
 	Concurrency *int `pulumi:"concurrency"`
 	// The description of the pipeline.
 	Description *string `pulumi:"description"`
-	// Etag identifies change in the resource.
+	// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
 	Etag string `pulumi:"etag"`
 	// The folder that this Pipeline is in. If not specified, Pipeline will appear at the root level.
-	Folder *PipelineResponseFolder `pulumi:"folder"`
-	// The resource identifier.
+	Folder *PipelineFolderResponse `pulumi:"folder"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// The resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// List of parameters for pipeline.
 	Parameters map[string]ParameterSpecificationResponse `pulumi:"parameters"`
 	// Pipeline Policy.
 	Policy *PipelinePolicyResponse `pulumi:"policy"`
 	// Dimensions emitted by Pipeline.
-	RunDimensions map[string]interface{} `pulumi:"runDimensions"`
-	// The resource type.
+	RunDimensions interface{} `pulumi:"runDimensions"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// List of variables for pipeline.
 	Variables map[string]VariableSpecificationResponse `pulumi:"variables"`
@@ -77,7 +81,7 @@ type LookupPipelineOutputArgs struct {
 	FactoryName pulumi.StringInput `pulumi:"factoryName"`
 	// The pipeline name.
 	PipelineName pulumi.StringInput `pulumi:"pipelineName"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -110,6 +114,11 @@ func (o LookupPipelineResultOutput) Annotations() pulumi.ArrayOutput {
 	return o.ApplyT(func(v LookupPipelineResult) []interface{} { return v.Annotations }).(pulumi.ArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupPipelineResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPipelineResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The max number of concurrent runs for the pipeline.
 func (o LookupPipelineResultOutput) Concurrency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupPipelineResult) *int { return v.Concurrency }).(pulumi.IntPtrOutput)
@@ -120,22 +129,22 @@ func (o LookupPipelineResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPipelineResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Etag identifies change in the resource.
+// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
 func (o LookupPipelineResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPipelineResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The folder that this Pipeline is in. If not specified, Pipeline will appear at the root level.
-func (o LookupPipelineResultOutput) Folder() PipelineResponseFolderPtrOutput {
-	return o.ApplyT(func(v LookupPipelineResult) *PipelineResponseFolder { return v.Folder }).(PipelineResponseFolderPtrOutput)
+func (o LookupPipelineResultOutput) Folder() PipelineFolderResponsePtrOutput {
+	return o.ApplyT(func(v LookupPipelineResult) *PipelineFolderResponse { return v.Folder }).(PipelineFolderResponsePtrOutput)
 }
 
-// The resource identifier.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupPipelineResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPipelineResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The resource name.
+// The name of the resource
 func (o LookupPipelineResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPipelineResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -151,11 +160,16 @@ func (o LookupPipelineResultOutput) Policy() PipelinePolicyResponsePtrOutput {
 }
 
 // Dimensions emitted by Pipeline.
-func (o LookupPipelineResultOutput) RunDimensions() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupPipelineResult) map[string]interface{} { return v.RunDimensions }).(pulumi.MapOutput)
+func (o LookupPipelineResultOutput) RunDimensions() pulumi.AnyOutput {
+	return o.ApplyT(func(v LookupPipelineResult) interface{} { return v.RunDimensions }).(pulumi.AnyOutput)
 }
 
-// The resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupPipelineResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPipelineResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupPipelineResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPipelineResult) string { return v.Type }).(pulumi.StringOutput)
 }

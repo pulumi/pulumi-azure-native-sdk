@@ -7,18 +7,20 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Resource group information.
 //
-// Uses Azure REST API version 2022-09-01. In version 1.x of the Azure Native provider, it used API version 2019-05-01.
+// Uses Azure REST API version 2024-03-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 //
-// Other available API versions: 2023-07-01, 2024-03-01, 2024-07-01, 2024-11-01.
+// Other available API versions: 2020-10-01, 2021-01-01, 2021-04-01, 2022-09-01, 2023-07-01, 2024-07-01, 2024-11-01, 2025-03-01, 2025-04-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resources [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ResourceGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The location of the resource group. It cannot be changed after the resource group has been created. It must be one of the supported Azure locations.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The ID of the resource that manages this resource group.
@@ -109,6 +111,12 @@ func NewResourceGroup(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:resources/v20241101:ResourceGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:resources/v20250301:ResourceGroup"),
+		},
+		{
+			Type: pulumi.String("azure-native:resources/v20250401:ResourceGroup"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -202,6 +210,11 @@ func (o ResourceGroupOutput) ToResourceGroupOutput() ResourceGroupOutput {
 
 func (o ResourceGroupOutput) ToResourceGroupOutputWithContext(ctx context.Context) ResourceGroupOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ResourceGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ResourceGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The location of the resource group. It cannot be changed after the resource group has been created. It must be one of the supported Azure locations.

@@ -8,37 +8,39 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Graph Query entity definition.
 //
-// Uses Azure REST API version 2020-04-01-preview. In version 1.x of the Azure Native provider, it used API version 2018-09-01-preview.
+// Uses Azure REST API version 2024-04-01. In version 2.x of the Azure Native provider, it used API version 2020-04-01-preview.
 //
-// Other available API versions: 2018-09-01-preview, 2019-04-01, 2021-03-01, 2022-10-01, 2024-04-01.
+// Other available API versions: 2021-03-01, 2022-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native resourcegraph [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type GraphQuery struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The description of a graph query.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// This will be used to handle Optimistic Concurrency.
+	// This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict.
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// The location of the resource
-	Location pulumi.StringOutput `pulumi:"location"`
-	// Azure resource name. This is GUID value. The display name should be assigned within properties field.
+	Location pulumi.StringPtrOutput `pulumi:"location"`
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// KQL query that will be graph.
 	Query pulumi.StringOutput `pulumi:"query"`
 	// Enum indicating a type of graph query.
 	ResultKind pulumi.StringOutput `pulumi:"resultKind"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource tags
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Date and time in UTC of the last modification that was made to this graph query definition.
 	TimeModified pulumi.StringOutput `pulumi:"timeModified"`
-	// Azure resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -111,13 +113,15 @@ func (GraphQueryState) ElementType() reflect.Type {
 type graphQueryArgs struct {
 	// The description of a graph query.
 	Description *string `pulumi:"description"`
+	// The location of the resource
+	Location *string `pulumi:"location"`
 	// KQL query that will be graph.
 	Query string `pulumi:"query"`
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the Graph Query resource.
 	ResourceName *string `pulumi:"resourceName"`
-	// Resource tags
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -125,13 +129,15 @@ type graphQueryArgs struct {
 type GraphQueryArgs struct {
 	// The description of a graph query.
 	Description pulumi.StringPtrInput
+	// The location of the resource
+	Location pulumi.StringPtrInput
 	// KQL query that will be graph.
 	Query pulumi.StringInput
-	// The name of the resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the Graph Query resource.
 	ResourceName pulumi.StringPtrInput
-	// Resource tags
+	// Resource tags.
 	Tags pulumi.StringMapInput
 }
 
@@ -172,22 +178,27 @@ func (o GraphQueryOutput) ToGraphQueryOutputWithContext(ctx context.Context) Gra
 	return o
 }
 
+// The Azure API version of the resource.
+func (o GraphQueryOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *GraphQuery) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The description of a graph query.
 func (o GraphQueryOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GraphQuery) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// This will be used to handle Optimistic Concurrency.
+// This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict.
 func (o GraphQueryOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GraphQuery) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // The location of the resource
-func (o GraphQueryOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v *GraphQuery) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+func (o GraphQueryOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GraphQuery) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// Azure resource name. This is GUID value. The display name should be assigned within properties field.
+// The name of the resource
 func (o GraphQueryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GraphQuery) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -202,12 +213,12 @@ func (o GraphQueryOutput) ResultKind() pulumi.StringOutput {
 	return o.ApplyT(func(v *GraphQuery) pulumi.StringOutput { return v.ResultKind }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o GraphQueryOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *GraphQuery) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Resource tags
+// Resource tags.
 func (o GraphQueryOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GraphQuery) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
@@ -217,7 +228,7 @@ func (o GraphQueryOutput) TimeModified() pulumi.StringOutput {
 	return o.ApplyT(func(v *GraphQuery) pulumi.StringOutput { return v.TimeModified }).(pulumi.StringOutput)
 }
 
-// Azure resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o GraphQueryOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *GraphQuery) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

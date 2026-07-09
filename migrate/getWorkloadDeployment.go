@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,6 +37,8 @@ type LookupWorkloadDeploymentArgs struct {
 
 // Workload deployment model.
 type LookupWorkloadDeploymentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Gets or sets the Id of the resource.
 	Id string `pulumi:"id"`
 	// Gets or sets the name of the resource.
@@ -87,6 +89,11 @@ func (o LookupWorkloadDeploymentResultOutput) ToLookupWorkloadDeploymentResultOu
 
 func (o LookupWorkloadDeploymentResultOutput) ToLookupWorkloadDeploymentResultOutputWithContext(ctx context.Context) LookupWorkloadDeploymentResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupWorkloadDeploymentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupWorkloadDeploymentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Gets or sets the Id of the resource.

@@ -8,20 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Metadata schema entity. Used to define metadata for the entities in API catalog.
 //
-// Uses Azure REST API version 2024-03-01.
+// Uses Azure REST API version 2024-03-15-preview. In version 2.x of the Azure Native provider, it used API version 2024-03-01.
 //
-// Other available API versions: 2024-03-15-preview, 2024-06-01-preview.
+// Other available API versions: 2024-03-01, 2024-06-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native apicenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type MetadataSchema struct {
 	pulumi.CustomResourceState
 
 	// The assignees
 	AssignedTo MetadataAssignmentResponseArrayOutput `pulumi:"assignedTo"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The schema defining the type.
@@ -159,6 +161,11 @@ func (o MetadataSchemaOutput) ToMetadataSchemaOutputWithContext(ctx context.Cont
 // The assignees
 func (o MetadataSchemaOutput) AssignedTo() MetadataAssignmentResponseArrayOutput {
 	return o.ApplyT(func(v *MetadataSchema) MetadataAssignmentResponseArrayOutput { return v.AssignedTo }).(MetadataAssignmentResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o MetadataSchemaOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *MetadataSchema) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource

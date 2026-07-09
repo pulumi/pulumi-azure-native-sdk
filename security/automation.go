@@ -8,20 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The security automation resource.
 //
-// Uses Azure REST API version 2019-01-01-preview. In version 1.x of the Azure Native provider, it used API version 2019-01-01-preview.
+// Uses Azure REST API version 2023-12-01-preview. In version 2.x of the Azure Native provider, it used API version 2019-01-01-preview.
 //
-// Other available API versions: 2023-12-01-preview.
+// Other available API versions: 2019-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Automation struct {
 	pulumi.CustomResourceState
 
 	// A collection of the actions which are triggered if all the configured rules evaluations, within at least one rule set, are true.
 	Actions pulumi.ArrayOutput `pulumi:"actions"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The security automation description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Entity tag is used for comparing two or more entities from the same requested resource.
@@ -30,17 +32,19 @@ type Automation struct {
 	IsEnabled pulumi.BoolPtrOutput `pulumi:"isEnabled"`
 	// Kind of the resource
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
-	// Location where the resource is stored
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// Resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A collection of scopes on which the security automations logic is applied. Supported scopes are the subscription itself or a resource group under that subscription. The automation will only apply on defined scopes.
 	Scopes AutomationScopeResponseArrayOutput `pulumi:"scopes"`
 	// A collection of the source event types which evaluate the security automation set of rules.
 	Sources AutomationSourceResponseArrayOutput `pulumi:"sources"`
-	// A list of key value pairs that describe the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -106,15 +110,15 @@ type automationArgs struct {
 	IsEnabled *bool `pulumi:"isEnabled"`
 	// Kind of the resource
 	Kind *string `pulumi:"kind"`
-	// Location where the resource is stored
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// A collection of scopes on which the security automations logic is applied. Supported scopes are the subscription itself or a resource group under that subscription. The automation will only apply on defined scopes.
 	Scopes []AutomationScope `pulumi:"scopes"`
 	// A collection of the source event types which evaluate the security automation set of rules.
 	Sources []AutomationSource `pulumi:"sources"`
-	// A list of key value pairs that describe the resource.
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -130,15 +134,15 @@ type AutomationArgs struct {
 	IsEnabled pulumi.BoolPtrInput
 	// Kind of the resource
 	Kind pulumi.StringPtrInput
-	// Location where the resource is stored
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// A collection of scopes on which the security automations logic is applied. Supported scopes are the subscription itself or a resource group under that subscription. The automation will only apply on defined scopes.
 	Scopes AutomationScopeArrayInput
 	// A collection of the source event types which evaluate the security automation set of rules.
 	Sources AutomationSourceArrayInput
-	// A list of key value pairs that describe the resource.
+	// Resource tags.
 	Tags pulumi.StringMapInput
 }
 
@@ -184,6 +188,11 @@ func (o AutomationOutput) Actions() pulumi.ArrayOutput {
 	return o.ApplyT(func(v *Automation) pulumi.ArrayOutput { return v.Actions }).(pulumi.ArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o AutomationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Automation) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The security automation description.
 func (o AutomationOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Automation) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -204,12 +213,12 @@ func (o AutomationOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Automation) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Location where the resource is stored
+// The geo-location where the resource lives
 func (o AutomationOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Automation) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o AutomationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Automation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -224,12 +233,17 @@ func (o AutomationOutput) Sources() AutomationSourceResponseArrayOutput {
 	return o.ApplyT(func(v *Automation) AutomationSourceResponseArrayOutput { return v.Sources }).(AutomationSourceResponseArrayOutput)
 }
 
-// A list of key value pairs that describe the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o AutomationOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Automation) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o AutomationOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Automation) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o AutomationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Automation) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

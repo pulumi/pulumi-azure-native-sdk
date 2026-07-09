@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ type LookupChangeDataCaptureArgs struct {
 	ChangeDataCaptureName string `pulumi:"changeDataCaptureName"`
 	// The factory name.
 	FactoryName string `pulumi:"factoryName"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -37,15 +37,17 @@ type LookupChangeDataCaptureArgs struct {
 type LookupChangeDataCaptureResult struct {
 	// A boolean to determine if the vnet configuration needs to be overwritten.
 	AllowVNetOverride *bool `pulumi:"allowVNetOverride"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The description of the change data capture.
 	Description *string `pulumi:"description"`
-	// Etag identifies change in the resource.
+	// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
 	Etag string `pulumi:"etag"`
 	// The folder that this CDC is in. If not specified, CDC will appear at the root level.
-	Folder *ChangeDataCaptureResponseFolder `pulumi:"folder"`
-	// The resource identifier.
+	Folder *ChangeDataCaptureFolderResponse `pulumi:"folder"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// The resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// CDC policy
 	Policy MapperPolicyResponse `pulumi:"policy"`
@@ -53,9 +55,11 @@ type LookupChangeDataCaptureResult struct {
 	SourceConnectionsInfo []MapperSourceConnectionsInfoResponse `pulumi:"sourceConnectionsInfo"`
 	// Status of the CDC as to if it is running or stopped.
 	Status *string `pulumi:"status"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// List of target connections that can be used as sources in the CDC.
 	TargetConnectionsInfo []MapperTargetConnectionsInfoResponse `pulumi:"targetConnectionsInfo"`
-	// The resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -73,7 +77,7 @@ type LookupChangeDataCaptureOutputArgs struct {
 	ChangeDataCaptureName pulumi.StringInput `pulumi:"changeDataCaptureName"`
 	// The factory name.
 	FactoryName pulumi.StringInput `pulumi:"factoryName"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -101,27 +105,32 @@ func (o LookupChangeDataCaptureResultOutput) AllowVNetOverride() pulumi.BoolPtrO
 	return o.ApplyT(func(v LookupChangeDataCaptureResult) *bool { return v.AllowVNetOverride }).(pulumi.BoolPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupChangeDataCaptureResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupChangeDataCaptureResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The description of the change data capture.
 func (o LookupChangeDataCaptureResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupChangeDataCaptureResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Etag identifies change in the resource.
+// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
 func (o LookupChangeDataCaptureResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupChangeDataCaptureResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The folder that this CDC is in. If not specified, CDC will appear at the root level.
-func (o LookupChangeDataCaptureResultOutput) Folder() ChangeDataCaptureResponseFolderPtrOutput {
-	return o.ApplyT(func(v LookupChangeDataCaptureResult) *ChangeDataCaptureResponseFolder { return v.Folder }).(ChangeDataCaptureResponseFolderPtrOutput)
+func (o LookupChangeDataCaptureResultOutput) Folder() ChangeDataCaptureFolderResponsePtrOutput {
+	return o.ApplyT(func(v LookupChangeDataCaptureResult) *ChangeDataCaptureFolderResponse { return v.Folder }).(ChangeDataCaptureFolderResponsePtrOutput)
 }
 
-// The resource identifier.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupChangeDataCaptureResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupChangeDataCaptureResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The resource name.
+// The name of the resource
 func (o LookupChangeDataCaptureResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupChangeDataCaptureResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -143,6 +152,11 @@ func (o LookupChangeDataCaptureResultOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupChangeDataCaptureResult) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupChangeDataCaptureResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupChangeDataCaptureResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // List of target connections that can be used as sources in the CDC.
 func (o LookupChangeDataCaptureResultOutput) TargetConnectionsInfo() MapperTargetConnectionsInfoResponseArrayOutput {
 	return o.ApplyT(func(v LookupChangeDataCaptureResult) []MapperTargetConnectionsInfoResponse {
@@ -150,7 +164,7 @@ func (o LookupChangeDataCaptureResultOutput) TargetConnectionsInfo() MapperTarge
 	}).(MapperTargetConnectionsInfoResponseArrayOutput)
 }
 
-// The resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupChangeDataCaptureResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupChangeDataCaptureResult) string { return v.Type }).(pulumi.StringOutput)
 }

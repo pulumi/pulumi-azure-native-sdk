@@ -8,13 +8,13 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Object model for the Azure CLI script.
 //
-// Uses Azure REST API version 2020-10-01. In version 1.x of the Azure Native provider, it used API version 2020-10-01.
+// Uses Azure REST API version 2023-08-01. In version 2.x of the Azure Native provider, it used API version 2020-10-01.
 type AzureCliScript struct {
 	pulumi.CustomResourceState
 
@@ -22,6 +22,8 @@ type AzureCliScript struct {
 	Arguments pulumi.StringPtrOutput `pulumi:"arguments"`
 	// Azure CLI module version to be used.
 	AzCliVersion pulumi.StringOutput `pulumi:"azCliVersion"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The clean up preference when the script execution gets in a terminal state. Default setting is 'Always'.
 	CleanupPreference pulumi.StringPtrOutput `pulumi:"cleanupPreference"`
 	// Container settings.
@@ -35,12 +37,12 @@ type AzureCliScript struct {
 	// Type of the script.
 	// Expected value is 'AzureCLI'.
 	Kind pulumi.StringOutput `pulumi:"kind"`
-	// The location of the ACI and the storage account for the deployment script.
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Name of this resource.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of script outputs.
-	Outputs pulumi.MapOutput `pulumi:"outputs"`
+	Outputs pulumi.AnyOutput `pulumi:"outputs"`
 	// Uri for the script. This is the entry point for the external script.
 	PrimaryScriptUri pulumi.StringPtrOutput `pulumi:"primaryScriptUri"`
 	// State of the script execution. This only appears in the response.
@@ -55,13 +57,13 @@ type AzureCliScript struct {
 	StorageAccountSettings StorageAccountConfigurationResponsePtrOutput `pulumi:"storageAccountSettings"`
 	// Supporting files for the external script.
 	SupportingScriptUris pulumi.StringArrayOutput `pulumi:"supportingScriptUris"`
-	// The system metadata related to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Maximum allowed script execution time specified in ISO 8601 format. Default value is P1D
 	Timeout pulumi.StringPtrOutput `pulumi:"timeout"`
-	// Type of this resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -96,10 +98,22 @@ func NewAzureCliScript(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:resources/v20191001preview:AzureCliScript"),
 		},
 		{
+			Type: pulumi.String("azure-native:resources/v20191001preview:AzurePowerShellScript"),
+		},
+		{
 			Type: pulumi.String("azure-native:resources/v20201001:AzureCliScript"),
 		},
 		{
+			Type: pulumi.String("azure-native:resources/v20201001:AzurePowerShellScript"),
+		},
+		{
 			Type: pulumi.String("azure-native:resources/v20230801:AzureCliScript"),
+		},
+		{
+			Type: pulumi.String("azure-native:resources/v20230801:AzurePowerShellScript"),
+		},
+		{
+			Type: pulumi.String("azure-native:resources:AzurePowerShellScript"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -153,7 +167,7 @@ type azureCliScriptArgs struct {
 	// Type of the script.
 	// Expected value is 'AzureCLI'.
 	Kind string `pulumi:"kind"`
-	// The location of the ACI and the storage account for the deployment script.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Uri for the script. This is the entry point for the external script.
 	PrimaryScriptUri *string `pulumi:"primaryScriptUri"`
@@ -194,7 +208,7 @@ type AzureCliScriptArgs struct {
 	// Type of the script.
 	// Expected value is 'AzureCLI'.
 	Kind pulumi.StringInput
-	// The location of the ACI and the storage account for the deployment script.
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Uri for the script. This is the entry point for the external script.
 	PrimaryScriptUri pulumi.StringPtrInput
@@ -263,6 +277,11 @@ func (o AzureCliScriptOutput) AzCliVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureCliScript) pulumi.StringOutput { return v.AzCliVersion }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o AzureCliScriptOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AzureCliScript) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The clean up preference when the script execution gets in a terminal state. Default setting is 'Always'.
 func (o AzureCliScriptOutput) CleanupPreference() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureCliScript) pulumi.StringPtrOutput { return v.CleanupPreference }).(pulumi.StringPtrOutput)
@@ -294,19 +313,19 @@ func (o AzureCliScriptOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureCliScript) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
-// The location of the ACI and the storage account for the deployment script.
+// The geo-location where the resource lives
 func (o AzureCliScriptOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureCliScript) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Name of this resource.
+// The name of the resource
 func (o AzureCliScriptOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureCliScript) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
 // List of script outputs.
-func (o AzureCliScriptOutput) Outputs() pulumi.MapOutput {
-	return o.ApplyT(func(v *AzureCliScript) pulumi.MapOutput { return v.Outputs }).(pulumi.MapOutput)
+func (o AzureCliScriptOutput) Outputs() pulumi.AnyOutput {
+	return o.ApplyT(func(v *AzureCliScript) pulumi.AnyOutput { return v.Outputs }).(pulumi.AnyOutput)
 }
 
 // Uri for the script. This is the entry point for the external script.
@@ -344,7 +363,7 @@ func (o AzureCliScriptOutput) SupportingScriptUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AzureCliScript) pulumi.StringArrayOutput { return v.SupportingScriptUris }).(pulumi.StringArrayOutput)
 }
 
-// The system metadata related to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o AzureCliScriptOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *AzureCliScript) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -359,7 +378,7 @@ func (o AzureCliScriptOutput) Timeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureCliScript) pulumi.StringPtrOutput { return v.Timeout }).(pulumi.StringPtrOutput)
 }
 
-// Type of this resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o AzureCliScriptOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureCliScript) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -270,6 +270,124 @@ func (o AzureSkuResponseOutput) Name() pulumi.StringOutput {
 // SKU tier.
 func (o AzureSkuResponseOutput) Tier() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureSkuResponse) string { return v.Tier }).(pulumi.StringOutput)
+}
+
+// Configuration for external callout policies, including URI patterns, access types, and service types.
+type CalloutPolicy struct {
+	// Type of the callout service, specifying the kind of external resource or service being accessed.
+	CalloutType *string `pulumi:"calloutType"`
+	// Regular expression or FQDN pattern for the callout URI.
+	CalloutUriRegex *string `pulumi:"calloutUriRegex"`
+	// Indicates whether outbound access is permitted for the specified URI pattern.
+	OutboundAccess *string `pulumi:"outboundAccess"`
+}
+
+// CalloutPolicyInput is an input type that accepts CalloutPolicyArgs and CalloutPolicyOutput values.
+// You can construct a concrete instance of `CalloutPolicyInput` via:
+//
+//	CalloutPolicyArgs{...}
+type CalloutPolicyInput interface {
+	pulumi.Input
+
+	ToCalloutPolicyOutput() CalloutPolicyOutput
+	ToCalloutPolicyOutputWithContext(context.Context) CalloutPolicyOutput
+}
+
+// Configuration for external callout policies, including URI patterns, access types, and service types.
+type CalloutPolicyArgs struct {
+	// Type of the callout service, specifying the kind of external resource or service being accessed.
+	CalloutType pulumi.StringPtrInput `pulumi:"calloutType"`
+	// Regular expression or FQDN pattern for the callout URI.
+	CalloutUriRegex pulumi.StringPtrInput `pulumi:"calloutUriRegex"`
+	// Indicates whether outbound access is permitted for the specified URI pattern.
+	OutboundAccess pulumi.StringPtrInput `pulumi:"outboundAccess"`
+}
+
+func (CalloutPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CalloutPolicy)(nil)).Elem()
+}
+
+func (i CalloutPolicyArgs) ToCalloutPolicyOutput() CalloutPolicyOutput {
+	return i.ToCalloutPolicyOutputWithContext(context.Background())
+}
+
+func (i CalloutPolicyArgs) ToCalloutPolicyOutputWithContext(ctx context.Context) CalloutPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CalloutPolicyOutput)
+}
+
+// CalloutPolicyArrayInput is an input type that accepts CalloutPolicyArray and CalloutPolicyArrayOutput values.
+// You can construct a concrete instance of `CalloutPolicyArrayInput` via:
+//
+//	CalloutPolicyArray{ CalloutPolicyArgs{...} }
+type CalloutPolicyArrayInput interface {
+	pulumi.Input
+
+	ToCalloutPolicyArrayOutput() CalloutPolicyArrayOutput
+	ToCalloutPolicyArrayOutputWithContext(context.Context) CalloutPolicyArrayOutput
+}
+
+type CalloutPolicyArray []CalloutPolicyInput
+
+func (CalloutPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CalloutPolicy)(nil)).Elem()
+}
+
+func (i CalloutPolicyArray) ToCalloutPolicyArrayOutput() CalloutPolicyArrayOutput {
+	return i.ToCalloutPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i CalloutPolicyArray) ToCalloutPolicyArrayOutputWithContext(ctx context.Context) CalloutPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CalloutPolicyArrayOutput)
+}
+
+// Configuration for external callout policies, including URI patterns, access types, and service types.
+type CalloutPolicyOutput struct{ *pulumi.OutputState }
+
+func (CalloutPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CalloutPolicy)(nil)).Elem()
+}
+
+func (o CalloutPolicyOutput) ToCalloutPolicyOutput() CalloutPolicyOutput {
+	return o
+}
+
+func (o CalloutPolicyOutput) ToCalloutPolicyOutputWithContext(ctx context.Context) CalloutPolicyOutput {
+	return o
+}
+
+// Type of the callout service, specifying the kind of external resource or service being accessed.
+func (o CalloutPolicyOutput) CalloutType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CalloutPolicy) *string { return v.CalloutType }).(pulumi.StringPtrOutput)
+}
+
+// Regular expression or FQDN pattern for the callout URI.
+func (o CalloutPolicyOutput) CalloutUriRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CalloutPolicy) *string { return v.CalloutUriRegex }).(pulumi.StringPtrOutput)
+}
+
+// Indicates whether outbound access is permitted for the specified URI pattern.
+func (o CalloutPolicyOutput) OutboundAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CalloutPolicy) *string { return v.OutboundAccess }).(pulumi.StringPtrOutput)
+}
+
+type CalloutPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (CalloutPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CalloutPolicy)(nil)).Elem()
+}
+
+func (o CalloutPolicyArrayOutput) ToCalloutPolicyArrayOutput() CalloutPolicyArrayOutput {
+	return o
+}
+
+func (o CalloutPolicyArrayOutput) ToCalloutPolicyArrayOutputWithContext(ctx context.Context) CalloutPolicyArrayOutput {
+	return o
+}
+
+func (o CalloutPolicyArrayOutput) Index(i pulumi.IntInput) CalloutPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CalloutPolicy {
+		return vs[0].([]CalloutPolicy)[vs[1].(int)]
+	}).(CalloutPolicyOutput)
 }
 
 // Configuration for external callout policies, including URI patterns, access types, and service types.
@@ -1162,6 +1280,8 @@ func (o KeyVaultPropertiesResponsePtrOutput) UserIdentity() pulumi.StringPtrOutp
 
 // The language extension object.
 type LanguageExtension struct {
+	// The language extension custom image name.
+	LanguageExtensionCustomImageName *string `pulumi:"languageExtensionCustomImageName"`
 	// The language extension image name.
 	LanguageExtensionImageName *string `pulumi:"languageExtensionImageName"`
 	// The language extension name.
@@ -1181,6 +1301,8 @@ type LanguageExtensionInput interface {
 
 // The language extension object.
 type LanguageExtensionArgs struct {
+	// The language extension custom image name.
+	LanguageExtensionCustomImageName pulumi.StringPtrInput `pulumi:"languageExtensionCustomImageName"`
 	// The language extension image name.
 	LanguageExtensionImageName pulumi.StringPtrInput `pulumi:"languageExtensionImageName"`
 	// The language extension name.
@@ -1239,6 +1361,11 @@ func (o LanguageExtensionOutput) ToLanguageExtensionOutputWithContext(ctx contex
 	return o
 }
 
+// The language extension custom image name.
+func (o LanguageExtensionOutput) LanguageExtensionCustomImageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LanguageExtension) *string { return v.LanguageExtensionCustomImageName }).(pulumi.StringPtrOutput)
+}
+
 // The language extension image name.
 func (o LanguageExtensionOutput) LanguageExtensionImageName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LanguageExtension) *string { return v.LanguageExtensionImageName }).(pulumi.StringPtrOutput)
@@ -1271,6 +1398,8 @@ func (o LanguageExtensionArrayOutput) Index(i pulumi.IntInput) LanguageExtension
 
 // The language extension object.
 type LanguageExtensionResponse struct {
+	// The language extension custom image name.
+	LanguageExtensionCustomImageName *string `pulumi:"languageExtensionCustomImageName"`
 	// The language extension image name.
 	LanguageExtensionImageName *string `pulumi:"languageExtensionImageName"`
 	// The language extension name.
@@ -1290,6 +1419,11 @@ func (o LanguageExtensionResponseOutput) ToLanguageExtensionResponseOutput() Lan
 
 func (o LanguageExtensionResponseOutput) ToLanguageExtensionResponseOutputWithContext(ctx context.Context) LanguageExtensionResponseOutput {
 	return o
+}
+
+// The language extension custom image name.
+func (o LanguageExtensionResponseOutput) LanguageExtensionCustomImageName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LanguageExtensionResponse) *string { return v.LanguageExtensionCustomImageName }).(pulumi.StringPtrOutput)
 }
 
 // The language extension image name.
@@ -1520,6 +1654,53 @@ func (o LanguageExtensionsListResponsePtrOutput) Value() LanguageExtensionRespon
 		}
 		return v.Value
 	}).(LanguageExtensionResponseArrayOutput)
+}
+
+// Represents a properties of a cluster that is part of a migration.
+type MigrationClusterPropertiesResponse struct {
+	// The public data ingestion URL of the cluster.
+	DataIngestionUri string `pulumi:"dataIngestionUri"`
+	// The resource ID of the cluster.
+	Id string `pulumi:"id"`
+	// The role of the cluster in the migration process.
+	Role string `pulumi:"role"`
+	// The public URL of the cluster.
+	Uri string `pulumi:"uri"`
+}
+
+// Represents a properties of a cluster that is part of a migration.
+type MigrationClusterPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (MigrationClusterPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationClusterPropertiesResponse)(nil)).Elem()
+}
+
+func (o MigrationClusterPropertiesResponseOutput) ToMigrationClusterPropertiesResponseOutput() MigrationClusterPropertiesResponseOutput {
+	return o
+}
+
+func (o MigrationClusterPropertiesResponseOutput) ToMigrationClusterPropertiesResponseOutputWithContext(ctx context.Context) MigrationClusterPropertiesResponseOutput {
+	return o
+}
+
+// The public data ingestion URL of the cluster.
+func (o MigrationClusterPropertiesResponseOutput) DataIngestionUri() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationClusterPropertiesResponse) string { return v.DataIngestionUri }).(pulumi.StringOutput)
+}
+
+// The resource ID of the cluster.
+func (o MigrationClusterPropertiesResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationClusterPropertiesResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The role of the cluster in the migration process.
+func (o MigrationClusterPropertiesResponseOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationClusterPropertiesResponse) string { return v.Role }).(pulumi.StringOutput)
+}
+
+// The public URL of the cluster.
+func (o MigrationClusterPropertiesResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationClusterPropertiesResponse) string { return v.Uri }).(pulumi.StringOutput)
 }
 
 // A class that contains the optimized auto scale definition.
@@ -2055,6 +2236,32 @@ func (o PrivateLinkServiceConnectionStatePropertyResponseOutput) Description() p
 // The private link service connection status.
 func (o PrivateLinkServiceConnectionStatePropertyResponseOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionStatePropertyResponse) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The database suspension details. If the database is suspended, this object contains information related to the database's suspension state.
+type SuspensionDetailsResponse struct {
+	// The starting date and time of the suspension state.
+	SuspensionStartDate *string `pulumi:"suspensionStartDate"`
+}
+
+// The database suspension details. If the database is suspended, this object contains information related to the database's suspension state.
+type SuspensionDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (SuspensionDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SuspensionDetailsResponse)(nil)).Elem()
+}
+
+func (o SuspensionDetailsResponseOutput) ToSuspensionDetailsResponseOutput() SuspensionDetailsResponseOutput {
+	return o
+}
+
+func (o SuspensionDetailsResponseOutput) ToSuspensionDetailsResponseOutputWithContext(ctx context.Context) SuspensionDetailsResponseOutput {
+	return o
+}
+
+// The starting date and time of the suspension state.
+func (o SuspensionDetailsResponseOutput) SuspensionStartDate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SuspensionDetailsResponse) *string { return v.SuspensionStartDate }).(pulumi.StringPtrOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.
@@ -2722,8 +2929,23 @@ type VirtualNetworkConfiguration struct {
 	DataManagementPublicIpId string `pulumi:"dataManagementPublicIpId"`
 	// Engine service's public IP address resource id.
 	EnginePublicIpId string `pulumi:"enginePublicIpId"`
+	// When enabled, the cluster is deployed into the configured subnet, when disabled it will be removed from the subnet.
+	State *string `pulumi:"state"`
 	// The subnet resource id.
 	SubnetId string `pulumi:"subnetId"`
+}
+
+// Defaults sets the appropriate defaults for VirtualNetworkConfiguration
+func (val *VirtualNetworkConfiguration) Defaults() *VirtualNetworkConfiguration {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.State == nil {
+		state_ := "Enabled"
+		tmp.State = &state_
+	}
+	return &tmp
 }
 
 // VirtualNetworkConfigurationInput is an input type that accepts VirtualNetworkConfigurationArgs and VirtualNetworkConfigurationOutput values.
@@ -2743,10 +2965,23 @@ type VirtualNetworkConfigurationArgs struct {
 	DataManagementPublicIpId pulumi.StringInput `pulumi:"dataManagementPublicIpId"`
 	// Engine service's public IP address resource id.
 	EnginePublicIpId pulumi.StringInput `pulumi:"enginePublicIpId"`
+	// When enabled, the cluster is deployed into the configured subnet, when disabled it will be removed from the subnet.
+	State pulumi.StringPtrInput `pulumi:"state"`
 	// The subnet resource id.
 	SubnetId pulumi.StringInput `pulumi:"subnetId"`
 }
 
+// Defaults sets the appropriate defaults for VirtualNetworkConfigurationArgs
+func (val *VirtualNetworkConfigurationArgs) Defaults() *VirtualNetworkConfigurationArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.State == nil {
+		tmp.State = pulumi.StringPtr("Enabled")
+	}
+	return &tmp
+}
 func (VirtualNetworkConfigurationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*VirtualNetworkConfiguration)(nil)).Elem()
 }
@@ -2835,6 +3070,11 @@ func (o VirtualNetworkConfigurationOutput) EnginePublicIpId() pulumi.StringOutpu
 	return o.ApplyT(func(v VirtualNetworkConfiguration) string { return v.EnginePublicIpId }).(pulumi.StringOutput)
 }
 
+// When enabled, the cluster is deployed into the configured subnet, when disabled it will be removed from the subnet.
+func (o VirtualNetworkConfigurationOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkConfiguration) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
 // The subnet resource id.
 func (o VirtualNetworkConfigurationOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualNetworkConfiguration) string { return v.SubnetId }).(pulumi.StringOutput)
@@ -2884,6 +3124,16 @@ func (o VirtualNetworkConfigurationPtrOutput) EnginePublicIpId() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// When enabled, the cluster is deployed into the configured subnet, when disabled it will be removed from the subnet.
+func (o VirtualNetworkConfigurationPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
 // The subnet resource id.
 func (o VirtualNetworkConfigurationPtrOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualNetworkConfiguration) *string {
@@ -2900,8 +3150,23 @@ type VirtualNetworkConfigurationResponse struct {
 	DataManagementPublicIpId string `pulumi:"dataManagementPublicIpId"`
 	// Engine service's public IP address resource id.
 	EnginePublicIpId string `pulumi:"enginePublicIpId"`
+	// When enabled, the cluster is deployed into the configured subnet, when disabled it will be removed from the subnet.
+	State *string `pulumi:"state"`
 	// The subnet resource id.
 	SubnetId string `pulumi:"subnetId"`
+}
+
+// Defaults sets the appropriate defaults for VirtualNetworkConfigurationResponse
+func (val *VirtualNetworkConfigurationResponse) Defaults() *VirtualNetworkConfigurationResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.State == nil {
+		state_ := "Enabled"
+		tmp.State = &state_
+	}
+	return &tmp
 }
 
 // A class that contains virtual network definition.
@@ -2927,6 +3192,11 @@ func (o VirtualNetworkConfigurationResponseOutput) DataManagementPublicIpId() pu
 // Engine service's public IP address resource id.
 func (o VirtualNetworkConfigurationResponseOutput) EnginePublicIpId() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualNetworkConfigurationResponse) string { return v.EnginePublicIpId }).(pulumi.StringOutput)
+}
+
+// When enabled, the cluster is deployed into the configured subnet, when disabled it will be removed from the subnet.
+func (o VirtualNetworkConfigurationResponseOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkConfigurationResponse) *string { return v.State }).(pulumi.StringPtrOutput)
 }
 
 // The subnet resource id.
@@ -2978,6 +3248,16 @@ func (o VirtualNetworkConfigurationResponsePtrOutput) EnginePublicIpId() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// When enabled, the cluster is deployed into the configured subnet, when disabled it will be removed from the subnet.
+func (o VirtualNetworkConfigurationResponsePtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkConfigurationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
 // The subnet resource id.
 func (o VirtualNetworkConfigurationResponsePtrOutput) SubnetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualNetworkConfigurationResponse) *string {
@@ -2995,6 +3275,8 @@ func init() {
 	pulumi.RegisterOutputType(AcceptedAudiencesResponseArrayOutput{})
 	pulumi.RegisterOutputType(AzureSkuOutput{})
 	pulumi.RegisterOutputType(AzureSkuResponseOutput{})
+	pulumi.RegisterOutputType(CalloutPolicyOutput{})
+	pulumi.RegisterOutputType(CalloutPolicyArrayOutput{})
 	pulumi.RegisterOutputType(CalloutPolicyResponseOutput{})
 	pulumi.RegisterOutputType(CalloutPolicyResponseArrayOutput{})
 	pulumi.RegisterOutputType(DatabasePrincipalResponseOutput{})
@@ -3020,6 +3302,7 @@ func init() {
 	pulumi.RegisterOutputType(LanguageExtensionsListPtrOutput{})
 	pulumi.RegisterOutputType(LanguageExtensionsListResponseOutput{})
 	pulumi.RegisterOutputType(LanguageExtensionsListResponsePtrOutput{})
+	pulumi.RegisterOutputType(MigrationClusterPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(OptimizedAutoscaleOutput{})
 	pulumi.RegisterOutputType(OptimizedAutoscalePtrOutput{})
 	pulumi.RegisterOutputType(OptimizedAutoscaleResponseOutput{})
@@ -3029,6 +3312,7 @@ func init() {
 	pulumi.RegisterOutputType(PrivateEndpointPropertyResponseOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatePropertyOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStatePropertyResponseOutput{})
+	pulumi.RegisterOutputType(SuspensionDetailsResponseOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(TableLevelSharingPropertiesOutput{})
 	pulumi.RegisterOutputType(TableLevelSharingPropertiesPtrOutput{})

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve the job schedule identified by job schedule name.
 //
-// Uses Azure REST API version 2022-08-08.
+// Uses Azure REST API version 2024-10-23.
 //
-// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
+// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupJobSchedule(ctx *pulumi.Context, args *LookupJobScheduleArgs, opts ...pulumi.InvokeOption) (*LookupJobScheduleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupJobScheduleResult
@@ -31,17 +31,19 @@ type LookupJobScheduleArgs struct {
 	AutomationAccountName string `pulumi:"automationAccountName"`
 	// The job schedule name.
 	JobScheduleId string `pulumi:"jobScheduleId"`
-	// Name of an Azure Resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Definition of the job schedule.
 type LookupJobScheduleResult struct {
-	// Gets the id of the resource.
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Gets or sets the id of job schedule.
 	JobScheduleId *string `pulumi:"jobScheduleId"`
-	// Gets the name of the variable.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Gets or sets the parameters of the job schedule.
 	Parameters map[string]string `pulumi:"parameters"`
@@ -51,7 +53,9 @@ type LookupJobScheduleResult struct {
 	Runbook *RunbookAssociationPropertyResponse `pulumi:"runbook"`
 	// Gets or sets the schedule.
 	Schedule *ScheduleAssociationPropertyResponse `pulumi:"schedule"`
-	// Resource type
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -69,7 +73,7 @@ type LookupJobScheduleOutputArgs struct {
 	AutomationAccountName pulumi.StringInput `pulumi:"automationAccountName"`
 	// The job schedule name.
 	JobScheduleId pulumi.StringInput `pulumi:"jobScheduleId"`
-	// Name of an Azure Resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -92,7 +96,12 @@ func (o LookupJobScheduleResultOutput) ToLookupJobScheduleResultOutputWithContex
 	return o
 }
 
-// Gets the id of the resource.
+// The Azure API version of the resource.
+func (o LookupJobScheduleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobScheduleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupJobScheduleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobScheduleResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -102,7 +111,7 @@ func (o LookupJobScheduleResultOutput) JobScheduleId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupJobScheduleResult) *string { return v.JobScheduleId }).(pulumi.StringPtrOutput)
 }
 
-// Gets the name of the variable.
+// The name of the resource
 func (o LookupJobScheduleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobScheduleResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -127,7 +136,12 @@ func (o LookupJobScheduleResultOutput) Schedule() ScheduleAssociationPropertyRes
 	return o.ApplyT(func(v LookupJobScheduleResult) *ScheduleAssociationPropertyResponse { return v.Schedule }).(ScheduleAssociationPropertyResponsePtrOutput)
 }
 
-// Resource type
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupJobScheduleResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupJobScheduleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupJobScheduleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobScheduleResult) string { return v.Type }).(pulumi.StringOutput)
 }

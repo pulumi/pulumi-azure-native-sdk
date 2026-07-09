@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The security connector resource.
 //
-// Uses Azure REST API version 2023-03-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-07-01-preview.
+// Uses Azure REST API version 2024-08-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-03-01-preview.
 //
-// Other available API versions: 2021-07-01-preview, 2023-10-01-preview, 2024-03-01-preview, 2024-07-01-preview, 2024-08-01-preview.
+// Other available API versions: 2021-07-01-preview, 2021-12-01-preview, 2022-05-01-preview, 2022-08-01-preview, 2023-03-01-preview, 2023-10-01-preview, 2024-03-01-preview, 2024-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SecurityConnector struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The security connector environment data.
 	EnvironmentData pulumi.AnyOutput `pulumi:"environmentData"`
 	// The multi cloud resource's cloud name.
@@ -32,17 +34,17 @@ type SecurityConnector struct {
 	HierarchyIdentifierTrialEndDate pulumi.StringOutput `pulumi:"hierarchyIdentifierTrialEndDate"`
 	// Kind of the resource
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
-	// Location where the resource is stored
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrOutput `pulumi:"location"`
-	// Resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A collection of offerings for the security connector.
 	Offerings pulumi.ArrayOutput `pulumi:"offerings"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// A list of key value pairs that describe the resource.
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -127,15 +129,15 @@ type securityConnectorArgs struct {
 	HierarchyIdentifier *string `pulumi:"hierarchyIdentifier"`
 	// Kind of the resource
 	Kind *string `pulumi:"kind"`
-	// Location where the resource is stored
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// A collection of offerings for the security connector.
 	Offerings []interface{} `pulumi:"offerings"`
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The security connector name.
 	SecurityConnectorName *string `pulumi:"securityConnectorName"`
-	// A list of key value pairs that describe the resource.
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -149,15 +151,15 @@ type SecurityConnectorArgs struct {
 	HierarchyIdentifier pulumi.StringPtrInput
 	// Kind of the resource
 	Kind pulumi.StringPtrInput
-	// Location where the resource is stored
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// A collection of offerings for the security connector.
 	Offerings pulumi.ArrayInput
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The security connector name.
 	SecurityConnectorName pulumi.StringPtrInput
-	// A list of key value pairs that describe the resource.
+	// Resource tags.
 	Tags pulumi.StringMapInput
 }
 
@@ -198,6 +200,11 @@ func (o SecurityConnectorOutput) ToSecurityConnectorOutputWithContext(ctx contex
 	return o
 }
 
+// The Azure API version of the resource.
+func (o SecurityConnectorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityConnector) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The security connector environment data.
 func (o SecurityConnectorOutput) EnvironmentData() pulumi.AnyOutput {
 	return o.ApplyT(func(v *SecurityConnector) pulumi.AnyOutput { return v.EnvironmentData }).(pulumi.AnyOutput)
@@ -228,12 +235,12 @@ func (o SecurityConnectorOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityConnector) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Location where the resource is stored
+// The geo-location where the resource lives
 func (o SecurityConnectorOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityConnector) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o SecurityConnectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityConnector) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -248,12 +255,12 @@ func (o SecurityConnectorOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *SecurityConnector) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// A list of key value pairs that describe the resource.
+// Resource tags.
 func (o SecurityConnectorOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SecurityConnector) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o SecurityConnectorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityConnector) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

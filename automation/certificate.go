@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Definition of the certificate.
 //
-// Uses Azure REST API version 2022-08-08. In version 1.x of the Azure Native provider, it used API version 2019-06-01.
+// Uses Azure REST API version 2024-10-23. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
 //
-// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
+// Other available API versions: 2015-10-31, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Certificate struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Gets the creation time.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
 	// Gets or sets the description.
@@ -32,9 +34,11 @@ type Certificate struct {
 	LastModifiedTime pulumi.StringOutput `pulumi:"lastModifiedTime"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Gets the thumbprint of the certificate.
 	Thumbprint pulumi.StringOutput `pulumi:"thumbprint"`
-	// The type of the resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -118,7 +122,7 @@ type certificateArgs struct {
 	AutomationAccountName string `pulumi:"automationAccountName"`
 	// Gets or sets the base64 encoded value of the certificate.
 	Base64Value string `pulumi:"base64Value"`
-	// The parameters supplied to the create or update certificate operation.
+	// The name of certificate.
 	CertificateName *string `pulumi:"certificateName"`
 	// Gets or sets the description of the certificate.
 	Description *string `pulumi:"description"`
@@ -126,7 +130,7 @@ type certificateArgs struct {
 	IsExportable *bool `pulumi:"isExportable"`
 	// Gets or sets the name of the certificate.
 	Name string `pulumi:"name"`
-	// Name of an Azure Resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Gets or sets the thumbprint of the certificate.
 	Thumbprint *string `pulumi:"thumbprint"`
@@ -138,7 +142,7 @@ type CertificateArgs struct {
 	AutomationAccountName pulumi.StringInput
 	// Gets or sets the base64 encoded value of the certificate.
 	Base64Value pulumi.StringInput
-	// The parameters supplied to the create or update certificate operation.
+	// The name of certificate.
 	CertificateName pulumi.StringPtrInput
 	// Gets or sets the description of the certificate.
 	Description pulumi.StringPtrInput
@@ -146,7 +150,7 @@ type CertificateArgs struct {
 	IsExportable pulumi.BoolPtrInput
 	// Gets or sets the name of the certificate.
 	Name pulumi.StringInput
-	// Name of an Azure Resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Gets or sets the thumbprint of the certificate.
 	Thumbprint pulumi.StringPtrInput
@@ -189,6 +193,11 @@ func (o CertificateOutput) ToCertificateOutputWithContext(ctx context.Context) C
 	return o
 }
 
+// The Azure API version of the resource.
+func (o CertificateOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Gets the creation time.
 func (o CertificateOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.CreationTime }).(pulumi.StringOutput)
@@ -219,12 +228,17 @@ func (o CertificateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o CertificateOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Certificate) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Gets the thumbprint of the certificate.
 func (o CertificateOutput) Thumbprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Thumbprint }).(pulumi.StringOutput)
 }
 
-// The type of the resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o CertificateOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Certificate) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

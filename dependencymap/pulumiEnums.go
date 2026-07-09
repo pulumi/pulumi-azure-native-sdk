@@ -20,125 +20,117 @@ const (
 	ProcessNameFilterOperatorNotContains = ProcessNameFilterOperator("notContains")
 )
 
-// Source type of Discovery Source resource.
-type SourceType string
-
-const (
-	// OffAzure source type
-	SourceTypeOffAzure = SourceType("OffAzure")
-)
-
-func (SourceType) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceType)(nil)).Elem()
+func (ProcessNameFilterOperator) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProcessNameFilterOperator)(nil)).Elem()
 }
 
-func (e SourceType) ToSourceTypeOutput() SourceTypeOutput {
-	return pulumi.ToOutput(e).(SourceTypeOutput)
+func (e ProcessNameFilterOperator) ToProcessNameFilterOperatorOutput() ProcessNameFilterOperatorOutput {
+	return pulumi.ToOutput(e).(ProcessNameFilterOperatorOutput)
 }
 
-func (e SourceType) ToSourceTypeOutputWithContext(ctx context.Context) SourceTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(SourceTypeOutput)
+func (e ProcessNameFilterOperator) ToProcessNameFilterOperatorOutputWithContext(ctx context.Context) ProcessNameFilterOperatorOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ProcessNameFilterOperatorOutput)
 }
 
-func (e SourceType) ToSourceTypePtrOutput() SourceTypePtrOutput {
-	return e.ToSourceTypePtrOutputWithContext(context.Background())
+func (e ProcessNameFilterOperator) ToProcessNameFilterOperatorPtrOutput() ProcessNameFilterOperatorPtrOutput {
+	return e.ToProcessNameFilterOperatorPtrOutputWithContext(context.Background())
 }
 
-func (e SourceType) ToSourceTypePtrOutputWithContext(ctx context.Context) SourceTypePtrOutput {
-	return SourceType(e).ToSourceTypeOutputWithContext(ctx).ToSourceTypePtrOutputWithContext(ctx)
+func (e ProcessNameFilterOperator) ToProcessNameFilterOperatorPtrOutputWithContext(ctx context.Context) ProcessNameFilterOperatorPtrOutput {
+	return ProcessNameFilterOperator(e).ToProcessNameFilterOperatorOutputWithContext(ctx).ToProcessNameFilterOperatorPtrOutputWithContext(ctx)
 }
 
-func (e SourceType) ToStringOutput() pulumi.StringOutput {
+func (e ProcessNameFilterOperator) ToStringOutput() pulumi.StringOutput {
 	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e SourceType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+func (e ProcessNameFilterOperator) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
 	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
 }
 
-func (e SourceType) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (e ProcessNameFilterOperator) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
 }
 
-func (e SourceType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+func (e ProcessNameFilterOperator) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type SourceTypeOutput struct{ *pulumi.OutputState }
+type ProcessNameFilterOperatorOutput struct{ *pulumi.OutputState }
 
-func (SourceTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceType)(nil)).Elem()
+func (ProcessNameFilterOperatorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProcessNameFilterOperator)(nil)).Elem()
 }
 
-func (o SourceTypeOutput) ToSourceTypeOutput() SourceTypeOutput {
+func (o ProcessNameFilterOperatorOutput) ToProcessNameFilterOperatorOutput() ProcessNameFilterOperatorOutput {
 	return o
 }
 
-func (o SourceTypeOutput) ToSourceTypeOutputWithContext(ctx context.Context) SourceTypeOutput {
+func (o ProcessNameFilterOperatorOutput) ToProcessNameFilterOperatorOutputWithContext(ctx context.Context) ProcessNameFilterOperatorOutput {
 	return o
 }
 
-func (o SourceTypeOutput) ToSourceTypePtrOutput() SourceTypePtrOutput {
-	return o.ToSourceTypePtrOutputWithContext(context.Background())
+func (o ProcessNameFilterOperatorOutput) ToProcessNameFilterOperatorPtrOutput() ProcessNameFilterOperatorPtrOutput {
+	return o.ToProcessNameFilterOperatorPtrOutputWithContext(context.Background())
 }
 
-func (o SourceTypeOutput) ToSourceTypePtrOutputWithContext(ctx context.Context) SourceTypePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceType) *SourceType {
+func (o ProcessNameFilterOperatorOutput) ToProcessNameFilterOperatorPtrOutputWithContext(ctx context.Context) ProcessNameFilterOperatorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProcessNameFilterOperator) *ProcessNameFilterOperator {
 		return &v
-	}).(SourceTypePtrOutput)
+	}).(ProcessNameFilterOperatorPtrOutput)
 }
 
-func (o SourceTypeOutput) ToStringOutput() pulumi.StringOutput {
+func (o ProcessNameFilterOperatorOutput) ToStringOutput() pulumi.StringOutput {
 	return o.ToStringOutputWithContext(context.Background())
 }
 
-func (o SourceTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e SourceType) string {
+func (o ProcessNameFilterOperatorOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ProcessNameFilterOperator) string {
 		return string(e)
 	}).(pulumi.StringOutput)
 }
 
-func (o SourceTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o ProcessNameFilterOperatorOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o SourceTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e SourceType) *string {
+func (o ProcessNameFilterOperatorOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ProcessNameFilterOperator) *string {
 		v := string(e)
 		return &v
 	}).(pulumi.StringPtrOutput)
 }
 
-type SourceTypePtrOutput struct{ *pulumi.OutputState }
+type ProcessNameFilterOperatorPtrOutput struct{ *pulumi.OutputState }
 
-func (SourceTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SourceType)(nil)).Elem()
+func (ProcessNameFilterOperatorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProcessNameFilterOperator)(nil)).Elem()
 }
 
-func (o SourceTypePtrOutput) ToSourceTypePtrOutput() SourceTypePtrOutput {
+func (o ProcessNameFilterOperatorPtrOutput) ToProcessNameFilterOperatorPtrOutput() ProcessNameFilterOperatorPtrOutput {
 	return o
 }
 
-func (o SourceTypePtrOutput) ToSourceTypePtrOutputWithContext(ctx context.Context) SourceTypePtrOutput {
+func (o ProcessNameFilterOperatorPtrOutput) ToProcessNameFilterOperatorPtrOutputWithContext(ctx context.Context) ProcessNameFilterOperatorPtrOutput {
 	return o
 }
 
-func (o SourceTypePtrOutput) Elem() SourceTypeOutput {
-	return o.ApplyT(func(v *SourceType) SourceType {
+func (o ProcessNameFilterOperatorPtrOutput) Elem() ProcessNameFilterOperatorOutput {
+	return o.ApplyT(func(v *ProcessNameFilterOperator) ProcessNameFilterOperator {
 		if v != nil {
 			return *v
 		}
-		var ret SourceType
+		var ret ProcessNameFilterOperator
 		return ret
-	}).(SourceTypeOutput)
+	}).(ProcessNameFilterOperatorOutput)
 }
 
-func (o SourceTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+func (o ProcessNameFilterOperatorPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
 	return o.ToStringPtrOutputWithContext(context.Background())
 }
 
-func (o SourceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SourceType) *string {
+func (o ProcessNameFilterOperatorPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ProcessNameFilterOperator) *string {
 		if e == nil {
 			return nil
 		}
@@ -147,45 +139,54 @@ func (o SourceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 	}).(pulumi.StringPtrOutput)
 }
 
-// SourceTypeInput is an input type that accepts values of the SourceType enum
-// A concrete instance of `SourceTypeInput` can be one of the following:
+// ProcessNameFilterOperatorInput is an input type that accepts values of the ProcessNameFilterOperator enum
+// A concrete instance of `ProcessNameFilterOperatorInput` can be one of the following:
 //
-//	SourceTypeOffAzure
-type SourceTypeInput interface {
+//	ProcessNameFilterOperatorContains
+//	ProcessNameFilterOperatorNotContains
+type ProcessNameFilterOperatorInput interface {
 	pulumi.Input
 
-	ToSourceTypeOutput() SourceTypeOutput
-	ToSourceTypeOutputWithContext(context.Context) SourceTypeOutput
+	ToProcessNameFilterOperatorOutput() ProcessNameFilterOperatorOutput
+	ToProcessNameFilterOperatorOutputWithContext(context.Context) ProcessNameFilterOperatorOutput
 }
 
-var sourceTypePtrType = reflect.TypeOf((**SourceType)(nil)).Elem()
+var processNameFilterOperatorPtrType = reflect.TypeOf((**ProcessNameFilterOperator)(nil)).Elem()
 
-type SourceTypePtrInput interface {
+type ProcessNameFilterOperatorPtrInput interface {
 	pulumi.Input
 
-	ToSourceTypePtrOutput() SourceTypePtrOutput
-	ToSourceTypePtrOutputWithContext(context.Context) SourceTypePtrOutput
+	ToProcessNameFilterOperatorPtrOutput() ProcessNameFilterOperatorPtrOutput
+	ToProcessNameFilterOperatorPtrOutputWithContext(context.Context) ProcessNameFilterOperatorPtrOutput
 }
 
-type sourceTypePtr string
+type processNameFilterOperatorPtr string
 
-func SourceTypePtr(v string) SourceTypePtrInput {
-	return (*sourceTypePtr)(&v)
+func ProcessNameFilterOperatorPtr(v string) ProcessNameFilterOperatorPtrInput {
+	return (*processNameFilterOperatorPtr)(&v)
 }
 
-func (*sourceTypePtr) ElementType() reflect.Type {
-	return sourceTypePtrType
+func (*processNameFilterOperatorPtr) ElementType() reflect.Type {
+	return processNameFilterOperatorPtrType
 }
 
-func (in *sourceTypePtr) ToSourceTypePtrOutput() SourceTypePtrOutput {
-	return pulumi.ToOutput(in).(SourceTypePtrOutput)
+func (in *processNameFilterOperatorPtr) ToProcessNameFilterOperatorPtrOutput() ProcessNameFilterOperatorPtrOutput {
+	return pulumi.ToOutput(in).(ProcessNameFilterOperatorPtrOutput)
 }
 
-func (in *sourceTypePtr) ToSourceTypePtrOutputWithContext(ctx context.Context) SourceTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(SourceTypePtrOutput)
+func (in *processNameFilterOperatorPtr) ToProcessNameFilterOperatorPtrOutputWithContext(ctx context.Context) ProcessNameFilterOperatorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ProcessNameFilterOperatorPtrOutput)
 }
+
+// Source type of Discovery Source resource.
+type SourceType string
+
+const (
+	// OffAzure source type
+	SourceTypeOffAzure = SourceType("OffAzure")
+)
 
 func init() {
-	pulumi.RegisterOutputType(SourceTypeOutput{})
-	pulumi.RegisterOutputType(SourceTypePtrOutput{})
+	pulumi.RegisterOutputType(ProcessNameFilterOperatorOutput{})
+	pulumi.RegisterOutputType(ProcessNameFilterOperatorPtrOutput{})
 }

@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Definition of the EnterprisePolicy.
 //
-// Uses Azure REST API version 2020-10-30-preview. In version 1.x of the Azure Native provider, it used API version 2020-10-30-preview.
+// Uses Azure REST API version 2020-10-30-preview. In version 2.x of the Azure Native provider, it used API version 2020-10-30-preview.
 type EnterprisePolicy struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The encryption settings for a configuration store.
-	Encryption PropertiesResponseEncryptionPtrOutput `pulumi:"encryption"`
+	Encryption PropertiesEncryptionResponsePtrOutput `pulumi:"encryption"`
 	// The health status of the resource.
 	HealthStatus pulumi.StringPtrOutput `pulumi:"healthStatus"`
 	// The identity of the EnterprisePolicy.
@@ -29,12 +31,12 @@ type EnterprisePolicy struct {
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Settings concerning lockbox.
-	Lockbox PropertiesResponseLockboxPtrOutput `pulumi:"lockbox"`
+	Lockbox PropertiesLockboxResponsePtrOutput `pulumi:"lockbox"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Settings concerning network injection.
-	NetworkInjection PropertiesResponseNetworkInjectionPtrOutput `pulumi:"networkInjection"`
-	// Metadata pertaining to creation and last modification of the resource.
+	NetworkInjection PropertiesNetworkInjectionResponsePtrOutput `pulumi:"networkInjection"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The internally assigned unique identifier of the resource.
 	SystemId pulumi.StringOutput `pulumi:"systemId"`
@@ -98,7 +100,7 @@ func (EnterprisePolicyState) ElementType() reflect.Type {
 type enterprisePolicyArgs struct {
 	// The encryption settings for a configuration store.
 	Encryption *PropertiesEncryption `pulumi:"encryption"`
-	// Name of the EnterprisePolicy.
+	// The EnterprisePolicy name.
 	EnterprisePolicyName *string `pulumi:"enterprisePolicyName"`
 	// The health status of the resource.
 	HealthStatus *string `pulumi:"healthStatus"`
@@ -122,7 +124,7 @@ type enterprisePolicyArgs struct {
 type EnterprisePolicyArgs struct {
 	// The encryption settings for a configuration store.
 	Encryption PropertiesEncryptionPtrInput
-	// Name of the EnterprisePolicy.
+	// The EnterprisePolicy name.
 	EnterprisePolicyName pulumi.StringPtrInput
 	// The health status of the resource.
 	HealthStatus pulumi.StringPtrInput
@@ -179,9 +181,14 @@ func (o EnterprisePolicyOutput) ToEnterprisePolicyOutputWithContext(ctx context.
 	return o
 }
 
+// The Azure API version of the resource.
+func (o EnterprisePolicyOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *EnterprisePolicy) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The encryption settings for a configuration store.
-func (o EnterprisePolicyOutput) Encryption() PropertiesResponseEncryptionPtrOutput {
-	return o.ApplyT(func(v *EnterprisePolicy) PropertiesResponseEncryptionPtrOutput { return v.Encryption }).(PropertiesResponseEncryptionPtrOutput)
+func (o EnterprisePolicyOutput) Encryption() PropertiesEncryptionResponsePtrOutput {
+	return o.ApplyT(func(v *EnterprisePolicy) PropertiesEncryptionResponsePtrOutput { return v.Encryption }).(PropertiesEncryptionResponsePtrOutput)
 }
 
 // The health status of the resource.
@@ -205,8 +212,8 @@ func (o EnterprisePolicyOutput) Location() pulumi.StringOutput {
 }
 
 // Settings concerning lockbox.
-func (o EnterprisePolicyOutput) Lockbox() PropertiesResponseLockboxPtrOutput {
-	return o.ApplyT(func(v *EnterprisePolicy) PropertiesResponseLockboxPtrOutput { return v.Lockbox }).(PropertiesResponseLockboxPtrOutput)
+func (o EnterprisePolicyOutput) Lockbox() PropertiesLockboxResponsePtrOutput {
+	return o.ApplyT(func(v *EnterprisePolicy) PropertiesLockboxResponsePtrOutput { return v.Lockbox }).(PropertiesLockboxResponsePtrOutput)
 }
 
 // The name of the resource
@@ -215,11 +222,11 @@ func (o EnterprisePolicyOutput) Name() pulumi.StringOutput {
 }
 
 // Settings concerning network injection.
-func (o EnterprisePolicyOutput) NetworkInjection() PropertiesResponseNetworkInjectionPtrOutput {
-	return o.ApplyT(func(v *EnterprisePolicy) PropertiesResponseNetworkInjectionPtrOutput { return v.NetworkInjection }).(PropertiesResponseNetworkInjectionPtrOutput)
+func (o EnterprisePolicyOutput) NetworkInjection() PropertiesNetworkInjectionResponsePtrOutput {
+	return o.ApplyT(func(v *EnterprisePolicy) PropertiesNetworkInjectionResponsePtrOutput { return v.NetworkInjection }).(PropertiesNetworkInjectionResponsePtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o EnterprisePolicyOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *EnterprisePolicy) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
