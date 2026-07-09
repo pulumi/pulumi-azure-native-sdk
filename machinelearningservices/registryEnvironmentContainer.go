@@ -8,22 +8,24 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Azure Resource Manager resource envelope.
 //
-// Uses Azure REST API version 2023-04-01.
+// Uses Azure REST API version 2025-12-01. In version 2.x of the Azure Native provider, it used API version 2023-04-01.
 //
-// Other available API versions: 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-04-01-preview, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview.
+// Other available API versions: 2022-10-01-preview, 2022-12-01-preview, 2023-02-01-preview, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2023-10-01, 2024-01-01-preview, 2024-04-01, 2024-07-01-preview, 2024-10-01, 2024-10-01-preview, 2025-01-01-preview, 2025-04-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01, 2025-10-01-preview, 2026-01-15-preview, 2026-03-01, 2026-03-15-preview, 2026-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type RegistryEnvironmentContainer struct {
 	pulumi.CustomResourceState
 
-	// [Required] Additional attributes of the entity.
-	EnvironmentContainerProperties EnvironmentContainerResponseOutput `pulumi:"environmentContainerProperties"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
+	// [Required] Additional attributes of the entity.
+	Properties EnvironmentContainerPropertiesResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -37,8 +39,8 @@ func NewRegistryEnvironmentContainer(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.EnvironmentContainerProperties == nil {
-		return nil, errors.New("invalid value for required argument 'EnvironmentContainerProperties'")
+	if args.Properties == nil {
+		return nil, errors.New("invalid value for required argument 'Properties'")
 	}
 	if args.RegistryName == nil {
 		return nil, errors.New("invalid value for required argument 'RegistryName'")
@@ -46,7 +48,7 @@ func NewRegistryEnvironmentContainer(ctx *pulumi.Context,
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
-	args.EnvironmentContainerProperties = args.EnvironmentContainerProperties.ToEnvironmentContainerTypeOutput().ApplyT(func(v EnvironmentContainerType) EnvironmentContainerType { return *v.Defaults() }).(EnvironmentContainerTypeOutput)
+	args.Properties = args.Properties.ToEnvironmentContainerPropertiesOutput().ApplyT(func(v EnvironmentContainerProperties) EnvironmentContainerProperties { return *v.Defaults() }).(EnvironmentContainerPropertiesOutput)
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20221001preview:RegistryEnvironmentContainer"),
@@ -93,6 +95,39 @@ func NewRegistryEnvironmentContainer(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:machinelearningservices/v20250101preview:RegistryEnvironmentContainer"),
 		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250401:RegistryEnvironmentContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250401preview:RegistryEnvironmentContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250601:RegistryEnvironmentContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250701preview:RegistryEnvironmentContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20250901:RegistryEnvironmentContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20251001preview:RegistryEnvironmentContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20251201:RegistryEnvironmentContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20260115preview:RegistryEnvironmentContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20260301:RegistryEnvironmentContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20260315preview:RegistryEnvironmentContainer"),
+		},
+		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20260501:RegistryEnvironmentContainer"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -128,10 +163,10 @@ func (RegistryEnvironmentContainerState) ElementType() reflect.Type {
 }
 
 type registryEnvironmentContainerArgs struct {
-	// [Required] Additional attributes of the entity.
-	EnvironmentContainerProperties EnvironmentContainerType `pulumi:"environmentContainerProperties"`
-	// Container name.
+	// Container name. This is case-sensitive.
 	EnvironmentName *string `pulumi:"environmentName"`
+	// [Required] Additional attributes of the entity.
+	Properties EnvironmentContainerProperties `pulumi:"properties"`
 	// Name of Azure Machine Learning registry. This is case-insensitive
 	RegistryName string `pulumi:"registryName"`
 	// The name of the resource group. The name is case insensitive.
@@ -140,10 +175,10 @@ type registryEnvironmentContainerArgs struct {
 
 // The set of arguments for constructing a RegistryEnvironmentContainer resource.
 type RegistryEnvironmentContainerArgs struct {
-	// [Required] Additional attributes of the entity.
-	EnvironmentContainerProperties EnvironmentContainerTypeInput
-	// Container name.
+	// Container name. This is case-sensitive.
 	EnvironmentName pulumi.StringPtrInput
+	// [Required] Additional attributes of the entity.
+	Properties EnvironmentContainerPropertiesInput
 	// Name of Azure Machine Learning registry. This is case-insensitive
 	RegistryName pulumi.StringInput
 	// The name of the resource group. The name is case insensitive.
@@ -187,16 +222,21 @@ func (o RegistryEnvironmentContainerOutput) ToRegistryEnvironmentContainerOutput
 	return o
 }
 
-// [Required] Additional attributes of the entity.
-func (o RegistryEnvironmentContainerOutput) EnvironmentContainerProperties() EnvironmentContainerResponseOutput {
-	return o.ApplyT(func(v *RegistryEnvironmentContainer) EnvironmentContainerResponseOutput {
-		return v.EnvironmentContainerProperties
-	}).(EnvironmentContainerResponseOutput)
+// The Azure API version of the resource.
+func (o RegistryEnvironmentContainerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RegistryEnvironmentContainer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The name of the resource
 func (o RegistryEnvironmentContainerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegistryEnvironmentContainer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// [Required] Additional attributes of the entity.
+func (o RegistryEnvironmentContainerOutput) Properties() EnvironmentContainerPropertiesResponseOutput {
+	return o.ApplyT(func(v *RegistryEnvironmentContainer) EnvironmentContainerPropertiesResponseOutput {
+		return v.Properties
+	}).(EnvironmentContainerPropertiesResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

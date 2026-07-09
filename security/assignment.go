@@ -8,22 +8,24 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Security Assignment on a resource group over a given scope
 //
-// Uses Azure REST API version 2021-08-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-08-01-preview.
+// Uses Azure REST API version 2021-08-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-08-01-preview.
 type Assignment struct {
 	pulumi.CustomResourceState
 
 	// Additional data about the assignment
-	AdditionalData AssignmentPropertiesResponseAdditionalDataPtrOutput `pulumi:"additionalData"`
+	AdditionalData AssignmentPropertiesAdditionalDataResponsePtrOutput `pulumi:"additionalData"`
 	// Component item with key as applied to this standard assignment over the given scope
 	AssignedComponent AssignedComponentItemResponsePtrOutput `pulumi:"assignedComponent"`
 	// Standard item with key as applied to this standard assignment over the given scope
-	AssignedStandard AssignedStandardItemResponsePtrOutput `pulumi:"assignedStandard"`
+	AssignedStandard CommonAssignedStandardItemResponsePtrOutput `pulumi:"assignedStandard"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// description of the standardAssignment
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// display name of the standardAssignment
@@ -36,19 +38,19 @@ type Assignment struct {
 	ExpiresOn pulumi.StringPtrOutput `pulumi:"expiresOn"`
 	// Kind of the resource
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
-	// Location where the resource is stored
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
 	Metadata pulumi.AnyOutput `pulumi:"metadata"`
-	// Resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Scope to which the standardAssignment applies - can be a subscription path or a resource group under that subscription
 	Scope pulumi.StringPtrOutput `pulumi:"scope"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// A list of key value pairs that describe the resource.
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -106,7 +108,7 @@ type assignmentArgs struct {
 	// Component item with key as applied to this standard assignment over the given scope
 	AssignedComponent *AssignedComponentItem `pulumi:"assignedComponent"`
 	// Standard item with key as applied to this standard assignment over the given scope
-	AssignedStandard *AssignedStandardItem `pulumi:"assignedStandard"`
+	AssignedStandard *CommonAssignedStandardItem `pulumi:"assignedStandard"`
 	// The security assignment key - unique key for the standard assignment
 	AssignmentId *string `pulumi:"assignmentId"`
 	// description of the standardAssignment
@@ -119,15 +121,15 @@ type assignmentArgs struct {
 	ExpiresOn *string `pulumi:"expiresOn"`
 	// Kind of the resource
 	Kind *string `pulumi:"kind"`
-	// Location where the resource is stored
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// The assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
 	Metadata interface{} `pulumi:"metadata"`
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Scope to which the standardAssignment applies - can be a subscription path or a resource group under that subscription
 	Scope *string `pulumi:"scope"`
-	// A list of key value pairs that describe the resource.
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 }
 
@@ -138,7 +140,7 @@ type AssignmentArgs struct {
 	// Component item with key as applied to this standard assignment over the given scope
 	AssignedComponent AssignedComponentItemPtrInput
 	// Standard item with key as applied to this standard assignment over the given scope
-	AssignedStandard AssignedStandardItemPtrInput
+	AssignedStandard CommonAssignedStandardItemPtrInput
 	// The security assignment key - unique key for the standard assignment
 	AssignmentId pulumi.StringPtrInput
 	// description of the standardAssignment
@@ -151,15 +153,15 @@ type AssignmentArgs struct {
 	ExpiresOn pulumi.StringPtrInput
 	// Kind of the resource
 	Kind pulumi.StringPtrInput
-	// Location where the resource is stored
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// The assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
 	Metadata pulumi.Input
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Scope to which the standardAssignment applies - can be a subscription path or a resource group under that subscription
 	Scope pulumi.StringPtrInput
-	// A list of key value pairs that describe the resource.
+	// Resource tags.
 	Tags pulumi.StringMapInput
 }
 
@@ -201,8 +203,8 @@ func (o AssignmentOutput) ToAssignmentOutputWithContext(ctx context.Context) Ass
 }
 
 // Additional data about the assignment
-func (o AssignmentOutput) AdditionalData() AssignmentPropertiesResponseAdditionalDataPtrOutput {
-	return o.ApplyT(func(v *Assignment) AssignmentPropertiesResponseAdditionalDataPtrOutput { return v.AdditionalData }).(AssignmentPropertiesResponseAdditionalDataPtrOutput)
+func (o AssignmentOutput) AdditionalData() AssignmentPropertiesAdditionalDataResponsePtrOutput {
+	return o.ApplyT(func(v *Assignment) AssignmentPropertiesAdditionalDataResponsePtrOutput { return v.AdditionalData }).(AssignmentPropertiesAdditionalDataResponsePtrOutput)
 }
 
 // Component item with key as applied to this standard assignment over the given scope
@@ -211,8 +213,13 @@ func (o AssignmentOutput) AssignedComponent() AssignedComponentItemResponsePtrOu
 }
 
 // Standard item with key as applied to this standard assignment over the given scope
-func (o AssignmentOutput) AssignedStandard() AssignedStandardItemResponsePtrOutput {
-	return o.ApplyT(func(v *Assignment) AssignedStandardItemResponsePtrOutput { return v.AssignedStandard }).(AssignedStandardItemResponsePtrOutput)
+func (o AssignmentOutput) AssignedStandard() CommonAssignedStandardItemResponsePtrOutput {
+	return o.ApplyT(func(v *Assignment) CommonAssignedStandardItemResponsePtrOutput { return v.AssignedStandard }).(CommonAssignedStandardItemResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o AssignmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Assignment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // description of the standardAssignment
@@ -245,7 +252,7 @@ func (o AssignmentOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Assignment) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Location where the resource is stored
+// The geo-location where the resource lives
 func (o AssignmentOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Assignment) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -255,7 +262,7 @@ func (o AssignmentOutput) Metadata() pulumi.AnyOutput {
 	return o.ApplyT(func(v *Assignment) pulumi.AnyOutput { return v.Metadata }).(pulumi.AnyOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o AssignmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Assignment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -270,12 +277,12 @@ func (o AssignmentOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Assignment) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// A list of key value pairs that describe the resource.
+// Resource tags.
 func (o AssignmentOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Assignment) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o AssignmentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Assignment) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

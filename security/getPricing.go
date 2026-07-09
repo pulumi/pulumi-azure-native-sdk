@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the Defender plans pricing configurations of the selected scope (valid scopes are resource id or a subscription id). At the resource level, supported resource types are 'VirtualMachines, VMSS and ARC Machines'.
 //
 // Uses Azure REST API version 2024-01-01.
+//
+// Other available API versions: 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupPricing(ctx *pulumi.Context, args *LookupPricingArgs, opts ...pulumi.InvokeOption) (*LookupPricingResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupPricingResult
@@ -27,12 +29,14 @@ func LookupPricing(ctx *pulumi.Context, args *LookupPricingArgs, opts ...pulumi.
 type LookupPricingArgs struct {
 	// name of the pricing configuration
 	PricingName string `pulumi:"pricingName"`
-	// The scope id of the pricing. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or a specific resource (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}) - Supported resources are (VirtualMachines)
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ScopeId string `pulumi:"scopeId"`
 }
 
 // Microsoft Defender for Cloud is provided in two pricing tiers: free and standard. The standard tier offers advanced security capabilities, while the free tier offers basic security features.
 type LookupPricingResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Optional. True if the plan is deprecated. If there are replacing plans they will appear in `replacedBy` property
 	Deprecated bool `pulumi:"deprecated"`
 	// Optional. If `pricingTier` is `Standard` then this property holds the date of the last time the `pricingTier` was set to `Standard`, when available (e.g 2023-03-01T12:42:42.1921106Z).
@@ -43,13 +47,13 @@ type LookupPricingResult struct {
 	Extensions []ExtensionResponse `pulumi:"extensions"`
 	// The duration left for the subscriptions free trial period - in ISO 8601 format (e.g. P3Y6M4DT12H30M5S).
 	FreeTrialRemainingTime string `pulumi:"freeTrialRemainingTime"`
-	// Resource Id
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// "inherited" = "True" indicates that the current scope inherits its pricing configuration from its parent. The ID of the parent scope that provides the inherited configuration is displayed in the "inheritedFrom" field. On the other hand, "inherited" = "False" indicates that the current scope has its own pricing configuration explicitly set, and does not inherit from its parent. This field is read only and available only for resource-level pricing.
 	Inherited string `pulumi:"inherited"`
 	// The id of the scope inherited from. "Null" if not inherited. This field is only available for resource-level pricing.
 	InheritedFrom string `pulumi:"inheritedFrom"`
-	// Resource name
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Indicates whether the Defender plan is enabled on the selected scope. Microsoft Defender for Cloud is provided in two pricing tiers: free and standard. The standard tier offers advanced security capabilities, while the free tier offers basic security features.
 	PricingTier string `pulumi:"pricingTier"`
@@ -59,7 +63,9 @@ type LookupPricingResult struct {
 	ResourcesCoverageStatus string `pulumi:"resourcesCoverageStatus"`
 	// The sub-plan selected for a Standard pricing configuration, when more than one sub-plan is available. Each sub-plan enables a set of security features. When not specified, full plan is applied. For VirtualMachines plan, available sub plans are 'P1' & 'P2', where for resource level only 'P1' sub plan is supported.
 	SubPlan *string `pulumi:"subPlan"`
-	// Resource type
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -75,7 +81,7 @@ func LookupPricingOutput(ctx *pulumi.Context, args LookupPricingOutputArgs, opts
 type LookupPricingOutputArgs struct {
 	// name of the pricing configuration
 	PricingName pulumi.StringInput `pulumi:"pricingName"`
-	// The scope id of the pricing. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or a specific resource (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}) - Supported resources are (VirtualMachines)
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ScopeId pulumi.StringInput `pulumi:"scopeId"`
 }
 
@@ -96,6 +102,11 @@ func (o LookupPricingResultOutput) ToLookupPricingResultOutput() LookupPricingRe
 
 func (o LookupPricingResultOutput) ToLookupPricingResultOutputWithContext(ctx context.Context) LookupPricingResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupPricingResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPricingResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Optional. True if the plan is deprecated. If there are replacing plans they will appear in `replacedBy` property
@@ -123,7 +134,7 @@ func (o LookupPricingResultOutput) FreeTrialRemainingTime() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupPricingResult) string { return v.FreeTrialRemainingTime }).(pulumi.StringOutput)
 }
 
-// Resource Id
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupPricingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPricingResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -138,7 +149,7 @@ func (o LookupPricingResultOutput) InheritedFrom() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPricingResult) string { return v.InheritedFrom }).(pulumi.StringOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o LookupPricingResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPricingResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -163,7 +174,12 @@ func (o LookupPricingResultOutput) SubPlan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupPricingResult) *string { return v.SubPlan }).(pulumi.StringPtrOutput)
 }
 
-// Resource type
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupPricingResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupPricingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupPricingResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPricingResult) string { return v.Type }).(pulumi.StringOutput)
 }

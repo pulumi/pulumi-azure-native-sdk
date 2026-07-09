@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,27 +27,29 @@ func LookupFactory(ctx *pulumi.Context, args *LookupFactoryArgs, opts ...pulumi.
 type LookupFactoryArgs struct {
 	// The factory name.
 	FactoryName string `pulumi:"factoryName"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Factory resource type.
 type LookupFactoryResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Time the factory was created in ISO8601 format.
 	CreateTime string `pulumi:"createTime"`
-	// Etag identifies change in the resource.
+	// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 	ETag string `pulumi:"eTag"`
 	// Properties to enable Customer Managed Key for the factory.
 	Encryption *EncryptionConfigurationResponse `pulumi:"encryption"`
 	// List of parameters for factory.
 	GlobalParameters map[string]GlobalParameterSpecificationResponse `pulumi:"globalParameters"`
-	// The resource identifier.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Managed service identity of the factory.
 	Identity *FactoryIdentityResponse `pulumi:"identity"`
 	// The resource location.
 	Location *string `pulumi:"location"`
-	// The resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Factory provisioning state, example Succeeded.
 	ProvisioningState string `pulumi:"provisioningState"`
@@ -57,9 +59,11 @@ type LookupFactoryResult struct {
 	PurviewConfiguration *PurviewConfigurationResponse `pulumi:"purviewConfiguration"`
 	// Git repo information of the factory.
 	RepoConfiguration interface{} `pulumi:"repoConfiguration"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// The resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Version of the factory.
 	Version string `pulumi:"version"`
@@ -77,7 +81,7 @@ func LookupFactoryOutput(ctx *pulumi.Context, args LookupFactoryOutputArgs, opts
 type LookupFactoryOutputArgs struct {
 	// The factory name.
 	FactoryName pulumi.StringInput `pulumi:"factoryName"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -100,12 +104,17 @@ func (o LookupFactoryResultOutput) ToLookupFactoryResultOutputWithContext(ctx co
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupFactoryResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFactoryResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Time the factory was created in ISO8601 format.
 func (o LookupFactoryResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFactoryResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Etag identifies change in the resource.
+// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 func (o LookupFactoryResultOutput) ETag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFactoryResult) string { return v.ETag }).(pulumi.StringOutput)
 }
@@ -120,7 +129,7 @@ func (o LookupFactoryResultOutput) GlobalParameters() GlobalParameterSpecificati
 	return o.ApplyT(func(v LookupFactoryResult) map[string]GlobalParameterSpecificationResponse { return v.GlobalParameters }).(GlobalParameterSpecificationResponseMapOutput)
 }
 
-// The resource identifier.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupFactoryResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFactoryResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -135,7 +144,7 @@ func (o LookupFactoryResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupFactoryResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// The resource name.
+// The name of the resource
 func (o LookupFactoryResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFactoryResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -160,12 +169,17 @@ func (o LookupFactoryResultOutput) RepoConfiguration() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupFactoryResult) interface{} { return v.RepoConfiguration }).(pulumi.AnyOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupFactoryResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupFactoryResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // The resource tags.
 func (o LookupFactoryResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupFactoryResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupFactoryResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFactoryResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +35,8 @@ type LookupADCCatalogArgs struct {
 type LookupADCCatalogResult struct {
 	// Azure data catalog admin list.
 	Admins []PrincipalsResponse `pulumi:"admins"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Automatic unit adjustment enabled or not.
 	EnableAutomaticUnitAdjustment *bool `pulumi:"enableAutomaticUnitAdjustment"`
 	// Resource etag
@@ -97,6 +99,11 @@ func (o LookupADCCatalogResultOutput) ToLookupADCCatalogResultOutputWithContext(
 // Azure data catalog admin list.
 func (o LookupADCCatalogResultOutput) Admins() PrincipalsResponseArrayOutput {
 	return o.ApplyT(func(v LookupADCCatalogResult) []PrincipalsResponse { return v.Admins }).(PrincipalsResponseArrayOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupADCCatalogResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupADCCatalogResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Automatic unit adjustment enabled or not.

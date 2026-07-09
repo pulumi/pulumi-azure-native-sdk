@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A private endpoint connection
 //
-// Uses Azure REST API version 2020-10-30-preview. In version 1.x of the Azure Native provider, it used API version 2020-10-30-preview.
+// Uses Azure REST API version 2020-10-30-preview. In version 2.x of the Azure Native provider, it used API version 2020-10-30-preview.
 type PrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource of private end point.
@@ -26,7 +28,7 @@ type PrivateEndpointConnection struct {
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponseOutput `pulumi:"privateLinkServiceConnectionState"`
 	// The provisioning state of the private endpoint connection resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -87,7 +89,7 @@ func (PrivateEndpointConnectionState) ElementType() reflect.Type {
 }
 
 type privateEndpointConnectionArgs struct {
-	// EnterprisePolicy for the Microsoft Azure subscription.
+	// The EnterprisePolicy name.
 	EnterprisePolicyName string `pulumi:"enterprisePolicyName"`
 	// The name of the private endpoint connection.
 	PrivateEndpointConnectionName *string `pulumi:"privateEndpointConnectionName"`
@@ -99,7 +101,7 @@ type privateEndpointConnectionArgs struct {
 
 // The set of arguments for constructing a PrivateEndpointConnection resource.
 type PrivateEndpointConnectionArgs struct {
-	// EnterprisePolicy for the Microsoft Azure subscription.
+	// The EnterprisePolicy name.
 	EnterprisePolicyName pulumi.StringInput
 	// The name of the private endpoint connection.
 	PrivateEndpointConnectionName pulumi.StringPtrInput
@@ -146,6 +148,11 @@ func (o PrivateEndpointConnectionOutput) ToPrivateEndpointConnectionOutputWithCo
 	return o
 }
 
+// The Azure API version of the resource.
+func (o PrivateEndpointConnectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The name of the resource
 func (o PrivateEndpointConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateEndpointConnection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -168,7 +175,7 @@ func (o PrivateEndpointConnectionOutput) ProvisioningState() pulumi.StringOutput
 	return o.ApplyT(func(v *PrivateEndpointConnection) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o PrivateEndpointConnectionOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *PrivateEndpointConnection) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,7 +27,7 @@ func LookupSecurityConnectorApplication(ctx *pulumi.Context, args *LookupSecurit
 type LookupSecurityConnectorApplicationArgs struct {
 	// The security Application key - unique key for the standard application
 	ApplicationId string `pulumi:"applicationId"`
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The security connector name.
 	SecurityConnectorName string `pulumi:"securityConnectorName"`
@@ -35,17 +35,23 @@ type LookupSecurityConnectorApplicationArgs struct {
 
 // Security Application over a given scope
 type LookupSecurityConnectorApplicationResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// The application conditionSets - see examples
+	ConditionSets []interface{} `pulumi:"conditionSets"`
 	// description of the application
 	Description *string `pulumi:"description"`
 	// display name of the application
 	DisplayName *string `pulumi:"displayName"`
-	// Resource Id
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// Resource name
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The application source, what it affects, e.g. Assessments
 	SourceResourceType string `pulumi:"sourceResourceType"`
-	// Resource type
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -61,7 +67,7 @@ func LookupSecurityConnectorApplicationOutput(ctx *pulumi.Context, args LookupSe
 type LookupSecurityConnectorApplicationOutputArgs struct {
 	// The security Application key - unique key for the standard application
 	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The security connector name.
 	SecurityConnectorName pulumi.StringInput `pulumi:"securityConnectorName"`
@@ -86,6 +92,16 @@ func (o LookupSecurityConnectorApplicationResultOutput) ToLookupSecurityConnecto
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupSecurityConnectorApplicationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecurityConnectorApplicationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The application conditionSets - see examples
+func (o LookupSecurityConnectorApplicationResultOutput) ConditionSets() pulumi.ArrayOutput {
+	return o.ApplyT(func(v LookupSecurityConnectorApplicationResult) []interface{} { return v.ConditionSets }).(pulumi.ArrayOutput)
+}
+
 // description of the application
 func (o LookupSecurityConnectorApplicationResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorApplicationResult) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -96,12 +112,12 @@ func (o LookupSecurityConnectorApplicationResultOutput) DisplayName() pulumi.Str
 	return o.ApplyT(func(v LookupSecurityConnectorApplicationResult) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Resource Id
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupSecurityConnectorApplicationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorApplicationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o LookupSecurityConnectorApplicationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorApplicationResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -111,7 +127,12 @@ func (o LookupSecurityConnectorApplicationResultOutput) SourceResourceType() pul
 	return o.ApplyT(func(v LookupSecurityConnectorApplicationResult) string { return v.SourceResourceType }).(pulumi.StringOutput)
 }
 
-// Resource type
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupSecurityConnectorApplicationResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSecurityConnectorApplicationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSecurityConnectorApplicationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityConnectorApplicationResult) string { return v.Type }).(pulumi.StringOutput)
 }

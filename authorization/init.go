@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccessReviewHistoryDefinitionById{}
 	case "azure-native:authorization:AccessReviewScheduleDefinitionById":
 		r = &AccessReviewScheduleDefinitionById{}
+	case "azure-native:authorization:DenyAssignment":
+		r = &DenyAssignment{}
 	case "azure-native:authorization:ManagementLockAtResourceGroupLevel":
 		r = &ManagementLockAtResourceGroupLevel{}
 	case "azure-native:authorization:ManagementLockAtResourceLevel":

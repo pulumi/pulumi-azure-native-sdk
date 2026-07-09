@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Returns the allowed callout policies for the specified service.
 //
 // Uses Azure REST API version 2024-04-13.
+//
+// Other available API versions: 2025-02-14. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native kusto [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListClusterCalloutPolicies(ctx *pulumi.Context, args *ListClusterCalloutPoliciesArgs, opts ...pulumi.InvokeOption) (*ListClusterCalloutPoliciesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListClusterCalloutPoliciesResult

@@ -7,13 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets a deployment script with a given name.
 //
-// Uses Azure REST API version 2020-10-01.
+// Uses Azure REST API version 2023-08-01.
 func LookupAzurePowerShellScript(ctx *pulumi.Context, args *LookupAzurePowerShellScriptArgs, opts ...pulumi.InvokeOption) (*LookupAzurePowerShellScriptResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAzurePowerShellScriptResult
@@ -37,6 +37,8 @@ type LookupAzurePowerShellScriptResult struct {
 	Arguments *string `pulumi:"arguments"`
 	// Azure PowerShell module version to be used.
 	AzPowerShellVersion string `pulumi:"azPowerShellVersion"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The clean up preference when the script execution gets in a terminal state. Default setting is 'Always'.
 	CleanupPreference *string `pulumi:"cleanupPreference"`
 	// Container settings.
@@ -45,19 +47,19 @@ type LookupAzurePowerShellScriptResult struct {
 	EnvironmentVariables []EnvironmentVariableResponse `pulumi:"environmentVariables"`
 	// Gets or sets how the deployment script should be forced to execute even if the script resource has not changed. Can be current time stamp or a GUID.
 	ForceUpdateTag *string `pulumi:"forceUpdateTag"`
-	// String Id used to locate any resource on Azure.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Optional property. Managed identity to be used for this deployment script. Currently, only user-assigned MSI is supported.
 	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// Type of the script.
 	// Expected value is 'AzurePowerShell'.
 	Kind string `pulumi:"kind"`
-	// The location of the ACI and the storage account for the deployment script.
+	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
-	// Name of this resource.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// List of script outputs.
-	Outputs map[string]interface{} `pulumi:"outputs"`
+	Outputs interface{} `pulumi:"outputs"`
 	// Uri for the script. This is the entry point for the external script.
 	PrimaryScriptUri *string `pulumi:"primaryScriptUri"`
 	// State of the script execution. This only appears in the response.
@@ -72,13 +74,13 @@ type LookupAzurePowerShellScriptResult struct {
 	StorageAccountSettings *StorageAccountConfigurationResponse `pulumi:"storageAccountSettings"`
 	// Supporting files for the external script.
 	SupportingScriptUris []string `pulumi:"supportingScriptUris"`
-	// The system metadata related to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Maximum allowed script execution time specified in ISO 8601 format. Default value is P1D
 	Timeout *string `pulumi:"timeout"`
-	// Type of this resource.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -143,6 +145,11 @@ func (o LookupAzurePowerShellScriptResultOutput) AzPowerShellVersion() pulumi.St
 	return o.ApplyT(func(v LookupAzurePowerShellScriptResult) string { return v.AzPowerShellVersion }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupAzurePowerShellScriptResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAzurePowerShellScriptResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The clean up preference when the script execution gets in a terminal state. Default setting is 'Always'.
 func (o LookupAzurePowerShellScriptResultOutput) CleanupPreference() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAzurePowerShellScriptResult) *string { return v.CleanupPreference }).(pulumi.StringPtrOutput)
@@ -163,7 +170,7 @@ func (o LookupAzurePowerShellScriptResultOutput) ForceUpdateTag() pulumi.StringP
 	return o.ApplyT(func(v LookupAzurePowerShellScriptResult) *string { return v.ForceUpdateTag }).(pulumi.StringPtrOutput)
 }
 
-// String Id used to locate any resource on Azure.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupAzurePowerShellScriptResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzurePowerShellScriptResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -179,19 +186,19 @@ func (o LookupAzurePowerShellScriptResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzurePowerShellScriptResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// The location of the ACI and the storage account for the deployment script.
+// The geo-location where the resource lives
 func (o LookupAzurePowerShellScriptResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzurePowerShellScriptResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Name of this resource.
+// The name of the resource
 func (o LookupAzurePowerShellScriptResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzurePowerShellScriptResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // List of script outputs.
-func (o LookupAzurePowerShellScriptResultOutput) Outputs() pulumi.MapOutput {
-	return o.ApplyT(func(v LookupAzurePowerShellScriptResult) map[string]interface{} { return v.Outputs }).(pulumi.MapOutput)
+func (o LookupAzurePowerShellScriptResultOutput) Outputs() pulumi.AnyOutput {
+	return o.ApplyT(func(v LookupAzurePowerShellScriptResult) interface{} { return v.Outputs }).(pulumi.AnyOutput)
 }
 
 // Uri for the script. This is the entry point for the external script.
@@ -231,7 +238,7 @@ func (o LookupAzurePowerShellScriptResultOutput) SupportingScriptUris() pulumi.S
 	return o.ApplyT(func(v LookupAzurePowerShellScriptResult) []string { return v.SupportingScriptUris }).(pulumi.StringArrayOutput)
 }
 
-// The system metadata related to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupAzurePowerShellScriptResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupAzurePowerShellScriptResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -246,7 +253,7 @@ func (o LookupAzurePowerShellScriptResultOutput) Timeout() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v LookupAzurePowerShellScriptResult) *string { return v.Timeout }).(pulumi.StringPtrOutput)
 }
 
-// Type of this resource.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupAzurePowerShellScriptResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAzurePowerShellScriptResult) string { return v.Type }).(pulumi.StringOutput)
 }

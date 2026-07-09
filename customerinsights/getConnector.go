@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +35,8 @@ type LookupConnectorArgs struct {
 
 // The connector resource format.
 type LookupConnectorResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// ID of the connector.
 	ConnectorId int `pulumi:"connectorId"`
 	// Name of the connector.
@@ -100,6 +102,11 @@ func (o LookupConnectorResultOutput) ToLookupConnectorResultOutput() LookupConne
 
 func (o LookupConnectorResultOutput) ToLookupConnectorResultOutputWithContext(ctx context.Context) LookupConnectorResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupConnectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupConnectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // ID of the connector.

@@ -8,16 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Uses Azure REST API version 2023-06-01-preview.
+// Describes incident task properties
 //
-// Other available API versions: 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-09-01, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01.
+// Uses Azure REST API version 2024-09-01. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
+//
+// Other available API versions: 2023-03-01-preview, 2023-04-01-preview, 2023-05-01-preview, 2023-06-01-preview, 2023-07-01-preview, 2023-08-01-preview, 2023-09-01-preview, 2023-10-01-preview, 2023-12-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-10-01-preview, 2025-01-01-preview, 2025-03-01, 2025-04-01-preview, 2025-06-01, 2025-07-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type IncidentTask struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Information on the client (user or application) that made some action
 	CreatedBy ClientInfoResponsePtrOutput `pulumi:"createdBy"`
 	// The time the task was created
@@ -31,7 +35,8 @@ type IncidentTask struct {
 	// The last time the task was updated
 	LastModifiedTimeUtc pulumi.StringOutput `pulumi:"lastModifiedTimeUtc"`
 	// The name of the resource
-	Name   pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The status of the task
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
@@ -118,6 +123,18 @@ func NewIncidentTask(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250301:IncidentTask"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250401preview:IncidentTask"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250601:IncidentTask"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250701preview:IncidentTask"),
+		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20250901:IncidentTask"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -165,7 +182,8 @@ type incidentTaskArgs struct {
 	LastModifiedBy *ClientInfo `pulumi:"lastModifiedBy"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	Status            string `pulumi:"status"`
+	// The status of the task
+	Status string `pulumi:"status"`
 	// The title of the task
 	Title string `pulumi:"title"`
 	// The name of the workspace.
@@ -186,7 +204,8 @@ type IncidentTaskArgs struct {
 	LastModifiedBy ClientInfoPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	Status            pulumi.StringInput
+	// The status of the task
+	Status pulumi.StringInput
 	// The title of the task
 	Title pulumi.StringInput
 	// The name of the workspace.
@@ -230,6 +249,11 @@ func (o IncidentTaskOutput) ToIncidentTaskOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The Azure API version of the resource.
+func (o IncidentTaskOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *IncidentTask) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Information on the client (user or application) that made some action
 func (o IncidentTaskOutput) CreatedBy() ClientInfoResponsePtrOutput {
 	return o.ApplyT(func(v *IncidentTask) ClientInfoResponsePtrOutput { return v.CreatedBy }).(ClientInfoResponsePtrOutput)
@@ -265,6 +289,7 @@ func (o IncidentTaskOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *IncidentTask) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The status of the task
 func (o IncidentTaskOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *IncidentTask) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

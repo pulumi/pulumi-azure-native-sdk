@@ -8,20 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Concrete tracked resource types can be created by aliasing this type using a specific property type.
 //
-// Uses Azure REST API version 2023-05-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-10-01-preview.
+// Uses Azure REST API version 2025-01-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01-preview.
 //
-// Other available API versions: 2022-10-01-preview, 2023-11-01, 2024-05-01-preview, 2025-01-01, 2025-03-01-preview.
+// Other available API versions: 2023-05-01-preview, 2023-11-01, 2024-05-01-preview, 2025-03-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicenetworking [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type TrafficControllerInterface struct {
 	pulumi.CustomResourceState
 
 	// Associations References List
 	Associations ResourceIdResponseArrayOutput `pulumi:"associations"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Configuration Endpoints.
 	ConfigurationEndpoints pulumi.StringArrayOutput `pulumi:"configurationEndpoints"`
 	// Frontends References List
@@ -32,6 +34,10 @@ type TrafficControllerInterface struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The status of the last operation.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// Security Policies References List
+	SecurityPolicies ResourceIdResponseArrayOutput `pulumi:"securityPolicies"`
+	// Security Policy Configuration
+	SecurityPolicyConfigurations SecurityPolicyConfigurationsResponsePtrOutput `pulumi:"securityPolicyConfigurations"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
@@ -108,6 +114,8 @@ type trafficControllerInterfaceArgs struct {
 	Location *string `pulumi:"location"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
+	// Security Policy Configuration
+	SecurityPolicyConfigurations *SecurityPolicyConfigurations `pulumi:"securityPolicyConfigurations"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// traffic controller name for path
@@ -120,6 +128,8 @@ type TrafficControllerInterfaceArgs struct {
 	Location pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
+	// Security Policy Configuration
+	SecurityPolicyConfigurations SecurityPolicyConfigurationsPtrInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 	// traffic controller name for path
@@ -168,6 +178,11 @@ func (o TrafficControllerInterfaceOutput) Associations() ResourceIdResponseArray
 	return o.ApplyT(func(v *TrafficControllerInterface) ResourceIdResponseArrayOutput { return v.Associations }).(ResourceIdResponseArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o TrafficControllerInterfaceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *TrafficControllerInterface) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Configuration Endpoints.
 func (o TrafficControllerInterfaceOutput) ConfigurationEndpoints() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *TrafficControllerInterface) pulumi.StringArrayOutput { return v.ConfigurationEndpoints }).(pulumi.StringArrayOutput)
@@ -191,6 +206,18 @@ func (o TrafficControllerInterfaceOutput) Name() pulumi.StringOutput {
 // The status of the last operation.
 func (o TrafficControllerInterfaceOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrafficControllerInterface) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Security Policies References List
+func (o TrafficControllerInterfaceOutput) SecurityPolicies() ResourceIdResponseArrayOutput {
+	return o.ApplyT(func(v *TrafficControllerInterface) ResourceIdResponseArrayOutput { return v.SecurityPolicies }).(ResourceIdResponseArrayOutput)
+}
+
+// Security Policy Configuration
+func (o TrafficControllerInterfaceOutput) SecurityPolicyConfigurations() SecurityPolicyConfigurationsResponsePtrOutput {
+	return o.ApplyT(func(v *TrafficControllerInterface) SecurityPolicyConfigurationsResponsePtrOutput {
+		return v.SecurityPolicyConfigurations
+	}).(SecurityPolicyConfigurationsResponsePtrOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

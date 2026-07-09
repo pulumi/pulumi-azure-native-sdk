@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the specified role management policy assignment for a resource scope
 //
-// Uses Azure REST API version 2020-10-01.
+// Uses Azure REST API version 2024-09-01-preview.
 //
-// Other available API versions: 2020-10-01-preview, 2024-02-01-preview, 2024-09-01-preview.
+// Other available API versions: 2020-10-01, 2020-10-01-preview, 2024-02-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupRoleManagementPolicyAssignment(ctx *pulumi.Context, args *LookupRoleManagementPolicyAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupRoleManagementPolicyAssignmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoleManagementPolicyAssignmentResult
@@ -29,17 +29,19 @@ func LookupRoleManagementPolicyAssignment(ctx *pulumi.Context, args *LookupRoleM
 type LookupRoleManagementPolicyAssignmentArgs struct {
 	// The name of format {guid_guid} the role management policy assignment to get.
 	RoleManagementPolicyAssignmentName string `pulumi:"roleManagementPolicyAssignmentName"`
-	// The scope of the role management policy.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	Scope string `pulumi:"scope"`
 }
 
 // Role management policy
 type LookupRoleManagementPolicyAssignmentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The readonly computed rule applied to the policy.
 	EffectiveRules []interface{} `pulumi:"effectiveRules"`
-	// The role management policy Id.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// The role management policy name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Additional properties of scope, role definition and policy
 	PolicyAssignmentProperties PolicyAssignmentPropertiesResponse `pulumi:"policyAssignmentProperties"`
@@ -49,7 +51,9 @@ type LookupRoleManagementPolicyAssignmentResult struct {
 	RoleDefinitionId *string `pulumi:"roleDefinitionId"`
 	// The role management policy scope.
 	Scope *string `pulumi:"scope"`
-	// The role management policy type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -65,7 +69,7 @@ func LookupRoleManagementPolicyAssignmentOutput(ctx *pulumi.Context, args Lookup
 type LookupRoleManagementPolicyAssignmentOutputArgs struct {
 	// The name of format {guid_guid} the role management policy assignment to get.
 	RoleManagementPolicyAssignmentName pulumi.StringInput `pulumi:"roleManagementPolicyAssignmentName"`
-	// The scope of the role management policy.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
@@ -88,17 +92,22 @@ func (o LookupRoleManagementPolicyAssignmentResultOutput) ToLookupRoleManagement
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupRoleManagementPolicyAssignmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleManagementPolicyAssignmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The readonly computed rule applied to the policy.
 func (o LookupRoleManagementPolicyAssignmentResultOutput) EffectiveRules() pulumi.ArrayOutput {
 	return o.ApplyT(func(v LookupRoleManagementPolicyAssignmentResult) []interface{} { return v.EffectiveRules }).(pulumi.ArrayOutput)
 }
 
-// The role management policy Id.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupRoleManagementPolicyAssignmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleManagementPolicyAssignmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The role management policy name.
+// The name of the resource
 func (o LookupRoleManagementPolicyAssignmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleManagementPolicyAssignmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -125,7 +134,12 @@ func (o LookupRoleManagementPolicyAssignmentResultOutput) Scope() pulumi.StringP
 	return o.ApplyT(func(v LookupRoleManagementPolicyAssignmentResult) *string { return v.Scope }).(pulumi.StringPtrOutput)
 }
 
-// The role management policy type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupRoleManagementPolicyAssignmentResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupRoleManagementPolicyAssignmentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupRoleManagementPolicyAssignmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleManagementPolicyAssignmentResult) string { return v.Type }).(pulumi.StringOutput)
 }

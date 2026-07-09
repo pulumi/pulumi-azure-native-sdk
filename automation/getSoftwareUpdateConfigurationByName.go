@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a single software update configuration by name.
 //
-// Uses Azure REST API version 2019-06-01.
+// Uses Azure REST API version 2024-10-23.
 //
-// Other available API versions: 2017-05-15-preview, 2023-05-15-preview, 2024-10-23.
+// Other available API versions: 2017-05-15-preview, 2019-06-01, 2023-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSoftwareUpdateConfigurationByName(ctx *pulumi.Context, args *LookupSoftwareUpdateConfigurationByNameArgs, opts ...pulumi.InvokeOption) (*LookupSoftwareUpdateConfigurationByNameResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSoftwareUpdateConfigurationByNameResult
@@ -23,13 +23,13 @@ func LookupSoftwareUpdateConfigurationByName(ctx *pulumi.Context, args *LookupSo
 	if err != nil {
 		return nil, err
 	}
-	return rv.Defaults(), nil
+	return &rv, nil
 }
 
 type LookupSoftwareUpdateConfigurationByNameArgs struct {
 	// The name of the automation account.
 	AutomationAccountName string `pulumi:"automationAccountName"`
-	// Name of an Azure Resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the software update configuration to be created.
 	SoftwareUpdateConfigurationName string `pulumi:"softwareUpdateConfigurationName"`
@@ -37,42 +37,36 @@ type LookupSoftwareUpdateConfigurationByNameArgs struct {
 
 // Software update configuration properties.
 type LookupSoftwareUpdateConfigurationByNameResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// CreatedBy property, which only appears in the response.
 	CreatedBy string `pulumi:"createdBy"`
 	// Creation time of the resource, which only appears in the response.
 	CreationTime string `pulumi:"creationTime"`
 	// Details of provisioning error
-	Error *ErrorResponseResponse `pulumi:"error"`
-	// Resource Id.
+	Error *AutomationErrorResponseResponse `pulumi:"error"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// LastModifiedBy property, which only appears in the response.
 	LastModifiedBy string `pulumi:"lastModifiedBy"`
 	// Last time resource was modified, which only appears in the response.
 	LastModifiedTime string `pulumi:"lastModifiedTime"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Provisioning state for the software update configuration, which only appears in the response.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Schedule information for the Software update configuration
 	ScheduleInfo SUCSchedulePropertiesResponse `pulumi:"scheduleInfo"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Tasks information for the Software update configuration.
 	Tasks *SoftwareUpdateConfigurationTasksResponse `pulumi:"tasks"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// update specific properties for the Software update configuration
 	UpdateConfiguration UpdateConfigurationResponse `pulumi:"updateConfiguration"`
 }
 
-// Defaults sets the appropriate defaults for LookupSoftwareUpdateConfigurationByNameResult
-func (val *LookupSoftwareUpdateConfigurationByNameResult) Defaults() *LookupSoftwareUpdateConfigurationByNameResult {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	tmp.ScheduleInfo = *tmp.ScheduleInfo.Defaults()
-
-	return &tmp
-}
 func LookupSoftwareUpdateConfigurationByNameOutput(ctx *pulumi.Context, args LookupSoftwareUpdateConfigurationByNameOutputArgs, opts ...pulumi.InvokeOption) LookupSoftwareUpdateConfigurationByNameResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSoftwareUpdateConfigurationByNameResultOutput, error) {
@@ -85,7 +79,7 @@ func LookupSoftwareUpdateConfigurationByNameOutput(ctx *pulumi.Context, args Loo
 type LookupSoftwareUpdateConfigurationByNameOutputArgs struct {
 	// The name of the automation account.
 	AutomationAccountName pulumi.StringInput `pulumi:"automationAccountName"`
-	// Name of an Azure Resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the software update configuration to be created.
 	SoftwareUpdateConfigurationName pulumi.StringInput `pulumi:"softwareUpdateConfigurationName"`
@@ -110,6 +104,11 @@ func (o LookupSoftwareUpdateConfigurationByNameResultOutput) ToLookupSoftwareUpd
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupSoftwareUpdateConfigurationByNameResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSoftwareUpdateConfigurationByNameResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // CreatedBy property, which only appears in the response.
 func (o LookupSoftwareUpdateConfigurationByNameResultOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSoftwareUpdateConfigurationByNameResult) string { return v.CreatedBy }).(pulumi.StringOutput)
@@ -121,11 +120,11 @@ func (o LookupSoftwareUpdateConfigurationByNameResultOutput) CreationTime() pulu
 }
 
 // Details of provisioning error
-func (o LookupSoftwareUpdateConfigurationByNameResultOutput) Error() ErrorResponseResponsePtrOutput {
-	return o.ApplyT(func(v LookupSoftwareUpdateConfigurationByNameResult) *ErrorResponseResponse { return v.Error }).(ErrorResponseResponsePtrOutput)
+func (o LookupSoftwareUpdateConfigurationByNameResultOutput) Error() AutomationErrorResponseResponsePtrOutput {
+	return o.ApplyT(func(v LookupSoftwareUpdateConfigurationByNameResult) *AutomationErrorResponseResponse { return v.Error }).(AutomationErrorResponseResponsePtrOutput)
 }
 
-// Resource Id.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupSoftwareUpdateConfigurationByNameResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSoftwareUpdateConfigurationByNameResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -140,7 +139,7 @@ func (o LookupSoftwareUpdateConfigurationByNameResultOutput) LastModifiedTime() 
 	return o.ApplyT(func(v LookupSoftwareUpdateConfigurationByNameResult) string { return v.LastModifiedTime }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupSoftwareUpdateConfigurationByNameResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSoftwareUpdateConfigurationByNameResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -157,6 +156,11 @@ func (o LookupSoftwareUpdateConfigurationByNameResultOutput) ScheduleInfo() SUCS
 	}).(SUCSchedulePropertiesResponseOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupSoftwareUpdateConfigurationByNameResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSoftwareUpdateConfigurationByNameResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Tasks information for the Software update configuration.
 func (o LookupSoftwareUpdateConfigurationByNameResultOutput) Tasks() SoftwareUpdateConfigurationTasksResponsePtrOutput {
 	return o.ApplyT(func(v LookupSoftwareUpdateConfigurationByNameResult) *SoftwareUpdateConfigurationTasksResponse {
@@ -164,7 +168,7 @@ func (o LookupSoftwareUpdateConfigurationByNameResultOutput) Tasks() SoftwareUpd
 	}).(SoftwareUpdateConfigurationTasksResponsePtrOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSoftwareUpdateConfigurationByNameResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSoftwareUpdateConfigurationByNameResult) string { return v.Type }).(pulumi.StringOutput)
 }

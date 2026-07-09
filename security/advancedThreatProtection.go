@@ -8,21 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Advanced Threat Protection resource.
 //
-// Uses Azure REST API version 2019-01-01. In version 1.x of the Azure Native provider, it used API version 2019-01-01.
+// Uses Azure REST API version 2019-01-01. In version 2.x of the Azure Native provider, it used API version 2019-01-01.
+//
+// Other available API versions: 2017-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AdvancedThreatProtection struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Indicates whether Advanced Threat Protection is enabled.
 	IsEnabled pulumi.BoolPtrOutput `pulumi:"isEnabled"`
-	// Resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Resource type
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -80,7 +86,7 @@ func (AdvancedThreatProtectionState) ElementType() reflect.Type {
 type advancedThreatProtectionArgs struct {
 	// Indicates whether Advanced Threat Protection is enabled.
 	IsEnabled *bool `pulumi:"isEnabled"`
-	// The identifier of the resource.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceId string `pulumi:"resourceId"`
 	// Advanced Threat Protection setting name.
 	SettingName *string `pulumi:"settingName"`
@@ -90,7 +96,7 @@ type advancedThreatProtectionArgs struct {
 type AdvancedThreatProtectionArgs struct {
 	// Indicates whether Advanced Threat Protection is enabled.
 	IsEnabled pulumi.BoolPtrInput
-	// The identifier of the resource.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceId pulumi.StringInput
 	// Advanced Threat Protection setting name.
 	SettingName pulumi.StringPtrInput
@@ -133,17 +139,27 @@ func (o AdvancedThreatProtectionOutput) ToAdvancedThreatProtectionOutputWithCont
 	return o
 }
 
+// The Azure API version of the resource.
+func (o AdvancedThreatProtectionOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *AdvancedThreatProtection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Indicates whether Advanced Threat Protection is enabled.
 func (o AdvancedThreatProtectionOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AdvancedThreatProtection) pulumi.BoolPtrOutput { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o AdvancedThreatProtectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AdvancedThreatProtection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Resource type
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o AdvancedThreatProtectionOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *AdvancedThreatProtection) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o AdvancedThreatProtectionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *AdvancedThreatProtection) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

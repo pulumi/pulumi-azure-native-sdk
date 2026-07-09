@@ -8,25 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A SQL virtual machine group.
 //
-// Uses Azure REST API version 2022-02-01. In version 1.x of the Azure Native provider, it used API version 2017-03-01-preview.
+// Uses Azure REST API version 2023-10-01. In version 2.x of the Azure Native provider, it used API version 2022-02-01.
 //
-// Other available API versions: 2023-01-01-preview, 2023-10-01.
+// Other available API versions: 2022-02-01, 2022-07-01-preview, 2022-08-01-preview, 2023-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native sqlvirtualmachine [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SqlVirtualMachineGroup struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Cluster type.
 	ClusterConfiguration pulumi.StringOutput `pulumi:"clusterConfiguration"`
 	// Type of cluster manager: Windows Server Failover Cluster (WSFC), implied by the scale type of the group and the OS type.
 	ClusterManagerType pulumi.StringOutput `pulumi:"clusterManagerType"`
-	// Resource location.
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Provisioning state to track the async operation status.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
@@ -36,11 +38,11 @@ type SqlVirtualMachineGroup struct {
 	SqlImageOffer pulumi.StringPtrOutput `pulumi:"sqlImageOffer"`
 	// SQL image sku.
 	SqlImageSku pulumi.StringPtrOutput `pulumi:"sqlImageSku"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Cluster Active Directory domain profile.
 	WsfcDomainProfile WsfcDomainProfileResponsePtrOutput `pulumi:"wsfcDomainProfile"`
@@ -116,9 +118,9 @@ func (SqlVirtualMachineGroupState) ElementType() reflect.Type {
 }
 
 type sqlVirtualMachineGroupArgs struct {
-	// Resource location.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// SQL image offer. Examples may include SQL2016-WS2016, SQL2017-WS2016.
 	SqlImageOffer *string `pulumi:"sqlImageOffer"`
@@ -134,9 +136,9 @@ type sqlVirtualMachineGroupArgs struct {
 
 // The set of arguments for constructing a SqlVirtualMachineGroup resource.
 type SqlVirtualMachineGroupArgs struct {
-	// Resource location.
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// SQL image offer. Examples may include SQL2016-WS2016, SQL2017-WS2016.
 	SqlImageOffer pulumi.StringPtrInput
@@ -187,6 +189,11 @@ func (o SqlVirtualMachineGroupOutput) ToSqlVirtualMachineGroupOutputWithContext(
 	return o
 }
 
+// The Azure API version of the resource.
+func (o SqlVirtualMachineGroupOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SqlVirtualMachineGroup) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Cluster type.
 func (o SqlVirtualMachineGroupOutput) ClusterConfiguration() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlVirtualMachineGroup) pulumi.StringOutput { return v.ClusterConfiguration }).(pulumi.StringOutput)
@@ -197,12 +204,12 @@ func (o SqlVirtualMachineGroupOutput) ClusterManagerType() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlVirtualMachineGroup) pulumi.StringOutput { return v.ClusterManagerType }).(pulumi.StringOutput)
 }
 
-// Resource location.
+// The geo-location where the resource lives
 func (o SqlVirtualMachineGroupOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlVirtualMachineGroup) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o SqlVirtualMachineGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlVirtualMachineGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -227,7 +234,7 @@ func (o SqlVirtualMachineGroupOutput) SqlImageSku() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlVirtualMachineGroup) pulumi.StringPtrOutput { return v.SqlImageSku }).(pulumi.StringPtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o SqlVirtualMachineGroupOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *SqlVirtualMachineGroup) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -237,7 +244,7 @@ func (o SqlVirtualMachineGroupOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SqlVirtualMachineGroup) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o SqlVirtualMachineGroupOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlVirtualMachineGroup) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

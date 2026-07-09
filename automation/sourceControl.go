@@ -8,20 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Definition of the source control.
 //
-// Uses Azure REST API version 2022-08-08. In version 1.x of the Azure Native provider, it used API version 2019-06-01.
+// Uses Azure REST API version 2024-10-23. In version 2.x of the Azure Native provider, it used API version 2022-08-08.
 //
-// Other available API versions: 2023-05-15-preview, 2023-11-01, 2024-10-23.
+// Other available API versions: 2017-05-15-preview, 2019-06-01, 2020-01-13-preview, 2022-08-08, 2023-05-15-preview, 2023-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SourceControl struct {
 	pulumi.CustomResourceState
 
 	// The auto sync of the source control. Default is false.
 	AutoSync pulumi.BoolPtrOutput `pulumi:"autoSync"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The repo branch of the source control. Include branch as empty string for VsoTfvc.
 	Branch pulumi.StringPtrOutput `pulumi:"branch"`
 	// The creation time.
@@ -40,7 +42,9 @@ type SourceControl struct {
 	RepoUrl pulumi.StringPtrOutput `pulumi:"repoUrl"`
 	// The source type. Must be one of VsoGit, VsoTfvc, GitHub.
 	SourceType pulumi.StringPtrOutput `pulumi:"sourceType"`
-	// The type of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -128,11 +132,11 @@ type sourceControlArgs struct {
 	PublishRunbook *bool `pulumi:"publishRunbook"`
 	// The repo url of the source control.
 	RepoUrl *string `pulumi:"repoUrl"`
-	// Name of an Azure Resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The authorization token for the repo of the source control.
 	SecurityToken *SourceControlSecurityTokenProperties `pulumi:"securityToken"`
-	// The source control name.
+	// The name of source control.
 	SourceControlName *string `pulumi:"sourceControlName"`
 	// The source type. Must be one of VsoGit, VsoTfvc, GitHub, case sensitive.
 	SourceType *string `pulumi:"sourceType"`
@@ -154,11 +158,11 @@ type SourceControlArgs struct {
 	PublishRunbook pulumi.BoolPtrInput
 	// The repo url of the source control.
 	RepoUrl pulumi.StringPtrInput
-	// Name of an Azure Resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The authorization token for the repo of the source control.
 	SecurityToken SourceControlSecurityTokenPropertiesPtrInput
-	// The source control name.
+	// The name of source control.
 	SourceControlName pulumi.StringPtrInput
 	// The source type. Must be one of VsoGit, VsoTfvc, GitHub, case sensitive.
 	SourceType pulumi.StringPtrInput
@@ -206,6 +210,11 @@ func (o SourceControlOutput) AutoSync() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SourceControl) pulumi.BoolPtrOutput { return v.AutoSync }).(pulumi.BoolPtrOutput)
 }
 
+// The Azure API version of the resource.
+func (o SourceControlOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SourceControl) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The repo branch of the source control. Include branch as empty string for VsoTfvc.
 func (o SourceControlOutput) Branch() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SourceControl) pulumi.StringPtrOutput { return v.Branch }).(pulumi.StringPtrOutput)
@@ -251,7 +260,12 @@ func (o SourceControlOutput) SourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SourceControl) pulumi.StringPtrOutput { return v.SourceType }).(pulumi.StringPtrOutput)
 }
 
-// The type of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o SourceControlOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *SourceControl) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o SourceControlOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *SourceControl) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

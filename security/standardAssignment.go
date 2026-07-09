@@ -8,20 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Security Assignment on a resource group over a given scope
 //
-// Uses Azure REST API version 2024-08-01.
+// Uses Azure REST API version 2024-08-01. In version 2.x of the Azure Native provider, it used API version 2024-08-01.
 type StandardAssignment struct {
 	pulumi.CustomResourceState
 
 	// Standard item with key as applied to this standard assignment over the given scope
-	AssignedStandard AssignedStandardItemResponsePtrOutput `pulumi:"assignedStandard"`
+	AssignedStandard CommonAssignedStandardItemResponsePtrOutput `pulumi:"assignedStandard"`
 	// Additional data about assignment that has Attest effect
-	AttestationData StandardAssignmentPropertiesResponseAttestationDataPtrOutput `pulumi:"attestationData"`
+	AttestationData StandardAssignmentPropertiesAttestationDataResponsePtrOutput `pulumi:"attestationData"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Description of the standardAssignment
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Display name of the standardAssignment
@@ -31,14 +33,16 @@ type StandardAssignment struct {
 	// Excluded scopes, filter out the descendants of the scope (on management scopes)
 	ExcludedScopes pulumi.StringArrayOutput `pulumi:"excludedScopes"`
 	// Additional data about assignment that has Exempt effect
-	ExemptionData StandardAssignmentPropertiesResponseExemptionDataPtrOutput `pulumi:"exemptionData"`
+	ExemptionData StandardAssignmentPropertiesExemptionDataResponsePtrOutput `pulumi:"exemptionData"`
 	// Expiration date of this assignment as a full ISO date
 	ExpiresOn pulumi.StringPtrOutput `pulumi:"expiresOn"`
 	// The standard assignment metadata.
 	Metadata StandardAssignmentMetadataResponsePtrOutput `pulumi:"metadata"`
-	// Resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Resource type
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -92,7 +96,7 @@ func (StandardAssignmentState) ElementType() reflect.Type {
 
 type standardAssignmentArgs struct {
 	// Standard item with key as applied to this standard assignment over the given scope
-	AssignedStandard *AssignedStandardItem `pulumi:"assignedStandard"`
+	AssignedStandard *CommonAssignedStandardItem `pulumi:"assignedStandard"`
 	// Additional data about assignment that has Attest effect
 	AttestationData *StandardAssignmentPropertiesAttestationData `pulumi:"attestationData"`
 	// Description of the standardAssignment
@@ -107,7 +111,7 @@ type standardAssignmentArgs struct {
 	ExemptionData *StandardAssignmentPropertiesExemptionData `pulumi:"exemptionData"`
 	// Expiration date of this assignment as a full ISO date
 	ExpiresOn *string `pulumi:"expiresOn"`
-	// The identifier of the resource.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceId string `pulumi:"resourceId"`
 	// The standard assignments assignment key - unique key for the standard assignment
 	StandardAssignmentName *string `pulumi:"standardAssignmentName"`
@@ -116,7 +120,7 @@ type standardAssignmentArgs struct {
 // The set of arguments for constructing a StandardAssignment resource.
 type StandardAssignmentArgs struct {
 	// Standard item with key as applied to this standard assignment over the given scope
-	AssignedStandard AssignedStandardItemPtrInput
+	AssignedStandard CommonAssignedStandardItemPtrInput
 	// Additional data about assignment that has Attest effect
 	AttestationData StandardAssignmentPropertiesAttestationDataPtrInput
 	// Description of the standardAssignment
@@ -131,7 +135,7 @@ type StandardAssignmentArgs struct {
 	ExemptionData StandardAssignmentPropertiesExemptionDataPtrInput
 	// Expiration date of this assignment as a full ISO date
 	ExpiresOn pulumi.StringPtrInput
-	// The identifier of the resource.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceId pulumi.StringInput
 	// The standard assignments assignment key - unique key for the standard assignment
 	StandardAssignmentName pulumi.StringPtrInput
@@ -175,15 +179,20 @@ func (o StandardAssignmentOutput) ToStandardAssignmentOutputWithContext(ctx cont
 }
 
 // Standard item with key as applied to this standard assignment over the given scope
-func (o StandardAssignmentOutput) AssignedStandard() AssignedStandardItemResponsePtrOutput {
-	return o.ApplyT(func(v *StandardAssignment) AssignedStandardItemResponsePtrOutput { return v.AssignedStandard }).(AssignedStandardItemResponsePtrOutput)
+func (o StandardAssignmentOutput) AssignedStandard() CommonAssignedStandardItemResponsePtrOutput {
+	return o.ApplyT(func(v *StandardAssignment) CommonAssignedStandardItemResponsePtrOutput { return v.AssignedStandard }).(CommonAssignedStandardItemResponsePtrOutput)
 }
 
 // Additional data about assignment that has Attest effect
-func (o StandardAssignmentOutput) AttestationData() StandardAssignmentPropertiesResponseAttestationDataPtrOutput {
-	return o.ApplyT(func(v *StandardAssignment) StandardAssignmentPropertiesResponseAttestationDataPtrOutput {
+func (o StandardAssignmentOutput) AttestationData() StandardAssignmentPropertiesAttestationDataResponsePtrOutput {
+	return o.ApplyT(func(v *StandardAssignment) StandardAssignmentPropertiesAttestationDataResponsePtrOutput {
 		return v.AttestationData
-	}).(StandardAssignmentPropertiesResponseAttestationDataPtrOutput)
+	}).(StandardAssignmentPropertiesAttestationDataResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o StandardAssignmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *StandardAssignment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Description of the standardAssignment
@@ -207,10 +216,10 @@ func (o StandardAssignmentOutput) ExcludedScopes() pulumi.StringArrayOutput {
 }
 
 // Additional data about assignment that has Exempt effect
-func (o StandardAssignmentOutput) ExemptionData() StandardAssignmentPropertiesResponseExemptionDataPtrOutput {
-	return o.ApplyT(func(v *StandardAssignment) StandardAssignmentPropertiesResponseExemptionDataPtrOutput {
+func (o StandardAssignmentOutput) ExemptionData() StandardAssignmentPropertiesExemptionDataResponsePtrOutput {
+	return o.ApplyT(func(v *StandardAssignment) StandardAssignmentPropertiesExemptionDataResponsePtrOutput {
 		return v.ExemptionData
-	}).(StandardAssignmentPropertiesResponseExemptionDataPtrOutput)
+	}).(StandardAssignmentPropertiesExemptionDataResponsePtrOutput)
 }
 
 // Expiration date of this assignment as a full ISO date
@@ -223,12 +232,17 @@ func (o StandardAssignmentOutput) Metadata() StandardAssignmentMetadataResponseP
 	return o.ApplyT(func(v *StandardAssignment) StandardAssignmentMetadataResponsePtrOutput { return v.Metadata }).(StandardAssignmentMetadataResponsePtrOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o StandardAssignmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *StandardAssignment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Resource type
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o StandardAssignmentOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *StandardAssignment) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o StandardAssignmentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *StandardAssignment) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

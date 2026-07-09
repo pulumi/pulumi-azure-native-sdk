@@ -4,7 +4,7 @@
 package config
 
 import (
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
@@ -36,12 +36,17 @@ func GetClientSecret(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azure-native:clientSecret")
 }
 
+// Determines whether or not instance discovery is performed when attempting to authenticate. Setting this to true will completely disable both instance discovery and authority validation. This functionality is intended for use in scenarios where the metadata endpoint cannot be reached, such as in private clouds or Azure Stack.
+func GetDisableInstanceDiscovery(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "azure-native:disableInstanceDiscovery")
+}
+
 // This will disable the Pulumi Partner ID which is used if a custom `partnerId` isn't specified.
 func GetDisablePulumiPartnerId(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "azure-native:disablePulumiPartnerId")
 }
 
-// The Cloud Environment which should be used. Possible values are public, usgovernment, and china. Defaults to public.
+// The Cloud Environment which should be used. Possible values are public, usgovernment, and china. Defaults to public. Not used when metadataHost is specified or when ARM_METADATA_HOSTNAME is set.
 func GetEnvironment(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azure-native:environment")
 }
@@ -94,6 +99,11 @@ func GetSubscriptionId(ctx *pulumi.Context) string {
 // The Tenant ID which should be used.
 func GetTenantId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azure-native:tenantId")
+}
+
+// Use the default credential chain of the Azure SDK (see https://learn.microsoft.com/en-us/azure/developer/go/sdk/authentication/credential-chains#defaultazurecredential-overview).
+func GetUseDefaultAzureCredential(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "azure-native:useDefaultAzureCredential")
 }
 
 // Allow Managed Service Identity be used for Authentication.

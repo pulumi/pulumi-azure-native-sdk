@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The lock information.
 //
-// Uses Azure REST API version 2020-05-01. In version 1.x of the Azure Native provider, it used API version 2017-04-01.
+// Uses Azure REST API version 2020-05-01. In version 2.x of the Azure Native provider, it used API version 2020-05-01.
 type ManagementLockAtResourceLevel struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The level of the lock. Possible values are: NotSpecified, CanNotDelete, ReadOnly. CanNotDelete means authorized users are able to read and modify the resources, but not delete. ReadOnly means authorized users can only read from a resource, but they can't modify or delete it.
 	Level pulumi.StringOutput `pulumi:"level"`
 	// The name of the lock.
@@ -186,6 +188,11 @@ func (o ManagementLockAtResourceLevelOutput) ToManagementLockAtResourceLevelOutp
 
 func (o ManagementLockAtResourceLevelOutput) ToManagementLockAtResourceLevelOutputWithContext(ctx context.Context) ManagementLockAtResourceLevelOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ManagementLockAtResourceLevelOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagementLockAtResourceLevel) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The level of the lock. Possible values are: NotSpecified, CanNotDelete, ReadOnly. CanNotDelete means authorized users are able to read and modify the resources, but not delete. ReadOnly means authorized users can only read from a resource, but they can't modify or delete it.

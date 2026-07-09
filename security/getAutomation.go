@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves information about the model of a security automation.
 //
-// Uses Azure REST API version 2019-01-01-preview.
+// Uses Azure REST API version 2023-12-01-preview.
 //
-// Other available API versions: 2023-12-01-preview.
+// Other available API versions: 2019-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAutomation(ctx *pulumi.Context, args *LookupAutomationArgs, opts ...pulumi.InvokeOption) (*LookupAutomationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAutomationResult
@@ -29,7 +29,7 @@ func LookupAutomation(ctx *pulumi.Context, args *LookupAutomationArgs, opts ...p
 type LookupAutomationArgs struct {
 	// The security automation name.
 	AutomationName string `pulumi:"automationName"`
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -37,27 +37,31 @@ type LookupAutomationArgs struct {
 type LookupAutomationResult struct {
 	// A collection of the actions which are triggered if all the configured rules evaluations, within at least one rule set, are true.
 	Actions []interface{} `pulumi:"actions"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The security automation description.
 	Description *string `pulumi:"description"`
 	// Entity tag is used for comparing two or more entities from the same requested resource.
 	Etag *string `pulumi:"etag"`
-	// Resource Id
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Indicates whether the security automation is enabled.
 	IsEnabled *bool `pulumi:"isEnabled"`
 	// Kind of the resource
 	Kind *string `pulumi:"kind"`
-	// Location where the resource is stored
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// Resource name
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// A collection of scopes on which the security automations logic is applied. Supported scopes are the subscription itself or a resource group under that subscription. The automation will only apply on defined scopes.
 	Scopes []AutomationScopeResponse `pulumi:"scopes"`
 	// A collection of the source event types which evaluate the security automation set of rules.
 	Sources []AutomationSourceResponse `pulumi:"sources"`
-	// A list of key value pairs that describe the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -73,7 +77,7 @@ func LookupAutomationOutput(ctx *pulumi.Context, args LookupAutomationOutputArgs
 type LookupAutomationOutputArgs struct {
 	// The security automation name.
 	AutomationName pulumi.StringInput `pulumi:"automationName"`
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -101,6 +105,11 @@ func (o LookupAutomationResultOutput) Actions() pulumi.ArrayOutput {
 	return o.ApplyT(func(v LookupAutomationResult) []interface{} { return v.Actions }).(pulumi.ArrayOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupAutomationResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAutomationResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The security automation description.
 func (o LookupAutomationResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAutomationResult) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -111,7 +120,7 @@ func (o LookupAutomationResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAutomationResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Resource Id
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupAutomationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAutomationResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -126,12 +135,12 @@ func (o LookupAutomationResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAutomationResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Location where the resource is stored
+// The geo-location where the resource lives
 func (o LookupAutomationResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAutomationResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o LookupAutomationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAutomationResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -146,12 +155,17 @@ func (o LookupAutomationResultOutput) Sources() AutomationSourceResponseArrayOut
 	return o.ApplyT(func(v LookupAutomationResult) []AutomationSourceResponse { return v.Sources }).(AutomationSourceResponseArrayOutput)
 }
 
-// A list of key value pairs that describe the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupAutomationResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAutomationResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o LookupAutomationResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAutomationResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupAutomationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAutomationResult) string { return v.Type }).(pulumi.StringOutput)
 }

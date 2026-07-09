@@ -14,10 +14,14 @@ import (
 type BillingManagementTenantState string
 
 const (
-	BillingManagementTenantStateOther      = BillingManagementTenantState("Other")
+	// Other
+	BillingManagementTenantStateOther = BillingManagementTenantState("Other")
+	// NotAllowed
 	BillingManagementTenantStateNotAllowed = BillingManagementTenantState("NotAllowed")
-	BillingManagementTenantStateActive     = BillingManagementTenantState("Active")
-	BillingManagementTenantStateRevoked    = BillingManagementTenantState("Revoked")
+	// Active
+	BillingManagementTenantStateActive = BillingManagementTenantState("Active")
+	// Revoked
+	BillingManagementTenantStateRevoked = BillingManagementTenantState("Revoked")
 )
 
 func (BillingManagementTenantState) ElementType() reflect.Type {
@@ -184,13 +188,20 @@ func (in *billingManagementTenantStatePtr) ToBillingManagementTenantStatePtrOutp
 type InvoiceSectionStateEnum string
 
 const (
-	InvoiceSectionStateEnumOther       = InvoiceSectionStateEnum("Other")
-	InvoiceSectionStateEnumActive      = InvoiceSectionStateEnum("Active")
-	InvoiceSectionStateEnumDeleted     = InvoiceSectionStateEnum("Deleted")
-	InvoiceSectionStateEnumDisabled    = InvoiceSectionStateEnum("Disabled")
+	// Other
+	InvoiceSectionStateEnumOther = InvoiceSectionStateEnum("Other")
+	// Active
+	InvoiceSectionStateEnumActive = InvoiceSectionStateEnum("Active")
+	// Deleted
+	InvoiceSectionStateEnumDeleted = InvoiceSectionStateEnum("Deleted")
+	// Disabled
+	InvoiceSectionStateEnumDisabled = InvoiceSectionStateEnum("Disabled")
+	// UnderReview
 	InvoiceSectionStateEnumUnderReview = InvoiceSectionStateEnum("UnderReview")
-	InvoiceSectionStateEnumWarned      = InvoiceSectionStateEnum("Warned")
-	InvoiceSectionStateEnumRestricted  = InvoiceSectionStateEnum("Restricted")
+	// Warned
+	InvoiceSectionStateEnumWarned = InvoiceSectionStateEnum("Warned")
+	// Restricted
+	InvoiceSectionStateEnumRestricted = InvoiceSectionStateEnum("Restricted")
 )
 
 func (InvoiceSectionStateEnum) ElementType() reflect.Type {
@@ -360,10 +371,15 @@ func (in *invoiceSectionStateEnumPtr) ToInvoiceSectionStateEnumPtrOutputWithCont
 type InvoiceSectionStateReasonCode string
 
 const (
-	InvoiceSectionStateReasonCodeOther                = InvoiceSectionStateReasonCode("Other")
-	InvoiceSectionStateReasonCodePastDue              = InvoiceSectionStateReasonCode("PastDue")
-	InvoiceSectionStateReasonCodeUnusualActivity      = InvoiceSectionStateReasonCode("UnusualActivity")
+	// Other
+	InvoiceSectionStateReasonCodeOther = InvoiceSectionStateReasonCode("Other")
+	// PastDue
+	InvoiceSectionStateReasonCodePastDue = InvoiceSectionStateReasonCode("PastDue")
+	// UnusualActivity
+	InvoiceSectionStateReasonCodeUnusualActivity = InvoiceSectionStateReasonCode("UnusualActivity")
+	// SpendingLimitReached
 	InvoiceSectionStateReasonCodeSpendingLimitReached = InvoiceSectionStateReasonCode("SpendingLimitReached")
+	// SpendingLimitExpired
 	InvoiceSectionStateReasonCodeSpendingLimitExpired = InvoiceSectionStateReasonCode("SpendingLimitExpired")
 )
 
@@ -532,13 +548,20 @@ func (in *invoiceSectionStateReasonCodePtr) ToInvoiceSectionStateReasonCodePtrOu
 type ProvisioningTenantState string
 
 const (
-	ProvisioningTenantStateOther                  = ProvisioningTenantState("Other")
-	ProvisioningTenantStateNotRequested           = ProvisioningTenantState("NotRequested")
-	ProvisioningTenantStateActive                 = ProvisioningTenantState("Active")
-	ProvisioningTenantStatePending                = ProvisioningTenantState("Pending")
-	ProvisioningTenantStateBillingRequestExpired  = ProvisioningTenantState("BillingRequestExpired")
+	// Other
+	ProvisioningTenantStateOther = ProvisioningTenantState("Other")
+	// NotRequested
+	ProvisioningTenantStateNotRequested = ProvisioningTenantState("NotRequested")
+	// Active
+	ProvisioningTenantStateActive = ProvisioningTenantState("Active")
+	// Pending
+	ProvisioningTenantStatePending = ProvisioningTenantState("Pending")
+	// BillingRequestExpired
+	ProvisioningTenantStateBillingRequestExpired = ProvisioningTenantState("BillingRequestExpired")
+	// BillingRequestDeclined
 	ProvisioningTenantStateBillingRequestDeclined = ProvisioningTenantState("BillingRequestDeclined")
-	ProvisioningTenantStateRevoked                = ProvisioningTenantState("Revoked")
+	// Revoked
+	ProvisioningTenantStateRevoked = ProvisioningTenantState("Revoked")
 )
 
 func (ProvisioningTenantState) ElementType() reflect.Type {

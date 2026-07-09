@@ -10,6 +10,513 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Accelerator manufacturers supported by Azure VMs.
+type AcceleratorManufacturer string
+
+const (
+	// AMD GpuType
+	AcceleratorManufacturerAMD = AcceleratorManufacturer("AMD")
+	// Nvidia GpuType
+	AcceleratorManufacturerNvidia = AcceleratorManufacturer("Nvidia")
+	// Xilinx GpuType
+	AcceleratorManufacturerXilinx = AcceleratorManufacturer("Xilinx")
+)
+
+func (AcceleratorManufacturer) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorManufacturer)(nil)).Elem()
+}
+
+func (e AcceleratorManufacturer) ToAcceleratorManufacturerOutput() AcceleratorManufacturerOutput {
+	return pulumi.ToOutput(e).(AcceleratorManufacturerOutput)
+}
+
+func (e AcceleratorManufacturer) ToAcceleratorManufacturerOutputWithContext(ctx context.Context) AcceleratorManufacturerOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AcceleratorManufacturerOutput)
+}
+
+func (e AcceleratorManufacturer) ToAcceleratorManufacturerPtrOutput() AcceleratorManufacturerPtrOutput {
+	return e.ToAcceleratorManufacturerPtrOutputWithContext(context.Background())
+}
+
+func (e AcceleratorManufacturer) ToAcceleratorManufacturerPtrOutputWithContext(ctx context.Context) AcceleratorManufacturerPtrOutput {
+	return AcceleratorManufacturer(e).ToAcceleratorManufacturerOutputWithContext(ctx).ToAcceleratorManufacturerPtrOutputWithContext(ctx)
+}
+
+func (e AcceleratorManufacturer) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AcceleratorManufacturer) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AcceleratorManufacturer) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AcceleratorManufacturer) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AcceleratorManufacturerOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorManufacturerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorManufacturer)(nil)).Elem()
+}
+
+func (o AcceleratorManufacturerOutput) ToAcceleratorManufacturerOutput() AcceleratorManufacturerOutput {
+	return o
+}
+
+func (o AcceleratorManufacturerOutput) ToAcceleratorManufacturerOutputWithContext(ctx context.Context) AcceleratorManufacturerOutput {
+	return o
+}
+
+func (o AcceleratorManufacturerOutput) ToAcceleratorManufacturerPtrOutput() AcceleratorManufacturerPtrOutput {
+	return o.ToAcceleratorManufacturerPtrOutputWithContext(context.Background())
+}
+
+func (o AcceleratorManufacturerOutput) ToAcceleratorManufacturerPtrOutputWithContext(ctx context.Context) AcceleratorManufacturerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AcceleratorManufacturer) *AcceleratorManufacturer {
+		return &v
+	}).(AcceleratorManufacturerPtrOutput)
+}
+
+func (o AcceleratorManufacturerOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AcceleratorManufacturerOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AcceleratorManufacturer) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AcceleratorManufacturerOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AcceleratorManufacturerOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AcceleratorManufacturer) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AcceleratorManufacturerPtrOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorManufacturerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AcceleratorManufacturer)(nil)).Elem()
+}
+
+func (o AcceleratorManufacturerPtrOutput) ToAcceleratorManufacturerPtrOutput() AcceleratorManufacturerPtrOutput {
+	return o
+}
+
+func (o AcceleratorManufacturerPtrOutput) ToAcceleratorManufacturerPtrOutputWithContext(ctx context.Context) AcceleratorManufacturerPtrOutput {
+	return o
+}
+
+func (o AcceleratorManufacturerPtrOutput) Elem() AcceleratorManufacturerOutput {
+	return o.ApplyT(func(v *AcceleratorManufacturer) AcceleratorManufacturer {
+		if v != nil {
+			return *v
+		}
+		var ret AcceleratorManufacturer
+		return ret
+	}).(AcceleratorManufacturerOutput)
+}
+
+func (o AcceleratorManufacturerPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AcceleratorManufacturerPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AcceleratorManufacturer) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AcceleratorManufacturerInput is an input type that accepts values of the AcceleratorManufacturer enum
+// A concrete instance of `AcceleratorManufacturerInput` can be one of the following:
+//
+//	AcceleratorManufacturerAMD
+//	AcceleratorManufacturerNvidia
+//	AcceleratorManufacturerXilinx
+type AcceleratorManufacturerInput interface {
+	pulumi.Input
+
+	ToAcceleratorManufacturerOutput() AcceleratorManufacturerOutput
+	ToAcceleratorManufacturerOutputWithContext(context.Context) AcceleratorManufacturerOutput
+}
+
+var acceleratorManufacturerPtrType = reflect.TypeOf((**AcceleratorManufacturer)(nil)).Elem()
+
+type AcceleratorManufacturerPtrInput interface {
+	pulumi.Input
+
+	ToAcceleratorManufacturerPtrOutput() AcceleratorManufacturerPtrOutput
+	ToAcceleratorManufacturerPtrOutputWithContext(context.Context) AcceleratorManufacturerPtrOutput
+}
+
+type acceleratorManufacturerPtr string
+
+func AcceleratorManufacturerPtr(v string) AcceleratorManufacturerPtrInput {
+	return (*acceleratorManufacturerPtr)(&v)
+}
+
+func (*acceleratorManufacturerPtr) ElementType() reflect.Type {
+	return acceleratorManufacturerPtrType
+}
+
+func (in *acceleratorManufacturerPtr) ToAcceleratorManufacturerPtrOutput() AcceleratorManufacturerPtrOutput {
+	return pulumi.ToOutput(in).(AcceleratorManufacturerPtrOutput)
+}
+
+func (in *acceleratorManufacturerPtr) ToAcceleratorManufacturerPtrOutputWithContext(ctx context.Context) AcceleratorManufacturerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AcceleratorManufacturerPtrOutput)
+}
+
+// Accelerator types supported by Azure VMs.
+type AcceleratorType string
+
+const (
+	// GPU Accelerator
+	AcceleratorTypeGPU = AcceleratorType("GPU")
+	// FPGA Accelerator
+	AcceleratorTypeFPGA = AcceleratorType("FPGA")
+)
+
+func (AcceleratorType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorType)(nil)).Elem()
+}
+
+func (e AcceleratorType) ToAcceleratorTypeOutput() AcceleratorTypeOutput {
+	return pulumi.ToOutput(e).(AcceleratorTypeOutput)
+}
+
+func (e AcceleratorType) ToAcceleratorTypeOutputWithContext(ctx context.Context) AcceleratorTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AcceleratorTypeOutput)
+}
+
+func (e AcceleratorType) ToAcceleratorTypePtrOutput() AcceleratorTypePtrOutput {
+	return e.ToAcceleratorTypePtrOutputWithContext(context.Background())
+}
+
+func (e AcceleratorType) ToAcceleratorTypePtrOutputWithContext(ctx context.Context) AcceleratorTypePtrOutput {
+	return AcceleratorType(e).ToAcceleratorTypeOutputWithContext(ctx).ToAcceleratorTypePtrOutputWithContext(ctx)
+}
+
+func (e AcceleratorType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AcceleratorType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AcceleratorType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AcceleratorType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AcceleratorTypeOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorType)(nil)).Elem()
+}
+
+func (o AcceleratorTypeOutput) ToAcceleratorTypeOutput() AcceleratorTypeOutput {
+	return o
+}
+
+func (o AcceleratorTypeOutput) ToAcceleratorTypeOutputWithContext(ctx context.Context) AcceleratorTypeOutput {
+	return o
+}
+
+func (o AcceleratorTypeOutput) ToAcceleratorTypePtrOutput() AcceleratorTypePtrOutput {
+	return o.ToAcceleratorTypePtrOutputWithContext(context.Background())
+}
+
+func (o AcceleratorTypeOutput) ToAcceleratorTypePtrOutputWithContext(ctx context.Context) AcceleratorTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AcceleratorType) *AcceleratorType {
+		return &v
+	}).(AcceleratorTypePtrOutput)
+}
+
+func (o AcceleratorTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AcceleratorTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AcceleratorType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AcceleratorTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AcceleratorTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AcceleratorType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AcceleratorTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AcceleratorType)(nil)).Elem()
+}
+
+func (o AcceleratorTypePtrOutput) ToAcceleratorTypePtrOutput() AcceleratorTypePtrOutput {
+	return o
+}
+
+func (o AcceleratorTypePtrOutput) ToAcceleratorTypePtrOutputWithContext(ctx context.Context) AcceleratorTypePtrOutput {
+	return o
+}
+
+func (o AcceleratorTypePtrOutput) Elem() AcceleratorTypeOutput {
+	return o.ApplyT(func(v *AcceleratorType) AcceleratorType {
+		if v != nil {
+			return *v
+		}
+		var ret AcceleratorType
+		return ret
+	}).(AcceleratorTypeOutput)
+}
+
+func (o AcceleratorTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AcceleratorTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AcceleratorType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AcceleratorTypeInput is an input type that accepts values of the AcceleratorType enum
+// A concrete instance of `AcceleratorTypeInput` can be one of the following:
+//
+//	AcceleratorTypeGPU
+//	AcceleratorTypeFPGA
+type AcceleratorTypeInput interface {
+	pulumi.Input
+
+	ToAcceleratorTypeOutput() AcceleratorTypeOutput
+	ToAcceleratorTypeOutputWithContext(context.Context) AcceleratorTypeOutput
+}
+
+var acceleratorTypePtrType = reflect.TypeOf((**AcceleratorType)(nil)).Elem()
+
+type AcceleratorTypePtrInput interface {
+	pulumi.Input
+
+	ToAcceleratorTypePtrOutput() AcceleratorTypePtrOutput
+	ToAcceleratorTypePtrOutputWithContext(context.Context) AcceleratorTypePtrOutput
+}
+
+type acceleratorTypePtr string
+
+func AcceleratorTypePtr(v string) AcceleratorTypePtrInput {
+	return (*acceleratorTypePtr)(&v)
+}
+
+func (*acceleratorTypePtr) ElementType() reflect.Type {
+	return acceleratorTypePtrType
+}
+
+func (in *acceleratorTypePtr) ToAcceleratorTypePtrOutput() AcceleratorTypePtrOutput {
+	return pulumi.ToOutput(in).(AcceleratorTypePtrOutput)
+}
+
+func (in *acceleratorTypePtr) ToAcceleratorTypePtrOutputWithContext(ctx context.Context) AcceleratorTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AcceleratorTypePtrOutput)
+}
+
+// Architecture types supported by Azure VMs.
+type ArchitectureType string
+
+const (
+	// ARM64 Architecture
+	ArchitectureTypeARM64 = ArchitectureType("ARM64")
+	// X64 Architecture
+	ArchitectureTypeX64 = ArchitectureType("X64")
+)
+
+func (ArchitectureType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ArchitectureType)(nil)).Elem()
+}
+
+func (e ArchitectureType) ToArchitectureTypeOutput() ArchitectureTypeOutput {
+	return pulumi.ToOutput(e).(ArchitectureTypeOutput)
+}
+
+func (e ArchitectureType) ToArchitectureTypeOutputWithContext(ctx context.Context) ArchitectureTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ArchitectureTypeOutput)
+}
+
+func (e ArchitectureType) ToArchitectureTypePtrOutput() ArchitectureTypePtrOutput {
+	return e.ToArchitectureTypePtrOutputWithContext(context.Background())
+}
+
+func (e ArchitectureType) ToArchitectureTypePtrOutputWithContext(ctx context.Context) ArchitectureTypePtrOutput {
+	return ArchitectureType(e).ToArchitectureTypeOutputWithContext(ctx).ToArchitectureTypePtrOutputWithContext(ctx)
+}
+
+func (e ArchitectureType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ArchitectureType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ArchitectureType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ArchitectureType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ArchitectureTypeOutput struct{ *pulumi.OutputState }
+
+func (ArchitectureTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ArchitectureType)(nil)).Elem()
+}
+
+func (o ArchitectureTypeOutput) ToArchitectureTypeOutput() ArchitectureTypeOutput {
+	return o
+}
+
+func (o ArchitectureTypeOutput) ToArchitectureTypeOutputWithContext(ctx context.Context) ArchitectureTypeOutput {
+	return o
+}
+
+func (o ArchitectureTypeOutput) ToArchitectureTypePtrOutput() ArchitectureTypePtrOutput {
+	return o.ToArchitectureTypePtrOutputWithContext(context.Background())
+}
+
+func (o ArchitectureTypeOutput) ToArchitectureTypePtrOutputWithContext(ctx context.Context) ArchitectureTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ArchitectureType) *ArchitectureType {
+		return &v
+	}).(ArchitectureTypePtrOutput)
+}
+
+func (o ArchitectureTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ArchitectureTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ArchitectureType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ArchitectureTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ArchitectureTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ArchitectureType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ArchitectureTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ArchitectureTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ArchitectureType)(nil)).Elem()
+}
+
+func (o ArchitectureTypePtrOutput) ToArchitectureTypePtrOutput() ArchitectureTypePtrOutput {
+	return o
+}
+
+func (o ArchitectureTypePtrOutput) ToArchitectureTypePtrOutputWithContext(ctx context.Context) ArchitectureTypePtrOutput {
+	return o
+}
+
+func (o ArchitectureTypePtrOutput) Elem() ArchitectureTypeOutput {
+	return o.ApplyT(func(v *ArchitectureType) ArchitectureType {
+		if v != nil {
+			return *v
+		}
+		var ret ArchitectureType
+		return ret
+	}).(ArchitectureTypeOutput)
+}
+
+func (o ArchitectureTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ArchitectureTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ArchitectureType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ArchitectureTypeInput is an input type that accepts values of the ArchitectureType enum
+// A concrete instance of `ArchitectureTypeInput` can be one of the following:
+//
+//	ArchitectureTypeARM64
+//	ArchitectureTypeX64
+type ArchitectureTypeInput interface {
+	pulumi.Input
+
+	ToArchitectureTypeOutput() ArchitectureTypeOutput
+	ToArchitectureTypeOutputWithContext(context.Context) ArchitectureTypeOutput
+}
+
+var architectureTypePtrType = reflect.TypeOf((**ArchitectureType)(nil)).Elem()
+
+type ArchitectureTypePtrInput interface {
+	pulumi.Input
+
+	ToArchitectureTypePtrOutput() ArchitectureTypePtrOutput
+	ToArchitectureTypePtrOutputWithContext(context.Context) ArchitectureTypePtrOutput
+}
+
+type architectureTypePtr string
+
+func ArchitectureTypePtr(v string) ArchitectureTypePtrInput {
+	return (*architectureTypePtr)(&v)
+}
+
+func (*architectureTypePtr) ElementType() reflect.Type {
+	return architectureTypePtrType
+}
+
+func (in *architectureTypePtr) ToArchitectureTypePtrOutput() ArchitectureTypePtrOutput {
+	return pulumi.ToOutput(in).(ArchitectureTypePtrOutput)
+}
+
+func (in *architectureTypePtr) ToArchitectureTypePtrOutputWithContext(ctx context.Context) ArchitectureTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ArchitectureTypePtrOutput)
+}
+
 // Specifies the caching requirements. Possible values are: **None,**
 // **ReadOnly,** **ReadWrite.** The default values are: **None for Standard
 // storage. ReadOnly for Premium storage.**
@@ -346,6 +853,180 @@ func (in *componentNamePtr) ToComponentNamePtrOutput() ComponentNamePtrOutput {
 
 func (in *componentNamePtr) ToComponentNamePtrOutputWithContext(ctx context.Context) ComponentNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ComponentNamePtrOutput)
+}
+
+// Cpu Manufacturers  supported by Azure VMs.
+type CpuManufacturer string
+
+const (
+	// Intel CPU.
+	CpuManufacturerIntel = CpuManufacturer("Intel")
+	// AMD CPU.
+	CpuManufacturerAMD = CpuManufacturer("AMD")
+	// Microsoft CPU.
+	CpuManufacturerMicrosoft = CpuManufacturer("Microsoft")
+	// Ampere CPU.
+	CpuManufacturerAmpere = CpuManufacturer("Ampere")
+)
+
+func (CpuManufacturer) ElementType() reflect.Type {
+	return reflect.TypeOf((*CpuManufacturer)(nil)).Elem()
+}
+
+func (e CpuManufacturer) ToCpuManufacturerOutput() CpuManufacturerOutput {
+	return pulumi.ToOutput(e).(CpuManufacturerOutput)
+}
+
+func (e CpuManufacturer) ToCpuManufacturerOutputWithContext(ctx context.Context) CpuManufacturerOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CpuManufacturerOutput)
+}
+
+func (e CpuManufacturer) ToCpuManufacturerPtrOutput() CpuManufacturerPtrOutput {
+	return e.ToCpuManufacturerPtrOutputWithContext(context.Background())
+}
+
+func (e CpuManufacturer) ToCpuManufacturerPtrOutputWithContext(ctx context.Context) CpuManufacturerPtrOutput {
+	return CpuManufacturer(e).ToCpuManufacturerOutputWithContext(ctx).ToCpuManufacturerPtrOutputWithContext(ctx)
+}
+
+func (e CpuManufacturer) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CpuManufacturer) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CpuManufacturer) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CpuManufacturer) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CpuManufacturerOutput struct{ *pulumi.OutputState }
+
+func (CpuManufacturerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CpuManufacturer)(nil)).Elem()
+}
+
+func (o CpuManufacturerOutput) ToCpuManufacturerOutput() CpuManufacturerOutput {
+	return o
+}
+
+func (o CpuManufacturerOutput) ToCpuManufacturerOutputWithContext(ctx context.Context) CpuManufacturerOutput {
+	return o
+}
+
+func (o CpuManufacturerOutput) ToCpuManufacturerPtrOutput() CpuManufacturerPtrOutput {
+	return o.ToCpuManufacturerPtrOutputWithContext(context.Background())
+}
+
+func (o CpuManufacturerOutput) ToCpuManufacturerPtrOutputWithContext(ctx context.Context) CpuManufacturerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CpuManufacturer) *CpuManufacturer {
+		return &v
+	}).(CpuManufacturerPtrOutput)
+}
+
+func (o CpuManufacturerOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CpuManufacturerOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CpuManufacturer) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CpuManufacturerOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CpuManufacturerOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CpuManufacturer) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CpuManufacturerPtrOutput struct{ *pulumi.OutputState }
+
+func (CpuManufacturerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CpuManufacturer)(nil)).Elem()
+}
+
+func (o CpuManufacturerPtrOutput) ToCpuManufacturerPtrOutput() CpuManufacturerPtrOutput {
+	return o
+}
+
+func (o CpuManufacturerPtrOutput) ToCpuManufacturerPtrOutputWithContext(ctx context.Context) CpuManufacturerPtrOutput {
+	return o
+}
+
+func (o CpuManufacturerPtrOutput) Elem() CpuManufacturerOutput {
+	return o.ApplyT(func(v *CpuManufacturer) CpuManufacturer {
+		if v != nil {
+			return *v
+		}
+		var ret CpuManufacturer
+		return ret
+	}).(CpuManufacturerOutput)
+}
+
+func (o CpuManufacturerPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CpuManufacturerPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CpuManufacturer) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CpuManufacturerInput is an input type that accepts values of the CpuManufacturer enum
+// A concrete instance of `CpuManufacturerInput` can be one of the following:
+//
+//	CpuManufacturerIntel
+//	CpuManufacturerAMD
+//	CpuManufacturerMicrosoft
+//	CpuManufacturerAmpere
+type CpuManufacturerInput interface {
+	pulumi.Input
+
+	ToCpuManufacturerOutput() CpuManufacturerOutput
+	ToCpuManufacturerOutputWithContext(context.Context) CpuManufacturerOutput
+}
+
+var cpuManufacturerPtrType = reflect.TypeOf((**CpuManufacturer)(nil)).Elem()
+
+type CpuManufacturerPtrInput interface {
+	pulumi.Input
+
+	ToCpuManufacturerPtrOutput() CpuManufacturerPtrOutput
+	ToCpuManufacturerPtrOutputWithContext(context.Context) CpuManufacturerPtrOutput
+}
+
+type cpuManufacturerPtr string
+
+func CpuManufacturerPtr(v string) CpuManufacturerPtrInput {
+	return (*cpuManufacturerPtr)(&v)
+}
+
+func (*cpuManufacturerPtr) ElementType() reflect.Type {
+	return cpuManufacturerPtrType
+}
+
+func (in *cpuManufacturerPtr) ToCpuManufacturerPtrOutput() CpuManufacturerPtrOutput {
+	return pulumi.ToOutput(in).(CpuManufacturerPtrOutput)
+}
+
+func (in *cpuManufacturerPtr) ToCpuManufacturerPtrOutputWithContext(ctx context.Context) CpuManufacturerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CpuManufacturerPtrOutput)
 }
 
 // Specify what happens to the public IP when the VM is deleted
@@ -2418,6 +3099,174 @@ func (in *linuxVMGuestPatchModePtr) ToLinuxVMGuestPatchModePtrOutput() LinuxVMGu
 
 func (in *linuxVMGuestPatchModePtr) ToLinuxVMGuestPatchModePtrOutputWithContext(ctx context.Context) LinuxVMGuestPatchModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(LinuxVMGuestPatchModePtrOutput)
+}
+
+// Different kind of Local storage disk types supported by Azure VMs.
+type LocalStorageDiskType string
+
+const (
+	// HDD DiskType.
+	LocalStorageDiskTypeHDD = LocalStorageDiskType("HDD")
+	// SDD DiskType.
+	LocalStorageDiskTypeSSD = LocalStorageDiskType("SSD")
+)
+
+func (LocalStorageDiskType) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocalStorageDiskType)(nil)).Elem()
+}
+
+func (e LocalStorageDiskType) ToLocalStorageDiskTypeOutput() LocalStorageDiskTypeOutput {
+	return pulumi.ToOutput(e).(LocalStorageDiskTypeOutput)
+}
+
+func (e LocalStorageDiskType) ToLocalStorageDiskTypeOutputWithContext(ctx context.Context) LocalStorageDiskTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(LocalStorageDiskTypeOutput)
+}
+
+func (e LocalStorageDiskType) ToLocalStorageDiskTypePtrOutput() LocalStorageDiskTypePtrOutput {
+	return e.ToLocalStorageDiskTypePtrOutputWithContext(context.Background())
+}
+
+func (e LocalStorageDiskType) ToLocalStorageDiskTypePtrOutputWithContext(ctx context.Context) LocalStorageDiskTypePtrOutput {
+	return LocalStorageDiskType(e).ToLocalStorageDiskTypeOutputWithContext(ctx).ToLocalStorageDiskTypePtrOutputWithContext(ctx)
+}
+
+func (e LocalStorageDiskType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LocalStorageDiskType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LocalStorageDiskType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e LocalStorageDiskType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type LocalStorageDiskTypeOutput struct{ *pulumi.OutputState }
+
+func (LocalStorageDiskTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocalStorageDiskType)(nil)).Elem()
+}
+
+func (o LocalStorageDiskTypeOutput) ToLocalStorageDiskTypeOutput() LocalStorageDiskTypeOutput {
+	return o
+}
+
+func (o LocalStorageDiskTypeOutput) ToLocalStorageDiskTypeOutputWithContext(ctx context.Context) LocalStorageDiskTypeOutput {
+	return o
+}
+
+func (o LocalStorageDiskTypeOutput) ToLocalStorageDiskTypePtrOutput() LocalStorageDiskTypePtrOutput {
+	return o.ToLocalStorageDiskTypePtrOutputWithContext(context.Background())
+}
+
+func (o LocalStorageDiskTypeOutput) ToLocalStorageDiskTypePtrOutputWithContext(ctx context.Context) LocalStorageDiskTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LocalStorageDiskType) *LocalStorageDiskType {
+		return &v
+	}).(LocalStorageDiskTypePtrOutput)
+}
+
+func (o LocalStorageDiskTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o LocalStorageDiskTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LocalStorageDiskType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o LocalStorageDiskTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LocalStorageDiskTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LocalStorageDiskType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type LocalStorageDiskTypePtrOutput struct{ *pulumi.OutputState }
+
+func (LocalStorageDiskTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocalStorageDiskType)(nil)).Elem()
+}
+
+func (o LocalStorageDiskTypePtrOutput) ToLocalStorageDiskTypePtrOutput() LocalStorageDiskTypePtrOutput {
+	return o
+}
+
+func (o LocalStorageDiskTypePtrOutput) ToLocalStorageDiskTypePtrOutputWithContext(ctx context.Context) LocalStorageDiskTypePtrOutput {
+	return o
+}
+
+func (o LocalStorageDiskTypePtrOutput) Elem() LocalStorageDiskTypeOutput {
+	return o.ApplyT(func(v *LocalStorageDiskType) LocalStorageDiskType {
+		if v != nil {
+			return *v
+		}
+		var ret LocalStorageDiskType
+		return ret
+	}).(LocalStorageDiskTypeOutput)
+}
+
+func (o LocalStorageDiskTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LocalStorageDiskTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LocalStorageDiskType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// LocalStorageDiskTypeInput is an input type that accepts values of the LocalStorageDiskType enum
+// A concrete instance of `LocalStorageDiskTypeInput` can be one of the following:
+//
+//	LocalStorageDiskTypeHDD
+//	LocalStorageDiskTypeSSD
+type LocalStorageDiskTypeInput interface {
+	pulumi.Input
+
+	ToLocalStorageDiskTypeOutput() LocalStorageDiskTypeOutput
+	ToLocalStorageDiskTypeOutputWithContext(context.Context) LocalStorageDiskTypeOutput
+}
+
+var localStorageDiskTypePtrType = reflect.TypeOf((**LocalStorageDiskType)(nil)).Elem()
+
+type LocalStorageDiskTypePtrInput interface {
+	pulumi.Input
+
+	ToLocalStorageDiskTypePtrOutput() LocalStorageDiskTypePtrOutput
+	ToLocalStorageDiskTypePtrOutputWithContext(context.Context) LocalStorageDiskTypePtrOutput
+}
+
+type localStorageDiskTypePtr string
+
+func LocalStorageDiskTypePtr(v string) LocalStorageDiskTypePtrInput {
+	return (*localStorageDiskTypePtr)(&v)
+}
+
+func (*localStorageDiskTypePtr) ElementType() reflect.Type {
+	return localStorageDiskTypePtrType
+}
+
+func (in *localStorageDiskTypePtr) ToLocalStorageDiskTypePtrOutput() LocalStorageDiskTypePtrOutput {
+	return pulumi.ToOutput(in).(LocalStorageDiskTypePtrOutput)
+}
+
+func (in *localStorageDiskTypePtr) ToLocalStorageDiskTypePtrOutputWithContext(ctx context.Context) LocalStorageDiskTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(LocalStorageDiskTypePtrOutput)
 }
 
 // Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
@@ -5157,6 +6006,366 @@ func (in *storageAccountTypesPtr) ToStorageAccountTypesPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(StorageAccountTypesPtrOutput)
 }
 
+// Specifies whether the VMSize supporting RDMA (Remote Direct Memory Access) should be used to build Fleet or not.
+type VMAttributeSupport string
+
+const (
+	// All VMSizes having the feature support will be excluded.
+	VMAttributeSupportExcluded = VMAttributeSupport("Excluded")
+	//  VMSizes that have the feature support and that do not have the feature support will be used. Included is a union of Excluded and Required.
+	VMAttributeSupportIncluded = VMAttributeSupport("Included")
+	// Only the VMSizes having the feature support will be used.
+	VMAttributeSupportRequired = VMAttributeSupport("Required")
+)
+
+func (VMAttributeSupport) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMAttributeSupport)(nil)).Elem()
+}
+
+func (e VMAttributeSupport) ToVMAttributeSupportOutput() VMAttributeSupportOutput {
+	return pulumi.ToOutput(e).(VMAttributeSupportOutput)
+}
+
+func (e VMAttributeSupport) ToVMAttributeSupportOutputWithContext(ctx context.Context) VMAttributeSupportOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(VMAttributeSupportOutput)
+}
+
+func (e VMAttributeSupport) ToVMAttributeSupportPtrOutput() VMAttributeSupportPtrOutput {
+	return e.ToVMAttributeSupportPtrOutputWithContext(context.Background())
+}
+
+func (e VMAttributeSupport) ToVMAttributeSupportPtrOutputWithContext(ctx context.Context) VMAttributeSupportPtrOutput {
+	return VMAttributeSupport(e).ToVMAttributeSupportOutputWithContext(ctx).ToVMAttributeSupportPtrOutputWithContext(ctx)
+}
+
+func (e VMAttributeSupport) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VMAttributeSupport) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VMAttributeSupport) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e VMAttributeSupport) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type VMAttributeSupportOutput struct{ *pulumi.OutputState }
+
+func (VMAttributeSupportOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMAttributeSupport)(nil)).Elem()
+}
+
+func (o VMAttributeSupportOutput) ToVMAttributeSupportOutput() VMAttributeSupportOutput {
+	return o
+}
+
+func (o VMAttributeSupportOutput) ToVMAttributeSupportOutputWithContext(ctx context.Context) VMAttributeSupportOutput {
+	return o
+}
+
+func (o VMAttributeSupportOutput) ToVMAttributeSupportPtrOutput() VMAttributeSupportPtrOutput {
+	return o.ToVMAttributeSupportPtrOutputWithContext(context.Background())
+}
+
+func (o VMAttributeSupportOutput) ToVMAttributeSupportPtrOutputWithContext(ctx context.Context) VMAttributeSupportPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VMAttributeSupport) *VMAttributeSupport {
+		return &v
+	}).(VMAttributeSupportPtrOutput)
+}
+
+func (o VMAttributeSupportOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o VMAttributeSupportOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VMAttributeSupport) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o VMAttributeSupportOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VMAttributeSupportOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VMAttributeSupport) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type VMAttributeSupportPtrOutput struct{ *pulumi.OutputState }
+
+func (VMAttributeSupportPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VMAttributeSupport)(nil)).Elem()
+}
+
+func (o VMAttributeSupportPtrOutput) ToVMAttributeSupportPtrOutput() VMAttributeSupportPtrOutput {
+	return o
+}
+
+func (o VMAttributeSupportPtrOutput) ToVMAttributeSupportPtrOutputWithContext(ctx context.Context) VMAttributeSupportPtrOutput {
+	return o
+}
+
+func (o VMAttributeSupportPtrOutput) Elem() VMAttributeSupportOutput {
+	return o.ApplyT(func(v *VMAttributeSupport) VMAttributeSupport {
+		if v != nil {
+			return *v
+		}
+		var ret VMAttributeSupport
+		return ret
+	}).(VMAttributeSupportOutput)
+}
+
+func (o VMAttributeSupportPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VMAttributeSupportPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *VMAttributeSupport) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// VMAttributeSupportInput is an input type that accepts values of the VMAttributeSupport enum
+// A concrete instance of `VMAttributeSupportInput` can be one of the following:
+//
+//	VMAttributeSupportExcluded
+//	VMAttributeSupportIncluded
+//	VMAttributeSupportRequired
+type VMAttributeSupportInput interface {
+	pulumi.Input
+
+	ToVMAttributeSupportOutput() VMAttributeSupportOutput
+	ToVMAttributeSupportOutputWithContext(context.Context) VMAttributeSupportOutput
+}
+
+var vmattributeSupportPtrType = reflect.TypeOf((**VMAttributeSupport)(nil)).Elem()
+
+type VMAttributeSupportPtrInput interface {
+	pulumi.Input
+
+	ToVMAttributeSupportPtrOutput() VMAttributeSupportPtrOutput
+	ToVMAttributeSupportPtrOutputWithContext(context.Context) VMAttributeSupportPtrOutput
+}
+
+type vmattributeSupportPtr string
+
+func VMAttributeSupportPtr(v string) VMAttributeSupportPtrInput {
+	return (*vmattributeSupportPtr)(&v)
+}
+
+func (*vmattributeSupportPtr) ElementType() reflect.Type {
+	return vmattributeSupportPtrType
+}
+
+func (in *vmattributeSupportPtr) ToVMAttributeSupportPtrOutput() VMAttributeSupportPtrOutput {
+	return pulumi.ToOutput(in).(VMAttributeSupportPtrOutput)
+}
+
+func (in *vmattributeSupportPtr) ToVMAttributeSupportPtrOutputWithContext(ctx context.Context) VMAttributeSupportPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(VMAttributeSupportPtrOutput)
+}
+
+// VMCategories defined for Azure VMs.
+// See: https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/overview?tabs=breakdownseries%2Cgeneralsizelist%2Ccomputesizelist%2Cmemorysizelist%2Cstoragesizelist%2Cgpusizelist%2Cfpgasizelist%2Chpcsizelist#general-purpose
+type VMCategory string
+
+const (
+	// General purpose VM sizes provide balanced CPU-to-memory ratio. Ideal for testing and development, small to medium databases, and low to medium traffic web servers.
+	VMCategoryGeneralPurpose = VMCategory("GeneralPurpose")
+	// Compute optimized VM sizes have a high CPU-to-memory ratio. These sizes are good for medium traffic web servers, network appliances, batch processes, and application servers.
+	VMCategoryComputeOptimized = VMCategory("ComputeOptimized")
+	// Memory optimized VM sizes offer a high memory-to-CPU ratio that is great for relational database servers, medium to large caches, and in-memory analytics.
+	VMCategoryMemoryOptimized = VMCategory("MemoryOptimized")
+	// Storage optimized virtual machine (VM) sizes offer high disk throughput and IO, and are ideal for Big Data, SQL, NoSQL databases, data warehousing, and large transactional databases.
+	// Examples include Cassandra, MongoDB, Cloudera, and Redis.
+	VMCategoryStorageOptimized = VMCategory("StorageOptimized")
+	// GPU optimized VM sizes are specialized virtual machines available with single, multiple, or fractional GPUs.
+	// These sizes are designed for compute-intensive, graphics-intensive, and visualization workloads.
+	VMCategoryGpuAccelerated = VMCategory("GpuAccelerated")
+	// FPGA optimized VM sizes are specialized virtual machines available with single or multiple FPGA.
+	// These sizes are designed for compute-intensive workloads. This article provides information about the number and type of FPGA, vCPUs, data disks, and NICs.
+	// Storage throughput and network bandwidth are also included for each size in this grouping.
+	VMCategoryFpgaAccelerated = VMCategory("FpgaAccelerated")
+	// Azure High Performance Compute VMs are optimized for various HPC workloads such as computational fluid dynamics, finite element analysis, frontend and backend EDA,
+	// rendering, molecular dynamics, computational geo science, weather simulation, and financial risk analysis.
+	VMCategoryHighPerformanceCompute = VMCategory("HighPerformanceCompute")
+)
+
+func (VMCategory) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMCategory)(nil)).Elem()
+}
+
+func (e VMCategory) ToVMCategoryOutput() VMCategoryOutput {
+	return pulumi.ToOutput(e).(VMCategoryOutput)
+}
+
+func (e VMCategory) ToVMCategoryOutputWithContext(ctx context.Context) VMCategoryOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(VMCategoryOutput)
+}
+
+func (e VMCategory) ToVMCategoryPtrOutput() VMCategoryPtrOutput {
+	return e.ToVMCategoryPtrOutputWithContext(context.Background())
+}
+
+func (e VMCategory) ToVMCategoryPtrOutputWithContext(ctx context.Context) VMCategoryPtrOutput {
+	return VMCategory(e).ToVMCategoryOutputWithContext(ctx).ToVMCategoryPtrOutputWithContext(ctx)
+}
+
+func (e VMCategory) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VMCategory) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VMCategory) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e VMCategory) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type VMCategoryOutput struct{ *pulumi.OutputState }
+
+func (VMCategoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VMCategory)(nil)).Elem()
+}
+
+func (o VMCategoryOutput) ToVMCategoryOutput() VMCategoryOutput {
+	return o
+}
+
+func (o VMCategoryOutput) ToVMCategoryOutputWithContext(ctx context.Context) VMCategoryOutput {
+	return o
+}
+
+func (o VMCategoryOutput) ToVMCategoryPtrOutput() VMCategoryPtrOutput {
+	return o.ToVMCategoryPtrOutputWithContext(context.Background())
+}
+
+func (o VMCategoryOutput) ToVMCategoryPtrOutputWithContext(ctx context.Context) VMCategoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VMCategory) *VMCategory {
+		return &v
+	}).(VMCategoryPtrOutput)
+}
+
+func (o VMCategoryOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o VMCategoryOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VMCategory) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o VMCategoryOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VMCategoryOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VMCategory) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type VMCategoryPtrOutput struct{ *pulumi.OutputState }
+
+func (VMCategoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VMCategory)(nil)).Elem()
+}
+
+func (o VMCategoryPtrOutput) ToVMCategoryPtrOutput() VMCategoryPtrOutput {
+	return o
+}
+
+func (o VMCategoryPtrOutput) ToVMCategoryPtrOutputWithContext(ctx context.Context) VMCategoryPtrOutput {
+	return o
+}
+
+func (o VMCategoryPtrOutput) Elem() VMCategoryOutput {
+	return o.ApplyT(func(v *VMCategory) VMCategory {
+		if v != nil {
+			return *v
+		}
+		var ret VMCategory
+		return ret
+	}).(VMCategoryOutput)
+}
+
+func (o VMCategoryPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VMCategoryPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *VMCategory) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// VMCategoryInput is an input type that accepts values of the VMCategory enum
+// A concrete instance of `VMCategoryInput` can be one of the following:
+//
+//	VMCategoryGeneralPurpose
+//	VMCategoryComputeOptimized
+//	VMCategoryMemoryOptimized
+//	VMCategoryStorageOptimized
+//	VMCategoryGpuAccelerated
+//	VMCategoryFpgaAccelerated
+//	VMCategoryHighPerformanceCompute
+type VMCategoryInput interface {
+	pulumi.Input
+
+	ToVMCategoryOutput() VMCategoryOutput
+	ToVMCategoryOutputWithContext(context.Context) VMCategoryOutput
+}
+
+var vmcategoryPtrType = reflect.TypeOf((**VMCategory)(nil)).Elem()
+
+type VMCategoryPtrInput interface {
+	pulumi.Input
+
+	ToVMCategoryPtrOutput() VMCategoryPtrOutput
+	ToVMCategoryPtrOutputWithContext(context.Context) VMCategoryPtrOutput
+}
+
+type vmcategoryPtr string
+
+func VMCategoryPtr(v string) VMCategoryPtrInput {
+	return (*vmcategoryPtr)(&v)
+}
+
+func (*vmcategoryPtr) ElementType() reflect.Type {
+	return vmcategoryPtrType
+}
+
+func (in *vmcategoryPtr) ToVMCategoryPtrOutput() VMCategoryPtrOutput {
+	return pulumi.ToOutput(in).(VMCategoryPtrOutput)
+}
+
+func (in *vmcategoryPtr) ToVMCategoryPtrOutputWithContext(ctx context.Context) VMCategoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(VMCategoryPtrOutput)
+}
+
 // Specifies the mode of VM Guest patch assessment for the IaaS virtual
 // machine.<br /><br /> Possible values are:<br /><br /> **ImageDefault** - You
 // control the timing of patch assessments on a virtual machine.<br /><br />
@@ -5691,10 +6900,18 @@ func (in *windowsVMGuestPatchModePtr) ToWindowsVMGuestPatchModePtrOutputWithCont
 }
 
 func init() {
+	pulumi.RegisterOutputType(AcceleratorManufacturerOutput{})
+	pulumi.RegisterOutputType(AcceleratorManufacturerPtrOutput{})
+	pulumi.RegisterOutputType(AcceleratorTypeOutput{})
+	pulumi.RegisterOutputType(AcceleratorTypePtrOutput{})
+	pulumi.RegisterOutputType(ArchitectureTypeOutput{})
+	pulumi.RegisterOutputType(ArchitectureTypePtrOutput{})
 	pulumi.RegisterOutputType(CachingTypesOutput{})
 	pulumi.RegisterOutputType(CachingTypesPtrOutput{})
 	pulumi.RegisterOutputType(ComponentNameOutput{})
 	pulumi.RegisterOutputType(ComponentNamePtrOutput{})
+	pulumi.RegisterOutputType(CpuManufacturerOutput{})
+	pulumi.RegisterOutputType(CpuManufacturerPtrOutput{})
 	pulumi.RegisterOutputType(DeleteOptionsOutput{})
 	pulumi.RegisterOutputType(DeleteOptionsPtrOutput{})
 	pulumi.RegisterOutputType(DiffDiskOptionsOutput{})
@@ -5719,6 +6936,8 @@ func init() {
 	pulumi.RegisterOutputType(LinuxVMGuestPatchAutomaticByPlatformRebootSettingPtrOutput{})
 	pulumi.RegisterOutputType(LinuxVMGuestPatchModeOutput{})
 	pulumi.RegisterOutputType(LinuxVMGuestPatchModePtrOutput{})
+	pulumi.RegisterOutputType(LocalStorageDiskTypeOutput{})
+	pulumi.RegisterOutputType(LocalStorageDiskTypePtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypePtrOutput{})
 	pulumi.RegisterOutputType(ModeOutput{})
@@ -5751,6 +6970,10 @@ func init() {
 	pulumi.RegisterOutputType(SpotAllocationStrategyPtrOutput{})
 	pulumi.RegisterOutputType(StorageAccountTypesOutput{})
 	pulumi.RegisterOutputType(StorageAccountTypesPtrOutput{})
+	pulumi.RegisterOutputType(VMAttributeSupportOutput{})
+	pulumi.RegisterOutputType(VMAttributeSupportPtrOutput{})
+	pulumi.RegisterOutputType(VMCategoryOutput{})
+	pulumi.RegisterOutputType(VMCategoryPtrOutput{})
 	pulumi.RegisterOutputType(WindowsPatchAssessmentModeOutput{})
 	pulumi.RegisterOutputType(WindowsPatchAssessmentModePtrOutput{})
 	pulumi.RegisterOutputType(WindowsVMGuestPatchAutomaticByPlatformRebootSettingOutput{})

@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Lab details.
 //
-// Uses Azure REST API version 2021-12-01-preview. In version 1.x of the Azure Native provider, it used API version 2021-12-01-preview.
+// Uses Azure REST API version 2021-12-01-preview. In version 2.x of the Azure Native provider, it used API version 2021-12-01-preview.
 type Lab struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Default monetary cap for each student in this lab
 	BudgetPerStudent AmountResponseOutput `pulumi:"budgetPerStudent"`
 	// The type of currency being used for the value.
@@ -40,6 +42,8 @@ type Lab struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// Total budget
+	TotalBudget AmountResponseOutput `pulumi:"totalBudget"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Amount value.
@@ -113,9 +117,9 @@ func (LabState) ElementType() reflect.Type {
 }
 
 type labArgs struct {
-	// The ID that uniquely identifies a billing account.
+	// The name of the billing account.
 	BillingAccountName string `pulumi:"billingAccountName"`
-	// The ID that uniquely identifies a billing profile.
+	// The name of the billing profile.
 	BillingProfileName string `pulumi:"billingProfileName"`
 	// Default monetary cap for each student in this lab
 	BudgetPerStudent Amount `pulumi:"budgetPerStudent"`
@@ -127,7 +131,7 @@ type labArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// Default expiration date for each student in this lab
 	ExpirationDate string `pulumi:"expirationDate"`
-	// The ID that uniquely identifies an invoice section.
+	// The name of the invoice section.
 	InvoiceSectionName string `pulumi:"invoiceSectionName"`
 	// Amount value.
 	Value *float64 `pulumi:"value"`
@@ -135,9 +139,9 @@ type labArgs struct {
 
 // The set of arguments for constructing a Lab resource.
 type LabArgs struct {
-	// The ID that uniquely identifies a billing account.
+	// The name of the billing account.
 	BillingAccountName pulumi.StringInput
-	// The ID that uniquely identifies a billing profile.
+	// The name of the billing profile.
 	BillingProfileName pulumi.StringInput
 	// Default monetary cap for each student in this lab
 	BudgetPerStudent AmountInput
@@ -149,7 +153,7 @@ type LabArgs struct {
 	DisplayName pulumi.StringInput
 	// Default expiration date for each student in this lab
 	ExpirationDate pulumi.StringInput
-	// The ID that uniquely identifies an invoice section.
+	// The name of the invoice section.
 	InvoiceSectionName pulumi.StringInput
 	// Amount value.
 	Value pulumi.Float64PtrInput
@@ -190,6 +194,11 @@ func (o LabOutput) ToLabOutput() LabOutput {
 
 func (o LabOutput) ToLabOutputWithContext(ctx context.Context) LabOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LabOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Lab) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Default monetary cap for each student in this lab
@@ -245,6 +254,11 @@ func (o LabOutput) Status() pulumi.StringOutput {
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LabOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Lab) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Total budget
+func (o LabOutput) TotalBudget() AmountResponseOutput {
+	return o.ApplyT(func(v *Lab) AmountResponseOutput { return v.TotalBudget }).(AmountResponseOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

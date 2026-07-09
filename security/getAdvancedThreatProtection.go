@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets the Advanced Threat Protection settings for the specified resource.
 //
 // Uses Azure REST API version 2019-01-01.
+//
+// Other available API versions: 2017-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native security [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAdvancedThreatProtection(ctx *pulumi.Context, args *LookupAdvancedThreatProtectionArgs, opts ...pulumi.InvokeOption) (*LookupAdvancedThreatProtectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAdvancedThreatProtectionResult
@@ -25,7 +27,7 @@ func LookupAdvancedThreatProtection(ctx *pulumi.Context, args *LookupAdvancedThr
 }
 
 type LookupAdvancedThreatProtectionArgs struct {
-	// The identifier of the resource.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceId string `pulumi:"resourceId"`
 	// Advanced Threat Protection setting name.
 	SettingName string `pulumi:"settingName"`
@@ -33,13 +35,17 @@ type LookupAdvancedThreatProtectionArgs struct {
 
 // The Advanced Threat Protection resource.
 type LookupAdvancedThreatProtectionResult struct {
-	// Resource Id
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Indicates whether Advanced Threat Protection is enabled.
 	IsEnabled *bool `pulumi:"isEnabled"`
-	// Resource name
+	// The name of the resource
 	Name string `pulumi:"name"`
-	// Resource type
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -53,7 +59,7 @@ func LookupAdvancedThreatProtectionOutput(ctx *pulumi.Context, args LookupAdvanc
 }
 
 type LookupAdvancedThreatProtectionOutputArgs struct {
-	// The identifier of the resource.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceId pulumi.StringInput `pulumi:"resourceId"`
 	// Advanced Threat Protection setting name.
 	SettingName pulumi.StringInput `pulumi:"settingName"`
@@ -78,7 +84,12 @@ func (o LookupAdvancedThreatProtectionResultOutput) ToLookupAdvancedThreatProtec
 	return o
 }
 
-// Resource Id
+// The Azure API version of the resource.
+func (o LookupAdvancedThreatProtectionResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAdvancedThreatProtectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupAdvancedThreatProtectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAdvancedThreatProtectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -88,12 +99,17 @@ func (o LookupAdvancedThreatProtectionResultOutput) IsEnabled() pulumi.BoolPtrOu
 	return o.ApplyT(func(v LookupAdvancedThreatProtectionResult) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o LookupAdvancedThreatProtectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAdvancedThreatProtectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Resource type
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupAdvancedThreatProtectionResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAdvancedThreatProtectionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupAdvancedThreatProtectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAdvancedThreatProtectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

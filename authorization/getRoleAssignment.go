@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2022-04-01.
 //
-// Other available API versions: 2017-10-01-preview, 2020-03-01-preview, 2020-04-01-preview.
+// Other available API versions: 2020-08-01-preview, 2020-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native authorization [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupRoleAssignment(ctx *pulumi.Context, args *LookupRoleAssignmentArgs, opts ...pulumi.InvokeOption) (*LookupRoleAssignmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRoleAssignmentResult
@@ -29,7 +29,7 @@ func LookupRoleAssignment(ctx *pulumi.Context, args *LookupRoleAssignmentArgs, o
 type LookupRoleAssignmentArgs struct {
 	// The name of the role assignment. It can be any valid GUID.
 	RoleAssignmentName string `pulumi:"roleAssignmentName"`
-	// The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+	// The fully qualified Azure Resource manager identifier of the resource.
 	Scope string `pulumi:"scope"`
 	// Tenant ID for cross-tenant request
 	TenantId *string `pulumi:"tenantId"`
@@ -37,6 +37,8 @@ type LookupRoleAssignmentArgs struct {
 
 // Role Assignments
 type LookupRoleAssignmentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'
 	Condition *string `pulumi:"condition"`
 	// Version of the condition. Currently the only accepted value is '2.0'
@@ -49,9 +51,9 @@ type LookupRoleAssignmentResult struct {
 	DelegatedManagedIdentityResourceId *string `pulumi:"delegatedManagedIdentityResourceId"`
 	// Description of role assignment
 	Description *string `pulumi:"description"`
-	// The role assignment ID.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
-	// The role assignment name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The principal ID.
 	PrincipalId string `pulumi:"principalId"`
@@ -61,7 +63,9 @@ type LookupRoleAssignmentResult struct {
 	RoleDefinitionId string `pulumi:"roleDefinitionId"`
 	// The role assignment scope.
 	Scope string `pulumi:"scope"`
-	// The role assignment type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Id of the user who updated the assignment
 	UpdatedBy string `pulumi:"updatedBy"`
@@ -93,7 +97,7 @@ func LookupRoleAssignmentOutput(ctx *pulumi.Context, args LookupRoleAssignmentOu
 type LookupRoleAssignmentOutputArgs struct {
 	// The name of the role assignment. It can be any valid GUID.
 	RoleAssignmentName pulumi.StringInput `pulumi:"roleAssignmentName"`
-	// The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
+	// The fully qualified Azure Resource manager identifier of the resource.
 	Scope pulumi.StringInput `pulumi:"scope"`
 	// Tenant ID for cross-tenant request
 	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
@@ -116,6 +120,11 @@ func (o LookupRoleAssignmentResultOutput) ToLookupRoleAssignmentResultOutput() L
 
 func (o LookupRoleAssignmentResultOutput) ToLookupRoleAssignmentResultOutputWithContext(ctx context.Context) LookupRoleAssignmentResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupRoleAssignmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRoleAssignmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'
@@ -148,12 +157,12 @@ func (o LookupRoleAssignmentResultOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The role assignment ID.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupRoleAssignmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The role assignment name.
+// The name of the resource
 func (o LookupRoleAssignmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -178,7 +187,12 @@ func (o LookupRoleAssignmentResultOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) string { return v.Scope }).(pulumi.StringOutput)
 }
 
-// The role assignment type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupRoleAssignmentResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupRoleAssignmentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupRoleAssignmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoleAssignmentResult) string { return v.Type }).(pulumi.StringOutput)
 }

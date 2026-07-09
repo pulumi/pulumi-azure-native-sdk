@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,8 +33,10 @@ type LookupEnterprisePolicyArgs struct {
 
 // Definition of the EnterprisePolicy.
 type LookupEnterprisePolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The encryption settings for a configuration store.
-	Encryption *PropertiesResponseEncryption `pulumi:"encryption"`
+	Encryption *PropertiesEncryptionResponse `pulumi:"encryption"`
 	// The health status of the resource.
 	HealthStatus *string `pulumi:"healthStatus"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -46,12 +48,12 @@ type LookupEnterprisePolicyResult struct {
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// Settings concerning lockbox.
-	Lockbox *PropertiesResponseLockbox `pulumi:"lockbox"`
+	Lockbox *PropertiesLockboxResponse `pulumi:"lockbox"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// Settings concerning network injection.
-	NetworkInjection *PropertiesResponseNetworkInjection `pulumi:"networkInjection"`
-	// Metadata pertaining to creation and last modification of the resource.
+	NetworkInjection *PropertiesNetworkInjectionResponse `pulumi:"networkInjection"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The internally assigned unique identifier of the resource.
 	SystemId string `pulumi:"systemId"`
@@ -96,9 +98,14 @@ func (o LookupEnterprisePolicyResultOutput) ToLookupEnterprisePolicyResultOutput
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupEnterprisePolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEnterprisePolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The encryption settings for a configuration store.
-func (o LookupEnterprisePolicyResultOutput) Encryption() PropertiesResponseEncryptionPtrOutput {
-	return o.ApplyT(func(v LookupEnterprisePolicyResult) *PropertiesResponseEncryption { return v.Encryption }).(PropertiesResponseEncryptionPtrOutput)
+func (o LookupEnterprisePolicyResultOutput) Encryption() PropertiesEncryptionResponsePtrOutput {
+	return o.ApplyT(func(v LookupEnterprisePolicyResult) *PropertiesEncryptionResponse { return v.Encryption }).(PropertiesEncryptionResponsePtrOutput)
 }
 
 // The health status of the resource.
@@ -127,8 +134,8 @@ func (o LookupEnterprisePolicyResultOutput) Location() pulumi.StringOutput {
 }
 
 // Settings concerning lockbox.
-func (o LookupEnterprisePolicyResultOutput) Lockbox() PropertiesResponseLockboxPtrOutput {
-	return o.ApplyT(func(v LookupEnterprisePolicyResult) *PropertiesResponseLockbox { return v.Lockbox }).(PropertiesResponseLockboxPtrOutput)
+func (o LookupEnterprisePolicyResultOutput) Lockbox() PropertiesLockboxResponsePtrOutput {
+	return o.ApplyT(func(v LookupEnterprisePolicyResult) *PropertiesLockboxResponse { return v.Lockbox }).(PropertiesLockboxResponsePtrOutput)
 }
 
 // The name of the resource
@@ -137,11 +144,11 @@ func (o LookupEnterprisePolicyResultOutput) Name() pulumi.StringOutput {
 }
 
 // Settings concerning network injection.
-func (o LookupEnterprisePolicyResultOutput) NetworkInjection() PropertiesResponseNetworkInjectionPtrOutput {
-	return o.ApplyT(func(v LookupEnterprisePolicyResult) *PropertiesResponseNetworkInjection { return v.NetworkInjection }).(PropertiesResponseNetworkInjectionPtrOutput)
+func (o LookupEnterprisePolicyResultOutput) NetworkInjection() PropertiesNetworkInjectionResponsePtrOutput {
+	return o.ApplyT(func(v LookupEnterprisePolicyResult) *PropertiesNetworkInjectionResponse { return v.NetworkInjection }).(PropertiesNetworkInjectionResponsePtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupEnterprisePolicyResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupEnterprisePolicyResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

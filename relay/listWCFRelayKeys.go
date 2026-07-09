@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Primary and secondary connection strings to the WCF relay.
 //
-// Uses Azure REST API version 2021-11-01.
+// Uses Azure REST API version 2024-01-01.
 //
-// Other available API versions: 2024-01-01.
+// Other available API versions: 2021-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListWCFRelayKeys(ctx *pulumi.Context, args *ListWCFRelayKeysArgs, opts ...pulumi.InvokeOption) (*ListWCFRelayKeysResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWCFRelayKeysResult
@@ -33,7 +33,7 @@ type ListWCFRelayKeysArgs struct {
 	NamespaceName string `pulumi:"namespaceName"`
 	// The relay name.
 	RelayName string `pulumi:"relayName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -67,7 +67,7 @@ type ListWCFRelayKeysOutputArgs struct {
 	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
 	// The relay name.
 	RelayName pulumi.StringInput `pulumi:"relayName"`
-	// Name of the Resource group within the Azure subscription.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 

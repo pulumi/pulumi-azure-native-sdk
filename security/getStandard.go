@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,7 +25,7 @@ func LookupStandard(ctx *pulumi.Context, args *LookupStandardArgs, opts ...pulum
 }
 
 type LookupStandardArgs struct {
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The Security Standard key - unique key for the standard type
 	StandardId string `pulumi:"standardId"`
@@ -33,6 +33,8 @@ type LookupStandardArgs struct {
 
 // Security Standard on a resource
 type LookupStandardResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// category of the standard provided
 	Category *string `pulumi:"category"`
 	// List of component objects containing component unique keys (such as assessment keys) to apply to standard scope.  Currently only supports assessment keys.
@@ -43,13 +45,13 @@ type LookupStandardResult struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Entity tag is used for comparing two or more entities from the same requested resource.
 	Etag *string `pulumi:"etag"`
-	// Resource Id
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Kind of the resource
 	Kind *string `pulumi:"kind"`
-	// Location where the resource is stored
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// Resource name
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// standard type (Custom or BuiltIn only currently)
 	StandardType string `pulumi:"standardType"`
@@ -57,9 +59,9 @@ type LookupStandardResult struct {
 	SupportedClouds []string `pulumi:"supportedClouds"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// A list of key value pairs that describe the resource.
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -73,7 +75,7 @@ func LookupStandardOutput(ctx *pulumi.Context, args LookupStandardOutputArgs, op
 }
 
 type LookupStandardOutputArgs struct {
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The Security Standard key - unique key for the standard type
 	StandardId pulumi.StringInput `pulumi:"standardId"`
@@ -96,6 +98,11 @@ func (o LookupStandardResultOutput) ToLookupStandardResultOutput() LookupStandar
 
 func (o LookupStandardResultOutput) ToLookupStandardResultOutputWithContext(ctx context.Context) LookupStandardResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupStandardResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStandardResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // category of the standard provided
@@ -123,7 +130,7 @@ func (o LookupStandardResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStandardResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Resource Id
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupStandardResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStandardResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -133,12 +140,12 @@ func (o LookupStandardResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStandardResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Location where the resource is stored
+// The geo-location where the resource lives
 func (o LookupStandardResultOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStandardResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o LookupStandardResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStandardResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -158,12 +165,12 @@ func (o LookupStandardResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupStandardResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// A list of key value pairs that describe the resource.
+// Resource tags.
 func (o LookupStandardResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupStandardResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupStandardResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStandardResult) string { return v.Type }).(pulumi.StringOutput)
 }

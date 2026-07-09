@@ -8,42 +8,43 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Database Migration Service resource
+// An Azure Database Migration Service (classic) resource
 //
-// Uses Azure REST API version 2021-06-30. In version 1.x of the Azure Native provider, it used API version 2018-04-19.
+// Uses Azure REST API version 2023-07-15-preview. In version 2.x of the Azure Native provider, it used API version 2021-06-30.
 //
-// Other available API versions: 2022-03-30-preview, 2023-07-15-preview.
+// Other available API versions: 2021-06-30, 2021-10-30-preview, 2022-01-30-preview, 2022-03-30-preview, 2025-03-15-preview, 2025-06-30, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Service struct {
 	pulumi.CustomResourceState
 
+	// The time delay before the service is auto-stopped when idle.
+	AutoStopDelay pulumi.StringPtrOutput `pulumi:"autoStopDelay"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// Whether service resources should be deleted when stopped. (Turned on by default)
+	DeleteResourcesOnStop pulumi.BoolPtrOutput `pulumi:"deleteResourcesOnStop"`
 	// HTTP strong entity tag value. Ignored if submitted
 	Etag pulumi.StringPtrOutput `pulumi:"etag"`
 	// The resource kind. Only 'vm' (the default) is supported.
-	Kind pulumi.StringPtrOutput `pulumi:"kind"`
-	// Resource location.
-	Location pulumi.StringOutput `pulumi:"location"`
-	// Resource name.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Kind     pulumi.StringPtrOutput `pulumi:"kind"`
+	Location pulumi.StringPtrOutput `pulumi:"location"`
+	Name     pulumi.StringOutput    `pulumi:"name"`
 	// The resource's provisioning state
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The public key of the service, used to encrypt secrets sent to the service
 	PublicKey pulumi.StringPtrOutput `pulumi:"publicKey"`
 	// Service SKU
-	Sku ServiceSkuResponsePtrOutput `pulumi:"sku"`
-	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// Resource tags.
-	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Resource type.
-	Type pulumi.StringOutput `pulumi:"type"`
+	Sku        ServiceSkuResponsePtrOutput `pulumi:"sku"`
+	SystemData SystemDataResponseOutput    `pulumi:"systemData"`
+	Tags       pulumi.StringMapOutput      `pulumi:"tags"`
+	Type       pulumi.StringOutput         `pulumi:"type"`
 	// The ID of the Microsoft.Network/networkInterfaces resource which the service have
 	VirtualNicId pulumi.StringPtrOutput `pulumi:"virtualNicId"`
 	// The ID of the Microsoft.Network/virtualNetworks/subnets resource to which the service should be joined
-	VirtualSubnetId pulumi.StringOutput `pulumi:"virtualSubnetId"`
+	VirtualSubnetId pulumi.StringPtrOutput `pulumi:"virtualSubnetId"`
 }
 
 // NewService registers a new resource with the given unique name, arguments, and options.
@@ -55,9 +56,6 @@ func NewService(ctx *pulumi.Context,
 
 	if args.GroupName == nil {
 		return nil, errors.New("invalid value for required argument 'GroupName'")
-	}
-	if args.VirtualSubnetId == nil {
-		return nil, errors.New("invalid value for required argument 'VirtualSubnetId'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
@@ -89,6 +87,15 @@ func NewService(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:datamigration/v20230715preview:Service"),
+		},
+		{
+			Type: pulumi.String("azure-native:datamigration/v20250315preview:Service"),
+		},
+		{
+			Type: pulumi.String("azure-native:datamigration/v20250630:Service"),
+		},
+		{
+			Type: pulumi.String("azure-native:datamigration/v20250901preview:Service"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -125,46 +132,50 @@ func (ServiceState) ElementType() reflect.Type {
 }
 
 type serviceArgs struct {
+	// The time delay before the service is auto-stopped when idle.
+	AutoStopDelay *string `pulumi:"autoStopDelay"`
+	// Whether service resources should be deleted when stopped. (Turned on by default)
+	DeleteResourcesOnStop *bool `pulumi:"deleteResourcesOnStop"`
 	// Name of the resource group
 	GroupName string `pulumi:"groupName"`
 	// The resource kind. Only 'vm' (the default) is supported.
-	Kind *string `pulumi:"kind"`
-	// Resource location.
+	Kind     *string `pulumi:"kind"`
 	Location *string `pulumi:"location"`
 	// The public key of the service, used to encrypt secrets sent to the service
 	PublicKey *string `pulumi:"publicKey"`
 	// Name of the service
 	ServiceName *string `pulumi:"serviceName"`
 	// Service SKU
-	Sku *ServiceSku `pulumi:"sku"`
-	// Resource tags.
+	Sku  *ServiceSku       `pulumi:"sku"`
 	Tags map[string]string `pulumi:"tags"`
 	// The ID of the Microsoft.Network/networkInterfaces resource which the service have
 	VirtualNicId *string `pulumi:"virtualNicId"`
 	// The ID of the Microsoft.Network/virtualNetworks/subnets resource to which the service should be joined
-	VirtualSubnetId string `pulumi:"virtualSubnetId"`
+	VirtualSubnetId *string `pulumi:"virtualSubnetId"`
 }
 
 // The set of arguments for constructing a Service resource.
 type ServiceArgs struct {
+	// The time delay before the service is auto-stopped when idle.
+	AutoStopDelay pulumi.StringPtrInput
+	// Whether service resources should be deleted when stopped. (Turned on by default)
+	DeleteResourcesOnStop pulumi.BoolPtrInput
 	// Name of the resource group
 	GroupName pulumi.StringInput
 	// The resource kind. Only 'vm' (the default) is supported.
-	Kind pulumi.StringPtrInput
-	// Resource location.
+	Kind     pulumi.StringPtrInput
 	Location pulumi.StringPtrInput
 	// The public key of the service, used to encrypt secrets sent to the service
 	PublicKey pulumi.StringPtrInput
 	// Name of the service
 	ServiceName pulumi.StringPtrInput
 	// Service SKU
-	Sku ServiceSkuPtrInput
-	// Resource tags.
+	Sku  ServiceSkuPtrInput
 	Tags pulumi.StringMapInput
 	// The ID of the Microsoft.Network/networkInterfaces resource which the service have
 	VirtualNicId pulumi.StringPtrInput
 	// The ID of the Microsoft.Network/virtualNetworks/subnets resource to which the service should be joined
-	VirtualSubnetId pulumi.StringInput
+	VirtualSubnetId pulumi.StringPtrInput
 }
 
 func (ServiceArgs) ElementType() reflect.Type {
@@ -204,6 +215,21 @@ func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOu
 	return o
 }
 
+// The time delay before the service is auto-stopped when idle.
+func (o ServiceOutput) AutoStopDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.AutoStopDelay }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o ServiceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Whether service resources should be deleted when stopped. (Turned on by default)
+func (o ServiceOutput) DeleteResourcesOnStop() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Service) pulumi.BoolPtrOutput { return v.DeleteResourcesOnStop }).(pulumi.BoolPtrOutput)
+}
+
 // HTTP strong entity tag value. Ignored if submitted
 func (o ServiceOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.Etag }).(pulumi.StringPtrOutput)
@@ -214,12 +240,10 @@ func (o ServiceOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Resource location.
-func (o ServiceOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+func (o ServiceOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// Resource name.
 func (o ServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -239,17 +263,14 @@ func (o ServiceOutput) Sku() ServiceSkuResponsePtrOutput {
 	return o.ApplyT(func(v *Service) ServiceSkuResponsePtrOutput { return v.Sku }).(ServiceSkuResponsePtrOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
 func (o ServiceOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Service) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// Resource tags.
 func (o ServiceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type.
 func (o ServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
@@ -260,8 +281,8 @@ func (o ServiceOutput) VirtualNicId() pulumi.StringPtrOutput {
 }
 
 // The ID of the Microsoft.Network/virtualNetworks/subnets resource to which the service should be joined
-func (o ServiceOutput) VirtualSubnetId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.VirtualSubnetId }).(pulumi.StringOutput)
+func (o ServiceOutput) VirtualSubnetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringPtrOutput { return v.VirtualSubnetId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

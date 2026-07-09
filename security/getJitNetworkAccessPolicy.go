@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,23 +29,28 @@ type LookupJitNetworkAccessPolicyArgs struct {
 	AscLocation string `pulumi:"ascLocation"`
 	// Name of a Just-in-Time access configuration policy.
 	JitNetworkAccessPolicyName string `pulumi:"jitNetworkAccessPolicyName"`
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
+// Concrete proxy resource types can be created by aliasing this type using a specific property type.
 type LookupJitNetworkAccessPolicyResult struct {
-	// Resource Id
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Kind of the resource
 	Kind *string `pulumi:"kind"`
 	// Location where the resource is stored
 	Location string `pulumi:"location"`
-	// Resource name
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Gets the provisioning state of the Just-in-Time policy.
 	ProvisioningState string                            `pulumi:"provisioningState"`
 	Requests          []JitNetworkAccessRequestResponse `pulumi:"requests"`
-	// Resource type
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Configurations for Microsoft.Compute/virtualMachines resource type.
 	VirtualMachines []JitNetworkAccessPolicyVirtualMachineResponse `pulumi:"virtualMachines"`
@@ -65,7 +70,7 @@ type LookupJitNetworkAccessPolicyOutputArgs struct {
 	AscLocation pulumi.StringInput `pulumi:"ascLocation"`
 	// Name of a Just-in-Time access configuration policy.
 	JitNetworkAccessPolicyName pulumi.StringInput `pulumi:"jitNetworkAccessPolicyName"`
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -73,6 +78,7 @@ func (LookupJitNetworkAccessPolicyOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupJitNetworkAccessPolicyArgs)(nil)).Elem()
 }
 
+// Concrete proxy resource types can be created by aliasing this type using a specific property type.
 type LookupJitNetworkAccessPolicyResultOutput struct{ *pulumi.OutputState }
 
 func (LookupJitNetworkAccessPolicyResultOutput) ElementType() reflect.Type {
@@ -87,7 +93,12 @@ func (o LookupJitNetworkAccessPolicyResultOutput) ToLookupJitNetworkAccessPolicy
 	return o
 }
 
-// Resource Id
+// The Azure API version of the resource.
+func (o LookupJitNetworkAccessPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJitNetworkAccessPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupJitNetworkAccessPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJitNetworkAccessPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -102,7 +113,7 @@ func (o LookupJitNetworkAccessPolicyResultOutput) Location() pulumi.StringOutput
 	return o.ApplyT(func(v LookupJitNetworkAccessPolicyResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o LookupJitNetworkAccessPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJitNetworkAccessPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -116,7 +127,12 @@ func (o LookupJitNetworkAccessPolicyResultOutput) Requests() JitNetworkAccessReq
 	return o.ApplyT(func(v LookupJitNetworkAccessPolicyResult) []JitNetworkAccessRequestResponse { return v.Requests }).(JitNetworkAccessRequestResponseArrayOutput)
 }
 
-// Resource type
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupJitNetworkAccessPolicyResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupJitNetworkAccessPolicyResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupJitNetworkAccessPolicyResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJitNetworkAccessPolicyResult) string { return v.Type }).(pulumi.StringOutput)
 }

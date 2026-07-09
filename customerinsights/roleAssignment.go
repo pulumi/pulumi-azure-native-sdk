@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Role Assignment resource format.
 //
-// Uses Azure REST API version 2017-04-26. In version 1.x of the Azure Native provider, it used API version 2017-04-26.
+// Uses Azure REST API version 2017-04-26. In version 2.x of the Azure Native provider, it used API version 2017-04-26.
 type RoleAssignment struct {
 	pulumi.CustomResourceState
 
 	// The name of the metadata object.
 	AssignmentName pulumi.StringOutput `pulumi:"assignmentName"`
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Widget types set for the assignment.
 	ConflationPolicies ResourceSetDescriptionResponsePtrOutput `pulumi:"conflationPolicies"`
 	// Connectors set for the assignment.
@@ -251,6 +253,11 @@ func (o RoleAssignmentOutput) ToRoleAssignmentOutputWithContext(ctx context.Cont
 // The name of the metadata object.
 func (o RoleAssignmentOutput) AssignmentName() pulumi.StringOutput {
 	return o.ApplyT(func(v *RoleAssignment) pulumi.StringOutput { return v.AssignmentName }).(pulumi.StringOutput)
+}
+
+// The Azure API version of the resource.
+func (o RoleAssignmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RoleAssignment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Widget types set for the assignment.

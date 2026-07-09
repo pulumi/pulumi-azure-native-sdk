@@ -14,11 +14,16 @@ import (
 type EnterprisePolicyKind string
 
 const (
-	EnterprisePolicyKindLockbox          = EnterprisePolicyKind("Lockbox")
-	EnterprisePolicyKindPrivateEndpoint  = EnterprisePolicyKind("PrivateEndpoint")
-	EnterprisePolicyKindEncryption       = EnterprisePolicyKind("Encryption")
+	// Lockbox
+	EnterprisePolicyKindLockbox = EnterprisePolicyKind("Lockbox")
+	// PrivateEndpoint
+	EnterprisePolicyKindPrivateEndpoint = EnterprisePolicyKind("PrivateEndpoint")
+	// Encryption
+	EnterprisePolicyKindEncryption = EnterprisePolicyKind("Encryption")
+	// NetworkInjection
 	EnterprisePolicyKindNetworkInjection = EnterprisePolicyKind("NetworkInjection")
-	EnterprisePolicyKindIdentity         = EnterprisePolicyKind("Identity")
+	// Identity
+	EnterprisePolicyKindIdentity = EnterprisePolicyKind("Identity")
 )
 
 func (EnterprisePolicyKind) ElementType() reflect.Type {
@@ -186,10 +191,14 @@ func (in *enterprisePolicyKindPtr) ToEnterprisePolicyKindPtrOutputWithContext(ct
 type HealthStatus string
 
 const (
+	// Undetermined
 	HealthStatusUndetermined = HealthStatus("Undetermined")
-	HealthStatusHealthy      = HealthStatus("Healthy")
-	HealthStatusWarning      = HealthStatus("Warning")
-	HealthStatusUnhealthy    = HealthStatus("Unhealthy")
+	// Healthy
+	HealthStatusHealthy = HealthStatus("Healthy")
+	// Warning
+	HealthStatusWarning = HealthStatus("Warning")
+	// Unhealthy
+	HealthStatusUnhealthy = HealthStatus("Unhealthy")
 )
 
 func (HealthStatus) ElementType() reflect.Type {
@@ -524,8 +533,10 @@ func (in *privateEndpointServiceConnectionStatusPtr) ToPrivateEndpointServiceCon
 type ResourceIdentityType string
 
 const (
+	// SystemAssigned
 	ResourceIdentityTypeSystemAssigned = ResourceIdentityType("SystemAssigned")
-	ResourceIdentityTypeNone           = ResourceIdentityType("None")
+	// None
+	ResourceIdentityTypeNone = ResourceIdentityType("None")
 )
 
 func (ResourceIdentityType) ElementType() reflect.Type {
@@ -690,8 +701,11 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 type State string
 
 const (
-	StateEnabled       = State("Enabled")
-	StateDisabled      = State("Disabled")
+	// Enabled
+	StateEnabled = State("Enabled")
+	// Disabled
+	StateDisabled = State("Disabled")
+	// NotConfigured
 	StateNotConfigured = State("NotConfigured")
 )
 

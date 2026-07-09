@@ -8,25 +8,31 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Security Application over a given scope
 //
-// Uses Azure REST API version 2022-07-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-07-01-preview.
+// Uses Azure REST API version 2022-07-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-07-01-preview.
 type Application struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The application conditionSets - see examples
+	ConditionSets pulumi.ArrayOutput `pulumi:"conditionSets"`
 	// description of the application
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// display name of the application
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// Resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The application source, what it affects, e.g. Assessments
 	SourceResourceType pulumi.StringOutput `pulumi:"sourceResourceType"`
-	// Resource type
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -37,6 +43,9 @@ func NewApplication(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ConditionSets == nil {
+		return nil, errors.New("invalid value for required argument 'ConditionSets'")
+	}
 	if args.SourceResourceType == nil {
 		return nil, errors.New("invalid value for required argument 'SourceResourceType'")
 	}
@@ -81,6 +90,8 @@ func (ApplicationState) ElementType() reflect.Type {
 type applicationArgs struct {
 	// The security Application key - unique key for the standard application
 	ApplicationId *string `pulumi:"applicationId"`
+	// The application conditionSets - see examples
+	ConditionSets []interface{} `pulumi:"conditionSets"`
 	// description of the application
 	Description *string `pulumi:"description"`
 	// display name of the application
@@ -93,6 +104,8 @@ type applicationArgs struct {
 type ApplicationArgs struct {
 	// The security Application key - unique key for the standard application
 	ApplicationId pulumi.StringPtrInput
+	// The application conditionSets - see examples
+	ConditionSets pulumi.ArrayInput
 	// description of the application
 	Description pulumi.StringPtrInput
 	// display name of the application
@@ -138,6 +151,16 @@ func (o ApplicationOutput) ToApplicationOutputWithContext(ctx context.Context) A
 	return o
 }
 
+// The Azure API version of the resource.
+func (o ApplicationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The application conditionSets - see examples
+func (o ApplicationOutput) ConditionSets() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *Application) pulumi.ArrayOutput { return v.ConditionSets }).(pulumi.ArrayOutput)
+}
+
 // description of the application
 func (o ApplicationOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -148,7 +171,7 @@ func (o ApplicationOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o ApplicationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -158,7 +181,12 @@ func (o ApplicationOutput) SourceResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.SourceResourceType }).(pulumi.StringOutput)
 }
 
-// Resource type
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o ApplicationOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *Application) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ApplicationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

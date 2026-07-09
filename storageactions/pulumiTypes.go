@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -525,9 +525,9 @@ type StorageTaskOperation struct {
 	// The operation to be performed on the object.
 	Name string `pulumi:"name"`
 	// Action to be taken when the operation fails for a object.
-	OnFailure *OnFailure `pulumi:"onFailure"`
+	OnFailure *string `pulumi:"onFailure"`
 	// Action to be taken when the operation is successful for a object.
-	OnSuccess *OnSuccess `pulumi:"onSuccess"`
+	OnSuccess *string `pulumi:"onSuccess"`
 	// Key-value parameters for the operation.
 	Parameters map[string]string `pulumi:"parameters"`
 }
@@ -548,9 +548,9 @@ type StorageTaskOperationArgs struct {
 	// The operation to be performed on the object.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Action to be taken when the operation fails for a object.
-	OnFailure OnFailurePtrInput `pulumi:"onFailure"`
+	OnFailure pulumi.StringPtrInput `pulumi:"onFailure"`
 	// Action to be taken when the operation is successful for a object.
-	OnSuccess OnSuccessPtrInput `pulumi:"onSuccess"`
+	OnSuccess pulumi.StringPtrInput `pulumi:"onSuccess"`
 	// Key-value parameters for the operation.
 	Parameters pulumi.StringMapInput `pulumi:"parameters"`
 }
@@ -613,13 +613,13 @@ func (o StorageTaskOperationOutput) Name() pulumi.StringOutput {
 }
 
 // Action to be taken when the operation fails for a object.
-func (o StorageTaskOperationOutput) OnFailure() OnFailurePtrOutput {
-	return o.ApplyT(func(v StorageTaskOperation) *OnFailure { return v.OnFailure }).(OnFailurePtrOutput)
+func (o StorageTaskOperationOutput) OnFailure() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageTaskOperation) *string { return v.OnFailure }).(pulumi.StringPtrOutput)
 }
 
 // Action to be taken when the operation is successful for a object.
-func (o StorageTaskOperationOutput) OnSuccess() OnSuccessPtrOutput {
-	return o.ApplyT(func(v StorageTaskOperation) *OnSuccess { return v.OnSuccess }).(OnSuccessPtrOutput)
+func (o StorageTaskOperationOutput) OnSuccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v StorageTaskOperation) *string { return v.OnSuccess }).(pulumi.StringPtrOutput)
 }
 
 // Key-value parameters for the operation.

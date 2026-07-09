@@ -8,23 +8,27 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Managed private endpoint resource type.
 //
-// Uses Azure REST API version 2018-06-01. In version 1.x of the Azure Native provider, it used API version 2018-06-01.
+// Uses Azure REST API version 2018-06-01. In version 2.x of the Azure Native provider, it used API version 2018-06-01.
 type ManagedPrivateEndpoint struct {
 	pulumi.CustomResourceState
 
-	// Etag identifies change in the resource.
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The resource name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Managed private endpoint properties.
 	Properties ManagedPrivateEndpointResponseOutput `pulumi:"properties"`
-	// The resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -94,7 +98,7 @@ type managedPrivateEndpointArgs struct {
 	ManagedVirtualNetworkName string `pulumi:"managedVirtualNetworkName"`
 	// Managed private endpoint properties.
 	Properties ManagedPrivateEndpointType `pulumi:"properties"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -108,7 +112,7 @@ type ManagedPrivateEndpointArgs struct {
 	ManagedVirtualNetworkName pulumi.StringInput
 	// Managed private endpoint properties.
 	Properties ManagedPrivateEndpointTypeInput
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 }
 
@@ -149,12 +153,17 @@ func (o ManagedPrivateEndpointOutput) ToManagedPrivateEndpointOutputWithContext(
 	return o
 }
 
-// Etag identifies change in the resource.
+// The Azure API version of the resource.
+func (o ManagedPrivateEndpointOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ManagedPrivateEndpoint) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
 func (o ManagedPrivateEndpointOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedPrivateEndpoint) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// The resource name.
+// The name of the resource
 func (o ManagedPrivateEndpointOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedPrivateEndpoint) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -164,7 +173,12 @@ func (o ManagedPrivateEndpointOutput) Properties() ManagedPrivateEndpointRespons
 	return o.ApplyT(func(v *ManagedPrivateEndpoint) ManagedPrivateEndpointResponseOutput { return v.Properties }).(ManagedPrivateEndpointResponseOutput)
 }
 
-// The resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o ManagedPrivateEndpointOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *ManagedPrivateEndpoint) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ManagedPrivateEndpointOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedPrivateEndpoint) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

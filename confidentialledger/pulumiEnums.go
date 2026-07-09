@@ -344,6 +344,174 @@ func (in *ledgerRoleNamePtr) ToLedgerRoleNamePtrOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, in).(LedgerRoleNamePtrOutput)
 }
 
+// SKU associated with the ledger
+type LedgerSku string
+
+const (
+	LedgerSkuStandard = LedgerSku("Standard")
+	LedgerSkuBasic    = LedgerSku("Basic")
+	LedgerSkuUnknown  = LedgerSku("Unknown")
+)
+
+func (LedgerSku) ElementType() reflect.Type {
+	return reflect.TypeOf((*LedgerSku)(nil)).Elem()
+}
+
+func (e LedgerSku) ToLedgerSkuOutput() LedgerSkuOutput {
+	return pulumi.ToOutput(e).(LedgerSkuOutput)
+}
+
+func (e LedgerSku) ToLedgerSkuOutputWithContext(ctx context.Context) LedgerSkuOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(LedgerSkuOutput)
+}
+
+func (e LedgerSku) ToLedgerSkuPtrOutput() LedgerSkuPtrOutput {
+	return e.ToLedgerSkuPtrOutputWithContext(context.Background())
+}
+
+func (e LedgerSku) ToLedgerSkuPtrOutputWithContext(ctx context.Context) LedgerSkuPtrOutput {
+	return LedgerSku(e).ToLedgerSkuOutputWithContext(ctx).ToLedgerSkuPtrOutputWithContext(ctx)
+}
+
+func (e LedgerSku) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LedgerSku) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LedgerSku) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e LedgerSku) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type LedgerSkuOutput struct{ *pulumi.OutputState }
+
+func (LedgerSkuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LedgerSku)(nil)).Elem()
+}
+
+func (o LedgerSkuOutput) ToLedgerSkuOutput() LedgerSkuOutput {
+	return o
+}
+
+func (o LedgerSkuOutput) ToLedgerSkuOutputWithContext(ctx context.Context) LedgerSkuOutput {
+	return o
+}
+
+func (o LedgerSkuOutput) ToLedgerSkuPtrOutput() LedgerSkuPtrOutput {
+	return o.ToLedgerSkuPtrOutputWithContext(context.Background())
+}
+
+func (o LedgerSkuOutput) ToLedgerSkuPtrOutputWithContext(ctx context.Context) LedgerSkuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LedgerSku) *LedgerSku {
+		return &v
+	}).(LedgerSkuPtrOutput)
+}
+
+func (o LedgerSkuOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o LedgerSkuOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LedgerSku) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o LedgerSkuOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LedgerSkuOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LedgerSku) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type LedgerSkuPtrOutput struct{ *pulumi.OutputState }
+
+func (LedgerSkuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LedgerSku)(nil)).Elem()
+}
+
+func (o LedgerSkuPtrOutput) ToLedgerSkuPtrOutput() LedgerSkuPtrOutput {
+	return o
+}
+
+func (o LedgerSkuPtrOutput) ToLedgerSkuPtrOutputWithContext(ctx context.Context) LedgerSkuPtrOutput {
+	return o
+}
+
+func (o LedgerSkuPtrOutput) Elem() LedgerSkuOutput {
+	return o.ApplyT(func(v *LedgerSku) LedgerSku {
+		if v != nil {
+			return *v
+		}
+		var ret LedgerSku
+		return ret
+	}).(LedgerSkuOutput)
+}
+
+func (o LedgerSkuPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LedgerSkuPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LedgerSku) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// LedgerSkuInput is an input type that accepts values of the LedgerSku enum
+// A concrete instance of `LedgerSkuInput` can be one of the following:
+//
+//	LedgerSkuStandard
+//	LedgerSkuBasic
+//	LedgerSkuUnknown
+type LedgerSkuInput interface {
+	pulumi.Input
+
+	ToLedgerSkuOutput() LedgerSkuOutput
+	ToLedgerSkuOutputWithContext(context.Context) LedgerSkuOutput
+}
+
+var ledgerSkuPtrType = reflect.TypeOf((**LedgerSku)(nil)).Elem()
+
+type LedgerSkuPtrInput interface {
+	pulumi.Input
+
+	ToLedgerSkuPtrOutput() LedgerSkuPtrOutput
+	ToLedgerSkuPtrOutputWithContext(context.Context) LedgerSkuPtrOutput
+}
+
+type ledgerSkuPtr string
+
+func LedgerSkuPtr(v string) LedgerSkuPtrInput {
+	return (*ledgerSkuPtr)(&v)
+}
+
+func (*ledgerSkuPtr) ElementType() reflect.Type {
+	return ledgerSkuPtrType
+}
+
+func (in *ledgerSkuPtr) ToLedgerSkuPtrOutput() LedgerSkuPtrOutput {
+	return pulumi.ToOutput(in).(LedgerSkuPtrOutput)
+}
+
+func (in *ledgerSkuPtr) ToLedgerSkuPtrOutputWithContext(ctx context.Context) LedgerSkuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(LedgerSkuPtrOutput)
+}
+
 // Type of Confidential Ledger
 type LedgerType string
 
@@ -512,11 +680,187 @@ func (in *ledgerTypePtr) ToLedgerTypePtrOutputWithContext(ctx context.Context) L
 	return pulumi.ToOutputWithContext(ctx, in).(LedgerTypePtrOutput)
 }
 
+// Object representing RunningState for Managed CCF.
+type RunningState string
+
+const (
+	RunningStateActive   = RunningState("Active")
+	RunningStatePaused   = RunningState("Paused")
+	RunningStateUnknown  = RunningState("Unknown")
+	RunningStatePausing  = RunningState("Pausing")
+	RunningStateResuming = RunningState("Resuming")
+)
+
+func (RunningState) ElementType() reflect.Type {
+	return reflect.TypeOf((*RunningState)(nil)).Elem()
+}
+
+func (e RunningState) ToRunningStateOutput() RunningStateOutput {
+	return pulumi.ToOutput(e).(RunningStateOutput)
+}
+
+func (e RunningState) ToRunningStateOutputWithContext(ctx context.Context) RunningStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RunningStateOutput)
+}
+
+func (e RunningState) ToRunningStatePtrOutput() RunningStatePtrOutput {
+	return e.ToRunningStatePtrOutputWithContext(context.Background())
+}
+
+func (e RunningState) ToRunningStatePtrOutputWithContext(ctx context.Context) RunningStatePtrOutput {
+	return RunningState(e).ToRunningStateOutputWithContext(ctx).ToRunningStatePtrOutputWithContext(ctx)
+}
+
+func (e RunningState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RunningState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RunningState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RunningState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RunningStateOutput struct{ *pulumi.OutputState }
+
+func (RunningStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RunningState)(nil)).Elem()
+}
+
+func (o RunningStateOutput) ToRunningStateOutput() RunningStateOutput {
+	return o
+}
+
+func (o RunningStateOutput) ToRunningStateOutputWithContext(ctx context.Context) RunningStateOutput {
+	return o
+}
+
+func (o RunningStateOutput) ToRunningStatePtrOutput() RunningStatePtrOutput {
+	return o.ToRunningStatePtrOutputWithContext(context.Background())
+}
+
+func (o RunningStateOutput) ToRunningStatePtrOutputWithContext(ctx context.Context) RunningStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RunningState) *RunningState {
+		return &v
+	}).(RunningStatePtrOutput)
+}
+
+func (o RunningStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RunningStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RunningState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RunningStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RunningStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RunningState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RunningStatePtrOutput struct{ *pulumi.OutputState }
+
+func (RunningStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RunningState)(nil)).Elem()
+}
+
+func (o RunningStatePtrOutput) ToRunningStatePtrOutput() RunningStatePtrOutput {
+	return o
+}
+
+func (o RunningStatePtrOutput) ToRunningStatePtrOutputWithContext(ctx context.Context) RunningStatePtrOutput {
+	return o
+}
+
+func (o RunningStatePtrOutput) Elem() RunningStateOutput {
+	return o.ApplyT(func(v *RunningState) RunningState {
+		if v != nil {
+			return *v
+		}
+		var ret RunningState
+		return ret
+	}).(RunningStateOutput)
+}
+
+func (o RunningStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RunningStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RunningState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RunningStateInput is an input type that accepts values of the RunningState enum
+// A concrete instance of `RunningStateInput` can be one of the following:
+//
+//	RunningStateActive
+//	RunningStatePaused
+//	RunningStateUnknown
+//	RunningStatePausing
+//	RunningStateResuming
+type RunningStateInput interface {
+	pulumi.Input
+
+	ToRunningStateOutput() RunningStateOutput
+	ToRunningStateOutputWithContext(context.Context) RunningStateOutput
+}
+
+var runningStatePtrType = reflect.TypeOf((**RunningState)(nil)).Elem()
+
+type RunningStatePtrInput interface {
+	pulumi.Input
+
+	ToRunningStatePtrOutput() RunningStatePtrOutput
+	ToRunningStatePtrOutputWithContext(context.Context) RunningStatePtrOutput
+}
+
+type runningStatePtr string
+
+func RunningStatePtr(v string) RunningStatePtrInput {
+	return (*runningStatePtr)(&v)
+}
+
+func (*runningStatePtr) ElementType() reflect.Type {
+	return runningStatePtrType
+}
+
+func (in *runningStatePtr) ToRunningStatePtrOutput() RunningStatePtrOutput {
+	return pulumi.ToOutput(in).(RunningStatePtrOutput)
+}
+
+func (in *runningStatePtr) ToRunningStatePtrOutputWithContext(ctx context.Context) RunningStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RunningStatePtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(LanguageRuntimeOutput{})
 	pulumi.RegisterOutputType(LanguageRuntimePtrOutput{})
 	pulumi.RegisterOutputType(LedgerRoleNameOutput{})
 	pulumi.RegisterOutputType(LedgerRoleNamePtrOutput{})
+	pulumi.RegisterOutputType(LedgerSkuOutput{})
+	pulumi.RegisterOutputType(LedgerSkuPtrOutput{})
 	pulumi.RegisterOutputType(LedgerTypeOutput{})
 	pulumi.RegisterOutputType(LedgerTypePtrOutput{})
+	pulumi.RegisterOutputType(RunningStateOutput{})
+	pulumi.RegisterOutputType(RunningStatePtrOutput{})
 }

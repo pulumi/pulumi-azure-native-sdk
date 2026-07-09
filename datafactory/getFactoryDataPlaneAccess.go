@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,7 +35,7 @@ type GetFactoryDataPlaneAccessArgs struct {
 	Permissions *string `pulumi:"permissions"`
 	// The name of the profile. Currently only the default is supported. The default value is DefaultProfile.
 	ProfileName *string `pulumi:"profileName"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Start time for the token. If not specified the current time will be used.
 	StartTime *string `pulumi:"startTime"`
@@ -71,7 +71,7 @@ type GetFactoryDataPlaneAccessOutputArgs struct {
 	Permissions pulumi.StringPtrInput `pulumi:"permissions"`
 	// The name of the profile. Currently only the default is supported. The default value is DefaultProfile.
 	ProfileName pulumi.StringPtrInput `pulumi:"profileName"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Start time for the token. If not specified the current time will be used.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`

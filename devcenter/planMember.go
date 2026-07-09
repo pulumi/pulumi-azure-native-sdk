@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Represents a devcenter plan member resource.
 //
-// Uses Azure REST API version 2024-05-01-preview.
+// Uses Azure REST API version 2024-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-05-01-preview.
 //
-// Other available API versions: 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview, 2024-10-01-preview.
+// Other available API versions: 2024-05-01-preview, 2024-06-01-preview, 2024-07-01-preview, 2024-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native devcenter [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type PlanMember struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The unique id of the member.
 	MemberId pulumi.StringPtrOutput `pulumi:"memberId"`
 	// The type of the member (user, group)
@@ -28,10 +30,14 @@ type PlanMember struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The provisioning state of the resource.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
+	// The sync status of the member.
+	SyncStatus PlanMemberSyncStatusResponseOutput `pulumi:"syncStatus"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
+	// The tier of the member.
+	Tier pulumi.StringPtrOutput `pulumi:"tier"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
@@ -112,6 +118,8 @@ type planMemberArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
+	// The tier of the member.
+	Tier *string `pulumi:"tier"`
 }
 
 // The set of arguments for constructing a PlanMember resource.
@@ -128,6 +136,8 @@ type PlanMemberArgs struct {
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
+	// The tier of the member.
+	Tier pulumi.StringPtrInput
 }
 
 func (PlanMemberArgs) ElementType() reflect.Type {
@@ -167,6 +177,11 @@ func (o PlanMemberOutput) ToPlanMemberOutputWithContext(ctx context.Context) Pla
 	return o
 }
 
+// The Azure API version of the resource.
+func (o PlanMemberOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PlanMember) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The unique id of the member.
 func (o PlanMemberOutput) MemberId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PlanMember) pulumi.StringPtrOutput { return v.MemberId }).(pulumi.StringPtrOutput)
@@ -187,6 +202,11 @@ func (o PlanMemberOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *PlanMember) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
+// The sync status of the member.
+func (o PlanMemberOutput) SyncStatus() PlanMemberSyncStatusResponseOutput {
+	return o.ApplyT(func(v *PlanMember) PlanMemberSyncStatusResponseOutput { return v.SyncStatus }).(PlanMemberSyncStatusResponseOutput)
+}
+
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o PlanMemberOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *PlanMember) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
@@ -195,6 +215,11 @@ func (o PlanMemberOutput) SystemData() SystemDataResponseOutput {
 // Resource tags.
 func (o PlanMemberOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *PlanMember) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
+}
+
+// The tier of the member.
+func (o PlanMemberOutput) Tier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PlanMember) pulumi.StringPtrOutput { return v.Tier }).(pulumi.StringPtrOutput)
 }
 
 // The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

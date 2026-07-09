@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets all deployments for a remediation at resource scope.
 //
-// Uses Azure REST API version 2021-10-01.
+// Uses Azure REST API version 2024-10-01.
 //
-// Other available API versions: 2024-10-01.
+// Other available API versions: 2021-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native policyinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListRemediationDeploymentsAtResource(ctx *pulumi.Context, args *ListRemediationDeploymentsAtResourceArgs, opts ...pulumi.InvokeOption) (*ListRemediationDeploymentsAtResourceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListRemediationDeploymentsAtResourceResult
@@ -37,9 +37,9 @@ type ListRemediationDeploymentsAtResourceArgs struct {
 
 // List of deployments for a remediation.
 type ListRemediationDeploymentsAtResourceResult struct {
-	// The URL to get the next set of results.
-	NextLink string `pulumi:"nextLink"`
-	// Array of deployments for the remediation.
+	// The link to the next page of items
+	NextLink *string `pulumi:"nextLink"`
+	// The RemediationDeployment items on this page
 	Value []RemediationDeploymentResponse `pulumi:"value"`
 }
 
@@ -80,12 +80,12 @@ func (o ListRemediationDeploymentsAtResourceResultOutput) ToListRemediationDeplo
 	return o
 }
 
-// The URL to get the next set of results.
-func (o ListRemediationDeploymentsAtResourceResultOutput) NextLink() pulumi.StringOutput {
-	return o.ApplyT(func(v ListRemediationDeploymentsAtResourceResult) string { return v.NextLink }).(pulumi.StringOutput)
+// The link to the next page of items
+func (o ListRemediationDeploymentsAtResourceResultOutput) NextLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListRemediationDeploymentsAtResourceResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
-// Array of deployments for the remediation.
+// The RemediationDeployment items on this page
 func (o ListRemediationDeploymentsAtResourceResultOutput) Value() RemediationDeploymentResponseArrayOutput {
 	return o.ApplyT(func(v ListRemediationDeploymentsAtResourceResult) []RemediationDeploymentResponse { return v.Value }).(RemediationDeploymentResponseArrayOutput)
 }

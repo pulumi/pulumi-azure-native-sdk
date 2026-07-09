@@ -14,9 +14,12 @@ import (
 type ActivityOnInactiveMarkAs string
 
 const (
+	// Succeeded
 	ActivityOnInactiveMarkAsSucceeded = ActivityOnInactiveMarkAs("Succeeded")
-	ActivityOnInactiveMarkAsFailed    = ActivityOnInactiveMarkAs("Failed")
-	ActivityOnInactiveMarkAsSkipped   = ActivityOnInactiveMarkAs("Skipped")
+	// Failed
+	ActivityOnInactiveMarkAsFailed = ActivityOnInactiveMarkAs("Failed")
+	// Skipped
+	ActivityOnInactiveMarkAsSkipped = ActivityOnInactiveMarkAs("Skipped")
 )
 
 func (ActivityOnInactiveMarkAs) ElementType() reflect.Type {
@@ -182,7 +185,9 @@ func (in *activityOnInactiveMarkAsPtr) ToActivityOnInactiveMarkAsPtrOutputWithCo
 type ActivityState string
 
 const (
-	ActivityStateActive   = ActivityState("Active")
+	// Active
+	ActivityStateActive = ActivityState("Active")
+	// Inactive
 	ActivityStateInactive = ActivityState("Inactive")
 )
 
@@ -344,11 +349,178 @@ func (in *activityStatePtr) ToActivityStatePtrOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, in).(ActivityStatePtrOutput)
 }
 
+// Authentication type for connecting to the AmazonRdsForOracle database. Only used for Version 2.0.
+type AmazonRdsForOracleAuthenticationType string
+
+const (
+	// Basic
+	AmazonRdsForOracleAuthenticationTypeBasic = AmazonRdsForOracleAuthenticationType("Basic")
+)
+
+func (AmazonRdsForOracleAuthenticationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmazonRdsForOracleAuthenticationType)(nil)).Elem()
+}
+
+func (e AmazonRdsForOracleAuthenticationType) ToAmazonRdsForOracleAuthenticationTypeOutput() AmazonRdsForOracleAuthenticationTypeOutput {
+	return pulumi.ToOutput(e).(AmazonRdsForOracleAuthenticationTypeOutput)
+}
+
+func (e AmazonRdsForOracleAuthenticationType) ToAmazonRdsForOracleAuthenticationTypeOutputWithContext(ctx context.Context) AmazonRdsForOracleAuthenticationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AmazonRdsForOracleAuthenticationTypeOutput)
+}
+
+func (e AmazonRdsForOracleAuthenticationType) ToAmazonRdsForOracleAuthenticationTypePtrOutput() AmazonRdsForOracleAuthenticationTypePtrOutput {
+	return e.ToAmazonRdsForOracleAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (e AmazonRdsForOracleAuthenticationType) ToAmazonRdsForOracleAuthenticationTypePtrOutputWithContext(ctx context.Context) AmazonRdsForOracleAuthenticationTypePtrOutput {
+	return AmazonRdsForOracleAuthenticationType(e).ToAmazonRdsForOracleAuthenticationTypeOutputWithContext(ctx).ToAmazonRdsForOracleAuthenticationTypePtrOutputWithContext(ctx)
+}
+
+func (e AmazonRdsForOracleAuthenticationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AmazonRdsForOracleAuthenticationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AmazonRdsForOracleAuthenticationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AmazonRdsForOracleAuthenticationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AmazonRdsForOracleAuthenticationTypeOutput struct{ *pulumi.OutputState }
+
+func (AmazonRdsForOracleAuthenticationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AmazonRdsForOracleAuthenticationType)(nil)).Elem()
+}
+
+func (o AmazonRdsForOracleAuthenticationTypeOutput) ToAmazonRdsForOracleAuthenticationTypeOutput() AmazonRdsForOracleAuthenticationTypeOutput {
+	return o
+}
+
+func (o AmazonRdsForOracleAuthenticationTypeOutput) ToAmazonRdsForOracleAuthenticationTypeOutputWithContext(ctx context.Context) AmazonRdsForOracleAuthenticationTypeOutput {
+	return o
+}
+
+func (o AmazonRdsForOracleAuthenticationTypeOutput) ToAmazonRdsForOracleAuthenticationTypePtrOutput() AmazonRdsForOracleAuthenticationTypePtrOutput {
+	return o.ToAmazonRdsForOracleAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (o AmazonRdsForOracleAuthenticationTypeOutput) ToAmazonRdsForOracleAuthenticationTypePtrOutputWithContext(ctx context.Context) AmazonRdsForOracleAuthenticationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AmazonRdsForOracleAuthenticationType) *AmazonRdsForOracleAuthenticationType {
+		return &v
+	}).(AmazonRdsForOracleAuthenticationTypePtrOutput)
+}
+
+func (o AmazonRdsForOracleAuthenticationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AmazonRdsForOracleAuthenticationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AmazonRdsForOracleAuthenticationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AmazonRdsForOracleAuthenticationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AmazonRdsForOracleAuthenticationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AmazonRdsForOracleAuthenticationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AmazonRdsForOracleAuthenticationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AmazonRdsForOracleAuthenticationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AmazonRdsForOracleAuthenticationType)(nil)).Elem()
+}
+
+func (o AmazonRdsForOracleAuthenticationTypePtrOutput) ToAmazonRdsForOracleAuthenticationTypePtrOutput() AmazonRdsForOracleAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o AmazonRdsForOracleAuthenticationTypePtrOutput) ToAmazonRdsForOracleAuthenticationTypePtrOutputWithContext(ctx context.Context) AmazonRdsForOracleAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o AmazonRdsForOracleAuthenticationTypePtrOutput) Elem() AmazonRdsForOracleAuthenticationTypeOutput {
+	return o.ApplyT(func(v *AmazonRdsForOracleAuthenticationType) AmazonRdsForOracleAuthenticationType {
+		if v != nil {
+			return *v
+		}
+		var ret AmazonRdsForOracleAuthenticationType
+		return ret
+	}).(AmazonRdsForOracleAuthenticationTypeOutput)
+}
+
+func (o AmazonRdsForOracleAuthenticationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AmazonRdsForOracleAuthenticationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AmazonRdsForOracleAuthenticationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AmazonRdsForOracleAuthenticationTypeInput is an input type that accepts values of the AmazonRdsForOracleAuthenticationType enum
+// A concrete instance of `AmazonRdsForOracleAuthenticationTypeInput` can be one of the following:
+//
+//	AmazonRdsForOracleAuthenticationTypeBasic
+type AmazonRdsForOracleAuthenticationTypeInput interface {
+	pulumi.Input
+
+	ToAmazonRdsForOracleAuthenticationTypeOutput() AmazonRdsForOracleAuthenticationTypeOutput
+	ToAmazonRdsForOracleAuthenticationTypeOutputWithContext(context.Context) AmazonRdsForOracleAuthenticationTypeOutput
+}
+
+var amazonRdsForOracleAuthenticationTypePtrType = reflect.TypeOf((**AmazonRdsForOracleAuthenticationType)(nil)).Elem()
+
+type AmazonRdsForOracleAuthenticationTypePtrInput interface {
+	pulumi.Input
+
+	ToAmazonRdsForOracleAuthenticationTypePtrOutput() AmazonRdsForOracleAuthenticationTypePtrOutput
+	ToAmazonRdsForOracleAuthenticationTypePtrOutputWithContext(context.Context) AmazonRdsForOracleAuthenticationTypePtrOutput
+}
+
+type amazonRdsForOracleAuthenticationTypePtr string
+
+func AmazonRdsForOracleAuthenticationTypePtr(v string) AmazonRdsForOracleAuthenticationTypePtrInput {
+	return (*amazonRdsForOracleAuthenticationTypePtr)(&v)
+}
+
+func (*amazonRdsForOracleAuthenticationTypePtr) ElementType() reflect.Type {
+	return amazonRdsForOracleAuthenticationTypePtrType
+}
+
+func (in *amazonRdsForOracleAuthenticationTypePtr) ToAmazonRdsForOracleAuthenticationTypePtrOutput() AmazonRdsForOracleAuthenticationTypePtrOutput {
+	return pulumi.ToOutput(in).(AmazonRdsForOracleAuthenticationTypePtrOutput)
+}
+
+func (in *amazonRdsForOracleAuthenticationTypePtr) ToAmazonRdsForOracleAuthenticationTypePtrOutputWithContext(ctx context.Context) AmazonRdsForOracleAuthenticationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AmazonRdsForOracleAuthenticationTypePtrOutput)
+}
+
 // The type used for authentication. Type: string.
 type AmazonRdsForSqlAuthenticationType string
 
 const (
-	AmazonRdsForSqlAuthenticationTypeSQL     = AmazonRdsForSqlAuthenticationType("SQL")
+	// SQL
+	AmazonRdsForSqlAuthenticationTypeSQL = AmazonRdsForSqlAuthenticationType("SQL")
+	// Windows
 	AmazonRdsForSqlAuthenticationTypeWindows = AmazonRdsForSqlAuthenticationType("Windows")
 )
 
@@ -514,13 +686,20 @@ func (in *amazonRdsForSqlAuthenticationTypePtr) ToAmazonRdsForSqlAuthenticationT
 type AzureFunctionActivityMethod string
 
 const (
-	AzureFunctionActivityMethodGET     = AzureFunctionActivityMethod("GET")
-	AzureFunctionActivityMethodPOST    = AzureFunctionActivityMethod("POST")
-	AzureFunctionActivityMethodPUT     = AzureFunctionActivityMethod("PUT")
-	AzureFunctionActivityMethodDELETE  = AzureFunctionActivityMethod("DELETE")
+	// GET
+	AzureFunctionActivityMethodGET = AzureFunctionActivityMethod("GET")
+	// POST
+	AzureFunctionActivityMethodPOST = AzureFunctionActivityMethod("POST")
+	// PUT
+	AzureFunctionActivityMethodPUT = AzureFunctionActivityMethod("PUT")
+	// DELETE
+	AzureFunctionActivityMethodDELETE = AzureFunctionActivityMethod("DELETE")
+	// OPTIONS
 	AzureFunctionActivityMethodOPTIONS = AzureFunctionActivityMethod("OPTIONS")
-	AzureFunctionActivityMethodHEAD    = AzureFunctionActivityMethod("HEAD")
-	AzureFunctionActivityMethodTRACE   = AzureFunctionActivityMethod("TRACE")
+	// HEAD
+	AzureFunctionActivityMethodHEAD = AzureFunctionActivityMethod("HEAD")
+	// TRACE
+	AzureFunctionActivityMethodTRACE = AzureFunctionActivityMethod("TRACE")
 )
 
 func (AzureFunctionActivityMethod) ElementType() reflect.Type {
@@ -690,9 +869,12 @@ func (in *azureFunctionActivityMethodPtr) ToAzureFunctionActivityMethodPtrOutput
 type AzurePostgreSqlWriteMethodEnum string
 
 const (
-	AzurePostgreSqlWriteMethodEnumBulkInsert  = AzurePostgreSqlWriteMethodEnum("BulkInsert")
+	// BulkInsert
+	AzurePostgreSqlWriteMethodEnumBulkInsert = AzurePostgreSqlWriteMethodEnum("BulkInsert")
+	// CopyCommand
 	AzurePostgreSqlWriteMethodEnumCopyCommand = AzurePostgreSqlWriteMethodEnum("CopyCommand")
-	AzurePostgreSqlWriteMethodEnumUpsert      = AzurePostgreSqlWriteMethodEnum("Upsert")
+	// Upsert
+	AzurePostgreSqlWriteMethodEnumUpsert = AzurePostgreSqlWriteMethodEnum("Upsert")
 )
 
 func (AzurePostgreSqlWriteMethodEnum) ElementType() reflect.Type {
@@ -858,7 +1040,9 @@ func (in *azurePostgreSqlWriteMethodEnumPtr) ToAzurePostgreSqlWriteMethodEnumPtr
 type AzureSearchIndexWriteBehaviorType string
 
 const (
-	AzureSearchIndexWriteBehaviorTypeMerge  = AzureSearchIndexWriteBehaviorType("Merge")
+	// Merge
+	AzureSearchIndexWriteBehaviorTypeMerge = AzureSearchIndexWriteBehaviorType("Merge")
+	// Upload
 	AzureSearchIndexWriteBehaviorTypeUpload = AzureSearchIndexWriteBehaviorType("Upload")
 )
 
@@ -1024,10 +1208,14 @@ func (in *azureSearchIndexWriteBehaviorTypePtr) ToAzureSearchIndexWriteBehaviorT
 type AzureSqlDWAuthenticationType string
 
 const (
-	AzureSqlDWAuthenticationTypeSQL                           = AzureSqlDWAuthenticationType("SQL")
-	AzureSqlDWAuthenticationTypeServicePrincipal              = AzureSqlDWAuthenticationType("ServicePrincipal")
+	// SQL
+	AzureSqlDWAuthenticationTypeSQL = AzureSqlDWAuthenticationType("SQL")
+	// ServicePrincipal
+	AzureSqlDWAuthenticationTypeServicePrincipal = AzureSqlDWAuthenticationType("ServicePrincipal")
+	// SystemAssignedManagedIdentity
 	AzureSqlDWAuthenticationTypeSystemAssignedManagedIdentity = AzureSqlDWAuthenticationType("SystemAssignedManagedIdentity")
-	AzureSqlDWAuthenticationTypeUserAssignedManagedIdentity   = AzureSqlDWAuthenticationType("UserAssignedManagedIdentity")
+	// UserAssignedManagedIdentity
+	AzureSqlDWAuthenticationTypeUserAssignedManagedIdentity = AzureSqlDWAuthenticationType("UserAssignedManagedIdentity")
 )
 
 func (AzureSqlDWAuthenticationType) ElementType() reflect.Type {
@@ -1194,10 +1382,14 @@ func (in *azureSqlDWAuthenticationTypePtr) ToAzureSqlDWAuthenticationTypePtrOutp
 type AzureSqlDatabaseAuthenticationType string
 
 const (
-	AzureSqlDatabaseAuthenticationTypeSQL                           = AzureSqlDatabaseAuthenticationType("SQL")
-	AzureSqlDatabaseAuthenticationTypeServicePrincipal              = AzureSqlDatabaseAuthenticationType("ServicePrincipal")
+	// SQL
+	AzureSqlDatabaseAuthenticationTypeSQL = AzureSqlDatabaseAuthenticationType("SQL")
+	// ServicePrincipal
+	AzureSqlDatabaseAuthenticationTypeServicePrincipal = AzureSqlDatabaseAuthenticationType("ServicePrincipal")
+	// SystemAssignedManagedIdentity
 	AzureSqlDatabaseAuthenticationTypeSystemAssignedManagedIdentity = AzureSqlDatabaseAuthenticationType("SystemAssignedManagedIdentity")
-	AzureSqlDatabaseAuthenticationTypeUserAssignedManagedIdentity   = AzureSqlDatabaseAuthenticationType("UserAssignedManagedIdentity")
+	// UserAssignedManagedIdentity
+	AzureSqlDatabaseAuthenticationTypeUserAssignedManagedIdentity = AzureSqlDatabaseAuthenticationType("UserAssignedManagedIdentity")
 )
 
 func (AzureSqlDatabaseAuthenticationType) ElementType() reflect.Type {
@@ -1364,10 +1556,14 @@ func (in *azureSqlDatabaseAuthenticationTypePtr) ToAzureSqlDatabaseAuthenticatio
 type AzureSqlMIAuthenticationType string
 
 const (
-	AzureSqlMIAuthenticationTypeSQL                           = AzureSqlMIAuthenticationType("SQL")
-	AzureSqlMIAuthenticationTypeServicePrincipal              = AzureSqlMIAuthenticationType("ServicePrincipal")
+	// SQL
+	AzureSqlMIAuthenticationTypeSQL = AzureSqlMIAuthenticationType("SQL")
+	// ServicePrincipal
+	AzureSqlMIAuthenticationTypeServicePrincipal = AzureSqlMIAuthenticationType("ServicePrincipal")
+	// SystemAssignedManagedIdentity
 	AzureSqlMIAuthenticationTypeSystemAssignedManagedIdentity = AzureSqlMIAuthenticationType("SystemAssignedManagedIdentity")
-	AzureSqlMIAuthenticationTypeUserAssignedManagedIdentity   = AzureSqlMIAuthenticationType("UserAssignedManagedIdentity")
+	// UserAssignedManagedIdentity
+	AzureSqlMIAuthenticationTypeUserAssignedManagedIdentity = AzureSqlMIAuthenticationType("UserAssignedManagedIdentity")
 )
 
 func (AzureSqlMIAuthenticationType) ElementType() reflect.Type {
@@ -1534,11 +1730,16 @@ func (in *azureSqlMIAuthenticationTypePtr) ToAzureSqlMIAuthenticationTypePtrOutp
 type AzureStorageAuthenticationType string
 
 const (
-	AzureStorageAuthenticationTypeAnonymous        = AzureStorageAuthenticationType("Anonymous")
-	AzureStorageAuthenticationTypeAccountKey       = AzureStorageAuthenticationType("AccountKey")
-	AzureStorageAuthenticationTypeSasUri           = AzureStorageAuthenticationType("SasUri")
+	// Anonymous
+	AzureStorageAuthenticationTypeAnonymous = AzureStorageAuthenticationType("Anonymous")
+	// AccountKey
+	AzureStorageAuthenticationTypeAccountKey = AzureStorageAuthenticationType("AccountKey")
+	// SasUri
+	AzureStorageAuthenticationTypeSasUri = AzureStorageAuthenticationType("SasUri")
+	// ServicePrincipal
 	AzureStorageAuthenticationTypeServicePrincipal = AzureStorageAuthenticationType("ServicePrincipal")
-	AzureStorageAuthenticationTypeMsi              = AzureStorageAuthenticationType("Msi")
+	// Msi
+	AzureStorageAuthenticationTypeMsi = AzureStorageAuthenticationType("Msi")
 )
 
 func (AzureStorageAuthenticationType) ElementType() reflect.Type {
@@ -1706,6 +1907,7 @@ func (in *azureStorageAuthenticationTypePtr) ToAzureStorageAuthenticationTypePtr
 type BigDataPoolReferenceType string
 
 const (
+	// BigDataPoolReference
 	BigDataPoolReferenceTypeBigDataPoolReference = BigDataPoolReferenceType("BigDataPoolReference")
 )
 
@@ -1869,7 +2071,9 @@ func (in *bigDataPoolReferenceTypePtr) ToBigDataPoolReferenceTypePtrOutputWithCo
 type BlobEventTypes string
 
 const (
+	// Microsoft.Storage.BlobCreated
 	BlobEventTypes_Microsoft_Storage_BlobCreated = BlobEventTypes("Microsoft.Storage.BlobCreated")
+	// Microsoft.Storage.BlobDeleted
 	BlobEventTypes_Microsoft_Storage_BlobDeleted = BlobEventTypes("Microsoft.Storage.BlobDeleted")
 )
 
@@ -2035,15 +2239,25 @@ func (in *blobEventTypesPtr) ToBlobEventTypesPtrOutputWithContext(ctx context.Co
 type CassandraSourceReadConsistencyLevels string
 
 const (
-	CassandraSourceReadConsistencyLevelsALL           = CassandraSourceReadConsistencyLevels("ALL")
-	CassandraSourceReadConsistencyLevels_EACH_QUORUM  = CassandraSourceReadConsistencyLevels("EACH_QUORUM")
-	CassandraSourceReadConsistencyLevelsQUORUM        = CassandraSourceReadConsistencyLevels("QUORUM")
+	// ALL
+	CassandraSourceReadConsistencyLevelsALL = CassandraSourceReadConsistencyLevels("ALL")
+	// EACH_QUORUM
+	CassandraSourceReadConsistencyLevels_EACH_QUORUM = CassandraSourceReadConsistencyLevels("EACH_QUORUM")
+	// QUORUM
+	CassandraSourceReadConsistencyLevelsQUORUM = CassandraSourceReadConsistencyLevels("QUORUM")
+	// LOCAL_QUORUM
 	CassandraSourceReadConsistencyLevels_LOCAL_QUORUM = CassandraSourceReadConsistencyLevels("LOCAL_QUORUM")
-	CassandraSourceReadConsistencyLevelsONE           = CassandraSourceReadConsistencyLevels("ONE")
-	CassandraSourceReadConsistencyLevelsTWO           = CassandraSourceReadConsistencyLevels("TWO")
-	CassandraSourceReadConsistencyLevelsTHREE         = CassandraSourceReadConsistencyLevels("THREE")
-	CassandraSourceReadConsistencyLevels_LOCAL_ONE    = CassandraSourceReadConsistencyLevels("LOCAL_ONE")
-	CassandraSourceReadConsistencyLevelsSERIAL        = CassandraSourceReadConsistencyLevels("SERIAL")
+	// ONE
+	CassandraSourceReadConsistencyLevelsONE = CassandraSourceReadConsistencyLevels("ONE")
+	// TWO
+	CassandraSourceReadConsistencyLevelsTWO = CassandraSourceReadConsistencyLevels("TWO")
+	// THREE
+	CassandraSourceReadConsistencyLevelsTHREE = CassandraSourceReadConsistencyLevels("THREE")
+	// LOCAL_ONE
+	CassandraSourceReadConsistencyLevels_LOCAL_ONE = CassandraSourceReadConsistencyLevels("LOCAL_ONE")
+	// SERIAL
+	CassandraSourceReadConsistencyLevelsSERIAL = CassandraSourceReadConsistencyLevels("SERIAL")
+	// LOCAL_SERIAL
 	CassandraSourceReadConsistencyLevels_LOCAL_SERIAL = CassandraSourceReadConsistencyLevels("LOCAL_SERIAL")
 )
 
@@ -2217,9 +2431,12 @@ func (in *cassandraSourceReadConsistencyLevelsPtr) ToCassandraSourceReadConsiste
 type ConfigurationType string
 
 const (
-	ConfigurationTypeDefault    = ConfigurationType("Default")
+	// Default
+	ConfigurationTypeDefault = ConfigurationType("Default")
+	// Customized
 	ConfigurationTypeCustomized = ConfigurationType("Customized")
-	ConfigurationTypeArtifact   = ConfigurationType("Artifact")
+	// Artifact
+	ConfigurationTypeArtifact = ConfigurationType("Artifact")
 )
 
 func (ConfigurationType) ElementType() reflect.Type {
@@ -2385,6 +2602,7 @@ func (in *configurationTypePtr) ToConfigurationTypePtrOutputWithContext(ctx cont
 type ConnectionType string
 
 const (
+	// linkedservicetype
 	ConnectionTypeLinkedservicetype = ConnectionType("linkedservicetype")
 )
 
@@ -2549,8 +2767,10 @@ func (in *connectionTypePtr) ToConnectionTypePtrOutputWithContext(ctx context.Co
 type CosmosDbConnectionMode string
 
 const (
+	// Gateway
 	CosmosDbConnectionModeGateway = CosmosDbConnectionMode("Gateway")
-	CosmosDbConnectionModeDirect  = CosmosDbConnectionMode("Direct")
+	// Direct
+	CosmosDbConnectionModeDirect = CosmosDbConnectionMode("Direct")
 )
 
 func (CosmosDbConnectionMode) ElementType() reflect.Type {
@@ -2715,6 +2935,7 @@ func (in *cosmosDbConnectionModePtr) ToCosmosDbConnectionModePtrOutputWithContex
 type CredentialReferenceType string
 
 const (
+	// CredentialReference
 	CredentialReferenceTypeCredentialReference = CredentialReferenceType("CredentialReference")
 )
 
@@ -2879,8 +3100,11 @@ func (in *credentialReferenceTypePtr) ToCredentialReferenceTypePtrOutputWithCont
 type DataFlowComputeType string
 
 const (
-	DataFlowComputeTypeGeneral          = DataFlowComputeType("General")
-	DataFlowComputeTypeMemoryOptimized  = DataFlowComputeType("MemoryOptimized")
+	// General
+	DataFlowComputeTypeGeneral = DataFlowComputeType("General")
+	// MemoryOptimized
+	DataFlowComputeTypeMemoryOptimized = DataFlowComputeType("MemoryOptimized")
+	// ComputeOptimized
 	DataFlowComputeTypeComputeOptimized = DataFlowComputeType("ComputeOptimized")
 )
 
@@ -3047,6 +3271,7 @@ func (in *dataFlowComputeTypePtr) ToDataFlowComputeTypePtrOutputWithContext(ctx 
 type DataFlowReferenceType string
 
 const (
+	// DataFlowReference
 	DataFlowReferenceTypeDataFlowReference = DataFlowReferenceType("DataFlowReference")
 )
 
@@ -3207,17 +3432,189 @@ func (in *dataFlowReferenceTypePtr) ToDataFlowReferenceTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(DataFlowReferenceTypePtrOutput)
 }
 
+// Dataset reference type.
+type DatasetReferenceType string
+
+const (
+	// DatasetReference
+	DatasetReferenceTypeDatasetReference = DatasetReferenceType("DatasetReference")
+)
+
+func (DatasetReferenceType) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetReferenceType)(nil)).Elem()
+}
+
+func (e DatasetReferenceType) ToDatasetReferenceTypeOutput() DatasetReferenceTypeOutput {
+	return pulumi.ToOutput(e).(DatasetReferenceTypeOutput)
+}
+
+func (e DatasetReferenceType) ToDatasetReferenceTypeOutputWithContext(ctx context.Context) DatasetReferenceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DatasetReferenceTypeOutput)
+}
+
+func (e DatasetReferenceType) ToDatasetReferenceTypePtrOutput() DatasetReferenceTypePtrOutput {
+	return e.ToDatasetReferenceTypePtrOutputWithContext(context.Background())
+}
+
+func (e DatasetReferenceType) ToDatasetReferenceTypePtrOutputWithContext(ctx context.Context) DatasetReferenceTypePtrOutput {
+	return DatasetReferenceType(e).ToDatasetReferenceTypeOutputWithContext(ctx).ToDatasetReferenceTypePtrOutputWithContext(ctx)
+}
+
+func (e DatasetReferenceType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DatasetReferenceType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DatasetReferenceType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DatasetReferenceType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DatasetReferenceTypeOutput struct{ *pulumi.OutputState }
+
+func (DatasetReferenceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetReferenceType)(nil)).Elem()
+}
+
+func (o DatasetReferenceTypeOutput) ToDatasetReferenceTypeOutput() DatasetReferenceTypeOutput {
+	return o
+}
+
+func (o DatasetReferenceTypeOutput) ToDatasetReferenceTypeOutputWithContext(ctx context.Context) DatasetReferenceTypeOutput {
+	return o
+}
+
+func (o DatasetReferenceTypeOutput) ToDatasetReferenceTypePtrOutput() DatasetReferenceTypePtrOutput {
+	return o.ToDatasetReferenceTypePtrOutputWithContext(context.Background())
+}
+
+func (o DatasetReferenceTypeOutput) ToDatasetReferenceTypePtrOutputWithContext(ctx context.Context) DatasetReferenceTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetReferenceType) *DatasetReferenceType {
+		return &v
+	}).(DatasetReferenceTypePtrOutput)
+}
+
+func (o DatasetReferenceTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DatasetReferenceTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DatasetReferenceType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DatasetReferenceTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DatasetReferenceTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DatasetReferenceType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatasetReferenceTypePtrOutput struct{ *pulumi.OutputState }
+
+func (DatasetReferenceTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetReferenceType)(nil)).Elem()
+}
+
+func (o DatasetReferenceTypePtrOutput) ToDatasetReferenceTypePtrOutput() DatasetReferenceTypePtrOutput {
+	return o
+}
+
+func (o DatasetReferenceTypePtrOutput) ToDatasetReferenceTypePtrOutputWithContext(ctx context.Context) DatasetReferenceTypePtrOutput {
+	return o
+}
+
+func (o DatasetReferenceTypePtrOutput) Elem() DatasetReferenceTypeOutput {
+	return o.ApplyT(func(v *DatasetReferenceType) DatasetReferenceType {
+		if v != nil {
+			return *v
+		}
+		var ret DatasetReferenceType
+		return ret
+	}).(DatasetReferenceTypeOutput)
+}
+
+func (o DatasetReferenceTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DatasetReferenceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DatasetReferenceType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DatasetReferenceTypeInput is an input type that accepts values of the DatasetReferenceType enum
+// A concrete instance of `DatasetReferenceTypeInput` can be one of the following:
+//
+//	DatasetReferenceTypeDatasetReference
+type DatasetReferenceTypeInput interface {
+	pulumi.Input
+
+	ToDatasetReferenceTypeOutput() DatasetReferenceTypeOutput
+	ToDatasetReferenceTypeOutputWithContext(context.Context) DatasetReferenceTypeOutput
+}
+
+var datasetReferenceTypePtrType = reflect.TypeOf((**DatasetReferenceType)(nil)).Elem()
+
+type DatasetReferenceTypePtrInput interface {
+	pulumi.Input
+
+	ToDatasetReferenceTypePtrOutput() DatasetReferenceTypePtrOutput
+	ToDatasetReferenceTypePtrOutputWithContext(context.Context) DatasetReferenceTypePtrOutput
+}
+
+type datasetReferenceTypePtr string
+
+func DatasetReferenceTypePtr(v string) DatasetReferenceTypePtrInput {
+	return (*datasetReferenceTypePtr)(&v)
+}
+
+func (*datasetReferenceTypePtr) ElementType() reflect.Type {
+	return datasetReferenceTypePtrType
+}
+
+func (in *datasetReferenceTypePtr) ToDatasetReferenceTypePtrOutput() DatasetReferenceTypePtrOutput {
+	return pulumi.ToOutput(in).(DatasetReferenceTypePtrOutput)
+}
+
+func (in *datasetReferenceTypePtr) ToDatasetReferenceTypePtrOutputWithContext(ctx context.Context) DatasetReferenceTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DatasetReferenceTypePtrOutput)
+}
+
 // The day of the week.
 type DayOfWeek string
 
 const (
-	DayOfWeekSunday    = DayOfWeek("Sunday")
-	DayOfWeekMonday    = DayOfWeek("Monday")
-	DayOfWeekTuesday   = DayOfWeek("Tuesday")
+	// Sunday
+	DayOfWeekSunday = DayOfWeek("Sunday")
+	// Monday
+	DayOfWeekMonday = DayOfWeek("Monday")
+	// Tuesday
+	DayOfWeekTuesday = DayOfWeek("Tuesday")
+	// Wednesday
 	DayOfWeekWednesday = DayOfWeek("Wednesday")
-	DayOfWeekThursday  = DayOfWeek("Thursday")
-	DayOfWeekFriday    = DayOfWeek("Friday")
-	DayOfWeekSaturday  = DayOfWeek("Saturday")
+	// Thursday
+	DayOfWeekThursday = DayOfWeek("Thursday")
+	// Friday
+	DayOfWeekFriday = DayOfWeek("Friday")
+	// Saturday
+	DayOfWeekSaturday = DayOfWeek("Saturday")
 )
 
 func (DayOfWeek) ElementType() reflect.Type {
@@ -3386,13 +3783,20 @@ func (in *dayOfWeekPtr) ToDayOfWeekPtrOutputWithContext(ctx context.Context) Day
 type DaysOfWeek string
 
 const (
-	DaysOfWeekSunday    = DaysOfWeek("Sunday")
-	DaysOfWeekMonday    = DaysOfWeek("Monday")
-	DaysOfWeekTuesday   = DaysOfWeek("Tuesday")
+	// Sunday
+	DaysOfWeekSunday = DaysOfWeek("Sunday")
+	// Monday
+	DaysOfWeekMonday = DaysOfWeek("Monday")
+	// Tuesday
+	DaysOfWeekTuesday = DaysOfWeek("Tuesday")
+	// Wednesday
 	DaysOfWeekWednesday = DaysOfWeek("Wednesday")
-	DaysOfWeekThursday  = DaysOfWeek("Thursday")
-	DaysOfWeekFriday    = DaysOfWeek("Friday")
-	DaysOfWeekSaturday  = DaysOfWeek("Saturday")
+	// Thursday
+	DaysOfWeekThursday = DaysOfWeek("Thursday")
+	// Friday
+	DaysOfWeekFriday = DaysOfWeek("Friday")
+	// Saturday
+	DaysOfWeekSaturday = DaysOfWeek("Saturday")
 )
 
 func (DaysOfWeek) ElementType() reflect.Type {
@@ -3607,6 +4011,7 @@ func (o DaysOfWeekArrayOutput) Index(i pulumi.IntInput) DaysOfWeekOutput {
 type Db2AuthenticationType string
 
 const (
+	// Basic
 	Db2AuthenticationTypeBasic = Db2AuthenticationType("Basic")
 )
 
@@ -3770,9 +4175,13 @@ func (in *db2AuthenticationTypePtr) ToDb2AuthenticationTypePtrOutputWithContext(
 type DependencyCondition string
 
 const (
+	// Succeeded
 	DependencyConditionSucceeded = DependencyCondition("Succeeded")
-	DependencyConditionFailed    = DependencyCondition("Failed")
-	DependencyConditionSkipped   = DependencyCondition("Skipped")
+	// Failed
+	DependencyConditionFailed = DependencyCondition("Failed")
+	// Skipped
+	DependencyConditionSkipped = DependencyCondition("Skipped")
+	// Completed
 	DependencyConditionCompleted = DependencyCondition("Completed")
 )
 
@@ -3940,6 +4349,7 @@ func (in *dependencyConditionPtr) ToDependencyConditionPtrOutputWithContext(ctx 
 type DynamicsSinkWriteBehavior string
 
 const (
+	// Upsert
 	DynamicsSinkWriteBehaviorUpsert = DynamicsSinkWriteBehavior("Upsert")
 )
 
@@ -4100,15 +4510,185 @@ func (in *dynamicsSinkWriteBehaviorPtr) ToDynamicsSinkWriteBehaviorPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(DynamicsSinkWriteBehaviorPtrOutput)
 }
 
+// Expression type.
+type ExpressionType string
+
+const (
+	// Expression
+	ExpressionTypeExpression = ExpressionType("Expression")
+)
+
+func (ExpressionType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExpressionType)(nil)).Elem()
+}
+
+func (e ExpressionType) ToExpressionTypeOutput() ExpressionTypeOutput {
+	return pulumi.ToOutput(e).(ExpressionTypeOutput)
+}
+
+func (e ExpressionType) ToExpressionTypeOutputWithContext(ctx context.Context) ExpressionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ExpressionTypeOutput)
+}
+
+func (e ExpressionType) ToExpressionTypePtrOutput() ExpressionTypePtrOutput {
+	return e.ToExpressionTypePtrOutputWithContext(context.Background())
+}
+
+func (e ExpressionType) ToExpressionTypePtrOutputWithContext(ctx context.Context) ExpressionTypePtrOutput {
+	return ExpressionType(e).ToExpressionTypeOutputWithContext(ctx).ToExpressionTypePtrOutputWithContext(ctx)
+}
+
+func (e ExpressionType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ExpressionType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ExpressionType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ExpressionType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ExpressionTypeOutput struct{ *pulumi.OutputState }
+
+func (ExpressionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExpressionType)(nil)).Elem()
+}
+
+func (o ExpressionTypeOutput) ToExpressionTypeOutput() ExpressionTypeOutput {
+	return o
+}
+
+func (o ExpressionTypeOutput) ToExpressionTypeOutputWithContext(ctx context.Context) ExpressionTypeOutput {
+	return o
+}
+
+func (o ExpressionTypeOutput) ToExpressionTypePtrOutput() ExpressionTypePtrOutput {
+	return o.ToExpressionTypePtrOutputWithContext(context.Background())
+}
+
+func (o ExpressionTypeOutput) ToExpressionTypePtrOutputWithContext(ctx context.Context) ExpressionTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExpressionType) *ExpressionType {
+		return &v
+	}).(ExpressionTypePtrOutput)
+}
+
+func (o ExpressionTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ExpressionTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExpressionType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ExpressionTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExpressionTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExpressionType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ExpressionTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ExpressionTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExpressionType)(nil)).Elem()
+}
+
+func (o ExpressionTypePtrOutput) ToExpressionTypePtrOutput() ExpressionTypePtrOutput {
+	return o
+}
+
+func (o ExpressionTypePtrOutput) ToExpressionTypePtrOutputWithContext(ctx context.Context) ExpressionTypePtrOutput {
+	return o
+}
+
+func (o ExpressionTypePtrOutput) Elem() ExpressionTypeOutput {
+	return o.ApplyT(func(v *ExpressionType) ExpressionType {
+		if v != nil {
+			return *v
+		}
+		var ret ExpressionType
+		return ret
+	}).(ExpressionTypeOutput)
+}
+
+func (o ExpressionTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExpressionTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ExpressionType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ExpressionTypeInput is an input type that accepts values of the ExpressionType enum
+// A concrete instance of `ExpressionTypeInput` can be one of the following:
+//
+//	ExpressionTypeExpression
+type ExpressionTypeInput interface {
+	pulumi.Input
+
+	ToExpressionTypeOutput() ExpressionTypeOutput
+	ToExpressionTypeOutputWithContext(context.Context) ExpressionTypeOutput
+}
+
+var expressionTypePtrType = reflect.TypeOf((**ExpressionType)(nil)).Elem()
+
+type ExpressionTypePtrInput interface {
+	pulumi.Input
+
+	ToExpressionTypePtrOutput() ExpressionTypePtrOutput
+	ToExpressionTypePtrOutputWithContext(context.Context) ExpressionTypePtrOutput
+}
+
+type expressionTypePtr string
+
+func ExpressionTypePtr(v string) ExpressionTypePtrInput {
+	return (*expressionTypePtr)(&v)
+}
+
+func (*expressionTypePtr) ElementType() reflect.Type {
+	return expressionTypePtrType
+}
+
+func (in *expressionTypePtr) ToExpressionTypePtrOutput() ExpressionTypePtrOutput {
+	return pulumi.ToOutput(in).(ExpressionTypePtrOutput)
+}
+
+func (in *expressionTypePtr) ToExpressionTypePtrOutputWithContext(ctx context.Context) ExpressionTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ExpressionTypePtrOutput)
+}
+
 // Type of expressions supported by the system. Type: string.
 type ExpressionV2Type string
 
 const (
+	// Constant
 	ExpressionV2TypeConstant = ExpressionV2Type("Constant")
-	ExpressionV2TypeField    = ExpressionV2Type("Field")
-	ExpressionV2TypeUnary    = ExpressionV2Type("Unary")
-	ExpressionV2TypeBinary   = ExpressionV2Type("Binary")
-	ExpressionV2TypeNAry     = ExpressionV2Type("NAry")
+	// Field
+	ExpressionV2TypeField = ExpressionV2Type("Field")
+	// Unary
+	ExpressionV2TypeUnary = ExpressionV2Type("Unary")
+	// Binary
+	ExpressionV2TypeBinary = ExpressionV2Type("Binary")
+	// NAry
+	ExpressionV2TypeNAry = ExpressionV2Type("NAry")
 )
 
 func (ExpressionV2Type) ElementType() reflect.Type {
@@ -4276,8 +4856,11 @@ func (in *expressionV2TypePtr) ToExpressionV2TypePtrOutputWithContext(ctx contex
 type FactoryIdentityType string
 
 const (
-	FactoryIdentityTypeSystemAssigned               = FactoryIdentityType("SystemAssigned")
-	FactoryIdentityTypeUserAssigned                 = FactoryIdentityType("UserAssigned")
+	// SystemAssigned
+	FactoryIdentityTypeSystemAssigned = FactoryIdentityType("SystemAssigned")
+	// UserAssigned
+	FactoryIdentityTypeUserAssigned = FactoryIdentityType("UserAssigned")
+	// SystemAssigned,UserAssigned
 	FactoryIdentityType_SystemAssigned_UserAssigned = FactoryIdentityType("SystemAssigned,UserAssigned")
 )
 
@@ -4444,8 +5027,11 @@ func (in *factoryIdentityTypePtr) ToFactoryIdentityTypePtrOutputWithContext(ctx 
 type FrequencyType string
 
 const (
-	FrequencyTypeHour   = FrequencyType("Hour")
+	// Hour
+	FrequencyTypeHour = FrequencyType("Hour")
+	// Minute
 	FrequencyTypeMinute = FrequencyType("Minute")
+	// Second
 	FrequencyTypeSecond = FrequencyType("Second")
 )
 
@@ -4612,7 +5198,9 @@ func (in *frequencyTypePtr) ToFrequencyTypePtrOutputWithContext(ctx context.Cont
 type FtpAuthenticationType string
 
 const (
-	FtpAuthenticationTypeBasic     = FtpAuthenticationType("Basic")
+	// Basic
+	FtpAuthenticationTypeBasic = FtpAuthenticationType("Basic")
+	// Anonymous
 	FtpAuthenticationTypeAnonymous = FtpAuthenticationType("Anonymous")
 )
 
@@ -4778,12 +5366,18 @@ func (in *ftpAuthenticationTypePtr) ToFtpAuthenticationTypePtrOutputWithContext(
 type GlobalParameterType string
 
 const (
+	// Object
 	GlobalParameterTypeObject = GlobalParameterType("Object")
+	// String
 	GlobalParameterTypeString = GlobalParameterType("String")
-	GlobalParameterTypeInt    = GlobalParameterType("Int")
-	GlobalParameterTypeFloat  = GlobalParameterType("Float")
-	GlobalParameterTypeBool   = GlobalParameterType("Bool")
-	GlobalParameterTypeArray  = GlobalParameterType("Array")
+	// Int
+	GlobalParameterTypeInt = GlobalParameterType("Int")
+	// Float
+	GlobalParameterTypeFloat = GlobalParameterType("Float")
+	// Bool
+	GlobalParameterTypeBool = GlobalParameterType("Bool")
+	// Array
+	GlobalParameterTypeArray = GlobalParameterType("Array")
 )
 
 func (GlobalParameterType) ElementType() reflect.Type {
@@ -4952,8 +5546,10 @@ func (in *globalParameterTypePtr) ToGlobalParameterTypePtrOutputWithContext(ctx 
 type GoogleAdWordsAuthenticationType string
 
 const (
+	// ServiceAuthentication
 	GoogleAdWordsAuthenticationTypeServiceAuthentication = GoogleAdWordsAuthenticationType("ServiceAuthentication")
-	GoogleAdWordsAuthenticationTypeUserAuthentication    = GoogleAdWordsAuthenticationType("UserAuthentication")
+	// UserAuthentication
+	GoogleAdWordsAuthenticationTypeUserAuthentication = GoogleAdWordsAuthenticationType("UserAuthentication")
 )
 
 func (GoogleAdWordsAuthenticationType) ElementType() reflect.Type {
@@ -5118,8 +5714,10 @@ func (in *googleAdWordsAuthenticationTypePtr) ToGoogleAdWordsAuthenticationTypeP
 type GoogleBigQueryAuthenticationType string
 
 const (
+	// ServiceAuthentication
 	GoogleBigQueryAuthenticationTypeServiceAuthentication = GoogleBigQueryAuthenticationType("ServiceAuthentication")
-	GoogleBigQueryAuthenticationTypeUserAuthentication    = GoogleBigQueryAuthenticationType("UserAuthentication")
+	// UserAuthentication
+	GoogleBigQueryAuthenticationTypeUserAuthentication = GoogleBigQueryAuthenticationType("UserAuthentication")
 )
 
 func (GoogleBigQueryAuthenticationType) ElementType() reflect.Type {
@@ -5284,8 +5882,10 @@ func (in *googleBigQueryAuthenticationTypePtr) ToGoogleBigQueryAuthenticationTyp
 type GoogleBigQueryV2AuthenticationType string
 
 const (
+	// ServiceAuthentication
 	GoogleBigQueryV2AuthenticationTypeServiceAuthentication = GoogleBigQueryV2AuthenticationType("ServiceAuthentication")
-	GoogleBigQueryV2AuthenticationTypeUserAuthentication    = GoogleBigQueryV2AuthenticationType("UserAuthentication")
+	// UserAuthentication
+	GoogleBigQueryV2AuthenticationTypeUserAuthentication = GoogleBigQueryV2AuthenticationType("UserAuthentication")
 )
 
 func (GoogleBigQueryV2AuthenticationType) ElementType() reflect.Type {
@@ -5450,6 +6050,7 @@ func (in *googleBigQueryV2AuthenticationTypePtr) ToGoogleBigQueryV2Authenticatio
 type GreenplumAuthenticationType string
 
 const (
+	// Basic
 	GreenplumAuthenticationTypeBasic = GreenplumAuthenticationType("Basic")
 )
 
@@ -5614,8 +6215,10 @@ func (in *greenplumAuthenticationTypePtr) ToGreenplumAuthenticationTypePtrOutput
 type HBaseAuthenticationType string
 
 const (
+	// Anonymous
 	HBaseAuthenticationTypeAnonymous = HBaseAuthenticationType("Anonymous")
-	HBaseAuthenticationTypeBasic     = HBaseAuthenticationType("Basic")
+	// Basic
+	HBaseAuthenticationTypeBasic = HBaseAuthenticationType("Basic")
 )
 
 func (HBaseAuthenticationType) ElementType() reflect.Type {
@@ -5780,8 +6383,11 @@ func (in *hbaseAuthenticationTypePtr) ToHBaseAuthenticationTypePtrOutputWithCont
 type HDInsightActivityDebugInfoOption string
 
 const (
-	HDInsightActivityDebugInfoOptionNone    = HDInsightActivityDebugInfoOption("None")
-	HDInsightActivityDebugInfoOptionAlways  = HDInsightActivityDebugInfoOption("Always")
+	// None
+	HDInsightActivityDebugInfoOptionNone = HDInsightActivityDebugInfoOption("None")
+	// Always
+	HDInsightActivityDebugInfoOptionAlways = HDInsightActivityDebugInfoOption("Always")
+	// Failure
 	HDInsightActivityDebugInfoOptionFailure = HDInsightActivityDebugInfoOption("Failure")
 )
 
@@ -5944,13 +6550,359 @@ func (in *hdinsightActivityDebugInfoOptionPtr) ToHDInsightActivityDebugInfoOptio
 	return pulumi.ToOutputWithContext(ctx, in).(HDInsightActivityDebugInfoOptionPtrOutput)
 }
 
+// HDInsight cluster authentication type.
+type HDInsightClusterAuthenticationType string
+
+const (
+	// BasicAuth
+	HDInsightClusterAuthenticationTypeBasicAuth = HDInsightClusterAuthenticationType("BasicAuth")
+	// SystemAssignedManagedIdentity
+	HDInsightClusterAuthenticationTypeSystemAssignedManagedIdentity = HDInsightClusterAuthenticationType("SystemAssignedManagedIdentity")
+	// UserAssignedManagedIdentity
+	HDInsightClusterAuthenticationTypeUserAssignedManagedIdentity = HDInsightClusterAuthenticationType("UserAssignedManagedIdentity")
+)
+
+func (HDInsightClusterAuthenticationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*HDInsightClusterAuthenticationType)(nil)).Elem()
+}
+
+func (e HDInsightClusterAuthenticationType) ToHDInsightClusterAuthenticationTypeOutput() HDInsightClusterAuthenticationTypeOutput {
+	return pulumi.ToOutput(e).(HDInsightClusterAuthenticationTypeOutput)
+}
+
+func (e HDInsightClusterAuthenticationType) ToHDInsightClusterAuthenticationTypeOutputWithContext(ctx context.Context) HDInsightClusterAuthenticationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(HDInsightClusterAuthenticationTypeOutput)
+}
+
+func (e HDInsightClusterAuthenticationType) ToHDInsightClusterAuthenticationTypePtrOutput() HDInsightClusterAuthenticationTypePtrOutput {
+	return e.ToHDInsightClusterAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (e HDInsightClusterAuthenticationType) ToHDInsightClusterAuthenticationTypePtrOutputWithContext(ctx context.Context) HDInsightClusterAuthenticationTypePtrOutput {
+	return HDInsightClusterAuthenticationType(e).ToHDInsightClusterAuthenticationTypeOutputWithContext(ctx).ToHDInsightClusterAuthenticationTypePtrOutputWithContext(ctx)
+}
+
+func (e HDInsightClusterAuthenticationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e HDInsightClusterAuthenticationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e HDInsightClusterAuthenticationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e HDInsightClusterAuthenticationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type HDInsightClusterAuthenticationTypeOutput struct{ *pulumi.OutputState }
+
+func (HDInsightClusterAuthenticationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HDInsightClusterAuthenticationType)(nil)).Elem()
+}
+
+func (o HDInsightClusterAuthenticationTypeOutput) ToHDInsightClusterAuthenticationTypeOutput() HDInsightClusterAuthenticationTypeOutput {
+	return o
+}
+
+func (o HDInsightClusterAuthenticationTypeOutput) ToHDInsightClusterAuthenticationTypeOutputWithContext(ctx context.Context) HDInsightClusterAuthenticationTypeOutput {
+	return o
+}
+
+func (o HDInsightClusterAuthenticationTypeOutput) ToHDInsightClusterAuthenticationTypePtrOutput() HDInsightClusterAuthenticationTypePtrOutput {
+	return o.ToHDInsightClusterAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (o HDInsightClusterAuthenticationTypeOutput) ToHDInsightClusterAuthenticationTypePtrOutputWithContext(ctx context.Context) HDInsightClusterAuthenticationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HDInsightClusterAuthenticationType) *HDInsightClusterAuthenticationType {
+		return &v
+	}).(HDInsightClusterAuthenticationTypePtrOutput)
+}
+
+func (o HDInsightClusterAuthenticationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o HDInsightClusterAuthenticationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HDInsightClusterAuthenticationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o HDInsightClusterAuthenticationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HDInsightClusterAuthenticationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HDInsightClusterAuthenticationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type HDInsightClusterAuthenticationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (HDInsightClusterAuthenticationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HDInsightClusterAuthenticationType)(nil)).Elem()
+}
+
+func (o HDInsightClusterAuthenticationTypePtrOutput) ToHDInsightClusterAuthenticationTypePtrOutput() HDInsightClusterAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o HDInsightClusterAuthenticationTypePtrOutput) ToHDInsightClusterAuthenticationTypePtrOutputWithContext(ctx context.Context) HDInsightClusterAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o HDInsightClusterAuthenticationTypePtrOutput) Elem() HDInsightClusterAuthenticationTypeOutput {
+	return o.ApplyT(func(v *HDInsightClusterAuthenticationType) HDInsightClusterAuthenticationType {
+		if v != nil {
+			return *v
+		}
+		var ret HDInsightClusterAuthenticationType
+		return ret
+	}).(HDInsightClusterAuthenticationTypeOutput)
+}
+
+func (o HDInsightClusterAuthenticationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HDInsightClusterAuthenticationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *HDInsightClusterAuthenticationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// HDInsightClusterAuthenticationTypeInput is an input type that accepts values of the HDInsightClusterAuthenticationType enum
+// A concrete instance of `HDInsightClusterAuthenticationTypeInput` can be one of the following:
+//
+//	HDInsightClusterAuthenticationTypeBasicAuth
+//	HDInsightClusterAuthenticationTypeSystemAssignedManagedIdentity
+//	HDInsightClusterAuthenticationTypeUserAssignedManagedIdentity
+type HDInsightClusterAuthenticationTypeInput interface {
+	pulumi.Input
+
+	ToHDInsightClusterAuthenticationTypeOutput() HDInsightClusterAuthenticationTypeOutput
+	ToHDInsightClusterAuthenticationTypeOutputWithContext(context.Context) HDInsightClusterAuthenticationTypeOutput
+}
+
+var hdinsightClusterAuthenticationTypePtrType = reflect.TypeOf((**HDInsightClusterAuthenticationType)(nil)).Elem()
+
+type HDInsightClusterAuthenticationTypePtrInput interface {
+	pulumi.Input
+
+	ToHDInsightClusterAuthenticationTypePtrOutput() HDInsightClusterAuthenticationTypePtrOutput
+	ToHDInsightClusterAuthenticationTypePtrOutputWithContext(context.Context) HDInsightClusterAuthenticationTypePtrOutput
+}
+
+type hdinsightClusterAuthenticationTypePtr string
+
+func HDInsightClusterAuthenticationTypePtr(v string) HDInsightClusterAuthenticationTypePtrInput {
+	return (*hdinsightClusterAuthenticationTypePtr)(&v)
+}
+
+func (*hdinsightClusterAuthenticationTypePtr) ElementType() reflect.Type {
+	return hdinsightClusterAuthenticationTypePtrType
+}
+
+func (in *hdinsightClusterAuthenticationTypePtr) ToHDInsightClusterAuthenticationTypePtrOutput() HDInsightClusterAuthenticationTypePtrOutput {
+	return pulumi.ToOutput(in).(HDInsightClusterAuthenticationTypePtrOutput)
+}
+
+func (in *hdinsightClusterAuthenticationTypePtr) ToHDInsightClusterAuthenticationTypePtrOutputWithContext(ctx context.Context) HDInsightClusterAuthenticationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(HDInsightClusterAuthenticationTypePtrOutput)
+}
+
+// HDInsight On-demand cluster resource group authentication type.
+type HDInsightOndemandClusterResourceGroupAuthenticationType string
+
+const (
+	// ServicePrincipalKey
+	HDInsightOndemandClusterResourceGroupAuthenticationTypeServicePrincipalKey = HDInsightOndemandClusterResourceGroupAuthenticationType("ServicePrincipalKey")
+	// SystemAssignedManagedIdentity
+	HDInsightOndemandClusterResourceGroupAuthenticationTypeSystemAssignedManagedIdentity = HDInsightOndemandClusterResourceGroupAuthenticationType("SystemAssignedManagedIdentity")
+	// UserAssignedManagedIdentity
+	HDInsightOndemandClusterResourceGroupAuthenticationTypeUserAssignedManagedIdentity = HDInsightOndemandClusterResourceGroupAuthenticationType("UserAssignedManagedIdentity")
+)
+
+func (HDInsightOndemandClusterResourceGroupAuthenticationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*HDInsightOndemandClusterResourceGroupAuthenticationType)(nil)).Elem()
+}
+
+func (e HDInsightOndemandClusterResourceGroupAuthenticationType) ToHDInsightOndemandClusterResourceGroupAuthenticationTypeOutput() HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput {
+	return pulumi.ToOutput(e).(HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput)
+}
+
+func (e HDInsightOndemandClusterResourceGroupAuthenticationType) ToHDInsightOndemandClusterResourceGroupAuthenticationTypeOutputWithContext(ctx context.Context) HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput)
+}
+
+func (e HDInsightOndemandClusterResourceGroupAuthenticationType) ToHDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput() HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput {
+	return e.ToHDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (e HDInsightOndemandClusterResourceGroupAuthenticationType) ToHDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutputWithContext(ctx context.Context) HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput {
+	return HDInsightOndemandClusterResourceGroupAuthenticationType(e).ToHDInsightOndemandClusterResourceGroupAuthenticationTypeOutputWithContext(ctx).ToHDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutputWithContext(ctx)
+}
+
+func (e HDInsightOndemandClusterResourceGroupAuthenticationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e HDInsightOndemandClusterResourceGroupAuthenticationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e HDInsightOndemandClusterResourceGroupAuthenticationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e HDInsightOndemandClusterResourceGroupAuthenticationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput struct{ *pulumi.OutputState }
+
+func (HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HDInsightOndemandClusterResourceGroupAuthenticationType)(nil)).Elem()
+}
+
+func (o HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput) ToHDInsightOndemandClusterResourceGroupAuthenticationTypeOutput() HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput {
+	return o
+}
+
+func (o HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput) ToHDInsightOndemandClusterResourceGroupAuthenticationTypeOutputWithContext(ctx context.Context) HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput {
+	return o
+}
+
+func (o HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput) ToHDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput() HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput {
+	return o.ToHDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (o HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput) ToHDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutputWithContext(ctx context.Context) HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HDInsightOndemandClusterResourceGroupAuthenticationType) *HDInsightOndemandClusterResourceGroupAuthenticationType {
+		return &v
+	}).(HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput)
+}
+
+func (o HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HDInsightOndemandClusterResourceGroupAuthenticationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HDInsightOndemandClusterResourceGroupAuthenticationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HDInsightOndemandClusterResourceGroupAuthenticationType)(nil)).Elem()
+}
+
+func (o HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput) ToHDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput() HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput) ToHDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutputWithContext(ctx context.Context) HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput) Elem() HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput {
+	return o.ApplyT(func(v *HDInsightOndemandClusterResourceGroupAuthenticationType) HDInsightOndemandClusterResourceGroupAuthenticationType {
+		if v != nil {
+			return *v
+		}
+		var ret HDInsightOndemandClusterResourceGroupAuthenticationType
+		return ret
+	}).(HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput)
+}
+
+func (o HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *HDInsightOndemandClusterResourceGroupAuthenticationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// HDInsightOndemandClusterResourceGroupAuthenticationTypeInput is an input type that accepts values of the HDInsightOndemandClusterResourceGroupAuthenticationType enum
+// A concrete instance of `HDInsightOndemandClusterResourceGroupAuthenticationTypeInput` can be one of the following:
+//
+//	HDInsightOndemandClusterResourceGroupAuthenticationTypeServicePrincipalKey
+//	HDInsightOndemandClusterResourceGroupAuthenticationTypeSystemAssignedManagedIdentity
+//	HDInsightOndemandClusterResourceGroupAuthenticationTypeUserAssignedManagedIdentity
+type HDInsightOndemandClusterResourceGroupAuthenticationTypeInput interface {
+	pulumi.Input
+
+	ToHDInsightOndemandClusterResourceGroupAuthenticationTypeOutput() HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput
+	ToHDInsightOndemandClusterResourceGroupAuthenticationTypeOutputWithContext(context.Context) HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput
+}
+
+var hdinsightOndemandClusterResourceGroupAuthenticationTypePtrType = reflect.TypeOf((**HDInsightOndemandClusterResourceGroupAuthenticationType)(nil)).Elem()
+
+type HDInsightOndemandClusterResourceGroupAuthenticationTypePtrInput interface {
+	pulumi.Input
+
+	ToHDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput() HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput
+	ToHDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutputWithContext(context.Context) HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput
+}
+
+type hdinsightOndemandClusterResourceGroupAuthenticationTypePtr string
+
+func HDInsightOndemandClusterResourceGroupAuthenticationTypePtr(v string) HDInsightOndemandClusterResourceGroupAuthenticationTypePtrInput {
+	return (*hdinsightOndemandClusterResourceGroupAuthenticationTypePtr)(&v)
+}
+
+func (*hdinsightOndemandClusterResourceGroupAuthenticationTypePtr) ElementType() reflect.Type {
+	return hdinsightOndemandClusterResourceGroupAuthenticationTypePtrType
+}
+
+func (in *hdinsightOndemandClusterResourceGroupAuthenticationTypePtr) ToHDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput() HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput {
+	return pulumi.ToOutput(in).(HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput)
+}
+
+func (in *hdinsightOndemandClusterResourceGroupAuthenticationTypePtr) ToHDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutputWithContext(ctx context.Context) HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput)
+}
+
 // The authentication method used to access the Hive server.
 type HiveAuthenticationType string
 
 const (
-	HiveAuthenticationTypeAnonymous                    = HiveAuthenticationType("Anonymous")
-	HiveAuthenticationTypeUsername                     = HiveAuthenticationType("Username")
-	HiveAuthenticationTypeUsernameAndPassword          = HiveAuthenticationType("UsernameAndPassword")
+	// Anonymous
+	HiveAuthenticationTypeAnonymous = HiveAuthenticationType("Anonymous")
+	// Username
+	HiveAuthenticationTypeUsername = HiveAuthenticationType("Username")
+	// UsernameAndPassword
+	HiveAuthenticationTypeUsernameAndPassword = HiveAuthenticationType("UsernameAndPassword")
+	// WindowsAzureHDInsightService
 	HiveAuthenticationTypeWindowsAzureHDInsightService = HiveAuthenticationType("WindowsAzureHDInsightService")
 )
 
@@ -6118,8 +7070,11 @@ func (in *hiveAuthenticationTypePtr) ToHiveAuthenticationTypePtrOutputWithContex
 type HiveServerType string
 
 const (
-	HiveServerTypeHiveServer1      = HiveServerType("HiveServer1")
-	HiveServerTypeHiveServer2      = HiveServerType("HiveServer2")
+	// HiveServer1
+	HiveServerTypeHiveServer1 = HiveServerType("HiveServer1")
+	// HiveServer2
+	HiveServerTypeHiveServer2 = HiveServerType("HiveServer2")
+	// HiveThriftServer
 	HiveServerTypeHiveThriftServer = HiveServerType("HiveThriftServer")
 )
 
@@ -6286,8 +7241,11 @@ func (in *hiveServerTypePtr) ToHiveServerTypePtrOutputWithContext(ctx context.Co
 type HiveThriftTransportProtocol string
 
 const (
+	// Binary
 	HiveThriftTransportProtocolBinary = HiveThriftTransportProtocol("Binary")
-	HiveThriftTransportProtocolSASL   = HiveThriftTransportProtocol("SASL")
+	// SASL
+	HiveThriftTransportProtocolSASL = HiveThriftTransportProtocol("SASL")
+	// HTTP
 	HiveThriftTransportProtocol_HTTP_ = HiveThriftTransportProtocol("HTTP ")
 )
 
@@ -6454,10 +7412,15 @@ func (in *hiveThriftTransportProtocolPtr) ToHiveThriftTransportProtocolPtrOutput
 type HttpAuthenticationType string
 
 const (
-	HttpAuthenticationTypeBasic             = HttpAuthenticationType("Basic")
-	HttpAuthenticationTypeAnonymous         = HttpAuthenticationType("Anonymous")
-	HttpAuthenticationTypeDigest            = HttpAuthenticationType("Digest")
-	HttpAuthenticationTypeWindows           = HttpAuthenticationType("Windows")
+	// Basic
+	HttpAuthenticationTypeBasic = HttpAuthenticationType("Basic")
+	// Anonymous
+	HttpAuthenticationTypeAnonymous = HttpAuthenticationType("Anonymous")
+	// Digest
+	HttpAuthenticationTypeDigest = HttpAuthenticationType("Digest")
+	// Windows
+	HttpAuthenticationTypeWindows = HttpAuthenticationType("Windows")
+	// ClientCertificate
 	HttpAuthenticationTypeClientCertificate = HttpAuthenticationType("ClientCertificate")
 )
 
@@ -6626,8 +7589,11 @@ func (in *httpAuthenticationTypePtr) ToHttpAuthenticationTypePtrOutputWithContex
 type ImpalaAuthenticationType string
 
 const (
-	ImpalaAuthenticationTypeAnonymous           = ImpalaAuthenticationType("Anonymous")
-	ImpalaAuthenticationTypeSASLUsername        = ImpalaAuthenticationType("SASLUsername")
+	// Anonymous
+	ImpalaAuthenticationTypeAnonymous = ImpalaAuthenticationType("Anonymous")
+	// SASLUsername
+	ImpalaAuthenticationTypeSASLUsername = ImpalaAuthenticationType("SASLUsername")
+	// UsernameAndPassword
 	ImpalaAuthenticationTypeUsernameAndPassword = ImpalaAuthenticationType("UsernameAndPassword")
 )
 
@@ -6790,11 +7756,181 @@ func (in *impalaAuthenticationTypePtr) ToImpalaAuthenticationTypePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(ImpalaAuthenticationTypePtrOutput)
 }
 
+// The transport protocol to use in the Thrift layer (for V2 only). Default value is Binary.
+type ImpalaThriftTransportProtocol string
+
+const (
+	// Binary
+	ImpalaThriftTransportProtocolBinary = ImpalaThriftTransportProtocol("Binary")
+	// HTTP
+	ImpalaThriftTransportProtocolHTTP = ImpalaThriftTransportProtocol("HTTP")
+)
+
+func (ImpalaThriftTransportProtocol) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImpalaThriftTransportProtocol)(nil)).Elem()
+}
+
+func (e ImpalaThriftTransportProtocol) ToImpalaThriftTransportProtocolOutput() ImpalaThriftTransportProtocolOutput {
+	return pulumi.ToOutput(e).(ImpalaThriftTransportProtocolOutput)
+}
+
+func (e ImpalaThriftTransportProtocol) ToImpalaThriftTransportProtocolOutputWithContext(ctx context.Context) ImpalaThriftTransportProtocolOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ImpalaThriftTransportProtocolOutput)
+}
+
+func (e ImpalaThriftTransportProtocol) ToImpalaThriftTransportProtocolPtrOutput() ImpalaThriftTransportProtocolPtrOutput {
+	return e.ToImpalaThriftTransportProtocolPtrOutputWithContext(context.Background())
+}
+
+func (e ImpalaThriftTransportProtocol) ToImpalaThriftTransportProtocolPtrOutputWithContext(ctx context.Context) ImpalaThriftTransportProtocolPtrOutput {
+	return ImpalaThriftTransportProtocol(e).ToImpalaThriftTransportProtocolOutputWithContext(ctx).ToImpalaThriftTransportProtocolPtrOutputWithContext(ctx)
+}
+
+func (e ImpalaThriftTransportProtocol) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ImpalaThriftTransportProtocol) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ImpalaThriftTransportProtocol) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ImpalaThriftTransportProtocol) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ImpalaThriftTransportProtocolOutput struct{ *pulumi.OutputState }
+
+func (ImpalaThriftTransportProtocolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImpalaThriftTransportProtocol)(nil)).Elem()
+}
+
+func (o ImpalaThriftTransportProtocolOutput) ToImpalaThriftTransportProtocolOutput() ImpalaThriftTransportProtocolOutput {
+	return o
+}
+
+func (o ImpalaThriftTransportProtocolOutput) ToImpalaThriftTransportProtocolOutputWithContext(ctx context.Context) ImpalaThriftTransportProtocolOutput {
+	return o
+}
+
+func (o ImpalaThriftTransportProtocolOutput) ToImpalaThriftTransportProtocolPtrOutput() ImpalaThriftTransportProtocolPtrOutput {
+	return o.ToImpalaThriftTransportProtocolPtrOutputWithContext(context.Background())
+}
+
+func (o ImpalaThriftTransportProtocolOutput) ToImpalaThriftTransportProtocolPtrOutputWithContext(ctx context.Context) ImpalaThriftTransportProtocolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImpalaThriftTransportProtocol) *ImpalaThriftTransportProtocol {
+		return &v
+	}).(ImpalaThriftTransportProtocolPtrOutput)
+}
+
+func (o ImpalaThriftTransportProtocolOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ImpalaThriftTransportProtocolOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ImpalaThriftTransportProtocol) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ImpalaThriftTransportProtocolOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ImpalaThriftTransportProtocolOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ImpalaThriftTransportProtocol) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ImpalaThriftTransportProtocolPtrOutput struct{ *pulumi.OutputState }
+
+func (ImpalaThriftTransportProtocolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImpalaThriftTransportProtocol)(nil)).Elem()
+}
+
+func (o ImpalaThriftTransportProtocolPtrOutput) ToImpalaThriftTransportProtocolPtrOutput() ImpalaThriftTransportProtocolPtrOutput {
+	return o
+}
+
+func (o ImpalaThriftTransportProtocolPtrOutput) ToImpalaThriftTransportProtocolPtrOutputWithContext(ctx context.Context) ImpalaThriftTransportProtocolPtrOutput {
+	return o
+}
+
+func (o ImpalaThriftTransportProtocolPtrOutput) Elem() ImpalaThriftTransportProtocolOutput {
+	return o.ApplyT(func(v *ImpalaThriftTransportProtocol) ImpalaThriftTransportProtocol {
+		if v != nil {
+			return *v
+		}
+		var ret ImpalaThriftTransportProtocol
+		return ret
+	}).(ImpalaThriftTransportProtocolOutput)
+}
+
+func (o ImpalaThriftTransportProtocolPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ImpalaThriftTransportProtocolPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ImpalaThriftTransportProtocol) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ImpalaThriftTransportProtocolInput is an input type that accepts values of the ImpalaThriftTransportProtocol enum
+// A concrete instance of `ImpalaThriftTransportProtocolInput` can be one of the following:
+//
+//	ImpalaThriftTransportProtocolBinary
+//	ImpalaThriftTransportProtocolHTTP
+type ImpalaThriftTransportProtocolInput interface {
+	pulumi.Input
+
+	ToImpalaThriftTransportProtocolOutput() ImpalaThriftTransportProtocolOutput
+	ToImpalaThriftTransportProtocolOutputWithContext(context.Context) ImpalaThriftTransportProtocolOutput
+}
+
+var impalaThriftTransportProtocolPtrType = reflect.TypeOf((**ImpalaThriftTransportProtocol)(nil)).Elem()
+
+type ImpalaThriftTransportProtocolPtrInput interface {
+	pulumi.Input
+
+	ToImpalaThriftTransportProtocolPtrOutput() ImpalaThriftTransportProtocolPtrOutput
+	ToImpalaThriftTransportProtocolPtrOutputWithContext(context.Context) ImpalaThriftTransportProtocolPtrOutput
+}
+
+type impalaThriftTransportProtocolPtr string
+
+func ImpalaThriftTransportProtocolPtr(v string) ImpalaThriftTransportProtocolPtrInput {
+	return (*impalaThriftTransportProtocolPtr)(&v)
+}
+
+func (*impalaThriftTransportProtocolPtr) ElementType() reflect.Type {
+	return impalaThriftTransportProtocolPtrType
+}
+
+func (in *impalaThriftTransportProtocolPtr) ToImpalaThriftTransportProtocolPtrOutput() ImpalaThriftTransportProtocolPtrOutput {
+	return pulumi.ToOutput(in).(ImpalaThriftTransportProtocolPtrOutput)
+}
+
+func (in *impalaThriftTransportProtocolPtr) ToImpalaThriftTransportProtocolPtrOutputWithContext(ctx context.Context) ImpalaThriftTransportProtocolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ImpalaThriftTransportProtocolPtrOutput)
+}
+
 // The edition for the SSIS Integration Runtime
 type IntegrationRuntimeEdition string
 
 const (
-	IntegrationRuntimeEditionStandard   = IntegrationRuntimeEdition("Standard")
+	// Standard
+	IntegrationRuntimeEditionStandard = IntegrationRuntimeEdition("Standard")
+	// Enterprise
 	IntegrationRuntimeEditionEnterprise = IntegrationRuntimeEdition("Enterprise")
 )
 
@@ -6960,8 +8096,10 @@ func (in *integrationRuntimeEditionPtr) ToIntegrationRuntimeEditionPtrOutputWith
 type IntegrationRuntimeEntityReferenceType string
 
 const (
+	// IntegrationRuntimeReference
 	IntegrationRuntimeEntityReferenceTypeIntegrationRuntimeReference = IntegrationRuntimeEntityReferenceType("IntegrationRuntimeReference")
-	IntegrationRuntimeEntityReferenceTypeLinkedServiceReference      = IntegrationRuntimeEntityReferenceType("LinkedServiceReference")
+	// LinkedServiceReference
+	IntegrationRuntimeEntityReferenceTypeLinkedServiceReference = IntegrationRuntimeEntityReferenceType("LinkedServiceReference")
 )
 
 func (IntegrationRuntimeEntityReferenceType) ElementType() reflect.Type {
@@ -7126,7 +8264,9 @@ func (in *integrationRuntimeEntityReferenceTypePtr) ToIntegrationRuntimeEntityRe
 type IntegrationRuntimeLicenseType string
 
 const (
-	IntegrationRuntimeLicenseTypeBasePrice       = IntegrationRuntimeLicenseType("BasePrice")
+	// BasePrice
+	IntegrationRuntimeLicenseTypeBasePrice = IntegrationRuntimeLicenseType("BasePrice")
+	// LicenseIncluded
 	IntegrationRuntimeLicenseTypeLicenseIncluded = IntegrationRuntimeLicenseType("LicenseIncluded")
 )
 
@@ -7288,13 +8428,182 @@ func (in *integrationRuntimeLicenseTypePtr) ToIntegrationRuntimeLicenseTypePtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(IntegrationRuntimeLicenseTypePtrOutput)
 }
 
+// Type of integration runtime.
+type IntegrationRuntimeReferenceType string
+
+const (
+	// IntegrationRuntimeReference
+	IntegrationRuntimeReferenceTypeIntegrationRuntimeReference = IntegrationRuntimeReferenceType("IntegrationRuntimeReference")
+)
+
+func (IntegrationRuntimeReferenceType) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeReferenceType)(nil)).Elem()
+}
+
+func (e IntegrationRuntimeReferenceType) ToIntegrationRuntimeReferenceTypeOutput() IntegrationRuntimeReferenceTypeOutput {
+	return pulumi.ToOutput(e).(IntegrationRuntimeReferenceTypeOutput)
+}
+
+func (e IntegrationRuntimeReferenceType) ToIntegrationRuntimeReferenceTypeOutputWithContext(ctx context.Context) IntegrationRuntimeReferenceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(IntegrationRuntimeReferenceTypeOutput)
+}
+
+func (e IntegrationRuntimeReferenceType) ToIntegrationRuntimeReferenceTypePtrOutput() IntegrationRuntimeReferenceTypePtrOutput {
+	return e.ToIntegrationRuntimeReferenceTypePtrOutputWithContext(context.Background())
+}
+
+func (e IntegrationRuntimeReferenceType) ToIntegrationRuntimeReferenceTypePtrOutputWithContext(ctx context.Context) IntegrationRuntimeReferenceTypePtrOutput {
+	return IntegrationRuntimeReferenceType(e).ToIntegrationRuntimeReferenceTypeOutputWithContext(ctx).ToIntegrationRuntimeReferenceTypePtrOutputWithContext(ctx)
+}
+
+func (e IntegrationRuntimeReferenceType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IntegrationRuntimeReferenceType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IntegrationRuntimeReferenceType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e IntegrationRuntimeReferenceType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type IntegrationRuntimeReferenceTypeOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeReferenceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegrationRuntimeReferenceType)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeReferenceTypeOutput) ToIntegrationRuntimeReferenceTypeOutput() IntegrationRuntimeReferenceTypeOutput {
+	return o
+}
+
+func (o IntegrationRuntimeReferenceTypeOutput) ToIntegrationRuntimeReferenceTypeOutputWithContext(ctx context.Context) IntegrationRuntimeReferenceTypeOutput {
+	return o
+}
+
+func (o IntegrationRuntimeReferenceTypeOutput) ToIntegrationRuntimeReferenceTypePtrOutput() IntegrationRuntimeReferenceTypePtrOutput {
+	return o.ToIntegrationRuntimeReferenceTypePtrOutputWithContext(context.Background())
+}
+
+func (o IntegrationRuntimeReferenceTypeOutput) ToIntegrationRuntimeReferenceTypePtrOutputWithContext(ctx context.Context) IntegrationRuntimeReferenceTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IntegrationRuntimeReferenceType) *IntegrationRuntimeReferenceType {
+		return &v
+	}).(IntegrationRuntimeReferenceTypePtrOutput)
+}
+
+func (o IntegrationRuntimeReferenceTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o IntegrationRuntimeReferenceTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IntegrationRuntimeReferenceType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o IntegrationRuntimeReferenceTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IntegrationRuntimeReferenceTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IntegrationRuntimeReferenceType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type IntegrationRuntimeReferenceTypePtrOutput struct{ *pulumi.OutputState }
+
+func (IntegrationRuntimeReferenceTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegrationRuntimeReferenceType)(nil)).Elem()
+}
+
+func (o IntegrationRuntimeReferenceTypePtrOutput) ToIntegrationRuntimeReferenceTypePtrOutput() IntegrationRuntimeReferenceTypePtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeReferenceTypePtrOutput) ToIntegrationRuntimeReferenceTypePtrOutputWithContext(ctx context.Context) IntegrationRuntimeReferenceTypePtrOutput {
+	return o
+}
+
+func (o IntegrationRuntimeReferenceTypePtrOutput) Elem() IntegrationRuntimeReferenceTypeOutput {
+	return o.ApplyT(func(v *IntegrationRuntimeReferenceType) IntegrationRuntimeReferenceType {
+		if v != nil {
+			return *v
+		}
+		var ret IntegrationRuntimeReferenceType
+		return ret
+	}).(IntegrationRuntimeReferenceTypeOutput)
+}
+
+func (o IntegrationRuntimeReferenceTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IntegrationRuntimeReferenceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *IntegrationRuntimeReferenceType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// IntegrationRuntimeReferenceTypeInput is an input type that accepts values of the IntegrationRuntimeReferenceType enum
+// A concrete instance of `IntegrationRuntimeReferenceTypeInput` can be one of the following:
+//
+//	IntegrationRuntimeReferenceTypeIntegrationRuntimeReference
+type IntegrationRuntimeReferenceTypeInput interface {
+	pulumi.Input
+
+	ToIntegrationRuntimeReferenceTypeOutput() IntegrationRuntimeReferenceTypeOutput
+	ToIntegrationRuntimeReferenceTypeOutputWithContext(context.Context) IntegrationRuntimeReferenceTypeOutput
+}
+
+var integrationRuntimeReferenceTypePtrType = reflect.TypeOf((**IntegrationRuntimeReferenceType)(nil)).Elem()
+
+type IntegrationRuntimeReferenceTypePtrInput interface {
+	pulumi.Input
+
+	ToIntegrationRuntimeReferenceTypePtrOutput() IntegrationRuntimeReferenceTypePtrOutput
+	ToIntegrationRuntimeReferenceTypePtrOutputWithContext(context.Context) IntegrationRuntimeReferenceTypePtrOutput
+}
+
+type integrationRuntimeReferenceTypePtr string
+
+func IntegrationRuntimeReferenceTypePtr(v string) IntegrationRuntimeReferenceTypePtrInput {
+	return (*integrationRuntimeReferenceTypePtr)(&v)
+}
+
+func (*integrationRuntimeReferenceTypePtr) ElementType() reflect.Type {
+	return integrationRuntimeReferenceTypePtrType
+}
+
+func (in *integrationRuntimeReferenceTypePtr) ToIntegrationRuntimeReferenceTypePtrOutput() IntegrationRuntimeReferenceTypePtrOutput {
+	return pulumi.ToOutput(in).(IntegrationRuntimeReferenceTypePtrOutput)
+}
+
+func (in *integrationRuntimeReferenceTypePtr) ToIntegrationRuntimeReferenceTypePtrOutputWithContext(ctx context.Context) IntegrationRuntimeReferenceTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(IntegrationRuntimeReferenceTypePtrOutput)
+}
+
 // The pricing tier for the catalog database. The valid values could be found in https://azure.microsoft.com/en-us/pricing/details/sql-database/
 type IntegrationRuntimeSsisCatalogPricingTier string
 
 const (
-	IntegrationRuntimeSsisCatalogPricingTierBasic     = IntegrationRuntimeSsisCatalogPricingTier("Basic")
-	IntegrationRuntimeSsisCatalogPricingTierStandard  = IntegrationRuntimeSsisCatalogPricingTier("Standard")
-	IntegrationRuntimeSsisCatalogPricingTierPremium   = IntegrationRuntimeSsisCatalogPricingTier("Premium")
+	// Basic
+	IntegrationRuntimeSsisCatalogPricingTierBasic = IntegrationRuntimeSsisCatalogPricingTier("Basic")
+	// Standard
+	IntegrationRuntimeSsisCatalogPricingTierStandard = IntegrationRuntimeSsisCatalogPricingTier("Standard")
+	// Premium
+	IntegrationRuntimeSsisCatalogPricingTierPremium = IntegrationRuntimeSsisCatalogPricingTier("Premium")
+	// PremiumRS
 	IntegrationRuntimeSsisCatalogPricingTierPremiumRS = IntegrationRuntimeSsisCatalogPricingTier("PremiumRS")
 )
 
@@ -7462,14 +8771,188 @@ func (in *integrationRuntimeSsisCatalogPricingTierPtr) ToIntegrationRuntimeSsisC
 type IntegrationRuntimeType string
 
 const (
-	IntegrationRuntimeTypeManaged    = IntegrationRuntimeType("Managed")
+	// Managed
+	IntegrationRuntimeTypeManaged = IntegrationRuntimeType("Managed")
+	// SelfHosted
 	IntegrationRuntimeTypeSelfHosted = IntegrationRuntimeType("SelfHosted")
 )
+
+// The authentication type to use.
+type LakehouseAuthenticationType string
+
+const (
+	// ServicePrincipal
+	LakehouseAuthenticationTypeServicePrincipal = LakehouseAuthenticationType("ServicePrincipal")
+	// SystemAssignedManagedIdentity
+	LakehouseAuthenticationTypeSystemAssignedManagedIdentity = LakehouseAuthenticationType("SystemAssignedManagedIdentity")
+	// UserAssignedManagedIdentity
+	LakehouseAuthenticationTypeUserAssignedManagedIdentity = LakehouseAuthenticationType("UserAssignedManagedIdentity")
+)
+
+func (LakehouseAuthenticationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*LakehouseAuthenticationType)(nil)).Elem()
+}
+
+func (e LakehouseAuthenticationType) ToLakehouseAuthenticationTypeOutput() LakehouseAuthenticationTypeOutput {
+	return pulumi.ToOutput(e).(LakehouseAuthenticationTypeOutput)
+}
+
+func (e LakehouseAuthenticationType) ToLakehouseAuthenticationTypeOutputWithContext(ctx context.Context) LakehouseAuthenticationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(LakehouseAuthenticationTypeOutput)
+}
+
+func (e LakehouseAuthenticationType) ToLakehouseAuthenticationTypePtrOutput() LakehouseAuthenticationTypePtrOutput {
+	return e.ToLakehouseAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (e LakehouseAuthenticationType) ToLakehouseAuthenticationTypePtrOutputWithContext(ctx context.Context) LakehouseAuthenticationTypePtrOutput {
+	return LakehouseAuthenticationType(e).ToLakehouseAuthenticationTypeOutputWithContext(ctx).ToLakehouseAuthenticationTypePtrOutputWithContext(ctx)
+}
+
+func (e LakehouseAuthenticationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LakehouseAuthenticationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LakehouseAuthenticationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e LakehouseAuthenticationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type LakehouseAuthenticationTypeOutput struct{ *pulumi.OutputState }
+
+func (LakehouseAuthenticationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LakehouseAuthenticationType)(nil)).Elem()
+}
+
+func (o LakehouseAuthenticationTypeOutput) ToLakehouseAuthenticationTypeOutput() LakehouseAuthenticationTypeOutput {
+	return o
+}
+
+func (o LakehouseAuthenticationTypeOutput) ToLakehouseAuthenticationTypeOutputWithContext(ctx context.Context) LakehouseAuthenticationTypeOutput {
+	return o
+}
+
+func (o LakehouseAuthenticationTypeOutput) ToLakehouseAuthenticationTypePtrOutput() LakehouseAuthenticationTypePtrOutput {
+	return o.ToLakehouseAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (o LakehouseAuthenticationTypeOutput) ToLakehouseAuthenticationTypePtrOutputWithContext(ctx context.Context) LakehouseAuthenticationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LakehouseAuthenticationType) *LakehouseAuthenticationType {
+		return &v
+	}).(LakehouseAuthenticationTypePtrOutput)
+}
+
+func (o LakehouseAuthenticationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o LakehouseAuthenticationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LakehouseAuthenticationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o LakehouseAuthenticationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LakehouseAuthenticationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LakehouseAuthenticationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type LakehouseAuthenticationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (LakehouseAuthenticationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LakehouseAuthenticationType)(nil)).Elem()
+}
+
+func (o LakehouseAuthenticationTypePtrOutput) ToLakehouseAuthenticationTypePtrOutput() LakehouseAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o LakehouseAuthenticationTypePtrOutput) ToLakehouseAuthenticationTypePtrOutputWithContext(ctx context.Context) LakehouseAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o LakehouseAuthenticationTypePtrOutput) Elem() LakehouseAuthenticationTypeOutput {
+	return o.ApplyT(func(v *LakehouseAuthenticationType) LakehouseAuthenticationType {
+		if v != nil {
+			return *v
+		}
+		var ret LakehouseAuthenticationType
+		return ret
+	}).(LakehouseAuthenticationTypeOutput)
+}
+
+func (o LakehouseAuthenticationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LakehouseAuthenticationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LakehouseAuthenticationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// LakehouseAuthenticationTypeInput is an input type that accepts values of the LakehouseAuthenticationType enum
+// A concrete instance of `LakehouseAuthenticationTypeInput` can be one of the following:
+//
+//	LakehouseAuthenticationTypeServicePrincipal
+//	LakehouseAuthenticationTypeSystemAssignedManagedIdentity
+//	LakehouseAuthenticationTypeUserAssignedManagedIdentity
+type LakehouseAuthenticationTypeInput interface {
+	pulumi.Input
+
+	ToLakehouseAuthenticationTypeOutput() LakehouseAuthenticationTypeOutput
+	ToLakehouseAuthenticationTypeOutputWithContext(context.Context) LakehouseAuthenticationTypeOutput
+}
+
+var lakehouseAuthenticationTypePtrType = reflect.TypeOf((**LakehouseAuthenticationType)(nil)).Elem()
+
+type LakehouseAuthenticationTypePtrInput interface {
+	pulumi.Input
+
+	ToLakehouseAuthenticationTypePtrOutput() LakehouseAuthenticationTypePtrOutput
+	ToLakehouseAuthenticationTypePtrOutputWithContext(context.Context) LakehouseAuthenticationTypePtrOutput
+}
+
+type lakehouseAuthenticationTypePtr string
+
+func LakehouseAuthenticationTypePtr(v string) LakehouseAuthenticationTypePtrInput {
+	return (*lakehouseAuthenticationTypePtr)(&v)
+}
+
+func (*lakehouseAuthenticationTypePtr) ElementType() reflect.Type {
+	return lakehouseAuthenticationTypePtrType
+}
+
+func (in *lakehouseAuthenticationTypePtr) ToLakehouseAuthenticationTypePtrOutput() LakehouseAuthenticationTypePtrOutput {
+	return pulumi.ToOutput(in).(LakehouseAuthenticationTypePtrOutput)
+}
+
+func (in *lakehouseAuthenticationTypePtr) ToLakehouseAuthenticationTypePtrOutputWithContext(ctx context.Context) LakehouseAuthenticationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(LakehouseAuthenticationTypePtrOutput)
+}
 
 // Managed Virtual Network reference type.
 type ManagedVirtualNetworkReferenceType string
 
 const (
+	// ManagedVirtualNetworkReference
 	ManagedVirtualNetworkReferenceTypeManagedVirtualNetworkReference = ManagedVirtualNetworkReferenceType("ManagedVirtualNetworkReference")
 )
 
@@ -7634,8 +9117,11 @@ func (in *managedVirtualNetworkReferenceTypePtr) ToManagedVirtualNetworkReferenc
 type MappingType string
 
 const (
-	MappingTypeDirect    = MappingType("Direct")
-	MappingTypeDerived   = MappingType("Derived")
+	// Direct
+	MappingTypeDirect = MappingType("Direct")
+	// Derived
+	MappingTypeDerived = MappingType("Derived")
+	// Aggregate
 	MappingTypeAggregate = MappingType("Aggregate")
 )
 
@@ -7802,7 +9288,9 @@ func (in *mappingTypePtr) ToMappingTypePtrOutputWithContext(ctx context.Context)
 type MongoDbAuthenticationType string
 
 const (
-	MongoDbAuthenticationTypeBasic     = MongoDbAuthenticationType("Basic")
+	// Basic
+	MongoDbAuthenticationTypeBasic = MongoDbAuthenticationType("Basic")
+	// Anonymous
 	MongoDbAuthenticationTypeAnonymous = MongoDbAuthenticationType("Anonymous")
 )
 
@@ -7964,14 +9452,186 @@ func (in *mongoDbAuthenticationTypePtr) ToMongoDbAuthenticationTypePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(MongoDbAuthenticationTypePtrOutput)
 }
 
+// Specifies the security level for the driver connection to the data store. PreferredUnSecured : prefer unsecured, allow fallback to secured connection if required. OnlyUnSecured : strictly unsecured, no fallback.
+type NetezzaSecurityLevelType string
+
+const (
+	// PreferredUnSecured
+	NetezzaSecurityLevelTypePreferredUnSecured = NetezzaSecurityLevelType("PreferredUnSecured")
+	// OnlyUnSecured
+	NetezzaSecurityLevelTypeOnlyUnSecured = NetezzaSecurityLevelType("OnlyUnSecured")
+)
+
+func (NetezzaSecurityLevelType) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetezzaSecurityLevelType)(nil)).Elem()
+}
+
+func (e NetezzaSecurityLevelType) ToNetezzaSecurityLevelTypeOutput() NetezzaSecurityLevelTypeOutput {
+	return pulumi.ToOutput(e).(NetezzaSecurityLevelTypeOutput)
+}
+
+func (e NetezzaSecurityLevelType) ToNetezzaSecurityLevelTypeOutputWithContext(ctx context.Context) NetezzaSecurityLevelTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NetezzaSecurityLevelTypeOutput)
+}
+
+func (e NetezzaSecurityLevelType) ToNetezzaSecurityLevelTypePtrOutput() NetezzaSecurityLevelTypePtrOutput {
+	return e.ToNetezzaSecurityLevelTypePtrOutputWithContext(context.Background())
+}
+
+func (e NetezzaSecurityLevelType) ToNetezzaSecurityLevelTypePtrOutputWithContext(ctx context.Context) NetezzaSecurityLevelTypePtrOutput {
+	return NetezzaSecurityLevelType(e).ToNetezzaSecurityLevelTypeOutputWithContext(ctx).ToNetezzaSecurityLevelTypePtrOutputWithContext(ctx)
+}
+
+func (e NetezzaSecurityLevelType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetezzaSecurityLevelType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetezzaSecurityLevelType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NetezzaSecurityLevelType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NetezzaSecurityLevelTypeOutput struct{ *pulumi.OutputState }
+
+func (NetezzaSecurityLevelTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetezzaSecurityLevelType)(nil)).Elem()
+}
+
+func (o NetezzaSecurityLevelTypeOutput) ToNetezzaSecurityLevelTypeOutput() NetezzaSecurityLevelTypeOutput {
+	return o
+}
+
+func (o NetezzaSecurityLevelTypeOutput) ToNetezzaSecurityLevelTypeOutputWithContext(ctx context.Context) NetezzaSecurityLevelTypeOutput {
+	return o
+}
+
+func (o NetezzaSecurityLevelTypeOutput) ToNetezzaSecurityLevelTypePtrOutput() NetezzaSecurityLevelTypePtrOutput {
+	return o.ToNetezzaSecurityLevelTypePtrOutputWithContext(context.Background())
+}
+
+func (o NetezzaSecurityLevelTypeOutput) ToNetezzaSecurityLevelTypePtrOutputWithContext(ctx context.Context) NetezzaSecurityLevelTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetezzaSecurityLevelType) *NetezzaSecurityLevelType {
+		return &v
+	}).(NetezzaSecurityLevelTypePtrOutput)
+}
+
+func (o NetezzaSecurityLevelTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NetezzaSecurityLevelTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetezzaSecurityLevelType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NetezzaSecurityLevelTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetezzaSecurityLevelTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetezzaSecurityLevelType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NetezzaSecurityLevelTypePtrOutput struct{ *pulumi.OutputState }
+
+func (NetezzaSecurityLevelTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetezzaSecurityLevelType)(nil)).Elem()
+}
+
+func (o NetezzaSecurityLevelTypePtrOutput) ToNetezzaSecurityLevelTypePtrOutput() NetezzaSecurityLevelTypePtrOutput {
+	return o
+}
+
+func (o NetezzaSecurityLevelTypePtrOutput) ToNetezzaSecurityLevelTypePtrOutputWithContext(ctx context.Context) NetezzaSecurityLevelTypePtrOutput {
+	return o
+}
+
+func (o NetezzaSecurityLevelTypePtrOutput) Elem() NetezzaSecurityLevelTypeOutput {
+	return o.ApplyT(func(v *NetezzaSecurityLevelType) NetezzaSecurityLevelType {
+		if v != nil {
+			return *v
+		}
+		var ret NetezzaSecurityLevelType
+		return ret
+	}).(NetezzaSecurityLevelTypeOutput)
+}
+
+func (o NetezzaSecurityLevelTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetezzaSecurityLevelTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NetezzaSecurityLevelType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NetezzaSecurityLevelTypeInput is an input type that accepts values of the NetezzaSecurityLevelType enum
+// A concrete instance of `NetezzaSecurityLevelTypeInput` can be one of the following:
+//
+//	NetezzaSecurityLevelTypePreferredUnSecured
+//	NetezzaSecurityLevelTypeOnlyUnSecured
+type NetezzaSecurityLevelTypeInput interface {
+	pulumi.Input
+
+	ToNetezzaSecurityLevelTypeOutput() NetezzaSecurityLevelTypeOutput
+	ToNetezzaSecurityLevelTypeOutputWithContext(context.Context) NetezzaSecurityLevelTypeOutput
+}
+
+var netezzaSecurityLevelTypePtrType = reflect.TypeOf((**NetezzaSecurityLevelType)(nil)).Elem()
+
+type NetezzaSecurityLevelTypePtrInput interface {
+	pulumi.Input
+
+	ToNetezzaSecurityLevelTypePtrOutput() NetezzaSecurityLevelTypePtrOutput
+	ToNetezzaSecurityLevelTypePtrOutputWithContext(context.Context) NetezzaSecurityLevelTypePtrOutput
+}
+
+type netezzaSecurityLevelTypePtr string
+
+func NetezzaSecurityLevelTypePtr(v string) NetezzaSecurityLevelTypePtrInput {
+	return (*netezzaSecurityLevelTypePtr)(&v)
+}
+
+func (*netezzaSecurityLevelTypePtr) ElementType() reflect.Type {
+	return netezzaSecurityLevelTypePtrType
+}
+
+func (in *netezzaSecurityLevelTypePtr) ToNetezzaSecurityLevelTypePtrOutput() NetezzaSecurityLevelTypePtrOutput {
+	return pulumi.ToOutput(in).(NetezzaSecurityLevelTypePtrOutput)
+}
+
+func (in *netezzaSecurityLevelTypePtr) ToNetezzaSecurityLevelTypePtrOutputWithContext(ctx context.Context) NetezzaSecurityLevelTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NetezzaSecurityLevelTypePtrOutput)
+}
+
 // Notebook parameter type.
 type NotebookParameterType string
 
 const (
+	// string
 	NotebookParameterTypeString = NotebookParameterType("string")
-	NotebookParameterTypeInt    = NotebookParameterType("int")
-	NotebookParameterTypeFloat  = NotebookParameterType("float")
-	NotebookParameterTypeBool   = NotebookParameterType("bool")
+	// int
+	NotebookParameterTypeInt = NotebookParameterType("int")
+	// float
+	NotebookParameterTypeFloat = NotebookParameterType("float")
+	// bool
+	NotebookParameterTypeBool = NotebookParameterType("bool")
 )
 
 func (NotebookParameterType) ElementType() reflect.Type {
@@ -8138,6 +9798,7 @@ func (in *notebookParameterTypePtr) ToNotebookParameterTypePtrOutputWithContext(
 type NotebookReferenceType string
 
 const (
+	// NotebookReference
 	NotebookReferenceTypeNotebookReference = NotebookReferenceType("NotebookReference")
 )
 
@@ -8302,7 +9963,9 @@ func (in *notebookReferenceTypePtr) ToNotebookReferenceTypePtrOutputWithContext(
 type ODataAadServicePrincipalCredentialType string
 
 const (
-	ODataAadServicePrincipalCredentialTypeServicePrincipalKey  = ODataAadServicePrincipalCredentialType("ServicePrincipalKey")
+	// ServicePrincipalKey
+	ODataAadServicePrincipalCredentialTypeServicePrincipalKey = ODataAadServicePrincipalCredentialType("ServicePrincipalKey")
+	// ServicePrincipalCert
 	ODataAadServicePrincipalCredentialTypeServicePrincipalCert = ODataAadServicePrincipalCredentialType("ServicePrincipalCert")
 )
 
@@ -8468,10 +10131,15 @@ func (in *odataAadServicePrincipalCredentialTypePtr) ToODataAadServicePrincipalC
 type ODataAuthenticationType string
 
 const (
-	ODataAuthenticationTypeBasic                  = ODataAuthenticationType("Basic")
-	ODataAuthenticationTypeAnonymous              = ODataAuthenticationType("Anonymous")
-	ODataAuthenticationTypeWindows                = ODataAuthenticationType("Windows")
-	ODataAuthenticationTypeAadServicePrincipal    = ODataAuthenticationType("AadServicePrincipal")
+	// Basic
+	ODataAuthenticationTypeBasic = ODataAuthenticationType("Basic")
+	// Anonymous
+	ODataAuthenticationTypeAnonymous = ODataAuthenticationType("Anonymous")
+	// Windows
+	ODataAuthenticationTypeWindows = ODataAuthenticationType("Windows")
+	// AadServicePrincipal
+	ODataAuthenticationTypeAadServicePrincipal = ODataAuthenticationType("AadServicePrincipal")
+	// ManagedServiceIdentity
 	ODataAuthenticationTypeManagedServiceIdentity = ODataAuthenticationType("ManagedServiceIdentity")
 )
 
@@ -8640,6 +10308,7 @@ func (in *odataAuthenticationTypePtr) ToODataAuthenticationTypePtrOutputWithCont
 type OracleAuthenticationType string
 
 const (
+	// Basic
 	OracleAuthenticationTypeBasic = OracleAuthenticationType("Basic")
 )
 
@@ -8804,12 +10473,19 @@ func (in *oracleAuthenticationTypePtr) ToOracleAuthenticationTypePtrOutputWithCo
 type ParameterType string
 
 const (
-	ParameterTypeObject       = ParameterType("Object")
-	ParameterTypeString       = ParameterType("String")
-	ParameterTypeInt          = ParameterType("Int")
-	ParameterTypeFloat        = ParameterType("Float")
-	ParameterTypeBool         = ParameterType("Bool")
-	ParameterTypeArray        = ParameterType("Array")
+	// Object
+	ParameterTypeObject = ParameterType("Object")
+	// String
+	ParameterTypeString = ParameterType("String")
+	// Int
+	ParameterTypeInt = ParameterType("Int")
+	// Float
+	ParameterTypeFloat = ParameterType("Float")
+	// Bool
+	ParameterTypeBool = ParameterType("Bool")
+	// Array
+	ParameterTypeArray = ParameterType("Array")
+	// SecureString
 	ParameterTypeSecureString = ParameterType("SecureString")
 )
 
@@ -8980,8 +10656,11 @@ func (in *parameterTypePtr) ToParameterTypePtrOutputWithContext(ctx context.Cont
 type PhoenixAuthenticationType string
 
 const (
-	PhoenixAuthenticationTypeAnonymous                    = PhoenixAuthenticationType("Anonymous")
-	PhoenixAuthenticationTypeUsernameAndPassword          = PhoenixAuthenticationType("UsernameAndPassword")
+	// Anonymous
+	PhoenixAuthenticationTypeAnonymous = PhoenixAuthenticationType("Anonymous")
+	// UsernameAndPassword
+	PhoenixAuthenticationTypeUsernameAndPassword = PhoenixAuthenticationType("UsernameAndPassword")
+	// WindowsAzureHDInsightService
 	PhoenixAuthenticationTypeWindowsAzureHDInsightService = PhoenixAuthenticationType("WindowsAzureHDInsightService")
 )
 
@@ -9144,11 +10823,178 @@ func (in *phoenixAuthenticationTypePtr) ToPhoenixAuthenticationTypePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(PhoenixAuthenticationTypePtrOutput)
 }
 
+// Pipeline reference type.
+type PipelineReferenceType string
+
+const (
+	// PipelineReference
+	PipelineReferenceTypePipelineReference = PipelineReferenceType("PipelineReference")
+)
+
+func (PipelineReferenceType) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineReferenceType)(nil)).Elem()
+}
+
+func (e PipelineReferenceType) ToPipelineReferenceTypeOutput() PipelineReferenceTypeOutput {
+	return pulumi.ToOutput(e).(PipelineReferenceTypeOutput)
+}
+
+func (e PipelineReferenceType) ToPipelineReferenceTypeOutputWithContext(ctx context.Context) PipelineReferenceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PipelineReferenceTypeOutput)
+}
+
+func (e PipelineReferenceType) ToPipelineReferenceTypePtrOutput() PipelineReferenceTypePtrOutput {
+	return e.ToPipelineReferenceTypePtrOutputWithContext(context.Background())
+}
+
+func (e PipelineReferenceType) ToPipelineReferenceTypePtrOutputWithContext(ctx context.Context) PipelineReferenceTypePtrOutput {
+	return PipelineReferenceType(e).ToPipelineReferenceTypeOutputWithContext(ctx).ToPipelineReferenceTypePtrOutputWithContext(ctx)
+}
+
+func (e PipelineReferenceType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PipelineReferenceType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PipelineReferenceType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PipelineReferenceType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PipelineReferenceTypeOutput struct{ *pulumi.OutputState }
+
+func (PipelineReferenceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PipelineReferenceType)(nil)).Elem()
+}
+
+func (o PipelineReferenceTypeOutput) ToPipelineReferenceTypeOutput() PipelineReferenceTypeOutput {
+	return o
+}
+
+func (o PipelineReferenceTypeOutput) ToPipelineReferenceTypeOutputWithContext(ctx context.Context) PipelineReferenceTypeOutput {
+	return o
+}
+
+func (o PipelineReferenceTypeOutput) ToPipelineReferenceTypePtrOutput() PipelineReferenceTypePtrOutput {
+	return o.ToPipelineReferenceTypePtrOutputWithContext(context.Background())
+}
+
+func (o PipelineReferenceTypeOutput) ToPipelineReferenceTypePtrOutputWithContext(ctx context.Context) PipelineReferenceTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PipelineReferenceType) *PipelineReferenceType {
+		return &v
+	}).(PipelineReferenceTypePtrOutput)
+}
+
+func (o PipelineReferenceTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PipelineReferenceTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PipelineReferenceType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PipelineReferenceTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineReferenceTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PipelineReferenceType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PipelineReferenceTypePtrOutput struct{ *pulumi.OutputState }
+
+func (PipelineReferenceTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PipelineReferenceType)(nil)).Elem()
+}
+
+func (o PipelineReferenceTypePtrOutput) ToPipelineReferenceTypePtrOutput() PipelineReferenceTypePtrOutput {
+	return o
+}
+
+func (o PipelineReferenceTypePtrOutput) ToPipelineReferenceTypePtrOutputWithContext(ctx context.Context) PipelineReferenceTypePtrOutput {
+	return o
+}
+
+func (o PipelineReferenceTypePtrOutput) Elem() PipelineReferenceTypeOutput {
+	return o.ApplyT(func(v *PipelineReferenceType) PipelineReferenceType {
+		if v != nil {
+			return *v
+		}
+		var ret PipelineReferenceType
+		return ret
+	}).(PipelineReferenceTypeOutput)
+}
+
+func (o PipelineReferenceTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PipelineReferenceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PipelineReferenceType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PipelineReferenceTypeInput is an input type that accepts values of the PipelineReferenceType enum
+// A concrete instance of `PipelineReferenceTypeInput` can be one of the following:
+//
+//	PipelineReferenceTypePipelineReference
+type PipelineReferenceTypeInput interface {
+	pulumi.Input
+
+	ToPipelineReferenceTypeOutput() PipelineReferenceTypeOutput
+	ToPipelineReferenceTypeOutputWithContext(context.Context) PipelineReferenceTypeOutput
+}
+
+var pipelineReferenceTypePtrType = reflect.TypeOf((**PipelineReferenceType)(nil)).Elem()
+
+type PipelineReferenceTypePtrInput interface {
+	pulumi.Input
+
+	ToPipelineReferenceTypePtrOutput() PipelineReferenceTypePtrOutput
+	ToPipelineReferenceTypePtrOutputWithContext(context.Context) PipelineReferenceTypePtrOutput
+}
+
+type pipelineReferenceTypePtr string
+
+func PipelineReferenceTypePtr(v string) PipelineReferenceTypePtrInput {
+	return (*pipelineReferenceTypePtr)(&v)
+}
+
+func (*pipelineReferenceTypePtr) ElementType() reflect.Type {
+	return pipelineReferenceTypePtrType
+}
+
+func (in *pipelineReferenceTypePtr) ToPipelineReferenceTypePtrOutput() PipelineReferenceTypePtrOutput {
+	return pulumi.ToOutput(in).(PipelineReferenceTypePtrOutput)
+}
+
+func (in *pipelineReferenceTypePtr) ToPipelineReferenceTypePtrOutputWithContext(ctx context.Context) PipelineReferenceTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PipelineReferenceTypePtrOutput)
+}
+
 // Reject type.
 type PolybaseSettingsRejectType string
 
 const (
-	PolybaseSettingsRejectTypeValue      = PolybaseSettingsRejectType("value")
+	// value
+	PolybaseSettingsRejectTypeValue = PolybaseSettingsRejectType("value")
+	// percentage
 	PolybaseSettingsRejectTypePercentage = PolybaseSettingsRejectType("percentage")
 )
 
@@ -9314,8 +11160,10 @@ func (in *polybaseSettingsRejectTypePtr) ToPolybaseSettingsRejectTypePtrOutputWi
 type PrestoAuthenticationType string
 
 const (
+	// Anonymous
 	PrestoAuthenticationTypeAnonymous = PrestoAuthenticationType("Anonymous")
-	PrestoAuthenticationTypeLDAP      = PrestoAuthenticationType("LDAP")
+	// LDAP
+	PrestoAuthenticationTypeLDAP = PrestoAuthenticationType("LDAP")
 )
 
 func (PrestoAuthenticationType) ElementType() reflect.Type {
@@ -9480,7 +11328,9 @@ func (in *prestoAuthenticationTypePtr) ToPrestoAuthenticationTypePtrOutputWithCo
 type PublicNetworkAccess string
 
 const (
-	PublicNetworkAccessEnabled  = PublicNetworkAccess("Enabled")
+	// Enabled
+	PublicNetworkAccessEnabled = PublicNetworkAccess("Enabled")
+	// Disabled
 	PublicNetworkAccessDisabled = PublicNetworkAccess("Disabled")
 )
 
@@ -9646,13 +11496,20 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx 
 type RecurrenceFrequency string
 
 const (
+	// NotSpecified
 	RecurrenceFrequencyNotSpecified = RecurrenceFrequency("NotSpecified")
-	RecurrenceFrequencyMinute       = RecurrenceFrequency("Minute")
-	RecurrenceFrequencyHour         = RecurrenceFrequency("Hour")
-	RecurrenceFrequencyDay          = RecurrenceFrequency("Day")
-	RecurrenceFrequencyWeek         = RecurrenceFrequency("Week")
-	RecurrenceFrequencyMonth        = RecurrenceFrequency("Month")
-	RecurrenceFrequencyYear         = RecurrenceFrequency("Year")
+	// Minute
+	RecurrenceFrequencyMinute = RecurrenceFrequency("Minute")
+	// Hour
+	RecurrenceFrequencyHour = RecurrenceFrequency("Hour")
+	// Day
+	RecurrenceFrequencyDay = RecurrenceFrequency("Day")
+	// Week
+	RecurrenceFrequencyWeek = RecurrenceFrequency("Week")
+	// Month
+	RecurrenceFrequencyMonth = RecurrenceFrequency("Month")
+	// Year
+	RecurrenceFrequencyYear = RecurrenceFrequency("Year")
 )
 
 func (RecurrenceFrequency) ElementType() reflect.Type {
@@ -9822,10 +11679,15 @@ func (in *recurrenceFrequencyPtr) ToRecurrenceFrequencyPtrOutputWithContext(ctx 
 type RestServiceAuthenticationType string
 
 const (
-	RestServiceAuthenticationTypeAnonymous              = RestServiceAuthenticationType("Anonymous")
-	RestServiceAuthenticationTypeBasic                  = RestServiceAuthenticationType("Basic")
-	RestServiceAuthenticationTypeAadServicePrincipal    = RestServiceAuthenticationType("AadServicePrincipal")
+	// Anonymous
+	RestServiceAuthenticationTypeAnonymous = RestServiceAuthenticationType("Anonymous")
+	// Basic
+	RestServiceAuthenticationTypeBasic = RestServiceAuthenticationType("Basic")
+	// AadServicePrincipal
+	RestServiceAuthenticationTypeAadServicePrincipal = RestServiceAuthenticationType("AadServicePrincipal")
+	// ManagedServiceIdentity
 	RestServiceAuthenticationTypeManagedServiceIdentity = RestServiceAuthenticationType("ManagedServiceIdentity")
+	// OAuth2ClientCredential
 	RestServiceAuthenticationTypeOAuth2ClientCredential = RestServiceAuthenticationType("OAuth2ClientCredential")
 )
 
@@ -9994,7 +11856,9 @@ func (in *restServiceAuthenticationTypePtr) ToRestServiceAuthenticationTypePtrOu
 type SalesforceSinkWriteBehavior string
 
 const (
+	// Insert
 	SalesforceSinkWriteBehaviorInsert = SalesforceSinkWriteBehavior("Insert")
+	// Upsert
 	SalesforceSinkWriteBehaviorUpsert = SalesforceSinkWriteBehavior("Upsert")
 )
 
@@ -10160,7 +12024,9 @@ func (in *salesforceSinkWriteBehaviorPtr) ToSalesforceSinkWriteBehaviorPtrOutput
 type SalesforceV2SinkWriteBehavior string
 
 const (
+	// Insert
 	SalesforceV2SinkWriteBehaviorInsert = SalesforceV2SinkWriteBehavior("Insert")
+	// Upsert
 	SalesforceV2SinkWriteBehaviorUpsert = SalesforceV2SinkWriteBehavior("Upsert")
 )
 
@@ -10326,7 +12192,9 @@ func (in *salesforceV2SinkWriteBehaviorPtr) ToSalesforceV2SinkWriteBehaviorPtrOu
 type SapCloudForCustomerSinkWriteBehavior string
 
 const (
+	// Insert
 	SapCloudForCustomerSinkWriteBehaviorInsert = SapCloudForCustomerSinkWriteBehavior("Insert")
+	// Update
 	SapCloudForCustomerSinkWriteBehaviorUpdate = SapCloudForCustomerSinkWriteBehavior("Update")
 )
 
@@ -10492,7 +12360,9 @@ func (in *sapCloudForCustomerSinkWriteBehaviorPtr) ToSapCloudForCustomerSinkWrit
 type SapHanaAuthenticationType string
 
 const (
-	SapHanaAuthenticationTypeBasic   = SapHanaAuthenticationType("Basic")
+	// Basic
+	SapHanaAuthenticationTypeBasic = SapHanaAuthenticationType("Basic")
+	// Windows
 	SapHanaAuthenticationTypeWindows = SapHanaAuthenticationType("Windows")
 )
 
@@ -10658,8 +12528,10 @@ func (in *sapHanaAuthenticationTypePtr) ToSapHanaAuthenticationTypePtrOutputWith
 type ScriptActivityLogDestination string
 
 const (
+	// ActivityOutput
 	ScriptActivityLogDestinationActivityOutput = ScriptActivityLogDestination("ActivityOutput")
-	ScriptActivityLogDestinationExternalStore  = ScriptActivityLogDestination("ExternalStore")
+	// ExternalStore
+	ScriptActivityLogDestinationExternalStore = ScriptActivityLogDestination("ExternalStore")
 )
 
 func (ScriptActivityLogDestination) ElementType() reflect.Type {
@@ -10824,8 +12696,11 @@ func (in *scriptActivityLogDestinationPtr) ToScriptActivityLogDestinationPtrOutp
 type ScriptActivityParameterDirection string
 
 const (
-	ScriptActivityParameterDirectionValueInput       = ScriptActivityParameterDirection("Input")
-	ScriptActivityParameterDirectionValueOutput      = ScriptActivityParameterDirection("Output")
+	// Input
+	ScriptActivityParameterDirectionValueInput = ScriptActivityParameterDirection("Input")
+	// Output
+	ScriptActivityParameterDirectionValueOutput = ScriptActivityParameterDirection("Output")
+	// InputOutput
 	ScriptActivityParameterDirectionValueInputOutput = ScriptActivityParameterDirection("InputOutput")
 )
 
@@ -10992,18 +12867,30 @@ func (in *scriptActivityParameterDirectionPtr) ToScriptActivityParameterDirectio
 type ScriptActivityParameterType string
 
 const (
-	ScriptActivityParameterTypeBoolean        = ScriptActivityParameterType("Boolean")
-	ScriptActivityParameterTypeDateTime       = ScriptActivityParameterType("DateTime")
+	// Boolean
+	ScriptActivityParameterTypeBoolean = ScriptActivityParameterType("Boolean")
+	// DateTime
+	ScriptActivityParameterTypeDateTime = ScriptActivityParameterType("DateTime")
+	// DateTimeOffset
 	ScriptActivityParameterTypeDateTimeOffset = ScriptActivityParameterType("DateTimeOffset")
-	ScriptActivityParameterTypeDecimal        = ScriptActivityParameterType("Decimal")
-	ScriptActivityParameterTypeDouble         = ScriptActivityParameterType("Double")
-	ScriptActivityParameterTypeGuid           = ScriptActivityParameterType("Guid")
-	ScriptActivityParameterTypeInt16          = ScriptActivityParameterType("Int16")
-	ScriptActivityParameterTypeInt32          = ScriptActivityParameterType("Int32")
-	ScriptActivityParameterTypeInt64          = ScriptActivityParameterType("Int64")
-	ScriptActivityParameterTypeSingle         = ScriptActivityParameterType("Single")
-	ScriptActivityParameterTypeString         = ScriptActivityParameterType("String")
-	ScriptActivityParameterTypeTimespan       = ScriptActivityParameterType("Timespan")
+	// Decimal
+	ScriptActivityParameterTypeDecimal = ScriptActivityParameterType("Decimal")
+	// Double
+	ScriptActivityParameterTypeDouble = ScriptActivityParameterType("Double")
+	// Guid
+	ScriptActivityParameterTypeGuid = ScriptActivityParameterType("Guid")
+	// Int16
+	ScriptActivityParameterTypeInt16 = ScriptActivityParameterType("Int16")
+	// Int32
+	ScriptActivityParameterTypeInt32 = ScriptActivityParameterType("Int32")
+	// Int64
+	ScriptActivityParameterTypeInt64 = ScriptActivityParameterType("Int64")
+	// Single
+	ScriptActivityParameterTypeSingle = ScriptActivityParameterType("Single")
+	// String
+	ScriptActivityParameterTypeString = ScriptActivityParameterType("String")
+	// Timespan
+	ScriptActivityParameterTypeTimespan = ScriptActivityParameterType("Timespan")
 )
 
 func (ScriptActivityParameterType) ElementType() reflect.Type {
@@ -11178,7 +13065,9 @@ func (in *scriptActivityParameterTypePtr) ToScriptActivityParameterTypePtrOutput
 type ServiceNowAuthenticationType string
 
 const (
-	ServiceNowAuthenticationTypeBasic  = ServiceNowAuthenticationType("Basic")
+	// Basic
+	ServiceNowAuthenticationTypeBasic = ServiceNowAuthenticationType("Basic")
+	// OAuth2
 	ServiceNowAuthenticationTypeOAuth2 = ServiceNowAuthenticationType("OAuth2")
 )
 
@@ -11344,7 +13233,9 @@ func (in *serviceNowAuthenticationTypePtr) ToServiceNowAuthenticationTypePtrOutp
 type ServiceNowV2AuthenticationType string
 
 const (
-	ServiceNowV2AuthenticationTypeBasic  = ServiceNowV2AuthenticationType("Basic")
+	// Basic
+	ServiceNowV2AuthenticationTypeBasic = ServiceNowV2AuthenticationType("Basic")
+	// OAuth2
 	ServiceNowV2AuthenticationTypeOAuth2 = ServiceNowV2AuthenticationType("OAuth2")
 )
 
@@ -11510,9 +13401,12 @@ func (in *serviceNowV2AuthenticationTypePtr) ToServiceNowV2AuthenticationTypePtr
 type SftpAuthenticationType string
 
 const (
-	SftpAuthenticationTypeBasic        = SftpAuthenticationType("Basic")
+	// Basic
+	SftpAuthenticationTypeBasic = SftpAuthenticationType("Basic")
+	// SshPublicKey
 	SftpAuthenticationTypeSshPublicKey = SftpAuthenticationType("SshPublicKey")
-	SftpAuthenticationTypeMultiFactor  = SftpAuthenticationType("MultiFactor")
+	// MultiFactor
+	SftpAuthenticationTypeMultiFactor = SftpAuthenticationType("MultiFactor")
 )
 
 func (SftpAuthenticationType) ElementType() reflect.Type {
@@ -11678,8 +13572,11 @@ func (in *sftpAuthenticationTypePtr) ToSftpAuthenticationTypePtrOutputWithContex
 type SnowflakeAuthenticationType string
 
 const (
-	SnowflakeAuthenticationTypeBasic               = SnowflakeAuthenticationType("Basic")
-	SnowflakeAuthenticationTypeKeyPair             = SnowflakeAuthenticationType("KeyPair")
+	// Basic
+	SnowflakeAuthenticationTypeBasic = SnowflakeAuthenticationType("Basic")
+	// KeyPair
+	SnowflakeAuthenticationTypeKeyPair = SnowflakeAuthenticationType("KeyPair")
+	// AADServicePrincipal
 	SnowflakeAuthenticationTypeAADServicePrincipal = SnowflakeAuthenticationType("AADServicePrincipal")
 )
 
@@ -11846,9 +13743,13 @@ func (in *snowflakeAuthenticationTypePtr) ToSnowflakeAuthenticationTypePtrOutput
 type SparkAuthenticationType string
 
 const (
-	SparkAuthenticationTypeAnonymous                    = SparkAuthenticationType("Anonymous")
-	SparkAuthenticationTypeUsername                     = SparkAuthenticationType("Username")
-	SparkAuthenticationTypeUsernameAndPassword          = SparkAuthenticationType("UsernameAndPassword")
+	// Anonymous
+	SparkAuthenticationTypeAnonymous = SparkAuthenticationType("Anonymous")
+	// Username
+	SparkAuthenticationTypeUsername = SparkAuthenticationType("Username")
+	// UsernameAndPassword
+	SparkAuthenticationTypeUsernameAndPassword = SparkAuthenticationType("UsernameAndPassword")
+	// WindowsAzureHDInsightService
 	SparkAuthenticationTypeWindowsAzureHDInsightService = SparkAuthenticationType("WindowsAzureHDInsightService")
 )
 
@@ -12016,6 +13917,7 @@ func (in *sparkAuthenticationTypePtr) ToSparkAuthenticationTypePtrOutputWithCont
 type SparkConfigurationReferenceType string
 
 const (
+	// SparkConfigurationReference
 	SparkConfigurationReferenceTypeSparkConfigurationReference = SparkConfigurationReferenceType("SparkConfigurationReference")
 )
 
@@ -12180,6 +14082,7 @@ func (in *sparkConfigurationReferenceTypePtr) ToSparkConfigurationReferenceTypeP
 type SparkJobReferenceType string
 
 const (
+	// SparkJobDefinitionReference
 	SparkJobReferenceTypeSparkJobDefinitionReference = SparkJobReferenceType("SparkJobDefinitionReference")
 )
 
@@ -12344,8 +14247,11 @@ func (in *sparkJobReferenceTypePtr) ToSparkJobReferenceTypePtrOutputWithContext(
 type SparkServerType string
 
 const (
-	SparkServerTypeSharkServer       = SparkServerType("SharkServer")
-	SparkServerTypeSharkServer2      = SparkServerType("SharkServer2")
+	// SharkServer
+	SparkServerTypeSharkServer = SparkServerType("SharkServer")
+	// SharkServer2
+	SparkServerTypeSharkServer2 = SparkServerType("SharkServer2")
+	// SparkThriftServer
 	SparkServerTypeSparkThriftServer = SparkServerType("SparkThriftServer")
 )
 
@@ -12512,8 +14418,11 @@ func (in *sparkServerTypePtr) ToSparkServerTypePtrOutputWithContext(ctx context.
 type SparkThriftTransportProtocol string
 
 const (
+	// Binary
 	SparkThriftTransportProtocolBinary = SparkThriftTransportProtocol("Binary")
-	SparkThriftTransportProtocolSASL   = SparkThriftTransportProtocol("SASL")
+	// SASL
+	SparkThriftTransportProtocolSASL = SparkThriftTransportProtocol("SASL")
+	// HTTP
 	SparkThriftTransportProtocol_HTTP_ = SparkThriftTransportProtocol("HTTP ")
 )
 
@@ -12680,8 +14589,11 @@ func (in *sparkThriftTransportProtocolPtr) ToSparkThriftTransportProtocolPtrOutp
 type SqlAlwaysEncryptedAkvAuthType string
 
 const (
-	SqlAlwaysEncryptedAkvAuthTypeServicePrincipal            = SqlAlwaysEncryptedAkvAuthType("ServicePrincipal")
-	SqlAlwaysEncryptedAkvAuthTypeManagedIdentity             = SqlAlwaysEncryptedAkvAuthType("ManagedIdentity")
+	// ServicePrincipal
+	SqlAlwaysEncryptedAkvAuthTypeServicePrincipal = SqlAlwaysEncryptedAkvAuthType("ServicePrincipal")
+	// ManagedIdentity
+	SqlAlwaysEncryptedAkvAuthTypeManagedIdentity = SqlAlwaysEncryptedAkvAuthType("ManagedIdentity")
+	// UserAssignedManagedIdentity
 	SqlAlwaysEncryptedAkvAuthTypeUserAssignedManagedIdentity = SqlAlwaysEncryptedAkvAuthType("UserAssignedManagedIdentity")
 )
 
@@ -12848,8 +14760,11 @@ func (in *sqlAlwaysEncryptedAkvAuthTypePtr) ToSqlAlwaysEncryptedAkvAuthTypePtrOu
 type SqlServerAuthenticationType string
 
 const (
-	SqlServerAuthenticationTypeSQL                         = SqlServerAuthenticationType("SQL")
-	SqlServerAuthenticationTypeWindows                     = SqlServerAuthenticationType("Windows")
+	// SQL
+	SqlServerAuthenticationTypeSQL = SqlServerAuthenticationType("SQL")
+	// Windows
+	SqlServerAuthenticationTypeWindows = SqlServerAuthenticationType("Windows")
+	// UserAssignedManagedIdentity
 	SqlServerAuthenticationTypeUserAssignedManagedIdentity = SqlServerAuthenticationType("UserAssignedManagedIdentity")
 )
 
@@ -13016,6 +14931,7 @@ func (in *sqlServerAuthenticationTypePtr) ToSqlServerAuthenticationTypePtrOutput
 type SsisLogLocationType string
 
 const (
+	// File
 	SsisLogLocationTypeFile = SsisLogLocationType("File")
 )
 
@@ -13180,10 +15096,14 @@ func (in *ssisLogLocationTypePtr) ToSsisLogLocationTypePtrOutputWithContext(ctx 
 type SsisPackageLocationType string
 
 const (
-	SsisPackageLocationTypeSSISDB        = SsisPackageLocationType("SSISDB")
-	SsisPackageLocationTypeFile          = SsisPackageLocationType("File")
+	// SSISDB
+	SsisPackageLocationTypeSSISDB = SsisPackageLocationType("SSISDB")
+	// File
+	SsisPackageLocationTypeFile = SsisPackageLocationType("File")
+	// InlinePackage
 	SsisPackageLocationTypeInlinePackage = SsisPackageLocationType("InlinePackage")
-	SsisPackageLocationTypePackageStore  = SsisPackageLocationType("PackageStore")
+	// PackageStore
+	SsisPackageLocationTypePackageStore = SsisPackageLocationType("PackageStore")
 )
 
 func (SsisPackageLocationType) ElementType() reflect.Type {
@@ -13350,7 +15270,9 @@ func (in *ssisPackageLocationTypePtr) ToSsisPackageLocationTypePtrOutputWithCont
 type SybaseAuthenticationType string
 
 const (
-	SybaseAuthenticationTypeBasic   = SybaseAuthenticationType("Basic")
+	// Basic
+	SybaseAuthenticationTypeBasic = SybaseAuthenticationType("Basic")
+	// Windows
 	SybaseAuthenticationTypeWindows = SybaseAuthenticationType("Windows")
 )
 
@@ -13516,7 +15438,9 @@ func (in *sybaseAuthenticationTypePtr) ToSybaseAuthenticationTypePtrOutputWithCo
 type TeamDeskAuthenticationType string
 
 const (
+	// Basic
 	TeamDeskAuthenticationTypeBasic = TeamDeskAuthenticationType("Basic")
+	// Token
 	TeamDeskAuthenticationTypeToken = TeamDeskAuthenticationType("Token")
 )
 
@@ -13682,7 +15606,9 @@ func (in *teamDeskAuthenticationTypePtr) ToTeamDeskAuthenticationTypePtrOutputWi
 type TeradataAuthenticationType string
 
 const (
-	TeradataAuthenticationTypeBasic   = TeradataAuthenticationType("Basic")
+	// Basic
+	TeradataAuthenticationTypeBasic = TeradataAuthenticationType("Basic")
+	// Windows
 	TeradataAuthenticationTypeWindows = TeradataAuthenticationType("Windows")
 )
 
@@ -13848,6 +15774,7 @@ func (in *teradataAuthenticationTypePtr) ToTeradataAuthenticationTypePtrOutputWi
 type TriggerReferenceType string
 
 const (
+	// TriggerReference
 	TriggerReferenceTypeTriggerReference = TriggerReferenceType("TriggerReference")
 )
 
@@ -14012,9 +15939,12 @@ func (in *triggerReferenceTypePtr) ToTriggerReferenceTypePtrOutputWithContext(ct
 type TumblingWindowFrequency string
 
 const (
+	// Minute
 	TumblingWindowFrequencyMinute = TumblingWindowFrequency("Minute")
-	TumblingWindowFrequencyHour   = TumblingWindowFrequency("Hour")
-	TumblingWindowFrequencyMonth  = TumblingWindowFrequency("Month")
+	// Hour
+	TumblingWindowFrequencyHour = TumblingWindowFrequency("Hour")
+	// Month
+	TumblingWindowFrequencyMonth = TumblingWindowFrequency("Month")
 )
 
 func (TumblingWindowFrequency) ElementType() reflect.Type {
@@ -14180,6 +16110,7 @@ func (in *tumblingWindowFrequencyPtr) ToTumblingWindowFrequencyPtrOutputWithCont
 type Type string
 
 const (
+	// LinkedServiceReference
 	TypeLinkedServiceReference = Type("LinkedServiceReference")
 )
 
@@ -14344,7 +16275,9 @@ func (in *typePtr) ToTypePtrOutputWithContext(ctx context.Context) TypePtrOutput
 type ValueType string
 
 const (
-	ValueTypeActual  = ValueType("actual")
+	// actual
+	ValueTypeActual = ValueType("actual")
+	// display
 	ValueTypeDisplay = ValueType("display")
 )
 
@@ -14510,9 +16443,12 @@ func (in *valueTypePtr) ToValueTypePtrOutputWithContext(ctx context.Context) Val
 type VariableType string
 
 const (
+	// String
 	VariableTypeString = VariableType("String")
-	VariableTypeBool   = VariableType("Bool")
-	VariableTypeArray  = VariableType("Array")
+	// Bool
+	VariableTypeBool = VariableType("Bool")
+	// Array
+	VariableTypeArray = VariableType("Array")
 )
 
 func (VariableType) ElementType() reflect.Type {
@@ -14674,13 +16610,188 @@ func (in *variableTypePtr) ToVariableTypePtrOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, in).(VariableTypePtrOutput)
 }
 
+// The authentication type to use.
+type WarehouseAuthenticationType string
+
+const (
+	// ServicePrincipal
+	WarehouseAuthenticationTypeServicePrincipal = WarehouseAuthenticationType("ServicePrincipal")
+	// SystemAssignedManagedIdentity
+	WarehouseAuthenticationTypeSystemAssignedManagedIdentity = WarehouseAuthenticationType("SystemAssignedManagedIdentity")
+	// UserAssignedManagedIdentity
+	WarehouseAuthenticationTypeUserAssignedManagedIdentity = WarehouseAuthenticationType("UserAssignedManagedIdentity")
+)
+
+func (WarehouseAuthenticationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*WarehouseAuthenticationType)(nil)).Elem()
+}
+
+func (e WarehouseAuthenticationType) ToWarehouseAuthenticationTypeOutput() WarehouseAuthenticationTypeOutput {
+	return pulumi.ToOutput(e).(WarehouseAuthenticationTypeOutput)
+}
+
+func (e WarehouseAuthenticationType) ToWarehouseAuthenticationTypeOutputWithContext(ctx context.Context) WarehouseAuthenticationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(WarehouseAuthenticationTypeOutput)
+}
+
+func (e WarehouseAuthenticationType) ToWarehouseAuthenticationTypePtrOutput() WarehouseAuthenticationTypePtrOutput {
+	return e.ToWarehouseAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (e WarehouseAuthenticationType) ToWarehouseAuthenticationTypePtrOutputWithContext(ctx context.Context) WarehouseAuthenticationTypePtrOutput {
+	return WarehouseAuthenticationType(e).ToWarehouseAuthenticationTypeOutputWithContext(ctx).ToWarehouseAuthenticationTypePtrOutputWithContext(ctx)
+}
+
+func (e WarehouseAuthenticationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e WarehouseAuthenticationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e WarehouseAuthenticationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e WarehouseAuthenticationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type WarehouseAuthenticationTypeOutput struct{ *pulumi.OutputState }
+
+func (WarehouseAuthenticationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WarehouseAuthenticationType)(nil)).Elem()
+}
+
+func (o WarehouseAuthenticationTypeOutput) ToWarehouseAuthenticationTypeOutput() WarehouseAuthenticationTypeOutput {
+	return o
+}
+
+func (o WarehouseAuthenticationTypeOutput) ToWarehouseAuthenticationTypeOutputWithContext(ctx context.Context) WarehouseAuthenticationTypeOutput {
+	return o
+}
+
+func (o WarehouseAuthenticationTypeOutput) ToWarehouseAuthenticationTypePtrOutput() WarehouseAuthenticationTypePtrOutput {
+	return o.ToWarehouseAuthenticationTypePtrOutputWithContext(context.Background())
+}
+
+func (o WarehouseAuthenticationTypeOutput) ToWarehouseAuthenticationTypePtrOutputWithContext(ctx context.Context) WarehouseAuthenticationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WarehouseAuthenticationType) *WarehouseAuthenticationType {
+		return &v
+	}).(WarehouseAuthenticationTypePtrOutput)
+}
+
+func (o WarehouseAuthenticationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o WarehouseAuthenticationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WarehouseAuthenticationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o WarehouseAuthenticationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WarehouseAuthenticationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WarehouseAuthenticationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type WarehouseAuthenticationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (WarehouseAuthenticationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WarehouseAuthenticationType)(nil)).Elem()
+}
+
+func (o WarehouseAuthenticationTypePtrOutput) ToWarehouseAuthenticationTypePtrOutput() WarehouseAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o WarehouseAuthenticationTypePtrOutput) ToWarehouseAuthenticationTypePtrOutputWithContext(ctx context.Context) WarehouseAuthenticationTypePtrOutput {
+	return o
+}
+
+func (o WarehouseAuthenticationTypePtrOutput) Elem() WarehouseAuthenticationTypeOutput {
+	return o.ApplyT(func(v *WarehouseAuthenticationType) WarehouseAuthenticationType {
+		if v != nil {
+			return *v
+		}
+		var ret WarehouseAuthenticationType
+		return ret
+	}).(WarehouseAuthenticationTypeOutput)
+}
+
+func (o WarehouseAuthenticationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WarehouseAuthenticationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *WarehouseAuthenticationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// WarehouseAuthenticationTypeInput is an input type that accepts values of the WarehouseAuthenticationType enum
+// A concrete instance of `WarehouseAuthenticationTypeInput` can be one of the following:
+//
+//	WarehouseAuthenticationTypeServicePrincipal
+//	WarehouseAuthenticationTypeSystemAssignedManagedIdentity
+//	WarehouseAuthenticationTypeUserAssignedManagedIdentity
+type WarehouseAuthenticationTypeInput interface {
+	pulumi.Input
+
+	ToWarehouseAuthenticationTypeOutput() WarehouseAuthenticationTypeOutput
+	ToWarehouseAuthenticationTypeOutputWithContext(context.Context) WarehouseAuthenticationTypeOutput
+}
+
+var warehouseAuthenticationTypePtrType = reflect.TypeOf((**WarehouseAuthenticationType)(nil)).Elem()
+
+type WarehouseAuthenticationTypePtrInput interface {
+	pulumi.Input
+
+	ToWarehouseAuthenticationTypePtrOutput() WarehouseAuthenticationTypePtrOutput
+	ToWarehouseAuthenticationTypePtrOutputWithContext(context.Context) WarehouseAuthenticationTypePtrOutput
+}
+
+type warehouseAuthenticationTypePtr string
+
+func WarehouseAuthenticationTypePtr(v string) WarehouseAuthenticationTypePtrInput {
+	return (*warehouseAuthenticationTypePtr)(&v)
+}
+
+func (*warehouseAuthenticationTypePtr) ElementType() reflect.Type {
+	return warehouseAuthenticationTypePtrType
+}
+
+func (in *warehouseAuthenticationTypePtr) ToWarehouseAuthenticationTypePtrOutput() WarehouseAuthenticationTypePtrOutput {
+	return pulumi.ToOutput(in).(WarehouseAuthenticationTypePtrOutput)
+}
+
+func (in *warehouseAuthenticationTypePtr) ToWarehouseAuthenticationTypePtrOutputWithContext(ctx context.Context) WarehouseAuthenticationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(WarehouseAuthenticationTypePtrOutput)
+}
+
 // Rest API method for target endpoint.
 type WebActivityMethod string
 
 const (
-	WebActivityMethodGET    = WebActivityMethod("GET")
-	WebActivityMethodPOST   = WebActivityMethod("POST")
-	WebActivityMethodPUT    = WebActivityMethod("PUT")
+	// GET
+	WebActivityMethodGET = WebActivityMethod("GET")
+	// POST
+	WebActivityMethodPOST = WebActivityMethod("POST")
+	// PUT
+	WebActivityMethodPUT = WebActivityMethod("PUT")
+	// DELETE
 	WebActivityMethodDELETE = WebActivityMethod("DELETE")
 )
 
@@ -14848,8 +16959,11 @@ func (in *webActivityMethodPtr) ToWebActivityMethodPtrOutputWithContext(ctx cont
 type WebAuthenticationType string
 
 const (
-	WebAuthenticationTypeBasic             = WebAuthenticationType("Basic")
-	WebAuthenticationTypeAnonymous         = WebAuthenticationType("Anonymous")
+	// Basic
+	WebAuthenticationTypeBasic = WebAuthenticationType("Basic")
+	// Anonymous
+	WebAuthenticationTypeAnonymous = WebAuthenticationType("Anonymous")
+	// ClientCertificate
 	WebAuthenticationTypeClientCertificate = WebAuthenticationType("ClientCertificate")
 )
 
@@ -14857,6 +16971,7 @@ const (
 type WebHookActivityMethod string
 
 const (
+	// POST
 	WebHookActivityMethodPOST = WebHookActivityMethod("POST")
 )
 
@@ -15021,7 +17136,9 @@ func (in *webHookActivityMethodPtr) ToWebHookActivityMethodPtrOutputWithContext(
 type ZendeskAuthenticationType string
 
 const (
+	// Basic
 	ZendeskAuthenticationTypeBasic = ZendeskAuthenticationType("Basic")
+	// Token
 	ZendeskAuthenticationTypeToken = ZendeskAuthenticationType("Token")
 )
 
@@ -15188,6 +17305,8 @@ func init() {
 	pulumi.RegisterOutputType(ActivityOnInactiveMarkAsPtrOutput{})
 	pulumi.RegisterOutputType(ActivityStateOutput{})
 	pulumi.RegisterOutputType(ActivityStatePtrOutput{})
+	pulumi.RegisterOutputType(AmazonRdsForOracleAuthenticationTypeOutput{})
+	pulumi.RegisterOutputType(AmazonRdsForOracleAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(AmazonRdsForSqlAuthenticationTypeOutput{})
 	pulumi.RegisterOutputType(AmazonRdsForSqlAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(AzureFunctionActivityMethodOutput{})
@@ -15222,6 +17341,8 @@ func init() {
 	pulumi.RegisterOutputType(DataFlowComputeTypePtrOutput{})
 	pulumi.RegisterOutputType(DataFlowReferenceTypeOutput{})
 	pulumi.RegisterOutputType(DataFlowReferenceTypePtrOutput{})
+	pulumi.RegisterOutputType(DatasetReferenceTypeOutput{})
+	pulumi.RegisterOutputType(DatasetReferenceTypePtrOutput{})
 	pulumi.RegisterOutputType(DayOfWeekOutput{})
 	pulumi.RegisterOutputType(DayOfWeekPtrOutput{})
 	pulumi.RegisterOutputType(DaysOfWeekOutput{})
@@ -15233,6 +17354,8 @@ func init() {
 	pulumi.RegisterOutputType(DependencyConditionPtrOutput{})
 	pulumi.RegisterOutputType(DynamicsSinkWriteBehaviorOutput{})
 	pulumi.RegisterOutputType(DynamicsSinkWriteBehaviorPtrOutput{})
+	pulumi.RegisterOutputType(ExpressionTypeOutput{})
+	pulumi.RegisterOutputType(ExpressionTypePtrOutput{})
 	pulumi.RegisterOutputType(ExpressionV2TypeOutput{})
 	pulumi.RegisterOutputType(ExpressionV2TypePtrOutput{})
 	pulumi.RegisterOutputType(FactoryIdentityTypeOutput{})
@@ -15255,6 +17378,10 @@ func init() {
 	pulumi.RegisterOutputType(HBaseAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(HDInsightActivityDebugInfoOptionOutput{})
 	pulumi.RegisterOutputType(HDInsightActivityDebugInfoOptionPtrOutput{})
+	pulumi.RegisterOutputType(HDInsightClusterAuthenticationTypeOutput{})
+	pulumi.RegisterOutputType(HDInsightClusterAuthenticationTypePtrOutput{})
+	pulumi.RegisterOutputType(HDInsightOndemandClusterResourceGroupAuthenticationTypeOutput{})
+	pulumi.RegisterOutputType(HDInsightOndemandClusterResourceGroupAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(HiveAuthenticationTypeOutput{})
 	pulumi.RegisterOutputType(HiveAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(HiveServerTypeOutput{})
@@ -15265,20 +17392,28 @@ func init() {
 	pulumi.RegisterOutputType(HttpAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(ImpalaAuthenticationTypeOutput{})
 	pulumi.RegisterOutputType(ImpalaAuthenticationTypePtrOutput{})
+	pulumi.RegisterOutputType(ImpalaThriftTransportProtocolOutput{})
+	pulumi.RegisterOutputType(ImpalaThriftTransportProtocolPtrOutput{})
 	pulumi.RegisterOutputType(IntegrationRuntimeEditionOutput{})
 	pulumi.RegisterOutputType(IntegrationRuntimeEditionPtrOutput{})
 	pulumi.RegisterOutputType(IntegrationRuntimeEntityReferenceTypeOutput{})
 	pulumi.RegisterOutputType(IntegrationRuntimeEntityReferenceTypePtrOutput{})
 	pulumi.RegisterOutputType(IntegrationRuntimeLicenseTypeOutput{})
 	pulumi.RegisterOutputType(IntegrationRuntimeLicenseTypePtrOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeReferenceTypeOutput{})
+	pulumi.RegisterOutputType(IntegrationRuntimeReferenceTypePtrOutput{})
 	pulumi.RegisterOutputType(IntegrationRuntimeSsisCatalogPricingTierOutput{})
 	pulumi.RegisterOutputType(IntegrationRuntimeSsisCatalogPricingTierPtrOutput{})
+	pulumi.RegisterOutputType(LakehouseAuthenticationTypeOutput{})
+	pulumi.RegisterOutputType(LakehouseAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(ManagedVirtualNetworkReferenceTypeOutput{})
 	pulumi.RegisterOutputType(ManagedVirtualNetworkReferenceTypePtrOutput{})
 	pulumi.RegisterOutputType(MappingTypeOutput{})
 	pulumi.RegisterOutputType(MappingTypePtrOutput{})
 	pulumi.RegisterOutputType(MongoDbAuthenticationTypeOutput{})
 	pulumi.RegisterOutputType(MongoDbAuthenticationTypePtrOutput{})
+	pulumi.RegisterOutputType(NetezzaSecurityLevelTypeOutput{})
+	pulumi.RegisterOutputType(NetezzaSecurityLevelTypePtrOutput{})
 	pulumi.RegisterOutputType(NotebookParameterTypeOutput{})
 	pulumi.RegisterOutputType(NotebookParameterTypePtrOutput{})
 	pulumi.RegisterOutputType(NotebookReferenceTypeOutput{})
@@ -15293,6 +17428,8 @@ func init() {
 	pulumi.RegisterOutputType(ParameterTypePtrOutput{})
 	pulumi.RegisterOutputType(PhoenixAuthenticationTypeOutput{})
 	pulumi.RegisterOutputType(PhoenixAuthenticationTypePtrOutput{})
+	pulumi.RegisterOutputType(PipelineReferenceTypeOutput{})
+	pulumi.RegisterOutputType(PipelineReferenceTypePtrOutput{})
 	pulumi.RegisterOutputType(PolybaseSettingsRejectTypeOutput{})
 	pulumi.RegisterOutputType(PolybaseSettingsRejectTypePtrOutput{})
 	pulumi.RegisterOutputType(PrestoAuthenticationTypeOutput{})
@@ -15359,6 +17496,8 @@ func init() {
 	pulumi.RegisterOutputType(ValueTypePtrOutput{})
 	pulumi.RegisterOutputType(VariableTypeOutput{})
 	pulumi.RegisterOutputType(VariableTypePtrOutput{})
+	pulumi.RegisterOutputType(WarehouseAuthenticationTypeOutput{})
+	pulumi.RegisterOutputType(WarehouseAuthenticationTypePtrOutput{})
 	pulumi.RegisterOutputType(WebActivityMethodOutput{})
 	pulumi.RegisterOutputType(WebActivityMethodPtrOutput{})
 	pulumi.RegisterOutputType(WebHookActivityMethodOutput{})

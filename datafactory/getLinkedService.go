@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,21 +29,25 @@ type LookupLinkedServiceArgs struct {
 	FactoryName string `pulumi:"factoryName"`
 	// The linked service name.
 	LinkedServiceName string `pulumi:"linkedServiceName"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Linked service resource type.
 type LookupLinkedServiceResult struct {
-	// Etag identifies change in the resource.
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
 	Etag string `pulumi:"etag"`
-	// The resource identifier.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// The resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Properties of linked service.
 	Properties interface{} `pulumi:"properties"`
-	// The resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -61,7 +65,7 @@ type LookupLinkedServiceOutputArgs struct {
 	FactoryName pulumi.StringInput `pulumi:"factoryName"`
 	// The linked service name.
 	LinkedServiceName pulumi.StringInput `pulumi:"linkedServiceName"`
-	// The resource group name.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -84,17 +88,22 @@ func (o LookupLinkedServiceResultOutput) ToLookupLinkedServiceResultOutputWithCo
 	return o
 }
 
-// Etag identifies change in the resource.
+// The Azure API version of the resource.
+func (o LookupLinkedServiceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLinkedServiceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
 func (o LookupLinkedServiceResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedServiceResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
-// The resource identifier.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupLinkedServiceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedServiceResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The resource name.
+// The name of the resource
 func (o LookupLinkedServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -104,7 +113,12 @@ func (o LookupLinkedServiceResultOutput) Properties() pulumi.AnyOutput {
 	return o.ApplyT(func(v LookupLinkedServiceResult) interface{} { return v.Properties }).(pulumi.AnyOutput)
 }
 
-// The resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupLinkedServiceResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupLinkedServiceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupLinkedServiceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLinkedServiceResult) string { return v.Type }).(pulumi.StringOutput)
 }

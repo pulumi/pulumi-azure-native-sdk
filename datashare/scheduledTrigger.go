@@ -8,16 +8,18 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A type of trigger based on schedule
 //
-// Uses Azure REST API version 2021-08-01. In version 1.x of the Azure Native provider, it used API version 2020-09-01.
+// Uses Azure REST API version 2021-08-01. In version 2.x of the Azure Native provider, it used API version 2021-08-01.
 type ScheduledTrigger struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Time at which the trigger was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Kind of synchronization on trigger.
@@ -195,6 +197,11 @@ func (o ScheduledTriggerOutput) ToScheduledTriggerOutput() ScheduledTriggerOutpu
 
 func (o ScheduledTriggerOutput) ToScheduledTriggerOutputWithContext(ctx context.Context) ScheduledTriggerOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o ScheduledTriggerOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScheduledTrigger) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Time at which the trigger was created.

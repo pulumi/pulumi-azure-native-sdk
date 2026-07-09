@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieve the deleted runbooks for an automation account.
 //
-// Uses Azure REST API version 2023-05-15-preview.
+// Uses Azure REST API version 2024-10-23.
 //
-// Other available API versions: 2024-10-23.
+// Other available API versions: 2023-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListAutomationAccountDeletedRunbooks(ctx *pulumi.Context, args *ListAutomationAccountDeletedRunbooksArgs, opts ...pulumi.InvokeOption) (*ListAutomationAccountDeletedRunbooksResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListAutomationAccountDeletedRunbooksResult
@@ -29,15 +29,15 @@ func ListAutomationAccountDeletedRunbooks(ctx *pulumi.Context, args *ListAutomat
 type ListAutomationAccountDeletedRunbooksArgs struct {
 	// The name of the automation account.
 	AutomationAccountName string `pulumi:"automationAccountName"`
-	// Name of an Azure Resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // The response model for the list deleted runbook.
 type ListAutomationAccountDeletedRunbooksResult struct {
-	// Gets or sets the next link.
+	// The link to the next page of items
 	NextLink *string `pulumi:"nextLink"`
-	// List of deleted runbooks in automation account.
+	// The DeletedRunbook items on this page
 	Value []DeletedRunbookResponse `pulumi:"value"`
 }
 
@@ -53,7 +53,7 @@ func ListAutomationAccountDeletedRunbooksOutput(ctx *pulumi.Context, args ListAu
 type ListAutomationAccountDeletedRunbooksOutputArgs struct {
 	// The name of the automation account.
 	AutomationAccountName pulumi.StringInput `pulumi:"automationAccountName"`
-	// Name of an Azure Resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -76,12 +76,12 @@ func (o ListAutomationAccountDeletedRunbooksResultOutput) ToListAutomationAccoun
 	return o
 }
 
-// Gets or sets the next link.
+// The link to the next page of items
 func (o ListAutomationAccountDeletedRunbooksResultOutput) NextLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListAutomationAccountDeletedRunbooksResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
-// List of deleted runbooks in automation account.
+// The DeletedRunbook items on this page
 func (o ListAutomationAccountDeletedRunbooksResultOutput) Value() DeletedRunbookResponseArrayOutput {
 	return o.ApplyT(func(v ListAutomationAccountDeletedRunbooksResult) []DeletedRunbookResponse { return v.Value }).(DeletedRunbookResponseArrayOutput)
 }

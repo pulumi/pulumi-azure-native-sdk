@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +43,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &L3IsolationDomain{}
 	case "azure-native:managednetworkfabric:NeighborGroup":
 		r = &NeighborGroup{}
+	case "azure-native:managednetworkfabric:NetworkBootstrapDevice":
+		r = &NetworkBootstrapDevice{}
+	case "azure-native:managednetworkfabric:NetworkBootstrapInterface":
+		r = &NetworkBootstrapInterface{}
 	case "azure-native:managednetworkfabric:NetworkDevice":
 		r = &NetworkDevice{}
 	case "azure-native:managednetworkfabric:NetworkFabric":
@@ -51,6 +55,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NetworkFabricController{}
 	case "azure-native:managednetworkfabric:NetworkInterface":
 		r = &NetworkInterface{}
+	case "azure-native:managednetworkfabric:NetworkMonitor":
+		r = &NetworkMonitor{}
 	case "azure-native:managednetworkfabric:NetworkPacketBroker":
 		r = &NetworkPacketBroker{}
 	case "azure-native:managednetworkfabric:NetworkRack":

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,6 +37,8 @@ type LookupNamespaceIpFilterRuleArgs struct {
 type LookupNamespaceIpFilterRuleResult struct {
 	// The IP Filter Action
 	Action *string `pulumi:"action"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// IP Filter name
 	FilterName *string `pulumi:"filterName"`
 	// Resource Id
@@ -89,6 +91,11 @@ func (o LookupNamespaceIpFilterRuleResultOutput) ToLookupNamespaceIpFilterRuleRe
 // The IP Filter Action
 func (o LookupNamespaceIpFilterRuleResultOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNamespaceIpFilterRuleResult) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupNamespaceIpFilterRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNamespaceIpFilterRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // IP Filter name

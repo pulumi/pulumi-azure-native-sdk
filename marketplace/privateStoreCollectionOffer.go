@@ -8,16 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The privateStore offer data structure.
 //
-// Uses Azure REST API version 2023-01-01. In version 1.x of the Azure Native provider, it used API version 2021-12-01.
+// Uses Azure REST API version 2023-01-01. In version 2.x of the Azure Native provider, it used API version 2023-01-01.
+//
+// Other available API versions: 2025-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native marketplace [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type PrivateStoreCollectionOffer struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Private store offer creation date
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Identifier for purposes of race condition
@@ -76,6 +80,9 @@ func NewPrivateStoreCollectionOffer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:marketplace/v20230101:PrivateStoreCollectionOffer"),
+		},
+		{
+			Type: pulumi.String("azure-native:marketplace/v20250101:PrivateStoreCollectionOffer"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -185,6 +192,11 @@ func (o PrivateStoreCollectionOfferOutput) ToPrivateStoreCollectionOfferOutput()
 
 func (o PrivateStoreCollectionOfferOutput) ToPrivateStoreCollectionOfferOutputWithContext(ctx context.Context) PrivateStoreCollectionOfferOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o PrivateStoreCollectionOfferOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *PrivateStoreCollectionOffer) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Private store offer creation date

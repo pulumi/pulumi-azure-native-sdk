@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +39,8 @@ type LookupDraftPackageResult struct {
 	AppFileName *string `pulumi:"appFileName"`
 	// Application name
 	ApplicationName *string `pulumi:"applicationName"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Comments added by user.
 	Comments *string `pulumi:"comments"`
 	// The relative path of the folder hosting package files.
@@ -160,6 +162,11 @@ func (o LookupDraftPackageResultOutput) AppFileName() pulumi.StringPtrOutput {
 // Application name
 func (o LookupDraftPackageResultOutput) ApplicationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupDraftPackageResult) *string { return v.ApplicationName }).(pulumi.StringPtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupDraftPackageResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDraftPackageResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Comments added by user.

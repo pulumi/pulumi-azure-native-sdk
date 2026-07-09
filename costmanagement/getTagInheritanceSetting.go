@@ -7,13 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the setting from the given scope by name.
 //
-// Uses Azure REST API version 2022-10-05-preview.
+// Uses Azure REST API version 2024-08-01.
 func LookupTagInheritanceSetting(ctx *pulumi.Context, args *LookupTagInheritanceSettingArgs, opts ...pulumi.InvokeOption) (*LookupTagInheritanceSettingResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupTagInheritanceSettingResult
@@ -33,18 +33,18 @@ type LookupTagInheritanceSettingArgs struct {
 
 // Tag Inheritance Setting definition.
 type LookupTagInheritanceSettingResult struct {
-	// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
-	ETag *string `pulumi:"eTag"`
-	// Resource Id.
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// Specifies the kind of settings.
 	// Expected value is 'taginheritance'.
 	Kind string `pulumi:"kind"`
-	// Resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The properties of the tag inheritance setting.
 	Properties TagInheritancePropertiesResponse `pulumi:"properties"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -83,12 +83,12 @@ func (o LookupTagInheritanceSettingResultOutput) ToLookupTagInheritanceSettingRe
 	return o
 }
 
-// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
-func (o LookupTagInheritanceSettingResultOutput) ETag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupTagInheritanceSettingResult) *string { return v.ETag }).(pulumi.StringPtrOutput)
+// The Azure API version of the resource.
+func (o LookupTagInheritanceSettingResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTagInheritanceSettingResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// Resource Id.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupTagInheritanceSettingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagInheritanceSettingResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -99,7 +99,7 @@ func (o LookupTagInheritanceSettingResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagInheritanceSettingResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// Resource name.
+// The name of the resource
 func (o LookupTagInheritanceSettingResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagInheritanceSettingResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -109,7 +109,7 @@ func (o LookupTagInheritanceSettingResultOutput) Properties() TagInheritanceProp
 	return o.ApplyT(func(v LookupTagInheritanceSettingResult) TagInheritancePropertiesResponse { return v.Properties }).(TagInheritancePropertiesResponseOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupTagInheritanceSettingResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagInheritanceSettingResult) string { return v.Type }).(pulumi.StringOutput)
 }

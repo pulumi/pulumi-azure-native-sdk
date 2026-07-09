@@ -8,23 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // An API collection as represented by Microsoft Defender for APIs.
 //
-// Uses Azure REST API version 2023-11-15.
+// Uses Azure REST API version 2023-11-15. In version 2.x of the Azure Native provider, it used API version 2023-11-15.
 type APICollectionByAzureApiManagementService struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The base URI for this API collection. All endpoints of this API collection extend this base URI.
 	BaseUrl pulumi.StringOutput `pulumi:"baseUrl"`
 	// The resource Id of the resource from where this API collection was discovered.
 	DiscoveredVia pulumi.StringOutput `pulumi:"discoveredVia"`
 	// The display name of the API collection.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The number of API endpoints discovered in this API collection.
 	NumberOfApiEndpoints pulumi.Float64Output `pulumi:"numberOfApiEndpoints"`
@@ -40,7 +42,9 @@ type APICollectionByAzureApiManagementService struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The highest priority sensitivity label from Microsoft Purview in this API collection.
 	SensitivityLabel pulumi.StringOutput `pulumi:"sensitivityLabel"`
-	// Resource type
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -59,10 +63,16 @@ func NewAPICollectionByAzureApiManagementService(ctx *pulumi.Context,
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
+			Type: pulumi.String("azure-native:security/v20221120preview:APICollection"),
+		},
+		{
 			Type: pulumi.String("azure-native:security/v20221120preview:APICollectionByAzureApiManagementService"),
 		},
 		{
 			Type: pulumi.String("azure-native:security/v20231115:APICollectionByAzureApiManagementService"),
+		},
+		{
+			Type: pulumi.String("azure-native:security:APICollection"),
 		},
 	})
 	opts = append(opts, aliases)
@@ -154,6 +164,11 @@ func (o APICollectionByAzureApiManagementServiceOutput) ToAPICollectionByAzureAp
 	return o
 }
 
+// The Azure API version of the resource.
+func (o APICollectionByAzureApiManagementServiceOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *APICollectionByAzureApiManagementService) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The base URI for this API collection. All endpoints of this API collection extend this base URI.
 func (o APICollectionByAzureApiManagementServiceOutput) BaseUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *APICollectionByAzureApiManagementService) pulumi.StringOutput { return v.BaseUrl }).(pulumi.StringOutput)
@@ -169,7 +184,7 @@ func (o APICollectionByAzureApiManagementServiceOutput) DisplayName() pulumi.Str
 	return o.ApplyT(func(v *APICollectionByAzureApiManagementService) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o APICollectionByAzureApiManagementServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *APICollectionByAzureApiManagementService) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -217,7 +232,12 @@ func (o APICollectionByAzureApiManagementServiceOutput) SensitivityLabel() pulum
 	return o.ApplyT(func(v *APICollectionByAzureApiManagementService) pulumi.StringOutput { return v.SensitivityLabel }).(pulumi.StringOutput)
 }
 
-// Resource type
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o APICollectionByAzureApiManagementServiceOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *APICollectionByAzureApiManagementService) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o APICollectionByAzureApiManagementServiceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *APICollectionByAzureApiManagementService) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -8,18 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Definition of the Runtime Environment type.
 //
-// Uses Azure REST API version 2023-05-15-preview.
+// Uses Azure REST API version 2024-10-23. In version 2.x of the Azure Native provider, it used API version 2023-05-15-preview.
 //
-// Other available API versions: 2024-10-23.
+// Other available API versions: 2023-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native automation [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type RuntimeEnvironment struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// List of Default packages for Environment
 	DefaultPackages pulumi.StringMapOutput `pulumi:"defaultPackages"`
 	// Gets or sets the description.
@@ -105,7 +107,7 @@ type runtimeEnvironmentArgs struct {
 	Language *string `pulumi:"language"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// Name of an Azure Resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the Runtime Environment.
 	RuntimeEnvironmentName *string `pulumi:"runtimeEnvironmentName"`
@@ -127,7 +129,7 @@ type RuntimeEnvironmentArgs struct {
 	Language pulumi.StringPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// Name of an Azure Resource group.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The name of the Runtime Environment.
 	RuntimeEnvironmentName pulumi.StringPtrInput
@@ -172,6 +174,11 @@ func (o RuntimeEnvironmentOutput) ToRuntimeEnvironmentOutput() RuntimeEnvironmen
 
 func (o RuntimeEnvironmentOutput) ToRuntimeEnvironmentOutputWithContext(ctx context.Context) RuntimeEnvironmentOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o RuntimeEnvironmentOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *RuntimeEnvironment) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of Default packages for Environment

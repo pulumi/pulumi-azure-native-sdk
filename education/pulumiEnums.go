@@ -14,8 +14,10 @@ import (
 type StudentRole string
 
 const (
+	// Student
 	StudentRoleStudent = StudentRole("Student")
-	StudentRoleAdmin   = StudentRole("Admin")
+	// Admin
+	StudentRoleAdmin = StudentRole("Admin")
 )
 
 func (StudentRole) ElementType() reflect.Type {

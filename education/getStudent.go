@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,18 +25,20 @@ func LookupStudent(ctx *pulumi.Context, args *LookupStudentArgs, opts ...pulumi.
 }
 
 type LookupStudentArgs struct {
-	// The ID that uniquely identifies a billing account.
+	// The name of the billing account.
 	BillingAccountName string `pulumi:"billingAccountName"`
-	// The ID that uniquely identifies a billing profile.
+	// The name of the billing profile.
 	BillingProfileName string `pulumi:"billingProfileName"`
-	// The ID that uniquely identifies an invoice section.
+	// The name of the invoice section.
 	InvoiceSectionName string `pulumi:"invoiceSectionName"`
-	// Student alias.
+	// The student alias.
 	StudentAlias string `pulumi:"studentAlias"`
 }
 
 // Student details.
 type LookupStudentResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Student Budget
 	Budget AmountResponse `pulumi:"budget"`
 	// Date student was added to the lab
@@ -79,13 +81,13 @@ func LookupStudentOutput(ctx *pulumi.Context, args LookupStudentOutputArgs, opts
 }
 
 type LookupStudentOutputArgs struct {
-	// The ID that uniquely identifies a billing account.
+	// The name of the billing account.
 	BillingAccountName pulumi.StringInput `pulumi:"billingAccountName"`
-	// The ID that uniquely identifies a billing profile.
+	// The name of the billing profile.
 	BillingProfileName pulumi.StringInput `pulumi:"billingProfileName"`
-	// The ID that uniquely identifies an invoice section.
+	// The name of the invoice section.
 	InvoiceSectionName pulumi.StringInput `pulumi:"invoiceSectionName"`
-	// Student alias.
+	// The student alias.
 	StudentAlias pulumi.StringInput `pulumi:"studentAlias"`
 }
 
@@ -106,6 +108,11 @@ func (o LookupStudentResultOutput) ToLookupStudentResultOutput() LookupStudentRe
 
 func (o LookupStudentResultOutput) ToLookupStudentResultOutputWithContext(ctx context.Context) LookupStudentResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupStudentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStudentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Student Budget

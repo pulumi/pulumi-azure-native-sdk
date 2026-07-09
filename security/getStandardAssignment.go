@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,7 +25,7 @@ func LookupStandardAssignment(ctx *pulumi.Context, args *LookupStandardAssignmen
 }
 
 type LookupStandardAssignmentArgs struct {
-	// The identifier of the resource.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceId string `pulumi:"resourceId"`
 	// The standard assignments assignment key - unique key for the standard assignment
 	StandardAssignmentName string `pulumi:"standardAssignmentName"`
@@ -34,9 +34,11 @@ type LookupStandardAssignmentArgs struct {
 // Security Assignment on a resource group over a given scope
 type LookupStandardAssignmentResult struct {
 	// Standard item with key as applied to this standard assignment over the given scope
-	AssignedStandard *AssignedStandardItemResponse `pulumi:"assignedStandard"`
+	AssignedStandard *CommonAssignedStandardItemResponse `pulumi:"assignedStandard"`
 	// Additional data about assignment that has Attest effect
-	AttestationData *StandardAssignmentPropertiesResponseAttestationData `pulumi:"attestationData"`
+	AttestationData *StandardAssignmentPropertiesAttestationDataResponse `pulumi:"attestationData"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Description of the standardAssignment
 	Description *string `pulumi:"description"`
 	// Display name of the standardAssignment
@@ -46,16 +48,18 @@ type LookupStandardAssignmentResult struct {
 	// Excluded scopes, filter out the descendants of the scope (on management scopes)
 	ExcludedScopes []string `pulumi:"excludedScopes"`
 	// Additional data about assignment that has Exempt effect
-	ExemptionData *StandardAssignmentPropertiesResponseExemptionData `pulumi:"exemptionData"`
+	ExemptionData *StandardAssignmentPropertiesExemptionDataResponse `pulumi:"exemptionData"`
 	// Expiration date of this assignment as a full ISO date
 	ExpiresOn *string `pulumi:"expiresOn"`
-	// Resource Id
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The standard assignment metadata.
 	Metadata *StandardAssignmentMetadataResponse `pulumi:"metadata"`
-	// Resource name
+	// The name of the resource
 	Name string `pulumi:"name"`
-	// Resource type
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -69,7 +73,7 @@ func LookupStandardAssignmentOutput(ctx *pulumi.Context, args LookupStandardAssi
 }
 
 type LookupStandardAssignmentOutputArgs struct {
-	// The identifier of the resource.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceId pulumi.StringInput `pulumi:"resourceId"`
 	// The standard assignments assignment key - unique key for the standard assignment
 	StandardAssignmentName pulumi.StringInput `pulumi:"standardAssignmentName"`
@@ -95,15 +99,20 @@ func (o LookupStandardAssignmentResultOutput) ToLookupStandardAssignmentResultOu
 }
 
 // Standard item with key as applied to this standard assignment over the given scope
-func (o LookupStandardAssignmentResultOutput) AssignedStandard() AssignedStandardItemResponsePtrOutput {
-	return o.ApplyT(func(v LookupStandardAssignmentResult) *AssignedStandardItemResponse { return v.AssignedStandard }).(AssignedStandardItemResponsePtrOutput)
+func (o LookupStandardAssignmentResultOutput) AssignedStandard() CommonAssignedStandardItemResponsePtrOutput {
+	return o.ApplyT(func(v LookupStandardAssignmentResult) *CommonAssignedStandardItemResponse { return v.AssignedStandard }).(CommonAssignedStandardItemResponsePtrOutput)
 }
 
 // Additional data about assignment that has Attest effect
-func (o LookupStandardAssignmentResultOutput) AttestationData() StandardAssignmentPropertiesResponseAttestationDataPtrOutput {
-	return o.ApplyT(func(v LookupStandardAssignmentResult) *StandardAssignmentPropertiesResponseAttestationData {
+func (o LookupStandardAssignmentResultOutput) AttestationData() StandardAssignmentPropertiesAttestationDataResponsePtrOutput {
+	return o.ApplyT(func(v LookupStandardAssignmentResult) *StandardAssignmentPropertiesAttestationDataResponse {
 		return v.AttestationData
-	}).(StandardAssignmentPropertiesResponseAttestationDataPtrOutput)
+	}).(StandardAssignmentPropertiesAttestationDataResponsePtrOutput)
+}
+
+// The Azure API version of the resource.
+func (o LookupStandardAssignmentResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupStandardAssignmentResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // Description of the standardAssignment
@@ -127,10 +136,10 @@ func (o LookupStandardAssignmentResultOutput) ExcludedScopes() pulumi.StringArra
 }
 
 // Additional data about assignment that has Exempt effect
-func (o LookupStandardAssignmentResultOutput) ExemptionData() StandardAssignmentPropertiesResponseExemptionDataPtrOutput {
-	return o.ApplyT(func(v LookupStandardAssignmentResult) *StandardAssignmentPropertiesResponseExemptionData {
+func (o LookupStandardAssignmentResultOutput) ExemptionData() StandardAssignmentPropertiesExemptionDataResponsePtrOutput {
+	return o.ApplyT(func(v LookupStandardAssignmentResult) *StandardAssignmentPropertiesExemptionDataResponse {
 		return v.ExemptionData
-	}).(StandardAssignmentPropertiesResponseExemptionDataPtrOutput)
+	}).(StandardAssignmentPropertiesExemptionDataResponsePtrOutput)
 }
 
 // Expiration date of this assignment as a full ISO date
@@ -138,7 +147,7 @@ func (o LookupStandardAssignmentResultOutput) ExpiresOn() pulumi.StringPtrOutput
 	return o.ApplyT(func(v LookupStandardAssignmentResult) *string { return v.ExpiresOn }).(pulumi.StringPtrOutput)
 }
 
-// Resource Id
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupStandardAssignmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStandardAssignmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -148,12 +157,17 @@ func (o LookupStandardAssignmentResultOutput) Metadata() StandardAssignmentMetad
 	return o.ApplyT(func(v LookupStandardAssignmentResult) *StandardAssignmentMetadataResponse { return v.Metadata }).(StandardAssignmentMetadataResponsePtrOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o LookupStandardAssignmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStandardAssignmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Resource type
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupStandardAssignmentResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupStandardAssignmentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupStandardAssignmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStandardAssignmentResult) string { return v.Type }).(pulumi.StringOutput)
 }

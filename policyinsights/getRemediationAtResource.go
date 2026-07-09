@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Gets an existing remediation at resource scope.
 //
-// Uses Azure REST API version 2021-10-01.
+// Uses Azure REST API version 2024-10-01.
 //
-// Other available API versions: 2024-10-01.
+// Other available API versions: 2021-10-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native policyinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupRemediationAtResource(ctx *pulumi.Context, args *LookupRemediationAtResourceArgs, opts ...pulumi.InvokeOption) (*LookupRemediationAtResourceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRemediationAtResourceResult
@@ -35,6 +35,8 @@ type LookupRemediationAtResourceArgs struct {
 
 // The remediation definition.
 type LookupRemediationAtResourceResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The remediation correlation Id. Can be used to find events related to the remediation in the activity log.
 	CorrelationId string `pulumi:"correlationId"`
 	// The time at which the remediation was created.
@@ -42,14 +44,14 @@ type LookupRemediationAtResourceResult struct {
 	// The deployment status summary for all deployments created by the remediation.
 	DeploymentStatus RemediationDeploymentSummaryResponse `pulumi:"deploymentStatus"`
 	// The remediation failure threshold settings
-	FailureThreshold *RemediationPropertiesResponseFailureThreshold `pulumi:"failureThreshold"`
+	FailureThreshold *RemediationPropertiesFailureThresholdResponse `pulumi:"failureThreshold"`
 	// The filters that will be applied to determine which resources to remediate.
 	Filters *RemediationFiltersResponse `pulumi:"filters"`
-	// The ID of the remediation.
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The time at which the remediation was last updated.
 	LastUpdatedOn string `pulumi:"lastUpdatedOn"`
-	// The name of the remediation.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Determines how many resources to remediate at any given time. Can be used to increase or reduce the pace of the remediation. If not provided, the default parallel deployments value is used.
 	ParallelDeployments *int `pulumi:"parallelDeployments"`
@@ -67,7 +69,7 @@ type LookupRemediationAtResourceResult struct {
 	StatusMessage string `pulumi:"statusMessage"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the remediation.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -106,6 +108,11 @@ func (o LookupRemediationAtResourceResultOutput) ToLookupRemediationAtResourceRe
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupRemediationAtResourceResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRemediationAtResourceResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // The remediation correlation Id. Can be used to find events related to the remediation in the activity log.
 func (o LookupRemediationAtResourceResultOutput) CorrelationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRemediationAtResourceResult) string { return v.CorrelationId }).(pulumi.StringOutput)
@@ -124,10 +131,10 @@ func (o LookupRemediationAtResourceResultOutput) DeploymentStatus() RemediationD
 }
 
 // The remediation failure threshold settings
-func (o LookupRemediationAtResourceResultOutput) FailureThreshold() RemediationPropertiesResponseFailureThresholdPtrOutput {
-	return o.ApplyT(func(v LookupRemediationAtResourceResult) *RemediationPropertiesResponseFailureThreshold {
+func (o LookupRemediationAtResourceResultOutput) FailureThreshold() RemediationPropertiesFailureThresholdResponsePtrOutput {
+	return o.ApplyT(func(v LookupRemediationAtResourceResult) *RemediationPropertiesFailureThresholdResponse {
 		return v.FailureThreshold
-	}).(RemediationPropertiesResponseFailureThresholdPtrOutput)
+	}).(RemediationPropertiesFailureThresholdResponsePtrOutput)
 }
 
 // The filters that will be applied to determine which resources to remediate.
@@ -135,7 +142,7 @@ func (o LookupRemediationAtResourceResultOutput) Filters() RemediationFiltersRes
 	return o.ApplyT(func(v LookupRemediationAtResourceResult) *RemediationFiltersResponse { return v.Filters }).(RemediationFiltersResponsePtrOutput)
 }
 
-// The ID of the remediation.
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 func (o LookupRemediationAtResourceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRemediationAtResourceResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -145,7 +152,7 @@ func (o LookupRemediationAtResourceResultOutput) LastUpdatedOn() pulumi.StringOu
 	return o.ApplyT(func(v LookupRemediationAtResourceResult) string { return v.LastUpdatedOn }).(pulumi.StringOutput)
 }
 
-// The name of the remediation.
+// The name of the resource
 func (o LookupRemediationAtResourceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRemediationAtResourceResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -190,7 +197,7 @@ func (o LookupRemediationAtResourceResultOutput) SystemData() SystemDataResponse
 	return o.ApplyT(func(v LookupRemediationAtResourceResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the remediation.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupRemediationAtResourceResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRemediationAtResourceResult) string { return v.Type }).(pulumi.StringOutput)
 }

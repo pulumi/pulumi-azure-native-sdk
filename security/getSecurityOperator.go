@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,21 +25,25 @@ func LookupSecurityOperator(ctx *pulumi.Context, args *LookupSecurityOperatorArg
 }
 
 type LookupSecurityOperatorArgs struct {
-	// name of the pricing configuration
+	// Name of the pricing configuration.
 	PricingName string `pulumi:"pricingName"`
-	// name of the securityOperator
+	// Name of the security operator.
 	SecurityOperatorName string `pulumi:"securityOperatorName"`
 }
 
 // Security operator under a given subscription and pricing
 type LookupSecurityOperatorResult struct {
-	// Resource Id
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Identity for the resource.
 	Identity *IdentityResponse `pulumi:"identity"`
-	// Resource name
+	// The name of the resource
 	Name string `pulumi:"name"`
-	// Resource type
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -53,9 +57,9 @@ func LookupSecurityOperatorOutput(ctx *pulumi.Context, args LookupSecurityOperat
 }
 
 type LookupSecurityOperatorOutputArgs struct {
-	// name of the pricing configuration
+	// Name of the pricing configuration.
 	PricingName pulumi.StringInput `pulumi:"pricingName"`
-	// name of the securityOperator
+	// Name of the security operator.
 	SecurityOperatorName pulumi.StringInput `pulumi:"securityOperatorName"`
 }
 
@@ -78,7 +82,12 @@ func (o LookupSecurityOperatorResultOutput) ToLookupSecurityOperatorResultOutput
 	return o
 }
 
-// Resource Id
+// The Azure API version of the resource.
+func (o LookupSecurityOperatorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSecurityOperatorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupSecurityOperatorResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityOperatorResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -88,12 +97,17 @@ func (o LookupSecurityOperatorResultOutput) Identity() IdentityResponsePtrOutput
 	return o.ApplyT(func(v LookupSecurityOperatorResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o LookupSecurityOperatorResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityOperatorResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Resource type
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupSecurityOperatorResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupSecurityOperatorResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSecurityOperatorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityOperatorResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -7,11 +7,211 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = utilities.GetEnvOrDefault
+
+// Enable AAD authentication for SQL VM.
+type AADAuthenticationSettings struct {
+	// The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity
+	ClientId *string `pulumi:"clientId"`
+}
+
+// AADAuthenticationSettingsInput is an input type that accepts AADAuthenticationSettingsArgs and AADAuthenticationSettingsOutput values.
+// You can construct a concrete instance of `AADAuthenticationSettingsInput` via:
+//
+//	AADAuthenticationSettingsArgs{...}
+type AADAuthenticationSettingsInput interface {
+	pulumi.Input
+
+	ToAADAuthenticationSettingsOutput() AADAuthenticationSettingsOutput
+	ToAADAuthenticationSettingsOutputWithContext(context.Context) AADAuthenticationSettingsOutput
+}
+
+// Enable AAD authentication for SQL VM.
+type AADAuthenticationSettingsArgs struct {
+	// The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+}
+
+func (AADAuthenticationSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AADAuthenticationSettings)(nil)).Elem()
+}
+
+func (i AADAuthenticationSettingsArgs) ToAADAuthenticationSettingsOutput() AADAuthenticationSettingsOutput {
+	return i.ToAADAuthenticationSettingsOutputWithContext(context.Background())
+}
+
+func (i AADAuthenticationSettingsArgs) ToAADAuthenticationSettingsOutputWithContext(ctx context.Context) AADAuthenticationSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AADAuthenticationSettingsOutput)
+}
+
+func (i AADAuthenticationSettingsArgs) ToAADAuthenticationSettingsPtrOutput() AADAuthenticationSettingsPtrOutput {
+	return i.ToAADAuthenticationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AADAuthenticationSettingsArgs) ToAADAuthenticationSettingsPtrOutputWithContext(ctx context.Context) AADAuthenticationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AADAuthenticationSettingsOutput).ToAADAuthenticationSettingsPtrOutputWithContext(ctx)
+}
+
+// AADAuthenticationSettingsPtrInput is an input type that accepts AADAuthenticationSettingsArgs, AADAuthenticationSettingsPtr and AADAuthenticationSettingsPtrOutput values.
+// You can construct a concrete instance of `AADAuthenticationSettingsPtrInput` via:
+//
+//	        AADAuthenticationSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AADAuthenticationSettingsPtrInput interface {
+	pulumi.Input
+
+	ToAADAuthenticationSettingsPtrOutput() AADAuthenticationSettingsPtrOutput
+	ToAADAuthenticationSettingsPtrOutputWithContext(context.Context) AADAuthenticationSettingsPtrOutput
+}
+
+type aadauthenticationSettingsPtrType AADAuthenticationSettingsArgs
+
+func AADAuthenticationSettingsPtr(v *AADAuthenticationSettingsArgs) AADAuthenticationSettingsPtrInput {
+	return (*aadauthenticationSettingsPtrType)(v)
+}
+
+func (*aadauthenticationSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AADAuthenticationSettings)(nil)).Elem()
+}
+
+func (i *aadauthenticationSettingsPtrType) ToAADAuthenticationSettingsPtrOutput() AADAuthenticationSettingsPtrOutput {
+	return i.ToAADAuthenticationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *aadauthenticationSettingsPtrType) ToAADAuthenticationSettingsPtrOutputWithContext(ctx context.Context) AADAuthenticationSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AADAuthenticationSettingsPtrOutput)
+}
+
+// Enable AAD authentication for SQL VM.
+type AADAuthenticationSettingsOutput struct{ *pulumi.OutputState }
+
+func (AADAuthenticationSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AADAuthenticationSettings)(nil)).Elem()
+}
+
+func (o AADAuthenticationSettingsOutput) ToAADAuthenticationSettingsOutput() AADAuthenticationSettingsOutput {
+	return o
+}
+
+func (o AADAuthenticationSettingsOutput) ToAADAuthenticationSettingsOutputWithContext(ctx context.Context) AADAuthenticationSettingsOutput {
+	return o
+}
+
+func (o AADAuthenticationSettingsOutput) ToAADAuthenticationSettingsPtrOutput() AADAuthenticationSettingsPtrOutput {
+	return o.ToAADAuthenticationSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AADAuthenticationSettingsOutput) ToAADAuthenticationSettingsPtrOutputWithContext(ctx context.Context) AADAuthenticationSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AADAuthenticationSettings) *AADAuthenticationSettings {
+		return &v
+	}).(AADAuthenticationSettingsPtrOutput)
+}
+
+// The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity
+func (o AADAuthenticationSettingsOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AADAuthenticationSettings) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+type AADAuthenticationSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AADAuthenticationSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AADAuthenticationSettings)(nil)).Elem()
+}
+
+func (o AADAuthenticationSettingsPtrOutput) ToAADAuthenticationSettingsPtrOutput() AADAuthenticationSettingsPtrOutput {
+	return o
+}
+
+func (o AADAuthenticationSettingsPtrOutput) ToAADAuthenticationSettingsPtrOutputWithContext(ctx context.Context) AADAuthenticationSettingsPtrOutput {
+	return o
+}
+
+func (o AADAuthenticationSettingsPtrOutput) Elem() AADAuthenticationSettingsOutput {
+	return o.ApplyT(func(v *AADAuthenticationSettings) AADAuthenticationSettings {
+		if v != nil {
+			return *v
+		}
+		var ret AADAuthenticationSettings
+		return ret
+	}).(AADAuthenticationSettingsOutput)
+}
+
+// The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity
+func (o AADAuthenticationSettingsPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AADAuthenticationSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enable AAD authentication for SQL VM.
+type AADAuthenticationSettingsResponse struct {
+	// The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity
+	ClientId *string `pulumi:"clientId"`
+}
+
+// Enable AAD authentication for SQL VM.
+type AADAuthenticationSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (AADAuthenticationSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AADAuthenticationSettingsResponse)(nil)).Elem()
+}
+
+func (o AADAuthenticationSettingsResponseOutput) ToAADAuthenticationSettingsResponseOutput() AADAuthenticationSettingsResponseOutput {
+	return o
+}
+
+func (o AADAuthenticationSettingsResponseOutput) ToAADAuthenticationSettingsResponseOutputWithContext(ctx context.Context) AADAuthenticationSettingsResponseOutput {
+	return o
+}
+
+// The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity
+func (o AADAuthenticationSettingsResponseOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AADAuthenticationSettingsResponse) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+type AADAuthenticationSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (AADAuthenticationSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AADAuthenticationSettingsResponse)(nil)).Elem()
+}
+
+func (o AADAuthenticationSettingsResponsePtrOutput) ToAADAuthenticationSettingsResponsePtrOutput() AADAuthenticationSettingsResponsePtrOutput {
+	return o
+}
+
+func (o AADAuthenticationSettingsResponsePtrOutput) ToAADAuthenticationSettingsResponsePtrOutputWithContext(ctx context.Context) AADAuthenticationSettingsResponsePtrOutput {
+	return o
+}
+
+func (o AADAuthenticationSettingsResponsePtrOutput) Elem() AADAuthenticationSettingsResponseOutput {
+	return o.ApplyT(func(v *AADAuthenticationSettingsResponse) AADAuthenticationSettingsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret AADAuthenticationSettingsResponse
+		return ret
+	}).(AADAuthenticationSettingsResponseOutput)
+}
+
+// The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity
+func (o AADAuthenticationSettingsResponsePtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AADAuthenticationSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
 
 // Additional SQL Server feature settings.
 type AdditionalFeaturesServerConfigurations struct {
@@ -623,13 +823,13 @@ func (o AgReplicaResponseArrayOutput) Index(i pulumi.IntInput) AgReplicaResponse
 	}).(AgReplicaResponseOutput)
 }
 
-// Configure assessment for databases in your SQL virtual machine.
+// Configure SQL best practices Assessment for databases in your SQL virtual machine.
 type AssessmentSettings struct {
-	// Enable or disable assessment feature on SQL virtual machine.
+	// Enable or disable SQL best practices Assessment feature on SQL virtual machine.
 	Enable *bool `pulumi:"enable"`
-	// Run assessment immediately on SQL virtual machine.
+	// Run SQL best practices Assessment immediately on SQL virtual machine.
 	RunImmediately *bool `pulumi:"runImmediately"`
-	// Schedule for Assessment.
+	// Schedule for SQL best practices Assessment.
 	Schedule *Schedule `pulumi:"schedule"`
 }
 
@@ -644,13 +844,13 @@ type AssessmentSettingsInput interface {
 	ToAssessmentSettingsOutputWithContext(context.Context) AssessmentSettingsOutput
 }
 
-// Configure assessment for databases in your SQL virtual machine.
+// Configure SQL best practices Assessment for databases in your SQL virtual machine.
 type AssessmentSettingsArgs struct {
-	// Enable or disable assessment feature on SQL virtual machine.
+	// Enable or disable SQL best practices Assessment feature on SQL virtual machine.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
-	// Run assessment immediately on SQL virtual machine.
+	// Run SQL best practices Assessment immediately on SQL virtual machine.
 	RunImmediately pulumi.BoolPtrInput `pulumi:"runImmediately"`
-	// Schedule for Assessment.
+	// Schedule for SQL best practices Assessment.
 	Schedule SchedulePtrInput `pulumi:"schedule"`
 }
 
@@ -707,7 +907,7 @@ func (i *assessmentSettingsPtrType) ToAssessmentSettingsPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(AssessmentSettingsPtrOutput)
 }
 
-// Configure assessment for databases in your SQL virtual machine.
+// Configure SQL best practices Assessment for databases in your SQL virtual machine.
 type AssessmentSettingsOutput struct{ *pulumi.OutputState }
 
 func (AssessmentSettingsOutput) ElementType() reflect.Type {
@@ -732,17 +932,17 @@ func (o AssessmentSettingsOutput) ToAssessmentSettingsPtrOutputWithContext(ctx c
 	}).(AssessmentSettingsPtrOutput)
 }
 
-// Enable or disable assessment feature on SQL virtual machine.
+// Enable or disable SQL best practices Assessment feature on SQL virtual machine.
 func (o AssessmentSettingsOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AssessmentSettings) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
-// Run assessment immediately on SQL virtual machine.
+// Run SQL best practices Assessment immediately on SQL virtual machine.
 func (o AssessmentSettingsOutput) RunImmediately() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AssessmentSettings) *bool { return v.RunImmediately }).(pulumi.BoolPtrOutput)
 }
 
-// Schedule for Assessment.
+// Schedule for SQL best practices Assessment.
 func (o AssessmentSettingsOutput) Schedule() SchedulePtrOutput {
 	return o.ApplyT(func(v AssessmentSettings) *Schedule { return v.Schedule }).(SchedulePtrOutput)
 }
@@ -771,7 +971,7 @@ func (o AssessmentSettingsPtrOutput) Elem() AssessmentSettingsOutput {
 	}).(AssessmentSettingsOutput)
 }
 
-// Enable or disable assessment feature on SQL virtual machine.
+// Enable or disable SQL best practices Assessment feature on SQL virtual machine.
 func (o AssessmentSettingsPtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AssessmentSettings) *bool {
 		if v == nil {
@@ -781,7 +981,7 @@ func (o AssessmentSettingsPtrOutput) Enable() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Run assessment immediately on SQL virtual machine.
+// Run SQL best practices Assessment immediately on SQL virtual machine.
 func (o AssessmentSettingsPtrOutput) RunImmediately() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AssessmentSettings) *bool {
 		if v == nil {
@@ -791,7 +991,7 @@ func (o AssessmentSettingsPtrOutput) RunImmediately() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Schedule for Assessment.
+// Schedule for SQL best practices Assessment.
 func (o AssessmentSettingsPtrOutput) Schedule() SchedulePtrOutput {
 	return o.ApplyT(func(v *AssessmentSettings) *Schedule {
 		if v == nil {
@@ -801,17 +1001,17 @@ func (o AssessmentSettingsPtrOutput) Schedule() SchedulePtrOutput {
 	}).(SchedulePtrOutput)
 }
 
-// Configure assessment for databases in your SQL virtual machine.
+// Configure SQL best practices Assessment for databases in your SQL virtual machine.
 type AssessmentSettingsResponse struct {
-	// Enable or disable assessment feature on SQL virtual machine.
+	// Enable or disable SQL best practices Assessment feature on SQL virtual machine.
 	Enable *bool `pulumi:"enable"`
-	// Run assessment immediately on SQL virtual machine.
+	// Run SQL best practices Assessment immediately on SQL virtual machine.
 	RunImmediately *bool `pulumi:"runImmediately"`
-	// Schedule for Assessment.
+	// Schedule for SQL best practices Assessment.
 	Schedule *ScheduleResponse `pulumi:"schedule"`
 }
 
-// Configure assessment for databases in your SQL virtual machine.
+// Configure SQL best practices Assessment for databases in your SQL virtual machine.
 type AssessmentSettingsResponseOutput struct{ *pulumi.OutputState }
 
 func (AssessmentSettingsResponseOutput) ElementType() reflect.Type {
@@ -826,17 +1026,17 @@ func (o AssessmentSettingsResponseOutput) ToAssessmentSettingsResponseOutputWith
 	return o
 }
 
-// Enable or disable assessment feature on SQL virtual machine.
+// Enable or disable SQL best practices Assessment feature on SQL virtual machine.
 func (o AssessmentSettingsResponseOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AssessmentSettingsResponse) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
-// Run assessment immediately on SQL virtual machine.
+// Run SQL best practices Assessment immediately on SQL virtual machine.
 func (o AssessmentSettingsResponseOutput) RunImmediately() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AssessmentSettingsResponse) *bool { return v.RunImmediately }).(pulumi.BoolPtrOutput)
 }
 
-// Schedule for Assessment.
+// Schedule for SQL best practices Assessment.
 func (o AssessmentSettingsResponseOutput) Schedule() ScheduleResponsePtrOutput {
 	return o.ApplyT(func(v AssessmentSettingsResponse) *ScheduleResponse { return v.Schedule }).(ScheduleResponsePtrOutput)
 }
@@ -865,7 +1065,7 @@ func (o AssessmentSettingsResponsePtrOutput) Elem() AssessmentSettingsResponseOu
 	}).(AssessmentSettingsResponseOutput)
 }
 
-// Enable or disable assessment feature on SQL virtual machine.
+// Enable or disable SQL best practices Assessment feature on SQL virtual machine.
 func (o AssessmentSettingsResponsePtrOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AssessmentSettingsResponse) *bool {
 		if v == nil {
@@ -875,7 +1075,7 @@ func (o AssessmentSettingsResponsePtrOutput) Enable() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Run assessment immediately on SQL virtual machine.
+// Run SQL best practices Assessment immediately on SQL virtual machine.
 func (o AssessmentSettingsResponsePtrOutput) RunImmediately() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AssessmentSettingsResponse) *bool {
 		if v == nil {
@@ -885,7 +1085,7 @@ func (o AssessmentSettingsResponsePtrOutput) RunImmediately() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Schedule for Assessment.
+// Schedule for SQL best practices Assessment.
 func (o AssessmentSettingsResponsePtrOutput) Schedule() ScheduleResponsePtrOutput {
 	return o.ApplyT(func(v *AssessmentSettingsResponse) *ScheduleResponse {
 		if v == nil {
@@ -1531,6 +1731,8 @@ func (o AutoBackupSettingsResponsePtrOutput) StorageContainerName() pulumi.Strin
 
 // Set a patching window during which Windows and SQL patches will be applied.
 type AutoPatchingSettings struct {
+	// Additional Patch to be enable or enabled on the SQL Virtual Machine.
+	AdditionalVmPatch *string `pulumi:"additionalVmPatch"`
 	// Day of week to apply the patch on.
 	DayOfWeek *DayOfWeek `pulumi:"dayOfWeek"`
 	// Enable or disable autopatching on SQL virtual machine.
@@ -1539,6 +1741,19 @@ type AutoPatchingSettings struct {
 	MaintenanceWindowDuration *int `pulumi:"maintenanceWindowDuration"`
 	// Hour of the day when patching is initiated. Local VM time.
 	MaintenanceWindowStartingHour *int `pulumi:"maintenanceWindowStartingHour"`
+}
+
+// Defaults sets the appropriate defaults for AutoPatchingSettings
+func (val *AutoPatchingSettings) Defaults() *AutoPatchingSettings {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.AdditionalVmPatch == nil {
+		additionalVmPatch_ := "NotSet"
+		tmp.AdditionalVmPatch = &additionalVmPatch_
+	}
+	return &tmp
 }
 
 // AutoPatchingSettingsInput is an input type that accepts AutoPatchingSettingsArgs and AutoPatchingSettingsOutput values.
@@ -1554,6 +1769,8 @@ type AutoPatchingSettingsInput interface {
 
 // Set a patching window during which Windows and SQL patches will be applied.
 type AutoPatchingSettingsArgs struct {
+	// Additional Patch to be enable or enabled on the SQL Virtual Machine.
+	AdditionalVmPatch pulumi.StringPtrInput `pulumi:"additionalVmPatch"`
 	// Day of week to apply the patch on.
 	DayOfWeek DayOfWeekPtrInput `pulumi:"dayOfWeek"`
 	// Enable or disable autopatching on SQL virtual machine.
@@ -1564,6 +1781,17 @@ type AutoPatchingSettingsArgs struct {
 	MaintenanceWindowStartingHour pulumi.IntPtrInput `pulumi:"maintenanceWindowStartingHour"`
 }
 
+// Defaults sets the appropriate defaults for AutoPatchingSettingsArgs
+func (val *AutoPatchingSettingsArgs) Defaults() *AutoPatchingSettingsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.AdditionalVmPatch == nil {
+		tmp.AdditionalVmPatch = pulumi.StringPtr("NotSet")
+	}
+	return &tmp
+}
 func (AutoPatchingSettingsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*AutoPatchingSettings)(nil)).Elem()
 }
@@ -1642,6 +1870,11 @@ func (o AutoPatchingSettingsOutput) ToAutoPatchingSettingsPtrOutputWithContext(c
 	}).(AutoPatchingSettingsPtrOutput)
 }
 
+// Additional Patch to be enable or enabled on the SQL Virtual Machine.
+func (o AutoPatchingSettingsOutput) AdditionalVmPatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoPatchingSettings) *string { return v.AdditionalVmPatch }).(pulumi.StringPtrOutput)
+}
+
 // Day of week to apply the patch on.
 func (o AutoPatchingSettingsOutput) DayOfWeek() DayOfWeekPtrOutput {
 	return o.ApplyT(func(v AutoPatchingSettings) *DayOfWeek { return v.DayOfWeek }).(DayOfWeekPtrOutput)
@@ -1686,6 +1919,16 @@ func (o AutoPatchingSettingsPtrOutput) Elem() AutoPatchingSettingsOutput {
 	}).(AutoPatchingSettingsOutput)
 }
 
+// Additional Patch to be enable or enabled on the SQL Virtual Machine.
+func (o AutoPatchingSettingsPtrOutput) AdditionalVmPatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoPatchingSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalVmPatch
+	}).(pulumi.StringPtrOutput)
+}
+
 // Day of week to apply the patch on.
 func (o AutoPatchingSettingsPtrOutput) DayOfWeek() DayOfWeekPtrOutput {
 	return o.ApplyT(func(v *AutoPatchingSettings) *DayOfWeek {
@@ -1728,6 +1971,8 @@ func (o AutoPatchingSettingsPtrOutput) MaintenanceWindowStartingHour() pulumi.In
 
 // Set a patching window during which Windows and SQL patches will be applied.
 type AutoPatchingSettingsResponse struct {
+	// Additional Patch to be enable or enabled on the SQL Virtual Machine.
+	AdditionalVmPatch *string `pulumi:"additionalVmPatch"`
 	// Day of week to apply the patch on.
 	DayOfWeek *string `pulumi:"dayOfWeek"`
 	// Enable or disable autopatching on SQL virtual machine.
@@ -1736,6 +1981,19 @@ type AutoPatchingSettingsResponse struct {
 	MaintenanceWindowDuration *int `pulumi:"maintenanceWindowDuration"`
 	// Hour of the day when patching is initiated. Local VM time.
 	MaintenanceWindowStartingHour *int `pulumi:"maintenanceWindowStartingHour"`
+}
+
+// Defaults sets the appropriate defaults for AutoPatchingSettingsResponse
+func (val *AutoPatchingSettingsResponse) Defaults() *AutoPatchingSettingsResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.AdditionalVmPatch == nil {
+		additionalVmPatch_ := "NotSet"
+		tmp.AdditionalVmPatch = &additionalVmPatch_
+	}
+	return &tmp
 }
 
 // Set a patching window during which Windows and SQL patches will be applied.
@@ -1751,6 +2009,11 @@ func (o AutoPatchingSettingsResponseOutput) ToAutoPatchingSettingsResponseOutput
 
 func (o AutoPatchingSettingsResponseOutput) ToAutoPatchingSettingsResponseOutputWithContext(ctx context.Context) AutoPatchingSettingsResponseOutput {
 	return o
+}
+
+// Additional Patch to be enable or enabled on the SQL Virtual Machine.
+func (o AutoPatchingSettingsResponseOutput) AdditionalVmPatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoPatchingSettingsResponse) *string { return v.AdditionalVmPatch }).(pulumi.StringPtrOutput)
 }
 
 // Day of week to apply the patch on.
@@ -1795,6 +2058,16 @@ func (o AutoPatchingSettingsResponsePtrOutput) Elem() AutoPatchingSettingsRespon
 		var ret AutoPatchingSettingsResponse
 		return ret
 	}).(AutoPatchingSettingsResponseOutput)
+}
+
+// Additional Patch to be enable or enabled on the SQL Virtual Machine.
+func (o AutoPatchingSettingsResponsePtrOutput) AdditionalVmPatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoPatchingSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalVmPatch
+	}).(pulumi.StringPtrOutput)
 }
 
 // Day of week to apply the patch on.
@@ -3428,6 +3701,8 @@ type SQLStorageSettings struct {
 	DefaultFilePath *string `pulumi:"defaultFilePath"`
 	// Logical Unit Numbers for the disks.
 	Luns []int `pulumi:"luns"`
+	// Use storage pool to build a drive if true or not provided
+	UseStoragePool *bool `pulumi:"useStoragePool"`
 }
 
 // SQLStorageSettingsInput is an input type that accepts SQLStorageSettingsArgs and SQLStorageSettingsOutput values.
@@ -3447,6 +3722,8 @@ type SQLStorageSettingsArgs struct {
 	DefaultFilePath pulumi.StringPtrInput `pulumi:"defaultFilePath"`
 	// Logical Unit Numbers for the disks.
 	Luns pulumi.IntArrayInput `pulumi:"luns"`
+	// Use storage pool to build a drive if true or not provided
+	UseStoragePool pulumi.BoolPtrInput `pulumi:"useStoragePool"`
 }
 
 func (SQLStorageSettingsArgs) ElementType() reflect.Type {
@@ -3537,6 +3814,11 @@ func (o SQLStorageSettingsOutput) Luns() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v SQLStorageSettings) []int { return v.Luns }).(pulumi.IntArrayOutput)
 }
 
+// Use storage pool to build a drive if true or not provided
+func (o SQLStorageSettingsOutput) UseStoragePool() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SQLStorageSettings) *bool { return v.UseStoragePool }).(pulumi.BoolPtrOutput)
+}
+
 type SQLStorageSettingsPtrOutput struct{ *pulumi.OutputState }
 
 func (SQLStorageSettingsPtrOutput) ElementType() reflect.Type {
@@ -3581,12 +3863,24 @@ func (o SQLStorageSettingsPtrOutput) Luns() pulumi.IntArrayOutput {
 	}).(pulumi.IntArrayOutput)
 }
 
+// Use storage pool to build a drive if true or not provided
+func (o SQLStorageSettingsPtrOutput) UseStoragePool() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SQLStorageSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseStoragePool
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Set disk storage settings for SQL Server.
 type SQLStorageSettingsResponse struct {
 	// SQL Server default file path
 	DefaultFilePath *string `pulumi:"defaultFilePath"`
 	// Logical Unit Numbers for the disks.
 	Luns []int `pulumi:"luns"`
+	// Use storage pool to build a drive if true or not provided
+	UseStoragePool *bool `pulumi:"useStoragePool"`
 }
 
 // Set disk storage settings for SQL Server.
@@ -3612,6 +3906,11 @@ func (o SQLStorageSettingsResponseOutput) DefaultFilePath() pulumi.StringPtrOutp
 // Logical Unit Numbers for the disks.
 func (o SQLStorageSettingsResponseOutput) Luns() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v SQLStorageSettingsResponse) []int { return v.Luns }).(pulumi.IntArrayOutput)
+}
+
+// Use storage pool to build a drive if true or not provided
+func (o SQLStorageSettingsResponseOutput) UseStoragePool() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SQLStorageSettingsResponse) *bool { return v.UseStoragePool }).(pulumi.BoolPtrOutput)
 }
 
 type SQLStorageSettingsResponsePtrOutput struct{ *pulumi.OutputState }
@@ -3658,6 +3957,17 @@ func (o SQLStorageSettingsResponsePtrOutput) Luns() pulumi.IntArrayOutput {
 	}).(pulumi.IntArrayOutput)
 }
 
+// Use storage pool to build a drive if true or not provided
+func (o SQLStorageSettingsResponsePtrOutput) UseStoragePool() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SQLStorageSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseStoragePool
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Set tempDb storage settings for SQL Server.
 type SQLTempDbSettings struct {
 	// SQL Server tempdb data file count
 	DataFileCount *int `pulumi:"dataFileCount"`
@@ -3677,6 +3987,8 @@ type SQLTempDbSettings struct {
 	PersistFolder *bool `pulumi:"persistFolder"`
 	// SQL Server tempdb persist folder location
 	PersistFolderPath *string `pulumi:"persistFolderPath"`
+	// Use storage pool to build a drive if true or not provided
+	UseStoragePool *bool `pulumi:"useStoragePool"`
 }
 
 // SQLTempDbSettingsInput is an input type that accepts SQLTempDbSettingsArgs and SQLTempDbSettingsOutput values.
@@ -3690,6 +4002,7 @@ type SQLTempDbSettingsInput interface {
 	ToSQLTempDbSettingsOutputWithContext(context.Context) SQLTempDbSettingsOutput
 }
 
+// Set tempDb storage settings for SQL Server.
 type SQLTempDbSettingsArgs struct {
 	// SQL Server tempdb data file count
 	DataFileCount pulumi.IntPtrInput `pulumi:"dataFileCount"`
@@ -3709,6 +4022,8 @@ type SQLTempDbSettingsArgs struct {
 	PersistFolder pulumi.BoolPtrInput `pulumi:"persistFolder"`
 	// SQL Server tempdb persist folder location
 	PersistFolderPath pulumi.StringPtrInput `pulumi:"persistFolderPath"`
+	// Use storage pool to build a drive if true or not provided
+	UseStoragePool pulumi.BoolPtrInput `pulumi:"useStoragePool"`
 }
 
 func (SQLTempDbSettingsArgs) ElementType() reflect.Type {
@@ -3764,6 +4079,7 @@ func (i *sqltempDbSettingsPtrType) ToSQLTempDbSettingsPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(SQLTempDbSettingsPtrOutput)
 }
 
+// Set tempDb storage settings for SQL Server.
 type SQLTempDbSettingsOutput struct{ *pulumi.OutputState }
 
 func (SQLTempDbSettingsOutput) ElementType() reflect.Type {
@@ -3831,6 +4147,11 @@ func (o SQLTempDbSettingsOutput) PersistFolder() pulumi.BoolPtrOutput {
 // SQL Server tempdb persist folder location
 func (o SQLTempDbSettingsOutput) PersistFolderPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SQLTempDbSettings) *string { return v.PersistFolderPath }).(pulumi.StringPtrOutput)
+}
+
+// Use storage pool to build a drive if true or not provided
+func (o SQLTempDbSettingsOutput) UseStoragePool() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SQLTempDbSettings) *bool { return v.UseStoragePool }).(pulumi.BoolPtrOutput)
 }
 
 type SQLTempDbSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -3947,6 +4268,17 @@ func (o SQLTempDbSettingsPtrOutput) PersistFolderPath() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Use storage pool to build a drive if true or not provided
+func (o SQLTempDbSettingsPtrOutput) UseStoragePool() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SQLTempDbSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseStoragePool
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Set tempDb storage settings for SQL Server.
 type SQLTempDbSettingsResponse struct {
 	// SQL Server tempdb data file count
 	DataFileCount *int `pulumi:"dataFileCount"`
@@ -3966,8 +4298,11 @@ type SQLTempDbSettingsResponse struct {
 	PersistFolder *bool `pulumi:"persistFolder"`
 	// SQL Server tempdb persist folder location
 	PersistFolderPath *string `pulumi:"persistFolderPath"`
+	// Use storage pool to build a drive if true or not provided
+	UseStoragePool *bool `pulumi:"useStoragePool"`
 }
 
+// Set tempDb storage settings for SQL Server.
 type SQLTempDbSettingsResponseOutput struct{ *pulumi.OutputState }
 
 func (SQLTempDbSettingsResponseOutput) ElementType() reflect.Type {
@@ -4025,6 +4360,11 @@ func (o SQLTempDbSettingsResponseOutput) PersistFolder() pulumi.BoolPtrOutput {
 // SQL Server tempdb persist folder location
 func (o SQLTempDbSettingsResponseOutput) PersistFolderPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SQLTempDbSettingsResponse) *string { return v.PersistFolderPath }).(pulumi.StringPtrOutput)
+}
+
+// Use storage pool to build a drive if true or not provided
+func (o SQLTempDbSettingsResponseOutput) UseStoragePool() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SQLTempDbSettingsResponse) *bool { return v.UseStoragePool }).(pulumi.BoolPtrOutput)
 }
 
 type SQLTempDbSettingsResponsePtrOutput struct{ *pulumi.OutputState }
@@ -4141,6 +4481,17 @@ func (o SQLTempDbSettingsResponsePtrOutput) PersistFolderPath() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Use storage pool to build a drive if true or not provided
+func (o SQLTempDbSettingsResponsePtrOutput) UseStoragePool() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SQLTempDbSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.UseStoragePool
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Set assessment schedule for SQL Server.
 type Schedule struct {
 	// Day of the week to run assessment.
 	DayOfWeek *AssessmentDayOfWeek `pulumi:"dayOfWeek"`
@@ -4165,6 +4516,7 @@ type ScheduleInput interface {
 	ToScheduleOutputWithContext(context.Context) ScheduleOutput
 }
 
+// Set assessment schedule for SQL Server.
 type ScheduleArgs struct {
 	// Day of the week to run assessment.
 	DayOfWeek AssessmentDayOfWeekPtrInput `pulumi:"dayOfWeek"`
@@ -4231,6 +4583,7 @@ func (i *schedulePtrType) ToSchedulePtrOutputWithContext(ctx context.Context) Sc
 	return pulumi.ToOutputWithContext(ctx, i).(SchedulePtrOutput)
 }
 
+// Set assessment schedule for SQL Server.
 type ScheduleOutput struct{ *pulumi.OutputState }
 
 func (ScheduleOutput) ElementType() reflect.Type {
@@ -4354,6 +4707,7 @@ func (o SchedulePtrOutput) WeeklyInterval() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Set assessment schedule for SQL Server.
 type ScheduleResponse struct {
 	// Day of the week to run assessment.
 	DayOfWeek *string `pulumi:"dayOfWeek"`
@@ -4367,6 +4721,7 @@ type ScheduleResponse struct {
 	WeeklyInterval *int `pulumi:"weeklyInterval"`
 }
 
+// Set assessment schedule for SQL Server.
 type ScheduleResponseOutput struct{ *pulumi.OutputState }
 
 func (ScheduleResponseOutput) ElementType() reflect.Type {
@@ -4484,6 +4839,8 @@ func (o ScheduleResponsePtrOutput) WeeklyInterval() pulumi.IntPtrOutput {
 type ServerConfigurationsManagementSettings struct {
 	// Additional SQL feature settings.
 	AdditionalFeaturesServerConfigurations *AdditionalFeaturesServerConfigurations `pulumi:"additionalFeaturesServerConfigurations"`
+	// Azure AD authentication Settings.
+	AzureAdAuthenticationSettings *AADAuthenticationSettings `pulumi:"azureAdAuthenticationSettings"`
 	// SQL connectivity type settings.
 	SqlConnectivityUpdateSettings *SqlConnectivityUpdateSettings `pulumi:"sqlConnectivityUpdateSettings"`
 	// SQL Instance settings.
@@ -4509,6 +4866,8 @@ type ServerConfigurationsManagementSettingsInput interface {
 type ServerConfigurationsManagementSettingsArgs struct {
 	// Additional SQL feature settings.
 	AdditionalFeaturesServerConfigurations AdditionalFeaturesServerConfigurationsPtrInput `pulumi:"additionalFeaturesServerConfigurations"`
+	// Azure AD authentication Settings.
+	AzureAdAuthenticationSettings AADAuthenticationSettingsPtrInput `pulumi:"azureAdAuthenticationSettings"`
 	// SQL connectivity type settings.
 	SqlConnectivityUpdateSettings SqlConnectivityUpdateSettingsPtrInput `pulumi:"sqlConnectivityUpdateSettings"`
 	// SQL Instance settings.
@@ -4604,6 +4963,13 @@ func (o ServerConfigurationsManagementSettingsOutput) AdditionalFeaturesServerCo
 	}).(AdditionalFeaturesServerConfigurationsPtrOutput)
 }
 
+// Azure AD authentication Settings.
+func (o ServerConfigurationsManagementSettingsOutput) AzureAdAuthenticationSettings() AADAuthenticationSettingsPtrOutput {
+	return o.ApplyT(func(v ServerConfigurationsManagementSettings) *AADAuthenticationSettings {
+		return v.AzureAdAuthenticationSettings
+	}).(AADAuthenticationSettingsPtrOutput)
+}
+
 // SQL connectivity type settings.
 func (o ServerConfigurationsManagementSettingsOutput) SqlConnectivityUpdateSettings() SqlConnectivityUpdateSettingsPtrOutput {
 	return o.ApplyT(func(v ServerConfigurationsManagementSettings) *SqlConnectivityUpdateSettings {
@@ -4664,6 +5030,16 @@ func (o ServerConfigurationsManagementSettingsPtrOutput) AdditionalFeaturesServe
 	}).(AdditionalFeaturesServerConfigurationsPtrOutput)
 }
 
+// Azure AD authentication Settings.
+func (o ServerConfigurationsManagementSettingsPtrOutput) AzureAdAuthenticationSettings() AADAuthenticationSettingsPtrOutput {
+	return o.ApplyT(func(v *ServerConfigurationsManagementSettings) *AADAuthenticationSettings {
+		if v == nil {
+			return nil
+		}
+		return v.AzureAdAuthenticationSettings
+	}).(AADAuthenticationSettingsPtrOutput)
+}
+
 // SQL connectivity type settings.
 func (o ServerConfigurationsManagementSettingsPtrOutput) SqlConnectivityUpdateSettings() SqlConnectivityUpdateSettingsPtrOutput {
 	return o.ApplyT(func(v *ServerConfigurationsManagementSettings) *SqlConnectivityUpdateSettings {
@@ -4708,6 +5084,8 @@ func (o ServerConfigurationsManagementSettingsPtrOutput) SqlWorkloadTypeUpdateSe
 type ServerConfigurationsManagementSettingsResponse struct {
 	// Additional SQL feature settings.
 	AdditionalFeaturesServerConfigurations *AdditionalFeaturesServerConfigurationsResponse `pulumi:"additionalFeaturesServerConfigurations"`
+	// Azure AD authentication Settings.
+	AzureAdAuthenticationSettings *AADAuthenticationSettingsResponse `pulumi:"azureAdAuthenticationSettings"`
 	// SQL connectivity type settings.
 	SqlConnectivityUpdateSettings *SqlConnectivityUpdateSettingsResponse `pulumi:"sqlConnectivityUpdateSettings"`
 	// SQL Instance settings.
@@ -4738,6 +5116,13 @@ func (o ServerConfigurationsManagementSettingsResponseOutput) AdditionalFeatures
 	return o.ApplyT(func(v ServerConfigurationsManagementSettingsResponse) *AdditionalFeaturesServerConfigurationsResponse {
 		return v.AdditionalFeaturesServerConfigurations
 	}).(AdditionalFeaturesServerConfigurationsResponsePtrOutput)
+}
+
+// Azure AD authentication Settings.
+func (o ServerConfigurationsManagementSettingsResponseOutput) AzureAdAuthenticationSettings() AADAuthenticationSettingsResponsePtrOutput {
+	return o.ApplyT(func(v ServerConfigurationsManagementSettingsResponse) *AADAuthenticationSettingsResponse {
+		return v.AzureAdAuthenticationSettings
+	}).(AADAuthenticationSettingsResponsePtrOutput)
 }
 
 // SQL connectivity type settings.
@@ -4800,6 +5185,16 @@ func (o ServerConfigurationsManagementSettingsResponsePtrOutput) AdditionalFeatu
 		}
 		return v.AdditionalFeaturesServerConfigurations
 	}).(AdditionalFeaturesServerConfigurationsResponsePtrOutput)
+}
+
+// Azure AD authentication Settings.
+func (o ServerConfigurationsManagementSettingsResponsePtrOutput) AzureAdAuthenticationSettings() AADAuthenticationSettingsResponsePtrOutput {
+	return o.ApplyT(func(v *ServerConfigurationsManagementSettingsResponse) *AADAuthenticationSettingsResponse {
+		if v == nil {
+			return nil
+		}
+		return v.AzureAdAuthenticationSettings
+	}).(AADAuthenticationSettingsResponsePtrOutput)
 }
 
 // SQL connectivity type settings.
@@ -5592,6 +5987,8 @@ func (o SqlWorkloadTypeUpdateSettingsResponsePtrOutput) SqlWorkloadType() pulumi
 type StorageConfigurationSettings struct {
 	// Disk configuration to apply to SQL Server.
 	DiskConfigurationType *string `pulumi:"diskConfigurationType"`
+	// Enable SQL IaaS Agent storage configuration blade in Azure Portal.
+	EnableStorageConfigBlade *bool `pulumi:"enableStorageConfigBlade"`
 	// SQL Server Data Storage Settings.
 	SqlDataSettings *SQLStorageSettings `pulumi:"sqlDataSettings"`
 	// SQL Server Log Storage Settings.
@@ -5602,6 +5999,19 @@ type StorageConfigurationSettings struct {
 	SqlTempDbSettings *SQLTempDbSettings `pulumi:"sqlTempDbSettings"`
 	// Storage workload type.
 	StorageWorkloadType *string `pulumi:"storageWorkloadType"`
+}
+
+// Defaults sets the appropriate defaults for StorageConfigurationSettings
+func (val *StorageConfigurationSettings) Defaults() *StorageConfigurationSettings {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.EnableStorageConfigBlade == nil {
+		enableStorageConfigBlade_ := false
+		tmp.EnableStorageConfigBlade = &enableStorageConfigBlade_
+	}
+	return &tmp
 }
 
 // StorageConfigurationSettingsInput is an input type that accepts StorageConfigurationSettingsArgs and StorageConfigurationSettingsOutput values.
@@ -5619,6 +6029,8 @@ type StorageConfigurationSettingsInput interface {
 type StorageConfigurationSettingsArgs struct {
 	// Disk configuration to apply to SQL Server.
 	DiskConfigurationType pulumi.StringPtrInput `pulumi:"diskConfigurationType"`
+	// Enable SQL IaaS Agent storage configuration blade in Azure Portal.
+	EnableStorageConfigBlade pulumi.BoolPtrInput `pulumi:"enableStorageConfigBlade"`
 	// SQL Server Data Storage Settings.
 	SqlDataSettings SQLStorageSettingsPtrInput `pulumi:"sqlDataSettings"`
 	// SQL Server Log Storage Settings.
@@ -5631,6 +6043,17 @@ type StorageConfigurationSettingsArgs struct {
 	StorageWorkloadType pulumi.StringPtrInput `pulumi:"storageWorkloadType"`
 }
 
+// Defaults sets the appropriate defaults for StorageConfigurationSettingsArgs
+func (val *StorageConfigurationSettingsArgs) Defaults() *StorageConfigurationSettingsArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.EnableStorageConfigBlade == nil {
+		tmp.EnableStorageConfigBlade = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
 func (StorageConfigurationSettingsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*StorageConfigurationSettings)(nil)).Elem()
 }
@@ -5714,6 +6137,11 @@ func (o StorageConfigurationSettingsOutput) DiskConfigurationType() pulumi.Strin
 	return o.ApplyT(func(v StorageConfigurationSettings) *string { return v.DiskConfigurationType }).(pulumi.StringPtrOutput)
 }
 
+// Enable SQL IaaS Agent storage configuration blade in Azure Portal.
+func (o StorageConfigurationSettingsOutput) EnableStorageConfigBlade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v StorageConfigurationSettings) *bool { return v.EnableStorageConfigBlade }).(pulumi.BoolPtrOutput)
+}
+
 // SQL Server Data Storage Settings.
 func (o StorageConfigurationSettingsOutput) SqlDataSettings() SQLStorageSettingsPtrOutput {
 	return o.ApplyT(func(v StorageConfigurationSettings) *SQLStorageSettings { return v.SqlDataSettings }).(SQLStorageSettingsPtrOutput)
@@ -5771,6 +6199,16 @@ func (o StorageConfigurationSettingsPtrOutput) DiskConfigurationType() pulumi.St
 		}
 		return v.DiskConfigurationType
 	}).(pulumi.StringPtrOutput)
+}
+
+// Enable SQL IaaS Agent storage configuration blade in Azure Portal.
+func (o StorageConfigurationSettingsPtrOutput) EnableStorageConfigBlade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *StorageConfigurationSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableStorageConfigBlade
+	}).(pulumi.BoolPtrOutput)
 }
 
 // SQL Server Data Storage Settings.
@@ -6027,6 +6465,403 @@ func (o SystemDataResponseOutput) LastModifiedBy() pulumi.StringPtrOutput {
 // The type of identity that last modified the resource.
 func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedByType }).(pulumi.StringPtrOutput)
+}
+
+// SQL VM Troubleshooting additional properties.
+type TroubleshootingAdditionalPropertiesResponse struct {
+	// The unhealthy replica information
+	UnhealthyReplicaInfo *UnhealthyReplicaInfoResponse `pulumi:"unhealthyReplicaInfo"`
+}
+
+// SQL VM Troubleshooting additional properties.
+type TroubleshootingAdditionalPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (TroubleshootingAdditionalPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TroubleshootingAdditionalPropertiesResponse)(nil)).Elem()
+}
+
+func (o TroubleshootingAdditionalPropertiesResponseOutput) ToTroubleshootingAdditionalPropertiesResponseOutput() TroubleshootingAdditionalPropertiesResponseOutput {
+	return o
+}
+
+func (o TroubleshootingAdditionalPropertiesResponseOutput) ToTroubleshootingAdditionalPropertiesResponseOutputWithContext(ctx context.Context) TroubleshootingAdditionalPropertiesResponseOutput {
+	return o
+}
+
+// The unhealthy replica information
+func (o TroubleshootingAdditionalPropertiesResponseOutput) UnhealthyReplicaInfo() UnhealthyReplicaInfoResponsePtrOutput {
+	return o.ApplyT(func(v TroubleshootingAdditionalPropertiesResponse) *UnhealthyReplicaInfoResponse {
+		return v.UnhealthyReplicaInfo
+	}).(UnhealthyReplicaInfoResponsePtrOutput)
+}
+
+// Status of last troubleshooting operation on this SQL VM
+type TroubleshootingStatusResponse struct {
+	// End time in UTC timezone.
+	EndTimeUtc string `pulumi:"endTimeUtc"`
+	// Last troubleshooting trigger time in UTC timezone
+	LastTriggerTimeUtc string `pulumi:"lastTriggerTimeUtc"`
+	// Troubleshooting properties
+	Properties TroubleshootingAdditionalPropertiesResponse `pulumi:"properties"`
+	// Root cause of the issue
+	RootCause string `pulumi:"rootCause"`
+	// Start time in UTC timezone.
+	StartTimeUtc string `pulumi:"startTimeUtc"`
+	// SQL VM troubleshooting scenario.
+	TroubleshootingScenario string `pulumi:"troubleshootingScenario"`
+}
+
+// Defaults sets the appropriate defaults for TroubleshootingStatusResponse
+func (val *TroubleshootingStatusResponse) Defaults() *TroubleshootingStatusResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if utilities.IsZero(tmp.TroubleshootingScenario) {
+		tmp.TroubleshootingScenario = "UnhealthyReplica"
+	}
+	return &tmp
+}
+
+// Status of last troubleshooting operation on this SQL VM
+type TroubleshootingStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (TroubleshootingStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TroubleshootingStatusResponse)(nil)).Elem()
+}
+
+func (o TroubleshootingStatusResponseOutput) ToTroubleshootingStatusResponseOutput() TroubleshootingStatusResponseOutput {
+	return o
+}
+
+func (o TroubleshootingStatusResponseOutput) ToTroubleshootingStatusResponseOutputWithContext(ctx context.Context) TroubleshootingStatusResponseOutput {
+	return o
+}
+
+// End time in UTC timezone.
+func (o TroubleshootingStatusResponseOutput) EndTimeUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v TroubleshootingStatusResponse) string { return v.EndTimeUtc }).(pulumi.StringOutput)
+}
+
+// Last troubleshooting trigger time in UTC timezone
+func (o TroubleshootingStatusResponseOutput) LastTriggerTimeUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v TroubleshootingStatusResponse) string { return v.LastTriggerTimeUtc }).(pulumi.StringOutput)
+}
+
+// Troubleshooting properties
+func (o TroubleshootingStatusResponseOutput) Properties() TroubleshootingAdditionalPropertiesResponseOutput {
+	return o.ApplyT(func(v TroubleshootingStatusResponse) TroubleshootingAdditionalPropertiesResponse { return v.Properties }).(TroubleshootingAdditionalPropertiesResponseOutput)
+}
+
+// Root cause of the issue
+func (o TroubleshootingStatusResponseOutput) RootCause() pulumi.StringOutput {
+	return o.ApplyT(func(v TroubleshootingStatusResponse) string { return v.RootCause }).(pulumi.StringOutput)
+}
+
+// Start time in UTC timezone.
+func (o TroubleshootingStatusResponseOutput) StartTimeUtc() pulumi.StringOutput {
+	return o.ApplyT(func(v TroubleshootingStatusResponse) string { return v.StartTimeUtc }).(pulumi.StringOutput)
+}
+
+// SQL VM troubleshooting scenario.
+func (o TroubleshootingStatusResponseOutput) TroubleshootingScenario() pulumi.StringOutput {
+	return o.ApplyT(func(v TroubleshootingStatusResponse) string { return v.TroubleshootingScenario }).(pulumi.StringOutput)
+}
+
+// SQL VM Troubleshoot UnhealthyReplica scenario information.
+type UnhealthyReplicaInfoResponse struct {
+	// The name of the availability group
+	AvailabilityGroupName *string `pulumi:"availabilityGroupName"`
+}
+
+// SQL VM Troubleshoot UnhealthyReplica scenario information.
+type UnhealthyReplicaInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (UnhealthyReplicaInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UnhealthyReplicaInfoResponse)(nil)).Elem()
+}
+
+func (o UnhealthyReplicaInfoResponseOutput) ToUnhealthyReplicaInfoResponseOutput() UnhealthyReplicaInfoResponseOutput {
+	return o
+}
+
+func (o UnhealthyReplicaInfoResponseOutput) ToUnhealthyReplicaInfoResponseOutputWithContext(ctx context.Context) UnhealthyReplicaInfoResponseOutput {
+	return o
+}
+
+// The name of the availability group
+func (o UnhealthyReplicaInfoResponseOutput) AvailabilityGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UnhealthyReplicaInfoResponse) *string { return v.AvailabilityGroupName }).(pulumi.StringPtrOutput)
+}
+
+type UnhealthyReplicaInfoResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (UnhealthyReplicaInfoResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UnhealthyReplicaInfoResponse)(nil)).Elem()
+}
+
+func (o UnhealthyReplicaInfoResponsePtrOutput) ToUnhealthyReplicaInfoResponsePtrOutput() UnhealthyReplicaInfoResponsePtrOutput {
+	return o
+}
+
+func (o UnhealthyReplicaInfoResponsePtrOutput) ToUnhealthyReplicaInfoResponsePtrOutputWithContext(ctx context.Context) UnhealthyReplicaInfoResponsePtrOutput {
+	return o
+}
+
+func (o UnhealthyReplicaInfoResponsePtrOutput) Elem() UnhealthyReplicaInfoResponseOutput {
+	return o.ApplyT(func(v *UnhealthyReplicaInfoResponse) UnhealthyReplicaInfoResponse {
+		if v != nil {
+			return *v
+		}
+		var ret UnhealthyReplicaInfoResponse
+		return ret
+	}).(UnhealthyReplicaInfoResponseOutput)
+}
+
+// The name of the availability group
+func (o UnhealthyReplicaInfoResponsePtrOutput) AvailabilityGroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UnhealthyReplicaInfoResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityGroupName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Virtual Machine Identity details used for Sql IaaS extension configurations.
+type VirtualMachineIdentity struct {
+	// ARM Resource Id of the identity. Only required when UserAssigned identity is selected.
+	ResourceId *string `pulumi:"resourceId"`
+	// Identity type of the virtual machine. Specify None to opt-out of Managed Identities.
+	Type *string `pulumi:"type"`
+}
+
+// VirtualMachineIdentityInput is an input type that accepts VirtualMachineIdentityArgs and VirtualMachineIdentityOutput values.
+// You can construct a concrete instance of `VirtualMachineIdentityInput` via:
+//
+//	VirtualMachineIdentityArgs{...}
+type VirtualMachineIdentityInput interface {
+	pulumi.Input
+
+	ToVirtualMachineIdentityOutput() VirtualMachineIdentityOutput
+	ToVirtualMachineIdentityOutputWithContext(context.Context) VirtualMachineIdentityOutput
+}
+
+// Virtual Machine Identity details used for Sql IaaS extension configurations.
+type VirtualMachineIdentityArgs struct {
+	// ARM Resource Id of the identity. Only required when UserAssigned identity is selected.
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+	// Identity type of the virtual machine. Specify None to opt-out of Managed Identities.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (VirtualMachineIdentityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineIdentity)(nil)).Elem()
+}
+
+func (i VirtualMachineIdentityArgs) ToVirtualMachineIdentityOutput() VirtualMachineIdentityOutput {
+	return i.ToVirtualMachineIdentityOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineIdentityArgs) ToVirtualMachineIdentityOutputWithContext(ctx context.Context) VirtualMachineIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineIdentityOutput)
+}
+
+func (i VirtualMachineIdentityArgs) ToVirtualMachineIdentityPtrOutput() VirtualMachineIdentityPtrOutput {
+	return i.ToVirtualMachineIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineIdentityArgs) ToVirtualMachineIdentityPtrOutputWithContext(ctx context.Context) VirtualMachineIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineIdentityOutput).ToVirtualMachineIdentityPtrOutputWithContext(ctx)
+}
+
+// VirtualMachineIdentityPtrInput is an input type that accepts VirtualMachineIdentityArgs, VirtualMachineIdentityPtr and VirtualMachineIdentityPtrOutput values.
+// You can construct a concrete instance of `VirtualMachineIdentityPtrInput` via:
+//
+//	        VirtualMachineIdentityArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineIdentityPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineIdentityPtrOutput() VirtualMachineIdentityPtrOutput
+	ToVirtualMachineIdentityPtrOutputWithContext(context.Context) VirtualMachineIdentityPtrOutput
+}
+
+type virtualMachineIdentityPtrType VirtualMachineIdentityArgs
+
+func VirtualMachineIdentityPtr(v *VirtualMachineIdentityArgs) VirtualMachineIdentityPtrInput {
+	return (*virtualMachineIdentityPtrType)(v)
+}
+
+func (*virtualMachineIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineIdentity)(nil)).Elem()
+}
+
+func (i *virtualMachineIdentityPtrType) ToVirtualMachineIdentityPtrOutput() VirtualMachineIdentityPtrOutput {
+	return i.ToVirtualMachineIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineIdentityPtrType) ToVirtualMachineIdentityPtrOutputWithContext(ctx context.Context) VirtualMachineIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineIdentityPtrOutput)
+}
+
+// Virtual Machine Identity details used for Sql IaaS extension configurations.
+type VirtualMachineIdentityOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineIdentity)(nil)).Elem()
+}
+
+func (o VirtualMachineIdentityOutput) ToVirtualMachineIdentityOutput() VirtualMachineIdentityOutput {
+	return o
+}
+
+func (o VirtualMachineIdentityOutput) ToVirtualMachineIdentityOutputWithContext(ctx context.Context) VirtualMachineIdentityOutput {
+	return o
+}
+
+func (o VirtualMachineIdentityOutput) ToVirtualMachineIdentityPtrOutput() VirtualMachineIdentityPtrOutput {
+	return o.ToVirtualMachineIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineIdentityOutput) ToVirtualMachineIdentityPtrOutputWithContext(ctx context.Context) VirtualMachineIdentityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineIdentity) *VirtualMachineIdentity {
+		return &v
+	}).(VirtualMachineIdentityPtrOutput)
+}
+
+// ARM Resource Id of the identity. Only required when UserAssigned identity is selected.
+func (o VirtualMachineIdentityOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineIdentity) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Identity type of the virtual machine. Specify None to opt-out of Managed Identities.
+func (o VirtualMachineIdentityOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineIdentity) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineIdentityPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineIdentity)(nil)).Elem()
+}
+
+func (o VirtualMachineIdentityPtrOutput) ToVirtualMachineIdentityPtrOutput() VirtualMachineIdentityPtrOutput {
+	return o
+}
+
+func (o VirtualMachineIdentityPtrOutput) ToVirtualMachineIdentityPtrOutputWithContext(ctx context.Context) VirtualMachineIdentityPtrOutput {
+	return o
+}
+
+func (o VirtualMachineIdentityPtrOutput) Elem() VirtualMachineIdentityOutput {
+	return o.ApplyT(func(v *VirtualMachineIdentity) VirtualMachineIdentity {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineIdentity
+		return ret
+	}).(VirtualMachineIdentityOutput)
+}
+
+// ARM Resource Id of the identity. Only required when UserAssigned identity is selected.
+func (o VirtualMachineIdentityPtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identity type of the virtual machine. Specify None to opt-out of Managed Identities.
+func (o VirtualMachineIdentityPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineIdentity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Virtual Machine Identity details used for Sql IaaS extension configurations.
+type VirtualMachineIdentityResponse struct {
+	// ARM Resource Id of the identity. Only required when UserAssigned identity is selected.
+	ResourceId *string `pulumi:"resourceId"`
+	// Identity type of the virtual machine. Specify None to opt-out of Managed Identities.
+	Type *string `pulumi:"type"`
+}
+
+// Virtual Machine Identity details used for Sql IaaS extension configurations.
+type VirtualMachineIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineIdentityResponse)(nil)).Elem()
+}
+
+func (o VirtualMachineIdentityResponseOutput) ToVirtualMachineIdentityResponseOutput() VirtualMachineIdentityResponseOutput {
+	return o
+}
+
+func (o VirtualMachineIdentityResponseOutput) ToVirtualMachineIdentityResponseOutputWithContext(ctx context.Context) VirtualMachineIdentityResponseOutput {
+	return o
+}
+
+// ARM Resource Id of the identity. Only required when UserAssigned identity is selected.
+func (o VirtualMachineIdentityResponseOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineIdentityResponse) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Identity type of the virtual machine. Specify None to opt-out of Managed Identities.
+func (o VirtualMachineIdentityResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineIdentityResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type VirtualMachineIdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineIdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineIdentityResponse)(nil)).Elem()
+}
+
+func (o VirtualMachineIdentityResponsePtrOutput) ToVirtualMachineIdentityResponsePtrOutput() VirtualMachineIdentityResponsePtrOutput {
+	return o
+}
+
+func (o VirtualMachineIdentityResponsePtrOutput) ToVirtualMachineIdentityResponsePtrOutputWithContext(ctx context.Context) VirtualMachineIdentityResponsePtrOutput {
+	return o
+}
+
+func (o VirtualMachineIdentityResponsePtrOutput) Elem() VirtualMachineIdentityResponseOutput {
+	return o.ApplyT(func(v *VirtualMachineIdentityResponse) VirtualMachineIdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineIdentityResponse
+		return ret
+	}).(VirtualMachineIdentityResponseOutput)
+}
+
+// ARM Resource Id of the identity. Only required when UserAssigned identity is selected.
+func (o VirtualMachineIdentityResponsePtrOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Identity type of the virtual machine. Specify None to opt-out of Managed Identities.
+func (o VirtualMachineIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineIdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 // Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
@@ -6313,6 +7148,8 @@ type WsfcDomainProfile struct {
 	DomainFqdn *string `pulumi:"domainFqdn"`
 	// Optional path for fileshare witness.
 	FileShareWitnessPath *string `pulumi:"fileShareWitnessPath"`
+	// The flag to check if SQL service account is GMSA.
+	IsSqlServiceAccountGmsa *bool `pulumi:"isSqlServiceAccountGmsa"`
 	// Organizational Unit path in which the nodes and cluster will be present.
 	OuPath *string `pulumi:"ouPath"`
 	// Account name under which SQL service will run on all participating SQL virtual machines in the cluster.
@@ -6346,6 +7183,8 @@ type WsfcDomainProfileArgs struct {
 	DomainFqdn pulumi.StringPtrInput `pulumi:"domainFqdn"`
 	// Optional path for fileshare witness.
 	FileShareWitnessPath pulumi.StringPtrInput `pulumi:"fileShareWitnessPath"`
+	// The flag to check if SQL service account is GMSA.
+	IsSqlServiceAccountGmsa pulumi.BoolPtrInput `pulumi:"isSqlServiceAccountGmsa"`
 	// Organizational Unit path in which the nodes and cluster will be present.
 	OuPath pulumi.StringPtrInput `pulumi:"ouPath"`
 	// Account name under which SQL service will run on all participating SQL virtual machines in the cluster.
@@ -6459,6 +7298,11 @@ func (o WsfcDomainProfileOutput) FileShareWitnessPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WsfcDomainProfile) *string { return v.FileShareWitnessPath }).(pulumi.StringPtrOutput)
 }
 
+// The flag to check if SQL service account is GMSA.
+func (o WsfcDomainProfileOutput) IsSqlServiceAccountGmsa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WsfcDomainProfile) *bool { return v.IsSqlServiceAccountGmsa }).(pulumi.BoolPtrOutput)
+}
+
 // Organizational Unit path in which the nodes and cluster will be present.
 func (o WsfcDomainProfileOutput) OuPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WsfcDomainProfile) *string { return v.OuPath }).(pulumi.StringPtrOutput)
@@ -6553,6 +7397,16 @@ func (o WsfcDomainProfilePtrOutput) FileShareWitnessPath() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The flag to check if SQL service account is GMSA.
+func (o WsfcDomainProfilePtrOutput) IsSqlServiceAccountGmsa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WsfcDomainProfile) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsSqlServiceAccountGmsa
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Organizational Unit path in which the nodes and cluster will be present.
 func (o WsfcDomainProfilePtrOutput) OuPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WsfcDomainProfile) *string {
@@ -6605,6 +7459,8 @@ type WsfcDomainProfileResponse struct {
 	DomainFqdn *string `pulumi:"domainFqdn"`
 	// Optional path for fileshare witness.
 	FileShareWitnessPath *string `pulumi:"fileShareWitnessPath"`
+	// The flag to check if SQL service account is GMSA.
+	IsSqlServiceAccountGmsa *bool `pulumi:"isSqlServiceAccountGmsa"`
 	// Organizational Unit path in which the nodes and cluster will be present.
 	OuPath *string `pulumi:"ouPath"`
 	// Account name under which SQL service will run on all participating SQL virtual machines in the cluster.
@@ -6651,6 +7507,11 @@ func (o WsfcDomainProfileResponseOutput) DomainFqdn() pulumi.StringPtrOutput {
 // Optional path for fileshare witness.
 func (o WsfcDomainProfileResponseOutput) FileShareWitnessPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WsfcDomainProfileResponse) *string { return v.FileShareWitnessPath }).(pulumi.StringPtrOutput)
+}
+
+// The flag to check if SQL service account is GMSA.
+func (o WsfcDomainProfileResponseOutput) IsSqlServiceAccountGmsa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WsfcDomainProfileResponse) *bool { return v.IsSqlServiceAccountGmsa }).(pulumi.BoolPtrOutput)
 }
 
 // Organizational Unit path in which the nodes and cluster will be present.
@@ -6742,6 +7603,16 @@ func (o WsfcDomainProfileResponsePtrOutput) FileShareWitnessPath() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// The flag to check if SQL service account is GMSA.
+func (o WsfcDomainProfileResponsePtrOutput) IsSqlServiceAccountGmsa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WsfcDomainProfileResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsSqlServiceAccountGmsa
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Organizational Unit path in which the nodes and cluster will be present.
 func (o WsfcDomainProfileResponsePtrOutput) OuPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WsfcDomainProfileResponse) *string {
@@ -6773,6 +7644,10 @@ func (o WsfcDomainProfileResponsePtrOutput) StorageAccountUrl() pulumi.StringPtr
 }
 
 func init() {
+	pulumi.RegisterOutputType(AADAuthenticationSettingsOutput{})
+	pulumi.RegisterOutputType(AADAuthenticationSettingsPtrOutput{})
+	pulumi.RegisterOutputType(AADAuthenticationSettingsResponseOutput{})
+	pulumi.RegisterOutputType(AADAuthenticationSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(AdditionalFeaturesServerConfigurationsOutput{})
 	pulumi.RegisterOutputType(AdditionalFeaturesServerConfigurationsPtrOutput{})
 	pulumi.RegisterOutputType(AdditionalFeaturesServerConfigurationsResponseOutput{})
@@ -6854,6 +7729,14 @@ func init() {
 	pulumi.RegisterOutputType(StorageConfigurationSettingsResponseOutput{})
 	pulumi.RegisterOutputType(StorageConfigurationSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
+	pulumi.RegisterOutputType(TroubleshootingAdditionalPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(TroubleshootingStatusResponseOutput{})
+	pulumi.RegisterOutputType(UnhealthyReplicaInfoResponseOutput{})
+	pulumi.RegisterOutputType(UnhealthyReplicaInfoResponsePtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineIdentityOutput{})
+	pulumi.RegisterOutputType(VirtualMachineIdentityPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineIdentityResponseOutput{})
+	pulumi.RegisterOutputType(VirtualMachineIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(WsfcDomainCredentialsOutput{})
 	pulumi.RegisterOutputType(WsfcDomainCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(WsfcDomainCredentialsResponseOutput{})

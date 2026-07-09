@@ -8,21 +8,25 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Security operator under a given subscription and pricing
 //
-// Uses Azure REST API version 2023-01-01-preview.
+// Uses Azure REST API version 2023-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-01-01-preview.
 type SecurityOperator struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// Identity for the resource.
 	Identity IdentityResponsePtrOutput `pulumi:"identity"`
-	// Resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Resource type
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -75,17 +79,17 @@ func (SecurityOperatorState) ElementType() reflect.Type {
 }
 
 type securityOperatorArgs struct {
-	// name of the pricing configuration
+	// Name of the pricing configuration.
 	PricingName string `pulumi:"pricingName"`
-	// name of the securityOperator
+	// Name of the security operator.
 	SecurityOperatorName *string `pulumi:"securityOperatorName"`
 }
 
 // The set of arguments for constructing a SecurityOperator resource.
 type SecurityOperatorArgs struct {
-	// name of the pricing configuration
+	// Name of the pricing configuration.
 	PricingName pulumi.StringInput
-	// name of the securityOperator
+	// Name of the security operator.
 	SecurityOperatorName pulumi.StringPtrInput
 }
 
@@ -126,17 +130,27 @@ func (o SecurityOperatorOutput) ToSecurityOperatorOutputWithContext(ctx context.
 	return o
 }
 
+// The Azure API version of the resource.
+func (o SecurityOperatorOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityOperator) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Identity for the resource.
 func (o SecurityOperatorOutput) Identity() IdentityResponsePtrOutput {
 	return o.ApplyT(func(v *SecurityOperator) IdentityResponsePtrOutput { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o SecurityOperatorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityOperator) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Resource type
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o SecurityOperatorOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *SecurityOperator) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o SecurityOperatorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityOperator) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

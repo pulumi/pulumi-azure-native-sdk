@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -33,15 +33,17 @@ type LookupAlertsSuppressionRuleArgs struct {
 type LookupAlertsSuppressionRuleResult struct {
 	// Type of the alert to automatically suppress. For all alert types, use '*'
 	AlertType string `pulumi:"alertType"`
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Any comment regarding the rule
 	Comment *string `pulumi:"comment"`
 	// Expiration date of the rule, if value is not provided or provided as null there will no expiration at all
 	ExpirationDateUtc *string `pulumi:"expirationDateUtc"`
-	// Resource Id
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The last time this rule was modified
 	LastModifiedUtc string `pulumi:"lastModifiedUtc"`
-	// Resource name
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The reason for dismissing the alert
 	Reason string `pulumi:"reason"`
@@ -49,7 +51,9 @@ type LookupAlertsSuppressionRuleResult struct {
 	State string `pulumi:"state"`
 	// The suppression conditions
 	SuppressionAlertsScope *SuppressionAlertsScopeResponse `pulumi:"suppressionAlertsScope"`
-	// Resource type
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -91,6 +95,11 @@ func (o LookupAlertsSuppressionRuleResultOutput) AlertType() pulumi.StringOutput
 	return o.ApplyT(func(v LookupAlertsSuppressionRuleResult) string { return v.AlertType }).(pulumi.StringOutput)
 }
 
+// The Azure API version of the resource.
+func (o LookupAlertsSuppressionRuleResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAlertsSuppressionRuleResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Any comment regarding the rule
 func (o LookupAlertsSuppressionRuleResultOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAlertsSuppressionRuleResult) *string { return v.Comment }).(pulumi.StringPtrOutput)
@@ -101,7 +110,7 @@ func (o LookupAlertsSuppressionRuleResultOutput) ExpirationDateUtc() pulumi.Stri
 	return o.ApplyT(func(v LookupAlertsSuppressionRuleResult) *string { return v.ExpirationDateUtc }).(pulumi.StringPtrOutput)
 }
 
-// Resource Id
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupAlertsSuppressionRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertsSuppressionRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -111,7 +120,7 @@ func (o LookupAlertsSuppressionRuleResultOutput) LastModifiedUtc() pulumi.String
 	return o.ApplyT(func(v LookupAlertsSuppressionRuleResult) string { return v.LastModifiedUtc }).(pulumi.StringOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o LookupAlertsSuppressionRuleResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertsSuppressionRuleResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -133,7 +142,12 @@ func (o LookupAlertsSuppressionRuleResultOutput) SuppressionAlertsScope() Suppre
 	}).(SuppressionAlertsScopeResponsePtrOutput)
 }
 
-// Resource type
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupAlertsSuppressionRuleResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAlertsSuppressionRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupAlertsSuppressionRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertsSuppressionRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -14,6 +14,7 @@ import (
 type HostType string
 
 const (
+	// Kubernetes
 	HostTypeKubernetes = HostType("Kubernetes")
 )
 
@@ -178,8 +179,10 @@ func (in *hostTypePtr) ToHostTypePtrOutputWithContext(ctx context.Context) HostT
 type ResourceIdentityType string
 
 const (
+	// SystemAssigned
 	ResourceIdentityTypeSystemAssigned = ResourceIdentityType("SystemAssigned")
-	ResourceIdentityTypeNone           = ResourceIdentityType("None")
+	// None
+	ResourceIdentityTypeNone = ResourceIdentityType("None")
 )
 
 func (ResourceIdentityType) ElementType() reflect.Type {

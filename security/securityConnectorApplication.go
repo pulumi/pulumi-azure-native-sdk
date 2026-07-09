@@ -8,25 +8,31 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Security Application over a given scope
 //
-// Uses Azure REST API version 2022-07-01-preview. In version 1.x of the Azure Native provider, it used API version 2022-07-01-preview.
+// Uses Azure REST API version 2022-07-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-07-01-preview.
 type SecurityConnectorApplication struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The application conditionSets - see examples
+	ConditionSets pulumi.ArrayOutput `pulumi:"conditionSets"`
 	// description of the application
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// display name of the application
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
-	// Resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The application source, what it affects, e.g. Assessments
 	SourceResourceType pulumi.StringOutput `pulumi:"sourceResourceType"`
-	// Resource type
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -37,6 +43,9 @@ func NewSecurityConnectorApplication(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ConditionSets == nil {
+		return nil, errors.New("invalid value for required argument 'ConditionSets'")
+	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
@@ -87,11 +96,13 @@ func (SecurityConnectorApplicationState) ElementType() reflect.Type {
 type securityConnectorApplicationArgs struct {
 	// The security Application key - unique key for the standard application
 	ApplicationId *string `pulumi:"applicationId"`
+	// The application conditionSets - see examples
+	ConditionSets []interface{} `pulumi:"conditionSets"`
 	// description of the application
 	Description *string `pulumi:"description"`
 	// display name of the application
 	DisplayName *string `pulumi:"displayName"`
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The security connector name.
 	SecurityConnectorName string `pulumi:"securityConnectorName"`
@@ -103,11 +114,13 @@ type securityConnectorApplicationArgs struct {
 type SecurityConnectorApplicationArgs struct {
 	// The security Application key - unique key for the standard application
 	ApplicationId pulumi.StringPtrInput
+	// The application conditionSets - see examples
+	ConditionSets pulumi.ArrayInput
 	// description of the application
 	Description pulumi.StringPtrInput
 	// display name of the application
 	DisplayName pulumi.StringPtrInput
-	// The name of the resource group within the user's subscription. The name is case insensitive.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The security connector name.
 	SecurityConnectorName pulumi.StringInput
@@ -152,6 +165,16 @@ func (o SecurityConnectorApplicationOutput) ToSecurityConnectorApplicationOutput
 	return o
 }
 
+// The Azure API version of the resource.
+func (o SecurityConnectorApplicationOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityConnectorApplication) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The application conditionSets - see examples
+func (o SecurityConnectorApplicationOutput) ConditionSets() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *SecurityConnectorApplication) pulumi.ArrayOutput { return v.ConditionSets }).(pulumi.ArrayOutput)
+}
+
 // description of the application
 func (o SecurityConnectorApplicationOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityConnectorApplication) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -162,7 +185,7 @@ func (o SecurityConnectorApplicationOutput) DisplayName() pulumi.StringPtrOutput
 	return o.ApplyT(func(v *SecurityConnectorApplication) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o SecurityConnectorApplicationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityConnectorApplication) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -172,7 +195,12 @@ func (o SecurityConnectorApplicationOutput) SourceResourceType() pulumi.StringOu
 	return o.ApplyT(func(v *SecurityConnectorApplication) pulumi.StringOutput { return v.SourceResourceType }).(pulumi.StringOutput)
 }
 
-// Resource type
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o SecurityConnectorApplicationOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *SecurityConnectorApplication) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o SecurityConnectorApplicationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityConnectorApplication) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

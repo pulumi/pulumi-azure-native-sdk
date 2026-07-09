@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +35,8 @@ type LookupTunnelPolicyArgs struct {
 
 // Tunnel Policy maps domains to target endpoints to process traffic over the tunnelling protocol.
 type LookupTunnelPolicyResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion  string `pulumi:"azureApiVersion"`
 	DeploymentStatus string `pulumi:"deploymentStatus"`
 	// Domains referenced by this tunnel policy.
 	Domains []ActivatedResourceReferenceResponse `pulumi:"domains"`
@@ -89,6 +91,11 @@ func (o LookupTunnelPolicyResultOutput) ToLookupTunnelPolicyResultOutput() Looku
 
 func (o LookupTunnelPolicyResultOutput) ToLookupTunnelPolicyResultOutputWithContext(ctx context.Context) LookupTunnelPolicyResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupTunnelPolicyResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupTunnelPolicyResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupTunnelPolicyResultOutput) DeploymentStatus() pulumi.StringOutput {

@@ -7,15 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get a custom domain.
 //
-// Uses Azure REST API version 2023-02-01.
+// Uses Azure REST API version 2024-03-01.
 //
-// Other available API versions: 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-03-01, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview.
+// Other available API versions: 2023-02-01, 2023-03-01-preview, 2023-06-01-preview, 2023-08-01-preview, 2024-01-01-preview, 2024-04-01-preview, 2024-08-01-preview, 2024-10-01-preview, 2025-01-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native signalrservice [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSignalRCustomDomain(ctx *pulumi.Context, args *LookupSignalRCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupSignalRCustomDomainResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSignalRCustomDomainResult
@@ -29,7 +29,7 @@ func LookupSignalRCustomDomain(ctx *pulumi.Context, args *LookupSignalRCustomDom
 type LookupSignalRCustomDomainArgs struct {
 	// Custom domain name.
 	Name string `pulumi:"name"`
-	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the resource.
 	ResourceName string `pulumi:"resourceName"`
@@ -37,19 +37,21 @@ type LookupSignalRCustomDomainArgs struct {
 
 // A custom domain
 type LookupSignalRCustomDomainResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Reference to a resource.
 	CustomCertificate ResourceReferenceResponse `pulumi:"customCertificate"`
 	// The custom domain name.
 	DomainName string `pulumi:"domainName"`
-	// Fully qualified resource Id for the resource.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// The name of the resource.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
-	// Metadata pertaining to creation and last modification of the resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -65,7 +67,7 @@ func LookupSignalRCustomDomainOutput(ctx *pulumi.Context, args LookupSignalRCust
 type LookupSignalRCustomDomainOutputArgs struct {
 	// Custom domain name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the resource.
 	ResourceName pulumi.StringInput `pulumi:"resourceName"`
@@ -90,6 +92,11 @@ func (o LookupSignalRCustomDomainResultOutput) ToLookupSignalRCustomDomainResult
 	return o
 }
 
+// The Azure API version of the resource.
+func (o LookupSignalRCustomDomainResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSignalRCustomDomainResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
 // Reference to a resource.
 func (o LookupSignalRCustomDomainResultOutput) CustomCertificate() ResourceReferenceResponseOutput {
 	return o.ApplyT(func(v LookupSignalRCustomDomainResult) ResourceReferenceResponse { return v.CustomCertificate }).(ResourceReferenceResponseOutput)
@@ -100,12 +107,12 @@ func (o LookupSignalRCustomDomainResultOutput) DomainName() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupSignalRCustomDomainResult) string { return v.DomainName }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource Id for the resource.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupSignalRCustomDomainResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSignalRCustomDomainResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The name of the resource.
+// The name of the resource
 func (o LookupSignalRCustomDomainResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSignalRCustomDomainResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -115,12 +122,12 @@ func (o LookupSignalRCustomDomainResultOutput) ProvisioningState() pulumi.String
 	return o.ApplyT(func(v LookupSignalRCustomDomainResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Metadata pertaining to creation and last modification of the resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupSignalRCustomDomainResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupSignalRCustomDomainResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource - e.g. "Microsoft.SignalRService/SignalR"
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupSignalRCustomDomainResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSignalRCustomDomainResult) string { return v.Type }).(pulumi.StringOutput)
 }

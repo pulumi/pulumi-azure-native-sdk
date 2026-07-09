@@ -14,8 +14,10 @@ import (
 type ContentSourceType string
 
 const (
+	// embeddedContent
 	ContentSourceTypeEmbeddedContent = ContentSourceType("embeddedContent")
-	ContentSourceTypeUri             = ContentSourceType("uri")
+	// uri
+	ContentSourceTypeUri = ContentSourceType("uri")
 )
 
 func (ContentSourceType) ElementType() reflect.Type {
@@ -180,8 +182,10 @@ func (in *contentSourceTypePtr) ToContentSourceTypePtrOutputWithContext(ctx cont
 type EncryptionKeySourceType string
 
 const (
+	// Microsoft.Automation
 	EncryptionKeySourceType_Microsoft_Automation = EncryptionKeySourceType("Microsoft.Automation")
-	EncryptionKeySourceType_Microsoft_Keyvault   = EncryptionKeySourceType("Microsoft.Keyvault")
+	// Microsoft.Keyvault
+	EncryptionKeySourceType_Microsoft_Keyvault = EncryptionKeySourceType("Microsoft.Keyvault")
 )
 
 func (EncryptionKeySourceType) ElementType() reflect.Type {
@@ -346,10 +350,14 @@ func (in *encryptionKeySourceTypePtr) ToEncryptionKeySourceTypePtrOutputWithCont
 type LinuxUpdateClasses string
 
 const (
+	// Unclassified
 	LinuxUpdateClassesUnclassified = LinuxUpdateClasses("Unclassified")
-	LinuxUpdateClassesCritical     = LinuxUpdateClasses("Critical")
-	LinuxUpdateClassesSecurity     = LinuxUpdateClasses("Security")
-	LinuxUpdateClassesOther        = LinuxUpdateClasses("Other")
+	// Critical
+	LinuxUpdateClassesCritical = LinuxUpdateClasses("Critical")
+	// Security
+	LinuxUpdateClassesSecurity = LinuxUpdateClasses("Security")
+	// Other
+	LinuxUpdateClassesOther = LinuxUpdateClasses("Other")
 )
 
 func (LinuxUpdateClasses) ElementType() reflect.Type {
@@ -516,8 +524,10 @@ func (in *linuxUpdateClassesPtr) ToLinuxUpdateClassesPtrOutputWithContext(ctx co
 type OperatingSystemType string
 
 const (
+	// Windows
 	OperatingSystemTypeWindows = OperatingSystemType("Windows")
-	OperatingSystemTypeLinux   = OperatingSystemType("Linux")
+	// Linux
+	OperatingSystemTypeLinux = OperatingSystemType("Linux")
 )
 
 func (OperatingSystemType) ElementType() reflect.Type {
@@ -682,10 +692,14 @@ func (in *operatingSystemTypePtr) ToOperatingSystemTypePtrOutputWithContext(ctx 
 type ResourceIdentityType string
 
 const (
-	ResourceIdentityTypeSystemAssigned               = ResourceIdentityType("SystemAssigned")
-	ResourceIdentityTypeUserAssigned                 = ResourceIdentityType("UserAssigned")
+	// SystemAssigned
+	ResourceIdentityTypeSystemAssigned = ResourceIdentityType("SystemAssigned")
+	// UserAssigned
+	ResourceIdentityTypeUserAssigned = ResourceIdentityType("UserAssigned")
+	// SystemAssigned, UserAssigned
 	ResourceIdentityType_SystemAssigned_UserAssigned = ResourceIdentityType("SystemAssigned, UserAssigned")
-	ResourceIdentityTypeNone                         = ResourceIdentityType("None")
+	// None
+	ResourceIdentityTypeNone = ResourceIdentityType("None")
 )
 
 func (ResourceIdentityType) ElementType() reflect.Type {
@@ -852,14 +866,26 @@ func (in *resourceIdentityTypePtr) ToResourceIdentityTypePtrOutputWithContext(ct
 type RunbookTypeEnum string
 
 const (
-	RunbookTypeEnumScript                  = RunbookTypeEnum("Script")
-	RunbookTypeEnumGraph                   = RunbookTypeEnum("Graph")
-	RunbookTypeEnumPowerShellWorkflow      = RunbookTypeEnum("PowerShellWorkflow")
-	RunbookTypeEnumPowerShell              = RunbookTypeEnum("PowerShell")
+	// Script
+	RunbookTypeEnumScript = RunbookTypeEnum("Script")
+	// Graph
+	RunbookTypeEnumGraph = RunbookTypeEnum("Graph")
+	// PowerShellWorkflow
+	RunbookTypeEnumPowerShellWorkflow = RunbookTypeEnum("PowerShellWorkflow")
+	// PowerShell
+	RunbookTypeEnumPowerShell = RunbookTypeEnum("PowerShell")
+	// GraphPowerShellWorkflow
 	RunbookTypeEnumGraphPowerShellWorkflow = RunbookTypeEnum("GraphPowerShellWorkflow")
-	RunbookTypeEnumGraphPowerShell         = RunbookTypeEnum("GraphPowerShell")
-	RunbookTypeEnumPython2                 = RunbookTypeEnum("Python2")
-	RunbookTypeEnumPython3                 = RunbookTypeEnum("Python3")
+	// GraphPowerShell
+	RunbookTypeEnumGraphPowerShell = RunbookTypeEnum("GraphPowerShell")
+	// Python2
+	RunbookTypeEnumPython2 = RunbookTypeEnum("Python2")
+	// Python3
+	RunbookTypeEnumPython3 = RunbookTypeEnum("Python3")
+	// Python
+	RunbookTypeEnumPython = RunbookTypeEnum("Python")
+	// PowerShell72
+	RunbookTypeEnumPowerShell72 = RunbookTypeEnum("PowerShell72")
 )
 
 func (RunbookTypeEnum) ElementType() reflect.Type {
@@ -992,6 +1018,8 @@ func (o RunbookTypeEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 //	RunbookTypeEnumGraphPowerShell
 //	RunbookTypeEnumPython2
 //	RunbookTypeEnumPython3
+//	RunbookTypeEnumPython
+//	RunbookTypeEnumPowerShell72
 type RunbookTypeEnumInput interface {
 	pulumi.Input
 
@@ -1030,13 +1058,20 @@ func (in *runbookTypeEnumPtr) ToRunbookTypeEnumPtrOutputWithContext(ctx context.
 type ScheduleDay string
 
 const (
-	ScheduleDayMonday    = ScheduleDay("Monday")
-	ScheduleDayTuesday   = ScheduleDay("Tuesday")
+	// Monday
+	ScheduleDayMonday = ScheduleDay("Monday")
+	// Tuesday
+	ScheduleDayTuesday = ScheduleDay("Tuesday")
+	// Wednesday
 	ScheduleDayWednesday = ScheduleDay("Wednesday")
-	ScheduleDayThursday  = ScheduleDay("Thursday")
-	ScheduleDayFriday    = ScheduleDay("Friday")
-	ScheduleDaySaturday  = ScheduleDay("Saturday")
-	ScheduleDaySunday    = ScheduleDay("Sunday")
+	// Thursday
+	ScheduleDayThursday = ScheduleDay("Thursday")
+	// Friday
+	ScheduleDayFriday = ScheduleDay("Friday")
+	// Saturday
+	ScheduleDaySaturday = ScheduleDay("Saturday")
+	// Sunday
+	ScheduleDaySunday = ScheduleDay("Sunday")
 )
 
 func (ScheduleDay) ElementType() reflect.Type {
@@ -1206,11 +1241,16 @@ func (in *scheduleDayPtr) ToScheduleDayPtrOutputWithContext(ctx context.Context)
 type ScheduleFrequency string
 
 const (
+	// OneTime
 	ScheduleFrequencyOneTime = ScheduleFrequency("OneTime")
-	ScheduleFrequencyDay     = ScheduleFrequency("Day")
-	ScheduleFrequencyHour    = ScheduleFrequency("Hour")
-	ScheduleFrequencyWeek    = ScheduleFrequency("Week")
-	ScheduleFrequencyMonth   = ScheduleFrequency("Month")
+	// Day
+	ScheduleFrequencyDay = ScheduleFrequency("Day")
+	// Hour
+	ScheduleFrequencyHour = ScheduleFrequency("Hour")
+	// Week
+	ScheduleFrequencyWeek = ScheduleFrequency("Week")
+	// Month
+	ScheduleFrequencyMonth = ScheduleFrequency("Month")
 	// The minimum allowed interval for Minute schedules is 15 minutes.
 	ScheduleFrequencyMinute = ScheduleFrequency("Minute")
 )
@@ -1381,7 +1421,9 @@ func (in *scheduleFrequencyPtr) ToScheduleFrequencyPtrOutputWithContext(ctx cont
 type SkuNameEnum string
 
 const (
-	SkuNameEnumFree  = SkuNameEnum("Free")
+	// Free
+	SkuNameEnumFree = SkuNameEnum("Free")
+	// Basic
 	SkuNameEnumBasic = SkuNameEnum("Basic")
 )
 
@@ -1547,9 +1589,12 @@ func (in *skuNameEnumPtr) ToSkuNameEnumPtrOutputWithContext(ctx context.Context)
 type SourceType string
 
 const (
-	SourceTypeVsoGit  = SourceType("VsoGit")
+	// VsoGit
+	SourceTypeVsoGit = SourceType("VsoGit")
+	// VsoTfvc
 	SourceTypeVsoTfvc = SourceType("VsoTfvc")
-	SourceTypeGitHub  = SourceType("GitHub")
+	// GitHub
+	SourceTypeGitHub = SourceType("GitHub")
 )
 
 func (SourceType) ElementType() reflect.Type {
@@ -1715,7 +1760,9 @@ func (in *sourceTypePtr) ToSourceTypePtrOutputWithContext(ctx context.Context) S
 type TagOperators string
 
 const (
+	// All
 	TagOperatorsAll = TagOperators("All")
+	// Any
 	TagOperatorsAny = TagOperators("Any")
 )
 
@@ -1881,8 +1928,10 @@ func (in *tagOperatorsPtr) ToTagOperatorsPtrOutputWithContext(ctx context.Contex
 type TokenType string
 
 const (
+	// PersonalAccessToken
 	TokenTypePersonalAccessToken = TokenType("PersonalAccessToken")
-	TokenTypeOauth               = TokenType("Oauth")
+	// Oauth
+	TokenTypeOauth = TokenType("Oauth")
 )
 
 func (TokenType) ElementType() reflect.Type {
@@ -2047,15 +2096,24 @@ func (in *tokenTypePtr) ToTokenTypePtrOutputWithContext(ctx context.Context) Tok
 type WindowsUpdateClasses string
 
 const (
+	// Unclassified
 	WindowsUpdateClassesUnclassified = WindowsUpdateClasses("Unclassified")
-	WindowsUpdateClassesCritical     = WindowsUpdateClasses("Critical")
-	WindowsUpdateClassesSecurity     = WindowsUpdateClasses("Security")
+	// Critical
+	WindowsUpdateClassesCritical = WindowsUpdateClasses("Critical")
+	// Security
+	WindowsUpdateClassesSecurity = WindowsUpdateClasses("Security")
+	// UpdateRollup
 	WindowsUpdateClassesUpdateRollup = WindowsUpdateClasses("UpdateRollup")
-	WindowsUpdateClassesFeaturePack  = WindowsUpdateClasses("FeaturePack")
-	WindowsUpdateClassesServicePack  = WindowsUpdateClasses("ServicePack")
-	WindowsUpdateClassesDefinition   = WindowsUpdateClasses("Definition")
-	WindowsUpdateClassesTools        = WindowsUpdateClasses("Tools")
-	WindowsUpdateClassesUpdates      = WindowsUpdateClasses("Updates")
+	// FeaturePack
+	WindowsUpdateClassesFeaturePack = WindowsUpdateClasses("FeaturePack")
+	// ServicePack
+	WindowsUpdateClassesServicePack = WindowsUpdateClasses("ServicePack")
+	// Definition
+	WindowsUpdateClassesDefinition = WindowsUpdateClasses("Definition")
+	// Tools
+	WindowsUpdateClassesTools = WindowsUpdateClasses("Tools")
+	// Updates
+	WindowsUpdateClassesUpdates = WindowsUpdateClasses("Updates")
 )
 
 func (WindowsUpdateClasses) ElementType() reflect.Type {

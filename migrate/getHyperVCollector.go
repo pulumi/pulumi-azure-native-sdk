@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,11 +34,13 @@ type LookupHyperVCollectorArgs struct {
 }
 
 type LookupHyperVCollectorResult struct {
-	ETag       *string                     `pulumi:"eTag"`
-	Id         string                      `pulumi:"id"`
-	Name       string                      `pulumi:"name"`
-	Properties CollectorPropertiesResponse `pulumi:"properties"`
-	Type       string                      `pulumi:"type"`
+	// The Azure API version of the resource.
+	AzureApiVersion string                      `pulumi:"azureApiVersion"`
+	ETag            *string                     `pulumi:"eTag"`
+	Id              string                      `pulumi:"id"`
+	Name            string                      `pulumi:"name"`
+	Properties      CollectorPropertiesResponse `pulumi:"properties"`
+	Type            string                      `pulumi:"type"`
 }
 
 func LookupHyperVCollectorOutput(ctx *pulumi.Context, args LookupHyperVCollectorOutputArgs, opts ...pulumi.InvokeOption) LookupHyperVCollectorResultOutput {
@@ -75,6 +77,11 @@ func (o LookupHyperVCollectorResultOutput) ToLookupHyperVCollectorResultOutput()
 
 func (o LookupHyperVCollectorResultOutput) ToLookupHyperVCollectorResultOutputWithContext(ctx context.Context) LookupHyperVCollectorResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupHyperVCollectorResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupHyperVCollectorResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 func (o LookupHyperVCollectorResultOutput) ETag() pulumi.StringPtrOutput {

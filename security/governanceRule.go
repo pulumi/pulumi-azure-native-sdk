@@ -8,16 +8,20 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Governance rule over a given scope
 //
-// Uses Azure REST API version 2022-01-01-preview.
+// Uses Azure REST API version 2022-01-01-preview. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
 type GovernanceRule struct {
 	pulumi.CustomResourceState
 
+	// The Azure API version of the resource.
+	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The governance rule conditionSets - see examples
+	ConditionSets pulumi.ArrayOutput `pulumi:"conditionSets"`
 	// Description of the governance rule
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Display name of the governance rule
@@ -34,7 +38,7 @@ type GovernanceRule struct {
 	IsGracePeriod pulumi.BoolPtrOutput `pulumi:"isGracePeriod"`
 	// The governance rule metadata
 	Metadata GovernanceRuleMetadataResponsePtrOutput `pulumi:"metadata"`
-	// Resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The owner source for the governance rule - e.g. Manually by user@contoso.com - see example
 	OwnerSource GovernanceRuleOwnerSourceResponseOutput `pulumi:"ownerSource"`
@@ -46,9 +50,11 @@ type GovernanceRule struct {
 	RuleType pulumi.StringOutput `pulumi:"ruleType"`
 	// The governance rule source, what the rule affects, e.g. Assessments
 	SourceResourceType pulumi.StringOutput `pulumi:"sourceResourceType"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The tenantId (GUID)
 	TenantId pulumi.StringOutput `pulumi:"tenantId"`
-	// Resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -59,6 +65,9 @@ func NewGovernanceRule(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ConditionSets == nil {
+		return nil, errors.New("invalid value for required argument 'ConditionSets'")
+	}
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
@@ -116,6 +125,8 @@ func (GovernanceRuleState) ElementType() reflect.Type {
 }
 
 type governanceRuleArgs struct {
+	// The governance rule conditionSets - see examples
+	ConditionSets []interface{} `pulumi:"conditionSets"`
 	// Description of the governance rule
 	Description *string `pulumi:"description"`
 	// Display name of the governance rule
@@ -140,7 +151,7 @@ type governanceRuleArgs struct {
 	RulePriority int `pulumi:"rulePriority"`
 	// The rule type of the governance rule, defines the source of the rule e.g. Integrated
 	RuleType string `pulumi:"ruleType"`
-	// The scope of the Governance rules. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+	// The fully qualified Azure Resource manager identifier of the resource.
 	Scope string `pulumi:"scope"`
 	// The governance rule source, what the rule affects, e.g. Assessments
 	SourceResourceType string `pulumi:"sourceResourceType"`
@@ -148,6 +159,8 @@ type governanceRuleArgs struct {
 
 // The set of arguments for constructing a GovernanceRule resource.
 type GovernanceRuleArgs struct {
+	// The governance rule conditionSets - see examples
+	ConditionSets pulumi.ArrayInput
 	// Description of the governance rule
 	Description pulumi.StringPtrInput
 	// Display name of the governance rule
@@ -172,7 +185,7 @@ type GovernanceRuleArgs struct {
 	RulePriority pulumi.IntInput
 	// The rule type of the governance rule, defines the source of the rule e.g. Integrated
 	RuleType pulumi.StringInput
-	// The scope of the Governance rules. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
+	// The fully qualified Azure Resource manager identifier of the resource.
 	Scope pulumi.StringInput
 	// The governance rule source, what the rule affects, e.g. Assessments
 	SourceResourceType pulumi.StringInput
@@ -213,6 +226,16 @@ func (o GovernanceRuleOutput) ToGovernanceRuleOutput() GovernanceRuleOutput {
 
 func (o GovernanceRuleOutput) ToGovernanceRuleOutputWithContext(ctx context.Context) GovernanceRuleOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o GovernanceRuleOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *GovernanceRule) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
+}
+
+// The governance rule conditionSets - see examples
+func (o GovernanceRuleOutput) ConditionSets() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *GovernanceRule) pulumi.ArrayOutput { return v.ConditionSets }).(pulumi.ArrayOutput)
 }
 
 // Description of the governance rule
@@ -257,7 +280,7 @@ func (o GovernanceRuleOutput) Metadata() GovernanceRuleMetadataResponsePtrOutput
 	return o.ApplyT(func(v *GovernanceRule) GovernanceRuleMetadataResponsePtrOutput { return v.Metadata }).(GovernanceRuleMetadataResponsePtrOutput)
 }
 
-// Resource name
+// The name of the resource
 func (o GovernanceRuleOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *GovernanceRule) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -287,12 +310,17 @@ func (o GovernanceRuleOutput) SourceResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *GovernanceRule) pulumi.StringOutput { return v.SourceResourceType }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o GovernanceRuleOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *GovernanceRule) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // The tenantId (GUID)
 func (o GovernanceRuleOutput) TenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GovernanceRule) pulumi.StringOutput { return v.TenantId }).(pulumi.StringOutput)
 }
 
-// Resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o GovernanceRuleOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *GovernanceRule) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

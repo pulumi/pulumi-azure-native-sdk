@@ -7,13 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-azure-native-sdk/v2/utilities"
+	"github.com/pulumi/pulumi-azure-native-sdk/v3/utilities"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get Database Migration resource.
 //
 // Uses Azure REST API version 2023-07-15-preview.
+//
+// Other available API versions: 2025-03-15-preview, 2025-06-30, 2025-09-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datamigration [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupDatabaseMigrationsMongoToCosmosDbRUMongo(ctx *pulumi.Context, args *LookupDatabaseMigrationsMongoToCosmosDbRUMongoArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseMigrationsMongoToCosmosDbRUMongoResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabaseMigrationsMongoToCosmosDbRUMongoResult
@@ -35,6 +37,8 @@ type LookupDatabaseMigrationsMongoToCosmosDbRUMongoArgs struct {
 
 // Database Migration Resource for Mongo to CosmosDb.
 type LookupDatabaseMigrationsMongoToCosmosDbRUMongoResult struct {
+	// The Azure API version of the resource.
+	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// List of Mongo Collections to be migrated.
 	CollectionList []MongoMigrationCollectionResponse `pulumi:"collectionList"`
 	// Database migration end time.
@@ -106,6 +110,11 @@ func (o LookupDatabaseMigrationsMongoToCosmosDbRUMongoResultOutput) ToLookupData
 
 func (o LookupDatabaseMigrationsMongoToCosmosDbRUMongoResultOutput) ToLookupDatabaseMigrationsMongoToCosmosDbRUMongoResultOutputWithContext(ctx context.Context) LookupDatabaseMigrationsMongoToCosmosDbRUMongoResultOutput {
 	return o
+}
+
+// The Azure API version of the resource.
+func (o LookupDatabaseMigrationsMongoToCosmosDbRUMongoResultOutput) AzureApiVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseMigrationsMongoToCosmosDbRUMongoResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
 // List of Mongo Collections to be migrated.
