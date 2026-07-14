@@ -125,6 +125,8 @@ type WebApp struct {
 	ScmSiteAlsoStopped pulumi.BoolPtrOutput `pulumi:"scmSiteAlsoStopped"`
 	// Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
 	ServerFarmId pulumi.StringPtrOutput `pulumi:"serverFarmId"`
+	// Configuration of an App Service app. This property is not returned in response to normal create and read requests since it may contain sensitive information.
+	SiteConfig SiteConfigResponsePtrOutput `pulumi:"siteConfig"`
 	// Current SKU of application based on associated App Service Plan. Some valid SKU values are Free, Shared, Basic, Dynamic, FlexConsumption, Standard, Premium, PremiumV2, PremiumV3, Isolated, IsolatedV2
 	Sku pulumi.StringOutput `pulumi:"sku"`
 	// Status of the last deployment slot swap operation.
@@ -769,6 +771,11 @@ func (o WebAppOutput) ScmSiteAlsoStopped() pulumi.BoolPtrOutput {
 // Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
 func (o WebAppOutput) ServerFarmId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebApp) pulumi.StringPtrOutput { return v.ServerFarmId }).(pulumi.StringPtrOutput)
+}
+
+// Configuration of an App Service app. This property is not returned in response to normal create and read requests since it may contain sensitive information.
+func (o WebAppOutput) SiteConfig() SiteConfigResponsePtrOutput {
+	return o.ApplyT(func(v *WebApp) SiteConfigResponsePtrOutput { return v.SiteConfig }).(SiteConfigResponsePtrOutput)
 }
 
 // Current SKU of application based on associated App Service Plan. Some valid SKU values are Free, Shared, Basic, Dynamic, FlexConsumption, Standard, Premium, PremiumV2, PremiumV3, Isolated, IsolatedV2

@@ -142,6 +142,8 @@ type LookupWebAppResult struct {
 	ScmSiteAlsoStopped *bool `pulumi:"scmSiteAlsoStopped"`
 	// Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
 	ServerFarmId *string `pulumi:"serverFarmId"`
+	// Configuration of an App Service app. This property is not returned in response to normal create and read requests since it may contain sensitive information.
+	SiteConfig *SiteConfigResponse `pulumi:"siteConfig"`
 	// Current SKU of application based on associated App Service Plan. Some valid SKU values are Free, Shared, Basic, Dynamic, FlexConsumption, Standard, Premium, PremiumV2, PremiumV3, Isolated, IsolatedV2
 	Sku string `pulumi:"sku"`
 	// Status of the last deployment slot swap operation.
@@ -195,6 +197,8 @@ func (val *LookupWebAppResult) Defaults() *LookupWebAppResult {
 		scmSiteAlsoStopped_ := false
 		tmp.ScmSiteAlsoStopped = &scmSiteAlsoStopped_
 	}
+	tmp.SiteConfig = tmp.SiteConfig.Defaults()
+
 	return &tmp
 }
 func LookupWebAppOutput(ctx *pulumi.Context, args LookupWebAppOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppResultOutput {
@@ -488,6 +492,11 @@ func (o LookupWebAppResultOutput) ScmSiteAlsoStopped() pulumi.BoolPtrOutput {
 // Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
 func (o LookupWebAppResultOutput) ServerFarmId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppResult) *string { return v.ServerFarmId }).(pulumi.StringPtrOutput)
+}
+
+// Configuration of an App Service app. This property is not returned in response to normal create and read requests since it may contain sensitive information.
+func (o LookupWebAppResultOutput) SiteConfig() SiteConfigResponsePtrOutput {
+	return o.ApplyT(func(v LookupWebAppResult) *SiteConfigResponse { return v.SiteConfig }).(SiteConfigResponsePtrOutput)
 }
 
 // Current SKU of application based on associated App Service Plan. Some valid SKU values are Free, Shared, Basic, Dynamic, FlexConsumption, Standard, Premium, PremiumV2, PremiumV3, Isolated, IsolatedV2
