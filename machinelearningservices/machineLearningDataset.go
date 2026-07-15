@@ -21,7 +21,7 @@ type MachineLearningDataset struct {
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The identity of the resource.
-	Identity IdentityResponseV1PtrOutput `pulumi:"identity"`
+	Identity IdentityResponsePtrOutput `pulumi:"identity"`
 	// Specifies the location of the resource.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Specifies the name of the resource.
@@ -176,8 +176,8 @@ func (o MachineLearningDatasetOutput) AzureApiVersion() pulumi.StringOutput {
 }
 
 // The identity of the resource.
-func (o MachineLearningDatasetOutput) Identity() IdentityResponseV1PtrOutput {
-	return o.ApplyT(func(v *MachineLearningDataset) IdentityResponseV1PtrOutput { return v.Identity }).(IdentityResponseV1PtrOutput)
+func (o MachineLearningDatasetOutput) Identity() IdentityResponsePtrOutput {
+	return o.ApplyT(func(v *MachineLearningDataset) IdentityResponsePtrOutput { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
 // Specifies the location of the resource.

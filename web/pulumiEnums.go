@@ -4568,6 +4568,172 @@ func (in *ipmodePtr) ToIPModePtrOutputWithContext(ctx context.Context) IPModePtr
 	return pulumi.ToOutputWithContext(ctx, in).(IPModePtrOutput)
 }
 
+// Type of the install script.
+type InstallScriptType string
+
+const (
+	InstallScriptTypeRemoteAzureBlob = InstallScriptType("RemoteAzureBlob")
+	InstallScriptTypePlatformStorage = InstallScriptType("PlatformStorage")
+)
+
+func (InstallScriptType) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstallScriptType)(nil)).Elem()
+}
+
+func (e InstallScriptType) ToInstallScriptTypeOutput() InstallScriptTypeOutput {
+	return pulumi.ToOutput(e).(InstallScriptTypeOutput)
+}
+
+func (e InstallScriptType) ToInstallScriptTypeOutputWithContext(ctx context.Context) InstallScriptTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(InstallScriptTypeOutput)
+}
+
+func (e InstallScriptType) ToInstallScriptTypePtrOutput() InstallScriptTypePtrOutput {
+	return e.ToInstallScriptTypePtrOutputWithContext(context.Background())
+}
+
+func (e InstallScriptType) ToInstallScriptTypePtrOutputWithContext(ctx context.Context) InstallScriptTypePtrOutput {
+	return InstallScriptType(e).ToInstallScriptTypeOutputWithContext(ctx).ToInstallScriptTypePtrOutputWithContext(ctx)
+}
+
+func (e InstallScriptType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InstallScriptType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InstallScriptType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e InstallScriptType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type InstallScriptTypeOutput struct{ *pulumi.OutputState }
+
+func (InstallScriptTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstallScriptType)(nil)).Elem()
+}
+
+func (o InstallScriptTypeOutput) ToInstallScriptTypeOutput() InstallScriptTypeOutput {
+	return o
+}
+
+func (o InstallScriptTypeOutput) ToInstallScriptTypeOutputWithContext(ctx context.Context) InstallScriptTypeOutput {
+	return o
+}
+
+func (o InstallScriptTypeOutput) ToInstallScriptTypePtrOutput() InstallScriptTypePtrOutput {
+	return o.ToInstallScriptTypePtrOutputWithContext(context.Background())
+}
+
+func (o InstallScriptTypeOutput) ToInstallScriptTypePtrOutputWithContext(ctx context.Context) InstallScriptTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstallScriptType) *InstallScriptType {
+		return &v
+	}).(InstallScriptTypePtrOutput)
+}
+
+func (o InstallScriptTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o InstallScriptTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstallScriptType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o InstallScriptTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstallScriptTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstallScriptType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstallScriptTypePtrOutput struct{ *pulumi.OutputState }
+
+func (InstallScriptTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstallScriptType)(nil)).Elem()
+}
+
+func (o InstallScriptTypePtrOutput) ToInstallScriptTypePtrOutput() InstallScriptTypePtrOutput {
+	return o
+}
+
+func (o InstallScriptTypePtrOutput) ToInstallScriptTypePtrOutputWithContext(ctx context.Context) InstallScriptTypePtrOutput {
+	return o
+}
+
+func (o InstallScriptTypePtrOutput) Elem() InstallScriptTypeOutput {
+	return o.ApplyT(func(v *InstallScriptType) InstallScriptType {
+		if v != nil {
+			return *v
+		}
+		var ret InstallScriptType
+		return ret
+	}).(InstallScriptTypeOutput)
+}
+
+func (o InstallScriptTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstallScriptTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InstallScriptType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// InstallScriptTypeInput is an input type that accepts values of the InstallScriptType enum
+// A concrete instance of `InstallScriptTypeInput` can be one of the following:
+//
+//	InstallScriptTypeRemoteAzureBlob
+//	InstallScriptTypePlatformStorage
+type InstallScriptTypeInput interface {
+	pulumi.Input
+
+	ToInstallScriptTypeOutput() InstallScriptTypeOutput
+	ToInstallScriptTypeOutputWithContext(context.Context) InstallScriptTypeOutput
+}
+
+var installScriptTypePtrType = reflect.TypeOf((**InstallScriptType)(nil)).Elem()
+
+type InstallScriptTypePtrInput interface {
+	pulumi.Input
+
+	ToInstallScriptTypePtrOutput() InstallScriptTypePtrOutput
+	ToInstallScriptTypePtrOutputWithContext(context.Context) InstallScriptTypePtrOutput
+}
+
+type installScriptTypePtr string
+
+func InstallScriptTypePtr(v string) InstallScriptTypePtrInput {
+	return (*installScriptTypePtr)(&v)
+}
+
+func (*installScriptTypePtr) ElementType() reflect.Type {
+	return installScriptTypePtrType
+}
+
+func (in *installScriptTypePtr) ToInstallScriptTypePtrOutput() InstallScriptTypePtrOutput {
+	return pulumi.ToOutput(in).(InstallScriptTypePtrOutput)
+}
+
+func (in *installScriptTypePtr) ToInstallScriptTypePtrOutputWithContext(ctx context.Context) InstallScriptTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(InstallScriptTypePtrOutput)
+}
+
 // Defines what this IP filter will be used for. This is to support IP filtering on proxies.
 type IpFilterTag string
 
@@ -5414,6 +5580,170 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
 }
 
+// The method that should be used to authenticate the user.
+type Method string
+
+const (
+	MethodClientSecretPost = Method("ClientSecretPost")
+)
+
+func (Method) ElementType() reflect.Type {
+	return reflect.TypeOf((*Method)(nil)).Elem()
+}
+
+func (e Method) ToMethodOutput() MethodOutput {
+	return pulumi.ToOutput(e).(MethodOutput)
+}
+
+func (e Method) ToMethodOutputWithContext(ctx context.Context) MethodOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MethodOutput)
+}
+
+func (e Method) ToMethodPtrOutput() MethodPtrOutput {
+	return e.ToMethodPtrOutputWithContext(context.Background())
+}
+
+func (e Method) ToMethodPtrOutputWithContext(ctx context.Context) MethodPtrOutput {
+	return Method(e).ToMethodOutputWithContext(ctx).ToMethodPtrOutputWithContext(ctx)
+}
+
+func (e Method) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e Method) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e Method) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e Method) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MethodOutput struct{ *pulumi.OutputState }
+
+func (MethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Method)(nil)).Elem()
+}
+
+func (o MethodOutput) ToMethodOutput() MethodOutput {
+	return o
+}
+
+func (o MethodOutput) ToMethodOutputWithContext(ctx context.Context) MethodOutput {
+	return o
+}
+
+func (o MethodOutput) ToMethodPtrOutput() MethodPtrOutput {
+	return o.ToMethodPtrOutputWithContext(context.Background())
+}
+
+func (o MethodOutput) ToMethodPtrOutputWithContext(ctx context.Context) MethodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Method) *Method {
+		return &v
+	}).(MethodPtrOutput)
+}
+
+func (o MethodOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MethodOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e Method) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MethodOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MethodOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e Method) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MethodPtrOutput struct{ *pulumi.OutputState }
+
+func (MethodPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Method)(nil)).Elem()
+}
+
+func (o MethodPtrOutput) ToMethodPtrOutput() MethodPtrOutput {
+	return o
+}
+
+func (o MethodPtrOutput) ToMethodPtrOutputWithContext(ctx context.Context) MethodPtrOutput {
+	return o
+}
+
+func (o MethodPtrOutput) Elem() MethodOutput {
+	return o.ApplyT(func(v *Method) Method {
+		if v != nil {
+			return *v
+		}
+		var ret Method
+		return ret
+	}).(MethodOutput)
+}
+
+func (o MethodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MethodPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *Method) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// MethodInput is an input type that accepts values of the Method enum
+// A concrete instance of `MethodInput` can be one of the following:
+//
+//	MethodClientSecretPost
+type MethodInput interface {
+	pulumi.Input
+
+	ToMethodOutput() MethodOutput
+	ToMethodOutputWithContext(context.Context) MethodOutput
+}
+
+var methodPtrType = reflect.TypeOf((**Method)(nil)).Elem()
+
+type MethodPtrInput interface {
+	pulumi.Input
+
+	ToMethodPtrOutput() MethodPtrOutput
+	ToMethodPtrOutputWithContext(context.Context) MethodPtrOutput
+}
+
+type methodPtr string
+
+func MethodPtr(v string) MethodPtrInput {
+	return (*methodPtr)(&v)
+}
+
+func (*methodPtr) ElementType() reflect.Type {
+	return methodPtrType
+}
+
+func (in *methodPtr) ToMethodPtrOutput() MethodPtrOutput {
+	return pulumi.ToOutput(in).(MethodPtrOutput)
+}
+
+func (in *methodPtr) ToMethodPtrOutputWithContext(ctx context.Context) MethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MethodPtrOutput)
+}
+
 // Public Certificate Location
 type PublicCertificateLocation string
 
@@ -5752,6 +6082,180 @@ func (in *redundancyModePtr) ToRedundancyModePtrOutput() RedundancyModePtrOutput
 
 func (in *redundancyModePtr) ToRedundancyModePtrOutputWithContext(ctx context.Context) RedundancyModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RedundancyModePtrOutput)
+}
+
+// Type of the registry adapter.
+type RegistryAdapterType string
+
+const (
+	RegistryAdapterTypeBinary         = RegistryAdapterType("Binary")
+	RegistryAdapterTypeString         = RegistryAdapterType("String")
+	RegistryAdapterType_Expand_String = RegistryAdapterType("Expand_String")
+	RegistryAdapterType_Multi_String  = RegistryAdapterType("Multi_String")
+	RegistryAdapterTypeDWord          = RegistryAdapterType("DWord")
+	RegistryAdapterTypeQWord          = RegistryAdapterType("QWord")
+)
+
+func (RegistryAdapterType) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryAdapterType)(nil)).Elem()
+}
+
+func (e RegistryAdapterType) ToRegistryAdapterTypeOutput() RegistryAdapterTypeOutput {
+	return pulumi.ToOutput(e).(RegistryAdapterTypeOutput)
+}
+
+func (e RegistryAdapterType) ToRegistryAdapterTypeOutputWithContext(ctx context.Context) RegistryAdapterTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RegistryAdapterTypeOutput)
+}
+
+func (e RegistryAdapterType) ToRegistryAdapterTypePtrOutput() RegistryAdapterTypePtrOutput {
+	return e.ToRegistryAdapterTypePtrOutputWithContext(context.Background())
+}
+
+func (e RegistryAdapterType) ToRegistryAdapterTypePtrOutputWithContext(ctx context.Context) RegistryAdapterTypePtrOutput {
+	return RegistryAdapterType(e).ToRegistryAdapterTypeOutputWithContext(ctx).ToRegistryAdapterTypePtrOutputWithContext(ctx)
+}
+
+func (e RegistryAdapterType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegistryAdapterType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegistryAdapterType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RegistryAdapterType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RegistryAdapterTypeOutput struct{ *pulumi.OutputState }
+
+func (RegistryAdapterTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryAdapterType)(nil)).Elem()
+}
+
+func (o RegistryAdapterTypeOutput) ToRegistryAdapterTypeOutput() RegistryAdapterTypeOutput {
+	return o
+}
+
+func (o RegistryAdapterTypeOutput) ToRegistryAdapterTypeOutputWithContext(ctx context.Context) RegistryAdapterTypeOutput {
+	return o
+}
+
+func (o RegistryAdapterTypeOutput) ToRegistryAdapterTypePtrOutput() RegistryAdapterTypePtrOutput {
+	return o.ToRegistryAdapterTypePtrOutputWithContext(context.Background())
+}
+
+func (o RegistryAdapterTypeOutput) ToRegistryAdapterTypePtrOutputWithContext(ctx context.Context) RegistryAdapterTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegistryAdapterType) *RegistryAdapterType {
+		return &v
+	}).(RegistryAdapterTypePtrOutput)
+}
+
+func (o RegistryAdapterTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RegistryAdapterTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegistryAdapterType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RegistryAdapterTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegistryAdapterTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegistryAdapterType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegistryAdapterTypePtrOutput struct{ *pulumi.OutputState }
+
+func (RegistryAdapterTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegistryAdapterType)(nil)).Elem()
+}
+
+func (o RegistryAdapterTypePtrOutput) ToRegistryAdapterTypePtrOutput() RegistryAdapterTypePtrOutput {
+	return o
+}
+
+func (o RegistryAdapterTypePtrOutput) ToRegistryAdapterTypePtrOutputWithContext(ctx context.Context) RegistryAdapterTypePtrOutput {
+	return o
+}
+
+func (o RegistryAdapterTypePtrOutput) Elem() RegistryAdapterTypeOutput {
+	return o.ApplyT(func(v *RegistryAdapterType) RegistryAdapterType {
+		if v != nil {
+			return *v
+		}
+		var ret RegistryAdapterType
+		return ret
+	}).(RegistryAdapterTypeOutput)
+}
+
+func (o RegistryAdapterTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegistryAdapterTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RegistryAdapterType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RegistryAdapterTypeInput is an input type that accepts values of the RegistryAdapterType enum
+// A concrete instance of `RegistryAdapterTypeInput` can be one of the following:
+//
+//	RegistryAdapterTypeBinary
+//	RegistryAdapterTypeString
+//	RegistryAdapterType_Expand_String
+//	RegistryAdapterType_Multi_String
+//	RegistryAdapterTypeDWord
+//	RegistryAdapterTypeQWord
+type RegistryAdapterTypeInput interface {
+	pulumi.Input
+
+	ToRegistryAdapterTypeOutput() RegistryAdapterTypeOutput
+	ToRegistryAdapterTypeOutputWithContext(context.Context) RegistryAdapterTypeOutput
+}
+
+var registryAdapterTypePtrType = reflect.TypeOf((**RegistryAdapterType)(nil)).Elem()
+
+type RegistryAdapterTypePtrInput interface {
+	pulumi.Input
+
+	ToRegistryAdapterTypePtrOutput() RegistryAdapterTypePtrOutput
+	ToRegistryAdapterTypePtrOutputWithContext(context.Context) RegistryAdapterTypePtrOutput
+}
+
+type registryAdapterTypePtr string
+
+func RegistryAdapterTypePtr(v string) RegistryAdapterTypePtrInput {
+	return (*registryAdapterTypePtr)(&v)
+}
+
+func (*registryAdapterTypePtr) ElementType() reflect.Type {
+	return registryAdapterTypePtrType
+}
+
+func (in *registryAdapterTypePtr) ToRegistryAdapterTypePtrOutput() RegistryAdapterTypePtrOutput {
+	return pulumi.ToOutput(in).(RegistryAdapterTypePtrOutput)
+}
+
+func (in *registryAdapterTypePtr) ToRegistryAdapterTypePtrOutputWithContext(ctx context.Context) RegistryAdapterTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RegistryAdapterTypePtrOutput)
 }
 
 // The type of route this is:
@@ -6467,6 +6971,176 @@ func (in *siteLoadBalancingPtr) ToSiteLoadBalancingPtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(SiteLoadBalancingPtrOutput)
 }
 
+// Function app site update strategy type. Available options: Recreate, RollingUpdate
+type SiteUpdateStrategyType string
+
+const (
+	// If the app is under load and a deployment or site state update occurs, all pods will be removed
+	// and will need to be Recreated all at once. This is the default behavior.
+	SiteUpdateStrategyTypeRecreate = SiteUpdateStrategyType("Recreate")
+	// If the app is under load and a deployment or site state update occurs, pods will be drained in
+	// batches and gradually replaced, thus minimizing impact to throughput.
+	SiteUpdateStrategyTypeRollingUpdate = SiteUpdateStrategyType("RollingUpdate")
+)
+
+func (SiteUpdateStrategyType) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteUpdateStrategyType)(nil)).Elem()
+}
+
+func (e SiteUpdateStrategyType) ToSiteUpdateStrategyTypeOutput() SiteUpdateStrategyTypeOutput {
+	return pulumi.ToOutput(e).(SiteUpdateStrategyTypeOutput)
+}
+
+func (e SiteUpdateStrategyType) ToSiteUpdateStrategyTypeOutputWithContext(ctx context.Context) SiteUpdateStrategyTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SiteUpdateStrategyTypeOutput)
+}
+
+func (e SiteUpdateStrategyType) ToSiteUpdateStrategyTypePtrOutput() SiteUpdateStrategyTypePtrOutput {
+	return e.ToSiteUpdateStrategyTypePtrOutputWithContext(context.Background())
+}
+
+func (e SiteUpdateStrategyType) ToSiteUpdateStrategyTypePtrOutputWithContext(ctx context.Context) SiteUpdateStrategyTypePtrOutput {
+	return SiteUpdateStrategyType(e).ToSiteUpdateStrategyTypeOutputWithContext(ctx).ToSiteUpdateStrategyTypePtrOutputWithContext(ctx)
+}
+
+func (e SiteUpdateStrategyType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SiteUpdateStrategyType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SiteUpdateStrategyType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SiteUpdateStrategyType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SiteUpdateStrategyTypeOutput struct{ *pulumi.OutputState }
+
+func (SiteUpdateStrategyTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SiteUpdateStrategyType)(nil)).Elem()
+}
+
+func (o SiteUpdateStrategyTypeOutput) ToSiteUpdateStrategyTypeOutput() SiteUpdateStrategyTypeOutput {
+	return o
+}
+
+func (o SiteUpdateStrategyTypeOutput) ToSiteUpdateStrategyTypeOutputWithContext(ctx context.Context) SiteUpdateStrategyTypeOutput {
+	return o
+}
+
+func (o SiteUpdateStrategyTypeOutput) ToSiteUpdateStrategyTypePtrOutput() SiteUpdateStrategyTypePtrOutput {
+	return o.ToSiteUpdateStrategyTypePtrOutputWithContext(context.Background())
+}
+
+func (o SiteUpdateStrategyTypeOutput) ToSiteUpdateStrategyTypePtrOutputWithContext(ctx context.Context) SiteUpdateStrategyTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SiteUpdateStrategyType) *SiteUpdateStrategyType {
+		return &v
+	}).(SiteUpdateStrategyTypePtrOutput)
+}
+
+func (o SiteUpdateStrategyTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SiteUpdateStrategyTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SiteUpdateStrategyType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SiteUpdateStrategyTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SiteUpdateStrategyTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SiteUpdateStrategyType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SiteUpdateStrategyTypePtrOutput struct{ *pulumi.OutputState }
+
+func (SiteUpdateStrategyTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SiteUpdateStrategyType)(nil)).Elem()
+}
+
+func (o SiteUpdateStrategyTypePtrOutput) ToSiteUpdateStrategyTypePtrOutput() SiteUpdateStrategyTypePtrOutput {
+	return o
+}
+
+func (o SiteUpdateStrategyTypePtrOutput) ToSiteUpdateStrategyTypePtrOutputWithContext(ctx context.Context) SiteUpdateStrategyTypePtrOutput {
+	return o
+}
+
+func (o SiteUpdateStrategyTypePtrOutput) Elem() SiteUpdateStrategyTypeOutput {
+	return o.ApplyT(func(v *SiteUpdateStrategyType) SiteUpdateStrategyType {
+		if v != nil {
+			return *v
+		}
+		var ret SiteUpdateStrategyType
+		return ret
+	}).(SiteUpdateStrategyTypeOutput)
+}
+
+func (o SiteUpdateStrategyTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SiteUpdateStrategyTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SiteUpdateStrategyType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SiteUpdateStrategyTypeInput is an input type that accepts values of the SiteUpdateStrategyType enum
+// A concrete instance of `SiteUpdateStrategyTypeInput` can be one of the following:
+//
+//	SiteUpdateStrategyTypeRecreate
+//	SiteUpdateStrategyTypeRollingUpdate
+type SiteUpdateStrategyTypeInput interface {
+	pulumi.Input
+
+	ToSiteUpdateStrategyTypeOutput() SiteUpdateStrategyTypeOutput
+	ToSiteUpdateStrategyTypeOutputWithContext(context.Context) SiteUpdateStrategyTypeOutput
+}
+
+var siteUpdateStrategyTypePtrType = reflect.TypeOf((**SiteUpdateStrategyType)(nil)).Elem()
+
+type SiteUpdateStrategyTypePtrInput interface {
+	pulumi.Input
+
+	ToSiteUpdateStrategyTypePtrOutput() SiteUpdateStrategyTypePtrOutput
+	ToSiteUpdateStrategyTypePtrOutputWithContext(context.Context) SiteUpdateStrategyTypePtrOutput
+}
+
+type siteUpdateStrategyTypePtr string
+
+func SiteUpdateStrategyTypePtr(v string) SiteUpdateStrategyTypePtrInput {
+	return (*siteUpdateStrategyTypePtr)(&v)
+}
+
+func (*siteUpdateStrategyTypePtr) ElementType() reflect.Type {
+	return siteUpdateStrategyTypePtrType
+}
+
+func (in *siteUpdateStrategyTypePtr) ToSiteUpdateStrategyTypePtrOutput() SiteUpdateStrategyTypePtrOutput {
+	return pulumi.ToOutput(in).(SiteUpdateStrategyTypePtrOutput)
+}
+
+func (in *siteUpdateStrategyTypePtr) ToSiteUpdateStrategyTypePtrOutputWithContext(ctx context.Context) SiteUpdateStrategyTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SiteUpdateStrategyTypePtrOutput)
+}
+
 // SSL type.
 type SslState string
 
@@ -6799,6 +7473,174 @@ func (in *stagingEnvironmentPolicyPtr) ToStagingEnvironmentPolicyPtrOutput() Sta
 
 func (in *stagingEnvironmentPolicyPtr) ToStagingEnvironmentPolicyPtrOutputWithContext(ctx context.Context) StagingEnvironmentPolicyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(StagingEnvironmentPolicyPtrOutput)
+}
+
+// Type of the storage mount.
+type StorageMountType string
+
+const (
+	StorageMountTypeAzureFiles   = StorageMountType("AzureFiles")
+	StorageMountTypeLocalStorage = StorageMountType("LocalStorage")
+	StorageMountTypeFileShare    = StorageMountType("FileShare")
+)
+
+func (StorageMountType) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageMountType)(nil)).Elem()
+}
+
+func (e StorageMountType) ToStorageMountTypeOutput() StorageMountTypeOutput {
+	return pulumi.ToOutput(e).(StorageMountTypeOutput)
+}
+
+func (e StorageMountType) ToStorageMountTypeOutputWithContext(ctx context.Context) StorageMountTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(StorageMountTypeOutput)
+}
+
+func (e StorageMountType) ToStorageMountTypePtrOutput() StorageMountTypePtrOutput {
+	return e.ToStorageMountTypePtrOutputWithContext(context.Background())
+}
+
+func (e StorageMountType) ToStorageMountTypePtrOutputWithContext(ctx context.Context) StorageMountTypePtrOutput {
+	return StorageMountType(e).ToStorageMountTypeOutputWithContext(ctx).ToStorageMountTypePtrOutputWithContext(ctx)
+}
+
+func (e StorageMountType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StorageMountType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e StorageMountType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e StorageMountType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type StorageMountTypeOutput struct{ *pulumi.OutputState }
+
+func (StorageMountTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageMountType)(nil)).Elem()
+}
+
+func (o StorageMountTypeOutput) ToStorageMountTypeOutput() StorageMountTypeOutput {
+	return o
+}
+
+func (o StorageMountTypeOutput) ToStorageMountTypeOutputWithContext(ctx context.Context) StorageMountTypeOutput {
+	return o
+}
+
+func (o StorageMountTypeOutput) ToStorageMountTypePtrOutput() StorageMountTypePtrOutput {
+	return o.ToStorageMountTypePtrOutputWithContext(context.Background())
+}
+
+func (o StorageMountTypeOutput) ToStorageMountTypePtrOutputWithContext(ctx context.Context) StorageMountTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StorageMountType) *StorageMountType {
+		return &v
+	}).(StorageMountTypePtrOutput)
+}
+
+func (o StorageMountTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o StorageMountTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StorageMountType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o StorageMountTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StorageMountTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e StorageMountType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type StorageMountTypePtrOutput struct{ *pulumi.OutputState }
+
+func (StorageMountTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StorageMountType)(nil)).Elem()
+}
+
+func (o StorageMountTypePtrOutput) ToStorageMountTypePtrOutput() StorageMountTypePtrOutput {
+	return o
+}
+
+func (o StorageMountTypePtrOutput) ToStorageMountTypePtrOutputWithContext(ctx context.Context) StorageMountTypePtrOutput {
+	return o
+}
+
+func (o StorageMountTypePtrOutput) Elem() StorageMountTypeOutput {
+	return o.ApplyT(func(v *StorageMountType) StorageMountType {
+		if v != nil {
+			return *v
+		}
+		var ret StorageMountType
+		return ret
+	}).(StorageMountTypeOutput)
+}
+
+func (o StorageMountTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o StorageMountTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *StorageMountType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// StorageMountTypeInput is an input type that accepts values of the StorageMountType enum
+// A concrete instance of `StorageMountTypeInput` can be one of the following:
+//
+//	StorageMountTypeAzureFiles
+//	StorageMountTypeLocalStorage
+//	StorageMountTypeFileShare
+type StorageMountTypeInput interface {
+	pulumi.Input
+
+	ToStorageMountTypeOutput() StorageMountTypeOutput
+	ToStorageMountTypeOutputWithContext(context.Context) StorageMountTypeOutput
+}
+
+var storageMountTypePtrType = reflect.TypeOf((**StorageMountType)(nil)).Elem()
+
+type StorageMountTypePtrInput interface {
+	pulumi.Input
+
+	ToStorageMountTypePtrOutput() StorageMountTypePtrOutput
+	ToStorageMountTypePtrOutputWithContext(context.Context) StorageMountTypePtrOutput
+}
+
+type storageMountTypePtr string
+
+func StorageMountTypePtr(v string) StorageMountTypePtrInput {
+	return (*storageMountTypePtr)(&v)
+}
+
+func (*storageMountTypePtr) ElementType() reflect.Type {
+	return storageMountTypePtrType
+}
+
+func (in *storageMountTypePtr) ToStorageMountTypePtrOutput() StorageMountTypePtrOutput {
+	return pulumi.ToOutput(in).(StorageMountTypePtrOutput)
+}
+
+func (in *storageMountTypePtr) ToStorageMountTypePtrOutputWithContext(ctx context.Context) StorageMountTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(StorageMountTypePtrOutput)
 }
 
 type StorageType string
@@ -8065,6 +8907,8 @@ func init() {
 	pulumi.RegisterOutputType(HostTypePtrOutput{})
 	pulumi.RegisterOutputType(IPModeOutput{})
 	pulumi.RegisterOutputType(IPModePtrOutput{})
+	pulumi.RegisterOutputType(InstallScriptTypeOutput{})
+	pulumi.RegisterOutputType(InstallScriptTypePtrOutput{})
 	pulumi.RegisterOutputType(IpFilterTagOutput{})
 	pulumi.RegisterOutputType(IpFilterTagPtrOutput{})
 	pulumi.RegisterOutputType(LoadBalancingModeOutput{})
@@ -8075,10 +8919,14 @@ func init() {
 	pulumi.RegisterOutputType(ManagedPipelineModePtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(MethodOutput{})
+	pulumi.RegisterOutputType(MethodPtrOutput{})
 	pulumi.RegisterOutputType(PublicCertificateLocationOutput{})
 	pulumi.RegisterOutputType(PublicCertificateLocationPtrOutput{})
 	pulumi.RegisterOutputType(RedundancyModeOutput{})
 	pulumi.RegisterOutputType(RedundancyModePtrOutput{})
+	pulumi.RegisterOutputType(RegistryAdapterTypeOutput{})
+	pulumi.RegisterOutputType(RegistryAdapterTypePtrOutput{})
 	pulumi.RegisterOutputType(RouteTypeOutput{})
 	pulumi.RegisterOutputType(RouteTypePtrOutput{})
 	pulumi.RegisterOutputType(RuntimeNameOutput{})
@@ -8087,10 +8935,14 @@ func init() {
 	pulumi.RegisterOutputType(ScmTypePtrOutput{})
 	pulumi.RegisterOutputType(SiteLoadBalancingOutput{})
 	pulumi.RegisterOutputType(SiteLoadBalancingPtrOutput{})
+	pulumi.RegisterOutputType(SiteUpdateStrategyTypeOutput{})
+	pulumi.RegisterOutputType(SiteUpdateStrategyTypePtrOutput{})
 	pulumi.RegisterOutputType(SslStateOutput{})
 	pulumi.RegisterOutputType(SslStatePtrOutput{})
 	pulumi.RegisterOutputType(StagingEnvironmentPolicyOutput{})
 	pulumi.RegisterOutputType(StagingEnvironmentPolicyPtrOutput{})
+	pulumi.RegisterOutputType(StorageMountTypeOutput{})
+	pulumi.RegisterOutputType(StorageMountTypePtrOutput{})
 	pulumi.RegisterOutputType(StorageTypeOutput{})
 	pulumi.RegisterOutputType(StorageTypePtrOutput{})
 	pulumi.RegisterOutputType(SupportedTlsVersionsOutput{})

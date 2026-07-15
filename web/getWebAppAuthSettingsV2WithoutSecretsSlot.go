@@ -11,11 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Configuration settings for the Azure App Service Authentication / Authorization V2 feature.
+// Gets site's Authentication / Authorization settings for apps via the V2 format
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2025-05-01.
 //
-// Other available API versions: 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWebAppAuthSettingsV2WithoutSecretsSlot(ctx *pulumi.Context, args *LookupWebAppAuthSettingsV2WithoutSecretsSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppAuthSettingsV2WithoutSecretsSlotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppAuthSettingsV2WithoutSecretsSlotResult
@@ -29,7 +29,7 @@ func LookupWebAppAuthSettingsV2WithoutSecretsSlot(ctx *pulumi.Context, args *Loo
 type LookupWebAppAuthSettingsV2WithoutSecretsSlotArgs struct {
 	// Name of the app.
 	Name string `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of the deployment slot. If a slot is not specified, the API will get the settings for the production slot.
 	Slot string `pulumi:"slot"`
@@ -43,19 +43,21 @@ type LookupWebAppAuthSettingsV2WithoutSecretsSlotResult struct {
 	GlobalValidation *GlobalValidationResponse `pulumi:"globalValidation"`
 	// The configuration settings of the HTTP requests for authentication and authorization requests made against App Service Authentication/Authorization.
 	HttpSettings *HttpSettingsResponse `pulumi:"httpSettings"`
-	// Resource Id.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The configuration settings of each of the identity providers used to configure App Service Authentication/Authorization.
 	IdentityProviders *IdentityProvidersResponse `pulumi:"identityProviders"`
-	// Kind of resource.
+	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind *string `pulumi:"kind"`
 	// The configuration settings of the login flow of users using App Service Authentication/Authorization.
 	Login *LoginResponse `pulumi:"login"`
-	// Resource Name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The configuration settings of the platform of App Service Authentication/Authorization.
 	Platform *AuthPlatformResponse `pulumi:"platform"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -71,7 +73,7 @@ func LookupWebAppAuthSettingsV2WithoutSecretsSlotOutput(ctx *pulumi.Context, arg
 type LookupWebAppAuthSettingsV2WithoutSecretsSlotOutputArgs struct {
 	// Name of the app.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Name of the deployment slot. If a slot is not specified, the API will get the settings for the production slot.
 	Slot pulumi.StringInput `pulumi:"slot"`
@@ -115,7 +117,7 @@ func (o LookupWebAppAuthSettingsV2WithoutSecretsSlotResultOutput) HttpSettings()
 	}).(HttpSettingsResponsePtrOutput)
 }
 
-// Resource Id.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupWebAppAuthSettingsV2WithoutSecretsSlotResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppAuthSettingsV2WithoutSecretsSlotResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -127,7 +129,7 @@ func (o LookupWebAppAuthSettingsV2WithoutSecretsSlotResultOutput) IdentityProvid
 	}).(IdentityProvidersResponsePtrOutput)
 }
 
-// Kind of resource.
+// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 func (o LookupWebAppAuthSettingsV2WithoutSecretsSlotResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppAuthSettingsV2WithoutSecretsSlotResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -137,7 +139,7 @@ func (o LookupWebAppAuthSettingsV2WithoutSecretsSlotResultOutput) Login() LoginR
 	return o.ApplyT(func(v LookupWebAppAuthSettingsV2WithoutSecretsSlotResult) *LoginResponse { return v.Login }).(LoginResponsePtrOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o LookupWebAppAuthSettingsV2WithoutSecretsSlotResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppAuthSettingsV2WithoutSecretsSlotResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -147,7 +149,12 @@ func (o LookupWebAppAuthSettingsV2WithoutSecretsSlotResultOutput) Platform() Aut
 	return o.ApplyT(func(v LookupWebAppAuthSettingsV2WithoutSecretsSlotResult) *AuthPlatformResponse { return v.Platform }).(AuthPlatformResponsePtrOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupWebAppAuthSettingsV2WithoutSecretsSlotResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupWebAppAuthSettingsV2WithoutSecretsSlotResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupWebAppAuthSettingsV2WithoutSecretsSlotResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppAuthSettingsV2WithoutSecretsSlotResult) string { return v.Type }).(pulumi.StringOutput)
 }

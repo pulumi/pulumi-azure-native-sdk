@@ -13,9 +13,9 @@ import (
 
 // Description for Gets a virtual network the app (or deployment slot) is connected to by name.
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2025-05-01.
 //
-// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWebAppVnetConnection(ctx *pulumi.Context, args *LookupWebAppVnetConnectionArgs, opts ...pulumi.InvokeOption) (*LookupWebAppVnetConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppVnetConnectionResult
@@ -29,7 +29,7 @@ func LookupWebAppVnetConnection(ctx *pulumi.Context, args *LookupWebAppVnetConne
 type LookupWebAppVnetConnectionArgs struct {
 	// Name of the app.
 	Name string `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of the virtual network.
 	VnetName string `pulumi:"vnetName"`
@@ -39,26 +39,27 @@ type LookupWebAppVnetConnectionArgs struct {
 type LookupWebAppVnetConnectionResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// A certificate file (.cer) blob containing the public key of the private key used to authenticate a
-	// Point-To-Site VPN connection.
+	// A certificate file (.cer) blob containing the public key of the private key used to authenticate a \nPoint-To-Site VPN connection.
 	CertBlob *string `pulumi:"certBlob"`
 	// The client certificate thumbprint.
 	CertThumbprint string `pulumi:"certThumbprint"`
 	// DNS servers to be used by this Virtual Network. This should be a comma-separated list of IP addresses.
 	DnsServers *string `pulumi:"dnsServers"`
-	// Resource Id.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Flag that is used to denote if this is VNET injection
 	IsSwift *bool `pulumi:"isSwift"`
 	// Kind of resource.
 	Kind *string `pulumi:"kind"`
-	// Resource Name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// <code>true</code> if a resync is required; otherwise, <code>false</code>.
 	ResyncRequired bool `pulumi:"resyncRequired"`
 	// The routes that this Virtual Network connection uses.
 	Routes []VnetRouteResponse `pulumi:"routes"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The Virtual Network's resource ID.
 	VnetResourceId *string `pulumi:"vnetResourceId"`
@@ -76,7 +77,7 @@ func LookupWebAppVnetConnectionOutput(ctx *pulumi.Context, args LookupWebAppVnet
 type LookupWebAppVnetConnectionOutputArgs struct {
 	// Name of the app.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Name of the virtual network.
 	VnetName pulumi.StringInput `pulumi:"vnetName"`
@@ -106,8 +107,7 @@ func (o LookupWebAppVnetConnectionResultOutput) AzureApiVersion() pulumi.StringO
 	return o.ApplyT(func(v LookupWebAppVnetConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// A certificate file (.cer) blob containing the public key of the private key used to authenticate a
-// Point-To-Site VPN connection.
+// A certificate file (.cer) blob containing the public key of the private key used to authenticate a \nPoint-To-Site VPN connection.
 func (o LookupWebAppVnetConnectionResultOutput) CertBlob() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppVnetConnectionResult) *string { return v.CertBlob }).(pulumi.StringPtrOutput)
 }
@@ -122,7 +122,7 @@ func (o LookupWebAppVnetConnectionResultOutput) DnsServers() pulumi.StringPtrOut
 	return o.ApplyT(func(v LookupWebAppVnetConnectionResult) *string { return v.DnsServers }).(pulumi.StringPtrOutput)
 }
 
-// Resource Id.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupWebAppVnetConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppVnetConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -137,7 +137,7 @@ func (o LookupWebAppVnetConnectionResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppVnetConnectionResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o LookupWebAppVnetConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppVnetConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -152,7 +152,12 @@ func (o LookupWebAppVnetConnectionResultOutput) Routes() VnetRouteResponseArrayO
 	return o.ApplyT(func(v LookupWebAppVnetConnectionResult) []VnetRouteResponse { return v.Routes }).(VnetRouteResponseArrayOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupWebAppVnetConnectionResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupWebAppVnetConnectionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupWebAppVnetConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppVnetConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }
