@@ -13,9 +13,9 @@ import (
 
 // Description for Get function information by its ID for web site, or a deployment slot.
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2025-05-01.
 //
-// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWebAppFunction(ctx *pulumi.Context, args *LookupWebAppFunctionArgs, opts ...pulumi.InvokeOption) (*LookupWebAppFunctionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppFunctionResult
@@ -31,7 +31,7 @@ type LookupWebAppFunctionArgs struct {
 	FunctionName string `pulumi:"functionName"`
 	// Site name.
 	Name string `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -49,7 +49,7 @@ type LookupWebAppFunctionResult struct {
 	FunctionAppId *string `pulumi:"functionAppId"`
 	// Function URI.
 	Href *string `pulumi:"href"`
-	// Resource Id.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The invocation URL
 	InvokeUrlTemplate *string `pulumi:"invokeUrlTemplate"`
@@ -59,7 +59,7 @@ type LookupWebAppFunctionResult struct {
 	Kind *string `pulumi:"kind"`
 	// The function language
 	Language *string `pulumi:"language"`
-	// Resource Name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Script URI.
 	ScriptHref *string `pulumi:"scriptHref"`
@@ -67,11 +67,13 @@ type LookupWebAppFunctionResult struct {
 	ScriptRootPathHref *string `pulumi:"scriptRootPathHref"`
 	// Secrets file URI.
 	SecretsFileHref *string `pulumi:"secretsFileHref"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Test data used when testing via the Azure Portal.
 	TestData *string `pulumi:"testData"`
 	// Test data URI.
 	TestDataHref *string `pulumi:"testDataHref"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -89,7 +91,7 @@ type LookupWebAppFunctionOutputArgs struct {
 	FunctionName pulumi.StringInput `pulumi:"functionName"`
 	// Site name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -142,7 +144,7 @@ func (o LookupWebAppFunctionResultOutput) Href() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppFunctionResult) *string { return v.Href }).(pulumi.StringPtrOutput)
 }
 
-// Resource Id.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupWebAppFunctionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppFunctionResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -167,7 +169,7 @@ func (o LookupWebAppFunctionResultOutput) Language() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppFunctionResult) *string { return v.Language }).(pulumi.StringPtrOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o LookupWebAppFunctionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppFunctionResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -187,6 +189,11 @@ func (o LookupWebAppFunctionResultOutput) SecretsFileHref() pulumi.StringPtrOutp
 	return o.ApplyT(func(v LookupWebAppFunctionResult) *string { return v.SecretsFileHref }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupWebAppFunctionResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupWebAppFunctionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Test data used when testing via the Azure Portal.
 func (o LookupWebAppFunctionResultOutput) TestData() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppFunctionResult) *string { return v.TestData }).(pulumi.StringPtrOutput)
@@ -197,7 +204,7 @@ func (o LookupWebAppFunctionResultOutput) TestDataHref() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v LookupWebAppFunctionResult) *string { return v.TestDataHref }).(pulumi.StringPtrOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupWebAppFunctionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppFunctionResult) string { return v.Type }).(pulumi.StringOutput)
 }

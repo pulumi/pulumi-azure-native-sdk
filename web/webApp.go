@@ -14,9 +14,9 @@ import (
 
 // A web app, a mobile app backend, or an API app.
 //
-// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+// Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 //
-// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type WebApp struct {
 	pulumi.CustomResourceState
 
@@ -69,7 +69,7 @@ type WebApp struct {
 	// Hostnames associated with the app.
 	HostNames pulumi.StringArrayOutput `pulumi:"hostNames"`
 	// <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.
-	//  If <code>true</code>, the app is only accessible via API management process.
+	// If <code>true</code>, the app is only accessible via API management process.
 	HostNamesDisabled pulumi.BoolPtrOutput `pulumi:"hostNamesDisabled"`
 	// App Service Environment to use for the app.
 	HostingEnvironmentProfile HostingEnvironmentProfileResponsePtrOutput `pulumi:"hostingEnvironmentProfile"`
@@ -94,14 +94,14 @@ type WebApp struct {
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Last time the app was modified, in UTC. Read-only.
 	LastModifiedTimeUtc pulumi.StringOutput `pulumi:"lastModifiedTimeUtc"`
-	// Resource Location.
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Azure Resource Manager ID of the customer's selected Managed Environment on which to host this app. This must be of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName}
 	ManagedEnvironmentId pulumi.StringPtrOutput `pulumi:"managedEnvironmentId"`
 	// Maximum number of workers.
 	// This only applies to Functions container.
 	MaxNumberOfWorkers pulumi.IntOutput `pulumi:"maxNumberOfWorkers"`
-	// Resource Name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of IP addresses that the app uses for outbound connections (e.g. database access). Includes VIPs from tenants that site can be hosted with current settings. Read-only.
 	OutboundIpAddresses pulumi.StringOutput `pulumi:"outboundIpAddresses"`
@@ -139,13 +139,15 @@ type WebApp struct {
 	StorageAccountRequired pulumi.BoolPtrOutput `pulumi:"storageAccountRequired"`
 	// App suspended till in case memory-time quota is exceeded.
 	SuspendedTill pulumi.StringOutput `pulumi:"suspendedTill"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Specifies which deployment slot this app will swap into. Read-only.
 	TargetSwapSlot pulumi.StringOutput `pulumi:"targetSwapSlot"`
 	// Azure Traffic Manager hostnames associated with the app. Read-only.
 	TrafficManagerHostNames pulumi.StringArrayOutput `pulumi:"trafficManagerHostNames"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// State indicating whether the app has exceeded its quota usage. Read-only.
 	UsageState pulumi.StringOutput `pulumi:"usageState"`
@@ -165,6 +167,9 @@ func NewWebApp(ctx *pulumi.Context,
 
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
+	}
+	if args.ClientAffinityEnabled == nil {
+		args.ClientAffinityEnabled = pulumi.BoolPtr(false)
 	}
 	if args.DaprConfig != nil {
 		args.DaprConfig = args.DaprConfig.ToDaprConfigPtrOutput().ApplyT(func(v *DaprConfig) *DaprConfig { return v.Defaults() }).(DaprConfigPtrOutput)
@@ -329,7 +334,7 @@ type webAppArgs struct {
 	// Hostname SSL states are used to manage the SSL bindings for app's hostnames.
 	HostNameSslStates []HostNameSslState `pulumi:"hostNameSslStates"`
 	// <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.
-	//  If <code>true</code>, the app is only accessible via API management process.
+	// If <code>true</code>, the app is only accessible via API management process.
 	HostNamesDisabled *bool `pulumi:"hostNamesDisabled"`
 	// App Service Environment to use for the app.
 	HostingEnvironmentProfile *HostingEnvironmentProfile `pulumi:"hostingEnvironmentProfile"`
@@ -348,11 +353,11 @@ type webAppArgs struct {
 	KeyVaultReferenceIdentity *string `pulumi:"keyVaultReferenceIdentity"`
 	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind *string `pulumi:"kind"`
-	// Resource Location.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Azure Resource Manager ID of the customer's selected Managed Environment on which to host this app. This must be of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName}
 	ManagedEnvironmentId *string `pulumi:"managedEnvironmentId"`
-	// Unique name of the app to create or update. To create or update a deployment slot, use the {slot} parameter.
+	// Name of the app.
 	Name *string `pulumi:"name"`
 	// Property to configure various outbound traffic routing options over virtual network for a site
 	OutboundVnetRouting *OutboundVnetRouting `pulumi:"outboundVnetRouting"`
@@ -364,7 +369,7 @@ type webAppArgs struct {
 	Reserved *bool `pulumi:"reserved"`
 	// Function app resource requirements.
 	ResourceConfig *ResourceConfig `pulumi:"resourceConfig"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
 	ScmSiteAlsoStopped *bool `pulumi:"scmSiteAlsoStopped"`
@@ -427,7 +432,7 @@ type WebAppArgs struct {
 	// Hostname SSL states are used to manage the SSL bindings for app's hostnames.
 	HostNameSslStates HostNameSslStateArrayInput
 	// <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.
-	//  If <code>true</code>, the app is only accessible via API management process.
+	// If <code>true</code>, the app is only accessible via API management process.
 	HostNamesDisabled pulumi.BoolPtrInput
 	// App Service Environment to use for the app.
 	HostingEnvironmentProfile HostingEnvironmentProfilePtrInput
@@ -446,11 +451,11 @@ type WebAppArgs struct {
 	KeyVaultReferenceIdentity pulumi.StringPtrInput
 	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind pulumi.StringPtrInput
-	// Resource Location.
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Azure Resource Manager ID of the customer's selected Managed Environment on which to host this app. This must be of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName}
 	ManagedEnvironmentId pulumi.StringPtrInput
-	// Unique name of the app to create or update. To create or update a deployment slot, use the {slot} parameter.
+	// Name of the app.
 	Name pulumi.StringPtrInput
 	// Property to configure various outbound traffic routing options over virtual network for a site
 	OutboundVnetRouting OutboundVnetRoutingPtrInput
@@ -462,7 +467,7 @@ type WebAppArgs struct {
 	Reserved pulumi.BoolPtrInput
 	// Function app resource requirements.
 	ResourceConfig ResourceConfigPtrInput
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
 	ScmSiteAlsoStopped pulumi.BoolPtrInput
@@ -635,8 +640,7 @@ func (o WebAppOutput) HostNames() pulumi.StringArrayOutput {
 }
 
 // <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.
-//
-//	If <code>true</code>, the app is only accessible via API management process.
+// If <code>true</code>, the app is only accessible via API management process.
 func (o WebAppOutput) HostNamesDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WebApp) pulumi.BoolPtrOutput { return v.HostNamesDisabled }).(pulumi.BoolPtrOutput)
 }
@@ -697,7 +701,7 @@ func (o WebAppOutput) LastModifiedTimeUtc() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebApp) pulumi.StringOutput { return v.LastModifiedTimeUtc }).(pulumi.StringOutput)
 }
 
-// Resource Location.
+// The geo-location where the resource lives
 func (o WebAppOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebApp) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -713,7 +717,7 @@ func (o WebAppOutput) MaxNumberOfWorkers() pulumi.IntOutput {
 	return o.ApplyT(func(v *WebApp) pulumi.IntOutput { return v.MaxNumberOfWorkers }).(pulumi.IntOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o WebAppOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebApp) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -808,6 +812,11 @@ func (o WebAppOutput) SuspendedTill() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebApp) pulumi.StringOutput { return v.SuspendedTill }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o WebAppOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *WebApp) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Resource tags.
 func (o WebAppOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WebApp) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
@@ -823,7 +832,7 @@ func (o WebAppOutput) TrafficManagerHostNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *WebApp) pulumi.StringArrayOutput { return v.TrafficManagerHostNames }).(pulumi.StringArrayOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o WebAppOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebApp) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

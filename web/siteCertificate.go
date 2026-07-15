@@ -14,9 +14,9 @@ import (
 
 // SSL certificate for an app.
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2025-05-01.
 //
-// Other available API versions: 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SiteCertificate struct {
 	pulumi.CustomResourceState
 
@@ -48,9 +48,9 @@ type SiteCertificate struct {
 	KeyVaultSecretStatus pulumi.StringOutput `pulumi:"keyVaultSecretStatus"`
 	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
-	// Resource Location.
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Resource Name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Certificate password.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
@@ -66,11 +66,13 @@ type SiteCertificate struct {
 	SiteName pulumi.StringOutput `pulumi:"siteName"`
 	// Subject name of the certificate.
 	SubjectName pulumi.StringOutput `pulumi:"subjectName"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Certificate thumbprint.
 	Thumbprint pulumi.StringOutput `pulumi:"thumbprint"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Is the certificate valid?.
 	Valid pulumi.BoolOutput `pulumi:"valid"`
@@ -154,7 +156,7 @@ type siteCertificateArgs struct {
 	KeyVaultSecretName *string `pulumi:"keyVaultSecretName"`
 	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind *string `pulumi:"kind"`
-	// Resource Location.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Name of the site.
 	Name string `pulumi:"name"`
@@ -186,7 +188,7 @@ type SiteCertificateArgs struct {
 	KeyVaultSecretName pulumi.StringPtrInput
 	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind pulumi.StringPtrInput
-	// Resource Location.
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Name of the site.
 	Name pulumi.StringInput
@@ -309,12 +311,12 @@ func (o SiteCertificateOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SiteCertificate) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Resource Location.
+// The geo-location where the resource lives
 func (o SiteCertificateOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *SiteCertificate) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o SiteCertificateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SiteCertificate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -354,6 +356,11 @@ func (o SiteCertificateOutput) SubjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v *SiteCertificate) pulumi.StringOutput { return v.SubjectName }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o SiteCertificateOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *SiteCertificate) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Resource tags.
 func (o SiteCertificateOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SiteCertificate) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
@@ -364,7 +371,7 @@ func (o SiteCertificateOutput) Thumbprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *SiteCertificate) pulumi.StringOutput { return v.Thumbprint }).(pulumi.StringOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o SiteCertificateOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *SiteCertificate) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

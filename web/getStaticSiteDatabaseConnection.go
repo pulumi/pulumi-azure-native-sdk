@@ -11,11 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Static Site Database Connection resource.
+// Returns overview of a database connection for a static site by name
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2025-05-01.
 //
-// Other available API versions: 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupStaticSiteDatabaseConnection(ctx *pulumi.Context, args *LookupStaticSiteDatabaseConnectionArgs, opts ...pulumi.InvokeOption) (*LookupStaticSiteDatabaseConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStaticSiteDatabaseConnectionResult
@@ -31,7 +31,7 @@ type LookupStaticSiteDatabaseConnectionArgs struct {
 	DatabaseConnectionName string `pulumi:"databaseConnectionName"`
 	// Name of the static site
 	Name string `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -45,17 +45,19 @@ type LookupStaticSiteDatabaseConnectionResult struct {
 	ConnectionIdentity *string `pulumi:"connectionIdentity"`
 	// The connection string to use to connect to the database.
 	ConnectionString *string `pulumi:"connectionString"`
-	// Resource Id.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Kind of resource.
 	Kind *string `pulumi:"kind"`
-	// Resource Name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The region of the database resource.
 	Region string `pulumi:"region"`
 	// The resource id of the database.
 	ResourceId string `pulumi:"resourceId"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -73,7 +75,7 @@ type LookupStaticSiteDatabaseConnectionOutputArgs struct {
 	DatabaseConnectionName pulumi.StringInput `pulumi:"databaseConnectionName"`
 	// Name of the static site
 	Name pulumi.StringInput `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -118,7 +120,7 @@ func (o LookupStaticSiteDatabaseConnectionResultOutput) ConnectionString() pulum
 	return o.ApplyT(func(v LookupStaticSiteDatabaseConnectionResult) *string { return v.ConnectionString }).(pulumi.StringPtrOutput)
 }
 
-// Resource Id.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupStaticSiteDatabaseConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticSiteDatabaseConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -128,7 +130,7 @@ func (o LookupStaticSiteDatabaseConnectionResultOutput) Kind() pulumi.StringPtrO
 	return o.ApplyT(func(v LookupStaticSiteDatabaseConnectionResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o LookupStaticSiteDatabaseConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticSiteDatabaseConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -143,7 +145,12 @@ func (o LookupStaticSiteDatabaseConnectionResultOutput) ResourceId() pulumi.Stri
 	return o.ApplyT(func(v LookupStaticSiteDatabaseConnectionResult) string { return v.ResourceId }).(pulumi.StringOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupStaticSiteDatabaseConnectionResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupStaticSiteDatabaseConnectionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupStaticSiteDatabaseConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticSiteDatabaseConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

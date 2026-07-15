@@ -13,210 +13,6 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
-// Definition of CustomAction
-type CustomActionResponseV1 struct {
-	// Property actionDefinition
-	ActionDefinition *ActionDefinitionResponseV1 `pulumi:"actionDefinition"`
-	// Property actionName
-	ActionName *string `pulumi:"actionName"`
-}
-
-// Definition of CustomAction
-type CustomActionResponseV1Output struct{ *pulumi.OutputState }
-
-func (CustomActionResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomActionResponseV1)(nil)).Elem()
-}
-
-func (o CustomActionResponseV1Output) ToCustomActionResponseV1Output() CustomActionResponseV1Output {
-	return o
-}
-
-func (o CustomActionResponseV1Output) ToCustomActionResponseV1OutputWithContext(ctx context.Context) CustomActionResponseV1Output {
-	return o
-}
-
-// Property actionDefinition
-func (o CustomActionResponseV1Output) ActionDefinition() ActionDefinitionResponseV1PtrOutput {
-	return o.ApplyT(func(v CustomActionResponseV1) *ActionDefinitionResponseV1 { return v.ActionDefinition }).(ActionDefinitionResponseV1PtrOutput)
-}
-
-// Property actionName
-func (o CustomActionResponseV1Output) ActionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CustomActionResponseV1) *string { return v.ActionName }).(pulumi.StringPtrOutput)
-}
-
-type CustomActionResponseV1ArrayOutput struct{ *pulumi.OutputState }
-
-func (CustomActionResponseV1ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CustomActionResponseV1)(nil)).Elem()
-}
-
-func (o CustomActionResponseV1ArrayOutput) ToCustomActionResponseV1ArrayOutput() CustomActionResponseV1ArrayOutput {
-	return o
-}
-
-func (o CustomActionResponseV1ArrayOutput) ToCustomActionResponseV1ArrayOutputWithContext(ctx context.Context) CustomActionResponseV1ArrayOutput {
-	return o
-}
-
-func (o CustomActionResponseV1ArrayOutput) Index(i pulumi.IntInput) CustomActionResponseV1Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomActionResponseV1 {
-		return vs[0].([]CustomActionResponseV1)[vs[1].(int)]
-	}).(CustomActionResponseV1Output)
-}
-
-// Definition of CustomErrorResponse
-type CustomErrorResponse struct {
-	// The minimum amount of time, in seconds, that you want CloudFront to cache the HTTP status code specified in ``ErrorCode``. When this time period has elapsed, CloudFront queries your origin to see whether the problem that caused the error has been resolved and the requested object is now available. For more information, see [Customizing Error Responses](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html) in the *Amazon CloudFront Developer Guide*.
-	ErrorCachingMinTTL *int `pulumi:"errorCachingMinTTL"`
-	// The HTTP status code for which you want to specify a custom error page and/or a caching duration.
-	ErrorCode *int `pulumi:"errorCode"`
-	// The HTTP status code that you want CloudFront to return to the viewer along with the custom error page. There are a variety of reasons that you might want CloudFront to return a status code different from the status code that your origin returned to CloudFront, for example:  +  Some Internet devices (some firewalls and corporate proxies, for example) intercept HTTP 4xx and 5xx and prevent the response from being returned to the viewer. If you substitute ``200``, the response typically won't be intercepted.  +  If you don't care about distinguishing among different client errors or server errors, you can specify ``400`` or ``500`` as the ``ResponseCode`` for all 4xx or 5xx errors.  +  You might want to return a ``200`` status code (OK) and static website so your customers don't know that your website is down.   If you specify a value for ``ResponseCode``, you must also specify a value for ``ResponsePagePath``.
-	ResponseCode *int `pulumi:"responseCode"`
-	// The path to the custom error page that you want CloudFront to return to a viewer when your origin returns the HTTP status code specified by ``ErrorCode``, for example, ``/4xx-errors/403-forbidden.html``. If you want to store your objects and your custom error pages in different locations, your distribution must include a cache behavior for which the following is true:  +  The value of ``PathPattern`` matches the path to your custom error messages. For example, suppose you saved custom error pages for 4xx errors in an Amazon S3 bucket in a directory named ``/4xx-errors``. Your distribution must include a cache behavior for which the path pattern routes requests for your custom error pages to that location, for example, ``/4xx-errors/*``.  +  The value of ``TargetOriginId`` specifies the value of the ``ID`` element for the origin that contains your custom error pages.   If you specify a value for ``ResponsePagePath``, you must also specify a value for ``ResponseCode``. We recommend that you store custom error pages in an Amazon S3 bucket. If you store custom error pages on an HTTP server and the server starts to return 5xx errors, CloudFront can't get the files that you want to return to viewers because the origin server is unavailable.
-	ResponsePagePath *string `pulumi:"responsePagePath"`
-}
-
-// Defaults sets the appropriate defaults for CustomErrorResponse
-func (val *CustomErrorResponse) Defaults() *CustomErrorResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.ErrorCachingMinTTL == nil {
-		errorCachingMinTTL_ := 300
-		tmp.ErrorCachingMinTTL = &errorCachingMinTTL_
-	}
-	return &tmp
-}
-
-// CustomErrorResponseInput is an input type that accepts CustomErrorResponseArgs and CustomErrorResponseOutput values.
-// You can construct a concrete instance of `CustomErrorResponseInput` via:
-//
-//	CustomErrorResponseArgs{...}
-type CustomErrorResponseInput interface {
-	pulumi.Input
-
-	ToCustomErrorResponseOutput() CustomErrorResponseOutput
-	ToCustomErrorResponseOutputWithContext(context.Context) CustomErrorResponseOutput
-}
-
-// Definition of CustomErrorResponse
-type CustomErrorResponseArgs struct {
-	// The minimum amount of time, in seconds, that you want CloudFront to cache the HTTP status code specified in ``ErrorCode``. When this time period has elapsed, CloudFront queries your origin to see whether the problem that caused the error has been resolved and the requested object is now available. For more information, see [Customizing Error Responses](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html) in the *Amazon CloudFront Developer Guide*.
-	ErrorCachingMinTTL pulumi.IntPtrInput `pulumi:"errorCachingMinTTL"`
-	// The HTTP status code for which you want to specify a custom error page and/or a caching duration.
-	ErrorCode pulumi.IntPtrInput `pulumi:"errorCode"`
-	// The HTTP status code that you want CloudFront to return to the viewer along with the custom error page. There are a variety of reasons that you might want CloudFront to return a status code different from the status code that your origin returned to CloudFront, for example:  +  Some Internet devices (some firewalls and corporate proxies, for example) intercept HTTP 4xx and 5xx and prevent the response from being returned to the viewer. If you substitute ``200``, the response typically won't be intercepted.  +  If you don't care about distinguishing among different client errors or server errors, you can specify ``400`` or ``500`` as the ``ResponseCode`` for all 4xx or 5xx errors.  +  You might want to return a ``200`` status code (OK) and static website so your customers don't know that your website is down.   If you specify a value for ``ResponseCode``, you must also specify a value for ``ResponsePagePath``.
-	ResponseCode pulumi.IntPtrInput `pulumi:"responseCode"`
-	// The path to the custom error page that you want CloudFront to return to a viewer when your origin returns the HTTP status code specified by ``ErrorCode``, for example, ``/4xx-errors/403-forbidden.html``. If you want to store your objects and your custom error pages in different locations, your distribution must include a cache behavior for which the following is true:  +  The value of ``PathPattern`` matches the path to your custom error messages. For example, suppose you saved custom error pages for 4xx errors in an Amazon S3 bucket in a directory named ``/4xx-errors``. Your distribution must include a cache behavior for which the path pattern routes requests for your custom error pages to that location, for example, ``/4xx-errors/*``.  +  The value of ``TargetOriginId`` specifies the value of the ``ID`` element for the origin that contains your custom error pages.   If you specify a value for ``ResponsePagePath``, you must also specify a value for ``ResponseCode``. We recommend that you store custom error pages in an Amazon S3 bucket. If you store custom error pages on an HTTP server and the server starts to return 5xx errors, CloudFront can't get the files that you want to return to viewers because the origin server is unavailable.
-	ResponsePagePath pulumi.StringPtrInput `pulumi:"responsePagePath"`
-}
-
-// Defaults sets the appropriate defaults for CustomErrorResponseArgs
-func (val *CustomErrorResponseArgs) Defaults() *CustomErrorResponseArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.ErrorCachingMinTTL == nil {
-		tmp.ErrorCachingMinTTL = pulumi.IntPtr(300)
-	}
-	return &tmp
-}
-func (CustomErrorResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomErrorResponse)(nil)).Elem()
-}
-
-func (i CustomErrorResponseArgs) ToCustomErrorResponseOutput() CustomErrorResponseOutput {
-	return i.ToCustomErrorResponseOutputWithContext(context.Background())
-}
-
-func (i CustomErrorResponseArgs) ToCustomErrorResponseOutputWithContext(ctx context.Context) CustomErrorResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomErrorResponseOutput)
-}
-
-// CustomErrorResponseArrayInput is an input type that accepts CustomErrorResponseArray and CustomErrorResponseArrayOutput values.
-// You can construct a concrete instance of `CustomErrorResponseArrayInput` via:
-//
-//	CustomErrorResponseArray{ CustomErrorResponseArgs{...} }
-type CustomErrorResponseArrayInput interface {
-	pulumi.Input
-
-	ToCustomErrorResponseArrayOutput() CustomErrorResponseArrayOutput
-	ToCustomErrorResponseArrayOutputWithContext(context.Context) CustomErrorResponseArrayOutput
-}
-
-type CustomErrorResponseArray []CustomErrorResponseInput
-
-func (CustomErrorResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CustomErrorResponse)(nil)).Elem()
-}
-
-func (i CustomErrorResponseArray) ToCustomErrorResponseArrayOutput() CustomErrorResponseArrayOutput {
-	return i.ToCustomErrorResponseArrayOutputWithContext(context.Background())
-}
-
-func (i CustomErrorResponseArray) ToCustomErrorResponseArrayOutputWithContext(ctx context.Context) CustomErrorResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomErrorResponseArrayOutput)
-}
-
-// Definition of CustomErrorResponse
-type CustomErrorResponseOutput struct{ *pulumi.OutputState }
-
-func (CustomErrorResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomErrorResponse)(nil)).Elem()
-}
-
-func (o CustomErrorResponseOutput) ToCustomErrorResponseOutput() CustomErrorResponseOutput {
-	return o
-}
-
-func (o CustomErrorResponseOutput) ToCustomErrorResponseOutputWithContext(ctx context.Context) CustomErrorResponseOutput {
-	return o
-}
-
-// The minimum amount of time, in seconds, that you want CloudFront to cache the HTTP status code specified in “ErrorCode“. When this time period has elapsed, CloudFront queries your origin to see whether the problem that caused the error has been resolved and the requested object is now available. For more information, see [Customizing Error Responses](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html) in the *Amazon CloudFront Developer Guide*.
-func (o CustomErrorResponseOutput) ErrorCachingMinTTL() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v CustomErrorResponse) *int { return v.ErrorCachingMinTTL }).(pulumi.IntPtrOutput)
-}
-
-// The HTTP status code for which you want to specify a custom error page and/or a caching duration.
-func (o CustomErrorResponseOutput) ErrorCode() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v CustomErrorResponse) *int { return v.ErrorCode }).(pulumi.IntPtrOutput)
-}
-
-// The HTTP status code that you want CloudFront to return to the viewer along with the custom error page. There are a variety of reasons that you might want CloudFront to return a status code different from the status code that your origin returned to CloudFront, for example:  +  Some Internet devices (some firewalls and corporate proxies, for example) intercept HTTP 4xx and 5xx and prevent the response from being returned to the viewer. If you substitute “200“, the response typically won't be intercepted.  +  If you don't care about distinguishing among different client errors or server errors, you can specify “400“ or “500“ as the “ResponseCode“ for all 4xx or 5xx errors.  +  You might want to return a “200“ status code (OK) and static website so your customers don't know that your website is down.   If you specify a value for “ResponseCode“, you must also specify a value for “ResponsePagePath“.
-func (o CustomErrorResponseOutput) ResponseCode() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v CustomErrorResponse) *int { return v.ResponseCode }).(pulumi.IntPtrOutput)
-}
-
-// The path to the custom error page that you want CloudFront to return to a viewer when your origin returns the HTTP status code specified by “ErrorCode“, for example, “/4xx-errors/403-forbidden.html“. If you want to store your objects and your custom error pages in different locations, your distribution must include a cache behavior for which the following is true:  +  The value of “PathPattern“ matches the path to your custom error messages. For example, suppose you saved custom error pages for 4xx errors in an Amazon S3 bucket in a directory named “/4xx-errors“. Your distribution must include a cache behavior for which the path pattern routes requests for your custom error pages to that location, for example, “/4xx-errors/*“.  +  The value of “TargetOriginId“ specifies the value of the “ID“ element for the origin that contains your custom error pages.   If you specify a value for “ResponsePagePath“, you must also specify a value for “ResponseCode“. We recommend that you store custom error pages in an Amazon S3 bucket. If you store custom error pages on an HTTP server and the server starts to return 5xx errors, CloudFront can't get the files that you want to return to viewers because the origin server is unavailable.
-func (o CustomErrorResponseOutput) ResponsePagePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CustomErrorResponse) *string { return v.ResponsePagePath }).(pulumi.StringPtrOutput)
-}
-
-type CustomErrorResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (CustomErrorResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CustomErrorResponse)(nil)).Elem()
-}
-
-func (o CustomErrorResponseArrayOutput) ToCustomErrorResponseArrayOutput() CustomErrorResponseArrayOutput {
-	return o
-}
-
-func (o CustomErrorResponseArrayOutput) ToCustomErrorResponseArrayOutputWithContext(ctx context.Context) CustomErrorResponseArrayOutput {
-	return o
-}
-
-func (o CustomErrorResponseArrayOutput) Index(i pulumi.IntInput) CustomErrorResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomErrorResponse {
-		return vs[0].([]CustomErrorResponse)[vs[1].(int)]
-	}).(CustomErrorResponseOutput)
-}
-
 // Definition of CustomErrorResponse
 type CustomErrorResponseResponse struct {
 	// The minimum amount of time, in seconds, that you want CloudFront to cache the HTTP status code specified in ``ErrorCode``. When this time period has elapsed, CloudFront queries your origin to see whether the problem that caused the error has been resolved and the requested object is now available. For more information, see [Customizing Error Responses](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html) in the *Amazon CloudFront Developer Guide*.
@@ -7309,52 +7105,6 @@ func (o DimensionResponseV2ArrayOutput) Index(i pulumi.IntInput) DimensionRespon
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DimensionResponseV2 {
 		return vs[0].([]DimensionResponseV2)[vs[1].(int)]
 	}).(DimensionResponseV2Output)
-}
-
-// Definition of Dimension
-type DimensionResponseV3 struct {
-	// Property value
-	Value *string `pulumi:"value"`
-}
-
-// Definition of Dimension
-type DimensionResponseV3Output struct{ *pulumi.OutputState }
-
-func (DimensionResponseV3Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*DimensionResponseV3)(nil)).Elem()
-}
-
-func (o DimensionResponseV3Output) ToDimensionResponseV3Output() DimensionResponseV3Output {
-	return o
-}
-
-func (o DimensionResponseV3Output) ToDimensionResponseV3OutputWithContext(ctx context.Context) DimensionResponseV3Output {
-	return o
-}
-
-// Property value
-func (o DimensionResponseV3Output) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DimensionResponseV3) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type DimensionResponseV3ArrayOutput struct{ *pulumi.OutputState }
-
-func (DimensionResponseV3ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DimensionResponseV3)(nil)).Elem()
-}
-
-func (o DimensionResponseV3ArrayOutput) ToDimensionResponseV3ArrayOutput() DimensionResponseV3ArrayOutput {
-	return o
-}
-
-func (o DimensionResponseV3ArrayOutput) ToDimensionResponseV3ArrayOutputWithContext(ctx context.Context) DimensionResponseV3ArrayOutput {
-	return o
-}
-
-func (o DimensionResponseV3ArrayOutput) Index(i pulumi.IntInput) DimensionResponseV3Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DimensionResponseV3 {
-		return vs[0].([]DimensionResponseV3)[vs[1].(int)]
-	}).(DimensionResponseV3Output)
 }
 
 // Definition of Disk
@@ -66633,11 +66383,303 @@ func (o LocalSecondaryIndexArrayOutput) Index(i pulumi.IntInput) LocalSecondaryI
 	}).(LocalSecondaryIndexOutput)
 }
 
+// Definition of LocalSecondaryIndex
+type LocalSecondaryIndexResponse struct {
+	// The name of the local secondary index. The name must be unique among all other indexes on this table.
+	IndexName *string `pulumi:"indexName"`
+	// The complete key schema for the local secondary index, consisting of one or more pairs of attribute names and key types:  +   ``HASH`` - partition key  +   ``RANGE`` - sort key    The partition key of an item is also known as its *hash attribute*. The term 'hash attribute' derives from DynamoDB's usage of an internal hash function to evenly distribute data items across partitions, based on their partition key values. The sort key of an item is also known as its *range attribute*. The term 'range attribute' derives from the way DynamoDB stores items with the same partition key physically close together, in sorted order by the sort key value.
+	KeySchema []KeySchemaResponse `pulumi:"keySchema"`
+	// Represents attributes that are copied (projected) from the table into the local secondary index. These are in addition to the primary key attributes and index key attributes, which are automatically projected. Represents attributes that are copied (projected) from the table into an index. These are in addition to the primary key attributes and index key attributes, which are automatically projected.
+	Projection *ProjectionResponse `pulumi:"projection"`
+}
+
+// Definition of LocalSecondaryIndex
+type LocalSecondaryIndexResponseOutput struct{ *pulumi.OutputState }
+
+func (LocalSecondaryIndexResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocalSecondaryIndexResponse)(nil)).Elem()
+}
+
+func (o LocalSecondaryIndexResponseOutput) ToLocalSecondaryIndexResponseOutput() LocalSecondaryIndexResponseOutput {
+	return o
+}
+
+func (o LocalSecondaryIndexResponseOutput) ToLocalSecondaryIndexResponseOutputWithContext(ctx context.Context) LocalSecondaryIndexResponseOutput {
+	return o
+}
+
+// The name of the local secondary index. The name must be unique among all other indexes on this table.
+func (o LocalSecondaryIndexResponseOutput) IndexName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LocalSecondaryIndexResponse) *string { return v.IndexName }).(pulumi.StringPtrOutput)
+}
+
+// The complete key schema for the local secondary index, consisting of one or more pairs of attribute names and key types:  +   “HASH“ - partition key  +   “RANGE“ - sort key    The partition key of an item is also known as its *hash attribute*. The term 'hash attribute' derives from DynamoDB's usage of an internal hash function to evenly distribute data items across partitions, based on their partition key values. The sort key of an item is also known as its *range attribute*. The term 'range attribute' derives from the way DynamoDB stores items with the same partition key physically close together, in sorted order by the sort key value.
+func (o LocalSecondaryIndexResponseOutput) KeySchema() KeySchemaResponseArrayOutput {
+	return o.ApplyT(func(v LocalSecondaryIndexResponse) []KeySchemaResponse { return v.KeySchema }).(KeySchemaResponseArrayOutput)
+}
+
+// Represents attributes that are copied (projected) from the table into the local secondary index. These are in addition to the primary key attributes and index key attributes, which are automatically projected. Represents attributes that are copied (projected) from the table into an index. These are in addition to the primary key attributes and index key attributes, which are automatically projected.
+func (o LocalSecondaryIndexResponseOutput) Projection() ProjectionResponsePtrOutput {
+	return o.ApplyT(func(v LocalSecondaryIndexResponse) *ProjectionResponse { return v.Projection }).(ProjectionResponsePtrOutput)
+}
+
+type LocalSecondaryIndexResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LocalSecondaryIndexResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LocalSecondaryIndexResponse)(nil)).Elem()
+}
+
+func (o LocalSecondaryIndexResponseArrayOutput) ToLocalSecondaryIndexResponseArrayOutput() LocalSecondaryIndexResponseArrayOutput {
+	return o
+}
+
+func (o LocalSecondaryIndexResponseArrayOutput) ToLocalSecondaryIndexResponseArrayOutputWithContext(ctx context.Context) LocalSecondaryIndexResponseArrayOutput {
+	return o
+}
+
+func (o LocalSecondaryIndexResponseArrayOutput) Index(i pulumi.IntInput) LocalSecondaryIndexResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LocalSecondaryIndexResponse {
+		return vs[0].([]LocalSecondaryIndexResponse)[vs[1].(int)]
+	}).(LocalSecondaryIndexResponseOutput)
+}
+
+// Definition of Location
+type Location struct {
+	// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
+	AvailabilityZone *string `pulumi:"availabilityZone"`
+	// The Region Name in which to create your instance.
+	RegionName *string `pulumi:"regionName"`
+}
+
+// LocationInput is an input type that accepts LocationArgs and LocationOutput values.
+// You can construct a concrete instance of `LocationInput` via:
+//
+//	LocationArgs{...}
+type LocationInput interface {
+	pulumi.Input
+
+	ToLocationOutput() LocationOutput
+	ToLocationOutputWithContext(context.Context) LocationOutput
+}
+
+// Definition of Location
+type LocationArgs struct {
+	// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
+	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
+	// The Region Name in which to create your instance.
+	RegionName pulumi.StringPtrInput `pulumi:"regionName"`
+}
+
+func (LocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Location)(nil)).Elem()
+}
+
+func (i LocationArgs) ToLocationOutput() LocationOutput {
+	return i.ToLocationOutputWithContext(context.Background())
+}
+
+func (i LocationArgs) ToLocationOutputWithContext(ctx context.Context) LocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationOutput)
+}
+
+func (i LocationArgs) ToLocationPtrOutput() LocationPtrOutput {
+	return i.ToLocationPtrOutputWithContext(context.Background())
+}
+
+func (i LocationArgs) ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationOutput).ToLocationPtrOutputWithContext(ctx)
+}
+
+// LocationPtrInput is an input type that accepts LocationArgs, LocationPtr and LocationPtrOutput values.
+// You can construct a concrete instance of `LocationPtrInput` via:
+//
+//	        LocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type LocationPtrInput interface {
+	pulumi.Input
+
+	ToLocationPtrOutput() LocationPtrOutput
+	ToLocationPtrOutputWithContext(context.Context) LocationPtrOutput
+}
+
+type locationPtrType LocationArgs
+
+func LocationPtr(v *LocationArgs) LocationPtrInput {
+	return (*locationPtrType)(v)
+}
+
+func (*locationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Location)(nil)).Elem()
+}
+
+func (i *locationPtrType) ToLocationPtrOutput() LocationPtrOutput {
+	return i.ToLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *locationPtrType) ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationPtrOutput)
+}
+
+// Definition of Location
+type LocationOutput struct{ *pulumi.OutputState }
+
+func (LocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Location)(nil)).Elem()
+}
+
+func (o LocationOutput) ToLocationOutput() LocationOutput {
+	return o
+}
+
+func (o LocationOutput) ToLocationOutputWithContext(ctx context.Context) LocationOutput {
+	return o
+}
+
+func (o LocationOutput) ToLocationPtrOutput() LocationPtrOutput {
+	return o.ToLocationPtrOutputWithContext(context.Background())
+}
+
+func (o LocationOutput) ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Location) *Location {
+		return &v
+	}).(LocationPtrOutput)
+}
+
+// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
+func (o LocationOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Location) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
+// The Region Name in which to create your instance.
+func (o LocationOutput) RegionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Location) *string { return v.RegionName }).(pulumi.StringPtrOutput)
+}
+
+type LocationPtrOutput struct{ *pulumi.OutputState }
+
+func (LocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Location)(nil)).Elem()
+}
+
+func (o LocationPtrOutput) ToLocationPtrOutput() LocationPtrOutput {
+	return o
+}
+
+func (o LocationPtrOutput) ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput {
+	return o
+}
+
+func (o LocationPtrOutput) Elem() LocationOutput {
+	return o.ApplyT(func(v *Location) Location {
+		if v != nil {
+			return *v
+		}
+		var ret Location
+		return ret
+	}).(LocationOutput)
+}
+
+// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
+func (o LocationPtrOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Location) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Region Name in which to create your instance.
+func (o LocationPtrOutput) RegionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Location) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RegionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Definition of Location
+type LocationResponse struct {
+	// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
+	AvailabilityZone *string `pulumi:"availabilityZone"`
+	// The Region Name in which to create your instance.
+	RegionName *string `pulumi:"regionName"`
+}
+
+// Definition of Location
+type LocationResponseOutput struct{ *pulumi.OutputState }
+
+func (LocationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationResponse)(nil)).Elem()
+}
+
+func (o LocationResponseOutput) ToLocationResponseOutput() LocationResponseOutput {
+	return o
+}
+
+func (o LocationResponseOutput) ToLocationResponseOutputWithContext(ctx context.Context) LocationResponseOutput {
+	return o
+}
+
+// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
+func (o LocationResponseOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LocationResponse) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
+// The Region Name in which to create your instance.
+func (o LocationResponseOutput) RegionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LocationResponse) *string { return v.RegionName }).(pulumi.StringPtrOutput)
+}
+
+type LocationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LocationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocationResponse)(nil)).Elem()
+}
+
+func (o LocationResponsePtrOutput) ToLocationResponsePtrOutput() LocationResponsePtrOutput {
+	return o
+}
+
+func (o LocationResponsePtrOutput) ToLocationResponsePtrOutputWithContext(ctx context.Context) LocationResponsePtrOutput {
+	return o
+}
+
+func (o LocationResponsePtrOutput) Elem() LocationResponseOutput {
+	return o.ApplyT(func(v *LocationResponse) LocationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LocationResponse
+		return ret
+	}).(LocationResponseOutput)
+}
+
+// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
+func (o LocationResponsePtrOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LocationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Region Name in which to create your instance.
+func (o LocationResponsePtrOutput) RegionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LocationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RegionName
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
-	pulumi.RegisterOutputType(CustomActionResponseV1Output{})
-	pulumi.RegisterOutputType(CustomActionResponseV1ArrayOutput{})
-	pulumi.RegisterOutputType(CustomErrorResponseOutput{})
-	pulumi.RegisterOutputType(CustomErrorResponseArrayOutput{})
 	pulumi.RegisterOutputType(CustomErrorResponseResponseOutput{})
 	pulumi.RegisterOutputType(CustomErrorResponseResponseArrayOutput{})
 	pulumi.RegisterOutputType(CustomOriginConfigResponseOutput{})
@@ -66748,8 +66790,6 @@ func init() {
 	pulumi.RegisterOutputType(DimensionResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(DimensionResponseV2Output{})
 	pulumi.RegisterOutputType(DimensionResponseV2ArrayOutput{})
-	pulumi.RegisterOutputType(DimensionResponseV3Output{})
-	pulumi.RegisterOutputType(DimensionResponseV3ArrayOutput{})
 	pulumi.RegisterOutputType(DiskOutput{})
 	pulumi.RegisterOutputType(DiskArrayOutput{})
 	pulumi.RegisterOutputType(DiskResponseOutput{})
@@ -67579,4 +67619,10 @@ func init() {
 	pulumi.RegisterOutputType(LoadBalancerResponseArrayOutput{})
 	pulumi.RegisterOutputType(LocalSecondaryIndexOutput{})
 	pulumi.RegisterOutputType(LocalSecondaryIndexArrayOutput{})
+	pulumi.RegisterOutputType(LocalSecondaryIndexResponseOutput{})
+	pulumi.RegisterOutputType(LocalSecondaryIndexResponseArrayOutput{})
+	pulumi.RegisterOutputType(LocationOutput{})
+	pulumi.RegisterOutputType(LocationPtrOutput{})
+	pulumi.RegisterOutputType(LocationResponseOutput{})
+	pulumi.RegisterOutputType(LocationResponsePtrOutput{})
 }

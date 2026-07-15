@@ -13,302 +13,6 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
-// Definition of LocalSecondaryIndex
-type LocalSecondaryIndexResponse struct {
-	// The name of the local secondary index. The name must be unique among all other indexes on this table.
-	IndexName *string `pulumi:"indexName"`
-	// The complete key schema for the local secondary index, consisting of one or more pairs of attribute names and key types:  +   ``HASH`` - partition key  +   ``RANGE`` - sort key    The partition key of an item is also known as its *hash attribute*. The term 'hash attribute' derives from DynamoDB's usage of an internal hash function to evenly distribute data items across partitions, based on their partition key values. The sort key of an item is also known as its *range attribute*. The term 'range attribute' derives from the way DynamoDB stores items with the same partition key physically close together, in sorted order by the sort key value.
-	KeySchema []KeySchemaResponse `pulumi:"keySchema"`
-	// Represents attributes that are copied (projected) from the table into the local secondary index. These are in addition to the primary key attributes and index key attributes, which are automatically projected. Represents attributes that are copied (projected) from the table into an index. These are in addition to the primary key attributes and index key attributes, which are automatically projected.
-	Projection *ProjectionResponse `pulumi:"projection"`
-}
-
-// Definition of LocalSecondaryIndex
-type LocalSecondaryIndexResponseOutput struct{ *pulumi.OutputState }
-
-func (LocalSecondaryIndexResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LocalSecondaryIndexResponse)(nil)).Elem()
-}
-
-func (o LocalSecondaryIndexResponseOutput) ToLocalSecondaryIndexResponseOutput() LocalSecondaryIndexResponseOutput {
-	return o
-}
-
-func (o LocalSecondaryIndexResponseOutput) ToLocalSecondaryIndexResponseOutputWithContext(ctx context.Context) LocalSecondaryIndexResponseOutput {
-	return o
-}
-
-// The name of the local secondary index. The name must be unique among all other indexes on this table.
-func (o LocalSecondaryIndexResponseOutput) IndexName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LocalSecondaryIndexResponse) *string { return v.IndexName }).(pulumi.StringPtrOutput)
-}
-
-// The complete key schema for the local secondary index, consisting of one or more pairs of attribute names and key types:  +   “HASH“ - partition key  +   “RANGE“ - sort key    The partition key of an item is also known as its *hash attribute*. The term 'hash attribute' derives from DynamoDB's usage of an internal hash function to evenly distribute data items across partitions, based on their partition key values. The sort key of an item is also known as its *range attribute*. The term 'range attribute' derives from the way DynamoDB stores items with the same partition key physically close together, in sorted order by the sort key value.
-func (o LocalSecondaryIndexResponseOutput) KeySchema() KeySchemaResponseArrayOutput {
-	return o.ApplyT(func(v LocalSecondaryIndexResponse) []KeySchemaResponse { return v.KeySchema }).(KeySchemaResponseArrayOutput)
-}
-
-// Represents attributes that are copied (projected) from the table into the local secondary index. These are in addition to the primary key attributes and index key attributes, which are automatically projected. Represents attributes that are copied (projected) from the table into an index. These are in addition to the primary key attributes and index key attributes, which are automatically projected.
-func (o LocalSecondaryIndexResponseOutput) Projection() ProjectionResponsePtrOutput {
-	return o.ApplyT(func(v LocalSecondaryIndexResponse) *ProjectionResponse { return v.Projection }).(ProjectionResponsePtrOutput)
-}
-
-type LocalSecondaryIndexResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (LocalSecondaryIndexResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LocalSecondaryIndexResponse)(nil)).Elem()
-}
-
-func (o LocalSecondaryIndexResponseArrayOutput) ToLocalSecondaryIndexResponseArrayOutput() LocalSecondaryIndexResponseArrayOutput {
-	return o
-}
-
-func (o LocalSecondaryIndexResponseArrayOutput) ToLocalSecondaryIndexResponseArrayOutputWithContext(ctx context.Context) LocalSecondaryIndexResponseArrayOutput {
-	return o
-}
-
-func (o LocalSecondaryIndexResponseArrayOutput) Index(i pulumi.IntInput) LocalSecondaryIndexResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LocalSecondaryIndexResponse {
-		return vs[0].([]LocalSecondaryIndexResponse)[vs[1].(int)]
-	}).(LocalSecondaryIndexResponseOutput)
-}
-
-// Definition of Location
-type Location struct {
-	// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// The Region Name in which to create your instance.
-	RegionName *string `pulumi:"regionName"`
-}
-
-// LocationInput is an input type that accepts LocationArgs and LocationOutput values.
-// You can construct a concrete instance of `LocationInput` via:
-//
-//	LocationArgs{...}
-type LocationInput interface {
-	pulumi.Input
-
-	ToLocationOutput() LocationOutput
-	ToLocationOutputWithContext(context.Context) LocationOutput
-}
-
-// Definition of Location
-type LocationArgs struct {
-	// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
-	// The Region Name in which to create your instance.
-	RegionName pulumi.StringPtrInput `pulumi:"regionName"`
-}
-
-func (LocationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Location)(nil)).Elem()
-}
-
-func (i LocationArgs) ToLocationOutput() LocationOutput {
-	return i.ToLocationOutputWithContext(context.Background())
-}
-
-func (i LocationArgs) ToLocationOutputWithContext(ctx context.Context) LocationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LocationOutput)
-}
-
-func (i LocationArgs) ToLocationPtrOutput() LocationPtrOutput {
-	return i.ToLocationPtrOutputWithContext(context.Background())
-}
-
-func (i LocationArgs) ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LocationOutput).ToLocationPtrOutputWithContext(ctx)
-}
-
-// LocationPtrInput is an input type that accepts LocationArgs, LocationPtr and LocationPtrOutput values.
-// You can construct a concrete instance of `LocationPtrInput` via:
-//
-//	        LocationArgs{...}
-//
-//	or:
-//
-//	        nil
-type LocationPtrInput interface {
-	pulumi.Input
-
-	ToLocationPtrOutput() LocationPtrOutput
-	ToLocationPtrOutputWithContext(context.Context) LocationPtrOutput
-}
-
-type locationPtrType LocationArgs
-
-func LocationPtr(v *LocationArgs) LocationPtrInput {
-	return (*locationPtrType)(v)
-}
-
-func (*locationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Location)(nil)).Elem()
-}
-
-func (i *locationPtrType) ToLocationPtrOutput() LocationPtrOutput {
-	return i.ToLocationPtrOutputWithContext(context.Background())
-}
-
-func (i *locationPtrType) ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LocationPtrOutput)
-}
-
-// Definition of Location
-type LocationOutput struct{ *pulumi.OutputState }
-
-func (LocationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Location)(nil)).Elem()
-}
-
-func (o LocationOutput) ToLocationOutput() LocationOutput {
-	return o
-}
-
-func (o LocationOutput) ToLocationOutputWithContext(ctx context.Context) LocationOutput {
-	return o
-}
-
-func (o LocationOutput) ToLocationPtrOutput() LocationPtrOutput {
-	return o.ToLocationPtrOutputWithContext(context.Background())
-}
-
-func (o LocationOutput) ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Location) *Location {
-		return &v
-	}).(LocationPtrOutput)
-}
-
-// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-func (o LocationOutput) AvailabilityZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Location) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
-}
-
-// The Region Name in which to create your instance.
-func (o LocationOutput) RegionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Location) *string { return v.RegionName }).(pulumi.StringPtrOutput)
-}
-
-type LocationPtrOutput struct{ *pulumi.OutputState }
-
-func (LocationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Location)(nil)).Elem()
-}
-
-func (o LocationPtrOutput) ToLocationPtrOutput() LocationPtrOutput {
-	return o
-}
-
-func (o LocationPtrOutput) ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput {
-	return o
-}
-
-func (o LocationPtrOutput) Elem() LocationOutput {
-	return o.ApplyT(func(v *Location) Location {
-		if v != nil {
-			return *v
-		}
-		var ret Location
-		return ret
-	}).(LocationOutput)
-}
-
-// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-func (o LocationPtrOutput) AvailabilityZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Location) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AvailabilityZone
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Region Name in which to create your instance.
-func (o LocationPtrOutput) RegionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Location) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RegionName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Definition of Location
-type LocationResponse struct {
-	// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// The Region Name in which to create your instance.
-	RegionName *string `pulumi:"regionName"`
-}
-
-// Definition of Location
-type LocationResponseOutput struct{ *pulumi.OutputState }
-
-func (LocationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LocationResponse)(nil)).Elem()
-}
-
-func (o LocationResponseOutput) ToLocationResponseOutput() LocationResponseOutput {
-	return o
-}
-
-func (o LocationResponseOutput) ToLocationResponseOutputWithContext(ctx context.Context) LocationResponseOutput {
-	return o
-}
-
-// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-func (o LocationResponseOutput) AvailabilityZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LocationResponse) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
-}
-
-// The Region Name in which to create your instance.
-func (o LocationResponseOutput) RegionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LocationResponse) *string { return v.RegionName }).(pulumi.StringPtrOutput)
-}
-
-type LocationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (LocationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LocationResponse)(nil)).Elem()
-}
-
-func (o LocationResponsePtrOutput) ToLocationResponsePtrOutput() LocationResponsePtrOutput {
-	return o
-}
-
-func (o LocationResponsePtrOutput) ToLocationResponsePtrOutputWithContext(ctx context.Context) LocationResponsePtrOutput {
-	return o
-}
-
-func (o LocationResponsePtrOutput) Elem() LocationResponseOutput {
-	return o.ApplyT(func(v *LocationResponse) LocationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret LocationResponse
-		return ret
-	}).(LocationResponseOutput)
-}
-
-// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-func (o LocationResponsePtrOutput) AvailabilityZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LocationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AvailabilityZone
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Region Name in which to create your instance.
-func (o LocationResponsePtrOutput) RegionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LocationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RegionName
-	}).(pulumi.StringPtrOutput)
-}
-
 // Definition of LogConfig
 type LogConfig struct {
 	// <p>The service role that AppSync assumes to publish to CloudWatch logs in your account.</p>
@@ -32073,66 +31777,6 @@ func (o PublishMetricActionResponsePtrOutput) Dimensions() DimensionResponseV2Ar
 	}).(DimensionResponseV2ArrayOutput)
 }
 
-// Definition of PublishMetricAction
-type PublishMetricActionResponseV1 struct {
-	// Property dimensions
-	Dimensions []DimensionResponseV3 `pulumi:"dimensions"`
-}
-
-// Definition of PublishMetricAction
-type PublishMetricActionResponseV1Output struct{ *pulumi.OutputState }
-
-func (PublishMetricActionResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*PublishMetricActionResponseV1)(nil)).Elem()
-}
-
-func (o PublishMetricActionResponseV1Output) ToPublishMetricActionResponseV1Output() PublishMetricActionResponseV1Output {
-	return o
-}
-
-func (o PublishMetricActionResponseV1Output) ToPublishMetricActionResponseV1OutputWithContext(ctx context.Context) PublishMetricActionResponseV1Output {
-	return o
-}
-
-// Property dimensions
-func (o PublishMetricActionResponseV1Output) Dimensions() DimensionResponseV3ArrayOutput {
-	return o.ApplyT(func(v PublishMetricActionResponseV1) []DimensionResponseV3 { return v.Dimensions }).(DimensionResponseV3ArrayOutput)
-}
-
-type PublishMetricActionResponseV1PtrOutput struct{ *pulumi.OutputState }
-
-func (PublishMetricActionResponseV1PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PublishMetricActionResponseV1)(nil)).Elem()
-}
-
-func (o PublishMetricActionResponseV1PtrOutput) ToPublishMetricActionResponseV1PtrOutput() PublishMetricActionResponseV1PtrOutput {
-	return o
-}
-
-func (o PublishMetricActionResponseV1PtrOutput) ToPublishMetricActionResponseV1PtrOutputWithContext(ctx context.Context) PublishMetricActionResponseV1PtrOutput {
-	return o
-}
-
-func (o PublishMetricActionResponseV1PtrOutput) Elem() PublishMetricActionResponseV1Output {
-	return o.ApplyT(func(v *PublishMetricActionResponseV1) PublishMetricActionResponseV1 {
-		if v != nil {
-			return *v
-		}
-		var ret PublishMetricActionResponseV1
-		return ret
-	}).(PublishMetricActionResponseV1Output)
-}
-
-// Property dimensions
-func (o PublishMetricActionResponseV1PtrOutput) Dimensions() DimensionResponseV3ArrayOutput {
-	return o.ApplyT(func(v *PublishMetricActionResponseV1) []DimensionResponseV3 {
-		if v == nil {
-			return nil
-		}
-		return v.Dimensions
-	}).(DimensionResponseV3ArrayOutput)
-}
-
 // Definition of QueryLoggingConfig
 type QueryLoggingConfig struct {
 	// The Amazon Resource Name (ARN) of the CloudWatch Logs log group that Amazon Route 53 is publishing logs to.
@@ -63288,13 +62932,443 @@ func (o SoftwareUpdateOptionsPtrOutput) AutoSoftwareUpdateEnabled() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Definition of SoftwareUpdateOptions
+type SoftwareUpdateOptionsResponse struct {
+	// <p>Whether automatic service software updates are enabled for the domain.</p>
+	AutoSoftwareUpdateEnabled *bool `pulumi:"autoSoftwareUpdateEnabled"`
+}
+
+// Definition of SoftwareUpdateOptions
+type SoftwareUpdateOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (SoftwareUpdateOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareUpdateOptionsResponse)(nil)).Elem()
+}
+
+func (o SoftwareUpdateOptionsResponseOutput) ToSoftwareUpdateOptionsResponseOutput() SoftwareUpdateOptionsResponseOutput {
+	return o
+}
+
+func (o SoftwareUpdateOptionsResponseOutput) ToSoftwareUpdateOptionsResponseOutputWithContext(ctx context.Context) SoftwareUpdateOptionsResponseOutput {
+	return o
+}
+
+// <p>Whether automatic service software updates are enabled for the domain.</p>
+func (o SoftwareUpdateOptionsResponseOutput) AutoSoftwareUpdateEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SoftwareUpdateOptionsResponse) *bool { return v.AutoSoftwareUpdateEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type SoftwareUpdateOptionsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SoftwareUpdateOptionsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SoftwareUpdateOptionsResponse)(nil)).Elem()
+}
+
+func (o SoftwareUpdateOptionsResponsePtrOutput) ToSoftwareUpdateOptionsResponsePtrOutput() SoftwareUpdateOptionsResponsePtrOutput {
+	return o
+}
+
+func (o SoftwareUpdateOptionsResponsePtrOutput) ToSoftwareUpdateOptionsResponsePtrOutputWithContext(ctx context.Context) SoftwareUpdateOptionsResponsePtrOutput {
+	return o
+}
+
+func (o SoftwareUpdateOptionsResponsePtrOutput) Elem() SoftwareUpdateOptionsResponseOutput {
+	return o.ApplyT(func(v *SoftwareUpdateOptionsResponse) SoftwareUpdateOptionsResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SoftwareUpdateOptionsResponse
+		return ret
+	}).(SoftwareUpdateOptionsResponseOutput)
+}
+
+// <p>Whether automatic service software updates are enabled for the domain.</p>
+func (o SoftwareUpdateOptionsResponsePtrOutput) AutoSoftwareUpdateEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SoftwareUpdateOptionsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutoSoftwareUpdateEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Definition of SourceAuth
+type SourceAuth struct {
+	// <p>The resource value that applies to the specified authorization type.</p>
+	Resource *string `pulumi:"resource"`
+	// <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
+	Type *SourceAuthTypeEnumValue `pulumi:"type"`
+}
+
+// SourceAuthInput is an input type that accepts SourceAuthArgs and SourceAuthOutput values.
+// You can construct a concrete instance of `SourceAuthInput` via:
+//
+//	SourceAuthArgs{...}
+type SourceAuthInput interface {
+	pulumi.Input
+
+	ToSourceAuthOutput() SourceAuthOutput
+	ToSourceAuthOutputWithContext(context.Context) SourceAuthOutput
+}
+
+// Definition of SourceAuth
+type SourceAuthArgs struct {
+	// <p>The resource value that applies to the specified authorization type.</p>
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
+	// <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
+	Type SourceAuthTypeEnumValuePtrInput `pulumi:"type"`
+}
+
+func (SourceAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceAuth)(nil)).Elem()
+}
+
+func (i SourceAuthArgs) ToSourceAuthOutput() SourceAuthOutput {
+	return i.ToSourceAuthOutputWithContext(context.Background())
+}
+
+func (i SourceAuthArgs) ToSourceAuthOutputWithContext(ctx context.Context) SourceAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceAuthOutput)
+}
+
+func (i SourceAuthArgs) ToSourceAuthPtrOutput() SourceAuthPtrOutput {
+	return i.ToSourceAuthPtrOutputWithContext(context.Background())
+}
+
+func (i SourceAuthArgs) ToSourceAuthPtrOutputWithContext(ctx context.Context) SourceAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceAuthOutput).ToSourceAuthPtrOutputWithContext(ctx)
+}
+
+// SourceAuthPtrInput is an input type that accepts SourceAuthArgs, SourceAuthPtr and SourceAuthPtrOutput values.
+// You can construct a concrete instance of `SourceAuthPtrInput` via:
+//
+//	        SourceAuthArgs{...}
+//
+//	or:
+//
+//	        nil
+type SourceAuthPtrInput interface {
+	pulumi.Input
+
+	ToSourceAuthPtrOutput() SourceAuthPtrOutput
+	ToSourceAuthPtrOutputWithContext(context.Context) SourceAuthPtrOutput
+}
+
+type sourceAuthPtrType SourceAuthArgs
+
+func SourceAuthPtr(v *SourceAuthArgs) SourceAuthPtrInput {
+	return (*sourceAuthPtrType)(v)
+}
+
+func (*sourceAuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceAuth)(nil)).Elem()
+}
+
+func (i *sourceAuthPtrType) ToSourceAuthPtrOutput() SourceAuthPtrOutput {
+	return i.ToSourceAuthPtrOutputWithContext(context.Background())
+}
+
+func (i *sourceAuthPtrType) ToSourceAuthPtrOutputWithContext(ctx context.Context) SourceAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceAuthPtrOutput)
+}
+
+// Definition of SourceAuth
+type SourceAuthOutput struct{ *pulumi.OutputState }
+
+func (SourceAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceAuth)(nil)).Elem()
+}
+
+func (o SourceAuthOutput) ToSourceAuthOutput() SourceAuthOutput {
+	return o
+}
+
+func (o SourceAuthOutput) ToSourceAuthOutputWithContext(ctx context.Context) SourceAuthOutput {
+	return o
+}
+
+func (o SourceAuthOutput) ToSourceAuthPtrOutput() SourceAuthPtrOutput {
+	return o.ToSourceAuthPtrOutputWithContext(context.Background())
+}
+
+func (o SourceAuthOutput) ToSourceAuthPtrOutputWithContext(ctx context.Context) SourceAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceAuth) *SourceAuth {
+		return &v
+	}).(SourceAuthPtrOutput)
+}
+
+// <p>The resource value that applies to the specified authorization type.</p>
+func (o SourceAuthOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceAuth) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+// <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
+func (o SourceAuthOutput) Type() SourceAuthTypeEnumValuePtrOutput {
+	return o.ApplyT(func(v SourceAuth) *SourceAuthTypeEnumValue { return v.Type }).(SourceAuthTypeEnumValuePtrOutput)
+}
+
+type SourceAuthPtrOutput struct{ *pulumi.OutputState }
+
+func (SourceAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceAuth)(nil)).Elem()
+}
+
+func (o SourceAuthPtrOutput) ToSourceAuthPtrOutput() SourceAuthPtrOutput {
+	return o
+}
+
+func (o SourceAuthPtrOutput) ToSourceAuthPtrOutputWithContext(ctx context.Context) SourceAuthPtrOutput {
+	return o
+}
+
+func (o SourceAuthPtrOutput) Elem() SourceAuthOutput {
+	return o.ApplyT(func(v *SourceAuth) SourceAuth {
+		if v != nil {
+			return *v
+		}
+		var ret SourceAuth
+		return ret
+	}).(SourceAuthOutput)
+}
+
+// <p>The resource value that applies to the specified authorization type.</p>
+func (o SourceAuthPtrOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Resource
+	}).(pulumi.StringPtrOutput)
+}
+
+// <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
+func (o SourceAuthPtrOutput) Type() SourceAuthTypeEnumValuePtrOutput {
+	return o.ApplyT(func(v *SourceAuth) *SourceAuthTypeEnumValue {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(SourceAuthTypeEnumValuePtrOutput)
+}
+
+// Definition of SourceAuth
+type SourceAuthResponse struct {
+	// <p>The resource value that applies to the specified authorization type.</p>
+	Resource *string `pulumi:"resource"`
+	// <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
+	Type *SourceAuthTypeEnumValueResponse `pulumi:"type"`
+}
+
+// Definition of SourceAuth
+type SourceAuthResponseOutput struct{ *pulumi.OutputState }
+
+func (SourceAuthResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceAuthResponse)(nil)).Elem()
+}
+
+func (o SourceAuthResponseOutput) ToSourceAuthResponseOutput() SourceAuthResponseOutput {
+	return o
+}
+
+func (o SourceAuthResponseOutput) ToSourceAuthResponseOutputWithContext(ctx context.Context) SourceAuthResponseOutput {
+	return o
+}
+
+// <p>The resource value that applies to the specified authorization type.</p>
+func (o SourceAuthResponseOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceAuthResponse) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+// <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
+func (o SourceAuthResponseOutput) Type() SourceAuthTypeEnumValueResponsePtrOutput {
+	return o.ApplyT(func(v SourceAuthResponse) *SourceAuthTypeEnumValueResponse { return v.Type }).(SourceAuthTypeEnumValueResponsePtrOutput)
+}
+
+type SourceAuthResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SourceAuthResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceAuthResponse)(nil)).Elem()
+}
+
+func (o SourceAuthResponsePtrOutput) ToSourceAuthResponsePtrOutput() SourceAuthResponsePtrOutput {
+	return o
+}
+
+func (o SourceAuthResponsePtrOutput) ToSourceAuthResponsePtrOutputWithContext(ctx context.Context) SourceAuthResponsePtrOutput {
+	return o
+}
+
+func (o SourceAuthResponsePtrOutput) Elem() SourceAuthResponseOutput {
+	return o.ApplyT(func(v *SourceAuthResponse) SourceAuthResponse {
+		if v != nil {
+			return *v
+		}
+		var ret SourceAuthResponse
+		return ret
+	}).(SourceAuthResponseOutput)
+}
+
+// <p>The resource value that applies to the specified authorization type.</p>
+func (o SourceAuthResponsePtrOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceAuthResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Resource
+	}).(pulumi.StringPtrOutput)
+}
+
+// <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
+func (o SourceAuthResponsePtrOutput) Type() SourceAuthTypeEnumValueResponsePtrOutput {
+	return o.ApplyT(func(v *SourceAuthResponse) *SourceAuthTypeEnumValueResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(SourceAuthTypeEnumValueResponsePtrOutput)
+}
+
+// Definition of SourceAuthTypeEnumValue
+type SourceAuthTypeEnumValue struct {
+	// Property value
+	Value *string `pulumi:"value"`
+}
+
+// SourceAuthTypeEnumValueInput is an input type that accepts SourceAuthTypeEnumValueArgs and SourceAuthTypeEnumValueOutput values.
+// You can construct a concrete instance of `SourceAuthTypeEnumValueInput` via:
+//
+//	SourceAuthTypeEnumValueArgs{...}
+type SourceAuthTypeEnumValueInput interface {
+	pulumi.Input
+
+	ToSourceAuthTypeEnumValueOutput() SourceAuthTypeEnumValueOutput
+	ToSourceAuthTypeEnumValueOutputWithContext(context.Context) SourceAuthTypeEnumValueOutput
+}
+
+// Definition of SourceAuthTypeEnumValue
+type SourceAuthTypeEnumValueArgs struct {
+	// Property value
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (SourceAuthTypeEnumValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceAuthTypeEnumValue)(nil)).Elem()
+}
+
+func (i SourceAuthTypeEnumValueArgs) ToSourceAuthTypeEnumValueOutput() SourceAuthTypeEnumValueOutput {
+	return i.ToSourceAuthTypeEnumValueOutputWithContext(context.Background())
+}
+
+func (i SourceAuthTypeEnumValueArgs) ToSourceAuthTypeEnumValueOutputWithContext(ctx context.Context) SourceAuthTypeEnumValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceAuthTypeEnumValueOutput)
+}
+
+func (i SourceAuthTypeEnumValueArgs) ToSourceAuthTypeEnumValuePtrOutput() SourceAuthTypeEnumValuePtrOutput {
+	return i.ToSourceAuthTypeEnumValuePtrOutputWithContext(context.Background())
+}
+
+func (i SourceAuthTypeEnumValueArgs) ToSourceAuthTypeEnumValuePtrOutputWithContext(ctx context.Context) SourceAuthTypeEnumValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceAuthTypeEnumValueOutput).ToSourceAuthTypeEnumValuePtrOutputWithContext(ctx)
+}
+
+// SourceAuthTypeEnumValuePtrInput is an input type that accepts SourceAuthTypeEnumValueArgs, SourceAuthTypeEnumValuePtr and SourceAuthTypeEnumValuePtrOutput values.
+// You can construct a concrete instance of `SourceAuthTypeEnumValuePtrInput` via:
+//
+//	        SourceAuthTypeEnumValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type SourceAuthTypeEnumValuePtrInput interface {
+	pulumi.Input
+
+	ToSourceAuthTypeEnumValuePtrOutput() SourceAuthTypeEnumValuePtrOutput
+	ToSourceAuthTypeEnumValuePtrOutputWithContext(context.Context) SourceAuthTypeEnumValuePtrOutput
+}
+
+type sourceAuthTypeEnumValuePtrType SourceAuthTypeEnumValueArgs
+
+func SourceAuthTypeEnumValuePtr(v *SourceAuthTypeEnumValueArgs) SourceAuthTypeEnumValuePtrInput {
+	return (*sourceAuthTypeEnumValuePtrType)(v)
+}
+
+func (*sourceAuthTypeEnumValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceAuthTypeEnumValue)(nil)).Elem()
+}
+
+func (i *sourceAuthTypeEnumValuePtrType) ToSourceAuthTypeEnumValuePtrOutput() SourceAuthTypeEnumValuePtrOutput {
+	return i.ToSourceAuthTypeEnumValuePtrOutputWithContext(context.Background())
+}
+
+func (i *sourceAuthTypeEnumValuePtrType) ToSourceAuthTypeEnumValuePtrOutputWithContext(ctx context.Context) SourceAuthTypeEnumValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceAuthTypeEnumValuePtrOutput)
+}
+
+// Definition of SourceAuthTypeEnumValue
+type SourceAuthTypeEnumValueOutput struct{ *pulumi.OutputState }
+
+func (SourceAuthTypeEnumValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceAuthTypeEnumValue)(nil)).Elem()
+}
+
+func (o SourceAuthTypeEnumValueOutput) ToSourceAuthTypeEnumValueOutput() SourceAuthTypeEnumValueOutput {
+	return o
+}
+
+func (o SourceAuthTypeEnumValueOutput) ToSourceAuthTypeEnumValueOutputWithContext(ctx context.Context) SourceAuthTypeEnumValueOutput {
+	return o
+}
+
+func (o SourceAuthTypeEnumValueOutput) ToSourceAuthTypeEnumValuePtrOutput() SourceAuthTypeEnumValuePtrOutput {
+	return o.ToSourceAuthTypeEnumValuePtrOutputWithContext(context.Background())
+}
+
+func (o SourceAuthTypeEnumValueOutput) ToSourceAuthTypeEnumValuePtrOutputWithContext(ctx context.Context) SourceAuthTypeEnumValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceAuthTypeEnumValue) *SourceAuthTypeEnumValue {
+		return &v
+	}).(SourceAuthTypeEnumValuePtrOutput)
+}
+
+// Property value
+func (o SourceAuthTypeEnumValueOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SourceAuthTypeEnumValue) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type SourceAuthTypeEnumValuePtrOutput struct{ *pulumi.OutputState }
+
+func (SourceAuthTypeEnumValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceAuthTypeEnumValue)(nil)).Elem()
+}
+
+func (o SourceAuthTypeEnumValuePtrOutput) ToSourceAuthTypeEnumValuePtrOutput() SourceAuthTypeEnumValuePtrOutput {
+	return o
+}
+
+func (o SourceAuthTypeEnumValuePtrOutput) ToSourceAuthTypeEnumValuePtrOutputWithContext(ctx context.Context) SourceAuthTypeEnumValuePtrOutput {
+	return o
+}
+
+func (o SourceAuthTypeEnumValuePtrOutput) Elem() SourceAuthTypeEnumValueOutput {
+	return o.ApplyT(func(v *SourceAuthTypeEnumValue) SourceAuthTypeEnumValue {
+		if v != nil {
+			return *v
+		}
+		var ret SourceAuthTypeEnumValue
+		return ret
+	}).(SourceAuthTypeEnumValueOutput)
+}
+
+// Property value
+func (o SourceAuthTypeEnumValuePtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SourceAuthTypeEnumValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
-	pulumi.RegisterOutputType(LocalSecondaryIndexResponseOutput{})
-	pulumi.RegisterOutputType(LocalSecondaryIndexResponseArrayOutput{})
-	pulumi.RegisterOutputType(LocationOutput{})
-	pulumi.RegisterOutputType(LocationPtrOutput{})
-	pulumi.RegisterOutputType(LocationResponseOutput{})
-	pulumi.RegisterOutputType(LocationResponsePtrOutput{})
 	pulumi.RegisterOutputType(LogConfigOutput{})
 	pulumi.RegisterOutputType(LogConfigPtrOutput{})
 	pulumi.RegisterOutputType(LogConfigResponseOutput{})
@@ -63806,8 +63880,6 @@ func init() {
 	pulumi.RegisterOutputType(PublishMetricActionPtrOutput{})
 	pulumi.RegisterOutputType(PublishMetricActionResponseOutput{})
 	pulumi.RegisterOutputType(PublishMetricActionResponsePtrOutput{})
-	pulumi.RegisterOutputType(PublishMetricActionResponseV1Output{})
-	pulumi.RegisterOutputType(PublishMetricActionResponseV1PtrOutput{})
 	pulumi.RegisterOutputType(QueryLoggingConfigOutput{})
 	pulumi.RegisterOutputType(QueryLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(QueryLoggingConfigResponseOutput{})
@@ -64263,4 +64335,12 @@ func init() {
 	pulumi.RegisterOutputType(SnsTopicPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SoftwareUpdateOptionsOutput{})
 	pulumi.RegisterOutputType(SoftwareUpdateOptionsPtrOutput{})
+	pulumi.RegisterOutputType(SoftwareUpdateOptionsResponseOutput{})
+	pulumi.RegisterOutputType(SoftwareUpdateOptionsResponsePtrOutput{})
+	pulumi.RegisterOutputType(SourceAuthOutput{})
+	pulumi.RegisterOutputType(SourceAuthPtrOutput{})
+	pulumi.RegisterOutputType(SourceAuthResponseOutput{})
+	pulumi.RegisterOutputType(SourceAuthResponsePtrOutput{})
+	pulumi.RegisterOutputType(SourceAuthTypeEnumValueOutput{})
+	pulumi.RegisterOutputType(SourceAuthTypeEnumValuePtrOutput{})
 }

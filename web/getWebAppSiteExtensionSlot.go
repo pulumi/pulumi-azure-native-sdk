@@ -13,9 +13,9 @@ import (
 
 // Description for Get site extension information by its ID for a web site, or a deployment slot.
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2025-05-01.
 //
-// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWebAppSiteExtensionSlot(ctx *pulumi.Context, args *LookupWebAppSiteExtensionSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppSiteExtensionSlotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppSiteExtensionSlotResult
@@ -29,7 +29,7 @@ func LookupWebAppSiteExtensionSlot(ctx *pulumi.Context, args *LookupWebAppSiteEx
 type LookupWebAppSiteExtensionSlotArgs struct {
 	// Site name.
 	Name string `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Site extension name.
 	SiteExtensionId string `pulumi:"siteExtensionId"`
@@ -59,7 +59,7 @@ type LookupWebAppSiteExtensionSlotResult struct {
 	FeedUrl *string `pulumi:"feedUrl"`
 	// Icon URL.
 	IconUrl *string `pulumi:"iconUrl"`
-	// Resource Id.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Installed timestamp.
 	InstalledDateTime *string `pulumi:"installedDateTime"`
@@ -73,7 +73,7 @@ type LookupWebAppSiteExtensionSlotResult struct {
 	LocalIsLatestVersion *bool `pulumi:"localIsLatestVersion"`
 	// Local path.
 	LocalPath *string `pulumi:"localPath"`
-	// Resource Name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Project URL.
 	ProjectUrl *string `pulumi:"projectUrl"`
@@ -83,8 +83,10 @@ type LookupWebAppSiteExtensionSlotResult struct {
 	PublishedDateTime *string `pulumi:"publishedDateTime"`
 	// Summary description.
 	Summary *string `pulumi:"summary"`
-	Title   *string `pulumi:"title"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	Title      *string            `pulumi:"title"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Version information.
 	Version *string `pulumi:"version"`
@@ -102,7 +104,7 @@ func LookupWebAppSiteExtensionSlotOutput(ctx *pulumi.Context, args LookupWebAppS
 type LookupWebAppSiteExtensionSlotOutputArgs struct {
 	// Site name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Site extension name.
 	SiteExtensionId pulumi.StringInput `pulumi:"siteExtensionId"`
@@ -179,7 +181,7 @@ func (o LookupWebAppSiteExtensionSlotResultOutput) IconUrl() pulumi.StringPtrOut
 	return o.ApplyT(func(v LookupWebAppSiteExtensionSlotResult) *string { return v.IconUrl }).(pulumi.StringPtrOutput)
 }
 
-// Resource Id.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupWebAppSiteExtensionSlotResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppSiteExtensionSlotResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -214,7 +216,7 @@ func (o LookupWebAppSiteExtensionSlotResultOutput) LocalPath() pulumi.StringPtrO
 	return o.ApplyT(func(v LookupWebAppSiteExtensionSlotResult) *string { return v.LocalPath }).(pulumi.StringPtrOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o LookupWebAppSiteExtensionSlotResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppSiteExtensionSlotResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -239,11 +241,16 @@ func (o LookupWebAppSiteExtensionSlotResultOutput) Summary() pulumi.StringPtrOut
 	return o.ApplyT(func(v LookupWebAppSiteExtensionSlotResult) *string { return v.Summary }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupWebAppSiteExtensionSlotResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupWebAppSiteExtensionSlotResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 func (o LookupWebAppSiteExtensionSlotResultOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppSiteExtensionSlotResult) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupWebAppSiteExtensionSlotResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppSiteExtensionSlotResult) string { return v.Type }).(pulumi.StringOutput)
 }

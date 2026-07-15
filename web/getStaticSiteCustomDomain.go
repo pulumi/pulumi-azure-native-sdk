@@ -13,9 +13,9 @@ import (
 
 // Description for Gets an existing custom domain for a particular static site.
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2025-05-01.
 //
-// Other available API versions: 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupStaticSiteCustomDomain(ctx *pulumi.Context, args *LookupStaticSiteCustomDomainArgs, opts ...pulumi.InvokeOption) (*LookupStaticSiteCustomDomainResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStaticSiteCustomDomainResult
@@ -29,9 +29,9 @@ func LookupStaticSiteCustomDomain(ctx *pulumi.Context, args *LookupStaticSiteCus
 type LookupStaticSiteCustomDomainArgs struct {
 	// The custom domain name.
 	DomainName string `pulumi:"domainName"`
-	// Name of the static site resource to search in.
+	// Name of the static site.
 	Name string `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -44,15 +44,17 @@ type LookupStaticSiteCustomDomainResult struct {
 	// The domain name for the static site custom domain.
 	DomainName   string `pulumi:"domainName"`
 	ErrorMessage string `pulumi:"errorMessage"`
-	// Resource Id.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Kind of resource.
 	Kind *string `pulumi:"kind"`
-	// Resource Name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The status of the custom domain
 	Status string `pulumi:"status"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The TXT record validation token
 	ValidationToken string `pulumi:"validationToken"`
@@ -70,9 +72,9 @@ func LookupStaticSiteCustomDomainOutput(ctx *pulumi.Context, args LookupStaticSi
 type LookupStaticSiteCustomDomainOutputArgs struct {
 	// The custom domain name.
 	DomainName pulumi.StringInput `pulumi:"domainName"`
-	// Name of the static site resource to search in.
+	// Name of the static site.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -114,7 +116,7 @@ func (o LookupStaticSiteCustomDomainResultOutput) ErrorMessage() pulumi.StringOu
 	return o.ApplyT(func(v LookupStaticSiteCustomDomainResult) string { return v.ErrorMessage }).(pulumi.StringOutput)
 }
 
-// Resource Id.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupStaticSiteCustomDomainResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticSiteCustomDomainResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -124,7 +126,7 @@ func (o LookupStaticSiteCustomDomainResultOutput) Kind() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v LookupStaticSiteCustomDomainResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o LookupStaticSiteCustomDomainResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticSiteCustomDomainResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -134,7 +136,12 @@ func (o LookupStaticSiteCustomDomainResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticSiteCustomDomainResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupStaticSiteCustomDomainResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupStaticSiteCustomDomainResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupStaticSiteCustomDomainResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticSiteCustomDomainResult) string { return v.Type }).(pulumi.StringOutput)
 }
