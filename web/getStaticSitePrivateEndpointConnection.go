@@ -13,9 +13,9 @@ import (
 
 // Description for Gets a private endpoint connection
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2025-05-01.
 //
-// Other available API versions: 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupStaticSitePrivateEndpointConnection(ctx *pulumi.Context, args *LookupStaticSitePrivateEndpointConnectionArgs, opts ...pulumi.InvokeOption) (*LookupStaticSitePrivateEndpointConnectionResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStaticSitePrivateEndpointConnectionResult
@@ -31,7 +31,7 @@ type LookupStaticSitePrivateEndpointConnectionArgs struct {
 	Name string `pulumi:"name"`
 	// Name of the private endpoint connection.
 	PrivateEndpointConnectionName string `pulumi:"privateEndpointConnectionName"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -39,20 +39,22 @@ type LookupStaticSitePrivateEndpointConnectionArgs struct {
 type LookupStaticSitePrivateEndpointConnectionResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Resource Id.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Private IPAddresses mapped to the remote private endpoint
 	IpAddresses []string `pulumi:"ipAddresses"`
 	// Kind of resource.
 	Kind *string `pulumi:"kind"`
-	// Resource Name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// PrivateEndpoint of a remote private endpoint connection
 	PrivateEndpoint *ArmIdWrapperResponse `pulumi:"privateEndpoint"`
 	// The state of a private link connection
 	PrivateLinkServiceConnectionState *PrivateLinkConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
 	ProvisioningState                 string                              `pulumi:"provisioningState"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -70,7 +72,7 @@ type LookupStaticSitePrivateEndpointConnectionOutputArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// Name of the private endpoint connection.
 	PrivateEndpointConnectionName pulumi.StringInput `pulumi:"privateEndpointConnectionName"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -98,7 +100,7 @@ func (o LookupStaticSitePrivateEndpointConnectionResultOutput) AzureApiVersion()
 	return o.ApplyT(func(v LookupStaticSitePrivateEndpointConnectionResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// Resource Id.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupStaticSitePrivateEndpointConnectionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticSitePrivateEndpointConnectionResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -113,7 +115,7 @@ func (o LookupStaticSitePrivateEndpointConnectionResultOutput) Kind() pulumi.Str
 	return o.ApplyT(func(v LookupStaticSitePrivateEndpointConnectionResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o LookupStaticSitePrivateEndpointConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticSitePrivateEndpointConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -136,7 +138,12 @@ func (o LookupStaticSitePrivateEndpointConnectionResultOutput) ProvisioningState
 	return o.ApplyT(func(v LookupStaticSitePrivateEndpointConnectionResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupStaticSitePrivateEndpointConnectionResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupStaticSitePrivateEndpointConnectionResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupStaticSitePrivateEndpointConnectionResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticSitePrivateEndpointConnectionResult) string { return v.Type }).(pulumi.StringOutput)
 }

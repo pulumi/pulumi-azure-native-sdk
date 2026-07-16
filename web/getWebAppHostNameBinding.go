@@ -13,9 +13,9 @@ import (
 
 // Description for Get the named hostname binding for an app (or deployment slot, if specified).
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2025-05-01.
 //
-// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWebAppHostNameBinding(ctx *pulumi.Context, args *LookupWebAppHostNameBindingArgs, opts ...pulumi.InvokeOption) (*LookupWebAppHostNameBindingResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppHostNameBindingResult
@@ -31,7 +31,7 @@ type LookupWebAppHostNameBindingArgs struct {
 	HostName string `pulumi:"hostName"`
 	// Name of the app.
 	Name string `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -49,19 +49,21 @@ type LookupWebAppHostNameBindingResult struct {
 	DomainId *string `pulumi:"domainId"`
 	// Hostname type.
 	HostNameType *string `pulumi:"hostNameType"`
-	// Resource Id.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Kind of resource.
 	Kind *string `pulumi:"kind"`
-	// Resource Name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// App Service app name.
 	SiteName *string `pulumi:"siteName"`
 	// SSL type
 	SslState *string `pulumi:"sslState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// SSL certificate thumbprint
 	Thumbprint *string `pulumi:"thumbprint"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Virtual IP address assigned to the hostname if IP based SSL is enabled.
 	VirtualIP string `pulumi:"virtualIP"`
@@ -81,7 +83,7 @@ type LookupWebAppHostNameBindingOutputArgs struct {
 	HostName pulumi.StringInput `pulumi:"hostName"`
 	// Name of the app.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -134,7 +136,7 @@ func (o LookupWebAppHostNameBindingResultOutput) HostNameType() pulumi.StringPtr
 	return o.ApplyT(func(v LookupWebAppHostNameBindingResult) *string { return v.HostNameType }).(pulumi.StringPtrOutput)
 }
 
-// Resource Id.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupWebAppHostNameBindingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppHostNameBindingResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -144,7 +146,7 @@ func (o LookupWebAppHostNameBindingResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppHostNameBindingResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o LookupWebAppHostNameBindingResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppHostNameBindingResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -159,12 +161,17 @@ func (o LookupWebAppHostNameBindingResultOutput) SslState() pulumi.StringPtrOutp
 	return o.ApplyT(func(v LookupWebAppHostNameBindingResult) *string { return v.SslState }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupWebAppHostNameBindingResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupWebAppHostNameBindingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // SSL certificate thumbprint
 func (o LookupWebAppHostNameBindingResultOutput) Thumbprint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppHostNameBindingResult) *string { return v.Thumbprint }).(pulumi.StringPtrOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupWebAppHostNameBindingResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppHostNameBindingResult) string { return v.Type }).(pulumi.StringOutput)
 }

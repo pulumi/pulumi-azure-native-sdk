@@ -13,9 +13,9 @@ import (
 
 // Description for Get an App Service plan.
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2025-05-01.
 //
-// Other available API versions: 2016-09-01, 2018-02-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-09-01, 2018-02-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAppServicePlan(ctx *pulumi.Context, args *LookupAppServicePlanArgs, opts ...pulumi.InvokeOption) (*LookupAppServicePlanResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAppServicePlanResult
@@ -23,13 +23,13 @@ func LookupAppServicePlan(ctx *pulumi.Context, args *LookupAppServicePlanArgs, o
 	if err != nil {
 		return nil, err
 	}
-	return rv.Defaults(), nil
+	return &rv, nil
 }
 
 type LookupAppServicePlanArgs struct {
 	// Name of the App Service plan.
 	Name string `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -52,8 +52,14 @@ type LookupAppServicePlanResult struct {
 	HostingEnvironmentProfile *HostingEnvironmentProfileResponse `pulumi:"hostingEnvironmentProfile"`
 	// If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
 	HyperV *bool `pulumi:"hyperV"`
-	// Resource Id.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
+	// Managed service identity.
+	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
+	// Install scripts associated with this App Service plan.
+	InstallScripts []InstallScriptResponse `pulumi:"installScripts"`
+	// Whether this server farm is in custom mode.
+	IsCustomMode *bool `pulumi:"isCustomMode"`
 	// If <code>true</code>, this App Service Plan owns spot instances.
 	IsSpot *bool `pulumi:"isSpot"`
 	// Obsolete: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
@@ -62,14 +68,16 @@ type LookupAppServicePlanResult struct {
 	Kind *string `pulumi:"kind"`
 	// Specification for the Kubernetes Environment to use for the App Service plan.
 	KubeEnvironmentProfile *KubeEnvironmentProfileResponse `pulumi:"kubeEnvironmentProfile"`
-	// Resource Location.
+	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// Maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan
 	MaximumElasticWorkerCount *int `pulumi:"maximumElasticWorkerCount"`
 	// Maximum number of instances that can be assigned to this App Service plan.
 	MaximumNumberOfWorkers int `pulumi:"maximumNumberOfWorkers"`
-	// Resource Name.
+	// The name of the resource
 	Name string `pulumi:"name"`
+	// All network settings for the server farm.
+	Network *ServerFarmNetworkSettingsResponse `pulumi:"network"`
 	// Number of apps assigned to this App Service plan.
 	NumberOfSites int `pulumi:"numberOfSites"`
 	// The number of instances that are assigned to this App Service plan.
@@ -77,8 +85,15 @@ type LookupAppServicePlanResult struct {
 	// If <code>true</code>, apps assigned to this App Service plan can be scaled independently.
 	// If <code>false</code>, apps assigned to this App Service plan will scale to all instances of the plan.
 	PerSiteScaling *bool `pulumi:"perSiteScaling"`
+	// Identity to use by platform for various features and integrations using managed identity.
+	PlanDefaultIdentity *DefaultIdentityResponse `pulumi:"planDefaultIdentity"`
 	// Provisioning state of the App Service Plan.
 	ProvisioningState string `pulumi:"provisioningState"`
+	// If <code>true</code>, RDP access is enabled for this App Service plan. Only applicable for IsCustomMode ASPs.
+	// If <code>false</code>, RDP access is disabled.
+	RdpEnabled *bool `pulumi:"rdpEnabled"`
+	// Registry adapters associated with this App Service plan.
+	RegistryAdapters []RegistryAdapterResponse `pulumi:"registryAdapters"`
 	// If Linux app service plan <code>true</code>, <code>false</code> otherwise.
 	Reserved *bool `pulumi:"reserved"`
 	// Resource group of the App Service plan.
@@ -89,15 +104,19 @@ type LookupAppServicePlanResult struct {
 	SpotExpirationTime *string `pulumi:"spotExpirationTime"`
 	// App Service plan status.
 	Status string `pulumi:"status"`
+	// Storage mounts associated with this App Service plan.
+	StorageMounts []StorageMountResponse `pulumi:"storageMounts"`
 	// App Service plan subscription.
 	Subscription string `pulumi:"subscription"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Scaling worker count.
 	TargetWorkerCount *int `pulumi:"targetWorkerCount"`
 	// Scaling worker size ID.
 	TargetWorkerSizeId *int `pulumi:"targetWorkerSizeId"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Target worker tier assigned to the App Service plan.
 	WorkerTierName *string `pulumi:"workerTierName"`
@@ -106,34 +125,6 @@ type LookupAppServicePlanResult struct {
 	ZoneRedundant *bool `pulumi:"zoneRedundant"`
 }
 
-// Defaults sets the appropriate defaults for LookupAppServicePlanResult
-func (val *LookupAppServicePlanResult) Defaults() *LookupAppServicePlanResult {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.HyperV == nil {
-		hyperV_ := false
-		tmp.HyperV = &hyperV_
-	}
-	if tmp.IsXenon == nil {
-		isXenon_ := false
-		tmp.IsXenon = &isXenon_
-	}
-	if tmp.PerSiteScaling == nil {
-		perSiteScaling_ := false
-		tmp.PerSiteScaling = &perSiteScaling_
-	}
-	if tmp.Reserved == nil {
-		reserved_ := false
-		tmp.Reserved = &reserved_
-	}
-	if tmp.ZoneRedundant == nil {
-		zoneRedundant_ := false
-		tmp.ZoneRedundant = &zoneRedundant_
-	}
-	return &tmp
-}
 func LookupAppServicePlanOutput(ctx *pulumi.Context, args LookupAppServicePlanOutputArgs, opts ...pulumi.InvokeOption) LookupAppServicePlanResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAppServicePlanResultOutput, error) {
@@ -146,7 +137,7 @@ func LookupAppServicePlanOutput(ctx *pulumi.Context, args LookupAppServicePlanOu
 type LookupAppServicePlanOutputArgs struct {
 	// Name of the App Service plan.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -212,9 +203,24 @@ func (o LookupAppServicePlanResultOutput) HyperV() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupAppServicePlanResult) *bool { return v.HyperV }).(pulumi.BoolPtrOutput)
 }
 
-// Resource Id.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupAppServicePlanResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppServicePlanResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Managed service identity.
+func (o LookupAppServicePlanResultOutput) Identity() ManagedServiceIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupAppServicePlanResult) *ManagedServiceIdentityResponse { return v.Identity }).(ManagedServiceIdentityResponsePtrOutput)
+}
+
+// Install scripts associated with this App Service plan.
+func (o LookupAppServicePlanResultOutput) InstallScripts() InstallScriptResponseArrayOutput {
+	return o.ApplyT(func(v LookupAppServicePlanResult) []InstallScriptResponse { return v.InstallScripts }).(InstallScriptResponseArrayOutput)
+}
+
+// Whether this server farm is in custom mode.
+func (o LookupAppServicePlanResultOutput) IsCustomMode() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupAppServicePlanResult) *bool { return v.IsCustomMode }).(pulumi.BoolPtrOutput)
 }
 
 // If <code>true</code>, this App Service Plan owns spot instances.
@@ -237,7 +243,7 @@ func (o LookupAppServicePlanResultOutput) KubeEnvironmentProfile() KubeEnvironme
 	return o.ApplyT(func(v LookupAppServicePlanResult) *KubeEnvironmentProfileResponse { return v.KubeEnvironmentProfile }).(KubeEnvironmentProfileResponsePtrOutput)
 }
 
-// Resource Location.
+// The geo-location where the resource lives
 func (o LookupAppServicePlanResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppServicePlanResult) string { return v.Location }).(pulumi.StringOutput)
 }
@@ -252,9 +258,14 @@ func (o LookupAppServicePlanResultOutput) MaximumNumberOfWorkers() pulumi.IntOut
 	return o.ApplyT(func(v LookupAppServicePlanResult) int { return v.MaximumNumberOfWorkers }).(pulumi.IntOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o LookupAppServicePlanResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppServicePlanResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// All network settings for the server farm.
+func (o LookupAppServicePlanResultOutput) Network() ServerFarmNetworkSettingsResponsePtrOutput {
+	return o.ApplyT(func(v LookupAppServicePlanResult) *ServerFarmNetworkSettingsResponse { return v.Network }).(ServerFarmNetworkSettingsResponsePtrOutput)
 }
 
 // Number of apps assigned to this App Service plan.
@@ -273,9 +284,25 @@ func (o LookupAppServicePlanResultOutput) PerSiteScaling() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v LookupAppServicePlanResult) *bool { return v.PerSiteScaling }).(pulumi.BoolPtrOutput)
 }
 
+// Identity to use by platform for various features and integrations using managed identity.
+func (o LookupAppServicePlanResultOutput) PlanDefaultIdentity() DefaultIdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupAppServicePlanResult) *DefaultIdentityResponse { return v.PlanDefaultIdentity }).(DefaultIdentityResponsePtrOutput)
+}
+
 // Provisioning state of the App Service Plan.
 func (o LookupAppServicePlanResultOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppServicePlanResult) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// If <code>true</code>, RDP access is enabled for this App Service plan. Only applicable for IsCustomMode ASPs.
+// If <code>false</code>, RDP access is disabled.
+func (o LookupAppServicePlanResultOutput) RdpEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupAppServicePlanResult) *bool { return v.RdpEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Registry adapters associated with this App Service plan.
+func (o LookupAppServicePlanResultOutput) RegistryAdapters() RegistryAdapterResponseArrayOutput {
+	return o.ApplyT(func(v LookupAppServicePlanResult) []RegistryAdapterResponse { return v.RegistryAdapters }).(RegistryAdapterResponseArrayOutput)
 }
 
 // If Linux app service plan <code>true</code>, <code>false</code> otherwise.
@@ -303,9 +330,19 @@ func (o LookupAppServicePlanResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppServicePlanResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
+// Storage mounts associated with this App Service plan.
+func (o LookupAppServicePlanResultOutput) StorageMounts() StorageMountResponseArrayOutput {
+	return o.ApplyT(func(v LookupAppServicePlanResult) []StorageMountResponse { return v.StorageMounts }).(StorageMountResponseArrayOutput)
+}
+
 // App Service plan subscription.
 func (o LookupAppServicePlanResultOutput) Subscription() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppServicePlanResult) string { return v.Subscription }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupAppServicePlanResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAppServicePlanResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.
@@ -323,7 +360,7 @@ func (o LookupAppServicePlanResultOutput) TargetWorkerSizeId() pulumi.IntPtrOutp
 	return o.ApplyT(func(v LookupAppServicePlanResult) *int { return v.TargetWorkerSizeId }).(pulumi.IntPtrOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupAppServicePlanResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppServicePlanResult) string { return v.Type }).(pulumi.StringOutput)
 }

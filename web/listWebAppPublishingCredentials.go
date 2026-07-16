@@ -13,9 +13,9 @@ import (
 
 // Description for Gets the Git/FTP publishing credentials of an app.
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2025-05-01.
 //
-// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListWebAppPublishingCredentials(ctx *pulumi.Context, args *ListWebAppPublishingCredentialsArgs, opts ...pulumi.InvokeOption) (*ListWebAppPublishingCredentialsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWebAppPublishingCredentialsResult
@@ -29,17 +29,17 @@ func ListWebAppPublishingCredentials(ctx *pulumi.Context, args *ListWebAppPublis
 type ListWebAppPublishingCredentialsArgs struct {
 	// Name of the app.
 	Name string `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // User credentials used for publishing activity.
 type ListWebAppPublishingCredentialsResult struct {
-	// Resource Id.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Kind of resource.
 	Kind *string `pulumi:"kind"`
-	// Resource Name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Password used for publishing.
 	PublishingPassword *string `pulumi:"publishingPassword"`
@@ -51,7 +51,9 @@ type ListWebAppPublishingCredentialsResult struct {
 	PublishingUserName string `pulumi:"publishingUserName"`
 	// Url of SCM site.
 	ScmUri *string `pulumi:"scmUri"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -67,7 +69,7 @@ func ListWebAppPublishingCredentialsOutput(ctx *pulumi.Context, args ListWebAppP
 type ListWebAppPublishingCredentialsOutputArgs struct {
 	// Name of the app.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -90,7 +92,7 @@ func (o ListWebAppPublishingCredentialsResultOutput) ToListWebAppPublishingCrede
 	return o
 }
 
-// Resource Id.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o ListWebAppPublishingCredentialsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppPublishingCredentialsResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -100,7 +102,7 @@ func (o ListWebAppPublishingCredentialsResultOutput) Kind() pulumi.StringPtrOutp
 	return o.ApplyT(func(v ListWebAppPublishingCredentialsResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o ListWebAppPublishingCredentialsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppPublishingCredentialsResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -130,7 +132,12 @@ func (o ListWebAppPublishingCredentialsResultOutput) ScmUri() pulumi.StringPtrOu
 	return o.ApplyT(func(v ListWebAppPublishingCredentialsResult) *string { return v.ScmUri }).(pulumi.StringPtrOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o ListWebAppPublishingCredentialsResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v ListWebAppPublishingCredentialsResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ListWebAppPublishingCredentialsResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppPublishingCredentialsResult) string { return v.Type }).(pulumi.StringOutput)
 }

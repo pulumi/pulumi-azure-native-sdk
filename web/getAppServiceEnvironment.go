@@ -13,9 +13,9 @@ import (
 
 // Description for Get the properties of an App Service Environment.
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2025-05-01.
 //
-// Other available API versions: 2016-09-01, 2018-02-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-09-01, 2018-02-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAppServiceEnvironment(ctx *pulumi.Context, args *LookupAppServiceEnvironmentArgs, opts ...pulumi.InvokeOption) (*LookupAppServiceEnvironmentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAppServiceEnvironmentResult
@@ -29,7 +29,7 @@ func LookupAppServiceEnvironment(ctx *pulumi.Context, args *LookupAppServiceEnvi
 type LookupAppServiceEnvironmentArgs struct {
 	// Name of the App Service Environment.
 	Name string `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -49,7 +49,7 @@ type LookupAppServiceEnvironmentResult struct {
 	FrontEndScaleFactor *int `pulumi:"frontEndScaleFactor"`
 	// Flag that displays whether an ASE has linux workers or not
 	HasLinuxWorkers bool `pulumi:"hasLinuxWorkers"`
-	// Resource Id.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
 	InternalLoadBalancingMode *string `pulumi:"internalLoadBalancingMode"`
@@ -57,7 +57,7 @@ type LookupAppServiceEnvironmentResult struct {
 	IpsslAddressCount *int `pulumi:"ipsslAddressCount"`
 	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind *string `pulumi:"kind"`
-	// Resource Location.
+	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// Maximum number of VMs in the App Service Environment.
 	MaximumNumberOfMachines int `pulumi:"maximumNumberOfMachines"`
@@ -65,7 +65,7 @@ type LookupAppServiceEnvironmentResult struct {
 	MultiRoleCount int `pulumi:"multiRoleCount"`
 	// Front-end VM size, e.g. "Medium", "Large".
 	MultiSize *string `pulumi:"multiSize"`
-	// Resource Name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Full view of networking configuration for an ASE.
 	NetworkingConfiguration *AseV3NetworkingConfigurationResponse `pulumi:"networkingConfiguration"`
@@ -74,11 +74,13 @@ type LookupAppServiceEnvironmentResult struct {
 	// Current status of the App Service Environment.
 	Status string `pulumi:"status"`
 	// <code>true</code> if the App Service Environment is suspended; otherwise, <code>false</code>. The environment can be suspended, e.g. when the management endpoint is no longer available
-	//  (most likely because NSG blocked the incoming traffic).
+	// (most likely because NSG blocked the incoming traffic).
 	Suspended bool `pulumi:"suspended"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Whether an upgrade is available for this App Service Environment.
 	UpgradeAvailability string `pulumi:"upgradeAvailability"`
@@ -116,7 +118,7 @@ func LookupAppServiceEnvironmentOutput(ctx *pulumi.Context, args LookupAppServic
 type LookupAppServiceEnvironmentOutputArgs struct {
 	// Name of the App Service Environment.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -176,7 +178,7 @@ func (o LookupAppServiceEnvironmentResultOutput) HasLinuxWorkers() pulumi.BoolOu
 	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) bool { return v.HasLinuxWorkers }).(pulumi.BoolOutput)
 }
 
-// Resource Id.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupAppServiceEnvironmentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -196,7 +198,7 @@ func (o LookupAppServiceEnvironmentResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Resource Location.
+// The geo-location where the resource lives
 func (o LookupAppServiceEnvironmentResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) string { return v.Location }).(pulumi.StringOutput)
 }
@@ -216,7 +218,7 @@ func (o LookupAppServiceEnvironmentResultOutput) MultiSize() pulumi.StringPtrOut
 	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) *string { return v.MultiSize }).(pulumi.StringPtrOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o LookupAppServiceEnvironmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -239,10 +241,14 @@ func (o LookupAppServiceEnvironmentResultOutput) Status() pulumi.StringOutput {
 }
 
 // <code>true</code> if the App Service Environment is suspended; otherwise, <code>false</code>. The environment can be suspended, e.g. when the management endpoint is no longer available
-//
-//	(most likely because NSG blocked the incoming traffic).
+// (most likely because NSG blocked the incoming traffic).
 func (o LookupAppServiceEnvironmentResultOutput) Suspended() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) bool { return v.Suspended }).(pulumi.BoolOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupAppServiceEnvironmentResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.
@@ -250,7 +256,7 @@ func (o LookupAppServiceEnvironmentResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupAppServiceEnvironmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppServiceEnvironmentResult) string { return v.Type }).(pulumi.StringOutput)
 }

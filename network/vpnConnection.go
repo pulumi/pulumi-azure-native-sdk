@@ -49,7 +49,7 @@ type VpnConnection struct {
 	// Id of the connected vpn site.
 	RemoteVpnSite SubResourceResponsePtrOutput `pulumi:"remoteVpnSite"`
 	// The Routing Configuration indicating the associated and propagated route tables on this connection.
-	RoutingConfiguration RoutingConfigurationResponseV6PtrOutput `pulumi:"routingConfiguration"`
+	RoutingConfiguration RoutingConfigurationResponseV1PtrOutput `pulumi:"routingConfiguration"`
 	// Routing weight for vpn connection.
 	RoutingWeight pulumi.IntPtrOutput `pulumi:"routingWeight"`
 	// SharedKey for the vpn connection.
@@ -278,7 +278,7 @@ type vpnConnectionArgs struct {
 	// The resource group name of the VpnGateway.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The Routing Configuration indicating the associated and propagated route tables on this connection.
-	RoutingConfiguration *RoutingConfigurationV6 `pulumi:"routingConfiguration"`
+	RoutingConfiguration *RoutingConfigurationV1 `pulumi:"routingConfiguration"`
 	// Routing weight for vpn connection.
 	RoutingWeight *int `pulumi:"routingWeight"`
 	// SharedKey for the vpn connection.
@@ -322,7 +322,7 @@ type VpnConnectionArgs struct {
 	// The resource group name of the VpnGateway.
 	ResourceGroupName pulumi.StringInput
 	// The Routing Configuration indicating the associated and propagated route tables on this connection.
-	RoutingConfiguration RoutingConfigurationV6PtrInput
+	RoutingConfiguration RoutingConfigurationV1PtrInput
 	// Routing weight for vpn connection.
 	RoutingWeight pulumi.IntPtrInput
 	// SharedKey for the vpn connection.
@@ -447,8 +447,8 @@ func (o VpnConnectionOutput) RemoteVpnSite() SubResourceResponsePtrOutput {
 }
 
 // The Routing Configuration indicating the associated and propagated route tables on this connection.
-func (o VpnConnectionOutput) RoutingConfiguration() RoutingConfigurationResponseV6PtrOutput {
-	return o.ApplyT(func(v *VpnConnection) RoutingConfigurationResponseV6PtrOutput { return v.RoutingConfiguration }).(RoutingConfigurationResponseV6PtrOutput)
+func (o VpnConnectionOutput) RoutingConfiguration() RoutingConfigurationResponseV1PtrOutput {
+	return o.ApplyT(func(v *VpnConnection) RoutingConfigurationResponseV1PtrOutput { return v.RoutingConfiguration }).(RoutingConfigurationResponseV1PtrOutput)
 }
 
 // Routing weight for vpn connection.

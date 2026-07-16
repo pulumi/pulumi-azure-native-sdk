@@ -14,9 +14,9 @@ import (
 
 // Configuration settings for the Azure App Service Authentication / Authorization V2 feature.
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2025-05-01.
 //
-// Other available API versions: 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type WebAppAuthSettingsV2WithoutSecretsSlot struct {
 	pulumi.CustomResourceState
 
@@ -28,15 +28,17 @@ type WebAppAuthSettingsV2WithoutSecretsSlot struct {
 	HttpSettings HttpSettingsResponsePtrOutput `pulumi:"httpSettings"`
 	// The configuration settings of each of the identity providers used to configure App Service Authentication/Authorization.
 	IdentityProviders IdentityProvidersResponsePtrOutput `pulumi:"identityProviders"`
-	// Kind of resource.
+	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// The configuration settings of the login flow of users using App Service Authentication/Authorization.
 	Login LoginResponsePtrOutput `pulumi:"login"`
-	// Resource Name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The configuration settings of the platform of App Service Authentication/Authorization.
 	Platform AuthPlatformResponsePtrOutput `pulumi:"platform"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -160,18 +162,18 @@ type webAppAuthSettingsV2WithoutSecretsSlotArgs struct {
 	// The configuration settings of the HTTP requests for authentication and authorization requests made against App Service Authentication/Authorization.
 	HttpSettings *HttpSettings `pulumi:"httpSettings"`
 	// The configuration settings of each of the identity providers used to configure App Service Authentication/Authorization.
-	IdentityProviders *IdentityProviders `pulumi:"identityProviders"`
-	// Kind of resource.
+	IdentityProviders *IdentityProvidersV1 `pulumi:"identityProviders"`
+	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind *string `pulumi:"kind"`
 	// The configuration settings of the login flow of users using App Service Authentication/Authorization.
 	Login *Login `pulumi:"login"`
-	// Name of web app.
+	// Name of the app.
 	Name string `pulumi:"name"`
 	// The configuration settings of the platform of App Service Authentication/Authorization.
 	Platform *AuthPlatform `pulumi:"platform"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Name of web app slot. If not specified then will default to production slot.
+	// Name of the deployment slot. If a slot is not specified, the API will get the settings for the production slot.
 	Slot string `pulumi:"slot"`
 }
 
@@ -182,18 +184,18 @@ type WebAppAuthSettingsV2WithoutSecretsSlotArgs struct {
 	// The configuration settings of the HTTP requests for authentication and authorization requests made against App Service Authentication/Authorization.
 	HttpSettings HttpSettingsPtrInput
 	// The configuration settings of each of the identity providers used to configure App Service Authentication/Authorization.
-	IdentityProviders IdentityProvidersPtrInput
-	// Kind of resource.
+	IdentityProviders IdentityProvidersV1PtrInput
+	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind pulumi.StringPtrInput
 	// The configuration settings of the login flow of users using App Service Authentication/Authorization.
 	Login LoginPtrInput
-	// Name of web app.
+	// Name of the app.
 	Name pulumi.StringInput
 	// The configuration settings of the platform of App Service Authentication/Authorization.
 	Platform AuthPlatformPtrInput
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Name of web app slot. If not specified then will default to production slot.
+	// Name of the deployment slot. If a slot is not specified, the API will get the settings for the production slot.
 	Slot pulumi.StringInput
 }
 
@@ -258,7 +260,7 @@ func (o WebAppAuthSettingsV2WithoutSecretsSlotOutput) IdentityProviders() Identi
 	}).(IdentityProvidersResponsePtrOutput)
 }
 
-// Kind of resource.
+// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 func (o WebAppAuthSettingsV2WithoutSecretsSlotOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebAppAuthSettingsV2WithoutSecretsSlot) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -268,7 +270,7 @@ func (o WebAppAuthSettingsV2WithoutSecretsSlotOutput) Login() LoginResponsePtrOu
 	return o.ApplyT(func(v *WebAppAuthSettingsV2WithoutSecretsSlot) LoginResponsePtrOutput { return v.Login }).(LoginResponsePtrOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o WebAppAuthSettingsV2WithoutSecretsSlotOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAppAuthSettingsV2WithoutSecretsSlot) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -278,7 +280,12 @@ func (o WebAppAuthSettingsV2WithoutSecretsSlotOutput) Platform() AuthPlatformRes
 	return o.ApplyT(func(v *WebAppAuthSettingsV2WithoutSecretsSlot) AuthPlatformResponsePtrOutput { return v.Platform }).(AuthPlatformResponsePtrOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o WebAppAuthSettingsV2WithoutSecretsSlotOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *WebAppAuthSettingsV2WithoutSecretsSlot) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o WebAppAuthSettingsV2WithoutSecretsSlotOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAppAuthSettingsV2WithoutSecretsSlot) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

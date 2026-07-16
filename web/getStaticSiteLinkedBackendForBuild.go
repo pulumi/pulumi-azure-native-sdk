@@ -11,11 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Static Site Linked Backend ARM resource.
+// Returns the details of a linked backend linked to a static site build by name
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2025-05-01.
 //
-// Other available API versions: 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupStaticSiteLinkedBackendForBuild(ctx *pulumi.Context, args *LookupStaticSiteLinkedBackendForBuildArgs, opts ...pulumi.InvokeOption) (*LookupStaticSiteLinkedBackendForBuildResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStaticSiteLinkedBackendForBuildResult
@@ -33,7 +33,7 @@ type LookupStaticSiteLinkedBackendForBuildArgs struct {
 	LinkedBackendName string `pulumi:"linkedBackendName"`
 	// Name of the static site
 	Name string `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -45,17 +45,19 @@ type LookupStaticSiteLinkedBackendForBuildResult struct {
 	BackendResourceId *string `pulumi:"backendResourceId"`
 	// The date and time on which the backend was linked to the static site.
 	CreatedOn string `pulumi:"createdOn"`
-	// Resource Id.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Kind of resource.
 	Kind *string `pulumi:"kind"`
-	// Resource Name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The provisioning state of the linking process.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// The region of the backend linked to the static site
 	Region *string `pulumi:"region"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -75,7 +77,7 @@ type LookupStaticSiteLinkedBackendForBuildOutputArgs struct {
 	LinkedBackendName pulumi.StringInput `pulumi:"linkedBackendName"`
 	// Name of the static site
 	Name pulumi.StringInput `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -113,7 +115,7 @@ func (o LookupStaticSiteLinkedBackendForBuildResultOutput) CreatedOn() pulumi.St
 	return o.ApplyT(func(v LookupStaticSiteLinkedBackendForBuildResult) string { return v.CreatedOn }).(pulumi.StringOutput)
 }
 
-// Resource Id.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupStaticSiteLinkedBackendForBuildResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticSiteLinkedBackendForBuildResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -123,7 +125,7 @@ func (o LookupStaticSiteLinkedBackendForBuildResultOutput) Kind() pulumi.StringP
 	return o.ApplyT(func(v LookupStaticSiteLinkedBackendForBuildResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o LookupStaticSiteLinkedBackendForBuildResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticSiteLinkedBackendForBuildResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -138,7 +140,12 @@ func (o LookupStaticSiteLinkedBackendForBuildResultOutput) Region() pulumi.Strin
 	return o.ApplyT(func(v LookupStaticSiteLinkedBackendForBuildResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupStaticSiteLinkedBackendForBuildResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupStaticSiteLinkedBackendForBuildResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupStaticSiteLinkedBackendForBuildResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticSiteLinkedBackendForBuildResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -11,11 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Workflow properties definition.
+// Lists logic app's connections for web site, or a deployment slot.
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2025-05-01.
 //
-// Other available API versions: 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListWebAppWorkflowsConnections(ctx *pulumi.Context, args *ListWebAppWorkflowsConnectionsArgs, opts ...pulumi.InvokeOption) (*ListWebAppWorkflowsConnectionsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWebAppWorkflowsConnectionsResult
@@ -27,25 +27,27 @@ func ListWebAppWorkflowsConnections(ctx *pulumi.Context, args *ListWebAppWorkflo
 }
 
 type ListWebAppWorkflowsConnectionsArgs struct {
-	// Site name.
+	// Name of the app.
 	Name string `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
 // Workflow properties definition.
 type ListWebAppWorkflowsConnectionsResult struct {
-	// The resource id.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The resource kind.
 	Kind *string `pulumi:"kind"`
 	// The resource location.
 	Location *string `pulumi:"location"`
-	// Gets the resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Additional workflow properties.
-	Properties WorkflowEnvelopeResponseProperties `pulumi:"properties"`
-	// Gets the resource type.
+	Properties WorkflowEnvelopePropertiesResponse `pulumi:"properties"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -59,9 +61,9 @@ func ListWebAppWorkflowsConnectionsOutput(ctx *pulumi.Context, args ListWebAppWo
 }
 
 type ListWebAppWorkflowsConnectionsOutputArgs struct {
-	// Site name.
+	// Name of the app.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -84,7 +86,7 @@ func (o ListWebAppWorkflowsConnectionsResultOutput) ToListWebAppWorkflowsConnect
 	return o
 }
 
-// The resource id.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o ListWebAppWorkflowsConnectionsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppWorkflowsConnectionsResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -99,17 +101,22 @@ func (o ListWebAppWorkflowsConnectionsResultOutput) Location() pulumi.StringPtrO
 	return o.ApplyT(func(v ListWebAppWorkflowsConnectionsResult) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
 
-// Gets the resource name.
+// The name of the resource
 func (o ListWebAppWorkflowsConnectionsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppWorkflowsConnectionsResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Additional workflow properties.
-func (o ListWebAppWorkflowsConnectionsResultOutput) Properties() WorkflowEnvelopeResponsePropertiesOutput {
-	return o.ApplyT(func(v ListWebAppWorkflowsConnectionsResult) WorkflowEnvelopeResponseProperties { return v.Properties }).(WorkflowEnvelopeResponsePropertiesOutput)
+func (o ListWebAppWorkflowsConnectionsResultOutput) Properties() WorkflowEnvelopePropertiesResponseOutput {
+	return o.ApplyT(func(v ListWebAppWorkflowsConnectionsResult) WorkflowEnvelopePropertiesResponse { return v.Properties }).(WorkflowEnvelopePropertiesResponseOutput)
 }
 
-// Gets the resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o ListWebAppWorkflowsConnectionsResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v ListWebAppWorkflowsConnectionsResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ListWebAppWorkflowsConnectionsResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppWorkflowsConnectionsResult) string { return v.Type }).(pulumi.StringOutput)
 }

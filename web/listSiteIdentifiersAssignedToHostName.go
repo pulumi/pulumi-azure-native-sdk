@@ -13,9 +13,9 @@ import (
 
 // Description for List all apps that are assigned to a hostname.
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2025-05-01.
 //
-// Other available API versions: 2016-03-01, 2018-02-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-03-01, 2018-02-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListSiteIdentifiersAssignedToHostName(ctx *pulumi.Context, args *ListSiteIdentifiersAssignedToHostNameArgs, opts ...pulumi.InvokeOption) (*ListSiteIdentifiersAssignedToHostNameResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListSiteIdentifiersAssignedToHostNameResult
@@ -33,9 +33,9 @@ type ListSiteIdentifiersAssignedToHostNameArgs struct {
 
 // Collection of identifiers.
 type ListSiteIdentifiersAssignedToHostNameResult struct {
-	// Link to next page of resources.
-	NextLink string `pulumi:"nextLink"`
-	// Collection of resources.
+	// The link to the next page of items
+	NextLink *string `pulumi:"nextLink"`
+	// The Identifier items on this page
 	Value []IdentifierResponse `pulumi:"value"`
 }
 
@@ -72,12 +72,12 @@ func (o ListSiteIdentifiersAssignedToHostNameResultOutput) ToListSiteIdentifiers
 	return o
 }
 
-// Link to next page of resources.
-func (o ListSiteIdentifiersAssignedToHostNameResultOutput) NextLink() pulumi.StringOutput {
-	return o.ApplyT(func(v ListSiteIdentifiersAssignedToHostNameResult) string { return v.NextLink }).(pulumi.StringOutput)
+// The link to the next page of items
+func (o ListSiteIdentifiersAssignedToHostNameResultOutput) NextLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListSiteIdentifiersAssignedToHostNameResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
-// Collection of resources.
+// The Identifier items on this page
 func (o ListSiteIdentifiersAssignedToHostNameResultOutput) Value() IdentifierResponseArrayOutput {
 	return o.ApplyT(func(v ListSiteIdentifiersAssignedToHostNameResult) []IdentifierResponse { return v.Value }).(IdentifierResponseArrayOutput)
 }
