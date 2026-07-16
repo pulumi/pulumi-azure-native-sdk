@@ -13,9 +13,9 @@ import (
 
 // Description for Get the named public certificate for an app (or deployment slot, if specified).
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2025-05-01.
 //
-// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWebAppPublicCertificateSlot(ctx *pulumi.Context, args *LookupWebAppPublicCertificateSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppPublicCertificateSlotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppPublicCertificateSlotResult
@@ -31,7 +31,7 @@ type LookupWebAppPublicCertificateSlotArgs struct {
 	Name string `pulumi:"name"`
 	// Public certificate name.
 	PublicCertificateName string `pulumi:"publicCertificateName"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Name of the deployment slot. If a slot is not specified, the API the named binding for the production slot.
 	Slot string `pulumi:"slot"`
@@ -43,17 +43,19 @@ type LookupWebAppPublicCertificateSlotResult struct {
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Public Certificate byte array
 	Blob *string `pulumi:"blob"`
-	// Resource Id.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Kind of resource.
 	Kind *string `pulumi:"kind"`
-	// Resource Name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Public Certificate Location
 	PublicCertificateLocation *string `pulumi:"publicCertificateLocation"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Certificate Thumbprint
 	Thumbprint string `pulumi:"thumbprint"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -71,7 +73,7 @@ type LookupWebAppPublicCertificateSlotOutputArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// Public certificate name.
 	PublicCertificateName pulumi.StringInput `pulumi:"publicCertificateName"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Name of the deployment slot. If a slot is not specified, the API the named binding for the production slot.
 	Slot pulumi.StringInput `pulumi:"slot"`
@@ -106,7 +108,7 @@ func (o LookupWebAppPublicCertificateSlotResultOutput) Blob() pulumi.StringPtrOu
 	return o.ApplyT(func(v LookupWebAppPublicCertificateSlotResult) *string { return v.Blob }).(pulumi.StringPtrOutput)
 }
 
-// Resource Id.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupWebAppPublicCertificateSlotResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppPublicCertificateSlotResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -116,7 +118,7 @@ func (o LookupWebAppPublicCertificateSlotResultOutput) Kind() pulumi.StringPtrOu
 	return o.ApplyT(func(v LookupWebAppPublicCertificateSlotResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o LookupWebAppPublicCertificateSlotResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppPublicCertificateSlotResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -126,12 +128,17 @@ func (o LookupWebAppPublicCertificateSlotResultOutput) PublicCertificateLocation
 	return o.ApplyT(func(v LookupWebAppPublicCertificateSlotResult) *string { return v.PublicCertificateLocation }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupWebAppPublicCertificateSlotResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupWebAppPublicCertificateSlotResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Certificate Thumbprint
 func (o LookupWebAppPublicCertificateSlotResultOutput) Thumbprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppPublicCertificateSlotResult) string { return v.Thumbprint }).(pulumi.StringOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupWebAppPublicCertificateSlotResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppPublicCertificateSlotResult) string { return v.Type }).(pulumi.StringOutput)
 }

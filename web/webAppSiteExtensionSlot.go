@@ -14,9 +14,9 @@ import (
 
 // Site Extension Information.
 //
-// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+// Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 //
-// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type WebAppSiteExtensionSlot struct {
 	pulumi.CustomResourceState
 
@@ -52,7 +52,7 @@ type WebAppSiteExtensionSlot struct {
 	LocalIsLatestVersion pulumi.BoolPtrOutput `pulumi:"localIsLatestVersion"`
 	// Local path.
 	LocalPath pulumi.StringPtrOutput `pulumi:"localPath"`
-	// Resource Name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Project URL.
 	ProjectUrl pulumi.StringPtrOutput `pulumi:"projectUrl"`
@@ -62,8 +62,10 @@ type WebAppSiteExtensionSlot struct {
 	PublishedDateTime pulumi.StringPtrOutput `pulumi:"publishedDateTime"`
 	// Summary description.
 	Summary pulumi.StringPtrOutput `pulumi:"summary"`
-	Title   pulumi.StringPtrOutput `pulumi:"title"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	Title      pulumi.StringPtrOutput   `pulumi:"title"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Version information.
 	Version pulumi.StringPtrOutput `pulumi:"version"`
@@ -189,7 +191,7 @@ func (WebAppSiteExtensionSlotState) ElementType() reflect.Type {
 type webAppSiteExtensionSlotArgs struct {
 	// Site name.
 	Name string `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Site extension name.
 	SiteExtensionId *string `pulumi:"siteExtensionId"`
@@ -201,7 +203,7 @@ type webAppSiteExtensionSlotArgs struct {
 type WebAppSiteExtensionSlotArgs struct {
 	// Site name.
 	Name pulumi.StringInput
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Site extension name.
 	SiteExtensionId pulumi.StringPtrInput
@@ -326,7 +328,7 @@ func (o WebAppSiteExtensionSlotOutput) LocalPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebAppSiteExtensionSlot) pulumi.StringPtrOutput { return v.LocalPath }).(pulumi.StringPtrOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o WebAppSiteExtensionSlotOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAppSiteExtensionSlot) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -351,11 +353,16 @@ func (o WebAppSiteExtensionSlotOutput) Summary() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebAppSiteExtensionSlot) pulumi.StringPtrOutput { return v.Summary }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o WebAppSiteExtensionSlotOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *WebAppSiteExtensionSlot) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 func (o WebAppSiteExtensionSlotOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebAppSiteExtensionSlot) pulumi.StringPtrOutput { return v.Title }).(pulumi.StringPtrOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o WebAppSiteExtensionSlotOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAppSiteExtensionSlot) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

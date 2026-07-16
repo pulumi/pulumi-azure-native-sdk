@@ -22457,7 +22457,7 @@ type MachineAssessmentSettingsResponse struct {
 	SizingCriterion *string `pulumi:"sizingCriterion"`
 	// Gets or sets the duration for which the VMs are up in the on-premises
 	// environment.
-	VmUptime *VmUptimeResponseV2 `pulumi:"vmUptime"`
+	VmUptime *VmUptimeResponseV1 `pulumi:"vmUptime"`
 }
 
 // Properties of an assessment.
@@ -22565,8 +22565,8 @@ func (o MachineAssessmentSettingsResponseOutput) SizingCriterion() pulumi.String
 
 // Gets or sets the duration for which the VMs are up in the on-premises
 // environment.
-func (o MachineAssessmentSettingsResponseOutput) VmUptime() VmUptimeResponseV2PtrOutput {
-	return o.ApplyT(func(v MachineAssessmentSettingsResponse) *VmUptimeResponseV2 { return v.VmUptime }).(VmUptimeResponseV2PtrOutput)
+func (o MachineAssessmentSettingsResponseOutput) VmUptime() VmUptimeResponseV1PtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettingsResponse) *VmUptimeResponseV1 { return v.VmUptime }).(VmUptimeResponseV1PtrOutput)
 }
 
 type MachineAssessmentSettingsResponsePtrOutput struct{ *pulumi.OutputState }
@@ -22768,13 +22768,13 @@ func (o MachineAssessmentSettingsResponsePtrOutput) SizingCriterion() pulumi.Str
 
 // Gets or sets the duration for which the VMs are up in the on-premises
 // environment.
-func (o MachineAssessmentSettingsResponsePtrOutput) VmUptime() VmUptimeResponseV2PtrOutput {
-	return o.ApplyT(func(v *MachineAssessmentSettingsResponse) *VmUptimeResponseV2 {
+func (o MachineAssessmentSettingsResponsePtrOutput) VmUptime() VmUptimeResponseV1PtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettingsResponse) *VmUptimeResponseV1 {
 		if v == nil {
 			return nil
 		}
 		return v.VmUptime
-	}).(VmUptimeResponseV2PtrOutput)
+	}).(VmUptimeResponseV1PtrOutput)
 }
 
 // Assessment properties class.
@@ -43317,83 +43317,6 @@ func (o VmUptimeResponseV1PtrOutput) HoursPerDay() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Details on the total up-time for the VM.
-type VmUptimeResponseV2 struct {
-	// Number of days in a month for VM uptime.
-	DaysPerMonth *int `pulumi:"daysPerMonth"`
-	// Number of hours per day for VM uptime.
-	HoursPerDay *int `pulumi:"hoursPerDay"`
-}
-
-// Details on the total up-time for the VM.
-type VmUptimeResponseV2Output struct{ *pulumi.OutputState }
-
-func (VmUptimeResponseV2Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*VmUptimeResponseV2)(nil)).Elem()
-}
-
-func (o VmUptimeResponseV2Output) ToVmUptimeResponseV2Output() VmUptimeResponseV2Output {
-	return o
-}
-
-func (o VmUptimeResponseV2Output) ToVmUptimeResponseV2OutputWithContext(ctx context.Context) VmUptimeResponseV2Output {
-	return o
-}
-
-// Number of days in a month for VM uptime.
-func (o VmUptimeResponseV2Output) DaysPerMonth() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v VmUptimeResponseV2) *int { return v.DaysPerMonth }).(pulumi.IntPtrOutput)
-}
-
-// Number of hours per day for VM uptime.
-func (o VmUptimeResponseV2Output) HoursPerDay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v VmUptimeResponseV2) *int { return v.HoursPerDay }).(pulumi.IntPtrOutput)
-}
-
-type VmUptimeResponseV2PtrOutput struct{ *pulumi.OutputState }
-
-func (VmUptimeResponseV2PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VmUptimeResponseV2)(nil)).Elem()
-}
-
-func (o VmUptimeResponseV2PtrOutput) ToVmUptimeResponseV2PtrOutput() VmUptimeResponseV2PtrOutput {
-	return o
-}
-
-func (o VmUptimeResponseV2PtrOutput) ToVmUptimeResponseV2PtrOutputWithContext(ctx context.Context) VmUptimeResponseV2PtrOutput {
-	return o
-}
-
-func (o VmUptimeResponseV2PtrOutput) Elem() VmUptimeResponseV2Output {
-	return o.ApplyT(func(v *VmUptimeResponseV2) VmUptimeResponseV2 {
-		if v != nil {
-			return *v
-		}
-		var ret VmUptimeResponseV2
-		return ret
-	}).(VmUptimeResponseV2Output)
-}
-
-// Number of days in a month for VM uptime.
-func (o VmUptimeResponseV2PtrOutput) DaysPerMonth() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *VmUptimeResponseV2) *int {
-		if v == nil {
-			return nil
-		}
-		return v.DaysPerMonth
-	}).(pulumi.IntPtrOutput)
-}
-
-// Number of hours per day for VM uptime.
-func (o VmUptimeResponseV2PtrOutput) HoursPerDay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *VmUptimeResponseV2) *int {
-		if v == nil {
-			return nil
-		}
-		return v.HoursPerDay
-	}).(pulumi.IntPtrOutput)
-}
-
 // Migration Wave Properties class.
 type WaveProperties struct {
 	// ARG query and other details to create workloads within a wave
@@ -47426,8 +47349,6 @@ func init() {
 	pulumi.RegisterOutputType(VmUptimeResponsePtrOutput{})
 	pulumi.RegisterOutputType(VmUptimeResponseV1Output{})
 	pulumi.RegisterOutputType(VmUptimeResponseV1PtrOutput{})
-	pulumi.RegisterOutputType(VmUptimeResponseV2Output{})
-	pulumi.RegisterOutputType(VmUptimeResponseV2PtrOutput{})
 	pulumi.RegisterOutputType(WavePropertiesOutput{})
 	pulumi.RegisterOutputType(WavePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(WavePropertiesResponseOutput{})

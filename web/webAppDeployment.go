@@ -14,9 +14,9 @@ import (
 
 // User credentials used for publishing activity.
 //
-// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+// Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 //
-// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type WebAppDeployment struct {
 	pulumi.CustomResourceState
 
@@ -38,13 +38,15 @@ type WebAppDeployment struct {
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Details about deployment status.
 	Message pulumi.StringPtrOutput `pulumi:"message"`
-	// Resource Name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Start time.
 	StartTime pulumi.StringPtrOutput `pulumi:"startTime"`
 	// Deployment status.
 	Status pulumi.IntPtrOutput `pulumi:"status"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -178,7 +180,7 @@ type webAppDeploymentArgs struct {
 	Details *string `pulumi:"details"`
 	// End time.
 	EndTime *string `pulumi:"endTime"`
-	// ID of an existing deployment.
+	// Deployment ID.
 	Id *string `pulumi:"id"`
 	// Kind of resource.
 	Kind *string `pulumi:"kind"`
@@ -186,7 +188,7 @@ type webAppDeploymentArgs struct {
 	Message *string `pulumi:"message"`
 	// Name of the app.
 	Name string `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Start time.
 	StartTime *string `pulumi:"startTime"`
@@ -208,7 +210,7 @@ type WebAppDeploymentArgs struct {
 	Details pulumi.StringPtrInput
 	// End time.
 	EndTime pulumi.StringPtrInput
-	// ID of an existing deployment.
+	// Deployment ID.
 	Id pulumi.StringPtrInput
 	// Kind of resource.
 	Kind pulumi.StringPtrInput
@@ -216,7 +218,7 @@ type WebAppDeploymentArgs struct {
 	Message pulumi.StringPtrInput
 	// Name of the app.
 	Name pulumi.StringInput
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Start time.
 	StartTime pulumi.StringPtrInput
@@ -306,7 +308,7 @@ func (o WebAppDeploymentOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebAppDeployment) pulumi.StringPtrOutput { return v.Message }).(pulumi.StringPtrOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o WebAppDeploymentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAppDeployment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -321,7 +323,12 @@ func (o WebAppDeploymentOutput) Status() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WebAppDeployment) pulumi.IntPtrOutput { return v.Status }).(pulumi.IntPtrOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o WebAppDeploymentOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *WebAppDeployment) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o WebAppDeploymentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAppDeployment) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

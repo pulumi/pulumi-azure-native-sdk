@@ -14,9 +14,9 @@ import (
 
 // Configuration settings for the Azure App Service Authentication / Authorization feature.
 //
-// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+// Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 //
-// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type WebAppAuthSettings struct {
 	pulumi.CustomResourceState
 
@@ -137,7 +137,7 @@ type WebAppAuthSettings struct {
 	// call the token refresh API. The default is 72 hours.
 	TokenRefreshExtensionHours pulumi.Float64PtrOutput `pulumi:"tokenRefreshExtensionHours"`
 	// <code>true</code> to durably store platform-specific security tokens that are obtained during login flows; otherwise, <code>false</code>.
-	//  The default is <code>false</code>.
+	// The default is <code>false</code>.
 	TokenStoreEnabled pulumi.BoolPtrOutput `pulumi:"tokenStoreEnabled"`
 	// The OAuth 1.0a consumer key of the Twitter application used for sign-in.
 	// This setting is required for enabling Twitter Sign-In.
@@ -382,9 +382,9 @@ type webAppAuthSettingsArgs struct {
 	// This setting is optional. If not specified, "wl.basic" is used as the default scope.
 	// Microsoft Account Scopes and permissions documentation: https://msdn.microsoft.com/en-us/library/dn631845.aspx
 	MicrosoftAccountOAuthScopes []string `pulumi:"microsoftAccountOAuthScopes"`
-	// Name of web app.
+	// Name of the app.
 	Name string `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The RuntimeVersion of the Authentication / Authorization feature in use for the current app.
 	// The setting in this value can control the behavior of certain features in the Authentication / Authorization module.
@@ -393,7 +393,7 @@ type webAppAuthSettingsArgs struct {
 	// call the token refresh API. The default is 72 hours.
 	TokenRefreshExtensionHours *float64 `pulumi:"tokenRefreshExtensionHours"`
 	// <code>true</code> to durably store platform-specific security tokens that are obtained during login flows; otherwise, <code>false</code>.
-	//  The default is <code>false</code>.
+	// The default is <code>false</code>.
 	TokenStoreEnabled *bool `pulumi:"tokenStoreEnabled"`
 	// The OAuth 1.0a consumer key of the Twitter application used for sign-in.
 	// This setting is required for enabling Twitter Sign-In.
@@ -520,9 +520,9 @@ type WebAppAuthSettingsArgs struct {
 	// This setting is optional. If not specified, "wl.basic" is used as the default scope.
 	// Microsoft Account Scopes and permissions documentation: https://msdn.microsoft.com/en-us/library/dn631845.aspx
 	MicrosoftAccountOAuthScopes pulumi.StringArrayInput
-	// Name of web app.
+	// Name of the app.
 	Name pulumi.StringInput
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The RuntimeVersion of the Authentication / Authorization feature in use for the current app.
 	// The setting in this value can control the behavior of certain features in the Authentication / Authorization module.
@@ -531,7 +531,7 @@ type WebAppAuthSettingsArgs struct {
 	// call the token refresh API. The default is 72 hours.
 	TokenRefreshExtensionHours pulumi.Float64PtrInput
 	// <code>true</code> to durably store platform-specific security tokens that are obtained during login flows; otherwise, <code>false</code>.
-	//  The default is <code>false</code>.
+	// The default is <code>false</code>.
 	TokenStoreEnabled pulumi.BoolPtrInput
 	// The OAuth 1.0a consumer key of the Twitter application used for sign-in.
 	// This setting is required for enabling Twitter Sign-In.
@@ -809,8 +809,7 @@ func (o WebAppAuthSettingsOutput) TokenRefreshExtensionHours() pulumi.Float64Ptr
 }
 
 // <code>true</code> to durably store platform-specific security tokens that are obtained during login flows; otherwise, <code>false</code>.
-//
-//	The default is <code>false</code>.
+// The default is <code>false</code>.
 func (o WebAppAuthSettingsOutput) TokenStoreEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WebAppAuthSettings) pulumi.BoolPtrOutput { return v.TokenStoreEnabled }).(pulumi.BoolPtrOutput)
 }

@@ -13,9 +13,9 @@ import (
 
 // Description for Get a deployment by its ID for an app, or a deployment slot.
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2025-05-01.
 //
-// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWebAppDeployment(ctx *pulumi.Context, args *LookupWebAppDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupWebAppDeploymentResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppDeploymentResult
@@ -31,7 +31,7 @@ type LookupWebAppDeploymentArgs struct {
 	Id string `pulumi:"id"`
 	// Name of the app.
 	Name string `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -51,19 +51,21 @@ type LookupWebAppDeploymentResult struct {
 	Details *string `pulumi:"details"`
 	// End time.
 	EndTime *string `pulumi:"endTime"`
-	// Resource Id.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Kind of resource.
 	Kind *string `pulumi:"kind"`
 	// Details about deployment status.
 	Message *string `pulumi:"message"`
-	// Resource Name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Start time.
 	StartTime *string `pulumi:"startTime"`
 	// Deployment status.
 	Status *int `pulumi:"status"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -81,7 +83,7 @@ type LookupWebAppDeploymentOutputArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// Name of the app.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -139,7 +141,7 @@ func (o LookupWebAppDeploymentResultOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppDeploymentResult) *string { return v.EndTime }).(pulumi.StringPtrOutput)
 }
 
-// Resource Id.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupWebAppDeploymentResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppDeploymentResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -154,7 +156,7 @@ func (o LookupWebAppDeploymentResultOutput) Message() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppDeploymentResult) *string { return v.Message }).(pulumi.StringPtrOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o LookupWebAppDeploymentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppDeploymentResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -169,7 +171,12 @@ func (o LookupWebAppDeploymentResultOutput) Status() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v LookupWebAppDeploymentResult) *int { return v.Status }).(pulumi.IntPtrOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupWebAppDeploymentResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupWebAppDeploymentResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupWebAppDeploymentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppDeploymentResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -13,9 +13,9 @@ import (
 
 // Description for Gets the details of a static site.
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2025-05-01.
 //
-// Other available API versions: 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupStaticSite(ctx *pulumi.Context, args *LookupStaticSiteArgs, opts ...pulumi.InvokeOption) (*LookupStaticSiteResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStaticSiteResult
@@ -29,11 +29,11 @@ func LookupStaticSite(ctx *pulumi.Context, args *LookupStaticSiteArgs, opts ...p
 type LookupStaticSiteArgs struct {
 	// Name of the static site.
 	Name string `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
-// Static Site ARM resource.
+// Concrete tracked resource types can be created by aliasing this type using a specific property type.
 type LookupStaticSiteResult struct {
 	// <code>false</code> if config file is locked for this static web app; otherwise, <code>true</code>.
 	AllowConfigFileUpdates *bool `pulumi:"allowConfigFileUpdates"`
@@ -53,19 +53,19 @@ type LookupStaticSiteResult struct {
 	DefaultHostname string `pulumi:"defaultHostname"`
 	// State indicating the status of the enterprise grade CDN serving traffic to the static web app.
 	EnterpriseGradeCdnStatus *string `pulumi:"enterpriseGradeCdnStatus"`
-	// Resource Id.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Managed service identity.
 	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
 	// Identity to use for Key Vault Reference authentication.
 	KeyVaultReferenceIdentity string `pulumi:"keyVaultReferenceIdentity"`
-	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+	// Kind of resource.
 	Kind *string `pulumi:"kind"`
 	// Backends linked to the static side
 	LinkedBackends []StaticSiteLinkedBackendResponse `pulumi:"linkedBackends"`
-	// Resource Location.
+	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
-	// Resource Name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Private endpoint connections
 	PrivateEndpointConnections []ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
@@ -81,11 +81,13 @@ type LookupStaticSiteResult struct {
 	Sku *SkuDescriptionResponse `pulumi:"sku"`
 	// State indicating whether staging environments are allowed or not allowed for a static web app.
 	StagingEnvironmentPolicy *string `pulumi:"stagingEnvironmentPolicy"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Template options for generating a new repository.
 	TemplateProperties *StaticSiteTemplateOptionsResponse `pulumi:"templateProperties"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// User provided function apps registered with the static site
 	UserProvidedFunctionApps []StaticSiteUserProvidedFunctionAppResponse `pulumi:"userProvidedFunctionApps"`
@@ -103,7 +105,7 @@ func LookupStaticSiteOutput(ctx *pulumi.Context, args LookupStaticSiteOutputArgs
 type LookupStaticSiteOutputArgs struct {
 	// Name of the static site.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -111,7 +113,7 @@ func (LookupStaticSiteOutputArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*LookupStaticSiteArgs)(nil)).Elem()
 }
 
-// Static Site ARM resource.
+// Concrete tracked resource types can be created by aliasing this type using a specific property type.
 type LookupStaticSiteResultOutput struct{ *pulumi.OutputState }
 
 func (LookupStaticSiteResultOutput) ElementType() reflect.Type {
@@ -171,7 +173,7 @@ func (o LookupStaticSiteResultOutput) EnterpriseGradeCdnStatus() pulumi.StringPt
 	return o.ApplyT(func(v LookupStaticSiteResult) *string { return v.EnterpriseGradeCdnStatus }).(pulumi.StringPtrOutput)
 }
 
-// Resource Id.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupStaticSiteResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticSiteResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -186,7 +188,7 @@ func (o LookupStaticSiteResultOutput) KeyVaultReferenceIdentity() pulumi.StringO
 	return o.ApplyT(func(v LookupStaticSiteResult) string { return v.KeyVaultReferenceIdentity }).(pulumi.StringOutput)
 }
 
-// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+// Kind of resource.
 func (o LookupStaticSiteResultOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupStaticSiteResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -196,12 +198,12 @@ func (o LookupStaticSiteResultOutput) LinkedBackends() StaticSiteLinkedBackendRe
 	return o.ApplyT(func(v LookupStaticSiteResult) []StaticSiteLinkedBackendResponse { return v.LinkedBackends }).(StaticSiteLinkedBackendResponseArrayOutput)
 }
 
-// Resource Location.
+// The geo-location where the resource lives
 func (o LookupStaticSiteResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticSiteResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o LookupStaticSiteResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticSiteResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -243,6 +245,11 @@ func (o LookupStaticSiteResultOutput) StagingEnvironmentPolicy() pulumi.StringPt
 	return o.ApplyT(func(v LookupStaticSiteResult) *string { return v.StagingEnvironmentPolicy }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupStaticSiteResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupStaticSiteResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Resource tags.
 func (o LookupStaticSiteResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupStaticSiteResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
@@ -253,7 +260,7 @@ func (o LookupStaticSiteResultOutput) TemplateProperties() StaticSiteTemplateOpt
 	return o.ApplyT(func(v LookupStaticSiteResult) *StaticSiteTemplateOptionsResponse { return v.TemplateProperties }).(StaticSiteTemplateOptionsResponsePtrOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupStaticSiteResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticSiteResult) string { return v.Type }).(pulumi.StringOutput)
 }

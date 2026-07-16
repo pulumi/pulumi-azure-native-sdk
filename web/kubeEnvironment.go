@@ -14,9 +14,9 @@ import (
 
 // A Kubernetes cluster specialized for web workloads by Azure App Service
 //
-// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+// Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 //
-// Other available API versions: 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type KubeEnvironment struct {
 	pulumi.CustomResourceState
 
@@ -43,19 +43,21 @@ type KubeEnvironment struct {
 	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// Only visible within Vnet/Subnet
 	InternalLoadBalancerEnabled pulumi.BoolPtrOutput `pulumi:"internalLoadBalancerEnabled"`
-	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+	// Kind of resource.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
-	// Resource Location.
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Resource Name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Provisioning state of the Kubernetes Environment.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Static IP of the KubeEnvironment
 	StaticIp pulumi.StringPtrOutput `pulumi:"staticIp"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -164,13 +166,13 @@ type kubeEnvironmentArgs struct {
 	ExtendedLocation *ExtendedLocation `pulumi:"extendedLocation"`
 	// Only visible within Vnet/Subnet
 	InternalLoadBalancerEnabled *bool `pulumi:"internalLoadBalancerEnabled"`
-	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+	// Kind of resource.
 	Kind *string `pulumi:"kind"`
-	// Resource Location.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Name of the Kubernetes Environment.
 	Name *string `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Static IP of the KubeEnvironment
 	StaticIp *string `pulumi:"staticIp"`
@@ -197,13 +199,13 @@ type KubeEnvironmentArgs struct {
 	ExtendedLocation ExtendedLocationPtrInput
 	// Only visible within Vnet/Subnet
 	InternalLoadBalancerEnabled pulumi.BoolPtrInput
-	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+	// Kind of resource.
 	Kind pulumi.StringPtrInput
-	// Resource Location.
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Name of the Kubernetes Environment.
 	Name pulumi.StringPtrInput
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Static IP of the KubeEnvironment
 	StaticIp pulumi.StringPtrInput
@@ -303,17 +305,17 @@ func (o KubeEnvironmentOutput) InternalLoadBalancerEnabled() pulumi.BoolPtrOutpu
 	return o.ApplyT(func(v *KubeEnvironment) pulumi.BoolPtrOutput { return v.InternalLoadBalancerEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+// Kind of resource.
 func (o KubeEnvironmentOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeEnvironment) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Resource Location.
+// The geo-location where the resource lives
 func (o KubeEnvironmentOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubeEnvironment) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o KubeEnvironmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubeEnvironment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -328,12 +330,17 @@ func (o KubeEnvironmentOutput) StaticIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubeEnvironment) pulumi.StringPtrOutput { return v.StaticIp }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o KubeEnvironmentOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *KubeEnvironment) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Resource tags.
 func (o KubeEnvironmentOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *KubeEnvironment) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o KubeEnvironmentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubeEnvironment) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
