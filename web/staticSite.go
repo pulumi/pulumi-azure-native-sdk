@@ -12,11 +12,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Static Site ARM resource.
+// Concrete tracked resource types can be created by aliasing this type using a specific property type.
 //
-// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+// Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 //
-// Other available API versions: 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type StaticSite struct {
 	pulumi.CustomResourceState
 
@@ -42,13 +42,13 @@ type StaticSite struct {
 	Identity ManagedServiceIdentityResponsePtrOutput `pulumi:"identity"`
 	// Identity to use for Key Vault Reference authentication.
 	KeyVaultReferenceIdentity pulumi.StringOutput `pulumi:"keyVaultReferenceIdentity"`
-	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+	// Kind of resource.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Backends linked to the static side
 	LinkedBackends StaticSiteLinkedBackendResponseArrayOutput `pulumi:"linkedBackends"`
-	// Resource Location.
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Resource Name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Private endpoint connections
 	PrivateEndpointConnections ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
@@ -64,11 +64,13 @@ type StaticSite struct {
 	Sku SkuDescriptionResponsePtrOutput `pulumi:"sku"`
 	// State indicating whether staging environments are allowed or not allowed for a static web app.
 	StagingEnvironmentPolicy pulumi.StringPtrOutput `pulumi:"stagingEnvironmentPolicy"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Template options for generating a new repository.
 	TemplateProperties StaticSiteTemplateOptionsResponsePtrOutput `pulumi:"templateProperties"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// User provided function apps registered with the static site
 	UserProvidedFunctionApps StaticSiteUserProvidedFunctionAppResponseArrayOutput `pulumi:"userProvidedFunctionApps"`
@@ -187,11 +189,11 @@ type staticSiteArgs struct {
 	EnterpriseGradeCdnStatus *string `pulumi:"enterpriseGradeCdnStatus"`
 	// Managed service identity.
 	Identity *ManagedServiceIdentity `pulumi:"identity"`
-	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+	// Kind of resource.
 	Kind *string `pulumi:"kind"`
-	// Resource Location.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// Name of the static site to create or update.
+	// Name of the static site.
 	Name *string `pulumi:"name"`
 	// The provider that submitted the last deployment to the primary environment of the static site.
 	Provider *string `pulumi:"provider"`
@@ -201,7 +203,7 @@ type staticSiteArgs struct {
 	RepositoryToken *string `pulumi:"repositoryToken"`
 	// URL for the repository of the static site.
 	RepositoryUrl *string `pulumi:"repositoryUrl"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Description of a SKU for a scalable resource.
 	Sku *SkuDescription `pulumi:"sku"`
@@ -225,11 +227,11 @@ type StaticSiteArgs struct {
 	EnterpriseGradeCdnStatus pulumi.StringPtrInput
 	// Managed service identity.
 	Identity ManagedServiceIdentityPtrInput
-	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+	// Kind of resource.
 	Kind pulumi.StringPtrInput
-	// Resource Location.
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// Name of the static site to create or update.
+	// Name of the static site.
 	Name pulumi.StringPtrInput
 	// The provider that submitted the last deployment to the primary environment of the static site.
 	Provider pulumi.StringPtrInput
@@ -239,7 +241,7 @@ type StaticSiteArgs struct {
 	RepositoryToken pulumi.StringPtrInput
 	// URL for the repository of the static site.
 	RepositoryUrl pulumi.StringPtrInput
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Description of a SKU for a scalable resource.
 	Sku SkuDescriptionPtrInput
@@ -343,7 +345,7 @@ func (o StaticSiteOutput) KeyVaultReferenceIdentity() pulumi.StringOutput {
 	return o.ApplyT(func(v *StaticSite) pulumi.StringOutput { return v.KeyVaultReferenceIdentity }).(pulumi.StringOutput)
 }
 
-// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
+// Kind of resource.
 func (o StaticSiteOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StaticSite) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -353,12 +355,12 @@ func (o StaticSiteOutput) LinkedBackends() StaticSiteLinkedBackendResponseArrayO
 	return o.ApplyT(func(v *StaticSite) StaticSiteLinkedBackendResponseArrayOutput { return v.LinkedBackends }).(StaticSiteLinkedBackendResponseArrayOutput)
 }
 
-// Resource Location.
+// The geo-location where the resource lives
 func (o StaticSiteOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *StaticSite) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o StaticSiteOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *StaticSite) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -400,6 +402,11 @@ func (o StaticSiteOutput) StagingEnvironmentPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StaticSite) pulumi.StringPtrOutput { return v.StagingEnvironmentPolicy }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o StaticSiteOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *StaticSite) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Resource tags.
 func (o StaticSiteOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *StaticSite) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
@@ -410,7 +417,7 @@ func (o StaticSiteOutput) TemplateProperties() StaticSiteTemplateOptionsResponse
 	return o.ApplyT(func(v *StaticSite) StaticSiteTemplateOptionsResponsePtrOutput { return v.TemplateProperties }).(StaticSiteTemplateOptionsResponsePtrOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o StaticSiteOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *StaticSite) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

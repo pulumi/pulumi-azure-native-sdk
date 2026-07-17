@@ -13,9 +13,9 @@ import (
 
 // Description for Gets status of a web app backup that may be in progress, including secrets associated with the backup, such as the Azure Storage SAS URL. Also can be used to update the SAS URL for the backup if a new URL is passed in the request body.
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2025-05-01.
 //
-// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListWebAppBackupStatusSecrets(ctx *pulumi.Context, args *ListWebAppBackupStatusSecretsArgs, opts ...pulumi.InvokeOption) (*ListWebAppBackupStatusSecretsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWebAppBackupStatusSecretsResult
@@ -27,7 +27,7 @@ func ListWebAppBackupStatusSecrets(ctx *pulumi.Context, args *ListWebAppBackupSt
 }
 
 type ListWebAppBackupStatusSecretsArgs struct {
-	// ID of backup.
+	// ID of the backup.
 	BackupId string `pulumi:"backupId"`
 	// Name of the backup.
 	BackupName *string `pulumi:"backupName"`
@@ -39,9 +39,9 @@ type ListWebAppBackupStatusSecretsArgs struct {
 	Enabled *bool `pulumi:"enabled"`
 	// Kind of resource.
 	Kind *string `pulumi:"kind"`
-	// Name of web app.
+	// Name of the app.
 	Name string `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// SAS URL to the container.
 	StorageAccountUrl string `pulumi:"storageAccountUrl"`
@@ -72,7 +72,7 @@ type ListWebAppBackupStatusSecretsResult struct {
 	Databases []DatabaseBackupSettingResponse `pulumi:"databases"`
 	// Timestamp when this backup finished.
 	FinishedTimeStamp string `pulumi:"finishedTimeStamp"`
-	// Resource Id.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Kind of resource.
 	Kind *string `pulumi:"kind"`
@@ -80,7 +80,7 @@ type ListWebAppBackupStatusSecretsResult struct {
 	LastRestoreTimeStamp string `pulumi:"lastRestoreTimeStamp"`
 	// Details regarding this backup. Might contain an error message.
 	Log string `pulumi:"log"`
-	// Resource Name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// True if this backup has been created due to a schedule being triggered.
 	Scheduled bool `pulumi:"scheduled"`
@@ -90,7 +90,9 @@ type ListWebAppBackupStatusSecretsResult struct {
 	Status string `pulumi:"status"`
 	// SAS URL for the storage account container which contains this backup.
 	StorageAccountUrl string `pulumi:"storageAccountUrl"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// Size of the original web app which has been backed up.
 	WebsiteSizeInBytes float64 `pulumi:"websiteSizeInBytes"`
@@ -106,7 +108,7 @@ func ListWebAppBackupStatusSecretsOutput(ctx *pulumi.Context, args ListWebAppBac
 }
 
 type ListWebAppBackupStatusSecretsOutputArgs struct {
-	// ID of backup.
+	// ID of the backup.
 	BackupId pulumi.StringInput `pulumi:"backupId"`
 	// Name of the backup.
 	BackupName pulumi.StringPtrInput `pulumi:"backupName"`
@@ -118,9 +120,9 @@ type ListWebAppBackupStatusSecretsOutputArgs struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// Kind of resource.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
-	// Name of web app.
+	// Name of the app.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// SAS URL to the container.
 	StorageAccountUrl pulumi.StringInput `pulumi:"storageAccountUrl"`
@@ -175,7 +177,7 @@ func (o ListWebAppBackupStatusSecretsResultOutput) FinishedTimeStamp() pulumi.St
 	return o.ApplyT(func(v ListWebAppBackupStatusSecretsResult) string { return v.FinishedTimeStamp }).(pulumi.StringOutput)
 }
 
-// Resource Id.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o ListWebAppBackupStatusSecretsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppBackupStatusSecretsResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -195,7 +197,7 @@ func (o ListWebAppBackupStatusSecretsResultOutput) Log() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppBackupStatusSecretsResult) string { return v.Log }).(pulumi.StringOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o ListWebAppBackupStatusSecretsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppBackupStatusSecretsResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -220,7 +222,12 @@ func (o ListWebAppBackupStatusSecretsResultOutput) StorageAccountUrl() pulumi.St
 	return o.ApplyT(func(v ListWebAppBackupStatusSecretsResult) string { return v.StorageAccountUrl }).(pulumi.StringOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o ListWebAppBackupStatusSecretsResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v ListWebAppBackupStatusSecretsResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o ListWebAppBackupStatusSecretsResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ListWebAppBackupStatusSecretsResult) string { return v.Type }).(pulumi.StringOutput)
 }

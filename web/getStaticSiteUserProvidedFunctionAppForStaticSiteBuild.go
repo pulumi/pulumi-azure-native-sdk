@@ -13,9 +13,9 @@ import (
 
 // Description for Gets the details of the user provided function app registered with a static site build
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2025-05-01.
 //
-// Other available API versions: 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuild(ctx *pulumi.Context, args *LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs, opts ...pulumi.InvokeOption) (*LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult
@@ -33,7 +33,7 @@ type LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs struct {
 	FunctionAppName string `pulumi:"functionAppName"`
 	// Name of the static site.
 	Name string `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -47,13 +47,15 @@ type LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult struct {
 	FunctionAppRegion *string `pulumi:"functionAppRegion"`
 	// The resource id of the function app registered with the static site
 	FunctionAppResourceId *string `pulumi:"functionAppResourceId"`
-	// Resource Id.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Kind of resource.
 	Kind *string `pulumi:"kind"`
-	// Resource Name.
+	// The name of the resource
 	Name string `pulumi:"name"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -73,7 +75,7 @@ type LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildOutputArgs struct 
 	FunctionAppName pulumi.StringInput `pulumi:"functionAppName"`
 	// Name of the static site.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -122,7 +124,7 @@ func (o LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput) F
 	}).(pulumi.StringPtrOutput)
 }
 
-// Resource Id.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -132,12 +134,19 @@ func (o LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput) K
 	return o.ApplyT(func(v LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult) SystemDataResponse {
+		return v.SystemData
+	}).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult) string { return v.Type }).(pulumi.StringOutput)
 }

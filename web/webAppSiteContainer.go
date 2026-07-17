@@ -14,9 +14,9 @@ import (
 
 // Container of a site
 //
-// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2023-12-01.
+// Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2023-12-01.
 //
-// Other available API versions: 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type WebAppSiteContainer struct {
 	pulumi.CustomResourceState
 
@@ -38,15 +38,17 @@ type WebAppSiteContainer struct {
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
 	// Last Modified Time
 	LastModifiedTime pulumi.StringOutput `pulumi:"lastModifiedTime"`
-	// Resource Name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Password Secret
 	PasswordSecret pulumi.StringPtrOutput `pulumi:"passwordSecret"`
 	// StartUp Command
 	StartUpCommand pulumi.StringPtrOutput `pulumi:"startUpCommand"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Target Port
 	TargetPort pulumi.StringPtrOutput `pulumi:"targetPort"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// UserManagedIdentity ClientId
 	UserManagedIdentityClientId pulumi.StringPtrOutput `pulumi:"userManagedIdentityClientId"`
@@ -150,7 +152,7 @@ type webAppSiteContainerArgs struct {
 	Name string `pulumi:"name"`
 	// Password Secret
 	PasswordSecret *string `pulumi:"passwordSecret"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// StartUp Command
 	StartUpCommand *string `pulumi:"startUpCommand"`
@@ -184,7 +186,7 @@ type WebAppSiteContainerArgs struct {
 	Name pulumi.StringInput
 	// Password Secret
 	PasswordSecret pulumi.StringPtrInput
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// StartUp Command
 	StartUpCommand pulumi.StringPtrInput
@@ -280,7 +282,7 @@ func (o WebAppSiteContainerOutput) LastModifiedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAppSiteContainer) pulumi.StringOutput { return v.LastModifiedTime }).(pulumi.StringOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o WebAppSiteContainerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAppSiteContainer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -295,12 +297,17 @@ func (o WebAppSiteContainerOutput) StartUpCommand() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebAppSiteContainer) pulumi.StringPtrOutput { return v.StartUpCommand }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o WebAppSiteContainerOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *WebAppSiteContainer) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Target Port
 func (o WebAppSiteContainerOutput) TargetPort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebAppSiteContainer) pulumi.StringPtrOutput { return v.TargetPort }).(pulumi.StringPtrOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o WebAppSiteContainerOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAppSiteContainer) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

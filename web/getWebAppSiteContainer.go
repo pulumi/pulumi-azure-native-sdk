@@ -11,11 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Container of a site
+// Gets a site container of a site, or a deployment slot.
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2025-05-01.
 //
-// Other available API versions: 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWebAppSiteContainer(ctx *pulumi.Context, args *LookupWebAppSiteContainerArgs, opts ...pulumi.InvokeOption) (*LookupWebAppSiteContainerResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppSiteContainerResult
@@ -31,7 +31,7 @@ type LookupWebAppSiteContainerArgs struct {
 	ContainerName string `pulumi:"containerName"`
 	// Name of the app.
 	Name string `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -45,7 +45,7 @@ type LookupWebAppSiteContainerResult struct {
 	CreatedTime string `pulumi:"createdTime"`
 	// List of environment variables
 	EnvironmentVariables []EnvironmentVariableResponse `pulumi:"environmentVariables"`
-	// Resource Id.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Image Name
 	Image string `pulumi:"image"`
@@ -57,15 +57,17 @@ type LookupWebAppSiteContainerResult struct {
 	Kind *string `pulumi:"kind"`
 	// Last Modified Time
 	LastModifiedTime string `pulumi:"lastModifiedTime"`
-	// Resource Name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// Password Secret
 	PasswordSecret *string `pulumi:"passwordSecret"`
 	// StartUp Command
 	StartUpCommand *string `pulumi:"startUpCommand"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Target Port
 	TargetPort *string `pulumi:"targetPort"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// UserManagedIdentity ClientId
 	UserManagedIdentityClientId *string `pulumi:"userManagedIdentityClientId"`
@@ -89,7 +91,7 @@ type LookupWebAppSiteContainerOutputArgs struct {
 	ContainerName pulumi.StringInput `pulumi:"containerName"`
 	// Name of the app.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -132,7 +134,7 @@ func (o LookupWebAppSiteContainerResultOutput) EnvironmentVariables() Environmen
 	return o.ApplyT(func(v LookupWebAppSiteContainerResult) []EnvironmentVariableResponse { return v.EnvironmentVariables }).(EnvironmentVariableResponseArrayOutput)
 }
 
-// Resource Id.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupWebAppSiteContainerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppSiteContainerResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -162,7 +164,7 @@ func (o LookupWebAppSiteContainerResultOutput) LastModifiedTime() pulumi.StringO
 	return o.ApplyT(func(v LookupWebAppSiteContainerResult) string { return v.LastModifiedTime }).(pulumi.StringOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o LookupWebAppSiteContainerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppSiteContainerResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -177,12 +179,17 @@ func (o LookupWebAppSiteContainerResultOutput) StartUpCommand() pulumi.StringPtr
 	return o.ApplyT(func(v LookupWebAppSiteContainerResult) *string { return v.StartUpCommand }).(pulumi.StringPtrOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupWebAppSiteContainerResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupWebAppSiteContainerResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Target Port
 func (o LookupWebAppSiteContainerResultOutput) TargetPort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWebAppSiteContainerResult) *string { return v.TargetPort }).(pulumi.StringPtrOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupWebAppSiteContainerResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppSiteContainerResult) string { return v.Type }).(pulumi.StringOutput)
 }
