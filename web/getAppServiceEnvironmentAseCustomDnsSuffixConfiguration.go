@@ -11,11 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Full view of the custom domain suffix configuration for ASEv3.
+// Get Custom Dns Suffix configuration of an App Service Environment
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2025-05-01.
 //
-// Other available API versions: 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAppServiceEnvironmentAseCustomDnsSuffixConfiguration(ctx *pulumi.Context, args *LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult
@@ -29,7 +29,7 @@ func LookupAppServiceEnvironmentAseCustomDnsSuffixConfiguration(ctx *pulumi.Cont
 type LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs struct {
 	// Name of the App Service Environment.
 	Name string `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -41,17 +41,19 @@ type LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult struct {
 	CertificateUrl *string `pulumi:"certificateUrl"`
 	// The default custom domain suffix to use for all sites deployed on the ASE.
 	DnsSuffix *string `pulumi:"dnsSuffix"`
-	// Resource Id.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The user-assigned identity to use for resolving the key vault certificate reference. If not specified, the system-assigned ASE identity will be used if available.
 	KeyVaultReferenceIdentity *string `pulumi:"keyVaultReferenceIdentity"`
 	// Kind of resource.
 	Kind *string `pulumi:"kind"`
-	// Resource Name.
+	// The name of the resource
 	Name                string `pulumi:"name"`
 	ProvisioningDetails string `pulumi:"provisioningDetails"`
 	ProvisioningState   string `pulumi:"provisioningState"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -67,7 +69,7 @@ func LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationOutput(ctx *pulum
 type LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationOutputArgs struct {
 	// Name of the App Service Environment.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -109,7 +111,7 @@ func (o LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput) 
 	return o.ApplyT(func(v LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult) *string { return v.DnsSuffix }).(pulumi.StringPtrOutput)
 }
 
-// Resource Id.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -126,7 +128,7 @@ func (o LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput) 
 	return o.ApplyT(func(v LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -143,7 +145,14 @@ func (o LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput) 
 	}).(pulumi.StringOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult) SystemDataResponse {
+		return v.SystemData
+	}).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult) string { return v.Type }).(pulumi.StringOutput)
 }

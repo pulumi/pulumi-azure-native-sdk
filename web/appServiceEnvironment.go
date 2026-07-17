@@ -14,9 +14,9 @@ import (
 
 // App Service Environment ARM resource.
 //
-// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+// Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 //
-// Other available API versions: 2016-09-01, 2018-02-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-09-01, 2018-02-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type AppServiceEnvironment struct {
 	pulumi.CustomResourceState
 
@@ -40,7 +40,7 @@ type AppServiceEnvironment struct {
 	IpsslAddressCount pulumi.IntPtrOutput `pulumi:"ipsslAddressCount"`
 	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
-	// Resource Location.
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Maximum number of VMs in the App Service Environment.
 	MaximumNumberOfMachines pulumi.IntOutput `pulumi:"maximumNumberOfMachines"`
@@ -48,7 +48,7 @@ type AppServiceEnvironment struct {
 	MultiRoleCount pulumi.IntOutput `pulumi:"multiRoleCount"`
 	// Front-end VM size, e.g. "Medium", "Large".
 	MultiSize pulumi.StringPtrOutput `pulumi:"multiSize"`
-	// Resource Name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Full view of networking configuration for an ASE.
 	NetworkingConfiguration AseV3NetworkingConfigurationResponsePtrOutput `pulumi:"networkingConfiguration"`
@@ -57,11 +57,13 @@ type AppServiceEnvironment struct {
 	// Current status of the App Service Environment.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// <code>true</code> if the App Service Environment is suspended; otherwise, <code>false</code>. The environment can be suspended, e.g. when the management endpoint is no longer available
-	//  (most likely because NSG blocked the incoming traffic).
+	// (most likely because NSG blocked the incoming traffic).
 	Suspended pulumi.BoolOutput `pulumi:"suspended"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Whether an upgrade is available for this App Service Environment.
 	UpgradeAvailability pulumi.StringOutput `pulumi:"upgradeAvailability"`
@@ -209,7 +211,7 @@ type appServiceEnvironmentArgs struct {
 	IpsslAddressCount *int `pulumi:"ipsslAddressCount"`
 	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind *string `pulumi:"kind"`
-	// Resource Location.
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
 	// Front-end VM size, e.g. "Medium", "Large".
 	MultiSize *string `pulumi:"multiSize"`
@@ -217,7 +219,7 @@ type appServiceEnvironmentArgs struct {
 	Name *string `pulumi:"name"`
 	// Full view of networking configuration for an ASE.
 	NetworkingConfiguration *AseV3NetworkingConfiguration `pulumi:"networkingConfiguration"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
@@ -249,7 +251,7 @@ type AppServiceEnvironmentArgs struct {
 	IpsslAddressCount pulumi.IntPtrInput
 	// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
 	Kind pulumi.StringPtrInput
-	// Resource Location.
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
 	// Front-end VM size, e.g. "Medium", "Large".
 	MultiSize pulumi.StringPtrInput
@@ -257,7 +259,7 @@ type AppServiceEnvironmentArgs struct {
 	Name pulumi.StringPtrInput
 	// Full view of networking configuration for an ASE.
 	NetworkingConfiguration AseV3NetworkingConfigurationPtrInput
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
@@ -360,7 +362,7 @@ func (o AppServiceEnvironmentOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppServiceEnvironment) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Resource Location.
+// The geo-location where the resource lives
 func (o AppServiceEnvironmentOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppServiceEnvironment) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -380,7 +382,7 @@ func (o AppServiceEnvironmentOutput) MultiSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppServiceEnvironment) pulumi.StringPtrOutput { return v.MultiSize }).(pulumi.StringPtrOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o AppServiceEnvironmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppServiceEnvironment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -403,10 +405,14 @@ func (o AppServiceEnvironmentOutput) Status() pulumi.StringOutput {
 }
 
 // <code>true</code> if the App Service Environment is suspended; otherwise, <code>false</code>. The environment can be suspended, e.g. when the management endpoint is no longer available
-//
-//	(most likely because NSG blocked the incoming traffic).
+// (most likely because NSG blocked the incoming traffic).
 func (o AppServiceEnvironmentOutput) Suspended() pulumi.BoolOutput {
 	return o.ApplyT(func(v *AppServiceEnvironment) pulumi.BoolOutput { return v.Suspended }).(pulumi.BoolOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o AppServiceEnvironmentOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *AppServiceEnvironment) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
 // Resource tags.
@@ -414,7 +420,7 @@ func (o AppServiceEnvironmentOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AppServiceEnvironment) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o AppServiceEnvironmentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppServiceEnvironment) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

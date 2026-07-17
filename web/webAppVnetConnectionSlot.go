@@ -14,16 +14,15 @@ import (
 
 // Virtual Network information ARM resource.
 //
-// Uses Azure REST API version 2024-11-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
+// Uses Azure REST API version 2025-05-01. In version 2.x of the Azure Native provider, it used API version 2022-09-01.
 //
-// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type WebAppVnetConnectionSlot struct {
 	pulumi.CustomResourceState
 
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
-	// A certificate file (.cer) blob containing the public key of the private key used to authenticate a
-	// Point-To-Site VPN connection.
+	// A certificate file (.cer) blob containing the public key of the private key used to authenticate a \nPoint-To-Site VPN connection.
 	CertBlob pulumi.StringPtrOutput `pulumi:"certBlob"`
 	// The client certificate thumbprint.
 	CertThumbprint pulumi.StringOutput `pulumi:"certThumbprint"`
@@ -33,13 +32,15 @@ type WebAppVnetConnectionSlot struct {
 	IsSwift pulumi.BoolPtrOutput `pulumi:"isSwift"`
 	// Kind of resource.
 	Kind pulumi.StringPtrOutput `pulumi:"kind"`
-	// Resource Name.
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// <code>true</code> if a resync is required; otherwise, <code>false</code>.
 	ResyncRequired pulumi.BoolOutput `pulumi:"resyncRequired"`
 	// The routes that this Virtual Network connection uses.
 	Routes VnetRouteResponseArrayOutput `pulumi:"routes"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The Virtual Network's resource ID.
 	VnetResourceId pulumi.StringPtrOutput `pulumi:"vnetResourceId"`
@@ -166,8 +167,7 @@ func (WebAppVnetConnectionSlotState) ElementType() reflect.Type {
 }
 
 type webAppVnetConnectionSlotArgs struct {
-	// A certificate file (.cer) blob containing the public key of the private key used to authenticate a
-	// Point-To-Site VPN connection.
+	// A certificate file (.cer) blob containing the public key of the private key used to authenticate a \nPoint-To-Site VPN connection.
 	CertBlob *string `pulumi:"certBlob"`
 	// DNS servers to be used by this Virtual Network. This should be a comma-separated list of IP addresses.
 	DnsServers *string `pulumi:"dnsServers"`
@@ -177,11 +177,11 @@ type webAppVnetConnectionSlotArgs struct {
 	Kind *string `pulumi:"kind"`
 	// Name of the app.
 	Name string `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
-	// Name of the deployment slot. If a slot is not specified, the API will add or update connections for the production slot.
+	// Name of the deployment slot. If a slot is not specified, the API will get the named virtual network for the production slot.
 	Slot string `pulumi:"slot"`
-	// Name of an existing Virtual Network.
+	// Name of the virtual network.
 	VnetName *string `pulumi:"vnetName"`
 	// The Virtual Network's resource ID.
 	VnetResourceId *string `pulumi:"vnetResourceId"`
@@ -189,8 +189,7 @@ type webAppVnetConnectionSlotArgs struct {
 
 // The set of arguments for constructing a WebAppVnetConnectionSlot resource.
 type WebAppVnetConnectionSlotArgs struct {
-	// A certificate file (.cer) blob containing the public key of the private key used to authenticate a
-	// Point-To-Site VPN connection.
+	// A certificate file (.cer) blob containing the public key of the private key used to authenticate a \nPoint-To-Site VPN connection.
 	CertBlob pulumi.StringPtrInput
 	// DNS servers to be used by this Virtual Network. This should be a comma-separated list of IP addresses.
 	DnsServers pulumi.StringPtrInput
@@ -200,11 +199,11 @@ type WebAppVnetConnectionSlotArgs struct {
 	Kind pulumi.StringPtrInput
 	// Name of the app.
 	Name pulumi.StringInput
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
-	// Name of the deployment slot. If a slot is not specified, the API will add or update connections for the production slot.
+	// Name of the deployment slot. If a slot is not specified, the API will get the named virtual network for the production slot.
 	Slot pulumi.StringInput
-	// Name of an existing Virtual Network.
+	// Name of the virtual network.
 	VnetName pulumi.StringPtrInput
 	// The Virtual Network's resource ID.
 	VnetResourceId pulumi.StringPtrInput
@@ -252,8 +251,7 @@ func (o WebAppVnetConnectionSlotOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAppVnetConnectionSlot) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// A certificate file (.cer) blob containing the public key of the private key used to authenticate a
-// Point-To-Site VPN connection.
+// A certificate file (.cer) blob containing the public key of the private key used to authenticate a \nPoint-To-Site VPN connection.
 func (o WebAppVnetConnectionSlotOutput) CertBlob() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebAppVnetConnectionSlot) pulumi.StringPtrOutput { return v.CertBlob }).(pulumi.StringPtrOutput)
 }
@@ -278,7 +276,7 @@ func (o WebAppVnetConnectionSlotOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebAppVnetConnectionSlot) pulumi.StringPtrOutput { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o WebAppVnetConnectionSlotOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAppVnetConnectionSlot) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -293,7 +291,12 @@ func (o WebAppVnetConnectionSlotOutput) Routes() VnetRouteResponseArrayOutput {
 	return o.ApplyT(func(v *WebAppVnetConnectionSlot) VnetRouteResponseArrayOutput { return v.Routes }).(VnetRouteResponseArrayOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o WebAppVnetConnectionSlotOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *WebAppVnetConnectionSlot) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o WebAppVnetConnectionSlotOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *WebAppVnetConnectionSlot) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

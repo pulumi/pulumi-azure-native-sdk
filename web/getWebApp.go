@@ -13,9 +13,9 @@ import (
 
 // Description for Gets the details of a web, mobile, or API app.
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2025-05-01.
 //
-// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWebApp(ctx *pulumi.Context, args *LookupWebAppArgs, opts ...pulumi.InvokeOption) (*LookupWebAppResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppResult
@@ -29,7 +29,7 @@ func LookupWebApp(ctx *pulumi.Context, args *LookupWebAppArgs, opts ...pulumi.In
 type LookupWebAppArgs struct {
 	// Name of the app.
 	Name string `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -84,7 +84,7 @@ type LookupWebAppResult struct {
 	// Hostnames associated with the app.
 	HostNames []string `pulumi:"hostNames"`
 	// <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.
-	//  If <code>true</code>, the app is only accessible via API management process.
+	// If <code>true</code>, the app is only accessible via API management process.
 	HostNamesDisabled *bool `pulumi:"hostNamesDisabled"`
 	// App Service Environment to use for the app.
 	HostingEnvironmentProfile *HostingEnvironmentProfileResponse `pulumi:"hostingEnvironmentProfile"`
@@ -93,7 +93,7 @@ type LookupWebAppResult struct {
 	HttpsOnly *bool `pulumi:"httpsOnly"`
 	// Hyper-V sandbox.
 	HyperV *bool `pulumi:"hyperV"`
-	// Resource Id.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Managed service identity.
 	Identity *ManagedServiceIdentityResponse `pulumi:"identity"`
@@ -111,14 +111,14 @@ type LookupWebAppResult struct {
 	Kind *string `pulumi:"kind"`
 	// Last time the app was modified, in UTC. Read-only.
 	LastModifiedTimeUtc string `pulumi:"lastModifiedTimeUtc"`
-	// Resource Location.
+	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// Azure Resource Manager ID of the customer's selected Managed Environment on which to host this app. This must be of the form /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.App/managedEnvironments/{managedEnvironmentName}
 	ManagedEnvironmentId *string `pulumi:"managedEnvironmentId"`
 	// Maximum number of workers.
 	// This only applies to Functions container.
 	MaxNumberOfWorkers int `pulumi:"maxNumberOfWorkers"`
-	// Resource Name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// List of IP addresses that the app uses for outbound connections (e.g. database access). Includes VIPs from tenants that site can be hosted with current settings. Read-only.
 	OutboundIpAddresses string `pulumi:"outboundIpAddresses"`
@@ -156,13 +156,15 @@ type LookupWebAppResult struct {
 	StorageAccountRequired *bool `pulumi:"storageAccountRequired"`
 	// App suspended till in case memory-time quota is exceeded.
 	SuspendedTill string `pulumi:"suspendedTill"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// Specifies which deployment slot this app will swap into. Read-only.
 	TargetSwapSlot string `pulumi:"targetSwapSlot"`
 	// Azure Traffic Manager hostnames associated with the app. Read-only.
 	TrafficManagerHostNames []string `pulumi:"trafficManagerHostNames"`
-	// Resource type.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// State indicating whether the app has exceeded its quota usage. Read-only.
 	UsageState string `pulumi:"usageState"`
@@ -179,6 +181,10 @@ func (val *LookupWebAppResult) Defaults() *LookupWebAppResult {
 		return nil
 	}
 	tmp := *val
+	if tmp.ClientAffinityEnabled == nil {
+		clientAffinityEnabled_ := false
+		tmp.ClientAffinityEnabled = &clientAffinityEnabled_
+	}
 	tmp.DaprConfig = tmp.DaprConfig.Defaults()
 
 	if tmp.HyperV == nil {
@@ -213,7 +219,7 @@ func LookupWebAppOutput(ctx *pulumi.Context, args LookupWebAppOutputArgs, opts .
 type LookupWebAppOutputArgs struct {
 	// Name of the app.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -351,8 +357,7 @@ func (o LookupWebAppResultOutput) HostNames() pulumi.StringArrayOutput {
 }
 
 // <code>true</code> to disable the public hostnames of the app; otherwise, <code>false</code>.
-//
-//	If <code>true</code>, the app is only accessible via API management process.
+// If <code>true</code>, the app is only accessible via API management process.
 func (o LookupWebAppResultOutput) HostNamesDisabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupWebAppResult) *bool { return v.HostNamesDisabled }).(pulumi.BoolPtrOutput)
 }
@@ -373,7 +378,7 @@ func (o LookupWebAppResultOutput) HyperV() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LookupWebAppResult) *bool { return v.HyperV }).(pulumi.BoolPtrOutput)
 }
 
-// Resource Id.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupWebAppResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -418,7 +423,7 @@ func (o LookupWebAppResultOutput) LastModifiedTimeUtc() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppResult) string { return v.LastModifiedTimeUtc }).(pulumi.StringOutput)
 }
 
-// Resource Location.
+// The geo-location where the resource lives
 func (o LookupWebAppResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppResult) string { return v.Location }).(pulumi.StringOutput)
 }
@@ -434,7 +439,7 @@ func (o LookupWebAppResultOutput) MaxNumberOfWorkers() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupWebAppResult) int { return v.MaxNumberOfWorkers }).(pulumi.IntOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o LookupWebAppResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -529,6 +534,11 @@ func (o LookupWebAppResultOutput) SuspendedTill() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppResult) string { return v.SuspendedTill }).(pulumi.StringOutput)
 }
 
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupWebAppResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupWebAppResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
 // Resource tags.
 func (o LookupWebAppResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupWebAppResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
@@ -544,7 +554,7 @@ func (o LookupWebAppResultOutput) TrafficManagerHostNames() pulumi.StringArrayOu
 	return o.ApplyT(func(v LookupWebAppResult) []string { return v.TrafficManagerHostNames }).(pulumi.StringArrayOutput)
 }
 
-// Resource type.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupWebAppResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppResult) string { return v.Type }).(pulumi.StringOutput)
 }

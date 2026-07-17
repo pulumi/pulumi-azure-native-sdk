@@ -13,9 +13,9 @@ import (
 
 // Description for Gets the Authentication/Authorization settings of an app.
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2025-05-01.
 //
-// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListWebAppAuthSettings(ctx *pulumi.Context, args *ListWebAppAuthSettingsArgs, opts ...pulumi.InvokeOption) (*ListWebAppAuthSettingsResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListWebAppAuthSettingsResult
@@ -29,7 +29,7 @@ func ListWebAppAuthSettings(ctx *pulumi.Context, args *ListWebAppAuthSettingsArg
 type ListWebAppAuthSettingsArgs struct {
 	// Name of the app.
 	Name string `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 }
 
@@ -152,7 +152,7 @@ type ListWebAppAuthSettingsResult struct {
 	// call the token refresh API. The default is 72 hours.
 	TokenRefreshExtensionHours *float64 `pulumi:"tokenRefreshExtensionHours"`
 	// <code>true</code> to durably store platform-specific security tokens that are obtained during login flows; otherwise, <code>false</code>.
-	//  The default is <code>false</code>.
+	// The default is <code>false</code>.
 	TokenStoreEnabled *bool `pulumi:"tokenStoreEnabled"`
 	// The OAuth 1.0a consumer key of the Twitter application used for sign-in.
 	// This setting is required for enabling Twitter Sign-In.
@@ -185,7 +185,7 @@ func ListWebAppAuthSettingsOutput(ctx *pulumi.Context, args ListWebAppAuthSettin
 type ListWebAppAuthSettingsOutputArgs struct {
 	// Name of the app.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 }
 
@@ -430,8 +430,7 @@ func (o ListWebAppAuthSettingsResultOutput) TokenRefreshExtensionHours() pulumi.
 }
 
 // <code>true</code> to durably store platform-specific security tokens that are obtained during login flows; otherwise, <code>false</code>.
-//
-//	The default is <code>false</code>.
+// The default is <code>false</code>.
 func (o ListWebAppAuthSettingsResultOutput) TokenStoreEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ListWebAppAuthSettingsResult) *bool { return v.TokenStoreEnabled }).(pulumi.BoolPtrOutput)
 }

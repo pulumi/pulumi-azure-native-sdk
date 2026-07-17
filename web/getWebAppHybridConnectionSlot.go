@@ -13,9 +13,9 @@ import (
 
 // Description for Retrieves a specific Service Bus Hybrid Connection used by this Web App.
 //
-// Uses Azure REST API version 2024-11-01.
+// Uses Azure REST API version 2025-05-01.
 //
-// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2025-03-01, 2025-05-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2016-08-01, 2018-02-01, 2018-11-01, 2019-08-01, 2020-06-01, 2020-09-01, 2020-10-01, 2020-12-01, 2021-01-01, 2021-01-15, 2021-02-01, 2021-03-01, 2022-03-01, 2022-09-01, 2023-01-01, 2023-12-01, 2024-04-01, 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupWebAppHybridConnectionSlot(ctx *pulumi.Context, args *LookupWebAppHybridConnectionSlotArgs, opts ...pulumi.InvokeOption) (*LookupWebAppHybridConnectionSlotResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebAppHybridConnectionSlotResult
@@ -33,7 +33,7 @@ type LookupWebAppHybridConnectionSlotArgs struct {
 	NamespaceName string `pulumi:"namespaceName"`
 	// The relay name for this hybrid connection.
 	RelayName string `pulumi:"relayName"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The name of the slot for the web app.
 	Slot string `pulumi:"slot"`
@@ -45,11 +45,11 @@ type LookupWebAppHybridConnectionSlotResult struct {
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// The hostname of the endpoint.
 	Hostname *string `pulumi:"hostname"`
-	// Resource Id.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Kind of resource.
 	Kind *string `pulumi:"kind"`
-	// Resource Name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The port of the endpoint.
 	Port *int `pulumi:"port"`
@@ -66,7 +66,9 @@ type LookupWebAppHybridConnectionSlotResult struct {
 	ServiceBusNamespace *string `pulumi:"serviceBusNamespace"`
 	// The suffix for the service bus endpoint. By default this is .servicebus.windows.net
 	ServiceBusSuffix *string `pulumi:"serviceBusSuffix"`
-	// Resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -86,7 +88,7 @@ type LookupWebAppHybridConnectionSlotOutputArgs struct {
 	NamespaceName pulumi.StringInput `pulumi:"namespaceName"`
 	// The relay name for this hybrid connection.
 	RelayName pulumi.StringInput `pulumi:"relayName"`
-	// Name of the resource group to which the resource belongs.
+	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// The name of the slot for the web app.
 	Slot pulumi.StringInput `pulumi:"slot"`
@@ -121,7 +123,7 @@ func (o LookupWebAppHybridConnectionSlotResultOutput) Hostname() pulumi.StringPt
 	return o.ApplyT(func(v LookupWebAppHybridConnectionSlotResult) *string { return v.Hostname }).(pulumi.StringPtrOutput)
 }
 
-// Resource Id.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupWebAppHybridConnectionSlotResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppHybridConnectionSlotResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -131,7 +133,7 @@ func (o LookupWebAppHybridConnectionSlotResultOutput) Kind() pulumi.StringPtrOut
 	return o.ApplyT(func(v LookupWebAppHybridConnectionSlotResult) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
-// Resource Name.
+// The name of the resource
 func (o LookupWebAppHybridConnectionSlotResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppHybridConnectionSlotResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -172,7 +174,12 @@ func (o LookupWebAppHybridConnectionSlotResultOutput) ServiceBusSuffix() pulumi.
 	return o.ApplyT(func(v LookupWebAppHybridConnectionSlotResult) *string { return v.ServiceBusSuffix }).(pulumi.StringPtrOutput)
 }
 
-// Resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupWebAppHybridConnectionSlotResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupWebAppHybridConnectionSlotResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupWebAppHybridConnectionSlotResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWebAppHybridConnectionSlotResult) string { return v.Type }).(pulumi.StringOutput)
 }
