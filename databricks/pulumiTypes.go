@@ -760,7 +760,7 @@ func (o CreatedByResponsePtrOutput) Puid() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// These properties lets user specify default catalog properties during workspace creation.
+// These properties lets user specify default catalog properties during workspace creation. Not allowed in Serverless ComputeMode workspace.
 type DefaultCatalogProperties struct {
 	// Specifies the initial Name of default catalog. If not specified, the name of the workspace will be used.
 	InitialName *string `pulumi:"initialName"`
@@ -792,7 +792,7 @@ type DefaultCatalogPropertiesInput interface {
 	ToDefaultCatalogPropertiesOutputWithContext(context.Context) DefaultCatalogPropertiesOutput
 }
 
-// These properties lets user specify default catalog properties during workspace creation.
+// These properties lets user specify default catalog properties during workspace creation. Not allowed in Serverless ComputeMode workspace.
 type DefaultCatalogPropertiesArgs struct {
 	// Specifies the initial Name of default catalog. If not specified, the name of the workspace will be used.
 	InitialName pulumi.StringPtrInput `pulumi:"initialName"`
@@ -864,7 +864,7 @@ func (i *defaultCatalogPropertiesPtrType) ToDefaultCatalogPropertiesPtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultCatalogPropertiesPtrOutput)
 }
 
-// These properties lets user specify default catalog properties during workspace creation.
+// These properties lets user specify default catalog properties during workspace creation. Not allowed in Serverless ComputeMode workspace.
 type DefaultCatalogPropertiesOutput struct{ *pulumi.OutputState }
 
 func (DefaultCatalogPropertiesOutput) ElementType() reflect.Type {
@@ -943,7 +943,7 @@ func (o DefaultCatalogPropertiesPtrOutput) InitialType() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// These properties lets user specify default catalog properties during workspace creation.
+// These properties lets user specify default catalog properties during workspace creation. Not allowed in Serverless ComputeMode workspace.
 type DefaultCatalogPropertiesResponse struct {
 	// Specifies the initial Name of default catalog. If not specified, the name of the workspace will be used.
 	InitialName *string `pulumi:"initialName"`
@@ -964,7 +964,7 @@ func (val *DefaultCatalogPropertiesResponse) Defaults() *DefaultCatalogPropertie
 	return &tmp
 }
 
-// These properties lets user specify default catalog properties during workspace creation.
+// These properties lets user specify default catalog properties during workspace creation. Not allowed in Serverless ComputeMode workspace.
 type DefaultCatalogPropertiesResponseOutput struct{ *pulumi.OutputState }
 
 func (DefaultCatalogPropertiesResponseOutput) ElementType() reflect.Type {
@@ -1256,9 +1256,9 @@ func (o EncryptionPtrOutput) KeyVersion() pulumi.StringPtrOutput {
 
 // Encryption entities for databricks workspace resource.
 type EncryptionEntitiesDefinition struct {
-	// Encryption properties for the databricks managed disks.
+	// Encryption properties for the databricks managed disks. Not allowed in Serverless ComputeMode workspace.
 	ManagedDisk *ManagedDiskEncryption `pulumi:"managedDisk"`
-	// Encryption properties for the databricks managed services.
+	// Encryption properties for the databricks managed services. Supported in both Serverless and Hybrid ComputeMode.
 	ManagedServices *EncryptionV2 `pulumi:"managedServices"`
 }
 
@@ -1275,9 +1275,9 @@ type EncryptionEntitiesDefinitionInput interface {
 
 // Encryption entities for databricks workspace resource.
 type EncryptionEntitiesDefinitionArgs struct {
-	// Encryption properties for the databricks managed disks.
+	// Encryption properties for the databricks managed disks. Not allowed in Serverless ComputeMode workspace.
 	ManagedDisk ManagedDiskEncryptionPtrInput `pulumi:"managedDisk"`
-	// Encryption properties for the databricks managed services.
+	// Encryption properties for the databricks managed services. Supported in both Serverless and Hybrid ComputeMode.
 	ManagedServices EncryptionV2PtrInput `pulumi:"managedServices"`
 }
 
@@ -1359,12 +1359,12 @@ func (o EncryptionEntitiesDefinitionOutput) ToEncryptionEntitiesDefinitionPtrOut
 	}).(EncryptionEntitiesDefinitionPtrOutput)
 }
 
-// Encryption properties for the databricks managed disks.
+// Encryption properties for the databricks managed disks. Not allowed in Serverless ComputeMode workspace.
 func (o EncryptionEntitiesDefinitionOutput) ManagedDisk() ManagedDiskEncryptionPtrOutput {
 	return o.ApplyT(func(v EncryptionEntitiesDefinition) *ManagedDiskEncryption { return v.ManagedDisk }).(ManagedDiskEncryptionPtrOutput)
 }
 
-// Encryption properties for the databricks managed services.
+// Encryption properties for the databricks managed services. Supported in both Serverless and Hybrid ComputeMode.
 func (o EncryptionEntitiesDefinitionOutput) ManagedServices() EncryptionV2PtrOutput {
 	return o.ApplyT(func(v EncryptionEntitiesDefinition) *EncryptionV2 { return v.ManagedServices }).(EncryptionV2PtrOutput)
 }
@@ -1393,7 +1393,7 @@ func (o EncryptionEntitiesDefinitionPtrOutput) Elem() EncryptionEntitiesDefiniti
 	}).(EncryptionEntitiesDefinitionOutput)
 }
 
-// Encryption properties for the databricks managed disks.
+// Encryption properties for the databricks managed disks. Not allowed in Serverless ComputeMode workspace.
 func (o EncryptionEntitiesDefinitionPtrOutput) ManagedDisk() ManagedDiskEncryptionPtrOutput {
 	return o.ApplyT(func(v *EncryptionEntitiesDefinition) *ManagedDiskEncryption {
 		if v == nil {
@@ -1403,7 +1403,7 @@ func (o EncryptionEntitiesDefinitionPtrOutput) ManagedDisk() ManagedDiskEncrypti
 	}).(ManagedDiskEncryptionPtrOutput)
 }
 
-// Encryption properties for the databricks managed services.
+// Encryption properties for the databricks managed services. Supported in both Serverless and Hybrid ComputeMode.
 func (o EncryptionEntitiesDefinitionPtrOutput) ManagedServices() EncryptionV2PtrOutput {
 	return o.ApplyT(func(v *EncryptionEntitiesDefinition) *EncryptionV2 {
 		if v == nil {
@@ -1415,9 +1415,9 @@ func (o EncryptionEntitiesDefinitionPtrOutput) ManagedServices() EncryptionV2Ptr
 
 // Encryption entities for databricks workspace resource.
 type EncryptionEntitiesDefinitionResponse struct {
-	// Encryption properties for the databricks managed disks.
+	// Encryption properties for the databricks managed disks. Not allowed in Serverless ComputeMode workspace.
 	ManagedDisk *ManagedDiskEncryptionResponse `pulumi:"managedDisk"`
-	// Encryption properties for the databricks managed services.
+	// Encryption properties for the databricks managed services. Supported in both Serverless and Hybrid ComputeMode.
 	ManagedServices *EncryptionV2Response `pulumi:"managedServices"`
 }
 
@@ -1436,12 +1436,12 @@ func (o EncryptionEntitiesDefinitionResponseOutput) ToEncryptionEntitiesDefiniti
 	return o
 }
 
-// Encryption properties for the databricks managed disks.
+// Encryption properties for the databricks managed disks. Not allowed in Serverless ComputeMode workspace.
 func (o EncryptionEntitiesDefinitionResponseOutput) ManagedDisk() ManagedDiskEncryptionResponsePtrOutput {
 	return o.ApplyT(func(v EncryptionEntitiesDefinitionResponse) *ManagedDiskEncryptionResponse { return v.ManagedDisk }).(ManagedDiskEncryptionResponsePtrOutput)
 }
 
-// Encryption properties for the databricks managed services.
+// Encryption properties for the databricks managed services. Supported in both Serverless and Hybrid ComputeMode.
 func (o EncryptionEntitiesDefinitionResponseOutput) ManagedServices() EncryptionV2ResponsePtrOutput {
 	return o.ApplyT(func(v EncryptionEntitiesDefinitionResponse) *EncryptionV2Response { return v.ManagedServices }).(EncryptionV2ResponsePtrOutput)
 }
@@ -1470,7 +1470,7 @@ func (o EncryptionEntitiesDefinitionResponsePtrOutput) Elem() EncryptionEntities
 	}).(EncryptionEntitiesDefinitionResponseOutput)
 }
 
-// Encryption properties for the databricks managed disks.
+// Encryption properties for the databricks managed disks. Not allowed in Serverless ComputeMode workspace.
 func (o EncryptionEntitiesDefinitionResponsePtrOutput) ManagedDisk() ManagedDiskEncryptionResponsePtrOutput {
 	return o.ApplyT(func(v *EncryptionEntitiesDefinitionResponse) *ManagedDiskEncryptionResponse {
 		if v == nil {
@@ -1480,7 +1480,7 @@ func (o EncryptionEntitiesDefinitionResponsePtrOutput) ManagedDisk() ManagedDisk
 	}).(ManagedDiskEncryptionResponsePtrOutput)
 }
 
-// Encryption properties for the databricks managed services.
+// Encryption properties for the databricks managed services. Supported in both Serverless and Hybrid ComputeMode.
 func (o EncryptionEntitiesDefinitionResponsePtrOutput) ManagedServices() EncryptionV2ResponsePtrOutput {
 	return o.ApplyT(func(v *EncryptionEntitiesDefinitionResponse) *EncryptionV2Response {
 		if v == nil {
@@ -1951,12 +1951,106 @@ func (o EncryptionV2KeyVaultPropertiesPtrOutput) KeyVersion() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Key Vault input properties for encryption.
+type EncryptionV2KeyVaultPropertiesResponse struct {
+	// The name of KeyVault key.
+	KeyName string `pulumi:"keyName"`
+	// The Uri of KeyVault.
+	KeyVaultUri string `pulumi:"keyVaultUri"`
+	// The version of KeyVault key.
+	KeyVersion string `pulumi:"keyVersion"`
+}
+
+// Key Vault input properties for encryption.
+type EncryptionV2KeyVaultPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (EncryptionV2KeyVaultPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionV2KeyVaultPropertiesResponse)(nil)).Elem()
+}
+
+func (o EncryptionV2KeyVaultPropertiesResponseOutput) ToEncryptionV2KeyVaultPropertiesResponseOutput() EncryptionV2KeyVaultPropertiesResponseOutput {
+	return o
+}
+
+func (o EncryptionV2KeyVaultPropertiesResponseOutput) ToEncryptionV2KeyVaultPropertiesResponseOutputWithContext(ctx context.Context) EncryptionV2KeyVaultPropertiesResponseOutput {
+	return o
+}
+
+// The name of KeyVault key.
+func (o EncryptionV2KeyVaultPropertiesResponseOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v EncryptionV2KeyVaultPropertiesResponse) string { return v.KeyName }).(pulumi.StringOutput)
+}
+
+// The Uri of KeyVault.
+func (o EncryptionV2KeyVaultPropertiesResponseOutput) KeyVaultUri() pulumi.StringOutput {
+	return o.ApplyT(func(v EncryptionV2KeyVaultPropertiesResponse) string { return v.KeyVaultUri }).(pulumi.StringOutput)
+}
+
+// The version of KeyVault key.
+func (o EncryptionV2KeyVaultPropertiesResponseOutput) KeyVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v EncryptionV2KeyVaultPropertiesResponse) string { return v.KeyVersion }).(pulumi.StringOutput)
+}
+
+type EncryptionV2KeyVaultPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionV2KeyVaultPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionV2KeyVaultPropertiesResponse)(nil)).Elem()
+}
+
+func (o EncryptionV2KeyVaultPropertiesResponsePtrOutput) ToEncryptionV2KeyVaultPropertiesResponsePtrOutput() EncryptionV2KeyVaultPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o EncryptionV2KeyVaultPropertiesResponsePtrOutput) ToEncryptionV2KeyVaultPropertiesResponsePtrOutputWithContext(ctx context.Context) EncryptionV2KeyVaultPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o EncryptionV2KeyVaultPropertiesResponsePtrOutput) Elem() EncryptionV2KeyVaultPropertiesResponseOutput {
+	return o.ApplyT(func(v *EncryptionV2KeyVaultPropertiesResponse) EncryptionV2KeyVaultPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionV2KeyVaultPropertiesResponse
+		return ret
+	}).(EncryptionV2KeyVaultPropertiesResponseOutput)
+}
+
+// The name of KeyVault key.
+func (o EncryptionV2KeyVaultPropertiesResponsePtrOutput) KeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionV2KeyVaultPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Uri of KeyVault.
+func (o EncryptionV2KeyVaultPropertiesResponsePtrOutput) KeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionV2KeyVaultPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyVaultUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The version of KeyVault key.
+func (o EncryptionV2KeyVaultPropertiesResponsePtrOutput) KeyVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionV2KeyVaultPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyVersion
+	}).(pulumi.StringPtrOutput)
+}
+
 // The object that contains details of encryption used on the workspace.
 type EncryptionV2Response struct {
 	// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
 	KeySource string `pulumi:"keySource"`
 	// Key Vault input properties for encryption.
-	KeyVaultProperties *EncryptionV2ResponseKeyVaultProperties `pulumi:"keyVaultProperties"`
+	KeyVaultProperties *EncryptionV2KeyVaultPropertiesResponse `pulumi:"keyVaultProperties"`
 }
 
 // The object that contains details of encryption used on the workspace.
@@ -1980,8 +2074,8 @@ func (o EncryptionV2ResponseOutput) KeySource() pulumi.StringOutput {
 }
 
 // Key Vault input properties for encryption.
-func (o EncryptionV2ResponseOutput) KeyVaultProperties() EncryptionV2ResponseKeyVaultPropertiesPtrOutput {
-	return o.ApplyT(func(v EncryptionV2Response) *EncryptionV2ResponseKeyVaultProperties { return v.KeyVaultProperties }).(EncryptionV2ResponseKeyVaultPropertiesPtrOutput)
+func (o EncryptionV2ResponseOutput) KeyVaultProperties() EncryptionV2KeyVaultPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v EncryptionV2Response) *EncryptionV2KeyVaultPropertiesResponse { return v.KeyVaultProperties }).(EncryptionV2KeyVaultPropertiesResponsePtrOutput)
 }
 
 type EncryptionV2ResponsePtrOutput struct{ *pulumi.OutputState }
@@ -2019,107 +2113,13 @@ func (o EncryptionV2ResponsePtrOutput) KeySource() pulumi.StringPtrOutput {
 }
 
 // Key Vault input properties for encryption.
-func (o EncryptionV2ResponsePtrOutput) KeyVaultProperties() EncryptionV2ResponseKeyVaultPropertiesPtrOutput {
-	return o.ApplyT(func(v *EncryptionV2Response) *EncryptionV2ResponseKeyVaultProperties {
+func (o EncryptionV2ResponsePtrOutput) KeyVaultProperties() EncryptionV2KeyVaultPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *EncryptionV2Response) *EncryptionV2KeyVaultPropertiesResponse {
 		if v == nil {
 			return nil
 		}
 		return v.KeyVaultProperties
-	}).(EncryptionV2ResponseKeyVaultPropertiesPtrOutput)
-}
-
-// Key Vault input properties for encryption.
-type EncryptionV2ResponseKeyVaultProperties struct {
-	// The name of KeyVault key.
-	KeyName string `pulumi:"keyName"`
-	// The Uri of KeyVault.
-	KeyVaultUri string `pulumi:"keyVaultUri"`
-	// The version of KeyVault key.
-	KeyVersion string `pulumi:"keyVersion"`
-}
-
-// Key Vault input properties for encryption.
-type EncryptionV2ResponseKeyVaultPropertiesOutput struct{ *pulumi.OutputState }
-
-func (EncryptionV2ResponseKeyVaultPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EncryptionV2ResponseKeyVaultProperties)(nil)).Elem()
-}
-
-func (o EncryptionV2ResponseKeyVaultPropertiesOutput) ToEncryptionV2ResponseKeyVaultPropertiesOutput() EncryptionV2ResponseKeyVaultPropertiesOutput {
-	return o
-}
-
-func (o EncryptionV2ResponseKeyVaultPropertiesOutput) ToEncryptionV2ResponseKeyVaultPropertiesOutputWithContext(ctx context.Context) EncryptionV2ResponseKeyVaultPropertiesOutput {
-	return o
-}
-
-// The name of KeyVault key.
-func (o EncryptionV2ResponseKeyVaultPropertiesOutput) KeyName() pulumi.StringOutput {
-	return o.ApplyT(func(v EncryptionV2ResponseKeyVaultProperties) string { return v.KeyName }).(pulumi.StringOutput)
-}
-
-// The Uri of KeyVault.
-func (o EncryptionV2ResponseKeyVaultPropertiesOutput) KeyVaultUri() pulumi.StringOutput {
-	return o.ApplyT(func(v EncryptionV2ResponseKeyVaultProperties) string { return v.KeyVaultUri }).(pulumi.StringOutput)
-}
-
-// The version of KeyVault key.
-func (o EncryptionV2ResponseKeyVaultPropertiesOutput) KeyVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v EncryptionV2ResponseKeyVaultProperties) string { return v.KeyVersion }).(pulumi.StringOutput)
-}
-
-type EncryptionV2ResponseKeyVaultPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (EncryptionV2ResponseKeyVaultPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EncryptionV2ResponseKeyVaultProperties)(nil)).Elem()
-}
-
-func (o EncryptionV2ResponseKeyVaultPropertiesPtrOutput) ToEncryptionV2ResponseKeyVaultPropertiesPtrOutput() EncryptionV2ResponseKeyVaultPropertiesPtrOutput {
-	return o
-}
-
-func (o EncryptionV2ResponseKeyVaultPropertiesPtrOutput) ToEncryptionV2ResponseKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) EncryptionV2ResponseKeyVaultPropertiesPtrOutput {
-	return o
-}
-
-func (o EncryptionV2ResponseKeyVaultPropertiesPtrOutput) Elem() EncryptionV2ResponseKeyVaultPropertiesOutput {
-	return o.ApplyT(func(v *EncryptionV2ResponseKeyVaultProperties) EncryptionV2ResponseKeyVaultProperties {
-		if v != nil {
-			return *v
-		}
-		var ret EncryptionV2ResponseKeyVaultProperties
-		return ret
-	}).(EncryptionV2ResponseKeyVaultPropertiesOutput)
-}
-
-// The name of KeyVault key.
-func (o EncryptionV2ResponseKeyVaultPropertiesPtrOutput) KeyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EncryptionV2ResponseKeyVaultProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.KeyName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Uri of KeyVault.
-func (o EncryptionV2ResponseKeyVaultPropertiesPtrOutput) KeyVaultUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EncryptionV2ResponseKeyVaultProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.KeyVaultUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// The version of KeyVault key.
-func (o EncryptionV2ResponseKeyVaultPropertiesPtrOutput) KeyVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EncryptionV2ResponseKeyVaultProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.KeyVersion
-	}).(pulumi.StringPtrOutput)
+	}).(EncryptionV2KeyVaultPropertiesResponsePtrOutput)
 }
 
 // Status of settings related to the Enhanced Security and Compliance Add-On.
@@ -2601,7 +2601,7 @@ func (o EnhancedSecurityMonitoringDefinitionResponsePtrOutput) Value() pulumi.St
 
 // The object that contains details of encryption used on the workspace.
 type ManagedDiskEncryption struct {
-	// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
+	// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault. Not allowed in Serverless ComputeMode workspace.
 	KeySource string `pulumi:"keySource"`
 	// Key Vault input properties for encryption.
 	KeyVaultProperties ManagedDiskEncryptionKeyVaultProperties `pulumi:"keyVaultProperties"`
@@ -2622,7 +2622,7 @@ type ManagedDiskEncryptionInput interface {
 
 // The object that contains details of encryption used on the workspace.
 type ManagedDiskEncryptionArgs struct {
-	// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
+	// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault. Not allowed in Serverless ComputeMode workspace.
 	KeySource pulumi.StringInput `pulumi:"keySource"`
 	// Key Vault input properties for encryption.
 	KeyVaultProperties ManagedDiskEncryptionKeyVaultPropertiesInput `pulumi:"keyVaultProperties"`
@@ -2708,7 +2708,7 @@ func (o ManagedDiskEncryptionOutput) ToManagedDiskEncryptionPtrOutputWithContext
 	}).(ManagedDiskEncryptionPtrOutput)
 }
 
-// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
+// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault. Not allowed in Serverless ComputeMode workspace.
 func (o ManagedDiskEncryptionOutput) KeySource() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedDiskEncryption) string { return v.KeySource }).(pulumi.StringOutput)
 }
@@ -2747,7 +2747,7 @@ func (o ManagedDiskEncryptionPtrOutput) Elem() ManagedDiskEncryptionOutput {
 	}).(ManagedDiskEncryptionOutput)
 }
 
-// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
+// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault. Not allowed in Serverless ComputeMode workspace.
 func (o ManagedDiskEncryptionPtrOutput) KeySource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedDiskEncryption) *string {
 		if v == nil {
@@ -2955,12 +2955,106 @@ func (o ManagedDiskEncryptionKeyVaultPropertiesPtrOutput) KeyVersion() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
+// Key Vault input properties for encryption.
+type ManagedDiskEncryptionKeyVaultPropertiesResponse struct {
+	// The name of KeyVault key.
+	KeyName string `pulumi:"keyName"`
+	// The URI of KeyVault.
+	KeyVaultUri string `pulumi:"keyVaultUri"`
+	// The version of KeyVault key.
+	KeyVersion string `pulumi:"keyVersion"`
+}
+
+// Key Vault input properties for encryption.
+type ManagedDiskEncryptionKeyVaultPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedDiskEncryptionKeyVaultPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedDiskEncryptionKeyVaultPropertiesResponse)(nil)).Elem()
+}
+
+func (o ManagedDiskEncryptionKeyVaultPropertiesResponseOutput) ToManagedDiskEncryptionKeyVaultPropertiesResponseOutput() ManagedDiskEncryptionKeyVaultPropertiesResponseOutput {
+	return o
+}
+
+func (o ManagedDiskEncryptionKeyVaultPropertiesResponseOutput) ToManagedDiskEncryptionKeyVaultPropertiesResponseOutputWithContext(ctx context.Context) ManagedDiskEncryptionKeyVaultPropertiesResponseOutput {
+	return o
+}
+
+// The name of KeyVault key.
+func (o ManagedDiskEncryptionKeyVaultPropertiesResponseOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedDiskEncryptionKeyVaultPropertiesResponse) string { return v.KeyName }).(pulumi.StringOutput)
+}
+
+// The URI of KeyVault.
+func (o ManagedDiskEncryptionKeyVaultPropertiesResponseOutput) KeyVaultUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedDiskEncryptionKeyVaultPropertiesResponse) string { return v.KeyVaultUri }).(pulumi.StringOutput)
+}
+
+// The version of KeyVault key.
+func (o ManagedDiskEncryptionKeyVaultPropertiesResponseOutput) KeyVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedDiskEncryptionKeyVaultPropertiesResponse) string { return v.KeyVersion }).(pulumi.StringOutput)
+}
+
+type ManagedDiskEncryptionKeyVaultPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedDiskEncryptionKeyVaultPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedDiskEncryptionKeyVaultPropertiesResponse)(nil)).Elem()
+}
+
+func (o ManagedDiskEncryptionKeyVaultPropertiesResponsePtrOutput) ToManagedDiskEncryptionKeyVaultPropertiesResponsePtrOutput() ManagedDiskEncryptionKeyVaultPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ManagedDiskEncryptionKeyVaultPropertiesResponsePtrOutput) ToManagedDiskEncryptionKeyVaultPropertiesResponsePtrOutputWithContext(ctx context.Context) ManagedDiskEncryptionKeyVaultPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ManagedDiskEncryptionKeyVaultPropertiesResponsePtrOutput) Elem() ManagedDiskEncryptionKeyVaultPropertiesResponseOutput {
+	return o.ApplyT(func(v *ManagedDiskEncryptionKeyVaultPropertiesResponse) ManagedDiskEncryptionKeyVaultPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedDiskEncryptionKeyVaultPropertiesResponse
+		return ret
+	}).(ManagedDiskEncryptionKeyVaultPropertiesResponseOutput)
+}
+
+// The name of KeyVault key.
+func (o ManagedDiskEncryptionKeyVaultPropertiesResponsePtrOutput) KeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedDiskEncryptionKeyVaultPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URI of KeyVault.
+func (o ManagedDiskEncryptionKeyVaultPropertiesResponsePtrOutput) KeyVaultUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedDiskEncryptionKeyVaultPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyVaultUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The version of KeyVault key.
+func (o ManagedDiskEncryptionKeyVaultPropertiesResponsePtrOutput) KeyVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedDiskEncryptionKeyVaultPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyVersion
+	}).(pulumi.StringPtrOutput)
+}
+
 // The object that contains details of encryption used on the workspace.
 type ManagedDiskEncryptionResponse struct {
-	// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
+	// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault. Not allowed in Serverless ComputeMode workspace.
 	KeySource string `pulumi:"keySource"`
 	// Key Vault input properties for encryption.
-	KeyVaultProperties ManagedDiskEncryptionResponseKeyVaultProperties `pulumi:"keyVaultProperties"`
+	KeyVaultProperties ManagedDiskEncryptionKeyVaultPropertiesResponse `pulumi:"keyVaultProperties"`
 	// Indicate whether the latest key version should be automatically used for Managed Disk Encryption.
 	RotationToLatestKeyVersionEnabled *bool `pulumi:"rotationToLatestKeyVersionEnabled"`
 }
@@ -2980,16 +3074,16 @@ func (o ManagedDiskEncryptionResponseOutput) ToManagedDiskEncryptionResponseOutp
 	return o
 }
 
-// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
+// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault. Not allowed in Serverless ComputeMode workspace.
 func (o ManagedDiskEncryptionResponseOutput) KeySource() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedDiskEncryptionResponse) string { return v.KeySource }).(pulumi.StringOutput)
 }
 
 // Key Vault input properties for encryption.
-func (o ManagedDiskEncryptionResponseOutput) KeyVaultProperties() ManagedDiskEncryptionResponseKeyVaultPropertiesOutput {
-	return o.ApplyT(func(v ManagedDiskEncryptionResponse) ManagedDiskEncryptionResponseKeyVaultProperties {
+func (o ManagedDiskEncryptionResponseOutput) KeyVaultProperties() ManagedDiskEncryptionKeyVaultPropertiesResponseOutput {
+	return o.ApplyT(func(v ManagedDiskEncryptionResponse) ManagedDiskEncryptionKeyVaultPropertiesResponse {
 		return v.KeyVaultProperties
-	}).(ManagedDiskEncryptionResponseKeyVaultPropertiesOutput)
+	}).(ManagedDiskEncryptionKeyVaultPropertiesResponseOutput)
 }
 
 // Indicate whether the latest key version should be automatically used for Managed Disk Encryption.
@@ -3021,7 +3115,7 @@ func (o ManagedDiskEncryptionResponsePtrOutput) Elem() ManagedDiskEncryptionResp
 	}).(ManagedDiskEncryptionResponseOutput)
 }
 
-// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
+// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault. Not allowed in Serverless ComputeMode workspace.
 func (o ManagedDiskEncryptionResponsePtrOutput) KeySource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedDiskEncryptionResponse) *string {
 		if v == nil {
@@ -3032,13 +3126,13 @@ func (o ManagedDiskEncryptionResponsePtrOutput) KeySource() pulumi.StringPtrOutp
 }
 
 // Key Vault input properties for encryption.
-func (o ManagedDiskEncryptionResponsePtrOutput) KeyVaultProperties() ManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutput {
-	return o.ApplyT(func(v *ManagedDiskEncryptionResponse) *ManagedDiskEncryptionResponseKeyVaultProperties {
+func (o ManagedDiskEncryptionResponsePtrOutput) KeyVaultProperties() ManagedDiskEncryptionKeyVaultPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *ManagedDiskEncryptionResponse) *ManagedDiskEncryptionKeyVaultPropertiesResponse {
 		if v == nil {
 			return nil
 		}
 		return &v.KeyVaultProperties
-	}).(ManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutput)
+	}).(ManagedDiskEncryptionKeyVaultPropertiesResponsePtrOutput)
 }
 
 // Indicate whether the latest key version should be automatically used for Managed Disk Encryption.
@@ -3049,100 +3143,6 @@ func (o ManagedDiskEncryptionResponsePtrOutput) RotationToLatestKeyVersionEnable
 		}
 		return v.RotationToLatestKeyVersionEnabled
 	}).(pulumi.BoolPtrOutput)
-}
-
-// Key Vault input properties for encryption.
-type ManagedDiskEncryptionResponseKeyVaultProperties struct {
-	// The name of KeyVault key.
-	KeyName string `pulumi:"keyName"`
-	// The URI of KeyVault.
-	KeyVaultUri string `pulumi:"keyVaultUri"`
-	// The version of KeyVault key.
-	KeyVersion string `pulumi:"keyVersion"`
-}
-
-// Key Vault input properties for encryption.
-type ManagedDiskEncryptionResponseKeyVaultPropertiesOutput struct{ *pulumi.OutputState }
-
-func (ManagedDiskEncryptionResponseKeyVaultPropertiesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedDiskEncryptionResponseKeyVaultProperties)(nil)).Elem()
-}
-
-func (o ManagedDiskEncryptionResponseKeyVaultPropertiesOutput) ToManagedDiskEncryptionResponseKeyVaultPropertiesOutput() ManagedDiskEncryptionResponseKeyVaultPropertiesOutput {
-	return o
-}
-
-func (o ManagedDiskEncryptionResponseKeyVaultPropertiesOutput) ToManagedDiskEncryptionResponseKeyVaultPropertiesOutputWithContext(ctx context.Context) ManagedDiskEncryptionResponseKeyVaultPropertiesOutput {
-	return o
-}
-
-// The name of KeyVault key.
-func (o ManagedDiskEncryptionResponseKeyVaultPropertiesOutput) KeyName() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedDiskEncryptionResponseKeyVaultProperties) string { return v.KeyName }).(pulumi.StringOutput)
-}
-
-// The URI of KeyVault.
-func (o ManagedDiskEncryptionResponseKeyVaultPropertiesOutput) KeyVaultUri() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedDiskEncryptionResponseKeyVaultProperties) string { return v.KeyVaultUri }).(pulumi.StringOutput)
-}
-
-// The version of KeyVault key.
-func (o ManagedDiskEncryptionResponseKeyVaultPropertiesOutput) KeyVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v ManagedDiskEncryptionResponseKeyVaultProperties) string { return v.KeyVersion }).(pulumi.StringOutput)
-}
-
-type ManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutput struct{ *pulumi.OutputState }
-
-func (ManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ManagedDiskEncryptionResponseKeyVaultProperties)(nil)).Elem()
-}
-
-func (o ManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutput) ToManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutput() ManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutput {
-	return o
-}
-
-func (o ManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutput) ToManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutputWithContext(ctx context.Context) ManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutput {
-	return o
-}
-
-func (o ManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutput) Elem() ManagedDiskEncryptionResponseKeyVaultPropertiesOutput {
-	return o.ApplyT(func(v *ManagedDiskEncryptionResponseKeyVaultProperties) ManagedDiskEncryptionResponseKeyVaultProperties {
-		if v != nil {
-			return *v
-		}
-		var ret ManagedDiskEncryptionResponseKeyVaultProperties
-		return ret
-	}).(ManagedDiskEncryptionResponseKeyVaultPropertiesOutput)
-}
-
-// The name of KeyVault key.
-func (o ManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutput) KeyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedDiskEncryptionResponseKeyVaultProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.KeyName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The URI of KeyVault.
-func (o ManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutput) KeyVaultUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedDiskEncryptionResponseKeyVaultProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.KeyVaultUri
-	}).(pulumi.StringPtrOutput)
-}
-
-// The version of KeyVault key.
-func (o ManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutput) KeyVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagedDiskEncryptionResponseKeyVaultProperties) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.KeyVersion
-	}).(pulumi.StringPtrOutput)
 }
 
 // The Managed Identity details for storage account.
@@ -3511,7 +3511,7 @@ func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAs
 	}).(UserAssignedIdentityResponseMapOutput)
 }
 
-// The properties of a private endpoint connection
+// The properties of a private endpoint connection.
 type PrivateEndpointConnectionProperties struct {
 	// GroupIds from the private link service resource.
 	GroupIds []string `pulumi:"groupIds"`
@@ -3530,7 +3530,7 @@ type PrivateEndpointConnectionPropertiesInput interface {
 	ToPrivateEndpointConnectionPropertiesOutputWithContext(context.Context) PrivateEndpointConnectionPropertiesOutput
 }
 
-// The properties of a private endpoint connection
+// The properties of a private endpoint connection.
 type PrivateEndpointConnectionPropertiesArgs struct {
 	// GroupIds from the private link service resource.
 	GroupIds pulumi.StringArrayInput `pulumi:"groupIds"`
@@ -3550,7 +3550,7 @@ func (i PrivateEndpointConnectionPropertiesArgs) ToPrivateEndpointConnectionProp
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateEndpointConnectionPropertiesOutput)
 }
 
-// The properties of a private endpoint connection
+// The properties of a private endpoint connection.
 type PrivateEndpointConnectionPropertiesOutput struct{ *pulumi.OutputState }
 
 func (PrivateEndpointConnectionPropertiesOutput) ElementType() reflect.Type {
@@ -3577,7 +3577,7 @@ func (o PrivateEndpointConnectionPropertiesOutput) PrivateLinkServiceConnectionS
 	}).(PrivateLinkServiceConnectionStateOutput)
 }
 
-// The properties of a private endpoint connection
+// The properties of a private endpoint connection.
 type PrivateEndpointConnectionPropertiesResponse struct {
 	// GroupIds from the private link service resource.
 	GroupIds []string `pulumi:"groupIds"`
@@ -3589,7 +3589,7 @@ type PrivateEndpointConnectionPropertiesResponse struct {
 	ProvisioningState string `pulumi:"provisioningState"`
 }
 
-// The properties of a private endpoint connection
+// The properties of a private endpoint connection.
 type PrivateEndpointConnectionPropertiesResponseOutput struct{ *pulumi.OutputState }
 
 func (PrivateEndpointConnectionPropertiesResponseOutput) ElementType() reflect.Type {
@@ -3626,19 +3626,21 @@ func (o PrivateEndpointConnectionPropertiesResponseOutput) ProvisioningState() p
 	return o.ApplyT(func(v PrivateEndpointConnectionPropertiesResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The private endpoint connection of a workspace
+// The private endpoint connection of a workspace.
 type PrivateEndpointConnectionResponse struct {
-	// The resource identifier.
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// The resource name.
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The private endpoint connection properties.
 	Properties PrivateEndpointConnectionPropertiesResponse `pulumi:"properties"`
-	// The resource type.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
-// The private endpoint connection of a workspace
+// The private endpoint connection of a workspace.
 type PrivateEndpointConnectionResponseOutput struct{ *pulumi.OutputState }
 
 func (PrivateEndpointConnectionResponseOutput) ElementType() reflect.Type {
@@ -3653,12 +3655,12 @@ func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResp
 	return o
 }
 
-// The resource identifier.
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The resource name.
+// The name of the resource
 func (o PrivateEndpointConnectionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -3670,7 +3672,12 @@ func (o PrivateEndpointConnectionResponseOutput) Properties() PrivateEndpointCon
 	}).(PrivateEndpointConnectionPropertiesResponseOutput)
 }
 
-// The resource type.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o PrivateEndpointConnectionResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o PrivateEndpointConnectionResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -3695,13 +3702,13 @@ func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) P
 	}).(PrivateEndpointConnectionResponseOutput)
 }
 
-// The private endpoint property of a private endpoint connection
+// The private endpoint property of a private endpoint connection.
 type PrivateEndpointResponse struct {
 	// The resource identifier.
 	Id string `pulumi:"id"`
 }
 
-// The private endpoint property of a private endpoint connection
+// The private endpoint property of a private endpoint connection.
 type PrivateEndpointResponseOutput struct{ *pulumi.OutputState }
 
 func (PrivateEndpointResponseOutput) ElementType() reflect.Type {
@@ -3755,7 +3762,7 @@ func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The current state of a private endpoint connection
+// The current state of a private endpoint connection.
 type PrivateLinkServiceConnectionState struct {
 	// Actions required for a private endpoint connection
 	ActionsRequired *string `pulumi:"actionsRequired"`
@@ -3776,7 +3783,7 @@ type PrivateLinkServiceConnectionStateInput interface {
 	ToPrivateLinkServiceConnectionStateOutputWithContext(context.Context) PrivateLinkServiceConnectionStateOutput
 }
 
-// The current state of a private endpoint connection
+// The current state of a private endpoint connection.
 type PrivateLinkServiceConnectionStateArgs struct {
 	// Actions required for a private endpoint connection
 	ActionsRequired pulumi.StringPtrInput `pulumi:"actionsRequired"`
@@ -3798,7 +3805,7 @@ func (i PrivateLinkServiceConnectionStateArgs) ToPrivateLinkServiceConnectionSta
 	return pulumi.ToOutputWithContext(ctx, i).(PrivateLinkServiceConnectionStateOutput)
 }
 
-// The current state of a private endpoint connection
+// The current state of a private endpoint connection.
 type PrivateLinkServiceConnectionStateOutput struct{ *pulumi.OutputState }
 
 func (PrivateLinkServiceConnectionStateOutput) ElementType() reflect.Type {
@@ -3828,7 +3835,7 @@ func (o PrivateLinkServiceConnectionStateOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateLinkServiceConnectionState) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The current state of a private endpoint connection
+// The current state of a private endpoint connection.
 type PrivateLinkServiceConnectionStateResponse struct {
 	// Actions required for a private endpoint connection
 	ActionsRequired *string `pulumi:"actionsRequired"`
@@ -3838,7 +3845,7 @@ type PrivateLinkServiceConnectionStateResponse struct {
 	Status string `pulumi:"status"`
 }
 
-// The current state of a private endpoint connection
+// The current state of a private endpoint connection.
 type PrivateLinkServiceConnectionStateResponseOutput struct{ *pulumi.OutputState }
 
 func (PrivateLinkServiceConnectionStateResponseOutput) ElementType() reflect.Type {
@@ -4359,6 +4366,66 @@ func (o VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkPtrOutput) 
 }
 
 // The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
+type VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponse struct {
+	// The Id of the databricks virtual network.
+	Id *string `pulumi:"id"`
+}
+
+// The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
+type VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponse)(nil)).Elem()
+}
+
+func (o VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponseOutput) ToVirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponseOutput() VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponseOutput {
+	return o
+}
+
+func (o VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponseOutput) ToVirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponseOutputWithContext(ctx context.Context) VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponseOutput {
+	return o
+}
+
+// The Id of the databricks virtual network.
+func (o VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+type VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponse)(nil)).Elem()
+}
+
+func (o VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponsePtrOutput) ToVirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponsePtrOutput() VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponsePtrOutput {
+	return o
+}
+
+func (o VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponsePtrOutput) ToVirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponsePtrOutputWithContext(ctx context.Context) VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponsePtrOutput {
+	return o
+}
+
+func (o VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponsePtrOutput) Elem() VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponseOutput {
+	return o.ApplyT(func(v *VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponse) VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponse
+		return ret
+	}).(VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponseOutput)
+}
+
+// The Id of the databricks virtual network.
+func (o VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
 type VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetwork struct {
 	// The Id of the remote virtual network.
 	Id *string `pulumi:"id"`
@@ -4414,93 +4481,35 @@ func (o VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkOutput) Id() pu
 }
 
 // The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
-type VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork struct {
-	// The Id of the databricks virtual network.
-	Id *string `pulumi:"id"`
-}
-
-// The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
-type VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetworkOutput struct{ *pulumi.OutputState }
-
-func (VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetworkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork)(nil)).Elem()
-}
-
-func (o VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetworkOutput) ToVirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetworkOutput() VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetworkOutput {
-	return o
-}
-
-func (o VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetworkOutput) ToVirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetworkOutputWithContext(ctx context.Context) VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetworkOutput {
-	return o
-}
-
-// The Id of the databricks virtual network.
-func (o VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetworkOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-type VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetworkPtrOutput struct{ *pulumi.OutputState }
-
-func (VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetworkPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork)(nil)).Elem()
-}
-
-func (o VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetworkPtrOutput) ToVirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetworkPtrOutput() VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetworkPtrOutput {
-	return o
-}
-
-func (o VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetworkPtrOutput) ToVirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetworkPtrOutputWithContext(ctx context.Context) VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetworkPtrOutput {
-	return o
-}
-
-func (o VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetworkPtrOutput) Elem() VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetworkOutput {
-	return o.ApplyT(func(v *VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork) VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork {
-		if v != nil {
-			return *v
-		}
-		var ret VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork
-		return ret
-	}).(VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetworkOutput)
-}
-
-// The Id of the databricks virtual network.
-func (o VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetworkPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetwork) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
-type VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetwork struct {
+type VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkResponse struct {
 	// The Id of the remote virtual network.
 	Id *string `pulumi:"id"`
 }
 
 // The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
-type VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetworkOutput struct{ *pulumi.OutputState }
+type VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkResponseOutput struct{ *pulumi.OutputState }
 
-func (VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetworkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetwork)(nil)).Elem()
+func (VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkResponse)(nil)).Elem()
 }
 
-func (o VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetworkOutput) ToVirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetworkOutput() VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetworkOutput {
+func (o VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkResponseOutput) ToVirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkResponseOutput() VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkResponseOutput {
 	return o
 }
 
-func (o VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetworkOutput) ToVirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetworkOutputWithContext(ctx context.Context) VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetworkOutput {
+func (o VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkResponseOutput) ToVirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkResponseOutputWithContext(ctx context.Context) VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkResponseOutput {
 	return o
 }
 
 // The Id of the remote virtual network.
-func (o VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetworkOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetwork) *string { return v.Id }).(pulumi.StringPtrOutput)
+func (o VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // The value which should be used for this field.
 type WorkspaceCustomBooleanParameter struct {
+	// The type of variable that this is
+	Type *string `pulumi:"type"`
 	// The value which should be used for this field.
 	Value bool `pulumi:"value"`
 }
@@ -4518,6 +4527,8 @@ type WorkspaceCustomBooleanParameterInput interface {
 
 // The value which should be used for this field.
 type WorkspaceCustomBooleanParameterArgs struct {
+	// The type of variable that this is
+	Type pulumi.StringPtrInput `pulumi:"type"`
 	// The value which should be used for this field.
 	Value pulumi.BoolInput `pulumi:"value"`
 }
@@ -4600,6 +4611,11 @@ func (o WorkspaceCustomBooleanParameterOutput) ToWorkspaceCustomBooleanParameter
 	}).(WorkspaceCustomBooleanParameterPtrOutput)
 }
 
+// The type of variable that this is
+func (o WorkspaceCustomBooleanParameterOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceCustomBooleanParameter) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
 // The value which should be used for this field.
 func (o WorkspaceCustomBooleanParameterOutput) Value() pulumi.BoolOutput {
 	return o.ApplyT(func(v WorkspaceCustomBooleanParameter) bool { return v.Value }).(pulumi.BoolOutput)
@@ -4629,6 +4645,16 @@ func (o WorkspaceCustomBooleanParameterPtrOutput) Elem() WorkspaceCustomBooleanP
 	}).(WorkspaceCustomBooleanParameterOutput)
 }
 
+// The type of variable that this is
+func (o WorkspaceCustomBooleanParameterPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceCustomBooleanParameter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // The value which should be used for this field.
 func (o WorkspaceCustomBooleanParameterPtrOutput) Value() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomBooleanParameter) *bool {
@@ -4642,7 +4668,7 @@ func (o WorkspaceCustomBooleanParameterPtrOutput) Value() pulumi.BoolPtrOutput {
 // The value which should be used for this field.
 type WorkspaceCustomBooleanParameterResponse struct {
 	// The type of variable that this is
-	Type string `pulumi:"type"`
+	Type *string `pulumi:"type"`
 	// The value which should be used for this field.
 	Value bool `pulumi:"value"`
 }
@@ -4663,8 +4689,8 @@ func (o WorkspaceCustomBooleanParameterResponseOutput) ToWorkspaceCustomBooleanP
 }
 
 // The type of variable that this is
-func (o WorkspaceCustomBooleanParameterResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v WorkspaceCustomBooleanParameterResponse) string { return v.Type }).(pulumi.StringOutput)
+func (o WorkspaceCustomBooleanParameterResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceCustomBooleanParameterResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 // The value which should be used for this field.
@@ -4702,7 +4728,7 @@ func (o WorkspaceCustomBooleanParameterResponsePtrOutput) Type() pulumi.StringPt
 		if v == nil {
 			return nil
 		}
-		return &v.Type
+		return v.Type
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4719,7 +4745,7 @@ func (o WorkspaceCustomBooleanParameterResponsePtrOutput) Value() pulumi.BoolPtr
 // The value which should be used for this field.
 type WorkspaceCustomObjectParameterResponse struct {
 	// The type of variable that this is
-	Type string `pulumi:"type"`
+	Type *string `pulumi:"type"`
 	// The value which should be used for this field.
 	Value interface{} `pulumi:"value"`
 }
@@ -4740,8 +4766,8 @@ func (o WorkspaceCustomObjectParameterResponseOutput) ToWorkspaceCustomObjectPar
 }
 
 // The type of variable that this is
-func (o WorkspaceCustomObjectParameterResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v WorkspaceCustomObjectParameterResponse) string { return v.Type }).(pulumi.StringOutput)
+func (o WorkspaceCustomObjectParameterResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceCustomObjectParameterResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 // The value which should be used for this field.
@@ -4779,7 +4805,7 @@ func (o WorkspaceCustomObjectParameterResponsePtrOutput) Type() pulumi.StringPtr
 		if v == nil {
 			return nil
 		}
-		return &v.Type
+		return v.Type
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4793,37 +4819,37 @@ func (o WorkspaceCustomObjectParameterResponsePtrOutput) Value() pulumi.AnyOutpu
 	}).(pulumi.AnyOutput)
 }
 
-// Custom Parameters used for Cluster Creation.
+// Custom Parameters used for Workspace Creation. Not allowed in Serverless ComputeMode workspace.
 type WorkspaceCustomParameters struct {
-	// The ID of a Azure Machine Learning workspace to link with Databricks workspace
+	// The ID of a Azure Machine Learning workspace to link with Databricks workspace. Not allowed in Serverless ComputeMode workspace.
 	AmlWorkspaceId *WorkspaceCustomStringParameter `pulumi:"amlWorkspaceId"`
-	// The name of the Private Subnet within the Virtual Network
+	// The name of the Private Subnet within the Virtual Network. Not allowed in Serverless ComputeMode workspace.
 	CustomPrivateSubnetName *WorkspaceCustomStringParameter `pulumi:"customPrivateSubnetName"`
-	// The name of a Public Subnet within the Virtual Network
+	// The name of a Public Subnet within the Virtual Network. Not allowed in Serverless ComputeMode workspace.
 	CustomPublicSubnetName *WorkspaceCustomStringParameter `pulumi:"customPublicSubnetName"`
-	// The ID of a Virtual Network where this Databricks Cluster should be created
+	// The ID of a Virtual Network where this Databricks Cluster should be created. Not allowed in Serverless ComputeMode workspace.
 	CustomVirtualNetworkId *WorkspaceCustomStringParameter `pulumi:"customVirtualNetworkId"`
-	// Boolean indicating whether the public IP should be disabled. Default value is true
+	// Boolean indicating whether the public IP should be disabled. Default value is true. Not allowed in Serverless ComputeMode workspace.
 	EnableNoPublicIp *WorkspaceNoPublicIPBooleanParameter `pulumi:"enableNoPublicIp"`
-	// Contains the encryption details for Customer-Managed Key (CMK) enabled workspace.
+	// Contains the encryption details for Customer-Managed Key (CMK) enabled workspace.Not allowed in Serverless ComputeMode workspace.
 	Encryption *WorkspaceEncryptionParameter `pulumi:"encryption"`
-	// Name of the outbound Load Balancer Backend Pool for Secure Cluster Connectivity (No Public IP).
+	// Name of the outbound Load Balancer Backend Pool for Secure Cluster Connectivity (No Public IP). Not allowed in Serverless ComputeMode workspace.
 	LoadBalancerBackendPoolName *WorkspaceCustomStringParameter `pulumi:"loadBalancerBackendPoolName"`
-	// Resource URI of Outbound Load balancer for Secure Cluster Connectivity (No Public IP) workspace.
+	// Resource URI of Outbound Load balancer for Secure Cluster Connectivity (No Public IP) workspace. Not allowed in Serverless ComputeMode workspace.
 	LoadBalancerId *WorkspaceCustomStringParameter `pulumi:"loadBalancerId"`
-	// Name of the NAT gateway for Secure Cluster Connectivity (No Public IP) workspace subnets.
+	// Name of the NAT gateway for Secure Cluster Connectivity (No Public IP) workspace subnets. Not allowed in Serverless ComputeMode workspace.
 	NatGatewayName *WorkspaceCustomStringParameter `pulumi:"natGatewayName"`
-	// Prepare the workspace for encryption. Enables the Managed Identity for managed storage account.
+	// Prepare the workspace for encryption. Enables the Managed Identity for managed storage account. Not allowed in Serverless ComputeMode workspace.
 	PrepareEncryption *WorkspaceCustomBooleanParameter `pulumi:"prepareEncryption"`
-	// Name of the Public IP for No Public IP workspace with managed vNet.
+	// Name of the Public IP for No Public IP workspace with managed vNet. Not allowed in Serverless ComputeMode workspace.
 	PublicIpName *WorkspaceCustomStringParameter `pulumi:"publicIpName"`
-	// A boolean indicating whether or not the DBFS root file system will be enabled with secondary layer of encryption with platform managed keys for data at rest.
+	// A boolean indicating whether or not the DBFS root file system will be enabled with secondary layer of encryption with platform managed keys for data at rest. Not allowed in Serverless ComputeMode workspace.
 	RequireInfrastructureEncryption *WorkspaceCustomBooleanParameter `pulumi:"requireInfrastructureEncryption"`
-	// Default DBFS storage account name.
+	// Default DBFS storage account name. Not allowed in Serverless ComputeMode workspace.
 	StorageAccountName *WorkspaceCustomStringParameter `pulumi:"storageAccountName"`
-	// Storage account SKU name, ex: Standard_GRS, Standard_LRS. Refer https://aka.ms/storageskus for valid inputs.
+	// Storage account SKU name, ex: Standard_GRS, Standard_LRS. Refer https://aka.ms/storageskus for valid inputs. Not allowed in Serverless ComputeMode workspace.
 	StorageAccountSkuName *WorkspaceCustomStringParameter `pulumi:"storageAccountSkuName"`
-	// Address prefix for Managed virtual network. Default value for this input is 10.139.
+	// Address prefix for Managed virtual network. Default value for this input is 10.139. Not allowed in Serverless ComputeMode workspace.
 	VnetAddressPrefix *WorkspaceCustomStringParameter `pulumi:"vnetAddressPrefix"`
 }
 
@@ -4849,37 +4875,37 @@ type WorkspaceCustomParametersInput interface {
 	ToWorkspaceCustomParametersOutputWithContext(context.Context) WorkspaceCustomParametersOutput
 }
 
-// Custom Parameters used for Cluster Creation.
+// Custom Parameters used for Workspace Creation. Not allowed in Serverless ComputeMode workspace.
 type WorkspaceCustomParametersArgs struct {
-	// The ID of a Azure Machine Learning workspace to link with Databricks workspace
+	// The ID of a Azure Machine Learning workspace to link with Databricks workspace. Not allowed in Serverless ComputeMode workspace.
 	AmlWorkspaceId WorkspaceCustomStringParameterPtrInput `pulumi:"amlWorkspaceId"`
-	// The name of the Private Subnet within the Virtual Network
+	// The name of the Private Subnet within the Virtual Network. Not allowed in Serverless ComputeMode workspace.
 	CustomPrivateSubnetName WorkspaceCustomStringParameterPtrInput `pulumi:"customPrivateSubnetName"`
-	// The name of a Public Subnet within the Virtual Network
+	// The name of a Public Subnet within the Virtual Network. Not allowed in Serverless ComputeMode workspace.
 	CustomPublicSubnetName WorkspaceCustomStringParameterPtrInput `pulumi:"customPublicSubnetName"`
-	// The ID of a Virtual Network where this Databricks Cluster should be created
+	// The ID of a Virtual Network where this Databricks Cluster should be created. Not allowed in Serverless ComputeMode workspace.
 	CustomVirtualNetworkId WorkspaceCustomStringParameterPtrInput `pulumi:"customVirtualNetworkId"`
-	// Boolean indicating whether the public IP should be disabled. Default value is true
+	// Boolean indicating whether the public IP should be disabled. Default value is true. Not allowed in Serverless ComputeMode workspace.
 	EnableNoPublicIp WorkspaceNoPublicIPBooleanParameterPtrInput `pulumi:"enableNoPublicIp"`
-	// Contains the encryption details for Customer-Managed Key (CMK) enabled workspace.
+	// Contains the encryption details for Customer-Managed Key (CMK) enabled workspace.Not allowed in Serverless ComputeMode workspace.
 	Encryption WorkspaceEncryptionParameterPtrInput `pulumi:"encryption"`
-	// Name of the outbound Load Balancer Backend Pool for Secure Cluster Connectivity (No Public IP).
+	// Name of the outbound Load Balancer Backend Pool for Secure Cluster Connectivity (No Public IP). Not allowed in Serverless ComputeMode workspace.
 	LoadBalancerBackendPoolName WorkspaceCustomStringParameterPtrInput `pulumi:"loadBalancerBackendPoolName"`
-	// Resource URI of Outbound Load balancer for Secure Cluster Connectivity (No Public IP) workspace.
+	// Resource URI of Outbound Load balancer for Secure Cluster Connectivity (No Public IP) workspace. Not allowed in Serverless ComputeMode workspace.
 	LoadBalancerId WorkspaceCustomStringParameterPtrInput `pulumi:"loadBalancerId"`
-	// Name of the NAT gateway for Secure Cluster Connectivity (No Public IP) workspace subnets.
+	// Name of the NAT gateway for Secure Cluster Connectivity (No Public IP) workspace subnets. Not allowed in Serverless ComputeMode workspace.
 	NatGatewayName WorkspaceCustomStringParameterPtrInput `pulumi:"natGatewayName"`
-	// Prepare the workspace for encryption. Enables the Managed Identity for managed storage account.
+	// Prepare the workspace for encryption. Enables the Managed Identity for managed storage account. Not allowed in Serverless ComputeMode workspace.
 	PrepareEncryption WorkspaceCustomBooleanParameterPtrInput `pulumi:"prepareEncryption"`
-	// Name of the Public IP for No Public IP workspace with managed vNet.
+	// Name of the Public IP for No Public IP workspace with managed vNet. Not allowed in Serverless ComputeMode workspace.
 	PublicIpName WorkspaceCustomStringParameterPtrInput `pulumi:"publicIpName"`
-	// A boolean indicating whether or not the DBFS root file system will be enabled with secondary layer of encryption with platform managed keys for data at rest.
+	// A boolean indicating whether or not the DBFS root file system will be enabled with secondary layer of encryption with platform managed keys for data at rest. Not allowed in Serverless ComputeMode workspace.
 	RequireInfrastructureEncryption WorkspaceCustomBooleanParameterPtrInput `pulumi:"requireInfrastructureEncryption"`
-	// Default DBFS storage account name.
+	// Default DBFS storage account name. Not allowed in Serverless ComputeMode workspace.
 	StorageAccountName WorkspaceCustomStringParameterPtrInput `pulumi:"storageAccountName"`
-	// Storage account SKU name, ex: Standard_GRS, Standard_LRS. Refer https://aka.ms/storageskus for valid inputs.
+	// Storage account SKU name, ex: Standard_GRS, Standard_LRS. Refer https://aka.ms/storageskus for valid inputs. Not allowed in Serverless ComputeMode workspace.
 	StorageAccountSkuName WorkspaceCustomStringParameterPtrInput `pulumi:"storageAccountSkuName"`
-	// Address prefix for Managed virtual network. Default value for this input is 10.139.
+	// Address prefix for Managed virtual network. Default value for this input is 10.139. Not allowed in Serverless ComputeMode workspace.
 	VnetAddressPrefix WorkspaceCustomStringParameterPtrInput `pulumi:"vnetAddressPrefix"`
 }
 
@@ -4945,7 +4971,7 @@ func (i *workspaceCustomParametersPtrType) ToWorkspaceCustomParametersPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceCustomParametersPtrOutput)
 }
 
-// Custom Parameters used for Cluster Creation.
+// Custom Parameters used for Workspace Creation. Not allowed in Serverless ComputeMode workspace.
 type WorkspaceCustomParametersOutput struct{ *pulumi.OutputState }
 
 func (WorkspaceCustomParametersOutput) ElementType() reflect.Type {
@@ -4970,81 +4996,81 @@ func (o WorkspaceCustomParametersOutput) ToWorkspaceCustomParametersPtrOutputWit
 	}).(WorkspaceCustomParametersPtrOutput)
 }
 
-// The ID of a Azure Machine Learning workspace to link with Databricks workspace
+// The ID of a Azure Machine Learning workspace to link with Databricks workspace. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersOutput) AmlWorkspaceId() WorkspaceCustomStringParameterPtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParameters) *WorkspaceCustomStringParameter { return v.AmlWorkspaceId }).(WorkspaceCustomStringParameterPtrOutput)
 }
 
-// The name of the Private Subnet within the Virtual Network
+// The name of the Private Subnet within the Virtual Network. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersOutput) CustomPrivateSubnetName() WorkspaceCustomStringParameterPtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParameters) *WorkspaceCustomStringParameter { return v.CustomPrivateSubnetName }).(WorkspaceCustomStringParameterPtrOutput)
 }
 
-// The name of a Public Subnet within the Virtual Network
+// The name of a Public Subnet within the Virtual Network. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersOutput) CustomPublicSubnetName() WorkspaceCustomStringParameterPtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParameters) *WorkspaceCustomStringParameter { return v.CustomPublicSubnetName }).(WorkspaceCustomStringParameterPtrOutput)
 }
 
-// The ID of a Virtual Network where this Databricks Cluster should be created
+// The ID of a Virtual Network where this Databricks Cluster should be created. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersOutput) CustomVirtualNetworkId() WorkspaceCustomStringParameterPtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParameters) *WorkspaceCustomStringParameter { return v.CustomVirtualNetworkId }).(WorkspaceCustomStringParameterPtrOutput)
 }
 
-// Boolean indicating whether the public IP should be disabled. Default value is true
+// Boolean indicating whether the public IP should be disabled. Default value is true. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersOutput) EnableNoPublicIp() WorkspaceNoPublicIPBooleanParameterPtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParameters) *WorkspaceNoPublicIPBooleanParameter { return v.EnableNoPublicIp }).(WorkspaceNoPublicIPBooleanParameterPtrOutput)
 }
 
-// Contains the encryption details for Customer-Managed Key (CMK) enabled workspace.
+// Contains the encryption details for Customer-Managed Key (CMK) enabled workspace.Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersOutput) Encryption() WorkspaceEncryptionParameterPtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParameters) *WorkspaceEncryptionParameter { return v.Encryption }).(WorkspaceEncryptionParameterPtrOutput)
 }
 
-// Name of the outbound Load Balancer Backend Pool for Secure Cluster Connectivity (No Public IP).
+// Name of the outbound Load Balancer Backend Pool for Secure Cluster Connectivity (No Public IP). Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersOutput) LoadBalancerBackendPoolName() WorkspaceCustomStringParameterPtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParameters) *WorkspaceCustomStringParameter {
 		return v.LoadBalancerBackendPoolName
 	}).(WorkspaceCustomStringParameterPtrOutput)
 }
 
-// Resource URI of Outbound Load balancer for Secure Cluster Connectivity (No Public IP) workspace.
+// Resource URI of Outbound Load balancer for Secure Cluster Connectivity (No Public IP) workspace. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersOutput) LoadBalancerId() WorkspaceCustomStringParameterPtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParameters) *WorkspaceCustomStringParameter { return v.LoadBalancerId }).(WorkspaceCustomStringParameterPtrOutput)
 }
 
-// Name of the NAT gateway for Secure Cluster Connectivity (No Public IP) workspace subnets.
+// Name of the NAT gateway for Secure Cluster Connectivity (No Public IP) workspace subnets. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersOutput) NatGatewayName() WorkspaceCustomStringParameterPtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParameters) *WorkspaceCustomStringParameter { return v.NatGatewayName }).(WorkspaceCustomStringParameterPtrOutput)
 }
 
-// Prepare the workspace for encryption. Enables the Managed Identity for managed storage account.
+// Prepare the workspace for encryption. Enables the Managed Identity for managed storage account. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersOutput) PrepareEncryption() WorkspaceCustomBooleanParameterPtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParameters) *WorkspaceCustomBooleanParameter { return v.PrepareEncryption }).(WorkspaceCustomBooleanParameterPtrOutput)
 }
 
-// Name of the Public IP for No Public IP workspace with managed vNet.
+// Name of the Public IP for No Public IP workspace with managed vNet. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersOutput) PublicIpName() WorkspaceCustomStringParameterPtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParameters) *WorkspaceCustomStringParameter { return v.PublicIpName }).(WorkspaceCustomStringParameterPtrOutput)
 }
 
-// A boolean indicating whether or not the DBFS root file system will be enabled with secondary layer of encryption with platform managed keys for data at rest.
+// A boolean indicating whether or not the DBFS root file system will be enabled with secondary layer of encryption with platform managed keys for data at rest. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersOutput) RequireInfrastructureEncryption() WorkspaceCustomBooleanParameterPtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParameters) *WorkspaceCustomBooleanParameter {
 		return v.RequireInfrastructureEncryption
 	}).(WorkspaceCustomBooleanParameterPtrOutput)
 }
 
-// Default DBFS storage account name.
+// Default DBFS storage account name. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersOutput) StorageAccountName() WorkspaceCustomStringParameterPtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParameters) *WorkspaceCustomStringParameter { return v.StorageAccountName }).(WorkspaceCustomStringParameterPtrOutput)
 }
 
-// Storage account SKU name, ex: Standard_GRS, Standard_LRS. Refer https://aka.ms/storageskus for valid inputs.
+// Storage account SKU name, ex: Standard_GRS, Standard_LRS. Refer https://aka.ms/storageskus for valid inputs. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersOutput) StorageAccountSkuName() WorkspaceCustomStringParameterPtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParameters) *WorkspaceCustomStringParameter { return v.StorageAccountSkuName }).(WorkspaceCustomStringParameterPtrOutput)
 }
 
-// Address prefix for Managed virtual network. Default value for this input is 10.139.
+// Address prefix for Managed virtual network. Default value for this input is 10.139. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersOutput) VnetAddressPrefix() WorkspaceCustomStringParameterPtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParameters) *WorkspaceCustomStringParameter { return v.VnetAddressPrefix }).(WorkspaceCustomStringParameterPtrOutput)
 }
@@ -5073,7 +5099,7 @@ func (o WorkspaceCustomParametersPtrOutput) Elem() WorkspaceCustomParametersOutp
 	}).(WorkspaceCustomParametersOutput)
 }
 
-// The ID of a Azure Machine Learning workspace to link with Databricks workspace
+// The ID of a Azure Machine Learning workspace to link with Databricks workspace. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersPtrOutput) AmlWorkspaceId() WorkspaceCustomStringParameterPtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParameters) *WorkspaceCustomStringParameter {
 		if v == nil {
@@ -5083,7 +5109,7 @@ func (o WorkspaceCustomParametersPtrOutput) AmlWorkspaceId() WorkspaceCustomStri
 	}).(WorkspaceCustomStringParameterPtrOutput)
 }
 
-// The name of the Private Subnet within the Virtual Network
+// The name of the Private Subnet within the Virtual Network. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersPtrOutput) CustomPrivateSubnetName() WorkspaceCustomStringParameterPtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParameters) *WorkspaceCustomStringParameter {
 		if v == nil {
@@ -5093,7 +5119,7 @@ func (o WorkspaceCustomParametersPtrOutput) CustomPrivateSubnetName() WorkspaceC
 	}).(WorkspaceCustomStringParameterPtrOutput)
 }
 
-// The name of a Public Subnet within the Virtual Network
+// The name of a Public Subnet within the Virtual Network. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersPtrOutput) CustomPublicSubnetName() WorkspaceCustomStringParameterPtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParameters) *WorkspaceCustomStringParameter {
 		if v == nil {
@@ -5103,7 +5129,7 @@ func (o WorkspaceCustomParametersPtrOutput) CustomPublicSubnetName() WorkspaceCu
 	}).(WorkspaceCustomStringParameterPtrOutput)
 }
 
-// The ID of a Virtual Network where this Databricks Cluster should be created
+// The ID of a Virtual Network where this Databricks Cluster should be created. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersPtrOutput) CustomVirtualNetworkId() WorkspaceCustomStringParameterPtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParameters) *WorkspaceCustomStringParameter {
 		if v == nil {
@@ -5113,7 +5139,7 @@ func (o WorkspaceCustomParametersPtrOutput) CustomVirtualNetworkId() WorkspaceCu
 	}).(WorkspaceCustomStringParameterPtrOutput)
 }
 
-// Boolean indicating whether the public IP should be disabled. Default value is true
+// Boolean indicating whether the public IP should be disabled. Default value is true. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersPtrOutput) EnableNoPublicIp() WorkspaceNoPublicIPBooleanParameterPtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParameters) *WorkspaceNoPublicIPBooleanParameter {
 		if v == nil {
@@ -5123,7 +5149,7 @@ func (o WorkspaceCustomParametersPtrOutput) EnableNoPublicIp() WorkspaceNoPublic
 	}).(WorkspaceNoPublicIPBooleanParameterPtrOutput)
 }
 
-// Contains the encryption details for Customer-Managed Key (CMK) enabled workspace.
+// Contains the encryption details for Customer-Managed Key (CMK) enabled workspace.Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersPtrOutput) Encryption() WorkspaceEncryptionParameterPtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParameters) *WorkspaceEncryptionParameter {
 		if v == nil {
@@ -5133,7 +5159,7 @@ func (o WorkspaceCustomParametersPtrOutput) Encryption() WorkspaceEncryptionPara
 	}).(WorkspaceEncryptionParameterPtrOutput)
 }
 
-// Name of the outbound Load Balancer Backend Pool for Secure Cluster Connectivity (No Public IP).
+// Name of the outbound Load Balancer Backend Pool for Secure Cluster Connectivity (No Public IP). Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersPtrOutput) LoadBalancerBackendPoolName() WorkspaceCustomStringParameterPtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParameters) *WorkspaceCustomStringParameter {
 		if v == nil {
@@ -5143,7 +5169,7 @@ func (o WorkspaceCustomParametersPtrOutput) LoadBalancerBackendPoolName() Worksp
 	}).(WorkspaceCustomStringParameterPtrOutput)
 }
 
-// Resource URI of Outbound Load balancer for Secure Cluster Connectivity (No Public IP) workspace.
+// Resource URI of Outbound Load balancer for Secure Cluster Connectivity (No Public IP) workspace. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersPtrOutput) LoadBalancerId() WorkspaceCustomStringParameterPtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParameters) *WorkspaceCustomStringParameter {
 		if v == nil {
@@ -5153,7 +5179,7 @@ func (o WorkspaceCustomParametersPtrOutput) LoadBalancerId() WorkspaceCustomStri
 	}).(WorkspaceCustomStringParameterPtrOutput)
 }
 
-// Name of the NAT gateway for Secure Cluster Connectivity (No Public IP) workspace subnets.
+// Name of the NAT gateway for Secure Cluster Connectivity (No Public IP) workspace subnets. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersPtrOutput) NatGatewayName() WorkspaceCustomStringParameterPtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParameters) *WorkspaceCustomStringParameter {
 		if v == nil {
@@ -5163,7 +5189,7 @@ func (o WorkspaceCustomParametersPtrOutput) NatGatewayName() WorkspaceCustomStri
 	}).(WorkspaceCustomStringParameterPtrOutput)
 }
 
-// Prepare the workspace for encryption. Enables the Managed Identity for managed storage account.
+// Prepare the workspace for encryption. Enables the Managed Identity for managed storage account. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersPtrOutput) PrepareEncryption() WorkspaceCustomBooleanParameterPtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParameters) *WorkspaceCustomBooleanParameter {
 		if v == nil {
@@ -5173,7 +5199,7 @@ func (o WorkspaceCustomParametersPtrOutput) PrepareEncryption() WorkspaceCustomB
 	}).(WorkspaceCustomBooleanParameterPtrOutput)
 }
 
-// Name of the Public IP for No Public IP workspace with managed vNet.
+// Name of the Public IP for No Public IP workspace with managed vNet. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersPtrOutput) PublicIpName() WorkspaceCustomStringParameterPtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParameters) *WorkspaceCustomStringParameter {
 		if v == nil {
@@ -5183,7 +5209,7 @@ func (o WorkspaceCustomParametersPtrOutput) PublicIpName() WorkspaceCustomString
 	}).(WorkspaceCustomStringParameterPtrOutput)
 }
 
-// A boolean indicating whether or not the DBFS root file system will be enabled with secondary layer of encryption with platform managed keys for data at rest.
+// A boolean indicating whether or not the DBFS root file system will be enabled with secondary layer of encryption with platform managed keys for data at rest. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersPtrOutput) RequireInfrastructureEncryption() WorkspaceCustomBooleanParameterPtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParameters) *WorkspaceCustomBooleanParameter {
 		if v == nil {
@@ -5193,7 +5219,7 @@ func (o WorkspaceCustomParametersPtrOutput) RequireInfrastructureEncryption() Wo
 	}).(WorkspaceCustomBooleanParameterPtrOutput)
 }
 
-// Default DBFS storage account name.
+// Default DBFS storage account name. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersPtrOutput) StorageAccountName() WorkspaceCustomStringParameterPtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParameters) *WorkspaceCustomStringParameter {
 		if v == nil {
@@ -5203,7 +5229,7 @@ func (o WorkspaceCustomParametersPtrOutput) StorageAccountName() WorkspaceCustom
 	}).(WorkspaceCustomStringParameterPtrOutput)
 }
 
-// Storage account SKU name, ex: Standard_GRS, Standard_LRS. Refer https://aka.ms/storageskus for valid inputs.
+// Storage account SKU name, ex: Standard_GRS, Standard_LRS. Refer https://aka.ms/storageskus for valid inputs. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersPtrOutput) StorageAccountSkuName() WorkspaceCustomStringParameterPtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParameters) *WorkspaceCustomStringParameter {
 		if v == nil {
@@ -5213,7 +5239,7 @@ func (o WorkspaceCustomParametersPtrOutput) StorageAccountSkuName() WorkspaceCus
 	}).(WorkspaceCustomStringParameterPtrOutput)
 }
 
-// Address prefix for Managed virtual network. Default value for this input is 10.139.
+// Address prefix for Managed virtual network. Default value for this input is 10.139. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersPtrOutput) VnetAddressPrefix() WorkspaceCustomStringParameterPtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParameters) *WorkspaceCustomStringParameter {
 		if v == nil {
@@ -5223,39 +5249,39 @@ func (o WorkspaceCustomParametersPtrOutput) VnetAddressPrefix() WorkspaceCustomS
 	}).(WorkspaceCustomStringParameterPtrOutput)
 }
 
-// Custom Parameters used for Cluster Creation.
+// Custom Parameters used for Workspace Creation. Not allowed in Serverless ComputeMode workspace.
 type WorkspaceCustomParametersResponse struct {
-	// The ID of a Azure Machine Learning workspace to link with Databricks workspace
+	// The ID of a Azure Machine Learning workspace to link with Databricks workspace. Not allowed in Serverless ComputeMode workspace.
 	AmlWorkspaceId *WorkspaceCustomStringParameterResponse `pulumi:"amlWorkspaceId"`
-	// The name of the Private Subnet within the Virtual Network
+	// The name of the Private Subnet within the Virtual Network. Not allowed in Serverless ComputeMode workspace.
 	CustomPrivateSubnetName *WorkspaceCustomStringParameterResponse `pulumi:"customPrivateSubnetName"`
-	// The name of a Public Subnet within the Virtual Network
+	// The name of a Public Subnet within the Virtual Network. Not allowed in Serverless ComputeMode workspace.
 	CustomPublicSubnetName *WorkspaceCustomStringParameterResponse `pulumi:"customPublicSubnetName"`
-	// The ID of a Virtual Network where this Databricks Cluster should be created
+	// The ID of a Virtual Network where this Databricks Cluster should be created. Not allowed in Serverless ComputeMode workspace.
 	CustomVirtualNetworkId *WorkspaceCustomStringParameterResponse `pulumi:"customVirtualNetworkId"`
-	// Boolean indicating whether the public IP should be disabled. Default value is true
+	// Boolean indicating whether the public IP should be disabled. Default value is true. Not allowed in Serverless ComputeMode workspace.
 	EnableNoPublicIp *WorkspaceNoPublicIPBooleanParameterResponse `pulumi:"enableNoPublicIp"`
-	// Contains the encryption details for Customer-Managed Key (CMK) enabled workspace.
+	// Contains the encryption details for Customer-Managed Key (CMK) enabled workspace.Not allowed in Serverless ComputeMode workspace.
 	Encryption *WorkspaceEncryptionParameterResponse `pulumi:"encryption"`
-	// Name of the outbound Load Balancer Backend Pool for Secure Cluster Connectivity (No Public IP).
+	// Name of the outbound Load Balancer Backend Pool for Secure Cluster Connectivity (No Public IP). Not allowed in Serverless ComputeMode workspace.
 	LoadBalancerBackendPoolName *WorkspaceCustomStringParameterResponse `pulumi:"loadBalancerBackendPoolName"`
-	// Resource URI of Outbound Load balancer for Secure Cluster Connectivity (No Public IP) workspace.
+	// Resource URI of Outbound Load balancer for Secure Cluster Connectivity (No Public IP) workspace. Not allowed in Serverless ComputeMode workspace.
 	LoadBalancerId *WorkspaceCustomStringParameterResponse `pulumi:"loadBalancerId"`
-	// Name of the NAT gateway for Secure Cluster Connectivity (No Public IP) workspace subnets.
+	// Name of the NAT gateway for Secure Cluster Connectivity (No Public IP) workspace subnets. Not allowed in Serverless ComputeMode workspace.
 	NatGatewayName *WorkspaceCustomStringParameterResponse `pulumi:"natGatewayName"`
-	// Prepare the workspace for encryption. Enables the Managed Identity for managed storage account.
+	// Prepare the workspace for encryption. Enables the Managed Identity for managed storage account. Not allowed in Serverless ComputeMode workspace.
 	PrepareEncryption *WorkspaceCustomBooleanParameterResponse `pulumi:"prepareEncryption"`
-	// Name of the Public IP for No Public IP workspace with managed vNet.
+	// Name of the Public IP for No Public IP workspace with managed vNet. Not allowed in Serverless ComputeMode workspace.
 	PublicIpName *WorkspaceCustomStringParameterResponse `pulumi:"publicIpName"`
-	// A boolean indicating whether or not the DBFS root file system will be enabled with secondary layer of encryption with platform managed keys for data at rest.
+	// A boolean indicating whether or not the DBFS root file system will be enabled with secondary layer of encryption with platform managed keys for data at rest. Not allowed in Serverless ComputeMode workspace.
 	RequireInfrastructureEncryption *WorkspaceCustomBooleanParameterResponse `pulumi:"requireInfrastructureEncryption"`
-	// Tags applied to resources under Managed resource group. These can be updated by updating tags at workspace level.
+	// Tags applied to resources under Managed resource group. These can be updated by updating tags at workspace level. Not allowed in Serverless ComputeMode workspace.
 	ResourceTags WorkspaceCustomObjectParameterResponse `pulumi:"resourceTags"`
-	// Default DBFS storage account name.
+	// Default DBFS storage account name. Not allowed in Serverless ComputeMode workspace.
 	StorageAccountName *WorkspaceCustomStringParameterResponse `pulumi:"storageAccountName"`
-	// Storage account SKU name, ex: Standard_GRS, Standard_LRS. Refer https://aka.ms/storageskus for valid inputs.
+	// Storage account SKU name, ex: Standard_GRS, Standard_LRS. Refer https://aka.ms/storageskus for valid inputs. Not allowed in Serverless ComputeMode workspace.
 	StorageAccountSkuName *WorkspaceCustomStringParameterResponse `pulumi:"storageAccountSkuName"`
-	// Address prefix for Managed virtual network. Default value for this input is 10.139.
+	// Address prefix for Managed virtual network. Default value for this input is 10.139. Not allowed in Serverless ComputeMode workspace.
 	VnetAddressPrefix *WorkspaceCustomStringParameterResponse `pulumi:"vnetAddressPrefix"`
 }
 
@@ -5270,7 +5296,7 @@ func (val *WorkspaceCustomParametersResponse) Defaults() *WorkspaceCustomParamet
 	return &tmp
 }
 
-// Custom Parameters used for Cluster Creation.
+// Custom Parameters used for Workspace Creation. Not allowed in Serverless ComputeMode workspace.
 type WorkspaceCustomParametersResponseOutput struct{ *pulumi.OutputState }
 
 func (WorkspaceCustomParametersResponseOutput) ElementType() reflect.Type {
@@ -5285,110 +5311,110 @@ func (o WorkspaceCustomParametersResponseOutput) ToWorkspaceCustomParametersResp
 	return o
 }
 
-// The ID of a Azure Machine Learning workspace to link with Databricks workspace
+// The ID of a Azure Machine Learning workspace to link with Databricks workspace. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponseOutput) AmlWorkspaceId() WorkspaceCustomStringParameterResponsePtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParametersResponse) *WorkspaceCustomStringParameterResponse {
 		return v.AmlWorkspaceId
 	}).(WorkspaceCustomStringParameterResponsePtrOutput)
 }
 
-// The name of the Private Subnet within the Virtual Network
+// The name of the Private Subnet within the Virtual Network. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponseOutput) CustomPrivateSubnetName() WorkspaceCustomStringParameterResponsePtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParametersResponse) *WorkspaceCustomStringParameterResponse {
 		return v.CustomPrivateSubnetName
 	}).(WorkspaceCustomStringParameterResponsePtrOutput)
 }
 
-// The name of a Public Subnet within the Virtual Network
+// The name of a Public Subnet within the Virtual Network. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponseOutput) CustomPublicSubnetName() WorkspaceCustomStringParameterResponsePtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParametersResponse) *WorkspaceCustomStringParameterResponse {
 		return v.CustomPublicSubnetName
 	}).(WorkspaceCustomStringParameterResponsePtrOutput)
 }
 
-// The ID of a Virtual Network where this Databricks Cluster should be created
+// The ID of a Virtual Network where this Databricks Cluster should be created. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponseOutput) CustomVirtualNetworkId() WorkspaceCustomStringParameterResponsePtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParametersResponse) *WorkspaceCustomStringParameterResponse {
 		return v.CustomVirtualNetworkId
 	}).(WorkspaceCustomStringParameterResponsePtrOutput)
 }
 
-// Boolean indicating whether the public IP should be disabled. Default value is true
+// Boolean indicating whether the public IP should be disabled. Default value is true. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponseOutput) EnableNoPublicIp() WorkspaceNoPublicIPBooleanParameterResponsePtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParametersResponse) *WorkspaceNoPublicIPBooleanParameterResponse {
 		return v.EnableNoPublicIp
 	}).(WorkspaceNoPublicIPBooleanParameterResponsePtrOutput)
 }
 
-// Contains the encryption details for Customer-Managed Key (CMK) enabled workspace.
+// Contains the encryption details for Customer-Managed Key (CMK) enabled workspace.Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponseOutput) Encryption() WorkspaceEncryptionParameterResponsePtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParametersResponse) *WorkspaceEncryptionParameterResponse { return v.Encryption }).(WorkspaceEncryptionParameterResponsePtrOutput)
 }
 
-// Name of the outbound Load Balancer Backend Pool for Secure Cluster Connectivity (No Public IP).
+// Name of the outbound Load Balancer Backend Pool for Secure Cluster Connectivity (No Public IP). Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponseOutput) LoadBalancerBackendPoolName() WorkspaceCustomStringParameterResponsePtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParametersResponse) *WorkspaceCustomStringParameterResponse {
 		return v.LoadBalancerBackendPoolName
 	}).(WorkspaceCustomStringParameterResponsePtrOutput)
 }
 
-// Resource URI of Outbound Load balancer for Secure Cluster Connectivity (No Public IP) workspace.
+// Resource URI of Outbound Load balancer for Secure Cluster Connectivity (No Public IP) workspace. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponseOutput) LoadBalancerId() WorkspaceCustomStringParameterResponsePtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParametersResponse) *WorkspaceCustomStringParameterResponse {
 		return v.LoadBalancerId
 	}).(WorkspaceCustomStringParameterResponsePtrOutput)
 }
 
-// Name of the NAT gateway for Secure Cluster Connectivity (No Public IP) workspace subnets.
+// Name of the NAT gateway for Secure Cluster Connectivity (No Public IP) workspace subnets. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponseOutput) NatGatewayName() WorkspaceCustomStringParameterResponsePtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParametersResponse) *WorkspaceCustomStringParameterResponse {
 		return v.NatGatewayName
 	}).(WorkspaceCustomStringParameterResponsePtrOutput)
 }
 
-// Prepare the workspace for encryption. Enables the Managed Identity for managed storage account.
+// Prepare the workspace for encryption. Enables the Managed Identity for managed storage account. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponseOutput) PrepareEncryption() WorkspaceCustomBooleanParameterResponsePtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParametersResponse) *WorkspaceCustomBooleanParameterResponse {
 		return v.PrepareEncryption
 	}).(WorkspaceCustomBooleanParameterResponsePtrOutput)
 }
 
-// Name of the Public IP for No Public IP workspace with managed vNet.
+// Name of the Public IP for No Public IP workspace with managed vNet. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponseOutput) PublicIpName() WorkspaceCustomStringParameterResponsePtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParametersResponse) *WorkspaceCustomStringParameterResponse {
 		return v.PublicIpName
 	}).(WorkspaceCustomStringParameterResponsePtrOutput)
 }
 
-// A boolean indicating whether or not the DBFS root file system will be enabled with secondary layer of encryption with platform managed keys for data at rest.
+// A boolean indicating whether or not the DBFS root file system will be enabled with secondary layer of encryption with platform managed keys for data at rest. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponseOutput) RequireInfrastructureEncryption() WorkspaceCustomBooleanParameterResponsePtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParametersResponse) *WorkspaceCustomBooleanParameterResponse {
 		return v.RequireInfrastructureEncryption
 	}).(WorkspaceCustomBooleanParameterResponsePtrOutput)
 }
 
-// Tags applied to resources under Managed resource group. These can be updated by updating tags at workspace level.
+// Tags applied to resources under Managed resource group. These can be updated by updating tags at workspace level. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponseOutput) ResourceTags() WorkspaceCustomObjectParameterResponseOutput {
 	return o.ApplyT(func(v WorkspaceCustomParametersResponse) WorkspaceCustomObjectParameterResponse {
 		return v.ResourceTags
 	}).(WorkspaceCustomObjectParameterResponseOutput)
 }
 
-// Default DBFS storage account name.
+// Default DBFS storage account name. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponseOutput) StorageAccountName() WorkspaceCustomStringParameterResponsePtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParametersResponse) *WorkspaceCustomStringParameterResponse {
 		return v.StorageAccountName
 	}).(WorkspaceCustomStringParameterResponsePtrOutput)
 }
 
-// Storage account SKU name, ex: Standard_GRS, Standard_LRS. Refer https://aka.ms/storageskus for valid inputs.
+// Storage account SKU name, ex: Standard_GRS, Standard_LRS. Refer https://aka.ms/storageskus for valid inputs. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponseOutput) StorageAccountSkuName() WorkspaceCustomStringParameterResponsePtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParametersResponse) *WorkspaceCustomStringParameterResponse {
 		return v.StorageAccountSkuName
 	}).(WorkspaceCustomStringParameterResponsePtrOutput)
 }
 
-// Address prefix for Managed virtual network. Default value for this input is 10.139.
+// Address prefix for Managed virtual network. Default value for this input is 10.139. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponseOutput) VnetAddressPrefix() WorkspaceCustomStringParameterResponsePtrOutput {
 	return o.ApplyT(func(v WorkspaceCustomParametersResponse) *WorkspaceCustomStringParameterResponse {
 		return v.VnetAddressPrefix
@@ -5419,7 +5445,7 @@ func (o WorkspaceCustomParametersResponsePtrOutput) Elem() WorkspaceCustomParame
 	}).(WorkspaceCustomParametersResponseOutput)
 }
 
-// The ID of a Azure Machine Learning workspace to link with Databricks workspace
+// The ID of a Azure Machine Learning workspace to link with Databricks workspace. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponsePtrOutput) AmlWorkspaceId() WorkspaceCustomStringParameterResponsePtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParametersResponse) *WorkspaceCustomStringParameterResponse {
 		if v == nil {
@@ -5429,7 +5455,7 @@ func (o WorkspaceCustomParametersResponsePtrOutput) AmlWorkspaceId() WorkspaceCu
 	}).(WorkspaceCustomStringParameterResponsePtrOutput)
 }
 
-// The name of the Private Subnet within the Virtual Network
+// The name of the Private Subnet within the Virtual Network. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponsePtrOutput) CustomPrivateSubnetName() WorkspaceCustomStringParameterResponsePtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParametersResponse) *WorkspaceCustomStringParameterResponse {
 		if v == nil {
@@ -5439,7 +5465,7 @@ func (o WorkspaceCustomParametersResponsePtrOutput) CustomPrivateSubnetName() Wo
 	}).(WorkspaceCustomStringParameterResponsePtrOutput)
 }
 
-// The name of a Public Subnet within the Virtual Network
+// The name of a Public Subnet within the Virtual Network. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponsePtrOutput) CustomPublicSubnetName() WorkspaceCustomStringParameterResponsePtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParametersResponse) *WorkspaceCustomStringParameterResponse {
 		if v == nil {
@@ -5449,7 +5475,7 @@ func (o WorkspaceCustomParametersResponsePtrOutput) CustomPublicSubnetName() Wor
 	}).(WorkspaceCustomStringParameterResponsePtrOutput)
 }
 
-// The ID of a Virtual Network where this Databricks Cluster should be created
+// The ID of a Virtual Network where this Databricks Cluster should be created. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponsePtrOutput) CustomVirtualNetworkId() WorkspaceCustomStringParameterResponsePtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParametersResponse) *WorkspaceCustomStringParameterResponse {
 		if v == nil {
@@ -5459,7 +5485,7 @@ func (o WorkspaceCustomParametersResponsePtrOutput) CustomVirtualNetworkId() Wor
 	}).(WorkspaceCustomStringParameterResponsePtrOutput)
 }
 
-// Boolean indicating whether the public IP should be disabled. Default value is true
+// Boolean indicating whether the public IP should be disabled. Default value is true. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponsePtrOutput) EnableNoPublicIp() WorkspaceNoPublicIPBooleanParameterResponsePtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParametersResponse) *WorkspaceNoPublicIPBooleanParameterResponse {
 		if v == nil {
@@ -5469,7 +5495,7 @@ func (o WorkspaceCustomParametersResponsePtrOutput) EnableNoPublicIp() Workspace
 	}).(WorkspaceNoPublicIPBooleanParameterResponsePtrOutput)
 }
 
-// Contains the encryption details for Customer-Managed Key (CMK) enabled workspace.
+// Contains the encryption details for Customer-Managed Key (CMK) enabled workspace.Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponsePtrOutput) Encryption() WorkspaceEncryptionParameterResponsePtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParametersResponse) *WorkspaceEncryptionParameterResponse {
 		if v == nil {
@@ -5479,7 +5505,7 @@ func (o WorkspaceCustomParametersResponsePtrOutput) Encryption() WorkspaceEncryp
 	}).(WorkspaceEncryptionParameterResponsePtrOutput)
 }
 
-// Name of the outbound Load Balancer Backend Pool for Secure Cluster Connectivity (No Public IP).
+// Name of the outbound Load Balancer Backend Pool for Secure Cluster Connectivity (No Public IP). Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponsePtrOutput) LoadBalancerBackendPoolName() WorkspaceCustomStringParameterResponsePtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParametersResponse) *WorkspaceCustomStringParameterResponse {
 		if v == nil {
@@ -5489,7 +5515,7 @@ func (o WorkspaceCustomParametersResponsePtrOutput) LoadBalancerBackendPoolName(
 	}).(WorkspaceCustomStringParameterResponsePtrOutput)
 }
 
-// Resource URI of Outbound Load balancer for Secure Cluster Connectivity (No Public IP) workspace.
+// Resource URI of Outbound Load balancer for Secure Cluster Connectivity (No Public IP) workspace. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponsePtrOutput) LoadBalancerId() WorkspaceCustomStringParameterResponsePtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParametersResponse) *WorkspaceCustomStringParameterResponse {
 		if v == nil {
@@ -5499,7 +5525,7 @@ func (o WorkspaceCustomParametersResponsePtrOutput) LoadBalancerId() WorkspaceCu
 	}).(WorkspaceCustomStringParameterResponsePtrOutput)
 }
 
-// Name of the NAT gateway for Secure Cluster Connectivity (No Public IP) workspace subnets.
+// Name of the NAT gateway for Secure Cluster Connectivity (No Public IP) workspace subnets. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponsePtrOutput) NatGatewayName() WorkspaceCustomStringParameterResponsePtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParametersResponse) *WorkspaceCustomStringParameterResponse {
 		if v == nil {
@@ -5509,7 +5535,7 @@ func (o WorkspaceCustomParametersResponsePtrOutput) NatGatewayName() WorkspaceCu
 	}).(WorkspaceCustomStringParameterResponsePtrOutput)
 }
 
-// Prepare the workspace for encryption. Enables the Managed Identity for managed storage account.
+// Prepare the workspace for encryption. Enables the Managed Identity for managed storage account. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponsePtrOutput) PrepareEncryption() WorkspaceCustomBooleanParameterResponsePtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParametersResponse) *WorkspaceCustomBooleanParameterResponse {
 		if v == nil {
@@ -5519,7 +5545,7 @@ func (o WorkspaceCustomParametersResponsePtrOutput) PrepareEncryption() Workspac
 	}).(WorkspaceCustomBooleanParameterResponsePtrOutput)
 }
 
-// Name of the Public IP for No Public IP workspace with managed vNet.
+// Name of the Public IP for No Public IP workspace with managed vNet. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponsePtrOutput) PublicIpName() WorkspaceCustomStringParameterResponsePtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParametersResponse) *WorkspaceCustomStringParameterResponse {
 		if v == nil {
@@ -5529,7 +5555,7 @@ func (o WorkspaceCustomParametersResponsePtrOutput) PublicIpName() WorkspaceCust
 	}).(WorkspaceCustomStringParameterResponsePtrOutput)
 }
 
-// A boolean indicating whether or not the DBFS root file system will be enabled with secondary layer of encryption with platform managed keys for data at rest.
+// A boolean indicating whether or not the DBFS root file system will be enabled with secondary layer of encryption with platform managed keys for data at rest. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponsePtrOutput) RequireInfrastructureEncryption() WorkspaceCustomBooleanParameterResponsePtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParametersResponse) *WorkspaceCustomBooleanParameterResponse {
 		if v == nil {
@@ -5539,7 +5565,7 @@ func (o WorkspaceCustomParametersResponsePtrOutput) RequireInfrastructureEncrypt
 	}).(WorkspaceCustomBooleanParameterResponsePtrOutput)
 }
 
-// Tags applied to resources under Managed resource group. These can be updated by updating tags at workspace level.
+// Tags applied to resources under Managed resource group. These can be updated by updating tags at workspace level. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponsePtrOutput) ResourceTags() WorkspaceCustomObjectParameterResponsePtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParametersResponse) *WorkspaceCustomObjectParameterResponse {
 		if v == nil {
@@ -5549,7 +5575,7 @@ func (o WorkspaceCustomParametersResponsePtrOutput) ResourceTags() WorkspaceCust
 	}).(WorkspaceCustomObjectParameterResponsePtrOutput)
 }
 
-// Default DBFS storage account name.
+// Default DBFS storage account name. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponsePtrOutput) StorageAccountName() WorkspaceCustomStringParameterResponsePtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParametersResponse) *WorkspaceCustomStringParameterResponse {
 		if v == nil {
@@ -5559,7 +5585,7 @@ func (o WorkspaceCustomParametersResponsePtrOutput) StorageAccountName() Workspa
 	}).(WorkspaceCustomStringParameterResponsePtrOutput)
 }
 
-// Storage account SKU name, ex: Standard_GRS, Standard_LRS. Refer https://aka.ms/storageskus for valid inputs.
+// Storage account SKU name, ex: Standard_GRS, Standard_LRS. Refer https://aka.ms/storageskus for valid inputs. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponsePtrOutput) StorageAccountSkuName() WorkspaceCustomStringParameterResponsePtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParametersResponse) *WorkspaceCustomStringParameterResponse {
 		if v == nil {
@@ -5569,7 +5595,7 @@ func (o WorkspaceCustomParametersResponsePtrOutput) StorageAccountSkuName() Work
 	}).(WorkspaceCustomStringParameterResponsePtrOutput)
 }
 
-// Address prefix for Managed virtual network. Default value for this input is 10.139.
+// Address prefix for Managed virtual network. Default value for this input is 10.139. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceCustomParametersResponsePtrOutput) VnetAddressPrefix() WorkspaceCustomStringParameterResponsePtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomParametersResponse) *WorkspaceCustomStringParameterResponse {
 		if v == nil {
@@ -5581,6 +5607,8 @@ func (o WorkspaceCustomParametersResponsePtrOutput) VnetAddressPrefix() Workspac
 
 // The Value.
 type WorkspaceCustomStringParameter struct {
+	// The type of variable that this is
+	Type *string `pulumi:"type"`
 	// The value which should be used for this field.
 	Value string `pulumi:"value"`
 }
@@ -5598,6 +5626,8 @@ type WorkspaceCustomStringParameterInput interface {
 
 // The Value.
 type WorkspaceCustomStringParameterArgs struct {
+	// The type of variable that this is
+	Type pulumi.StringPtrInput `pulumi:"type"`
 	// The value which should be used for this field.
 	Value pulumi.StringInput `pulumi:"value"`
 }
@@ -5680,6 +5710,11 @@ func (o WorkspaceCustomStringParameterOutput) ToWorkspaceCustomStringParameterPt
 	}).(WorkspaceCustomStringParameterPtrOutput)
 }
 
+// The type of variable that this is
+func (o WorkspaceCustomStringParameterOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceCustomStringParameter) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
 // The value which should be used for this field.
 func (o WorkspaceCustomStringParameterOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkspaceCustomStringParameter) string { return v.Value }).(pulumi.StringOutput)
@@ -5709,6 +5744,16 @@ func (o WorkspaceCustomStringParameterPtrOutput) Elem() WorkspaceCustomStringPar
 	}).(WorkspaceCustomStringParameterOutput)
 }
 
+// The type of variable that this is
+func (o WorkspaceCustomStringParameterPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceCustomStringParameter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // The value which should be used for this field.
 func (o WorkspaceCustomStringParameterPtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkspaceCustomStringParameter) *string {
@@ -5722,7 +5767,7 @@ func (o WorkspaceCustomStringParameterPtrOutput) Value() pulumi.StringPtrOutput 
 // The Value.
 type WorkspaceCustomStringParameterResponse struct {
 	// The type of variable that this is
-	Type string `pulumi:"type"`
+	Type *string `pulumi:"type"`
 	// The value which should be used for this field.
 	Value string `pulumi:"value"`
 }
@@ -5743,8 +5788,8 @@ func (o WorkspaceCustomStringParameterResponseOutput) ToWorkspaceCustomStringPar
 }
 
 // The type of variable that this is
-func (o WorkspaceCustomStringParameterResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v WorkspaceCustomStringParameterResponse) string { return v.Type }).(pulumi.StringOutput)
+func (o WorkspaceCustomStringParameterResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceCustomStringParameterResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 // The value which should be used for this field.
@@ -5782,7 +5827,7 @@ func (o WorkspaceCustomStringParameterResponsePtrOutput) Type() pulumi.StringPtr
 		if v == nil {
 			return nil
 		}
-		return &v.Type
+		return v.Type
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5798,6 +5843,8 @@ func (o WorkspaceCustomStringParameterResponsePtrOutput) Value() pulumi.StringPt
 
 // The object that contains details of encryption used on the workspace.
 type WorkspaceEncryptionParameter struct {
+	// The type of variable that this is
+	Type *string `pulumi:"type"`
 	// The value which should be used for this field.
 	Value *Encryption `pulumi:"value"`
 }
@@ -5826,6 +5873,8 @@ type WorkspaceEncryptionParameterInput interface {
 
 // The object that contains details of encryption used on the workspace.
 type WorkspaceEncryptionParameterArgs struct {
+	// The type of variable that this is
+	Type pulumi.StringPtrInput `pulumi:"type"`
 	// The value which should be used for this field.
 	Value EncryptionPtrInput `pulumi:"value"`
 }
@@ -5917,6 +5966,11 @@ func (o WorkspaceEncryptionParameterOutput) ToWorkspaceEncryptionParameterPtrOut
 	}).(WorkspaceEncryptionParameterPtrOutput)
 }
 
+// The type of variable that this is
+func (o WorkspaceEncryptionParameterOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceEncryptionParameter) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
 // The value which should be used for this field.
 func (o WorkspaceEncryptionParameterOutput) Value() EncryptionPtrOutput {
 	return o.ApplyT(func(v WorkspaceEncryptionParameter) *Encryption { return v.Value }).(EncryptionPtrOutput)
@@ -5946,6 +6000,16 @@ func (o WorkspaceEncryptionParameterPtrOutput) Elem() WorkspaceEncryptionParamet
 	}).(WorkspaceEncryptionParameterOutput)
 }
 
+// The type of variable that this is
+func (o WorkspaceEncryptionParameterPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceEncryptionParameter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // The value which should be used for this field.
 func (o WorkspaceEncryptionParameterPtrOutput) Value() EncryptionPtrOutput {
 	return o.ApplyT(func(v *WorkspaceEncryptionParameter) *Encryption {
@@ -5959,7 +6023,7 @@ func (o WorkspaceEncryptionParameterPtrOutput) Value() EncryptionPtrOutput {
 // The object that contains details of encryption used on the workspace.
 type WorkspaceEncryptionParameterResponse struct {
 	// The type of variable that this is
-	Type string `pulumi:"type"`
+	Type *string `pulumi:"type"`
 	// The value which should be used for this field.
 	Value *EncryptionResponse `pulumi:"value"`
 }
@@ -5991,8 +6055,8 @@ func (o WorkspaceEncryptionParameterResponseOutput) ToWorkspaceEncryptionParamet
 }
 
 // The type of variable that this is
-func (o WorkspaceEncryptionParameterResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v WorkspaceEncryptionParameterResponse) string { return v.Type }).(pulumi.StringOutput)
+func (o WorkspaceEncryptionParameterResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceEncryptionParameterResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 // The value which should be used for this field.
@@ -6030,7 +6094,7 @@ func (o WorkspaceEncryptionParameterResponsePtrOutput) Type() pulumi.StringPtrOu
 		if v == nil {
 			return nil
 		}
-		return &v.Type
+		return v.Type
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6046,6 +6110,8 @@ func (o WorkspaceEncryptionParameterResponsePtrOutput) Value() EncryptionRespons
 
 // The value which should be used for this field.
 type WorkspaceNoPublicIPBooleanParameter struct {
+	// The type of variable that this is
+	Type *string `pulumi:"type"`
 	// The value which should be used for this field.
 	Value bool `pulumi:"value"`
 }
@@ -6063,6 +6129,8 @@ type WorkspaceNoPublicIPBooleanParameterInput interface {
 
 // The value which should be used for this field.
 type WorkspaceNoPublicIPBooleanParameterArgs struct {
+	// The type of variable that this is
+	Type pulumi.StringPtrInput `pulumi:"type"`
 	// The value which should be used for this field.
 	Value pulumi.BoolInput `pulumi:"value"`
 }
@@ -6145,6 +6213,11 @@ func (o WorkspaceNoPublicIPBooleanParameterOutput) ToWorkspaceNoPublicIPBooleanP
 	}).(WorkspaceNoPublicIPBooleanParameterPtrOutput)
 }
 
+// The type of variable that this is
+func (o WorkspaceNoPublicIPBooleanParameterOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceNoPublicIPBooleanParameter) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
 // The value which should be used for this field.
 func (o WorkspaceNoPublicIPBooleanParameterOutput) Value() pulumi.BoolOutput {
 	return o.ApplyT(func(v WorkspaceNoPublicIPBooleanParameter) bool { return v.Value }).(pulumi.BoolOutput)
@@ -6174,6 +6247,16 @@ func (o WorkspaceNoPublicIPBooleanParameterPtrOutput) Elem() WorkspaceNoPublicIP
 	}).(WorkspaceNoPublicIPBooleanParameterOutput)
 }
 
+// The type of variable that this is
+func (o WorkspaceNoPublicIPBooleanParameterPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceNoPublicIPBooleanParameter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // The value which should be used for this field.
 func (o WorkspaceNoPublicIPBooleanParameterPtrOutput) Value() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *WorkspaceNoPublicIPBooleanParameter) *bool {
@@ -6187,7 +6270,7 @@ func (o WorkspaceNoPublicIPBooleanParameterPtrOutput) Value() pulumi.BoolPtrOutp
 // The value which should be used for this field.
 type WorkspaceNoPublicIPBooleanParameterResponse struct {
 	// The type of variable that this is
-	Type string `pulumi:"type"`
+	Type *string `pulumi:"type"`
 	// The value which should be used for this field.
 	Value bool `pulumi:"value"`
 }
@@ -6208,8 +6291,8 @@ func (o WorkspaceNoPublicIPBooleanParameterResponseOutput) ToWorkspaceNoPublicIP
 }
 
 // The type of variable that this is
-func (o WorkspaceNoPublicIPBooleanParameterResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v WorkspaceNoPublicIPBooleanParameterResponse) string { return v.Type }).(pulumi.StringOutput)
+func (o WorkspaceNoPublicIPBooleanParameterResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceNoPublicIPBooleanParameterResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 // The value which should be used for this field.
@@ -6247,7 +6330,7 @@ func (o WorkspaceNoPublicIPBooleanParameterResponsePtrOutput) Type() pulumi.Stri
 		if v == nil {
 			return nil
 		}
-		return &v.Type
+		return v.Type
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6261,7 +6344,7 @@ func (o WorkspaceNoPublicIPBooleanParameterResponsePtrOutput) Value() pulumi.Boo
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Access Connector Resource that is going to be associated with Databricks Workspace
+// Access Connector Resource that is going to be associated with Databricks Workspace. Not allowed in Serverless ComputeMode workspace.
 type WorkspacePropertiesAccessConnector struct {
 	// The resource ID of Azure Databricks Access Connector Resource.
 	Id string `pulumi:"id"`
@@ -6282,7 +6365,7 @@ type WorkspacePropertiesAccessConnectorInput interface {
 	ToWorkspacePropertiesAccessConnectorOutputWithContext(context.Context) WorkspacePropertiesAccessConnectorOutput
 }
 
-// Access Connector Resource that is going to be associated with Databricks Workspace
+// Access Connector Resource that is going to be associated with Databricks Workspace. Not allowed in Serverless ComputeMode workspace.
 type WorkspacePropertiesAccessConnectorArgs struct {
 	// The resource ID of Azure Databricks Access Connector Resource.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -6345,7 +6428,7 @@ func (i *workspacePropertiesAccessConnectorPtrType) ToWorkspacePropertiesAccessC
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspacePropertiesAccessConnectorPtrOutput)
 }
 
-// Access Connector Resource that is going to be associated with Databricks Workspace
+// Access Connector Resource that is going to be associated with Databricks Workspace. Not allowed in Serverless ComputeMode workspace.
 type WorkspacePropertiesAccessConnectorOutput struct{ *pulumi.OutputState }
 
 func (WorkspacePropertiesAccessConnectorOutput) ElementType() reflect.Type {
@@ -6439,7 +6522,101 @@ func (o WorkspacePropertiesAccessConnectorPtrOutput) UserAssignedIdentityId() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Encryption properties for databricks workspace
+// Access Connector Resource that is going to be associated with Databricks Workspace. Not allowed in Serverless ComputeMode workspace.
+type WorkspacePropertiesAccessConnectorResponse struct {
+	// The resource ID of Azure Databricks Access Connector Resource.
+	Id string `pulumi:"id"`
+	// The identity type of the Access Connector Resource.
+	IdentityType string `pulumi:"identityType"`
+	// The resource ID of the User Assigned Identity associated with the Access Connector Resource. This is required for type 'UserAssigned' and not valid for type 'SystemAssigned'.
+	UserAssignedIdentityId *string `pulumi:"userAssignedIdentityId"`
+}
+
+// Access Connector Resource that is going to be associated with Databricks Workspace. Not allowed in Serverless ComputeMode workspace.
+type WorkspacePropertiesAccessConnectorResponseOutput struct{ *pulumi.OutputState }
+
+func (WorkspacePropertiesAccessConnectorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspacePropertiesAccessConnectorResponse)(nil)).Elem()
+}
+
+func (o WorkspacePropertiesAccessConnectorResponseOutput) ToWorkspacePropertiesAccessConnectorResponseOutput() WorkspacePropertiesAccessConnectorResponseOutput {
+	return o
+}
+
+func (o WorkspacePropertiesAccessConnectorResponseOutput) ToWorkspacePropertiesAccessConnectorResponseOutputWithContext(ctx context.Context) WorkspacePropertiesAccessConnectorResponseOutput {
+	return o
+}
+
+// The resource ID of Azure Databricks Access Connector Resource.
+func (o WorkspacePropertiesAccessConnectorResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkspacePropertiesAccessConnectorResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The identity type of the Access Connector Resource.
+func (o WorkspacePropertiesAccessConnectorResponseOutput) IdentityType() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkspacePropertiesAccessConnectorResponse) string { return v.IdentityType }).(pulumi.StringOutput)
+}
+
+// The resource ID of the User Assigned Identity associated with the Access Connector Resource. This is required for type 'UserAssigned' and not valid for type 'SystemAssigned'.
+func (o WorkspacePropertiesAccessConnectorResponseOutput) UserAssignedIdentityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspacePropertiesAccessConnectorResponse) *string { return v.UserAssignedIdentityId }).(pulumi.StringPtrOutput)
+}
+
+type WorkspacePropertiesAccessConnectorResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WorkspacePropertiesAccessConnectorResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspacePropertiesAccessConnectorResponse)(nil)).Elem()
+}
+
+func (o WorkspacePropertiesAccessConnectorResponsePtrOutput) ToWorkspacePropertiesAccessConnectorResponsePtrOutput() WorkspacePropertiesAccessConnectorResponsePtrOutput {
+	return o
+}
+
+func (o WorkspacePropertiesAccessConnectorResponsePtrOutput) ToWorkspacePropertiesAccessConnectorResponsePtrOutputWithContext(ctx context.Context) WorkspacePropertiesAccessConnectorResponsePtrOutput {
+	return o
+}
+
+func (o WorkspacePropertiesAccessConnectorResponsePtrOutput) Elem() WorkspacePropertiesAccessConnectorResponseOutput {
+	return o.ApplyT(func(v *WorkspacePropertiesAccessConnectorResponse) WorkspacePropertiesAccessConnectorResponse {
+		if v != nil {
+			return *v
+		}
+		var ret WorkspacePropertiesAccessConnectorResponse
+		return ret
+	}).(WorkspacePropertiesAccessConnectorResponseOutput)
+}
+
+// The resource ID of Azure Databricks Access Connector Resource.
+func (o WorkspacePropertiesAccessConnectorResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspacePropertiesAccessConnectorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identity type of the Access Connector Resource.
+func (o WorkspacePropertiesAccessConnectorResponsePtrOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspacePropertiesAccessConnectorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdentityType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource ID of the User Assigned Identity associated with the Access Connector Resource. This is required for type 'UserAssigned' and not valid for type 'SystemAssigned'.
+func (o WorkspacePropertiesAccessConnectorResponsePtrOutput) UserAssignedIdentityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspacePropertiesAccessConnectorResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentityId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Encryption properties for databricks workspace. Supported in both Serverless and Hybrid ComputeMode workspace.
 type WorkspacePropertiesEncryption struct {
 	// Encryption entities definition for the workspace.
 	Entities EncryptionEntitiesDefinition `pulumi:"entities"`
@@ -6456,7 +6633,7 @@ type WorkspacePropertiesEncryptionInput interface {
 	ToWorkspacePropertiesEncryptionOutputWithContext(context.Context) WorkspacePropertiesEncryptionOutput
 }
 
-// Encryption properties for databricks workspace
+// Encryption properties for databricks workspace. Supported in both Serverless and Hybrid ComputeMode workspace.
 type WorkspacePropertiesEncryptionArgs struct {
 	// Encryption entities definition for the workspace.
 	Entities EncryptionEntitiesDefinitionInput `pulumi:"entities"`
@@ -6515,7 +6692,7 @@ func (i *workspacePropertiesEncryptionPtrType) ToWorkspacePropertiesEncryptionPt
 	return pulumi.ToOutputWithContext(ctx, i).(WorkspacePropertiesEncryptionPtrOutput)
 }
 
-// Encryption properties for databricks workspace
+// Encryption properties for databricks workspace. Supported in both Serverless and Hybrid ComputeMode workspace.
 type WorkspacePropertiesEncryptionOutput struct{ *pulumi.OutputState }
 
 func (WorkspacePropertiesEncryptionOutput) ElementType() reflect.Type {
@@ -6579,153 +6756,59 @@ func (o WorkspacePropertiesEncryptionPtrOutput) Entities() EncryptionEntitiesDef
 	}).(EncryptionEntitiesDefinitionPtrOutput)
 }
 
-// Access Connector Resource that is going to be associated with Databricks Workspace
-type WorkspacePropertiesResponseAccessConnector struct {
-	// The resource ID of Azure Databricks Access Connector Resource.
-	Id string `pulumi:"id"`
-	// The identity type of the Access Connector Resource.
-	IdentityType string `pulumi:"identityType"`
-	// The resource ID of the User Assigned Identity associated with the Access Connector Resource. This is required for type 'UserAssigned' and not valid for type 'SystemAssigned'.
-	UserAssignedIdentityId *string `pulumi:"userAssignedIdentityId"`
-}
-
-// Access Connector Resource that is going to be associated with Databricks Workspace
-type WorkspacePropertiesResponseAccessConnectorOutput struct{ *pulumi.OutputState }
-
-func (WorkspacePropertiesResponseAccessConnectorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkspacePropertiesResponseAccessConnector)(nil)).Elem()
-}
-
-func (o WorkspacePropertiesResponseAccessConnectorOutput) ToWorkspacePropertiesResponseAccessConnectorOutput() WorkspacePropertiesResponseAccessConnectorOutput {
-	return o
-}
-
-func (o WorkspacePropertiesResponseAccessConnectorOutput) ToWorkspacePropertiesResponseAccessConnectorOutputWithContext(ctx context.Context) WorkspacePropertiesResponseAccessConnectorOutput {
-	return o
-}
-
-// The resource ID of Azure Databricks Access Connector Resource.
-func (o WorkspacePropertiesResponseAccessConnectorOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v WorkspacePropertiesResponseAccessConnector) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The identity type of the Access Connector Resource.
-func (o WorkspacePropertiesResponseAccessConnectorOutput) IdentityType() pulumi.StringOutput {
-	return o.ApplyT(func(v WorkspacePropertiesResponseAccessConnector) string { return v.IdentityType }).(pulumi.StringOutput)
-}
-
-// The resource ID of the User Assigned Identity associated with the Access Connector Resource. This is required for type 'UserAssigned' and not valid for type 'SystemAssigned'.
-func (o WorkspacePropertiesResponseAccessConnectorOutput) UserAssignedIdentityId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkspacePropertiesResponseAccessConnector) *string { return v.UserAssignedIdentityId }).(pulumi.StringPtrOutput)
-}
-
-type WorkspacePropertiesResponseAccessConnectorPtrOutput struct{ *pulumi.OutputState }
-
-func (WorkspacePropertiesResponseAccessConnectorPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkspacePropertiesResponseAccessConnector)(nil)).Elem()
-}
-
-func (o WorkspacePropertiesResponseAccessConnectorPtrOutput) ToWorkspacePropertiesResponseAccessConnectorPtrOutput() WorkspacePropertiesResponseAccessConnectorPtrOutput {
-	return o
-}
-
-func (o WorkspacePropertiesResponseAccessConnectorPtrOutput) ToWorkspacePropertiesResponseAccessConnectorPtrOutputWithContext(ctx context.Context) WorkspacePropertiesResponseAccessConnectorPtrOutput {
-	return o
-}
-
-func (o WorkspacePropertiesResponseAccessConnectorPtrOutput) Elem() WorkspacePropertiesResponseAccessConnectorOutput {
-	return o.ApplyT(func(v *WorkspacePropertiesResponseAccessConnector) WorkspacePropertiesResponseAccessConnector {
-		if v != nil {
-			return *v
-		}
-		var ret WorkspacePropertiesResponseAccessConnector
-		return ret
-	}).(WorkspacePropertiesResponseAccessConnectorOutput)
-}
-
-// The resource ID of Azure Databricks Access Connector Resource.
-func (o WorkspacePropertiesResponseAccessConnectorPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspacePropertiesResponseAccessConnector) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// The identity type of the Access Connector Resource.
-func (o WorkspacePropertiesResponseAccessConnectorPtrOutput) IdentityType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspacePropertiesResponseAccessConnector) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.IdentityType
-	}).(pulumi.StringPtrOutput)
-}
-
-// The resource ID of the User Assigned Identity associated with the Access Connector Resource. This is required for type 'UserAssigned' and not valid for type 'SystemAssigned'.
-func (o WorkspacePropertiesResponseAccessConnectorPtrOutput) UserAssignedIdentityId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkspacePropertiesResponseAccessConnector) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UserAssignedIdentityId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Encryption properties for databricks workspace
-type WorkspacePropertiesResponseEncryption struct {
+// Encryption properties for databricks workspace. Supported in both Serverless and Hybrid ComputeMode workspace.
+type WorkspacePropertiesEncryptionResponse struct {
 	// Encryption entities definition for the workspace.
 	Entities EncryptionEntitiesDefinitionResponse `pulumi:"entities"`
 }
 
-// Encryption properties for databricks workspace
-type WorkspacePropertiesResponseEncryptionOutput struct{ *pulumi.OutputState }
+// Encryption properties for databricks workspace. Supported in both Serverless and Hybrid ComputeMode workspace.
+type WorkspacePropertiesEncryptionResponseOutput struct{ *pulumi.OutputState }
 
-func (WorkspacePropertiesResponseEncryptionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkspacePropertiesResponseEncryption)(nil)).Elem()
+func (WorkspacePropertiesEncryptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspacePropertiesEncryptionResponse)(nil)).Elem()
 }
 
-func (o WorkspacePropertiesResponseEncryptionOutput) ToWorkspacePropertiesResponseEncryptionOutput() WorkspacePropertiesResponseEncryptionOutput {
+func (o WorkspacePropertiesEncryptionResponseOutput) ToWorkspacePropertiesEncryptionResponseOutput() WorkspacePropertiesEncryptionResponseOutput {
 	return o
 }
 
-func (o WorkspacePropertiesResponseEncryptionOutput) ToWorkspacePropertiesResponseEncryptionOutputWithContext(ctx context.Context) WorkspacePropertiesResponseEncryptionOutput {
+func (o WorkspacePropertiesEncryptionResponseOutput) ToWorkspacePropertiesEncryptionResponseOutputWithContext(ctx context.Context) WorkspacePropertiesEncryptionResponseOutput {
 	return o
 }
 
 // Encryption entities definition for the workspace.
-func (o WorkspacePropertiesResponseEncryptionOutput) Entities() EncryptionEntitiesDefinitionResponseOutput {
-	return o.ApplyT(func(v WorkspacePropertiesResponseEncryption) EncryptionEntitiesDefinitionResponse { return v.Entities }).(EncryptionEntitiesDefinitionResponseOutput)
+func (o WorkspacePropertiesEncryptionResponseOutput) Entities() EncryptionEntitiesDefinitionResponseOutput {
+	return o.ApplyT(func(v WorkspacePropertiesEncryptionResponse) EncryptionEntitiesDefinitionResponse { return v.Entities }).(EncryptionEntitiesDefinitionResponseOutput)
 }
 
-type WorkspacePropertiesResponseEncryptionPtrOutput struct{ *pulumi.OutputState }
+type WorkspacePropertiesEncryptionResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (WorkspacePropertiesResponseEncryptionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**WorkspacePropertiesResponseEncryption)(nil)).Elem()
+func (WorkspacePropertiesEncryptionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspacePropertiesEncryptionResponse)(nil)).Elem()
 }
 
-func (o WorkspacePropertiesResponseEncryptionPtrOutput) ToWorkspacePropertiesResponseEncryptionPtrOutput() WorkspacePropertiesResponseEncryptionPtrOutput {
+func (o WorkspacePropertiesEncryptionResponsePtrOutput) ToWorkspacePropertiesEncryptionResponsePtrOutput() WorkspacePropertiesEncryptionResponsePtrOutput {
 	return o
 }
 
-func (o WorkspacePropertiesResponseEncryptionPtrOutput) ToWorkspacePropertiesResponseEncryptionPtrOutputWithContext(ctx context.Context) WorkspacePropertiesResponseEncryptionPtrOutput {
+func (o WorkspacePropertiesEncryptionResponsePtrOutput) ToWorkspacePropertiesEncryptionResponsePtrOutputWithContext(ctx context.Context) WorkspacePropertiesEncryptionResponsePtrOutput {
 	return o
 }
 
-func (o WorkspacePropertiesResponseEncryptionPtrOutput) Elem() WorkspacePropertiesResponseEncryptionOutput {
-	return o.ApplyT(func(v *WorkspacePropertiesResponseEncryption) WorkspacePropertiesResponseEncryption {
+func (o WorkspacePropertiesEncryptionResponsePtrOutput) Elem() WorkspacePropertiesEncryptionResponseOutput {
+	return o.ApplyT(func(v *WorkspacePropertiesEncryptionResponse) WorkspacePropertiesEncryptionResponse {
 		if v != nil {
 			return *v
 		}
-		var ret WorkspacePropertiesResponseEncryption
+		var ret WorkspacePropertiesEncryptionResponse
 		return ret
-	}).(WorkspacePropertiesResponseEncryptionOutput)
+	}).(WorkspacePropertiesEncryptionResponseOutput)
 }
 
 // Encryption entities definition for the workspace.
-func (o WorkspacePropertiesResponseEncryptionPtrOutput) Entities() EncryptionEntitiesDefinitionResponsePtrOutput {
-	return o.ApplyT(func(v *WorkspacePropertiesResponseEncryption) *EncryptionEntitiesDefinitionResponse {
+func (o WorkspacePropertiesEncryptionResponsePtrOutput) Entities() EncryptionEntitiesDefinitionResponsePtrOutput {
+	return o.ApplyT(func(v *WorkspacePropertiesEncryptionResponse) *EncryptionEntitiesDefinitionResponse {
 		if v == nil {
 			return nil
 		}
@@ -6927,10 +7010,10 @@ func init() {
 	pulumi.RegisterOutputType(EncryptionV2PtrOutput{})
 	pulumi.RegisterOutputType(EncryptionV2KeyVaultPropertiesOutput{})
 	pulumi.RegisterOutputType(EncryptionV2KeyVaultPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(EncryptionV2KeyVaultPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(EncryptionV2KeyVaultPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(EncryptionV2ResponseOutput{})
 	pulumi.RegisterOutputType(EncryptionV2ResponsePtrOutput{})
-	pulumi.RegisterOutputType(EncryptionV2ResponseKeyVaultPropertiesOutput{})
-	pulumi.RegisterOutputType(EncryptionV2ResponseKeyVaultPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(EnhancedSecurityComplianceDefinitionOutput{})
 	pulumi.RegisterOutputType(EnhancedSecurityComplianceDefinitionPtrOutput{})
 	pulumi.RegisterOutputType(EnhancedSecurityComplianceDefinitionResponseOutput{})
@@ -6943,10 +7026,10 @@ func init() {
 	pulumi.RegisterOutputType(ManagedDiskEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(ManagedDiskEncryptionKeyVaultPropertiesOutput{})
 	pulumi.RegisterOutputType(ManagedDiskEncryptionKeyVaultPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(ManagedDiskEncryptionKeyVaultPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ManagedDiskEncryptionKeyVaultPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedDiskEncryptionResponseOutput{})
 	pulumi.RegisterOutputType(ManagedDiskEncryptionResponsePtrOutput{})
-	pulumi.RegisterOutputType(ManagedDiskEncryptionResponseKeyVaultPropertiesOutput{})
-	pulumi.RegisterOutputType(ManagedDiskEncryptionResponseKeyVaultPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ManagedIdentityConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(ManagedIdentityConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
@@ -6970,10 +7053,10 @@ func init() {
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkPtrOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponseOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponsePtrOutput{})
 	pulumi.RegisterOutputType(VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkOutput{})
-	pulumi.RegisterOutputType(VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetworkOutput{})
-	pulumi.RegisterOutputType(VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetworkPtrOutput{})
-	pulumi.RegisterOutputType(VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetworkOutput{})
+	pulumi.RegisterOutputType(VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkResponseOutput{})
 	pulumi.RegisterOutputType(WorkspaceCustomBooleanParameterOutput{})
 	pulumi.RegisterOutputType(WorkspaceCustomBooleanParameterPtrOutput{})
 	pulumi.RegisterOutputType(WorkspaceCustomBooleanParameterResponseOutput{})
@@ -6998,12 +7081,12 @@ func init() {
 	pulumi.RegisterOutputType(WorkspaceNoPublicIPBooleanParameterResponsePtrOutput{})
 	pulumi.RegisterOutputType(WorkspacePropertiesAccessConnectorOutput{})
 	pulumi.RegisterOutputType(WorkspacePropertiesAccessConnectorPtrOutput{})
+	pulumi.RegisterOutputType(WorkspacePropertiesAccessConnectorResponseOutput{})
+	pulumi.RegisterOutputType(WorkspacePropertiesAccessConnectorResponsePtrOutput{})
 	pulumi.RegisterOutputType(WorkspacePropertiesEncryptionOutput{})
 	pulumi.RegisterOutputType(WorkspacePropertiesEncryptionPtrOutput{})
-	pulumi.RegisterOutputType(WorkspacePropertiesResponseAccessConnectorOutput{})
-	pulumi.RegisterOutputType(WorkspacePropertiesResponseAccessConnectorPtrOutput{})
-	pulumi.RegisterOutputType(WorkspacePropertiesResponseEncryptionOutput{})
-	pulumi.RegisterOutputType(WorkspacePropertiesResponseEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(WorkspacePropertiesEncryptionResponseOutput{})
+	pulumi.RegisterOutputType(WorkspacePropertiesEncryptionResponsePtrOutput{})
 	pulumi.RegisterOutputType(WorkspaceProviderAuthorizationOutput{})
 	pulumi.RegisterOutputType(WorkspaceProviderAuthorizationArrayOutput{})
 	pulumi.RegisterOutputType(WorkspaceProviderAuthorizationResponseOutput{})
