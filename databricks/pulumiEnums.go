@@ -13,7 +13,9 @@ import (
 type AutomaticClusterUpdateValue string
 
 const (
-	AutomaticClusterUpdateValueEnabled  = AutomaticClusterUpdateValue("Enabled")
+	// Enabled
+	AutomaticClusterUpdateValueEnabled = AutomaticClusterUpdateValue("Enabled")
+	// Disabled
 	AutomaticClusterUpdateValueDisabled = AutomaticClusterUpdateValue("Disabled")
 )
 
@@ -178,7 +180,9 @@ func (in *automaticClusterUpdateValuePtr) ToAutomaticClusterUpdateValuePtrOutput
 type ComplianceSecurityProfileValue string
 
 const (
-	ComplianceSecurityProfileValueEnabled  = ComplianceSecurityProfileValue("Enabled")
+	// Enabled
+	ComplianceSecurityProfileValueEnabled = ComplianceSecurityProfileValue("Enabled")
+	// Disabled
 	ComplianceSecurityProfileValueDisabled = ComplianceSecurityProfileValue("Disabled")
 )
 
@@ -344,9 +348,16 @@ func (in *complianceSecurityProfileValuePtr) ToComplianceSecurityProfileValuePtr
 type ComplianceStandard string
 
 const (
-	ComplianceStandardNONE     = ComplianceStandard("NONE")
-	ComplianceStandardHIPAA    = ComplianceStandard("HIPAA")
-	ComplianceStandard_PCI_DSS = ComplianceStandard("PCI_DSS")
+	ComplianceStandardNONE                  = ComplianceStandard("NONE")
+	ComplianceStandardHIPAA                 = ComplianceStandard("HIPAA")
+	ComplianceStandard_PCI_DSS              = ComplianceStandard("PCI_DSS")
+	ComplianceStandard_CYBER_ESSENTIAL_PLUS = ComplianceStandard("CYBER_ESSENTIAL_PLUS")
+	ComplianceStandard_FEDRAMP_HIGH         = ComplianceStandard("FEDRAMP_HIGH")
+	ComplianceStandard_CANADA_PROTECTED_B   = ComplianceStandard("CANADA_PROTECTED_B")
+	ComplianceStandard_IRAP_PROTECTED       = ComplianceStandard("IRAP_PROTECTED")
+	ComplianceStandardISMAP                 = ComplianceStandard("ISMAP")
+	ComplianceStandardHITRUST               = ComplianceStandard("HITRUST")
+	ComplianceStandard_K_FSI                = ComplianceStandard("K_FSI")
 )
 
 func (ComplianceStandard) ElementType() reflect.Type {
@@ -474,6 +485,13 @@ func (o ComplianceStandardPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 //	ComplianceStandardNONE
 //	ComplianceStandardHIPAA
 //	ComplianceStandard_PCI_DSS
+//	ComplianceStandard_CYBER_ESSENTIAL_PLUS
+//	ComplianceStandard_FEDRAMP_HIGH
+//	ComplianceStandard_CANADA_PROTECTED_B
+//	ComplianceStandard_IRAP_PROTECTED
+//	ComplianceStandardISMAP
+//	ComplianceStandardHITRUST
+//	ComplianceStandard_K_FSI
 type ComplianceStandardInput interface {
 	pulumi.Input
 
@@ -508,12 +526,353 @@ func (in *complianceStandardPtr) ToComplianceStandardPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(ComplianceStandardPtrOutput)
 }
 
-// Gets or Sets Default Storage Firewall configuration information
+// The workspace compute mode. Required on create, cannot be changed. Possible values include: 'Serverless', 'Hybrid'
+type ComputeMode string
+
+const (
+	// Serverless
+	ComputeModeServerless = ComputeMode("Serverless")
+	// Hybrid
+	ComputeModeHybrid = ComputeMode("Hybrid")
+)
+
+func (ComputeMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeMode)(nil)).Elem()
+}
+
+func (e ComputeMode) ToComputeModeOutput() ComputeModeOutput {
+	return pulumi.ToOutput(e).(ComputeModeOutput)
+}
+
+func (e ComputeMode) ToComputeModeOutputWithContext(ctx context.Context) ComputeModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ComputeModeOutput)
+}
+
+func (e ComputeMode) ToComputeModePtrOutput() ComputeModePtrOutput {
+	return e.ToComputeModePtrOutputWithContext(context.Background())
+}
+
+func (e ComputeMode) ToComputeModePtrOutputWithContext(ctx context.Context) ComputeModePtrOutput {
+	return ComputeMode(e).ToComputeModeOutputWithContext(ctx).ToComputeModePtrOutputWithContext(ctx)
+}
+
+func (e ComputeMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ComputeMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ComputeMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ComputeMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ComputeModeOutput struct{ *pulumi.OutputState }
+
+func (ComputeModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComputeMode)(nil)).Elem()
+}
+
+func (o ComputeModeOutput) ToComputeModeOutput() ComputeModeOutput {
+	return o
+}
+
+func (o ComputeModeOutput) ToComputeModeOutputWithContext(ctx context.Context) ComputeModeOutput {
+	return o
+}
+
+func (o ComputeModeOutput) ToComputeModePtrOutput() ComputeModePtrOutput {
+	return o.ToComputeModePtrOutputWithContext(context.Background())
+}
+
+func (o ComputeModeOutput) ToComputeModePtrOutputWithContext(ctx context.Context) ComputeModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ComputeMode) *ComputeMode {
+		return &v
+	}).(ComputeModePtrOutput)
+}
+
+func (o ComputeModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ComputeModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ComputeMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ComputeModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ComputeModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ComputeMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ComputeModePtrOutput struct{ *pulumi.OutputState }
+
+func (ComputeModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ComputeMode)(nil)).Elem()
+}
+
+func (o ComputeModePtrOutput) ToComputeModePtrOutput() ComputeModePtrOutput {
+	return o
+}
+
+func (o ComputeModePtrOutput) ToComputeModePtrOutputWithContext(ctx context.Context) ComputeModePtrOutput {
+	return o
+}
+
+func (o ComputeModePtrOutput) Elem() ComputeModeOutput {
+	return o.ApplyT(func(v *ComputeMode) ComputeMode {
+		if v != nil {
+			return *v
+		}
+		var ret ComputeMode
+		return ret
+	}).(ComputeModeOutput)
+}
+
+func (o ComputeModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ComputeModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ComputeMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ComputeModeInput is an input type that accepts values of the ComputeMode enum
+// A concrete instance of `ComputeModeInput` can be one of the following:
+//
+//	ComputeModeServerless
+//	ComputeModeHybrid
+type ComputeModeInput interface {
+	pulumi.Input
+
+	ToComputeModeOutput() ComputeModeOutput
+	ToComputeModeOutputWithContext(context.Context) ComputeModeOutput
+}
+
+var computeModePtrType = reflect.TypeOf((**ComputeMode)(nil)).Elem()
+
+type ComputeModePtrInput interface {
+	pulumi.Input
+
+	ToComputeModePtrOutput() ComputeModePtrOutput
+	ToComputeModePtrOutputWithContext(context.Context) ComputeModePtrOutput
+}
+
+type computeModePtr string
+
+func ComputeModePtr(v string) ComputeModePtrInput {
+	return (*computeModePtr)(&v)
+}
+
+func (*computeModePtr) ElementType() reflect.Type {
+	return computeModePtrType
+}
+
+func (in *computeModePtr) ToComputeModePtrOutput() ComputeModePtrOutput {
+	return pulumi.ToOutput(in).(ComputeModePtrOutput)
+}
+
+func (in *computeModePtr) ToComputeModePtrOutputWithContext(ctx context.Context) ComputeModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ComputeModePtrOutput)
+}
+
+// The type of variable that this is
+type CustomParameterType string
+
+const (
+	// Bool
+	CustomParameterTypeBool = CustomParameterType("Bool")
+	// Object
+	CustomParameterTypeObject = CustomParameterType("Object")
+	// String
+	CustomParameterTypeString = CustomParameterType("String")
+)
+
+func (CustomParameterType) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomParameterType)(nil)).Elem()
+}
+
+func (e CustomParameterType) ToCustomParameterTypeOutput() CustomParameterTypeOutput {
+	return pulumi.ToOutput(e).(CustomParameterTypeOutput)
+}
+
+func (e CustomParameterType) ToCustomParameterTypeOutputWithContext(ctx context.Context) CustomParameterTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CustomParameterTypeOutput)
+}
+
+func (e CustomParameterType) ToCustomParameterTypePtrOutput() CustomParameterTypePtrOutput {
+	return e.ToCustomParameterTypePtrOutputWithContext(context.Background())
+}
+
+func (e CustomParameterType) ToCustomParameterTypePtrOutputWithContext(ctx context.Context) CustomParameterTypePtrOutput {
+	return CustomParameterType(e).ToCustomParameterTypeOutputWithContext(ctx).ToCustomParameterTypePtrOutputWithContext(ctx)
+}
+
+func (e CustomParameterType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CustomParameterType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CustomParameterType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CustomParameterType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CustomParameterTypeOutput struct{ *pulumi.OutputState }
+
+func (CustomParameterTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomParameterType)(nil)).Elem()
+}
+
+func (o CustomParameterTypeOutput) ToCustomParameterTypeOutput() CustomParameterTypeOutput {
+	return o
+}
+
+func (o CustomParameterTypeOutput) ToCustomParameterTypeOutputWithContext(ctx context.Context) CustomParameterTypeOutput {
+	return o
+}
+
+func (o CustomParameterTypeOutput) ToCustomParameterTypePtrOutput() CustomParameterTypePtrOutput {
+	return o.ToCustomParameterTypePtrOutputWithContext(context.Background())
+}
+
+func (o CustomParameterTypeOutput) ToCustomParameterTypePtrOutputWithContext(ctx context.Context) CustomParameterTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomParameterType) *CustomParameterType {
+		return &v
+	}).(CustomParameterTypePtrOutput)
+}
+
+func (o CustomParameterTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CustomParameterTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CustomParameterType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CustomParameterTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CustomParameterTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CustomParameterType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CustomParameterTypePtrOutput struct{ *pulumi.OutputState }
+
+func (CustomParameterTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomParameterType)(nil)).Elem()
+}
+
+func (o CustomParameterTypePtrOutput) ToCustomParameterTypePtrOutput() CustomParameterTypePtrOutput {
+	return o
+}
+
+func (o CustomParameterTypePtrOutput) ToCustomParameterTypePtrOutputWithContext(ctx context.Context) CustomParameterTypePtrOutput {
+	return o
+}
+
+func (o CustomParameterTypePtrOutput) Elem() CustomParameterTypeOutput {
+	return o.ApplyT(func(v *CustomParameterType) CustomParameterType {
+		if v != nil {
+			return *v
+		}
+		var ret CustomParameterType
+		return ret
+	}).(CustomParameterTypeOutput)
+}
+
+func (o CustomParameterTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CustomParameterTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CustomParameterType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CustomParameterTypeInput is an input type that accepts values of the CustomParameterType enum
+// A concrete instance of `CustomParameterTypeInput` can be one of the following:
+//
+//	CustomParameterTypeBool
+//	CustomParameterTypeObject
+//	CustomParameterTypeString
+type CustomParameterTypeInput interface {
+	pulumi.Input
+
+	ToCustomParameterTypeOutput() CustomParameterTypeOutput
+	ToCustomParameterTypeOutputWithContext(context.Context) CustomParameterTypeOutput
+}
+
+var customParameterTypePtrType = reflect.TypeOf((**CustomParameterType)(nil)).Elem()
+
+type CustomParameterTypePtrInput interface {
+	pulumi.Input
+
+	ToCustomParameterTypePtrOutput() CustomParameterTypePtrOutput
+	ToCustomParameterTypePtrOutputWithContext(context.Context) CustomParameterTypePtrOutput
+}
+
+type customParameterTypePtr string
+
+func CustomParameterTypePtr(v string) CustomParameterTypePtrInput {
+	return (*customParameterTypePtr)(&v)
+}
+
+func (*customParameterTypePtr) ElementType() reflect.Type {
+	return customParameterTypePtrType
+}
+
+func (in *customParameterTypePtr) ToCustomParameterTypePtrOutput() CustomParameterTypePtrOutput {
+	return pulumi.ToOutput(in).(CustomParameterTypePtrOutput)
+}
+
+func (in *customParameterTypePtr) ToCustomParameterTypePtrOutputWithContext(ctx context.Context) CustomParameterTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CustomParameterTypePtrOutput)
+}
+
+// Gets or Sets Default Storage Firewall configuration information. Not allowed in Serverless ComputeMode workspace.
 type DefaultStorageFirewall string
 
 const (
+	// Disabled
 	DefaultStorageFirewallDisabled = DefaultStorageFirewall("Disabled")
-	DefaultStorageFirewallEnabled  = DefaultStorageFirewall("Enabled")
+	// Enabled
+	DefaultStorageFirewallEnabled = DefaultStorageFirewall("Enabled")
 )
 
 func (DefaultStorageFirewall) ElementType() reflect.Type {
@@ -678,6 +1037,7 @@ func (in *defaultStorageFirewallPtr) ToDefaultStorageFirewallPtrOutputWithContex
 type EncryptionKeySource string
 
 const (
+	// Microsoft.Keyvault
 	EncryptionKeySource_Microsoft_Keyvault = EncryptionKeySource("Microsoft.Keyvault")
 )
 
@@ -841,7 +1201,9 @@ func (in *encryptionKeySourcePtr) ToEncryptionKeySourcePtrOutputWithContext(ctx 
 type EnhancedSecurityMonitoringValue string
 
 const (
-	EnhancedSecurityMonitoringValueEnabled  = EnhancedSecurityMonitoringValue("Enabled")
+	// Enabled
+	EnhancedSecurityMonitoringValueEnabled = EnhancedSecurityMonitoringValue("Enabled")
+	// Disabled
 	EnhancedSecurityMonitoringValueDisabled = EnhancedSecurityMonitoringValue("Disabled")
 )
 
@@ -1007,8 +1369,10 @@ func (in *enhancedSecurityMonitoringValuePtr) ToEnhancedSecurityMonitoringValueP
 type IdentityType string
 
 const (
+	// SystemAssigned
 	IdentityTypeSystemAssigned = IdentityType("SystemAssigned")
-	IdentityTypeUserAssigned   = IdentityType("UserAssigned")
+	// UserAssigned
+	IdentityTypeUserAssigned = IdentityType("UserAssigned")
 )
 
 func (IdentityType) ElementType() reflect.Type {
@@ -1173,8 +1537,10 @@ func (in *identityTypePtr) ToIdentityTypePtrOutputWithContext(ctx context.Contex
 type InitialType string
 
 const (
+	// HiveMetastore
 	InitialTypeHiveMetastore = InitialType("HiveMetastore")
-	InitialTypeUnityCatalog  = InitialType("UnityCatalog")
+	// UnityCatalog
+	InitialTypeUnityCatalog = InitialType("UnityCatalog")
 )
 
 func (InitialType) ElementType() reflect.Type {
@@ -1339,7 +1705,9 @@ func (in *initialTypePtr) ToInitialTypePtrOutputWithContext(ctx context.Context)
 type KeySource string
 
 const (
-	KeySourceDefault             = KeySource("Default")
+	// Default
+	KeySourceDefault = KeySource("Default")
+	// Microsoft.Keyvault
 	KeySource_Microsoft_Keyvault = KeySource("Microsoft.Keyvault")
 )
 
@@ -1675,9 +2043,13 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWi
 type PrivateLinkServiceConnectionStatus string
 
 const (
-	PrivateLinkServiceConnectionStatusPending      = PrivateLinkServiceConnectionStatus("Pending")
-	PrivateLinkServiceConnectionStatusApproved     = PrivateLinkServiceConnectionStatus("Approved")
-	PrivateLinkServiceConnectionStatusRejected     = PrivateLinkServiceConnectionStatus("Rejected")
+	// Pending
+	PrivateLinkServiceConnectionStatusPending = PrivateLinkServiceConnectionStatus("Pending")
+	// Approved
+	PrivateLinkServiceConnectionStatusApproved = PrivateLinkServiceConnectionStatus("Approved")
+	// Rejected
+	PrivateLinkServiceConnectionStatusRejected = PrivateLinkServiceConnectionStatus("Rejected")
+	// Disconnected
 	PrivateLinkServiceConnectionStatusDisconnected = PrivateLinkServiceConnectionStatus("Disconnected")
 )
 
@@ -1841,11 +2213,13 @@ func (in *privateLinkServiceConnectionStatusPtr) ToPrivateLinkServiceConnectionS
 	return pulumi.ToOutputWithContext(ctx, in).(PrivateLinkServiceConnectionStatusPtrOutput)
 }
 
-// The network access type for accessing workspace. Set value to disabled to access workspace only via private link.
+// The network access type for accessing workspace. Set value to disabled to access workspace only via private link. Used to configure front-end only private link for Serverless ComputeMode workspace.
 type PublicNetworkAccess string
 
 const (
-	PublicNetworkAccessEnabled  = PublicNetworkAccess("Enabled")
+	// Enabled
+	PublicNetworkAccessEnabled = PublicNetworkAccess("Enabled")
+	// Disabled
 	PublicNetworkAccessDisabled = PublicNetworkAccess("Disabled")
 )
 
@@ -2007,13 +2381,16 @@ func (in *publicNetworkAccessPtr) ToPublicNetworkAccessPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(PublicNetworkAccessPtrOutput)
 }
 
-// Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only.
+// Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only. Not allowed in Serverless ComputeMode workspace.
 type RequiredNsgRules string
 
 const (
-	RequiredNsgRulesAllRules               = RequiredNsgRules("AllRules")
+	// AllRules
+	RequiredNsgRulesAllRules = RequiredNsgRules("AllRules")
+	// NoAzureDatabricksRules
 	RequiredNsgRulesNoAzureDatabricksRules = RequiredNsgRules("NoAzureDatabricksRules")
-	RequiredNsgRulesNoAzureServiceRules    = RequiredNsgRules("NoAzureServiceRules")
+	// NoAzureServiceRules
+	RequiredNsgRulesNoAzureServiceRules = RequiredNsgRules("NoAzureServiceRules")
 )
 
 func (RequiredNsgRules) ElementType() reflect.Type {
@@ -2182,6 +2559,10 @@ func init() {
 	pulumi.RegisterOutputType(ComplianceSecurityProfileValuePtrOutput{})
 	pulumi.RegisterOutputType(ComplianceStandardOutput{})
 	pulumi.RegisterOutputType(ComplianceStandardPtrOutput{})
+	pulumi.RegisterOutputType(ComputeModeOutput{})
+	pulumi.RegisterOutputType(ComputeModePtrOutput{})
+	pulumi.RegisterOutputType(CustomParameterTypeOutput{})
+	pulumi.RegisterOutputType(CustomParameterTypePtrOutput{})
 	pulumi.RegisterOutputType(DefaultStorageFirewallOutput{})
 	pulumi.RegisterOutputType(DefaultStorageFirewallPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionKeySourceOutput{})

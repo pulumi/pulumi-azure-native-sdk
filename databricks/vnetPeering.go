@@ -14,9 +14,9 @@ import (
 
 // Peerings in a VirtualNetwork resource
 //
-// Uses Azure REST API version 2024-05-01.
+// Uses Azure REST API version 2026-01-01.
 //
-// Other available API versions: 2023-02-01, 2023-09-15-preview, 2024-09-01-preview, 2025-03-01-preview, 2025-08-01-preview, 2025-10-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databricks [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-02-01, 2023-09-15-preview, 2024-05-01, 2024-09-01-preview, 2025-03-01-preview, 2025-08-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databricks [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type VNetPeering struct {
 	pulumi.CustomResourceState
 
@@ -30,9 +30,9 @@ type VNetPeering struct {
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The reference to the databricks virtual network address space.
 	DatabricksAddressSpace AddressSpaceResponsePtrOutput `pulumi:"databricksAddressSpace"`
-	//  The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
-	DatabricksVirtualNetwork VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetworkPtrOutput `pulumi:"databricksVirtualNetwork"`
-	// Name of the virtual network peering resource
+	// The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
+	DatabricksVirtualNetwork VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponsePtrOutput `pulumi:"databricksVirtualNetwork"`
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The status of the virtual network peering.
 	PeeringState pulumi.StringOutput `pulumi:"peeringState"`
@@ -40,9 +40,11 @@ type VNetPeering struct {
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// The reference to the remote virtual network address space.
 	RemoteAddressSpace AddressSpaceResponsePtrOutput `pulumi:"remoteAddressSpace"`
-	//  The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
-	RemoteVirtualNetwork VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetworkOutput `pulumi:"remoteVirtualNetwork"`
-	// type of the virtual network peering resource
+	// The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
+	RemoteVirtualNetwork VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkResponseOutput `pulumi:"remoteVirtualNetwork"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway.
 	UseRemoteGateways pulumi.BoolPtrOutput `pulumi:"useRemoteGateways"`
@@ -141,13 +143,13 @@ type vnetPeeringArgs struct {
 	AllowVirtualNetworkAccess *bool `pulumi:"allowVirtualNetworkAccess"`
 	// The reference to the databricks virtual network address space.
 	DatabricksAddressSpace *AddressSpace `pulumi:"databricksAddressSpace"`
-	//  The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
+	// The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
 	DatabricksVirtualNetwork *VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetwork `pulumi:"databricksVirtualNetwork"`
 	// The name of the workspace vNet peering.
 	PeeringName *string `pulumi:"peeringName"`
 	// The reference to the remote virtual network address space.
 	RemoteAddressSpace *AddressSpace `pulumi:"remoteAddressSpace"`
-	//  The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
+	// The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
 	RemoteVirtualNetwork VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetwork `pulumi:"remoteVirtualNetwork"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -167,13 +169,13 @@ type VNetPeeringArgs struct {
 	AllowVirtualNetworkAccess pulumi.BoolPtrInput
 	// The reference to the databricks virtual network address space.
 	DatabricksAddressSpace AddressSpacePtrInput
-	//  The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
+	// The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
 	DatabricksVirtualNetwork VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkPtrInput
 	// The name of the workspace vNet peering.
 	PeeringName pulumi.StringPtrInput
 	// The reference to the remote virtual network address space.
 	RemoteAddressSpace AddressSpacePtrInput
-	//  The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
+	// The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
 	RemoteVirtualNetwork VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -246,13 +248,13 @@ func (o VNetPeeringOutput) DatabricksAddressSpace() AddressSpaceResponsePtrOutpu
 }
 
 // The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
-func (o VNetPeeringOutput) DatabricksVirtualNetwork() VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetworkPtrOutput {
-	return o.ApplyT(func(v *VNetPeering) VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetworkPtrOutput {
+func (o VNetPeeringOutput) DatabricksVirtualNetwork() VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponsePtrOutput {
+	return o.ApplyT(func(v *VNetPeering) VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponsePtrOutput {
 		return v.DatabricksVirtualNetwork
-	}).(VirtualNetworkPeeringPropertiesFormatResponseDatabricksVirtualNetworkPtrOutput)
+	}).(VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponsePtrOutput)
 }
 
-// Name of the virtual network peering resource
+// The name of the resource
 func (o VNetPeeringOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VNetPeering) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -273,13 +275,18 @@ func (o VNetPeeringOutput) RemoteAddressSpace() AddressSpaceResponsePtrOutput {
 }
 
 // The remote virtual network should be in the same region. See here to learn more (https://docs.microsoft.com/en-us/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering).
-func (o VNetPeeringOutput) RemoteVirtualNetwork() VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetworkOutput {
-	return o.ApplyT(func(v *VNetPeering) VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetworkOutput {
+func (o VNetPeeringOutput) RemoteVirtualNetwork() VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkResponseOutput {
+	return o.ApplyT(func(v *VNetPeering) VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkResponseOutput {
 		return v.RemoteVirtualNetwork
-	}).(VirtualNetworkPeeringPropertiesFormatResponseRemoteVirtualNetworkOutput)
+	}).(VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkResponseOutput)
 }
 
-// type of the virtual network peering resource
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o VNetPeeringOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *VNetPeering) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o VNetPeeringOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *VNetPeering) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

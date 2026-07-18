@@ -14,61 +14,63 @@ import (
 
 // Information about workspace.
 //
-// Uses Azure REST API version 2024-05-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
+// Uses Azure REST API version 2026-01-01. In version 2.x of the Azure Native provider, it used API version 2023-02-01.
 //
-// Other available API versions: 2023-02-01, 2023-09-15-preview, 2024-09-01-preview, 2025-03-01-preview, 2025-08-01-preview, 2025-10-01-preview, 2026-01-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databricks [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-02-01, 2023-09-15-preview, 2024-05-01, 2024-09-01-preview, 2025-03-01-preview, 2025-08-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native databricks [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Workspace struct {
 	pulumi.CustomResourceState
 
-	// Access Connector Resource that is going to be associated with Databricks Workspace
-	AccessConnector WorkspacePropertiesResponseAccessConnectorPtrOutput `pulumi:"accessConnector"`
+	// Access Connector Resource that is going to be associated with Databricks Workspace. Not allowed in Serverless ComputeMode workspace.
+	AccessConnector WorkspacePropertiesAccessConnectorResponsePtrOutput `pulumi:"accessConnector"`
 	// The workspace provider authorizations.
 	Authorizations WorkspaceProviderAuthorizationResponseArrayOutput `pulumi:"authorizations"`
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The workspace compute mode. Required on create, cannot be changed. Possible values include: 'Serverless', 'Hybrid'
+	ComputeMode pulumi.StringOutput `pulumi:"computeMode"`
 	// Indicates the Object ID, PUID and Application ID of entity that created the workspace.
 	CreatedBy CreatedByResponsePtrOutput `pulumi:"createdBy"`
 	// Specifies the date and time when the workspace is created.
 	CreatedDateTime pulumi.StringOutput `pulumi:"createdDateTime"`
-	// Properties for Default Catalog configuration during workspace creation.
+	// Properties for Default Catalog configuration during workspace creation. Not allowed in Serverless ComputeMode workspace.
 	DefaultCatalog DefaultCatalogPropertiesResponsePtrOutput `pulumi:"defaultCatalog"`
-	// Gets or Sets Default Storage Firewall configuration information
+	// Gets or Sets Default Storage Firewall configuration information. Not allowed in Serverless ComputeMode workspace.
 	DefaultStorageFirewall pulumi.StringPtrOutput `pulumi:"defaultStorageFirewall"`
-	// The resource Id of the managed disk encryption set.
+	// The resource Id of the managed disk encryption set. Not allowed in Serverless ComputeMode workspace.
 	DiskEncryptionSetId pulumi.StringOutput `pulumi:"diskEncryptionSetId"`
-	// Encryption properties for databricks workspace
-	Encryption WorkspacePropertiesResponseEncryptionPtrOutput `pulumi:"encryption"`
-	// Contains settings related to the Enhanced Security and Compliance Add-On.
+	// Encryption properties for databricks workspace. Supported in both Serverless and Hybrid ComputeMode workspace.
+	Encryption WorkspacePropertiesEncryptionResponsePtrOutput `pulumi:"encryption"`
+	// Contains settings related to the Enhanced Security and Compliance Add-On. Supported in both Serverless and Hybrid ComputeMode workspace.
 	EnhancedSecurityCompliance EnhancedSecurityComplianceDefinitionResponsePtrOutput `pulumi:"enhancedSecurityCompliance"`
-	// Indicates whether unity catalog enabled for the workspace or not.
+	// Indicates whether unity catalog enabled for the workspace or not. Set as true in Serverless ComputeMode workspace.
 	IsUcEnabled pulumi.BoolOutput `pulumi:"isUcEnabled"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// The details of Managed Identity of Disk Encryption Set used for Managed Disk Encryption
+	// The details of Managed Identity of Disk Encryption Set used for Managed Disk Encryption. Only returned in Hybrid ComputeMode workspace.
 	ManagedDiskIdentity ManagedIdentityConfigurationResponsePtrOutput `pulumi:"managedDiskIdentity"`
-	// The managed resource group Id.
-	ManagedResourceGroupId pulumi.StringOutput `pulumi:"managedResourceGroupId"`
+	// The managed resource group Id. Required in Hybrid ComputeMode workspace. Not allowed in Serverless ComputeMode workspace.
+	ManagedResourceGroupId pulumi.StringPtrOutput `pulumi:"managedResourceGroupId"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The workspace's custom parameters.
 	Parameters WorkspaceCustomParametersResponsePtrOutput `pulumi:"parameters"`
-	// Private endpoint connections created on the workspace
+	// Private endpoint connections created on the workspace. Supported in both Serverless and Hybrid ComputeMode workspace.
 	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// The workspace provisioning state.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// The network access type for accessing workspace. Set value to disabled to access workspace only via private link.
+	// The network access type for accessing workspace. Set value to disabled to access workspace only via private link. Used to configure front-end only private link for Serverless ComputeMode workspace.
 	PublicNetworkAccess pulumi.StringPtrOutput `pulumi:"publicNetworkAccess"`
-	// Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only.
+	// Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only. Not allowed in Serverless ComputeMode workspace.
 	RequiredNsgRules pulumi.StringPtrOutput `pulumi:"requiredNsgRules"`
 	// The SKU of the resource.
 	Sku SkuResponsePtrOutput `pulumi:"sku"`
-	// The details of Managed Identity of Storage Account
+	// The details of Managed Identity of Storage Account. Only returned in Hybrid ComputeMode workspace.
 	StorageAccountIdentity ManagedIdentityConfigurationResponsePtrOutput `pulumi:"storageAccountIdentity"`
-	// The system metadata relating to this resource
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The blob URI where the UI definition file is located.
 	UiDefinitionUri pulumi.StringPtrOutput `pulumi:"uiDefinitionUri"`
@@ -87,9 +89,6 @@ func NewWorkspace(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ManagedResourceGroupId == nil {
-		return nil, errors.New("invalid value for required argument 'ManagedResourceGroupId'")
-	}
 	if args.ResourceGroupName == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupName'")
 	}
@@ -168,27 +167,29 @@ func (WorkspaceState) ElementType() reflect.Type {
 }
 
 type workspaceArgs struct {
-	// Access Connector Resource that is going to be associated with Databricks Workspace
+	// Access Connector Resource that is going to be associated with Databricks Workspace. Not allowed in Serverless ComputeMode workspace.
 	AccessConnector *WorkspacePropertiesAccessConnector `pulumi:"accessConnector"`
 	// The workspace provider authorizations.
 	Authorizations []WorkspaceProviderAuthorization `pulumi:"authorizations"`
-	// Properties for Default Catalog configuration during workspace creation.
+	// The workspace compute mode. Required on create, cannot be changed. Possible values include: 'Serverless', 'Hybrid'
+	ComputeMode *string `pulumi:"computeMode"`
+	// Properties for Default Catalog configuration during workspace creation. Not allowed in Serverless ComputeMode workspace.
 	DefaultCatalog *DefaultCatalogProperties `pulumi:"defaultCatalog"`
-	// Gets or Sets Default Storage Firewall configuration information
+	// Gets or Sets Default Storage Firewall configuration information. Not allowed in Serverless ComputeMode workspace.
 	DefaultStorageFirewall *string `pulumi:"defaultStorageFirewall"`
-	// Encryption properties for databricks workspace
+	// Encryption properties for databricks workspace. Supported in both Serverless and Hybrid ComputeMode workspace.
 	Encryption *WorkspacePropertiesEncryption `pulumi:"encryption"`
-	// Contains settings related to the Enhanced Security and Compliance Add-On.
+	// Contains settings related to the Enhanced Security and Compliance Add-On. Supported in both Serverless and Hybrid ComputeMode workspace.
 	EnhancedSecurityCompliance *EnhancedSecurityComplianceDefinition `pulumi:"enhancedSecurityCompliance"`
 	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// The managed resource group Id.
-	ManagedResourceGroupId string `pulumi:"managedResourceGroupId"`
+	// The managed resource group Id. Required in Hybrid ComputeMode workspace. Not allowed in Serverless ComputeMode workspace.
+	ManagedResourceGroupId *string `pulumi:"managedResourceGroupId"`
 	// The workspace's custom parameters.
 	Parameters *WorkspaceCustomParameters `pulumi:"parameters"`
-	// The network access type for accessing workspace. Set value to disabled to access workspace only via private link.
+	// The network access type for accessing workspace. Set value to disabled to access workspace only via private link. Used to configure front-end only private link for Serverless ComputeMode workspace.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
-	// Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only.
+	// Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only. Not allowed in Serverless ComputeMode workspace.
 	RequiredNsgRules *string `pulumi:"requiredNsgRules"`
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
@@ -204,27 +205,29 @@ type workspaceArgs struct {
 
 // The set of arguments for constructing a Workspace resource.
 type WorkspaceArgs struct {
-	// Access Connector Resource that is going to be associated with Databricks Workspace
+	// Access Connector Resource that is going to be associated with Databricks Workspace. Not allowed in Serverless ComputeMode workspace.
 	AccessConnector WorkspacePropertiesAccessConnectorPtrInput
 	// The workspace provider authorizations.
 	Authorizations WorkspaceProviderAuthorizationArrayInput
-	// Properties for Default Catalog configuration during workspace creation.
+	// The workspace compute mode. Required on create, cannot be changed. Possible values include: 'Serverless', 'Hybrid'
+	ComputeMode pulumi.StringPtrInput
+	// Properties for Default Catalog configuration during workspace creation. Not allowed in Serverless ComputeMode workspace.
 	DefaultCatalog DefaultCatalogPropertiesPtrInput
-	// Gets or Sets Default Storage Firewall configuration information
+	// Gets or Sets Default Storage Firewall configuration information. Not allowed in Serverless ComputeMode workspace.
 	DefaultStorageFirewall pulumi.StringPtrInput
-	// Encryption properties for databricks workspace
+	// Encryption properties for databricks workspace. Supported in both Serverless and Hybrid ComputeMode workspace.
 	Encryption WorkspacePropertiesEncryptionPtrInput
-	// Contains settings related to the Enhanced Security and Compliance Add-On.
+	// Contains settings related to the Enhanced Security and Compliance Add-On. Supported in both Serverless and Hybrid ComputeMode workspace.
 	EnhancedSecurityCompliance EnhancedSecurityComplianceDefinitionPtrInput
 	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// The managed resource group Id.
-	ManagedResourceGroupId pulumi.StringInput
+	// The managed resource group Id. Required in Hybrid ComputeMode workspace. Not allowed in Serverless ComputeMode workspace.
+	ManagedResourceGroupId pulumi.StringPtrInput
 	// The workspace's custom parameters.
 	Parameters WorkspaceCustomParametersPtrInput
-	// The network access type for accessing workspace. Set value to disabled to access workspace only via private link.
+	// The network access type for accessing workspace. Set value to disabled to access workspace only via private link. Used to configure front-end only private link for Serverless ComputeMode workspace.
 	PublicNetworkAccess pulumi.StringPtrInput
-	// Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only.
+	// Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only. Not allowed in Serverless ComputeMode workspace.
 	RequiredNsgRules pulumi.StringPtrInput
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
@@ -275,9 +278,9 @@ func (o WorkspaceOutput) ToWorkspaceOutputWithContext(ctx context.Context) Works
 	return o
 }
 
-// Access Connector Resource that is going to be associated with Databricks Workspace
-func (o WorkspaceOutput) AccessConnector() WorkspacePropertiesResponseAccessConnectorPtrOutput {
-	return o.ApplyT(func(v *Workspace) WorkspacePropertiesResponseAccessConnectorPtrOutput { return v.AccessConnector }).(WorkspacePropertiesResponseAccessConnectorPtrOutput)
+// Access Connector Resource that is going to be associated with Databricks Workspace. Not allowed in Serverless ComputeMode workspace.
+func (o WorkspaceOutput) AccessConnector() WorkspacePropertiesAccessConnectorResponsePtrOutput {
+	return o.ApplyT(func(v *Workspace) WorkspacePropertiesAccessConnectorResponsePtrOutput { return v.AccessConnector }).(WorkspacePropertiesAccessConnectorResponsePtrOutput)
 }
 
 // The workspace provider authorizations.
@@ -290,6 +293,11 @@ func (o WorkspaceOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
+// The workspace compute mode. Required on create, cannot be changed. Possible values include: 'Serverless', 'Hybrid'
+func (o WorkspaceOutput) ComputeMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.ComputeMode }).(pulumi.StringOutput)
+}
+
 // Indicates the Object ID, PUID and Application ID of entity that created the workspace.
 func (o WorkspaceOutput) CreatedBy() CreatedByResponsePtrOutput {
 	return o.ApplyT(func(v *Workspace) CreatedByResponsePtrOutput { return v.CreatedBy }).(CreatedByResponsePtrOutput)
@@ -300,34 +308,34 @@ func (o WorkspaceOutput) CreatedDateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.CreatedDateTime }).(pulumi.StringOutput)
 }
 
-// Properties for Default Catalog configuration during workspace creation.
+// Properties for Default Catalog configuration during workspace creation. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceOutput) DefaultCatalog() DefaultCatalogPropertiesResponsePtrOutput {
 	return o.ApplyT(func(v *Workspace) DefaultCatalogPropertiesResponsePtrOutput { return v.DefaultCatalog }).(DefaultCatalogPropertiesResponsePtrOutput)
 }
 
-// Gets or Sets Default Storage Firewall configuration information
+// Gets or Sets Default Storage Firewall configuration information. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceOutput) DefaultStorageFirewall() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.DefaultStorageFirewall }).(pulumi.StringPtrOutput)
 }
 
-// The resource Id of the managed disk encryption set.
+// The resource Id of the managed disk encryption set. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceOutput) DiskEncryptionSetId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.DiskEncryptionSetId }).(pulumi.StringOutput)
 }
 
-// Encryption properties for databricks workspace
-func (o WorkspaceOutput) Encryption() WorkspacePropertiesResponseEncryptionPtrOutput {
-	return o.ApplyT(func(v *Workspace) WorkspacePropertiesResponseEncryptionPtrOutput { return v.Encryption }).(WorkspacePropertiesResponseEncryptionPtrOutput)
+// Encryption properties for databricks workspace. Supported in both Serverless and Hybrid ComputeMode workspace.
+func (o WorkspaceOutput) Encryption() WorkspacePropertiesEncryptionResponsePtrOutput {
+	return o.ApplyT(func(v *Workspace) WorkspacePropertiesEncryptionResponsePtrOutput { return v.Encryption }).(WorkspacePropertiesEncryptionResponsePtrOutput)
 }
 
-// Contains settings related to the Enhanced Security and Compliance Add-On.
+// Contains settings related to the Enhanced Security and Compliance Add-On. Supported in both Serverless and Hybrid ComputeMode workspace.
 func (o WorkspaceOutput) EnhancedSecurityCompliance() EnhancedSecurityComplianceDefinitionResponsePtrOutput {
 	return o.ApplyT(func(v *Workspace) EnhancedSecurityComplianceDefinitionResponsePtrOutput {
 		return v.EnhancedSecurityCompliance
 	}).(EnhancedSecurityComplianceDefinitionResponsePtrOutput)
 }
 
-// Indicates whether unity catalog enabled for the workspace or not.
+// Indicates whether unity catalog enabled for the workspace or not. Set as true in Serverless ComputeMode workspace.
 func (o WorkspaceOutput) IsUcEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.BoolOutput { return v.IsUcEnabled }).(pulumi.BoolOutput)
 }
@@ -337,14 +345,14 @@ func (o WorkspaceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The details of Managed Identity of Disk Encryption Set used for Managed Disk Encryption
+// The details of Managed Identity of Disk Encryption Set used for Managed Disk Encryption. Only returned in Hybrid ComputeMode workspace.
 func (o WorkspaceOutput) ManagedDiskIdentity() ManagedIdentityConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *Workspace) ManagedIdentityConfigurationResponsePtrOutput { return v.ManagedDiskIdentity }).(ManagedIdentityConfigurationResponsePtrOutput)
 }
 
-// The managed resource group Id.
-func (o WorkspaceOutput) ManagedResourceGroupId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.ManagedResourceGroupId }).(pulumi.StringOutput)
+// The managed resource group Id. Required in Hybrid ComputeMode workspace. Not allowed in Serverless ComputeMode workspace.
+func (o WorkspaceOutput) ManagedResourceGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.ManagedResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
 // The name of the resource
@@ -357,7 +365,7 @@ func (o WorkspaceOutput) Parameters() WorkspaceCustomParametersResponsePtrOutput
 	return o.ApplyT(func(v *Workspace) WorkspaceCustomParametersResponsePtrOutput { return v.Parameters }).(WorkspaceCustomParametersResponsePtrOutput)
 }
 
-// Private endpoint connections created on the workspace
+// Private endpoint connections created on the workspace. Supported in both Serverless and Hybrid ComputeMode workspace.
 func (o WorkspaceOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
 	return o.ApplyT(func(v *Workspace) PrivateEndpointConnectionResponseArrayOutput { return v.PrivateEndpointConnections }).(PrivateEndpointConnectionResponseArrayOutput)
 }
@@ -367,12 +375,12 @@ func (o WorkspaceOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The network access type for accessing workspace. Set value to disabled to access workspace only via private link.
+// The network access type for accessing workspace. Set value to disabled to access workspace only via private link. Used to configure front-end only private link for Serverless ComputeMode workspace.
 func (o WorkspaceOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
-// Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only.
+// Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint. Supported values are 'AllRules' and 'NoAzureDatabricksRules'. 'NoAzureServiceRules' value is for internal use only. Not allowed in Serverless ComputeMode workspace.
 func (o WorkspaceOutput) RequiredNsgRules() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringPtrOutput { return v.RequiredNsgRules }).(pulumi.StringPtrOutput)
 }
@@ -382,12 +390,12 @@ func (o WorkspaceOutput) Sku() SkuResponsePtrOutput {
 	return o.ApplyT(func(v *Workspace) SkuResponsePtrOutput { return v.Sku }).(SkuResponsePtrOutput)
 }
 
-// The details of Managed Identity of Storage Account
+// The details of Managed Identity of Storage Account. Only returned in Hybrid ComputeMode workspace.
 func (o WorkspaceOutput) StorageAccountIdentity() ManagedIdentityConfigurationResponsePtrOutput {
 	return o.ApplyT(func(v *Workspace) ManagedIdentityConfigurationResponsePtrOutput { return v.StorageAccountIdentity }).(ManagedIdentityConfigurationResponsePtrOutput)
 }
 
-// The system metadata relating to this resource
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o WorkspaceOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Workspace) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -397,7 +405,7 @@ func (o WorkspaceOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o WorkspaceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workspace) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
