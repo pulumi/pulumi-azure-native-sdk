@@ -58,7 +58,7 @@ type LookupTenantActionGroupResult struct {
 	// The list of voice receivers that are part of this tenant action group.
 	VoiceReceivers []VoiceReceiverResponse `pulumi:"voiceReceivers"`
 	// The list of webhook receivers that are part of this tenant action group.
-	WebhookReceivers []WebhookReceiverResponse `pulumi:"webhookReceivers"`
+	WebhookReceivers []WebhookReceiverTenantActionGroupResponse `pulumi:"webhookReceivers"`
 }
 
 // Defaults sets the appropriate defaults for LookupTenantActionGroupResult
@@ -168,8 +168,10 @@ func (o LookupTenantActionGroupResultOutput) VoiceReceivers() VoiceReceiverRespo
 }
 
 // The list of webhook receivers that are part of this tenant action group.
-func (o LookupTenantActionGroupResultOutput) WebhookReceivers() WebhookReceiverResponseArrayOutput {
-	return o.ApplyT(func(v LookupTenantActionGroupResult) []WebhookReceiverResponse { return v.WebhookReceivers }).(WebhookReceiverResponseArrayOutput)
+func (o LookupTenantActionGroupResultOutput) WebhookReceivers() WebhookReceiverTenantActionGroupResponseArrayOutput {
+	return o.ApplyT(func(v LookupTenantActionGroupResult) []WebhookReceiverTenantActionGroupResponse {
+		return v.WebhookReceivers
+	}).(WebhookReceiverTenantActionGroupResponseArrayOutput)
 }
 
 func init() {

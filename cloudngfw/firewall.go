@@ -29,7 +29,7 @@ type Firewall struct {
 	// Frontend settings for Firewall
 	FrontEndSettings FrontendSettingResponseArrayOutput `pulumi:"frontEndSettings"`
 	// The managed service identities assigned to this resource.
-	Identity AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedIdentityPropertiesResponsePtrOutput `pulumi:"identity"`
 	// Panorama Managed: Default is False. Default will be CloudSec managed
 	IsPanoramaManaged pulumi.StringPtrOutput `pulumi:"isPanoramaManaged"`
 	// Strata Cloud Managed: Default is False. Default will be CloudSec managed
@@ -285,8 +285,8 @@ func (o FirewallOutput) FrontEndSettings() FrontendSettingResponseArrayOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o FirewallOutput) Identity() AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v *Firewall) AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput { return v.Identity }).(AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput)
+func (o FirewallOutput) Identity() ManagedIdentityPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *Firewall) ManagedIdentityPropertiesResponsePtrOutput { return v.Identity }).(ManagedIdentityPropertiesResponsePtrOutput)
 }
 
 // Panorama Managed: Default is False. Default will be CloudSec managed

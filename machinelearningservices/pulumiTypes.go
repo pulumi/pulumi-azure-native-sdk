@@ -33382,6 +33382,168 @@ func (o EnvironmentVersionPropertiesOutput) Tags() pulumi.StringMapOutput {
 }
 
 // Environment version details.
+type EnvironmentVersionPropertiesRegistryEnvironmentVersionResponse struct {
+	// AutoRebuild setting for the derived image
+	AutoRebuild *string `pulumi:"autoRebuild"`
+	// Configuration settings for Docker build context.
+	Build *BuildContextResponse `pulumi:"build"`
+	// Standard configuration file used by Conda that lets you install any kind of package, including Python, R, and C/C++ packages.
+	// <see href="https://repo2docker.readthedocs.io/en/latest/config_files.html#environment-yml-install-a-conda-environment" />
+	CondaFile *string `pulumi:"condaFile"`
+	// The asset description text.
+	Description *string `pulumi:"description"`
+	// Environment type is either user managed or curated by the Azure ML service
+	// <see href="https://docs.microsoft.com/en-us/azure/machine-learning/resource-curated-environments" />
+	EnvironmentType string `pulumi:"environmentType"`
+	// Name of the image that will be used for the environment.
+	// <seealso href="https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image" />
+	Image *string `pulumi:"image"`
+	// Defines configuration specific to inference.
+	InferenceConfig *InferenceContainerPropertiesRegistryEnvironmentVersionResponse `pulumi:"inferenceConfig"`
+	// If the name version are system generated (anonymous registration).
+	IsAnonymous *bool `pulumi:"isAnonymous"`
+	// Is the asset archived?
+	IsArchived *bool `pulumi:"isArchived"`
+	// The type of operating system.
+	OsType *string `pulumi:"osType"`
+	// The asset property dictionary.
+	Properties map[string]string `pulumi:"properties"`
+	// Provisioning state for the environment version.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Stage in the environment lifecycle assigned to this environment
+	Stage *string `pulumi:"stage"`
+	// Tag dictionary. Tags can be added, removed, and updated.
+	Tags map[string]string `pulumi:"tags"`
+}
+
+// Defaults sets the appropriate defaults for EnvironmentVersionPropertiesRegistryEnvironmentVersionResponse
+func (val *EnvironmentVersionPropertiesRegistryEnvironmentVersionResponse) Defaults() *EnvironmentVersionPropertiesRegistryEnvironmentVersionResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.AutoRebuild == nil {
+		autoRebuild_ := "Disabled"
+		tmp.AutoRebuild = &autoRebuild_
+	}
+	tmp.Build = tmp.Build.Defaults()
+
+	if tmp.IsAnonymous == nil {
+		isAnonymous_ := false
+		tmp.IsAnonymous = &isAnonymous_
+	}
+	if tmp.IsArchived == nil {
+		isArchived_ := false
+		tmp.IsArchived = &isArchived_
+	}
+	if tmp.OsType == nil {
+		osType_ := "Linux"
+		tmp.OsType = &osType_
+	}
+	return &tmp
+}
+
+// Environment version details.
+type EnvironmentVersionPropertiesRegistryEnvironmentVersionResponseOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentVersionPropertiesRegistryEnvironmentVersionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentVersionPropertiesRegistryEnvironmentVersionResponse)(nil)).Elem()
+}
+
+func (o EnvironmentVersionPropertiesRegistryEnvironmentVersionResponseOutput) ToEnvironmentVersionPropertiesRegistryEnvironmentVersionResponseOutput() EnvironmentVersionPropertiesRegistryEnvironmentVersionResponseOutput {
+	return o
+}
+
+func (o EnvironmentVersionPropertiesRegistryEnvironmentVersionResponseOutput) ToEnvironmentVersionPropertiesRegistryEnvironmentVersionResponseOutputWithContext(ctx context.Context) EnvironmentVersionPropertiesRegistryEnvironmentVersionResponseOutput {
+	return o
+}
+
+// AutoRebuild setting for the derived image
+func (o EnvironmentVersionPropertiesRegistryEnvironmentVersionResponseOutput) AutoRebuild() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentVersionPropertiesRegistryEnvironmentVersionResponse) *string { return v.AutoRebuild }).(pulumi.StringPtrOutput)
+}
+
+// Configuration settings for Docker build context.
+func (o EnvironmentVersionPropertiesRegistryEnvironmentVersionResponseOutput) Build() BuildContextResponsePtrOutput {
+	return o.ApplyT(func(v EnvironmentVersionPropertiesRegistryEnvironmentVersionResponse) *BuildContextResponse {
+		return v.Build
+	}).(BuildContextResponsePtrOutput)
+}
+
+// Standard configuration file used by Conda that lets you install any kind of package, including Python, R, and C/C++ packages.
+// <see href="https://repo2docker.readthedocs.io/en/latest/config_files.html#environment-yml-install-a-conda-environment" />
+func (o EnvironmentVersionPropertiesRegistryEnvironmentVersionResponseOutput) CondaFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentVersionPropertiesRegistryEnvironmentVersionResponse) *string { return v.CondaFile }).(pulumi.StringPtrOutput)
+}
+
+// The asset description text.
+func (o EnvironmentVersionPropertiesRegistryEnvironmentVersionResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentVersionPropertiesRegistryEnvironmentVersionResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Environment type is either user managed or curated by the Azure ML service
+// <see href="https://docs.microsoft.com/en-us/azure/machine-learning/resource-curated-environments" />
+func (o EnvironmentVersionPropertiesRegistryEnvironmentVersionResponseOutput) EnvironmentType() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentVersionPropertiesRegistryEnvironmentVersionResponse) string {
+		return v.EnvironmentType
+	}).(pulumi.StringOutput)
+}
+
+// Name of the image that will be used for the environment.
+// <seealso href="https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image" />
+func (o EnvironmentVersionPropertiesRegistryEnvironmentVersionResponseOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentVersionPropertiesRegistryEnvironmentVersionResponse) *string { return v.Image }).(pulumi.StringPtrOutput)
+}
+
+// Defines configuration specific to inference.
+func (o EnvironmentVersionPropertiesRegistryEnvironmentVersionResponseOutput) InferenceConfig() InferenceContainerPropertiesRegistryEnvironmentVersionResponsePtrOutput {
+	return o.ApplyT(func(v EnvironmentVersionPropertiesRegistryEnvironmentVersionResponse) *InferenceContainerPropertiesRegistryEnvironmentVersionResponse {
+		return v.InferenceConfig
+	}).(InferenceContainerPropertiesRegistryEnvironmentVersionResponsePtrOutput)
+}
+
+// If the name version are system generated (anonymous registration).
+func (o EnvironmentVersionPropertiesRegistryEnvironmentVersionResponseOutput) IsAnonymous() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EnvironmentVersionPropertiesRegistryEnvironmentVersionResponse) *bool { return v.IsAnonymous }).(pulumi.BoolPtrOutput)
+}
+
+// Is the asset archived?
+func (o EnvironmentVersionPropertiesRegistryEnvironmentVersionResponseOutput) IsArchived() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EnvironmentVersionPropertiesRegistryEnvironmentVersionResponse) *bool { return v.IsArchived }).(pulumi.BoolPtrOutput)
+}
+
+// The type of operating system.
+func (o EnvironmentVersionPropertiesRegistryEnvironmentVersionResponseOutput) OsType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentVersionPropertiesRegistryEnvironmentVersionResponse) *string { return v.OsType }).(pulumi.StringPtrOutput)
+}
+
+// The asset property dictionary.
+func (o EnvironmentVersionPropertiesRegistryEnvironmentVersionResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EnvironmentVersionPropertiesRegistryEnvironmentVersionResponse) map[string]string {
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+// Provisioning state for the environment version.
+func (o EnvironmentVersionPropertiesRegistryEnvironmentVersionResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentVersionPropertiesRegistryEnvironmentVersionResponse) string {
+		return v.ProvisioningState
+	}).(pulumi.StringOutput)
+}
+
+// Stage in the environment lifecycle assigned to this environment
+func (o EnvironmentVersionPropertiesRegistryEnvironmentVersionResponseOutput) Stage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentVersionPropertiesRegistryEnvironmentVersionResponse) *string { return v.Stage }).(pulumi.StringPtrOutput)
+}
+
+// Tag dictionary. Tags can be added, removed, and updated.
+func (o EnvironmentVersionPropertiesRegistryEnvironmentVersionResponseOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EnvironmentVersionPropertiesRegistryEnvironmentVersionResponse) map[string]string {
+		return v.Tags
+	}).(pulumi.StringMapOutput)
+}
+
+// Environment version details.
 type EnvironmentVersionPropertiesResponse struct {
 	// AutoRebuild setting for the derived image
 	AutoRebuild *string `pulumi:"autoRebuild"`
@@ -33399,7 +33561,7 @@ type EnvironmentVersionPropertiesResponse struct {
 	// <seealso href="https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image" />
 	Image *string `pulumi:"image"`
 	// Defines configuration specific to inference.
-	InferenceConfig *InferenceContainerPropertiesResponseV1 `pulumi:"inferenceConfig"`
+	InferenceConfig *InferenceContainerPropertiesEnvironmentVersionResponse `pulumi:"inferenceConfig"`
 	// If the name version are system generated (anonymous registration).
 	IsAnonymous *bool `pulumi:"isAnonymous"`
 	// Is the asset archived?
@@ -33492,10 +33654,10 @@ func (o EnvironmentVersionPropertiesResponseOutput) Image() pulumi.StringPtrOutp
 }
 
 // Defines configuration specific to inference.
-func (o EnvironmentVersionPropertiesResponseOutput) InferenceConfig() InferenceContainerPropertiesResponseV1PtrOutput {
-	return o.ApplyT(func(v EnvironmentVersionPropertiesResponse) *InferenceContainerPropertiesResponseV1 {
+func (o EnvironmentVersionPropertiesResponseOutput) InferenceConfig() InferenceContainerPropertiesEnvironmentVersionResponsePtrOutput {
+	return o.ApplyT(func(v EnvironmentVersionPropertiesResponse) *InferenceContainerPropertiesEnvironmentVersionResponse {
 		return v.InferenceConfig
-	}).(InferenceContainerPropertiesResponseV1PtrOutput)
+	}).(InferenceContainerPropertiesEnvironmentVersionResponsePtrOutput)
 }
 
 // If the name version are system generated (anonymous registration).
@@ -40509,6 +40671,232 @@ func (o IdentityForCmkResponsePtrOutput) UserAssignedIdentity() pulumi.StringPtr
 }
 
 // Identity for the resource.
+type IdentityMachineLearningDatasetResponse struct {
+	// The principal ID of resource identity.
+	PrincipalId string `pulumi:"principalId"`
+	// The tenant ID of resource.
+	TenantId string `pulumi:"tenantId"`
+	// The identity type.
+	Type *string `pulumi:"type"`
+	// The user assigned identities associated with the resource.
+	UserAssignedIdentities map[string]UserAssignedIdentityMachineLearningDatasetResponse `pulumi:"userAssignedIdentities"`
+}
+
+// Identity for the resource.
+type IdentityMachineLearningDatasetResponseOutput struct{ *pulumi.OutputState }
+
+func (IdentityMachineLearningDatasetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityMachineLearningDatasetResponse)(nil)).Elem()
+}
+
+func (o IdentityMachineLearningDatasetResponseOutput) ToIdentityMachineLearningDatasetResponseOutput() IdentityMachineLearningDatasetResponseOutput {
+	return o
+}
+
+func (o IdentityMachineLearningDatasetResponseOutput) ToIdentityMachineLearningDatasetResponseOutputWithContext(ctx context.Context) IdentityMachineLearningDatasetResponseOutput {
+	return o
+}
+
+// The principal ID of resource identity.
+func (o IdentityMachineLearningDatasetResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityMachineLearningDatasetResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The tenant ID of resource.
+func (o IdentityMachineLearningDatasetResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityMachineLearningDatasetResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// The identity type.
+func (o IdentityMachineLearningDatasetResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityMachineLearningDatasetResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The user assigned identities associated with the resource.
+func (o IdentityMachineLearningDatasetResponseOutput) UserAssignedIdentities() UserAssignedIdentityMachineLearningDatasetResponseMapOutput {
+	return o.ApplyT(func(v IdentityMachineLearningDatasetResponse) map[string]UserAssignedIdentityMachineLearningDatasetResponse {
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityMachineLearningDatasetResponseMapOutput)
+}
+
+type IdentityMachineLearningDatasetResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityMachineLearningDatasetResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityMachineLearningDatasetResponse)(nil)).Elem()
+}
+
+func (o IdentityMachineLearningDatasetResponsePtrOutput) ToIdentityMachineLearningDatasetResponsePtrOutput() IdentityMachineLearningDatasetResponsePtrOutput {
+	return o
+}
+
+func (o IdentityMachineLearningDatasetResponsePtrOutput) ToIdentityMachineLearningDatasetResponsePtrOutputWithContext(ctx context.Context) IdentityMachineLearningDatasetResponsePtrOutput {
+	return o
+}
+
+func (o IdentityMachineLearningDatasetResponsePtrOutput) Elem() IdentityMachineLearningDatasetResponseOutput {
+	return o.ApplyT(func(v *IdentityMachineLearningDatasetResponse) IdentityMachineLearningDatasetResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityMachineLearningDatasetResponse
+		return ret
+	}).(IdentityMachineLearningDatasetResponseOutput)
+}
+
+// The principal ID of resource identity.
+func (o IdentityMachineLearningDatasetResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityMachineLearningDatasetResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tenant ID of resource.
+func (o IdentityMachineLearningDatasetResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityMachineLearningDatasetResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identity type.
+func (o IdentityMachineLearningDatasetResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityMachineLearningDatasetResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user assigned identities associated with the resource.
+func (o IdentityMachineLearningDatasetResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityMachineLearningDatasetResponseMapOutput {
+	return o.ApplyT(func(v *IdentityMachineLearningDatasetResponse) map[string]UserAssignedIdentityMachineLearningDatasetResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityMachineLearningDatasetResponseMapOutput)
+}
+
+// Identity for the resource.
+type IdentityMachineLearningDatastoreResponse struct {
+	// The principal ID of resource identity.
+	PrincipalId string `pulumi:"principalId"`
+	// The tenant ID of resource.
+	TenantId string `pulumi:"tenantId"`
+	// The identity type.
+	Type *string `pulumi:"type"`
+	// The user assigned identities associated with the resource.
+	UserAssignedIdentities map[string]UserAssignedIdentityMachineLearningDatastoreResponse `pulumi:"userAssignedIdentities"`
+}
+
+// Identity for the resource.
+type IdentityMachineLearningDatastoreResponseOutput struct{ *pulumi.OutputState }
+
+func (IdentityMachineLearningDatastoreResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityMachineLearningDatastoreResponse)(nil)).Elem()
+}
+
+func (o IdentityMachineLearningDatastoreResponseOutput) ToIdentityMachineLearningDatastoreResponseOutput() IdentityMachineLearningDatastoreResponseOutput {
+	return o
+}
+
+func (o IdentityMachineLearningDatastoreResponseOutput) ToIdentityMachineLearningDatastoreResponseOutputWithContext(ctx context.Context) IdentityMachineLearningDatastoreResponseOutput {
+	return o
+}
+
+// The principal ID of resource identity.
+func (o IdentityMachineLearningDatastoreResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityMachineLearningDatastoreResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The tenant ID of resource.
+func (o IdentityMachineLearningDatastoreResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityMachineLearningDatastoreResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// The identity type.
+func (o IdentityMachineLearningDatastoreResponseOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityMachineLearningDatastoreResponse) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The user assigned identities associated with the resource.
+func (o IdentityMachineLearningDatastoreResponseOutput) UserAssignedIdentities() UserAssignedIdentityMachineLearningDatastoreResponseMapOutput {
+	return o.ApplyT(func(v IdentityMachineLearningDatastoreResponse) map[string]UserAssignedIdentityMachineLearningDatastoreResponse {
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityMachineLearningDatastoreResponseMapOutput)
+}
+
+type IdentityMachineLearningDatastoreResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityMachineLearningDatastoreResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityMachineLearningDatastoreResponse)(nil)).Elem()
+}
+
+func (o IdentityMachineLearningDatastoreResponsePtrOutput) ToIdentityMachineLearningDatastoreResponsePtrOutput() IdentityMachineLearningDatastoreResponsePtrOutput {
+	return o
+}
+
+func (o IdentityMachineLearningDatastoreResponsePtrOutput) ToIdentityMachineLearningDatastoreResponsePtrOutputWithContext(ctx context.Context) IdentityMachineLearningDatastoreResponsePtrOutput {
+	return o
+}
+
+func (o IdentityMachineLearningDatastoreResponsePtrOutput) Elem() IdentityMachineLearningDatastoreResponseOutput {
+	return o.ApplyT(func(v *IdentityMachineLearningDatastoreResponse) IdentityMachineLearningDatastoreResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityMachineLearningDatastoreResponse
+		return ret
+	}).(IdentityMachineLearningDatastoreResponseOutput)
+}
+
+// The principal ID of resource identity.
+func (o IdentityMachineLearningDatastoreResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityMachineLearningDatastoreResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tenant ID of resource.
+func (o IdentityMachineLearningDatastoreResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityMachineLearningDatastoreResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identity type.
+func (o IdentityMachineLearningDatastoreResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityMachineLearningDatastoreResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user assigned identities associated with the resource.
+func (o IdentityMachineLearningDatastoreResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityMachineLearningDatastoreResponseMapOutput {
+	return o.ApplyT(func(v *IdentityMachineLearningDatastoreResponse) map[string]UserAssignedIdentityMachineLearningDatastoreResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityMachineLearningDatastoreResponseMapOutput)
+}
+
+// Identity for the resource.
 type IdentityResponse struct {
 	// The principal ID of resource identity.
 	PrincipalId string `pulumi:"principalId"`
@@ -40517,7 +40905,7 @@ type IdentityResponse struct {
 	// The identity type.
 	Type *string `pulumi:"type"`
 	// The user assigned identities associated with the resource.
-	UserAssignedIdentities map[string]UserAssignedIdentityResponseV1 `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities map[string]UserAssignedIdentityLinkedServiceResponse `pulumi:"userAssignedIdentities"`
 }
 
 // Identity for the resource.
@@ -40551,8 +40939,10 @@ func (o IdentityResponseOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The user assigned identities associated with the resource.
-func (o IdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseV1MapOutput {
-	return o.ApplyT(func(v IdentityResponse) map[string]UserAssignedIdentityResponseV1 { return v.UserAssignedIdentities }).(UserAssignedIdentityResponseV1MapOutput)
+func (o IdentityResponseOutput) UserAssignedIdentities() UserAssignedIdentityLinkedServiceResponseMapOutput {
+	return o.ApplyT(func(v IdentityResponse) map[string]UserAssignedIdentityLinkedServiceResponse {
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityLinkedServiceResponseMapOutput)
 }
 
 type IdentityResponsePtrOutput struct{ *pulumi.OutputState }
@@ -40610,13 +41000,13 @@ func (o IdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The user assigned identities associated with the resource.
-func (o IdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseV1MapOutput {
-	return o.ApplyT(func(v *IdentityResponse) map[string]UserAssignedIdentityResponseV1 {
+func (o IdentityResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityLinkedServiceResponseMapOutput {
+	return o.ApplyT(func(v *IdentityResponse) map[string]UserAssignedIdentityLinkedServiceResponse {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(UserAssignedIdentityResponseV1MapOutput)
+	}).(UserAssignedIdentityLinkedServiceResponseMapOutput)
 }
 
 type Image struct {
@@ -48464,6 +48854,232 @@ func (o InferenceContainerPropertiesPtrOutput) StartupRoute() RoutePtrOutput {
 	}).(RoutePtrOutput)
 }
 
+type InferenceContainerPropertiesEnvironmentVersionResponse struct {
+	// The route to check the liveness of the inference server container.
+	LivenessRoute *RouteResponse `pulumi:"livenessRoute"`
+	// The route to check the readiness of the inference server container.
+	ReadinessRoute *RouteResponse `pulumi:"readinessRoute"`
+	// The port to send the scoring requests to, within the inference server container.
+	ScoringRoute *RouteResponse `pulumi:"scoringRoute"`
+	// The route to check the startup of the application in the container.
+	StartupRoute *RouteResponse `pulumi:"startupRoute"`
+}
+
+type InferenceContainerPropertiesEnvironmentVersionResponseOutput struct{ *pulumi.OutputState }
+
+func (InferenceContainerPropertiesEnvironmentVersionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InferenceContainerPropertiesEnvironmentVersionResponse)(nil)).Elem()
+}
+
+func (o InferenceContainerPropertiesEnvironmentVersionResponseOutput) ToInferenceContainerPropertiesEnvironmentVersionResponseOutput() InferenceContainerPropertiesEnvironmentVersionResponseOutput {
+	return o
+}
+
+func (o InferenceContainerPropertiesEnvironmentVersionResponseOutput) ToInferenceContainerPropertiesEnvironmentVersionResponseOutputWithContext(ctx context.Context) InferenceContainerPropertiesEnvironmentVersionResponseOutput {
+	return o
+}
+
+// The route to check the liveness of the inference server container.
+func (o InferenceContainerPropertiesEnvironmentVersionResponseOutput) LivenessRoute() RouteResponsePtrOutput {
+	return o.ApplyT(func(v InferenceContainerPropertiesEnvironmentVersionResponse) *RouteResponse { return v.LivenessRoute }).(RouteResponsePtrOutput)
+}
+
+// The route to check the readiness of the inference server container.
+func (o InferenceContainerPropertiesEnvironmentVersionResponseOutput) ReadinessRoute() RouteResponsePtrOutput {
+	return o.ApplyT(func(v InferenceContainerPropertiesEnvironmentVersionResponse) *RouteResponse { return v.ReadinessRoute }).(RouteResponsePtrOutput)
+}
+
+// The port to send the scoring requests to, within the inference server container.
+func (o InferenceContainerPropertiesEnvironmentVersionResponseOutput) ScoringRoute() RouteResponsePtrOutput {
+	return o.ApplyT(func(v InferenceContainerPropertiesEnvironmentVersionResponse) *RouteResponse { return v.ScoringRoute }).(RouteResponsePtrOutput)
+}
+
+// The route to check the startup of the application in the container.
+func (o InferenceContainerPropertiesEnvironmentVersionResponseOutput) StartupRoute() RouteResponsePtrOutput {
+	return o.ApplyT(func(v InferenceContainerPropertiesEnvironmentVersionResponse) *RouteResponse { return v.StartupRoute }).(RouteResponsePtrOutput)
+}
+
+type InferenceContainerPropertiesEnvironmentVersionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (InferenceContainerPropertiesEnvironmentVersionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InferenceContainerPropertiesEnvironmentVersionResponse)(nil)).Elem()
+}
+
+func (o InferenceContainerPropertiesEnvironmentVersionResponsePtrOutput) ToInferenceContainerPropertiesEnvironmentVersionResponsePtrOutput() InferenceContainerPropertiesEnvironmentVersionResponsePtrOutput {
+	return o
+}
+
+func (o InferenceContainerPropertiesEnvironmentVersionResponsePtrOutput) ToInferenceContainerPropertiesEnvironmentVersionResponsePtrOutputWithContext(ctx context.Context) InferenceContainerPropertiesEnvironmentVersionResponsePtrOutput {
+	return o
+}
+
+func (o InferenceContainerPropertiesEnvironmentVersionResponsePtrOutput) Elem() InferenceContainerPropertiesEnvironmentVersionResponseOutput {
+	return o.ApplyT(func(v *InferenceContainerPropertiesEnvironmentVersionResponse) InferenceContainerPropertiesEnvironmentVersionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret InferenceContainerPropertiesEnvironmentVersionResponse
+		return ret
+	}).(InferenceContainerPropertiesEnvironmentVersionResponseOutput)
+}
+
+// The route to check the liveness of the inference server container.
+func (o InferenceContainerPropertiesEnvironmentVersionResponsePtrOutput) LivenessRoute() RouteResponsePtrOutput {
+	return o.ApplyT(func(v *InferenceContainerPropertiesEnvironmentVersionResponse) *RouteResponse {
+		if v == nil {
+			return nil
+		}
+		return v.LivenessRoute
+	}).(RouteResponsePtrOutput)
+}
+
+// The route to check the readiness of the inference server container.
+func (o InferenceContainerPropertiesEnvironmentVersionResponsePtrOutput) ReadinessRoute() RouteResponsePtrOutput {
+	return o.ApplyT(func(v *InferenceContainerPropertiesEnvironmentVersionResponse) *RouteResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ReadinessRoute
+	}).(RouteResponsePtrOutput)
+}
+
+// The port to send the scoring requests to, within the inference server container.
+func (o InferenceContainerPropertiesEnvironmentVersionResponsePtrOutput) ScoringRoute() RouteResponsePtrOutput {
+	return o.ApplyT(func(v *InferenceContainerPropertiesEnvironmentVersionResponse) *RouteResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ScoringRoute
+	}).(RouteResponsePtrOutput)
+}
+
+// The route to check the startup of the application in the container.
+func (o InferenceContainerPropertiesEnvironmentVersionResponsePtrOutput) StartupRoute() RouteResponsePtrOutput {
+	return o.ApplyT(func(v *InferenceContainerPropertiesEnvironmentVersionResponse) *RouteResponse {
+		if v == nil {
+			return nil
+		}
+		return v.StartupRoute
+	}).(RouteResponsePtrOutput)
+}
+
+type InferenceContainerPropertiesRegistryEnvironmentVersionResponse struct {
+	// The route to check the liveness of the inference server container.
+	LivenessRoute *RouteResponse `pulumi:"livenessRoute"`
+	// The route to check the readiness of the inference server container.
+	ReadinessRoute *RouteResponse `pulumi:"readinessRoute"`
+	// The port to send the scoring requests to, within the inference server container.
+	ScoringRoute *RouteResponse `pulumi:"scoringRoute"`
+	// The route to check the startup of the application in the container.
+	StartupRoute *RouteResponse `pulumi:"startupRoute"`
+}
+
+type InferenceContainerPropertiesRegistryEnvironmentVersionResponseOutput struct{ *pulumi.OutputState }
+
+func (InferenceContainerPropertiesRegistryEnvironmentVersionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InferenceContainerPropertiesRegistryEnvironmentVersionResponse)(nil)).Elem()
+}
+
+func (o InferenceContainerPropertiesRegistryEnvironmentVersionResponseOutput) ToInferenceContainerPropertiesRegistryEnvironmentVersionResponseOutput() InferenceContainerPropertiesRegistryEnvironmentVersionResponseOutput {
+	return o
+}
+
+func (o InferenceContainerPropertiesRegistryEnvironmentVersionResponseOutput) ToInferenceContainerPropertiesRegistryEnvironmentVersionResponseOutputWithContext(ctx context.Context) InferenceContainerPropertiesRegistryEnvironmentVersionResponseOutput {
+	return o
+}
+
+// The route to check the liveness of the inference server container.
+func (o InferenceContainerPropertiesRegistryEnvironmentVersionResponseOutput) LivenessRoute() RouteResponsePtrOutput {
+	return o.ApplyT(func(v InferenceContainerPropertiesRegistryEnvironmentVersionResponse) *RouteResponse {
+		return v.LivenessRoute
+	}).(RouteResponsePtrOutput)
+}
+
+// The route to check the readiness of the inference server container.
+func (o InferenceContainerPropertiesRegistryEnvironmentVersionResponseOutput) ReadinessRoute() RouteResponsePtrOutput {
+	return o.ApplyT(func(v InferenceContainerPropertiesRegistryEnvironmentVersionResponse) *RouteResponse {
+		return v.ReadinessRoute
+	}).(RouteResponsePtrOutput)
+}
+
+// The port to send the scoring requests to, within the inference server container.
+func (o InferenceContainerPropertiesRegistryEnvironmentVersionResponseOutput) ScoringRoute() RouteResponsePtrOutput {
+	return o.ApplyT(func(v InferenceContainerPropertiesRegistryEnvironmentVersionResponse) *RouteResponse {
+		return v.ScoringRoute
+	}).(RouteResponsePtrOutput)
+}
+
+// The route to check the startup of the application in the container.
+func (o InferenceContainerPropertiesRegistryEnvironmentVersionResponseOutput) StartupRoute() RouteResponsePtrOutput {
+	return o.ApplyT(func(v InferenceContainerPropertiesRegistryEnvironmentVersionResponse) *RouteResponse {
+		return v.StartupRoute
+	}).(RouteResponsePtrOutput)
+}
+
+type InferenceContainerPropertiesRegistryEnvironmentVersionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (InferenceContainerPropertiesRegistryEnvironmentVersionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InferenceContainerPropertiesRegistryEnvironmentVersionResponse)(nil)).Elem()
+}
+
+func (o InferenceContainerPropertiesRegistryEnvironmentVersionResponsePtrOutput) ToInferenceContainerPropertiesRegistryEnvironmentVersionResponsePtrOutput() InferenceContainerPropertiesRegistryEnvironmentVersionResponsePtrOutput {
+	return o
+}
+
+func (o InferenceContainerPropertiesRegistryEnvironmentVersionResponsePtrOutput) ToInferenceContainerPropertiesRegistryEnvironmentVersionResponsePtrOutputWithContext(ctx context.Context) InferenceContainerPropertiesRegistryEnvironmentVersionResponsePtrOutput {
+	return o
+}
+
+func (o InferenceContainerPropertiesRegistryEnvironmentVersionResponsePtrOutput) Elem() InferenceContainerPropertiesRegistryEnvironmentVersionResponseOutput {
+	return o.ApplyT(func(v *InferenceContainerPropertiesRegistryEnvironmentVersionResponse) InferenceContainerPropertiesRegistryEnvironmentVersionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret InferenceContainerPropertiesRegistryEnvironmentVersionResponse
+		return ret
+	}).(InferenceContainerPropertiesRegistryEnvironmentVersionResponseOutput)
+}
+
+// The route to check the liveness of the inference server container.
+func (o InferenceContainerPropertiesRegistryEnvironmentVersionResponsePtrOutput) LivenessRoute() RouteResponsePtrOutput {
+	return o.ApplyT(func(v *InferenceContainerPropertiesRegistryEnvironmentVersionResponse) *RouteResponse {
+		if v == nil {
+			return nil
+		}
+		return v.LivenessRoute
+	}).(RouteResponsePtrOutput)
+}
+
+// The route to check the readiness of the inference server container.
+func (o InferenceContainerPropertiesRegistryEnvironmentVersionResponsePtrOutput) ReadinessRoute() RouteResponsePtrOutput {
+	return o.ApplyT(func(v *InferenceContainerPropertiesRegistryEnvironmentVersionResponse) *RouteResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ReadinessRoute
+	}).(RouteResponsePtrOutput)
+}
+
+// The port to send the scoring requests to, within the inference server container.
+func (o InferenceContainerPropertiesRegistryEnvironmentVersionResponsePtrOutput) ScoringRoute() RouteResponsePtrOutput {
+	return o.ApplyT(func(v *InferenceContainerPropertiesRegistryEnvironmentVersionResponse) *RouteResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ScoringRoute
+	}).(RouteResponsePtrOutput)
+}
+
+// The route to check the startup of the application in the container.
+func (o InferenceContainerPropertiesRegistryEnvironmentVersionResponsePtrOutput) StartupRoute() RouteResponsePtrOutput {
+	return o.ApplyT(func(v *InferenceContainerPropertiesRegistryEnvironmentVersionResponse) *RouteResponse {
+		if v == nil {
+			return nil
+		}
+		return v.StartupRoute
+	}).(RouteResponsePtrOutput)
+}
+
 type InferenceContainerPropertiesResponse struct {
 	// The route to check the liveness of the inference server container.
 	LivenessRoute *RouteResponse `pulumi:"livenessRoute"`
@@ -48553,115 +49169,6 @@ func (o InferenceContainerPropertiesResponsePtrOutput) ScoringRoute() RouteRespo
 			return nil
 		}
 		return v.ScoringRoute
-	}).(RouteResponsePtrOutput)
-}
-
-type InferenceContainerPropertiesResponseV1 struct {
-	// The route to check the liveness of the inference server container.
-	LivenessRoute *RouteResponse `pulumi:"livenessRoute"`
-	// The route to check the readiness of the inference server container.
-	ReadinessRoute *RouteResponse `pulumi:"readinessRoute"`
-	// The port to send the scoring requests to, within the inference server container.
-	ScoringRoute *RouteResponse `pulumi:"scoringRoute"`
-	// The route to check the startup of the application in the container.
-	StartupRoute *RouteResponse `pulumi:"startupRoute"`
-}
-
-type InferenceContainerPropertiesResponseV1Output struct{ *pulumi.OutputState }
-
-func (InferenceContainerPropertiesResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*InferenceContainerPropertiesResponseV1)(nil)).Elem()
-}
-
-func (o InferenceContainerPropertiesResponseV1Output) ToInferenceContainerPropertiesResponseV1Output() InferenceContainerPropertiesResponseV1Output {
-	return o
-}
-
-func (o InferenceContainerPropertiesResponseV1Output) ToInferenceContainerPropertiesResponseV1OutputWithContext(ctx context.Context) InferenceContainerPropertiesResponseV1Output {
-	return o
-}
-
-// The route to check the liveness of the inference server container.
-func (o InferenceContainerPropertiesResponseV1Output) LivenessRoute() RouteResponsePtrOutput {
-	return o.ApplyT(func(v InferenceContainerPropertiesResponseV1) *RouteResponse { return v.LivenessRoute }).(RouteResponsePtrOutput)
-}
-
-// The route to check the readiness of the inference server container.
-func (o InferenceContainerPropertiesResponseV1Output) ReadinessRoute() RouteResponsePtrOutput {
-	return o.ApplyT(func(v InferenceContainerPropertiesResponseV1) *RouteResponse { return v.ReadinessRoute }).(RouteResponsePtrOutput)
-}
-
-// The port to send the scoring requests to, within the inference server container.
-func (o InferenceContainerPropertiesResponseV1Output) ScoringRoute() RouteResponsePtrOutput {
-	return o.ApplyT(func(v InferenceContainerPropertiesResponseV1) *RouteResponse { return v.ScoringRoute }).(RouteResponsePtrOutput)
-}
-
-// The route to check the startup of the application in the container.
-func (o InferenceContainerPropertiesResponseV1Output) StartupRoute() RouteResponsePtrOutput {
-	return o.ApplyT(func(v InferenceContainerPropertiesResponseV1) *RouteResponse { return v.StartupRoute }).(RouteResponsePtrOutput)
-}
-
-type InferenceContainerPropertiesResponseV1PtrOutput struct{ *pulumi.OutputState }
-
-func (InferenceContainerPropertiesResponseV1PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**InferenceContainerPropertiesResponseV1)(nil)).Elem()
-}
-
-func (o InferenceContainerPropertiesResponseV1PtrOutput) ToInferenceContainerPropertiesResponseV1PtrOutput() InferenceContainerPropertiesResponseV1PtrOutput {
-	return o
-}
-
-func (o InferenceContainerPropertiesResponseV1PtrOutput) ToInferenceContainerPropertiesResponseV1PtrOutputWithContext(ctx context.Context) InferenceContainerPropertiesResponseV1PtrOutput {
-	return o
-}
-
-func (o InferenceContainerPropertiesResponseV1PtrOutput) Elem() InferenceContainerPropertiesResponseV1Output {
-	return o.ApplyT(func(v *InferenceContainerPropertiesResponseV1) InferenceContainerPropertiesResponseV1 {
-		if v != nil {
-			return *v
-		}
-		var ret InferenceContainerPropertiesResponseV1
-		return ret
-	}).(InferenceContainerPropertiesResponseV1Output)
-}
-
-// The route to check the liveness of the inference server container.
-func (o InferenceContainerPropertiesResponseV1PtrOutput) LivenessRoute() RouteResponsePtrOutput {
-	return o.ApplyT(func(v *InferenceContainerPropertiesResponseV1) *RouteResponse {
-		if v == nil {
-			return nil
-		}
-		return v.LivenessRoute
-	}).(RouteResponsePtrOutput)
-}
-
-// The route to check the readiness of the inference server container.
-func (o InferenceContainerPropertiesResponseV1PtrOutput) ReadinessRoute() RouteResponsePtrOutput {
-	return o.ApplyT(func(v *InferenceContainerPropertiesResponseV1) *RouteResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ReadinessRoute
-	}).(RouteResponsePtrOutput)
-}
-
-// The port to send the scoring requests to, within the inference server container.
-func (o InferenceContainerPropertiesResponseV1PtrOutput) ScoringRoute() RouteResponsePtrOutput {
-	return o.ApplyT(func(v *InferenceContainerPropertiesResponseV1) *RouteResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ScoringRoute
-	}).(RouteResponsePtrOutput)
-}
-
-// The route to check the startup of the application in the container.
-func (o InferenceContainerPropertiesResponseV1PtrOutput) StartupRoute() RouteResponsePtrOutput {
-	return o.ApplyT(func(v *InferenceContainerPropertiesResponseV1) *RouteResponse {
-		if v == nil {
-			return nil
-		}
-		return v.StartupRoute
 	}).(RouteResponsePtrOutput)
 }
 
@@ -66161,579 +66668,6 @@ func (o PersonalComputeInstanceSettingsPtrOutput) AssignedUser() AssignedUserPtr
 	}).(AssignedUserPtrOutput)
 }
 
-// Settings for a personal compute instance.
-type PersonalComputeInstanceSettingsResponse struct {
-	// A user explicitly assigned to a personal compute instance.
-	AssignedUser *AssignedUserResponse `pulumi:"assignedUser"`
-}
-
-// Settings for a personal compute instance.
-type PersonalComputeInstanceSettingsResponseOutput struct{ *pulumi.OutputState }
-
-func (PersonalComputeInstanceSettingsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PersonalComputeInstanceSettingsResponse)(nil)).Elem()
-}
-
-func (o PersonalComputeInstanceSettingsResponseOutput) ToPersonalComputeInstanceSettingsResponseOutput() PersonalComputeInstanceSettingsResponseOutput {
-	return o
-}
-
-func (o PersonalComputeInstanceSettingsResponseOutput) ToPersonalComputeInstanceSettingsResponseOutputWithContext(ctx context.Context) PersonalComputeInstanceSettingsResponseOutput {
-	return o
-}
-
-// A user explicitly assigned to a personal compute instance.
-func (o PersonalComputeInstanceSettingsResponseOutput) AssignedUser() AssignedUserResponsePtrOutput {
-	return o.ApplyT(func(v PersonalComputeInstanceSettingsResponse) *AssignedUserResponse { return v.AssignedUser }).(AssignedUserResponsePtrOutput)
-}
-
-type PersonalComputeInstanceSettingsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (PersonalComputeInstanceSettingsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PersonalComputeInstanceSettingsResponse)(nil)).Elem()
-}
-
-func (o PersonalComputeInstanceSettingsResponsePtrOutput) ToPersonalComputeInstanceSettingsResponsePtrOutput() PersonalComputeInstanceSettingsResponsePtrOutput {
-	return o
-}
-
-func (o PersonalComputeInstanceSettingsResponsePtrOutput) ToPersonalComputeInstanceSettingsResponsePtrOutputWithContext(ctx context.Context) PersonalComputeInstanceSettingsResponsePtrOutput {
-	return o
-}
-
-func (o PersonalComputeInstanceSettingsResponsePtrOutput) Elem() PersonalComputeInstanceSettingsResponseOutput {
-	return o.ApplyT(func(v *PersonalComputeInstanceSettingsResponse) PersonalComputeInstanceSettingsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret PersonalComputeInstanceSettingsResponse
-		return ret
-	}).(PersonalComputeInstanceSettingsResponseOutput)
-}
-
-// A user explicitly assigned to a personal compute instance.
-func (o PersonalComputeInstanceSettingsResponsePtrOutput) AssignedUser() AssignedUserResponsePtrOutput {
-	return o.ApplyT(func(v *PersonalComputeInstanceSettingsResponse) *AssignedUserResponse {
-		if v == nil {
-			return nil
-		}
-		return v.AssignedUser
-	}).(AssignedUserResponsePtrOutput)
-}
-
-// Pipeline Job definition: defines generic to MFE attributes.
-type PipelineJob struct {
-	// ARM resource ID of the component resource.
-	ComponentId *string `pulumi:"componentId"`
-	// ARM resource ID of the compute resource.
-	ComputeId *string `pulumi:"computeId"`
-	// The asset description text.
-	Description *string `pulumi:"description"`
-	// Display name of job.
-	DisplayName *string `pulumi:"displayName"`
-	// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-	ExperimentName *string `pulumi:"experimentName"`
-	// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
-	// Defaults to AmlToken if null.
-	Identity interface{} `pulumi:"identity"`
-	// Inputs for the pipeline job.
-	Inputs map[string]interface{} `pulumi:"inputs"`
-	// Is the asset archived?
-	IsArchived *bool `pulumi:"isArchived"`
-	// Enum to determine the type of job.
-	// Expected value is 'Pipeline'.
-	JobType string `pulumi:"jobType"`
-	// Jobs construct the Pipeline Job.
-	Jobs map[string]interface{} `pulumi:"jobs"`
-	// Notification setting for the job
-	NotificationSetting *NotificationSetting `pulumi:"notificationSetting"`
-	// Outputs for the pipeline job
-	Outputs map[string]interface{} `pulumi:"outputs"`
-	// The asset property dictionary.
-	Properties map[string]string `pulumi:"properties"`
-	// List of JobEndpoints.
-	// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-	Services map[string]JobService `pulumi:"services"`
-	// Pipeline settings, for things like ContinueRunOnStepFailure etc.
-	Settings interface{} `pulumi:"settings"`
-	// ARM resource ID of source job.
-	SourceJobId *string `pulumi:"sourceJobId"`
-	// Tag dictionary. Tags can be added, removed, and updated.
-	Tags map[string]string `pulumi:"tags"`
-}
-
-// Defaults sets the appropriate defaults for PipelineJob
-func (val *PipelineJob) Defaults() *PipelineJob {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.ExperimentName == nil {
-		experimentName_ := "Default"
-		tmp.ExperimentName = &experimentName_
-	}
-	if tmp.IsArchived == nil {
-		isArchived_ := false
-		tmp.IsArchived = &isArchived_
-	}
-	return &tmp
-}
-
-// PipelineJobInput is an input type that accepts PipelineJobArgs and PipelineJobOutput values.
-// You can construct a concrete instance of `PipelineJobInput` via:
-//
-//	PipelineJobArgs{...}
-type PipelineJobInput interface {
-	pulumi.Input
-
-	ToPipelineJobOutput() PipelineJobOutput
-	ToPipelineJobOutputWithContext(context.Context) PipelineJobOutput
-}
-
-// Pipeline Job definition: defines generic to MFE attributes.
-type PipelineJobArgs struct {
-	// ARM resource ID of the component resource.
-	ComponentId pulumi.StringPtrInput `pulumi:"componentId"`
-	// ARM resource ID of the compute resource.
-	ComputeId pulumi.StringPtrInput `pulumi:"computeId"`
-	// The asset description text.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Display name of job.
-	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-	ExperimentName pulumi.StringPtrInput `pulumi:"experimentName"`
-	// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
-	// Defaults to AmlToken if null.
-	Identity pulumi.Input `pulumi:"identity"`
-	// Inputs for the pipeline job.
-	Inputs pulumi.MapInput `pulumi:"inputs"`
-	// Is the asset archived?
-	IsArchived pulumi.BoolPtrInput `pulumi:"isArchived"`
-	// Enum to determine the type of job.
-	// Expected value is 'Pipeline'.
-	JobType pulumi.StringInput `pulumi:"jobType"`
-	// Jobs construct the Pipeline Job.
-	Jobs pulumi.MapInput `pulumi:"jobs"`
-	// Notification setting for the job
-	NotificationSetting NotificationSettingPtrInput `pulumi:"notificationSetting"`
-	// Outputs for the pipeline job
-	Outputs pulumi.MapInput `pulumi:"outputs"`
-	// The asset property dictionary.
-	Properties pulumi.StringMapInput `pulumi:"properties"`
-	// List of JobEndpoints.
-	// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-	Services JobServiceMapInput `pulumi:"services"`
-	// Pipeline settings, for things like ContinueRunOnStepFailure etc.
-	Settings pulumi.Input `pulumi:"settings"`
-	// ARM resource ID of source job.
-	SourceJobId pulumi.StringPtrInput `pulumi:"sourceJobId"`
-	// Tag dictionary. Tags can be added, removed, and updated.
-	Tags pulumi.StringMapInput `pulumi:"tags"`
-}
-
-// Defaults sets the appropriate defaults for PipelineJobArgs
-func (val *PipelineJobArgs) Defaults() *PipelineJobArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.ExperimentName == nil {
-		tmp.ExperimentName = pulumi.StringPtr("Default")
-	}
-	if tmp.IsArchived == nil {
-		tmp.IsArchived = pulumi.BoolPtr(false)
-	}
-	return &tmp
-}
-func (PipelineJobArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PipelineJob)(nil)).Elem()
-}
-
-func (i PipelineJobArgs) ToPipelineJobOutput() PipelineJobOutput {
-	return i.ToPipelineJobOutputWithContext(context.Background())
-}
-
-func (i PipelineJobArgs) ToPipelineJobOutputWithContext(ctx context.Context) PipelineJobOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PipelineJobOutput)
-}
-
-// Pipeline Job definition: defines generic to MFE attributes.
-type PipelineJobOutput struct{ *pulumi.OutputState }
-
-func (PipelineJobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PipelineJob)(nil)).Elem()
-}
-
-func (o PipelineJobOutput) ToPipelineJobOutput() PipelineJobOutput {
-	return o
-}
-
-func (o PipelineJobOutput) ToPipelineJobOutputWithContext(ctx context.Context) PipelineJobOutput {
-	return o
-}
-
-// ARM resource ID of the component resource.
-func (o PipelineJobOutput) ComponentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJob) *string { return v.ComponentId }).(pulumi.StringPtrOutput)
-}
-
-// ARM resource ID of the compute resource.
-func (o PipelineJobOutput) ComputeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJob) *string { return v.ComputeId }).(pulumi.StringPtrOutput)
-}
-
-// The asset description text.
-func (o PipelineJobOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJob) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Display name of job.
-func (o PipelineJobOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJob) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-func (o PipelineJobOutput) ExperimentName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJob) *string { return v.ExperimentName }).(pulumi.StringPtrOutput)
-}
-
-// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
-// Defaults to AmlToken if null.
-func (o PipelineJobOutput) Identity() pulumi.AnyOutput {
-	return o.ApplyT(func(v PipelineJob) interface{} { return v.Identity }).(pulumi.AnyOutput)
-}
-
-// Inputs for the pipeline job.
-func (o PipelineJobOutput) Inputs() pulumi.MapOutput {
-	return o.ApplyT(func(v PipelineJob) map[string]interface{} { return v.Inputs }).(pulumi.MapOutput)
-}
-
-// Is the asset archived?
-func (o PipelineJobOutput) IsArchived() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PipelineJob) *bool { return v.IsArchived }).(pulumi.BoolPtrOutput)
-}
-
-// Enum to determine the type of job.
-// Expected value is 'Pipeline'.
-func (o PipelineJobOutput) JobType() pulumi.StringOutput {
-	return o.ApplyT(func(v PipelineJob) string { return v.JobType }).(pulumi.StringOutput)
-}
-
-// Jobs construct the Pipeline Job.
-func (o PipelineJobOutput) Jobs() pulumi.MapOutput {
-	return o.ApplyT(func(v PipelineJob) map[string]interface{} { return v.Jobs }).(pulumi.MapOutput)
-}
-
-// Notification setting for the job
-func (o PipelineJobOutput) NotificationSetting() NotificationSettingPtrOutput {
-	return o.ApplyT(func(v PipelineJob) *NotificationSetting { return v.NotificationSetting }).(NotificationSettingPtrOutput)
-}
-
-// Outputs for the pipeline job
-func (o PipelineJobOutput) Outputs() pulumi.MapOutput {
-	return o.ApplyT(func(v PipelineJob) map[string]interface{} { return v.Outputs }).(pulumi.MapOutput)
-}
-
-// The asset property dictionary.
-func (o PipelineJobOutput) Properties() pulumi.StringMapOutput {
-	return o.ApplyT(func(v PipelineJob) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
-}
-
-// List of JobEndpoints.
-// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-func (o PipelineJobOutput) Services() JobServiceMapOutput {
-	return o.ApplyT(func(v PipelineJob) map[string]JobService { return v.Services }).(JobServiceMapOutput)
-}
-
-// Pipeline settings, for things like ContinueRunOnStepFailure etc.
-func (o PipelineJobOutput) Settings() pulumi.AnyOutput {
-	return o.ApplyT(func(v PipelineJob) interface{} { return v.Settings }).(pulumi.AnyOutput)
-}
-
-// ARM resource ID of source job.
-func (o PipelineJobOutput) SourceJobId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJob) *string { return v.SourceJobId }).(pulumi.StringPtrOutput)
-}
-
-// Tag dictionary. Tags can be added, removed, and updated.
-func (o PipelineJobOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v PipelineJob) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-// Pipeline Job definition: defines generic to MFE attributes.
-type PipelineJobResponse struct {
-	// ARM resource ID of the component resource.
-	ComponentId *string `pulumi:"componentId"`
-	// ARM resource ID of the compute resource.
-	ComputeId *string `pulumi:"computeId"`
-	// The asset description text.
-	Description *string `pulumi:"description"`
-	// Display name of job.
-	DisplayName *string `pulumi:"displayName"`
-	// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-	ExperimentName *string `pulumi:"experimentName"`
-	// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
-	// Defaults to AmlToken if null.
-	Identity interface{} `pulumi:"identity"`
-	// Inputs for the pipeline job.
-	Inputs map[string]interface{} `pulumi:"inputs"`
-	// Is the asset archived?
-	IsArchived *bool `pulumi:"isArchived"`
-	// Enum to determine the type of job.
-	// Expected value is 'Pipeline'.
-	JobType string `pulumi:"jobType"`
-	// Jobs construct the Pipeline Job.
-	Jobs map[string]interface{} `pulumi:"jobs"`
-	// Notification setting for the job
-	NotificationSetting *NotificationSettingResponse `pulumi:"notificationSetting"`
-	// Outputs for the pipeline job
-	Outputs map[string]interface{} `pulumi:"outputs"`
-	// The asset property dictionary.
-	Properties map[string]string `pulumi:"properties"`
-	// List of JobEndpoints.
-	// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-	Services map[string]JobServiceResponse `pulumi:"services"`
-	// Pipeline settings, for things like ContinueRunOnStepFailure etc.
-	Settings interface{} `pulumi:"settings"`
-	// ARM resource ID of source job.
-	SourceJobId *string `pulumi:"sourceJobId"`
-	// Status of the job.
-	Status string `pulumi:"status"`
-	// Tag dictionary. Tags can be added, removed, and updated.
-	Tags map[string]string `pulumi:"tags"`
-}
-
-// Defaults sets the appropriate defaults for PipelineJobResponse
-func (val *PipelineJobResponse) Defaults() *PipelineJobResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.ExperimentName == nil {
-		experimentName_ := "Default"
-		tmp.ExperimentName = &experimentName_
-	}
-	if tmp.IsArchived == nil {
-		isArchived_ := false
-		tmp.IsArchived = &isArchived_
-	}
-	return &tmp
-}
-
-// Pipeline Job definition: defines generic to MFE attributes.
-type PipelineJobResponseOutput struct{ *pulumi.OutputState }
-
-func (PipelineJobResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PipelineJobResponse)(nil)).Elem()
-}
-
-func (o PipelineJobResponseOutput) ToPipelineJobResponseOutput() PipelineJobResponseOutput {
-	return o
-}
-
-func (o PipelineJobResponseOutput) ToPipelineJobResponseOutputWithContext(ctx context.Context) PipelineJobResponseOutput {
-	return o
-}
-
-// ARM resource ID of the component resource.
-func (o PipelineJobResponseOutput) ComponentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJobResponse) *string { return v.ComponentId }).(pulumi.StringPtrOutput)
-}
-
-// ARM resource ID of the compute resource.
-func (o PipelineJobResponseOutput) ComputeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJobResponse) *string { return v.ComputeId }).(pulumi.StringPtrOutput)
-}
-
-// The asset description text.
-func (o PipelineJobResponseOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJobResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Display name of job.
-func (o PipelineJobResponseOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJobResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
-}
-
-// The name of the experiment the job belongs to. If not set, the job is placed in the "Default" experiment.
-func (o PipelineJobResponseOutput) ExperimentName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJobResponse) *string { return v.ExperimentName }).(pulumi.StringPtrOutput)
-}
-
-// Identity configuration. If set, this should be one of AmlToken, ManagedIdentity, UserIdentity or null.
-// Defaults to AmlToken if null.
-func (o PipelineJobResponseOutput) Identity() pulumi.AnyOutput {
-	return o.ApplyT(func(v PipelineJobResponse) interface{} { return v.Identity }).(pulumi.AnyOutput)
-}
-
-// Inputs for the pipeline job.
-func (o PipelineJobResponseOutput) Inputs() pulumi.MapOutput {
-	return o.ApplyT(func(v PipelineJobResponse) map[string]interface{} { return v.Inputs }).(pulumi.MapOutput)
-}
-
-// Is the asset archived?
-func (o PipelineJobResponseOutput) IsArchived() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PipelineJobResponse) *bool { return v.IsArchived }).(pulumi.BoolPtrOutput)
-}
-
-// Enum to determine the type of job.
-// Expected value is 'Pipeline'.
-func (o PipelineJobResponseOutput) JobType() pulumi.StringOutput {
-	return o.ApplyT(func(v PipelineJobResponse) string { return v.JobType }).(pulumi.StringOutput)
-}
-
-// Jobs construct the Pipeline Job.
-func (o PipelineJobResponseOutput) Jobs() pulumi.MapOutput {
-	return o.ApplyT(func(v PipelineJobResponse) map[string]interface{} { return v.Jobs }).(pulumi.MapOutput)
-}
-
-// Notification setting for the job
-func (o PipelineJobResponseOutput) NotificationSetting() NotificationSettingResponsePtrOutput {
-	return o.ApplyT(func(v PipelineJobResponse) *NotificationSettingResponse { return v.NotificationSetting }).(NotificationSettingResponsePtrOutput)
-}
-
-// Outputs for the pipeline job
-func (o PipelineJobResponseOutput) Outputs() pulumi.MapOutput {
-	return o.ApplyT(func(v PipelineJobResponse) map[string]interface{} { return v.Outputs }).(pulumi.MapOutput)
-}
-
-// The asset property dictionary.
-func (o PipelineJobResponseOutput) Properties() pulumi.StringMapOutput {
-	return o.ApplyT(func(v PipelineJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
-}
-
-// List of JobEndpoints.
-// For local jobs, a job endpoint will have an endpoint value of FileStreamObject.
-func (o PipelineJobResponseOutput) Services() JobServiceResponseMapOutput {
-	return o.ApplyT(func(v PipelineJobResponse) map[string]JobServiceResponse { return v.Services }).(JobServiceResponseMapOutput)
-}
-
-// Pipeline settings, for things like ContinueRunOnStepFailure etc.
-func (o PipelineJobResponseOutput) Settings() pulumi.AnyOutput {
-	return o.ApplyT(func(v PipelineJobResponse) interface{} { return v.Settings }).(pulumi.AnyOutput)
-}
-
-// ARM resource ID of source job.
-func (o PipelineJobResponseOutput) SourceJobId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineJobResponse) *string { return v.SourceJobId }).(pulumi.StringPtrOutput)
-}
-
-// Status of the job.
-func (o PipelineJobResponseOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v PipelineJobResponse) string { return v.Status }).(pulumi.StringOutput)
-}
-
-// Tag dictionary. Tags can be added, removed, and updated.
-func (o PipelineJobResponseOutput) Tags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v PipelineJobResponse) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
-}
-
-type PredictionDriftMonitoringSignal struct {
-	// A dictionary that maps feature names to their respective data types.
-	FeatureDataTypeOverride map[string]string `pulumi:"featureDataTypeOverride"`
-	// [Required] A list of metrics to calculate and their associated thresholds.
-	MetricThresholds []interface{} `pulumi:"metricThresholds"`
-	// The current notification mode for this signal.
-	NotificationTypes []string `pulumi:"notificationTypes"`
-	// [Required] The data which drift will be calculated for.
-	ProductionData interface{} `pulumi:"productionData"`
-	// Property dictionary. Properties can be added, but not removed or altered.
-	Properties map[string]string `pulumi:"properties"`
-	// [Required] The data to calculate drift against.
-	ReferenceData interface{} `pulumi:"referenceData"`
-	// Expected value is 'PredictionDrift'.
-	SignalType string `pulumi:"signalType"`
-}
-
-// PredictionDriftMonitoringSignalInput is an input type that accepts PredictionDriftMonitoringSignalArgs and PredictionDriftMonitoringSignalOutput values.
-// You can construct a concrete instance of `PredictionDriftMonitoringSignalInput` via:
-//
-//	PredictionDriftMonitoringSignalArgs{...}
-type PredictionDriftMonitoringSignalInput interface {
-	pulumi.Input
-
-	ToPredictionDriftMonitoringSignalOutput() PredictionDriftMonitoringSignalOutput
-	ToPredictionDriftMonitoringSignalOutputWithContext(context.Context) PredictionDriftMonitoringSignalOutput
-}
-
-type PredictionDriftMonitoringSignalArgs struct {
-	// A dictionary that maps feature names to their respective data types.
-	FeatureDataTypeOverride pulumi.StringMapInput `pulumi:"featureDataTypeOverride"`
-	// [Required] A list of metrics to calculate and their associated thresholds.
-	MetricThresholds pulumi.ArrayInput `pulumi:"metricThresholds"`
-	// The current notification mode for this signal.
-	NotificationTypes pulumi.StringArrayInput `pulumi:"notificationTypes"`
-	// [Required] The data which drift will be calculated for.
-	ProductionData pulumi.Input `pulumi:"productionData"`
-	// Property dictionary. Properties can be added, but not removed or altered.
-	Properties pulumi.StringMapInput `pulumi:"properties"`
-	// [Required] The data to calculate drift against.
-	ReferenceData pulumi.Input `pulumi:"referenceData"`
-	// Expected value is 'PredictionDrift'.
-	SignalType pulumi.StringInput `pulumi:"signalType"`
-}
-
-func (PredictionDriftMonitoringSignalArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PredictionDriftMonitoringSignal)(nil)).Elem()
-}
-
-func (i PredictionDriftMonitoringSignalArgs) ToPredictionDriftMonitoringSignalOutput() PredictionDriftMonitoringSignalOutput {
-	return i.ToPredictionDriftMonitoringSignalOutputWithContext(context.Background())
-}
-
-func (i PredictionDriftMonitoringSignalArgs) ToPredictionDriftMonitoringSignalOutputWithContext(ctx context.Context) PredictionDriftMonitoringSignalOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PredictionDriftMonitoringSignalOutput)
-}
-
-type PredictionDriftMonitoringSignalOutput struct{ *pulumi.OutputState }
-
-func (PredictionDriftMonitoringSignalOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PredictionDriftMonitoringSignal)(nil)).Elem()
-}
-
-func (o PredictionDriftMonitoringSignalOutput) ToPredictionDriftMonitoringSignalOutput() PredictionDriftMonitoringSignalOutput {
-	return o
-}
-
-func (o PredictionDriftMonitoringSignalOutput) ToPredictionDriftMonitoringSignalOutputWithContext(ctx context.Context) PredictionDriftMonitoringSignalOutput {
-	return o
-}
-
-// A dictionary that maps feature names to their respective data types.
-func (o PredictionDriftMonitoringSignalOutput) FeatureDataTypeOverride() pulumi.StringMapOutput {
-	return o.ApplyT(func(v PredictionDriftMonitoringSignal) map[string]string { return v.FeatureDataTypeOverride }).(pulumi.StringMapOutput)
-}
-
-// [Required] A list of metrics to calculate and their associated thresholds.
-func (o PredictionDriftMonitoringSignalOutput) MetricThresholds() pulumi.ArrayOutput {
-	return o.ApplyT(func(v PredictionDriftMonitoringSignal) []interface{} { return v.MetricThresholds }).(pulumi.ArrayOutput)
-}
-
-// The current notification mode for this signal.
-func (o PredictionDriftMonitoringSignalOutput) NotificationTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v PredictionDriftMonitoringSignal) []string { return v.NotificationTypes }).(pulumi.StringArrayOutput)
-}
-
-// [Required] The data which drift will be calculated for.
-func (o PredictionDriftMonitoringSignalOutput) ProductionData() pulumi.AnyOutput {
-	return o.ApplyT(func(v PredictionDriftMonitoringSignal) interface{} { return v.ProductionData }).(pulumi.AnyOutput)
-}
-
-// Property dictionary. Properties can be added, but not removed or altered.
-func (o PredictionDriftMonitoringSignalOutput) Properties() pulumi.StringMapOutput {
-	return o.ApplyT(func(v PredictionDriftMonitoringSignal) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
-}
-
-// [Required] The data to calculate drift against.
-func (o PredictionDriftMonitoringSignalOutput) ReferenceData() pulumi.AnyOutput {
-	return o.ApplyT(func(v PredictionDriftMonitoringSignal) interface{} { return v.ReferenceData }).(pulumi.AnyOutput)
-}
-
-// Expected value is 'PredictionDrift'.
-func (o PredictionDriftMonitoringSignalOutput) SignalType() pulumi.StringOutput {
-	return o.ApplyT(func(v PredictionDriftMonitoringSignal) string { return v.SignalType }).(pulumi.StringOutput)
-}
-
 type ColumnTransformerArrayMap map[string]ColumnTransformerArrayInput
 
 func (ColumnTransformerArrayMap) ElementType() reflect.Type {
@@ -67245,6 +67179,7 @@ func init() {
 	pulumi.RegisterOutputType(EnvironmentVariableResponseOutput{})
 	pulumi.RegisterOutputType(EnvironmentVariableResponseMapOutput{})
 	pulumi.RegisterOutputType(EnvironmentVersionPropertiesOutput{})
+	pulumi.RegisterOutputType(EnvironmentVersionPropertiesRegistryEnvironmentVersionResponseOutput{})
 	pulumi.RegisterOutputType(EnvironmentVersionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseOutput{})
 	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseArrayOutput{})
@@ -67338,6 +67273,10 @@ func init() {
 	pulumi.RegisterOutputType(IdentityForCmkPtrOutput{})
 	pulumi.RegisterOutputType(IdentityForCmkResponseOutput{})
 	pulumi.RegisterOutputType(IdentityForCmkResponsePtrOutput{})
+	pulumi.RegisterOutputType(IdentityMachineLearningDatasetResponseOutput{})
+	pulumi.RegisterOutputType(IdentityMachineLearningDatasetResponsePtrOutput{})
+	pulumi.RegisterOutputType(IdentityMachineLearningDatastoreResponseOutput{})
+	pulumi.RegisterOutputType(IdentityMachineLearningDatastoreResponsePtrOutput{})
 	pulumi.RegisterOutputType(IdentityResponseOutput{})
 	pulumi.RegisterOutputType(IdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(ImageOutput{})
@@ -67382,10 +67321,12 @@ func init() {
 	pulumi.RegisterOutputType(IndexColumnResponseArrayOutput{})
 	pulumi.RegisterOutputType(InferenceContainerPropertiesOutput{})
 	pulumi.RegisterOutputType(InferenceContainerPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(InferenceContainerPropertiesEnvironmentVersionResponseOutput{})
+	pulumi.RegisterOutputType(InferenceContainerPropertiesEnvironmentVersionResponsePtrOutput{})
+	pulumi.RegisterOutputType(InferenceContainerPropertiesRegistryEnvironmentVersionResponseOutput{})
+	pulumi.RegisterOutputType(InferenceContainerPropertiesRegistryEnvironmentVersionResponsePtrOutput{})
 	pulumi.RegisterOutputType(InferenceContainerPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(InferenceContainerPropertiesResponsePtrOutput{})
-	pulumi.RegisterOutputType(InferenceContainerPropertiesResponseV1Output{})
-	pulumi.RegisterOutputType(InferenceContainerPropertiesResponseV1PtrOutput{})
 	pulumi.RegisterOutputType(InferenceEndpointTypeOutput{})
 	pulumi.RegisterOutputType(InferenceEndpointResponseOutput{})
 	pulumi.RegisterOutputType(InferenceGroupTypeOutput{})
@@ -67621,11 +67562,6 @@ func init() {
 	pulumi.RegisterOutputType(PasswordResponseArrayOutput{})
 	pulumi.RegisterOutputType(PersonalComputeInstanceSettingsOutput{})
 	pulumi.RegisterOutputType(PersonalComputeInstanceSettingsPtrOutput{})
-	pulumi.RegisterOutputType(PersonalComputeInstanceSettingsResponseOutput{})
-	pulumi.RegisterOutputType(PersonalComputeInstanceSettingsResponsePtrOutput{})
-	pulumi.RegisterOutputType(PipelineJobOutput{})
-	pulumi.RegisterOutputType(PipelineJobResponseOutput{})
-	pulumi.RegisterOutputType(PredictionDriftMonitoringSignalOutput{})
 	pulumi.RegisterOutputType(ColumnTransformerArrayMapOutput{})
 	pulumi.RegisterOutputType(ColumnTransformerResponseArrayMapOutput{})
 	pulumi.RegisterOutputType(DeltaModelCurrentStateResponseArrayMapOutput{})

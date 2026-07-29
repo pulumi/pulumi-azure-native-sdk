@@ -60,7 +60,7 @@ type LookupScheduledQueryRuleResult struct {
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The identity of the resource.
-	Identity *MicrosoftCommonIdentityResponse `pulumi:"identity"`
+	Identity *IdentityResponse `pulumi:"identity"`
 	// True if alert rule is legacy Log Analytic rule
 	IsLegacyLogAnalyticsRule bool `pulumi:"isLegacyLogAnalyticsRule"`
 	// The flag which indicates whether this scheduled query rule has been configured to be stored in the customer's storage. The default is false.
@@ -191,8 +191,8 @@ func (o LookupScheduledQueryRuleResultOutput) Id() pulumi.StringOutput {
 }
 
 // The identity of the resource.
-func (o LookupScheduledQueryRuleResultOutput) Identity() MicrosoftCommonIdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupScheduledQueryRuleResult) *MicrosoftCommonIdentityResponse { return v.Identity }).(MicrosoftCommonIdentityResponsePtrOutput)
+func (o LookupScheduledQueryRuleResultOutput) Identity() IdentityResponsePtrOutput {
+	return o.ApplyT(func(v LookupScheduledQueryRuleResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
 // True if alert rule is legacy Log Analytic rule

@@ -22457,7 +22457,7 @@ type MachineAssessmentSettingsResponse struct {
 	SizingCriterion *string `pulumi:"sizingCriterion"`
 	// Gets or sets the duration for which the VMs are up in the on-premises
 	// environment.
-	VmUptime *VmUptimeResponseV1 `pulumi:"vmUptime"`
+	VmUptime *VmUptimeMachineAssessmentsV2OperationResponse `pulumi:"vmUptime"`
 }
 
 // Properties of an assessment.
@@ -22565,8 +22565,10 @@ func (o MachineAssessmentSettingsResponseOutput) SizingCriterion() pulumi.String
 
 // Gets or sets the duration for which the VMs are up in the on-premises
 // environment.
-func (o MachineAssessmentSettingsResponseOutput) VmUptime() VmUptimeResponseV1PtrOutput {
-	return o.ApplyT(func(v MachineAssessmentSettingsResponse) *VmUptimeResponseV1 { return v.VmUptime }).(VmUptimeResponseV1PtrOutput)
+func (o MachineAssessmentSettingsResponseOutput) VmUptime() VmUptimeMachineAssessmentsV2OperationResponsePtrOutput {
+	return o.ApplyT(func(v MachineAssessmentSettingsResponse) *VmUptimeMachineAssessmentsV2OperationResponse {
+		return v.VmUptime
+	}).(VmUptimeMachineAssessmentsV2OperationResponsePtrOutput)
 }
 
 type MachineAssessmentSettingsResponsePtrOutput struct{ *pulumi.OutputState }
@@ -22768,13 +22770,13 @@ func (o MachineAssessmentSettingsResponsePtrOutput) SizingCriterion() pulumi.Str
 
 // Gets or sets the duration for which the VMs are up in the on-premises
 // environment.
-func (o MachineAssessmentSettingsResponsePtrOutput) VmUptime() VmUptimeResponseV1PtrOutput {
-	return o.ApplyT(func(v *MachineAssessmentSettingsResponse) *VmUptimeResponseV1 {
+func (o MachineAssessmentSettingsResponsePtrOutput) VmUptime() VmUptimeMachineAssessmentsV2OperationResponsePtrOutput {
+	return o.ApplyT(func(v *MachineAssessmentSettingsResponse) *VmUptimeMachineAssessmentsV2OperationResponse {
 		if v == nil {
 			return nil
 		}
 		return v.VmUptime
-	}).(VmUptimeResponseV1PtrOutput)
+	}).(VmUptimeMachineAssessmentsV2OperationResponsePtrOutput)
 }
 
 // Assessment properties class.
@@ -24225,6 +24227,97 @@ func (o MigrateProjectPropertiesPtrOutput) UtilityStorageAccountId() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+// Properties of a migrate project.
+type MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponse struct {
+	// Last summary refresh time.
+	LastSummaryRefreshedTime string `pulumi:"lastSummaryRefreshedTime"`
+	// Gets the private endpoint connections.
+	PrivateEndpointConnections []PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponse `pulumi:"privateEndpointConnections"`
+	// Gets or sets the state of public network access.
+	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
+	// Refresh summary state.
+	RefreshSummaryState string `pulumi:"refreshSummaryState"`
+	// Register tools inside project.
+	RegisteredTools []string `pulumi:"registeredTools"`
+	// Service endpoint.
+	ServiceEndpoint *string `pulumi:"serviceEndpoint"`
+	// Project summary.
+	Summary map[string]ProjectSummaryResponse `pulumi:"summary"`
+	// Utility storage account id.
+	UtilityStorageAccountId *string `pulumi:"utilityStorageAccountId"`
+}
+
+// Properties of a migrate project.
+type MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponseOutput struct{ *pulumi.OutputState }
+
+func (MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponse)(nil)).Elem()
+}
+
+func (o MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponseOutput) ToMigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponseOutput() MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponseOutput {
+	return o
+}
+
+func (o MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponseOutput) ToMigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponseOutputWithContext(ctx context.Context) MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponseOutput {
+	return o
+}
+
+// Last summary refresh time.
+func (o MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponseOutput) LastSummaryRefreshedTime() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponse) string {
+		return v.LastSummaryRefreshedTime
+	}).(pulumi.StringOutput)
+}
+
+// Gets the private endpoint connections.
+func (o MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponseOutput) PrivateEndpointConnections() PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponseArrayOutput {
+	return o.ApplyT(func(v MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponse) []PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponse {
+		return v.PrivateEndpointConnections
+	}).(PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponseArrayOutput)
+}
+
+// Gets or sets the state of public network access.
+func (o MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponseOutput) PublicNetworkAccess() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponse) *string {
+		return v.PublicNetworkAccess
+	}).(pulumi.StringPtrOutput)
+}
+
+// Refresh summary state.
+func (o MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponseOutput) RefreshSummaryState() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponse) string {
+		return v.RefreshSummaryState
+	}).(pulumi.StringOutput)
+}
+
+// Register tools inside project.
+func (o MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponseOutput) RegisteredTools() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponse) []string {
+		return v.RegisteredTools
+	}).(pulumi.StringArrayOutput)
+}
+
+// Service endpoint.
+func (o MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponseOutput) ServiceEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponse) *string {
+		return v.ServiceEndpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// Project summary.
+func (o MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponseOutput) Summary() ProjectSummaryResponseMapOutput {
+	return o.ApplyT(func(v MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponse) map[string]ProjectSummaryResponse {
+		return v.Summary
+	}).(ProjectSummaryResponseMapOutput)
+}
+
+// Utility storage account id.
+func (o MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponseOutput) UtilityStorageAccountId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponse) *string {
+		return v.UtilityStorageAccountId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Class for migrate project properties.
 type MigrateProjectPropertiesResponse struct {
 	// Gets the last time the project summary was refreshed.
@@ -24277,83 +24370,6 @@ func (o MigrateProjectPropertiesResponseOutput) RegisteredTools() pulumi.StringA
 // Gets the summary of the migrate project.
 func (o MigrateProjectPropertiesResponseOutput) Summary() pulumi.MapOutput {
 	return o.ApplyT(func(v MigrateProjectPropertiesResponse) map[string]interface{} { return v.Summary }).(pulumi.MapOutput)
-}
-
-// Properties of a migrate project.
-type MigrateProjectPropertiesResponseV1 struct {
-	// Last summary refresh time.
-	LastSummaryRefreshedTime string `pulumi:"lastSummaryRefreshedTime"`
-	// Gets the private endpoint connections.
-	PrivateEndpointConnections []PrivateEndpointConnectionResponseV1 `pulumi:"privateEndpointConnections"`
-	// Gets or sets the state of public network access.
-	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
-	// Refresh summary state.
-	RefreshSummaryState string `pulumi:"refreshSummaryState"`
-	// Register tools inside project.
-	RegisteredTools []string `pulumi:"registeredTools"`
-	// Service endpoint.
-	ServiceEndpoint *string `pulumi:"serviceEndpoint"`
-	// Project summary.
-	Summary map[string]ProjectSummaryResponse `pulumi:"summary"`
-	// Utility storage account id.
-	UtilityStorageAccountId *string `pulumi:"utilityStorageAccountId"`
-}
-
-// Properties of a migrate project.
-type MigrateProjectPropertiesResponseV1Output struct{ *pulumi.OutputState }
-
-func (MigrateProjectPropertiesResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*MigrateProjectPropertiesResponseV1)(nil)).Elem()
-}
-
-func (o MigrateProjectPropertiesResponseV1Output) ToMigrateProjectPropertiesResponseV1Output() MigrateProjectPropertiesResponseV1Output {
-	return o
-}
-
-func (o MigrateProjectPropertiesResponseV1Output) ToMigrateProjectPropertiesResponseV1OutputWithContext(ctx context.Context) MigrateProjectPropertiesResponseV1Output {
-	return o
-}
-
-// Last summary refresh time.
-func (o MigrateProjectPropertiesResponseV1Output) LastSummaryRefreshedTime() pulumi.StringOutput {
-	return o.ApplyT(func(v MigrateProjectPropertiesResponseV1) string { return v.LastSummaryRefreshedTime }).(pulumi.StringOutput)
-}
-
-// Gets the private endpoint connections.
-func (o MigrateProjectPropertiesResponseV1Output) PrivateEndpointConnections() PrivateEndpointConnectionResponseV1ArrayOutput {
-	return o.ApplyT(func(v MigrateProjectPropertiesResponseV1) []PrivateEndpointConnectionResponseV1 {
-		return v.PrivateEndpointConnections
-	}).(PrivateEndpointConnectionResponseV1ArrayOutput)
-}
-
-// Gets or sets the state of public network access.
-func (o MigrateProjectPropertiesResponseV1Output) PublicNetworkAccess() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MigrateProjectPropertiesResponseV1) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
-}
-
-// Refresh summary state.
-func (o MigrateProjectPropertiesResponseV1Output) RefreshSummaryState() pulumi.StringOutput {
-	return o.ApplyT(func(v MigrateProjectPropertiesResponseV1) string { return v.RefreshSummaryState }).(pulumi.StringOutput)
-}
-
-// Register tools inside project.
-func (o MigrateProjectPropertiesResponseV1Output) RegisteredTools() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v MigrateProjectPropertiesResponseV1) []string { return v.RegisteredTools }).(pulumi.StringArrayOutput)
-}
-
-// Service endpoint.
-func (o MigrateProjectPropertiesResponseV1Output) ServiceEndpoint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MigrateProjectPropertiesResponseV1) *string { return v.ServiceEndpoint }).(pulumi.StringPtrOutput)
-}
-
-// Project summary.
-func (o MigrateProjectPropertiesResponseV1Output) Summary() ProjectSummaryResponseMapOutput {
-	return o.ApplyT(func(v MigrateProjectPropertiesResponseV1) map[string]ProjectSummaryResponse { return v.Summary }).(ProjectSummaryResponseMapOutput)
-}
-
-// Utility storage account id.
-func (o MigrateProjectPropertiesResponseV1Output) UtilityStorageAccountId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MigrateProjectPropertiesResponseV1) *string { return v.UtilityStorageAccountId }).(pulumi.StringPtrOutput)
 }
 
 // Gets or sets the tags.
@@ -30603,6 +30619,167 @@ func (o PortMappingResponsePtrOutput) InternalPort() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// REST model used to encapsulate the user visible state of a PrivateEndpoint.
+type PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponse struct {
+	// Gets the tag for optimistic concurrency control.
+	ETag string `pulumi:"eTag"`
+	// Relative URL to get this Sites.
+	Id string `pulumi:"id"`
+	// Gets the name of the resource.
+	Name string `pulumi:"name"`
+	// Gets the properties of the object.
+	Properties PrivateEndpointConnectionPropertiesResponse `pulumi:"properties"`
+	// Metadata pertaining to creation and last modification of the resource.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Gets the resource type.
+	Type string `pulumi:"type"`
+}
+
+// REST model used to encapsulate the user visible state of a PrivateEndpoint.
+type PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponseOutput) ToPrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponseOutput() PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponseOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponseOutput) ToPrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponseOutput {
+	return o
+}
+
+// Gets the tag for optimistic concurrency control.
+func (o PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponseOutput) ETag() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponse) string { return v.ETag }).(pulumi.StringOutput)
+}
+
+// Relative URL to get this Sites.
+func (o PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Gets the name of the resource.
+func (o PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Gets the properties of the object.
+func (o PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponseOutput) Properties() PrivateEndpointConnectionPropertiesResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponse) PrivateEndpointConnectionPropertiesResponse {
+		return v.Properties
+	}).(PrivateEndpointConnectionPropertiesResponseOutput)
+}
+
+// Metadata pertaining to creation and last modification of the resource.
+func (o PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponse) SystemDataResponse {
+		return v.SystemData
+	}).(SystemDataResponseOutput)
+}
+
+// Gets the resource type.
+func (o PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponseArrayOutput) ToPrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponseArrayOutput() PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponseArrayOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponseArrayOutput) ToPrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponseArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponseArrayOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponse {
+		return vs[0].([]PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponse)[vs[1].(int)]
+	}).(PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponseOutput)
+}
+
+// A private endpoint connection for a project.
+type PrivateEndpointConnectionProjectResponse struct {
+	// For optimistic concurrency control.
+	ETag *string `pulumi:"eTag"`
+	// Path reference to this private endpoint endpoint connection. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateEndpointConnections/{privateEndpointConnectionName}
+	Id string `pulumi:"id"`
+	// Name of the private endpoint endpoint connection.
+	Name string `pulumi:"name"`
+	// Properties of the private endpoint endpoint connection.
+	Properties PrivateEndpointConnectionPropertiesResponse `pulumi:"properties"`
+	// Type of the object = [Microsoft.Migrate/assessmentProjects/privateEndpointConnections].
+	Type string `pulumi:"type"`
+}
+
+// A private endpoint connection for a project.
+type PrivateEndpointConnectionProjectResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionProjectResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnectionProjectResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionProjectResponseOutput) ToPrivateEndpointConnectionProjectResponseOutput() PrivateEndpointConnectionProjectResponseOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionProjectResponseOutput) ToPrivateEndpointConnectionProjectResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionProjectResponseOutput {
+	return o
+}
+
+// For optimistic concurrency control.
+func (o PrivateEndpointConnectionProjectResponseOutput) ETag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionProjectResponse) *string { return v.ETag }).(pulumi.StringPtrOutput)
+}
+
+// Path reference to this private endpoint endpoint connection. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateEndpointConnections/{privateEndpointConnectionName}
+func (o PrivateEndpointConnectionProjectResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionProjectResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Name of the private endpoint endpoint connection.
+func (o PrivateEndpointConnectionProjectResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionProjectResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Properties of the private endpoint endpoint connection.
+func (o PrivateEndpointConnectionProjectResponseOutput) Properties() PrivateEndpointConnectionPropertiesResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionProjectResponse) PrivateEndpointConnectionPropertiesResponse {
+		return v.Properties
+	}).(PrivateEndpointConnectionPropertiesResponseOutput)
+}
+
+// Type of the object = [Microsoft.Migrate/assessmentProjects/privateEndpointConnections].
+func (o PrivateEndpointConnectionProjectResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionProjectResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type PrivateEndpointConnectionProjectResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionProjectResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateEndpointConnectionProjectResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionProjectResponseArrayOutput) ToPrivateEndpointConnectionProjectResponseArrayOutput() PrivateEndpointConnectionProjectResponseArrayOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionProjectResponseArrayOutput) ToPrivateEndpointConnectionProjectResponseArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionProjectResponseArrayOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionProjectResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionProjectResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionProjectResponse {
+		return vs[0].([]PrivateEndpointConnectionProjectResponse)[vs[1].(int)]
+	}).(PrivateEndpointConnectionProjectResponseOutput)
+}
+
 // Private endpoint connection properties.
 type PrivateEndpointConnectionProperties struct {
 	// State of the private endpoint connection.
@@ -30797,165 +30974,6 @@ func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) P
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
 		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
 	}).(PrivateEndpointConnectionResponseOutput)
-}
-
-// REST model used to encapsulate the user visible state of a PrivateEndpoint.
-type PrivateEndpointConnectionResponseV1 struct {
-	// Gets the tag for optimistic concurrency control.
-	ETag string `pulumi:"eTag"`
-	// Relative URL to get this Sites.
-	Id string `pulumi:"id"`
-	// Gets the name of the resource.
-	Name string `pulumi:"name"`
-	// Gets the properties of the object.
-	Properties PrivateEndpointConnectionPropertiesResponse `pulumi:"properties"`
-	// Metadata pertaining to creation and last modification of the resource.
-	SystemData SystemDataResponse `pulumi:"systemData"`
-	// Gets the resource type.
-	Type string `pulumi:"type"`
-}
-
-// REST model used to encapsulate the user visible state of a PrivateEndpoint.
-type PrivateEndpointConnectionResponseV1Output struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointConnectionResponseV1)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionResponseV1Output) ToPrivateEndpointConnectionResponseV1Output() PrivateEndpointConnectionResponseV1Output {
-	return o
-}
-
-func (o PrivateEndpointConnectionResponseV1Output) ToPrivateEndpointConnectionResponseV1OutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseV1Output {
-	return o
-}
-
-// Gets the tag for optimistic concurrency control.
-func (o PrivateEndpointConnectionResponseV1Output) ETag() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponseV1) string { return v.ETag }).(pulumi.StringOutput)
-}
-
-// Relative URL to get this Sites.
-func (o PrivateEndpointConnectionResponseV1Output) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponseV1) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Gets the name of the resource.
-func (o PrivateEndpointConnectionResponseV1Output) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponseV1) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Gets the properties of the object.
-func (o PrivateEndpointConnectionResponseV1Output) Properties() PrivateEndpointConnectionPropertiesResponseOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponseV1) PrivateEndpointConnectionPropertiesResponse {
-		return v.Properties
-	}).(PrivateEndpointConnectionPropertiesResponseOutput)
-}
-
-// Metadata pertaining to creation and last modification of the resource.
-func (o PrivateEndpointConnectionResponseV1Output) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponseV1) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// Gets the resource type.
-func (o PrivateEndpointConnectionResponseV1Output) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponseV1) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type PrivateEndpointConnectionResponseV1ArrayOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionResponseV1ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivateEndpointConnectionResponseV1)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionResponseV1ArrayOutput) ToPrivateEndpointConnectionResponseV1ArrayOutput() PrivateEndpointConnectionResponseV1ArrayOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionResponseV1ArrayOutput) ToPrivateEndpointConnectionResponseV1ArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseV1ArrayOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionResponseV1ArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseV1Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponseV1 {
-		return vs[0].([]PrivateEndpointConnectionResponseV1)[vs[1].(int)]
-	}).(PrivateEndpointConnectionResponseV1Output)
-}
-
-// A private endpoint connection for a project.
-type PrivateEndpointConnectionResponseV2 struct {
-	// For optimistic concurrency control.
-	ETag *string `pulumi:"eTag"`
-	// Path reference to this private endpoint endpoint connection. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateEndpointConnections/{privateEndpointConnectionName}
-	Id string `pulumi:"id"`
-	// Name of the private endpoint endpoint connection.
-	Name string `pulumi:"name"`
-	// Properties of the private endpoint endpoint connection.
-	Properties PrivateEndpointConnectionPropertiesResponse `pulumi:"properties"`
-	// Type of the object = [Microsoft.Migrate/assessmentProjects/privateEndpointConnections].
-	Type string `pulumi:"type"`
-}
-
-// A private endpoint connection for a project.
-type PrivateEndpointConnectionResponseV2Output struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionResponseV2Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointConnectionResponseV2)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionResponseV2Output) ToPrivateEndpointConnectionResponseV2Output() PrivateEndpointConnectionResponseV2Output {
-	return o
-}
-
-func (o PrivateEndpointConnectionResponseV2Output) ToPrivateEndpointConnectionResponseV2OutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseV2Output {
-	return o
-}
-
-// For optimistic concurrency control.
-func (o PrivateEndpointConnectionResponseV2Output) ETag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponseV2) *string { return v.ETag }).(pulumi.StringPtrOutput)
-}
-
-// Path reference to this private endpoint endpoint connection. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateEndpointConnections/{privateEndpointConnectionName}
-func (o PrivateEndpointConnectionResponseV2Output) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponseV2) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Name of the private endpoint endpoint connection.
-func (o PrivateEndpointConnectionResponseV2Output) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponseV2) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Properties of the private endpoint endpoint connection.
-func (o PrivateEndpointConnectionResponseV2Output) Properties() PrivateEndpointConnectionPropertiesResponseOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponseV2) PrivateEndpointConnectionPropertiesResponse {
-		return v.Properties
-	}).(PrivateEndpointConnectionPropertiesResponseOutput)
-}
-
-// Type of the object = [Microsoft.Migrate/assessmentProjects/privateEndpointConnections].
-func (o PrivateEndpointConnectionResponseV2Output) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponseV2) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type PrivateEndpointConnectionResponseV2ArrayOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionResponseV2ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivateEndpointConnectionResponseV2)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionResponseV2ArrayOutput) ToPrivateEndpointConnectionResponseV2ArrayOutput() PrivateEndpointConnectionResponseV2ArrayOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionResponseV2ArrayOutput) ToPrivateEndpointConnectionResponseV2ArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseV2ArrayOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionResponseV2ArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseV2Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponseV2 {
-		return vs[0].([]PrivateEndpointConnectionResponseV2)[vs[1].(int)]
-	}).(PrivateEndpointConnectionResponseV2Output)
 }
 
 // The private endpoint resource.
@@ -31546,7 +31564,7 @@ type ProjectPropertiesResponse struct {
 	// Number of machines in the project.
 	NumberOfMachines int `pulumi:"numberOfMachines"`
 	// The list of private endpoint connections to the project.
-	PrivateEndpointConnections []PrivateEndpointConnectionResponseV2 `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections []PrivateEndpointConnectionProjectResponse `pulumi:"privateEndpointConnections"`
 	// Assessment project status.
 	ProjectStatus *string `pulumi:"projectStatus"`
 	// Provisioning state of the project.
@@ -31620,10 +31638,10 @@ func (o ProjectPropertiesResponseOutput) NumberOfMachines() pulumi.IntOutput {
 }
 
 // The list of private endpoint connections to the project.
-func (o ProjectPropertiesResponseOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseV2ArrayOutput {
-	return o.ApplyT(func(v ProjectPropertiesResponse) []PrivateEndpointConnectionResponseV2 {
+func (o ProjectPropertiesResponseOutput) PrivateEndpointConnections() PrivateEndpointConnectionProjectResponseArrayOutput {
+	return o.ApplyT(func(v ProjectPropertiesResponse) []PrivateEndpointConnectionProjectResponse {
 		return v.PrivateEndpointConnections
-	}).(PrivateEndpointConnectionResponseV2ArrayOutput)
+	}).(PrivateEndpointConnectionProjectResponseArrayOutput)
 }
 
 // Assessment project status.
@@ -43165,6 +43183,160 @@ func (o VmUptimePtrOutput) HoursPerDay() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
+// Details on the total up-time for the VM.
+type VmUptimeAssessmentsOperationResponse struct {
+	// Number of days in a month for VM uptime.
+	DaysPerMonth *int `pulumi:"daysPerMonth"`
+	// Number of hours per day for VM uptime.
+	HoursPerDay *int `pulumi:"hoursPerDay"`
+}
+
+// Details on the total up-time for the VM.
+type VmUptimeAssessmentsOperationResponseOutput struct{ *pulumi.OutputState }
+
+func (VmUptimeAssessmentsOperationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmUptimeAssessmentsOperationResponse)(nil)).Elem()
+}
+
+func (o VmUptimeAssessmentsOperationResponseOutput) ToVmUptimeAssessmentsOperationResponseOutput() VmUptimeAssessmentsOperationResponseOutput {
+	return o
+}
+
+func (o VmUptimeAssessmentsOperationResponseOutput) ToVmUptimeAssessmentsOperationResponseOutputWithContext(ctx context.Context) VmUptimeAssessmentsOperationResponseOutput {
+	return o
+}
+
+// Number of days in a month for VM uptime.
+func (o VmUptimeAssessmentsOperationResponseOutput) DaysPerMonth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmUptimeAssessmentsOperationResponse) *int { return v.DaysPerMonth }).(pulumi.IntPtrOutput)
+}
+
+// Number of hours per day for VM uptime.
+func (o VmUptimeAssessmentsOperationResponseOutput) HoursPerDay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmUptimeAssessmentsOperationResponse) *int { return v.HoursPerDay }).(pulumi.IntPtrOutput)
+}
+
+type VmUptimeAssessmentsOperationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VmUptimeAssessmentsOperationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmUptimeAssessmentsOperationResponse)(nil)).Elem()
+}
+
+func (o VmUptimeAssessmentsOperationResponsePtrOutput) ToVmUptimeAssessmentsOperationResponsePtrOutput() VmUptimeAssessmentsOperationResponsePtrOutput {
+	return o
+}
+
+func (o VmUptimeAssessmentsOperationResponsePtrOutput) ToVmUptimeAssessmentsOperationResponsePtrOutputWithContext(ctx context.Context) VmUptimeAssessmentsOperationResponsePtrOutput {
+	return o
+}
+
+func (o VmUptimeAssessmentsOperationResponsePtrOutput) Elem() VmUptimeAssessmentsOperationResponseOutput {
+	return o.ApplyT(func(v *VmUptimeAssessmentsOperationResponse) VmUptimeAssessmentsOperationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VmUptimeAssessmentsOperationResponse
+		return ret
+	}).(VmUptimeAssessmentsOperationResponseOutput)
+}
+
+// Number of days in a month for VM uptime.
+func (o VmUptimeAssessmentsOperationResponsePtrOutput) DaysPerMonth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmUptimeAssessmentsOperationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DaysPerMonth
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of hours per day for VM uptime.
+func (o VmUptimeAssessmentsOperationResponsePtrOutput) HoursPerDay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmUptimeAssessmentsOperationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HoursPerDay
+	}).(pulumi.IntPtrOutput)
+}
+
+// Details on the total up-time for the VM.
+type VmUptimeMachineAssessmentsV2OperationResponse struct {
+	// Number of days in a month for VM uptime.
+	DaysPerMonth *int `pulumi:"daysPerMonth"`
+	// Number of hours per day for VM uptime.
+	HoursPerDay *int `pulumi:"hoursPerDay"`
+}
+
+// Details on the total up-time for the VM.
+type VmUptimeMachineAssessmentsV2OperationResponseOutput struct{ *pulumi.OutputState }
+
+func (VmUptimeMachineAssessmentsV2OperationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmUptimeMachineAssessmentsV2OperationResponse)(nil)).Elem()
+}
+
+func (o VmUptimeMachineAssessmentsV2OperationResponseOutput) ToVmUptimeMachineAssessmentsV2OperationResponseOutput() VmUptimeMachineAssessmentsV2OperationResponseOutput {
+	return o
+}
+
+func (o VmUptimeMachineAssessmentsV2OperationResponseOutput) ToVmUptimeMachineAssessmentsV2OperationResponseOutputWithContext(ctx context.Context) VmUptimeMachineAssessmentsV2OperationResponseOutput {
+	return o
+}
+
+// Number of days in a month for VM uptime.
+func (o VmUptimeMachineAssessmentsV2OperationResponseOutput) DaysPerMonth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmUptimeMachineAssessmentsV2OperationResponse) *int { return v.DaysPerMonth }).(pulumi.IntPtrOutput)
+}
+
+// Number of hours per day for VM uptime.
+func (o VmUptimeMachineAssessmentsV2OperationResponseOutput) HoursPerDay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmUptimeMachineAssessmentsV2OperationResponse) *int { return v.HoursPerDay }).(pulumi.IntPtrOutput)
+}
+
+type VmUptimeMachineAssessmentsV2OperationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (VmUptimeMachineAssessmentsV2OperationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmUptimeMachineAssessmentsV2OperationResponse)(nil)).Elem()
+}
+
+func (o VmUptimeMachineAssessmentsV2OperationResponsePtrOutput) ToVmUptimeMachineAssessmentsV2OperationResponsePtrOutput() VmUptimeMachineAssessmentsV2OperationResponsePtrOutput {
+	return o
+}
+
+func (o VmUptimeMachineAssessmentsV2OperationResponsePtrOutput) ToVmUptimeMachineAssessmentsV2OperationResponsePtrOutputWithContext(ctx context.Context) VmUptimeMachineAssessmentsV2OperationResponsePtrOutput {
+	return o
+}
+
+func (o VmUptimeMachineAssessmentsV2OperationResponsePtrOutput) Elem() VmUptimeMachineAssessmentsV2OperationResponseOutput {
+	return o.ApplyT(func(v *VmUptimeMachineAssessmentsV2OperationResponse) VmUptimeMachineAssessmentsV2OperationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret VmUptimeMachineAssessmentsV2OperationResponse
+		return ret
+	}).(VmUptimeMachineAssessmentsV2OperationResponseOutput)
+}
+
+// Number of days in a month for VM uptime.
+func (o VmUptimeMachineAssessmentsV2OperationResponsePtrOutput) DaysPerMonth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmUptimeMachineAssessmentsV2OperationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DaysPerMonth
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of hours per day for VM uptime.
+func (o VmUptimeMachineAssessmentsV2OperationResponsePtrOutput) HoursPerDay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmUptimeMachineAssessmentsV2OperationResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HoursPerDay
+	}).(pulumi.IntPtrOutput)
+}
+
 type VmUptimeResponse struct {
 	// Number of days in a month for VM uptime.
 	DaysPerMonth *float64 `pulumi:"daysPerMonth"`
@@ -43194,127 +43366,6 @@ func (o VmUptimeResponseOutput) DaysPerMonth() pulumi.Float64PtrOutput {
 // Number of hours per day for VM uptime.
 func (o VmUptimeResponseOutput) HoursPerDay() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v VmUptimeResponse) *float64 { return v.HoursPerDay }).(pulumi.Float64PtrOutput)
-}
-
-type VmUptimeResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (VmUptimeResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VmUptimeResponse)(nil)).Elem()
-}
-
-func (o VmUptimeResponsePtrOutput) ToVmUptimeResponsePtrOutput() VmUptimeResponsePtrOutput {
-	return o
-}
-
-func (o VmUptimeResponsePtrOutput) ToVmUptimeResponsePtrOutputWithContext(ctx context.Context) VmUptimeResponsePtrOutput {
-	return o
-}
-
-func (o VmUptimeResponsePtrOutput) Elem() VmUptimeResponseOutput {
-	return o.ApplyT(func(v *VmUptimeResponse) VmUptimeResponse {
-		if v != nil {
-			return *v
-		}
-		var ret VmUptimeResponse
-		return ret
-	}).(VmUptimeResponseOutput)
-}
-
-// Number of days in a month for VM uptime.
-func (o VmUptimeResponsePtrOutput) DaysPerMonth() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *VmUptimeResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.DaysPerMonth
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Number of hours per day for VM uptime.
-func (o VmUptimeResponsePtrOutput) HoursPerDay() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *VmUptimeResponse) *float64 {
-		if v == nil {
-			return nil
-		}
-		return v.HoursPerDay
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Details on the total up-time for the VM.
-type VmUptimeResponseV1 struct {
-	// Number of days in a month for VM uptime.
-	DaysPerMonth *int `pulumi:"daysPerMonth"`
-	// Number of hours per day for VM uptime.
-	HoursPerDay *int `pulumi:"hoursPerDay"`
-}
-
-// Details on the total up-time for the VM.
-type VmUptimeResponseV1Output struct{ *pulumi.OutputState }
-
-func (VmUptimeResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*VmUptimeResponseV1)(nil)).Elem()
-}
-
-func (o VmUptimeResponseV1Output) ToVmUptimeResponseV1Output() VmUptimeResponseV1Output {
-	return o
-}
-
-func (o VmUptimeResponseV1Output) ToVmUptimeResponseV1OutputWithContext(ctx context.Context) VmUptimeResponseV1Output {
-	return o
-}
-
-// Number of days in a month for VM uptime.
-func (o VmUptimeResponseV1Output) DaysPerMonth() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v VmUptimeResponseV1) *int { return v.DaysPerMonth }).(pulumi.IntPtrOutput)
-}
-
-// Number of hours per day for VM uptime.
-func (o VmUptimeResponseV1Output) HoursPerDay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v VmUptimeResponseV1) *int { return v.HoursPerDay }).(pulumi.IntPtrOutput)
-}
-
-type VmUptimeResponseV1PtrOutput struct{ *pulumi.OutputState }
-
-func (VmUptimeResponseV1PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VmUptimeResponseV1)(nil)).Elem()
-}
-
-func (o VmUptimeResponseV1PtrOutput) ToVmUptimeResponseV1PtrOutput() VmUptimeResponseV1PtrOutput {
-	return o
-}
-
-func (o VmUptimeResponseV1PtrOutput) ToVmUptimeResponseV1PtrOutputWithContext(ctx context.Context) VmUptimeResponseV1PtrOutput {
-	return o
-}
-
-func (o VmUptimeResponseV1PtrOutput) Elem() VmUptimeResponseV1Output {
-	return o.ApplyT(func(v *VmUptimeResponseV1) VmUptimeResponseV1 {
-		if v != nil {
-			return *v
-		}
-		var ret VmUptimeResponseV1
-		return ret
-	}).(VmUptimeResponseV1Output)
-}
-
-// Number of days in a month for VM uptime.
-func (o VmUptimeResponseV1PtrOutput) DaysPerMonth() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *VmUptimeResponseV1) *int {
-		if v == nil {
-			return nil
-		}
-		return v.DaysPerMonth
-	}).(pulumi.IntPtrOutput)
-}
-
-// Number of hours per day for VM uptime.
-func (o VmUptimeResponseV1PtrOutput) HoursPerDay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *VmUptimeResponseV1) *int {
-		if v == nil {
-			return nil
-		}
-		return v.HoursPerDay
-	}).(pulumi.IntPtrOutput)
 }
 
 // Migration Wave Properties class.
@@ -47085,8 +47136,8 @@ func init() {
 	pulumi.RegisterOutputType(MigrateAgentModelResponseSystemDataOutput{})
 	pulumi.RegisterOutputType(MigrateProjectPropertiesOutput{})
 	pulumi.RegisterOutputType(MigrateProjectPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponseOutput{})
 	pulumi.RegisterOutputType(MigrateProjectPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(MigrateProjectPropertiesResponseV1Output{})
 	pulumi.RegisterOutputType(MigrateProjectResponseTagsOutput{})
 	pulumi.RegisterOutputType(MigrateProjectResponseTagsPtrOutput{})
 	pulumi.RegisterOutputType(MigrateProjectTagsOutput{})
@@ -47173,14 +47224,14 @@ func init() {
 	pulumi.RegisterOutputType(PortMappingPtrOutput{})
 	pulumi.RegisterOutputType(PortMappingResponseOutput{})
 	pulumi.RegisterOutputType(PortMappingResponsePtrOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponseOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionMigrateProjectsControllerMigrateProjectResponseArrayOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionProjectResponseOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionProjectResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseV1Output{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseV1ArrayOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseV2Output{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseV2ArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkServiceConnectionStateOutput{})
@@ -47345,10 +47396,11 @@ func init() {
 	pulumi.RegisterOutputType(VirtualizationSoftwareSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(VmUptimeOutput{})
 	pulumi.RegisterOutputType(VmUptimePtrOutput{})
+	pulumi.RegisterOutputType(VmUptimeAssessmentsOperationResponseOutput{})
+	pulumi.RegisterOutputType(VmUptimeAssessmentsOperationResponsePtrOutput{})
+	pulumi.RegisterOutputType(VmUptimeMachineAssessmentsV2OperationResponseOutput{})
+	pulumi.RegisterOutputType(VmUptimeMachineAssessmentsV2OperationResponsePtrOutput{})
 	pulumi.RegisterOutputType(VmUptimeResponseOutput{})
-	pulumi.RegisterOutputType(VmUptimeResponsePtrOutput{})
-	pulumi.RegisterOutputType(VmUptimeResponseV1Output{})
-	pulumi.RegisterOutputType(VmUptimeResponseV1PtrOutput{})
 	pulumi.RegisterOutputType(WavePropertiesOutput{})
 	pulumi.RegisterOutputType(WavePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(WavePropertiesResponseOutput{})

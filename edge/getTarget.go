@@ -40,7 +40,7 @@ type LookupTargetResult struct {
 	// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 	ETag string `pulumi:"eTag"`
 	// The complex type of the extended location.
-	ExtendedLocation *AzureResourceManagerCommonTypesExtendedLocationResponse `pulumi:"extendedLocation"`
+	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
@@ -103,10 +103,8 @@ func (o LookupTargetResultOutput) ETag() pulumi.StringOutput {
 }
 
 // The complex type of the extended location.
-func (o LookupTargetResultOutput) ExtendedLocation() AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput {
-	return o.ApplyT(func(v LookupTargetResult) *AzureResourceManagerCommonTypesExtendedLocationResponse {
-		return v.ExtendedLocation
-	}).(AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput)
+func (o LookupTargetResultOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v LookupTargetResult) *ExtendedLocationResponse { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

@@ -42,7 +42,7 @@ type LookupServerInstanceResult struct {
 	// Configuration data for this server instance.
 	ConfigurationData ConfigurationDataResponse `pulumi:"configurationData"`
 	// Defines the errors related to SAP Instance resource.
-	Errors SAPMigrateErrorResponse `pulumi:"errors"`
+	Errors SAPMigrateErrorServerInstanceResponse `pulumi:"errors"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// This is the Instance SID for ASCS/AP/DB instance.  An SAP system with HANA database for example could have a different SID for database Instance than that of ASCS instance.
@@ -119,8 +119,8 @@ func (o LookupServerInstanceResultOutput) ConfigurationData() ConfigurationDataR
 }
 
 // Defines the errors related to SAP Instance resource.
-func (o LookupServerInstanceResultOutput) Errors() SAPMigrateErrorResponseOutput {
-	return o.ApplyT(func(v LookupServerInstanceResult) SAPMigrateErrorResponse { return v.Errors }).(SAPMigrateErrorResponseOutput)
+func (o LookupServerInstanceResultOutput) Errors() SAPMigrateErrorServerInstanceResponseOutput {
+	return o.ApplyT(func(v LookupServerInstanceResult) SAPMigrateErrorServerInstanceResponse { return v.Errors }).(SAPMigrateErrorServerInstanceResponseOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

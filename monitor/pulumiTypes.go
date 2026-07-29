@@ -4648,83 +4648,6 @@ func (o AzureResourceManagerCommonTypesExtendedLocationPtrOutput) Type() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// The complex type of the extended location.
-type AzureResourceManagerCommonTypesExtendedLocationResponse struct {
-	// The name of the extended location.
-	Name string `pulumi:"name"`
-	// The type of the extended location.
-	Type string `pulumi:"type"`
-}
-
-// The complex type of the extended location.
-type AzureResourceManagerCommonTypesExtendedLocationResponseOutput struct{ *pulumi.OutputState }
-
-func (AzureResourceManagerCommonTypesExtendedLocationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AzureResourceManagerCommonTypesExtendedLocationResponse)(nil)).Elem()
-}
-
-func (o AzureResourceManagerCommonTypesExtendedLocationResponseOutput) ToAzureResourceManagerCommonTypesExtendedLocationResponseOutput() AzureResourceManagerCommonTypesExtendedLocationResponseOutput {
-	return o
-}
-
-func (o AzureResourceManagerCommonTypesExtendedLocationResponseOutput) ToAzureResourceManagerCommonTypesExtendedLocationResponseOutputWithContext(ctx context.Context) AzureResourceManagerCommonTypesExtendedLocationResponseOutput {
-	return o
-}
-
-// The name of the extended location.
-func (o AzureResourceManagerCommonTypesExtendedLocationResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v AzureResourceManagerCommonTypesExtendedLocationResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The type of the extended location.
-func (o AzureResourceManagerCommonTypesExtendedLocationResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v AzureResourceManagerCommonTypesExtendedLocationResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AzureResourceManagerCommonTypesExtendedLocationResponse)(nil)).Elem()
-}
-
-func (o AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput) ToAzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput() AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput {
-	return o
-}
-
-func (o AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput) ToAzureResourceManagerCommonTypesExtendedLocationResponsePtrOutputWithContext(ctx context.Context) AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput {
-	return o
-}
-
-func (o AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput) Elem() AzureResourceManagerCommonTypesExtendedLocationResponseOutput {
-	return o.ApplyT(func(v *AzureResourceManagerCommonTypesExtendedLocationResponse) AzureResourceManagerCommonTypesExtendedLocationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AzureResourceManagerCommonTypesExtendedLocationResponse
-		return ret
-	}).(AzureResourceManagerCommonTypesExtendedLocationResponseOutput)
-}
-
-// The name of the extended location.
-func (o AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AzureResourceManagerCommonTypesExtendedLocationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The type of the extended location.
-func (o AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AzureResourceManagerCommonTypesExtendedLocationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
 // A grouping of signal assignments for an Azure resource
 type AzureResourceSignalGroup struct {
 	// Reference to the name of the authentication setting which is used for querying the data source
@@ -7001,7 +6924,7 @@ func (o ConditionResponseArrayOutput) Index(i pulumi.IntInput) ConditionResponse
 }
 
 // Represents a filtering condition.
-type ConditionResponseV1 struct {
+type ConditionSliResponse struct {
 	// Dimension name used in filtering.
 	DimensionName *string `pulumi:"dimensionName"`
 	// Operator used in the filtering condition.
@@ -7015,63 +6938,63 @@ type ConditionResponseV1 struct {
 }
 
 // Represents a filtering condition.
-type ConditionResponseV1Output struct{ *pulumi.OutputState }
+type ConditionSliResponseOutput struct{ *pulumi.OutputState }
 
-func (ConditionResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConditionResponseV1)(nil)).Elem()
+func (ConditionSliResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionSliResponse)(nil)).Elem()
 }
 
-func (o ConditionResponseV1Output) ToConditionResponseV1Output() ConditionResponseV1Output {
+func (o ConditionSliResponseOutput) ToConditionSliResponseOutput() ConditionSliResponseOutput {
 	return o
 }
 
-func (o ConditionResponseV1Output) ToConditionResponseV1OutputWithContext(ctx context.Context) ConditionResponseV1Output {
+func (o ConditionSliResponseOutput) ToConditionSliResponseOutputWithContext(ctx context.Context) ConditionSliResponseOutput {
 	return o
 }
 
 // Dimension name used in filtering.
-func (o ConditionResponseV1Output) DimensionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConditionResponseV1) *string { return v.DimensionName }).(pulumi.StringPtrOutput)
+func (o ConditionSliResponseOutput) DimensionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConditionSliResponse) *string { return v.DimensionName }).(pulumi.StringPtrOutput)
 }
 
 // Operator used in the filtering condition.
-func (o ConditionResponseV1Output) Operator() pulumi.StringOutput {
-	return o.ApplyT(func(v ConditionResponseV1) string { return v.Operator }).(pulumi.StringOutput)
+func (o ConditionSliResponseOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v ConditionSliResponse) string { return v.Operator }).(pulumi.StringOutput)
 }
 
 // Defines the sampling type.
-func (o ConditionResponseV1Output) SamplingType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConditionResponseV1) *string { return v.SamplingType }).(pulumi.StringPtrOutput)
+func (o ConditionSliResponseOutput) SamplingType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConditionSliResponse) *string { return v.SamplingType }).(pulumi.StringPtrOutput)
 }
 
 // Scalar function applied for filtering.
-func (o ConditionResponseV1Output) ScalarFunction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConditionResponseV1) *string { return v.ScalarFunction }).(pulumi.StringPtrOutput)
+func (o ConditionSliResponseOutput) ScalarFunction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConditionSliResponse) *string { return v.ScalarFunction }).(pulumi.StringPtrOutput)
 }
 
 // Value used in filtering. For most operators (eq, ne, lt, lte, gt, gte, startswith, notstartswith, contains, notcontains) this is a single value (for example "GetContosoUsers"). For the `in` and `notin` operators, multiple values must be joined by the delimiter `^^` (for example "east^^west^^north").
-func (o ConditionResponseV1Output) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v ConditionResponseV1) string { return v.Value }).(pulumi.StringOutput)
+func (o ConditionSliResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ConditionSliResponse) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type ConditionResponseV1ArrayOutput struct{ *pulumi.OutputState }
+type ConditionSliResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (ConditionResponseV1ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConditionResponseV1)(nil)).Elem()
+func (ConditionSliResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConditionSliResponse)(nil)).Elem()
 }
 
-func (o ConditionResponseV1ArrayOutput) ToConditionResponseV1ArrayOutput() ConditionResponseV1ArrayOutput {
+func (o ConditionSliResponseArrayOutput) ToConditionSliResponseArrayOutput() ConditionSliResponseArrayOutput {
 	return o
 }
 
-func (o ConditionResponseV1ArrayOutput) ToConditionResponseV1ArrayOutputWithContext(ctx context.Context) ConditionResponseV1ArrayOutput {
+func (o ConditionSliResponseArrayOutput) ToConditionSliResponseArrayOutputWithContext(ctx context.Context) ConditionSliResponseArrayOutput {
 	return o
 }
 
-func (o ConditionResponseV1ArrayOutput) Index(i pulumi.IntInput) ConditionResponseV1Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConditionResponseV1 {
-		return vs[0].([]ConditionResponseV1)[vs[1].(int)]
-	}).(ConditionResponseV1Output)
+func (o ConditionSliResponseArrayOutput) Index(i pulumi.IntInput) ConditionSliResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConditionSliResponse {
+		return vs[0].([]ConditionSliResponse)[vs[1].(int)]
+	}).(ConditionSliResponseOutput)
 }
 
 // Represents a filtering condition.
@@ -14162,6 +14085,83 @@ func (o ExporterResponseArrayOutput) Index(i pulumi.IntInput) ExporterResponseOu
 	}).(ExporterResponseOutput)
 }
 
+// The complex type of the extended location.
+type ExtendedLocationResponse struct {
+	// The name of the extended location.
+	Name string `pulumi:"name"`
+	// The type of the extended location.
+	Type string `pulumi:"type"`
+}
+
+// The complex type of the extended location.
+type ExtendedLocationResponseOutput struct{ *pulumi.OutputState }
+
+func (ExtendedLocationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtendedLocationResponse)(nil)).Elem()
+}
+
+func (o ExtendedLocationResponseOutput) ToExtendedLocationResponseOutput() ExtendedLocationResponseOutput {
+	return o
+}
+
+func (o ExtendedLocationResponseOutput) ToExtendedLocationResponseOutputWithContext(ctx context.Context) ExtendedLocationResponseOutput {
+	return o
+}
+
+// The name of the extended location.
+func (o ExtendedLocationResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ExtendedLocationResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The type of the extended location.
+func (o ExtendedLocationResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ExtendedLocationResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ExtendedLocationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ExtendedLocationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExtendedLocationResponse)(nil)).Elem()
+}
+
+func (o ExtendedLocationResponsePtrOutput) ToExtendedLocationResponsePtrOutput() ExtendedLocationResponsePtrOutput {
+	return o
+}
+
+func (o ExtendedLocationResponsePtrOutput) ToExtendedLocationResponsePtrOutputWithContext(ctx context.Context) ExtendedLocationResponsePtrOutput {
+	return o
+}
+
+func (o ExtendedLocationResponsePtrOutput) Elem() ExtendedLocationResponseOutput {
+	return o.ApplyT(func(v *ExtendedLocationResponse) ExtendedLocationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ExtendedLocationResponse
+		return ret
+	}).(ExtendedLocationResponseOutput)
+}
+
+// The name of the extended location.
+func (o ExtendedLocationResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtendedLocationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the extended location.
+func (o ExtendedLocationResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtendedLocationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // Definition of which data will be collected from a separate VM extension that integrates with the Azure Monitor Agent.
 // Collected from either Windows and Linux machines, depending on which extension is defined.
 type ExtensionDataSource struct {
@@ -14801,6 +14801,117 @@ func (o IconDefinitionResponsePtrOutput) IconName() pulumi.StringPtrOutput {
 		}
 		return &v.IconName
 	}).(pulumi.StringPtrOutput)
+}
+
+// Identity for the resource.
+type IdentityResponse struct {
+	// The principal ID of resource identity.
+	PrincipalId string `pulumi:"principalId"`
+	// The tenant ID of resource.
+	TenantId string `pulumi:"tenantId"`
+	// Type of managed service identity.
+	Type string `pulumi:"type"`
+	// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+	UserAssignedIdentities map[string]UserIdentityPropertiesResponse `pulumi:"userAssignedIdentities"`
+}
+
+// Identity for the resource.
+type IdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (IdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityResponse)(nil)).Elem()
+}
+
+func (o IdentityResponseOutput) ToIdentityResponseOutput() IdentityResponseOutput {
+	return o
+}
+
+func (o IdentityResponseOutput) ToIdentityResponseOutputWithContext(ctx context.Context) IdentityResponseOutput {
+	return o
+}
+
+// The principal ID of resource identity.
+func (o IdentityResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The tenant ID of resource.
+func (o IdentityResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// Type of managed service identity.
+func (o IdentityResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+func (o IdentityResponseOutput) UserAssignedIdentities() UserIdentityPropertiesResponseMapOutput {
+	return o.ApplyT(func(v IdentityResponse) map[string]UserIdentityPropertiesResponse { return v.UserAssignedIdentities }).(UserIdentityPropertiesResponseMapOutput)
+}
+
+type IdentityResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityResponse)(nil)).Elem()
+}
+
+func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutput() IdentityResponsePtrOutput {
+	return o
+}
+
+func (o IdentityResponsePtrOutput) ToIdentityResponsePtrOutputWithContext(ctx context.Context) IdentityResponsePtrOutput {
+	return o
+}
+
+func (o IdentityResponsePtrOutput) Elem() IdentityResponseOutput {
+	return o.ApplyT(func(v *IdentityResponse) IdentityResponse {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityResponse
+		return ret
+	}).(IdentityResponseOutput)
+}
+
+// The principal ID of resource identity.
+func (o IdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tenant ID of resource.
+func (o IdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of managed service identity.
+func (o IdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+func (o IdentityResponsePtrOutput) UserAssignedIdentities() UserIdentityPropertiesResponseMapOutput {
+	return o.ApplyT(func(v *IdentityResponse) map[string]UserIdentityPropertiesResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(UserIdentityPropertiesResponseMapOutput)
 }
 
 // Enables IIS logs to be collected by this data collection rule.
@@ -20848,172 +20959,6 @@ func (o MicrosoftCommonIdentityPtrOutput) UserAssignedIdentities() pulumi.String
 	}).(pulumi.StringArrayOutput)
 }
 
-// Identity for the resource.
-type MicrosoftCommonIdentityResponse struct {
-	// The principal ID of resource identity.
-	PrincipalId string `pulumi:"principalId"`
-	// The tenant ID of resource.
-	TenantId string `pulumi:"tenantId"`
-	// Type of managed service identity.
-	Type string `pulumi:"type"`
-	// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-	UserAssignedIdentities map[string]MicrosoftCommonUserIdentityPropertiesResponse `pulumi:"userAssignedIdentities"`
-}
-
-// Identity for the resource.
-type MicrosoftCommonIdentityResponseOutput struct{ *pulumi.OutputState }
-
-func (MicrosoftCommonIdentityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MicrosoftCommonIdentityResponse)(nil)).Elem()
-}
-
-func (o MicrosoftCommonIdentityResponseOutput) ToMicrosoftCommonIdentityResponseOutput() MicrosoftCommonIdentityResponseOutput {
-	return o
-}
-
-func (o MicrosoftCommonIdentityResponseOutput) ToMicrosoftCommonIdentityResponseOutputWithContext(ctx context.Context) MicrosoftCommonIdentityResponseOutput {
-	return o
-}
-
-// The principal ID of resource identity.
-func (o MicrosoftCommonIdentityResponseOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v MicrosoftCommonIdentityResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
-}
-
-// The tenant ID of resource.
-func (o MicrosoftCommonIdentityResponseOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v MicrosoftCommonIdentityResponse) string { return v.TenantId }).(pulumi.StringOutput)
-}
-
-// Type of managed service identity.
-func (o MicrosoftCommonIdentityResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v MicrosoftCommonIdentityResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o MicrosoftCommonIdentityResponseOutput) UserAssignedIdentities() MicrosoftCommonUserIdentityPropertiesResponseMapOutput {
-	return o.ApplyT(func(v MicrosoftCommonIdentityResponse) map[string]MicrosoftCommonUserIdentityPropertiesResponse {
-		return v.UserAssignedIdentities
-	}).(MicrosoftCommonUserIdentityPropertiesResponseMapOutput)
-}
-
-type MicrosoftCommonIdentityResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (MicrosoftCommonIdentityResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**MicrosoftCommonIdentityResponse)(nil)).Elem()
-}
-
-func (o MicrosoftCommonIdentityResponsePtrOutput) ToMicrosoftCommonIdentityResponsePtrOutput() MicrosoftCommonIdentityResponsePtrOutput {
-	return o
-}
-
-func (o MicrosoftCommonIdentityResponsePtrOutput) ToMicrosoftCommonIdentityResponsePtrOutputWithContext(ctx context.Context) MicrosoftCommonIdentityResponsePtrOutput {
-	return o
-}
-
-func (o MicrosoftCommonIdentityResponsePtrOutput) Elem() MicrosoftCommonIdentityResponseOutput {
-	return o.ApplyT(func(v *MicrosoftCommonIdentityResponse) MicrosoftCommonIdentityResponse {
-		if v != nil {
-			return *v
-		}
-		var ret MicrosoftCommonIdentityResponse
-		return ret
-	}).(MicrosoftCommonIdentityResponseOutput)
-}
-
-// The principal ID of resource identity.
-func (o MicrosoftCommonIdentityResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MicrosoftCommonIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrincipalId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The tenant ID of resource.
-func (o MicrosoftCommonIdentityResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MicrosoftCommonIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TenantId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type of managed service identity.
-func (o MicrosoftCommonIdentityResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MicrosoftCommonIdentityResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-func (o MicrosoftCommonIdentityResponsePtrOutput) UserAssignedIdentities() MicrosoftCommonUserIdentityPropertiesResponseMapOutput {
-	return o.ApplyT(func(v *MicrosoftCommonIdentityResponse) map[string]MicrosoftCommonUserIdentityPropertiesResponse {
-		if v == nil {
-			return nil
-		}
-		return v.UserAssignedIdentities
-	}).(MicrosoftCommonUserIdentityPropertiesResponseMapOutput)
-}
-
-// Properties of the user assigned identity.
-type MicrosoftCommonUserIdentityPropertiesResponse struct {
-	// The client ID of resource identity.
-	ClientId string `pulumi:"clientId"`
-	// The principal ID of resource identity.
-	PrincipalId string `pulumi:"principalId"`
-}
-
-// Properties of the user assigned identity.
-type MicrosoftCommonUserIdentityPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (MicrosoftCommonUserIdentityPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MicrosoftCommonUserIdentityPropertiesResponse)(nil)).Elem()
-}
-
-func (o MicrosoftCommonUserIdentityPropertiesResponseOutput) ToMicrosoftCommonUserIdentityPropertiesResponseOutput() MicrosoftCommonUserIdentityPropertiesResponseOutput {
-	return o
-}
-
-func (o MicrosoftCommonUserIdentityPropertiesResponseOutput) ToMicrosoftCommonUserIdentityPropertiesResponseOutputWithContext(ctx context.Context) MicrosoftCommonUserIdentityPropertiesResponseOutput {
-	return o
-}
-
-// The client ID of resource identity.
-func (o MicrosoftCommonUserIdentityPropertiesResponseOutput) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v MicrosoftCommonUserIdentityPropertiesResponse) string { return v.ClientId }).(pulumi.StringOutput)
-}
-
-// The principal ID of resource identity.
-func (o MicrosoftCommonUserIdentityPropertiesResponseOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v MicrosoftCommonUserIdentityPropertiesResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
-}
-
-type MicrosoftCommonUserIdentityPropertiesResponseMapOutput struct{ *pulumi.OutputState }
-
-func (MicrosoftCommonUserIdentityPropertiesResponseMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]MicrosoftCommonUserIdentityPropertiesResponse)(nil)).Elem()
-}
-
-func (o MicrosoftCommonUserIdentityPropertiesResponseMapOutput) ToMicrosoftCommonUserIdentityPropertiesResponseMapOutput() MicrosoftCommonUserIdentityPropertiesResponseMapOutput {
-	return o
-}
-
-func (o MicrosoftCommonUserIdentityPropertiesResponseMapOutput) ToMicrosoftCommonUserIdentityPropertiesResponseMapOutputWithContext(ctx context.Context) MicrosoftCommonUserIdentityPropertiesResponseMapOutput {
-	return o
-}
-
-func (o MicrosoftCommonUserIdentityPropertiesResponseMapOutput) MapIndex(k pulumi.StringInput) MicrosoftCommonUserIdentityPropertiesResponseOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MicrosoftCommonUserIdentityPropertiesResponse {
-		return vs[0].(map[string]MicrosoftCommonUserIdentityPropertiesResponse)[vs[1].(string)]
-	}).(MicrosoftCommonUserIdentityPropertiesResponseOutput)
-}
-
 // Settings for automatically discovering entities for the health model.
 type ModelDiscoverySettings struct {
 	// Whether to add all recommended signals to the discovered entities.
@@ -23402,6 +23347,98 @@ func (o PredictiveAutoscalePolicyResponsePtrOutput) ScaleMode() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// The Private Endpoint Connection resource.
+type PrivateEndpointConnectionPrivateLinkScopeResponse struct {
+	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	Id string `pulumi:"id"`
+	// The name of the resource
+	Name string `pulumi:"name"`
+	// The resource of private end point.
+	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
+	// A collection of information about the state of the connection between service consumer and provider.
+	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
+	// The provisioning state of the private endpoint connection resource.
+	ProvisioningState string `pulumi:"provisioningState"`
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+	Type string `pulumi:"type"`
+}
+
+// The Private Endpoint Connection resource.
+type PrivateEndpointConnectionPrivateLinkScopeResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionPrivateLinkScopeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateEndpointConnectionPrivateLinkScopeResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionPrivateLinkScopeResponseOutput) ToPrivateEndpointConnectionPrivateLinkScopeResponseOutput() PrivateEndpointConnectionPrivateLinkScopeResponseOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionPrivateLinkScopeResponseOutput) ToPrivateEndpointConnectionPrivateLinkScopeResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionPrivateLinkScopeResponseOutput {
+	return o
+}
+
+// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+func (o PrivateEndpointConnectionPrivateLinkScopeResponseOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionPrivateLinkScopeResponse) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the resource
+func (o PrivateEndpointConnectionPrivateLinkScopeResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionPrivateLinkScopeResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The resource of private end point.
+func (o PrivateEndpointConnectionPrivateLinkScopeResponseOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionPrivateLinkScopeResponse) *PrivateEndpointResponse {
+		return v.PrivateEndpoint
+	}).(PrivateEndpointResponsePtrOutput)
+}
+
+// A collection of information about the state of the connection between service consumer and provider.
+func (o PrivateEndpointConnectionPrivateLinkScopeResponseOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionPrivateLinkScopeResponse) PrivateLinkServiceConnectionStateResponse {
+		return v.PrivateLinkServiceConnectionState
+	}).(PrivateLinkServiceConnectionStateResponseOutput)
+}
+
+// The provisioning state of the private endpoint connection resource.
+func (o PrivateEndpointConnectionPrivateLinkScopeResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionPrivateLinkScopeResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
+}
+
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o PrivateEndpointConnectionPrivateLinkScopeResponseOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionPrivateLinkScopeResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+func (o PrivateEndpointConnectionPrivateLinkScopeResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateEndpointConnectionPrivateLinkScopeResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type PrivateEndpointConnectionPrivateLinkScopeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PrivateEndpointConnectionPrivateLinkScopeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateEndpointConnectionPrivateLinkScopeResponse)(nil)).Elem()
+}
+
+func (o PrivateEndpointConnectionPrivateLinkScopeResponseArrayOutput) ToPrivateEndpointConnectionPrivateLinkScopeResponseArrayOutput() PrivateEndpointConnectionPrivateLinkScopeResponseArrayOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionPrivateLinkScopeResponseArrayOutput) ToPrivateEndpointConnectionPrivateLinkScopeResponseArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionPrivateLinkScopeResponseArrayOutput {
+	return o
+}
+
+func (o PrivateEndpointConnectionPrivateLinkScopeResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionPrivateLinkScopeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionPrivateLinkScopeResponse {
+		return vs[0].([]PrivateEndpointConnectionPrivateLinkScopeResponse)[vs[1].(int)]
+	}).(PrivateEndpointConnectionPrivateLinkScopeResponseOutput)
+}
+
 // The private endpoint connection resource.
 type PrivateEndpointConnectionResponse struct {
 	// The group ids for the private endpoint resource.
@@ -23497,96 +23534,6 @@ func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) P
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponse {
 		return vs[0].([]PrivateEndpointConnectionResponse)[vs[1].(int)]
 	}).(PrivateEndpointConnectionResponseOutput)
-}
-
-// The Private Endpoint Connection resource.
-type PrivateEndpointConnectionResponseV1 struct {
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-	Id string `pulumi:"id"`
-	// The name of the resource
-	Name string `pulumi:"name"`
-	// The resource of private end point.
-	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
-	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
-	// The provisioning state of the private endpoint connection resource.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-	Type string `pulumi:"type"`
-}
-
-// The Private Endpoint Connection resource.
-type PrivateEndpointConnectionResponseV1Output struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointConnectionResponseV1)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionResponseV1Output) ToPrivateEndpointConnectionResponseV1Output() PrivateEndpointConnectionResponseV1Output {
-	return o
-}
-
-func (o PrivateEndpointConnectionResponseV1Output) ToPrivateEndpointConnectionResponseV1OutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseV1Output {
-	return o
-}
-
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o PrivateEndpointConnectionResponseV1Output) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponseV1) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The name of the resource
-func (o PrivateEndpointConnectionResponseV1Output) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponseV1) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The resource of private end point.
-func (o PrivateEndpointConnectionResponseV1Output) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponseV1) *PrivateEndpointResponse { return v.PrivateEndpoint }).(PrivateEndpointResponsePtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-func (o PrivateEndpointConnectionResponseV1Output) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponseOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponseV1) PrivateLinkServiceConnectionStateResponse {
-		return v.PrivateLinkServiceConnectionState
-	}).(PrivateLinkServiceConnectionStateResponseOutput)
-}
-
-// The provisioning state of the private endpoint connection resource.
-func (o PrivateEndpointConnectionResponseV1Output) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponseV1) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o PrivateEndpointConnectionResponseV1Output) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponseV1) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o PrivateEndpointConnectionResponseV1Output) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionResponseV1) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type PrivateEndpointConnectionResponseV1ArrayOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionResponseV1ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivateEndpointConnectionResponseV1)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionResponseV1ArrayOutput) ToPrivateEndpointConnectionResponseV1ArrayOutput() PrivateEndpointConnectionResponseV1ArrayOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionResponseV1ArrayOutput) ToPrivateEndpointConnectionResponseV1ArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionResponseV1ArrayOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionResponseV1ArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionResponseV1Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionResponseV1 {
-		return vs[0].([]PrivateEndpointConnectionResponseV1)[vs[1].(int)]
-	}).(PrivateEndpointConnectionResponseV1Output)
 }
 
 // The Private Endpoint resource.
@@ -29864,7 +29811,7 @@ func (o SignalSourceArrayOutput) Index(i pulumi.IntInput) SignalSourceOutput {
 // Represents a signal source used in SLIs.
 type SignalSourceResponse struct {
 	// Filters applied to modify signal values.
-	Filters []ConditionResponseV1 `pulumi:"filters"`
+	Filters []ConditionSliResponse `pulumi:"filters"`
 	// Name of the metric.
 	MetricName string `pulumi:"metricName"`
 	// Namespace of the metric.
@@ -29897,8 +29844,8 @@ func (o SignalSourceResponseOutput) ToSignalSourceResponseOutputWithContext(ctx 
 }
 
 // Filters applied to modify signal values.
-func (o SignalSourceResponseOutput) Filters() ConditionResponseV1ArrayOutput {
-	return o.ApplyT(func(v SignalSourceResponse) []ConditionResponseV1 { return v.Filters }).(ConditionResponseV1ArrayOutput)
+func (o SignalSourceResponseOutput) Filters() ConditionSliResponseArrayOutput {
+	return o.ApplyT(func(v SignalSourceResponse) []ConditionSliResponse { return v.Filters }).(ConditionSliResponseArrayOutput)
 }
 
 // Name of the metric.
@@ -33281,6 +33228,59 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 	}).(UserAssignedIdentityResponseOutput)
 }
 
+// Properties of the user assigned identity.
+type UserIdentityPropertiesResponse struct {
+	// The client ID of resource identity.
+	ClientId string `pulumi:"clientId"`
+	// The principal ID of resource identity.
+	PrincipalId string `pulumi:"principalId"`
+}
+
+// Properties of the user assigned identity.
+type UserIdentityPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (UserIdentityPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserIdentityPropertiesResponse)(nil)).Elem()
+}
+
+func (o UserIdentityPropertiesResponseOutput) ToUserIdentityPropertiesResponseOutput() UserIdentityPropertiesResponseOutput {
+	return o
+}
+
+func (o UserIdentityPropertiesResponseOutput) ToUserIdentityPropertiesResponseOutputWithContext(ctx context.Context) UserIdentityPropertiesResponseOutput {
+	return o
+}
+
+// The client ID of resource identity.
+func (o UserIdentityPropertiesResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserIdentityPropertiesResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The principal ID of resource identity.
+func (o UserIdentityPropertiesResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserIdentityPropertiesResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+type UserIdentityPropertiesResponseMapOutput struct{ *pulumi.OutputState }
+
+func (UserIdentityPropertiesResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserIdentityPropertiesResponse)(nil)).Elem()
+}
+
+func (o UserIdentityPropertiesResponseMapOutput) ToUserIdentityPropertiesResponseMapOutput() UserIdentityPropertiesResponseMapOutput {
+	return o
+}
+
+func (o UserIdentityPropertiesResponseMapOutput) ToUserIdentityPropertiesResponseMapOutputWithContext(ctx context.Context) UserIdentityPropertiesResponseMapOutput {
+	return o
+}
+
+func (o UserIdentityPropertiesResponseMapOutput) MapIndex(k pulumi.StringInput) UserIdentityPropertiesResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserIdentityPropertiesResponse {
+		return vs[0].(map[string]UserIdentityPropertiesResponse)[vs[1].(string)]
+	}).(UserIdentityPropertiesResponseOutput)
+}
+
 // A voice receiver.
 type VoiceReceiver struct {
 	// The country code of the voice receiver.
@@ -33928,7 +33928,7 @@ func (o WebhookReceiverResponseArrayOutput) Index(i pulumi.IntInput) WebhookRece
 }
 
 // A webhook receiver.
-type WebhookReceiverResponseV1 struct {
+type WebhookReceiverTenantActionGroupResponse struct {
 	// Indicates the identifier uri for aad auth.
 	IdentifierUri *string `pulumi:"identifierUri"`
 	// The name of the webhook receiver. Names must be unique across all receivers within a tenant action group.
@@ -33945,8 +33945,8 @@ type WebhookReceiverResponseV1 struct {
 	UseCommonAlertSchema *bool `pulumi:"useCommonAlertSchema"`
 }
 
-// Defaults sets the appropriate defaults for WebhookReceiverResponseV1
-func (val *WebhookReceiverResponseV1) Defaults() *WebhookReceiverResponseV1 {
+// Defaults sets the appropriate defaults for WebhookReceiverTenantActionGroupResponse
+func (val *WebhookReceiverTenantActionGroupResponse) Defaults() *WebhookReceiverTenantActionGroupResponse {
 	if val == nil {
 		return nil
 	}
@@ -33963,73 +33963,73 @@ func (val *WebhookReceiverResponseV1) Defaults() *WebhookReceiverResponseV1 {
 }
 
 // A webhook receiver.
-type WebhookReceiverResponseV1Output struct{ *pulumi.OutputState }
+type WebhookReceiverTenantActionGroupResponseOutput struct{ *pulumi.OutputState }
 
-func (WebhookReceiverResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebhookReceiverResponseV1)(nil)).Elem()
+func (WebhookReceiverTenantActionGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookReceiverTenantActionGroupResponse)(nil)).Elem()
 }
 
-func (o WebhookReceiverResponseV1Output) ToWebhookReceiverResponseV1Output() WebhookReceiverResponseV1Output {
+func (o WebhookReceiverTenantActionGroupResponseOutput) ToWebhookReceiverTenantActionGroupResponseOutput() WebhookReceiverTenantActionGroupResponseOutput {
 	return o
 }
 
-func (o WebhookReceiverResponseV1Output) ToWebhookReceiverResponseV1OutputWithContext(ctx context.Context) WebhookReceiverResponseV1Output {
+func (o WebhookReceiverTenantActionGroupResponseOutput) ToWebhookReceiverTenantActionGroupResponseOutputWithContext(ctx context.Context) WebhookReceiverTenantActionGroupResponseOutput {
 	return o
 }
 
 // Indicates the identifier uri for aad auth.
-func (o WebhookReceiverResponseV1Output) IdentifierUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WebhookReceiverResponseV1) *string { return v.IdentifierUri }).(pulumi.StringPtrOutput)
+func (o WebhookReceiverTenantActionGroupResponseOutput) IdentifierUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookReceiverTenantActionGroupResponse) *string { return v.IdentifierUri }).(pulumi.StringPtrOutput)
 }
 
 // The name of the webhook receiver. Names must be unique across all receivers within a tenant action group.
-func (o WebhookReceiverResponseV1Output) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v WebhookReceiverResponseV1) string { return v.Name }).(pulumi.StringOutput)
+func (o WebhookReceiverTenantActionGroupResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WebhookReceiverTenantActionGroupResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Indicates the webhook app object Id for aad auth.
-func (o WebhookReceiverResponseV1Output) ObjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WebhookReceiverResponseV1) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
+func (o WebhookReceiverTenantActionGroupResponseOutput) ObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookReceiverTenantActionGroupResponse) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
 }
 
 // The URI where webhooks should be sent.
-func (o WebhookReceiverResponseV1Output) ServiceUri() pulumi.StringOutput {
-	return o.ApplyT(func(v WebhookReceiverResponseV1) string { return v.ServiceUri }).(pulumi.StringOutput)
+func (o WebhookReceiverTenantActionGroupResponseOutput) ServiceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v WebhookReceiverTenantActionGroupResponse) string { return v.ServiceUri }).(pulumi.StringOutput)
 }
 
 // Indicates the tenant id for aad auth.
-func (o WebhookReceiverResponseV1Output) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WebhookReceiverResponseV1) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+func (o WebhookReceiverTenantActionGroupResponseOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebhookReceiverTenantActionGroupResponse) *string { return v.TenantId }).(pulumi.StringPtrOutput)
 }
 
 // Indicates whether or not use AAD authentication.
-func (o WebhookReceiverResponseV1Output) UseAadAuth() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v WebhookReceiverResponseV1) *bool { return v.UseAadAuth }).(pulumi.BoolPtrOutput)
+func (o WebhookReceiverTenantActionGroupResponseOutput) UseAadAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WebhookReceiverTenantActionGroupResponse) *bool { return v.UseAadAuth }).(pulumi.BoolPtrOutput)
 }
 
 // Indicates whether to use common alert schema.
-func (o WebhookReceiverResponseV1Output) UseCommonAlertSchema() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v WebhookReceiverResponseV1) *bool { return v.UseCommonAlertSchema }).(pulumi.BoolPtrOutput)
+func (o WebhookReceiverTenantActionGroupResponseOutput) UseCommonAlertSchema() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WebhookReceiverTenantActionGroupResponse) *bool { return v.UseCommonAlertSchema }).(pulumi.BoolPtrOutput)
 }
 
-type WebhookReceiverResponseV1ArrayOutput struct{ *pulumi.OutputState }
+type WebhookReceiverTenantActionGroupResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (WebhookReceiverResponseV1ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]WebhookReceiverResponseV1)(nil)).Elem()
+func (WebhookReceiverTenantActionGroupResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WebhookReceiverTenantActionGroupResponse)(nil)).Elem()
 }
 
-func (o WebhookReceiverResponseV1ArrayOutput) ToWebhookReceiverResponseV1ArrayOutput() WebhookReceiverResponseV1ArrayOutput {
+func (o WebhookReceiverTenantActionGroupResponseArrayOutput) ToWebhookReceiverTenantActionGroupResponseArrayOutput() WebhookReceiverTenantActionGroupResponseArrayOutput {
 	return o
 }
 
-func (o WebhookReceiverResponseV1ArrayOutput) ToWebhookReceiverResponseV1ArrayOutputWithContext(ctx context.Context) WebhookReceiverResponseV1ArrayOutput {
+func (o WebhookReceiverTenantActionGroupResponseArrayOutput) ToWebhookReceiverTenantActionGroupResponseArrayOutputWithContext(ctx context.Context) WebhookReceiverTenantActionGroupResponseArrayOutput {
 	return o
 }
 
-func (o WebhookReceiverResponseV1ArrayOutput) Index(i pulumi.IntInput) WebhookReceiverResponseV1Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WebhookReceiverResponseV1 {
-		return vs[0].([]WebhookReceiverResponseV1)[vs[1].(int)]
-	}).(WebhookReceiverResponseV1Output)
+func (o WebhookReceiverTenantActionGroupResponseArrayOutput) Index(i pulumi.IntInput) WebhookReceiverTenantActionGroupResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WebhookReceiverTenantActionGroupResponse {
+		return vs[0].([]WebhookReceiverTenantActionGroupResponse)[vs[1].(int)]
+	}).(WebhookReceiverTenantActionGroupResponseOutput)
 }
 
 // Specifies the metric alert rule criteria for a web test resource.
@@ -34841,8 +34841,6 @@ func init() {
 	pulumi.RegisterOutputType(AzureMonitorWorkspaceSignalGroupResponsePtrOutput{})
 	pulumi.RegisterOutputType(AzureResourceManagerCommonTypesExtendedLocationOutput{})
 	pulumi.RegisterOutputType(AzureResourceManagerCommonTypesExtendedLocationPtrOutput{})
-	pulumi.RegisterOutputType(AzureResourceManagerCommonTypesExtendedLocationResponseOutput{})
-	pulumi.RegisterOutputType(AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput{})
 	pulumi.RegisterOutputType(AzureResourceSignalGroupOutput{})
 	pulumi.RegisterOutputType(AzureResourceSignalGroupPtrOutput{})
 	pulumi.RegisterOutputType(AzureResourceSignalGroupResponseOutput{})
@@ -34877,8 +34875,8 @@ func init() {
 	pulumi.RegisterOutputType(ConditionFailingPeriodsResponsePtrOutput{})
 	pulumi.RegisterOutputType(ConditionResponseOutput{})
 	pulumi.RegisterOutputType(ConditionResponseArrayOutput{})
-	pulumi.RegisterOutputType(ConditionResponseV1Output{})
-	pulumi.RegisterOutputType(ConditionResponseV1ArrayOutput{})
+	pulumi.RegisterOutputType(ConditionSliResponseOutput{})
+	pulumi.RegisterOutputType(ConditionSliResponseArrayOutput{})
 	pulumi.RegisterOutputType(ConditionV1Output{})
 	pulumi.RegisterOutputType(ConditionV1ArrayOutput{})
 	pulumi.RegisterOutputType(DataCollectionEndpointNetworkAclsOutput{})
@@ -34988,6 +34986,8 @@ func init() {
 	pulumi.RegisterOutputType(ExporterArrayOutput{})
 	pulumi.RegisterOutputType(ExporterResponseOutput{})
 	pulumi.RegisterOutputType(ExporterResponseArrayOutput{})
+	pulumi.RegisterOutputType(ExtendedLocationResponseOutput{})
+	pulumi.RegisterOutputType(ExtendedLocationResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExtensionDataSourceOutput{})
 	pulumi.RegisterOutputType(ExtensionDataSourceArrayOutput{})
 	pulumi.RegisterOutputType(ExtensionDataSourceResponseOutput{})
@@ -34999,6 +34999,8 @@ func init() {
 	pulumi.RegisterOutputType(IconDefinitionPtrOutput{})
 	pulumi.RegisterOutputType(IconDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(IconDefinitionResponsePtrOutput{})
+	pulumi.RegisterOutputType(IdentityResponseOutput{})
+	pulumi.RegisterOutputType(IdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(IisLogsDataSourceOutput{})
 	pulumi.RegisterOutputType(IisLogsDataSourceArrayOutput{})
 	pulumi.RegisterOutputType(IisLogsDataSourceResponseOutput{})
@@ -35103,10 +35105,6 @@ func init() {
 	pulumi.RegisterOutputType(MetricTriggerResponseOutput{})
 	pulumi.RegisterOutputType(MicrosoftCommonIdentityOutput{})
 	pulumi.RegisterOutputType(MicrosoftCommonIdentityPtrOutput{})
-	pulumi.RegisterOutputType(MicrosoftCommonIdentityResponseOutput{})
-	pulumi.RegisterOutputType(MicrosoftCommonIdentityResponsePtrOutput{})
-	pulumi.RegisterOutputType(MicrosoftCommonUserIdentityPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(MicrosoftCommonUserIdentityPropertiesResponseMapOutput{})
 	pulumi.RegisterOutputType(ModelDiscoverySettingsOutput{})
 	pulumi.RegisterOutputType(ModelDiscoverySettingsPtrOutput{})
 	pulumi.RegisterOutputType(ModelDiscoverySettingsResponseOutput{})
@@ -35151,10 +35149,10 @@ func init() {
 	pulumi.RegisterOutputType(PredictiveAutoscalePolicyPtrOutput{})
 	pulumi.RegisterOutputType(PredictiveAutoscalePolicyResponseOutput{})
 	pulumi.RegisterOutputType(PredictiveAutoscalePolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionPrivateLinkScopeResponseOutput{})
+	pulumi.RegisterOutputType(PrivateEndpointConnectionPrivateLinkScopeResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseV1Output{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkScopedResourceResponseOutput{})
@@ -35314,6 +35312,8 @@ func init() {
 	pulumi.RegisterOutputType(UdpReceiverResponsePtrOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
+	pulumi.RegisterOutputType(UserIdentityPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(UserIdentityPropertiesResponseMapOutput{})
 	pulumi.RegisterOutputType(VoiceReceiverOutput{})
 	pulumi.RegisterOutputType(VoiceReceiverArrayOutput{})
 	pulumi.RegisterOutputType(VoiceReceiverResponseOutput{})
@@ -35326,8 +35326,8 @@ func init() {
 	pulumi.RegisterOutputType(WebhookReceiverArrayOutput{})
 	pulumi.RegisterOutputType(WebhookReceiverResponseOutput{})
 	pulumi.RegisterOutputType(WebhookReceiverResponseArrayOutput{})
-	pulumi.RegisterOutputType(WebhookReceiverResponseV1Output{})
-	pulumi.RegisterOutputType(WebhookReceiverResponseV1ArrayOutput{})
+	pulumi.RegisterOutputType(WebhookReceiverTenantActionGroupResponseOutput{})
+	pulumi.RegisterOutputType(WebhookReceiverTenantActionGroupResponseArrayOutput{})
 	pulumi.RegisterOutputType(WebtestLocationAvailabilityCriteriaOutput{})
 	pulumi.RegisterOutputType(WebtestLocationAvailabilityCriteriaResponseOutput{})
 	pulumi.RegisterOutputType(WindowUptimeCriteriaOutput{})

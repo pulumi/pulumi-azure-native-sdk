@@ -33682,6 +33682,342 @@ func (in *snapStartApplyOnPtr) ToSnapStartApplyOnPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(SnapStartApplyOnPtrOutput)
 }
 
+// When set to “PublishedVersions“, Lambda creates a snapshot of the execution environment when you publish a function version.
+type SnapStartResponseApplyOn string
+
+const (
+	// SnapStartResponseApplyOn enum None
+	SnapStartResponseApplyOnNone = SnapStartResponseApplyOn("None")
+	// SnapStartResponseApplyOn enum PublishedVersions
+	SnapStartResponseApplyOnPublishedVersions = SnapStartResponseApplyOn("PublishedVersions")
+)
+
+func (SnapStartResponseApplyOn) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapStartResponseApplyOn)(nil)).Elem()
+}
+
+func (e SnapStartResponseApplyOn) ToSnapStartResponseApplyOnOutput() SnapStartResponseApplyOnOutput {
+	return pulumi.ToOutput(e).(SnapStartResponseApplyOnOutput)
+}
+
+func (e SnapStartResponseApplyOn) ToSnapStartResponseApplyOnOutputWithContext(ctx context.Context) SnapStartResponseApplyOnOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SnapStartResponseApplyOnOutput)
+}
+
+func (e SnapStartResponseApplyOn) ToSnapStartResponseApplyOnPtrOutput() SnapStartResponseApplyOnPtrOutput {
+	return e.ToSnapStartResponseApplyOnPtrOutputWithContext(context.Background())
+}
+
+func (e SnapStartResponseApplyOn) ToSnapStartResponseApplyOnPtrOutputWithContext(ctx context.Context) SnapStartResponseApplyOnPtrOutput {
+	return SnapStartResponseApplyOn(e).ToSnapStartResponseApplyOnOutputWithContext(ctx).ToSnapStartResponseApplyOnPtrOutputWithContext(ctx)
+}
+
+func (e SnapStartResponseApplyOn) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SnapStartResponseApplyOn) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SnapStartResponseApplyOn) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SnapStartResponseApplyOn) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SnapStartResponseApplyOnOutput struct{ *pulumi.OutputState }
+
+func (SnapStartResponseApplyOnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapStartResponseApplyOn)(nil)).Elem()
+}
+
+func (o SnapStartResponseApplyOnOutput) ToSnapStartResponseApplyOnOutput() SnapStartResponseApplyOnOutput {
+	return o
+}
+
+func (o SnapStartResponseApplyOnOutput) ToSnapStartResponseApplyOnOutputWithContext(ctx context.Context) SnapStartResponseApplyOnOutput {
+	return o
+}
+
+func (o SnapStartResponseApplyOnOutput) ToSnapStartResponseApplyOnPtrOutput() SnapStartResponseApplyOnPtrOutput {
+	return o.ToSnapStartResponseApplyOnPtrOutputWithContext(context.Background())
+}
+
+func (o SnapStartResponseApplyOnOutput) ToSnapStartResponseApplyOnPtrOutputWithContext(ctx context.Context) SnapStartResponseApplyOnPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SnapStartResponseApplyOn) *SnapStartResponseApplyOn {
+		return &v
+	}).(SnapStartResponseApplyOnPtrOutput)
+}
+
+func (o SnapStartResponseApplyOnOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SnapStartResponseApplyOnOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SnapStartResponseApplyOn) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SnapStartResponseApplyOnOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SnapStartResponseApplyOnOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SnapStartResponseApplyOn) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SnapStartResponseApplyOnPtrOutput struct{ *pulumi.OutputState }
+
+func (SnapStartResponseApplyOnPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnapStartResponseApplyOn)(nil)).Elem()
+}
+
+func (o SnapStartResponseApplyOnPtrOutput) ToSnapStartResponseApplyOnPtrOutput() SnapStartResponseApplyOnPtrOutput {
+	return o
+}
+
+func (o SnapStartResponseApplyOnPtrOutput) ToSnapStartResponseApplyOnPtrOutputWithContext(ctx context.Context) SnapStartResponseApplyOnPtrOutput {
+	return o
+}
+
+func (o SnapStartResponseApplyOnPtrOutput) Elem() SnapStartResponseApplyOnOutput {
+	return o.ApplyT(func(v *SnapStartResponseApplyOn) SnapStartResponseApplyOn {
+		if v != nil {
+			return *v
+		}
+		var ret SnapStartResponseApplyOn
+		return ret
+	}).(SnapStartResponseApplyOnOutput)
+}
+
+func (o SnapStartResponseApplyOnPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SnapStartResponseApplyOnPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SnapStartResponseApplyOn) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SnapStartResponseApplyOnInput is an input type that accepts values of the SnapStartResponseApplyOn enum
+// A concrete instance of `SnapStartResponseApplyOnInput` can be one of the following:
+//
+//	SnapStartResponseApplyOnNone
+//	SnapStartResponseApplyOnPublishedVersions
+type SnapStartResponseApplyOnInput interface {
+	pulumi.Input
+
+	ToSnapStartResponseApplyOnOutput() SnapStartResponseApplyOnOutput
+	ToSnapStartResponseApplyOnOutputWithContext(context.Context) SnapStartResponseApplyOnOutput
+}
+
+var snapStartResponseApplyOnPtrType = reflect.TypeOf((**SnapStartResponseApplyOn)(nil)).Elem()
+
+type SnapStartResponseApplyOnPtrInput interface {
+	pulumi.Input
+
+	ToSnapStartResponseApplyOnPtrOutput() SnapStartResponseApplyOnPtrOutput
+	ToSnapStartResponseApplyOnPtrOutputWithContext(context.Context) SnapStartResponseApplyOnPtrOutput
+}
+
+type snapStartResponseApplyOnPtr string
+
+func SnapStartResponseApplyOnPtr(v string) SnapStartResponseApplyOnPtrInput {
+	return (*snapStartResponseApplyOnPtr)(&v)
+}
+
+func (*snapStartResponseApplyOnPtr) ElementType() reflect.Type {
+	return snapStartResponseApplyOnPtrType
+}
+
+func (in *snapStartResponseApplyOnPtr) ToSnapStartResponseApplyOnPtrOutput() SnapStartResponseApplyOnPtrOutput {
+	return pulumi.ToOutput(in).(SnapStartResponseApplyOnPtrOutput)
+}
+
+func (in *snapStartResponseApplyOnPtr) ToSnapStartResponseApplyOnPtrOutputWithContext(ctx context.Context) SnapStartResponseApplyOnPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SnapStartResponseApplyOnPtrOutput)
+}
+
+// When you provide a [qualified Amazon Resource Name (ARN)](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html#versioning-versions-using), this response element indicates whether SnapStart is activated for the specified function version.
+type SnapStartResponseOptimizationStatus string
+
+const (
+	// SnapStartResponseOptimizationStatus enum Off
+	SnapStartResponseOptimizationStatusOff = SnapStartResponseOptimizationStatus("Off")
+	// SnapStartResponseOptimizationStatus enum On
+	SnapStartResponseOptimizationStatusOn = SnapStartResponseOptimizationStatus("On")
+)
+
+func (SnapStartResponseOptimizationStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapStartResponseOptimizationStatus)(nil)).Elem()
+}
+
+func (e SnapStartResponseOptimizationStatus) ToSnapStartResponseOptimizationStatusOutput() SnapStartResponseOptimizationStatusOutput {
+	return pulumi.ToOutput(e).(SnapStartResponseOptimizationStatusOutput)
+}
+
+func (e SnapStartResponseOptimizationStatus) ToSnapStartResponseOptimizationStatusOutputWithContext(ctx context.Context) SnapStartResponseOptimizationStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SnapStartResponseOptimizationStatusOutput)
+}
+
+func (e SnapStartResponseOptimizationStatus) ToSnapStartResponseOptimizationStatusPtrOutput() SnapStartResponseOptimizationStatusPtrOutput {
+	return e.ToSnapStartResponseOptimizationStatusPtrOutputWithContext(context.Background())
+}
+
+func (e SnapStartResponseOptimizationStatus) ToSnapStartResponseOptimizationStatusPtrOutputWithContext(ctx context.Context) SnapStartResponseOptimizationStatusPtrOutput {
+	return SnapStartResponseOptimizationStatus(e).ToSnapStartResponseOptimizationStatusOutputWithContext(ctx).ToSnapStartResponseOptimizationStatusPtrOutputWithContext(ctx)
+}
+
+func (e SnapStartResponseOptimizationStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SnapStartResponseOptimizationStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SnapStartResponseOptimizationStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SnapStartResponseOptimizationStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SnapStartResponseOptimizationStatusOutput struct{ *pulumi.OutputState }
+
+func (SnapStartResponseOptimizationStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapStartResponseOptimizationStatus)(nil)).Elem()
+}
+
+func (o SnapStartResponseOptimizationStatusOutput) ToSnapStartResponseOptimizationStatusOutput() SnapStartResponseOptimizationStatusOutput {
+	return o
+}
+
+func (o SnapStartResponseOptimizationStatusOutput) ToSnapStartResponseOptimizationStatusOutputWithContext(ctx context.Context) SnapStartResponseOptimizationStatusOutput {
+	return o
+}
+
+func (o SnapStartResponseOptimizationStatusOutput) ToSnapStartResponseOptimizationStatusPtrOutput() SnapStartResponseOptimizationStatusPtrOutput {
+	return o.ToSnapStartResponseOptimizationStatusPtrOutputWithContext(context.Background())
+}
+
+func (o SnapStartResponseOptimizationStatusOutput) ToSnapStartResponseOptimizationStatusPtrOutputWithContext(ctx context.Context) SnapStartResponseOptimizationStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SnapStartResponseOptimizationStatus) *SnapStartResponseOptimizationStatus {
+		return &v
+	}).(SnapStartResponseOptimizationStatusPtrOutput)
+}
+
+func (o SnapStartResponseOptimizationStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SnapStartResponseOptimizationStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SnapStartResponseOptimizationStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SnapStartResponseOptimizationStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SnapStartResponseOptimizationStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SnapStartResponseOptimizationStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SnapStartResponseOptimizationStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (SnapStartResponseOptimizationStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SnapStartResponseOptimizationStatus)(nil)).Elem()
+}
+
+func (o SnapStartResponseOptimizationStatusPtrOutput) ToSnapStartResponseOptimizationStatusPtrOutput() SnapStartResponseOptimizationStatusPtrOutput {
+	return o
+}
+
+func (o SnapStartResponseOptimizationStatusPtrOutput) ToSnapStartResponseOptimizationStatusPtrOutputWithContext(ctx context.Context) SnapStartResponseOptimizationStatusPtrOutput {
+	return o
+}
+
+func (o SnapStartResponseOptimizationStatusPtrOutput) Elem() SnapStartResponseOptimizationStatusOutput {
+	return o.ApplyT(func(v *SnapStartResponseOptimizationStatus) SnapStartResponseOptimizationStatus {
+		if v != nil {
+			return *v
+		}
+		var ret SnapStartResponseOptimizationStatus
+		return ret
+	}).(SnapStartResponseOptimizationStatusOutput)
+}
+
+func (o SnapStartResponseOptimizationStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SnapStartResponseOptimizationStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SnapStartResponseOptimizationStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SnapStartResponseOptimizationStatusInput is an input type that accepts values of the SnapStartResponseOptimizationStatus enum
+// A concrete instance of `SnapStartResponseOptimizationStatusInput` can be one of the following:
+//
+//	SnapStartResponseOptimizationStatusOff
+//	SnapStartResponseOptimizationStatusOn
+type SnapStartResponseOptimizationStatusInput interface {
+	pulumi.Input
+
+	ToSnapStartResponseOptimizationStatusOutput() SnapStartResponseOptimizationStatusOutput
+	ToSnapStartResponseOptimizationStatusOutputWithContext(context.Context) SnapStartResponseOptimizationStatusOutput
+}
+
+var snapStartResponseOptimizationStatusPtrType = reflect.TypeOf((**SnapStartResponseOptimizationStatus)(nil)).Elem()
+
+type SnapStartResponseOptimizationStatusPtrInput interface {
+	pulumi.Input
+
+	ToSnapStartResponseOptimizationStatusPtrOutput() SnapStartResponseOptimizationStatusPtrOutput
+	ToSnapStartResponseOptimizationStatusPtrOutputWithContext(context.Context) SnapStartResponseOptimizationStatusPtrOutput
+}
+
+type snapStartResponseOptimizationStatusPtr string
+
+func SnapStartResponseOptimizationStatusPtr(v string) SnapStartResponseOptimizationStatusPtrInput {
+	return (*snapStartResponseOptimizationStatusPtr)(&v)
+}
+
+func (*snapStartResponseOptimizationStatusPtr) ElementType() reflect.Type {
+	return snapStartResponseOptimizationStatusPtrType
+}
+
+func (in *snapStartResponseOptimizationStatusPtr) ToSnapStartResponseOptimizationStatusPtrOutput() SnapStartResponseOptimizationStatusPtrOutput {
+	return pulumi.ToOutput(in).(SnapStartResponseOptimizationStatusPtrOutput)
+}
+
+func (in *snapStartResponseOptimizationStatusPtr) ToSnapStartResponseOptimizationStatusPtrOutputWithContext(ctx context.Context) SnapStartResponseOptimizationStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SnapStartResponseOptimizationStatusPtrOutput)
+}
+
 // Property value
 type SnapshotState string
 
@@ -39623,6 +39959,10 @@ func init() {
 	pulumi.RegisterOutputType(SimpleCriterionKeyForJobPtrOutput{})
 	pulumi.RegisterOutputType(SnapStartApplyOnOutput{})
 	pulumi.RegisterOutputType(SnapStartApplyOnPtrOutput{})
+	pulumi.RegisterOutputType(SnapStartResponseApplyOnOutput{})
+	pulumi.RegisterOutputType(SnapStartResponseApplyOnPtrOutput{})
+	pulumi.RegisterOutputType(SnapStartResponseOptimizationStatusOutput{})
+	pulumi.RegisterOutputType(SnapStartResponseOptimizationStatusPtrOutput{})
 	pulumi.RegisterOutputType(SnapshotStateOutput{})
 	pulumi.RegisterOutputType(SnapshotStatePtrOutput{})
 	pulumi.RegisterOutputType(SourceAuthTypeOutput{})

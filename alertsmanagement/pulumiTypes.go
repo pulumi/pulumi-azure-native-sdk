@@ -822,7 +822,7 @@ type AlertProcessingRulePropertiesResponse struct {
 	// Actions to be applied.
 	Actions []interface{} `pulumi:"actions"`
 	// Conditions on which alerts will be filtered.
-	Conditions []ConditionResponseV1 `pulumi:"conditions"`
+	Conditions []ConditionAlertProcessingRuleByNameResponse `pulumi:"conditions"`
 	// Actions to be applied.Description of alert processing rule.
 	Description *string `pulumi:"description"`
 	// Indicates if the given alert processing rule is enabled or disabled.
@@ -867,8 +867,10 @@ func (o AlertProcessingRulePropertiesResponseOutput) Actions() pulumi.ArrayOutpu
 }
 
 // Conditions on which alerts will be filtered.
-func (o AlertProcessingRulePropertiesResponseOutput) Conditions() ConditionResponseV1ArrayOutput {
-	return o.ApplyT(func(v AlertProcessingRulePropertiesResponse) []ConditionResponseV1 { return v.Conditions }).(ConditionResponseV1ArrayOutput)
+func (o AlertProcessingRulePropertiesResponseOutput) Conditions() ConditionAlertProcessingRuleByNameResponseArrayOutput {
+	return o.ApplyT(func(v AlertProcessingRulePropertiesResponse) []ConditionAlertProcessingRuleByNameResponse {
+		return v.Conditions
+	}).(ConditionAlertProcessingRuleByNameResponseArrayOutput)
 }
 
 // Actions to be applied.Description of alert processing rule.
@@ -1114,6 +1116,66 @@ func (o ConditionArrayOutput) Index(i pulumi.IntInput) ConditionOutput {
 	}).(ConditionOutput)
 }
 
+// Condition to trigger an alert processing rule.
+type ConditionAlertProcessingRuleByNameResponse struct {
+	// Field for a given condition.
+	Field *string `pulumi:"field"`
+	// Operator for a given condition.
+	Operator *string `pulumi:"operator"`
+	// List of values to match for a given condition.
+	Values []string `pulumi:"values"`
+}
+
+// Condition to trigger an alert processing rule.
+type ConditionAlertProcessingRuleByNameResponseOutput struct{ *pulumi.OutputState }
+
+func (ConditionAlertProcessingRuleByNameResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionAlertProcessingRuleByNameResponse)(nil)).Elem()
+}
+
+func (o ConditionAlertProcessingRuleByNameResponseOutput) ToConditionAlertProcessingRuleByNameResponseOutput() ConditionAlertProcessingRuleByNameResponseOutput {
+	return o
+}
+
+func (o ConditionAlertProcessingRuleByNameResponseOutput) ToConditionAlertProcessingRuleByNameResponseOutputWithContext(ctx context.Context) ConditionAlertProcessingRuleByNameResponseOutput {
+	return o
+}
+
+// Field for a given condition.
+func (o ConditionAlertProcessingRuleByNameResponseOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConditionAlertProcessingRuleByNameResponse) *string { return v.Field }).(pulumi.StringPtrOutput)
+}
+
+// Operator for a given condition.
+func (o ConditionAlertProcessingRuleByNameResponseOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConditionAlertProcessingRuleByNameResponse) *string { return v.Operator }).(pulumi.StringPtrOutput)
+}
+
+// List of values to match for a given condition.
+func (o ConditionAlertProcessingRuleByNameResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionAlertProcessingRuleByNameResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type ConditionAlertProcessingRuleByNameResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ConditionAlertProcessingRuleByNameResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConditionAlertProcessingRuleByNameResponse)(nil)).Elem()
+}
+
+func (o ConditionAlertProcessingRuleByNameResponseArrayOutput) ToConditionAlertProcessingRuleByNameResponseArrayOutput() ConditionAlertProcessingRuleByNameResponseArrayOutput {
+	return o
+}
+
+func (o ConditionAlertProcessingRuleByNameResponseArrayOutput) ToConditionAlertProcessingRuleByNameResponseArrayOutputWithContext(ctx context.Context) ConditionAlertProcessingRuleByNameResponseArrayOutput {
+	return o
+}
+
+func (o ConditionAlertProcessingRuleByNameResponseArrayOutput) Index(i pulumi.IntInput) ConditionAlertProcessingRuleByNameResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConditionAlertProcessingRuleByNameResponse {
+		return vs[0].([]ConditionAlertProcessingRuleByNameResponse)[vs[1].(int)]
+	}).(ConditionAlertProcessingRuleByNameResponseOutput)
+}
+
 // condition to trigger an action rule
 type ConditionResponse struct {
 	// operator for a given condition
@@ -1189,66 +1251,6 @@ func (o ConditionResponsePtrOutput) Values() pulumi.StringArrayOutput {
 		}
 		return v.Values
 	}).(pulumi.StringArrayOutput)
-}
-
-// Condition to trigger an alert processing rule.
-type ConditionResponseV1 struct {
-	// Field for a given condition.
-	Field *string `pulumi:"field"`
-	// Operator for a given condition.
-	Operator *string `pulumi:"operator"`
-	// List of values to match for a given condition.
-	Values []string `pulumi:"values"`
-}
-
-// Condition to trigger an alert processing rule.
-type ConditionResponseV1Output struct{ *pulumi.OutputState }
-
-func (ConditionResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConditionResponseV1)(nil)).Elem()
-}
-
-func (o ConditionResponseV1Output) ToConditionResponseV1Output() ConditionResponseV1Output {
-	return o
-}
-
-func (o ConditionResponseV1Output) ToConditionResponseV1OutputWithContext(ctx context.Context) ConditionResponseV1Output {
-	return o
-}
-
-// Field for a given condition.
-func (o ConditionResponseV1Output) Field() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConditionResponseV1) *string { return v.Field }).(pulumi.StringPtrOutput)
-}
-
-// Operator for a given condition.
-func (o ConditionResponseV1Output) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ConditionResponseV1) *string { return v.Operator }).(pulumi.StringPtrOutput)
-}
-
-// List of values to match for a given condition.
-func (o ConditionResponseV1Output) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ConditionResponseV1) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type ConditionResponseV1ArrayOutput struct{ *pulumi.OutputState }
-
-func (ConditionResponseV1ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConditionResponseV1)(nil)).Elem()
-}
-
-func (o ConditionResponseV1ArrayOutput) ToConditionResponseV1ArrayOutput() ConditionResponseV1ArrayOutput {
-	return o
-}
-
-func (o ConditionResponseV1ArrayOutput) ToConditionResponseV1ArrayOutputWithContext(ctx context.Context) ConditionResponseV1ArrayOutput {
-	return o
-}
-
-func (o ConditionResponseV1ArrayOutput) Index(i pulumi.IntInput) ConditionResponseV1Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConditionResponseV1 {
-		return vs[0].([]ConditionResponseV1)[vs[1].(int)]
-	}).(ConditionResponseV1Output)
 }
 
 // Conditions in alert instance to be matched for a given action rule. Default value is all. Multiple values could be provided with comma separation.
@@ -5713,10 +5715,10 @@ func init() {
 	pulumi.RegisterOutputType(ConditionOutput{})
 	pulumi.RegisterOutputType(ConditionPtrOutput{})
 	pulumi.RegisterOutputType(ConditionArrayOutput{})
+	pulumi.RegisterOutputType(ConditionAlertProcessingRuleByNameResponseOutput{})
+	pulumi.RegisterOutputType(ConditionAlertProcessingRuleByNameResponseArrayOutput{})
 	pulumi.RegisterOutputType(ConditionResponseOutput{})
 	pulumi.RegisterOutputType(ConditionResponsePtrOutput{})
-	pulumi.RegisterOutputType(ConditionResponseV1Output{})
-	pulumi.RegisterOutputType(ConditionResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(ConditionsOutput{})
 	pulumi.RegisterOutputType(ConditionsPtrOutput{})
 	pulumi.RegisterOutputType(ConditionsResponseOutput{})

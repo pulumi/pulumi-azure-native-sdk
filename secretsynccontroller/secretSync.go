@@ -21,7 +21,7 @@ type SecretSync struct {
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The complex type of the extended location.
-	ExtendedLocation AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
+	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// ForceSynchronization can be used to force the secret synchronization. The secret synchronization is triggered by changing the value in this field. This field is not used to resolve synchronization conflicts.
 	ForceSynchronization pulumi.StringPtrOutput `pulumi:"forceSynchronization"`
 	// Type specifies the type of the Kubernetes secret object, e.g. "Opaque" or"kubernetes.io/tls". The controller must have permission to create secrets of the specified type.
@@ -198,10 +198,8 @@ func (o SecretSyncOutput) AzureApiVersion() pulumi.StringOutput {
 }
 
 // The complex type of the extended location.
-func (o SecretSyncOutput) ExtendedLocation() AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput {
-	return o.ApplyT(func(v *SecretSync) AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput {
-		return v.ExtendedLocation
-	}).(AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput)
+func (o SecretSyncOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v *SecretSync) ExtendedLocationResponsePtrOutput { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
 }
 
 // ForceSynchronization can be used to force the secret synchronization. The secret synchronization is triggered by changing the value in this field. This field is not used to resolve synchronization conflicts.

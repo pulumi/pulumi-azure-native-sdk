@@ -46,7 +46,7 @@ type LookupRegistryEnvironmentVersionResult struct {
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// [Required] Additional attributes of the entity.
-	Properties EnvironmentVersionPropertiesResponse `pulumi:"properties"`
+	Properties EnvironmentVersionPropertiesRegistryEnvironmentVersionResponse `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -118,10 +118,10 @@ func (o LookupRegistryEnvironmentVersionResultOutput) Name() pulumi.StringOutput
 }
 
 // [Required] Additional attributes of the entity.
-func (o LookupRegistryEnvironmentVersionResultOutput) Properties() EnvironmentVersionPropertiesResponseOutput {
-	return o.ApplyT(func(v LookupRegistryEnvironmentVersionResult) EnvironmentVersionPropertiesResponse {
+func (o LookupRegistryEnvironmentVersionResultOutput) Properties() EnvironmentVersionPropertiesRegistryEnvironmentVersionResponseOutput {
+	return o.ApplyT(func(v LookupRegistryEnvironmentVersionResult) EnvironmentVersionPropertiesRegistryEnvironmentVersionResponse {
 		return v.Properties
-	}).(EnvironmentVersionPropertiesResponseOutput)
+	}).(EnvironmentVersionPropertiesRegistryEnvironmentVersionResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

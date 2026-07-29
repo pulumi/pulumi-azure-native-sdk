@@ -44,7 +44,7 @@ type LookupGlobalRulestackResult struct {
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The managed service identities assigned to this resource.
-	Identity *AzureResourceManagerManagedIdentityPropertiesResponse `pulumi:"identity"`
+	Identity *ManagedIdentityPropertiesResponse `pulumi:"identity"`
 	// Global Location
 	Location string `pulumi:"location"`
 	// minimum version
@@ -126,10 +126,8 @@ func (o LookupGlobalRulestackResultOutput) Id() pulumi.StringOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o LookupGlobalRulestackResultOutput) Identity() AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v LookupGlobalRulestackResult) *AzureResourceManagerManagedIdentityPropertiesResponse {
-		return v.Identity
-	}).(AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput)
+func (o LookupGlobalRulestackResultOutput) Identity() ManagedIdentityPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v LookupGlobalRulestackResult) *ManagedIdentityPropertiesResponse { return v.Identity }).(ManagedIdentityPropertiesResponsePtrOutput)
 }
 
 // Global Location

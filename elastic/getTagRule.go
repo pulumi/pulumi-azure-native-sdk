@@ -44,7 +44,7 @@ type LookupTagRuleResult struct {
 	// Name of the rule set.
 	Name string `pulumi:"name"`
 	// Properties of the monitoring tag rules.
-	Properties MonitoringTagRulesPropertiesResponse `pulumi:"properties"`
+	Properties MonitoringTagRulesPropertiesTagRuleResponse `pulumi:"properties"`
 	// The system metadata relating to this resource
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the rule set.
@@ -104,8 +104,8 @@ func (o LookupTagRuleResultOutput) Name() pulumi.StringOutput {
 }
 
 // Properties of the monitoring tag rules.
-func (o LookupTagRuleResultOutput) Properties() MonitoringTagRulesPropertiesResponseOutput {
-	return o.ApplyT(func(v LookupTagRuleResult) MonitoringTagRulesPropertiesResponse { return v.Properties }).(MonitoringTagRulesPropertiesResponseOutput)
+func (o LookupTagRuleResultOutput) Properties() MonitoringTagRulesPropertiesTagRuleResponseOutput {
+	return o.ApplyT(func(v LookupTagRuleResult) MonitoringTagRulesPropertiesTagRuleResponse { return v.Properties }).(MonitoringTagRulesPropertiesTagRuleResponseOutput)
 }
 
 // The system metadata relating to this resource

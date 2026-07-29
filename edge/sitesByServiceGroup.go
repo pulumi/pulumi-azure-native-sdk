@@ -25,7 +25,7 @@ type SitesByServiceGroup struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource-specific properties for this resource.
-	Properties SitePropertiesResponseV1Output `pulumi:"properties"`
+	Properties SitePropertiesSitesByServiceGroupResponseOutput `pulumi:"properties"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -150,8 +150,8 @@ func (o SitesByServiceGroupOutput) Name() pulumi.StringOutput {
 }
 
 // The resource-specific properties for this resource.
-func (o SitesByServiceGroupOutput) Properties() SitePropertiesResponseV1Output {
-	return o.ApplyT(func(v *SitesByServiceGroup) SitePropertiesResponseV1Output { return v.Properties }).(SitePropertiesResponseV1Output)
+func (o SitesByServiceGroupOutput) Properties() SitePropertiesSitesByServiceGroupResponseOutput {
+	return o.ApplyT(func(v *SitesByServiceGroup) SitePropertiesSitesByServiceGroupResponseOutput { return v.Properties }).(SitePropertiesSitesByServiceGroupResponseOutput)
 }
 
 // Azure Resource Manager metadata containing createdBy and modifiedBy information.

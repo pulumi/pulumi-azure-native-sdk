@@ -46,7 +46,7 @@ type LookupFirewallResult struct {
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The managed service identities assigned to this resource.
-	Identity *AzureResourceManagerManagedIdentityPropertiesResponse `pulumi:"identity"`
+	Identity *ManagedIdentityPropertiesResponse `pulumi:"identity"`
 	// Panorama Managed: Default is False. Default will be CloudSec managed
 	IsPanoramaManaged *string `pulumi:"isPanoramaManaged"`
 	// Strata Cloud Managed: Default is False. Default will be CloudSec managed
@@ -138,8 +138,8 @@ func (o LookupFirewallResultOutput) Id() pulumi.StringOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o LookupFirewallResultOutput) Identity() AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v LookupFirewallResult) *AzureResourceManagerManagedIdentityPropertiesResponse { return v.Identity }).(AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput)
+func (o LookupFirewallResultOutput) Identity() ManagedIdentityPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v LookupFirewallResult) *ManagedIdentityPropertiesResponse { return v.Identity }).(ManagedIdentityPropertiesResponsePtrOutput)
 }
 
 // Panorama Managed: Default is False. Default will be CloudSec managed

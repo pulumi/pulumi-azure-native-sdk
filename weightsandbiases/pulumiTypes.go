@@ -213,15 +213,15 @@ func (o InstancePropertiesPtrOutput) User() LiftrBaseUserDetailsPtrOutput {
 // Properties specific to Instance
 type InstancePropertiesResponse struct {
 	// Marketplace details of the resource.
-	Marketplace LiftrBaseMarketplaceDetailsResponse `pulumi:"marketplace"`
+	Marketplace MarketplaceDetailsResponse `pulumi:"marketplace"`
 	// partner properties
 	PartnerProperties *PartnerPropertiesResponse `pulumi:"partnerProperties"`
 	// Provisioning state of the resource.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Single sign-on properties
-	SingleSignOnProperties *LiftrBaseSingleSignOnPropertiesV2Response `pulumi:"singleSignOnProperties"`
+	SingleSignOnProperties *SingleSignOnPropertiesV2Response `pulumi:"singleSignOnProperties"`
 	// Details of the user.
-	User LiftrBaseUserDetailsResponse `pulumi:"user"`
+	User UserDetailsResponse `pulumi:"user"`
 }
 
 // Properties specific to Instance
@@ -240,8 +240,8 @@ func (o InstancePropertiesResponseOutput) ToInstancePropertiesResponseOutputWith
 }
 
 // Marketplace details of the resource.
-func (o InstancePropertiesResponseOutput) Marketplace() LiftrBaseMarketplaceDetailsResponseOutput {
-	return o.ApplyT(func(v InstancePropertiesResponse) LiftrBaseMarketplaceDetailsResponse { return v.Marketplace }).(LiftrBaseMarketplaceDetailsResponseOutput)
+func (o InstancePropertiesResponseOutput) Marketplace() MarketplaceDetailsResponseOutput {
+	return o.ApplyT(func(v InstancePropertiesResponse) MarketplaceDetailsResponse { return v.Marketplace }).(MarketplaceDetailsResponseOutput)
 }
 
 // partner properties
@@ -255,15 +255,13 @@ func (o InstancePropertiesResponseOutput) ProvisioningState() pulumi.StringOutpu
 }
 
 // Single sign-on properties
-func (o InstancePropertiesResponseOutput) SingleSignOnProperties() LiftrBaseSingleSignOnPropertiesV2ResponsePtrOutput {
-	return o.ApplyT(func(v InstancePropertiesResponse) *LiftrBaseSingleSignOnPropertiesV2Response {
-		return v.SingleSignOnProperties
-	}).(LiftrBaseSingleSignOnPropertiesV2ResponsePtrOutput)
+func (o InstancePropertiesResponseOutput) SingleSignOnProperties() SingleSignOnPropertiesV2ResponsePtrOutput {
+	return o.ApplyT(func(v InstancePropertiesResponse) *SingleSignOnPropertiesV2Response { return v.SingleSignOnProperties }).(SingleSignOnPropertiesV2ResponsePtrOutput)
 }
 
 // Details of the user.
-func (o InstancePropertiesResponseOutput) User() LiftrBaseUserDetailsResponseOutput {
-	return o.ApplyT(func(v InstancePropertiesResponse) LiftrBaseUserDetailsResponse { return v.User }).(LiftrBaseUserDetailsResponseOutput)
+func (o InstancePropertiesResponseOutput) User() UserDetailsResponseOutput {
+	return o.ApplyT(func(v InstancePropertiesResponse) UserDetailsResponse { return v.User }).(UserDetailsResponseOutput)
 }
 
 // Marketplace details for an organization
@@ -423,46 +421,6 @@ func (o LiftrBaseMarketplaceDetailsPtrOutput) SubscriptionId() pulumi.StringPtrO
 		}
 		return v.SubscriptionId
 	}).(pulumi.StringPtrOutput)
-}
-
-// Marketplace details for an organization
-type LiftrBaseMarketplaceDetailsResponse struct {
-	// Offer details for the marketplace that is selected by the user
-	OfferDetails LiftrBaseOfferDetailsResponse `pulumi:"offerDetails"`
-	// Azure subscription id for the the marketplace offer is purchased from
-	SubscriptionId *string `pulumi:"subscriptionId"`
-	// Marketplace subscription status
-	SubscriptionStatus string `pulumi:"subscriptionStatus"`
-}
-
-// Marketplace details for an organization
-type LiftrBaseMarketplaceDetailsResponseOutput struct{ *pulumi.OutputState }
-
-func (LiftrBaseMarketplaceDetailsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LiftrBaseMarketplaceDetailsResponse)(nil)).Elem()
-}
-
-func (o LiftrBaseMarketplaceDetailsResponseOutput) ToLiftrBaseMarketplaceDetailsResponseOutput() LiftrBaseMarketplaceDetailsResponseOutput {
-	return o
-}
-
-func (o LiftrBaseMarketplaceDetailsResponseOutput) ToLiftrBaseMarketplaceDetailsResponseOutputWithContext(ctx context.Context) LiftrBaseMarketplaceDetailsResponseOutput {
-	return o
-}
-
-// Offer details for the marketplace that is selected by the user
-func (o LiftrBaseMarketplaceDetailsResponseOutput) OfferDetails() LiftrBaseOfferDetailsResponseOutput {
-	return o.ApplyT(func(v LiftrBaseMarketplaceDetailsResponse) LiftrBaseOfferDetailsResponse { return v.OfferDetails }).(LiftrBaseOfferDetailsResponseOutput)
-}
-
-// Azure subscription id for the the marketplace offer is purchased from
-func (o LiftrBaseMarketplaceDetailsResponseOutput) SubscriptionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LiftrBaseMarketplaceDetailsResponse) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
-}
-
-// Marketplace subscription status
-func (o LiftrBaseMarketplaceDetailsResponseOutput) SubscriptionStatus() pulumi.StringOutput {
-	return o.ApplyT(func(v LiftrBaseMarketplaceDetailsResponse) string { return v.SubscriptionStatus }).(pulumi.StringOutput)
 }
 
 // Offer details for the marketplace that is selected by the user
@@ -700,67 +658,6 @@ func (o LiftrBaseOfferDetailsPtrOutput) TermUnit() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Offer details for the marketplace that is selected by the user
-type LiftrBaseOfferDetailsResponse struct {
-	// Offer Id for the marketplace offer
-	OfferId string `pulumi:"offerId"`
-	// Plan Id for the marketplace offer
-	PlanId string `pulumi:"planId"`
-	// Plan Name for the marketplace offer
-	PlanName *string `pulumi:"planName"`
-	// Publisher Id for the marketplace offer
-	PublisherId string `pulumi:"publisherId"`
-	// Plan Display Name for the marketplace offer
-	TermId *string `pulumi:"termId"`
-	// Plan Display Name for the marketplace offer
-	TermUnit *string `pulumi:"termUnit"`
-}
-
-// Offer details for the marketplace that is selected by the user
-type LiftrBaseOfferDetailsResponseOutput struct{ *pulumi.OutputState }
-
-func (LiftrBaseOfferDetailsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LiftrBaseOfferDetailsResponse)(nil)).Elem()
-}
-
-func (o LiftrBaseOfferDetailsResponseOutput) ToLiftrBaseOfferDetailsResponseOutput() LiftrBaseOfferDetailsResponseOutput {
-	return o
-}
-
-func (o LiftrBaseOfferDetailsResponseOutput) ToLiftrBaseOfferDetailsResponseOutputWithContext(ctx context.Context) LiftrBaseOfferDetailsResponseOutput {
-	return o
-}
-
-// Offer Id for the marketplace offer
-func (o LiftrBaseOfferDetailsResponseOutput) OfferId() pulumi.StringOutput {
-	return o.ApplyT(func(v LiftrBaseOfferDetailsResponse) string { return v.OfferId }).(pulumi.StringOutput)
-}
-
-// Plan Id for the marketplace offer
-func (o LiftrBaseOfferDetailsResponseOutput) PlanId() pulumi.StringOutput {
-	return o.ApplyT(func(v LiftrBaseOfferDetailsResponse) string { return v.PlanId }).(pulumi.StringOutput)
-}
-
-// Plan Name for the marketplace offer
-func (o LiftrBaseOfferDetailsResponseOutput) PlanName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LiftrBaseOfferDetailsResponse) *string { return v.PlanName }).(pulumi.StringPtrOutput)
-}
-
-// Publisher Id for the marketplace offer
-func (o LiftrBaseOfferDetailsResponseOutput) PublisherId() pulumi.StringOutput {
-	return o.ApplyT(func(v LiftrBaseOfferDetailsResponse) string { return v.PublisherId }).(pulumi.StringOutput)
-}
-
-// Plan Display Name for the marketplace offer
-func (o LiftrBaseOfferDetailsResponseOutput) TermId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LiftrBaseOfferDetailsResponse) *string { return v.TermId }).(pulumi.StringPtrOutput)
-}
-
-// Plan Display Name for the marketplace offer
-func (o LiftrBaseOfferDetailsResponseOutput) TermUnit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LiftrBaseOfferDetailsResponse) *string { return v.TermUnit }).(pulumi.StringPtrOutput)
-}
-
 // Properties specific to Single Sign On Resource
 type LiftrBaseSingleSignOnPropertiesV2 struct {
 	// List of AAD domains fetched from Microsoft Graph for user.
@@ -970,134 +867,6 @@ func (o LiftrBaseSingleSignOnPropertiesV2PtrOutput) Type() pulumi.StringPtrOutpu
 // URL for SSO to be used by the partner to redirect the user to their system
 func (o LiftrBaseSingleSignOnPropertiesV2PtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LiftrBaseSingleSignOnPropertiesV2) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Url
-	}).(pulumi.StringPtrOutput)
-}
-
-// Properties specific to Single Sign On Resource
-type LiftrBaseSingleSignOnPropertiesV2Response struct {
-	// List of AAD domains fetched from Microsoft Graph for user.
-	AadDomains []string `pulumi:"aadDomains"`
-	// AAD enterprise application Id used to setup SSO
-	EnterpriseAppId *string `pulumi:"enterpriseAppId"`
-	// State of the Single Sign On for the resource
-	State *string `pulumi:"state"`
-	// Type of Single Sign-On mechanism being used
-	Type string `pulumi:"type"`
-	// URL for SSO to be used by the partner to redirect the user to their system
-	Url *string `pulumi:"url"`
-}
-
-// Properties specific to Single Sign On Resource
-type LiftrBaseSingleSignOnPropertiesV2ResponseOutput struct{ *pulumi.OutputState }
-
-func (LiftrBaseSingleSignOnPropertiesV2ResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LiftrBaseSingleSignOnPropertiesV2Response)(nil)).Elem()
-}
-
-func (o LiftrBaseSingleSignOnPropertiesV2ResponseOutput) ToLiftrBaseSingleSignOnPropertiesV2ResponseOutput() LiftrBaseSingleSignOnPropertiesV2ResponseOutput {
-	return o
-}
-
-func (o LiftrBaseSingleSignOnPropertiesV2ResponseOutput) ToLiftrBaseSingleSignOnPropertiesV2ResponseOutputWithContext(ctx context.Context) LiftrBaseSingleSignOnPropertiesV2ResponseOutput {
-	return o
-}
-
-// List of AAD domains fetched from Microsoft Graph for user.
-func (o LiftrBaseSingleSignOnPropertiesV2ResponseOutput) AadDomains() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LiftrBaseSingleSignOnPropertiesV2Response) []string { return v.AadDomains }).(pulumi.StringArrayOutput)
-}
-
-// AAD enterprise application Id used to setup SSO
-func (o LiftrBaseSingleSignOnPropertiesV2ResponseOutput) EnterpriseAppId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LiftrBaseSingleSignOnPropertiesV2Response) *string { return v.EnterpriseAppId }).(pulumi.StringPtrOutput)
-}
-
-// State of the Single Sign On for the resource
-func (o LiftrBaseSingleSignOnPropertiesV2ResponseOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LiftrBaseSingleSignOnPropertiesV2Response) *string { return v.State }).(pulumi.StringPtrOutput)
-}
-
-// Type of Single Sign-On mechanism being used
-func (o LiftrBaseSingleSignOnPropertiesV2ResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v LiftrBaseSingleSignOnPropertiesV2Response) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// URL for SSO to be used by the partner to redirect the user to their system
-func (o LiftrBaseSingleSignOnPropertiesV2ResponseOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LiftrBaseSingleSignOnPropertiesV2Response) *string { return v.Url }).(pulumi.StringPtrOutput)
-}
-
-type LiftrBaseSingleSignOnPropertiesV2ResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (LiftrBaseSingleSignOnPropertiesV2ResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LiftrBaseSingleSignOnPropertiesV2Response)(nil)).Elem()
-}
-
-func (o LiftrBaseSingleSignOnPropertiesV2ResponsePtrOutput) ToLiftrBaseSingleSignOnPropertiesV2ResponsePtrOutput() LiftrBaseSingleSignOnPropertiesV2ResponsePtrOutput {
-	return o
-}
-
-func (o LiftrBaseSingleSignOnPropertiesV2ResponsePtrOutput) ToLiftrBaseSingleSignOnPropertiesV2ResponsePtrOutputWithContext(ctx context.Context) LiftrBaseSingleSignOnPropertiesV2ResponsePtrOutput {
-	return o
-}
-
-func (o LiftrBaseSingleSignOnPropertiesV2ResponsePtrOutput) Elem() LiftrBaseSingleSignOnPropertiesV2ResponseOutput {
-	return o.ApplyT(func(v *LiftrBaseSingleSignOnPropertiesV2Response) LiftrBaseSingleSignOnPropertiesV2Response {
-		if v != nil {
-			return *v
-		}
-		var ret LiftrBaseSingleSignOnPropertiesV2Response
-		return ret
-	}).(LiftrBaseSingleSignOnPropertiesV2ResponseOutput)
-}
-
-// List of AAD domains fetched from Microsoft Graph for user.
-func (o LiftrBaseSingleSignOnPropertiesV2ResponsePtrOutput) AadDomains() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *LiftrBaseSingleSignOnPropertiesV2Response) []string {
-		if v == nil {
-			return nil
-		}
-		return v.AadDomains
-	}).(pulumi.StringArrayOutput)
-}
-
-// AAD enterprise application Id used to setup SSO
-func (o LiftrBaseSingleSignOnPropertiesV2ResponsePtrOutput) EnterpriseAppId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LiftrBaseSingleSignOnPropertiesV2Response) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EnterpriseAppId
-	}).(pulumi.StringPtrOutput)
-}
-
-// State of the Single Sign On for the resource
-func (o LiftrBaseSingleSignOnPropertiesV2ResponsePtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LiftrBaseSingleSignOnPropertiesV2Response) *string {
-		if v == nil {
-			return nil
-		}
-		return v.State
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type of Single Sign-On mechanism being used
-func (o LiftrBaseSingleSignOnPropertiesV2ResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LiftrBaseSingleSignOnPropertiesV2Response) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// URL for SSO to be used by the partner to redirect the user to their system
-func (o LiftrBaseSingleSignOnPropertiesV2ResponsePtrOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LiftrBaseSingleSignOnPropertiesV2Response) *string {
 		if v == nil {
 			return nil
 		}
@@ -1319,60 +1088,6 @@ func (o LiftrBaseUserDetailsPtrOutput) Upn() pulumi.StringPtrOutput {
 		}
 		return v.Upn
 	}).(pulumi.StringPtrOutput)
-}
-
-// User details for an organization
-type LiftrBaseUserDetailsResponse struct {
-	// Email address of the user
-	EmailAddress *string `pulumi:"emailAddress"`
-	// First name of the user
-	FirstName *string `pulumi:"firstName"`
-	// Last name of the user
-	LastName *string `pulumi:"lastName"`
-	// User's phone number
-	PhoneNumber *string `pulumi:"phoneNumber"`
-	// User's principal name
-	Upn *string `pulumi:"upn"`
-}
-
-// User details for an organization
-type LiftrBaseUserDetailsResponseOutput struct{ *pulumi.OutputState }
-
-func (LiftrBaseUserDetailsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LiftrBaseUserDetailsResponse)(nil)).Elem()
-}
-
-func (o LiftrBaseUserDetailsResponseOutput) ToLiftrBaseUserDetailsResponseOutput() LiftrBaseUserDetailsResponseOutput {
-	return o
-}
-
-func (o LiftrBaseUserDetailsResponseOutput) ToLiftrBaseUserDetailsResponseOutputWithContext(ctx context.Context) LiftrBaseUserDetailsResponseOutput {
-	return o
-}
-
-// Email address of the user
-func (o LiftrBaseUserDetailsResponseOutput) EmailAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LiftrBaseUserDetailsResponse) *string { return v.EmailAddress }).(pulumi.StringPtrOutput)
-}
-
-// First name of the user
-func (o LiftrBaseUserDetailsResponseOutput) FirstName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LiftrBaseUserDetailsResponse) *string { return v.FirstName }).(pulumi.StringPtrOutput)
-}
-
-// Last name of the user
-func (o LiftrBaseUserDetailsResponseOutput) LastName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LiftrBaseUserDetailsResponse) *string { return v.LastName }).(pulumi.StringPtrOutput)
-}
-
-// User's phone number
-func (o LiftrBaseUserDetailsResponseOutput) PhoneNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LiftrBaseUserDetailsResponse) *string { return v.PhoneNumber }).(pulumi.StringPtrOutput)
-}
-
-// User's principal name
-func (o LiftrBaseUserDetailsResponseOutput) Upn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LiftrBaseUserDetailsResponse) *string { return v.Upn }).(pulumi.StringPtrOutput)
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
@@ -1647,6 +1362,107 @@ func (o ManagedServiceIdentityResponsePtrOutput) UserAssignedIdentities() UserAs
 	}).(UserAssignedIdentityResponseMapOutput)
 }
 
+// Marketplace details for an organization
+type MarketplaceDetailsResponse struct {
+	// Offer details for the marketplace that is selected by the user
+	OfferDetails OfferDetailsResponse `pulumi:"offerDetails"`
+	// Azure subscription id for the the marketplace offer is purchased from
+	SubscriptionId *string `pulumi:"subscriptionId"`
+	// Marketplace subscription status
+	SubscriptionStatus string `pulumi:"subscriptionStatus"`
+}
+
+// Marketplace details for an organization
+type MarketplaceDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (MarketplaceDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MarketplaceDetailsResponse)(nil)).Elem()
+}
+
+func (o MarketplaceDetailsResponseOutput) ToMarketplaceDetailsResponseOutput() MarketplaceDetailsResponseOutput {
+	return o
+}
+
+func (o MarketplaceDetailsResponseOutput) ToMarketplaceDetailsResponseOutputWithContext(ctx context.Context) MarketplaceDetailsResponseOutput {
+	return o
+}
+
+// Offer details for the marketplace that is selected by the user
+func (o MarketplaceDetailsResponseOutput) OfferDetails() OfferDetailsResponseOutput {
+	return o.ApplyT(func(v MarketplaceDetailsResponse) OfferDetailsResponse { return v.OfferDetails }).(OfferDetailsResponseOutput)
+}
+
+// Azure subscription id for the the marketplace offer is purchased from
+func (o MarketplaceDetailsResponseOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MarketplaceDetailsResponse) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+// Marketplace subscription status
+func (o MarketplaceDetailsResponseOutput) SubscriptionStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v MarketplaceDetailsResponse) string { return v.SubscriptionStatus }).(pulumi.StringOutput)
+}
+
+// Offer details for the marketplace that is selected by the user
+type OfferDetailsResponse struct {
+	// Offer Id for the marketplace offer
+	OfferId string `pulumi:"offerId"`
+	// Plan Id for the marketplace offer
+	PlanId string `pulumi:"planId"`
+	// Plan Name for the marketplace offer
+	PlanName *string `pulumi:"planName"`
+	// Publisher Id for the marketplace offer
+	PublisherId string `pulumi:"publisherId"`
+	// Plan Display Name for the marketplace offer
+	TermId *string `pulumi:"termId"`
+	// Plan Display Name for the marketplace offer
+	TermUnit *string `pulumi:"termUnit"`
+}
+
+// Offer details for the marketplace that is selected by the user
+type OfferDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (OfferDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OfferDetailsResponse)(nil)).Elem()
+}
+
+func (o OfferDetailsResponseOutput) ToOfferDetailsResponseOutput() OfferDetailsResponseOutput {
+	return o
+}
+
+func (o OfferDetailsResponseOutput) ToOfferDetailsResponseOutputWithContext(ctx context.Context) OfferDetailsResponseOutput {
+	return o
+}
+
+// Offer Id for the marketplace offer
+func (o OfferDetailsResponseOutput) OfferId() pulumi.StringOutput {
+	return o.ApplyT(func(v OfferDetailsResponse) string { return v.OfferId }).(pulumi.StringOutput)
+}
+
+// Plan Id for the marketplace offer
+func (o OfferDetailsResponseOutput) PlanId() pulumi.StringOutput {
+	return o.ApplyT(func(v OfferDetailsResponse) string { return v.PlanId }).(pulumi.StringOutput)
+}
+
+// Plan Name for the marketplace offer
+func (o OfferDetailsResponseOutput) PlanName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OfferDetailsResponse) *string { return v.PlanName }).(pulumi.StringPtrOutput)
+}
+
+// Publisher Id for the marketplace offer
+func (o OfferDetailsResponseOutput) PublisherId() pulumi.StringOutput {
+	return o.ApplyT(func(v OfferDetailsResponse) string { return v.PublisherId }).(pulumi.StringOutput)
+}
+
+// Plan Display Name for the marketplace offer
+func (o OfferDetailsResponseOutput) TermId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OfferDetailsResponse) *string { return v.TermId }).(pulumi.StringPtrOutput)
+}
+
+// Plan Display Name for the marketplace offer
+func (o OfferDetailsResponseOutput) TermUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OfferDetailsResponse) *string { return v.TermUnit }).(pulumi.StringPtrOutput)
+}
+
 // Partner's specific Properties
 type PartnerProperties struct {
 	// The region of the instance
@@ -1883,6 +1699,134 @@ func (o PartnerPropertiesResponsePtrOutput) Subdomain() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Properties specific to Single Sign On Resource
+type SingleSignOnPropertiesV2Response struct {
+	// List of AAD domains fetched from Microsoft Graph for user.
+	AadDomains []string `pulumi:"aadDomains"`
+	// AAD enterprise application Id used to setup SSO
+	EnterpriseAppId *string `pulumi:"enterpriseAppId"`
+	// State of the Single Sign On for the resource
+	State *string `pulumi:"state"`
+	// Type of Single Sign-On mechanism being used
+	Type string `pulumi:"type"`
+	// URL for SSO to be used by the partner to redirect the user to their system
+	Url *string `pulumi:"url"`
+}
+
+// Properties specific to Single Sign On Resource
+type SingleSignOnPropertiesV2ResponseOutput struct{ *pulumi.OutputState }
+
+func (SingleSignOnPropertiesV2ResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SingleSignOnPropertiesV2Response)(nil)).Elem()
+}
+
+func (o SingleSignOnPropertiesV2ResponseOutput) ToSingleSignOnPropertiesV2ResponseOutput() SingleSignOnPropertiesV2ResponseOutput {
+	return o
+}
+
+func (o SingleSignOnPropertiesV2ResponseOutput) ToSingleSignOnPropertiesV2ResponseOutputWithContext(ctx context.Context) SingleSignOnPropertiesV2ResponseOutput {
+	return o
+}
+
+// List of AAD domains fetched from Microsoft Graph for user.
+func (o SingleSignOnPropertiesV2ResponseOutput) AadDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SingleSignOnPropertiesV2Response) []string { return v.AadDomains }).(pulumi.StringArrayOutput)
+}
+
+// AAD enterprise application Id used to setup SSO
+func (o SingleSignOnPropertiesV2ResponseOutput) EnterpriseAppId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SingleSignOnPropertiesV2Response) *string { return v.EnterpriseAppId }).(pulumi.StringPtrOutput)
+}
+
+// State of the Single Sign On for the resource
+func (o SingleSignOnPropertiesV2ResponseOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SingleSignOnPropertiesV2Response) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// Type of Single Sign-On mechanism being used
+func (o SingleSignOnPropertiesV2ResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SingleSignOnPropertiesV2Response) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// URL for SSO to be used by the partner to redirect the user to their system
+func (o SingleSignOnPropertiesV2ResponseOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SingleSignOnPropertiesV2Response) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type SingleSignOnPropertiesV2ResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SingleSignOnPropertiesV2ResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SingleSignOnPropertiesV2Response)(nil)).Elem()
+}
+
+func (o SingleSignOnPropertiesV2ResponsePtrOutput) ToSingleSignOnPropertiesV2ResponsePtrOutput() SingleSignOnPropertiesV2ResponsePtrOutput {
+	return o
+}
+
+func (o SingleSignOnPropertiesV2ResponsePtrOutput) ToSingleSignOnPropertiesV2ResponsePtrOutputWithContext(ctx context.Context) SingleSignOnPropertiesV2ResponsePtrOutput {
+	return o
+}
+
+func (o SingleSignOnPropertiesV2ResponsePtrOutput) Elem() SingleSignOnPropertiesV2ResponseOutput {
+	return o.ApplyT(func(v *SingleSignOnPropertiesV2Response) SingleSignOnPropertiesV2Response {
+		if v != nil {
+			return *v
+		}
+		var ret SingleSignOnPropertiesV2Response
+		return ret
+	}).(SingleSignOnPropertiesV2ResponseOutput)
+}
+
+// List of AAD domains fetched from Microsoft Graph for user.
+func (o SingleSignOnPropertiesV2ResponsePtrOutput) AadDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SingleSignOnPropertiesV2Response) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AadDomains
+	}).(pulumi.StringArrayOutput)
+}
+
+// AAD enterprise application Id used to setup SSO
+func (o SingleSignOnPropertiesV2ResponsePtrOutput) EnterpriseAppId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SingleSignOnPropertiesV2Response) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnterpriseAppId
+	}).(pulumi.StringPtrOutput)
+}
+
+// State of the Single Sign On for the resource
+func (o SingleSignOnPropertiesV2ResponsePtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SingleSignOnPropertiesV2Response) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of Single Sign-On mechanism being used
+func (o SingleSignOnPropertiesV2ResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SingleSignOnPropertiesV2Response) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// URL for SSO to be used by the partner to redirect the user to their system
+func (o SingleSignOnPropertiesV2ResponsePtrOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SingleSignOnPropertiesV2Response) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Url
+	}).(pulumi.StringPtrOutput)
+}
+
 // Metadata pertaining to creation and last modification of the resource.
 type SystemDataResponse struct {
 	// The timestamp of resource creation (UTC).
@@ -1997,32 +1941,86 @@ func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) Us
 	}).(UserAssignedIdentityResponseOutput)
 }
 
+// User details for an organization
+type UserDetailsResponse struct {
+	// Email address of the user
+	EmailAddress *string `pulumi:"emailAddress"`
+	// First name of the user
+	FirstName *string `pulumi:"firstName"`
+	// Last name of the user
+	LastName *string `pulumi:"lastName"`
+	// User's phone number
+	PhoneNumber *string `pulumi:"phoneNumber"`
+	// User's principal name
+	Upn *string `pulumi:"upn"`
+}
+
+// User details for an organization
+type UserDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (UserDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserDetailsResponse)(nil)).Elem()
+}
+
+func (o UserDetailsResponseOutput) ToUserDetailsResponseOutput() UserDetailsResponseOutput {
+	return o
+}
+
+func (o UserDetailsResponseOutput) ToUserDetailsResponseOutputWithContext(ctx context.Context) UserDetailsResponseOutput {
+	return o
+}
+
+// Email address of the user
+func (o UserDetailsResponseOutput) EmailAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserDetailsResponse) *string { return v.EmailAddress }).(pulumi.StringPtrOutput)
+}
+
+// First name of the user
+func (o UserDetailsResponseOutput) FirstName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserDetailsResponse) *string { return v.FirstName }).(pulumi.StringPtrOutput)
+}
+
+// Last name of the user
+func (o UserDetailsResponseOutput) LastName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserDetailsResponse) *string { return v.LastName }).(pulumi.StringPtrOutput)
+}
+
+// User's phone number
+func (o UserDetailsResponseOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserDetailsResponse) *string { return v.PhoneNumber }).(pulumi.StringPtrOutput)
+}
+
+// User's principal name
+func (o UserDetailsResponseOutput) Upn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserDetailsResponse) *string { return v.Upn }).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(InstancePropertiesOutput{})
 	pulumi.RegisterOutputType(InstancePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(InstancePropertiesResponseOutput{})
 	pulumi.RegisterOutputType(LiftrBaseMarketplaceDetailsOutput{})
 	pulumi.RegisterOutputType(LiftrBaseMarketplaceDetailsPtrOutput{})
-	pulumi.RegisterOutputType(LiftrBaseMarketplaceDetailsResponseOutput{})
 	pulumi.RegisterOutputType(LiftrBaseOfferDetailsOutput{})
 	pulumi.RegisterOutputType(LiftrBaseOfferDetailsPtrOutput{})
-	pulumi.RegisterOutputType(LiftrBaseOfferDetailsResponseOutput{})
 	pulumi.RegisterOutputType(LiftrBaseSingleSignOnPropertiesV2Output{})
 	pulumi.RegisterOutputType(LiftrBaseSingleSignOnPropertiesV2PtrOutput{})
-	pulumi.RegisterOutputType(LiftrBaseSingleSignOnPropertiesV2ResponseOutput{})
-	pulumi.RegisterOutputType(LiftrBaseSingleSignOnPropertiesV2ResponsePtrOutput{})
 	pulumi.RegisterOutputType(LiftrBaseUserDetailsOutput{})
 	pulumi.RegisterOutputType(LiftrBaseUserDetailsPtrOutput{})
-	pulumi.RegisterOutputType(LiftrBaseUserDetailsResponseOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponsePtrOutput{})
+	pulumi.RegisterOutputType(MarketplaceDetailsResponseOutput{})
+	pulumi.RegisterOutputType(OfferDetailsResponseOutput{})
 	pulumi.RegisterOutputType(PartnerPropertiesOutput{})
 	pulumi.RegisterOutputType(PartnerPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(PartnerPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(PartnerPropertiesResponsePtrOutput{})
+	pulumi.RegisterOutputType(SingleSignOnPropertiesV2ResponseOutput{})
+	pulumi.RegisterOutputType(SingleSignOnPropertiesV2ResponsePtrOutput{})
 	pulumi.RegisterOutputType(SystemDataResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
+	pulumi.RegisterOutputType(UserDetailsResponseOutput{})
 }

@@ -2768,7 +2768,7 @@ func (o MonitoringTagRulesPropertiesResponsePtrOutput) ProvisioningState() pulum
 }
 
 // Definition of the properties for a TagRules resource.
-type MonitoringTagRulesPropertiesResponseV1 struct {
+type MonitoringTagRulesPropertiesTagRuleResponse struct {
 	// Rules for sending logs.
 	LogRules *LogRulesResponse `pulumi:"logRules"`
 	// Provisioning state of the monitoring tag rules.
@@ -2776,28 +2776,28 @@ type MonitoringTagRulesPropertiesResponseV1 struct {
 }
 
 // Definition of the properties for a TagRules resource.
-type MonitoringTagRulesPropertiesResponseV1Output struct{ *pulumi.OutputState }
+type MonitoringTagRulesPropertiesTagRuleResponseOutput struct{ *pulumi.OutputState }
 
-func (MonitoringTagRulesPropertiesResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*MonitoringTagRulesPropertiesResponseV1)(nil)).Elem()
+func (MonitoringTagRulesPropertiesTagRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MonitoringTagRulesPropertiesTagRuleResponse)(nil)).Elem()
 }
 
-func (o MonitoringTagRulesPropertiesResponseV1Output) ToMonitoringTagRulesPropertiesResponseV1Output() MonitoringTagRulesPropertiesResponseV1Output {
+func (o MonitoringTagRulesPropertiesTagRuleResponseOutput) ToMonitoringTagRulesPropertiesTagRuleResponseOutput() MonitoringTagRulesPropertiesTagRuleResponseOutput {
 	return o
 }
 
-func (o MonitoringTagRulesPropertiesResponseV1Output) ToMonitoringTagRulesPropertiesResponseV1OutputWithContext(ctx context.Context) MonitoringTagRulesPropertiesResponseV1Output {
+func (o MonitoringTagRulesPropertiesTagRuleResponseOutput) ToMonitoringTagRulesPropertiesTagRuleResponseOutputWithContext(ctx context.Context) MonitoringTagRulesPropertiesTagRuleResponseOutput {
 	return o
 }
 
 // Rules for sending logs.
-func (o MonitoringTagRulesPropertiesResponseV1Output) LogRules() LogRulesResponsePtrOutput {
-	return o.ApplyT(func(v MonitoringTagRulesPropertiesResponseV1) *LogRulesResponse { return v.LogRules }).(LogRulesResponsePtrOutput)
+func (o MonitoringTagRulesPropertiesTagRuleResponseOutput) LogRules() LogRulesResponsePtrOutput {
+	return o.ApplyT(func(v MonitoringTagRulesPropertiesTagRuleResponse) *LogRulesResponse { return v.LogRules }).(LogRulesResponsePtrOutput)
 }
 
 // Provisioning state of the monitoring tag rules.
-func (o MonitoringTagRulesPropertiesResponseV1Output) ProvisioningState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MonitoringTagRulesPropertiesResponseV1) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
+func (o MonitoringTagRulesPropertiesTagRuleResponseOutput) ProvisioningState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MonitoringTagRulesPropertiesTagRuleResponse) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
 // Open AI Integration details.
@@ -4275,7 +4275,7 @@ func init() {
 	pulumi.RegisterOutputType(MonitoringTagRulesPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(MonitoringTagRulesPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(MonitoringTagRulesPropertiesResponsePtrOutput{})
-	pulumi.RegisterOutputType(MonitoringTagRulesPropertiesResponseV1Output{})
+	pulumi.RegisterOutputType(MonitoringTagRulesPropertiesTagRuleResponseOutput{})
 	pulumi.RegisterOutputType(OpenAIIntegrationPropertiesOutput{})
 	pulumi.RegisterOutputType(OpenAIIntegrationPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(OpenAIIntegrationPropertiesResponseOutput{})

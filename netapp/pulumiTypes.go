@@ -8743,6 +8743,191 @@ func (o ExportPolicyRuleArrayOutput) Index(i pulumi.IntInput) ExportPolicyRuleOu
 }
 
 // Volume Export Policy Rule
+type ExportPolicyRuleCapacityPoolVolumeResponse struct {
+	// Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names
+	AllowedClients *string `pulumi:"allowedClients"`
+	// This parameter specifies who is authorized to change the ownership of a file. restricted - Only root user can change the ownership of the file. unrestricted - Non-root users can change ownership of files that they own.
+	ChownMode *string `pulumi:"chownMode"`
+	// Allows CIFS protocol
+	Cifs *bool `pulumi:"cifs"`
+	// Has root access to volume
+	HasRootAccess *bool `pulumi:"hasRootAccess"`
+	// Kerberos5 Read only access. To be use with swagger version 2020-05-01 or later
+	Kerberos5ReadOnly *bool `pulumi:"kerberos5ReadOnly"`
+	// Kerberos5 Read and write access. To be use with swagger version 2020-05-01 or later
+	Kerberos5ReadWrite *bool `pulumi:"kerberos5ReadWrite"`
+	// Kerberos5i Read only access. To be use with swagger version 2020-05-01 or later
+	Kerberos5iReadOnly *bool `pulumi:"kerberos5iReadOnly"`
+	// Kerberos5i Read and write access. To be use with swagger version 2020-05-01 or later
+	Kerberos5iReadWrite *bool `pulumi:"kerberos5iReadWrite"`
+	// Kerberos5p Read only access. To be use with swagger version 2020-05-01 or later
+	Kerberos5pReadOnly *bool `pulumi:"kerberos5pReadOnly"`
+	// Kerberos5p Read and write access. To be use with swagger version 2020-05-01 or later
+	Kerberos5pReadWrite *bool `pulumi:"kerberos5pReadWrite"`
+	// Allows NFSv3 protocol. Enable only for NFSv3 type volumes
+	Nfsv3 *bool `pulumi:"nfsv3"`
+	// Allows NFSv4.1 protocol. Enable only for NFSv4.1 type volumes
+	Nfsv41 *bool `pulumi:"nfsv41"`
+	// Order index
+	RuleIndex *int `pulumi:"ruleIndex"`
+	// Read only access
+	UnixReadOnly *bool `pulumi:"unixReadOnly"`
+	// Read and write access
+	UnixReadWrite *bool `pulumi:"unixReadWrite"`
+}
+
+// Defaults sets the appropriate defaults for ExportPolicyRuleCapacityPoolVolumeResponse
+func (val *ExportPolicyRuleCapacityPoolVolumeResponse) Defaults() *ExportPolicyRuleCapacityPoolVolumeResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ChownMode == nil {
+		chownMode_ := "Restricted"
+		tmp.ChownMode = &chownMode_
+	}
+	if tmp.HasRootAccess == nil {
+		hasRootAccess_ := true
+		tmp.HasRootAccess = &hasRootAccess_
+	}
+	if tmp.Kerberos5ReadOnly == nil {
+		kerberos5ReadOnly_ := false
+		tmp.Kerberos5ReadOnly = &kerberos5ReadOnly_
+	}
+	if tmp.Kerberos5ReadWrite == nil {
+		kerberos5ReadWrite_ := false
+		tmp.Kerberos5ReadWrite = &kerberos5ReadWrite_
+	}
+	if tmp.Kerberos5iReadOnly == nil {
+		kerberos5iReadOnly_ := false
+		tmp.Kerberos5iReadOnly = &kerberos5iReadOnly_
+	}
+	if tmp.Kerberos5iReadWrite == nil {
+		kerberos5iReadWrite_ := false
+		tmp.Kerberos5iReadWrite = &kerberos5iReadWrite_
+	}
+	if tmp.Kerberos5pReadOnly == nil {
+		kerberos5pReadOnly_ := false
+		tmp.Kerberos5pReadOnly = &kerberos5pReadOnly_
+	}
+	if tmp.Kerberos5pReadWrite == nil {
+		kerberos5pReadWrite_ := false
+		tmp.Kerberos5pReadWrite = &kerberos5pReadWrite_
+	}
+	return &tmp
+}
+
+// Volume Export Policy Rule
+type ExportPolicyRuleCapacityPoolVolumeResponseOutput struct{ *pulumi.OutputState }
+
+func (ExportPolicyRuleCapacityPoolVolumeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExportPolicyRuleCapacityPoolVolumeResponse)(nil)).Elem()
+}
+
+func (o ExportPolicyRuleCapacityPoolVolumeResponseOutput) ToExportPolicyRuleCapacityPoolVolumeResponseOutput() ExportPolicyRuleCapacityPoolVolumeResponseOutput {
+	return o
+}
+
+func (o ExportPolicyRuleCapacityPoolVolumeResponseOutput) ToExportPolicyRuleCapacityPoolVolumeResponseOutputWithContext(ctx context.Context) ExportPolicyRuleCapacityPoolVolumeResponseOutput {
+	return o
+}
+
+// Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names
+func (o ExportPolicyRuleCapacityPoolVolumeResponseOutput) AllowedClients() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleCapacityPoolVolumeResponse) *string { return v.AllowedClients }).(pulumi.StringPtrOutput)
+}
+
+// This parameter specifies who is authorized to change the ownership of a file. restricted - Only root user can change the ownership of the file. unrestricted - Non-root users can change ownership of files that they own.
+func (o ExportPolicyRuleCapacityPoolVolumeResponseOutput) ChownMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleCapacityPoolVolumeResponse) *string { return v.ChownMode }).(pulumi.StringPtrOutput)
+}
+
+// Allows CIFS protocol
+func (o ExportPolicyRuleCapacityPoolVolumeResponseOutput) Cifs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleCapacityPoolVolumeResponse) *bool { return v.Cifs }).(pulumi.BoolPtrOutput)
+}
+
+// Has root access to volume
+func (o ExportPolicyRuleCapacityPoolVolumeResponseOutput) HasRootAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleCapacityPoolVolumeResponse) *bool { return v.HasRootAccess }).(pulumi.BoolPtrOutput)
+}
+
+// Kerberos5 Read only access. To be use with swagger version 2020-05-01 or later
+func (o ExportPolicyRuleCapacityPoolVolumeResponseOutput) Kerberos5ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleCapacityPoolVolumeResponse) *bool { return v.Kerberos5ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Kerberos5 Read and write access. To be use with swagger version 2020-05-01 or later
+func (o ExportPolicyRuleCapacityPoolVolumeResponseOutput) Kerberos5ReadWrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleCapacityPoolVolumeResponse) *bool { return v.Kerberos5ReadWrite }).(pulumi.BoolPtrOutput)
+}
+
+// Kerberos5i Read only access. To be use with swagger version 2020-05-01 or later
+func (o ExportPolicyRuleCapacityPoolVolumeResponseOutput) Kerberos5iReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleCapacityPoolVolumeResponse) *bool { return v.Kerberos5iReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Kerberos5i Read and write access. To be use with swagger version 2020-05-01 or later
+func (o ExportPolicyRuleCapacityPoolVolumeResponseOutput) Kerberos5iReadWrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleCapacityPoolVolumeResponse) *bool { return v.Kerberos5iReadWrite }).(pulumi.BoolPtrOutput)
+}
+
+// Kerberos5p Read only access. To be use with swagger version 2020-05-01 or later
+func (o ExportPolicyRuleCapacityPoolVolumeResponseOutput) Kerberos5pReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleCapacityPoolVolumeResponse) *bool { return v.Kerberos5pReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Kerberos5p Read and write access. To be use with swagger version 2020-05-01 or later
+func (o ExportPolicyRuleCapacityPoolVolumeResponseOutput) Kerberos5pReadWrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleCapacityPoolVolumeResponse) *bool { return v.Kerberos5pReadWrite }).(pulumi.BoolPtrOutput)
+}
+
+// Allows NFSv3 protocol. Enable only for NFSv3 type volumes
+func (o ExportPolicyRuleCapacityPoolVolumeResponseOutput) Nfsv3() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleCapacityPoolVolumeResponse) *bool { return v.Nfsv3 }).(pulumi.BoolPtrOutput)
+}
+
+// Allows NFSv4.1 protocol. Enable only for NFSv4.1 type volumes
+func (o ExportPolicyRuleCapacityPoolVolumeResponseOutput) Nfsv41() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleCapacityPoolVolumeResponse) *bool { return v.Nfsv41 }).(pulumi.BoolPtrOutput)
+}
+
+// Order index
+func (o ExportPolicyRuleCapacityPoolVolumeResponseOutput) RuleIndex() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleCapacityPoolVolumeResponse) *int { return v.RuleIndex }).(pulumi.IntPtrOutput)
+}
+
+// Read only access
+func (o ExportPolicyRuleCapacityPoolVolumeResponseOutput) UnixReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleCapacityPoolVolumeResponse) *bool { return v.UnixReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Read and write access
+func (o ExportPolicyRuleCapacityPoolVolumeResponseOutput) UnixReadWrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleCapacityPoolVolumeResponse) *bool { return v.UnixReadWrite }).(pulumi.BoolPtrOutput)
+}
+
+type ExportPolicyRuleCapacityPoolVolumeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ExportPolicyRuleCapacityPoolVolumeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExportPolicyRuleCapacityPoolVolumeResponse)(nil)).Elem()
+}
+
+func (o ExportPolicyRuleCapacityPoolVolumeResponseArrayOutput) ToExportPolicyRuleCapacityPoolVolumeResponseArrayOutput() ExportPolicyRuleCapacityPoolVolumeResponseArrayOutput {
+	return o
+}
+
+func (o ExportPolicyRuleCapacityPoolVolumeResponseArrayOutput) ToExportPolicyRuleCapacityPoolVolumeResponseArrayOutputWithContext(ctx context.Context) ExportPolicyRuleCapacityPoolVolumeResponseArrayOutput {
+	return o
+}
+
+func (o ExportPolicyRuleCapacityPoolVolumeResponseArrayOutput) Index(i pulumi.IntInput) ExportPolicyRuleCapacityPoolVolumeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExportPolicyRuleCapacityPoolVolumeResponse {
+		return vs[0].([]ExportPolicyRuleCapacityPoolVolumeResponse)[vs[1].(int)]
+	}).(ExportPolicyRuleCapacityPoolVolumeResponseOutput)
+}
+
+// Volume Export Policy Rule
 type ExportPolicyRuleResponse struct {
 	// Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names
 	AllowedClients *string `pulumi:"allowedClients"`
@@ -8928,7 +9113,7 @@ func (o ExportPolicyRuleResponseArrayOutput) Index(i pulumi.IntInput) ExportPoli
 }
 
 // Volume Export Policy Rule
-type ExportPolicyRuleResponseV1 struct {
+type ExportPolicyRuleVolumeGroupResponse struct {
 	// Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names
 	AllowedClients *string `pulumi:"allowedClients"`
 	// This parameter specifies who is authorized to change the ownership of a file. restricted - Only root user can change the ownership of the file. unrestricted - Non-root users can change ownership of files that they own.
@@ -8961,8 +9146,8 @@ type ExportPolicyRuleResponseV1 struct {
 	UnixReadWrite *bool `pulumi:"unixReadWrite"`
 }
 
-// Defaults sets the appropriate defaults for ExportPolicyRuleResponseV1
-func (val *ExportPolicyRuleResponseV1) Defaults() *ExportPolicyRuleResponseV1 {
+// Defaults sets the appropriate defaults for ExportPolicyRuleVolumeGroupResponse
+func (val *ExportPolicyRuleVolumeGroupResponse) Defaults() *ExportPolicyRuleVolumeGroupResponse {
 	if val == nil {
 		return nil
 	}
@@ -9003,113 +9188,113 @@ func (val *ExportPolicyRuleResponseV1) Defaults() *ExportPolicyRuleResponseV1 {
 }
 
 // Volume Export Policy Rule
-type ExportPolicyRuleResponseV1Output struct{ *pulumi.OutputState }
+type ExportPolicyRuleVolumeGroupResponseOutput struct{ *pulumi.OutputState }
 
-func (ExportPolicyRuleResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExportPolicyRuleResponseV1)(nil)).Elem()
+func (ExportPolicyRuleVolumeGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExportPolicyRuleVolumeGroupResponse)(nil)).Elem()
 }
 
-func (o ExportPolicyRuleResponseV1Output) ToExportPolicyRuleResponseV1Output() ExportPolicyRuleResponseV1Output {
+func (o ExportPolicyRuleVolumeGroupResponseOutput) ToExportPolicyRuleVolumeGroupResponseOutput() ExportPolicyRuleVolumeGroupResponseOutput {
 	return o
 }
 
-func (o ExportPolicyRuleResponseV1Output) ToExportPolicyRuleResponseV1OutputWithContext(ctx context.Context) ExportPolicyRuleResponseV1Output {
+func (o ExportPolicyRuleVolumeGroupResponseOutput) ToExportPolicyRuleVolumeGroupResponseOutputWithContext(ctx context.Context) ExportPolicyRuleVolumeGroupResponseOutput {
 	return o
 }
 
 // Client ingress specification as comma separated string with IPv4 CIDRs, IPv4 host addresses and host names
-func (o ExportPolicyRuleResponseV1Output) AllowedClients() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExportPolicyRuleResponseV1) *string { return v.AllowedClients }).(pulumi.StringPtrOutput)
+func (o ExportPolicyRuleVolumeGroupResponseOutput) AllowedClients() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleVolumeGroupResponse) *string { return v.AllowedClients }).(pulumi.StringPtrOutput)
 }
 
 // This parameter specifies who is authorized to change the ownership of a file. restricted - Only root user can change the ownership of the file. unrestricted - Non-root users can change ownership of files that they own.
-func (o ExportPolicyRuleResponseV1Output) ChownMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExportPolicyRuleResponseV1) *string { return v.ChownMode }).(pulumi.StringPtrOutput)
+func (o ExportPolicyRuleVolumeGroupResponseOutput) ChownMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleVolumeGroupResponse) *string { return v.ChownMode }).(pulumi.StringPtrOutput)
 }
 
 // Allows CIFS protocol
-func (o ExportPolicyRuleResponseV1Output) Cifs() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ExportPolicyRuleResponseV1) *bool { return v.Cifs }).(pulumi.BoolPtrOutput)
+func (o ExportPolicyRuleVolumeGroupResponseOutput) Cifs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleVolumeGroupResponse) *bool { return v.Cifs }).(pulumi.BoolPtrOutput)
 }
 
 // Has root access to volume
-func (o ExportPolicyRuleResponseV1Output) HasRootAccess() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ExportPolicyRuleResponseV1) *bool { return v.HasRootAccess }).(pulumi.BoolPtrOutput)
+func (o ExportPolicyRuleVolumeGroupResponseOutput) HasRootAccess() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleVolumeGroupResponse) *bool { return v.HasRootAccess }).(pulumi.BoolPtrOutput)
 }
 
 // Kerberos5 Read only access. To be use with swagger version 2020-05-01 or later
-func (o ExportPolicyRuleResponseV1Output) Kerberos5ReadOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ExportPolicyRuleResponseV1) *bool { return v.Kerberos5ReadOnly }).(pulumi.BoolPtrOutput)
+func (o ExportPolicyRuleVolumeGroupResponseOutput) Kerberos5ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleVolumeGroupResponse) *bool { return v.Kerberos5ReadOnly }).(pulumi.BoolPtrOutput)
 }
 
 // Kerberos5 Read and write access. To be use with swagger version 2020-05-01 or later
-func (o ExportPolicyRuleResponseV1Output) Kerberos5ReadWrite() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ExportPolicyRuleResponseV1) *bool { return v.Kerberos5ReadWrite }).(pulumi.BoolPtrOutput)
+func (o ExportPolicyRuleVolumeGroupResponseOutput) Kerberos5ReadWrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleVolumeGroupResponse) *bool { return v.Kerberos5ReadWrite }).(pulumi.BoolPtrOutput)
 }
 
 // Kerberos5i Read only access. To be use with swagger version 2020-05-01 or later
-func (o ExportPolicyRuleResponseV1Output) Kerberos5iReadOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ExportPolicyRuleResponseV1) *bool { return v.Kerberos5iReadOnly }).(pulumi.BoolPtrOutput)
+func (o ExportPolicyRuleVolumeGroupResponseOutput) Kerberos5iReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleVolumeGroupResponse) *bool { return v.Kerberos5iReadOnly }).(pulumi.BoolPtrOutput)
 }
 
 // Kerberos5i Read and write access. To be use with swagger version 2020-05-01 or later
-func (o ExportPolicyRuleResponseV1Output) Kerberos5iReadWrite() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ExportPolicyRuleResponseV1) *bool { return v.Kerberos5iReadWrite }).(pulumi.BoolPtrOutput)
+func (o ExportPolicyRuleVolumeGroupResponseOutput) Kerberos5iReadWrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleVolumeGroupResponse) *bool { return v.Kerberos5iReadWrite }).(pulumi.BoolPtrOutput)
 }
 
 // Kerberos5p Read only access. To be use with swagger version 2020-05-01 or later
-func (o ExportPolicyRuleResponseV1Output) Kerberos5pReadOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ExportPolicyRuleResponseV1) *bool { return v.Kerberos5pReadOnly }).(pulumi.BoolPtrOutput)
+func (o ExportPolicyRuleVolumeGroupResponseOutput) Kerberos5pReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleVolumeGroupResponse) *bool { return v.Kerberos5pReadOnly }).(pulumi.BoolPtrOutput)
 }
 
 // Kerberos5p Read and write access. To be use with swagger version 2020-05-01 or later
-func (o ExportPolicyRuleResponseV1Output) Kerberos5pReadWrite() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ExportPolicyRuleResponseV1) *bool { return v.Kerberos5pReadWrite }).(pulumi.BoolPtrOutput)
+func (o ExportPolicyRuleVolumeGroupResponseOutput) Kerberos5pReadWrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleVolumeGroupResponse) *bool { return v.Kerberos5pReadWrite }).(pulumi.BoolPtrOutput)
 }
 
 // Allows NFSv3 protocol. Enable only for NFSv3 type volumes
-func (o ExportPolicyRuleResponseV1Output) Nfsv3() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ExportPolicyRuleResponseV1) *bool { return v.Nfsv3 }).(pulumi.BoolPtrOutput)
+func (o ExportPolicyRuleVolumeGroupResponseOutput) Nfsv3() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleVolumeGroupResponse) *bool { return v.Nfsv3 }).(pulumi.BoolPtrOutput)
 }
 
 // Allows NFSv4.1 protocol. Enable only for NFSv4.1 type volumes
-func (o ExportPolicyRuleResponseV1Output) Nfsv41() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ExportPolicyRuleResponseV1) *bool { return v.Nfsv41 }).(pulumi.BoolPtrOutput)
+func (o ExportPolicyRuleVolumeGroupResponseOutput) Nfsv41() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleVolumeGroupResponse) *bool { return v.Nfsv41 }).(pulumi.BoolPtrOutput)
 }
 
 // Order index
-func (o ExportPolicyRuleResponseV1Output) RuleIndex() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ExportPolicyRuleResponseV1) *int { return v.RuleIndex }).(pulumi.IntPtrOutput)
+func (o ExportPolicyRuleVolumeGroupResponseOutput) RuleIndex() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleVolumeGroupResponse) *int { return v.RuleIndex }).(pulumi.IntPtrOutput)
 }
 
 // Read only access
-func (o ExportPolicyRuleResponseV1Output) UnixReadOnly() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ExportPolicyRuleResponseV1) *bool { return v.UnixReadOnly }).(pulumi.BoolPtrOutput)
+func (o ExportPolicyRuleVolumeGroupResponseOutput) UnixReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleVolumeGroupResponse) *bool { return v.UnixReadOnly }).(pulumi.BoolPtrOutput)
 }
 
 // Read and write access
-func (o ExportPolicyRuleResponseV1Output) UnixReadWrite() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ExportPolicyRuleResponseV1) *bool { return v.UnixReadWrite }).(pulumi.BoolPtrOutput)
+func (o ExportPolicyRuleVolumeGroupResponseOutput) UnixReadWrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ExportPolicyRuleVolumeGroupResponse) *bool { return v.UnixReadWrite }).(pulumi.BoolPtrOutput)
 }
 
-type ExportPolicyRuleResponseV1ArrayOutput struct{ *pulumi.OutputState }
+type ExportPolicyRuleVolumeGroupResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (ExportPolicyRuleResponseV1ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ExportPolicyRuleResponseV1)(nil)).Elem()
+func (ExportPolicyRuleVolumeGroupResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExportPolicyRuleVolumeGroupResponse)(nil)).Elem()
 }
 
-func (o ExportPolicyRuleResponseV1ArrayOutput) ToExportPolicyRuleResponseV1ArrayOutput() ExportPolicyRuleResponseV1ArrayOutput {
+func (o ExportPolicyRuleVolumeGroupResponseArrayOutput) ToExportPolicyRuleVolumeGroupResponseArrayOutput() ExportPolicyRuleVolumeGroupResponseArrayOutput {
 	return o
 }
 
-func (o ExportPolicyRuleResponseV1ArrayOutput) ToExportPolicyRuleResponseV1ArrayOutputWithContext(ctx context.Context) ExportPolicyRuleResponseV1ArrayOutput {
+func (o ExportPolicyRuleVolumeGroupResponseArrayOutput) ToExportPolicyRuleVolumeGroupResponseArrayOutputWithContext(ctx context.Context) ExportPolicyRuleVolumeGroupResponseArrayOutput {
 	return o
 }
 
-func (o ExportPolicyRuleResponseV1ArrayOutput) Index(i pulumi.IntInput) ExportPolicyRuleResponseV1Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExportPolicyRuleResponseV1 {
-		return vs[0].([]ExportPolicyRuleResponseV1)[vs[1].(int)]
-	}).(ExportPolicyRuleResponseV1Output)
+func (o ExportPolicyRuleVolumeGroupResponseArrayOutput) Index(i pulumi.IntInput) ExportPolicyRuleVolumeGroupResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExportPolicyRuleVolumeGroupResponse {
+		return vs[0].([]ExportPolicyRuleVolumeGroupResponse)[vs[1].(int)]
+	}).(ExportPolicyRuleVolumeGroupResponseOutput)
 }
 
 // File System user having access to volume data. For Unix, this is the user's uid and gid. For Windows, this is the user's username. Note that the Unix and Windows user details are mutually exclusive, meaning one or other must be supplied, but not both.
@@ -14587,7 +14772,7 @@ type VolumeGroupVolumePropertiesResponse struct {
 	// Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault'
 	EncryptionKeySource *string `pulumi:"encryptionKeySource"`
 	// Set of export policy rules
-	ExportPolicy *VolumePropertiesResponseExportPolicy `pulumi:"exportPolicy"`
+	ExportPolicy *VolumePropertiesResponseExportPolicyV1 `pulumi:"exportPolicy"`
 	// Flag indicating whether file access logs are enabled for the volume, based on active diagnostic settings present on the volume.
 	FileAccessLogs string `pulumi:"fileAccessLogs"`
 	// Unique FileSystem Identifier.
@@ -14862,10 +15047,10 @@ func (o VolumeGroupVolumePropertiesResponseOutput) EncryptionKeySource() pulumi.
 }
 
 // Set of export policy rules
-func (o VolumeGroupVolumePropertiesResponseOutput) ExportPolicy() VolumePropertiesResponseExportPolicyPtrOutput {
-	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *VolumePropertiesResponseExportPolicy {
+func (o VolumeGroupVolumePropertiesResponseOutput) ExportPolicy() VolumePropertiesResponseExportPolicyV1PtrOutput {
+	return o.ApplyT(func(v VolumeGroupVolumePropertiesResponse) *VolumePropertiesResponseExportPolicyV1 {
 		return v.ExportPolicy
-	}).(VolumePropertiesResponseExportPolicyPtrOutput)
+	}).(VolumePropertiesResponseExportPolicyV1PtrOutput)
 }
 
 // Flag indicating whether file access logs are enabled for the volume, based on active diagnostic settings present on the volume.
@@ -15540,7 +15725,7 @@ func (o VolumePropertiesResponseDataProtectionPtrOutput) VolumeRelocation() Volu
 // Set of export policy rules
 type VolumePropertiesResponseExportPolicy struct {
 	// Export policy rule
-	Rules []ExportPolicyRuleResponseV1 `pulumi:"rules"`
+	Rules []ExportPolicyRuleCapacityPoolVolumeResponse `pulumi:"rules"`
 }
 
 // Set of export policy rules
@@ -15559,8 +15744,10 @@ func (o VolumePropertiesResponseExportPolicyOutput) ToVolumePropertiesResponseEx
 }
 
 // Export policy rule
-func (o VolumePropertiesResponseExportPolicyOutput) Rules() ExportPolicyRuleResponseV1ArrayOutput {
-	return o.ApplyT(func(v VolumePropertiesResponseExportPolicy) []ExportPolicyRuleResponseV1 { return v.Rules }).(ExportPolicyRuleResponseV1ArrayOutput)
+func (o VolumePropertiesResponseExportPolicyOutput) Rules() ExportPolicyRuleCapacityPoolVolumeResponseArrayOutput {
+	return o.ApplyT(func(v VolumePropertiesResponseExportPolicy) []ExportPolicyRuleCapacityPoolVolumeResponse {
+		return v.Rules
+	}).(ExportPolicyRuleCapacityPoolVolumeResponseArrayOutput)
 }
 
 type VolumePropertiesResponseExportPolicyPtrOutput struct{ *pulumi.OutputState }
@@ -15588,13 +15775,73 @@ func (o VolumePropertiesResponseExportPolicyPtrOutput) Elem() VolumePropertiesRe
 }
 
 // Export policy rule
-func (o VolumePropertiesResponseExportPolicyPtrOutput) Rules() ExportPolicyRuleResponseV1ArrayOutput {
-	return o.ApplyT(func(v *VolumePropertiesResponseExportPolicy) []ExportPolicyRuleResponseV1 {
+func (o VolumePropertiesResponseExportPolicyPtrOutput) Rules() ExportPolicyRuleCapacityPoolVolumeResponseArrayOutput {
+	return o.ApplyT(func(v *VolumePropertiesResponseExportPolicy) []ExportPolicyRuleCapacityPoolVolumeResponse {
 		if v == nil {
 			return nil
 		}
 		return v.Rules
-	}).(ExportPolicyRuleResponseV1ArrayOutput)
+	}).(ExportPolicyRuleCapacityPoolVolumeResponseArrayOutput)
+}
+
+// Set of export policy rules
+type VolumePropertiesResponseExportPolicyV1 struct {
+	// Export policy rule
+	Rules []ExportPolicyRuleVolumeGroupResponse `pulumi:"rules"`
+}
+
+// Set of export policy rules
+type VolumePropertiesResponseExportPolicyV1Output struct{ *pulumi.OutputState }
+
+func (VolumePropertiesResponseExportPolicyV1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumePropertiesResponseExportPolicyV1)(nil)).Elem()
+}
+
+func (o VolumePropertiesResponseExportPolicyV1Output) ToVolumePropertiesResponseExportPolicyV1Output() VolumePropertiesResponseExportPolicyV1Output {
+	return o
+}
+
+func (o VolumePropertiesResponseExportPolicyV1Output) ToVolumePropertiesResponseExportPolicyV1OutputWithContext(ctx context.Context) VolumePropertiesResponseExportPolicyV1Output {
+	return o
+}
+
+// Export policy rule
+func (o VolumePropertiesResponseExportPolicyV1Output) Rules() ExportPolicyRuleVolumeGroupResponseArrayOutput {
+	return o.ApplyT(func(v VolumePropertiesResponseExportPolicyV1) []ExportPolicyRuleVolumeGroupResponse { return v.Rules }).(ExportPolicyRuleVolumeGroupResponseArrayOutput)
+}
+
+type VolumePropertiesResponseExportPolicyV1PtrOutput struct{ *pulumi.OutputState }
+
+func (VolumePropertiesResponseExportPolicyV1PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumePropertiesResponseExportPolicyV1)(nil)).Elem()
+}
+
+func (o VolumePropertiesResponseExportPolicyV1PtrOutput) ToVolumePropertiesResponseExportPolicyV1PtrOutput() VolumePropertiesResponseExportPolicyV1PtrOutput {
+	return o
+}
+
+func (o VolumePropertiesResponseExportPolicyV1PtrOutput) ToVolumePropertiesResponseExportPolicyV1PtrOutputWithContext(ctx context.Context) VolumePropertiesResponseExportPolicyV1PtrOutput {
+	return o
+}
+
+func (o VolumePropertiesResponseExportPolicyV1PtrOutput) Elem() VolumePropertiesResponseExportPolicyV1Output {
+	return o.ApplyT(func(v *VolumePropertiesResponseExportPolicyV1) VolumePropertiesResponseExportPolicyV1 {
+		if v != nil {
+			return *v
+		}
+		var ret VolumePropertiesResponseExportPolicyV1
+		return ret
+	}).(VolumePropertiesResponseExportPolicyV1Output)
+}
+
+// Export policy rule
+func (o VolumePropertiesResponseExportPolicyV1PtrOutput) Rules() ExportPolicyRuleVolumeGroupResponseArrayOutput {
+	return o.ApplyT(func(v *VolumePropertiesResponseExportPolicyV1) []ExportPolicyRuleVolumeGroupResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(ExportPolicyRuleVolumeGroupResponseArrayOutput)
 }
 
 // Volume relocation properties
@@ -16474,10 +16721,12 @@ func init() {
 	pulumi.RegisterOutputType(EncryptionIdentityResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExportPolicyRuleOutput{})
 	pulumi.RegisterOutputType(ExportPolicyRuleArrayOutput{})
+	pulumi.RegisterOutputType(ExportPolicyRuleCapacityPoolVolumeResponseOutput{})
+	pulumi.RegisterOutputType(ExportPolicyRuleCapacityPoolVolumeResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExportPolicyRuleResponseOutput{})
 	pulumi.RegisterOutputType(ExportPolicyRuleResponseArrayOutput{})
-	pulumi.RegisterOutputType(ExportPolicyRuleResponseV1Output{})
-	pulumi.RegisterOutputType(ExportPolicyRuleResponseV1ArrayOutput{})
+	pulumi.RegisterOutputType(ExportPolicyRuleVolumeGroupResponseOutput{})
+	pulumi.RegisterOutputType(ExportPolicyRuleVolumeGroupResponseArrayOutput{})
 	pulumi.RegisterOutputType(FileSystemUserOutput{})
 	pulumi.RegisterOutputType(FileSystemUserPtrOutput{})
 	pulumi.RegisterOutputType(FileSystemUserResponseOutput{})
@@ -16568,6 +16817,8 @@ func init() {
 	pulumi.RegisterOutputType(VolumePropertiesResponseDataProtectionPtrOutput{})
 	pulumi.RegisterOutputType(VolumePropertiesResponseExportPolicyOutput{})
 	pulumi.RegisterOutputType(VolumePropertiesResponseExportPolicyPtrOutput{})
+	pulumi.RegisterOutputType(VolumePropertiesResponseExportPolicyV1Output{})
+	pulumi.RegisterOutputType(VolumePropertiesResponseExportPolicyV1PtrOutput{})
 	pulumi.RegisterOutputType(VolumeRelocationPropertiesOutput{})
 	pulumi.RegisterOutputType(VolumeRelocationPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(VolumeRelocationPropertiesResponseOutput{})

@@ -41,7 +41,7 @@ type TenantActionGroup struct {
 	// The list of voice receivers that are part of this tenant action group.
 	VoiceReceivers VoiceReceiverResponseArrayOutput `pulumi:"voiceReceivers"`
 	// The list of webhook receivers that are part of this tenant action group.
-	WebhookReceivers WebhookReceiverResponseV1ArrayOutput `pulumi:"webhookReceivers"`
+	WebhookReceivers WebhookReceiverTenantActionGroupResponseArrayOutput `pulumi:"webhookReceivers"`
 }
 
 // NewTenantActionGroup registers a new resource with the given unique name, arguments, and options.
@@ -251,8 +251,10 @@ func (o TenantActionGroupOutput) VoiceReceivers() VoiceReceiverResponseArrayOutp
 }
 
 // The list of webhook receivers that are part of this tenant action group.
-func (o TenantActionGroupOutput) WebhookReceivers() WebhookReceiverResponseV1ArrayOutput {
-	return o.ApplyT(func(v *TenantActionGroup) WebhookReceiverResponseV1ArrayOutput { return v.WebhookReceivers }).(WebhookReceiverResponseV1ArrayOutput)
+func (o TenantActionGroupOutput) WebhookReceivers() WebhookReceiverTenantActionGroupResponseArrayOutput {
+	return o.ApplyT(func(v *TenantActionGroup) WebhookReceiverTenantActionGroupResponseArrayOutput {
+		return v.WebhookReceivers
+	}).(WebhookReceiverTenantActionGroupResponseArrayOutput)
 }
 
 func init() {

@@ -27,7 +27,7 @@ type ContainerGroup struct {
 	// The reference container group profile properties.
 	ContainerGroupProfile ContainerGroupProfileReferenceDefinitionResponsePtrOutput `pulumi:"containerGroupProfile"`
 	// The containers within the container group.
-	Containers ContainerResponseV1ArrayOutput `pulumi:"containers"`
+	Containers ContainerContainerGroupResponseArrayOutput `pulumi:"containers"`
 	// The diagnostic information for a container group.
 	Diagnostics ContainerGroupDiagnosticsResponsePtrOutput `pulumi:"diagnostics"`
 	// The DNS config information for a container group.
@@ -39,9 +39,9 @@ type ContainerGroup struct {
 	// The identity of the container group, if configured.
 	Identity ContainerGroupIdentityResponsePtrOutput `pulumi:"identity"`
 	// The image registry credentials by which the container group is created from.
-	ImageRegistryCredentials ImageRegistryCredentialResponseV1ArrayOutput `pulumi:"imageRegistryCredentials"`
+	ImageRegistryCredentials ImageRegistryCredentialContainerGroupResponseArrayOutput `pulumi:"imageRegistryCredentials"`
 	// The init containers for a container group.
-	InitContainers InitContainerDefinitionResponseArrayOutput `pulumi:"initContainers"`
+	InitContainers InitContainerDefinitionContainerGroupResponseArrayOutput `pulumi:"initContainers"`
 	// The instance view of the container group. Only valid in response.
 	InstanceView ContainerGroupPropertiesResponseInstanceViewOutput `pulumi:"instanceView"`
 	// The IP address type of the container group.
@@ -74,7 +74,7 @@ type ContainerGroup struct {
 	// The resource type.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The list of volumes that can be mounted by containers in this container group.
-	Volumes VolumeResponseV1ArrayOutput `pulumi:"volumes"`
+	Volumes VolumeContainerGroupResponseArrayOutput `pulumi:"volumes"`
 	// The zones for the container group.
 	Zones pulumi.StringArrayOutput `pulumi:"zones"`
 }
@@ -364,8 +364,8 @@ func (o ContainerGroupOutput) ContainerGroupProfile() ContainerGroupProfileRefer
 }
 
 // The containers within the container group.
-func (o ContainerGroupOutput) Containers() ContainerResponseV1ArrayOutput {
-	return o.ApplyT(func(v *ContainerGroup) ContainerResponseV1ArrayOutput { return v.Containers }).(ContainerResponseV1ArrayOutput)
+func (o ContainerGroupOutput) Containers() ContainerContainerGroupResponseArrayOutput {
+	return o.ApplyT(func(v *ContainerGroup) ContainerContainerGroupResponseArrayOutput { return v.Containers }).(ContainerContainerGroupResponseArrayOutput)
 }
 
 // The diagnostic information for a container group.
@@ -394,15 +394,17 @@ func (o ContainerGroupOutput) Identity() ContainerGroupIdentityResponsePtrOutput
 }
 
 // The image registry credentials by which the container group is created from.
-func (o ContainerGroupOutput) ImageRegistryCredentials() ImageRegistryCredentialResponseV1ArrayOutput {
-	return o.ApplyT(func(v *ContainerGroup) ImageRegistryCredentialResponseV1ArrayOutput {
+func (o ContainerGroupOutput) ImageRegistryCredentials() ImageRegistryCredentialContainerGroupResponseArrayOutput {
+	return o.ApplyT(func(v *ContainerGroup) ImageRegistryCredentialContainerGroupResponseArrayOutput {
 		return v.ImageRegistryCredentials
-	}).(ImageRegistryCredentialResponseV1ArrayOutput)
+	}).(ImageRegistryCredentialContainerGroupResponseArrayOutput)
 }
 
 // The init containers for a container group.
-func (o ContainerGroupOutput) InitContainers() InitContainerDefinitionResponseArrayOutput {
-	return o.ApplyT(func(v *ContainerGroup) InitContainerDefinitionResponseArrayOutput { return v.InitContainers }).(InitContainerDefinitionResponseArrayOutput)
+func (o ContainerGroupOutput) InitContainers() InitContainerDefinitionContainerGroupResponseArrayOutput {
+	return o.ApplyT(func(v *ContainerGroup) InitContainerDefinitionContainerGroupResponseArrayOutput {
+		return v.InitContainers
+	}).(InitContainerDefinitionContainerGroupResponseArrayOutput)
 }
 
 // The instance view of the container group. Only valid in response.
@@ -479,8 +481,8 @@ func (o ContainerGroupOutput) Type() pulumi.StringOutput {
 }
 
 // The list of volumes that can be mounted by containers in this container group.
-func (o ContainerGroupOutput) Volumes() VolumeResponseV1ArrayOutput {
-	return o.ApplyT(func(v *ContainerGroup) VolumeResponseV1ArrayOutput { return v.Volumes }).(VolumeResponseV1ArrayOutput)
+func (o ContainerGroupOutput) Volumes() VolumeContainerGroupResponseArrayOutput {
+	return o.ApplyT(func(v *ContainerGroup) VolumeContainerGroupResponseArrayOutput { return v.Volumes }).(VolumeContainerGroupResponseArrayOutput)
 }
 
 // The zones for the container group.

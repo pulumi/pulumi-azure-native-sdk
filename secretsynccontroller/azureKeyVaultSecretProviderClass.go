@@ -23,7 +23,7 @@ type AzureKeyVaultSecretProviderClass struct {
 	// The user assigned managed identity client ID that should be used to access the Azure Key Vault.
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// The complex type of the extended location.
-	ExtendedLocation AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
+	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// The name of the Azure Key Vault to sync secrets from.
 	KeyvaultName pulumi.StringOutput `pulumi:"keyvaultName"`
 	// The geo-location where the resource lives
@@ -192,10 +192,8 @@ func (o AzureKeyVaultSecretProviderClassOutput) ClientId() pulumi.StringOutput {
 }
 
 // The complex type of the extended location.
-func (o AzureKeyVaultSecretProviderClassOutput) ExtendedLocation() AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput {
-	return o.ApplyT(func(v *AzureKeyVaultSecretProviderClass) AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput {
-		return v.ExtendedLocation
-	}).(AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput)
+func (o AzureKeyVaultSecretProviderClassOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v *AzureKeyVaultSecretProviderClass) ExtendedLocationResponsePtrOutput { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
 }
 
 // The name of the Azure Key Vault to sync secrets from.

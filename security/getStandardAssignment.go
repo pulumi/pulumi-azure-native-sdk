@@ -34,7 +34,7 @@ type LookupStandardAssignmentArgs struct {
 // Security Assignment on a resource group over a given scope
 type LookupStandardAssignmentResult struct {
 	// Standard item with key as applied to this standard assignment over the given scope
-	AssignedStandard *CommonAssignedStandardItemResponse `pulumi:"assignedStandard"`
+	AssignedStandard *AssignedStandardItemResponse `pulumi:"assignedStandard"`
 	// Additional data about assignment that has Attest effect
 	AttestationData *StandardAssignmentPropertiesAttestationDataResponse `pulumi:"attestationData"`
 	// The Azure API version of the resource.
@@ -99,8 +99,8 @@ func (o LookupStandardAssignmentResultOutput) ToLookupStandardAssignmentResultOu
 }
 
 // Standard item with key as applied to this standard assignment over the given scope
-func (o LookupStandardAssignmentResultOutput) AssignedStandard() CommonAssignedStandardItemResponsePtrOutput {
-	return o.ApplyT(func(v LookupStandardAssignmentResult) *CommonAssignedStandardItemResponse { return v.AssignedStandard }).(CommonAssignedStandardItemResponsePtrOutput)
+func (o LookupStandardAssignmentResultOutput) AssignedStandard() AssignedStandardItemResponsePtrOutput {
+	return o.ApplyT(func(v LookupStandardAssignmentResult) *AssignedStandardItemResponse { return v.AssignedStandard }).(AssignedStandardItemResponsePtrOutput)
 }
 
 // Additional data about assignment that has Attest effect

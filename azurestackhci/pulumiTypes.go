@@ -192,6 +192,46 @@ func (o AdapterPropertyOverridesPtrOutput) NetworkDirectTechnology() pulumi.Stri
 }
 
 // The AdapterPropertyOverrides of a cluster.
+type AdapterPropertyOverridesHciEdgeDeviceResponse struct {
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	JumboPacket string `pulumi:"jumboPacket"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	NetworkDirect string `pulumi:"networkDirect"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation. Expected values are 'iWARP', 'RoCEv2', 'RoCE'
+	NetworkDirectTechnology string `pulumi:"networkDirectTechnology"`
+}
+
+// The AdapterPropertyOverrides of a cluster.
+type AdapterPropertyOverridesHciEdgeDeviceResponseOutput struct{ *pulumi.OutputState }
+
+func (AdapterPropertyOverridesHciEdgeDeviceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdapterPropertyOverridesHciEdgeDeviceResponse)(nil)).Elem()
+}
+
+func (o AdapterPropertyOverridesHciEdgeDeviceResponseOutput) ToAdapterPropertyOverridesHciEdgeDeviceResponseOutput() AdapterPropertyOverridesHciEdgeDeviceResponseOutput {
+	return o
+}
+
+func (o AdapterPropertyOverridesHciEdgeDeviceResponseOutput) ToAdapterPropertyOverridesHciEdgeDeviceResponseOutputWithContext(ctx context.Context) AdapterPropertyOverridesHciEdgeDeviceResponseOutput {
+	return o
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o AdapterPropertyOverridesHciEdgeDeviceResponseOutput) JumboPacket() pulumi.StringOutput {
+	return o.ApplyT(func(v AdapterPropertyOverridesHciEdgeDeviceResponse) string { return v.JumboPacket }).(pulumi.StringOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o AdapterPropertyOverridesHciEdgeDeviceResponseOutput) NetworkDirect() pulumi.StringOutput {
+	return o.ApplyT(func(v AdapterPropertyOverridesHciEdgeDeviceResponse) string { return v.NetworkDirect }).(pulumi.StringOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation. Expected values are 'iWARP', 'RoCEv2', 'RoCE'
+func (o AdapterPropertyOverridesHciEdgeDeviceResponseOutput) NetworkDirectTechnology() pulumi.StringOutput {
+	return o.ApplyT(func(v AdapterPropertyOverridesHciEdgeDeviceResponse) string { return v.NetworkDirectTechnology }).(pulumi.StringOutput)
+}
+
+// The AdapterPropertyOverrides of a cluster.
 type AdapterPropertyOverridesResponse struct {
 	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
 	JumboPacket *string `pulumi:"jumboPacket"`
@@ -283,46 +323,6 @@ func (o AdapterPropertyOverridesResponsePtrOutput) NetworkDirectTechnology() pul
 		}
 		return v.NetworkDirectTechnology
 	}).(pulumi.StringPtrOutput)
-}
-
-// The AdapterPropertyOverrides of a cluster.
-type AdapterPropertyOverridesResponseV1 struct {
-	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-	JumboPacket string `pulumi:"jumboPacket"`
-	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-	NetworkDirect string `pulumi:"networkDirect"`
-	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation. Expected values are 'iWARP', 'RoCEv2', 'RoCE'
-	NetworkDirectTechnology string `pulumi:"networkDirectTechnology"`
-}
-
-// The AdapterPropertyOverrides of a cluster.
-type AdapterPropertyOverridesResponseV1Output struct{ *pulumi.OutputState }
-
-func (AdapterPropertyOverridesResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*AdapterPropertyOverridesResponseV1)(nil)).Elem()
-}
-
-func (o AdapterPropertyOverridesResponseV1Output) ToAdapterPropertyOverridesResponseV1Output() AdapterPropertyOverridesResponseV1Output {
-	return o
-}
-
-func (o AdapterPropertyOverridesResponseV1Output) ToAdapterPropertyOverridesResponseV1OutputWithContext(ctx context.Context) AdapterPropertyOverridesResponseV1Output {
-	return o
-}
-
-// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-func (o AdapterPropertyOverridesResponseV1Output) JumboPacket() pulumi.StringOutput {
-	return o.ApplyT(func(v AdapterPropertyOverridesResponseV1) string { return v.JumboPacket }).(pulumi.StringOutput)
-}
-
-// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-func (o AdapterPropertyOverridesResponseV1Output) NetworkDirect() pulumi.StringOutput {
-	return o.ApplyT(func(v AdapterPropertyOverridesResponseV1) string { return v.NetworkDirect }).(pulumi.StringOutput)
-}
-
-// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation. Expected values are 'iWARP', 'RoCEv2', 'RoCE'
-func (o AdapterPropertyOverridesResponseV1Output) NetworkDirectTechnology() pulumi.StringOutput {
-	return o.ApplyT(func(v AdapterPropertyOverridesResponseV1) string { return v.NetworkDirectTechnology }).(pulumi.StringOutput)
 }
 
 // Connectivity related configuration required by arc server.
@@ -6217,7 +6217,7 @@ func (o EdgeMachineRemoteSupportNodeSettingsResponseOutput) UpdatedAt() pulumi.S
 // Reported properties for edge machine.
 type EdgeMachineReportedPropertiesResponse struct {
 	// Extension details for edge machine.
-	ExtensionProfile ExtensionProfileResponseV1 `pulumi:"extensionProfile"`
+	ExtensionProfile ExtensionProfileEdgeMachineResponse `pulumi:"extensionProfile"`
 	// Hardware related information for edge machine.
 	HardwareProfile HardwareProfileResponse `pulumi:"hardwareProfile"`
 	// Last time data reported.
@@ -6248,8 +6248,10 @@ func (o EdgeMachineReportedPropertiesResponseOutput) ToEdgeMachineReportedProper
 }
 
 // Extension details for edge machine.
-func (o EdgeMachineReportedPropertiesResponseOutput) ExtensionProfile() ExtensionProfileResponseV1Output {
-	return o.ApplyT(func(v EdgeMachineReportedPropertiesResponse) ExtensionProfileResponseV1 { return v.ExtensionProfile }).(ExtensionProfileResponseV1Output)
+func (o EdgeMachineReportedPropertiesResponseOutput) ExtensionProfile() ExtensionProfileEdgeMachineResponseOutput {
+	return o.ApplyT(func(v EdgeMachineReportedPropertiesResponse) ExtensionProfileEdgeMachineResponse {
+		return v.ExtensionProfile
+	}).(ExtensionProfileEdgeMachineResponseOutput)
 }
 
 // Hardware related information for edge machine.
@@ -6339,6 +6341,52 @@ func (o ErrorAdditionalInfoResponseArrayOutput) Index(i pulumi.IntInput) ErrorAd
 	}).(ErrorAdditionalInfoResponseOutput)
 }
 
+// details of validation failure
+type ErrorDetailHciEdgeDeviceResponse struct {
+	// Exception details while installing extension.
+	Exception string `pulumi:"exception"`
+}
+
+// details of validation failure
+type ErrorDetailHciEdgeDeviceResponseOutput struct{ *pulumi.OutputState }
+
+func (ErrorDetailHciEdgeDeviceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ErrorDetailHciEdgeDeviceResponse)(nil)).Elem()
+}
+
+func (o ErrorDetailHciEdgeDeviceResponseOutput) ToErrorDetailHciEdgeDeviceResponseOutput() ErrorDetailHciEdgeDeviceResponseOutput {
+	return o
+}
+
+func (o ErrorDetailHciEdgeDeviceResponseOutput) ToErrorDetailHciEdgeDeviceResponseOutputWithContext(ctx context.Context) ErrorDetailHciEdgeDeviceResponseOutput {
+	return o
+}
+
+// Exception details while installing extension.
+func (o ErrorDetailHciEdgeDeviceResponseOutput) Exception() pulumi.StringOutput {
+	return o.ApplyT(func(v ErrorDetailHciEdgeDeviceResponse) string { return v.Exception }).(pulumi.StringOutput)
+}
+
+type ErrorDetailHciEdgeDeviceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ErrorDetailHciEdgeDeviceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ErrorDetailHciEdgeDeviceResponse)(nil)).Elem()
+}
+
+func (o ErrorDetailHciEdgeDeviceResponseArrayOutput) ToErrorDetailHciEdgeDeviceResponseArrayOutput() ErrorDetailHciEdgeDeviceResponseArrayOutput {
+	return o
+}
+
+func (o ErrorDetailHciEdgeDeviceResponseArrayOutput) ToErrorDetailHciEdgeDeviceResponseArrayOutputWithContext(ctx context.Context) ErrorDetailHciEdgeDeviceResponseArrayOutput {
+	return o
+}
+
+func (o ErrorDetailHciEdgeDeviceResponseArrayOutput) Index(i pulumi.IntInput) ErrorDetailHciEdgeDeviceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorDetailHciEdgeDeviceResponse {
+		return vs[0].([]ErrorDetailHciEdgeDeviceResponse)[vs[1].(int)]
+	}).(ErrorDetailHciEdgeDeviceResponseOutput)
+}
+
 // The error detail.
 type ErrorDetailResponse struct {
 	// The error additional info.
@@ -6411,52 +6459,6 @@ func (o ErrorDetailResponseArrayOutput) Index(i pulumi.IntInput) ErrorDetailResp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorDetailResponse {
 		return vs[0].([]ErrorDetailResponse)[vs[1].(int)]
 	}).(ErrorDetailResponseOutput)
-}
-
-// details of validation failure
-type ErrorDetailResponseV1 struct {
-	// Exception details while installing extension.
-	Exception string `pulumi:"exception"`
-}
-
-// details of validation failure
-type ErrorDetailResponseV1Output struct{ *pulumi.OutputState }
-
-func (ErrorDetailResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*ErrorDetailResponseV1)(nil)).Elem()
-}
-
-func (o ErrorDetailResponseV1Output) ToErrorDetailResponseV1Output() ErrorDetailResponseV1Output {
-	return o
-}
-
-func (o ErrorDetailResponseV1Output) ToErrorDetailResponseV1OutputWithContext(ctx context.Context) ErrorDetailResponseV1Output {
-	return o
-}
-
-// Exception details while installing extension.
-func (o ErrorDetailResponseV1Output) Exception() pulumi.StringOutput {
-	return o.ApplyT(func(v ErrorDetailResponseV1) string { return v.Exception }).(pulumi.StringOutput)
-}
-
-type ErrorDetailResponseV1ArrayOutput struct{ *pulumi.OutputState }
-
-func (ErrorDetailResponseV1ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ErrorDetailResponseV1)(nil)).Elem()
-}
-
-func (o ErrorDetailResponseV1ArrayOutput) ToErrorDetailResponseV1ArrayOutput() ErrorDetailResponseV1ArrayOutput {
-	return o
-}
-
-func (o ErrorDetailResponseV1ArrayOutput) ToErrorDetailResponseV1ArrayOutputWithContext(ctx context.Context) ErrorDetailResponseV1ArrayOutput {
-	return o
-}
-
-func (o ErrorDetailResponseV1ArrayOutput) Index(i pulumi.IntInput) ErrorDetailResponseV1Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ErrorDetailResponseV1 {
-		return vs[0].([]ErrorDetailResponseV1)[vs[1].(int)]
-	}).(ErrorDetailResponseV1Output)
 }
 
 // The complex type of the extended location.
@@ -6871,6 +6873,32 @@ func (o ExtensionInstanceViewResponseStatusPtrOutput) Time() pulumi.StringPtrOut
 }
 
 // Extensions details for edge device.
+type ExtensionProfileEdgeMachineResponse struct {
+	// List of Arc extensions installed on edge device.
+	Extensions []HciEdgeDeviceArcExtensionResponse `pulumi:"extensions"`
+}
+
+// Extensions details for edge device.
+type ExtensionProfileEdgeMachineResponseOutput struct{ *pulumi.OutputState }
+
+func (ExtensionProfileEdgeMachineResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtensionProfileEdgeMachineResponse)(nil)).Elem()
+}
+
+func (o ExtensionProfileEdgeMachineResponseOutput) ToExtensionProfileEdgeMachineResponseOutput() ExtensionProfileEdgeMachineResponseOutput {
+	return o
+}
+
+func (o ExtensionProfileEdgeMachineResponseOutput) ToExtensionProfileEdgeMachineResponseOutputWithContext(ctx context.Context) ExtensionProfileEdgeMachineResponseOutput {
+	return o
+}
+
+// List of Arc extensions installed on edge device.
+func (o ExtensionProfileEdgeMachineResponseOutput) Extensions() HciEdgeDeviceArcExtensionResponseArrayOutput {
+	return o.ApplyT(func(v ExtensionProfileEdgeMachineResponse) []HciEdgeDeviceArcExtensionResponse { return v.Extensions }).(HciEdgeDeviceArcExtensionResponseArrayOutput)
+}
+
+// Extensions details for edge device.
 type ExtensionProfileResponse struct {
 	// List of Arc extensions installed on edge device.
 	Extensions []ExtensionResponse `pulumi:"extensions"`
@@ -6896,36 +6924,10 @@ func (o ExtensionProfileResponseOutput) Extensions() ExtensionResponseArrayOutpu
 	return o.ApplyT(func(v ExtensionProfileResponse) []ExtensionResponse { return v.Extensions }).(ExtensionResponseArrayOutput)
 }
 
-// Extensions details for edge device.
-type ExtensionProfileResponseV1 struct {
-	// List of Arc extensions installed on edge device.
-	Extensions []HciEdgeDeviceArcExtensionResponse `pulumi:"extensions"`
-}
-
-// Extensions details for edge device.
-type ExtensionProfileResponseV1Output struct{ *pulumi.OutputState }
-
-func (ExtensionProfileResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExtensionProfileResponseV1)(nil)).Elem()
-}
-
-func (o ExtensionProfileResponseV1Output) ToExtensionProfileResponseV1Output() ExtensionProfileResponseV1Output {
-	return o
-}
-
-func (o ExtensionProfileResponseV1Output) ToExtensionProfileResponseV1OutputWithContext(ctx context.Context) ExtensionProfileResponseV1Output {
-	return o
-}
-
-// List of Arc extensions installed on edge device.
-func (o ExtensionProfileResponseV1Output) Extensions() HciEdgeDeviceArcExtensionResponseArrayOutput {
-	return o.ApplyT(func(v ExtensionProfileResponseV1) []HciEdgeDeviceArcExtensionResponse { return v.Extensions }).(HciEdgeDeviceArcExtensionResponseArrayOutput)
-}
-
 // Arc extension installed on edge device.
 type ExtensionResponse struct {
 	// Error details while installing Arc extension.
-	ErrorDetails []ErrorDetailResponseV1 `pulumi:"errorDetails"`
+	ErrorDetails []ErrorDetailHciEdgeDeviceResponse `pulumi:"errorDetails"`
 	// Arc extension name installed on edge device.
 	ExtensionName string `pulumi:"extensionName"`
 	// Arc Extension Azure resource id.
@@ -6966,8 +6968,8 @@ func (o ExtensionResponseOutput) ToExtensionResponseOutputWithContext(ctx contex
 }
 
 // Error details while installing Arc extension.
-func (o ExtensionResponseOutput) ErrorDetails() ErrorDetailResponseV1ArrayOutput {
-	return o.ApplyT(func(v ExtensionResponse) []ErrorDetailResponseV1 { return v.ErrorDetails }).(ErrorDetailResponseV1ArrayOutput)
+func (o ExtensionResponseOutput) ErrorDetails() ErrorDetailHciEdgeDeviceResponseArrayOutput {
+	return o.ApplyT(func(v ExtensionResponse) []ErrorDetailHciEdgeDeviceResponse { return v.ErrorDetails }).(ErrorDetailHciEdgeDeviceResponseArrayOutput)
 }
 
 // Arc extension name installed on edge device.
@@ -9740,7 +9742,7 @@ func (o HciEdgeDevicePropertiesResponseOutput) ReportedProperties() HciReportedP
 // The network profile of a device.
 type HciNetworkProfileResponse struct {
 	// HostNetwork config to deploy AzureStackHCI Cluster.
-	HostNetwork HostNetworkResponseV1 `pulumi:"hostNetwork"`
+	HostNetwork HostNetworkHciEdgeDeviceResponse `pulumi:"hostNetwork"`
 	// List of NIC Details of device.
 	NicDetails []HciNicDetailResponse `pulumi:"nicDetails"`
 	// List of switch details for edge device.
@@ -9763,8 +9765,8 @@ func (o HciNetworkProfileResponseOutput) ToHciNetworkProfileResponseOutputWithCo
 }
 
 // HostNetwork config to deploy AzureStackHCI Cluster.
-func (o HciNetworkProfileResponseOutput) HostNetwork() HostNetworkResponseV1Output {
-	return o.ApplyT(func(v HciNetworkProfileResponse) HostNetworkResponseV1 { return v.HostNetwork }).(HostNetworkResponseV1Output)
+func (o HciNetworkProfileResponseOutput) HostNetwork() HostNetworkHciEdgeDeviceResponseOutput {
+	return o.ApplyT(func(v HciNetworkProfileResponse) HostNetworkHciEdgeDeviceResponse { return v.HostNetwork }).(HostNetworkHciEdgeDeviceResponseOutput)
 }
 
 // List of NIC Details of device.
@@ -10479,6 +10481,55 @@ func (o HostNetworkPtrOutput) StorageNetworks() StorageNetworksArrayOutput {
 }
 
 // The HostNetwork of a cluster.
+type HostNetworkHciEdgeDeviceResponse struct {
+	// Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically.
+	EnableStorageAutoIp bool `pulumi:"enableStorageAutoIp"`
+	// The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.
+	Intents []IntentsHciEdgeDeviceResponse `pulumi:"intents"`
+	// Defines how the storage adapters between nodes are connected either switch or switch less.
+	StorageConnectivitySwitchless bool `pulumi:"storageConnectivitySwitchless"`
+	// List of StorageNetworks config to deploy AzureStackHCI Cluster.
+	StorageNetworks []StorageNetworksHciEdgeDeviceResponse `pulumi:"storageNetworks"`
+}
+
+// The HostNetwork of a cluster.
+type HostNetworkHciEdgeDeviceResponseOutput struct{ *pulumi.OutputState }
+
+func (HostNetworkHciEdgeDeviceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostNetworkHciEdgeDeviceResponse)(nil)).Elem()
+}
+
+func (o HostNetworkHciEdgeDeviceResponseOutput) ToHostNetworkHciEdgeDeviceResponseOutput() HostNetworkHciEdgeDeviceResponseOutput {
+	return o
+}
+
+func (o HostNetworkHciEdgeDeviceResponseOutput) ToHostNetworkHciEdgeDeviceResponseOutputWithContext(ctx context.Context) HostNetworkHciEdgeDeviceResponseOutput {
+	return o
+}
+
+// Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically.
+func (o HostNetworkHciEdgeDeviceResponseOutput) EnableStorageAutoIp() pulumi.BoolOutput {
+	return o.ApplyT(func(v HostNetworkHciEdgeDeviceResponse) bool { return v.EnableStorageAutoIp }).(pulumi.BoolOutput)
+}
+
+// The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.
+func (o HostNetworkHciEdgeDeviceResponseOutput) Intents() IntentsHciEdgeDeviceResponseArrayOutput {
+	return o.ApplyT(func(v HostNetworkHciEdgeDeviceResponse) []IntentsHciEdgeDeviceResponse { return v.Intents }).(IntentsHciEdgeDeviceResponseArrayOutput)
+}
+
+// Defines how the storage adapters between nodes are connected either switch or switch less.
+func (o HostNetworkHciEdgeDeviceResponseOutput) StorageConnectivitySwitchless() pulumi.BoolOutput {
+	return o.ApplyT(func(v HostNetworkHciEdgeDeviceResponse) bool { return v.StorageConnectivitySwitchless }).(pulumi.BoolOutput)
+}
+
+// List of StorageNetworks config to deploy AzureStackHCI Cluster.
+func (o HostNetworkHciEdgeDeviceResponseOutput) StorageNetworks() StorageNetworksHciEdgeDeviceResponseArrayOutput {
+	return o.ApplyT(func(v HostNetworkHciEdgeDeviceResponse) []StorageNetworksHciEdgeDeviceResponse {
+		return v.StorageNetworks
+	}).(StorageNetworksHciEdgeDeviceResponseArrayOutput)
+}
+
+// The HostNetwork of a cluster.
 type HostNetworkResponse struct {
 	// Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically.
 	EnableStorageAutoIp *bool `pulumi:"enableStorageAutoIp"`
@@ -10604,53 +10655,6 @@ func (o HostNetworkResponsePtrOutput) StorageNetworks() StorageNetworksResponseA
 		}
 		return v.StorageNetworks
 	}).(StorageNetworksResponseArrayOutput)
-}
-
-// The HostNetwork of a cluster.
-type HostNetworkResponseV1 struct {
-	// Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically.
-	EnableStorageAutoIp bool `pulumi:"enableStorageAutoIp"`
-	// The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.
-	Intents []IntentsResponseV1 `pulumi:"intents"`
-	// Defines how the storage adapters between nodes are connected either switch or switch less.
-	StorageConnectivitySwitchless bool `pulumi:"storageConnectivitySwitchless"`
-	// List of StorageNetworks config to deploy AzureStackHCI Cluster.
-	StorageNetworks []StorageNetworksResponseV1 `pulumi:"storageNetworks"`
-}
-
-// The HostNetwork of a cluster.
-type HostNetworkResponseV1Output struct{ *pulumi.OutputState }
-
-func (HostNetworkResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*HostNetworkResponseV1)(nil)).Elem()
-}
-
-func (o HostNetworkResponseV1Output) ToHostNetworkResponseV1Output() HostNetworkResponseV1Output {
-	return o
-}
-
-func (o HostNetworkResponseV1Output) ToHostNetworkResponseV1OutputWithContext(ctx context.Context) HostNetworkResponseV1Output {
-	return o
-}
-
-// Optional parameter required only for 3 Nodes Switchless deployments. This allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically.
-func (o HostNetworkResponseV1Output) EnableStorageAutoIp() pulumi.BoolOutput {
-	return o.ApplyT(func(v HostNetworkResponseV1) bool { return v.EnableStorageAutoIp }).(pulumi.BoolOutput)
-}
-
-// The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.
-func (o HostNetworkResponseV1Output) Intents() IntentsResponseV1ArrayOutput {
-	return o.ApplyT(func(v HostNetworkResponseV1) []IntentsResponseV1 { return v.Intents }).(IntentsResponseV1ArrayOutput)
-}
-
-// Defines how the storage adapters between nodes are connected either switch or switch less.
-func (o HostNetworkResponseV1Output) StorageConnectivitySwitchless() pulumi.BoolOutput {
-	return o.ApplyT(func(v HostNetworkResponseV1) bool { return v.StorageConnectivitySwitchless }).(pulumi.BoolOutput)
-}
-
-// List of StorageNetworks config to deploy AzureStackHCI Cluster.
-func (o HostNetworkResponseV1Output) StorageNetworks() StorageNetworksResponseV1ArrayOutput {
-	return o.ApplyT(func(v HostNetworkResponseV1) []StorageNetworksResponseV1 { return v.StorageNetworks }).(StorageNetworksResponseV1ArrayOutput)
 }
 
 // HTTP Proxy configuration for the VM.
@@ -13514,6 +13518,168 @@ func (o IntentsArrayOutput) Index(i pulumi.IntInput) IntentsOutput {
 }
 
 // The Intents of a cluster.
+type IntentsHciEdgeDeviceResponse struct {
+	// Set Adapter PropertyOverrides for cluster.
+	AdapterPropertyOverrides AdapterPropertyOverridesHciEdgeDeviceResponse `pulumi:"adapterPropertyOverrides"`
+	// Array of adapters used for the network intent.
+	IntentAdapters []string `pulumi:"intentAdapters"`
+	// Name of the network intent you wish to create.
+	IntentName string `pulumi:"intentName"`
+	// IntentType for host network intent.
+	IntentType float64 `pulumi:"intentType"`
+	// IsComputeIntentSet for host network intent.
+	IsComputeIntentSet bool `pulumi:"isComputeIntentSet"`
+	// IsManagementIntentSet for host network intent.
+	IsManagementIntentSet bool `pulumi:"isManagementIntentSet"`
+	// IsNetworkIntentType for host network intent.
+	IsNetworkIntentType bool `pulumi:"isNetworkIntentType"`
+	// IntentType for host network intent.
+	IsOnlyStorage bool `pulumi:"isOnlyStorage"`
+	// IsOnlyStretch for host network intent.
+	IsOnlyStretch bool `pulumi:"isOnlyStretch"`
+	// IsStorageIntentSet for host network intent.
+	IsStorageIntentSet bool `pulumi:"isStorageIntentSet"`
+	// IsStretchIntentSet for host network intent.
+	IsStretchIntentSet bool `pulumi:"isStretchIntentSet"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	OverrideAdapterProperty bool `pulumi:"overrideAdapterProperty"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	OverrideQosPolicy bool `pulumi:"overrideQosPolicy"`
+	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+	OverrideVirtualSwitchConfiguration bool `pulumi:"overrideVirtualSwitchConfiguration"`
+	// Set QoS PolicyOverrides for cluster.
+	QosPolicyOverrides QosPolicyOverridesResponse `pulumi:"qosPolicyOverrides"`
+	// Scope for host network intent.
+	Scope float64 `pulumi:"scope"`
+	// Set virtualSwitch ConfigurationOverrides for cluster.
+	VirtualSwitchConfigurationOverrides VirtualSwitchConfigurationOverridesHciEdgeDeviceResponse `pulumi:"virtualSwitchConfigurationOverrides"`
+}
+
+// The Intents of a cluster.
+type IntentsHciEdgeDeviceResponseOutput struct{ *pulumi.OutputState }
+
+func (IntentsHciEdgeDeviceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntentsHciEdgeDeviceResponse)(nil)).Elem()
+}
+
+func (o IntentsHciEdgeDeviceResponseOutput) ToIntentsHciEdgeDeviceResponseOutput() IntentsHciEdgeDeviceResponseOutput {
+	return o
+}
+
+func (o IntentsHciEdgeDeviceResponseOutput) ToIntentsHciEdgeDeviceResponseOutputWithContext(ctx context.Context) IntentsHciEdgeDeviceResponseOutput {
+	return o
+}
+
+// Set Adapter PropertyOverrides for cluster.
+func (o IntentsHciEdgeDeviceResponseOutput) AdapterPropertyOverrides() AdapterPropertyOverridesHciEdgeDeviceResponseOutput {
+	return o.ApplyT(func(v IntentsHciEdgeDeviceResponse) AdapterPropertyOverridesHciEdgeDeviceResponse {
+		return v.AdapterPropertyOverrides
+	}).(AdapterPropertyOverridesHciEdgeDeviceResponseOutput)
+}
+
+// Array of adapters used for the network intent.
+func (o IntentsHciEdgeDeviceResponseOutput) IntentAdapters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IntentsHciEdgeDeviceResponse) []string { return v.IntentAdapters }).(pulumi.StringArrayOutput)
+}
+
+// Name of the network intent you wish to create.
+func (o IntentsHciEdgeDeviceResponseOutput) IntentName() pulumi.StringOutput {
+	return o.ApplyT(func(v IntentsHciEdgeDeviceResponse) string { return v.IntentName }).(pulumi.StringOutput)
+}
+
+// IntentType for host network intent.
+func (o IntentsHciEdgeDeviceResponseOutput) IntentType() pulumi.Float64Output {
+	return o.ApplyT(func(v IntentsHciEdgeDeviceResponse) float64 { return v.IntentType }).(pulumi.Float64Output)
+}
+
+// IsComputeIntentSet for host network intent.
+func (o IntentsHciEdgeDeviceResponseOutput) IsComputeIntentSet() pulumi.BoolOutput {
+	return o.ApplyT(func(v IntentsHciEdgeDeviceResponse) bool { return v.IsComputeIntentSet }).(pulumi.BoolOutput)
+}
+
+// IsManagementIntentSet for host network intent.
+func (o IntentsHciEdgeDeviceResponseOutput) IsManagementIntentSet() pulumi.BoolOutput {
+	return o.ApplyT(func(v IntentsHciEdgeDeviceResponse) bool { return v.IsManagementIntentSet }).(pulumi.BoolOutput)
+}
+
+// IsNetworkIntentType for host network intent.
+func (o IntentsHciEdgeDeviceResponseOutput) IsNetworkIntentType() pulumi.BoolOutput {
+	return o.ApplyT(func(v IntentsHciEdgeDeviceResponse) bool { return v.IsNetworkIntentType }).(pulumi.BoolOutput)
+}
+
+// IntentType for host network intent.
+func (o IntentsHciEdgeDeviceResponseOutput) IsOnlyStorage() pulumi.BoolOutput {
+	return o.ApplyT(func(v IntentsHciEdgeDeviceResponse) bool { return v.IsOnlyStorage }).(pulumi.BoolOutput)
+}
+
+// IsOnlyStretch for host network intent.
+func (o IntentsHciEdgeDeviceResponseOutput) IsOnlyStretch() pulumi.BoolOutput {
+	return o.ApplyT(func(v IntentsHciEdgeDeviceResponse) bool { return v.IsOnlyStretch }).(pulumi.BoolOutput)
+}
+
+// IsStorageIntentSet for host network intent.
+func (o IntentsHciEdgeDeviceResponseOutput) IsStorageIntentSet() pulumi.BoolOutput {
+	return o.ApplyT(func(v IntentsHciEdgeDeviceResponse) bool { return v.IsStorageIntentSet }).(pulumi.BoolOutput)
+}
+
+// IsStretchIntentSet for host network intent.
+func (o IntentsHciEdgeDeviceResponseOutput) IsStretchIntentSet() pulumi.BoolOutput {
+	return o.ApplyT(func(v IntentsHciEdgeDeviceResponse) bool { return v.IsStretchIntentSet }).(pulumi.BoolOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o IntentsHciEdgeDeviceResponseOutput) OverrideAdapterProperty() pulumi.BoolOutput {
+	return o.ApplyT(func(v IntentsHciEdgeDeviceResponse) bool { return v.OverrideAdapterProperty }).(pulumi.BoolOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o IntentsHciEdgeDeviceResponseOutput) OverrideQosPolicy() pulumi.BoolOutput {
+	return o.ApplyT(func(v IntentsHciEdgeDeviceResponse) bool { return v.OverrideQosPolicy }).(pulumi.BoolOutput)
+}
+
+// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
+func (o IntentsHciEdgeDeviceResponseOutput) OverrideVirtualSwitchConfiguration() pulumi.BoolOutput {
+	return o.ApplyT(func(v IntentsHciEdgeDeviceResponse) bool { return v.OverrideVirtualSwitchConfiguration }).(pulumi.BoolOutput)
+}
+
+// Set QoS PolicyOverrides for cluster.
+func (o IntentsHciEdgeDeviceResponseOutput) QosPolicyOverrides() QosPolicyOverridesResponseOutput {
+	return o.ApplyT(func(v IntentsHciEdgeDeviceResponse) QosPolicyOverridesResponse { return v.QosPolicyOverrides }).(QosPolicyOverridesResponseOutput)
+}
+
+// Scope for host network intent.
+func (o IntentsHciEdgeDeviceResponseOutput) Scope() pulumi.Float64Output {
+	return o.ApplyT(func(v IntentsHciEdgeDeviceResponse) float64 { return v.Scope }).(pulumi.Float64Output)
+}
+
+// Set virtualSwitch ConfigurationOverrides for cluster.
+func (o IntentsHciEdgeDeviceResponseOutput) VirtualSwitchConfigurationOverrides() VirtualSwitchConfigurationOverridesHciEdgeDeviceResponseOutput {
+	return o.ApplyT(func(v IntentsHciEdgeDeviceResponse) VirtualSwitchConfigurationOverridesHciEdgeDeviceResponse {
+		return v.VirtualSwitchConfigurationOverrides
+	}).(VirtualSwitchConfigurationOverridesHciEdgeDeviceResponseOutput)
+}
+
+type IntentsHciEdgeDeviceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (IntentsHciEdgeDeviceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IntentsHciEdgeDeviceResponse)(nil)).Elem()
+}
+
+func (o IntentsHciEdgeDeviceResponseArrayOutput) ToIntentsHciEdgeDeviceResponseArrayOutput() IntentsHciEdgeDeviceResponseArrayOutput {
+	return o
+}
+
+func (o IntentsHciEdgeDeviceResponseArrayOutput) ToIntentsHciEdgeDeviceResponseArrayOutputWithContext(ctx context.Context) IntentsHciEdgeDeviceResponseArrayOutput {
+	return o
+}
+
+func (o IntentsHciEdgeDeviceResponseArrayOutput) Index(i pulumi.IntInput) IntentsHciEdgeDeviceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IntentsHciEdgeDeviceResponse {
+		return vs[0].([]IntentsHciEdgeDeviceResponse)[vs[1].(int)]
+	}).(IntentsHciEdgeDeviceResponseOutput)
+}
+
+// The Intents of a cluster.
 type IntentsResponse struct {
 	// Array of network interfaces used for the network intent.
 	Adapter []string `pulumi:"adapter"`
@@ -13636,166 +13802,6 @@ func (o IntentsResponseArrayOutput) Index(i pulumi.IntInput) IntentsResponseOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IntentsResponse {
 		return vs[0].([]IntentsResponse)[vs[1].(int)]
 	}).(IntentsResponseOutput)
-}
-
-// The Intents of a cluster.
-type IntentsResponseV1 struct {
-	// Set Adapter PropertyOverrides for cluster.
-	AdapterPropertyOverrides AdapterPropertyOverridesResponseV1 `pulumi:"adapterPropertyOverrides"`
-	// Array of adapters used for the network intent.
-	IntentAdapters []string `pulumi:"intentAdapters"`
-	// Name of the network intent you wish to create.
-	IntentName string `pulumi:"intentName"`
-	// IntentType for host network intent.
-	IntentType float64 `pulumi:"intentType"`
-	// IsComputeIntentSet for host network intent.
-	IsComputeIntentSet bool `pulumi:"isComputeIntentSet"`
-	// IsManagementIntentSet for host network intent.
-	IsManagementIntentSet bool `pulumi:"isManagementIntentSet"`
-	// IsNetworkIntentType for host network intent.
-	IsNetworkIntentType bool `pulumi:"isNetworkIntentType"`
-	// IntentType for host network intent.
-	IsOnlyStorage bool `pulumi:"isOnlyStorage"`
-	// IsOnlyStretch for host network intent.
-	IsOnlyStretch bool `pulumi:"isOnlyStretch"`
-	// IsStorageIntentSet for host network intent.
-	IsStorageIntentSet bool `pulumi:"isStorageIntentSet"`
-	// IsStretchIntentSet for host network intent.
-	IsStretchIntentSet bool `pulumi:"isStretchIntentSet"`
-	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-	OverrideAdapterProperty bool `pulumi:"overrideAdapterProperty"`
-	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-	OverrideQosPolicy bool `pulumi:"overrideQosPolicy"`
-	// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-	OverrideVirtualSwitchConfiguration bool `pulumi:"overrideVirtualSwitchConfiguration"`
-	// Set QoS PolicyOverrides for cluster.
-	QosPolicyOverrides QosPolicyOverridesResponse `pulumi:"qosPolicyOverrides"`
-	// Scope for host network intent.
-	Scope float64 `pulumi:"scope"`
-	// Set virtualSwitch ConfigurationOverrides for cluster.
-	VirtualSwitchConfigurationOverrides VirtualSwitchConfigurationOverridesResponseV1 `pulumi:"virtualSwitchConfigurationOverrides"`
-}
-
-// The Intents of a cluster.
-type IntentsResponseV1Output struct{ *pulumi.OutputState }
-
-func (IntentsResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*IntentsResponseV1)(nil)).Elem()
-}
-
-func (o IntentsResponseV1Output) ToIntentsResponseV1Output() IntentsResponseV1Output {
-	return o
-}
-
-func (o IntentsResponseV1Output) ToIntentsResponseV1OutputWithContext(ctx context.Context) IntentsResponseV1Output {
-	return o
-}
-
-// Set Adapter PropertyOverrides for cluster.
-func (o IntentsResponseV1Output) AdapterPropertyOverrides() AdapterPropertyOverridesResponseV1Output {
-	return o.ApplyT(func(v IntentsResponseV1) AdapterPropertyOverridesResponseV1 { return v.AdapterPropertyOverrides }).(AdapterPropertyOverridesResponseV1Output)
-}
-
-// Array of adapters used for the network intent.
-func (o IntentsResponseV1Output) IntentAdapters() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v IntentsResponseV1) []string { return v.IntentAdapters }).(pulumi.StringArrayOutput)
-}
-
-// Name of the network intent you wish to create.
-func (o IntentsResponseV1Output) IntentName() pulumi.StringOutput {
-	return o.ApplyT(func(v IntentsResponseV1) string { return v.IntentName }).(pulumi.StringOutput)
-}
-
-// IntentType for host network intent.
-func (o IntentsResponseV1Output) IntentType() pulumi.Float64Output {
-	return o.ApplyT(func(v IntentsResponseV1) float64 { return v.IntentType }).(pulumi.Float64Output)
-}
-
-// IsComputeIntentSet for host network intent.
-func (o IntentsResponseV1Output) IsComputeIntentSet() pulumi.BoolOutput {
-	return o.ApplyT(func(v IntentsResponseV1) bool { return v.IsComputeIntentSet }).(pulumi.BoolOutput)
-}
-
-// IsManagementIntentSet for host network intent.
-func (o IntentsResponseV1Output) IsManagementIntentSet() pulumi.BoolOutput {
-	return o.ApplyT(func(v IntentsResponseV1) bool { return v.IsManagementIntentSet }).(pulumi.BoolOutput)
-}
-
-// IsNetworkIntentType for host network intent.
-func (o IntentsResponseV1Output) IsNetworkIntentType() pulumi.BoolOutput {
-	return o.ApplyT(func(v IntentsResponseV1) bool { return v.IsNetworkIntentType }).(pulumi.BoolOutput)
-}
-
-// IntentType for host network intent.
-func (o IntentsResponseV1Output) IsOnlyStorage() pulumi.BoolOutput {
-	return o.ApplyT(func(v IntentsResponseV1) bool { return v.IsOnlyStorage }).(pulumi.BoolOutput)
-}
-
-// IsOnlyStretch for host network intent.
-func (o IntentsResponseV1Output) IsOnlyStretch() pulumi.BoolOutput {
-	return o.ApplyT(func(v IntentsResponseV1) bool { return v.IsOnlyStretch }).(pulumi.BoolOutput)
-}
-
-// IsStorageIntentSet for host network intent.
-func (o IntentsResponseV1Output) IsStorageIntentSet() pulumi.BoolOutput {
-	return o.ApplyT(func(v IntentsResponseV1) bool { return v.IsStorageIntentSet }).(pulumi.BoolOutput)
-}
-
-// IsStretchIntentSet for host network intent.
-func (o IntentsResponseV1Output) IsStretchIntentSet() pulumi.BoolOutput {
-	return o.ApplyT(func(v IntentsResponseV1) bool { return v.IsStretchIntentSet }).(pulumi.BoolOutput)
-}
-
-// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-func (o IntentsResponseV1Output) OverrideAdapterProperty() pulumi.BoolOutput {
-	return o.ApplyT(func(v IntentsResponseV1) bool { return v.OverrideAdapterProperty }).(pulumi.BoolOutput)
-}
-
-// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-func (o IntentsResponseV1Output) OverrideQosPolicy() pulumi.BoolOutput {
-	return o.ApplyT(func(v IntentsResponseV1) bool { return v.OverrideQosPolicy }).(pulumi.BoolOutput)
-}
-
-// This parameter should only be modified based on your OEM guidance. Do not modify this parameter without OEM validation.
-func (o IntentsResponseV1Output) OverrideVirtualSwitchConfiguration() pulumi.BoolOutput {
-	return o.ApplyT(func(v IntentsResponseV1) bool { return v.OverrideVirtualSwitchConfiguration }).(pulumi.BoolOutput)
-}
-
-// Set QoS PolicyOverrides for cluster.
-func (o IntentsResponseV1Output) QosPolicyOverrides() QosPolicyOverridesResponseOutput {
-	return o.ApplyT(func(v IntentsResponseV1) QosPolicyOverridesResponse { return v.QosPolicyOverrides }).(QosPolicyOverridesResponseOutput)
-}
-
-// Scope for host network intent.
-func (o IntentsResponseV1Output) Scope() pulumi.Float64Output {
-	return o.ApplyT(func(v IntentsResponseV1) float64 { return v.Scope }).(pulumi.Float64Output)
-}
-
-// Set virtualSwitch ConfigurationOverrides for cluster.
-func (o IntentsResponseV1Output) VirtualSwitchConfigurationOverrides() VirtualSwitchConfigurationOverridesResponseV1Output {
-	return o.ApplyT(func(v IntentsResponseV1) VirtualSwitchConfigurationOverridesResponseV1 {
-		return v.VirtualSwitchConfigurationOverrides
-	}).(VirtualSwitchConfigurationOverridesResponseV1Output)
-}
-
-type IntentsResponseV1ArrayOutput struct{ *pulumi.OutputState }
-
-func (IntentsResponseV1ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]IntentsResponseV1)(nil)).Elem()
-}
-
-func (o IntentsResponseV1ArrayOutput) ToIntentsResponseV1ArrayOutput() IntentsResponseV1ArrayOutput {
-	return o
-}
-
-func (o IntentsResponseV1ArrayOutput) ToIntentsResponseV1ArrayOutputWithContext(ctx context.Context) IntentsResponseV1ArrayOutput {
-	return o
-}
-
-func (o IntentsResponseV1ArrayOutput) Index(i pulumi.IntInput) IntentsResponseV1Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IntentsResponseV1 {
-		return vs[0].([]IntentsResponseV1)[vs[1].(int)]
-	}).(IntentsResponseV1Output)
 }
 
 // DNS Settings of the interface
@@ -28144,6 +28150,66 @@ func (o StorageAdapterIPInfoArrayOutput) Index(i pulumi.IntInput) StorageAdapter
 }
 
 // The StorageAdapter physical nodes of a cluster.
+type StorageAdapterIPInfoHciEdgeDeviceResponse struct {
+	// The IPv4 address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
+	Ipv4Address string `pulumi:"ipv4Address"`
+	// storage adapter physical node name.
+	PhysicalNode string `pulumi:"physicalNode"`
+	// The SubnetMask address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
+	SubnetMask string `pulumi:"subnetMask"`
+}
+
+// The StorageAdapter physical nodes of a cluster.
+type StorageAdapterIPInfoHciEdgeDeviceResponseOutput struct{ *pulumi.OutputState }
+
+func (StorageAdapterIPInfoHciEdgeDeviceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageAdapterIPInfoHciEdgeDeviceResponse)(nil)).Elem()
+}
+
+func (o StorageAdapterIPInfoHciEdgeDeviceResponseOutput) ToStorageAdapterIPInfoHciEdgeDeviceResponseOutput() StorageAdapterIPInfoHciEdgeDeviceResponseOutput {
+	return o
+}
+
+func (o StorageAdapterIPInfoHciEdgeDeviceResponseOutput) ToStorageAdapterIPInfoHciEdgeDeviceResponseOutputWithContext(ctx context.Context) StorageAdapterIPInfoHciEdgeDeviceResponseOutput {
+	return o
+}
+
+// The IPv4 address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
+func (o StorageAdapterIPInfoHciEdgeDeviceResponseOutput) Ipv4Address() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageAdapterIPInfoHciEdgeDeviceResponse) string { return v.Ipv4Address }).(pulumi.StringOutput)
+}
+
+// storage adapter physical node name.
+func (o StorageAdapterIPInfoHciEdgeDeviceResponseOutput) PhysicalNode() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageAdapterIPInfoHciEdgeDeviceResponse) string { return v.PhysicalNode }).(pulumi.StringOutput)
+}
+
+// The SubnetMask address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
+func (o StorageAdapterIPInfoHciEdgeDeviceResponseOutput) SubnetMask() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageAdapterIPInfoHciEdgeDeviceResponse) string { return v.SubnetMask }).(pulumi.StringOutput)
+}
+
+type StorageAdapterIPInfoHciEdgeDeviceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (StorageAdapterIPInfoHciEdgeDeviceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StorageAdapterIPInfoHciEdgeDeviceResponse)(nil)).Elem()
+}
+
+func (o StorageAdapterIPInfoHciEdgeDeviceResponseArrayOutput) ToStorageAdapterIPInfoHciEdgeDeviceResponseArrayOutput() StorageAdapterIPInfoHciEdgeDeviceResponseArrayOutput {
+	return o
+}
+
+func (o StorageAdapterIPInfoHciEdgeDeviceResponseArrayOutput) ToStorageAdapterIPInfoHciEdgeDeviceResponseArrayOutputWithContext(ctx context.Context) StorageAdapterIPInfoHciEdgeDeviceResponseArrayOutput {
+	return o
+}
+
+func (o StorageAdapterIPInfoHciEdgeDeviceResponseArrayOutput) Index(i pulumi.IntInput) StorageAdapterIPInfoHciEdgeDeviceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageAdapterIPInfoHciEdgeDeviceResponse {
+		return vs[0].([]StorageAdapterIPInfoHciEdgeDeviceResponse)[vs[1].(int)]
+	}).(StorageAdapterIPInfoHciEdgeDeviceResponseOutput)
+}
+
+// The StorageAdapter physical nodes of a cluster.
 type StorageAdapterIPInfoResponse struct {
 	// The IPv4 address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
 	Ipv4Address *string `pulumi:"ipv4Address"`
@@ -28201,66 +28267,6 @@ func (o StorageAdapterIPInfoResponseArrayOutput) Index(i pulumi.IntInput) Storag
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageAdapterIPInfoResponse {
 		return vs[0].([]StorageAdapterIPInfoResponse)[vs[1].(int)]
 	}).(StorageAdapterIPInfoResponseOutput)
-}
-
-// The StorageAdapter physical nodes of a cluster.
-type StorageAdapterIPInfoResponseV1 struct {
-	// The IPv4 address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
-	Ipv4Address string `pulumi:"ipv4Address"`
-	// storage adapter physical node name.
-	PhysicalNode string `pulumi:"physicalNode"`
-	// The SubnetMask address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
-	SubnetMask string `pulumi:"subnetMask"`
-}
-
-// The StorageAdapter physical nodes of a cluster.
-type StorageAdapterIPInfoResponseV1Output struct{ *pulumi.OutputState }
-
-func (StorageAdapterIPInfoResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageAdapterIPInfoResponseV1)(nil)).Elem()
-}
-
-func (o StorageAdapterIPInfoResponseV1Output) ToStorageAdapterIPInfoResponseV1Output() StorageAdapterIPInfoResponseV1Output {
-	return o
-}
-
-func (o StorageAdapterIPInfoResponseV1Output) ToStorageAdapterIPInfoResponseV1OutputWithContext(ctx context.Context) StorageAdapterIPInfoResponseV1Output {
-	return o
-}
-
-// The IPv4 address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
-func (o StorageAdapterIPInfoResponseV1Output) Ipv4Address() pulumi.StringOutput {
-	return o.ApplyT(func(v StorageAdapterIPInfoResponseV1) string { return v.Ipv4Address }).(pulumi.StringOutput)
-}
-
-// storage adapter physical node name.
-func (o StorageAdapterIPInfoResponseV1Output) PhysicalNode() pulumi.StringOutput {
-	return o.ApplyT(func(v StorageAdapterIPInfoResponseV1) string { return v.PhysicalNode }).(pulumi.StringOutput)
-}
-
-// The SubnetMask address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
-func (o StorageAdapterIPInfoResponseV1Output) SubnetMask() pulumi.StringOutput {
-	return o.ApplyT(func(v StorageAdapterIPInfoResponseV1) string { return v.SubnetMask }).(pulumi.StringOutput)
-}
-
-type StorageAdapterIPInfoResponseV1ArrayOutput struct{ *pulumi.OutputState }
-
-func (StorageAdapterIPInfoResponseV1ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StorageAdapterIPInfoResponseV1)(nil)).Elem()
-}
-
-func (o StorageAdapterIPInfoResponseV1ArrayOutput) ToStorageAdapterIPInfoResponseV1ArrayOutput() StorageAdapterIPInfoResponseV1ArrayOutput {
-	return o
-}
-
-func (o StorageAdapterIPInfoResponseV1ArrayOutput) ToStorageAdapterIPInfoResponseV1ArrayOutputWithContext(ctx context.Context) StorageAdapterIPInfoResponseV1ArrayOutput {
-	return o
-}
-
-func (o StorageAdapterIPInfoResponseV1ArrayOutput) Index(i pulumi.IntInput) StorageAdapterIPInfoResponseV1Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageAdapterIPInfoResponseV1 {
-		return vs[0].([]StorageAdapterIPInfoResponseV1)[vs[1].(int)]
-	}).(StorageAdapterIPInfoResponseV1Output)
 }
 
 // Storage configuration.
@@ -28724,6 +28730,75 @@ func (o StorageNetworksArrayOutput) Index(i pulumi.IntInput) StorageNetworksOutp
 }
 
 // The StorageNetworks of a cluster.
+type StorageNetworksHciEdgeDeviceResponse struct {
+	// Name of the storage network.
+	Name string `pulumi:"name"`
+	// Name of the storage network adapter.
+	NetworkAdapterName string `pulumi:"networkAdapterName"`
+	// List of Storage adapter physical nodes config to deploy AzureStackHCI Cluster.
+	StorageAdapterIPInfo []StorageAdapterIPInfoHciEdgeDeviceResponse `pulumi:"storageAdapterIPInfo"`
+	// ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic.
+	StorageVlanId string `pulumi:"storageVlanId"`
+}
+
+// The StorageNetworks of a cluster.
+type StorageNetworksHciEdgeDeviceResponseOutput struct{ *pulumi.OutputState }
+
+func (StorageNetworksHciEdgeDeviceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StorageNetworksHciEdgeDeviceResponse)(nil)).Elem()
+}
+
+func (o StorageNetworksHciEdgeDeviceResponseOutput) ToStorageNetworksHciEdgeDeviceResponseOutput() StorageNetworksHciEdgeDeviceResponseOutput {
+	return o
+}
+
+func (o StorageNetworksHciEdgeDeviceResponseOutput) ToStorageNetworksHciEdgeDeviceResponseOutputWithContext(ctx context.Context) StorageNetworksHciEdgeDeviceResponseOutput {
+	return o
+}
+
+// Name of the storage network.
+func (o StorageNetworksHciEdgeDeviceResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageNetworksHciEdgeDeviceResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Name of the storage network adapter.
+func (o StorageNetworksHciEdgeDeviceResponseOutput) NetworkAdapterName() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageNetworksHciEdgeDeviceResponse) string { return v.NetworkAdapterName }).(pulumi.StringOutput)
+}
+
+// List of Storage adapter physical nodes config to deploy AzureStackHCI Cluster.
+func (o StorageNetworksHciEdgeDeviceResponseOutput) StorageAdapterIPInfo() StorageAdapterIPInfoHciEdgeDeviceResponseArrayOutput {
+	return o.ApplyT(func(v StorageNetworksHciEdgeDeviceResponse) []StorageAdapterIPInfoHciEdgeDeviceResponse {
+		return v.StorageAdapterIPInfo
+	}).(StorageAdapterIPInfoHciEdgeDeviceResponseArrayOutput)
+}
+
+// ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic.
+func (o StorageNetworksHciEdgeDeviceResponseOutput) StorageVlanId() pulumi.StringOutput {
+	return o.ApplyT(func(v StorageNetworksHciEdgeDeviceResponse) string { return v.StorageVlanId }).(pulumi.StringOutput)
+}
+
+type StorageNetworksHciEdgeDeviceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (StorageNetworksHciEdgeDeviceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StorageNetworksHciEdgeDeviceResponse)(nil)).Elem()
+}
+
+func (o StorageNetworksHciEdgeDeviceResponseArrayOutput) ToStorageNetworksHciEdgeDeviceResponseArrayOutput() StorageNetworksHciEdgeDeviceResponseArrayOutput {
+	return o
+}
+
+func (o StorageNetworksHciEdgeDeviceResponseArrayOutput) ToStorageNetworksHciEdgeDeviceResponseArrayOutputWithContext(ctx context.Context) StorageNetworksHciEdgeDeviceResponseArrayOutput {
+	return o
+}
+
+func (o StorageNetworksHciEdgeDeviceResponseArrayOutput) Index(i pulumi.IntInput) StorageNetworksHciEdgeDeviceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageNetworksHciEdgeDeviceResponse {
+		return vs[0].([]StorageNetworksHciEdgeDeviceResponse)[vs[1].(int)]
+	}).(StorageNetworksHciEdgeDeviceResponseOutput)
+}
+
+// The StorageNetworks of a cluster.
 type StorageNetworksResponse struct {
 	// Name of the storage network.
 	Name *string `pulumi:"name"`
@@ -28788,73 +28863,6 @@ func (o StorageNetworksResponseArrayOutput) Index(i pulumi.IntInput) StorageNetw
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageNetworksResponse {
 		return vs[0].([]StorageNetworksResponse)[vs[1].(int)]
 	}).(StorageNetworksResponseOutput)
-}
-
-// The StorageNetworks of a cluster.
-type StorageNetworksResponseV1 struct {
-	// Name of the storage network.
-	Name string `pulumi:"name"`
-	// Name of the storage network adapter.
-	NetworkAdapterName string `pulumi:"networkAdapterName"`
-	// List of Storage adapter physical nodes config to deploy AzureStackHCI Cluster.
-	StorageAdapterIPInfo []StorageAdapterIPInfoResponseV1 `pulumi:"storageAdapterIPInfo"`
-	// ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic.
-	StorageVlanId string `pulumi:"storageVlanId"`
-}
-
-// The StorageNetworks of a cluster.
-type StorageNetworksResponseV1Output struct{ *pulumi.OutputState }
-
-func (StorageNetworksResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*StorageNetworksResponseV1)(nil)).Elem()
-}
-
-func (o StorageNetworksResponseV1Output) ToStorageNetworksResponseV1Output() StorageNetworksResponseV1Output {
-	return o
-}
-
-func (o StorageNetworksResponseV1Output) ToStorageNetworksResponseV1OutputWithContext(ctx context.Context) StorageNetworksResponseV1Output {
-	return o
-}
-
-// Name of the storage network.
-func (o StorageNetworksResponseV1Output) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v StorageNetworksResponseV1) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Name of the storage network adapter.
-func (o StorageNetworksResponseV1Output) NetworkAdapterName() pulumi.StringOutput {
-	return o.ApplyT(func(v StorageNetworksResponseV1) string { return v.NetworkAdapterName }).(pulumi.StringOutput)
-}
-
-// List of Storage adapter physical nodes config to deploy AzureStackHCI Cluster.
-func (o StorageNetworksResponseV1Output) StorageAdapterIPInfo() StorageAdapterIPInfoResponseV1ArrayOutput {
-	return o.ApplyT(func(v StorageNetworksResponseV1) []StorageAdapterIPInfoResponseV1 { return v.StorageAdapterIPInfo }).(StorageAdapterIPInfoResponseV1ArrayOutput)
-}
-
-// ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic.
-func (o StorageNetworksResponseV1Output) StorageVlanId() pulumi.StringOutput {
-	return o.ApplyT(func(v StorageNetworksResponseV1) string { return v.StorageVlanId }).(pulumi.StringOutput)
-}
-
-type StorageNetworksResponseV1ArrayOutput struct{ *pulumi.OutputState }
-
-func (StorageNetworksResponseV1ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]StorageNetworksResponseV1)(nil)).Elem()
-}
-
-func (o StorageNetworksResponseV1ArrayOutput) ToStorageNetworksResponseV1ArrayOutput() StorageNetworksResponseV1ArrayOutput {
-	return o
-}
-
-func (o StorageNetworksResponseV1ArrayOutput) ToStorageNetworksResponseV1ArrayOutputWithContext(ctx context.Context) StorageNetworksResponseV1ArrayOutput {
-	return o
-}
-
-func (o StorageNetworksResponseV1ArrayOutput) Index(i pulumi.IntInput) StorageNetworksResponseV1Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StorageNetworksResponseV1 {
-		return vs[0].([]StorageNetworksResponseV1)[vs[1].(int)]
-	}).(StorageNetworksResponseV1Output)
 }
 
 // StorageProfile of edge machine.
@@ -36613,112 +36621,6 @@ func (o VirtualMachinePropertiesPublicKeysArrayOutput) Index(i pulumi.IntInput) 
 	}).(VirtualMachinePropertiesPublicKeysOutput)
 }
 
-type VirtualMachinePropertiesPublicKeysPublicKeys struct {
-	// KeyData - SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Li      nux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-	KeyData *string `pulumi:"keyData"`
-	// Path - Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
-	Path *string `pulumi:"path"`
-}
-
-// VirtualMachinePropertiesPublicKeysPublicKeysInput is an input type that accepts VirtualMachinePropertiesPublicKeysPublicKeysArgs and VirtualMachinePropertiesPublicKeysPublicKeysOutput values.
-// You can construct a concrete instance of `VirtualMachinePropertiesPublicKeysPublicKeysInput` via:
-//
-//	VirtualMachinePropertiesPublicKeysPublicKeysArgs{...}
-type VirtualMachinePropertiesPublicKeysPublicKeysInput interface {
-	pulumi.Input
-
-	ToVirtualMachinePropertiesPublicKeysPublicKeysOutput() VirtualMachinePropertiesPublicKeysPublicKeysOutput
-	ToVirtualMachinePropertiesPublicKeysPublicKeysOutputWithContext(context.Context) VirtualMachinePropertiesPublicKeysPublicKeysOutput
-}
-
-type VirtualMachinePropertiesPublicKeysPublicKeysArgs struct {
-	// KeyData - SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Li      nux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-	KeyData pulumi.StringPtrInput `pulumi:"keyData"`
-	// Path - Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
-	Path pulumi.StringPtrInput `pulumi:"path"`
-}
-
-func (VirtualMachinePropertiesPublicKeysPublicKeysArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualMachinePropertiesPublicKeysPublicKeys)(nil)).Elem()
-}
-
-func (i VirtualMachinePropertiesPublicKeysPublicKeysArgs) ToVirtualMachinePropertiesPublicKeysPublicKeysOutput() VirtualMachinePropertiesPublicKeysPublicKeysOutput {
-	return i.ToVirtualMachinePropertiesPublicKeysPublicKeysOutputWithContext(context.Background())
-}
-
-func (i VirtualMachinePropertiesPublicKeysPublicKeysArgs) ToVirtualMachinePropertiesPublicKeysPublicKeysOutputWithContext(ctx context.Context) VirtualMachinePropertiesPublicKeysPublicKeysOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesPublicKeysPublicKeysOutput)
-}
-
-// VirtualMachinePropertiesPublicKeysPublicKeysArrayInput is an input type that accepts VirtualMachinePropertiesPublicKeysPublicKeysArray and VirtualMachinePropertiesPublicKeysPublicKeysArrayOutput values.
-// You can construct a concrete instance of `VirtualMachinePropertiesPublicKeysPublicKeysArrayInput` via:
-//
-//	VirtualMachinePropertiesPublicKeysPublicKeysArray{ VirtualMachinePropertiesPublicKeysPublicKeysArgs{...} }
-type VirtualMachinePropertiesPublicKeysPublicKeysArrayInput interface {
-	pulumi.Input
-
-	ToVirtualMachinePropertiesPublicKeysPublicKeysArrayOutput() VirtualMachinePropertiesPublicKeysPublicKeysArrayOutput
-	ToVirtualMachinePropertiesPublicKeysPublicKeysArrayOutputWithContext(context.Context) VirtualMachinePropertiesPublicKeysPublicKeysArrayOutput
-}
-
-type VirtualMachinePropertiesPublicKeysPublicKeysArray []VirtualMachinePropertiesPublicKeysPublicKeysInput
-
-func (VirtualMachinePropertiesPublicKeysPublicKeysArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VirtualMachinePropertiesPublicKeysPublicKeys)(nil)).Elem()
-}
-
-func (i VirtualMachinePropertiesPublicKeysPublicKeysArray) ToVirtualMachinePropertiesPublicKeysPublicKeysArrayOutput() VirtualMachinePropertiesPublicKeysPublicKeysArrayOutput {
-	return i.ToVirtualMachinePropertiesPublicKeysPublicKeysArrayOutputWithContext(context.Background())
-}
-
-func (i VirtualMachinePropertiesPublicKeysPublicKeysArray) ToVirtualMachinePropertiesPublicKeysPublicKeysArrayOutputWithContext(ctx context.Context) VirtualMachinePropertiesPublicKeysPublicKeysArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesPublicKeysPublicKeysArrayOutput)
-}
-
-type VirtualMachinePropertiesPublicKeysPublicKeysOutput struct{ *pulumi.OutputState }
-
-func (VirtualMachinePropertiesPublicKeysPublicKeysOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualMachinePropertiesPublicKeysPublicKeys)(nil)).Elem()
-}
-
-func (o VirtualMachinePropertiesPublicKeysPublicKeysOutput) ToVirtualMachinePropertiesPublicKeysPublicKeysOutput() VirtualMachinePropertiesPublicKeysPublicKeysOutput {
-	return o
-}
-
-func (o VirtualMachinePropertiesPublicKeysPublicKeysOutput) ToVirtualMachinePropertiesPublicKeysPublicKeysOutputWithContext(ctx context.Context) VirtualMachinePropertiesPublicKeysPublicKeysOutput {
-	return o
-}
-
-// KeyData - SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Li      nux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-func (o VirtualMachinePropertiesPublicKeysPublicKeysOutput) KeyData() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachinePropertiesPublicKeysPublicKeys) *string { return v.KeyData }).(pulumi.StringPtrOutput)
-}
-
-// Path - Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
-func (o VirtualMachinePropertiesPublicKeysPublicKeysOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachinePropertiesPublicKeysPublicKeys) *string { return v.Path }).(pulumi.StringPtrOutput)
-}
-
-type VirtualMachinePropertiesPublicKeysPublicKeysArrayOutput struct{ *pulumi.OutputState }
-
-func (VirtualMachinePropertiesPublicKeysPublicKeysArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VirtualMachinePropertiesPublicKeysPublicKeys)(nil)).Elem()
-}
-
-func (o VirtualMachinePropertiesPublicKeysPublicKeysArrayOutput) ToVirtualMachinePropertiesPublicKeysPublicKeysArrayOutput() VirtualMachinePropertiesPublicKeysPublicKeysArrayOutput {
-	return o
-}
-
-func (o VirtualMachinePropertiesPublicKeysPublicKeysArrayOutput) ToVirtualMachinePropertiesPublicKeysPublicKeysArrayOutputWithContext(ctx context.Context) VirtualMachinePropertiesPublicKeysPublicKeysArrayOutput {
-	return o
-}
-
-func (o VirtualMachinePropertiesPublicKeysPublicKeysArrayOutput) Index(i pulumi.IntInput) VirtualMachinePropertiesPublicKeysPublicKeysOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualMachinePropertiesPublicKeysPublicKeys {
-		return vs[0].([]VirtualMachinePropertiesPublicKeysPublicKeys)[vs[1].(int)]
-	}).(VirtualMachinePropertiesPublicKeysPublicKeysOutput)
-}
-
 type VirtualMachinePropertiesResponseDataDisks struct {
 	// Resource ID of the data disk
 	Id *string `pulumi:"id"`
@@ -37476,57 +37378,6 @@ func (o VirtualMachinePropertiesResponsePublicKeysArrayOutput) Index(i pulumi.In
 	}).(VirtualMachinePropertiesResponsePublicKeysOutput)
 }
 
-type VirtualMachinePropertiesResponsePublicKeysPublicKeys struct {
-	// KeyData - SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Li      nux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-	KeyData *string `pulumi:"keyData"`
-	// Path - Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
-	Path *string `pulumi:"path"`
-}
-
-type VirtualMachinePropertiesResponsePublicKeysPublicKeysOutput struct{ *pulumi.OutputState }
-
-func (VirtualMachinePropertiesResponsePublicKeysPublicKeysOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualMachinePropertiesResponsePublicKeysPublicKeys)(nil)).Elem()
-}
-
-func (o VirtualMachinePropertiesResponsePublicKeysPublicKeysOutput) ToVirtualMachinePropertiesResponsePublicKeysPublicKeysOutput() VirtualMachinePropertiesResponsePublicKeysPublicKeysOutput {
-	return o
-}
-
-func (o VirtualMachinePropertiesResponsePublicKeysPublicKeysOutput) ToVirtualMachinePropertiesResponsePublicKeysPublicKeysOutputWithContext(ctx context.Context) VirtualMachinePropertiesResponsePublicKeysPublicKeysOutput {
-	return o
-}
-
-// KeyData - SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format. <br><br> For creating ssh keys, see [Create SSH keys on Linux and Mac for Li      nux VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-func (o VirtualMachinePropertiesResponsePublicKeysPublicKeysOutput) KeyData() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachinePropertiesResponsePublicKeysPublicKeys) *string { return v.KeyData }).(pulumi.StringPtrOutput)
-}
-
-// Path - Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
-func (o VirtualMachinePropertiesResponsePublicKeysPublicKeysOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachinePropertiesResponsePublicKeysPublicKeys) *string { return v.Path }).(pulumi.StringPtrOutput)
-}
-
-type VirtualMachinePropertiesResponsePublicKeysPublicKeysArrayOutput struct{ *pulumi.OutputState }
-
-func (VirtualMachinePropertiesResponsePublicKeysPublicKeysArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VirtualMachinePropertiesResponsePublicKeysPublicKeys)(nil)).Elem()
-}
-
-func (o VirtualMachinePropertiesResponsePublicKeysPublicKeysArrayOutput) ToVirtualMachinePropertiesResponsePublicKeysPublicKeysArrayOutput() VirtualMachinePropertiesResponsePublicKeysPublicKeysArrayOutput {
-	return o
-}
-
-func (o VirtualMachinePropertiesResponsePublicKeysPublicKeysArrayOutput) ToVirtualMachinePropertiesResponsePublicKeysPublicKeysArrayOutputWithContext(ctx context.Context) VirtualMachinePropertiesResponsePublicKeysPublicKeysArrayOutput {
-	return o
-}
-
-func (o VirtualMachinePropertiesResponsePublicKeysPublicKeysArrayOutput) Index(i pulumi.IntInput) VirtualMachinePropertiesResponsePublicKeysPublicKeysOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VirtualMachinePropertiesResponsePublicKeysPublicKeys {
-		return vs[0].([]VirtualMachinePropertiesResponsePublicKeysPublicKeys)[vs[1].(int)]
-	}).(VirtualMachinePropertiesResponsePublicKeysPublicKeysOutput)
-}
-
 // SecurityProfile - Specifies the security settings for the virtual machine.
 type VirtualMachinePropertiesResponseSecurityProfile struct {
 	EnableTPM    *bool                                         `pulumi:"enableTPM"`
@@ -37675,68 +37526,6 @@ func (o VirtualMachinePropertiesResponseSshPtrOutput) PublicKeys() VirtualMachin
 		}
 		return v.PublicKeys
 	}).(VirtualMachinePropertiesResponsePublicKeysArrayOutput)
-}
-
-// SSH Configuration
-type VirtualMachinePropertiesResponseSshSsh struct {
-	// PublicKeys - The list of SSH public keys used to authenticate with linux based VMs.
-	PublicKeys []VirtualMachinePropertiesResponsePublicKeysPublicKeys `pulumi:"publicKeys"`
-}
-
-// SSH Configuration
-type VirtualMachinePropertiesResponseSshSshOutput struct{ *pulumi.OutputState }
-
-func (VirtualMachinePropertiesResponseSshSshOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualMachinePropertiesResponseSshSsh)(nil)).Elem()
-}
-
-func (o VirtualMachinePropertiesResponseSshSshOutput) ToVirtualMachinePropertiesResponseSshSshOutput() VirtualMachinePropertiesResponseSshSshOutput {
-	return o
-}
-
-func (o VirtualMachinePropertiesResponseSshSshOutput) ToVirtualMachinePropertiesResponseSshSshOutputWithContext(ctx context.Context) VirtualMachinePropertiesResponseSshSshOutput {
-	return o
-}
-
-// PublicKeys - The list of SSH public keys used to authenticate with linux based VMs.
-func (o VirtualMachinePropertiesResponseSshSshOutput) PublicKeys() VirtualMachinePropertiesResponsePublicKeysPublicKeysArrayOutput {
-	return o.ApplyT(func(v VirtualMachinePropertiesResponseSshSsh) []VirtualMachinePropertiesResponsePublicKeysPublicKeys {
-		return v.PublicKeys
-	}).(VirtualMachinePropertiesResponsePublicKeysPublicKeysArrayOutput)
-}
-
-type VirtualMachinePropertiesResponseSshSshPtrOutput struct{ *pulumi.OutputState }
-
-func (VirtualMachinePropertiesResponseSshSshPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VirtualMachinePropertiesResponseSshSsh)(nil)).Elem()
-}
-
-func (o VirtualMachinePropertiesResponseSshSshPtrOutput) ToVirtualMachinePropertiesResponseSshSshPtrOutput() VirtualMachinePropertiesResponseSshSshPtrOutput {
-	return o
-}
-
-func (o VirtualMachinePropertiesResponseSshSshPtrOutput) ToVirtualMachinePropertiesResponseSshSshPtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesResponseSshSshPtrOutput {
-	return o
-}
-
-func (o VirtualMachinePropertiesResponseSshSshPtrOutput) Elem() VirtualMachinePropertiesResponseSshSshOutput {
-	return o.ApplyT(func(v *VirtualMachinePropertiesResponseSshSsh) VirtualMachinePropertiesResponseSshSsh {
-		if v != nil {
-			return *v
-		}
-		var ret VirtualMachinePropertiesResponseSshSsh
-		return ret
-	}).(VirtualMachinePropertiesResponseSshSshOutput)
-}
-
-// PublicKeys - The list of SSH public keys used to authenticate with linux based VMs.
-func (o VirtualMachinePropertiesResponseSshSshPtrOutput) PublicKeys() VirtualMachinePropertiesResponsePublicKeysPublicKeysArrayOutput {
-	return o.ApplyT(func(v *VirtualMachinePropertiesResponseSshSsh) []VirtualMachinePropertiesResponsePublicKeysPublicKeys {
-		if v == nil {
-			return nil
-		}
-		return v.PublicKeys
-	}).(VirtualMachinePropertiesResponsePublicKeysPublicKeysArrayOutput)
 }
 
 // StorageProfile - contains information about the disks and storage information for the virtual machine
@@ -37934,7 +37723,7 @@ type VirtualMachinePropertiesResponseWindowsConfiguration struct {
 	// Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine creation process.
 	ProvisionVMAgent *bool `pulumi:"provisionVMAgent"`
 	// SSH Configuration
-	Ssh *VirtualMachinePropertiesResponseSshSsh `pulumi:"ssh"`
+	Ssh *VirtualMachinePropertiesResponseSsh `pulumi:"ssh"`
 	// TimeZone for the virtual machine
 	TimeZone *string `pulumi:"timeZone"`
 }
@@ -37965,10 +37754,10 @@ func (o VirtualMachinePropertiesResponseWindowsConfigurationOutput) ProvisionVMA
 }
 
 // SSH Configuration
-func (o VirtualMachinePropertiesResponseWindowsConfigurationOutput) Ssh() VirtualMachinePropertiesResponseSshSshPtrOutput {
-	return o.ApplyT(func(v VirtualMachinePropertiesResponseWindowsConfiguration) *VirtualMachinePropertiesResponseSshSsh {
+func (o VirtualMachinePropertiesResponseWindowsConfigurationOutput) Ssh() VirtualMachinePropertiesResponseSshPtrOutput {
+	return o.ApplyT(func(v VirtualMachinePropertiesResponseWindowsConfiguration) *VirtualMachinePropertiesResponseSsh {
 		return v.Ssh
-	}).(VirtualMachinePropertiesResponseSshSshPtrOutput)
+	}).(VirtualMachinePropertiesResponseSshPtrOutput)
 }
 
 // TimeZone for the virtual machine
@@ -38021,13 +37810,13 @@ func (o VirtualMachinePropertiesResponseWindowsConfigurationPtrOutput) Provision
 }
 
 // SSH Configuration
-func (o VirtualMachinePropertiesResponseWindowsConfigurationPtrOutput) Ssh() VirtualMachinePropertiesResponseSshSshPtrOutput {
-	return o.ApplyT(func(v *VirtualMachinePropertiesResponseWindowsConfiguration) *VirtualMachinePropertiesResponseSshSsh {
+func (o VirtualMachinePropertiesResponseWindowsConfigurationPtrOutput) Ssh() VirtualMachinePropertiesResponseSshPtrOutput {
+	return o.ApplyT(func(v *VirtualMachinePropertiesResponseWindowsConfiguration) *VirtualMachinePropertiesResponseSsh {
 		if v == nil {
 			return nil
 		}
 		return v.Ssh
-	}).(VirtualMachinePropertiesResponseSshSshPtrOutput)
+	}).(VirtualMachinePropertiesResponseSshPtrOutput)
 }
 
 // TimeZone for the virtual machine
@@ -38358,148 +38147,6 @@ func (o VirtualMachinePropertiesSshPtrOutput) PublicKeys() VirtualMachinePropert
 		}
 		return v.PublicKeys
 	}).(VirtualMachinePropertiesPublicKeysArrayOutput)
-}
-
-// SSH Configuration
-type VirtualMachinePropertiesSshSsh struct {
-	// PublicKeys - The list of SSH public keys used to authenticate with linux based VMs.
-	PublicKeys []VirtualMachinePropertiesPublicKeysPublicKeys `pulumi:"publicKeys"`
-}
-
-// VirtualMachinePropertiesSshSshInput is an input type that accepts VirtualMachinePropertiesSshSshArgs and VirtualMachinePropertiesSshSshOutput values.
-// You can construct a concrete instance of `VirtualMachinePropertiesSshSshInput` via:
-//
-//	VirtualMachinePropertiesSshSshArgs{...}
-type VirtualMachinePropertiesSshSshInput interface {
-	pulumi.Input
-
-	ToVirtualMachinePropertiesSshSshOutput() VirtualMachinePropertiesSshSshOutput
-	ToVirtualMachinePropertiesSshSshOutputWithContext(context.Context) VirtualMachinePropertiesSshSshOutput
-}
-
-// SSH Configuration
-type VirtualMachinePropertiesSshSshArgs struct {
-	// PublicKeys - The list of SSH public keys used to authenticate with linux based VMs.
-	PublicKeys VirtualMachinePropertiesPublicKeysPublicKeysArrayInput `pulumi:"publicKeys"`
-}
-
-func (VirtualMachinePropertiesSshSshArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualMachinePropertiesSshSsh)(nil)).Elem()
-}
-
-func (i VirtualMachinePropertiesSshSshArgs) ToVirtualMachinePropertiesSshSshOutput() VirtualMachinePropertiesSshSshOutput {
-	return i.ToVirtualMachinePropertiesSshSshOutputWithContext(context.Background())
-}
-
-func (i VirtualMachinePropertiesSshSshArgs) ToVirtualMachinePropertiesSshSshOutputWithContext(ctx context.Context) VirtualMachinePropertiesSshSshOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesSshSshOutput)
-}
-
-func (i VirtualMachinePropertiesSshSshArgs) ToVirtualMachinePropertiesSshSshPtrOutput() VirtualMachinePropertiesSshSshPtrOutput {
-	return i.ToVirtualMachinePropertiesSshSshPtrOutputWithContext(context.Background())
-}
-
-func (i VirtualMachinePropertiesSshSshArgs) ToVirtualMachinePropertiesSshSshPtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesSshSshPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesSshSshOutput).ToVirtualMachinePropertiesSshSshPtrOutputWithContext(ctx)
-}
-
-// VirtualMachinePropertiesSshSshPtrInput is an input type that accepts VirtualMachinePropertiesSshSshArgs, VirtualMachinePropertiesSshSshPtr and VirtualMachinePropertiesSshSshPtrOutput values.
-// You can construct a concrete instance of `VirtualMachinePropertiesSshSshPtrInput` via:
-//
-//	        VirtualMachinePropertiesSshSshArgs{...}
-//
-//	or:
-//
-//	        nil
-type VirtualMachinePropertiesSshSshPtrInput interface {
-	pulumi.Input
-
-	ToVirtualMachinePropertiesSshSshPtrOutput() VirtualMachinePropertiesSshSshPtrOutput
-	ToVirtualMachinePropertiesSshSshPtrOutputWithContext(context.Context) VirtualMachinePropertiesSshSshPtrOutput
-}
-
-type virtualMachinePropertiesSshSshPtrType VirtualMachinePropertiesSshSshArgs
-
-func VirtualMachinePropertiesSshSshPtr(v *VirtualMachinePropertiesSshSshArgs) VirtualMachinePropertiesSshSshPtrInput {
-	return (*virtualMachinePropertiesSshSshPtrType)(v)
-}
-
-func (*virtualMachinePropertiesSshSshPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VirtualMachinePropertiesSshSsh)(nil)).Elem()
-}
-
-func (i *virtualMachinePropertiesSshSshPtrType) ToVirtualMachinePropertiesSshSshPtrOutput() VirtualMachinePropertiesSshSshPtrOutput {
-	return i.ToVirtualMachinePropertiesSshSshPtrOutputWithContext(context.Background())
-}
-
-func (i *virtualMachinePropertiesSshSshPtrType) ToVirtualMachinePropertiesSshSshPtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesSshSshPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachinePropertiesSshSshPtrOutput)
-}
-
-// SSH Configuration
-type VirtualMachinePropertiesSshSshOutput struct{ *pulumi.OutputState }
-
-func (VirtualMachinePropertiesSshSshOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualMachinePropertiesSshSsh)(nil)).Elem()
-}
-
-func (o VirtualMachinePropertiesSshSshOutput) ToVirtualMachinePropertiesSshSshOutput() VirtualMachinePropertiesSshSshOutput {
-	return o
-}
-
-func (o VirtualMachinePropertiesSshSshOutput) ToVirtualMachinePropertiesSshSshOutputWithContext(ctx context.Context) VirtualMachinePropertiesSshSshOutput {
-	return o
-}
-
-func (o VirtualMachinePropertiesSshSshOutput) ToVirtualMachinePropertiesSshSshPtrOutput() VirtualMachinePropertiesSshSshPtrOutput {
-	return o.ToVirtualMachinePropertiesSshSshPtrOutputWithContext(context.Background())
-}
-
-func (o VirtualMachinePropertiesSshSshOutput) ToVirtualMachinePropertiesSshSshPtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesSshSshPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachinePropertiesSshSsh) *VirtualMachinePropertiesSshSsh {
-		return &v
-	}).(VirtualMachinePropertiesSshSshPtrOutput)
-}
-
-// PublicKeys - The list of SSH public keys used to authenticate with linux based VMs.
-func (o VirtualMachinePropertiesSshSshOutput) PublicKeys() VirtualMachinePropertiesPublicKeysPublicKeysArrayOutput {
-	return o.ApplyT(func(v VirtualMachinePropertiesSshSsh) []VirtualMachinePropertiesPublicKeysPublicKeys {
-		return v.PublicKeys
-	}).(VirtualMachinePropertiesPublicKeysPublicKeysArrayOutput)
-}
-
-type VirtualMachinePropertiesSshSshPtrOutput struct{ *pulumi.OutputState }
-
-func (VirtualMachinePropertiesSshSshPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VirtualMachinePropertiesSshSsh)(nil)).Elem()
-}
-
-func (o VirtualMachinePropertiesSshSshPtrOutput) ToVirtualMachinePropertiesSshSshPtrOutput() VirtualMachinePropertiesSshSshPtrOutput {
-	return o
-}
-
-func (o VirtualMachinePropertiesSshSshPtrOutput) ToVirtualMachinePropertiesSshSshPtrOutputWithContext(ctx context.Context) VirtualMachinePropertiesSshSshPtrOutput {
-	return o
-}
-
-func (o VirtualMachinePropertiesSshSshPtrOutput) Elem() VirtualMachinePropertiesSshSshOutput {
-	return o.ApplyT(func(v *VirtualMachinePropertiesSshSsh) VirtualMachinePropertiesSshSsh {
-		if v != nil {
-			return *v
-		}
-		var ret VirtualMachinePropertiesSshSsh
-		return ret
-	}).(VirtualMachinePropertiesSshSshOutput)
-}
-
-// PublicKeys - The list of SSH public keys used to authenticate with linux based VMs.
-func (o VirtualMachinePropertiesSshSshPtrOutput) PublicKeys() VirtualMachinePropertiesPublicKeysPublicKeysArrayOutput {
-	return o.ApplyT(func(v *VirtualMachinePropertiesSshSsh) []VirtualMachinePropertiesPublicKeysPublicKeys {
-		if v == nil {
-			return nil
-		}
-		return v.PublicKeys
-	}).(VirtualMachinePropertiesPublicKeysPublicKeysArrayOutput)
 }
 
 // StorageProfile - contains information about the disks and storage information for the virtual machine
@@ -38869,7 +38516,7 @@ type VirtualMachinePropertiesWindowsConfiguration struct {
 	// Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine creation process.
 	ProvisionVMAgent *bool `pulumi:"provisionVMAgent"`
 	// SSH Configuration
-	Ssh *VirtualMachinePropertiesSshSsh `pulumi:"ssh"`
+	Ssh *VirtualMachinePropertiesSsh `pulumi:"ssh"`
 	// TimeZone for the virtual machine
 	TimeZone *string `pulumi:"timeZone"`
 }
@@ -38892,7 +38539,7 @@ type VirtualMachinePropertiesWindowsConfigurationArgs struct {
 	// Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine creation process.
 	ProvisionVMAgent pulumi.BoolPtrInput `pulumi:"provisionVMAgent"`
 	// SSH Configuration
-	Ssh VirtualMachinePropertiesSshSshPtrInput `pulumi:"ssh"`
+	Ssh VirtualMachinePropertiesSshPtrInput `pulumi:"ssh"`
 	// TimeZone for the virtual machine
 	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
 }
@@ -38986,8 +38633,8 @@ func (o VirtualMachinePropertiesWindowsConfigurationOutput) ProvisionVMAgent() p
 }
 
 // SSH Configuration
-func (o VirtualMachinePropertiesWindowsConfigurationOutput) Ssh() VirtualMachinePropertiesSshSshPtrOutput {
-	return o.ApplyT(func(v VirtualMachinePropertiesWindowsConfiguration) *VirtualMachinePropertiesSshSsh { return v.Ssh }).(VirtualMachinePropertiesSshSshPtrOutput)
+func (o VirtualMachinePropertiesWindowsConfigurationOutput) Ssh() VirtualMachinePropertiesSshPtrOutput {
+	return o.ApplyT(func(v VirtualMachinePropertiesWindowsConfiguration) *VirtualMachinePropertiesSsh { return v.Ssh }).(VirtualMachinePropertiesSshPtrOutput)
 }
 
 // TimeZone for the virtual machine
@@ -39040,13 +38687,13 @@ func (o VirtualMachinePropertiesWindowsConfigurationPtrOutput) ProvisionVMAgent(
 }
 
 // SSH Configuration
-func (o VirtualMachinePropertiesWindowsConfigurationPtrOutput) Ssh() VirtualMachinePropertiesSshSshPtrOutput {
-	return o.ApplyT(func(v *VirtualMachinePropertiesWindowsConfiguration) *VirtualMachinePropertiesSshSsh {
+func (o VirtualMachinePropertiesWindowsConfigurationPtrOutput) Ssh() VirtualMachinePropertiesSshPtrOutput {
+	return o.ApplyT(func(v *VirtualMachinePropertiesWindowsConfiguration) *VirtualMachinePropertiesSsh {
 		if v == nil {
 			return nil
 		}
 		return v.Ssh
-	}).(VirtualMachinePropertiesSshSshPtrOutput)
+	}).(VirtualMachinePropertiesSshPtrOutput)
 }
 
 // TimeZone for the virtual machine
@@ -41394,6 +41041,41 @@ func (o VirtualSwitchConfigurationOverridesPtrOutput) LoadBalancingAlgorithm() p
 }
 
 // The VirtualSwitchConfigurationOverrides of a cluster.
+type VirtualSwitchConfigurationOverridesHciEdgeDeviceResponse struct {
+	// Enable IoV for Virtual Switch
+	EnableIov string `pulumi:"enableIov"`
+	// Load Balancing Algorithm for Virtual Switch
+	LoadBalancingAlgorithm string `pulumi:"loadBalancingAlgorithm"`
+}
+
+// The VirtualSwitchConfigurationOverrides of a cluster.
+type VirtualSwitchConfigurationOverridesHciEdgeDeviceResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualSwitchConfigurationOverridesHciEdgeDeviceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualSwitchConfigurationOverridesHciEdgeDeviceResponse)(nil)).Elem()
+}
+
+func (o VirtualSwitchConfigurationOverridesHciEdgeDeviceResponseOutput) ToVirtualSwitchConfigurationOverridesHciEdgeDeviceResponseOutput() VirtualSwitchConfigurationOverridesHciEdgeDeviceResponseOutput {
+	return o
+}
+
+func (o VirtualSwitchConfigurationOverridesHciEdgeDeviceResponseOutput) ToVirtualSwitchConfigurationOverridesHciEdgeDeviceResponseOutputWithContext(ctx context.Context) VirtualSwitchConfigurationOverridesHciEdgeDeviceResponseOutput {
+	return o
+}
+
+// Enable IoV for Virtual Switch
+func (o VirtualSwitchConfigurationOverridesHciEdgeDeviceResponseOutput) EnableIov() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualSwitchConfigurationOverridesHciEdgeDeviceResponse) string { return v.EnableIov }).(pulumi.StringOutput)
+}
+
+// Load Balancing Algorithm for Virtual Switch
+func (o VirtualSwitchConfigurationOverridesHciEdgeDeviceResponseOutput) LoadBalancingAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualSwitchConfigurationOverridesHciEdgeDeviceResponse) string {
+		return v.LoadBalancingAlgorithm
+	}).(pulumi.StringOutput)
+}
+
+// The VirtualSwitchConfigurationOverrides of a cluster.
 type VirtualSwitchConfigurationOverridesResponse struct {
 	// Enable IoV for Virtual Switch
 	EnableIov *string `pulumi:"enableIov"`
@@ -41468,39 +41150,6 @@ func (o VirtualSwitchConfigurationOverridesResponsePtrOutput) LoadBalancingAlgor
 		}
 		return v.LoadBalancingAlgorithm
 	}).(pulumi.StringPtrOutput)
-}
-
-// The VirtualSwitchConfigurationOverrides of a cluster.
-type VirtualSwitchConfigurationOverridesResponseV1 struct {
-	// Enable IoV for Virtual Switch
-	EnableIov string `pulumi:"enableIov"`
-	// Load Balancing Algorithm for Virtual Switch
-	LoadBalancingAlgorithm string `pulumi:"loadBalancingAlgorithm"`
-}
-
-// The VirtualSwitchConfigurationOverrides of a cluster.
-type VirtualSwitchConfigurationOverridesResponseV1Output struct{ *pulumi.OutputState }
-
-func (VirtualSwitchConfigurationOverridesResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualSwitchConfigurationOverridesResponseV1)(nil)).Elem()
-}
-
-func (o VirtualSwitchConfigurationOverridesResponseV1Output) ToVirtualSwitchConfigurationOverridesResponseV1Output() VirtualSwitchConfigurationOverridesResponseV1Output {
-	return o
-}
-
-func (o VirtualSwitchConfigurationOverridesResponseV1Output) ToVirtualSwitchConfigurationOverridesResponseV1OutputWithContext(ctx context.Context) VirtualSwitchConfigurationOverridesResponseV1Output {
-	return o
-}
-
-// Enable IoV for Virtual Switch
-func (o VirtualSwitchConfigurationOverridesResponseV1Output) EnableIov() pulumi.StringOutput {
-	return o.ApplyT(func(v VirtualSwitchConfigurationOverridesResponseV1) string { return v.EnableIov }).(pulumi.StringOutput)
-}
-
-// Load Balancing Algorithm for Virtual Switch
-func (o VirtualSwitchConfigurationOverridesResponseV1Output) LoadBalancingAlgorithm() pulumi.StringOutput {
-	return o.ApplyT(func(v VirtualSwitchConfigurationOverridesResponseV1) string { return v.LoadBalancingAlgorithm }).(pulumi.StringOutput)
 }
 
 // Web proxy configuration.
@@ -41778,9 +41427,9 @@ func (o WebProxyConfigurationResponsePtrOutput) Port() pulumi.StringPtrOutput {
 func init() {
 	pulumi.RegisterOutputType(AdapterPropertyOverridesOutput{})
 	pulumi.RegisterOutputType(AdapterPropertyOverridesPtrOutput{})
+	pulumi.RegisterOutputType(AdapterPropertyOverridesHciEdgeDeviceResponseOutput{})
 	pulumi.RegisterOutputType(AdapterPropertyOverridesResponseOutput{})
 	pulumi.RegisterOutputType(AdapterPropertyOverridesResponsePtrOutput{})
-	pulumi.RegisterOutputType(AdapterPropertyOverridesResponseV1Output{})
 	pulumi.RegisterOutputType(ArcConnectivityPropertiesOutput{})
 	pulumi.RegisterOutputType(ArcConnectivityPropertiesArrayOutput{})
 	pulumi.RegisterOutputType(ArcConnectivityPropertiesResponseOutput{})
@@ -41863,10 +41512,10 @@ func init() {
 	pulumi.RegisterOutputType(EdgeMachineReportedPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseOutput{})
 	pulumi.RegisterOutputType(ErrorAdditionalInfoResponseArrayOutput{})
+	pulumi.RegisterOutputType(ErrorDetailHciEdgeDeviceResponseOutput{})
+	pulumi.RegisterOutputType(ErrorDetailHciEdgeDeviceResponseArrayOutput{})
 	pulumi.RegisterOutputType(ErrorDetailResponseOutput{})
 	pulumi.RegisterOutputType(ErrorDetailResponseArrayOutput{})
-	pulumi.RegisterOutputType(ErrorDetailResponseV1Output{})
-	pulumi.RegisterOutputType(ErrorDetailResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationPtrOutput{})
 	pulumi.RegisterOutputType(ExtendedLocationResponseOutput{})
@@ -41874,8 +41523,8 @@ func init() {
 	pulumi.RegisterOutputType(ExtensionInstanceViewResponseOutput{})
 	pulumi.RegisterOutputType(ExtensionInstanceViewResponseStatusOutput{})
 	pulumi.RegisterOutputType(ExtensionInstanceViewResponseStatusPtrOutput{})
+	pulumi.RegisterOutputType(ExtensionProfileEdgeMachineResponseOutput{})
 	pulumi.RegisterOutputType(ExtensionProfileResponseOutput{})
-	pulumi.RegisterOutputType(ExtensionProfileResponseV1Output{})
 	pulumi.RegisterOutputType(ExtensionResponseOutput{})
 	pulumi.RegisterOutputType(ExtensionResponseArrayOutput{})
 	pulumi.RegisterOutputType(FrontendIPConfigurationOutput{})
@@ -41934,9 +41583,9 @@ func init() {
 	pulumi.RegisterOutputType(HciValidationFailureDetailResponseArrayOutput{})
 	pulumi.RegisterOutputType(HostNetworkOutput{})
 	pulumi.RegisterOutputType(HostNetworkPtrOutput{})
+	pulumi.RegisterOutputType(HostNetworkHciEdgeDeviceResponseOutput{})
 	pulumi.RegisterOutputType(HostNetworkResponseOutput{})
 	pulumi.RegisterOutputType(HostNetworkResponsePtrOutput{})
-	pulumi.RegisterOutputType(HostNetworkResponseV1Output{})
 	pulumi.RegisterOutputType(HttpProxyConfigurationOutput{})
 	pulumi.RegisterOutputType(HttpProxyConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(HttpProxyConfigurationResponseOutput{})
@@ -41987,10 +41636,10 @@ func init() {
 	pulumi.RegisterOutputType(InstanceViewStatusResponseArrayOutput{})
 	pulumi.RegisterOutputType(IntentsOutput{})
 	pulumi.RegisterOutputType(IntentsArrayOutput{})
+	pulumi.RegisterOutputType(IntentsHciEdgeDeviceResponseOutput{})
+	pulumi.RegisterOutputType(IntentsHciEdgeDeviceResponseArrayOutput{})
 	pulumi.RegisterOutputType(IntentsResponseOutput{})
 	pulumi.RegisterOutputType(IntentsResponseArrayOutput{})
-	pulumi.RegisterOutputType(IntentsResponseV1Output{})
-	pulumi.RegisterOutputType(IntentsResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(InterfaceDNSSettingsOutput{})
 	pulumi.RegisterOutputType(InterfaceDNSSettingsPtrOutput{})
 	pulumi.RegisterOutputType(InterfaceDNSSettingsResponseOutput{})
@@ -42244,10 +41893,10 @@ func init() {
 	pulumi.RegisterOutputType(StoragePtrOutput{})
 	pulumi.RegisterOutputType(StorageAdapterIPInfoOutput{})
 	pulumi.RegisterOutputType(StorageAdapterIPInfoArrayOutput{})
+	pulumi.RegisterOutputType(StorageAdapterIPInfoHciEdgeDeviceResponseOutput{})
+	pulumi.RegisterOutputType(StorageAdapterIPInfoHciEdgeDeviceResponseArrayOutput{})
 	pulumi.RegisterOutputType(StorageAdapterIPInfoResponseOutput{})
 	pulumi.RegisterOutputType(StorageAdapterIPInfoResponseArrayOutput{})
-	pulumi.RegisterOutputType(StorageAdapterIPInfoResponseV1Output{})
-	pulumi.RegisterOutputType(StorageAdapterIPInfoResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(StorageConfigurationOutput{})
 	pulumi.RegisterOutputType(StorageConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(StorageConfigurationResponseOutput{})
@@ -42257,10 +41906,10 @@ func init() {
 	pulumi.RegisterOutputType(StorageContainerStatusResponseOutput{})
 	pulumi.RegisterOutputType(StorageNetworksOutput{})
 	pulumi.RegisterOutputType(StorageNetworksArrayOutput{})
+	pulumi.RegisterOutputType(StorageNetworksHciEdgeDeviceResponseOutput{})
+	pulumi.RegisterOutputType(StorageNetworksHciEdgeDeviceResponseArrayOutput{})
 	pulumi.RegisterOutputType(StorageNetworksResponseOutput{})
 	pulumi.RegisterOutputType(StorageNetworksResponseArrayOutput{})
-	pulumi.RegisterOutputType(StorageNetworksResponseV1Output{})
-	pulumi.RegisterOutputType(StorageNetworksResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(StorageProfileResponseOutput{})
 	pulumi.RegisterOutputType(StorageResponseOutput{})
 	pulumi.RegisterOutputType(StorageResponsePtrOutput{})
@@ -42384,8 +42033,6 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachinePropertiesOsProfilePtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePropertiesPublicKeysOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePropertiesPublicKeysArrayOutput{})
-	pulumi.RegisterOutputType(VirtualMachinePropertiesPublicKeysPublicKeysOutput{})
-	pulumi.RegisterOutputType(VirtualMachinePropertiesPublicKeysPublicKeysArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePropertiesResponseDataDisksOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePropertiesResponseDataDisksArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePropertiesResponseDynamicMemoryConfigOutput{})
@@ -42406,14 +42053,10 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachinePropertiesResponseOsProfilePtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePropertiesResponsePublicKeysOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePropertiesResponsePublicKeysArrayOutput{})
-	pulumi.RegisterOutputType(VirtualMachinePropertiesResponsePublicKeysPublicKeysOutput{})
-	pulumi.RegisterOutputType(VirtualMachinePropertiesResponsePublicKeysPublicKeysArrayOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePropertiesResponseSecurityProfileOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePropertiesResponseSecurityProfilePtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePropertiesResponseSshOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePropertiesResponseSshPtrOutput{})
-	pulumi.RegisterOutputType(VirtualMachinePropertiesResponseSshSshOutput{})
-	pulumi.RegisterOutputType(VirtualMachinePropertiesResponseSshSshPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePropertiesResponseStorageProfileOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePropertiesResponseStorageProfilePtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePropertiesResponseUefiSettingsOutput{})
@@ -42424,8 +42067,6 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachinePropertiesSecurityProfilePtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePropertiesSshOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePropertiesSshPtrOutput{})
-	pulumi.RegisterOutputType(VirtualMachinePropertiesSshSshOutput{})
-	pulumi.RegisterOutputType(VirtualMachinePropertiesSshSshPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePropertiesStorageProfileOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePropertiesStorageProfilePtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachinePropertiesUefiSettingsOutput{})
@@ -42477,9 +42118,9 @@ func init() {
 	pulumi.RegisterOutputType(VirtualNetworkSubnetStatusResponseOutput{})
 	pulumi.RegisterOutputType(VirtualSwitchConfigurationOverridesOutput{})
 	pulumi.RegisterOutputType(VirtualSwitchConfigurationOverridesPtrOutput{})
+	pulumi.RegisterOutputType(VirtualSwitchConfigurationOverridesHciEdgeDeviceResponseOutput{})
 	pulumi.RegisterOutputType(VirtualSwitchConfigurationOverridesResponseOutput{})
 	pulumi.RegisterOutputType(VirtualSwitchConfigurationOverridesResponsePtrOutput{})
-	pulumi.RegisterOutputType(VirtualSwitchConfigurationOverridesResponseV1Output{})
 	pulumi.RegisterOutputType(WebProxyConfigurationOutput{})
 	pulumi.RegisterOutputType(WebProxyConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(WebProxyConfigurationResponseOutput{})

@@ -13,6 +13,210 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// Definition of CustomAction
+type CustomActionResponse struct {
+	// Property actionDefinition
+	ActionDefinition *ActionDefinitionResponse `pulumi:"actionDefinition"`
+	// Property actionName
+	ActionName *string `pulumi:"actionName"`
+}
+
+// Definition of CustomAction
+type CustomActionResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomActionResponse)(nil)).Elem()
+}
+
+func (o CustomActionResponseOutput) ToCustomActionResponseOutput() CustomActionResponseOutput {
+	return o
+}
+
+func (o CustomActionResponseOutput) ToCustomActionResponseOutputWithContext(ctx context.Context) CustomActionResponseOutput {
+	return o
+}
+
+// Property actionDefinition
+func (o CustomActionResponseOutput) ActionDefinition() ActionDefinitionResponsePtrOutput {
+	return o.ApplyT(func(v CustomActionResponse) *ActionDefinitionResponse { return v.ActionDefinition }).(ActionDefinitionResponsePtrOutput)
+}
+
+// Property actionName
+func (o CustomActionResponseOutput) ActionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomActionResponse) *string { return v.ActionName }).(pulumi.StringPtrOutput)
+}
+
+type CustomActionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomActionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomActionResponse)(nil)).Elem()
+}
+
+func (o CustomActionResponseArrayOutput) ToCustomActionResponseArrayOutput() CustomActionResponseArrayOutput {
+	return o
+}
+
+func (o CustomActionResponseArrayOutput) ToCustomActionResponseArrayOutputWithContext(ctx context.Context) CustomActionResponseArrayOutput {
+	return o
+}
+
+func (o CustomActionResponseArrayOutput) Index(i pulumi.IntInput) CustomActionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomActionResponse {
+		return vs[0].([]CustomActionResponse)[vs[1].(int)]
+	}).(CustomActionResponseOutput)
+}
+
+// Definition of CustomErrorResponse
+type CustomErrorResponse struct {
+	// The minimum amount of time, in seconds, that you want CloudFront to cache the HTTP status code specified in ``ErrorCode``. When this time period has elapsed, CloudFront queries your origin to see whether the problem that caused the error has been resolved and the requested object is now available. For more information, see [Customizing Error Responses](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html) in the *Amazon CloudFront Developer Guide*.
+	ErrorCachingMinTTL *int `pulumi:"errorCachingMinTTL"`
+	// The HTTP status code for which you want to specify a custom error page and/or a caching duration.
+	ErrorCode *int `pulumi:"errorCode"`
+	// The HTTP status code that you want CloudFront to return to the viewer along with the custom error page. There are a variety of reasons that you might want CloudFront to return a status code different from the status code that your origin returned to CloudFront, for example:  +  Some Internet devices (some firewalls and corporate proxies, for example) intercept HTTP 4xx and 5xx and prevent the response from being returned to the viewer. If you substitute ``200``, the response typically won't be intercepted.  +  If you don't care about distinguishing among different client errors or server errors, you can specify ``400`` or ``500`` as the ``ResponseCode`` for all 4xx or 5xx errors.  +  You might want to return a ``200`` status code (OK) and static website so your customers don't know that your website is down.   If you specify a value for ``ResponseCode``, you must also specify a value for ``ResponsePagePath``.
+	ResponseCode *int `pulumi:"responseCode"`
+	// The path to the custom error page that you want CloudFront to return to a viewer when your origin returns the HTTP status code specified by ``ErrorCode``, for example, ``/4xx-errors/403-forbidden.html``. If you want to store your objects and your custom error pages in different locations, your distribution must include a cache behavior for which the following is true:  +  The value of ``PathPattern`` matches the path to your custom error messages. For example, suppose you saved custom error pages for 4xx errors in an Amazon S3 bucket in a directory named ``/4xx-errors``. Your distribution must include a cache behavior for which the path pattern routes requests for your custom error pages to that location, for example, ``/4xx-errors/*``.  +  The value of ``TargetOriginId`` specifies the value of the ``ID`` element for the origin that contains your custom error pages.   If you specify a value for ``ResponsePagePath``, you must also specify a value for ``ResponseCode``. We recommend that you store custom error pages in an Amazon S3 bucket. If you store custom error pages on an HTTP server and the server starts to return 5xx errors, CloudFront can't get the files that you want to return to viewers because the origin server is unavailable.
+	ResponsePagePath *string `pulumi:"responsePagePath"`
+}
+
+// Defaults sets the appropriate defaults for CustomErrorResponse
+func (val *CustomErrorResponse) Defaults() *CustomErrorResponse {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ErrorCachingMinTTL == nil {
+		errorCachingMinTTL_ := 300
+		tmp.ErrorCachingMinTTL = &errorCachingMinTTL_
+	}
+	return &tmp
+}
+
+// CustomErrorResponseInput is an input type that accepts CustomErrorResponseArgs and CustomErrorResponseOutput values.
+// You can construct a concrete instance of `CustomErrorResponseInput` via:
+//
+//	CustomErrorResponseArgs{...}
+type CustomErrorResponseInput interface {
+	pulumi.Input
+
+	ToCustomErrorResponseOutput() CustomErrorResponseOutput
+	ToCustomErrorResponseOutputWithContext(context.Context) CustomErrorResponseOutput
+}
+
+// Definition of CustomErrorResponse
+type CustomErrorResponseArgs struct {
+	// The minimum amount of time, in seconds, that you want CloudFront to cache the HTTP status code specified in ``ErrorCode``. When this time period has elapsed, CloudFront queries your origin to see whether the problem that caused the error has been resolved and the requested object is now available. For more information, see [Customizing Error Responses](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html) in the *Amazon CloudFront Developer Guide*.
+	ErrorCachingMinTTL pulumi.IntPtrInput `pulumi:"errorCachingMinTTL"`
+	// The HTTP status code for which you want to specify a custom error page and/or a caching duration.
+	ErrorCode pulumi.IntPtrInput `pulumi:"errorCode"`
+	// The HTTP status code that you want CloudFront to return to the viewer along with the custom error page. There are a variety of reasons that you might want CloudFront to return a status code different from the status code that your origin returned to CloudFront, for example:  +  Some Internet devices (some firewalls and corporate proxies, for example) intercept HTTP 4xx and 5xx and prevent the response from being returned to the viewer. If you substitute ``200``, the response typically won't be intercepted.  +  If you don't care about distinguishing among different client errors or server errors, you can specify ``400`` or ``500`` as the ``ResponseCode`` for all 4xx or 5xx errors.  +  You might want to return a ``200`` status code (OK) and static website so your customers don't know that your website is down.   If you specify a value for ``ResponseCode``, you must also specify a value for ``ResponsePagePath``.
+	ResponseCode pulumi.IntPtrInput `pulumi:"responseCode"`
+	// The path to the custom error page that you want CloudFront to return to a viewer when your origin returns the HTTP status code specified by ``ErrorCode``, for example, ``/4xx-errors/403-forbidden.html``. If you want to store your objects and your custom error pages in different locations, your distribution must include a cache behavior for which the following is true:  +  The value of ``PathPattern`` matches the path to your custom error messages. For example, suppose you saved custom error pages for 4xx errors in an Amazon S3 bucket in a directory named ``/4xx-errors``. Your distribution must include a cache behavior for which the path pattern routes requests for your custom error pages to that location, for example, ``/4xx-errors/*``.  +  The value of ``TargetOriginId`` specifies the value of the ``ID`` element for the origin that contains your custom error pages.   If you specify a value for ``ResponsePagePath``, you must also specify a value for ``ResponseCode``. We recommend that you store custom error pages in an Amazon S3 bucket. If you store custom error pages on an HTTP server and the server starts to return 5xx errors, CloudFront can't get the files that you want to return to viewers because the origin server is unavailable.
+	ResponsePagePath pulumi.StringPtrInput `pulumi:"responsePagePath"`
+}
+
+// Defaults sets the appropriate defaults for CustomErrorResponseArgs
+func (val *CustomErrorResponseArgs) Defaults() *CustomErrorResponseArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.ErrorCachingMinTTL == nil {
+		tmp.ErrorCachingMinTTL = pulumi.IntPtr(300)
+	}
+	return &tmp
+}
+func (CustomErrorResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomErrorResponse)(nil)).Elem()
+}
+
+func (i CustomErrorResponseArgs) ToCustomErrorResponseOutput() CustomErrorResponseOutput {
+	return i.ToCustomErrorResponseOutputWithContext(context.Background())
+}
+
+func (i CustomErrorResponseArgs) ToCustomErrorResponseOutputWithContext(ctx context.Context) CustomErrorResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomErrorResponseOutput)
+}
+
+// CustomErrorResponseArrayInput is an input type that accepts CustomErrorResponseArray and CustomErrorResponseArrayOutput values.
+// You can construct a concrete instance of `CustomErrorResponseArrayInput` via:
+//
+//	CustomErrorResponseArray{ CustomErrorResponseArgs{...} }
+type CustomErrorResponseArrayInput interface {
+	pulumi.Input
+
+	ToCustomErrorResponseArrayOutput() CustomErrorResponseArrayOutput
+	ToCustomErrorResponseArrayOutputWithContext(context.Context) CustomErrorResponseArrayOutput
+}
+
+type CustomErrorResponseArray []CustomErrorResponseInput
+
+func (CustomErrorResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomErrorResponse)(nil)).Elem()
+}
+
+func (i CustomErrorResponseArray) ToCustomErrorResponseArrayOutput() CustomErrorResponseArrayOutput {
+	return i.ToCustomErrorResponseArrayOutputWithContext(context.Background())
+}
+
+func (i CustomErrorResponseArray) ToCustomErrorResponseArrayOutputWithContext(ctx context.Context) CustomErrorResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomErrorResponseArrayOutput)
+}
+
+// Definition of CustomErrorResponse
+type CustomErrorResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomErrorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomErrorResponse)(nil)).Elem()
+}
+
+func (o CustomErrorResponseOutput) ToCustomErrorResponseOutput() CustomErrorResponseOutput {
+	return o
+}
+
+func (o CustomErrorResponseOutput) ToCustomErrorResponseOutputWithContext(ctx context.Context) CustomErrorResponseOutput {
+	return o
+}
+
+// The minimum amount of time, in seconds, that you want CloudFront to cache the HTTP status code specified in “ErrorCode“. When this time period has elapsed, CloudFront queries your origin to see whether the problem that caused the error has been resolved and the requested object is now available. For more information, see [Customizing Error Responses](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html) in the *Amazon CloudFront Developer Guide*.
+func (o CustomErrorResponseOutput) ErrorCachingMinTTL() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CustomErrorResponse) *int { return v.ErrorCachingMinTTL }).(pulumi.IntPtrOutput)
+}
+
+// The HTTP status code for which you want to specify a custom error page and/or a caching duration.
+func (o CustomErrorResponseOutput) ErrorCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CustomErrorResponse) *int { return v.ErrorCode }).(pulumi.IntPtrOutput)
+}
+
+// The HTTP status code that you want CloudFront to return to the viewer along with the custom error page. There are a variety of reasons that you might want CloudFront to return a status code different from the status code that your origin returned to CloudFront, for example:  +  Some Internet devices (some firewalls and corporate proxies, for example) intercept HTTP 4xx and 5xx and prevent the response from being returned to the viewer. If you substitute “200“, the response typically won't be intercepted.  +  If you don't care about distinguishing among different client errors or server errors, you can specify “400“ or “500“ as the “ResponseCode“ for all 4xx or 5xx errors.  +  You might want to return a “200“ status code (OK) and static website so your customers don't know that your website is down.   If you specify a value for “ResponseCode“, you must also specify a value for “ResponsePagePath“.
+func (o CustomErrorResponseOutput) ResponseCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CustomErrorResponse) *int { return v.ResponseCode }).(pulumi.IntPtrOutput)
+}
+
+// The path to the custom error page that you want CloudFront to return to a viewer when your origin returns the HTTP status code specified by “ErrorCode“, for example, “/4xx-errors/403-forbidden.html“. If you want to store your objects and your custom error pages in different locations, your distribution must include a cache behavior for which the following is true:  +  The value of “PathPattern“ matches the path to your custom error messages. For example, suppose you saved custom error pages for 4xx errors in an Amazon S3 bucket in a directory named “/4xx-errors“. Your distribution must include a cache behavior for which the path pattern routes requests for your custom error pages to that location, for example, “/4xx-errors/*“.  +  The value of “TargetOriginId“ specifies the value of the “ID“ element for the origin that contains your custom error pages.   If you specify a value for “ResponsePagePath“, you must also specify a value for “ResponseCode“. We recommend that you store custom error pages in an Amazon S3 bucket. If you store custom error pages on an HTTP server and the server starts to return 5xx errors, CloudFront can't get the files that you want to return to viewers because the origin server is unavailable.
+func (o CustomErrorResponseOutput) ResponsePagePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomErrorResponse) *string { return v.ResponsePagePath }).(pulumi.StringPtrOutput)
+}
+
+type CustomErrorResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomErrorResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomErrorResponse)(nil)).Elem()
+}
+
+func (o CustomErrorResponseArrayOutput) ToCustomErrorResponseArrayOutput() CustomErrorResponseArrayOutput {
+	return o
+}
+
+func (o CustomErrorResponseArrayOutput) ToCustomErrorResponseArrayOutputWithContext(ctx context.Context) CustomErrorResponseArrayOutput {
+	return o
+}
+
+func (o CustomErrorResponseArrayOutput) Index(i pulumi.IntInput) CustomErrorResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomErrorResponse {
+		return vs[0].([]CustomErrorResponse)[vs[1].(int)]
+	}).(CustomErrorResponseOutput)
+}
+
 // Definition of CustomErrorResponse
 type CustomErrorResponseResponse struct {
 	// The minimum amount of time, in seconds, that you want CloudFront to cache the HTTP status code specified in ``ErrorCode``. When this time period has elapsed, CloudFront queries your origin to see whether the problem that caused the error has been resolved and the requested object is now available. For more information, see [Customizing Error Responses](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html) in the *Amazon CloudFront Developer Guide*.
@@ -6956,6 +7160,151 @@ func (o DimensionArrayOutput) Index(i pulumi.IntInput) DimensionOutput {
 }
 
 // Definition of Dimension
+type DimensionLogsMetricFilterResponse struct {
+	// The name for the CW metric dimension that the metric filter creates. Dimension names must contain only ASCII characters, must include at least one non-whitespace character, and cannot start with a colon (:).
+	Key *string `pulumi:"key"`
+	// The log event field that will contain the value for this dimension. This dimension will only be published for a metric if the value is found in the log event. For example, ``$.eventType`` for JSON log events, or ``$server`` for space-delimited log events.
+	Value *string `pulumi:"value"`
+}
+
+// Definition of Dimension
+type DimensionLogsMetricFilterResponseOutput struct{ *pulumi.OutputState }
+
+func (DimensionLogsMetricFilterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DimensionLogsMetricFilterResponse)(nil)).Elem()
+}
+
+func (o DimensionLogsMetricFilterResponseOutput) ToDimensionLogsMetricFilterResponseOutput() DimensionLogsMetricFilterResponseOutput {
+	return o
+}
+
+func (o DimensionLogsMetricFilterResponseOutput) ToDimensionLogsMetricFilterResponseOutputWithContext(ctx context.Context) DimensionLogsMetricFilterResponseOutput {
+	return o
+}
+
+// The name for the CW metric dimension that the metric filter creates. Dimension names must contain only ASCII characters, must include at least one non-whitespace character, and cannot start with a colon (:).
+func (o DimensionLogsMetricFilterResponseOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DimensionLogsMetricFilterResponse) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The log event field that will contain the value for this dimension. This dimension will only be published for a metric if the value is found in the log event. For example, “$.eventType“ for JSON log events, or “$server“ for space-delimited log events.
+func (o DimensionLogsMetricFilterResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DimensionLogsMetricFilterResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type DimensionLogsMetricFilterResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DimensionLogsMetricFilterResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DimensionLogsMetricFilterResponse)(nil)).Elem()
+}
+
+func (o DimensionLogsMetricFilterResponseArrayOutput) ToDimensionLogsMetricFilterResponseArrayOutput() DimensionLogsMetricFilterResponseArrayOutput {
+	return o
+}
+
+func (o DimensionLogsMetricFilterResponseArrayOutput) ToDimensionLogsMetricFilterResponseArrayOutputWithContext(ctx context.Context) DimensionLogsMetricFilterResponseArrayOutput {
+	return o
+}
+
+func (o DimensionLogsMetricFilterResponseArrayOutput) Index(i pulumi.IntInput) DimensionLogsMetricFilterResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DimensionLogsMetricFilterResponse {
+		return vs[0].([]DimensionLogsMetricFilterResponse)[vs[1].(int)]
+	}).(DimensionLogsMetricFilterResponseOutput)
+}
+
+// Definition of Dimension
+type DimensionNetworkFirewallFirewallPolicyResponse struct {
+	// Property value
+	Value *string `pulumi:"value"`
+}
+
+// Definition of Dimension
+type DimensionNetworkFirewallFirewallPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (DimensionNetworkFirewallFirewallPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DimensionNetworkFirewallFirewallPolicyResponse)(nil)).Elem()
+}
+
+func (o DimensionNetworkFirewallFirewallPolicyResponseOutput) ToDimensionNetworkFirewallFirewallPolicyResponseOutput() DimensionNetworkFirewallFirewallPolicyResponseOutput {
+	return o
+}
+
+func (o DimensionNetworkFirewallFirewallPolicyResponseOutput) ToDimensionNetworkFirewallFirewallPolicyResponseOutputWithContext(ctx context.Context) DimensionNetworkFirewallFirewallPolicyResponseOutput {
+	return o
+}
+
+// Property value
+func (o DimensionNetworkFirewallFirewallPolicyResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DimensionNetworkFirewallFirewallPolicyResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type DimensionNetworkFirewallFirewallPolicyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DimensionNetworkFirewallFirewallPolicyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DimensionNetworkFirewallFirewallPolicyResponse)(nil)).Elem()
+}
+
+func (o DimensionNetworkFirewallFirewallPolicyResponseArrayOutput) ToDimensionNetworkFirewallFirewallPolicyResponseArrayOutput() DimensionNetworkFirewallFirewallPolicyResponseArrayOutput {
+	return o
+}
+
+func (o DimensionNetworkFirewallFirewallPolicyResponseArrayOutput) ToDimensionNetworkFirewallFirewallPolicyResponseArrayOutputWithContext(ctx context.Context) DimensionNetworkFirewallFirewallPolicyResponseArrayOutput {
+	return o
+}
+
+func (o DimensionNetworkFirewallFirewallPolicyResponseArrayOutput) Index(i pulumi.IntInput) DimensionNetworkFirewallFirewallPolicyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DimensionNetworkFirewallFirewallPolicyResponse {
+		return vs[0].([]DimensionNetworkFirewallFirewallPolicyResponse)[vs[1].(int)]
+	}).(DimensionNetworkFirewallFirewallPolicyResponseOutput)
+}
+
+// Definition of Dimension
+type DimensionNetworkFirewallRuleGroupResponse struct {
+	// Property value
+	Value *string `pulumi:"value"`
+}
+
+// Definition of Dimension
+type DimensionNetworkFirewallRuleGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (DimensionNetworkFirewallRuleGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DimensionNetworkFirewallRuleGroupResponse)(nil)).Elem()
+}
+
+func (o DimensionNetworkFirewallRuleGroupResponseOutput) ToDimensionNetworkFirewallRuleGroupResponseOutput() DimensionNetworkFirewallRuleGroupResponseOutput {
+	return o
+}
+
+func (o DimensionNetworkFirewallRuleGroupResponseOutput) ToDimensionNetworkFirewallRuleGroupResponseOutputWithContext(ctx context.Context) DimensionNetworkFirewallRuleGroupResponseOutput {
+	return o
+}
+
+// Property value
+func (o DimensionNetworkFirewallRuleGroupResponseOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DimensionNetworkFirewallRuleGroupResponse) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type DimensionNetworkFirewallRuleGroupResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DimensionNetworkFirewallRuleGroupResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DimensionNetworkFirewallRuleGroupResponse)(nil)).Elem()
+}
+
+func (o DimensionNetworkFirewallRuleGroupResponseArrayOutput) ToDimensionNetworkFirewallRuleGroupResponseArrayOutput() DimensionNetworkFirewallRuleGroupResponseArrayOutput {
+	return o
+}
+
+func (o DimensionNetworkFirewallRuleGroupResponseArrayOutput) ToDimensionNetworkFirewallRuleGroupResponseArrayOutputWithContext(ctx context.Context) DimensionNetworkFirewallRuleGroupResponseArrayOutput {
+	return o
+}
+
+func (o DimensionNetworkFirewallRuleGroupResponseArrayOutput) Index(i pulumi.IntInput) DimensionNetworkFirewallRuleGroupResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DimensionNetworkFirewallRuleGroupResponse {
+		return vs[0].([]DimensionNetworkFirewallRuleGroupResponse)[vs[1].(int)]
+	}).(DimensionNetworkFirewallRuleGroupResponseOutput)
+}
+
+// Definition of Dimension
 type DimensionResponse struct {
 	// The name of the dimension, from 1–255 characters in length. This dimension name must have been included when the metric was published.
 	Name *string `pulumi:"name"`
@@ -7006,105 +7355,6 @@ func (o DimensionResponseArrayOutput) Index(i pulumi.IntInput) DimensionResponse
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DimensionResponse {
 		return vs[0].([]DimensionResponse)[vs[1].(int)]
 	}).(DimensionResponseOutput)
-}
-
-// Definition of Dimension
-type DimensionResponseV1 struct {
-	// The name for the CW metric dimension that the metric filter creates. Dimension names must contain only ASCII characters, must include at least one non-whitespace character, and cannot start with a colon (:).
-	Key *string `pulumi:"key"`
-	// The log event field that will contain the value for this dimension. This dimension will only be published for a metric if the value is found in the log event. For example, ``$.eventType`` for JSON log events, or ``$server`` for space-delimited log events.
-	Value *string `pulumi:"value"`
-}
-
-// Definition of Dimension
-type DimensionResponseV1Output struct{ *pulumi.OutputState }
-
-func (DimensionResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*DimensionResponseV1)(nil)).Elem()
-}
-
-func (o DimensionResponseV1Output) ToDimensionResponseV1Output() DimensionResponseV1Output {
-	return o
-}
-
-func (o DimensionResponseV1Output) ToDimensionResponseV1OutputWithContext(ctx context.Context) DimensionResponseV1Output {
-	return o
-}
-
-// The name for the CW metric dimension that the metric filter creates. Dimension names must contain only ASCII characters, must include at least one non-whitespace character, and cannot start with a colon (:).
-func (o DimensionResponseV1Output) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DimensionResponseV1) *string { return v.Key }).(pulumi.StringPtrOutput)
-}
-
-// The log event field that will contain the value for this dimension. This dimension will only be published for a metric if the value is found in the log event. For example, “$.eventType“ for JSON log events, or “$server“ for space-delimited log events.
-func (o DimensionResponseV1Output) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DimensionResponseV1) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type DimensionResponseV1ArrayOutput struct{ *pulumi.OutputState }
-
-func (DimensionResponseV1ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DimensionResponseV1)(nil)).Elem()
-}
-
-func (o DimensionResponseV1ArrayOutput) ToDimensionResponseV1ArrayOutput() DimensionResponseV1ArrayOutput {
-	return o
-}
-
-func (o DimensionResponseV1ArrayOutput) ToDimensionResponseV1ArrayOutputWithContext(ctx context.Context) DimensionResponseV1ArrayOutput {
-	return o
-}
-
-func (o DimensionResponseV1ArrayOutput) Index(i pulumi.IntInput) DimensionResponseV1Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DimensionResponseV1 {
-		return vs[0].([]DimensionResponseV1)[vs[1].(int)]
-	}).(DimensionResponseV1Output)
-}
-
-// Definition of Dimension
-type DimensionResponseV2 struct {
-	// Property value
-	Value *string `pulumi:"value"`
-}
-
-// Definition of Dimension
-type DimensionResponseV2Output struct{ *pulumi.OutputState }
-
-func (DimensionResponseV2Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*DimensionResponseV2)(nil)).Elem()
-}
-
-func (o DimensionResponseV2Output) ToDimensionResponseV2Output() DimensionResponseV2Output {
-	return o
-}
-
-func (o DimensionResponseV2Output) ToDimensionResponseV2OutputWithContext(ctx context.Context) DimensionResponseV2Output {
-	return o
-}
-
-// Property value
-func (o DimensionResponseV2Output) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DimensionResponseV2) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type DimensionResponseV2ArrayOutput struct{ *pulumi.OutputState }
-
-func (DimensionResponseV2ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DimensionResponseV2)(nil)).Elem()
-}
-
-func (o DimensionResponseV2ArrayOutput) ToDimensionResponseV2ArrayOutput() DimensionResponseV2ArrayOutput {
-	return o
-}
-
-func (o DimensionResponseV2ArrayOutput) ToDimensionResponseV2ArrayOutputWithContext(ctx context.Context) DimensionResponseV2ArrayOutput {
-	return o
-}
-
-func (o DimensionResponseV2ArrayOutput) Index(i pulumi.IntInput) DimensionResponseV2Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DimensionResponseV2 {
-		return vs[0].([]DimensionResponseV2)[vs[1].(int)]
-	}).(DimensionResponseV2Output)
 }
 
 // Definition of Disk
@@ -26744,58 +26994,58 @@ func (o EncryptionConfigurationResponsePtrOutput) KmsKey() pulumi.StringPtrOutpu
 }
 
 // Definition of EncryptionConfiguration
-type EncryptionConfigurationResponseV1 struct {
+type EncryptionConfigurationS3BucketResponse struct {
 	// Specifies the ID (Key ARN or Alias ARN) of the customer managed AWS KMS key stored in AWS Key Management Service (KMS) for the destination bucket. Amazon S3 uses this key to encrypt replica objects. Amazon S3 only supports symmetric encryption KMS keys. For more information, see [Asymmetric keys in KMS](https://docs.aws.amazon.com//kms/latest/developerguide/symmetric-asymmetric.html) in the *Key Management Service Developer Guide*.
 	ReplicaKmsKeyID *string `pulumi:"replicaKmsKeyID"`
 }
 
 // Definition of EncryptionConfiguration
-type EncryptionConfigurationResponseV1Output struct{ *pulumi.OutputState }
+type EncryptionConfigurationS3BucketResponseOutput struct{ *pulumi.OutputState }
 
-func (EncryptionConfigurationResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*EncryptionConfigurationResponseV1)(nil)).Elem()
+func (EncryptionConfigurationS3BucketResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionConfigurationS3BucketResponse)(nil)).Elem()
 }
 
-func (o EncryptionConfigurationResponseV1Output) ToEncryptionConfigurationResponseV1Output() EncryptionConfigurationResponseV1Output {
+func (o EncryptionConfigurationS3BucketResponseOutput) ToEncryptionConfigurationS3BucketResponseOutput() EncryptionConfigurationS3BucketResponseOutput {
 	return o
 }
 
-func (o EncryptionConfigurationResponseV1Output) ToEncryptionConfigurationResponseV1OutputWithContext(ctx context.Context) EncryptionConfigurationResponseV1Output {
+func (o EncryptionConfigurationS3BucketResponseOutput) ToEncryptionConfigurationS3BucketResponseOutputWithContext(ctx context.Context) EncryptionConfigurationS3BucketResponseOutput {
 	return o
 }
 
 // Specifies the ID (Key ARN or Alias ARN) of the customer managed AWS KMS key stored in AWS Key Management Service (KMS) for the destination bucket. Amazon S3 uses this key to encrypt replica objects. Amazon S3 only supports symmetric encryption KMS keys. For more information, see [Asymmetric keys in KMS](https://docs.aws.amazon.com//kms/latest/developerguide/symmetric-asymmetric.html) in the *Key Management Service Developer Guide*.
-func (o EncryptionConfigurationResponseV1Output) ReplicaKmsKeyID() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EncryptionConfigurationResponseV1) *string { return v.ReplicaKmsKeyID }).(pulumi.StringPtrOutput)
+func (o EncryptionConfigurationS3BucketResponseOutput) ReplicaKmsKeyID() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionConfigurationS3BucketResponse) *string { return v.ReplicaKmsKeyID }).(pulumi.StringPtrOutput)
 }
 
-type EncryptionConfigurationResponseV1PtrOutput struct{ *pulumi.OutputState }
+type EncryptionConfigurationS3BucketResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (EncryptionConfigurationResponseV1PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EncryptionConfigurationResponseV1)(nil)).Elem()
+func (EncryptionConfigurationS3BucketResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionConfigurationS3BucketResponse)(nil)).Elem()
 }
 
-func (o EncryptionConfigurationResponseV1PtrOutput) ToEncryptionConfigurationResponseV1PtrOutput() EncryptionConfigurationResponseV1PtrOutput {
+func (o EncryptionConfigurationS3BucketResponsePtrOutput) ToEncryptionConfigurationS3BucketResponsePtrOutput() EncryptionConfigurationS3BucketResponsePtrOutput {
 	return o
 }
 
-func (o EncryptionConfigurationResponseV1PtrOutput) ToEncryptionConfigurationResponseV1PtrOutputWithContext(ctx context.Context) EncryptionConfigurationResponseV1PtrOutput {
+func (o EncryptionConfigurationS3BucketResponsePtrOutput) ToEncryptionConfigurationS3BucketResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigurationS3BucketResponsePtrOutput {
 	return o
 }
 
-func (o EncryptionConfigurationResponseV1PtrOutput) Elem() EncryptionConfigurationResponseV1Output {
-	return o.ApplyT(func(v *EncryptionConfigurationResponseV1) EncryptionConfigurationResponseV1 {
+func (o EncryptionConfigurationS3BucketResponsePtrOutput) Elem() EncryptionConfigurationS3BucketResponseOutput {
+	return o.ApplyT(func(v *EncryptionConfigurationS3BucketResponse) EncryptionConfigurationS3BucketResponse {
 		if v != nil {
 			return *v
 		}
-		var ret EncryptionConfigurationResponseV1
+		var ret EncryptionConfigurationS3BucketResponse
 		return ret
-	}).(EncryptionConfigurationResponseV1Output)
+	}).(EncryptionConfigurationS3BucketResponseOutput)
 }
 
 // Specifies the ID (Key ARN or Alias ARN) of the customer managed AWS KMS key stored in AWS Key Management Service (KMS) for the destination bucket. Amazon S3 uses this key to encrypt replica objects. Amazon S3 only supports symmetric encryption KMS keys. For more information, see [Asymmetric keys in KMS](https://docs.aws.amazon.com//kms/latest/developerguide/symmetric-asymmetric.html) in the *Key Management Service Developer Guide*.
-func (o EncryptionConfigurationResponseV1PtrOutput) ReplicaKmsKeyID() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EncryptionConfigurationResponseV1) *string {
+func (o EncryptionConfigurationS3BucketResponsePtrOutput) ReplicaKmsKeyID() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionConfigurationS3BucketResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -28423,6 +28673,66 @@ func (o EphemeralStoragePtrOutput) SizeInGiB() pulumi.IntPtrOutput {
 }
 
 // Definition of EphemeralStorage
+type EphemeralStorageLambdaFunctionResponse struct {
+	// The size of the function's ``/tmp`` directory.
+	Size *int `pulumi:"size"`
+}
+
+// Definition of EphemeralStorage
+type EphemeralStorageLambdaFunctionResponseOutput struct{ *pulumi.OutputState }
+
+func (EphemeralStorageLambdaFunctionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EphemeralStorageLambdaFunctionResponse)(nil)).Elem()
+}
+
+func (o EphemeralStorageLambdaFunctionResponseOutput) ToEphemeralStorageLambdaFunctionResponseOutput() EphemeralStorageLambdaFunctionResponseOutput {
+	return o
+}
+
+func (o EphemeralStorageLambdaFunctionResponseOutput) ToEphemeralStorageLambdaFunctionResponseOutputWithContext(ctx context.Context) EphemeralStorageLambdaFunctionResponseOutput {
+	return o
+}
+
+// The size of the function's “/tmp“ directory.
+func (o EphemeralStorageLambdaFunctionResponseOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EphemeralStorageLambdaFunctionResponse) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+type EphemeralStorageLambdaFunctionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EphemeralStorageLambdaFunctionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EphemeralStorageLambdaFunctionResponse)(nil)).Elem()
+}
+
+func (o EphemeralStorageLambdaFunctionResponsePtrOutput) ToEphemeralStorageLambdaFunctionResponsePtrOutput() EphemeralStorageLambdaFunctionResponsePtrOutput {
+	return o
+}
+
+func (o EphemeralStorageLambdaFunctionResponsePtrOutput) ToEphemeralStorageLambdaFunctionResponsePtrOutputWithContext(ctx context.Context) EphemeralStorageLambdaFunctionResponsePtrOutput {
+	return o
+}
+
+func (o EphemeralStorageLambdaFunctionResponsePtrOutput) Elem() EphemeralStorageLambdaFunctionResponseOutput {
+	return o.ApplyT(func(v *EphemeralStorageLambdaFunctionResponse) EphemeralStorageLambdaFunctionResponse {
+		if v != nil {
+			return *v
+		}
+		var ret EphemeralStorageLambdaFunctionResponse
+		return ret
+	}).(EphemeralStorageLambdaFunctionResponseOutput)
+}
+
+// The size of the function's “/tmp“ directory.
+func (o EphemeralStorageLambdaFunctionResponsePtrOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EphemeralStorageLambdaFunctionResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.IntPtrOutput)
+}
+
+// Definition of EphemeralStorage
 type EphemeralStorageResponse struct {
 	// The total amount, in GiB, of ephemeral storage to set for the task. The minimum supported value is ``20`` GiB and the maximum supported value is ``200`` GiB.
 	SizeInGiB *int `pulumi:"sizeInGiB"`
@@ -28479,66 +28789,6 @@ func (o EphemeralStorageResponsePtrOutput) SizeInGiB() pulumi.IntPtrOutput {
 			return nil
 		}
 		return v.SizeInGiB
-	}).(pulumi.IntPtrOutput)
-}
-
-// Definition of EphemeralStorage
-type EphemeralStorageResponseV1 struct {
-	// The size of the function's ``/tmp`` directory.
-	Size *int `pulumi:"size"`
-}
-
-// Definition of EphemeralStorage
-type EphemeralStorageResponseV1Output struct{ *pulumi.OutputState }
-
-func (EphemeralStorageResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*EphemeralStorageResponseV1)(nil)).Elem()
-}
-
-func (o EphemeralStorageResponseV1Output) ToEphemeralStorageResponseV1Output() EphemeralStorageResponseV1Output {
-	return o
-}
-
-func (o EphemeralStorageResponseV1Output) ToEphemeralStorageResponseV1OutputWithContext(ctx context.Context) EphemeralStorageResponseV1Output {
-	return o
-}
-
-// The size of the function's “/tmp“ directory.
-func (o EphemeralStorageResponseV1Output) Size() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v EphemeralStorageResponseV1) *int { return v.Size }).(pulumi.IntPtrOutput)
-}
-
-type EphemeralStorageResponseV1PtrOutput struct{ *pulumi.OutputState }
-
-func (EphemeralStorageResponseV1PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**EphemeralStorageResponseV1)(nil)).Elem()
-}
-
-func (o EphemeralStorageResponseV1PtrOutput) ToEphemeralStorageResponseV1PtrOutput() EphemeralStorageResponseV1PtrOutput {
-	return o
-}
-
-func (o EphemeralStorageResponseV1PtrOutput) ToEphemeralStorageResponseV1PtrOutputWithContext(ctx context.Context) EphemeralStorageResponseV1PtrOutput {
-	return o
-}
-
-func (o EphemeralStorageResponseV1PtrOutput) Elem() EphemeralStorageResponseV1Output {
-	return o.ApplyT(func(v *EphemeralStorageResponseV1) EphemeralStorageResponseV1 {
-		if v != nil {
-			return *v
-		}
-		var ret EphemeralStorageResponseV1
-		return ret
-	}).(EphemeralStorageResponseV1Output)
-}
-
-// The size of the function's “/tmp“ directory.
-func (o EphemeralStorageResponseV1PtrOutput) Size() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *EphemeralStorageResponseV1) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Size
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -32418,66 +32668,6 @@ func (o FilterResponseArrayOutput) Index(i pulumi.IntInput) FilterResponseOutput
 	}).(FilterResponseOutput)
 }
 
-// Definition of Filter
-type FilterResponseV1 struct {
-	// How to handle logs that satisfy the filter's conditions and requirement.
-	Behavior *string `pulumi:"behavior"`
-	// Match conditions for the filter.
-	Conditions []ConditionResponse `pulumi:"conditions"`
-	// Logic to apply to the filtering conditions. You can specify that, in order to satisfy the filter, a log must match all conditions or must match at least one condition.
-	Requirement *string `pulumi:"requirement"`
-}
-
-// Definition of Filter
-type FilterResponseV1Output struct{ *pulumi.OutputState }
-
-func (FilterResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*FilterResponseV1)(nil)).Elem()
-}
-
-func (o FilterResponseV1Output) ToFilterResponseV1Output() FilterResponseV1Output {
-	return o
-}
-
-func (o FilterResponseV1Output) ToFilterResponseV1OutputWithContext(ctx context.Context) FilterResponseV1Output {
-	return o
-}
-
-// How to handle logs that satisfy the filter's conditions and requirement.
-func (o FilterResponseV1Output) Behavior() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FilterResponseV1) *string { return v.Behavior }).(pulumi.StringPtrOutput)
-}
-
-// Match conditions for the filter.
-func (o FilterResponseV1Output) Conditions() ConditionResponseArrayOutput {
-	return o.ApplyT(func(v FilterResponseV1) []ConditionResponse { return v.Conditions }).(ConditionResponseArrayOutput)
-}
-
-// Logic to apply to the filtering conditions. You can specify that, in order to satisfy the filter, a log must match all conditions or must match at least one condition.
-func (o FilterResponseV1Output) Requirement() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FilterResponseV1) *string { return v.Requirement }).(pulumi.StringPtrOutput)
-}
-
-type FilterResponseV1ArrayOutput struct{ *pulumi.OutputState }
-
-func (FilterResponseV1ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]FilterResponseV1)(nil)).Elem()
-}
-
-func (o FilterResponseV1ArrayOutput) ToFilterResponseV1ArrayOutput() FilterResponseV1ArrayOutput {
-	return o
-}
-
-func (o FilterResponseV1ArrayOutput) ToFilterResponseV1ArrayOutputWithContext(ctx context.Context) FilterResponseV1ArrayOutput {
-	return o
-}
-
-func (o FilterResponseV1ArrayOutput) Index(i pulumi.IntInput) FilterResponseV1Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FilterResponseV1 {
-		return vs[0].([]FilterResponseV1)[vs[1].(int)]
-	}).(FilterResponseV1Output)
-}
-
 // Definition of FilterRule
 type FilterRule struct {
 	// The object key name prefix or suffix identifying one or more objects to which the filtering rule applies. The maximum length is 1,024 characters. Overlapping prefixes and suffixes are not supported. For more information, see [Configuring Event Notifications](https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html) in the *Amazon S3 User Guide*.
@@ -32638,6 +32828,66 @@ func (o FilterRuleResponseArrayOutput) Index(i pulumi.IntInput) FilterRuleRespon
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FilterRuleResponse {
 		return vs[0].([]FilterRuleResponse)[vs[1].(int)]
 	}).(FilterRuleResponseOutput)
+}
+
+// Definition of Filter
+type FilterWafv2LoggingConfigurationResponse struct {
+	// How to handle logs that satisfy the filter's conditions and requirement.
+	Behavior *string `pulumi:"behavior"`
+	// Match conditions for the filter.
+	Conditions []ConditionResponse `pulumi:"conditions"`
+	// Logic to apply to the filtering conditions. You can specify that, in order to satisfy the filter, a log must match all conditions or must match at least one condition.
+	Requirement *string `pulumi:"requirement"`
+}
+
+// Definition of Filter
+type FilterWafv2LoggingConfigurationResponseOutput struct{ *pulumi.OutputState }
+
+func (FilterWafv2LoggingConfigurationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FilterWafv2LoggingConfigurationResponse)(nil)).Elem()
+}
+
+func (o FilterWafv2LoggingConfigurationResponseOutput) ToFilterWafv2LoggingConfigurationResponseOutput() FilterWafv2LoggingConfigurationResponseOutput {
+	return o
+}
+
+func (o FilterWafv2LoggingConfigurationResponseOutput) ToFilterWafv2LoggingConfigurationResponseOutputWithContext(ctx context.Context) FilterWafv2LoggingConfigurationResponseOutput {
+	return o
+}
+
+// How to handle logs that satisfy the filter's conditions and requirement.
+func (o FilterWafv2LoggingConfigurationResponseOutput) Behavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FilterWafv2LoggingConfigurationResponse) *string { return v.Behavior }).(pulumi.StringPtrOutput)
+}
+
+// Match conditions for the filter.
+func (o FilterWafv2LoggingConfigurationResponseOutput) Conditions() ConditionResponseArrayOutput {
+	return o.ApplyT(func(v FilterWafv2LoggingConfigurationResponse) []ConditionResponse { return v.Conditions }).(ConditionResponseArrayOutput)
+}
+
+// Logic to apply to the filtering conditions. You can specify that, in order to satisfy the filter, a log must match all conditions or must match at least one condition.
+func (o FilterWafv2LoggingConfigurationResponseOutput) Requirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FilterWafv2LoggingConfigurationResponse) *string { return v.Requirement }).(pulumi.StringPtrOutput)
+}
+
+type FilterWafv2LoggingConfigurationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (FilterWafv2LoggingConfigurationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FilterWafv2LoggingConfigurationResponse)(nil)).Elem()
+}
+
+func (o FilterWafv2LoggingConfigurationResponseArrayOutput) ToFilterWafv2LoggingConfigurationResponseArrayOutput() FilterWafv2LoggingConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o FilterWafv2LoggingConfigurationResponseArrayOutput) ToFilterWafv2LoggingConfigurationResponseArrayOutputWithContext(ctx context.Context) FilterWafv2LoggingConfigurationResponseArrayOutput {
+	return o
+}
+
+func (o FilterWafv2LoggingConfigurationResponseArrayOutput) Index(i pulumi.IntInput) FilterWafv2LoggingConfigurationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FilterWafv2LoggingConfigurationResponse {
+		return vs[0].([]FilterWafv2LoggingConfigurationResponse)[vs[1].(int)]
+	}).(FilterWafv2LoggingConfigurationResponseOutput)
 }
 
 // Definition of FirelensConfiguration
@@ -48927,6 +49177,52 @@ func (o InstanceIpv6AddressArrayOutput) Index(i pulumi.IntInput) InstanceIpv6Add
 }
 
 // Definition of InstanceIpv6Address
+type InstanceIpv6AddressEc2NetworkInterfaceResponse struct {
+	// Property ipv6Address
+	Ipv6Address *string `pulumi:"ipv6Address"`
+}
+
+// Definition of InstanceIpv6Address
+type InstanceIpv6AddressEc2NetworkInterfaceResponseOutput struct{ *pulumi.OutputState }
+
+func (InstanceIpv6AddressEc2NetworkInterfaceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceIpv6AddressEc2NetworkInterfaceResponse)(nil)).Elem()
+}
+
+func (o InstanceIpv6AddressEc2NetworkInterfaceResponseOutput) ToInstanceIpv6AddressEc2NetworkInterfaceResponseOutput() InstanceIpv6AddressEc2NetworkInterfaceResponseOutput {
+	return o
+}
+
+func (o InstanceIpv6AddressEc2NetworkInterfaceResponseOutput) ToInstanceIpv6AddressEc2NetworkInterfaceResponseOutputWithContext(ctx context.Context) InstanceIpv6AddressEc2NetworkInterfaceResponseOutput {
+	return o
+}
+
+// Property ipv6Address
+func (o InstanceIpv6AddressEc2NetworkInterfaceResponseOutput) Ipv6Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceIpv6AddressEc2NetworkInterfaceResponse) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
+}
+
+type InstanceIpv6AddressEc2NetworkInterfaceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceIpv6AddressEc2NetworkInterfaceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceIpv6AddressEc2NetworkInterfaceResponse)(nil)).Elem()
+}
+
+func (o InstanceIpv6AddressEc2NetworkInterfaceResponseArrayOutput) ToInstanceIpv6AddressEc2NetworkInterfaceResponseArrayOutput() InstanceIpv6AddressEc2NetworkInterfaceResponseArrayOutput {
+	return o
+}
+
+func (o InstanceIpv6AddressEc2NetworkInterfaceResponseArrayOutput) ToInstanceIpv6AddressEc2NetworkInterfaceResponseArrayOutputWithContext(ctx context.Context) InstanceIpv6AddressEc2NetworkInterfaceResponseArrayOutput {
+	return o
+}
+
+func (o InstanceIpv6AddressEc2NetworkInterfaceResponseArrayOutput) Index(i pulumi.IntInput) InstanceIpv6AddressEc2NetworkInterfaceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceIpv6AddressEc2NetworkInterfaceResponse {
+		return vs[0].([]InstanceIpv6AddressEc2NetworkInterfaceResponse)[vs[1].(int)]
+	}).(InstanceIpv6AddressEc2NetworkInterfaceResponseOutput)
+}
+
+// Definition of InstanceIpv6Address
 type InstanceIpv6AddressResponse struct {
 	// <p>The IPv6 address.</p>
 	Ipv6Address *string `pulumi:"ipv6Address"`
@@ -48977,52 +49273,6 @@ func (o InstanceIpv6AddressResponseArrayOutput) Index(i pulumi.IntInput) Instanc
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceIpv6AddressResponse {
 		return vs[0].([]InstanceIpv6AddressResponse)[vs[1].(int)]
 	}).(InstanceIpv6AddressResponseOutput)
-}
-
-// Definition of InstanceIpv6Address
-type InstanceIpv6AddressResponseV1 struct {
-	// Property ipv6Address
-	Ipv6Address *string `pulumi:"ipv6Address"`
-}
-
-// Definition of InstanceIpv6Address
-type InstanceIpv6AddressResponseV1Output struct{ *pulumi.OutputState }
-
-func (InstanceIpv6AddressResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceIpv6AddressResponseV1)(nil)).Elem()
-}
-
-func (o InstanceIpv6AddressResponseV1Output) ToInstanceIpv6AddressResponseV1Output() InstanceIpv6AddressResponseV1Output {
-	return o
-}
-
-func (o InstanceIpv6AddressResponseV1Output) ToInstanceIpv6AddressResponseV1OutputWithContext(ctx context.Context) InstanceIpv6AddressResponseV1Output {
-	return o
-}
-
-// Property ipv6Address
-func (o InstanceIpv6AddressResponseV1Output) Ipv6Address() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceIpv6AddressResponseV1) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
-}
-
-type InstanceIpv6AddressResponseV1ArrayOutput struct{ *pulumi.OutputState }
-
-func (InstanceIpv6AddressResponseV1ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]InstanceIpv6AddressResponseV1)(nil)).Elem()
-}
-
-func (o InstanceIpv6AddressResponseV1ArrayOutput) ToInstanceIpv6AddressResponseV1ArrayOutput() InstanceIpv6AddressResponseV1ArrayOutput {
-	return o
-}
-
-func (o InstanceIpv6AddressResponseV1ArrayOutput) ToInstanceIpv6AddressResponseV1ArrayOutputWithContext(ctx context.Context) InstanceIpv6AddressResponseV1ArrayOutput {
-	return o
-}
-
-func (o InstanceIpv6AddressResponseV1ArrayOutput) Index(i pulumi.IntInput) InstanceIpv6AddressResponseV1Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceIpv6AddressResponseV1 {
-		return vs[0].([]InstanceIpv6AddressResponseV1)[vs[1].(int)]
-	}).(InstanceIpv6AddressResponseV1Output)
 }
 
 // Definition of InstanceIpv6Prefix
@@ -62978,6 +63228,100 @@ func (o LaunchTemplateSpecificationPtrOutput) Version() pulumi.StringPtrOutput {
 }
 
 // Definition of LaunchTemplateSpecification
+type LaunchTemplateSpecificationEksNodegroupResponse struct {
+	// Property id
+	Id *string `pulumi:"id"`
+	// Property name
+	Name *string `pulumi:"name"`
+	// Property version
+	Version *string `pulumi:"version"`
+}
+
+// Definition of LaunchTemplateSpecification
+type LaunchTemplateSpecificationEksNodegroupResponseOutput struct{ *pulumi.OutputState }
+
+func (LaunchTemplateSpecificationEksNodegroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LaunchTemplateSpecificationEksNodegroupResponse)(nil)).Elem()
+}
+
+func (o LaunchTemplateSpecificationEksNodegroupResponseOutput) ToLaunchTemplateSpecificationEksNodegroupResponseOutput() LaunchTemplateSpecificationEksNodegroupResponseOutput {
+	return o
+}
+
+func (o LaunchTemplateSpecificationEksNodegroupResponseOutput) ToLaunchTemplateSpecificationEksNodegroupResponseOutputWithContext(ctx context.Context) LaunchTemplateSpecificationEksNodegroupResponseOutput {
+	return o
+}
+
+// Property id
+func (o LaunchTemplateSpecificationEksNodegroupResponseOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LaunchTemplateSpecificationEksNodegroupResponse) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Property name
+func (o LaunchTemplateSpecificationEksNodegroupResponseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LaunchTemplateSpecificationEksNodegroupResponse) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Property version
+func (o LaunchTemplateSpecificationEksNodegroupResponseOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LaunchTemplateSpecificationEksNodegroupResponse) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type LaunchTemplateSpecificationEksNodegroupResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LaunchTemplateSpecificationEksNodegroupResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LaunchTemplateSpecificationEksNodegroupResponse)(nil)).Elem()
+}
+
+func (o LaunchTemplateSpecificationEksNodegroupResponsePtrOutput) ToLaunchTemplateSpecificationEksNodegroupResponsePtrOutput() LaunchTemplateSpecificationEksNodegroupResponsePtrOutput {
+	return o
+}
+
+func (o LaunchTemplateSpecificationEksNodegroupResponsePtrOutput) ToLaunchTemplateSpecificationEksNodegroupResponsePtrOutputWithContext(ctx context.Context) LaunchTemplateSpecificationEksNodegroupResponsePtrOutput {
+	return o
+}
+
+func (o LaunchTemplateSpecificationEksNodegroupResponsePtrOutput) Elem() LaunchTemplateSpecificationEksNodegroupResponseOutput {
+	return o.ApplyT(func(v *LaunchTemplateSpecificationEksNodegroupResponse) LaunchTemplateSpecificationEksNodegroupResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LaunchTemplateSpecificationEksNodegroupResponse
+		return ret
+	}).(LaunchTemplateSpecificationEksNodegroupResponseOutput)
+}
+
+// Property id
+func (o LaunchTemplateSpecificationEksNodegroupResponsePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplateSpecificationEksNodegroupResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Property name
+func (o LaunchTemplateSpecificationEksNodegroupResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplateSpecificationEksNodegroupResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Property version
+func (o LaunchTemplateSpecificationEksNodegroupResponsePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LaunchTemplateSpecificationEksNodegroupResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+// Definition of LaunchTemplateSpecification
 type LaunchTemplateSpecificationResponse struct {
 	// The ID of the launch template. You must specify the ``LaunchTemplateID`` or the ``LaunchTemplateName``, but not both.
 	LaunchTemplateId *string `pulumi:"launchTemplateId"`
@@ -63064,100 +63408,6 @@ func (o LaunchTemplateSpecificationResponsePtrOutput) LaunchTemplateName() pulum
 // The version number of the launch template. Specifying “$Latest“ or “$Default“ for the template version number is not supported. However, you can specify “LatestVersionNumber“ or “DefaultVersionNumber“ using the “Fn::GetAtt“ intrinsic function. For more information, see [Fn::GetAtt](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html).  For an example of using the “Fn::GetAtt“ function, see the [Examples](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-autoscaling-autoscalinggroup.html#aws-resource-autoscaling-autoscalinggroup--examples) section of the “AWS::AutoScaling::AutoScalingGroup“ resource.
 func (o LaunchTemplateSpecificationResponsePtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplateSpecificationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Version
-	}).(pulumi.StringPtrOutput)
-}
-
-// Definition of LaunchTemplateSpecification
-type LaunchTemplateSpecificationResponseV1 struct {
-	// Property id
-	Id *string `pulumi:"id"`
-	// Property name
-	Name *string `pulumi:"name"`
-	// Property version
-	Version *string `pulumi:"version"`
-}
-
-// Definition of LaunchTemplateSpecification
-type LaunchTemplateSpecificationResponseV1Output struct{ *pulumi.OutputState }
-
-func (LaunchTemplateSpecificationResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*LaunchTemplateSpecificationResponseV1)(nil)).Elem()
-}
-
-func (o LaunchTemplateSpecificationResponseV1Output) ToLaunchTemplateSpecificationResponseV1Output() LaunchTemplateSpecificationResponseV1Output {
-	return o
-}
-
-func (o LaunchTemplateSpecificationResponseV1Output) ToLaunchTemplateSpecificationResponseV1OutputWithContext(ctx context.Context) LaunchTemplateSpecificationResponseV1Output {
-	return o
-}
-
-// Property id
-func (o LaunchTemplateSpecificationResponseV1Output) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LaunchTemplateSpecificationResponseV1) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// Property name
-func (o LaunchTemplateSpecificationResponseV1Output) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LaunchTemplateSpecificationResponseV1) *string { return v.Name }).(pulumi.StringPtrOutput)
-}
-
-// Property version
-func (o LaunchTemplateSpecificationResponseV1Output) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LaunchTemplateSpecificationResponseV1) *string { return v.Version }).(pulumi.StringPtrOutput)
-}
-
-type LaunchTemplateSpecificationResponseV1PtrOutput struct{ *pulumi.OutputState }
-
-func (LaunchTemplateSpecificationResponseV1PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LaunchTemplateSpecificationResponseV1)(nil)).Elem()
-}
-
-func (o LaunchTemplateSpecificationResponseV1PtrOutput) ToLaunchTemplateSpecificationResponseV1PtrOutput() LaunchTemplateSpecificationResponseV1PtrOutput {
-	return o
-}
-
-func (o LaunchTemplateSpecificationResponseV1PtrOutput) ToLaunchTemplateSpecificationResponseV1PtrOutputWithContext(ctx context.Context) LaunchTemplateSpecificationResponseV1PtrOutput {
-	return o
-}
-
-func (o LaunchTemplateSpecificationResponseV1PtrOutput) Elem() LaunchTemplateSpecificationResponseV1Output {
-	return o.ApplyT(func(v *LaunchTemplateSpecificationResponseV1) LaunchTemplateSpecificationResponseV1 {
-		if v != nil {
-			return *v
-		}
-		var ret LaunchTemplateSpecificationResponseV1
-		return ret
-	}).(LaunchTemplateSpecificationResponseV1Output)
-}
-
-// Property id
-func (o LaunchTemplateSpecificationResponseV1PtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LaunchTemplateSpecificationResponseV1) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
-}
-
-// Property name
-func (o LaunchTemplateSpecificationResponseV1PtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LaunchTemplateSpecificationResponseV1) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// Property version
-func (o LaunchTemplateSpecificationResponseV1PtrOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LaunchTemplateSpecificationResponseV1) *string {
 		if v == nil {
 			return nil
 		}
@@ -64643,6 +64893,66 @@ func (o LifecyclePolicyArrayOutput) Index(i pulumi.IntInput) LifecyclePolicyOutp
 }
 
 // Definition of LifecyclePolicy
+type LifecyclePolicyEfsFileSystemResponse struct {
+	// The number of days after files were last accessed in primary storage (the Standard storage class) at which to move them to Archive storage. Metadata operations such as listing the contents of a directory don't count as file access events.
+	TransitionToArchive *string `pulumi:"transitionToArchive"`
+	// The number of days after files were last accessed in primary storage (the Standard storage class) at which to move them to Infrequent Access (IA) storage. Metadata operations such as listing the contents of a directory don't count as file access events.
+	TransitionToIA *string `pulumi:"transitionToIA"`
+	// Whether to move files back to primary (Standard) storage after they are accessed in IA or Archive storage. Metadata operations such as listing the contents of a directory don't count as file access events.
+	TransitionToPrimaryStorageClass *string `pulumi:"transitionToPrimaryStorageClass"`
+}
+
+// Definition of LifecyclePolicy
+type LifecyclePolicyEfsFileSystemResponseOutput struct{ *pulumi.OutputState }
+
+func (LifecyclePolicyEfsFileSystemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LifecyclePolicyEfsFileSystemResponse)(nil)).Elem()
+}
+
+func (o LifecyclePolicyEfsFileSystemResponseOutput) ToLifecyclePolicyEfsFileSystemResponseOutput() LifecyclePolicyEfsFileSystemResponseOutput {
+	return o
+}
+
+func (o LifecyclePolicyEfsFileSystemResponseOutput) ToLifecyclePolicyEfsFileSystemResponseOutputWithContext(ctx context.Context) LifecyclePolicyEfsFileSystemResponseOutput {
+	return o
+}
+
+// The number of days after files were last accessed in primary storage (the Standard storage class) at which to move them to Archive storage. Metadata operations such as listing the contents of a directory don't count as file access events.
+func (o LifecyclePolicyEfsFileSystemResponseOutput) TransitionToArchive() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LifecyclePolicyEfsFileSystemResponse) *string { return v.TransitionToArchive }).(pulumi.StringPtrOutput)
+}
+
+// The number of days after files were last accessed in primary storage (the Standard storage class) at which to move them to Infrequent Access (IA) storage. Metadata operations such as listing the contents of a directory don't count as file access events.
+func (o LifecyclePolicyEfsFileSystemResponseOutput) TransitionToIA() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LifecyclePolicyEfsFileSystemResponse) *string { return v.TransitionToIA }).(pulumi.StringPtrOutput)
+}
+
+// Whether to move files back to primary (Standard) storage after they are accessed in IA or Archive storage. Metadata operations such as listing the contents of a directory don't count as file access events.
+func (o LifecyclePolicyEfsFileSystemResponseOutput) TransitionToPrimaryStorageClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LifecyclePolicyEfsFileSystemResponse) *string { return v.TransitionToPrimaryStorageClass }).(pulumi.StringPtrOutput)
+}
+
+type LifecyclePolicyEfsFileSystemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LifecyclePolicyEfsFileSystemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LifecyclePolicyEfsFileSystemResponse)(nil)).Elem()
+}
+
+func (o LifecyclePolicyEfsFileSystemResponseArrayOutput) ToLifecyclePolicyEfsFileSystemResponseArrayOutput() LifecyclePolicyEfsFileSystemResponseArrayOutput {
+	return o
+}
+
+func (o LifecyclePolicyEfsFileSystemResponseArrayOutput) ToLifecyclePolicyEfsFileSystemResponseArrayOutputWithContext(ctx context.Context) LifecyclePolicyEfsFileSystemResponseArrayOutput {
+	return o
+}
+
+func (o LifecyclePolicyEfsFileSystemResponseArrayOutput) Index(i pulumi.IntInput) LifecyclePolicyEfsFileSystemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LifecyclePolicyEfsFileSystemResponse {
+		return vs[0].([]LifecyclePolicyEfsFileSystemResponse)[vs[1].(int)]
+	}).(LifecyclePolicyEfsFileSystemResponseOutput)
+}
+
+// Definition of LifecyclePolicy
 type LifecyclePolicyResponse struct {
 	// The JSON repository policy text to apply to the repository. The JSON repository policy text to apply to the repository.
 	LifecyclePolicyText *string `pulumi:"lifecyclePolicyText"`
@@ -64717,66 +65027,6 @@ func (o LifecyclePolicyResponsePtrOutput) RegistryId() pulumi.StringPtrOutput {
 		}
 		return v.RegistryId
 	}).(pulumi.StringPtrOutput)
-}
-
-// Definition of LifecyclePolicy
-type LifecyclePolicyResponseV1 struct {
-	// The number of days after files were last accessed in primary storage (the Standard storage class) at which to move them to Archive storage. Metadata operations such as listing the contents of a directory don't count as file access events.
-	TransitionToArchive *string `pulumi:"transitionToArchive"`
-	// The number of days after files were last accessed in primary storage (the Standard storage class) at which to move them to Infrequent Access (IA) storage. Metadata operations such as listing the contents of a directory don't count as file access events.
-	TransitionToIA *string `pulumi:"transitionToIA"`
-	// Whether to move files back to primary (Standard) storage after they are accessed in IA or Archive storage. Metadata operations such as listing the contents of a directory don't count as file access events.
-	TransitionToPrimaryStorageClass *string `pulumi:"transitionToPrimaryStorageClass"`
-}
-
-// Definition of LifecyclePolicy
-type LifecyclePolicyResponseV1Output struct{ *pulumi.OutputState }
-
-func (LifecyclePolicyResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*LifecyclePolicyResponseV1)(nil)).Elem()
-}
-
-func (o LifecyclePolicyResponseV1Output) ToLifecyclePolicyResponseV1Output() LifecyclePolicyResponseV1Output {
-	return o
-}
-
-func (o LifecyclePolicyResponseV1Output) ToLifecyclePolicyResponseV1OutputWithContext(ctx context.Context) LifecyclePolicyResponseV1Output {
-	return o
-}
-
-// The number of days after files were last accessed in primary storage (the Standard storage class) at which to move them to Archive storage. Metadata operations such as listing the contents of a directory don't count as file access events.
-func (o LifecyclePolicyResponseV1Output) TransitionToArchive() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LifecyclePolicyResponseV1) *string { return v.TransitionToArchive }).(pulumi.StringPtrOutput)
-}
-
-// The number of days after files were last accessed in primary storage (the Standard storage class) at which to move them to Infrequent Access (IA) storage. Metadata operations such as listing the contents of a directory don't count as file access events.
-func (o LifecyclePolicyResponseV1Output) TransitionToIA() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LifecyclePolicyResponseV1) *string { return v.TransitionToIA }).(pulumi.StringPtrOutput)
-}
-
-// Whether to move files back to primary (Standard) storage after they are accessed in IA or Archive storage. Metadata operations such as listing the contents of a directory don't count as file access events.
-func (o LifecyclePolicyResponseV1Output) TransitionToPrimaryStorageClass() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LifecyclePolicyResponseV1) *string { return v.TransitionToPrimaryStorageClass }).(pulumi.StringPtrOutput)
-}
-
-type LifecyclePolicyResponseV1ArrayOutput struct{ *pulumi.OutputState }
-
-func (LifecyclePolicyResponseV1ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LifecyclePolicyResponseV1)(nil)).Elem()
-}
-
-func (o LifecyclePolicyResponseV1ArrayOutput) ToLifecyclePolicyResponseV1ArrayOutput() LifecyclePolicyResponseV1ArrayOutput {
-	return o
-}
-
-func (o LifecyclePolicyResponseV1ArrayOutput) ToLifecyclePolicyResponseV1ArrayOutputWithContext(ctx context.Context) LifecyclePolicyResponseV1ArrayOutput {
-	return o
-}
-
-func (o LifecyclePolicyResponseV1ArrayOutput) Index(i pulumi.IntInput) LifecyclePolicyResponseV1Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LifecyclePolicyResponseV1 {
-		return vs[0].([]LifecyclePolicyResponseV1)[vs[1].(int)]
-	}).(LifecyclePolicyResponseV1Output)
 }
 
 // Definition of LightsailBucket
@@ -66383,303 +66633,11 @@ func (o LocalSecondaryIndexArrayOutput) Index(i pulumi.IntInput) LocalSecondaryI
 	}).(LocalSecondaryIndexOutput)
 }
 
-// Definition of LocalSecondaryIndex
-type LocalSecondaryIndexResponse struct {
-	// The name of the local secondary index. The name must be unique among all other indexes on this table.
-	IndexName *string `pulumi:"indexName"`
-	// The complete key schema for the local secondary index, consisting of one or more pairs of attribute names and key types:  +   ``HASH`` - partition key  +   ``RANGE`` - sort key    The partition key of an item is also known as its *hash attribute*. The term 'hash attribute' derives from DynamoDB's usage of an internal hash function to evenly distribute data items across partitions, based on their partition key values. The sort key of an item is also known as its *range attribute*. The term 'range attribute' derives from the way DynamoDB stores items with the same partition key physically close together, in sorted order by the sort key value.
-	KeySchema []KeySchemaResponse `pulumi:"keySchema"`
-	// Represents attributes that are copied (projected) from the table into the local secondary index. These are in addition to the primary key attributes and index key attributes, which are automatically projected. Represents attributes that are copied (projected) from the table into an index. These are in addition to the primary key attributes and index key attributes, which are automatically projected.
-	Projection *ProjectionResponse `pulumi:"projection"`
-}
-
-// Definition of LocalSecondaryIndex
-type LocalSecondaryIndexResponseOutput struct{ *pulumi.OutputState }
-
-func (LocalSecondaryIndexResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LocalSecondaryIndexResponse)(nil)).Elem()
-}
-
-func (o LocalSecondaryIndexResponseOutput) ToLocalSecondaryIndexResponseOutput() LocalSecondaryIndexResponseOutput {
-	return o
-}
-
-func (o LocalSecondaryIndexResponseOutput) ToLocalSecondaryIndexResponseOutputWithContext(ctx context.Context) LocalSecondaryIndexResponseOutput {
-	return o
-}
-
-// The name of the local secondary index. The name must be unique among all other indexes on this table.
-func (o LocalSecondaryIndexResponseOutput) IndexName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LocalSecondaryIndexResponse) *string { return v.IndexName }).(pulumi.StringPtrOutput)
-}
-
-// The complete key schema for the local secondary index, consisting of one or more pairs of attribute names and key types:  +   “HASH“ - partition key  +   “RANGE“ - sort key    The partition key of an item is also known as its *hash attribute*. The term 'hash attribute' derives from DynamoDB's usage of an internal hash function to evenly distribute data items across partitions, based on their partition key values. The sort key of an item is also known as its *range attribute*. The term 'range attribute' derives from the way DynamoDB stores items with the same partition key physically close together, in sorted order by the sort key value.
-func (o LocalSecondaryIndexResponseOutput) KeySchema() KeySchemaResponseArrayOutput {
-	return o.ApplyT(func(v LocalSecondaryIndexResponse) []KeySchemaResponse { return v.KeySchema }).(KeySchemaResponseArrayOutput)
-}
-
-// Represents attributes that are copied (projected) from the table into the local secondary index. These are in addition to the primary key attributes and index key attributes, which are automatically projected. Represents attributes that are copied (projected) from the table into an index. These are in addition to the primary key attributes and index key attributes, which are automatically projected.
-func (o LocalSecondaryIndexResponseOutput) Projection() ProjectionResponsePtrOutput {
-	return o.ApplyT(func(v LocalSecondaryIndexResponse) *ProjectionResponse { return v.Projection }).(ProjectionResponsePtrOutput)
-}
-
-type LocalSecondaryIndexResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (LocalSecondaryIndexResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LocalSecondaryIndexResponse)(nil)).Elem()
-}
-
-func (o LocalSecondaryIndexResponseArrayOutput) ToLocalSecondaryIndexResponseArrayOutput() LocalSecondaryIndexResponseArrayOutput {
-	return o
-}
-
-func (o LocalSecondaryIndexResponseArrayOutput) ToLocalSecondaryIndexResponseArrayOutputWithContext(ctx context.Context) LocalSecondaryIndexResponseArrayOutput {
-	return o
-}
-
-func (o LocalSecondaryIndexResponseArrayOutput) Index(i pulumi.IntInput) LocalSecondaryIndexResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LocalSecondaryIndexResponse {
-		return vs[0].([]LocalSecondaryIndexResponse)[vs[1].(int)]
-	}).(LocalSecondaryIndexResponseOutput)
-}
-
-// Definition of Location
-type Location struct {
-	// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// The Region Name in which to create your instance.
-	RegionName *string `pulumi:"regionName"`
-}
-
-// LocationInput is an input type that accepts LocationArgs and LocationOutput values.
-// You can construct a concrete instance of `LocationInput` via:
-//
-//	LocationArgs{...}
-type LocationInput interface {
-	pulumi.Input
-
-	ToLocationOutput() LocationOutput
-	ToLocationOutputWithContext(context.Context) LocationOutput
-}
-
-// Definition of Location
-type LocationArgs struct {
-	// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
-	// The Region Name in which to create your instance.
-	RegionName pulumi.StringPtrInput `pulumi:"regionName"`
-}
-
-func (LocationArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Location)(nil)).Elem()
-}
-
-func (i LocationArgs) ToLocationOutput() LocationOutput {
-	return i.ToLocationOutputWithContext(context.Background())
-}
-
-func (i LocationArgs) ToLocationOutputWithContext(ctx context.Context) LocationOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LocationOutput)
-}
-
-func (i LocationArgs) ToLocationPtrOutput() LocationPtrOutput {
-	return i.ToLocationPtrOutputWithContext(context.Background())
-}
-
-func (i LocationArgs) ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LocationOutput).ToLocationPtrOutputWithContext(ctx)
-}
-
-// LocationPtrInput is an input type that accepts LocationArgs, LocationPtr and LocationPtrOutput values.
-// You can construct a concrete instance of `LocationPtrInput` via:
-//
-//	        LocationArgs{...}
-//
-//	or:
-//
-//	        nil
-type LocationPtrInput interface {
-	pulumi.Input
-
-	ToLocationPtrOutput() LocationPtrOutput
-	ToLocationPtrOutputWithContext(context.Context) LocationPtrOutput
-}
-
-type locationPtrType LocationArgs
-
-func LocationPtr(v *LocationArgs) LocationPtrInput {
-	return (*locationPtrType)(v)
-}
-
-func (*locationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Location)(nil)).Elem()
-}
-
-func (i *locationPtrType) ToLocationPtrOutput() LocationPtrOutput {
-	return i.ToLocationPtrOutputWithContext(context.Background())
-}
-
-func (i *locationPtrType) ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LocationPtrOutput)
-}
-
-// Definition of Location
-type LocationOutput struct{ *pulumi.OutputState }
-
-func (LocationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Location)(nil)).Elem()
-}
-
-func (o LocationOutput) ToLocationOutput() LocationOutput {
-	return o
-}
-
-func (o LocationOutput) ToLocationOutputWithContext(ctx context.Context) LocationOutput {
-	return o
-}
-
-func (o LocationOutput) ToLocationPtrOutput() LocationPtrOutput {
-	return o.ToLocationPtrOutputWithContext(context.Background())
-}
-
-func (o LocationOutput) ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Location) *Location {
-		return &v
-	}).(LocationPtrOutput)
-}
-
-// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-func (o LocationOutput) AvailabilityZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Location) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
-}
-
-// The Region Name in which to create your instance.
-func (o LocationOutput) RegionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Location) *string { return v.RegionName }).(pulumi.StringPtrOutput)
-}
-
-type LocationPtrOutput struct{ *pulumi.OutputState }
-
-func (LocationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Location)(nil)).Elem()
-}
-
-func (o LocationPtrOutput) ToLocationPtrOutput() LocationPtrOutput {
-	return o
-}
-
-func (o LocationPtrOutput) ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput {
-	return o
-}
-
-func (o LocationPtrOutput) Elem() LocationOutput {
-	return o.ApplyT(func(v *Location) Location {
-		if v != nil {
-			return *v
-		}
-		var ret Location
-		return ret
-	}).(LocationOutput)
-}
-
-// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-func (o LocationPtrOutput) AvailabilityZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Location) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AvailabilityZone
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Region Name in which to create your instance.
-func (o LocationPtrOutput) RegionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Location) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RegionName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Definition of Location
-type LocationResponse struct {
-	// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// The Region Name in which to create your instance.
-	RegionName *string `pulumi:"regionName"`
-}
-
-// Definition of Location
-type LocationResponseOutput struct{ *pulumi.OutputState }
-
-func (LocationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LocationResponse)(nil)).Elem()
-}
-
-func (o LocationResponseOutput) ToLocationResponseOutput() LocationResponseOutput {
-	return o
-}
-
-func (o LocationResponseOutput) ToLocationResponseOutputWithContext(ctx context.Context) LocationResponseOutput {
-	return o
-}
-
-// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-func (o LocationResponseOutput) AvailabilityZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LocationResponse) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
-}
-
-// The Region Name in which to create your instance.
-func (o LocationResponseOutput) RegionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LocationResponse) *string { return v.RegionName }).(pulumi.StringPtrOutput)
-}
-
-type LocationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (LocationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LocationResponse)(nil)).Elem()
-}
-
-func (o LocationResponsePtrOutput) ToLocationResponsePtrOutput() LocationResponsePtrOutput {
-	return o
-}
-
-func (o LocationResponsePtrOutput) ToLocationResponsePtrOutputWithContext(ctx context.Context) LocationResponsePtrOutput {
-	return o
-}
-
-func (o LocationResponsePtrOutput) Elem() LocationResponseOutput {
-	return o.ApplyT(func(v *LocationResponse) LocationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret LocationResponse
-		return ret
-	}).(LocationResponseOutput)
-}
-
-// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
-func (o LocationResponsePtrOutput) AvailabilityZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LocationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.AvailabilityZone
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Region Name in which to create your instance.
-func (o LocationResponsePtrOutput) RegionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LocationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.RegionName
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
+	pulumi.RegisterOutputType(CustomActionResponseOutput{})
+	pulumi.RegisterOutputType(CustomActionResponseArrayOutput{})
+	pulumi.RegisterOutputType(CustomErrorResponseOutput{})
+	pulumi.RegisterOutputType(CustomErrorResponseArrayOutput{})
 	pulumi.RegisterOutputType(CustomErrorResponseResponseOutput{})
 	pulumi.RegisterOutputType(CustomErrorResponseResponseArrayOutput{})
 	pulumi.RegisterOutputType(CustomOriginConfigResponseOutput{})
@@ -66784,12 +66742,14 @@ func init() {
 	pulumi.RegisterOutputType(DeviceTypeEnumValueResponsePtrOutput{})
 	pulumi.RegisterOutputType(DimensionOutput{})
 	pulumi.RegisterOutputType(DimensionArrayOutput{})
+	pulumi.RegisterOutputType(DimensionLogsMetricFilterResponseOutput{})
+	pulumi.RegisterOutputType(DimensionLogsMetricFilterResponseArrayOutput{})
+	pulumi.RegisterOutputType(DimensionNetworkFirewallFirewallPolicyResponseOutput{})
+	pulumi.RegisterOutputType(DimensionNetworkFirewallFirewallPolicyResponseArrayOutput{})
+	pulumi.RegisterOutputType(DimensionNetworkFirewallRuleGroupResponseOutput{})
+	pulumi.RegisterOutputType(DimensionNetworkFirewallRuleGroupResponseArrayOutput{})
 	pulumi.RegisterOutputType(DimensionResponseOutput{})
 	pulumi.RegisterOutputType(DimensionResponseArrayOutput{})
-	pulumi.RegisterOutputType(DimensionResponseV1Output{})
-	pulumi.RegisterOutputType(DimensionResponseV1ArrayOutput{})
-	pulumi.RegisterOutputType(DimensionResponseV2Output{})
-	pulumi.RegisterOutputType(DimensionResponseV2ArrayOutput{})
 	pulumi.RegisterOutputType(DiskOutput{})
 	pulumi.RegisterOutputType(DiskArrayOutput{})
 	pulumi.RegisterOutputType(DiskResponseOutput{})
@@ -66981,8 +66941,8 @@ func init() {
 	pulumi.RegisterOutputType(EncryptionConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigurationResponsePtrOutput{})
-	pulumi.RegisterOutputType(EncryptionConfigurationResponseV1Output{})
-	pulumi.RegisterOutputType(EncryptionConfigurationResponseV1PtrOutput{})
+	pulumi.RegisterOutputType(EncryptionConfigurationS3BucketResponseOutput{})
+	pulumi.RegisterOutputType(EncryptionConfigurationS3BucketResponsePtrOutput{})
 	pulumi.RegisterOutputType(EndpointConfigurationOutput{})
 	pulumi.RegisterOutputType(EndpointConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(EndpointConfigurationResponseOutput{})
@@ -67013,10 +66973,10 @@ func init() {
 	pulumi.RegisterOutputType(EnvironmentVariableTypeEnumValueResponsePtrOutput{})
 	pulumi.RegisterOutputType(EphemeralStorageOutput{})
 	pulumi.RegisterOutputType(EphemeralStoragePtrOutput{})
+	pulumi.RegisterOutputType(EphemeralStorageLambdaFunctionResponseOutput{})
+	pulumi.RegisterOutputType(EphemeralStorageLambdaFunctionResponsePtrOutput{})
 	pulumi.RegisterOutputType(EphemeralStorageResponseOutput{})
 	pulumi.RegisterOutputType(EphemeralStorageResponsePtrOutput{})
-	pulumi.RegisterOutputType(EphemeralStorageResponseV1Output{})
-	pulumi.RegisterOutputType(EphemeralStorageResponseV1PtrOutput{})
 	pulumi.RegisterOutputType(ErrorDetailOutput{})
 	pulumi.RegisterOutputType(ErrorDetailArrayOutput{})
 	pulumi.RegisterOutputType(ErrorDetailResponseOutput{})
@@ -67089,12 +67049,12 @@ func init() {
 	pulumi.RegisterOutputType(FilterGroupResponseArrayOutput{})
 	pulumi.RegisterOutputType(FilterResponseOutput{})
 	pulumi.RegisterOutputType(FilterResponseArrayOutput{})
-	pulumi.RegisterOutputType(FilterResponseV1Output{})
-	pulumi.RegisterOutputType(FilterResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(FilterRuleOutput{})
 	pulumi.RegisterOutputType(FilterRuleArrayOutput{})
 	pulumi.RegisterOutputType(FilterRuleResponseOutput{})
 	pulumi.RegisterOutputType(FilterRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(FilterWafv2LoggingConfigurationResponseOutput{})
+	pulumi.RegisterOutputType(FilterWafv2LoggingConfigurationResponseArrayOutput{})
 	pulumi.RegisterOutputType(FirelensConfigurationOutput{})
 	pulumi.RegisterOutputType(FirelensConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(FirelensConfigurationResponseOutput{})
@@ -67346,10 +67306,10 @@ func init() {
 	pulumi.RegisterOutputType(InstanceIpv4PrefixResponseArrayOutput{})
 	pulumi.RegisterOutputType(InstanceIpv6AddressOutput{})
 	pulumi.RegisterOutputType(InstanceIpv6AddressArrayOutput{})
+	pulumi.RegisterOutputType(InstanceIpv6AddressEc2NetworkInterfaceResponseOutput{})
+	pulumi.RegisterOutputType(InstanceIpv6AddressEc2NetworkInterfaceResponseArrayOutput{})
 	pulumi.RegisterOutputType(InstanceIpv6AddressResponseOutput{})
 	pulumi.RegisterOutputType(InstanceIpv6AddressResponseArrayOutput{})
-	pulumi.RegisterOutputType(InstanceIpv6AddressResponseV1Output{})
-	pulumi.RegisterOutputType(InstanceIpv6AddressResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(InstanceIpv6PrefixOutput{})
 	pulumi.RegisterOutputType(InstanceIpv6PrefixArrayOutput{})
 	pulumi.RegisterOutputType(InstanceIpv6PrefixResponseOutput{})
@@ -67568,10 +67528,10 @@ func init() {
 	pulumi.RegisterOutputType(LaunchTemplateResponsePtrOutput{})
 	pulumi.RegisterOutputType(LaunchTemplateSpecificationOutput{})
 	pulumi.RegisterOutputType(LaunchTemplateSpecificationPtrOutput{})
+	pulumi.RegisterOutputType(LaunchTemplateSpecificationEksNodegroupResponseOutput{})
+	pulumi.RegisterOutputType(LaunchTemplateSpecificationEksNodegroupResponsePtrOutput{})
 	pulumi.RegisterOutputType(LaunchTemplateSpecificationResponseOutput{})
 	pulumi.RegisterOutputType(LaunchTemplateSpecificationResponsePtrOutput{})
-	pulumi.RegisterOutputType(LaunchTemplateSpecificationResponseV1Output{})
-	pulumi.RegisterOutputType(LaunchTemplateSpecificationResponseV1PtrOutput{})
 	pulumi.RegisterOutputType(LegacyCustomOriginOutput{})
 	pulumi.RegisterOutputType(LegacyCustomOriginPtrOutput{})
 	pulumi.RegisterOutputType(LegacyCustomOriginResponseOutput{})
@@ -67595,10 +67555,10 @@ func init() {
 	pulumi.RegisterOutputType(LifecyclePolicyOutput{})
 	pulumi.RegisterOutputType(LifecyclePolicyPtrOutput{})
 	pulumi.RegisterOutputType(LifecyclePolicyArrayOutput{})
+	pulumi.RegisterOutputType(LifecyclePolicyEfsFileSystemResponseOutput{})
+	pulumi.RegisterOutputType(LifecyclePolicyEfsFileSystemResponseArrayOutput{})
 	pulumi.RegisterOutputType(LifecyclePolicyResponseOutput{})
 	pulumi.RegisterOutputType(LifecyclePolicyResponsePtrOutput{})
-	pulumi.RegisterOutputType(LifecyclePolicyResponseV1Output{})
-	pulumi.RegisterOutputType(LifecyclePolicyResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(LightsailBucketPropertiesOutput{})
 	pulumi.RegisterOutputType(LightsailBucketPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(LightsailBucketPropertiesResponseOutput{})
@@ -67619,10 +67579,4 @@ func init() {
 	pulumi.RegisterOutputType(LoadBalancerResponseArrayOutput{})
 	pulumi.RegisterOutputType(LocalSecondaryIndexOutput{})
 	pulumi.RegisterOutputType(LocalSecondaryIndexArrayOutput{})
-	pulumi.RegisterOutputType(LocalSecondaryIndexResponseOutput{})
-	pulumi.RegisterOutputType(LocalSecondaryIndexResponseArrayOutput{})
-	pulumi.RegisterOutputType(LocationOutput{})
-	pulumi.RegisterOutputType(LocationPtrOutput{})
-	pulumi.RegisterOutputType(LocationResponseOutput{})
-	pulumi.RegisterOutputType(LocationResponsePtrOutput{})
 }

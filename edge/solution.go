@@ -25,7 +25,7 @@ type Solution struct {
 	// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
 	ETag pulumi.StringOutput `pulumi:"eTag"`
 	// The complex type of the extended location.
-	ExtendedLocation AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
+	ExtendedLocation ExtendedLocationResponsePtrOutput `pulumi:"extendedLocation"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The resource-specific properties for this resource.
@@ -167,10 +167,8 @@ func (o SolutionOutput) ETag() pulumi.StringOutput {
 }
 
 // The complex type of the extended location.
-func (o SolutionOutput) ExtendedLocation() AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput {
-	return o.ApplyT(func(v *Solution) AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput {
-		return v.ExtendedLocation
-	}).(AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput)
+func (o SolutionOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v *Solution) ExtendedLocationResponsePtrOutput { return v.ExtendedLocation }).(ExtendedLocationResponsePtrOutput)
 }
 
 // The name of the resource
