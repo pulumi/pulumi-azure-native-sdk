@@ -144,7 +144,7 @@ type LookupAssessmentsOperationResult struct {
 	UpdatedTimestamp string `pulumi:"updatedTimestamp"`
 	// Gets or sets the duration for which the VMs are up in the on-premises
 	// environment.
-	VmUptime *VmUptimeResponse `pulumi:"vmUptime"`
+	VmUptime *VmUptimeAssessmentsOperationResponse `pulumi:"vmUptime"`
 }
 
 func LookupAssessmentsOperationOutput(ctx *pulumi.Context, args LookupAssessmentsOperationOutputArgs, opts ...pulumi.InvokeOption) LookupAssessmentsOperationResultOutput {
@@ -431,8 +431,8 @@ func (o LookupAssessmentsOperationResultOutput) UpdatedTimestamp() pulumi.String
 
 // Gets or sets the duration for which the VMs are up in the on-premises
 // environment.
-func (o LookupAssessmentsOperationResultOutput) VmUptime() VmUptimeResponsePtrOutput {
-	return o.ApplyT(func(v LookupAssessmentsOperationResult) *VmUptimeResponse { return v.VmUptime }).(VmUptimeResponsePtrOutput)
+func (o LookupAssessmentsOperationResultOutput) VmUptime() VmUptimeAssessmentsOperationResponsePtrOutput {
+	return o.ApplyT(func(v LookupAssessmentsOperationResult) *VmUptimeAssessmentsOperationResponse { return v.VmUptime }).(VmUptimeAssessmentsOperationResponsePtrOutput)
 }
 
 func init() {

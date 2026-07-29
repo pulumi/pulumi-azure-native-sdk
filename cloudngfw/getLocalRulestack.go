@@ -46,7 +46,7 @@ type LookupLocalRulestackResult struct {
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// The managed service identities assigned to this resource.
-	Identity *AzureResourceManagerManagedIdentityPropertiesResponse `pulumi:"identity"`
+	Identity *ManagedIdentityPropertiesResponse `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// minimum version
@@ -132,10 +132,8 @@ func (o LookupLocalRulestackResultOutput) Id() pulumi.StringOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o LookupLocalRulestackResultOutput) Identity() AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v LookupLocalRulestackResult) *AzureResourceManagerManagedIdentityPropertiesResponse {
-		return v.Identity
-	}).(AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput)
+func (o LookupLocalRulestackResultOutput) Identity() ManagedIdentityPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v LookupLocalRulestackResult) *ManagedIdentityPropertiesResponse { return v.Identity }).(ManagedIdentityPropertiesResponsePtrOutput)
 }
 
 // The geo-location where the resource lives

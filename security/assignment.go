@@ -23,7 +23,7 @@ type Assignment struct {
 	// Component item with key as applied to this standard assignment over the given scope
 	AssignedComponent AssignedComponentItemResponsePtrOutput `pulumi:"assignedComponent"`
 	// Standard item with key as applied to this standard assignment over the given scope
-	AssignedStandard CommonAssignedStandardItemResponsePtrOutput `pulumi:"assignedStandard"`
+	AssignedStandard AssignedStandardItemResponsePtrOutput `pulumi:"assignedStandard"`
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// description of the standardAssignment
@@ -213,8 +213,8 @@ func (o AssignmentOutput) AssignedComponent() AssignedComponentItemResponsePtrOu
 }
 
 // Standard item with key as applied to this standard assignment over the given scope
-func (o AssignmentOutput) AssignedStandard() CommonAssignedStandardItemResponsePtrOutput {
-	return o.ApplyT(func(v *Assignment) CommonAssignedStandardItemResponsePtrOutput { return v.AssignedStandard }).(CommonAssignedStandardItemResponsePtrOutput)
+func (o AssignmentOutput) AssignedStandard() AssignedStandardItemResponsePtrOutput {
+	return o.ApplyT(func(v *Assignment) AssignedStandardItemResponsePtrOutput { return v.AssignedStandard }).(AssignedStandardItemResponsePtrOutput)
 }
 
 // The Azure API version of the resource.

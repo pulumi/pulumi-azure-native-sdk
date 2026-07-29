@@ -29,7 +29,7 @@ type LocalRulestack struct {
 	// rulestack description
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The managed service identities assigned to this resource.
-	Identity AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedIdentityPropertiesResponsePtrOutput `pulumi:"identity"`
 	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
 	// minimum version
@@ -255,10 +255,8 @@ func (o LocalRulestackOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o LocalRulestackOutput) Identity() AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v *LocalRulestack) AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput {
-		return v.Identity
-	}).(AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput)
+func (o LocalRulestackOutput) Identity() ManagedIdentityPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *LocalRulestack) ManagedIdentityPropertiesResponsePtrOutput { return v.Identity }).(ManagedIdentityPropertiesResponsePtrOutput)
 }
 
 // The geo-location where the resource lives

@@ -38,7 +38,7 @@ type LookupContainerGroupProfileResult struct {
 	// The properties for confidential container group
 	ConfidentialComputeProperties *ConfidentialComputePropertiesResponse `pulumi:"confidentialComputeProperties"`
 	// The containers within the container group.
-	Containers []ContainerResponse `pulumi:"containers"`
+	Containers []ContainerContainerGroupProfileResponse `pulumi:"containers"`
 	// The diagnostic information for a container group.
 	Diagnostics *ContainerGroupDiagnosticsResponse `pulumi:"diagnostics"`
 	// The encryption properties for a container group.
@@ -48,9 +48,9 @@ type LookupContainerGroupProfileResult struct {
 	// The resource id.
 	Id string `pulumi:"id"`
 	// The image registry credentials by which the container group is created from.
-	ImageRegistryCredentials []ImageRegistryCredentialResponse `pulumi:"imageRegistryCredentials"`
+	ImageRegistryCredentials []ImageRegistryCredentialContainerGroupProfileResponse `pulumi:"imageRegistryCredentials"`
 	// The init containers for a container group.
-	InitContainers []InitContainerDefinitionResponse `pulumi:"initContainers"`
+	InitContainers []InitContainerDefinitionContainerGroupProfileResponse `pulumi:"initContainers"`
 	// The IP address type of the container group.
 	IpAddress *IpAddressResponse `pulumi:"ipAddress"`
 	// The resource location.
@@ -75,7 +75,7 @@ type LookupContainerGroupProfileResult struct {
 	// The resource type.
 	Type string `pulumi:"type"`
 	// The list of volumes that can be mounted by containers in this container group.
-	Volumes []VolumeResponse `pulumi:"volumes"`
+	Volumes []VolumeContainerGroupProfileResponse `pulumi:"volumes"`
 	// The zones for the container group.
 	Zones []string `pulumi:"zones"`
 }
@@ -138,8 +138,10 @@ func (o LookupContainerGroupProfileResultOutput) ConfidentialComputeProperties()
 }
 
 // The containers within the container group.
-func (o LookupContainerGroupProfileResultOutput) Containers() ContainerResponseArrayOutput {
-	return o.ApplyT(func(v LookupContainerGroupProfileResult) []ContainerResponse { return v.Containers }).(ContainerResponseArrayOutput)
+func (o LookupContainerGroupProfileResultOutput) Containers() ContainerContainerGroupProfileResponseArrayOutput {
+	return o.ApplyT(func(v LookupContainerGroupProfileResult) []ContainerContainerGroupProfileResponse {
+		return v.Containers
+	}).(ContainerContainerGroupProfileResponseArrayOutput)
 }
 
 // The diagnostic information for a container group.
@@ -163,15 +165,17 @@ func (o LookupContainerGroupProfileResultOutput) Id() pulumi.StringOutput {
 }
 
 // The image registry credentials by which the container group is created from.
-func (o LookupContainerGroupProfileResultOutput) ImageRegistryCredentials() ImageRegistryCredentialResponseArrayOutput {
-	return o.ApplyT(func(v LookupContainerGroupProfileResult) []ImageRegistryCredentialResponse {
+func (o LookupContainerGroupProfileResultOutput) ImageRegistryCredentials() ImageRegistryCredentialContainerGroupProfileResponseArrayOutput {
+	return o.ApplyT(func(v LookupContainerGroupProfileResult) []ImageRegistryCredentialContainerGroupProfileResponse {
 		return v.ImageRegistryCredentials
-	}).(ImageRegistryCredentialResponseArrayOutput)
+	}).(ImageRegistryCredentialContainerGroupProfileResponseArrayOutput)
 }
 
 // The init containers for a container group.
-func (o LookupContainerGroupProfileResultOutput) InitContainers() InitContainerDefinitionResponseArrayOutput {
-	return o.ApplyT(func(v LookupContainerGroupProfileResult) []InitContainerDefinitionResponse { return v.InitContainers }).(InitContainerDefinitionResponseArrayOutput)
+func (o LookupContainerGroupProfileResultOutput) InitContainers() InitContainerDefinitionContainerGroupProfileResponseArrayOutput {
+	return o.ApplyT(func(v LookupContainerGroupProfileResult) []InitContainerDefinitionContainerGroupProfileResponse {
+		return v.InitContainers
+	}).(InitContainerDefinitionContainerGroupProfileResponseArrayOutput)
 }
 
 // The IP address type of the container group.
@@ -228,8 +232,8 @@ func (o LookupContainerGroupProfileResultOutput) Type() pulumi.StringOutput {
 }
 
 // The list of volumes that can be mounted by containers in this container group.
-func (o LookupContainerGroupProfileResultOutput) Volumes() VolumeResponseArrayOutput {
-	return o.ApplyT(func(v LookupContainerGroupProfileResult) []VolumeResponse { return v.Volumes }).(VolumeResponseArrayOutput)
+func (o LookupContainerGroupProfileResultOutput) Volumes() VolumeContainerGroupProfileResponseArrayOutput {
+	return o.ApplyT(func(v LookupContainerGroupProfileResult) []VolumeContainerGroupProfileResponse { return v.Volumes }).(VolumeContainerGroupProfileResponseArrayOutput)
 }
 
 // The zones for the container group.

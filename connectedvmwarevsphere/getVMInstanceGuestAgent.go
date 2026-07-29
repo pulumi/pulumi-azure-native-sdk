@@ -36,7 +36,7 @@ type LookupVMInstanceGuestAgentResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Username / Password Credentials to provision guest agent.
-	Credentials *GuestCredentialResponse `pulumi:"credentials"`
+	Credentials *GuestCredentialVMInstanceGuestAgentResponse `pulumi:"credentials"`
 	// Gets the name of the corresponding resource in Kubernetes.
 	CustomResourceName string `pulumi:"customResourceName"`
 	// HTTP Proxy configuration for the VM.
@@ -102,8 +102,10 @@ func (o LookupVMInstanceGuestAgentResultOutput) AzureApiVersion() pulumi.StringO
 }
 
 // Username / Password Credentials to provision guest agent.
-func (o LookupVMInstanceGuestAgentResultOutput) Credentials() GuestCredentialResponsePtrOutput {
-	return o.ApplyT(func(v LookupVMInstanceGuestAgentResult) *GuestCredentialResponse { return v.Credentials }).(GuestCredentialResponsePtrOutput)
+func (o LookupVMInstanceGuestAgentResultOutput) Credentials() GuestCredentialVMInstanceGuestAgentResponsePtrOutput {
+	return o.ApplyT(func(v LookupVMInstanceGuestAgentResult) *GuestCredentialVMInstanceGuestAgentResponse {
+		return v.Credentials
+	}).(GuestCredentialVMInstanceGuestAgentResponsePtrOutput)
 }
 
 // Gets the name of the corresponding resource in Kubernetes.

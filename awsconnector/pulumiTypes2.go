@@ -13,6 +13,302 @@ import (
 
 var _ = utilities.GetEnvOrDefault
 
+// Definition of LocalSecondaryIndex
+type LocalSecondaryIndexResponse struct {
+	// The name of the local secondary index. The name must be unique among all other indexes on this table.
+	IndexName *string `pulumi:"indexName"`
+	// The complete key schema for the local secondary index, consisting of one or more pairs of attribute names and key types:  +   ``HASH`` - partition key  +   ``RANGE`` - sort key    The partition key of an item is also known as its *hash attribute*. The term 'hash attribute' derives from DynamoDB's usage of an internal hash function to evenly distribute data items across partitions, based on their partition key values. The sort key of an item is also known as its *range attribute*. The term 'range attribute' derives from the way DynamoDB stores items with the same partition key physically close together, in sorted order by the sort key value.
+	KeySchema []KeySchemaResponse `pulumi:"keySchema"`
+	// Represents attributes that are copied (projected) from the table into the local secondary index. These are in addition to the primary key attributes and index key attributes, which are automatically projected. Represents attributes that are copied (projected) from the table into an index. These are in addition to the primary key attributes and index key attributes, which are automatically projected.
+	Projection *ProjectionResponse `pulumi:"projection"`
+}
+
+// Definition of LocalSecondaryIndex
+type LocalSecondaryIndexResponseOutput struct{ *pulumi.OutputState }
+
+func (LocalSecondaryIndexResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocalSecondaryIndexResponse)(nil)).Elem()
+}
+
+func (o LocalSecondaryIndexResponseOutput) ToLocalSecondaryIndexResponseOutput() LocalSecondaryIndexResponseOutput {
+	return o
+}
+
+func (o LocalSecondaryIndexResponseOutput) ToLocalSecondaryIndexResponseOutputWithContext(ctx context.Context) LocalSecondaryIndexResponseOutput {
+	return o
+}
+
+// The name of the local secondary index. The name must be unique among all other indexes on this table.
+func (o LocalSecondaryIndexResponseOutput) IndexName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LocalSecondaryIndexResponse) *string { return v.IndexName }).(pulumi.StringPtrOutput)
+}
+
+// The complete key schema for the local secondary index, consisting of one or more pairs of attribute names and key types:  +   “HASH“ - partition key  +   “RANGE“ - sort key    The partition key of an item is also known as its *hash attribute*. The term 'hash attribute' derives from DynamoDB's usage of an internal hash function to evenly distribute data items across partitions, based on their partition key values. The sort key of an item is also known as its *range attribute*. The term 'range attribute' derives from the way DynamoDB stores items with the same partition key physically close together, in sorted order by the sort key value.
+func (o LocalSecondaryIndexResponseOutput) KeySchema() KeySchemaResponseArrayOutput {
+	return o.ApplyT(func(v LocalSecondaryIndexResponse) []KeySchemaResponse { return v.KeySchema }).(KeySchemaResponseArrayOutput)
+}
+
+// Represents attributes that are copied (projected) from the table into the local secondary index. These are in addition to the primary key attributes and index key attributes, which are automatically projected. Represents attributes that are copied (projected) from the table into an index. These are in addition to the primary key attributes and index key attributes, which are automatically projected.
+func (o LocalSecondaryIndexResponseOutput) Projection() ProjectionResponsePtrOutput {
+	return o.ApplyT(func(v LocalSecondaryIndexResponse) *ProjectionResponse { return v.Projection }).(ProjectionResponsePtrOutput)
+}
+
+type LocalSecondaryIndexResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LocalSecondaryIndexResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LocalSecondaryIndexResponse)(nil)).Elem()
+}
+
+func (o LocalSecondaryIndexResponseArrayOutput) ToLocalSecondaryIndexResponseArrayOutput() LocalSecondaryIndexResponseArrayOutput {
+	return o
+}
+
+func (o LocalSecondaryIndexResponseArrayOutput) ToLocalSecondaryIndexResponseArrayOutputWithContext(ctx context.Context) LocalSecondaryIndexResponseArrayOutput {
+	return o
+}
+
+func (o LocalSecondaryIndexResponseArrayOutput) Index(i pulumi.IntInput) LocalSecondaryIndexResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LocalSecondaryIndexResponse {
+		return vs[0].([]LocalSecondaryIndexResponse)[vs[1].(int)]
+	}).(LocalSecondaryIndexResponseOutput)
+}
+
+// Definition of Location
+type Location struct {
+	// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
+	AvailabilityZone *string `pulumi:"availabilityZone"`
+	// The Region Name in which to create your instance.
+	RegionName *string `pulumi:"regionName"`
+}
+
+// LocationInput is an input type that accepts LocationArgs and LocationOutput values.
+// You can construct a concrete instance of `LocationInput` via:
+//
+//	LocationArgs{...}
+type LocationInput interface {
+	pulumi.Input
+
+	ToLocationOutput() LocationOutput
+	ToLocationOutputWithContext(context.Context) LocationOutput
+}
+
+// Definition of Location
+type LocationArgs struct {
+	// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
+	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
+	// The Region Name in which to create your instance.
+	RegionName pulumi.StringPtrInput `pulumi:"regionName"`
+}
+
+func (LocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Location)(nil)).Elem()
+}
+
+func (i LocationArgs) ToLocationOutput() LocationOutput {
+	return i.ToLocationOutputWithContext(context.Background())
+}
+
+func (i LocationArgs) ToLocationOutputWithContext(ctx context.Context) LocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationOutput)
+}
+
+func (i LocationArgs) ToLocationPtrOutput() LocationPtrOutput {
+	return i.ToLocationPtrOutputWithContext(context.Background())
+}
+
+func (i LocationArgs) ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationOutput).ToLocationPtrOutputWithContext(ctx)
+}
+
+// LocationPtrInput is an input type that accepts LocationArgs, LocationPtr and LocationPtrOutput values.
+// You can construct a concrete instance of `LocationPtrInput` via:
+//
+//	        LocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type LocationPtrInput interface {
+	pulumi.Input
+
+	ToLocationPtrOutput() LocationPtrOutput
+	ToLocationPtrOutputWithContext(context.Context) LocationPtrOutput
+}
+
+type locationPtrType LocationArgs
+
+func LocationPtr(v *LocationArgs) LocationPtrInput {
+	return (*locationPtrType)(v)
+}
+
+func (*locationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Location)(nil)).Elem()
+}
+
+func (i *locationPtrType) ToLocationPtrOutput() LocationPtrOutput {
+	return i.ToLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *locationPtrType) ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationPtrOutput)
+}
+
+// Definition of Location
+type LocationOutput struct{ *pulumi.OutputState }
+
+func (LocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Location)(nil)).Elem()
+}
+
+func (o LocationOutput) ToLocationOutput() LocationOutput {
+	return o
+}
+
+func (o LocationOutput) ToLocationOutputWithContext(ctx context.Context) LocationOutput {
+	return o
+}
+
+func (o LocationOutput) ToLocationPtrOutput() LocationPtrOutput {
+	return o.ToLocationPtrOutputWithContext(context.Background())
+}
+
+func (o LocationOutput) ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Location) *Location {
+		return &v
+	}).(LocationPtrOutput)
+}
+
+// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
+func (o LocationOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Location) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
+// The Region Name in which to create your instance.
+func (o LocationOutput) RegionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Location) *string { return v.RegionName }).(pulumi.StringPtrOutput)
+}
+
+type LocationPtrOutput struct{ *pulumi.OutputState }
+
+func (LocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Location)(nil)).Elem()
+}
+
+func (o LocationPtrOutput) ToLocationPtrOutput() LocationPtrOutput {
+	return o
+}
+
+func (o LocationPtrOutput) ToLocationPtrOutputWithContext(ctx context.Context) LocationPtrOutput {
+	return o
+}
+
+func (o LocationPtrOutput) Elem() LocationOutput {
+	return o.ApplyT(func(v *Location) Location {
+		if v != nil {
+			return *v
+		}
+		var ret Location
+		return ret
+	}).(LocationOutput)
+}
+
+// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
+func (o LocationPtrOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Location) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Region Name in which to create your instance.
+func (o LocationPtrOutput) RegionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Location) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RegionName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Definition of Location
+type LocationResponse struct {
+	// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
+	AvailabilityZone *string `pulumi:"availabilityZone"`
+	// The Region Name in which to create your instance.
+	RegionName *string `pulumi:"regionName"`
+}
+
+// Definition of Location
+type LocationResponseOutput struct{ *pulumi.OutputState }
+
+func (LocationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationResponse)(nil)).Elem()
+}
+
+func (o LocationResponseOutput) ToLocationResponseOutput() LocationResponseOutput {
+	return o
+}
+
+func (o LocationResponseOutput) ToLocationResponseOutputWithContext(ctx context.Context) LocationResponseOutput {
+	return o
+}
+
+// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
+func (o LocationResponseOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LocationResponse) *string { return v.AvailabilityZone }).(pulumi.StringPtrOutput)
+}
+
+// The Region Name in which to create your instance.
+func (o LocationResponseOutput) RegionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LocationResponse) *string { return v.RegionName }).(pulumi.StringPtrOutput)
+}
+
+type LocationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LocationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocationResponse)(nil)).Elem()
+}
+
+func (o LocationResponsePtrOutput) ToLocationResponsePtrOutput() LocationResponsePtrOutput {
+	return o
+}
+
+func (o LocationResponsePtrOutput) ToLocationResponsePtrOutputWithContext(ctx context.Context) LocationResponsePtrOutput {
+	return o
+}
+
+func (o LocationResponsePtrOutput) Elem() LocationResponseOutput {
+	return o.ApplyT(func(v *LocationResponse) LocationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LocationResponse
+		return ret
+	}).(LocationResponseOutput)
+}
+
+// The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
+func (o LocationResponsePtrOutput) AvailabilityZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LocationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Region Name in which to create your instance.
+func (o LocationResponsePtrOutput) RegionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LocationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RegionName
+	}).(pulumi.StringPtrOutput)
+}
+
 // Definition of LogConfig
 type LogConfig struct {
 	// <p>The service role that AppSync assumes to publish to CloudWatch logs in your account.</p>
@@ -1508,7 +1804,7 @@ func (o LoggingConfigResponsePtrOutput) SystemLogLevel() pulumi.StringPtrOutput 
 }
 
 // Definition of LoggingConfig
-type LoggingConfigResponseV1 struct {
+type LoggingConfigSnsTopicResponse struct {
 	// Property failureFeedbackRoleArn
 	FailureFeedbackRoleArn *string `pulumi:"failureFeedbackRoleArn"`
 	// Property protocol
@@ -1520,58 +1816,58 @@ type LoggingConfigResponseV1 struct {
 }
 
 // Definition of LoggingConfig
-type LoggingConfigResponseV1Output struct{ *pulumi.OutputState }
+type LoggingConfigSnsTopicResponseOutput struct{ *pulumi.OutputState }
 
-func (LoggingConfigResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoggingConfigResponseV1)(nil)).Elem()
+func (LoggingConfigSnsTopicResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingConfigSnsTopicResponse)(nil)).Elem()
 }
 
-func (o LoggingConfigResponseV1Output) ToLoggingConfigResponseV1Output() LoggingConfigResponseV1Output {
+func (o LoggingConfigSnsTopicResponseOutput) ToLoggingConfigSnsTopicResponseOutput() LoggingConfigSnsTopicResponseOutput {
 	return o
 }
 
-func (o LoggingConfigResponseV1Output) ToLoggingConfigResponseV1OutputWithContext(ctx context.Context) LoggingConfigResponseV1Output {
+func (o LoggingConfigSnsTopicResponseOutput) ToLoggingConfigSnsTopicResponseOutputWithContext(ctx context.Context) LoggingConfigSnsTopicResponseOutput {
 	return o
 }
 
 // Property failureFeedbackRoleArn
-func (o LoggingConfigResponseV1Output) FailureFeedbackRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoggingConfigResponseV1) *string { return v.FailureFeedbackRoleArn }).(pulumi.StringPtrOutput)
+func (o LoggingConfigSnsTopicResponseOutput) FailureFeedbackRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoggingConfigSnsTopicResponse) *string { return v.FailureFeedbackRoleArn }).(pulumi.StringPtrOutput)
 }
 
 // Property protocol
-func (o LoggingConfigResponseV1Output) Protocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoggingConfigResponseV1) *string { return v.Protocol }).(pulumi.StringPtrOutput)
+func (o LoggingConfigSnsTopicResponseOutput) Protocol() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoggingConfigSnsTopicResponse) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
 // Property successFeedbackRoleArn
-func (o LoggingConfigResponseV1Output) SuccessFeedbackRoleArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoggingConfigResponseV1) *string { return v.SuccessFeedbackRoleArn }).(pulumi.StringPtrOutput)
+func (o LoggingConfigSnsTopicResponseOutput) SuccessFeedbackRoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoggingConfigSnsTopicResponse) *string { return v.SuccessFeedbackRoleArn }).(pulumi.StringPtrOutput)
 }
 
 // Property successFeedbackSampleRate
-func (o LoggingConfigResponseV1Output) SuccessFeedbackSampleRate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LoggingConfigResponseV1) *string { return v.SuccessFeedbackSampleRate }).(pulumi.StringPtrOutput)
+func (o LoggingConfigSnsTopicResponseOutput) SuccessFeedbackSampleRate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoggingConfigSnsTopicResponse) *string { return v.SuccessFeedbackSampleRate }).(pulumi.StringPtrOutput)
 }
 
-type LoggingConfigResponseV1ArrayOutput struct{ *pulumi.OutputState }
+type LoggingConfigSnsTopicResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (LoggingConfigResponseV1ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LoggingConfigResponseV1)(nil)).Elem()
+func (LoggingConfigSnsTopicResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LoggingConfigSnsTopicResponse)(nil)).Elem()
 }
 
-func (o LoggingConfigResponseV1ArrayOutput) ToLoggingConfigResponseV1ArrayOutput() LoggingConfigResponseV1ArrayOutput {
+func (o LoggingConfigSnsTopicResponseArrayOutput) ToLoggingConfigSnsTopicResponseArrayOutput() LoggingConfigSnsTopicResponseArrayOutput {
 	return o
 }
 
-func (o LoggingConfigResponseV1ArrayOutput) ToLoggingConfigResponseV1ArrayOutputWithContext(ctx context.Context) LoggingConfigResponseV1ArrayOutput {
+func (o LoggingConfigSnsTopicResponseArrayOutput) ToLoggingConfigSnsTopicResponseArrayOutputWithContext(ctx context.Context) LoggingConfigSnsTopicResponseArrayOutput {
 	return o
 }
 
-func (o LoggingConfigResponseV1ArrayOutput) Index(i pulumi.IntInput) LoggingConfigResponseV1Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoggingConfigResponseV1 {
-		return vs[0].([]LoggingConfigResponseV1)[vs[1].(int)]
-	}).(LoggingConfigResponseV1Output)
+func (o LoggingConfigSnsTopicResponseArrayOutput) Index(i pulumi.IntInput) LoggingConfigSnsTopicResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LoggingConfigSnsTopicResponse {
+		return vs[0].([]LoggingConfigSnsTopicResponse)[vs[1].(int)]
+	}).(LoggingConfigSnsTopicResponseOutput)
 }
 
 // Definition of LoggingConfiguration
@@ -1846,6 +2142,66 @@ func (o LoggingConfigurationResponsePtrOutput) TargetObjectKeyFormat() TargetObj
 	}).(TargetObjectKeyFormatResponsePtrOutput)
 }
 
+// Definition of Logging
+type LoggingEksClusterResponse struct {
+	// <p>The cluster control plane logging configuration for your cluster.</p>
+	ClusterLogging []LogSetupResponse `pulumi:"clusterLogging"`
+}
+
+// Definition of Logging
+type LoggingEksClusterResponseOutput struct{ *pulumi.OutputState }
+
+func (LoggingEksClusterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingEksClusterResponse)(nil)).Elem()
+}
+
+func (o LoggingEksClusterResponseOutput) ToLoggingEksClusterResponseOutput() LoggingEksClusterResponseOutput {
+	return o
+}
+
+func (o LoggingEksClusterResponseOutput) ToLoggingEksClusterResponseOutputWithContext(ctx context.Context) LoggingEksClusterResponseOutput {
+	return o
+}
+
+// <p>The cluster control plane logging configuration for your cluster.</p>
+func (o LoggingEksClusterResponseOutput) ClusterLogging() LogSetupResponseArrayOutput {
+	return o.ApplyT(func(v LoggingEksClusterResponse) []LogSetupResponse { return v.ClusterLogging }).(LogSetupResponseArrayOutput)
+}
+
+type LoggingEksClusterResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LoggingEksClusterResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingEksClusterResponse)(nil)).Elem()
+}
+
+func (o LoggingEksClusterResponsePtrOutput) ToLoggingEksClusterResponsePtrOutput() LoggingEksClusterResponsePtrOutput {
+	return o
+}
+
+func (o LoggingEksClusterResponsePtrOutput) ToLoggingEksClusterResponsePtrOutputWithContext(ctx context.Context) LoggingEksClusterResponsePtrOutput {
+	return o
+}
+
+func (o LoggingEksClusterResponsePtrOutput) Elem() LoggingEksClusterResponseOutput {
+	return o.ApplyT(func(v *LoggingEksClusterResponse) LoggingEksClusterResponse {
+		if v != nil {
+			return *v
+		}
+		var ret LoggingEksClusterResponse
+		return ret
+	}).(LoggingEksClusterResponseOutput)
+}
+
+// <p>The cluster control plane logging configuration for your cluster.</p>
+func (o LoggingEksClusterResponsePtrOutput) ClusterLogging() LogSetupResponseArrayOutput {
+	return o.ApplyT(func(v *LoggingEksClusterResponse) []LogSetupResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterLogging
+	}).(LogSetupResponseArrayOutput)
+}
+
 // Definition of LoggingFilterModelProperties
 type LoggingFilterModelProperties struct {
 	// Default handling for logs that don't match any of the specified filtering conditions.
@@ -2010,7 +2366,7 @@ type LoggingFilterModelPropertiesResponse struct {
 	// Default handling for logs that don't match any of the specified filtering conditions.
 	DefaultBehavior *string `pulumi:"defaultBehavior"`
 	// The filters that you want to apply to the logs.
-	Filters []FilterResponseV1 `pulumi:"filters"`
+	Filters []FilterWafv2LoggingConfigurationResponse `pulumi:"filters"`
 }
 
 // Definition of LoggingFilterModelProperties
@@ -2034,8 +2390,10 @@ func (o LoggingFilterModelPropertiesResponseOutput) DefaultBehavior() pulumi.Str
 }
 
 // The filters that you want to apply to the logs.
-func (o LoggingFilterModelPropertiesResponseOutput) Filters() FilterResponseV1ArrayOutput {
-	return o.ApplyT(func(v LoggingFilterModelPropertiesResponse) []FilterResponseV1 { return v.Filters }).(FilterResponseV1ArrayOutput)
+func (o LoggingFilterModelPropertiesResponseOutput) Filters() FilterWafv2LoggingConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v LoggingFilterModelPropertiesResponse) []FilterWafv2LoggingConfigurationResponse {
+		return v.Filters
+	}).(FilterWafv2LoggingConfigurationResponseArrayOutput)
 }
 
 type LoggingFilterModelPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
@@ -2073,13 +2431,13 @@ func (o LoggingFilterModelPropertiesResponsePtrOutput) DefaultBehavior() pulumi.
 }
 
 // The filters that you want to apply to the logs.
-func (o LoggingFilterModelPropertiesResponsePtrOutput) Filters() FilterResponseV1ArrayOutput {
-	return o.ApplyT(func(v *LoggingFilterModelPropertiesResponse) []FilterResponseV1 {
+func (o LoggingFilterModelPropertiesResponsePtrOutput) Filters() FilterWafv2LoggingConfigurationResponseArrayOutput {
+	return o.ApplyT(func(v *LoggingFilterModelPropertiesResponse) []FilterWafv2LoggingConfigurationResponse {
 		if v == nil {
 			return nil
 		}
 		return v.Filters
-	}).(FilterResponseV1ArrayOutput)
+	}).(FilterWafv2LoggingConfigurationResponseArrayOutput)
 }
 
 // Definition of LoggingProperties
@@ -2410,66 +2768,6 @@ func (o LoggingResponsePtrOutput) Prefix() pulumi.StringPtrOutput {
 		}
 		return v.Prefix
 	}).(pulumi.StringPtrOutput)
-}
-
-// Definition of Logging
-type LoggingResponseV1 struct {
-	// <p>The cluster control plane logging configuration for your cluster.</p>
-	ClusterLogging []LogSetupResponse `pulumi:"clusterLogging"`
-}
-
-// Definition of Logging
-type LoggingResponseV1Output struct{ *pulumi.OutputState }
-
-func (LoggingResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*LoggingResponseV1)(nil)).Elem()
-}
-
-func (o LoggingResponseV1Output) ToLoggingResponseV1Output() LoggingResponseV1Output {
-	return o
-}
-
-func (o LoggingResponseV1Output) ToLoggingResponseV1OutputWithContext(ctx context.Context) LoggingResponseV1Output {
-	return o
-}
-
-// <p>The cluster control plane logging configuration for your cluster.</p>
-func (o LoggingResponseV1Output) ClusterLogging() LogSetupResponseArrayOutput {
-	return o.ApplyT(func(v LoggingResponseV1) []LogSetupResponse { return v.ClusterLogging }).(LogSetupResponseArrayOutput)
-}
-
-type LoggingResponseV1PtrOutput struct{ *pulumi.OutputState }
-
-func (LoggingResponseV1PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LoggingResponseV1)(nil)).Elem()
-}
-
-func (o LoggingResponseV1PtrOutput) ToLoggingResponseV1PtrOutput() LoggingResponseV1PtrOutput {
-	return o
-}
-
-func (o LoggingResponseV1PtrOutput) ToLoggingResponseV1PtrOutputWithContext(ctx context.Context) LoggingResponseV1PtrOutput {
-	return o
-}
-
-func (o LoggingResponseV1PtrOutput) Elem() LoggingResponseV1Output {
-	return o.ApplyT(func(v *LoggingResponseV1) LoggingResponseV1 {
-		if v != nil {
-			return *v
-		}
-		var ret LoggingResponseV1
-		return ret
-	}).(LoggingResponseV1Output)
-}
-
-// <p>The cluster control plane logging configuration for your cluster.</p>
-func (o LoggingResponseV1PtrOutput) ClusterLogging() LogSetupResponseArrayOutput {
-	return o.ApplyT(func(v *LoggingResponseV1) []LogSetupResponse {
-		if v == nil {
-			return nil
-		}
-		return v.ClusterLogging
-	}).(LogSetupResponseArrayOutput)
 }
 
 // Definition of LogsConfig
@@ -8405,7 +8703,7 @@ type MetricTransformationResponse struct {
 	// (Optional) The value to emit when a filter pattern does not match a log event. This value can be null.
 	DefaultValue *int `pulumi:"defaultValue"`
 	// The fields to use as dimensions for the metric. One metric filter can include as many as three dimensions.  Metrics extracted from log events are charged as custom metrics. To prevent unexpected high charges, do not specify high-cardinality fields such as ``IPAddress`` or ``requestID`` as dimensions. Each different value found for a dimension is treated as a separate metric and accrues charges as a separate custom metric.  CloudWatch Logs disables a metric filter if it generates 1000 different name/value pairs for your specified dimensions within a certain amount of time. This helps to prevent accidental high charges. You can also set up a billing alarm to alert you if your charges are higher than expected. For more information, see [Creating a Billing Alarm to Monitor Your Estimated Charges](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html).
-	Dimensions []DimensionResponseV1 `pulumi:"dimensions"`
+	Dimensions []DimensionLogsMetricFilterResponse `pulumi:"dimensions"`
 	// The name of the CloudWatch metric.
 	MetricName *string `pulumi:"metricName"`
 	// A custom namespace to contain your metric in CloudWatch. Use namespaces to group together metrics that are similar. For more information, see [Namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Namespace).
@@ -8437,8 +8735,8 @@ func (o MetricTransformationResponseOutput) DefaultValue() pulumi.IntPtrOutput {
 }
 
 // The fields to use as dimensions for the metric. One metric filter can include as many as three dimensions.  Metrics extracted from log events are charged as custom metrics. To prevent unexpected high charges, do not specify high-cardinality fields such as “IPAddress“ or “requestID“ as dimensions. Each different value found for a dimension is treated as a separate metric and accrues charges as a separate custom metric.  CloudWatch Logs disables a metric filter if it generates 1000 different name/value pairs for your specified dimensions within a certain amount of time. This helps to prevent accidental high charges. You can also set up a billing alarm to alert you if your charges are higher than expected. For more information, see [Creating a Billing Alarm to Monitor Your Estimated Charges](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html).
-func (o MetricTransformationResponseOutput) Dimensions() DimensionResponseV1ArrayOutput {
-	return o.ApplyT(func(v MetricTransformationResponse) []DimensionResponseV1 { return v.Dimensions }).(DimensionResponseV1ArrayOutput)
+func (o MetricTransformationResponseOutput) Dimensions() DimensionLogsMetricFilterResponseArrayOutput {
+	return o.ApplyT(func(v MetricTransformationResponse) []DimensionLogsMetricFilterResponse { return v.Dimensions }).(DimensionLogsMetricFilterResponseArrayOutput)
 }
 
 // The name of the CloudWatch metric.
@@ -21292,6 +21590,59 @@ func (o ParameterGroupStatusResponsePtrOutput) ParameterGroupName() pulumi.Strin
 }
 
 // Definition of Parameter
+type ParameterRedshiftClusterParameterGroupResponse struct {
+	// The name of the parameter.
+	ParameterName *string `pulumi:"parameterName"`
+	// The value of the parameter. If `ParameterName` is `wlm_json_configuration`, then the maximum size of `ParameterValue` is 8000 characters.
+	ParameterValue *string `pulumi:"parameterValue"`
+}
+
+// Definition of Parameter
+type ParameterRedshiftClusterParameterGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (ParameterRedshiftClusterParameterGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ParameterRedshiftClusterParameterGroupResponse)(nil)).Elem()
+}
+
+func (o ParameterRedshiftClusterParameterGroupResponseOutput) ToParameterRedshiftClusterParameterGroupResponseOutput() ParameterRedshiftClusterParameterGroupResponseOutput {
+	return o
+}
+
+func (o ParameterRedshiftClusterParameterGroupResponseOutput) ToParameterRedshiftClusterParameterGroupResponseOutputWithContext(ctx context.Context) ParameterRedshiftClusterParameterGroupResponseOutput {
+	return o
+}
+
+// The name of the parameter.
+func (o ParameterRedshiftClusterParameterGroupResponseOutput) ParameterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParameterRedshiftClusterParameterGroupResponse) *string { return v.ParameterName }).(pulumi.StringPtrOutput)
+}
+
+// The value of the parameter. If `ParameterName` is `wlm_json_configuration`, then the maximum size of `ParameterValue` is 8000 characters.
+func (o ParameterRedshiftClusterParameterGroupResponseOutput) ParameterValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ParameterRedshiftClusterParameterGroupResponse) *string { return v.ParameterValue }).(pulumi.StringPtrOutput)
+}
+
+type ParameterRedshiftClusterParameterGroupResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ParameterRedshiftClusterParameterGroupResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ParameterRedshiftClusterParameterGroupResponse)(nil)).Elem()
+}
+
+func (o ParameterRedshiftClusterParameterGroupResponseArrayOutput) ToParameterRedshiftClusterParameterGroupResponseArrayOutput() ParameterRedshiftClusterParameterGroupResponseArrayOutput {
+	return o
+}
+
+func (o ParameterRedshiftClusterParameterGroupResponseArrayOutput) ToParameterRedshiftClusterParameterGroupResponseArrayOutputWithContext(ctx context.Context) ParameterRedshiftClusterParameterGroupResponseArrayOutput {
+	return o
+}
+
+func (o ParameterRedshiftClusterParameterGroupResponseArrayOutput) Index(i pulumi.IntInput) ParameterRedshiftClusterParameterGroupResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ParameterRedshiftClusterParameterGroupResponse {
+		return vs[0].([]ParameterRedshiftClusterParameterGroupResponse)[vs[1].(int)]
+	}).(ParameterRedshiftClusterParameterGroupResponseOutput)
+}
+
+// Definition of Parameter
 type ParameterResponse struct {
 	// The key associated with the parameter. If you don't specify a key and value for a particular parameter, AWS CloudFormation uses the default value that is specified in your template.
 	ParameterKey *string `pulumi:"parameterKey"`
@@ -21342,59 +21693,6 @@ func (o ParameterResponseArrayOutput) Index(i pulumi.IntInput) ParameterResponse
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ParameterResponse {
 		return vs[0].([]ParameterResponse)[vs[1].(int)]
 	}).(ParameterResponseOutput)
-}
-
-// Definition of Parameter
-type ParameterResponseV1 struct {
-	// The name of the parameter.
-	ParameterName *string `pulumi:"parameterName"`
-	// The value of the parameter. If `ParameterName` is `wlm_json_configuration`, then the maximum size of `ParameterValue` is 8000 characters.
-	ParameterValue *string `pulumi:"parameterValue"`
-}
-
-// Definition of Parameter
-type ParameterResponseV1Output struct{ *pulumi.OutputState }
-
-func (ParameterResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*ParameterResponseV1)(nil)).Elem()
-}
-
-func (o ParameterResponseV1Output) ToParameterResponseV1Output() ParameterResponseV1Output {
-	return o
-}
-
-func (o ParameterResponseV1Output) ToParameterResponseV1OutputWithContext(ctx context.Context) ParameterResponseV1Output {
-	return o
-}
-
-// The name of the parameter.
-func (o ParameterResponseV1Output) ParameterName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ParameterResponseV1) *string { return v.ParameterName }).(pulumi.StringPtrOutput)
-}
-
-// The value of the parameter. If `ParameterName` is `wlm_json_configuration`, then the maximum size of `ParameterValue` is 8000 characters.
-func (o ParameterResponseV1Output) ParameterValue() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ParameterResponseV1) *string { return v.ParameterValue }).(pulumi.StringPtrOutput)
-}
-
-type ParameterResponseV1ArrayOutput struct{ *pulumi.OutputState }
-
-func (ParameterResponseV1ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ParameterResponseV1)(nil)).Elem()
-}
-
-func (o ParameterResponseV1ArrayOutput) ToParameterResponseV1ArrayOutput() ParameterResponseV1ArrayOutput {
-	return o
-}
-
-func (o ParameterResponseV1ArrayOutput) ToParameterResponseV1ArrayOutputWithContext(ctx context.Context) ParameterResponseV1ArrayOutput {
-	return o
-}
-
-func (o ParameterResponseV1ArrayOutput) Index(i pulumi.IntInput) ParameterResponseV1Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ParameterResponseV1 {
-		return vs[0].([]ParameterResponseV1)[vs[1].(int)]
-	}).(ParameterResponseV1Output)
 }
 
 // Definition of PartitionedPrefix
@@ -31718,9 +32016,71 @@ func (o PublishMetricActionPtrOutput) Dimensions() DimensionArrayOutput {
 }
 
 // Definition of PublishMetricAction
+type PublishMetricActionNetworkFirewallRuleGroupResponse struct {
+	// Property dimensions
+	Dimensions []DimensionNetworkFirewallRuleGroupResponse `pulumi:"dimensions"`
+}
+
+// Definition of PublishMetricAction
+type PublishMetricActionNetworkFirewallRuleGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (PublishMetricActionNetworkFirewallRuleGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublishMetricActionNetworkFirewallRuleGroupResponse)(nil)).Elem()
+}
+
+func (o PublishMetricActionNetworkFirewallRuleGroupResponseOutput) ToPublishMetricActionNetworkFirewallRuleGroupResponseOutput() PublishMetricActionNetworkFirewallRuleGroupResponseOutput {
+	return o
+}
+
+func (o PublishMetricActionNetworkFirewallRuleGroupResponseOutput) ToPublishMetricActionNetworkFirewallRuleGroupResponseOutputWithContext(ctx context.Context) PublishMetricActionNetworkFirewallRuleGroupResponseOutput {
+	return o
+}
+
+// Property dimensions
+func (o PublishMetricActionNetworkFirewallRuleGroupResponseOutput) Dimensions() DimensionNetworkFirewallRuleGroupResponseArrayOutput {
+	return o.ApplyT(func(v PublishMetricActionNetworkFirewallRuleGroupResponse) []DimensionNetworkFirewallRuleGroupResponse {
+		return v.Dimensions
+	}).(DimensionNetworkFirewallRuleGroupResponseArrayOutput)
+}
+
+type PublishMetricActionNetworkFirewallRuleGroupResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PublishMetricActionNetworkFirewallRuleGroupResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublishMetricActionNetworkFirewallRuleGroupResponse)(nil)).Elem()
+}
+
+func (o PublishMetricActionNetworkFirewallRuleGroupResponsePtrOutput) ToPublishMetricActionNetworkFirewallRuleGroupResponsePtrOutput() PublishMetricActionNetworkFirewallRuleGroupResponsePtrOutput {
+	return o
+}
+
+func (o PublishMetricActionNetworkFirewallRuleGroupResponsePtrOutput) ToPublishMetricActionNetworkFirewallRuleGroupResponsePtrOutputWithContext(ctx context.Context) PublishMetricActionNetworkFirewallRuleGroupResponsePtrOutput {
+	return o
+}
+
+func (o PublishMetricActionNetworkFirewallRuleGroupResponsePtrOutput) Elem() PublishMetricActionNetworkFirewallRuleGroupResponseOutput {
+	return o.ApplyT(func(v *PublishMetricActionNetworkFirewallRuleGroupResponse) PublishMetricActionNetworkFirewallRuleGroupResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PublishMetricActionNetworkFirewallRuleGroupResponse
+		return ret
+	}).(PublishMetricActionNetworkFirewallRuleGroupResponseOutput)
+}
+
+// Property dimensions
+func (o PublishMetricActionNetworkFirewallRuleGroupResponsePtrOutput) Dimensions() DimensionNetworkFirewallRuleGroupResponseArrayOutput {
+	return o.ApplyT(func(v *PublishMetricActionNetworkFirewallRuleGroupResponse) []DimensionNetworkFirewallRuleGroupResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Dimensions
+	}).(DimensionNetworkFirewallRuleGroupResponseArrayOutput)
+}
+
+// Definition of PublishMetricAction
 type PublishMetricActionResponse struct {
 	// Property dimensions
-	Dimensions []DimensionResponseV2 `pulumi:"dimensions"`
+	Dimensions []DimensionNetworkFirewallFirewallPolicyResponse `pulumi:"dimensions"`
 }
 
 // Definition of PublishMetricAction
@@ -31739,8 +32099,10 @@ func (o PublishMetricActionResponseOutput) ToPublishMetricActionResponseOutputWi
 }
 
 // Property dimensions
-func (o PublishMetricActionResponseOutput) Dimensions() DimensionResponseV2ArrayOutput {
-	return o.ApplyT(func(v PublishMetricActionResponse) []DimensionResponseV2 { return v.Dimensions }).(DimensionResponseV2ArrayOutput)
+func (o PublishMetricActionResponseOutput) Dimensions() DimensionNetworkFirewallFirewallPolicyResponseArrayOutput {
+	return o.ApplyT(func(v PublishMetricActionResponse) []DimensionNetworkFirewallFirewallPolicyResponse {
+		return v.Dimensions
+	}).(DimensionNetworkFirewallFirewallPolicyResponseArrayOutput)
 }
 
 type PublishMetricActionResponsePtrOutput struct{ *pulumi.OutputState }
@@ -31768,13 +32130,13 @@ func (o PublishMetricActionResponsePtrOutput) Elem() PublishMetricActionResponse
 }
 
 // Property dimensions
-func (o PublishMetricActionResponsePtrOutput) Dimensions() DimensionResponseV2ArrayOutput {
-	return o.ApplyT(func(v *PublishMetricActionResponse) []DimensionResponseV2 {
+func (o PublishMetricActionResponsePtrOutput) Dimensions() DimensionNetworkFirewallFirewallPolicyResponseArrayOutput {
+	return o.ApplyT(func(v *PublishMetricActionResponse) []DimensionNetworkFirewallFirewallPolicyResponse {
 		if v == nil {
 			return nil
 		}
 		return v.Dimensions
-	}).(DimensionResponseV2ArrayOutput)
+	}).(DimensionNetworkFirewallFirewallPolicyResponseArrayOutput)
 }
 
 // Definition of QueryLoggingConfig
@@ -40008,7 +40370,7 @@ func (o ReplicationConfigurationResponsePtrOutput) Destinations() ReplicationDes
 }
 
 // Definition of ReplicationConfiguration
-type ReplicationConfigurationResponseV1 struct {
+type ReplicationConfigurationS3BucketResponse struct {
 	// The Amazon Resource Name (ARN) of the IAMlong (IAM) role that Amazon S3 assumes when replicating objects. For more information, see [How to Set Up Replication](https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-how-setup.html) in the *Amazon S3 User Guide*.
 	Role *string `pulumi:"role"`
 	// A container for one or more replication rules. A replication configuration must have at least one rule and can contain a maximum of 1,000 rules.
@@ -40016,57 +40378,57 @@ type ReplicationConfigurationResponseV1 struct {
 }
 
 // Definition of ReplicationConfiguration
-type ReplicationConfigurationResponseV1Output struct{ *pulumi.OutputState }
+type ReplicationConfigurationS3BucketResponseOutput struct{ *pulumi.OutputState }
 
-func (ReplicationConfigurationResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReplicationConfigurationResponseV1)(nil)).Elem()
+func (ReplicationConfigurationS3BucketResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicationConfigurationS3BucketResponse)(nil)).Elem()
 }
 
-func (o ReplicationConfigurationResponseV1Output) ToReplicationConfigurationResponseV1Output() ReplicationConfigurationResponseV1Output {
+func (o ReplicationConfigurationS3BucketResponseOutput) ToReplicationConfigurationS3BucketResponseOutput() ReplicationConfigurationS3BucketResponseOutput {
 	return o
 }
 
-func (o ReplicationConfigurationResponseV1Output) ToReplicationConfigurationResponseV1OutputWithContext(ctx context.Context) ReplicationConfigurationResponseV1Output {
+func (o ReplicationConfigurationS3BucketResponseOutput) ToReplicationConfigurationS3BucketResponseOutputWithContext(ctx context.Context) ReplicationConfigurationS3BucketResponseOutput {
 	return o
 }
 
 // The Amazon Resource Name (ARN) of the IAMlong (IAM) role that Amazon S3 assumes when replicating objects. For more information, see [How to Set Up Replication](https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-how-setup.html) in the *Amazon S3 User Guide*.
-func (o ReplicationConfigurationResponseV1Output) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ReplicationConfigurationResponseV1) *string { return v.Role }).(pulumi.StringPtrOutput)
+func (o ReplicationConfigurationS3BucketResponseOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationConfigurationS3BucketResponse) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
 
 // A container for one or more replication rules. A replication configuration must have at least one rule and can contain a maximum of 1,000 rules.
-func (o ReplicationConfigurationResponseV1Output) Rules() ReplicationRuleResponseArrayOutput {
-	return o.ApplyT(func(v ReplicationConfigurationResponseV1) []ReplicationRuleResponse { return v.Rules }).(ReplicationRuleResponseArrayOutput)
+func (o ReplicationConfigurationS3BucketResponseOutput) Rules() ReplicationRuleResponseArrayOutput {
+	return o.ApplyT(func(v ReplicationConfigurationS3BucketResponse) []ReplicationRuleResponse { return v.Rules }).(ReplicationRuleResponseArrayOutput)
 }
 
-type ReplicationConfigurationResponseV1PtrOutput struct{ *pulumi.OutputState }
+type ReplicationConfigurationS3BucketResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (ReplicationConfigurationResponseV1PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ReplicationConfigurationResponseV1)(nil)).Elem()
+func (ReplicationConfigurationS3BucketResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReplicationConfigurationS3BucketResponse)(nil)).Elem()
 }
 
-func (o ReplicationConfigurationResponseV1PtrOutput) ToReplicationConfigurationResponseV1PtrOutput() ReplicationConfigurationResponseV1PtrOutput {
+func (o ReplicationConfigurationS3BucketResponsePtrOutput) ToReplicationConfigurationS3BucketResponsePtrOutput() ReplicationConfigurationS3BucketResponsePtrOutput {
 	return o
 }
 
-func (o ReplicationConfigurationResponseV1PtrOutput) ToReplicationConfigurationResponseV1PtrOutputWithContext(ctx context.Context) ReplicationConfigurationResponseV1PtrOutput {
+func (o ReplicationConfigurationS3BucketResponsePtrOutput) ToReplicationConfigurationS3BucketResponsePtrOutputWithContext(ctx context.Context) ReplicationConfigurationS3BucketResponsePtrOutput {
 	return o
 }
 
-func (o ReplicationConfigurationResponseV1PtrOutput) Elem() ReplicationConfigurationResponseV1Output {
-	return o.ApplyT(func(v *ReplicationConfigurationResponseV1) ReplicationConfigurationResponseV1 {
+func (o ReplicationConfigurationS3BucketResponsePtrOutput) Elem() ReplicationConfigurationS3BucketResponseOutput {
+	return o.ApplyT(func(v *ReplicationConfigurationS3BucketResponse) ReplicationConfigurationS3BucketResponse {
 		if v != nil {
 			return *v
 		}
-		var ret ReplicationConfigurationResponseV1
+		var ret ReplicationConfigurationS3BucketResponse
 		return ret
-	}).(ReplicationConfigurationResponseV1Output)
+	}).(ReplicationConfigurationS3BucketResponseOutput)
 }
 
 // The Amazon Resource Name (ARN) of the IAMlong (IAM) role that Amazon S3 assumes when replicating objects. For more information, see [How to Set Up Replication](https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-how-setup.html) in the *Amazon S3 User Guide*.
-func (o ReplicationConfigurationResponseV1PtrOutput) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ReplicationConfigurationResponseV1) *string {
+func (o ReplicationConfigurationS3BucketResponsePtrOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationConfigurationS3BucketResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -40075,8 +40437,8 @@ func (o ReplicationConfigurationResponseV1PtrOutput) Role() pulumi.StringPtrOutp
 }
 
 // A container for one or more replication rules. A replication configuration must have at least one rule and can contain a maximum of 1,000 rules.
-func (o ReplicationConfigurationResponseV1PtrOutput) Rules() ReplicationRuleResponseArrayOutput {
-	return o.ApplyT(func(v *ReplicationConfigurationResponseV1) []ReplicationRuleResponse {
+func (o ReplicationConfigurationS3BucketResponsePtrOutput) Rules() ReplicationRuleResponseArrayOutput {
+	return o.ApplyT(func(v *ReplicationConfigurationS3BucketResponse) []ReplicationRuleResponse {
 		if v == nil {
 			return nil
 		}
@@ -40527,7 +40889,7 @@ func (o ReplicationDestinationResponseArrayOutput) Index(i pulumi.IntInput) Repl
 }
 
 // Definition of ReplicationDestination
-type ReplicationDestinationResponseV1 struct {
+type ReplicationDestinationS3BucketResponse struct {
 	// Specify this only in a cross-account scenario (where source and destination bucket owners are not the same), and you want to change replica ownership to the AWS-account that owns the destination bucket. If this is not specified in the replication configuration, the replicas are owned by same AWS-account that owns the source object. Specify this only in a cross-account scenario (where source and destination bucket owners are not the same), and you want to change replica ownership to the AWS-account that owns the destination bucket. If this is not specified in the replication configuration, the replicas are owned by same AWS-account that owns the source object.
 	AccessControlTranslation *AccessControlTranslationResponse `pulumi:"accessControlTranslation"`
 	// Destination bucket owner account ID. In a cross-account scenario, if you direct Amazon S3 to change replica ownership to the AWS-account that owns the destination bucket by specifying the ``AccessControlTranslation`` property, this is the account ID of the destination bucket owner. For more information, see [Cross-Region Replication Additional Configuration: Change Replica Owner](https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html) in the *Amazon S3 User Guide*. If you specify the ``AccessControlTranslation`` property, the ``Account`` property is required.
@@ -40535,7 +40897,7 @@ type ReplicationDestinationResponseV1 struct {
 	// The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store the results.
 	Bucket *string `pulumi:"bucket"`
 	// Specifies encryption-related information. Specifies encryption-related information for an Amazon S3 bucket that is a destination for replicated objects.
-	EncryptionConfiguration *EncryptionConfigurationResponseV1 `pulumi:"encryptionConfiguration"`
+	EncryptionConfiguration *EncryptionConfigurationS3BucketResponse `pulumi:"encryptionConfiguration"`
 	// A container specifying replication metrics-related settings enabling replication metrics and events. A container specifying replication metrics-related settings enabling replication metrics and events.
 	Metrics *MetricsResponse `pulumi:"metrics"`
 	// A container specifying S3 Replication Time Control (S3 RTC), including whether S3 RTC is enabled and the time when all objects and operations on objects must be replicated. Must be specified together with a ``Metrics`` block. A container specifying S3 Replication Time Control (S3 RTC) related information, including whether S3 RTC is enabled and the time when all objects and operations on objects must be replicated. Must be specified together with a ``Metrics`` block.
@@ -40545,86 +40907,86 @@ type ReplicationDestinationResponseV1 struct {
 }
 
 // Definition of ReplicationDestination
-type ReplicationDestinationResponseV1Output struct{ *pulumi.OutputState }
+type ReplicationDestinationS3BucketResponseOutput struct{ *pulumi.OutputState }
 
-func (ReplicationDestinationResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReplicationDestinationResponseV1)(nil)).Elem()
+func (ReplicationDestinationS3BucketResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicationDestinationS3BucketResponse)(nil)).Elem()
 }
 
-func (o ReplicationDestinationResponseV1Output) ToReplicationDestinationResponseV1Output() ReplicationDestinationResponseV1Output {
+func (o ReplicationDestinationS3BucketResponseOutput) ToReplicationDestinationS3BucketResponseOutput() ReplicationDestinationS3BucketResponseOutput {
 	return o
 }
 
-func (o ReplicationDestinationResponseV1Output) ToReplicationDestinationResponseV1OutputWithContext(ctx context.Context) ReplicationDestinationResponseV1Output {
+func (o ReplicationDestinationS3BucketResponseOutput) ToReplicationDestinationS3BucketResponseOutputWithContext(ctx context.Context) ReplicationDestinationS3BucketResponseOutput {
 	return o
 }
 
 // Specify this only in a cross-account scenario (where source and destination bucket owners are not the same), and you want to change replica ownership to the AWS-account that owns the destination bucket. If this is not specified in the replication configuration, the replicas are owned by same AWS-account that owns the source object. Specify this only in a cross-account scenario (where source and destination bucket owners are not the same), and you want to change replica ownership to the AWS-account that owns the destination bucket. If this is not specified in the replication configuration, the replicas are owned by same AWS-account that owns the source object.
-func (o ReplicationDestinationResponseV1Output) AccessControlTranslation() AccessControlTranslationResponsePtrOutput {
-	return o.ApplyT(func(v ReplicationDestinationResponseV1) *AccessControlTranslationResponse {
+func (o ReplicationDestinationS3BucketResponseOutput) AccessControlTranslation() AccessControlTranslationResponsePtrOutput {
+	return o.ApplyT(func(v ReplicationDestinationS3BucketResponse) *AccessControlTranslationResponse {
 		return v.AccessControlTranslation
 	}).(AccessControlTranslationResponsePtrOutput)
 }
 
 // Destination bucket owner account ID. In a cross-account scenario, if you direct Amazon S3 to change replica ownership to the AWS-account that owns the destination bucket by specifying the “AccessControlTranslation“ property, this is the account ID of the destination bucket owner. For more information, see [Cross-Region Replication Additional Configuration: Change Replica Owner](https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html) in the *Amazon S3 User Guide*. If you specify the “AccessControlTranslation“ property, the “Account“ property is required.
-func (o ReplicationDestinationResponseV1Output) Account() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ReplicationDestinationResponseV1) *string { return v.Account }).(pulumi.StringPtrOutput)
+func (o ReplicationDestinationS3BucketResponseOutput) Account() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationDestinationS3BucketResponse) *string { return v.Account }).(pulumi.StringPtrOutput)
 }
 
 // The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store the results.
-func (o ReplicationDestinationResponseV1Output) Bucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ReplicationDestinationResponseV1) *string { return v.Bucket }).(pulumi.StringPtrOutput)
+func (o ReplicationDestinationS3BucketResponseOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationDestinationS3BucketResponse) *string { return v.Bucket }).(pulumi.StringPtrOutput)
 }
 
 // Specifies encryption-related information. Specifies encryption-related information for an Amazon S3 bucket that is a destination for replicated objects.
-func (o ReplicationDestinationResponseV1Output) EncryptionConfiguration() EncryptionConfigurationResponseV1PtrOutput {
-	return o.ApplyT(func(v ReplicationDestinationResponseV1) *EncryptionConfigurationResponseV1 {
+func (o ReplicationDestinationS3BucketResponseOutput) EncryptionConfiguration() EncryptionConfigurationS3BucketResponsePtrOutput {
+	return o.ApplyT(func(v ReplicationDestinationS3BucketResponse) *EncryptionConfigurationS3BucketResponse {
 		return v.EncryptionConfiguration
-	}).(EncryptionConfigurationResponseV1PtrOutput)
+	}).(EncryptionConfigurationS3BucketResponsePtrOutput)
 }
 
 // A container specifying replication metrics-related settings enabling replication metrics and events. A container specifying replication metrics-related settings enabling replication metrics and events.
-func (o ReplicationDestinationResponseV1Output) Metrics() MetricsResponsePtrOutput {
-	return o.ApplyT(func(v ReplicationDestinationResponseV1) *MetricsResponse { return v.Metrics }).(MetricsResponsePtrOutput)
+func (o ReplicationDestinationS3BucketResponseOutput) Metrics() MetricsResponsePtrOutput {
+	return o.ApplyT(func(v ReplicationDestinationS3BucketResponse) *MetricsResponse { return v.Metrics }).(MetricsResponsePtrOutput)
 }
 
 // A container specifying S3 Replication Time Control (S3 RTC), including whether S3 RTC is enabled and the time when all objects and operations on objects must be replicated. Must be specified together with a “Metrics“ block. A container specifying S3 Replication Time Control (S3 RTC) related information, including whether S3 RTC is enabled and the time when all objects and operations on objects must be replicated. Must be specified together with a “Metrics“ block.
-func (o ReplicationDestinationResponseV1Output) ReplicationTime() ReplicationTimeResponsePtrOutput {
-	return o.ApplyT(func(v ReplicationDestinationResponseV1) *ReplicationTimeResponse { return v.ReplicationTime }).(ReplicationTimeResponsePtrOutput)
+func (o ReplicationDestinationS3BucketResponseOutput) ReplicationTime() ReplicationTimeResponsePtrOutput {
+	return o.ApplyT(func(v ReplicationDestinationS3BucketResponse) *ReplicationTimeResponse { return v.ReplicationTime }).(ReplicationTimeResponsePtrOutput)
 }
 
 // The storage class to use when replicating objects, such as S3 Standard or reduced redundancy. By default, Amazon S3 uses the storage class of the source object to create the object replica.  For valid values, see the “StorageClass“ element of the [PUT Bucket replication](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTreplication.html) action in the *Amazon S3 API Reference*.
-func (o ReplicationDestinationResponseV1Output) StorageClass() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ReplicationDestinationResponseV1) *string { return v.StorageClass }).(pulumi.StringPtrOutput)
+func (o ReplicationDestinationS3BucketResponseOutput) StorageClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ReplicationDestinationS3BucketResponse) *string { return v.StorageClass }).(pulumi.StringPtrOutput)
 }
 
-type ReplicationDestinationResponseV1PtrOutput struct{ *pulumi.OutputState }
+type ReplicationDestinationS3BucketResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (ReplicationDestinationResponseV1PtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ReplicationDestinationResponseV1)(nil)).Elem()
+func (ReplicationDestinationS3BucketResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReplicationDestinationS3BucketResponse)(nil)).Elem()
 }
 
-func (o ReplicationDestinationResponseV1PtrOutput) ToReplicationDestinationResponseV1PtrOutput() ReplicationDestinationResponseV1PtrOutput {
+func (o ReplicationDestinationS3BucketResponsePtrOutput) ToReplicationDestinationS3BucketResponsePtrOutput() ReplicationDestinationS3BucketResponsePtrOutput {
 	return o
 }
 
-func (o ReplicationDestinationResponseV1PtrOutput) ToReplicationDestinationResponseV1PtrOutputWithContext(ctx context.Context) ReplicationDestinationResponseV1PtrOutput {
+func (o ReplicationDestinationS3BucketResponsePtrOutput) ToReplicationDestinationS3BucketResponsePtrOutputWithContext(ctx context.Context) ReplicationDestinationS3BucketResponsePtrOutput {
 	return o
 }
 
-func (o ReplicationDestinationResponseV1PtrOutput) Elem() ReplicationDestinationResponseV1Output {
-	return o.ApplyT(func(v *ReplicationDestinationResponseV1) ReplicationDestinationResponseV1 {
+func (o ReplicationDestinationS3BucketResponsePtrOutput) Elem() ReplicationDestinationS3BucketResponseOutput {
+	return o.ApplyT(func(v *ReplicationDestinationS3BucketResponse) ReplicationDestinationS3BucketResponse {
 		if v != nil {
 			return *v
 		}
-		var ret ReplicationDestinationResponseV1
+		var ret ReplicationDestinationS3BucketResponse
 		return ret
-	}).(ReplicationDestinationResponseV1Output)
+	}).(ReplicationDestinationS3BucketResponseOutput)
 }
 
 // Specify this only in a cross-account scenario (where source and destination bucket owners are not the same), and you want to change replica ownership to the AWS-account that owns the destination bucket. If this is not specified in the replication configuration, the replicas are owned by same AWS-account that owns the source object. Specify this only in a cross-account scenario (where source and destination bucket owners are not the same), and you want to change replica ownership to the AWS-account that owns the destination bucket. If this is not specified in the replication configuration, the replicas are owned by same AWS-account that owns the source object.
-func (o ReplicationDestinationResponseV1PtrOutput) AccessControlTranslation() AccessControlTranslationResponsePtrOutput {
-	return o.ApplyT(func(v *ReplicationDestinationResponseV1) *AccessControlTranslationResponse {
+func (o ReplicationDestinationS3BucketResponsePtrOutput) AccessControlTranslation() AccessControlTranslationResponsePtrOutput {
+	return o.ApplyT(func(v *ReplicationDestinationS3BucketResponse) *AccessControlTranslationResponse {
 		if v == nil {
 			return nil
 		}
@@ -40633,8 +40995,8 @@ func (o ReplicationDestinationResponseV1PtrOutput) AccessControlTranslation() Ac
 }
 
 // Destination bucket owner account ID. In a cross-account scenario, if you direct Amazon S3 to change replica ownership to the AWS-account that owns the destination bucket by specifying the “AccessControlTranslation“ property, this is the account ID of the destination bucket owner. For more information, see [Cross-Region Replication Additional Configuration: Change Replica Owner](https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html) in the *Amazon S3 User Guide*. If you specify the “AccessControlTranslation“ property, the “Account“ property is required.
-func (o ReplicationDestinationResponseV1PtrOutput) Account() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ReplicationDestinationResponseV1) *string {
+func (o ReplicationDestinationS3BucketResponsePtrOutput) Account() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationDestinationS3BucketResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -40643,8 +41005,8 @@ func (o ReplicationDestinationResponseV1PtrOutput) Account() pulumi.StringPtrOut
 }
 
 // The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store the results.
-func (o ReplicationDestinationResponseV1PtrOutput) Bucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ReplicationDestinationResponseV1) *string {
+func (o ReplicationDestinationS3BucketResponsePtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationDestinationS3BucketResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -40653,18 +41015,18 @@ func (o ReplicationDestinationResponseV1PtrOutput) Bucket() pulumi.StringPtrOutp
 }
 
 // Specifies encryption-related information. Specifies encryption-related information for an Amazon S3 bucket that is a destination for replicated objects.
-func (o ReplicationDestinationResponseV1PtrOutput) EncryptionConfiguration() EncryptionConfigurationResponseV1PtrOutput {
-	return o.ApplyT(func(v *ReplicationDestinationResponseV1) *EncryptionConfigurationResponseV1 {
+func (o ReplicationDestinationS3BucketResponsePtrOutput) EncryptionConfiguration() EncryptionConfigurationS3BucketResponsePtrOutput {
+	return o.ApplyT(func(v *ReplicationDestinationS3BucketResponse) *EncryptionConfigurationS3BucketResponse {
 		if v == nil {
 			return nil
 		}
 		return v.EncryptionConfiguration
-	}).(EncryptionConfigurationResponseV1PtrOutput)
+	}).(EncryptionConfigurationS3BucketResponsePtrOutput)
 }
 
 // A container specifying replication metrics-related settings enabling replication metrics and events. A container specifying replication metrics-related settings enabling replication metrics and events.
-func (o ReplicationDestinationResponseV1PtrOutput) Metrics() MetricsResponsePtrOutput {
-	return o.ApplyT(func(v *ReplicationDestinationResponseV1) *MetricsResponse {
+func (o ReplicationDestinationS3BucketResponsePtrOutput) Metrics() MetricsResponsePtrOutput {
+	return o.ApplyT(func(v *ReplicationDestinationS3BucketResponse) *MetricsResponse {
 		if v == nil {
 			return nil
 		}
@@ -40673,8 +41035,8 @@ func (o ReplicationDestinationResponseV1PtrOutput) Metrics() MetricsResponsePtrO
 }
 
 // A container specifying S3 Replication Time Control (S3 RTC), including whether S3 RTC is enabled and the time when all objects and operations on objects must be replicated. Must be specified together with a “Metrics“ block. A container specifying S3 Replication Time Control (S3 RTC) related information, including whether S3 RTC is enabled and the time when all objects and operations on objects must be replicated. Must be specified together with a “Metrics“ block.
-func (o ReplicationDestinationResponseV1PtrOutput) ReplicationTime() ReplicationTimeResponsePtrOutput {
-	return o.ApplyT(func(v *ReplicationDestinationResponseV1) *ReplicationTimeResponse {
+func (o ReplicationDestinationS3BucketResponsePtrOutput) ReplicationTime() ReplicationTimeResponsePtrOutput {
+	return o.ApplyT(func(v *ReplicationDestinationS3BucketResponse) *ReplicationTimeResponse {
 		if v == nil {
 			return nil
 		}
@@ -40683,8 +41045,8 @@ func (o ReplicationDestinationResponseV1PtrOutput) ReplicationTime() Replication
 }
 
 // The storage class to use when replicating objects, such as S3 Standard or reduced redundancy. By default, Amazon S3 uses the storage class of the source object to create the object replica.  For valid values, see the “StorageClass“ element of the [PUT Bucket replication](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTreplication.html) action in the *Amazon S3 API Reference*.
-func (o ReplicationDestinationResponseV1PtrOutput) StorageClass() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ReplicationDestinationResponseV1) *string {
+func (o ReplicationDestinationS3BucketResponsePtrOutput) StorageClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ReplicationDestinationS3BucketResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -41712,7 +42074,7 @@ type ReplicationRuleResponse struct {
 	// Specifies whether Amazon S3 replicates delete markers. If you specify a ``Filter`` in your replication configuration, you must also include a ``DeleteMarkerReplication`` element. If your ``Filter`` includes a ``Tag`` element, the ``DeleteMarkerReplication`` ``Status`` must be set to Disabled, because Amazon S3 does not support replicating delete markers for tag-based rules. For an example configuration, see [Basic Rule Configuration](https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-config-min-rule-config).  For more information about delete marker replication, see [Basic Rule Configuration](https://docs.aws.amazon.com/AmazonS3/latest/dev/delete-marker-replication.html).   If you are using an earlier version of the replication configuration, Amazon S3 handles replication of delete markers differently. For more information, see [Backward Compatibility](https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-backward-compat-considerations). Specifies whether Amazon S3 replicates delete markers. If you specify a ``Filter`` in your replication configuration, you must also include a ``DeleteMarkerReplication`` element. If your ``Filter`` includes a ``Tag`` element, the ``DeleteMarkerReplication`` ``Status`` must be set to Disabled, because Amazon S3 does not support replicating delete markers for tag-based rules. For an example configuration, see [Basic Rule Configuration](https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-config-min-rule-config).  For more information about delete marker replication, see [Basic Rule Configuration](https://docs.aws.amazon.com/AmazonS3/latest/dev/delete-marker-replication.html).   If you are using an earlier version of the replication configuration, Amazon S3 handles replication of delete markers differently. For more information, see [Backward Compatibility](https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-backward-compat-considerations).
 	DeleteMarkerReplication *DeleteMarkerReplicationResponse `pulumi:"deleteMarkerReplication"`
 	// A container for information about the replication destination and its configurations including enabling the S3 Replication Time Control (S3 RTC). A container for information about the replication destination and its configurations including enabling the S3 Replication Time Control (S3 RTC).
-	Destination *ReplicationDestinationResponseV1 `pulumi:"destination"`
+	Destination *ReplicationDestinationS3BucketResponse `pulumi:"destination"`
 	// A filter that identifies the subset of objects to which the replication rule applies. A ``Filter`` must specify exactly one ``Prefix``, ``TagFilter``, or an ``And`` child element. The use of the filter field indicates that this is a V2 replication configuration. This field isn't supported in a V1 replication configuration.  V1 replication configuration only supports filtering by key prefix. To filter using a V1 replication configuration, add the ``Prefix`` directly as a child element of the ``Rule`` element. A filter that identifies the subset of objects to which the replication rule applies. A ``Filter`` must specify exactly one ``Prefix``, ``TagFilter``, or an ``And`` child element.
 	Filter *ReplicationRuleFilterResponse `pulumi:"filter"`
 	// A unique identifier for the rule. The maximum value is 255 characters. If you don't specify a value, AWS CloudFormation generates a random ID. When using a V2 replication configuration this property is capitalized as 'ID'.
@@ -41748,8 +42110,8 @@ func (o ReplicationRuleResponseOutput) DeleteMarkerReplication() DeleteMarkerRep
 }
 
 // A container for information about the replication destination and its configurations including enabling the S3 Replication Time Control (S3 RTC). A container for information about the replication destination and its configurations including enabling the S3 Replication Time Control (S3 RTC).
-func (o ReplicationRuleResponseOutput) Destination() ReplicationDestinationResponseV1PtrOutput {
-	return o.ApplyT(func(v ReplicationRuleResponse) *ReplicationDestinationResponseV1 { return v.Destination }).(ReplicationDestinationResponseV1PtrOutput)
+func (o ReplicationRuleResponseOutput) Destination() ReplicationDestinationS3BucketResponsePtrOutput {
+	return o.ApplyT(func(v ReplicationRuleResponse) *ReplicationDestinationS3BucketResponse { return v.Destination }).(ReplicationDestinationS3BucketResponsePtrOutput)
 }
 
 // A filter that identifies the subset of objects to which the replication rule applies. A “Filter“ must specify exactly one “Prefix“, “TagFilter“, or an “And“ child element. The use of the filter field indicates that this is a V2 replication configuration. This field isn't supported in a V1 replication configuration.  V1 replication configuration only supports filtering by key prefix. To filter using a V1 replication configuration, add the “Prefix“ directly as a child element of the “Rule“ element. A filter that identifies the subset of objects to which the replication rule applies. A “Filter“ must specify exactly one “Prefix“, “TagFilter“, or an “And“ child element.
@@ -61463,10 +61825,12 @@ func (o SnapStartPtrOutput) ApplyOn() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Definition of SnapStart
+// Definition of SnapStartResponse
 type SnapStartResponse struct {
-	// Set ``ApplyOn`` to ``PublishedVersions`` to create a snapshot of the initialized execution environment when you publish a function version.
+	// When set to ``PublishedVersions``, Lambda creates a snapshot of the execution environment when you publish a function version.
 	ApplyOn *string `pulumi:"applyOn"`
+	// When you provide a [qualified Amazon Resource Name (ARN)](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html#versioning-versions-using), this response element indicates whether SnapStart is activated for the specified function version.
+	OptimizationStatus *string `pulumi:"optimizationStatus"`
 }
 
 // SnapStartResponseInput is an input type that accepts SnapStartResponseArgs and SnapStartResponseOutput values.
@@ -61480,10 +61844,12 @@ type SnapStartResponseInput interface {
 	ToSnapStartResponseOutputWithContext(context.Context) SnapStartResponseOutput
 }
 
-// Definition of SnapStart
+// Definition of SnapStartResponse
 type SnapStartResponseArgs struct {
-	// Set ``ApplyOn`` to ``PublishedVersions`` to create a snapshot of the initialized execution environment when you publish a function version.
+	// When set to ``PublishedVersions``, Lambda creates a snapshot of the execution environment when you publish a function version.
 	ApplyOn pulumi.StringPtrInput `pulumi:"applyOn"`
+	// When you provide a [qualified Amazon Resource Name (ARN)](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html#versioning-versions-using), this response element indicates whether SnapStart is activated for the specified function version.
+	OptimizationStatus pulumi.StringPtrInput `pulumi:"optimizationStatus"`
 }
 
 func (SnapStartResponseArgs) ElementType() reflect.Type {
@@ -61539,7 +61905,7 @@ func (i *snapStartResponsePtrType) ToSnapStartResponsePtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(SnapStartResponsePtrOutput)
 }
 
-// Definition of SnapStart
+// Definition of SnapStartResponse
 type SnapStartResponseOutput struct{ *pulumi.OutputState }
 
 func (SnapStartResponseOutput) ElementType() reflect.Type {
@@ -61564,9 +61930,14 @@ func (o SnapStartResponseOutput) ToSnapStartResponsePtrOutputWithContext(ctx con
 	}).(SnapStartResponsePtrOutput)
 }
 
-// Set “ApplyOn“ to “PublishedVersions“ to create a snapshot of the initialized execution environment when you publish a function version.
+// When set to “PublishedVersions“, Lambda creates a snapshot of the execution environment when you publish a function version.
 func (o SnapStartResponseOutput) ApplyOn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SnapStartResponse) *string { return v.ApplyOn }).(pulumi.StringPtrOutput)
+}
+
+// When you provide a [qualified Amazon Resource Name (ARN)](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html#versioning-versions-using), this response element indicates whether SnapStart is activated for the specified function version.
+func (o SnapStartResponseOutput) OptimizationStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SnapStartResponse) *string { return v.OptimizationStatus }).(pulumi.StringPtrOutput)
 }
 
 type SnapStartResponsePtrOutput struct{ *pulumi.OutputState }
@@ -61593,13 +61964,23 @@ func (o SnapStartResponsePtrOutput) Elem() SnapStartResponseOutput {
 	}).(SnapStartResponseOutput)
 }
 
-// Set “ApplyOn“ to “PublishedVersions“ to create a snapshot of the initialized execution environment when you publish a function version.
+// When set to “PublishedVersions“, Lambda creates a snapshot of the execution environment when you publish a function version.
 func (o SnapStartResponsePtrOutput) ApplyOn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SnapStartResponse) *string {
 		if v == nil {
 			return nil
 		}
 		return v.ApplyOn
+	}).(pulumi.StringPtrOutput)
+}
+
+// When you provide a [qualified Amazon Resource Name (ARN)](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html#versioning-versions-using), this response element indicates whether SnapStart is activated for the specified function version.
+func (o SnapStartResponsePtrOutput) OptimizationStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SnapStartResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OptimizationStatus
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -62932,443 +63313,13 @@ func (o SoftwareUpdateOptionsPtrOutput) AutoSoftwareUpdateEnabled() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Definition of SoftwareUpdateOptions
-type SoftwareUpdateOptionsResponse struct {
-	// <p>Whether automatic service software updates are enabled for the domain.</p>
-	AutoSoftwareUpdateEnabled *bool `pulumi:"autoSoftwareUpdateEnabled"`
-}
-
-// Definition of SoftwareUpdateOptions
-type SoftwareUpdateOptionsResponseOutput struct{ *pulumi.OutputState }
-
-func (SoftwareUpdateOptionsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SoftwareUpdateOptionsResponse)(nil)).Elem()
-}
-
-func (o SoftwareUpdateOptionsResponseOutput) ToSoftwareUpdateOptionsResponseOutput() SoftwareUpdateOptionsResponseOutput {
-	return o
-}
-
-func (o SoftwareUpdateOptionsResponseOutput) ToSoftwareUpdateOptionsResponseOutputWithContext(ctx context.Context) SoftwareUpdateOptionsResponseOutput {
-	return o
-}
-
-// <p>Whether automatic service software updates are enabled for the domain.</p>
-func (o SoftwareUpdateOptionsResponseOutput) AutoSoftwareUpdateEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SoftwareUpdateOptionsResponse) *bool { return v.AutoSoftwareUpdateEnabled }).(pulumi.BoolPtrOutput)
-}
-
-type SoftwareUpdateOptionsResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SoftwareUpdateOptionsResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SoftwareUpdateOptionsResponse)(nil)).Elem()
-}
-
-func (o SoftwareUpdateOptionsResponsePtrOutput) ToSoftwareUpdateOptionsResponsePtrOutput() SoftwareUpdateOptionsResponsePtrOutput {
-	return o
-}
-
-func (o SoftwareUpdateOptionsResponsePtrOutput) ToSoftwareUpdateOptionsResponsePtrOutputWithContext(ctx context.Context) SoftwareUpdateOptionsResponsePtrOutput {
-	return o
-}
-
-func (o SoftwareUpdateOptionsResponsePtrOutput) Elem() SoftwareUpdateOptionsResponseOutput {
-	return o.ApplyT(func(v *SoftwareUpdateOptionsResponse) SoftwareUpdateOptionsResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SoftwareUpdateOptionsResponse
-		return ret
-	}).(SoftwareUpdateOptionsResponseOutput)
-}
-
-// <p>Whether automatic service software updates are enabled for the domain.</p>
-func (o SoftwareUpdateOptionsResponsePtrOutput) AutoSoftwareUpdateEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SoftwareUpdateOptionsResponse) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.AutoSoftwareUpdateEnabled
-	}).(pulumi.BoolPtrOutput)
-}
-
-// Definition of SourceAuth
-type SourceAuth struct {
-	// <p>The resource value that applies to the specified authorization type.</p>
-	Resource *string `pulumi:"resource"`
-	// <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
-	Type *SourceAuthTypeEnumValue `pulumi:"type"`
-}
-
-// SourceAuthInput is an input type that accepts SourceAuthArgs and SourceAuthOutput values.
-// You can construct a concrete instance of `SourceAuthInput` via:
-//
-//	SourceAuthArgs{...}
-type SourceAuthInput interface {
-	pulumi.Input
-
-	ToSourceAuthOutput() SourceAuthOutput
-	ToSourceAuthOutputWithContext(context.Context) SourceAuthOutput
-}
-
-// Definition of SourceAuth
-type SourceAuthArgs struct {
-	// <p>The resource value that applies to the specified authorization type.</p>
-	Resource pulumi.StringPtrInput `pulumi:"resource"`
-	// <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
-	Type SourceAuthTypeEnumValuePtrInput `pulumi:"type"`
-}
-
-func (SourceAuthArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceAuth)(nil)).Elem()
-}
-
-func (i SourceAuthArgs) ToSourceAuthOutput() SourceAuthOutput {
-	return i.ToSourceAuthOutputWithContext(context.Background())
-}
-
-func (i SourceAuthArgs) ToSourceAuthOutputWithContext(ctx context.Context) SourceAuthOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceAuthOutput)
-}
-
-func (i SourceAuthArgs) ToSourceAuthPtrOutput() SourceAuthPtrOutput {
-	return i.ToSourceAuthPtrOutputWithContext(context.Background())
-}
-
-func (i SourceAuthArgs) ToSourceAuthPtrOutputWithContext(ctx context.Context) SourceAuthPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceAuthOutput).ToSourceAuthPtrOutputWithContext(ctx)
-}
-
-// SourceAuthPtrInput is an input type that accepts SourceAuthArgs, SourceAuthPtr and SourceAuthPtrOutput values.
-// You can construct a concrete instance of `SourceAuthPtrInput` via:
-//
-//	        SourceAuthArgs{...}
-//
-//	or:
-//
-//	        nil
-type SourceAuthPtrInput interface {
-	pulumi.Input
-
-	ToSourceAuthPtrOutput() SourceAuthPtrOutput
-	ToSourceAuthPtrOutputWithContext(context.Context) SourceAuthPtrOutput
-}
-
-type sourceAuthPtrType SourceAuthArgs
-
-func SourceAuthPtr(v *SourceAuthArgs) SourceAuthPtrInput {
-	return (*sourceAuthPtrType)(v)
-}
-
-func (*sourceAuthPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SourceAuth)(nil)).Elem()
-}
-
-func (i *sourceAuthPtrType) ToSourceAuthPtrOutput() SourceAuthPtrOutput {
-	return i.ToSourceAuthPtrOutputWithContext(context.Background())
-}
-
-func (i *sourceAuthPtrType) ToSourceAuthPtrOutputWithContext(ctx context.Context) SourceAuthPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceAuthPtrOutput)
-}
-
-// Definition of SourceAuth
-type SourceAuthOutput struct{ *pulumi.OutputState }
-
-func (SourceAuthOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceAuth)(nil)).Elem()
-}
-
-func (o SourceAuthOutput) ToSourceAuthOutput() SourceAuthOutput {
-	return o
-}
-
-func (o SourceAuthOutput) ToSourceAuthOutputWithContext(ctx context.Context) SourceAuthOutput {
-	return o
-}
-
-func (o SourceAuthOutput) ToSourceAuthPtrOutput() SourceAuthPtrOutput {
-	return o.ToSourceAuthPtrOutputWithContext(context.Background())
-}
-
-func (o SourceAuthOutput) ToSourceAuthPtrOutputWithContext(ctx context.Context) SourceAuthPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceAuth) *SourceAuth {
-		return &v
-	}).(SourceAuthPtrOutput)
-}
-
-// <p>The resource value that applies to the specified authorization type.</p>
-func (o SourceAuthOutput) Resource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SourceAuth) *string { return v.Resource }).(pulumi.StringPtrOutput)
-}
-
-// <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
-func (o SourceAuthOutput) Type() SourceAuthTypeEnumValuePtrOutput {
-	return o.ApplyT(func(v SourceAuth) *SourceAuthTypeEnumValue { return v.Type }).(SourceAuthTypeEnumValuePtrOutput)
-}
-
-type SourceAuthPtrOutput struct{ *pulumi.OutputState }
-
-func (SourceAuthPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SourceAuth)(nil)).Elem()
-}
-
-func (o SourceAuthPtrOutput) ToSourceAuthPtrOutput() SourceAuthPtrOutput {
-	return o
-}
-
-func (o SourceAuthPtrOutput) ToSourceAuthPtrOutputWithContext(ctx context.Context) SourceAuthPtrOutput {
-	return o
-}
-
-func (o SourceAuthPtrOutput) Elem() SourceAuthOutput {
-	return o.ApplyT(func(v *SourceAuth) SourceAuth {
-		if v != nil {
-			return *v
-		}
-		var ret SourceAuth
-		return ret
-	}).(SourceAuthOutput)
-}
-
-// <p>The resource value that applies to the specified authorization type.</p>
-func (o SourceAuthPtrOutput) Resource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SourceAuth) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Resource
-	}).(pulumi.StringPtrOutput)
-}
-
-// <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
-func (o SourceAuthPtrOutput) Type() SourceAuthTypeEnumValuePtrOutput {
-	return o.ApplyT(func(v *SourceAuth) *SourceAuthTypeEnumValue {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(SourceAuthTypeEnumValuePtrOutput)
-}
-
-// Definition of SourceAuth
-type SourceAuthResponse struct {
-	// <p>The resource value that applies to the specified authorization type.</p>
-	Resource *string `pulumi:"resource"`
-	// <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
-	Type *SourceAuthTypeEnumValueResponse `pulumi:"type"`
-}
-
-// Definition of SourceAuth
-type SourceAuthResponseOutput struct{ *pulumi.OutputState }
-
-func (SourceAuthResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceAuthResponse)(nil)).Elem()
-}
-
-func (o SourceAuthResponseOutput) ToSourceAuthResponseOutput() SourceAuthResponseOutput {
-	return o
-}
-
-func (o SourceAuthResponseOutput) ToSourceAuthResponseOutputWithContext(ctx context.Context) SourceAuthResponseOutput {
-	return o
-}
-
-// <p>The resource value that applies to the specified authorization type.</p>
-func (o SourceAuthResponseOutput) Resource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SourceAuthResponse) *string { return v.Resource }).(pulumi.StringPtrOutput)
-}
-
-// <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
-func (o SourceAuthResponseOutput) Type() SourceAuthTypeEnumValueResponsePtrOutput {
-	return o.ApplyT(func(v SourceAuthResponse) *SourceAuthTypeEnumValueResponse { return v.Type }).(SourceAuthTypeEnumValueResponsePtrOutput)
-}
-
-type SourceAuthResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (SourceAuthResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SourceAuthResponse)(nil)).Elem()
-}
-
-func (o SourceAuthResponsePtrOutput) ToSourceAuthResponsePtrOutput() SourceAuthResponsePtrOutput {
-	return o
-}
-
-func (o SourceAuthResponsePtrOutput) ToSourceAuthResponsePtrOutputWithContext(ctx context.Context) SourceAuthResponsePtrOutput {
-	return o
-}
-
-func (o SourceAuthResponsePtrOutput) Elem() SourceAuthResponseOutput {
-	return o.ApplyT(func(v *SourceAuthResponse) SourceAuthResponse {
-		if v != nil {
-			return *v
-		}
-		var ret SourceAuthResponse
-		return ret
-	}).(SourceAuthResponseOutput)
-}
-
-// <p>The resource value that applies to the specified authorization type.</p>
-func (o SourceAuthResponsePtrOutput) Resource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SourceAuthResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Resource
-	}).(pulumi.StringPtrOutput)
-}
-
-// <p>The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.</p>
-func (o SourceAuthResponsePtrOutput) Type() SourceAuthTypeEnumValueResponsePtrOutput {
-	return o.ApplyT(func(v *SourceAuthResponse) *SourceAuthTypeEnumValueResponse {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(SourceAuthTypeEnumValueResponsePtrOutput)
-}
-
-// Definition of SourceAuthTypeEnumValue
-type SourceAuthTypeEnumValue struct {
-	// Property value
-	Value *string `pulumi:"value"`
-}
-
-// SourceAuthTypeEnumValueInput is an input type that accepts SourceAuthTypeEnumValueArgs and SourceAuthTypeEnumValueOutput values.
-// You can construct a concrete instance of `SourceAuthTypeEnumValueInput` via:
-//
-//	SourceAuthTypeEnumValueArgs{...}
-type SourceAuthTypeEnumValueInput interface {
-	pulumi.Input
-
-	ToSourceAuthTypeEnumValueOutput() SourceAuthTypeEnumValueOutput
-	ToSourceAuthTypeEnumValueOutputWithContext(context.Context) SourceAuthTypeEnumValueOutput
-}
-
-// Definition of SourceAuthTypeEnumValue
-type SourceAuthTypeEnumValueArgs struct {
-	// Property value
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (SourceAuthTypeEnumValueArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceAuthTypeEnumValue)(nil)).Elem()
-}
-
-func (i SourceAuthTypeEnumValueArgs) ToSourceAuthTypeEnumValueOutput() SourceAuthTypeEnumValueOutput {
-	return i.ToSourceAuthTypeEnumValueOutputWithContext(context.Background())
-}
-
-func (i SourceAuthTypeEnumValueArgs) ToSourceAuthTypeEnumValueOutputWithContext(ctx context.Context) SourceAuthTypeEnumValueOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceAuthTypeEnumValueOutput)
-}
-
-func (i SourceAuthTypeEnumValueArgs) ToSourceAuthTypeEnumValuePtrOutput() SourceAuthTypeEnumValuePtrOutput {
-	return i.ToSourceAuthTypeEnumValuePtrOutputWithContext(context.Background())
-}
-
-func (i SourceAuthTypeEnumValueArgs) ToSourceAuthTypeEnumValuePtrOutputWithContext(ctx context.Context) SourceAuthTypeEnumValuePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceAuthTypeEnumValueOutput).ToSourceAuthTypeEnumValuePtrOutputWithContext(ctx)
-}
-
-// SourceAuthTypeEnumValuePtrInput is an input type that accepts SourceAuthTypeEnumValueArgs, SourceAuthTypeEnumValuePtr and SourceAuthTypeEnumValuePtrOutput values.
-// You can construct a concrete instance of `SourceAuthTypeEnumValuePtrInput` via:
-//
-//	        SourceAuthTypeEnumValueArgs{...}
-//
-//	or:
-//
-//	        nil
-type SourceAuthTypeEnumValuePtrInput interface {
-	pulumi.Input
-
-	ToSourceAuthTypeEnumValuePtrOutput() SourceAuthTypeEnumValuePtrOutput
-	ToSourceAuthTypeEnumValuePtrOutputWithContext(context.Context) SourceAuthTypeEnumValuePtrOutput
-}
-
-type sourceAuthTypeEnumValuePtrType SourceAuthTypeEnumValueArgs
-
-func SourceAuthTypeEnumValuePtr(v *SourceAuthTypeEnumValueArgs) SourceAuthTypeEnumValuePtrInput {
-	return (*sourceAuthTypeEnumValuePtrType)(v)
-}
-
-func (*sourceAuthTypeEnumValuePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**SourceAuthTypeEnumValue)(nil)).Elem()
-}
-
-func (i *sourceAuthTypeEnumValuePtrType) ToSourceAuthTypeEnumValuePtrOutput() SourceAuthTypeEnumValuePtrOutput {
-	return i.ToSourceAuthTypeEnumValuePtrOutputWithContext(context.Background())
-}
-
-func (i *sourceAuthTypeEnumValuePtrType) ToSourceAuthTypeEnumValuePtrOutputWithContext(ctx context.Context) SourceAuthTypeEnumValuePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SourceAuthTypeEnumValuePtrOutput)
-}
-
-// Definition of SourceAuthTypeEnumValue
-type SourceAuthTypeEnumValueOutput struct{ *pulumi.OutputState }
-
-func (SourceAuthTypeEnumValueOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceAuthTypeEnumValue)(nil)).Elem()
-}
-
-func (o SourceAuthTypeEnumValueOutput) ToSourceAuthTypeEnumValueOutput() SourceAuthTypeEnumValueOutput {
-	return o
-}
-
-func (o SourceAuthTypeEnumValueOutput) ToSourceAuthTypeEnumValueOutputWithContext(ctx context.Context) SourceAuthTypeEnumValueOutput {
-	return o
-}
-
-func (o SourceAuthTypeEnumValueOutput) ToSourceAuthTypeEnumValuePtrOutput() SourceAuthTypeEnumValuePtrOutput {
-	return o.ToSourceAuthTypeEnumValuePtrOutputWithContext(context.Background())
-}
-
-func (o SourceAuthTypeEnumValueOutput) ToSourceAuthTypeEnumValuePtrOutputWithContext(ctx context.Context) SourceAuthTypeEnumValuePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceAuthTypeEnumValue) *SourceAuthTypeEnumValue {
-		return &v
-	}).(SourceAuthTypeEnumValuePtrOutput)
-}
-
-// Property value
-func (o SourceAuthTypeEnumValueOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SourceAuthTypeEnumValue) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type SourceAuthTypeEnumValuePtrOutput struct{ *pulumi.OutputState }
-
-func (SourceAuthTypeEnumValuePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**SourceAuthTypeEnumValue)(nil)).Elem()
-}
-
-func (o SourceAuthTypeEnumValuePtrOutput) ToSourceAuthTypeEnumValuePtrOutput() SourceAuthTypeEnumValuePtrOutput {
-	return o
-}
-
-func (o SourceAuthTypeEnumValuePtrOutput) ToSourceAuthTypeEnumValuePtrOutputWithContext(ctx context.Context) SourceAuthTypeEnumValuePtrOutput {
-	return o
-}
-
-func (o SourceAuthTypeEnumValuePtrOutput) Elem() SourceAuthTypeEnumValueOutput {
-	return o.ApplyT(func(v *SourceAuthTypeEnumValue) SourceAuthTypeEnumValue {
-		if v != nil {
-			return *v
-		}
-		var ret SourceAuthTypeEnumValue
-		return ret
-	}).(SourceAuthTypeEnumValueOutput)
-}
-
-// Property value
-func (o SourceAuthTypeEnumValuePtrOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SourceAuthTypeEnumValue) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Value
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
+	pulumi.RegisterOutputType(LocalSecondaryIndexResponseOutput{})
+	pulumi.RegisterOutputType(LocalSecondaryIndexResponseArrayOutput{})
+	pulumi.RegisterOutputType(LocationOutput{})
+	pulumi.RegisterOutputType(LocationPtrOutput{})
+	pulumi.RegisterOutputType(LocationResponseOutput{})
+	pulumi.RegisterOutputType(LocationResponsePtrOutput{})
 	pulumi.RegisterOutputType(LogConfigOutput{})
 	pulumi.RegisterOutputType(LogConfigPtrOutput{})
 	pulumi.RegisterOutputType(LogConfigResponseOutput{})
@@ -63392,12 +63343,14 @@ func init() {
 	pulumi.RegisterOutputType(LoggingConfigArrayOutput{})
 	pulumi.RegisterOutputType(LoggingConfigResponseOutput{})
 	pulumi.RegisterOutputType(LoggingConfigResponsePtrOutput{})
-	pulumi.RegisterOutputType(LoggingConfigResponseV1Output{})
-	pulumi.RegisterOutputType(LoggingConfigResponseV1ArrayOutput{})
+	pulumi.RegisterOutputType(LoggingConfigSnsTopicResponseOutput{})
+	pulumi.RegisterOutputType(LoggingConfigSnsTopicResponseArrayOutput{})
 	pulumi.RegisterOutputType(LoggingConfigurationOutput{})
 	pulumi.RegisterOutputType(LoggingConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(LoggingConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(LoggingConfigurationResponsePtrOutput{})
+	pulumi.RegisterOutputType(LoggingEksClusterResponseOutput{})
+	pulumi.RegisterOutputType(LoggingEksClusterResponsePtrOutput{})
 	pulumi.RegisterOutputType(LoggingFilterModelPropertiesOutput{})
 	pulumi.RegisterOutputType(LoggingFilterModelPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(LoggingFilterModelPropertiesResponseOutput{})
@@ -63408,8 +63361,6 @@ func init() {
 	pulumi.RegisterOutputType(LoggingPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(LoggingResponseOutput{})
 	pulumi.RegisterOutputType(LoggingResponsePtrOutput{})
-	pulumi.RegisterOutputType(LoggingResponseV1Output{})
-	pulumi.RegisterOutputType(LoggingResponseV1PtrOutput{})
 	pulumi.RegisterOutputType(LogsConfigOutput{})
 	pulumi.RegisterOutputType(LogsConfigPtrOutput{})
 	pulumi.RegisterOutputType(LogsConfigResponseOutput{})
@@ -63700,10 +63651,10 @@ func init() {
 	pulumi.RegisterOutputType(ParameterGroupStatusPtrOutput{})
 	pulumi.RegisterOutputType(ParameterGroupStatusResponseOutput{})
 	pulumi.RegisterOutputType(ParameterGroupStatusResponsePtrOutput{})
+	pulumi.RegisterOutputType(ParameterRedshiftClusterParameterGroupResponseOutput{})
+	pulumi.RegisterOutputType(ParameterRedshiftClusterParameterGroupResponseArrayOutput{})
 	pulumi.RegisterOutputType(ParameterResponseOutput{})
 	pulumi.RegisterOutputType(ParameterResponseArrayOutput{})
-	pulumi.RegisterOutputType(ParameterResponseV1Output{})
-	pulumi.RegisterOutputType(ParameterResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(PartitionedPrefixOutput{})
 	pulumi.RegisterOutputType(PartitionedPrefixPtrOutput{})
 	pulumi.RegisterOutputType(PartitionedPrefixResponseOutput{})
@@ -63878,6 +63829,8 @@ func init() {
 	pulumi.RegisterOutputType(PublicAccessBlockConfigurationResponsePtrOutput{})
 	pulumi.RegisterOutputType(PublishMetricActionOutput{})
 	pulumi.RegisterOutputType(PublishMetricActionPtrOutput{})
+	pulumi.RegisterOutputType(PublishMetricActionNetworkFirewallRuleGroupResponseOutput{})
+	pulumi.RegisterOutputType(PublishMetricActionNetworkFirewallRuleGroupResponsePtrOutput{})
 	pulumi.RegisterOutputType(PublishMetricActionResponseOutput{})
 	pulumi.RegisterOutputType(PublishMetricActionResponsePtrOutput{})
 	pulumi.RegisterOutputType(QueryLoggingConfigOutput{})
@@ -63998,15 +63951,15 @@ func init() {
 	pulumi.RegisterOutputType(ReplicationConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(ReplicationConfigurationResponseOutput{})
 	pulumi.RegisterOutputType(ReplicationConfigurationResponsePtrOutput{})
-	pulumi.RegisterOutputType(ReplicationConfigurationResponseV1Output{})
-	pulumi.RegisterOutputType(ReplicationConfigurationResponseV1PtrOutput{})
+	pulumi.RegisterOutputType(ReplicationConfigurationS3BucketResponseOutput{})
+	pulumi.RegisterOutputType(ReplicationConfigurationS3BucketResponsePtrOutput{})
 	pulumi.RegisterOutputType(ReplicationDestinationOutput{})
 	pulumi.RegisterOutputType(ReplicationDestinationPtrOutput{})
 	pulumi.RegisterOutputType(ReplicationDestinationArrayOutput{})
 	pulumi.RegisterOutputType(ReplicationDestinationResponseOutput{})
 	pulumi.RegisterOutputType(ReplicationDestinationResponseArrayOutput{})
-	pulumi.RegisterOutputType(ReplicationDestinationResponseV1Output{})
-	pulumi.RegisterOutputType(ReplicationDestinationResponseV1PtrOutput{})
+	pulumi.RegisterOutputType(ReplicationDestinationS3BucketResponseOutput{})
+	pulumi.RegisterOutputType(ReplicationDestinationS3BucketResponsePtrOutput{})
 	pulumi.RegisterOutputType(ReplicationPendingModifiedValuesOutput{})
 	pulumi.RegisterOutputType(ReplicationPendingModifiedValuesPtrOutput{})
 	pulumi.RegisterOutputType(ReplicationPendingModifiedValuesResponseOutput{})
@@ -64335,12 +64288,4 @@ func init() {
 	pulumi.RegisterOutputType(SnsTopicPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(SoftwareUpdateOptionsOutput{})
 	pulumi.RegisterOutputType(SoftwareUpdateOptionsPtrOutput{})
-	pulumi.RegisterOutputType(SoftwareUpdateOptionsResponseOutput{})
-	pulumi.RegisterOutputType(SoftwareUpdateOptionsResponsePtrOutput{})
-	pulumi.RegisterOutputType(SourceAuthOutput{})
-	pulumi.RegisterOutputType(SourceAuthPtrOutput{})
-	pulumi.RegisterOutputType(SourceAuthResponseOutput{})
-	pulumi.RegisterOutputType(SourceAuthResponsePtrOutput{})
-	pulumi.RegisterOutputType(SourceAuthTypeEnumValueOutput{})
-	pulumi.RegisterOutputType(SourceAuthTypeEnumValuePtrOutput{})
 }

@@ -1962,39 +1962,6 @@ func (o AzureResourceManagerCommonTypesExtendedLocationOutput) Type() pulumi.Str
 	return o.ApplyT(func(v AzureResourceManagerCommonTypesExtendedLocation) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The complex type of the extended location.
-type AzureResourceManagerCommonTypesExtendedLocationResponse struct {
-	// The name of the extended location.
-	Name string `pulumi:"name"`
-	// The type of the extended location.
-	Type string `pulumi:"type"`
-}
-
-// The complex type of the extended location.
-type AzureResourceManagerCommonTypesExtendedLocationResponseOutput struct{ *pulumi.OutputState }
-
-func (AzureResourceManagerCommonTypesExtendedLocationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AzureResourceManagerCommonTypesExtendedLocationResponse)(nil)).Elem()
-}
-
-func (o AzureResourceManagerCommonTypesExtendedLocationResponseOutput) ToAzureResourceManagerCommonTypesExtendedLocationResponseOutput() AzureResourceManagerCommonTypesExtendedLocationResponseOutput {
-	return o
-}
-
-func (o AzureResourceManagerCommonTypesExtendedLocationResponseOutput) ToAzureResourceManagerCommonTypesExtendedLocationResponseOutputWithContext(ctx context.Context) AzureResourceManagerCommonTypesExtendedLocationResponseOutput {
-	return o
-}
-
-// The name of the extended location.
-func (o AzureResourceManagerCommonTypesExtendedLocationResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v AzureResourceManagerCommonTypesExtendedLocationResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The type of the extended location.
-func (o AzureResourceManagerCommonTypesExtendedLocationResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v AzureResourceManagerCommonTypesExtendedLocationResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
 type BareMetalMachineConfigurationData struct {
 	// The credentials of the baseboard management controller on this bare metal machine. The password field is expected to be an Azure Key Vault key URL. Until the cluster is converted to utilize managed identity by setting the secret archive settings, the actual password value should be provided instead.
 	BmcCredentials AdministrativeCredentials `pulumi:"bmcCredentials"`
@@ -11550,7 +11517,6 @@ func init() {
 	pulumi.RegisterOutputType(AvailableUpgradeResponseOutput{})
 	pulumi.RegisterOutputType(AvailableUpgradeResponseArrayOutput{})
 	pulumi.RegisterOutputType(AzureResourceManagerCommonTypesExtendedLocationOutput{})
-	pulumi.RegisterOutputType(AzureResourceManagerCommonTypesExtendedLocationResponseOutput{})
 	pulumi.RegisterOutputType(BareMetalMachineConfigurationDataOutput{})
 	pulumi.RegisterOutputType(BareMetalMachineConfigurationDataArrayOutput{})
 	pulumi.RegisterOutputType(BareMetalMachineConfigurationDataResponseOutput{})

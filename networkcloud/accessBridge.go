@@ -31,7 +31,7 @@ type AccessBridge struct {
 	// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The extended location of the resource. This property is required when creating the resource.
-	ExtendedLocation AzureResourceManagerCommonTypesExtendedLocationResponseOutput `pulumi:"extendedLocation"`
+	ExtendedLocation ExtendedLocationResponseOutput `pulumi:"extendedLocation"`
 	// The IPv4 subnet from which the access bridge allocates an address. This subnet must be part of the internal network specified by networkId.
 	Ipv4ConnectedPrefix pulumi.StringPtrOutput `pulumi:"ipv4ConnectedPrefix"`
 	// The IPv6 subnet from which the access bridge allocates an address. This subnet must be part of the internal network specified by networkId.
@@ -222,10 +222,8 @@ func (o AccessBridgeOutput) Etag() pulumi.StringOutput {
 }
 
 // The extended location of the resource. This property is required when creating the resource.
-func (o AccessBridgeOutput) ExtendedLocation() AzureResourceManagerCommonTypesExtendedLocationResponseOutput {
-	return o.ApplyT(func(v *AccessBridge) AzureResourceManagerCommonTypesExtendedLocationResponseOutput {
-		return v.ExtendedLocation
-	}).(AzureResourceManagerCommonTypesExtendedLocationResponseOutput)
+func (o AccessBridgeOutput) ExtendedLocation() ExtendedLocationResponseOutput {
+	return o.ApplyT(func(v *AccessBridge) ExtendedLocationResponseOutput { return v.ExtendedLocation }).(ExtendedLocationResponseOutput)
 }
 
 // The IPv4 subnet from which the access bridge allocates an address. This subnet must be part of the internal network specified by networkId.

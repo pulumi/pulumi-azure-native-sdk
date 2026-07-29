@@ -232,83 +232,6 @@ func (o AzureResourceManagerCommonTypesExtendedLocationPtrOutput) Type() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// The complex type of the extended location.
-type AzureResourceManagerCommonTypesExtendedLocationResponse struct {
-	// The name of the extended location.
-	Name string `pulumi:"name"`
-	// The type of the extended location.
-	Type string `pulumi:"type"`
-}
-
-// The complex type of the extended location.
-type AzureResourceManagerCommonTypesExtendedLocationResponseOutput struct{ *pulumi.OutputState }
-
-func (AzureResourceManagerCommonTypesExtendedLocationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AzureResourceManagerCommonTypesExtendedLocationResponse)(nil)).Elem()
-}
-
-func (o AzureResourceManagerCommonTypesExtendedLocationResponseOutput) ToAzureResourceManagerCommonTypesExtendedLocationResponseOutput() AzureResourceManagerCommonTypesExtendedLocationResponseOutput {
-	return o
-}
-
-func (o AzureResourceManagerCommonTypesExtendedLocationResponseOutput) ToAzureResourceManagerCommonTypesExtendedLocationResponseOutputWithContext(ctx context.Context) AzureResourceManagerCommonTypesExtendedLocationResponseOutput {
-	return o
-}
-
-// The name of the extended location.
-func (o AzureResourceManagerCommonTypesExtendedLocationResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v AzureResourceManagerCommonTypesExtendedLocationResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The type of the extended location.
-func (o AzureResourceManagerCommonTypesExtendedLocationResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v AzureResourceManagerCommonTypesExtendedLocationResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AzureResourceManagerCommonTypesExtendedLocationResponse)(nil)).Elem()
-}
-
-func (o AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput) ToAzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput() AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput {
-	return o
-}
-
-func (o AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput) ToAzureResourceManagerCommonTypesExtendedLocationResponsePtrOutputWithContext(ctx context.Context) AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput {
-	return o
-}
-
-func (o AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput) Elem() AzureResourceManagerCommonTypesExtendedLocationResponseOutput {
-	return o.ApplyT(func(v *AzureResourceManagerCommonTypesExtendedLocationResponse) AzureResourceManagerCommonTypesExtendedLocationResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AzureResourceManagerCommonTypesExtendedLocationResponse
-		return ret
-	}).(AzureResourceManagerCommonTypesExtendedLocationResponseOutput)
-}
-
-// The name of the extended location.
-func (o AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AzureResourceManagerCommonTypesExtendedLocationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Name
-	}).(pulumi.StringPtrOutput)
-}
-
-// The type of the extended location.
-func (o AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AzureResourceManagerCommonTypesExtendedLocationResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
 // Capability, to match in Solution Templates & Targets
 type Capability struct {
 	// Description of Capability
@@ -2539,6 +2462,83 @@ func (o ExecutionV2StatusResponseOutput) UpdateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExecutionV2StatusResponse) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
 }
 
+// The complex type of the extended location.
+type ExtendedLocationResponse struct {
+	// The name of the extended location.
+	Name string `pulumi:"name"`
+	// The type of the extended location.
+	Type string `pulumi:"type"`
+}
+
+// The complex type of the extended location.
+type ExtendedLocationResponseOutput struct{ *pulumi.OutputState }
+
+func (ExtendedLocationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtendedLocationResponse)(nil)).Elem()
+}
+
+func (o ExtendedLocationResponseOutput) ToExtendedLocationResponseOutput() ExtendedLocationResponseOutput {
+	return o
+}
+
+func (o ExtendedLocationResponseOutput) ToExtendedLocationResponseOutputWithContext(ctx context.Context) ExtendedLocationResponseOutput {
+	return o
+}
+
+// The name of the extended location.
+func (o ExtendedLocationResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ExtendedLocationResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The type of the extended location.
+func (o ExtendedLocationResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ExtendedLocationResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ExtendedLocationResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ExtendedLocationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExtendedLocationResponse)(nil)).Elem()
+}
+
+func (o ExtendedLocationResponsePtrOutput) ToExtendedLocationResponsePtrOutput() ExtendedLocationResponsePtrOutput {
+	return o
+}
+
+func (o ExtendedLocationResponsePtrOutput) ToExtendedLocationResponsePtrOutputWithContext(ctx context.Context) ExtendedLocationResponsePtrOutput {
+	return o
+}
+
+func (o ExtendedLocationResponsePtrOutput) Elem() ExtendedLocationResponseOutput {
+	return o.ApplyT(func(v *ExtendedLocationResponse) ExtendedLocationResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ExtendedLocationResponse
+		return ret
+	}).(ExtendedLocationResponseOutput)
+}
+
+// The name of the extended location.
+func (o ExtendedLocationResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtendedLocationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of the extended location.
+func (o ExtendedLocationResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtendedLocationResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 // Hierarchy, to tag Sites / Hierarchy Provider nodes with what they represent
 type Hierarchy struct {
 	// Description of Hierarchy
@@ -4253,7 +4253,7 @@ func (o SitePropertiesResponseOutput) ProvisioningState() pulumi.StringOutput {
 }
 
 // Site properties
-type SitePropertiesResponseV1 struct {
+type SitePropertiesSitesByServiceGroupResponse struct {
 	// Description of Site resource
 	Description *string `pulumi:"description"`
 	// displayName of Site resource
@@ -4267,43 +4267,43 @@ type SitePropertiesResponseV1 struct {
 }
 
 // Site properties
-type SitePropertiesResponseV1Output struct{ *pulumi.OutputState }
+type SitePropertiesSitesByServiceGroupResponseOutput struct{ *pulumi.OutputState }
 
-func (SitePropertiesResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*SitePropertiesResponseV1)(nil)).Elem()
+func (SitePropertiesSitesByServiceGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SitePropertiesSitesByServiceGroupResponse)(nil)).Elem()
 }
 
-func (o SitePropertiesResponseV1Output) ToSitePropertiesResponseV1Output() SitePropertiesResponseV1Output {
+func (o SitePropertiesSitesByServiceGroupResponseOutput) ToSitePropertiesSitesByServiceGroupResponseOutput() SitePropertiesSitesByServiceGroupResponseOutput {
 	return o
 }
 
-func (o SitePropertiesResponseV1Output) ToSitePropertiesResponseV1OutputWithContext(ctx context.Context) SitePropertiesResponseV1Output {
+func (o SitePropertiesSitesByServiceGroupResponseOutput) ToSitePropertiesSitesByServiceGroupResponseOutputWithContext(ctx context.Context) SitePropertiesSitesByServiceGroupResponseOutput {
 	return o
 }
 
 // Description of Site resource
-func (o SitePropertiesResponseV1Output) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SitePropertiesResponseV1) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o SitePropertiesSitesByServiceGroupResponseOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SitePropertiesSitesByServiceGroupResponse) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // displayName of Site resource
-func (o SitePropertiesResponseV1Output) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SitePropertiesResponseV1) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+func (o SitePropertiesSitesByServiceGroupResponseOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SitePropertiesSitesByServiceGroupResponse) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
 // Key-value pairs for labeling the site resource.
-func (o SitePropertiesResponseV1Output) Labels() pulumi.StringMapOutput {
-	return o.ApplyT(func(v SitePropertiesResponseV1) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+func (o SitePropertiesSitesByServiceGroupResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SitePropertiesSitesByServiceGroupResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // Provisioning state of last operation
-func (o SitePropertiesResponseV1Output) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v SitePropertiesResponseV1) string { return v.ProvisioningState }).(pulumi.StringOutput)
+func (o SitePropertiesSitesByServiceGroupResponseOutput) ProvisioningState() pulumi.StringOutput {
+	return o.ApplyT(func(v SitePropertiesSitesByServiceGroupResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
 // Physical address of the site
-func (o SitePropertiesResponseV1Output) SiteAddress() SiteAddressPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v SitePropertiesResponseV1) *SiteAddressPropertiesResponse { return v.SiteAddress }).(SiteAddressPropertiesResponsePtrOutput)
+func (o SitePropertiesSitesByServiceGroupResponseOutput) SiteAddress() SiteAddressPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v SitePropertiesSitesByServiceGroupResponse) *SiteAddressPropertiesResponse { return v.SiteAddress }).(SiteAddressPropertiesResponsePtrOutput)
 }
 
 // Site Reference Properties
@@ -6908,8 +6908,6 @@ func init() {
 	pulumi.RegisterOutputType(AvailableSolutionTemplateVersionResponseArrayOutput{})
 	pulumi.RegisterOutputType(AzureResourceManagerCommonTypesExtendedLocationOutput{})
 	pulumi.RegisterOutputType(AzureResourceManagerCommonTypesExtendedLocationPtrOutput{})
-	pulumi.RegisterOutputType(AzureResourceManagerCommonTypesExtendedLocationResponseOutput{})
-	pulumi.RegisterOutputType(AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput{})
 	pulumi.RegisterOutputType(CapabilityOutput{})
 	pulumi.RegisterOutputType(CapabilityArrayOutput{})
 	pulumi.RegisterOutputType(CapabilityResponseOutput{})
@@ -6951,6 +6949,8 @@ func init() {
 	pulumi.RegisterOutputType(ExecutionV2PropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ExecutionV2PropertiesResponseOutput{})
 	pulumi.RegisterOutputType(ExecutionV2StatusResponseOutput{})
+	pulumi.RegisterOutputType(ExtendedLocationResponseOutput{})
+	pulumi.RegisterOutputType(ExtendedLocationResponsePtrOutput{})
 	pulumi.RegisterOutputType(HierarchyOutput{})
 	pulumi.RegisterOutputType(HierarchyArrayOutput{})
 	pulumi.RegisterOutputType(HierarchyResponseOutput{})
@@ -6976,7 +6976,7 @@ func init() {
 	pulumi.RegisterOutputType(SitePropertiesOutput{})
 	pulumi.RegisterOutputType(SitePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(SitePropertiesResponseOutput{})
-	pulumi.RegisterOutputType(SitePropertiesResponseV1Output{})
+	pulumi.RegisterOutputType(SitePropertiesSitesByServiceGroupResponseOutput{})
 	pulumi.RegisterOutputType(SiteReferencePropertiesOutput{})
 	pulumi.RegisterOutputType(SiteReferencePropertiesPtrOutput{})
 	pulumi.RegisterOutputType(SiteReferencePropertiesResponseOutput{})

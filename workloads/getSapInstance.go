@@ -42,7 +42,7 @@ type LookupSapInstanceResult struct {
 	// The Environment; PRD, QA, DEV, etc to which SAP system belongs to. Select from the list of available dropdown values.
 	Environment string `pulumi:"environment"`
 	// Defines the errors related to SAP Instance resource.
-	Errors SAPMigrateErrorResponse `pulumi:"errors"`
+	Errors SAPMigrateErrorSapInstanceResponse `pulumi:"errors"`
 	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 	Id string `pulumi:"id"`
 	// This is the SID of the production system in a landscape.  An SAP system could itself be a production SID or a part of a landscape with a different Production SID. This field can be used to relate non-prod SIDs, other components, SID (WEBDISP) to the prod SID. Enter the value of Production SID.
@@ -116,8 +116,8 @@ func (o LookupSapInstanceResultOutput) Environment() pulumi.StringOutput {
 }
 
 // Defines the errors related to SAP Instance resource.
-func (o LookupSapInstanceResultOutput) Errors() SAPMigrateErrorResponseOutput {
-	return o.ApplyT(func(v LookupSapInstanceResult) SAPMigrateErrorResponse { return v.Errors }).(SAPMigrateErrorResponseOutput)
+func (o LookupSapInstanceResultOutput) Errors() SAPMigrateErrorSapInstanceResponseOutput {
+	return o.ApplyT(func(v LookupSapInstanceResult) SAPMigrateErrorSapInstanceResponse { return v.Errors }).(SAPMigrateErrorSapInstanceResponseOutput)
 }
 
 // Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

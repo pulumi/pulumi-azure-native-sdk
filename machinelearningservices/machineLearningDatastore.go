@@ -21,7 +21,7 @@ type MachineLearningDatastore struct {
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
 	// The identity of the resource.
-	Identity IdentityResponsePtrOutput `pulumi:"identity"`
+	Identity IdentityMachineLearningDatastoreResponsePtrOutput `pulumi:"identity"`
 	// Specifies the location of the resource.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Specifies the name of the resource.
@@ -29,7 +29,7 @@ type MachineLearningDatastore struct {
 	// Datastore properties
 	Properties DatastoreResponseOutput `pulumi:"properties"`
 	// The sku of the workspace.
-	Sku SkuResponseV1PtrOutput `pulumi:"sku"`
+	Sku SkuMachineLearningDatastoreResponsePtrOutput `pulumi:"sku"`
 	// Contains resource tags defined as key/value pairs.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// Specifies the type of the resource.
@@ -417,8 +417,8 @@ func (o MachineLearningDatastoreOutput) AzureApiVersion() pulumi.StringOutput {
 }
 
 // The identity of the resource.
-func (o MachineLearningDatastoreOutput) Identity() IdentityResponsePtrOutput {
-	return o.ApplyT(func(v *MachineLearningDatastore) IdentityResponsePtrOutput { return v.Identity }).(IdentityResponsePtrOutput)
+func (o MachineLearningDatastoreOutput) Identity() IdentityMachineLearningDatastoreResponsePtrOutput {
+	return o.ApplyT(func(v *MachineLearningDatastore) IdentityMachineLearningDatastoreResponsePtrOutput { return v.Identity }).(IdentityMachineLearningDatastoreResponsePtrOutput)
 }
 
 // Specifies the location of the resource.
@@ -437,8 +437,8 @@ func (o MachineLearningDatastoreOutput) Properties() DatastoreResponseOutput {
 }
 
 // The sku of the workspace.
-func (o MachineLearningDatastoreOutput) Sku() SkuResponseV1PtrOutput {
-	return o.ApplyT(func(v *MachineLearningDatastore) SkuResponseV1PtrOutput { return v.Sku }).(SkuResponseV1PtrOutput)
+func (o MachineLearningDatastoreOutput) Sku() SkuMachineLearningDatastoreResponsePtrOutput {
+	return o.ApplyT(func(v *MachineLearningDatastore) SkuMachineLearningDatastoreResponsePtrOutput { return v.Sku }).(SkuMachineLearningDatastoreResponsePtrOutput)
 }
 
 // Contains resource tags defined as key/value pairs.

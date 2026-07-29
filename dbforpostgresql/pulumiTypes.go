@@ -2169,7 +2169,7 @@ func (o IdentityPropertiesPtrOutput) UserAssignedIdentities() pulumi.StringArray
 type IdentityPropertiesResponse struct {
 	Type *string `pulumi:"type"`
 	// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-	UserAssignedIdentities map[string]UserAssignedIdentityResponseV1 `pulumi:"userAssignedIdentities"`
+	UserAssignedIdentities map[string]UserAssignedIdentityServerGroupClusterResponse `pulumi:"userAssignedIdentities"`
 }
 
 // Describes the identity of the cluster.
@@ -2192,10 +2192,10 @@ func (o IdentityPropertiesResponseOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o IdentityPropertiesResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseV1MapOutput {
-	return o.ApplyT(func(v IdentityPropertiesResponse) map[string]UserAssignedIdentityResponseV1 {
+func (o IdentityPropertiesResponseOutput) UserAssignedIdentities() UserAssignedIdentityServerGroupClusterResponseMapOutput {
+	return o.ApplyT(func(v IdentityPropertiesResponse) map[string]UserAssignedIdentityServerGroupClusterResponse {
 		return v.UserAssignedIdentities
-	}).(UserAssignedIdentityResponseV1MapOutput)
+	}).(UserAssignedIdentityServerGroupClusterResponseMapOutput)
 }
 
 type IdentityPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
@@ -2232,13 +2232,13 @@ func (o IdentityPropertiesResponsePtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-func (o IdentityPropertiesResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseV1MapOutput {
-	return o.ApplyT(func(v *IdentityPropertiesResponse) map[string]UserAssignedIdentityResponseV1 {
+func (o IdentityPropertiesResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityServerGroupClusterResponseMapOutput {
+	return o.ApplyT(func(v *IdentityPropertiesResponse) map[string]UserAssignedIdentityServerGroupClusterResponse {
 		if v == nil {
 			return nil
 		}
 		return v.UserAssignedIdentities
-	}).(UserAssignedIdentityResponseV1MapOutput)
+	}).(UserAssignedIdentityServerGroupClusterResponseMapOutput)
 }
 
 // Maintenance window properties of a server.
@@ -7364,7 +7364,7 @@ func (o UserAssignedIdentityResponsePtrOutput) UserAssignedIdentities() UserIden
 }
 
 // User assigned identity properties
-type UserAssignedIdentityResponseV1 struct {
+type UserAssignedIdentityServerGroupClusterResponse struct {
 	// The client ID of the assigned identity.
 	ClientId string `pulumi:"clientId"`
 	// The principal ID of the assigned identity.
@@ -7372,48 +7372,48 @@ type UserAssignedIdentityResponseV1 struct {
 }
 
 // User assigned identity properties
-type UserAssignedIdentityResponseV1Output struct{ *pulumi.OutputState }
+type UserAssignedIdentityServerGroupClusterResponseOutput struct{ *pulumi.OutputState }
 
-func (UserAssignedIdentityResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*UserAssignedIdentityResponseV1)(nil)).Elem()
+func (UserAssignedIdentityServerGroupClusterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentityServerGroupClusterResponse)(nil)).Elem()
 }
 
-func (o UserAssignedIdentityResponseV1Output) ToUserAssignedIdentityResponseV1Output() UserAssignedIdentityResponseV1Output {
+func (o UserAssignedIdentityServerGroupClusterResponseOutput) ToUserAssignedIdentityServerGroupClusterResponseOutput() UserAssignedIdentityServerGroupClusterResponseOutput {
 	return o
 }
 
-func (o UserAssignedIdentityResponseV1Output) ToUserAssignedIdentityResponseV1OutputWithContext(ctx context.Context) UserAssignedIdentityResponseV1Output {
+func (o UserAssignedIdentityServerGroupClusterResponseOutput) ToUserAssignedIdentityServerGroupClusterResponseOutputWithContext(ctx context.Context) UserAssignedIdentityServerGroupClusterResponseOutput {
 	return o
 }
 
 // The client ID of the assigned identity.
-func (o UserAssignedIdentityResponseV1Output) ClientId() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedIdentityResponseV1) string { return v.ClientId }).(pulumi.StringOutput)
+func (o UserAssignedIdentityServerGroupClusterResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityServerGroupClusterResponse) string { return v.ClientId }).(pulumi.StringOutput)
 }
 
 // The principal ID of the assigned identity.
-func (o UserAssignedIdentityResponseV1Output) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v UserAssignedIdentityResponseV1) string { return v.PrincipalId }).(pulumi.StringOutput)
+func (o UserAssignedIdentityServerGroupClusterResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserAssignedIdentityServerGroupClusterResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
 }
 
-type UserAssignedIdentityResponseV1MapOutput struct{ *pulumi.OutputState }
+type UserAssignedIdentityServerGroupClusterResponseMapOutput struct{ *pulumi.OutputState }
 
-func (UserAssignedIdentityResponseV1MapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]UserAssignedIdentityResponseV1)(nil)).Elem()
+func (UserAssignedIdentityServerGroupClusterResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserAssignedIdentityServerGroupClusterResponse)(nil)).Elem()
 }
 
-func (o UserAssignedIdentityResponseV1MapOutput) ToUserAssignedIdentityResponseV1MapOutput() UserAssignedIdentityResponseV1MapOutput {
+func (o UserAssignedIdentityServerGroupClusterResponseMapOutput) ToUserAssignedIdentityServerGroupClusterResponseMapOutput() UserAssignedIdentityServerGroupClusterResponseMapOutput {
 	return o
 }
 
-func (o UserAssignedIdentityResponseV1MapOutput) ToUserAssignedIdentityResponseV1MapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseV1MapOutput {
+func (o UserAssignedIdentityServerGroupClusterResponseMapOutput) ToUserAssignedIdentityServerGroupClusterResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityServerGroupClusterResponseMapOutput {
 	return o
 }
 
-func (o UserAssignedIdentityResponseV1MapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseV1Output {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponseV1 {
-		return vs[0].(map[string]UserAssignedIdentityResponseV1)[vs[1].(string)]
-	}).(UserAssignedIdentityResponseV1Output)
+func (o UserAssignedIdentityServerGroupClusterResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityServerGroupClusterResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityServerGroupClusterResponse {
+		return vs[0].(map[string]UserAssignedIdentityServerGroupClusterResponse)[vs[1].(string)]
+	}).(UserAssignedIdentityServerGroupClusterResponseOutput)
 }
 
 // User assigned managed identity associated with a server.
@@ -7930,8 +7930,8 @@ func init() {
 	pulumi.RegisterOutputType(UserAssignedIdentityPtrOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
 	pulumi.RegisterOutputType(UserAssignedIdentityResponsePtrOutput{})
-	pulumi.RegisterOutputType(UserAssignedIdentityResponseV1Output{})
-	pulumi.RegisterOutputType(UserAssignedIdentityResponseV1MapOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityServerGroupClusterResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityServerGroupClusterResponseMapOutput{})
 	pulumi.RegisterOutputType(UserIdentityOutput{})
 	pulumi.RegisterOutputType(UserIdentityMapOutput{})
 	pulumi.RegisterOutputType(UserIdentityResponseOutput{})

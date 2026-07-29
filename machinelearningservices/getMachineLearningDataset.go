@@ -40,7 +40,7 @@ type LookupMachineLearningDatasetResult struct {
 	// Specifies the resource ID.
 	Id string `pulumi:"id"`
 	// The identity of the resource.
-	Identity *IdentityResponse `pulumi:"identity"`
+	Identity *IdentityMachineLearningDatasetResponse `pulumi:"identity"`
 	// Specifies the location of the resource.
 	Location *string `pulumi:"location"`
 	// Specifies the name of the resource.
@@ -48,7 +48,7 @@ type LookupMachineLearningDatasetResult struct {
 	// Dataset properties
 	Properties DatasetResponse `pulumi:"properties"`
 	// The sku of the workspace.
-	Sku *SkuResponse `pulumi:"sku"`
+	Sku *SkuMachineLearningDatasetResponse `pulumi:"sku"`
 	// Contains resource tags defined as key/value pairs.
 	Tags map[string]string `pulumi:"tags"`
 	// Specifies the type of the resource.
@@ -103,8 +103,8 @@ func (o LookupMachineLearningDatasetResultOutput) Id() pulumi.StringOutput {
 }
 
 // The identity of the resource.
-func (o LookupMachineLearningDatasetResultOutput) Identity() IdentityResponsePtrOutput {
-	return o.ApplyT(func(v LookupMachineLearningDatasetResult) *IdentityResponse { return v.Identity }).(IdentityResponsePtrOutput)
+func (o LookupMachineLearningDatasetResultOutput) Identity() IdentityMachineLearningDatasetResponsePtrOutput {
+	return o.ApplyT(func(v LookupMachineLearningDatasetResult) *IdentityMachineLearningDatasetResponse { return v.Identity }).(IdentityMachineLearningDatasetResponsePtrOutput)
 }
 
 // Specifies the location of the resource.
@@ -123,8 +123,8 @@ func (o LookupMachineLearningDatasetResultOutput) Properties() DatasetResponseOu
 }
 
 // The sku of the workspace.
-func (o LookupMachineLearningDatasetResultOutput) Sku() SkuResponsePtrOutput {
-	return o.ApplyT(func(v LookupMachineLearningDatasetResult) *SkuResponse { return v.Sku }).(SkuResponsePtrOutput)
+func (o LookupMachineLearningDatasetResultOutput) Sku() SkuMachineLearningDatasetResponsePtrOutput {
+	return o.ApplyT(func(v LookupMachineLearningDatasetResult) *SkuMachineLearningDatasetResponse { return v.Sku }).(SkuMachineLearningDatasetResponsePtrOutput)
 }
 
 // Contains resource tags defined as key/value pairs.

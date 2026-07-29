@@ -19,7 +19,7 @@ type StandardAssignment struct {
 	pulumi.CustomResourceState
 
 	// Standard item with key as applied to this standard assignment over the given scope
-	AssignedStandard CommonAssignedStandardItemResponsePtrOutput `pulumi:"assignedStandard"`
+	AssignedStandard AssignedStandardItemResponsePtrOutput `pulumi:"assignedStandard"`
 	// Additional data about assignment that has Attest effect
 	AttestationData StandardAssignmentPropertiesAttestationDataResponsePtrOutput `pulumi:"attestationData"`
 	// The Azure API version of the resource.
@@ -179,8 +179,8 @@ func (o StandardAssignmentOutput) ToStandardAssignmentOutputWithContext(ctx cont
 }
 
 // Standard item with key as applied to this standard assignment over the given scope
-func (o StandardAssignmentOutput) AssignedStandard() CommonAssignedStandardItemResponsePtrOutput {
-	return o.ApplyT(func(v *StandardAssignment) CommonAssignedStandardItemResponsePtrOutput { return v.AssignedStandard }).(CommonAssignedStandardItemResponsePtrOutput)
+func (o StandardAssignmentOutput) AssignedStandard() AssignedStandardItemResponsePtrOutput {
+	return o.ApplyT(func(v *StandardAssignment) AssignedStandardItemResponsePtrOutput { return v.AssignedStandard }).(AssignedStandardItemResponsePtrOutput)
 }
 
 // Additional data about assignment that has Attest effect

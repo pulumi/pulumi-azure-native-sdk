@@ -173,7 +173,7 @@ func (o AzureResourceManagerCommonTypesExtendedLocationPtrOutput) Type() pulumi.
 }
 
 // The complex type of the extended location.
-type AzureResourceManagerCommonTypesExtendedLocationResponse struct {
+type ExtendedLocationResponse struct {
 	// The name of the extended location.
 	Name string `pulumi:"name"`
 	// The type of the extended location.
@@ -181,57 +181,57 @@ type AzureResourceManagerCommonTypesExtendedLocationResponse struct {
 }
 
 // The complex type of the extended location.
-type AzureResourceManagerCommonTypesExtendedLocationResponseOutput struct{ *pulumi.OutputState }
+type ExtendedLocationResponseOutput struct{ *pulumi.OutputState }
 
-func (AzureResourceManagerCommonTypesExtendedLocationResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AzureResourceManagerCommonTypesExtendedLocationResponse)(nil)).Elem()
+func (ExtendedLocationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtendedLocationResponse)(nil)).Elem()
 }
 
-func (o AzureResourceManagerCommonTypesExtendedLocationResponseOutput) ToAzureResourceManagerCommonTypesExtendedLocationResponseOutput() AzureResourceManagerCommonTypesExtendedLocationResponseOutput {
+func (o ExtendedLocationResponseOutput) ToExtendedLocationResponseOutput() ExtendedLocationResponseOutput {
 	return o
 }
 
-func (o AzureResourceManagerCommonTypesExtendedLocationResponseOutput) ToAzureResourceManagerCommonTypesExtendedLocationResponseOutputWithContext(ctx context.Context) AzureResourceManagerCommonTypesExtendedLocationResponseOutput {
+func (o ExtendedLocationResponseOutput) ToExtendedLocationResponseOutputWithContext(ctx context.Context) ExtendedLocationResponseOutput {
 	return o
 }
 
 // The name of the extended location.
-func (o AzureResourceManagerCommonTypesExtendedLocationResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v AzureResourceManagerCommonTypesExtendedLocationResponse) string { return v.Name }).(pulumi.StringOutput)
+func (o ExtendedLocationResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ExtendedLocationResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The type of the extended location.
-func (o AzureResourceManagerCommonTypesExtendedLocationResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v AzureResourceManagerCommonTypesExtendedLocationResponse) string { return v.Type }).(pulumi.StringOutput)
+func (o ExtendedLocationResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ExtendedLocationResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput struct{ *pulumi.OutputState }
+type ExtendedLocationResponsePtrOutput struct{ *pulumi.OutputState }
 
-func (AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AzureResourceManagerCommonTypesExtendedLocationResponse)(nil)).Elem()
+func (ExtendedLocationResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExtendedLocationResponse)(nil)).Elem()
 }
 
-func (o AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput) ToAzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput() AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput {
+func (o ExtendedLocationResponsePtrOutput) ToExtendedLocationResponsePtrOutput() ExtendedLocationResponsePtrOutput {
 	return o
 }
 
-func (o AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput) ToAzureResourceManagerCommonTypesExtendedLocationResponsePtrOutputWithContext(ctx context.Context) AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput {
+func (o ExtendedLocationResponsePtrOutput) ToExtendedLocationResponsePtrOutputWithContext(ctx context.Context) ExtendedLocationResponsePtrOutput {
 	return o
 }
 
-func (o AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput) Elem() AzureResourceManagerCommonTypesExtendedLocationResponseOutput {
-	return o.ApplyT(func(v *AzureResourceManagerCommonTypesExtendedLocationResponse) AzureResourceManagerCommonTypesExtendedLocationResponse {
+func (o ExtendedLocationResponsePtrOutput) Elem() ExtendedLocationResponseOutput {
+	return o.ApplyT(func(v *ExtendedLocationResponse) ExtendedLocationResponse {
 		if v != nil {
 			return *v
 		}
-		var ret AzureResourceManagerCommonTypesExtendedLocationResponse
+		var ret ExtendedLocationResponse
 		return ret
-	}).(AzureResourceManagerCommonTypesExtendedLocationResponseOutput)
+	}).(ExtendedLocationResponseOutput)
 }
 
 // The name of the extended location.
-func (o AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AzureResourceManagerCommonTypesExtendedLocationResponse) *string {
+func (o ExtendedLocationResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtendedLocationResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -240,8 +240,8 @@ func (o AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput) Name()
 }
 
 // The type of the extended location.
-func (o AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AzureResourceManagerCommonTypesExtendedLocationResponse) *string {
+func (o ExtendedLocationResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtendedLocationResponse) *string {
 		if v == nil {
 			return nil
 		}
@@ -589,8 +589,8 @@ func (o SystemDataResponseOutput) LastModifiedByType() pulumi.StringPtrOutput {
 func init() {
 	pulumi.RegisterOutputType(AzureResourceManagerCommonTypesExtendedLocationOutput{})
 	pulumi.RegisterOutputType(AzureResourceManagerCommonTypesExtendedLocationPtrOutput{})
-	pulumi.RegisterOutputType(AzureResourceManagerCommonTypesExtendedLocationResponseOutput{})
-	pulumi.RegisterOutputType(AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ExtendedLocationResponseOutput{})
+	pulumi.RegisterOutputType(ExtendedLocationResponsePtrOutput{})
 	pulumi.RegisterOutputType(KubernetesSecretObjectMappingOutput{})
 	pulumi.RegisterOutputType(KubernetesSecretObjectMappingArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesSecretObjectMappingResponseOutput{})

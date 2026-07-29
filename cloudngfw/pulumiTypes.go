@@ -449,119 +449,6 @@ func (o AzureResourceManagerManagedIdentityPropertiesPtrOutput) UserAssignedIden
 	}).(AzureResourceManagerUserAssignedIdentityMapOutput)
 }
 
-// The properties of the managed service identities assigned to this resource.
-type AzureResourceManagerManagedIdentityPropertiesResponse struct {
-	// The active directory identifier of this principal.
-	PrincipalId string `pulumi:"principalId"`
-	// The Active Directory tenant id of the principal.
-	TenantId string `pulumi:"tenantId"`
-	// The type of managed identity assigned to this resource.
-	Type string `pulumi:"type"`
-	// The identities assigned to this resource by the user.
-	UserAssignedIdentities map[string]AzureResourceManagerUserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
-}
-
-// The properties of the managed service identities assigned to this resource.
-type AzureResourceManagerManagedIdentityPropertiesResponseOutput struct{ *pulumi.OutputState }
-
-func (AzureResourceManagerManagedIdentityPropertiesResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AzureResourceManagerManagedIdentityPropertiesResponse)(nil)).Elem()
-}
-
-func (o AzureResourceManagerManagedIdentityPropertiesResponseOutput) ToAzureResourceManagerManagedIdentityPropertiesResponseOutput() AzureResourceManagerManagedIdentityPropertiesResponseOutput {
-	return o
-}
-
-func (o AzureResourceManagerManagedIdentityPropertiesResponseOutput) ToAzureResourceManagerManagedIdentityPropertiesResponseOutputWithContext(ctx context.Context) AzureResourceManagerManagedIdentityPropertiesResponseOutput {
-	return o
-}
-
-// The active directory identifier of this principal.
-func (o AzureResourceManagerManagedIdentityPropertiesResponseOutput) PrincipalId() pulumi.StringOutput {
-	return o.ApplyT(func(v AzureResourceManagerManagedIdentityPropertiesResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
-}
-
-// The Active Directory tenant id of the principal.
-func (o AzureResourceManagerManagedIdentityPropertiesResponseOutput) TenantId() pulumi.StringOutput {
-	return o.ApplyT(func(v AzureResourceManagerManagedIdentityPropertiesResponse) string { return v.TenantId }).(pulumi.StringOutput)
-}
-
-// The type of managed identity assigned to this resource.
-func (o AzureResourceManagerManagedIdentityPropertiesResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v AzureResourceManagerManagedIdentityPropertiesResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The identities assigned to this resource by the user.
-func (o AzureResourceManagerManagedIdentityPropertiesResponseOutput) UserAssignedIdentities() AzureResourceManagerUserAssignedIdentityResponseMapOutput {
-	return o.ApplyT(func(v AzureResourceManagerManagedIdentityPropertiesResponse) map[string]AzureResourceManagerUserAssignedIdentityResponse {
-		return v.UserAssignedIdentities
-	}).(AzureResourceManagerUserAssignedIdentityResponseMapOutput)
-}
-
-type AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AzureResourceManagerManagedIdentityPropertiesResponse)(nil)).Elem()
-}
-
-func (o AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput) ToAzureResourceManagerManagedIdentityPropertiesResponsePtrOutput() AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput {
-	return o
-}
-
-func (o AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput) ToAzureResourceManagerManagedIdentityPropertiesResponsePtrOutputWithContext(ctx context.Context) AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput {
-	return o
-}
-
-func (o AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput) Elem() AzureResourceManagerManagedIdentityPropertiesResponseOutput {
-	return o.ApplyT(func(v *AzureResourceManagerManagedIdentityPropertiesResponse) AzureResourceManagerManagedIdentityPropertiesResponse {
-		if v != nil {
-			return *v
-		}
-		var ret AzureResourceManagerManagedIdentityPropertiesResponse
-		return ret
-	}).(AzureResourceManagerManagedIdentityPropertiesResponseOutput)
-}
-
-// The active directory identifier of this principal.
-func (o AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AzureResourceManagerManagedIdentityPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.PrincipalId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The Active Directory tenant id of the principal.
-func (o AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AzureResourceManagerManagedIdentityPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.TenantId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The type of managed identity assigned to this resource.
-func (o AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AzureResourceManagerManagedIdentityPropertiesResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// The identities assigned to this resource by the user.
-func (o AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput) UserAssignedIdentities() AzureResourceManagerUserAssignedIdentityResponseMapOutput {
-	return o.ApplyT(func(v *AzureResourceManagerManagedIdentityPropertiesResponse) map[string]AzureResourceManagerUserAssignedIdentityResponse {
-		if v == nil {
-			return nil
-		}
-		return v.UserAssignedIdentities
-	}).(AzureResourceManagerUserAssignedIdentityResponseMapOutput)
-}
-
 // A managed identity assigned by the user.
 type AzureResourceManagerUserAssignedIdentity struct {
 	// The active directory client identifier for this principal.
@@ -669,59 +556,6 @@ func (o AzureResourceManagerUserAssignedIdentityMapOutput) MapIndex(k pulumi.Str
 	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AzureResourceManagerUserAssignedIdentity {
 		return vs[0].(map[string]AzureResourceManagerUserAssignedIdentity)[vs[1].(string)]
 	}).(AzureResourceManagerUserAssignedIdentityOutput)
-}
-
-// A managed identity assigned by the user.
-type AzureResourceManagerUserAssignedIdentityResponse struct {
-	// The active directory client identifier for this principal.
-	ClientId *string `pulumi:"clientId"`
-	// The active directory identifier for this principal.
-	PrincipalId *string `pulumi:"principalId"`
-}
-
-// A managed identity assigned by the user.
-type AzureResourceManagerUserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
-
-func (AzureResourceManagerUserAssignedIdentityResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AzureResourceManagerUserAssignedIdentityResponse)(nil)).Elem()
-}
-
-func (o AzureResourceManagerUserAssignedIdentityResponseOutput) ToAzureResourceManagerUserAssignedIdentityResponseOutput() AzureResourceManagerUserAssignedIdentityResponseOutput {
-	return o
-}
-
-func (o AzureResourceManagerUserAssignedIdentityResponseOutput) ToAzureResourceManagerUserAssignedIdentityResponseOutputWithContext(ctx context.Context) AzureResourceManagerUserAssignedIdentityResponseOutput {
-	return o
-}
-
-// The active directory client identifier for this principal.
-func (o AzureResourceManagerUserAssignedIdentityResponseOutput) ClientId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AzureResourceManagerUserAssignedIdentityResponse) *string { return v.ClientId }).(pulumi.StringPtrOutput)
-}
-
-// The active directory identifier for this principal.
-func (o AzureResourceManagerUserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AzureResourceManagerUserAssignedIdentityResponse) *string { return v.PrincipalId }).(pulumi.StringPtrOutput)
-}
-
-type AzureResourceManagerUserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
-
-func (AzureResourceManagerUserAssignedIdentityResponseMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AzureResourceManagerUserAssignedIdentityResponse)(nil)).Elem()
-}
-
-func (o AzureResourceManagerUserAssignedIdentityResponseMapOutput) ToAzureResourceManagerUserAssignedIdentityResponseMapOutput() AzureResourceManagerUserAssignedIdentityResponseMapOutput {
-	return o
-}
-
-func (o AzureResourceManagerUserAssignedIdentityResponseMapOutput) ToAzureResourceManagerUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) AzureResourceManagerUserAssignedIdentityResponseMapOutput {
-	return o
-}
-
-func (o AzureResourceManagerUserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) AzureResourceManagerUserAssignedIdentityResponseOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AzureResourceManagerUserAssignedIdentityResponse {
-		return vs[0].(map[string]AzureResourceManagerUserAssignedIdentityResponse)[vs[1].(string)]
-	}).(AzureResourceManagerUserAssignedIdentityResponseOutput)
 }
 
 // URL/EDL to match
@@ -2518,6 +2352,119 @@ func (o LogDestinationResponsePtrOutput) StorageConfigurations() StorageAccountR
 		}
 		return v.StorageConfigurations
 	}).(StorageAccountResponsePtrOutput)
+}
+
+// The properties of the managed service identities assigned to this resource.
+type ManagedIdentityPropertiesResponse struct {
+	// The active directory identifier of this principal.
+	PrincipalId string `pulumi:"principalId"`
+	// The Active Directory tenant id of the principal.
+	TenantId string `pulumi:"tenantId"`
+	// The type of managed identity assigned to this resource.
+	Type string `pulumi:"type"`
+	// The identities assigned to this resource by the user.
+	UserAssignedIdentities map[string]UserAssignedIdentityResponse `pulumi:"userAssignedIdentities"`
+}
+
+// The properties of the managed service identities assigned to this resource.
+type ManagedIdentityPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedIdentityPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedIdentityPropertiesResponse)(nil)).Elem()
+}
+
+func (o ManagedIdentityPropertiesResponseOutput) ToManagedIdentityPropertiesResponseOutput() ManagedIdentityPropertiesResponseOutput {
+	return o
+}
+
+func (o ManagedIdentityPropertiesResponseOutput) ToManagedIdentityPropertiesResponseOutputWithContext(ctx context.Context) ManagedIdentityPropertiesResponseOutput {
+	return o
+}
+
+// The active directory identifier of this principal.
+func (o ManagedIdentityPropertiesResponseOutput) PrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIdentityPropertiesResponse) string { return v.PrincipalId }).(pulumi.StringOutput)
+}
+
+// The Active Directory tenant id of the principal.
+func (o ManagedIdentityPropertiesResponseOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIdentityPropertiesResponse) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+// The type of managed identity assigned to this resource.
+func (o ManagedIdentityPropertiesResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedIdentityPropertiesResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The identities assigned to this resource by the user.
+func (o ManagedIdentityPropertiesResponseOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v ManagedIdentityPropertiesResponse) map[string]UserAssignedIdentityResponse {
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
+}
+
+type ManagedIdentityPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagedIdentityPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedIdentityPropertiesResponse)(nil)).Elem()
+}
+
+func (o ManagedIdentityPropertiesResponsePtrOutput) ToManagedIdentityPropertiesResponsePtrOutput() ManagedIdentityPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ManagedIdentityPropertiesResponsePtrOutput) ToManagedIdentityPropertiesResponsePtrOutputWithContext(ctx context.Context) ManagedIdentityPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o ManagedIdentityPropertiesResponsePtrOutput) Elem() ManagedIdentityPropertiesResponseOutput {
+	return o.ApplyT(func(v *ManagedIdentityPropertiesResponse) ManagedIdentityPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ManagedIdentityPropertiesResponse
+		return ret
+	}).(ManagedIdentityPropertiesResponseOutput)
+}
+
+// The active directory identifier of this principal.
+func (o ManagedIdentityPropertiesResponsePtrOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedIdentityPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrincipalId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Active Directory tenant id of the principal.
+func (o ManagedIdentityPropertiesResponsePtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedIdentityPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TenantId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type of managed identity assigned to this resource.
+func (o ManagedIdentityPropertiesResponsePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagedIdentityPropertiesResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identities assigned to this resource by the user.
+func (o ManagedIdentityPropertiesResponsePtrOutput) UserAssignedIdentities() UserAssignedIdentityResponseMapOutput {
+	return o.ApplyT(func(v *ManagedIdentityPropertiesResponse) map[string]UserAssignedIdentityResponse {
+		if v == nil {
+			return nil
+		}
+		return v.UserAssignedIdentities
+	}).(UserAssignedIdentityResponseMapOutput)
 }
 
 // MarketplaceDetails of PAN Firewall resource
@@ -5084,6 +5031,59 @@ func (o TagInfoResponseArrayOutput) Index(i pulumi.IntInput) TagInfoResponseOutp
 	}).(TagInfoResponseOutput)
 }
 
+// A managed identity assigned by the user.
+type UserAssignedIdentityResponse struct {
+	// The active directory client identifier for this principal.
+	ClientId *string `pulumi:"clientId"`
+	// The active directory identifier for this principal.
+	PrincipalId *string `pulumi:"principalId"`
+}
+
+// A managed identity assigned by the user.
+type UserAssignedIdentityResponseOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutput() UserAssignedIdentityResponseOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseOutput) ToUserAssignedIdentityResponseOutputWithContext(ctx context.Context) UserAssignedIdentityResponseOutput {
+	return o
+}
+
+// The active directory client identifier for this principal.
+func (o UserAssignedIdentityResponseOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// The active directory identifier for this principal.
+func (o UserAssignedIdentityResponseOutput) PrincipalId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserAssignedIdentityResponse) *string { return v.PrincipalId }).(pulumi.StringPtrOutput)
+}
+
+type UserAssignedIdentityResponseMapOutput struct{ *pulumi.OutputState }
+
+func (UserAssignedIdentityResponseMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UserAssignedIdentityResponse)(nil)).Elem()
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutput() UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) ToUserAssignedIdentityResponseMapOutputWithContext(ctx context.Context) UserAssignedIdentityResponseMapOutput {
+	return o
+}
+
+func (o UserAssignedIdentityResponseMapOutput) MapIndex(k pulumi.StringInput) UserAssignedIdentityResponseOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UserAssignedIdentityResponse {
+		return vs[0].(map[string]UserAssignedIdentityResponse)[vs[1].(string)]
+	}).(UserAssignedIdentityResponseOutput)
+}
+
 // VnetInfo for Firewall Networking
 type VnetConfiguration struct {
 	// IP of trust subnet for UDR
@@ -5746,12 +5746,8 @@ func init() {
 	pulumi.RegisterOutputType(ApplicationInsightsResponsePtrOutput{})
 	pulumi.RegisterOutputType(AzureResourceManagerManagedIdentityPropertiesOutput{})
 	pulumi.RegisterOutputType(AzureResourceManagerManagedIdentityPropertiesPtrOutput{})
-	pulumi.RegisterOutputType(AzureResourceManagerManagedIdentityPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(AzureResourceManagerUserAssignedIdentityOutput{})
 	pulumi.RegisterOutputType(AzureResourceManagerUserAssignedIdentityMapOutput{})
-	pulumi.RegisterOutputType(AzureResourceManagerUserAssignedIdentityResponseOutput{})
-	pulumi.RegisterOutputType(AzureResourceManagerUserAssignedIdentityResponseMapOutput{})
 	pulumi.RegisterOutputType(CategoryOutput{})
 	pulumi.RegisterOutputType(CategoryPtrOutput{})
 	pulumi.RegisterOutputType(CategoryResponseOutput{})
@@ -5784,6 +5780,8 @@ func init() {
 	pulumi.RegisterOutputType(IPAddressSpaceResponsePtrOutput{})
 	pulumi.RegisterOutputType(LogDestinationResponseOutput{})
 	pulumi.RegisterOutputType(LogDestinationResponsePtrOutput{})
+	pulumi.RegisterOutputType(ManagedIdentityPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(ManagedIdentityPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(MarketplaceDetailsOutput{})
 	pulumi.RegisterOutputType(MarketplaceDetailsResponseOutput{})
 	pulumi.RegisterOutputType(MonitorLogResponseOutput{})
@@ -5824,6 +5822,8 @@ func init() {
 	pulumi.RegisterOutputType(TagInfoArrayOutput{})
 	pulumi.RegisterOutputType(TagInfoResponseOutput{})
 	pulumi.RegisterOutputType(TagInfoResponseArrayOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseOutput{})
+	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 	pulumi.RegisterOutputType(VnetConfigurationOutput{})
 	pulumi.RegisterOutputType(VnetConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(VnetConfigurationResponseOutput{})

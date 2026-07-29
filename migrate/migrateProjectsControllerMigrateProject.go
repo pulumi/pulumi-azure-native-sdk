@@ -29,7 +29,7 @@ type MigrateProjectsControllerMigrateProject struct {
 	// Name of the project.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Properties of a migrate project.
-	Properties MigrateProjectPropertiesResponseV1Output `pulumi:"properties"`
+	Properties MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponseOutput `pulumi:"properties"`
 	// Metadata pertaining to creation and last modification of the resource.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Type of the object = [Microsoft.Migrate/migrateProjects].
@@ -181,10 +181,10 @@ func (o MigrateProjectsControllerMigrateProjectOutput) Name() pulumi.StringOutpu
 }
 
 // Properties of a migrate project.
-func (o MigrateProjectsControllerMigrateProjectOutput) Properties() MigrateProjectPropertiesResponseV1Output {
-	return o.ApplyT(func(v *MigrateProjectsControllerMigrateProject) MigrateProjectPropertiesResponseV1Output {
+func (o MigrateProjectsControllerMigrateProjectOutput) Properties() MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponseOutput {
+	return o.ApplyT(func(v *MigrateProjectsControllerMigrateProject) MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponseOutput {
 		return v.Properties
-	}).(MigrateProjectPropertiesResponseV1Output)
+	}).(MigrateProjectPropertiesMigrateProjectsControllerMigrateProjectResponseOutput)
 }
 
 // Metadata pertaining to creation and last modification of the resource.

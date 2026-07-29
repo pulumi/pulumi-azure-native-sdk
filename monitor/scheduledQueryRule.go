@@ -43,7 +43,7 @@ type ScheduledQueryRule struct {
 	// How often the scheduled query rule is evaluated represented in ISO 8601 duration format. Relevant and required only for rules of the kind LogAlert.
 	EvaluationFrequency pulumi.StringPtrOutput `pulumi:"evaluationFrequency"`
 	// The identity of the resource.
-	Identity MicrosoftCommonIdentityResponsePtrOutput `pulumi:"identity"`
+	Identity IdentityResponsePtrOutput `pulumi:"identity"`
 	// True if alert rule is legacy Log Analytic rule
 	IsLegacyLogAnalyticsRule pulumi.BoolOutput `pulumi:"isLegacyLogAnalyticsRule"`
 	// The flag which indicates whether this scheduled query rule has been configured to be stored in the customer's storage. The default is false.
@@ -362,8 +362,8 @@ func (o ScheduledQueryRuleOutput) EvaluationFrequency() pulumi.StringPtrOutput {
 }
 
 // The identity of the resource.
-func (o ScheduledQueryRuleOutput) Identity() MicrosoftCommonIdentityResponsePtrOutput {
-	return o.ApplyT(func(v *ScheduledQueryRule) MicrosoftCommonIdentityResponsePtrOutput { return v.Identity }).(MicrosoftCommonIdentityResponsePtrOutput)
+func (o ScheduledQueryRuleOutput) Identity() IdentityResponsePtrOutput {
+	return o.ApplyT(func(v *ScheduledQueryRule) IdentityResponsePtrOutput { return v.Identity }).(IdentityResponsePtrOutput)
 }
 
 // True if alert rule is legacy Log Analytic rule

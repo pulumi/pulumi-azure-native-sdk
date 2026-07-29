@@ -28,7 +28,7 @@ type GlobalRulestack struct {
 	// rulestack description
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The managed service identities assigned to this resource.
-	Identity AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput `pulumi:"identity"`
+	Identity ManagedIdentityPropertiesResponsePtrOutput `pulumi:"identity"`
 	// Global Location
 	Location pulumi.StringOutput `pulumi:"location"`
 	// minimum version
@@ -241,10 +241,8 @@ func (o GlobalRulestackOutput) Description() pulumi.StringPtrOutput {
 }
 
 // The managed service identities assigned to this resource.
-func (o GlobalRulestackOutput) Identity() AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput {
-	return o.ApplyT(func(v *GlobalRulestack) AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput {
-		return v.Identity
-	}).(AzureResourceManagerManagedIdentityPropertiesResponsePtrOutput)
+func (o GlobalRulestackOutput) Identity() ManagedIdentityPropertiesResponsePtrOutput {
+	return o.ApplyT(func(v *GlobalRulestack) ManagedIdentityPropertiesResponsePtrOutput { return v.Identity }).(ManagedIdentityPropertiesResponsePtrOutput)
 }
 
 // Global Location

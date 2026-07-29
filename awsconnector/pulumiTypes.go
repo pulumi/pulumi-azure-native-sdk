@@ -2994,6 +2994,68 @@ func (o ActionDefinitionPtrOutput) PublishMetricAction() PublishMetricActionPtrO
 }
 
 // Definition of ActionDefinition
+type ActionDefinitionNetworkFirewallRuleGroupResponse struct {
+	// Property publishMetricAction
+	PublishMetricAction *PublishMetricActionNetworkFirewallRuleGroupResponse `pulumi:"publishMetricAction"`
+}
+
+// Definition of ActionDefinition
+type ActionDefinitionNetworkFirewallRuleGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (ActionDefinitionNetworkFirewallRuleGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ActionDefinitionNetworkFirewallRuleGroupResponse)(nil)).Elem()
+}
+
+func (o ActionDefinitionNetworkFirewallRuleGroupResponseOutput) ToActionDefinitionNetworkFirewallRuleGroupResponseOutput() ActionDefinitionNetworkFirewallRuleGroupResponseOutput {
+	return o
+}
+
+func (o ActionDefinitionNetworkFirewallRuleGroupResponseOutput) ToActionDefinitionNetworkFirewallRuleGroupResponseOutputWithContext(ctx context.Context) ActionDefinitionNetworkFirewallRuleGroupResponseOutput {
+	return o
+}
+
+// Property publishMetricAction
+func (o ActionDefinitionNetworkFirewallRuleGroupResponseOutput) PublishMetricAction() PublishMetricActionNetworkFirewallRuleGroupResponsePtrOutput {
+	return o.ApplyT(func(v ActionDefinitionNetworkFirewallRuleGroupResponse) *PublishMetricActionNetworkFirewallRuleGroupResponse {
+		return v.PublishMetricAction
+	}).(PublishMetricActionNetworkFirewallRuleGroupResponsePtrOutput)
+}
+
+type ActionDefinitionNetworkFirewallRuleGroupResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ActionDefinitionNetworkFirewallRuleGroupResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ActionDefinitionNetworkFirewallRuleGroupResponse)(nil)).Elem()
+}
+
+func (o ActionDefinitionNetworkFirewallRuleGroupResponsePtrOutput) ToActionDefinitionNetworkFirewallRuleGroupResponsePtrOutput() ActionDefinitionNetworkFirewallRuleGroupResponsePtrOutput {
+	return o
+}
+
+func (o ActionDefinitionNetworkFirewallRuleGroupResponsePtrOutput) ToActionDefinitionNetworkFirewallRuleGroupResponsePtrOutputWithContext(ctx context.Context) ActionDefinitionNetworkFirewallRuleGroupResponsePtrOutput {
+	return o
+}
+
+func (o ActionDefinitionNetworkFirewallRuleGroupResponsePtrOutput) Elem() ActionDefinitionNetworkFirewallRuleGroupResponseOutput {
+	return o.ApplyT(func(v *ActionDefinitionNetworkFirewallRuleGroupResponse) ActionDefinitionNetworkFirewallRuleGroupResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ActionDefinitionNetworkFirewallRuleGroupResponse
+		return ret
+	}).(ActionDefinitionNetworkFirewallRuleGroupResponseOutput)
+}
+
+// Property publishMetricAction
+func (o ActionDefinitionNetworkFirewallRuleGroupResponsePtrOutput) PublishMetricAction() PublishMetricActionNetworkFirewallRuleGroupResponsePtrOutput {
+	return o.ApplyT(func(v *ActionDefinitionNetworkFirewallRuleGroupResponse) *PublishMetricActionNetworkFirewallRuleGroupResponse {
+		if v == nil {
+			return nil
+		}
+		return v.PublishMetricAction
+	}).(PublishMetricActionNetworkFirewallRuleGroupResponsePtrOutput)
+}
+
+// Definition of ActionDefinition
 type ActionDefinitionResponse struct {
 	// Property publishMetricAction
 	PublishMetricAction *PublishMetricActionResponse `pulumi:"publishMetricAction"`
@@ -34042,7 +34104,7 @@ type AwsEc2NetworkInterfacePropertiesResponse struct {
 	// The number of IPv6 addresses to assign to a network interface. Amazon EC2 automatically selects the IPv6 addresses from the subnet range. To specify specific IPv6 addresses, use the Ipv6Addresses property and don't specify this property.
 	Ipv6AddressCount *int `pulumi:"ipv6AddressCount"`
 	// One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet to associate with the network interface. If you're specifying a number of IPv6 addresses, use the Ipv6AddressCount property and don't specify this property.
-	Ipv6Addresses []InstanceIpv6AddressResponseV1 `pulumi:"ipv6Addresses"`
+	Ipv6Addresses []InstanceIpv6AddressEc2NetworkInterfaceResponse `pulumi:"ipv6Addresses"`
 	// The number of IPv6 prefixes to assign to a network interface. When you specify a number of IPv6 prefixes, Amazon EC2 selects these prefixes from your existing subnet CIDR reservations, if available, or from free spaces in the subnet. By default, these will be /80 prefixes. You can't specify a count of IPv6 prefixes if you've specified one of the following: specific IPv6 prefixes, specific IPv6 addresses, or a count of IPv6 addresses.
 	Ipv6PrefixCount *int `pulumi:"ipv6PrefixCount"`
 	// Assigns a list of IPv6 prefixes to the network interface. If you want EC2 to automatically assign IPv6 prefixes, use the Ipv6PrefixCount property and do not specify this property. Presently, only /80 prefixes are supported. You can't specify IPv6 prefixes if you've specified one of the following: a count of IPv6 prefixes, specific IPv6 addresses, or a count of IPv6 addresses.
@@ -34134,10 +34196,10 @@ func (o AwsEc2NetworkInterfacePropertiesResponseOutput) Ipv6AddressCount() pulum
 }
 
 // One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet to associate with the network interface. If you're specifying a number of IPv6 addresses, use the Ipv6AddressCount property and don't specify this property.
-func (o AwsEc2NetworkInterfacePropertiesResponseOutput) Ipv6Addresses() InstanceIpv6AddressResponseV1ArrayOutput {
-	return o.ApplyT(func(v AwsEc2NetworkInterfacePropertiesResponse) []InstanceIpv6AddressResponseV1 {
+func (o AwsEc2NetworkInterfacePropertiesResponseOutput) Ipv6Addresses() InstanceIpv6AddressEc2NetworkInterfaceResponseArrayOutput {
+	return o.ApplyT(func(v AwsEc2NetworkInterfacePropertiesResponse) []InstanceIpv6AddressEc2NetworkInterfaceResponse {
 		return v.Ipv6Addresses
-	}).(InstanceIpv6AddressResponseV1ArrayOutput)
+	}).(InstanceIpv6AddressEc2NetworkInterfaceResponseArrayOutput)
 }
 
 // The number of IPv6 prefixes to assign to a network interface. When you specify a number of IPv6 prefixes, Amazon EC2 selects these prefixes from your existing subnet CIDR reservations, if available, or from free spaces in the subnet. By default, these will be /80 prefixes. You can't specify a count of IPv6 prefixes if you've specified one of the following: specific IPv6 prefixes, specific IPv6 addresses, or a count of IPv6 addresses.
@@ -34319,13 +34381,13 @@ func (o AwsEc2NetworkInterfacePropertiesResponsePtrOutput) Ipv6AddressCount() pu
 }
 
 // One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet to associate with the network interface. If you're specifying a number of IPv6 addresses, use the Ipv6AddressCount property and don't specify this property.
-func (o AwsEc2NetworkInterfacePropertiesResponsePtrOutput) Ipv6Addresses() InstanceIpv6AddressResponseV1ArrayOutput {
-	return o.ApplyT(func(v *AwsEc2NetworkInterfacePropertiesResponse) []InstanceIpv6AddressResponseV1 {
+func (o AwsEc2NetworkInterfacePropertiesResponsePtrOutput) Ipv6Addresses() InstanceIpv6AddressEc2NetworkInterfaceResponseArrayOutput {
+	return o.ApplyT(func(v *AwsEc2NetworkInterfacePropertiesResponse) []InstanceIpv6AddressEc2NetworkInterfaceResponse {
 		if v == nil {
 			return nil
 		}
 		return v.Ipv6Addresses
-	}).(InstanceIpv6AddressResponseV1ArrayOutput)
+	}).(InstanceIpv6AddressEc2NetworkInterfaceResponseArrayOutput)
 }
 
 // The number of IPv6 prefixes to assign to a network interface. When you specify a number of IPv6 prefixes, Amazon EC2 selects these prefixes from your existing subnet CIDR reservations, if available, or from free spaces in the subnet. By default, these will be /80 prefixes. You can't specify a count of IPv6 prefixes if you've specified one of the following: specific IPv6 prefixes, specific IPv6 addresses, or a count of IPv6 addresses.
@@ -43020,7 +43082,7 @@ type AwsEfsFileSystemPropertiesResponse struct {
 	// The ID of the kms-key-long to be used to protect the encrypted file system. This parameter is only required if you want to use a nondefault kms-key. If this parameter is not specified, the default kms-key for EFS is used. This ID can be in one of the following formats:  +  Key ID - A unique identifier of the key, for example ``1234abcd-12ab-34cd-56ef-1234567890ab``.  +  ARN - An Amazon Resource Name (ARN) for the key, for example ``arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab``.  +  Key alias - A previously created display name for a key, for example ``alias/projectKey1``.  +  Key alias ARN - An ARN for a key alias, for example ``arn:aws:kms:us-west-2:444455556666:alias/projectKey1``.   If ``KmsKeyId`` is specified, the ``Encrypted`` parameter must be set to true.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// An array of ``LifecyclePolicy`` objects that define the file system's ``LifecycleConfiguration`` object. A ``LifecycleConfiguration`` object informs Lifecycle management of the following:  +  When to move files in the file system from primary storage to IA storage.  + When to move files in the file system from primary storage or IA storage to Archive storage. +  When to move files that are in IA or Archive storage to primary storage.    EFS requires that each ``LifecyclePolicy`` object have only a single transition. This means that in a request body, ``LifecyclePolicies`` needs to be structured as an array of ``LifecyclePolicy`` objects, one object for each transition, ``TransitionToIA``, ``TransitionToArchive`` ``TransitionToPrimaryStorageClass``. See the example requests in the following section for more information.
-	LifecyclePolicies []LifecyclePolicyResponseV1 `pulumi:"lifecyclePolicies"`
+	LifecyclePolicies []LifecyclePolicyEfsFileSystemResponse `pulumi:"lifecyclePolicies"`
 	// The Performance mode of the file system. We recommend ``generalPurpose`` performance mode for all file systems. File systems using the ``maxIO`` performance mode can scale to higher levels of aggregate throughput and operations per second with a tradeoff of slightly higher latencies for most file operations. The performance mode can't be changed after the file system has been created. The ``maxIO`` mode is not supported on One Zone file systems.  Due to the higher per-operation latencies with Max I/O, we recommend using General Purpose performance mode for all file systems.  Default is ``generalPurpose``.
 	PerformanceMode *string `pulumi:"performanceMode"`
 	// The throughput, measured in mebibytes per second (MiBps), that you want to provision for a file system that you're creating. Required if ``ThroughputMode`` is set to ``provisioned``. Valid values are 1-3414 MiBps, with the upper limit depending on Region. To increase this limit, contact SUP. For more information, see [Amazon EFS quotas that you can increase](https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits) in the *Amazon EFS User Guide*.
@@ -43099,8 +43161,10 @@ func (o AwsEfsFileSystemPropertiesResponseOutput) KmsKeyId() pulumi.StringPtrOut
 }
 
 // An array of “LifecyclePolicy“ objects that define the file system's “LifecycleConfiguration“ object. A “LifecycleConfiguration“ object informs Lifecycle management of the following:  +  When to move files in the file system from primary storage to IA storage.  + When to move files in the file system from primary storage or IA storage to Archive storage. +  When to move files that are in IA or Archive storage to primary storage.    EFS requires that each “LifecyclePolicy“ object have only a single transition. This means that in a request body, “LifecyclePolicies“ needs to be structured as an array of “LifecyclePolicy“ objects, one object for each transition, “TransitionToIA“, “TransitionToArchive“ “TransitionToPrimaryStorageClass“. See the example requests in the following section for more information.
-func (o AwsEfsFileSystemPropertiesResponseOutput) LifecyclePolicies() LifecyclePolicyResponseV1ArrayOutput {
-	return o.ApplyT(func(v AwsEfsFileSystemPropertiesResponse) []LifecyclePolicyResponseV1 { return v.LifecyclePolicies }).(LifecyclePolicyResponseV1ArrayOutput)
+func (o AwsEfsFileSystemPropertiesResponseOutput) LifecyclePolicies() LifecyclePolicyEfsFileSystemResponseArrayOutput {
+	return o.ApplyT(func(v AwsEfsFileSystemPropertiesResponse) []LifecyclePolicyEfsFileSystemResponse {
+		return v.LifecyclePolicies
+	}).(LifecyclePolicyEfsFileSystemResponseArrayOutput)
 }
 
 // The Performance mode of the file system. We recommend “generalPurpose“ performance mode for all file systems. File systems using the “maxIO“ performance mode can scale to higher levels of aggregate throughput and operations per second with a tradeoff of slightly higher latencies for most file operations. The performance mode can't be changed after the file system has been created. The “maxIO“ mode is not supported on One Zone file systems.  Due to the higher per-operation latencies with Max I/O, we recommend using General Purpose performance mode for all file systems.  Default is “generalPurpose“.
@@ -43250,13 +43314,13 @@ func (o AwsEfsFileSystemPropertiesResponsePtrOutput) KmsKeyId() pulumi.StringPtr
 }
 
 // An array of “LifecyclePolicy“ objects that define the file system's “LifecycleConfiguration“ object. A “LifecycleConfiguration“ object informs Lifecycle management of the following:  +  When to move files in the file system from primary storage to IA storage.  + When to move files in the file system from primary storage or IA storage to Archive storage. +  When to move files that are in IA or Archive storage to primary storage.    EFS requires that each “LifecyclePolicy“ object have only a single transition. This means that in a request body, “LifecyclePolicies“ needs to be structured as an array of “LifecyclePolicy“ objects, one object for each transition, “TransitionToIA“, “TransitionToArchive“ “TransitionToPrimaryStorageClass“. See the example requests in the following section for more information.
-func (o AwsEfsFileSystemPropertiesResponsePtrOutput) LifecyclePolicies() LifecyclePolicyResponseV1ArrayOutput {
-	return o.ApplyT(func(v *AwsEfsFileSystemPropertiesResponse) []LifecyclePolicyResponseV1 {
+func (o AwsEfsFileSystemPropertiesResponsePtrOutput) LifecyclePolicies() LifecyclePolicyEfsFileSystemResponseArrayOutput {
+	return o.ApplyT(func(v *AwsEfsFileSystemPropertiesResponse) []LifecyclePolicyEfsFileSystemResponse {
 		if v == nil {
 			return nil
 		}
 		return v.LifecyclePolicies
-	}).(LifecyclePolicyResponseV1ArrayOutput)
+	}).(LifecyclePolicyEfsFileSystemResponseArrayOutput)
 }
 
 // The Performance mode of the file system. We recommend “generalPurpose“ performance mode for all file systems. File systems using the “maxIO“ performance mode can scale to higher levels of aggregate throughput and operations per second with a tradeoff of slightly higher latencies for most file operations. The performance mode can't be changed after the file system has been created. The “maxIO“ mode is not supported on One Zone file systems.  Due to the higher per-operation latencies with Max I/O, we recommend using General Purpose performance mode for all file systems.  Default is “generalPurpose“.
@@ -44190,7 +44254,7 @@ type AwsEksClusterPropertiesResponse struct {
 	// <p>The Kubernetes network configuration for the cluster.</p>
 	KubernetesNetworkConfig *KubernetesNetworkConfigResponseResponse `pulumi:"kubernetesNetworkConfig"`
 	// <p>The logging configuration for your cluster.</p>
-	Logging *LoggingResponseV1 `pulumi:"logging"`
+	Logging *LoggingEksClusterResponse `pulumi:"logging"`
 	// <p>The name of your cluster.</p>
 	Name *string `pulumi:"name"`
 	// <p>An object representing the configuration of your local Amazon EKS cluster on an Amazon Web Services Outpost. This object isn't available for clusters on the Amazon Web Services cloud.</p>
@@ -44287,8 +44351,8 @@ func (o AwsEksClusterPropertiesResponseOutput) KubernetesNetworkConfig() Kuberne
 }
 
 // <p>The logging configuration for your cluster.</p>
-func (o AwsEksClusterPropertiesResponseOutput) Logging() LoggingResponseV1PtrOutput {
-	return o.ApplyT(func(v AwsEksClusterPropertiesResponse) *LoggingResponseV1 { return v.Logging }).(LoggingResponseV1PtrOutput)
+func (o AwsEksClusterPropertiesResponseOutput) Logging() LoggingEksClusterResponsePtrOutput {
+	return o.ApplyT(func(v AwsEksClusterPropertiesResponse) *LoggingEksClusterResponse { return v.Logging }).(LoggingEksClusterResponsePtrOutput)
 }
 
 // <p>The name of your cluster.</p>
@@ -44476,13 +44540,13 @@ func (o AwsEksClusterPropertiesResponsePtrOutput) KubernetesNetworkConfig() Kube
 }
 
 // <p>The logging configuration for your cluster.</p>
-func (o AwsEksClusterPropertiesResponsePtrOutput) Logging() LoggingResponseV1PtrOutput {
-	return o.ApplyT(func(v *AwsEksClusterPropertiesResponse) *LoggingResponseV1 {
+func (o AwsEksClusterPropertiesResponsePtrOutput) Logging() LoggingEksClusterResponsePtrOutput {
+	return o.ApplyT(func(v *AwsEksClusterPropertiesResponse) *LoggingEksClusterResponse {
 		if v == nil {
 			return nil
 		}
 		return v.Logging
-	}).(LoggingResponseV1PtrOutput)
+	}).(LoggingEksClusterResponsePtrOutput)
 }
 
 // <p>The name of your cluster.</p>
@@ -45087,7 +45151,7 @@ type AwsEksNodegroupPropertiesResponse struct {
 	// The Kubernetes labels to be applied to the nodes in the node group when they are created.
 	Labels map[string]string `pulumi:"labels"`
 	// An object representing a node group's launch template specification. An object representing a launch template specification for AWS EKS Nodegroup.
-	LaunchTemplate *LaunchTemplateSpecificationResponseV1 `pulumi:"launchTemplate"`
+	LaunchTemplate *LaunchTemplateSpecificationEksNodegroupResponse `pulumi:"launchTemplate"`
 	// The Amazon Resource Name (ARN) of the IAM role to associate with your node group.
 	NodeRole *string `pulumi:"nodeRole"`
 	// The unique name to give your node group.
@@ -45171,10 +45235,10 @@ func (o AwsEksNodegroupPropertiesResponseOutput) Labels() pulumi.StringMapOutput
 }
 
 // An object representing a node group's launch template specification. An object representing a launch template specification for AWS EKS Nodegroup.
-func (o AwsEksNodegroupPropertiesResponseOutput) LaunchTemplate() LaunchTemplateSpecificationResponseV1PtrOutput {
-	return o.ApplyT(func(v AwsEksNodegroupPropertiesResponse) *LaunchTemplateSpecificationResponseV1 {
+func (o AwsEksNodegroupPropertiesResponseOutput) LaunchTemplate() LaunchTemplateSpecificationEksNodegroupResponsePtrOutput {
+	return o.ApplyT(func(v AwsEksNodegroupPropertiesResponse) *LaunchTemplateSpecificationEksNodegroupResponse {
 		return v.LaunchTemplate
-	}).(LaunchTemplateSpecificationResponseV1PtrOutput)
+	}).(LaunchTemplateSpecificationEksNodegroupResponsePtrOutput)
 }
 
 // The Amazon Resource Name (ARN) of the IAM role to associate with your node group.
@@ -45342,13 +45406,13 @@ func (o AwsEksNodegroupPropertiesResponsePtrOutput) Labels() pulumi.StringMapOut
 }
 
 // An object representing a node group's launch template specification. An object representing a launch template specification for AWS EKS Nodegroup.
-func (o AwsEksNodegroupPropertiesResponsePtrOutput) LaunchTemplate() LaunchTemplateSpecificationResponseV1PtrOutput {
-	return o.ApplyT(func(v *AwsEksNodegroupPropertiesResponse) *LaunchTemplateSpecificationResponseV1 {
+func (o AwsEksNodegroupPropertiesResponsePtrOutput) LaunchTemplate() LaunchTemplateSpecificationEksNodegroupResponsePtrOutput {
+	return o.ApplyT(func(v *AwsEksNodegroupPropertiesResponse) *LaunchTemplateSpecificationEksNodegroupResponse {
 		if v == nil {
 			return nil
 		}
 		return v.LaunchTemplate
-	}).(LaunchTemplateSpecificationResponseV1PtrOutput)
+	}).(LaunchTemplateSpecificationEksNodegroupResponsePtrOutput)
 }
 
 // The Amazon Resource Name (ARN) of the IAM role to associate with your node group.
@@ -47120,7 +47184,7 @@ type AwsElasticLoadBalancingV2ListenerPropertiesResponse struct {
 	// [TLS listener] The name of the Application-Layer Protocol Negotiation (ALPN) policy.
 	AlpnPolicy []string `pulumi:"alpnPolicy"`
 	// The default SSL server certificate for a secure listener. You must provide exactly one certificate if the listener protocol is HTTPS or TLS. To create a certificate list for a secure listener, use [AWS::ElasticLoadBalancingV2::ListenerCertificate](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listenercertificate.html).
-	Certificates []CertificateResponseV1 `pulumi:"certificates"`
+	Certificates []CertificateElasticLoadBalancingV2ListenerResponse `pulumi:"certificates"`
 	// The actions for the default rule. You cannot define a condition for a default rule. To create additional rules for an Application Load Balancer, use [AWS::ElasticLoadBalancingV2::ListenerRule](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listenerrule.html).
 	DefaultActions []ActionResponse `pulumi:"defaultActions"`
 	// Property listenerArn
@@ -47158,10 +47222,10 @@ func (o AwsElasticLoadBalancingV2ListenerPropertiesResponseOutput) AlpnPolicy() 
 }
 
 // The default SSL server certificate for a secure listener. You must provide exactly one certificate if the listener protocol is HTTPS or TLS. To create a certificate list for a secure listener, use [AWS::ElasticLoadBalancingV2::ListenerCertificate](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listenercertificate.html).
-func (o AwsElasticLoadBalancingV2ListenerPropertiesResponseOutput) Certificates() CertificateResponseV1ArrayOutput {
-	return o.ApplyT(func(v AwsElasticLoadBalancingV2ListenerPropertiesResponse) []CertificateResponseV1 {
+func (o AwsElasticLoadBalancingV2ListenerPropertiesResponseOutput) Certificates() CertificateElasticLoadBalancingV2ListenerResponseArrayOutput {
+	return o.ApplyT(func(v AwsElasticLoadBalancingV2ListenerPropertiesResponse) []CertificateElasticLoadBalancingV2ListenerResponse {
 		return v.Certificates
-	}).(CertificateResponseV1ArrayOutput)
+	}).(CertificateElasticLoadBalancingV2ListenerResponseArrayOutput)
 }
 
 // The actions for the default rule. You cannot define a condition for a default rule. To create additional rules for an Application Load Balancer, use [AWS::ElasticLoadBalancingV2::ListenerRule](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listenerrule.html).
@@ -47236,13 +47300,13 @@ func (o AwsElasticLoadBalancingV2ListenerPropertiesResponsePtrOutput) AlpnPolicy
 }
 
 // The default SSL server certificate for a secure listener. You must provide exactly one certificate if the listener protocol is HTTPS or TLS. To create a certificate list for a secure listener, use [AWS::ElasticLoadBalancingV2::ListenerCertificate](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listenercertificate.html).
-func (o AwsElasticLoadBalancingV2ListenerPropertiesResponsePtrOutput) Certificates() CertificateResponseV1ArrayOutput {
-	return o.ApplyT(func(v *AwsElasticLoadBalancingV2ListenerPropertiesResponse) []CertificateResponseV1 {
+func (o AwsElasticLoadBalancingV2ListenerPropertiesResponsePtrOutput) Certificates() CertificateElasticLoadBalancingV2ListenerResponseArrayOutput {
+	return o.ApplyT(func(v *AwsElasticLoadBalancingV2ListenerPropertiesResponse) []CertificateElasticLoadBalancingV2ListenerResponse {
 		if v == nil {
 			return nil
 		}
 		return v.Certificates
-	}).(CertificateResponseV1ArrayOutput)
+	}).(CertificateElasticLoadBalancingV2ListenerResponseArrayOutput)
 }
 
 // The actions for the default rule. You cannot define a condition for a default rule. To create additional rules for an Application Load Balancer, use [AWS::ElasticLoadBalancingV2::ListenerRule](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-elasticloadbalancingv2-listenerrule.html).
@@ -56755,7 +56819,7 @@ type AwsLambdaFunctionPropertiesResponse struct {
 	// Environment variables that are accessible from function code during execution. A function's environment variable settings. You can use environment variables to adjust your function's behavior without updating code. An environment variable is a pair of strings that are stored in a function's version-specific configuration.
 	Environment *EnvironmentResponse `pulumi:"environment"`
 	// The size of the function's ``/tmp`` directory in MB. The default value is 512, but it can be any whole number between 512 and 10,240 MB. The size of the function's ``/tmp`` directory in MB. The default value is 512, but it can be any whole number between 512 and 10,240 MB.
-	EphemeralStorage *EphemeralStorageResponseV1 `pulumi:"ephemeralStorage"`
+	EphemeralStorage *EphemeralStorageLambdaFunctionResponse `pulumi:"ephemeralStorage"`
 	// Connection settings for an Amazon EFS file system. To connect a function to a file system, a mount target must be available in every Availability Zone that your function connects to. If your template contains an [AWS::EFS::MountTarget](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-mounttarget.html) resource, you must also specify a ``DependsOn`` attribute to ensure that the mount target is created or updated before the function. For more information about using the ``DependsOn`` attribute, see [DependsOn Attribute](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-dependson.html).
 	FileSystemConfigs []FileSystemConfigResponse `pulumi:"fileSystemConfigs"`
 	// The name of the Lambda function, up to 64 characters in length. If you don't specify a name, CFN generates one. If you specify a name, you cannot perform updates that require replacement of this resource. You can perform updates that require no or some interruption. If you must replace the resource, specify a new name.
@@ -56793,7 +56857,7 @@ type AwsLambdaFunctionPropertiesResponse struct {
 	// Set ``Mode`` to ``Active`` to sample and trace a subset of incoming requests with [X-Ray](https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html). The function's [](https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html) tracing configuration. To sample and record incoming requests, set ``Mode`` to ``Active``.
 	TracingConfig *TracingConfigResponse `pulumi:"tracingConfig"`
 	// For network connectivity to AWS resources in a VPC, specify a list of security groups and subnets in the VPC. When you connect a function to a VPC, it can access resources and the internet only through that VPC. For more information, see [Configuring a Lambda function to access resources in a VPC](https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html). The VPC security groups and subnets that are attached to a Lambda function. When you connect a function to a VPC, Lambda creates an elastic network interface for each combination of security group and subnet in the function's VPC configuration. The function can only access resources and the internet through that VPC. For more information, see [VPC Settings](https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html).  When you delete a function, CFN monitors the state of its network interfaces and waits for Lambda to delete them before proceeding. If the VPC is defined in the same stack, the network interfaces need to be deleted by Lambda before CFN can delete the VPC's resources. To monitor network interfaces, CFN needs the ``ec2:DescribeNetworkInterfaces`` permission. It obtains this from the user or role that modifies the stack. If you don't provide this permission, CFN does not wait for network interfaces to be deleted.
-	VpcConfig *VpcConfigResponseV1 `pulumi:"vpcConfig"`
+	VpcConfig *VpcConfigLambdaFunctionResponse `pulumi:"vpcConfig"`
 }
 
 // Definition of awsLambdaFunction
@@ -56847,8 +56911,10 @@ func (o AwsLambdaFunctionPropertiesResponseOutput) Environment() EnvironmentResp
 }
 
 // The size of the function's “/tmp“ directory in MB. The default value is 512, but it can be any whole number between 512 and 10,240 MB. The size of the function's “/tmp“ directory in MB. The default value is 512, but it can be any whole number between 512 and 10,240 MB.
-func (o AwsLambdaFunctionPropertiesResponseOutput) EphemeralStorage() EphemeralStorageResponseV1PtrOutput {
-	return o.ApplyT(func(v AwsLambdaFunctionPropertiesResponse) *EphemeralStorageResponseV1 { return v.EphemeralStorage }).(EphemeralStorageResponseV1PtrOutput)
+func (o AwsLambdaFunctionPropertiesResponseOutput) EphemeralStorage() EphemeralStorageLambdaFunctionResponsePtrOutput {
+	return o.ApplyT(func(v AwsLambdaFunctionPropertiesResponse) *EphemeralStorageLambdaFunctionResponse {
+		return v.EphemeralStorage
+	}).(EphemeralStorageLambdaFunctionResponsePtrOutput)
 }
 
 // Connection settings for an Amazon EFS file system. To connect a function to a file system, a mount target must be available in every Availability Zone that your function connects to. If your template contains an [AWS::EFS::MountTarget](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-mounttarget.html) resource, you must also specify a “DependsOn“ attribute to ensure that the mount target is created or updated before the function. For more information about using the “DependsOn“ attribute, see [DependsOn Attribute](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-dependson.html).
@@ -56944,8 +57010,8 @@ func (o AwsLambdaFunctionPropertiesResponseOutput) TracingConfig() TracingConfig
 }
 
 // For network connectivity to AWS resources in a VPC, specify a list of security groups and subnets in the VPC. When you connect a function to a VPC, it can access resources and the internet only through that VPC. For more information, see [Configuring a Lambda function to access resources in a VPC](https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html). The VPC security groups and subnets that are attached to a Lambda function. When you connect a function to a VPC, Lambda creates an elastic network interface for each combination of security group and subnet in the function's VPC configuration. The function can only access resources and the internet through that VPC. For more information, see [VPC Settings](https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html).  When you delete a function, CFN monitors the state of its network interfaces and waits for Lambda to delete them before proceeding. If the VPC is defined in the same stack, the network interfaces need to be deleted by Lambda before CFN can delete the VPC's resources. To monitor network interfaces, CFN needs the “ec2:DescribeNetworkInterfaces“ permission. It obtains this from the user or role that modifies the stack. If you don't provide this permission, CFN does not wait for network interfaces to be deleted.
-func (o AwsLambdaFunctionPropertiesResponseOutput) VpcConfig() VpcConfigResponseV1PtrOutput {
-	return o.ApplyT(func(v AwsLambdaFunctionPropertiesResponse) *VpcConfigResponseV1 { return v.VpcConfig }).(VpcConfigResponseV1PtrOutput)
+func (o AwsLambdaFunctionPropertiesResponseOutput) VpcConfig() VpcConfigLambdaFunctionResponsePtrOutput {
+	return o.ApplyT(func(v AwsLambdaFunctionPropertiesResponse) *VpcConfigLambdaFunctionResponse { return v.VpcConfig }).(VpcConfigLambdaFunctionResponsePtrOutput)
 }
 
 type AwsLambdaFunctionPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
@@ -57043,13 +57109,13 @@ func (o AwsLambdaFunctionPropertiesResponsePtrOutput) Environment() EnvironmentR
 }
 
 // The size of the function's “/tmp“ directory in MB. The default value is 512, but it can be any whole number between 512 and 10,240 MB. The size of the function's “/tmp“ directory in MB. The default value is 512, but it can be any whole number between 512 and 10,240 MB.
-func (o AwsLambdaFunctionPropertiesResponsePtrOutput) EphemeralStorage() EphemeralStorageResponseV1PtrOutput {
-	return o.ApplyT(func(v *AwsLambdaFunctionPropertiesResponse) *EphemeralStorageResponseV1 {
+func (o AwsLambdaFunctionPropertiesResponsePtrOutput) EphemeralStorage() EphemeralStorageLambdaFunctionResponsePtrOutput {
+	return o.ApplyT(func(v *AwsLambdaFunctionPropertiesResponse) *EphemeralStorageLambdaFunctionResponse {
 		if v == nil {
 			return nil
 		}
 		return v.EphemeralStorage
-	}).(EphemeralStorageResponseV1PtrOutput)
+	}).(EphemeralStorageLambdaFunctionResponsePtrOutput)
 }
 
 // Connection settings for an Amazon EFS file system. To connect a function to a file system, a mount target must be available in every Availability Zone that your function connects to. If your template contains an [AWS::EFS::MountTarget](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-efs-mounttarget.html) resource, you must also specify a “DependsOn“ attribute to ensure that the mount target is created or updated before the function. For more information about using the “DependsOn“ attribute, see [DependsOn Attribute](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-dependson.html).
@@ -57233,13 +57299,13 @@ func (o AwsLambdaFunctionPropertiesResponsePtrOutput) TracingConfig() TracingCon
 }
 
 // For network connectivity to AWS resources in a VPC, specify a list of security groups and subnets in the VPC. When you connect a function to a VPC, it can access resources and the internet only through that VPC. For more information, see [Configuring a Lambda function to access resources in a VPC](https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html). The VPC security groups and subnets that are attached to a Lambda function. When you connect a function to a VPC, Lambda creates an elastic network interface for each combination of security group and subnet in the function's VPC configuration. The function can only access resources and the internet through that VPC. For more information, see [VPC Settings](https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html).  When you delete a function, CFN monitors the state of its network interfaces and waits for Lambda to delete them before proceeding. If the VPC is defined in the same stack, the network interfaces need to be deleted by Lambda before CFN can delete the VPC's resources. To monitor network interfaces, CFN needs the “ec2:DescribeNetworkInterfaces“ permission. It obtains this from the user or role that modifies the stack. If you don't provide this permission, CFN does not wait for network interfaces to be deleted.
-func (o AwsLambdaFunctionPropertiesResponsePtrOutput) VpcConfig() VpcConfigResponseV1PtrOutput {
-	return o.ApplyT(func(v *AwsLambdaFunctionPropertiesResponse) *VpcConfigResponseV1 {
+func (o AwsLambdaFunctionPropertiesResponsePtrOutput) VpcConfig() VpcConfigLambdaFunctionResponsePtrOutput {
+	return o.ApplyT(func(v *AwsLambdaFunctionPropertiesResponse) *VpcConfigLambdaFunctionResponse {
 		if v == nil {
 			return nil
 		}
 		return v.VpcConfig
-	}).(VpcConfigResponseV1PtrOutput)
+	}).(VpcConfigLambdaFunctionResponsePtrOutput)
 }
 
 // Definition of awsLightsailBucket
@@ -61687,7 +61753,7 @@ type AwsNetworkFirewallFirewallPropertiesResponse struct {
 	// Property subnetChangeProtection
 	SubnetChangeProtection *bool `pulumi:"subnetChangeProtection"`
 	// Property subnetMappings
-	SubnetMappings []SubnetMappingResponseV1 `pulumi:"subnetMappings"`
+	SubnetMappings []SubnetMappingNetworkFirewallFirewallResponse `pulumi:"subnetMappings"`
 	// Property tags
 	Tags []TagResponse `pulumi:"tags"`
 	// Property vpcId
@@ -61755,10 +61821,10 @@ func (o AwsNetworkFirewallFirewallPropertiesResponseOutput) SubnetChangeProtecti
 }
 
 // Property subnetMappings
-func (o AwsNetworkFirewallFirewallPropertiesResponseOutput) SubnetMappings() SubnetMappingResponseV1ArrayOutput {
-	return o.ApplyT(func(v AwsNetworkFirewallFirewallPropertiesResponse) []SubnetMappingResponseV1 {
+func (o AwsNetworkFirewallFirewallPropertiesResponseOutput) SubnetMappings() SubnetMappingNetworkFirewallFirewallResponseArrayOutput {
+	return o.ApplyT(func(v AwsNetworkFirewallFirewallPropertiesResponse) []SubnetMappingNetworkFirewallFirewallResponse {
 		return v.SubnetMappings
-	}).(SubnetMappingResponseV1ArrayOutput)
+	}).(SubnetMappingNetworkFirewallFirewallResponseArrayOutput)
 }
 
 // Property tags
@@ -61886,13 +61952,13 @@ func (o AwsNetworkFirewallFirewallPropertiesResponsePtrOutput) SubnetChangeProte
 }
 
 // Property subnetMappings
-func (o AwsNetworkFirewallFirewallPropertiesResponsePtrOutput) SubnetMappings() SubnetMappingResponseV1ArrayOutput {
-	return o.ApplyT(func(v *AwsNetworkFirewallFirewallPropertiesResponse) []SubnetMappingResponseV1 {
+func (o AwsNetworkFirewallFirewallPropertiesResponsePtrOutput) SubnetMappings() SubnetMappingNetworkFirewallFirewallResponseArrayOutput {
+	return o.ApplyT(func(v *AwsNetworkFirewallFirewallPropertiesResponse) []SubnetMappingNetworkFirewallFirewallResponse {
 		if v == nil {
 			return nil
 		}
 		return v.SubnetMappings
-	}).(SubnetMappingResponseV1ArrayOutput)
+	}).(SubnetMappingNetworkFirewallFirewallResponseArrayOutput)
 }
 
 // Property tags
@@ -73254,7 +73320,7 @@ type AwsRedshiftClusterParameterGroupPropertiesResponse struct {
 	// The name of the cluster parameter group.
 	ParameterGroupName *string `pulumi:"parameterGroupName"`
 	// An array of parameters to be modified. A maximum of 20 parameters can be modified in a single request.
-	Parameters []ParameterResponseV1 `pulumi:"parameters"`
+	Parameters []ParameterRedshiftClusterParameterGroupResponse `pulumi:"parameters"`
 	// An array of key-value pairs to apply to this resource.
 	Tags []TagResponse `pulumi:"tags"`
 }
@@ -73290,8 +73356,10 @@ func (o AwsRedshiftClusterParameterGroupPropertiesResponseOutput) ParameterGroup
 }
 
 // An array of parameters to be modified. A maximum of 20 parameters can be modified in a single request.
-func (o AwsRedshiftClusterParameterGroupPropertiesResponseOutput) Parameters() ParameterResponseV1ArrayOutput {
-	return o.ApplyT(func(v AwsRedshiftClusterParameterGroupPropertiesResponse) []ParameterResponseV1 { return v.Parameters }).(ParameterResponseV1ArrayOutput)
+func (o AwsRedshiftClusterParameterGroupPropertiesResponseOutput) Parameters() ParameterRedshiftClusterParameterGroupResponseArrayOutput {
+	return o.ApplyT(func(v AwsRedshiftClusterParameterGroupPropertiesResponse) []ParameterRedshiftClusterParameterGroupResponse {
+		return v.Parameters
+	}).(ParameterRedshiftClusterParameterGroupResponseArrayOutput)
 }
 
 // An array of key-value pairs to apply to this resource.
@@ -73354,13 +73422,13 @@ func (o AwsRedshiftClusterParameterGroupPropertiesResponsePtrOutput) ParameterGr
 }
 
 // An array of parameters to be modified. A maximum of 20 parameters can be modified in a single request.
-func (o AwsRedshiftClusterParameterGroupPropertiesResponsePtrOutput) Parameters() ParameterResponseV1ArrayOutput {
-	return o.ApplyT(func(v *AwsRedshiftClusterParameterGroupPropertiesResponse) []ParameterResponseV1 {
+func (o AwsRedshiftClusterParameterGroupPropertiesResponsePtrOutput) Parameters() ParameterRedshiftClusterParameterGroupResponseArrayOutput {
+	return o.ApplyT(func(v *AwsRedshiftClusterParameterGroupPropertiesResponse) []ParameterRedshiftClusterParameterGroupResponse {
 		if v == nil {
 			return nil
 		}
 		return v.Parameters
-	}).(ParameterResponseV1ArrayOutput)
+	}).(ParameterRedshiftClusterParameterGroupResponseArrayOutput)
 }
 
 // An array of key-value pairs to apply to this resource.
@@ -78548,7 +78616,7 @@ type AwsS3BucketPropertiesResponse struct {
 	// Property regionalDomainName
 	RegionalDomainName *string `pulumi:"regionalDomainName"`
 	// Configuration for replicating objects in an S3 bucket. To enable replication, you must also enable versioning by using the ``VersioningConfiguration`` property. Amazon S3 can store replicated objects in a single destination bucket or multiple destination buckets. The destination bucket or buckets must already exist. A container for replication rules. You can add up to 1,000 rules. The maximum size of a replication configuration is 2 MB. The latest version of the replication configuration XML is V2. For more information about XML V2 replication configurations, see [Replication configuration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-add-config.html) in the *Amazon S3 User Guide*.
-	ReplicationConfiguration *ReplicationConfigurationResponseV1 `pulumi:"replicationConfiguration"`
+	ReplicationConfiguration *ReplicationConfigurationS3BucketResponse `pulumi:"replicationConfiguration"`
 	// An arbitrary set of tags (key-value pairs) for this S3 bucket.
 	Tags []TagResponse `pulumi:"tags"`
 	// Enables multiple versions of all objects in this bucket. You might enable versioning to prevent objects from being deleted or overwritten by mistake or to archive objects so that you can retrieve previous versions of them. Describes the versioning state of an Amazon S3 bucket. For more information, see [PUT Bucket versioning](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTVersioningStatus.html) in the *Amazon S3 API Reference*.
@@ -78702,10 +78770,10 @@ func (o AwsS3BucketPropertiesResponseOutput) RegionalDomainName() pulumi.StringP
 }
 
 // Configuration for replicating objects in an S3 bucket. To enable replication, you must also enable versioning by using the “VersioningConfiguration“ property. Amazon S3 can store replicated objects in a single destination bucket or multiple destination buckets. The destination bucket or buckets must already exist. A container for replication rules. You can add up to 1,000 rules. The maximum size of a replication configuration is 2 MB. The latest version of the replication configuration XML is V2. For more information about XML V2 replication configurations, see [Replication configuration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-add-config.html) in the *Amazon S3 User Guide*.
-func (o AwsS3BucketPropertiesResponseOutput) ReplicationConfiguration() ReplicationConfigurationResponseV1PtrOutput {
-	return o.ApplyT(func(v AwsS3BucketPropertiesResponse) *ReplicationConfigurationResponseV1 {
+func (o AwsS3BucketPropertiesResponseOutput) ReplicationConfiguration() ReplicationConfigurationS3BucketResponsePtrOutput {
+	return o.ApplyT(func(v AwsS3BucketPropertiesResponse) *ReplicationConfigurationS3BucketResponse {
 		return v.ReplicationConfiguration
-	}).(ReplicationConfigurationResponseV1PtrOutput)
+	}).(ReplicationConfigurationS3BucketResponsePtrOutput)
 }
 
 // An arbitrary set of tags (key-value pairs) for this S3 bucket.
@@ -78955,13 +79023,13 @@ func (o AwsS3BucketPropertiesResponsePtrOutput) RegionalDomainName() pulumi.Stri
 }
 
 // Configuration for replicating objects in an S3 bucket. To enable replication, you must also enable versioning by using the “VersioningConfiguration“ property. Amazon S3 can store replicated objects in a single destination bucket or multiple destination buckets. The destination bucket or buckets must already exist. A container for replication rules. You can add up to 1,000 rules. The maximum size of a replication configuration is 2 MB. The latest version of the replication configuration XML is V2. For more information about XML V2 replication configurations, see [Replication configuration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication-add-config.html) in the *Amazon S3 User Guide*.
-func (o AwsS3BucketPropertiesResponsePtrOutput) ReplicationConfiguration() ReplicationConfigurationResponseV1PtrOutput {
-	return o.ApplyT(func(v *AwsS3BucketPropertiesResponse) *ReplicationConfigurationResponseV1 {
+func (o AwsS3BucketPropertiesResponsePtrOutput) ReplicationConfiguration() ReplicationConfigurationS3BucketResponsePtrOutput {
+	return o.ApplyT(func(v *AwsS3BucketPropertiesResponse) *ReplicationConfigurationS3BucketResponse {
 		if v == nil {
 			return nil
 		}
 		return v.ReplicationConfiguration
-	}).(ReplicationConfigurationResponseV1PtrOutput)
+	}).(ReplicationConfigurationS3BucketResponsePtrOutput)
 }
 
 // An arbitrary set of tags (key-value pairs) for this S3 bucket.
@@ -81683,7 +81751,7 @@ type AwsSnsTopicPropertiesResponse struct {
 	// The body of the policy document you want to use for this topic. You can only add one policy per topic. The policy must be in JSON string format. Length Constraints: Maximum length of 30,720.
 	DataProtectionPolicy interface{} `pulumi:"dataProtectionPolicy"`
 	// Property deliveryStatusLogging
-	DeliveryStatusLogging []LoggingConfigResponseV1 `pulumi:"deliveryStatusLogging"`
+	DeliveryStatusLogging []LoggingConfigSnsTopicResponse `pulumi:"deliveryStatusLogging"`
 	// The display name to use for an SNS topic with SMS subscriptions. The display name must be maximum 100 characters long, including hyphens (-), underscores (_), spaces, and tabs.
 	DisplayName *string `pulumi:"displayName"`
 	// Set to true to create a FIFO topic.
@@ -81735,8 +81803,8 @@ func (o AwsSnsTopicPropertiesResponseOutput) DataProtectionPolicy() pulumi.AnyOu
 }
 
 // Property deliveryStatusLogging
-func (o AwsSnsTopicPropertiesResponseOutput) DeliveryStatusLogging() LoggingConfigResponseV1ArrayOutput {
-	return o.ApplyT(func(v AwsSnsTopicPropertiesResponse) []LoggingConfigResponseV1 { return v.DeliveryStatusLogging }).(LoggingConfigResponseV1ArrayOutput)
+func (o AwsSnsTopicPropertiesResponseOutput) DeliveryStatusLogging() LoggingConfigSnsTopicResponseArrayOutput {
+	return o.ApplyT(func(v AwsSnsTopicPropertiesResponse) []LoggingConfigSnsTopicResponse { return v.DeliveryStatusLogging }).(LoggingConfigSnsTopicResponseArrayOutput)
 }
 
 // The display name to use for an SNS topic with SMS subscriptions. The display name must be maximum 100 characters long, including hyphens (-), underscores (_), spaces, and tabs.
@@ -81839,13 +81907,13 @@ func (o AwsSnsTopicPropertiesResponsePtrOutput) DataProtectionPolicy() pulumi.An
 }
 
 // Property deliveryStatusLogging
-func (o AwsSnsTopicPropertiesResponsePtrOutput) DeliveryStatusLogging() LoggingConfigResponseV1ArrayOutput {
-	return o.ApplyT(func(v *AwsSnsTopicPropertiesResponse) []LoggingConfigResponseV1 {
+func (o AwsSnsTopicPropertiesResponsePtrOutput) DeliveryStatusLogging() LoggingConfigSnsTopicResponseArrayOutput {
+	return o.ApplyT(func(v *AwsSnsTopicPropertiesResponse) []LoggingConfigSnsTopicResponse {
 		if v == nil {
 			return nil
 		}
 		return v.DeliveryStatusLogging
-	}).(LoggingConfigResponseV1ArrayOutput)
+	}).(LoggingConfigSnsTopicResponseArrayOutput)
 }
 
 // The display name to use for an SNS topic with SMS subscriptions. The display name must be maximum 100 characters long, including hyphens (-), underscores (_), spaces, and tabs.
@@ -91323,6 +91391,52 @@ func (o CertificateDetailsResponsePtrOutput) ValidTill() pulumi.StringPtrOutput 
 }
 
 // Definition of Certificate
+type CertificateElasticLoadBalancingV2ListenerResponse struct {
+	// The Amazon Resource Name (ARN) of the certificate.
+	CertificateArn *string `pulumi:"certificateArn"`
+}
+
+// Definition of Certificate
+type CertificateElasticLoadBalancingV2ListenerResponseOutput struct{ *pulumi.OutputState }
+
+func (CertificateElasticLoadBalancingV2ListenerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateElasticLoadBalancingV2ListenerResponse)(nil)).Elem()
+}
+
+func (o CertificateElasticLoadBalancingV2ListenerResponseOutput) ToCertificateElasticLoadBalancingV2ListenerResponseOutput() CertificateElasticLoadBalancingV2ListenerResponseOutput {
+	return o
+}
+
+func (o CertificateElasticLoadBalancingV2ListenerResponseOutput) ToCertificateElasticLoadBalancingV2ListenerResponseOutputWithContext(ctx context.Context) CertificateElasticLoadBalancingV2ListenerResponseOutput {
+	return o
+}
+
+// The Amazon Resource Name (ARN) of the certificate.
+func (o CertificateElasticLoadBalancingV2ListenerResponseOutput) CertificateArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateElasticLoadBalancingV2ListenerResponse) *string { return v.CertificateArn }).(pulumi.StringPtrOutput)
+}
+
+type CertificateElasticLoadBalancingV2ListenerResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificateElasticLoadBalancingV2ListenerResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateElasticLoadBalancingV2ListenerResponse)(nil)).Elem()
+}
+
+func (o CertificateElasticLoadBalancingV2ListenerResponseArrayOutput) ToCertificateElasticLoadBalancingV2ListenerResponseArrayOutput() CertificateElasticLoadBalancingV2ListenerResponseArrayOutput {
+	return o
+}
+
+func (o CertificateElasticLoadBalancingV2ListenerResponseArrayOutput) ToCertificateElasticLoadBalancingV2ListenerResponseArrayOutputWithContext(ctx context.Context) CertificateElasticLoadBalancingV2ListenerResponseArrayOutput {
+	return o
+}
+
+func (o CertificateElasticLoadBalancingV2ListenerResponseArrayOutput) Index(i pulumi.IntInput) CertificateElasticLoadBalancingV2ListenerResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateElasticLoadBalancingV2ListenerResponse {
+		return vs[0].([]CertificateElasticLoadBalancingV2ListenerResponse)[vs[1].(int)]
+	}).(CertificateElasticLoadBalancingV2ListenerResponseOutput)
+}
+
+// Definition of Certificate
 type CertificateResponse struct {
 	// <p>The Base64-encoded certificate data required to communicate with your cluster. Add this to the <code>certificate-authority-data</code> section of the <code>kubeconfig</code> file for your cluster.</p>
 	Data *string `pulumi:"data"`
@@ -91380,52 +91494,6 @@ func (o CertificateResponsePtrOutput) Data() pulumi.StringPtrOutput {
 		}
 		return v.Data
 	}).(pulumi.StringPtrOutput)
-}
-
-// Definition of Certificate
-type CertificateResponseV1 struct {
-	// The Amazon Resource Name (ARN) of the certificate.
-	CertificateArn *string `pulumi:"certificateArn"`
-}
-
-// Definition of Certificate
-type CertificateResponseV1Output struct{ *pulumi.OutputState }
-
-func (CertificateResponseV1Output) ElementType() reflect.Type {
-	return reflect.TypeOf((*CertificateResponseV1)(nil)).Elem()
-}
-
-func (o CertificateResponseV1Output) ToCertificateResponseV1Output() CertificateResponseV1Output {
-	return o
-}
-
-func (o CertificateResponseV1Output) ToCertificateResponseV1OutputWithContext(ctx context.Context) CertificateResponseV1Output {
-	return o
-}
-
-// The Amazon Resource Name (ARN) of the certificate.
-func (o CertificateResponseV1Output) CertificateArn() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CertificateResponseV1) *string { return v.CertificateArn }).(pulumi.StringPtrOutput)
-}
-
-type CertificateResponseV1ArrayOutput struct{ *pulumi.OutputState }
-
-func (CertificateResponseV1ArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CertificateResponseV1)(nil)).Elem()
-}
-
-func (o CertificateResponseV1ArrayOutput) ToCertificateResponseV1ArrayOutput() CertificateResponseV1ArrayOutput {
-	return o
-}
-
-func (o CertificateResponseV1ArrayOutput) ToCertificateResponseV1ArrayOutputWithContext(ctx context.Context) CertificateResponseV1ArrayOutput {
-	return o
-}
-
-func (o CertificateResponseV1ArrayOutput) Index(i pulumi.IntInput) CertificateResponseV1Output {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateResponseV1 {
-		return vs[0].([]CertificateResponseV1)[vs[1].(int)]
-	}).(CertificateResponseV1Output)
 }
 
 // Definition of CertificateStatusEnumValue
@@ -107049,207 +107117,58 @@ func (o CustomActionArrayOutput) Index(i pulumi.IntInput) CustomActionOutput {
 }
 
 // Definition of CustomAction
-type CustomActionResponse struct {
+type CustomActionNetworkFirewallRuleGroupResponse struct {
 	// Property actionDefinition
-	ActionDefinition *ActionDefinitionResponse `pulumi:"actionDefinition"`
+	ActionDefinition *ActionDefinitionNetworkFirewallRuleGroupResponse `pulumi:"actionDefinition"`
 	// Property actionName
 	ActionName *string `pulumi:"actionName"`
 }
 
 // Definition of CustomAction
-type CustomActionResponseOutput struct{ *pulumi.OutputState }
+type CustomActionNetworkFirewallRuleGroupResponseOutput struct{ *pulumi.OutputState }
 
-func (CustomActionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomActionResponse)(nil)).Elem()
+func (CustomActionNetworkFirewallRuleGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomActionNetworkFirewallRuleGroupResponse)(nil)).Elem()
 }
 
-func (o CustomActionResponseOutput) ToCustomActionResponseOutput() CustomActionResponseOutput {
+func (o CustomActionNetworkFirewallRuleGroupResponseOutput) ToCustomActionNetworkFirewallRuleGroupResponseOutput() CustomActionNetworkFirewallRuleGroupResponseOutput {
 	return o
 }
 
-func (o CustomActionResponseOutput) ToCustomActionResponseOutputWithContext(ctx context.Context) CustomActionResponseOutput {
+func (o CustomActionNetworkFirewallRuleGroupResponseOutput) ToCustomActionNetworkFirewallRuleGroupResponseOutputWithContext(ctx context.Context) CustomActionNetworkFirewallRuleGroupResponseOutput {
 	return o
 }
 
 // Property actionDefinition
-func (o CustomActionResponseOutput) ActionDefinition() ActionDefinitionResponsePtrOutput {
-	return o.ApplyT(func(v CustomActionResponse) *ActionDefinitionResponse { return v.ActionDefinition }).(ActionDefinitionResponsePtrOutput)
+func (o CustomActionNetworkFirewallRuleGroupResponseOutput) ActionDefinition() ActionDefinitionNetworkFirewallRuleGroupResponsePtrOutput {
+	return o.ApplyT(func(v CustomActionNetworkFirewallRuleGroupResponse) *ActionDefinitionNetworkFirewallRuleGroupResponse {
+		return v.ActionDefinition
+	}).(ActionDefinitionNetworkFirewallRuleGroupResponsePtrOutput)
 }
 
 // Property actionName
-func (o CustomActionResponseOutput) ActionName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CustomActionResponse) *string { return v.ActionName }).(pulumi.StringPtrOutput)
+func (o CustomActionNetworkFirewallRuleGroupResponseOutput) ActionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomActionNetworkFirewallRuleGroupResponse) *string { return v.ActionName }).(pulumi.StringPtrOutput)
 }
 
-type CustomActionResponseArrayOutput struct{ *pulumi.OutputState }
+type CustomActionNetworkFirewallRuleGroupResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (CustomActionResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CustomActionResponse)(nil)).Elem()
+func (CustomActionNetworkFirewallRuleGroupResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomActionNetworkFirewallRuleGroupResponse)(nil)).Elem()
 }
 
-func (o CustomActionResponseArrayOutput) ToCustomActionResponseArrayOutput() CustomActionResponseArrayOutput {
+func (o CustomActionNetworkFirewallRuleGroupResponseArrayOutput) ToCustomActionNetworkFirewallRuleGroupResponseArrayOutput() CustomActionNetworkFirewallRuleGroupResponseArrayOutput {
 	return o
 }
 
-func (o CustomActionResponseArrayOutput) ToCustomActionResponseArrayOutputWithContext(ctx context.Context) CustomActionResponseArrayOutput {
+func (o CustomActionNetworkFirewallRuleGroupResponseArrayOutput) ToCustomActionNetworkFirewallRuleGroupResponseArrayOutputWithContext(ctx context.Context) CustomActionNetworkFirewallRuleGroupResponseArrayOutput {
 	return o
 }
 
-func (o CustomActionResponseArrayOutput) Index(i pulumi.IntInput) CustomActionResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomActionResponse {
-		return vs[0].([]CustomActionResponse)[vs[1].(int)]
-	}).(CustomActionResponseOutput)
-}
-
-// Definition of CustomErrorResponse
-type CustomErrorResponse struct {
-	// The minimum amount of time, in seconds, that you want CloudFront to cache the HTTP status code specified in ``ErrorCode``. When this time period has elapsed, CloudFront queries your origin to see whether the problem that caused the error has been resolved and the requested object is now available. For more information, see [Customizing Error Responses](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html) in the *Amazon CloudFront Developer Guide*.
-	ErrorCachingMinTTL *int `pulumi:"errorCachingMinTTL"`
-	// The HTTP status code for which you want to specify a custom error page and/or a caching duration.
-	ErrorCode *int `pulumi:"errorCode"`
-	// The HTTP status code that you want CloudFront to return to the viewer along with the custom error page. There are a variety of reasons that you might want CloudFront to return a status code different from the status code that your origin returned to CloudFront, for example:  +  Some Internet devices (some firewalls and corporate proxies, for example) intercept HTTP 4xx and 5xx and prevent the response from being returned to the viewer. If you substitute ``200``, the response typically won't be intercepted.  +  If you don't care about distinguishing among different client errors or server errors, you can specify ``400`` or ``500`` as the ``ResponseCode`` for all 4xx or 5xx errors.  +  You might want to return a ``200`` status code (OK) and static website so your customers don't know that your website is down.   If you specify a value for ``ResponseCode``, you must also specify a value for ``ResponsePagePath``.
-	ResponseCode *int `pulumi:"responseCode"`
-	// The path to the custom error page that you want CloudFront to return to a viewer when your origin returns the HTTP status code specified by ``ErrorCode``, for example, ``/4xx-errors/403-forbidden.html``. If you want to store your objects and your custom error pages in different locations, your distribution must include a cache behavior for which the following is true:  +  The value of ``PathPattern`` matches the path to your custom error messages. For example, suppose you saved custom error pages for 4xx errors in an Amazon S3 bucket in a directory named ``/4xx-errors``. Your distribution must include a cache behavior for which the path pattern routes requests for your custom error pages to that location, for example, ``/4xx-errors/*``.  +  The value of ``TargetOriginId`` specifies the value of the ``ID`` element for the origin that contains your custom error pages.   If you specify a value for ``ResponsePagePath``, you must also specify a value for ``ResponseCode``. We recommend that you store custom error pages in an Amazon S3 bucket. If you store custom error pages on an HTTP server and the server starts to return 5xx errors, CloudFront can't get the files that you want to return to viewers because the origin server is unavailable.
-	ResponsePagePath *string `pulumi:"responsePagePath"`
-}
-
-// Defaults sets the appropriate defaults for CustomErrorResponse
-func (val *CustomErrorResponse) Defaults() *CustomErrorResponse {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.ErrorCachingMinTTL == nil {
-		errorCachingMinTTL_ := 300
-		tmp.ErrorCachingMinTTL = &errorCachingMinTTL_
-	}
-	return &tmp
-}
-
-// CustomErrorResponseInput is an input type that accepts CustomErrorResponseArgs and CustomErrorResponseOutput values.
-// You can construct a concrete instance of `CustomErrorResponseInput` via:
-//
-//	CustomErrorResponseArgs{...}
-type CustomErrorResponseInput interface {
-	pulumi.Input
-
-	ToCustomErrorResponseOutput() CustomErrorResponseOutput
-	ToCustomErrorResponseOutputWithContext(context.Context) CustomErrorResponseOutput
-}
-
-// Definition of CustomErrorResponse
-type CustomErrorResponseArgs struct {
-	// The minimum amount of time, in seconds, that you want CloudFront to cache the HTTP status code specified in ``ErrorCode``. When this time period has elapsed, CloudFront queries your origin to see whether the problem that caused the error has been resolved and the requested object is now available. For more information, see [Customizing Error Responses](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html) in the *Amazon CloudFront Developer Guide*.
-	ErrorCachingMinTTL pulumi.IntPtrInput `pulumi:"errorCachingMinTTL"`
-	// The HTTP status code for which you want to specify a custom error page and/or a caching duration.
-	ErrorCode pulumi.IntPtrInput `pulumi:"errorCode"`
-	// The HTTP status code that you want CloudFront to return to the viewer along with the custom error page. There are a variety of reasons that you might want CloudFront to return a status code different from the status code that your origin returned to CloudFront, for example:  +  Some Internet devices (some firewalls and corporate proxies, for example) intercept HTTP 4xx and 5xx and prevent the response from being returned to the viewer. If you substitute ``200``, the response typically won't be intercepted.  +  If you don't care about distinguishing among different client errors or server errors, you can specify ``400`` or ``500`` as the ``ResponseCode`` for all 4xx or 5xx errors.  +  You might want to return a ``200`` status code (OK) and static website so your customers don't know that your website is down.   If you specify a value for ``ResponseCode``, you must also specify a value for ``ResponsePagePath``.
-	ResponseCode pulumi.IntPtrInput `pulumi:"responseCode"`
-	// The path to the custom error page that you want CloudFront to return to a viewer when your origin returns the HTTP status code specified by ``ErrorCode``, for example, ``/4xx-errors/403-forbidden.html``. If you want to store your objects and your custom error pages in different locations, your distribution must include a cache behavior for which the following is true:  +  The value of ``PathPattern`` matches the path to your custom error messages. For example, suppose you saved custom error pages for 4xx errors in an Amazon S3 bucket in a directory named ``/4xx-errors``. Your distribution must include a cache behavior for which the path pattern routes requests for your custom error pages to that location, for example, ``/4xx-errors/*``.  +  The value of ``TargetOriginId`` specifies the value of the ``ID`` element for the origin that contains your custom error pages.   If you specify a value for ``ResponsePagePath``, you must also specify a value for ``ResponseCode``. We recommend that you store custom error pages in an Amazon S3 bucket. If you store custom error pages on an HTTP server and the server starts to return 5xx errors, CloudFront can't get the files that you want to return to viewers because the origin server is unavailable.
-	ResponsePagePath pulumi.StringPtrInput `pulumi:"responsePagePath"`
-}
-
-// Defaults sets the appropriate defaults for CustomErrorResponseArgs
-func (val *CustomErrorResponseArgs) Defaults() *CustomErrorResponseArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.ErrorCachingMinTTL == nil {
-		tmp.ErrorCachingMinTTL = pulumi.IntPtr(300)
-	}
-	return &tmp
-}
-func (CustomErrorResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomErrorResponse)(nil)).Elem()
-}
-
-func (i CustomErrorResponseArgs) ToCustomErrorResponseOutput() CustomErrorResponseOutput {
-	return i.ToCustomErrorResponseOutputWithContext(context.Background())
-}
-
-func (i CustomErrorResponseArgs) ToCustomErrorResponseOutputWithContext(ctx context.Context) CustomErrorResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomErrorResponseOutput)
-}
-
-// CustomErrorResponseArrayInput is an input type that accepts CustomErrorResponseArray and CustomErrorResponseArrayOutput values.
-// You can construct a concrete instance of `CustomErrorResponseArrayInput` via:
-//
-//	CustomErrorResponseArray{ CustomErrorResponseArgs{...} }
-type CustomErrorResponseArrayInput interface {
-	pulumi.Input
-
-	ToCustomErrorResponseArrayOutput() CustomErrorResponseArrayOutput
-	ToCustomErrorResponseArrayOutputWithContext(context.Context) CustomErrorResponseArrayOutput
-}
-
-type CustomErrorResponseArray []CustomErrorResponseInput
-
-func (CustomErrorResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CustomErrorResponse)(nil)).Elem()
-}
-
-func (i CustomErrorResponseArray) ToCustomErrorResponseArrayOutput() CustomErrorResponseArrayOutput {
-	return i.ToCustomErrorResponseArrayOutputWithContext(context.Background())
-}
-
-func (i CustomErrorResponseArray) ToCustomErrorResponseArrayOutputWithContext(ctx context.Context) CustomErrorResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CustomErrorResponseArrayOutput)
-}
-
-// Definition of CustomErrorResponse
-type CustomErrorResponseOutput struct{ *pulumi.OutputState }
-
-func (CustomErrorResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomErrorResponse)(nil)).Elem()
-}
-
-func (o CustomErrorResponseOutput) ToCustomErrorResponseOutput() CustomErrorResponseOutput {
-	return o
-}
-
-func (o CustomErrorResponseOutput) ToCustomErrorResponseOutputWithContext(ctx context.Context) CustomErrorResponseOutput {
-	return o
-}
-
-// The minimum amount of time, in seconds, that you want CloudFront to cache the HTTP status code specified in “ErrorCode“. When this time period has elapsed, CloudFront queries your origin to see whether the problem that caused the error has been resolved and the requested object is now available. For more information, see [Customizing Error Responses](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/custom-error-pages.html) in the *Amazon CloudFront Developer Guide*.
-func (o CustomErrorResponseOutput) ErrorCachingMinTTL() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v CustomErrorResponse) *int { return v.ErrorCachingMinTTL }).(pulumi.IntPtrOutput)
-}
-
-// The HTTP status code for which you want to specify a custom error page and/or a caching duration.
-func (o CustomErrorResponseOutput) ErrorCode() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v CustomErrorResponse) *int { return v.ErrorCode }).(pulumi.IntPtrOutput)
-}
-
-// The HTTP status code that you want CloudFront to return to the viewer along with the custom error page. There are a variety of reasons that you might want CloudFront to return a status code different from the status code that your origin returned to CloudFront, for example:  +  Some Internet devices (some firewalls and corporate proxies, for example) intercept HTTP 4xx and 5xx and prevent the response from being returned to the viewer. If you substitute “200“, the response typically won't be intercepted.  +  If you don't care about distinguishing among different client errors or server errors, you can specify “400“ or “500“ as the “ResponseCode“ for all 4xx or 5xx errors.  +  You might want to return a “200“ status code (OK) and static website so your customers don't know that your website is down.   If you specify a value for “ResponseCode“, you must also specify a value for “ResponsePagePath“.
-func (o CustomErrorResponseOutput) ResponseCode() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v CustomErrorResponse) *int { return v.ResponseCode }).(pulumi.IntPtrOutput)
-}
-
-// The path to the custom error page that you want CloudFront to return to a viewer when your origin returns the HTTP status code specified by “ErrorCode“, for example, “/4xx-errors/403-forbidden.html“. If you want to store your objects and your custom error pages in different locations, your distribution must include a cache behavior for which the following is true:  +  The value of “PathPattern“ matches the path to your custom error messages. For example, suppose you saved custom error pages for 4xx errors in an Amazon S3 bucket in a directory named “/4xx-errors“. Your distribution must include a cache behavior for which the path pattern routes requests for your custom error pages to that location, for example, “/4xx-errors/*“.  +  The value of “TargetOriginId“ specifies the value of the “ID“ element for the origin that contains your custom error pages.   If you specify a value for “ResponsePagePath“, you must also specify a value for “ResponseCode“. We recommend that you store custom error pages in an Amazon S3 bucket. If you store custom error pages on an HTTP server and the server starts to return 5xx errors, CloudFront can't get the files that you want to return to viewers because the origin server is unavailable.
-func (o CustomErrorResponseOutput) ResponsePagePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CustomErrorResponse) *string { return v.ResponsePagePath }).(pulumi.StringPtrOutput)
-}
-
-type CustomErrorResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (CustomErrorResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]CustomErrorResponse)(nil)).Elem()
-}
-
-func (o CustomErrorResponseArrayOutput) ToCustomErrorResponseArrayOutput() CustomErrorResponseArrayOutput {
-	return o
-}
-
-func (o CustomErrorResponseArrayOutput) ToCustomErrorResponseArrayOutputWithContext(ctx context.Context) CustomErrorResponseArrayOutput {
-	return o
-}
-
-func (o CustomErrorResponseArrayOutput) Index(i pulumi.IntInput) CustomErrorResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomErrorResponse {
-		return vs[0].([]CustomErrorResponse)[vs[1].(int)]
-	}).(CustomErrorResponseOutput)
+func (o CustomActionNetworkFirewallRuleGroupResponseArrayOutput) Index(i pulumi.IntInput) CustomActionNetworkFirewallRuleGroupResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomActionNetworkFirewallRuleGroupResponse {
+		return vs[0].([]CustomActionNetworkFirewallRuleGroupResponse)[vs[1].(int)]
+	}).(CustomActionNetworkFirewallRuleGroupResponseOutput)
 }
 
 func init() {
@@ -107301,6 +107220,8 @@ func init() {
 	pulumi.RegisterOutputType(ActionConditionModelPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(ActionDefinitionOutput{})
 	pulumi.RegisterOutputType(ActionDefinitionPtrOutput{})
+	pulumi.RegisterOutputType(ActionDefinitionNetworkFirewallRuleGroupResponseOutput{})
+	pulumi.RegisterOutputType(ActionDefinitionNetworkFirewallRuleGroupResponsePtrOutput{})
 	pulumi.RegisterOutputType(ActionDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(ActionDefinitionResponsePtrOutput{})
 	pulumi.RegisterOutputType(ActionResponseOutput{})
@@ -108006,10 +107927,10 @@ func init() {
 	pulumi.RegisterOutputType(CertificateDetailsPtrOutput{})
 	pulumi.RegisterOutputType(CertificateDetailsResponseOutput{})
 	pulumi.RegisterOutputType(CertificateDetailsResponsePtrOutput{})
+	pulumi.RegisterOutputType(CertificateElasticLoadBalancingV2ListenerResponseOutput{})
+	pulumi.RegisterOutputType(CertificateElasticLoadBalancingV2ListenerResponseArrayOutput{})
 	pulumi.RegisterOutputType(CertificateResponseOutput{})
 	pulumi.RegisterOutputType(CertificateResponsePtrOutput{})
-	pulumi.RegisterOutputType(CertificateResponseV1Output{})
-	pulumi.RegisterOutputType(CertificateResponseV1ArrayOutput{})
 	pulumi.RegisterOutputType(CertificateStatusEnumValueOutput{})
 	pulumi.RegisterOutputType(CertificateStatusEnumValuePtrOutput{})
 	pulumi.RegisterOutputType(CertificateStatusEnumValueResponseOutput{})
@@ -108236,8 +108157,6 @@ func init() {
 	pulumi.RegisterOutputType(CsvResponsePtrOutput{})
 	pulumi.RegisterOutputType(CustomActionOutput{})
 	pulumi.RegisterOutputType(CustomActionArrayOutput{})
-	pulumi.RegisterOutputType(CustomActionResponseOutput{})
-	pulumi.RegisterOutputType(CustomActionResponseArrayOutput{})
-	pulumi.RegisterOutputType(CustomErrorResponseOutput{})
-	pulumi.RegisterOutputType(CustomErrorResponseArrayOutput{})
+	pulumi.RegisterOutputType(CustomActionNetworkFirewallRuleGroupResponseOutput{})
+	pulumi.RegisterOutputType(CustomActionNetworkFirewallRuleGroupResponseArrayOutput{})
 }

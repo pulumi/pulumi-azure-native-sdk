@@ -38,7 +38,7 @@ type LookupAzureKeyVaultSecretProviderClassResult struct {
 	// The user assigned managed identity client ID that should be used to access the Azure Key Vault.
 	ClientId string `pulumi:"clientId"`
 	// The complex type of the extended location.
-	ExtendedLocation *AzureResourceManagerCommonTypesExtendedLocationResponse `pulumi:"extendedLocation"`
+	ExtendedLocation *ExtendedLocationResponse `pulumi:"extendedLocation"`
 	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the Azure Key Vault to sync secrets from.
@@ -107,10 +107,10 @@ func (o LookupAzureKeyVaultSecretProviderClassResultOutput) ClientId() pulumi.St
 }
 
 // The complex type of the extended location.
-func (o LookupAzureKeyVaultSecretProviderClassResultOutput) ExtendedLocation() AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput {
-	return o.ApplyT(func(v LookupAzureKeyVaultSecretProviderClassResult) *AzureResourceManagerCommonTypesExtendedLocationResponse {
+func (o LookupAzureKeyVaultSecretProviderClassResultOutput) ExtendedLocation() ExtendedLocationResponsePtrOutput {
+	return o.ApplyT(func(v LookupAzureKeyVaultSecretProviderClassResult) *ExtendedLocationResponse {
 		return v.ExtendedLocation
-	}).(AzureResourceManagerCommonTypesExtendedLocationResponsePtrOutput)
+	}).(ExtendedLocationResponsePtrOutput)
 }
 
 // Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"

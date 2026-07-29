@@ -46,7 +46,7 @@ type LookupSqlResourceSqlRoleDefinitionResult struct {
 	// The name of the database account.
 	Name string `pulumi:"name"`
 	// The set of operations allowed through this Role Definition.
-	Permissions []PermissionResponse `pulumi:"permissions"`
+	Permissions []PermissionSqlResourceSqlRoleDefinitionResponse `pulumi:"permissions"`
 	// A user-friendly name for the Role Definition. Must be unique for the database account.
 	RoleName *string `pulumi:"roleName"`
 	// The type of Azure resource.
@@ -111,8 +111,10 @@ func (o LookupSqlResourceSqlRoleDefinitionResultOutput) Name() pulumi.StringOutp
 }
 
 // The set of operations allowed through this Role Definition.
-func (o LookupSqlResourceSqlRoleDefinitionResultOutput) Permissions() PermissionResponseArrayOutput {
-	return o.ApplyT(func(v LookupSqlResourceSqlRoleDefinitionResult) []PermissionResponse { return v.Permissions }).(PermissionResponseArrayOutput)
+func (o LookupSqlResourceSqlRoleDefinitionResultOutput) Permissions() PermissionSqlResourceSqlRoleDefinitionResponseArrayOutput {
+	return o.ApplyT(func(v LookupSqlResourceSqlRoleDefinitionResult) []PermissionSqlResourceSqlRoleDefinitionResponse {
+		return v.Permissions
+	}).(PermissionSqlResourceSqlRoleDefinitionResponseArrayOutput)
 }
 
 // A user-friendly name for the Role Definition. Must be unique for the database account.
