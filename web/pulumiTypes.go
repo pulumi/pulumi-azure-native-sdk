@@ -32655,10 +32655,6 @@ func (val *SiteConfig) Defaults() *SiteConfig {
 		http20Enabled_ := true
 		tmp.Http20Enabled = &http20Enabled_
 	}
-	if tmp.Http20ProxyFlag == nil {
-		http20ProxyFlag_ := 0
-		tmp.Http20ProxyFlag = &http20ProxyFlag_
-	}
 	if tmp.LocalMySqlEnabled == nil {
 		localMySqlEnabled_ := false
 		tmp.LocalMySqlEnabled = &localMySqlEnabled_
@@ -32843,9 +32839,6 @@ func (val *SiteConfigArgs) Defaults() *SiteConfigArgs {
 	tmp := *val
 	if tmp.Http20Enabled == nil {
 		tmp.Http20Enabled = pulumi.BoolPtr(true)
-	}
-	if tmp.Http20ProxyFlag == nil {
-		tmp.Http20ProxyFlag = pulumi.IntPtr(0)
 	}
 	if tmp.LocalMySqlEnabled == nil {
 		tmp.LocalMySqlEnabled = pulumi.BoolPtr(false)
@@ -34208,10 +34201,6 @@ func (val *SiteConfigResponse) Defaults() *SiteConfigResponse {
 	if tmp.Http20Enabled == nil {
 		http20Enabled_ := true
 		tmp.Http20Enabled = &http20Enabled_
-	}
-	if tmp.Http20ProxyFlag == nil {
-		http20ProxyFlag_ := 0
-		tmp.Http20ProxyFlag = &http20ProxyFlag_
 	}
 	if tmp.LocalMySqlEnabled == nil {
 		localMySqlEnabled_ := false
