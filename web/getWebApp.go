@@ -195,10 +195,6 @@ func (val *LookupWebAppResult) Defaults() *LookupWebAppResult {
 		isXenon_ := false
 		tmp.IsXenon = &isXenon_
 	}
-	if tmp.Reserved == nil {
-		reserved_ := false
-		tmp.Reserved = &reserved_
-	}
 	if tmp.ScmSiteAlsoStopped == nil {
 		scmSiteAlsoStopped_ := false
 		tmp.ScmSiteAlsoStopped = &scmSiteAlsoStopped_

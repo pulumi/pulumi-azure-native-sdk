@@ -180,9 +180,6 @@ func NewWebApp(ctx *pulumi.Context,
 	if args.IsXenon == nil {
 		args.IsXenon = pulumi.BoolPtr(false)
 	}
-	if args.Reserved == nil {
-		args.Reserved = pulumi.BoolPtr(false)
-	}
 	if args.ScmSiteAlsoStopped == nil {
 		args.ScmSiteAlsoStopped = pulumi.BoolPtr(false)
 	}
