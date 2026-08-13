@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2024-06-30-preview. In version 2.x of the Azure Native provider, it used API version 2022-08-31-preview.
 //
-// Other available API versions: 2022-08-31-preview, 2023-12-10-preview, 2025-03-31. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hardwaresecuritymodules [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2022-08-31-preview, 2023-12-10-preview, 2025-03-31, 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native hardwaresecuritymodules [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type CloudHsmClusterPrivateEndpointConnection struct {
 	pulumi.CustomResourceState
 
@@ -68,6 +68,9 @@ func NewCloudHsmClusterPrivateEndpointConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:hardwaresecuritymodules/v20250331:CloudHsmClusterPrivateEndpointConnection"),
+		},
+		{
+			Type: pulumi.String("azure-native:hardwaresecuritymodules/v20251201preview:CloudHsmClusterPrivateEndpointConnection"),
 		},
 	})
 	opts = append(opts, aliases)

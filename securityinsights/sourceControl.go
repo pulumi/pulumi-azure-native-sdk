@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2025-09-01. In version 2.x of the Azure Native provider, it used API version 2023-05-01-preview.
 //
-// Other available API versions: 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SourceControl struct {
 	pulumi.CustomResourceState
 
@@ -95,6 +95,9 @@ func NewSourceControl(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:securityinsights/v20250901:SourceControl"),
 		},
+		{
+			Type: pulumi.String("azure-native:securityinsights/v20251001preview:SourceControl"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)
@@ -150,7 +153,7 @@ type sourceControlArgs struct {
 	ServicePrincipal *ServicePrincipal `pulumi:"servicePrincipal"`
 	// Source control Id
 	SourceControlId *string `pulumi:"sourceControlId"`
-	// The name of the workspace.
+	// The name of the monitor workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
@@ -176,7 +179,7 @@ type SourceControlArgs struct {
 	ServicePrincipal ServicePrincipalPtrInput
 	// Source control Id
 	SourceControlId pulumi.StringPtrInput
-	// The name of the workspace.
+	// The name of the monitor workspace.
 	WorkspaceName pulumi.StringInput
 }
 

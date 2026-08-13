@@ -14,6 +14,8 @@ import (
 // This api gets ispCacheNode resource issues details histrory information
 //
 // Uses Azure REST API version 2024-11-30-preview.
+//
+// Other available API versions: 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedcache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func GetEnterpriseMccCacheNodesOperationCacheNodeMccIssueDetailsHistory(ctx *pulumi.Context, args *GetEnterpriseMccCacheNodesOperationCacheNodeMccIssueDetailsHistoryArgs, opts ...pulumi.InvokeOption) (*GetEnterpriseMccCacheNodesOperationCacheNodeMccIssueDetailsHistoryResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv GetEnterpriseMccCacheNodesOperationCacheNodeMccIssueDetailsHistoryResult

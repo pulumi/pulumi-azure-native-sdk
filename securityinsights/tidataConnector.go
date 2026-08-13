@@ -895,6 +895,9 @@ func NewTIDataConnector(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20250901:TIDataConnector"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20251001preview:TIDataConnector"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:AADDataConnector"),
 		},
 		{

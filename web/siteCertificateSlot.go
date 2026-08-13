@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2025-05-01.
 //
-// Other available API versions: 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-11-01, 2025-03-01, 2026-03-01-preview, 2026-03-15, 2026-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type SiteCertificateSlot struct {
 	pulumi.CustomResourceState
 
@@ -109,6 +109,9 @@ func NewSiteCertificateSlot(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:web/v20260315:SiteCertificateSlot"),
+		},
+		{
+			Type: pulumi.String("azure-native:web/v20260715:SiteCertificateSlot"),
 		},
 	})
 	opts = append(opts, aliases)

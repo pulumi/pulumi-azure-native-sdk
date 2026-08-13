@@ -25,12 +25,14 @@ func ListDiagnosticSettingsCategory(ctx *pulumi.Context, args *ListDiagnosticSet
 }
 
 type ListDiagnosticSettingsCategoryArgs struct {
-	// The identifier of the resource.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceUri string `pulumi:"resourceUri"`
 }
 
 // Represents a collection of diagnostic setting category resources.
 type ListDiagnosticSettingsCategoryResult struct {
+	// The URL to get the next set of results.
+	NextLink *string `pulumi:"nextLink"`
 	// The collection of diagnostic settings category resources.
 	Value []DiagnosticSettingsCategoryResourceResponse `pulumi:"value"`
 }
@@ -45,7 +47,7 @@ func ListDiagnosticSettingsCategoryOutput(ctx *pulumi.Context, args ListDiagnost
 }
 
 type ListDiagnosticSettingsCategoryOutputArgs struct {
-	// The identifier of the resource.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceUri pulumi.StringInput `pulumi:"resourceUri"`
 }
 
@@ -66,6 +68,11 @@ func (o ListDiagnosticSettingsCategoryResultOutput) ToListDiagnosticSettingsCate
 
 func (o ListDiagnosticSettingsCategoryResultOutput) ToListDiagnosticSettingsCategoryResultOutputWithContext(ctx context.Context) ListDiagnosticSettingsCategoryResultOutput {
 	return o
+}
+
+// The URL to get the next set of results.
+func (o ListDiagnosticSettingsCategoryResultOutput) NextLink() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ListDiagnosticSettingsCategoryResult) *string { return v.NextLink }).(pulumi.StringPtrOutput)
 }
 
 // The collection of diagnostic settings category resources.

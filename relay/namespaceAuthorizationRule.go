@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2021-11-01.
 //
-// Other available API versions: 2021-11-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2021-11-01, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native relay [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type NamespaceAuthorizationRule struct {
 	pulumi.CustomResourceState
 
@@ -62,6 +62,12 @@ func NewNamespaceAuthorizationRule(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:relay/v20240101:NamespaceAuthorizationRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:relay/v20260101:NamespaceAuthorizationRule"),
+		},
+		{
+			Type: pulumi.String("azure-native:relay/v20260701preview:NamespaceAuthorizationRule"),
 		},
 	})
 	opts = append(opts, aliases)

@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2025-05-01-preview.
 //
-// Other available API versions: 2025-12-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native billingbenefits [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2025-12-01-preview, 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native billingbenefits [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type ConditionalCredit struct {
 	pulumi.CustomResourceState
 
@@ -64,6 +64,9 @@ func NewConditionalCredit(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:billingbenefits/v20251201preview:ConditionalCredit"),
+		},
+		{
+			Type: pulumi.String("azure-native:billingbenefits/v20260601:ConditionalCredit"),
 		},
 	})
 	opts = append(opts, aliases)

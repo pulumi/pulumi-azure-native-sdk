@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2023-05-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-05-01-preview.
 //
-// Other available API versions: 2024-11-30-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedcache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2024-11-30-preview, 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native connectedcache [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type EnterpriseMccCustomer struct {
 	pulumi.CustomResourceState
 
@@ -52,6 +52,9 @@ func NewEnterpriseMccCustomer(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:connectedcache/v20241130preview:EnterpriseMccCustomer"),
+		},
+		{
+			Type: pulumi.String("azure-native:connectedcache/v20260601:EnterpriseMccCustomer"),
 		},
 	})
 	opts = append(opts, aliases)

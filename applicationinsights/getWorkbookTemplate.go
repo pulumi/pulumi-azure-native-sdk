@@ -41,7 +41,7 @@ type LookupWorkbookTemplateResult struct {
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Workbook galleries supported by the template.
 	Galleries []WorkbookTemplateGalleryResponse `pulumi:"galleries"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Key value pair of localized gallery. Each key is the locale code of languages supported by the Azure portal.
 	Localized map[string][]WorkbookTemplateLocalizedGalleryResponse `pulumi:"localized"`
@@ -111,7 +111,7 @@ func (o LookupWorkbookTemplateResultOutput) Galleries() WorkbookTemplateGalleryR
 	return o.ApplyT(func(v LookupWorkbookTemplateResult) []WorkbookTemplateGalleryResponse { return v.Galleries }).(WorkbookTemplateGalleryResponseArrayOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupWorkbookTemplateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkbookTemplateResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -27,7 +27,7 @@ func LookupDiagnosticSetting(ctx *pulumi.Context, args *LookupDiagnosticSettingA
 type LookupDiagnosticSettingArgs struct {
 	// The name of the diagnostic setting.
 	Name string `pulumi:"name"`
-	// The identifier of the resource.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceUri string `pulumi:"resourceUri"`
 }
 
@@ -39,23 +39,23 @@ type LookupDiagnosticSettingResult struct {
 	EventHubAuthorizationRuleId *string `pulumi:"eventHubAuthorizationRuleId"`
 	// The name of the event hub. If none is specified, the default event hub will be selected.
 	EventHubName *string `pulumi:"eventHubName"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// A string indicating whether the export to Log Analytics should use the default destination type, i.e. AzureDiagnostics, or use a destination type constructed as follows: <normalized service identity>_<normalized category name>. Possible values are: Dedicated and null (null is default.)
 	LogAnalyticsDestinationType *string `pulumi:"logAnalyticsDestinationType"`
 	// The list of logs settings.
-	Logs []LogSettingsResponse `pulumi:"logs"`
+	Logs []DiagnosticsLogSettingsResponse `pulumi:"logs"`
 	// The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
 	MarketplacePartnerId *string `pulumi:"marketplacePartnerId"`
 	// The list of metric settings.
-	Metrics []MetricSettingsResponse `pulumi:"metrics"`
+	Metrics []DiagnosticsMetricSettingsResponse `pulumi:"metrics"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// The service bus rule Id of the diagnostic setting. This is here to maintain backwards compatibility.
 	ServiceBusRuleId *string `pulumi:"serviceBusRuleId"`
 	// The resource ID of the storage account to which you would like to send Diagnostic Logs.
 	StorageAccountId *string `pulumi:"storageAccountId"`
-	// The system metadata related to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
@@ -75,7 +75,7 @@ func LookupDiagnosticSettingOutput(ctx *pulumi.Context, args LookupDiagnosticSet
 type LookupDiagnosticSettingOutputArgs struct {
 	// The name of the diagnostic setting.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The identifier of the resource.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceUri pulumi.StringInput `pulumi:"resourceUri"`
 }
 
@@ -113,7 +113,7 @@ func (o LookupDiagnosticSettingResultOutput) EventHubName() pulumi.StringPtrOutp
 	return o.ApplyT(func(v LookupDiagnosticSettingResult) *string { return v.EventHubName }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupDiagnosticSettingResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiagnosticSettingResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -124,8 +124,8 @@ func (o LookupDiagnosticSettingResultOutput) LogAnalyticsDestinationType() pulum
 }
 
 // The list of logs settings.
-func (o LookupDiagnosticSettingResultOutput) Logs() LogSettingsResponseArrayOutput {
-	return o.ApplyT(func(v LookupDiagnosticSettingResult) []LogSettingsResponse { return v.Logs }).(LogSettingsResponseArrayOutput)
+func (o LookupDiagnosticSettingResultOutput) Logs() DiagnosticsLogSettingsResponseArrayOutput {
+	return o.ApplyT(func(v LookupDiagnosticSettingResult) []DiagnosticsLogSettingsResponse { return v.Logs }).(DiagnosticsLogSettingsResponseArrayOutput)
 }
 
 // The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
@@ -134,8 +134,8 @@ func (o LookupDiagnosticSettingResultOutput) MarketplacePartnerId() pulumi.Strin
 }
 
 // The list of metric settings.
-func (o LookupDiagnosticSettingResultOutput) Metrics() MetricSettingsResponseArrayOutput {
-	return o.ApplyT(func(v LookupDiagnosticSettingResult) []MetricSettingsResponse { return v.Metrics }).(MetricSettingsResponseArrayOutput)
+func (o LookupDiagnosticSettingResultOutput) Metrics() DiagnosticsMetricSettingsResponseArrayOutput {
+	return o.ApplyT(func(v LookupDiagnosticSettingResult) []DiagnosticsMetricSettingsResponse { return v.Metrics }).(DiagnosticsMetricSettingsResponseArrayOutput)
 }
 
 // The name of the resource
@@ -153,7 +153,7 @@ func (o LookupDiagnosticSettingResultOutput) StorageAccountId() pulumi.StringPtr
 	return o.ApplyT(func(v LookupDiagnosticSettingResult) *string { return v.StorageAccountId }).(pulumi.StringPtrOutput)
 }
 
-// The system metadata related to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupDiagnosticSettingResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupDiagnosticSettingResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }

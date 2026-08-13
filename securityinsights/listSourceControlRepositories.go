@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2025-09-01.
 //
-// Other available API versions: 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func ListSourceControlRepositories(ctx *pulumi.Context, args *ListSourceControlRepositoriesArgs, opts ...pulumi.InvokeOption) (*ListSourceControlRepositoriesResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv ListSourceControlRepositoriesResult
@@ -47,9 +47,9 @@ type ListSourceControlRepositoriesArgs struct {
 
 // List all the source controls.
 type ListSourceControlRepositoriesResult struct {
-	// URL to fetch the next set of repositories.
+	// The link to the next page of items
 	NextLink string `pulumi:"nextLink"`
-	// Array of repositories.
+	// The Repo items on this page
 	Value []RepoResponse `pulumi:"value"`
 }
 
@@ -100,12 +100,12 @@ func (o ListSourceControlRepositoriesResultOutput) ToListSourceControlRepositori
 	return o
 }
 
-// URL to fetch the next set of repositories.
+// The link to the next page of items
 func (o ListSourceControlRepositoriesResultOutput) NextLink() pulumi.StringOutput {
 	return o.ApplyT(func(v ListSourceControlRepositoriesResult) string { return v.NextLink }).(pulumi.StringOutput)
 }
 
-// Array of repositories.
+// The Repo items on this page
 func (o ListSourceControlRepositoriesResultOutput) Value() RepoResponseArrayOutput {
 	return o.ApplyT(func(v ListSourceControlRepositoriesResult) []RepoResponse { return v.Value }).(RepoResponseArrayOutput)
 }

@@ -57,7 +57,7 @@ type LookupScheduledQueryRuleResult struct {
 	Etag string `pulumi:"etag"`
 	// How often the scheduled query rule is evaluated represented in ISO 8601 duration format. Relevant and required only for rules of the kind LogAlert.
 	EvaluationFrequency *string `pulumi:"evaluationFrequency"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The identity of the resource.
 	Identity *IdentityResponse `pulumi:"identity"`
@@ -185,7 +185,7 @@ func (o LookupScheduledQueryRuleResultOutput) EvaluationFrequency() pulumi.Strin
 	return o.ApplyT(func(v LookupScheduledQueryRuleResult) *string { return v.EvaluationFrequency }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupScheduledQueryRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScheduledQueryRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }

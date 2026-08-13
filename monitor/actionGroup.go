@@ -168,11 +168,11 @@ type actionGroupArgs struct {
 	// The list of AutomationRunbook receivers that are part of this action group.
 	AutomationRunbookReceivers []AutomationRunbookReceiver `pulumi:"automationRunbookReceivers"`
 	// The list of AzureAppPush receivers that are part of this action group.
-	AzureAppPushReceivers []AzureAppPushReceiver `pulumi:"azureAppPushReceivers"`
+	AzureAppPushReceivers []MicrosoftCommonAzureAppPushReceiver `pulumi:"azureAppPushReceivers"`
 	// The list of azure function receivers that are part of this action group.
 	AzureFunctionReceivers []AzureFunctionReceiver `pulumi:"azureFunctionReceivers"`
 	// The list of email receivers that are part of this action group.
-	EmailReceivers []EmailReceiver `pulumi:"emailReceivers"`
+	EmailReceivers []MicrosoftCommonEmailReceiver `pulumi:"emailReceivers"`
 	// Indicates whether this action group is enabled. If an action group is not enabled, then none of its receivers will receive communications.
 	Enabled bool `pulumi:"enabled"`
 	// The list of event hub receivers that are part of this action group.
@@ -192,11 +192,11 @@ type actionGroupArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// The list of SMS receivers that are part of this action group.
-	SmsReceivers []SmsReceiver `pulumi:"smsReceivers"`
+	SmsReceivers []MicrosoftCommonSmsReceiver `pulumi:"smsReceivers"`
 	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The list of voice receivers that are part of this action group.
-	VoiceReceivers []VoiceReceiver `pulumi:"voiceReceivers"`
+	VoiceReceivers []MicrosoftCommonVoiceReceiver `pulumi:"voiceReceivers"`
 	// The list of webhook receivers that are part of this action group.
 	WebhookReceivers []WebhookReceiver `pulumi:"webhookReceivers"`
 }
@@ -210,11 +210,11 @@ type ActionGroupArgs struct {
 	// The list of AutomationRunbook receivers that are part of this action group.
 	AutomationRunbookReceivers AutomationRunbookReceiverArrayInput
 	// The list of AzureAppPush receivers that are part of this action group.
-	AzureAppPushReceivers AzureAppPushReceiverArrayInput
+	AzureAppPushReceivers MicrosoftCommonAzureAppPushReceiverArrayInput
 	// The list of azure function receivers that are part of this action group.
 	AzureFunctionReceivers AzureFunctionReceiverArrayInput
 	// The list of email receivers that are part of this action group.
-	EmailReceivers EmailReceiverArrayInput
+	EmailReceivers MicrosoftCommonEmailReceiverArrayInput
 	// Indicates whether this action group is enabled. If an action group is not enabled, then none of its receivers will receive communications.
 	Enabled pulumi.BoolInput
 	// The list of event hub receivers that are part of this action group.
@@ -234,11 +234,11 @@ type ActionGroupArgs struct {
 	// The name of the resource group. The name is case insensitive.
 	ResourceGroupName pulumi.StringInput
 	// The list of SMS receivers that are part of this action group.
-	SmsReceivers SmsReceiverArrayInput
+	SmsReceivers MicrosoftCommonSmsReceiverArrayInput
 	// Resource tags.
 	Tags pulumi.StringMapInput
 	// The list of voice receivers that are part of this action group.
-	VoiceReceivers VoiceReceiverArrayInput
+	VoiceReceivers MicrosoftCommonVoiceReceiverArrayInput
 	// The list of webhook receivers that are part of this action group.
 	WebhookReceivers WebhookReceiverArrayInput
 }

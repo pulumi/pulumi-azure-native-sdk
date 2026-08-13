@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Private Endpoint Connection resource.
+// The private endpoint connection resource.
 //
 // Uses Azure REST API version 2023-06-01-preview.
 //
@@ -22,9 +22,11 @@ type PrivateEndpointConnection struct {
 
 	// The Azure API version of the resource.
 	AzureApiVersion pulumi.StringOutput `pulumi:"azureApiVersion"`
+	// The group ids for the private endpoint resource.
+	GroupIds pulumi.StringArrayOutput `pulumi:"groupIds"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The resource of private end point.
+	// The private endpoint resource.
 	PrivateEndpoint PrivateEndpointResponsePtrOutput `pulumi:"privateEndpoint"`
 	// A collection of information about the state of the connection between service consumer and provider.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponseOutput `pulumi:"privateLinkServiceConnectionState"`
@@ -115,7 +117,7 @@ func (PrivateEndpointConnectionState) ElementType() reflect.Type {
 }
 
 type privateEndpointConnectionArgs struct {
-	// The name of the private endpoint connection associated with the Azure resource
+	// The name of the private endpoint connection associated with the Azure resource.
 	PrivateEndpointConnectionName *string `pulumi:"privateEndpointConnectionName"`
 	// A collection of information about the state of the connection between service consumer and provider.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionState `pulumi:"privateLinkServiceConnectionState"`
@@ -127,7 +129,7 @@ type privateEndpointConnectionArgs struct {
 
 // The set of arguments for constructing a PrivateEndpointConnection resource.
 type PrivateEndpointConnectionArgs struct {
-	// The name of the private endpoint connection associated with the Azure resource
+	// The name of the private endpoint connection associated with the Azure resource.
 	PrivateEndpointConnectionName pulumi.StringPtrInput
 	// A collection of information about the state of the connection between service consumer and provider.
 	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateInput
@@ -179,12 +181,17 @@ func (o PrivateEndpointConnectionOutput) AzureApiVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateEndpointConnection) pulumi.StringOutput { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
+// The group ids for the private endpoint resource.
+func (o PrivateEndpointConnectionOutput) GroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PrivateEndpointConnection) pulumi.StringArrayOutput { return v.GroupIds }).(pulumi.StringArrayOutput)
+}
+
 // The name of the resource
 func (o PrivateEndpointConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateEndpointConnection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The resource of private end point.
+// The private endpoint resource.
 func (o PrivateEndpointConnectionOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
 	return o.ApplyT(func(v *PrivateEndpointConnection) PrivateEndpointResponsePtrOutput { return v.PrivateEndpoint }).(PrivateEndpointResponsePtrOutput)
 }

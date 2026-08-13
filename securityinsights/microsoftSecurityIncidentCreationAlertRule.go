@@ -373,6 +373,9 @@ func NewMicrosoftSecurityIncidentCreationAlertRule(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:securityinsights/v20250901:MicrosoftSecurityIncidentCreationAlertRule"),
 		},
 		{
+			Type: pulumi.String("azure-native:securityinsights/v20251001preview:MicrosoftSecurityIncidentCreationAlertRule"),
+		},
+		{
 			Type: pulumi.String("azure-native:securityinsights:FusionAlertRule"),
 		},
 		{

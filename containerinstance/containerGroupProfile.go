@@ -99,6 +99,12 @@ func NewContainerGroupProfile(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:containerinstance/v20260601preview:ContainerGroupProfile"),
 		},
 		{
+			Type: pulumi.String("azure-native:containerinstance/v20260701:ContainerGroupProfile"),
+		},
+		{
+			Type: pulumi.String("azure-native:containerinstance/v20260801preview:ContainerGroupProfile"),
+		},
+		{
 			Type: pulumi.String("azure-native:containerinstance:CGProfile"),
 		},
 	})

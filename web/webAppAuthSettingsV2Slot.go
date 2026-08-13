@@ -111,6 +111,9 @@ func NewWebAppAuthSettingsV2Slot(ctx *pulumi.Context,
 		{
 			Type: pulumi.String("azure-native:web/v20260315:WebAppAuthSettingsV2Slot"),
 		},
+		{
+			Type: pulumi.String("azure-native:web/v20260715:WebAppAuthSettingsV2Slot"),
+		},
 	})
 	opts = append(opts, aliases)
 	opts = utilities.PkgResourceDefaultOpts(opts)

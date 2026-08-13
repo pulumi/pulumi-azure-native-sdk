@@ -20167,7 +20167,7 @@ type FunctionsScaleAndConcurrency struct {
 	AlwaysReady []FunctionsAlwaysReadyConfig `pulumi:"alwaysReady"`
 	// Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
 	InstanceMemoryMB *int `pulumi:"instanceMemoryMB"`
-	// The maximum number of instances for the function app.
+	// The maximum number of on demand instances per function group.
 	MaximumInstanceCount *int `pulumi:"maximumInstanceCount"`
 	// Scale and concurrency settings for the function app triggers.
 	Triggers *FunctionsScaleAndConcurrencyTriggers `pulumi:"triggers"`
@@ -20190,7 +20190,7 @@ type FunctionsScaleAndConcurrencyArgs struct {
 	AlwaysReady FunctionsAlwaysReadyConfigArrayInput `pulumi:"alwaysReady"`
 	// Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
 	InstanceMemoryMB pulumi.IntPtrInput `pulumi:"instanceMemoryMB"`
-	// The maximum number of instances for the function app.
+	// The maximum number of on demand instances per function group.
 	MaximumInstanceCount pulumi.IntPtrInput `pulumi:"maximumInstanceCount"`
 	// Scale and concurrency settings for the function app triggers.
 	Triggers FunctionsScaleAndConcurrencyTriggersPtrInput `pulumi:"triggers"`
@@ -20284,7 +20284,7 @@ func (o FunctionsScaleAndConcurrencyOutput) InstanceMemoryMB() pulumi.IntPtrOutp
 	return o.ApplyT(func(v FunctionsScaleAndConcurrency) *int { return v.InstanceMemoryMB }).(pulumi.IntPtrOutput)
 }
 
-// The maximum number of instances for the function app.
+// The maximum number of on demand instances per function group.
 func (o FunctionsScaleAndConcurrencyOutput) MaximumInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FunctionsScaleAndConcurrency) *int { return v.MaximumInstanceCount }).(pulumi.IntPtrOutput)
 }
@@ -20338,7 +20338,7 @@ func (o FunctionsScaleAndConcurrencyPtrOutput) InstanceMemoryMB() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum number of instances for the function app.
+// The maximum number of on demand instances per function group.
 func (o FunctionsScaleAndConcurrencyPtrOutput) MaximumInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FunctionsScaleAndConcurrency) *int {
 		if v == nil {
@@ -20364,7 +20364,7 @@ type FunctionsScaleAndConcurrencyResponse struct {
 	AlwaysReady []FunctionsAlwaysReadyConfigResponse `pulumi:"alwaysReady"`
 	// Set the amount of memory allocated to each instance of the function app in MB. CPU and network bandwidth are allocated proportionally.
 	InstanceMemoryMB *int `pulumi:"instanceMemoryMB"`
-	// The maximum number of instances for the function app.
+	// The maximum number of on demand instances per function group.
 	MaximumInstanceCount *int `pulumi:"maximumInstanceCount"`
 	// Scale and concurrency settings for the function app triggers.
 	Triggers *FunctionsScaleAndConcurrencyTriggersResponse `pulumi:"triggers"`
@@ -20397,7 +20397,7 @@ func (o FunctionsScaleAndConcurrencyResponseOutput) InstanceMemoryMB() pulumi.In
 	return o.ApplyT(func(v FunctionsScaleAndConcurrencyResponse) *int { return v.InstanceMemoryMB }).(pulumi.IntPtrOutput)
 }
 
-// The maximum number of instances for the function app.
+// The maximum number of on demand instances per function group.
 func (o FunctionsScaleAndConcurrencyResponseOutput) MaximumInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FunctionsScaleAndConcurrencyResponse) *int { return v.MaximumInstanceCount }).(pulumi.IntPtrOutput)
 }
@@ -20453,7 +20453,7 @@ func (o FunctionsScaleAndConcurrencyResponsePtrOutput) InstanceMemoryMB() pulumi
 	}).(pulumi.IntPtrOutput)
 }
 
-// The maximum number of instances for the function app.
+// The maximum number of on demand instances per function group.
 func (o FunctionsScaleAndConcurrencyResponsePtrOutput) MaximumInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FunctionsScaleAndConcurrencyResponse) *int {
 		if v == nil {
