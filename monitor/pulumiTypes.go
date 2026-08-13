@@ -3106,119 +3106,10 @@ func (o AutoscaleSettingResponseOutput) TargetResourceUri() pulumi.StringPtrOutp
 }
 
 // The Azure mobile App push notification receiver.
-type AzureAppPushReceiver struct {
-	// The email address registered for the Azure mobile app.
-	EmailAddress string `pulumi:"emailAddress"`
-	// The name of the Azure mobile app push receiver. Names must be unique across all receivers within a tenant action group.
-	Name string `pulumi:"name"`
-}
-
-// AzureAppPushReceiverInput is an input type that accepts AzureAppPushReceiverArgs and AzureAppPushReceiverOutput values.
-// You can construct a concrete instance of `AzureAppPushReceiverInput` via:
-//
-//	AzureAppPushReceiverArgs{...}
-type AzureAppPushReceiverInput interface {
-	pulumi.Input
-
-	ToAzureAppPushReceiverOutput() AzureAppPushReceiverOutput
-	ToAzureAppPushReceiverOutputWithContext(context.Context) AzureAppPushReceiverOutput
-}
-
-// The Azure mobile App push notification receiver.
-type AzureAppPushReceiverArgs struct {
-	// The email address registered for the Azure mobile app.
-	EmailAddress pulumi.StringInput `pulumi:"emailAddress"`
-	// The name of the Azure mobile app push receiver. Names must be unique across all receivers within a tenant action group.
-	Name pulumi.StringInput `pulumi:"name"`
-}
-
-func (AzureAppPushReceiverArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AzureAppPushReceiver)(nil)).Elem()
-}
-
-func (i AzureAppPushReceiverArgs) ToAzureAppPushReceiverOutput() AzureAppPushReceiverOutput {
-	return i.ToAzureAppPushReceiverOutputWithContext(context.Background())
-}
-
-func (i AzureAppPushReceiverArgs) ToAzureAppPushReceiverOutputWithContext(ctx context.Context) AzureAppPushReceiverOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AzureAppPushReceiverOutput)
-}
-
-// AzureAppPushReceiverArrayInput is an input type that accepts AzureAppPushReceiverArray and AzureAppPushReceiverArrayOutput values.
-// You can construct a concrete instance of `AzureAppPushReceiverArrayInput` via:
-//
-//	AzureAppPushReceiverArray{ AzureAppPushReceiverArgs{...} }
-type AzureAppPushReceiverArrayInput interface {
-	pulumi.Input
-
-	ToAzureAppPushReceiverArrayOutput() AzureAppPushReceiverArrayOutput
-	ToAzureAppPushReceiverArrayOutputWithContext(context.Context) AzureAppPushReceiverArrayOutput
-}
-
-type AzureAppPushReceiverArray []AzureAppPushReceiverInput
-
-func (AzureAppPushReceiverArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AzureAppPushReceiver)(nil)).Elem()
-}
-
-func (i AzureAppPushReceiverArray) ToAzureAppPushReceiverArrayOutput() AzureAppPushReceiverArrayOutput {
-	return i.ToAzureAppPushReceiverArrayOutputWithContext(context.Background())
-}
-
-func (i AzureAppPushReceiverArray) ToAzureAppPushReceiverArrayOutputWithContext(ctx context.Context) AzureAppPushReceiverArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AzureAppPushReceiverArrayOutput)
-}
-
-// The Azure mobile App push notification receiver.
-type AzureAppPushReceiverOutput struct{ *pulumi.OutputState }
-
-func (AzureAppPushReceiverOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AzureAppPushReceiver)(nil)).Elem()
-}
-
-func (o AzureAppPushReceiverOutput) ToAzureAppPushReceiverOutput() AzureAppPushReceiverOutput {
-	return o
-}
-
-func (o AzureAppPushReceiverOutput) ToAzureAppPushReceiverOutputWithContext(ctx context.Context) AzureAppPushReceiverOutput {
-	return o
-}
-
-// The email address registered for the Azure mobile app.
-func (o AzureAppPushReceiverOutput) EmailAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v AzureAppPushReceiver) string { return v.EmailAddress }).(pulumi.StringOutput)
-}
-
-// The name of the Azure mobile app push receiver. Names must be unique across all receivers within a tenant action group.
-func (o AzureAppPushReceiverOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v AzureAppPushReceiver) string { return v.Name }).(pulumi.StringOutput)
-}
-
-type AzureAppPushReceiverArrayOutput struct{ *pulumi.OutputState }
-
-func (AzureAppPushReceiverArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AzureAppPushReceiver)(nil)).Elem()
-}
-
-func (o AzureAppPushReceiverArrayOutput) ToAzureAppPushReceiverArrayOutput() AzureAppPushReceiverArrayOutput {
-	return o
-}
-
-func (o AzureAppPushReceiverArrayOutput) ToAzureAppPushReceiverArrayOutputWithContext(ctx context.Context) AzureAppPushReceiverArrayOutput {
-	return o
-}
-
-func (o AzureAppPushReceiverArrayOutput) Index(i pulumi.IntInput) AzureAppPushReceiverOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AzureAppPushReceiver {
-		return vs[0].([]AzureAppPushReceiver)[vs[1].(int)]
-	}).(AzureAppPushReceiverOutput)
-}
-
-// The Azure mobile App push notification receiver.
 type AzureAppPushReceiverResponse struct {
 	// The email address registered for the Azure mobile app.
 	EmailAddress string `pulumi:"emailAddress"`
-	// The name of the Azure mobile app push receiver. Names must be unique across all receivers within a tenant action group.
+	// The name of the Azure mobile app push receiver. Names must be unique across all receivers within an action group.
 	Name string `pulumi:"name"`
 }
 
@@ -3242,7 +3133,7 @@ func (o AzureAppPushReceiverResponseOutput) EmailAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureAppPushReceiverResponse) string { return v.EmailAddress }).(pulumi.StringOutput)
 }
 
-// The name of the Azure mobile app push receiver. Names must be unique across all receivers within a tenant action group.
+// The name of the Azure mobile app push receiver. Names must be unique across all receivers within an action group.
 func (o AzureAppPushReceiverResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureAppPushReceiverResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -10598,11 +10489,11 @@ type DiagnosticSettingsCategoryResourceResponse struct {
 	CategoryGroups []string `pulumi:"categoryGroups"`
 	// The type of the diagnostic settings category.
 	CategoryType *string `pulumi:"categoryType"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The name of the resource
 	Name string `pulumi:"name"`
-	// The system metadata related to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
@@ -10633,7 +10524,7 @@ func (o DiagnosticSettingsCategoryResourceResponseOutput) CategoryType() pulumi.
 	return o.ApplyT(func(v DiagnosticSettingsCategoryResourceResponse) *string { return v.CategoryType }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o DiagnosticSettingsCategoryResourceResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v DiagnosticSettingsCategoryResourceResponse) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -10643,7 +10534,7 @@ func (o DiagnosticSettingsCategoryResourceResponseOutput) Name() pulumi.StringOu
 	return o.ApplyT(func(v DiagnosticSettingsCategoryResourceResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The system metadata related to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o DiagnosticSettingsCategoryResourceResponseOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v DiagnosticSettingsCategoryResourceResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -10671,6 +10562,394 @@ func (o DiagnosticSettingsCategoryResourceResponseArrayOutput) Index(i pulumi.In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiagnosticSettingsCategoryResourceResponse {
 		return vs[0].([]DiagnosticSettingsCategoryResourceResponse)[vs[1].(int)]
 	}).(DiagnosticSettingsCategoryResourceResponseOutput)
+}
+
+// Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular log.
+type DiagnosticsLogSettings struct {
+	// Name of a Diagnostic Log category for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
+	Category *string `pulumi:"category"`
+	// Name of a Diagnostic Log category group for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
+	CategoryGroup *string `pulumi:"categoryGroup"`
+	// a value indicating whether this log is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// the retention policy for this log.
+	RetentionPolicy *MicrosoftCommonRetentionPolicy `pulumi:"retentionPolicy"`
+}
+
+// DiagnosticsLogSettingsInput is an input type that accepts DiagnosticsLogSettingsArgs and DiagnosticsLogSettingsOutput values.
+// You can construct a concrete instance of `DiagnosticsLogSettingsInput` via:
+//
+//	DiagnosticsLogSettingsArgs{...}
+type DiagnosticsLogSettingsInput interface {
+	pulumi.Input
+
+	ToDiagnosticsLogSettingsOutput() DiagnosticsLogSettingsOutput
+	ToDiagnosticsLogSettingsOutputWithContext(context.Context) DiagnosticsLogSettingsOutput
+}
+
+// Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular log.
+type DiagnosticsLogSettingsArgs struct {
+	// Name of a Diagnostic Log category for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// Name of a Diagnostic Log category group for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
+	CategoryGroup pulumi.StringPtrInput `pulumi:"categoryGroup"`
+	// a value indicating whether this log is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// the retention policy for this log.
+	RetentionPolicy MicrosoftCommonRetentionPolicyPtrInput `pulumi:"retentionPolicy"`
+}
+
+func (DiagnosticsLogSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiagnosticsLogSettings)(nil)).Elem()
+}
+
+func (i DiagnosticsLogSettingsArgs) ToDiagnosticsLogSettingsOutput() DiagnosticsLogSettingsOutput {
+	return i.ToDiagnosticsLogSettingsOutputWithContext(context.Background())
+}
+
+func (i DiagnosticsLogSettingsArgs) ToDiagnosticsLogSettingsOutputWithContext(ctx context.Context) DiagnosticsLogSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiagnosticsLogSettingsOutput)
+}
+
+// DiagnosticsLogSettingsArrayInput is an input type that accepts DiagnosticsLogSettingsArray and DiagnosticsLogSettingsArrayOutput values.
+// You can construct a concrete instance of `DiagnosticsLogSettingsArrayInput` via:
+//
+//	DiagnosticsLogSettingsArray{ DiagnosticsLogSettingsArgs{...} }
+type DiagnosticsLogSettingsArrayInput interface {
+	pulumi.Input
+
+	ToDiagnosticsLogSettingsArrayOutput() DiagnosticsLogSettingsArrayOutput
+	ToDiagnosticsLogSettingsArrayOutputWithContext(context.Context) DiagnosticsLogSettingsArrayOutput
+}
+
+type DiagnosticsLogSettingsArray []DiagnosticsLogSettingsInput
+
+func (DiagnosticsLogSettingsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiagnosticsLogSettings)(nil)).Elem()
+}
+
+func (i DiagnosticsLogSettingsArray) ToDiagnosticsLogSettingsArrayOutput() DiagnosticsLogSettingsArrayOutput {
+	return i.ToDiagnosticsLogSettingsArrayOutputWithContext(context.Background())
+}
+
+func (i DiagnosticsLogSettingsArray) ToDiagnosticsLogSettingsArrayOutputWithContext(ctx context.Context) DiagnosticsLogSettingsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiagnosticsLogSettingsArrayOutput)
+}
+
+// Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular log.
+type DiagnosticsLogSettingsOutput struct{ *pulumi.OutputState }
+
+func (DiagnosticsLogSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiagnosticsLogSettings)(nil)).Elem()
+}
+
+func (o DiagnosticsLogSettingsOutput) ToDiagnosticsLogSettingsOutput() DiagnosticsLogSettingsOutput {
+	return o
+}
+
+func (o DiagnosticsLogSettingsOutput) ToDiagnosticsLogSettingsOutputWithContext(ctx context.Context) DiagnosticsLogSettingsOutput {
+	return o
+}
+
+// Name of a Diagnostic Log category for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
+func (o DiagnosticsLogSettingsOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiagnosticsLogSettings) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// Name of a Diagnostic Log category group for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
+func (o DiagnosticsLogSettingsOutput) CategoryGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiagnosticsLogSettings) *string { return v.CategoryGroup }).(pulumi.StringPtrOutput)
+}
+
+// a value indicating whether this log is enabled.
+func (o DiagnosticsLogSettingsOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v DiagnosticsLogSettings) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// the retention policy for this log.
+func (o DiagnosticsLogSettingsOutput) RetentionPolicy() MicrosoftCommonRetentionPolicyPtrOutput {
+	return o.ApplyT(func(v DiagnosticsLogSettings) *MicrosoftCommonRetentionPolicy { return v.RetentionPolicy }).(MicrosoftCommonRetentionPolicyPtrOutput)
+}
+
+type DiagnosticsLogSettingsArrayOutput struct{ *pulumi.OutputState }
+
+func (DiagnosticsLogSettingsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiagnosticsLogSettings)(nil)).Elem()
+}
+
+func (o DiagnosticsLogSettingsArrayOutput) ToDiagnosticsLogSettingsArrayOutput() DiagnosticsLogSettingsArrayOutput {
+	return o
+}
+
+func (o DiagnosticsLogSettingsArrayOutput) ToDiagnosticsLogSettingsArrayOutputWithContext(ctx context.Context) DiagnosticsLogSettingsArrayOutput {
+	return o
+}
+
+func (o DiagnosticsLogSettingsArrayOutput) Index(i pulumi.IntInput) DiagnosticsLogSettingsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiagnosticsLogSettings {
+		return vs[0].([]DiagnosticsLogSettings)[vs[1].(int)]
+	}).(DiagnosticsLogSettingsOutput)
+}
+
+// Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular log.
+type DiagnosticsLogSettingsResponse struct {
+	// Name of a Diagnostic Log category for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
+	Category *string `pulumi:"category"`
+	// Name of a Diagnostic Log category group for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
+	CategoryGroup *string `pulumi:"categoryGroup"`
+	// a value indicating whether this log is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// the retention policy for this log.
+	RetentionPolicy *RetentionPolicyResponse `pulumi:"retentionPolicy"`
+}
+
+// Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular log.
+type DiagnosticsLogSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (DiagnosticsLogSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiagnosticsLogSettingsResponse)(nil)).Elem()
+}
+
+func (o DiagnosticsLogSettingsResponseOutput) ToDiagnosticsLogSettingsResponseOutput() DiagnosticsLogSettingsResponseOutput {
+	return o
+}
+
+func (o DiagnosticsLogSettingsResponseOutput) ToDiagnosticsLogSettingsResponseOutputWithContext(ctx context.Context) DiagnosticsLogSettingsResponseOutput {
+	return o
+}
+
+// Name of a Diagnostic Log category for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
+func (o DiagnosticsLogSettingsResponseOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiagnosticsLogSettingsResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// Name of a Diagnostic Log category group for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
+func (o DiagnosticsLogSettingsResponseOutput) CategoryGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiagnosticsLogSettingsResponse) *string { return v.CategoryGroup }).(pulumi.StringPtrOutput)
+}
+
+// a value indicating whether this log is enabled.
+func (o DiagnosticsLogSettingsResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v DiagnosticsLogSettingsResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// the retention policy for this log.
+func (o DiagnosticsLogSettingsResponseOutput) RetentionPolicy() RetentionPolicyResponsePtrOutput {
+	return o.ApplyT(func(v DiagnosticsLogSettingsResponse) *RetentionPolicyResponse { return v.RetentionPolicy }).(RetentionPolicyResponsePtrOutput)
+}
+
+type DiagnosticsLogSettingsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DiagnosticsLogSettingsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiagnosticsLogSettingsResponse)(nil)).Elem()
+}
+
+func (o DiagnosticsLogSettingsResponseArrayOutput) ToDiagnosticsLogSettingsResponseArrayOutput() DiagnosticsLogSettingsResponseArrayOutput {
+	return o
+}
+
+func (o DiagnosticsLogSettingsResponseArrayOutput) ToDiagnosticsLogSettingsResponseArrayOutputWithContext(ctx context.Context) DiagnosticsLogSettingsResponseArrayOutput {
+	return o
+}
+
+func (o DiagnosticsLogSettingsResponseArrayOutput) Index(i pulumi.IntInput) DiagnosticsLogSettingsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiagnosticsLogSettingsResponse {
+		return vs[0].([]DiagnosticsLogSettingsResponse)[vs[1].(int)]
+	}).(DiagnosticsLogSettingsResponseOutput)
+}
+
+// Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular metric.
+type DiagnosticsMetricSettings struct {
+	// Name of a Diagnostic Metric category for a resource type this setting is applied to. To obtain the list of Diagnostic metric categories for a resource, first perform a GET diagnostic settings operation.
+	Category *string `pulumi:"category"`
+	// a value indicating whether this category is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// the retention policy for this category.
+	RetentionPolicy *MicrosoftCommonRetentionPolicy `pulumi:"retentionPolicy"`
+	// the timegrain of the metric in ISO8601 format.
+	TimeGrain *string `pulumi:"timeGrain"`
+}
+
+// DiagnosticsMetricSettingsInput is an input type that accepts DiagnosticsMetricSettingsArgs and DiagnosticsMetricSettingsOutput values.
+// You can construct a concrete instance of `DiagnosticsMetricSettingsInput` via:
+//
+//	DiagnosticsMetricSettingsArgs{...}
+type DiagnosticsMetricSettingsInput interface {
+	pulumi.Input
+
+	ToDiagnosticsMetricSettingsOutput() DiagnosticsMetricSettingsOutput
+	ToDiagnosticsMetricSettingsOutputWithContext(context.Context) DiagnosticsMetricSettingsOutput
+}
+
+// Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular metric.
+type DiagnosticsMetricSettingsArgs struct {
+	// Name of a Diagnostic Metric category for a resource type this setting is applied to. To obtain the list of Diagnostic metric categories for a resource, first perform a GET diagnostic settings operation.
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// a value indicating whether this category is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// the retention policy for this category.
+	RetentionPolicy MicrosoftCommonRetentionPolicyPtrInput `pulumi:"retentionPolicy"`
+	// the timegrain of the metric in ISO8601 format.
+	TimeGrain pulumi.StringPtrInput `pulumi:"timeGrain"`
+}
+
+func (DiagnosticsMetricSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiagnosticsMetricSettings)(nil)).Elem()
+}
+
+func (i DiagnosticsMetricSettingsArgs) ToDiagnosticsMetricSettingsOutput() DiagnosticsMetricSettingsOutput {
+	return i.ToDiagnosticsMetricSettingsOutputWithContext(context.Background())
+}
+
+func (i DiagnosticsMetricSettingsArgs) ToDiagnosticsMetricSettingsOutputWithContext(ctx context.Context) DiagnosticsMetricSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiagnosticsMetricSettingsOutput)
+}
+
+// DiagnosticsMetricSettingsArrayInput is an input type that accepts DiagnosticsMetricSettingsArray and DiagnosticsMetricSettingsArrayOutput values.
+// You can construct a concrete instance of `DiagnosticsMetricSettingsArrayInput` via:
+//
+//	DiagnosticsMetricSettingsArray{ DiagnosticsMetricSettingsArgs{...} }
+type DiagnosticsMetricSettingsArrayInput interface {
+	pulumi.Input
+
+	ToDiagnosticsMetricSettingsArrayOutput() DiagnosticsMetricSettingsArrayOutput
+	ToDiagnosticsMetricSettingsArrayOutputWithContext(context.Context) DiagnosticsMetricSettingsArrayOutput
+}
+
+type DiagnosticsMetricSettingsArray []DiagnosticsMetricSettingsInput
+
+func (DiagnosticsMetricSettingsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiagnosticsMetricSettings)(nil)).Elem()
+}
+
+func (i DiagnosticsMetricSettingsArray) ToDiagnosticsMetricSettingsArrayOutput() DiagnosticsMetricSettingsArrayOutput {
+	return i.ToDiagnosticsMetricSettingsArrayOutputWithContext(context.Background())
+}
+
+func (i DiagnosticsMetricSettingsArray) ToDiagnosticsMetricSettingsArrayOutputWithContext(ctx context.Context) DiagnosticsMetricSettingsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiagnosticsMetricSettingsArrayOutput)
+}
+
+// Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular metric.
+type DiagnosticsMetricSettingsOutput struct{ *pulumi.OutputState }
+
+func (DiagnosticsMetricSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiagnosticsMetricSettings)(nil)).Elem()
+}
+
+func (o DiagnosticsMetricSettingsOutput) ToDiagnosticsMetricSettingsOutput() DiagnosticsMetricSettingsOutput {
+	return o
+}
+
+func (o DiagnosticsMetricSettingsOutput) ToDiagnosticsMetricSettingsOutputWithContext(ctx context.Context) DiagnosticsMetricSettingsOutput {
+	return o
+}
+
+// Name of a Diagnostic Metric category for a resource type this setting is applied to. To obtain the list of Diagnostic metric categories for a resource, first perform a GET diagnostic settings operation.
+func (o DiagnosticsMetricSettingsOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiagnosticsMetricSettings) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// a value indicating whether this category is enabled.
+func (o DiagnosticsMetricSettingsOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v DiagnosticsMetricSettings) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// the retention policy for this category.
+func (o DiagnosticsMetricSettingsOutput) RetentionPolicy() MicrosoftCommonRetentionPolicyPtrOutput {
+	return o.ApplyT(func(v DiagnosticsMetricSettings) *MicrosoftCommonRetentionPolicy { return v.RetentionPolicy }).(MicrosoftCommonRetentionPolicyPtrOutput)
+}
+
+// the timegrain of the metric in ISO8601 format.
+func (o DiagnosticsMetricSettingsOutput) TimeGrain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiagnosticsMetricSettings) *string { return v.TimeGrain }).(pulumi.StringPtrOutput)
+}
+
+type DiagnosticsMetricSettingsArrayOutput struct{ *pulumi.OutputState }
+
+func (DiagnosticsMetricSettingsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiagnosticsMetricSettings)(nil)).Elem()
+}
+
+func (o DiagnosticsMetricSettingsArrayOutput) ToDiagnosticsMetricSettingsArrayOutput() DiagnosticsMetricSettingsArrayOutput {
+	return o
+}
+
+func (o DiagnosticsMetricSettingsArrayOutput) ToDiagnosticsMetricSettingsArrayOutputWithContext(ctx context.Context) DiagnosticsMetricSettingsArrayOutput {
+	return o
+}
+
+func (o DiagnosticsMetricSettingsArrayOutput) Index(i pulumi.IntInput) DiagnosticsMetricSettingsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiagnosticsMetricSettings {
+		return vs[0].([]DiagnosticsMetricSettings)[vs[1].(int)]
+	}).(DiagnosticsMetricSettingsOutput)
+}
+
+// Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular metric.
+type DiagnosticsMetricSettingsResponse struct {
+	// Name of a Diagnostic Metric category for a resource type this setting is applied to. To obtain the list of Diagnostic metric categories for a resource, first perform a GET diagnostic settings operation.
+	Category *string `pulumi:"category"`
+	// a value indicating whether this category is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// the retention policy for this category.
+	RetentionPolicy *RetentionPolicyResponse `pulumi:"retentionPolicy"`
+	// the timegrain of the metric in ISO8601 format.
+	TimeGrain *string `pulumi:"timeGrain"`
+}
+
+// Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular metric.
+type DiagnosticsMetricSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (DiagnosticsMetricSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiagnosticsMetricSettingsResponse)(nil)).Elem()
+}
+
+func (o DiagnosticsMetricSettingsResponseOutput) ToDiagnosticsMetricSettingsResponseOutput() DiagnosticsMetricSettingsResponseOutput {
+	return o
+}
+
+func (o DiagnosticsMetricSettingsResponseOutput) ToDiagnosticsMetricSettingsResponseOutputWithContext(ctx context.Context) DiagnosticsMetricSettingsResponseOutput {
+	return o
+}
+
+// Name of a Diagnostic Metric category for a resource type this setting is applied to. To obtain the list of Diagnostic metric categories for a resource, first perform a GET diagnostic settings operation.
+func (o DiagnosticsMetricSettingsResponseOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiagnosticsMetricSettingsResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// a value indicating whether this category is enabled.
+func (o DiagnosticsMetricSettingsResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v DiagnosticsMetricSettingsResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// the retention policy for this category.
+func (o DiagnosticsMetricSettingsResponseOutput) RetentionPolicy() RetentionPolicyResponsePtrOutput {
+	return o.ApplyT(func(v DiagnosticsMetricSettingsResponse) *RetentionPolicyResponse { return v.RetentionPolicy }).(RetentionPolicyResponsePtrOutput)
+}
+
+// the timegrain of the metric in ISO8601 format.
+func (o DiagnosticsMetricSettingsResponseOutput) TimeGrain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiagnosticsMetricSettingsResponse) *string { return v.TimeGrain }).(pulumi.StringPtrOutput)
+}
+
+type DiagnosticsMetricSettingsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DiagnosticsMetricSettingsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiagnosticsMetricSettingsResponse)(nil)).Elem()
+}
+
+func (o DiagnosticsMetricSettingsResponseArrayOutput) ToDiagnosticsMetricSettingsResponseArrayOutput() DiagnosticsMetricSettingsResponseArrayOutput {
+	return o
+}
+
+func (o DiagnosticsMetricSettingsResponseArrayOutput) ToDiagnosticsMetricSettingsResponseArrayOutputWithContext(ctx context.Context) DiagnosticsMetricSettingsResponseArrayOutput {
+	return o
+}
+
+func (o DiagnosticsMetricSettingsResponseArrayOutput) Index(i pulumi.IntInput) DiagnosticsMetricSettingsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiagnosticsMetricSettingsResponse {
+		return vs[0].([]DiagnosticsMetricSettingsResponse)[vs[1].(int)]
+	}).(DiagnosticsMetricSettingsResponseOutput)
 }
 
 // Dimension splitting and filtering definition
@@ -11856,152 +12135,10 @@ func (o EmailNotificationResponsePtrOutput) SendToSubscriptionCoAdministrators()
 }
 
 // An email receiver.
-type EmailReceiver struct {
-	// The email address of this receiver.
-	EmailAddress string `pulumi:"emailAddress"`
-	// The name of the email receiver. Names must be unique across all receivers within a tenant action group.
-	Name string `pulumi:"name"`
-	// Indicates whether to use common alert schema.
-	UseCommonAlertSchema *bool `pulumi:"useCommonAlertSchema"`
-}
-
-// Defaults sets the appropriate defaults for EmailReceiver
-func (val *EmailReceiver) Defaults() *EmailReceiver {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.UseCommonAlertSchema == nil {
-		useCommonAlertSchema_ := false
-		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
-	}
-	return &tmp
-}
-
-// EmailReceiverInput is an input type that accepts EmailReceiverArgs and EmailReceiverOutput values.
-// You can construct a concrete instance of `EmailReceiverInput` via:
-//
-//	EmailReceiverArgs{...}
-type EmailReceiverInput interface {
-	pulumi.Input
-
-	ToEmailReceiverOutput() EmailReceiverOutput
-	ToEmailReceiverOutputWithContext(context.Context) EmailReceiverOutput
-}
-
-// An email receiver.
-type EmailReceiverArgs struct {
-	// The email address of this receiver.
-	EmailAddress pulumi.StringInput `pulumi:"emailAddress"`
-	// The name of the email receiver. Names must be unique across all receivers within a tenant action group.
-	Name pulumi.StringInput `pulumi:"name"`
-	// Indicates whether to use common alert schema.
-	UseCommonAlertSchema pulumi.BoolPtrInput `pulumi:"useCommonAlertSchema"`
-}
-
-// Defaults sets the appropriate defaults for EmailReceiverArgs
-func (val *EmailReceiverArgs) Defaults() *EmailReceiverArgs {
-	if val == nil {
-		return nil
-	}
-	tmp := *val
-	if tmp.UseCommonAlertSchema == nil {
-		tmp.UseCommonAlertSchema = pulumi.BoolPtr(false)
-	}
-	return &tmp
-}
-func (EmailReceiverArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailReceiver)(nil)).Elem()
-}
-
-func (i EmailReceiverArgs) ToEmailReceiverOutput() EmailReceiverOutput {
-	return i.ToEmailReceiverOutputWithContext(context.Background())
-}
-
-func (i EmailReceiverArgs) ToEmailReceiverOutputWithContext(ctx context.Context) EmailReceiverOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailReceiverOutput)
-}
-
-// EmailReceiverArrayInput is an input type that accepts EmailReceiverArray and EmailReceiverArrayOutput values.
-// You can construct a concrete instance of `EmailReceiverArrayInput` via:
-//
-//	EmailReceiverArray{ EmailReceiverArgs{...} }
-type EmailReceiverArrayInput interface {
-	pulumi.Input
-
-	ToEmailReceiverArrayOutput() EmailReceiverArrayOutput
-	ToEmailReceiverArrayOutputWithContext(context.Context) EmailReceiverArrayOutput
-}
-
-type EmailReceiverArray []EmailReceiverInput
-
-func (EmailReceiverArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EmailReceiver)(nil)).Elem()
-}
-
-func (i EmailReceiverArray) ToEmailReceiverArrayOutput() EmailReceiverArrayOutput {
-	return i.ToEmailReceiverArrayOutputWithContext(context.Background())
-}
-
-func (i EmailReceiverArray) ToEmailReceiverArrayOutputWithContext(ctx context.Context) EmailReceiverArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EmailReceiverArrayOutput)
-}
-
-// An email receiver.
-type EmailReceiverOutput struct{ *pulumi.OutputState }
-
-func (EmailReceiverOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EmailReceiver)(nil)).Elem()
-}
-
-func (o EmailReceiverOutput) ToEmailReceiverOutput() EmailReceiverOutput {
-	return o
-}
-
-func (o EmailReceiverOutput) ToEmailReceiverOutputWithContext(ctx context.Context) EmailReceiverOutput {
-	return o
-}
-
-// The email address of this receiver.
-func (o EmailReceiverOutput) EmailAddress() pulumi.StringOutput {
-	return o.ApplyT(func(v EmailReceiver) string { return v.EmailAddress }).(pulumi.StringOutput)
-}
-
-// The name of the email receiver. Names must be unique across all receivers within a tenant action group.
-func (o EmailReceiverOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v EmailReceiver) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Indicates whether to use common alert schema.
-func (o EmailReceiverOutput) UseCommonAlertSchema() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v EmailReceiver) *bool { return v.UseCommonAlertSchema }).(pulumi.BoolPtrOutput)
-}
-
-type EmailReceiverArrayOutput struct{ *pulumi.OutputState }
-
-func (EmailReceiverArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EmailReceiver)(nil)).Elem()
-}
-
-func (o EmailReceiverArrayOutput) ToEmailReceiverArrayOutput() EmailReceiverArrayOutput {
-	return o
-}
-
-func (o EmailReceiverArrayOutput) ToEmailReceiverArrayOutputWithContext(ctx context.Context) EmailReceiverArrayOutput {
-	return o
-}
-
-func (o EmailReceiverArrayOutput) Index(i pulumi.IntInput) EmailReceiverOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EmailReceiver {
-		return vs[0].([]EmailReceiver)[vs[1].(int)]
-	}).(EmailReceiverOutput)
-}
-
-// An email receiver.
 type EmailReceiverResponse struct {
 	// The email address of this receiver.
 	EmailAddress string `pulumi:"emailAddress"`
-	// The name of the email receiver. Names must be unique across all receivers within a tenant action group.
+	// The name of the email receiver. Names must be unique across all receivers within an action group.
 	Name string `pulumi:"name"`
 	// The receiver status of the e-mail.
 	Status string `pulumi:"status"`
@@ -12042,7 +12179,7 @@ func (o EmailReceiverResponseOutput) EmailAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v EmailReceiverResponse) string { return v.EmailAddress }).(pulumi.StringOutput)
 }
 
-// The name of the email receiver. Names must be unique across all receivers within a tenant action group.
+// The name of the email receiver. Names must be unique across all receivers within an action group.
 func (o EmailReceiverResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v EmailReceiverResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -18349,200 +18486,6 @@ func (o LogFilesDataSourceSettingsPtrOutput) Text() LogFileSettingsTextPtrOutput
 	}).(LogFileSettingsTextPtrOutput)
 }
 
-// Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular log.
-type LogSettings struct {
-	// Name of a Diagnostic Log category for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
-	Category *string `pulumi:"category"`
-	// Name of a Diagnostic Log category group for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
-	CategoryGroup *string `pulumi:"categoryGroup"`
-	// a value indicating whether this log is enabled.
-	Enabled bool `pulumi:"enabled"`
-	// the retention policy for this log.
-	RetentionPolicy *RetentionPolicy `pulumi:"retentionPolicy"`
-}
-
-// LogSettingsInput is an input type that accepts LogSettingsArgs and LogSettingsOutput values.
-// You can construct a concrete instance of `LogSettingsInput` via:
-//
-//	LogSettingsArgs{...}
-type LogSettingsInput interface {
-	pulumi.Input
-
-	ToLogSettingsOutput() LogSettingsOutput
-	ToLogSettingsOutputWithContext(context.Context) LogSettingsOutput
-}
-
-// Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular log.
-type LogSettingsArgs struct {
-	// Name of a Diagnostic Log category for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
-	Category pulumi.StringPtrInput `pulumi:"category"`
-	// Name of a Diagnostic Log category group for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
-	CategoryGroup pulumi.StringPtrInput `pulumi:"categoryGroup"`
-	// a value indicating whether this log is enabled.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// the retention policy for this log.
-	RetentionPolicy RetentionPolicyPtrInput `pulumi:"retentionPolicy"`
-}
-
-func (LogSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogSettings)(nil)).Elem()
-}
-
-func (i LogSettingsArgs) ToLogSettingsOutput() LogSettingsOutput {
-	return i.ToLogSettingsOutputWithContext(context.Background())
-}
-
-func (i LogSettingsArgs) ToLogSettingsOutputWithContext(ctx context.Context) LogSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogSettingsOutput)
-}
-
-// LogSettingsArrayInput is an input type that accepts LogSettingsArray and LogSettingsArrayOutput values.
-// You can construct a concrete instance of `LogSettingsArrayInput` via:
-//
-//	LogSettingsArray{ LogSettingsArgs{...} }
-type LogSettingsArrayInput interface {
-	pulumi.Input
-
-	ToLogSettingsArrayOutput() LogSettingsArrayOutput
-	ToLogSettingsArrayOutputWithContext(context.Context) LogSettingsArrayOutput
-}
-
-type LogSettingsArray []LogSettingsInput
-
-func (LogSettingsArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LogSettings)(nil)).Elem()
-}
-
-func (i LogSettingsArray) ToLogSettingsArrayOutput() LogSettingsArrayOutput {
-	return i.ToLogSettingsArrayOutputWithContext(context.Background())
-}
-
-func (i LogSettingsArray) ToLogSettingsArrayOutputWithContext(ctx context.Context) LogSettingsArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LogSettingsArrayOutput)
-}
-
-// Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular log.
-type LogSettingsOutput struct{ *pulumi.OutputState }
-
-func (LogSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogSettings)(nil)).Elem()
-}
-
-func (o LogSettingsOutput) ToLogSettingsOutput() LogSettingsOutput {
-	return o
-}
-
-func (o LogSettingsOutput) ToLogSettingsOutputWithContext(ctx context.Context) LogSettingsOutput {
-	return o
-}
-
-// Name of a Diagnostic Log category for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
-func (o LogSettingsOutput) Category() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LogSettings) *string { return v.Category }).(pulumi.StringPtrOutput)
-}
-
-// Name of a Diagnostic Log category group for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
-func (o LogSettingsOutput) CategoryGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LogSettings) *string { return v.CategoryGroup }).(pulumi.StringPtrOutput)
-}
-
-// a value indicating whether this log is enabled.
-func (o LogSettingsOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LogSettings) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// the retention policy for this log.
-func (o LogSettingsOutput) RetentionPolicy() RetentionPolicyPtrOutput {
-	return o.ApplyT(func(v LogSettings) *RetentionPolicy { return v.RetentionPolicy }).(RetentionPolicyPtrOutput)
-}
-
-type LogSettingsArrayOutput struct{ *pulumi.OutputState }
-
-func (LogSettingsArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LogSettings)(nil)).Elem()
-}
-
-func (o LogSettingsArrayOutput) ToLogSettingsArrayOutput() LogSettingsArrayOutput {
-	return o
-}
-
-func (o LogSettingsArrayOutput) ToLogSettingsArrayOutputWithContext(ctx context.Context) LogSettingsArrayOutput {
-	return o
-}
-
-func (o LogSettingsArrayOutput) Index(i pulumi.IntInput) LogSettingsOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogSettings {
-		return vs[0].([]LogSettings)[vs[1].(int)]
-	}).(LogSettingsOutput)
-}
-
-// Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular log.
-type LogSettingsResponse struct {
-	// Name of a Diagnostic Log category for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
-	Category *string `pulumi:"category"`
-	// Name of a Diagnostic Log category group for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
-	CategoryGroup *string `pulumi:"categoryGroup"`
-	// a value indicating whether this log is enabled.
-	Enabled bool `pulumi:"enabled"`
-	// the retention policy for this log.
-	RetentionPolicy *RetentionPolicyResponse `pulumi:"retentionPolicy"`
-}
-
-// Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular log.
-type LogSettingsResponseOutput struct{ *pulumi.OutputState }
-
-func (LogSettingsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LogSettingsResponse)(nil)).Elem()
-}
-
-func (o LogSettingsResponseOutput) ToLogSettingsResponseOutput() LogSettingsResponseOutput {
-	return o
-}
-
-func (o LogSettingsResponseOutput) ToLogSettingsResponseOutputWithContext(ctx context.Context) LogSettingsResponseOutput {
-	return o
-}
-
-// Name of a Diagnostic Log category for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
-func (o LogSettingsResponseOutput) Category() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LogSettingsResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
-}
-
-// Name of a Diagnostic Log category group for a resource type this setting is applied to. To obtain the list of Diagnostic Log categories for a resource, first perform a GET diagnostic settings operation.
-func (o LogSettingsResponseOutput) CategoryGroup() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LogSettingsResponse) *string { return v.CategoryGroup }).(pulumi.StringPtrOutput)
-}
-
-// a value indicating whether this log is enabled.
-func (o LogSettingsResponseOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LogSettingsResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// the retention policy for this log.
-func (o LogSettingsResponseOutput) RetentionPolicy() RetentionPolicyResponsePtrOutput {
-	return o.ApplyT(func(v LogSettingsResponse) *RetentionPolicyResponse { return v.RetentionPolicy }).(RetentionPolicyResponsePtrOutput)
-}
-
-type LogSettingsResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (LogSettingsResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]LogSettingsResponse)(nil)).Elem()
-}
-
-func (o LogSettingsResponseArrayOutput) ToLogSettingsResponseArrayOutput() LogSettingsResponseArrayOutput {
-	return o
-}
-
-func (o LogSettingsResponseArrayOutput) ToLogSettingsResponseArrayOutputWithContext(ctx context.Context) LogSettingsResponseArrayOutput {
-	return o
-}
-
-func (o LogSettingsResponseArrayOutput) Index(i pulumi.IntInput) LogSettingsResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LogSettingsResponse {
-		return vs[0].([]LogSettingsResponse)[vs[1].(int)]
-	}).(LogSettingsResponseOutput)
-}
-
 // A logic app receiver.
 type LogicAppReceiver struct {
 	// The callback url where http request sent to.
@@ -20349,200 +20292,6 @@ func (o MetricResponseArrayOutput) Index(i pulumi.IntInput) MetricResponseOutput
 	}).(MetricResponseOutput)
 }
 
-// Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular metric.
-type MetricSettings struct {
-	// Name of a Diagnostic Metric category for a resource type this setting is applied to. To obtain the list of Diagnostic metric categories for a resource, first perform a GET diagnostic settings operation.
-	Category *string `pulumi:"category"`
-	// a value indicating whether this category is enabled.
-	Enabled bool `pulumi:"enabled"`
-	// the retention policy for this category.
-	RetentionPolicy *RetentionPolicy `pulumi:"retentionPolicy"`
-	// the timegrain of the metric in ISO8601 format.
-	TimeGrain *string `pulumi:"timeGrain"`
-}
-
-// MetricSettingsInput is an input type that accepts MetricSettingsArgs and MetricSettingsOutput values.
-// You can construct a concrete instance of `MetricSettingsInput` via:
-//
-//	MetricSettingsArgs{...}
-type MetricSettingsInput interface {
-	pulumi.Input
-
-	ToMetricSettingsOutput() MetricSettingsOutput
-	ToMetricSettingsOutputWithContext(context.Context) MetricSettingsOutput
-}
-
-// Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular metric.
-type MetricSettingsArgs struct {
-	// Name of a Diagnostic Metric category for a resource type this setting is applied to. To obtain the list of Diagnostic metric categories for a resource, first perform a GET diagnostic settings operation.
-	Category pulumi.StringPtrInput `pulumi:"category"`
-	// a value indicating whether this category is enabled.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// the retention policy for this category.
-	RetentionPolicy RetentionPolicyPtrInput `pulumi:"retentionPolicy"`
-	// the timegrain of the metric in ISO8601 format.
-	TimeGrain pulumi.StringPtrInput `pulumi:"timeGrain"`
-}
-
-func (MetricSettingsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*MetricSettings)(nil)).Elem()
-}
-
-func (i MetricSettingsArgs) ToMetricSettingsOutput() MetricSettingsOutput {
-	return i.ToMetricSettingsOutputWithContext(context.Background())
-}
-
-func (i MetricSettingsArgs) ToMetricSettingsOutputWithContext(ctx context.Context) MetricSettingsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetricSettingsOutput)
-}
-
-// MetricSettingsArrayInput is an input type that accepts MetricSettingsArray and MetricSettingsArrayOutput values.
-// You can construct a concrete instance of `MetricSettingsArrayInput` via:
-//
-//	MetricSettingsArray{ MetricSettingsArgs{...} }
-type MetricSettingsArrayInput interface {
-	pulumi.Input
-
-	ToMetricSettingsArrayOutput() MetricSettingsArrayOutput
-	ToMetricSettingsArrayOutputWithContext(context.Context) MetricSettingsArrayOutput
-}
-
-type MetricSettingsArray []MetricSettingsInput
-
-func (MetricSettingsArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MetricSettings)(nil)).Elem()
-}
-
-func (i MetricSettingsArray) ToMetricSettingsArrayOutput() MetricSettingsArrayOutput {
-	return i.ToMetricSettingsArrayOutputWithContext(context.Background())
-}
-
-func (i MetricSettingsArray) ToMetricSettingsArrayOutputWithContext(ctx context.Context) MetricSettingsArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(MetricSettingsArrayOutput)
-}
-
-// Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular metric.
-type MetricSettingsOutput struct{ *pulumi.OutputState }
-
-func (MetricSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MetricSettings)(nil)).Elem()
-}
-
-func (o MetricSettingsOutput) ToMetricSettingsOutput() MetricSettingsOutput {
-	return o
-}
-
-func (o MetricSettingsOutput) ToMetricSettingsOutputWithContext(ctx context.Context) MetricSettingsOutput {
-	return o
-}
-
-// Name of a Diagnostic Metric category for a resource type this setting is applied to. To obtain the list of Diagnostic metric categories for a resource, first perform a GET diagnostic settings operation.
-func (o MetricSettingsOutput) Category() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MetricSettings) *string { return v.Category }).(pulumi.StringPtrOutput)
-}
-
-// a value indicating whether this category is enabled.
-func (o MetricSettingsOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v MetricSettings) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// the retention policy for this category.
-func (o MetricSettingsOutput) RetentionPolicy() RetentionPolicyPtrOutput {
-	return o.ApplyT(func(v MetricSettings) *RetentionPolicy { return v.RetentionPolicy }).(RetentionPolicyPtrOutput)
-}
-
-// the timegrain of the metric in ISO8601 format.
-func (o MetricSettingsOutput) TimeGrain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MetricSettings) *string { return v.TimeGrain }).(pulumi.StringPtrOutput)
-}
-
-type MetricSettingsArrayOutput struct{ *pulumi.OutputState }
-
-func (MetricSettingsArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MetricSettings)(nil)).Elem()
-}
-
-func (o MetricSettingsArrayOutput) ToMetricSettingsArrayOutput() MetricSettingsArrayOutput {
-	return o
-}
-
-func (o MetricSettingsArrayOutput) ToMetricSettingsArrayOutputWithContext(ctx context.Context) MetricSettingsArrayOutput {
-	return o
-}
-
-func (o MetricSettingsArrayOutput) Index(i pulumi.IntInput) MetricSettingsOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetricSettings {
-		return vs[0].([]MetricSettings)[vs[1].(int)]
-	}).(MetricSettingsOutput)
-}
-
-// Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular metric.
-type MetricSettingsResponse struct {
-	// Name of a Diagnostic Metric category for a resource type this setting is applied to. To obtain the list of Diagnostic metric categories for a resource, first perform a GET diagnostic settings operation.
-	Category *string `pulumi:"category"`
-	// a value indicating whether this category is enabled.
-	Enabled bool `pulumi:"enabled"`
-	// the retention policy for this category.
-	RetentionPolicy *RetentionPolicyResponse `pulumi:"retentionPolicy"`
-	// the timegrain of the metric in ISO8601 format.
-	TimeGrain *string `pulumi:"timeGrain"`
-}
-
-// Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular metric.
-type MetricSettingsResponseOutput struct{ *pulumi.OutputState }
-
-func (MetricSettingsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MetricSettingsResponse)(nil)).Elem()
-}
-
-func (o MetricSettingsResponseOutput) ToMetricSettingsResponseOutput() MetricSettingsResponseOutput {
-	return o
-}
-
-func (o MetricSettingsResponseOutput) ToMetricSettingsResponseOutputWithContext(ctx context.Context) MetricSettingsResponseOutput {
-	return o
-}
-
-// Name of a Diagnostic Metric category for a resource type this setting is applied to. To obtain the list of Diagnostic metric categories for a resource, first perform a GET diagnostic settings operation.
-func (o MetricSettingsResponseOutput) Category() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MetricSettingsResponse) *string { return v.Category }).(pulumi.StringPtrOutput)
-}
-
-// a value indicating whether this category is enabled.
-func (o MetricSettingsResponseOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v MetricSettingsResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-// the retention policy for this category.
-func (o MetricSettingsResponseOutput) RetentionPolicy() RetentionPolicyResponsePtrOutput {
-	return o.ApplyT(func(v MetricSettingsResponse) *RetentionPolicyResponse { return v.RetentionPolicy }).(RetentionPolicyResponsePtrOutput)
-}
-
-// the timegrain of the metric in ISO8601 format.
-func (o MetricSettingsResponseOutput) TimeGrain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MetricSettingsResponse) *string { return v.TimeGrain }).(pulumi.StringPtrOutput)
-}
-
-type MetricSettingsResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (MetricSettingsResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]MetricSettingsResponse)(nil)).Elem()
-}
-
-func (o MetricSettingsResponseArrayOutput) ToMetricSettingsResponseArrayOutput() MetricSettingsResponseArrayOutput {
-	return o
-}
-
-func (o MetricSettingsResponseArrayOutput) ToMetricSettingsResponseArrayOutputWithContext(ctx context.Context) MetricSettingsResponseArrayOutput {
-	return o
-}
-
-func (o MetricSettingsResponseArrayOutput) Index(i pulumi.IntInput) MetricSettingsResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetricSettingsResponse {
-		return vs[0].([]MetricSettingsResponse)[vs[1].(int)]
-	}).(MetricSettingsResponseOutput)
-}
-
 // The trigger that results in a scaling action.
 type MetricTrigger struct {
 	// List of dimension conditions. For example: [{"DimensionName":"AppName","Operator":"Equals","Values":["App1"]},{"DimensionName":"Deployment","Operator":"Equals","Values":["default"]}].
@@ -20800,6 +20549,257 @@ func (o MetricTriggerResponseOutput) TimeWindow() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricTriggerResponse) string { return v.TimeWindow }).(pulumi.StringOutput)
 }
 
+// The Azure mobile App push notification receiver.
+type MicrosoftCommonAzureAppPushReceiver struct {
+	// The email address registered for the Azure mobile app.
+	EmailAddress string `pulumi:"emailAddress"`
+	// The name of the Azure mobile app push receiver. Names must be unique across all receivers within an action group.
+	Name string `pulumi:"name"`
+}
+
+// MicrosoftCommonAzureAppPushReceiverInput is an input type that accepts MicrosoftCommonAzureAppPushReceiverArgs and MicrosoftCommonAzureAppPushReceiverOutput values.
+// You can construct a concrete instance of `MicrosoftCommonAzureAppPushReceiverInput` via:
+//
+//	MicrosoftCommonAzureAppPushReceiverArgs{...}
+type MicrosoftCommonAzureAppPushReceiverInput interface {
+	pulumi.Input
+
+	ToMicrosoftCommonAzureAppPushReceiverOutput() MicrosoftCommonAzureAppPushReceiverOutput
+	ToMicrosoftCommonAzureAppPushReceiverOutputWithContext(context.Context) MicrosoftCommonAzureAppPushReceiverOutput
+}
+
+// The Azure mobile App push notification receiver.
+type MicrosoftCommonAzureAppPushReceiverArgs struct {
+	// The email address registered for the Azure mobile app.
+	EmailAddress pulumi.StringInput `pulumi:"emailAddress"`
+	// The name of the Azure mobile app push receiver. Names must be unique across all receivers within an action group.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (MicrosoftCommonAzureAppPushReceiverArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MicrosoftCommonAzureAppPushReceiver)(nil)).Elem()
+}
+
+func (i MicrosoftCommonAzureAppPushReceiverArgs) ToMicrosoftCommonAzureAppPushReceiverOutput() MicrosoftCommonAzureAppPushReceiverOutput {
+	return i.ToMicrosoftCommonAzureAppPushReceiverOutputWithContext(context.Background())
+}
+
+func (i MicrosoftCommonAzureAppPushReceiverArgs) ToMicrosoftCommonAzureAppPushReceiverOutputWithContext(ctx context.Context) MicrosoftCommonAzureAppPushReceiverOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MicrosoftCommonAzureAppPushReceiverOutput)
+}
+
+// MicrosoftCommonAzureAppPushReceiverArrayInput is an input type that accepts MicrosoftCommonAzureAppPushReceiverArray and MicrosoftCommonAzureAppPushReceiverArrayOutput values.
+// You can construct a concrete instance of `MicrosoftCommonAzureAppPushReceiverArrayInput` via:
+//
+//	MicrosoftCommonAzureAppPushReceiverArray{ MicrosoftCommonAzureAppPushReceiverArgs{...} }
+type MicrosoftCommonAzureAppPushReceiverArrayInput interface {
+	pulumi.Input
+
+	ToMicrosoftCommonAzureAppPushReceiverArrayOutput() MicrosoftCommonAzureAppPushReceiverArrayOutput
+	ToMicrosoftCommonAzureAppPushReceiverArrayOutputWithContext(context.Context) MicrosoftCommonAzureAppPushReceiverArrayOutput
+}
+
+type MicrosoftCommonAzureAppPushReceiverArray []MicrosoftCommonAzureAppPushReceiverInput
+
+func (MicrosoftCommonAzureAppPushReceiverArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MicrosoftCommonAzureAppPushReceiver)(nil)).Elem()
+}
+
+func (i MicrosoftCommonAzureAppPushReceiverArray) ToMicrosoftCommonAzureAppPushReceiverArrayOutput() MicrosoftCommonAzureAppPushReceiverArrayOutput {
+	return i.ToMicrosoftCommonAzureAppPushReceiverArrayOutputWithContext(context.Background())
+}
+
+func (i MicrosoftCommonAzureAppPushReceiverArray) ToMicrosoftCommonAzureAppPushReceiverArrayOutputWithContext(ctx context.Context) MicrosoftCommonAzureAppPushReceiverArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MicrosoftCommonAzureAppPushReceiverArrayOutput)
+}
+
+// The Azure mobile App push notification receiver.
+type MicrosoftCommonAzureAppPushReceiverOutput struct{ *pulumi.OutputState }
+
+func (MicrosoftCommonAzureAppPushReceiverOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MicrosoftCommonAzureAppPushReceiver)(nil)).Elem()
+}
+
+func (o MicrosoftCommonAzureAppPushReceiverOutput) ToMicrosoftCommonAzureAppPushReceiverOutput() MicrosoftCommonAzureAppPushReceiverOutput {
+	return o
+}
+
+func (o MicrosoftCommonAzureAppPushReceiverOutput) ToMicrosoftCommonAzureAppPushReceiverOutputWithContext(ctx context.Context) MicrosoftCommonAzureAppPushReceiverOutput {
+	return o
+}
+
+// The email address registered for the Azure mobile app.
+func (o MicrosoftCommonAzureAppPushReceiverOutput) EmailAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v MicrosoftCommonAzureAppPushReceiver) string { return v.EmailAddress }).(pulumi.StringOutput)
+}
+
+// The name of the Azure mobile app push receiver. Names must be unique across all receivers within an action group.
+func (o MicrosoftCommonAzureAppPushReceiverOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v MicrosoftCommonAzureAppPushReceiver) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type MicrosoftCommonAzureAppPushReceiverArrayOutput struct{ *pulumi.OutputState }
+
+func (MicrosoftCommonAzureAppPushReceiverArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MicrosoftCommonAzureAppPushReceiver)(nil)).Elem()
+}
+
+func (o MicrosoftCommonAzureAppPushReceiverArrayOutput) ToMicrosoftCommonAzureAppPushReceiverArrayOutput() MicrosoftCommonAzureAppPushReceiverArrayOutput {
+	return o
+}
+
+func (o MicrosoftCommonAzureAppPushReceiverArrayOutput) ToMicrosoftCommonAzureAppPushReceiverArrayOutputWithContext(ctx context.Context) MicrosoftCommonAzureAppPushReceiverArrayOutput {
+	return o
+}
+
+func (o MicrosoftCommonAzureAppPushReceiverArrayOutput) Index(i pulumi.IntInput) MicrosoftCommonAzureAppPushReceiverOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MicrosoftCommonAzureAppPushReceiver {
+		return vs[0].([]MicrosoftCommonAzureAppPushReceiver)[vs[1].(int)]
+	}).(MicrosoftCommonAzureAppPushReceiverOutput)
+}
+
+// An email receiver.
+type MicrosoftCommonEmailReceiver struct {
+	// The email address of this receiver.
+	EmailAddress string `pulumi:"emailAddress"`
+	// The name of the email receiver. Names must be unique across all receivers within an action group.
+	Name string `pulumi:"name"`
+	// Indicates whether to use common alert schema.
+	UseCommonAlertSchema *bool `pulumi:"useCommonAlertSchema"`
+}
+
+// Defaults sets the appropriate defaults for MicrosoftCommonEmailReceiver
+func (val *MicrosoftCommonEmailReceiver) Defaults() *MicrosoftCommonEmailReceiver {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.UseCommonAlertSchema == nil {
+		useCommonAlertSchema_ := false
+		tmp.UseCommonAlertSchema = &useCommonAlertSchema_
+	}
+	return &tmp
+}
+
+// MicrosoftCommonEmailReceiverInput is an input type that accepts MicrosoftCommonEmailReceiverArgs and MicrosoftCommonEmailReceiverOutput values.
+// You can construct a concrete instance of `MicrosoftCommonEmailReceiverInput` via:
+//
+//	MicrosoftCommonEmailReceiverArgs{...}
+type MicrosoftCommonEmailReceiverInput interface {
+	pulumi.Input
+
+	ToMicrosoftCommonEmailReceiverOutput() MicrosoftCommonEmailReceiverOutput
+	ToMicrosoftCommonEmailReceiverOutputWithContext(context.Context) MicrosoftCommonEmailReceiverOutput
+}
+
+// An email receiver.
+type MicrosoftCommonEmailReceiverArgs struct {
+	// The email address of this receiver.
+	EmailAddress pulumi.StringInput `pulumi:"emailAddress"`
+	// The name of the email receiver. Names must be unique across all receivers within an action group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Indicates whether to use common alert schema.
+	UseCommonAlertSchema pulumi.BoolPtrInput `pulumi:"useCommonAlertSchema"`
+}
+
+// Defaults sets the appropriate defaults for MicrosoftCommonEmailReceiverArgs
+func (val *MicrosoftCommonEmailReceiverArgs) Defaults() *MicrosoftCommonEmailReceiverArgs {
+	if val == nil {
+		return nil
+	}
+	tmp := *val
+	if tmp.UseCommonAlertSchema == nil {
+		tmp.UseCommonAlertSchema = pulumi.BoolPtr(false)
+	}
+	return &tmp
+}
+func (MicrosoftCommonEmailReceiverArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MicrosoftCommonEmailReceiver)(nil)).Elem()
+}
+
+func (i MicrosoftCommonEmailReceiverArgs) ToMicrosoftCommonEmailReceiverOutput() MicrosoftCommonEmailReceiverOutput {
+	return i.ToMicrosoftCommonEmailReceiverOutputWithContext(context.Background())
+}
+
+func (i MicrosoftCommonEmailReceiverArgs) ToMicrosoftCommonEmailReceiverOutputWithContext(ctx context.Context) MicrosoftCommonEmailReceiverOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MicrosoftCommonEmailReceiverOutput)
+}
+
+// MicrosoftCommonEmailReceiverArrayInput is an input type that accepts MicrosoftCommonEmailReceiverArray and MicrosoftCommonEmailReceiverArrayOutput values.
+// You can construct a concrete instance of `MicrosoftCommonEmailReceiverArrayInput` via:
+//
+//	MicrosoftCommonEmailReceiverArray{ MicrosoftCommonEmailReceiverArgs{...} }
+type MicrosoftCommonEmailReceiverArrayInput interface {
+	pulumi.Input
+
+	ToMicrosoftCommonEmailReceiverArrayOutput() MicrosoftCommonEmailReceiverArrayOutput
+	ToMicrosoftCommonEmailReceiverArrayOutputWithContext(context.Context) MicrosoftCommonEmailReceiverArrayOutput
+}
+
+type MicrosoftCommonEmailReceiverArray []MicrosoftCommonEmailReceiverInput
+
+func (MicrosoftCommonEmailReceiverArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MicrosoftCommonEmailReceiver)(nil)).Elem()
+}
+
+func (i MicrosoftCommonEmailReceiverArray) ToMicrosoftCommonEmailReceiverArrayOutput() MicrosoftCommonEmailReceiverArrayOutput {
+	return i.ToMicrosoftCommonEmailReceiverArrayOutputWithContext(context.Background())
+}
+
+func (i MicrosoftCommonEmailReceiverArray) ToMicrosoftCommonEmailReceiverArrayOutputWithContext(ctx context.Context) MicrosoftCommonEmailReceiverArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MicrosoftCommonEmailReceiverArrayOutput)
+}
+
+// An email receiver.
+type MicrosoftCommonEmailReceiverOutput struct{ *pulumi.OutputState }
+
+func (MicrosoftCommonEmailReceiverOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MicrosoftCommonEmailReceiver)(nil)).Elem()
+}
+
+func (o MicrosoftCommonEmailReceiverOutput) ToMicrosoftCommonEmailReceiverOutput() MicrosoftCommonEmailReceiverOutput {
+	return o
+}
+
+func (o MicrosoftCommonEmailReceiverOutput) ToMicrosoftCommonEmailReceiverOutputWithContext(ctx context.Context) MicrosoftCommonEmailReceiverOutput {
+	return o
+}
+
+// The email address of this receiver.
+func (o MicrosoftCommonEmailReceiverOutput) EmailAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v MicrosoftCommonEmailReceiver) string { return v.EmailAddress }).(pulumi.StringOutput)
+}
+
+// The name of the email receiver. Names must be unique across all receivers within an action group.
+func (o MicrosoftCommonEmailReceiverOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v MicrosoftCommonEmailReceiver) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Indicates whether to use common alert schema.
+func (o MicrosoftCommonEmailReceiverOutput) UseCommonAlertSchema() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MicrosoftCommonEmailReceiver) *bool { return v.UseCommonAlertSchema }).(pulumi.BoolPtrOutput)
+}
+
+type MicrosoftCommonEmailReceiverArrayOutput struct{ *pulumi.OutputState }
+
+func (MicrosoftCommonEmailReceiverArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MicrosoftCommonEmailReceiver)(nil)).Elem()
+}
+
+func (o MicrosoftCommonEmailReceiverArrayOutput) ToMicrosoftCommonEmailReceiverArrayOutput() MicrosoftCommonEmailReceiverArrayOutput {
+	return o
+}
+
+func (o MicrosoftCommonEmailReceiverArrayOutput) ToMicrosoftCommonEmailReceiverArrayOutputWithContext(ctx context.Context) MicrosoftCommonEmailReceiverArrayOutput {
+	return o
+}
+
+func (o MicrosoftCommonEmailReceiverArrayOutput) Index(i pulumi.IntInput) MicrosoftCommonEmailReceiverOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MicrosoftCommonEmailReceiver {
+		return vs[0].([]MicrosoftCommonEmailReceiver)[vs[1].(int)]
+	}).(MicrosoftCommonEmailReceiverOutput)
+}
+
 // Identity for the resource.
 type MicrosoftCommonIdentity struct {
 	// Type of managed service identity.
@@ -20957,6 +20957,401 @@ func (o MicrosoftCommonIdentityPtrOutput) UserAssignedIdentities() pulumi.String
 		}
 		return v.UserAssignedIdentities
 	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies the retention policy for the log.
+type MicrosoftCommonRetentionPolicy struct {
+	// the number of days for the retention in days. A value of 0 will retain the events indefinitely.
+	Days int `pulumi:"days"`
+	// a value indicating whether the retention policy is enabled.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// MicrosoftCommonRetentionPolicyInput is an input type that accepts MicrosoftCommonRetentionPolicyArgs and MicrosoftCommonRetentionPolicyOutput values.
+// You can construct a concrete instance of `MicrosoftCommonRetentionPolicyInput` via:
+//
+//	MicrosoftCommonRetentionPolicyArgs{...}
+type MicrosoftCommonRetentionPolicyInput interface {
+	pulumi.Input
+
+	ToMicrosoftCommonRetentionPolicyOutput() MicrosoftCommonRetentionPolicyOutput
+	ToMicrosoftCommonRetentionPolicyOutputWithContext(context.Context) MicrosoftCommonRetentionPolicyOutput
+}
+
+// Specifies the retention policy for the log.
+type MicrosoftCommonRetentionPolicyArgs struct {
+	// the number of days for the retention in days. A value of 0 will retain the events indefinitely.
+	Days pulumi.IntInput `pulumi:"days"`
+	// a value indicating whether the retention policy is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (MicrosoftCommonRetentionPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MicrosoftCommonRetentionPolicy)(nil)).Elem()
+}
+
+func (i MicrosoftCommonRetentionPolicyArgs) ToMicrosoftCommonRetentionPolicyOutput() MicrosoftCommonRetentionPolicyOutput {
+	return i.ToMicrosoftCommonRetentionPolicyOutputWithContext(context.Background())
+}
+
+func (i MicrosoftCommonRetentionPolicyArgs) ToMicrosoftCommonRetentionPolicyOutputWithContext(ctx context.Context) MicrosoftCommonRetentionPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MicrosoftCommonRetentionPolicyOutput)
+}
+
+func (i MicrosoftCommonRetentionPolicyArgs) ToMicrosoftCommonRetentionPolicyPtrOutput() MicrosoftCommonRetentionPolicyPtrOutput {
+	return i.ToMicrosoftCommonRetentionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i MicrosoftCommonRetentionPolicyArgs) ToMicrosoftCommonRetentionPolicyPtrOutputWithContext(ctx context.Context) MicrosoftCommonRetentionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MicrosoftCommonRetentionPolicyOutput).ToMicrosoftCommonRetentionPolicyPtrOutputWithContext(ctx)
+}
+
+// MicrosoftCommonRetentionPolicyPtrInput is an input type that accepts MicrosoftCommonRetentionPolicyArgs, MicrosoftCommonRetentionPolicyPtr and MicrosoftCommonRetentionPolicyPtrOutput values.
+// You can construct a concrete instance of `MicrosoftCommonRetentionPolicyPtrInput` via:
+//
+//	        MicrosoftCommonRetentionPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type MicrosoftCommonRetentionPolicyPtrInput interface {
+	pulumi.Input
+
+	ToMicrosoftCommonRetentionPolicyPtrOutput() MicrosoftCommonRetentionPolicyPtrOutput
+	ToMicrosoftCommonRetentionPolicyPtrOutputWithContext(context.Context) MicrosoftCommonRetentionPolicyPtrOutput
+}
+
+type microsoftCommonRetentionPolicyPtrType MicrosoftCommonRetentionPolicyArgs
+
+func MicrosoftCommonRetentionPolicyPtr(v *MicrosoftCommonRetentionPolicyArgs) MicrosoftCommonRetentionPolicyPtrInput {
+	return (*microsoftCommonRetentionPolicyPtrType)(v)
+}
+
+func (*microsoftCommonRetentionPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MicrosoftCommonRetentionPolicy)(nil)).Elem()
+}
+
+func (i *microsoftCommonRetentionPolicyPtrType) ToMicrosoftCommonRetentionPolicyPtrOutput() MicrosoftCommonRetentionPolicyPtrOutput {
+	return i.ToMicrosoftCommonRetentionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *microsoftCommonRetentionPolicyPtrType) ToMicrosoftCommonRetentionPolicyPtrOutputWithContext(ctx context.Context) MicrosoftCommonRetentionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MicrosoftCommonRetentionPolicyPtrOutput)
+}
+
+// Specifies the retention policy for the log.
+type MicrosoftCommonRetentionPolicyOutput struct{ *pulumi.OutputState }
+
+func (MicrosoftCommonRetentionPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MicrosoftCommonRetentionPolicy)(nil)).Elem()
+}
+
+func (o MicrosoftCommonRetentionPolicyOutput) ToMicrosoftCommonRetentionPolicyOutput() MicrosoftCommonRetentionPolicyOutput {
+	return o
+}
+
+func (o MicrosoftCommonRetentionPolicyOutput) ToMicrosoftCommonRetentionPolicyOutputWithContext(ctx context.Context) MicrosoftCommonRetentionPolicyOutput {
+	return o
+}
+
+func (o MicrosoftCommonRetentionPolicyOutput) ToMicrosoftCommonRetentionPolicyPtrOutput() MicrosoftCommonRetentionPolicyPtrOutput {
+	return o.ToMicrosoftCommonRetentionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o MicrosoftCommonRetentionPolicyOutput) ToMicrosoftCommonRetentionPolicyPtrOutputWithContext(ctx context.Context) MicrosoftCommonRetentionPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MicrosoftCommonRetentionPolicy) *MicrosoftCommonRetentionPolicy {
+		return &v
+	}).(MicrosoftCommonRetentionPolicyPtrOutput)
+}
+
+// the number of days for the retention in days. A value of 0 will retain the events indefinitely.
+func (o MicrosoftCommonRetentionPolicyOutput) Days() pulumi.IntOutput {
+	return o.ApplyT(func(v MicrosoftCommonRetentionPolicy) int { return v.Days }).(pulumi.IntOutput)
+}
+
+// a value indicating whether the retention policy is enabled.
+func (o MicrosoftCommonRetentionPolicyOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v MicrosoftCommonRetentionPolicy) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type MicrosoftCommonRetentionPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (MicrosoftCommonRetentionPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MicrosoftCommonRetentionPolicy)(nil)).Elem()
+}
+
+func (o MicrosoftCommonRetentionPolicyPtrOutput) ToMicrosoftCommonRetentionPolicyPtrOutput() MicrosoftCommonRetentionPolicyPtrOutput {
+	return o
+}
+
+func (o MicrosoftCommonRetentionPolicyPtrOutput) ToMicrosoftCommonRetentionPolicyPtrOutputWithContext(ctx context.Context) MicrosoftCommonRetentionPolicyPtrOutput {
+	return o
+}
+
+func (o MicrosoftCommonRetentionPolicyPtrOutput) Elem() MicrosoftCommonRetentionPolicyOutput {
+	return o.ApplyT(func(v *MicrosoftCommonRetentionPolicy) MicrosoftCommonRetentionPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret MicrosoftCommonRetentionPolicy
+		return ret
+	}).(MicrosoftCommonRetentionPolicyOutput)
+}
+
+// the number of days for the retention in days. A value of 0 will retain the events indefinitely.
+func (o MicrosoftCommonRetentionPolicyPtrOutput) Days() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MicrosoftCommonRetentionPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Days
+	}).(pulumi.IntPtrOutput)
+}
+
+// a value indicating whether the retention policy is enabled.
+func (o MicrosoftCommonRetentionPolicyPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MicrosoftCommonRetentionPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// An SMS receiver.
+type MicrosoftCommonSmsReceiver struct {
+	// The country code of the SMS receiver.
+	CountryCode string `pulumi:"countryCode"`
+	// The name of the SMS receiver. Names must be unique across all receivers within an action group.
+	Name string `pulumi:"name"`
+	// The phone number of the SMS receiver.
+	PhoneNumber string `pulumi:"phoneNumber"`
+}
+
+// MicrosoftCommonSmsReceiverInput is an input type that accepts MicrosoftCommonSmsReceiverArgs and MicrosoftCommonSmsReceiverOutput values.
+// You can construct a concrete instance of `MicrosoftCommonSmsReceiverInput` via:
+//
+//	MicrosoftCommonSmsReceiverArgs{...}
+type MicrosoftCommonSmsReceiverInput interface {
+	pulumi.Input
+
+	ToMicrosoftCommonSmsReceiverOutput() MicrosoftCommonSmsReceiverOutput
+	ToMicrosoftCommonSmsReceiverOutputWithContext(context.Context) MicrosoftCommonSmsReceiverOutput
+}
+
+// An SMS receiver.
+type MicrosoftCommonSmsReceiverArgs struct {
+	// The country code of the SMS receiver.
+	CountryCode pulumi.StringInput `pulumi:"countryCode"`
+	// The name of the SMS receiver. Names must be unique across all receivers within an action group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The phone number of the SMS receiver.
+	PhoneNumber pulumi.StringInput `pulumi:"phoneNumber"`
+}
+
+func (MicrosoftCommonSmsReceiverArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MicrosoftCommonSmsReceiver)(nil)).Elem()
+}
+
+func (i MicrosoftCommonSmsReceiverArgs) ToMicrosoftCommonSmsReceiverOutput() MicrosoftCommonSmsReceiverOutput {
+	return i.ToMicrosoftCommonSmsReceiverOutputWithContext(context.Background())
+}
+
+func (i MicrosoftCommonSmsReceiverArgs) ToMicrosoftCommonSmsReceiverOutputWithContext(ctx context.Context) MicrosoftCommonSmsReceiverOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MicrosoftCommonSmsReceiverOutput)
+}
+
+// MicrosoftCommonSmsReceiverArrayInput is an input type that accepts MicrosoftCommonSmsReceiverArray and MicrosoftCommonSmsReceiverArrayOutput values.
+// You can construct a concrete instance of `MicrosoftCommonSmsReceiverArrayInput` via:
+//
+//	MicrosoftCommonSmsReceiverArray{ MicrosoftCommonSmsReceiverArgs{...} }
+type MicrosoftCommonSmsReceiverArrayInput interface {
+	pulumi.Input
+
+	ToMicrosoftCommonSmsReceiverArrayOutput() MicrosoftCommonSmsReceiverArrayOutput
+	ToMicrosoftCommonSmsReceiverArrayOutputWithContext(context.Context) MicrosoftCommonSmsReceiverArrayOutput
+}
+
+type MicrosoftCommonSmsReceiverArray []MicrosoftCommonSmsReceiverInput
+
+func (MicrosoftCommonSmsReceiverArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MicrosoftCommonSmsReceiver)(nil)).Elem()
+}
+
+func (i MicrosoftCommonSmsReceiverArray) ToMicrosoftCommonSmsReceiverArrayOutput() MicrosoftCommonSmsReceiverArrayOutput {
+	return i.ToMicrosoftCommonSmsReceiverArrayOutputWithContext(context.Background())
+}
+
+func (i MicrosoftCommonSmsReceiverArray) ToMicrosoftCommonSmsReceiverArrayOutputWithContext(ctx context.Context) MicrosoftCommonSmsReceiverArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MicrosoftCommonSmsReceiverArrayOutput)
+}
+
+// An SMS receiver.
+type MicrosoftCommonSmsReceiverOutput struct{ *pulumi.OutputState }
+
+func (MicrosoftCommonSmsReceiverOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MicrosoftCommonSmsReceiver)(nil)).Elem()
+}
+
+func (o MicrosoftCommonSmsReceiverOutput) ToMicrosoftCommonSmsReceiverOutput() MicrosoftCommonSmsReceiverOutput {
+	return o
+}
+
+func (o MicrosoftCommonSmsReceiverOutput) ToMicrosoftCommonSmsReceiverOutputWithContext(ctx context.Context) MicrosoftCommonSmsReceiverOutput {
+	return o
+}
+
+// The country code of the SMS receiver.
+func (o MicrosoftCommonSmsReceiverOutput) CountryCode() pulumi.StringOutput {
+	return o.ApplyT(func(v MicrosoftCommonSmsReceiver) string { return v.CountryCode }).(pulumi.StringOutput)
+}
+
+// The name of the SMS receiver. Names must be unique across all receivers within an action group.
+func (o MicrosoftCommonSmsReceiverOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v MicrosoftCommonSmsReceiver) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The phone number of the SMS receiver.
+func (o MicrosoftCommonSmsReceiverOutput) PhoneNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v MicrosoftCommonSmsReceiver) string { return v.PhoneNumber }).(pulumi.StringOutput)
+}
+
+type MicrosoftCommonSmsReceiverArrayOutput struct{ *pulumi.OutputState }
+
+func (MicrosoftCommonSmsReceiverArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MicrosoftCommonSmsReceiver)(nil)).Elem()
+}
+
+func (o MicrosoftCommonSmsReceiverArrayOutput) ToMicrosoftCommonSmsReceiverArrayOutput() MicrosoftCommonSmsReceiverArrayOutput {
+	return o
+}
+
+func (o MicrosoftCommonSmsReceiverArrayOutput) ToMicrosoftCommonSmsReceiverArrayOutputWithContext(ctx context.Context) MicrosoftCommonSmsReceiverArrayOutput {
+	return o
+}
+
+func (o MicrosoftCommonSmsReceiverArrayOutput) Index(i pulumi.IntInput) MicrosoftCommonSmsReceiverOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MicrosoftCommonSmsReceiver {
+		return vs[0].([]MicrosoftCommonSmsReceiver)[vs[1].(int)]
+	}).(MicrosoftCommonSmsReceiverOutput)
+}
+
+// A voice receiver.
+type MicrosoftCommonVoiceReceiver struct {
+	// The country code of the voice receiver.
+	CountryCode string `pulumi:"countryCode"`
+	// The name of the voice receiver. Names must be unique across all receivers within an action group.
+	Name string `pulumi:"name"`
+	// The phone number of the voice receiver.
+	PhoneNumber string `pulumi:"phoneNumber"`
+}
+
+// MicrosoftCommonVoiceReceiverInput is an input type that accepts MicrosoftCommonVoiceReceiverArgs and MicrosoftCommonVoiceReceiverOutput values.
+// You can construct a concrete instance of `MicrosoftCommonVoiceReceiverInput` via:
+//
+//	MicrosoftCommonVoiceReceiverArgs{...}
+type MicrosoftCommonVoiceReceiverInput interface {
+	pulumi.Input
+
+	ToMicrosoftCommonVoiceReceiverOutput() MicrosoftCommonVoiceReceiverOutput
+	ToMicrosoftCommonVoiceReceiverOutputWithContext(context.Context) MicrosoftCommonVoiceReceiverOutput
+}
+
+// A voice receiver.
+type MicrosoftCommonVoiceReceiverArgs struct {
+	// The country code of the voice receiver.
+	CountryCode pulumi.StringInput `pulumi:"countryCode"`
+	// The name of the voice receiver. Names must be unique across all receivers within an action group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The phone number of the voice receiver.
+	PhoneNumber pulumi.StringInput `pulumi:"phoneNumber"`
+}
+
+func (MicrosoftCommonVoiceReceiverArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MicrosoftCommonVoiceReceiver)(nil)).Elem()
+}
+
+func (i MicrosoftCommonVoiceReceiverArgs) ToMicrosoftCommonVoiceReceiverOutput() MicrosoftCommonVoiceReceiverOutput {
+	return i.ToMicrosoftCommonVoiceReceiverOutputWithContext(context.Background())
+}
+
+func (i MicrosoftCommonVoiceReceiverArgs) ToMicrosoftCommonVoiceReceiverOutputWithContext(ctx context.Context) MicrosoftCommonVoiceReceiverOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MicrosoftCommonVoiceReceiverOutput)
+}
+
+// MicrosoftCommonVoiceReceiverArrayInput is an input type that accepts MicrosoftCommonVoiceReceiverArray and MicrosoftCommonVoiceReceiverArrayOutput values.
+// You can construct a concrete instance of `MicrosoftCommonVoiceReceiverArrayInput` via:
+//
+//	MicrosoftCommonVoiceReceiverArray{ MicrosoftCommonVoiceReceiverArgs{...} }
+type MicrosoftCommonVoiceReceiverArrayInput interface {
+	pulumi.Input
+
+	ToMicrosoftCommonVoiceReceiverArrayOutput() MicrosoftCommonVoiceReceiverArrayOutput
+	ToMicrosoftCommonVoiceReceiverArrayOutputWithContext(context.Context) MicrosoftCommonVoiceReceiverArrayOutput
+}
+
+type MicrosoftCommonVoiceReceiverArray []MicrosoftCommonVoiceReceiverInput
+
+func (MicrosoftCommonVoiceReceiverArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MicrosoftCommonVoiceReceiver)(nil)).Elem()
+}
+
+func (i MicrosoftCommonVoiceReceiverArray) ToMicrosoftCommonVoiceReceiverArrayOutput() MicrosoftCommonVoiceReceiverArrayOutput {
+	return i.ToMicrosoftCommonVoiceReceiverArrayOutputWithContext(context.Background())
+}
+
+func (i MicrosoftCommonVoiceReceiverArray) ToMicrosoftCommonVoiceReceiverArrayOutputWithContext(ctx context.Context) MicrosoftCommonVoiceReceiverArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MicrosoftCommonVoiceReceiverArrayOutput)
+}
+
+// A voice receiver.
+type MicrosoftCommonVoiceReceiverOutput struct{ *pulumi.OutputState }
+
+func (MicrosoftCommonVoiceReceiverOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MicrosoftCommonVoiceReceiver)(nil)).Elem()
+}
+
+func (o MicrosoftCommonVoiceReceiverOutput) ToMicrosoftCommonVoiceReceiverOutput() MicrosoftCommonVoiceReceiverOutput {
+	return o
+}
+
+func (o MicrosoftCommonVoiceReceiverOutput) ToMicrosoftCommonVoiceReceiverOutputWithContext(ctx context.Context) MicrosoftCommonVoiceReceiverOutput {
+	return o
+}
+
+// The country code of the voice receiver.
+func (o MicrosoftCommonVoiceReceiverOutput) CountryCode() pulumi.StringOutput {
+	return o.ApplyT(func(v MicrosoftCommonVoiceReceiver) string { return v.CountryCode }).(pulumi.StringOutput)
+}
+
+// The name of the voice receiver. Names must be unique across all receivers within an action group.
+func (o MicrosoftCommonVoiceReceiverOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v MicrosoftCommonVoiceReceiver) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The phone number of the voice receiver.
+func (o MicrosoftCommonVoiceReceiverOutput) PhoneNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v MicrosoftCommonVoiceReceiver) string { return v.PhoneNumber }).(pulumi.StringOutput)
+}
+
+type MicrosoftCommonVoiceReceiverArrayOutput struct{ *pulumi.OutputState }
+
+func (MicrosoftCommonVoiceReceiverArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MicrosoftCommonVoiceReceiver)(nil)).Elem()
+}
+
+func (o MicrosoftCommonVoiceReceiverArrayOutput) ToMicrosoftCommonVoiceReceiverArrayOutput() MicrosoftCommonVoiceReceiverArrayOutput {
+	return o
+}
+
+func (o MicrosoftCommonVoiceReceiverArrayOutput) ToMicrosoftCommonVoiceReceiverArrayOutputWithContext(ctx context.Context) MicrosoftCommonVoiceReceiverArrayOutput {
+	return o
+}
+
+func (o MicrosoftCommonVoiceReceiverArrayOutput) Index(i pulumi.IntInput) MicrosoftCommonVoiceReceiverOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MicrosoftCommonVoiceReceiver {
+		return vs[0].([]MicrosoftCommonVoiceReceiver)[vs[1].(int)]
+	}).(MicrosoftCommonVoiceReceiverOutput)
 }
 
 // Settings for automatically discovering entities for the health model.
@@ -23347,98 +23742,6 @@ func (o PredictiveAutoscalePolicyResponsePtrOutput) ScaleMode() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Private Endpoint Connection resource.
-type PrivateEndpointConnectionPrivateLinkScopeResponse struct {
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-	Id string `pulumi:"id"`
-	// The name of the resource
-	Name string `pulumi:"name"`
-	// The resource of private end point.
-	PrivateEndpoint *PrivateEndpointResponse `pulumi:"privateEndpoint"`
-	// A collection of information about the state of the connection between service consumer and provider.
-	PrivateLinkServiceConnectionState PrivateLinkServiceConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
-	// The provisioning state of the private endpoint connection resource.
-	ProvisioningState string `pulumi:"provisioningState"`
-	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-	Type string `pulumi:"type"`
-}
-
-// The Private Endpoint Connection resource.
-type PrivateEndpointConnectionPrivateLinkScopeResponseOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionPrivateLinkScopeResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PrivateEndpointConnectionPrivateLinkScopeResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionPrivateLinkScopeResponseOutput) ToPrivateEndpointConnectionPrivateLinkScopeResponseOutput() PrivateEndpointConnectionPrivateLinkScopeResponseOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionPrivateLinkScopeResponseOutput) ToPrivateEndpointConnectionPrivateLinkScopeResponseOutputWithContext(ctx context.Context) PrivateEndpointConnectionPrivateLinkScopeResponseOutput {
-	return o
-}
-
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-func (o PrivateEndpointConnectionPrivateLinkScopeResponseOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionPrivateLinkScopeResponse) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The name of the resource
-func (o PrivateEndpointConnectionPrivateLinkScopeResponseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionPrivateLinkScopeResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The resource of private end point.
-func (o PrivateEndpointConnectionPrivateLinkScopeResponseOutput) PrivateEndpoint() PrivateEndpointResponsePtrOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionPrivateLinkScopeResponse) *PrivateEndpointResponse {
-		return v.PrivateEndpoint
-	}).(PrivateEndpointResponsePtrOutput)
-}
-
-// A collection of information about the state of the connection between service consumer and provider.
-func (o PrivateEndpointConnectionPrivateLinkScopeResponseOutput) PrivateLinkServiceConnectionState() PrivateLinkServiceConnectionStateResponseOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionPrivateLinkScopeResponse) PrivateLinkServiceConnectionStateResponse {
-		return v.PrivateLinkServiceConnectionState
-	}).(PrivateLinkServiceConnectionStateResponseOutput)
-}
-
-// The provisioning state of the private endpoint connection resource.
-func (o PrivateEndpointConnectionPrivateLinkScopeResponseOutput) ProvisioningState() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionPrivateLinkScopeResponse) string { return v.ProvisioningState }).(pulumi.StringOutput)
-}
-
-// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-func (o PrivateEndpointConnectionPrivateLinkScopeResponseOutput) SystemData() SystemDataResponseOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionPrivateLinkScopeResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
-}
-
-// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-func (o PrivateEndpointConnectionPrivateLinkScopeResponseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v PrivateEndpointConnectionPrivateLinkScopeResponse) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type PrivateEndpointConnectionPrivateLinkScopeResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (PrivateEndpointConnectionPrivateLinkScopeResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]PrivateEndpointConnectionPrivateLinkScopeResponse)(nil)).Elem()
-}
-
-func (o PrivateEndpointConnectionPrivateLinkScopeResponseArrayOutput) ToPrivateEndpointConnectionPrivateLinkScopeResponseArrayOutput() PrivateEndpointConnectionPrivateLinkScopeResponseArrayOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionPrivateLinkScopeResponseArrayOutput) ToPrivateEndpointConnectionPrivateLinkScopeResponseArrayOutputWithContext(ctx context.Context) PrivateEndpointConnectionPrivateLinkScopeResponseArrayOutput {
-	return o
-}
-
-func (o PrivateEndpointConnectionPrivateLinkScopeResponseArrayOutput) Index(i pulumi.IntInput) PrivateEndpointConnectionPrivateLinkScopeResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateEndpointConnectionPrivateLinkScopeResponse {
-		return vs[0].([]PrivateEndpointConnectionPrivateLinkScopeResponse)[vs[1].(int)]
-	}).(PrivateEndpointConnectionPrivateLinkScopeResponseOutput)
-}
-
 // The private endpoint connection resource.
 type PrivateEndpointConnectionResponse struct {
 	// The group ids for the private endpoint resource.
@@ -23536,13 +23839,13 @@ func (o PrivateEndpointConnectionResponseArrayOutput) Index(i pulumi.IntInput) P
 	}).(PrivateEndpointConnectionResponseOutput)
 }
 
-// The Private Endpoint resource.
+// The private endpoint resource.
 type PrivateEndpointResponse struct {
-	// The ARM identifier for Private Endpoint
+	// The ARM identifier for private endpoint.
 	Id string `pulumi:"id"`
 }
 
-// The Private Endpoint resource.
+// The private endpoint resource.
 type PrivateEndpointResponseOutput struct{ *pulumi.OutputState }
 
 func (PrivateEndpointResponseOutput) ElementType() reflect.Type {
@@ -23557,7 +23860,7 @@ func (o PrivateEndpointResponseOutput) ToPrivateEndpointResponseOutputWithContex
 	return o
 }
 
-// The ARM identifier for Private Endpoint
+// The ARM identifier for private endpoint.
 func (o PrivateEndpointResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointResponse) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -23586,7 +23889,7 @@ func (o PrivateEndpointResponsePtrOutput) Elem() PrivateEndpointResponseOutput {
 	}).(PrivateEndpointResponseOutput)
 }
 
-// The ARM identifier for Private Endpoint
+// The ARM identifier for private endpoint.
 func (o PrivateEndpointResponsePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateEndpointResponse) *string {
 		if v == nil {
@@ -26934,165 +27237,6 @@ func (o ResourceMetricSignalDefinitionPropertiesResponseOutput) Tags() pulumi.St
 // Time range of signal. ISO duration format like PT10M.
 func (o ResourceMetricSignalDefinitionPropertiesResponseOutput) TimeGrain() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceMetricSignalDefinitionPropertiesResponse) string { return v.TimeGrain }).(pulumi.StringOutput)
-}
-
-// Specifies the retention policy for the log.
-type RetentionPolicy struct {
-	// the number of days for the retention in days. A value of 0 will retain the events indefinitely.
-	Days int `pulumi:"days"`
-	// a value indicating whether the retention policy is enabled.
-	Enabled bool `pulumi:"enabled"`
-}
-
-// RetentionPolicyInput is an input type that accepts RetentionPolicyArgs and RetentionPolicyOutput values.
-// You can construct a concrete instance of `RetentionPolicyInput` via:
-//
-//	RetentionPolicyArgs{...}
-type RetentionPolicyInput interface {
-	pulumi.Input
-
-	ToRetentionPolicyOutput() RetentionPolicyOutput
-	ToRetentionPolicyOutputWithContext(context.Context) RetentionPolicyOutput
-}
-
-// Specifies the retention policy for the log.
-type RetentionPolicyArgs struct {
-	// the number of days for the retention in days. A value of 0 will retain the events indefinitely.
-	Days pulumi.IntInput `pulumi:"days"`
-	// a value indicating whether the retention policy is enabled.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-}
-
-func (RetentionPolicyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*RetentionPolicy)(nil)).Elem()
-}
-
-func (i RetentionPolicyArgs) ToRetentionPolicyOutput() RetentionPolicyOutput {
-	return i.ToRetentionPolicyOutputWithContext(context.Background())
-}
-
-func (i RetentionPolicyArgs) ToRetentionPolicyOutputWithContext(ctx context.Context) RetentionPolicyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RetentionPolicyOutput)
-}
-
-func (i RetentionPolicyArgs) ToRetentionPolicyPtrOutput() RetentionPolicyPtrOutput {
-	return i.ToRetentionPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i RetentionPolicyArgs) ToRetentionPolicyPtrOutputWithContext(ctx context.Context) RetentionPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RetentionPolicyOutput).ToRetentionPolicyPtrOutputWithContext(ctx)
-}
-
-// RetentionPolicyPtrInput is an input type that accepts RetentionPolicyArgs, RetentionPolicyPtr and RetentionPolicyPtrOutput values.
-// You can construct a concrete instance of `RetentionPolicyPtrInput` via:
-//
-//	        RetentionPolicyArgs{...}
-//
-//	or:
-//
-//	        nil
-type RetentionPolicyPtrInput interface {
-	pulumi.Input
-
-	ToRetentionPolicyPtrOutput() RetentionPolicyPtrOutput
-	ToRetentionPolicyPtrOutputWithContext(context.Context) RetentionPolicyPtrOutput
-}
-
-type retentionPolicyPtrType RetentionPolicyArgs
-
-func RetentionPolicyPtr(v *RetentionPolicyArgs) RetentionPolicyPtrInput {
-	return (*retentionPolicyPtrType)(v)
-}
-
-func (*retentionPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**RetentionPolicy)(nil)).Elem()
-}
-
-func (i *retentionPolicyPtrType) ToRetentionPolicyPtrOutput() RetentionPolicyPtrOutput {
-	return i.ToRetentionPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *retentionPolicyPtrType) ToRetentionPolicyPtrOutputWithContext(ctx context.Context) RetentionPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(RetentionPolicyPtrOutput)
-}
-
-// Specifies the retention policy for the log.
-type RetentionPolicyOutput struct{ *pulumi.OutputState }
-
-func (RetentionPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RetentionPolicy)(nil)).Elem()
-}
-
-func (o RetentionPolicyOutput) ToRetentionPolicyOutput() RetentionPolicyOutput {
-	return o
-}
-
-func (o RetentionPolicyOutput) ToRetentionPolicyOutputWithContext(ctx context.Context) RetentionPolicyOutput {
-	return o
-}
-
-func (o RetentionPolicyOutput) ToRetentionPolicyPtrOutput() RetentionPolicyPtrOutput {
-	return o.ToRetentionPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o RetentionPolicyOutput) ToRetentionPolicyPtrOutputWithContext(ctx context.Context) RetentionPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RetentionPolicy) *RetentionPolicy {
-		return &v
-	}).(RetentionPolicyPtrOutput)
-}
-
-// the number of days for the retention in days. A value of 0 will retain the events indefinitely.
-func (o RetentionPolicyOutput) Days() pulumi.IntOutput {
-	return o.ApplyT(func(v RetentionPolicy) int { return v.Days }).(pulumi.IntOutput)
-}
-
-// a value indicating whether the retention policy is enabled.
-func (o RetentionPolicyOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v RetentionPolicy) bool { return v.Enabled }).(pulumi.BoolOutput)
-}
-
-type RetentionPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (RetentionPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RetentionPolicy)(nil)).Elem()
-}
-
-func (o RetentionPolicyPtrOutput) ToRetentionPolicyPtrOutput() RetentionPolicyPtrOutput {
-	return o
-}
-
-func (o RetentionPolicyPtrOutput) ToRetentionPolicyPtrOutputWithContext(ctx context.Context) RetentionPolicyPtrOutput {
-	return o
-}
-
-func (o RetentionPolicyPtrOutput) Elem() RetentionPolicyOutput {
-	return o.ApplyT(func(v *RetentionPolicy) RetentionPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret RetentionPolicy
-		return ret
-	}).(RetentionPolicyOutput)
-}
-
-// the number of days for the retention in days. A value of 0 will retain the events indefinitely.
-func (o RetentionPolicyPtrOutput) Days() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *RetentionPolicy) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Days
-	}).(pulumi.IntPtrOutput)
-}
-
-// a value indicating whether the retention policy is enabled.
-func (o RetentionPolicyPtrOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *RetentionPolicy) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Enabled
-	}).(pulumi.BoolPtrOutput)
 }
 
 // Specifies the retention policy for the log.
@@ -30505,128 +30649,10 @@ func (o SliResourceResponseOutput) StreamingRuleLastUpdatedTimestamp() pulumi.St
 }
 
 // An SMS receiver.
-type SmsReceiver struct {
-	// The country code of the SMS receiver.
-	CountryCode string `pulumi:"countryCode"`
-	// The name of the SMS receiver. Names must be unique across all receivers within a tenant action group.
-	Name string `pulumi:"name"`
-	// The phone number of the SMS receiver.
-	PhoneNumber string `pulumi:"phoneNumber"`
-}
-
-// SmsReceiverInput is an input type that accepts SmsReceiverArgs and SmsReceiverOutput values.
-// You can construct a concrete instance of `SmsReceiverInput` via:
-//
-//	SmsReceiverArgs{...}
-type SmsReceiverInput interface {
-	pulumi.Input
-
-	ToSmsReceiverOutput() SmsReceiverOutput
-	ToSmsReceiverOutputWithContext(context.Context) SmsReceiverOutput
-}
-
-// An SMS receiver.
-type SmsReceiverArgs struct {
-	// The country code of the SMS receiver.
-	CountryCode pulumi.StringInput `pulumi:"countryCode"`
-	// The name of the SMS receiver. Names must be unique across all receivers within a tenant action group.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The phone number of the SMS receiver.
-	PhoneNumber pulumi.StringInput `pulumi:"phoneNumber"`
-}
-
-func (SmsReceiverArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*SmsReceiver)(nil)).Elem()
-}
-
-func (i SmsReceiverArgs) ToSmsReceiverOutput() SmsReceiverOutput {
-	return i.ToSmsReceiverOutputWithContext(context.Background())
-}
-
-func (i SmsReceiverArgs) ToSmsReceiverOutputWithContext(ctx context.Context) SmsReceiverOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SmsReceiverOutput)
-}
-
-// SmsReceiverArrayInput is an input type that accepts SmsReceiverArray and SmsReceiverArrayOutput values.
-// You can construct a concrete instance of `SmsReceiverArrayInput` via:
-//
-//	SmsReceiverArray{ SmsReceiverArgs{...} }
-type SmsReceiverArrayInput interface {
-	pulumi.Input
-
-	ToSmsReceiverArrayOutput() SmsReceiverArrayOutput
-	ToSmsReceiverArrayOutputWithContext(context.Context) SmsReceiverArrayOutput
-}
-
-type SmsReceiverArray []SmsReceiverInput
-
-func (SmsReceiverArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SmsReceiver)(nil)).Elem()
-}
-
-func (i SmsReceiverArray) ToSmsReceiverArrayOutput() SmsReceiverArrayOutput {
-	return i.ToSmsReceiverArrayOutputWithContext(context.Background())
-}
-
-func (i SmsReceiverArray) ToSmsReceiverArrayOutputWithContext(ctx context.Context) SmsReceiverArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(SmsReceiverArrayOutput)
-}
-
-// An SMS receiver.
-type SmsReceiverOutput struct{ *pulumi.OutputState }
-
-func (SmsReceiverOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SmsReceiver)(nil)).Elem()
-}
-
-func (o SmsReceiverOutput) ToSmsReceiverOutput() SmsReceiverOutput {
-	return o
-}
-
-func (o SmsReceiverOutput) ToSmsReceiverOutputWithContext(ctx context.Context) SmsReceiverOutput {
-	return o
-}
-
-// The country code of the SMS receiver.
-func (o SmsReceiverOutput) CountryCode() pulumi.StringOutput {
-	return o.ApplyT(func(v SmsReceiver) string { return v.CountryCode }).(pulumi.StringOutput)
-}
-
-// The name of the SMS receiver. Names must be unique across all receivers within a tenant action group.
-func (o SmsReceiverOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v SmsReceiver) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The phone number of the SMS receiver.
-func (o SmsReceiverOutput) PhoneNumber() pulumi.StringOutput {
-	return o.ApplyT(func(v SmsReceiver) string { return v.PhoneNumber }).(pulumi.StringOutput)
-}
-
-type SmsReceiverArrayOutput struct{ *pulumi.OutputState }
-
-func (SmsReceiverArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SmsReceiver)(nil)).Elem()
-}
-
-func (o SmsReceiverArrayOutput) ToSmsReceiverArrayOutput() SmsReceiverArrayOutput {
-	return o
-}
-
-func (o SmsReceiverArrayOutput) ToSmsReceiverArrayOutputWithContext(ctx context.Context) SmsReceiverArrayOutput {
-	return o
-}
-
-func (o SmsReceiverArrayOutput) Index(i pulumi.IntInput) SmsReceiverOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SmsReceiver {
-		return vs[0].([]SmsReceiver)[vs[1].(int)]
-	}).(SmsReceiverOutput)
-}
-
-// An SMS receiver.
 type SmsReceiverResponse struct {
 	// The country code of the SMS receiver.
 	CountryCode string `pulumi:"countryCode"`
-	// The name of the SMS receiver. Names must be unique across all receivers within a tenant action group.
+	// The name of the SMS receiver. Names must be unique across all receivers within an action group.
 	Name string `pulumi:"name"`
 	// The phone number of the SMS receiver.
 	PhoneNumber string `pulumi:"phoneNumber"`
@@ -30654,7 +30680,7 @@ func (o SmsReceiverResponseOutput) CountryCode() pulumi.StringOutput {
 	return o.ApplyT(func(v SmsReceiverResponse) string { return v.CountryCode }).(pulumi.StringOutput)
 }
 
-// The name of the SMS receiver. Names must be unique across all receivers within a tenant action group.
+// The name of the SMS receiver. Names must be unique across all receivers within an action group.
 func (o SmsReceiverResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SmsReceiverResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -33282,128 +33308,10 @@ func (o UserIdentityPropertiesResponseMapOutput) MapIndex(k pulumi.StringInput) 
 }
 
 // A voice receiver.
-type VoiceReceiver struct {
-	// The country code of the voice receiver.
-	CountryCode string `pulumi:"countryCode"`
-	// The name of the voice receiver. Names must be unique across all receivers within a tenant action group.
-	Name string `pulumi:"name"`
-	// The phone number of the voice receiver.
-	PhoneNumber string `pulumi:"phoneNumber"`
-}
-
-// VoiceReceiverInput is an input type that accepts VoiceReceiverArgs and VoiceReceiverOutput values.
-// You can construct a concrete instance of `VoiceReceiverInput` via:
-//
-//	VoiceReceiverArgs{...}
-type VoiceReceiverInput interface {
-	pulumi.Input
-
-	ToVoiceReceiverOutput() VoiceReceiverOutput
-	ToVoiceReceiverOutputWithContext(context.Context) VoiceReceiverOutput
-}
-
-// A voice receiver.
-type VoiceReceiverArgs struct {
-	// The country code of the voice receiver.
-	CountryCode pulumi.StringInput `pulumi:"countryCode"`
-	// The name of the voice receiver. Names must be unique across all receivers within a tenant action group.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The phone number of the voice receiver.
-	PhoneNumber pulumi.StringInput `pulumi:"phoneNumber"`
-}
-
-func (VoiceReceiverArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VoiceReceiver)(nil)).Elem()
-}
-
-func (i VoiceReceiverArgs) ToVoiceReceiverOutput() VoiceReceiverOutput {
-	return i.ToVoiceReceiverOutputWithContext(context.Background())
-}
-
-func (i VoiceReceiverArgs) ToVoiceReceiverOutputWithContext(ctx context.Context) VoiceReceiverOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VoiceReceiverOutput)
-}
-
-// VoiceReceiverArrayInput is an input type that accepts VoiceReceiverArray and VoiceReceiverArrayOutput values.
-// You can construct a concrete instance of `VoiceReceiverArrayInput` via:
-//
-//	VoiceReceiverArray{ VoiceReceiverArgs{...} }
-type VoiceReceiverArrayInput interface {
-	pulumi.Input
-
-	ToVoiceReceiverArrayOutput() VoiceReceiverArrayOutput
-	ToVoiceReceiverArrayOutputWithContext(context.Context) VoiceReceiverArrayOutput
-}
-
-type VoiceReceiverArray []VoiceReceiverInput
-
-func (VoiceReceiverArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VoiceReceiver)(nil)).Elem()
-}
-
-func (i VoiceReceiverArray) ToVoiceReceiverArrayOutput() VoiceReceiverArrayOutput {
-	return i.ToVoiceReceiverArrayOutputWithContext(context.Background())
-}
-
-func (i VoiceReceiverArray) ToVoiceReceiverArrayOutputWithContext(ctx context.Context) VoiceReceiverArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VoiceReceiverArrayOutput)
-}
-
-// A voice receiver.
-type VoiceReceiverOutput struct{ *pulumi.OutputState }
-
-func (VoiceReceiverOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VoiceReceiver)(nil)).Elem()
-}
-
-func (o VoiceReceiverOutput) ToVoiceReceiverOutput() VoiceReceiverOutput {
-	return o
-}
-
-func (o VoiceReceiverOutput) ToVoiceReceiverOutputWithContext(ctx context.Context) VoiceReceiverOutput {
-	return o
-}
-
-// The country code of the voice receiver.
-func (o VoiceReceiverOutput) CountryCode() pulumi.StringOutput {
-	return o.ApplyT(func(v VoiceReceiver) string { return v.CountryCode }).(pulumi.StringOutput)
-}
-
-// The name of the voice receiver. Names must be unique across all receivers within a tenant action group.
-func (o VoiceReceiverOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v VoiceReceiver) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The phone number of the voice receiver.
-func (o VoiceReceiverOutput) PhoneNumber() pulumi.StringOutput {
-	return o.ApplyT(func(v VoiceReceiver) string { return v.PhoneNumber }).(pulumi.StringOutput)
-}
-
-type VoiceReceiverArrayOutput struct{ *pulumi.OutputState }
-
-func (VoiceReceiverArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]VoiceReceiver)(nil)).Elem()
-}
-
-func (o VoiceReceiverArrayOutput) ToVoiceReceiverArrayOutput() VoiceReceiverArrayOutput {
-	return o
-}
-
-func (o VoiceReceiverArrayOutput) ToVoiceReceiverArrayOutputWithContext(ctx context.Context) VoiceReceiverArrayOutput {
-	return o
-}
-
-func (o VoiceReceiverArrayOutput) Index(i pulumi.IntInput) VoiceReceiverOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VoiceReceiver {
-		return vs[0].([]VoiceReceiver)[vs[1].(int)]
-	}).(VoiceReceiverOutput)
-}
-
-// A voice receiver.
 type VoiceReceiverResponse struct {
 	// The country code of the voice receiver.
 	CountryCode string `pulumi:"countryCode"`
-	// The name of the voice receiver. Names must be unique across all receivers within a tenant action group.
+	// The name of the voice receiver. Names must be unique across all receivers within an action group.
 	Name string `pulumi:"name"`
 	// The phone number of the voice receiver.
 	PhoneNumber string `pulumi:"phoneNumber"`
@@ -33429,7 +33337,7 @@ func (o VoiceReceiverResponseOutput) CountryCode() pulumi.StringOutput {
 	return o.ApplyT(func(v VoiceReceiverResponse) string { return v.CountryCode }).(pulumi.StringOutput)
 }
 
-// The name of the voice receiver. Names must be unique across all receivers within a tenant action group.
+// The name of the voice receiver. Names must be unique across all receivers within an action group.
 func (o VoiceReceiverResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v VoiceReceiverResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -34817,8 +34725,6 @@ func init() {
 	pulumi.RegisterOutputType(AutoscaleProfileResponseOutput{})
 	pulumi.RegisterOutputType(AutoscaleProfileResponseArrayOutput{})
 	pulumi.RegisterOutputType(AutoscaleSettingResponseOutput{})
-	pulumi.RegisterOutputType(AzureAppPushReceiverOutput{})
-	pulumi.RegisterOutputType(AzureAppPushReceiverArrayOutput{})
 	pulumi.RegisterOutputType(AzureAppPushReceiverResponseOutput{})
 	pulumi.RegisterOutputType(AzureAppPushReceiverResponseArrayOutput{})
 	pulumi.RegisterOutputType(AzureFunctionReceiverOutput{})
@@ -34934,6 +34840,14 @@ func init() {
 	pulumi.RegisterOutputType(DestinationsSpecResponseAzureMonitorMetricsPtrOutput{})
 	pulumi.RegisterOutputType(DiagnosticSettingsCategoryResourceResponseOutput{})
 	pulumi.RegisterOutputType(DiagnosticSettingsCategoryResourceResponseArrayOutput{})
+	pulumi.RegisterOutputType(DiagnosticsLogSettingsOutput{})
+	pulumi.RegisterOutputType(DiagnosticsLogSettingsArrayOutput{})
+	pulumi.RegisterOutputType(DiagnosticsLogSettingsResponseOutput{})
+	pulumi.RegisterOutputType(DiagnosticsLogSettingsResponseArrayOutput{})
+	pulumi.RegisterOutputType(DiagnosticsMetricSettingsOutput{})
+	pulumi.RegisterOutputType(DiagnosticsMetricSettingsArrayOutput{})
+	pulumi.RegisterOutputType(DiagnosticsMetricSettingsResponseOutput{})
+	pulumi.RegisterOutputType(DiagnosticsMetricSettingsResponseArrayOutput{})
 	pulumi.RegisterOutputType(DimensionOutput{})
 	pulumi.RegisterOutputType(DimensionArrayOutput{})
 	pulumi.RegisterOutputType(DimensionResponseOutput{})
@@ -34951,8 +34865,6 @@ func init() {
 	pulumi.RegisterOutputType(EmailNotificationPtrOutput{})
 	pulumi.RegisterOutputType(EmailNotificationResponseOutput{})
 	pulumi.RegisterOutputType(EmailNotificationResponsePtrOutput{})
-	pulumi.RegisterOutputType(EmailReceiverOutput{})
-	pulumi.RegisterOutputType(EmailReceiverArrayOutput{})
 	pulumi.RegisterOutputType(EmailReceiverResponseOutput{})
 	pulumi.RegisterOutputType(EmailReceiverResponseArrayOutput{})
 	pulumi.RegisterOutputType(EntityAlertsOutput{})
@@ -35060,10 +34972,6 @@ func init() {
 	pulumi.RegisterOutputType(LogFilesDataSourceResponseSettingsPtrOutput{})
 	pulumi.RegisterOutputType(LogFilesDataSourceSettingsOutput{})
 	pulumi.RegisterOutputType(LogFilesDataSourceSettingsPtrOutput{})
-	pulumi.RegisterOutputType(LogSettingsOutput{})
-	pulumi.RegisterOutputType(LogSettingsArrayOutput{})
-	pulumi.RegisterOutputType(LogSettingsResponseOutput{})
-	pulumi.RegisterOutputType(LogSettingsResponseArrayOutput{})
 	pulumi.RegisterOutputType(LogicAppReceiverOutput{})
 	pulumi.RegisterOutputType(LogicAppReceiverArrayOutput{})
 	pulumi.RegisterOutputType(LogicAppReceiverResponseOutput{})
@@ -35097,14 +35005,20 @@ func init() {
 	pulumi.RegisterOutputType(MetricDimensionResponseArrayOutput{})
 	pulumi.RegisterOutputType(MetricResponseOutput{})
 	pulumi.RegisterOutputType(MetricResponseArrayOutput{})
-	pulumi.RegisterOutputType(MetricSettingsOutput{})
-	pulumi.RegisterOutputType(MetricSettingsArrayOutput{})
-	pulumi.RegisterOutputType(MetricSettingsResponseOutput{})
-	pulumi.RegisterOutputType(MetricSettingsResponseArrayOutput{})
 	pulumi.RegisterOutputType(MetricTriggerOutput{})
 	pulumi.RegisterOutputType(MetricTriggerResponseOutput{})
+	pulumi.RegisterOutputType(MicrosoftCommonAzureAppPushReceiverOutput{})
+	pulumi.RegisterOutputType(MicrosoftCommonAzureAppPushReceiverArrayOutput{})
+	pulumi.RegisterOutputType(MicrosoftCommonEmailReceiverOutput{})
+	pulumi.RegisterOutputType(MicrosoftCommonEmailReceiverArrayOutput{})
 	pulumi.RegisterOutputType(MicrosoftCommonIdentityOutput{})
 	pulumi.RegisterOutputType(MicrosoftCommonIdentityPtrOutput{})
+	pulumi.RegisterOutputType(MicrosoftCommonRetentionPolicyOutput{})
+	pulumi.RegisterOutputType(MicrosoftCommonRetentionPolicyPtrOutput{})
+	pulumi.RegisterOutputType(MicrosoftCommonSmsReceiverOutput{})
+	pulumi.RegisterOutputType(MicrosoftCommonSmsReceiverArrayOutput{})
+	pulumi.RegisterOutputType(MicrosoftCommonVoiceReceiverOutput{})
+	pulumi.RegisterOutputType(MicrosoftCommonVoiceReceiverArrayOutput{})
 	pulumi.RegisterOutputType(ModelDiscoverySettingsOutput{})
 	pulumi.RegisterOutputType(ModelDiscoverySettingsPtrOutput{})
 	pulumi.RegisterOutputType(ModelDiscoverySettingsResponseOutput{})
@@ -35149,8 +35063,6 @@ func init() {
 	pulumi.RegisterOutputType(PredictiveAutoscalePolicyPtrOutput{})
 	pulumi.RegisterOutputType(PredictiveAutoscalePolicyResponseOutput{})
 	pulumi.RegisterOutputType(PredictiveAutoscalePolicyResponsePtrOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionPrivateLinkScopeResponseOutput{})
-	pulumi.RegisterOutputType(PrivateEndpointConnectionPrivateLinkScopeResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointResponseOutput{})
@@ -35203,8 +35115,6 @@ func init() {
 	pulumi.RegisterOutputType(ResourceMetricSignalDefinitionPropertiesOutput{})
 	pulumi.RegisterOutputType(ResourceMetricSignalDefinitionPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ResourceMetricSignalDefinitionPropertiesResponseOutput{})
-	pulumi.RegisterOutputType(RetentionPolicyOutput{})
-	pulumi.RegisterOutputType(RetentionPolicyPtrOutput{})
 	pulumi.RegisterOutputType(RetentionPolicyResponseOutput{})
 	pulumi.RegisterOutputType(RetentionPolicyResponsePtrOutput{})
 	pulumi.RegisterOutputType(RuleResolveConfigurationOutput{})
@@ -35261,8 +35171,6 @@ func init() {
 	pulumi.RegisterOutputType(SliResourceOutput{})
 	pulumi.RegisterOutputType(SliResourcePtrOutput{})
 	pulumi.RegisterOutputType(SliResourceResponseOutput{})
-	pulumi.RegisterOutputType(SmsReceiverOutput{})
-	pulumi.RegisterOutputType(SmsReceiverArrayOutput{})
 	pulumi.RegisterOutputType(SmsReceiverResponseOutput{})
 	pulumi.RegisterOutputType(SmsReceiverResponseArrayOutput{})
 	pulumi.RegisterOutputType(SpatialAggregationOutput{})
@@ -35314,8 +35222,6 @@ func init() {
 	pulumi.RegisterOutputType(UserAssignedIdentityResponseMapOutput{})
 	pulumi.RegisterOutputType(UserIdentityPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(UserIdentityPropertiesResponseMapOutput{})
-	pulumi.RegisterOutputType(VoiceReceiverOutput{})
-	pulumi.RegisterOutputType(VoiceReceiverArrayOutput{})
 	pulumi.RegisterOutputType(VoiceReceiverResponseOutput{})
 	pulumi.RegisterOutputType(VoiceReceiverResponseArrayOutput{})
 	pulumi.RegisterOutputType(WebhookNotificationOutput{})

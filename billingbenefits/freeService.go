@@ -15,6 +15,8 @@ import (
 // Free Services resource definition
 //
 // Uses Azure REST API version 2025-12-01-preview.
+//
+// Other available API versions: 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native billingbenefits [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type FreeService struct {
 	pulumi.CustomResourceState
 
@@ -75,6 +77,9 @@ func NewFreeService(ctx *pulumi.Context,
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("azure-native:billingbenefits/v20251201preview:FreeService"),
+		},
+		{
+			Type: pulumi.String("azure-native:billingbenefits/v20260601:FreeService"),
 		},
 	})
 	opts = append(opts, aliases)

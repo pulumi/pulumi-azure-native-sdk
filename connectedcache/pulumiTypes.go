@@ -2392,7 +2392,7 @@ type CacheNodeEntity struct {
 	AutoUpdateRequestedTime *string `pulumi:"autoUpdateRequestedTime"`
 	// Customer requested week of month for mcc install of auto update cycle. 0 is default no selection. 1-5 are valid weeks of month, 1 is first week, 2 is second week, etc.
 	AutoUpdateRequestedWeek *int `pulumi:"autoUpdateRequestedWeek"`
-	// Auto Update Ring Type which is slow or fast etc.
+	// Auto Update Ring Type which is stable or beta as new values. slow or fast are legacy from version 2026-06-01.
 	AutoUpdateRingType *string `pulumi:"autoUpdateRingType"`
 	// Cache node resource identifier of the cache node
 	CacheNodeId *string `pulumi:"cacheNodeId"`
@@ -2443,7 +2443,7 @@ type CacheNodeEntityArgs struct {
 	AutoUpdateRequestedTime pulumi.StringPtrInput `pulumi:"autoUpdateRequestedTime"`
 	// Customer requested week of month for mcc install of auto update cycle. 0 is default no selection. 1-5 are valid weeks of month, 1 is first week, 2 is second week, etc.
 	AutoUpdateRequestedWeek pulumi.IntPtrInput `pulumi:"autoUpdateRequestedWeek"`
-	// Auto Update Ring Type which is slow or fast etc.
+	// Auto Update Ring Type which is stable or beta as new values. slow or fast are legacy from version 2026-06-01.
 	AutoUpdateRingType pulumi.StringPtrInput `pulumi:"autoUpdateRingType"`
 	// Cache node resource identifier of the cache node
 	CacheNodeId pulumi.StringPtrInput `pulumi:"cacheNodeId"`
@@ -2568,7 +2568,7 @@ func (o CacheNodeEntityOutput) AutoUpdateRequestedWeek() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v CacheNodeEntity) *int { return v.AutoUpdateRequestedWeek }).(pulumi.IntPtrOutput)
 }
 
-// Auto Update Ring Type which is slow or fast etc.
+// Auto Update Ring Type which is stable or beta as new values. slow or fast are legacy from version 2026-06-01.
 func (o CacheNodeEntityOutput) AutoUpdateRingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CacheNodeEntity) *string { return v.AutoUpdateRingType }).(pulumi.StringPtrOutput)
 }
@@ -2697,7 +2697,7 @@ func (o CacheNodeEntityPtrOutput) AutoUpdateRequestedWeek() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
-// Auto Update Ring Type which is slow or fast etc.
+// Auto Update Ring Type which is stable or beta as new values. slow or fast are legacy from version 2026-06-01.
 func (o CacheNodeEntityPtrOutput) AutoUpdateRingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheNodeEntity) *string {
 		if v == nil {
@@ -2857,7 +2857,7 @@ type CacheNodeEntityResponse struct {
 	AutoUpdateRequestedTime *string `pulumi:"autoUpdateRequestedTime"`
 	// Customer requested week of month for mcc install of auto update cycle. 0 is default no selection. 1-5 are valid weeks of month, 1 is first week, 2 is second week, etc.
 	AutoUpdateRequestedWeek *int `pulumi:"autoUpdateRequestedWeek"`
-	// Auto Update Ring Type which is slow or fast etc.
+	// Auto Update Ring Type which is stable or beta as new values. slow or fast are legacy from version 2026-06-01.
 	AutoUpdateRingType *string `pulumi:"autoUpdateRingType"`
 	// Cache node resource total addressable space defined by Bgp and Cidr Csv blocks.
 	BgpAddressSpace int `pulumi:"bgpAddressSpace"`
@@ -2990,7 +2990,7 @@ func (o CacheNodeEntityResponseOutput) AutoUpdateRequestedWeek() pulumi.IntPtrOu
 	return o.ApplyT(func(v CacheNodeEntityResponse) *int { return v.AutoUpdateRequestedWeek }).(pulumi.IntPtrOutput)
 }
 
-// Auto Update Ring Type which is slow or fast etc.
+// Auto Update Ring Type which is stable or beta as new values. slow or fast are legacy from version 2026-06-01.
 func (o CacheNodeEntityResponseOutput) AutoUpdateRingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CacheNodeEntityResponse) *string { return v.AutoUpdateRingType }).(pulumi.StringPtrOutput)
 }
@@ -3294,7 +3294,7 @@ func (o CacheNodeEntityResponsePtrOutput) AutoUpdateRequestedWeek() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
-// Auto Update Ring Type which is slow or fast etc.
+// Auto Update Ring Type which is stable or beta as new values. slow or fast are legacy from version 2026-06-01.
 func (o CacheNodeEntityResponsePtrOutput) AutoUpdateRingType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CacheNodeEntityResponse) *string {
 		if v == nil {

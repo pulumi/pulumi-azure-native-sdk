@@ -27,18 +27,18 @@ type DiagnosticSetting struct {
 	// A string indicating whether the export to Log Analytics should use the default destination type, i.e. AzureDiagnostics, or use a destination type constructed as follows: <normalized service identity>_<normalized category name>. Possible values are: Dedicated and null (null is default.)
 	LogAnalyticsDestinationType pulumi.StringPtrOutput `pulumi:"logAnalyticsDestinationType"`
 	// The list of logs settings.
-	Logs LogSettingsResponseArrayOutput `pulumi:"logs"`
+	Logs DiagnosticsLogSettingsResponseArrayOutput `pulumi:"logs"`
 	// The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
 	MarketplacePartnerId pulumi.StringPtrOutput `pulumi:"marketplacePartnerId"`
 	// The list of metric settings.
-	Metrics MetricSettingsResponseArrayOutput `pulumi:"metrics"`
+	Metrics DiagnosticsMetricSettingsResponseArrayOutput `pulumi:"metrics"`
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The service bus rule Id of the diagnostic setting. This is here to maintain backwards compatibility.
 	ServiceBusRuleId pulumi.StringPtrOutput `pulumi:"serviceBusRuleId"`
 	// The resource ID of the storage account to which you would like to send Diagnostic Logs.
 	StorageAccountId pulumi.StringPtrOutput `pulumi:"storageAccountId"`
-	// The system metadata related to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -111,14 +111,14 @@ type diagnosticSettingArgs struct {
 	// A string indicating whether the export to Log Analytics should use the default destination type, i.e. AzureDiagnostics, or use a destination type constructed as follows: <normalized service identity>_<normalized category name>. Possible values are: Dedicated and null (null is default.)
 	LogAnalyticsDestinationType *string `pulumi:"logAnalyticsDestinationType"`
 	// The list of logs settings.
-	Logs []LogSettings `pulumi:"logs"`
+	Logs []DiagnosticsLogSettings `pulumi:"logs"`
 	// The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
 	MarketplacePartnerId *string `pulumi:"marketplacePartnerId"`
 	// The list of metric settings.
-	Metrics []MetricSettings `pulumi:"metrics"`
+	Metrics []DiagnosticsMetricSettings `pulumi:"metrics"`
 	// The name of the diagnostic setting.
 	Name *string `pulumi:"name"`
-	// The identifier of the resource.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceUri string `pulumi:"resourceUri"`
 	// The service bus rule Id of the diagnostic setting. This is here to maintain backwards compatibility.
 	ServiceBusRuleId *string `pulumi:"serviceBusRuleId"`
@@ -137,14 +137,14 @@ type DiagnosticSettingArgs struct {
 	// A string indicating whether the export to Log Analytics should use the default destination type, i.e. AzureDiagnostics, or use a destination type constructed as follows: <normalized service identity>_<normalized category name>. Possible values are: Dedicated and null (null is default.)
 	LogAnalyticsDestinationType pulumi.StringPtrInput
 	// The list of logs settings.
-	Logs LogSettingsArrayInput
+	Logs DiagnosticsLogSettingsArrayInput
 	// The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
 	MarketplacePartnerId pulumi.StringPtrInput
 	// The list of metric settings.
-	Metrics MetricSettingsArrayInput
+	Metrics DiagnosticsMetricSettingsArrayInput
 	// The name of the diagnostic setting.
 	Name pulumi.StringPtrInput
-	// The identifier of the resource.
+	// The fully qualified Azure Resource manager identifier of the resource.
 	ResourceUri pulumi.StringInput
 	// The service bus rule Id of the diagnostic setting. This is here to maintain backwards compatibility.
 	ServiceBusRuleId pulumi.StringPtrInput
@@ -212,8 +212,8 @@ func (o DiagnosticSettingOutput) LogAnalyticsDestinationType() pulumi.StringPtrO
 }
 
 // The list of logs settings.
-func (o DiagnosticSettingOutput) Logs() LogSettingsResponseArrayOutput {
-	return o.ApplyT(func(v *DiagnosticSetting) LogSettingsResponseArrayOutput { return v.Logs }).(LogSettingsResponseArrayOutput)
+func (o DiagnosticSettingOutput) Logs() DiagnosticsLogSettingsResponseArrayOutput {
+	return o.ApplyT(func(v *DiagnosticSetting) DiagnosticsLogSettingsResponseArrayOutput { return v.Logs }).(DiagnosticsLogSettingsResponseArrayOutput)
 }
 
 // The full ARM resource ID of the Marketplace resource to which you would like to send Diagnostic Logs.
@@ -222,8 +222,8 @@ func (o DiagnosticSettingOutput) MarketplacePartnerId() pulumi.StringPtrOutput {
 }
 
 // The list of metric settings.
-func (o DiagnosticSettingOutput) Metrics() MetricSettingsResponseArrayOutput {
-	return o.ApplyT(func(v *DiagnosticSetting) MetricSettingsResponseArrayOutput { return v.Metrics }).(MetricSettingsResponseArrayOutput)
+func (o DiagnosticSettingOutput) Metrics() DiagnosticsMetricSettingsResponseArrayOutput {
+	return o.ApplyT(func(v *DiagnosticSetting) DiagnosticsMetricSettingsResponseArrayOutput { return v.Metrics }).(DiagnosticsMetricSettingsResponseArrayOutput)
 }
 
 // The name of the resource
@@ -241,7 +241,7 @@ func (o DiagnosticSettingOutput) StorageAccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DiagnosticSetting) pulumi.StringPtrOutput { return v.StorageAccountId }).(pulumi.StringPtrOutput)
 }
 
-// The system metadata related to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o DiagnosticSettingOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *DiagnosticSetting) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }

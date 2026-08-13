@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2025-09-01.
 //
-// Other available API versions: 2025-06-01, 2025-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2025-06-01, 2025-07-01-preview, 2025-10-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native securityinsights [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSourceControl(ctx *pulumi.Context, args *LookupSourceControlArgs, opts ...pulumi.InvokeOption) (*LookupSourceControlResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSourceControlResult
@@ -31,7 +31,7 @@ type LookupSourceControlArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Source control Id
 	SourceControlId string `pulumi:"sourceControlId"`
-	// The name of the workspace.
+	// The name of the monitor workspace.
 	WorkspaceName string `pulumi:"workspaceName"`
 }
 
@@ -87,7 +87,7 @@ type LookupSourceControlOutputArgs struct {
 	ResourceGroupName pulumi.StringInput `pulumi:"resourceGroupName"`
 	// Source control Id
 	SourceControlId pulumi.StringInput `pulumi:"sourceControlId"`
-	// The name of the workspace.
+	// The name of the monitor workspace.
 	WorkspaceName pulumi.StringInput `pulumi:"workspaceName"`
 }
 

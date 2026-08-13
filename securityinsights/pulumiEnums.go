@@ -2490,12 +2490,18 @@ const (
 type ContentType string
 
 const (
-	ContentTypeAnalyticsRule  = ContentType("AnalyticsRule")
+	// AnalyticsRule
+	ContentTypeAnalyticsRule = ContentType("AnalyticsRule")
+	// AutomationRule
 	ContentTypeAutomationRule = ContentType("AutomationRule")
-	ContentTypeHuntingQuery   = ContentType("HuntingQuery")
-	ContentTypeParser         = ContentType("Parser")
-	ContentTypePlaybook       = ContentType("Playbook")
-	ContentTypeWorkbook       = ContentType("Workbook")
+	// HuntingQuery
+	ContentTypeHuntingQuery = ContentType("HuntingQuery")
+	// Parser
+	ContentTypeParser = ContentType("Parser")
+	// Playbook
+	ContentTypePlaybook = ContentType("Playbook")
+	// Workbook
+	ContentTypeWorkbook = ContentType("Workbook")
 )
 
 func (ContentType) ElementType() reflect.Type {
@@ -7067,7 +7073,9 @@ func (in *providerPermissionsScopePtr) ToProviderPermissionsScopePtrOutputWithCo
 type RepoType string
 
 const (
-	RepoTypeGithub      = RepoType("Github")
+	// Github
+	RepoTypeGithub = RepoType("Github")
+	// AzureDevOps
 	RepoTypeAzureDevOps = RepoType("AzureDevOps")
 )
 
@@ -7233,9 +7241,12 @@ func (in *repoTypePtr) ToRepoTypePtrOutputWithContext(ctx context.Context) RepoT
 type RepositoryAccessKind string
 
 const (
+	// OAuth
 	RepositoryAccessKindOAuth = RepositoryAccessKind("OAuth")
-	RepositoryAccessKindPAT   = RepositoryAccessKind("PAT")
-	RepositoryAccessKindApp   = RepositoryAccessKind("App")
+	// PAT
+	RepositoryAccessKindPAT = RepositoryAccessKind("PAT")
+	// App
+	RepositoryAccessKindApp = RepositoryAccessKind("App")
 )
 
 func (RepositoryAccessKind) ElementType() reflect.Type {

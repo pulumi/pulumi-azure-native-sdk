@@ -29,7 +29,7 @@ type PrivateLinkScope struct {
 	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of private endpoint connections.
-	PrivateEndpointConnections PrivateEndpointConnectionPrivateLinkScopeResponseArrayOutput `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections PrivateEndpointConnectionResponseArrayOutput `pulumi:"privateEndpointConnections"`
 	// Current state of this PrivateLinkScope: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it.
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -200,10 +200,10 @@ func (o PrivateLinkScopeOutput) Name() pulumi.StringOutput {
 }
 
 // List of private endpoint connections.
-func (o PrivateLinkScopeOutput) PrivateEndpointConnections() PrivateEndpointConnectionPrivateLinkScopeResponseArrayOutput {
-	return o.ApplyT(func(v *PrivateLinkScope) PrivateEndpointConnectionPrivateLinkScopeResponseArrayOutput {
+func (o PrivateLinkScopeOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v *PrivateLinkScope) PrivateEndpointConnectionResponseArrayOutput {
 		return v.PrivateEndpointConnections
-	}).(PrivateEndpointConnectionPrivateLinkScopeResponseArrayOutput)
+	}).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // Current state of this PrivateLinkScope: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it.

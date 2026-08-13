@@ -39,14 +39,14 @@ type LookupPrivateLinkScopeResult struct {
 	AccessModeSettings AccessModeSettingsResponse `pulumi:"accessModeSettings"`
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
 	// The name of the resource
 	Name string `pulumi:"name"`
 	// List of private endpoint connections.
-	PrivateEndpointConnections []PrivateEndpointConnectionPrivateLinkScopeResponse `pulumi:"privateEndpointConnections"`
+	PrivateEndpointConnections []PrivateEndpointConnectionResponse `pulumi:"privateEndpointConnections"`
 	// Current state of this PrivateLinkScope: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it.
 	ProvisioningState string `pulumi:"provisioningState"`
 	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -102,7 +102,7 @@ func (o LookupPrivateLinkScopeResultOutput) AzureApiVersion() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupPrivateLinkScopeResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupPrivateLinkScopeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateLinkScopeResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -118,10 +118,10 @@ func (o LookupPrivateLinkScopeResultOutput) Name() pulumi.StringOutput {
 }
 
 // List of private endpoint connections.
-func (o LookupPrivateLinkScopeResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionPrivateLinkScopeResponseArrayOutput {
-	return o.ApplyT(func(v LookupPrivateLinkScopeResult) []PrivateEndpointConnectionPrivateLinkScopeResponse {
+func (o LookupPrivateLinkScopeResultOutput) PrivateEndpointConnections() PrivateEndpointConnectionResponseArrayOutput {
+	return o.ApplyT(func(v LookupPrivateLinkScopeResult) []PrivateEndpointConnectionResponse {
 		return v.PrivateEndpointConnections
-	}).(PrivateEndpointConnectionPrivateLinkScopeResponseArrayOutput)
+	}).(PrivateEndpointConnectionResponseArrayOutput)
 }
 
 // Current state of this PrivateLinkScope: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it.

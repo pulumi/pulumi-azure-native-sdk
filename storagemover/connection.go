@@ -16,7 +16,7 @@ import (
 //
 // Uses Azure REST API version 2025-08-01.
 //
-// Other available API versions: 2025-12-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagemover [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2025-12-01, 2026-05-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native storagemover [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Connection struct {
 	pulumi.CustomResourceState
 
@@ -54,6 +54,9 @@ func NewConnection(ctx *pulumi.Context,
 		},
 		{
 			Type: pulumi.String("azure-native:storagemover/v20251201:Connection"),
+		},
+		{
+			Type: pulumi.String("azure-native:storagemover/v20260501:Connection"),
 		},
 	})
 	opts = append(opts, aliases)

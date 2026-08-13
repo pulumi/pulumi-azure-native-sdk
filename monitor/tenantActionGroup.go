@@ -28,15 +28,17 @@ type TenantActionGroup struct {
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// The short name of the action group. This will be used in SMS messages.
 	GroupShortName pulumi.StringOutput `pulumi:"groupShortName"`
-	// Resource location
+	// The geo-location where the resource lives
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Azure resource name
+	// The name of the resource
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The list of SMS receivers that are part of this tenant action group.
 	SmsReceivers SmsReceiverResponseArrayOutput `pulumi:"smsReceivers"`
-	// Resource tags
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponseOutput `pulumi:"systemData"`
+	// Resource tags.
 	Tags pulumi.StringMapOutput `pulumi:"tags"`
-	// Azure resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The list of voice receivers that are part of this tenant action group.
 	VoiceReceivers VoiceReceiverResponseArrayOutput `pulumi:"voiceReceivers"`
@@ -109,25 +111,25 @@ func (TenantActionGroupState) ElementType() reflect.Type {
 
 type tenantActionGroupArgs struct {
 	// The list of AzureAppPush receivers that are part of this tenant action group.
-	AzureAppPushReceivers []AzureAppPushReceiver `pulumi:"azureAppPushReceivers"`
+	AzureAppPushReceivers []MicrosoftCommonAzureAppPushReceiver `pulumi:"azureAppPushReceivers"`
 	// The list of email receivers that are part of this tenant action group.
-	EmailReceivers []EmailReceiver `pulumi:"emailReceivers"`
+	EmailReceivers []MicrosoftCommonEmailReceiver `pulumi:"emailReceivers"`
 	// Indicates whether this tenant action group is enabled. If a tenant action group is not enabled, then none of its receivers will receive communications.
 	Enabled bool `pulumi:"enabled"`
 	// The short name of the action group. This will be used in SMS messages.
 	GroupShortName string `pulumi:"groupShortName"`
-	// Resource location
+	// The geo-location where the resource lives
 	Location *string `pulumi:"location"`
-	// The management group id.
+	// The management group ID.
 	ManagementGroupId string `pulumi:"managementGroupId"`
 	// The list of SMS receivers that are part of this tenant action group.
-	SmsReceivers []SmsReceiver `pulumi:"smsReceivers"`
-	// Resource tags
+	SmsReceivers []MicrosoftCommonSmsReceiver `pulumi:"smsReceivers"`
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
 	// The name of the action group.
 	TenantActionGroupName *string `pulumi:"tenantActionGroupName"`
 	// The list of voice receivers that are part of this tenant action group.
-	VoiceReceivers []VoiceReceiver `pulumi:"voiceReceivers"`
+	VoiceReceivers []MicrosoftCommonVoiceReceiver `pulumi:"voiceReceivers"`
 	// The list of webhook receivers that are part of this tenant action group.
 	WebhookReceivers []WebhookReceiver `pulumi:"webhookReceivers"`
 }
@@ -135,25 +137,25 @@ type tenantActionGroupArgs struct {
 // The set of arguments for constructing a TenantActionGroup resource.
 type TenantActionGroupArgs struct {
 	// The list of AzureAppPush receivers that are part of this tenant action group.
-	AzureAppPushReceivers AzureAppPushReceiverArrayInput
+	AzureAppPushReceivers MicrosoftCommonAzureAppPushReceiverArrayInput
 	// The list of email receivers that are part of this tenant action group.
-	EmailReceivers EmailReceiverArrayInput
+	EmailReceivers MicrosoftCommonEmailReceiverArrayInput
 	// Indicates whether this tenant action group is enabled. If a tenant action group is not enabled, then none of its receivers will receive communications.
 	Enabled pulumi.BoolInput
 	// The short name of the action group. This will be used in SMS messages.
 	GroupShortName pulumi.StringInput
-	// Resource location
+	// The geo-location where the resource lives
 	Location pulumi.StringPtrInput
-	// The management group id.
+	// The management group ID.
 	ManagementGroupId pulumi.StringInput
 	// The list of SMS receivers that are part of this tenant action group.
-	SmsReceivers SmsReceiverArrayInput
-	// Resource tags
+	SmsReceivers MicrosoftCommonSmsReceiverArrayInput
+	// Resource tags.
 	Tags pulumi.StringMapInput
 	// The name of the action group.
 	TenantActionGroupName pulumi.StringPtrInput
 	// The list of voice receivers that are part of this tenant action group.
-	VoiceReceivers VoiceReceiverArrayInput
+	VoiceReceivers MicrosoftCommonVoiceReceiverArrayInput
 	// The list of webhook receivers that are part of this tenant action group.
 	WebhookReceivers WebhookReceiverArrayInput
 }
@@ -220,12 +222,12 @@ func (o TenantActionGroupOutput) GroupShortName() pulumi.StringOutput {
 	return o.ApplyT(func(v *TenantActionGroup) pulumi.StringOutput { return v.GroupShortName }).(pulumi.StringOutput)
 }
 
-// Resource location
+// The geo-location where the resource lives
 func (o TenantActionGroupOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *TenantActionGroup) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Azure resource name
+// The name of the resource
 func (o TenantActionGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TenantActionGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -235,12 +237,17 @@ func (o TenantActionGroupOutput) SmsReceivers() SmsReceiverResponseArrayOutput {
 	return o.ApplyT(func(v *TenantActionGroup) SmsReceiverResponseArrayOutput { return v.SmsReceivers }).(SmsReceiverResponseArrayOutput)
 }
 
-// Resource tags
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o TenantActionGroupOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v *TenantActionGroup) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o TenantActionGroupOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *TenantActionGroup) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Azure resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o TenantActionGroupOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *TenantActionGroup) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

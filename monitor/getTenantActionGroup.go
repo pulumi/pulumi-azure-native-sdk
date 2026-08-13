@@ -25,7 +25,7 @@ func LookupTenantActionGroup(ctx *pulumi.Context, args *LookupTenantActionGroupA
 }
 
 type LookupTenantActionGroupArgs struct {
-	// The management group id.
+	// The management group ID.
 	ManagementGroupId string `pulumi:"managementGroupId"`
 	// The name of the action group.
 	TenantActionGroupName string `pulumi:"tenantActionGroupName"`
@@ -43,17 +43,19 @@ type LookupTenantActionGroupResult struct {
 	Enabled bool `pulumi:"enabled"`
 	// The short name of the action group. This will be used in SMS messages.
 	GroupShortName string `pulumi:"groupShortName"`
-	// Azure resource Id
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
-	// Resource location
+	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
-	// Azure resource name
+	// The name of the resource
 	Name string `pulumi:"name"`
 	// The list of SMS receivers that are part of this tenant action group.
 	SmsReceivers []SmsReceiverResponse `pulumi:"smsReceivers"`
-	// Resource tags
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+	SystemData SystemDataResponse `pulumi:"systemData"`
+	// Resource tags.
 	Tags map[string]string `pulumi:"tags"`
-	// Azure resource type
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// The list of voice receivers that are part of this tenant action group.
 	VoiceReceivers []VoiceReceiverResponse `pulumi:"voiceReceivers"`
@@ -82,7 +84,7 @@ func LookupTenantActionGroupOutput(ctx *pulumi.Context, args LookupTenantActionG
 }
 
 type LookupTenantActionGroupOutputArgs struct {
-	// The management group id.
+	// The management group ID.
 	ManagementGroupId pulumi.StringInput `pulumi:"managementGroupId"`
 	// The name of the action group.
 	TenantActionGroupName pulumi.StringInput `pulumi:"tenantActionGroupName"`
@@ -132,17 +134,17 @@ func (o LookupTenantActionGroupResultOutput) GroupShortName() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupTenantActionGroupResult) string { return v.GroupShortName }).(pulumi.StringOutput)
 }
 
-// Azure resource Id
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupTenantActionGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTenantActionGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Resource location
+// The geo-location where the resource lives
 func (o LookupTenantActionGroupResultOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTenantActionGroupResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
-// Azure resource name
+// The name of the resource
 func (o LookupTenantActionGroupResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTenantActionGroupResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -152,12 +154,17 @@ func (o LookupTenantActionGroupResultOutput) SmsReceivers() SmsReceiverResponseA
 	return o.ApplyT(func(v LookupTenantActionGroupResult) []SmsReceiverResponse { return v.SmsReceivers }).(SmsReceiverResponseArrayOutput)
 }
 
-// Resource tags
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+func (o LookupTenantActionGroupResultOutput) SystemData() SystemDataResponseOutput {
+	return o.ApplyT(func(v LookupTenantActionGroupResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
+}
+
+// Resource tags.
 func (o LookupTenantActionGroupResultOutput) Tags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupTenantActionGroupResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
-// Azure resource type
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupTenantActionGroupResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTenantActionGroupResult) string { return v.Type }).(pulumi.StringOutput)
 }

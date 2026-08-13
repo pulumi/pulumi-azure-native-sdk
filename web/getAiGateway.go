@@ -15,7 +15,7 @@ import (
 //
 // Uses Azure REST API version 2026-03-01-preview.
 //
-// Other available API versions: 2026-03-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2026-03-15, 2026-07-15. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native web [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupAiGateway(ctx *pulumi.Context, args *LookupAiGatewayArgs, opts ...pulumi.InvokeOption) (*LookupAiGatewayResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupAiGatewayResult

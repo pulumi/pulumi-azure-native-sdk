@@ -47,7 +47,7 @@ type LookupWorkbookResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// Resource etag
 	Etag *string `pulumi:"etag"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Identity used for BYOS
 	Identity *WorkbookResourceIdentityResponse `pulumi:"identity"`
@@ -141,7 +141,7 @@ func (o LookupWorkbookResultOutput) Etag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkbookResult) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupWorkbookResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkbookResult) string { return v.Id }).(pulumi.StringOutput)
 }

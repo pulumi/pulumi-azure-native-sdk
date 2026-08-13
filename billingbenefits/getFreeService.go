@@ -14,6 +14,8 @@ import (
 // This operation retrieves properties for free services.
 //
 // Uses Azure REST API version 2025-12-01-preview.
+//
+// Other available API versions: 2026-06-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native billingbenefits [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupFreeService(ctx *pulumi.Context, args *LookupFreeServiceArgs, opts ...pulumi.InvokeOption) (*LookupFreeServiceResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupFreeServiceResult

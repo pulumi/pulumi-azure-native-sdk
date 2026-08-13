@@ -45,6 +45,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AzureServersSetting{}
 	case "azure-native:security:CustomRecommendation":
 		r = &CustomRecommendation{}
+	case "azure-native:security:DataScanner":
+		r = &DataScanner{}
 	case "azure-native:security:DefenderForStorage":
 		r = &DefenderForStorage{}
 	case "azure-native:security:DevOpsConfiguration":

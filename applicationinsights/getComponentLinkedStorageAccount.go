@@ -37,7 +37,7 @@ type LookupComponentLinkedStorageAccountArgs struct {
 type LookupComponentLinkedStorageAccountResult struct {
 	// The Azure API version of the resource.
 	AzureApiVersion string `pulumi:"azureApiVersion"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// Linked storage account resource ID
 	LinkedStorageAccount *string `pulumi:"linkedStorageAccount"`
@@ -91,7 +91,7 @@ func (o LookupComponentLinkedStorageAccountResultOutput) AzureApiVersion() pulum
 	return o.ApplyT(func(v LookupComponentLinkedStorageAccountResult) string { return v.AzureApiVersion }).(pulumi.StringOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupComponentLinkedStorageAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupComponentLinkedStorageAccountResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -195,6 +195,9 @@ func NewMachineLearningDatastore(ctx *pulumi.Context,
 			Type: pulumi.String("azure-native:machinelearningservices/v20260501:MachineLearningDatastore"),
 		},
 		{
+			Type: pulumi.String("azure-native:machinelearningservices/v20260515preview:MachineLearningDatastore"),
+		},
+		{
 			Type: pulumi.String("azure-native:machinelearningservices:Datastore"),
 		},
 	})

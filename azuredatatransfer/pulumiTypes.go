@@ -2999,7 +2999,7 @@ type FlowPropertieslistListFlowsByPipelineResponse struct {
 	LinkedFlowId string `pulumi:"linkedFlowId"`
 	// The messaging options for this flow
 	MessagingOptions *MessagingOptionsResponse `pulumi:"messagingOptions"`
-	// The passphrase used for SRT streams
+	// The passphrase used for SRT streams (non-secret)
 	Passphrase *string `pulumi:"passphrase"`
 	// The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
 	Policies []string `pulumi:"policies"`
@@ -3121,7 +3121,7 @@ func (o FlowPropertieslistListFlowsByPipelineResponseOutput) MessagingOptions() 
 	}).(MessagingOptionsResponsePtrOutput)
 }
 
-// The passphrase used for SRT streams
+// The passphrase used for SRT streams (non-secret)
 func (o FlowPropertieslistListFlowsByPipelineResponseOutput) Passphrase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FlowPropertieslistListFlowsByPipelineResponse) *string { return v.Passphrase }).(pulumi.StringPtrOutput)
 }
@@ -3367,7 +3367,7 @@ func (o FlowPropertieslistListFlowsByPipelineResponsePtrOutput) MessagingOptions
 	}).(MessagingOptionsResponsePtrOutput)
 }
 
-// The passphrase used for SRT streams
+// The passphrase used for SRT streams (non-secret)
 func (o FlowPropertieslistListFlowsByPipelineResponsePtrOutput) Passphrase() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FlowPropertieslistListFlowsByPipelineResponse) *string {
 		if v == nil {
