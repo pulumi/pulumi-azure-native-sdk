@@ -14,9 +14,9 @@ import (
 
 // Single item in List or Get Migration Config operation
 //
-// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
+// Uses Azure REST API version 2026-01-01. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
 //
-// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2025-05-01-preview, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-01-01, 2025-05-01-preview, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type MigrationConfig struct {
 	pulumi.CustomResourceState
 
@@ -32,13 +32,13 @@ type MigrationConfig struct {
 	PendingReplicationOperationsCount pulumi.Float64Output `pulumi:"pendingReplicationOperationsCount"`
 	// Name to access Standard Namespace after migration
 	PostMigrationName pulumi.StringOutput `pulumi:"postMigrationName"`
-	// Provisioning state of Migration Configuration
+	// Provisioning state of Migration ConfigurationProvisioning state of Migration Configuration
 	ProvisioningState pulumi.StringOutput `pulumi:"provisioningState"`
-	// The system meta data relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
 	// Existing premium Namespace ARM Id name which has no entities, will be used for migration
 	TargetNamespace pulumi.StringOutput `pulumi:"targetNamespace"`
-	// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -133,7 +133,7 @@ func (MigrationConfigState) ElementType() reflect.Type {
 }
 
 type migrationConfigArgs struct {
-	// The configuration name. Should always be "$default".
+	// The configuration name. Should always be $default.
 	ConfigName *string `pulumi:"configName"`
 	// The namespace name
 	NamespaceName string `pulumi:"namespaceName"`
@@ -147,7 +147,7 @@ type migrationConfigArgs struct {
 
 // The set of arguments for constructing a MigrationConfig resource.
 type MigrationConfigArgs struct {
-	// The configuration name. Should always be "$default".
+	// The configuration name. Should always be $default.
 	ConfigName pulumi.StringPtrInput
 	// The namespace name
 	NamespaceName pulumi.StringInput
@@ -226,12 +226,12 @@ func (o MigrationConfigOutput) PostMigrationName() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationConfig) pulumi.StringOutput { return v.PostMigrationName }).(pulumi.StringOutput)
 }
 
-// Provisioning state of Migration Configuration
+// Provisioning state of Migration ConfigurationProvisioning state of Migration Configuration
 func (o MigrationConfigOutput) ProvisioningState() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationConfig) pulumi.StringOutput { return v.ProvisioningState }).(pulumi.StringOutput)
 }
 
-// The system meta data relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o MigrationConfigOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *MigrationConfig) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -241,7 +241,7 @@ func (o MigrationConfigOutput) TargetNamespace() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationConfig) pulumi.StringOutput { return v.TargetNamespace }).(pulumi.StringOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o MigrationConfigOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationConfig) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
