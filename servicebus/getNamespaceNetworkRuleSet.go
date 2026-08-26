@@ -13,9 +13,9 @@ import (
 
 // Gets NetworkRuleSet for a Namespace.
 //
-// Uses Azure REST API version 2024-01-01.
+// Uses Azure REST API version 2026-01-01.
 //
-// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2025-05-01-preview, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-01-01, 2025-05-01-preview, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupNamespaceNetworkRuleSet(ctx *pulumi.Context, args *LookupNamespaceNetworkRuleSetArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceNetworkRuleSetResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupNamespaceNetworkRuleSetResult
@@ -39,7 +39,7 @@ type LookupNamespaceNetworkRuleSetResult struct {
 	AzureApiVersion string `pulumi:"azureApiVersion"`
 	// Default Action for Network Rule Set
 	DefaultAction *string `pulumi:"defaultAction"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// List of IpRules
 	IpRules []NWRuleSetIpRulesResponse `pulumi:"ipRules"`
@@ -49,11 +49,11 @@ type LookupNamespaceNetworkRuleSetResult struct {
 	Name string `pulumi:"name"`
 	// This determines if traffic is allowed over public network. By default it is enabled.
 	PublicNetworkAccess *string `pulumi:"publicNetworkAccess"`
-	// The system meta data relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
 	// Value that indicates whether Trusted Service Access is Enabled or not.
 	TrustedServiceAccessEnabled *bool `pulumi:"trustedServiceAccessEnabled"`
-	// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 	// List VirtualNetwork Rules
 	VirtualNetworkRules []NWRuleSetVirtualNetworkRulesResponse `pulumi:"virtualNetworkRules"`
@@ -116,7 +116,7 @@ func (o LookupNamespaceNetworkRuleSetResultOutput) DefaultAction() pulumi.String
 	return o.ApplyT(func(v LookupNamespaceNetworkRuleSetResult) *string { return v.DefaultAction }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupNamespaceNetworkRuleSetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceNetworkRuleSetResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -141,7 +141,7 @@ func (o LookupNamespaceNetworkRuleSetResultOutput) PublicNetworkAccess() pulumi.
 	return o.ApplyT(func(v LookupNamespaceNetworkRuleSetResult) *string { return v.PublicNetworkAccess }).(pulumi.StringPtrOutput)
 }
 
-// The system meta data relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupNamespaceNetworkRuleSetResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupNamespaceNetworkRuleSetResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
@@ -151,7 +151,7 @@ func (o LookupNamespaceNetworkRuleSetResultOutput) TrustedServiceAccessEnabled()
 	return o.ApplyT(func(v LookupNamespaceNetworkRuleSetResult) *bool { return v.TrustedServiceAccessEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupNamespaceNetworkRuleSetResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNamespaceNetworkRuleSetResult) string { return v.Type }).(pulumi.StringOutput)
 }

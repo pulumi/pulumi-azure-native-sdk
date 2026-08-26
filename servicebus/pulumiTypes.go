@@ -322,6 +322,201 @@ func (o ActionResponsePtrOutput) SqlExpression() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ConfidentialCompute struct {
+	// Setting to Enable or Disable Confidential Compute
+	Mode *string `pulumi:"mode"`
+}
+
+// ConfidentialComputeInput is an input type that accepts ConfidentialComputeArgs and ConfidentialComputeOutput values.
+// You can construct a concrete instance of `ConfidentialComputeInput` via:
+//
+//	ConfidentialComputeArgs{...}
+type ConfidentialComputeInput interface {
+	pulumi.Input
+
+	ToConfidentialComputeOutput() ConfidentialComputeOutput
+	ToConfidentialComputeOutputWithContext(context.Context) ConfidentialComputeOutput
+}
+
+type ConfidentialComputeArgs struct {
+	// Setting to Enable or Disable Confidential Compute
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+}
+
+func (ConfidentialComputeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfidentialCompute)(nil)).Elem()
+}
+
+func (i ConfidentialComputeArgs) ToConfidentialComputeOutput() ConfidentialComputeOutput {
+	return i.ToConfidentialComputeOutputWithContext(context.Background())
+}
+
+func (i ConfidentialComputeArgs) ToConfidentialComputeOutputWithContext(ctx context.Context) ConfidentialComputeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfidentialComputeOutput)
+}
+
+func (i ConfidentialComputeArgs) ToConfidentialComputePtrOutput() ConfidentialComputePtrOutput {
+	return i.ToConfidentialComputePtrOutputWithContext(context.Background())
+}
+
+func (i ConfidentialComputeArgs) ToConfidentialComputePtrOutputWithContext(ctx context.Context) ConfidentialComputePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfidentialComputeOutput).ToConfidentialComputePtrOutputWithContext(ctx)
+}
+
+// ConfidentialComputePtrInput is an input type that accepts ConfidentialComputeArgs, ConfidentialComputePtr and ConfidentialComputePtrOutput values.
+// You can construct a concrete instance of `ConfidentialComputePtrInput` via:
+//
+//	        ConfidentialComputeArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConfidentialComputePtrInput interface {
+	pulumi.Input
+
+	ToConfidentialComputePtrOutput() ConfidentialComputePtrOutput
+	ToConfidentialComputePtrOutputWithContext(context.Context) ConfidentialComputePtrOutput
+}
+
+type confidentialComputePtrType ConfidentialComputeArgs
+
+func ConfidentialComputePtr(v *ConfidentialComputeArgs) ConfidentialComputePtrInput {
+	return (*confidentialComputePtrType)(v)
+}
+
+func (*confidentialComputePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfidentialCompute)(nil)).Elem()
+}
+
+func (i *confidentialComputePtrType) ToConfidentialComputePtrOutput() ConfidentialComputePtrOutput {
+	return i.ToConfidentialComputePtrOutputWithContext(context.Background())
+}
+
+func (i *confidentialComputePtrType) ToConfidentialComputePtrOutputWithContext(ctx context.Context) ConfidentialComputePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfidentialComputePtrOutput)
+}
+
+type ConfidentialComputeOutput struct{ *pulumi.OutputState }
+
+func (ConfidentialComputeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfidentialCompute)(nil)).Elem()
+}
+
+func (o ConfidentialComputeOutput) ToConfidentialComputeOutput() ConfidentialComputeOutput {
+	return o
+}
+
+func (o ConfidentialComputeOutput) ToConfidentialComputeOutputWithContext(ctx context.Context) ConfidentialComputeOutput {
+	return o
+}
+
+func (o ConfidentialComputeOutput) ToConfidentialComputePtrOutput() ConfidentialComputePtrOutput {
+	return o.ToConfidentialComputePtrOutputWithContext(context.Background())
+}
+
+func (o ConfidentialComputeOutput) ToConfidentialComputePtrOutputWithContext(ctx context.Context) ConfidentialComputePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConfidentialCompute) *ConfidentialCompute {
+		return &v
+	}).(ConfidentialComputePtrOutput)
+}
+
+// Setting to Enable or Disable Confidential Compute
+func (o ConfidentialComputeOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfidentialCompute) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+type ConfidentialComputePtrOutput struct{ *pulumi.OutputState }
+
+func (ConfidentialComputePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfidentialCompute)(nil)).Elem()
+}
+
+func (o ConfidentialComputePtrOutput) ToConfidentialComputePtrOutput() ConfidentialComputePtrOutput {
+	return o
+}
+
+func (o ConfidentialComputePtrOutput) ToConfidentialComputePtrOutputWithContext(ctx context.Context) ConfidentialComputePtrOutput {
+	return o
+}
+
+func (o ConfidentialComputePtrOutput) Elem() ConfidentialComputeOutput {
+	return o.ApplyT(func(v *ConfidentialCompute) ConfidentialCompute {
+		if v != nil {
+			return *v
+		}
+		var ret ConfidentialCompute
+		return ret
+	}).(ConfidentialComputeOutput)
+}
+
+// Setting to Enable or Disable Confidential Compute
+func (o ConfidentialComputePtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfidentialCompute) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConfidentialComputeResponse struct {
+	// Setting to Enable or Disable Confidential Compute
+	Mode *string `pulumi:"mode"`
+}
+
+type ConfidentialComputeResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfidentialComputeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfidentialComputeResponse)(nil)).Elem()
+}
+
+func (o ConfidentialComputeResponseOutput) ToConfidentialComputeResponseOutput() ConfidentialComputeResponseOutput {
+	return o
+}
+
+func (o ConfidentialComputeResponseOutput) ToConfidentialComputeResponseOutputWithContext(ctx context.Context) ConfidentialComputeResponseOutput {
+	return o
+}
+
+// Setting to Enable or Disable Confidential Compute
+func (o ConfidentialComputeResponseOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConfidentialComputeResponse) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+type ConfidentialComputeResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ConfidentialComputeResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfidentialComputeResponse)(nil)).Elem()
+}
+
+func (o ConfidentialComputeResponsePtrOutput) ToConfidentialComputeResponsePtrOutput() ConfidentialComputeResponsePtrOutput {
+	return o
+}
+
+func (o ConfidentialComputeResponsePtrOutput) ToConfidentialComputeResponsePtrOutputWithContext(ctx context.Context) ConfidentialComputeResponsePtrOutput {
+	return o
+}
+
+func (o ConfidentialComputeResponsePtrOutput) Elem() ConfidentialComputeResponseOutput {
+	return o.ApplyT(func(v *ConfidentialComputeResponse) ConfidentialComputeResponse {
+		if v != nil {
+			return *v
+		}
+		var ret ConfidentialComputeResponse
+		return ret
+	}).(ConfidentialComputeResponseOutput)
+}
+
+// Setting to Enable or Disable Confidential Compute
+func (o ConfidentialComputeResponsePtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConfidentialComputeResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
 // ConnectionState information.
 type ConnectionState struct {
 	// Description of the connection state.
@@ -1428,6 +1623,242 @@ func (o EncryptionResponsePtrOutput) RequireInfrastructureEncryption() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
+// GeoDR Replication properties
+type GeoDataReplicationProperties struct {
+	// A list of regions where replicas of the namespace are maintained.
+	Locations []NamespaceReplicaLocation `pulumi:"locations"`
+	// The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.  When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0 and 5 minutes to 1 day.
+	MaxReplicationLagDurationInSeconds *int `pulumi:"maxReplicationLagDurationInSeconds"`
+}
+
+// GeoDataReplicationPropertiesInput is an input type that accepts GeoDataReplicationPropertiesArgs and GeoDataReplicationPropertiesOutput values.
+// You can construct a concrete instance of `GeoDataReplicationPropertiesInput` via:
+//
+//	GeoDataReplicationPropertiesArgs{...}
+type GeoDataReplicationPropertiesInput interface {
+	pulumi.Input
+
+	ToGeoDataReplicationPropertiesOutput() GeoDataReplicationPropertiesOutput
+	ToGeoDataReplicationPropertiesOutputWithContext(context.Context) GeoDataReplicationPropertiesOutput
+}
+
+// GeoDR Replication properties
+type GeoDataReplicationPropertiesArgs struct {
+	// A list of regions where replicas of the namespace are maintained.
+	Locations NamespaceReplicaLocationArrayInput `pulumi:"locations"`
+	// The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.  When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0 and 5 minutes to 1 day.
+	MaxReplicationLagDurationInSeconds pulumi.IntPtrInput `pulumi:"maxReplicationLagDurationInSeconds"`
+}
+
+func (GeoDataReplicationPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeoDataReplicationProperties)(nil)).Elem()
+}
+
+func (i GeoDataReplicationPropertiesArgs) ToGeoDataReplicationPropertiesOutput() GeoDataReplicationPropertiesOutput {
+	return i.ToGeoDataReplicationPropertiesOutputWithContext(context.Background())
+}
+
+func (i GeoDataReplicationPropertiesArgs) ToGeoDataReplicationPropertiesOutputWithContext(ctx context.Context) GeoDataReplicationPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeoDataReplicationPropertiesOutput)
+}
+
+func (i GeoDataReplicationPropertiesArgs) ToGeoDataReplicationPropertiesPtrOutput() GeoDataReplicationPropertiesPtrOutput {
+	return i.ToGeoDataReplicationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i GeoDataReplicationPropertiesArgs) ToGeoDataReplicationPropertiesPtrOutputWithContext(ctx context.Context) GeoDataReplicationPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeoDataReplicationPropertiesOutput).ToGeoDataReplicationPropertiesPtrOutputWithContext(ctx)
+}
+
+// GeoDataReplicationPropertiesPtrInput is an input type that accepts GeoDataReplicationPropertiesArgs, GeoDataReplicationPropertiesPtr and GeoDataReplicationPropertiesPtrOutput values.
+// You can construct a concrete instance of `GeoDataReplicationPropertiesPtrInput` via:
+//
+//	        GeoDataReplicationPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GeoDataReplicationPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToGeoDataReplicationPropertiesPtrOutput() GeoDataReplicationPropertiesPtrOutput
+	ToGeoDataReplicationPropertiesPtrOutputWithContext(context.Context) GeoDataReplicationPropertiesPtrOutput
+}
+
+type geoDataReplicationPropertiesPtrType GeoDataReplicationPropertiesArgs
+
+func GeoDataReplicationPropertiesPtr(v *GeoDataReplicationPropertiesArgs) GeoDataReplicationPropertiesPtrInput {
+	return (*geoDataReplicationPropertiesPtrType)(v)
+}
+
+func (*geoDataReplicationPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GeoDataReplicationProperties)(nil)).Elem()
+}
+
+func (i *geoDataReplicationPropertiesPtrType) ToGeoDataReplicationPropertiesPtrOutput() GeoDataReplicationPropertiesPtrOutput {
+	return i.ToGeoDataReplicationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *geoDataReplicationPropertiesPtrType) ToGeoDataReplicationPropertiesPtrOutputWithContext(ctx context.Context) GeoDataReplicationPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GeoDataReplicationPropertiesPtrOutput)
+}
+
+// GeoDR Replication properties
+type GeoDataReplicationPropertiesOutput struct{ *pulumi.OutputState }
+
+func (GeoDataReplicationPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeoDataReplicationProperties)(nil)).Elem()
+}
+
+func (o GeoDataReplicationPropertiesOutput) ToGeoDataReplicationPropertiesOutput() GeoDataReplicationPropertiesOutput {
+	return o
+}
+
+func (o GeoDataReplicationPropertiesOutput) ToGeoDataReplicationPropertiesOutputWithContext(ctx context.Context) GeoDataReplicationPropertiesOutput {
+	return o
+}
+
+func (o GeoDataReplicationPropertiesOutput) ToGeoDataReplicationPropertiesPtrOutput() GeoDataReplicationPropertiesPtrOutput {
+	return o.ToGeoDataReplicationPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o GeoDataReplicationPropertiesOutput) ToGeoDataReplicationPropertiesPtrOutputWithContext(ctx context.Context) GeoDataReplicationPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GeoDataReplicationProperties) *GeoDataReplicationProperties {
+		return &v
+	}).(GeoDataReplicationPropertiesPtrOutput)
+}
+
+// A list of regions where replicas of the namespace are maintained.
+func (o GeoDataReplicationPropertiesOutput) Locations() NamespaceReplicaLocationArrayOutput {
+	return o.ApplyT(func(v GeoDataReplicationProperties) []NamespaceReplicaLocation { return v.Locations }).(NamespaceReplicaLocationArrayOutput)
+}
+
+// The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.  When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0 and 5 minutes to 1 day.
+func (o GeoDataReplicationPropertiesOutput) MaxReplicationLagDurationInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GeoDataReplicationProperties) *int { return v.MaxReplicationLagDurationInSeconds }).(pulumi.IntPtrOutput)
+}
+
+type GeoDataReplicationPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (GeoDataReplicationPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GeoDataReplicationProperties)(nil)).Elem()
+}
+
+func (o GeoDataReplicationPropertiesPtrOutput) ToGeoDataReplicationPropertiesPtrOutput() GeoDataReplicationPropertiesPtrOutput {
+	return o
+}
+
+func (o GeoDataReplicationPropertiesPtrOutput) ToGeoDataReplicationPropertiesPtrOutputWithContext(ctx context.Context) GeoDataReplicationPropertiesPtrOutput {
+	return o
+}
+
+func (o GeoDataReplicationPropertiesPtrOutput) Elem() GeoDataReplicationPropertiesOutput {
+	return o.ApplyT(func(v *GeoDataReplicationProperties) GeoDataReplicationProperties {
+		if v != nil {
+			return *v
+		}
+		var ret GeoDataReplicationProperties
+		return ret
+	}).(GeoDataReplicationPropertiesOutput)
+}
+
+// A list of regions where replicas of the namespace are maintained.
+func (o GeoDataReplicationPropertiesPtrOutput) Locations() NamespaceReplicaLocationArrayOutput {
+	return o.ApplyT(func(v *GeoDataReplicationProperties) []NamespaceReplicaLocation {
+		if v == nil {
+			return nil
+		}
+		return v.Locations
+	}).(NamespaceReplicaLocationArrayOutput)
+}
+
+// The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.  When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0 and 5 minutes to 1 day.
+func (o GeoDataReplicationPropertiesPtrOutput) MaxReplicationLagDurationInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GeoDataReplicationProperties) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxReplicationLagDurationInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// GeoDR Replication properties
+type GeoDataReplicationPropertiesResponse struct {
+	// A list of regions where replicas of the namespace are maintained.
+	Locations []NamespaceReplicaLocationResponse `pulumi:"locations"`
+	// The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.  When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0 and 5 minutes to 1 day.
+	MaxReplicationLagDurationInSeconds *int `pulumi:"maxReplicationLagDurationInSeconds"`
+}
+
+// GeoDR Replication properties
+type GeoDataReplicationPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (GeoDataReplicationPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeoDataReplicationPropertiesResponse)(nil)).Elem()
+}
+
+func (o GeoDataReplicationPropertiesResponseOutput) ToGeoDataReplicationPropertiesResponseOutput() GeoDataReplicationPropertiesResponseOutput {
+	return o
+}
+
+func (o GeoDataReplicationPropertiesResponseOutput) ToGeoDataReplicationPropertiesResponseOutputWithContext(ctx context.Context) GeoDataReplicationPropertiesResponseOutput {
+	return o
+}
+
+// A list of regions where replicas of the namespace are maintained.
+func (o GeoDataReplicationPropertiesResponseOutput) Locations() NamespaceReplicaLocationResponseArrayOutput {
+	return o.ApplyT(func(v GeoDataReplicationPropertiesResponse) []NamespaceReplicaLocationResponse { return v.Locations }).(NamespaceReplicaLocationResponseArrayOutput)
+}
+
+// The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.  When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0 and 5 minutes to 1 day.
+func (o GeoDataReplicationPropertiesResponseOutput) MaxReplicationLagDurationInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GeoDataReplicationPropertiesResponse) *int { return v.MaxReplicationLagDurationInSeconds }).(pulumi.IntPtrOutput)
+}
+
+type GeoDataReplicationPropertiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GeoDataReplicationPropertiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GeoDataReplicationPropertiesResponse)(nil)).Elem()
+}
+
+func (o GeoDataReplicationPropertiesResponsePtrOutput) ToGeoDataReplicationPropertiesResponsePtrOutput() GeoDataReplicationPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o GeoDataReplicationPropertiesResponsePtrOutput) ToGeoDataReplicationPropertiesResponsePtrOutputWithContext(ctx context.Context) GeoDataReplicationPropertiesResponsePtrOutput {
+	return o
+}
+
+func (o GeoDataReplicationPropertiesResponsePtrOutput) Elem() GeoDataReplicationPropertiesResponseOutput {
+	return o.ApplyT(func(v *GeoDataReplicationPropertiesResponse) GeoDataReplicationPropertiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret GeoDataReplicationPropertiesResponse
+		return ret
+	}).(GeoDataReplicationPropertiesResponseOutput)
+}
+
+// A list of regions where replicas of the namespace are maintained.
+func (o GeoDataReplicationPropertiesResponsePtrOutput) Locations() NamespaceReplicaLocationResponseArrayOutput {
+	return o.ApplyT(func(v *GeoDataReplicationPropertiesResponse) []NamespaceReplicaLocationResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Locations
+	}).(NamespaceReplicaLocationResponseArrayOutput)
+}
+
+// The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas.  When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0 and 5 minutes to 1 day.
+func (o GeoDataReplicationPropertiesResponsePtrOutput) MaxReplicationLagDurationInSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GeoDataReplicationPropertiesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxReplicationLagDurationInSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
 // Properties to configure User Assigned Identities for Bring your Own Keys
 type Identity struct {
 	// Type of managed service identity.
@@ -2302,6 +2733,356 @@ func (o NWRuleSetVirtualNetworkRulesResponseArrayOutput) Index(i pulumi.IntInput
 	}).(NWRuleSetVirtualNetworkRulesResponseOutput)
 }
 
+// Namespace replication properties
+type NamespaceReplicaLocation struct {
+	// Azure regions where a replica of the namespace is maintained
+	LocationName *string `pulumi:"locationName"`
+	// GeoDR Role Types
+	RoleType *string `pulumi:"roleType"`
+}
+
+// NamespaceReplicaLocationInput is an input type that accepts NamespaceReplicaLocationArgs and NamespaceReplicaLocationOutput values.
+// You can construct a concrete instance of `NamespaceReplicaLocationInput` via:
+//
+//	NamespaceReplicaLocationArgs{...}
+type NamespaceReplicaLocationInput interface {
+	pulumi.Input
+
+	ToNamespaceReplicaLocationOutput() NamespaceReplicaLocationOutput
+	ToNamespaceReplicaLocationOutputWithContext(context.Context) NamespaceReplicaLocationOutput
+}
+
+// Namespace replication properties
+type NamespaceReplicaLocationArgs struct {
+	// Azure regions where a replica of the namespace is maintained
+	LocationName pulumi.StringPtrInput `pulumi:"locationName"`
+	// GeoDR Role Types
+	RoleType pulumi.StringPtrInput `pulumi:"roleType"`
+}
+
+func (NamespaceReplicaLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceReplicaLocation)(nil)).Elem()
+}
+
+func (i NamespaceReplicaLocationArgs) ToNamespaceReplicaLocationOutput() NamespaceReplicaLocationOutput {
+	return i.ToNamespaceReplicaLocationOutputWithContext(context.Background())
+}
+
+func (i NamespaceReplicaLocationArgs) ToNamespaceReplicaLocationOutputWithContext(ctx context.Context) NamespaceReplicaLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceReplicaLocationOutput)
+}
+
+// NamespaceReplicaLocationArrayInput is an input type that accepts NamespaceReplicaLocationArray and NamespaceReplicaLocationArrayOutput values.
+// You can construct a concrete instance of `NamespaceReplicaLocationArrayInput` via:
+//
+//	NamespaceReplicaLocationArray{ NamespaceReplicaLocationArgs{...} }
+type NamespaceReplicaLocationArrayInput interface {
+	pulumi.Input
+
+	ToNamespaceReplicaLocationArrayOutput() NamespaceReplicaLocationArrayOutput
+	ToNamespaceReplicaLocationArrayOutputWithContext(context.Context) NamespaceReplicaLocationArrayOutput
+}
+
+type NamespaceReplicaLocationArray []NamespaceReplicaLocationInput
+
+func (NamespaceReplicaLocationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceReplicaLocation)(nil)).Elem()
+}
+
+func (i NamespaceReplicaLocationArray) ToNamespaceReplicaLocationArrayOutput() NamespaceReplicaLocationArrayOutput {
+	return i.ToNamespaceReplicaLocationArrayOutputWithContext(context.Background())
+}
+
+func (i NamespaceReplicaLocationArray) ToNamespaceReplicaLocationArrayOutputWithContext(ctx context.Context) NamespaceReplicaLocationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceReplicaLocationArrayOutput)
+}
+
+// Namespace replication properties
+type NamespaceReplicaLocationOutput struct{ *pulumi.OutputState }
+
+func (NamespaceReplicaLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceReplicaLocation)(nil)).Elem()
+}
+
+func (o NamespaceReplicaLocationOutput) ToNamespaceReplicaLocationOutput() NamespaceReplicaLocationOutput {
+	return o
+}
+
+func (o NamespaceReplicaLocationOutput) ToNamespaceReplicaLocationOutputWithContext(ctx context.Context) NamespaceReplicaLocationOutput {
+	return o
+}
+
+// Azure regions where a replica of the namespace is maintained
+func (o NamespaceReplicaLocationOutput) LocationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceReplicaLocation) *string { return v.LocationName }).(pulumi.StringPtrOutput)
+}
+
+// GeoDR Role Types
+func (o NamespaceReplicaLocationOutput) RoleType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceReplicaLocation) *string { return v.RoleType }).(pulumi.StringPtrOutput)
+}
+
+type NamespaceReplicaLocationArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceReplicaLocationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceReplicaLocation)(nil)).Elem()
+}
+
+func (o NamespaceReplicaLocationArrayOutput) ToNamespaceReplicaLocationArrayOutput() NamespaceReplicaLocationArrayOutput {
+	return o
+}
+
+func (o NamespaceReplicaLocationArrayOutput) ToNamespaceReplicaLocationArrayOutputWithContext(ctx context.Context) NamespaceReplicaLocationArrayOutput {
+	return o
+}
+
+func (o NamespaceReplicaLocationArrayOutput) Index(i pulumi.IntInput) NamespaceReplicaLocationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceReplicaLocation {
+		return vs[0].([]NamespaceReplicaLocation)[vs[1].(int)]
+	}).(NamespaceReplicaLocationOutput)
+}
+
+// Namespace replication properties
+type NamespaceReplicaLocationResponse struct {
+	// Azure regions where a replica of the namespace is maintained
+	LocationName *string `pulumi:"locationName"`
+	// GeoDR Role Types
+	RoleType *string `pulumi:"roleType"`
+}
+
+// Namespace replication properties
+type NamespaceReplicaLocationResponseOutput struct{ *pulumi.OutputState }
+
+func (NamespaceReplicaLocationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceReplicaLocationResponse)(nil)).Elem()
+}
+
+func (o NamespaceReplicaLocationResponseOutput) ToNamespaceReplicaLocationResponseOutput() NamespaceReplicaLocationResponseOutput {
+	return o
+}
+
+func (o NamespaceReplicaLocationResponseOutput) ToNamespaceReplicaLocationResponseOutputWithContext(ctx context.Context) NamespaceReplicaLocationResponseOutput {
+	return o
+}
+
+// Azure regions where a replica of the namespace is maintained
+func (o NamespaceReplicaLocationResponseOutput) LocationName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceReplicaLocationResponse) *string { return v.LocationName }).(pulumi.StringPtrOutput)
+}
+
+// GeoDR Role Types
+func (o NamespaceReplicaLocationResponseOutput) RoleType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NamespaceReplicaLocationResponse) *string { return v.RoleType }).(pulumi.StringPtrOutput)
+}
+
+type NamespaceReplicaLocationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceReplicaLocationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceReplicaLocationResponse)(nil)).Elem()
+}
+
+func (o NamespaceReplicaLocationResponseArrayOutput) ToNamespaceReplicaLocationResponseArrayOutput() NamespaceReplicaLocationResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceReplicaLocationResponseArrayOutput) ToNamespaceReplicaLocationResponseArrayOutputWithContext(ctx context.Context) NamespaceReplicaLocationResponseArrayOutput {
+	return o
+}
+
+func (o NamespaceReplicaLocationResponseArrayOutput) Index(i pulumi.IntInput) NamespaceReplicaLocationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceReplicaLocationResponse {
+		return vs[0].([]NamespaceReplicaLocationResponse)[vs[1].(int)]
+	}).(NamespaceReplicaLocationResponseOutput)
+}
+
+type PlatformCapabilities struct {
+	ConfidentialCompute *ConfidentialCompute `pulumi:"confidentialCompute"`
+}
+
+// PlatformCapabilitiesInput is an input type that accepts PlatformCapabilitiesArgs and PlatformCapabilitiesOutput values.
+// You can construct a concrete instance of `PlatformCapabilitiesInput` via:
+//
+//	PlatformCapabilitiesArgs{...}
+type PlatformCapabilitiesInput interface {
+	pulumi.Input
+
+	ToPlatformCapabilitiesOutput() PlatformCapabilitiesOutput
+	ToPlatformCapabilitiesOutputWithContext(context.Context) PlatformCapabilitiesOutput
+}
+
+type PlatformCapabilitiesArgs struct {
+	ConfidentialCompute ConfidentialComputePtrInput `pulumi:"confidentialCompute"`
+}
+
+func (PlatformCapabilitiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlatformCapabilities)(nil)).Elem()
+}
+
+func (i PlatformCapabilitiesArgs) ToPlatformCapabilitiesOutput() PlatformCapabilitiesOutput {
+	return i.ToPlatformCapabilitiesOutputWithContext(context.Background())
+}
+
+func (i PlatformCapabilitiesArgs) ToPlatformCapabilitiesOutputWithContext(ctx context.Context) PlatformCapabilitiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlatformCapabilitiesOutput)
+}
+
+func (i PlatformCapabilitiesArgs) ToPlatformCapabilitiesPtrOutput() PlatformCapabilitiesPtrOutput {
+	return i.ToPlatformCapabilitiesPtrOutputWithContext(context.Background())
+}
+
+func (i PlatformCapabilitiesArgs) ToPlatformCapabilitiesPtrOutputWithContext(ctx context.Context) PlatformCapabilitiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlatformCapabilitiesOutput).ToPlatformCapabilitiesPtrOutputWithContext(ctx)
+}
+
+// PlatformCapabilitiesPtrInput is an input type that accepts PlatformCapabilitiesArgs, PlatformCapabilitiesPtr and PlatformCapabilitiesPtrOutput values.
+// You can construct a concrete instance of `PlatformCapabilitiesPtrInput` via:
+//
+//	        PlatformCapabilitiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type PlatformCapabilitiesPtrInput interface {
+	pulumi.Input
+
+	ToPlatformCapabilitiesPtrOutput() PlatformCapabilitiesPtrOutput
+	ToPlatformCapabilitiesPtrOutputWithContext(context.Context) PlatformCapabilitiesPtrOutput
+}
+
+type platformCapabilitiesPtrType PlatformCapabilitiesArgs
+
+func PlatformCapabilitiesPtr(v *PlatformCapabilitiesArgs) PlatformCapabilitiesPtrInput {
+	return (*platformCapabilitiesPtrType)(v)
+}
+
+func (*platformCapabilitiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PlatformCapabilities)(nil)).Elem()
+}
+
+func (i *platformCapabilitiesPtrType) ToPlatformCapabilitiesPtrOutput() PlatformCapabilitiesPtrOutput {
+	return i.ToPlatformCapabilitiesPtrOutputWithContext(context.Background())
+}
+
+func (i *platformCapabilitiesPtrType) ToPlatformCapabilitiesPtrOutputWithContext(ctx context.Context) PlatformCapabilitiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PlatformCapabilitiesPtrOutput)
+}
+
+type PlatformCapabilitiesOutput struct{ *pulumi.OutputState }
+
+func (PlatformCapabilitiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlatformCapabilities)(nil)).Elem()
+}
+
+func (o PlatformCapabilitiesOutput) ToPlatformCapabilitiesOutput() PlatformCapabilitiesOutput {
+	return o
+}
+
+func (o PlatformCapabilitiesOutput) ToPlatformCapabilitiesOutputWithContext(ctx context.Context) PlatformCapabilitiesOutput {
+	return o
+}
+
+func (o PlatformCapabilitiesOutput) ToPlatformCapabilitiesPtrOutput() PlatformCapabilitiesPtrOutput {
+	return o.ToPlatformCapabilitiesPtrOutputWithContext(context.Background())
+}
+
+func (o PlatformCapabilitiesOutput) ToPlatformCapabilitiesPtrOutputWithContext(ctx context.Context) PlatformCapabilitiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PlatformCapabilities) *PlatformCapabilities {
+		return &v
+	}).(PlatformCapabilitiesPtrOutput)
+}
+
+func (o PlatformCapabilitiesOutput) ConfidentialCompute() ConfidentialComputePtrOutput {
+	return o.ApplyT(func(v PlatformCapabilities) *ConfidentialCompute { return v.ConfidentialCompute }).(ConfidentialComputePtrOutput)
+}
+
+type PlatformCapabilitiesPtrOutput struct{ *pulumi.OutputState }
+
+func (PlatformCapabilitiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PlatformCapabilities)(nil)).Elem()
+}
+
+func (o PlatformCapabilitiesPtrOutput) ToPlatformCapabilitiesPtrOutput() PlatformCapabilitiesPtrOutput {
+	return o
+}
+
+func (o PlatformCapabilitiesPtrOutput) ToPlatformCapabilitiesPtrOutputWithContext(ctx context.Context) PlatformCapabilitiesPtrOutput {
+	return o
+}
+
+func (o PlatformCapabilitiesPtrOutput) Elem() PlatformCapabilitiesOutput {
+	return o.ApplyT(func(v *PlatformCapabilities) PlatformCapabilities {
+		if v != nil {
+			return *v
+		}
+		var ret PlatformCapabilities
+		return ret
+	}).(PlatformCapabilitiesOutput)
+}
+
+func (o PlatformCapabilitiesPtrOutput) ConfidentialCompute() ConfidentialComputePtrOutput {
+	return o.ApplyT(func(v *PlatformCapabilities) *ConfidentialCompute {
+		if v == nil {
+			return nil
+		}
+		return v.ConfidentialCompute
+	}).(ConfidentialComputePtrOutput)
+}
+
+type PlatformCapabilitiesResponse struct {
+	ConfidentialCompute *ConfidentialComputeResponse `pulumi:"confidentialCompute"`
+}
+
+type PlatformCapabilitiesResponseOutput struct{ *pulumi.OutputState }
+
+func (PlatformCapabilitiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlatformCapabilitiesResponse)(nil)).Elem()
+}
+
+func (o PlatformCapabilitiesResponseOutput) ToPlatformCapabilitiesResponseOutput() PlatformCapabilitiesResponseOutput {
+	return o
+}
+
+func (o PlatformCapabilitiesResponseOutput) ToPlatformCapabilitiesResponseOutputWithContext(ctx context.Context) PlatformCapabilitiesResponseOutput {
+	return o
+}
+
+func (o PlatformCapabilitiesResponseOutput) ConfidentialCompute() ConfidentialComputeResponsePtrOutput {
+	return o.ApplyT(func(v PlatformCapabilitiesResponse) *ConfidentialComputeResponse { return v.ConfidentialCompute }).(ConfidentialComputeResponsePtrOutput)
+}
+
+type PlatformCapabilitiesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PlatformCapabilitiesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PlatformCapabilitiesResponse)(nil)).Elem()
+}
+
+func (o PlatformCapabilitiesResponsePtrOutput) ToPlatformCapabilitiesResponsePtrOutput() PlatformCapabilitiesResponsePtrOutput {
+	return o
+}
+
+func (o PlatformCapabilitiesResponsePtrOutput) ToPlatformCapabilitiesResponsePtrOutputWithContext(ctx context.Context) PlatformCapabilitiesResponsePtrOutput {
+	return o
+}
+
+func (o PlatformCapabilitiesResponsePtrOutput) Elem() PlatformCapabilitiesResponseOutput {
+	return o.ApplyT(func(v *PlatformCapabilitiesResponse) PlatformCapabilitiesResponse {
+		if v != nil {
+			return *v
+		}
+		var ret PlatformCapabilitiesResponse
+		return ret
+	}).(PlatformCapabilitiesResponseOutput)
+}
+
+func (o PlatformCapabilitiesResponsePtrOutput) ConfidentialCompute() ConfidentialComputeResponsePtrOutput {
+	return o.ApplyT(func(v *PlatformCapabilitiesResponse) *ConfidentialComputeResponse {
+		if v == nil {
+			return nil
+		}
+		return v.ConfidentialCompute
+	}).(ConfidentialComputeResponsePtrOutput)
+}
+
 // PrivateEndpoint information.
 type PrivateEndpoint struct {
 	// The ARM identifier for Private Endpoint.
@@ -2562,7 +3343,7 @@ func (o PrivateEndpointConnectionTypeArrayOutput) Index(i pulumi.IntInput) Priva
 
 // Properties of the PrivateEndpointConnection.
 type PrivateEndpointConnectionResponse struct {
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
@@ -2574,9 +3355,9 @@ type PrivateEndpointConnectionResponse struct {
 	PrivateLinkServiceConnectionState *ConnectionStateResponse `pulumi:"privateLinkServiceConnectionState"`
 	// Provisioning state of the Private Endpoint Connection.
 	ProvisioningState *string `pulumi:"provisioningState"`
-	// The system meta data relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -2595,7 +3376,7 @@ func (o PrivateEndpointConnectionResponseOutput) ToPrivateEndpointConnectionResp
 	return o
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o PrivateEndpointConnectionResponseOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -2627,12 +3408,12 @@ func (o PrivateEndpointConnectionResponseOutput) ProvisioningState() pulumi.Stri
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) *string { return v.ProvisioningState }).(pulumi.StringPtrOutput)
 }
 
-// The system meta data relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o PrivateEndpointConnectionResponseOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o PrivateEndpointConnectionResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEndpointConnectionResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -3778,7 +4559,7 @@ type SystemDataResponse struct {
 	CreatedBy *string `pulumi:"createdBy"`
 	// The type of identity that created the resource.
 	CreatedByType *string `pulumi:"createdByType"`
-	// The type of identity that last modified the resource.
+	// The timestamp of resource last modification (UTC)
 	LastModifiedAt *string `pulumi:"lastModifiedAt"`
 	// The identity that last modified the resource.
 	LastModifiedBy *string `pulumi:"lastModifiedBy"`
@@ -3816,7 +4597,7 @@ func (o SystemDataResponseOutput) CreatedByType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.CreatedByType }).(pulumi.StringPtrOutput)
 }
 
-// The type of identity that last modified the resource.
+// The timestamp of resource last modification (UTC)
 func (o SystemDataResponseOutput) LastModifiedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SystemDataResponse) *string { return v.LastModifiedAt }).(pulumi.StringPtrOutput)
 }
@@ -4084,6 +4865,10 @@ func init() {
 	pulumi.RegisterOutputType(ActionPtrOutput{})
 	pulumi.RegisterOutputType(ActionResponseOutput{})
 	pulumi.RegisterOutputType(ActionResponsePtrOutput{})
+	pulumi.RegisterOutputType(ConfidentialComputeOutput{})
+	pulumi.RegisterOutputType(ConfidentialComputePtrOutput{})
+	pulumi.RegisterOutputType(ConfidentialComputeResponseOutput{})
+	pulumi.RegisterOutputType(ConfidentialComputeResponsePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionStateOutput{})
 	pulumi.RegisterOutputType(ConnectionStatePtrOutput{})
 	pulumi.RegisterOutputType(ConnectionStateResponseOutput{})
@@ -4096,6 +4881,10 @@ func init() {
 	pulumi.RegisterOutputType(EncryptionPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionResponseOutput{})
 	pulumi.RegisterOutputType(EncryptionResponsePtrOutput{})
+	pulumi.RegisterOutputType(GeoDataReplicationPropertiesOutput{})
+	pulumi.RegisterOutputType(GeoDataReplicationPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(GeoDataReplicationPropertiesResponseOutput{})
+	pulumi.RegisterOutputType(GeoDataReplicationPropertiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(IdentityOutput{})
 	pulumi.RegisterOutputType(IdentityPtrOutput{})
 	pulumi.RegisterOutputType(IdentityResponseOutput{})
@@ -4113,6 +4902,14 @@ func init() {
 	pulumi.RegisterOutputType(NWRuleSetVirtualNetworkRulesArrayOutput{})
 	pulumi.RegisterOutputType(NWRuleSetVirtualNetworkRulesResponseOutput{})
 	pulumi.RegisterOutputType(NWRuleSetVirtualNetworkRulesResponseArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceReplicaLocationOutput{})
+	pulumi.RegisterOutputType(NamespaceReplicaLocationArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceReplicaLocationResponseOutput{})
+	pulumi.RegisterOutputType(NamespaceReplicaLocationResponseArrayOutput{})
+	pulumi.RegisterOutputType(PlatformCapabilitiesOutput{})
+	pulumi.RegisterOutputType(PlatformCapabilitiesPtrOutput{})
+	pulumi.RegisterOutputType(PlatformCapabilitiesResponseOutput{})
+	pulumi.RegisterOutputType(PlatformCapabilitiesResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointPtrOutput{})
 	pulumi.RegisterOutputType(PrivateEndpointConnectionTypeOutput{})
