@@ -13,9 +13,9 @@ import (
 
 // Retrieves the description for the specified rule.
 //
-// Uses Azure REST API version 2024-01-01.
+// Uses Azure REST API version 2026-01-01.
 //
-// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2025-05-01-preview, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-01-01, 2025-05-01-preview, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupRule(ctx *pulumi.Context, args *LookupRuleArgs, opts ...pulumi.InvokeOption) (*LookupRuleResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupRuleResult
@@ -49,7 +49,7 @@ type LookupRuleResult struct {
 	CorrelationFilter *CorrelationFilterResponse `pulumi:"correlationFilter"`
 	// Filter type that is evaluated against a BrokeredMessage.
 	FilterType *string `pulumi:"filterType"`
-	// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+	// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 	Id string `pulumi:"id"`
 	// The geo-location where the resource lives
 	Location string `pulumi:"location"`
@@ -57,9 +57,9 @@ type LookupRuleResult struct {
 	Name string `pulumi:"name"`
 	// Properties of sqlFilter
 	SqlFilter *SqlFilterResponse `pulumi:"sqlFilter"`
-	// The system meta data relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponse `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type string `pulumi:"type"`
 }
 
@@ -138,7 +138,7 @@ func (o LookupRuleResultOutput) FilterType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRuleResult) *string { return v.FilterType }).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
 func (o LookupRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -158,12 +158,12 @@ func (o LookupRuleResultOutput) SqlFilter() SqlFilterResponsePtrOutput {
 	return o.ApplyT(func(v LookupRuleResult) *SqlFilterResponse { return v.SqlFilter }).(SqlFilterResponsePtrOutput)
 }
 
-// The system meta data relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o LookupRuleResultOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v LookupRuleResult) SystemDataResponse { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o LookupRuleResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRuleResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -908,6 +908,172 @@ func (in *filterTypePtr) ToFilterTypePtrOutputWithContext(ctx context.Context) F
 	return pulumi.ToOutputWithContext(ctx, in).(FilterTypePtrOutput)
 }
 
+// GeoDR Role Types
+type GeoDRRoleType string
+
+const (
+	GeoDRRoleTypePrimary   = GeoDRRoleType("Primary")
+	GeoDRRoleTypeSecondary = GeoDRRoleType("Secondary")
+)
+
+func (GeoDRRoleType) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeoDRRoleType)(nil)).Elem()
+}
+
+func (e GeoDRRoleType) ToGeoDRRoleTypeOutput() GeoDRRoleTypeOutput {
+	return pulumi.ToOutput(e).(GeoDRRoleTypeOutput)
+}
+
+func (e GeoDRRoleType) ToGeoDRRoleTypeOutputWithContext(ctx context.Context) GeoDRRoleTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GeoDRRoleTypeOutput)
+}
+
+func (e GeoDRRoleType) ToGeoDRRoleTypePtrOutput() GeoDRRoleTypePtrOutput {
+	return e.ToGeoDRRoleTypePtrOutputWithContext(context.Background())
+}
+
+func (e GeoDRRoleType) ToGeoDRRoleTypePtrOutputWithContext(ctx context.Context) GeoDRRoleTypePtrOutput {
+	return GeoDRRoleType(e).ToGeoDRRoleTypeOutputWithContext(ctx).ToGeoDRRoleTypePtrOutputWithContext(ctx)
+}
+
+func (e GeoDRRoleType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GeoDRRoleType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GeoDRRoleType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GeoDRRoleType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GeoDRRoleTypeOutput struct{ *pulumi.OutputState }
+
+func (GeoDRRoleTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GeoDRRoleType)(nil)).Elem()
+}
+
+func (o GeoDRRoleTypeOutput) ToGeoDRRoleTypeOutput() GeoDRRoleTypeOutput {
+	return o
+}
+
+func (o GeoDRRoleTypeOutput) ToGeoDRRoleTypeOutputWithContext(ctx context.Context) GeoDRRoleTypeOutput {
+	return o
+}
+
+func (o GeoDRRoleTypeOutput) ToGeoDRRoleTypePtrOutput() GeoDRRoleTypePtrOutput {
+	return o.ToGeoDRRoleTypePtrOutputWithContext(context.Background())
+}
+
+func (o GeoDRRoleTypeOutput) ToGeoDRRoleTypePtrOutputWithContext(ctx context.Context) GeoDRRoleTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GeoDRRoleType) *GeoDRRoleType {
+		return &v
+	}).(GeoDRRoleTypePtrOutput)
+}
+
+func (o GeoDRRoleTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GeoDRRoleTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GeoDRRoleType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GeoDRRoleTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GeoDRRoleTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GeoDRRoleType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GeoDRRoleTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GeoDRRoleTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GeoDRRoleType)(nil)).Elem()
+}
+
+func (o GeoDRRoleTypePtrOutput) ToGeoDRRoleTypePtrOutput() GeoDRRoleTypePtrOutput {
+	return o
+}
+
+func (o GeoDRRoleTypePtrOutput) ToGeoDRRoleTypePtrOutputWithContext(ctx context.Context) GeoDRRoleTypePtrOutput {
+	return o
+}
+
+func (o GeoDRRoleTypePtrOutput) Elem() GeoDRRoleTypeOutput {
+	return o.ApplyT(func(v *GeoDRRoleType) GeoDRRoleType {
+		if v != nil {
+			return *v
+		}
+		var ret GeoDRRoleType
+		return ret
+	}).(GeoDRRoleTypeOutput)
+}
+
+func (o GeoDRRoleTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GeoDRRoleTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GeoDRRoleType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GeoDRRoleTypeInput is an input type that accepts values of the GeoDRRoleType enum
+// A concrete instance of `GeoDRRoleTypeInput` can be one of the following:
+//
+//	GeoDRRoleTypePrimary
+//	GeoDRRoleTypeSecondary
+type GeoDRRoleTypeInput interface {
+	pulumi.Input
+
+	ToGeoDRRoleTypeOutput() GeoDRRoleTypeOutput
+	ToGeoDRRoleTypeOutputWithContext(context.Context) GeoDRRoleTypeOutput
+}
+
+var geoDRRoleTypePtrType = reflect.TypeOf((**GeoDRRoleType)(nil)).Elem()
+
+type GeoDRRoleTypePtrInput interface {
+	pulumi.Input
+
+	ToGeoDRRoleTypePtrOutput() GeoDRRoleTypePtrOutput
+	ToGeoDRRoleTypePtrOutputWithContext(context.Context) GeoDRRoleTypePtrOutput
+}
+
+type geoDRRoleTypePtr string
+
+func GeoDRRoleTypePtr(v string) GeoDRRoleTypePtrInput {
+	return (*geoDRRoleTypePtr)(&v)
+}
+
+func (*geoDRRoleTypePtr) ElementType() reflect.Type {
+	return geoDRRoleTypePtrType
+}
+
+func (in *geoDRRoleTypePtr) ToGeoDRRoleTypePtrOutput() GeoDRRoleTypePtrOutput {
+	return pulumi.ToOutput(in).(GeoDRRoleTypePtrOutput)
+}
+
+func (in *geoDRRoleTypePtr) ToGeoDRRoleTypePtrOutputWithContext(ctx context.Context) GeoDRRoleTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GeoDRRoleTypePtrOutput)
+}
+
 // The IP Filter Action
 type IPAction string
 
@@ -1072,6 +1238,174 @@ func (in *ipactionPtr) ToIPActionPtrOutput() IPActionPtrOutput {
 
 func (in *ipactionPtr) ToIPActionPtrOutputWithContext(ctx context.Context) IPActionPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(IPActionPtrOutput)
+}
+
+// The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual stack).
+type IpAddressType string
+
+const (
+	// The namespace supports IPv4 addresses only.
+	IpAddressTypeIPv4 = IpAddressType("IPv4")
+	// The namespace supports both IPv4 and IPv6 addresses (dual stack).
+	IpAddressTypeDualStack = IpAddressType("DualStack")
+)
+
+func (IpAddressType) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpAddressType)(nil)).Elem()
+}
+
+func (e IpAddressType) ToIpAddressTypeOutput() IpAddressTypeOutput {
+	return pulumi.ToOutput(e).(IpAddressTypeOutput)
+}
+
+func (e IpAddressType) ToIpAddressTypeOutputWithContext(ctx context.Context) IpAddressTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(IpAddressTypeOutput)
+}
+
+func (e IpAddressType) ToIpAddressTypePtrOutput() IpAddressTypePtrOutput {
+	return e.ToIpAddressTypePtrOutputWithContext(context.Background())
+}
+
+func (e IpAddressType) ToIpAddressTypePtrOutputWithContext(ctx context.Context) IpAddressTypePtrOutput {
+	return IpAddressType(e).ToIpAddressTypeOutputWithContext(ctx).ToIpAddressTypePtrOutputWithContext(ctx)
+}
+
+func (e IpAddressType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IpAddressType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IpAddressType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e IpAddressType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type IpAddressTypeOutput struct{ *pulumi.OutputState }
+
+func (IpAddressTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IpAddressType)(nil)).Elem()
+}
+
+func (o IpAddressTypeOutput) ToIpAddressTypeOutput() IpAddressTypeOutput {
+	return o
+}
+
+func (o IpAddressTypeOutput) ToIpAddressTypeOutputWithContext(ctx context.Context) IpAddressTypeOutput {
+	return o
+}
+
+func (o IpAddressTypeOutput) ToIpAddressTypePtrOutput() IpAddressTypePtrOutput {
+	return o.ToIpAddressTypePtrOutputWithContext(context.Background())
+}
+
+func (o IpAddressTypeOutput) ToIpAddressTypePtrOutputWithContext(ctx context.Context) IpAddressTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IpAddressType) *IpAddressType {
+		return &v
+	}).(IpAddressTypePtrOutput)
+}
+
+func (o IpAddressTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o IpAddressTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IpAddressType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o IpAddressTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IpAddressTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IpAddressType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type IpAddressTypePtrOutput struct{ *pulumi.OutputState }
+
+func (IpAddressTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IpAddressType)(nil)).Elem()
+}
+
+func (o IpAddressTypePtrOutput) ToIpAddressTypePtrOutput() IpAddressTypePtrOutput {
+	return o
+}
+
+func (o IpAddressTypePtrOutput) ToIpAddressTypePtrOutputWithContext(ctx context.Context) IpAddressTypePtrOutput {
+	return o
+}
+
+func (o IpAddressTypePtrOutput) Elem() IpAddressTypeOutput {
+	return o.ApplyT(func(v *IpAddressType) IpAddressType {
+		if v != nil {
+			return *v
+		}
+		var ret IpAddressType
+		return ret
+	}).(IpAddressTypeOutput)
+}
+
+func (o IpAddressTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IpAddressTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *IpAddressType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// IpAddressTypeInput is an input type that accepts values of the IpAddressType enum
+// A concrete instance of `IpAddressTypeInput` can be one of the following:
+//
+//	IpAddressTypeIPv4
+//	IpAddressTypeDualStack
+type IpAddressTypeInput interface {
+	pulumi.Input
+
+	ToIpAddressTypeOutput() IpAddressTypeOutput
+	ToIpAddressTypeOutputWithContext(context.Context) IpAddressTypeOutput
+}
+
+var ipAddressTypePtrType = reflect.TypeOf((**IpAddressType)(nil)).Elem()
+
+type IpAddressTypePtrInput interface {
+	pulumi.Input
+
+	ToIpAddressTypePtrOutput() IpAddressTypePtrOutput
+	ToIpAddressTypePtrOutputWithContext(context.Context) IpAddressTypePtrOutput
+}
+
+type ipAddressTypePtr string
+
+func IpAddressTypePtr(v string) IpAddressTypePtrInput {
+	return (*ipAddressTypePtr)(&v)
+}
+
+func (*ipAddressTypePtr) ElementType() reflect.Type {
+	return ipAddressTypePtrType
+}
+
+func (in *ipAddressTypePtr) ToIpAddressTypePtrOutput() IpAddressTypePtrOutput {
+	return pulumi.ToOutput(in).(IpAddressTypePtrOutput)
+}
+
+func (in *ipAddressTypePtr) ToIpAddressTypePtrOutputWithContext(ctx context.Context) IpAddressTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(IpAddressTypePtrOutput)
 }
 
 // Enumerates the possible value of keySource for Encryption
@@ -1406,6 +1740,172 @@ func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutput()
 
 func (in *managedServiceIdentityTypePtr) ToManagedServiceIdentityTypePtrOutputWithContext(ctx context.Context) ManagedServiceIdentityTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(ManagedServiceIdentityTypePtrOutput)
+}
+
+// Setting to Enable or Disable Confidential Compute
+type Mode string
+
+const (
+	ModeDisabled = Mode("Disabled")
+	ModeEnabled  = Mode("Enabled")
+)
+
+func (Mode) ElementType() reflect.Type {
+	return reflect.TypeOf((*Mode)(nil)).Elem()
+}
+
+func (e Mode) ToModeOutput() ModeOutput {
+	return pulumi.ToOutput(e).(ModeOutput)
+}
+
+func (e Mode) ToModeOutputWithContext(ctx context.Context) ModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ModeOutput)
+}
+
+func (e Mode) ToModePtrOutput() ModePtrOutput {
+	return e.ToModePtrOutputWithContext(context.Background())
+}
+
+func (e Mode) ToModePtrOutputWithContext(ctx context.Context) ModePtrOutput {
+	return Mode(e).ToModeOutputWithContext(ctx).ToModePtrOutputWithContext(ctx)
+}
+
+func (e Mode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e Mode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e Mode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e Mode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ModeOutput struct{ *pulumi.OutputState }
+
+func (ModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Mode)(nil)).Elem()
+}
+
+func (o ModeOutput) ToModeOutput() ModeOutput {
+	return o
+}
+
+func (o ModeOutput) ToModeOutputWithContext(ctx context.Context) ModeOutput {
+	return o
+}
+
+func (o ModeOutput) ToModePtrOutput() ModePtrOutput {
+	return o.ToModePtrOutputWithContext(context.Background())
+}
+
+func (o ModeOutput) ToModePtrOutputWithContext(ctx context.Context) ModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Mode) *Mode {
+		return &v
+	}).(ModePtrOutput)
+}
+
+func (o ModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e Mode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e Mode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ModePtrOutput struct{ *pulumi.OutputState }
+
+func (ModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Mode)(nil)).Elem()
+}
+
+func (o ModePtrOutput) ToModePtrOutput() ModePtrOutput {
+	return o
+}
+
+func (o ModePtrOutput) ToModePtrOutputWithContext(ctx context.Context) ModePtrOutput {
+	return o
+}
+
+func (o ModePtrOutput) Elem() ModeOutput {
+	return o.ApplyT(func(v *Mode) Mode {
+		if v != nil {
+			return *v
+		}
+		var ret Mode
+		return ret
+	}).(ModeOutput)
+}
+
+func (o ModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *Mode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ModeInput is an input type that accepts values of the Mode enum
+// A concrete instance of `ModeInput` can be one of the following:
+//
+//	ModeDisabled
+//	ModeEnabled
+type ModeInput interface {
+	pulumi.Input
+
+	ToModeOutput() ModeOutput
+	ToModeOutputWithContext(context.Context) ModeOutput
+}
+
+var modePtrType = reflect.TypeOf((**Mode)(nil)).Elem()
+
+type ModePtrInput interface {
+	pulumi.Input
+
+	ToModePtrOutput() ModePtrOutput
+	ToModePtrOutputWithContext(context.Context) ModePtrOutput
+}
+
+type modePtr string
+
+func ModePtr(v string) ModePtrInput {
+	return (*modePtr)(&v)
+}
+
+func (*modePtr) ElementType() reflect.Type {
+	return modePtrType
+}
+
+func (in *modePtr) ToModePtrOutput() ModePtrOutput {
+	return pulumi.ToOutput(in).(ModePtrOutput)
+}
+
+func (in *modePtr) ToModePtrOutputWithContext(ctx context.Context) ModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ModePtrOutput)
 }
 
 // The IP Filter Action
@@ -2419,6 +2919,7 @@ const (
 	TlsVersion_1_0 = TlsVersion("1.0")
 	TlsVersion_1_1 = TlsVersion("1.1")
 	TlsVersion_1_2 = TlsVersion("1.2")
+	TlsVersion_1_3 = TlsVersion("1.3")
 )
 
 func (TlsVersion) ElementType() reflect.Type {
@@ -2546,6 +3047,7 @@ func (o TlsVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 //	TlsVersion_1_0
 //	TlsVersion_1_1
 //	TlsVersion_1_2
+//	TlsVersion_1_3
 type TlsVersionInput interface {
 	pulumi.Input
 
@@ -2592,12 +3094,18 @@ func init() {
 	pulumi.RegisterOutputType(EntityStatusPtrOutput{})
 	pulumi.RegisterOutputType(FilterTypeOutput{})
 	pulumi.RegisterOutputType(FilterTypePtrOutput{})
+	pulumi.RegisterOutputType(GeoDRRoleTypeOutput{})
+	pulumi.RegisterOutputType(GeoDRRoleTypePtrOutput{})
 	pulumi.RegisterOutputType(IPActionOutput{})
 	pulumi.RegisterOutputType(IPActionPtrOutput{})
+	pulumi.RegisterOutputType(IpAddressTypeOutput{})
+	pulumi.RegisterOutputType(IpAddressTypePtrOutput{})
 	pulumi.RegisterOutputType(KeySourceOutput{})
 	pulumi.RegisterOutputType(KeySourcePtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypeOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityTypePtrOutput{})
+	pulumi.RegisterOutputType(ModeOutput{})
+	pulumi.RegisterOutputType(ModePtrOutput{})
 	pulumi.RegisterOutputType(NetworkRuleIPActionOutput{})
 	pulumi.RegisterOutputType(NetworkRuleIPActionPtrOutput{})
 	pulumi.RegisterOutputType(PrivateLinkConnectionStatusOutput{})
