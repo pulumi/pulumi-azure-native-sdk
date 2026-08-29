@@ -14,9 +14,9 @@ import (
 
 // Description of queue Resource.
 //
-// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
+// Uses Azure REST API version 2026-01-01. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
 //
-// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2025-05-01-preview, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-01-01, 2025-05-01-preview, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Queue struct {
 	pulumi.CustomResourceState
 
@@ -68,12 +68,14 @@ type Queue struct {
 	SizeInBytes pulumi.Float64Output `pulumi:"sizeInBytes"`
 	// Enumerates the possible values for the status of a messaging entity.
 	Status pulumi.StringPtrOutput `pulumi:"status"`
-	// The system meta data relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The exact time the message was updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	// Gets and Sets Metadata of User.
+	UserMetadata pulumi.StringPtrOutput `pulumi:"userMetadata"`
 }
 
 // NewQueue registers a new resource with the given unique name, arguments, and options.
@@ -205,6 +207,8 @@ type queueArgs struct {
 	ResourceGroupName string `pulumi:"resourceGroupName"`
 	// Enumerates the possible values for the status of a messaging entity.
 	Status *EntityStatus `pulumi:"status"`
+	// Gets and Sets Metadata of User.
+	UserMetadata *string `pulumi:"userMetadata"`
 }
 
 // The set of arguments for constructing a Queue resource.
@@ -247,6 +251,8 @@ type QueueArgs struct {
 	ResourceGroupName pulumi.StringInput
 	// Enumerates the possible values for the status of a messaging entity.
 	Status EntityStatusPtrInput
+	// Gets and Sets Metadata of User.
+	UserMetadata pulumi.StringPtrInput
 }
 
 func (QueueArgs) ElementType() reflect.Type {
@@ -406,12 +412,12 @@ func (o QueueOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Queue) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// The system meta data relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o QueueOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Queue) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o QueueOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
@@ -419,6 +425,11 @@ func (o QueueOutput) Type() pulumi.StringOutput {
 // The exact time the message was updated.
 func (o QueueOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Gets and Sets Metadata of User.
+func (o QueueOutput) UserMetadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Queue) pulumi.StringPtrOutput { return v.UserMetadata }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -13,9 +13,9 @@ import (
 
 // Get the Domains resource and its properties.
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2026-03-18.
 //
-// Other available API versions: 2023-03-31, 2023-04-01, 2023-04-01-preview, 2024-09-01-preview, 2025-05-01, 2025-05-01-preview, 2025-09-01, 2026-03-18. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-03-31, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2024-09-01-preview, 2025-05-01, 2025-05-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupDomain(ctx *pulumi.Context, args *LookupDomainArgs, opts ...pulumi.InvokeOption) (*LookupDomainResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupDomainResult
@@ -64,9 +64,9 @@ type LookupDomainResult struct {
 	// Describes whether user engagement tracking is enabled or disabled.
 	UserEngagementTracking *string `pulumi:"userEngagementTracking"`
 	// List of DnsRecord
-	VerificationRecords DomainPropertiesResponseVerificationRecords `pulumi:"verificationRecords"`
+	VerificationRecords DomainPropertiesVerificationRecordsResponse `pulumi:"verificationRecords"`
 	// List of VerificationStatusRecord
-	VerificationStates DomainPropertiesResponseVerificationStates `pulumi:"verificationStates"`
+	VerificationStates DomainPropertiesVerificationStatesResponse `pulumi:"verificationStates"`
 }
 
 func LookupDomainOutput(ctx *pulumi.Context, args LookupDomainOutputArgs, opts ...pulumi.InvokeOption) LookupDomainResultOutput {
@@ -172,13 +172,13 @@ func (o LookupDomainResultOutput) UserEngagementTracking() pulumi.StringPtrOutpu
 }
 
 // List of DnsRecord
-func (o LookupDomainResultOutput) VerificationRecords() DomainPropertiesResponseVerificationRecordsOutput {
-	return o.ApplyT(func(v LookupDomainResult) DomainPropertiesResponseVerificationRecords { return v.VerificationRecords }).(DomainPropertiesResponseVerificationRecordsOutput)
+func (o LookupDomainResultOutput) VerificationRecords() DomainPropertiesVerificationRecordsResponseOutput {
+	return o.ApplyT(func(v LookupDomainResult) DomainPropertiesVerificationRecordsResponse { return v.VerificationRecords }).(DomainPropertiesVerificationRecordsResponseOutput)
 }
 
 // List of VerificationStatusRecord
-func (o LookupDomainResultOutput) VerificationStates() DomainPropertiesResponseVerificationStatesOutput {
-	return o.ApplyT(func(v LookupDomainResult) DomainPropertiesResponseVerificationStates { return v.VerificationStates }).(DomainPropertiesResponseVerificationStatesOutput)
+func (o LookupDomainResultOutput) VerificationStates() DomainPropertiesVerificationStatesResponseOutput {
+	return o.ApplyT(func(v LookupDomainResult) DomainPropertiesVerificationStatesResponse { return v.VerificationStates }).(DomainPropertiesVerificationStatesResponseOutput)
 }
 
 func init() {

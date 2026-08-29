@@ -125,7 +125,7 @@ func (o DnsRecordResponsePtrOutput) Value() pulumi.StringPtrOutput {
 }
 
 // List of DnsRecord
-type DomainPropertiesResponseVerificationRecords struct {
+type DomainPropertiesVerificationRecordsResponse struct {
 	// A class that represents a VerificationStatus record.
 	DKIM *DnsRecordResponse `pulumi:"dKIM"`
 	// A class that represents a VerificationStatus record.
@@ -139,47 +139,47 @@ type DomainPropertiesResponseVerificationRecords struct {
 }
 
 // List of DnsRecord
-type DomainPropertiesResponseVerificationRecordsOutput struct{ *pulumi.OutputState }
+type DomainPropertiesVerificationRecordsResponseOutput struct{ *pulumi.OutputState }
 
-func (DomainPropertiesResponseVerificationRecordsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainPropertiesResponseVerificationRecords)(nil)).Elem()
+func (DomainPropertiesVerificationRecordsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainPropertiesVerificationRecordsResponse)(nil)).Elem()
 }
 
-func (o DomainPropertiesResponseVerificationRecordsOutput) ToDomainPropertiesResponseVerificationRecordsOutput() DomainPropertiesResponseVerificationRecordsOutput {
+func (o DomainPropertiesVerificationRecordsResponseOutput) ToDomainPropertiesVerificationRecordsResponseOutput() DomainPropertiesVerificationRecordsResponseOutput {
 	return o
 }
 
-func (o DomainPropertiesResponseVerificationRecordsOutput) ToDomainPropertiesResponseVerificationRecordsOutputWithContext(ctx context.Context) DomainPropertiesResponseVerificationRecordsOutput {
+func (o DomainPropertiesVerificationRecordsResponseOutput) ToDomainPropertiesVerificationRecordsResponseOutputWithContext(ctx context.Context) DomainPropertiesVerificationRecordsResponseOutput {
 	return o
 }
 
 // A class that represents a VerificationStatus record.
-func (o DomainPropertiesResponseVerificationRecordsOutput) DKIM() DnsRecordResponsePtrOutput {
-	return o.ApplyT(func(v DomainPropertiesResponseVerificationRecords) *DnsRecordResponse { return v.DKIM }).(DnsRecordResponsePtrOutput)
+func (o DomainPropertiesVerificationRecordsResponseOutput) DKIM() DnsRecordResponsePtrOutput {
+	return o.ApplyT(func(v DomainPropertiesVerificationRecordsResponse) *DnsRecordResponse { return v.DKIM }).(DnsRecordResponsePtrOutput)
 }
 
 // A class that represents a VerificationStatus record.
-func (o DomainPropertiesResponseVerificationRecordsOutput) DKIM2() DnsRecordResponsePtrOutput {
-	return o.ApplyT(func(v DomainPropertiesResponseVerificationRecords) *DnsRecordResponse { return v.DKIM2 }).(DnsRecordResponsePtrOutput)
+func (o DomainPropertiesVerificationRecordsResponseOutput) DKIM2() DnsRecordResponsePtrOutput {
+	return o.ApplyT(func(v DomainPropertiesVerificationRecordsResponse) *DnsRecordResponse { return v.DKIM2 }).(DnsRecordResponsePtrOutput)
 }
 
 // A class that represents a VerificationStatus record.
-func (o DomainPropertiesResponseVerificationRecordsOutput) DMARC() DnsRecordResponsePtrOutput {
-	return o.ApplyT(func(v DomainPropertiesResponseVerificationRecords) *DnsRecordResponse { return v.DMARC }).(DnsRecordResponsePtrOutput)
+func (o DomainPropertiesVerificationRecordsResponseOutput) DMARC() DnsRecordResponsePtrOutput {
+	return o.ApplyT(func(v DomainPropertiesVerificationRecordsResponse) *DnsRecordResponse { return v.DMARC }).(DnsRecordResponsePtrOutput)
 }
 
 // A class that represents a VerificationStatus record.
-func (o DomainPropertiesResponseVerificationRecordsOutput) Domain() DnsRecordResponsePtrOutput {
-	return o.ApplyT(func(v DomainPropertiesResponseVerificationRecords) *DnsRecordResponse { return v.Domain }).(DnsRecordResponsePtrOutput)
+func (o DomainPropertiesVerificationRecordsResponseOutput) Domain() DnsRecordResponsePtrOutput {
+	return o.ApplyT(func(v DomainPropertiesVerificationRecordsResponse) *DnsRecordResponse { return v.Domain }).(DnsRecordResponsePtrOutput)
 }
 
 // A class that represents a VerificationStatus record.
-func (o DomainPropertiesResponseVerificationRecordsOutput) SPF() DnsRecordResponsePtrOutput {
-	return o.ApplyT(func(v DomainPropertiesResponseVerificationRecords) *DnsRecordResponse { return v.SPF }).(DnsRecordResponsePtrOutput)
+func (o DomainPropertiesVerificationRecordsResponseOutput) SPF() DnsRecordResponsePtrOutput {
+	return o.ApplyT(func(v DomainPropertiesVerificationRecordsResponse) *DnsRecordResponse { return v.SPF }).(DnsRecordResponsePtrOutput)
 }
 
 // List of VerificationStatusRecord
-type DomainPropertiesResponseVerificationStates struct {
+type DomainPropertiesVerificationStatesResponse struct {
 	// A class that represents a VerificationStatus record.
 	DKIM *VerificationStatusRecordResponse `pulumi:"dKIM"`
 	// A class that represents a VerificationStatus record.
@@ -193,43 +193,43 @@ type DomainPropertiesResponseVerificationStates struct {
 }
 
 // List of VerificationStatusRecord
-type DomainPropertiesResponseVerificationStatesOutput struct{ *pulumi.OutputState }
+type DomainPropertiesVerificationStatesResponseOutput struct{ *pulumi.OutputState }
 
-func (DomainPropertiesResponseVerificationStatesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainPropertiesResponseVerificationStates)(nil)).Elem()
+func (DomainPropertiesVerificationStatesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainPropertiesVerificationStatesResponse)(nil)).Elem()
 }
 
-func (o DomainPropertiesResponseVerificationStatesOutput) ToDomainPropertiesResponseVerificationStatesOutput() DomainPropertiesResponseVerificationStatesOutput {
+func (o DomainPropertiesVerificationStatesResponseOutput) ToDomainPropertiesVerificationStatesResponseOutput() DomainPropertiesVerificationStatesResponseOutput {
 	return o
 }
 
-func (o DomainPropertiesResponseVerificationStatesOutput) ToDomainPropertiesResponseVerificationStatesOutputWithContext(ctx context.Context) DomainPropertiesResponseVerificationStatesOutput {
+func (o DomainPropertiesVerificationStatesResponseOutput) ToDomainPropertiesVerificationStatesResponseOutputWithContext(ctx context.Context) DomainPropertiesVerificationStatesResponseOutput {
 	return o
 }
 
 // A class that represents a VerificationStatus record.
-func (o DomainPropertiesResponseVerificationStatesOutput) DKIM() VerificationStatusRecordResponsePtrOutput {
-	return o.ApplyT(func(v DomainPropertiesResponseVerificationStates) *VerificationStatusRecordResponse { return v.DKIM }).(VerificationStatusRecordResponsePtrOutput)
+func (o DomainPropertiesVerificationStatesResponseOutput) DKIM() VerificationStatusRecordResponsePtrOutput {
+	return o.ApplyT(func(v DomainPropertiesVerificationStatesResponse) *VerificationStatusRecordResponse { return v.DKIM }).(VerificationStatusRecordResponsePtrOutput)
 }
 
 // A class that represents a VerificationStatus record.
-func (o DomainPropertiesResponseVerificationStatesOutput) DKIM2() VerificationStatusRecordResponsePtrOutput {
-	return o.ApplyT(func(v DomainPropertiesResponseVerificationStates) *VerificationStatusRecordResponse { return v.DKIM2 }).(VerificationStatusRecordResponsePtrOutput)
+func (o DomainPropertiesVerificationStatesResponseOutput) DKIM2() VerificationStatusRecordResponsePtrOutput {
+	return o.ApplyT(func(v DomainPropertiesVerificationStatesResponse) *VerificationStatusRecordResponse { return v.DKIM2 }).(VerificationStatusRecordResponsePtrOutput)
 }
 
 // A class that represents a VerificationStatus record.
-func (o DomainPropertiesResponseVerificationStatesOutput) DMARC() VerificationStatusRecordResponsePtrOutput {
-	return o.ApplyT(func(v DomainPropertiesResponseVerificationStates) *VerificationStatusRecordResponse { return v.DMARC }).(VerificationStatusRecordResponsePtrOutput)
+func (o DomainPropertiesVerificationStatesResponseOutput) DMARC() VerificationStatusRecordResponsePtrOutput {
+	return o.ApplyT(func(v DomainPropertiesVerificationStatesResponse) *VerificationStatusRecordResponse { return v.DMARC }).(VerificationStatusRecordResponsePtrOutput)
 }
 
 // A class that represents a VerificationStatus record.
-func (o DomainPropertiesResponseVerificationStatesOutput) Domain() VerificationStatusRecordResponsePtrOutput {
-	return o.ApplyT(func(v DomainPropertiesResponseVerificationStates) *VerificationStatusRecordResponse { return v.Domain }).(VerificationStatusRecordResponsePtrOutput)
+func (o DomainPropertiesVerificationStatesResponseOutput) Domain() VerificationStatusRecordResponsePtrOutput {
+	return o.ApplyT(func(v DomainPropertiesVerificationStatesResponse) *VerificationStatusRecordResponse { return v.Domain }).(VerificationStatusRecordResponsePtrOutput)
 }
 
 // A class that represents a VerificationStatus record.
-func (o DomainPropertiesResponseVerificationStatesOutput) SPF() VerificationStatusRecordResponsePtrOutput {
-	return o.ApplyT(func(v DomainPropertiesResponseVerificationStates) *VerificationStatusRecordResponse { return v.SPF }).(VerificationStatusRecordResponsePtrOutput)
+func (o DomainPropertiesVerificationStatesResponseOutput) SPF() VerificationStatusRecordResponsePtrOutput {
+	return o.ApplyT(func(v DomainPropertiesVerificationStatesResponse) *VerificationStatusRecordResponse { return v.SPF }).(VerificationStatusRecordResponsePtrOutput)
 }
 
 // Managed service identity (system assigned and/or user assigned identities)
@@ -698,8 +698,8 @@ func (o VerificationStatusRecordResponsePtrOutput) Status() pulumi.StringPtrOutp
 func init() {
 	pulumi.RegisterOutputType(DnsRecordResponseOutput{})
 	pulumi.RegisterOutputType(DnsRecordResponsePtrOutput{})
-	pulumi.RegisterOutputType(DomainPropertiesResponseVerificationRecordsOutput{})
-	pulumi.RegisterOutputType(DomainPropertiesResponseVerificationStatesOutput{})
+	pulumi.RegisterOutputType(DomainPropertiesVerificationRecordsResponseOutput{})
+	pulumi.RegisterOutputType(DomainPropertiesVerificationStatesResponseOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityPtrOutput{})
 	pulumi.RegisterOutputType(ManagedServiceIdentityResponseOutput{})
