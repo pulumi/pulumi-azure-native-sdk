@@ -14,9 +14,9 @@ import (
 
 // Description of subscription resource.
 //
-// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
+// Uses Azure REST API version 2026-01-01. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
 //
-// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2025-05-01-preview, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-01-01, 2025-05-01-preview, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 type Subscription struct {
 	pulumi.CustomResourceState
 
@@ -62,12 +62,14 @@ type Subscription struct {
 	RequiresSession pulumi.BoolPtrOutput `pulumi:"requiresSession"`
 	// Enumerates the possible values for the status of a messaging entity.
 	Status pulumi.StringPtrOutput `pulumi:"status"`
-	// The system meta data relating to this resource.
+	// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 	SystemData SystemDataResponseOutput `pulumi:"systemData"`
-	// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+	// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The exact time the message was updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	// Gets and Sets Metadata of User.
+	UserMetadata pulumi.StringPtrOutput `pulumi:"userMetadata"`
 }
 
 // NewSubscription registers a new resource with the given unique name, arguments, and options.
@@ -200,6 +202,8 @@ type subscriptionArgs struct {
 	SubscriptionName *string `pulumi:"subscriptionName"`
 	// The topic name.
 	TopicName string `pulumi:"topicName"`
+	// Gets and Sets Metadata of User.
+	UserMetadata *string `pulumi:"userMetadata"`
 }
 
 // The set of arguments for constructing a Subscription resource.
@@ -240,6 +244,8 @@ type SubscriptionArgs struct {
 	SubscriptionName pulumi.StringPtrInput
 	// The topic name.
 	TopicName pulumi.StringInput
+	// Gets and Sets Metadata of User.
+	UserMetadata pulumi.StringPtrInput
 }
 
 func (SubscriptionArgs) ElementType() reflect.Type {
@@ -384,12 +390,12 @@ func (o SubscriptionOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Subscription) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// The system meta data relating to this resource.
+// Azure Resource Manager metadata containing createdBy and modifiedBy information.
 func (o SubscriptionOutput) SystemData() SystemDataResponseOutput {
 	return o.ApplyT(func(v *Subscription) SystemDataResponseOutput { return v.SystemData }).(SystemDataResponseOutput)
 }
 
-// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
 func (o SubscriptionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
@@ -397,6 +403,11 @@ func (o SubscriptionOutput) Type() pulumi.StringOutput {
 // The exact time the message was updated.
 func (o SubscriptionOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Gets and Sets Metadata of User.
+func (o SubscriptionOutput) UserMetadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Subscription) pulumi.StringPtrOutput { return v.UserMetadata }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -13,9 +13,9 @@ import (
 
 // Get a SuppressionList resource.
 //
-// Uses Azure REST API version 2023-06-01-preview.
+// Uses Azure REST API version 2026-03-18.
 //
-// Other available API versions: 2024-09-01-preview, 2025-05-01-preview, 2025-09-01, 2026-03-18. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+// Other available API versions: 2023-06-01-preview, 2024-09-01-preview, 2025-05-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 func LookupSuppressionList(ctx *pulumi.Context, args *LookupSuppressionListArgs, opts ...pulumi.InvokeOption) (*LookupSuppressionListResult, error) {
 	opts = utilities.PkgInvokeDefaultOpts(opts)
 	var rv LookupSuppressionListResult
@@ -49,7 +49,7 @@ type LookupSuppressionListResult struct {
 	Id string `pulumi:"id"`
 	// The date the resource was last updated.
 	LastUpdatedTimeStamp string `pulumi:"lastUpdatedTimeStamp"`
-	// The the name of the suppression list. This value must match one of the valid sender usernames of the sending domain.
+	// The name of the suppression list. This value must match one of the valid sender usernames of the sending domain.
 	ListName *string `pulumi:"listName"`
 	// The name of the resource
 	Name string `pulumi:"name"`
@@ -123,7 +123,7 @@ func (o LookupSuppressionListResultOutput) LastUpdatedTimeStamp() pulumi.StringO
 	return o.ApplyT(func(v LookupSuppressionListResult) string { return v.LastUpdatedTimeStamp }).(pulumi.StringOutput)
 }
 
-// The the name of the suppression list. This value must match one of the valid sender usernames of the sending domain.
+// The name of the suppression list. This value must match one of the valid sender usernames of the sending domain.
 func (o LookupSuppressionListResultOutput) ListName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSuppressionListResult) *string { return v.ListName }).(pulumi.StringPtrOutput)
 }
